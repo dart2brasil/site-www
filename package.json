@@ -19,7 +19,7 @@
   },
   "packageManager": "pnpm@9.12.3",
   "dependencies": {
-    "bootstrap-scss": "^4.6.2"
+    "bootstrap-scss": "^5.3.3"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
