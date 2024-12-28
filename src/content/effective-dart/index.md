@@ -1,64 +1,65 @@
 ---
-title: Effective Dart
+ia-translate: true
+title: Dart Eficaz
 description: >-
-  Best practices for building consistent, maintainable,
-  and efficient Dart libraries.
+  Melhores práticas para construir bibliotecas Dart consistentes,
+  manuteníveis e eficientes.
 nextpage:
   url: /effective-dart/style
-  title: Style
+  title: Estilo
 ---
 
-Over the past several years, we've written a ton of Dart code and learned a lot
-about what works well and what doesn't. We're sharing this with you so you can
-write consistent, robust, fast code too. There are two overarching themes:
+Nos últimos anos, escrevemos muito código Dart e aprendemos bastante sobre o que
+funciona bem e o que não funciona. Estamos compartilhando isso com você para que
+você também possa escrever código consistente, robusto e rápido. Existem dois
+temas abrangentes:
 
- 1. **Be consistent.** When it comes to things like formatting, and casing,
-    arguments about which is better are subjective and impossible to resolve.
-    What we do know is that being *consistent* is objectively helpful.
+ 1. **Seja consistente.** Quando se trata de coisas como formatação e uso de
+    maiúsculas e minúsculas, argumentos sobre o que é melhor são subjetivos e
+    impossíveis de resolver. O que sabemos é que ser *consistente* é
+    objetivamente útil.
 
-    If two pieces of code look different it should be because they *are*
-    different in some meaningful way. When a bit of code stands out and catches
-    your eye, it should do so for a useful reason.
+    Se duas partes do código parecem diferentes, deve ser porque elas *são*
+    diferentes de alguma forma significativa. Quando um pedaço de código se
+    destaca e chama sua atenção, ele deve fazer isso por um motivo útil.
 
- 2. **Be brief.** Dart was designed to be familiar, so it inherits many of the
-    same statements and expressions as C, Java, JavaScript and other languages.
-    But we created Dart because there is a lot of room to improve on what those
-    languages offer. We added a bunch of features, from string interpolation to
-    initializing formals, to help you express your intent more simply and
-    easily.
+ 2. **Seja conciso.** Dart foi projetado para ser familiar, então ele herda
+    muitas das mesmas declarações e expressões de C, Java, JavaScript e outras
+    linguagens. Mas criamos o Dart porque há muito espaço para melhorar o que
+    essas linguagens oferecem. Adicionamos vários recursos, desde interpolação
+    de strings até inicializadores formais, para ajudar você a expressar sua
+    intenção de forma mais simples e fácil.
 
-    If there are multiple ways to say something, you should generally pick the
-    most concise one. This is not to say you should [code golf][] yourself into
-    cramming a whole program into a single line. The goal is code that is
-    *economical*, not *dense*.
+    Se houver várias maneiras de dizer algo, você geralmente deve escolher a mais
+    concisa. Isso não quer dizer que você deve fazer [code golf][] para enfiar um
+    programa inteiro em uma única linha. O objetivo é um código que seja
+    *econômico*, não *denso*.
 
 [code golf]: https://en.wikipedia.org/wiki/Code_golf
 
-## The guides
+## Os guias
 
-We split the guidelines into a few separate pages for easy digestion:
+Dividimos as diretrizes em algumas páginas separadas para fácil assimilação:
 
-  * **[Style Guide][]** &ndash; This defines the rules for laying out and
-    organizing code, or at least the parts
-    that [`dart format`][] doesn't handle for you. 
-    The style guide also specifies how identifiers are formatted:
-    `camelCase`, `using_underscores`, etc.
+  * **[Guia de Estilo][]** &ndash; Isso define as regras para organizar e
+    estruturar o código, ou pelo menos as partes que o
+    [`dart format`][] não lida para você. O guia de estilo também especifica
+    como os identificadores são formatados: `camelCase`, `using_underscores`, etc.
 
-  * **[Documentation Guide][]** &ndash; This tells you everything you need to
-    know about what goes inside comments. Both doc comments and regular,
-    run-of-the-mill code comments.
+  * **[Guia de Documentação][]** &ndash; Isso informa tudo o que você precisa
+    saber sobre o que vai dentro dos comentários. Tanto comentários de
+    documentação quanto comentários de código comuns.
 
-  * **[Usage Guide][]** &ndash; This teaches you how to make the best use of
-    language features to implement behavior. If it's in a statement or
-    expression, it's covered here.
+  * **[Guia de Uso][]** &ndash; Isso ensina como fazer o melhor uso dos recursos
+    da linguagem para implementar o comportamento. Se estiver em uma declaração
+    ou expressão, estará coberto aqui.
 
-  * **[Design Guide][]** &ndash; This is the softest guide, but the one
-    with the widest scope. It covers what we've learned about designing
-    consistent, usable APIs for libraries. If it's in a type signature or
-    declaration, this goes over it.
+  * **[Guia de Design][]** &ndash; Este é o guia mais flexível, mas o que tem o
+    escopo mais amplo. Ele cobre o que aprendemos sobre como projetar APIs
+    consistentes e utilizáveis para bibliotecas. Se estiver em uma assinatura
+    de tipo ou declaração, isso o aborda.
 
-For links to all the guidelines, see the
-[summary](#summary-of-all-rules).
+Para links para todas as diretrizes, consulte o [resumo](#summary-of-all-rules).
 
 [`dart format`]: /tools/dart-format
 [style guide]: /effective-dart/style
@@ -66,77 +67,75 @@ For links to all the guidelines, see the
 [usage guide]: /effective-dart/usage
 [design guide]: /effective-dart/design
 
-## How to read the guides
+## Como ler os guias
 
-Each guide is broken into a few sections. Sections contain a list of guidelines.
-Each guideline starts with one of these words:
+Cada guia é dividido em algumas seções. As seções contêm uma lista de diretrizes.
+Cada diretriz começa com uma destas palavras:
 
-* **DO** guidelines describe practices that should always be followed. There
-  will almost never be a valid reason to stray from them.
+* **FAÇA** as diretrizes descrevem práticas que devem ser sempre seguidas.
+  Quase nunca haverá uma razão válida para se desviar delas.
 
-* **DON'T** guidelines are the converse: things that are almost never a good
-  idea. Hopefully, we don't have as many of these as other languages do because
-  we have less historical baggage.
+* **NÃO FAÇA** diretrizes são o inverso: coisas que quase nunca são uma boa ideia.
+  Esperançosamente, não temos tantas quanto outras linguagens, porque temos
+  menos bagagem histórica.
 
-* **PREFER** guidelines are practices that you *should* follow. However, there
-  may be circumstances where it makes sense to do otherwise. Just make sure you
-  understand the full implications of ignoring the guideline when you do.
+* **PREFIRA** diretrizes são práticas que você *deve* seguir. No entanto, pode
+  haver circunstâncias em que faça sentido fazer o contrário. Apenas certifique-se
+  de entender todas as implicações de ignorar a diretriz quando o fizer.
 
-* **AVOID** guidelines are the dual to "prefer": stuff you shouldn't do but
-  where there may be good reasons to on rare occasions.
+* **EVITE** diretrizes são o oposto de "prefira": coisas que você não deve fazer,
+  mas onde pode haver boas razões para fazê-las em raras ocasiões.
 
-* **CONSIDER** guidelines are practices that you might or might not want to
-  follow, depending on circumstances, precedents, and your own preference.
+* **CONSIDERE** diretrizes são práticas que você pode ou não querer seguir,
+  dependendo das circunstâncias, precedentes e sua própria preferência.
 
-Some guidelines describe an **exception** where the rule does *not* apply. When
-listed, the exceptions may not be exhaustive—you might still need to use
-your judgement on other cases.
+Algumas diretrizes descrevem uma **exceção** onde a regra *não* se aplica. Quando
+listadas, as exceções podem não ser exaustivas — você ainda pode precisar usar
+seu julgamento em outros casos.
 
-This sounds like the police are going to beat down your door if you don't have
-your laces tied correctly. Things aren't that bad. Most of the guidelines here
-are common sense and we're all reasonable people. The goal, as always, is nice,
-readable and maintainable code.
+Isso soa como se a polícia fosse derrubar sua porta se você não tiver seus
+cadarços amarrados corretamente. As coisas não são tão ruins. A maioria das
+diretrizes aqui são de senso comum e somos todos pessoas razoáveis. O objetivo,
+como sempre, é um código agradável, legível e de fácil manutenção.
 
-The Dart analyzer provides a linter
-to help you write good, consistent code
-that follows these and other guidelines.
-If one or more [linter rules][lints] exist
-that can help you follow a guideline
-then the guideline links to those rules.
-The links use the following format:
+O analisador Dart fornece um linter para ajudar você a escrever código bom e
+consistente que segue estas e outras diretrizes. Se uma ou mais [regras do
+linter][lints] existirem que possam ajudar você a seguir uma diretriz, então a
+diretriz vincula a essas regras. Os links usam o seguinte formato:
 
 {% render 'linter-rule-mention.md', rules:'unnecessary_getters_setters' %}
 
-To learn how to use the linter,
-see [Enabling linter rules][]
-and the list of [linter rules][lints].
+Para aprender como usar o linter, veja
+[Habilitando regras do linter][] e a lista de [regras do linter][lints].
 
-[Enabling linter rules]: /tools/analysis#enabling-linter-rules
+[Habilitando regras do linter]: /tools/analysis#enabling-linter-rules
 [lints]: /tools/linter-rules
 
-## Glossary
+## Glossário
 
-To keep the guidelines brief, we use a few shorthand terms to refer to different
-Dart constructs.
+Para manter as diretrizes breves, usamos alguns termos abreviados para nos
+referirmos a diferentes construções Dart.
 
-* A **library member** is a top-level field, getter, setter, or function.
-  Basically, anything at the top level that isn't a type.
+* Um **membro de biblioteca** é um campo de nível superior, getter, setter ou
+  função. Basicamente, qualquer coisa no nível superior que não seja um tipo.
 
-* A **class member** is a constructor, field, getter, setter, function, or
-  operator declared inside a class. Class members can be instance or static,
-  abstract or concrete.
+* Um **membro de classe** é um construtor, campo, getter, setter, função ou
+  operador declarado dentro de uma classe. Os membros da classe podem ser de
+  instância ou estáticos, abstratos ou concretos.
 
-* A **member** is either a library member or a class member.
+* Um **membro** é um membro de biblioteca ou um membro de classe.
 
-* A **variable**, when used generally, refers to top-level variables,
-  parameters, and local variables. It doesn't include static or instance fields.
+* Uma **variável**, quando usada geralmente, refere-se a variáveis de nível
+  superior, parâmetros e variáveis locais. Não inclui campos estáticos ou de
+  instância.
 
-* A **type** is any named type declaration: a class, typedef, or enum.
+* Um **tipo** é qualquer declaração de tipo nomeada: uma classe, typedef ou enum.
 
-* A **property** is a top-level variable, getter (inside a class or at the top
-  level, instance or static), setter (same), or field (instance or static).
-  Roughly any "field-like" named construct.
+* Uma **propriedade** é uma variável de nível superior, getter (dentro de uma
+  classe ou no nível superior, instância ou estático), setter (o mesmo) ou campo
+  (instância ou estático). Aproximadamente qualquer construção nomeada "semelhante a
+  campo".
 
-## Summary of all rules
+## Resumo de todas as regras
 
 {% include './_toc.md' %}

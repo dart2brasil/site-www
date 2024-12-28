@@ -1,9 +1,10 @@
 ---
-title: "Effective Dart: Design"
-description: Design consistent, usable libraries.
+ia-translate: true
+title: "Dart Eficaz: Design"
+description: Crie bibliotecas consistentes e utilizáveis.
 prevpage:
   url: /effective-dart/usage
-  title: Usage
+  title: Uso
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt plaster="none"?>

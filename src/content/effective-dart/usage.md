@@ -1,46 +1,47 @@
 ---
-title: "Effective Dart: Usage"
-description: Guidelines for using language features to write maintainable code.
+ia-translate: true
+title: "Dart Eficaz: Uso"
+description: Diretrizes para usar recursos da linguagem para escrever código manutenível.
 nextpage:
   url: /effective-dart/design
   title: Design
 prevpage:
   url: /effective-dart/documentation
-  title: Documentation
+  title: Documentação
 ---
 <?code-excerpt plaster="none"?>
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt path-base="misc/lib/effective_dart"?>
 
-You can use these guidelines every day in the bodies of your Dart code. *Users*
-of your library may not be able to tell that you've internalized the ideas here,
-but *maintainers* of it sure will.
+Você pode usar estas diretrizes diariamente nos corpos do seu código Dart. *Usuários*
+da sua biblioteca podem não perceber que você internalizou as ideias aqui,
+mas os *mantenedores* dela certamente perceberão.
 
-## Libraries
+## Bibliotecas
 
-These guidelines help you compose your program out of multiple files in a
-consistent, maintainable way. To keep these guidelines brief, they use "import"
-to cover `import` and `export` directives. The guidelines apply equally to both. 
+Estas diretrizes ajudam você a compor seu programa a partir de múltiplos arquivos de forma
+consistente e manutenível. Para manter estas diretrizes breves, elas usam "import"
+para cobrir diretivas `import` e `export`. As diretrizes se aplicam igualmente a ambas.
 
-### DO use strings in `part of` directives
+### USE strings em diretivas `part of`
 
 {% render 'linter-rule-mention.md', rules:'use_string_in_part_of_directives' %}
 
-Many Dart developers avoid using `part` entirely. They find it easier to reason
-about their code when each library is a single file. If you do choose to use
-`part` to split part of a library out into another file, Dart requires the other
-file to in turn indicate which library it's a part of. 
+Muitos desenvolvedores Dart evitam usar `part` completamente. Eles acham mais fácil raciocinar
+sobre seu código quando cada biblioteca é um único arquivo. Se você escolher usar
+`part` para dividir parte de uma biblioteca em outro arquivo, o Dart exige que o outro
+arquivo, por sua vez, indique de qual biblioteca ele faz parte.
 
-Dart allows the `part of` directive to use the *name* of a library.
-Naming libraries is a legacy feature that is now [discouraged][]. 
-Library names can introduce ambiguity
-when determining which library a part belongs to.
+O Dart permite que a diretiva `part of` use o *nome* de uma biblioteca.
+Nomear bibliotecas é um recurso legado que agora é [desencorajado][].
+Nomes de bibliotecas podem introduzir ambiguidade
+ao determinar a qual biblioteca uma parte pertence.
 
-[discouraged]: /effective-dart/style#dont-explicitly-name-libraries
+[desencorajado]: /effective-dart/style#dont-explicitly-name-libraries
 
-The preferred syntax is to use a URI string that points
-directly to the library file. 
-If you have some library, `my_library.dart`, that contains:
+A sintaxe preferida é usar uma string URI que aponte
+diretamente para o arquivo da biblioteca.
+Se você tiver alguma biblioteca, `my_library.dart`, que contém:
 
 <?code-excerpt "my_library.dart" remove="ignore_for_file"?>
 ```dart title="my_library.dart"
@@ -49,52 +50,51 @@ library my_library;
 part 'some/other/file.dart';
 ```
 
-Then the part file should use the library file's URI string:
+Então o arquivo de parte deve usar a string URI do arquivo da biblioteca:
 
 <?code-excerpt "some/other/file.dart"?>
 ```dart tag=good
 part of '../../my_library.dart';
 ```
 
-Not the library name:
+Não o nome da biblioteca:
 
 <?code-excerpt "some/other/file_2.dart (part-of)"?>
 ```dart tag=bad
 part of my_library;
 ```
 
-### DON'T import libraries that are inside the `src` directory of another package
+### NÃO importe bibliotecas que estão dentro do diretório `src` de outro pacote
 
 {% render 'linter-rule-mention.md', rules:'implementation_imports' %}
 
-The `src` directory under `lib` [is specified][package guide] to contain
-libraries private to the package's own implementation. The way package
-maintainers version their package takes this convention into account. They are
-free to make sweeping changes to code under `src` without it being a breaking
-change to the package.
+O diretório `src` sob `lib` [é especificado][package guide] para conter
+bibliotecas privadas para a própria implementação do pacote. A forma como
+os mantenedores de pacotes versionam seu pacote leva em consideração essa convenção. Eles são
+livres para fazer mudanças abrangentes no código sob `src` sem que isso seja uma mudança
+que cause problemas no pacote.
 
 [package guide]: /tools/pub/package-layout
 
-That means that if you import some other package's private library, a minor,
-theoretically non-breaking point release of that package could break your code.
+Isso significa que, se você importar a biblioteca privada de outro pacote, uma versão
+secundária, teoricamente sem problemas, desse pacote pode quebrar seu código.
 
-
-### DON'T allow an import path to reach into or out of `lib`
+### NÃO permita que um caminho de importação alcance dentro ou fora de `lib`
 
 {% render 'linter-rule-mention.md', rules:'avoid_relative_lib_imports' %}
 
-A `package:` import lets you access
-a library inside a package's `lib` directory
-without having to worry about where the package is stored on your computer.
-For this to work, you cannot have imports that require the `lib`
-to be in some location on disk relative to other files.
-In other words, a relative import path in a file inside `lib`
-can't reach out and access a file outside of the `lib` directory,
-and a library outside of `lib` can't use a relative path
-to reach into the `lib` directory.
-Doing either leads to confusing errors and broken programs.
+Uma importação `package:` permite que você acesse
+uma biblioteca dentro do diretório `lib` de um pacote
+sem ter que se preocupar sobre onde o pacote está armazenado no seu computador.
+Para que isso funcione, você não pode ter importações que exigem que o `lib`
+esteja em algum local no disco relativo a outros arquivos.
+Em outras palavras, um caminho de importação relativo em um arquivo dentro de `lib`
+não pode alcançar e acessar um arquivo fora do diretório `lib`,
+e uma biblioteca fora de `lib` não pode usar um caminho relativo
+para alcançar o diretório `lib`.
+Fazer qualquer um deles leva a erros confusos e programas quebrados.
 
-For example, say your directory structure looks like this:
+Por exemplo, digamos que sua estrutura de diretórios se pareça com isto:
 
 ```plaintext
 my_package
@@ -104,40 +104,38 @@ my_package
    └─ api_test.dart
 ```
 
-And say `api_test.dart` imports `api.dart` in two ways:
+E digamos que `api_test.dart` importe `api.dart` de duas formas:
 
 ```dart title="api_test.dart" tag=bad
 import 'package:my_package/api.dart';
 import '../lib/api.dart';
 ```
 
-Dart thinks those are imports of two completely unrelated libraries.
-To avoid confusing Dart and yourself, follow these two rules:
+O Dart pensa que essas são importações de duas bibliotecas completamente não relacionadas.
+Para evitar confundir o Dart e a si mesmo, siga estas duas regras:
 
-* Don't use `/lib/` in import paths.
-* Don't use `../` to escape the `lib` directory.
+* Não use `/lib/` em caminhos de importação.
+* Não use `../` para escapar do diretório `lib`.
 
-Instead, when you need to reach into a package's `lib` directory
-(even from the same package's `test` directory
-or any other top-level directory),
-use a `package:` import.
+Em vez disso, quando você precisar alcançar o diretório `lib` de um pacote
+(mesmo do diretório `test` do mesmo pacote ou qualquer outro diretório de nível superior),
+use uma importação `package:`.
 
 ```dart title="api_test.dart" tag=good
 import 'package:my_package/api.dart';
 ```
 
-A package should never reach *out* of its `lib` directory and
-import libraries from other places in the package.
+Um pacote nunca deve alcançar *fora* de seu diretório `lib` e
+importar bibliotecas de outros lugares no pacote.
 
-
-### PREFER relative import paths
+### PREFIRA caminhos de importação relativos
 
 {% render 'linter-rule-mention.md', rules:'prefer_relative_imports' %}
 
-Whenever the previous rule doesn't come into play, follow this one.
-When an import does *not* reach across `lib`, prefer using relative imports.
-They're shorter.
-For example, say your directory structure looks like this:
+Sempre que a regra anterior não entrar em jogo, siga esta.
+Quando uma importação *não* alcança através de `lib`, prefira usar importações relativas.
+Elas são mais curtas.
+Por exemplo, digamos que sua estrutura de diretórios se pareça com isto:
 
 ```plaintext
 my_package
@@ -151,7 +149,7 @@ my_package
    └─ test_utils.dart
 ```
 
-Here is how the various libraries should import each other:
+Aqui está como as várias bibliotecas devem importar umas às outras:
 
 ```dart title="lib/api.dart" tag=good
 import 'src/stuff.dart';
@@ -164,24 +162,22 @@ import 'stuff.dart';
 ```
 
 ```dart title="test/api_test.dart" tag=good
-import 'package:my_package/api.dart'; // Don't reach into 'lib'.
+import 'package:my_package/api.dart'; // Não alcance 'lib'.
 
-import 'test_utils.dart'; // Relative within 'test' is fine.
+import 'test_utils.dart'; // Relativo dentro de 'test' está ok.
 ```
 
+## Nulo
 
-## Null
-
-
-### DON'T explicitly initialize variables to `null`
+### NÃO inicialize variáveis explicitamente com `null`
 
 {% render 'linter-rule-mention.md', rules:'avoid_init_to_null' %}
 
-If a variable has a non-nullable type, Dart reports a compile error if you try
-to use it before it has been definitely initialized. If the variable is
-nullable, then it is implicitly initialized to `null` for you. There's no
-concept of "uninitialized memory" in Dart and no need to explicitly initialize a
-variable to `null` to be "safe".
+Se uma variável tem um tipo não anulável, o Dart reporta um erro de compilação se você tentar
+usá-la antes que ela tenha sido definitivamente inicializada. Se a variável é
+anulável, então ela é implicitamente inicializada para `null` para você. Não há
+conceito de "memória não inicializada" em Dart e não há necessidade de inicializar explicitamente uma
+variável para `null` para ser "seguro".
 
 <?code-excerpt "usage_good.dart (no-null-init)"?>
 ```dart tag=good
@@ -213,13 +209,12 @@ Item? bestDeal(List<Item> cart) {
 }
 ```
 
-
-### DON'T use an explicit default value of `null`
+### NÃO use um valor padrão explícito de `null`
 
 {% render 'linter-rule-mention.md', rules:'avoid_init_to_null' %}
 
-If you make a nullable parameter optional but don't give it a default value, the
-language implicitly uses `null` as the default, so there's no need to write it.
+Se você torna um parâmetro anulável opcional, mas não dá a ele um valor padrão,
+a linguagem usa implicitamente `null` como padrão, então não há necessidade de escrevê-lo.
 
 <?code-excerpt "usage_good.dart (default-value-null)"?>
 ```dart tag=good
@@ -236,12 +231,12 @@ void error([String? message = null]) {
 ```
 
 <a id="prefer-using--to-convert-null-to-a-boolean-value"></a>
-### DON'T use `true` or `false` in equality operations
+### NÃO use `true` ou `false` em operações de igualdade
 
-Using the equality operator to evaluate a *non-nullable* boolean expression 
-against a boolean literal is redundant. 
-It's always simpler to eliminate the equality operator, 
-and use the unary negation operator `!` if necessary:
+Usar o operador de igualdade para avaliar uma expressão booleana *não anulável*
+contra um literal booleano é redundante.
+É sempre mais simples eliminar o operador de igualdade,
+e usar o operador de negação unária `!` se necessário:
 
 <?code-excerpt "usage_good.dart (non-null-boolean-expression)"?>
 ```dart tag=good
@@ -257,92 +252,91 @@ if (nonNullableBool == true) { ... }
 if (nonNullableBool == false) { ... }
 ```
 
-To evaluate a boolean expression that *is nullable*, you should use `??`
-or an explicit `!= null` check.
+Para avaliar uma expressão booleana que *é anulável*, você deve usar `??`
+ou uma verificação explícita `!= null`.
 
 <?code-excerpt "usage_good.dart (nullable-boolean-expression)"?>
 ```dart tag=good
-// If you want null to result in false:
+// Se você quiser que null resulte em false:
 if (nullableBool ?? false) { ... }
 
-// If you want null to result in false
-// and you want the variable to type promote:
+// Se você quiser que null resulte em false
+// e você quiser que a variável seja promovida por tipo:
 if (nullableBool != null && nullableBool) { ... }
 ```
 
 <?code-excerpt "usage_bad.dart (nullable-boolean-expression)"?>
 ```dart tag=bad
-// Static error if null:
+// Erro estático se null:
 if (nullableBool) { ... }
 
-// If you want null to be false:
+// Se você quiser que null seja false:
 if (nullableBool == true) { ... }
 ```
 
-`nullableBool == true` is a viable expression, 
-but shouldn't be used for several reasons:
+`nullableBool == true` é uma expressão viável,
+mas não deve ser usada por várias razões:
 
-* It doesn't indicate the code has anything to do with `null`.
+* Ela não indica que o código tem algo a ver com `null`.
 
-* Because it's not evidently `null` related, 
-  it can easily be mistaken for the non-nullable case,
-  where the equality operator is redundant and can be removed.
-  That's only true when the boolean expression on the left
-  has no chance of producing null, but not when it can.
+* Como não está evidentemente relacionado a `null`,
+  pode facilmente ser confundido com o caso não anulável,
+  onde o operador de igualdade é redundante e pode ser removido.
+  Isso só é verdade quando a expressão booleana à esquerda
+  não tem chance de produzir null, mas não quando pode.
 
-* The boolean logic is confusing. If `nullableBool` is null, 
-  then `nullableBool == true` means the condition evaluates to `false`.
+* A lógica booleana é confusa. Se `nullableBool` é null,
+  então `nullableBool == true` significa que a condição avalia para `false`.
 
-The `??` operator makes it clear that something to do with null is happening,
-so it won't be mistaken for a redundant operation. 
-The logic is much clearer too; 
-the result of the expression being `null` is the same as the boolean literal.
+O operador `??` deixa claro que algo relacionado a null está acontecendo,
+então não será confundido com uma operação redundante.
+A lógica também é muito mais clara;
+o resultado da expressão sendo `null` é o mesmo que o literal booleano.
 
-Using a null-aware operator such as `??` on a variable inside a condition
-doesn't promote the variable to a non-nullable type. 
-If you want the variable to be promoted inside the body of the `if` statement,
-it's better to use an explicit `!= null` check instead of `??`. 
+Usar um operador que entende null como `??` em uma variável dentro de uma condição
+não promove a variável para um tipo não anulável.
+Se você quiser que a variável seja promovida dentro do corpo da instrução `if`,
+é melhor usar uma verificação explícita `!= null` em vez de `??`.
 
-### AVOID `late` variables if you need to check whether they are initialized
+### EVITE variáveis `late` se você precisar verificar se elas foram inicializadas
 
-Dart offers no way to tell if a `late` variable
-has been initialized or assigned to.
-If you access it, it either immediately runs the initializer
-(if it has one) or throws an exception.
-Sometimes you have some state that's lazily initialized
-where `late` might be a good fit,
-but you also need to be able to *tell* if the initialization has happened yet.
+O Dart não oferece uma maneira de dizer se uma variável `late`
+foi inicializada ou atribuída.
+Se você acessá-la, ela executa imediatamente o inicializador
+(se tiver um) ou lança uma exceção.
+Às vezes, você tem algum estado que é inicializado tardiamente
+onde `late` pode ser uma boa opção,
+mas você também precisa ser capaz de *dizer* se a inicialização já aconteceu.
 
-Although you could detect initialization by storing the state in a `late` variable
-and having a separate boolean field
-that tracks whether the variable has been set,
-that's redundant because Dart *internally*
-maintains the initialized status of the `late` variable.
-Instead, it's usually clearer to make the variable non-`late` and nullable.
-Then you can see if the variable has been initialized
-by checking for `null`.
+Embora você possa detectar a inicialização armazenando o estado em uma variável `late`
+e tendo um campo booleano separado
+que rastreia se a variável foi definida,
+isso é redundante porque o Dart *internamente*
+mantém o status inicializado da variável `late`.
+Em vez disso, geralmente é mais claro tornar a variável não-`late` e anulável.
+Então você pode ver se a variável foi inicializada
+verificando se há `null`.
 
-Of course, if `null` is a valid initialized value for the variable,
-then it probably does make sense to have a separate boolean field.
+Claro, se `null` é um valor inicializado válido para a variável,
+então provavelmente faz sentido ter um campo booleano separado.
 
+### CONSIDERE promoção de tipo ou padrões de verificação de nulo para usar tipos anuláveis
 
-### CONSIDER type promotion or null-check patterns for using nullable types
+Verificar se uma variável anulável não é igual a `null` promove a variável
+para um tipo não anulável. Isso permite que você acesse membros na variável e a passe
+para funções que esperam um tipo não anulável.
 
-Checking that a nullable variable is not equal to `null` promotes the variable
-to a non-nullable type. That lets you access members on the variable and pass it
-to functions expecting a non-nullable type.
+A promoção de tipo é suportada, no entanto, apenas para variáveis locais, parâmetros e
+campos finais privados. Valores que estão abertos à manipulação
+[não podem ser promovidos por tipo][].
 
-Type promotion is only supported, however, for local variables, parameters, and
-private final fields. Values that are open to manipulation
-[can't be type promoted][].
+Declarar membros [privados][] e [finais][], como geralmente recomendamos, é muitas vezes
+o suficiente para contornar essas limitações. Mas, isso nem sempre é uma opção.
 
-Declaring members [private][] and [final][], as we generally recommend, is often
-enough to bypass these limitations. But, that's not always an option.
-
-One pattern to work around type promotion limitations is to use a
-[null-check pattern][]. This simultaneously confirms the member's value
-is not null, and binds that value to a new non-nullable variable of
-the same base type.
+Um padrão para contornar as limitações da promoção de tipo é usar um
+[padrão de verificação de nulo][]. Isso confirma simultaneamente que o valor do membro
+não é nulo, e vincula esse valor a uma nova variável não anulável do mesmo
+tipo base.
 
 <?code-excerpt "usage_good.dart (null-check-promo)"?>
 ```dart tag=good
@@ -354,17 +348,17 @@ class UploadException {
   @override
   String toString() {
     if (this.response case var response?) {
-      return 'Could not complete upload to ${response.url} '
-          '(error code ${response.errorCode}): ${response.reason}.';
+      return 'Não foi possível concluir o upload para ${response.url} '
+          '(código de erro ${response.errorCode}): ${response.reason}.';
     }
-    return 'Could not upload (no response).';
+    return 'Não foi possível fazer upload (sem resposta).';
   }
 }
 ```
 
-Another work around is to assign the field's value
-to a local variable. Null checks on that variable will promote,
-so you can safely treat it as non-nullable.
+Outra forma de contornar é atribuir o valor do campo
+a uma variável local. As verificações de nulo nessa variável serão promovidas,
+então você pode tratá-la com segurança como não anulável.
 
 <?code-excerpt "usage_good.dart (shadow-nullable-field)"?>
 ```dart tag=good
@@ -377,24 +371,23 @@ class UploadException {
   String toString() {
     final response = this.response;
     if (response != null) {
-      return 'Could not complete upload to ${response.url} '
-          '(error code ${response.errorCode}): ${response.reason}.';
+      return 'Não foi possível concluir o upload para ${response.url} '
+          '(código de erro ${response.errorCode}): ${response.reason}.';
     }
-    return 'Could not upload (no response).';
+    return 'Não foi possível fazer upload (sem resposta).';
   }
 }
 ```
 
-Be careful when using a local variable. If you need to write back to the field,
-make sure that you don't write back to the local variable instead. (Making the
-local variable [`final`][] can prevent such mistakes.) Also, if the field might
-change while the local is still in scope, then the local might have a stale
-value. 
+Tenha cuidado ao usar uma variável local. Se você precisar escrever de volta para o campo,
+certifique-se de não escrever de volta para a variável local. (Tornar a
+variável local [`final`][] pode evitar tais erros.) Além disso, se o campo pode
+mudar enquanto o local ainda está no escopo, então o local pode ter um valor obsoleto.
 
-Sometimes it's best to simply [use `!`][] on the field. 
-In some cases, though, using either a local variable or a null-check pattern 
-can be cleaner and safer than using `!` every time you need to treat the value
-as non-null:
+Às vezes, é melhor simplesmente [usar `!`][] no campo.
+Em alguns casos, no entanto, usar uma variável local ou um padrão de verificação de nulo
+pode ser mais limpo e seguro do que usar `!` toda vez que você precisa tratar o valor
+como não nulo:
 
 <?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
 ```dart tag=bad
@@ -406,11 +399,11 @@ class UploadException {
   @override
   String toString() {
     if (response != null) {
-      return 'Could not complete upload to ${response[!!!].url} '
-          '(error code ${response[!!!].errorCode}): ${response[!!!].reason}.';
+      return 'Não foi possível concluir o upload para ${response[!!!].url} '
+          '(código de erro ${response[!!!].errorCode}): ${response[!!!].reason}.';
     }
 
-    return 'Could not upload (no response).';
+    return 'Não foi possível fazer upload (sem resposta).';
   }
 }
 ```
@@ -424,80 +417,79 @@ class UploadException {
 
 ## Strings
 
-Here are some best practices to keep in mind when composing strings in Dart.
+Aqui estão algumas melhores práticas para ter em mente ao compor strings em Dart.
 
-### DO use adjacent strings to concatenate string literals
+### USE strings adjacentes para concatenar literais de string
 
 {% render 'linter-rule-mention.md', rules:'prefer_adjacent_string_concatenation' %}
 
-If you have two string literals—not values, but the actual quoted literal
-form—you do not need to use `+` to concatenate them. Just like in C and
-C++, simply placing them next to each other does it. This is a good way to make
-a single long string that doesn't fit on one line.
+Se você tem dois literais de string — não valores, mas a forma literal citada
+real — você não precisa usar `+` para concatená-los. Assim como em C e
+C++, simplesmente colocá-los um ao lado do outro faz isso. Esta é uma boa maneira de fazer
+uma única string longa que não cabe em uma linha.
 
 <?code-excerpt "usage_good.dart (adjacent-strings-literals)"?>
 ```dart tag=good
-raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
-    'parts are overrun by martians. Unclear which are which.');
+raiseAlarm('ERRO: Partes da nave espacial estão em chamas. Outras '
+    'partes estão invadidas por marcianos. Não está claro quais são quais.');
 ```
 
 <?code-excerpt "usage_bad.dart (adjacent-strings-literals)"?>
 ```dart tag=bad
-raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
-    'parts are overrun by martians. Unclear which are which.');
+raiseAlarm('ERRO: Partes da nave espacial estão em chamas. Outras ' +
+    'partes estão invadidas por marcianos. Não está claro quais são quais.');
 ```
 
-### PREFER using interpolation to compose strings and values
+### PREFIRA usar interpolação para compor strings e valores
 
 {% render 'linter-rule-mention.md', rules:'prefer_interpolation_to_compose_strings' %}
 
-If you're coming from other languages, you're used to using long chains of `+`
-to build a string out of literals and other values. That does work in Dart, but
-it's almost always cleaner and shorter to use interpolation:
+Se você está vindo de outras linguagens, você está acostumado a usar longas cadeias de `+`
+para construir uma string a partir de literais e outros valores. Isso funciona no Dart, mas
+é quase sempre mais limpo e curto usar interpolação:
 
 <?code-excerpt "usage_good.dart (string-interpolation)"?>
 ```dart tag=good
-'Hello, $name! You are ${year - birth} years old.';
+'Olá, $name! Você tem ${year - birth} anos de idade.';
 ```
 
 <?code-excerpt "usage_bad.dart (string-interpolation)"?>
 ```dart tag=bad
-'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
+'Olá, ' + name + '! Você tem ' + (year - birth).toString() + ' a...';
 ```
 
-Note that this guideline applies to combining *multiple* literals and values.
-It's fine to use `.toString()` when converting only a single object to a string.
+Observe que esta diretriz se aplica à combinação de *múltiplos* literais e valores.
+É bom usar `.toString()` ao converter apenas um único objeto em uma string.
 
-### AVOID using curly braces in interpolation when not needed
+### EVITE usar chaves na interpolação quando não necessário
 
 {% render 'linter-rule-mention.md', rules:'unnecessary_brace_in_string_interps' %}
 
-If you're interpolating a simple identifier not immediately followed by more
-alphanumeric text, the `{}` should be omitted.
+Se você está interpolando um identificador simples não seguido imediatamente por mais
+texto alfanumérico, o `{}` deve ser omitido.
 
 <?code-excerpt "usage_good.dart (string-interpolation-avoid-curly)"?>
 ```dart tag=good
-var greeting = 'Hi, $name! I love your ${decade}s costume.';
+var greeting = 'Olá, $name! Eu adoro sua fantasia dos ${decade}s.';
 ```
 
 <?code-excerpt "usage_bad.dart (string-interpolation-avoid-curly)"?>
 ```dart tag=bad
-var greeting = 'Hi, ${name}! I love your ${decade}s costume.';
+var greeting = 'Olá, ${name}! Eu adoro sua fantasia dos ${decade}s.';
 ```
 
-## Collections
+## Coleções
 
-Out of the box, Dart supports four collection types: lists, maps, queues, and sets.
-The following best practices apply to collections.
+Pronto para uso, o Dart suporta quatro tipos de coleção: listas, mapas, filas e conjuntos.
+As seguintes melhores práticas se aplicam às coleções.
 
-### DO use collection literals when possible
+### USE literais de coleção quando possível
 
 {% render 'linter-rule-mention.md', rules:'prefer_collection_literals' %}
 
-Dart has three core collection types: List, Map, and Set. The Map and Set
-classes have unnamed constructors like most classes do. But because these
-collections are used so frequently, Dart has nicer built-in syntax for creating
-them:
+O Dart tem três tipos de coleção principais: List, Map e Set. As classes Map e Set
+têm construtores não nomeados como a maioria das classes. Mas como essas
+coleções são usadas com tanta frequência, o Dart tem uma sintaxe integrada melhor para criá-las:
 
 <?code-excerpt "usage_good.dart (collection-literals)"?>
 ```dart tag=good
@@ -512,16 +504,15 @@ var addresses = Map<String, Address>();
 var counts = Set<int>();
 ```
 
-Note that this guideline doesn't apply to the *named* constructors for those
-classes. `List.from()`, `Map.fromIterable()`, and friends all have their uses.
-(The List class also has an unnamed constructor, but it is prohibited in null
-safe Dart.)
+Observe que esta diretriz não se aplica aos construtores *nomeados* para essas
+classes. `List.from()`, `Map.fromIterable()` e outros têm seus usos.
+(A classe List também tem um construtor não nomeado, mas é proibido no Dart com segurança nula.)
 
-Collection literals are particularly powerful in Dart
-because they give you access to the [spread operator][spread]
-for including the contents of other collections,
-and [`if` and `for`][control] for performing control flow while
-building the contents:
+Literais de coleção são particularmente poderosos no Dart
+porque eles dão a você acesso ao [operador spread][spread]
+para incluir o conteúdo de outras coleções,
+e [`if` e `for`][control] para executar fluxo de controle enquanto
+constrói o conteúdo:
 
 [spread]: /language/collections#spread-operators
 [control]: /language/collections#control-flow-operators
@@ -548,40 +539,38 @@ arguments.addAll(filePaths
     .map((path) => path.replaceAll('.dart', '.js')));
 ```
 
-
-### DON'T use `.length` to see if a collection is empty
+### NÃO use `.length` para ver se uma coleção está vazia
 
 {% render 'linter-rule-mention.md', rules:'prefer_is_empty, prefer_is_not_empty' %}
 
-The [Iterable][] contract does not require that a collection know its length or
-be able to provide it in constant time. Calling `.length` just to see if the
-collection contains *anything* can be painfully slow.
+O contrato [Iterable][] não requer que uma coleção saiba seu tamanho ou
+seja capaz de fornecê-lo em tempo constante. Chamar `.length` apenas para ver se a
+coleção contém *alguma coisa* pode ser muito lento.
 
 [iterable]: {{site.dart-api}}/dart-core/Iterable-class.html
 
-Instead, there are faster and more readable getters: `.isEmpty` and
-`.isNotEmpty`. Use the one that doesn't require you to negate the result.
+Em vez disso, existem getters mais rápidos e legíveis: `.isEmpty` e
+`.isNotEmpty`. Use aquele que não exige que você negue o resultado.
 
 <?code-excerpt "usage_good.dart (dont-use-length)"?>
 ```dart tag=good
-if (lunchBox.isEmpty) return 'so hungry...';
+if (lunchBox.isEmpty) return 'com muita fome...';
 if (words.isNotEmpty) return words.join(' ');
 ```
 
 <?code-excerpt "usage_bad.dart (dont-use-length)"?>
 ```dart tag=bad
-if (lunchBox.length == 0) return 'so hungry...';
+if (lunchBox.length == 0) return 'com muita fome...';
 if (!words.isEmpty) return words.join(' ');
 ```
 
-
-### AVOID using `Iterable.forEach()` with a function literal
+### EVITE usar `Iterable.forEach()` com um literal de função
 
 {% render 'linter-rule-mention.md', rules:'avoid_function_literals_in_foreach_calls' %}
 
-`forEach()` functions are widely used in JavaScript because the built in
-`for-in` loop doesn't do what you usually want. In Dart, if you want to iterate
-over a sequence, the idiomatic way to do that is using a loop.
+Funções `forEach()` são amplamente usadas em JavaScript porque o `for-in`
+interno não faz o que você geralmente quer. No Dart, se você quiser iterar
+sobre uma sequência, a forma idiomática de fazer isso é usando um loop.
 
 <?code-excerpt "usage_good.dart (avoid-for-each)"?>
 ```dart tag=good
@@ -597,21 +586,21 @@ people.forEach((person) {
 });
 ```
 
-Note that this guideline specifically says "function *literal*". If you want to
-invoke some *already existing* function on each element, `forEach()` is fine.
+Observe que esta diretriz diz especificamente "literal de função". Se você quiser
+invocar alguma função *já existente* em cada elemento, `forEach()` está ok.
 
 <?code-excerpt "usage_good.dart (forEach-over-func)"?>
 ```dart tag=good
 people.forEach(print);
 ```
 
-Also note that it's always OK to use `Map.forEach()`. Maps aren't iterable, so
-this guideline doesn't apply.
+Observe também que sempre está OK usar `Map.forEach()`. Mapas não são iteráveis, então
+esta diretriz não se aplica.
 
-### DON'T use `List.from()` unless you intend to change the type of the result
+### NÃO use `List.from()` a menos que você pretenda alterar o tipo do resultado
 
-Given an Iterable, there are two obvious ways to produce a new List that
-contains the same elements:
+Dado um Iterable, existem duas maneiras óbvias de produzir uma nova List que
+contém os mesmos elementos:
 
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-1)"?>
 ```dart
@@ -619,47 +608,45 @@ var copy1 = iterable.toList();
 var copy2 = List.from(iterable);
 ```
 
-The obvious difference is that the first one is shorter. The *important*
-difference is that the first one preserves the type argument of the original
-object:
+A diferença óbvia é que a primeira é mais curta. A diferença *importante*
+é que a primeira preserva o argumento de tipo do objeto original:
 
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-good)"?>
 ```dart tag=good
-// Creates a List<int>:
+// Cria uma List<int>:
 var iterable = [1, 2, 3];
 
-// Prints "List<int>":
+// Imprime "List<int>":
 print(iterable.toList().runtimeType);
 ```
 
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-bad)"?>
 ```dart tag=bad
-// Creates a List<int>:
+// Cria uma List<int>:
 var iterable = [1, 2, 3];
 
-// Prints "List<dynamic>":
+// Imprime "List<dynamic>":
 print(List.from(iterable).runtimeType);
 ```
 
-If you *want* to change the type, then calling `List.from()` is useful:
+Se você *quer* mudar o tipo, então chamar `List.from()` é útil:
 
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-3)"?>
 ```dart tag=good
 var numbers = [1, 2.3, 4]; // List<num>.
-numbers.removeAt(1); // Now it only contains integers.
+numbers.removeAt(1); // Agora ela contém apenas inteiros.
 var ints = List<int>.from(numbers);
 ```
 
-But if your goal is just to copy the iterable and preserve its original type, or
-you don't care about the type, then use `toList()`.
+Mas se seu objetivo é apenas copiar o iterável e preservar seu tipo original, ou
+você não se importa com o tipo, então use `toList()`.
 
-
-### DO use `whereType()` to filter a collection by type
+### USE `whereType()` para filtrar uma coleção por tipo
 
 {% render 'linter-rule-mention.md', rules:'prefer_iterable_whereType' %}
 
-Let's say you have a list containing a mixture of objects, and you want to get
-just the integers out of it. You could use `where()` like this:
+Digamos que você tenha uma lista contendo uma mistura de objetos e deseja obter
+apenas os inteiros dela. Você pode usar `where()` assim:
 
 <?code-excerpt "usage_bad.dart (where-type)"?>
 ```dart tag=bad
@@ -667,11 +654,11 @@ var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int);
 ```
 
-This is verbose, but, worse, it returns an iterable whose type probably isn't
-what you want. In the example here, it returns an `Iterable<Object>` even though
-you likely want an `Iterable<int>` since that's the type you're filtering it to.
+Isto é verboso, mas, pior, ele retorna um iterável cujo tipo provavelmente não é
+o que você quer. No exemplo aqui, ele retorna um `Iterable<Object>` mesmo que
+você provavelmente queira um `Iterable<int>` já que esse é o tipo para o qual você está filtrando.
 
-Sometimes you see code that "corrects" the above error by adding `cast()`:
+Às vezes, você vê código que "corrige" o erro acima adicionando `cast()`:
 
 <?code-excerpt "usage_bad.dart (where-type-2)"?>
 ```dart tag=bad
@@ -679,9 +666,9 @@ var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int).cast<int>();
 ```
 
-That's verbose and causes two wrappers to be created, with two layers of
-indirection and redundant runtime checking. Fortunately, the core library has
-the [`whereType()`][where-type] method for this exact use case:
+Isso é verboso e faz com que dois wrappers sejam criados, com duas camadas de
+indireção e verificação redundante em tempo de execução. Felizmente, a biblioteca principal tem
+o método [`whereType()`][where-type] para este caso de uso exato:
 
 [where-type]: {{site.dart-api}}/dart-core/Iterable/whereType.html
 
@@ -691,19 +678,18 @@ var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.whereType<int>();
 ```
 
-Using `whereType()` is concise, produces an [Iterable][] of the desired type,
-and has no unnecessary levels of wrapping.
+Usar `whereType()` é conciso, produz um [Iterable][] do tipo desejado,
+e não tem níveis desnecessários de envolvimento.
 
+### NÃO use `cast()` quando uma operação próxima já resolve
 
-### DON'T use `cast()` when a nearby operation will do
+Frequentemente, quando você está lidando com um iterável ou stream, você realiza várias
+transformações nele. No final, você quer produzir um objeto com um determinado
+argumento de tipo. Em vez de adicionar uma chamada a `cast()`, veja se uma das
+transformações existentes pode alterar o tipo.
 
-Often when you're dealing with an iterable or stream, you perform several
-transformations on it. At the end, you want to produce an object with a certain
-type argument. Instead of tacking on a call to `cast()`, see if one of the
-existing transformations can change the type.
-
-If you're already calling `toList()`, replace that with a call to
-[`List<T>.from()`][list-from] where `T` is the type of resulting list you want.
+Se você já está chamando `toList()`, substitua isso por uma chamada a
+[`List<T>.from()`][list-from] onde `T` é o tipo da lista resultante que você quer.
 
 [list-from]: {{site.dart-api}}/dart-core/List/List.from.html
 
@@ -719,10 +705,10 @@ var stuff = <dynamic>[1, 2];
 var ints = stuff.toList().cast<int>();
 ```
 
-If you are calling `map()`, give it an explicit type argument so that it
-produces an iterable of the desired type. Type inference often picks the correct
-type for you based on the function you pass to `map()`, but sometimes you need
-to be explicit.
+Se você está chamando `map()`, dê a ele um argumento de tipo explícito para que ele
+produza um iterável do tipo desejado. A inferência de tipo muitas vezes escolhe o tipo correto
+para você com base na função que você passa para `map()`, mas às vezes você precisa
+ser explícito.
 
 <?code-excerpt "usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 ```dart tag=good
@@ -736,31 +722,30 @@ var stuff = <dynamic>[1, 2];
 var reciprocals = stuff.map((n) => 1 / n).cast<double>();
 ```
 
+### EVITE usar `cast()`
 
-### AVOID using `cast()`
+Esta é a generalização mais suave da regra anterior. Às vezes, não há
+operação próxima que você possa usar para corrigir o tipo de algum objeto. Mesmo assim, quando
+possível, evite usar `cast()` para "alterar" o tipo de uma coleção.
 
-This is the softer generalization of the previous rule. Sometimes there is no
-nearby operation you can use to fix the type of some object. Even then, when
-possible avoid using `cast()` to "change" a collection's type.
+Prefira qualquer uma destas opções em vez disso:
 
-Prefer any of these options instead:
+*   **Crie com o tipo certo.** Altere o código onde a coleção é
+    criada pela primeira vez para que ela tenha o tipo certo.
 
-*   **Create it with the right type.** Change the code where the collection is
-    first created so that it has the right type.
+*   **Converta os elementos ao acessar.** Se você itera imediatamente sobre a
+    coleção, converta cada elemento dentro da iteração.
 
-*   **Cast the elements on access.** If you immediately iterate over the
-    collection, cast each element inside the iteration.
+*   **Converta rapidamente usando `List.from()`.** Se você eventualmente acessar a maioria
+    dos elementos da coleção, e você não precisa que o objeto seja apoiado
+    pelo objeto ativo original, converta-o usando `List.from()`.
 
-*   **Eagerly cast using `List.from()`.** If you'll eventually access most of
-    the elements in the collection, and you don't need the object to be backed
-    by the original live object, convert it using `List.from()`.
+    O método `cast()` retorna uma coleção preguiçosa que verifica o tipo do elemento
+    em *cada operação*. Se você realizar apenas algumas operações em apenas alguns
+    elementos, essa preguiça pode ser boa. Mas em muitos casos, a sobrecarga da
+    validação preguiçosa e do envolvimento supera os benefícios.
 
-    The `cast()` method returns a lazy collection that checks the element type
-    on *every operation*. If you perform only a few operations on only a few
-    elements, that laziness can be good. But in many cases, the overhead of lazy
-    validation and of wrapping outweighs the benefits.
-
-Here is an example of **creating it with the right type:**
+Aqui está um exemplo de **criar com o tipo certo**:
 
 <?code-excerpt "usage_good.dart (cast-at-create)"?>
 ```dart tag=good
@@ -780,12 +765,12 @@ List<int> singletonList(int value) {
 }
 ```
 
-Here is **casting each element on access:**
+Aqui está a **conversão de cada elemento ao acessar**:
 
 <?code-excerpt "usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
 ```dart tag=good
 void printEvens(List<Object> objects) {
-  // We happen to know the list only contains ints.
+  // Acontece que sabemos que a lista contém apenas ints.
   for (final n in objects) {
     if ([!(n as int)!].isEven) print(n);
   }
@@ -795,19 +780,19 @@ void printEvens(List<Object> objects) {
 <?code-excerpt "usage_bad.dart (cast-iterate)"?>
 ```dart tag=bad
 void printEvens(List<Object> objects) {
-  // We happen to know the list only contains ints.
+  // Acontece que sabemos que a lista contém apenas ints.
   for (final n in objects.cast<int>()) {
     if (n.isEven) print(n);
   }
 }
 ```
 
-Here is **casting eagerly using `List.from()`:**
+Aqui está a **conversão rapidamente usando `List.from()`**:
 
 <?code-excerpt "usage_good.dart (cast-from)"?>
 ```dart tag=good
 int median(List<Object> objects) {
-  // We happen to know the list only contains ints.
+  // Acontece que sabemos que a lista contém apenas ints.
   var ints = List<int>.from(objects);
   ints.sort();
   return ints[ints.length ~/ 2];
@@ -817,35 +802,33 @@ int median(List<Object> objects) {
 <?code-excerpt "usage_bad.dart (cast-from)"?>
 ```dart tag=bad
 int median(List<Object> objects) {
-  // We happen to know the list only contains ints.
+  // Acontece que sabemos que a lista contém apenas ints.
   var ints = objects.cast<int>();
   ints.sort();
   return ints[ints.length ~/ 2];
 }
 ```
 
-These alternatives don't always work, of course, and sometimes `cast()` is the
-right answer. But consider that method a little risky and undesirable—it
-can be slow and may fail at runtime if you aren't careful.
+Essas alternativas nem sempre funcionam, é claro, e às vezes `cast()` é a
+resposta certa. Mas considere esse método um pouco arriscado e indesejável — ele
+pode ser lento e pode falhar em tempo de execução se você não for cuidadoso.
 
+## Funções
 
-## Functions
+Em Dart, até mesmo funções são objetos. Aqui estão algumas melhores práticas
+envolvendo funções.
 
-In Dart, even functions are objects. Here are some best practices
-involving functions.
-
-
-### DO use a function declaration to bind a function to a name
+### USE uma declaração de função para vincular uma função a um nome
 
 {% render 'linter-rule-mention.md', rules:'prefer_function_declarations_over_variables' %}
 
-Modern languages have realized how useful local nested functions and closures
-are. It's common to have a function defined inside another one. In many cases,
-this function is used as a callback immediately and doesn't need a name. A
-function expression is great for that.
+Linguagens modernas perceberam o quão úteis são as funções e closures aninhadas locais.
+É comum ter uma função definida dentro de outra. Em muitos casos,
+esta função é usada como um callback imediatamente e não precisa de um nome.
+Uma expressão de função é ótima para isso.
 
-But, if you do need to give it a name, use a function declaration statement
-instead of binding a lambda to a variable.
+Mas, se você precisar dar um nome a ela, use uma instrução de declaração de função
+em vez de vincular uma lambda a uma variável.
 
 <?code-excerpt "usage_good.dart (func-decl)"?>
 ```dart tag=good
@@ -864,33 +847,32 @@ void main() {
   };
 }
 ```
-
-### DON'T create a lambda when a tear-off will do
+### NÃO crie um lambda quando um *tear-off* funcionar
 
 {% render 'linter-rule-mention.md', rules:'unnecessary_lambdas' %}
 
-When you refer to a function, method, or named constructor without parentheses,
-Dart creates a _tear-off_. This is a closure that takes the same
-parameters as the function and invokes the underlying function when you call it.
-If your code needs a closure that invokes a named function with the same
-parameters as the closure accepts, don't wrap the call in a lambda.
-Use a tear-off.
+Quando você se refere a uma função, método ou construtor nomeado sem parênteses,
+Dart cria um _tear-off_. Este é um *closure* que recebe os mesmos
+parâmetros que a função e invoca a função subjacente quando você a chama.
+Se seu código precisa de um *closure* que invoque uma função nomeada com os mesmos
+parâmetros que o *closure* aceita, não envolva a chamada em um lambda.
+Use um *tear-off*.
 
 <?code-excerpt "usage_good.dart (use-tear-off)"?>
 ```dart tag=good
 var charCodes = [68, 97, 114, 116];
 var buffer = StringBuffer();
 
-// Function:
+// Função:
 charCodes.forEach(print);
 
-// Method:
+// Método:
 charCodes.forEach(buffer.write);
 
-// Named constructor:
+// Construtor nomeado:
 var strings = charCodes.map(String.fromCharCode);
 
-// Unnamed constructor:
+// Construtor não nomeado:
 var buffers = charCodes.map(StringBuffer.new);
 ```
 
@@ -899,51 +881,49 @@ var buffers = charCodes.map(StringBuffer.new);
 var charCodes = [68, 97, 114, 116];
 var buffer = StringBuffer();
 
-// Function:
+// Função:
 charCodes.forEach((code) {
   print(code);
 });
 
-// Method:
+// Método:
 charCodes.forEach((code) {
   buffer.write(code);
 });
 
-// Named constructor:
+// Construtor nomeado:
 var strings = charCodes.map((code) => String.fromCharCode(code));
 
-// Unnamed constructor:
+// Construtor não nomeado:
 var buffers = charCodes.map((code) => StringBuffer(code));
 ```
 
+## Variáveis
 
-## Variables
+As seguintes práticas recomendadas descrevem como usar variáveis da melhor forma no Dart.
 
-The following best practices describe how to best use variables in Dart.
+### SIGA uma regra consistente para `var` e `final` em variáveis locais
 
-### DO follow a consistent rule for `var` and `final` on local variables
+A maioria das variáveis locais não devem ter anotações de tipo e devem ser declaradas
+usando apenas `var` ou `final`. Existem duas regras amplamente usadas para quando usar um
+ou outro:
 
-Most local variables shouldn't have type annotations and should be declared
-using just `var` or `final`. There are two rules in wide use for when to use one
-or the other:
+*   Use `final` para variáveis locais que não são reatribuídas e `var` para aquelas
+    que são.
 
-*   Use `final` for local variables that are not reassigned and `var` for those
-    that are.
+*   Use `var` para todas as variáveis locais, mesmo aquelas que não são reatribuídas. Nunca use
+    `final` para locais. (Usar `final` para campos e variáveis de nível superior ainda é
+    incentivado, é claro.)
 
-*   Use `var` for all local variables, even ones that aren't reassigned. Never use
-    `final` for locals. (Using `final` for fields and top-level variables is
-    still encouraged, of course.)
+Qualquer regra é aceitável, mas escolha *uma* e aplique-a de forma consistente em todo o
+seu código. Dessa forma, quando um leitor vê `var`, ele sabe se isso significa que
+a variável é atribuída posteriormente na função.
 
-Either rule is acceptable, but pick *one* and apply it consistently throughout
-your code. That way when a reader sees `var`, they know whether it means that
-the variable is assigned later in the function.
+### EVITE armazenar o que você pode calcular
 
-
-### AVOID storing what you can calculate
-
-When designing a class, you often want to expose multiple views into the same
-underlying state. Often you see code that calculates all of those views in the
-constructor and then stores them:
+Ao projetar uma classe, você geralmente deseja expor várias visões do mesmo
+estado. Frequentemente você vê código que calcula todas essas visões no
+construtor e as armazena:
 
 <?code-excerpt "usage_bad.dart (calc-vs-store1)"?>
 ```dart tag=bad
@@ -959,18 +939,18 @@ class Circle {
 }
 ```
 
-This code has two things wrong with it. First, it's likely wasting memory. The
-area and circumference, strictly speaking, are *caches*. They are stored
-calculations that we could recalculate from other data we already have. They are
-trading increased memory for reduced CPU usage. Do we know we have a performance
-problem that merits that trade-off?
+Este código tem duas coisas erradas. Primeiro, provavelmente está desperdiçando memória. A
+área e a circunferência, estritamente falando, são *caches*. São
+cálculos armazenados que poderíamos recalcular a partir de outros dados que já temos. Eles estão
+trocando o aumento de memória pela redução do uso da CPU. Sabemos que temos um problema de
+desempenho que justifica essa compensação?
 
-Worse, the code is *wrong*. The problem with caches is *invalidation*—how
-do you know when the cache is out of date and needs to be recalculated? Here, we
-never do, even though `radius` is mutable. You can assign a different value and
-the `area` and `circumference` will retain their previous, now incorrect values.
+Pior ainda, o código está *errado*. O problema com caches é a *invalidação*—como
+você sabe quando o cache está desatualizado e precisa ser recalculado? Aqui, nós
+nunca fazemos, mesmo que o `radius` seja mutável. Você pode atribuir um valor diferente e
+a `area` e a `circumference` manterão seus valores anteriores, agora incorretos.
 
-To correctly handle cache invalidation, we would need to do this:
+Para lidar corretamente com a invalidação de cache, precisaríamos fazer isso:
 
 <?code-excerpt "usage_bad.dart (calc-vs-store2)"?>
 ```dart tag=bad
@@ -999,8 +979,8 @@ class Circle {
 }
 ```
 
-That's an awful lot of code to write, maintain, debug, and read. Instead, your
-first implementation should be:
+Isso é muita coisa para escrever, manter, depurar e ler. Em vez disso, sua
+primeira implementação deve ser:
 
 <?code-excerpt "usage_good.dart (calc-vs-store)"?>
 ```dart tag=good
@@ -1014,34 +994,33 @@ class Circle {
 }
 ```
 
-This code is shorter, uses less memory, and is less error-prone. It stores the
-minimal amount of data needed to represent the circle. There are no fields to
-get out of sync because there is only a single source of truth.
+Este código é mais curto, usa menos memória e é menos propenso a erros. Ele armazena o
+valor mínimo de dados necessários para representar o círculo. Não há campos
+para ficar dessincronizados porque existe apenas uma única fonte da verdade.
 
-In some cases, you may need to cache the result of a slow calculation, but only
-do that after you know you have a performance problem, do it carefully, and
-leave a comment explaining the optimization.
+Em alguns casos, você pode precisar armazenar em cache o resultado de um cálculo lento, mas só
+faça isso depois de saber que tem um problema de desempenho, faça-o com cuidado e
+deixe um comentário explicando a otimização.
 
+## Membros
 
-## Members
+Em Dart, os objetos têm membros que podem ser funções (métodos) ou dados (variáveis
+de instância). As seguintes práticas recomendadas se aplicam aos membros de um objeto.
 
-In Dart, objects have members which can be functions (methods) or data (instance
-variables). The following best practices apply to an object's members.
-
-### DON'T wrap a field in a getter and setter unnecessarily
+### NÃO envolva um campo em um *getter* e *setter* desnecessariamente
 
 {% render 'linter-rule-mention.md', rules:'unnecessary_getters_setters' %}
 
-In Java and C#, it's common to hide all fields behind getters and setters (or
-properties in C#), even if the implementation just forwards to the field. That
-way, if you ever need to do more work in those members, you can without needing
-to touch the call sites. This is because calling a getter method is different
-than accessing a field in Java, and accessing a property isn't binary-compatible
-with accessing a raw field in C#.
+Em Java e C#, é comum ocultar todos os campos atrás de *getters* e *setters* (ou
+propriedades em C#), mesmo que a implementação apenas encaminhe para o campo. Dessa
+forma, se você precisar fazer mais trabalho nesses membros, poderá fazê-lo sem precisar
+tocar nos locais de chamada. Isso ocorre porque chamar um método *getter* é diferente
+de acessar um campo em Java, e acessar uma propriedade não é compatível
+binariamente com o acesso a um campo bruto em C#.
 
-Dart doesn't have this limitation. Fields and getters/setters are completely
-indistinguishable. You can expose a field in a class and later wrap it in a
-getter and setter without having to touch any code that uses that field.
+Dart não tem essa limitação. Campos e *getters/setters* são completamente
+indistinguíveis. Você pode expor um campo em uma classe e posteriormente envolvê-lo em um
+*getter* e *setter* sem ter que tocar em nenhum código que use esse campo.
 
 <?code-excerpt "usage_good.dart (dont-wrap-field)"?>
 ```dart tag=good
@@ -1061,11 +1040,10 @@ class Box {
 }
 ```
 
+### PREFIRA usar um campo `final` para tornar uma propriedade somente leitura
 
-### PREFER using a `final` field to make a read-only property
-
-If you have a field that outside code should be able to see but not assign to, a
-simple solution that works in many cases is to simply mark it `final`.
+Se você tem um campo que o código externo deve poder ver, mas não atribuir, uma
+solução simples que funciona em muitos casos é simplesmente marcá-lo como `final`.
 
 <?code-excerpt "usage_good.dart (final)"?>
 ```dart tag=good
@@ -1082,18 +1060,17 @@ class Box {
 }
 ```
 
-Of course, if you need to internally assign to the field outside of the
-constructor, you may need to do the "private field, public getter" pattern, but
-don't reach for that until you need to.
+Claro, se você precisar atribuir internamente ao campo fora do
+construtor, você pode precisar fazer o padrão "campo privado, *getter* público", mas
+não recorra a isso até precisar.
 
-
-### CONSIDER using `=>` for simple members
+### CONSIDERE usar `=>` para membros simples
 
 {% render 'linter-rule-mention.md', rules:'prefer_expression_function_bodies' %}
 
-In addition to using `=>` for function expressions, Dart also lets you define
-members with it. That style is a good fit for simple members that just calculate
-and return a value.
+Além de usar `=>` para expressões de função, Dart também permite que você defina
+membros com ele. Esse estilo é uma boa opção para membros simples que apenas calculam
+e retornam um valor.
 
 <?code-excerpt "usage_good.dart (use-arrow)"?>
 ```dart tag=good
@@ -1103,11 +1080,11 @@ String capitalize(String name) =>
     '${name[0].toUpperCase()}${name.substring(1)}';
 ```
 
-People *writing* code seem to love `=>`, but it's very easy to abuse it and end
-up with code that's hard to *read*. If your declaration is more than a couple of
-lines or contains deeply nested expressions—cascades and conditional
-operators are common offenders—do yourself and everyone who has to read
-your code a favor and use a block body and some statements.
+As pessoas que *escrevem* código parecem adorar `=>`, mas é muito fácil abusar dele e acabar
+com um código difícil de *ler*. Se sua declaração tiver mais de algumas
+linhas ou contiver expressões profundamente aninhadas—cascatas e operadores
+condicionais são infratores comuns—faça um favor a si mesmo e a todos que
+tiverem que ler seu código e use um corpo de bloco e algumas instruções.
 
 <?code-excerpt "usage_good.dart (arrow-long)"?>
 ```dart tag=good
@@ -1128,8 +1105,8 @@ Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
     : _opened[chest] = (Treasure(where)..addAll(chest.contents));
 ```
 
-You can also use `=>` on members that don't return a value. This is idiomatic
-when a setter is small and has a corresponding getter that uses `=>`.
+Você também pode usar `=>` em membros que não retornam um valor. Isso é idiomático
+quando um *setter* é pequeno e tem um *getter* correspondente que usa `=>`.
 
 <?code-excerpt "usage_good.dart (arrow-setter)"?>
 ```dart tag=good
@@ -1137,17 +1114,16 @@ num get x => center.x;
 set x(num value) => center = Point(value, center.y);
 ```
 
-
-### DON'T use `this.` except to redirect to a named constructor or to avoid shadowing {:#dont-use-this-when-not-needed-to-avoid-shadowing}
+### NÃO use `this.` exceto para redirecionar para um construtor nomeado ou para evitar sombreamento {:#dont-use-this-when-not-needed-to-avoid-shadowing}
 
 {% render 'linter-rule-mention.md', rules:'unnecessary_this' %}
 
-JavaScript requires an explicit `this.` to refer to members on the object whose
-method is currently being executed, but Dart—like C++, Java, and
-C#—doesn't have that limitation.
+JavaScript requer um `this.` explícito para se referir a membros no objeto cujo
+método está sendo executado no momento, mas Dart—como C++, Java e
+C#—não tem essa limitação.
 
-There are only two times you need to use `this.`. One is when a local variable
-with the same name shadows the member you want to access:
+Há apenas duas vezes em que você precisa usar `this.`. Uma é quando uma variável local
+com o mesmo nome sombreia o membro que você deseja acessar:
 
 <?code-excerpt "usage_bad.dart (this-dot)"?>
 ```dart tag=bad
@@ -1179,7 +1155,7 @@ class Box {
 }
 ```
 
-The other time to use `this.` is when redirecting to a named constructor:
+A outra vez para usar `this.` é ao redirecionar para um construtor nomeado:
 
 <?code-excerpt "usage_bad.dart (this-dot-constructor)"?>
 ```dart tag=bad
@@ -1190,7 +1166,7 @@ class ShadeOfGray {
 
   ShadeOfGray.black() : this(0);
 
-  // This won't parse or compile!
+  // Isso não será analisado ou compilado!
   // ShadeOfGray.alsoBlack() : black();
 }
 ```
@@ -1204,13 +1180,13 @@ class ShadeOfGray {
 
   ShadeOfGray.black() : this(0);
 
-  // But now it will!
+  // Mas agora vai!
   ShadeOfGray.alsoBlack() : this.black();
 }
 ```
 
-Note that constructor parameters never shadow fields in constructor initializer
-lists:
+Observe que os parâmetros do construtor nunca sombreiam os campos nas listas de
+inicializadores do construtor:
 
 <?code-excerpt "usage_good.dart (param-dont-shadow-field-ctr-init)"?>
 ```dart tag=good
@@ -1223,15 +1199,14 @@ class Box extends BaseBox {
 }
 ```
 
-This looks surprising, but works like you want. Fortunately, code like this is
-relatively rare thanks to initializing formals and super initializers.
+Isso parece surpreendente, mas funciona como você deseja. Felizmente, código como este é
+relativamente raro graças aos *initializing formals* e super inicializadores.
 
+### INICIALIZE os campos em sua declaração sempre que possível
 
-### DO initialize fields at their declaration when possible
-
-If a field doesn't depend on any constructor parameters, it can and should be
-initialized at its declaration. It takes less code and avoids duplication when
-the class has multiple constructors.
+Se um campo não depende de nenhum parâmetro do construtor, ele pode e deve ser
+inicializado em sua declaração. Isso requer menos código e evita duplicação
+quando a classe tem vários construtores.
 
 <?code-excerpt "usage_bad.dart (field-init-at-decl)"?>
 ```dart tag=bad
@@ -1257,23 +1232,22 @@ class ProfileMark {
 }
 ```
 
-Some fields can't be initialized at their declarations because they need to reference
-`this`—to use other fields or call methods, for example. However, if the
-field is marked `late`, then the initializer *can* access `this`.
+Alguns campos não podem ser inicializados em suas declarações porque precisam referenciar
+`this`—para usar outros campos ou chamar métodos, por exemplo. No entanto, se o
+campo estiver marcado como `late`, então o inicializador *pode* acessar `this`.
 
-Of course, if a field depends on constructor parameters, or is initialized
-differently by different constructors, then this guideline does not apply.
+Claro, se um campo depende de parâmetros do construtor ou é inicializado
+de forma diferente por diferentes construtores, então esta diretriz não se aplica.
 
+## Construtores
 
-## Constructors
+As seguintes práticas recomendadas se aplicam à declaração de construtores para uma classe.
 
-The following best practices apply to declaring constructors for a class.
-
-### DO use initializing formals when possible
+### USE *initializing formals* sempre que possível
 
 {% render 'linter-rule-mention.md', rules:'prefer_initializing_formals' %}
 
-Many fields are initialized directly from a constructor parameter, like:
+Muitos campos são inicializados diretamente a partir de um parâmetro de construtor, como:
 
 <?code-excerpt "usage_bad.dart (field-init-as-param)"?>
 ```dart tag=bad
@@ -1285,7 +1259,7 @@ class Point {
 }
 ```
 
-We've got to type `x` _four_ times here to define a field. We can do better:
+Temos que digitar `x` _quatro_ vezes aqui para definir um campo. Podemos fazer melhor:
 
 <?code-excerpt "usage_good.dart (field-init-as-param)"?>
 ```dart tag=good
@@ -1295,23 +1269,22 @@ class Point {
 }
 ```
 
-This `this.` syntax before a constructor parameter is called an "initializing
-formal". You can't always take advantage of it. Sometimes you want to have a
-named parameter whose name doesn't match the name of the field you are
-initializing. But when you *can* use initializing formals, you *should*.
+Esta sintaxe `this.` antes de um parâmetro de construtor é chamada de "inicializador
+formal". Você nem sempre pode aproveitá-la. Às vezes, você deseja ter um
+parâmetro nomeado cujo nome não corresponda ao nome do campo que você está
+inicializando. Mas quando você *pode* usar *initializing formals*, você *deve*.
 
+### NÃO use `late` quando uma lista de inicializadores de construtor funcionar
 
-### DON'T use `late` when a constructor initializer list will do
+O Dart exige que você inicialize campos não anuláveis antes que eles possam ser lidos.
+Como os campos podem ser lidos dentro do corpo do construtor,
+isso significa que você recebe um erro se não inicializar um
+campo não anulável antes que o corpo seja executado.
 
-Dart requires you to initialize non-nullable fields before they can be read.
-Since fields can be read inside the constructor body, 
-this means you get an error if you don't initialize a
-non-nullable field before the body runs.
-
-You can make this error go away by marking the field `late`. That turns the
-compile-time error into a *runtime* error if you access the field before it is
-initialized. That's what you need in some cases, but often the right fix is to
-initialize the field in the constructor initializer list:
+Você pode fazer esse erro desaparecer marcando o campo como `late`. Isso transforma o
+erro em tempo de compilação em um erro de *tempo de execução* se você acessar o campo antes
+de ser inicializado. É disso que você precisa em alguns casos, mas geralmente a correção
+certa é inicializar o campo na lista de inicializadores do construtor:
 
 <?code-excerpt "usage_good.dart (late-init-list)"?>
 ```dart tag=good
@@ -1334,19 +1307,17 @@ class Point {
 }
 ```
 
+A lista de inicializadores dá acesso aos parâmetros do construtor e permite que você
+inicialize os campos antes que eles possam ser lidos. Portanto, se for possível usar uma lista de inicializadores,
+isso é melhor do que tornar o campo `late` e perder alguma segurança estática e
+desempenho.
 
-The initializer list gives you access to constructor parameters and lets you
-initialize fields before they can be read. So, if it's possible to use an initializer list,
-that's better than making the field `late` and losing some static safety and
-performance.
-
-
-### DO use `;` instead of `{}` for empty constructor bodies
+### USE `;` em vez de `{}` para corpos de construtor vazios
 
 {% render 'linter-rule-mention.md', rules:'empty_constructor_bodies' %}
 
-In Dart, a constructor with an empty body can be terminated with just a
-semicolon. (In fact, it's required for const constructors.)
+Em Dart, um construtor com um corpo vazio pode ser terminado com apenas um
+ponto e vírgula. (Na verdade, é obrigatório para construtores const.)
 
 <?code-excerpt "usage_good.dart (semicolon-for-empty-body)"?>
 ```dart tag=good
@@ -1364,16 +1335,15 @@ class Point {
 }
 ```
 
-### DON'T use `new`
+### NÃO use `new`
 
 {% render 'linter-rule-mention.md', rules:'unnecessary_new' %}
 
-The `new` keyword is optional when calling a constructor.
-Its meaning is not clear because factory constructors mean a
-`new` invocation may not actually return a new object.
+A palavra-chave `new` é opcional ao chamar um construtor.
+Seu significado não é claro porque os construtores de fábrica significam que uma
+invocação `new` pode não retornar um novo objeto.
 
-The language still permits `new`, but consider
-it deprecated and avoid using it in your code.
+A linguagem ainda permite `new`, mas considere-o obsoleto e evite usá-lo em seu código.
 
 <?code-excerpt "usage_good.dart (no-new)"?>
 ```dart tag=good
@@ -1403,27 +1373,26 @@ Widget build(BuildContext context) {
 }
 ```
 
-
-### DON'T use `const` redundantly
+### NÃO use `const` de forma redundante
 
 {% render 'linter-rule-mention.md', rules:'unnecessary_const' %}
 
-In contexts where an expression *must* be constant, the `const` keyword is
-implicit, doesn't need to be written, and shouldn't. Those contexts are any
-expression inside:
+Em contextos onde uma expressão *deve* ser constante, a palavra-chave `const` é
+implícita, não precisa ser escrita e não deve. Esses contextos são qualquer
+expressão dentro de:
 
-* A const collection literal.
-* A const constructor call
-* A metadata annotation.
-* The initializer for a const variable declaration.
-* A switch case expression—the part right after `case` before the `:`, not
-  the body of the case.
+* Um literal de coleção const.
+* Uma chamada de construtor const.
+* Uma anotação de metadados.
+* O inicializador para uma declaração de variável const.
+* Uma expressão de caso *switch*—a parte logo após `case` antes de `:`, não
+  o corpo do caso.
 
-(Default values are not included in this list because future versions of Dart
-may support non-const default values.)
+(Os valores padrão não estão incluídos nesta lista porque as versões futuras do Dart
+podem suportar valores padrão não const.)
 
-Basically, any place where it would be an error to write `new` instead of
-`const`, Dart allows you to omit the `const`.
+Basicamente, em qualquer lugar onde seria um erro escrever `new` em vez de
+`const`, o Dart permite que você omita o `const`.
 
 <?code-excerpt "usage_good.dart (no-const)"?>
 ```dart tag=good
@@ -1443,75 +1412,71 @@ const primaryColors = [!const!] [
 ];
 ```
 
-## Error handling
+## Tratamento de erros
 
-Dart uses exceptions when an error occurs in your program. The following
-best practices apply to catching and throwing exceptions.
+Dart usa exceções quando ocorre um erro em seu programa. As seguintes
+práticas recomendadas se aplicam à captura e lançamento de exceções.
 
-### AVOID catches without `on` clauses
+### EVITE capturas sem cláusulas `on`
 
 {% render 'linter-rule-mention.md', rules:'avoid_catches_without_on_clauses' %}
 
-A catch clause with no `on` qualifier catches *anything* thrown by the code in
-the try block. [Pokémon exception handling][pokemon] is very likely not what you
-want. Does your code correctly handle [StackOverflowError][] or
-[OutOfMemoryError][]? If you incorrectly pass the wrong argument to a method in
-that try block do you want to have your debugger point you to the mistake or
-would you rather that helpful [ArgumentError][] get swallowed? Do you want any
-`assert()` statements inside that code to effectively vanish since you're
-catching the thrown [AssertionError][]s?
+Uma cláusula `catch` sem qualificador `on` captura *qualquer coisa* lançada pelo código
+no bloco `try`. O [tratamento de exceções Pokémon][pokemon] provavelmente não é o que você
+quer. Seu código lida corretamente com [StackOverflowError][] ou
+[OutOfMemoryError][]? Se você passar incorretamente o argumento errado para um método
+nesse bloco `try`, você deseja que seu depurador aponte para o erro ou
+você prefere que o útil [ArgumentError][] seja engolido? Você quer que alguma
+declaração `assert()` dentro desse código desapareça efetivamente, já que você está
+capturando os [AssertionError][]s lançados?
 
-The answer is probably "no", in which case you should filter the types you
-catch. In most cases, you should have an `on` clause that limits you to the
-kinds of runtime failures you are aware of and are correctly handling.
+A resposta provavelmente é "não", caso em que você deve filtrar os tipos que você
+captura. Na maioria dos casos, você deve ter uma cláusula `on` que limite você aos
+tipos de falhas de tempo de execução que você conhece e está lidando corretamente.
 
-In rare cases, you may wish to catch any runtime error. This is usually in
-framework or low-level code that tries to insulate arbitrary application code
-from causing problems. Even here, it is usually better to catch [Exception][]
-than to catch all types. Exception is the base class for all *runtime* errors
-and excludes errors that indicate *programmatic* bugs in the code.
+Em casos raros, você pode querer capturar qualquer erro de tempo de execução. Isso geralmente está em
+código de estrutura ou de baixo nível que tenta isolar o código do aplicativo arbitrário
+de causar problemas. Mesmo aqui, geralmente é melhor capturar [Exception][] do que
+capturar todos os tipos. `Exception` é a classe base para todos os erros de *tempo de
+execução* e exclui erros que indicam bugs *programáticos* no código.
 
+### NÃO descarte erros de capturas sem cláusulas `on`
 
-### DON'T discard errors from catches without `on` clauses
+Se você realmente sente que precisa capturar *tudo* o que pode ser lançado de uma
+região de código, *faça algo* com o que você capturar. Registre, exiba para o
+usuário ou relance, mas não descarte silenciosamente.
 
-If you really do feel you need to catch *everything* that can be thrown from a
-region of code, *do something* with what you catch. Log it, display it to the
-user or rethrow it, but do not silently discard it.
+### LANCE objetos que implementam `Error` apenas para erros programáticos
 
+A classe [Error][] é a classe base para erros *programáticos*. Quando um objeto
+desse tipo ou uma de suas subinterfaces, como [ArgumentError][], é lançado,
+significa que há um *bug* em seu código. Quando sua API deseja relatar a um chamador
+que está sendo usada incorretamente, lançar um `Error` envia esse sinal claramente.
 
-### DO throw objects that implement `Error` only for programmatic errors
+Por outro lado, se a exceção é algum tipo de falha de tempo de execução que não
+indica um bug no código, então lançar um `Error` é enganoso. Em vez disso, lance
+uma das classes `Exception` principais ou algum outro tipo.
 
-The [Error][] class is the base class for *programmatic* errors. When an object
-of that type or one of its subinterfaces like [ArgumentError][] is thrown, it
-means there is a *bug* in your code. When your API wants to report to a caller
-that it is being used incorrectly throwing an Error sends that signal clearly.
-
-Conversely, if the exception is some kind of runtime failure that doesn't
-indicate a bug in the code, then throwing an Error is misleading. Instead, throw
-one of the core Exception classes or some other type.
-
-
-### DON'T explicitly catch `Error` or types that implement it
+### NÃO capture explicitamente `Error` ou tipos que o implementam
 
 {% render 'linter-rule-mention.md', rules:'avoid_catching_errors' %}
 
-This follows from the above. Since an Error indicates a bug in your code, it
-should unwind the entire callstack, halt the program, and print a stack trace so
-you can locate and fix the bug.
+Isso segue do acima. Como um `Error` indica um bug em seu código, ele deve
+desenrolar toda a pilha de chamadas, interromper o programa e imprimir um rastreamento de pilha para
+que você possa localizar e corrigir o bug.
 
-Catching errors of these types breaks that process and masks the bug. Instead of
-*adding* error-handling code to deal with this exception after the fact, go back
-and fix the code that is causing it to be thrown in the first place.
+Capturar erros desses tipos quebra esse processo e mascara o bug. Em vez de
+*adicionar* código de tratamento de erros para lidar com essa exceção depois do fato, volte
+e corrija o código que está fazendo com que ele seja lançado em primeiro lugar.
 
-
-### DO use `rethrow` to rethrow a caught exception
+### USE `rethrow` para relançar uma exceção capturada
 
 {% render 'linter-rule-mention.md', rules:'use_rethrow_when_possible' %}
 
-If you decide to rethrow an exception, prefer using the `rethrow` statement
-instead of throwing the same exception object using `throw`.
-`rethrow` preserves the original stack trace of the exception. `throw` on the
-other hand resets the stack trace to the last thrown position.
+Se você decidir relançar uma exceção, prefira usar a instrução `rethrow`
+em vez de lançar o mesmo objeto de exceção usando `throw`. `rethrow`
+preserva o rastreamento de pilha original da exceção. `throw`, por outro
+lado, redefine o rastreamento de pilha para a última posição lançada.
 
 <?code-excerpt "usage_bad.dart (rethrow)"?>
 ```dart tag=bad
@@ -1533,17 +1498,16 @@ try {
 }
 ```
 
+## Assincronia
 
-## Asynchrony
+Dart tem vários recursos de linguagem para suportar programação assíncrona.
+As seguintes práticas recomendadas se aplicam à codificação assíncrona.
 
-Dart has several language features to support asynchronous programming.
-The following best practices apply to asynchronous coding.
+### PREFIRA `async/await` em vez de usar *futures* brutos
 
-### PREFER async/await over using raw futures
-
-Asynchronous code is notoriously hard to read and debug, even when using a nice
-abstraction like futures. The `async`/`await` syntax improves readability and
-lets you use all of the Dart control flow structures within your async code.
+O código assíncrono é notoriamente difícil de ler e depurar, mesmo ao usar uma boa
+abstração como *futures*. A sintaxe `async`/`await` melhora a legibilidade e
+permite que você use todas as estruturas de fluxo de controle do Dart em seu código assíncrono.
 
 <?code-excerpt "usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
 ```dart tag=good
@@ -1577,11 +1541,11 @@ Future<int> countActivePlayers(String teamName) {
 }
 ```
 
-### DON'T use `async` when it has no useful effect
+### NÃO use `async` quando não tem efeito útil
 
-It's easy to get in the habit of using `async` on any function that does
-anything related to asynchrony. But in some cases, it's extraneous. If you can
-omit the `async` without changing the behavior of the function, do so.
+É fácil criar o hábito de usar `async` em qualquer função que faça
+algo relacionado à assincronia. Mas, em alguns casos, é estranho. Se você pode
+omitir o `async` sem alterar o comportamento da função, faça-o.
 
 <?code-excerpt "usage_good.dart (unnecessary-async)"?>
 ```dart tag=good
@@ -1597,15 +1561,15 @@ Future<int> fastestBranch(Future<int> left, Future<int> right) async {
 }
 ```
 
-Cases where `async` *is* useful include:
+Casos em que `async` *é* útil incluem:
 
-* You are using `await`. (This is the obvious one.)
+* Você está usando `await`. (Este é o óbvio.)
 
-* You are returning an error asynchronously. `async` and then `throw` is shorter
-  than `return Future.error(...)`.
+* Você está retornando um erro de forma assíncrona. `async` e então `throw` é mais curto
+  do que `return Future.error(...)`.
 
-* You are returning a value and you want it implicitly wrapped in a future.
-  `async` is shorter than `Future.value(...)`.
+* Você está retornando um valor e deseja que ele seja implicitamente envolvido em um *future*.
+  `async` é mais curto que `Future.value(...)`.
 
 <?code-excerpt "usage_good.dart (async)"?>
 ```dart tag=good
@@ -1620,17 +1584,16 @@ Future<void> asyncError() async {
 Future<String> asyncValue() async => 'value';
 ```
 
-### CONSIDER using higher-order methods to transform a stream
+### CONSIDERE usar métodos de ordem superior para transformar um *stream*
 
-This parallels the above suggestion on iterables. Streams support many of the
-same methods and also handle things like transmitting errors, closing, etc.
-correctly.
+Isso é semelhante à sugestão acima sobre iteráveis. Os *streams* suportam muitos dos
+mesmos métodos e também lidam corretamente com coisas como transmissão de erros, fechamento, etc.
 
-### AVOID using Completer directly
+### EVITE usar `Completer` diretamente
 
-Many people new to asynchronous programming want to write code that produces a
-future. The constructors in Future don't seem to fit their need so they
-eventually find the Completer class and use that.
+Muitas pessoas novas na programação assíncrona querem escrever código que produza um
+*future*. Os construtores em `Future` não parecem atender à sua necessidade, então eles
+eventualmente encontram a classe `Completer` e a usam.
 
 <?code-excerpt "usage_bad.dart (avoid-completer)"?>
 ```dart tag=bad
@@ -1645,10 +1608,10 @@ Future<bool> fileContainsBear(String path) {
 }
 ```
 
-Completer is needed for two kinds of low-level code: new asynchronous
-primitives, and interfacing with asynchronous code that doesn't use futures.
-Most other code should use async/await or [`Future.then()`][then], because
-they're clearer and make error handling easier.
+`Completer` é necessário para dois tipos de código de baixo nível: novas
+primitivas assíncronas e interface com código assíncrono que não usa *futures*.
+A maioria dos outros códigos deve usar `async/await` ou [`Future.then()`][then],
+porque eles são mais claros e facilitam o tratamento de erros.
 
 [then]: {{site.dart-api}}/dart-async/Future/then.html
 
@@ -1669,20 +1632,19 @@ Future<bool> fileContainsBear(String path) async {
 }
 ```
 
+### TESTE por `Future<T>` ao desambiguar um `FutureOr<T>` cujo argumento de tipo pode ser `Object`
 
-### DO test for `Future<T>` when disambiguating a `FutureOr<T>` whose type argument could be `Object`
+Antes de você poder fazer qualquer coisa útil com um `FutureOr<T>`, você normalmente precisa fazer
+uma verificação `is` para ver se você tem um `Future<T>` ou um `T` simples. Se o tipo
+de argumento é algum tipo específico como em `FutureOr<int>`, não importa qual
+teste você use, `is int` ou `is Future<int>`. Qualquer um funciona porque esses dois tipos
+são disjuntos.
 
-Before you can do anything useful with a `FutureOr<T>`, you typically need to do
-an `is` check to see if you have a `Future<T>` or a bare `T`. If the type
-argument is some specific type as in `FutureOr<int>`, it doesn't matter which
-test you use, `is int` or `is Future<int>`. Either works because those two types
-are disjoint.
-
-However, if the value type is `Object` or a type parameter that could possibly
-be instantiated with `Object`, then the two branches overlap. `Future<Object>`
-itself implements `Object`, so `is Object` or `is T` where `T` is some type
-parameter that could be instantiated with `Object` returns true even when the
-object is a future. Instead, explicitly test for the `Future` case:
+No entanto, se o tipo de valor for `Object` ou um parâmetro de tipo que possivelmente
+poderia ser instanciado com `Object`, então os dois ramos se sobrepõem. `Future<Object>`
+próprio implementa `Object`, então `is Object` ou `is T` onde `T` é algum tipo
+de parâmetro que poderia ser instanciado com `Object` retorna verdadeiro mesmo quando o
+objeto é um *future*. Em vez disso, teste explicitamente o caso `Future`:
 
 <?code-excerpt "usage_good.dart (test-future-or)"?>
 ```dart tag=good
@@ -1712,8 +1674,8 @@ Future<T> logValue<T>(FutureOr<T> value) async {
 }
 ```
 
-In the bad example, if you pass it a `Future<Object>`, it incorrectly treats it
-like a bare, synchronous value.
+No exemplo incorreto, se você passar um `Future<Object>`, ele o trata incorretamente
+como um valor síncrono e simples.
 
 [pokemon]: https://blog.codinghorror.com/new-programming-jargon/
 [Error]: {{site.dart-api}}/dart-core/Error-class.html
