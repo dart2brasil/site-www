@@ -1,7 +1,8 @@
 ---
-title: Deprecated tour of the Dart language
-description: The previous destination of the Dart language tour.
-short-title: Language tour
+ia-translate: true
+title: Tour Depreciado da Linguagem Dart
+description: O destino anterior do tour da linguagem Dart.
+short-title: Tour da Linguagem
 js: [{url: '/assets/js/language-tour-redirector.js'}]
 sitemap: false
 canonical: https://dart.dev/language
@@ -11,501 +12,501 @@ show_breadcrumbs: false
 ---
 
 :::warning
-The Dart language tour's content has been split across
-several different pages in the left side navigation under **Language**.
-To begin your journey learning Dart,
-check out [Introduction to the Dart language](/language).
+O conteúdo do tour da linguagem Dart foi dividido em
+várias páginas diferentes na navegação lateral esquerda em **Linguagem**.
+Para começar sua jornada aprendendo Dart,
+confira [Introdução à linguagem Dart](/language).
 :::
 
 {% comment %}
-  !! NOTE:
+  !! NOTA:
   
-  All new language content should go within the `/language` directory.
-  This file exists temporarily for legacy reasons so
-  links to the old language tour do not break.
+  Todo o novo conteúdo da linguagem deve ir dentro do diretório `/language`.
+  Este arquivo existe temporariamente por razões legadas para que
+  os links para o antigo tour da linguagem não quebrem.
   
-  In the short term, if you move content that is referenced here,
-  update the text and link in this file, as well as
-  the redirection map in `src/assets/js/language-tour-redirector.js`.
+  No curto prazo, se você mover o conteúdo que é referenciado aqui,
+  atualize o texto e o link neste arquivo, assim como
+  o mapa de redirecionamento em `src/assets/js/language-tour-redirector.js`.
 {% endcomment -%}
 
-## A basic Dart program
+## Um programa básico em Dart
 
-This content has moved to [Introduction to the Dart language](/language).
+Este conteúdo foi movido para [Introdução à linguagem Dart](/language).
 
-## Important concepts
+## Conceitos importantes
 
-This content has moved to [Introduction to the Dart language](/language).
+Este conteúdo foi movido para [Introdução à linguagem Dart](/language).
 
-## Keywords
+## Palavras-chave
 
-This content has moved to [Keywords](/language/keywords).
+Este conteúdo foi movido para [Palavras-chave](/language/keywords).
 
-## Variables
+## Variáveis
 
-This content has moved to [Variables](/language/variables).
-
-
-### Default value
-
-This content has moved to [Variables](/language/variables#default-value).
-
-### Late variables
-
-This content has moved to [Variables](/language/variables#late-variables).
-
-### Final and const
+Este conteúdo foi movido para [Variáveis](/language/variables).
 
 
-This content has moved to [Variables](/language/variables#final-and-const).
+### Valor padrão
 
-## Built-in types
+Este conteúdo foi movido para [Variáveis](/language/variables#default-value).
 
-This content has moved to [Built-in types](/language/built-in-types).
+### Variáveis Late
 
-### Numbers
+Este conteúdo foi movido para [Variáveis](/language/variables#late-variables).
 
-This content has moved to [Built-in types](/language/built-in-types#numbers).
+### Final e const
+
+
+Este conteúdo foi movido para [Variáveis](/language/variables#final-and-const).
+
+## Tipos embutidos
+
+Este conteúdo foi movido para [Tipos embutidos](/language/built-in-types).
+
+### Números
+
+Este conteúdo foi movido para [Tipos embutidos](/language/built-in-types#numbers).
 
 ### Strings
 
-This content has moved to [Built-in types](/language/built-in-types#strings).
+Este conteúdo foi movido para [Tipos embutidos](/language/built-in-types#strings).
 
-### Booleans
+### Booleanos
 
-This content has moved to [Built-in types](/language/built-in-types#booleans).
+Este conteúdo foi movido para [Tipos embutidos](/language/built-in-types#booleans).
 
-### Lists
+### Listas
 
-This content has moved to [Collections](/language/collections#lists).
+Este conteúdo foi movido para [Coleções](/language/collections#lists).
 
 <a id="trailing-comma"></a>
-#### Trailing commas
+#### Vírgulas à direita
 
-This content has moved to [Collections](/language/collections#trailing-comma).
+Este conteúdo foi movido para [Coleções](/language/collections#trailing-comma).
 
-#### Spread operator
+#### Operador spread
 
-This content has moved to [Collections](/language/collections#spread-operators).
+Este conteúdo foi movido para [Coleções](/language/collections#spread-operators).
 
-#### Collection operators
+#### Operadores de coleção
 
-This content has moves to [Collections](/language/collections#control-flow-operators).
+Este conteúdo foi movido para [Coleções](/language/collections#control-flow-operators).
 
 ### Sets
 
-This content has moved to [Collections](/language/collections#sets).
+Este conteúdo foi movido para [Coleções](/language/collections#sets).
 
 ### Maps
 
-This content has moved to [Collections](/language/collections#maps).
+Este conteúdo foi movido para [Coleções](/language/collections#maps).
 
 <a id="characters"></a>
-### Runes and grapheme clusters
+### Runes e clusters de grafemas
 
-This content has moved to [Built-in types](/language/built-in-types#runes-and-grapheme-clusters).
+Este conteúdo foi movido para [Tipos embutidos](/language/built-in-types#runes-and-grapheme-clusters).
 
-### Symbols
+### Símbolos
 
-This content has moved to [Built-in types](/language/built-in-types#symbols).
+Este conteúdo foi movido para [Tipos embutidos](/language/built-in-types#symbols).
 
-## Functions
+## Funções
 
-This content has moved to [Functions](/language/functions).
+Este conteúdo foi movido para [Funções](/language/functions).
 
-### Parameters
+### Parâmetros
 
-This content has moved to [Functions](/language/functions#parameters).
+Este conteúdo foi movido para [Funções](/language/functions#parameters).
 
-#### Named parameters
+#### Parâmetros nomeados
 
-This content has moved to [Functions](/language/functions#named-parameters).
+Este conteúdo foi movido para [Funções](/language/functions#named-parameters).
 
-#### Default parameters
+#### Parâmetros padrão
 
-This content has moved to [Functions](/language/functions#default-parameters).
+Este conteúdo foi movido para [Funções](/language/functions#default-parameters).
 
-#### Optional positional parameters
+#### Parâmetros posicionais opcionais
 
-This content has moved to [Functions](/language/functions#optional-positional-parameters).
+Este conteúdo foi movido para [Funções](/language/functions#optional-positional-parameters).
 
-### The main() function
+### A função main()
 
-This content has moved to [Functions](/language/functions#the-main-function).
+Este conteúdo foi movido para [Funções](/language/functions#the-main-function).
 
-### Functions as first-class objects
+### Funções como objetos de primeira classe
 
-This content has moved to [Functions](/language/functions#functions-as-first-class-objects).
+Este conteúdo foi movido para [Funções](/language/functions#functions-as-first-class-objects).
 
-### Anonymous functions
+### Funções anônimas
 
-This content has moved to [Functions](/language/functions#anonymous-functions).
+Este conteúdo foi movido para [Funções](/language/functions#anonymous-functions).
 
-### Lexical scope
+### Escopo léxico
 
-This content has moved to [Functions](/language/functions#lexical-scope).
+Este conteúdo foi movido para [Funções](/language/functions#lexical-scope).
 
-### Lexical closures
+### Closures léxicos
 
-This content has moved to [Functions](/language/functions#lexical-closures).
+Este conteúdo foi movido para [Funções](/language/functions#lexical-closures).
 
-### Testing functions for equality
+### Testando funções para igualdade
 
-This content has moved to [Functions](/language/functions#testing-functions-for-equality).
+Este conteúdo foi movido para [Funções](/language/functions#testing-functions-for-equality).
 
-### Return values
+### Valores de retorno
 
-This content has moved to [Functions](/language/functions#return-values).
+Este conteúdo foi movido para [Funções](/language/functions#return-values).
 
-## Operators
+## Operadores
 
-This content has moved to [Operators](/language/operators).
+Este conteúdo foi movido para [Operadores](/language/operators).
 
-### Arithmetic operators
+### Operadores aritméticos
 
-This content has moved to [Operators](/language/operators#arithmetic-operators).
+Este conteúdo foi movido para [Operadores](/language/operators#arithmetic-operators).
 
-### Equality and relational operators
+### Operadores de igualdade e relacionais
 
-This content has moved to [Operators](/language/operators#equality-and-relational-operators).
+Este conteúdo foi movido para [Operadores](/language/operators#equality-and-relational-operators).
 
-### Type test operators
+### Operadores de teste de tipo
 
-This content has moved to [Operators](/language/operators#type-test-operators).
+Este conteúdo foi movido para [Operadores](/language/operators#type-test-operators).
 
-### Assignment operators
+### Operadores de atribuição
 
-This content has moved to [Operators](/language/operators#assignment-operators).
+Este conteúdo foi movido para [Operadores](/language/operators#assignment-operators).
 
-### Logical operators
+### Operadores lógicos
 
-This content has moved to [Operators](/language/operators#logical-operators).
+Este conteúdo foi movido para [Operadores](/language/operators#logical-operators).
 
-### Bitwise and shift operators
+### Operadores bit a bit e de deslocamento
 
-This content has moved to [Operators](/language/operators#bitwise-and-shift-operators).
+Este conteúdo foi movido para [Operadores](/language/operators#bitwise-and-shift-operators).
 
-### Conditional expressions
+### Expressões condicionais
 
-This content has moved to [Operators](/language/operators#conditional-expressions).
+Este conteúdo foi movido para [Operadores](/language/operators#conditional-expressions).
 
 <a id="cascade"></a>
-### Cascade notation
+### Notação em cascata
 
-This content has moved to [Operators](/language/operators#cascade-notation).
+Este conteúdo foi movido para [Operadores](/language/operators#cascade-notation).
 
-### Other operators
+### Outros operadores
 
-This content has moved to [Operators](/language/operators#other-operators).
+Este conteúdo foi movido para [Operadores](/language/operators#other-operators).
 
-## Control flow statements
+## Instruções de fluxo de controle
 
-This content has moved to [Control flow](/language/loops).
+Este conteúdo foi movido para [Fluxo de controle](/language/loops).
 
-### If and else
+### If e else
 
-This content has moved to [Control flow](/language/branches#if).
+Este conteúdo foi movido para [Fluxo de controle](/language/branches#if).
 
-### For loops
+### Loops For
 
-This content has moved to [Control flow](/language/loops#for-loops).
+Este conteúdo foi movido para [Fluxo de controle](/language/loops#for-loops).
 
-### While and do-while
+### While e do-while
 
-This content has moved to [Control flow](/language/loops#while-and-do-while).
+Este conteúdo foi movido para [Fluxo de controle](/language/loops#while-and-do-while).
 
-### Break and continue
+### Break e continue
 
-This content has moved to [Control flow](/language/loops#break-and-continue).
+Este conteúdo foi movido para [Fluxo de controle](/language/loops#break-and-continue).
 
-### Switch and case
+### Switch e case
 
-This content has moved to [Control flow](/language/branches#switch).
+Este conteúdo foi movido para [Fluxo de controle](/language/branches#switch).
 
 ### Assert
 
-This content has moved to [Control flow](/language/error-handling#assert).
+Este conteúdo foi movido para [Fluxo de controle](/language/error-handling#assert).
 
-## Exceptions
+## Exceções
 
-This content has moved to [Error handling](/language/error-handling#exceptions).
+Este conteúdo foi movido para [Tratamento de erros](/language/error-handling#exceptions).
 
 ### Throw
 
-This content has moved to [Error handling](/language/error-handling#throw).
+Este conteúdo foi movido para [Tratamento de erros](/language/error-handling#throw).
 
 ### Catch
 
-This content has moved to [Error handling](/language/error-handling#catch).
+Este conteúdo foi movido para [Tratamento de erros](/language/error-handling#catch).
 
 ### Finally
 
-This content has moved to [Error handling](/language/error-handling#finally).
+Este conteúdo foi movido para [Tratamento de erros](/language/error-handling#finally).
 
 ## Classes
 
-This content has moved to [Classes](/language/classes).
+Este conteúdo foi movido para [Classes](/language/classes).
 
 
-### Using class members
+### Usando membros de classe
 
-This content has moved to [Classes](/language/classes#using-class-members).
-
-
-### Using constructors
-
-This content has moved to [Classes](/language/classes#using-constructors).
-
-### Getting an object's type
-
-This content has moved to [Classes](/language/classes#getting-an-objects-type).
-
-### Instance variables
-
-This content has moved to [Classes](/language/classes#instance-variables).
-
-### Constructors
-
-This content has moved to [Constructors](/language/constructors).
-
-#### Initializing formal parameters
-
-This content has moved to [Constructors](/language/constructors#initializing-formal-parameters).
-
-#### Default constructors
-
-This content has moved to [Constructors](/language/constructors#default-constructors).
-
-#### Constructors aren't inherited
-
-This content has moved to [Constructors](/language/constructors#constructors-arent-inherited).
-
-#### Named constructors
-
-This content has moved to [Constructors](/language/constructors#named-constructors).
-
-#### Invoking a non-default superclass constructor
-
-This content has moved to [Constructors](/language/constructors#invoking-a-non-default-superclass-constructor).
-
-### Super parameters
-
-This content has moved to [Constructors](/language/constructors#super-parameters).
+Este conteúdo foi movido para [Classes](/language/classes#using-class-members).
 
 
-#### Initializer list
+### Usando construtores
 
-This content has moved to [Constructors](/language/constructors#initializer-list).
+Este conteúdo foi movido para [Classes](/language/classes#using-constructors).
+
+### Obtendo o tipo de um objeto
+
+Este conteúdo foi movido para [Classes](/language/classes#getting-an-objects-type).
+
+### Variáveis de instância
+
+Este conteúdo foi movido para [Classes](/language/classes#instance-variables).
+
+### Construtores
+
+Este conteúdo foi movido para [Construtores](/language/constructors).
+
+#### Inicializando parâmetros formais
+
+Este conteúdo foi movido para [Construtores](/language/constructors#initializing-formal-parameters).
+
+#### Construtores padrão
+
+Este conteúdo foi movido para [Construtores](/language/constructors#default-constructors).
+
+#### Construtores não são herdados
+
+Este conteúdo foi movido para [Construtores](/language/constructors#constructors-arent-inherited).
+
+#### Construtores nomeados
+
+Este conteúdo foi movido para [Construtores](/language/constructors#named-constructors).
+
+#### Invocando um construtor de superclasse não padrão
+
+Este conteúdo foi movido para [Construtores](/language/constructors#invoking-a-non-default-superclass-constructor).
+
+### Super parâmetros
+
+Este conteúdo foi movido para [Construtores](/language/constructors#super-parameters).
 
 
-#### Redirecting constructors
+#### Lista de inicializadores
 
-This content has moved to [Constructors](/language/constructors#redirecting-constructors).
-
-
-#### Constant constructors
+Este conteúdo foi movido para [Construtores](/language/constructors#initializer-list).
 
 
-This content has moved to [Constructors](/language/constructors#constant-constructors).
+#### Redirecionando construtores
 
-#### Factory constructors
-
-This content has moved to [Constructors](/language/constructors#factory-constructors).
-
-### Methods
-
-This content has moved to [Methods](/language/methods).
-
-#### Instance methods
-
-This content has moved to [Methods](/language/methods#instance-methods).
-
-#### Operators {:#_operators}
-
-This content has moved to [Methods](/language/methods#operators).
+Este conteúdo foi movido para [Construtores](/language/constructors#redirecting-constructors).
 
 
-#### Getters and setters
+#### Construtores constantes
 
-This content has moved to [Methods](/language/methods#getters-and-setters).
 
-#### Abstract methods
+Este conteúdo foi movido para [Construtores](/language/constructors#constant-constructors).
 
-This content has moved to [Methods](/language/methods#abstract-methods).
+#### Construtores factory
 
-### Abstract classes
+Este conteúdo foi movido para [Construtores](/language/constructors#factory-constructors).
 
-This content has moved to [Classes](/language/class-modifiers#abstract).
+### Métodos
+
+Este conteúdo foi movido para [Métodos](/language/methods).
+
+#### Métodos de instância
+
+Este conteúdo foi movido para [Métodos](/language/methods#instance-methods).
+
+#### Operadores {:#_operators}
+
+Este conteúdo foi movido para [Métodos](/language/methods#operators).
+
+
+#### Getters e setters
+
+Este conteúdo foi movido para [Métodos](/language/methods#getters-and-setters).
+
+#### Métodos abstratos
+
+Este conteúdo foi movido para [Métodos](/language/methods#abstract-methods).
+
+### Classes abstratas
+
+Este conteúdo foi movido para [Classes](/language/class-modifiers#abstract).
 
 <a id="interfaces"></a>
-### Implicit interfaces
+### Interfaces implícitas
 
-This content has moved to [Classes](/language/classes#implicit-interfaces).
+Este conteúdo foi movido para [Classes](/language/classes#implicit-interfaces).
 
-### Extending a class
+### Estendendo uma classe
 
-This content has moved to [Extend a class](/language/extend).
+Este conteúdo foi movido para [Estender uma classe](/language/extend).
 
 <a id="overridable-operators"></a>
-#### Overriding members
+#### Sobrescrevendo membros
 
-This content has moved to [Extend a class](/language/extend#overriding-members).
+Este conteúdo foi movido para [Estender uma classe](/language/extend#overriding-members).
 
 #### noSuchMethod()
 
-This content has moved to [Extend a class](/language/extend#nosuchmethod).
+Este conteúdo foi movido para [Estender uma classe](/language/extend#nosuchmethod).
 
-### Extension methods
+### Métodos de extensão
 
-This content has moved to [Extension methods](/language/extension-methods).
+Este conteúdo foi movido para [Métodos de extensão](/language/extension-methods).
 
 <a id="enums"></a>
-### Enumerated types
+### Tipos enumerados
 
-This content has moved to [Enumerated types](/language/enums).
+Este conteúdo foi movido para [Tipos enumerados](/language/enums).
 
-#### Declaring simple enums
+#### Declarando enums simples
 
-This content has moved to [Enumerated types](/language/enums#declaring-simple-enums).
+Este conteúdo foi movido para [Tipos enumerados](/language/enums#declaring-simple-enums).
 
-#### Declaring enhanced enums
+#### Declarando enums aprimorados
 
-This content has moved to [Enumerated types](/language/enums#declaring-enhanced-enums).
+Este conteúdo foi movido para [Tipos enumerados](/language/enums#declaring-enhanced-enums).
 
-#### Using enums
+#### Usando enums
 
-This content has moved to [Enumerated types](/language/enums#using-enums).
+Este conteúdo foi movido para [Tipos enumerados](/language/enums#using-enums).
 
 <a id="mixins"></a>
-### Adding features to a class: mixins
+### Adicionando funcionalidades a uma classe: mixins
 
-This content has moved to [Mixins](/language/mixins).
+Este conteúdo foi movido para [Mixins](/language/mixins).
 
-### Class variables and methods
+### Variáveis e métodos de classe
 
-This content has moved to [Classes](/language/classes#class-variables-and-methods).
+Este conteúdo foi movido para [Classes](/language/classes#class-variables-and-methods).
 
-#### Static variables
+#### Variáveis estáticas
 
-This content has moved to [Classes](/language/classes#static-variables).
+Este conteúdo foi movido para [Classes](/language/classes#static-variables).
 
-#### Static methods
+#### Métodos estáticos
 
-This content has moved to [Classes](/language/classes#static-methods).
+Este conteúdo foi movido para [Classes](/language/classes#static-methods).
 
 ## Generics
 
-This content has moved to [Generics](/language/generics).
+Este conteúdo foi movido para [Generics](/language/generics).
 
-### Why use generics?
+### Por que usar generics?
 
-This content has moved to [Generics](/language/generics#why-use-generics).
+Este conteúdo foi movido para [Generics](/language/generics#why-use-generics).
 
-### Using collection literals
+### Usando literais de coleção
 
-This content has moved to [Generics](/language/generics#using-collection-literals).
+Este conteúdo foi movido para [Generics](/language/generics#using-collection-literals).
 
-### Using parameterized types with constructors
+### Usando tipos parametrizados com construtores
 
-This content has moved to [Generics](/language/generics#using-parameterized-types-with-constructors).
+Este conteúdo foi movido para [Generics](/language/generics#using-parameterized-types-with-constructors).
 
-### Generic collections and the types they contain
+### Coleções genéricas e os tipos que elas contêm
 
-This content has moved to [Generics](/language/generics#generic-collections-and-the-types-they-contain).
+Este conteúdo foi movido para [Generics](/language/generics#generic-collections-and-the-types-they-contain).
 
-### Restricting the parameterized type
+### Restringindo o tipo parametrizado
 
-This content has moved to [Generics](/language/generics#restricting-the-parameterized-type).
+Este conteúdo foi movido para [Generics](/language/generics#restricting-the-parameterized-type).
 
-### Using generic methods
+### Usando métodos genéricos
 
-This content has moved to [Generics](/language/generics#using-generic-methods).
+Este conteúdo foi movido para [Generics](/language/generics#using-generic-methods).
 
-## Libraries and visibility
+## Bibliotecas e visibilidade
 
-This content has moved to [Libraries & visibility](/language/libraries).
+Este conteúdo foi movido para [Bibliotecas e visibilidade](/language/libraries).
 
-### Using libraries
+### Usando bibliotecas
 
-This content has moved to [Libraries & visibility](/language/libraries#using-libraries).
+Este conteúdo foi movido para [Bibliotecas e visibilidade](/language/libraries#using-libraries).
 
-#### Specifying a library prefix
+#### Especificando um prefixo de biblioteca
 
-This content has moved to [Libraries & visibility](/language/libraries#specifying-a-library-prefix).
+Este conteúdo foi movido para [Bibliotecas e visibilidade](/language/libraries#specifying-a-library-prefix).
 
-#### Importing only part of a library
+#### Importando apenas parte de uma biblioteca
 
-This content has moved to [Libraries & visibility](/language/libraries#importing-only-part-of-a-library).
+Este conteúdo foi movido para [Bibliotecas e visibilidade](/language/libraries#importing-only-part-of-a-library).
 
 <a id="deferred-loading"></a>
-#### Lazily loading a library
+#### Carregando uma biblioteca preguiçosamente
 
-This content has moved to [Libraries & visibility](/language/libraries#lazily-loading-a-library).
+Este conteúdo foi movido para [Bibliotecas e visibilidade](/language/libraries#lazily-loading-a-library).
 
-#### The `library` directive {:#library-directive}
+#### A diretiva `library` {:#library-directive}
 
-This content has moved to [Libraries & visibility](/language/libraries#library-directive).
+Este conteúdo foi movido para [Bibliotecas e visibilidade](/language/libraries#library-directive).
 
-### Implementing libraries
+### Implementando bibliotecas
 
-This content has moved to [Libraries & visibility](/language/libraries#implementing-libraries).
+Este conteúdo foi movido para [Bibliotecas e visibilidade](/language/libraries#implementing-libraries).
 
 <a id="asynchrony"></a>
-## Asynchrony support
+## Suporte a assincronia
 
-This content has moved to [Asynchrony support](/language/async).
+Este conteúdo foi movido para [Suporte a assincronia](/language/async).
 
 <a id="await"></a>
-### Handling Futures
+### Lidando com Futures
 
-This content has moved to [Asynchrony support](/language/async#handling-futures).
+Este conteúdo foi movido para [Suporte a assincronia](/language/async#handling-futures).
 
 <a id="async"></a>
-### Declaring async functions
+### Declarando funções assíncronas
 
-This content has moved to [Asynchrony support](/language/async#declaring-async-functions).
+Este conteúdo foi movido para [Suporte a assincronia](/language/async#declaring-async-functions).
 
 <a id="await-for"></a>
-### Handling Streams
+### Lidando com Streams
 
-This content has moved to [Asynchrony support](/language/async#handling-streams).
+Este conteúdo foi movido para [Suporte a assincronia](/language/async#handling-streams).
 
 <a id="generator"></a>
-## Generators
+## Geradores
 
-This content has moved to [Generators](/language/functions#generators).
+Este conteúdo foi movido para [Geradores](/language/functions#generators).
 
-## Callable classes
+## Classes invocáveis
 
-This content has moved to [Callable objects](/language/callable-objects).
+Este conteúdo foi movido para [Objetos invocáveis](/language/callable-objects).
 
 ## Isolates
 
-This content has moved to [Isolates](/language/concurrency).
+Este conteúdo foi movido para [Isolates](/language/concurrency).
 
 ## Typedefs
 
-This content has moved to [Typedefs](/language/typedefs).
+Este conteúdo foi movido para [Typedefs](/language/typedefs).
 
 
-## Metadata
+## Metadados
 
-This content has moved to [Metadata](/language/metadata).
-
-
-## Comments
-
-This content has moved to [Comments](/language/comments).
-
-### Single-line comments
-
-This content has moved to [Comments](/language/comments#single-line-comments).
+Este conteúdo foi movido para [Metadados](/language/metadata).
 
 
-### Multi-line comments
+## Comentários
 
-This content has moved to [Comments](/language/comments#multi-line-comments).
+Este conteúdo foi movido para [Comentários](/language/comments).
 
-### Documentation comments
+### Comentários de linha única
 
-This content has moved to [Comments](/language/comments#documentation-comments).
+Este conteúdo foi movido para [Comentários](/language/comments#single-line-comments).
+
+
+### Comentários de múltiplas linhas
+
+Este conteúdo foi movido para [Comentários](/language/comments#multi-line-comments).
+
+### Comentários de documentação
+
+Este conteúdo foi movido para [Comentários](/language/comments#documentation-comments).
