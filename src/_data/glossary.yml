@@ -1,99 +1,98 @@
-- term: "Assist"
+# <!-- ia-translate: true -->
+- term: "Assistente"
   short_description: |-
-    An automated, local code edit targeted at making common improvements to code.
+    Uma edição de código local e automatizada, focada em realizar melhorias comuns no código.
   long_description: |-
-    An assist is an automated, local code edit targeted at making common
-    improvements to code.
-    Examples of assists include converting `switch` statements to `switch`
-    expressions, reversing the `then` and `else` blocks in an `if` statement,
-    and inserting widgets into a widget structure.
+    Um assistente é uma edição de código local e automatizada, focada em realizar melhorias comuns no código.
+    Exemplos de assistentes incluem converter instruções `switch` para expressões `switch`,
+    reverter os blocos `then` e `else` em uma instrução `if` e inserir widgets em uma estrutura de widgets.
   related_links:
-    - text: "Refactor"
+    - text: "Refatorar"
       link: "#refactor"
   labels:
-    - "tools"
-    - "analyzer"
+    - "ferramentas"
+    - "analisador"
   alternate:
-    - "Quick assist"
+    - "Assistente rápido"
 
-- term: "Constant context"
+- term: "Contexto constante"
   short_description: |-
-    A region of code where the const keyword is implied and
-    everything within that region must be a constant.
+    Uma região de código onde a palavra-chave const é implícita e
+    tudo dentro dessa região deve ser uma constante.
   long_description: |-
-    A _constant context_ is a region of code in which it
-    isn't necessary to include the `const` keyword because it's implied by 
-    the fact that everything in that region is required to be a constant.
-    The following locations are constant contexts:
+    Um _contexto constante_ é uma região de código na qual
+    não é necessário incluir a palavra-chave `const` porque ela é implícita
+    pelo fato de que tudo naquela região é requerido para ser uma constante.
+    Os seguintes locais são contextos constantes:
 
-    - Everything inside a list, map or set literal that's prefixed by
-      the `const` keyword. For example:
+    - Tudo dentro de um literal de lista, mapa ou conjunto que seja prefixado
+      pela palavra-chave `const`. Por exemplo:
 
       ```dart
-      var l = const [/*constant context*/];
+      var l = const [/*contexto constante*/];
       ```
 
-    - The arguments inside an invocation of a constant constructor.
-      For example:
+    - Os argumentos dentro de uma invocação de um construtor constante.
+      Por exemplo:
 
       ```dart
-      var p = const Point(/*constant context*/);
+      var p = const Point(/*contexto constante*/);
       ```
   
-    - The initializer for a variable that's prefixed by the `const` keyword.
-      For example:
+    - O inicializador para uma variável que é prefixada pela palavra-chave `const`.
+      Por exemplo:
 
       ```dart
-      const v = /*constant context*/;
+      const v = /*contexto constante*/;
       ```
 
-    - Annotations.
+    - Anotações.
 
-    - The expression in a `case` clause. For example:
+    - A expressão em uma cláusula `case`. Por exemplo:
 
       ```dart
       void f(int e) {
         switch (e) {
-          case /*constant context*/:
+          case /*contexto constante*/:
             break;
         }
       }
       ```
   related_links:
-    - text: "Final and const variables"
+    - text: "Variáveis final e const"
       link: "/language/variables#final-and-const"
-    - text: "Don't use const redundantly"
+    - text: "Não use const redundantemente"
       link: "/effective-dart/usage#dont-use-const-redundantly"
   labels:
-    - "language"
+    - "linguagem"
     - "const"
-    - "understanding diagnostics"
+    - "entendendo diagnósticos"
   alternate:
-    - "Implicit const"
+    - "Const implícito"
 
-- term: "Definite assignment"
+- term: "Atribuição definitiva"
   short_description: |-
-    The determination of whether a variable has definitely been
-    assigned a value before it's used.
+    A determinação de se uma variável foi definitivamente atribuída
+    um valor antes de ser usada.
   long_description: |-
-    Definite assignment analysis is the process of determining, for each
-    local variable at each point in the code, which of the following is true:
+    A análise de atribuição definitiva é o processo de determinar, para cada
+    variável local em cada ponto do código, qual das seguintes opções é verdadeira:
 
-    - The variable has definitely been assigned a value
-      (_definitely assigned_).
-    - The variable has definitely not been assigned a value
-      (_definitely unassigned_).
-    - The variable might or might not have been assigned a value,
-      depending on the execution path taken to arrive at that point.
+    - A variável foi definitivamente atribuída a um valor
+      (_definitivamente atribuída_).
+    - A variável definitivamente não foi atribuída a um valor
+      (_definitivamente não atribuída_).
+    - A variável pode ou não ter sido atribuída a um valor,
+      dependendo do caminho de execução tomado para chegar a esse ponto.
 
-    Definite assignment analysis helps find problems in code,
-    such as places where a variable that might not have been
-    assigned a value is being referenced, or
-    places where a variable that can only be assigned a value one time is
-    being assigned after it might already have been assigned a value.
+    A análise de atribuição definitiva ajuda a encontrar problemas no código,
+    como locais onde uma variável que pode não ter sido
+    atribuída a um valor está sendo referenciada, ou
+    locais onde uma variável que só pode ser atribuída um valor uma vez está
+    sendo atribuída depois que já pode ter sido atribuída um valor.
 
-    For example, in the following code the variable `s` is
-    definitely unassigned when it's passed as an argument to `print`:
+    Por exemplo, no código a seguir a variável `s` é
+    definitivamente não atribuída quando é passada como um argumento para `print`:
 
     ```dart
     void f() {
@@ -102,121 +101,120 @@
     }
     ```
 
-    But in the following code, the variable `s` is definitely assigned:
+    Mas no código a seguir, a variável `s` é definitivamente atribuída:
 
     ```dart
     void f(String name) {
-      String s = 'Hello $name!';
+      String s = 'Olá $name!';
       print(s);
     }
     ```
 
-    Definite assignment analysis can even tell whether
-    a variable is definitely assigned (or unassigned) when
-    there are multiple possible execution paths.
-    In the following code the `print` function is called if
-    execution goes through either the true or the false branch of the
-    `if` statement, but because `s` is assigned no matter which branch is taken,
-    it's definitely assigned before it's passed to `print`:
+    A análise de atribuição definitiva pode até mesmo dizer se
+    uma variável é definitivamente atribuída (ou não atribuída) quando
+    existem vários caminhos de execução possíveis.
+    No código a seguir, a função `print` é chamada se
+    a execução passar pelo ramo verdadeiro ou falso da
+    instrução `if`, mas como `s` é atribuída não importa qual ramo seja tomado,
+    ela é definitivamente atribuída antes de ser passada para `print`:
 
     ```dart
     void f(String name, bool casual) {
       String s;
       if (casual) {
-        s = 'Hi $name!';
+        s = 'Oi $name!';
       } else {
-        s = 'Hello $name!';
+        s = 'Olá $name!';
       }
       print(s);
     }
     ```
 
-    In flow analysis, the end of the `if` statement is referred to
-    as a _join_—a place where two or more execution paths merge back together.
-    Where there's a join, the analysis says that
-    a variable is definitely assigned if it's definitely assigned along
-    all of the paths that are merging, and definitely unassigned if
-    it's definitely unassigned along all of the paths.
+    Na análise de fluxo, o final da instrução `if` é referido
+    como uma _junção_—um lugar onde dois ou mais caminhos de execução se unem novamente.
+    Onde há uma junção, a análise diz que
+    uma variável é definitivamente atribuída se ela é definitivamente atribuída ao longo de
+    todos os caminhos que estão se unindo, e definitivamente não atribuída se
+    ela é definitivamente não atribuída ao longo de todos os caminhos.
 
-    Sometimes a variable is assigned a value on one path but not on another,
-    in which case the variable might or might not have been assigned a value.
-    In the following example, the true branch of the `if` statement might or
-    might not be executed, so the variable might or might be assigned a value:
+    Às vezes, uma variável recebe um valor em um caminho, mas não em outro,
+    caso em que a variável pode ou não ter sido atribuída um valor.
+    No exemplo a seguir, o ramo verdadeiro da instrução `if` pode ou
+    não ser executado, então a variável pode ou não ser atribuída um valor:
 
     ```dart
     void f(String name, bool casual) {
       String s;
       if (casual) {
-        s = 'Hi $name!';
+        s = 'Oi $name!';
       }
       print(s);
     }
     ```
 
-    The same is true if there is a false branch that
-    doesn't assign a value to `s`.
+    O mesmo é verdade se houver um ramo falso que
+    não atribui um valor a `s`.
 
-    The analysis of loops is a little more complicated,
-    but it follows the same basic reasoning.
-    For example, the condition in a `while` loop is always executed,
-    but the body might or might not be. So just like an `if` statement,
-    there's a join at the end of the `while` statement between
-    the path in which the condition is `true` and
-    the path in which the condition is `false`.
+    A análise de loops é um pouco mais complicada,
+    mas segue o mesmo raciocínio básico.
+    Por exemplo, a condição em um loop `while` é sempre executada,
+    mas o corpo pode ou não ser. Então, assim como uma instrução `if`,
+    há uma junção no final da instrução `while` entre
+    o caminho no qual a condição é `true` e
+    o caminho no qual a condição é `false`.
   related_links:
-    - text: "Definite assignment specification"
+    - text: "Especificação de atribuição definitiva"
       link: "https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md"
-    - text: "Understanding definite assignment analysis"
+    - text: "Entendendo a análise de atribuição definitiva"
       link: "/null-safety/understanding-null-safety#definite-assignment-analysis"
   labels:
-    - "language"
-    - "flow analysis"
-    - "understanding diagnostics"
+    - "linguagem"
+    - "análise de fluxo"
+    - "entendendo diagnósticos"
 
-- term: "Function"
+- term: "Função"
   short_description: |-
-    An umbrella term to refer to top-level functions, local functions,
-    static methods, and instance methods.
+    Um termo geral para se referir a funções de nível superior, funções locais,
+    métodos estáticos e métodos de instância.
   related_links:
-    - text: "Functions overview"
+    - text: "Visão geral de funções"
       link: "/language/functions"
-    - text: "Instance methods"
+    - text: "Métodos de instância"
       link: "/language/methods"
   labels:
-    - "language"
-    - "umbrella term"
+    - "linguagem"
+    - "termo geral"
   alternate:
-    - "Procedure"
+    - "Procedimento"
 
-- term: "Irrefutable pattern"
+- term: "Padrão irrefutável"
   short_description: |-
-    A pattern that always matches.
+    Um padrão que sempre corresponde.
   long_description: |-
-    _Irrefutable patterns_ are patterns that always match.
-    Irrefutable patterns are the only patterns that can appear in
-    _irrefutable contexts_: the [_declaration_][] and [_assignment_][]
-    pattern contexts.
+    _Padrões irrefutáveis_ são padrões que sempre correspondem.
+    Padrões irrefutáveis são os únicos padrões que podem aparecer em
+    _contextos irrefutáveis_: os contextos de padrão de [_declaração_][] e [_atribuição_][].
 
-    [_declaration_]: /language/patterns#variable-declaration
-    [_assignment_]: /language/patterns#variable-assignment
+    [_declaração_]: /language/patterns#variable-declaration
+    [_atribuição_]: /language/patterns#variable-assignment
   related_links:
-    - text: "Places patterns can appear"
+    - text: "Lugares onde os padrões podem aparecer"
       link: "/language/patterns#places-patterns-can-appear"
-    - text: "Dive into Dart patterns and records"
+    - text: "Mergulhe em padrões e registros Dart"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
   labels:
-    - "language"
-    - "patterns"
+    - "linguagem"
+    - "padrões"
   alternate:
-    - "irrefutable context"
+    - "contexto irrefutável"
 
-- term: "Mixin application"
+- term: "Aplicação de mixin"
   short_description: |-
-    A class created when a mixin is applied to a class.
+    Uma classe criada quando um mixin é aplicado a uma classe.
   long_description: |-
-    A _mixin application_ is the class created when
-    a mixin is applied to a class.
-    For example, consider the following declarations:
+    Uma _aplicação de mixin_ é a classe criada quando
+    um mixin é aplicado a uma classe.
+    Por exemplo, considere as seguintes declarações:
 
     ```dart
     class A {}
@@ -226,11 +224,11 @@
     class B extends A with M {}
     ```
 
-    The class `B` is a subclass of the mixin application of `M` to `A`,
-    sometimes nomenclated as `A+M`. The class `A+M` is a subclass of `A` and
-    has members that are copied from `M`.
+    A classe `B` é uma subclasse da aplicação de mixin de `M` para `A`,
+    às vezes denominada como `A+M`. A classe `A+M` é uma subclasse de `A` e
+    tem membros que são copiados de `M`.
 
-    You can give an actual name to a mixin application by defining it as:
+    Você pode dar um nome real a uma aplicação de mixin definindo-a como:
 
     ```dart
     class A {}
@@ -240,33 +238,33 @@
     class A_M = A with M;
     ```
 
-    Given this declaration of `A_M`, the following declaration of `B` is
-    equivalent to the declaration of `B` in the original example:
+    Dada esta declaração de `A_M`, a seguinte declaração de `B` é
+    equivalente à declaração de `B` no exemplo original:
 
     ```dart
     class B extends A_M {}
     ```
   related_links:
-    - text: "Mixins in Dart"
+    - text: "Mixins em Dart"
       link: "/language/mixins"
   labels:
-    - "language"
-    - "understanding diagnostics"
+    - "linguagem"
+    - "entendendo diagnósticos"
   alternate:
-    - "with mixin"
+    - "com mixin"
 
-- term: "Override inference"
+- term: "Inferência de override"
   short_description: |-
-    How missing types in a method declaration are inferred.
+    Como os tipos ausentes em uma declaração de método são inferidos.
   long_description: |-
-    Override inference is the process by which any missing types in
-    a method declaration are inferred based on the corresponding types from
-    the method or methods that it overrides.
+    A inferência de override é o processo pelo qual quaisquer tipos ausentes em
+    uma declaração de método são inferidos com base nos tipos correspondentes do
+    método ou métodos que ele sobrescreve.
 
-    If a candidate method (the method that's missing type information)
-    overrides a single inherited method, then the
-    corresponding types from the overridden method are inferred.
-    For example, consider the following code:
+    Se um método candidato (o método que está faltando informações de tipo)
+    sobrescreve um único método herdado, então os
+    tipos correspondentes do método sobrescrito são inferidos.
+    Por exemplo, considere o seguinte código:
 
     ```dart
     class A {
@@ -279,18 +277,18 @@
     }
     ```
 
-    The declaration of `m` in `B` is a candidate because
-    it's missing both the return type and the parameter type.
-    Because it overrides a single method (the method `m` in `A`),
-    the types from the overridden method will be used to infer
-    the missing types and it will be as if the method in `B` had been
-    declared as `int m(String s) => 1;`.
+    A declaração de `m` em `B` é candidata porque
+    está faltando tanto o tipo de retorno quanto o tipo do parâmetro.
+    Como ele sobrescreve um único método (o método `m` em `A`),
+    os tipos do método sobrescrito serão usados para inferir
+    os tipos ausentes e será como se o método em `B` tivesse sido
+    declarado como `int m(String s) => 1;`.
 
-    If a candidate method overrides multiple methods, and
-    the function type one of those overridden methods, M<sub>s</sub>,
-    is a supertype of the function types of all of the other overridden methods,
-    then M<sub>s</sub> is used to infer the missing types.
-    For example, consider the following code:
+    Se um método candidato sobrescreve vários métodos, e
+    o tipo de função de um desses métodos sobrescritos, M<sub>s</sub>,
+    é um supertipo dos tipos de função de todos os outros métodos sobrescritos,
+    então M<sub>s</sub> é usado para inferir os tipos ausentes.
+    Por exemplo, considere o seguinte código:
 
     ```dart
     class A {
@@ -307,322 +305,322 @@
     }
     ```
 
-    The declaration of `m` in `C` is a candidate for override inference because
-    it's missing both the return type and the parameter type.
-    It overrides both `m` in `A` and `m` in `B`, so the compiler needs to
-    choose one of them from which the missing types can be inferred.
-    But because the function type of `m` in `A` (`int Function(num)`) is
-    a supertype of the function type of `m` in `B` (`num Function(int)`),
-    the function in `A` is used to infer the missing types. The result is
-    the same as declaring the method in `C` as `int m(num n) => 1;`.
+    A declaração de `m` em `C` é candidata à inferência de override porque
+    está faltando tanto o tipo de retorno quanto o tipo do parâmetro.
+    Ele sobrescreve tanto `m` em `A` quanto `m` em `B`, então o compilador precisa
+    escolher um deles a partir do qual os tipos ausentes podem ser inferidos.
+    Mas como o tipo de função de `m` em `A` (`int Function(num)`) é
+    um supertipo do tipo de função de `m` em `B` (`num Function(int)`),
+    a função em `A` é usada para inferir os tipos ausentes. O resultado é
+    o mesmo que declarar o método em `C` como `int m(num n) => 1;`.
 
-    It is an error if none of the overridden methods have a function type that
-    is a supertype of all the other overridden methods.
+    É um erro se nenhum dos métodos sobrescritos tiver um tipo de função que
+    seja um supertipo de todos os outros métodos sobrescritos.
   related_links:
-    - text: "Inheritance in Dart"
+    - text: "Herança em Dart"
       link: "/language/extend"
   labels:
-    - "language"
-    - "type inference"
-    - "understanding diagnostics"
+    - "linguagem"
+    - "inferência de tipo"
+    - "entendendo diagnósticos"
 
-- term: "Part file"
+- term: "Arquivo part"
   short_description: |-
-    A Dart source file that contains a `part of` directive.
+    Um arquivo fonte Dart que contém uma diretiva `part of`.
   long_description: |-
-    A part file is a Dart source file that contains a `part of` directive
-    and is included in a library using the `part` directive.
+    Um arquivo part é um arquivo fonte Dart que contém uma diretiva `part of`
+    e é incluído em uma biblioteca usando a diretiva `part`.
   related_links:
-    - text: "Guidance on libraries and parts"
+    - text: "Guia sobre bibliotecas e parts"
       link: "/tools/pub/create-packages#organizing-a-package"
-    - text: "Use library URIs in `part of` directives"
+    - text: "Use URIs de biblioteca em diretivas `part of`"
       link: "/effective-dart/usage#do-use-strings-in-part-of-directives"
   labels:
-    - "language"
-    - "libraries"
+    - "linguagem"
+    - "bibliotecas"
   alternate:
     - "part"
 
-- term: "Potentially non-nullable"
+- term: "Potencialmente não anulável"
   short_description: |-
-    A type that is either non-nullable explicitly or
-    due to being a type parameter.
+    Um tipo que é explicitamente não anulável ou
+    devido a ser um parâmetro de tipo.
   long_description: |-
-    A type is _potentially non-nullable_ if it's either
-    explicitly non-nullable or if it's a type parameter.
+    Um tipo é _potencialmente não anulável_ se ele for
+    explicitamente não anulável ou se for um parâmetro de tipo.
 
-    A type is explicitly non-nullable if it is a
-    type name that isn't followed by a question mark (`?`).
-    Note that there are a few types that are always nullable, such as
-    `Null` and `dynamic`, and that `FutureOr` is only non-nullable if
-    it isn't followed by a question mark _and_
-    the type argument is non-nullable (such as `FutureOr<String>`).
+    Um tipo é explicitamente não anulável se for um
+    nome de tipo que não é seguido por um ponto de interrogação (`?`).
+    Observe que existem alguns tipos que são sempre anuláveis, como
+    `Null` e `dynamic`, e que `FutureOr` só é não anulável se
+    não for seguido por um ponto de interrogação _e_
+    o argumento de tipo for não anulável (como `FutureOr<String>`).
 
-    Type parameters are potentially non-nullable because the actual
-    runtime type (the type specified as a type argument) might be non-nullable.
-    For example, given a declaration of `class C<T> {}`,
-    the type `C` could be used with a non-nullable type argument as in `C<int>`.
+    Parâmetros de tipo são potencialmente não anuláveis porque o tipo
+    de tempo de execução real (o tipo especificado como argumento de tipo) pode ser não anulável.
+    Por exemplo, dada uma declaração de `class C<T> {}`,
+    o tipo `C` poderia ser usado com um argumento de tipo não anulável como em `C<int>`.
   related_links:
-    - text: "Nullability and generics"
+    - text: "Anulabilidade e genéricos"
       link: "/null-safety/understanding-null-safety#nullability-and-generics"
   labels:
-    - "language"
-    - "type system"
-    - "flow analysis"
-    - "understanding diagnostics"
+    - "linguagem"
+    - "sistema de tipos"
+    - "análise de fluxo"
+    - "entendendo diagnósticos"
   alternate:
-    - "potentially nullable"
+    - "potencialmente anulável"
 
-- term: "Public library"
+- term: "Biblioteca pública"
   short_description: |-
-    A library that is located in a package's `lib` directory but
-    not inside the `lib/src` directory.
+    Uma biblioteca que está localizada no diretório `lib` de um pacote, mas
+    não dentro do diretório `lib/src`.
   long_description: |-
-    A public library is a library that is located inside the package's `lib`
-    directory but not inside the `lib/src` directory.
+    Uma biblioteca pública é uma biblioteca que está localizada dentro do diretório `lib` do pacote,
+    mas não dentro do diretório `lib/src`.
   related_links:
-    - text: "Organizing a package's libraries"
+    - text: "Organizando as bibliotecas de um pacote"
       link: "/tools/pub/create-packages#organizing-a-package"
-    - text: "Public package directories"
+    - text: "Diretórios de pacote público"
       link: "/tools/pub/package-layout#public-directories"
   labels:
-    - "language"
-    - "libraries"
+    - "linguagem"
+    - "bibliotecas"
 
-- term: "Quick fix"
+- term: "Correção rápida"
   short_description: |-
-    An automated, local code edit targeted at fixing the issue reported by a
-    specific diagnostic.
+    Uma edição de código local e automatizada, focada em corrigir o problema relatado por um
+    diagnóstico específico.
   related_links:
-    - text: "Quick fixes for analysis issues"
+    - text: "Correções rápidas para problemas de análise"
       link: "https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a"
-    - text: "Diagnostic messages"
+    - text: "Mensagens de diagnóstico"
       link: "/tools/diagnostic-messages"
-    - text: "Linter rules"
+    - text: "Regras do linter"
       link: "/tools/linter-rules"
   labels:
-    - "tools"
-    - "understanding diagnostics"
+    - "ferramentas"
+    - "entendendo diagnósticos"
 
-- term: "Refactor"
+- term: "Refatorar"
   short_description: |-
-    A code edit targeted at modifications that are either non-local or that
-    require user interaction.
+    Uma edição de código voltada para modificações que não são locais ou que
+    requerem interação do usuário.
   long_description: |-
-    A refactor is a code edit targeted at modifications that are either non-local
-    or that require user interaction.
-    Examples of refactors include renaming, removing, or extracting code.
+    Uma refatoração é uma edição de código voltada para modificações que não são locais
+    ou que requerem interação do usuário.
+    Exemplos de refatorações incluem renomear, remover ou extrair código.
   related_links:
-    - text: "Assist"
+    - text: "Assistente"
       link: "#assist"
   labels:
-    - "tools"
-    - "analysis"
+    - "ferramentas"
+    - "análise"
 
-- term: "Refutable pattern"
+- term: "Padrão refutável"
   short_description: |-
-    A pattern that can be tested against a value.
+    Um padrão que pode ser testado em relação a um valor.
   long_description: |-
-    A _refutable pattern_ is a pattern that can be tested against a value to
-    determine if the pattern matches the value.
-    If not, the pattern _refutes_, or denies, the match.
-    Refutable patterns appear in [_matching contexts_][].
+    Um _padrão refutável_ é um padrão que pode ser testado em relação a um valor para
+    determinar se o padrão corresponde ao valor.
+    Caso contrário, o padrão _refuta_, ou nega, a correspondência.
+    Padrões refutáveis aparecem em [_contextos de correspondência_][].
 
-    [_matching contexts_]: /language/patterns#matching
+    [_contextos de correspondência_]: /language/patterns#matching
   related_links:
-    - text: "Places patterns can appear"
+    - text: "Lugares onde os padrões podem aparecer"
       link: "/language/patterns#places-patterns-can-appear"
-    - text: "Dive into Dart patterns and records"
+    - text: "Mergulhe em padrões e registros Dart"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
   labels:
-    - "language"
-    - "patterns"
+    - "linguagem"
+    - "padrões"
   alternate:
-    - "matching contexts"
+    - "contextos de correspondência"
 
-- term: "Subclass"
+- term: "Subclasse"
   short_description: |-
-    A class that inherits the implementation of another class.
+    Uma classe que herda a implementação de outra classe.
   long_description: |-
-    A _subclass_ is a class that inherits the implementation of another class by
-    using the [`extends`][] keyword, or by [mixin application][].
+    Uma _subclasse_ é uma classe que herda a implementação de outra classe usando
+    a palavra-chave [`extends`][], ou por [aplicação de mixin][].
 
     ```dart
-    // A is a subclass of B; B is the superclass of A.
+    // A é uma subclasse de B; B é a superclasse de A.
     class A extends B {}
 
-    // B1 has the superclass `A with M`, which has the superclass A.
+    // B1 tem a superclasse `A with M`, que tem a superclasse A.
     class B1 extends A with M {}
     ```
 
-    A subclass relation also implies an associated [subtype](#subtype) relation.
-    For example, `class A` implicitly defines an associated type `A`
-    which instances of the class `A` inhabit.
-    So, `class A extends B` declares not just that the class
-    `A` is a subclass of `B`, but also establishes that the *type* `A` is a
-    *subtype* of the type `B`.
+    Uma relação de subclasse também implica uma relação de [subtipo](#subtype) associada.
+    Por exemplo, `class A` define implicitamente um tipo associado `A`
+    que as instâncias da classe `A` habitam.
+    Então, `class A extends B` declara não apenas que a classe
+    `A` é uma subclasse de `B`, mas também estabelece que o *tipo* `A` é um
+    *subtipo* do tipo `B`.
 
-    Subclass relations are a subset of subtype relations.
-    When the documentation says "`S` must be a subtype of `T`",
-    it's fine for `S` to be a subclass of `T`.
-    However, the converse is not true: not all subtypes are subclasses.
+    Relações de subclasse são um subconjunto de relações de subtipo.
+    Quando a documentação diz "`S` deve ser um subtipo de `T`",
+    é bom para `S` ser uma subclasse de `T`.
+    No entanto, o inverso não é verdadeiro: nem todos os subtipos são subclasses.
 
     [`extends`]: /language/extend
-    [mixin application]: #mixin-application
+    [aplicação de mixin]: #mixin-application
   related_links:
-    - text: "Inheritance in Dart"
+    - text: "Herança em Dart"
       link: "/language/extend"
-    - text: "Subtype relationship"
+    - text: "Relação de subtipo"
       link: "#subtype"
   labels:
-    - "language"
-    - "type system"
+    - "linguagem"
+    - "sistema de tipos"
   alternate:
-    - "child class"
+    - "classe filha"
 
-- term: "Subtype"
+- term: "Subtipo"
   short_description: |-
-    A type that can be used wherever a value of its supertype is expected.
+    Um tipo que pode ser usado onde quer que um valor de seu supertipo seja esperado.
   long_description: |-
-    A _subtype_ relation is where a value of a certain type is substitutable
-    where the value of another type, the supertype, is expected.
-    For example, if `S` is a subtype of `T`,
-    then you can substitute a value of type `S`
-    where a value of type `T` is expected.
+    Uma relação de _subtipo_ é onde um valor de um determinado tipo é substituível
+    onde o valor de outro tipo, o supertipo, é esperado.
+    Por exemplo, se `S` é um subtipo de `T`,
+    então você pode substituir um valor do tipo `S`
+    onde um valor do tipo `T` é esperado.
 
-    A subtype supports all of the operations of its supertype
-    (and possibly some extra operations).
-    In practice, this means you can assign the value of a subtype
-    to any location expecting the supertype,
-    and all of the methods of the supertype are available on the subtype.
+    Um subtipo suporta todas as operações de seu supertipo
+    (e possivelmente algumas operações extras).
+    Na prática, isso significa que você pode atribuir o valor de um subtipo
+    a qualquer local esperando o supertipo,
+    e todos os métodos do supertipo estão disponíveis no subtipo.
 
-    This is true at least statically.
-    A specific API might not allow the substitution at run time,
-    depending on its operations.
+    Isso é verdade, pelo menos estaticamente.
+    Uma API específica pode não permitir a substituição em tempo de execução,
+    dependendo de suas operações.
 
-    Some subtype relations are based on the structure of the type,
-    like with nullable types (for example, `int` is a subtype of `int?`)
-    and function types
-    (for example, `String Function()` is a subtype of `void Function()`).
+    Algumas relações de subtipo são baseadas na estrutura do tipo,
+    como com tipos anuláveis (por exemplo, `int` é um subtipo de `int?`)
+    e tipos de função
+    (por exemplo, `String Function()` é um subtipo de `void Function()`).
 
-    Subtypes can also be introduced for classes by
-    [implementation](/language/classes#implicit-interfaces)
-    or [inheritance](/language/extend) (direct or indirect):
+    Subtipos também podem ser introduzidos para classes por
+    [implementação](/language/classes#implicit-interfaces)
+    ou [herança](/language/extend) (direta ou indireta):
 
     ```dart
-    // A is a subtype of B, but NOT a subclass of B.
+    // A é um subtipo de B, mas NÃO uma subclasse de B.
     class A implements B {}
 
-    // C is a subtype AND a subclass of D.
+    // C é um subtipo E uma subclasse de D.
     class C extends D {}
     ```
   related_links:
-    - text: "Subclass"
+    - text: "Subclasse"
       link: "#subclass"
-    - text: "Substituting types"
+    - text: "Substituindo tipos"
       link: "/language/type-system#substituting-types"
   labels:
-    - "language"
-    - "type system"
+    - "linguagem"
+    - "sistema de tipos"
   alternate:
-    - "subtyping"
-    - "subtype polymorphism"
+    - "subtipagem"
+    - "polimorfismo de subtipo"
 
-- term: "Variance and variance positions"
+- term: "Variância e posições de variância"
   id: "variance"
   short_description: |-
-    How changing a type argument of a type affects the relationship
-    between the original type and the resulting one.
+    Como a alteração de um argumento de tipo de um tipo afeta a relação
+    entre o tipo original e o resultante.
 
-    In Dart, changing the type argument of a
-    type declaration (like a class) or function return type, changes the
-    overall type relationship in the same direction (covariant).
+    Em Dart, alterar o argumento de tipo de uma
+    declaração de tipo (como uma classe) ou tipo de retorno de função, altera o
+    relacionamento geral do tipo na mesma direção (covariante).
 
-    However, changing the type of a function's parameter types, changes the
-    overall type relationship in the opposite direction (contravariant).
+    No entanto, alterar o tipo dos tipos de parâmetros de uma função, altera o
+    relacionamento geral do tipo na direção oposta (contravariante).
   long_description: |-
-    A type parameter of a class (or other type declaration, like a mixin) is
-    said to be _covariant_ when the type as a whole
-    "co-varies" with the actual type argument.
-    In other words, if the type argument is replaced by a
-    subtype then the type as a whole is also a subtype.
+    Um parâmetro de tipo de uma classe (ou outra declaração de tipo, como um mixin) é
+    dito ser _covariante_ quando o tipo como um todo
+    "co-varia" com o argumento de tipo real.
+    Em outras palavras, se o argumento de tipo for substituído por um
+    subtipo, então o tipo como um todo também é um subtipo.
 
-    For example, the type parameter of the class `List` is covariant because
-    list types co-vary with their type argument: `List<int>` is a subtype of
-    `List<Object>` because `int` is a subtype of `Object`.
+    Por exemplo, o parâmetro de tipo da classe `List` é covariante porque
+    os tipos de lista co-variam com seu argumento de tipo: `List<int>` é um subtipo de
+    `List<Object>` porque `int` é um subtipo de `Object`.
 
-    In Dart, all type parameters of all class, mixin,
-    mixin class, and enum declarations are covariant.
+    Em Dart, todos os parâmetros de tipo de todas as declarações de classe, mixin,
+    classe mixin e enum são covariantes.
 
-    However, function types are different:
-    A function type is covariant in its return type, but
-    the opposite (known as _contravariant_) in its parameter types.
-    For example, the type `int Function(int)` is a
-    subtype of the type `Object Function(int)`, but it is a
-    supertype of `int Function(Object)`.
+    No entanto, os tipos de função são diferentes:
+    Um tipo de função é covariante em seu tipo de retorno, mas
+    o oposto (conhecido como _contravariante_) em seus tipos de parâmetros.
+    Por exemplo, o tipo `int Function(int)` é um
+    subtipo do tipo `Object Function(int)`, mas é um
+    supertipo de `int Function(Object)`.
 
-    This makes sense if you consider their [substitutability](#subtype).
-    If you call a function with a static type of `int Function(int)`,
-    that function can actually be of type `int Function(Object)` at runtime.
-    Based on the static type, you expect to be able to pass an `int` to it.
-    That will be fine since the function actually accepts any `Object`,
-    and this includes every object of type `int`.
-    Similarly, the returned result will be of type `int`,
-    which is also what you expect based on the static type.
+    Isso faz sentido se você considerar sua [substituibilidade](#subtype).
+    Se você chamar uma função com um tipo estático de `int Function(int)`,
+    essa função pode realmente ser do tipo `int Function(Object)` em tempo de execução.
+    Com base no tipo estático, você espera ser capaz de passar um `int` para ele.
+    Isso será bom, pois a função realmente aceita qualquer `Object`,
+    e isso inclui todos os objetos do tipo `int`.
+    Da mesma forma, o resultado retornado será do tipo `int`,
+    que também é o que você espera com base no tipo estático.
 
-    Hence, `int Function(Object)` is a subtype of `int Function(int)`.
+    Portanto, `int Function(Object)` é um subtipo de `int Function(int)`.
 
-    Note that everything is turned upside-down for parameter types.
-    In particular, this subtype relation among function types requires that
-    the _opposite_ subtype relation exists for the parameter type.
-    For example, `void Function(Object)` is a subtype of `void Function(int)` 
-    because `int` is a subtype of `Object`.
+    Observe que tudo é virado de cabeça para baixo para os tipos de parâmetros.
+    Em particular, esta relação de subtipo entre tipos de função requer que
+    a relação de subtipo _oposta_ exista para o tipo de parâmetro.
+    Por exemplo, `void Function(Object)` é um subtipo de `void Function(int)`
+    porque `int` é um subtipo de `Object`.
 
-    With a more complex type like `List<void Function(int)>`,
-    you have to consider the _positions_ in the type.
-    To accomplish this, turn one of the parts of the type into a placeholder,
-    and then consider what happens to the type when
-    different types are placed in that position.
+    Com um tipo mais complexo como `List<void Function(int)>`,
+    você tem que considerar as _posições_ no tipo.
+    Para realizar isso, transforme uma das partes do tipo em um espaço reservado,
+    e então considere o que acontece com o tipo quando
+    diferentes tipos são colocados nessa posição.
 
-    For example, consider `List<void Function(_)>` as a template for
-    a type where you can put different types in place of the placeholder `_`.
-    This type is contravariant in the position where that placeholder occurs.
+    Por exemplo, considere `List<void Function(_)>` como um modelo para
+    um tipo onde você pode colocar diferentes tipos no lugar do espaço reservado `_`.
+    Este tipo é contravariante na posição onde esse espaço reservado ocorre.
 
-    The following illustrates this by substituting `Object` and `int` for `_`.
-    `List<void Function(Object)>` is a subtype of `List<void Function(int)>`
-    because `void Function(Object)` is a subtype of `void Function(int)` because
-    `void` is a subtype of `void` (the return types) and
-    `int` is a subtype of `Object` (the parameter types, in the opposite order).
-    Hence, the type at `_` varies in the opposite direction of
-    the type `List<void Function(_)>` as a whole, and this
-    'opposite direction' by definition makes it a _contravariant position_.
+    O seguinte ilustra isso substituindo `Object` e `int` por `_`.
+    `List<void Function(Object)>` é um subtipo de `List<void Function(int)>`
+    porque `void Function(Object)` é um subtipo de `void Function(int)` porque
+    `void` é um subtipo de `void` (os tipos de retorno) e
+    `int` é um subtipo de `Object` (os tipos de parâmetro, na ordem oposta).
+    Portanto, o tipo em `_` varia na direção oposta de
+    o tipo `List<void Function(_)>` como um todo, e esta
+    'direção oposta' por definição torna uma _posição contravariante_.
 
-    A _covariant position_ is defined similarly.
-    For example, `_` is at a covariant position in the type `List<_>`,
-    and `_` is also at a covariant position in the type `_ Function(int)`.
+    Uma _posição covariante_ é definida de forma semelhante.
+    Por exemplo, `_` está em uma posição covariante no tipo `List<_>`,
+    e `_` também está em uma posição covariante no tipo `_ Function(int)`.
 
-    There is yet another kind of position known as _invariant_,
-    but it occurs much more rarely so the details are omitted here.
+    Existe ainda outro tipo de posição conhecido como _invariante_,
+    mas ocorre muito mais raramente, então os detalhes são omitidos aqui.
 
-    In practice, it's often sufficient to know that
-    the type arguments of a class, mixin, etc. are in a covariant position,
-    and so is the return type of a function type, but
-    the parameter types are in a contravariant position.
+    Na prática, muitas vezes é suficiente saber que
+    os argumentos de tipo de uma classe, mixin, etc. estão em uma posição covariante,
+    e assim é o tipo de retorno de um tipo de função, mas
+    os tipos de parâmetros estão em uma posição contravariante.
   related_links:
-    - text: "Subtype relationship"
+    - text: "Relação de subtipo"
       link: "#subtype"
-    - text: "Covariance and contravariance"
+    - text: "Covariância e contravariância"
       link: "https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)"
-    - text: "The covariant keyword"
+    - text: "A palavra-chave covariant"
       link: "/deprecated/sound-problems#the-covariant-keyword"
   labels:
-    - "language"
-    - "type system"
-    - "generics"
+    - "linguagem"
+    - "sistema de tipos"
+    - "genéricos"
   alternate:
-    - "variance positions"
-    # TODO: Covariant and contravariant could/should have their own entries.
-    - "covariance"
-    - "covariant"
-    - "contravariance"
-    - "contravariant"
+    - "posições de variância"
+    # TODO: Covariante e contravariante poderiam/deveriam ter suas próprias entradas.
+    - "covariância"
+    - "covariante"
+    - "contravariância"
+    - "contravariante"

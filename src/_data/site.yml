@@ -1,9 +1,10 @@
-# This follow defines various global variables to use throughout the site.
-# You can access them using Liquid like: `{{site.dart-api}}`.
+# Isso define várias variáveis globais para usar em todo o site.
+# Você pode acessá-las usando Liquid como: `{{site.dart-api}}`.
+# ia-translate: true
 
 title: Dart
 description: >-
-  Dart is a client-optimized language for developing fast apps on any platform.
+  Dart é uma linguagem otimizada para cliente para desenvolver aplicativos rápidos em qualquer plataforma.
 url: https://dart.dev
 redirect:
   go: https://dart.dev/go
@@ -35,9 +36,9 @@ yt:
 
 show_banner: true
 
-# Increment this global og:image URL version number (used as a query parameter)
-# when you update any og:image file. (Also increment the corresponding number
-# in the `firebase.json` redirect rule.)
+# Incremente este número de versão global da URL og:image (usado como um parâmetro de consulta)
+# quando você atualizar qualquer arquivo og:image. (Também incremente o número correspondente
+# na regra de redirecionamento `firebase.json`.)
 og_image_vers: "?2"
 
 sdkVersion: 3.6.0
