@@ -1,119 +1,119 @@
 ---
-title: Dart brand guidelines
+ia-translate: true
+title: Diretrizes da marca Dart
 description: >-
-  The guidelines governing the usage of the Dart trademarks and assets.
+  As diretrizes que regem o uso das marcas registradas e ativos do Dart.
 skipFreshness: true
 ---
 
-The "Dart" name and logo are trademarks owned by Google.
-These Brand Guidelines describe the appropriate uses of the Dart
-trademarks by members of the developer community who have obtained our
-consent to use the trademarks pursuant to the [Dart terms of service](/terms).
-These guidelines will ensure that the Dart trademarks are used in a
-manner that promotes Google's mission to provide a free and open source
-SDK, and are not associated with objectionable
-material, as determined by Google.
+O nome e o logotipo "Dart" são marcas registradas de propriedade do Google.
+Estas Diretrizes de Marca descrevem os usos apropriados das marcas
+Dart por membros da comunidade de desenvolvedores que obtiveram nosso
+consentimento para usar as marcas de acordo com os [termos de serviço do Dart](/terms).
+Estas diretrizes garantirão que as marcas Dart sejam usadas de
+maneira que promova a missão do Google de fornecer um SDK gratuito e de código
+aberto, e não sejam associadas a material
+questionável, conforme determinado pelo Google.
 
-Use of the Dart trademarks that is not expressly permitted by these
-guidelines is prohibited absent written permission from Google.
+O uso das marcas Dart que não for expressamente permitido por estas
+diretrizes é proibido, sem permissão por escrito do Google.
 
-The official Dart logos can be found in the
-[Dart and Flutter logo assets](https://services.google.com/fh/files/misc/dart_brand_guidelines_assets.zip)
-archive.
+Os logotipos oficiais do Dart podem ser encontrados no
+[arquivo de ativos do logotipo Dart e Flutter](https://services.google.com/fh/files/misc/dart_brand_guidelines_assets.zip).
 
-## General rules that govern the use of the Dart trademarks
+## Regras gerais que regem o uso das marcas Dart
 
-You are free to use the Dart trademarks: (i) in connection with your
-download and use of the Dart SDK to build and develop 
-apps, (ii) in training materials (e.g., video tutorials, online publications,
-etc.) that provide instructions or tips regarding how to use the Dart
-SDK to build and develop apps, and (iii) to show your support for
-the use of the Dart SDK by members of the developer community.  
+Você pode usar as marcas Dart: (i) em conexão com seu
+download e uso do SDK Dart para construir e desenvolver
+aplicativos, (ii) em materiais de treinamento (por exemplo, tutoriais em vídeo, publicações online,
+etc.) que fornecem instruções ou dicas sobre como usar o SDK Dart
+para construir e desenvolver aplicativos, e (iii) para mostrar seu apoio ao
+uso do SDK Dart por membros da comunidade de desenvolvedores.
 
-These guidelines do not restrict your right to use the "Dart" name
-in connection with descriptions of the Dart SDK that would be
-considered "fair use."  For example, you may use the "Dart"
-name to make truthful factual statements (e.g., "built with the Dart
-SDK") or to accurately describe a feature of the Dart SDK.  
+Estas diretrizes não restringem seu direito de usar o nome "Dart"
+em conexão com descrições do SDK Dart que seriam
+consideradas "uso justo". Por exemplo, você pode usar o nome "Dart"
+para fazer declarações factuais verdadeiras (por exemplo, "construído com o SDK Dart")
+ou para descrever com precisão um recurso do SDK Dart.
 
-You may use the Dart trademarks on your personal website, personal
-blog, or social media account to show your support for the Dart SDK,
-provided you do not use the Dart trademarks in a way that
-could confuse people into thinking that your site is an official Google
-site or that Google has sponsored or endorsed your site. In the case of
-websites or personal blogs, this means you should not use the Dart
-trademarks as the primary element on the webpage (e.g., in the masthead
-of the webpage or the title of the blog). In the case of social media
-accounts, this means you should not use the Dart trademarks in the
-background, in your profile image or in your social media username.  
+Você pode usar as marcas Dart em seu site pessoal, blog pessoal ou
+conta de mídia social para mostrar seu apoio ao SDK Dart,
+desde que não use as marcas Dart de forma que possa
+confundir as pessoas, fazendo-as pensar que seu site é um site oficial do Google
+ou que o Google patrocinou ou endossou seu site. No caso de
+sites ou blogs pessoais, isso significa que você não deve usar as
+marcas Dart como o elemento principal na página da web (por exemplo, no cabeçalho
+da página da web ou no título do blog). No caso de contas de mídia social,
+isso significa que você não deve usar as marcas Dart no fundo,
+na imagem do seu perfil ou no seu nome de usuário de mídia social.
 
-## Specific rules for proper usage of the Dart trademarks
+## Regras específicas para o uso adequado das marcas Dart
 
-In addition to the general rules discussed above, below are specific
-rules governing the proper use of the Dart trademarks.  
+Além das regras gerais discutidas acima, abaixo estão as regras específicas
+que regem o uso adequado das marcas Dart.
 
-**DO:**
+**FAÇA:**
 
-* Use the "Dart" name as an adjective and never as a verb or in the plural form.
-* When using "Dart" as an adjective, follow it with a generic term, 
-  for example, "the Dart SDK" or "the Dart platform."
-* Distinguish the "Dart" name from the surrounding text in some way.
-  Capitalize the first letter, capitalize or italicize the entire mark,
-  place the mark in quotes, use a different type style or font for the mark.
-* Use the trademark symbol <sup>TM</sup> for the first or most prominent
-  time the "Dart" name appears in text on your website or blog.
-  Make sure to always use the <sup>TM</sup> symbol,
-  not the <sup>&reg;</sup> symbol.
-* Include the following text near the first or most prominent use of the
-  Dart marks on your website or blog: "Dart and the related logo are
-  trademarks of Google LLC. We are not endorsed by or affiliated with
+* Use o nome "Dart" como um adjetivo e nunca como um verbo ou no plural.
+* Ao usar "Dart" como um adjetivo, siga-o com um termo genérico,
+  por exemplo, "o SDK Dart" ou "a plataforma Dart".
+* Distinga o nome "Dart" do texto ao redor de alguma forma.
+  Coloque a primeira letra em maiúscula, coloque toda a marca em maiúscula ou itálico,
+  coloque a marca entre aspas, use um estilo de tipo ou fonte diferente para a marca.
+* Use o símbolo de marca registrada <sup>TM</sup> para a primeira ou mais proeminente
+  vez que o nome "Dart" aparece no texto em seu site ou blog.
+  Certifique-se de sempre usar o símbolo <sup>TM</sup>,
+  não o símbolo <sup>&reg;</sup>.
+* Inclua o seguinte texto perto do primeiro ou mais proeminente uso das
+  marcas Dart em seu site ou blog: "Dart e o logotipo relacionado são
+  marcas registradas da Google LLC. Não somos endossados ​​nem afiliados à
   Google LLC."
-* Keep some distance between the Dart trademarks and any other trademarks,
-  logos, or icons that are displayed on the webpage.
+* Mantenha alguma distância entre as marcas Dart e quaisquer outras marcas
+  registradas, logotipos ou ícones exibidos na página da web.
 
-**DON'T:**
+**NÃO FAÇA:**
 
-* Don't alter, distort, or modify the Dart trademarks in any way.
-  This includes varying the spelling of the "Dart" name, or displaying
-  the Dart logo with color variations or unapproved visual elements. 
-* Don't combine the Google name with the "Dart" name to form a unitary
-  brand (e.g., don't use the phrases "Google Dart" or "Google's Dart").
-  You may use the Google name in full text to accurately describe the
-  Dart SDK (e.g., "The Dart SDK by Google").
-* Don't register the Dart trademarks or any trademarks, logos,
-  or domain names that are confusingly similar to them.
-* Don't incorporate the Dart trademarks into your own product names,
-  service names, trademarks, logos, or company names.   
-* Don't display the Dart trademarks in a manner that is misleading,
-  unfair, defamatory, infringing, libelous, disparaging, obscene or
-  otherwise objectionable to Google.
-* Don't use the Dart trademarks on or in connection with the sale of
-  any non-software goods or services (e.g., merchandise such as clothing,
-  pens, and stickers).
+* Não altere, distorça ou modifique as marcas Dart de forma alguma.
+  Isso inclui variar a grafia do nome "Dart" ou exibir
+  o logotipo Dart com variações de cor ou elementos visuais não aprovados.
+* Não combine o nome Google com o nome "Dart" para formar uma marca
+  unitária (por exemplo, não use as frases "Google Dart" ou "Dart do Google").
+  Você pode usar o nome Google por completo para descrever com precisão o
+  SDK Dart (por exemplo, "O SDK Dart do Google").
+* Não registre as marcas Dart ou quaisquer marcas registradas, logotipos,
+  ou nomes de domínio que sejam confusamente semelhantes a eles.
+* Não incorpore as marcas Dart em seus próprios nomes de produtos,
+  nomes de serviços, marcas registradas, logotipos ou nomes de empresas.
+* Não exiba as marcas Dart de maneira que seja enganosa,
+  injusta, difamatória, infratora, caluniosa, depreciativa, obscena ou
+  de outra forma questionável para o Google.
+* Não use as marcas Dart em ou em conexão com a venda de
+  quaisquer bens ou serviços que não sejam de software (por exemplo, mercadorias como roupas,
+  canetas e adesivos).
 
-## Community use exceptions
+## Exceções de uso da comunidade
 
-To allow for the use of the Dart trademarks by the Dart community,
-below are specific exceptions to the rules described above:  
+Para permitir o uso das marcas Dart pela comunidade Dart,
+abaixo estão exceções específicas às regras descritas acima:
 
-1. Local Dart user groups may: (i) use the "Dart" name
-   as part of their social media username in the following format:
-   "Dart + [name of country/city]" (e.g., "Dart France"); and (ii)
-   use the Dart logo in the national colors of the country where the
-   user group is based (e.g., for a user group based in France,
-   the colors blue, white and red), provided the Dart logo is otherwise
-   unaltered.  Such social media accounts should include a disclaimer that
-   clarifies that it is not an official Google account.
+1. Grupos de usuários locais do Dart podem: (i) usar o nome "Dart"
+   como parte de seu nome de usuário de mídia social no seguinte formato:
+   "Dart + [nome do país/cidade]" (por exemplo, "Dart França"); e (ii)
+   usar o logotipo Dart nas cores nacionais do país onde o
+   grupo de usuários está baseado (por exemplo, para um grupo de usuários com base na França,
+   as cores azul, branco e vermelho), desde que o logotipo Dart não seja
+   alterado. Essas contas de mídia social devem incluir um aviso que
+   esclareça que não é uma conta oficial do Google.
 
-2. You may use the Dart trademarks as part of the name of a newsletter
-   or related community content (e.g., Dart training courses,
-   Dart community forums) whose purpose is to promote the use of the
-   Dart SDK by members of the developer community.
-   Where the Dart trademarks are displayed on a website as part of a
-   community site name, you should use the trademark symbol <sup>TM</sup>
-   after the most prominent appearance of the "Dart" name and include
-   the following text: "Dart and the related logo are trademarks of
-   Google LLC.  We are not endorsed by or affiliated with Google LLC."
-   Where the Dart trademarks are displayed on a social media account
-   as part of a community site name, you should include a disclaimer that
-   clarifies that it is not an official Google account.
+2. Você pode usar as marcas Dart como parte do nome de um boletim
+   informativo ou conteúdo da comunidade relacionado (por exemplo, cursos de treinamento Dart,
+   fóruns da comunidade Dart) cujo objetivo é promover o uso do
+   SDK Dart por membros da comunidade de desenvolvedores.
+   Onde as marcas Dart são exibidas em um site como parte de um
+   nome de site da comunidade, você deve usar o símbolo de marca registrada <sup>TM</sup>
+   após a aparição mais proeminente do nome "Dart" e incluir
+   o seguinte texto: "Dart e o logotipo relacionado são marcas registradas da
+   Google LLC. Não somos endossados ​​nem afiliados à Google LLC."
+   Onde as marcas Dart são exibidas em uma conta de mídia social
+   como parte de um nome de site da comunidade, você deve incluir um aviso que
+   esclareça que não é uma conta oficial do Google.
