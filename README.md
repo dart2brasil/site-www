@@ -29,7 +29,7 @@ confira as [diretrizes de contribuição](CONTRIBUTING.md).
 
 ## Começando
 
-Comece procurando por uma [issue](https://github.com/dart-lang/site-www/issues)
+Comece procurando por uma [issue](https://github.com/dart2brasilg/site-www/issues)
 que chame sua atenção, ou crie uma issue com sua mudança proposta.
 Considere adicionar um comentário para informar a todos que você está trabalhando nisso, e
 sinta-se à vontade para fazer qualquer pergunta que tiver na mesma issue.
@@ -115,7 +115,7 @@ _escolha uma_ das seguintes técnicas de clonagem de submódulos:
     usando a opção `--recurse-submodules`:
 
     ```terminal
-    git clone --recurse-submodules https://github.com/dart-lang/site-www.git
+    git clone --recurse-submodules https://github.com/dart2brasil/site-www.git
     ```
 
 2.  Se você já clonou o repositório sem seu submódulo,
@@ -303,11 +303,11 @@ você pode construir uma versão completa e enviá-la para o Firebase.
     para que os revisores saibam se alguma outra alteração foi feita.
     
 
-[Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
-[OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
+[Build Status SVG]: https://github.com/dart2brasil/site-www/workflows/build/badge.svg
+[OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart2brasil/site-www/badge
 [Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
 [cloning]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
 [Eleventy]: https://www.11ty.dev/
 [Firebase]: https://firebase.google.com/
 [forking]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
-[Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain
+[Repo on GitHub Actions]: https://github.com/dart2brasil/site-www/actions?query=workflow%3Abuild+branch%3Amain
