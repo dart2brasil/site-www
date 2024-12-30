@@ -9,7 +9,7 @@ url: https://dart.dev
 redirect:
   go: https://dart.dev/go
 repo:
-  this: https://github.com/dart-lang/site-www
+  this: https://github.com/dart2brasil/site-www
   shared: https://github.com/dart-lang/site-shared
   dart:
     org: https://github.com/dart-lang
