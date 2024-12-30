@@ -1,4 +1,4 @@
-# <img src="https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/dart/logo/64.png" alt="Dart" width="28" height="28"/> The Dart language site (dart.dev)
+# <img src="https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/dart/logo/64.png" alt="Dart" width="28" height="28"/> O site da linguagem Dart (dart.dev)
 
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
@@ -18,57 +18,57 @@
   </picture>
 </a>
 
-The documentation site for the [Dart programming language](https://dart.dev), 
-built with [Eleventy][] and hosted on [Firebase][].
+O site de documentação da [linguagem de programação Dart](https://dart.dev),
+construído com [Eleventy][] e hospedado no [Firebase][].
 
-We welcome contributions of all kinds!
-To set up the site locally, follow the
-below guidelines on [Building the site](#build-the-site).
-To learn more about contributing to this repository,
-check out the [Contributing guidelines](CONTRIBUTING.md).
+Agradecemos contribuições de todos os tipos!
+Para configurar o site localmente, siga as
+diretrizes abaixo em [Construindo o site](#construindo-o-site).
+Para saber mais sobre como contribuir com este repositório,
+confira as [diretrizes de contribuição](CONTRIBUTING.md).
 
-## Getting started
+## Começando
 
-Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
-that catches your interest, or create an issue with your proposed change.
-Consider adding a comment to let everyone know that you're working on it, and
-feel free to ask any questions you have on the same issue.
+Comece procurando por uma [issue](https://github.com/dart-lang/site-www/issues)
+que chame sua atenção, ou crie uma issue com sua mudança proposta.
+Considere adicionar um comentário para informar a todos que você está trabalhando nisso, e
+sinta-se à vontade para fazer qualquer pergunta que tiver na mesma issue.
 
-To update this site, fork the repo, make your changes,
-and generate a pull request.
-For small, contained changes (such as style and typo fixes),
-you probably don't need to build this site.
-Often you can make changes using the GitHub UI.
-We can stage the changes automatically in your pull request.
+Para atualizar este site, faça um fork do repositório, faça suas alterações,
+e gere um pull request.
+Para pequenas alterações contidas (como correções de estilo e erros de digitação),
+você provavelmente não precisa construir este site.
+Muitas vezes você pode fazer alterações usando a interface do GitHub.
+Podemos preparar as alterações automaticamente em seu pull request.
 
-> [!IMPORTANT]  
-> If you are cloning this repository locally,
-> follow the below instruction on cloning with its submodule.
+> [!IMPORTANTE]
+> Se você estiver clonando este repositório localmente,
+> siga as instruções abaixo sobre como clonar com seu submódulo.
 
-If your change involves code samples, adds/removes pages, or affects navigation,
-do consider building and test your work before submitting.
+Se sua alteração envolver amostras de código, adicionar/remover páginas ou afetar a navegação,
+considere construir e testar seu trabalho antes de enviar.
 
-If you want or need to build the site, follow the steps below.
+Se você quiser ou precisar construir o site, siga as etapas abaixo.
 
-## Build the site
+## Construindo o site
 
-For changes beyond simple text and CSS tweaks,
-we recommend running the site locally to
-enable an edit-refresh cycle. 
+Para alterações além de simples ajustes de texto e CSS,
+recomendamos executar o site localmente para
+habilitar um ciclo de edição-atualização.
 
-### Get the prerequisites
+### Obtenha os pré-requisitos
 
-Install the following tools to build and develop the site:
+Instale as seguintes ferramentas para construir e desenvolver o site:
 
 #### Dart
 
-The latest stable release of Dart is required to build the site
-and run its tooling. This can be the Dart included in the Flutter SDK.
-If you don't have Dart or need to update, follow the
-instructions at [Get the Dart SDK][].
+A versão estável mais recente do Dart é necessária para construir o site
+e executar suas ferramentas. Este pode ser o Dart incluído no Flutter SDK.
+Se você não tem o Dart ou precisa atualizar, siga as
+instruções em [Obter o SDK do Dart][].
 
-If you already have Dart installed, verify it's on your path
-and already the latest stable version:
+Se você já tem o Dart instalado, verifique se ele está no seu caminho
+e já é a versão estável mais recente:
 
 ```terminal
 dart --version
@@ -76,232 +76,232 @@ dart --version
 
 #### Node.js
 
-The **latest** stable LTS release of Node.js is required to build the site.
-If you don't have Node.js or need to update, download your
-computer's corresponding version and follow the instructions
-from the [Node.js download archive][].
-If you prefer, you can use a version manager such as [nvm][],
-and run `nvm install` from the repository's root directory.
+A versão LTS estável **mais recente** do Node.js é necessária para construir o site.
+Se você não tem o Node.js ou precisa atualizar, baixe o
+versão correspondente do seu computador e siga as instruções
+do [arquivo de download do Node.js][].
+Se preferir, você pode usar um gerenciador de versões como o [nvm][],
+e execute `nvm install` do diretório raiz do repositório.
 
-If you already have Node installed, verify it's available on your path
-and already the latest stable version _(currently `20.14` or later)_:
+Se você já tem o Node instalado, verifique se ele está disponível em seu caminho
+e já a versão estável mais recente _(atualmente `20.14` ou posterior)_:
 
 ```terminal
 node --version
 ```
 
-If your version is out of date,
-follow the update instructions for how you originally installed it.
+Se sua versão estiver desatualizada,
+siga as instruções de atualização para como você a instalou originalmente.
 
-[Get the Dart SDK]: https://dart.dev/get-dart
-[Node.js download archive]: https://nodejs.org/en/download/
+[Obter o SDK do Dart]: https://dart.dev/get-dart
+[arquivo de download do Node.js]: https://nodejs.org/en/download/
 [nvm]: https://github.com/nvm-sh/nvm
 
-### Clone this repo and its submodules
+### Clone este repositório e seus submódulos
 
 > [!NOTE]
-> This repository has git _submodules_, which affects how you clone it.
-> The GitHub documentation has general help on
-> [forking][] and [cloning][] repos.
+> Este repositório tem _submódulos_ git, que afetam como você o clona.
+> A documentação do GitHub tem ajuda geral sobre
+> [forking][] e [cloning][] repositórios.
 
-If you're not a member of the Dart organization,
-we recommend you **create a fork** of this repo under your own account,
-and then submit a PR from that fork.
+Se você não é membro da organização Dart,
+recomendamos que você **crie um fork** deste repositório em sua própria conta,
+e então envie um PR desse fork.
 
-Once you have a fork (or you're a Dart org member),
-_choose one_ of the following submodule-cloning techniques:
+Depois de ter um fork (ou você é um membro da organização Dart),
+_escolha uma_ das seguintes técnicas de clonagem de submódulos:
 
-1. Clone the repo and its submodule at the same time
-   using the `--recurse-submodules` option:
+1.  Clone o repositório e seu submódulo ao mesmo tempo
+    usando a opção `--recurse-submodules`:
 
-   ```terminal
-   git clone --recurse-submodules https://github.com/dart-lang/site-www.git
-   ```
+    ```terminal
+    git clone --recurse-submodules https://github.com/dart-lang/site-www.git
+    ```
 
-2. If you've already cloned the repo without its submodule,
-   then run this command from the root of the repository:
+2.  Se você já clonou o repositório sem seu submódulo,
+    execute este comando a partir da raiz do repositório:
 
-   ```terminal
-   git submodule update --init --recursive
-   ```
+    ```terminal
+    git submodule update --init --recursive
+    ```
 
 > [!NOTE]
-> At any time during development
-> you can use the `git submodule` command to refresh submodules:
+> A qualquer momento durante o desenvolvimento
+> você pode usar o comando `git submodule` para atualizar os submódulos:
 >
 > ```terminal
 > git pull && git submodule update --init --recursive
 > ```
 
-## Set up your local environment and serve changes
+## Configure seu ambiente local e sirva as alterações
 
-Before you continue setting up the site infrastructure,
-verify the correct versions of Dart and Node.js are set up and available by
-following the instructions in [Get the prerequisites](#get-the-prerequisites).
+Antes de continuar configurando a infraestrutura do site,
+verifique se as versões corretas do Dart e Node.js estão configuradas e disponíveis
+seguindo as instruções em [Obtenha os pré-requisitos](#obtenha-os-pré-requisitos).
 
-1. _Optional:_ After cloning the repo and its submodules,
-   create a branch for your changes:
+1.  _Opcional:_ Depois de clonar o repositório e seus submódulos,
+    crie uma branch para suas alterações:
 
-   ```terminal
-   git checkout -b <BRANCH_NAME>
-   ```
+    ```terminal
+    git checkout -b <NOME_DA_BRANCH>
+    ```
 
-2. From the root directory of the repository,
-   fetch the site's Dart dependencies.
+2.  A partir do diretório raiz do repositório,
+    busque as dependências Dart do site.
 
-   ```terminal
-   dart pub get
-   ```
+    ```terminal
+    dart pub get
+    ```
 
-3. Install [`pnpm`][] using your preferred [installation method][pnpm-install].
-   `pnpm` is an alternative, efficient package manager for npm packages.
-   If you already have `pnpm`, verify you have the latest stable version.
-   We recommend using [`corepack`][] to install and manage `pnpm` versions,
-   since it is bundled with most installations of Node.
+3.  Instale o [`pnpm`][] usando seu [método de instalação][pnpm-install] preferido.
+    O `pnpm` é um gerenciador de pacotes alternativo e eficiente para pacotes npm.
+    Se você já tem o `pnpm`, verifique se você tem a versão estável mais recente.
+    Recomendamos usar o [`corepack`][] para instalar e gerenciar as versões do `pnpm`,
+    já que ele é incluído na maioria das instalações do Node.
 
-   If you haven't used `corepack` before, you'll need to
-   first enable it with `corepack enable`.
-   Then, to install the correct `pnpm` version, from the
-   root directory of the repository, run `corepack install`:
+    Se você não usou o `corepack` antes, você precisará
+    primeiro habilitá-lo com `corepack enable`.
+    Então, para instalar a versão correta do `pnpm`, a partir da
+    raiz do diretório do repositório, execute `corepack install`:
 
-   ```terminal
-   corepack enable
-   corepack install
-   ```
+    ```terminal
+    corepack enable
+    corepack install
+    ```
 
-4. Once you have `pnpm` installed and setup,
-   fetch the site's npm dependencies using `pnpm install`.
-   We highly recommend you use `pnpm`, but you can also use `npm`.
+4.  Depois de ter o `pnpm` instalado e configurado,
+    busque as dependências npm do site usando `pnpm install`.
+    Recomendamos que você use o `pnpm`, mas você também pode usar o `npm`.
 
-   ```terminal
-   pnpm install
-   ```
+    ```terminal
+    pnpm install
+    ```
 
-5. From the root directory, run the `dash_site` tool to
-   validate your setup and learn about the available commands.
+5.  A partir do diretório raiz, execute a ferramenta `dash_site` para
+    validar sua configuração e aprender sobre os comandos disponíveis.
 
-   ```terminal
-   ./dash_site --help
-   ```
+    ```terminal
+    ./dash_site --help
+    ```
 
-6. From the root directory, serve the site locally.
+6.  A partir do diretório raiz, sirva o site localmente.
 
-   ```terminal
-   ./dash_site serve
-   ```
+    ```terminal
+    ./dash_site serve
+    ```
 
-   This command generates and serves the site on a
-   local port that's printed to your terminal.
+    Este comando gera e serve o site em uma
+    porta local que é impressa em seu terminal.
 
-7. View your changes in the browser by navigating to <http://localhost:4000>.
+7.  Visualize suas alterações no navegador navegando para <http://localhost:4000>.
 
-   Note the port might be different if `4000` is taken.
+    Observe que a porta pode ser diferente se `4000` estiver ocupada.
 
-   If you want to check the raw, generated HTML output and structure,
-   view the `_site` directory in a file explorer or an IDE.
+    Se você quiser verificar a saída e a estrutura HTML brutas geradas,
+    visualize o diretório `_site` em um explorador de arquivos ou IDE.
 
-8. Make your changes to the local repo.
+8.  Faça suas alterações no repositório local.
 
-   The site should automatically rebuild on most changes, but if
-   something doesn't update, exit the process and rerun the command.
-   Improvements to this functionality are planned.
-   Please open a new issue to track the issue if this occurs.
+    O site deve ser reconstruído automaticamente na maioria das alterações, mas se
+    algo não for atualizado, saia do processo e execute o comando novamente.
+    Melhorias nesta funcionalidade estão planejadas.
+    Por favor, abra uma nova issue para rastrear o problema se isso ocorrer.
 
-9. Commit your changes to the branch and submit your PR.
+9.  Confirme suas alterações na branch e envie seu PR.
 
-   If your change is large, or you'd like to test it,
-   consider [validating your changes](#validate-your-changes).
+    Se sua alteração for grande ou se você quiser testá-la,
+    considere [validar suas alterações](#validar-suas-alterações).
 
 > [!TIP]
-> To find additional commands that you can run,
-> run `./dash_site --help` from the repository's root directory.
+> Para encontrar comandos adicionais que você pode executar,
+> execute `./dash_site --help` a partir do diretório raiz do repositório.
 
 [`corepack`]: https://nodejs.org/api/corepack.html
 [`pnpm`]: https://pnpm.io/
 [pnpm-install]: https://pnpm.io/installation
 
-## Validate your changes
+## Validar suas alterações
 
-### Check documentation and example code
+### Verificar documentação e código de exemplo
 
-If you've made changes to the code in the `/examples` or `/tool` directories,
-commit your work, then run the following command to
-verify it is up to date and matches the site standards.
+Se você fez alterações no código nos diretórios `/examples` ou `/tool`,
+confirme seu trabalho, então execute o seguinte comando para
+verificar se ele está atualizado e corresponde aos padrões do site.
 
 ```terminal
 ./dash_site check-all
 ```
 
-If this script reports any errors or warnings,
-then address those issues and rerun the command.
-If you have any issues, leave a comment on your issue or pull request,
-and we'll try our best to help you.
-You can also chat with us on the `#hackers-devrel` channel
-on the [Flutter contributors Discord][]!
+Se este script reportar quaisquer erros ou avisos,
+então aborde essas questões e execute o comando novamente.
+Se você tiver algum problema, deixe um comentário em sua issue ou pull request,
+e faremos o nosso melhor para ajudá-lo.
+Você também pode conversar conosco no canal `#hackers-devrel`
+no [Discord de contribuidores do Flutter][]!
 
-[Flutter contributors Discord]: https://github.com/flutter/flutter/wiki/Chat
+[Discord de contribuidores do Flutter]: https://github.com/flutter/flutter/wiki/Chat
 
-### Refresh code excerpts
+### Atualizar trechos de código
 
-A build that fails with the error
+Uma build que falha com o erro
 `Error: Some code excerpts needed to be updated!`
-means that one or more code excerpts in the site Markdown files
-aren't identical to the code regions declared
-in the corresponding `.dart` files.
+significa que um ou mais trechos de código nos arquivos Markdown do site
+não são idênticos às regiões de código declaradas
+nos arquivos `.dart` correspondentes.
 
-To resolve this error,
-from the root of the `site-www` directory,
-run `./dash_site refresh-excerpts`.
+Para resolver este erro,
+a partir da raiz do diretório `site-www`,
+execute `./dash_site refresh-excerpts`.
 
-To learn more about creating, editing, and using code excerpts,
-check out the [excerpt updater package documentation][].
+Para saber mais sobre como criar, editar e usar trechos de código,
+confira a [documentação do pacote de atualização de trechos][].
 
-[excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/packages/excerpter#readme
+[documentação do pacote de atualização de trechos]: https://github.com/dart-lang/site-shared/tree/main/packages/excerpter#readme
 
-## [Optional] Deploy to a staging site
+## [Opcional] Implante em um site de staging
 
-Submitted pull requests can be automatically staged
-by a site maintainer.
-If you'd like to stage the site yourself though,
-you can build a full version and upload it to Firebase.
+Pull requests enviados podem ser preparados automaticamente
+por um mantenedor do site.
+Se você quiser preparar o site sozinho,
+você pode construir uma versão completa e enviá-la para o Firebase.
 
-1. If you don't already have a Firebase project,
+1.  Se você ainda não tem um projeto Firebase,
 
-   - Navigate to the [Firebase Console](https://console.firebase.google.com)
-     and create your own Firebase project (for example, `dart-dev-staging`).
+    - Navegue até o [Console do Firebase](https://console.firebase.google.com)
+      e crie seu próprio projeto Firebase (por exemplo, `dart-dev-staging`).
 
-   - Head back to your local terminal and verify that you are logged in.
+    - Volte para o seu terminal local e verifique se você está logado.
 
-     ```terminal
-     firebase login
-     ```
+      ```terminal
+      firebase login
+      ```
 
-   - Ensure that your project exists and activate that project:
+    - Certifique-se de que seu projeto existe e ative esse projeto:
 
-     ```terminal
-     firebase projects:list
-     firebase use <your-project>
-     ```
+      ```terminal
+      firebase projects:list
+      firebase use <seu-projeto>
+      ```
 
-2. From the root directory of the repository, build the site:
+2.  A partir do diretório raiz do repositório, construa o site:
 
-   ```terminal
-   ./dash_site build
-   ```
+    ```terminal
+    ./dash_site build
+    ```
 
-   This builds the site and copy it to your local `_site` directory.
-   If that directory previously existed, it will be replaced.
+    Isso constrói o site e o copia para o seu diretório local `_site`.
+    Se esse diretório existia anteriormente, ele será substituído.
 
-3. Deploy to your activated Firebase project's default hosting site:
+3.  Implante no site de hospedagem padrão do seu projeto Firebase ativado:
 
-   ```terminal
-   firebase deploy --only hosting
-   ```
+    ```terminal
+    firebase deploy --only hosting
+    ```
 
-4. Navigate to your PR on GitHub and include the link of the staged version.
-   Do consider adding a reference to the commit you staged,
-   so that reviewers know if any further changes have been made.
-
+4.  Navegue até o seu PR no GitHub e inclua o link da versão preparada.
+    Considere adicionar uma referência ao commit que você preparou,
+    para que os revisores saibam se alguma outra alteração foi feita.
+    
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
