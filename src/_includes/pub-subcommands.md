@@ -1,3 +1,4 @@
+<!-- ia-translate: true -->
 * [`add`](/tools/pub/cmd/pub-add)
 * [`cache`](/tools/pub/cmd/pub-cache)
 * [`deps`](/tools/pub/cmd/pub-deps)

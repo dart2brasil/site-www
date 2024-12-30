@@ -1,65 +1,66 @@
-## Debugging production code {:#debugging}
+<!-- ia-translate: true -->
 
-This section gives tips for debugging production-compiled code
-in Chrome, Firefox, and Safari. You can only debug JavaScript code in
-browsers that support source maps such as Chrome.
+## Depurando código de produção {:#debugging}
+
+Esta seção oferece dicas para depurar código compilado para produção
+no Chrome, Firefox e Safari. Você só pode depurar código JavaScript em
+navegadores que suportam source maps, como o Chrome.
 
 :::tip
-Whenever possible, instead of debugging production code,
-debug code using a development server such as provided by [`webdev`][].
+Sempre que possível, em vez de depurar código de produção,
+depure o código usando um servidor de desenvolvimento como o fornecido por [`webdev`][`webdev`].
 :::
 
 [`webdev`]: /tools/webdev
 
-Whichever browser you use, you should enable pausing on at least
-uncaught exceptions, and perhaps on all exceptions. 
-For frameworks such as `dart:async` that wrap user code in try-catch, 
-we recommend pausing on all exceptions.
+Qualquer que seja o navegador que você use, você deve habilitar a pausa em pelo menos
+exceções não capturadas, e talvez em todas as exceções.
+Para frameworks como `dart:async` que envolvem o código do usuário em try-catch,
+recomendamos pausar em todas as exceções.
 
 [debugging web apps]: /web/debugging
 
-
 ### Chrome {:#dart2js-debugging-chrome}
 
-To debug in Chrome:
+Para depurar no Chrome:
 
-1. Open the Developer Tools window, as described in the
-   [Chrome DevTools documentation.](https://developer.chrome.com/docs/devtools/)
-2. Turn on source maps, as described in the video
+1. Abra a janela Developer Tools, conforme descrito na
+   [documentação do Chrome DevTools.](https://developer.chrome.com/docs/devtools/)
+2. Ative os source maps, conforme descrito no vídeo
    [SourceMaps in Chrome.](https://bit.ly/YugIUY)
-3. Enable debugging, either on all exceptions or only on uncaught exceptions,
-   as described in
-   [How to set breakpoints.](https://developer.chrome.com/docs/devtools/javascript/breakpoints/)
-4. Reload your app.
+3. Habilite a depuração, seja em todas as exceções ou apenas em exceções não capturadas,
+   conforme descrito em
+   [Como definir breakpoints.](https://developer.chrome.com/docs/devtools/javascript/breakpoints/)
+4. Recarregue seu aplicativo.
 
 ### Edge {:#dart2js-debugging-ie}
 
-To debug in Edge:
+Para depurar no Edge:
 
-1. Update to the latest version of Edge. 
-2. Load **Developer Tools** (**[F12](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/landing/)**).
-3. Reload the app. The **debugger** tab shows source-mapped files.
-4. Exception behavior can be controlled through **Ctrl+Shift+E**;
-   the default is **Break on unhandled exceptions**.
+1. Atualize para a versão mais recente do Edge.
+2. Carregue as **Ferramentas de Desenvolvedor** (**[F12](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/landing/)**).
+3. Recarregue o aplicativo. A aba **debugger** mostra os arquivos com source maps.
+4. O comportamento de exceção pode ser controlado através de **Ctrl+Shift+E**;
+   o padrão é **Interromper em exceções não tratadas**.
 
 ### Firefox {:#dart2js-debugging-firefox}
 
-To debug in Firefox:
+Para depurar no Firefox:
 
-1. Open the **Web Developer Tools** window, as described in the
-   [Firefox developer tools documentation](https://firefox-source-docs.mozilla.org/devtools-user/index.html).
-2. Enable **Pause on exceptions**, as shown in the following figure:
-   
-   <img width="640px" src="/assets/img/ff-debug.png" alt="Enable Pause on exceptions in Firefox debugger">
-   
-3. Reload the app. The **Debugger** tab shows source-mapped files.
+1. Abra a janela **Ferramentas de Desenvolvimento Web**, conforme descrito na
+   [documentação de ferramentas de desenvolvedor do Firefox](https://firefox-source-docs.mozilla.org/devtools-user/index.html).
+2. Habilite **Pausar em exceções**, conforme mostrado na figura a seguir:
+
+   <img width="640px" src="/assets/img/ff-debug.png" alt="Habilitar Pausar em exceções no depurador do Firefox">
+
+3. Recarregue o aplicativo. A aba **Debugger** mostra os arquivos com source maps.
 
 ### Safari {:#dart2js-debugging-safari}
 
-To debug in Safari:
+Para depurar no Safari:
 
-1. Turn on the **Develop** menu, 
-   as described in the [Safari Web Inspector Tutorial.]({{site.apple-dev}}/library/archive/documentation/NetworkingInternetWeb/Conceptual/Web_Inspector_Tutorial/EnableWebInspector/EnableWebInspector.html)
-2. Enable breaks, either on all exceptions or only on uncaught exceptions.
-   See [Add a JavaScript breakpoint](https://support.apple.com/en-ca/guide/safari-developer/add-a-javascript-breakpoint-dev5e4caf347/mac) under [Safari Developer Help.](https://support.apple.com/en-ca/guide/safari-developer/welcome/mac)
-3. Reload your app.
+1. Ative o menu **Desenvolver**,
+   conforme descrito no [Tutorial do Inspetor da Web do Safari.]({{site.apple-dev}}/library/archive/documentation/NetworkingInternetWeb/Conceptual/Web_Inspector_Tutorial/EnableWebInspector/EnableWebInspector.html)
+2. Habilite interrupções, seja em todas as exceções ou apenas em exceções não capturadas.
+   Veja [Adicionar um breakpoint JavaScript](https://support.apple.com/en-ca/guide/safari-developer/add-a-javascript-breakpoint-dev5e4caf347/mac) em [Ajuda para Desenvolvedores do Safari.](https://support.apple.com/en-ca/guide/safari-developer/welcome/mac)
+3. Recarregue seu aplicativo.

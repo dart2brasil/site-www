@@ -1,3 +1,4 @@
+<!-- ia-translate: true -->
 {% for lint in linter_rules %}
 
 {% if lint.state != "internal" %}
@@ -18,7 +19,7 @@
 
 {%- capture rule_set -%}
 <a href="/tools/linter-rules#{{set_link}}">
-    <img src="/assets/img/tools/linter/style-{{set}}.svg" alt="{{set}} rule set">
+    <img src="/assets/img/tools/linter/style-{{set}}.svg" alt="Conjunto de regras {{set}}">
 </a>
 {% endcapture %}
 
@@ -31,7 +32,7 @@
 {% if lint.fixStatus == "hasFix" %}
 {%- capture has_fix -%}
 <a href="/tools/linter-rules#quick-fixes">
-<img src="/assets/img/tools/linter/has-fix.svg" alt="Has a quick fix">
+<img src="/assets/img/tools/linter/has-fix.svg" alt="Possui correção rápida">
 </a>
 {% endcapture %}
 
@@ -40,7 +41,7 @@
 
 <a id="{{lint.name}}"></a>
 {% if lint.sinceDartSdk contains "wip" %}
-[`{{lint.name}}`](/tools/linter-rules/{{lint.name}}) _(Unreleased)_
+[`{{lint.name}}`](/tools/linter-rules/{{lint.name}}) _(Não lançado)_
 {% elsif lint.state != "stable" %}
 [`{{lint.name}}`](/tools/linter-rules/{{lint.name}}) _({{lint.state | capitalize}})_
 {% else %}
