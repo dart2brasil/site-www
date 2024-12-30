@@ -303,7 +303,7 @@ você pode construir uma versão completa e enviá-la para o Firebase.
     para que os revisores saibam se alguma outra alteração foi feita.
     
 
-[Build Status SVG]: https://github.com/dart2brasil/site-www/workflows/build/badge.svg
+[Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart2brasil/site-www/badge
 [Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
 [cloning]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
