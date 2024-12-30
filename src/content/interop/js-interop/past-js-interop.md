@@ -1,109 +1,110 @@
 ---
-title: Past JS interop
-description: Archive of past JS interop implementations.
+ia-translate: true
+title: Interoperabilidade JS Anterior
+description: Arquivo de implementações passadas de interoperabilidade JS.
 ---
 
 :::warning
-None of these legacy interop libraries are supported when compiling to [Wasm][].
+Nenhuma dessas bibliotecas legadas de interoperabilidade são suportadas ao compilar para [Wasm][Wasm].
 :::
 
-This page addresses previous iterations of JS interop for Dart that are
-considered legacy. They are not deprecated yet, but will likely be in the
-future. Therefore, prefer using [`dart:js_interop`] going forwards and migrate
-usages of old interop libraries when possible. While [`dart:html`] and other web
-libraries are closely related, they're covered in the [`package:web`] page.
+Esta página aborda iterações anteriores de interoperabilidade JS para Dart que são
+consideradas legadas. Elas não estão obsoletas ainda, mas provavelmente estarão no
+futuro. Portanto, prefira usar `dart:js_interop` daqui para frente e migre
+usos de bibliotecas antigas de interoperabilidade quando possível. Embora
+[`dart:html`] e outras bibliotecas web estejam intimamente relacionadas, elas são abordadas
+na página do [`package:web`].
 
 ## `dart:js`
 
-[`dart:js`] exposed a concrete [`object wrapper`] to interop with JS objects.
-This wrapper contained String-based methods to dynamically get, set, and call
-properties on the wrapped JS object. It was less performant due to wrapping
-costs and ergonomically more difficult to use. For example, you did not get
-code-completion as you couldn't declare interop members and instead relied on
-Strings. Many of the functionalities exposed in `dart:js` like [`allowInterop`]
-were later re-exposed through other interop libraries.
+[`dart:js`] expôs um [`object wrapper`] concreto para interoperar com objetos JS.
+Este wrapper continha métodos baseados em String para obter, definir e chamar
+propriedades dinamicamente no objeto JS encapsulado. Era menos performático devido
+aos custos de encapsulamento e ergonomicamente mais difícil de usar. Por exemplo, você não
+tinha code-completion, pois não podia declarar membros de interoperabilidade e, em vez disso, dependia
+de Strings. Muitas das funcionalidades expostas em `dart:js` como [`allowInterop`]
+foram posteriormente reexpostas por meio de outras bibliotecas de interoperabilidade.
 
-This library has been legacy ever since `package:js` and `dart:js_util` were
-released. It will likely be the first to be deprecated.
+Esta biblioteca tem sido legada desde que `package:js` e `dart:js_util` foram
+lançados. Provavelmente será a primeira a ser descontinuada.
 
 ## `package:js`
 
-[`package:js`] introduced functionality to declare interop types and members.
-It allowed users to write interop classes instead of interop extension types. At
-runtime, these classes were erased to a type that is similar to
-`dart:js_interop`'s [`JSObject`].
+[`package:js`] introduziu funcionalidade para declarar tipos e membros de interoperabilidade.
+Ele permitiu que os usuários escrevessem classes de interoperabilidade em vez de tipos de extensão de interoperabilidade. Em
+tempo de execução, essas classes foram apagadas para um tipo semelhante a
+`JSObject` do `dart:js_interop`.
 
 ```dart
 @JS()
 class JSType {}
 ```
 
-Users of `package:js` will find the syntax and semantics of `dart:js_interop`
-familiar. You may be able to migrate to `dart:js_interop` by replacing the class
-definition with an extension type and have it work in many cases.
+Os usuários do `package:js` acharão a sintaxe e a semântica do `dart:js_interop`
+familiares. Você pode migrar para `dart:js_interop` substituindo a classe
+definição com um tipo de extensão e fazer com que funcione em muitos casos.
 
-There are significant differences, however:
+Existem diferenças significativas, no entanto:
 
-- `package:js` types could not be used to interop with browser APIs.
-  `dart:js_interop` types can.
-- `package:js` allowed dynamic dispatch. This meant that if you casted the
-  `package:js` type to `dynamic` and called an interop member on it, it would
-  forward to the right member. This is no longer possible with
+- os tipos `package:js` não podiam ser usados para interoperar com APIs do navegador.
+  Os tipos `dart:js_interop` podem.
+- `package:js` permitia despacho dinâmico. Isso significava que se você convertesse o
+  tipo `package:js` para `dynamic` e chamasse um membro de interoperabilidade nele, ele
+  encaminharia para o membro certo. Isso não é mais possível com
   `dart:js_interop`.
-- `package:js`' [`@JS`] has no soundness guarantees as return types of
-  `external` members were not checked. `dart:js_interop` is sound.
-- `package:js` types could not rename instance members or have non-`external`
-  members.
-- `package:js` types could subtype and be a supertype of non-interop classes.
-  This was often used for mocks. With `dart:js_interop`, mocking is done by
-  substituting the JS object instead. See the [tutorial on mocking].
-- [`@anonymous`] types were a way to declare an interop type with an object
-  literal constructor. `dart:js_interop` doesn't distinguish types this way and
-  any `external` named-argument constructor is an object literal constructor.
+- O [`@JS`] do `package:js` não tem garantias de solidez, pois os tipos de retorno de
+  membros `external` não eram verificados. `dart:js_interop` é sólido.
+- Os tipos `package:js` não podiam renomear membros de instância ou ter
+  membros não `external`.
+- Os tipos `package:js` podiam subtipar e ser um supertipo de classes que não sejam de interoperabilidade.
+  Isso era frequentemente usado para mocks. Com `dart:js_interop`, o mock é feito por
+  substituir o objeto JS. Consulte o [tutorial sobre mock][tutorial on mocking].
+- Os tipos [`@anonymous`] eram uma forma de declarar um tipo de interoperabilidade com um objeto
+  construtor literal. `dart:js_interop` não distingue os tipos dessa forma e
+  qualquer construtor de argumento nomeado `external` é um construtor literal de objeto.
 
 ### `@staticInterop`
 
-Along with `@JS` and `@anonymous`, `package:js` later exposed
-[`@staticInterop`], which was a prototype of interop extension types. It is as
-expressive and restrictive as `dart:js_interop` and was meant to be a
-transitory syntax until extension types were available.
+Junto com `@JS` e `@anonymous`, `package:js` mais tarde expôs
+[`@staticInterop`], que era um protótipo de tipos de extensão de interoperabilidade. É tão
+expressivo e restritivo quanto `dart:js_interop` e foi concebido para ser um
+sintaxe transitória até que os tipos de extensão estivessem disponíveis.
 
-`@staticInterop` types were implicitly erased to `JSObject`. It required users
-to declare all instance members in extensions so that only static semantics
-could be used, and had stronger soundness guarantees. Users could use it to
-interact with browser APIs, and it also allowed things like renaming and
-non-`external` members. Like interop extension types, it didn't have support for
-dynamic dispatch.
+Os tipos `@staticInterop` foram implicitamente apagados para `JSObject`. Ele exigia que os usuários
+declarassem todos os membros da instância em extensões para que apenas a semântica estática
+pudesse ser usado e tinha garantias de solidez mais fortes. Os usuários poderiam usá-lo para
+interagir com APIs do navegador e também permitia coisas como renomeação e
+membros não `external`. Como os tipos de extensão de interoperabilidade, ele não tinha suporte para
+despacho dinâmico.
 
-`@staticInterop` classes can almost always be migrated to an interop extension
-type by just changing the class to an extension type and removing the
-annotations.
+As classes `@staticInterop` quase sempre podem ser migradas para um tipo de extensão de interoperabilidade
+apenas alterando a classe para um tipo de extensão e removendo o
+anotações.
 
-`dart:js_interop` exposed `@staticInterop` (and `@anonymous`, but only if
-`@staticInterop` is also used) to support static interop semantics until
-extension types were added to the language. All such types should now be
-migrated to extension types.
+`dart:js_interop` expôs `@staticInterop` (e `@anonymous`, mas apenas se
+`@staticInterop` também for usado) para suportar semântica de interoperabilidade estática até
+tipos de extensão foram adicionados à linguagem. Todos esses tipos devem agora ser
+migrado para tipos de extensão.
 
 ## `dart:js_util`
 
-[`dart:js_util`] supplied a number of utility functions that could not be
-declared in an `package:js` type or were necessary for values to be passed back
-and forth. This included members like:
+[`dart:js_util`] forneceu uma série de funções de utilidade que não podiam ser
+declaradas em um tipo `package:js` ou eram necessárias para que os valores fossem passados de um lado para outro. Isso incluía membros como:
 
-- `allowInterop` (which is now [`Function.toJS`])
-- `getProperty`/`setProperty`/`callMethod`/`callConstructor` (which are now in
+- `allowInterop` (que agora é [`Function.toJS`])
+- `getProperty`/`setProperty`/`callMethod`/`callConstructor` (que agora estão em
   [`dart:js_interop_unsafe`])
-- Various JS operators
-- Type-checking helpers
-- Mocking support
-- And more.
+- Vários operadores JS
+- Auxiliares de verificação de tipo
+- Suporte a mock
+- E mais.
 
-`dart:js_interop` and `dart:js_interop_unsafe` contain these helpers now with
-possibly alternate syntax.
+`dart:js_interop` e `dart:js_interop_unsafe` contêm esses auxiliares agora com
+possivelmente sintaxe alternativa.
 
 {% comment %}
-TODO: add links (with stable) when ready:
-TODO: Link to `package:web` section
+TODO: adicionar links (com stable) quando pronto:
+TODO: Link para a seção `package:web`
 {% endcomment %}
 
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html

@@ -31,7 +31,7 @@ temas abrangentes:
     intenção de forma mais simples e fácil.
 
     Se houver várias maneiras de dizer algo, você geralmente deve escolher a mais
-    concisa. Isso não quer dizer que você deve fazer [code golf][] para enfiar um
+    concisa. Isso não quer dizer que você deve fazer [code golf][code golf] para enfiar um
     programa inteiro em uma única linha. O objetivo é um código que seja
     *econômico*, não *denso*.
 
@@ -41,20 +41,20 @@ temas abrangentes:
 
 Dividimos as diretrizes em algumas páginas separadas para fácil assimilação:
 
-  * **[Guia de Estilo][]** &ndash; Isso define as regras para organizar e
+  * **[Guia de Estilo][style guide]** &ndash; Isso define as regras para organizar e
     estruturar o código, ou pelo menos as partes que o
-    [`dart format`][] não lida para você. O guia de estilo também especifica
+    [`dart format`][`dart format`] não lida para você. O guia de estilo também especifica
     como os identificadores são formatados: `camelCase`, `using_underscores`, etc.
 
-  * **[Guia de Documentação][]** &ndash; Isso informa tudo o que você precisa
+  * **[Guia de Documentação][documentation guide]** &ndash; Isso informa tudo o que você precisa
     saber sobre o que vai dentro dos comentários. Tanto comentários de
     documentação quanto comentários de código comuns.
 
-  * **[Guia de Uso][]** &ndash; Isso ensina como fazer o melhor uso dos recursos
+  * **[Guia de Uso][usage guide]** &ndash; Isso ensina como fazer o melhor uso dos recursos
     da linguagem para implementar o comportamento. Se estiver em uma declaração
     ou expressão, estará coberto aqui.
 
-  * **[Guia de Design][]** &ndash; Este é o guia mais flexível, mas o que tem o
+  * **[Guia de Design][design guide]** &ndash; Este é o guia mais flexível, mas o que tem o
     escopo mais amplo. Ele cobre o que aprendemos sobre como projetar APIs
     consistentes e utilizáveis para bibliotecas. Se estiver em uma assinatura
     de tipo ou declaração, isso o aborda.
@@ -106,7 +106,7 @@ diretriz vincula a essas regras. Os links usam o seguinte formato:
 {% render 'linter-rule-mention.md', rules:'unnecessary_getters_setters' %}
 
 Para aprender como usar o linter, veja
-[Habilitando regras do linter][] e a lista de [regras do linter][lints].
+[Habilitando regras do linter][Habilitando regras do linter] e a lista de [regras do linter][lints].
 
 [Habilitando regras do linter]: /tools/analysis#enabling-linter-rules
 [lints]: /tools/linter-rules

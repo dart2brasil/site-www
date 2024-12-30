@@ -1,48 +1,45 @@
 ---
-title: Metadata
-description: Metadata and annotations in Dart.
+ia-translate: true
+title: Metadados
+description: Metadados e anotações em Dart.
 toc: false
 prevpage:
   url: /language/comments
-  title: Comments
+  title: Comentários
 nextpage:
   url: /language/libraries
   title: Libraries
 ---
 
+Use metadados para fornecer informações adicionais sobre seu código. Uma anotação de metadados começa com o caractere `@`, seguido por uma referência a uma constante de tempo de compilação (como `deprecated`) ou uma chamada para um construtor constante.
 
-Use metadata to give additional information about your code. A metadata
-annotation begins with the character `@`, followed by either a reference
-to a compile-time constant (such as `deprecated`) or a call to a
-constant constructor.
-
-Four annotations are available to all Dart code: 
-[`@Deprecated`][], [`@deprecated`][], [`@override`][], and [`@pragma`][]. 
-For examples of using `@override`,
-see [Extending a class][].
-Here's an example of using the `@Deprecated` annotation:
+Quatro anotações estão disponíveis para todo o código Dart:
+[`@Deprecated`][`@Deprecated`], [`@deprecated`][`@deprecated`], [`@override`][`@override`], e [`@pragma`][`@pragma`].
+Para exemplos de uso de `@override`,
+veja [Estendendo uma classe][Extending a class].
+Aqui está um exemplo de como usar a anotação `@Deprecated`:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@Deprecated.*/[!$&!]/g"?>
 ```dart
 class Television {
-  /// Use [turnOn] to turn the power on instead.
+  /// Use [turnOn] para ligar a energia.
   [!@Deprecated('Use turnOn instead')!]
   void activate() {
     turnOn();
   }
 
-  /// Turns the TV's power on.
+  /// Liga a energia da TV.
   void turnOn() {...}
   // ···
 }
 ```
 
-You can use `@deprecated` if you don't want to specify a message.
-However, we [recommend][dep-lint] always
-specifying a message with `@Deprecated`.
+Você pode usar `@deprecated` se não quiser especificar uma mensagem.
+No entanto, nós [recomendamos][dep-lint] sempre
+especificar uma mensagem com `@Deprecated`.
 
-You can define your own metadata annotations. Here's an example of
-defining a `@Todo` annotation that takes two arguments:
+Você pode definir suas próprias anotações de metadados. Aqui está um exemplo de como
+definir uma anotação `@Todo` que recebe dois argumentos:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart"?>
 ```dart
@@ -54,7 +51,7 @@ class Todo {
 }
 ```
 
-And here's an example of using that `@Todo` annotation:
+E aqui está um exemplo de como usar essa anotação `@Todo`:
 
 <?code-excerpt "misc/lib/language_tour/metadata/misc.dart (usage)"?>
 ```dart
@@ -64,9 +61,9 @@ void doSomething() {
 }
 ```
 
-Metadata can appear before a library, class, typedef, type parameter,
-constructor, factory, function, field, parameter, or variable
-declaration and before an import or export directive.
+Metadados podem aparecer antes de uma biblioteca, classe, typedef,
+parâmetro de tipo, construtor, factory, função, campo, parâmetro ou
+declaração de variável e antes de uma diretiva de importação ou exportação.
 
 [`@Deprecated`]: {{site.dart-api}}/dart-core/Deprecated-class.html
 [`@deprecated`]: {{site.dart-api}}/dart-core/deprecated-constant.html

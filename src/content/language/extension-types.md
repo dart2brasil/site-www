@@ -1,102 +1,103 @@
 ---
-title: Extension types
-description: Learn how to write a static-only interface for an existing type.
+ia-translate: true
+title: Tipos de extensão
+description: Aprenda como escrever uma interface estática apenas para um tipo existente.
 prevpage:
   url: /language/extension-methods
-  title: Extension methods
+  title: Métodos de extensão
 nextpage:
   url: /language/callable-objects
-  title: Callable objects
+  title: Objetos invocáveis
 ---
 
-An extension type is a compile-time abstraction that "wraps"
-an existing type with a different, static-only interface.
-They are a major component of [static JS interop][] because 
-they can easily modify an existing type's interface
-(crucial for any kind of interop)
-without incurring the cost of an actual wrapper.
+Um tipo de extensão é uma abstração em tempo de compilação que "envolve"
+um tipo existente com uma interface diferente, estática apenas.
+Eles são um componente principal do [interop JS estático][static JS interop] porque
+eles podem facilmente modificar a interface de um tipo existente
+(crucial para qualquer tipo de interop)
+sem incorrer no custo de um wrapper real.
 
-Extension types enforce discipline on the set of operations (or interface)
-available to objects of an underlying type,
-called the *representation type*.
-When defining the interface of an extension type,
-you can choose to reuse some members of the representation type,
-omit others, replace others, and add new functionality.
+Tipos de extensão impõem disciplina no conjunto de operações (ou interface)
+disponível para objetos de um tipo subjacente,
+chamado de *tipo de representação*.
+Ao definir a interface de um tipo de extensão,
+você pode optar por reutilizar alguns membros do tipo de representação,
+omitir outros, substituir outros e adicionar novas funcionalidades.
 
-The following example wraps the `int` type to create an extension type
-that only allows operations that make sense for ID numbers:
+O exemplo a seguir envolve o tipo `int` para criar um tipo de extensão
+que permite apenas operações que fazem sentido para números de ID:
 
 ```dart
 extension type IdNumber(int id) {
-  // Wraps the 'int' type's '<' operator:
+  // Envolve o operador '<' do tipo 'int':
   operator <(IdNumber other) => id < other.id;
-  // Doesn't declare the '+' operator, for example,
-  // because addition does not make sense for ID numbers.
+  // Não declara o operador '+', por exemplo,
+  // porque a adição não faz sentido para números de ID.
 }
 
 void main() {
-  // Without the discipline of an extension type,
-  // 'int' exposes ID numbers to unsafe operations:
+  // Sem a disciplina de um tipo de extensão,
+  // 'int' expõe números de ID a operações não seguras:
   int myUnsafeId = 42424242;
-  myUnsafeId = myUnsafeId + 10; // This works, but shouldn't be allowed for IDs.
+  myUnsafeId = myUnsafeId + 10; // Isso funciona, mas não deveria ser permitido para IDs.
 
   var safeId = IdNumber(42424242);
-  safeId + 10; // Compile-time error: No '+' operator.
-  myUnsafeId = safeId; // Compile-time error: Wrong type.
-  myUnsafeId = safeId as int; // OK: Run-time cast to representation type.
-  safeId < IdNumber(42424241); // OK: Uses wrapped '<' operator.
+  safeId + 10; // Erro em tempo de compilação: Sem operador '+'.
+  myUnsafeId = safeId; // Erro em tempo de compilação: Tipo errado.
+  myUnsafeId = safeId as int; // OK: Cast em tempo de execução para o tipo de representação.
+  safeId < IdNumber(42424241); // OK: Usa o operador '<' envolvido.
 }
 ```
 
 :::note
-Extension types serve the same purpose as **wrapper classes**,
-but don't require the creation of an extra run-time object,
-which can get expensive when you need to wrap lots of objects.
-Because extension types are static-only and compiled away at run time,
-they are essentially zero cost.
+Tipos de extensão servem ao mesmo propósito que **classes wrapper**,
+mas não exigem a criação de um objeto extra em tempo de execução,
+o que pode ficar caro quando você precisa envolver muitos objetos.
+Como os tipos de extensão são estáticos apenas e compilados em tempo de execução,
+eles são essencialmente de custo zero.
 
-[**Extension methods**][ext] (also known just as "extensions")
-are a static abstraction similar to extension types.
-However, an extension method adds functionality *directly*
-to every instance of its underlying type.
-Extension types are different;
-an extension type's interface *only* applies to expressions
-whose static type is that extension type.
-They are distinct from the interface of their underlying type by default.
+[**Métodos de extensão**][ext] (também conhecidos apenas como "extensões")
+são uma abstração estática semelhante aos tipos de extensão.
+No entanto, um método de extensão adiciona funcionalidade *diretamente*
+a cada instância de seu tipo subjacente.
+Tipos de extensão são diferentes;
+a interface de um tipo de extensão *apenas* se aplica a expressões
+cujo tipo estático é esse tipo de extensão.
+Eles são distintos da interface de seu tipo subjacente por padrão.
 :::
 
-## Syntax
+## Sintaxe
 
-### Declaration
+### Declaração
 
-Define a new extension type with the `extension type` declaration and a name,
-followed by the *representation type declaration* in parenthesis:
+Defina um novo tipo de extensão com a declaração `extension type` e um nome,
+seguido pela *declaração do tipo de representação* entre parênteses:
 
 ```dart
 extension type E(int i) {
-  // Define set of operations.
+  // Define o conjunto de operações.
 }
 ```
 
-The representation type declaration `(int i)` specifies that 
-the underlying type of extension type `E` is `int`,
-and that the reference to the *representation object* is named `i`.
-The declaration also introduces:
-- An implicit getter for the representation object
-  with the representation type as the return type: `int get i`.
-- An implicit constructor: `E(int i) : i = i`.
+A declaração do tipo de representação `(int i)` especifica que
+o tipo subjacente do tipo de extensão `E` é `int`,
+e que a referência ao *objeto de representação* é nomeada `i`.
+A declaração também introduz:
+- Um getter implícito para o objeto de representação
+  com o tipo de representação como o tipo de retorno: `int get i`.
+- Um construtor implícito: `E(int i) : i = i`.
 
-The representation object gives the extension type access to an object
-at the underlying type.
-The object is in scope in the extension type body, and
-you can access it using its name as a getter:
+O objeto de representação dá ao tipo de extensão acesso a um objeto
+no tipo subjacente.
+O objeto está no escopo no corpo do tipo de extensão, e
+você pode acessá-lo usando seu nome como um getter:
 
-- Within the extension type body using `i` (or `this.i` in a constructor).
-- Outside with a property extraction using `e.i`
-  (where `e` has the extension type as its static type). 
+- Dentro do corpo do tipo de extensão usando `i` (ou `this.i` em um construtor).
+- Fora com uma extração de propriedade usando `e.i`
+  (onde `e` tem o tipo de extensão como seu tipo estático).
 
-Extension type declarations can also include [type parameters](generics)
-just like classes or extensions:
+Declarações de tipo de extensão também podem incluir [parâmetros de tipo](generics)
+assim como classes ou extensões:
 
 ```dart
 extension type E<T>(List<T> elements) {
@@ -104,14 +105,14 @@ extension type E<T>(List<T> elements) {
 }
 ```
 
-### Constructors
+### Construtores
 
-You can optionally declare [constructors][] in an extension type's body.
-The representation declaration itself is an implicit constructor,
-so by default takes the place of an unnamed constructor for the extension type.
-Any additional non-redirecting generative constructors must
-initialize the representation object's instance variable
-using `this.i` in its initializer list or formal parameters.
+Você pode opcionalmente declarar [construtores][constructors] no corpo de um tipo de extensão.
+A própria declaração de representação é um construtor implícito,
+então, por padrão, assume o lugar de um construtor sem nome para o tipo de extensão.
+Quaisquer construtores generativos não redirecionadores adicionais devem
+inicializar a variável de instância do objeto de representação
+usando `this.i` em sua lista de inicializadores ou parâmetros formais.
 
 ```dart
 extension type E(int i) {
@@ -120,14 +121,14 @@ extension type E(int i) {
 }
 
 void main() {
-  E(4); // Implicit unnamed constructor.
-  E.n(3); // Named constructor.
-  E.m(5, "Hello!"); // Named constructor with additional parameters.
+  E(4); // Construtor sem nome implícito.
+  E.n(3); // Construtor nomeado.
+  E.m(5, "Olá!"); // Construtor nomeado com parâmetros adicionais.
 }
 ```
 
-Or, you can name the representation declaration constructor,
-in which case there is room for an unnamed constructor in the body:
+Ou, você pode nomear o construtor da declaração de representação,
+caso em que há espaço para um construtor sem nome no corpo:
 
 ```dart
 extension type const E._(int it) {
@@ -142,10 +143,10 @@ void main2() {
 }
 ```
 
-You can also completely hide the constructor, instead of just defining a new one,
-using the same private constructor syntax for classes, `_`. For example,
-if you only want clients constructing `E` with a `String`, even though
-the underlying type is `int`:
+Você também pode ocultar completamente o construtor, em vez de apenas definir um novo,
+usando a mesma sintaxe de construtor privado para classes, `_`. Por exemplo,
+se você quiser que os clientes construam `E` apenas com uma `String`, mesmo que
+o tipo subjacente seja `int`:
 
 ```dart
 extension type E._(int i) {
@@ -153,82 +154,82 @@ extension type E._(int i) {
 }
 ```
 
-You can also declare forwarding generative constructors,
-or [factory constructors][factory]
-(which can also forward to constructors of sub-extension types).
+Você também pode declarar construtores generativos de encaminhamento,
+ou [construtores de fábrica][factory]
+(que também podem encaminhar para construtores de subtipos de extensão).
 
-### Members
+### Membros
 
-Declare members in the body of an extension type to define its interface
-the same way you would for class members.
-Extension type members can be methods, getters, setters, or operators
-(non-[`external`][] [instance variables][] and [abstract members][]
-are not allowed):
+Declare membros no corpo de um tipo de extensão para definir sua interface
+da mesma forma que você faria para membros de classe.
+Membros de tipo de extensão podem ser métodos, getters, setters ou operadores
+(não-[`external`][`external`] [variáveis de instância][instance variables] e [membros abstratos][abstract members]
+não são permitidos):
 
 ```dart
 extension type NumberE(int value) {
-  // Operator:
+  // Operador:
   NumberE operator +(NumberE other) =>
       NumberE(value + other.value);
   // Getter:
   NumberE get myNum => this;
-  // Method:
+  // Método:
   bool isValid() => !value.isNegative;
 }
 ```
 
-Interface members of the representation type are not interface members
-of the extension type [by default](#transparency).
-To make a single member of the representation type available
-on the extension type, you must write a declaration for it
-in the extension type definition, like the `operator +` in `NumberE`.
-You also can define new members unrelated to the representation type,
-like the `i` getter and `isValid` method.
+Membros de interface do tipo de representação não são membros de interface
+do tipo de extensão [por padrão](#transparency).
+Para tornar um único membro do tipo de representação disponível
+no tipo de extensão, você deve escrever uma declaração para ele
+na definição do tipo de extensão, como o `operator +` em `NumberE`.
+Você também pode definir novos membros não relacionados ao tipo de representação,
+como o getter `i` e o método `isValid`.
 
 ### Implements
 
-You can optionally use the `implements` clause to:
-- Introduce a subtype relationship on an extension type, AND
-- Add the members of the representation object to the extension type interface.
+Você pode opcionalmente usar a cláusula `implements` para:
+- Introduzir uma relação de subtipo em um tipo de extensão, E
+- Adicionar os membros do objeto de representação à interface do tipo de extensão.
 
-The `implements` clause introduces an [applicability][]
-relationship like the one between an [extension method][ext] and its `on` type.
-Members that are applicable to the supertype are applicable to the
-subtype as well, unless the subtype has a declaration with the same
-member name.
+A cláusula `implements` introduz uma relação de [aplicabilidade][applicability]
+como aquela entre um [método de extensão][ext] e seu tipo `on`.
+Membros que são aplicáveis ao supertipo são aplicáveis ao
+subtipo também, a menos que o subtipo tenha uma declaração com o mesmo
+nome de membro.
 
-An extension type can only implement:
+Um tipo de extensão só pode implementar:
 
-- **Its representation type**.
-  This makes all members of the representation type implicitly available
-  to the extension type.
+- **Seu tipo de representação**.
+  Isso torna todos os membros do tipo de representação implicitamente disponíveis
+  para o tipo de extensão.
   
   ```dart
   extension type NumberI(int i) 
     implements int{
-    // 'NumberI' can invoke all members of 'int',
-    // plus anything else it declares here.
+    // 'NumberI' pode invocar todos os membros de 'int',
+    // mais qualquer outra coisa que ele declarar aqui.
   }
   ```
   
-- **A supertype of its representation type**.
-  This makes the members of the supertype available,
-  while not necessarily all the members of representation type.
+- **Um supertipo de seu tipo de representação**.
+  Isso torna os membros do supertipo disponíveis,
+  enquanto não necessariamente todos os membros do tipo de representação.
   
   ```dart
   extension type Sequence<T>(List<T> _) implements Iterable<T> {
-    // Better operations than List.
+    // Operações melhores do que List.
   }
   
   extension type Id(int _id) implements Object {
-    // Makes the extension type non-nullable.
+    // Torna o tipo de extensão não anulável.
     static Id? tryParse(String source) => int.tryParse(source) as Id?;
   }
   ```
   
-- **Another extension type** that is valid on the same representation type.
-  This allows you to reuse operations across multiple extension types
-  (similar to multiple inheritance).
+- **Outro tipo de extensão** que é válido no mesmo tipo de representação.
+  Isso permite que você reutilize operações em vários tipos de extensão
+  (semelhante à herança múltipla).
   
   ```dart
   extension type const Opt<T>._(({T value})? _) { 
@@ -244,39 +245,39 @@ An extension type can only implement:
   }
   ```
 
-Read the [Usage](#usage) section to learn more about the effect of `implements`
-in different scenarios.
+Leia a seção [Uso](#usage) para saber mais sobre o efeito de `implements`
+em diferentes cenários.
 
 #### `@redeclare`
 
-Declaring an extension type member that shares a name with a member of a supertype
-is *not* an override relationship like it is between classes,
-but rather a *redeclaration*. An extension type member declaration
-*completely replaces* any supertype member with the same name. 
-It's not possible to provide an alternative implementation
-for the same function.
+Declarar um membro de tipo de extensão que compartilha um nome com um membro de um supertipo
+*não* é uma relação de sobreposição como é entre classes,
+mas sim uma *redeclaração*. Uma declaração de membro de tipo de extensão
+*substitui completamente* qualquer membro de supertipo com o mesmo nome.
+Não é possível fornecer uma implementação alternativa
+para a mesma função.
 
-You can use the `@redeclare` annotation to tell the compiler you are
-*knowingly* choosing to use the same name as a supertype's member.
-The analyzer will then warn you if that's not actually true,
-for example if one of the names are mistyped.
+Você pode usar a anotação `@redeclare` para dizer ao compilador que você está
+*conscientemente* escolhendo usar o mesmo nome que o membro de um supertipo.
+O analisador então avisará se isso não for realmente verdade,
+por exemplo, se um dos nomes estiver digitado incorretamente.
 
 ```dart
 extension type MyString(String _) implements String {
-  // Replaces 'String.operator[]'
+  // Substitui 'String.operator[]'
   @redeclare
   int operator [](int index) => codeUnitAt(index);
 }
 ```
 
-You can also enable the lint [`annotate_redeclares`][lint]
-to get a warning if you declare an extension type method
-that hides a superinterface member and *isn't* annotated with `@redeclare`.
+Você também pode habilitar o lint [`annotate_redeclares`][lint]
+para receber um aviso se você declarar um método de tipo de extensão
+que oculta um membro de superinterface e *não* é anotado com `@redeclare`.
 
-## Usage
+## Uso
 
-To use an extension type, create an instance the same as you would with a class:
-by calling a constructor:
+Para usar um tipo de extensão, crie uma instância da mesma forma que você faria com uma classe:
+chamando um construtor:
 
 ```dart
 extension type NumberE(int value) {
@@ -292,171 +293,171 @@ void testE() {
 }
 ```
 
-Then, you can invoke members on the object as you would with a class object.
+Então, você pode invocar membros no objeto como faria com um objeto de classe.
 
-There are two equally valid, but substantially different core use cases
-for extension types:
+Existem dois casos de uso principais igualmente válidos, mas substancialmente diferentes
+para tipos de extensão:
 
-1. Providing an *extended* interface to an existing type.
-2. Providing a *different* interface to an existing type.
+1. Fornecer uma interface *estendida* para um tipo existente.
+2. Fornecer uma interface *diferente* para um tipo existente.
 
 :::note
-In any case, the representation type of an extension type is never its subtype,
-so a representation type can't be used interchangeably where the extension type is needed.
+Em qualquer caso, o tipo de representação de um tipo de extensão nunca é seu subtipo,
+portanto, um tipo de representação não pode ser usado alternadamente onde o tipo de extensão é necessário.
 :::
 
 <a id="transparency"></a>
 
-### 1. Provide an *extended* interface to an existing type
+### 1. Fornecer uma interface *estendida* para um tipo existente
 
-When an extension type [implements](#implements) its representation type,
-you can consider it "transparent", because it allows the extension type
-to "see" the underlying type.
+Quando um tipo de extensão [implementa](#implements) seu tipo de representação,
+você pode considerá-lo "transparente", porque permite que o tipo de extensão
+"veja" o tipo subjacente.
 
-A transparent extension type can invoke all members of the
-representation type (that aren't [redeclared](#redeclare)),
-plus any auxiliary members it defines. 
-This creates a new, *extended* interface for an existing type.
-The new interface is available to expressions
-whose static type is the extension type.
+Um tipo de extensão transparente pode invocar todos os membros do
+tipo de representação (que não são [redeclarados](#redeclare)),
+além de quaisquer membros auxiliares que ele defina.
+Isso cria uma nova interface *estendida* para um tipo existente.
+A nova interface está disponível para expressões
+cujo tipo estático é o tipo de extensão.
 
-This means you *can* invoke members of the representation type
-(unlike a [non-transparent](#2-provide-a-different-interface-to-an-existing-type)
-extension type), like so:
+Isso significa que você *pode* invocar membros do tipo de representação
+(ao contrário de um tipo de extensão [não transparente](#2-fornecer-uma-interface-diferente-para-um-tipo-existente)),
+assim:
 
 ```dart
 extension type NumberT(int value) 
   implements int {
-  // Doesn't explicitly declare any members of 'int'.
+  // Não declara explicitamente nenhum membro de 'int'.
   NumberT get i => this;
 }
 
 void main () {
-  // All OK: Transparency allows invoking `int` members on the extension type:
-  var v1 = NumberT(1); // v1 type: NumberT
-  int v2 = NumberT(2); // v2 type: int
-  var v3 = v1.i - v1;  // v3 type: int
-  var v4 = v2 + v1; // v4 type: int
-  var v5 = 2 + v1; // v5 type: int
-  // Error: Extension type interface is not available to representation type
+  // Tudo OK: A transparência permite invocar membros `int` no tipo de extensão:
+  var v1 = NumberT(1); // v1 tipo: NumberT
+  int v2 = NumberT(2); // v2 tipo: int
+  var v3 = v1.i - v1;  // v3 tipo: int
+  var v4 = v2 + v1; // v4 tipo: int
+  var v5 = 2 + v1; // v5 tipo: int
+  // Erro: Interface de tipo de extensão não está disponível para o tipo de representação
   v2.i;
 }
 ```
 
-You can also have a "mostly-transparent" extension type
-that adds new members and adapts others by redeclaring a given member name
-from the supertype.
-This would allow you to use stricter types on some parameters of a method,
-or different default values, for example.
+Você também pode ter um tipo de extensão "quase transparente"
+que adiciona novos membros e adapta outros redeclarando um determinado nome de membro
+do supertipo.
+Isso permitiria que você usasse tipos mais rigorosos em alguns parâmetros de um método,
+ou valores padrão diferentes, por exemplo.
 
-Another mostly-transparent extension type approach is to implement
-a type that is a supertype of the representation type.
-For example, if the representation type is private but its supertype
-defines the part of the interface that matters for clients.
+Outra abordagem de tipo de extensão quase transparente é implementar
+um tipo que é um supertipo do tipo de representação.
+Por exemplo, se o tipo de representação for privado, mas seu supertipo
+define a parte da interface que importa para os clientes.
 
-### 2. Provide a *different* interface to an existing type
+### 2. Fornecer uma interface *diferente* para um tipo existente
 
-An extension type that is not [transparent](#transparency)
-(that does not [`implement`](#implements) its representation type)
-is statically treated as a completely new type,
-distinct from its representation type.
-You can't assign it to its representation type,
-and it doesn't expose its representation type's members.
+Um tipo de extensão que não é [transparente](#transparency)
+(que não [`implementa`](#implements) seu tipo de representação)
+é tratado estaticamente como um tipo completamente novo,
+distinto de seu tipo de representação.
+Você não pode atribuí-lo ao seu tipo de representação,
+e ele não expõe os membros de seu tipo de representação.
 
-For example, take the `NumberE` extension type we declared under [Usage](#usage):
+Por exemplo, pegue o tipo de extensão `NumberE` que declaramos em [Uso](#usage):
 
 ```dart
 void testE() { 
   var num1 = NumberE(1);
-  int num2 = NumberE(2); // Error: Can't assign 'NumberE' to 'int'.
+  int num2 = NumberE(2); // Erro: Não é possível atribuir 'NumberE' a 'int'.
   
-  num1.isValid(); // OK: Extension member invocation.
-  num1.isNegative(); // Error: 'NumberE' does not define 'int' member 'isNegative'.
+  num1.isValid(); // OK: Invocação de membro de extensão.
+  num1.isNegative(); // Erro: 'NumberE' não define o membro 'isNegative' de 'int'.
   
-  var sum1 = num1 + num1; // OK: 'NumberE' defines '+'.
-  var diff1 = num1 - num1; // Error: 'NumberE' does not define 'int' member '-'.
-  var diff2 = num1.value - 2; // OK: Can access representation object with reference.
-  var sum2 = num1 + 2; // Error: Can't assign 'int' to parameter type 'NumberE'. 
+  var sum1 = num1 + num1; // OK: 'NumberE' define '+'.
+  var diff1 = num1 - num1; // Erro: 'NumberE' não define o membro '-' de 'int'.
+  var diff2 = num1.value - 2; // OK: Pode acessar o objeto de representação com referência.
+  var sum2 = num1 + 2; // Erro: Não é possível atribuir 'int' ao tipo de parâmetro 'NumberE'. 
   
   List<NumberE> numbers = [
     NumberE(1), 
-    num1.next, // OK: 'next' getter returns type 'NumberE'.
-    1, // Error: Can't assign 'int' element to list type 'NumberE'.
+    num1.next, // OK: O getter 'next' retorna o tipo 'NumberE'.
+    1, // Erro: Não é possível atribuir o elemento 'int' ao tipo de lista 'NumberE'.
   ];
 }
 ```
 
-You can use an extension type this way to *replace* the interface
-of an existing type. This allows you to model an interface that is
-makes sense for the constraints of your new type
-(like the `IdNumber` example in the introduction), while also benefitting from
-the performance and convenience of a simple pre-defined type, like `int`.
+Você pode usar um tipo de extensão dessa forma para *substituir* a interface
+de um tipo existente. Isso permite que você modele uma interface que é
+faz sentido para as restrições de seu novo tipo
+(como o exemplo `IdNumber` na introdução), enquanto também se beneficia de
+o desempenho e a conveniência de um tipo simples predefinido, como `int`.
 
-This use case is as close as you can get to the complete encapsulation
-of a wrapper class (but is realistically only a
-[*somewhat* protected](#type-considerations) abstraction).
+Este caso de uso é o mais próximo que você pode chegar da encapsulação completa
+de uma classe wrapper (mas é realisticamente apenas uma
+abstração [*um tanto* protegida](#type-considerations)).
 
-## Type considerations
+## Considerações de tipo
 
-Extension types are a compile-time wrapping construct.
-At run time, there is absolutely no trace of the extension type.
-Any type query or similar run-time operations work on the representation type.
+Tipos de extensão são um construto de encapsulamento em tempo de compilação.
+Em tempo de execução, não há absolutamente nenhum traço do tipo de extensão.
+Qualquer consulta de tipo ou operações semelhantes em tempo de execução funcionam no tipo de representação.
 
-This makes extension types an *unsafe* abstraction,
-because you can always find out the representation type at run time
-and access the underlying object.
+Isso torna os tipos de extensão uma abstração *insegura*,
+porque você sempre pode descobrir o tipo de representação em tempo de execução
+e acessar o objeto subjacente.
 
-Dynamic type tests (`e is T`), casts (`e as T`),
-and other run-time type queries (like `switch (e) ...` or `if (e case ...)`)
-all evaluate to the underlying representation object,
-and type check against that object's runtime type. 
-That's true when the static type of `e` is an extension type,
-and when testing against an extension type (`case MyExtensionType(): ... `).
+Testes de tipo dinâmico (`e is T`), casts (`e as T`),
+e outras consultas de tipo em tempo de execução (como `switch (e) ...` ou `if (e case ...)`)
+todos avaliam o objeto de representação subjacente,
+e verificam o tipo em relação ao tipo de tempo de execução desse objeto.
+Isso é verdade quando o tipo estático de `e` é um tipo de extensão,
+e ao testar em relação a um tipo de extensão (`case MyExtensionType(): ...`).
 
 ```dart
 void main() {
   var n = NumberE(1);
 
-  // Run-time type of 'n' is representation type 'int'.
-  if (n is int) print(n.value); // Prints 1.
+  // O tipo de tempo de execução de 'n' é o tipo de representação 'int'.
+  if (n is int) print(n.value); // Imprime 1.
 
-  // Can use 'int' methods on 'n' at run time.
-  if (n case int x) print(x.toRadixString(10)); // Prints 1.
+  // Pode usar métodos 'int' em 'n' em tempo de execução.
+  if (n case int x) print(x.toRadixString(10)); // Imprime 1.
   switch (n) {
-    case int(:var isEven): print("$n (${isEven ? "even" : "odd"})"); // Prints 1 (odd).
+    case int(:var isEven): print("$n (${isEven ? "par" : "ímpar"})"); // Imprime 1 (ímpar).
   }
 }
 ```
 
-Similarly, the static type of the matched value is that of the extension type
-in this example:
+Da mesma forma, o tipo estático do valor correspondido é o do tipo de extensão
+neste exemplo:
 
 ```dart
 void main() {
   int i = 2;
-  if (i is NumberE) print("It is"); // Prints 'It is'.
-  if (i case NumberE v) print("value: ${v.value}"); // Prints 'value: 2'.
+  if (i is NumberE) print("É"); // Imprime 'É'.
+  if (i case NumberE v) print("valor: ${v.value}"); // Imprime 'valor: 2'.
   switch (i) {
-    case NumberE(:var value): print("value: $value"); // Prints 'value: 2'.
+    case NumberE(:var value): print("valor: $value"); // Imprime 'valor: 2'.
   }
 }
 ```
 
-It's important to be aware of this quality when using extension types.
-Always keep in mind that an extension type exists and matters at compile time,
-but gets erased _during_ compilation.
+É importante estar ciente dessa qualidade ao usar tipos de extensão.
+Tenha sempre em mente que um tipo de extensão existe e importa em tempo de compilação,
+mas é apagado _durante_ a compilação.
 
-For example, consider an expression `e` whose static type is the
-extension type `E`, and the representation type of `E` is `R`.
-Then, the run-time type of the value of `e` is a subtype of `R`.
-Even the type itself is erased;
-`List<E>` is exactly the same thing as `List<R>` at run time.
+Por exemplo, considere uma expressão `e` cujo tipo estático é o
+tipo de extensão `E`, e o tipo de representação de `E` é `R`.
+Então, o tipo de tempo de execução do valor de `e` é um subtipo de `R`.
+Até mesmo o próprio tipo é apagado;
+`List<E>` é exatamente a mesma coisa que `List<R>` em tempo de execução.
 
-In other words, a real wrapper class can encapsulate a wrapped object,
-whereas an extension type is just a compile-time view on the wrapped object.
-While a real wrapper is safer, the trade-off is extension types
-give you the option to avoid wrapper objects, which can greatly
-improve performance in some scenarios.
+Em outras palavras, uma classe wrapper real pode encapsular um objeto envolvido,
+enquanto um tipo de extensão é apenas uma visão em tempo de compilação do objeto envolvido.
+Embora um wrapper real seja mais seguro, a compensação é que os tipos de extensão
+dão a você a opção de evitar objetos wrapper, o que pode melhorar muito
+o desempenho em alguns cenários.
 
 [static JS interop]: /go/next-gen-js-interop
 [ext]: /language/extension-methods

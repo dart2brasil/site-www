@@ -1,148 +1,148 @@
 ---
-title: Migrate to package:web
-description: How to migrate web interop code from dart:html to package:web.
+ia-translate: true
+title: Migrar para package:web
+description: Como migrar código de interop da web de dart:html para package:web.
 ---
 
-Dart's [`package:web`][] exposes access to browser APIs,
-enabling interop between Dart applications and the web.
-Use `package:web` to interact with the browser and
-manipulate objects and elements in the DOM.
+O [`package:web`][`package:web`] do Dart expõe acesso às APIs do navegador,
+permitindo a interoperabilidade entre aplicativos Dart e a web.
+Use `package:web` para interagir com o navegador e
+manipular objetos e elementos no DOM.
 
 ```dart
 import 'package:web/web.dart';
 
 void main() {
   final div = document.querySelector('div')!;
-  div.text = 'Text set at ${DateTime.now()}';
+  div.text = 'Texto definido em ${DateTime.now()}';
 }
 ```
 
 :::important
-If you maintain a public Flutter package that uses `dart:html` or any of the
-other Dart SDK web libraries,
-**you should migrate to `package:web` as soon as possible**.
-`package:web` is replacing `dart:html` and other web libraries
-as Dart's web interop solution long-term.
-Read the **`package:web` vs `dart:html`** section for more information.
+Se você mantém um pacote Flutter público que usa `dart:html` ou
+qualquer outra das bibliotecas web do SDK Dart,
+**você deve migrar para `package:web` o mais rápido possível**.
+`package:web` está substituindo `dart:html` e outras bibliotecas web
+como a solução de interop da web do Dart a longo prazo.
+Leia a seção **`package:web` vs `dart:html`** para mais informações.
 :::
 
 ## `package:web` vs `dart:html`
 
-The goal of `package:web` is to revamp how Dart exposes web APIs
-by addressing several concerns with the existing Dart web libraries:
+O objetivo de `package:web` é reformular como o Dart expõe as APIs da web
+abordando diversas preocupações com as bibliotecas web Dart existentes:
 
-1. **Wasm compatibility**
+1. **Compatibilidade com Wasm**
 
-   Packages can only be compatible with [Wasm][]
-   if they use [`dart:js_interop`][] and [`dart:js_interop_unsafe`][].
-   `package:web` is based on `dart:js_interop`,
-   so by default, it's supported on `dart2wasm`.
-   
-   Dart core web libraries, like [`dart:html`][html] and [`dart:svg`][svg],
-   are **not supported** when compiling to Wasm.
+   Pacotes só podem ser compatíveis com [Wasm][Wasm]
+   se eles usarem [`dart:js_interop`][`dart:js_interop`] e [`dart:js_interop_unsafe`][`dart:js_interop_unsafe`].
+   `package:web` é baseado em `dart:js_interop`,
+   portanto, por padrão, ele é suportado em `dart2wasm`.
 
-2. **Staying modern**
-   
-   `package:web` uses the [Web IDL][idl] to automatically generate
-   [interop members][] and [interop types][]
-   for each declaration in the IDL.
-   Generating references directly,
-   as opposed to the additional members and abstractions in `dart:html`,
-   allows `package:web` to be more concise, easier to understand, more consistent,
-   and more able to stay up-to-date with the future of Web developments.
+   Bibliotecas web centrais do Dart, como [`dart:html`][html] e [`dart:svg`][svg],
+   **não são suportadas** ao compilar para Wasm.
 
-3. **Versioning**
+2. **Manter-se moderno**
 
-   Because it's a package, `package:web` can be versioned
-   more easily than a library like `dart:html` and avoid breaking user code as it
-   evolves.
-   It also makes the code less exclusive and more open to contributions.
-   Developers can create [alternative interop declarations][] of their own
-   and use them together with `package:web` without conflict.
+   `package:web` usa o [Web IDL][idl] para gerar automaticamente
+   [membros de interop][interop members] e [tipos de interop][interop types]
+   para cada declaração no IDL.
+   Gerando referências diretamente,
+   em vez dos membros e abstrações adicionais em `dart:html`,
+   permite que `package:web` seja mais conciso, mais fácil de entender, mais consistente,
+   e mais capaz de se manter atualizado com o futuro dos desenvolvimentos da Web.
+
+3. **Versionamento**
+
+   Por ser um pacote, `package:web` pode ser versionado
+   mais facilmente do que uma biblioteca como `dart:html` e evitar quebrar o código do usuário conforme ele evolui.
+   Também torna o código menos exclusivo e mais aberto a contribuições.
+   Desenvolvedores podem criar [declarações de interop alternativas][alternative interop declarations] próprias
+   e usá-las junto com `package:web` sem conflito.
 
 ---
 
-These improvements naturally result in some
-implementation differences between `package:web` and `dart:html`.
-The changes that affect existing packages the most,
-like IDL [renames](#renames) and
-[type tests](#type-tests),
-are addressed in the migration sections that follow. While we only refer to
-`dart:html` for brevity, the same migration patterns apply to any other Dart
-core web library like `dart:svg`.
+Essas melhorias naturalmente resultam em algumas
+diferenças de implementação entre `package:web` e `dart:html`.
+As mudanças que mais afetam os pacotes existentes,
+como [renomeações](#renames) do IDL e
+[testes de tipo](#type-tests),
+são abordadas nas seções de migração a seguir. Embora nos refiramos apenas a
+`dart:html` por brevidade, os mesmos padrões de migração se aplicam a qualquer outra biblioteca
+web principal do Dart, como `dart:svg`.
 
-## Migrating from `dart:html`
+## Migrando de `dart:html`
 
-Remove the `dart:html` import and replace it with `package:web/web.dart`:
+Remova a importação `dart:html` e substitua por `package:web/web.dart`:
 
 ```dart
-import 'dart:html' as html; // Remove
-import 'package:web/web.dart' as web; // Add
+import 'dart:html' as html; // Remover
+import 'package:web/web.dart' as web; // Adicionar
 ```
 
-Add `web` to the `dependencies` in your pubspec:
+Adicione `web` às `dependencies` no seu pubspec:
 
 ```console
 dart pub add web
 ```
 
-The following sections cover some of the common migration issues
-from `dart:html` to `package:web`.
+As seções a seguir cobrem alguns dos problemas comuns de migração
+de `dart:html` para `package:web`.
 
-For any other migration issues, check the [dart-lang/web][] repo and
-file an issue.
+Para quaisquer outros problemas de migração, verifique o repositório
+[dart-lang/web][dart-lang/web] e registre um problema.
 
-### Renames
+### Renomeações
 
-Many of the symbols in `dart:html` were renamed from
-their original IDL declaration to align more with Dart style.
-For example, `appendChild` became `append`,
-`HTMLElement` became `HtmlElement`, etc.
+Muitos dos símbolos em `dart:html` foram renomeados de
+sua declaração IDL original para se alinhar mais com o estilo Dart.
+Por exemplo, `appendChild` tornou-se `append`,
+`HTMLElement` tornou-se `HtmlElement`, etc.
 
-In contrast, to reduce confusion,
-`package:web` uses the original names from the IDL definitions.
-A `dart fix` is available to convert types that have been renamed
-between `dart:html` and `package:web`.
+Em contraste, para reduzir a confusão,
+`package:web` usa os nomes originais das definições IDL.
+Um `dart fix` está disponível para converter tipos que foram renomeados
+entre `dart:html` e `package:web`.
 
-After changing the import, any renamed objects will be new "undefined" errors.
-You can address these either:
-- From the CLI, by running `dart fix --dry-run`.
-- In your IDE, by selecting the `dart fix`: **Rename to '`package:web name`'**.
+Depois de alterar a importação, quaisquer objetos renomeados serão novos erros "indefinidos".
+Você pode resolver isso de uma das seguintes maneiras:
+- A partir da CLI, executando `dart fix --dry-run`.
+- Em sua IDE, selecionando o `dart fix`: **Renomear para '`nome package:web`'**.
 
 {% comment %}
-TODO: Update this documentation to refer to symbols instead of just types once
-we have a dart fix for that.
-{% endcomment -%}
+TODO: Atualize esta documentação para se referir a símbolos em vez de apenas tipos assim que
+tivermos uma correção dart para isso.
+{% endcomment %}
 
-The `dart fix` covers many of the common type renames.
-If you come across a `dart:html` type without a `dart fix` to rename it,
-first let us know by filing an [issue][].
+O `dart fix` cobre muitas das renomeações de tipo comuns.
+Se você encontrar um tipo `dart:html` sem um `dart fix` para renomeá-lo,
+primeiro nos informe registrando um [problema][issue].
 
-Then, you can try manually discovering the `package:web` type name of an
-existing `dart:html` member by looking up its definition.
-The value of the `@Native` annotation on a `dart:html` member definition
-tells the compiler to treat any JS object of that type as the Dart class
-that it annotates. For example, the `@Native` annotation tells us that the
-native JS name of `dart:html`'s `HtmlElement` member is `HTMLElement`,
-so the `package:web` name will also be `HTMLElement`:
+Então, você pode tentar descobrir manualmente o nome do tipo `package:web` de um
+membro `dart:html` existente procurando sua definição.
+O valor da anotação `@Native` em uma definição de membro `dart:html`
+diz ao compilador para tratar qualquer objeto JS desse tipo como a classe Dart
+que ele anota. Por exemplo, a anotação `@Native` nos diz que o
+nome JS nativo do membro `HtmlElement` de `dart:html` é `HTMLElement`,
+então o nome `package:web` também será `HTMLElement`:
 
 ```dart
 @Native("HTMLElement")
 class HtmlElement extends Element implements NoncedElement { }
 ```
 
-To find the `dart:html` definition for an undefined member in `package:web`, 
-try either of the following methods:
+Para encontrar a definição `dart:html` para um membro indefinido em `package:web`,
+tente um dos seguintes métodos:
 
-- Ctrl or command click the undefined name in the IDE and choose
-  **Go to Definition**.
-- Search for the name in the [`dart:html` API docs][html]
-  and check its page under *Annotations*.
+- Ctrl ou comando clique no nome indefinido na IDE e escolha
+  **Ir para Definição**.
+- Pesquise o nome na [documentação da API `dart:html`][html]
+  e verifique sua página em *Anotações*.
 
-Similarly, you might find an undefined `package:web` API whose corresponding
-`dart:html` member's definition uses the keyword `native`.
-Check if the definition uses the `@JSName` annotation for a rename;
-the value of the annotation will tell you the name the member uses in
+Da mesma forma, você pode encontrar uma API `package:web` indefinida cuja correspondente
+a definição do membro `dart:html` usa a palavra-chave `native`.
+Verifique se a definição usa a anotação `@JSName` para uma renomeação;
+o valor da anotação lhe dirá o nome que o membro usa em
 `package:web`:
 
 ```dart
@@ -150,60 +150,59 @@ the value of the annotation will tell you the name the member uses in
 Node append(Node node) native;
 ```
 
-`native` is an internal keyword that means the same as `external` in this
-context.
+`native` é uma palavra-chave interna que significa o mesmo que `external` neste
+contexto.
 
-### Type tests
+### Testes de tipo
 
-It's common for code that uses `dart:html` to utilize runtime checks like `is`.
-When used with a `dart:html` object, `is` and `as` verify that the object is
-the JS type within the `@Native` annotation.
-In contrast, all `package:web` types are reified to [`JSObject`][]. This means a
-runtime type test will result in different behavior between `dart:html` and
-`package:web` types.
+É comum que o código que usa `dart:html` utilize verificações de tempo de execução como `is`.
+Quando usado com um objeto `dart:html`, `is` e `as` verificam se o objeto é
+o tipo JS dentro da anotação `@Native`.
+Em contraste, todos os tipos `package:web` são reificados para [`JSObject`][`JSObject`].
+Isso significa que um teste de tipo em tempo de execução resultará em um comportamento diferente entre os tipos `dart:html` e `package:web`.
 
-To be able to perform type tests, migrate any `dart:html` code
-using `is` type tests to use [interop methods][] like `instanceOfString`
-or the more convenient and typed [`isA`][] helper
-(available from Dart 3.4 onward).
-The [Compatibility, type checks, and casts][]
-section of the JS types page covers alternatives in detail.
+Para poder realizar testes de tipo, migre qualquer código `dart:html`
+usando testes de tipo `is` para usar [métodos de interop][interop methods] como `instanceOfString`
+ou o auxiliar [`isA`][`isA`] mais conveniente e tipado
+(disponível a partir do Dart 3.4 em diante).
+A seção [Compatibilidade, verificações de tipo e casts][Compatibility, type checks, and casts]
+da página de tipos JS cobre alternativas em detalhes.
 
 ```dart
-obj is Window; // Remove
-obj.instanceOfString('Window'); // Add
+obj is Window; // Remover
+obj.instanceOfString('Window'); // Adicionar
 ```
 
-### Type signatures
+### Assinaturas de tipo
 
-Many APIs in `dart:html` support various Dart types in their type signatures.
-Because `dart:js_interop` [restricts] the types that can be written, some of
-the members in `package:web` will now require you to *convert* the value before
-calling the member.
-Learn how to use interop conversion methods from the [Conversions][]
-section of the JS types page.
+Muitas APIs em `dart:html` suportam vários tipos Dart em suas assinaturas de tipo.
+Como `dart:js_interop` [restringe] os tipos que podem ser escritos, alguns dos
+membros em `package:web` agora exigirão que você *converta* o valor antes de
+chamar o membro.
+Aprenda a usar os métodos de conversão de interop na seção [Conversões][Conversions]
+da página de tipos JS.
 
 ```dart
-window.addEventListener('click', callback); // Remove
-window.addEventListener('click', callback.toJS); // Add
+window.addEventListener('click', callback); // Remover
+window.addEventListener('click', callback.toJS); // Adicionar
 ```
 
 {% comment %}
-TODO: Think of a better example. People will likely use the stream helpers
-instead of `addEventListener`.
-{% endcomment -%}
+TODO: Pense em um exemplo melhor. As pessoas provavelmente usarão os auxiliares de fluxo
+em vez de `addEventListener`.
+{% endcomment %}
 
-Generally, you can spot which methods need a conversion because they'll be
-flagged with some variation of the exception:
+Geralmente, você pode identificar quais métodos precisam de uma conversão porque eles serão
+sinalizados com alguma variação da exceção:
 
 ```plaintext
-A value of type '...' can't be assigned to a variable of type 'JSFunction?'
+Um valor do tipo '...' não pode ser atribuído a uma variável do tipo 'JSFunction?'
 ```
 
-### Conditional imports
+### Importações condicionais
 
-It is common for code to use a conditional import based on whether `dart:html`
-is supported to differentiate between native and web:
+É comum que o código use uma importação condicional com base em se `dart:html`
+é suportado para diferenciar entre nativo e web:
 
 ```dart
 export 'src/hw_none.dart'
@@ -211,9 +210,9 @@ export 'src/hw_none.dart'
     if (dart.library.html) 'src/hw_html.dart';
 ```
 
-However, since `dart:html` is not supported when compiling to Wasm, the correct
-alternative now is to use `dart.library.js_interop` to differentiate between
-native and web:
+No entanto, como `dart:html` não é suportado ao compilar para Wasm, o correto
+alternativa agora é usar `dart.library.js_interop` para diferenciar entre
+nativo e web:
 
 ```dart
 export 'src/hw_none.dart'
@@ -221,80 +220,80 @@ export 'src/hw_none.dart'
     if (dart.library.js_interop) 'src/hw_web.dart';
 ```
 
-### Virtual dispatch and mocking
+### Despacho virtual e mocking
 
-`dart:html` classes supported virtual dispatch, but because JS interop uses
-extension types, virtual dispatch is [not possible]. Similarly, `dynamic` calls
-with `package:web` types won't work as expected (or, they might continue to work
-just by chance, but will stop when `dart:html` is removed), as their members are
-only available statically. Migrate all code that relies on virtual dispatch to
-avoid this issue.
+As classes `dart:html` suportavam o despacho virtual, mas como o JS interop usa
+tipos de extensão, o despacho virtual [não é possível]. Da mesma forma, chamadas `dynamic`
+com tipos `package:web` não funcionarão como esperado (ou podem continuar a funcionar
+apenas por acaso, mas pararão quando `dart:html` for removido), pois seus membros estão
+disponíveis apenas estaticamente. Migre todo o código que depende do despacho virtual para
+evitar esse problema.
 
-One use case of virtual dispatch is mocking. If you have a mocking class that
-`implements` a `dart:html` class, it can't be used to implement a `package:web`
-type. Instead, prefer mocking the JS object itself. See the [mocking tutorial]
-for more information.
+Um caso de uso de despacho virtual é o mocking. Se você tem uma classe de mocking que
+`implements` uma classe `dart:html`, ela não pode ser usada para implementar um tipo `package:web`.
+Em vez disso, prefira fazer o mocking do próprio objeto JS. Consulte o [tutorial de mocking]
+para obter mais informações.
 
-### Non-`native` APIs
+### APIs não-`native`
 
-`dart:html` classes may also contain APIs that have a non-trivial
-implementation. These members may or may not exist in the `package:web`
-[helpers](#helpers). If your code relies on the specifics of that
-implementation, you may be able to copy the necessary code.
-However, if you think that's not tractable or if that code would be beneficial
-for other users as well, consider filing an issue or uploading a pull request to
-[`package:web`][dart-lang/web] to support that member.
+As classes `dart:html` também podem conter APIs que têm uma implementação não trivial.
+Esses membros podem ou não existir nos
+[auxiliares](#helpers) do `package:web`. Se seu código depende dos detalhes dessa
+implementação, você pode conseguir copiar o código necessário.
+No entanto, se você acha que isso não é viável ou se esse código seria benéfico
+para outros usuários também, considere registrar um problema ou enviar um pull request para
+[`package:web`][dart-lang/web] para dar suporte a esse membro.
 
-### Zones
+### Zonas
 
-In `dart:html`, callbacks are automatically zoned.
-This is not the case in `package:web`. There is no automatic binding of
-callbacks in the current zone.
+Em `dart:html`, os callbacks são automaticamente zonificados.
+Este não é o caso em `package:web`. Não há vinculação automática de
+callbacks na zona atual.
 
-If this matters for your application, you can still use zones, but you will have
-to [write them yourself][zones] by binding the callback. See [#54507] for more
-details.
-There is no conversion API or [helper](#helpers) available yet to
-automatically do this.
+Se isso for importante para sua aplicação, você ainda pode usar zonas, mas terá que
+[escrevê-las você mesmo][zones] vinculando o callback. Veja [#54507] para mais
+detalhes.
+Ainda não há uma API de conversão ou um [auxiliar](#helpers) disponível para
+fazer isso automaticamente.
 
-## Helpers
+## Auxiliares
 
-The core of `package:web` contains `external` interop members,
-but does not provide other functionality that `dart:html` provided by default.
-To mitigate these differences, `package:web` contains [`helpers`][helpers]
-for additional support in handling a number of use cases
-that aren't directly available through the core interop.
-The helper library contains various members to expose some legacy features from
-the Dart web libraries.
+O núcleo de `package:web` contém membros de interop `external`,
+mas não fornece outras funcionalidades que `dart:html` fornecia por padrão.
+Para mitigar essas diferenças, `package:web` contém [`helpers`][helpers]
+para suporte adicional no tratamento de uma série de casos de uso
+que não estão diretamente disponíveis através do interop principal.
+A biblioteca de auxiliares contém vários membros para expor alguns recursos legados de
+as bibliotecas web do Dart.
 
-For example, the core `package:web` only has support for adding and removing
-event listeners. Instead, you can use [stream helpers][] that makes it easy to
-subscribe to events with Dart `Stream`s without writing that code yourself.
+Por exemplo, o `package:web` principal só tem suporte para adicionar e remover
+listeners de eventos. Em vez disso, você pode usar [auxiliares de fluxo][stream helpers] que facilitam a
+assinatura de eventos com `Stream`s do Dart sem escrever esse código você mesmo.
 
 ```dart
-// dart:html version
+// versão dart:html
 InputElement htmlInput = InputElement();
 await htmlInput.onBlur.first;
 
-// package:web version
+// versão package:web
 HTMLInputElement webInput = document.createElement('input') as HTMLInputElement;
 await webInput.onBlur.first;
 ```
 
-You can find all the helpers and their documentation in the repo at
-[`package:web/helpers`][helpers]. They will continuously be updated to aid users
-in migration and make it easier to use the web APIs.
+Você pode encontrar todos os auxiliares e sua documentação no repositório em
+[`package:web/helpers`][helpers]. Eles serão continuamente atualizados para ajudar os usuários
+na migração e facilitar o uso das APIs da web.
 
-## Examples
+## Exemplos
 
-Here are some examples of packages that have been migrated from `dart:html`
-to `package:web`:
+Aqui estão alguns exemplos de pacotes que foram migrados de `dart:html`
+para `package:web`:
 
-- [Upgrading `url_launcher` to `package:web`][]
+- [Atualizando `url_launcher` para `package:web`][Upgrading `url_launcher` to `package:web`]
 
 {% comment %}
-Do we have any other package migrations to show off here?
-{% endcomment -%}
+Temos outras migrações de pacotes para mostrar aqui?
+{% endcomment %}
 
 [`package:web`]: {{site.pub-pkg}}/web
 [Wasm]: /web/wasm

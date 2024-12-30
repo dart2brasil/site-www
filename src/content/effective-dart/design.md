@@ -159,7 +159,7 @@ Good names tend to start with one of a few kinds of verbs:
 *   a form of "to be": `isEnabled`, `wasShown`, `willFire`. These are, by far,
     the most common.
 
-*   an [auxiliary verb][]: `hasElements`, `canClose`,
+*   an [auxiliary verb][auxiliary verb]: `hasElements`, `canClose`,
     `shouldConsume`, `mustSave`.
 
 *   an active verb: `ignoresInput`, `wroteFile`. These are rare because they are
@@ -1467,7 +1467,7 @@ safety and performance of static types.
 ### PREFER signatures in function type annotations
 
 The identifier `Function` by itself without any return type or parameter
-signature refers to the special [Function][] type. This type is only
+signature refers to the special [Function][Function] type. This type is only
 marginally more useful than using `dynamic`. If you're going to annotate, prefer
 a full function type that includes the parameters and return type of the
 function.
@@ -1733,7 +1733,7 @@ FutureOr<int> triple(FutureOr<int> value) {
 ```
 
 The more precise formulation of this guideline is to *only use `FutureOr<T>` in
-[contravariant][] positions.* Parameters are contravariant and return types are
+[contravariant][contravariant] positions.* Parameters are contravariant and return types are
 covariant. In nested function types, this gets flipped—if you have a
 parameter whose type is itself a function, then the callback's return type is
 now in contravariant position and the callback's parameters are covariant. This

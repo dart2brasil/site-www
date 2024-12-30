@@ -1,16 +1,17 @@
 ---
-title: Extend a class
-description: Learn how to create subclasses from a superclass.
+ia-translate: true
+title: Estender uma classe
+description: Aprenda como criar subclasses de uma superclasse.
 prevpage:
   url: /language/methods
-  title: Methods
+  title: Métodos
 nextpage:
   url: /language/mixins
   title: Mixins
 ---
 
-Use `extends` to create a subclass, and `super` to refer to the
-superclass:
+Use `extends` para criar uma subclasse, e `super` para se referir à
+superclasse:
 
 <?code-excerpt "misc/lib/language_tour/classes/extends.dart (smart-tv)" replace="/extends|super/[!$&!]/g"?>
 ```dart
@@ -33,15 +34,15 @@ class SmartTelevision [!extends!] Television {
 }
 ```
 
-For another usage of `extends`, see the discussion of
-[parameterized types][] on the Generics page.
+Para outro uso de `extends`, veja a discussão sobre
+[tipos parametrizados][parameterized types] na página de Generics.
 
-## Overriding members
+## Sobreposição de membros
 
-Subclasses can override instance methods (including [operators][]),
-getters, and setters.
-You can use the `@override` annotation to indicate that you are
-intentionally overriding a member:
+Subclasses podem sobrescrever métodos de instância (incluindo [operadores][operators]),
+getters e setters.
+Você pode usar a anotação `@override` para indicar que você está
+intencionalmente sobrescrevendo um membro:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
 ```dart
@@ -57,68 +58,68 @@ class SmartTelevision extends Television {
 }
 ```
 
-An overriding method declaration must match
-the method (or methods) that it overrides in several ways:
+Uma declaração de método de sobreposição deve corresponder
+ao método (ou métodos) que ele sobrepõe de várias maneiras:
 
-* The return type must be the same type as (or a subtype of)
-  the overridden method's return type.
-* Parameter types must be the same type as (or a supertype of)
-  the overridden method's parameter types.
-  In the preceding example, the `contrast` setter of `SmartTelevision`
-  changes the parameter type from `int` to a supertype, `num`.
-* If the overridden method accepts _n_ positional parameters,
-  then the overriding method must also accept _n_ positional parameters.
-* A [generic method][] can't override a non-generic one,
-  and a non-generic method can't override a generic one.
+* O tipo de retorno deve ser o mesmo tipo que (ou um subtipo de)
+  o tipo de retorno do método sobreposto.
+* Os tipos de parâmetros devem ser o mesmo tipo que (ou um supertipo de)
+  os tipos de parâmetros do método sobreposto.
+  No exemplo anterior, o setter `contrast` de `SmartTelevision`
+  muda o tipo de parâmetro de `int` para um supertipo, `num`.
+* Se o método sobreposto aceita _n_ parâmetros posicionais,
+  então o método de sobreposição também deve aceitar _n_ parâmetros posicionais.
+* Um [método genérico][generic method] não pode sobrescrever um não genérico,
+  e um método não genérico não pode sobrescrever um genérico.
 
-Sometimes you might want to narrow the type of
-a method parameter or an instance variable.
-This violates the normal rules, and
-it's similar to a downcast in that it can cause a type error at runtime.
-Still, narrowing the type is possible
-if the code can guarantee that a type error won't occur.
-In this case, you can use the
-[`covariant` keyword](/deprecated/sound-problems#the-covariant-keyword)
-in a parameter declaration.
-For details, see the
-[Dart language specification][].
+Às vezes, você pode querer restringir o tipo de
+um parâmetro de método ou uma variável de instância.
+Isso viola as regras normais, e
+é semelhante a um downcast, pois pode causar um erro de tipo em tempo de execução.
+Ainda assim, restringir o tipo é possível
+se o código puder garantir que um erro de tipo não ocorrerá.
+Nesse caso, você pode usar a
+palavra-chave [`covariant`](/deprecated/sound-problems#the-covariant-keyword)
+em uma declaração de parâmetro.
+Para obter detalhes, consulte a
+[especificação da linguagem Dart][Dart language specification].
 
 :::warning
-If you override `==`, you should also override Object's `hashCode` getter.
-For an example of overriding `==` and `hashCode`, check out
-[Implementing map keys](/libraries/dart-core#implementing-map-keys).
+Se você sobrescrever `==`, você também deve sobrescrever o getter `hashCode` de Object.
+Para um exemplo de sobrescrita de `==` e `hashCode`, verifique
+[Implementando chaves de mapa](/libraries/dart-core#implementing-map-keys).
 :::
 
 ## noSuchMethod()
 
-To detect or react whenever code attempts to use a non-existent method or
-instance variable, you can override `noSuchMethod()`:
+Para detectar ou reagir sempre que o código tenta usar um método não existente ou
+variável de instância, você pode sobrescrever `noSuchMethod()`:
 
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart (no-such-method-impl)" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
 ```dart
 class A {
-  // Unless you override noSuchMethod, using a
-  // non-existent member results in a NoSuchMethodError.
+  // A menos que você sobrescreva noSuchMethod, usar um
+  // membro não existente resulta em um NoSuchMethodError.
   @override
   void [!noSuchMethod!](Invocation invocation) {
-    print('You tried to use a non-existent member: '
+    print('Você tentou usar um membro não existente: '
         '${invocation.memberName}');
   }
 }
 ```
 
-You **can't invoke** an unimplemented method unless
-**one** of the following is true:
+Você **não pode invocar** um método não implementado a menos que
+**uma** das seguintes condições seja verdadeira:
 
-* The receiver has the static type `dynamic`.
+* O receptor tem o tipo estático `dynamic`.
 
-* The receiver has a static type that
-defines the unimplemented method (abstract is OK),
-and the dynamic type of the receiver has an implementation of `noSuchMethod()`
-that's different from the one in class `Object`.
+* O receptor tem um tipo estático que
+define o método não implementado (abstrato está OK),
+e o tipo dinâmico do receptor tem uma implementação de `noSuchMethod()`
+que é diferente daquela na classe `Object`.
 
-For more information, see the informal
-[noSuchMethod forwarding specification.]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
+Para mais informações, veja a informal
+[especificação de encaminhamento do noSuchMethod.]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
 
 [parameterized types]: /language/generics#restricting-the-parameterized-type
 [operators]: /language/methods#operators

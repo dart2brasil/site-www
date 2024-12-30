@@ -1,35 +1,36 @@
 ---
-title: Constructors
-description: Everything about using constructors in Dart.
+ia-translate: true
+title: Construtores
+description: Tudo sobre como usar construtores em Dart.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 prevpage:
   url: /language/classes
   title: Classes
 nextpage:
   url: /language/methods
-  title: Methods
+  title: Métodos
 ---
 
-Constructors are special functions that create instances of classes.
+Construtores são funções especiais que criam instâncias de classes.
 
-Dart implements many types of constructors.
-Except for default constructors,
-these functions use the same name as their class.
+Dart implementa vários tipos de construtores.
+Exceto por construtores padrão,
+essas funções usam o mesmo nome da sua classe.
 
-* [Generative constructors][generative]: Creates new instances and
-      initializes instance variables.
-* [Default constructors][default]: Used to create a new instance when a
-     constructor hasn't been specified. It doesn't take arguments and
-     isn't named.
-* [Named constructors][named]: Clarifies the purpose of
-      a constructor or allows the creation of multiple constructors for
-      the same class.
-* [Constant constructors][constant]: Creates instances as compile-type
-      constants.
-* [Factory constructors][factory]: Either creates a new instance of a
-      subtype or returns an existing instance from cache.
-* [Redirecting constructor][redirecting]: Forwards calls to another
-      constructor in the same class.
+* [Construtores generativos][generative]: Criam novas instâncias e
+      inicializam variáveis de instância.
+* [Construtores padrão][default]: Usados para criar uma nova instância quando um
+     construtor não foi especificado. Não recebe argumentos e
+     não é nomeado.
+* [Construtores nomeados][named]: Clarificam o propósito de
+      um construtor ou permite a criação de múltiplos construtores para
+      a mesma classe.
+* [Construtores constantes][constant]: Cria instâncias como constantes
+      de tempo de compilação.
+* [Construtores factory][factory]: Cria uma nova instância de uma
+      subtipo ou retorna uma instância existente do cache.
+* [Construtores de redirecionamento][redirecting]: Encaminha chamadas para outro
+      construtor na mesma classe.
 
 [default]: #default-constructors
 [generative]: #generative-constructors
@@ -42,33 +43,33 @@ these functions use the same name as their class.
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-## Types of constructors
+## Tipos de construtores
 
-### Generative constructors
+### Construtores generativos
 
-To instantiate a class, use a generative constructor.
+Para instanciar uma classe, use um construtor generativo.
 
 <?code-excerpt "point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
-  // Instance variables to hold the coordinates of the point.
+  // Variáveis de instância para armazenar as coordenadas do ponto.
   double x;
   double y;
 
-  // Generative constructor with initializing formal parameters:
+  // Construtor generativo com parâmetros formais inicializadores:
   Point(this.x, this.y);
 }
 ```
 
-### Default constructors
+### Construtores padrão
 
-If you don't declare a constructor, Dart uses the default constructor.
-The default constructor is a generative constructor without arguments or name.
+Se você não declarar um construtor, Dart usa o construtor padrão.
+O construtor padrão é um construtor generativo sem argumentos ou nome.
 
-### Named constructors
+### Construtores nomeados
 
-Use a named constructor to implement multiple constructors for a class
-or to provide extra clarity:
+Use um construtor nomeado para implementar múltiplos construtores para uma classe
+ou para fornecer clareza extra:
 
 <?code-excerpt "point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
 ```dart
@@ -79,27 +80,27 @@ class Point {
   final double x;
   final double y;
 
-  // Sets the x and y instance variables
-  // before the constructor body runs.
+  // Define as variáveis de instância x e y
+  // antes da execução do corpo do construtor.
   Point(this.x, this.y);
 
-  // Named constructor
+  // Construtor nomeado
   [!Point.origin()!]
       : x = xOrigin,
         y = yOrigin;
 }
 ```
 
-A subclass doesn't inherit a superclass's named constructor.
-To create a subclass with a named constructor defined in the superclass,
-implement that constructor in the subclass.
+Uma subclasse não herda um construtor nomeado de uma superclasse.
+Para criar uma subclasse com um construtor nomeado definido na superclasse,
+implemente esse construtor na subclasse.
 
-### Constant constructors
+### Construtores constantes
 
-If your class produces unchanging objects, make these
-objects compile-time constants. 
-To make objects compile-time constants, define a `const` constructor
-with all instance variables set as `final`.
+Se sua classe produz objetos imutáveis, faça com que esses
+objetos sejam constantes de tempo de compilação.
+Para fazer com que objetos sejam constantes de tempo de compilação, defina um construtor `const`
+com todas as variáveis de instância definidas como `final`.
 
 <?code-excerpt "immutable_point.dart"?>
 ```dart
@@ -112,55 +113,55 @@ class ImmutablePoint {
 }
 ```
 
-Constant constructors don't always create constants.
-They might be invoked in a non-`const` context.
-To learn more, consult the section on [using constructors][].
+Construtores constantes nem sempre criam constantes.
+Eles podem ser invocados em um contexto não-`const`.
+Para saber mais, consulte a seção sobre [usando construtores][using constructors].
 
-### Redirecting constructors
+### Construtores de redirecionamento
 
-A constructor might redirect to another constructor in the same class.
-A redirecting constructor has an empty body.
-The constructor uses `this` instead of the class name after a colon (:).
+Um construtor pode redirecionar para outro construtor na mesma classe.
+Um construtor de redirecionamento tem um corpo vazio.
+O construtor usa `this` em vez do nome da classe após os dois pontos (:).
 
 <?code-excerpt "point_redirecting.dart"?>
 ```dart
 class Point {
   double x, y;
 
-  // The main constructor for this class.
+  // O construtor principal para esta classe.
   Point(this.x, this.y);
 
-  // Delegates to the main constructor.
+  // Delega para o construtor principal.
   Point.alongXAxis(double x) : this(x, 0);
 }
 ```
 
-### Factory constructors
+### Construtores factory
 
-When encountering one of following two cases of implementing a constructor,
-use the `factory` keyword:
+Ao encontrar um dos dois casos seguintes de implementação de um construtor,
+use a palavra-chave `factory`:
 
-* The constructor doesn't always create a new instance of its class.
-  Although a factory constructor cannot return `null`,
-  it might return:
+* O construtor nem sempre cria uma nova instância de sua classe.
+  Embora um construtor factory não possa retornar `null`,
+  ele pode retornar:
   
-  * an existing instance from a cache instead of creating a new one
-  * a new instance of a subtype
+  * uma instância existente de um cache em vez de criar uma nova
+  * uma nova instância de um subtipo
 
-* You need to perform non-trivial work prior to constructing an instance.
-  This could include checking arguments or doing any other processing
-  that cannot be handled in the initializer list.
+* Você precisa realizar um trabalho não trivial antes de construir uma instância.
+  Isso pode incluir a verificação de argumentos ou fazer qualquer outro processamento
+  que não pode ser tratado na lista de inicialização.
 
 :::tip
-You can also handle late initialization of a final variable
-with [`late final`][late-final-ivar] (carefully!).
+Você também pode lidar com a inicialização tardia de uma variável final
+com [`late final`][late-final-ivar] (com cuidado!).
 :::
 
-The following example includes two factory constructors.
+O exemplo a seguir inclui dois construtores factory.
 
-* `Logger` factory constructor returns objects from a cache.
-* `Logger.fromJson` factory constructor initializes a final variable
-  from a JSON object.
+* O construtor factory `Logger` retorna objetos de um cache.
+* O construtor factory `Logger.fromJson` inicializa uma variável final
+  de um objeto JSON.
 
 <?code-excerpt "logger.dart (constructors)"?>
 ```dart
@@ -168,8 +169,8 @@ class Logger {
   final String name;
   bool mute = false;
 
-  // _cache is library-private, thanks to
-  // the _ in front of its name.
+  // _cache é privado da biblioteca, graças ao
+  // _ na frente do seu nome.
   static final Map<String, Logger> _cache = <String, Logger>{};
 
   factory Logger(String name) {
@@ -189,83 +190,83 @@ class Logger {
 ```
 
 :::warning
-Factory constructors can't access `this`.
+Construtores factory não podem acessar `this`.
 :::
 
-Use a factory constructor as any other constructor:
+Use um construtor factory como qualquer outro construtor:
 
 <?code-excerpt "logger.dart (logger)"?>
 ```dart
 var logger = Logger('UI');
-logger.log('Button clicked');
+logger.log('Botão clicado');
 
 var logMap = {'name': 'UI'};
 var loggerJson = Logger.fromJson(logMap);
 ```
 
-### Redirecting factory constructors
+### Construtores factory de redirecionamento
 
-A redirecting factory constructor specifies a call to a constructor of another
-class to use whenever someone makes a call to the redirecting constructor.
+Um construtor factory de redirecionamento especifica uma chamada para um construtor de outra
+classe para usar sempre que alguém fizer uma chamada para o construtor de redirecionamento.
 
 ```dart
 factory Listenable.merge(List<Listenable> listenables) = _MergingListenable
 ```
 
-It might appear that ordinary factory constructors
-could create and return instances of other classes.
-This would make redirecting factories unnecessary.
-Redirecting factories have several advantages:
+Pode parecer que construtores factory comuns
+poderiam criar e retornar instâncias de outras classes.
+Isso tornaria os factories de redirecionamento desnecessários.
+Factories de redirecionamento têm várias vantagens:
 
-* An abstract class might provide a constant constructor
-  that uses the constant constructor of another class.
-* A redirecting factory constructor avoids the need for forwarders
-  to repeat the formal parameters and their default values.
+* Uma classe abstrata pode fornecer um construtor constante
+  que usa o construtor constante de outra classe.
+* Um construtor factory de redirecionamento evita a necessidade de encaminhadores
+  para repetir os parâmetros formais e seus valores padrão.
 
-### Constructor tear-offs
+### Tear-offs de construtor
 
-Dart allows you to supply a constructor as a parameter without calling it.
-Called a _tear-off_ (as you _tear off_ the parentheses)
-serves as a closure that invokes the constructor with the same parameters.
+Dart permite que você forneça um construtor como um parâmetro sem chamá-lo.
+Chamado de _tear-off_ (já que você _arranca_ os parênteses)
+serve como um closure que invoca o construtor com os mesmos parâmetros.
 
-If the tear-off is a constructor with the same signature and return type
-as the method accepts, you can use the tear-off as a parameter or variable.
+Se o tear-off for um construtor com a mesma assinatura e tipo de retorno
+que o método aceita, você pode usar o tear-off como um parâmetro ou variável.
 
-Tear-offs differ from lambdas or anonymous functions.
-Lambdas serve as a wrapper for the constructor whereas a tear-off
-is the constructor.
+Tear-offs diferem de lambdas ou funções anônimas.
+Lambdas servem como um wrapper para o construtor, enquanto um tear-off
+é o construtor.
 
 **Use Tear-Offs**
 
 ```dart tag=good
-// Use a tear-off for a named constructor: 
-var strings = charCodes.map(String.fromCharCode);  
+// Use um tear-off para um construtor nomeado:
+var strings = charCodes.map(String.fromCharCode);
 
-// Use a tear-off for an unnamed constructor: 
-var buffers = charCodes.map(StringBuffer.new); 
+// Use um tear-off para um construtor não nomeado:
+var buffers = charCodes.map(StringBuffer.new);
 ```
 
-**Not Lambdas**
+**Não Lambdas**
 
 ```dart tag=bad
-// Instead of a lambda for a named constructor:
+// Em vez de uma lambda para um construtor nomeado:
 var strings = charCodes.map((code) => String.fromCharCode(code));
 
-// Instead of a lambda for an unnamed constructor:
+// Em vez de uma lambda para um construtor não nomeado:
 var buffers = charCodes.map((code) => StringBuffer(code));
 ```
 
-For more discussion, watch this Decoding Flutter video on tear-offs.
+Para mais discussão, assista este vídeo Decoding Flutter sobre tear-offs.
 
 {% ytEmbed "OmCaloD7sis", "Dart Tear-offs | Decoding Flutter" %}
 
-## Instance Variable Initialization
+## Inicialização de Variável de Instância
 
-Dart can initialize variables in three ways.
+Dart pode inicializar variáveis de três maneiras.
 
-### Initialize instance variables in the declaration
+### Inicialize variáveis de instância na declaração
 
-Initialize the instance variables when you declare the variables.
+Inicialize as variáveis de instância quando você declarar as variáveis.
 
 <?code-excerpt "point_alt.dart (initialize-declaration)" plaster="none"?>
 ```dart
@@ -273,7 +274,7 @@ class PointA {
   double x = 1.0;
   double y = 2.0;
 
-  // The implicit default constructor sets these variables to (1.0,2.0)
+  // O construtor padrão implícito define essas variáveis para (1.0,2.0)
   // PointA();
 
   @override
@@ -283,29 +284,29 @@ class PointA {
 }
 ```
 
-### Use initializing formal parameters
+### Use parâmetros formais inicializadores
 
-To simplify the common pattern of assigning a constructor argument
-to an instance variable, Dart has *initializing formal parameters*.
+Para simplificar o padrão comum de atribuir um argumento de construtor
+para uma variável de instância, Dart tem *parâmetros formais inicializadores*.
 
-In the constructor declaration, include `this.<propertyName>`
-and omit the body. The `this` keyword refers to the current instance.
+Na declaração do construtor, inclua `this.<nomeDaPropriedade>`
+e omita o corpo. A palavra-chave `this` refere-se à instância atual.
 
-When the name conflict exists, use `this`.
-Otherwise, Dart style omits the `this`.
-An exception exists for the generative constructor where
-you must prefix the initializing formal parameter name with `this`.
+Quando o conflito de nomes existe, use `this`.
+Caso contrário, o estilo Dart omite o `this`.
+Existe uma exceção para o construtor generativo onde
+você deve prefixar o nome do parâmetro formal inicializador com `this`.
 
-As noted earlier in this guide, certain constructors
-and certain parts of constructors can't access `this`. These include:
+Como observado anteriormente neste guia, certos construtores
+e certas partes de construtores não podem acessar `this`. Estes incluem:
 
-* Factory constructors
-* The right-hand side of an initializer list
-* Arguments to a superclass constructor
+* Construtores factory
+* O lado direito de uma lista de inicialização
+* Argumentos para um construtor de superclasse
 
-Initializing formal parameters also allow you to initialize
-non-nullable or `final` instance variables.
-Both of these types of variables require initialization or a default value.
+Parâmetros formais inicializadores também permitem que você inicialize
+variáveis de instância não anuláveis ou `final`.
+Ambos esses tipos de variáveis exigem inicialização ou um valor padrão.
 
 <?code-excerpt "point_alt.dart (initialize-formal)" plaster="none"?>
 ```dart
@@ -313,20 +314,20 @@ class PointB {
   final double x;
   final double y;
 
-  // Sets the x and y instance variables
-  // before the constructor body runs.
+  // Define as variáveis de instância x e y
+  // antes da execução do corpo do construtor.
   PointB(this.x, this.y);
 
-  // Initializing formal parameters can also be optional.
+  // Parâmetros formais inicializadores também podem ser opcionais.
   PointB.optional([this.x = 0.0, this.y = 0.0]);
 }
 ```
 
-Private fields can't be used as named initializing formals.
+Campos privados não podem ser usados como formais inicializadores nomeados.
 
 {% comment %}
-Don't attach the following example to a code excerpt.
-It doesn't work on purpose and will cause errors in CI.
+Não anexe o exemplo a seguir a um trecho de código.
+Não funciona de propósito e causará erros no CI.
 {% endcomment %}
 
 ```dart
@@ -341,16 +342,16 @@ class PointB {
 }
 ```
 
-This also works with named variables.
+Isso também funciona com variáveis nomeadas.
 
 <?code-excerpt "point_alt.dart (initialize-named)" plaster="none"?>
 ```dart
 class PointC {
-  double x; // must be set in constructor
-  double y; // must be set in constructor
+  double x; // deve ser definido no construtor
+  double y; // deve ser definido no construtor
 
-  // Generative constructor with initializing formal parameters
-  // with default values
+  // Construtor generativo com parâmetros formais inicializadores
+  // com valores padrão
   PointC.named({this.x = 1.0, this.y = 1.0});
 
   @override
@@ -359,27 +360,27 @@ class PointC {
   }
 }
 
-// Constructor using named variables.
+// Construtor usando variáveis nomeadas.
 final pointC = PointC.named(x: 2.0, y: 2.0);
 ```
 
-All variables introduced from initializing formal parameters are both
-final and only in scope of the initialized variables.
+Todas as variáveis introduzidas a partir de parâmetros formais inicializadores são ambas
+final e apenas no escopo das variáveis inicializadas.
 
-To perform logic that you can't express in the initializer list,
-create a [factory constructor](#factory-constructors)
-or [static method][] with that logic.
-You can then pass the computed values to a normal constructor.
+Para realizar uma lógica que você não pode expressar na lista de inicialização,
+crie um [construtor factory](#factory-constructors)
+ou [método estático][static method] com essa lógica.
+Você pode então passar os valores calculados para um construtor normal.
 
-The constructor parameters could be set as nullable and not be initialized.
+Os parâmetros do construtor podem ser definidos como anuláveis e não serem inicializados.
 
 <?code-excerpt "point_alt.dart (initialize-null)" plaster="none"?>
 ```dart
 class PointD {
-  double? x; // null if not set in constructor
-  double? y; // null if not set in constructor
+  double? x; // nulo se não definido no construtor
+  double? y; // nulo se não definido no construtor
 
-  // Generative constructor with initializing formal parameters
+  // Construtor generativo com parâmetros formais inicializadores
   PointD(this.x, this.y);
 
   @override
@@ -389,40 +390,40 @@ class PointD {
 }
 ```
 
-### Use an initializer list
+### Use uma lista de inicialização
 
-Before the constructor body runs, you can initialize instance variables.
-Separate initializers with commas.
+Antes da execução do corpo do construtor, você pode inicializar variáveis de instância.
+Separe os inicializadores com vírgulas.
 
 <?code-excerpt "point_alt.dart (initializer-list)"?>
 ```dart
-// Initializer list sets instance variables before
-// the constructor body runs.
+// A lista de inicialização define variáveis de instância antes
+// da execução do corpo do construtor.
 Point.fromJson(Map<String, double> json)
     : x = json['x']!,
       y = json['y']! {
-  print('In Point.fromJson(): ($x, $y)');
+  print('Em Point.fromJson(): ($x, $y)');
 }
 ```
 
 :::warning
-The right-hand side of an initializer list can't access `this`.
+O lado direito de uma lista de inicialização não pode acessar `this`.
 :::
 
-To validate inputs during development,
-use `assert` in the initializer list.
+Para validar as entradas durante o desenvolvimento,
+use `assert` na lista de inicialização.
 
 <?code-excerpt "point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
 ```dart
 Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
-  print('In Point.withAssert(): ($x, $y)');
+  print('Em Point.withAssert(): ($x, $y)');
 }
 ```
 
-Initializer lists help set up `final` fields.
+Listas de inicialização ajudam a configurar campos `final`.
 
-The following example initializes three `final` fields in an initializer list.
-To execute the code, click **Run**.
+O exemplo a seguir inicializa três campos `final` em uma lista de inicialização.
+Para executar o código, clique em **Executar**.
 
 <?code-excerpt "point_with_distance_field.dart"?>
 ```dartpad
@@ -445,38 +446,38 @@ void main() {
 }
 ```
 
-## Constructor inheritance
+## Herança de construtor
 
-_Subclasses_, or child classes, don't inherit *constructors*
-from their _superclass_, or immediate parent class.
-If a class doesn't declare a constructor, it can only use the
-[default constructor](#default-constructors).
+_Subclasses_, ou classes filhas, não herdam *construtores*
+de sua _superclasse_, ou classe pai imediata.
+Se uma classe não declarar um construtor, ela só pode usar o
+[construtor padrão](#default-constructors).
 
-A class can inherit the _parameters_ of a superclass.
-These are called [super parameters](#super-parameters)
+Uma classe pode herdar os _parâmetros_ de uma superclasse.
+Estes são chamados de [super parâmetros](#super-parameters)
 
-Constructors work in a somewhat similar way to
-how you call a chain of static methods.
-Each subclass can call its superclass's constructor to initialize an instance,
-like a subclass can call a superclass's static method.
-This process doesn't "inherit" constructor bodies or signatures.
+Construtores funcionam de forma um tanto semelhante a
+como você chama uma cadeia de métodos estáticos.
+Cada subclasse pode chamar o construtor de sua superclasse para inicializar uma instância,
+como uma subclasse pode chamar o método estático de uma superclasse.
+Esse processo não "herda" corpos ou assinaturas de construtores.
 
-### Non-default superclass constructors
+### Construtores de superclasse não padrão
 
-Dart executes constructors in the following order:
+Dart executa construtores na seguinte ordem:
 
-1. [initializer list](#use-an-initializer-list)
-1. superclass's unnamed, no-arg constructor
-1. main class's no-arg constructor
+1. [lista de inicialização](#use-an-initializer-list)
+1. construtor sem nome e sem argumentos da superclasse
+1. construtor sem argumentos da classe principal
 
-If the superclass lacks an unnamed, no-argument constructor,
-call one of the constructors in the superclass.
-Before the constructor body (if any),
-specify the superclass constructor after a colon (`:`).
+Se a superclasse não tiver um construtor sem nome e sem argumentos,
+chame um dos construtores na superclasse.
+Antes do corpo do construtor (se houver),
+especifique o construtor da superclasse após os dois pontos (`:`).
 
-In the following example,
-the `Employee` class constructor calls the named constructor
-for its superclass, `Person`. To execute the following code, click **Run**.
+No exemplo a seguir,
+o construtor da classe `Employee` chama o construtor nomeado
+para sua superclasse, `Person`. Para executar o código a seguir, clique em **Executar**.
 
 <?code-excerpt "employee.dart (super)" plaster="none"?>
 ```dartpad
@@ -484,31 +485,31 @@ class Person {
   String? firstName;
 
   Person.fromJson(Map data) {
-    print('in Person');
+    print('em Person');
   }
 }
 
 class Employee extends Person {
-  // Person does not have a default constructor;
-  // you must call super.fromJson().
+  // Person não tem um construtor padrão;
+  // você deve chamar super.fromJson().
   Employee.fromJson(Map data) : super.fromJson(data) {
-    print('in Employee');
+    print('em Employee');
   }
 }
 
 void main() {
   var employee = Employee.fromJson({});
   print(employee);
-  // Prints:
-  // in Person
-  // in Employee
-  // Instance of 'Employee'
+  // Imprime:
+  // em Person
+  // em Employee
+  // Instância de 'Employee'
 }
 ```
 
-As Dart evaluates the arguments to the superclass constructor *before*
-invoking the constructor, an argument can be an expression like a
-function call.
+Como Dart avalia os argumentos para o construtor da superclasse *antes* de
+invocar o construtor, um argumento pode ser uma expressão como uma
+chamada de função.
 
 <?code-excerpt "employee.dart (method-then-constructor)"?>
 ```dart
@@ -519,30 +520,30 @@ class Employee extends Person {
 ```
 
 :::warning
-Arguments to the superclass constructor can't access `this`.
-For example, arguments can call *static* methods
-but not *instance* methods.
+Argumentos para o construtor da superclasse não podem acessar `this`.
+Por exemplo, os argumentos podem chamar métodos *estáticos*
+mas não métodos de *instância*.
 :::
 
-### Super parameters
+### Super parâmetros
 
-To avoid passing each parameter into the super invocation of a constructor,
-use super-initializer parameters to forward parameters
-to the specified or default superclass constructor.
-You can't use this feature with
-[redirecting constructors](#redirecting-constructors).
-Super-initializer parameters have syntax and semantics like
-[initializing formal parameters](#use-initializing-formal-parameters).
+Para evitar passar cada parâmetro para a invocação super de um construtor,
+use parâmetros super-inicializadores para encaminhar parâmetros
+para o construtor de superclasse especificado ou padrão.
+Você não pode usar esse recurso com
+[construtores de redirecionamento](#redirecting-constructors).
+Super parâmetros inicializadores têm sintaxe e semântica como
+[parâmetros formais inicializadores](#use-initializing-formal-parameters).
 
 :::version-note
-Using super-initializer parameters
-requires a [language version][] of at least 2.17.
-If you're using an earlier language version,
-you must manually pass in all super constructor parameters.
+Usar parâmetros super-inicializadores
+requer uma [versão de linguagem][language version] de pelo menos 2.17.
+Se você estiver usando uma versão de idioma anterior,
+você deve passar manualmente todos os parâmetros do construtor super.
 :::
 
-If the super-constructor invocation includes positional arguments,
-super-initializer parameters can't be positional.
+Se a invocação super-construtor incluir argumentos posicionais,
+super parâmetros inicializadores não podem ser posicionais.
 
 <?code-excerpt "super_initializer_positional_parameters.dart (positional)" plaster="none"?>
 ```dart
@@ -556,29 +557,29 @@ class Vector2d {
 class Vector3d extends Vector2d {
   final double z;
 
-  // Forward the x and y parameters to the default super constructor like:
+  // Encaminhe os parâmetros x e y para o construtor super padrão como:
   // Vector3d(final double x, final double y, this.z) : super(x, y);
   Vector3d(super.x, super.y, this.z);
 }
 ```
 
-To further illustrate, consider the following example.
+Para ilustrar ainda mais, considere o exemplo a seguir.
 
 ```dart
-  // If you invoke the super constructor (`super(0)`) with any
-  // positional arguments, using a super parameter (`super.x`)
-  // results in an error.
-  Vector3d.xAxisError(super.x): z = 0, super(0); // BAD
+  // Se você invocar o super construtor (`super(0)`) com qualquer
+  // argumentos posicionais, usar um super parâmetro (`super.x`)
+  // resulta em um erro.
+  Vector3d.xAxisError(super.x): z = 0, super(0); // RUIM
 ```
 
-This named constructor tries to set the `x` value twice:
-once in the super constructor and once as a
-positional super parameter.
-As both address the `x` positional parameter, this results in an error.
+Este construtor nomeado tenta definir o valor `x` duas vezes:
+uma vez no super construtor e uma vez como um
+super parâmetro posicional.
+Como ambos se referem ao parâmetro posicional `x`, isso resulta em um erro.
 
-When the super constructor has named arguments, you can split them
-between named super parameters (`super.y` in the next example)
-and named arguments to the super constructor invocation
+Quando o super construtor tem argumentos nomeados, você pode dividi-los
+entre super parâmetros nomeados (`super.y` no próximo exemplo)
+e argumentos nomeados para a invocação do super construtor
 (`super.named(x: 0)`).
 
 <?code-excerpt "super_initializer_named_parameters.dart (named)" plaster="none"?>
@@ -591,7 +592,7 @@ class Vector2d {
 class Vector3d extends Vector2d {
   final double z;
 
-  // Forward the y parameter to the named super constructor like:
+  // Encaminhe o parâmetro y para o construtor super nomeado como:
   // Vector3d.yzPlane({required double y, required this.z})
   //       : super.named(x: 0, y: y);
   Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);

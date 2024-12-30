@@ -1,35 +1,36 @@
 ---
-title: JavaScript interoperability
+ia-translate: true
+title: Interoperabilidade JavaScript
 short-title: JS interop
-description: Integrate JavaScript code into your Dart web app.
+description: Integre código JavaScript em seu aplicativo web Dart.
 ---
 
-The [Dart web platform](/overview#web-platform) supports communication with
-JavaScript apps and libraries, as well as browser APIs, using `dart:js_interop`.
+A [plataforma web Dart][Dart web platform] suporta comunicação
+com aplicativos e bibliotecas JavaScript, bem como APIs de navegador, usando `dart:js_interop`.
 
-Web developers can benefit from using external JS libraries in their Dart code,
-without having to rewrite anything in Dart.
+Desenvolvedores web podem se beneficiar do uso de bibliotecas
+JS externas em seu código Dart, sem ter que reescrever nada em Dart.
 
-## Next-generation JS interop
+## Nova geração de JS interop
 
-The Dart team [recently][] overhauled the collection of features and APIs that allow
-developers access to JavaScript and browser bindings in their Dart code.
-This next generation of web interop not only improves user experience,
-but also enables [Wasm][] support, aligning Dart with the future of the Web.
+A equipe do Dart [recentemente][recently] reformulou a coleção de recursos e APIs que permitem aos
+desenvolvedores acesso a vinculações JavaScript e de navegador em seu código Dart.
+Esta nova geração de interoperabilidade web não apenas melhora a experiência do usuário, mas
+também possibilita o suporte a [Wasm][Wasm], alinhando o Dart com o futuro da Web.
 
-The following table maps Dart's new JS and web interop solutions to
-their past counterparts:
+A tabela a seguir mapeia as novas soluções de interoperabilidade JS e web do Dart para suas
+contrapartes anteriores:
 
-| New interop libraries        | Previous libraries                       |
-|------------------------------|------------------------------------------|
-| [`package:web`][] | [`dart:html`][] <br> [`dart:indexed_db`][] <br> [`dart:svg`][] <br> [`dart:web_audio`][] <br> [`dart:web_gl`][] |
-| [`dart:js_interop`][] <br> [`dart:js_interop_unsafe`][] | [`package:js`][] <br> [`dart:js`][] <br> [`dart:js_util`][] |
+| Novas bibliotecas de interop | Bibliotecas anteriores |
+| ---------------------------- | ------------------------ |
+| [`package:web`][`package:web`] | [`dart:html`][`dart:html`] <br> [`dart:indexed_db`][`dart:indexed_db`] <br> [`dart:svg`][`dart:svg`] <br> [`dart:web_audio`][`dart:web_audio`] <br> [`dart:web_gl`][`dart:web_gl`] |
+| [`dart:js_interop`][`dart:js_interop`] <br> [`dart:js_interop_unsafe`][`dart:js_interop_unsafe`] | [`package:js`][`package:js`] <br> [`dart:js`][`dart:js`] <br> [`dart:js_util`][`dart:js_util`] |
 
 {:.table .table-striped}
 
-The Dart interop story has been under heavy development for some time now;
-check out the [Past JS interop][] page for a more in depth summary on past
-iterations.
+A história de interop do Dart tem estado sob intenso desenvolvimento há algum tempo;
+confira a página [interop JS no passado][Past JS interop] para um resumo mais detalhado sobre
+iterações anteriores.
 
 [recently]: https://medium.com/dartlang/dart-3-3-325bf2bf6c13
 [Wasm]: /web/wasm
@@ -46,25 +47,31 @@ iterations.
 [`dart:js_util`]: {{site.dart-api}}/dart-js_util/dart-js_util-library.html
 [Past JS interop]: /interop/js-interop/past-js-interop/
 
-## Overview
+## Visão geral
 
-For information on how to write and use JavaScript interop:
-  * [Usage reference]
-  * [JS types reference]
+Para informações sobre como escrever e usar a interoperabilidade JavaScript:
 
-For information on interacting with web APIs:
-  * [`package:web` and migration]
+  *   [Referência de uso][Usage reference]
+  *   [Referência de tipos JS][JS types reference]
 
-For tutorials and help:
-  * [How to mock JavaScript interop objects]
+Para informações sobre como interagir com APIs da web:
 
-For information on previous JavaScript interop libraries:
-  * [Past JS interop]
+  *   [`package:web` e migração][`package:web` and migration]
 
-For additional documentation on JavaScript interop:
-  * [`dart:js_interop` API reference]
-  * [`dart:js_interop_unsafe` API reference]
+Para tutoriais e ajuda:
 
+  *   [Como simular objetos de interoperabilidade JavaScript][How to mock JavaScript interop objects]
+
+Para informações sobre bibliotecas de interoperabilidade JavaScript anteriores:
+
+  *   [Interop JS no passado][Past JS interop]
+
+Para documentação adicional sobre interoperabilidade JavaScript:
+
+  *   [Referência da API `dart:js_interop`][`dart:js_interop` API reference]
+  *   [Referência da API `dart:js_interop_unsafe`][`dart:js_interop_unsafe` API reference]
+
+[Dart web platform]: /overview#web-platform
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
 [`package:web` and migration]: /interop/js-interop/package-web

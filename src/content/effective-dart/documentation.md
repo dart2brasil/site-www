@@ -64,7 +64,7 @@ uma seção de código, mas todos os outros comentários devem usar `//`.
 
 ## Comentários de documentação
 
-Comentários de documentação são especialmente úteis porque o [`dart doc`][] os
+Comentários de documentação são especialmente úteis porque o [`dart doc`][`dart doc`] os
 analisa e gera [belas páginas de documentação][docs] a partir deles. Um
 comentário de documentação é qualquer comentário que aparece antes de uma
 declaração e usa a sintaxe especial `///` que o `dart doc` procura.
@@ -77,7 +77,7 @@ declaração e usa a sintaxe especial `///` que o `dart doc` procura.
 {% render 'linter-rule-mention.md', rules:'slash_for_doc_comments' %}
 
 Usar um comentário de documentação em vez de um comentário regular permite
-que o [`dart doc`][] o encontre e gere documentação para ele.
+que o [`dart doc`][`dart doc`] o encontre e gere documentação para ele.
 
 <?code-excerpt "docs_good.dart (use-doc-comments)"?>
 ```dart tag=good
@@ -424,8 +424,8 @@ class ToggleComponent {}
 
 ## Markdown
 
-Você pode usar a maioria das formatações [markdown][] em seus comentários de
-documentação e o `dart doc` as processará de acordo usando o [pacote markdown][].
+Você pode usar a maioria das formatações [markdown][markdown] em seus comentários de
+documentação e o `dart doc` as processará de acordo usando o [pacote markdown][markdown package.].
 
 [markdown]: https://daringfireball.net/projects/markdown/
 [markdown package.]: {{site.pub-pkg}}/markdown

@@ -161,7 +161,7 @@ var c = C(Iterable.empty()).collection;
 error - O método 'add' não está definido para o tipo 'Iterable'. Tente corrigir o nome para o nome de um método existente ou definir um método chamado 'add'. - undefined_method
 ```
 
-Enquanto o tipo [List][] possui um método `add()`, [Iterable][] não.
+Enquanto o tipo [List][List] possui um método `add()`, [Iterable][Iterable] não.
 
 #### Correção: Especifique argumentos de tipo ou corrija erros posteriores
 
@@ -425,8 +425,8 @@ HoneyBadger(Eats food, String name)
 error - O tipo de argumento '...' não pode ser atribuído ao tipo de parâmetro '...'. - argument_type_not_assignable
 ```
 
-No Dart 1.x, `dynamic` era tanto um [tipo superior][] (super tipo de todos os
-tipos) quanto um [tipo inferior][] (subtipo de todos os tipos)
+No Dart 1.x, `dynamic` era tanto um [tipo superior][tipo superior] (super tipo de todos os
+tipos) quanto um [tipo inferior][tipo inferior] (subtipo de todos os tipos)
 dependendo do contexto. Isso significava que era válido atribuir, por
 exemplo, uma função com um parâmetro do tipo `String` a um local que esperava
 um tipo de função com um parâmetro de `dynamic`.
@@ -568,7 +568,7 @@ Adicionar um argumento de tipo explícito pode ajudar:
 
 <?code-excerpt "test/strong_test.dart (typed-list-lit)" replace="/<String\x3E/[!$&!]/g"?>
 ```dart tag=runtime-success
-var list = [!<String>!][];
+var list = [!<String>!][!<String>!];
 list.add('a string');
 list.add('another');
 assumeStrings(list);
@@ -586,7 +586,7 @@ assumeStrings(list);
 
 Nos casos em que você está trabalhando com uma coleção que você não cria,
 como de JSON ou de uma fonte de dados externa, você pode usar o método
-[cast()][] fornecido pelas implementações de `Iterable`, como `List`.
+[cast()][cast()] fornecido pelas implementações de `Iterable`, como `List`.
 
 Aqui está um exemplo da solução preferida: restringir o tipo do objeto.
 
@@ -631,8 +631,8 @@ Normalmente, o método da superclasse é o melhor lugar
 para colocá-la. A palavra-chave `covariant` se aplica a um único parâmetro
 e também é suportada em setters e campos.
 
-[bottom type]: https://en.wikipedia.org/wiki/Bottom_type
+[tipo inferior]: https://en.wikipedia.org/wiki/Bottom_type
 [cast()]: {{site.dart-api}}/dart-core/Iterable/cast.html
 [Iterable]: {{site.dart-api}}/dart-core/Iterable-class.html
 [List]: {{site.dart-api}}/dart-core/List-class.html
-[top type]: https://en.wikipedia.org/wiki/Top_type
+[tipo superior]: https://en.wikipedia.org/wiki/Top_type

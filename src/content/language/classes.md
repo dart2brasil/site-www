@@ -1,65 +1,67 @@
 ---
+ia-translate: true
 title: Classes
-description: Summary of classes, class instances, and their members.
+description: Resumo de classes, instâncias de classes e seus membros.
 prevpage:
   url: /language/error-handling
-  title: Error handling
+  title: Tratamento de erros
 nextpage:
   url: /language/constructors
-  title: Constructors
+  title: Construtores
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-Dart is an object-oriented language with classes and mixin-based
-inheritance. Every object is an instance of a class, and all classes
-except `Null` descend from [`Object`][].
-*Mixin-based inheritance* means that although every class
-(except for the [top class][top-and-bottom], `Object?`)
-has exactly one superclass, a class body can be reused in
-multiple class hierarchies.
-[Extension methods][] are a way to
-add functionality to a class without changing the class or creating a subclass.
-[Class modifiers][] allow you to control how libraries can subtype a class.
+Dart é uma linguagem orientada a objetos com classes e herança baseada
+em mixin. Cada objeto é uma instância de uma classe, e todas as
+classes, exceto `Null`, descendem de [`Object`][`Object`].
+*Herança baseada em mixin* significa que, embora cada classe
+(exceto a [classe superior][top-and-bottom], `Object?`) tenha
+exatamente uma superclasse, o corpo de uma classe pode ser
+reutilizado em múltiplas hierarquias de classes.
+[Extension methods][Extension methods] são uma maneira de adicionar
+funcionalidade a uma classe sem alterá-la ou criar uma subclasse.
+[Class modifiers][Class modifiers] permitem que você controle
+como as bibliotecas podem criar subtipos de uma classe.
 
+## Usando membros de classe
 
-## Using class members
+Objetos têm *membros* que consistem em funções e dados
+(*métodos* e *variáveis de instância*, respectivamente).
+Quando você chama um método, você o *invoca* em um objeto: o método
+tem acesso às funções e aos dados desse objeto.
 
-Objects have *members* consisting of functions and data (*methods* and
-*instance variables*, respectively). When you call a method, you *invoke*
-it on an object: the method has access to that object's functions and
-data.
-
-Use a dot (`.`) to refer to an instance variable or method:
+Use um ponto (`.`) para se referir a uma variável de instância ou
+método:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-members)"?>
 ```dart
 var p = Point(2, 2);
 
-// Get the value of y.
+// Obtém o valor de y.
 assert(p.y == 2);
 
-// Invoke distanceTo() on p.
+// Invoca distanceTo() em p.
 double distance = p.distanceTo(Point(4, 4));
 ```
 
-Use `?.` instead of `.` to avoid an exception
-when the leftmost operand is null:
+Use `?.` em vez de `.` para evitar uma exceção quando o operando
+mais à esquerda for nulo:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (safe-member-access)"?>
 ```dart
-// If p is non-null, set a variable equal to its y value.
+// Se p não for nulo, define uma variável igual ao seu valor y.
 var a = p?.y;
 ```
 
+## Usando construtores
 
-## Using constructors
-
-You can create an object using a *constructor*.
-Constructor names can be either <code><em>ClassName</em></code> or
-<code><em>ClassName</em>.<em>identifier</em></code>. For example,
-the following code creates `Point` objects using the
-`Point()` and `Point.fromJson()` constructors:
+Você pode criar um objeto usando um *construtor*.
+Nomes de construtores podem ser
+<code><em>ClassName</em></code> ou
+<code><em>ClassName</em>.<em>identifier</em></code>.
+Por exemplo, o código a seguir cria objetos `Point` usando os
+construtores `Point()` e `Point.fromJson()`:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
 ```dart
@@ -67,8 +69,8 @@ var p1 = Point(2, 2);
 var p2 = Point.fromJson({'x': 1, 'y': 2});
 ```
 
-The following code has the same effect, but
-uses the optional `new` keyword before the constructor name:
+O código a seguir tem o mesmo efeito, mas usa a palavra-chave
+opcional `new` antes do nome do construtor:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation-new)" replace="/ as .*?;/;/g"?>
 ```dart
@@ -76,153 +78,153 @@ var p1 = new Point(2, 2);
 var p2 = new Point.fromJson({'x': 1, 'y': 2});
 ```
 
-Some classes provide [constant constructors][].
-To create a compile-time constant using a constant constructor,
-put the `const` keyword before the constructor name:
+Algumas classes fornecem [constant
+constructors][constant constructors].
+Para criar uma constante em tempo de compilação usando um
+construtor constante, coloque a palavra-chave `const` antes do
+nome do construtor:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const)"?>
 ```dart
 var p = const ImmutablePoint(2, 2);
 ```
 
-Constructing two identical compile-time constants results in a single,
-canonical instance:
+Construir duas constantes idênticas em tempo de compilação resulta
+em uma única instância canônica:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (identical)"?>
 ```dart
 var a = const ImmutablePoint(1, 1);
 var b = const ImmutablePoint(1, 1);
 
-assert(identical(a, b)); // They are the same instance!
+assert(identical(a, b)); // Eles são a mesma instância!
 ```
 
-Within a _constant context_, you can omit the `const` before a constructor
-or literal. For example, look at this code, which creates a const map:
+Dentro de um _contexto constante_, você pode omitir o `const` antes
+de um construtor ou literal. Por exemplo, veja este código, que
+cria um mapa constante:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-withconst)" replace="/pointAndLine1/pointAndLine/g"?>
 ```dart
-// Lots of const keywords here.
+// Muitas palavras-chave const aqui.
 const pointAndLine = const {
   'point': const [const ImmutablePoint(0, 0)],
   'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
 };
 ```
 
-You can omit all but the first use of the `const` keyword:
+Você pode omitir todos, exceto o primeiro uso da palavra-chave
+`const`:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-noconst)" replace="/pointAndLine2/pointAndLine/g"?>
 ```dart
-// Only one const, which establishes the constant context.
+// Apenas um const, que estabelece o contexto constante.
 const pointAndLine = {
   'point': [ImmutablePoint(0, 0)],
   'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
 };
 ```
 
-If a constant constructor is outside of a constant context
-and is invoked without `const`,
-it creates a **non-constant object**:
+Se um construtor constante estiver fora de um contexto constante e
+for invocado sem `const`, ele cria um **objeto não constante**:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (nonconst-const-constructor)"?>
 ```dart
-var a = const ImmutablePoint(1, 1); // Creates a constant
-var b = ImmutablePoint(1, 1); // Does NOT create a constant
+var a = const ImmutablePoint(1, 1); // Cria uma constante
+var b = ImmutablePoint(1, 1); // NÃO cria uma constante
 
-assert(!identical(a, b)); // NOT the same instance!
+assert(!identical(a, b)); // NÃO é a mesma instância!
 ```
 
+## Obtendo o tipo de um objeto
 
-## Getting an object's type
-
-To get an object's type at runtime,
-you can use the `Object` property `runtimeType`,
-which returns a [`Type`][] object.
+Para obter o tipo de um objeto em tempo de execução, você pode usar
+a propriedade `runtimeType` do `Object`, que retorna um objeto
+[`Type`][`Type`].
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (runtime-type)"?>
 ```dart
-print('The type of a is ${a.runtimeType}');
+print('O tipo de a é ${a.runtimeType}');
 ```
 
 :::warning
-Use a [type test operator][] rather than `runtimeType`
-to test an object's type.
-In production environments, the test `object is Type` is more stable
-than the test `object.runtimeType == Type`.
+Use um [operador de teste de tipo][type test operator] em vez de
+`runtimeType` para testar o tipo de um objeto.
+Em ambientes de produção, o teste `object is Type` é mais
+estável do que o teste `object.runtimeType == Type`.
 :::
 
-Up to here, you've seen how to _use_ classes.
-The rest of this section shows how to _implement_ classes.
+Até aqui, você viu como _usar_ classes. O restante desta seção
+mostra como _implementar_ classes.
 
+## Variáveis de instância
 
-## Instance variables
-
-Here's how you declare instance variables:
+Veja como declarar variáveis de instância:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class)"?>
 ```dart
 class Point {
-  double? x; // Declare instance variable x, initially null.
-  double? y; // Declare y, initially null.
-  double z = 0; // Declare z, initially 0.
+  double? x; // Declara a variável de instância x, inicialmente nula.
+  double? y; // Declara y, inicialmente nula.
+  double z = 0; // Declara z, inicialmente 0.
 }
 ```
 
-An uninitialized instance variable declared with a
-[nullable type][] has the value `null`.
-Non-nullable instance variables [must be initialized][] at declaration.
+Uma variável de instância não inicializada declarada com um
+[tipo anulável][nullable type] tem o valor `null`. Variáveis de
+instância não anuláveis [devem ser inicializadas][must be initialized]
+na declaração.
 
-All instance variables generate an implicit *getter* method.
-Non-final instance variables and
-`late final` instance variables without initializers also generate
-an implicit *setter* method. For details,
-check out [Getters and setters][].
+Todas as variáveis de instância geram um método *getter* implícito.
+Variáveis de instância não-finais e variáveis de instância `late
+final` sem inicializadores também geram um método *setter* implícito.
+Para detalhes, consulte [Getters e setters][Getters and setters].
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class-main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
 class Point {
-  double? x; // Declare instance variable x, initially null.
-  double? y; // Declare y, initially null.
+  double? x; // Declara a variável de instância x, inicialmente nula.
+  double? y; // Declara y, inicialmente nula.
 }
 
 void main() {
   var point = Point();
-  point.x = 4; // Use the setter method for x.
-  assert(point.x == 4); // Use the getter method for x.
-  assert(point.y == null); // Values default to null.
+  point.x = 4; // Usa o método setter para x.
+  assert(point.x == 4); // Usa o método getter para x.
+  assert(point.y == null); // Os valores são nulos por padrão.
 }
 ```
 
-Initializing a non-`late` instance variable where it's declared
-sets the value when the instance is created,
-before the constructor and its initializer list execute.
-As a result, the initializing expression (after the `=`)
-of a non-`late` instance variable can't access `this`.
+Inicializar uma variável de instância não `late` onde ela é
+declarada define o valor quando a instância é criada, antes do
+construtor e sua lista de inicializadores executarem. Como
+resultado, a expressão de inicialização (após o `=`) de uma
+variável de instância não `late` não pode acessar `this`.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_this.dart"?>
 ```dart
 double initialX = 1.5;
 
 class Point {
-  // OK, can access declarations that do not depend on `this`:
+  // OK, pode acessar declarações que não dependem de `this`:
   double? x = initialX;
 
-  // ERROR, can't access `this` in non-`late` initializer:
+  // ERRO, não pode acessar `this` em inicializador não `late`:
   double? y = this.x;
 
-  // OK, can access `this` in `late` initializer:
+  // OK, pode acessar `this` em inicializador `late`:
   late double? z = this.x;
 
-  // OK, `this.x` and `this.y` are parameter declarations, not expressions:
+  // OK, `this.x` e `this.y` são parâmetros, não expressões:
   Point(this.x, this.y);
 }
 ```
 
-Instance variables can be `final`,
-in which case they must be set exactly once.
-Initialize `final`, non-`late` instance variables
-at declaration,
-using a constructor parameter, or
-using a constructor's [initializer list][]:
+Variáveis de instância podem ser `final`, caso em que elas devem
+ser definidas exatamente uma vez. Inicialize variáveis de instância
+`final` e não `late` na declaração, usando um parâmetro de
+construtor ou usando a [lista de inicializadores][initializer list]
+de um construtor:
 
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-at-decl)"?>
 ```dart
@@ -235,43 +237,45 @@ class ProfileMark {
 }
 ```
 
-If you need to assign the value of a `final` instance variable
-after the constructor body starts, you can use one of the following:
+Se você precisar atribuir o valor de uma variável de instância
+`final` após o início do corpo do construtor, você pode usar uma
+das seguintes opções:
 
-* Use a [factory constructor][].
-* Use `late final`, but [_be careful:_][late-final-ivar]
-  a `late final` without an initializer adds a setter to the API.
+*   Use um [construtor de fábrica][factory constructor].
+*   Use `late final`, mas [_tenha cuidado:_][late-final-ivar] um
+    `late final` sem um inicializador adiciona um setter à API.
 
-## Implicit interfaces
+## Interfaces implícitas
 
-Every class implicitly defines an interface containing all the instance
-members of the class and of any interfaces it implements. If you want to
-create a class A that supports class B's API without inheriting B's
-implementation, class A should implement the B interface.
+Cada classe define implicitamente uma interface contendo todos os
+membros da instância da classe e de quaisquer interfaces que ela
+implemente. Se você quiser criar uma classe A que suporte a API da
+classe B sem herdar a implementação de B, a classe A deve
+implementar a interface B.
 
-A class implements one or more interfaces by declaring them in an
-`implements` clause and then providing the APIs required by the
-interfaces. For example:
+Uma classe implementa uma ou mais interfaces declarando-as em uma
+cláusula `implements` e, em seguida, fornecendo as APIs exigidas
+pelas interfaces. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/classes/impostor.dart"?>
 ```dart
-// A person. The implicit interface contains greet().
+// Uma pessoa. A interface implícita contém greet().
 class Person {
-  // In the interface, but visible only in this library.
+  // Na interface, mas visível apenas nesta biblioteca.
   final String _name;
 
-  // Not in the interface, since this is a constructor.
+  // Não está na interface, pois este é um construtor.
   Person(this._name);
 
-  // In the interface.
-  String greet(String who) => 'Hello, $who. I am $_name.';
+  // Na interface.
+  String greet(String who) => 'Olá, $who. Eu sou $_name.';
 }
 
-// An implementation of the Person interface.
+// Uma implementação da interface Person.
 class Impostor implements Person {
   String get _name => '';
 
-  String greet(String who) => 'Hi $who. Do you know who I am?';
+  String greet(String who) => 'Oi $who. Você sabe quem eu sou?';
 }
 
 String greetBob(Person person) => person.greet('Bob');
@@ -282,23 +286,23 @@ void main() {
 }
 ```
 
-Here's an example of specifying that a class implements multiple
-interfaces:
+Aqui está um exemplo de especificação de que uma classe implementa
+várias interfaces:
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (point-interfaces)"?>
 ```dart
 class Point implements Comparable, Location {...}
 ```
 
+## Variáveis e métodos de classe
 
-## Class variables and methods
+Use a palavra-chave `static` para implementar variáveis e métodos
+em toda a classe.
 
-Use the `static` keyword to implement class-wide variables and methods.
+### Variáveis estáticas
 
-### Static variables
-
-Static variables (class variables) are useful for class-wide state and
-constants:
+Variáveis estáticas (variáveis de classe) são úteis para estado e
+constantes em toda a classe:
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (static-field)"?>
 ```dart
@@ -312,21 +316,19 @@ void main() {
 }
 ```
 
-Static variables aren't initialized until they're used.
+Variáveis estáticas não são inicializadas até serem usadas.
 
 :::note
-This page follows the
-[style guide recommendation](/effective-dart/style#identifiers)
-of preferring `lowerCamelCase` for constant names.
+Esta página segue a [recomendação do guia de estilo][style guide]
+de preferir `lowerCamelCase` para nomes de constantes.
 :::
 
-### Static methods
+### Métodos estáticos
 
-Static methods (class methods) don't operate on an instance, and thus
-don't have access to `this`.
-They do, however, have access to static variables.
-As the following example shows,
-you invoke static methods directly on a class:
+Métodos estáticos (métodos de classe) não operam em uma instância e,
+portanto, não têm acesso a `this`. Eles têm, no entanto, acesso a
+variáveis estáticas. Como o exemplo a seguir mostra, você invoca
+métodos estáticos diretamente em uma classe:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_distance_method.dart"?>
 ```dart
@@ -353,13 +355,14 @@ void main() {
 ```
 
 :::note
-Consider using top-level functions, instead of static methods, for
-common or widely used utilities and functionality.
+Considere usar funções de nível superior, em vez de métodos
+estáticos, para utilitários e funcionalidades comuns ou amplamente
+utilizados.
 :::
 
-You can use static methods as compile-time constants. For example, you
-can pass a static method as a parameter to a constant constructor.
-
+Você pode usar métodos estáticos como constantes em tempo de
+compilação. Por exemplo, você pode passar um método estático como
+um parâmetro para um construtor constante.
 
 [`Object`]: {{site.dart-api}}/dart-core/Object-class.html
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
@@ -372,5 +375,6 @@ can pass a static method as a parameter to a constant constructor.
 [initializer list]: /language/constructors#use-an-initializer-list
 [factory constructor]: /language/constructors#factory-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
+[style guide]: /effective-dart/style#identifiers
 [nullable type]: /null-safety/understanding-null-safety#using-nullable-types
 [must be initialized]: /null-safety/understanding-null-safety#uninitialized-variables

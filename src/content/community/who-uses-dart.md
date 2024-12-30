@@ -11,32 +11,32 @@ toc: false
 
 ## Flutter
 
-O popular [toolkit Flutter][] é impulsionado
+O popular [toolkit Flutter][Flutter toolkit] é impulsionado
 pela linguagem Dart, tempos de execução,
 ferramentas e bibliotecas. Mais de _um milhão_
 de aplicativos Flutter para Android, iOS, web
 e outros alvos, são todos baseados em Dart.
 
-O [showcase do Flutter][] apresenta aplicativos
+O [showcase do Flutter][Flutter showcase] apresenta aplicativos
 populares do Flutter, incluindo:
 
-* [BMW][]
+* [BMW][BMW]
     > "O BMW Group está se estabelecendo como um
     desenvolvedor e fornecedor líder de aplicativos
     automotivos com uma arquitetura Flutter
     desenvolvida 100% internamente."
-* [Sonos][]:
+* [Sonos][Sonos]:
     > "...Se a configuração é a “grande entrada” para
     o ecossistema Sonos, o Flutter forma sua fachada
     elegante..."
-* [Alibaba][]:
+* [Alibaba][Alibaba]:
     > "Quando a equipe Xianyu foi desafiada a
     melhorar a experiência do usuário,
     desenvolvendo um aplicativo que fosse
     consistente entre plataformas, tivesse belos
     gráficos e ainda carregasse rápido, eles
     recorreram ao Flutter."
-* [PUBG][]:
+* [PUBG][PUBG]:
     > "Quando a equipe do PUBG MOBILE quis adicionar
     um módulo de comunidade para permitir que
     jogadores de todo o mundo compartilhassem
@@ -55,31 +55,31 @@ populares do Flutter, incluindo:
 Dart é usado em quase todos os grupos de
 produtos do Google:
 
-* O [Google Play Console][] permite que
+* O [Google Play Console][Google Play Console] permite que
   publicadores de aplicativos comercializem
   aplicativos Android, e é escrito
   completamente em Dart.
-* A equipe do [Google Ads][] continua a crescer,
+* A equipe do [Google Ads][Google Ads] continua a crescer,
   com centenas de SWEs escrevendo
   principalmente código Dart.
-* A equipe do [Google Assistant][] usa Flutter e
+* A equipe do [Google Assistant][Google Assistant] usa Flutter e
   Dart para impulsionar a interface geral do
   sistema de seus Smart Displays.
 * Tanto a UI quanto grande parte do código de
-  back-end para os dispositivos [Google Nest Hub][]
+  back-end para os dispositivos [Google Nest Hub][Google Nest Hub]
   e Hub Max são escritos em Dart.
 * A lista continua, com muitos outros aplicativos
   do Google feitos usando Dart e Flutter:
 
-  * [Google Pay][]
-  * [Google One][]
-  * [Google Fibre][]
-  * [Google Elections][]
-  * [Google Shopping][]
-  * [Cloud Search][]
-  * [Family Link][]
-  * [Google One][]
-  * [Cloud Search][]
+  * [Google Pay][Google Pay]
+  * [Google One][Google One]
+  * [Google Fibre][Google Fibre]
+  * [Google Elections][Google Elections]
+  * [Google Shopping][Google Shopping]
+  * [Cloud Search][Cloud Search]
+  * [Family Link][Family Link]
+  * [Google One][Google One]
+  * [Cloud Search][Cloud Search]
 
 Várias outras equipes do Google estão
 atualmente reescrevendo seus projetos em
@@ -105,17 +105,17 @@ Além do Google e do Flutter, muitas
 empresas usam Dart para construir seus aplicativos:
 
 * Os aplicativos cliente de próxima
-  geração da [Workiva's][] para seu pacote de
+  geração da [Workiva's][Workiva's] para seu pacote de
   produtividade são construídos com Dart.
-* [Wrike][] usa o framework [AngularDart][] para
+* [Wrike][Wrike] usa o framework [AngularDart][AngularDart] para
   desenvolver ferramentas de gestão de projetos.
-* [Blossom][] é uma ferramenta de gestão
+* [Blossom][Blossom] é uma ferramenta de gestão
   de projetos ágil construída com Dart.
 * E muitos mais!
 
 Se você criar software de produção com
 Dart e quiser ser incluído nesta lista,
-visite o [GitHub do nosso site][] para abrir
+visite o [GitHub do nosso site][our site's GitHub] para abrir
 um problema ou pull request, obrigado!
 
 [Workiva's]: https://www.workiva.com/en-in
