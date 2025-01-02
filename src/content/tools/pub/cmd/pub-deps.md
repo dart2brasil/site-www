@@ -44,12 +44,12 @@ markdown_converter 0.0.0
 '-- markdown 0.7.2
 ```
 
-## Options
+## Options {:#options}
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `--style=<style>` or `-s <style>`
+### `--style=<style>` or `-s <style>` {:#style-style-or-s-style}
 
 The specified style determines the output format:
 
@@ -63,24 +63,24 @@ The specified style determines the output format:
 `compact`
 : Prints dependency information as a compact list.
 
-### `--[no-]dev`
+### `--[no-]dev` {:#no-dev}
 
 By default, prints all dependencies, 
 including dev dependencies (`--dev`).
 To remove dev dependencies, use `--no-dev`.
 
-### `--executables`
+### `--executables` {:#executables}
 
 Prints all available executables.
 
-### `--json`
+### `--json` {:#json}
 
 Generates output in JSON format.
 
 
 {% render 'pub-problems.md' %}
 
-## In a workspace
+## In a workspace {:#in-a-workspace}
 
 In a [Pub workspace](/tools/pub/workspaces) `dart pub deps` will list
 dependencies for all packages in the workspace, one workspace package at a time.

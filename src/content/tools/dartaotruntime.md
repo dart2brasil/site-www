@@ -6,12 +6,12 @@ toc: false
 
 With Dart, you can create pre-compiled Dart applications called *AOT snapshots*.
 
-## Create AOT snapshot app
+## Create AOT snapshot app {:#create-aot-snapshot-app}
 
 To produce AOT snapshots, use the `aot-snapshot` subcommand of the
 [`dart compile` command][dart compile].
 
-## Run AOT snapshot app
+## Run AOT snapshot app {:#run-aot-snapshot-app}
 
 To run AOT programs, use the `dartaotruntime` command.
 This tool supports Windows, macOS, and Linux.
@@ -23,7 +23,7 @@ add the path to your Dart `bin` directory to your `PATH` environment variable.
 
 [dart compile]: /tools/dart-compile
 
-## Review an example
+## Review an example {:#review-an-example}
 
 Here's an example of creating and running an AOT snapshot:
 
@@ -39,7 +39,7 @@ Generated: /Users/me/simpleapp/bin/myapp.aot
 $ dartaotruntime bin/simpleapp.aot
 ```
 
-## Learn more options
+## Learn more options {:#learn-more-options}
 
 To learn more about command-line options, use the `--help` flag:
 

@@ -45,7 +45,7 @@ If you maintain a library, read the
 page for guidance on how to navigate these changes for your libraries. 
 :::
 
-## No modifier
+## No modifier {:#no-modifier}
 
 To allow unrestricted permission to construct or subtype from any library,
 use a `class` or `mixin` declaration without a modifier. By default, you can:
@@ -55,7 +55,7 @@ use a `class` or `mixin` declaration without a modifier. By default, you can:
 - [Implement][] a class or mixin's interface.
 - [Mix in][mixin] a mixin or mixin class.
 
-## `abstract`
+## `abstract` {:#abstract}
 
 To define a class that doesn't require a full, concrete implementation of
 its entire interface, use the `abstract` modifier.
@@ -99,7 +99,7 @@ class MockVehicle implements Vehicle {
 If you want your abstract class to appear to be instantiable,
 define a [factory constructor][].
 
-## `base`
+## `base` {:#base}
 
 To enforce inheritance of a class or mixin's implementation,
 use the `base` modifier.
@@ -149,7 +149,7 @@ base class MockVehicle implements Vehicle {
 }
 ```
 
-## `interface`
+## `interface` {:#interface}
 
 To define an interface, use the `interface` modifier.
 Libraries outside of the interface's own defining library can
@@ -194,7 +194,7 @@ class MockVehicle implements Vehicle {
 }
 ```
 
-### `abstract interface`
+### `abstract interface` {:#abstract-interface}
 
 The most common use for the `interface` modifier is to define a pure interface. 
 [Combine](#combining-modifiers) the `interface` and [`abstract`](#abstract)
@@ -204,7 +204,7 @@ Like an `interface` class, other libraries can
 implement, but can't inherit, a pure interface.
 Like an `abstract` class, a pure interface can have abstract members.
 
-## `final` 
+## `final`  {:#final}
 
 To close the type hierarchy, use the `final` modifier.
 This prevents subtyping from a class outside of the current library. 
@@ -250,7 +250,7 @@ class MockVehicle implements Vehicle {
 }
 ```
 
-## `sealed`
+## `sealed` {:#sealed}
 
 To create a known, enumerable set of subtypes, use the `sealed` modifier.
 This allows you to create a switch over those subtypes that
@@ -301,7 +301,7 @@ or want to be able to add subtypes later without breaking the API,
 use the [`final`](#final) modifier. For a more in depth comparison,
 read [`sealed` versus `final`](/language/class-modifiers-for-apis#sealed-versus-final).
 
-## Combining modifiers
+## Combining modifiers {:#combining-modifiers}
 
 You can combine some modifiers for layered restrictions. 
 A class declaration can be, in order:

@@ -37,13 +37,13 @@ If you encounter problems using the pub tool,
 see [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 
-## List of subcommands
+## List of subcommands {:#list-of-subcommands}
 
 Detailed documentation exists for each of the following pub subcommands:
 
 {% render 'pub-subcommands.md' %}
 
-## Overview of subcommands
+## Overview of subcommands {:#overview-of-subcommands}
 
 Pub's subcommands fall into the following categories:
 
@@ -53,7 +53,7 @@ Pub's subcommands fall into the following categories:
 
 
 <a id="managing-apps"></a>
-### Managing package dependencies
+### Managing package dependencies {:#managing-package-dependencies}
 
 Pub provides a number of subcommands for managing the
 [packages your code depends on](/tools/pub/dependencies).
@@ -100,7 +100,7 @@ or any modification of the pubspec.
   Creates or updates the lock file, as needed.
 
 
-### Running command-line apps
+### Running command-line apps {:#running-command-line-apps}
 
 The [`global`](/tools/pub/cmd/pub-global) subcommand lets you 
 make a package globally available, 
@@ -110,11 +110,11 @@ To run globally available scripts, you must
 
 [add-path]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 
-### Deploying packages and apps
+### Deploying packages and apps {:#deploying-packages-and-apps}
 
 With pub you can publish packages and command-line apps.
 
-#### Packages
+#### Packages {:#packages}
 
 To share your Dart packages with the world, you can
 use the [`publish`](/tools/pub/cmd/pub-lish) subcommand to upload the
@@ -124,7 +124,7 @@ to modify and upload new versions of your package,
 see [Uploaders](/tools/pub/publishing#uploaders).
 
 
-#### Command-line apps
+#### Command-line apps {:#command-line-apps}
 
 For any package that contains scripts (anything under the `bin/`
 directory), consider adding the `executables` tag to the pubspec file.
@@ -133,32 +133,31 @@ When a script is listed under `executables`, users can run
 to make it directly available from the command line.
 
 
-## Global options
+## Global options {:#global-options}
 
 Several command-line options work with all of the pub subcommands.
 These include:
 
-### `--help` or `-h`
+### `--help` or `-h` {:#help-or-h}
 
 Prints usage information.
 
-### `--trace`
+### `--trace` {:#trace}
 
 Prints debugging information when an error occurs.
 
-### `--verbose` or `-v`
+### `--verbose` or `-v` {:#verbose-or-v}
 
 Equivalent to `--verbosity=all`.
 
-### `--directory=<dir>` or `-C <dir>`
+### `--directory=<dir>` or `-C <dir>` {:#directory-dir-or-c-dir}
 
 Runs the command in the specified directory.
 
-### `--[no-]color`
+### `--[no-]color` {:#no-color}
 
 Adds color to the output for emphasis (`--color`).
 The default depends on whether you're using this command at a terminal.
 At a terminal, `--color` is the default,
 otherwise, `--no-color` is the default.
 Use `--no-color` to disable color in all environments.
-

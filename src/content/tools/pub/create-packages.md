@@ -8,7 +8,7 @@ to share software such as libraries and tools.
 This page tells you how to create a standard shared 
 [package](/tools/pub/glossary#package).
 
-## Creating a new package
+## Creating a new package {:#creating-a-new-package}
 
 To create the initial directory and structure for a package,
 use the [`dart create`](/tools/dart-create) command
@@ -18,7 +18,7 @@ and the `package` template:
 $ dart create -t package <PACKAGE_NAME>
 ```
 
-## What makes a package
+## What makes a package {:#what-makes-a-package}
 
 The following diagram shows the simplest layout of a package:
 
@@ -45,7 +45,7 @@ lib directory
 
 [application package]: /tools/pub/glossary#application-package
 
-## Organizing a package
+## Organizing a package {:#organizing-a-package}
 
 Packages are easiest to maintain, extend, and test
 when you create small, individual libraries, referred to as
@@ -117,7 +117,7 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 
 [`webdev serve`]: /tools/webdev#serve
 
-## Importing library files
+## Importing library files {:#importing-library-files}
 
 When importing a library file from another package, use
 the `package:` directive to specify the URI of that file.
@@ -139,7 +139,7 @@ to import `lib/foo/a.dart` from both lib and web.
   alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import">
 
 
-## Conditionally importing and exporting library files
+## Conditionally importing and exporting library files {:#conditionally-importing-and-exporting-library-files}
 
 If your library supports multiple platforms,
 then you might need to conditionally import or export library files.
@@ -215,7 +215,7 @@ void main() {
 }
 ```
 
-## Providing additional files
+## Providing additional files {:#providing-additional-files}
 
 A well-designed package is easy to test.
 We recommend that you write tests using the
@@ -244,7 +244,7 @@ described in [Publishing a package](/tools/pub/publishing).
 For more information on how to organize a package directory,
 see the [pub package layout conventions](/tools/pub/package-layout).
 
-## Documenting a library
+## Documenting a library {:#documenting-a-library}
 
 You can generate API docs for your library using
 the [`dart doc`][] tool.
@@ -297,7 +297,7 @@ follow these steps:
 * If the docs didn't generate at all,
   click **failed** in the **Versions** tab to see the `dart doc` output.
 
-## Resources
+## Resources {:#resources}
 
 Use the following resources to learn more about packages:
 

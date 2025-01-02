@@ -1,35 +1,26 @@
 ---
-title: Who uses Dart
+ia-translate: true
+title: Quem usa Dart
 description: >-
-  Mobile and web apps are two of
-  the most common uses for the Dart language.
-  Learn about and try some examples
-  of where Dart is used.
+  Aplicativos móveis e web são dois dos usos mais comuns da linguagem Dart.
+  Saiba mais e experimente alguns exemplos de onde o Dart é usado.
 toc: false
 ---
 
-## Flutter
+## Flutter {:#flutter}
 
-The popular [Flutter toolkit][] is powered by the
-Dart language, runtimes, tooling, and libraries.
-Over _one million_ Flutter apps for Android,
-iOS, the web, and other targets, are all Dart-based.
+O popular [Flutter toolkit][] (conjunto de ferramentas) é alimentado pela linguagem Dart, runtimes, ferramentas e bibliotecas.  Mais de _um milhão_ de aplicativos Flutter para Android, iOS, web e outros destinos são baseados em Dart.
 
-The [Flutter showcase][] features popular Flutter apps, including:
+A [Flutter showcase][] (vitrine) apresenta aplicativos Flutter populares, incluindo:
 
 * [BMW][]
-    > "The BMW Group is establishing itself as a leading automotive app developer
-    and provider with a Flutter architecture developed 100% in-house."
+    > "O Grupo BMW está se estabelecendo como um desenvolvedor e fornecedor líder de aplicativos automotivos com uma arquitetura Flutter desenvolvida 100% internamente."
 * [Sonos][]: 
-    > "...If setup is the “grand entryway” to the Sonos ecosystem, Flutter forms
-    its elegant façade..."
+    > "...Se a configuração é a “grande entrada” para o ecossistema Sonos, o Flutter forma sua fachada elegante..."
 * [Alibaba][]: 
-    > "When the Xianyu team was challenged to improve their user experience by
-    developing an app that was consistent across platforms, had beautiful graphics,
-    and still loaded fast, they turned to Flutter."
+    > "Quando a equipe Xianyu foi desafiada a melhorar a experiência do usuário desenvolvendo um aplicativo consistente em todas as plataformas, com belos gráficos e que ainda carregasse rápido, eles recorreram ao Flutter."
 * [PUBG][]: 
-    > "When the PUBG MOBILE team wanted to add a community module to allow players
-    from all over the world to share gameplay clips and more, they turned to Flutter."
+    > "Quando a equipe do PUBG MOBILE quis adicionar um módulo de comunidade para permitir que jogadores de todo o mundo compartilhassem clipes de gameplay e muito mais, eles recorreram ao Flutter."
 
 [Flutter toolkit]: {{site.flutter}}
 [Flutter showcase]: {{site.flutter}}/showcase
@@ -38,20 +29,15 @@ The [Flutter showcase][] features popular Flutter apps, including:
 [Alibaba]: {{site.flutter}}/showcase/alibaba-group
 [PUBG]: {{site.flutter}}/showcase/pubg-mobile
 
-## Google 
+## Google  {:#google}
 
-Dart is used in almost every product group at Google:
+Dart é usado em quase todos os grupos de produtos do Google:
 
-* The [Google Play Console][] lets app publishers market Android apps, and
-  is written completely in Dart.
-* The [Google Ads][] team continues to grow, with
-  hundreds of SWEs primarily writing Dart code.
-* The [Google Assistant][] team uses Flutter and Dart to
-  drive the overall system UI of their Smart Displays.
-* Both the UI and much of the back-end code for the
-  [Google Nest Hub][] and Hub Max devices are written in Dart.
-* The list goes on, with many more Google applications
-  made using Dart and Flutter:
+* O [Google Play Console][] permite que editores de aplicativos comercializem aplicativos Android e é escrito completamente em Dart.
+* A equipe do [Google Ads][] continua crescendo, com centenas de engenheiros de software (SWEs) escrevendo principalmente código Dart.
+* A equipe do [Google Assistant][] usa Flutter e Dart para impulsionar a interface do usuário geral de seus Smart Displays.
+* Tanto a interface do usuário quanto grande parte do código de back-end para os dispositivos [Google Nest Hub][] e Hub Max são escritos em Dart.
+* A lista continua, com muitos outros aplicativos do Google feitos usando Dart e Flutter:
 
   * [Google Pay][]
   * [Google One][]
@@ -63,9 +49,7 @@ Dart is used in almost every product group at Google:
   * [Google One][]
   * [Cloud Search][] 
 
-Several other Google teams are currently rewriting their projects in Flutter.
-In all, Google has thousands of developers
-writing millions of lines of code in Dart.
+Várias outras equipes do Google estão atualmente reescrevendo seus projetos em Flutter. No total, o Google tem milhares de desenvolvedores escrevendo milhões de linhas de código em Dart.
 
 [Google Play Console]: https://android-developers.googleblog.com/2020/06/introducing-new-google-play-console-beta.html
 [Google Ads]: https://ads.google.com/getstarted
@@ -79,23 +63,20 @@ writing millions of lines of code in Dart.
 [Google One]: https://one.google.com/about
 [Cloud Search]: https://workspace.google.com/intl/en_in/products/cloud-search
 
-## Community
+## Comunidade {:#community}
 
-Beyond Google and Flutter, many companies use Dart
-for building their applications:
+Além do Google e do Flutter, muitas empresas usam Dart para construir seus aplicativos:
 
-* [Workiva's][] next-generation client applications for
-  their productivity suite are built with Dart.
-* [Wrike][] uses the [AngularDart][] framework to
-  develop project management tools.
-* [Blossom][] is an agile project management tool built with Dart.
-* And many more!
+* Os aplicativos cliente de próxima geração da [Workiva][] para seu conjunto de produtividade são construídos com Dart.
+* A [Wrike][] usa a estrutura [AngularDart][] para desenvolver ferramentas de gerenciamento de projetos.
+* [Blossom][] é uma ferramenta de gerenciamento de projetos ágil construída com Dart.
+* E muitos mais!
 
-If you build production software with Dart and want to be included in this list,
-please visit [our site's GitHub][] to open an issue or pull request, thanks!
+Se você constrói software de produção com Dart e deseja ser incluído nesta lista, visite o [GitHub do nosso site][] para abrir uma issue ou pull request, obrigado!
 
 [Workiva's]: https://www.workiva.com/en-in
 [Wrike]: https://www.wrike.com
 [AngularDart]: https://angulardart.xyz/guide/setup
 [Blossom]: https://blossom.co
 [our site's GitHub]: {{site.repo.this}}
+

@@ -20,13 +20,13 @@ and find more information when you need it.
 [WebStorm]: https://www.jetbrains.com/webstorm/
 [Android Studio]: {{site.android-dev}}/studio
 
-## Getting started
+## Getting started {:#getting-started}
 
 If you don't already have the IDE and the Dart SDK, get them.
 Then install the Dart plugin and tell it where to find the Dart SDK.
 
 
-### Downloading the IDE
+### Downloading the IDE {:#downloading-the-ide}
 
 Install a JetBrains IDE if you don't already have one. Choose one:
 
@@ -50,7 +50,7 @@ It also has very little support for JavaScript, HTML, CSS, and YAML.
 :::
 
 
-### Downloading the Dart SDK
+### Downloading the Dart SDK {:#downloading-the-dart-sdk}
 
 If you don't already have the Dart SDK,
 install it.
@@ -63,7 +63,7 @@ Choose one:
 * [Download the Flutter SDK]({{site.flutter-docs}}/get-started/install)
 
 
-### Configuring Dart support
+### Configuring Dart support {:#configuring-dart-support}
 
 Here's one way to configure Dart support:
 
@@ -137,7 +137,7 @@ An alternative to Step 2 is to open an existing Dart project,
 and then open its `pubspec.yaml` file or any of its Dart files.
 
 
-## Reporting issues
+## Reporting issues {:#reporting-issues}
 
 Please report issues and feedback via the official
 [JetBrains issue tracker for Dart.][]
@@ -147,7 +147,7 @@ and screenshots if appropriate.
 
 [JetBrains issue tracker for Dart.]: https://youtrack.jetbrains.com/issues?q=Subsystem:%20%7BLang.%20Dart%7D%20
 
-## More information
+## More information {:#more-information}
 
 See the JetBrains website for more information.
 

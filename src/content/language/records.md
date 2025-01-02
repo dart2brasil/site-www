@@ -21,7 +21,7 @@ Records are real values; you can store them in variables,
 nest them, pass them to and from functions, 
 and store them in data structures such as lists, maps, and sets.
 
-## Record syntax
+## Record syntax {:#record-syntax}
 
 _Records expressions_ are comma-delimited lists of named or positional fields,
 enclosed in parentheses:
@@ -101,7 +101,7 @@ can have names but those names don't affect the signature of the function.
 For more information and examples, check out 
 [Record types](#record-types) and [Record equality](#record-equality).
 
-## Record fields
+## Record fields {:#record-fields}
 
 Record fields are accessible through built-in getters. Records are immutable,
 so fields do not have setters. 
@@ -122,7 +122,7 @@ print(record.$2); // Prints 'last'
 To streamline record field access even more, 
 check out the page on [Patterns][pattern].
 
-## Record types
+## Record types {:#record-types}
 
 There is no type declaration for individual record types. Records are structurally
 typed based on the types of their fields. A record's _shape_ (the set of its fields,
@@ -144,7 +144,7 @@ Consider two unrelated libraries that create records with the same set of fields
 The type system understands that those records are the same type even though the
 libraries are not coupled to each other.
 
-## Record equality
+## Record equality {:#record-equality}
 
 Two records are equal if they have the same _shape_ (set of fields),
 and their corresponding fields have the same values.
@@ -172,7 +172,7 @@ print(point == color); // Prints 'false'. Lint: Equals on unrelated types.
 Records automatically define `hashCode` and `==` methods based on the structure
 of their fields.
 
-## Multiple returns
+## Multiple returns {:#multiple-returns}
 
 Records allow functions to return multiple values bundled together.
 To retrieve record values from a return,

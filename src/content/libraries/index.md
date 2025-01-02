@@ -21,7 +21,7 @@ and encoding/decoding data (`dart:convert`).
 Additional APIs are available in
 [commonly used packages](/resources/useful-packages).
 
-## Library tour
+## Library tour {:#library-tour}
 
 The following guides cover how to use major features of Dart's core libraries.
 They provide just an overview, and are by no means comprehensive.
@@ -74,7 +74,7 @@ check out the [language documentation and samples](/language).
 [webdev libraries]: /web/libraries
 [api-flutter]: {{site.flutter-api}}
 
-## Multi-platform libraries
+## Multi-platform libraries {:#multi-platform-libraries}
 
 The following table lists the Dart core libraries that work on all
 [Dart platforms](/overview#platform).
@@ -91,7 +91,7 @@ The following table lists the Dart core libraries that work on all
 
 {:.table .table-striped}
 
-## Native platform libraries
+## Native platform libraries {:#native-platform-libraries}
 
 The following table lists the Dart core libraries that work on the
 [Dart native platform](/overview#native-platform) (AOT- and JIT-compiled code).
@@ -105,7 +105,7 @@ The following table lists the Dart core libraries that work on the
 
 {:.table .table-striped}
 
-## Web platform libraries
+## Web platform libraries {:#web-platform-libraries}
 
 The following table lists the Dart core libraries that work on the
 [Dart web platform](/overview#web-platform) (code compiled to JavaScript).

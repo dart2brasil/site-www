@@ -28,7 +28,7 @@ the feature is complete.
 [spec]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md
 [motivation]: {{site.repo.dart.lang}}/blob/main/working/macros/motivation.md
 
-## The `JsonCodable` macro
+## The `JsonCodable` macro {:#the-jsoncodable-macro}
 
 :::important
 The `JsonCodable` macro is not stable and currently behind an [experimental flag][].
@@ -49,7 +49,7 @@ and a `fromJson` deserialization constructor.
 [channel]: https://dart.dev/get-dart#release-channels
 [flutter-channel]: {{site.flutter-docs}}/release/upgrade#other-channels
 
-### Set up the experiment
+### Set up the experiment {:#set-up-the-experiment}
 
 1. Switch to the [Dart dev channel][channel] or the
   [Flutter master channel][flutter-channel].
@@ -85,7 +85,7 @@ and a `fromJson` deserialization constructor.
 [Add the package]: /tools/pub/packages
 [Enable the experiment]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
 
-### Use the macro
+### Use the macro {:#use-the-macro}
 
 To use the `JsonCodable` macro, attach the annotation to the class you want to serialize:
 
@@ -122,7 +122,7 @@ void main() {
 }
 ```
 
-### View the generated code
+### View the generated code {:#view-the-generated-code}
 
 Sometimes it can be useful to view the generated code to better understand
 how a macros works, or to inspect the details of what it offers.
@@ -136,7 +136,7 @@ adjust in real time alongside your application code:
 
 ![A side-by-side gif of the generated augmentation updating as the code it's augmenting is updated](/assets/img/language/macro-augmentation.gif)
 
-### Trigger custom diagnostics
+### Trigger custom diagnostics {:#trigger-custom-diagnostics}
 
 The `JsonCodable` macro has built-in diagnostics that are emitted just like
 diagnostics from the language itself. For example, if you try to manually
@@ -163,7 +163,7 @@ treatment of null and generics, and more, check out [the README][].
 [the definition of `JsonCodable`]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
 [the README]: {{site.pub-pkg}}/json
 
-## The macros language feature
+## The macros language feature {:#the-macros-language-feature}
 
 Dart macros are a *static* metaprogramming, or code generation, solution.
 Unlike *runtime* code generation solutions (like [build_runner][]),
@@ -199,7 +199,7 @@ implemented three different ways:
 [`json_serializable` code gen package]: https://github.com/mit-mit/sandbox/blob/main/explorations/json/dart_json_serializable/bin/main.dart
 [with `dart:convert`]: https://github.com/mit-mit/sandbox/blob/main/explorations/json/dart_convert/bin/main.dart
 
-### Use cases
+### Use cases {:#use-cases}
 
 Macros provide reusable mechanisms to address patterns characterized by tedious
 boilerplate, and often times the need to iterate over the fields of a class.
@@ -230,7 +230,7 @@ Some common examples that we hope to solve with macros in the future are:
 [most requested]: {{site.repo.dart.lang}}/issues/314
 [stateful-macro]: {{site.flutter-docs}}/go/stateful-macro
 
-### How macros work
+### How macros work {:#how-macros-work}
 
 :::important
 The macros language feature is not stable and currently behind an
@@ -287,7 +287,7 @@ the best guidance is to take a look at the implementation of existing macros:
 [augmentation]: {{site.repo.dart.lang}}/blob/main/working/augmentation-libraries/feature-specification.md
 [examples]: {{site.repo.dart.lang}}/tree/main/working/macros/example
 
-## Timeline
+## Timeline {:#timeline}
 
 The stable release date for macros is currently unknown.
 This is due to the complexity of their implementation.

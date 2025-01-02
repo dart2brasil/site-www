@@ -33,7 +33,7 @@ To use a package, do the following:
 * Use [`dart pub get`][get] to retrieve your package's dependencies.
 * If your Dart code depends on a library in the package, import the library.
 
-## Creating a pubspec
+## Creating a pubspec {:#creating-a-pubspec}
 
 The pubspec is a file named `pubspec.yaml`
 that's in the top directory of your application.
@@ -70,7 +70,7 @@ For details on creating a pubspec,
 see the [pubspec documentation](/tools/pub/pubspec)
 and the documentation for the packages that you want to use.
 
-## Getting packages
+## Getting packages {:#getting-packages}
 
 Once you have a pubspec, you can run [`dart pub get`][get] from the top 
 directory of your application:
@@ -99,7 +99,7 @@ that maps each package name that your app depends on
 to the corresponding package in the system cache.
 
 
-## Importing libraries from packages
+## Importing libraries from packages {:#importing-libraries-from-packages}
 
 To import libraries found in packages, 
 use the `package:` prefix:
@@ -133,7 +133,7 @@ import 'package:transmogrify/parser.dart';
 ```
 
 
-## Upgrading a dependency
+## Upgrading a dependency {:#upgrading-a-dependency}
 
 The first time you get a new dependency for your package,
 pub downloads the latest version of it that's compatible with
@@ -178,7 +178,7 @@ due to conflicting version constraints in the pubspec.
 To identify out-of-date packages that require editing the pubspec,
 use [`dart pub outdated`][outdated].
 
-## Get dependencies for production
+## Get dependencies for production {:#get-dependencies-for-production}
 
 In some situations, `dart pub get` does not retrieve
 the exact package versions locked in the `pubspec.lock` file:
@@ -261,19 +261,19 @@ To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 
 [content hash]: /tools/pub/glossary#content-hashes
 
-## More information
+## More information {:#more-information}
 
 The following pages have more information about packages and
 the pub package manager.
 
 
-### How to
+### How to {:#how-to}
 
 * [Creating packages](/tools/pub/create-packages)
 * [Publishing packages](/tools/pub/publishing)
 * [Pub workspaces (monorepo support)](/tools/pub/workspaces)
 
-### Reference
+### Reference {:#reference}
 
 * [Pub dependencies](/tools/pub/dependencies)
 * [Pub environment variables](/tools/pub/environment-variables)
@@ -282,7 +282,7 @@ the pub package manager.
 * [Pub versioning philosophy](/tools/pub/versioning)
 * [Pubspec format](/tools/pub/pubspec)
 
-### Pub subcommands
+### Pub subcommands {:#pub-subcommands}
 
 The `dart pub` tool provides the following subcommands:
 
@@ -291,7 +291,7 @@ The `dart pub` tool provides the following subcommands:
 For an overview of all the `dart pub` subcommands,
 see the [pub tool documentation](/tools/pub/cmd).
 
-### Troubleshooting
+### Troubleshooting {:#troubleshooting}
 
 [Troubleshooting pub](/tools/pub/troubleshoot) gives solutions to problems that
 you might encounter when using pub.

@@ -13,7 +13,7 @@ Dart supports single-line comments, multi-line comments, and
 documentation comments.
 
 
-## Single-line comments
+## Single-line comments {:#single-line-comments}
 
 A single-line comment begins with `//`. Everything between `//` and the
 end of line is ignored by the Dart compiler.
@@ -26,7 +26,7 @@ void main() {
 }
 ```
 
-## Multi-line comments
+## Multi-line comments {:#multi-line-comments}
 
 A multi-line comment begins with `/*` and ends with `*/`. Everything
 between `/*` and `*/` is ignored by the Dart compiler (unless the
@@ -47,7 +47,7 @@ void main() {
 }
 ```
 
-## Documentation comments
+## Documentation comments {:#documentation-comments}
 
 Documentation comments are multi-line or single-line comments that begin
 with `///` or `/**`. Using `///` on consecutive lines has the same

@@ -45,7 +45,7 @@ clicking the **Run** button.
 If you need help, expand the **Hint** or **Solution** dropdown
 after each exercise.
 
-## What are collections?
+## What are collections? {:#what-are-collections}
 
 A collection is an object that
 represents a group of objects, which are called _elements_. 
@@ -61,7 +61,7 @@ These are some of the most common collection types:
 * [Map:][map class] Used to read elements using a key.
 
 
-## What is an Iterable?
+## What is an Iterable? {:#what-is-an-iterable}
 
 An `Iterable` is a collection of elements that can be accessed sequentially.
 
@@ -117,12 +117,12 @@ int value = iterable.elementAt(1);
 Continue to the next section to learn more about
 how to access elements of an `Iterable`.
 
-## Reading elements
+## Reading elements {:#reading-elements}
 
 You can read the elements of an iterable sequentially,
 using a `for-in` loop.
 
-### Example: Using a for-in loop
+### Example: Using a for-in loop {:#example-using-a-for-in-loop}
 
 The following example shows you how to read elements using  a `for-in` loop.
 
@@ -151,7 +151,7 @@ and is less prone to errors.
   an `Iterable`.
 :::
 
-### Example: Using first and last
+### Example: Using first and last {:#example-using-first-and-last}
 
 In some cases, you want to access only the first or the last element
 of an `Iterable`.
@@ -187,7 +187,7 @@ get the first and last elements of an `Iterable`.
 It's also possible to find the first element that satisfies a condition.
 The next section shows how to do that using a method called `firstWhere()`.
 
-### Example: Using firstWhere()
+### Example: Using firstWhere() {:#example-using-firstwhere}
 
 You already saw that you can access the elements of an `Iterable` sequentially,
 and you can easily get the first or last element.
@@ -284,7 +284,7 @@ then `firstWhere()` throws a [StateError.][StateError class]
   A function that returns `true` when a certain condition is satisfied.
 :::
 
-### Exercise: Practice writing a test predicate
+### Exercise: Practice writing a test predicate {:#exercise-practice-writing-a-test-predicate}
 
 The following exercise is a failing unit test that
 contains a partially complete code snippet.
@@ -384,7 +384,7 @@ void main() {
 
 </details>
 
-## Checking conditions
+## Checking conditions {:#checking-conditions}
 
 When working with `Iterable`, sometimes you need to verify that
 all the elements of a collection satisfy some condition.
@@ -411,7 +411,7 @@ return items.every((item) => item.length >= 5);
 Using the `every()` method results in code that is more
 readable, compact, and less error-prone.
 
-### Example: Using any() and every()
+### Example: Using any() and every() {:#example-using-any-and-every}
 
 The `Iterable` class provides two methods that
 you can use to verify conditions:
@@ -457,7 +457,7 @@ You can also use `any()` to verify that no element of an `Iterable`
 satisfies a certain condition.
 
 
-### Exercise: Verify that an Iterable satisfies a condition
+### Exercise: Verify that an Iterable satisfies a condition {:#exercise-verify-that-an-iterable-satisfies-a-condition}
 
 The following exercise provides practice using the
 `any()` and `every()` methods, described in the previous example.
@@ -622,7 +622,7 @@ void main() {
   all elements satisfy a condition.
 :::
 
-## Filtering
+## Filtering {:#filtering}
 
 The previous sections cover methods like `firstWhere()` or
 `singleWhere()` that can help you find an element that
@@ -655,7 +655,7 @@ for (final number in evenNumbers) {
 }
 ```
 
-### Example: Using where()
+### Example: Using where() {:#example-using-where}
 
 Run this example to see how `where()` can be used together with other
 methods like `any()`.
@@ -695,7 +695,7 @@ Unlike `singleWhere()` or `firstWhere()`,
 `where()` doesn't throw a [StateError][StateError class] exception.
 :::
 
-### Example: Using takeWhile
+### Example: Using takeWhile {:#example-using-takewhile}
 
 The methods `takeWhile()` and `skipWhile()` can also
 help you filter elements from an `Iterable`.
@@ -735,7 +735,7 @@ var numbersUntilNegative =
 
 Notice that the condition `number.isNegative` is negated with `!`.
 
-### Exercise: Filtering elements from a list
+### Exercise: Filtering elements from a list {:#exercise-filtering-elements-from-a-list}
 
 The following exercise provides practice using the `where()` method with 
 the class `User` from the previous exercise.
@@ -859,7 +859,7 @@ void main() {
 * The output of these methods can be an empty `Iterable`.
 :::
 
-## Mapping
+## Mapping {:#mapping}
 
 Mapping `Iterables` with the method `map()` enables you to
 apply a function over each of the elements,
@@ -887,7 +887,7 @@ Iterable<String> output = numbers.map((number) => number.toString());
 is called only when the elements are iterated.
 :::
 
-### Example: Using map to change elements
+### Example: Using map to change elements {:#example-using-map-to-change-elements}
 
 Run this example to see how to use `map()` to
 multiply all the elements of an `Iterable` by 2.
@@ -902,7 +902,7 @@ void main() {
 ```
 
 
-### Exercise: Mapping to a different type
+### Exercise: Mapping to a different type {:#exercise-mapping-to-a-different-type}
 
 In the previous example, you multiplied the elements of an `Iterable` by 2.
 Both the input and the output of that operation were an `Iterable` of `int`.
@@ -1000,7 +1000,7 @@ bool _listEquals<T>(List<T>? a, List<T>? b) {
 * The function isn't evaluated until the `Iterable` is iterated.
 :::
 
-## Exercise: Putting it all together
+## Exercise: Putting it all together {:#exercise-putting-it-all-together}
 
 It's time to practice what you learned, in one final exercise.
 
@@ -1207,7 +1207,7 @@ bool isValidEmailAddress(EmailAddress email) {
 
 </details>
 
-## What's next
+## What's next {:#what-s-next}
 
 Congratulations, you finished the tutorial!
 If you want to learn more,

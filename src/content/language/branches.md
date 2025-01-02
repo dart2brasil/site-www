@@ -20,7 +20,7 @@ You can also manipulate control flow in Dart using:
 - [Loops][], like `for` and `while`
 - [Exceptions][], like `try`, `catch`, and `throw`
 
-## If
+## If {:#if}
 
 Dart supports `if` statements with optional `else` clauses.
 The condition in parentheses after `if` must be
@@ -40,7 +40,7 @@ if (isRaining()) {
 To learn how to use `if` in an expression context, 
 check out [Conditional expressions][].
 
-### If-case
+### If-case {:#if-case}
 
 Dart `if` statements support `case` clauses followed by a [pattern][]: 
 
@@ -79,7 +79,7 @@ a [language version][] of at least 3.0.
 :::
 
 <a id="switch"></a>
-## Switch statements
+## Switch statements {:#switch-statements}
 
 A `switch` statement evaluates a value expression against a series of cases.
 Each `case` clause is a [pattern][] for the value to match against.
@@ -144,7 +144,7 @@ check out the patterns documentation on [Switch statements and expressions][].
 
 [Switch statements and expressions]: /language/patterns#switch-statements-and-expressions
 
-### Switch expressions
+### Switch expressions {:#switch-expressions}
 
 A `switch` _expression_ produces a value based on the expression
 body of whichever case matches. 
@@ -204,7 +204,7 @@ The syntax of a `switch` expression differs from `switch` statement syntax:
 Switch expressions require a [language version][] of at least 3.0.
 :::
 
-### Exhaustiveness checking
+### Exhaustiveness checking {:#exhaustiveness-checking}
 
 Exhaustiveness checking is a feature that reports a
 compile-time error if it's possible for a value to enter a switch but
@@ -258,7 +258,7 @@ This allows you to use Dart in a somewhat
 [functional algebraic datatype style](https://en.wikipedia.org/wiki/Algebraic_data_type). 
 
 <a id="when"></a>
-## Guard clause
+## Guard clause {:#guard-clause}
 
 To set an optional guard clause after a `case` clause, use the keyword `when`.
 A guard clause can follow `if case`, and

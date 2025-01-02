@@ -15,4 +15,3 @@ package, but retains the dartdevc compiler.
 Use [`webdev serve`](/tools/webdev#serve) to compile Dart code
 to modular JavaScript. This makes compilation faster and debugging easier.
 :::
-

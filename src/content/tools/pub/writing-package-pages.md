@@ -39,7 +39,7 @@ follow these links:
 5. [Pubspec file](/tools/pub/pubspec)
 
 
-## Writing a good README is important
+## Writing a good README is important {:#writing-a-good-readme-is-important}
 
 People who find your package on pub.dev are likely to
 quickly scan the README when deciding whether to try your package.
@@ -58,7 +58,7 @@ If your package is simple and has no associated UI,
 its README might look more like the one for the [`yaml`][] package. 
 
 
-## Seven tips for good README
+## Seven tips for good README {:#seven-tips-for-good-readme}
 
 Here are some suggestions for creating a README
 that works well on pub.dev:
@@ -378,7 +378,7 @@ that has information for potential contributors:
   class="screenshot">
 
 
-## Learn more about good README authoring
+## Learn more about good README authoring {:#learn-more-about-good-readme-authoring}
 
 We've suggested seven tips for good README in this documentation.
 You can learn more about common recommendations for developer documentation

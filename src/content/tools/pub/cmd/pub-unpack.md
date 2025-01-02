@@ -42,7 +42,7 @@ the [source descriptor][] documentation for `dart pub add`.
 
 [source descriptor]: /tools/pub/cmd/pub-add#source-descriptor
 
-## Options
+## Options {:#options}
 
 For options that apply to all pub commands, check out
 [Global options](/tools/pub/cmd#global-options).

@@ -25,7 +25,7 @@ This page describes:
 To learn about the different kinds of patterns, visit the [pattern types][types]
 page.
 
-## What patterns do
+## What patterns do {:#what-patterns-do}
 
 In general, a pattern may **match** a value, **destructure** a value, or both,
 depending on the context and shape of the pattern.
@@ -40,7 +40,7 @@ Then, _pattern destructuring_ provides you with a convenient declarative syntax 
 break that value into its constituent parts. The same pattern can also let you 
 bind variables to some or all of those parts in the process.
 
-### Matching
+### Matching {:#matching}
 
 A pattern always tests against a value to determine if the value has the form
 you expect. In other words, you are checking if the value _matches_ the pattern. 
@@ -78,7 +78,7 @@ switch (obj) {
 To ignore parts of a matched value, you can use a [wildcard pattern][]
 as a placeholder. In the case of list patterns, you can use a [rest element][].
 
-### Destructuring
+### Destructuring {:#destructuring}
 
 When an object and pattern match, the pattern can then access the object's data 
 and extract it in parts. In other words, the pattern _destructures_ the object:
@@ -104,7 +104,7 @@ switch (list) {
 }
 ```
 
-## Places patterns can appear
+## Places patterns can appear {:#places-patterns-can-appear}
 
 You can use patterns in several places in the Dart language:
 
@@ -117,7 +117,7 @@ You can use patterns in several places in the Dart language:
 
 This section describes common use cases for matching and destructuring with patterns.
 
-### Variable declaration
+### Variable declaration {:#variable-declaration}
 
 You can use a _pattern variable declaration_ anywhere Dart allows local variable
 declaration. 
@@ -133,7 +133,7 @@ var (a, [b, c]) = ('str', [1, 2]);
 A pattern variable declaration must start with either `var` or `final`, followed
 by a pattern. 
 
-### Variable assignment 
+### Variable assignment  {:#variable-assignment}
 
 A _variable assignment pattern_ falls on the left side of an assignment.
 First, it destructures the matched object. Then it assigns the values to
@@ -149,7 +149,7 @@ var (a, b) = ('left', 'right');
 print('$a $b'); // Prints "right left".
 ```
 
-### Switch statements and expressions
+### Switch statements and expressions {:#switch-statements-and-expressions}
 
 Every case clause contains a pattern. This applies to [switch statements][switch]
 and [expressions][], as well as [if-case statements][if].
@@ -227,7 +227,7 @@ switch (pair) {
 }
 ```
 
-### For and for-in loops
+### For and for-in loops {:#for-and-for-in-loops}
 
 You can use patterns in [for and for-in loops][for] to iterate-over and destructure
 values in a collection.
@@ -264,7 +264,7 @@ for (var MapEntry(:key, value: count) in hist.entries) {
 }
 ```
 
-## Use cases for patterns
+## Use cases for patterns {:#use-cases-for-patterns}
 
 The [previous section](#places-patterns-can-appear)
 describes _how_ patterns fit into other Dart code constructs. 
@@ -277,7 +277,7 @@ in a map. This section describes even more use cases, answering:
 - What kinds of problems they solve.
 - Which idioms they best suit.
 
-### Destructuring multiple returns
+### Destructuring multiple returns {:#destructuring-multiple-returns}
 
 Records allow aggregating and [returning multiple values][] from a single
 function call. Patterns add the ability to destructure a record's fields
@@ -311,7 +311,7 @@ final (:name, :age) =
     getData(); // For example, return (name: 'doug', age: 25);
 ```
 
-### Destructuring class instances
+### Destructuring class instances {:#destructuring-class-instances}
 
 [Object patterns][object] match against named object types, allowing
 you to destructure their data using the getters the object's class already exposes.
@@ -327,7 +327,7 @@ var Foo(:one, :two) = myFoo;
 print('one $one, two $two');
 ```
 
-### Algebraic data types 
+### Algebraic data types  {:#algebraic-data-types}
 
 Object destructuring and switch cases are conducive to writing
 code in an [algebraic data type][] style.
@@ -360,7 +360,7 @@ double calculateArea(Shape shape) => switch (shape) {
     };
 ```
 
-### Validating incoming JSON
+### Validating incoming JSON {:#validating-incoming-json}
 
 [Map][] and [list][] patterns work well for destructuring key-value pairs in
 JSON data:

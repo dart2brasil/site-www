@@ -8,7 +8,7 @@ Use this page to find the formal Dart language specification.
 For a gentler introduction to Dart, see the
 [language tour](/language).
 
-## Dart 3
+## Dart 3 {:#dart-3}
 
 The Dart 3 language specification is in progress.
 You can find the in-progress specification in PDF format:
@@ -34,7 +34,7 @@ Dart 3 changed the Dart language in a few ways,
 primarily requiring [sound null safety](/null-safety).
 :::
 
-## Dart 2
+## Dart 2 {:#dart-2}
 
 The Dart 2 language specification is available in PDF format:
 
@@ -46,7 +46,7 @@ For information on Dart versions 2.12 and later,
 which have support for [null safety](/null-safety), 
 check out the in-progress [Dart 3 specification](#dart-3).
 
-## Dart 1.x
+## Dart 1.x {:#dart-1-x}
 
 The formal Dart 1.x language specification is available from
 the Ecma International website:

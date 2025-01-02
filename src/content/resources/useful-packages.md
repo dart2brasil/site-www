@@ -18,7 +18,7 @@ Commonly used packages fall into three groups:
 * [Packages that expand on Dart core libraries](#packages-that-correspond-to-sdk-libraries)
 * [Specialized packages](#specialized-packages)
 
-## General-purpose packages
+## General-purpose packages {:#general-purpose-packages}
 
 Use these packages for a wide range of projects.
 
@@ -83,12 +83,12 @@ adding functionality and filling in missing features:
 [async-3]: {{site.news}}/2016/04/unboxing-packages-async-part-3.html
 [collect]: {{site.news}}/2016/01/unboxing-packages-collection.html
 
-## Specialized packages
+## Specialized packages {:#specialized-packages}
 
 To find specialized packages such as packages for Flutter and web development,
 consult the following sections.
 
-### Flutter packages
+### Flutter packages {:#flutter-packages}
 
 To learn more about Flutter packages,
 consult [Using packages][flutterpkg] in the Flutter documentation
@@ -97,7 +97,7 @@ or search the pub.dev site for [Flutter packages][fluttersearch].
 [flutterpkg]: {{site.flutter-docs}}/development/packages-and-plugins/using-packages
 [fluttersearch]: {{pub}}/flutter
 
-### Web packages
+### Web packages {:#web-packages}
 
 To learn more about web packages,
 consult [Web libraries and packages][webpkg]
@@ -106,7 +106,7 @@ or search the pub.dev site for [web packages][pkgsearch].
 [webpkg]: /web/libraries
 [pkgsearch]: {{pub}}/web
 
-### Command-line and server packages
+### Command-line and server packages {:#command-line-and-server-packages}
 
 To learn more about CLI or server packages,
 See [Command-line and server libraries and packages](/server/libraries).

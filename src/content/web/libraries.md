@@ -8,7 +8,7 @@ Dart provides several packages and libraries to support
 web app development, the recommended option being [`package:web`][web].
 The [Dart SDK][] also contains other libraries that provide low-level web APIs.
 
-## Web solutions
+## Web solutions {:#web-solutions}
 
 [Migrate to `package:web`][migrate]
 : Learn how to migrate to `package:web`

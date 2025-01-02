@@ -9,7 +9,7 @@ This page points to resources to help you use
 [Firebase][] and [Google client APIs][] from a Dart app.
 
 
-## Firebase
+## Firebase {:#firebase}
 
 The Dart API that you use with Firebase depends
 on whether you're writing code for a Flutter app or another kind of Dart app.
@@ -22,7 +22,7 @@ For a full list of these plugins, see [FlutterFire][].
 Other kinds of Dart apps can use
 the community-supported [`firebase` package][].
 
-## Google client APIs
+## Google client APIs {:#google-client-apis}
 
 The [`googleapis` package][] contains generated APIs for
 over 180 Google client APIs,

@@ -9,7 +9,7 @@ nextpage:
   title: Classes
 ---
 
-## Exceptions
+## Exceptions {:#exceptions}
 
 Your Dart code can throw and catch exceptions. Exceptions are errors
 indicating that something unexpected happened. If the exception isn't
@@ -25,7 +25,7 @@ types, as well as numerous predefined subtypes. You can, of course,
 define your own exceptions. However, Dart programs can throw any
 non-null object—not just Exception and Error objects—as an exception.
 
-### Throw
+### Throw {:#throw}
 
 Here's an example of throwing, or *raising*, an exception:
 
@@ -55,7 +55,7 @@ void distanceTo(Point other) => throw UnimplementedError();
 ```
 
 
-### Catch
+### Catch {:#catch}
 
 Catching, or capturing, an exception stops the exception from
 propagating (unless you rethrow the exception).
@@ -137,7 +137,7 @@ void main() {
 ```
 
 
-### Finally
+### Finally {:#finally}
 
 To ensure that some code runs whether or not an exception is thrown, use
 a `finally` clause. If no `catch` clause matches the exception, the
@@ -169,7 +169,7 @@ try {
 To learn more, check out the
 [core library exception docs](/libraries/dart-core#exceptions).
 
-## Assert
+## Assert {:#assert}
 
 During development, use an assert 
 statement— `assert(<condition>, <optionalMessage>);` —to

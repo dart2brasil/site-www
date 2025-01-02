@@ -70,11 +70,11 @@ _This rule has a [quick fix](/tools/linter-rules#quick-fixes) available._
 <em>Incompatible rules: {{ incompatible_rules }}</em>
 {% endif -%}
 
-## Details
+## Details {:#details}
 
 {{lint.details}}
 
-## Usage
+## Usage {:#usage}
 
 To enable the `{{lint.name}}` rule,
 add `{{lint.name}}` under **linter > rules** in your

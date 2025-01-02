@@ -1,55 +1,56 @@
 ---
-title: "C interop using dart:ffi"
-description: "To use C code in your Dart program, use the dart:ffi library."
+ia-translate: true
+title: "Interoperabilidade com C usando dart:ffi"
+description: "Para usar código C em seu programa Dart, utilize a biblioteca `dart:ffi`."
 hw: "https://github.com/dart-lang/samples/tree/main/ffi/hello_world"
 samples: "https://github.com/dart-lang/samples/tree/main/ffi"
 ---
 
-Dart mobile, command-line, and server apps
-running on the [Dart Native platform](/overview#platform)
-can use the `dart:ffi` library to call native C APIs,
-and to read, write, allocate, and deallocate native memory.
-_FFI_ stands for [_foreign function interface._][FFI]
-Other terms for similar functionality include
-_native interface_ and _language bindings._
+Aplicativos Dart mobile, de linha de comando e servidor
+executando na [plataforma nativa Dart](/overview#platform)
+podem usar a biblioteca `dart:ffi` para chamar APIs nativas em C,
+e para ler, escrever, alocar e desalocar memória nativa.
+_FFI_ significa [_foreign function interface._][FFI] (interface de função externa).
+Outros termos para funcionalidades similares incluem
+_interface nativa_ e _bindings de linguagem._
 
-API documentation is available in the
-[`dart:ffi` API reference.]({{site.dart-api}}/dart-ffi/dart-ffi-library.html)
+A documentação da API está disponível na
+[`referência da API dart:ffi`.]({{site.dart-api}}/dart-ffi/dart-ffi-library.html)
 
-## Download example files
+## Baixar arquivos de exemplo {:#download-example-files}
 
-To work with the examples in this guide,
-download the full [ffi samples]({{samples}}) directory.
-It includes the following examples show how to use the `dart:ffi` library:
+Para trabalhar com os exemplos neste guia,
+baixe o diretório completo de [exemplos ffi]({{samples}}).
+Ele inclui os seguintes exemplos que mostram como usar a biblioteca `dart:ffi`:
 
-| **Example**     | **Description**                                                                                         |
+| **Exemplo**     | **Descrição**                                                                                         |
 | --------------- | ------------------------------------------------------------------------------------------------------- |
-| [hello_world][] | How to call a C function with no arguments and no return value.                                         |
-| [primitives][]  | How to call C functions that have arguments and return values that are **ints or pointers**.            |
-| [structs][]     | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
-| [test_utils][]  | Common testing utilities for all of these examples.                                                     |
+| [hello_world][] | Como chamar uma função C sem argumentos e sem valor de retorno.                                         |
+| [primitives][]  | Como chamar funções C que têm argumentos e valores de retorno que são **inteiros ou ponteiros**.            |
+| [structs][]     | Como usar structs para passar **strings** para e de C e para lidar com **estruturas C simples e complexas**. |
+| [test_utils][]  | Utilitários de teste comuns para todos esses exemplos.                                                     |
 
 {:.table .table-striped }
 
-### Review the hello_world example
+### Revisando o exemplo hello_world {:#review-the-hello-world-example}
 
-The [hello_world example][hello_world] has the minimum necessary code
-for calling a C library.
-This example can be found in the `samples/ffi` you downloaded in the
-previous section.
+O [exemplo hello_world][hello_world] possui o código mínimo necessário
+para chamar uma biblioteca C.
+Este exemplo pode ser encontrado no diretório `samples/ffi` que você baixou na
+seção anterior.
 
-#### Files
+#### Arquivos {:#files}
 
-The `hello_world` example has the following files:
+O exemplo `hello_world` possui os seguintes arquivos:
 
-| **Source file**                  | **Description**                                                                |
+| **Arquivo fonte**                  | **Descrição**                                                                |
 |----------------------------------|--------------------------------------------------------------------------------|
-| [`hello.dart`]                   | A Dart file that uses the `hello_world()` function from a C library.           |
-| [`pubspec.yaml`]                 | The Dart [pubspec](/tools/pub/pubspec) file, with an SDK lower bound of 3.4.   |
-| [`hello_library/hello.h`]        | Declares the `hello_world()` function.                                         |
-| [`hello_library/hello.c`]        | A C file that imports `hello.h` and defines the `hello_world()` function.      |
-| [`hello_library/hello.def`]      | A module-definition file which specifies information used when building a DLL. |
-| [`hello_library/CMakeLists.txt`] | A CMake build file for compiling the C code into a dynamic library.            |
+| [`hello.dart`]                   | Um arquivo Dart que usa a função `hello_world()` de uma biblioteca C.           |
+| [`pubspec.yaml`]                 | O arquivo [pubspec](/tools/pub/pubspec) Dart, com um limite inferior de SDK 3.4.   |
+| [`hello_library/hello.h`]        | Declara a função `hello_world()`.                                         |
+| [`hello_library/hello.c`]        | Um arquivo C que importa `hello.h` e define a função `hello_world()`.      |
+| [`hello_library/hello.def`]      | Um arquivo de definição de módulo que especifica informações usadas ao criar um DLL. |
+| [`hello_library/CMakeLists.txt`] | Um arquivo de build CMake para compilar o código C em uma biblioteca dinâmica.            |
 
 {:.table .table-striped }
 
@@ -60,16 +61,16 @@ The `hello_world` example has the following files:
 [`hello_library/hello.def`]: {{hw}}/hello_library/hello.def
 [`hello_library/CMakeLists.txt`]: {{hw}}/hello_library/CMakeLists.txt
 
-Building the C library creates several files,
-including a dynamic library file named
+A compilação da biblioteca C cria vários arquivos,
+incluindo um arquivo de biblioteca dinâmica chamado
 `libhello.dylib` (macOS),
-`libhello.dll` (Windows), or
+`libhello.dll` (Windows) ou
 `libhello.so` (Linux).
 
-#### Build and execute
+#### Compilar e executar {:#build-and-execute}
 
-The commands to build the dynamic library and execute the Dart app would
-resemble the following series.
+Os comandos para compilar a biblioteca dinâmica e executar o aplicativo Dart seriam
+semelhantes à seguinte sequência.
 
 ```console
 $ cd hello_library
@@ -84,48 +85,48 @@ Hello World
 ```
 
 :::note
-**On macOS,** executables, including the Dart VM (`dart`),
-can load only **signed libraries.**
-To learn more about signing libraries,
-consult Apple's [Code Signing Guide.][codesign]
+**No macOS,** executáveis, incluindo a VM Dart (`dart`),
+podem carregar apenas **bibliotecas assinadas.**
+Para saber mais sobre assinatura de bibliotecas,
+consulte o [Guia de Assinatura de Código da Apple.][codesign]
 :::
 
 [codesign]: {{site.apple-dev}}/library/content/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html
 
-#### Leverage dart:ffi
+#### Utilizando dart:ffi {:#leverage-dart-ffi}
 
-To learn how to call a C function using the `dart:ffi` library,
-review the [`hello.dart` file]({{hw}}/hello.dart).
-This section explains the contents of this file.
+Para aprender como chamar uma função C usando a biblioteca `dart:ffi`,
+revise o [arquivo `hello.dart`]({{hw}}/hello.dart).
+Esta seção explica o conteúdo deste arquivo.
 
-1. Import `dart:ffi`.
+1. Importe `dart:ffi`.
 
    ```dart
    import 'dart:ffi' as ffi;
    ```
 
-2. Import the path library that you'll use to store the path of dynamic library.
+2. Importe a biblioteca `path` que você usará para armazenar o caminho da biblioteca dinâmica.
 
    ```dart
    import 'dart:io' show Platform, Directory;
    import 'package:path/path.dart' as path;
    ```
 
-3. Create a typedef with the FFI type signature of the C function.  
-   To learn about the most used types according to the `dart:ffi` library
-   consult [Interfacing with native types](#interface-with-native-types).
+3. Crie um `typedef` com a assinatura de tipo FFI da função C.  
+   Para saber mais sobre os tipos mais usados de acordo com a biblioteca `dart:ffi`,
+   consulte [Interagindo com tipos nativos](#interface-with-native-types).
 
    ```dart
    typedef hello_world_func = ffi.Void Function();
    ```
 
-4. Create a `typedef` for the variable to use when calling the C function.
+4. Crie um `typedef` para a variável a ser usada ao chamar a função C.
 
    ```dart
    typedef HelloWorld = void Function();
    ```
 
-5. Create a variable to store the path of the dynamic library.
+5. Crie uma variável para armazenar o caminho da biblioteca dinâmica.
 
    ```dart
    var libraryPath = path.join(Directory.current.path, 'hello_library',
@@ -139,166 +140,166 @@ This section explains the contents of this file.
    }
    ```
 
-6. Open the dynamic library that contains the C function.
+6. Abra a biblioteca dinâmica que contém a função C.
 
    ```dart
    final dylib = ffi.DynamicLibrary.open(libraryPath);
    ```
 
-7. Get a reference to the C function,
-   and put it into a variable.
-   This code uses the `typedefs` from steps 2 and 3,
-   along with the dynamic library variable from step 4.
+7. Obtenha uma referência à função C,
+   e coloque-a em uma variável.
+   Este código usa os `typedefs` das etapas 2 e 3,
+   junto com a variável da biblioteca dinâmica da etapa 4.
    ```dart
    final HelloWorld hello = dylib
        .lookup<ffi.NativeFunction<hello_world_func>>('hello_world')
        .asFunction();
    ```
 
-8. Call the C function.
+8. Chame a função C.
 
    ```dart
    hello();
    ```
 
-Once you understand the `hello_world` example,
-consult the [other `dart:ffi` examples](#download-example-files).
+Assim que você entender o exemplo `hello_world`,
+consulte os [outros exemplos `dart:ffi`](#download-example-files).
 
-## Bundle and load C libraries
+## Empacotar e carregar bibliotecas C {:#bundle-and-load-c-libraries}
 
-The method to bundle / package / distribute then
-load a native C library depends on the platform and library type.
+O método para empacotar/distribuir e então
+carregar uma biblioteca C nativa depende da plataforma e do tipo de biblioteca.
 
-To learn how, consult the following pages and examples.
+Para aprender como, consulte as seguintes páginas e exemplos.
 
-* Flutter `dart:ffi` for [Android][android] apps
-* Flutter `dart:ffi` for [iOS][ios] apps
-* Flutter `dart:ffi` for [macOS][macos] apps
-* [`dart:ffi` examples]({{samples}})
+* Flutter `dart:ffi` para aplicativos [Android][android]
+* Flutter `dart:ffi` para aplicativos [iOS][ios]
+* Flutter `dart:ffi` para aplicativos [macOS][macos]
+* [Exemplos `dart:ffi`]({{samples}})
 
-## Interface with native types
+## Interagindo com tipos nativos {:#interface-with-native-types}
 
-The `dart:ffi` library provides multiple types that implement [`NativeType`][]
-and represent native types in C. You can instantiate some native types.
-Some other native types can be used only as markers in type signatures.
+A biblioteca `dart:ffi` fornece múltiplos tipos que implementam [`NativeType`][]
+e representam tipos nativos em C. Você pode instanciar alguns tipos nativos.
+Alguns outros tipos nativos podem ser usados apenas como marcadores em assinaturas de tipo.
 
-### Can instantiate these type signature markers
+### Pode instanciar esses marcadores de assinatura de tipo {:#can-instantiate-these-type-signature-markers}
 
-The following native types can be used as markers in type signatures.
-They or their subtypes _can_ be instantiated in Dart code.
+Os seguintes tipos nativos podem ser usados como marcadores em assinaturas de tipo.
+Eles ou seus subtipos _podem_ ser instanciados em código Dart.
 
 {% capture dart-ffi -%}
 {{site.dart-api}}/dart-ffi
 {%- endcapture %}
 
-| **Dart type**   | **Description**                                                  |
+| **Tipo Dart**   | **Descrição**                                                  |
 | --------------- | ---------------------------------------------------------------- |
-| [Array][]       | A fixed-sized array of items. Supertype of type specific arrays. |
-| [Pointer][]     | Represents a pointer into native C memory.                       |
-| [Struct][]      | The supertype of all FFI struct types.                           |
-| [Union][]       | The supertype of all FFI union types.                            |
+| [Array][]       | Um array de tamanho fixo de itens. Supertipo de arrays específicos de tipo. |
+| [Pointer][]     | Representa um ponteiro para a memória nativa C.                       |
+| [Struct][]      | O supertipo de todos os tipos de struct FFI.                           |
+| [Union][]       | O supertipo de todos os tipos de union FFI.                            |
 
 {:.table .table-striped }
 
-### Serve as type signature markers only
+### Servem apenas como marcadores de assinatura de tipo {:#serve-as-type-signature-markers-only}
 
-The following list shows which platform-agnostic native types
-that serve as markers in type signatures.
-They _can't_ be instantiated in Dart code.
+A lista a seguir mostra quais tipos nativos agnósticos de plataforma
+servem como marcadores em assinaturas de tipo.
+Eles _não podem_ ser instanciados em código Dart.
 
-| **Dart type**      | **Description**                                   |
+| **Tipo Dart**      | **Descrição**                                   |
 | ------------------ | ------------------------------------------------- |
-| [Bool][]           | Represents a native bool in C.                    |
-| [Double][]         | Represents a native 64 bit double in C.           |
-| [Float][]          | Represents a native 32 bit float in C.            |
-| [Int8][]           | Represents a native signed 8 bit integer in C.    |
-| [Int16][]          | Represents a native signed 16 bit integer in C.   |
-| [Int32][]          | Represents a native signed 32 bit integer in C.   |
-| [Int64][]          | Represents a native signed 64 bit integer in C.   |
-| [NativeFunction][] | Represents a function type in C.                  |
-| [Opaque][]         | The supertype of all opaque types in C.           |
-| [Uint8][]          | Represents a native unsigned 8 bit integer in C.  |
-| [Uint16][]         | Represents a native unsigned 16 bit integer in C. |
-| [Uint32][]         | Represents a native unsigned 32 bit integer in C. |
-| [Uint64][]         | Represents a native unsigned 64 bit integer in C. |
-| [Void][]           | Represents the `void` type in C.                  |
+| [Bool][]           | Representa um bool nativo em C.                    |
+| [Double][]         | Representa um double nativo de 64 bits em C.           |
+| [Float][]          | Representa um float nativo de 32 bits em C.            |
+| [Int8][]           | Representa um inteiro nativo com sinal de 8 bits em C.    |
+| [Int16][]          | Representa um inteiro nativo com sinal de 16 bits em C.   |
+| [Int32][]          | Representa um inteiro nativo com sinal de 32 bits em C.   |
+| [Int64][]          | Representa um inteiro nativo com sinal de 64 bits em C.   |
+| [NativeFunction][] | Representa um tipo de função em C.                  |
+| [Opaque][]         | O supertipo de todos os tipos opacos em C.           |
+| [Uint8][]          | Representa um inteiro nativo sem sinal de 8 bits em C.  |
+| [Uint16][]         | Representa um inteiro nativo sem sinal de 16 bits em C. |
+| [Uint32][]         | Representa um inteiro nativo sem sinal de 32 bits em C. |
+| [Uint64][]         | Representa um inteiro nativo sem sinal de 64 bits em C. |
+| [Void][]           | Representa o tipo `void` em C.                  |
 
 {:.table .table-striped }
 
-There are also many [ABI][] specific marker native types
-that extend [AbiSpecificInteger][].
-To learn how these types map on specific platforms,
-consult the API documentation linked in the following table.
+Há também muitos tipos nativos marcadores específicos de [ABI][]
+que estendem [AbiSpecificInteger][].
+Para saber como esses tipos são mapeados em plataformas específicas,
+consulte a documentação da API vinculada na tabela a seguir.
 
-| **Dart type**            | **Description**                                    |
+| **Tipo Dart**            | **Descrição**                                    |
 | -------------------------| -------------------------------------------------- |
-| [AbiSpecificInteger][]   | The supertype of all ABI-specific integer types.   |
-| [Int][]                  | Represents the `int` type in C.                    |
-| [IntPtr][]               | Represents the `intptr_t` type in C.               |
-| [Long][]                 | Represents the `long int` (`long`) type in C.      |
-| [LongLong][]             | Represents the `long long` type in C.              |
-| [Short][]                | Represents the `short` type in C.                  |
-| [SignedChar][]           | Represents the `signed char` type in C.            |
-| [Size][]                 | Represents the `size_t` type in C.                 |
-| [UintPtr][]              | Represents the `uintptr_t` type in C.              |
-| [UnsignedChar][]         | Represents the `unsigned char` type in C.          |
-| [UnsignedInt][]          | Represents the `unsigned int` type in C.           |
-| [UnsignedLong][]         | Represents the `unsigned long int` type in C.      |
-| [UnsignedLongLong][]     | Represents the `unsigned long long` type in C.     |
-| [UnsignedShort][]        | Represents the `unsigned short` type in C.         |
-| [WChar][]                | Represents the `wchar_t` type in C.                |
+| [AbiSpecificInteger][]   | O supertipo de todos os tipos de inteiros específicos de ABI.   |
+| [Int][]                  | Representa o tipo `int` em C.                    |
+| [IntPtr][]               | Representa o tipo `intptr_t` em C.               |
+| [Long][]                 | Representa o tipo `long int` (`long`) em C.      |
+| [LongLong][]             | Representa o tipo `long long` em C.              |
+| [Short][]                | Representa o tipo `short` em C.                  |
+| [SignedChar][]           | Representa o tipo `signed char` em C.            |
+| [Size][]                 | Representa o tipo `size_t` em C.                 |
+| [UintPtr][]              | Representa o tipo `uintptr_t` em C.              |
+| [UnsignedChar][]         | Representa o tipo `unsigned char` em C.          |
+| [UnsignedInt][]          | Representa o tipo `unsigned int` em C.           |
+| [UnsignedLong][]         | Representa o tipo `unsigned long int` em C.      |
+| [UnsignedLongLong][]     | Representa o tipo `unsigned long long` em C.     |
+| [UnsignedShort][]        | Representa o tipo `unsigned short` em C.         |
+| [WChar][]                | Representa o tipo `wchar_t` em C.                |
 
 {:.table .table-striped }
 
-## Generate FFI bindings with `package:ffigen`
+## Gerando bindings FFI com `package:ffigen` {:#generate-ffi-bindings-with-package-ffigen}
 
-For large API surfaces, it can be time-consuming
-to write the Dart bindings that integrate with the C code.
-To have Dart create FFI wrappers from C header files,
-use the [`package:ffigen`][ffigen] binding generator.
+Para grandes superfícies de API, pode ser demorado
+escrever os bindings Dart que se integram ao código C.
+Para que o Dart crie wrappers FFI a partir de arquivos de cabeçalho C,
+use o gerador de bindings [`package:ffigen`][ffigen].
 
-## Build and bundle native assets {:#native-assets}
+## Compilar e empacotar assets nativos {:#native-assets}
 
 :::note
-The native assets are **experimental**,
-and [in active development]({{site.repo.dart.sdk}}/issues/50565).
+O recurso de _Assets Nativos_ é **experimental**,
+e está [em desenvolvimento ativo]({{site.repo.dart.sdk}}/issues/50565).
 :::
 
-The _Native Assets_ feature should resolve a number of issues associated with
-the distribution of Dart packages that depend on native code.
-It does so by providing uniform hooks for integrating with various
-build systems involved in building Flutter and standalone Dart applications.
+O recurso _Assets Nativos_ deve resolver uma série de problemas associados à
+distribuição de pacotes Dart que dependem de código nativo.
+Ele faz isso fornecendo ganchos uniformes para integração com vários
+sistemas de build envolvidos na construção de aplicativos Flutter e Dart autônomos.
 
-This feature should simplify how Dart packages depend on and use native code.
-Native Assets should provide the following benefits:
+Este recurso deve simplificar como os pacotes Dart dependem e usam código nativo.
+Os Assets Nativos devem fornecer os seguintes benefícios:
 
-* Build the native code or obtains the binaries
-  using a package's `hook/build.dart` build hook.
-* Bundle the native [`Asset`][] that the `build.dart` build hook reports.
-* Make native assets available at runtime through
-  declarative `@Native<>() extern` functions using the [`assetId`][].
+* Compilar o código nativo ou obter os binários
+  usando um gancho de build `hook/build.dart` do pacote.
+* Empacotar o [`Asset`][] nativo que o gancho de build `build.dart` relata.
+* Tornar os assets nativos disponíveis em tempo de execução por meio de
+  funções declarativas `@Native<>() extern` usando o [`assetId`][].
 
-When you [opt in](#opt-in-to-the-experiment) to the native experiment,
-The `flutter (run|build)` and `dart (run|build)` commands
-build and bundle native code with the Dart code.
+Quando você [opta por participar](#opt-in-to-the-experiment) do experimento nativo,
+os comandos `flutter (run|build)` e `dart (run|build)`
+compilam e empacotam o código nativo com o código Dart.
 
-### Review the `native_add_library` example
+### Revisando o exemplo `native_add_library` {:#review-the-native-add-library-example}
 
-The [`native_add_library`][] example includes the minimum code to
-build and bundle C code in a Dart package.
+O exemplo [`native_add_library`][] inclui o código mínimo para
+compilar e empacotar código C em um pacote Dart.
 
-The example includes the following files:
+O exemplo inclui os seguintes arquivos:
 
 {% capture native-assets -%}
 {{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/example/build/native_add_library
 {%- endcapture %}
 
-| **Source file**                         | **Description**                                                                                                                                                                |
+| **Arquivo fonte**                         | **Descrição**                                                                                                                                                                |
 ------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`src/native_add_library.c`][]          | The C file containing the code for `add`.                                                                                                                                      |
-| [`lib/native_add_library.dart`][]       | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
-| [`test/native_add_library_test.dart`][] | A Dart test using the native code.                                                                                                                                             |
-| [`hook/build.dart`][]                   | A build hook for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
+| [`src/native_add_library.c`][]          | O arquivo C contendo o código para `add`.                                                                                                                                      |
+| [`lib/native_add_library.dart`][]       | O arquivo Dart que invoca a função C `add` no asset `package:native_add_library/native_add_library.dart` por meio de FFI. (Observe que o _id do asset_ é o URI da biblioteca por padrão.) |
+| [`test/native_add_library_test.dart`][] | Um teste Dart usando o código nativo.                                                                                                                                             |
+| [`hook/build.dart`][]                   | Um gancho de build para compilar `src/native_add_library.c` e declarar o asset compilado com o id `package:native_add_library/native_add_library.dart`.                              |
 
 {:.table .table-striped }
 
@@ -307,26 +308,26 @@ The example includes the following files:
 [`test/native_add_library_test.dart`]: {{native-assets}}/test/native_add_library_test.dart
 [`hook/build.dart`]: {{native-assets}}/hook/build.dart
 
-When a Dart or Flutter project depends on `package:native_add_library`,
-it invokes the `hook/build.dart` build hook on `run`, `build`, and `test` commands.
-The [`native_add_app`][] example showcases a use of `native_add_library`.
+Quando um projeto Dart ou Flutter depende de `package:native_add_library`,
+ele invoca o gancho de build `hook/build.dart` nos comandos `run`, `build` e `test`.
+O exemplo [`native_add_app`][] mostra um uso de `native_add_library`.
 
-### Review Native Asset API documentation
+### Revisando a documentação da API de Assets Nativos {:#review-native-asset-api-documentation}
 
-API documentation can be found for the following packages:
+A documentação da API pode ser encontrada para os seguintes pacotes:
 
-* To learn about native assets in Dart FFI,
-  consult the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
-* To learn about the `hook/build.dart` build hook,
-  consult the [`package:native_assets_cli` API reference][].
+* Para saber mais sobre assets nativos em Dart FFI,
+  consulte a referência da API `dart:ffi` para [`Native`][] e [`DefaultAsset`][].
+* Para saber mais sobre o gancho de build `hook/build.dart`,
+  consulte a [`referência da API package:native_assets_cli`][].
 
-### Opt-in to the experiment
+### Optando por participar do experimento {:#opt-in-to-the-experiment}
 
-To learn how to enable the experiment and provide feedback,
-consult these tracking issues:
+Para aprender como habilitar o experimento e fornecer feedback,
+consulte essas questões de acompanhamento:
 
-* [Dart native assets]({{site.repo.dart.sdk}}/issues/50565)
-* [Flutter native assets](https://github.com/flutter/flutter/issues/129757)
+* [Assets nativos Dart]({{site.repo.dart.sdk}}/issues/50565)
+* [Assets nativos Flutter](https://github.com/flutter/flutter/issues/129757)
 
 [`Asset`]: {{site.pub-api}}/native_assets_cli/latest/native_assets_cli/Asset-class.html
 [`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
@@ -379,3 +380,4 @@ consult these tracking issues:
 [Pointer]: {{dart-ffi}}/Pointer-class.html
 [Struct]: {{dart-ffi}}/Struct-class.html
 [Union]: {{dart-ffi}}/Union-class.html
+

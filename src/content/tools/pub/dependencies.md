@@ -14,7 +14,7 @@ This page has detailed information on how to specify dependencies.
 At the end is a list of
 [best practices for package dependencies](#best-practices).
 
-## Overview
+## Overview {:#overview}
 
 For each dependency, you specify the _name_ of the package you depend on
 and the _range of versions_ of that package that you allow.
@@ -49,7 +49,7 @@ dependencies:
 
 The next section describes the format for each dependency source.
 
-## Dependency sources
+## Dependency sources {:#dependency-sources}
 
 Pub can use the following sources to locate packages:
 
@@ -58,7 +58,7 @@ Pub can use the following sources to locate packages:
 * [Git packages](#git-packages)
 * [Path packages](#path-packages)
 
-### Hosted packages
+### Hosted packages {:#hosted-packages}
 
 A _hosted_ package is one that can be downloaded from the pub.dev site
 (or another HTTP server that speaks the same API). Here's an example
@@ -122,7 +122,7 @@ dependencies:
 
 [SDK version]: /resources/language/evolution#language-versioning
 
-### Git packages
+### Git packages {:#git-packages}
 
 Sometimes you live on the bleeding edge and need to use packages that
 haven't been formally released yet. Maybe your package itself is still in
@@ -188,7 +188,7 @@ The path is relative to the Git repo's root.
 Git dependencies are not allowed as dependencies
 for packages uploaded to [pub.dev][pubsite].
 
-### Path packages
+### Path packages {:#path-packages}
 
 Sometimes you find yourself working on multiple related packages at the same
 time. Maybe you are creating a framework while building an app that uses it.
@@ -226,7 +226,7 @@ Instead, the typical workflow is:
 4. Change your pubspec to point to the now hosted version of its dependent.
 5. Publish your main package too, if you want.
 
-### SDK
+### SDK {:#sdk}
 
 The SDK source is used for any SDKs that are shipped along with packages,
 which may themselves be dependencies.
@@ -248,7 +248,7 @@ If it's `flutter`, the dependency is satisfiable as long as:
 
 If it's an unknown identifier, the dependency is always considered unsatisfied.
 
-## Version constraints
+## Version constraints {:#version-constraints}
 
 Let's say that your Package A depends upon Package B.
 How can you communicate to other developers which version of Package B
@@ -287,7 +287,7 @@ To learn more about pub's version system, see the [package versioning page][].
 
 [package versioning page]: /tools/pub/versioning#semantic-versions
 
-### Traditional syntax
+### Traditional syntax {:#traditional-syntax}
 
 A version constraint that uses the traditional syntax can use any
 of the following values:
@@ -315,7 +315,7 @@ This prevents YAML from interpreting the character as YAML syntax.
 For example: never use `>=1.2.3 <2.0.0`. Use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
 :::
 
-### Caret syntax
+### Caret syntax {:#caret-syntax}
 
 Caret syntax expresses the version constraint in a compact way.
 `^version` means _the range of all versions guaranteed to be backwards
@@ -344,7 +344,7 @@ dependencies:
   string_scanner: ^0.1.2
 ```
 
-## Dev dependencies
+## Dev dependencies {:#dev-dependencies}
 
 Pub supports two flavors of dependencies: regular dependencies and _dev
 dependencies._ Dev dependencies differ from regular dependencies in that _dev
@@ -375,7 +375,7 @@ Using dev dependencies makes dependency graphs smaller. That makes `pub` run
 faster, and makes it easier to find a set of package versions that satisfies all
 constraints.
 
-## Dependency overrides
+## Dependency overrides {:#dependency-overrides}
 
 You can use `dependency_overrides` to temporarily override all references
 to a dependency.
@@ -432,7 +432,7 @@ As a result, if you publish a package to pub.dev,
 keep in mind that your package's dependency overrides
 are ignored by all users of your package.
 
-## Best practices
+## Best practices {:#best-practices}
 
 Be proactive in managing your dependencies.
 Ensure that your packages depend on the freshest versions of packages
@@ -444,14 +444,14 @@ the stability, performance, and quality of your app.
 
 We recommend the following best practices for package dependencies.
 
-### Use caret syntax
+### Use caret syntax {:#use-caret-syntax}
 
 Specify dependencies using the [caret syntax](#caret-syntax).
 This allows the pub tool to select newer versions of the package
 when they become available.
 Further, it places an upper bound on the allowed version.
 
-### Depend on the latest stable package versions
+### Depend on the latest stable package versions {:#depend-on-the-latest-stable-package-versions}
 
 Use [`dart pub upgrade`][] to update to the latest package versions
 that your pubspec allows.
@@ -459,7 +459,7 @@ To identify dependencies in your app or package that
 aren't on the latest stable versions,
 use [`dart pub outdated`][].
 
-### Tighten version constraints for dev dependencies
+### Tighten version constraints for dev dependencies {:#tighten-version-constraints-for-dev-dependencies}
 
 A dev dependency defines a package that you need only when developing.
 A finished app won't need these packages.
@@ -481,7 +481,7 @@ This YAML sets the `dev_dependencies` to the latest patch versions.
 
 [dev-dep]: /tools/pub/dependencies#dev-dependencies
 
-### Test whenever you update package dependencies
+### Test whenever you update package dependencies {:#test-whenever-you-update-package-dependencies}
 
 If you run [`dart pub upgrade`][] without updating your pubspec,
 the API should stay the same
@@ -490,7 +490,7 @@ If you modify the pubspec and update to a new major version,
 then you might encounter breaking changes,
 so you need to test even more thoroughly.
 
-### Test with downgraded dependencies
+### Test with downgraded dependencies {:#test-with-downgraded-dependencies}
 
 When developing packages for publication, it is often preferable to
 allow the widest dependency constraints possible.
@@ -536,7 +536,7 @@ packages themselves or from your `dev_dependencies`.
 
 [`dart pub downgrade`]: /tools/pub/cmd/pub-downgrade
 
-### Verify the integrity of downloaded packages
+### Verify the integrity of downloaded packages {:#verify-the-integrity-of-downloaded-packages}
 
 When retrieving new dependencies,
 use the [`--enforce-lockfile`][enforce-lock] option to ensure

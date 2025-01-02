@@ -26,7 +26,7 @@ It is like an asynchronous Iterable—where, instead of getting
 the next event when you ask for it, the stream tells you that
 there is an event when it is ready.
 
-## Receiving stream events
+## Receiving stream events {:#receiving-stream-events}
 
 Streams can be created in many ways, which is a topic for another
 article, but they can all be used in the same way: the _asynchronous
@@ -88,7 +88,7 @@ void main() async {
 Click **Run** to see the result in the **Console**.
 :::
 
-## Error events
+## Error events {:#error-events}
 
 Streams are done when there are no more events in them,
 and the code receiving the events is notified of this just as
@@ -148,7 +148,7 @@ Click **Run** to see the result in the **Console**.
 :::
 
 
-## Working with streams
+## Working with streams {:#working-with-streams}
 
 The Stream class contains a number of helper methods that can do
 common operations on a stream for you,
@@ -386,7 +386,7 @@ and cancel it completely.
 You can set callbacks to be called for each data event or
 error event, and when the stream is closed.
 
-## Other resources
+## Other resources {:#other-resources}
 
 Read the following documentation for more details on using streams
 and asynchronous programming in Dart.

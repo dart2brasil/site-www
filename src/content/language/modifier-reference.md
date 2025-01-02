@@ -13,7 +13,7 @@ nextpage:
 This page contains reference information for
 [class modifiers](/language/class-modifiers).
 
-## Valid combinations
+## Valid combinations {:#valid-combinations}
 
 The valid combinations of class modifiers and their resulting capabilities are:
 
@@ -43,7 +43,7 @@ The valid combinations of class modifiers and their resulting capabilities are:
 [Mix in]: /language/mixins
 [Exhaustive]: /language/branches#exhaustiveness-checking
 
-## Invalid combinations
+## Invalid combinations {:#invalid-combinations}
 
 Certain [combinations](/language/class-modifiers#combining-modifiers)
 of modifiers are not allowed:

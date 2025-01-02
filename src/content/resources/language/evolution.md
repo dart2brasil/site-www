@@ -40,9 +40,9 @@ on the Dart language GitHub repo.
 :::
 
 
-## Changes in each release
+## Changes in each release {:#changes-in-each-release}
 
-### Dart 3.6
+### Dart 3.6 {:#dart-3-6}
 _Released 11 December 2024_
 | [Dart 3.6 announcement](https://medium.com/dartlang/announcing-dart-3-6-778dd7a80983)
 
@@ -55,7 +55,7 @@ var m = 1__000_000__000_000__000_000;
 
 [digit separator]: /language/built-in-types#digit-separators
 
-### Dart 3.5
+### Dart 3.5 {:#dart-3-5}
 _Released 6 August 2024_
 | [Dart 3.5 announcement](https://medium.com/dartlang/dart-3-5-6ca36259fa2f)
 
@@ -68,7 +68,7 @@ These include the following, non-language versioned changes:
 * When the context for an entire if-null expression (`e1 ?? e2`) is `dynamic`,
   the context for `e2` is now the static type of `e1`.
 
-### Dart 3.4
+### Dart 3.4 {:#dart-3-4}
 _Released 14 May 2024_
 | [Dart 3.4 announcement](https://medium.com/dartlang/dart-3-4-bd8d23b4462a)
 
@@ -80,7 +80,7 @@ Dart 3.4 made several improvements related to type analysis. These include:
 * Making the type schema for the null-aware spread operator (`...?`)
   nullable for maps and set literals, to match the behavior of list literals.
 
-### Dart 3.3
+### Dart 3.3 {:#dart-3-3}
 _Released 15 February 2024_
 | [Dart 3.3 announcement](https://medium.com/dartlang/dart-3-3-325bf2bf6c13)
 
@@ -108,7 +108,7 @@ Dart 3.3 added some enhancements to the language:
 * Abstract getters are now promotable under the rules of
   [private final field promotion][], if there are no conflicting declarations.
 
-### Dart 3.2
+### Dart 3.2 {:#dart-3-2}
 _Released 15 November 2023_
 | [Dart 3.2 announcement](https://medium.com/dartlang/dart-3-2-c8de8fe1b91f)
 
@@ -151,13 +151,13 @@ Dart 3.2 added enhancements to flow analysis, including:
   where the value being matched against throws an exception.
 
 
-### Dart 3.1
+### Dart 3.1 {:#dart-3-1}
 _Released 16 August 2023_
 | [Dart 3.1 announcement](https://medium.com/dartlang/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3-a1f4b3a7cdda)
 
 Dart 3.1 added no new features and made no changes to the language.
 
-### Dart 3.0
+### Dart 3.0 {:#dart-3-0}
 _Released 10 May 2023_
 | [Dart 3.0 announcement](https://medium.com/dartlang/announcing-dart-3-53f065a10635)
 
@@ -199,7 +199,7 @@ The 3.0 release of the Dart SDK dropped support for
 [`mixin`]: /language/mixins#class-mixin-or-mixin-class
 [language versions]: #language-versioning
 
-### Dart 2.19
+### Dart 2.19 {:#dart-2-19}
 _Released 25 January 2023_
 
 Dart 2.19 introduced some precautions surrounding type inference.
@@ -221,7 +221,7 @@ library;
 
 [should]: /effective-dart/style#dont-explicitly-name-libraries
 
-### Dart 2.18
+### Dart 2.18 {:#dart-2-18}
 _Released 30 August 2022_
 | [Dart 2.18 announcement](https://medium.com/dartlang/dart-2-18-f4b3101f146c)
 
@@ -245,7 +245,7 @@ To learn more about these features, check out:
 [Type argument inference]: /language/type-system#type-argument-inference
 [Adding features to a class: mixins]: /language/mixins
 
-### Dart 2.17
+### Dart 2.17 {:#dart-2-17}
 _Released 11 May 2022_
 | [Dart 2.17 announcement](https://medium.com/dartlang/dart-2-17-b216bfc80c5d)
 
@@ -282,21 +282,21 @@ To learn more about these features, check out:
 [Super parameters]: /language/constructors#super-parameters
 [Named parameters]: /language/functions#named-parameters
 
-### Dart 2.16
+### Dart 2.16 {:#dart-2-16}
 _Released 3 February 2022_
 | [Dart 2.16 announcement](https://medium.com/dartlang/dart-2-15-7e7a598e508a)
 
 Dart 2.16 added no new features to the Dart language.
 It did expand the Dart tools.
 
-### Dart 2.15
+### Dart 2.15 {:#dart-2-15}
 _Released 8 December 2021_
 | [Dart 2.15 announcement](https://medium.com/dartlang/dart-2-15-7e7a598e508a)
 
 Dart 2.15 improved support for function pointers, known as _tear-offs._
 In particular, constructor tear-offs are now supported.
 
-### Dart 2.14
+### Dart 2.14 {:#dart-2-14}
 _Released 8 September 2021_
 | [Dart 2.14 announcement](https://medium.com/dartlang/announcing-dart-2-14-b48b9bb2fb67)
 
@@ -320,7 +320,7 @@ var callback = [<T>(T value) => value];
 late S Function<S extends T Function<T>(T)>(S) f;
 ```
 
-### Dart 2.13
+### Dart 2.13 {:#dart-2-13}
 _Released 19 May 2021_
 | [Dart 2.13 announcement](https://medium.com/dartlang/announcing-dart-2-13-c6d547b57067)
 
@@ -333,7 +333,7 @@ anywhere the original type could be used.
 Dart 2.13 improved the struct support in **[Dart FFI][]**,
 adding support for inline arrays and packed structs.
 
-### Dart 2.12
+### Dart 2.12 {:#dart-2-12}
 _Released 3 March 2021_
 | [Dart 2.12 announcement](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87)
 
@@ -345,18 +345,18 @@ turn into edit-time analysis errors.
 
 In Dart 2.12, **[Dart FFI][]** graduated from beta to the stable channel.
 
-### Dart 2.10
+### Dart 2.10 {:#dart-2-10}
 _Released 1 October 2020_
 | [Dart 2.10 announcement](https://medium.com/dartlang/announcing-dart-2-10-350823952bd5)
 
 Dart 2.10 added no new features to the Dart language.
 
-### Dart 2.9
+### Dart 2.9 {:#dart-2-9}
 _Released 5 August 2020_
 
 Dart 2.9 added no new features to the Dart language.
 
-### Dart 2.8
+### Dart 2.8 {:#dart-2-8}
 _Released 6 May 2020_
 | [Dart 2.8 announcement](https://medium.com/dartlang/announcing-dart-2-8-7750918db0a)
 
@@ -364,7 +364,7 @@ Dart 2.8 didn't add any features to the Dart language. It did
 contain a number of preparatory [breaking changes][2.8 breaking changes]
 to improve nullability-related usability and performance for [null safety][].
 
-### Dart 2.7
+### Dart 2.7 {:#dart-2-7}
 _Released 11 December 2019_
 | [Dart 2.7 announcement](https://medium.com/dartlang/dart-2-7-a3710ec54e97)
 
@@ -389,7 +389,7 @@ void main() {
 }
 ```
 
-### Dart 2.6
+### Dart 2.6 {:#dart-2-6}
 _Released 5 November 2019_
 | [Dart 2.6 announcement](https://medium.com/dartlang/dart2native-a76c815e6baf)
 
@@ -410,7 +410,7 @@ void foo<T>(FutureOr<T> Function() f) { print(T); }
 main() { foo(() {}); }
 ```
 
-### Dart 2.5
+### Dart 2.5 {:#dart-2-5}
 _Released 10 September 2019_
 | [Dart 2.5 announcement](https://medium.com/dartlang/announcing-dart-2-5-super-charged-development-328822024970)
 
@@ -418,7 +418,7 @@ Dart 2.5 didn't add any features to the Dart language, but it did add
 support for [calling native C code][] from Dart code
 using a new **core library, `dart:ffi`.**
 
-### Dart 2.4
+### Dart 2.4 {:#dart-2-4}
 _Released 27 June 2019_
 
 
@@ -437,7 +437,7 @@ class B<X> extends A<void Function(X)> {};
 You can now use `async` as an identifier in
 asynchronous and generator functions.
 
-### Dart 2.3
+### Dart 2.3 {:#dart-2-3}
 _Released 8 May 2019_
 | [Dart 2.3 announcement](https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff)
 
@@ -488,7 +488,7 @@ Widget build(BuildContext context) {
 ```
 
 
-### Dart 2.2
+### Dart 2.2 {:#dart-2-2}
 _Released 26 February 2019_
 | [Dart 2.2 announcement](https://medium.com/dartlang/announcing-dart-2-2-faster-native-code-support-for-set-literals-7e2ab19cc86d)
 
@@ -498,7 +498,7 @@ Dart 2.2 added support for **[set literals][]**:
 const Set<String> currencies = {'EUR', 'USD', 'JPY'};
 ```
 
-### Dart 2.1
+### Dart 2.1 {:#dart-2-1}
 _Released 15 November 2018_
 | [Dart 2.1 announcement](https://medium.com/dartlang/announcing-dart-2-1-improved-performance-usability-9f55fca6f31a)
 
@@ -517,7 +517,7 @@ padding: const EdgeInsets.symmetric(
 )
 ```
 
-### Dart 2.0
+### Dart 2.0 {:#dart-2-0}
 _Released 22 February 2018_
 | [Dart 2.0 announcement](https://medium.com/dartlang/announcing-dart-2-80ba01f43b6)
 
@@ -526,7 +526,7 @@ Before Dart 2.0, types weren't fully sound, and
 Dart relied heavily on runtime type checking.
 Dart 1.x code had to be migrated to Dart 2.
 
-## Language versioning
+## Language versioning {:#language-versioning}
 
 A single Dart SDK can simultaneously support
 multiple versions of the Dart language.
@@ -560,7 +560,7 @@ environment:
   sdk: '>=2.18.0 <3.0.0'
 ```
 
-### Language version numbers
+### Language version numbers {:#language-version-numbers}
 
 Dart formats its language versions as two numbers separated with a period.
 It reads as a major version number and a minor version number.
@@ -588,7 +588,7 @@ Deriving the language version from the SDK version implies the following:
   For example: The 2.18.3 release _remains_ language version 2.18.
   It must remain compatible with 2.18.2, 2.18.1, and 2.18.0.
 
-### Per-library language version selection
+### Per-library language version selection {:#per-library-language-version-selection}
 
 By default, every Dart file in a package uses the same language version.
 Dart identifies the default language version as the

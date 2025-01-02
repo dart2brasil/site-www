@@ -114,7 +114,7 @@ Thus with null safety, our goal is to give you *control* and *insight* into
 where `null` can flow through your program and certainty that it can't flow
 somewhere that would cause a crash.
 
-## Nullability in the type system
+## Nullability in the type system {:#nullability-in-the-type-system}
 
 Null safety begins in the static type system because everything else rests upon
 that. Your Dart program has a whole universe of types in it: primitive types
@@ -135,7 +135,7 @@ flow into an expression of some other type means any of those operations can
 fail. This is really the crux of null reference errors—every failure comes
 from trying to look up a method or property on `null` that it doesn't have.
 
-### Non-nullable and nullable types
+### Non-nullable and nullable types {:#non-nullable-and-nullable-types}
 
 Null safety eliminates that problem at the root by changing the type hierarchy.
 The `Null` type still exists, but it's no longer a subtype of all types.
@@ -172,7 +172,7 @@ full-featured union types.
 
 [union]: https://en.wikipedia.org/wiki/Union_type
 
-### Using nullable types
+### Using nullable types {:#using-nullable-types}
 
 If you have an expression with a nullable type, what can you do with the result?
 Since our principle is safe by default, the answer is not much. We can't let you
@@ -295,7 +295,7 @@ you can't get away from them. Don't worry, we have a whole suite of features to
 help you move values from the nullable half over to the other side that we will
 get to soon.
 
-### Top and bottom
+### Top and bottom {:#top-and-bottom}
 
 This section is a little esoteric. You can mostly skip it, except for two
 bullets at the very end, unless you're into type system stuff. Imagine all the
@@ -338,7 +338,7 @@ In practice, this means:
     to [help reachability analysis](#never-for-unreachable-code).
     If you don't know if you need a bottom type, you probably don't.
 
-## Ensuring correctness
+## Ensuring correctness {:#ensuring-correctness}
 
 We divided the universe of types into nullable and non-nullable halves. In order
 to maintain soundness and our principle that you can never get a null reference
@@ -351,7 +351,7 @@ from arguments into parameters on function calls. The main remaining places
 where `null` can sneak in are when a variable first comes into being and when
 you leave a function. So there are some additional compile errors:
 
-### Invalid returns
+### Invalid returns {:#invalid-returns}
 
 If a function has a non-nullable return type, then every path through the
 function must reach a `return` statement that returns a value. Before null
@@ -396,7 +396,7 @@ String alwaysReturns(int n) {
 
 We'll dive more deeply into the new flow analysis in the next section.
 
-### Uninitialized variables
+### Uninitialized variables {:#uninitialized-variables}
 
 When you declare a variable, if you don't give it an explicit initializer, Dart
 default initializes the variable with `null`. That's convenient, but obviously
@@ -480,7 +480,7 @@ Even so, the rules do cause friction. Fortunately, we have a suite of new
 language features to lubricate the most common patterns where these new
 limitations slow you down. First, though, it's time to talk about flow analysis.
 
-## Flow analysis
+## Flow analysis {:#flow-analysis}
 
 [Control flow analysis][] has been around in compilers for years. It's mostly
 hidden from users and used during compiler optimization, but some newer
@@ -531,7 +531,7 @@ powerful in several ways.][flow analysis]
 
 [flow analysis]: {{site.repo.dart.lang}}/blob/main/resources/type-system/flow-analysis.md
 
-### Reachability analysis
+### Reachability analysis {:#reachability-analysis}
 
 First off, we fixed the [long-standing complaint][18921] that type promotion
 isn't smart about early returns and other unreachable code paths. When analyzing
@@ -553,7 +553,7 @@ Is now perfectly valid. Since the `if` statement will exit the function when
 statement. This is a really nice improvement that helps a lot of Dart code, even
 stuff not related to nullability.
 
-### Never for unreachable code
+### Never for unreachable code {:#never-for-unreachable-code}
 
 You can also *program* this reachability analysis. The new bottom type `Never`
 has no values. (What kind of value is simultaneously a `String`, `bool`, and
@@ -600,7 +600,7 @@ statement can only be reached when `other` is a `Point`, Dart promotes it.
 In other words, using `Never` in your own APIs lets you extend Dart's
 reachability analysis.
 
-### Definite assignment analysis
+### Definite assignment analysis {:#definite-assignment-analysis}
 
 I mentioned this one briefly with local variables. Dart needs to ensure a
 non-nullable local variable is always initialized before it is read. We use
@@ -637,7 +637,7 @@ fine. The analysis can tell that `result` is definitely initialized exactly once
 on every control flow path, so the constraints for marking a variable `final`
 are satisfied.
 
-### Type promotion on null checks
+### Type promotion on null checks {:#type-promotion-on-null-checks}
 
 The smarter flow analysis helps lots of Dart code, even code not related to
 nullability. But it's not a coincidence that we're making these changes now. We
@@ -703,7 +703,7 @@ and now also works on private final fields as of Dart 3.2.
 For more information about working with non-local variables,
 see [Working with nullable fields](#working-with-nullable-fields).
 
-### Unnecessary code warnings
+### Unnecessary code warnings {:#unnecessary-code-warnings}
 
 Having smarter reachability analysis and knowing where `null` can flow through
 your program helps ensure that you *add* code to handle `null`. But we can also
@@ -752,7 +752,7 @@ to clean up pointless code. By removing *unneeded* checks for `null`, we ensure
 that the remaining meaningful checks stand out. We want you to be able to look
 at your code and *see* where `null` can flow.
 
-## Working with nullable types
+## Working with nullable types {:#working-with-nullable-types}
 
 We've now corralled `null` into the set of nullable types. With flow analysis,
 we can safely let some non-`null` values hop over the fence to the non-nullable
@@ -764,7 +764,7 @@ To try to regain as much of the flexibility that Dart had before null
 safety—and to go beyond it in some places—we have a handful of other
 new features.
 
-### Smarter null-aware methods
+### Smarter null-aware methods {:#smarter-null-aware-methods}
 
 Dart's null aware operator `?.` is much older than null safety. The runtime
 semantics state that if the receiver is `null` then the property access on the
@@ -875,7 +875,7 @@ function?.call(arg1, arg2);
 ```
 
 <a id="null-assertion-operator"></a>
-### Non-null assertion operator
+### Non-null assertion operator {:#non-null-assertion-operator}
 
 The great thing about using flow analysis to move a nullable variable to the
 non-nullable side of the world is that doing so is provably safe. You get to
@@ -952,7 +952,7 @@ must be checked at runtime to preserve soundness and it may fail and throw an
 exception. But you have control over where these casts are inserted, and you can
 always see them by looking through your code.
 
-### Late variables
+### Late variables {:#late-variables}
 
 The most common place where the type checker cannot prove the safety of code is
 around top-level variables and fields. Here is an example:
@@ -1046,7 +1046,7 @@ field's type is non-nullable now, it is a *compile* error to try to assign
 initialization, but still prohibits you from treating it like a nullable
 variable.
 
-### Lazy initialization
+### Lazy initialization {:#lazy-initialization}
 
 The `late` modifier has some other special powers too. It may seem paradoxical,
 but you can use `late` on a field that has an initializer:
@@ -1070,7 +1070,7 @@ because you don't have access to the new object until all field initializers
 have completed. But with a `late` field, that's no longer true, so you *can*
 access `this`, call methods, or access fields on the instance.
 
-### Late final variables
+### Late final variables {:#late-final-variables}
 
 You can also combine `late` with `final`:
 
@@ -1099,7 +1099,7 @@ variable modifiers covers most of the feature space of `lateinit` in Kotlin and
 `lazy` in Swift. You can even use it on local variables if you want a little
 local lazy evaluation.
 
-### Required named parameters
+### Required named parameters {:#required-named-parameters}
 
 To guarantee that you never see a `null` parameter with a non-nullable type, the
 type checker requires all optional parameters to either have a nullable type or
@@ -1138,7 +1138,7 @@ non-nullable types (if they have a default value).
 This is another one of those features that I think makes Dart better regardless
 of null safety. It simply makes the language feel more complete to me.
 
-### Abstract fields
+### Abstract fields {:#abstract-fields}
 
 One of the neat features of Dart is that
 it upholds a thing called the [uniform access principle][].
@@ -1188,7 +1188,7 @@ abstract class Cup {
 This behaves exactly like the second example.
 It simply declares an abstract getter and setter with the given name and type.
 
-### Working with nullable fields
+### Working with nullable fields {:#working-with-nullable-fields}
 
 These new features cover many common patterns and make working with `null`
 pretty painless most of the time. But even so, our experience is that nullable
@@ -1256,7 +1256,7 @@ local.
 For more information on handling these and other type promotion issues,
 see [Fixing type promotion failures](/tools/non-promotion-reasons).
 
-### Nullability and generics
+### Nullability and generics {:#nullability-and-generics}
 
 Like most modern statically-typed languages, Dart has generic classes and
 generic methods. They interact with nullability in a few ways that seem
@@ -1399,7 +1399,7 @@ no way to *require* a nullable type argument. If you want uses of the type
 parameter to reliably be nullable and be implicitly initialized to `null`, 
 you can use `T?` inside the body of the class.
 
-## Core library changes
+## Core library changes {:#core-library-changes}
 
 There are a couple of other tweaks here and there in the language, but they are
 minor. Things like the default type of a `catch` with no `on` clause is now
@@ -1416,7 +1416,7 @@ gracefully accept it with a nullable type.
 
 There are a few important corners, though:
 
-### The Map index operator is nullable
+### The Map index operator is nullable {:#the-map-index-operator-is-nullable}
 
 This isn't really a change, but more a thing to know. The index `[]` operator on
 the Map class returns `null` if the key isn't present. This implies that the
@@ -1455,7 +1455,7 @@ method name would be clearer than seeing a `!` with its built-in semantics right
 there at the call site. So the idiomatic way to access a known-present element
 in a map is to use `[]!`. You get used to it.
 
-### No unnamed List constructor
+### No unnamed List constructor {:#no-unnamed-list-constructor}
 
 The unnamed constructor on `List` creates a new list with the given size but
 does not initialize any of the elements. This would poke a very large hole in
@@ -1473,7 +1473,7 @@ The pattern of creating a completely uninitialized list has always felt out of
 place in Dart, and now it is even more so. If you have code broken by this,
 you can always fix it by using one of the many other ways to produce a list.
 
-### Cannot set a larger length on non-nullable lists
+### Cannot set a larger length on non-nullable lists {:#cannot-set-a-larger-length-on-non-nullable-lists}
 
 This is little known, but the `length` getter on `List` also has a corresponding
 *setter*. You can set the length to a shorter value to truncate the list. And
@@ -1494,7 +1494,7 @@ the implementation of `insert()` in `ListMixin` (which `ListBase` shares) to
 call `add()` instead. Your custom list class should provide a definition of
 `add()` if you want to be able to use that inherited `insert()` method.
 
-### Cannot access Iterator.current before or after iteration
+### Cannot access Iterator.current before or after iteration {:#cannot-access-iterator-current-before-or-after-iteration}
 
 The `Iterator` class is the mutable "cursor" class used to traverse the elements
 of a type that implements `Iterable`. You are expected to call `moveNext()`
@@ -1512,7 +1512,7 @@ element in that erroneous way. Instead, we have made the type of `current` be
 iterating, we've left the iterator's behavior undefined if you call it when you
 aren't supposed to. Most implementations of `Iterator` throw a `StateError`.
 
-## Summary
+## Summary {:#summary}
 
 That is a very detailed tour through all of the language and library changes
 around null safety. It's a lot of stuff, but this is a pretty big language

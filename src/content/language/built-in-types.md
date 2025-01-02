@@ -62,7 +62,7 @@ here's a nice example that illustrates what dynamic does:
 {% endcomment %}
 
 
-## Numbers
+## Numbers {:#numbers}
 
 Dart numbers come in two flavors:
 
@@ -196,7 +196,7 @@ var n5 = 100__000_000__000_000;  // one hundred million million!
 Using digit separators requires a [language version][] of at least 3.6.0.
 :::
 
-## Strings
+## Strings {:#strings}
 
 A Dart string (`String` object) holds a sequence of UTF-16 code units.
 You can use either
@@ -301,7 +301,7 @@ For more information on using strings, check out
 [Strings and regular expressions](/libraries/dart-core#strings-and-regular-expressions).
 
 
-## Booleans
+## Booleans {:#booleans}
 
 To represent boolean values, Dart has a type named `bool`. Only two
 objects have type bool: the boolean literals `true` and `false`,
@@ -331,7 +331,7 @@ var iMeantToDoThis = 0 / 0;
 assert(iMeantToDoThis.isNaN);
 ```
 
-## Runes and grapheme clusters
+## Runes and grapheme clusters {:#runes-and-grapheme-clusters}
 
 In Dart, [runes][] expose the Unicode code points of a string.
 You can use the [characters package][]
@@ -383,7 +383,7 @@ For details on using the characters package to manipulate strings,
 see the [example][characters example] and [API reference][characters API]
 for the characters package.
 
-## Symbols
+## Symbols {:#symbols}
 
 A [`Symbol`][] object
 represents an operator or identifier declared in a Dart program. You

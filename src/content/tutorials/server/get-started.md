@@ -16,7 +16,7 @@ Then you'll install the Dart SDK, write a small program, and run that program us
 Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
 which you'll execute using the Dart runtime.
 
-## 1. Play with Dart code in DartPad
+## 1. Play with Dart code in DartPad {:#1-play-with-dart-code-in-dartpad}
 
 With [DartPad](/tools/dartpad) you can experiment with the Dart language and
 APIs, no download necessary.
@@ -43,11 +43,11 @@ More information:
 * [Dart language tour][]
 * [Dart core library documentation][]
 
-## 2. Install Dart
+## 2. Install Dart {:#2-install-dart}
 
 {% include 'get-sdk.md' %}
 
-## 3. Create a small app
+## 3. Create a small app {:#3-create-a-small-app}
 
 Use the [`dart create`](/tools/dart-create) command
 and the `console` template to create a command-line app:
@@ -75,7 +75,7 @@ then run `dart pub get` to download them.
 
 [`dart pub get`]: /tools/pub/cmd/pub-get
 
-## 4. Run the app
+## 4. Run the app {:#4-run-the-app}
 
 To run the app from the command line, use the Dart VM by running the
 [`dart run`](/tools/dart-run) command in the app's top directory:
@@ -89,7 +89,7 @@ Hello world: 42!
 If you want to run the app with debugging support, see
 [Dart DevTools](/tools/dart-devtools).
 
-## 5. Modify the app
+## 5. Modify the app {:#5-modify-the-app}
 
 Let's customize the app you just created.
 
@@ -115,7 +115,7 @@ Let's customize the app you just created.
 More information:
 [Write command-line apps](/tutorials/server/cmdline)
 
-## 6. Compile for production
+## 6. Compile for production {:#6-compile-for-production}
 
 The steps above used the Dart VM (`dart`) to run the app. The Dart VM is
 optimized for fast, incremental compilation to provide instant feedback
@@ -139,7 +139,7 @@ user	0m0.008s
 sys	0m0.006s
 ```
 
-## What next?
+## What next? {:#what-next}
 
 Check out these resources:
 
@@ -162,4 +162,3 @@ If you get stuck, find help at [Community and support.](/community)
 [Dart language tour]: /language
 [Dart core library documentation]: /libraries
 [ide]: /tools#editors
-

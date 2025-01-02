@@ -65,9 +65,9 @@ whose static type is that extension type.
 They are distinct from the interface of their underlying type by default.
 :::
 
-## Syntax
+## Syntax {:#syntax}
 
-### Declaration
+### Declaration {:#declaration}
 
 Define a new extension type with the `extension type` declaration and a name,
 followed by the *representation type declaration* in parenthesis:
@@ -104,7 +104,7 @@ extension type E<T>(List<T> elements) {
 }
 ```
 
-### Constructors
+### Constructors {:#constructors}
 
 You can optionally declare [constructors][] in an extension type's body.
 The representation declaration itself is an implicit constructor,
@@ -157,7 +157,7 @@ You can also declare forwarding generative constructors,
 or [factory constructors][factory]
 (which can also forward to constructors of sub-extension types).
 
-### Members
+### Members {:#members}
 
 Declare members in the body of an extension type to define its interface
 the same way you would for class members.
@@ -185,7 +185,7 @@ in the extension type definition, like the `operator +` in `NumberE`.
 You also can define new members unrelated to the representation type,
 like the `i` getter and `isValid` method.
 
-### Implements
+### Implements {:#implements}
 
 You can optionally use the `implements` clause to:
 - Introduce a subtype relationship on an extension type, AND
@@ -247,7 +247,7 @@ An extension type can only implement:
 Read the [Usage](#usage) section to learn more about the effect of `implements`
 in different scenarios.
 
-#### `@redeclare`
+#### `@redeclare` {:#redeclare}
 
 Declaring an extension type member that shares a name with a member of a supertype
 is *not* an override relationship like it is between classes,
@@ -273,7 +273,7 @@ You can also enable the lint [`annotate_redeclares`][lint]
 to get a warning if you declare an extension type method
 that hides a superinterface member and *isn't* annotated with `@redeclare`.
 
-## Usage
+## Usage {:#usage}
 
 To use an extension type, create an instance the same as you would with a class:
 by calling a constructor:
@@ -307,7 +307,7 @@ so a representation type can't be used interchangeably where the extension type 
 
 <a id="transparency"></a>
 
-### 1. Provide an *extended* interface to an existing type
+### 1. Provide an *extended* interface to an existing type {:#1-provide-an-extended-interface-to-an-existing-type}
 
 When an extension type [implements](#implements) its representation type,
 you can consider it "transparent", because it allows the extension type
@@ -354,7 +354,7 @@ a type that is a supertype of the representation type.
 For example, if the representation type is private but its supertype
 defines the part of the interface that matters for clients.
 
-### 2. Provide a *different* interface to an existing type
+### 2. Provide a *different* interface to an existing type {:#2-provide-a-different-interface-to-an-existing-type}
 
 An extension type that is not [transparent](#transparency)
 (that does not [`implement`](#implements) its representation type)
@@ -396,7 +396,7 @@ This use case is as close as you can get to the complete encapsulation
 of a wrapper class (but is realistically only a
 [*somewhat* protected](#type-considerations) abstraction).
 
-## Type considerations
+## Type considerations {:#type-considerations}
 
 Extension types are a compile-time wrapping construct.
 At run time, there is absolutely no trace of the extension type.

@@ -78,7 +78,7 @@ The instructions assume your code is under **source control**,
 so that you can easily undo any changes.
 
 <a id="switch-to-the-latest-stable-dart-release"></a>
-### Switch to the Dart 2.19.6 release
+### Switch to the Dart 2.19.6 release {:#switch-to-the-dart-2-19-6-release}
 
 Switch to the **2.19.6 release** of the Dart SDK. 
 This is included in the Flutter 3.7.12 SDK.
@@ -90,7 +90,7 @@ $ dart --version
 Dart SDK version: 2.19.6
 ```
 
-### Check dependency status
+### Check dependency status {:#check-dependency-status}
 
 Get the migration state of your package's dependencies,
 using the following command:
@@ -128,7 +128,7 @@ You can find contact details on the package page on [pub.dev][].
 [pub.dev]: {{site.pub}}
 
 
-### Update dependencies
+### Update dependencies {:#update-dependencies}
 
 Before migrating your package's code,
 update its dependencies to null-safe versions:
@@ -212,7 +212,7 @@ the tool infers that the `ints` list (previously a list of `int`)
 in line 1 is nullable, and thus should be a list of `int?`.
 
 
-#### Understanding migration results
+#### Understanding migration results {:#understanding-migration-results}
 
 To see the reasons for each change (or non-change),
 click its line number in the **Proposed Edits** pane.
@@ -329,7 +329,7 @@ var zeroOne = <int>[zero, one];
 </tr>
 </table>
 
-#### Opting out files
+#### Opting out files {:#opting-out-files}
 
 Although we recommend migrating all at once,
 sometimes that isn't practical,
@@ -349,7 +349,7 @@ are compatible with Dart 3.
 [version comment]: /resources/language/evolution#per-library-language-version-selection
 
 
-#### Applying changes
+#### Applying changes {:#applying-changes}
 
 When you like all of the changes
 that the migration tool proposes, click **Apply migration**.
@@ -364,7 +364,7 @@ Then, if you've published your code on pub.dev,
 [publish a null-safe prerelease](#step5-publish).
 
 
-### Migrating by hand
+### Migrating by hand {:#migrating-by-hand}
 
 If you prefer not to use the migration tool,
 you can migrate manually.
@@ -480,7 +480,7 @@ to indicate a breaking change:
   For example, if the previous version is `0.3.2`,
   the new version is either `0.4.0` or `1.0.0`.
 
-### Check your pubspec
+### Check your pubspec {:#check-your-pubspec}
 
 Before you publish a stable null safety version of a package, 
 we strongly recommend following these pubspec rules:
@@ -489,7 +489,7 @@ we strongly recommend following these pubspec rules:
   that you've tested against (at least `2.12.0`).
 * Use stable versions of all direct dependencies.
 
-## Welcome to null safety
+## Welcome to null safety {:#welcome-to-null-safety}
 
 If you made it this far,
 you should have a fully migrated, null-safe Dart package.

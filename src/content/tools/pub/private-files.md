@@ -17,7 +17,7 @@ Some files that you wouldn't normally put in a repository
 are useful or essential when you deploy an app.
 :::
 
-## The rules
+## The rules {:#the-rules}
 
 **Don't commit** the following files and directories
 created by pub:
@@ -42,19 +42,19 @@ any of the following files,
 consider putting them in a global ignore file:
 
 ```plaintext
-# IntelliJ
+# IntelliJ {:#intellij}
 *.iml
 *.ipr
 *.iws
 .idea/
 
-# Mac
+# Mac {:#mac}
 .DS_Store
 ```
 
 For more details, read on.
 
-## Details
+## Details {:#details}
 
 As a rule, commit only the files that people need
 to use your package or source code repository.
@@ -80,13 +80,13 @@ For more information on `.gitignore` files,
 see the GitHub help page
 [Ignoring files.](https://help.github.com/articles/ignoring-files)
 
-### .dart_tool/
+### .dart_tool/ {:#dart-tool}
 
 The `.dart_tool/` directory contains files used by 
 various Dart tools.
 
 
-### pubspec.lock
+### pubspec.lock {:#pubspec-lock}
 
 The `pubspec.lock` file is a special case,
 similar to Ruby's `Gemfile.lock`.

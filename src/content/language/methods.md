@@ -13,7 +13,7 @@ nextpage:
 
 Methods are functions that provide behavior for an object.
 
-## Instance methods
+## Instance methods {:#instance-methods}
 
 Instance methods on objects can access instance variables and `this`.
 The `distanceTo()` method in the following sample is an example of an
@@ -39,7 +39,7 @@ class Point {
 }
 ```
 
-## Operators
+## Operators {:#operators}
 
 Most operators are instance methods with special names.
 Dart allows you to define operators with the following names:
@@ -98,7 +98,7 @@ void main() {
 ```
 
 
-## Getters and setters
+## Getters and setters {:#getters-and-setters}
 
 Getters and setters are special methods that provide read and write
 access to an object's properties. Recall that each instance variable has
@@ -138,7 +138,7 @@ effects, the operator calls the getter exactly once, saving its value
 in a temporary variable.
 :::
 
-## Abstract methods
+## Abstract methods {:#abstract-methods}
 
 Instance, getter, and setter methods can be abstract, defining an
 interface but leaving its implementation up to other classes.

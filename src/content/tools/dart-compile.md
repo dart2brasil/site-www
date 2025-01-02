@@ -64,7 +64,7 @@ followed by examples of running the app.
 [native_app]: {{site.repo.dart.org}}/samples/tree/main/native_app
 [dart-run]: /tools/dart-run
 
-## Subcommands
+## Subcommands {:#subcommands}
 
 The following table shows the subcommands of `dart compile`.
 
@@ -128,7 +128,7 @@ The following table shows the subcommands of `dart compile`.
 </table>
 
 
-## Types of output
+## Types of output {:#types-of-output}
 
 The following sections have details about each type of output
 that `dart compile` can produce.
@@ -164,7 +164,7 @@ Run your compiled app from the `/tmp` directory:
 $ ./tmp/myapp
 ```
 
-#### Signing
+#### Signing {:#signing}
 
 Executables created with `dart compile exe`
 support signing on macOS and Windows.
@@ -178,7 +178,7 @@ see the platform documentation for those operating systems:
 [`SignTool.exe` documentation]: https://docs.microsoft.com/dotnet/framework/tools/signtool-exe
 [Apple Code Signing guide]: {{site.apple-dev}}/support/code-signing/
 
-#### Known limitations
+#### Known limitations {:#known-limitations}
 
 The `exe` subcommand has some known limitations:
 
@@ -275,7 +275,7 @@ Dart-to-JavaScript compiler.
 
 {% include 'tools/dart-compile-js-options.md' %}
 
-#### Compiling web app example
+#### Compiling web app example {:#compiling-web-app-example}
 
 For example, to compile a Dart application to optimized JavaScript, run
 the following command:

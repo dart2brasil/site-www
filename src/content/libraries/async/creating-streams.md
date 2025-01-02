@@ -39,7 +39,7 @@ For help on using streams, see
 [Asynchronous Programming: Streams](/libraries/async/using-streams).
 
 
-## Transforming an existing stream
+## Transforming an existing stream {:#transforming-an-existing-stream}
 
 The common case for creating streams is that you already have a stream,
 and you want to create a new stream based on the original stream's events.
@@ -133,7 +133,7 @@ List<String> lines = await content
 ```
 
 
-## Creating a stream from scratch
+## Creating a stream from scratch {:#creating-a-stream-from-scratch}
 
 One way to create a new stream is with
 an asynchronous generator (`async*`) function.
@@ -211,7 +211,7 @@ easily handle multiple data sources.
 That's where the `StreamController` class comes in.
 
 
-## Using a StreamController
+## Using a StreamController {:#using-a-streamcontroller}
 
 If the events of your stream comes from different parts of your program,
 and not just from a stream or futures that can traversed by an `async` function,
@@ -278,7 +278,7 @@ callbacks such as `onListen` and `onPause`
 when creating the `StreamController`.
 
 
-### Waiting for a subscription
+### Waiting for a subscription {:#waiting-for-a-subscription}
 
 As a rule, streams should wait for subscribers before starting their work.
 An `async*` function does this automatically,
@@ -323,7 +323,7 @@ should move to an `onListen` handler,
 as shown in the next section.
 
 
-### Honoring the pause state
+### Honoring the pause state {:#honoring-the-pause-state}
 
 Avoid producing events when the listener has requested a pause.
 An `async*` function automatically pauses at a `yield` statement
@@ -415,7 +415,7 @@ subscription and pause states both change at the same time,
 only the `onListen` or `onCancel` callback is called.
 
 
-## Final hints
+## Final hints {:#final-hints}
 
 When creating a stream without using an async* function,
 keep these tips in mind:

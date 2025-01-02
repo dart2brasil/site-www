@@ -10,7 +10,7 @@ the [pub tool][].
 [package management]: /tools/pub/packages
 [pub tool]: /tools/pub/cmd
 
-## Application package
+## Application package {:#application-package}
 
 A package that contains a program or app, with a [main entrypoint][]. 
 Meant to be run directly, either on the command line or in a browser.
@@ -31,7 +31,7 @@ specify `any` for their dependencies' [version constraints][].
 [lockfiles]: #lockfile
 [version constraints]: #version-constraint
 
-## Content hashes
+## Content hashes {:#content-hashes}
 
 The pub.dev repository maintains a sha256 hash of each package version it hosts.
 Pub clients can use this hash to validate the integrity of downloaded packages,
@@ -101,7 +101,7 @@ To update `pubspec.lock` run `dart pub get` without
 [lockfile]: #lockfile
 [`dart pub get --enforce-lockfile`]: /tools/pub/cmd/pub-get#enforce-lockfile
 
-## Dependency
+## Dependency {:#dependency}
 
 Another package that your package relies on. If your package wants to import
 code from some other package, that package must be a dependency. Dependencies
@@ -114,7 +114,7 @@ To see the dependencies used by a package, use [`pub deps`][].
 [Package dependencies]: /tools/pub/dependencies
 [`pub deps`]: /tools/pub/cmd/pub-deps
 
-## Entrypoint
+## Entrypoint {:#entrypoint}
 
 In the general context of Dart, an _entrypoint_ is
 a Dart library that is directly invoked by a Dart implementation. When you
@@ -132,7 +132,7 @@ app uses a package `A`. When you run your app, `A` is not the entrypoint
 package. However, if you go over to `A` and execute its tests, in that
 context, it *is* the entrypoint since your app isn't involved.
 
-## Entrypoint directory
+## Entrypoint directory {:#entrypoint-directory}
 
 A directory inside your package that is allowed to contain
 [Dart entrypoints](#entrypoint).
@@ -143,20 +143,20 @@ Any subdirectories of those (except `bin`) may also contain entrypoints.
 
 [Flutter apps]: {{site.flutter-docs}}/packages-and-plugins/developing-packages
 
-## Immediate dependency
+## Immediate dependency {:#immediate-dependency}
 
 A [dependency](#dependency) that your package directly uses itself. The
 dependencies you list in your pubspec are your package's immediate dependencies.
 All other dependencies are [transitive dependencies](#transitive-dependency).
 
-## Library
+## Library {:#library}
 
 A library is a single compilation unit, made up of a single primary file and any
 optional number of [parts][]. Libraries have their own private scope.
 
 [parts]: /resources/glossary#part-file
 
-## Lockfile
+## Lockfile {:#lockfile}
 
 A file named `pubspec.lock` that specifies the concrete versions and other
 identifying information for every immediate and transitive dependency a package
@@ -180,7 +180,7 @@ source control. For regular packages, you usually won't.
 
 <a id="library-package"></a>
 
-## Package
+## Package {:#package}
 
 A collection of [libraries] under a directory,
 with a [pubspec.yaml] in the root of that directory. 
@@ -220,14 +220,14 @@ constraint would be [`^1.2.1`][].
 [immediate dependencies]: #immediate-dependency
 [`^1.2.1`]: /tools/pub/dependencies#caret-syntax
 
-## SDK constraint
+## SDK constraint {:#sdk-constraint}
 
 The declared versions of the Dart SDK itself that a package declares that it
 supports. An SDK constraint is specified using normal
 [version constraint](#version-constraint) syntax, but in a special _environment_
 section [in the pubspec](/tools/pub/pubspec#sdk-constraints).
 
-## Source
+## Source {:#source}
 
 A kind of place that pub can get packages from. A source isn't a specific place
 like the pub.dev site or some specific Git URL. Each source describes a general
@@ -235,7 +235,7 @@ procedure for accessing a package in some way. For example, _git_ is one source.
 The git source knows how to download packages given a Git URL. Several
 different [supported sources](/tools/pub/dependencies#dependency-sources) are available.
 
-## System cache
+## System cache {:#system-cache}
 
 When pub gets a remote package,
 it downloads it into a single _system cache_ directory maintained by
@@ -256,7 +256,7 @@ you can delete and regenerate your `package_config.json`
 files without having to access the network.
 
 
-## Transitive dependency
+## Transitive dependency {:#transitive-dependency}
 
 A dependency that your package indirectly uses because one of its dependencies
 requires it. If your package depends on A, which in turn depends on B which
@@ -264,7 +264,7 @@ depends on C, then A is an [immediate dependency](#immediate-dependency) and B
 and C are transitive ones.
 
 
-## Uploader
+## Uploader {:#uploader}
 
 Someone who has administrative permissions for a package.
 A package uploader can upload new versions of the package, 
@@ -276,7 +276,7 @@ If a package has a verified publisher,
 then all members of the publisher can upload the package.
 
 
-## Verified publisher
+## Verified publisher {:#verified-publisher}
 
 One or more users who own a set of packages.
 Each verified publisher is identified by a verified domain name, such as
@@ -290,7 +290,7 @@ see the documentation for [publishing packages][].
 [verified publishers page]: /tools/pub/verified-publishers
 [publishing packages]: /tools/pub/publishing#verified-publisher
 
-## Version constraint
+## Version constraint {:#version-constraint}
 
 A constraint placed on each [dependency](#dependency) of a package that
 specifies which versions of that dependency the package is expected to work
@@ -308,7 +308,7 @@ since they use the [lockfile](#lockfile) to manage their dependency versions.
 For more information, see
 [Pub Versioning Philosophy](/tools/pub/versioning).
 
-## Workspace
+## Workspace {:#workspace}
 
 A collection of packages that are developed together with a
 shared resolution of their dependency constraints.

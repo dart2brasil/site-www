@@ -8,7 +8,7 @@ To develop Dart apps,
 install [Visual Studio Code][vs-code] (VS Code)
 and add the [Dart extension][].
 
-## Install VS Code
+## Install VS Code {:#install-vs-code}
 
 To install the latest version of [VS Code][],
 follow Microsoft's instructions for the relevant platform:
@@ -22,7 +22,7 @@ follow Microsoft's instructions for the relevant platform:
 [Install on Windows]: https://code.visualstudio.com/docs/setup/windows
 [Install on Linux]: https://code.visualstudio.com/docs/setup/linux
 
-## Install the VS Code Dart extension
+## Install the VS Code Dart extension {:#install-the-vs-code-dart-extension}
 
 The Dart extension for VS Code supports Dart-specific development capabilities.
 These include syntax highlighting, package resolution, hot reload, and others.

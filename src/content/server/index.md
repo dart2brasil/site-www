@@ -13,7 +13,7 @@ that can help you develop command-line and server apps.
 </p>
 
 
-## Tools
+## Tools {:#tools}
 
 [DartPad](/tools/dartpad)
 : Handy for both beginners and experts,
@@ -31,7 +31,7 @@ that can help you develop command-line and server apps.
 : [Install the Dart SDK](/get-dart) to get the core Dart
   libraries and [tools](/tools).
 
-## Frameworks
+## Frameworks {:#frameworks}
 
 Server-side frameworks written in Dart include:
 
@@ -48,7 +48,7 @@ More tools
 
 For additional options, see [#server packages on pub.dev]({{site.pub-pkg}}?q=topic%3Aserver).
 
-## Tutorials
+## Tutorials {:#tutorials}
 
 You might find the following tutorials helpful.
 
@@ -64,7 +64,7 @@ You might find the following tutorials helpful.
 [Write HTTP servers](/tutorials/server/httpserver)
 : Features the shelf package.
 
-## More resources
+## More resources {:#more-resources}
 
 [Dart API]({{site.dart-api}})
 : API reference for dart:* libraries.

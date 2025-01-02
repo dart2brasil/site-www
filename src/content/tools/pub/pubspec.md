@@ -15,7 +15,7 @@ PENDING: acknowledge the existence of pubspec.lock files.
 {% endcomment %}
 
 
-## Supported fields
+## Supported fields {:#supported-fields}
 
 A pubspec can have the following fields:
 
@@ -112,7 +112,7 @@ For example, instead of adding `bugs`,
 you might add a field named `my_pkg_bugs`.
 
 
-## Example
+## Example {:#example}
 
 A simple but complete pubspec looks something like the following:
 
@@ -139,11 +139,11 @@ dev_dependencies:
 ```
 
 
-## Details
+## Details {:#details}
 
 This section has more information about each of the pubspec fields.
 
-### Name
+### Name {:#name}
 
 Every package needs a name.  It's how other packages refer to yours,
 and how it appears to the world, should you publish it.
@@ -159,7 +159,7 @@ A quick search of packages on the
 [pub.dev site]({{site.pub-pkg}})
 to make sure that nothing else is using your name is recommended.
 
-### Version
+### Version {:#version}
 
 Every package has a version. A version number is required to host your package
 on the pub.dev site, but can be omitted for local-only packages. If you omit
@@ -178,7 +178,7 @@ When you select a version, follow [semantic versioning.][semantic versioning]
 
 [semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
 
-### Description
+### Description {:#description}
 
 This is optional for your own personal packages, but if you intend to
 publish your package you must provide a description, which should be in English.
@@ -189,7 +189,7 @@ Think of the description as the sales pitch for your package. Users see it
 when they [browse for packages.]({{site.pub-pkg}})
 The description is plain text: no markdown or HTML.
 
-### Homepage
+### Homepage {:#homepage}
 
 This should be a URL pointing to the website for your package.
 For [hosted packages](/tools/pub/dependencies#hosted-packages),
@@ -197,7 +197,7 @@ this URL is linked from the package's page.
 While providing a `homepage` is optional, *please provide* it or `repository`
 (or both). It helps users understand where your package is coming from.
 
-### Repository
+### Repository {:#repository}
 
 The optional `repository` field should contain the URL for your package's source
 code repository—for example, `https://github.com/<user>/<repository>`.
@@ -206,7 +206,7 @@ displays the repository URL.
 While providing a `repository` is optional, *please provide* it or `homepage`
 (or both). It helps users understand where your package is coming from.
 
-### Issue tracker
+### Issue tracker {:#issue-tracker}
 
 The optional `issue_tracker` field should contain a URL for the package's
 issue tracker, where existing bugs can be viewed and new bugs can be filed.
@@ -215,14 +215,14 @@ tracker, using the value of this field. If `issue_tracker` is missing but
 `repository` is present and points to GitHub, then the pub.dev site uses the
 default issue tracker (`https://github.com/<user>/<repository>/issues`).
 
-### Documentation
+### Documentation {:#documentation}
 
 Some packages have a site that hosts documentation, separate from the main
 homepage and from the Pub-generated API reference.
 If your package has additional documentation, add a `documentation:` field
 with that URL; pub shows a link to this documentation on your package's page.
 
-### Dependencies
+### Dependencies {:#dependencies}
 
 [Dependencies](/tools/pub/glossary#dependency) are the pubspec's *raison d'être*.
 In this section you list each package that your package needs in order to work.
@@ -237,7 +237,7 @@ a dependency.  You can do so using `dependency_overrides`.
 
 For more information, see [Package dependencies](/tools/pub/dependencies).
 
-### Executables
+### Executables {:#executables}
 
 A package may expose one or more of its scripts as executables that
 can be run directly from the command line. To make a script publicly
@@ -265,7 +265,7 @@ For more information, see
 [pub global](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
 
 
-### Platforms
+### Platforms {:#platforms}
 
 When you [publish a package][], pub.dev automatically 
 detects the platforms that the package supports.
@@ -278,7 +278,7 @@ to list the package as supporting
 Android, iOS, Linux, macOS, Web, and Windows:
 
 ```yaml
-# This package supports all platforms listed below.
+# This package supports all platforms listed below. {:#this-package-supports-all-platforms-listed-below}
 platforms:
   android:
   ios:
@@ -292,7 +292,7 @@ Here is an example of declaring that the package supports
 only Linux and macOS (and not, for example, Windows):
 
 ```yaml
-# This package supports only Linux and macOS.
+# This package supports only Linux and macOS. {:#this-package-supports-only-linux-and-macos}
 platforms:
   linux:
   macos:
@@ -315,7 +315,7 @@ Support for the `platforms` entry was added in Dart 2.16.
 [plugin declarations]: {{site.flutter-docs}}/development/packages-and-plugins/developing-packages#plugin-platforms
 
 
-### Publish_to
+### Publish_to {:#publish-to}
 
 The default uses the [pub.dev site.]({{site.pub}}) Specify `none` to prevent
 a package from being published. This setting can be used to specify a
@@ -327,7 +327,7 @@ publish_to: none
 ```
 
 
-### Funding
+### Funding {:#funding}
 
 Package authors can use the `funding` property to specify a list of URLs that
 provide information on how users can help fund the development of the package.
@@ -344,7 +344,7 @@ package page. This aims to help users fund the development
 of their dependencies.
 
 
-### False_secrets
+### False_secrets {:#false-secrets}
 
 When you try to [publish a package][],
 pub conducts a search for potential leaks of
@@ -389,7 +389,7 @@ revoking credentials that are accidentally leaked.
 Dart 2.15 added support for the `false_secrets` field.
 :::
 
-### Screenshots
+### Screenshots {:#screenshots}
 
 Packages can showcase their widgets or other visual elements
 using screenshots displayed on their pub.dev page. 
@@ -425,7 +425,7 @@ Each download of the package includes all screenshot files.
 Pub.dev generates the package's thumbnail image from the first screenshot. If 
 this screenshot uses animation, pub.dev uses its first frame.
  
-### Topics
+### Topics {:#topics}
 
 Package authors can use the `topics` field to categorize their package. Topics
 can be used to assist discoverability during search with filters on pub.dev.
@@ -463,7 +463,7 @@ by opening a pull request that edits the [`topics.yaml` file][] on GitHub.
 
 [`topics.yaml` file]: {{site.repo.dart.org}}/pub-dev/blob/master/doc/topics.yaml
 
-### Ignored_advisories
+### Ignored_advisories {:#ignored-advisories}
 
 If a package has a dependency that is affected by a security advisory,
 pub warns about the advisory during dependency resolution.
@@ -485,7 +485,7 @@ ignored_advisories:
 For more information, check out
 [Security advisories](/tools/pub/security-advisories).
 
-### SDK constraints
+### SDK constraints {:#sdk-constraints}
 
 A package can indicate which versions of its dependencies it supports, but
 packages have another implicit dependency: the Dart platform itself.
@@ -541,7 +541,7 @@ the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
 :::
 
 
-#### Flutter SDK constraints
+#### Flutter SDK constraints {:#flutter-sdk-constraints}
 
 Pub supports specifying Flutter SDK constraints
 under the `environment:` field:

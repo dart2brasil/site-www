@@ -16,7 +16,7 @@ Dart values like `List`s or `Function` to interop members or convert from JS
 values to Dart values, you use [conversion functions] unless the interop member
 [contains a primitive type].
 
-## Interop types
+## Interop types {:#interop-types}
 
 When interacting with a JS value, you need to provide a Dart type for it. You
 can do this by either using or declaring an interop type. Interop types are
@@ -54,7 +54,7 @@ Interop types should also generally [implement] their representation type so
 that they can be used where the representation type is expected, like in many
 APIs in [`package:web`].
 
-## Interop members
+## Interop members {:#interop-members}
 
 [`external`] interop members provide an idiomatic syntax for JS members. They
 allow you to write a Dart type signature for its arguments and return value. The
@@ -63,7 +63,7 @@ The JS API the interop member corresponds to is determined by a combination of
 where it's declared, its name, what kind of Dart member it is, and any
 [renames](#js).
 
-### Top-level interop members
+### Top-level interop members {:#top-level-interop-members}
 
 Given the following JS members:
 
@@ -98,7 +98,7 @@ Top-level interop members must be declared with a [`@JS()`](#js) annotation to
 distinguish them from other `external` top-level members, like those that can be
 written using `dart:ffi`.
 
-### Interop type members
+### Interop type members {:#interop-type-members}
 
 Given a JS interface like the following:
 
@@ -238,7 +238,7 @@ Within an interop type, you can declare several different types of
 Lastly, like any other extension type, you're allowed to declare any
 [non-`external` members] in the interop type. `isMidnight` is one such example.
 
-### Extension members on interop types
+### Extension members on interop types {:#extension-members-on-interop-types}
 
 You can also write `external` members in [extensions] of interop types. For
 example:
@@ -257,7 +257,7 @@ in the extension. These extensions are useful for when an interop type doesn't
 expose the `external` member you need and you don't want to create a new interop
 type.
 
-### Parameters
+### Parameters {:#parameters}
 
 `external` interop methods can only contain positional and optional arguments.
 This is because JS members only take positional arguments. The one exception is
@@ -276,7 +276,7 @@ not have to write multiple interop members for the same JS API to avoid passing
 in `null`s. If you declare a parameter with an explicit default value, you will
 get a warning that the value will be ignored.
 
-## `@JS()`
+## `@JS()` {:#js}
 
 It is sometimes useful to refer to a JS property with a different name than the
 one written. For example, if you want to write two `external` APIs that point to
@@ -429,7 +429,7 @@ with a Dart object. To do this, mark the Dart class as exportable using
 For a more detailed explanation of this technique, including how to mock JS
 values, see the [mocking tutorial].
 
-## `dart:js_interop` and `dart:js_interop_unsafe`
+## `dart:js_interop` and `dart:js_interop_unsafe` {:#dart-js-interop-and-dart-js-interop-unsafe}
 
 [`dart:js_interop`] contains all the necessary members you should need,
 including `@JS`, JS types, conversion functions, and various utility functions.

@@ -18,7 +18,7 @@ and _secret token_ to be interchangeable.
 [`list`]: #return-a-list-of-credentials
 [`remove`]: #remove-one-or-more-credentials
 
-## Use case for credentials
+## Use case for credentials {:#use-case-for-credentials}
 
 Consider a scenario when you have a [dependency](/tools/pub/dependencies)
 hosted on a private repository.
@@ -36,12 +36,12 @@ You can provide credentials using:
 Some, but not all, servers also return a message with instructions as
 to how you can obtain a token.
 
-## Add a new credential
+## Add a new credential {:#add-a-new-credential}
 
 To create a new credential,
 use the `dart pub token add` command.
 
-### Add a credential for the current session
+### Add a credential for the current session {:#add-a-credential-for-the-current-session}
 
 At the prompt, type the credential on the command line (`stdin`).
 
@@ -58,7 +58,7 @@ the `dart pub token` command takes input on `stdin` rather than
 as a command line option.
 :::
 
-### Add a credential for all sessions
+### Add a credential for all sessions {:#add-a-credential-for-all-sessions}
 
 To use the same token for any and all terminal sessions and in scripts,
 store the token in an environment variable.
@@ -96,7 +96,7 @@ To learn how, consult documentation for [GitHub Actions][] or
 [GitLab]: https://docs.gitlab.com/ee/ci/secrets/
 [zsh-post]: https://medium.com/@prasincs/hiding-secret-keys-from-shell-history-part-1-5875eb5556cc
 
-## Return a list of credentials
+## Return a list of credentials {:#return-a-list-of-credentials}
 
 To see a list of all active credentials, use the `dart pub token list` command:
 
@@ -107,7 +107,7 @@ https://some-package-repo.com/my-org/my-repo
 https://other-package-repo.com/
 ```
 
-## Remove one or more credentials
+## Remove one or more credentials {:#remove-one-or-more-credentials}
 
 To remove a single token, use the `dart pub token remove` command:
 

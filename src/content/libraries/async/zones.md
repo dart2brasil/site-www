@@ -21,7 +21,7 @@ obsolete: true
 }
 </style>
 
-## Asynchronous dynamic extents
+## Asynchronous dynamic extents {:#asynchronous-dynamic-extents}
 
 This article discusses zone-related APIs in the [dart:async][] library,
 with a focus on the top-level [`runZoned()`][]
@@ -77,7 +77,7 @@ Closest of all is Brian Ford's JavaScript port of Dart zones,
 [this video]({{site.yt.watch}}?v=3IqtmUscE_U).
 
 
-## Zone basics
+## Zone basics {:#zone-basics}
 
 A _zone_ represents the asynchronous dynamic extent of a call.
 It is the computation that is performed as part of a call and, transitively,
@@ -146,7 +146,7 @@ Code might execute in other nested child zones as well,
 but at a minimum it always runs in the root zone.
 
 
-## Handling uncaught errors
+## Handling uncaught errors {:#handling-uncaught-errors}
 
 Zones are able to catch and handle uncaught errors.
 
@@ -217,7 +217,7 @@ listening for uncaught errors.
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
-### Example: Errors can't cross into error zones
+### Example: Errors can't cross into error zones {:#example-errors-can-t-cross-into-error-zones}
 
 In the following example,
 the error raised by the first line
@@ -268,7 +268,7 @@ If you add an error zone around the whole code snippet,
 then you can avoid the stack trace.
 
 
-### Example: Errors can't leave error zones
+### Example: Errors can't leave error zones {:#example-errors-can-t-leave-error-zones}
 
 As the preceding code shows,
 errors can't cross into error zones.
@@ -295,7 +295,7 @@ handles the error.
 As a result, *zoneFuture never completes* — neither
 with a value, nor with an error.
 
-## Using zones with streams
+## Using zones with streams {:#using-zones-with-streams}
 
 The rule for zones and streams
 is simpler than for futures:
@@ -310,7 +310,7 @@ streams should have no side effect until listened to.
 A similar situation in synchronous code is the behavior of Iterables,
 which aren't evaluated until you ask for values.
 
-### Example: Using a stream with `runZonedGuarded()`
+### Example: Using a stream with `runZonedGuarded()` {:#example-using-a-stream-with-runzonedguarded}
 
 The following example sets up a stream with a callback,
 and then executes that stream in a new zone with `runZonedGuarded()`:
@@ -337,7 +337,7 @@ the callback is associated with the listening zone,
 not with the zone where `map()` is called.
 
 
-## Storing zone-local values
+## Storing zone-local values {:#storing-zone-local-values}
 
 If you ever wanted to use a static variable
 but couldn't because
@@ -388,7 +388,7 @@ so they're less likely to conflict with other libraries.
 :::
 
 
-### Example: Using a zone-local value for debug logs
+### Example: Using a zone-local value for debug logs {:#example-using-a-zone-local-value-for-debug-logs}
 
 Say you have two files, foo.txt and bar.txt,
 and want to print all of their lines.
@@ -458,7 +458,7 @@ a feature similar to a static variable
 that works in asynchronous contexts.
 
 
-## Overriding functionality
+## Overriding functionality {:#overriding-functionality}
 
 Use the `zoneSpecification` argument to `runZoned()`
 to override functionality that is managed by zones.
@@ -473,7 +473,7 @@ with which you can override any of the following functionality:
   (`runZonedGuarded()` is a shortcut for this)
 * Printing
 
-### Example: Overriding print
+### Example: Overriding print {:#example-overriding-print}
 
 As a simple example of overriding functionality,
 here is a way to silence all prints inside a zone:
@@ -500,7 +500,7 @@ Overriding print is possible because `print()`
 uses the current zone (`Zone.current`) to do its work.
 
 
-### Arguments to interceptors and delegates
+### Arguments to interceptors and delegates {:#arguments-to-interceptors-and-delegates}
 
 As the print example shows,
 an interceptor adds three arguments
@@ -549,7 +549,7 @@ for another interceptable method, `scheduleMicrotask()`:
 | ZoneDelegate      | `void scheduleMicrotask(Zone zone, void f())` |
 
 
-### Example: Delegating to the parent zone
+### Example: Delegating to the parent zone {:#example-delegating-to-the-parent-zone}
 
 Here is an example that shows how to delegate to the parent zone:
 
@@ -574,7 +574,7 @@ main() {
 ```
 
 
-### Example: Executing code when entering and leaving a zone
+### Example: Executing code when entering and leaving a zone {:#example-executing-code-when-entering-and-leaving-a-zone}
 
 Say you want to know how much time some asynchronous code
 spends executing.
@@ -642,7 +642,7 @@ executes the specified function,
 and then stops the user timer.
 
 
-### Example: Handling callbacks
+### Example: Handling callbacks {:#example-handling-callbacks}
 
 Provide `register*Callback` parameters to the ZoneSpecification
 to wrap or change callback code—the code
@@ -717,7 +717,7 @@ is from the asynchronous context,
 which knows about `bar()` but not `foo()`.
 
 
-### Implementing asynchronous callbacks
+### Implementing asynchronous callbacks {:#implementing-asynchronous-callbacks}
 
 Even if you're implementing an asynchronous API,
 you might not have to deal with zones at all.
@@ -743,7 +743,7 @@ and invoke the `uncaughtErrorHandler`
 if an error occurs.
 
 
-## Summary
+## Summary {:#summary}
 
 Zones are good for protecting your code from
 uncaught exceptions in asynchronous code,
@@ -755,7 +755,7 @@ Zones enable better debugging and provide hooks
 that you can use for functionality such as profiling.
 
 
-### More resources
+### More resources {:#more-resources}
 
 Zone-related API documentation
 : Read the docs for
@@ -773,7 +773,7 @@ stack_trace
   at the pub.dev site for more information.
 
 
-### More examples
+### More examples {:#more-examples}
 
 Here are some more complex examples of using zones.
 

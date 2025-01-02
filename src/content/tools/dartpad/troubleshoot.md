@@ -10,7 +10,7 @@ For an overview of DartPad, see the
 [DartPad page](/tools/dartpad).
 
 
-## Embedded DartPads don't appear
+## Embedded DartPads don't appear {:#embedded-dartpads-don-t-appear}
 
 The dart.dev homepage and many tutorials have embedded DartPads.
 If these DartPads don't appear at all,
@@ -42,7 +42,7 @@ Although DartPad doesn't use cookies, it does rely on local storage,
 which browsers usually disable when cookies are disabled.
 
 
-## Code doesn't work outside DartPad
+## Code doesn't work outside DartPad {:#code-doesn-t-work-outside-dartpad}
 
 If you copy code from DartPad into another environment,
 the code might not run successfully.
@@ -75,7 +75,7 @@ Here are some possible causes and fixes:
   To get started creating web apps with Dart,
   check out [Build a web app with Dart](/web/get-started).
 
-## Previously working code now has errors
+## Previously working code now has errors {:#previously-working-code-now-has-errors}
 
 If the code is using language or library features no longer supported
 in the latest stable release of Dart,
@@ -88,11 +88,11 @@ the code may no longer analyze or run without errors.
   To learn how to install a specific version of Dart,
   check out [Get the Dart SDK](/get-dart).
 
-## DartPad doesn't work in China
+## DartPad doesn't work in China {:#dartpad-doesn-t-work-in-china}
   
 Try [dartpad.cn.](https://dartpad.cn)
 
-## Other issues
+## Other issues {:#other-issues}
 
 If you have any other problems when using DartPad,
 [create an issue on GitHub.][new-issue]

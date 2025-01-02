@@ -25,7 +25,7 @@ $ dart run
 
 {% render 'tools/dart-tool-note.md' %}
 
-## Running a Dart file
+## Running a Dart file {:#running-a-dart-file}
 
 You can run a Dart file by passing its relative path:
 
@@ -33,7 +33,7 @@ You can run a Dart file by passing its relative path:
 $ dart run tool/debug.dart
 ```
 
-## Running a program that's in a package
+## Running a program that's in a package {:#running-a-program-that-s-in-a-package}
 
 The instructions in this section assume that
 you're executing the `dart run` command
@@ -42,7 +42,7 @@ from the directory that's at the top of a Dart package
 For information on the directory structure of Dart packages, see
 [package layout conventions](/tools/pub/create-packages).
 
-### In a depended-on package
+### In a depended-on package {:#in-a-depended-on-package}
 
 You can run programs that are
 distributed in the `bin` directory of any package
@@ -72,7 +72,7 @@ $ dart run bar:baz
 The `bin` directory is the only place with visible programs.
 All other directories in the depended-on package are private.
 
-### In the current package
+### In the current package {:#in-the-current-package}
 
 When the current directory matches the package name
 (that is, you're in the directory that matches
@@ -106,7 +106,7 @@ pass a relative path (as shown before):
 $ dart run tool/debug.dart
 ```
 
-## Supplying arguments to main()
+## Supplying arguments to main() {:#supplying-arguments-to-main}
 
 To supply [arguments to the `main()` function][args],
 put them at the end of the command:
@@ -126,7 +126,7 @@ $ dart run foo arg1 arg2
 
 [args]: /language/functions#the-main-function
 
-## Debugging
+## Debugging {:#debugging}
 
 To enable debugging, 
 add one or more of these common debugging options
@@ -155,7 +155,7 @@ To learn more about other debugging options, run `dart run --help`.
 [assert]: /language/error-handling#assert
 [Using DevTools with a command-line app]: /tools/dart-devtools#using-devtools-with-a-command-line-app
 
-## Enabling experimental features
+## Enabling experimental features {:#enabling-experimental-features}
 
 To enable new features and enhancements that are currently in development,
 use [experiment flags](/tools/experiment-flags).

@@ -10,7 +10,7 @@ that provide low-level command-line & server APIs.
 [Dart SDK]: /tools/sdk
 [dart:io]: {{site.dart-api}}/dart-io/dart-io-library.html
 
-## SDK libraries
+## SDK libraries {:#sdk-libraries}
 
 The Dart SDK contains dart:io and other libraries
 that provide low-level web APIs.
@@ -24,14 +24,14 @@ that provide low-level web APIs.
 : Complete reference documentation for the dart:io library.
 
 
-## Community packages
+## Community packages {:#community-packages}
 
 The [pub.dev site]({{site.pub}}) allows you to search for packages
 that support command-line and server apps
 by specifying the platforms your app needs to support.
 You can also search for words that describe the functionality you need.
 
-### Command-line packages
+### Command-line packages {:#command-line-packages}
 
 Command-line apps often use the following packages,
 in addition to [general-purpose packages][] such as `archive`, `intl`, and `yaml`:
@@ -47,7 +47,7 @@ in addition to [general-purpose packages][] such as `archive`, `intl`, and `yaml
 
 {:.table .table-striped .nowrap}
 
-### Server packages
+### Server packages {:#server-packages}
 
 Server apps can choose from many packages, in addition to
 the packages listed in the previous table

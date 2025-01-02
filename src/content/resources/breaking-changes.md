@@ -55,20 +55,20 @@ Create new section from these headers for each release.
 If no changes exist in a section (e.g. Language, `dart:async`, etc.),
 don't include the section header.
 
-## x.x.x
+## x.x.x {:#x-x-x}
 
 ### Language {:.no_toc}
 
 ### Libraries {:.no_toc}
 
-#### (`dart:core`, `package:js`, etc)
+#### (`dart:core`, `package:js`, etc) {:#dart-core-package-js-etc}
 
 ### Tools {:.no_toc}
 
-#### (Dart VM, Pub, Linter, `dart2js`, etc)
+#### (Dart VM, Pub, Linter, `dart2js`, etc) {:#dart-vm-pub-linter-dart2js-etc}
 {% endcomment %}
 
-## 3.7.0
+## 3.7.0 {:#3-7-0}
 
 **Tentative**<br>
 The following changes are expected to be included in the 3.7 stable release,
@@ -115,7 +115,7 @@ accounting for them before the 3.7 release.
 [configure your analysis options]: /tools/analysis
 [`dart fix`]: /tools/dart-fix
 
-## 3.6.0
+## 3.6.0 {:#3-6-0}
 
 ### Language {:.no_toc}
 
@@ -150,7 +150,7 @@ accounting for them before the 3.7 release.
 [`package_api_docs`]: /tools/linter-rules/package_api_docs
 [`unsafe_html`]: /tools/linter-rules/unsafe_html
 
-#### Compiler front end (cfe)
+#### Compiler front end (cfe) {:#compiler-front-end-cfe}
 
 - The Dart compiler now [computes the upper and lower closures of type schemas
   just before they're passed into the subtype testing procedure][56466].
@@ -181,7 +181,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 - `dart pub publish` now warns if files that are
   tracked in git have uncommitted changes.
 
-## 3.5.0
+## 3.5.0 {:#3-5-0}
 
 ### Language {:.no_toc}
 
@@ -241,7 +241,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 - {{removed}} The `Dart_DefaultCanonicalizeUrl` function has been
   removed from the C API.
 
-## 3.4.0
+## 3.4.0 {:#3-4-0}
 
 ### Language {:.no_toc}
 
@@ -264,7 +264,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
 [52121]: {{site.repo.dart.sdk}}/issues/52121
 
-#### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl`
+#### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl` {:#dart-html-dart-indexed-db-dart-svg-dart-web-audo-dart-web-gl}
 
 - {{deprecated}} These libraries are now marked as legacy and
   will see less support in the future.
@@ -274,7 +274,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 [`package:web`]: {{site.pub-pkg}}/web
 [Migrate to package:web]: /interop/js-interop/package-web
 
-#### `dart:js`
+#### `dart:js` {:#dart-js}
 
 - {{deprecated}}
   This library is now marked as legacy and will see less support in the future.
@@ -283,7 +283,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
 [`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
-#### `dart:js_util`
+#### `dart:js_util` {:#dart-js-util}
 
 - {{deprecated}}
   This library is now marked as legacy and will see less support in the future.
@@ -332,9 +332,9 @@ when running `dart format` with a Dart 3.6 SDK or later:
   As a result, the `Dart_IsExternalString`, `Dart_NewExternalLatin1String`, and
   `Dart_NewExternalUTF16String` functions have been removed from the Dart C API.
 
-## 3.3.0
+## 3.3.0 {:#3-3-0}
 
-### SDK {:.no_toc}
+### SDK {:.no_toc} {:#sdk}
 
 * {{experimental}} {{removed}} The following experiments are now retired as
   they were released in Dart 3 and are no longer necessary with
@@ -412,7 +412,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
 [53128]: {{site.repo.dart.sdk}}/issues/53218
 
-#### `dart:nativewrappers`
+#### `dart:nativewrappers` {:#dart-nativewrappers}
 
 * {{experimental}} [All native wrapper classes are now marked `base`][51896]
   so that none of their subtypes can be implemented.
@@ -448,7 +448,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
 [54056]: {{site.repo.dart.sdk}}/issues/54056
 
-#### Linter
+#### Linter {:#linter}
 
 * The `iterable_contains_unrelated_type` and
   `list_remove_unrelated_type` lints were removed.
@@ -464,7 +464,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
 [`collection_methods_unrelated_type`]: /tools/linter-rules/collection_methods_unrelated_type
 
-## 3.2.0
+## 3.2.0 {:#3-2-0}
 
 ### Language {:.no_toc}
 
@@ -515,7 +515,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
 ### Tools {:.no_toc}
 
-#### Development JavaScript compiler (DDC)
+#### Development JavaScript compiler (DDC) {:#development-javascript-compiler-ddc}
 
 * [Added interceptors for JavaScript `Symbol` and `BigInt` types][53106];
   they should no longer be used with `package:js` classes.
@@ -560,7 +560,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 [2020]: {{site.repo.dart.lang}}/issues/2020
 
 
-## 3.1.0
+## 3.1.0 {:#3-1-0}
 
 ### Libraries {:.no_toc}
 
@@ -592,7 +592,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 [51486]: {{site.repo.dart.sdk}}/issues/51486
 [52027]: {{site.repo.dart.sdk}}/issues/52027
 
-## 3.0.0
+## 3.0.0 {:#3-0-0}
 
 :::tip
 The [Dart 3.0 migration guide][dart3] covers the complete details
@@ -625,7 +625,7 @@ on all the changes in this section.
 
 * {{removed}} [Removed the deprecated][49529] [`DeferredLibrary`][] class.
 
-#### `dart:collection`
+#### `dart:collection` {:#dart-collection}
 
 * {{versioned}} [Changes to platform libraries][collection].
 
@@ -646,7 +646,7 @@ on all the changes in this section.
 * {{removed}} [Removed the deprecated `registerElement` and `registerElement2`][49536]
   methods in `Document` and `HtmlDocument`.
 
-#### `dart:math`
+#### `dart:math` {:#dart-math}
 
 * {{versioned}} The `Random` interface can only be implemented,
   not extended.
@@ -676,7 +676,7 @@ on all the changes in this section.
 [51035]: {{site.repo.dart.sdk}}/issues/51035
 
 
-## 2.19.0
+## 2.19.0 {:#2-19-0}
 
 ### Language {:.no_toc}
 
@@ -754,7 +754,7 @@ on all the changes in this section.
 [49350]: {{site.repo.dart.sdk}}/issues/49350
 
 
-## 2.18.0
+## 2.18.0 {:#2-18-0}
 
 ### Language {:.no_toc}
 
@@ -786,7 +786,7 @@ on all the changes in this section.
 [48272]: {{site.repo.dart.sdk}}/issues/48272
 [46100]: {{site.repo.dart.sdk}}/issues/46100
 
-## 2.17.0
+## 2.17.0 {:#2-17-0}
 
 ### Libraries {:.no_toc}
 
@@ -813,7 +813,7 @@ on all the changes in this section.
 [48513]: {{site.repo.dart.sdk}}/issues/48513
 [46100]: {{site.repo.dart.sdk}}/issues/46100
 
-## 2.16.0
+## 2.16.0 {:#2-16-0}
 
 ### Libraries {:.no_toc}
 
@@ -839,7 +839,7 @@ on all the changes in this section.
 [47769]: {{site.repo.dart.sdk}}/issues/47769
 [46100]: {{site.repo.dart.sdk}}/issues/46100
 
-## 2.15.0
+## 2.15.0 {:#2-15-0}
 
 ### Libraries {:.no_toc}
 
@@ -848,7 +848,7 @@ on all the changes in this section.
 * [Updated the `SecurityContext` class][46875] to set the minimum
   TLS protocol version to TLS1_2_VERSION (1.2) instead of TLS1_VERSION.
 
-#### `dart:web_sql`
+#### `dart:web_sql` {:#dart-web-sql}
 
 * [Completely deleted the `dart:web_sql` library][46316].
 
@@ -874,7 +874,7 @@ on all the changes in this section.
 [45451]: {{site.repo.dart.sdk}}/issues/45451
 [46754]: {{site.repo.dart.sdk}}/issues/46754
 
-## 2.14.0
+## 2.14.0 {:#2-14-0}
 
 ### Libraries {:.no_toc}
 
@@ -916,7 +916,7 @@ on all the changes in this section.
 [44154]: {{site.repo.dart.sdk}}/issues/44154
 
 
-## 2.13.0
+## 2.13.0 {:#2-13-0}
 
 ### Libraries {:.no_toc}
 
@@ -927,7 +927,7 @@ on all the changes in this section.
 
 [44211]: {{site.repo.dart.sdk}}/issues/44211
 
-## 2.12.0
+## 2.12.0 {:#2-12-0}
 
 ### Language {:.no_toc}
 
@@ -967,7 +967,7 @@ on all the changes in this section.
 [44622]: {{site.repo.dart.sdk}}/issues/44622
 [44072]: {{site.repo.dart.sdk}}/issues/44072
 
-## 2.10.0
+## 2.10.0 {:#2-10-0}
 
 ### Tools {:.no_toc}
 
@@ -977,7 +977,7 @@ on all the changes in this section.
 
 [42982]: {{site.repo.dart.sdk}}/issues/42982
 
-## 2.9.0
+## 2.9.0 {:#2-9-0}
 
 ### Libraries {:.no_toc}
 
@@ -1015,7 +1015,7 @@ on all the changes in this section.
 [whatwg encoding standard]: https://encoding.spec.whatwg.org/#utf-8-decoder
 [42714]: {{site.repo.dart.sdk}}/issues/42714
 
-## 2.8.1
+## 2.8.1 {:#2-8-1}
 
 ### Language {:.no_toc}
 
@@ -1105,13 +1105,13 @@ other.
 [ddc]: {{site.repo.dart.sdk}}/issues/38994
 [normalized]: {{site.repo.dart.lang}}/blob/main/resources/type-system/normalization.md
 
-## 2.7.1
+## 2.7.1 {:#2-7-1}
 
 * [The Dart SDK for macOS is now only available for x64][39810].
 
 [39810]: {{site.repo.dart.sdk}}/issues/39810
 
-## 2.7.0
+## 2.7.0 {:#2-7-0}
 
 ### Language {:.no_toc}
 
@@ -1124,7 +1124,7 @@ other.
 * Added `IOOverrides.serverSocketBind` to aid in writing tests that wish to mock
   `ServerSocket.bind`.
 
-## 2.6.0
+## 2.6.0 {:#2-6-0}
 
 ### Language {:.no_toc}
 
@@ -1143,7 +1143,7 @@ other.
 [671]: {{site.repo.dart.lang}}/issues/671
 [37985]: {{site.repo.dart.sdk}}/issues/37985
 
-## 2.5.0
+## 2.5.0 {:#2-5-0}
 
 ### Libraries {:.no_toc}
 
@@ -1170,7 +1170,7 @@ other.
 [37192]: {{site.repo.dart.sdk}}/issues/37192
 [36765]: {{site.repo.dart.sdk}}/issues/36765
 
-## 2.4.0
+## 2.4.0 {:#2-4-0}
 
 ### Language {:.no_toc}
 
@@ -1191,11 +1191,11 @@ other.
 [35097]: {{site.repo.dart.sdk}}/issues/35097
 [36382]: {{site.repo.dart.sdk}}/issues/36382
 
-## 2.2.0
+## 2.2.0 {:#2-2-0}
 
 ### Libraries {:.no_toc}
 
-#### `package:kernel`
+#### `package:kernel` {:#package-kernel}
 
 * The `klass` getter on the `InstanceConstant` class in the
   Kernel AST API has been renamed to `classNode` for consistency.
@@ -1204,7 +1204,7 @@ other.
 
 [33966]: {{site.repo.dart.sdk}}/issues/33966
 
-## 2.1.1
+## 2.1.1 {:#2-1-1}
 
 ### Libraries {:.no_toc}
 
@@ -1224,7 +1224,7 @@ other.
 [29554]: {{site.repo.dart.sdk}}/issues/29554
 [35611]: {{site.repo.dart.sdk}}/issues/35611
 
-## 2.1.0
+## 2.1.0 {:#2-1-0}
 
 ### Language {:.no_toc}
 
@@ -1257,7 +1257,7 @@ other.
 [34498]: {{site.repo.dart.sdk}}/issues/34498
 [34532]: {{site.repo.dart.sdk}}/issues/34532
 
-## 2.0.0
+## 2.0.0 {:#2-0-0}
 
 ### Language {:.no_toc}
 

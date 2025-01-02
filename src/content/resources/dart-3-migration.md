@@ -12,9 +12,9 @@ that may break existing code.
 This guide will help you resolve any migration issues you might encounter
 after [upgrading to Dart 3](/get-dart).
 
-## Introduction
+## Introduction {:#introduction}
 
-### Unversioned vs versioned changes
+### Unversioned vs versioned changes {:#unversioned-vs-versioned-changes}
 
 The potentially breaking changes listed below fall into one of two categories:
 
@@ -45,7 +45,7 @@ To use the new Dart 3 features you have to
 update the language version to 3.0. 
 This gets you the Dart 3 versioned changes at the same time.
 
-### Dart 3 backwards compatibility
+### Dart 3 backwards compatibility {:#dart-3-backwards-compatibility}
 
 Many packages and apps that used null safety with Dart 2.12 or
 later are likely backwards compatible with Dart 3. 
@@ -69,7 +69,7 @@ that already support 2.12 null safety
 without needing a second migration, unless 
 the code is affected by any other Dart 3 changes.
 
-### Testing for impact
+### Testing for impact {:#testing-for-impact}
 
 To understand if your source code is impacted by any Dart 3 changes, 
 use these steps:
@@ -97,9 +97,9 @@ $ dart analyze      # This should pass without errors.
 
 [major versions]: /tools/pub/cmd/pub-upgrade#major-versions
 
-## Dart 3 language changes
+## Dart 3 language changes {:#dart-3-language-changes}
 
-### 100% sound null safety
+### 100% sound null safety {:#100-sound-null-safety}
 
 Dart 2.12 introduced null safety more than two years ago. 
 In Dart 2.12, users needed to enable null safety [with a pubspec setting][].
@@ -156,7 +156,7 @@ check out the [null safety migration guide][].
 
 [null safety migration guide]: /null-safety/migration-guide
 
-### Colon-syntax for default values
+### Colon-syntax for default values {:#colon-syntax-for-default-values}
 
 For historical reasons, named optional parameters could
 specify their default value using either `:` or `=`. 
@@ -195,7 +195,7 @@ This migration can be made manually, or automated with `dart fix`:
 $ dart fix --apply --code=obsolete_colon_for_default_value
 ```
 
-### `mixin`
+### `mixin` {:#mixin}
 
 Pre-Dart 3, any `class` could be used as a `mixin`, as long as
 it had no declared constructors and no superclass other than `Object`.
@@ -228,7 +228,7 @@ Determine if the class is intended to be used as a mixin.
 
 If the class defines an interface, consider using `implements`.
 
-### `switch`
+### `switch` {:#switch}
 
 Dart 3.0 interprets [switch](/language/branches#switch) cases
 as [patterns][] instead of constant expressions. 
@@ -264,7 +264,7 @@ case const Point(1, 2):
 You can run a quick fix for this breaking change, 
 by using `dart fix` or from your IDE.
 
-### `continue`
+### `continue` {:#continue}
 
 Dart 3 reports a compile-time error if a continue statement targets a label
 that is not a loop (`for`, `do`, and `while` statements) or a switch member.
@@ -294,9 +294,9 @@ In previous versions of Dart, a `continue` statement
 that wasn't targeted at a loop or a switch member 
 behaved like `break`.
 
-## Dart 3 core library changes
+## Dart 3 core library changes {:#dart-3-core-library-changes}
 
-### APIs removed
+### APIs removed {:#apis-removed}
 
 **Breaking change [#49529][]**: The core libraries have been cleaned up
 to remove APIs that have been deprecated for several years. 
@@ -373,7 +373,7 @@ that applies to all Dart 3 code.
 [`DeferredLibrary`]: {{site.dart-api}}/stable/2.19.6/dart-async/DeferredLibrary-class.html
 [`deferred as`]: /language/libraries#lazily-loading-a-library
 
-#### `dart:developer`
+#### `dart:developer` {:#dart-developer}
 
 - Removed the deprecated [`MAX_USER_TAGS`][] constant.
   Use [`maxUserTags`][] instead.
@@ -387,18 +387,18 @@ that applies to all Dart 3 code.
 [`Counter`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Counter-class.html
 [`Gauge`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Gauge-class.html
 
-#### `dart:html`
+#### `dart:html` {:#dart-html}
 
 - As previously announced, the deprecated `registerElement`
   and `registerElement2` methods in `Document` and `HtmlDocument` have been
   removed.  See [#49536]({{site.repo.dart.sdk}}/issues/49536) for
   details.
 
-#### `dart:math`
+#### `dart:math` {:#dart-math}
 
 - The `Random` interface can only be implemented, not extended.
 
-#### `dart:io`
+#### `dart:io` {:#dart-io}
 
 - Update `NetworkProfiling` to accommodate new `String` ids
   that are introduced in vm_service:11.0.0
@@ -416,7 +416,7 @@ error line 2 • Undefined class 'CyclicInitializationError'.
 
 Manually migrate away from using these APIs.
 
-### Extends & implements
+### Extends & implements {:#extends-implements}
 
 Dart 3 supports new [class modifiers][] that
 can restrict the capabilities of a class.
@@ -477,7 +477,7 @@ that only applies to language version 3.0 or later.
   The remaining classes are tightly coupled to the platform and not
   intended to be subclassed or implemented.
 
-#### `dart:collection`
+#### `dart:collection` {:#dart-collection}
 
 * The following interface can no longer be extended, only implemented:
 
@@ -501,9 +501,9 @@ that only applies to language version 3.0 or later.
   - `SplayTreeMap`
   - `SplayTreeSet`
 
-## Dart 3 tools changes
+## Dart 3 tools changes {:#dart-3-tools-changes}
 
-### Removed tools
+### Removed tools {:#removed-tools}
 
 Historically the Dart team has offered a number of smaller developer tools for
 things like formatting code (`dartfmt`), analyzing code (`dartanalyzer`), etc.
@@ -537,7 +537,7 @@ Use new sub-commands available in the `dart` tool:
 
 {:.table .table-striped .nowrap}
 
-### Null safety migration tools
+### Null safety migration tools {:#null-safety-migration-tools}
 
 The following null safety migration commands have been removed,
 as Dart 3 [doesn't support code without null safety](#100-sound-null-safety):
@@ -559,7 +559,7 @@ These commands will fail.
 
 Use Dart 2.19 to [migrate to null safety](/null-safety/migration-guide).
 
-### Analyzer config
+### Analyzer config {:#analyzer-config}
 
 The [analyzer configuration options][] for 
 enabling stricter checking have changed.
@@ -600,7 +600,7 @@ analyzer:
     strict-raw-types: true
 ```
 
-### Other tools changes
+### Other tools changes {:#other-tools-changes}
 
 * The deprecated Observatory has been hidden by default. 
   We recommend using [DevTools](/tools/dart-devtools).

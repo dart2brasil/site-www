@@ -36,7 +36,7 @@ class SmartTelevision [!extends!] Television {
 For another usage of `extends`, see the discussion of
 [parameterized types][] on the Generics page.
 
-## Overriding members
+## Overriding members {:#overriding-members}
 
 Subclasses can override instance methods (including [operators][]),
 getters, and setters.
@@ -89,7 +89,7 @@ For an example of overriding `==` and `hashCode`, check out
 [Implementing map keys](/libraries/dart-core#implementing-map-keys).
 :::
 
-## noSuchMethod()
+## noSuchMethod() {:#nosuchmethod}
 
 To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:

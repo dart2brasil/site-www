@@ -60,7 +60,7 @@ mixin Musical {
 }
 ```
 
-## Specify members a mixin can call on itself
+## Specify members a mixin can call on itself {:#specify-members-a-mixin-can-call-on-itself}
 
 Sometimes a mixin depends on being able to invoke a method or access fields,
 but can't define those members itself (because mixins can't use constructor
@@ -69,7 +69,7 @@ parameters to instantiate their own fields).
 The following sections cover different strategies for ensuring any subclass
 of a mixin defines any members the mixin's behavior depends on. 
 
-### Define abstract members in the mixin
+### Define abstract members in the mixin {:#define-abstract-members-in-the-mixin}
 
 Declaring an abstract method in a mixin forces any type that uses
 the mixin to define the abstract method upon which its behavior depends. 
@@ -95,7 +95,7 @@ class Virtuoso with Musician {
 } 
 ```
 
-#### Access state in the mixin's subclass
+#### Access state in the mixin's subclass {:#access-state-in-the-mixin-s-subclass}
 
 Declaring abstract members also allows you to access state on the subclass
 of a mixin, by calling getters which are defined as abstract on the mixin:
@@ -120,7 +120,7 @@ class Person with NameIdentity {
 }
 ```
 
-### Implement an interface
+### Implement an interface {:#implement-an-interface}
 
 Similar to declaring the mixin abstract, putting an `implements` clause on the
 mixin while not actually implementing the interface will also ensure any member
@@ -148,7 +148,7 @@ class PunkRocker with Guitarist {
 }
 ```
 
-### Use the `on` clause to declare a superclass
+### Use the `on` clause to declare a superclass {:#use-the-on-clause-to-declare-a-superclass}
 
 The `on` clause exists to define the type that `super` calls are resolved against.
 So, you should only use it if you need to have a `super` call inside a mixin. 
@@ -183,7 +183,7 @@ In this example, only classes that extend or implement the `Musician` class
 can use the mixin `MusicalPerformer`. Because `SingerDancer` extends `Musician`,
 `SingerDancer` can mix in `MusicalPerformer`.
 
-## `class`, `mixin`, or `mixin class`?
+## `class`, `mixin`, or `mixin class`? {:#class-mixin-or-mixin-class}
 
 :::version-note
 The `mixin class` declaration requires a [language version][] of at least 3.0.

@@ -45,7 +45,7 @@ on package resolution and the system package cache.
 
 [application packages]: /tools/pub/glossary#application-package
 
-## Upgrading specific dependencies
+## Upgrading specific dependencies {:#upgrading-specific-dependencies}
 
 You can tell `dart pub upgrade` to upgrade specific dependencies to the
 latest version while leaving the rest of the dependencies alone as much as
@@ -72,14 +72,14 @@ $ dart pub upgrade --unlock-transitive test args
 ```
 
 
-## Getting a new dependency
+## Getting a new dependency {:#getting-a-new-dependency}
 
 If a dependency is added to the pubspec before `dart pub upgrade` is run,
 it gets the new dependency and any of its transitive dependencies.
 This shares the same behavior as `dart pub get`.
 
 
-## Removing a dependency
+## Removing a dependency {:#removing-a-dependency}
 
 If a dependency is removed from the pubspec before `dart pub upgrade` is run,
 the dependency is no longer available for importing.
@@ -87,7 +87,7 @@ Any transitive dependencies of the removed dependency are also removed,
 as long as no remaining immediate dependencies also depend on them.
 This is the same behavior as `dart pub get`.
 
-## Upgrading while offline
+## Upgrading while offline {:#upgrading-while-offline}
 
 If you don't have network access, you can still run `dart pub upgrade`.
 Because pub downloads packages to a central cache shared by all packages
@@ -108,30 +108,30 @@ offline `dart pub upgrade` locks your app to that old version.
 The next time you are online, you will likely want to
 run `dart pub upgrade` again to upgrade to a later version.
 
-## Options
+## Options {:#options}
 
 The `dart pub upgrade` command supports the
 [`dart pub get` options](/tools/pub/cmd/pub-get#options), and more.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `--[no-]offline`
+### `--[no-]offline` {:#no-offline}
 
 {% render 'tools/pub-option-no-offline.md' %}
 
-### `--dry-run` or `-n`
+### `--dry-run` or `-n` {:#dry-run-or-n}
 
 Reports the dependencies that would be changed,
 but doesn't make the changes. This is useful if you
 want to analyze updates before making them.
 
-### `--[no-]precompile`
+### `--[no-]precompile` {:#no-precompile}
 
 By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
-### `--major-versions`
+### `--major-versions` {:#major-versions}
 
 Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
 ignoring any upper-bound constraint in the `pubspec.yaml` file.
@@ -147,19 +147,19 @@ so that you can undo the changes if necessary.
 To check which dependencies will be upgraded,
 you can use `dart pub upgrade --major-versions --dry-run`.
 
-### `--tighten`
+### `--tighten` {:#tighten}
 
 Updates the lower bounds of dependencies in `pubspec.yaml` to match the
 resolved versions, and returns a list of the changed constraints. 
 Can be applied to [specific dependencies](#upgrading-specific-dependencies).  
 
-### `--unlock-transitive`
+### `--unlock-transitive` {:#unlock-transitive}
 
 When used with a list of packages to unlock, first the transitive closure of
 those packages' dependencies (in the current resolution) is computed,
 and then all those packages are unlocked.
 
-## In a workspace
+## In a workspace {:#in-a-workspace}
 
 In a [Pub workspace](/tools/pub/workspaces) `dart pub upgrade` will
 upgrade all dependencies in the shared resolution from across all workspace

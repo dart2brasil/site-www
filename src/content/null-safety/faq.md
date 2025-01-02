@@ -7,7 +7,7 @@ short-title: FAQ (null safety)
 This page collects some common questions we've heard about [null safety](/null-safety)
 based on the experience of migrating Google internal code.
 
-## What runtime changes should I be aware of for users of migrated code?
+## What runtime changes should I be aware of for users of migrated code? {:#what-runtime-changes-should-i-be-aware-of-for-users-of-migrated-code}
 
 Most of the effects of migration do not immediately affect users of migrated
 code:
@@ -27,12 +27,12 @@ Two exceptions to be aware of are:
     all users. Only mark a field `late` if you are sure it is always initialized
     before it is used.
 
-## What if a value is only `null` in tests?
+## What if a value is only `null` in tests? {:#what-if-a-value-is-only-null-in-tests}
 
 If a value is only ever `null` in tests, the code can be improved by marking it
 non-nullable and making the tests pass non-null values.
 
-## How does `@required` compare to the new `required` keyword?
+## How does `@required` compare to the new `required` keyword? {:#how-does-required-compare-to-the-new-required-keyword}
 
 The `@required` annotation marks named arguments that must be passed; if not,
 the analyzer reports a hint.
@@ -54,7 +54,7 @@ was no `@required` before. Any callers not passing the newly-required argument
 will no longer compile. Instead, you could add a default or make the argument
 type nullable.
 
-## How should I migrate non-nullable fields that should be `final`, but aren't?
+## How should I migrate non-nullable fields that should be `final`, but aren't? {:#how-should-i-migrate-non-nullable-fields-that-should-be-final-but-aren-t}
 
 Some computations can be moved to the static initializer. Instead of:
 
@@ -95,7 +95,7 @@ initialized, and must be nullable. Fortunately, you have options:
 -   Or, mark the field `late final`. This enforces that it's initialized exactly
     once. It must be initialized before it can be read.
 
-## How should I migrate a `built_value` class?
+## How should I migrate a `built_value` class? {:#how-should-i-migrate-a-built-value-class}
 
 Getters that were annotated `@nullable` should instead have nullable types; then
 remove all `@nullable` annotations. For example:
@@ -115,7 +115,7 @@ Getters that were *not* marked `@nullable` should *not* have nullable types,
 even if the migration tool suggests them. Add `!` hints as needed then rerun the
 analysis.
 
-## How should I migrate a factory that can return `null`?
+## How should I migrate a factory that can return `null`? {:#how-should-i-migrate-a-factory-that-can-return-null}
 
 _Prefer factories that do not return null._ We have seen code that meant to
 throw an exception due to invalid input but instead ended up returning null.
@@ -153,7 +153,7 @@ Do:
 If the intent of the factory was indeed to return null, then you can turn it
 into a static method so it is allowed to return `null`.
 
-## How should I migrate an `assert(x != null)` that now shows as unnecessary?
+## How should I migrate an `assert(x != null)` that now shows as unnecessary? {:#how-should-i-migrate-an-assert-x-null-that-now-shows-as-unnecessary}
 
 The assert will be unnecessary when everything is fully migrated, but for now it
 *is* needed if you actually want to keep the check. Options:
@@ -166,7 +166,7 @@ The assert will be unnecessary when everything is fully migrated, but for now it
 -   Keep the behavior exactly as is: add `// ignore:
     unnecessary_null_comparison` to bypass the warning.
 
-## How should I migrate a runtime null check that now shows as unnecessary?
+## How should I migrate a runtime null check that now shows as unnecessary? {:#how-should-i-migrate-a-runtime-null-check-that-now-shows-as-unnecessary}
 
 The compiler flags an explicit runtime null check as an unnecessary
 comparison if you make `arg` non-nullable.
@@ -188,12 +188,12 @@ whether `arg` is `null`. It might look like migrating to null safety means `arg`
 can never be `null`, but it could be `null` in unsound null safety. So, to preserve
 behavior, the null check should remain.
 
-## The `Iterable.firstWhere` method no longer accepts `orElse: () => null`.
+## The `Iterable.firstWhere` method no longer accepts `orElse: () => null`. {:#the-iterable-firstwhere-method-no-longer-accepts-orelse-null}
 
 Import `package:collection` and use the extension method `firstWhereOrNull`
 instead of `firstWhere`.
 
-## How do I deal with attributes that have setters?
+## How do I deal with attributes that have setters? {:#how-do-i-deal-with-attributes-that-have-setters}
 
 Unlike the `late final` suggestion above, these attributes cannot be marked as
 final. Often, settable attributes also do not have initial values since they are
@@ -209,7 +209,7 @@ In such cases, you have two options:
     WARNING: The `late` keyword adds a runtime check. If any user calls `get`
     before `set` they'll get an error at runtime.
 
-## How do I signal that the return value from a Map is non-nullable?
+## How do I signal that the return value from a Map is non-nullable? {:#how-do-i-signal-that-the-return-value-from-a-map-is-non-nullable}
 
 The
 [lookup operator]({{site.dart-api}}/dart-core/Map/operator_get.html)
@@ -231,7 +231,7 @@ if (result != null) return result;
 // Handle the null case here, e.g. throw with explanation.
 ```
 
-## Why is the generic type on my List/Map nullable?
+## Why is the generic type on my List/Map nullable? {:#why-is-the-generic-type-on-my-list-map-nullable}
 
 It is typically a code smell to end up with nullable code like this:
 
@@ -291,7 +291,7 @@ _jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
   which is being suggested in https://github.com/dart-lang/language/issues/2477.
 {% endcomment %}
  
-## What happened to the default List constructor?
+## What happened to the default List constructor? {:#what-happened-to-the-default-list-constructor}
 
 You may encounter this error:
 
@@ -303,7 +303,7 @@ The default list constructor fills the list with `null`, which is a problem.
 
 Change it to `List.filled(length, default)` instead.
 
-## I'm using `package:ffi` and get a failure with `Dart_CObject_kUnsupported` when I migrate. What happened?
+## I'm using `package:ffi` and get a failure with `Dart_CObject_kUnsupported` when I migrate. What happened? {:#i-m-using-package-ffi-and-get-a-failure-with-dart-cobject-kunsupported-when-i-migrate-what-happened}
 
 Lists sent via ffi can only be `List<dynamic>`, not `List<Object>` or
 `List<Object?>`. If you didn't change a list type explicitly in your migration,
@@ -328,7 +328,7 @@ and situations where a null value is really expected. So the tool tells you what
 it knows ("it looks like this condition will always be false!") and lets you
 decide what to do.
 
-## What should I know about compiling to JavaScript and null safety?
+## What should I know about compiling to JavaScript and null safety? {:#what-should-i-know-about-compiling-to-javascript-and-null-safety}
 
 Null safety brings many benefits like reduced code size and improved
 app performance. Such benefits surface more when compiled to native
@@ -408,7 +408,7 @@ A few notes that are worth highlighting:
     P.print(a.x + 1);
   ```
     
-## Resources
+## Resources {:#resources}
 
 *   [DartPad with Null Safety]({{site.dartpad}})
 *   [Sound null safety](/null-safety)

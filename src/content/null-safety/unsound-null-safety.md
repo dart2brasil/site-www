@@ -42,7 +42,7 @@ For details, see the [migration guide][].
 [migration guide]: /null-safety/migration-guide
 
 
-## Sound and unsound null safety
+## Sound and unsound null safety {:#sound-and-unsound-null-safety}
 
 Dart provides sound null safety through a combination of
 static and runtime checks.
@@ -80,7 +80,7 @@ the tools print a warning to let you know that
 they can only run with unsound null safety.
 
 
-## Migrating incrementally
+## Migrating incrementally {:#migrating-incrementally}
 
 Because Dart supports mixed-version programs,
 you can migrate one library (generally one Dart file) at a time,
@@ -101,7 +101,7 @@ If any libraries have cyclic imports
 (for example, A imports B which imports C, and C imports A),
 consider migrating those libraries together.
 
-### Using the migration tool
+### Using the migration tool {:#using-the-migration-tool}
 
 You can migrate incrementally using the
 [migration tool][].
@@ -119,7 +119,7 @@ You can later run `dart migrate` again to continue the migration.
 Any files that are already migrated feature a disabled checkbox:
 you cannot un-migrate a file once it has been migrated.
 
-### Migrating by hand
+### Migrating by hand {:#migrating-by-hand}
 
 If you want to incrementally migrate a package by hand, follow these steps:
 
@@ -169,7 +169,7 @@ If you want to incrementally migrate a package by hand, follow these steps:
    as needed.
 
 
-## Testing or running mixed-version programs
+## Testing or running mixed-version programs {:#testing-or-running-mixed-version-programs}
 
 To test or run mixed-version code,
 you need to disable sound null safety.

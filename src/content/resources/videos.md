@@ -12,7 +12,7 @@ If you'd like other videos to be listed on this page,
 TODO: If the list of videos grows, consider automating this like book.md.
 {% endcomment %}
 
-## Dart videos from Google
+## Dart videos from Google {:#dart-videos-from-google}
 
 A playlist of Google-produced videos on Dart's capabilities.
 These range from 5-minute talks on Dart asynchrony support
@@ -20,7 +20,7 @@ to the Dart session from Google I/O 2019.
 
 {% ytEmbed "PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J", "Dart videos from Google", "series" %}
 
-## Dart training course in Brazilian Portuguese
+## Dart training course in Brazilian Portuguese {:#dart-training-course-in-brazilian-portuguese}
 
 Nesta série de vídeos estudaremos juntos a linguagem Dart.
 

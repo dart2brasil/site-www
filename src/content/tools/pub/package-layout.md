@@ -74,7 +74,7 @@ enchilada/
      Don't check the `api` directory into source control.
 
 
-## The pubspec
+## The pubspec {:#the-pubspec}
 
 ```plaintext
 enchilada/
@@ -96,7 +96,7 @@ check the lockfile into source control. Otherwise, don't.
 
 For more information, see the [pubspec page](/tools/pub/pubspec).
 
-## LICENSE
+## LICENSE {:#license}
 
 ```plaintext
 enchilada/
@@ -108,7 +108,7 @@ We recommend using an [OSI-approved license](https://opensource.org/licenses)
 such as [BSD-3-Clause,](https://opensource.org/licenses/BSD-3-Clause)
 so that others can reuse your work.
 
-## README.md
+## README.md {:#readme-md}
 
 ```plaintext
 enchilada/
@@ -156,36 +156,36 @@ Here's an example of a `CHANGELOG.md` file.
 As the example shows, you can add subsections.
 
 ```markdown
-# 1.0.1
+# 1.0.1 {:#1-0-1}
 
 * Fixed missing exclamation mark in `sayHi()` method.
 
-# 1.0.0
+# 1.0.0 {:#1-0-0}
 
 * **Breaking change:** Removed deprecated `sayHello()` method.
 * Initial stable release.
 
-## Upgrading from 0.1.x
+## Upgrading from 0.1.x {:#upgrading-from-0-1-x}
 
 Change all calls to `sayHello()` to instead be to `sayHi()`.
 
-# 0.1.1
+# 0.1.1 {:#0-1-1}
 
 * Deprecated the `sayHello()` method; use `sayHi()` instead.
 
-# 0.1.0
+# 0.1.0 {:#0-1-0}
 
 * Initial development release.
 ```
 
 
-## Public directories
+## Public directories {:#public-directories}
 
 Two directories in your package are public to other packages: `lib` and
 `bin`. You place [public libraries](#public-libraries) in `lib` and
 [public tools](#public-tools) in `bin`.
 
-### Public libraries
+### Public libraries {:#public-libraries}
 
 The following directory structure shows the `lib` portion of enchilada:
 
@@ -248,7 +248,7 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 For more information on packages, see
 [Creating packages](/tools/pub/create-packages).
 
-### Public tools
+### Public tools {:#public-tools}
 
 Dart scripts placed inside of the `bin` directory are public. If you're
 inside the directory of a package, you can use
@@ -268,7 +268,7 @@ If you don't intend for your package to be depended on, you can leave your
 scripts in `bin`.
 
 
-## Public assets
+## Public assets {:#public-assets}
 
 ```plaintext
 enchilada/
@@ -285,7 +285,7 @@ These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
 
 
-## Implementation files
+## Implementation files {:#implementation-files}
 
 ```plaintext
 enchilada/
@@ -334,7 +334,7 @@ import 'package:enchilada/src/beans.dart';
 The name you use here (in this case `enchilada`) is the name you specify for
 your package in its [pubspec](/tools/pub/pubspec).
 
-## Web files
+## Web files {:#web-files}
 
 ```plaintext
 enchilada/
@@ -355,7 +355,7 @@ Put [web-based examples](#examples) under `example`. See
 [Public assets](#public-assets) for tips on where to put assets,
 such as images.
 
-## Command-line apps
+## Command-line apps {:#command-line-apps}
 
 ```plaintext
 enchilada/
@@ -372,7 +372,7 @@ You can run that script from anywhere on the command line, if you set it up
 using
 [`dart pub global`](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
 
-## Tests and benchmarks
+## Tests and benchmarks {:#tests-and-benchmarks}
 
 ```plaintext
 enchilada/
@@ -412,7 +412,7 @@ Packages that have performance critical code may also include *benchmarks*.
 These test the API not for correctness but for speed (or memory use, or maybe
 other empirical metrics).
 
-## Documentation
+## Documentation {:#documentation}
 
 ```plaintext
 enchilada/
@@ -433,7 +433,7 @@ Other than the generated `api`, we don't
 have any guidelines about format or organization of the documentation
 that you author.  Use whatever markup format that you prefer.
 
-## Examples
+## Examples {:#examples}
 
 ```plaintext
 enchilada/
@@ -475,7 +475,7 @@ search the dart-lang repos for exampleFileCandidates:
 https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code
 {% endcomment %}
 
-## Internal tools and scripts
+## Internal tools and scripts {:#internal-tools-and-scripts}
 
 ```plaintext
 enchilada/
@@ -490,7 +490,7 @@ documentation generators, or other bits of automation.
 Unlike the scripts in `bin`, these are *not* for external users of the package.
 If you have any of these, place them in a directory called `tool`.
 
-## Hooks
+## Hooks {:#hooks}
 
 ```plaintext
 enchilada/
@@ -515,7 +515,7 @@ refer to the [`build.dart` hook documentation][].
 
 [`build.dart` hook documentation]: {{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/README.md
 
-## Project-specific caching for tools
+## Project-specific caching for tools {:#project-specific-caching-for-tools}
 
 :::note
 Do not check the `.dart_tool/` directory into source control.

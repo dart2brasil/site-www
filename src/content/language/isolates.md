@@ -41,7 +41,7 @@ but here are some more situations where they can be useful:
 
 [Flutter]: {{site.flutter-docs}}/perf/isolates
 
-## Implementing a simple worker isolate
+## Implementing a simple worker isolate {:#implementing-a-simple-worker-isolate}
 
 These examples implement a main isolate
 that spawns a simple worker isolate.
@@ -64,7 +64,7 @@ instead of `Isolate.run()`.
 
 [Flutter's `compute` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
-### Running an existing method in a new isolate
+### Running an existing method in a new isolate {:#running-an-existing-method-in-a-new-isolate}
 
 1. Call `run()` to spawn a new isolate (a [background worker][]),
    directly in the [main isolate][] while `main()` waits for the result:
@@ -122,7 +122,7 @@ For the complete program, check out the [send_and_receive.dart][] sample.
 [background worker]: /language/concurrency#background-workers
 [main isolate]: /language/concurrency#the-main-isolate
 
-### Sending closures with isolates
+### Sending closures with isolates {:#sending-closures-with-isolates}
 
 You can also create a simple worker isolate with `run()` using a
 function literal, or closure, directly in the main isolate.
@@ -156,7 +156,7 @@ control flow operator for "run in parallel".
 
 [closure]: /language/functions#anonymous-functions
 
-## Sending multiple messages between isolates with ports
+## Sending multiple messages between isolates with ports {:#sending-multiple-messages-between-isolates-with-ports}
 
 Short-lived isolates are convenient to use,
 but require performance overhead to spawn new isolates
@@ -188,7 +188,7 @@ gradually adds more practical, real-world functionality to the first.
 [main isolate]: /language/concurrency#isolates
 
 
-### `ReceivePort` and `SendPort`
+### `ReceivePort` and `SendPort` {:#receiveport-and-sendport}
 
 Setting up long-lived communication between isolates requires
 two classes (in addition to `Isolate`): `ReceivePort` and `SendPort`.
@@ -214,7 +214,7 @@ with the [`SendPort.send()` method][], and those messages are handled by a liste
 in this case the `ReceivePort`. The `ReceivePort` then handles the messages it
 receives by passing them as arguments to a callback that you provide. 
 
-#### Setting up ports
+#### Setting up ports {:#setting-up-ports}
 
 A newly spawned isolate only has the information it receives through the
 `Isolate.spawn` call. If you need the main isolate to continue to communicate
@@ -265,7 +265,7 @@ the `listen` method on each respective `ReceivePort`.
    isolate's `SendPort`.
 4. Receive the message via a listener on the main isolate's `ReceivePort`.
 
-### Basic ports example
+### Basic ports example {:#basic-ports-example}
 
 This example demonstrates how you can set up a long-lived worker isolate
 with 2-way communication between it and the main isolate.
@@ -325,7 +325,7 @@ class Worker {
 }
 ```
 
-#### Step 2: Spawn a worker isolate
+#### Step 2: Spawn a worker isolate {:#step-2-spawn-a-worker-isolate}
 
 The `Worker.spawn` method is where you will group the code for creating the 
 worker isolate and ensuring it can receive and send messages.
@@ -355,7 +355,7 @@ callback (`_startRemoteIsolate`) as an argument when it’s called on the
 worker isolate. This is the first step in ensuring that the worker isolate has a
 way to send messages back to the main isolate.
 
-#### Step 3: Execute code on the worker isolate
+#### Step 3: Execute code on the worker isolate {:#step-3-execute-code-on-the-worker-isolate}
 
 In this step, you define the method `_startRemoteIsolate` that is sent to the
 worker isolate to be executed when it spawns. This method is like the “main”
@@ -389,7 +389,7 @@ This listener is the entry point for messages sent from the main isolate to the
 worker isolate. **This is the only chance you have to tell the worker isolate what code
 to execute in the future.**
 
-#### Step 4: Handle messages on the main isolate
+#### Step 4: Handle messages on the main isolate {:#step-4-handle-messages-on-the-main-isolate}
 
 Finally, you need to tell the main isolate how to handle messages sent from the
 worker isolate back to the main isolate. To do so, you need to fill in
@@ -429,7 +429,7 @@ void _handleResponsesFromIsolate(dynamic message) {
 }
 ```
 
-#### Step 5: Add a completer to ensure your isolate is set-up
+#### Step 5: Add a completer to ensure your isolate is set-up {:#step-5-add-a-completer-to-ensure-your-isolate-is-set-up}
 
 To complete the class, define a public method called `parseJson`, which is
 responsible for sending messages to the worker isolate. It also needs to ensure
@@ -511,7 +511,7 @@ Future<void> parseJson(String message) async {
 
 </details>
 
-### Robust ports example
+### Robust ports example {:#robust-ports-example}
 
 The [previous example][] explained the basic building blocks needed to set up a
 long-lived isolate with two-way communication. As mentioned, that example lacks
@@ -587,7 +587,7 @@ to the worker isolate are called _commands_, and the messages sent back to the
 main isolate are called _responses_.
 :::
 
-#### Step 2: Create a `RawReceivePort` in the `Worker.spawn` method
+#### Step 2: Create a `RawReceivePort` in the `Worker.spawn` method {:#step-2-create-a-rawreceiveport-in-the-worker-spawn-method}
 
 Before spawning an isolate, you need to create a [`RawReceivePort`][], which is
 a lower-level `ReceivePort`. Using `RawReceivePort` is a preferred pattern
@@ -645,7 +645,7 @@ logic that handles receiving messages after setting up communication is
 complete. This benefit will become more obvious as the logic in the other
 methods grows.
 
-#### Step 3: Spawn a worker isolate with `Isolate.spawn`
+#### Step 3: Spawn a worker isolate with `Isolate.spawn` {:#step-3-spawn-a-worker-isolate-with-isolate-spawn}
 
 This step continues to fill in the `Worker.spawn` method. You’ll add the code
 needed to spawn an isolate, and return an instance of `Worker` from this class.
@@ -699,7 +699,7 @@ acts as an asynchronous static constructor for this class and is the only way to
 create an instance of `Worker`. This simplifies the API, making the code that
 creates an instance of `Worker` cleaner.
 
-#### Step 4: Complete the isolate setup process
+#### Step 4: Complete the isolate setup process {:#step-4-complete-the-isolate-setup-process}
 
 In this step, you will complete the basic isolate setup process. This correlates
 almost entirely to the [previous example][], and there are no new concepts.
@@ -800,7 +800,7 @@ Future<Object?> parseJson(String message) async {
 
 You will update this method in the next step.
 
-#### Step 5: Handle multiple messages at the same time
+#### Step 5: Handle multiple messages at the same time {:#step-5-handle-multiple-messages-at-the-same-time}
 
 Currently, if you rapidly send messages to the worker isolate, the isolate will
 send the decoded json response in _the order that they complete_, rather than
@@ -903,7 +903,7 @@ void _handleResponsesFromIsolate(dynamic message) {
 }
 ```
 
-#### Step 6: Add functionality to close the ports
+#### Step 6: Add functionality to close the ports {:#step-6-add-functionality-to-close-the-ports}
 
 When the isolate is no longer being used by your code, you should close the
 ports on the main isolate and the worker isolate.

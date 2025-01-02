@@ -31,13 +31,13 @@ For example, on macOS,
 the output looks similar to the following:
 
 ```markdown
-#### General info
+#### General info {:#general-info}
 
 - Dart 2.19.2 (stable) (Tue Feb 7 18:37:17 2023 +0000) on "macos_arm64"
 - on macos / Version 13.1 (Build 22C65)
 - locale is en-US
 
-#### Process info
+#### Process info {:#process-info}
 
 | Memory |   CPU | Elapsed time | Command line                      |
 | -----: | ----: | -----------: | ----------------------------------|
@@ -50,7 +50,7 @@ run `dart info` in a directory with a `pubspec.yaml` file.
 The resulting output includes an additional **Project info** section:
 
 ```plaintext
-#### Project info
+#### Project info {:#project-info}
 
 - sdk constraint: '>=2.19.2 <3.0.0'
 - dependencies: path

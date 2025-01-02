@@ -14,7 +14,7 @@ such as [Chrome DevTools][] to debug your Dart web apps.
   use your IDE or browser tools such as Chrome DevTools.
 
 
-## Overview
+## Overview {:#overview}
 
 To serve your app, use `webdev serve`
 (either at the command line or through your IDE)
@@ -159,7 +159,7 @@ but you'll need to adjust the instructions to match your app.
 1. Click the **Logging** button to see stdout, stderr, and system logs.
 
 
-## Getting command-line tool packages
+## Getting command-line tool packages {:#getting-command-line-tool-packages}
 
 If you're using the command line instead of an IDE or Dart-enabled editor,
 then you need the [webdev tool][webdev].
@@ -190,7 +190,7 @@ $ dart pub global activate webdev     # update webdev
 
 {% include 'tools/debug-prod-js-code.md' %}
 
-## Resources
+## Resources {:#resources}
 
 To learn more, see the following:
 

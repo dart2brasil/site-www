@@ -67,7 +67,7 @@ it attempts to make requests without authentication.
 :::
 
 
-## Retrieving dependencies from a custom package repository
+## Retrieving dependencies from a custom package repository {:#retrieving-dependencies-from-a-custom-package-repository}
 
 To fetch a package from custom package repository,
 you must specify the _hosted-url_ for the package in `pubspec.yaml`, 
@@ -94,7 +94,7 @@ with the `--hosted` flag to add a dependency from a custom package repository:
 $ dart pub add example_package --hosted https://dart-packages.example.com
 ```
 
-### Using multiple package repositories
+### Using multiple package repositories {:#using-multiple-package-repositories}
 
 You can also fetch different dependencies
 from different package repositories, 
@@ -132,7 +132,7 @@ However, such packages can be published to a custom package repository.
 :::
 
 
-## Publishing to a custom package repository
+## Publishing to a custom package repository {:#publishing-to-a-custom-package-repository}
 
 To publish a package to a custom package repository
 instead of [pub.dev]({{site.pub}}),
@@ -154,7 +154,7 @@ your `pubspec.yaml` should look minimally like the following:
 ```yaml
 name: example_package
 version: 1.0.0
-# Ensures the package is published to https://dart-packages.example.com
+# Ensures the package is published to https://dart-packages.example.com {:#ensures-the-package-is-published-to-https-dart-packages-example-com}
 publish_to: https://dart-packages.example.com
 ```
 
@@ -194,13 +194,13 @@ in a private package repository or a subset of pub.dev
 when working in a restricted network environment.
 
 
-## Setting up a custom package repository
+## Setting up a custom package repository {:#setting-up-a-custom-package-repository}
 
 You can write a custom package repository by implementing
 the REST API outlined in the
 [Hosted Pub Repository Specification Version 2][repository-spec-v2.md].
 
-### Dart package repositories as a service
+### Dart package repositories as a service {:#dart-package-repositories-as-a-service}
 
 Custom package repositories are also offered as a service
 with support for token authentication by multiple vendors,

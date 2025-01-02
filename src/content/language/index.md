@@ -20,7 +20,7 @@ You can also check out the [Dart cheatsheet](/resources/dart-cheatsheet),
 for a more interactive introduction.
 
 
-## Hello World
+## Hello World {:#hello-world}
 
 Every app requires the top-level `main()` function, where execution starts.
 Functions that don't explicitly return a value have the `void` return type.
@@ -38,7 +38,7 @@ including optional parameters for command-line arguments.
 
 [the `main()` function]: /language/functions#the-main-function
 
-## Variables
+## Variables {:#variables}
 
 Even in [type-safe](/language/type-system) Dart code,
 you can declare most variables without explicitly specifying their type using `var`. 
@@ -61,7 +61,7 @@ var image = {
 including default values, the `final` and `const` keywords, and static types.
 
 
-## Control flow statements
+## Control flow statements {:#control-flow-statements}
 
 Dart supports the usual control flow statements:
 
@@ -92,7 +92,7 @@ including [`break` and `continue`](/language/loops),
 and [`assert`](/language/error-handling#assert).
 
 
-## Functions
+## Functions {:#functions}
 
 [We recommend](/effective-dart/design#types)
 specifying the types of each function's arguments and return value:
@@ -124,7 +124,7 @@ the top-level `print()` function is an argument to `forEach()`.
 including optional parameters, default parameter values, and lexical scope.
 
 
-## Comments
+## Comments {:#comments}
 
 Dart comments usually start with `//`.
 
@@ -142,7 +142,7 @@ Dart comments usually start with `//`.
 including how the documentation tooling works.
 
 
-## Imports
+## Imports {:#imports}
 
 To access APIs defined in other libraries, use `import`.
 
@@ -164,7 +164,7 @@ including library prefixes, `show` and `hide`,
 and lazy loading through the `deferred` keyword.
 
 
-## Classes
+## Classes {:#classes}
 
 Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
@@ -223,7 +223,7 @@ including initializer lists, optional `new` and `const`, redirecting constructor
 `factory` constructors, getters, setters, and much more.
 
 
-## Enums
+## Enums {:#enums}
 
 Enums are a way of enumerating a predefined set of values or instances
 in a way which ensures that there cannot be any other instances of that type.
@@ -283,7 +283,7 @@ including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
 
 
-## Inheritance
+## Inheritance {:#inheritance}
 
 Dart has single inheritance.
 
@@ -300,7 +300,7 @@ class Orbiter extends Spacecraft {
 about extending classes, the optional `@override` annotation, and more.
 
 
-## Mixins
+## Mixins {:#mixins}
 
 Mixins are a way of reusing code in multiple class hierarchies. The following is
 a mixin declaration:
@@ -330,7 +330,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 [Read more](/language/mixins) about mixins.
 
 
-## Interfaces and abstract classes
+## Interfaces and abstract classes {:#interfaces-and-abstract-classes}
 
 All classes implicitly define an interface. 
 Therefore, you can implement any class.
@@ -369,7 +369,7 @@ which calls the extender's implementation of `describe()`.
 about abstract classes and methods.
 
 
-## Async
+## Async {:#async}
 
 Avoid callback hell and make your code much more readable by
 using `async` and `await`.
@@ -436,7 +436,7 @@ asynchrony support, including `async` functions, `Future`, `Stream`,
 and the asynchronous loop (`await for`).
 
 
-## Exceptions
+## Exceptions {:#exceptions}
 
 To raise an exception, use `throw`:
 
@@ -473,7 +473,7 @@ including stack traces, `rethrow`,
 and the difference between `Error` and `Exception`.
 
 
-## Important concepts
+## Important concepts {:#important-concepts}
 
 As you continue to learn about the Dart language, 
 keep these facts and concepts in mind:
@@ -547,7 +547,7 @@ keep these facts and concepts in mind:
     [exception][] being raised while the code executes.
 
 
-## Additional resources
+## Additional resources {:#additional-resources}
 
 You can find more documentation and code samples in the
 [core library documentation](/libraries/dart-core)

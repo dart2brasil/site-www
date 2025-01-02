@@ -18,7 +18,7 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
-## August 6, 2024: 3.5 release
+## August 6, 2024: 3.5 release {:#august-6-2024-3-5-release}
 
 This section lists notable changes made from May 15, 2024,
 through August 6, 2024.
@@ -66,7 +66,7 @@ we made the following changes to this site:
 [subclass]: /resources/glossary#subclass
 [subtype]: /resources/glossary#subtype
 
-## May 14, 2024: 3.4 release
+## May 14, 2024: 3.4 release {:#may-14-2024-3-4-release}
 
 This section lists notable changes made from February 16, 2024,
 through May 14, 2024.
@@ -125,7 +125,7 @@ We published the following articles on the Dart blog:
 [blog-3-28-24]: https://medium.com/dartlang/history-of-js-interop-in-dart-98b06991158f
 [blog-3-5-24]: https://medium.com/dartlang/dart-in-google-summer-of-code-2024-8ca45fb6dc4e
 
-## February 15, 2024: 3.3 release
+## February 15, 2024: 3.3 release {:#february-15-2024-3-3-release}
 
 This section lists notable changes made from November 16, 2023,
 through February 15, 2024.
@@ -194,7 +194,7 @@ we made the following changes to this site:
 [retract]: /tools/pub/publishing#how-to-migrate-away-from-a-retracted-package-version
 
 
-## November 15, 2023: 3.2 release
+## November 15, 2023: 3.2 release {:#november-15-2023-3-2-release}
 
 This section lists notable changes made from August 17, 2023,
 through November 15, 2023.
@@ -250,7 +250,7 @@ we made the following changes to this site:
 [Metadata]: /language/metadata
 [move away from using Jekyll]: {{site.repo.this}}/issues/5177
 
-## August 16, 2023: 3.1 release
+## August 16, 2023: 3.1 release {:#august-16-2023-3-1-release}
 
 This section lists notable changes made from May 11, 2023,
 through August 16, 2023.
@@ -314,7 +314,7 @@ We published the following article on the Dart blog:
 
 [blog-6-12-23]: https://medium.com/dartlang/dart-devtools-analyzing-application-performance-with-the-cpu-profiler-3e94a0ec06ae
 
-## May 10, 2023: 3.0 release
+## May 10, 2023: 3.0 release {:#may-10-2023-3-0-release}
 
 This section lists notable changes made from January 26, 2023,
 through May 10, 2023.
@@ -407,7 +407,7 @@ We published the following article on the Dart blog:
 
 [blog-2-09-23]: https://medium.com/dartlang/introducing-realm-for-dart-flutter-e30cb05eb313
 
-### Videos released by the Dart team {:.no_toc}
+### Videos released by the Dart team {:.no_toc} {:#videos-released-by-the-dart-team}
 
 During Google I/O 2023, we released the following videos:
 
@@ -420,7 +420,7 @@ During Google I/O 2023, we released the following videos:
 [Rethinking Dart interoperability with Android]: {{site.yt.watch}}?v=ZWp2FJ2TuJs
 [How to build a package in Dart]: {{site.yt.watch}}?v=8V_TLiWszK0
 
-## January 25, 2023: 2.19 + 3.0 alpha releases
+## January 25, 2023: 2.19 + 3.0 alpha releases {:#january-25-2023-2-19-3-0-alpha-releases}
 
 This section lists notable changes made from August 31, 2022,
 through January 25, 2023.
@@ -516,7 +516,7 @@ We published the following articles on the Dart blog:
 [blog-10-6-22]: https://medium.com/dartlang/partnering-with-github-on-an-supply-chain-security-485eed1fc388
 
 
-## August 30, 2022: 2.18 release
+## August 30, 2022: 2.18 release {:#august-30-2022-2-18-release}
 
 This section lists notable changes made from May 12, 2022,
 through August 30, 2022.
@@ -557,7 +557,7 @@ we made the following changes to this site:
 [Library tour]: /libraries/dart-core#weak-references-and-finalizers
 [`dart fix`]: /tools/dart-fix#customize
 
-## May 11, 2022: 2.17 release
+## May 11, 2022: 2.17 release {:#may-11-2022-2-17-release}
 
 This section lists notable changes made from February 4, 2022,
 through May 11, 2022.
@@ -693,7 +693,7 @@ We published the following articles on the Dart blog:
 [blog-3-16-22]: https://medium.com/dartlang/hosting-a-private-dart-package-repository-774c3c51dff9
 [blog-3-4-22]: https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a
 
-## February 3, 2022: 2.16 release
+## February 3, 2022: 2.16 release {:#february-3-2022-2-16-release}
 
 This section lists notable changes made from December 8, 2021,
 through February 3, 2022.
@@ -736,7 +736,7 @@ we made the following changes to this site:
 [`dart`]: /tools/dart-tool
 
 
-## December 8, 2021: 2.15 release
+## December 8, 2021: 2.15 release {:#december-8-2021-2-15-release}
 
 This section lists notable changes made from September 9, 2021,
 through December 8, 2021.
@@ -783,7 +783,7 @@ we made the following changes to this site:
 [package retraction]: /tools/pub/publishing#retract
 
 
-## September 8, 2021: 2.14 release
+## September 8, 2021: 2.14 release {:#september-8-2021-2-14-release}
 
 This section lists notable changes made from May 20, 2021,
 through September 8, 2021.
@@ -843,7 +843,7 @@ We published the following articles on the Dart blog:
 [blog-6/8-21]: https://medium.com/dartlang/implementing-structs-by-value-in-dart-ffi-1cb1829d11a9
 
 
-## May 19, 2021: 2.13 release
+## May 19, 2021: 2.13 release {:#may-19-2021-2-13-release}
 
 This section lists notable changes made from March 4, 2021,
 through May 19, 2021.
@@ -920,7 +920,7 @@ We published the following articles on the Dart blog:
 [blog-3-13-21]: https://medium.com/dartlang/dart-in-google-summer-of-code-2021-e89eaf1d177a
 
 
-## March 3, 2021: 2.12 release
+## March 3, 2021: 2.12 release {:#march-3-2021-2-12-release}
 
 This section lists notable changes made from October 2, 2020,
 through March 3, 2021.
@@ -997,7 +997,7 @@ We published the following articles on the Dart blog:
 [blog-12-7-20]: https://medium.com/dartlang/why-nullable-types-7dd93c28c87a
 [blog-11-19-20]: https://medium.com/dartlang/announcing-dart-null-safety-beta-87610fee6730
 
-## October 1, 2020: 2.10 release
+## October 1, 2020: 2.10 release {:#october-1-2020-2-10-release}
 
 This section lists notable changes made from
 July 1 through October 1, 2020.

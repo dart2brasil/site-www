@@ -25,7 +25,7 @@ but unless they are then implemented by or mixed into an enum declaration,
 no objects can actually implement the type of that class or mixin.
 :::
 
-## Declaring simple enums
+## Declaring simple enums {:#declaring-simple-enums}
 
 To declare a simple enumerated type,
 use the `enum` keyword and
@@ -41,7 +41,7 @@ You can also use [trailing commas][] when declaring an enumerated type
 to help prevent copy-paste errors.
 :::
 
-## Declaring enhanced enums
+## Declaring enhanced enums {:#declaring-enhanced-enums}
 
 Dart also allows enum declarations to declare classes
 with fields, methods, and const constructors
@@ -101,7 +101,7 @@ enum Vehicle implements Comparable<Vehicle> {
 Enhanced enums require a [language version][] of at least 2.17.
 :::
 
-## Using enums
+## Using enums {:#using-enums}
 
 Access the enumerated values like
 any other [static variable][]:

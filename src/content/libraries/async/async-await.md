@@ -43,7 +43,7 @@ clicking the **Run** button.
 If you need help, expand the **Hint** or **Solution** dropdown
 after each exercise.
 
-## Why asynchronous code matters
+## Why asynchronous code matters {:#why-asynchronous-code-matters}
 
 Asynchronous operations let your program complete work
 while waiting for another operation to finish. 
@@ -65,7 +65,7 @@ Most asynchronous functions are just async Dart functions
 that depend, possibly deep down, 
 on an inherently asynchronous computation.
 
-### Example: Incorrectly using an asynchronous function
+### Example: Incorrectly using an asynchronous function {:#example-incorrectly-using-an-asynchronous-function}
 
 The following example shows the wrong way
 to use an asynchronous function (`fetchUserOrder()`). 
@@ -127,7 +127,7 @@ print the desired value ("Large Latte") to the console.
 :::
 
 
-## What is a future?
+## What is a future? {:#what-is-a-future}
 
 A future (lower case "f") is an instance
 of the [Future][] (capitalized "F") class. 
@@ -139,31 +139,31 @@ _Uncompleted_ is a Dart term referring to the state of a future
 before it has produced a value.
 :::
 
-### Uncompleted
+### Uncompleted {:#uncompleted}
 
 When you call an asynchronous function, it returns an uncompleted future.
 That future is waiting for the function's asynchronous operation
 to finish or to throw an error.
 
-### Completed
+### Completed {:#completed}
 
 If the asynchronous operation succeeds, 
 the future completes with a value. 
 Otherwise, it completes with an error.
 
-#### Completing with a value
+#### Completing with a value {:#completing-with-a-value}
 
 A future of type `Future<T>` completes with a value of type `T`.
 For example, a future with type `Future<String>` produces a string value.
 If a future doesn't produce a usable value, 
 then the future's type is `Future<void>`.
 
-#### Completing with an error
+#### Completing with an error {:#completing-with-an-error}
 
 If the asynchronous operation performed by the function fails for any reason,
 the future completes with an error.
 
-### Example: Introducing futures
+### Example: Introducing futures {:#example-introducing-futures}
 
 In the following example, `fetchUserOrder()` returns a future
 that completes after printing to the console. 
@@ -192,7 +192,7 @@ the console shows the output from line 8("Fetching user order...")
 before the output from `fetchUserOrder()` ("Large Latte").
 This is because `fetchUserOrder()` delays before it prints "Large Latte".
 
-### Example: Completing with an error
+### Example: Completing with an error {:#example-completing-with-an-error}
 
 Run the following example to see how a future completes with an error.
 A bit later you'll learn how to handle the error.
@@ -237,7 +237,7 @@ with the `async` and `await` keywords.
 * **future**: an instance of the Dart `Future` class.
 :::
 
-## Working with futures: async and await
+## Working with futures: async and await {:#working-with-futures-async-and-await}
 
 The `async` and `await` keywords provide a declarative way
 to define asynchronous functions and use their results. 
@@ -281,7 +281,7 @@ The only differences are highlighted in the asynchronous example,
 which—if your window is wide enough—is 
 to the right of the synchronous example.
 
-#### Example: synchronous functions
+#### Example: synchronous functions {:#example-synchronous-functions}
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
 ```dart
@@ -312,7 +312,7 @@ Your order is: Instance of 'Future<String>'
 As shown in following two examples,
 it operates like synchronous code.
 
-#### Example: asynchronous functions
+#### Example: asynchronous functions {:#example-asynchronous-functions}
 
 <?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>
 ```dart
@@ -358,13 +358,13 @@ The asynchronous example is different in three ways:
   asynchronous expression. The `await` keyword only works within an `async` function.
 :::
 
-### Execution flow with async and await
+### Execution flow with async and await {:#execution-flow-with-async-and-await}
 
 An `async` function runs synchronously until the first `await` keyword. 
 This means that within an `async` function body, 
 all synchronous code before the first `await` keyword executes immediately.
 
-### Example: Execution within async functions
+### Example: Execution within async functions {:#example-execution-within-async-functions}
 
 Run the following example to see how execution proceeds
 within an `async` function body. 
@@ -407,7 +407,7 @@ print('Awaiting user order...');
 Notice that timing of the output shifts, now that `print('Awaiting user order')`
 appears after the first `await` keyword in `printOrderMessage()`.
 
-### Exercise: Practice using async and await
+### Exercise: Practice using async and await {:#exercise-practice-using-async-and-await}
 
 The following exercise is a failing unit test
 that contains partially completed code snippets. 
@@ -424,7 +424,7 @@ which are provided for you:
 
 {:.table .table-striped}
 
-#### Part 1: `reportUserRole()`
+#### Part 1: `reportUserRole()` {:#part-1-reportuserrole}
 
 Add code to the `reportUserRole()` function so that it does the following:
 
@@ -435,7 +435,7 @@ Add code to the `reportUserRole()` function so that it does the following:
   * Example return value: `"User role: tester"`
 * Gets the user role by calling the provided function `fetchRole()`.
 
-#### Part 2: `reportLogins()`
+#### Part 2: `reportLogins()` {:#part-2-reportlogins}
 
 Implement an `async` function `reportLogins()` so that it does the following:
 
@@ -603,7 +603,7 @@ Future<String> _asyncEquals({
 
 </details>
 
-## Handling errors
+## Handling errors {:#handling-errors}
 
 To handle errors in an `async` function, use try-catch:
 
@@ -621,7 +621,7 @@ Within an `async` function, you can write
 [try-catch clauses](/language/error-handling#catch)
 the same way you would in synchronous code.
 
-### Example: async and await with try-catch
+### Example: async and await with try-catch {:#example-async-and-await-with-try-catch}
 
 Run the following example to see how to handle an error
 from an asynchronous function. 
@@ -652,7 +652,7 @@ void main() async {
 }
 ```
 
-### Exercise: Practice handling errors
+### Exercise: Practice handling errors {:#exercise-practice-handling-errors}
 
 The following exercise provides practice handling errors with asynchronous code,
 using the approach described in the previous section. To simulate asynchronous
@@ -801,7 +801,7 @@ const _noCatch = 'NO_CATCH';
 
 </details>
 
-## Exercise: Putting it all together
+## Exercise: Putting it all together {:#exercise-putting-it-all-together}
 
 It's time to practice what you've learned in one final exercise.
 To simulate asynchronous operations, this exercise provides the asynchronous
@@ -816,13 +816,13 @@ functions `fetchUsername()` and `logoutUser()`:
 
 Write the following:
 
-####  Part 1: `addHello()`
+#### Part 1: `addHello()` {:#part-1-addhello}
 
 * Write a function `addHello()` that takes a single `String` argument.
 * `addHello()` returns its `String` argument preceded by `'Hello '`.<br>
   Example: `addHello('Jon')` returns `'Hello Jon'`.
 
-####  Part 2: `greetUser()`
+#### Part 2: `greetUser()` {:#part-2-greetuser}
 
 * Write a function `greetUser()` that takes no arguments.
 * To get the username, `greetUser()` calls the provided asynchronous
@@ -832,7 +832,7 @@ Write the following:
   Example: If `fetchUsername()` returns `'Jenny'`, then
   `greetUser()` returns `'Hello Jenny'`.
 
-####  Part 3: `sayGoodbye()`
+#### Part 3: `sayGoodbye()` {:#part-3-saygoodbye}
 
 * Write a function `sayGoodbye()` that does the following:
   * Takes no arguments.
@@ -1058,7 +1058,7 @@ bool _logoutSucceeds = false;
 
 </details>
 
-## Which lints work for futures?
+## Which lints work for futures? {:#which-lints-work-for-futures}
 
 To catch common mistakes that arise while working with async and futures,
 [enable](/tools/analysis#individual-rules) the following lints:
@@ -1069,7 +1069,7 @@ To catch common mistakes that arise while working with async and futures,
 [`discarded_futures`]: /tools/linter-rules/discarded_futures
 [`unawaited_futures`]: /tools/linter-rules/unawaited_futures
 
-## What's next?
+## What's next? {:#what-s-next}
 
 Congratulations, you've finished the tutorial! If you'd like to learn more, here
 are some suggestions for where to go next:

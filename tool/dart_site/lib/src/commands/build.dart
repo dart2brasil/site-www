@@ -34,7 +34,8 @@ final class BuildSiteCommand extends Command<int> {
       ],
       environment: {
         'PRODUCTION': '$productionRelease',
-      },
+      }
+      , runInShell: true
     );
 
     await stdout.addStream(process.stdout);

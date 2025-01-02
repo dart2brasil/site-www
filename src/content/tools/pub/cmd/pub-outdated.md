@@ -15,7 +15,7 @@ and get advice on how to update them.
 include using the most recent stable package versions,
 so you can get the latest bug fixes and improvements.
 
-## Overview
+## Overview {:#overview}
 
 Here's how you can use `dart pub outdated` to help you
 update the dependencies of a package that you own
@@ -45,7 +45,7 @@ try running [`dart pub deps`][] and searching the output for
 the name of each out-of-date package.
 
 
-## Example
+## Example {:#example}
 
 Here's an example of running `dart pub outdated` on
 an example that has several out-of-date dependencies.
@@ -153,7 +153,7 @@ after updating the packages.
 :::
 
 
-## Output columns
+## Output columns {:#output-columns}
 
 The output of `dart pub outdated` has four columns of version information
 for each out-of-date dependency.
@@ -193,47 +193,47 @@ When you edit the `pubspec.yaml` file,
 you generally update the **dependencies** and **dev_dependencies** sections
 so that each package uses the versions in the **Resolvable** column.
 
-## Options
+## Options {:#options}
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `--[no-]dependency-overrides`
+### `--[no-]dependency-overrides` {:#no-dependency-overrides}
 
 By default, accounts for [`dependency_overrides`][]
 when resolving package constraints (`--dependency-overrides`).
 To not consider overrides, use `--no-dependency_overrides`.
 
-### `--[no-]dev-dependencies`
+### `--[no-]dev-dependencies` {:#no-dev-dependencies}
 
 By default, accounts for [dev dependencies][dev dependency]
 when resolving package constraints (`--dev-dependencies`).
 To not consider dev dependencies, use `--no-dev-dependencies`.
 
-### `--json`
+### `--json` {:#json}
 
 Generates output in JSON format.
 
-### `--[no-]prereleases`
+### `--[no-]prereleases` {:#no-prereleases}
 
 By default, includes prereleases
 when determining the last package versions (`--prereleases`).
 To not consider preleases, use `--no-prereleases`.
 
-### `--[no-]transitive`
+### `--[no-]transitive` {:#no-transitive}
 
 By default, doesn't include [transitive dependencies][]
 as part of the output (`--no-transitive`).
 To include transitive dependencies, use `--transitive`.
 
-### `--[no-]up-to-date`
+### `--[no-]up-to-date` {:#no-up-to-date}
 
 By default, doesn't include dependencies that
 are at the latest version (`--no-up-to-date`).
 To include up-to-date dependencies, use `--up-to-date`.
 
 
-## In a workspace
+## In a workspace {:#in-a-workspace}
 
 In a [Pub workspace](/tools/pub/workspaces) `dart pub outdated` lists
 all dependencies 

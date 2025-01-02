@@ -15,18 +15,18 @@ on. For information on how to prepare your package for publishing,
 and what files you should include or exclude,
 see [Publishing packages](/tools/pub/publishing).
 
-## Options
+## Options {:#options}
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `--dry-run` or `-n`
+### `--dry-run` or `-n` {:#dry-run-or-n}
 
 With this, pub goes through the validation process but does not actually upload
 the package. This is useful if you want to see if your package meets all of the
 publishing requirements before you're ready to actually go public.
 
-### `--force` or `-f`
+### `--force` or `-f` {:#force-or-f}
 
 With this, pub does not ask for confirmation before publishing. Normally, it
 shows you the package contents and asks for you to confirm the upload.
@@ -36,7 +36,7 @@ In the event of warnings, your package *is* uploaded.
 To ensure that your package has no warnings before uploading,
 either don't use `--force`, or use `--dry-run` first.
 
-### `--skip-validation`
+### `--skip-validation` {:#skip-validation}
 
 Publishes without going through the client-side validation process or resolving dependencies.
 This is useful for advanced users who know why the validation fails and wish to side step a particular issues.
@@ -48,7 +48,7 @@ to publish the second package immediately, by side-stepping client-side validati
 
 {% render 'pub-problems.md' %}
 
-## In a workspace
+## In a workspace {:#in-a-workspace}
 
 In a [Pub workspace](/tools/pub/workspaces) `dart pub publish` publishes
 the package in the current directory.

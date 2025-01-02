@@ -12,9 +12,9 @@ description: You have questions about Dart, we have answers.
 
 This page collects some of the top questions from the community.
 
-## General
+## General {:#general}
 
-### Q. Is there a specification for Dart?
+### Q. Is there a specification for Dart? {:#q-is-there-a-specification-for-dart}
 
 Yes. [EMCA-408][emca408] covers the Dart Programming Language Specification.
 
@@ -35,7 +35,7 @@ The latest in-progress version covers to Dart 2.13-dev.
 To learn more about the specification, review
 the [Dart language specification](/resources/language/spec) page.
 
-### Q. How are you taking input on changes to Dart?
+### Q. How are you taking input on changes to Dart? {:#q-how-are-you-taking-input-on-changes-to-dart}
 
 The team listens to feedback, reads [issues][SDK issues],
 and reviews patches from contributors.
@@ -55,15 +55,15 @@ and welcomes distributed committers.
 
 ---
 
-## Language
+## Language {:#language}
 
-### Q. Isn't Dart a lot like Java?
+### Q. Isn't Dart a lot like Java? {:#q-isn-t-dart-a-lot-like-java}
 
 Dart has some similarities with Java.
 To review brief examples with familiar syntax,
 reviewed the code samples in the [Introduction to Dart](/language).
 
-### Q. How does Dart relate to Go?
+### Q. How does Dart relate to Go? {:#q-how-does-dart-relate-to-go}
 
 Google started the Dart and Go language projects.
 These independent projects have different goals.
@@ -71,7 +71,7 @@ As a result, they make different choices.
 The languages have very different natures,
 but team members learn from each others' work.
 
-### Q. Why isn't Dart more like Haskell / Smalltalk / Python / Scala / other language?
+### Q. Why isn't Dart more like Haskell / Smalltalk / Python / Scala / other language? {:#q-why-isn-t-dart-more-like-haskell-smalltalk-python-scala-other-language}
 
 Various reasons that depend on the comparison language.
 
@@ -89,13 +89,13 @@ This can cause performance to vary in non-obvious ways to the programmer.
 : Dart chooses to trade off some of this arbitrary runtime modification
   to achieve better performance and more productive tools.
 
-### Q. Why isn't Dart syntax more exciting?
+### Q. Why isn't Dart syntax more exciting? {:#q-why-isn-t-dart-syntax-more-exciting}
 
 Some nice syntactic features exist, like the `this.` constructor args and `=>`
 for one-line functions.
 Dart chooses _familiarity_ over _excitement_.
 
-### Q. Does Dart have reflection capabilities?
+### Q. Does Dart have reflection capabilities? {:#q-does-dart-have-reflection-capabilities}
 
 **Servers and command-line scripts**
 : Yes, Dart supports reflection from the [mirrors API][dart-mirror].
@@ -103,7 +103,7 @@ Dart chooses _familiarity_ over _excitement_.
 **Web or Flutter apps**
 : No, Dart doesn't support write to [web or Flutter apps][Flutter no mirrors].
 
-### Q. Can Dart add tuples, partial evaluation, ...?
+### Q. Can Dart add tuples, partial evaluation, ...? {:#q-can-dart-add-tuples-partial-evaluation}
 
 Future releases might include a feature you want.
 Some features don't fit the nature of the language.
@@ -136,9 +136,9 @@ and fair communication about them.
 
 ---
 
-## Typing
+## Typing {:#typing}
 
-### Q. Does Dart use static typing?
+### Q. Does Dart use static typing? {:#q-does-dart-use-static-typing}
 
 Yes, Dart uses static typing. To learn more, consult [Dart's type system][].
 
@@ -151,7 +151,7 @@ you can annotate any variable with `dynamic`.
 This `dynamic` type is static, but can contain any type at _runtime_.
 That removes many benefits of a type-safe language from that variable.
 
-### Q. Why are generics covariant?
+### Q. Why are generics covariant? {:#q-why-are-generics-covariant}
 
 Covariant generics fit a common intuition that programmers have, and very often
 this intuition is correct, such as in the common "read-only" use of a generic.
@@ -171,36 +171,36 @@ Again, we're trying to be pragmatic, and we think the outcome is reasonable.
 
 ---
 
-## Usage and tools
+## Usage and tools {:#usage-and-tools}
 
-### Q. Does Dart support JSON?
+### Q. Does Dart support JSON? {:#q-does-dart-support-json}
 
 Yes. To learn more, consult the [JSON] converters in the [dart:convert][] library.
 
-### Q. Can Dart run on the server?
+### Q. Can Dart run on the server? {:#q-can-dart-run-on-the-server}
 
 Yes. To learn more, consult [Dart on the Server].
 
-### Q. How do I use third party code, or share code?
+### Q. How do I use third party code, or share code? {:#q-how-do-i-use-third-party-code-or-share-code}
 
 Search for packages on the [pub.dev site][pub],
 the package-hosting service for Dart and Flutter.
 Use the [`pub` command][pub-cmd] to package your code and upload to the site.
 
-### Q. Do I need to use a particular editor or IDE to write Dart code?
+### Q. Do I need to use a particular editor or IDE to write Dart code? {:#q-do-i-need-to-use-a-particular-editor-or-ide-to-write-dart-code}
 
 No. You can try out Dart code with [DartPad,][DartPad] and then use your favorite
 editor or IDE for development. Some full-featured IDEs such as IntelliJ IDEA,
 WebStorm, and Visual Studio Code have Dart plugins. Open source Dart plugins
 also exist for a number of editors. For more information, see the [Dart tools][].
 
-### Q. Can I build an Android app with Dart?
+### Q. Can I build an Android app with Dart? {:#q-can-i-build-an-android-app-with-dart}
 
 Yes! You can build an Android app using the [Flutter][Flutter] framework
 and the Dart language.
 Any Flutter app you write will also work on iOS, the web, and desktop platforms.
 
-### Q. What are some real-world production deployments of Dart?
+### Q. What are some real-world production deployments of Dart? {:#q-what-are-some-real-world-production-deployments-of-dart}
 
 Google Ads, AdSense, AdMob, and the Google Assistant use Dart.
 A significant portion of Google's revenue flows through these apps.
@@ -227,9 +227,9 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 
 ---
 
-## Native execution
+## Native execution {:#native-execution}
 
-### Q. Is Dart single-threaded?
+### Q. Is Dart single-threaded? {:#q-is-dart-single-threaded}
 
 No. On native targets,
 [Dart's isolate API][isolate] can start multiple execution threads when needed.
@@ -243,7 +243,7 @@ Concurrency works differently in Dart web apps.
 To learn more, consult
 [Is Dart single-threaded on the web?](#q-is-dart-single-threaded-on-the-web)
 
-### Q. Can I compile Dart code to native code?
+### Q. Can I compile Dart code to native code? {:#q-can-i-compile-dart-code-to-native-code}
 
 Yes. When compiling apps that target devices like desktops or mobile,
 [Dart Native](/overview#native-platform)
@@ -253,14 +253,14 @@ ahead-of-time (AOT) compiler to produce native code.
 The [Flutter][] framework uses Dart's native compilation capability to produce
 fast native apps.
 
-### Q. Can I compile a Dart program for running in a terminal?
+### Q. Can I compile a Dart program for running in a terminal? {:#q-can-i-compile-a-dart-program-for-running-in-a-terminal}
 
 Yes. Dart programs can be compiled to native code for running in a
 macOS Terminal, Windows command prompt, or a Linux shell.
 
 Consult the [dart compile][] documentation.
 
-### Q. Which is faster: AOT- or JIT-compiled code?
+### Q. Which is faster: AOT- or JIT-compiled code? {:#q-which-is-faster-aot-or-jit-compiled-code}
 
 It depends.
 How Dart compiles code produces apps with different performance characteristics.
@@ -273,9 +273,9 @@ How Dart compiles code produces apps with different performance characteristics.
 
 ---
 
-## Web execution
+## Web execution {:#web-execution}
 
-### Q. What browsers do you support as JavaScript compilation targets?
+### Q. What browsers do you support as JavaScript compilation targets? {:#q-what-browsers-do-you-support-as-javascript-compilation-targets}
 
 The _production_ web compiler supports the last two major releases of
 the following browsers:
@@ -288,7 +288,7 @@ the following browsers:
 The [_development_ JavaScript compiler](/tools/webdev#serve) only
 supports Chrome for debugging.
 
-### Q. Is Dart single-threaded on the web?
+### Q. Is Dart single-threaded on the web? {:#q-is-dart-single-threaded-on-the-web}
 
 Somewhat.
 Dart web apps can't use isolates.
@@ -300,7 +300,7 @@ To learn more, consult
 
 [web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
 
-### Q. Will any valid Dart code compile to JavaScript?
+### Q. Will any valid Dart code compile to JavaScript? {:#q-will-any-valid-dart-code-compile-to-javascript}
 
 Any valid Dart code should compile to JavaScript.
 Some libraries run only on the server or in Flutter.
@@ -308,7 +308,7 @@ Consider the `dart:io` library.
 It provides access to operating system files
 and directories with APIs not available to the browser.
 
-### Q. Why does Dart have two ways to compile to JavaScript?
+### Q. Why does Dart have two ways to compile to JavaScript? {:#q-why-does-dart-have-two-ways-to-compile-to-javascript}
 
 Both ways use the `webdev` command.
 The `webdev build` command produces minified JavaScript optimized for
@@ -319,14 +319,14 @@ debugging.
 To learn more,
 consult the [Dart JavaScript compiler reference](/tools/dart-compile#js)
 
-### Q. How are floating point numbers handled when compiled to JavaScript?
+### Q. How are floating point numbers handled when compiled to JavaScript? {:#q-how-are-floating-point-numbers-handled-when-compiled-to-javascript}
 
 JavaScript has only one number representation: an IEEE-754 double-precision
 floating-point number. This means that any number—integer or floating
 point—is represented as a double. JavaScript has typed data arrays,
 and the mapping from native Dart typed lists to JavaScript typed arrays is trivial.
 
-### Q. How does Dart handle integers when compiling to JavaScript?
+### Q. How does Dart handle integers when compiling to JavaScript? {:#q-how-does-dart-handle-integers-when-compiling-to-javascript}
 
 JavaScript stores all [numbers as doubles][number-js].
 This limits integers to 53-bit precision
@@ -337,7 +337,7 @@ stay within the small integer (SMI) range.
 In JavaScript, that range falls between -2<sup>31</sup> to 2<sup>31</sup>
 (-2,147,483,647 to 2,147,483,648 including 0).
 
-### Q. How are typed lists handled when compiled to JavaScript?
+### Q. How are typed lists handled when compiled to JavaScript? {:#q-how-are-typed-lists-handled-when-compiled-to-javascript}
 
 JavaScript offers 32-bit typed arrays compatible with Dart's typed lists.
 This maps as `Float32List` becoming a `Float32Array`.

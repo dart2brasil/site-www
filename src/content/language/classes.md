@@ -23,7 +23,7 @@ add functionality to a class without changing the class or creating a subclass.
 [Class modifiers][] allow you to control how libraries can subtype a class.
 
 
-## Using class members
+## Using class members {:#using-class-members}
 
 Objects have *members* consisting of functions and data (*methods* and
 *instance variables*, respectively). When you call a method, you *invoke*
@@ -53,7 +53,7 @@ var a = p?.y;
 ```
 
 
-## Using constructors
+## Using constructors {:#using-constructors}
 
 You can create an object using a *constructor*.
 Constructor names can be either <code><em>ClassName</em></code> or
@@ -132,7 +132,7 @@ assert(!identical(a, b)); // NOT the same instance!
 ```
 
 
-## Getting an object's type
+## Getting an object's type {:#getting-an-object-s-type}
 
 To get an object's type at runtime,
 you can use the `Object` property `runtimeType`,
@@ -154,7 +154,7 @@ Up to here, you've seen how to _use_ classes.
 The rest of this section shows how to _implement_ classes.
 
 
-## Instance variables
+## Instance variables {:#instance-variables}
 
 Here's how you declare instance variables:
 
@@ -242,7 +242,7 @@ after the constructor body starts, you can use one of the following:
 * Use `late final`, but [_be careful:_][late-final-ivar]
   a `late final` without an initializer adds a setter to the API.
 
-## Implicit interfaces
+## Implicit interfaces {:#implicit-interfaces}
 
 Every class implicitly defines an interface containing all the instance
 members of the class and of any interfaces it implements. If you want to
@@ -291,11 +291,11 @@ class Point implements Comparable, Location {...}
 ```
 
 
-## Class variables and methods
+## Class variables and methods {:#class-variables-and-methods}
 
 Use the `static` keyword to implement class-wide variables and methods.
 
-### Static variables
+### Static variables {:#static-variables}
 
 Static variables (class variables) are useful for class-wide state and
 constants:
@@ -320,7 +320,7 @@ This page follows the
 of preferring `lowerCamelCase` for constant names.
 :::
 
-### Static methods
+### Static methods {:#static-methods}
 
 Static methods (class methods) don't operate on an instance, and thus
 don't have access to `this`.

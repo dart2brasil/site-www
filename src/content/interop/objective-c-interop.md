@@ -28,7 +28,7 @@ see the [C interop guide](/interop/c-interop).
 You can generate Objective-C headers for Swift APIs,
 enabling `dart:ffi` and `package:ffigen` to interact with Swift.
 
-## Objective-C Example
+## Objective-C Example {:#objective-c-example}
 
 This guide walks you through [an example]({{example}})
 that uses `package:ffigen` to generate bindings for
@@ -292,7 +292,7 @@ then check the status, and wait for the duration of the audio file:
     }
 ```
 
-### Callbacks and multithreading limitations
+### Callbacks and multithreading limitations {:#callbacks-and-multithreading-limitations}
 
 Multithreading issues are the biggest limitation
 of Dart's experimental support for Objective-C interop.
@@ -351,13 +351,13 @@ as long as you keep these limitations in mind.
 [`NativeCallable.isolateLocal`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.isolateLocal.html
 [`NativeCallable.listener`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.listener.html
 
-## Swift example
+## Swift example {:#swift-example}
 
 This [example][swift_example] demonstrates how to
 make a Swift class compatible with Objective-C,
 generate a wrapper header, and invoke it from Dart code.
 
-### Generating the Objective-C wrapper header
+### Generating the Objective-C wrapper header {:#generating-the-objective-c-wrapper-header}
 
 Swift APIs can be made compatible with Objective-C,
 by using the `@objc` annotation.

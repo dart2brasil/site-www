@@ -13,7 +13,7 @@ without notice.
 :::
 
 
-## Using experiment flags with command-line tools
+## Using experiment flags with command-line tools {:#using-experiment-flags-with-command-line-tools}
 
 To use an experiment with Dart SDK [command line tools](/tools/sdk),
 pass the corresponding flag to the tool.
@@ -26,7 +26,7 @@ $ dart run --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 
 
-## Using experiment flags with the Dart analyzer (command-line and IDE)
+## Using experiment flags with the Dart analyzer (command-line and IDE) {:#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide}
 
 To enable experiments affecting analysis,
 use the `enable-experiment` key in the [analysis options file][].
@@ -43,12 +43,12 @@ analyzer:
 [analysis options file]: /tools/analysis#the-analysis-options-file
 
 
-## Using experiment flags with IDEs
+## Using experiment flags with IDEs {:#using-experiment-flags-with-ides}
 
 To enable experiments related to running or debugging apps in IDEs,
 edit the launch configuration.
 
-### Visual Studio Code
+### Visual Studio Code {:#visual-studio-code}
 
 In `launch.json` under `configurations`,
 add a new `toolArgs` key containing the desired flags.
@@ -74,7 +74,7 @@ For more information, consult the documentation for
 [VSC instructions]: https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
 
 
-### Android Studio
+### Android Studio {:#android-studio}
 
 Under `VMOptions` add the desired flags.
 Example:
@@ -95,7 +95,7 @@ For more information, consult the instructions for
 [AS instructions]: {{site.android-dev}}/studio/run/rundebugconfig
 
 
-## More information
+## More information {:#more-information}
 
 * For a complete list of experiments,
   see the Dart SDK file [`experimental_features.yaml`.][]
@@ -105,4 +105,3 @@ For more information, consult the instructions for
 
 [`experimental_features.yaml`.]: {{site.repo.dart.sdk}}/blob/main/tools/experimental_features.yaml
 [flags]: {{site.repo.dart.sdk}}/blob/main/docs/process/experimental-flags.md
-

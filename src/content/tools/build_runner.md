@@ -29,7 +29,7 @@ For example, the [sass_builder][] package implements a builder that
 generates `.css` files from `.scss` and `.sass` files.
 
 
-## Setting up build_runner
+## Setting up build_runner {:#setting-up-build-runner}
 
 To use build_runner, add a [dev dependency][] on **build_runner**
 to your app's pubspec:
@@ -50,7 +50,7 @@ As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
 $ dart pub get
 ```
 
-## Using built-in commands
+## Using built-in commands {:#using-built-in-commands}
 
 The following is an example of using the build_runner **build** command:
 
@@ -78,7 +78,7 @@ watch
   Responds to changes by performing incremental rebuilds.
 
 
-## More information
+## More information {:#more-information}
 
 If you're working on web-specific code,
 see the [webdev page.][webdev]

@@ -24,7 +24,7 @@ For more information, see the
 :::
 
 
-## The Future API and callbacks
+## The Future API and callbacks {:#the-future-api-and-callbacks}
 
 Functions that use the Future API register callbacks that handle
 the value (or the error) that completes a Future. For example:
@@ -45,7 +45,7 @@ In the example above, if `myFunc()`'s Future completes with a value,
 completes with an error, `then()`'s callback does not fire, and
 `catchError()`'s callback does.
 
-## Examples of using then() with catchError()
+## Examples of using then() with catchError() {:#examples-of-using-then-with-catcherror}
 
 Chained `then()` and `catchError()` invocations are a common pattern when
 dealing with Futures, and can be thought of as the rough equivalent of
@@ -53,7 +53,7 @@ try-catch blocks.
 
 The next few sections give examples of this pattern.
 
-### catchError() as a comprehensive error handler
+### catchError() as a comprehensive error handler {:#catcherror-as-a-comprehensive-error-handler}
 
 The following example deals with throwing an exception from within `then()`'s
 callback and demonstrates `catchError()`'s versatility as an error handler:
@@ -78,7 +78,7 @@ with that error. The error is also handled by `catchError()`.
 Regardless of whether the error originated within `myFunc()` or within
 `then()`, `catchError()` successfully handles it.
 
-### Error handling within then()
+### Error handling within then() {:#error-handling-within-then}
 
 For more granular error handling, you can register a second (`onError`)
 callback within `then()` to handle Futures completed with errors. Here is
@@ -109,7 +109,7 @@ In general, implementing two different error handling strategies is not
 recommended: register a second callback only if there is a compelling reason
 to catch the error within `then()`.
 
-### Errors in the middle of a long chain
+### Errors in the middle of a long chain {:#errors-in-the-middle-of-a-long-chain}
 
 It is common to have a succession of `then()` calls, and catch errors
 generated from any part of the chain using `catchError()`:
@@ -148,7 +148,7 @@ this means that after `two()` is called, the Future returned by every
 subsequent `then()`completes with `two()`'s error. That error is finally
 handled within `catchError()`.
 
-### Handling specific errors
+### Handling specific errors {:#handling-specific-errors}
 
 What if we want to catch a specific error? Or catch more than one error?
 
@@ -177,7 +177,7 @@ void main() {
 }
 ```
 
-## Async try-catch-finally using whenComplete()
+## Async try-catch-finally using whenComplete() {:#async-try-catch-finally-using-whencomplete}
 
 If `then().catchError()` mirrors a try-catch, `whenComplete()` is the
 equivalent of 'finally'. The callback registered within `whenComplete()` is
@@ -198,7 +198,7 @@ We want to call `server.close` regardless of whether `server.post()` produces
 a valid response, or an error. We ensure this happens by placing it inside
 `whenComplete()`.
 
-### Completing the Future returned by whenComplete()
+### Completing the Future returned by whenComplete() {:#completing-the-future-returned-by-whencomplete}
 
 If no error is emitted from within `whenComplete()`, its Future completes
 the same way as the Future that `whenComplete()` is invoked on. This is
@@ -240,7 +240,7 @@ void main() {
 }
 ```
 
-### Errors originating within whenComplete()
+### Errors originating within whenComplete() {:#errors-originating-within-whencomplete}
 
 If `whenComplete()`'s callback throws an error, then `whenComplete()`'s Future
 completes with that error:
@@ -259,7 +259,7 @@ void main() {
 ```
 
 
-## Potential problem: failing to register error handlers early
+## Potential problem: failing to register error handlers early {:#potential-problem-failing-to-register-error-handlers-early}
 
 It is crucial that error handlers are installed before a Future completes:
 this avoids scenarios where a Future completes with an error, the error
@@ -295,7 +295,7 @@ void main() {
 }
 ```
 
-## Potential problem: accidentally mixing synchronous and asynchronous errors
+## Potential problem: accidentally mixing synchronous and asynchronous errors {:#potential-problem-accidentally-mixing-synchronous-and-asynchronous-errors}
 
 Functions that return Futures should almost always emit their errors in the
 future. Since we do not want the caller of such functions to have to
@@ -343,7 +343,7 @@ Because using `catchError()` does not capture the error, a client of
 `parseAndRead()` would implement a separate error-handling strategy for this
 error.
 
-### Solution: Using Future.sync() to wrap your code
+### Solution: Using Future.sync() to wrap your code {:#solution-using-future-sync-to-wrap-your-code}
 
 A common pattern for ensuring that no synchronous error is accidentally
 thrown from a function is to wrap the function body inside a new `Future.sync()`
@@ -404,7 +404,7 @@ Future fragileFunc() {
 also prevents errors from *accidentally* leaking out of your function.
 
 
-## More information
+## More information {:#more-information}
 
 See the [Future API reference][Future class]
 for more information on Futures.

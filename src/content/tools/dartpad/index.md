@@ -24,7 +24,7 @@ Here's what DartPad looks like when configured to run Dart:
    alt="Showcases what a Hello World app looks like in DartPad">
 
 
-## Library support
+## Library support {:#library-support}
 
 DartPad supports the `dart:*` [core libraries](/libraries) marked
 as [multi-platform][].
@@ -38,7 +38,7 @@ besides the [currently supported packages][].
 [multi-platform]: /libraries#multi-platform-libraries
 [currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
-## Getting started
+## Getting started {:#getting-started}
 
 To get familiar with DartPad,
 try running some samples and creating a simple command-line app.
@@ -95,7 +95,7 @@ start by creating a new snippet:
    If you run the app, a compilation error appears in the console.
 
 
-## Checking Dart version info
+## Checking Dart version info {:#checking-dart-version-info}
 
 The language features and APIs that DartPad supports depend on the
 **Dart SDK** version that DartPad is currently using.

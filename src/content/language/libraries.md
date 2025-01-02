@@ -26,7 +26,7 @@ like `public` or `private`, consult
 
 [library]: /tools/pub/glossary#library
 
-## Using libraries
+## Using libraries {:#using-libraries}
 
 Use `import` to specify how a namespace from one library is used in the
 scope of another library.
@@ -56,7 +56,7 @@ import 'package:test/test.dart';
 *URLs* (uniform resource locators) are a common kind of URI.
 :::
 
-### Specifying a library prefix
+### Specifying a library prefix {:#specifying-a-library-prefix}
 
 If you import two libraries that have conflicting identifiers, then you
 can specify a prefix for one or both libraries. For example, if library1
@@ -75,7 +75,7 @@ Element element1 = Element();
 lib2.Element element2 = lib2.Element();
 ```
 
-### Importing only part of a library
+### Importing only part of a library {:#importing-only-part-of-a-library}
 
 If you want to use only part of a library, you can selectively import
 the library. For example:
@@ -161,7 +161,7 @@ attach them to a `library` declaration at the start of the file.
 library;
 ```
 
-## Implementing libraries
+## Implementing libraries {:#implementing-libraries}
 
 See
 [Create Packages](/tools/pub/create-packages)

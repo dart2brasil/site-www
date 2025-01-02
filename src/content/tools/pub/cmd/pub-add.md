@@ -20,7 +20,7 @@ and then calling `dart pub get`:
 $ dart pub add http
 ```
 
-## Version constraint
+## Version constraint {:#version-constraint}
 
 By default, `dart pub add` uses the
 latest stable version of the package from the [pub.dev site]({{site.pub}})
@@ -41,7 +41,7 @@ If the specified package is an existing dependency in your `pubspec.yaml`,
 `dart pub add` updates the dependency's constraint
 to the one specified in the command.
 
-## Dev dependency
+## Dev dependency {:#dev-dependency}
 
 The `dev:` prefix adds the package as a [dev dependency][],
 instead of as a regular dependency.
@@ -60,7 +60,7 @@ _Previously the `-d, --dev` option_:
 $ dart pub add --dev foo
 ```
 
-## Dependency override
+## Dependency override {:#dependency-override}
 
 To specify a [dependency override][], add the `override:` prefix and
 include a [version constraint](#version-constraint) or
@@ -83,7 +83,7 @@ dependency_overrides:
   foo: 1.0.0
 ```
 
-## Source descriptor
+## Source descriptor {:#source-descriptor}
 
 :::version-note
 The YAML-formatted descriptor syntax was added in Dart 2.19.
@@ -108,7 +108,7 @@ The syntax reflects how dependencies are written in `pubspec.yaml`.
 '<package>:{"<source>":"<descriptor>"[,"<source>":"<descriptor>"],"version":"<constraint>"}'
 ```
 
-### `git`
+### `git` {:#git}
 
 Adds a [git dependency](/tools/pub/dependencies#git-packages).
 
@@ -123,7 +123,7 @@ within that repository:
 $ dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
 ```
 
-#### `url`
+#### `url` {:#url}
 
 Depends on the package in the specified Git repository.
 
@@ -133,7 +133,7 @@ _Previously the `--git-url=<git_repo_url>` option_:
 $ dart pub add http --git-url=https://github.com/my/http.git
 ```
 
-#### `ref`
+#### `ref` {:#ref}
 
 With `url`, depends on the specified branch or commit of a Git repo.
 
@@ -149,7 +149,7 @@ With `url`, specifies the location of a package within a Git repo.
 
 _Previously the `--git-path=<directory_path>` option_.
 
-### `hosted`
+### `hosted` {:#hosted}
 
 Adds a [hosted dependency][] that depends on
 the package server at the specified URL.
@@ -174,7 +174,7 @@ _Previously the `--path=<directory_path>` option_.
 
 [path dependency]: /tools/pub/dependencies#path-packages
 
-### `sdk`
+### `sdk` {:#sdk}
 
 Adds a package from the specified SDK source.
 
@@ -188,7 +188,7 @@ _Previously the `--sdk=<sdk_name>` option_:
 $ dart pub add foo --sdk=flutter
 ```
 
-## Options
+## Options {:#options}
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
@@ -203,22 +203,22 @@ will add both the `test` and `http` packages
 as dev dependencies.
 :::
 
-### `--[no-]offline`
+### `--[no-]offline` {:#no-offline}
 
 {% render 'tools/pub-option-no-offline.md' %}
 
-### `-n, --dry-run`
+### `-n, --dry-run` {:#n-dry-run}
 
 Reports which dependencies would change,
 but doesn't change any.
 
-### `--[no-]precompile`
+### `--[no-]precompile` {:#no-precompile}
 
 By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
-## In a workspace
+## In a workspace {:#in-a-workspace}
 
 In a [Pub workspace](/tools/pub/workspaces) `dart pub add` will add
 dependencies only to the package in the current directory.

@@ -11,12 +11,12 @@ when using an IDE or editor with Dart support.
 
 {% render 'tools/dart-tool-note.md' %}
 
-## Specify files to format
+## Specify files to format {:#specify-files-to-format}
 
 To reformat one or more Dart files,
 provide a list of paths to the desired files or directories.
 
-### Specify one path
+### Specify one path {:#specify-one-path}
 
 Provide the path to one file or directory.
 If you specify a directory, `dart format` affects only the files in the
@@ -28,7 +28,7 @@ immediate directory; it doesn't recurse through subdirectories.
 $ dart format .
 ```
 
-### Specify multiple paths
+### Specify multiple paths {:#specify-multiple-paths}
 
 To specify multiple files or directories, use a space-delimited list.
 
@@ -39,7 +39,7 @@ plus one Dart file under the `bin` directory:
 $ dart format lib bin/updater.dart 
 ```
 
-### Prevent overwriting Dart files
+### Prevent overwriting Dart files {:#prevent-overwriting-dart-files}
 
 By default, `dart format` **overwrites** the Dart files.
 
@@ -51,7 +51,7 @@ By default, `dart format` **overwrites** the Dart files.
 $ dart format -o show bin/my_app.dart
 ```
 
-## Notify when changes occur
+## Notify when changes occur {:#notify-when-changes-occur}
 
 To make `dart format` return an exit code when formatting changes occur,
 add the `--set-exit-if-changed` flag.
@@ -66,7 +66,7 @@ so they can trigger another action in response to the exit code.
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
-## Use trailing commas
+## Use trailing commas {:#use-trailing-commas}
 
 Use optional trailing commas for better automatic formatting.
 Add a trailing comma at the end of parameter lists in functions, methods,
@@ -74,7 +74,7 @@ and constructors.
 This helps the formatter insert the appropriate amount of line breaks for
 Dart-style code.
 
-## Affects whitespace only
+## Affects whitespace only {:#affects-whitespace-only}
 
 To avoid making changes that might be unsafe,
 `dart format` only affects whitespace.
@@ -84,7 +84,7 @@ consistent code than just whitespace, though.
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
 
-## Learn more
+## Learn more {:#learn-more}
 
 To learn about additional command-line options,
 use the `dart help` command or see the documentation for the

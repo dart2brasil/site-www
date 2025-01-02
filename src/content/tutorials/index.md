@@ -37,7 +37,7 @@ which are fundamental to most Dart programs.
 {% include 'server-tutorials.md' %}
 
 <a id="more-tutorials" aria-hidden="true"></a>
-## Keep learning
+## Keep learning {:#keep-learning}
 
 To get more experience developing with Dart,
 try more of the available tutorials!

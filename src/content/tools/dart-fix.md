@@ -23,7 +23,7 @@ check out this [deep dive][] on **Decoding Flutter**:
 [deep dive]: {{site.yt.watch}}/OBIuSrg_Quo
 
 <a id="usage"></a>
-## Apply fixes
+## Apply fixes {:#apply-fixes}
 
 To preview proposed changes, use the `--dry-run` flag:
 
@@ -51,7 +51,7 @@ You can sometimes increase the number of fixes that can be applied
 by enabling additional lints.
 Note that not all diagnostics have associated fixes.
 
-### Example
+### Example {:#example}
 
 Imagine you have code like this:
 
@@ -116,7 +116,7 @@ see [Customizing static analysis](/tools/analysis).
 [`dart analyze`]: /tools/dart-analyze
 [language version]: /resources/language/evolution#language-versioning
 
-## VS Code support
+## VS Code support {:#vs-code-support}
 
 When you open a project in VS Code,
 the Dart plugin scans the project for issues that `dart fix` can repair.

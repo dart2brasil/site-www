@@ -28,7 +28,7 @@ being developed by other people, what happens when they change it?
 They don't want to break your app, and you certainly don't either.
 We solve this problem by _versioning_.
 
-## A name and a number
+## A name and a number {:#a-name-and-a-number}
 
 When you depend on some piece of outside code,
 you don't just say "My app uses `widgets`." You say, "My app uses
@@ -47,7 +47,7 @@ version number set in the package filename.
 They might include `-0` or `-beta`.
 These notations don't affect dependency resolution.
 
-## Resolving shared dependencies
+## Resolving shared dependencies {:#resolving-shared-dependencies}
 
 Depending on specific versions works fine when your dependency
 _graph_ is really just a dependency _tree_. If your app depends on a bunch of
@@ -63,7 +63,7 @@ So your app uses `widgets` and `templates`, and _both_ of those use
 `widgets` wants to use `collection 2.3.5` and `templates` wants
 `collection 2.3.7`? What if they don't agree on a version?
 
-### Unshared libraries (the npm approach)
+### Unshared libraries (the npm approach) {:#unshared-libraries-the-npm-approach}
 
 One option is to just let the app use both
 versions of `collection`. It will have two copies of the library at different
@@ -89,7 +89,7 @@ Because of this (and because of the headaches of trying to debug an app that
 has multiple versions of things with the same name), we've decided npm's model
 isn't a good fit.
 
-### Version lock (the dead end approach)
+### Version lock (the dead end approach) {:#version-lock-the-dead-end-approach}
 
 Instead, when you depend on a package, your app only uses a single copy of
 that package. When you have a shared dependency, everything that depends on it
@@ -119,7 +119,7 @@ That's called **version lock**:
 everyone wants to move their dependencies forward,
 but no one can take the first step because it forces everyone else to as well.
 
-### Version constraints (the Dart approach)
+### Version constraints (the Dart approach) {:#version-constraints-the-dart-approach}
 
 To solve version lock, we loosen the constraints that packages place on their
 dependencies. If `widgets` and `templates` can both indicate a _range_ of
@@ -142,7 +142,7 @@ You could pick version `2.3.7` for `collection`.
 A single concrete version would satisfy constraints for
 both the `widgets` and `templates` packages.
 
-## Semantic versions
+## Semantic versions {:#semantic-versions}
 
 When you add a dependency to your package, you'll sometimes want to specify a
 range of versions to allow. How do you know what range to pick? You need to be
@@ -192,7 +192,7 @@ For simplicity's sake, avoid using `+` after the version reaches `1.0.0`.
 We've got almost all of the pieces we need to deal with versioning and API
 evolution now. Let's see how they play together and what pub does.
 
-## Constraint solving
+## Constraint solving {:#constraint-solving}
 
 When you define your package, you list its
 [immediate dependencies][immediate-dep].
@@ -232,7 +232,7 @@ The highest version number that fits in all of those ranges is `1.8.2`, so pub
 picks that. That means your app _and every package your app uses_ will all use
 `collection 1.8.2`.
 
-## Constraint context
+## Constraint context {:#constraint-context}
 
 The fact that selecting a package version takes into account _every_ package
 that depends on it has an important consequence: _the specific version that
@@ -276,7 +276,7 @@ the _other_ constraint that `otherapp` places on it.
 This is why each app gets its own `package_config.json` file: The concrete version selected for each package depends on
 the entire dependency graph of the containing app.
 
-## Constraint solving for exported dependencies
+## Constraint solving for exported dependencies {:#constraint-solving-for-exported-dependencies}
 
 Package authors must define package constraints with care.
 Consider the following scenario:
@@ -340,7 +340,7 @@ as well.
 Using this convention ensures that users have the correct version of
 both packages, even if one is not a direct dependency.
 
-## Lockfiles
+## Lockfiles {:#lockfiles}
 
 So once pub has solved your app's version constraints, then what? The end
 result is a complete list of every package that your app depends on either
@@ -364,7 +364,7 @@ the exact same versions of every dependency when they build your app. You'll
 also use this when you deploy your app so you can ensure that your production
 servers are using the exact same packages that you're developing with.
 
-## When things go wrong
+## When things go wrong {:#when-things-go-wrong}
 
 Of course, all of this presumes that your dependency graph is perfect and
 flawless. Even with version ranges and pub's constraint solving and
@@ -373,7 +373,7 @@ dangers of versionitis.
 
 You might run into one of the following problems:
 
-### You can have disjoint constraints
+### You can have disjoint constraints {:#you-can-have-disjoint-constraints}
 
 Lets say your app uses `widgets` and
 `templates` and both use `collection`. But `widgets` asks for a version
@@ -381,7 +381,7 @@ of it between `1.0.0` and `2.0.0` and `templates` wants something
 between `3.0.0` and `4.0.0`. Those ranges don't even overlap. There's no
 possible version that would work.
 
-### You can have ranges that don't contain a released version
+### You can have ranges that don't contain a released version {:#you-can-have-ranges-that-don-t-contain-a-released-version}
 
 Let's say after putting all of the constraints on a shared dependency together,
 you have a narrow range of `>=1.2.4 <1.2.6`. It's not an empty range.
@@ -390,7 +390,7 @@ But maybe they never released that version.
 Instead, they went straight from `1.2.3` to `1.3.0`.
 You've got a range with nothing inside it.
 
-### You can have an unstable graph
+### You can have an unstable graph {:#you-can-have-an-unstable-graph}
 
 This is, by far, the most challenging part of
 pub's version solving process. The process was described as _build up the
@@ -440,7 +440,7 @@ your app, and when this happens pub reports an error and tells you what's
 going on. It definitely won't leave you in some weird state where you
 think things can work but won't.
 
-## Summary
+## Summary {:#summary}
 
 In summary:
 

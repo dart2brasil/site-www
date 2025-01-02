@@ -23,7 +23,7 @@ For more information about the analyzer, see
 [potentially non-nullable]: /resources/glossary#potentially-non-nullable
 [public library]: /resources/glossary#public-library
 
-## Diagnostics
+## Diagnostics {:#diagnostics}
 
 The analyzer produces the following diagnostics for code that
 doesn't conform to the language specification or
@@ -52,7 +52,7 @@ that might work in unexpected ways.
 [package-logging]: https://pub.dev/packages/logging
 [refutable pattern]: https://dart.dev/resources/glossary#refutable-pattern
 
-### abi_specific_integer_invalid
+### abi_specific_integer_invalid {:#abi-specific-integer-invalid}
 
 _Classes extending 'AbiSpecificInteger' must have exactly one const constructor,
 no other members, and no type parameters._
@@ -144,7 +144,7 @@ final class C extends AbiSpecificInteger {
 }
 ```
 
-### abi_specific_integer_mapping_extra
+### abi_specific_integer_mapping_extra {:#abi-specific-integer-mapping-extra}
 
 _Classes extending 'AbiSpecificInteger' must have exactly one
 'AbiSpecificIntegerMapping' annotation specifying the mapping from ABI to a 'NativeType' integer with a fixed size._
@@ -184,7 +184,7 @@ final class C extends AbiSpecificInteger {
 }
 ```
 
-### abi_specific_integer_mapping_missing
+### abi_specific_integer_mapping_missing {:#abi-specific-integer-mapping-missing}
 
 _Classes extending 'AbiSpecificInteger' must have exactly one
 'AbiSpecificIntegerMapping' annotation specifying the mapping from ABI to a 'NativeType' integer with a fixed size._
@@ -221,7 +221,7 @@ final class C extends AbiSpecificInteger {
 }
 ```
 
-### abi_specific_integer_mapping_unsupported
+### abi_specific_integer_mapping_unsupported {:#abi-specific-integer-mapping-unsupported}
 
 _Invalid mapping to '{0}'; only mappings to 'Int8', 'Int16', 'Int32', 'Int64',
 'Uint8', 'Uint16', 'UInt32', and 'Uint64' are supported._
@@ -267,7 +267,7 @@ final class C extends AbiSpecificInteger {
 }
 ```
 
-### abstract_field_initializer
+### abstract_field_initializer {:#abstract-field-initializer}
 
 _Abstract fields can't have initializers._
 
@@ -316,7 +316,7 @@ abstract class C {
 }
 ```
 
-### abstract_sealed_class
+### abstract_sealed_class {:#abstract-sealed-class}
 
 _A 'sealed' class can't be marked 'abstract' because it's already implicitly
 abstract._
@@ -352,7 +352,7 @@ If the class should be both abstract and sealed, then remove the
 sealed class C {}
 ```
 
-### abstract_super_member_reference
+### abstract_super_member_reference {:#abstract-super-member-reference}
 
 _The {0} '{1}' is always abstract in the supertype._
 
@@ -381,7 +381,7 @@ class B extends A {
 Remove the invocation of the abstract member, possibly replacing it with an
 invocation of a concrete member.
 
-### ambiguous_export
+### ambiguous_export {:#ambiguous-export}
 
 _The name '{0}' is defined in the libraries '{1}' and '{2}'._
 
@@ -429,7 +429,7 @@ export 'a.dart';
 export 'b.dart' hide C;
 ```
 
-### ambiguous_extension_member_access
+### ambiguous_extension_member_access {:#ambiguous-extension-member-access}
 
 _A member named '{0}' is defined in '{1}' and '{2}', and neither is more
 specific._
@@ -491,7 +491,7 @@ void f(String s) {
 }
 ```
 
-### ambiguous_import
+### ambiguous_import {:#ambiguous-import}
 
 _The name '{0}' is defined in the libraries {1}._
 
@@ -557,7 +557,7 @@ import 'b.dart' as b;
 void f(a.C c1, b.C c2) {}
 ```
 
-### ambiguous_set_or_map_literal_both
+### ambiguous_set_or_map_literal_both {:#ambiguous-set-or-map-literal-both}
 
 _The literal can't be either a map or a set because it contains at least one
 literal map entry or a spread operator spreading a 'Map', and at least one element which is neither of these._
@@ -611,7 +611,7 @@ union(Map<String, String> a, List<String> b, Map<String, String> c) =>
     {...a, for (String s in b) s: s, ...c};
 ```
 
-### ambiguous_set_or_map_literal_either
+### ambiguous_set_or_map_literal_either {:#ambiguous-set-or-map-literal-either}
 
 _This literal must be either a map or a set, but the elements don't have enough
 information for type inference to work._
@@ -685,7 +685,7 @@ union(a, b) {
 }
 ```
 
-### annotation_on_pointer_field
+### annotation_on_pointer_field {:#annotation-on-pointer-field}
 
 _Fields in a struct class whose type is 'Pointer' shouldn't have any
 annotations._
@@ -725,7 +725,7 @@ final class C extends Struct {
 }
 ```
 
-### argument_must_be_a_constant
+### argument_must_be_a_constant {:#argument-must-be-a-constant}
 
 _Argument '{0}' must be a constant._
 
@@ -781,7 +781,7 @@ int Function(int) fromPointer(Pointer<NativeFunction<Int8 Function(Int8)>> p) {
 }
 ```
 
-### argument_must_be_native
+### argument_must_be_native {:#argument-must-be-native}
 
 _Argument to 'Native.addressOf' must be annotated with @Native_
 
@@ -849,7 +849,7 @@ void g() {
 }
 ```
 
-### argument_type_not_assignable
+### argument_type_not_assignable {:#argument-type-not-assignable}
 
 _The argument type '{0}' can't be assigned to the parameter type '{1}'. {2}_
 
@@ -903,7 +903,7 @@ String f(String x) => x;
 String g(num y) => f(y as String);
 ```
 
-### argument_type_not_assignable_to_error_handler
+### argument_type_not_assignable_to_error_handler {:#argument-type-not-assignable-to-error-handler}
 
 _The argument type '{0}' can't be assigned to the parameter type '{1}
 Function(Object)' or '{1} Function(Object, StackTrace)'._
@@ -961,7 +961,7 @@ void f(Future<int> f) {
 }
 ```
 
-### assert_in_redirecting_constructor
+### assert_in_redirecting_constructor {:#assert-in-redirecting-constructor}
 
 _A redirecting constructor can't have an 'assert' initializer._
 
@@ -1008,7 +1008,7 @@ class C {
 }
 ```
 
-### asset_directory_does_not_exist
+### asset_directory_does_not_exist {:#asset-directory-does-not-exist}
 
 _The asset directory '{0}' doesn't exist._
 
@@ -1037,7 +1037,7 @@ If the path is correct, then create a directory at that path.
 If the path isn't correct, then change the path to match the path of the
 directory containing the assets.
 
-### asset_does_not_exist
+### asset_does_not_exist {:#asset-does-not-exist}
 
 _The asset file '{0}' doesn't exist._
 
@@ -1065,7 +1065,7 @@ If the path is correct, then create a file at that path.
 If the path isn't correct, then change the path to match the path of the
 file containing the asset.
 
-### asset_field_not_list
+### asset_field_not_list {:#asset-field-not-list}
 
 _The value of the 'assets' field is expected to be a list of relative file
 paths._
@@ -1097,7 +1097,7 @@ flutter:
     - assets/
 ```
 
-### asset_missing_path
+### asset_missing_path {:#asset-missing-path}
 
 _Asset map entry must contain a 'path' field._
 
@@ -1133,7 +1133,7 @@ flutter:
       - premium
 ```
 
-### asset_not_string
+### asset_not_string {:#asset-not-string}
 
 _Assets are required to be file paths (strings)._
 
@@ -1166,7 +1166,7 @@ flutter:
     - assets/image.gif
 ```
 
-### asset_not_string_or_map
+### asset_not_string_or_map {:#asset-not-string-or-map}
 
 _An asset value is required to be a file path (string) or map._
 
@@ -1211,7 +1211,7 @@ flutter:
     - assets/image.gif
 ```
 
-### asset_path_not_string
+### asset_path_not_string {:#asset-path-not-string}
 
 _Asset paths are required to be file paths (strings)._
 
@@ -1248,7 +1248,7 @@ flutter:
       - premium
 ```
 
-### assignment_of_do_not_store
+### assignment_of_do_not_store {:#assignment-of-do-not-store}
 
 _'{0}' is marked 'doNotStore' and shouldn't be assigned to a field or top-level
 variable._
@@ -1279,7 +1279,7 @@ var x = [!f()!];
 Replace references to the field or variable with invocations of the
 function producing the value.
 
-### assignment_to_const
+### assignment_to_const {:#assignment-to-const}
 
 _Constant variables can't be assigned a value._
 
@@ -1329,7 +1329,7 @@ void f() {
 }
 ```
 
-### assignment_to_final
+### assignment_to_final {:#assignment-to-final}
 
 _'{0}' can't be used as a setter because it's final._
 
@@ -1368,7 +1368,7 @@ f(C c) {
 }
 ```
 
-### assignment_to_final_local
+### assignment_to_final_local {:#assignment-to-final-local}
 
 _The final variable '{0}' can only be set once._
 
@@ -1403,7 +1403,7 @@ void f() {
 }
 ```
 
-### assignment_to_final_no_setter
+### assignment_to_final_no_setter {:#assignment-to-final-no-setter}
 
 _There isn't a setter named '{0}' in class '{1}'._
 
@@ -1459,7 +1459,7 @@ void f(C c) {
 }
 ```
 
-### assignment_to_function
+### assignment_to_function {:#assignment-to-function}
 
 _Functions can't be assigned a value._
 
@@ -1506,7 +1506,7 @@ void g() {
 }
 ```
 
-### assignment_to_method
+### assignment_to_method {:#assignment-to-method}
 
 _Methods can't be assigned a value._
 
@@ -1534,7 +1534,7 @@ class C {
 
 Rewrite the code so that there isn't an assignment to a method.
 
-### assignment_to_type
+### assignment_to_type {:#assignment-to-type}
 
 _Types can't be assigned a value._
 
@@ -1570,7 +1570,7 @@ void g() {
 }
 ```
 
-### async_for_in_wrong_context
+### async_for_in_wrong_context {:#async-for-in-wrong-context}
 
 _The async for-in loop can only be used in an async function._
 
@@ -1628,7 +1628,7 @@ void f(list) {
 }
 ```
 
-### await_in_late_local_variable_initializer
+### await_in_late_local_variable_initializer {:#await-in-late-local-variable-initializer}
 
 _The 'await' expression can't be used in a 'late' local variable's initializer._
 
@@ -1669,7 +1669,7 @@ Future<int> f() async {
 }
 ```
 
-### await_of_incompatible_type
+### await_of_incompatible_type {:#await-of-incompatible-type}
 
 _The 'await' expression can't be used for an expression with an extension type
 that is not a subtype of 'Future'._
@@ -1718,7 +1718,7 @@ void f(E e) async {
 }
 ```
 
-### body_might_complete_normally
+### body_might_complete_normally {:#body-might-complete-normally}
 
 _The body might complete normally, causing 'null' to be returned, but the return
 type, '{0}', is a potentially non-nullable type._
@@ -1795,7 +1795,7 @@ class C<T> {
 }
 ```
 
-### body_might_complete_normally_catch_error
+### body_might_complete_normally_catch_error {:#body-might-complete-normally-catch-error}
 
 _This 'onError' handler must return a value assignable to '{0}', but ends
 without returning a value._
@@ -1841,7 +1841,7 @@ void g(Future<void> f) {
 }
 ```
 
-### body_might_complete_normally_nullable
+### body_might_complete_normally_nullable {:#body-might-complete-normally-nullable}
 
 _This function has a nullable return type of '{0}', but ends without returning a
 value._
@@ -1880,7 +1880,7 @@ String? f() {
 }
 ```
 
-### break_label_on_switch_member
+### break_label_on_switch_member {:#break-label-on-switch-member}
 
 _A break label resolves to the 'case' or 'default' statement._
 
@@ -1935,7 +1935,7 @@ void f(int i) {
 }
 ```
 
-### built_in_identifier_as_type
+### built_in_identifier_as_type {:#built-in-identifier-as-type}
 
 _The built-in identifier '{0}' can't be used as a type._
 
@@ -1961,7 +1961,7 @@ Replace the built-in identifier with the name of a valid type:
 List<int> x;
 ```
 
-### built_in_identifier_in_declaration
+### built_in_identifier_in_declaration {:#built-in-identifier-in-declaration}
 
 _The built-in identifier '{0}' can't be used as a prefix name._
 
@@ -1995,7 +1995,7 @@ extension [!mixin!] on int {}
 
 Choose a different name for the declaration.
 
-### case_block_not_terminated
+### case_block_not_terminated {:#case-block-not-terminated}
 
 _The last statement of the 'case' should be 'break', 'continue', 'rethrow',
 'return', or 'throw'._
@@ -2038,7 +2038,7 @@ void f(int x) {
 }
 ```
 
-### case_expression_type_implements_equals
+### case_expression_type_implements_equals {:#case-expression-type-implements-equals}
 
 _The switch case expression type '{0}' can't override the '==' operator._
 
@@ -2137,7 +2137,7 @@ void f(C c) {
 }
 ```
 
-### case_expression_type_is_not_switch_expression_subtype
+### case_expression_type_is_not_switch_expression_subtype {:#case-expression-type-is-not-switch-expression-subtype}
 
 _The switch case expression type '{0}' must be a subtype of the switch
 expression type '{1}'._
@@ -2188,7 +2188,7 @@ void f(int s) {
 }
 ```
 
-### cast_from_nullable_always_fails
+### cast_from_nullable_always_fails {:#cast-from-nullable-always-fails}
 
 _This cast will always throw an exception because the nullable local variable
 '{0}' is not assigned._
@@ -2236,7 +2236,7 @@ void f() {
 }
 ```
 
-### cast_from_null_always_fails
+### cast_from_null_always_fails {:#cast-from-null-always-fails}
 
 _This cast always throws an exception because the expression always evaluates to
 'null'._
@@ -2267,7 +2267,7 @@ void f(Null n) {
 }
 ```
 
-### cast_to_non_type
+### cast_to_non_type {:#cast-to-non-type}
 
 _The name '{0}' isn't a type, so it can't be used in an 'as' expression._
 
@@ -2295,7 +2295,7 @@ num x = 0;
 int y = x as int;
 ```
 
-### class_used_as_mixin
+### class_used_as_mixin {:#class-used-as-mixin}
 
 _The class '{0}' can't be used as a mixin because it's neither a mixin class nor
 a mixin._
@@ -2331,7 +2331,7 @@ mixin class M {}
 class C with M {}
 ```
 
-### collection_element_from_deferred_library
+### collection_element_from_deferred_library {:#collection-element-from-deferred-library}
 
 _Constant values from a deferred library can't be used as keys in a 'const' map
 literal._
@@ -2404,7 +2404,7 @@ suitable value:
 var l = const [0];
 ```
 
-### compound_implements_finalizable
+### compound_implements_finalizable {:#compound-implements-finalizable}
 
 _The class '{0}' can't implement Finalizable._
 
@@ -2440,7 +2440,7 @@ final class S extends Struct {
 }
 ```
 
-### concrete_class_has_enum_superinterface
+### concrete_class_has_enum_superinterface {:#concrete-class-has-enum-superinterface}
 
 _Concrete classes can't have 'Enum' as a superinterface._
 
@@ -2491,7 +2491,7 @@ abstract class A implements Enum {}
 class B {}
 ```
 
-### concrete_class_with_abstract_member
+### concrete_class_with_abstract_member {:#concrete-class-with-abstract-member}
 
 _'{0}' must have a method body because '{1}' isn't abstract._
 
@@ -2532,7 +2532,7 @@ abstract class C {
 }
 ```
 
-### conflicting_constructor_and_static_member
+### conflicting_constructor_and_static_member {:#conflicting-constructor-and-static-member}
 
 _'{0}' can't be used to name both a constructor and a static field in this
 class._
@@ -2579,7 +2579,7 @@ class C {
 
 Rename either the member or the constructor.
 
-### conflicting_generic_interfaces
+### conflicting_generic_interfaces {:#conflicting-generic-interfaces}
 
 _The {0} '{1}' can't implement both '{2}' and '{3}' because the type arguments
 are different._
@@ -2616,7 +2616,7 @@ class B implements I<String> {}
 class C extends A<String> implements B {}
 ```
 
-### conflicting_type_variable_and_container
+### conflicting_type_variable_and_container {:#conflicting-type-variable-and-container}
 
 _'{0}' can't be used to name both a type parameter and the class in which the
 type parameter is defined._
@@ -2656,7 +2656,7 @@ Rename either the type parameter, or the class, mixin, or extension:
 class C<T> {}
 ```
 
-### conflicting_type_variable_and_member
+### conflicting_type_variable_and_member {:#conflicting-type-variable-and-member}
 
 _'{0}' can't be used to name both a type parameter and a member in this class._
 
@@ -2697,7 +2697,7 @@ class C<T> {
 }
 ```
 
-### constant_pattern_never_matches_value_type
+### constant_pattern_never_matches_value_type {:#constant-pattern-never-matches-value-type}
 
 _The matched value type '{0}' can never be equal to this constant of type
 '{1}'._
@@ -2740,7 +2740,7 @@ void f(bool x) {
 }
 ```
 
-### constant_pattern_with_non_constant_expression
+### constant_pattern_with_non_constant_expression {:#constant-pattern-with-non-constant-expression}
 
 _The expression of a constant pattern must be a valid constant._
 
@@ -2786,7 +2786,7 @@ void f(int e, int i) {
 }
 ```
 
-### const_constructor_param_type_mismatch
+### const_constructor_param_type_mismatch {:#const-constructor-param-type-mismatch}
 
 _A value of type '{0}' can't be assigned to a parameter of type '{1}' in a const
 constructor._
@@ -2834,7 +2834,7 @@ void f() {
 }
 ```
 
-### const_constructor_with_field_initialized_by_non_const
+### const_constructor_with_field_initialized_by_non_const {:#const-constructor-with-field-initialized-by-non-const}
 
 _Can't define the 'const' constructor because the field '{0}' is initialized
 with a non-constant value._
@@ -2880,7 +2880,7 @@ class C {
 }
 ```
 
-### const_constructor_with_non_const_super
+### const_constructor_with_non_const_super {:#const-constructor-with-non-const-super}
 
 _A constant constructor can't call a non-constant super constructor of '{0}'._
 
@@ -2952,7 +2952,7 @@ class B extends A {
 }
 ```
 
-### const_constructor_with_non_final_field
+### const_constructor_with_non_final_field {:#const-constructor-with-non-final-field}
 
 _Can't define a const constructor for a class with non-final fields._
 
@@ -2998,7 +2998,7 @@ class C {
 }
 ```
 
-### const_deferred_class
+### const_deferred_class {:#const-deferred-class}
 
 _Deferred classes can't be created with 'const'._
 
@@ -3043,7 +3043,7 @@ import 'dart:convert' as convert;
 const json2 = convert.JsonCodec();
 ```
 
-### const_initialized_with_non_constant_value
+### const_initialized_with_non_constant_value {:#const-initialized-with-non-constant-value}
 
 _Const variables must be initialized with a constant value._
 
@@ -3081,7 +3081,7 @@ var x = 0;
 final y = x;
 ```
 
-### const_initialized_with_non_constant_value_from_deferred_library
+### const_initialized_with_non_constant_value_from_deferred_library {:#const-initialized-with-non-constant-value-from-deferred-library}
 
 _Constant values from a deferred library can't be used to initialize a 'const'
 variable._
@@ -3126,7 +3126,7 @@ reference:
 const pi = 3.14;
 ```
 
-### const_instance_field
+### const_instance_field {:#const-instance-field}
 
 _Only static fields can be declared as const._
 
@@ -3165,7 +3165,7 @@ class C {
 }
 ```
 
-### const_map_key_not_primitive_equality
+### const_map_key_not_primitive_equality {:#const-map-key-not-primitive-equality}
 
 _The type of a key in a constant map can't override the '==' operator, or
 'hashCode', but the class '{0}' does._
@@ -3235,7 +3235,7 @@ class C {
 final map = {C() : 0};
 ```
 
-### const_not_initialized
+### const_not_initialized {:#const-not-initialized}
 
 _The constant '{0}' must be initialized._
 
@@ -3260,7 +3260,7 @@ Add an initializer:
 const c = 'c';
 ```
 
-### const_set_element_not_primitive_equality
+### const_set_element_not_primitive_equality {:#const-set-element-not-primitive-equality}
 
 <a id="const_set_element_type_implements_equals" aria-hidden="true"></a>_(Previously known as `const_set_element_type_implements_equals`)_
 
@@ -3332,7 +3332,7 @@ class C {
 final set = {C()};
 ```
 
-### const_spread_expected_list_or_set
+### const_spread_expected_list_or_set {:#const-spread-expected-list-or-set}
 
 _A list or a set is expected in this spread._
 
@@ -3362,7 +3362,7 @@ const dynamic list1 = [42];
 const List<int> list2 = [...list1];
 ```
 
-### const_spread_expected_map
+### const_spread_expected_map {:#const-spread-expected-map}
 
 _A map is expected in this spread._
 
@@ -3390,7 +3390,7 @@ const dynamic map1 = {'answer': 42};
 const Map<String, int> map2 = {...map1};
 ```
 
-### const_with_non_const
+### const_with_non_const {:#const-with-non-const}
 
 _The constructor being called isn't a const constructor._
 
@@ -3436,7 +3436,7 @@ class A {
 A f() => A();
 ```
 
-### const_with_non_constant_argument
+### const_with_non_constant_argument {:#const-with-non-constant-argument}
 
 _Arguments of a constant creation must be constant expressions._
 
@@ -3470,7 +3470,7 @@ class C {
 C f(int i) => C(i);
 ```
 
-### const_with_type_parameters
+### const_with_type_parameters {:#const-with-type-parameters}
 
 _A constant constructor tearoff can't use a type parameter as a type argument._
 
@@ -3522,7 +3522,7 @@ class C<T> {
 C<T> newC<T>() => C<T>();
 ```
 
-### continue_label_invalid
+### continue_label_invalid {:#continue-label-invalid}
 
 <a id="continue_label_on_switch" aria-hidden="true"></a>_(Previously known as `continue_label_on_switch`)_
 
@@ -3553,7 +3553,7 @@ void f(int i) {
 Find a different way to achieve the control flow you need; for example, by
 introducing a loop that re-executes the `switch` statement.
 
-### creation_of_struct_or_union
+### creation_of_struct_or_union {:#creation-of-struct-or-union}
 
 _Subclasses of 'Struct' and 'Union' are backed by native memory, and can't be
 instantiated by a generative constructor._
@@ -3605,7 +3605,7 @@ void f() {
 }
 ```
 
-### creation_with_non_type
+### creation_with_non_type {:#creation-with-non-type}
 
 _The name '{0}' isn't a class._
 
@@ -3651,7 +3651,7 @@ void g() {
 }
 ```
 
-### dead_code
+### dead_code {:#dead-code}
 
 _Dead code._
 
@@ -3706,7 +3706,7 @@ void f({bool skipPrinting = true}) {
 }
 ```
 
-### dead_code_catch_following_catch
+### dead_code_catch_following_catch {:#dead-code-catch-following-catch}
 
 _Dead code: Catch clauses after a 'catch (e)' or an 'on Object catch (e)' are
 never reached._
@@ -3756,7 +3756,7 @@ void f() {
 }
 ```
 
-### dead_code_on_catch_subtype
+### dead_code_on_catch_subtype {:#dead-code-on-catch-subtype}
 
 _Dead code: This on-catch block won't be executed because '{0}' is a subtype of
 '{1}' and hence will have been caught already._
@@ -3807,7 +3807,7 @@ void f() {
 }
 ```
 
-### dead_null_aware_expression
+### dead_null_aware_expression {:#dead-null-aware-expression}
 
 _The left operand can't be null, so the right operand is never executed._
 
@@ -3885,7 +3885,7 @@ class C {
 }
 ```
 
-### default_list_constructor
+### default_list_constructor {:#default-list-constructor}
 
 _The default 'List' constructor isn't available when null safety is enabled._
 
@@ -3926,7 +3926,7 @@ computed, then use `List.generate`:
 var l = List.generate(3, (i) => i);
 ```
 
-### default_value_in_function_type
+### default_value_in_function_type {:#default-value-in-function-type}
 
 _Parameters in a function type can't have default values._
 
@@ -3956,7 +3956,7 @@ void f(void Function([int p]) g) {
 }
 ```
 
-### default_value_in_redirecting_factory_constructor
+### default_value_in_redirecting_factory_constructor {:#default-value-in-redirecting-factory-constructor}
 
 _Default values aren't allowed in factory constructors that redirect to another
 constructor._
@@ -4010,7 +4010,7 @@ class B implements A {
 }
 ```
 
-### default_value_on_required_parameter
+### default_value_on_required_parameter {:#default-value-on-required-parameter}
 
 _Required named parameters can't have a default value._
 
@@ -4044,7 +4044,7 @@ modifier:
 void log({String message = 'no message'}) {}
 ```
 
-### deferred_import_of_extension
+### deferred_import_of_extension {:#deferred-import-of-extension}
 
 _Imports of deferred libraries must hide all extensions._
 
@@ -4121,7 +4121,7 @@ void f() {
 }
 ```
 
-### definitely_unassigned_late_local_variable
+### definitely_unassigned_late_local_variable {:#definitely-unassigned-late-local-variable}
 
 _The late local variable '{0}' is definitely unassigned at this point._
 
@@ -4155,7 +4155,7 @@ void f(bool b) {
 }
 ```
 
-### dependencies_field_not_map
+### dependencies_field_not_map {:#dependencies-field-not-map}
 
 _The value of the '{0}' field is expected to be a map._
 
@@ -4185,7 +4185,7 @@ dependencies:
   meta: ^1.0.2
 ```
 
-### deprecated_colon_for_default_value
+### deprecated_colon_for_default_value {:#deprecated-colon-for-default-value}
 
 _Using a colon as the separator before a default value is deprecated and will
 not be supported in language version 3.0 and later._
@@ -4214,7 +4214,7 @@ Replace the colon with an equal sign.
 void f({int i = 0}) {}
 ```
 
-### deprecated_export_use
+### deprecated_export_use {:#deprecated-export-use}
 
 _The ability to import '{0}' indirectly is deprecated._
 
@@ -4267,7 +4267,7 @@ A? a;
 If the name isn't available, then look for instructions from the library
 author or contact them directly to find out how to update your code.
 
-### deprecated_field
+### deprecated_field {:#deprecated-field}
 
 _The '{0}' field is no longer used and can be removed._
 
@@ -4295,7 +4295,7 @@ Remove the deprecated key:
 name: example
 ```
 
-### deprecated_member_use
+### deprecated_member_use {:#deprecated-member-use}
 
 _'{0}' is deprecated and shouldn't be used._
 
@@ -4322,7 +4322,7 @@ void f(C c) {
 The documentation for declarations that are annotated with `@deprecated`
 should indicate what code to use in place of the deprecated code.
 
-### deprecated_member_use_from_same_package
+### deprecated_member_use_from_same_package {:#deprecated-member-use-from-same-package}
 
 _'{0}' is deprecated and shouldn't be used._
 
@@ -4349,7 +4349,7 @@ The fix depends on what's been deprecated and what the replacement is. The
 documentation for deprecated declarations should indicate what code to use
 in place of the deprecated code.
 
-### deprecated_new_in_comment_reference
+### deprecated_new_in_comment_reference {:#deprecated-new-in-comment-reference}
 
 _Using the 'new' keyword in a comment reference is deprecated._
 
@@ -4402,7 +4402,7 @@ class C {
 }
 ```
 
-### deprecated_subtype_of_function
+### deprecated_subtype_of_function {:#deprecated-subtype-of-function}
 
 _Extending 'Function' is deprecated._
 
@@ -4435,7 +4435,7 @@ whole clause if `Function` is the only type in the clause:
 class F {}
 ```
 
-### disallowed_type_instantiation_expression
+### disallowed_type_instantiation_expression {:#disallowed-type-instantiation-expression}
 
 _Only a generic type, generic function, generic instance method, or generic
 constructor can have type arguments._
@@ -4475,7 +4475,7 @@ void f() {
 }
 ```
 
-### division_optimization
+### division_optimization {:#division-optimization}
 
 _The operator x ~/ y is more efficient than (x / y).toInt()._
 
@@ -4502,7 +4502,7 @@ Use the integer division operator (`~/`):
 int divide(int x, int y) => x ~/ y;
 ```
 
-### duplicate_constructor
+### duplicate_constructor {:#duplicate-constructor}
 
 _The constructor with name '{0}' is already defined._
 
@@ -4580,7 +4580,7 @@ class C {
 }
 ```
 
-### duplicate_definition
+### duplicate_definition {:#duplicate-definition}
 
 _The name '{0}' is already defined._
 
@@ -4608,7 +4608,7 @@ int x = 0;
 int y = 1;
 ```
 
-### duplicate_export
+### duplicate_export {:#duplicate-export}
 
 _Duplicate export._
 
@@ -4636,7 +4636,7 @@ Remove the unnecessary export:
 export 'package:meta/meta.dart';
 ```
 
-### duplicate_field_formal_parameter
+### duplicate_field_formal_parameter {:#duplicate-field-formal-parameter}
 
 _The field '{0}' can't be initialized by multiple parameters in the same
 constructor._
@@ -4673,7 +4673,7 @@ class C {
 }
 ```
 
-### duplicate_field_name
+### duplicate_field_name {:#duplicate-field-name}
 
 _The field name '{0}' is already used in this record._
 
@@ -4708,7 +4708,7 @@ Rename one or both of the fields:
 var r = (a: 1, b: 2);
 ```
 
-### duplicate_hidden_name
+### duplicate_hidden_name {:#duplicate-hidden-name}
 
 _Duplicate hidden name._
 
@@ -4748,7 +4748,7 @@ import 'dart:math' hide min;
 var x = pi;
 ```
 
-### duplicate_ignore
+### duplicate_ignore {:#duplicate-ignore}
 
 _The diagnostic '{0}' doesn't need to be ignored here because it's already being
 ignored._
@@ -4796,7 +4796,7 @@ void f() {
 }
 ```
 
-### duplicate_import
+### duplicate_import {:#duplicate-import}
 
 _Duplicate import._
 
@@ -4827,7 +4827,7 @@ import 'package:meta/meta.dart';
 @sealed class C {}
 ```
 
-### duplicate_named_argument
+### duplicate_named_argument {:#duplicate-named-argument}
 
 _The argument for the named parameter '{0}' was already specified._
 
@@ -4877,7 +4877,7 @@ class C {
 }
 ```
 
-### duplicate_part
+### duplicate_part {:#duplicate-part}
 
 _The library already contains a part with the URI '{0}'._
 
@@ -4910,7 +4910,7 @@ Remove all except the first of the duplicated part directives:
 part 'part.dart';
 ```
 
-### duplicate_pattern_assignment_variable
+### duplicate_pattern_assignment_variable {:#duplicate-pattern-assignment-variable}
 
 _The variable '{0}' is already assigned in this pattern._
 
@@ -4956,7 +4956,7 @@ int f((int, int) r) {
 }
 ```
 
-### duplicate_pattern_field
+### duplicate_pattern_field {:#duplicate-pattern-field}
 
 _The field '{0}' is already matched in this pattern._
 
@@ -5021,7 +5021,7 @@ void f(({int a, int b}) r) {
 }
 ```
 
-### duplicate_rest_element_in_pattern
+### duplicate_rest_element_in_pattern {:#duplicate-rest-element-in-pattern}
 
 _At most one rest element is allowed in a list or map pattern._
 
@@ -5053,7 +5053,7 @@ void f(List<int> x) {
 }
 ```
 
-### duplicate_shown_name
+### duplicate_shown_name {:#duplicate-shown-name}
 
 _Duplicate shown name._
 
@@ -5093,7 +5093,7 @@ import 'dart:math' show min;
 var x = min(2, min(0, 1));
 ```
 
-### duplicate_variable_pattern
+### duplicate_variable_pattern {:#duplicate-variable-pattern}
 
 _The variable '{0}' is already defined in this pattern._
 
@@ -5140,7 +5140,7 @@ void f((int, int) r) {
 }
 ```
 
-### empty_map_pattern
+### empty_map_pattern {:#empty-map-pattern}
 
 _A map pattern must have at least one entry._
 
@@ -5179,7 +5179,7 @@ void f(Map<int, String> x) {
 }
 ```
 
-### empty_record_literal_with_comma
+### empty_record_literal_with_comma {:#empty-record-literal-with-comma}
 
 _A record literal without fields can't have a trailing comma._
 
@@ -5212,7 +5212,7 @@ expressions used to compute the values of those fields:
 var r = (3, 4);
 ```
 
-### empty_record_type_named_fields_list
+### empty_record_type_named_fields_list {:#empty-record-type-named-fields-list}
 
 _The list of named fields in a record type can't be empty._
 
@@ -5246,7 +5246,7 @@ braces:
 void f((int, int) r) {}
 ```
 
-### empty_record_type_with_comma
+### empty_record_type_with_comma {:#empty-record-type-with-comma}
 
 _A record type without fields can't have a trailing comma._
 
@@ -5279,7 +5279,7 @@ types of those fields:
 void f((int, int) r) {}
 ```
 
-### empty_struct
+### empty_struct {:#empty-struct}
 
 _The class '{0}' can't be empty because it's a subclass of '{1}'._
 
@@ -5331,7 +5331,7 @@ extends clause:
 class C {}
 ```
 
-### enum_constant_same_name_as_enclosing
+### enum_constant_same_name_as_enclosing {:#enum-constant-same-name-as-enclosing}
 
 _The name of the enum value can't be the same as the enum's name._
 
@@ -5369,7 +5369,7 @@ enum F {
 }
 ```
 
-### enum_constant_with_non_const_constructor
+### enum_constant_with_non_const_constructor {:#enum-constant-with-non-const-constructor}
 
 _The invoked constructor isn't a 'const' constructor._
 
@@ -5406,7 +5406,7 @@ enum E {
 }
 ```
 
-### enum_mixin_with_instance_variable
+### enum_mixin_with_instance_variable {:#enum-mixin-with-instance-variable}
 
 _Mixins applied to enums can't have instance variables._
 
@@ -5455,7 +5455,7 @@ enum E {
 }
 ```
 
-### enum_with_abstract_member
+### enum_with_abstract_member {:#enum-with-abstract-member}
 
 _'{0}' must have a method body because '{1}' is an enum._
 
@@ -5490,7 +5490,7 @@ enum E {
 }
 ```
 
-### enum_with_name_values
+### enum_with_name_values {:#enum-with-name-values}
 
 _The name 'values' is not a valid name for an enum._
 
@@ -5515,7 +5515,7 @@ enum [!values!] {
 
 Rename the enum to something other than `values`.
 
-### equal_elements_in_const_set
+### equal_elements_in_const_set {:#equal-elements-in-const-set}
 
 _Two elements in a constant set literal can't be equal._
 
@@ -5546,7 +5546,7 @@ Note that literal sets preserve the order of their elements, so the choice
 of which element to remove might affect the order in which elements are
 returned by an iterator.
 
-### equal_elements_in_set
+### equal_elements_in_set {:#equal-elements-in-set}
 
 _Two elements in a set literal shouldn't be equal._
 
@@ -5591,7 +5591,7 @@ Note that literal sets preserve the order of their elements, so the choice
 of which element to remove might affect the order in which elements are
 returned by an iterator.
 
-### equal_keys_in_const_map
+### equal_keys_in_const_map {:#equal-keys-in-const-map}
 
 _Two keys in a constant map literal can't be equal._
 
@@ -5631,7 +5631,7 @@ Note that literal maps preserve the order of their entries, so the choice
 of which entry to remove might affect the order in which keys and values
 are returned by an iterator.
 
-### equal_keys_in_map
+### equal_keys_in_map {:#equal-keys-in-map}
 
 _Two keys in a map literal shouldn't be equal._
 
@@ -5675,7 +5675,7 @@ Note that literal maps preserve the order of their entries, so the choice
 of which entry to remove might affect the order in which the keys and
 values are returned by an iterator.
 
-### equal_keys_in_map_pattern
+### equal_keys_in_map_pattern {:#equal-keys-in-map-pattern}
 
 _Two keys in a map pattern can't be equal._
 
@@ -5715,7 +5715,7 @@ void f(Map<String, int> x) {
 }
 ```
 
-### expected_one_list_pattern_type_arguments
+### expected_one_list_pattern_type_arguments {:#expected-one-list-pattern-type-arguments}
 
 _List patterns require one type argument or none, but {0} found._
 
@@ -5746,7 +5746,7 @@ void f(Object x) {
 }
 ```
 
-### expected_one_list_type_arguments
+### expected_one_list_type_arguments {:#expected-one-list-type-arguments}
 
 _List literals require one type argument or none, but {0} found._
 
@@ -5772,7 +5772,7 @@ Remove all except one of the type arguments:
 var l = <int>[];
 ```
 
-### expected_one_set_type_arguments
+### expected_one_set_type_arguments {:#expected-one-set-type-arguments}
 
 _Set literals require one type argument or none, but {0} were found._
 
@@ -5798,7 +5798,7 @@ Remove all except one of the type arguments:
 var s = <int>{0, 1};
 ```
 
-### expected_two_map_pattern_type_arguments
+### expected_two_map_pattern_type_arguments {:#expected-two-map-pattern-type-arguments}
 
 _Map patterns require two type arguments or none, but {0} found._
 
@@ -5830,7 +5830,7 @@ void f(Object x) {
 }
 ```
 
-### expected_two_map_type_arguments
+### expected_two_map_type_arguments {:#expected-two-map-type-arguments}
 
 _Map literals require two type arguments or none, but {0} found._
 
@@ -5856,7 +5856,7 @@ Remove all except two of the type arguments:
 var m = <int, String>{};
 ```
 
-### export_internal_library
+### export_internal_library {:#export-internal-library}
 
 _The library '{0}' is internal and can't be exported._
 
@@ -5878,7 +5878,7 @@ export [!'dart:_interceptors'!];
 
 Remove the export directive.
 
-### export_legacy_symbol
+### export_legacy_symbol {:#export-legacy-symbol}
 
 _The symbol '{0}' is defined in a legacy library, and can't be re-exported from
 a library with null safety enabled._
@@ -5928,7 +5928,7 @@ symbols from the opted-in library. You can do so by adding a hide
 combinator to the export directive in your library that hides all of the
 names declared in the opted-out library.
 
-### export_of_non_library
+### export_of_non_library {:#export-of-non-library}
 
 _The exported library '{0}' can't have a part-of directive._
 
@@ -5959,7 +5959,7 @@ export [!'part.dart'!];
 Either remove the export directive, or change the URI to be the URI of the
 library containing the part.
 
-### expression_in_map
+### expression_in_map {:#expression-in-map}
 
 _Expressions can't be used in a map literal._
 
@@ -5986,7 +5986,7 @@ For example:
 var map = <String, int>{'a': 0, 'b': 1, 'c': 2};
 ```
 
-### extends_non_class
+### extends_non_class {:#extends-non-class}
 
 _Classes can only extend other classes._
 
@@ -6027,7 +6027,7 @@ void f() {}
 class C {}
 ```
 
-### extension_as_expression
+### extension_as_expression {:#extension-as-expression}
 
 _Extension '{0}' can't be used as an expression._
 
@@ -6065,7 +6065,7 @@ extension E on int {
 var x = E.m();
 ```
 
-### extension_conflicting_static_and_instance
+### extension_conflicting_static_and_instance {:#extension-conflicting-static-and-instance}
 
 _An extension can't define static member '{0}' and an instance member with the
 same name._
@@ -6101,7 +6101,7 @@ extension E on Object {
 }
 ```
 
-### extension_declares_abstract_member
+### extension_declares_abstract_member {:#extension-declares-abstract-member}
 
 _Extensions can't declare abstract members._
 
@@ -6125,7 +6125,7 @@ extension E on String {
 
 Either provide an implementation for the member or remove it.
 
-### extension_declares_constructor
+### extension_declares_constructor {:#extension-declares-constructor}
 
 _Extensions can't declare constructors._
 
@@ -6151,7 +6151,7 @@ extension E on String {
 
 Remove the constructor or replace it with a static method.
 
-### extension_declares_instance_field
+### extension_declares_instance_field {:#extension-declares-instance-field}
 
 _Extensions can't declare instance fields_
 
@@ -6177,7 +6177,7 @@ extension E on String {
 Remove the field, make it a static field, or convert it to be a getter,
 setter, or method.
 
-### extension_declares_member_of_object
+### extension_declares_member_of_object {:#extension-declares-member-of-object}
 
 _Extensions can't declare members with the same name as a member declared by
 'Object'._
@@ -6211,7 +6211,7 @@ extension E on String {
 }
 ```
 
-### extension_override_access_to_static_member
+### extension_override_access_to_static_member {:#extension-override-access-to-static-member}
 
 _An extension override can't be used to access a static member from an
 extension._
@@ -6251,7 +6251,7 @@ void f() {
 }
 ```
 
-### extension_override_argument_not_assignable
+### extension_override_argument_not_assignable {:#extension-override-argument-not-assignable}
 
 _The type of the argument to the extension override '{0}' isn't assignable to
 the extended type '{1}'._
@@ -6294,7 +6294,7 @@ If there's a different extension that's valid for the type of the argument,
 then either replace the name of the extension or unwrap the argument so
 that the correct extension is found.
 
-### extension_override_without_access
+### extension_override_without_access {:#extension-override-without-access}
 
 _An extension override can only be used to access instance members._
 
@@ -6347,7 +6347,7 @@ void f(int i) {
 }
 ```
 
-### extension_override_with_cascade
+### extension_override_with_cascade {:#extension-override-with-cascade}
 
 _Extension overrides have no value so they can't be used as the receiver of a
 cascade expression._
@@ -6389,7 +6389,7 @@ f() {
 If there are multiple cascaded accesses, you'll need to duplicate the
 extension override for each one.
 
-### extension_type_constructor_with_super_formal_parameter
+### extension_type_constructor_with_super_formal_parameter {:#extension-type-constructor-with-super-formal-parameter}
 
 _Extension type constructors can't declare super formal parameters._
 
@@ -6429,7 +6429,7 @@ extension type E(int i) {
 }
 ```
 
-### extension_type_constructor_with_super_invocation
+### extension_type_constructor_with_super_invocation {:#extension-type-constructor-with-super-invocation}
 
 _Extension type constructors can't include super initializers._
 
@@ -6461,7 +6461,7 @@ extension type E(int i) {
 }
 ```
 
-### extension_type_declares_instance_field
+### extension_type_declares_instance_field {:#extension-type-declares-instance-field}
 
 _Extension types can't declare instance fields._
 
@@ -6504,7 +6504,7 @@ class E {
 }
 ```
 
-### extension_type_declares_member_of_object
+### extension_type_declares_member_of_object {:#extension-type-declares-member-of-object}
 
 _Extension types can't declare members with the same name as a member declared
 by 'Object'._
@@ -6544,7 +6544,7 @@ member:
 extension type E(int i) {}
 ```
 
-### extension_type_implements_disallowed_type
+### extension_type_implements_disallowed_type {:#extension-type-implements-disallowed-type}
 
 _Extension types can't implement '{0}'._
 
@@ -6570,7 +6570,7 @@ Remove the disallowed type from the implements clause:
 extension type A(int i) {}
 ```
 
-### extension_type_implements_itself
+### extension_type_implements_itself {:#extension-type-implements-itself}
 
 _The extension type can't implement itself._
 
@@ -6608,7 +6608,7 @@ extension type A(int i) implements B {}
 extension type B(int i) {}
 ```
 
-### extension_type_implements_not_supertype
+### extension_type_implements_not_supertype {:#extension-type-implements-not-supertype}
 
 _'{0}' is not a supertype of '{1}', the representation type._
 
@@ -6643,7 +6643,7 @@ type:
 extension type A(String s) implements String {}
 ```
 
-### extension_type_implements_representation_not_supertype
+### extension_type_implements_representation_not_supertype {:#extension-type-implements-representation-not-supertype}
 
 _'{0}', the representation type of '{1}', is not a supertype of '{2}', the
 representation type of '{3}'._
@@ -6687,7 +6687,7 @@ extension type A(num i) {}
 extension type B(String s) {}
 ```
 
-### extension_type_inherited_member_conflict
+### extension_type_inherited_member_conflict {:#extension-type-inherited-member-conflict}
 
 _The extension type '{0}' has more than one distinct member named '{1}' from
 implemented types._
@@ -6748,7 +6748,7 @@ extension type B(A a) {
 extension type C(A a) implements A, B {}
 ```
 
-### extension_type_representation_depends_on_itself
+### extension_type_representation_depends_on_itself {:#extension-type-representation-depends-on-itself}
 
 _The extension type representation can't depend on itself._
 
@@ -6792,7 +6792,7 @@ least one of the types in the cycle:
 extension type A(String s) {}
 ```
 
-### extension_type_representation_type_bottom
+### extension_type_representation_type_bottom {:#extension-type-representation-type-bottom}
 
 _The representation type can't be a bottom type._
 
@@ -6820,7 +6820,7 @@ Replace the extension type with a different type:
 extension type E(String s) {}
 ```
 
-### extension_type_with_abstract_member
+### extension_type_with_abstract_member {:#extension-type-with-abstract-member}
 
 _'{0}' must have a method body because '{1}' is an extension type._
 
@@ -6859,7 +6859,7 @@ If the member isn't intended to be executable, then remove it:
 extension type E(String s) {}
 ```
 
-### external_with_initializer
+### external_with_initializer {:#external-with-initializer}
 
 _External fields can't have initializers._
 
@@ -6909,7 +6909,7 @@ class C {
 }
 ```
 
-### extra_annotation_on_struct_field
+### extra_annotation_on_struct_field {:#extra-annotation-on-struct-field}
 
 _Fields in a struct class must have exactly one annotation indicating the native
 type._
@@ -6949,7 +6949,7 @@ final class C extends Struct {
 }
 ```
 
-### extra_positional_arguments
+### extra_positional_arguments {:#extra-positional-arguments}
 
 _Too many positional arguments: {0} expected, but {1} found._
 
@@ -6981,7 +6981,7 @@ void g() {
 }
 ```
 
-### extra_positional_arguments_could_be_named
+### extra_positional_arguments_could_be_named {:#extra-positional-arguments-could-be-named}
 
 _Too many positional arguments: {0} expected, but {1} found._
 
@@ -7026,7 +7026,7 @@ void g() {
 }
 ```
 
-### extra_size_annotation_carray
+### extra_size_annotation_carray {:#extra-size-annotation-carray}
 
 _'Array's must have exactly one 'Array' annotation._
 
@@ -7066,7 +7066,7 @@ final class C extends Struct {
 }
 ```
 
-### ffi_native_invalid_duplicate_default_asset
+### ffi_native_invalid_duplicate_default_asset {:#ffi-native-invalid-duplicate-default-asset}
 
 _There may be at most one @DefaultAsset annotation on a library._
 
@@ -7099,7 +7099,7 @@ library;
 import 'dart:ffi';
 ```
 
-### ffi_native_invalid_multiple_annotations
+### ffi_native_invalid_multiple_annotations {:#ffi-native-invalid-multiple-annotations}
 
 _Native functions and fields must have exactly one `@Native` annotation._
 
@@ -7132,7 +7132,7 @@ import 'dart:ffi';
 external int f(int v);
 ```
 
-### ffi_native_must_be_external
+### ffi_native_must_be_external {:#ffi-native-must-be-external}
 
 _Native functions must be declared external._
 
@@ -7165,7 +7165,7 @@ import 'dart:ffi';
 external void free(Pointer<Void> ptr);
 ```
 
-### ffi_native_unexpected_number_of_parameters
+### ffi_native_unexpected_number_of_parameters {:#ffi-native-unexpected-number-of-parameters}
 
 _Unexpected number of Native annotation parameters. Expected {0} but has {1}._
 
@@ -7211,7 +7211,7 @@ import 'dart:ffi';
 external void f(double x);
 ```
 
-### ffi_native_unexpected_number_of_parameters_with_receiver
+### ffi_native_unexpected_number_of_parameters_with_receiver {:#ffi-native-unexpected-number-of-parameters-with-receiver}
 
 _Unexpected number of Native annotation parameters. Expected {0} but has {1}.
 Native instance method annotation must have receiver as first argument._
@@ -7251,7 +7251,7 @@ class C {
 }
 ```
 
-### field_initialized_by_multiple_initializers
+### field_initialized_by_multiple_initializers {:#field-initialized-by-multiple-initializers}
 
 _The field '{0}' can't be initialized twice in the same constructor._
 
@@ -7286,7 +7286,7 @@ class C {
 }
 ```
 
-### field_initialized_in_initializer_and_declaration
+### field_initialized_in_initializer_and_declaration {:#field-initialized-in-initializer-and-declaration}
 
 _Fields can't be initialized in the constructor if they are final and were
 already initialized at their declaration._
@@ -7333,7 +7333,7 @@ class C {
 }
 ```
 
-### field_initialized_in_parameter_and_initializer
+### field_initialized_in_parameter_and_initializer {:#field-initialized-in-parameter-and-initializer}
 
 _Fields can't be initialized in both the parameter list and the initializers._
 
@@ -7391,7 +7391,7 @@ class C {
 }
 ```
 
-### field_initializer_factory_constructor
+### field_initializer_factory_constructor {:#field-initializer-factory-constructor}
 
 _Initializing formal parameters can't be used in factory constructors._
 
@@ -7426,7 +7426,7 @@ class C {
 }
 ```
 
-### field_initializer_in_struct
+### field_initializer_in_struct {:#field-initializer-in-struct}
 
 _Constructors in subclasses of 'Struct' and 'Union' can't have field
 initializers._
@@ -7471,7 +7471,7 @@ final class C extends Struct {
 }
 ```
 
-### field_initializer_not_assignable
+### field_initializer_not_assignable {:#field-initializer-not-assignable}
 
 _The initializer type '{0}' can't be assigned to the field type '{1}' in a const
 constructor._
@@ -7521,7 +7521,7 @@ class C {
 }
 ```
 
-### field_initializer_outside_constructor
+### field_initializer_outside_constructor {:#field-initializer-outside-constructor}
 
 _Field formal parameters can only be used in a constructor._
 
@@ -7561,7 +7561,7 @@ class A {
 }
 ```
 
-### field_initializer_redirecting_constructor
+### field_initializer_redirecting_constructor {:#field-initializer-redirecting-constructor}
 
 _The redirecting constructor can't have a field initializer._
 
@@ -7630,7 +7630,7 @@ class C {
 }
 ```
 
-### field_initializing_formal_not_assignable
+### field_initializing_formal_not_assignable {:#field-initializing-formal-not-assignable}
 
 _The parameter type '{0}' is incompatible with the field type '{1}'._
 
@@ -7692,7 +7692,7 @@ class C {
 }
 ```
 
-### field_in_struct_with_initializer
+### field_in_struct_with_initializer {:#field-in-struct-with-initializer}
 
 _Fields in subclasses of 'Struct' and 'Union' can't have initializers._
 
@@ -7730,7 +7730,7 @@ final class C extends Struct {
 }
 ```
 
-### field_must_be_external_in_struct
+### field_must_be_external_in_struct {:#field-must-be-external-in-struct}
 
 _Fields of 'Struct' and 'Union' subclasses must be marked external._
 
@@ -7768,7 +7768,7 @@ final class C extends Struct {
 }
 ```
 
-### final_initialized_in_declaration_and_constructor
+### final_initialized_in_declaration_and_constructor {:#final-initialized-in-declaration-and-constructor}
 
 _'{0}' is final and was given a value when it was declared, so it can't be set
 to a new value._
@@ -7815,7 +7815,7 @@ class C {
 }
 ```
 
-### final_not_initialized
+### final_not_initialized {:#final-not-initialized}
 
 _The final variable '{0}' must be initialized._
 
@@ -7862,7 +7862,7 @@ class C {
 }
 ```
 
-### final_not_initialized_constructor
+### final_not_initialized_constructor {:#final-not-initialized-constructor}
 
 _All final variables must be initialized, but '{0}' and '{1}' aren't._
 
@@ -7953,7 +7953,7 @@ class C {
 }
 ```
 
-### flutter_field_not_map
+### flutter_field_not_map {:#flutter-field-not-map}
 
 _The value of the 'flutter' field is expected to be a map._
 
@@ -7990,7 +7990,7 @@ If you don't need to specify Flutter-specific options, then remove the
 name: example
 ```
 
-### for_in_of_invalid_element_type
+### for_in_of_invalid_element_type {:#for-in-of-invalid-element-type}
 
 _The type '{0}' used in the 'for' loop must implement '{1}' with a type argument
 that can be assigned to '{2}'._
@@ -8039,7 +8039,7 @@ void f() {
 }
 ```
 
-### for_in_of_invalid_type
+### for_in_of_invalid_type {:#for-in-of-invalid-type}
 
 _The type '{0}' used in the 'for' loop must implement '{1}'._
 
@@ -8073,7 +8073,7 @@ void f(Map<String, String> m) {
 }
 ```
 
-### for_in_with_const_variable
+### for_in_with_const_variable {:#for-in-with-const-variable}
 
 _A for-in loop variable can't be a 'const'._
 
@@ -8112,7 +8112,7 @@ void f() {
 }
 ```
 
-### generic_method_type_instantiation_on_dynamic
+### generic_method_type_instantiation_on_dynamic {:#generic-method-type-instantiation-on-dynamic}
 
 _A method tear-off on a receiver whose type is 'dynamic' can't have type
 arguments._
@@ -8156,7 +8156,7 @@ void f(dynamic list) {
 }
 ```
 
-### generic_struct_subclass
+### generic_struct_subclass {:#generic-struct-subclass}
 
 _The class '{0}' can't extend 'Struct' or 'Union' because '{0}' is generic._
 
@@ -8192,7 +8192,7 @@ final class S extends Struct {
 }
 ```
 
-### getter_not_subtype_setter_types
+### getter_not_subtype_setter_types {:#getter-not-subtype-setter-types}
 
 _The return type of getter '{0}' is '{1}' which isn't a subtype of the type
 '{2}' of its setter '{3}'._
@@ -8242,7 +8242,7 @@ class C {
 }
 ```
 
-### illegal_async_generator_return_type
+### illegal_async_generator_return_type {:#illegal-async-generator-return-type}
 
 _Functions marked 'async*' must have a return type that is a supertype of
 'Stream<T>' for some type 'T'._
@@ -8278,7 +8278,7 @@ If the function should be synchronous, then remove the `async*` modifier:
 int f() => 0;
 ```
 
-### illegal_async_return_type
+### illegal_async_return_type {:#illegal-async-return-type}
 
 _Functions marked 'async' must have a return type which is a supertype of
 'Future'._
@@ -8318,7 +8318,7 @@ If the function should be synchronous, then remove the `async` modifier:
 int f() => 0;
 ```
 
-### illegal_concrete_enum_member
+### illegal_concrete_enum_member {:#illegal-concrete-enum-member}
 
 _A concrete instance member named '{0}' can't be declared in a class that
 implements 'Enum'._
@@ -8388,7 +8388,7 @@ enum E {
 }
 ```
 
-### illegal_enum_values
+### illegal_enum_values {:#illegal-enum-values}
 
 _An instance member named 'values' can't be declared in a class that implements
 'Enum'._
@@ -8434,7 +8434,7 @@ abstract class C implements Enum {
 }
 ```
 
-### illegal_sync_generator_return_type
+### illegal_sync_generator_return_type {:#illegal-sync-generator-return-type}
 
 _Functions marked 'sync*' must have a return type that is a supertype of
 'Iterable<T>' for some type 'T'._
@@ -8471,7 +8471,7 @@ modifier:
 int f() => 0;
 ```
 
-### implements_non_class
+### implements_non_class {:#implements-non-class}
 
 _Classes and mixins can only implement other classes and mixins._
 
@@ -8505,7 +8505,7 @@ Otherwise, either replace the name in the `implements` clause with the name
 of an existing class or mixin, or remove the name from the `implements`
 clause.
 
-### implements_repeated
+### implements_repeated {:#implements-repeated}
 
 _'{0}' can only be implemented once._
 
@@ -8533,7 +8533,7 @@ class A {}
 class B implements A {}
 ```
 
-### implements_super_class
+### implements_super_class {:#implements-super-class}
 
 _'{0}' can't be used in both the 'extends' and 'implements' clauses._
 
@@ -8585,7 +8585,7 @@ class A {}
 class B implements A {}
 ```
 
-### implicit_super_initializer_missing_arguments
+### implicit_super_initializer_missing_arguments {:#implicit-super-initializer-missing-arguments}
 
 _The implicitly invoked unnamed constructor from '{0}' has required parameters._
 
@@ -8669,7 +8669,7 @@ class B extends A {
 }
 ```
 
-### implicit_this_reference_in_initializer
+### implicit_this_reference_in_initializer {:#implicit-this-reference-in-initializer}
 
 _The instance member '{0}' can't be accessed in an initializer._
 
@@ -8720,7 +8720,7 @@ class C {
 }
 ```
 
-### import_deferred_library_with_load_function
+### import_deferred_library_with_load_function {:#import-deferred-library-with-load-function}
 
 _The imported library defines a top-level function named 'loadLibrary' that is
 hidden by deferring this library._
@@ -8792,7 +8792,7 @@ void f() {
 }
 ```
 
-### import_internal_library
+### import_internal_library {:#import-internal-library}
 
 _The library '{0}' is internal and can't be imported._
 
@@ -8814,7 +8814,7 @@ import [!'dart:_interceptors'!];
 
 Remove the import directive.
 
-### import_of_legacy_library_into_null_safe
+### import_of_legacy_library_into_null_safe {:#import-of-legacy-library-into-null-safe}
 
 _The library '{0}' is legacy, and shouldn't be imported into a null safe
 library._
@@ -8852,7 +8852,7 @@ If you can't migrate the imported library, then the importing library
 needs to have a language version that is before 2.12, when null safety was
 enabled by default.
 
-### import_of_non_library
+### import_of_non_library {:#import-of-non-library}
 
 _The imported library '{0}' can't have a part-of directive._
 
@@ -8883,7 +8883,7 @@ import [!'part.dart'!];
 Import the library that contains the [part file][] rather than the
 [part file][] itself.
 
-### inconsistent_inheritance
+### inconsistent_inheritance {:#inconsistent-inheritance}
 
 _Superinterfaces don't have a valid override for '{0}': {1}._
 
@@ -8931,7 +8931,7 @@ class C extends A implements B {
 }
 ```
 
-### inconsistent_language_version_override
+### inconsistent_language_version_override {:#inconsistent-language-version-override}
 
 _Parts must have exactly the same language version override as the library._
 
@@ -8972,7 +8972,7 @@ compilation unit to be appropriate for the code in the part, or migrate
 the code in the [part file][] to be consistent with the new language
 version.
 
-### inconsistent_pattern_variable_logical_or
+### inconsistent_pattern_variable_logical_or {:#inconsistent-pattern-variable-logical-or}
 
 _The variable '{0}' has a different type and/or finality in this branch of the
 logical-or pattern._
@@ -9050,7 +9050,7 @@ void f(Object? x) {
 }
 ```
 
-### initializer_for_non_existent_field
+### initializer_for_non_existent_field {:#initializer-for-non-existent-field}
 
 _'{0}' isn't a field in the enclosing class._
 
@@ -9098,7 +9098,7 @@ class C {
 }
 ```
 
-### initializer_for_static_field
+### initializer_for_static_field {:#initializer-for-static-field}
 
 _'{0}' is a static field in the enclosing class. Fields initialized in a
 constructor can't be static._
@@ -9155,7 +9155,7 @@ class C {
 }
 ```
 
-### initializing_formal_for_non_existent_field
+### initializing_formal_for_non_existent_field {:#initializing-formal-for-non-existent-field}
 
 _'{0}' isn't a field in the enclosing class._
 
@@ -9225,7 +9225,7 @@ class C {
 }
 ```
 
-### instance_access_to_static_member
+### instance_access_to_static_member {:#instance-access-to-static-member}
 
 _The static {1} '{0}' can't be accessed through an instance._
 
@@ -9263,7 +9263,7 @@ class C {
 }
 ```
 
-### instance_member_access_from_factory
+### instance_member_access_from_factory {:#instance-member-access-from-factory}
 
 _Instance members can't be accessed from a factory constructor._
 
@@ -9306,7 +9306,7 @@ class C {
 }
 ```
 
-### instance_member_access_from_static
+### instance_member_access_from_static {:#instance-member-access-from-static}
 
 _Instance members can't be accessed from a static method._
 
@@ -9358,7 +9358,7 @@ class C {
 }
 ```
 
-### instantiate_abstract_class
+### instantiate_abstract_class {:#instantiate-abstract-class}
 
 _Abstract classes can't be instantiated._
 
@@ -9385,7 +9385,7 @@ var c = new [!C!]();
 If there's a concrete subclass of the abstract class that can be used, then
 create an instance of the concrete subclass.
 
-### instantiate_enum
+### instantiate_enum {:#instantiate-enum}
 
 _Enums can't be instantiated._
 
@@ -9421,7 +9421,7 @@ var e = E.a;
 
 If you intend to use an instance of a class, then use the name of that class in place of the name of the enum.
 
-### instantiate_type_alias_expands_to_type_parameter
+### instantiate_type_alias_expands_to_type_parameter {:#instantiate-type-alias-expands-to-type-parameter}
 
 _Type aliases that expand to a type parameter can't be instantiated._
 
@@ -9463,7 +9463,7 @@ class C<T> {
 }
 ```
 
-### integer_literal_imprecise_as_double
+### integer_literal_imprecise_as_double {:#integer-literal-imprecise-as-double}
 
 _The integer literal is being used as a double, but can't be represented as a
 64-bit double without overflow or loss of precision: '{0}'._
@@ -9500,7 +9500,7 @@ represented exactly:
 double x = 9223372036854775808;
 ```
 
-### integer_literal_out_of_range
+### integer_literal_out_of_range {:#integer-literal-out-of-range}
 
 _The integer literal {0} can't be represented in 64 bits._
 
@@ -9528,7 +9528,7 @@ the class `BigInt`:
 var x = BigInt.parse('9223372036854775810');
 ```
 
-### invalid_annotation
+### invalid_annotation {:#invalid-annotation}
 
 _Annotation must be either a const variable reference or const constructor
 invocation._
@@ -9600,7 +9600,7 @@ void f() {
 }
 ```
 
-### invalid_annotation_constant_value_from_deferred_library
+### invalid_annotation_constant_value_from_deferred_library {:#invalid-annotation-constant-value-from-deferred-library}
 
 _Constant values from a deferred library can't be used in annotations._
 
@@ -9651,7 +9651,7 @@ If the import is required to be deferred and there's another constant that
 is appropriate, then use that constant in place of the constant from the
 deferred library.
 
-### invalid_annotation_from_deferred_library
+### invalid_annotation_from_deferred_library {:#invalid-annotation-from-deferred-library}
 
 _Constant values from a deferred library can't be used as annotations._
 
@@ -9698,7 +9698,7 @@ annotation with a different constant:
 void f() {}
 ```
 
-### invalid_annotation_target
+### invalid_annotation_target {:#invalid-annotation-target}
 
 _The annotation '{0}' can only be used on {1}._
 
@@ -9723,7 +9723,7 @@ int x = 0;
 
 Remove the annotation from the declaration.
 
-### invalid_assignment
+### invalid_assignment {:#invalid-assignment}
 
 _A value of type '{0}' can't be assigned to a variable of type '{1}'._
 
@@ -9765,7 +9765,7 @@ int i = 0;
 int s = i;
 ```
 
-### invalid_dependency
+### invalid_dependency {:#invalid-dependency}
 
 _Publishable packages can't have '{0}' dependencies._
 
@@ -9807,7 +9807,7 @@ dependencies:
     path: ../transmogrify
 ```
 
-### invalid_exception_value
+### invalid_exception_value {:#invalid-exception-value}
 
 _The method {0} can't have an exceptional return value (the second argument)
 when the return type of the function is either 'void', 'Handle' or 'Pointer'._
@@ -9855,7 +9855,7 @@ void g() {
 }
 ```
 
-### invalid_export_of_internal_element
+### invalid_export_of_internal_element {:#invalid-export-of-internal-element}
 
 _The member '{0}' can't be exported as a part of a package's public API._
 
@@ -9894,7 +9894,7 @@ export 'src/a.dart' hide One;
 
 If the export isn't needed, then remove it.
 
-### invalid_export_of_internal_element_indirectly
+### invalid_export_of_internal_element_indirectly {:#invalid-export-of-internal-element-indirectly}
 
 _The member '{0}' can't be exported as a part of a package's public API, but is
 indirectly exported as part of the signature of '{1}'._
@@ -9936,7 +9936,7 @@ If the function doesn't need to be exported, then stop exporting it,
 either by removing it from the `show` clause, adding it to the `hide`
 clause, or by removing the export.
 
-### invalid_extension_argument_count
+### invalid_extension_argument_count {:#invalid-extension-argument-count}
 
 _Extension overrides must have exactly one argument: the value of 'this' in the
 extension method._
@@ -9989,7 +9989,7 @@ void f() {
 }
 ```
 
-### invalid_factory_method_decl
+### invalid_factory_method_decl {:#invalid-factory-method-decl}
 
 _Factory method '{0}' must have a return type._
 
@@ -10030,7 +10030,7 @@ class Factory {
 class C {}
 ```
 
-### invalid_factory_method_impl
+### invalid_factory_method_impl {:#invalid-factory-method-impl}
 
 _Factory method '{0}' doesn't return a newly allocated object._
 
@@ -10073,7 +10073,7 @@ class Factory {
 class C {}
 ```
 
-### invalid_factory_name_not_a_class
+### invalid_factory_name_not_a_class {:#invalid-factory-name-not-a-class}
 
 _The name of a factory constructor must be the same as the name of the
 immediately enclosing class._
@@ -10144,7 +10144,7 @@ class C {
 }
 ```
 
-### invalid_field_name
+### invalid_field_name {:#invalid-field-name}
 
 _Record field names can't be a dollar sign followed by an integer when the
 integer is the index of a positional field._
@@ -10218,7 +10218,7 @@ Rename the field:
 var r = (a: 1, d: 4);
 ```
 
-### invalid_field_type_in_struct
+### invalid_field_type_in_struct {:#invalid-field-type-in-struct}
 
 _Fields in struct classes can't have the type '{0}'. They can only be declared
 as 'int', 'double', 'Array', 'Pointer', or subtype of 'Struct' or 'Union'._
@@ -10264,7 +10264,7 @@ final class C extends Struct {
 }
 ```
 
-### invalid_implementation_override
+### invalid_implementation_override {:#invalid-implementation-override}
 
 _'{1}.{0}' ('{2}') isn't a valid concrete implementation of '{3}.{0}' ('{4}')._
 
@@ -10353,7 +10353,7 @@ class B	extends A {
 }
 ```
 
-### invalid_inline_function_type
+### invalid_inline_function_type {:#invalid-inline-function-type}
 
 _Inline function types can't be used for parameters in a generic function type._
 
@@ -10381,7 +10381,7 @@ Use the generic function syntax for the parameter's type:
 typedef F = int Function(int Function(String));
 ```
 
-### invalid_internal_annotation
+### invalid_internal_annotation {:#invalid-internal-annotation}
 
 _Only public elements in a package's private API can be annotated as being
 internal._
@@ -10438,7 +10438,7 @@ Otherwise, remove the use of the annotation:
 class C {}
 ```
 
-### invalid_language_version_override
+### invalid_language_version_override {:#invalid-language-version-override}
 
 _The Dart language version override comment can't be followed by any
 non-whitespace characters._
@@ -10491,7 +10491,7 @@ the comment to follow the correct format:
 // @dart = 2.13
 ```
 
-### invalid_literal_annotation
+### invalid_literal_annotation {:#invalid-literal-annotation}
 
 _Only const constructors can have the `@literal` annotation._
 
@@ -10548,7 +10548,7 @@ annotation:
 var x;
 ```
 
-### invalid_modifier_on_constructor
+### invalid_modifier_on_constructor {:#invalid-modifier-on-constructor}
 
 _The modifier '{0}' can't be applied to the body of a constructor._
 
@@ -10591,7 +10591,7 @@ class C {
 }
 ```
 
-### invalid_modifier_on_setter
+### invalid_modifier_on_setter {:#invalid-modifier-on-setter}
 
 _Setters can't use 'async', 'async*', or 'sync*'._
 
@@ -10631,7 +10631,7 @@ class C {
 }
 ```
 
-### invalid_non_virtual_annotation
+### invalid_non_virtual_annotation {:#invalid-non-virtual-annotation}
 
 _The annotation '@nonVirtual' can only be applied to a concrete instance
 member._
@@ -10708,7 +10708,7 @@ abstract class C {
 }
 ```
 
-### invalid_null_aware_operator
+### invalid_null_aware_operator {:#invalid-null-aware-operator}
 
 _The element can't be null, so the null-aware operator '?' is unnecessary._
 
@@ -10800,7 +10800,7 @@ int getLength(String s) {
 (Note that the return type was also changed to be non-nullable, which might
 not be appropriate in some cases.)
 
-### invalid_override
+### invalid_override {:#invalid-override}
 
 _'{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._
 
@@ -10863,7 +10863,7 @@ class B extends A {
 }
 ```
 
-### invalid_override_of_non_virtual_member
+### invalid_override_of_non_virtual_member {:#invalid-override-of-non-virtual-member}
 
 _The member '{0}' is declared non-virtual in '{1}' and can't be overridden in
 subclasses._
@@ -10924,7 +10924,7 @@ class B extends A {
 }
 ```
 
-### invalid_pattern_variable_in_shared_case_scope
+### invalid_pattern_variable_in_shared_case_scope {:#invalid-pattern-variable-in-shared-case-scope}
 
 _The variable '{0}' doesn't have the same type and/or finality in all cases that
 share this body._
@@ -11081,7 +11081,7 @@ void f(Object? x) {
 }
 ```
 
-### invalid_platforms_field
+### invalid_platforms_field {:#invalid-platforms-field}
 
 _The 'platforms' field must be a map with platforms as keys._
 
@@ -11125,7 +11125,7 @@ platforms:
   ios:
 ```
 
-### invalid_reference_to_generative_enum_constructor
+### invalid_reference_to_generative_enum_constructor {:#invalid-reference-to-generative-enum-constructor}
 
 _Generative enum constructors can only be used as targets of redirection._
 
@@ -11181,7 +11181,7 @@ enum E {
 E f() => E.c(2);
 ```
 
-### invalid_reference_to_this
+### invalid_reference_to_this {:#invalid-reference-to-this}
 
 _Invalid reference to 'this' expression._
 
@@ -11214,7 +11214,7 @@ C f(C c) => c;
 class C {}
 ```
 
-### invalid_return_type_for_catch_error
+### invalid_return_type_for_catch_error {:#invalid-return-type-for-catch-error}
 
 _A value of type '{0}' can't be returned by the 'onError' handler because it
 must be assignable to '{1}'._
@@ -11272,7 +11272,7 @@ void f(Future<String> future, String Function(dynamic, StackTrace) callback) {
 }
 ```
 
-### invalid_sealed_annotation
+### invalid_sealed_annotation {:#invalid-sealed-annotation}
 
 _The annotation '@sealed' can only be applied to classes._
 
@@ -11305,7 +11305,7 @@ class A {
 }
 ```
 
-### invalid_super_formal_parameter_location
+### invalid_super_formal_parameter_location {:#invalid-super-formal-parameter-location}
 
 _Super parameters can only be used in non-redirecting generative constructors._
 
@@ -11389,7 +11389,7 @@ class D extends A {
 }
 ```
 
-### invalid_type_argument_in_const_literal
+### invalid_type_argument_in_const_literal {:#invalid-type-argument-in-const-literal}
 
 _Constant list literals can't use a type parameter in a type argument, such as
 '{0}'._
@@ -11446,7 +11446,7 @@ runtime, then remove the keyword `const`:
 List<T> newList<T>() => <T>[];
 ```
 
-### invalid_uri
+### invalid_uri {:#invalid-uri}
 
 _Invalid URI syntax: '{0}'._
 
@@ -11468,7 +11468,7 @@ import [!'#'!];
 
 Replace the invalid URI with a valid URI.
 
-### invalid_use_of_covariant_in_extension
+### invalid_use_of_covariant_in_extension {:#invalid-use-of-covariant-in-extension}
 
 _Can't have modifier '{0}' in an extension._
 
@@ -11500,7 +11500,7 @@ extension E on String {
 }
 ```
 
-### invalid_use_of_internal_member
+### invalid_use_of_internal_member {:#invalid-use-of-internal-member}
 
 _The member '{0}' can only be used within its package._
 
@@ -11535,7 +11535,7 @@ void f([!C!] c) {}
 
 Remove the reference to the internal declaration.
 
-### invalid_use_of_null_value
+### invalid_use_of_null_value {:#invalid-use-of-null-value}
 
 _An expression whose value is always 'null' can't be dereferenced._
 
@@ -11566,7 +11566,7 @@ int f(String? x) {
 }
 ```
 
-### invalid_use_of_type_outside_library
+### invalid_use_of_type_outside_library {:#invalid-use-of-type-outside-library}
 
 _The class '{0}' can't be extended outside of its library because it's a final
 class._
@@ -11634,7 +11634,7 @@ type, and possibly the whole clause:
 class B {}
 ```
 
-### invalid_use_of_visible_for_overriding_member
+### invalid_use_of_visible_for_overriding_member {:#invalid-use-of-visible-for-overriding-member}
 
 _The member '{0}' can only be used for overriding._
 
@@ -11676,7 +11676,7 @@ class B extends A {
 
 Remove the invalid use of the member.
 
-### invalid_use_of_visible_for_testing_member
+### invalid_use_of_visible_for_testing_member {:#invalid-use-of-visible-for-testing-member}
 
 _The member '{0}' can only be used within '{1}' or a test._
 
@@ -11731,7 +11731,7 @@ class C {
 }
 ```
 
-### invalid_visibility_annotation
+### invalid_visibility_annotation {:#invalid-visibility-annotation}
 
 _The member '{0}' is annotated with '{1}', but this annotation is only
 meaningful on declarations of public members._
@@ -11777,7 +11777,7 @@ void someFunction() {}
 void f() => someFunction();
 ```
 
-### invalid_visible_for_overriding_annotation
+### invalid_visible_for_overriding_annotation {:#invalid-visible-for-overriding-annotation}
 
 _The annotation 'visibleForOverriding' can only be applied to a public instance
 member that can be overridden._
@@ -11810,7 +11810,7 @@ Remove the annotation:
 class C {}
 ```
 
-### invalid_visible_outside_template_annotation
+### invalid_visible_outside_template_annotation {:#invalid-visible-outside-template-annotation}
 
 _The annotation 'visibleOutsideTemplate' can only be applied to a member of a
 class, enum, or mixin that is annotated with 'visibleForTemplate'._
@@ -11874,7 +11874,7 @@ annotation, remove the annotation:
 class C {}
 ```
 
-### invocation_of_extension_without_call
+### invocation_of_extension_without_call {:#invocation-of-extension-without-call}
 
 _The extension '{0}' doesn't define a 'call' method so the override can't be
 used in an invocation._
@@ -11917,7 +11917,7 @@ override.
 If the `call` method isn't defined, then rewrite the code so that it
 doesn't invoke the `call` method.
 
-### invocation_of_non_function
+### invocation_of_non_function {:#invocation-of-non-function}
 
 _'{0}' isn't a function._
 
@@ -11944,7 +11944,7 @@ int f() {
 
 Replace the name with the name of a function.
 
-### invocation_of_non_function_expression
+### invocation_of_non_function_expression {:#invocation-of-non-function-expression}
 
 _The expression doesn't evaluate to a function, so it can't be invoked._
 
@@ -11991,7 +11991,7 @@ int f() => x;
 var y = f();
 ```
 
-### label_in_outer_scope
+### label_in_outer_scope {:#label-in-outer-scope}
 
 _Can't reference label '{0}' declared in an outer method._
 
@@ -12054,7 +12054,7 @@ void f() {
 }
 ```
 
-### label_undefined
+### label_undefined {:#label-undefined}
 
 _Can't reference an undefined label '{0}'._
 
@@ -12112,7 +12112,7 @@ void f() {
 }
 ```
 
-### late_final_field_with_const_constructor
+### late_final_field_with_const_constructor {:#late-final-field-with-const-constructor}
 
 _Can't have a late final field in a class with a generative const constructor._
 
@@ -12158,7 +12158,7 @@ class A {
 }
 ```
 
-### late_final_local_already_assigned
+### late_final_local_already_assigned {:#late-final-local-already-assigned}
 
 _The late final local variable is already assigned._
 
@@ -12210,7 +12210,7 @@ int f() {
 }
 ```
 
-### leaf_call_must_not_return_handle
+### leaf_call_must_not_return_handle {:#leaf-call-must-not-return-handle}
 
 _FFI leaf call can't return a 'Handle'._
 
@@ -12266,7 +12266,7 @@ void f(Pointer<NativeFunction<Int32 Function()>> p) {
 }
 ```
 
-### leaf_call_must_not_take_handle
+### leaf_call_must_not_take_handle {:#leaf-call-must-not-take-handle}
 
 _FFI leaf call can't take arguments of type 'Handle'._
 
@@ -12316,7 +12316,7 @@ void f(Pointer<NativeFunction<Void Function(Int8)>> p) {
 }
 ```
 
-### list_element_type_not_assignable
+### list_element_type_not_assignable {:#list-element-type-not-assignable}
 
 _The element type '{0}' can't be assigned to the list type '{1}'._
 
@@ -12356,7 +12356,7 @@ list to allow all of the different types of objects it needs to contain:
 List<num> x = [1, 2.5, 3];
 ```
 
-### main_first_positional_parameter_type
+### main_first_positional_parameter_type {:#main-first-positional-parameter-type}
 
 _The type of the first positional parameter of the 'main' function must be a
 supertype of 'List<String>'._
@@ -12390,7 +12390,7 @@ If the function isn't an entry point, then change the name of the function:
 void f(List<int> args) {}
 ```
 
-### main_has_required_named_parameters
+### main_has_required_named_parameters {:#main-has-required-named-parameters}
 
 _The function 'main' can't have any required named parameters._
 
@@ -12422,7 +12422,7 @@ If the function isn't an entry point, then change the name of the function:
 void f({required int x}) {}
 ```
 
-### main_has_too_many_required_positional_parameters
+### main_has_too_many_required_positional_parameters {:#main-has-too-many-required-positional-parameters}
 
 _The function 'main' can't have more than two required positional parameters._
 
@@ -12463,7 +12463,7 @@ If the function isn't an entry point, then change the name of the function:
 void f(List<String> args, int x, int y) {}
 ```
 
-### main_is_not_function
+### main_is_not_function {:#main-is-not-function}
 
 _The declaration named 'main' must be a function._
 
@@ -12489,7 +12489,7 @@ Use a different name for the declaration:
 var mainIndex = 3;
 ```
 
-### map_entry_not_in_map
+### map_entry_not_in_map {:#map-entry-not-in-map}
 
 _Map entries can only be used in a map literal._
 
@@ -12528,7 +12528,7 @@ included in the set:
 var collection = <String>{'a', 'b'};
 ```
 
-### map_key_type_not_assignable
+### map_key_type_not_assignable {:#map-key-type-not-assignable}
 
 _The element type '{0}' can't be assigned to the map key type '{1}'._
 
@@ -12561,7 +12561,7 @@ If the type of the key is correct, then change the key type of the map:
 var m = <int, String>{2 : 'a'};
 ```
 
-### map_value_type_not_assignable
+### map_value_type_not_assignable {:#map-value-type-not-assignable}
 
 _The element type '{0}' can't be assigned to the map value type '{1}'._
 
@@ -12595,7 +12595,7 @@ If the type of the value is correct, then change the value type of the map:
 var m = <String, int>{'a' : 2};
 ```
 
-### mismatched_annotation_on_struct_field
+### mismatched_annotation_on_struct_field {:#mismatched-annotation-on-struct-field}
 
 _The annotation doesn't match the declared type of the field._
 
@@ -12644,7 +12644,7 @@ final class C extends Struct {
 }
 ```
 
-### missing_annotation_on_struct_field
+### missing_annotation_on_struct_field {:#missing-annotation-on-struct-field}
 
 _Fields of type '{0}' in a subclass of '{1}' must have an annotation indicating
 the native type._
@@ -12685,7 +12685,7 @@ final class C extends Struct {
 }
 ```
 
-### missing_dart_library
+### missing_dart_library {:#missing-dart-library}
 
 _Required library '{0}' is missing._
 
@@ -12699,7 +12699,7 @@ can't be found.
 
 Reinstall the Dart or Flutter SDK.
 
-### missing_default_value_for_parameter
+### missing_default_value_for_parameter {:#missing-default-value-for-parameter}
 
 _The parameter '{0}' can't have a value of 'null' because of its type, but the
 implicit default value is 'null'._
@@ -12754,7 +12754,7 @@ void f(int x) {}
 void g({required int x}) {}
 ```
 
-### missing_dependency
+### missing_dependency {:#missing-dependency}
 
 _Missing a dependency on imported package '{0}'._
 
@@ -12787,7 +12787,7 @@ dependencies:
   path: any
 ```
 
-### missing_enum_constant_in_switch
+### missing_enum_constant_in_switch {:#missing-enum-constant-in-switch}
 
 _Missing case clause for '{0}'._
 
@@ -12849,7 +12849,7 @@ void f(E e) {
 }
 ```
 
-### missing_exception_value
+### missing_exception_value {:#missing-exception-value}
 
 _The method {0} must have an exceptional return value (the second argument) when
 the return type of the function is neither 'void', 'Handle', nor 'Pointer'._
@@ -12894,7 +12894,7 @@ void g() {
 }
 ```
 
-### missing_field_type_in_struct
+### missing_field_type_in_struct {:#missing-field-type-in-struct}
 
 _Fields in struct classes must have an explicitly declared type of 'int',
 'double' or 'Pointer'._
@@ -12940,7 +12940,7 @@ final class C extends Struct {
 }
 ```
 
-### missing_name
+### missing_name {:#missing-name}
 
 _The 'name' field is required but missing._
 
@@ -12969,7 +12969,7 @@ dependencies:
   meta: ^1.0.2
 ```
 
-### missing_named_pattern_field_name
+### missing_named_pattern_field_name {:#missing-named-pattern-field-name}
 
 _The getter name is not specified explicitly, and the pattern is not a
 variable._
@@ -13038,7 +13038,7 @@ void f(C c) {
 }
 ```
 
-### missing_override_of_must_be_overridden
+### missing_override_of_must_be_overridden {:#missing-override-of-must-be-overridden}
 
 _Missing concrete implementation of '{0}'._
 
@@ -13098,7 +13098,7 @@ class A {
 class B extends A {}
 ```
 
-### missing_required_argument
+### missing_required_argument {:#missing-required-argument}
 
 _The named parameter '{0}' is required, but there's no corresponding argument._
 
@@ -13130,7 +13130,7 @@ void g() {
 }
 ```
 
-### missing_required_param
+### missing_required_param {:#missing-required-param}
 
 _The parameter '{0}' is required._
 
@@ -13171,7 +13171,7 @@ void g() {
 }
 ```
 
-### missing_return
+### missing_return {:#missing-return}
 
 _This function has a return type of '{0}', but doesn't end with a return
 statement._
@@ -13200,7 +13200,7 @@ int [!f!](int x) {
 Add a `return` statement that makes the return value explicit, even if
 `null` is the appropriate value.
 
-### missing_size_annotation_carray
+### missing_size_annotation_carray {:#missing-size-annotation-carray}
 
 _Fields of type 'Array' must have exactly one 'Array' annotation._
 
@@ -13238,7 +13238,7 @@ final class C extends Struct {
 }
 ```
 
-### missing_variable_pattern
+### missing_variable_pattern {:#missing-variable-pattern}
 
 _Variable pattern '{0}' is missing in this branch of the logical-or pattern._
 
@@ -13302,7 +13302,7 @@ void f((int, int) r) {
 }
 ```
 
-### mixin_application_concrete_super_invoked_member_type
+### mixin_application_concrete_super_invoked_member_type {:#mixin-application-concrete-super-invoked-member-type}
 
 _The super-invoked member '{0}' has the type '{1}', and the concrete member in
 the class has the type '{2}'._
@@ -13403,7 +13403,7 @@ mixin M on I {
 abstract class C extends B with M {}
 ```
 
-### mixin_application_not_implemented_interface
+### mixin_application_not_implemented_interface {:#mixin-application-not-implemented-interface}
 
 _'{0}' can't be mixed onto '{1}' because '{1}' doesn't implement '{2}'._
 
@@ -13440,7 +13440,7 @@ mixin M on A {}
 class X = A with M;
 ```
 
-### mixin_application_no_concrete_super_invoked_member
+### mixin_application_no_concrete_super_invoked_member {:#mixin-application-no-concrete-super-invoked-member}
 
 _The class doesn't have a concrete implementation of the super-invoked member
 '{0}'._
@@ -13516,7 +13516,7 @@ mixin M on A {
 abstract class B extends A with M {}
 ```
 
-### mixin_class_declaration_extends_not_object
+### mixin_class_declaration_extends_not_object {:#mixin-class-declaration-extends-not-object}
 
 _The class '{0}' can't be declared a mixin because it extends a class other than
 'Object'._
@@ -13573,7 +13573,7 @@ mixin M {}
 Depending on the members of the subclass this might require adding an `on`
 clause to the mixin.
 
-### mixin_class_declares_constructor
+### mixin_class_declares_constructor {:#mixin-class-declares-constructor}
 
 _The class '{0}' can't be used as a mixin because it declares a constructor._
 
@@ -13629,7 +13629,7 @@ class A {
 class B extends A {}
 ```
 
-### mixin_inherits_from_not_object
+### mixin_inherits_from_not_object {:#mixin-inherits-from-not-object}
 
 _The class '{0}' can't be used as a mixin because it extends a class other than
 'Object'._
@@ -13691,7 +13691,7 @@ class B extends A with M {}
 class C extends A with M {}
 ```
 
-### mixin_instantiate
+### mixin_instantiate {:#mixin-instantiate}
 
 _Mixins can't be instantiated._
 
@@ -13715,7 +13715,7 @@ var m = [!M!]();
 If you intend to use an instance of a class, then use the name of that
 class in place of the name of the mixin.
 
-### mixin_of_non_class
+### mixin_of_non_class {:#mixin-of-non-class}
 
 _Classes can only mix in mixins and classes._
 
@@ -13746,7 +13746,7 @@ typedef F = int Function(String);
 class C {}
 ```
 
-### mixin_on_sealed_class
+### mixin_on_sealed_class {:#mixin-on-sealed-class}
 
 _The class '{0}' shouldn't be used as a mixin constraint because it is sealed,
 and any class mixing in this mixin must have '{0}' as a superclass._
@@ -13784,7 +13784,7 @@ If the classes that use the mixin don't need to be subclasses of the sealed
 class, then consider adding a field and delegating to the wrapped instance
 of the sealed class.
 
-### mixin_super_class_constraint_deferred_class
+### mixin_super_class_constraint_deferred_class {:#mixin-super-class-constraint-deferred-class}
 
 _Deferred classes can't be used as superclass constraints._
 
@@ -13822,7 +13822,7 @@ constraint:
 mixin M<T> {}
 ```
 
-### mixin_super_class_constraint_non_interface
+### mixin_super_class_constraint_non_interface {:#mixin-super-class-constraint-non-interface}
 
 _Only classes and mixins can be used as superclass constraints._
 
@@ -13849,7 +13849,7 @@ name.
 
 Otherwise, remove the type from the `on` clause.
 
-### multiple_redirecting_constructor_invocations
+### multiple_redirecting_constructor_invocations {:#multiple-redirecting-constructor-invocations}
 
 _Constructors can have only one 'this' redirection, at most._
 
@@ -13883,7 +13883,7 @@ class C {
 }
 ```
 
-### multiple_super_initializers
+### multiple_super_initializers {:#multiple-super-initializers}
 
 _A constructor can have at most one 'super' initializer._
 
@@ -13969,7 +13969,7 @@ class B extends A {
 }
 ```
 
-### must_be_a_native_function_type
+### must_be_a_native_function_type {:#must-be-a-native-function-type}
 
 _The type '{0}' given to '{1}' must be a valid 'dart:ffi' native function type._
 
@@ -14016,7 +14016,7 @@ class C<T extends Function> {
 }
 ```
 
-### must_be_a_subtype
+### must_be_a_subtype {:#must-be-a-subtype}
 
 _The type '{0}' must be a subtype of '{1}' for '{2}'._
 
@@ -14080,7 +14080,7 @@ void g() {
 }
 ```
 
-### must_be_immutable
+### must_be_immutable {:#must-be-immutable}
 
 _This class (or a class that this class inherits from) is marked as
 '@immutable', but one or more of its instance fields aren't final: {0}_
@@ -14136,7 +14136,7 @@ class C {
 }
 ```
 
-### must_call_super
+### must_call_super {:#must-call-super}
 
 _This method overrides a method annotated as '@mustCallSuper' in '{0}', but
 doesn't invoke the overridden method._
@@ -14186,7 +14186,7 @@ class B extends A {
 }
 ```
 
-### must_return_void
+### must_return_void {:#must-return-void}
 
 _The return type of the function passed to 'NativeCallable.listener' must be
 'void' rather than '{0}'._
@@ -14232,7 +14232,7 @@ void g() {
 }
 ```
 
-### name_not_string
+### name_not_string {:#name-not-string}
 
 _The value of the 'name' field is required to be a string._
 
@@ -14259,7 +14259,7 @@ Replace the value with a string:
 name: example
 ```
 
-### native_field_invalid_type
+### native_field_invalid_type {:#native-field-invalid-type}
 
 _'{0}' is an unsupported type for native fields. Native fields only support
 pointers, arrays or numeric and compound types._
@@ -14315,7 +14315,7 @@ import 'dart:ffi';
 external Pointer<NativeFunction<Void Function(Pointer<Void>)>> free;
 ```
 
-### native_field_missing_type
+### native_field_missing_type {:#native-field-missing-type}
 
 _The native type of this field could not be inferred and must be specified in
 the annotation._
@@ -14359,7 +14359,7 @@ external int f;
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-### native_field_not_static
+### native_field_not_static {:#native-field-not-static}
 
 _Native fields must be static._
 
@@ -14425,7 +14425,7 @@ final class C extends Struct {
 }
 ```
 
-### new_with_undefined_constructor_default
+### new_with_undefined_constructor_default {:#new-with-undefined-constructor-default}
 
 _The class '{0}' doesn't have an unnamed constructor._
 
@@ -14472,7 +14472,7 @@ class A {
 A f() => A();
 ```
 
-### non_abstract_class_inherits_abstract_member
+### non_abstract_class_inherits_abstract_member {:#non-abstract-class-inherits-abstract-member}
 
 _Missing concrete implementation of '{0}'._
 
@@ -14544,7 +14544,7 @@ abstract class A {
 abstract class B extends A {}
 ```
 
-### non_bool_condition
+### non_bool_condition {:#non-bool-condition}
 
 _Conditions must have a static type of 'bool'._
 
@@ -14578,7 +14578,7 @@ void f(int x) {
 }
 ```
 
-### non_bool_expression
+### non_bool_expression {:#non-bool-expression}
 
 _The expression in an assert must be of type 'bool'._
 
@@ -14608,7 +14608,7 @@ void f(int p) {
 }
 ```
 
-### non_bool_negation_expression
+### non_bool_negation_expression {:#non-bool-negation-expression}
 
 _A negation operand must have a static type of 'bool'._
 
@@ -14636,7 +14636,7 @@ int x = 0;
 bool y = !(x > 0);
 ```
 
-### non_bool_operand
+### non_bool_operand {:#non-bool-operand}
 
 _The operands of the operator '{0}' must be assignable to 'bool'._
 
@@ -14664,7 +14664,7 @@ int a = 3;
 bool b = a == 0 || a > 1;
 ```
 
-### non_constant_annotation_constructor
+### non_constant_annotation_constructor {:#non-constant-annotation-constructor}
 
 _Annotation creation can only call a const constructor._
 
@@ -14707,7 +14707,7 @@ class C {
 If it isn't valid for the class to have a const constructor, then either
 remove the annotation or use a different class for the annotation.
 
-### non_constant_case_expression
+### non_constant_case_expression {:#non-constant-case-expression}
 
 _Case expressions must be constant._
 
@@ -14743,7 +14743,7 @@ void f(int i, int j) {
 }
 ```
 
-### non_constant_case_expression_from_deferred_library
+### non_constant_case_expression_from_deferred_library {:#non-constant-case-expression-from-deferred-library}
 
 _Constant values from a deferred library can't be used as a case expression._
 
@@ -14826,7 +14826,7 @@ void f(int x) {
 }
 ```
 
-### non_constant_default_value
+### non_constant_default_value {:#non-constant-default-value}
 
 _The default value of an optional parameter must be constant._
 
@@ -14867,7 +14867,7 @@ void f([int? value]) {
 }
 ```
 
-### non_constant_default_value_from_deferred_library
+### non_constant_default_value_from_deferred_library {:#non-constant-default-value-from-deferred-library}
 
 _Constant values from a deferred library can't be used as a default parameter
 value._
@@ -14917,7 +14917,7 @@ value:
 void f({int x = 0}) {}
 ```
 
-### non_constant_list_element
+### non_constant_list_element {:#non-constant-list-element}
 
 _The values in a const list literal must be constants._
 
@@ -14959,7 +14959,7 @@ var x = 2;
 var y = <int>[0, 1, x];
 ```
 
-### non_constant_map_element
+### non_constant_map_element {:#non-constant-map-element}
 
 _The elements in a const map literal must be constant._
 
@@ -15005,7 +15005,7 @@ bool notConst = true;
 var map = <int, int>{if (notConst) 1 : 2};
 ```
 
-### non_constant_map_key
+### non_constant_map_key {:#non-constant-map-key}
 
 _The keys in a const map literal must be constant._
 
@@ -15040,7 +15040,7 @@ var a = 'a';
 var m = {a: 0};
 ```
 
-### non_constant_map_pattern_key
+### non_constant_map_pattern_key {:#non-constant-map-pattern-key}
 
 _Key expressions in map patterns must be constants._
 
@@ -15078,7 +15078,7 @@ class A {
 }
 ```
 
-### non_constant_map_value
+### non_constant_map_value {:#non-constant-map-value}
 
 _The values in a const map literal must be constant._
 
@@ -15113,7 +15113,7 @@ var a = 'a';
 var m = {0: a};
 ```
 
-### non_constant_relational_pattern_expression
+### non_constant_relational_pattern_expression {:#non-constant-relational-pattern-expression}
 
 _The relational pattern expression must be a constant._
 
@@ -15147,7 +15147,7 @@ void f(int x) {
 }
 ```
 
-### non_constant_set_element
+### non_constant_set_element {:#non-constant-set-element}
 
 _The values in a const set literal must be constants._
 
@@ -15184,7 +15184,7 @@ var i = 0;
 var s = {i};
 ```
 
-### non_constant_type_argument
+### non_constant_type_argument {:#non-constant-type-argument}
 
 _The type arguments to '{0}' must be known at compile time, so they can't be
 type parameters._
@@ -15230,7 +15230,7 @@ class C {
 }
 ```
 
-### non_const_argument_for_const_parameter
+### non_const_argument_for_const_parameter {:#non-const-argument-for-const-parameter}
 
 _Argument '{0}' must be a constant._
 
@@ -15269,7 +15269,7 @@ int f() => g(v);
 int g(@mustBeConst int value) => value + 1;
 ```
 
-### non_const_call_to_literal_constructor
+### non_const_call_to_literal_constructor {:#non-const-call-to-literal-constructor}
 
 _This instance creation must be 'const', because the {0} constructor is marked
 as '@literal'._
@@ -15312,7 +15312,7 @@ class C {
 void f() => const C();
 ```
 
-### non_const_generative_enum_constructor
+### non_const_generative_enum_constructor {:#non-const-generative-enum-constructor}
 
 _Generative enum constructors must be 'const'._
 
@@ -15346,7 +15346,7 @@ enum E {
 }
 ```
 
-### non_covariant_type_parameter_position_in_representation_type
+### non_covariant_type_parameter_position_in_representation_type {:#non-covariant-type-parameter-position-in-representation-type}
 
 _An extension type parameter can't be used in a non-covariant position of its
 representation type._
@@ -15375,7 +15375,7 @@ Remove the use of the type parameter:
 extension type A(void Function(String) f) {}
 ```
 
-### non_exhaustive_switch_expression
+### non_exhaustive_switch_expression {:#non-exhaustive-switch-expression}
 
 _The type '{0}' is not exhaustively matched by the switch cases since it doesn't
 match '{1}'._
@@ -15432,7 +15432,7 @@ Be aware that a wildcard pattern will handle any values added to the type
 in the future. You will lose the ability to have the compiler warn you if
 the `switch` needs to be updated to account for newly added types.
 
-### non_exhaustive_switch_statement
+### non_exhaustive_switch_statement {:#non-exhaustive-switch-statement}
 
 _The type '{0}' is not exhaustively matched by the switch cases since it doesn't
 match '{1}'._
@@ -15498,7 +15498,7 @@ any future values of the exhaustive type to also be handled, so you will
 have lost the ability for the compiler to warn you if the `switch` needs
 to be updated.
 
-### non_final_field_in_enum
+### non_final_field_in_enum {:#non-final-field-in-enum}
 
 _Enums can only declare final fields._
 
@@ -15541,7 +15541,7 @@ enum E {
 }
 ```
 
-### non_generative_constructor
+### non_generative_constructor {:#non-generative-constructor}
 
 _The generative constructor '{0}' is expected, but a factory was found._
 
@@ -15586,7 +15586,7 @@ class B extends A {
 If the generative constructor is the unnamed constructor, and if there are
 no arguments being passed to it, then you can remove the super invocation.
 
-### non_generative_implicit_constructor
+### non_generative_implicit_constructor {:#non-generative-implicit-constructor}
 
 _The unnamed constructor of superclass '{0}' (called by the default constructor
 of '{1}') must be a generative constructor, but factory found._
@@ -15656,7 +15656,7 @@ class A {
 class B implements A {}
 ```
 
-### non_native_function_type_argument_to_pointer
+### non_native_function_type_argument_to_pointer {:#non-native-function-type-argument-to-pointer}
 
 _Can't invoke 'asFunction' because the function signature '{0}' for the pointer
 isn't a valid C function signature._
@@ -15705,7 +15705,7 @@ class C {
 }
 ```
 
-### non_positive_array_dimension
+### non_positive_array_dimension {:#non-positive-array-dimension}
 
 _Array dimensions must be positive numbers._
 
@@ -15754,7 +15754,7 @@ final class MyStruct extends Struct {
 }
 ```
 
-### non_sized_type_argument
+### non_sized_type_argument {:#non-sized-type-argument}
 
 _The type '{1}' isn't a valid type argument for '{0}'. The type argument must be
 a native integer, 'Float', 'Double', 'Pointer', or subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
@@ -15795,7 +15795,7 @@ final class C extends Struct {
 }
 ```
 
-### non_sync_factory
+### non_sync_factory {:#non-sync-factory}
 
 _Factory bodies can't use 'async', 'async*', or 'sync*'._
 
@@ -15846,7 +15846,7 @@ class C {
 }
 ```
 
-### non_type_as_type_argument
+### non_type_as_type_argument {:#non-type-as-type-argument}
 
 _The name '{0}' isn't a type, so it can't be used as a type argument._
 
@@ -15874,7 +15874,7 @@ var x = 0;
 List<int> xList = [];
 ```
 
-### non_type_in_catch_clause
+### non_type_in_catch_clause {:#non-type-in-catch-clause}
 
 _The name '{0}' isn't a type and can't be used in an on-catch clause._
 
@@ -15912,7 +15912,7 @@ void f() {
 }
 ```
 
-### non_void_return_for_operator
+### non_void_return_for_operator {:#non-void-return-for-operator}
 
 _The return type of the operator []= must be 'void'._
 
@@ -15942,7 +15942,7 @@ class C {
 }
 ```
 
-### non_void_return_for_setter
+### non_void_return_for_setter {:#non-void-return-for-setter}
 
 _The return type of the setter must be 'void' or absent._
 
@@ -15972,7 +15972,7 @@ class C {
 }
 ```
 
-### not_assigned_potentially_non_nullable_local_variable
+### not_assigned_potentially_non_nullable_local_variable {:#not-assigned-potentially-non-nullable-local-variable}
 
 _The non-nullable local variable '{0}' must be assigned before it can be used._
 
@@ -16086,7 +16086,7 @@ int h(bool b) {
 }
 ```
 
-### not_a_type
+### not_a_type {:#not-a-type}
 
 _{0} isn't a type._
 
@@ -16108,7 +16108,7 @@ g([!f!] v) {}
 
 Replace the name with the name of a type.
 
-### not_binary_operator
+### not_binary_operator {:#not-binary-operator}
 
 _'{0}' isn't a binary operator._
 
@@ -16134,7 +16134,7 @@ Replace the operator with the correct binary operator:
 var a = 5 - 3;
 ```
 
-### not_enough_positional_arguments
+### not_enough_positional_arguments {:#not-enough-positional-arguments}
 
 _1 positional argument expected by '{0}', but 0 found._
 
@@ -16173,7 +16173,7 @@ void g() {
 }
 ```
 
-### not_initialized_non_nullable_instance_field
+### not_initialized_non_nullable_instance_field {:#not-initialized-non-nullable-instance-field}
 
 _Non-nullable instance field '{0}' must be initialized._
 
@@ -16245,7 +16245,7 @@ class C {
 }
 ```
 
-### not_initialized_non_nullable_variable
+### not_initialized_non_nullable_variable {:#not-initialized-non-nullable-variable}
 
 _The non-nullable variable '{0}' must be initialized._
 
@@ -16302,7 +16302,7 @@ class C {
 }
 ```
 
-### not_iterable_spread
+### not_iterable_spread {:#not-iterable-spread}
 
 _Spread elements in list or set literals must implement 'Iterable'._
 
@@ -16331,7 +16331,7 @@ var m = <String, int>{'a': 0, 'b': 1};
 var s = <String>{...m.keys};
 ```
 
-### not_map_spread
+### not_map_spread {:#not-map-spread}
 
 _Spread elements in map literals must implement 'Map'._
 
@@ -16360,7 +16360,7 @@ var l =  <String>['a', 'b'];
 var m = <int, String>{...l.asMap()};
 ```
 
-### no_annotation_constructor_arguments
+### no_annotation_constructor_arguments {:#no-annotation-constructor-arguments}
 
 _Annotation creation must have arguments._
 
@@ -16399,7 +16399,7 @@ class C {
 var x;
 ```
 
-### no_combined_super_signature
+### no_combined_super_signature {:#no-combined-super-signature}
 
 _Can't infer missing types in '{0}' from overridden methods: {1}._
 
@@ -16455,7 +16455,7 @@ abstract class C implements A, B {
 }
 ```
 
-### no_generative_constructors_in_superclass
+### no_generative_constructors_in_superclass {:#no-generative-constructors-in-superclass}
 
 _The class '{0}' can't extend '{1}' because '{1}' only has factory constructors
 (no generative constructors), and '{0}' has at least one generative constructor._
@@ -16520,7 +16520,7 @@ class A {
 class B implements A {}
 ```
 
-### nullable_type_in_catch_clause
+### nullable_type_in_catch_clause {:#nullable-type-in-catch-clause}
 
 _A potentially nullable type can't be used in an 'on' clause because it isn't
 valid to throw a nullable expression._
@@ -16559,7 +16559,7 @@ void f() {
 }
 ```
 
-### nullable_type_in_extends_clause
+### nullable_type_in_extends_clause {:#nullable-type-in-extends-clause}
 
 _A class can't extend a nullable type._
 
@@ -16595,7 +16595,7 @@ class A {}
 class B extends A {}
 ```
 
-### nullable_type_in_implements_clause
+### nullable_type_in_implements_clause {:#nullable-type-in-implements-clause}
 
 _A class, mixin, or extension type can't implement a nullable type._
 
@@ -16632,7 +16632,7 @@ class A {}
 class B implements A {}
 ```
 
-### nullable_type_in_on_clause
+### nullable_type_in_on_clause {:#nullable-type-in-on-clause}
 
 _A mixin can't have a nullable type as a superclass constraint._
 
@@ -16669,7 +16669,7 @@ class C {}
 mixin M on C {}
 ```
 
-### nullable_type_in_with_clause
+### nullable_type_in_with_clause {:#nullable-type-in-with-clause}
 
 _A class or mixin can't mix in a nullable type._
 
@@ -16704,7 +16704,7 @@ mixin M {}
 class C with M {}
 ```
 
-### null_argument_to_non_null_type
+### null_argument_to_non_null_type {:#null-argument-to-non-null-type}
 
 _'{0}' shouldn't be called with a 'null' argument for the non-nullable type
 argument '{1}'._
@@ -16739,7 +16739,7 @@ Future<String> f() {
 }
 ```
 
-### null_check_always_fails
+### null_check_always_fails {:#null-check-always-fails}
 
 _This null-check will always throw an exception because the expression will
 always evaluate to 'null'._
@@ -16779,7 +16779,7 @@ void f() {
 Null g() => null;
 ```
 
-### obsolete_colon_for_default_value
+### obsolete_colon_for_default_value {:#obsolete-colon-for-default-value}
 
 _Using a colon as the separator before a default value is no longer supported._
 
@@ -16807,7 +16807,7 @@ Replace the colon with an equal sign:
 void f({int i = 0}) {}
 ```
 
-### on_repeated
+### on_repeated {:#on-repeated}
 
 _The type '{0}' can be included in the superclass constraints only once._
 
@@ -16852,7 +16852,7 @@ class A {}
 class B {}
 ```
 
-### optional_parameter_in_operator
+### optional_parameter_in_operator {:#optional-parameter-in-operator}
 
 _Optional parameters aren't allowed when defining an operator._
 
@@ -16882,7 +16882,7 @@ class C {
 }
 ```
 
-### override_on_non_overriding_member
+### override_on_non_overriding_member {:#override-on-non-overriding-member}
 
 _The field doesn't override an inherited getter or setter._
 
@@ -16927,7 +16927,7 @@ superclass, then consider removing the member from the subclass.
 
 If the member can't be removed, then remove the annotation.
 
-### packed_annotation
+### packed_annotation {:#packed-annotation}
 
 _Structs must have at most one 'Packed' annotation._
 
@@ -16966,7 +16966,7 @@ final class C extends Struct {
 }
 ```
 
-### packed_annotation_alignment
+### packed_annotation_alignment {:#packed-annotation-alignment}
 
 _Only packing to 1, 2, 4, 8, and 16 bytes is supported._
 
@@ -17004,7 +17004,7 @@ final class C extends Struct {
 }
 ```
 
-### part_of_different_library
+### part_of_different_library {:#part-of-different-library}
 
 _Expected this library to be part of '{0}', not '{1}'._
 
@@ -17039,7 +17039,7 @@ If the [part file][] should be a part of this library, then update the URI
 (or library name) in the part-of directive to be the URI (or name) of the
 correct library.
 
-### part_of_non_part
+### part_of_non_part {:#part-of-non-part}
 
 _The included part '{0}' must have a part-of directive._
 
@@ -17081,7 +17081,7 @@ directive with an import directive:
 import 'a.dart';
 ```
 
-### part_of_unnamed_library
+### part_of_unnamed_library {:#part-of-unnamed-library}
 
 _The library is unnamed. A URI is expected, not a library name '{0}', in the
 part-of directive._
@@ -17119,7 +17119,7 @@ by URI:
 part of 'test.dart';
 ```
 
-### path_does_not_exist
+### path_does_not_exist {:#path-does-not-exist}
 
 _The path '{0}' doesn't exist._
 
@@ -17147,7 +17147,7 @@ If the path is correct, then create a directory at that path.
 If the path isn't correct, then change the path to match the path to the
 root of the package.
 
-### path_not_posix
+### path_not_posix {:#path-not-posix}
 
 _The path '{0}' isn't a POSIX-style path._
 
@@ -17172,7 +17172,7 @@ dependencies:
 
 Convert the path to a POSIX path.
 
-### path_pubspec_does_not_exist
+### path_pubspec_does_not_exist {:#path-pubspec-does-not-exist}
 
 _The directory '{0}' doesn't contain a pubspec._
 
@@ -17205,7 +17205,7 @@ name: local_package
 
 If the path is wrong, then replace it with the correct path.
 
-### pattern_assignment_not_local_variable
+### pattern_assignment_not_local_variable {:#pattern-assignment-not-local-variable}
 
 _Only local variables can be assigned in pattern assignments._
 
@@ -17261,7 +17261,7 @@ class C {
 }
 ```
 
-### pattern_constant_from_deferred_library
+### pattern_constant_from_deferred_library {:#pattern-constant-from-deferred-library}
 
 _Constant values from a deferred library can't be used in patterns._
 
@@ -17342,7 +17342,7 @@ void f(int x) {
 }
 ```
 
-### pattern_type_mismatch_in_irrefutable_context
+### pattern_type_mismatch_in_irrefutable_context {:#pattern-type-mismatch-in-irrefutable-context}
 
 _The matched value of type '{0}' isn't assignable to the required type '{1}'._
 
@@ -17376,7 +17376,7 @@ void f(String x) {
 }
 ```
 
-### pattern_variable_assignment_inside_guard
+### pattern_variable_assignment_inside_guard {:#pattern-variable-assignment-inside-guard}
 
 _Pattern variables can't be assigned inside the guard of the enclosing guarded
 pattern._
@@ -17423,7 +17423,7 @@ void f(int x) {
 }
 ```
 
-### platform_value_disallowed
+### platform_value_disallowed {:#platform-value-disallowed}
 
 _Keys in the `platforms` field can't have values._
 
@@ -17458,7 +17458,7 @@ platforms:
 Values for keys in the `platforms` field are currently reserved for
 potential future behavior.
 
-### positional_field_in_object_pattern
+### positional_field_in_object_pattern {:#positional-field-in-object-pattern}
 
 _Object patterns can only use named fields._
 
@@ -17492,7 +17492,7 @@ void f(Object o) {
 }
 ```
 
-### positional_super_formal_parameter_with_positional_argument
+### positional_super_formal_parameter_with_positional_argument {:#positional-super-formal-parameter-with-positional-argument}
 
 _Positional super parameters can't be used when the super constructor invocation
 has a positional argument._
@@ -17556,7 +17556,7 @@ class B extends A {
 }
 ```
 
-### prefix_collides_with_top_level_member
+### prefix_collides_with_top_level_member {:#prefix-collides-with-top-level-member}
 
 _The name '{0}' is already used as an import prefix and can't be used to name a
 top-level element._
@@ -17597,7 +17597,7 @@ import 'dart:math' as math;
 int f() => math.min(0, 1);
 ```
 
-### prefix_identifier_not_followed_by_dot
+### prefix_identifier_not_followed_by_dot {:#prefix-identifier-not-followed-by-dot}
 
 _The name '{0}' refers to an import prefix, so it must be followed by '.'._
 
@@ -17636,7 +17636,7 @@ void f() {
 
 If the name is wrong, then correct the name.
 
-### prefix_shadowed_by_local_declaration
+### prefix_shadowed_by_local_declaration {:#prefix-shadowed-by-local-declaration}
 
 _The prefix '{0}' can't be used here because it's shadowed by a local
 declaration._
@@ -17686,7 +17686,7 @@ a.Future? f(int p) {
 }
 ```
 
-### private_collision_in_mixin_application
+### private_collision_in_mixin_application {:#private-collision-in-mixin-application}
 
 _The private name '{0}', defined by '{1}', conflicts with the same name defined
 by '{2}'._
@@ -17734,7 +17734,7 @@ class C extends Object with A, [!B!] {}
 If you need both of the mixins, then rename the conflicting member in one
 of the two mixins.
 
-### private_optional_parameter
+### private_optional_parameter {:#private-optional-parameter}
 
 _Named parameters can't start with an underscore._
 
@@ -17764,7 +17764,7 @@ class C {
 }
 ```
 
-### private_setter
+### private_setter {:#private-setter}
 
 _The setter '{0}' is private and can't be accessed outside the library that
 declares it._
@@ -17808,7 +17808,7 @@ class A {
 If you aren't able to make the setter public, then find a different way to
 implement the code.
 
-### read_potentially_unassigned_final
+### read_potentially_unassigned_final {:#read-potentially-unassigned-final}
 
 _The final variable '{0}' can't be read because it's potentially unassigned at
 this point._
@@ -17849,7 +17849,7 @@ int f(bool b) {
 }
 ```
 
-### record_literal_one_positional_no_trailing_comma
+### record_literal_one_positional_no_trailing_comma {:#record-literal-one-positional-no-trailing-comma}
 
 _A record literal with exactly one positional field requires a trailing comma._
 
@@ -17879,7 +17879,7 @@ Add a trailing comma:
 var r = const (1,);
 ```
 
-### record_type_one_positional_no_trailing_comma
+### record_type_one_positional_no_trailing_comma {:#record-type-one-positional-no-trailing-comma}
 
 _A record type with exactly one positional field requires a trailing comma._
 
@@ -17909,7 +17909,7 @@ Add a trailing comma:
 void f((int,) r) {}
 ```
 
-### recursive_compile_time_constant
+### recursive_compile_time_constant {:#recursive-compile-time-constant}
 
 _The compile-time constant expression depends on itself._
 
@@ -17939,7 +17939,7 @@ const secondsPerHour = minutesPerHour * 60;
 const minutesPerHour = 60;
 ```
 
-### recursive_constructor_redirect
+### recursive_constructor_redirect {:#recursive-constructor-redirect}
 
 _Constructors can't redirect to themselves either directly or indirectly._
 
@@ -18027,7 +18027,7 @@ class B implements A {
 }
 ```
 
-### recursive_interface_inheritance
+### recursive_interface_inheritance {:#recursive-interface-inheritance}
 
 _'{0}' can't be a superinterface of itself: {1}._
 
@@ -18059,7 +18059,7 @@ class B implements A {}
 
 Change the type hierarchy so that there's no circularity.
 
-### redeclare_on_non_redeclaring_member
+### redeclare_on_non_redeclaring_member {:#redeclare-on-non-redeclaring-member}
 
 _The {0} doesn't redeclare a {0} declared in a superinterface._
 
@@ -18119,7 +18119,7 @@ extension type E(C c) implements C {
 }
 ```
 
-### redirect_generative_to_missing_constructor
+### redirect_generative_to_missing_constructor {:#redirect-generative-to-missing-constructor}
 
 _The constructor '{0}' couldn't be found in '{1}'._
 
@@ -18159,7 +18159,7 @@ class C {
 }
 ```
 
-### redirect_generative_to_non_generative_constructor
+### redirect_generative_to_non_generative_constructor {:#redirect-generative-to-non-generative-constructor}
 
 _Generative constructors can't redirect to a factory constructor._
 
@@ -18202,7 +18202,7 @@ class C {
 }
 ```
 
-### redirect_to_abstract_class_constructor
+### redirect_to_abstract_class_constructor {:#redirect-to-abstract-class-constructor}
 
 _The redirecting constructor '{0}' can't redirect to a constructor of the
 abstract class '{1}'._
@@ -18242,7 +18242,7 @@ class B implements A {}
 Otherwise, change the factory constructor so that it either redirects to a
 constructor in a concrete class, or has a concrete implementation.
 
-### redirect_to_invalid_function_type
+### redirect_to_invalid_function_type {:#redirect-to-invalid-function-type}
 
 _The redirected constructor '{0}' has incompatible parameters with '{1}'._
 
@@ -18313,7 +18313,7 @@ class B implements A {
 }
 ```
 
-### redirect_to_invalid_return_type
+### redirect_to_invalid_return_type {:#redirect-to-invalid-return-type}
 
 _The return type '{0}' of the redirected constructor isn't a subtype of '{1}'._
 
@@ -18368,7 +18368,7 @@ class C {
 }
 ```
 
-### redirect_to_missing_constructor
+### redirect_to_missing_constructor {:#redirect-to-missing-constructor}
 
 _The constructor '{0}' couldn't be found in '{1}'._
 
@@ -18420,7 +18420,7 @@ class B implements A {
 }
 ```
 
-### redirect_to_non_class
+### redirect_to_non_class {:#redirect-to-non-class}
 
 _The name '{0}' isn't a type and can't be used in a redirected constructor._
 
@@ -18462,7 +18462,7 @@ class C {
 }
 ```
 
-### redirect_to_non_const_constructor
+### redirect_to_non_const_constructor {:#redirect-to-non-const-constructor}
 
 _A constant redirecting constructor can't redirect to a non-constant
 constructor._
@@ -18506,7 +18506,7 @@ class C {
 }
 ```
 
-### redirect_to_type_alias_expands_to_type_parameter
+### redirect_to_type_alias_expands_to_type_parameter {:#redirect-to-type-alias-expands-to-type-parameter}
 
 _A redirecting constructor can't redirect to a type alias that expands to a type
 parameter._
@@ -18547,7 +18547,7 @@ abstract class C {
 }
 ```
 
-### referenced_before_declaration
+### referenced_before_declaration {:#referenced-before-declaration}
 
 _Local variable '{0}' can't be referenced before it is declared._
 
@@ -18597,7 +18597,7 @@ void f(int i) {
 }
 ```
 
-### refutable_pattern_in_irrefutable_context
+### refutable_pattern_in_irrefutable_context {:#refutable-pattern-in-irrefutable-context}
 
 _Refutable patterns can't be used in an irrefutable context._
 
@@ -18633,7 +18633,7 @@ void f(int? x) {
 
 Rewrite the code to not use a refutable pattern in an irrefutable context.
 
-### relational_pattern_operand_type_not_assignable
+### relational_pattern_operand_type_not_assignable {:#relational-pattern-operand-type-not-assignable}
 
 _The constant expression type '{0}' is not assignable to the parameter type
 '{1}' of the '{2}' operator._
@@ -18705,7 +18705,7 @@ void f(C c) {
 }
 ```
 
-### relational_pattern_operator_return_type_not_assignable_to_bool
+### relational_pattern_operator_return_type_not_assignable_to_bool {:#relational-pattern-operator-return-type-not-assignable-to-bool}
 
 _The return type of operators used in relational patterns must be assignable to
 'bool'._
@@ -18777,7 +18777,7 @@ void f(C c1) {
 }
 ```
 
-### rest_element_in_map_pattern
+### rest_element_in_map_pattern {:#rest-element-in-map-pattern}
 
 _A map pattern can't contain a rest pattern._
 
@@ -18809,7 +18809,7 @@ void f(Map<int, String> x) {
 }
 ```
 
-### rethrow_outside_catch
+### rethrow_outside_catch {:#rethrow-outside-catch}
 
 _A rethrow must be inside of a catch clause._
 
@@ -18855,7 +18855,7 @@ void f() {
 }
 ```
 
-### return_in_generative_constructor
+### return_in_generative_constructor {:#return-in-generative-constructor}
 
 _Constructors can't return values._
 
@@ -18905,7 +18905,7 @@ class C {
 }
 ```
 
-### return_in_generator
+### return_in_generator {:#return-in-generator}
 
 _Can't return a value from a generator function that uses the 'async*' or
 'sync*' modifier._
@@ -18964,7 +18964,7 @@ int f() {
 }
 ```
 
-### return_of_do_not_store
+### return_of_do_not_store {:#return-of-do-not-store}
 
 _'{0}' is annotated with 'doNotStore' and shouldn't be returned unless '{1}' is
 also annotated._
@@ -19016,7 +19016,7 @@ int f() => 0;
 int g() => 0;
 ```
 
-### return_of_invalid_type
+### return_of_invalid_type {:#return-of-invalid-type}
 
 _A value of type '{0}' can't be returned from the constructor '{2}' because it
 has a return type of '{1}'._
@@ -19056,7 +19056,7 @@ If the value is correct, then change the return type to match:
 int f() => 3;
 ```
 
-### return_of_invalid_type_from_closure
+### return_of_invalid_type_from_closure {:#return-of-invalid-type-from-closure}
 
 _The returned type '{0}' isn't returnable from a '{1}' function, as required by
 the closure's context._
@@ -19086,7 +19086,7 @@ of the correct type, possibly by converting the existing value:
 String Function(String) f = (s) => 3.toString();
 ```
 
-### return_without_value
+### return_without_value {:#return-without-value}
 
 _The return value is missing after 'return'._
 
@@ -19116,7 +19116,7 @@ int f() {
 }
 ```
 
-### sdk_version_async_exported_from_core
+### sdk_version_async_exported_from_core {:#sdk-version-async-exported-from-core}
 
 _The class '{0}' wasn't exported from 'dart:core' until version 2.1, but this
 code is required to be able to run on earlier versions._
@@ -19165,7 +19165,7 @@ import 'dart:async';
 void f(Future f) {}
 ```
 
-### sdk_version_as_expression_in_const_context
+### sdk_version_as_expression_in_const_context {:#sdk-version-as-expression-in-const-context}
 
 _The use of an as expression in a constant expression wasn't supported until
 version 2.3.2, but this code is required to be able to run on earlier versions._
@@ -19215,7 +19215,7 @@ num x = 3;
 int y = x as int;
 ```
 
-### sdk_version_bool_operator_in_const_context
+### sdk_version_bool_operator_in_const_context {:#sdk-version-bool-operator-in-const-context}
 
 _The use of the operator '{0}' for 'bool' operands in a constant context wasn't
 supported until version 2.3.2, but this code is required to be able to run on earlier versions._
@@ -19268,7 +19268,7 @@ const bool b = false;
 bool c = a & b;
 ```
 
-### sdk_version_constructor_tearoffs
+### sdk_version_constructor_tearoffs {:#sdk-version-constructor-tearoffs}
 
 _Tearing off a constructor requires the 'constructor-tearoffs' language
 feature._
@@ -19314,7 +19314,7 @@ not use constructor tear-offs:
 var setConstructor = () => Set.identity();
 ```
 
-### sdk_version_eq_eq_operator_in_const_context
+### sdk_version_eq_eq_operator_in_const_context {:#sdk-version-eq-eq-operator-in-const-context}
 
 _Using the operator '==' for non-primitive types wasn't supported until version
 2.3.2, but this code is required to be able to run on earlier versions._
@@ -19368,7 +19368,7 @@ const C b = null;
 bool same = a == b;
 ```
 
-### sdk_version_extension_methods
+### sdk_version_extension_methods {:#sdk-version-extension-methods}
 
 _Extension methods weren't supported until version 2.6.0, but this code is
 required to be able to run on earlier versions._
@@ -19423,7 +19423,7 @@ void sayHello(String s) {
 }
 ```
 
-### sdk_version_gt_gt_gt_operator
+### sdk_version_gt_gt_gt_operator {:#sdk-version-gt-gt-gt-operator}
 
 _The operator '>>>' wasn't supported until version 2.14.0, but this code is
 required to be able to run on earlier versions._
@@ -19477,7 +19477,7 @@ int logicalShiftRight(int leftOperand, int rightOperand) {
 }
 ```
 
-### sdk_version_is_expression_in_const_context
+### sdk_version_is_expression_in_const_context {:#sdk-version-is-expression-in-const-context}
 
 _The use of an is expression in a constant context wasn't supported until
 version 2.3.2, but this code is required to be able to run on earlier versions._
@@ -19528,7 +19528,7 @@ const Object x = 4;
 var y = x is int ? 0 : 1;
 ```
 
-### sdk_version_never
+### sdk_version_never {:#sdk-version-never}
 
 _The type 'Never' wasn't supported until version 2.12.0, but this code is
 required to be able to run on earlier versions._
@@ -19574,7 +19574,7 @@ not reference this class:
 dynamic x;
 ```
 
-### sdk_version_set_literal
+### sdk_version_set_literal {:#sdk-version-set-literal}
 
 _Set literals weren't supported until version 2.2, but this code is required to
 be able to run on earlier versions._
@@ -19620,7 +19620,7 @@ literal with code that creates the set without the use of a literal:
 var s = new Set<int>();
 ```
 
-### sdk_version_ui_as_code
+### sdk_version_ui_as_code {:#sdk-version-ui-as-code}
 
 _The for, if, and spread elements weren't supported until version 2.3.0, but
 this code is required to be able to run on earlier versions._
@@ -19675,7 +19675,7 @@ List<int> _initializeDigits() {
 }
 ```
 
-### sdk_version_ui_as_code_in_const_context
+### sdk_version_ui_as_code_in_const_context {:#sdk-version-ui-as-code-in-const-context}
 
 _The if and spread elements weren't supported in constant expressions until
 version 2.5.0, but this code is required to be able to run on earlier versions._
@@ -19732,7 +19732,7 @@ const a = [1, 2];
 var b = [...a];
 ```
 
-### set_element_type_not_assignable
+### set_element_type_not_assignable {:#set-element-type-not-assignable}
 
 _The element type '{0}' can't be assigned to the set type '{1}'._
 
@@ -19766,7 +19766,7 @@ If the type of the element is wrong, then change the element:
 var s = <int>{'0'.length};
 ```
 
-### shared_deferred_prefix
+### shared_deferred_prefix {:#shared-deferred-prefix}
 
 _The prefix of a deferred import can't be used in other import directives._
 
@@ -19809,7 +19809,7 @@ import 'dart:convert' as convert;
 var y = convert.json.encode(x.min(0, 1));
 ```
 
-### size_annotation_dimensions
+### size_annotation_dimensions {:#size-annotation-dimensions}
 
 _'Array's must have an 'Array' annotation that matches the dimensions._
 
@@ -19861,7 +19861,7 @@ final class C extends Struct {
 }
 ```
 
-### static_access_to_instance_member
+### static_access_to_instance_member {:#static-access-to-instance-member}
 
 _Instance member '{0}' can't be accessed using static access._
 
@@ -19914,7 +19914,7 @@ class C {
 int f(C c) => c.b;
 ```
 
-### subtype_of_base_or_final_is_not_base_final_or_sealed
+### subtype_of_base_or_final_is_not_base_final_or_sealed {:#subtype-of-base-or-final-is-not-base-final-or-sealed}
 
 _The mixin '{0}' must be 'base' because the supertype '{1}' is 'base'._
 
@@ -19952,7 +19952,7 @@ base class A {}
 final class B extends A {}
 ```
 
-### subtype_of_deferred_class
+### subtype_of_deferred_class {:#subtype-of-deferred-class}
 
 _Classes and mixins can't implement deferred classes._
 
@@ -19999,7 +19999,7 @@ import 'a.dart' as a;
 class B extends a.A {}
 ```
 
-### subtype_of_disallowed_type
+### subtype_of_disallowed_type {:#subtype-of-disallowed-type}
 
 _'{0}' can't be used as a superclass constraint._
 
@@ -20062,7 +20062,7 @@ type, and possibly the whole clause:
 class B {}
 ```
 
-### subtype_of_ffi_class
+### subtype_of_ffi_class {:#subtype-of-ffi-class}
 
 _The class '{0}' can't extend '{1}'._
 
@@ -20111,7 +20111,7 @@ references to FFI classes:
 final class C {}
 ```
 
-### subtype_of_sealed_class
+### subtype_of_sealed_class {:#subtype-of-sealed-class}
 
 _The class '{0}' shouldn't be extended, mixed in, or implemented because it's
 sealed._
@@ -20162,7 +20162,7 @@ If the class needs to be a subtype of the sealed class, then either change
 the sealed class so that it's no longer sealed or move the subclass into
 the same package as the sealed class.
 
-### subtype_of_struct_class
+### subtype_of_struct_class {:#subtype-of-struct-class}
 
 _The class '{0}' can't extend '{1}' because '{1}' is a subtype of 'Struct',
 'Union', or 'AbiSpecificInteger'._
@@ -20218,7 +20218,7 @@ final class C extends Struct {
 }
 ```
 
-### supertype_expands_to_type_parameter
+### supertype_expands_to_type_parameter {:#supertype-expands-to-type-parameter}
 
 _A type alias that expands to a type parameter can't be implemented._
 
@@ -20257,7 +20257,7 @@ typedef T<S> = S;
 class C extends Object {}
 ```
 
-### super_formal_parameter_type_is_not_subtype_of_associated
+### super_formal_parameter_type_is_not_subtype_of_associated {:#super-formal-parameter-type-is-not-subtype-of-associated}
 
 _The type '{0}' of this parameter isn't a subtype of the type '{1}' of the
 associated super constructor parameter._
@@ -20326,7 +20326,7 @@ class B extends A {
 }
 ```
 
-### super_formal_parameter_without_associated_named
+### super_formal_parameter_without_associated_named {:#super-formal-parameter-without-associated-named}
 
 _No associated named super constructor parameter._
 
@@ -20396,7 +20396,7 @@ class B extends A {
 }
 ```
 
-### super_formal_parameter_without_associated_positional
+### super_formal_parameter_without_associated_positional {:#super-formal-parameter-without-associated-positional}
 
 _No associated positional super constructor parameter._
 
@@ -20471,7 +20471,7 @@ class B extends A {
 }
 ```
 
-### super_invocation_not_last
+### super_invocation_not_last {:#super-invocation-not-last}
 
 <a id="invalid_super_invocation" aria-hidden="true"></a>_(Previously known as `invalid_super_invocation`)_
 
@@ -20513,7 +20513,7 @@ class B extends A {
 }
 ```
 
-### super_in_enum_constructor
+### super_in_enum_constructor {:#super-in-enum-constructor}
 
 _The enum constructor can't have a 'super' initializer._
 
@@ -20547,7 +20547,7 @@ enum E {
 }
 ```
 
-### super_in_extension
+### super_in_extension {:#super-in-extension}
 
 _The 'super' keyword can't be used in an extension because an extension doesn't
 have a superclass._
@@ -20579,7 +20579,7 @@ extension E on Object {
 }
 ```
 
-### super_in_extension_type
+### super_in_extension_type {:#super-in-extension-type}
 
 _The 'super' keyword can't be used in an extension type because an extension
 type doesn't have a superclass._
@@ -20614,7 +20614,7 @@ extension type E(String s) {
 }
 ```
 
-### super_in_invalid_context
+### super_in_invalid_context {:#super-in-invalid-context}
 
 _Invalid context for 'super' invocation._
 
@@ -20638,7 +20638,7 @@ void f() {
 
 Rewrite the code to not use `super`.
 
-### super_in_redirecting_constructor
+### super_in_redirecting_constructor {:#super-in-redirecting-constructor}
 
 _The redirecting constructor can't have a 'super' initializer._
 
@@ -20672,7 +20672,7 @@ class C {
 }
 ```
 
-### switch_case_completes_normally
+### switch_case_completes_normally {:#switch-case-completes-normally}
 
 _The 'case' shouldn't complete normally._
 
@@ -20709,7 +20709,7 @@ following at the end of the current list of statements:
 - a `continue`, or
 - an invocation of a function or method whose return type is `Never`.
 
-### switch_expression_not_assignable
+### switch_expression_not_assignable {:#switch-expression-not-assignable}
 
 _Type '{0}' of the switch expression isn't assignable to the type '{1}' of case
 expressions._
@@ -20760,7 +20760,7 @@ void f(String s) {
 }
 ```
 
-### tearoff_of_generative_constructor_of_abstract_class
+### tearoff_of_generative_constructor_of_abstract_class {:#tearoff-of-generative-constructor-of-abstract-class}
 
 _A generative constructor of an abstract class can't be torn off._
 
@@ -20790,7 +20790,7 @@ void f() {
 
 Tear off the constructor of a concrete class.
 
-### text_direction_code_point_in_comment
+### text_direction_code_point_in_comment {:#text-direction-code-point-in-comment}
 
 _The Unicode code point 'U+{0}' changes the appearance of text from how it's
 interpreted by the compiler._
@@ -20828,7 +20828,7 @@ then remove them:
 var label = 'Interactive text';
 ```
 
-### text_direction_code_point_in_literal
+### text_direction_code_point_in_literal {:#text-direction-code-point-in-literal}
 
 _The Unicode code point 'U+{0}' changes the appearance of text from how it's
 interpreted by the compiler._
@@ -20866,7 +20866,7 @@ then remove them:
 var label = 'Interactive text';
 ```
 
-### throw_of_invalid_type
+### throw_of_invalid_type {:#throw-of-invalid-type}
 
 _The type '{0}' of the thrown expression must be assignable to 'Object'._
 
@@ -20897,7 +20897,7 @@ void f(String? s) {
 }
 ```
 
-### top_level_cycle
+### top_level_cycle {:#top-level-cycle}
 
 _The type of '{0}' can't be inferred because it depends on itself through the
 cycle: {1}._
@@ -20942,7 +20942,7 @@ will produce a stack overflow at runtime unless at least one of the
 variables is assigned a value that doesn't depend on the other variables
 before any of the variables in the cycle are referenced.
 
-### type_alias_cannot_reference_itself
+### type_alias_cannot_reference_itself {:#type-alias-cannot-reference-itself}
 
 _Typedefs can't reference themselves directly or recursively via another
 typedef._
@@ -20972,7 +20972,7 @@ typedef F = void Function(G);
 typedef G = void Function(int);
 ```
 
-### type_annotation_deferred_class
+### type_annotation_deferred_class {:#type-annotation-deferred-class}
 
 _The deferred type '{0}' can't be used in a declaration, cast, or type test._
 
@@ -21012,7 +21012,7 @@ If the import is required to be deferred and there's another type that is
 appropriate, then use that type in place of the type from the deferred
 library.
 
-### type_argument_not_matching_bounds
+### type_argument_not_matching_bounds {:#type-argument-not-matching-bounds}
 
 _'{0}' doesn't conform to the bound '{2}' of the type parameter '{1}'._
 
@@ -21042,7 +21042,7 @@ class A<E extends num> {}
 var a = A<int>();
 ```
 
-### type_check_with_null
+### type_check_with_null {:#type-check-with-null}
 
 _Tests for non-null should be done with '!= null'._
 
@@ -21094,7 +21094,7 @@ void f(String? s) {
 }
 ```
 
-### type_parameter_referenced_by_static
+### type_parameter_referenced_by_static {:#type-parameter-referenced-by-static}
 
 _Static members can't reference type parameters of the class._
 
@@ -21136,7 +21136,7 @@ class C<T> {
 Note, however, that there isn't a relationship between `T` and `S`, so this
 second option changes the semantics from what was likely to be intended.
 
-### type_parameter_supertype_of_its_bound
+### type_parameter_supertype_of_its_bound {:#type-parameter-supertype-of-its-bound}
 
 _'{0}' can't be a supertype of its upper bound._
 
@@ -21180,7 +21180,7 @@ If the type parameter can be any type, then remove the `extends` clause:
 class C<T> {}
 ```
 
-### type_test_with_non_type
+### type_test_with_non_type {:#type-test-with-non-type}
 
 _The name '{0}' isn't a type and can't be used in an 'is' expression._
 
@@ -21231,7 +21231,7 @@ void f(Object a, B b) {
 }
 ```
 
-### type_test_with_undefined_name
+### type_test_with_undefined_name {:#type-test-with-undefined-name}
 
 _The name '{0}' isn't defined, so it can't be used in an 'is' expression._
 
@@ -21265,7 +21265,7 @@ void f(Object o) {
 }
 ```
 
-### unchecked_use_of_nullable_value
+### unchecked_use_of_nullable_value {:#unchecked-use-of-nullable-value}
 
 _A nullable expression can't be used as a condition._
 
@@ -21342,7 +21342,7 @@ void f(String? s) {
 }
 ```
 
-### undefined_annotation
+### undefined_annotation {:#undefined-annotation}
 
 _Undefined name '{0}' used as an annotation._
 
@@ -21382,7 +21382,7 @@ void f() {}
 
 Otherwise, remove the annotation.
 
-### undefined_class
+### undefined_class {:#undefined-class}
 
 _Undefined class '{0}'._
 
@@ -21417,7 +21417,7 @@ void f(Point p) {}
 If the class is defined but isn't visible, then you probably need to add an
 import.
 
-### undefined_constructor_in_initializer
+### undefined_constructor_in_initializer {:#undefined-constructor-in-initializer}
 
 _The class '{0}' doesn't have a constructor named '{1}'._
 
@@ -21482,7 +21482,7 @@ class B extends A {
 }
 ```
 
-### undefined_enum_constant
+### undefined_enum_constant {:#undefined-enum-constant}
 
 _There's no constant named '{0}' in '{1}'._
 
@@ -21523,7 +21523,7 @@ enum E {a, b}
 var e = E.b;
 ```
 
-### undefined_enum_constructor
+### undefined_enum_constructor {:#undefined-enum-constructor}
 
 _The enum doesn't have a constructor named '{0}'._
 
@@ -21612,7 +21612,7 @@ enum E {
 }
 ```
 
-### undefined_extension_getter
+### undefined_extension_getter {:#undefined-extension-getter}
 
 _The getter '{0}' isn't defined for the extension '{1}'._
 
@@ -21705,7 +21705,7 @@ void f() {
 }
 ```
 
-### undefined_extension_method
+### undefined_extension_method {:#undefined-extension-method}
 
 _The method '{0}' isn't defined for the extension '{1}'._
 
@@ -21798,7 +21798,7 @@ void f() {
 }
 ```
 
-### undefined_extension_operator
+### undefined_extension_operator {:#undefined-extension-operator}
 
 _The operator '{0}' isn't defined for the extension '{1}'._
 
@@ -21843,7 +21843,7 @@ var x = '' * 4;
 extension E on String {}
 ```
 
-### undefined_extension_setter
+### undefined_extension_setter {:#undefined-extension-setter}
 
 _The setter '{0}' isn't defined for the extension '{1}'._
 
@@ -21938,7 +21938,7 @@ void f() {
 }
 ```
 
-### undefined_function
+### undefined_function {:#undefined-function}
 
 _The function '{0}' isn't defined._
 
@@ -21978,7 +21978,7 @@ void main() {
 If the function is defined but isn't visible, then you probably need to add
 an import or re-arrange your code to make the function visible.
 
-### undefined_getter
+### undefined_getter {:#undefined-getter}
 
 _The getter '{0}' isn't defined for the '{1}' function type._
 
@@ -22009,7 +22009,7 @@ fixing the spelling of the getter:
 int f(String s) => s.length;
 ```
 
-### undefined_hidden_name
+### undefined_hidden_name {:#undefined-hidden-name}
 
 _The library '{0}' doesn't export a member with the hidden name '{1}'._
 
@@ -22040,7 +22040,7 @@ import 'dart:math' hide max;
 var x = min(0, 1);
 ```
 
-### undefined_identifier
+### undefined_identifier {:#undefined-identifier}
 
 _Undefined name '{0}'._
 
@@ -22072,7 +22072,7 @@ int min(int left, int right) => left <= right ? left : right;
 If the identifier is defined but isn't visible, then you probably need to
 add an import or re-arrange your code to make the identifier visible.
 
-### undefined_identifier_await
+### undefined_identifier_await {:#undefined-identifier-await}
 
 _Undefined name 'await' in function body not marked with 'async'._
 
@@ -22101,7 +22101,7 @@ Add the keyword `async` to the function body:
 void f(p) async { await p; }
 ```
 
-### undefined_method
+### undefined_method {:#undefined-method}
 
 _The method '{0}' isn't defined for the '{1}' function type._
 
@@ -22132,7 +22132,7 @@ fixing the spelling of the method:
 int f(List<int> l) => l.removeLast();
 ```
 
-### undefined_named_parameter
+### undefined_named_parameter {:#undefined-named-parameter}
 
 _The named parameter '{0}' isn't defined._
 
@@ -22201,7 +22201,7 @@ void f(C c) {
 }
 ```
 
-### undefined_operator
+### undefined_operator {:#undefined-operator}
 
 _The operator '{0}' isn't defined for the type '{1}'._
 
@@ -22233,7 +22233,7 @@ class C {
 C f(C c) => c + 2;
 ```
 
-### undefined_prefixed_name
+### undefined_prefixed_name {:#undefined-prefixed-name}
 
 _The name '{0}' is being referenced through the prefix '{1}', but it isn't
 defined in any of the libraries imported using that prefix._
@@ -22265,7 +22265,7 @@ import for the library.
 If the name is wrong, then change it to one of the names that's declared in
 the imported libraries.
 
-### undefined_referenced_parameter
+### undefined_referenced_parameter {:#undefined-referenced-parameter}
 
 _The parameter '{0}' isn't defined by '{1}'._
 
@@ -22299,7 +22299,7 @@ import 'package:meta/meta.dart';
 int f([int? a]) => a ?? 0;
 ```
 
-### undefined_setter
+### undefined_setter {:#undefined-setter}
 
 _The setter '{0}' isn't defined for the '{1}' function type._
 
@@ -22340,7 +22340,7 @@ class C {
 }
 ```
 
-### undefined_shown_name
+### undefined_shown_name {:#undefined-shown-name}
 
 _The library '{0}' doesn't export a member with the shown name '{1}'._
 
@@ -22371,7 +22371,7 @@ import 'dart:math' show min;
 var x = min(0, 1);
 ```
 
-### undefined_super_member
+### undefined_super_member {:#undefined-super-member}
 
 <a id="undefined_super_method" aria-hidden="true"></a>_(Previously known as `undefined_super_method`)_
 
@@ -22424,7 +22424,7 @@ remove the `super.`.
 If the member isn't defined, then either add the member to one of the
 superclasses or remove the invocation.
 
-### unknown_platform
+### unknown_platform {:#unknown-platform}
 
 _The platform '{0}' is not a recognized platform._
 
@@ -22470,7 +22470,7 @@ platforms:
   windows:
 ```
 
-### unnecessary_cast
+### unnecessary_cast {:#unnecessary-cast}
 
 _Unnecessary cast._
 
@@ -22504,7 +22504,7 @@ void f(num n) {
 }
 ```
 
-### unnecessary_dev_dependency
+### unnecessary_dev_dependency {:#unnecessary-dev-dependency}
 
 _The dev dependency on {0} is unnecessary because there is also a normal
 dependency on that package._
@@ -22592,7 +22592,7 @@ class B extends A {
 }
 ```
 
-### unnecessary_import
+### unnecessary_import {:#unnecessary-import}
 
 _The import of '{0}' is unnecessary because all of the used elements are also
 provided by the import of '{1}'._
@@ -22638,7 +22638,7 @@ If some of the names imported by this import are intended to be used but
 aren't yet, and if those names aren't imported by other imports, then add
 the missing references to those names.
 
-### unnecessary_nan_comparison
+### unnecessary_nan_comparison {:#unnecessary-nan-comparison}
 
 _A double can't equal 'double.nan', so the condition is always 'false'._
 
@@ -22675,7 +22675,7 @@ Use the getter `double.isNaN` instead:
 bool isNaN(double d) => d.isNaN;
 ```
 
-### unnecessary_non_null_assertion
+### unnecessary_non_null_assertion {:#unnecessary-non-null-assertion}
 
 _The '!' will have no effect because the receiver can't be null._
 
@@ -22704,7 +22704,7 @@ int f(int x) {
 }
 ```
 
-### unnecessary_no_such_method
+### unnecessary_no_such_method {:#unnecessary-no-such-method}
 
 _Unnecessary 'noSuchMethod' declaration._
 
@@ -22752,7 +22752,7 @@ class A {
 class B extends A {}
 ```
 
-### unnecessary_null_assert_pattern
+### unnecessary_null_assert_pattern {:#unnecessary-null-assert-pattern}
 
 _The null-assert pattern will have no effect because the matched type isn't
 nullable._
@@ -22783,7 +22783,7 @@ void f(int x) {
 }
 ```
 
-### unnecessary_null_check_pattern
+### unnecessary_null_check_pattern {:#unnecessary-null-check-pattern}
 
 _The null-check pattern will have no effect because the matched type isn't
 nullable._
@@ -22814,7 +22814,7 @@ void f(int x) {
 }
 ```
 
-### unnecessary_null_comparison
+### unnecessary_null_comparison {:#unnecessary-null-comparison}
 
 _The operand can't be 'null', so the condition is always 'false'._
 
@@ -22876,7 +22876,7 @@ void f(int x) {
 }
 ```
 
-### unnecessary_question_mark
+### unnecessary_question_mark {:#unnecessary-question-mark}
 
 _The '?' is unnecessary because '{0}' is nullable without it._
 
@@ -22903,7 +22903,7 @@ Remove the unneeded question mark:
 dynamic x;
 ```
 
-### unnecessary_set_literal
+### unnecessary_set_literal {:#unnecessary-set-literal}
 
 _Braces unnecessarily wrap this expression in a set literal._
 
@@ -22944,7 +22944,7 @@ void f() {
 void g(void Function() p) {}
 ```
 
-### unnecessary_type_check
+### unnecessary_type_check {:#unnecessary-type-check}
 
 _Unnecessary type check; the result is always 'false'._
 
@@ -22980,7 +22980,7 @@ type check with its known value or completely remove it:
 bool f<T>(T a) => true;
 ```
 
-### unqualified_reference_to_non_local_static_member
+### unqualified_reference_to_non_local_static_member {:#unqualified-reference-to-non-local-static-member}
 
 _Static members from supertypes must be qualified by the name of the defining
 type._
@@ -23022,7 +23022,7 @@ class B extends A {
 }
 ```
 
-### unqualified_reference_to_static_member_of_extended_type
+### unqualified_reference_to_static_member_of_extended_type {:#unqualified-reference-to-static-member-of-extended-type}
 
 _Static members from the extended type or one of its superclasses must be
 qualified by the name of the defining type._
@@ -23084,7 +23084,7 @@ extension E on C {
 }
 ```
 
-### unreachable_switch_case
+### unreachable_switch_case {:#unreachable-switch-case}
 
 _This case is covered by the previous cases._
 
@@ -23125,7 +23125,7 @@ void f(int x) {
 }
 ```
 
-### unreachable_switch_default
+### unreachable_switch_default {:#unreachable-switch-default}
 
 _This default clause is covered by the previous cases._
 
@@ -23171,7 +23171,7 @@ void f(E x) {
 }
 ```
 
-### unused_catch_clause
+### unused_catch_clause {:#unused-catch-clause}
 
 _The exception variable '{0}' isn't used, so the 'catch' clause can be removed._
 
@@ -23209,7 +23209,7 @@ void f() {
 }
 ```
 
-### unused_catch_stack
+### unused_catch_stack {:#unused-catch-stack}
 
 _The stack trace variable '{0}' isn't used and can be removed._
 
@@ -23248,7 +23248,7 @@ void f() {
 }
 ```
 
-### unused_element
+### unused_element {:#unused-element}
 
 _The declaration '{0}' isn't referenced._
 
@@ -23284,7 +23284,7 @@ If the declaration isn't needed, then remove it.
 
 If the declaration is intended to be used, then add the code to use it.
 
-### unused_element_parameter
+### unused_element_parameter {:#unused-element-parameter}
 
 _A value for optional parameter '{0}' isn't ever given._
 
@@ -23320,7 +23320,7 @@ class C {
 
 If the declaration is intended to be used, then add the code to use it.
 
-### unused_field
+### unused_field {:#unused-field}
 
 _The value of the field '{0}' isn't used._
 
@@ -23355,7 +23355,7 @@ If the field isn't needed, then remove it.
 
 If the field was intended to be used, then add the missing code.
 
-### unused_import
+### unused_import {:#unused-import}
 
 _Unused import: '{0}'._
 
@@ -23383,7 +23383,7 @@ If the import isn't needed, then remove it.
 If some of the imported names are intended to be used, then add the missing
 code.
 
-### unused_label
+### unused_label {:#unused-label}
 
 _The label '{0}' isn't used._
 
@@ -23430,7 +23430,7 @@ void f(int limit) {
 }
 ```
 
-### unused_local_variable
+### unused_local_variable {:#unused-local-variable}
 
 _The value of the local variable '{0}' isn't used._
 
@@ -23456,7 +23456,7 @@ If the variable isn't needed, then remove it.
 
 If the variable was intended to be used, then add the missing code.
 
-### unused_result
+### unused_result {:#unused-result}
 
 _'{0}' should be used. {1}._
 
@@ -23529,7 +23529,7 @@ void f(C c) {
 }
 ```
 
-### unused_shown_name
+### unused_shown_name {:#unused-shown-name}
 
 _The name {0} is shown, but isn't used._
 
@@ -23560,7 +23560,7 @@ import 'dart:math' show min;
 var x = min(0, 1);
 ```
 
-### uri_does_not_exist
+### uri_does_not_exist {:#uri-does-not-exist}
 
 _Target of URI doesn't exist: '{0}'._
 
@@ -23584,7 +23584,7 @@ If the URI was mistyped or invalid, then correct the URI.
 
 If the URI is correct, then create the file.
 
-### uri_does_not_exist_in_doc_import
+### uri_does_not_exist_in_doc_import {:#uri-does-not-exist-in-doc-import}
 
 _Target of URI doesn't exist: '{0}'._
 
@@ -23609,7 +23609,7 @@ If the URI was mistyped or invalid, then correct the URI.
 
 If the URI is correct, then create the file.
 
-### uri_has_not_been_generated
+### uri_has_not_been_generated {:#uri-has-not-been-generated}
 
 _Target of URI hasn't been generated: '{0}'._
 
@@ -23643,7 +23643,7 @@ file.
 If the file isn't a generated file, then check the spelling of the URI or
 create the file.
 
-### uri_with_interpolation
+### uri_with_interpolation {:#uri-with-interpolation}
 
 _URIs can't use string interpolation._
 
@@ -23676,7 +23676,7 @@ import 'dart:math';
 var zero = min(0, 0);
 ```
 
-### use_of_native_extension
+### use_of_native_extension {:#use-of-native-extension}
 
 _Dart native extensions are deprecated and aren't available in Dart 2.15._
 
@@ -23699,7 +23699,7 @@ import [!'dart-ext:x'!];
 Rewrite the code to use `dart:ffi` as a way of invoking the contents of the
 native library.
 
-### use_of_void_result
+### use_of_void_result {:#use-of-void-result}
 
 _This expression has a type of 'void' so its value can't be used._
 
@@ -23728,7 +23728,7 @@ void g() {
 Either rewrite the code so that the expression has a value or rewrite the
 code so that it doesn't depend on the value.
 
-### values_declaration_in_enum
+### values_declaration_in_enum {:#values-declaration-in-enum}
 
 _A member named 'values' can't be declared in an enum._
 
@@ -23765,7 +23765,7 @@ enum E {
 }
 ```
 
-### variable_length_array_not_last
+### variable_length_array_not_last {:#variable-length-array-not-last}
 
 _Variable length 'Array's must only occur as the last field of Structs._
 
@@ -23824,7 +23824,7 @@ final class C extends Struct {
 }
 ```
 
-### variable_pattern_keyword_in_declaration_context
+### variable_pattern_keyword_in_declaration_context {:#variable-pattern-keyword-in-declaration-context}
 
 _Variable patterns in declaration context can't specify 'var' or 'final'
 keyword._
@@ -23857,7 +23857,7 @@ void f((int, int) r) {
 }
 ```
 
-### variable_type_mismatch
+### variable_type_mismatch {:#variable-type-mismatch}
 
 _A value of type '{0}' can't be assigned to a const variable of type '{1}'._
 
@@ -23894,7 +23894,7 @@ const int x = 0;
 const int y = x;
 ```
 
-### workspace_field_not_list
+### workspace_field_not_list {:#workspace-field-not-list}
 
 _The value of the 'workspace' field is required to be a list of relative file
 paths._
@@ -23925,7 +23925,7 @@ workspace:
     - pkg/package_2
 ```
 
-### workspace_value_not_string
+### workspace_value_not_string {:#workspace-value-not-string}
 
 _Workspace entries are required to be directory paths (strings)._
 
@@ -23957,7 +23957,7 @@ workspace:
     - pkg/package_2
 ```
 
-### workspace_value_not_subdirectory
+### workspace_value_not_subdirectory {:#workspace-value-not-subdirectory}
 
 _Workspace values must be a relative path of a subdirectory of '{0}'._
 
@@ -23988,7 +23988,7 @@ workspace:
     - pkg/package_2
 ```
 
-### wrong_number_of_parameters_for_operator
+### wrong_number_of_parameters_for_operator {:#wrong-number-of-parameters-for-operator}
 
 _Operator '-' should declare 0 or 1 parameter, but {0} found._
 
@@ -24020,7 +24020,7 @@ class C {
 }
 ```
 
-### wrong_number_of_parameters_for_setter
+### wrong_number_of_parameters_for_setter {:#wrong-number-of-parameters-for-setter}
 
 _Setters must declare exactly one required positional parameter._
 
@@ -24060,7 +24060,7 @@ class C {
 }
 ```
 
-### wrong_number_of_type_arguments
+### wrong_number_of_type_arguments {:#wrong-number-of-type-arguments}
 
 _The type '{0}' is declared with {1} type parameters, but {2} type arguments
 were given._
@@ -24107,7 +24107,7 @@ class C<E> {}
 void f(C<int> x) {}
 ```
 
-### wrong_number_of_type_arguments_constructor
+### wrong_number_of_type_arguments_constructor {:#wrong-number-of-type-arguments-constructor}
 
 _The constructor '{0}.{1}' doesn't have type parameters._
 
@@ -24154,7 +24154,7 @@ class C<T> {
 C f() => C.named();
 ```
 
-### wrong_number_of_type_arguments_enum
+### wrong_number_of_type_arguments_enum {:#wrong-number-of-type-arguments-enum}
 
 _The enum is declared with {0} type parameters, but {1} type arguments were
 given._
@@ -24198,7 +24198,7 @@ enum E<T> {
 }
 ```
 
-### wrong_number_of_type_arguments_extension
+### wrong_number_of_type_arguments_extension {:#wrong-number-of-type-arguments-extension}
 
 _The extension '{0}' is declared with {1} type parameters, but {2} type
 arguments were given._
@@ -24240,7 +24240,7 @@ void f(List<int> p) {
 }
 ```
 
-### wrong_number_of_type_arguments_method
+### wrong_number_of_type_arguments_method {:#wrong-number-of-type-arguments-method}
 
 _The method '{0}' is declared with {1} type parameters, but {2} type arguments
 are given._
@@ -24289,7 +24289,7 @@ class C {
 int f(C c) => c.m(2);
 ```
 
-### yield_in_non_generator
+### yield_in_non_generator {:#yield-in-non-generator}
 
 _Yield statements must be in a generator function (one marked with either
 'async*' or 'sync*')._
@@ -24335,7 +24335,7 @@ Iterable<int> get digits sync* {
 }
 ```
 
-### yield_of_invalid_type
+### yield_of_invalid_type {:#yield-of-invalid-type}
 
 _A yielded value of type '{0}' must be assignable to '{1}'._
 
@@ -24381,7 +24381,7 @@ Iterable<String> get zero sync* {
 }
 ```
 
-### always_declare_return_types
+### always_declare_return_types {:#always-declare-return-types}
 
 _The function '{0}' should have a return type but doesn't._
 
@@ -24409,7 +24409,7 @@ Add an explicit return type:
 void f() {}
 ```
 
-### always_put_control_body_on_new_line
+### always_put_control_body_on_new_line {:#always-put-control-body-on-new-line}
 
 _Statement should be on a separate line._
 
@@ -24442,7 +24442,7 @@ void f(bool b) {
 }
 ```
 
-### always_put_required_named_parameters_first
+### always_put_required_named_parameters_first {:#always-put-required-named-parameters-first}
 
 _Required named parameters should be before optional named parameters._
 
@@ -24469,7 +24469,7 @@ any optional named parameters:
 void f({required int x, int? y}) {}
 ```
 
-### always_use_package_imports
+### always_use_package_imports {:#always-use-package-imports}
 
 _Use 'package:' imports for files in the 'lib' directory._
 
@@ -24497,7 +24497,7 @@ Use a package import:
 import 'package:p/a.dart';
 ```
 
-### annotate_overrides
+### annotate_overrides {:#annotate-overrides}
 
 _The member '{0}' overrides an inherited member but isn't annotated with
 '@override'._
@@ -24552,7 +24552,7 @@ class B extends A {
 }
 ```
 
-### avoid_empty_else
+### avoid_empty_else {:#avoid-empty-else}
 
 _Empty statements are not allowed in an 'else' clause._
 
@@ -24603,7 +24603,7 @@ void f(int x, int y) {
 }
 ```
 
-### avoid_function_literals_in_foreach_calls
+### avoid_function_literals_in_foreach_calls {:#avoid-function-literals-in-foreach-calls}
 
 _Function literals shouldn't be passed to 'forEach'._
 
@@ -24644,7 +24644,7 @@ void f(Iterable<String> s) {
 }
 ```
 
-### avoid_futureor_void
+### avoid_futureor_void {:#avoid-futureor-void}
 
 _Don't use the type 'FutureOr<void>'._
 
@@ -24693,7 +24693,7 @@ replacement for the type `FutureOr<void>`, because the latter is a
 supertype of all types, and the former is not. In this case it may be a
 useful remedy to replace `FutureOr<void>` by the type `void`.
 
-### avoid_init_to_null
+### avoid_init_to_null {:#avoid-init-to-null}
 
 _Redundant initialization to 'null'._
 
@@ -24740,7 +24740,7 @@ class C {
 }
 ```
 
-### avoid_print
+### avoid_print {:#avoid-print}
 
 _Don't invoke 'print' in production code._
 
@@ -24780,7 +24780,7 @@ If you're writing code that doesn't use Flutter, then use a logging
 service, such as [`package:logging`][package-logging], to write the
 information.
 
-### avoid_relative_lib_imports
+### avoid_relative_lib_imports {:#avoid-relative-lib-imports}
 
 _Can't use a relative path to import a library in 'lib'._
 
@@ -24812,7 +24812,7 @@ Rewrite the import to not include `lib` in the URI:
 import 'a.dart';
 ```
 
-### avoid_renaming_method_parameters
+### avoid_renaming_method_parameters {:#avoid-renaming-method-parameters}
 
 _The parameter name '{0}' doesn't match the name '{1}' in the overridden
 method._
@@ -24854,7 +24854,7 @@ class B extends A {
 }
 ```
 
-### avoid_return_types_on_setters
+### avoid_return_types_on_setters {:#avoid-return-types-on-setters}
 
 _Unnecessary return type on a setter._
 
@@ -24883,7 +24883,7 @@ Remove the return type:
 set s(int p) {}
 ```
 
-### avoid_returning_null_for_void
+### avoid_returning_null_for_void {:#avoid-returning-null-for-void}
 
 _Don't return 'null' from a function with a return type of 'void'._
 
@@ -24915,7 +24915,7 @@ void f() {
 }
 ```
 
-### avoid_shadowing_type_parameters
+### avoid_shadowing_type_parameters {:#avoid-shadowing-type-parameters}
 
 _The type parameter '{0}' shadows a type parameter from the enclosing {1}._
 
@@ -24949,7 +24949,7 @@ class C<T> {
 }
 ```
 
-### avoid_single_cascade_in_expression_statements
+### avoid_single_cascade_in_expression_statements {:#avoid-single-cascade-in-expression-statements}
 
 _Unnecessary cascade expression._
 
@@ -24980,7 +24980,7 @@ void f(String s) {
 }
 ```
 
-### avoid_slow_async_io
+### avoid_slow_async_io {:#avoid-slow-async-io}
 
 _Use of an async 'dart:io' method._
 
@@ -25026,7 +25026,7 @@ void g(File f) {
 }
 ```
 
-### avoid_type_to_string
+### avoid_type_to_string {:#avoid-type-to-string}
 
 _Using 'toString' on a 'Type' is not safe in production code._
 
@@ -25066,7 +25066,7 @@ bool isC(Object o) => o is C;
 class C {}
 ```
 
-### avoid_types_as_parameter_names
+### avoid_types_as_parameter_names {:#avoid-types-as-parameter-names}
 
 _The parameter name '{0}' matches a visible type name._
 
@@ -25107,7 +25107,7 @@ rename the parameter so that it doesn't shadow the name of any visible type:
 void f(int_) {}
 ```
 
-### avoid_unnecessary_containers
+### avoid_unnecessary_containers {:#avoid-unnecessary-containers}
 
 _Unnecessary instance of 'Container'._
 
@@ -25173,7 +25173,7 @@ Widget buildRow() {
 }
 ```
 
-### avoid_web_libraries_in_flutter
+### avoid_web_libraries_in_flutter {:#avoid-web-libraries-in-flutter}
 
 _Don't use web-only libraries outside Flutter web plugins._
 
@@ -25227,7 +25227,7 @@ flutter:
 See [Developing packages & plugins](https://flutter.dev/to/develop-packages)
 for more information.
 
-### await_only_futures
+### await_only_futures {:#await-only-futures}
 
 _Uses 'await' on an instance of '{0}', which is not a subtype of 'Future'._
 
@@ -25264,7 +25264,7 @@ void f() async {
 }
 ```
 
-### camel_case_extensions
+### camel_case_extensions {:#camel-case-extensions}
 
 _The extension name '{0}' isn't an UpperCamelCase identifier._
 
@@ -25298,7 +25298,7 @@ extension:
 extension on String {}
 ```
 
-### camel_case_types
+### camel_case_types {:#camel-case-types}
 
 _The type name '{0}' isn't an UpperCamelCase identifier._
 
@@ -25325,7 +25325,7 @@ Rename the type so that it has a valid name:
 class C {}
 ```
 
-### cancel_subscriptions
+### cancel_subscriptions {:#cancel-subscriptions}
 
 _Uncancelled instance of 'StreamSubscription'._
 
@@ -25361,7 +25361,7 @@ void f(Stream stream) {
 }
 ```
 
-### close_sinks
+### close_sinks {:#close-sinks}
 
 _Unclosed instance of 'Sink'._
 
@@ -25398,7 +25398,7 @@ void g(File f) {
 }
 ```
 
-### collection_methods_unrelated_type
+### collection_methods_unrelated_type {:#collection-methods-unrelated-type}
 
 _The argument type '{0}' isn't related to '{1}'._
 
@@ -25445,7 +25445,7 @@ If the argument type is correct, then change the element type:
 bool f(List<String> l)  => l.contains('1');
 ```
 
-### constant_identifier_names
+### constant_identifier_names {:#constant-identifier-names}
 
 _The constant name '{0}' isn't a lowerCamelCase identifier._
 
@@ -25471,7 +25471,7 @@ Rewrite the name to follow the lowerCamelCase naming convention:
 const emptyString = '';
 ```
 
-### control_flow_in_finally
+### control_flow_in_finally {:#control-flow-in-finally}
 
 _Use of '{0}' in a 'finally' clause._
 
@@ -25526,7 +25526,7 @@ int f() {
 }
 ```
 
-### curly_braces_in_flow_control_structures
+### curly_braces_in_flow_control_structures {:#curly-braces-in-flow-control-structures}
 
 _Statements in {0} should be enclosed in a block._
 
@@ -25561,7 +25561,7 @@ int f(bool b) {
 }
 ```
 
-### dangling_library_doc_comments
+### dangling_library_doc_comments {:#dangling-library-doc-comments}
 
 _Dangling library doc comment._
 
@@ -25614,7 +25614,7 @@ the blank line:
 class C {}
 ```
 
-### depend_on_referenced_packages
+### depend_on_referenced_packages {:#depend-on-referenced-packages}
 
 _The imported package '{0}' isn't a dependency of the importing package._
 
@@ -25671,7 +25671,7 @@ dev_dependencies:
   a: ^1.0.0
 ```
 
-### empty_catches
+### empty_catches {:#empty-catches}
 
 _Empty catch block._
 
@@ -25732,7 +25732,7 @@ void f() {
 }
 ```
 
-### empty_constructor_bodies
+### empty_constructor_bodies {:#empty-constructor-bodies}
 
 _Empty constructor bodies should be written using a ';' rather than '{}'._
 
@@ -25762,7 +25762,7 @@ class C {
 }
 ```
 
-### empty_statements
+### empty_statements {:#empty-statements}
 
 _Unnecessary empty statement._
 
@@ -25826,7 +25826,7 @@ void f(bool condition) {
 void g() {}
 ```
 
-### file_names
+### file_names {:#file-names}
 
 _The file name '{0}' isn't a lower\_case\_with\_underscores identifier._
 
@@ -25845,7 +25845,7 @@ name uses the UpperCamelCase convention.
 Rename the file to use the lower_case_with_underscores convention, such as
 `slider_menu.dart`.
 
-### hash_and_equals
+### hash_and_equals {:#hash-and-equals}
 
 _Missing a corresponding override of '{0}'._
 
@@ -25912,7 +25912,7 @@ class C {
 }
 ```
 
-### implementation_imports
+### implementation_imports {:#implementation-imports}
 
 _Import of a library in the 'lib/src' directory of another package._
 
@@ -25947,7 +25947,7 @@ then either find a different way to accomplish your goal, assuming that
 it's possible, or open an issue asking the package authors to make it part
 of the public API.
 
-### implicit_call_tearoffs
+### implicit_call_tearoffs {:#implicit-call-tearoffs}
 
 _Implicit tear-off of the 'call' method._
 
@@ -25994,7 +25994,7 @@ void f() {
 }
 ```
 
-### invalid_runtime_check_with_js_interop_types
+### invalid_runtime_check_with_js_interop_types {:#invalid-runtime-check-with-js-interop-types}
 
 _Cast from '{0}' to '{1}' casts a Dart value to a JS interop type, which might
 not be platform-consistent._
@@ -26065,7 +26065,7 @@ import 'dart:js_interop';
 void f(Object b) => b.jsify()?.isA<JSBoolean>();
 ```
 
-### invalid_use_of_do_not_submit_member
+### invalid_use_of_do_not_submit_member {:#invalid-use-of-do-not-submit-member}
 
 _Uses of '{0}' should not be submitted to source control._
 
@@ -26118,7 +26118,7 @@ void emulateCrashWithOtherFunctionality() {
 }
 ```
 
-### library_annotations
+### library_annotations {:#library-annotations}
 
 _This annotation should be attached to a library directive._
 
@@ -26155,7 +26155,7 @@ import 'package:test/test.dart';
 void main() {}
 ```
 
-### library_names
+### library_names {:#library-names}
 
 _The library name '{0}' isn't a lower\_case\_with\_underscores identifier._
 
@@ -26188,7 +26188,7 @@ lower_case_with_underscores naming convention:
 library library_name;
 ```
 
-### library_prefixes
+### library_prefixes {:#library-prefixes}
 
 _The prefix '{0}' isn't a lower\_case\_with\_underscores identifier._
 
@@ -26215,7 +26215,7 @@ convention:
 import 'package:ffi/ffi.dart' as ffi_support;
 ```
 
-### library_private_types_in_public_api
+### library_private_types_in_public_api {:#library-private-types-in-public-api}
 
 _Invalid use of a private type in a public API._
 
@@ -26258,7 +26258,7 @@ void f(C c) {}
 class C {}
 ```
 
-### literal_only_boolean_expressions
+### literal_only_boolean_expressions {:#literal-only-boolean-expressions}
 
 _The Boolean expression has a constant value._
 
@@ -26316,7 +26316,7 @@ void f() {
 }
 ```
 
-### no_adjacent_strings_in_list
+### no_adjacent_strings_in_list {:#no-adjacent-strings-in-list}
 
 _Don't use adjacent strings in a list literal._
 
@@ -26358,7 +26358,7 @@ Or use the `+` operator to concatenate the strings:
 List<String> list = ['a' + 'b', 'c'];
 ```
 
-### no_duplicate_case_values
+### no_duplicate_case_values {:#no-duplicate-case-values}
 
 _The value of the case clause ('{0}') is equal to the value of an earlier case
 clause ('{1}')._
@@ -26418,7 +26418,7 @@ void f(int v) {
 }
 ```
 
-### no_leading_underscores_for_library_prefixes
+### no_leading_underscores_for_library_prefixes {:#no-leading-underscores-for-library-prefixes}
 
 _The library prefix '{0}' starts with an underscore._
 
@@ -26447,7 +26447,7 @@ Remove the underscore:
 import 'dart:core' as core;
 ```
 
-### no_leading_underscores_for_local_identifiers
+### no_leading_underscores_for_local_identifiers {:#no-leading-underscores-for-local-identifiers}
 
 _The local variable '{0}' starts with an underscore._
 
@@ -26476,7 +26476,7 @@ Remove the underscore:
 int f(String s) => s.length;
 ```
 
-### no_logic_in_create_state
+### no_logic_in_create_state {:#no-logic-in-create-state}
 
 _Don't put any logic in 'createState'._
 
@@ -26525,7 +26525,7 @@ class MyState extends State {
 }
 ```
 
-### no_wildcard_variable_uses
+### no_wildcard_variable_uses {:#no-wildcard-variable-uses}
 
 _The referenced identifier is a wildcard._
 
@@ -26579,7 +26579,7 @@ void f() {
 }
 ```
 
-### non_constant_identifier_names
+### non_constant_identifier_names {:#non-constant-identifier-names}
 
 _The variable name '{0}' isn't a lowerCamelCase identifier._
 
@@ -26608,7 +26608,7 @@ convention:
 var count = 0;
 ```
 
-### null_check_on_nullable_type_parameter
+### null_check_on_nullable_type_parameter {:#null-check-on-nullable-type-parameter}
 
 _The null check operator shouldn't be used on a variable whose type is a
 potentially nullable type parameter._
@@ -26646,7 +26646,7 @@ Use the type parameter to cast the variable:
 T f<T>(T? t) => t as T;
 ```
 
-### overridden_fields
+### overridden_fields {:#overridden-fields}
 
 _Field overrides a field inherited from '{0}'._
 
@@ -26705,7 +26705,7 @@ class B extends A {
 If the two fields are related in some way, but can't be the same, then
 find a different way to implement the semantics you need.
 
-### package_names
+### package_names {:#package-names}
 
 _The package name '{0}' isn't a lower\_case\_with\_underscores identifier._
 
@@ -26732,7 +26732,7 @@ naming convention:
 name: some_package
 ```
 
-### package_prefixed_library_names
+### package_prefixed_library_names {:#package-prefixed-library-names}
 
 _The library name is not a dot-separated path prefixed by the package name._
 
@@ -26767,7 +26767,7 @@ library [!something.special!];
 
 Change the name of the library to conform to the guidelines.
 
-### prefer_adjacent_string_concatenation
+### prefer_adjacent_string_concatenation {:#prefer-adjacent-string-concatenation}
 
 _String literals shouldn't be concatenated by the '+' operator._
 
@@ -26793,7 +26793,7 @@ Remove the operator:
 var s = 'a' 'b';
 ```
 
-### prefer_collection_literals
+### prefer_collection_literals {:#prefer-collection-literals}
 
 _Unnecessary constructor invocation._
 
@@ -26820,7 +26820,7 @@ Use the literal representation:
 var m = <String, String>{};
 ```
 
-### prefer_conditional_assignment
+### prefer_conditional_assignment {:#prefer-conditional-assignment}
 
 _The 'if' statement could be replaced by a null-aware assignment._
 
@@ -26856,7 +26856,7 @@ int f(String? s) {
 }
 ```
 
-### prefer_const_constructors
+### prefer_const_constructors {:#prefer-const-constructors}
 
 _Use 'const' with the constructor to improve performance._
 
@@ -26902,7 +26902,7 @@ class C {
 C c = const C();
 ```
 
-### prefer_const_constructors_in_immutables
+### prefer_const_constructors_in_immutables {:#prefer-const-constructors-in-immutables}
 
 _Constructors in '@immutable' classes should be declared as 'const'._
 
@@ -26953,7 +26953,7 @@ class C {
 }
 ```
 
-### prefer_const_declarations
+### prefer_const_declarations {:#prefer-const-declarations}
 
 _Use 'const' for final variables initialized to a constant value._
 
@@ -27002,7 +27002,7 @@ class C {
 }
 ```
 
-### prefer_const_literals_to_create_immutables
+### prefer_const_literals_to_create_immutables {:#prefer-const-literals-to-create-immutables}
 
 _Use 'const' literals as arguments to constructors of '@immutable' classes._
 
@@ -27082,7 +27082,7 @@ class C {
 C c = C(const [1]);
 ```
 
-### prefer_contains
+### prefer_contains {:#prefer-contains}
 
 _Always 'false' because 'indexOf' is always greater than or equal to -1._
 
@@ -27121,7 +27121,7 @@ void f(List<String> l, String s) {
 }
 ```
 
-### prefer_double_quotes
+### prefer_double_quotes {:#prefer-double-quotes}
 
 _Unnecessary use of single quotes._
 
@@ -27152,7 +27152,7 @@ void f(String name) {
 }
 ```
 
-### prefer_final_fields
+### prefer_final_fields {:#prefer-final-fields}
 
 _The private field {0} could be 'final'._
 
@@ -27187,7 +27187,7 @@ class C {
 }
 ```
 
-### prefer_for_elements_to_map_fromiterable
+### prefer_for_elements_to_map_fromiterable {:#prefer-for-elements-to-map-fromiterable}
 
 _Use 'for' elements when building maps from iterables._
 
@@ -27224,7 +27224,7 @@ void f(Iterable<String> data) {
 }
 ```
 
-### prefer_function_declarations_over_variables
+### prefer_function_declarations_over_variables {:#prefer-function-declarations-over-variables}
 
 _Use a function declaration rather than a variable assignment to bind a function
 to a name._
@@ -27257,7 +27257,7 @@ void g() {
 }
 ```
 
-### prefer_generic_function_type_aliases
+### prefer_generic_function_type_aliases {:#prefer-generic-function-type-aliases}
 
 _Use the generic function type syntax in 'typedef's._
 
@@ -27284,7 +27284,7 @@ Rewrite the typedef to use the newer syntax:
 typedef F<T> = void Function();
 ```
 
-### prefer_if_null_operators
+### prefer_if_null_operators {:#prefer-if-null-operators}
 
 _Use the '??' operator rather than '?:' when testing for 'null'._
 
@@ -27312,7 +27312,7 @@ Use the if-null operator instead:
 String f(String? s) => s ?? '';
 ```
 
-### prefer_initializing_formals
+### prefer_initializing_formals {:#prefer-initializing-formals}
 
 _Use an initializing formal to assign a parameter to a field._
 
@@ -27346,7 +27346,7 @@ class C {
 }
 ```
 
-### prefer_inlined_adds
+### prefer_inlined_adds {:#prefer-inlined-adds}
 
 _The addition of a list item could be inlined._
 
@@ -27400,7 +27400,7 @@ List<String> f(String a, List<String> b) {
 }
 ```
 
-### prefer_interpolation_to_compose_strings
+### prefer_interpolation_to_compose_strings {:#prefer-interpolation-to-compose-strings}
 
 _Use interpolation to compose strings and values._
 
@@ -27431,7 +27431,7 @@ String f(List<String> l) {
 }
 ```
 
-### prefer_is_empty
+### prefer_is_empty {:#prefer-is-empty}
 
 _The comparison is always 'false' because the length is always greater than or
 equal to 0._
@@ -27467,7 +27467,7 @@ Replace the use of `length` with a use of either `isEmpty` or
 void f(Iterable<int> p) => p.isEmpty ? 0 : p.first;
 ```
 
-### prefer_is_not_empty
+### prefer_is_not_empty {:#prefer-is-not-empty}
 
 _Use 'isNotEmpty' rather than negating the result of 'isEmpty'._
 
@@ -27493,7 +27493,7 @@ Rewrite the code to use `isNotEmpty`:
 void f(Iterable<int> p) => p.isNotEmpty ? p.first : 0;
 ```
 
-### prefer_is_not_operator
+### prefer_is_not_operator {:#prefer-is-not-operator}
 
 _Use the 'is!' operator rather than negating the value of the 'is' operator._
 
@@ -27529,7 +27529,7 @@ String f(Object o) {
 }
 ```
 
-### prefer_iterable_wheretype
+### prefer_iterable_wheretype {:#prefer-iterable-wheretype}
 
 _Use 'whereType' to select elements of a given type._
 
@@ -27558,7 +27558,7 @@ Iterable<String> f(Iterable<Object> p) => p.whereType<String>();
 This might also allow you to tighten the types in your code or remove
 other type checks.
 
-### prefer_null_aware_operators
+### prefer_null_aware_operators {:#prefer-null-aware-operators}
 
 _Use the null-aware operator '?.' rather than an explicit 'null' comparison._
 
@@ -27590,7 +27590,7 @@ int? f(List<int>? p) {
 }
 ```
 
-### prefer_relative_imports
+### prefer_relative_imports {:#prefer-relative-imports}
 
 _Use relative imports for files in the 'lib' directory._
 
@@ -27617,7 +27617,7 @@ Use a relative URI to import the library:
 import 'bar.dart';
 ```
 
-### prefer_single_quotes
+### prefer_single_quotes {:#prefer-single-quotes}
 
 _Unnecessary use of double quotes._
 
@@ -27648,7 +27648,7 @@ void f(String name) {
 }
 ```
 
-### prefer_typing_uninitialized_variables
+### prefer_typing_uninitialized_variables {:#prefer-typing-uninitialized-variables}
 
 _An uninitialized field should have an explicit type annotation._
 
@@ -27698,7 +27698,7 @@ Object f() {
 }
 ```
 
-### prefer_void_to_null
+### prefer_void_to_null {:#prefer-void-to-null}
 
 _Unnecessary use of the type 'Null'._
 
@@ -27724,7 +27724,7 @@ Replace the use of `Null` with a use of `void`:
 Future<void> f() async {}
 ```
 
-### provide_deprecation_message
+### provide_deprecation_message {:#provide-deprecation-message}
 
 _Missing a deprecation message._
 
@@ -27752,7 +27752,7 @@ Convert the code to use the longer form:
 void f() {}
 ```
 
-### recursive_getters
+### recursive_getters {:#recursive-getters}
 
 _The getter '{0}' recursively returns itself._
 
@@ -27786,7 +27786,7 @@ class C {
 }
 ```
 
-### secure_pubspec_urls
+### secure_pubspec_urls {:#secure-pubspec-urls}
 
 _The '{0}' protocol shouldn't be used because it isn't secure._
 
@@ -27816,7 +27816,7 @@ dependencies:
     repository: https://github.com/dart-lang/example
 ```
 
-### sized_box_for_whitespace
+### sized_box_for_whitespace {:#sized-box-for-whitespace}
 
 _Use a 'SizedBox' to add whitespace to a layout._
 
@@ -27872,7 +27872,7 @@ Widget buildRow() {
 }
 ```
 
-### sized_box_shrink_expand
+### sized_box_shrink_expand {:#sized-box-shrink-expand}
 
 _Use 'SizedBox.{0}' to avoid needing to specify the 'height' and 'width'._
 
@@ -27940,7 +27940,7 @@ Widget build() {
 }
 ```
 
-### slash_for_doc_comments
+### slash_for_doc_comments {:#slash-for-doc-comments}
 
 _Use the end-of-line form ('///') for doc comments._
 
@@ -27970,7 +27970,7 @@ Use an end-of-line comment style:
 void f() {}
 ```
 
-### sort_child_properties_last
+### sort_child_properties_last {:#sort-child-properties-last}
 
 _The '{0}' argument should be last in widget constructor invocations._
 
@@ -28012,7 +28012,7 @@ Widget createWidget() {
 }
 ```
 
-### sort_constructors_first
+### sort_constructors_first {:#sort-constructors-first}
 
 _Constructor declarations should be before non-constructor declarations._
 
@@ -28046,7 +28046,7 @@ class C {
 }
 ```
 
-### sort_pub_dependencies
+### sort_pub_dependencies {:#sort-pub-dependencies}
 
 _Dependencies not sorted alphabetically._
 
@@ -28078,7 +28078,7 @@ dependencies:
   path: any
 ```
 
-### sort_unnamed_constructors_first
+### sort_unnamed_constructors_first {:#sort-unnamed-constructors-first}
 
 _Invalid location for the unnamed constructor._
 
@@ -28112,7 +28112,7 @@ class C {
 }
 ```
 
-### test_types_in_equals
+### test_types_in_equals {:#test-types-in-equals}
 
 _Missing type test for '{0}' in '=='._
 
@@ -28156,7 +28156,7 @@ class C {
 }
 ```
 
-### throw_in_finally
+### throw_in_finally {:#throw-in-finally}
 
 _Use of '{0}' in 'finally' block._
 
@@ -28198,7 +28198,7 @@ void f() {
 }
 ```
 
-### type_init_formals
+### type_init_formals {:#type-init-formals}
 
 _Don't needlessly type annotate initializing formals._
 
@@ -28253,7 +28253,7 @@ class C {
 }
 ```
 
-### type_literal_in_constant_pattern
+### type_literal_in_constant_pattern {:#type-literal-in-constant-pattern}
 
 _Use 'TypeName \_' instead of a type literal._
 
@@ -28309,7 +28309,7 @@ void f(Object? x) {
 }
 ```
 
-### unawaited_futures
+### unawaited_futures {:#unawaited-futures}
 
 _Missing an 'await' for the 'Future' computed by this expression._
 
@@ -28360,7 +28360,7 @@ Future<void> f() async {
 Future<int> g() => Future.value(0);
 ```
 
-### unintended_html_in_doc_comment
+### unintended_html_in_doc_comment {:#unintended-html-in-doc-comment}
 
 _Angle brackets will be interpreted as HTML._
 
@@ -28413,7 +28413,7 @@ brackets, then add backslash escapes before the angle brackets:
 String f(List<int> l) => '';
 ```
 
-### unnecessary_brace_in_string_interps
+### unnecessary_brace_in_string_interps {:#unnecessary-brace-in-string-interps}
 
 _Unnecessary braces in a string interpolation._
 
@@ -28444,7 +28444,7 @@ String f(String s) {
 }
 ```
 
-### unnecessary_const
+### unnecessary_const {:#unnecessary-const}
 
 _Unnecessary 'const' keyword._
 
@@ -28473,7 +28473,7 @@ Remove the unnecessary keyword:
 const l = <int>[];
 ```
 
-### unnecessary_constructor_name
+### unnecessary_constructor_name {:#unnecessary-constructor-name}
 
 _Unnecessary '.new' constructor name._
 
@@ -28543,7 +28543,7 @@ void f(int a, int b) {
 }
 ```
 
-### unnecessary_getters_setters
+### unnecessary_getters_setters {:#unnecessary-getters-setters}
 
 _Unnecessary use of getter and setter to wrap a field._
 
@@ -28577,7 +28577,7 @@ class C {
 }
 ```
 
-### unnecessary_lambdas
+### unnecessary_lambdas {:#unnecessary-lambdas}
 
 _Closure should be a tearoff._
 
@@ -28611,7 +28611,7 @@ void f(List<String> strings) {
 }
 ```
 
-### unnecessary_late
+### unnecessary_late {:#unnecessary-late}
 
 _Unnecessary 'late' modifier._
 
@@ -28643,7 +28643,7 @@ class C {
 }
 ```
 
-### unnecessary_library_name
+### unnecessary_library_name {:#unnecessary-library-name}
 
 _Library names are not necessary._
 
@@ -28676,7 +28676,7 @@ class C {}
 If the library has any parts, then any `part of` declarations that use
 the library name should be updated to use the URI of the library instead.
 
-### unnecessary_new
+### unnecessary_new {:#unnecessary-new}
 
 _Unnecessary 'new' keyword._
 
@@ -28702,7 +28702,7 @@ Remove the keyword `new`:
 var o = Object();
 ```
 
-### unnecessary_null_aware_assignments
+### unnecessary_null_aware_assignments {:#unnecessary-null-aware-assignments}
 
 _Unnecessary assignment of 'null'._
 
@@ -28741,7 +28741,7 @@ void f(String? s) {
 }
 ```
 
-### unnecessary_null_in_if_null_operators
+### unnecessary_null_in_if_null_operators {:#unnecessary-null-in-if-null-operators}
 
 _Unnecessary use of '??' with 'null'._
 
@@ -28775,7 +28775,7 @@ remove the operator and the right-hand operand:
 String? f(String? s) => s;
 ```
 
-### unnecessary_nullable_for_final_variable_declarations
+### unnecessary_nullable_for_final_variable_declarations {:#unnecessary-nullable-for-final-variable-declarations}
 
 _Type could be non-nullable._
 
@@ -28801,7 +28801,7 @@ Make the type non-nullable:
 final int i = 1;
 ```
 
-### unnecessary_overrides
+### unnecessary_overrides {:#unnecessary-overrides}
 
 _Unnecessary override._
 
@@ -28873,7 +28873,7 @@ class C {
 class D extends C {}
 ```
 
-### unnecessary_parenthesis
+### unnecessary_parenthesis {:#unnecessary-parenthesis}
 
 _Unnecessary use of parentheses._
 
@@ -28899,7 +28899,7 @@ Remove the unnecessary parentheses:
 int f(int a, int b) => a + b;
 ```
 
-### unnecessary_raw_strings
+### unnecessary_raw_strings {:#unnecessary-raw-strings}
 
 _Unnecessary use of a raw string._
 
@@ -28926,7 +28926,7 @@ Remove the `r` in front of the string literal:
 var s = 'abc';
 ```
 
-### unnecessary_statements
+### unnecessary_statements {:#unnecessary-statements}
 
 _Unnecessary statement._
 
@@ -28974,7 +28974,7 @@ void f(int Function() first, int Function() second) {
 }
 ```
 
-### unnecessary_string_escapes
+### unnecessary_string_escapes {:#unnecessary-string-escapes}
 
 _Unnecessary escape in string literal._
 
@@ -29000,7 +29000,7 @@ Remove the unnecessary backslashes:
 var s = "Don't use a backslash here.";
 ```
 
-### unnecessary_string_interpolations
+### unnecessary_string_interpolations {:#unnecessary-string-interpolations}
 
 _Unnecessary use of string interpolation._
 
@@ -29028,7 +29028,7 @@ Replace the string literal with the content of the interpolation:
 String f(String s) => s;
 ```
 
-### unnecessary_this
+### unnecessary_this {:#unnecessary-this}
 
 _Unnecessary 'this.' qualifier._
 
@@ -29062,7 +29062,7 @@ class C {
 }
 ```
 
-### unnecessary_to_list_in_spreads
+### unnecessary_to_list_in_spreads {:#unnecessary-to-list-in-spreads}
 
 _Unnecessary use of 'toList' in a spread._
 
@@ -29099,7 +29099,7 @@ List<String> toLowercase(List<String> strings) {
 }
 ```
 
-### unrelated_type_equality_checks
+### unrelated_type_equality_checks {:#unrelated-type-equality-checks}
 
 _The type of the operand ('{0}') isn't a subtype or a supertype of the value
 being matched ('{1}')._
@@ -29148,7 +29148,7 @@ bool f(String s) {
 }
 ```
 
-### unsafe_variance
+### unsafe_variance {:#unsafe-variance}
 
 _This type is unsafe: a type parameter occurs in a non-covariant position._
 
@@ -29259,7 +29259,7 @@ void main() {
 }
 ```
 
-### use_build_context_synchronously
+### use_build_context_synchronously {:#use-build-context-synchronously}
 
 _Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted'
 check._
@@ -29322,7 +29322,7 @@ class MyWidget extends Widget {
 }
 ```
 
-### use_colored_box
+### use_colored_box {:#use-colored-box}
 
 _Use a 'ColoredBox' rather than a 'Container' with only a 'Color'._
 
@@ -29362,7 +29362,7 @@ Widget build() {
 }
 ```
 
-### use_decorated_box
+### use_decorated_box {:#use-decorated-box}
 
 _Use 'DecoratedBox' rather than a 'Container' with only a 'Decoration'._
 
@@ -29412,7 +29412,7 @@ Widget buildArea() {
 }
 ```
 
-### use_full_hex_values_for_flutter_colors
+### use_full_hex_values_for_flutter_colors {:#use-full-hex-values-for-flutter-colors}
 
 _Instances of 'Color' should be created using an 8-digit hexadecimal integer
 (such as '0xFFFFFFFF')._
@@ -29444,7 +29444,7 @@ import 'package:flutter/material.dart';
 Color c = Color(0x00000001);
 ```
 
-### use_function_type_syntax_for_parameters
+### use_function_type_syntax_for_parameters {:#use-function-type-syntax-for-parameters}
 
 _Use the generic function type syntax to declare the parameter '{0}'._
 
@@ -29470,7 +29470,7 @@ Use the generic function type syntax to declare the parameter:
 void g(bool Function(String) f) {}
 ```
 
-### use_if_null_to_convert_nulls_to_bools
+### use_if_null_to_convert_nulls_to_bools {:#use-if-null-to-convert-nulls-to-bools}
 
 _Use an if-null operator to convert a 'null' to a 'bool'._
 
@@ -29504,7 +29504,7 @@ void f(bool? b) {
 }
 ```
 
-### use_key_in_widget_constructors
+### use_key_in_widget_constructors {:#use-key-in-widget-constructors}
 
 _Constructors for public widgets should have a named 'key' parameter._
 
@@ -29549,7 +29549,7 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-### use_late_for_private_fields_and_variables
+### use_late_for_private_fields_and_variables {:#use-late-for-private-fields-and-variables}
 
 _Use 'late' for private members with a non-nullable type._
 
@@ -29586,7 +29586,7 @@ void f() {
 late int _i;
 ```
 
-### use_named_constants
+### use_named_constants {:#use-named-constants}
 
 _Use the constant '{0}' rather than a constructor returning the same object._
 
@@ -29614,7 +29614,7 @@ variable:
 Duration d = Duration.zero;
 ```
 
-### use_raw_strings
+### use_raw_strings {:#use-raw-strings}
 
 _Use a raw string to avoid using escapes._
 
@@ -29642,7 +29642,7 @@ Mark the string as being raw and remove the unnecessary backslashes:
 var s = r'A string with only \ and $';
 ```
 
-### use_rethrow_when_possible
+### use_rethrow_when_possible {:#use-rethrow-when-possible}
 
 _Use 'rethrow' to rethrow a caught exception._
 
@@ -29680,7 +29680,7 @@ void f() {
 }
 ```
 
-### use_setters_to_change_properties
+### use_setters_to_change_properties {:#use-setters-to-change-properties}
 
 _The method is used to change a property._
 
@@ -29715,7 +29715,7 @@ class C {
 }
 ```
 
-### use_string_buffers
+### use_string_buffers {:#use-string-buffers}
 
 _Use a string buffer rather than '+' to compose strings._
 
@@ -29754,7 +29754,7 @@ String f() {
 }
 ```
 
-### use_string_in_part_of_directives
+### use_string_in_part_of_directives {:#use-string-in-part-of-directives}
 
 _The part-of directive uses a library name._
 
@@ -29789,7 +29789,7 @@ Use a URI to reference the library:
 part of 'lib.dart';
 ```
 
-### use_super_parameters
+### use_super_parameters {:#use-super-parameters}
 
 _Parameter '{0}' could be a super parameter._
 
@@ -29828,7 +29828,7 @@ class B extends A {
 }
 ```
 
-### use_truncating_division
+### use_truncating_division {:#use-truncating-division}
 
 _Use truncating division._
 
@@ -29857,7 +29857,7 @@ Use the integer division operator (`~/`):
 int divide(int x, int y) => x ~/ y;
 ```
 
-### valid_regexps
+### valid_regexps {:#valid-regexps}
 
 _Invalid regular expression syntax._
 
@@ -29887,7 +29887,7 @@ Fix the regular expression:
 var r = RegExp(r'\(');
 ```
 
-### void_checks
+### void_checks {:#void-checks}
 
 _Assignment to a variable of type 'void'._
 

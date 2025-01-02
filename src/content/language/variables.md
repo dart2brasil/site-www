@@ -44,7 +44,7 @@ This page follows the
 of using `var`, rather than type annotations, for local variables.
 :::
 
-## Null safety
+## Null safety {:#null-safety}
 
 The Dart language enforces sound null safety.
 
@@ -95,7 +95,7 @@ Null safety flags a non-null variable when it has been either:
 
 This check allows you to fix these errors _before_ deploying your app.
 
-## Default value
+## Default value {:#default-value}
 
 Uninitialized variables that have a nullable type
 have an initial value of `null`.
@@ -146,7 +146,7 @@ the initialization code runs
 the first time the variable is used.
 
 
-## Late variables
+## Late variables {:#late-variables}
 
 The `late` modifier has two use cases:
 
@@ -199,7 +199,7 @@ then the expensive `readThermometer()` function is never called:
 ```
 
 
-## Final and const
+## Final and const {:#final-and-const}
 
 If you never intend to change a variable, use `final` or `const`, either
 instead of `var` or in addition to a type. A final variable can be set

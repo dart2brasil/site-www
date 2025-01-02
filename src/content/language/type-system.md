@@ -75,7 +75,7 @@ void main() {
 
 [Try it in DartPad]({{site.dartpad}}/?id=25074a51a00c71b4b000f33b688dedd0).
 
-## What is soundness?
+## What is soundness? {:#what-is-soundness}
 
 *Soundness* is about ensuring your program can't get into certain
 invalid states. A sound *type system* means you can never get into
@@ -91,7 +91,7 @@ to `int` is a compile-time error. Casting an object to a `String` using
 `as String` fails with a runtime error if the object isn't a `String`.
 
 
-## The benefits of soundness
+## The benefits of soundness {:#the-benefits-of-soundness}
 
 A sound type system has several benefits:
 
@@ -114,7 +114,7 @@ A sound type system has several benefits:
   code is much less efficient.
 
 
-## Tips for passing static analysis
+## Tips for passing static analysis {:#tips-for-passing-static-analysis}
 
 Most of the rules for static types are easy to understand.
 Here are some of the less obvious rules:
@@ -129,7 +129,7 @@ type hierarchy:
 <img src="/assets/img/language/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 <a name="use-proper-return-types"></a>
-### Use sound return types when overriding methods
+### Use sound return types when overriding methods {:#use-sound-return-types-when-overriding-methods}
 
 The return type of a method in a subclass must be the same type or a
 subtype of the return type of the method in the superclass. 
@@ -170,7 +170,7 @@ class HoneyBadger extends Animal {
 ```
 
 <a name="use-proper-param-types"></a>
-### Use sound parameter types when overriding methods
+### Use sound parameter types when overriding methods {:#use-sound-parameter-types-when-overriding-methods}
 
 The parameter of an overridden method must have either the same type
 or a supertype of the corresponding parameter in the superclass.
@@ -228,7 +228,7 @@ Animal a = Cat();
 a.chase([!Alligator!]()); // Not type safe or feline safe.
 ```
 
-### Don't use a dynamic list as a typed list
+### Don't use a dynamic list as a typed list {:#don-t-use-a-dynamic-list-as-a-typed-list}
 
 A `dynamic` list is good when you want to have a list with
 different kinds of things in it. However, you can't use a
@@ -247,7 +247,7 @@ void main() {
 }
 ```
 
-## Runtime checks
+## Runtime checks {:#runtime-checks}
 
 Runtime checks deal with type safety issues
 that can't be detected at compile time.
@@ -264,7 +264,7 @@ void main() {
 ```
 
 
-## Type inference
+## Type inference {:#type-inference}
 
 The analyzer can infer types for fields, methods, local variables,
 and most generic type arguments.
@@ -297,7 +297,7 @@ So the map literal has the type `Map<String, Object>`,
 and so does the `arguments` variable.
 
 
-### Field and method inference
+### Field and method inference {:#field-and-method-inference}
 
 A field or method that has no specified type and that overrides
 a field or method from the superclass, inherits the type of the
@@ -306,14 +306,14 @@ superclass method or field.
 A field that does not have a declared or inherited type but that is declared
 with an initial value, gets an inferred type based on the initial value.
 
-### Static field inference
+### Static field inference {:#static-field-inference}
 
 Static fields and variables get their types inferred from their
 initializer. Note that inference fails if it encounters a cycle
 (that is, inferring a type for the variable depends on knowing the
 type of that variable).
 
-### Local variable inference
+### Local variable inference {:#local-variable-inference}
 
 Local variable types are inferred from their initializer, if any.
 Subsequent assignments are not taken into account.
@@ -332,7 +332,7 @@ num y = 3; // A num can be double or int.
 y = 4.0;
 ```
 
-### Type argument inference
+### Type argument inference {:#type-argument-inference}
 
 Type arguments to constructor calls and
 [generic method](/language/generics#using-generic-methods) invocations
@@ -359,7 +359,7 @@ Dart uses this return type as upward information when inferring the `map()`
 method's type argument: `<int>`.
 
 
-## Substituting types
+## Substituting types {:#substituting-types}
 
 When you override a method, you are replacing something of one type (in the
 old method) with something that might have a new type (in the new method).
@@ -378,7 +378,7 @@ type with a subtype.**
 Let's look at examples of simple type assignment and assignment with
 generic types.
 
-### Simple type assignment
+### Simple type assignment {:#simple-type-assignment}
 
 When assigning objects to objects, when can you replace a type with a
 different type? The answer depends on whether the object is a consumer
@@ -424,7 +424,7 @@ is allowed:
 Cat c = MaineCoon();
 ```
 
-### Generic type assignment
+### Generic type assignment {:#generic-type-assignment}
 
 Are the rules the same for generic types? Yes. Consider the hierarchy
 of lists of animals—a `List` of `Cat` is a subtype of a `List` of
@@ -467,7 +467,7 @@ List<Cat> myCats = myAnimals [!as List<Cat>!];
 An explicit cast might still fail at runtime, though,
 depending on the actual type of the list being cast (`myAnimals`).
 
-### Methods
+### Methods {:#methods}
 
 When overriding a method, the producer and consumer rules still apply.
 For example:
@@ -484,7 +484,7 @@ For more information, see
 and [Use sound parameter types when overriding methods](#use-proper-param-types).
 
 
-## Other resources
+## Other resources {:#other-resources}
 
 The following resources have further information on sound Dart:
 

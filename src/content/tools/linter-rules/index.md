@@ -26,7 +26,7 @@ and others are designed for Flutter apps.
 :::
 
 <a id="predefined-rule-sets"></a>
-## Sets
+## Sets {:#sets}
 
 To avoid the need to individually select compatible linter rules,
 consider starting with a linter rule set,
@@ -69,7 +69,7 @@ check out the [`#lints` topic]({{site.pub-pkg}}?q=topic:lints) on pub.dev.
 [enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 
 <a id="maturity-levels"></a>
-## Status
+## Status {:#status}
 
 Each rule has a status or maturity level:
 
@@ -91,7 +91,7 @@ Each rule has a status or maturity level:
 : These rules have been already been removed in the
   latest stable Dart release.
 
-## Quick fixes
+## Quick fixes {:#quick-fixes}
 
 Some rules can be fixed automatically using quick fixes.
 A quick fix is an automated edit 
@@ -105,7 +105,7 @@ To learn more, see [Quick fixes for analysis issues][].
 
 [Quick fixes for analysis issues]: https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a
 
-## Rules
+## Rules {:#rules}
 
 The following is an index of all linter rules and 
 a short description of their functionality.

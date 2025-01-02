@@ -18,7 +18,7 @@ GitHub and ingested into the central advisory database.
 [GitHub Advisory Database]: https://github.com/advisories
 [Creating a repository security advisory]: https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/creating-a-repository-security-advisory
 
-## Security advisories in the pub client
+## Security advisories in the pub client {:#security-advisories-in-the-pub-client}
 
 The pub client surfaces security advisories at dependency resolution.
 For instance, when running `dart pub get` you will get the following output:
@@ -38,7 +38,7 @@ If you assess that the vulnerability affects your package, you
 should strongly consider upgrading to a non-affected version of the dependency.
 
 
-### Ignoring security advisories
+### Ignoring security advisories {:#ignoring-security-advisories}
 
 If a security advisory is not relevant for your application,
 you can suppress the warning by adding the advisory identifier to

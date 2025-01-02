@@ -56,7 +56,7 @@ get the latest versions of all dependencies.
 
 [Application packages]: /tools/pub/glossary#application-package
 
-## Package resolution
+## Package resolution {:#package-resolution}
 
 By default, pub creates a `package_config.json` file
 in the `.dart_tool/` directory that maps from package names to location URIs.
@@ -69,7 +69,7 @@ see [What not to commit](/tools/pub/private-files).
 :::
 
 
-## Getting a new dependency
+## Getting a new dependency {:#getting-a-new-dependency}
 
 If a dependency is added to the pubspec and then `dart pub get` is run,
 it gets the new dependency and any of its transitive dependencies.
@@ -77,7 +77,7 @@ However, pub won't change the versions of any already-acquired
 dependencies unless that's necessary to get the new dependency.
 
 
-## Removing a dependency
+## Removing a dependency {:#removing-a-dependency}
 
 If a dependency is removed from the pubspec and then `dart pub get` is run,
 the dependency is no longer available for importing.
@@ -87,7 +87,7 @@ Removing a dependency never changes the versions of any
 already-acquired dependencies.
 
 
-## The system package cache
+## The system package cache {:#the-system-package-cache}
 
 Dependencies downloaded over the internet, such as those from Git and the
 [pub.dev site]({{site.pub}}), are stored in a
@@ -105,7 +105,7 @@ You can configure the location of the cache by setting the
 environment variable before running pub.
 
 
-## Getting while offline
+## Getting while offline {:#getting-while-offline}
 
 If you don't have network access, you can still run `dart pub get`.
 Because pub downloads packages to a central cache shared by all packages
@@ -127,28 +127,28 @@ The next time you are online, you will likely want to
 run [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later version.
 
 
-## Options
+## Options {:#options}
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `--[no-]offline`
+### `--[no-]offline` {:#no-offline}
 
 {% render 'tools/pub-option-no-offline.md' %}
 
-### `--dry-run` or `-n`
+### `--dry-run` or `-n` {:#dry-run-or-n}
 
 Reports the dependencies that would be changed,
 but doesn't make the changes. This is useful if you
 want to analyze updates before making them.
 
-### `--[no-]precompile`
+### `--[no-]precompile` {:#no-precompile}
 
 By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
-### `--enforce-lockfile`
+### `--enforce-lockfile` {:#enforce-lockfile}
 
 Enforce the resolution of the current `pubspec.lock`.
 

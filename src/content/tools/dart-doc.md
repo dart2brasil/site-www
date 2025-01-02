@@ -137,7 +137,7 @@ that corresponds to the Dart release channel you are developing with:
 
 {:.table .table-striped}
 
-## Troubleshoot
+## Troubleshoot {:#troubleshoot}
 
 To identify and resolve common issues with docs generated with `dart doc`,
 consult the following reference section.

@@ -101,7 +101,7 @@ read [Other causes and workarounds](#other-causes-and-workarounds)
 
 [upgrade]: /get-dart
 
-## Other causes and workarounds
+## Other causes and workarounds {:#other-causes-and-workarounds}
 
 The remaining examples on this page document reasons for promotion failures
 unrelated to version inconsistencies,
@@ -485,7 +485,7 @@ void testParity(Example x) {
 }
 ```
 
-#### Note about unrelated classes
+#### Note about unrelated classes {:#note-about-unrelated-classes}
 
 Note that in the above example it's clear
 why it's unsafe to promote the field `_overridden`:
@@ -922,7 +922,7 @@ try {
 }
 ```
 
-### Subtype mismatch
+### Subtype mismatch {:#subtype-mismatch}
 
 **The cause:**
 You're trying to promote to a type isn't a subtype of

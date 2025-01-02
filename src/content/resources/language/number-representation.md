@@ -30,7 +30,7 @@ but this constraint was loosened almost immediately for efficiency reasons
 :::
 
 
-## Dart number representation
+## Dart number representation {:#dart-number-representation}
 
 In Dart, all numbers are part of the common `Object` type hierarchy,
 and there are two concrete, user-visible numeric types:
@@ -120,7 +120,7 @@ However, `int` values are always also `double` values,
 which can lead to some surprises.
 
 
-## Differences in behavior
+## Differences in behavior {:#differences-in-behavior}
 
 Most integer and double arithmetic
 has essentially the same behavior.
@@ -138,7 +138,7 @@ less surprising, more consistent, or more performant.
 :::
 
 
-### Precision
+### Precision {:#precision}
 
 The following table demonstrates how some numerical expressions
 differ due to precision.
@@ -204,7 +204,7 @@ they're approximations due to the loss of precision.
   </table>
 </div>
 
-### Identity
+### Identity {:#identity}
 
 On native platforms, `double` and `int` are distinct types:
 no value can be both a `double` and an `int` at the same time.
@@ -267,7 +267,7 @@ the identity expressions are usually different.
   </table>
 </div>
 
-### Types and type checking
+### Types and type checking {:#types-and-type-checking}
 
 On the web, the underlying `int` type is like a subtype of `double`:
 it's a double-precision value without a fractional part.
@@ -360,7 +360,7 @@ it might change in the future.
   </table>
 </div>
 
-### Bitwise operations
+### Bitwise operations {:#bitwise-operations}
 
 For performance reasons on the web,
 bitwise (`&`, `|`, `^`, `~`) and shift (`<<`,`>>`, `>>>`) operators on `int`
@@ -410,7 +410,7 @@ are either negative or close to 32 bits:
   </table>
 </div>
 
-### String representation
+### String representation {:#string-representation}
 
 On the web, Dart generally defers to JavaScript to convert a number to a string
 (for example, for a `print`).
@@ -462,7 +462,7 @@ converting the expressions in the first column can lead to different results.
   </table>
 </div>
 
-## What should you do?
+## What should you do? {:#what-should-you-do}
 
 Usually, you don't need to change your numeric code.
 Dart code has been running on both native and web platforms for years,

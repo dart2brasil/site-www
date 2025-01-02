@@ -91,7 +91,7 @@ suite to see how to temporarily
 disable this feature. For example, see
 [How to Disable AVG Components](https://support.avg.com/SupportArticleView?urlName=How-to-disable-AVG).
 
-## Pub get fails from behind a corporate firewall
+## Pub get fails from behind a corporate firewall {:#pub-get-fails-from-behind-a-corporate-firewall}
 
 From the command line, pub honors the `http_proxy` and `https_proxy`
 environment variables.
@@ -135,7 +135,7 @@ On Windows PowerShell:
 $ $Env:https_proxy="username:password@hostname:port"
 ```
 
-## Localhost unreachable after sign-in
+## Localhost unreachable after sign-in {:#localhost-unreachable-after-sign-in}
 
 When you run `dart pub publish` in a container or over an SSH session,
 the `localhost` that `dart pub` is listening to might be different from

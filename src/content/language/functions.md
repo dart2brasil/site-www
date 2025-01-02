@@ -60,7 +60,7 @@ The function then returns a boolean value
 that indicates whether the `atomicNumber` falls into the noble gas range.
 :::
 
-## Parameters
+## Parameters {:#parameters}
 
 A function can have any number of *required positional* parameters. These can be
 followed either by *named* parameters or by *optional positional* parameters
@@ -76,7 +76,7 @@ You can use [trailing commas][] when you pass arguments to a function
 or when you define function parameters.
 
 
-### Named parameters
+### Named parameters {:#named-parameters}
 
 Named parameters are optional
 unless they're explicitly marked as `required`.
@@ -154,7 +154,7 @@ repeat(times: 2, () {
 });
 ```
 
-### Optional positional parameters
+### Optional positional parameters {:#optional-positional-parameters}
 
 Wrapping a set of function parameters in `[]`
 marks them as optional positional parameters.
@@ -239,7 +239,7 @@ void main(List<String> arguments) {
 You can use the [args library]({{site.pub-pkg}}/args) to
 define and parse command-line arguments.
 
-## Functions as first-class objects
+## Functions as first-class objects {:#functions-as-first-class-objects}
 
 You can pass a function as a parameter to another function. For example:
 
@@ -266,7 +266,7 @@ assert(loudify('hello') == '!!! HELLO !!!');
 This example uses an anonymous function.
 More about those in the next section.
 
-## Function types
+## Function types {:#function-types}
 
 You can specify the type of a function, which is known as a *function type*.
 A function type is obtained from a function declaration header by
@@ -295,7 +295,7 @@ which can be useful for clarity and reusability.
 
 [`typedef`]: /language/typedefs
 
-## Anonymous functions
+## Anonymous functions {:#anonymous-functions}
 
 Though you name most functions, such as `main()` or `printElement()`.
 you can also create functions without names.
@@ -365,7 +365,7 @@ var uppercaseList = list.map((item) => item.toUpperCase()).toList();
 uppercaseList.forEach((item) => print('$item: ${item.length}'));
 ```
 
-## Lexical scope
+## Lexical scope {:#lexical-scope}
 
 Dart determines the scope of variables based on the layout of its code.
 A programming language with this feature is termed a lexically scoped language.
@@ -398,7 +398,7 @@ void main() {
 The `nestedFunction()` method can use variables from every level,
 all the way up to the top level.
 
-## Lexical closures
+## Lexical closures {:#lexical-closures}
 
 A function object that can access variables in its lexical scope
 when the function sits outside that scope is called a _closure_.
@@ -427,7 +427,7 @@ void main() {
 }
 ```
 
-## Tear-offs
+## Tear-offs {:#tear-offs}
 
 When you refer to a function, method, or named constructor without parentheses,
 Dart creates a _tear-off_. This is a closure that takes the same
@@ -464,7 +464,7 @@ charCodes.forEach((code) {
 });
 ```
 
-## Testing functions for equality
+## Testing functions for equality {:#testing-functions-for-equality}
 
 Here's an example of testing top-level functions, static methods, and
 instance methods for equality:
@@ -506,7 +506,7 @@ void main() {
 ```
 
 
-## Return values
+## Return values {:#return-values}
 
 All functions return a value. If no return value is specified, the
 statement `return null;` is implicitly appended to the function body.
@@ -528,7 +528,7 @@ To return multiple values in a function, aggregate the values in a [record][].
 
 [record]: /language/records#multiple-returns
 
-## Generators
+## Generators {:#generators}
 
 When you need to lazily produce a sequence of values,
 consider using a _generator function_.

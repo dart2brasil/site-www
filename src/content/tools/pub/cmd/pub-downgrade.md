@@ -35,7 +35,7 @@ See the [`dart pub get` documentation](/tools/pub/cmd/pub-get) for more informat
 on package resolution and the system package cache.
 
 
-## Downgrading specific dependencies
+## Downgrading specific dependencies {:#downgrading-specific-dependencies}
 
 It's possible to tell `dart pub downgrade` to downgrade specific dependencies to the
 lowest version while leaving the rest of the dependencies alone as much as
@@ -66,14 +66,14 @@ constraints. Any transitive dependencies are usually also downgraded
 as a result.
 
 
-## Getting a new dependency
+## Getting a new dependency {:#getting-a-new-dependency}
 
 If a dependency is added to the pubspec before `dart pub downgrade` is run,
 it gets the new dependency and any of its transitive dependencies.
 This shares the same behavior as `dart pub get`.
 
 
-## Removing a dependency
+## Removing a dependency {:#removing-a-dependency}
 
 If a dependency is removed from the pubspec before `dart pub downgrade` is run,
 the dependency is no longer available for importing.
@@ -82,7 +82,7 @@ as long as no remaining immediate dependencies also depend on them.
 This is the same behavior as `dart pub get`.
 
 
-## Downgrading while offline
+## Downgrading while offline {:#downgrading-while-offline}
 
 If you don't have network access, you can still run `dart pub downgrade`.
 Because pub downloads packages to a central cache shared by all packages
@@ -96,20 +96,20 @@ In offline mode, pub looks only in your local package cache,
 trying to find a set of versions that work with your package from what's already
 available.
 
-## Options
+## Options {:#options}
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `--[no-]offline`
+### `--[no-]offline` {:#no-offline}
 
 {% render 'tools/pub-option-no-offline.md' %}
 
-### `--dry-run` or `-n`
+### `--dry-run` or `-n` {:#dry-run-or-n}
 
 Reports what dependencies would change but doesn't change any.
 
-### `--tighten`
+### `--tighten` {:#tighten}
 
 :::version-note
 Support for the `--tighten` option was added in Dart 3.5.
@@ -121,7 +121,7 @@ Can be applied to [specific dependencies](#downgrading-specific-dependencies).
 
 {% render 'pub-problems.md' %}
 
-## In a workspace
+## In a workspace {:#in-a-workspace}
 
 In a [Pub workspace](/tools/pub/workspaces) `dart pub downgrade` will
 downgrade all dependencies across the workspace.

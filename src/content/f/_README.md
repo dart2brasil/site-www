@@ -1,10 +1,2 @@
-Welcome to the home for files used by samples!
-
-This is where you can put files that a sample app might read.
-
-Please make sure that any content is copyright free
-(such as Jabberwocky by Lewis Carroll).
-
-This documentation site uses
-[Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) headers.
-CORS grants apps like DartPad to read-only access to these sample files.
+<!-- ia-translate: true -->
+Bem-vindo à página inicial dos arquivos usados pelas amostras!Aqui você pode colocar arquivos que um aplicativo de exemplo pode ler.Por favor, certifique-se de que qualquer conteúdo seja livre de direitos autorais (como o poema "Jabberwocky" de Lewis Carroll).Este site de documentação usa cabeçalhos [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).  O CORS concede aos aplicativos, como o DartPad, acesso somente leitura a esses arquivos de exemplo.

@@ -26,7 +26,7 @@ If this doesn't work, you might need to
 To run a Dart script from within a package, or from a
 package that your package depends on, see [dart run](/tools/dart-run).
 
-## Activating a package
+## Activating a package {:#activating-a-package}
 
 ```plaintext
 dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [version-constraint]
@@ -44,7 +44,7 @@ script](#running-a-script) to run scripts from the package's
 When you activate a package you can specify an optional version
 constraint.  See the [constraint](#options) flag for usage examples.
 
-### Activating a package on the pub.dev site
+### Activating a package on the pub.dev site {:#activating-a-package-on-the-pub-dev-site}
 
 ```console
 $ dart pub global activate <pub.dev package>
@@ -56,7 +56,7 @@ Specify a package on the pub.dev site to activate it. For example:
 $ dart pub global activate markdown
 ```
 
-### Activating a package with Git
+### Activating a package with Git {:#activating-a-package-with-git}
 
 ```console
 $ dart pub global activate --source git <Git URL>
@@ -89,7 +89,7 @@ different branch or commit, use the `--git-ref` option:
 $ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-ref 36f98e900347335af2338a0e087538009b7de2f9
 ```
 
-### Activating a package on your local machine
+### Activating a package on your local machine {:#activating-a-package-on-your-local-machine}
 
 ```console
 $ dart pub global activate --source path <path>
@@ -103,18 +103,18 @@ The following example activates the `stopwatch` package from the
 $ dart pub global activate --source path ~/dart/stopwatch
 ```
 
-### Updating an activated package
+### Updating an activated package {:#updating-an-activated-package}
 
 Once a package has been activated, you can upgrade it by activating the
 package again.
 
-## Running a script
+## Running a script {:#running-a-script}
 
 You can directly run a script from an activated package from the
 command line. If you are unable to run the script directly,
 you can also use `dart pub global run`.
 
-### Running a script from your PATH
+### Running a script from your PATH {:#running-a-script-from-your-path}
 
 To run a script directly from the command line, add the [system cache][] `bin`
 directory to your `PATH` environment variable.
@@ -160,7 +160,7 @@ If the script still fails to run from the command line, the
 package may not be [configured](#configuring-package-executables) for
 this feature. You can still run the script using `dart pub global run`.
 
-### Running a script using `dart pub global run`
+### Running a script using `dart pub global run` {:#running-a-script-using-dart-pub-global-run}
 
 ```plaintext
 $ dart pub global run <package>:<executable> [args...]
@@ -175,7 +175,7 @@ The following command runs the `bin/bar.dart` script from the
 $ dart pub global run foo:bar arg1 arg2
 ```
 
-### Configuring package executables
+### Configuring package executables {:#configuring-package-executables}
 
 If you are not a package developer, you can skip this section.
 
@@ -198,7 +198,7 @@ Failing to list a script under the `executables` tag reduces the script's
 usability: unlisted scripts can be executed using `dart pub global run`, but not
 directly from the command line.
 
-## Deactivating a package
+## Deactivating a package {:#deactivating-a-package}
 
 ```console
 $ dart pub global deactivate <package>
@@ -214,7 +214,7 @@ $ dart pub global deactivate markdown
 You can no longer invoke the package's scripts using `dart pub global run`,
 or at the command line.
 
-## Listing active packages
+## Listing active packages {:#listing-active-packages}
 
 ```console
 $ dart pub global list
@@ -222,12 +222,12 @@ $ dart pub global list
 
 Use `list` to list all currently active packages.
 
-## Options
+## Options {:#options}
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `[version-constraint]`
+### `[version-constraint]` {:#version-constraint}
 
 Use `dart pub global activate <package> [version-constraint]`
 to specify a specific version of the package.
@@ -245,14 +245,14 @@ constraint. For example:
 $ dart pub global activate foo <3.0.0
 ```
 
-### `--no-executables`
+### `--no-executables` {:#no-executables}
 
 Use `dart pub global activate <package> --no-executables`
 to globally activate the specified package,
 but not put any executables in `bin`.
 You have to use `dart pub global run` to run any executables.
 
-### `--executable=<name>` or `-x <name>`
+### `--executable=<name>` or `-x <name>` {:#executable-name-or-x-name}
 
 Use with `dart pub global activate`
 to add the specified executable to your PATH.
@@ -266,7 +266,7 @@ to your PATH.
 $ dart pub global activate foo -x bar -x baz
 ```
 
-### `--overwrite`
+### `--overwrite` {:#overwrite}
 
 Use `dart pub global activate <package> --overwrite`
 to overwrite any previously activated global executables

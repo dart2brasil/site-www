@@ -62,7 +62,7 @@ c ? a : b
 a is T
 ```
 
-## Operator precedence example
+## Operator precedence example {:#operator-precedence-example}
 
 In the [operator table](#operators),
 each operator has higher precedence than the operators in the rows
@@ -88,7 +88,7 @@ a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
 :::
 
 
-## Arithmetic operators
+## Arithmetic operators {:#arithmetic-operators}
 
 Dart supports the usual arithmetic operators, as shown in the following table.
 
@@ -155,7 +155,7 @@ assert(a != b); // -1 != 0
 ```
 
 
-## Equality and relational operators
+## Equality and relational operators {:#equality-and-relational-operators}
 
 The following table lists the meanings of equality and relational operators.
 
@@ -197,7 +197,7 @@ assert(2 <= 3);
 ```
 
 
-## Type test operators
+## Type test operators {:#type-test-operators}
 
 The `as`, `is`, and `is!` operators are handy for checking types at
 runtime.
@@ -236,7 +236,7 @@ The code isn't equivalent. If `employee` is null or not a `Person`, the
 first example throws an exception; the second does nothing.
 :::
 
-## Assignment operators
+## Assignment operators {:#assignment-operators}
 
 As you've already seen, you can assign values using the `=` operator.
 To assign only if the assigned-to variable is null,
@@ -281,7 +281,7 @@ assert(a == 6);
 ```
 
 
-## Logical operators
+## Logical operators {:#logical-operators}
 
 You can invert or combine boolean expressions using the logical
 operators.
@@ -304,7 +304,7 @@ if (!done && (col == 0 || col == 3)) {
 ```
 
 
-## Bitwise and shift operators
+## Bitwise and shift operators {:#bitwise-and-shift-operators}
 
 You can manipulate the individual bits of numbers in Dart. Usually,
 you'd use these bitwise and shift operators with integers.
@@ -358,7 +358,7 @@ requires a [language version][] of at least 2.14.
 
 [Bitwise operations platform differences]: /resources/language/number-representation#bitwise-operations
 
-## Conditional expressions
+## Conditional expressions {:#conditional-expressions}
 
 Dart has two operators that let you concisely evaluate expressions
 that might otherwise require [if-else][] statements:
@@ -407,7 +407,7 @@ String playerName(String? name) {
 }
 ```
 
-## Cascade notation
+## Cascade notation {:#cascade-notation}
 
 Cascades (`..`, `?..`) allow you to make a sequence of operations
 on the same object. In addition to accessing instance members,
@@ -502,7 +502,7 @@ Strictly speaking, the "double dot" notation for cascades isn't an operator.
 It's just part of the Dart syntax.
 :::
 
-## Spread operators
+## Spread operators {:#spread-operators}
 
 Spread operators evaluate an expression that yields a collection,
 unpacks the resulting values, and inserts them into another collection.
@@ -521,7 +521,7 @@ any kind of expression is valid as the spread target, such as:
 [...a + b]
 ```
 
-## Other operators
+## Other operators {:#other-operators}
 
 You've seen most of the remaining operators in other examples:
 

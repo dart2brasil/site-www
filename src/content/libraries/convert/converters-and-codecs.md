@@ -20,7 +20,7 @@ In this document, we show how Dart's
 converters work and how you can create your own efficient converters
 that fit into the Dart world.
 
-## Big picture
+## Big picture {:#big-picture}
 
 Dart's conversion architecture is
 based on _converters_, which translate from one representation to another.
@@ -37,7 +37,7 @@ type matches, and the resulting converter can then be used as a single unit.
 Furthermore, these fused converters frequently work more efficiently than if
 they had been used separately.
 
-## Codec
+## Codec {:#codec}
 
 A codec is a combination of two converters where one encodes
 and the other one decodes:
@@ -93,7 +93,7 @@ to the `encode()`/`decode()` methods and allow their defaults to be
 set in constructors.
 When possible, codec constructors should be `const` constructors.
 
-## Converter
+## Converter {:#converter}
 
 Converters, and in particular their `convert()` methods, are
 where the real conversions happen:
@@ -122,7 +122,7 @@ Probably the most common use case is the decoding of UTF-8 with
 File.openRead().transform(utf8.decoder).
 ```
 
-## Chunked conversion
+## Chunked conversion {:#chunked-conversion}
 
 The concept of chunked conversions can be confusing, but at its core, it is
 relatively simple. When a chunked conversion (including a stream
@@ -205,7 +205,7 @@ void main() async {
 In general, the type of the chunked conversion is determined by the most
 useful case when used as a StreamTransformer.
 
-### ChunkedConversionSink
+### ChunkedConversionSink {:#chunkedconversionsink}
 
 [ChunkedConversionSinks]({{site.dart-api}}/dart-convert/ChunkedConversionSink-class.html)
 are used to add new data to a
@@ -273,7 +273,7 @@ whether to take advantage of the additional methods.
 This assures that adding functionality to the existing sink interfaces does
 not break the extended sinks._
 
-## Example
+## Example {:#example}
 
 This section shows all the steps needed to create a simple encryption
 converter and how a custom ChunkedConversionSink can improve performance.
@@ -385,7 +385,7 @@ void main(List<String> args) {
 }
 ```
 
-### Specialized ChunkedConversionSinks
+### Specialized ChunkedConversionSinks {:#specialized-chunkedconversionsinks}
 
 For many purposes, the current version of Rot is sufficient. That is, the
 benefit of improvements would be outweighed by the cost of more complex code

@@ -64,7 +64,7 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
     'hosting',
     '--project',
     'default',
-  ]);
+  ], runInShell: true);
 
   // Ignore the stdin and stderr output from the emulator.
   unawaited(emulatorProcess.stdout.drain<void>());

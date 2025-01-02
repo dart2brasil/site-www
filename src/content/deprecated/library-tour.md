@@ -1,7 +1,8 @@
 ---
-title: Deprecated tour of the core libraries
-description: The previous destination of the Dart core library introduction.
-short-title: Library tour
+ia-translate: true
+title: Tour Obsoleto das Bibliotecas Principais (Deprecated tour of the core libraries)
+description: Destino anterior da introdução à biblioteca principal Dart. (The previous destination of the Dart core library introduction.)
+short-title: Tour da Biblioteca (Library tour)
 js: [{url: '/assets/js/library-tour-redirector.js'}]
 sitemap: false
 canonical: https://dart.dev/libraries
@@ -11,318 +12,312 @@ show_breadcrumbs: false
 ---
 
 :::warning
-The Dart library tour's content has been split across
-several different pages in the left side navigation under **Library**.
-To learning about Dart's core libraries,
-check out the [Core libraries overview](/libraries) and
-the [Dart API reference docs]({{site.dart-api}}).
+O conteúdo do tour da biblioteca Dart foi dividido em várias páginas diferentes na navegação lateral esquerda, em **Library**. Para aprender sobre as bibliotecas principais do Dart, consulte a [Visão geral das bibliotecas principais](/libraries) e a [documentação de referência da API Dart]({{site.dart-api}}).
 :::
 
 {% comment %}
-  !! NOTE:
+  !! NOTA:
   
-  All new library content should go within the `/library` directory.
-  This file exists temporarily for legacy reasons so
-  links to the old library tour do not break.
+  Todo o novo conteúdo da biblioteca deve ser incluído no diretório `/library`.
+  Este arquivo existe temporariamente por motivos de legado, para que os links para o antigo tour da biblioteca não sejam interrompidos.
   
-  In the short term, if you move content that is referenced here,
-  update the text and link in this file, as well as
-  the redirection map in `src/assets/js/library-tour-redirector.js`.
+  A curto prazo, se você mover o conteúdo referenciado aqui, atualize o texto e o link neste arquivo, bem como o mapa de redirecionamento em `src/assets/js/library-tour-redirector.js`.
 {% endcomment -%}
 
 
-## dart:core - numbers, collections, strings, and more
+## dart:core - números, coleções, strings e muito mais {:#dart-core-numbers-collections-strings-and-more}
 
-This content has moved to [](/library/dart-core).
+Este conteúdo foi movido para [](/library/dart-core).
 
-### Printing to the console
+### Imprimindo no console {:#printing-to-the-console}
 
-This content has moved to [](/library/dart-core#printing-to-the-console).
+Este conteúdo foi movido para [](/library/dart-core#printing-to-the-console).
 
-### Numbers
+### Números {:#numbers}
 
-This content has moved to [](/library/dart-core#numbers).
+Este conteúdo foi movido para [](/library/dart-core#numbers).
 
-### Strings and regular expressions
+### Strings e expressões regulares {:#strings-and-regular-expressions}
 
-This content has moved to [](/library/dart-core#strings-and-regular-expressions).
+Este conteúdo foi movido para [](/library/dart-core#strings-and-regular-expressions).
 
-#### Searching inside a string
+#### Pesquisando dentro de uma string {:#searching-inside-a-string}
 
-This content has moved to [](/library/dart-core#searching-inside-a-string).
+Este conteúdo foi movido para [](/library/dart-core#searching-inside-a-string).
 
-#### Extracting data from a string
+#### Extraindo dados de uma string {:#extracting-data-from-a-string}
 
-This content has moved to [](/library/dart-core#extracting-data-from-a-string).
+Este conteúdo foi movido para [](/library/dart-core#extracting-data-from-a-string).
 
-#### Converting to uppercase or lowercase
+#### Convertendo para maiúsculas ou minúsculas {:#converting-to-uppercase-or-lowercase}
 
-This content has moved to [](/library/dart-core#converting-to-uppercase-or-lowercase).
+Este conteúdo foi movido para [](/library/dart-core#converting-to-uppercase-or-lowercase).
 
-#### Trimming and empty strings
+#### Recortando e strings vazias {:#trimming-and-empty-strings}
 
-This content has moved to [](/library/dart-core#trimming-and-empty-strings).
+Este conteúdo foi movido para [](/library/dart-core#trimming-and-empty-strings).
 
-#### Replacing part of a string
+#### Substituindo parte de uma string {:#replacing-part-of-a-string}
 
-This content has moved to [](/library/dart-core#replacing-part-of-a-string).
+Este conteúdo foi movido para [](/library/dart-core#replacing-part-of-a-string).
 
-#### Building a string
+#### Construindo uma string {:#building-a-string}
 
-This content has moved to [](/library/dart-core#building-a-string).
+Este conteúdo foi movido para [](/library/dart-core#building-a-string).
 
-#### Regular expressions
+#### Expressões regulares {:#regular-expressions}
 
-This content has moved to [](/library/dart-core#regular-expressions).
+Este conteúdo foi movido para [](/library/dart-core#regular-expressions).
 
-### Collections
+### Coleções {:#collections}
 
-This content has moved to [](/library/dart-core#collections).
+Este conteúdo foi movido para [](/library/dart-core#collections).
 
-#### Lists
+#### Listas {:#lists}
 
-This content has moved to [](/library/dart-core#lists).
+Este conteúdo foi movido para [](/library/dart-core#lists).
 
-#### Sets
+#### Conjuntos (Sets) {:#sets}
 
-This content has moved to [](/library/dart-core#sets).
+Este conteúdo foi movido para [](/library/dart-core#sets).
 
-#### Maps
+#### Mapas {:#maps}
 
-This content has moved to [](/library/dart-core#maps).
+Este conteúdo foi movido para [](/library/dart-core#maps).
 
-#### Common collection methods
+#### Métodos comuns de coleção {:#common-collection-methods}
 
-This content has moved to [](/library/dart-core#common-collection-methods).
+Este conteúdo foi movido para [](/library/dart-core#common-collection-methods).
 
-### URIs
+### URIs {:#uris}
 
-This content has moved to [](/library/dart-core#uris).
+Este conteúdo foi movido para [](/library/dart-core#uris).
 
-#### Encoding and decoding fully qualified URIs
+#### Codificando e decodificando URIs totalmente qualificados {:#encoding-and-decoding-fully-qualified-uris}
 
-This content has moved to [](/library/dart-core#encoding-and-decoding-fully-qualified-uris).
+Este conteúdo foi movido para [](/library/dart-core#encoding-and-decoding-fully-qualified-uris).
 
-#### Encoding and decoding URI components
+#### Codificando e decodificando componentes URI {:#encoding-and-decoding-uri-components}
 
-This content has moved to [](/library/dart-core#encoding-and-decoding-uri-components).
+Este conteúdo foi movido para [](/library/dart-core#encoding-and-decoding-uri-components).
 
-#### Parsing URIs
+#### Analisando (Parsing) URIs {:#parsing-uris}
 
-This content has moved to [](/library/dart-core#parsing-uris).
+Este conteúdo foi movido para [](/library/dart-core#parsing-uris).
 
-#### Building URIs
+#### Construindo URIs {:#building-uris}
 
-This content has moved to [](/library/dart-core#building-uris).
+Este conteúdo foi movido para [](/library/dart-core#building-uris).
 
-### Dates and times
+### Datas e horários {:#dates-and-times}
 
-This content has moved to [](/library/dart-core#dates-and-times).
+Este conteúdo foi movido para [](/library/dart-core#dates-and-times).
 
-### Utility classes
+### Classes de utilidade {:#utility-classes}
 
-This content has moved to [](/library/dart-core#utility-classes).
+Este conteúdo foi movido para [](/library/dart-core#utility-classes).
 
-#### Comparing objects
+#### Comparando objetos {:#comparing-objects}
 
-This content has moved to [](/library/dart-core#comparing-objects).
+Este conteúdo foi movido para [](/library/dart-core#comparing-objects).
 
-#### Implementing map keys
+#### Implementando chaves de mapa {:#implementing-map-keys}
 
-This content has moved to [](/library/dart-core#implementing-map-keys).
+Este conteúdo foi movido para [](/library/dart-core#implementing-map-keys).
 
-#### Iteration
+#### Iteração {:#iteration}
 
-This content has moved to [](/library/dart-core#iteration).
+Este conteúdo foi movido para [](/library/dart-core#iteration).
 
-### Exceptions
+### Exceções {:#exceptions}
 
-This content has moved to [](/library/dart-core#exceptions).
+Este conteúdo foi movido para [](/library/dart-core#exceptions).
 
-### Weak references and finalizers
+### Referências fracas e finalizadores {:#weak-references-and-finalizers}
 
-This content has moved to [](/library/dart-core#weak-references-and-finalizers).
+Este conteúdo foi movido para [](/library/dart-core#weak-references-and-finalizers).
 
-## dart:async - asynchronous programming
+## dart:async - programação assíncrona {:#dart-async-asynchronous-programming}
 
-This content has moved to [](/library/dart-async).
+Este conteúdo foi movido para [](/library/dart-async).
 
-### Future
+### Future {:#future}
 
-This content has moved to [](/library/dart-async#future).
+Este conteúdo foi movido para [](/library/dart-async#future).
 
-#### Using await
+#### Usando await {:#using-await}
 
-This content has moved to [](/library/dart-async#using-await).
+Este conteúdo foi movido para [](/library/dart-async#using-await).
 
-#### Basic usage
+#### Uso básico {:#basic-usage}
 
-This content has moved to [](/library/dart-async#basic-usage).
+Este conteúdo foi movido para [](/library/dart-async#basic-usage).
 
-#### Chaining multiple asynchronous methods
+#### Encadeando múltiplos métodos assíncronos {:#chaining-multiple-asynchronous-methods}
 
-This content has moved to [](/library/dart-async#chaining-multiple-asynchronous-methods).
+Este conteúdo foi movido para [](/library/dart-async#chaining-multiple-asynchronous-methods).
 
-#### Waiting for multiple futures
+#### Aguardando múltiplos futures {:#waiting-for-multiple-futures}
 
-This content has moved to [](/library/dart-async#waiting-for-multiple-futures).
+Este conteúdo foi movido para [](/library/dart-async#waiting-for-multiple-futures).
 
-#### Handling errors for multiple futures
+#### Lidando com erros para múltiplos futures {:#handling-errors-for-multiple-futures}
 
-This content has moved to [](/library/dart-async#handling-errors-for-multiple-futures).
+Este conteúdo foi movido para [](/library/dart-async#handling-errors-for-multiple-futures).
 
-### Stream
+### Stream {:#stream}
 
-This content has moved to [](/library/dart-async#stream).
+Este conteúdo foi movido para [](/library/dart-async#stream).
 
-#### Using an asynchronous for loop
+#### Usando um loop for assíncrono {:#using-an-asynchronous-for-loop}
 
-This content has moved to [](/library/dart-async#using-an-asynchronous-for-loop).
+Este conteúdo foi movido para [](/library/dart-async#using-an-asynchronous-for-loop).
 
-#### Listening for stream data
+#### Ouvindo dados do stream {:#listening-for-stream-data}
 
-This content has moved to [](/library/dart-async#listening-for-stream-data).
+Este conteúdo foi movido para [](/library/dart-async#listening-for-stream-data).
 
-#### Transforming stream data
+#### Transformando dados do stream {:#transforming-stream-data}
 
-This content has moved to [](/library/dart-async#transforming-stream-data).
+Este conteúdo foi movido para [](/library/dart-async#transforming-stream-data).
 
-#### Handling errors and completion
+#### Lidando com erros e conclusão {:#handling-errors-and-completion}
 
-This content has moved to [](/library/dart-async#handling-errors-and-completion).
+Este conteúdo foi movido para [](/library/dart-async#handling-errors-and-completion).
 
-## dart:math - math and random
+## dart:math - matemática e números aleatórios {:#dart-math-math-and-random}
 
-This content has moved to [](/library/dart-math).
+Este conteúdo foi movido para [](/library/dart-math).
 
-### Trigonometry
+### Trigonometria {:#trigonometry}
 
-This content has moved to [](/library/dart-math#trigonometry).
+Este conteúdo foi movido para [](/library/dart-math#trigonometry).
 
-### Maximum and minimum
+### Máximo e mínimo {:#maximum-and-minimum}
 
-This content has moved to [](/library/dart-math#maximum-and-minimum).
+Este conteúdo foi movido para [](/library/dart-math#maximum-and-minimum).
 
-### Math constants
+### Constantes matemáticas {:#math-constants}
 
-This content has moved to [](/library/dart-math#math-constants).
+Este conteúdo foi movido para [](/library/dart-math#math-constants).
 
-### Random numbers
+### Números aleatórios {:#random-numbers}
 
-This content has moved to [](/library/dart-math#random-numbers).
+Este conteúdo foi movido para [](/library/dart-math#random-numbers).
 
-## dart:convert - decoding and encoding JSON, UTF-8, and more
+## dart:convert - decodificando e codificando JSON, UTF-8 e muito mais {:#dart-convert-decoding-and-encoding-json-utf-8-and-more}
 
-This content has moved to [](/library/dart-convert).
+Este conteúdo foi movido para [](/library/dart-convert).
 
-### Decoding and encoding JSON
+### Decodificando e codificando JSON {:#decoding-and-encoding-json}
 
-This content has moved to [](/library/dart-convert#decoding-and-encoding-json).
+Este conteúdo foi movido para [](/library/dart-convert#decoding-and-encoding-json).
 
-### Decoding and encoding UTF-8 characters
+### Decodificando e codificando caracteres UTF-8 {:#decoding-and-encoding-utf-8-characters}
 
-This content has moved to [](/library/dart-convert#decoding-and-encoding-utf-8-characters).
+Este conteúdo foi movido para [](/library/dart-convert#decoding-and-encoding-utf-8-characters).
 
-### Other functionality
+### Outras funcionalidades {:#other-functionality}
 
-This content has moved to [](/library/dart-convert#other-functionality).
+Este conteúdo foi movido para [](/library/dart-convert#other-functionality).
 
-## dart:html - browser-based apps {:#darthtml}
+## dart:html - aplicativos baseados em navegador {:#darthtml}
 
-This content has moved to [](/library/dart-html).
+Este conteúdo foi movido para [](/library/dart-html).
 
-### Manipulating the DOM
+### Manipulando o DOM {:#manipulating-the-dom}
 
-This content has moved to [](/library/dart-html#manipulating-the-dom).
+Este conteúdo foi movido para [](/library/dart-html#manipulating-the-dom).
 
-#### Finding elements
+#### Encontrando elementos {:#finding-elements}
 
-This content has moved to [](/library/dart-html#finding-elements).
+Este conteúdo foi movido para [](/library/dart-html#finding-elements).
 
-#### Manipulating elements
+#### Manipulando elementos {:#manipulating-elements}
 
-This content has moved to [](/library/dart-html#manipulating-elements).
+Este conteúdo foi movido para [](/library/dart-html#manipulating-elements).
 
-#### Creating elements
+#### Criando elementos {:#creating-elements}
 
-This content has moved to [](/library/dart-html#creating-elements).
+Este conteúdo foi movido para [](/library/dart-html#creating-elements).
 
-#### Adding, replacing, and removing nodes
+#### Adicionando, substituindo e removendo nós {:#adding-replacing-and-removing-nodes}
 
-This content has moved to [](/library/dart-html#adding-replacing-and-removing-nodes).
+Este conteúdo foi movido para [](/library/dart-html#adding-replacing-and-removing-nodes).
 
-#### Manipulating CSS styles
+#### Manipulando estilos CSS {:#manipulating-css-styles}
 
-This content has moved to [](/library/dart-html#manipulating-css-styles).
+Este conteúdo foi movido para [](/library/dart-html#manipulating-css-styles).
 
-#### Handling events
+#### Lidando com eventos {:#handling-events}
 
-This content has moved to [](/library/dart-html#handling-events).
+Este conteúdo foi movido para [](/library/dart-html#handling-events).
 
-### Using HTTP resources with HttpRequest
+### Usando recursos HTTP com HttpRequest {:#using-http-resources-with-httprequest}
 
-This content has moved to [](/library/dart-html#using-http-resources-with-httprequest).
+Este conteúdo foi movido para [](/library/dart-html#using-http-resources-with-httprequest).
 
-### Sending and receiving real-time data with WebSockets
+### Enviando e recebendo dados em tempo real com WebSockets {:#sending-and-receiving-real-time-data-with-websockets}
 
-This content has moved to [](/library/dart-html#sending-and-receiving-real-time-data-with-websockets).
+Este conteúdo foi movido para [](/library/dart-html#sending-and-receiving-real-time-data-with-websockets).
 
-#### Sending data
+#### Enviando dados {:#sending-data}
 
-This content has moved to [](/library/dart-html#sending-data).
+Este conteúdo foi movido para [](/library/dart-html#sending-data).
 
-#### Receiving data
+#### Recebendo dados {:#receiving-data}
 
-This content has moved to [](/library/dart-html#receiving-data).
+Este conteúdo foi movido para [](/library/dart-html#receiving-data).
 
-#### Handling WebSocket events
+#### Lidando com eventos WebSocket {:#handling-websocket-events}
 
-This content has moved to [](/library/dart-html#handling-websocket-events).
+Este conteúdo foi movido para [](/library/dart-html#handling-websocket-events).
 
-## dart:io - I/O for servers and command-line apps {:#dartio}
+## dart:io - E/S para servidores e aplicativos de linha de comando {:#dartio}
 
-This content has moved to [](/library/dart-io).
+Este conteúdo foi movido para [](/library/dart-io).
 
-### Files and directories
+### Arquivos e diretórios {:#files-and-directories}
 
-This content has moved to [](/library/dart-io#files-and-directories).
+Este conteúdo foi movido para [](/library/dart-io#files-and-directories).
 
-#### Reading a file as text
+#### Lendo um arquivo como texto {:#reading-a-file-as-text}
 
-This content has moved to [](/library/dart-io#reading-a-file-as-text).
+Este conteúdo foi movido para [](/library/dart-io#reading-a-file-as-text).
 
-#### Reading a file as binary
+#### Lendo um arquivo como binário {:#reading-a-file-as-binary}
 
-This content has moved to [](/library/dart-io#reading-a-file-as-binary).
+Este conteúdo foi movido para [](/library/dart-io#reading-a-file-as-binary).
 
-#### Handling errors
+#### Lidando com erros {:#handling-errors}
 
-This content has moved to [](/library/dart-io#handling-errors).
+Este conteúdo foi movido para [](/library/dart-io#handling-errors).
 
-#### Streaming file contents
+#### Transmissão de conteúdo de arquivo {:#streaming-file-contents}
 
-This content has moved to [](/library/dart-io#streaming-file-contents).
+Este conteúdo foi movido para [](/library/dart-io#streaming-file-contents).
 
-#### Writing file contents
+#### Gravando conteúdo de arquivo {:#writing-file-contents}
 
-This content has moved to [](/library/dart-io#writing-file-contents).
+Este conteúdo foi movido para [](/library/dart-io#writing-file-contents).
 
-#### Listing files in a directory
+#### Listando arquivos em um diretório {:#listing-files-in-a-directory}
 
-This content has moved to [](/library/dart-io#listing-files-in-a-directory).
+Este conteúdo foi movido para [](/library/dart-io#listing-files-in-a-directory).
 
-#### Other common functionality
+#### Outras funcionalidades comuns {:#other-common-functionality}
 
-This content has moved to [](/library/dart-io#other-common-functionality).
+Este conteúdo foi movido para [](/library/dart-io#other-common-functionality).
 
-### HTTP clients and servers
+### Clientes e servidores HTTP {:#http-clients-and-servers}
 
-This content has moved to [](/library/dart-io#http-clients-and-servers).
+Este conteúdo foi movido para [](/library/dart-io#http-clients-and-servers).
 
-#### HTTP server
+#### Servidor HTTP {:#http-server}
 
-This content has moved to [](/library/dart-io#http-server).
+Este conteúdo foi movido para [](/library/dart-io#http-server).
 
-#### HTTP client
+#### Cliente HTTP {:#http-client}
 
-This content has moved to [](/library/dart-io#http-client).
+Este conteúdo foi movido para [](/library/dart-io#http-client).
+

@@ -19,7 +19,7 @@ check out this overview of extension methods.
 
 {% ytEmbed "D3j0OSfT9ZI", "Dart extension methods" %}
 
-## Overview
+## Overview {:#overview}
 
 When you're using someone else's API or
 when you implement a library that's widely used,
@@ -69,7 +69,7 @@ The next section describes how to _use_ extension methods.
 After that are sections about _implementing_ extension methods.
 
 
-## Using extension methods
+## Using extension methods {:#using-extension-methods}
 
 Like all Dart code, extension methods are in libraries.
 You've already seen how to use an extension method—just 
@@ -89,7 +89,7 @@ As you write your code, you might also need to know
 how extension methods depend on static types (as opposed to `dynamic`) and
 how to resolve [API conflicts](#api-conflicts).
 
-### Static types and dynamic
+### Static types and dynamic {:#static-types-and-dynamic}
 
 You can't invoke extension methods on variables of type `dynamic`.
 For example, the following code results in a runtime exception:
@@ -118,7 +118,7 @@ they're as fast as calling a static function.
 For more information about static types and `dynamic`, see
 [The Dart type system](/language/type-system).
 
-### API conflicts
+### API conflicts {:#api-conflicts}
 
 If an extension member conflicts with
 an interface or with another extension member,
@@ -187,7 +187,7 @@ The only time you need to use the prefix is
 to avoid a name conflict when invoking an extension explicitly.
 
 
-## Implementing extension methods
+## Implementing extension methods {:#implementing-extension-methods}
 
 Use the following syntax to create an extension:
 
@@ -219,7 +219,7 @@ invoke them through the declaration name like [class variables and methods][].
 
 [class variables and methods]: /language/classes#class-variables-and-methods
 
-### Unnamed extensions
+### Unnamed extensions {:#unnamed-extensions}
 
 When declaring an extension, you can omit the name.
 Unnamed extensions are visible only
@@ -240,7 +240,7 @@ You can invoke an unnamed extension's static members
 only within the extension declaration.
 :::
 
-## Implementing generic extensions
+## Implementing generic extensions {:#implementing-generic-extensions}
 
 Extensions can have generic type parameters.
 For example, here's some code that extends the built-in `List<T>` type
@@ -267,7 +267,7 @@ For example, in the following code, `T` is `PENDING` because PENDING:
 [PENDING: Explain why it matters in normal usage.]
 {% endcomment %}
 
-## Resources
+## Resources {:#resources}
 
 For more information about extension methods, see the following:
 

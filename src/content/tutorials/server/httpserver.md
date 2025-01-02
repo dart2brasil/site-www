@@ -9,14 +9,14 @@ prevpage:
 
 Dart resources for writing HTTP servers include:
 
-## Documentation
+## Documentation {:#documentation}
 
 * [Using Google Cloud][] has information on Google Cloud products
   that Dart servers can use, such as Cloud Run.
 * [Using Google APIs][] points to resources to help you
   use Firebase and Google client APIs from a Dart app.
 
-## Samples
+## Samples {:#samples}
 
 * [A simple Dart HTTP server][simple-sample]
   * Uses the [`shelf`][] package.

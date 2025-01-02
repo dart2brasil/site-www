@@ -42,7 +42,7 @@ retrieved from an HTTP server.
 
 [JSON]: https://www.json.org/
 
-## Background concepts
+## Background concepts {:#background-concepts}
 
 The following sections provide some extra background and information
 around the technologies and concepts used in the tutorial
@@ -52,7 +52,7 @@ see [Retrieve the necessary dependencies][].
 
 [Retrieve the necessary dependencies]: #retrieve-the-necessary-dependencies
 
-### JSON
+### JSON {:#json}
 
 JSON (JavaScript Object Notation) is a data-interchange format
 that has become ubiquitous across
@@ -85,7 +85,7 @@ consult the package documentation.
 [furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system
 [Introducing JSON]: https://www.json.org/
 
-### HTTP requests
+### HTTP requests {:#http-requests}
 
 HTTP (Hypertext Transfer Protocol) is a stateless protocol
 designed for transmitting documents,
@@ -115,7 +115,7 @@ check out [An overview of HTTP][] on the mdn web docs.
 
 [An overview of HTTP]: https://developer.mozilla.org/docs/Web/HTTP/Overview
 
-### URIs and URLs
+### URIs and URLs {:#uris-and-urls}
 
 To make an HTTP request,
 you need to provide a [URI][] (Uniform Resource Identifier) to the resource.
@@ -141,7 +141,7 @@ see [What is a URL?][] on the mdn web docs.
 
 [What is a URL?]: https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL
 
-## Retrieve the necessary dependencies
+## Retrieve the necessary dependencies {:#retrieve-the-necessary-dependencies}
 
 The `package:http` library provides a cross-platform solution
 for making composable HTTP requests,
@@ -177,7 +177,7 @@ and its [API documentation][http-docs].
 [`dart pub add`]: /tools/pub/cmd/pub-add
 [specify a library prefix]: /language/libraries#specifying-a-library-prefix
 
-## Build a URL
+## Build a URL {:#build-a-url}
 
 As previously mentioned,
 to make an HTTP request,
@@ -211,7 +211,7 @@ see the [`URI` documentation][].
 [`Uri`]: {{site.dart-api}}/dart-core/Uri-class.html
 [`URI` documentation]: /libraries/dart-core#uris
 
-## Make a network request
+## Make a network request {:#make-a-network-request}
 
 If you just need to quickly fetch a string representation
 of a requested resource,
@@ -309,7 +309,7 @@ await http.get(Uri.https('dart.dev', '/f/packages/http.json'),
 [http-response]: {{site.pub-api}}/http/latest/http/Response-class.html
 [HTTP response status codes]: https://developer.mozilla.org/docs/Web/HTTP/Status
 
-### Make multiple requests
+### Make multiple requests {:#make-multiple-requests}
 
 If you're making multiple requests to the same server,
 you can instead keep a persistent connection
@@ -369,7 +369,7 @@ and its [API documentation][http-docs].
 [http-retry-client-cons]: {{site.pub-api}}/http/latest/retry/RetryClient/RetryClient.html
 [http-retry-client-delay]: {{site.pub-api}}/http/latest/retry/RetryClient/RetryClient.withDelays.html
 
-## Decode the retrieved data
+## Decode the retrieved data {:#decode-the-retrieved-data}
 
 While you now have made a network request
 and retrieved the returned data as string,
@@ -401,7 +401,7 @@ void main() async {
 
 [decode-docs]: {{site.dart-api}}/dart-convert/JsonCodec/decode.html
 
-### Create a structured class to store the data
+### Create a structured class to store the data {:#create-a-structured-class-to-store-the-data}
 
 To provide the decoded JSON with more structure,
 making it easier to work with,
@@ -434,7 +434,7 @@ class PackageInfo {
 }
 ```
 
-### Encode the data into your class
+### Encode the data into your class {:#encode-the-data-into-your-class}
 
 Now that you have a class to store your data in,
 you need to add a mechanism to convert
@@ -472,7 +472,7 @@ To learn more about JSON serialization and deserialization,
 including automatic generation of the conversion logic,
 see the [Using JSON][] guide.
 
-### Convert the response to an object of your structured class
+### Convert the response to an object of your structured class {:#convert-the-response-to-an-object-of-your-structured-class}
 
 Now you have a class to store your data
 and a way to convert the decoded JSON object
@@ -516,7 +516,7 @@ class PackageRetrievalException implements Exception {
 }
 ```
 
-## Utilize the converted data
+## Utilize the converted data {:#utilize-the-converted-data}
 
 Now that you've retrieved data and
 converted it to a more easily accessible format,
@@ -637,7 +637,7 @@ see the [Fetching data from the internet][] Flutter recipe.
 [Flutter]: {{site.flutter}}
 [Fetching data from the internet]: {{site.flutter-docs}}/cookbook/networking/fetch-data
 
-## What next?
+## What next? {:#what-next}
 
 Now that you have retrieved, parsed, and used
 data from the internet,

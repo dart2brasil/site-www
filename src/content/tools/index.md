@@ -20,7 +20,7 @@ type. If you aren't sure which tools you need, **get the Flutter SDK.**
   The Flutter SDK includes the full Dart SDK.
 :::
 
-## General-purpose tools
+## General-purpose tools {:#general-purpose-tools}
 
 The following tools support the Dart language on all platforms.
 
@@ -29,7 +29,7 @@ The following tools support the Dart language on all platforms.
 * [Command-line tools](#cli)
 
 
-### DartPad
+### DartPad {:#dartpad}
 
 <img src="/assets/img/dartpad-hello.png" alt="DartPad Hello World" width="200px" align="right" />
 
@@ -95,7 +95,7 @@ The Dart SDK includes the following general-purpose `dart` tool:
   as well as working with the [pub package manager](/tools/pub/packages).
 
 
-### Debugging
+### Debugging {:#debugging}
 
 [Dart DevTools](/tools/dart-devtools)
 : A suite of debugging and performance tools.

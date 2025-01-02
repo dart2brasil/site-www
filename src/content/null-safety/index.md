@@ -31,7 +31,7 @@ flag if a non-nullable variable has either:
 
 These checks allow you to fix these errors _before_ deploying your app.
 
-## Introduction through examples
+## Introduction through examples {:#introduction-through-examples}
 
 With null safety, none of the variables in the following code can be `null`:
 
@@ -57,7 +57,7 @@ int? aNullableInt = null;
   [Understanding null safety](/null-safety/understanding-null-safety).
 
 
-## Null safety principles
+## Null safety principles {:#null-safety-principles}
 
 Dart supports null safety using the following two core design principles:
 
@@ -73,7 +73,7 @@ Dart supports null safety using the following two core design principles:
   fewer bugs, but smaller binaries and faster execution.
 
 
-## Dart 3 and null safety
+## Dart 3 and null safety {:#dart-3-and-null-safety}
 
 Dart 3 has built-in sound null safety.
 Dart 3 prevents code without it from running.
@@ -174,7 +174,7 @@ $ dart migrate
 To learn how to migrate your code to null safety,
 check out the [migration guide][].
 
-## Where to learn more
+## Where to learn more {:#where-to-learn-more}
 
 To learn more about null safety, check out the following resources:
 
@@ -190,4 +190,3 @@ To learn more about null safety, check out the following resources:
 [#34233]: {{site.repo.dart.sdk}}/issues/34233
 [#49529]: {{site.repo.dart.sdk}}/issues/49529
 [#2357]: {{site.repo.dart.lang}}/issues/2357
-

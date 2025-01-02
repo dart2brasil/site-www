@@ -107,7 +107,7 @@ To use pub workspaces, all your workspace packages (but not your dependencies)
 must have an SDK version constraint of `^3.6.0` or higher.
 :::
 
-## Interdependencies between workspace packages
+## Interdependencies between workspace packages {:#interdependencies-between-workspace-packages}
 
 If any of the workspace packages depend on each other, they will automatically
 resolve to the one in the workspace, regardless of the source.
@@ -131,7 +131,7 @@ workspace, the original source (here implicitly `hosted`) is used.
 So if `client_package` is published to pub.dev and someone depends on it, they
 will get the hosted version of `shared` as a transitive dependency.
 
-## Dependency overrides in a workspace
+## Dependency overrides in a workspace {:#dependency-overrides-in-a-workspace}
 
 All `dependency_overrides` sections in the workspace packages are respected.
 You can also place a `pubspec_overrides.yaml` file next to any of the
@@ -140,7 +140,7 @@ workspace `pubspec.yaml` files.
 You can only override a package once in the workspace. To keep overrides organized,
 it's preferable to keep `dependency_overrides` in the root `pubspec.yaml`.
 
-## Running a command in a specific workspace package
+## Running a command in a specific workspace package {:#running-a-command-in-a-specific-workspace-package}
 
 Some pub commands, such as `dart pub add`, and `dart pub publish` operate on a
 "current" package. You can either change the directory, or use `-C` to point pub at
@@ -148,11 +148,11 @@ a directory:
 
 ```console
 $ dart pub -C packages/client_package publish
-# Same as
+# Same as {:#same-as}
 $ cd packages/client_package ; dart pub publish ; cd -
 ```
 
-## Temporarily resolving a package outside its workspace:
+## Temporarily resolving a package outside its workspace: {:#temporarily-resolving-a-package-outside-its-workspace}
 
 Sometimes you might want to resolve a workspace package on its own, for example
 to validate its dependency constraints.
@@ -161,14 +161,14 @@ One way to do this is to create a `pubspec_overides.yaml` file that resets the
 `resolution` setting, like so:
 
 ```yaml
-# packages/client_package/pubspec_overrides.yaml
+# packages/client_package/pubspec_overrides.yaml {:#packages-client-package-pubspec-overrides-yaml}
 resolution:
 ```
 
 Now running `dart pub get` inside `packages/client_package` will create an
 independent resolution.
 
-## Listing all workspace packages
+## Listing all workspace packages {:#listing-all-workspace-packages}
 
 You can run `dart pub workspace list` to list the packages of a workspace.
 

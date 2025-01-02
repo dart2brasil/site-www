@@ -21,7 +21,7 @@ You can also manipulate control flow in Dart using:
 - [Branching][], like `if` and `switch`
 - [Exceptions][], like `try`, `catch`, and `throw`
 
-## For loops
+## For loops {:#for-loops}
 
 You can iterate with the standard `for` loop. For example:
 
@@ -86,7 +86,7 @@ collection.forEach(print); // 1 2 3
 ```
 
 
-## While and do-while
+## While and do-while {:#while-and-do-while}
 
 A `while` loop evaluates the condition before the loop:
 
@@ -107,7 +107,7 @@ do {
 ```
 
 
-## Break and continue
+## Break and continue {:#break-and-continue}
 
 Use `break` to stop looping:
 

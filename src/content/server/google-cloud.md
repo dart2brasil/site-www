@@ -15,11 +15,11 @@ For information about other Google APIs (including Firebase)
 that you might want to use from Dart code,
 see the [Google APIs page](/resources/google-apis).
 
-## Recommended solutions
+## Recommended solutions {:#recommended-solutions}
 
 To run Dart in the Cloud, we recommend using serverless computing solutions.
 
-### Cloud Run
+### Cloud Run {:#cloud-run}
 
 You can use Cloud Run's flexible container support,
 combined with Dart's Docker images, to run server-side Dart code.
@@ -33,7 +33,7 @@ Examples of Dart servers implemented to run on Cloud Run are
 For more information about using Cloud Run, see the documentation for
 [building and deploying a service in other languages][cr].
 
-### Functions Framework for Dart
+### Functions Framework for Dart {:#functions-framework-for-dart}
 
 The Functions Framework is a FaaS (Function as a Service) framework
 that makes it easy to write Dart functions
@@ -45,12 +45,12 @@ The [Dart Functions Framework][] is a community-supported project.
 
 For more information, see [the README][functions docs].
 
-## Other solutions
+## Other solutions {:#other-solutions}
 
 Depending on your needs, you may also want to consider running Dart on the
 following Google Cloud compute platforms.
 
-### Compute Engine
+### Compute Engine {:#compute-engine}
 
 To run Dart code on Compute Engine,
 use Compute Engine's support for running containers,
@@ -59,14 +59,14 @@ combined with Dart's Docker images.
 For more information, see the Compute Engine documentation for
 [using software containers][ce].
 
-### Kubernetes
+### Kubernetes {:#kubernetes}
 
 To run Dart on clusters of Compute Engine instances,
 use Google Kubernetes Engine (GKE).
 
 For more information, see the [GKE overview][].
 
-### App Engine
+### App Engine {:#app-engine}
 
 [App Engine][] support for Dart is incomplete and requires the
 [App Engine flexible environment][], which does not

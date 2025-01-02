@@ -18,7 +18,7 @@ type is actually `List<E>`. The \<...\> notation marks List as a
 parameters. [By convention][], most type variables have single-letter names,
 such as E, T, S, K, and V.
 
-## Why use generics?
+## Why use generics? {:#why-use-generics}
 
 Generics are often required for type safety, but they have more benefits
 than just allowing your code to run:
@@ -80,7 +80,7 @@ In this code, T is the stand-in type. It's a placeholder that you can
 think of as a type that a developer will define later.
 
 
-## Using collection literals
+## Using collection literals {:#using-collection-literals}
 
 List, set, and map literals can be parameterized. Parameterized literals are
 just like the literals you've already seen, except that you add
@@ -100,7 +100,7 @@ var pages = <String, String>{
 ```
 
 
-## Using parameterized types with constructors
+## Using parameterized types with constructors {:#using-parameterized-types-with-constructors}
 
 To specify one or more types when using a constructor, put the types in
 angle brackets (`<...>`) just after the class name. For example:
@@ -119,7 +119,7 @@ var views = Map<int, View>();
 ```
 
 
-## Generic collections and the types they contain
+## Generic collections and the types they contain {:#generic-collections-and-the-types-they-contain}
 
 Dart generic types are *reified*, which means that they carry their type
 information around at runtime. For example, you can test the type of a
@@ -139,7 +139,7 @@ an object is a List, but you can't test whether it's a `List<String>`.
 :::
 
 
-## Restricting the parameterized type
+## Restricting the parameterized type {:#restricting-the-parameterized-type}
 
 When implementing a generic type,
 you might want to limit the types that can be provided as arguments,
@@ -194,7 +194,7 @@ var foo = [!Foo<Object>!]();
 ```
 
 
-## Using generic methods
+## Using generic methods {:#using-generic-methods}
 
 Methods and functions also allow type arguments:
 

@@ -13,7 +13,7 @@ This page is a reference for the different kinds of patterns.
 For an overview of how patterns work, where you can use them in Dart, and common
 use cases, visit the main [Patterns][] page.
 
-#### Pattern precedence
+#### Pattern precedence {:#pattern-precedence}
 
 Similar to [operator precedence](/language/operators#operator-precedence-example),
 pattern evaluation adheres to precedence rules.
@@ -34,7 +34,7 @@ Collection-type ([record](#record), [list](#list), and [map](#map))
 and [Object](#object) patterns encompass other
 data, so are evaluated first as outer-patterns. 
 
-## Logical-or
+## Logical-or {:#logical-or}
 
 `subpattern1 || subpattern2`
 
@@ -54,7 +54,7 @@ Subpatterns in a logical-or pattern can bind variables, but the branches must
 define the same set of variables, because only one branch will be evaluated when
 the pattern matches.
 
-## Logical-and	
+## Logical-and	 {:#logical-and}
 
 `subpattern1 && subpattern2`
 
@@ -73,7 +73,7 @@ switch ((1, 2)) {
 }
 ```
 
-## Relational
+## Relational {:#relational}
 
 `== expression`
 
@@ -105,7 +105,7 @@ String asciiCharType(int char) {
 }
 ```
 
-## Cast
+## Cast {:#cast}
 
 `foo as String`
 
@@ -122,7 +122,7 @@ Cast patterns will [throw][] if the value doesn't have the stated type.
 Like the [null-assert pattern](#null-assert), this lets you forcibly assert the
 expected type of some destructured value.
 
-## Null-check	
+## Null-check	 {:#null-check}
 
 `subpattern?`
 
@@ -144,7 +144,7 @@ switch (maybeString) {
 
 To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
-## Null-assert	
+## Null-assert	 {:#null-assert}
 
 `subpattern!`
 
@@ -176,7 +176,7 @@ var (x!, y!) = position;
 
 To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
-## Constant	
+## Constant	 {:#constant}
 
 `123, null, 'string', math.pi, SomeClass.constant, const Thing(1, 2), const (1 + 2)`
 
@@ -211,7 +211,7 @@ case [a, b]: // ...
 case const [a, b]: // ...
 ```
 
-## Variable
+## Variable {:#variable}
 
 `var bar, String str, final int _`
 
@@ -244,7 +244,7 @@ switch ((1, 2)) {
 
 You can use a [wildcard pattern](#wildcard) as a variable pattern. 
 
-## Identifier	
+## Identifier	 {:#identifier}
 
 `foo, _`
 
@@ -269,7 +269,7 @@ Identifier patterns may behave like a [constant pattern](#constant) or like a
 - [Wildcard](#wildcard) identifier in any context: matches any value and discards it:
   `case [_, var y, _]: print('The middle element is $y');`
 
-## Parenthesized
+## Parenthesized {:#parenthesized}
 
 `(subpattern)`
 
@@ -308,7 +308,7 @@ Dart starts matching the pattern from left to right.
    * Therefore, pattern `(x || y) && z` doesn't match `false`.
    * As a conclusion, `(x || y) && z` has no match.
 
-## List
+## List {:#list}
 
 `[subpattern1, subpattern2]`
 
@@ -331,7 +331,7 @@ List patterns require that the number of elements in the pattern match the entir
 list. You can, however, use a [rest element](#rest-element) as a place holder to
 account for any number of elements in a list. 
 
-### Rest element
+### Rest element {:#rest-element}
 
 List patterns can contain _one_ rest element (`...`) which allows matching lists
 of arbitrary lengths.
@@ -353,7 +353,7 @@ var [a, b, ...rest, c, d] = [1, 2, 3, 4, 5, 6, 7];
 print('$a $b $rest $c $d');
 ```
 
-## Map
+## Map {:#map}
 
 `{"key": subpattern1, someConst: subpattern2}`
 
@@ -363,7 +363,7 @@ match its subpatterns against the map's keys to destructure them.
 Map patterns don't require the pattern to match the entire map. A map pattern
 ignores any keys that the map contains that aren't matched by the pattern.
 
-## Record
+## Record {:#record}
 
 `(subpattern1, subpattern2)`
 
@@ -408,7 +408,7 @@ var (untyped: untyped as int, typed: typed as String) = record;
 var (:untyped as int, :typed as String) = record;
 ```
 
-## Object
+## Object {:#object}
 
 `SomeClass(x: subpattern1, y: subpattern2)`
 
@@ -436,7 +436,7 @@ var Point(:x, :y) = Point(1, 2);
 Object patterns don't require the pattern to match the entire object.
 If an object has extra fields that the pattern doesn't destructure, it can still match.
 
-## Wildcard
+## Wildcard {:#wildcard}
 
 `_`
 

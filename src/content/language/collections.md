@@ -13,7 +13,7 @@ Dart has built-in support for list, set, and map [collections][].
 To learn more about configuring the types collections contain,
 check out [Generics][].
 
-## Lists
+## Lists {:#lists}
 
 Perhaps the most common collection in nearly every programming language
 is the *array*, or ordered group of objects. In Dart, arrays are
@@ -76,7 +76,7 @@ var constantList = const [1, 2, 3];
 For more information about lists, refer to the Lists section of the
 [`dart:core` documentation](/libraries/dart-core#lists).
 
-## Sets
+## Sets {:#sets}
 
 A set in Dart is an unordered collection of unique items.
 Dart support for sets is provided by set literals and the
@@ -150,7 +150,7 @@ final constantSet = const {
 For more information about sets, refer to the Sets section of the
 [`dart:core` documentation](/libraries/dart-core#sets).
 
-## Maps
+## Maps {:#maps}
 
 In general, a map is an object that associates keys and values. Both
 keys and values can be any type of object. Each *key* occurs only once,
@@ -254,9 +254,9 @@ final constantMap = const {
 For more information about maps, refer to the Maps section of the
 [`dart:core` documentation](/libraries/dart-core#maps).
 
-## Operators
+## Operators {:#operators}
 
-### Spread operators
+### Spread operators {:#spread-operators}
 
 Dart supports the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`) in list, map, and set literals.
@@ -285,7 +285,7 @@ For more details and examples of using the spread operator, see the
 [spread operator proposal.][spread proposal]
 
 <a id="collection-operators"></a>
-### Control-flow operators
+### Control-flow operators {:#control-flow-operators}
 
 Dart offers **collection if** and **collection for** for use in list, map,
 and set literals. You can use these operators to build collections using

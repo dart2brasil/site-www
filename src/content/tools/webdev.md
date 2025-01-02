@@ -6,7 +6,7 @@ description: Command-line tools for Dart web development.
 This page explains how to use `webdev` to compile your app and
 `build_runner` to test your app.
 
-## Setup
+## Setup {:#setup}
 
 Follow these instructions to get started using `webdev`.
 
@@ -18,7 +18,7 @@ package adds scripting capabilities to `webdev`.
 $ dart pub add build_runner build_web_compilers --dev
 ```
 
-### Installing and updating webdev
+### Installing and updating webdev {:#installing-and-updating-webdev}
 
 Use `dart pub` to install `webdev` for [all users][].
 
@@ -32,7 +32,7 @@ Update `webdev` when you update your Dart SDK or when `webdev` commands fail in 
 [all users]: /tools/pub/cmd/pub-global
 
 
-### Depending on build_* packages
+### Depending on build_* packages {:#depending-on-build-packages}
 
 To use `webdev`, you must be in the root directory of a package that
 depends on the **build_runner** and **build_web_compilers** packages.
@@ -56,7 +56,7 @@ As usual after `pubspec.yaml` changes, run `dart pub get` or
 $ dart pub get
 ```
 
-## Using commands from Dart packages to compile and test
+## Using commands from Dart packages to compile and test {:#using-commands-from-dart-packages-to-compile-and-test}
 
 This tool can compile in two ways: one that makes debugging easier
 (`serve`) and one that makes for small, fast code (`build`).
@@ -189,7 +189,7 @@ test package runner, use this command:
 $ dart test -h
 ```
 
-## More information
+## More information {:#more-information}
 
 For a complete list of `webdev` options, run `webdev --help` or see the
 [webdev package][webdev].

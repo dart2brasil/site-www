@@ -40,7 +40,7 @@ These programs use resources that most command-line applications need,
 including the standard output, error, and input streams,
 command-line arguments, files and directories, and more.
 
-## Running an app with the standalone Dart VM
+## Running an app with the standalone Dart VM {:#running-an-app-with-the-standalone-dart-vm}
 
 To run a command-line app in the Dart VM, use `dart run`.
 The `dart` commands are included with the [Dart SDK](/tools/sdk).
@@ -76,7 +76,7 @@ The Dart tool supports many commands and options.
 Use `dart --help` to see commonly used commands and options.
 Use `dart --verbose` to see all options.
 
-## Overview of the dcat app code
+## Overview of the dcat app code {:#overview-of-the-dcat-app-code}
 
 This tutorial covers the details of a small sample app called `dcat`, which
 displays the contents of any files listed on the command line.
@@ -137,7 +137,7 @@ Future<void> _handleError(String path) async {
 }
 ```
 
-### Getting dependencies
+### Getting dependencies {:#getting-dependencies}
 
 You might notice that dcat depends on a package named **args**.
 To get the args package, use the
@@ -176,7 +176,7 @@ To learn more about using packages and organizing your code, check out
 [Package layout conventions](/tools/pub/package-layout).
 :::
 
-### Running dcat
+### Running dcat {:#running-dcat}
 
 Once you have your app's dependencies,
 you can run the app from the command line over any text file,
@@ -206,7 +206,7 @@ This command displays each line of the specified file.
 Because you specified the `-n` option,
 a line number is displayed before each line.
 
-## Parsing command-line arguments
+## Parsing command-line arguments {:#parsing-command-line-arguments}
 
 The [args package]({{site.pub-pkg}}/args) provides
 parser support for transforming command-line arguments
@@ -263,7 +263,7 @@ The [API reference]({{argsAPI}}/args-library.html)
 for the `args` library provides detailed information to help you use
 the `ArgParser` and `ArgResults` classes.
 
-## Reading and writing with stdin, stdout, and stderr
+## Reading and writing with stdin, stdout, and stderr {:#reading-and-writing-with-stdin-stdout-and-stderr}
 
 Like other languages,
 Dart has standard output, standard error, and standard input streams.
@@ -288,7 +288,7 @@ import 'dart:io';
 Web apps (apps that depend on `dart:html`) can't use the `dart:io` library.
 :::
 
-### stdout
+### stdout {:#stdout}
 
 The following code from the `dcat` app
 writes the line numbers to `stdout` (if the `-n` option is specified)
@@ -316,7 +316,7 @@ For example, you can display the contents of a stream with `stdout`.
 However, you must use `print()` instead of `stdout`
 for apps that run on the web.
 
-### stderr
+### stderr {:#stderr}
 
 Use `stderr` to write error messages to the console.
 The standard error stream has the same methods as `stdout`,
@@ -338,7 +338,7 @@ if (await FileSystemEntity.isDirectory(path)) {
 }
 ```
 
-### stdin
+### stdin {:#stdin}
 
 The standard input stream typically
 reads data synchronously from the keyboard,
@@ -385,7 +385,7 @@ The quick brown fox jumps over the lazy dog.
 The quick brown fox jumps over the lazy dog.
 ```
 
-## Getting info about a file
+## Getting info about a file {:#getting-info-about-a-file}
 
 The [`FileSystemEntity`]({{ioAPI}}/FileSystemEntity-class.html)
 class in the `dart:io` library provides properties and static methods
@@ -420,7 +420,7 @@ all of which also use a `Future` to return a value.
 `FileSystemEntity` is the superclass for the
 `File`, `Directory`, and `Link` classes.
 
-## Reading a file
+## Reading a file {:#reading-a-file}
 
 The `dcat` apps opens each file listed on the command line
 with the `openRead()` method, which returns a `Stream`.
@@ -482,7 +482,7 @@ To use these converters you need to import the `dart:convert` library:
 import 'dart:convert';
 ```
 
-## Writing to a file
+## Writing to a file {:#writing-to-a-file}
 
 The easiest way to write text to a file is to create a
 [`File`]({{ioAPI}}/File-class.html)
@@ -520,7 +520,7 @@ quotes.writeln('smile because it happened. -Dr. Seuss');
 await quotes.close();
 ```
 
-## Getting environment information
+## Getting environment information {:#getting-environment-information}
 
 {% assign PlatformAPI = ioAPI | append: '/Platform' -%}
 
@@ -550,7 +550,7 @@ running app. For example:
 - [`Platform.numberOfProcessors`]({{PlatformAPI}}/numberOfProcessors.html)
 - [`Platform.script`]({{PlatformAPI}}/script.html)
 
-## Setting exit codes
+## Setting exit codes {:#setting-exit-codes}
 
 The `dart:io` library defines a top-level property,
 `exitCode`, that you can change to set the exit code for
@@ -602,7 +602,7 @@ by convention, the codes in the table below have the following meanings:
 
 {: .table }
 
-## Summary
+## Summary {:#summary}
 
 This tutorial described some basic APIs
 found in the following classes from the `dart:io` library:
@@ -638,7 +638,7 @@ check out the [`command_line`][] sample.
 
 [`command_line`]: {{site.repo.dart.org}}/samples/tree/main/command_line
 
-## What next?
+## What next? {:#what-next}
 
 If you're interested in server-side programming,
 check out the [next tutorial](/tutorials/server/httpserver).

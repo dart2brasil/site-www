@@ -18,7 +18,7 @@ WebAssembly support for Dart web is available on the Dart
 *stable* [channel](/get-dart#release-channels).
 :::
 
-## WebAssembly support
+## WebAssembly support {:#webassembly-support}
 
 The current version of Dart compilation to WebAssembly has a number of
 restrictions:
@@ -41,7 +41,7 @@ restrictions:
    contain a temporary workaround. For details, see
    [webdev issue 2206]({{site.repo.dart.org}}/webdev/issues/2296).
 
-### Supported packages
+### Supported packages {:#supported-packages}
 
 To find Wasm-compatible packages,
 use the [`wasm-ready`][] filter on [pub.dev][].

@@ -28,7 +28,7 @@ class="text-icon"
   src="/assets/img/verified-publisher.svg" 
   alt="pub.dev verified publisher logo">.
 
-## Verification process
+## Verification process {:#verification-process}
 
 To ensure that creating verified publishers is low cost and available to anyone,
 pub.dev relies on DNS (domain name system) domains as an identification token.
@@ -39,7 +39,7 @@ pub.dev verifies that the user creating the verified publisher has
 admin access to the associated ["Domain Property"][domain-prop],
 based on existing logic in the [Google Search Console.][search-console]
 
-## Creating a verified publisher account
+## Creating a verified publisher account {:#creating-a-verified-publisher-account}
 
 If you publish packages and want to create a new verified publisher,
 see the instructions on the [publishing page][].

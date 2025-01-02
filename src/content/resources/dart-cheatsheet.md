@@ -25,7 +25,7 @@ This page uses embedded DartPads to display runnable examples.
 {% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
-## String interpolation
+## String interpolation {:#string-interpolation}
 
 To put the value of an expression inside a string, use `${expression}`.
 If the expression is an identifier, you can omit the `{}`.
@@ -76,7 +76,7 @@ void main() {
 </details>
 
 
-## Nullable variables
+## Nullable variables {:#nullable-variables}
 
 Dart enforces sound null safety.
 This means values can't be null unless you say they can be.
@@ -153,7 +153,7 @@ void main() {
 
 </details>
 
-## Null-aware operators
+## Null-aware operators {:#null-aware-operators}
 
 Dart offers some handy operators for dealing with values that might be null. One is the
 `??=` assignment operator, which assigns a value to a variable only if that
@@ -242,7 +242,7 @@ void main() {
 </details>
 
 
-## Conditional property access
+## Conditional property access {:#conditional-property-access}
 
 To guard access to a property or method of an object that might be null,
 put a question mark (`?`) before the dot (`.`):
@@ -326,7 +326,7 @@ void main() {
 
 </details>
 
-## Collection literals
+## Collection literals {:#collection-literals}
 
 Dart has built-in support for lists, maps, and sets.
 You can create them using literals:
@@ -470,7 +470,7 @@ void main() {
 
 </details>
 
-## Arrow syntax
+## Arrow syntax {:#arrow-syntax}
 
 You might have seen the `=>` symbol in Dart code.
 This arrow syntax is a way to define a function that executes the
@@ -588,7 +588,7 @@ void main() {
 </details>
 
 
-## Cascades
+## Cascades {:#cascades}
 
 To perform a sequence of operations on the same object, use cascades (`..`).
 We've all seen an expression like this:
@@ -732,7 +732,7 @@ void main() {
 </details>
 
 
-## Getters and setters
+## Getters and setters {:#getters-and-setters}
 
 You can define getters and setters
 whenever you need more control over a property
@@ -882,7 +882,7 @@ void main() {
 </details>
 
 
-## Optional positional parameters
+## Optional positional parameters {:#optional-positional-parameters}
 
 Dart has two kinds of function parameters: positional and named. 
 Positional parameters are the kind you're likely familiar with:
@@ -1024,7 +1024,7 @@ void main() {
 </details>
 
 <a id="optional-named-parameters"></a>
-## Named parameters
+## Named parameters {:#named-parameters}
 
 Using a curly brace syntax at the end of the parameter list,
 you can define parameters that have names.
@@ -1173,7 +1173,7 @@ void main() {
 </details>
 
 
-## Exceptions
+## Exceptions {:#exceptions}
 
 Dart code can throw and catch exceptions.
 In contrast to Java, all of Dart's exceptions are unchecked.
@@ -1402,7 +1402,7 @@ void main() {
 </details>
 
 
-## Using `this` in a constructor
+## Using `this` in a constructor {:#using-this-in-a-constructor}
 
 Dart provides a handy shortcut for assigning
 values to properties in a constructor:
@@ -1516,7 +1516,7 @@ Move it up higher? Or make it more challenging, somehow?
 Maybe require both positional and optional named parameters (with defaults)?
 {% endcomment %}
 
-## Initializer lists
+## Initializer lists {:#initializer-lists}
 
 Sometimes when you implement a constructor,
 you need to do some setup before the constructor body executes.
@@ -1633,7 +1633,7 @@ void main() {
   ```
 </details>
 
-## Named constructors
+## Named constructors {:#named-constructors}
 
 {% comment %}
 Much like JavaScript, Dart doesn't support method overloads
@@ -1730,7 +1730,7 @@ void main() {
 
 </details>
 
-## Factory constructors
+## Factory constructors {:#factory-constructors}
 
 Dart supports factory constructors,
 which can return subtypes or even null.
@@ -1900,7 +1900,7 @@ void testValues(List<String> errs, List<int> expectedValues, IntegerHolder obj,
 
 </details>
 
-## Redirecting constructors
+## Redirecting constructors {:#redirecting-constructors}
 
 Sometimes a constructor's only purpose is to redirect to
 another constructor in the same class.
@@ -1988,7 +1988,7 @@ void main() {
 
 </details>
 
-## Const constructors
+## Const constructors {:#const-constructors}
 
 If your class produces objects that never change, you can make these objects compile-time constants. To
 do this, define a `const` constructor and make sure that all instance variables
@@ -2078,7 +2078,7 @@ void main() {
 
 </details>
 
-## What's next?
+## What's next? {:#what-s-next}
 
 We hope you enjoyed using this tutorial to learn or test your knowledge of
 some of the most interesting features of the Dart language.

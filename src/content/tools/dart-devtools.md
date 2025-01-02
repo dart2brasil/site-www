@@ -49,14 +49,14 @@ The Flutter inspector works only for Flutter apps;
 other web apps should use browser tools such as the Chrome DevTools.
 
 
-## Using DevTools with a command-line app
+## Using DevTools with a command-line app {:#using-devtools-with-a-command-line-app}
 
 You can use DevTools to perform source-level debugging 
 or to view general log and diagnostics information
 for a running command-line app.
 
 
-### 1. Start the target app
+### 1. Start the target app {:#1-start-the-target-app}
 
 Use the `dart run --observe` command to execute the main file
 for the Dart command-line app that you want to debug or observe.
@@ -81,7 +81,7 @@ If you stop your app and rerun it,
 then you need to connect to DevTools with the new URL.
 :::
 
-### 2. Open DevTools and connect to the target app
+### 2. Open DevTools and connect to the target app {:#2-open-devtools-and-connect-to-the-target-app}
 
 Copy the **Dart DevTools debugger and profiler** URL,
 and paste it into the address bar of a Chrome browser window.
@@ -92,14 +92,14 @@ displaying information about the target app.
 Click **Debugger** to start debugging the app.
 
 
-## Using DevTools with a Flutter app
+## Using DevTools with a Flutter app {:#using-devtools-with-a-flutter-app}
 
 For details on using DevTools with a Flutter app for any platform
 (including web) see the
 [DevTools documentation on flutter.dev.][Flutter devtools]
 
 
-## Using DevTools with a non-Flutter web app
+## Using DevTools with a non-Flutter web app {:#using-devtools-with-a-non-flutter-web-app}
 
 To launch a web app so that you can use Dart DevTools,
 use the `webdev serve` command with the `--debug` or `--debug-extension` flag:

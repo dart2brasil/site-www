@@ -31,7 +31,7 @@ This guide walks you through these changes
 so you know how to use the new modifiers,
 and how they affect users of your libraries.
 
-## The `mixin` modifier on classes
+## The `mixin` modifier on classes {:#the-mixin-modifier-on-classes}
 
 The most important modifier to be aware of is `mixin`.
 Language versions prior to Dart 3.0 allow any class to be used as a mixin
@@ -59,7 +59,7 @@ you may not see any errors.
 But you may inadvertently break users of your package
 if they were using your classes as mixins.
 
-### Migrating classes as mixins
+### Migrating classes as mixins {:#migrating-classes-as-mixins}
 
 If the class has a non-factory constructor, an `extends` clause,
 or a `with` clause, then it already can't be used as a mixin.
@@ -96,7 +96,7 @@ The last two options, leaving it a class or turning it into a pure mixin,
 are breaking API changes. You'll want to bump the major version of your package
 if you do this.
 
-## Other opt-in modifiers
+## Other opt-in modifiers {:#other-opt-in-modifiers}
 
 Handling classes as mixins is the only critical change in Dart 3.0
 that affects the API of your package. Once you've gotten this far,
@@ -107,7 +107,7 @@ Note that if you do continue and use any of the modifiers described below,
 it is potentially a breaking change to your package's API which necessitates
 a major version increment.
 
-## The `interface` modifier
+## The `interface` modifier {:#the-interface-modifier}
 
 Dart doesn't have a separate syntax for declaring pure interfaces.
 Instead, you declare an abstract class that happens to contain only
@@ -143,7 +143,7 @@ and presumably you know what you're doing.
 The restriction applies to other packages,
 and even other libraries within your own package.
 
-## The `base` modifier
+## The `base` modifier {:#the-base-modifier}
 
 The [`base`](/language/class-modifiers#base)
 modifier is somewhat the opposite of `interface`.
@@ -194,7 +194,7 @@ Then subclasses in the same library
 will be reminded to implement the private methods.
 But note that the next section *does* apply:
 
-### Base transitivity
+### Base transitivity {:#base-transitivity}
 
 The goal of marking a class `base` is to ensure that
 every instance of that type concretely inherits from it.
@@ -216,7 +216,7 @@ Most don't have implicit interfaces at all,
 so when you declare a class in Java, C#, or other languages,
 you effectively have the same constraint.
 
-## The `final` modifier
+## The `final` modifier {:#the-final-modifier}
 
 If you want all of the restrictions of both `interface` and `base`,
 you can mark a class or mixin class [`final`](/language/class-modifiers#final).
@@ -231,7 +231,7 @@ You can add new methods, turn constructors into factory constructors, etc.
 without worrying about breaking any downstream users.
 
 <a id="the-sealed-modifer"></a>
-## The `sealed` modifier
+## The `sealed` modifier {:#the-sealed-modifier}
 
 The last modifier, [`sealed`](/language/class-modifiers#sealed), is special.
 It exists primarily to enable [exhaustiveness checking][] in pattern matching.
@@ -299,7 +299,7 @@ Of course, if you *want* the subtypes of your sealed type
 to be restricted as well, you can get that by marking them
 using `interface`, `base`, `final`, or `sealed`.
 
-### `sealed` versus `final`
+### `sealed` versus `final` {:#sealed-versus-final}
 
 If you have a class that you don't want users to be able to directly subtype,
 when should you use `sealed` versus `final`?
@@ -336,7 +336,7 @@ even if they have cases for all of the subtypes,
 the compiler will force them to add another default case.
 That default case will then be what is executed if you add more subtypes later.
 
-## Summary
+## Summary {:#summary}
 
 As an API designer,
 these new modifiers give you control over how users work with your code,
