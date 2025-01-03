@@ -13,7 +13,9 @@ compilação.
 
 É importante destacar que esses tipos são reificados de forma diferente dependendo se
 você compila para Wasm ou JS. Isso significa que seu tipo em tempo de execução será
-diferente e, portanto, você [não pode usar verificações `is` e conversões `as`](#compatibilidade-verificacoes-de-tipo-e-conversoes). Para interagir e examinar esses valores JS, você deve usar membros de interoperabilidade [`external`] ou [conversões](#conversoes).
+diferente e, portanto, você [não pode usar verificações `is` e conversões `as`](#compatibilidade-verificacoes-de-tipo-e-conversoes).
+Para interagir e examinar esses valores JS, você deve usar membros de
+interoperabilidade [`external`] ou [conversões](#conversoes).
 
 ## Hierarquia de tipos {:#hierarquia-de-tipos}
 
@@ -105,8 +107,7 @@ Para garantir a segurança de tipos e a consistência, o compilador impõe requi
 sobre quais tipos podem fluir para dentro e para fora do JS. Passar valores Dart
 arbitrários para JS não é permitido. Em vez disso, o compilador exige que os usuários
 usem um tipo de interoperabilidade compatível, `ExternalDartReference`, ou um
-primitivo, que então seria implicitamente convertido pelo compilador. Por exemplo,
-esses seriam permitidos:
+primitivo, que então seria implicitamente convertido pelo compilador. Por exemplo, esses seriam permitidos:
 
 ```dart tag=good
 @JS()
@@ -156,8 +157,7 @@ segundo exemplo.
 
 O tipo em tempo de execução dos tipos JS pode diferir com base no compilador. Isso afeta
 a verificação de tipo e as conversões em tempo de execução. Portanto, quase sempre
-evite verificações `is` onde o valor é um tipo de interoperabilidade ou onde o tipo de
-destino é um tipo de interoperabilidade:
+evite verificações `is` onde o valor é um tipo de interoperabilidade ou onde o tipo de destino é um tipo de interoperabilidade:
 
 ```dart tag=bad
 void f(JSAny a) {
@@ -211,8 +211,7 @@ desenvolvimento. Os usuários devem preferir esse método se estiver disponível
 {% endcomment %}
 
 O Dart pode adicionar lints para tornar as verificações em tempo de execução com tipos
-de interoperabilidade JS mais fáceis de evitar. Veja a issue [#4841] para obter mais
-detalhes.
+de interoperabilidade JS mais fáceis de evitar. Veja a issue [#4841] para obter mais detalhes.
 
 ## `null` vs `undefined` {:#null-vs-undefined}
 
@@ -237,16 +236,16 @@ Dart `null`, ela não *altera* o valor em si. Se um membro de interoperabilidade
 retornar `undefined` e você passar esse valor de volta para JS, JS verá
 `undefined`, *não* `null`, ao compilar para JS.
 
-No entanto, ao compilar para Wasm, isso não é o caso, e o valor será `null` em JS.
-Isso ocorre porque o compilador implicitamente *converte* o valor para Dart `null` ao
+No entanto, ao compilar para Wasm, isso não é o caso,
+e o valor será `null` em JS.
+Isso ocorre porque o compilador implicitamente*converte* o valor para Dart `null` ao
 compilar para Wasm, perdendo informações sobre se o valor original era JS `null` ou
 `undefined`. Evite escrever código onde essa distinção seja importante, passando
 explicitamente Dart `null` para um membro de interoperabilidade.
 
 Atualmente, não há uma maneira consistente na plataforma de fornecer `undefined`
 para membros de interoperabilidade ou distinguir entre valores JS `null` e
-`undefined`, mas isso provavelmente mudará no futuro. Veja [#54025] para obter mais
-detalhes.
+`undefined`, mas isso provavelmente mudará no futuro. Veja [#54025] para obter mais detalhes.
 :::
 
 ## `JSBoxedDartObject` vs `ExternalDartReference` {:#jsboxeddartobject-vs-externaldartreference}
@@ -254,7 +253,8 @@ detalhes.
 A partir do Dart 3.4, tanto [`JSBoxedDartObject`] quanto [`ExternalDartReference`]
 podem ser usados para passar referências opacas a `Object`s Dart por meio de JavaScript.
 No entanto, `JSBoxedDartObject` encapsula a referência opaca em um objeto JavaScript,
-enquanto `ExternalDartReference` é a própria referência e, portanto, não é um tipo JS.
+enquanto `ExternalDartReference` é a própria referência e, portanto,
+não é um tipo JS.
 
 Use `JSBoxedDartObject` se você precisar de um tipo JS ou se precisar de verificações
 extras para garantir que os valores Dart não sejam passados para outro runtime Dart.
@@ -279,4 +279,3 @@ Veja [`toExternalReference`] e [`toDartObject`] para converter de e para um
 [`toExternalReference`]: {{site.dart-api}}/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html
 [`toDartObject`]: {{site.dart-api}}/dart-js_interop/ExternalDartReferenceToObject/toDartObject.html
 [Wasm]: /web/wasm
-
