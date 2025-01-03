@@ -5,7 +5,7 @@ description: O destino anterior do tour da linguagem Dart.
 short-title: Tour da linguagem
 js: [{url: '/assets/js/language-tour-redirector.js'}]
 sitemap: false
-canonical: https://dart.dev/language
+canonical: https://dartbrasil.dev/language
 noindex: true
 skipFreshness: true
 show_breadcrumbs: false

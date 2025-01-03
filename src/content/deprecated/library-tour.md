@@ -5,7 +5,7 @@ description: Destino anterior da introdução à biblioteca principal Dart. (The
 short-title: Tour da Biblioteca (Library tour)
 js: [{url: '/assets/js/library-tour-redirector.js'}]
 sitemap: false
-canonical: https://dart.dev/libraries
+canonical: https://dartbrasil.dev/libraries
 noindex: true
 skipFreshness: true
 show_breadcrumbs: false

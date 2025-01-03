@@ -5,9 +5,9 @@
 title: Dart
 description: >-
   Dart é uma linguagem otimizada para o cliente para desenvolver aplicativos rápidos em qualquer plataforma.
-url: https://dart.dev
+url: https://dartbrasil.dev
 redirect:
-  go: https://dart.dev/go
+  go: https://dartbrasil.dev/go
 repo:
   this: https://github.com/dart-lang/site-www
   shared: https://github.com/dart-lang/site-shared
@@ -19,7 +19,7 @@ branch: main
 
 flutter: https://flutter.dev
 flutter-docs: https://docs.flutter.dev
-dart-api: https://api.dart.dev
+dart-api: https://api.dartbrasil.dev
 flutter-api: https://api.flutter.dev
 pub: https://pub.dev
 pub-api: https://pub.dev/documentation

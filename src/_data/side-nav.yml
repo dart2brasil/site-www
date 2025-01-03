@@ -380,7 +380,7 @@
   expanded: true
   children:
     - title: Referência da API
-      permalink: https://api.dart.dev
+      permalink: https://api.dartbrasil.dev
     - title: Blog
       permalink: https://medium.com/dartlang
     - title: DartPad (editor online)
