@@ -1,3 +1,4 @@
+<!-- ia-translate: true -->
 {% assign page_url_path = page.url | regexReplace: '/index$|/index\.html$|\.html$|/$' | prepend: '/*' | append: '/' -%}
 
 <nav id="mainnav" class="site-header">
@@ -7,28 +8,28 @@
   </a>
   <ul class="navbar">
     {%- comment -%}
-      If you edit this list, also edit navigation-side.html (mobile).
+      Se você editar esta lista, edite também navigation-side.html (mobile).
     {% endcomment %}
     <li>
       <a href="/overview" class="nav-link
-        {%- if page_url_path contains '/*/overview/' %} active {%- endif -%}">Overview</a>
+        {%- if page_url_path contains '/*/overview/' %} active {%- endif -%}">Visão Geral</a>
     </li>
     <li class="mainnav__get-started">
       <a href="/guides" class="nav-link
         {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/language/' or page_url_path contains '/*/resources/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/deprecated/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' or page_url_path contains '/*/effective-dart/' or page_url_path contains '/*/libraries/' %} active {%- endif -%}">
-        <span>Docs</span>
+        <span>Documentação</span>
       </a>
     </li>
     <li>
       <a href="/community" class="nav-link
-        {%- if page_url_path contains '/*/community/' %} active {%- endif -%}">Community</a>
+        {%- if page_url_path contains '/*/community/' %} active {%- endif -%}">Comunidade</a>
     </li>
     <li>
-      <a href="/#try-dart" class="nav-link">Try Dart</a>
+      <a href="/#try-dart" class="nav-link">Experimente Dart</a>
     </li>
     <li>
       <a href="/get-dart" class="nav-link
-        {%- if page_url_path contains '/*/get-dart/' %} active {%- endif -%}">Get Dart</a>
+        {%- if page_url_path contains '/*/get-dart/' %} active {%- endif -%}">Obtenha o Dart</a>
     </li>
     <li class="searchfield">
       <form action="/search" class="site-header__search form-inline" id="cse-search-box">
@@ -36,7 +37,7 @@
         <input type="hidden" name="ie" value="UTF-8">
         <input type="hidden" name="hl" value="en">
         <input class="site-header__searchfield form-control search-field" type="search" name="q"
-          id="search-main" autocomplete="off" placeholder="Search" aria-label="Search">
+          id="search-main" autocomplete="off" placeholder="Pesquisar" aria-label="Pesquisar">
       </form>
     </li>
   </ul>

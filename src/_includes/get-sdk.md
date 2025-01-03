@@ -1,11 +1,12 @@
-To develop real apps,
-you need an SDK.
-You can either download the Dart SDK directly
-(as described below)
-or [download the Flutter SDK,][]
-which includes the full Dart SDK.
+<!-- ia-translate: true -->
+Para desenvolver aplicativos reais,
+você precisa de um SDK.
+Você pode baixar o SDK do Dart diretamente
+(como descrito abaixo)
+ou [baixar o SDK do Flutter,][]
+que inclui o SDK completo do Dart.
 
-[download the Flutter SDK,]: {{site.flutter-docs}}/get-started/install
+[baixar o SDK do Flutter,]: {{site.flutter-docs}}/get-started/install
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
@@ -15,18 +16,18 @@ which includes the full Dart SDK.
 
 <div id="tab-sdk-install-windows" class="tabs__content current">
 
-  Use [Chocolatey](https://chocolatey.org) to install a stable release of
-  the Dart SDK.
+  Use o [Chocolatey](https://chocolatey.org) para instalar uma versão estável do
+  SDK do Dart.
 
   :::important
-  These commands require administrator privileges.
-  If you need help on starting an administrator-level command prompt,
-  try a search like
+  Esses comandos exigem privilégios de administrador.
+  Se você precisar de ajuda para iniciar um prompt de comando de nível de administrador,
+  tente uma pesquisa como
   <em><a href="https://www.google.com/search?q=cmd+admin"
   target="blank">cmd admin</a>.</em>
   :::
 
-  To install the Dart SDK:
+  Para instalar o SDK do Dart:
 
   ```ps
   C:\> choco install dart-sdk
@@ -36,9 +37,9 @@ which includes the full Dart SDK.
 
 <div id="tab-sdk-install-linux" class="tabs__content">
 
-  You can use APT to install the Dart SDK on Linux.
+  Você pode usar o APT para instalar o SDK do Dart no Linux.
 
-  1. Perform the following one-time setup:
+  1. Execute a seguinte configuração única:
   
      ```console
      $ sudo apt-get update
@@ -47,7 +48,7 @@ which includes the full Dart SDK.
      $ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
      ```
 
-  2. Install the Dart SDK:
+  2. Instale o SDK do Dart:
   
      ```console
      $ sudo apt-get update
@@ -58,8 +59,8 @@ which includes the full Dart SDK.
 
 <div id="tab-sdk-install-mac" class="tabs__content">
 
-  With [Homebrew,](https://brew.sh/)
-  installing Dart is easy.
+  Com o [Homebrew,](https://brew.sh/)
+  instalar o Dart é fácil.
 
   ```console
   $ brew tap dart-lang/dart
@@ -69,6 +70,6 @@ which includes the full Dart SDK.
 </div>
 
 :::important
-For more information, including how to **adjust your `PATH`**, see
-[Get the Dart SDK](/get-dart).
+Para mais informações, incluindo como **ajustar o seu `PATH` (caminho)**, veja
+[Obtenha o SDK do Dart](/get-dart).
 :::
