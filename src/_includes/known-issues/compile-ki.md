@@ -1,20 +1,21 @@
-No cross-compilation support ([issue 28617][])
-: The compiler can create machine code only for
-  the operating system on which you're compiling.
-  To create executables for macOS, Windows, and Linux, you need to run
-  the compiler three times.
-  You can also use a continuous integration (CI) provider
-  that supports all three operating systems.
+<!-- ia-translate: true -->
+Sem suporte para compilação cruzada ([issue 28617][])
+: O compilador pode criar código de máquina apenas para
+  o sistema operacional no qual você está compilando.
+  Para criar executáveis para macOS, Windows e Linux, você precisa executar
+  o compilador três vezes.
+  Você também pode usar um provedor de integração contínua (CI)
+  que suporte os três sistemas operacionais.
 
-No support for `dart:mirrors` and `dart:developer`
-: For a complete list of the core libraries you can use,
-  see the [Multi-platform][] and [Native platform][] library tables.
+Sem suporte para `dart:mirrors` e `dart:developer`
+: Para uma lista completa das bibliotecas principais que você pode usar,
+  consulte as tabelas de bibliotecas [Multi-plataforma][] e [Plataforma nativa][].
 
-[Multi-platform]: /libraries#multi-platform-libraries
-[Native platform]: /libraries#native-platform-libraries
+[Multi-plataforma]: /libraries#multi-platform-libraries
+[Plataforma nativa]: /libraries#native-platform-libraries
 [issue 28617]: {{site.repo.dart.sdk}}/issues/28617
 
 :::tip
-If one of these issues is important to you,
-let the Dart team know by adding a "thumbs up" to the issue.
+Se um desses problemas for importante para você,
+informe a equipe do Dart adicionando um "joinha" ao problema (issue).
 :::
