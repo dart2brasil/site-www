@@ -1,5 +1,6 @@
 ---
-title: (Dart Eficaz: Estilo | Effective Dart: Style)
+ia-translate: true
+title: "Dart Eficaz: Estilo | Effective Dart: Style"
 description: Regras de formatação e nomenclatura para código consistente e legível.
 nextpage:
   url: /effective-dart/documentation
@@ -34,7 +35,7 @@ Os identificadores vêm em três tipos em Dart.
 
 {% render 'linter-rule-mention.md', rules:'camel_case_types' %}
 
-Classes, tipos enum, typedefs e parâmetros de tipo devem capitalizar a primeira
+Classes, tipos enum, typedefs (alias de tipos) e parâmetros de tipo devem capitalizar a primeira
 letra de cada palavra (incluindo a primeira palavra) e não usar separadores.
 
 <?code-excerpt "style_good.dart (type-names)"?>
@@ -114,7 +115,7 @@ mypackage
 ```
 
 
-### SIGA a nomenclatura de prefixos de importação usando `lowercase_with_underscores` {:#do-name-import-prefixes-using-lowercase-with-underscores}
+### SIGA a nomenclatura de prefixos de importação usando `lowercase_with_underscores` {:#do-name-import-prefixes-using-lowercase_with_underscores}
 
 {% render 'linter-rule-mention.md', rules:'library_prefixes' %}
 
@@ -219,21 +220,21 @@ Caso contrário, capitalize como uma palavra.
 
 ```dart tag=good
 // Mais de duas letras, então sempre como uma palavra:
-Http // "hypertext transfer protocol"
-Nasa // "national aeronautics and space administration"
-Uri // "uniform resource identifier"
-Esq // "esquire"
-Ave // "avenue"
+Http // "hypertext transfer protocol" (protocolo de transferência de hipertexto)
+Nasa // "national aeronautics and space administration" (Administração Nacional da Aeronáutica e Espaço)
+Uri // "uniform resource identifier" (identificador uniforme de recurso)
+Esq // "esquire" (escudeiro)
+Ave // "avenue" (avenida)
 
 // Duas letras, maiúsculas em inglês, então maiúsculas em um identificador:
-ID // "identifier"
-TV // "television"
-UI // "user interface"
+ID // "identifier" (identificador)
+TV // "television" (televisão)
+UI // "user interface" (interface do usuário)
 
 // Duas letras, não maiúsculas em inglês, então como uma palavra em um identificador:
-Mr // "mister"
-St // "street"
-Rd // "road"
+Mr // "mister" (senhor)
+St // "street" (rua)
+Rd // "road" (estrada)
 ```
 
 ```dart tag=bad
@@ -261,9 +262,9 @@ var tvSet = Television();
 var mrRogers = 'hello, neighbor';
 ```
 
-### PREFIRA usar `_`, `__`, etc. para parâmetros de retorno de chamada não usados {:#prefer-using-etc-for-unused-callback-parameters}
+### PREFIRA usar `_`, `__`, etc. para parâmetros de retorno de chamada não usados {:#prefer-using-_-__-etc-for-unused-callback-parameters}
 
-Às vezes, a assinatura de tipo de uma função de retorno de chamada requer um parâmetro,
+Às vezes, a assinatura de tipo de uma função de retorno de chamada (callback) requer um parâmetro,
 mas a implementação do retorno de chamada não *usa* o parâmetro.
 Neste caso, é idiomático nomear o parâmetro não usado `_`.
 Se a função tiver vários parâmetros não usados, use sublinhados adicionais para evitar colisões de nome: `__`, `___`, etc.
@@ -283,7 +284,7 @@ portanto, seus parâmetros devem ser nomeados para que fique claro para que cada
 mesmo que não seja usado.
 
 
-### NÃO use um sublinhado inicial para identificadores que não são privados {:#don-t-use-a-leading-underscore-for-identifiers-that-aren-t-private}
+### NÃO use um sublinhado inicial para identificadores que não são privados {:#dont-use-a-leading-underscore-for-identifiers-that-arent-private}
 
 Dart usa um sublinhado inicial em um identificador para marcar membros e nível superior
 declarações como privadas. Isso treina os usuários a associar um sublinhado inicial
@@ -294,7 +295,7 @@ sublinhado, ele envia um sinal confuso para o leitor. Para evitar isso, não use
 sublinhados iniciais nesses nomes.
 
 
-### NÃO use letras de prefixo {:#don-t-use-prefix-letters}
+### NÃO use letras de prefixo {:#dont-use-prefix-letters}
 
 A [notação húngara](https://en.wikipedia.org/wiki/Hungarian_notation) e
 outros esquemas surgiram na época do BCPL, quando o compilador não fazia muito para
@@ -310,7 +311,7 @@ defaultTimeout
 kDefaultTimeout
 ```
 
-### NÃO nomeie bibliotecas explicitamente {:#don-t-explicitly-name-libraries}
+### NÃO nomeie bibliotecas explicitamente {:#dont-explicitly-name-libraries}
 
 Acrescentar um nome à diretiva `library` é tecnicamente possível,
 mas é um recurso legado e desencorajado.
@@ -477,7 +478,7 @@ outras mais curtas pode alterar o programa.
 
 {% render 'linter-rule-mention.md', rules:'curly_braces_in_flow_control_structures' %}
 
-Fazê-lo evita o problema do [dangling else][].
+Fazê-lo evita o problema do [dangling else][]. (else pendente)
 
 [dangling else]: https://en.wikipedia.org/wiki/Dangling_else
 

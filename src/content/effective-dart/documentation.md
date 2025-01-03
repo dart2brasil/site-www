@@ -40,7 +40,7 @@ Use maiúscula na primeira palavra, a menos que seja um identificador sensível 
 ponto (ou "!" ou "?", imagino). Isso é válido para todos os comentários: comentários de documentação,
 coisas em linha, até mesmo TODOs. Mesmo que seja um fragmento de frase.
 
-### NÃO FAÇA: use comentários de bloco para documentação {:#don-t-use-block-comments-for-documentation}
+### NÃO FAÇA: use comentários de bloco para documentação {:#dont-use-block-comments-for-documentation}
 
 <?code-excerpt "docs_good.dart (block-comments)"?>
 ```dart tag=good
@@ -282,7 +282,7 @@ casos, o uso de "ou não" com "se" é supérfluo e pode ser omitido,
 especialmente quando usado neste contexto.
 :::
 
-### NÃO FAÇA: escreva documentação para o getter e o setter de uma propriedade {:#don-t-write-documentation-for-both-the-getter-and-setter-of-a-property}
+### NÃO FAÇA: escreva documentação para o getter e o setter de uma propriedade {:#dont-write-documentation-for-both-the-getter-and-setter-of-a-property}
 
 Se uma propriedade tiver um getter e um setter, crie um comentário de documentação para
 apenas um deles. `dart doc` trata o getter e o setter como um único campo,
@@ -538,7 +538,7 @@ Muitas pessoas não sabem o que "i.e.", "e.g." e "et al." significam. Aquela sig
 que você tem certeza de que todos em seu campo conhecem pode não ser tão conhecida quanto você
 pensa.
 
-### PREFIRA: usar "este" em vez de "o" para referir-se à instância de um membro {:#prefer-using-this-instead-of-the-to-refer-to-a-member-s-instance}
+### PREFIRA: usar "este" em vez de "o" para referir-se à instância de um membro {:#prefer-using-this-instead-of-the-to-refer-to-a-members-instance}
 
 Ao documentar um membro de uma classe, você geralmente precisa se referir ao
 objeto em que o membro está sendo chamado. Usar "o" pode ser ambíguo.
