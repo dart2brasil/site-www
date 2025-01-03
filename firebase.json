@@ -3,6 +3,7 @@
     "public": "_site",
     "cleanUrls": true,
     "trailingSlash": false,
+    "site":"dart2brasil",
     "headers": [
       {
         "source": "**/*.@(avif|jpg|jpeg|gif|png|md|txt|json|webp|webm|svg|css|js)",
@@ -174,7 +175,7 @@
       { "source": "/go/data-driven-fixes", "destination": "https://github.com/flutter/flutter/wiki/Data-driven-Fixes", "type": 301 },
       { "source": "/go/dot-packages-deprecation", "destination": "https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md", "type": 301 },
       { "source": "/go/experiments", "destination": "/tools/experiment-flags", "type": 301 },
-      { "source": "/go/false-secrets", "destination": "/tools/pub/pubspec#false_secrets", "type": 301 },
+      { "source": "/go/false-secrets", "destination": "/tools/pub/pubspec#false-secrets", "type": 301 },
       { "source": "/go/ffi", "destination": "/interop/c-interop", "type": 301 },
       { "source": "/go/flutter-upper-bound-deprecation", "destination": "https://github.com/flutter/flutter/issues/68143", "type": 301 },
       { "source": "/go/macros", "destination": "/language/macros", "type": 301 },
@@ -373,7 +374,7 @@
       { "source": "/to/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
       { "source": "/to/pub-cache", "destination": "/tools/pub/cmd/pub-cache", "type": 301 },
       { "source": "/to/pub-content-hashes", "destination": "/tools/pub/glossary#content-hashes", "type": 301 },
-      { "source": "/to/pub-false-secrets", "destination": "/tools/pub/pubspec#false_secrets", "type": 301 },
+      { "source": "/to/pub-false-secrets", "destination": "/tools/pub/pubspec#false-secrets", "type": 301 },
       { "source": "/to/pub-ignore", "destination": "/tools/pub/publishing#what-files-are-published", "type": 301 },
       { "source": "/to/pub-security-advisories", "destination": "/tools/pub/security-advisories", "type": 301 },
       { "source": "/to/pub-workspaces", "destination": "/tools/pub/workspaces", "type": 301 },
