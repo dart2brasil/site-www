@@ -1,12 +1,13 @@
 ---
-title: Concurrency in Dart
+ia-translate: true
+title: Concorrência em Dart
 description: >-
-  Use isolates to enable parallel code execution on multiple processor cores.
-short-title: Concurrency
+  Use isolates para habilitar a execução de código paralelo em múltiplos núcleos de processador.
+short-title: Concorrência
 lastVerified: 2023-12-14
 prevpage:
   url: /language/modifier-reference
-  title: Class modifiers reference
+  title: Referência de modificadores de classe
 nextpage:
   url: /language/async
   title: Async
@@ -20,40 +21,39 @@ nextpage:
   }
 </style>
 
-This page contains a conceptual overview of how concurrent programming works in
-Dart. It explains the event-loop, async language features, and isolates from
-a high-level. For more practical code examples of using concurrency in Dart,
-read the [Asynchrony support](/language/async) page and 
-[Isolates](/language/isolates) page.
+Esta página contém uma visão geral conceitual de como a programação concorrente
+funciona em Dart. Ela explica o loop de eventos, os recursos da linguagem
+async e os isolates de alto nível. Para exemplos de código mais práticos de
+como usar concorrência em Dart, leia a página de
+[Suporte a Assincronia](/language/async) e a página de [Isolates](/language/isolates).
 
-Concurrent programming in Dart refers to both asynchronous APIs, like `Future`
-and `Stream`, and *isolates*, which allow you to move processes to separate
-cores.
+A programação concorrente em Dart se refere tanto a APIs assíncronas, como
+`Future` e `Stream`, quanto a *isolates*, que permitem mover processos para
+núcleos separados.
 
-All Dart code runs in isolates, starting in the default main isolate,
-and optionally expanding to whatever subsequent isolates you
-explicitly create. When you spawn a new isolate,
-it has its own isolated memory, and its own event loop.
-The event loop is what makes asynchronous and
-concurrent programming possible in Dart.
+Todo código Dart é executado em isolates, começando no isolate principal
+padrão e, opcionalmente, expandindo para quaisquer isolates subsequentes que
+você crie explicitamente. Quando você gera um novo isolate, ele tem sua própria
+memória isolada e seu próprio loop de eventos. O loop de eventos é o que torna
+a programação assíncrona e concorrente possível em Dart.
 
-## Event Loop {:#event-loop}
+## Loop de Eventos {:#event-loop}
 
-Dart’s runtime model is based on an event loop.
-The event loop is responsible for executing your program's code,
-collecting and processing events, and more.
+O modelo de tempo de execução do Dart é baseado em um loop de eventos. O loop
+de eventos é responsável por executar o código do seu programa, coletar e
+processar eventos e muito mais.
 
-As your application runs, all events are added to a queue,
-called the *event queue*.
-Events can be anything from requests to repaint the UI,
-to user taps and keystrokes, to I/O from the disk.
-Because your app can’t predict what order events will happen,
-the event loop processes events in the order they're queued, one at a time.
+À medida que seu aplicativo é executado, todos os eventos são adicionados a uma
+fila, chamada de *fila de eventos*. Os eventos podem ser qualquer coisa, desde
+solicitações para repintar a interface do usuário, toques e pressionamentos de
+teclas do usuário, até E/S do disco. Como seu aplicativo não pode prever em que
+ordem os eventos acontecerão, o loop de eventos processa os eventos na ordem
+em que são enfileirados, um de cada vez.
 
-![A figure showing events being fed, one by one, into the
-event loop](/assets/img/language/concurrency/event-loop.png)
+![Uma figura mostrando eventos sendo alimentados, um por um, no loop de
+eventos](/assets/img/language/concurrency/event-loop.png)
 
-The way the event loop functions resembles this code:
+A forma como o loop de eventos funciona se assemelha a este código:
 
 ```dart
 while (eventQueue.waitForEvent()) {
@@ -61,15 +61,15 @@ while (eventQueue.waitForEvent()) {
 }
 ```
 
-This example event loop is synchronous and runs on a single thread.
-However, most Dart applications need to do more than one thing at a time. 
-For example, a client application might need to execute an HTTP request, 
-while also listening for a user to tap a button. 
-To handle this, Dart offers many async APIs, 
-like [Futures, Streams, and async-await](/language/async).
-These APIs are built around this event loop.
+Este exemplo de loop de eventos é síncrono e é executado em uma única thread
+(linha de execução). No entanto, a maioria dos aplicativos Dart precisa fazer
+mais de uma coisa ao mesmo tempo. Por exemplo, um aplicativo cliente pode
+precisar executar uma requisição HTTP, enquanto também escuta o usuário tocar
+em um botão. Para lidar com isso, o Dart oferece muitas APIs async, como
+[Futures, Streams e async-await](/language/async). Essas APIs são construídas em
+torno deste loop de eventos.
 
-For example, consider making a network request:
+Por exemplo, considere fazer uma requisição de rede:
 
 ```dart
 http.get('https://example.com').then((response) {
@@ -79,69 +79,69 @@ http.get('https://example.com').then((response) {
 }
 ```
 
-When this code reaches the event loop, it immediately calls the
-first clause, `http.get`, and returns a `Future`.
-It also tells the event loop to hold onto the callback in the `then()` clause
-until the HTTP request resolves. When that happens, it should
-execute that callback, passing the result of the request as an argument.
+Quando este código atinge o loop de eventos, ele chama imediatamente a
+primeira cláusula, `http.get`, e retorna um `Future`. Ele também diz ao loop
+de eventos para manter o callback (chamada de retorno) na cláusula `then()` até
+que a requisição HTTP seja resolvida. Quando isso acontecer, ele deve executar
+esse callback, passando o resultado da requisição como um argumento.
 
-![Figure showing async events being added to an event loop and
-holding onto a callback to execute later
-.](/assets/img/language/concurrency/async-event-loop.png)
+![Figura mostrando eventos async sendo adicionadosa um loop de eventos e
+mantendo um callback para executar mais
+tarde.](/assets/img/language/concurrency/async-event-loop.png)
 
-This same model is generally how the event loop handles all other
-asynchronous events in Dart, such as [`Stream`][] objects.
+Este mesmo modelo é geralmente como o loop de eventos lida com todos os outros
+eventos assíncronos em Dart, como objetos [`Stream`][].
 
 [`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 
-## Asynchronous programming {:#asynchronous-programming}
+## Programação Assíncrona {:#asynchronous-programming}
 
-This section summarizes the different types and syntaxes of asynchronous programming in Dart.
-If you're already familiar with `Future`, `Stream`, and async-await,
-then you can skip ahead to the [isolates section][].
+Esta seção resume os diferentes tipos e sintaxes da programação assíncrona em
+Dart. Se você já está familiarizado com `Future`, `Stream` e async-await, pode
+pular para a [seção de isolates][].
 
-[isolates section]: #isolates
+[seção de isolates]: #isolates
 
 ### Futures {:#futures}
 
-A `Future` represents the result of an asynchronous operation that will 
-eventually complete with a value or an error.
+Um `Future` representa o resultado de uma operação assíncrona que acabará
+sendo concluída com um valor ou um erro.
 
-In this sample code, the return type of `Future<String>` represents a 
-promise to eventually provide a `String` value (or error).
+Neste código de exemplo, o tipo de retorno de `Future<String>` representa uma
+promessa de eventualmente fornecer um valor `String` (ou erro).
 
 <?code-excerpt "lib/future_syntax.dart (read-async)"?>
 ```dart
 Future<String> _readFileAsync(String filename) {
   final file = File(filename);
 
-  // .readAsString() returns a Future.
-  // .then() registers a callback to be executed when `readAsString` resolves.
+  // .readAsString() retorna um Future.
+  // .then() registra um callback para ser executado quando `readAsString` for resolvido.
   return file.readAsString().then((contents) {
     return contents.trim();
   });
 }
 ```
 
-### The async-await syntax {:#the-async-await-syntax}
+### A sintaxe async-await {:#the-async-await-syntax}
 
-The `async` and `await` keywords provide a declarative way to define
-asynchronous functions and use their results.
+As palavras-chave `async` e `await` fornecem uma forma declarativa de definir
+funções assíncronas e usar seus resultados.
 
-Here's an example of some synchronous code
-that blocks while waiting for file I/O:
+Aqui está um exemplo de algum código síncrono que bloqueia enquanto aguarda
+E/S de arquivo:
 
 <?code-excerpt "lib/sync_number_of_keys.dart (blocking)"?>
 ```dart
 const String filename = 'with_keys.json';
 
 void main() {
-  // Read some data.
+  // Lê alguns dados.
   final fileData = _readFileSync();
   final jsonData = jsonDecode(fileData);
 
-  // Use that data.
-  print('Number of JSON keys: ${jsonData.length}');
+  // Usa esses dados.
+  print('Número de chaves JSON: ${jsonData.length}');
 }
 
 String _readFileSync() {
@@ -151,19 +151,20 @@ String _readFileSync() {
 }
 ```
 
-Here's similar code, but with changes (highlighted) to make it asynchronous:
+Aqui está um código semelhante, mas com alterações (destacadas) para torná-lo
+assíncrono:
 
 <?code-excerpt "lib/async_number_of_keys.dart (non-blocking)" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 ```dart
 const String filename = 'with_keys.json';
 
 void main() [!async!] {
-  // Read some data.
+  // Lê alguns dados.
   final fileData = [!await!] _readFileAsync();
   final jsonData = jsonDecode(fileData);
 
-  // Use that data.
-  print('Number of JSON keys: ${jsonData.length}');
+  // Usa esses dados.
+  print('Número de chaves JSON: ${jsonData.length}');
 }
 
 [!Future<String>!] _readFileAsync() [!async!] {
@@ -173,46 +174,46 @@ void main() [!async!] {
 }
 ```
 
-The `main()` function uses the `await` keyword in front of `_readFileAsync()`
-to let other Dart code (such as event handlers) use the CPU while native code
-(file I/O) executes. Using `await` also has the effect of converting
-the `Future<String>` returned by `_readFileAsync()` into a `String`. As a
-result, the `contents` variable has the implicit type `String`.
+A função `main()` usa a palavra-chave `await` em frente a `_readFileAsync()`
+para permitir que outro código Dart (como manipuladores de eventos) use a CPU
+enquanto o código nativo (E/S de arquivo) é executado. Usar `await` também tem
+o efeito de converter o `Future<String>` retornado por `_readFileAsync()` em
+uma `String`. Como resultado, a variável `contents` tem o tipo implícito `String`.
 
 :::note
-The `await` keyword works only in functions that have `async` before the
-function body.
+A palavra-chave `await` funciona apenas em funções que têm `async` antes do
+corpo da função.
 :::
 
-As the following figure shows, the Dart code pauses while `readAsString()`
-executes non-Dart code, in either the Dart runtime or the operating system. 
-Once `readAsString()` returns a value, Dart code execution resumes.
+Como a figura a seguir mostra, o código Dart pausa enquanto `readAsString()`
+executa código não-Dart, seja no tempo de execução do Dart ou no sistema
+operacional. Uma vez que `readAsString()` retorna um valor, a execução do código Dart é retomada.
 
-![Flowchart-like figure showing app code executing from start to exit, waiting
-for native I/O in between](/assets/img/language/concurrency/basics-await.png)
+![Figura semelhante a um fluxograma mostrando o código do aplicativo sendo
+executado do início ao fim, aguardando E/S nativa no meio](/assets/img/language/concurrency/basics-await.png)
 
 ### Streams {:#streams}
 
-Dart also supports asynchronous code in the form of streams. Streams
-provide values in the future and repeatedly over time. A promise to provide a
-series of `int` values over time has the type `Stream<int>`.
+Dart também suporta código assíncrono na forma de streams. Streams fornecem
+valores no futuro e repetidamente ao longo do tempo. Uma promessa de fornecer
+uma série de valores `int` ao longo do tempo tem o tipo `Stream<int>`.
 
-In the following example, the stream created with `Stream.periodic`
-repeatedly emits a new `int` value every second.
+No exemplo a seguir, o stream criado com `Stream.periodic` emite repetidamente
+um novo valor `int` a cada segundo.
 
 <?code-excerpt "lib/stream_syntax.dart"?>
 ```dart
 Stream<int> stream = Stream.periodic(const Duration(seconds: 1), (i) => i * i);
 ```
 
-#### await-for and yield {:#await-for-and-yield}
+#### await-for e yield {:#await-for-and-yield}
 
-Await-for is a type of for loop that executes each subsequent iteration of the
-loop as new values are provided. In other words, it’s used to “loop over”
-streams. In this example, a new value will be emitted from the function
-`sumStream` as new values are emitted from the stream that’s provided as an
-argument. The `yield` keyword is used rather than `return` in functions that 
-return streams of values.
+Await-for é um tipo de loop for que executa cada iteração subsequente do loop
+à medida que novos valores são fornecidos. Em outras palavras, ele é usado
+para "percorrer" streams. Neste exemplo, um novo valor será emitido da função
+`sumStream` à medida que novos valores são emitidos do stream que é fornecido
+como um argumento. A palavra-chave `yield` é usada em vez de `return` em
+funções que retornam streams de valores.
 
 <?code-excerpt "lib/await_for_syntax.dart"?>
 ```dart
@@ -224,186 +225,197 @@ Stream<int> sumStream(Stream<int> stream) async* {
 }
 ```
 
-If you'd like to learn more about using `async`, `await`, `Stream`s and
-`Future`s, check out the [asynchronous programming tutorial][].
+Se você quiser saber mais sobre como usar `async`, `await`, `Stream`s e
+`Future`s, consulte o [tutorial de programação assíncrona][].
 
-[asynchronous programming tutorial]: /libraries/async/async-await
+[tutorial de programação assíncrona]: /libraries/async/async-await
 
 ## Isolates {:#isolates}
 
-Dart supports concurrency via isolates, in addition to [asynchronous APIs](#asynchronous-programming).
-Most modern devices have multi-core
-CPUs. To take advantage of multiple cores, developers sometimes use
-shared-memory threads running concurrently. However, shared-state concurrency is
-[error prone](https://en.wikipedia.org/wiki/Race_condition#In_software) and can
-lead to complicated code.
+O Dart suporta concorrência por meio de isolates, além das
+[APIs assíncronas](#asynchronous-programming). A maioria dos dispositivos
+modernos tem CPUs multi-core. Para aproveitar vários núcleos, os desenvolvedores
+às vezes usam threads (linhas de execução) de memória compartilhada em execução
+simultânea. No entanto, a concorrência de estado compartilhado é [propensa a erros](https://en.wikipedia.org/wiki/Race_condition#In_software)
+e pode levar a um código complicado.
 
-Instead of threads, all Dart code runs inside isolates.
-Using isolates, your Dart code can perform multiple independent tasks at once,
-using additional processor cores if they're available.
-Isolates are like threads or processes, but each isolate has its own memory
-and a single thread running an event loop.
+Em vez de threads, todo código Dart é executado dentro de isolates. Usando
+isolates, seu código Dart pode executar várias tarefas independentes ao mesmo
+tempo, usando núcleos de processador adicionais, se estiverem disponíveis.
+Isolates são como threads ou processos, mas cada isolate tem sua própria
+memória e uma única thread executando um loop de eventos.
 
-Each isolate has its own global fields,
-ensuring that none of the state in an isolate is accessible
-from any other isolate. Isolates can only communicate to each other via message
-passing. No shared state between isolates means concurrency complexities like
-[mutexes or locks](https://en.wikipedia.org/wiki/Lock_(computer_science))
-and [data races](https://en.wikipedia.org/wiki/Race_condition#Data_race)
-won't occur in Dart. That said, isolates don't prevent race conditions all
-together. For more information on this concurrency model, read about
-the [Actor model](https://en.wikipedia.org/wiki/Actor_model).
+Cada isolate tem seus próprios campos globais, garantindo que nenhum dos estados
+em um isolate seja acessível de qualquer outro isolate. Isolates só podem se
+comunicar uns com os outros por meio de passagem de mensagens. Nenhum estado
+compartilhado entre isolates significa que complexidades de concorrência como
+[mutexes ou locks](https://en.wikipedia.org/wiki/Lock_(computer_science)) e
+[disputas de dados](https://en.wikipedia.org/wiki/Race_condition#Data_race) não
+ocorrerão em Dart. Dito isso, os isolates não impedem as condições de disputa
+por completo. Para mais informações sobre este modelo de concorrência, leia
+sobre o [modelo de Ator](https://en.wikipedia.org/wiki/Actor_model).
 
-:::note Platform note
-Only the [Dart Native platform][] implements isolates.
-To learn more about the Dart Web platform,
-see the [Concurrency on the web](#concurrency-on-the-web) section.
+:::note Observação sobre a Plataforma
+Apenas a [plataforma Dart Nativa][] implementa isolates. Para saber mais sobre
+a plataforma Dart Web, consulte a
+seção [Concorrência na web](#concurrency-on-the-web).
 :::
 
 [Dart Native platform]: /overview#platform
 
-### The main isolate {:#the-main-isolate}
+### O isolate principal {:#the-main-isolate}
 
-In most cases, you don't need to think about isolates at all. Dart programs run
-in the main isolate by default. It’s the thread where a program starts to run
-and execute, as shown in the following figure:
+Na maioria dos casos, você não precisa pensar em isolates. Os programas Dart são
+executados no isolate principal por padrão. É a thread onde um programa começa
+a ser executado e executado, como mostrado na figura a seguir:
 
-![A figure showing a main isolate, which runs `main()`, responds to events,
-and then exits](/assets/img/language/concurrency/basics-main-isolate.png)
+![Uma figura mostrando um isolate principal, que executa `main()`, responde a
+eventos e depois sai](/assets/img/language/concurrency/basics-main-isolate.png)
 
-Even single-isolate programs can execute smoothly. Before continuing to the next
-line of code, these apps use [async-await][] to wait for asynchronous operations to
-complete. A well-behaved app starts quickly, getting to the event loop as soon
-as possible. The app then responds to each queued event promptly, using
-asynchronous operations as necessary.
+Mesmo programas de isolate único podem ser executados sem problemas. Antes de
+continuar para a próxima linha de código, esses aplicativos usam
+[async-await][] para aguardar a conclusão de operações assíncronas. Um
+aplicativo bem-comportado começa rapidamente, chegando ao loop de eventos o
+mais rápido possível. O aplicativo então responde a cada evento enfileirado
+prontamente, usando operações assíncronas conforme necessário.
 
 [async-await]: /libraries/async/async-await
 
-### The isolate life cycle {:#the-isolate-life-cycle}
+### O ciclo de vida do isolate {:#the-isolate-life-cycle}
 
-As the following figure shows,
-every isolate starts by running some Dart code,
-such as the `main()` function.
-This Dart code might register some event listeners—to
-respond to user input or file I/O, for example.
-When the isolate's initial function returns,
-the isolate stays around if it needs to handle events.
-After handling the events, the isolate exits.
+Como a figura a seguir mostra,
+cada isolate começa executando algum código Dart,
+como a função `main()`.
+Este código Dart pode registrar alguns ouvintes de
+eventos — para responder à entrada do usuário ou E/S de arquivo, por exemplo.
+Quando a função inicial do isolate retorna, o isolate permanece se precisar
+lidar com eventos. Depois de lidar com os eventos, o isolate sai.
 
-![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/assets/img/language/concurrency/basics-isolate.png)
+![Uma figura mais geral mostrando que qualquer isolate executa algum código,
+opcionalmente responde a eventos e depois sai](/assets/img/language/concurrency/basics-isolate.png)
 
-### Event handling {:#event-handling}
+### Tratamento de eventos {:#event-handling}
 
-In a client app, the main isolate's event queue might contain repaint requests
-and notifications of tap and other UI events. For example, the following figure
-shows a repaint event, followed by a tap event, followed by two repaint events.
-The event loop takes events from the queue in first in, first out order.
+Em um aplicativo cliente, a fila de eventos do isolate principal pode conter
+solicitações de repintura e notificações de toques e outros eventos da UI
+(interface do usuário). Por exemplo, a figura a seguir mostra um evento de
+repintura, seguido por um evento de toque, seguido por dois eventos de
+repintura. O loop de eventos pega os eventos da fila na ordem FIFO (first in,
+first out - primeiro a entrar, primeiro a sair).
 
-![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/event-loop.png)
+![Uma figura mostrando eventos sendo alimentados, um por um, no loop de
+eventos](/assets/img/language/concurrency/event-loop.png)
 
-Event handling happens on the main isolate after `main()` exits. In the
-following figure, after `main()` exits, the main isolate handles the first
-repaint event. After that, the main isolate handles the tap event, followed by a
-repaint event.
+O tratamento de eventos acontece no isolate principal depois que `main()` sai.
+Na figura a seguir, depois que `main()` sai, o isolate principal trata o
+primeiro evento de repintura. Depois disso, o isolate principal lida com o
+evento de toque, seguido por um evento de repintura.
 
-If a synchronous operation takes too much processing time, the app can become
-unresponsive. In the following figure, the tap-handling code takes too long, so
-subsequent events are handled too late. The app might appear to freeze, and any
-animation it performs might be jerky.
+Se uma operação síncrona levar muito tempo de processamento, o aplicativo pode
+deixar de responder. Na figura a seguir, o código de tratamento de toque leva
+muito tempo, então os eventos subsequentes são tratados muito tarde. O
+aplicativo pode parecer travar e qualquer animação que ele execute pode ser
+instável.
 
-![A figure showing a tap handler with a too-long execution time](/assets/img/language/concurrency/event-jank.png)
+![Uma figura mostrando um manipulador de toque com um tempo de execução muito longo](/assets/img/language/concurrency/event-jank.png)
 
-In client apps, the result of a too-lengthy synchronous operation is often
-[janky (non-smooth) UI animation][jank]. Worse, the UI might become completely
-unresponsive.
+Em aplicativos cliente, o resultado de uma operação síncrona muito longa é
+muitas vezes [animação de UI instável (não suave)][jank]. Pior ainda, a UI pode
+se tornar completamente não responsiva.
 
 [jank]: {{site.flutter-docs}}/perf/rendering-performance
 
-### Background workers {:#background-workers}
+### Workers em segundo plano {:#background-workers}
 
-If your app's UI becomes unresponsive due to a time-consuming
-computation—[parsing a large JSON file][json], for example—consider offloading
-that computation to a worker isolate, often called a _background worker._
-A common case, shown in the following figure, is spawning a simple worker
-isolate that performs a computation and then exits. The worker isolate returns
-its result in a message when it exits.
+Se a UI do seu aplicativo se tornar não responsiva devido a uma computação
+demorada — [analisando um arquivo JSON grande][json], por exemplo — considere
+descarregar essa computação para um isolate worker, geralmente chamado de
+_worker em segundo plano._ Um caso comum, mostrado na figura a seguir, é gerar
+um isolate worker simples que executa uma computação e depois sai. O isolate
+worker retorna seu resultado em uma mensagem quando sai.
 
 [json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 
-![A figure showing a main isolate and a simple worker isolate](/assets/img/language/concurrency/isolate-bg-worker.png)
+![Uma figura mostrando um isolate principal e um isolate worker
+simples](/assets/img/language/concurrency/isolate-bg-worker.png)
 
-A worker isolate can perform I/O
-(reading and writing files, for example), set timers, and more. It has its own
-memory and doesn't share any state with the main isolate. The worker isolate can
-block without affecting other isolates.
+Um isolate worker pode executar E/S (leitura e gravação de arquivos, por
+exemplo), definir temporizadores e muito mais. Ele tem sua própria memória e
+não compartilha nenhum estado com o isolate principal. O isolate worker pode
+bloquear sem afetar outros isolates.
 
-### Using isolates {:#using-isolates}
+### Usando isolates {:#using-isolates}
 
-There are two ways to work with isolates in Dart, depending on the use-case:
+Existem duas maneiras de trabalhar com isolates em Dart, dependendo do caso de
+uso:
 
-* Use [`Isolate.run()`][] to perform a single computation on a separate thread.
-* Use [`Isolate.spawn()`][] to create an isolate that will handle multiple
-  messages over time, or a background worker. For more information on working
-  with long-lived isolates, read the [Isolates](/language/isolates) page.
+* Use [`Isolate.run()`][] para executar uma única computação em uma thread
+  separada.
+* Use [`Isolate.spawn()`][] para criar um isolate que irá lidar com várias
+  mensagens ao longo do tempo, ou um worker em segundo plano. Para mais
+  informações sobre como trabalhar com isolates de longa duração, leia a página
+  [Isolates](/language/isolates).
 
-In most cases, `Isolate.run` is the recommended
-API to run processes in the background.
+Na maioria dos casos, `Isolate.run` é a API recomendada para executar
+processos em segundo plano.
 
 #### `Isolate.run()` {:#isolate-run}
 
-The static `Isolate.run()` method requires one argument: a callback that will be
-run on the newly spawned isolate.
+O método estático `Isolate.run()` requer um argumento: um callback que será
+executado no isolate recém-gerado.
 
 <?code-excerpt "lib/isolate_run_syntax.dart (slow)"?>
 ```dart
 int slowFib(int n) => n <= 1 ? 1 : slowFib(n - 1) + slowFib(n - 2);
 
-// Compute without blocking current isolate.
+// Computa sem bloquear o isolate atual.
 void fib40() async {
   var result = await Isolate.run(() => slowFib(40));
   print('Fib(40) = $result');
 }
 ```
 
-### Performance and isolate groups {:#performance-and-isolate-groups}
+### Desempenho e grupos de isolates {:#performance-and-isolate-groups}
 
-When an isolate calls [`Isolate.spawn()`][], the two isolates have the same
-executable code and are in the same _isolate group_. Isolate groups enable
-performance optimizations such as sharing code; a new isolate immediately runs
-the code owned by the isolate group. Also, `Isolate.exit()` works only when the
-isolates are in the same isolate group.
+Quando um isolate chama [`Isolate.spawn()`][], os dois isolates têm o mesmo
+código executável e estão no mesmo _grupo de isolates_. Grupos de isolates
+permitem otimizações de desempenho, como o compartilhamento de código; um novo
+isolate executa imediatamente o código pertencente ao grupo de isolates. Além
+disso, `Isolate.exit()` funciona apenas quando os isolates estão no mesmo
+grupo de isolates.
 
-In some special cases, you might need to use [`Isolate.spawnUri()`][], which
-sets up the new isolate with a copy of the code that's at the specified URI.
-However, `spawnUri()` is much slower than `spawn()`, and the new isolate isn't
-in its spawner's isolate group. Another performance consequence is that message
-passing is slower when isolates are in different groups.
+Em alguns casos especiais, você pode precisar usar
+[`Isolate.spawnUri()`][], que configura o novo isolate com uma cópia do
+código que está no URI especificado. No entanto, `spawnUri()` é muito mais
+lento do que `spawn()` e o novo isolate não está no grupo de isolates de seu
+gerador. Outra consequência de desempenho é que a passagem de mensagens é mais
+lenta quando os isolates estão em grupos diferentes.
 
 [`Isolate.spawnUri()`]: {{site.dart-api}}/dart-isolate/Isolate/spawnUri.html
 
-### Limitations of isolates {:#limitations-of-isolates}
+### Limitações dos isolates {:#limitations-of-isolates}
 
-#### Isolates aren't threads {:#isolates-aren-t-threads}
+#### Isolates não são threads {:#isolates-arent-threads}
 
-If you’re coming to Dart from a language with multithreading, it’d be reasonable
-to expect isolates to behave like threads, but that isn’t the case. Each isolate
-has its own state, ensuring that none of the state in an isolate is
-accessible from any other isolate. Therefore, isolates are limited by their
-access to their own memory.
+Se você está vindo para Dart de uma linguagem com multithreading (múltiplas
+linhas de execução), seria razoável esperar que os isolates se comportassem
+como threads, mas esse não é o caso. Cada isolate tem seu próprio estado,
+garantindo que nenhum dos estados em um isolate seja acessível de qualquer
+outro isolate. Portanto, os isolates são limitados pelo seu acesso à sua
+própria memória.
 
-For example, if you have an application with a
-global mutable variable, that variable will be a separate
-variable in your spawned isolate. If you mutate that variable in the spawned
-isolate, it will remain untouched in the main isolate. This is how isolates are
-meant to function, and it's important to keep in mind when you’re considering
-using isolates.
+Por exemplo, se você tiver um aplicativo com uma variável global mutável, essa
+variável será uma variável separada em seu isolate gerado. Se você alterar
+essa variável no isolate gerado, ela permanecerá intacta no isolate principal.
+É assim que os isolates devem funcionar e é importante ter isso em mente ao
+considerar o uso de isolates.
 
-#### Message types {:#message-types}
+#### Tipos de mensagens {:#message-types}
 
-Messages sent via [`SendPort`][]
-can be almost any type of Dart object, but there are a few exceptions:
+As mensagens enviadas via [`SendPort`][] podem ser quase qualquer tipo de
+objeto Dart, mas há algumas exceções:
 
-- Objects with native resources, such as [`Socket`][].
+- Objetos com recursos nativos, como [`Socket`][].
 - [`ReceivePort`][]
 - [`DynamicLibrary`][]
 - [`Finalizable`][]
@@ -411,13 +423,13 @@ can be almost any type of Dart object, but there are a few exceptions:
 - [`NativeFinalizer`][]
 - [`Pointer`][]
 - [`UserTag`][]
-- Instances of classes that are marked with `@pragma('vm:isolate-unsendable')`
+- Instâncias de classes marcadas com `@pragma('vm:isolate-unsendable')`
 
-Apart from those exceptions, any object can be sent.
-Check out the [`SendPort.send`][] documentation for more information.
+Além dessas exceções, qualquer objeto pode ser enviado. Consulte a
+documentação de [`SendPort.send`][] para mais informações.
 
-Note that `Isolate.spawn()` and `Isolate.exit()` abstract over `SendPort` 
-objects, so they're subject to the same limitations.
+Observe que `Isolate.spawn()` e `Isolate.exit()` abstraem sobre objetos
+`SendPort`, portanto, estão sujeitos às mesmas limitações.
 
 [`SendPort.send`]: {{site.dart-api}}/dart-isolate/SendPort/send.html
 [`Socket`]: {{site.dart-api}}/dart-io/Socket-class.html
@@ -428,68 +440,64 @@ objects, so they're subject to the same limitations.
 [`Pointer`]: {{site.dart-api}}/dart-ffi/Pointer-class.html
 [`UserTag`]: {{site.dart-api}}/dart-developer/UserTag-class.html
 
-#### Synchronous blocking communication between isolates {:#synchronous-blocking-communication-between-isolates}
+#### Comunicação síncrona de bloqueio entre isolates {:#synchronous-blocking-communication-between-isolates}
 
-There is a limit to the number of isolates that can run in parallel.
-This limit doesn't affect the standard *asynchronous* communication between isolates
-via messages in Dart. You can have hundreds of isolates running concurrently
-and making progress. The isolates are scheduled on the CPU in round-robin fashion,
-and yield to each other often.
+Há um limite para o número de isolates que podem ser executados em paralelo.
+Esse limite não afeta a comunicação *assíncrona* padrão entre isolates por meio
+de mensagens em Dart. Você pode ter centenas de isolates sendo executados
+simultaneamente e progredindo. Os isolates são agendados na CPU em esquema
+round-robin (rodízio) e cedem um ao outro com frequência.
 
-Isolates can only communicate *synchronously* outside of pure Dart,
-using C code via [FFI] to do so. 
-Attempting synchronous communication between isolates
-by synchronous blocking in FFI calls
-may result in deadlock if the number of isolates is over the limit,
-unless special care is taken.
-The limit is not hardcoded to a particular number,
-it's calculated based on the Dart VM heap size available to the Dart application.
+Isolates só podem se comunicar *sincronamente* fora do Dart puro, usando código
+C via [FFI] para fazê-lo. Tentar comunicação síncrona entre isolates por
+bloqueio síncrono em chamadas FFI pode resultar em deadlock (impasse) se o
+número de isolates estiver acima do limite, a menos que cuidados especiais sejam
+tomados. O limite não é codificado para um número específico, ele é calculado
+com base no tamanho do heap da VM Dart disponível para o aplicativo Dart.
 
-To avoid this situation, the C code performing synchronous blocking
-needs to leave the current isolate before performing the blocking operation
-and re-enter it before returning to Dart from the FFI call.
-Read about [`Dart_EnterIsolate`] and [`Dart_ExitIsolate`] to learn more.
+Para evitar esta situação, o código C que executa o bloqueio síncrono precisa
+sair do isolate atual antes de executar a operação de bloqueio e entrar
+novamente antes de retornar ao Dart da chamada FFI. Leia sobre
+[`Dart_EnterIsolate`] e [`Dart_ExitIsolate`] para saber mais.
 
 [FFI]: /interop/c-interop
 [`Dart_EnterIsolate`]: {{site.repo.dart.sdk}}/blob/c9a8bbd8d6024e419b5e5f26b5131285eb19cc93/runtime/include/dart_api.h#L1254
 [`Dart_ExitIsolate`]: {{site.repo.dart.sdk}}/blob/c9a8bbd8d6024e419b5e5f26b5131285eb19cc93/runtime/include/dart_api.h#L1455
 
 <a id="web"></a>
-## Concurrency on the web {:#concurrency-on-the-web}
+## Concorrência na web {:#concurrency-on-the-web}
 
-All Dart apps can use `async-await`, `Future`, and `Stream`
-for non-blocking, interleaved computations. The [Dart web platform][], however,
-does not support isolates. Dart web apps can use [web workers][] to run scripts
-in background threads similar to isolates. Web workers' functionality and
-capabilities differ somewhat from isolates, though.
+Todos os aplicativos Dart podem usar `async-await`, `Future` e `Stream` para
+computações não bloqueadoras e intercaladas. A [plataforma Dart web][], no
+entanto, não suporta isolates. Aplicativos web Dart podem usar [web workers][]
+para executar scripts em threads de fundo semelhantes a isolates. A
+funcionalidade e os recursos dos web workers diferem um pouco dos isolates.
 
-For instance, when web workers send data between threads, they copy the data
-back and forth. Data copying can be very slow, though, especially for large
-messages. Isolates do the same, but also provide APIs that can more efficiently
-_transfer_
-the memory that holds the message instead.
+Por exemplo, quando os web workers enviam dados entre threads, eles copiam os
+dados de um lado para o outro. A cópia de dados pode ser muito lenta, no
+entanto, especialmente para mensagens grandes. Os isolates fazem o mesmo, mas
+também fornecem APIs que podem _transferir_ de forma mais eficiente a memória
+que contém a mensagem.
 
-Creating web workers and isolates also differs. You can only create web workers
-by declaring a separate program entrypoint and compiling it separately. Starting
-a web worker is similar to using `Isolate.spawnUri` to start an isolate. You can
-also start an isolate with `Isolate.spawn`, which requires fewer resources
-because it
-[reuses some of the same code and data](#performance-and-isolate-groups)
-as the spawning isolate. Web workers don't have an equivalent API.
+A criação de web workers e isolates também difere. Você só pode criar web
+workers declarando um ponto de entrada de programa separado e compilando-o
+separadamente. Iniciar um web worker é semelhante a usar `Isolate.spawnUri`
+para iniciar um isolate. Você também pode iniciar um isolate com
+`Isolate.spawn`, que requer menos recursos porque [reutiliza parte do mesmo
+código e dados](#performance-and-isolate-groups) que o isolate de
+geração. Web workers não têm uma API equivalente.
 
 [Dart web platform]: /overview#platform
 [web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
 
+## Recursos adicionais {:#additional-resources}
 
-## Additional resources {:#additional-resources}
-
-- If you’re using many isolates, consider
-  the [`IsolateNameServer`][]
-  in Flutter, or
-  [`package:isolate_name_server`][] that provides
-  similar functionality for non-Flutter Dart applications.
-- Read more about [Actor model][], which Dart's isolates are based on.
-- Additional documentation on `Isolate` APIs:
+- Se você estiver usando muitos isolates,
+  considere o [`IsolateNameServer`][]
+  no Flutter ou o [`package:isolate_name_server`][] que fornece funcionalidade
+  semelhante para aplicativos Dart que não são Flutter.
+- Leia mais sobre o [modelo Ator][], no qual os isolates de Dart são baseados.
+- Documentação adicional sobre as APIs de `Isolate`:
     - [`Isolate.exit()`][]
     - [`Isolate.spawn()`][]
     - [`ReceivePort`][]
@@ -497,7 +505,7 @@ as the spawning isolate. Web workers don't have an equivalent API.
 
 [`IsolateNameServer`]: {{site.flutter-api}}/flutter/dart-ui/IsolateNameServer-class.html
 [`package:isolate_name_server`]: {{site.pub-pkg}}/isolate_name_server
-[Actor model]: https://en.wikipedia.org/wiki/Actor_model
+[modelo Ator]: https://en.wikipedia.org/wiki/Actor_model
 [`Isolate.run()`]: {{site.dart-api}}/dart-isolate/Isolate/run.html
 [`Isolate.exit()`]: {{site.dart-api}}/dart-isolate/Isolate/exit.html
 [`Isolate.spawn()`]: {{site.dart-api}}/dart-isolate/Isolate/spawn.html

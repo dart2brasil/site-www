@@ -1,23 +1,24 @@
 ---
-title: Methods
-description: Learn about methods in Dart.
+ia-translate: true
+title: Métodos
+description: Aprenda sobre métodos em Dart.
 prevpage:
   url: /language/constructors
-  title: Constructors
+  title: Construtores
 nextpage:
   url: /language/extend
-  title: Extend a class
+  title: Estender uma classe
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
-Methods are functions that provide behavior for an object.
+Métodos são funções que fornecem comportamento para um objeto.
 
-## Instance methods {:#instance-methods}
+## Métodos de instância {:#instance-methods}
 
-Instance methods on objects can access instance variables and `this`.
-The `distanceTo()` method in the following sample is an example of an
-instance method:
+Métodos de instância em objetos podem acessar variáveis de instância e `this` (este).
+O método `distanceTo()` (distânciaPara()) no exemplo a seguir é um exemplo de um
+método de instância:
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (class-with-distance-to)" plaster="none"?>
 ```dart
@@ -27,8 +28,8 @@ class Point {
   final double x;
   final double y;
 
-  // Sets the x and y instance variables
-  // before the constructor body runs.
+  // Define as variáveis de instância x e y
+  // antes da execução do corpo do construtor.
   Point(this.x, this.y);
 
   double distanceTo(Point other) {
@@ -39,10 +40,10 @@ class Point {
 }
 ```
 
-## Operators {:#operators}
+## Operadores {:#operators}
 
-Most operators are instance methods with special names.
-Dart allows you to define operators with the following names:
+A maioria dos operadores são métodos de instância com nomes especiais.
+Dart permite que você defina operadores com os seguintes nomes:
 
 |       |      |      |      |       |      |
 |-------|------|------|------|-------|------|
@@ -54,9 +55,9 @@ Dart allows you to define operators with the following names:
 {:.table}
 
 :::note
-You may have noticed that some [operators][], like `!=`, aren't in
-the list of names. These operators aren't instance methods.
-Their behavior is built in to Dart.
+Você pode ter notado que alguns [operadores][], como `!=`, não estão na
+lista de nomes. Esses operadores não são métodos de instância.
+Seu comportamento é interno ao Dart.
 :::
 
 {%- comment %}
@@ -65,10 +66,10 @@ Their behavior is built in to Dart.
   - `!` is probably excluded for historical reasons
 {% endcomment %}
 
-To declare an operator, use the built-in identifier
-`operator` then the operator you are defining.
-The following example defines vector addition (`+`), subtraction (`-`),
-and equality (`==`):
+Para declarar um operador, use o identificador embutido
+`operator` e então o operador que você está definindo.
+O exemplo a seguir define adição de vetor (`+`), subtração (`-`),
+e igualdade (`==`):
 
 <?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
 ```dart
@@ -98,13 +99,13 @@ void main() {
 ```
 
 
-## Getters and setters {:#getters-and-setters}
+## Getters e setters {:#getters-and-setters}
 
-Getters and setters are special methods that provide read and write
-access to an object's properties. Recall that each instance variable has
-an implicit getter, plus a setter if appropriate. You can create
-additional properties by implementing getters and setters, using the
-`get` and `set` keywords:
+Getters (acessadores) e setters (modificadores) são métodos especiais que fornecem acesso
+de leitura e escrita às propriedades de um objeto. Lembre-se de que cada variável de instância tem
+um getter (acessador) implícito, mais um setter (modificador) se apropriado. Você pode criar
+propriedades adicionais implementando getters (acessadores) e setters (modificadores), usando as
+palavras-chave `get` e `set`:
 
 <?code-excerpt "misc/lib/language_tour/classes/rectangle.dart"?>
 ```dart
@@ -113,7 +114,7 @@ class Rectangle {
 
   Rectangle(this.left, this.top, this.width, this.height);
 
-  // Define two calculated properties: right and bottom.
+  // Define duas propriedades calculadas: right e bottom.
   double get right => left + width;
   set right(double value) => left = value - width;
   double get bottom => top + height;
@@ -128,35 +129,35 @@ void main() {
 }
 ```
 
-With getters and setters, you can start with instance variables, later
-wrapping them with methods, all without changing client code.
+Com getters (acessadores) e setters (modificadores), você pode começar com variáveis de instância e depois
+envolvê-las com métodos, tudo sem alterar o código do cliente.
 
 :::note
-Operators such as increment (++) work in the expected way, whether or
-not a getter is explicitly defined. To avoid any unexpected side
-effects, the operator calls the getter exactly once, saving its value
-in a temporary variable.
+Operadores como incremento (++) funcionam da maneira esperada, quer um
+getter (acessador) seja explicitamente definido ou não. Para evitar quaisquer efeitos colaterais
+inesperados, o operador chama o getter (acessador) exatamente uma vez, salvando seu valor
+em uma variável temporária.
 :::
 
-## Abstract methods {:#abstract-methods}
+## Métodos abstratos {:#abstract-methods}
 
-Instance, getter, and setter methods can be abstract, defining an
-interface but leaving its implementation up to other classes.
-Abstract methods can only exist in [abstract classes][] or [mixins][].
+Métodos de instância, getter (acessadores) e setter (modificadores) podem ser abstratos, definindo uma
+interface, mas deixando sua implementação para outras classes.
+Métodos abstratos só podem existir em [classes abstratas][] ou [mixins][].
 
-To make a method abstract, use a semicolon (`;`) instead of a method body:
+Para tornar um método abstrato, use um ponto e vírgula (`;`) em vez de um corpo de método:
 
 <?code-excerpt "misc/lib/language_tour/classes/doer.dart"?>
 ```dart
 abstract class Doer {
-  // Define instance variables and methods...
+  // Define variáveis de instância e métodos...
 
-  void doSomething(); // Define an abstract method.
+  void doSomething(); // Define um método abstrato.
 }
 
 class EffectiveDoer extends Doer {
   void doSomething() {
-    // Provide an implementation, so the method is not abstract here...
+    // Fornece uma implementação, então o método não é abstrato aqui...
   }
 }
 ```

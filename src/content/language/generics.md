@@ -1,9 +1,10 @@
 ---
-title: Generics
-description: Learn about generic types in Dart.
+ia-translate: true
+title: Genéricos (Generics)
+description: Aprenda sobre tipos genéricos em Dart.
 prevpage:
   url: /language/collections
-  title: Collections
+  title: Coleções
 nextpage:
   url: /language/typedefs
   title: Typedefs
@@ -11,25 +12,25 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-If you look at the API documentation for the basic array type,
-[`List`][], you'll see that the
-type is actually `List<E>`. The \<...\> notation marks List as a
-*generic* (or *parameterized*) type—a type that has formal type
-parameters. [By convention][], most type variables have single-letter names,
-such as E, T, S, K, and V.
+Se você olhar a documentação da API para o tipo básico de array,
+[`List`][], você verá que o tipo é na verdade `List<E>`.
+A notação \<...\> marca `List` como um tipo
+*genérico* (ou *parametrizado*)—um tipo que tem parâmetros de tipo formais.
+[Por convenção][], a maioria das variáveis de tipo tem nomes de uma única letra,
+como E, T, S, K e V.
 
-## Why use generics? {:#why-use-generics}
+## Por que usar genéricos? {:#why-use-generics}
 
-Generics are often required for type safety, but they have more benefits
-than just allowing your code to run:
+Genéricos (Generics) são frequentemente necessários para a segurança de tipos, mas eles têm mais benefícios
+do que apenas permitir que seu código seja executado:
 
-* Properly specifying generic types results in better generated code.
-* You can use generics to reduce code duplication.
+*   Especificar tipos genéricos corretamente resulta em um código melhor gerado.
+*   Você pode usar genéricos para reduzir a duplicação de código.
 
-If you intend for a list to contain only strings, you can
-declare it as `List<String>` (read that as "list of string"). That way
-you, your fellow programmers, and your tools can detect that assigning a non-string to
-the list is probably a mistake. Here's an example:
+Se você pretende que uma lista contenha apenas strings, você pode
+declará-la como `List<String>` (leia-se como "lista de string"). Dessa forma,
+você, seus colegas programadores e suas ferramentas podem detectar que atribuir um não-string à
+lista é provavelmente um erro. Aqui está um exemplo:
 
 ```dart tag=fails-sa
 var names = <String>[];
@@ -37,11 +38,11 @@ names.addAll(['Seth', 'Kathy', 'Lars']);
 names.add(42); // Error
 ```
 
-Another reason for using generics is to reduce code duplication.
-Generics let you share a single interface and implementation between
-many types, while still taking advantage of static
-analysis. For example, say you create an interface for
-caching an object:
+Outra razão para usar genéricos é reduzir a duplicação de código.
+Genéricos permitem que você compartilhe uma única interface e implementação entre
+muitos tipos, enquanto ainda tira proveito da análise estática.
+Por exemplo, digamos que você crie uma interface para
+armazenar em cache um objeto:
 
 <?code-excerpt "misc/lib/language_tour/generics/cache.dart (object-cache)"?>
 ```dart
@@ -51,8 +52,8 @@ abstract class ObjectCache {
 }
 ```
 
-You discover that you want a string-specific version of this interface,
-so you create another interface:
+Você descobre que quer uma versão específica para strings desta interface,
+então você cria outra interface:
 
 <?code-excerpt "misc/lib/language_tour/generics/cache.dart (string-cache)"?>
 ```dart
@@ -62,11 +63,11 @@ abstract class StringCache {
 }
 ```
 
-Later, you decide you want a number-specific version of this
-interface... You get the idea.
+Mais tarde, você decide que quer uma versão específica para números desta
+interface... Você entendeu a ideia.
 
-Generic types can save you the trouble of creating all these interfaces.
-Instead, you can create a single interface that takes a type parameter:
+Tipos genéricos podem poupar o trabalho de criar todas essas interfaces.
+Em vez disso, você pode criar uma única interface que recebe um parâmetro de tipo:
 
 <?code-excerpt "misc/lib/language_tour/generics/cache.dart (cache)"?>
 ```dart
@@ -76,17 +77,17 @@ abstract class Cache<T> {
 }
 ```
 
-In this code, T is the stand-in type. It's a placeholder that you can
-think of as a type that a developer will define later.
+Neste código, T é o tipo substituto. É um espaço reservado que você pode
+pensar como um tipo que um desenvolvedor definirá mais tarde.
 
 
-## Using collection literals {:#using-collection-literals}
+## Usando literais de coleção {:#using-collection-literals}
 
-List, set, and map literals can be parameterized. Parameterized literals are
-just like the literals you've already seen, except that you add
-<code>&lt;<em>type</em>></code> (for lists and sets) or
-<code>&lt;<em>keyType</em>, <em>valueType</em>></code> (for maps)
-before the opening bracket. Here is an example of using typed literals:
+Literais (literals) de lista, conjunto e mapa podem ser parametrizados. Literais parametrizados são
+como os literais que você já viu, exceto que você adiciona
+<code>&lt;*tipo*></code> (para listas e conjuntos) ou
+<code>&lt;*tipoChave*, *tipoValor*></code> (para mapas)
+antes do colchete de abertura. Aqui está um exemplo de uso de literais tipados:
 
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (collection-literals)"?>
 ```dart
@@ -100,18 +101,18 @@ var pages = <String, String>{
 ```
 
 
-## Using parameterized types with constructors {:#using-parameterized-types-with-constructors}
+## Usando tipos parametrizados com construtores {:#using-parameterized-types-with-constructors}
 
-To specify one or more types when using a constructor, put the types in
-angle brackets (`<...>`) just after the class name. For example:
+Para especificar um ou mais tipos ao usar um construtor, coloque os tipos em
+colchetes angulares (`<...>`) logo após o nome da classe. Por exemplo:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-1)"?>
 ```dart
 var nameSet = Set<String>.from(names);
 ```
 
-The following code creates a map that has integer keys and values of
-type View:
+O código a seguir cria um mapa que tem chaves inteiras e valores do
+tipo View:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-2)"?>
 ```dart
@@ -119,11 +120,11 @@ var views = Map<int, View>();
 ```
 
 
-## Generic collections and the types they contain {:#generic-collections-and-the-types-they-contain}
+## Coleções genéricas e os tipos que elas contêm {:#generic-collections-and-the-types-they-contain}
 
-Dart generic types are *reified*, which means that they carry their type
-information around at runtime. For example, you can test the type of a
-collection:
+Os tipos genéricos do Dart são *reificados*, o que significa que eles carregam suas informações de tipo
+em tempo de execução. Por exemplo, você pode testar o tipo de uma
+coleção:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (generic-collections)"?>
 ```dart
@@ -133,33 +134,33 @@ print(names is List<String>); // true
 ```
 
 :::note
-In contrast, generics in Java use *erasure*, which means that generic
-type parameters are removed at runtime. In Java, you can test whether
-an object is a List, but you can't test whether it's a `List<String>`.
+Em contraste, os genéricos em Java usam *erasure* (apagamento), o que significa que os parâmetros de tipo
+genérico são removidos em tempo de execução. Em Java, você pode testar se
+um objeto é uma Lista, mas não pode testar se é uma `List<String>`.
 :::
 
 
-## Restricting the parameterized type {:#restricting-the-parameterized-type}
+## Restringindo o tipo parametrizado {:#restricting-the-parameterized-type}
 
-When implementing a generic type,
-you might want to limit the types that can be provided as arguments,
-so that the argument must be a subtype of a particular type.
-You can do this using `extends`.
+Ao implementar um tipo genérico,
+você pode querer limitar os tipos que podem ser fornecidos como argumentos,
+de modo que o argumento precise ser um subtipo de um tipo específico.
+Você pode fazer isso usando `extends`.
 
-A common use case is ensuring that a type is non-nullable
-by making it a subtype of `Object`
-(instead of the default, [`Object?`][top-and-bottom]).
+Um caso de uso comum é garantir que um tipo não seja anulável,
+tornando-o um subtipo de `Object`
+(em vez do padrão, [`Object?`][top-and-bottom]).
 
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (non-nullable)"?>
 ```dart
 class Foo<T extends Object> {
-  // Any type provided to Foo for T must be non-nullable.
+  // Qualquer tipo fornecido para Foo para T deve ser não anulável.
 }
 ```
 
-You can use `extends` with other types besides `Object`.
-Here's an example of extending `SomeBaseClass`,
-so that members of `SomeBaseClass` can be called on objects of type `T`:
+Você pode usar `extends` com outros tipos além de `Object`.
+Aqui está um exemplo de extensão de `SomeBaseClass`,
+para que os membros de `SomeBaseClass` possam ser chamados em objetos do tipo `T`:
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart (generic)" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 ```dart
@@ -171,7 +172,7 @@ class Foo<T [!extends SomeBaseClass!]> {
 class Extender extends SomeBaseClass {...}
 ```
 
-It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:
+É aceitável usar `SomeBaseClass` ou qualquer um de seus subtipos como argumento genérico:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
 ```dart
@@ -179,7 +180,7 @@ var someBaseClassFoo = [!Foo<SomeBaseClass>!]();
 var extenderFoo = [!Foo<Extender>!]();
 ```
 
-It's also OK to specify no generic argument:
+Também é aceitável não especificar nenhum argumento genérico:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (no-generic-arg-ok)" replace="/expect\((.*?).toString\(\), .(.*?).\);/print($1); \/\/ $2/g"?>
 ```dart
@@ -187,16 +188,16 @@ var foo = Foo();
 print(foo); // Instance of 'Foo<SomeBaseClass>'
 ```
 
-Specifying any non-`SomeBaseClass` type results in an error:
+Especificar qualquer tipo não `SomeBaseClass` resulta em um erro:
 
 ```dart tag=fails-sa
 var foo = [!Foo<Object>!]();
 ```
 
 
-## Using generic methods {:#using-generic-methods}
+## Usando métodos genéricos {:#using-generic-methods}
 
-Methods and functions also allow type arguments:
+Métodos e funções também permitem argumentos de tipo:
 
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
@@ -210,13 +211,13 @@ Methods and functions also allow type arguments:
 }
 ```
 
-Here the generic type parameter on `first` (`<T>`)
-allows you to use the type argument `T` in several places:
+Aqui, o parâmetro de tipo genérico em `first` (`<T>`)
+permite que você use o argumento de tipo `T` em vários lugares:
 
-* In the function's return type (`T`).
-* In the type of an argument (`List<T>`).
-* In the type of a local variable (`T tmp`).
+*   No tipo de retorno da função (`T`).
+*   No tipo de um argumento (`List<T>`).
+*   No tipo de uma variável local (`T tmp`).
 
 [`List`]: {{site.dart-api}}/dart-core/List-class.html
-[By convention]: /effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters
+[Por convenção]: /effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom

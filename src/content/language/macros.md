@@ -1,67 +1,68 @@
 ---
+ia-translate: true
 title: Macros (experimental)
-description: Learn about the experimental macros feature as it develops.
+description: Saiba mais sobre o recurso experimental de macros à medida que ele se desenvolve.
 ---
 
-[The Dart macro system][spec] is a major new language feature
-***currently under development*** which adds support for
-[static meta-programming][motivation] to the Dart language.
+O [sistema de macros Dart][spec] é um novo e importante recurso de linguagem
+***atualmente em desenvolvimento*** que adiciona suporte para
+[metaprogramação estática][motivation] à linguagem Dart.
 
-A Dart macro is a user-definable piece of code that takes in other code as parameters
-and operates on it in real-time to create, modify, or add declarations.
+Uma macro Dart é um trecho de código definível pelo usuário que recebe outro código como parâmetros
+e opera sobre ele em tempo real para criar, modificar ou adicionar declarações.
 
-You can think about the macro system in two parts: using macros and writing macros.
-This page covers each (at a high level, as ***the feature is still in preview***)
-in the following sections:
+Você pode pensar sobre o sistema de macros em duas partes: usar macros e escrever macros.
+Esta página aborda cada uma (em alto nível, já que ***o recurso ainda está em pré-visualização***)
+nas seções seguintes:
 
-- [**The `JsonCodable` macro**](#the-jsoncodable-macro):
-A ready-made macro you can try out today (behind an experimental flag)
-that offers a seamless solution to the
-common issue of tedious JSON serialization and deserialization in Dart.
+- [**A macro `JsonCodable`**](#the-jsoncodable-macro):
+Uma macro pronta que você pode experimentar hoje (por trás de uma flag experimental)
+que oferece uma solução perfeita para a
+questão comum da tediosa serialização e desserialização de JSON em Dart.
 
-- [**The macros feature in general**](#the-macros-language-feature):
-Why we're adding macros to Dart, motivating use cases,
-benefits over existing code gen solutions,
-and a cursory overview of how writing macros will work in the future once
-the feature is complete.
+- [**O recurso de macros em geral**](#the-macros-language-feature):
+Por que estamos adicionando macros ao Dart, motivando casos de uso,
+benefícios em relação às soluções de geração de código existentes,
+e uma visão geral superficial de como a escrita de macros funcionará no futuro, uma vez que
+o recurso estiver completo.
 
 [spec]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md
 [motivation]: {{site.repo.dart.lang}}/blob/main/working/macros/motivation.md
 
-## The `JsonCodable` macro {:#the-jsoncodable-macro}
+## A macro `JsonCodable` {:#the-jsoncodable-macro}
 
 :::important
-The `JsonCodable` macro is not stable and currently behind an [experimental flag][].
-It only works with Dart `3.5.0-152` or later. 
-This is available from the [Dart dev channel][channel] 
-or from the [Flutter master channel][flutter-channel].
+A macro `JsonCodable` não é estável e atualmente está por trás de uma [flag experimental][].
+Ela só funciona com Dart `3.5.0-152` ou posterior.
+Está disponível no [canal de desenvolvimento do Dart][channel]
+ou no [canal master do Flutter][flutter-channel].
 
-Functionality is subject to change.
+A funcionalidade está sujeita a alterações.
 :::
 
-The [`JsonCodable`][] macro encodes and decodes
-user-defined Dart classes to JSON maps of type `Map<String, Object?>`.
-It generates two members, a `toJson` serialization method,
-and a `fromJson` deserialization constructor.
+A macro [`JsonCodable`][] codifica e decodifica
+classes Dart definidas pelo usuário em mapas JSON do tipo `Map<String, Object?>`.
+Ela gera dois membros, um método de serialização `toJson` e
+um construtor de desserialização `fromJson`.
 
 [experimental flag]: /tools/experiment-flags
 [`JsonCodable`]: {{site.pub-pkg}}/json/versions/0.20.0
-[channel]: https://dart.dev/get-dart#release-channels
+[channel]: https://dartbrasil.dev/get-dart#release-channels
 [flutter-channel]: {{site.flutter-docs}}/release/upgrade#other-channels
 
-### Set up the experiment {:#set-up-the-experiment}
+### Configure o experimento {:#set-up-the-experiment}
 
-1. Switch to the [Dart dev channel][channel] or the
-  [Flutter master channel][flutter-channel].
+1. Mude para o [canal de desenvolvimento do Dart][channel] ou o
+   [canal master do Flutter][flutter-channel].
 
-2. Run `dart --version` and make sure you have Dart version `3.5.0-152` or later.
+2. Execute `dart --version` e verifique se você tem a versão `3.5.0-152` ou posterior do Dart.
 
-3. Edit the [SDK constraint][] in your pubspec to require the Dart version: `sdk: ^3.5.0-152`.
+3. Edite a [restrição do SDK][] no seu pubspec para exigir a versão do Dart: `sdk: ^3.5.0-152`.
 
-4. [Add the package][] `json` to `dependencies`: `dart pub add json`.
+4. [Adicione o pacote][] `json` às `dependencies`: `dart pub add json`.
 
-5. [Enable the experiment][] in your package's `analysis_options.yaml` file.
-  file at the root of your project:
+5. [Habilite o experimento][] no arquivo `analysis_options.yaml` do seu pacote
+   na raiz do seu projeto:
 
    ```yaml
    analyzer:
@@ -69,13 +70,13 @@ and a `fromJson` deserialization constructor.
       - macros
    ```
 
-6. Import the package in the file you plan to use it:
+6. Importe o pacote no arquivo que você planeja usá-lo:
 
    ```dart
    import 'package:json/json.dart';
    ```
 
-7. Run your project with the experimental flag:
+7. Execute seu projeto com a flag experimental:
 
    ```console
    dart run --enable-experiment=macros bin/my_app.dart
@@ -85,14 +86,14 @@ and a `fromJson` deserialization constructor.
 [Add the package]: /tools/pub/packages
 [Enable the experiment]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
 
-### Use the macro {:#use-the-macro}
+### Use a macro {:#use-the-macro}
 
-To use the `JsonCodable` macro, attach the annotation to the class you want to serialize:
+Para usar a macro `JsonCodable`, anexe a anotação à classe que você deseja serializar:
 
 ```dart
 import 'package:json/json.dart';
 
-@JsonCodable() // Macro annotation.
+@JsonCodable() // Anotação de macro.
 class User {
  final int? age;
  final String name;
@@ -100,98 +101,98 @@ class User {
 }
 ```
 
-The macro introspects the `User` class and derives the implementations of
-`fromJson` and `toJson` using the `User` class's fields.
+A macro introspecta a classe `User` e deriva as implementações de
+`fromJson` e `toJson` usando os campos da classe `User`.
 
-So, without needing to define them yourself, `toJson` and `fromJson` are now
-available to use on objects of the annotated class:
+Portanto, sem precisar defini-los você mesmo, `toJson` e `fromJson` agora estão
+disponíveis para uso em objetos da classe anotada:
 
 ```dart
 void main() {
- // Given some arbitrary JSON:
+ // Dado algum JSON arbitrário:
  var userJson = {
    'age': 5,
    'name': 'Roger',
    'username': 'roger1337'
  };
 
- // Use the generated members:
+ // Use os membros gerados:
  var user = User.fromJson(userJson);
  print(user);
  print(user.toJson());
 }
 ```
 
-### View the generated code {:#view-the-generated-code}
+### Visualize o código gerado {:#view-the-generated-code}
 
-Sometimes it can be useful to view the generated code to better understand
-how a macros works, or to inspect the details of what it offers.
+Às vezes, pode ser útil visualizar o código gerado para entender melhor
+como uma macro funciona, ou para inspecionar os detalhes do que ela oferece.
 
-Click on the "**Go to Augmentation**" link that appears under the annotation
-in your IDE (supported in VSCode)
-to see how the macro generates `toJson` and `fromJson`.
+Clique no link "**Go to Augmentation**" que aparece sob a anotação
+no seu IDE (suportado no VSCode)
+para ver como a macro gera `toJson` e `fromJson`.
 
-If you change anything in the annotated class, you can watch the generated augmentation
-adjust in real time alongside your application code:
+Se você alterar algo na classe anotada, poderá observar a _augmentation_ gerada
+se ajustar em tempo real junto com o código do seu aplicativo:
 
-![A side-by-side gif of the generated augmentation updating as the code it's augmenting is updated](/assets/img/language/macro-augmentation.gif)
+![Um gif lado a lado da _augmentation_ gerada atualizando à medida que o código que está aumentando é atualizado](/assets/img/language/macro-augmentation.gif)
 
-### Trigger custom diagnostics {:#trigger-custom-diagnostics}
+### Acione diagnósticos personalizados {:#trigger-custom-diagnostics}
 
-The `JsonCodable` macro has built-in diagnostics that are emitted just like
-diagnostics from the language itself. For example, if you try to manually
-declare a `toJson` method where the macro is applied, the analyzer will emit
-the error:
+A macro `JsonCodable` possui diagnósticos integrados que são emitidos como
+diagnósticos da própria linguagem. Por exemplo, se você tentar declarar
+manualmente um método `toJson` onde a macro é aplicada, o analisador emitirá
+o erro:
 
 ```dart
 @JsonCodable()
 class HasToJson {
  void [!toJson!]() {}
- // Error: Cannot generate a toJson method due to this existing one.
+ // Erro: Não é possível gerar um método toJson devido a este existente.
 }
 ```
 
-You can search "`DiagnosticMessage`" in the [the definition of `JsonCodable`][json]
-for other errors the macro will throw. For example, extending a class that isn't
-also serializable, or if field names don't exactly match the key names in the given JSON.
+Você pode pesquisar por "`DiagnosticMessage`" na [definição de `JsonCodable`][json]
+para outros erros que a macro irá gerar. Por exemplo, estender uma classe que também não é
+serializável, ou se os nomes dos campos não corresponderem exatamente aos nomes das chaves no JSON fornecido.
 
 :::note
-To learn more about using the `JsonCodable` macro, like supported field types,
-treatment of null and generics, and more, check out [the README][].
+Para saber mais sobre como usar a macro `JsonCodable`, como tipos de campos suportados,
+tratamento de nulo e genéricos, e muito mais, consulte [o README][].
 :::
 
 [the definition of `JsonCodable`]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
 [the README]: {{site.pub-pkg}}/json
 
-## The macros language feature {:#the-macros-language-feature}
+## O recurso de linguagem macros {:#the-macros-language-feature}
 
-Dart macros are a *static* metaprogramming, or code generation, solution.
-Unlike *runtime* code generation solutions (like [build_runner][]),
-macros are fully integrated into the Dart language
-and executed automatically in the background by Dart tools.
-This makes macros much more efficient than relying on an secondary tool:
+As macros Dart são uma solução de metaprogramação *estática*, ou geração de código.
+Ao contrário das soluções de geração de código *em tempo de execução* (como [build_runner][]),
+as macros são totalmente integradas à linguagem Dart
+e executadas automaticamente em segundo plano pelas ferramentas Dart.
+Isso torna as macros muito mais eficientes do que depender de uma ferramenta secundária:
 
-- **Nothing extra to run**;
- macros build in real-time as you write your code.
-- **No duplicated work** or constant recompiling hurting performance;
- all the building and code generation happen directly in the compiler,
- automatically.
-- **Not written to disk**, so no part files or pointers to generated references;
- macros directly augment the *existing* class.
-- **No confusing/obfuscated testing**;
- custom diagnostics are emitted like any other message from the analyzer,
- directly in the IDE.
+- **Nada extra para executar**;
+ as macros são construídas em tempo real enquanto você escreve seu código.
+- **Sem trabalho duplicado** ou recompilação constante prejudicando o desempenho;
+ toda a construção e geração de código acontecem diretamente no compilador,
+ automaticamente.
+- **Não gravadas em disco**, portanto, sem arquivos de peças ou ponteiros para referências geradas;
+ as macros aumentam diretamente a classe *existente*.
+- **Sem testes confusos/ofuscados**;
+ diagnósticos personalizados são emitidos como qualquer outra mensagem do analisador,
+ diretamente no IDE.
 
-And also far more efficient, and far less error prone, than manually
-writing solutions to these types of problems yourself.
+E também muito mais eficiente e muito menos propenso a erros do que manualmente
+escrever soluções para esses tipos de problemas você mesmo.
 
 {% comment %}
-Check out these examples showing the same JSON serialization
-implemented three different ways:
+Confira estes exemplos mostrando a mesma serialização JSON
+implementada de três maneiras diferentes:
 
-- Using the [`JsonCodable` macro][].
-- Using the [`json_serializable` code gen package][].
-- Manually, [with `dart:convert`][].
+- Usando a [`JsonCodable` macro][].
+- Usando o [`json_serializable` pacote de geração de código][].
+- Manualmente, [com `dart:convert`][].
 {% endcomment %}
 
 [build_runner]: /tools/build_runner
@@ -199,52 +200,52 @@ implemented three different ways:
 [`json_serializable` code gen package]: https://github.com/mit-mit/sandbox/blob/main/explorations/json/dart_json_serializable/bin/main.dart
 [with `dart:convert`]: https://github.com/mit-mit/sandbox/blob/main/explorations/json/dart_convert/bin/main.dart
 
-### Use cases {:#use-cases}
+### Casos de uso {:#use-cases}
 
-Macros provide reusable mechanisms to address patterns characterized by tedious
-boilerplate, and often times the need to iterate over the fields of a class.
-Some common examples that we hope to solve with macros in the future are:
+As macros fornecem mecanismos reutilizáveis para abordar padrões caracterizados por tedioso
+_boilerplate_, e muitas vezes a necessidade de iterar sobre os campos de uma classe.
+Alguns exemplos comuns que esperamos resolver com macros no futuro são:
 
-- **Json serialization.** The extra tooling required to serialize JSON,
- like the [json_serializable][] package, isn't as efficient as it should be.
- The `JsonCodable` macro provides a much cleaner way to
- generate serialization code; [try it today](#the-jsoncodable-macro).
+- **Serialização JSON.** As ferramentas extras necessárias para serializar JSON,
+ como o pacote [json_serializable][], não é tão eficiente quanto deveria ser.
+ A macro `JsonCodable` fornece uma maneira muito mais limpa de
+ gerar código de serialização; [experimente hoje](#the-jsoncodable-macro).
 
-- **Data classes.** Dart's [most requested][] feature is for data classes
- that automatically provide a constructor, and implementations of the `==`,
- `hashCode`, and `copyWith()` methods for each field.
- Implementing the solution with macros would mean users can customize the
- their data classes however they see fit.
+- **Classes de dados.** O recurso [mais solicitado][] do Dart é para classes de dados
+ que fornecem automaticamente um construtor e implementações dos métodos `==`,
+ `hashCode` e `copyWith()` para cada campo.
+ Implementar a solução com macros significaria que os usuários podem personalizar
+ suas classes de dados como melhor lhes convier.
 
-- **Verbose Flutter patterns.** One example is breaking down a complex `build`
- method into an aggregation of smaller widget classes. It's
- better for performance and makes the code more maintainable. Unfortunately,
- writing all those smaller classes requires tons of boilerplate, which discourages
- users. Macros could potentially provide a solution that iterates over a
- complex `build` method to generates smaller widget classes,
- greatly improving productivity and quality of Flutter code.
- You can check out one exploration into this topic in this
- [proposal][stateful-macro] from the Flutter team.
+- **Padrões Verbose do Flutter.** Um exemplo é dividir um `build` complexo
+método em uma agregação de classes de _widget_ menores. É
+melhor para o desempenho e torna o código mais fácil de manter. Infelizmente,
+escrever todas essas classes menores exige uma tonelada de _boilerplate_, o que desencoraja
+usuários. As macros poderiam potencialmente fornecer uma solução que itera sobre um
+`build` complexo método para gerar classes de _widget_ menores,
+melhorando muito a produtividade e a qualidade do código Flutter.
+Você pode conferir uma exploração sobre esse tópico nesta
+[proposta][stateful-macro] da equipe do Flutter.
 
 [json_serializable]: {{site.pub-pkg}}/json_serializable
 [most requested]: {{site.repo.dart.lang}}/issues/314
 [stateful-macro]: {{site.flutter-docs}}/go/stateful-macro
 
-### How macros work {:#how-macros-work}
+### Como as macros funcionam {:#how-macros-work}
 
 :::important
-The macros language feature is not stable and currently behind an
-[experimental flag][]. Functionality is highly subject to change.
-This section will remain very high-level until stable.
+O recurso de linguagem de macros não é estável e atualmente está por trás de um
+[flag experimental][]. A funcionalidade está altamente sujeita a alterações.
+Esta seção permanecerá muito genérica até que esteja estável.
 :::
 
-To create a macro, you write a macro declaration similar to a class,
-using the `macro` keyword.
-A macro declaration must also include an `implements` clause to define
-which interface the macro can be applied to.
+Para criar uma macro, você escreve uma declaração de macro semelhante a uma classe,
+usando a palavra-chave `macro`.
+Uma declaração de macro também deve incluir uma cláusula `implements` para definir
+qual interface a macro pode ser aplicada.
 
-For example, a macro that is applicable to classes, and adds new declarations to the class,
-would implement the `ClassDeclarationsMacro` interface:
+Por exemplo, uma macro que é aplicável a classes e adiciona novas declarações à classe,
+implementaria a interface `ClassDeclarationsMacro`:
 
 ```dart
 macro class MyMacro implements ClassDeclarationsMacro {
@@ -254,57 +255,57 @@ macro class MyMacro implements ClassDeclarationsMacro {
 }
 ```
 
-While the feature is still in development, you can find the full list of
-macro interfaces [in the source code][types].
+Enquanto o recurso ainda está em desenvolvimento, você pode encontrar a lista completa de
+interfaces de macro [no código-fonte][types].
 
-The `MyMacro` constructor in the above example corresponds to the annotation
-you would use to apply the macro to a declaration.
-The syntax is the same as Dart's existing metadata annotation syntax:
+O construtor `MyMacro` no exemplo acima corresponde à anotação
+que você usaria para aplicar a macro a uma declaração.
+A sintaxe é a mesma da sintaxe de anotação de metadados existente do Dart:
 
 ```dart
 @MyMacro()
 class A {}
 ```
 
-Within the body of the macro declaration is where you define the code you want
-the macro to [generate](#view-the-generated-code), as well as any
-[diagnostics](#trigger-custom-diagnostics) you want the macro to emit.
+Dentro do corpo da declaração de macro é onde você define o código que deseja
+a macro [gere](#view-the-generated-code), bem como qualquer
+[diagnóstico](#trigger-custom-diagnostics) que você deseja que a macro emita.
 
-At a very high-level, writing macros essentially works by using builder methods
-to piece together the *properties* of a declaration with *identifiers* on those
-properties. The macro gathers this information through deep [introspection][] of
-the program.
+Em um nível muito alto, escrever macros essencialmente funciona usando métodos de _builder_
+para juntar as *propriedades* de uma declaração com *identificadores* nessas
+propriedades. A macro coleta essas informações através da [introspecção][] profunda
+do programa.
 
-Macros are still under development, so that's as much detail we can go into for now.
-If you're curious, or would like to try it yourself behind an experimental flag,
-the best guidance is to take a look at the implementation of existing macros:
+As macros ainda estão em desenvolvimento, então isso é o máximo de detalhes que podemos fornecer por enquanto.
+Se você estiver curioso ou quiser experimentá-las por trás de uma flag experimental,
+a melhor orientação é dar uma olhada na implementação das macros existentes:
 
-- Check out the [definition][json] of the `JsonCodable` macro,
-- Or any of the [examples][] available in the language repo.
+- Confira a [definição][json] da macro `JsonCodable`,
+- Ou qualquer um dos [exemplos][] disponíveis no repositório da linguagem.
 
 [types]: {{site.repo.dart.sdk}}/blob/main/pkg/_macros/lib/src/api/macros.dart
 [json]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
 [augmentation]: {{site.repo.dart.lang}}/blob/main/working/augmentation-libraries/feature-specification.md
 [examples]: {{site.repo.dart.lang}}/tree/main/working/macros/example
 
-## Timeline {:#timeline}
+## Linha do tempo {:#timeline}
 
-The stable release date for macros is currently unknown.
-This is due to the complexity of their implementation.
+A data de lançamento estável para macros é atualmente desconhecida.
+Isso se deve à complexidade de sua implementação.
 
-Macros work by deeply [introspecting][introspection] the program in which
-they're applied. A macro may end up traversing distant parts of the program
-to gather necessary information on properties and type annotations
-for the declaration it's augmenting.
+As macros funcionam [introspectando][introspection] profundamente o programa no qual
+elas são aplicadas. Uma macro pode acabar percorrendo partes distantes do programa
+para coletar informações necessárias sobre propriedades e anotações de tipo
+para a declaração que está aumentando.
 
-Considering their application in large code bases, where multiple macros can
-introspect and augment the base continuously in different places,
-the design of [ordering][] and [phases][] of execution is especially challenging
-and requires careful consideration.
+Considerando sua aplicação em grandes bases de código, onde múltiplas macros podem
+introspecionar e aumentar a base continuamente em diferentes lugares,
+o _design_ de [ordenação][] e [fases][] de execução é especialmente desafiador
+e requer cuidadosa consideração.
 
-We are working towards a stable release of the [`JsonCodable`][] macro
-later this year (2024), and a stable release of the full language feature
-(namely, writing your own macros) early next year (2025).
+Estamos trabalhando para um lançamento estável da macro [`JsonCodable`][]
+ainda este ano (2024), e um lançamento estável do recurso de linguagem completo
+(ou seja, escrever suas próprias macros) no início do próximo ano (2025).
 
 [introspection]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md#introspection
 [ordering]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md#ordering-in-metaprogramming
