@@ -1,76 +1,77 @@
-- term: 'abstract'
+# <!-- ia-translate: true -->
+- term: 'abstract (abstrato)'
   link: /language/class-modifiers#abstract
   type: bit
 - term: 'as'
   link: /language/operators#type-test-operators
   type: bit
-- term: 'assert'
+- term: 'assert (afirmar)'
   link: /language/error-handling#assert
   type: reserved
-- term: 'async'
+- term: 'async (assíncrono)'
   link: /language/async
   type: unrestricted
-- term: 'await'
+- term: 'await (aguardar)'
   link: /language/async
   type: context
-- term: 'base'
+- term: 'base (base)'
   link: /language/class-modifiers#base
   type: unrestricted
-- term: 'break'
+- term: 'break (parar)'
   link: /language/loops#break-and-continue
   type: reserved
-- term: 'case'
+- term: 'case (caso)'
   link: /language/branches#switch
   type: reserved
-- term: 'catch'
+- term: 'catch (capturar)'
   link: /language/error-handling#catch
   type: reserved
-- term: 'class'
+- term: 'class (classe)'
   link: /language/classes#instance-variables
   type: reserved
-- term: 'const'
+- term: 'const (constante)'
   link: /language/variables#final-and-const
   type: reserved
-- term: 'continue'
+- term: 'continue (continuar)'
   link: /language/loops#break-and-continue
   type: reserved
-- term: 'covariant'
+- term: 'covariant (covariante)'
   link: /deprecated/sound-problems#the-covariant-keyword
   type: bit
-- term: 'default'
+- term: 'default (padrão)'
   link: /language/branches#switch
   type: reserved
-- term: 'deferred'
+- term: 'deferred (adiado)'
   link: /language/libraries#lazily-loading-a-library
   type: bit
-- term: 'do'
+- term: 'do (faça)'
   link: /language/loops#while-and-do-while
   type: reserved
-- term: 'dynamic'
+- term: 'dynamic (dinâmico)'
   link: /language#important-concepts
   type: bit
-- term: 'else'
+- term: 'else (senão)'
   link: /language/branches#if
   type: reserved
-- term: 'enum'
+- term: 'enum (enumeração)'
   link: /language/enums
   type: reserved
-- term: 'export'
+- term: 'export (exportar)'
   link: /tools/pub/create-packages
   type: bit
-- term: 'extends'
+- term: 'extends (estende)'
   link: /language/extend
   type: reserved
-- term: 'extension'
+- term: 'extension (extensão)'
   link: /language/extension-methods
   type: bit
-- term: 'external'
+- term: 'external (externo)'
   link: /language/functions#external
   type: bit
-- term: 'factory'
+- term: 'factory (fábrica)'
   link: /language/constructors#factory-constructors
   type: bit
-- term: 'false'
+- term: 'false (falso)'
   link: /language/built-in-types#booleans
   type: reserved
 - term: 'final&nbsp;(var)'
@@ -79,129 +80,129 @@
 - term: 'final&nbsp;(class)'
   link: /language/class-modifiers#final
   type: reserved
-- term: 'finally'
+- term: 'finally (finalmente)'
   link: /language/error-handling#finally
   type: reserved
-- term: 'for'
+- term: 'for (para)'
   link: /language/loops#for-loops
   type: reserved
-- term: 'Function'
+- term: 'Function (Função)'
   link: /language/functions
   type: bit
-- term: 'get'
+- term: 'get (obter)'
   link: /language/methods#getters-and-setters
   type: bit
-- term: 'hide'
+- term: 'hide (ocultar)'
   link: /language/libraries#importing-only-part-of-a-library
   type: unrestricted
-- term: 'if'
+- term: 'if (se)'
   link: /language/branches#if
   type: reserved
-- term: 'implements'
+- term: 'implements (implementa)'
   link: /language/classes#implicit-interfaces
   type: bit
-- term: 'import'
+- term: 'import (importar)'
   link: /language/libraries#using-libraries
   type: bit
-- term: 'in'
+- term: 'in (em)'
   link: /language/loops#for-loops
   type: reserved
-- term: 'interface'
+- term: 'interface (interface)'
   link: /language/class-modifiers#interface
   type: bit
-- term: 'is'
+- term: 'is (é)'
   link: /language/operators#type-test-operators
   type: reserved
-- term: 'late'
+- term: 'late (tarde)'
   link: /language/variables#late-variables
   type: bit
-- term: 'library'
+- term: 'library (biblioteca)'
   link: /language/libraries
   type: bit
-- term: 'mixin'
+- term: 'mixin (mixin)'
   link: /language/mixins
   type: bit
-- term: 'new'
+- term: 'new (novo)'
   link: /language/classes#using-constructors
   type: reserved
-- term: 'null'
+- term: 'null (nulo)'
   link: /language/variables#default-value
   type: reserved
-- term: 'of'
+- term: 'of (de)'
   link: /tools/pub/create-packages#organizing-a-package
   type: unrestricted
-- term: 'on'
+- term: 'on (em)'
   link: /language/error-handling#catch
   type: unrestricted
-- term: 'operator'
+- term: 'operator (operador)'
   link: /language/methods#operators
   type: bit
-- term: 'part'
+- term: 'part (parte)'
   link: /tools/pub/create-packages#organizing-a-package
   type: bit
-- term: 'required'
+- term: 'required (requerido)'
   link: /language/functions#named-parameters
   type: bit
-- term: 'rethrow'
+- term: 'rethrow (relançar)'
   link: /language/error-handling#catch
   type: reserved
-- term: 'return'
+- term: 'return (retornar)'
   link: /language/functions#return-values
   type: reserved
-- term: 'sealed'
+- term: 'sealed (selado)'
   link: /language/class-modifiers#sealed
   type: unrestricted
-- term: 'set'
+- term: 'set (definir)'
   link: /language/methods#getters-and-setters
   type: bit
-- term: 'show'
+- term: 'show (mostrar)'
   link: /language/libraries#importing-only-part-of-a-library
   type: unrestricted
-- term: 'static'
+- term: 'static (estático)'
   link: /language/classes#class-variables-and-methods
   type: bit
-- term: 'super'
+- term: 'super (super)'
   link: /language/extend
   type: reserved
-- term: 'switch'
+- term: 'switch (trocar)'
   link: /language/branches#switch
   type: reserved
-- term: 'sync'
+- term: 'sync (síncrono)'
   link: /language/functions#generators
   type: unrestricted
-- term: 'this'
+- term: 'this (este)'
   link: /language/constructors
   type: reserved
-- term: 'throw'
+- term: 'throw (lançar)'
   link: /language/error-handling#throw
   type: reserved
-- term: 'true'
+- term: 'true (verdadeiro)'
   link: /language/built-in-types#booleans
   type: reserved
-- term: 'try'
+- term: 'try (tente)'
   link: /language/error-handling#catch
   type: reserved
-- term: 'type'
+- term: 'type (tipo)'
   link: /language/extension-types
   type: bit
-- term: 'typedef'
+- term: 'typedef (definição de tipo)'
   link: /language/typedefs
   type: bit
 - term: 'var'
   link: /language/variables
   type: reserved
-- term: 'void'
+- term: 'void (vazio)'
   link: /language/built-in-types
   type: reserved
-- term: 'when'
+- term: 'when (quando)'
   link: /language/branches#when
   type: unrestricted
-- term: 'with'
+- term: 'with (com)'
   link: /language/mixins
   type: reserved
-- term: 'while'
+- term: 'while (enquanto)'
   link: /language/loops#while-and-do-while
   type: reserved
-- term: 'yield'
+- term: 'yield (produzir)'
   link: /language/functions#generators
   type: context

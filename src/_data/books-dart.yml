@@ -1,18 +1,19 @@
-- title: 'Dart Apprentice: Fundamentals'
+# <!-- ia-translate: true -->
+- title: 'Dart Apprentice: Fundamentos'
   authors:
     - Jonathan Sande
   publisher: Kodeco
   cover: dart-apprentice-fundamentals.webp
   link: "https://www.kodeco.com/books/dart-apprentice-fundamentals"
-  desc: "Dart Apprentice: Fundamentals is the first of a two-book series that will teach you all the basic concepts you need to master this powerful and versatile language."
-- title: 'Dart Apprentice: Beyond the Basics'
+  desc: "Dart Apprentice: Fundamentos é o primeiro de uma série de dois livros que ensinará todos os conceitos básicos que você precisa para dominar esta linguagem poderosa e versátil."
+- title: 'Dart Apprentice: Além do Básico'
   authors:
     - Jonathan Sande
   publisher: Kodeco
   cover: dart-apprentice-beyond-the-basics.webp
   link: "https://www.kodeco.com/books/dart-apprentice-beyond-the-basics"
-  desc: "Dart Apprentice: Beyond the Basics is the second of a two-book series that will teach you all the important concepts you need to master this powerful and versatile language."
-- title: "Data Structures & Algorithms in Dart"
+  desc: "Dart Apprentice: Além do Básico é o segundo de uma série de dois livros que ensinará todos os conceitos importantes que você precisa para dominar esta linguagem poderosa e versátil."
+- title: "Estruturas de Dados & Algoritmos em Dart"
   authors:
     - Jonathan Sande
     - Vincent Ngo
@@ -20,21 +21,21 @@
   publisher: raywenderlich
   cover: data-structures-algorithms-dart.webp
   link: "https://www.raywenderlich.com/books/data-structures-algorithms-in-dart"
-  desc: "Take your programming skills to the next level. Learn to build stacks, queues, trees, graphs, and efficient sorting and searching algorithms from scratch."
-- title: "The Art of Dart: Master the Dart Programming Language"
+  desc: "Leve suas habilidades de programação para o próximo nível. Aprenda a construir stacks (pilhas), queues (filas), árvores, grafos e algoritmos eficientes de ordenação e busca do zero."
+- title: "A Arte do Dart: Domine a Linguagem de Programação Dart"
   authors:
    - Kenneth Choi
   publisher: 
   cover: art-of-dart.webp
   link: "https://www.amazon.com/Art-Dart-Master-Programming-Language/dp/B0CRGKQX6W"
-  desc: "The Art of Dart is a comprehensive guide to mastering the Dart programming language! It caters to all skill levels, making it perfect for beginners and experienced coders. Inside, you'll find elegant coding practices, explore both foundational and complex programming concepts, and gain confidence in solving coding challenges. With a clear and concise approach, The Art of Dart transforms coding into a creative endeavor."
+  desc: "A Arte do Dart é um guia abrangente para dominar a linguagem de programação Dart! Atende a todos os níveis de habilidade, tornando-o perfeito para iniciantes e programadores experientes. Aqui dentro, você encontrará práticas de codificação elegantes, explorará conceitos de programação básicos e complexos, e ganhará confiança na resolução de desafios de codificação. Com uma abordagem clara e concisa, A Arte do Dart transforma a codificação em um esforço criativo."
 - title: "O guia de Dart"
   authors:
     - Julio Bitencourt
   publisher: Casa do Código
   cover: o-guia-de-dart.webp
   link: "https://www.casadocodigo.com.br/products/livro-dart"
-  desc: "Fundamentos, prática, conceitos avançados e tudo mais. Embarque neste livro que te guiará no aprendizado de Dart.<br>Fundamentals, practice, the concepts and everything. Embark on a journey of learning Dart in Portuguese."
+  desc: "Fundamentos, prática, conceitos avançados e tudo mais. Embarque neste livro que te guiará no aprendizado de Dart.<br>Fundamentos, prática, os conceitos e tudo mais. Embarque em uma jornada de aprendizado de Dart em português."
 - title: "Основы Dart"
   authors:
     - Stanislav Chernyshev
