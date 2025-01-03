@@ -1,137 +1,138 @@
 ---
-title: Unsound null safety
-description: Mixing language versions lets you migrate to null safety at your own pace, with some of the benefits of null safety.
+ia-translate: true
+title: Segurança nula não confiável
+description: A combinação de versões de linguagem permite que você migre para segurança nula no seu próprio ritmo, com alguns dos benefícios da segurança nula.
 ---
 
 :::version-note
-Dart 3 and later does not support code without
-null safety or with unsound null safety.
-All code must be soundly null safe.
-To learn more, check out the [Dart 3 sound null safety tracking issue][].
+Dart 3 e versões posteriores não suportam código sem
+segurança nula ou com segurança nula não confiável.
+Todo o código deve ser totalmente seguro contra nulos.
+Para saber mais, confira a [questão de rastreamento de segurança nula completa do Dart 3][].
 :::
 
-A Dart program may contain some libraries that
-are [null safe][] and some that aren't.
-These **mixed-version programs**
-rely on **unsound null safety**.
+Um programa Dart pode conter algumas bibliotecas que
+são [seguras contra nulos][] e algumas que não são.
+Esses **programas de versão mista**
+dependem de **segurança nula não confiável**.
 
 [null safe]: /null-safety
 [migrated]: /null-safety#migrate
 [Dart 3 sound null safety tracking issue]: {{site.repo.dart.sdk}}/issues/49530
 
-The ability to mix [language versions][]
-frees package maintainers to migrate their code,
-with the knowledge that even legacy users can get new
-bug fixes and other improvements.
-However, mixed-version programs don't get all the advantages
-that null safety can bring.
+A capacidade de misturar [versões de linguagem][]
+libera os mantenedores de pacotes para migrar seu código,
+com o conhecimento de que mesmo usuários legados podem obter novas
+correções de bugs e outras melhorias.
+No entanto, programas de versão mista não obtêm todas as vantagens
+que a segurança nula pode trazer.
 
 [language versions]: /resources/language/evolution#language-versioning
 
-This page describes the differences between sound and unsound null safety,
-with the goal of helping you decide when to migrate to null safety.
-After the conceptual discussion are instructions for migrating incrementally,
-followed by details on testing and running mixed-version programs.
+Esta página descreve as diferenças entre segurança nula confiável e não confiável,
+com o objetivo de ajudá-lo a decidir quando migrar para segurança nula.
+Após a discussão conceitual, há instruções para migração incremental,
+seguido de detalhes sobre como testar e executar programas de versão mista.
 
 :::note
-We recommend that, if possible, you wait for dependencies to migrate
-before you migrate your package.
-For details, see the [migration guide][].
+Recomendamos que, se possível, você espere as dependências migrarem
+antes de migrar seu pacote.
+Para detalhes, veja o [guia de migração][].
 :::
 
 [migration guide]: /null-safety/migration-guide
 
 
-## Sound and unsound null safety {:#sound-and-unsound-null-safety}
+## Segurança nula confiável e não confiável {:#sound-and-unsound-null-safety}
 
-Dart provides sound null safety through a combination of
-static and runtime checks.
-Each Dart library that opts in to null safety gets
-all the _static_ checks, with stricter compile-time errors.
-This is true even in a mixed-version program that contains
-null-unsafe libraries.
-You start getting these benefits
-as soon as you start migrating some of your code to null safety.
+Dart fornece segurança nula confiável por meio de uma combinação de
+verificações estáticas e de tempo de execução.
+Cada biblioteca Dart que adere à segurança nula obtém
+todas as verificações _estáticas_, com erros de tempo de compilação mais rigorosos.
+Isso é verdade mesmo em um programa de versão mista que contém
+bibliotecas não seguras contra nulos.
+Você começa a obter esses benefícios
+assim que começar a migrar parte do seu código para segurança nula.
 
-However, a mixed-version program can't have the
-_runtime_ soundness guarantees that a fully null-safe app has.
-It's possible for `null` to leak out of the null-unsafe libraries
-into the null-safe code, because
-preventing that would break the existing behavior of the unmigrated code.
+No entanto, um programa de versão mista não pode ter as
+garantias de solidez de _tempo de execução_ que um aplicativo totalmente seguro contra nulos tem.
+É possível que `null` vaze das bibliotecas não seguras contra nulos
+para o código seguro contra nulos, porque
+impedir isso quebraria o comportamento existente do código não migrado.
 
-To maintain runtime compatibility with legacy libraries
-while offering soundness to completely null-safe programs,
-Dart tools support two modes:
+Para manter a compatibilidade de tempo de execução com bibliotecas legadas
+enquanto oferece solidez para programas completamente seguros contra nulos,
+as ferramentas Dart suportam dois modos:
 
-* Mixed-version programs run with **unsound null safety**.
-  It's possible for `null` reference errors to occur at runtime,
-  but only because a `null` or nullable type escaped from
-  some null-unsafe library and got into null-safe code.
+* Programas de versão mista são executados com **segurança nula não confiável**.
+  É possível que erros de referência `null` ocorram em tempo de execução,
+  mas apenas porque um `null` ou tipo anulável escapou de
+  alguma biblioteca não segura contra nulos e entrou no código seguro contra nulos.
 
-* When a program is fully migrated and _all_ its libraries are null safe,
-  then it runs with **sound null safety**, with
-  all of the guarantees and compiler optimizations that soundness enables.
+* Quando um programa é totalmente migrado e _todas_ as suas bibliotecas são seguras contra nulos,
+  então ele é executado com **segurança nula confiável**, com
+  todas as garantias e otimizações do compilador que a solidez possibilita.
 
-Sound null safety is what you want if possible.
-Dart tools automatically run your program in sound mode if
-the main entrypoint library of your program has opted into null safety.
-If you import a null-unsafe library,
-the tools print a warning to let you know that
-they can only run with unsound null safety.
+A segurança nula confiável é o que você deseja, se possível.
+As ferramentas Dart executam automaticamente seu programa no modo confiável se
+a biblioteca de ponto de entrada principal do seu programa aderiu à segurança nula.
+Se você importar uma biblioteca não segura contra nulos,
+as ferramentas imprimem um aviso para informá-lo de que
+eles só podem ser executados com segurança nula não confiável.
 
 
-## Migrating incrementally {:#migrating-incrementally}
+## Migrando incrementalmente {:#migrating-incrementally}
 
-Because Dart supports mixed-version programs,
-you can migrate one library (generally one Dart file) at a time,
-while still being able to run your program and its tests.
+Como o Dart suporta programas de versão mista,
+você pode migrar uma biblioteca (geralmente um arquivo Dart) por vez,
+enquanto ainda consegue executar seu programa e seus testes.
 
-We recommend that you **first migrate leaf libraries**—libraries 
-that don't import other files from the package.
-Then migrate libraries that directly depend on the leaf libraries.
-End by migrating the libraries that have the most
-intra-package dependencies.
+Recomendamos que você **primeiro migre as bibliotecas folha**—bibliotecas
+que não importam outros arquivos do pacote.
+Em seguida, migre as bibliotecas que dependem diretamente das bibliotecas folha.
+Termine migrando as bibliotecas que têm mais
+dependências intra-pacote.
 
-For example, say you have a `lib/src/util.dart` file
-that imports other (null-safe) packages and core libraries,
-but that doesn't have any `import '<local_path>'` directives.
-Consider migrating `util.dart` first,
-and then migrating files that depend only on `util.dart`.
-If any libraries have cyclic imports
-(for example, A imports B which imports C, and C imports A),
-consider migrating those libraries together.
+Por exemplo, digamos que você tenha um arquivo `lib/src/util.dart`
+que importa outros pacotes (seguros contra nulos) e bibliotecas principais,
+mas que não possui nenhuma diretiva `import '<caminho_local>'`.
+Considere migrar `util.dart` primeiro,
+e então migrar os arquivos que dependem apenas de `util.dart`.
+Se alguma biblioteca tiver importações cíclicas
+(por exemplo, A importa B que importa C e C importa A),
+considere migrar essas bibliotecas juntas.
 
-### Using the migration tool {:#using-the-migration-tool}
+### Usando a ferramenta de migração {:#using-the-migration-tool}
 
-You can migrate incrementally using the
-[migration tool][].
-To opt out files or directories, click the green checkbox.
-In the following screenshot,
-all files in the `bin` directory are opted out.
+Você pode migrar incrementalmente usando a
+[ferramenta de migração][].
+Para desativar arquivos ou diretórios, clique na caixa de seleção verde.
+Na captura de tela a seguir,
+todos os arquivos no diretório `bin` estão desativados.
 
-![Screenshot of file viewer in migration tool](/assets/img/null-safety/migration-tool-incremental.png)
+![Captura de tela do visualizador de arquivos na ferramenta de migração](/assets/img/null-safety/migration-tool-incremental.png)
 
 [migration tool]: /null-safety/migration-guide#step2-migrate
 
-Each opted out file will be unchanged
-except for a 2.9 [language version comment][].
-You can later run `dart migrate` again to continue the migration.
-Any files that are already migrated feature a disabled checkbox:
-you cannot un-migrate a file once it has been migrated.
+Cada arquivo desativado permanecerá inalterado
+exceto por um [comentário de versão de linguagem][] 2.9.
+Você pode executar `dart migrate` novamente mais tarde para continuar a migração.
+Quaisquer arquivos que já foram migrados apresentam uma caixa de seleção desabilitada:
+você não pode desmigrar um arquivo depois que ele foi migrado.
 
-### Migrating by hand {:#migrating-by-hand}
+### Migrando manualmente {:#migrating-by-hand}
 
-If you want to incrementally migrate a package by hand, follow these steps:
+Se você quiser migrar um pacote incrementalmente manualmente, siga estas etapas:
 
-1. Edit the package's `pubspec.yaml` file,
-   setting the minimum SDK constraint to at least `2.12.0`:
+1. Edite o arquivo `pubspec.yaml` do pacote,
+   definindo a restrição mínima do SDK para pelo menos `2.12.0`:
 
    ```yaml
    environment:
      sdk: '>=2.12.0 <3.0.0'
    ```
 
-2. Regenerate the [package configuration file][]:
+2. Regere o [arquivo de configuração do pacote][]:
 
    ```console
    $ dart pub get
@@ -139,57 +140,57 @@ If you want to incrementally migrate a package by hand, follow these steps:
 
    [package configuration file]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
 
-   Running `dart pub get` with a lower SDK constraint of `2.12.0`
-   sets the default language version of
-   every library in the package to 2.12,
-   opting them all in to null safety.
+   Executar `dart pub get` com uma restrição de SDK inferior de `2.12.0`
+   define a versão de linguagem padrão de
+   todas as bibliotecas no pacote para 2.12,
+   optando por todas na segurança nula.
 
-3. Open the package in your IDE. <br>
-   You're likely to see a lot of analysis errors.
-   That's OK.
+3. Abra o pacote no seu IDE. <br>
+   É provável que você veja muitos erros de análise.
+   Está tudo bem.
 
-4. Add a [language version comment][] to the top of
-   any Dart files that you don't want to consider during your current migration:
-   
+4. Adicione um [comentário de versão de linguagem][] na parte superior de
+   quaisquer arquivos Dart que você não deseja considerar durante sua migração atual:
+
    ```dart
    // @dart=2.9
    ```
 
-   Using language version 2.9 for a library that's in a 2.12 package
-   can reduce analysis errors (red squiggles) coming from unmigrated code.
-   However, **unsound null safety reduces the
-   information the analyzer can use.**
-   For example, the analyzer might assume a
-   parameter type is non-nullable,
-   even though a 2.9 file might pass in a null value.
+   Usar a versão de linguagem 2.9 para uma biblioteca que está em um pacote 2.12
+   pode reduzir os erros de análise (linhas onduladas vermelhas) provenientes de código não migrado.
+   No entanto, **a segurança nula não confiável reduz a
+   informação que o analisador pode usar.**
+   Por exemplo, o analisador pode presumir que um
+   tipo de parâmetro não é anulável,
+   mesmo que um arquivo 2.9 possa passar um valor nulo.
 
-5. Migrate the code of each Dart file,
-   using the analyzer to identify static errors. <br>
-   Eliminate static errors by adding `?`, `!`, `required`, and `late`,
-   as needed.
+5. Migre o código de cada arquivo Dart,
+   usando o analisador para identificar erros estáticos. <br>
+   Elimine os erros estáticos adicionando `?`, `!`, `required` e `late`,
+   conforme necessário.
 
 
-## Testing or running mixed-version programs {:#testing-or-running-mixed-version-programs}
+## Testando ou executando programas de versão mista {:#testing-or-running-mixed-version-programs}
 
-To test or run mixed-version code,
-you need to disable sound null safety.
-You can do this in two ways:
+Para testar ou executar código de versão mista,
+você precisa desabilitar a segurança nula confiável.
+Você pode fazer isso de duas maneiras:
 
-* Disable sound null safety using the `--no-sound-null-safety` flag
-  to the `dart` or `flutter` command:
+* Desative a segurança nula confiável usando o sinalizador `--no-sound-null-safety`
+   para o comando `dart` ou `flutter`:
 
   ```console
   $ dart --no-sound-null-safety run
   $ flutter run --no-sound-null-safety
   ```
 
-* Alternatively, set the language version in the 
-  entrypoint—the file that contains `main()` function—to 2.9.
-  In Flutter apps, this file is often named `lib/main.dart`.
-  In command-line apps, this file is often named `bin/<packageName>.dart`.
-  You can also opt out files under `test`,
-  because they are also entrypoints.
-  Example:
+* Como alternativa, defina a versão de linguagem no
+  ponto de entrada—o arquivo que contém a função `main()`—para 2.9.
+  Em aplicativos Flutter, este arquivo geralmente é nomeado `lib/main.dart`.
+  Em aplicativos de linha de comando, este arquivo geralmente é nomeado `bin/<nomeDoPacote>.dart`.
+  Você também pode desativar arquivos em `test`,
+  porque eles também são pontos de entrada.
+  Exemplo:
 
   ```dart
   // @dart=2.9
@@ -199,13 +200,13 @@ You can do this in two ways:
     //...
   }
   ```
-  
-Opting out tests using either of these mechanisms can be useful
-for testing **during** your incremental migration process,
-but doing so means that you aren't testing your code with
-full null safety enabled.
-It's important to opt your tests back _in_ to null safety
-when you've finished the incremental migration of your libraries.
+
+Desativar testes usando qualquer um desses mecanismos pode ser útil
+para testes **durante** seu processo de migração incremental,
+mas fazer isso significa que você não está testando seu código com
+segurança nula total habilitada.
+É importante ativar seus testes novamente na segurança nula
+quando você terminar a migração incremental de suas bibliotecas.
 
 
 [language version comment]: /resources/language/evolution#per-library-language-version-selection
