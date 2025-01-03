@@ -1,10 +1,10 @@
 ---
 ia-translate: true
-título: Obtenha o SDK do Dart
-descrição: >-
+title: Obtenha o SDK do Dart
+description: >-
   Obtenha as bibliotecas e as ferramentas de linha de comando necessárias para desenvolver
   aplicativos Dart para web, linha de comando e servidor.
-lista-de-canais: [Estável, Beta, Desenvolvimento]
+channel-list: [Estável, Beta, Desenvolvimento]
 js: [{url: '/assets/js/get-dart/install.js', defer: true}]
 ---
 
