@@ -1,46 +1,47 @@
 ---
-title: Converters and codecs
-description: Learn how to write efficient conversions.
+ia-translate: true
+title: Conversores e Codecs
+description: Aprenda como escrever conversões eficientes.
 original-date: 2014-02-06
 date: 2015-03-17
 obsolete: true
 ---
 
-_Written by Florian Loitsch <br>
-February 2014 (updated March 2015)_
+_Escrito por Florian Loitsch <br>
+Fevereiro de 2014 (atualizado em Março de 2015)_
 
-Converting data between different representations is a common task in computer
-engineering. Dart is no exception and comes with
-[dart:convert]({{site.dart-api}}/dart-convert/dart-convert-library.html), a
-core library that provides a set of converters
-and useful tools to build new converters.
-Examples of converters provided by the library include those
-for commonly used encodings such as JSON and UTF-8.
-In this document, we show how Dart's
-converters work and how you can create your own efficient converters
-that fit into the Dart world.
+Converter dados entre diferentes representações é uma tarefa comum em
+engenharia da computação. Dart não é exceção e vem com
+[dart:convert]({{site.dart-api}}/dart-convert/dart-convert-library.html),
+uma biblioteca principal que fornece um conjunto
+de conversores e ferramentas
+úteis para construir novos conversores.
+Exemplos de conversores fornecidos pela
+biblioteca incluem aqueles para codificações comumente usadas como JSON e UTF-8.
+Neste documento, mostramos como os conversores do Dart funcionam e como você
+pode criar seus próprios conversores eficientes que se encaixam no mundo Dart.
 
-## Big picture {:#big-picture}
+## Visão geral {:#big-picture}
 
-Dart's conversion architecture is
-based on _converters_, which translate from one representation to another.
-When conversions are reversible, two converters are grouped together into a
-_codec_ (coder-decoder). The term codec is frequently used for audio and
-video processing but also applies to string encodings such as UTF-8 or JSON.
+A arquitetura de conversão do Dart é baseada em _conversores_ (converters), que
+traduzem de uma representação para outra. Quando as conversões são reversíveis,
+dois conversores são agrupados em um _codec_ (codificador-decodificador). O
+termo codec é frequentemente usado para processamento de áudio e vídeo, mas
+também se aplica a codificações de string, como UTF-8 ou JSON.
 
 
-By convention, all converters in Dart use the abstractions provided in the
-dart:convert library. This provides a consistent API for developers and ensures
-that converters can work together.
-For instance, converters (or codecs) can be fused together if their
-type matches, and the resulting converter can then be used as a single unit.
-Furthermore, these fused converters frequently work more efficiently than if
-they had been used separately.
+Por convenção, todos os conversores em Dart usam as abstrações fornecidas na
+biblioteca dart:convert. Isso fornece uma API consistente para os
+desenvolvedores e garante que os conversores possam trabalhar juntos. Por
+exemplo, conversores (ou codecs) podem ser fundidos se seus tipos
+corresponderem, e o conversor resultante pode ser usado como uma única unidade.
+Além disso, esses conversores fundidos geralmente funcionam de forma mais
+eficiente do que se tivessem sido usados separadamente.
 
 ## Codec {:#codec}
 
-A codec is a combination of two converters where one encodes
-and the other one decodes:
+Um codec é uma combinação de dois conversores onde um codifica e o outro
+decodifica:
 
 ```dart
 abstract class Codec<S, T> {
@@ -57,186 +58,186 @@ abstract class Codec<S, T> {
 }
 ```
 
-As can be seen, codecs provide convenience methods such as `encode()` and
-`decode()` that are expressed in terms of the encoder and decoder. The `fuse()`
-method and `inverted` getter allow you to fuse converters and
-change the direction of a codec, respectively.
-The base implementation of
+Como pode ser visto, os codecs fornecem métodos de conveniência como `encode()` e
+`decode()` que são expressos em termos do encoder e decoder. O método `fuse()`
+e o getter `inverted` permitem que você funda conversores e
+altere a direção de um codec, respectivamente.
+A implementação base de
 [Codec]({{site.dart-api}}/dart-convert/Codec-class.html)
-for these two members
-provides a solid default implementation
-and implementers usually don't need to worry about them.
+para esses dois membros
+fornece uma implementação padrão sólida
+e os implementadores geralmente não precisam se preocupar com eles.
 
-The `encode()` and `decode()`
-methods, too, may be left untouched, but they can be extended for additional
-arguments. For example, the
+Os métodos `encode()` e `decode()`, também podem ser deixados
+intocados, mas podem ser estendidos para argumentos adicionais.
+Por exemplo, o
 [JsonCodec]({{site.dart-api}}/dart-convert/JsonCodec-class.html)
-adds named arguments to `encode()` and `decode()`
-to make these methods more useful:
+adiciona argumentos nomeados para `encode()` e `decode()`
+para tornar esses métodos mais úteis:
 
 ```dart
 dynamic decode(String source, {reviver(var key, var value)}) { … }
 String encode(Object value, {toEncodable(var object)}) { … }
 ```
 
-The codec can be instantiated with arguments that are used as default
-values, unless they are overridden by the named arguments during the
-`encode()`/`decode()` call.
+O codec pode ser instanciado com argumentos que são usados como valores
+padrão, a menos que sejam substituídos pelos argumentos nomeados durante a
+chamada de `encode()`/`decode()`.
 
 ```dart
 const JsonCodec({reviver(var key, var value), toEncodable(var object)})
   ...
 ```
 
-As a general rule: if a codec can be configured, it should add named arguments
-to the `encode()`/`decode()` methods and allow their defaults to be
-set in constructors.
-When possible, codec constructors should be `const` constructors.
+Como regra geral: se um codec pode ser configurado, ele deve adicionar
+argumentos nomeados aos métodos `encode()`/`decode()` e permitir que seus
+valores padrão sejam definidos nos construtores. Quando possível, os
+construtores de codec devem ser construtores `const`.
 
 ## Converter {:#converter}
 
-Converters, and in particular their `convert()` methods, are
-where the real conversions happen:
+Conversores, e em particular seus métodos `convert()`, são
+onde as conversões reais acontecem:
 
 ```dart
-T convert(S input);  // where T is the target and S the source type.
+T convert(S input);  // onde T é o tipo de destino e S o tipo de origem.
 ```
 
-A minimal converter implementation only needs to extend the
-[Converter]({{site.dart-api}}/dart-convert/Converter-class.html) class and
-implement the `convert()` method. Similar to the Codec class, converters can be
-made configurable by extending the constructors and adding named arguments to
-the `convert()` method.
+Uma implementação de conversor mínima só precisa estender a classe
+[Converter]({{site.dart-api}}/dart-convert/Converter-class.html) e
+implementar o método `convert()`. Semelhante à classe Codec, os conversores
+podem ser configurados estendendo os construtores e adicionando argumentos
+nomeados ao método `convert()`.
 
-Such a minimal converter works in synchronous settings, but
-does not work when used with chunks (either synchronously or asynchronously). In
-particular, such a simple converter doesn't work as a transformer (one of the
-nicer features of Converters). A fully implemented converter implements the
+Tal conversor mínimo funciona em configurações síncronas, mas
+não funciona quando usado com chunks (pedaços) (síncrona ou assincronamente).
+Em particular, um conversor tão simples não funciona como um transformer
+(uma das características mais interessantes dos Conversores). Um conversor totalmente implementado implementa a interface
 [StreamTransformer]({{site.dart-api}}/dart-async/StreamTransformer-class.html)
-interface and can thus be given to the `Stream.transform()` method.
+e, portanto, pode ser dado ao método `Stream.transform()`.
 
-Probably the most common use case is the decoding of UTF-8 with
+Provavelmente, o caso de uso mais comum é a decodificação de UTF-8 com
 [utf8.decoder]({{site.dart-api}}/dart-convert/Utf8Codec-class.html):
 
 ```dart
 File.openRead().transform(utf8.decoder).
 ```
 
-## Chunked conversion {:#chunked-conversion}
+## Conversão em partes (Chunked conversion) {:#chunked-conversion}
 
-The concept of chunked conversions can be confusing, but at its core, it is
-relatively simple. When a chunked conversion (including a stream
-transformation) is started, the converter's
+O conceito de conversões em partes (chunked conversions) pode ser confuso, mas,
+em sua essência, é relativamente simples. Quando uma conversão em partes
+(incluindo uma transformação de stream) é iniciada, o método
 [startChunkedConversion]({{site.dart-api}}/dart-convert/Converter/startChunkedConversion.html)
-method is invoked with an output-
-sink as argument. The method then returns an input sink into which the caller
-puts data.
+do conversor é invocado com um _sink_ (sumidouro) de saída como argumento. O
+método então retorna um _sink_ de entrada no qual o chamador
+coloca os dados.
 
-![Chunked conversion](/assets/img/articles/converters-and-codecs/chunked-conversion.png)
+![Conversão em partes](/assets/img/articles/converters-and-codecs/chunked-conversion.png)
 
-**Note**: An asterisk (`*`) in the diagram represents optional multiple calls.
+**Nota**: Um asterisco (`*`) no diagrama representa várias chamadas opcionais.
 
-In the diagram, the first step consists of creating an `outputSink` that should
-be filled with the converted data. Then, the user invokes the
-`startChunkedConversion()` method of the converter with the output sink.
-The result is an input sink with methods `add()` and `close()`.
+No diagrama, o primeiro passo consiste em criar um `outputSink` que deve ser
+preenchido com os dados convertidos. Em seguida, o usuário invoca o método
+`startChunkedConversion()` do conversor com o _sink_ de saída. O resultado é
+um _sink_ de entrada com métodos `add()` e `close()`.
 
-At a later point, the code that started the chunked conversion invokes,
-possibly multiple times, the `add()` method with
-some data. The data is converted by the input sink. If the converted data is
-ready the input sink sends it to the output sink, possibly with multiple
-`add()` calls. Eventually the user finishes the conversion by invoking
-`close()`. At this point any remaining converted data is sent from the input
-sink to the output sink and the output sink is closed.
+Em um ponto posterior, o código que iniciou a conversão em partes invoca,
+possivelmente várias vezes, o método `add()` com alguns dados. Os dados são
+convertidos pelo _sink_ de entrada. Se os dados convertidos estiverem prontos,
+o _sink_ de entrada os envia para o _sink_ de saída, possivelmente com várias
+chamadas `add()`. Eventualmente, o usuário termina a conversão invocando
+`close()`. Neste ponto, quaisquer dados convertidos restantes são enviados
+do _sink_ de entrada para o _sink_ de saída e o _sink_ de saída é fechado.
 
-Depending on the converter the input sink may need to buffer parts of the
-incoming data. For example, a line-splitter that receives `ab\ncd` as the first
-chunk can safely invoke its output sink with `ab`, but needs to wait for the
-next data (or the `close()` call) before it can handle `cd`. If the next data is
-`e\nf`, the input sink must concatenate `cd` and `e` and invoke the output sink
-with the string `cde`, while buffering `f` for the next data event (or the
-`close()` call).
+Dependendo do conversor, o _sink_ de entrada pode precisar armazenar em buffer
+partes dos dados recebidos. Por exemplo, um divisor de linha que recebe
+`ab\ncd` como o primeiro pedaço (chunk) pode invocar com segurança seu _sink_ de
+saída com `ab`, mas precisa esperar pelos próximos dados (ou pela chamada
+`close()`) antes que possa lidar com `cd`. Se os próximos dados forem `e\nf`, o
+_sink_ de entrada deve concatenar `cd` e `e` e invocar o _sink_ de saída com a
+string `cde`, enquanto armazena em buffer `f` para o próximo evento de dados (ou a chamada `close()`).
 
-The complexity of the input sink (in combination with the converter) varies.
-Some chunked conversions are trivially mapped to the non-chunked versions (like
-a String→String converter that removes the character `a`), while others are
-more complicated. A safe, although inefficient (and usually unrecommended)
-way to implement the chunked conversion is to buffer and concatenate all the
-incoming data and to do the conversion in one go. This is, how the JSON decoder
-is currently (January 2014) implemented.
+A complexidade do _sink_ de entrada (em combinação com o conversor) varia. Algumas conversões em partes
+são trivialmente mapeadas para as versões não em partes (como um conversor String→String que remove o
+caractere `a`), enquanto outras são mais complicadas. Uma maneira segura, embora ineficiente
+(e geralmente não recomendada), de implementar a conversão em partes é armazenar em
+buffer e concatenar todos os dados recebidos e fazer a conversão
+de uma só vez. É assim que o decodificador JSON está
+atualmente (janeiro de 2014) implementado.
 
-Interestingly, the type of chunked conversion cannot be extrapolated from its
-synchronous conversion. For example, the
+Curiosamente, o tipo de conversão em partes não pode ser extrapolado de sua
+conversão síncrona. Por exemplo, o conversor
 [HtmlEscape]({{site.dart-api}}/dart-convert/HtmlEscape-class.html)
-converter synchronously
-converts Strings to Strings, and asynchronously converts chunks of Strings to
-chunks of Strings (String→String). The
+converte síncronamente Strings para Strings,
+e assincronamente converte partes
+de Strings para partes de Strings (String→String). O conversor
 [LineSplitter]({{site.dart-api}}/dart-convert/LineSplitter-class.html)
-converter synchronously
-converts Strings to List<String> (the individual lines). Despite the difference
-in the synchronous signature, the chunked version of the LineSplitter converter
-has the same signature as
-HtmlEscape: String→String. In this case each individual output chunk
-represents one line.
+converte síncronamente Strings para List\<String> (as linhas individuais).
+Apesar da diferença na assinatura síncrona,
+a versão em partes do conversor
+LineSplitter tem a mesma assinatura que
+HtmlEscape: String→String. Neste caso,
+cada parte de saída individual representa uma linha.
 
 ```dart
 import 'dart:convert';
 import 'dart:async';
 
 void main() async {
-  // HtmlEscape synchronously converts Strings to Strings.
+  // HtmlEscape converte síncronamente Strings para Strings.
   print(const HtmlEscape().convert("foo")); // "foo".
-  // When used in a chunked way it converts from Strings
-  // to Strings.
+  // Quando usado de forma fragmentada, converte de Strings
+  // para Strings.
   var stream = new Stream.fromIterable(["f", "o", "o"]);
   print(await (stream.transform(const HtmlEscape())
                      .toList()));    // ["f", "o", "o"].
 
-  // LineSplitter synchronously converts Strings to Lists of String.
+  // LineSplitter converte síncronamente Strings para Listas de String.
   print(const LineSplitter().convert("foo\nbar")); // ["foo", "bar"]
-  // However, asynchronously it converts from Strings to Strings (and
-  // not Lists of Strings).
+  // No entanto, assincronamente ele converte de Strings para Strings (e
+  // não Listas de Strings).
   var stream2 = new Stream.fromIterable(["fo", "o\nb", "ar"]);
   print("${await (stream2.transform(const LineSplitter())
                           .toList())}");
 }
 ```
 
-In general, the type of the chunked conversion is determined by the most
-useful case when used as a StreamTransformer.
+Em geral, o tipo de conversão em partes é determinado pelo caso mais útil
+quando usado como um StreamTransformer.
 
 ### ChunkedConversionSink {:#chunkedconversionsink}
 
 [ChunkedConversionSinks]({{site.dart-api}}/dart-convert/ChunkedConversionSink-class.html)
-are used to add new data to a
-converter or as output from converters. The basic ChunkedConversionSink comes
-with two methods: `add()` and `close()`. These have the same functionality as in
-all other sinks of the system such as
+são usados para adicionar novos dados a
+um conversor ou como saída de conversores. O ChunkedConversionSink básico vem com
+dois métodos: `add()` e `close()`. Estes têm a mesma funcionalidade que em
+todos os outros _sinks_ do sistema, como
 [StringSinks]({{site.dart-api}}/dart-core/StringSink-class.html)
-or
+ou
 [StreamSinks]({{site.dart-api}}/dart-async/StreamSink-class.html).
 
-The ChunkedConversionSinks semantics are similar to that of
+A semântica de ChunkedConversionSinks é semelhante à de
 [IOSinks]({{site.dart-api}}/dart-io/IOSink-class.html):
-data added to the
-sink must not be modified unless it can be guaranteed that the data has been
-handled. For Strings this is not a problem (since they are immutable), but for
-lists of bytes it frequently means allocating a fresh copy of the list. This
-can be inefficient and the dart:convert library thus comes with subclasses of
-ChunkedConversionSink that support more efficient ways of passing data.
+os dados adicionados ao
+_sink_ não devem ser modificados, a menos que possa ser garantido que os dados
+foram tratados. Para Strings, isso não é um problema (já que são imutáveis), mas
+para listas de bytes, geralmente significa alocar uma nova cópia da lista. Isso
+pode ser ineficiente e a biblioteca dart:convert, portanto, vem com subclasses
+de ChunkedConversionSink que suportam maneiras mais eficientes de passar dados.
 
-For instance, the
+Por exemplo, o
 [ByteConversionSink]({{site.dart-api}}/dart-convert/ByteConversionSink-class.html),
-has the additional method:
+tem o método adicional:
 
 ```dart
 void addSlice(List<int> chunk, int start, int end, bool isLast);
 ```
 
-Semantically, it
-accepts a list (which may not be held onto), the sub-range that the converter
-operates on, and a boolean `isLast`, which can be set instead of calling
-`close()`.
+Semanticamente, ele
+aceita uma lista (que não pode ser mantida), o subintervalo sobre o qual o
+conversor opera e um booleano `isLast`, que pode ser definido em vez de
+chamar `close()`.
 
 ```dart
 import 'dart:convert';
@@ -249,42 +250,42 @@ void main() {
   var inSink = utf8.decoder.startChunkedConversion(outSink);
   var list = [0xF0, 0x9D];
   inSink.addSlice(list, 0, 2, false);
-  // Since we used `addSlice` we are allowed to reuse the list.
+  // Já que usamos `addSlice`, podemos reutilizar a lista.
   list[0] = 0x85;
   list[1] = 0xA1;
   inSink.addSlice(list, 0, 2, true);
 }
 ```
 
-As a user of the chunked conversion sink (which is used both as input and output
-of converters), this simply provides more choice. The fact that the list is not
-held onto, means that you can use a cache and reuse that one for every call.
-Combining `add()` with `close()` may help the receiver in that it can avoid
-buffering data. Accepting sub-lists avoids expensive calls to `subList()`
-(to copy the data).
+Como um usuário do _sink_ de conversão em partes (que é usado tanto como entrada
+quanto como saída de conversores), isso simplesmente oferece mais opções. O
+fato de que a lista não é mantida significa que você pode usar um cache e
+reutilizá-lo para cada chamada. A combinação de `add()` com `close()` pode
+ajudar o receptor, pois pode evitar o armazenamento em buffer de dados. Aceitar
+sublistas evita chamadas caras para `subList()` (para copiar os dados).
 
-The drawback of this interface is that it is more complicated to implement. To
-ease the pain for developers, every improved chunked conversion sink of
-dart:convert also comes with a base class that implements all methods except one
-(which is abstract). The implementor of the conversion sink can then decide
-whether to take advantage of the additional methods.
+A desvantagem desta interface é que ela é mais complicada de implementar. Para
+aliviar a dor dos desenvolvedores, cada _sink_ de conversão em partes aprimorado
+do dart:convert também vem com uma classe base que implementa todos os métodos
+exceto um (que é abstrato). O implementador do _sink_ de conversão pode então
+decidir se deseja aproveitar os métodos adicionais.
 
-**Note**: _Chunked conversion sinks *must* extend the corresponding base class.
-This assures that adding functionality to the existing sink interfaces does
-not break the extended sinks._
+**Nota**: _Os _sinks_ de conversão em partes *devem* estender a classe base
+correspondente. Isso garante que a adição de funcionalidade às interfaces de
+_sink_ existentes não interrompa os _sinks_ estendidos._
 
-## Example {:#example}
+## Exemplo {:#example}
 
-This section shows all the steps needed to create a simple encryption
-converter and how a custom ChunkedConversionSink can improve performance.
+Esta seção mostra todas as etapas necessárias para criar um conversor de
+criptografia simples e como um ChunkedConversionSink personalizado pode melhorar o desempenho.
 
-Let's start with the simple synchronous converter,
-whose encryption routine simply rotates bytes by the given key:
+Vamos começar com o conversor síncrono simples, cuja rotina de criptografia
+simplesmente rotaciona bytes pela chave fornecida:
 
 ```dart
 import 'dart:convert';
 
-/// A simple extension of Rot13 to bytes and a key.
+/// Uma extensão simples de Rot13 para bytes e uma chave.
 class RotConverter extends Converter<List<int>, List<int>> {
   final _key;
   const RotConverter(this._key);
@@ -300,7 +301,7 @@ class RotConverter extends Converter<List<int>, List<int>> {
 }
 ```
 
-The corresponding Codec class is also simple:
+A classe Codec correspondente também é simples:
 
 ```dart
 class Rot extends Codec<List<int>, List<int>> {
@@ -322,10 +323,10 @@ class Rot extends Codec<List<int>, List<int>> {
 }
 ```
 
-We can (and should) avoid some of the `new` allocations, but for simplicity we
-allocate a new instance of RotConverter every time one is needed.
+Podemos (e devemos) evitar algumas das alocações `new`, mas, para simplificar,
+alocamos uma nova instância de RotConverter sempre que uma é necessária.
 
-This is how we use the Rot codec:
+É assim que usamos o codec Rot:
 
 ```dart
 const Rot ROT128 = const Rot(128);
@@ -341,9 +342,9 @@ void main() {
 }
 ```
 
-We are on the right track. The codec works, but it is still missing the chunked
-encoding part. Because each byte is encoded separately we can fall back to
-the synchronous conversion method:
+Estamos no caminho certo. O codec funciona, mas ainda está faltando a parte de
+codificação em partes. Como cada byte é codificado separadamente, podemos
+recorrer ao método de conversão síncrona:
 
 ```dart
 class RotConverter {
@@ -368,8 +369,8 @@ class RotSink extends ChunkedConversionSink<List<int>> {
 }
 ```
 
-Now, we can use the converter with chunked conversions or even for stream
-transformations:
+Agora, podemos usar o conversor com conversões em partes ou mesmo para
+transformações de stream:
 
 ```dart
 import 'dart:io';
@@ -385,26 +386,26 @@ void main(List<String> args) {
 }
 ```
 
-### Specialized ChunkedConversionSinks {:#specialized-chunkedconversionsinks}
+### ChunkedConversionSinks Especializados {:#specialized-chunkedconversionsinks}
 
-For many purposes, the current version of Rot is sufficient. That is, the
-benefit of improvements would be outweighed by the cost of more complex code
-and test requirements. Let's assume, however,
-that the performance of the converter is critical
-(it's on the hot path and up on the profile).
-We furthermore assume that
-the cost of allocating a new list for every chunk is killing performance
-(a reasonable assumption).
+Para muitos propósitos, a versão atual do Rot é suficiente. Ou seja, o
+benefício das melhorias seria superado pelo custo de código mais complexo e
+requisitos de teste. No entanto, vamos assumir que o desempenho do conversor
+é crítico (está no caminho crítico e no perfil).
+Além disso,
+assumimos que o custo de alocar uma nova lista para cada
+pedaço (chunk) está matando o desempenho
+(uma suposição razoável).
 
-We start by making the allocation cost cheaper: by using a
-[typed byte-list]({{site.dart-api}}/dart-typed_data/Uint8List-class.html)
-we can reduce the size of the allocated list by a factor of 8 (on 64-bit
-machines). This one line change doesn't remove the allocation, but makes it much
-cheaper.
+Começamos tornando o custo de alocação mais barato: usando uma
+[lista de bytes tipada]({{site.dart-api}}/dart-typed_data/Uint8List-class.html)
+podemos reduzir o tamanho da lista alocada em um fator de 8 (em máquinas de 64
+bits). Esta mudança de uma linha não remove a alocação, mas a torna muito mais
+barata.
 
-We can also avoid the allocation altogether if we overwrite the input. In
-the following version of RotSink, we add a new method `addModifiable()` that
-does exactly that:
+Também podemos evitar a alocação completamente se sobrescrevermos a entrada.
+Na versão a seguir de RotSink, adicionamos um novo método `addModifiable()` que
+faz exatamente isso:
 
 ```dart
 class RotSink extends ChunkedConversionSink<List<int>> {
@@ -429,12 +430,12 @@ class RotSink extends ChunkedConversionSink<List<int>> {
 }
 ```
 
-For simplicity we propose a new method that consumes a complete list. A more
-advanced method (for example `addModifiableSlice()`) would take range arguments
-(`from`, `to`) and an `isLast` boolean as arguments.
+Para simplificar, propomos um novo método que consome uma lista completa. Um
+método mais avançado (por exemplo, `addModifiableSlice()`) receberia argumentos
+de intervalo (`from`, `to`) e um booleano `isLast` como argumentos.
 
-This new method is not yet used by transformers, but we can already use it when
-invoking `startChunkedConversion()` explicitly.
+Este novo método ainda não é usado por transformers, mas já podemos usá-lo ao
+invocar `startChunkedConversion()` explicitamente.
 
 ```dart
 void main() {
@@ -448,21 +449,21 @@ void main() {
 }
 ```
 
-In this small example, performance isn't visibly different,
-but internally the
-chunked conversion avoids allocating new lists for the individual chunks.
-For two small chunks, it doesn't make a difference, but
-if we implement this for the stream transformer,
-encrypting a bigger file can be noticeably faster.
+Neste pequeno exemplo, o desempenho não é visivelmente diferente,
+mas internamente a
+conversão em partes evita a alocação de novas listas para os pedaços
+(chunks) individuais. Para dois pedaços pequenos, não faz diferença, mas se
+implementarmos isso para o stream transformer, a criptografia de um arquivo
+maior pode ser notavelmente mais rápida.
 
-To do this,
-we can make use of the undocumented feature that IOStreams provide modifiable lists.
-We could now simply rewrite `add()` and
-point it directly to `addModifiable()`. In general, this is not safe,
-and
-such a converter would be the potential source of hard-to-track bugs. Instead,
-we write a converter that does the unmodifiable-to-modifiable conversion
-explicitly, and then fuse the two converters.
+Para fazer isso,
+podemos usar o recurso não documentado de que IOStreams fornece listas
+modificáveis. Agora, poderíamos simplesmente reescrever `add()` e
+apontá-lo diretamente para `addModifiable()`. Em geral, isso não é seguro
+e tal
+conversor seria a fonte potencial de bugs difíceis de rastrear. Em vez disso,
+escrevemos um conversor que faz a conversão não modificável para modificável
+explicitamente e, em seguida, fundimos os dois conversores.
 
 ```dart
 class ToModifiableConverter extends Converter<List<int>, List<int>> {
@@ -482,8 +483,8 @@ class ToModifiableSink
 }
 ```
 
-ToModifiableSink just signals the next sink that the incoming chunk
-is modifiable. We can use this to make our pipeline more efficient:
+ToModifiableSink apenas sinaliza para o próximo _sink_ que o pedaço
+(chunk) de entrada é modificável. Podemos usar isso para tornar nosso pipeline mais eficiente:
 
 ```dart
 void main(List<String> args) {
@@ -498,15 +499,15 @@ void main(List<String> args) {
 }
 ```
 
-On my machine, this small modification brought the encryption time of an 11MB
-file from 450ms down to 260ms. We achieved this speed up without losing
-compatibility with existing codecs (with regard to the `fuse()` method)
-and the converter still functions as a stream transformer.
+Na minha máquina, esta pequena modificação reduziu o tempo de criptografia de
+um arquivo de 11 MB de 450ms para 260ms. Conseguimos esse aumento de velocidade
+sem perder a compatibilidade com os codecs existentes (com relação ao método
+`fuse()`) e o conversor ainda funciona como um stream transformer.
 
-Reusing the input works nicely with other
-converters and not just with our Rot cipher. We should therefore make an
-interface that generalizes the concept. For simplicity, we named it
-`CipherSink`, although it has, of course, uses outside the encryption world.
+Reutilizar a entrada funciona bem com outros
+conversores e não apenas com nosso cifrador Rot. Portanto, devemos criar uma
+interface que generalize o conceito. Para simplificar, chamamos de
+`CipherSink`, embora tenha, é claro, usos fora do mundo da criptografia.
 
 ```dart
 abstract class CipherSink
@@ -515,24 +516,24 @@ abstract class CipherSink
 }
 ```
 
-We can then make our RotSink private and expose the CipherSink instead.
-Other developers can now reuse our work (CipherSink and ToModifiableConverter)
-and benefit from it.
+Podemos então tornar nosso RotSink privado e expor o CipherSink em vez disso.
+Outros desenvolvedores podem agora reutilizar nosso trabalho (CipherSink e
+ToModifiableConverter) e se beneficiar dele.
 
-But we are not done yet.
+Mas ainda não terminamos.
 
-Although we won't make the cipher faster anymore,
-we can improve the output side of our Rot converter.
-Take, for instance, the fusion of two encryptions:
+Embora não tornemos mais o cifrador mais rápido, podemos melhorar o lado da
+saída do nosso conversor Rot. Tome, por exemplo, a fusão de duas
+criptografias:
 
 ```dart
 void main(List<String> args) {
   String inFile = args[0];
   String outFile = args[1];
   int key = int.parse(args[2]);
-  // Double-strength cipher running the Rot-cipher twice.
+  // Cifragem de força dupla executando o cifrador Rot duas vezes.
   var transformer = new ToModifiableConverter()
-       .fuse(new RotConverter(key))  // <= fused RotConverters.
+       .fuse(new RotConverter(key))  // <= RotConverters fundidos.
        .fuse(new RotConverter(key));
   new File(inFile)
       .openRead()
@@ -541,9 +542,9 @@ void main(List<String> args) {
 }
 ```
 
-Since the first RotConverter invokes `outSink.add()`, the second RotConverter
-assumes that input cannot be modified and allocates a copy. We can work around
-this by sandwiching a ToModifiableConverter in between the two ciphers:
+Como o primeiro RotConverter invoca `outSink.add()`, o segundo RotConverter
+assume que a entrada não pode ser modificada e aloca uma cópia. Podemos
+contornar isso intercalando um ToModifiableConverter entre os dois cifradores:
 
 ```dart
   var transformer = new ToModifiableConverter()
@@ -552,15 +553,15 @@ this by sandwiching a ToModifiableConverter in between the two ciphers:
        .fuse(new RotConverter(key));
 ```
 
-This works, but is hackish. We want the RotConverters to work without
-intermediate converters. The first cipher should look at the outSink and
-determines if it is a CipherSink or not. We can do this either,
-whenever we want to add a new chunk,
-or at the beginning when we start a chunked
-conversion. We prefer the latter approach:
+Isso funciona, mas é gambiarra. Queremos que os RotConverters funcionem sem
+conversores intermediários. O primeiro cifrador deve olhar para o outSink e
+determinar se é um CipherSink ou não. Podemos fazer isso, sempre que
+quisermos adicionar um novo pedaço (chunk), ou no início quando iniciamos
+uma conversão em partes.
+Preferimos a última abordagem:
 
 ```dart
-  /// Works more efficiently if given a CipherSink as argument.
+  /// Funciona de forma mais eficiente se receber um CipherSink como argumento.
   CipherSink startChunkedConversion(
       ChunkedConversionSink<List<int>> sink) {
     if (sink is! CipherSink) sink = new _CipherSinkAdapter(sink);
@@ -568,7 +569,7 @@ conversion. We prefer the latter approach:
   }
 ```
 
-_CipherSinkAdapter is simply:
+_CipherSinkAdapter é simplesmente:
 
 ```dart
 class _CipherSinkAdapter implements CipherSink {
@@ -581,13 +582,13 @@ class _CipherSinkAdapter implements CipherSink {
 }
 ```
 
-We now only need to change the _RotSink to take advantage of the fact that it
-always receives a CipherSink as an argument to its constructor:
+Agora, só precisamos alterar o _RotSink para aproveitar o fato de que ele
+sempre recebe um CipherSink como um argumento para seu construtor:
 
 ```dart
 class _RotSink extends CipherSink {
   final _key;
-  final CipherSink _outSink;  // <= always a CipherSink.
+  final CipherSink _outSink;  // <= sempre um CipherSink.
   _RotSink(this._key, this._outSink);
 
   void add(List<int> data) {
@@ -598,7 +599,7 @@ class _RotSink extends CipherSink {
     for (int i = 0; i < data.length; i++) {
       data[i] = (data[i] + _key) % 256;
     }
-    _outSink.addModifiable(data);  // <= safe to call addModifiable.
+    _outSink.addModifiable(data);  // <= seguro para chamar addModifiable.
   }
 
   void close() {
@@ -607,8 +608,8 @@ class _RotSink extends CipherSink {
 }
 ```
 
-With these changes our super secure, double cipher won't allocate any new lists
-and our work is done.
+Com essas alterações, nosso cifrador duplo super seguro não alocará nenhuma
+nova lista e nosso trabalho estará concluído.
 
-Thanks to Lasse Reichstein Holst Nielsen, Anders Johnsen, and Matias Meno who
-were a great help in writing this article.
+Graças a Lasse Reichstein Holst Nielsen, Anders Johnsen e Matias Meno, que
+foram de grande ajuda na redação deste artigo.
