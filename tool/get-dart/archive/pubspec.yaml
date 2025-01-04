@@ -1,5 +1,5 @@
 name: download_archive
-description: Display a list of downloads for dart.dev.
+description: Display a list of downloads for dartbrasil.dev.
 publish_to: none
 
 resolution: workspace
