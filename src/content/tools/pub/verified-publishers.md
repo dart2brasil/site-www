@@ -1,48 +1,49 @@
 ---
-title: Verified publishers
-description: Learn what verified publishers are, and they're verified.
+ia-translate: true
+title: Editores verificados
+description: Saiba o que são editores verificados e como eles são verificados.
 ---
 
-The pub.dev verified publisher badge <img src="/assets/img/verified-publisher.svg" class="text-icon" alt="pub.dev verified publisher logo"> 
-lets you know that the pub.dev site 
-verified the identity of the publisher of a package.
-For example, [dart.dev]({{site.pub}}/publishers/dart.dev/)
-is the verified publisher for packages that Google's Dart
-team supports.
+O selo de editor verificado do pub.dev <img src="/assets/img/verified-publisher.svg" class="text-icon" alt="logotipo de editor verificado do pub.dev">
+permite que você saiba que o site pub.dev
+verificou a identidade do editor de um pacote.
+Por exemplo, [dartbrasil.dev]({{site.pub}}/publishers/dartbrasil.dev/)
+é o editor verificado para pacotes que a equipe Dart
+do Google suporta.
 
-The badge appears in several places on pub.dev,
-next to packages that verified publishers published:
+O selo aparece em vários locais no pub.dev,
+ao lado de pacotes que editores verificados publicaram:
 
-  * Package search results
-  * Package detail pages
-  * Publisher profile pages
-  * The pub.dev front page
+  * Resultados da pesquisa de pacotes
+  * Páginas de detalhes do pacote
+  * Páginas de perfil do editor
+  * A página inicial do pub.dev
 
-Each publisher has a page with a list of
-all packages belonging to that publisher,
-plus additional details such as the publisher's contact email.
-To visit the publisher page, click the publisher identity link
-(for example, `dart.dev`) next to the verified publisher badge 
+Cada editor tem uma página com uma lista de
+todos os pacotes pertencentes a esse editor,
+além de detalhes adicionais, como o e-mail de contato do editor.
+Para visitar a página do editor, clique no link de identidade do editor
+(por exemplo, `dartbrasil.dev`) ao lado do selo de editor verificado
 <img
 class="text-icon"
-  src="/assets/img/verified-publisher.svg" 
-  alt="pub.dev verified publisher logo">.
+  src="/assets/img/verified-publisher.svg"
+  alt="logotipo de editor verificado do pub.dev">.
 
-## Verification process {:#verification-process}
+## Processo de verificação {:#verification-process}
 
-To ensure that creating verified publishers is low cost and available to anyone,
-pub.dev relies on DNS (domain name system) domains as an identification token.
-We chose DNS verification because many package authors
-already have a trusted domain and a homepage for that domain.
-During the [publisher creation process][publishing page],
-pub.dev verifies that the user creating the verified publisher has
-admin access to the associated ["Domain Property"][domain-prop],
-based on existing logic in the [Google Search Console.][search-console]
+Para garantir que a criação de editores verificados seja de baixo custo e disponível para qualquer pessoa,
+o pub.dev usa domínios DNS (sistema de nomes de domínio) como um token de identificação.
+Escolhemos a verificação de DNS porque muitos autores de pacotes
+já possuem um domínio confiável e uma página inicial para esse domínio.
+Durante o [processo de criação de editor][publishing page],
+o pub.dev verifica se o usuário que está criando o editor verificado tem
+acesso de administrador à ["Propriedade do Domínio"][domain-prop] associada,
+com base na lógica existente no [Google Search Console.][search-console]
 
-## Creating a verified publisher account {:#creating-a-verified-publisher-account}
+## Criando uma conta de editor verificado {:#creating-a-verified-publisher-account}
 
-If you publish packages and want to create a new verified publisher,
-see the instructions on the [publishing page][].
+Se você publica pacotes e deseja criar um novo editor verificado,
+consulte as instruções na [página de publicação][].
 
 [domain-prop]: https://support.google.com/webmasters/answer/34592
 [publishing page]: /tools/pub/publishing#create-verified-publisher

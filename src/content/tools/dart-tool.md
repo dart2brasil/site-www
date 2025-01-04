@@ -1,17 +1,18 @@
 ---
-title: "dart: The Dart command-line tool"
-description: "The reference page for using 'dart' in a terminal window."
+ia-translate: true
+title: "dart: A ferramenta de linha de comando do Dart"
+description: "A página de referência para usar 'dart' em uma janela de terminal."
 toc: false
 ---
 
-The `dart` tool (`bin/dart`)
-is a command-line interface to the [Dart SDK](/tools/sdk).
-The tool is available no matter how you get the Dart SDK—whether 
-you download the Dart SDK explicitly 
-or download only the [Flutter SDK.]({{site.flutter}})
+A ferramenta `dart` (`bin/dart`)
+é uma interface de linha de comando para o [Dart SDK](/tools/sdk).
+A ferramenta está disponível independentemente de como você obtém o Dart SDK —
+seja baixando o Dart SDK explicitamente
+ou baixando apenas o [Flutter SDK.]({{site.flutter}})
 
-Here's how you might use the `dart` tool
-to create, analyze, test, and run an app:
+Veja como você pode usar a ferramenta `dart`
+para criar, analisar, testar e executar um app:
 
 ```console
 $ dart create -t console my_app
@@ -21,7 +22,7 @@ $ dart test
 $ dart run bin/my_app.dart
 ```
 
-You can also run [`pub` commands][pub] using the `dart` tool:
+Você também pode executar comandos [`pub`][pub] usando a ferramenta `dart`:
 
 ```console
 $ dart pub get
@@ -29,27 +30,27 @@ $ dart pub outdated
 $ dart pub upgrade
 ```
 
-The following table shows which commands you can use with the `dart` tool.
-If you're developing for Flutter,
-you might use the [`flutter` tool][] instead.
+A tabela a seguir mostra quais comandos você pode usar com a ferramenta `dart`.
+Se você está desenvolvendo para o Flutter,
+pode usar a ferramenta [`flutter`][] em vez disso.
 
 [`flutter` tool]: {{site.flutter-docs}}/reference/flutter-cli
 
 <code>&#124;</code>
 
-| Command   | Example of use                                         | More information                                                                                                   |
-|-----------|--------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| `analyze` | <code>dart analyze [<DIRECTORY&#124;DART_FILE>]</code> | Analyzes the project's Dart source code.<br>[Learn more.][analyze]                                                 |
-| `compile` | `dart compile exe <DART_FILE>`                         | Compiles Dart to various formats.<br>Replaces `dart2js` and `dart2native`.<br>[Learn more.][compile]               | 
-| `create`  | `dart create <DIRECTORY>`                              | Creates a new project.<br>[Learn more.][create]                                                                    | 
-| `doc`     | `dart doc <DIRECTORY>`                                 | Generates API reference documentation.<br>Replaces [`dartdoc`][].<br>[Learn more.][doc]                            |
-| `fix`     | <code>dart fix <DIRECTORY&#124;DART_FILE></code>       | Applies automated fixes to Dart source code.<br>[Learn more.][fix]                                                 | 
-| `format`  | <code>dart format <DIRECTORY&#124;DART_FILE></code>    | Formats Dart source code.<br>[Learn more.][format]                                                                 |
-| `info`    | `dart info`                                            | Outputs Dart tooling diagnostic information.<br>[Learn more.][info]                                                |
-| `pub`     | `dart pub <PUB_COMMAND>`                               | Works with packages.<br>Replaces `pub`.<br>[Learn more.][pub]                                                      | 
-| `run`     | `dart run <DART_FILE>`                                 | Runs a Dart program. <br>Replaces the pre-existing Dart VM command (`dart` with no command).<br>[Learn more.][run] | 
-| `test`    | <code>dart test <DIRECTORY&#124;DART_FILE></code>      | Runs tests in this package.<br>Replaces `pub run test`.<br>[Learn more.][test]                                     |
-| _(none)_  | `dart <DART_FILE>`                                     | Runs a Dart program; identical to the pre-existing Dart VM command.<br>Prefer [`dart run`][run].                   |
+| Comando   | Exemplo de uso                                          | Mais informações                                                                                             |
+|-----------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| `analyze` | <code>dart analyze [<DIRECTORY&#124;DART_FILE>]</code> | Analisa o código-fonte Dart do projeto.<br>[Saiba mais.][analyze]                                             |
+| `compile` | `dart compile exe <DART_FILE>`                          | Compila o Dart para vários formatos.<br>Substitui `dart2js` e `dart2native`.<br>[Saiba mais.][compile]         |
+| `create`  | `dart create <DIRECTORY>`                               | Cria um novo projeto.<br>[Saiba mais.][create]                                                                |
+| `doc`     | `dart doc <DIRECTORY>`                                  | Gera documentação de referência da API.<br>Substitui [`dartdoc`][].<br>[Saiba mais.][doc]                     |
+| `fix`     | <code>dart fix <DIRECTORY&#124;DART_FILE></code>       | Aplica correções automatizadas ao código-fonte Dart.<br>[Saiba mais.][fix]                                     |
+| `format`  | <code>dart format <DIRECTORY&#124;DART_FILE></code>    | Formata o código-fonte Dart.<br>[Saiba mais.][format]                                                             |
+| `info`    | `dart info`                                            | Exibe informações de diagnóstico de ferramentas Dart.<br>[Saiba mais.][info]                                  |
+| `pub`     | `dart pub <PUB_COMMAND>`                                | Trabalha com packages (pacotes).<br>Substitui `pub`.<br>[Saiba mais.][pub]                                   |
+| `run`     | `dart run <DART_FILE>`                                  | Executa um programa Dart.<br>Substitui o comando pré-existente da VM Dart (`dart` sem comando).<br>[Saiba mais.][run] |
+| `test`    | <code>dart test <DIRECTORY&#124;DART_FILE></code>      | Executa testes neste package.<br>Substitui `pub run test`.<br>[Saiba mais.][test]                               |
+| _(none)_  | `dart <DART_FILE>`                                      | Executa um programa Dart; idêntico ao comando pré-existente da VM Dart.<br>Prefira [`dart run`][run].         |
 
 {:.table .table-striped .nowrap}
 
@@ -64,8 +65,8 @@ you might use the [`flutter` tool][] instead.
 [run]: /tools/dart-run
 [test]: /tools/dart-test
 
-To get help with any of the commands, enter `dart help <command>`.
-You can also get details on `pub` commands.
+Para obter ajuda com qualquer um dos comandos, digite `dart help <command>`.
+Você também pode obter detalhes sobre os comandos `pub`.
 
 ```console
 $ dart help pub outdated

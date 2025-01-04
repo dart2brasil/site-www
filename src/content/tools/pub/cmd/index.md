@@ -1,163 +1,164 @@
 ---
+ia-translate: true
 title: dart pub
-description: The command-line interface for pub, a package management tool for Dart.
+description: A interface de linha de comando para o pub, uma ferramenta de gerenciamento de pacotes para Dart.
 ---
 
-The [pub package manager](/tools/pub/packages) has a command-line interface
-that works with either the
-[`flutter` tool][flutter-cli] or the [`dart` tool][dart-cli].
-With either tool, add the `pub` command followed by
-a subcommand such as `get`:
+O [gerenciador de pacotes pub](/tools/pub/packages) possui uma interface de linha de comando
+que funciona tanto com a ferramenta
+[`flutter`][flutter-cli] quanto com a ferramenta [`dart`][dart-cli].
+Com qualquer uma das ferramentas, adicione o comando `pub` seguido por
+um subcomando como `get`:
 
 ```console
-$ dart pub get    # Gets dependencies for a non-Flutter package
-$ flutter pub get # Gets dependencies for a Flutter package
+$ dart pub get    # Obtém dependências para um pacote não-Flutter
+$ flutter pub get # Obtém dependências para um pacote Flutter
 ```
 
-This site uses `dart pub <subcommand>` for its examples,
-but if your current directory holds a Flutter app
-or other Flutter-specific code,
-use `flutter pub <subcommand>` instead.
-For more information, see
-[Using packages]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
-on the [Flutter website]({{site.flutter}}).
+Este site usa `dart pub <subcomando>` para seus exemplos,
+mas se seu diretório atual contém um aplicativo Flutter
+ou outro código específico do Flutter,
+use `flutter pub <subcomando>` em vez disso.
+Para mais informações, veja
+[Usando pacotes]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
+no [site do Flutter]({{site.flutter}}).
 
 [flutter-cli]: {{site.flutter-docs}}/reference/flutter-cli
 [dart-cli]: /tools/dart-tool
 
 :::version-note
-The `dart pub` command debuted in Dart 2.10.
-Although you might still find examples of
-using the standalone `pub` command instead of
-`dart pub` or `flutter pub`,
-the standalone `pub` command has been removed.
+O comando `dart pub` estreou no Dart 2.10.
+Embora você ainda possa encontrar exemplos de
+usar o comando `pub` independente em vez de
+`dart pub` ou `flutter pub`,
+o comando `pub` independente foi removido.
 :::
 
-If you encounter problems using the pub tool,
-see [Troubleshooting Pub](/tools/pub/troubleshoot).
+Se você encontrar problemas ao usar a ferramenta pub,
+consulte [Solução de Problemas do Pub](/tools/pub/troubleshoot).
 
 
-## List of subcommands {:#list-of-subcommands}
+## Lista de subcomandos {:#list-of-subcommands}
 
-Detailed documentation exists for each of the following pub subcommands:
+Documentação detalhada existe para cada um dos seguintes subcomandos do pub:
 
 {% render 'pub-subcommands.md' %}
 
-## Overview of subcommands {:#overview-of-subcommands}
+## Visão geral dos subcomandos {:#overview-of-subcommands}
 
-Pub's subcommands fall into the following categories:
+Os subcomandos do Pub se dividem nas seguintes categorias:
 
-* [Managing package dependencies](#managing-package-dependencies)
-* [Running command-line apps](#running-command-line-apps)
-* [Deploying packages and apps](#deploying-packages-and-apps)
+* [Gerenciando dependências de pacotes](#managing-package-dependencies)
+* [Executando aplicativos de linha de comando](#running-command-line-apps)
+* [Implantação de pacotes e aplicativos](#deploying-packages-and-apps)
 
 
 <a id="managing-apps"></a>
-### Managing package dependencies {:#managing-package-dependencies}
+### Gerenciando dependências de pacotes {:#managing-package-dependencies}
 
-Pub provides a number of subcommands for managing the
-[packages your code depends on](/tools/pub/dependencies).
+O Pub fornece vários subcomandos para gerenciar os
+[pacotes dos quais seu código depende](/tools/pub/dependencies).
 
-In this group, the most commonly used subcommands are `get` and
-`upgrade`, which retrieve or upgrade dependencies used by a package.
-Every time you modify a pubspec file,
-run `dart pub get` or `flutter pub get`
-to make sure the dependencies are up to date. Some IDEs
-perform this step automatically on the creation of a project,
-or any modification of the pubspec.
+Neste grupo, os subcomandos mais usados são `get` e
+`upgrade`, que recuperam ou atualizam as dependências usadas por um pacote.
+Sempre que você modifica um arquivo pubspec,
+execute `dart pub get` ou `flutter pub get`
+para garantir que as dependências estejam atualizadas. Algumas IDEs
+realizam esta etapa automaticamente na criação de um projeto,
+ou qualquer modificação do pubspec.
 
 [`cache`](/tools/pub/cmd/pub-cache)
-: Manages pub's local package cache. Use this subcommand to add packages
-  to your cache, or to perform a clean reinstall of all packages in
-  your cache.
+: Gerencia o cache local de pacotes do pub. Use este subcomando para adicionar pacotes
+  ao seu cache, ou para realizar uma reinstalação limpa de todos os pacotes em
+  seu cache.
 
 [`deps`](/tools/pub/cmd/pub-deps)
-: Lists all dependencies used by the current package.
+: Lista todas as dependências usadas pelo pacote atual.
 
 [`downgrade`](/tools/pub/cmd/pub-downgrade)
-: Retrieves the lowest versions of all the packages that are
-  listed as dependencies used by the current package. Used for testing
-  the lower range of your package's dependencies.
+: Recupera as versões mais baixas de todos os pacotes que estão
+  listados como dependências usadas pelo pacote atual. Usado para testar
+  o intervalo inferior das dependências do seu pacote.
 
 [`get`](/tools/pub/cmd/pub-get)
-: Retrieves the packages that are listed as the dependencies for
-  the current package.
-  If a `pubspec.lock` file already exists, fetches the version
-  of each dependency (if possible) as listed in the lock file.
-  Creates or updates the lock file, as needed.
+: Recupera os pacotes que estão listados como as dependências para
+  o pacote atual.
+  Se um arquivo `pubspec.lock` já existir, busca a versão
+  de cada dependência (se possível) conforme listado no arquivo de lock (travamento).
+  Cria ou atualiza o arquivo de lock, conforme necessário.
 
 [`outdated`](/tools/pub/cmd/pub-outdated)
-: Looks at every package that the current package depends on,
-  determines which package dependencies are out of date,
-  and gives you advice on how to update them.
-  Use this subcommand when you want to update package dependencies.
+: Examina todos os pacotes dos quais o pacote atual depende,
+  determina quais dependências de pacotes estão desatualizadas,
+  e lhe dá conselhos sobre como atualizá-las.
+  Use este subcomando quando você quiser atualizar as dependências do pacote.
 
 [`upgrade`](/tools/pub/cmd/pub-upgrade)
-: Retrieves the latest version of each package listed
-  as dependencies used by the current package. If a `pubspec.lock`
-  file exists, ignores the versions listed in the lock file and fetches
-  the newest versions that honor the constraints in the pubspec.
-  Creates or updates the lock file, as needed.
+: Recupera a versão mais recente de cada pacote listado
+  como dependências usadas pelo pacote atual. Se um arquivo `pubspec.lock`
+  existir, ignora as versões listadas no arquivo de lock e busca
+  as versões mais recentes que respeitam as restrições no pubspec.
+  Cria ou atualiza o arquivo de lock, conforme necessário.
 
 
-### Running command-line apps {:#running-command-line-apps}
+### Executando aplicativos de linha de comando {:#running-command-line-apps}
 
-The [`global`](/tools/pub/cmd/pub-global) subcommand lets you 
-make a package globally available, 
-so you can run scripts from that package's `bin` directory.
-To run globally available scripts, you must
-[add the system cache `bin` directory to your path][add-path].
+O subcomando [`global`](/tools/pub/cmd/pub-global) permite que você
+torne um pacote disponível globalmente,
+para que você possa executar scripts do diretório `bin` desse pacote.
+Para executar scripts disponíveis globalmente, você deve
+[adicionar o diretório `bin` do cache do sistema ao seu path (caminho)][add-path].
 
 [add-path]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 
-### Deploying packages and apps {:#deploying-packages-and-apps}
+### Implantação de pacotes e aplicativos {:#deploying-packages-and-apps}
 
-With pub you can publish packages and command-line apps.
+Com o pub, você pode publicar pacotes e aplicativos de linha de comando.
 
-#### Packages {:#packages}
+#### Pacotes {:#packages}
 
-To share your Dart packages with the world, you can
-use the [`publish`](/tools/pub/cmd/pub-lish) subcommand to upload the
-package to the [pub.dev site]({{site.pub}}).
-For information on allowing other users 
-to modify and upload new versions of your package,
-see [Uploaders](/tools/pub/publishing#uploaders).
+Para compartilhar seus pacotes Dart com o mundo, você pode
+usar o subcomando [`publish`](/tools/pub/cmd/pub-lish) para fazer o upload do
+pacote para o [site pub.dev]({{site.pub}}).
+Para obter informações sobre como permitir que outros usuários
+modifiquem e façam upload de novas versões do seu pacote,
+consulte [Uploaders](/tools/pub/publishing#uploaders).
 
 
-#### Command-line apps {:#command-line-apps}
+#### Aplicativos de linha de comando {:#command-line-apps}
 
-For any package that contains scripts (anything under the `bin/`
-directory), consider adding the `executables` tag to the pubspec file.
-When a script is listed under `executables`, users can run
+Para qualquer pacote que contenha scripts (qualquer coisa sob o diretório `bin/`),
+considere adicionar a tag `executables` ao arquivo pubspec.
+Quando um script é listado em `executables`, os usuários podem executar
 [`dart pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
-to make it directly available from the command line.
+para torná-lo diretamente disponível na linha de comando.
 
 
-## Global options {:#global-options}
+## Opções globais {:#global-options}
 
-Several command-line options work with all of the pub subcommands.
-These include:
+Várias opções de linha de comando funcionam com todos os subcomandos do pub.
+Estas incluem:
 
-### `--help` or `-h` {:#help-or-h}
+### `--help` ou `-h` {:#help-or-h}
 
-Prints usage information.
+Imprime informações de uso.
 
 ### `--trace` {:#trace}
 
-Prints debugging information when an error occurs.
+Imprime informações de depuração quando ocorre um erro.
 
-### `--verbose` or `-v` {:#verbose-or-v}
+### `--verbose` ou `-v` {:#verbose-or-v}
 
-Equivalent to `--verbosity=all`.
+Equivalente a `--verbosity=all`.
 
-### `--directory=<dir>` or `-C <dir>` {:#directory-dir-or-c-dir}
+### `--directory=<dir>` ou `-C <dir>` {:#directory-dir-or-c-dir}
 
-Runs the command in the specified directory.
+Executa o comando no diretório especificado.
 
 ### `--[no-]color` {:#no-color}
 
-Adds color to the output for emphasis (`--color`).
-The default depends on whether you're using this command at a terminal.
-At a terminal, `--color` is the default,
-otherwise, `--no-color` is the default.
-Use `--no-color` to disable color in all environments.
+Adiciona cor à saída para ênfase (`--color`).
+O padrão depende se você está usando este comando em um terminal.
+Em um terminal, `--color` é o padrão,
+caso contrário, `--no-color` é o padrão.
+Use `--no-color` para desabilitar a cor em todos os ambientes.

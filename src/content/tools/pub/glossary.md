@@ -1,320 +1,321 @@
 ---
-title: Glossary of package terms
-description: A glossary of terms relating to Dart's package management tool, pub.
+ia-translate: true
+title: Glossário de termos de pacotes
+description: Um glossário de termos relacionados à ferramenta de gerenciamento de pacotes do Dart, pub.
 ---
 
-The following terms are used in the documentation for
-[package management][] and
-the [pub tool][].
+Os seguintes termos são usados na documentação para
+[gerenciamento de pacotes][] e
+a [ferramenta pub][].
 
-[package management]: /tools/pub/packages
-[pub tool]: /tools/pub/cmd
+[gerenciamento de pacotes]: /tools/pub/packages
+[ferramenta pub]: /tools/pub/cmd
 
-## Application package {:#application-package}
+## Pacote de aplicativo {:#application-package}
 
-A package that contains a program or app, with a [main entrypoint][]. 
-Meant to be run directly, either on the command line or in a browser.
+Um pacote que contém um programa ou aplicativo, com um [ponto de entrada principal][].
+Destinado a ser executado diretamente, seja na linha de comando ou em um navegador.
 
-Application packages may have [dependencies][] on other packages,
-but are never depended on themselves.
-Unlike regular [packages][], they are not intended to be shared.
+Pacotes de aplicativos podem ter [dependências][] em outros pacotes,
+mas nunca são dependidos eles mesmos.
+Ao contrário dos [pacotes][] regulares, eles não se destinam a ser compartilhados.
 
-Application packages should check their [lockfiles][] into source
-control, so that everyone working on the application and every location the
-application is deployed has a consistent set of dependencies. Because their
-dependencies are constrained by the lockfile, application packages usually
-specify `any` for their dependencies' [version constraints][].
+Pacotes de aplicativos devem verificar seus [lockfiles][] no controle de versão,
+para que todos que trabalham no aplicativo e em todos os locais onde o
+aplicativo é implantado tenham um conjunto consistente de dependências. Como suas
+dependências são restringidas pelo lockfile, pacotes de aplicativos geralmente
+especificam `any` para suas [restrições de versão][] de dependências.
 
-[main entrypoint]: #entrypoint
-[dependencies]: #dependency
-[packages]: #package
+[ponto de entrada principal]: #entrypoint
+[dependências]: #dependency
+[pacotes]: #package
 [lockfiles]: #lockfile
-[version constraints]: #version-constraint
+[restrições de versão]: #version-constraint
 
-## Content hashes {:#content-hashes}
+## Hashes de conteúdo {:#content-hashes}
 
-The pub.dev repository maintains a sha256 hash of each package version it hosts.
-Pub clients can use this hash to validate the integrity of downloaded packages,
-and protect against changes on the repository. 
+O repositório pub.dev mantém um hash sha256 de cada versão de pacote que hospeda.
+Clientes Pub podem usar este hash para validar a integridade dos pacotes baixados,
+e proteger contra alterações no repositório.
 
-When `dart pub get` downloads a package,
-it computes the hash of the downloaded archive.
-The hash of each hosted dependency is stored with the
-[resolution][] in the [lockfile][].
+Quando `dart pub get` baixa um pacote,
+ele calcula o hash do arquivo baixado.
+O hash de cada dependência hospedada é armazenado com a
+[resolução][] no [lockfile][].
 
-The pub client uses this content hash
-to verify that running `dart pub get` again using the same lockfile,
-potentially on a different computer, uses exactly the same packages.
+O cliente pub usa este hash de conteúdo
+para verificar se a execução de `dart pub get` novamente usando o mesmo lockfile,
+potencialmente em um computador diferente, usa exatamente os mesmos pacotes.
 
-If the locked hash doesn't match what's currently in the pub cache,
-pub redownloads the archive. If it still doesn't match, the lockfile
-updates and a warning is printed. For example:
+Se o hash bloqueado não corresponder ao que está atualmente no cache pub,
+pub baixa o arquivo novamente. Se ainda não corresponder, o lockfile
+atualiza e um aviso é impresso. Por exemplo:
 
 ```plaintext
 $ dart pub get
-Resolving dependencies...
-[!Cached version of foo-1.0.0 has wrong hash - redownloading.!]
- ~ foo 1.0.0 (was 1.0.0)
-[!The existing content-hash from pubspec.lock doesn't match contents for:!]
- * foo-1.0.0 from "pub.dev"
-This indicates one of:
- * The content has changed on the server since you created the pubspec.lock.
- * The pubspec.lock has been corrupted.
+Resolvendo dependências...
+[!A versão em cache de foo-1.0.0 tem hash incorreto - baixando novamente.!]
+ ~ foo 1.0.0 (era 1.0.0)
+[!O hash de conteúdo existente do pubspec.lock não corresponde ao conteúdo de:!]
+ * foo-1.0.0 de "pub.dev"
+Isso indica um de:
+ * O conteúdo foi alterado no servidor desde que você criou o pubspec.lock.
+ * O pubspec.lock foi corrompido.
  
-[!The content-hashes in pubspec.lock has been updated.!]
+[!Os hashes de conteúdo em pubspec.lock foram atualizados.!]
 
-For more information see:
-https://dart.dev/go/content-hashes
+Para mais informações, veja:
+https://dartbrasil.dev/go/content-hashes
 
-Changed 1 dependency!
+Alterada 1 dependência!
 ```
 
-The updated content hash will show up in your version control diff,
-and should make you suspicious.
+O hash de conteúdo atualizado aparecerá no seu diff de controle de versão,
+e deve deixá-lo desconfiado.
 
-To make a discrepancy become an error instead of a warning, use
-[`dart pub get --enforce-lockfile`][]. It will cause the resolution to fail
-if it cannot find package archives with the same hashes, without updating the lockfile.
+Para fazer uma discrepância se tornar um erro em vez de um aviso, use
+[`dart pub get --enforce-lockfile`][]. Isso fará com que a resolução falhe
+se não conseguir encontrar arquivos de pacote com os mesmos hashes, sem atualizar o lockfile.
 
 ```plaintext
 $ dart pub get [!--enforce-lockfile!]
-Resolving dependencies...
-Cached version of foo-1.0.0 has wrong hash - redownloading.
-~ foo 1.0.0 (was 1.0.0)
-The existing content-hash from pubspec.lock doesn't match contents for:
- * foo-1.0.0 from "pub.dev"
+Resolvendo dependências...
+A versão em cache de foo-1.0.0 tem hash incorreto - baixando novamente.
+~ foo 1.0.0 (era 1.0.0)
+O hash de conteúdo existente do pubspec.lock não corresponde ao conteúdo de:
+ * foo-1.0.0 de "pub.dev"
 
-This indicates one of:
- * The content has changed on the server since you created the pubspec.lock.
- * The pubspec.lock has been corrupted.
+Isso indica um de:
+ * O conteúdo foi alterado no servidor desde que você criou o pubspec.lock.
+ * O pubspec.lock foi corrompido.
 
-For more information see:
-https://dart.dev/go/content-hashes
-[!Would change 1 dependency.!]
-[!Unable to satisfy `pubspec.yaml` using `pubspec.lock`.!]
+Para mais informações, veja:
+https://dartbrasil.dev/go/content-hashes
+[!Mudaria 1 dependência.!]
+[!Não é possível satisfazer `pubspec.yaml` usando `pubspec.lock`.!]
 
-To update `pubspec.lock` run `dart pub get` without
+Para atualizar `pubspec.lock` execute `dart pub get` sem
 `--enforce-lockfile`.
 ```
 
-[resolution]: /tools/pub/cmd/pub-get
+[resolução]: /tools/pub/cmd/pub-get
 [lockfile]: #lockfile
 [`dart pub get --enforce-lockfile`]: /tools/pub/cmd/pub-get#enforce-lockfile
 
-## Dependency {:#dependency}
+## Dependência {:#dependency}
 
-Another package that your package relies on. If your package wants to import
-code from some other package, that package must be a dependency. Dependencies
-are specified in your package's [pubspec][] and described in
-[Package dependencies][].
+Outro pacote do qual seu pacote depende. Se seu pacote quiser importar
+código de algum outro pacote, esse pacote deve ser uma dependência. Dependências
+são especificadas no [pubspec][] do seu pacote e descritas em
+[Dependências de pacote][].
 
-To see the dependencies used by a package, use [`pub deps`][].
+Para ver as dependências usadas por um pacote, use [`pub deps`][].
 
 [pubspec]: /tools/pub/pubspec
-[Package dependencies]: /tools/pub/dependencies
+[Dependências de pacote]: /tools/pub/dependencies
 [`pub deps`]: /tools/pub/cmd/pub-deps
 
-## Entrypoint {:#entrypoint}
+## Ponto de entrada {:#entrypoint}
 
-In the general context of Dart, an _entrypoint_ is
-a Dart library that is directly invoked by a Dart implementation. When you
-reference a Dart library in a `<script>` tag or pass it as a command-line
-argument to the standalone Dart VM, that library is the entrypoint. In other
-words, it's usually the `.dart` file that contains `main()`.
+No contexto geral do Dart, um _ponto de entrada_ é
+uma biblioteca Dart que é invocada diretamente por uma implementação Dart. Quando você
+referencia uma biblioteca Dart em uma tag `<script>` ou a passa como um argumento de linha de comando
+para a VM Dart autônoma, essa biblioteca é o ponto de entrada. Em outras
+palavras, geralmente é o arquivo `.dart` que contém `main()`.
 
-In the context of pub, an _entrypoint package_ or _root package_ is the root
-of a dependency graph. It will usually be an application. When you run your app,
-it's the entrypoint package. Every other package it depends on will not be an
-entrypoint in that context.
+No contexto do pub, um _pacote de ponto de entrada_ ou _pacote raiz_ é a raiz
+de um gráfico de dependência. Geralmente será um aplicativo. Quando você executa seu aplicativo,
+é o pacote de ponto de entrada. Todos os outros pacotes dos quais ele depende não serão um
+ponto de entrada nesse contexto.
 
-A package can be an entrypoint in some contexts and not in others. Say your
-app uses a package `A`. When you run your app, `A` is not the entrypoint
-package. However, if you go over to `A` and execute its tests, in that
-context, it *is* the entrypoint since your app isn't involved.
+Um pacote pode ser um ponto de entrada em alguns contextos e não em outros. Digamos que seu
+aplicativo use um pacote `A`. Quando você executa seu aplicativo, `A` não é o pacote de ponto de entrada.
+No entanto, se você for para `A` e executar seus testes, nesse
+contexto, *é* o ponto de entrada, já que seu aplicativo não está envolvido.
 
-## Entrypoint directory {:#entrypoint-directory}
+## Diretório de ponto de entrada {:#entrypoint-directory}
 
-A directory inside your package that is allowed to contain
-[Dart entrypoints](#entrypoint).
+Um diretório dentro do seu pacote que pode conter
+[pontos de entrada Dart](#entrypoint).
 
-Pub has a list of these directories: `benchmark`, `bin`, `example`,
-`test`, `tool`, and `web` (and `lib`, for [Flutter apps][]).
-Any subdirectories of those (except `bin`) may also contain entrypoints.
+Pub tem uma lista desses diretórios: `benchmark`, `bin`, `example`,
+`test`, `tool` e `web` (e `lib`, para [aplicativos Flutter][]).
+Quaisquer subdiretórios desses (exceto `bin`) também podem conter pontos de entrada.
 
-[Flutter apps]: {{site.flutter-docs}}/packages-and-plugins/developing-packages
+[aplicativos Flutter]: {{site.flutter-docs}}/packages-and-plugins/developing-packages
 
-## Immediate dependency {:#immediate-dependency}
+## Dependência imediata {:#immediate-dependency}
 
-A [dependency](#dependency) that your package directly uses itself. The
-dependencies you list in your pubspec are your package's immediate dependencies.
-All other dependencies are [transitive dependencies](#transitive-dependency).
+Uma [dependência](#dependency) que seu pacote usa diretamente. As
+dependências que você lista no seu pubspec são as dependências imediatas do seu pacote.
+Todas as outras dependências são [dependências transitivas](#transitive-dependency).
 
-## Library {:#library}
+## Biblioteca {:#library}
 
-A library is a single compilation unit, made up of a single primary file and any
-optional number of [parts][]. Libraries have their own private scope.
+Uma biblioteca é uma única unidade de compilação, composta por um único arquivo primário e qualquer
+número opcional de [partes][]. As bibliotecas têm seu próprio escopo privado.
 
-[parts]: /resources/glossary#part-file
+[partes]: /resources/glossary#part-file-arquivo-de-parte
 
 ## Lockfile {:#lockfile}
 
-A file named `pubspec.lock` that specifies the concrete versions and other
-identifying information for every immediate and transitive dependency a package
-relies on.
+Um arquivo chamado `pubspec.lock` que especifica as versões concretas e outras
+informações de identificação para cada dependência imediata e transitiva que um pacote
+depende.
 
-Unlike the pubspec, which only lists immediate dependencies and allows version
-ranges, the lockfile comprehensively pins down the entire dependency graph to
-specific versions of packages. A lockfile ensures that you can recreate the
-exact configuration of packages used by an application.
+Ao contrário do pubspec, que lista apenas as dependências imediatas e permite intervalos de versão,
+o lockfile fixa de forma abrangente todo o gráfico de dependência em
+versões específicas de pacotes. Um lockfile garante que você pode recriar a
+configuração exata de pacotes usada por um aplicativo.
 
-The lockfile is generated automatically for you by pub when you run
-[`pub get`](/tools/pub/cmd/pub-get), [`pub upgrade`](/tools/pub/cmd/pub-upgrade),
-or [`pub downgrade`](/tools/pub/cmd/pub-downgrade).
-Pub includes a [content hash][] for each package
-to check against during future resolutions.
+O lockfile é gerado automaticamente para você pelo pub quando você executa
+[`pub get`](/tools/pub/cmd/pub-get), [`pub upgrade`](/tools/pub/cmd/pub-upgrade) ou
+[`pub downgrade`](/tools/pub/cmd/pub-downgrade).
+O Pub inclui um [hash de conteúdo][] para cada pacote
+para verificar durante resoluções futuras.
 
-If your package is an [application package][], you will typically check this into
-source control. For regular packages, you usually won't.
+Se seu pacote for um [pacote de aplicativo][], você normalmente verificará isso no
+controle de versão. Para pacotes regulares, você geralmente não fará isso.
 
-[content hash]: #content-hashes
+[hash de conteúdo]: #content-hashes
 
 <a id="library-package"></a>
 
-## Package {:#package}
+## Pacote {:#package}
 
-A collection of [libraries] under a directory,
-with a [pubspec.yaml] in the root of that directory. 
+Uma coleção de [bibliotecas] em um diretório,
+com um [pubspec.yaml] na raiz desse diretório.
 
-Packages can have [dependencies](#dependency) on other packages
-*and* can be dependencies themselves.
-A package's `/lib` directory contains the
-[public libraries][] that other packages can import and use.
-They can also include scripts to be run directly.
-A package that is not intended to be depended on by other packages is an
-[application package][].
-Shared packages are [published][] to pub.dev,
-but you can also have non-published packages.
+Pacotes podem ter [dependências](#dependency) em outros pacotes
+*e* podem ser dependências eles mesmos.
+O diretório `/lib` de um pacote contém as
+[bibliotecas públicas][] que outros pacotes podem importar e usar.
+Eles também podem incluir scripts a serem executados diretamente.
+Um pacote que não se destina a depender de outros pacotes é um
+[pacote de aplicativo][].
+Pacotes compartilhados são [publicados][] no pub.dev,
+mas você também pode ter pacotes não publicados.
 
-Don't check the [lockfile][] of a package into source
-control, since libraries should support a range of dependency versions. The
-[version constraints][] of a package's
-[immediate dependencies][] should be as wide as possible while still
-ensuring that the dependencies will be compatible with the versions that were
-tested against.
+Não verifique o [lockfile][] de um pacote no controle de versão,
+já que as bibliotecas devem suportar uma variedade de versões de dependência. A
+[restrições de versão][] das
+[dependências imediatas][] de um pacote devem ser o mais amplas possível, enquanto ainda
+garantindo que as dependências sejam compatíveis com as versões que foram
+testadas.
 
-Since [semantic versioning](https://semver.org/spec/v2.0.0-rc.1.html) requires
-that libraries increment their major version numbers for any backwards
-incompatible changes, packages will usually require their dependencies'
-versions to be greater than or equal to the versions that were tested and less
-than the next major version. So if your library depended on the (fictional)
-`transmogrify` package and you tested it at version 1.2.1, your version
-constraint would be [`^1.2.1`][].
+Como [versionamento semântico](https://semver.org/spec/v2.0.0-rc.1.html) requer
+que as bibliotecas incrementem seus números de versão principal para qualquer retrocompatibilidade
+alterações incompatíveis, os pacotes geralmente exigirão que as versões de suas dependências
+sejam maiores ou iguais às versões que foram testadas e menores
+que a próxima versão principal. Portanto, se sua biblioteca dependesse do (fictício)
+pacote `transmogrify` e você o testou na versão 1.2.1, sua versão
+restrição seria [`^1.2.1`][].
 
-[libraries]: #library
+[bibliotecas]: #library
 [pubspec.yaml]: /tools/pub/pubspec
-[public libraries]: /tools/pub/package-layout#public-libraries
-[application package]: #application-package
-[published]: /tools/pub/publishing
+[bibliotecas públicas]: /tools/pub/package-layout#public-libraries
+[pacote de aplicativo]: #application-package
+[publicados]: /tools/pub/publishing
 [lockfile]: #lockfile
-[version constraints]: #version-constraint
-[immediate dependencies]: #immediate-dependency
+[restrições de versão]: #version-constraint
+[dependências imediatas]: #immediate-dependency
 [`^1.2.1`]: /tools/pub/dependencies#caret-syntax
 
-## SDK constraint {:#sdk-constraint}
+## Restrição SDK {:#sdk-constraint}
 
-The declared versions of the Dart SDK itself that a package declares that it
-supports. An SDK constraint is specified using normal
-[version constraint](#version-constraint) syntax, but in a special _environment_
-section [in the pubspec](/tools/pub/pubspec#sdk-constraints).
+As versões declaradas do próprio SDK Dart que um pacote declara que
+suporta. Uma restrição de SDK é especificada usando um normal
+[sintaxe de restrição de versão](#version-constraint), mas em uma _environment_ especial
+seção [no pubspec](/tools/pub/pubspec#sdk-constraints).
 
-## Source {:#source}
+## Fonte {:#source}
 
-A kind of place that pub can get packages from. A source isn't a specific place
-like the pub.dev site or some specific Git URL. Each source describes a general
-procedure for accessing a package in some way. For example, _git_ is one source.
-The git source knows how to download packages given a Git URL. Several
-different [supported sources](/tools/pub/dependencies#dependency-sources) are available.
+Um tipo de lugar de onde o pub pode obter pacotes. Uma fonte não é um lugar específico
+como o site pub.dev ou algum URL Git específico. Cada fonte descreve um geral
+procedimento para acessar um pacote de alguma forma. Por exemplo, _git_ é uma fonte.
+A fonte git sabe como baixar pacotes dado um URL Git. Vários
+[fontes suportadas](/tools/pub/dependencies#dependency-sources) estão disponíveis.
 
-## System cache {:#system-cache}
+## Cache do sistema {:#system-cache}
 
-When pub gets a remote package,
-it downloads it into a single _system cache_ directory maintained by
-pub. On Mac and Linux, this directory defaults to `~/.pub-cache`.
-On Windows, the directory defaults to `%LOCALAPPDATA%\Pub\Cache`,
-though its exact location may vary depending on the Windows version.
-You can specify a different location using the
-[PUB_CACHE](/tools/pub/environment-variables) environment variable.
+Quando o pub obtém um pacote remoto,
+ele o baixa para um único diretório _cache do sistema_ mantido pelo
+pub. No Mac e Linux, este diretório usa `~/.pub-cache` por padrão.
+No Windows, o diretório usa `%LOCALAPPDATA%\Pub\Cache` por padrão,
+embora sua localização exata possa variar dependendo da versão do Windows.
+Você pode especificar um local diferente usando a
+variável de ambiente [PUB_CACHE](/tools/pub/environment-variables).
 
-Once packages are in the system cache,
-pub creates a `package_config.json` file that maps each package
-used by your application to the corresponding package in the cache.
+Uma vez que os pacotes estão no cache do sistema,
+o pub cria um arquivo `package_config.json` que mapeia cada pacote
+usado pelo seu aplicativo para o pacote correspondente no cache.
 
-You only have to download a given version of a package once
-and can then reuse it in as many packages as you would like.
-If you specify the `--offline` flag to use cached packages,
-you can delete and regenerate your `package_config.json`
-files without having to access the network.
-
-
-## Transitive dependency {:#transitive-dependency}
-
-A dependency that your package indirectly uses because one of its dependencies
-requires it. If your package depends on A, which in turn depends on B which
-depends on C, then A is an [immediate dependency](#immediate-dependency) and B
-and C are transitive ones.
+Você só precisa baixar uma determinada versão de um pacote uma vez
+e pode reutilizá-la em quantos pacotes quiser.
+Se você especificar o sinalizador `--offline` para usar pacotes em cache,
+você pode excluir e regenerar seus arquivos `package_config.json`
+sem ter que acessar a rede.
 
 
-## Uploader {:#uploader}
+## Dependência transitiva {:#transitive-dependency}
 
-Someone who has administrative permissions for a package.
-A package uploader can upload new versions of the package, 
-and they can also 
-[add and remove other uploaders](/tools/pub/publishing#uploaders)
-for that package. 
-
-If a package has a verified publisher,
-then all members of the publisher can upload the package.
+Uma dependência que seu pacote usa indiretamente porque uma de suas dependências
+requer isso. Se seu pacote depende de A, que por sua vez depende de B que
+depende de C, então A é uma [dependência imediata](#immediate-dependency) e B
+e C são transitivas.
 
 
-## Verified publisher {:#verified-publisher}
+## Uploader (Responsável por upload) {:#uploader}
 
-One or more users who own a set of packages.
-Each verified publisher is identified by a verified domain name, such as
-**dart.dev**.
-For general information about verified publishers,
-see the [verified publishers page][].
-For details on creating a verified publisher
-and transferring packages to it,
-see the documentation for [publishing packages][].
+Alguém que tem permissões administrativas para um pacote.
+Um responsável por upload de pacote pode fazer upload de novas versões do pacote,
+e eles também podem
+[adicionar e remover outros uploaders](/tools/pub/publishing#uploaders)
+para esse pacote.
 
-[verified publishers page]: /tools/pub/verified-publishers
-[publishing packages]: /tools/pub/publishing#verified-publisher
+Se um pacote tiver um editor verificado,
+então todos os membros do editor podem fazer upload do pacote.
 
-## Version constraint {:#version-constraint}
 
-A constraint placed on each [dependency](#dependency) of a package that
-specifies which versions of that dependency the package is expected to work
-with. This can be a single version (`0.3.0`) or a range of versions (`^1.2.1`).
-While `any` is also allowed, for performance reasons we don't recommend it.
+## Editor verificado {:#verified-publisher}
 
-For more information, see
-[Version constraints](/tools/pub/dependencies#version-constraints).
+Um ou mais usuários que possuem um conjunto de pacotes.
+Cada editor verificado é identificado por um nome de domínio verificado, como
+**dartbrasil.dev**.
+Para obter informações gerais sobre editores verificados,
+veja a [página de editores verificados][].
+Para obter detalhes sobre como criar um editor verificado
+e transferir pacotes para ele,
+veja a documentação para [publicação de pacotes][].
 
-[Packages](#package) should always specify version constraints
-for all of their dependencies. [Application packages](#application-package),
-on the other hand, should usually allow any version of their dependencies,
-since they use the [lockfile](#lockfile) to manage their dependency versions.
+[página de editores verificados]: /tools/pub/verified-publishers
+[publicação de pacotes]: /tools/pub/publishing#verified-publisher
 
-For more information, see
-[Pub Versioning Philosophy](/tools/pub/versioning).
+## Restrição de versão {:#version-constraint}
 
-## Workspace {:#workspace}
+Uma restrição colocada em cada [dependência](#dependency) de um pacote que
+especifica com quais versões dessa dependência o pacote deve funcionar
+com. Isso pode ser uma única versão (`0.3.0`) ou um intervalo de versões (`^1.2.1`).
+Embora `any` também seja permitido, por razões de desempenho não o recomendamos.
 
-A collection of packages that are developed together with a
-shared resolution of their dependency constraints.
-Useful for developing in a monorepo.
+Para mais informações, veja
+[Restrições de versão](/tools/pub/dependencies#version-constraints).
 
-The packages have a shared `pubspec.lock` and `.dart_tool/package_config.json`.
+[Pacotes](#package) sempre devem especificar restrições de versão
+para todas as suas dependências. [Pacotes de aplicativos](#application-package),
+por outro lado, geralmente devem permitir qualquer versão de suas dependências,
+já que eles usam o [lockfile](#lockfile) para gerenciar suas versões de dependência.
 
-To learn more about setting up and developing in a workspace,
-check out [Pub workspaces](/tools/pub/workspaces).
+Para mais informações, veja
+[Filosofia de versionamento do Pub](/tools/pub/versioning).
+
+## Workspace (Espaço de trabalho) {:#workspace}
+
+Uma coleção de pacotes que são desenvolvidos em conjunto com uma
+resolução compartilhada de suas restrições de dependência.
+Útil para desenvolver em um monorepo.
+
+Os pacotes têm um `pubspec.lock` e `.dart_tool/package_config.json` compartilhados.
+
+Para saber mais sobre como configurar e desenvolver em um workspace,
+confira [Workspaces do Pub](/tools/pub/workspaces).

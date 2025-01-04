@@ -1,66 +1,66 @@
 ---
+ia-translate: true
 title: dart info
-description: Command-line tool for outputting Dart tooling diagnostic information.
+description: Ferramenta de linha de comando para exibir informações de diagnóstico das ferramentas Dart.
 toc: false
 ---
 
-The `dart info` command
-outputs diagnostic information about installed `dart` tooling,
-running Dart processes,
-and project information if in a directory with a `pubspec.yaml`.
-The output information can be used for debugging tooling issues
-or reporting a bug.
+O comando `dart info`
+exibe informações de diagnóstico sobre as ferramentas `dart` instaladas,
+processos Dart em execução,
+e informações do projeto se estiver em um diretório com um `pubspec.yaml`.
+As informações de saída podem ser usadas para depurar problemas de ferramentas
+ou reportar um bug.
 
 {% render 'tools/dart-tool-note.md' %}
 
 :::warning
-If you are including the `dart info` output in a bug report,
-please review the output to ensure it only
-contains details you're comfortable posting publicly.
+Se você estiver incluindo a saída de `dart info` em um relatório de bug,
+por favor, revise a saída para garantir que ela contenha apenas
+detalhes que você se sinta confortável em postar publicamente.
 :::
 
-To output general information related to your system
-and your Dart installation, including running Dart processes,
-run `dart info` from any directory:
+Para exibir informações gerais relacionadas ao seu sistema
+e sua instalação Dart, incluindo processos Dart em execução,
+execute `dart info` de qualquer diretório:
 
 ```console
 $ dart info
 ```
 
-For example, on macOS, 
-the output looks similar to the following:
+Por exemplo, no macOS,
+a saída é semelhante à seguinte:
 
 ```markdown
-#### General info {:#general-info}
+#### Informações gerais {:#general-info}
 
-- Dart 2.19.2 (stable) (Tue Feb 7 18:37:17 2023 +0000) on "macos_arm64"
-- on macos / Version 13.1 (Build 22C65)
-- locale is en-US
+- Dart 2.19.2 (stable) (Ter 7 de fev 18:37:17 2023 +0000) em "macos_arm64"
+- em macos / Versão 13.1 (Build 22C65)
+- locale é en-US
 
-#### Process info {:#process-info}
+#### Informações do processo {:#process-info}
 
-| Memory |   CPU | Elapsed time | Command line                      |
-| -----: | ----: | -----------: | ----------------------------------|
-| 253 MB | 49.7% |        00:00 | analysis_server.dart.snapshot ... |
-|  69 MB | 18.7% |        00:00 | dart analyze                      |   
+| Memória |   CPU | Tempo decorrido | Linha de comando                      |
+| ------: | ----: | --------------: | -------------------------------------|
+|  253 MB | 49.7% |           00:00 | analysis_server.dart.snapshot ... |
+|   69 MB | 18.7% |           00:00 | dart analyze                       |
 ```
 
-To include project information in the output,
-run `dart info` in a directory with a `pubspec.yaml` file.
-The resulting output includes an additional **Project info** section:
+Para incluir informações do projeto na saída,
+execute `dart info` em um diretório com um arquivo `pubspec.yaml`.
+A saída resultante inclui uma seção adicional de **Informações do projeto**:
 
 ```plaintext
-#### Project info {:#project-info}
+#### Informações do projeto {:#project-info}
 
-- sdk constraint: '>=2.19.2 <3.0.0'
-- dependencies: path
+- restrição do sdk (sdk constraint): '>=2.19.2 <3.0.0'
+- dependências: path
 - dev_dependencies: lints, test
 ```
 
-To include file paths and path dependencies in
-the displayed project and process info,
-add the `--no-remove-file-paths` option:
+Para incluir caminhos de arquivo e dependências de caminho nas informações
+de projeto e processo exibidas,
+adicione a opção `--no-remove-file-paths`:
 
 ```console
 $ dart info --no-remove-file-paths
-```

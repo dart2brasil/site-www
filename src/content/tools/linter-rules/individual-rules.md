@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 pagination:
   data: linter_rules
   size: 1
@@ -9,22 +10,22 @@ underscore_breaker_titles: true
 eleventyComputed:
   permalink: "/tools/linter-rules/{{lint.name}}.html"
   title: "{{ lint.name }}"
-  description: "Learn more about the {{ lint.name }} linter rule."
+  description: "Saiba mais sobre a regra de linter {{ lint.name }}."
 skipFreshness: true
 ---
 
 {{lint.description}}
 
 {% if lint.sinceDartSdk == "Unreleased" or lint.sinceDartSdk contains "-wip" -%}
-_This rule is currently **experimental**
-and not yet available in a stable SDK._
+_Esta regra é atualmente **experimental**
+e ainda não está disponível em um SDK estável._
 {% elsif lint.state == "removed" -%}
-_This rule has been removed as of the latest Dart releases._
+_Esta regra foi removida a partir dos lançamentos mais recentes do Dart._
 {% elsif lint.state != "stable" -%}
-_This rule is currently **{{lint.state}}**
-and available as of Dart {{lint.sinceDartSdk}}._
+_Esta regra é atualmente **{{lint.state}}**
+e está disponível a partir do Dart {{lint.sinceDartSdk}}._
 {% else -%}
-_This rule is available as of Dart {{lint.sinceDartSdk}}._
+_Esta regra está disponível a partir do Dart {{lint.sinceDartSdk}}._
 {% endif -%}
 
 {% if lint.sets != empty -%}
@@ -48,11 +49,11 @@ _This rule is available as of Dart {{lint.sinceDartSdk}}._
 {%- assign rule_sets = rule_sets | append: rule_set -%}
 {% endfor -%}
 
-<em>Rule sets: {{ rule_sets }}</em>
+<em>Conjuntos de regras: {{ rule_sets }}</em>
 {% endif -%}
 
 {% if lint.fixStatus == "hasFix" %}
-_This rule has a [quick fix](/tools/linter-rules#quick-fixes) available._
+_Esta regra tem uma [correção rápida](/tools/linter-rules#quick-fixes) disponível._
 {% endif %}
 
 {% if lint.incompatible != empty -%}
@@ -67,18 +68,18 @@ _This rule has a [quick fix](/tools/linter-rules#quick-fixes) available._
 {% assign incompatible_rules = incompatible_rules | append: incompatible_rule -%}
 {% endfor -%}
 
-<em>Incompatible rules: {{ incompatible_rules }}</em>
+<em>Regras incompatíveis: {{ incompatible_rules }}</em>
 {% endif -%}
 
-## Details {:#details}
+## Detalhes {:#details}
 
 {{lint.details}}
 
-## Usage {:#usage}
+## Uso {:#usage}
 
-To enable the `{{lint.name}}` rule,
-add `{{lint.name}}` under **linter > rules** in your
-[`analysis_options.yaml`](/tools/analysis) file:
+Para habilitar a regra `{{lint.name}}`,
+adicione `{{lint.name}}` em **linter > rules** no seu
+arquivo [`analysis_options.yaml`](/tools/analysis):
 
 ```yaml title="analysis_options.yaml"
 linter:

@@ -1,56 +1,57 @@
 ---
+ia-translate: true
 title: dart create
-description: Command-line tool for creating Dart projects.
+description: Ferramenta de linha de comando para criar projetos Dart.
 toc: false
 ---
 
-The `dart create` command creates a Dart project,
-using one of several supported templates.
-The same functionality is available in IDEs.
+O comando `dart create` cria um projeto Dart,
+usando um dos vários templates (modelos) suportados.
+A mesma funcionalidade está disponível em IDEs.
 
 {% render 'tools/dart-tool-note.md' %}
 
-When you run `dart create`, it first creates a directory with the project files. 
-Then it gets package dependencies (unless you specify the `--no-pub` flag).
+Quando você executa `dart create`, ele primeiro cria um diretório com os arquivos do projeto.
+Em seguida, ele obtém as dependências do pacote (a menos que você especifique a flag `--no-pub`).
 
-Here's an example of using `dart create` to create a directory named `my_cli` 
-that contains a simple console app (the default template):
+Aqui está um exemplo de como usar `dart create` para criar um diretório chamado `my_cli`
+que contém um aplicativo de console simples (o template padrão):
 
 ```console
 $ dart create my_cli
 ```
 
-To use a different template, such as `web`, add a template argument:
+Para usar um template diferente, como `web`, adicione um argumento de template:
 
 ```console
 $ dart create -t web my_web_app
 ```
 
-The following table shows the templates you can use:
+A tabela a seguir mostra os templates que você pode usar:
 
-| Template       | Description                                                                                           |
-|----------------|-------------------------------------------------------------------------------------------------------|
-| `cli`          | A command-line application with basic argument parsing using [`package:args`]({{site.pub-pkg}}/args). |
-| `console`      | A command-line application.                                                                           |
-| `package`      | A package containing shared Dart libraries.                                                           |
-| `server-shelf` | A server built using [shelf][].                                                                       |
-| `web`          | A web app built using core Dart libraries.                                                            |
+| Template       | Descrição                                                                                                 |
+|----------------|-----------------------------------------------------------------------------------------------------------|
+| `cli`          | Um aplicativo de linha de comando com análise básica de argumentos usando [`package:args`]({{site.pub-pkg}}/args). |
+| `console`      | Um aplicativo de linha de comando.                                                                         |
+| `package`      | Um pacote contendo bibliotecas Dart compartilhadas.                                                        |
+| `server-shelf` | Um servidor construído usando [shelf][].                                                                  |
+| `web`          | Um aplicativo web construído usando bibliotecas Dart (core).                                                  |
 
 {:.table .table-striped .nowrap}
 
 [shelf]: {{site.pub-pkg}}/shelf
 
-These templates result in a file structure that follows
-[package layout conventions](/tools/pub/package-layout).
+Esses templates resultam em uma estrutura de arquivos que segue as
+[convenções de layout de pacote](/tools/pub/package-layout).
 
-If the specified directory already exists, `dart create` fails. 
-You can force project generation with the `--force` flag:
+Se o diretório especificado já existir, `dart create` falha.
+Você pode forçar a geração do projeto com a flag `--force`:
 
 ```console
-$ dart create --force <DIRECTORY>
+$ dart create --force <DIRETÓRIO>
 ```
 
-For further information on command-line options, use the `--help` flag:
+Para mais informações sobre as opções de linha de comando, use a flag `--help`:
 
 ```console
 $ dart create --help

@@ -1,48 +1,48 @@
 ---
+ia-translate: true
 title: dartaotruntime
-description: Command-line tool for running AOT-compiled snapshots of Dart code.
+description: Ferramenta de linha de comando para executar snapshots compilados AOT de código Dart.
 toc: false
 ---
 
-With Dart, you can create pre-compiled Dart applications called *AOT snapshots*.
+Com Dart, você pode criar aplicações Dart pré-compiladas chamadas *snapshots AOT*.
 
-## Create AOT snapshot app {:#create-aot-snapshot-app}
+## Criar um app snapshot AOT {:#create-aot-snapshot-app}
 
-To produce AOT snapshots, use the `aot-snapshot` subcommand of the
-[`dart compile` command][dart compile].
+Para produzir snapshots AOT, use o subcomando `aot-snapshot` do
+comando [`dart compile`][dart compile].
 
-## Run AOT snapshot app {:#run-aot-snapshot-app}
+## Executar um app snapshot AOT {:#run-aot-snapshot-app}
 
-To run AOT programs, use the `dartaotruntime` command.
-This tool supports Windows, macOS, and Linux.
+Para executar programas AOT, use o comando `dartaotruntime`.
+Esta ferramenta suporta Windows, macOS e Linux.
 
 :::note
-To run use the `dartaotruntime` command,
-add the path to your Dart `bin` directory to your `PATH` environment variable.
+Para executar use o comando `dartaotruntime`,
+adicione o caminho para seu diretório Dart `bin` à sua variável de ambiente `PATH`.
 :::
 
 [dart compile]: /tools/dart-compile
 
-## Review an example {:#review-an-example}
+## Revisar um exemplo {:#review-an-example}
 
-Here's an example of creating and running an AOT snapshot:
+Eis um exemplo de como criar e executar um snapshot AOT:
 
 ```console
 $ dart compile aot-snapshot bin/myapp.dart
 ```
 
 ```console
-Generated: /Users/me/simpleapp/bin/myapp.aot
+Gerado: /Users/me/simpleapp/bin/myapp.aot
 ```
 
 ```console
 $ dartaotruntime bin/simpleapp.aot
 ```
 
-## Learn more options {:#learn-more-options}
+## Aprender mais opções {:#learn-more-options}
 
-To learn more about command-line options, use the `--help` flag:
+Para aprender mais sobre as opções de linha de comando, use a flag `--help`:
 
 ```console
 $ dartaotruntime --help
-```

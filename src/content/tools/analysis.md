@@ -1,20 +1,21 @@
 ---
-title: Customizing static analysis
+ia-translate: true
+title: Customizando a análise estática
 description: >-
-  Use an analysis options file and code comments to customize static analysis.
+  Use um arquivo de opções de análise e comentários de código para personalizar a análise estática.
 body_class: highlight-diagnostics
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
-Static analysis allows you to find problems before
-executing a single line of code. It's a powerful tool
-used to prevent bugs and ensure that code conforms to style
-guidelines.
+A análise estática permite que você encontre problemas antes
+de executar uma única linha de código. É uma ferramenta poderosa
+usada para prevenir bugs e garantir que o código esteja em conformidade com as
+diretrizes de estilo.
 
-With the help of the analyzer, you can find
-simple typos. For example, perhaps an accidental semicolon
-made its way into an `if` statement:
+Com a ajuda do analisador, você pode encontrar
+erros de digitação simples. Por exemplo, talvez um ponto e vírgula acidental
+tenha entrado em uma instrução `if`:
 
 
 <blockquote class="ml-3">
@@ -27,18 +28,18 @@ void increment() {
 }
 ```
 
-If properly configured, the analyzer points to the semicolon and
-produces the following warning:
+Se configurado corretamente, o analisador aponta para o ponto e vírgula e
+produz o seguinte aviso:
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```plaintext
-info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
+info - example.dart:9:19 - Declaração vazia desnecessária. Tente remover a declaração vazia ou reestruturar o código. - empty_statements
 ```
 
 </blockquote>
 
-The analyzer can also help you find more subtle problems.
-For example, perhaps you've forgotten to close a sink method:
+O analisador também pode ajudá-lo a encontrar problemas mais sutis.
+Por exemplo, talvez você tenha se esquecido de fechar um método sink (esgotar/dreno):
 
 <blockquote class="ml-3">
 
@@ -49,45 +50,45 @@ var [!controller = StreamController<String>()!];
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
+info - Instância não fechada de 'Sink'. Tente invocar 'close' na função em que o 'Sink' foi criado. - close_sinks
 ```
 
 </blockquote>
 
-In the Dart ecosystem,
-the Dart Analysis Server and other tools use the
-[analyzer package]({{site.pub-pkg}}/analyzer)
-to perform static analysis.
+No ecossistema Dart,
+o Dart Analysis Server e outras ferramentas usam o
+[pacote analyzer]({{site.pub-pkg}}/analyzer)
+para realizar análise estática.
 
-You can customize static analysis to look for a variety of potential
-problems, including errors and warnings specified in the
-[Dart language spec](/resources/language/spec).
-You can also configure linter rules,
-to ensure that your code complies with the
-[Dart Style Guide](/effective-dart/style)
-and other suggested guidelines in [Effective Dart][]. 
-Tools such as [`dart analyze`](/tools/dart-analyze),
+Você pode personalizar a análise estática para procurar uma variedade de problemas potenciais,
+incluindo erros e avisos especificados na
+[especificação da linguagem Dart](/resources/language/spec).
+Você também pode configurar regras do linter (analisador de código),
+para garantir que seu código esteja em conformidade com o
+[Guia de Estilo Dart](/effective-dart/style)
+e outras diretrizes sugeridas em [Effective Dart][].
+Ferramentas como [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
-and [IDEs and editors](/tools#editors)
-use the analyzer package to evaluate your code.
+e [IDEs e editores](/tools#editors)
+usam o pacote analyzer para avaliar seu código.
 
-This document explains how to customize the behavior of the analyzer
-using either an analysis options file or comments in Dart source code. If you want to
-add static analysis to your tool, see the
-[analyzer package]({{site.pub-pkg}}/analyzer) docs and the
-[Analysis Server API Specification.](https://htmlpreview.github.io/?{{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/doc/api.html)
+Este documento explica como personalizar o comportamento do analisador
+usando um arquivo de opções de análise ou comentários no código-fonte Dart. Se você deseja
+adicionar análise estática à sua ferramenta, consulte a
+documentação do [pacote analyzer]({{site.pub-pkg}}/analyzer) e a
+[Especificação da API do Analysis Server](https://htmlpreview.github.io/?{{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/doc/api.html).
 
 :::note
-To view various analyzer diagnostics with explanations and common fixes,
-see [Diagnostic messages][diagnostics].
+Para visualizar vários diagnósticos do analisador com explicações e correções comuns,
+consulte [Mensagens de diagnóstico][diagnostics].
 :::
 
-## The analysis options file {:#the-analysis-options-file}
+## O arquivo de opções de análise {:#the-analysis-options-file}
 
-Place the analysis options file, `analysis_options.yaml`,
-at the root of the package, in the same directory as the pubspec file.
+Coloque o arquivo de opções de análise, `analysis_options.yaml`,
+na raiz do pacote, no mesmo diretório do arquivo pubspec.
 
-Here's a sample analysis options file:
+Aqui está um exemplo de arquivo de opções de análise:
 
 <?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="https:"?>
 ```yaml title="analysis_options.yaml"
@@ -104,48 +105,48 @@ linter:
     - cancel_subscriptions
 ```
 
-The sample illustrates the most common top-level entries:
+O exemplo ilustra as entradas de nível superior mais comuns:
 
-- Use <code>include: <em>url</em></code> to
-  bring in options from the specified URL—in this case,
-  from a file in the `lints` package.
-  Because YAML doesn't allow duplicate keys,
-  you can include at most one file.
-- Use the `analyzer:` entry to customize static analysis:
-  [enabling stricter type checks](#enabling-additional-type-checks),
-  [excluding files](#excluding-files),
-  [ignoring specific rules](#ignoring-rules),
-  [changing the severity of rules](#changing-the-severity-of-rules), or
-  [enabling experiments](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
-- Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
+- Use <code>include: <em>url</em></code> para
+  trazer opções da URL especificada—neste caso,
+  de um arquivo no pacote `lints`.
+  Como o YAML não permite chaves duplicadas,
+  você pode incluir no máximo um arquivo.
+- Use a entrada `analyzer:` para personalizar a análise estática:
+  [habilitar verificações de tipo mais restritas](#enabling-additional-type-checks),
+  [excluir arquivos](#excluding-files),
+  [ignorar regras específicas](#ignoring-rules),
+  [alterar a severidade das regras](#changing-the-severity-of-rules) ou
+  [habilitar experimentos](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
+- Use a entrada `linter:` para configurar [regras do linter](#enabling-linter-rules).
 
 :::warning
-**YAML is sensitive to whitespace.** 
-Don't use tabs in a YAML file,
-and use 2 spaces to denote each level of indentation.
+**YAML é sensível a espaços em branco.**
+Não use tabs em um arquivo YAML,
+e use 2 espaços para denotar cada nível de indentação.
 :::
 
-If the analyzer can't find an analysis options file at the package root,
-it walks up the directory tree, looking for one.
-If no file is available, the analyzer defaults to standard checks.
+Se o analisador não conseguir encontrar um arquivo de opções de análise na raiz do pacote,
+ele percorre a árvore de diretórios, procurando um.
+Se nenhum arquivo estiver disponível, o analisador assume as verificações padrão.
 
-Consider the following directory structure for a large project:
+Considere a seguinte estrutura de diretórios para um grande projeto:
 
-<img 
+<img
   src="/assets/img/guides/analysis-options-directory-structure.png"
-  alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2).">
+  alt="raiz do projeto contém analysis_options.yaml (#1) e 3 pacotes, um dos quais (my_package) contém um arquivo analysis_options.yaml (#2).">
 
-The analyzer uses file #1 to analyze the code in `my_other_package`
-and `my_other_other_package`, and file #2 to analyze the code in
+O analisador usa o arquivo #1 para analisar o código em `my_other_package`
+e `my_other_other_package`, e o arquivo #2 para analisar o código em
 `my_package`.
 
 
-## Enabling stricter type checks {:#enabling-additional-type-checks}
+## Habilitando verificações de tipo mais restritas {:#enabling-additional-type-checks}
 
-If you want stricter static checks than
-the [Dart type system][type-system] requires,
-consider enabling the 
-`strict-casts`, `strict-inference`, and `strict-raw-types` language modes:
+Se você deseja verificações estáticas mais restritas do que
+o [sistema de tipos Dart][type-system] exige,
+considere habilitar os modos de linguagem
+`strict-casts`, `strict-inference` e `strict-raw-types`:
 
 <?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="strict-raw-types" remove="exclude"?>
 ```yaml title="analysis_options.yaml"
@@ -156,16 +157,16 @@ analyzer:
     strict-raw-types: true
 ```
 
-You can use the modes together or separately; all default to `false`.
+Você pode usar os modos juntos ou separadamente; todos assumem o padrão `false`.
 
 `strict-casts: <bool>`
-: A value of `true` ensures that the type inference engine never
-  implicitly casts from `dynamic` to a more specific type.
-  The following valid Dart code includes an implicit downcast from the
-  `dynamic` value returned by `jsonDecode` to `List<String>`
-  that could fail at runtime.
-  This mode reports the potential error, 
-  requiring you to add an explicit cast or otherwise adjust your code.
+: Um valor de `true` garante que o mecanismo de inferência de tipo nunca
+  faça casts (conversões) implícitos de `dynamic` para um tipo mais específico.
+  O código Dart válido a seguir inclui um downcast (conversão para um subtipo) implícito do
+  valor `dynamic` retornado por `jsonDecode` para `List<String>`
+  que poderia falhar em tempo de execução.
+  Este modo relata o erro potencial,
+  exigindo que você adicione um cast explícito ou ajuste seu código de outra forma.
 
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-casts)" replace="/jsonDecode\(jsonText\)/[!$&!]/g"?>
 ```dart tag=fails-sa
@@ -174,19 +175,19 @@ void foo(List<String> lines) {
 }
 
 void bar(String jsonText) {
-  foo([!jsonDecode(jsonText)!]); // Implicit cast
+  foo([!jsonDecode(jsonText)!]); // Cast implícito
 }
 ```
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The argument type 'dynamic' can't be assigned"  replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>'. - argument_type_not_assignable
+error - O tipo de argumento 'dynamic' não pode ser atribuído ao tipo de parâmetro 'List<String>'. - argument_type_not_assignable
 ```
 
 :::version-note
-The `strict-casts` mode was introduced in Dart 2.16.
-To enable similar checks with earlier SDK releases,
-consider using the now deprecated `implicit-casts` option:
+O modo `strict-casts` foi introduzido no Dart 2.16.
+Para habilitar verificações semelhantes com versões anteriores do SDK,
+considere usar a opção `implicit-casts` agora obsoleta:
 
 ```yaml
 analyzer:
@@ -196,130 +197,130 @@ analyzer:
 :::
 
 `strict-inference: <bool>`
-: A value of `true` ensures that the type inference engine never chooses
-  the `dynamic` type when it can't determine a static type.
-  The following valid Dart code creates a `Map`
-  whose type argument cannot be inferred, 
-  resulting in an inference failure hint by this mode:
+: Um valor de `true` garante que o mecanismo de inferência de tipo nunca escolha
+  o tipo `dynamic` quando não consegue determinar um tipo estático.
+  O seguinte código Dart válido cria um `Map`
+  cujo argumento de tipo não pode ser inferido,
+  resultando em uma dica de falha de inferência por este modo:
 
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-inference)" replace="/{}/[!$&!]/g"?>
 ```dart tag=fails-sa
-final lines = [!{}!]; // Inference failure
+final lines = [!{}!]; // Falha de inferência
 lines['Dart'] = 10000;
 lines['C++'] = 'one thousand';
 lines['Go'] = 2000;
-print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
+print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Erro em tempo de execução
 ```
 {:analyzer}
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The type argument(s) of 'Map'"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
+warning - Os argumentos de tipo de 'Map' não podem ser inferidos - inference_failure_on_collection_literal
 ```
 
 :::tip
-The `strict-inference` mode can identify many situations
-which result in an inference failure.
+O modo `strict-inference` pode identificar muitas situações
+que resultam em uma falha de inferência.
 
-See [Conditions for strict inference failure][] 
-for an exhaustive list of inference failure conditions.
+Consulte [Condições para falha de inferência estrita][]
+para obter uma lista exaustiva de condições de falha de inferência.
 :::
 
-[Conditions for strict inference failure]: {{site.repo.dart.lang}}/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
+[Condições para falha de inferência estrita]: {{site.repo.dart.lang}}/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
 
 `strict-raw-types: <bool>`
-: A value of `true` ensures that the type inference engine never chooses
-  the `dynamic` type when it can't determine a static type
-  due to omitted type arguments.
-  The following valid Dart code has a `List` variable with a raw type,
-  resulting in a raw type hint by this mode:
+: Um valor de `true` garante que o mecanismo de inferência de tipo nunca escolha
+  o tipo `dynamic` quando não consegue determinar um tipo estático
+  devido a argumentos de tipo omitidos.
+  O seguinte código Dart válido tem uma variável `List` com um tipo bruto (raw type),
+  resultando em uma dica de tipo bruto por este modo:
 
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-raw-types)" replace="/List n/[!List!] n/g"?>
 ```dart tag=fails-sa
-[!List!] numbers = [1, 2, 3]; // List with raw type
+[!List!] numbers = [1, 2, 3]; // List com tipo bruto
 for (final n in numbers) {
-  print(n.length); // Runtime error
+  print(n.length); // Erro em tempo de execução
 }
 ```
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-warning - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
+warning - O tipo genérico 'List<dynamic>' deve ter argumentos de tipo explícitos, mas não tem - strict_raw_type
 ```
 
-## Enabling and disabling linter rules {:#enabling-linter-rules}
+## Habilitando e desabilitando regras do linter {:#enabling-linter-rules}
 
-The analyzer package also provides a code linter. A wide variety of
-[linter rules][] are available. Linters tend to be
-nondenominational—rules don't have to agree with each other.
-For example, some rules are more appropriate for regular Dart packages
-and others are designed for Flutter apps.
-Note that linter rules can have false positives, unlike static analysis.
+O pacote analyzer também fornece um linter de código. Uma grande variedade de
+[regras do linter][] estão disponíveis. Os linters tendem a ser
+não denominacionais—as regras não precisam concordar umas com as outras.
+Por exemplo, algumas regras são mais apropriadas para pacotes Dart regulares
+e outras são projetadas para aplicativos Flutter.
+Observe que as regras do linter podem ter falsos positivos, ao contrário da análise estática.
 
-### Enabling Dart team recommended linter rules {:#lints}
+### Habilitando as regras do linter recomendadas pela equipe Dart {:#lints}
 
-The Dart team provides two sets of recommended linter rules
-in the [lints package][]:
+A equipe Dart fornece dois conjuntos de regras do linter recomendadas
+no [pacote lints][]:
 
-Core rules
-: Help identify critical issues that are likely to lead to problems
-  when running or consuming Dart code.
-  All code should pass these linter rules.
-  Packages that are uploaded to [pub.dev]({{site.pub}})
-  have a [package score]({{site.pub}}/help/scoring)
-  that's based in part on passing these rules.
+Regras principais
+: Ajudam a identificar problemas críticos que provavelmente levarão a problemas
+  ao executar ou consumir código Dart.
+  Todo o código deve passar nessas regras do linter.
+  Pacotes que são enviados para [pub.dev]({{site.pub}})
+  têm uma [pontuação de pacote]({{site.pub}}/help/scoring)
+  que é baseada em parte na aprovação nessas regras.
 
-Recommended rules
-: Help identify additional issues
-  that may lead to problems when running or consuming Dart code,
-  and enforce a single, idiomatic style and format.
-  We recommend that all Dart code use these rules,
-  which are a superset of the core rules.
+Regras recomendadas
+: Ajudam a identificar problemas adicionais
+  que podem levar a problemas ao executar ou consumir código Dart,
+  e impõem um estilo e formato únicos e idiomáticos.
+  Recomendamos que todo o código Dart use essas regras,
+  que são um superconjunto das regras principais.
 
 :::tip
-If you're working on Flutter code, then instead of using the `lints` package, 
+Se você estiver trabalhando em código Flutter, então, em vez de usar o pacote `lints`,
 use [`flutter_lints`]({{site.pub-pkg}}/flutter_lints),
-which provides a superset of the recommended rules.
+que fornece um superconjunto das regras recomendadas.
 :::
 
-To enable either set of lints,
-add the [lints package][] as a dev dependency:
+Para habilitar qualquer um dos conjuntos de lints,
+adicione o [pacote lints][] como uma dependência de desenvolvimento:
 
 ```console
 $ dart pub add --dev lints
 ```
 
-Then edit your `analysis_options.yaml` file to include
-your preferred rule set:
+Em seguida, edite seu arquivo `analysis_options.yaml` para incluir
+seu conjunto de regras preferido:
 
 ```yaml
-include: package:lints/<RULE_SET>.yaml
+include: package:lints/<CONJUNTO_DE_REGRAS>.yaml
 ```
 
-For example, you can include the recommended rule set like this:
+Por exemplo, você pode incluir o conjunto de regras recomendado assim:
 
 ```yaml
 include: package:lints/recommended.yaml
 ```
 
 :::important
-When a **new version of `lints`** is published,
-code that previously passed analysis might **start failing analysis.**
-We recommend updating your code to work with the new rules.
-Other options are to explicitly enable individual linter rules 
-or [disable individual rules][].
+Quando uma **nova versão de `lints`** é publicada,
+o código que antes passava na análise pode **começar a falhar na análise.**
+Recomendamos atualizar seu código para funcionar com as novas regras.
+Outras opções são habilitar explicitamente regras do linter individuais
+ou [desabilitar regras individuais][].
 :::
 
-[lints package]: {{site.pub-pkg}}/lints
+[pacote lints]: {{site.pub-pkg}}/lints
 
-### Enabling individual rules {:#individual-rules}
+### Habilitando regras individuais {:#individual-rules}
 
-To enable a single linter rule, add `linter:` to the analysis options file
-as a top-level key,
-followed by `rules:` as a second-level key.
-On subsequent lines, specify the rules that you want to apply,
-prefixed with dashes (the syntax for a YAML list).
-For example:
+Para habilitar uma única regra do linter, adicione `linter:` ao arquivo de opções de análise
+como uma chave de nível superior,
+seguida por `rules:` como uma chave de segundo nível.
+Nas linhas subsequentes, especifique as regras que você deseja aplicar,
+prefixadas com traços (a sintaxe para uma lista YAML).
+Por exemplo:
 
 <?code-excerpt "analysis_options.yaml" from="linter:" take="12" remove="https:"?>
 ```yaml
@@ -337,20 +338,20 @@ linter:
 ```
 
 
-### Disabling individual rules {:#disabling-individual-rules}
+### Desabilitando regras individuais {:#disabling-individual-rules}
 
-If you include an analysis options file such as the one in `lints`,
-you might want to disable some of the included rules.
-Disabling individual rules is similar to enabling them,
-but requires the use of a map rather than a list
-as the value for the `rules:` entry,
-so each line should contain the name of a rule followed by
-either `: false` or `: true`.
+Se você incluir um arquivo de opções de análise como o do `lints`,
+você pode querer desabilitar algumas das regras incluídas.
+Desabilitar regras individuais é semelhante a habilitá-las,
+mas requer o uso de um mapa em vez de uma lista
+como o valor para a entrada `rules:`,
+portanto, cada linha deve conter o nome de uma regra seguida por
+`: false` ou `: true`.
 
-Here's an example of an analysis options file
-that uses all the recommended rules from `lints`
-except `avoid_shadowing_type_parameters`.
-It also enables the lint `await_only_futures`:
+Aqui está um exemplo de um arquivo de opções de análise
+que usa todas as regras recomendadas de `lints`
+exceto `avoid_shadowing_type_parameters`.
+Ele também habilita o lint `await_only_futures`:
 
 <?code-excerpt "analysis_alt/analysis_options_linter.yaml"?>
 ```yaml title="analysis_options.yaml"
@@ -363,75 +364,75 @@ linter:
 ```
 
 :::note
-Due to YAML restrictions,
-**you can't mix list and key-value syntax in the same `rules` entry.**
-You can use the other syntax for rules in an included file.
+Devido às restrições do YAML,
+**você não pode misturar a sintaxe de lista e chave-valor na mesma entrada `rules`.**
+Você pode usar a outra sintaxe para regras em um arquivo incluído.
 :::
 
-## Enabling analyzer plugins (experimental) {:#plugins}
+## Habilitando plugins do analisador (experimental) {:#plugins}
 
-The analyzer has experimental support for plugins.
-These plugins integrate with the analyzer to add functionality
-such as new diagnostics, quick fixes, and custom code completion.
-You can enable only one plugin per `analysis_options.yaml` file.
-Enabling an analyzer plugin increases how much memory the analyzer uses.
+O analisador tem suporte experimental para plugins.
+Esses plugins se integram ao analisador para adicionar funcionalidades
+como novos diagnósticos, correções rápidas e conclusão de código personalizada.
+Você pode habilitar apenas um plugin por arquivo `analysis_options.yaml`.
+Habilitar um plugin do analisador aumenta a quantidade de memória que o analisador usa.
 
-Don't use analyzer plugins if your situation meets
-either of the following conditions:
+Não use plugins do analisador se sua situação atender
+a qualquer uma das seguintes condições:
 
-* You use a development machine with less than 16 GB of memory.
-* You use a mono-repo with more than 10 `pubspec.yaml` and
-  `analysis_options.yaml` files.
-  
-You can find a few analyzer plugins on
+* Você usa uma máquina de desenvolvimento com menos de 16 GB de memória.
+* Você usa um mono-repo com mais de 10 arquivos `pubspec.yaml` e
+  `analysis_options.yaml`.
+
+Você pode encontrar alguns plugins do analisador em
 [pub.dev]({{site.pub-pkg}}?q=dependency%3Aanalyzer_plugin).
 
-To enable a plugin:
+Para habilitar um plugin:
 
- 1. Add the package containing the plugin as a dev dependency.
+ 1. Adicione o pacote que contém o plugin como uma dependência de desenvolvimento.
 
     ```console
-    $ dart pub add --dev <your_favorite_analyzer_plugin_package>
+    $ dart pub add --dev <seu_pacote_de_plugin_do_analisador_favorito>
     ```
 
- 2. Edit your `analysis_options.yaml` file to enable the plugin.
+ 2. Edite seu arquivo `analysis_options.yaml` para habilitar o plugin.
 
     ```yaml
     analyzer:
       plugins:
-        - your_favorite_analyzer_plugin_package
+        - seu_pacote_de_plugin_do_analisador_favorito
     ```
 
-    To indicate specific plugin functionality to enable,
-    such as new diagnostics, additional setup might be required.
+    Para indicar a funcionalidade específica do plugin a ser habilitada,
+    como novos diagnósticos, uma configuração adicional pode ser necessária.
 
-## Excluding code from analysis {:#excluding-code-from-analysis}
+## Excluindo código da análise {:#excluding-code-from-analysis}
 
-Sometimes it's OK for some code to fail analysis.
-For example, you might rely on code generated by a package that
-you don't own—the generated code works,
-but produces warnings during static analysis.
-Or a linter rule might cause a false positive
-that you want to suppress.
+Às vezes, não há problema em que algum código falhe na análise.
+Por exemplo, você pode depender de código gerado por um pacote que
+você não possui—o código gerado funciona,
+mas produz avisos durante a análise estática.
+Ou uma regra do linter pode causar um falso positivo
+que você deseja suprimir.
 
-You have a few ways to exclude code from analysis:
+Você tem algumas maneiras de excluir código da análise:
 
-* Exclude entire files from analysis.
-* Stop specific non-error rules from being applied to individual files.
-* Stop specific non-error rules from being applied to individual lines of code.
+* Excluir arquivos inteiros da análise.
+* Impedir que regras específicas que não sejam de erro sejam aplicadas a arquivos individuais.
+* Impedir que regras específicas que não sejam de erro sejam aplicadas a linhas de código individuais.
 
-You can also [disable specific rules][disable individual rules]
-for all files or
-[change the severity of rules][].
+Você também pode [desabilitar regras específicas][]
+para todos os arquivos ou
+[alterar a severidade das regras][].
 
 
-### Excluding files {:#excluding-files}
+### Excluindo arquivos {:#excluding-files}
 
-To exclude files from static analysis, use the `exclude:` analyzer option.
-You can list individual files, or 
-use [glob]({{site.pub-pkg}}/glob) pattern syntax.
-All usages of glob patterns should be relative to the
-directory containing the `analysis_options.yaml` file.
+Para excluir arquivos da análise estática, use a opção `exclude:` do analisador.
+Você pode listar arquivos individuais ou
+usar a sintaxe de padrão [glob]({{site.pub-pkg}}/glob).
+Todos os usos de padrões glob devem ser relativos ao
+diretório que contém o arquivo `analysis_options.yaml`.
 
 <?code-excerpt "analysis_alt/analysis_options.yaml (exclude)" plaster="none"?>
 ```yaml
@@ -443,27 +444,27 @@ analyzer:
 ```
 
 <a id="suppressing-rules-for-a-file"></a>
-### Suppressing diagnostics for a file {:#suppressing-diagnostics-for-a-file}
+### Suprimindo diagnósticos para um arquivo {:#suppressing-diagnostics-for-a-file}
 
-To ignore a specific non-error diagnostic for a specific file,
-add an `ignore_for_file` comment to the file:
+Para ignorar um diagnóstico específico que não seja de erro para um arquivo específico,
+adicione um comentário `ignore_for_file` ao arquivo:
 
 <?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)" replace="/, \w+//g"?>
 ```dart
 // ignore_for_file: unused_local_variable
 ```
 
-This acts for the whole file, before or after the comment, and is
-particularly useful for generated code.
+Isso atua para todo o arquivo, antes ou depois do comentário, e é
+particularmente útil para código gerado.
 
-To suppress more than one diagnostic, use a comma-separated list:
+Para suprimir mais de um diagnóstico, use uma lista separada por vírgulas:
 
 <?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)"?>
 ```dart
 // ignore_for_file: unused_local_variable, duplicate_ignore, dead_code
 ```
 
-To suppress all linter rules, add a `type=lint` specifier:
+Para suprimir todas as regras do linter, adicione um especificador `type=lint`:
 
 <?code-excerpt "analysis/lib/ignore_lints.dart (ignore_type_for_file)"?>
 ```dart
@@ -471,16 +472,16 @@ To suppress all linter rules, add a `type=lint` specifier:
 ```
 
 :::version-note
-Support for the `type=lint` specifier was added in Dart 2.15.
+O suporte para o especificador `type=lint` foi adicionado no Dart 2.15.
 :::
 
 <a id="suppressing-rules-for-a-line-of-code"></a>
-### Suppressing diagnostics for a line of code {:#suppressing-diagnostics-for-a-line-of-code}
+### Suprimindo diagnósticos para uma linha de código {:#suppressing-diagnostics-for-a-line-of-code}
 
-To suppress a specific non-error diagnostic on a specific line of Dart code,
-put an `ignore` comment above the line of code. 
-Here's an example of ignoring code that causes a runtime error, 
-as you might do in a language test:
+Para suprimir um diagnóstico específico que não seja de erro em uma linha específica de código Dart,
+coloque um comentário `ignore` acima da linha de código.
+Aqui está um exemplo de como ignorar código que causa um erro em tempo de execução,
+como você pode fazer em um teste de idioma:
 
 <?code-excerpt "analysis/lib/assignment.dart (invalid_assignment)"?>
 ```dart
@@ -488,7 +489,7 @@ as you might do in a language test:
 int x = '';
 ```
 
-To suppress more than one diagnostic, supply a comma-separated list:
+Para suprimir mais de um diagnóstico, forneça uma lista separada por vírgulas:
 
 <?code-excerpt "analysis/lib/assignment.dart (ignore-more)"?>
 ```dart
@@ -496,20 +497,20 @@ To suppress more than one diagnostic, supply a comma-separated list:
 const x = y;
 ```
 
-Alternatively, append the ignore comment to the line that it applies to:
+Alternativamente, anexe o comentário ignore à linha à qual ele se aplica:
 
 <?code-excerpt "analysis/lib/assignment.dart (single-line)"?>
 ```dart
 int x = ''; // ignore: invalid_assignment
 ```
 
-### Suppressing diagnostics in a pubspec file {:#suppressing-diagnostics-in-a-pubspec-file}
+### Suprimindo diagnósticos em um arquivo pubspec {:#suppressing-diagnostics-in-a-pubspec-file}
 
-If you need to suppress a non-error diagnostic from the analyzer
-in a `pubspec.yaml` file, add an `ignore` comment above the affected line.
+Se você precisar suprimir um diagnóstico que não seja de erro do analisador
+em um arquivo `pubspec.yaml`, adicione um comentário `ignore` acima da linha afetada.
 
-The following example ignores the [`sort_pub_dependencies`][] lint
-as it wants to put the `flutter` dependency first:
+O exemplo a seguir ignora o lint [`sort_pub_dependencies`][]
+pois ele quer colocar a dependência `flutter` primeiro:
 
 ```yaml title="pubspec.yaml".
 dependencies:
@@ -521,42 +522,42 @@ dependencies:
 ```
 
 :::version-note
-Support for ignore comments in `pubspec.yaml` files was added in Dart 3.3.
-If you are using Dart 3.2 or earlier,
-the ignored diagnostic will still be triggered.
+O suporte para comentários ignore em arquivos `pubspec.yaml` foi adicionado no Dart 3.3.
+Se você estiver usando o Dart 3.2 ou anterior,
+o diagnóstico ignorado ainda será acionado.
 :::
 
 [`sort_pub_dependencies`]: /tools/linter-rules/sort_pub_dependencies
 
-## Customizing analysis rules {:#customizing-analysis-rules}
+## Customizando regras de análise {:#customizing-analysis-rules}
 
-Each [analyzer diagnostic][analyzer diagnostics] and
-[linter rule][linter rules] has a default severity.
-You can use the analysis options file to change
-the severity of individual rules, or to always ignore some rules.
+Cada [diagnóstico do analisador][analyzer diagnostics] e
+[regra do linter][linter rules] tem uma severidade padrão.
+Você pode usar o arquivo de opções de análise para alterar
+a severidade de regras individuais, ou para sempre ignorar algumas regras.
 
-The analyzer supports three severity levels:
+O analisador oferece suporte a três níveis de severidade:
 
 `info`
-: An informational message that doesn't cause analysis to fail.
-  Example: [`dead_code`][dead_code]
+: Uma mensagem informativa que não faz com que a análise falhe.
+  Exemplo: [`dead_code`][dead_code]
 
 `warning`
-: A warning that doesn't cause analysis to fail unless
-  the analyzer is configured to treat warnings as errors.
-  Example: [`invalid_null_aware_operator`][invalid_null_aware_operator]
+: Um aviso que não faz com que a análise falhe, a menos que
+  o analisador esteja configurado para tratar avisos como erros.
+  Exemplo: [`invalid_null_aware_operator`][invalid_null_aware_operator]
 
 `error`
-: An error that causes analysis to fail.
-  Example: [`invalid_assignment`][invalid_assignment]
+: Um erro que faz com que a análise falhe.
+  Exemplo: [`invalid_assignment`][invalid_assignment
 
 
-### Ignoring rules {:#ignoring-rules}
+### Ignorando regras {:#ignoring-rules}
 
-You can ignore specific [analyzer diagnostics][] and [linter rules][]
-by using the `errors:` field.
-List the rule, followed by <code>:&nbsp;ignore</code>. For example, the following
-analysis options file instructs the analysis tools to ignore the TODO rule:
+Você pode ignorar [diagnósticos do analisador][] e [regras do linter][] específicos
+usando o campo `errors:`.
+Liste a regra, seguida por <code>:&nbsp;ignore</code>. Por exemplo, o seguinte
+arquivo de opções de análise instrui as ferramentas de análise a ignorar a regra TODO:
 
 <?code-excerpt "analysis_alt/analysis_options.yaml (errors)" to="ignore"?>
 ```yaml
@@ -566,13 +567,13 @@ analyzer:
 ```
 
 
-### Changing the severity of rules {:#changing-the-severity-of-rules}
+### Alterando a severidade das regras {:#changing-the-severity-of-rules}
 
-You can globally change the severity of a particular rule.
-This technique works for regular analysis issues as well as for lints.
-For example, the following analysis options file instructs the analysis tools to
-treat invalid assignments as warnings and missing returns as errors,
-and to provide information (but not a warning or error) about dead code:
+Você pode alterar globalmente a severidade de uma regra específica.
+Esta técnica funciona para problemas de análise regulares, bem como para lints.
+Por exemplo, o seguinte arquivo de opções de análise instrui as ferramentas de análise a
+tratar atribuições inválidas como avisos e retornos ausentes como erros,
+e fornecer informações (mas não um aviso ou erro) sobre código morto:
 
 <?code-excerpt "analysis_alt/analysis_options.yaml (errors)" remove="ignore"?>
 ```yaml
@@ -584,22 +585,22 @@ analyzer:
 ```
 
 
-## Resources {:#resources}
+## Recursos {:#resources}
 
-Use the following resources to learn more about static analysis in Dart:
+Use os seguintes recursos para saber mais sobre análise estática em Dart:
 
-* [Dart's type system][type-system]
-* [Dart linter rules][linter rules]
-* [analyzer package]({{site.pub-pkg}}/analyzer)
+* [Sistema de tipos do Dart][type-system]
+* [Regras do linter do Dart][linter rules]
+* [Pacote analyzer]({{site.pub-pkg}}/analyzer)
 
 [invalid_null_aware_operator]: /tools/diagnostic-messages#invalid_null_aware_operator
 [analyzer diagnostics]: /tools/diagnostic-messages
-[change the severity of rules]: #changing-the-severity-of-rules
+[alterar a severidade das regras]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment
-[language version]: /resources/language/evolution#language-versioning
+[versão da linguagem]: /resources/language/evolution#language-versioning
 [linter rules]: /tools/linter-rules
 [type-system]: /language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code
-[disable individual rules]: #disabling-individual-rules
+[desabilitar regras individuais]: #disabling-individual-rules
 [Effective Dart]: /effective-dart

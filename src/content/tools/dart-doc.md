@@ -1,202 +1,203 @@
 ---
+ia-translate: true
 title: dart doc
 description: >-
-   Learn how to generate HTML-reference documentation for public Dart libraries.
+  Aprenda como gerar documentação de referência HTML para bibliotecas Dart públicas.
 ---
 
-The `dart doc` command generates HTML reference documentation
-for Dart source code.
+O comando `dart doc` gera documentação de referência HTML
+para código-fonte Dart.
 
-## Write documentation {:#write}
+## Escreva a documentação {:#write}
 
-To add reference text and examples to the generated documentation,
-use [documentation comments][] with [Markdown][] formatting.
-For guidance on writing doc comments,
-check out the [Effective Dart: Documentation][] guide.
+Para adicionar texto de referência e exemplos à documentação gerada,
+use [comentários de documentação][] com formatação [Markdown][].
+Para obter orientação sobre como escrever comentários de documentação,
+confira o guia [Effective Dart: Documentação][].
 
-[documentation comments]: /language/comments#documentation-comments
+[comentários de documentação]: /language/comments#documentation-comments
 [Markdown]: {{site.pub-pkg}}/markdown
-[Effective Dart: Documentation]: /effective-dart/documentation
+[Effective Dart: Documentação]: /effective-dart/documentation
 
-## Generate API docs {:#generate}
+## Gerar documentação da API {:#generate}
 
 :::note
-To generate documentation,
-you must first run [`dart pub get`](/tools/pub/cmd/pub-get)
-and your package must pass [`dart analyze`](/tools/dart-analyze)
-without errors.
+Para gerar documentação,
+você deve primeiro executar [`dart pub get`](/tools/pub/cmd/pub-get)
+e seu pacote deve passar em [`dart analyze`](/tools/dart-analyze)
+sem erros.
 :::
 
-To generate the documentation for your package,
-run `dart doc .` from the package's root directory.
-For example, generating the API docs for a `my_package` package
-could resemble the following:
+Para gerar a documentação do seu pacote,
+execute `dart doc .` no diretório raiz do pacote.
+Por exemplo, gerar a documentação da API para um pacote `my_package`
+pode ser semelhante a seguinte:
 
 ```console
 $ cd my_package
 $ dart pub get
 $ dart doc .
-Documenting my_package...
+Documentando my_package...
 ...
-Success! Docs generated into /Users/me/projects/my_package/doc/api
+Sucesso! Documentos gerados em /Users/me/projects/my_package/doc/api
 ```
 
-By default, `dart doc` places the generated documentation
-and supporting files in the `doc/api` directory.
-To change the output directory, specify
-a path with the `--output` flag:
+Por padrão, `dart doc` coloca a documentação gerada
+e os arquivos de suporte no diretório `doc/api`.
+Para alterar o diretório de saída, especifique
+um caminho com a flag `--output`:
 
 ```console
 $ dart doc --output=api_docs .
 ```
 
-If there are any issues with your package setup or documentation comments,
-`dart doc` outputs them as errors or warnings.
-If you just want to test for issues without saving the generated documentation,
-add the `--dry-run` flag:
+Se houver algum problema com a configuração do seu pacote ou comentários de documentação,
+`dart doc` os exibirá como erros ou avisos.
+Se você só quiser testar se há problemas sem salvar a documentação gerada,
+adicione a flag `--dry-run`:
 
 ```console
 $ dart doc --dry-run .
 ```
 
-### Configure generation {:#configure}
+### Configurar a geração {:#configure}
 
-To configure how `dart doc` generates documentation, create a
-file named `dartdoc_options.yaml` in the root directory of your package.
+Para configurar como o `dart doc` gera a documentação, crie um
+arquivo chamado `dartdoc_options.yaml` no diretório raiz do seu pacote.
 
-To learn more about the file's format and supported configuration options,
-check out [dart.dev/go/dartdoc-options-file][dartdoc-options].
+Para saber mais sobre o formato do arquivo e as opções de configuração suportadas,
+confira [dartbrasil.dev/go/dartdoc-options-file][dartdoc-options].
 
 {% comment %}
-TODO: Document the long-term supported options here.
+TODO: Documentar as opções suportadas a longo prazo aqui.
 {% endcomment -%}
 
 [dartdoc-options]: {{site.redirect.go}}/dartdoc-options-file
 
-## View generated docs {:#view}
+## Visualizar docs gerados {:#view}
 
-You can view docs generated with `dart doc` in a variety of ways.
+Você pode visualizar os documentos gerados com `dart doc` de várias maneiras.
 
-### View local docs {:#view-local}
+### Visualizar docs locais {:#view-local}
 
-To view API docs you generated with `dart doc` or downloaded from online,
-you must load them with an HTTP server.
+Para visualizar a documentação da API que você gerou com `dart doc` ou baixou online,
+você deve carregá-los com um servidor HTTP.
 
-To serve the files, use any HTTP server.
-Consider using [`package:dhttpd`][] from pub.dev.
+Para servir os arquivos, use qualquer servidor HTTP.
+Considere usar [`package:dhttpd`][] do pub.dev.
 
-To use `package:dhttpd`, activate it globally, then run it
-and specify the path of your generated docs.
-The following commands activate the package,
-then runs it to serve the API docs located at `doc/api`:
+Para usar `package:dhttpd`, ative-o globalmente e execute-o
+e especifique o caminho da sua documentação gerada.
+Os comandos a seguir ativam o pacote,
+e então o executa para servir a documentação da API localizada em `doc/api`:
 
 ```console
 $ dart pub global activate dhttpd
 $ dart pub global run dhttpd --path doc/api
 ```
 
-To then read the generated docs in your browser,
-open the link that `dhttpd` outputs, usually `http://localhost:8080`.
+Para então ler a documentação gerada no seu navegador,
+abra o link que `dhttpd` exibe, geralmente `http://localhost:8080`.
 
 [`package:dhttpd`]: {{site.pub-pkg}}/dhttpd
 
-### View hosted docs {:#view-hosted}
+### Visualizar docs hospedados {:#view-hosted}
 
-You can also host your generated API docs online
-using any hosting service that supports static web content.
-Two common options are [Firebase hosting][] and [GitHub pages][].
+Você também pode hospedar sua documentação da API gerada online
+usando qualquer serviço de hospedagem que suporte conteúdo web estático.
+Duas opções comuns são [Firebase hosting][] e [GitHub pages][].
 
 [Firebase hosting]: https://firebase.google.com/docs/hosting
 [GitHub pages]: https://pages.github.com/
 
-### View package docs {:#view-pub}
+### Visualizar docs do pacote {:#view-pub}
 
-The [pub.dev site]({{site.pub}}) generates and hosts
-documentation for an uploaded package's public libraries.
+O site [pub.dev]({{site.pub}}) gera e hospeda
+documentação para as bibliotecas públicas de um pacote enviado.
 
-To view a package's generated docs,
-navigate to its page and open the **API reference** link
-in the info box on the right side of the page.
-For example, you can find the API docs for `package:http`
-at [pub.dev/documentation/http]({{site.pub-api}}/http).
+Para visualizar a documentação gerada de um pacote,
+navegue até a página dele e abra o link **API reference**
+na caixa de informações no lado direito da página.
+Por exemplo, você pode encontrar a documentação da API para `package:http`
+em [pub.dev/documentation/http]({{site.pub-api}}/http).
 
-### View core library docs {:#view-sdk}
+### Visualizar docs da biblioteca core {:#view-sdk}
 
-`dart doc` is also used to generate the API reference documentation for
-the Dart core libraries.
+`dart doc` também é usado para gerar a documentação de referência da API para
+as bibliotecas core (principais) do Dart.
 
-To view the Dart SDK reference docs, visit the api.dart.dev link
-that corresponds to the Dart release channel you are developing with:
+Para visualizar a documentação de referência do Dart SDK, visite o link api.dartbrasil.dev
+que corresponde ao canal de lançamento do Dart que você está desenvolvendo:
 
-| Branch   | Generated docs                              |
-|----------|---------------------------------------------|
-| `stable` | [api.dart.dev/stable]({{site.dart-api}})    |
-| `beta`   | [api.dart.dev/beta]({{site.dart-api}}/beta) |
-| `dev`    | [api.dart.dev/dev]({{site.dart-api}}/dev)   |
-| `main`   | [api.dart.dev/main]({{site.dart-api}}/main) |
+| Branch   | Documentos gerados                               |
+|----------|-------------------------------------------------|
+| `stable` | [api.dartbrasil.dev/stable]({{site.dart-api}})        |
+| `beta`   | [api.dartbrasil.dev/beta]({{site.dart-api}}/beta)     |
+| `dev`    | [api.dartbrasil.dev/dev]({{site.dart-api}}/dev)       |
+| `main`   | [api.dartbrasil.dev/main]({{site.dart-api}}/main)     |
 
 {:.table .table-striped}
 
-## Troubleshoot {:#troubleshoot}
+## Solução de problemas {:#troubleshoot}
 
-To identify and resolve common issues with docs generated with `dart doc`,
-consult the following reference section.
+Para identificar e resolver problemas comuns com documentos gerados com `dart doc`,
+consulte a seção de referência a seguir.
 
-### Search bar failed to load {:#troubleshoot-search}
+### Barra de pesquisa falhou ao carregar {:#troubleshoot-search}
 
-If the generated documentation's search bars aren't functional or
-include text similar to "Failed to initialize search",
-one of the following scenarios is possible:
+Se as barras de pesquisa da documentação gerada não estiverem funcionando ou
+incluírem texto semelhante a "Falha ao inicializar a pesquisa",
+um dos seguintes cenários é possível:
 
-1. You are accessing the docs from your own file system,
-   but they aren't being served and loaded with an HTTP server.
-   To learn how to serve local API docs,
-   check out [how to view generated docs locally](#view-local).
-2. The `index.json` file generated by `dart doc` is missing or inaccessible
-   from the documentation directory or your hosted web server.
-   Try regenerating the docs and validating your hosting configuration.
+1. Você está acessando os documentos do seu próprio sistema de arquivos,
+   mas eles não estão sendo servidos e carregados com um servidor HTTP.
+   Para aprender como servir documentos de API locais,
+   confira [como visualizar documentos gerados localmente](#view-local).
+2. O arquivo `index.json` gerado por `dart doc` está ausente ou inacessível
+   do diretório de documentação ou do seu servidor web hospedado.
+   Tente regenerar os documentos e validar sua configuração de hospedagem.
 
-### Sidebar failed to load {:#troubleshoot-sidebar}
+### Barra lateral falhou ao carregar {:#troubleshoot-sidebar}
 
-If the generated documentation's sidebars are missing or
-include text similar to "Failed to load sidebar",
-one of the following scenarios is possible:
+Se as barras laterais da documentação gerada estiverem faltando ou
+incluírem texto semelhante a "Falha ao carregar a barra lateral",
+um dos seguintes cenários é possível:
 
-1. You are accessing the docs from your own file system,
-   but the docs aren't being served and loaded with an HTTP server.
-   To learn how to serve local API docs,
-   check out [how to view local docs](#view-local).
-2. The generated docs' base-href behavior is configured.
-   This configuration option is deprecated and should no longer be used.
-   Try removing the option and using the default behavior of `dart doc`.
-   If the default behavior breaks links in your generated docs,
-   please [file an issue][].
+1. Você está acessando os documentos do seu próprio sistema de arquivos,
+   mas os documentos não estão sendo servidos e carregados com um servidor HTTP.
+   Para aprender como servir documentos de API locais,
+   confira [como visualizar documentos locais](#view-local).
+2. O comportamento base-href dos documentos gerados está configurado.
+   Essa opção de configuração está obsoleta e não deve mais ser usada.
+   Tente remover a opção e usar o comportamento padrão de `dart doc`.
+   Se o comportamento padrão quebrar os links em seus documentos gerados,
+   por favor, [registre um problema][].
 
-[file an issue]: {{site.repo.dart.org}}/dartdoc/issues
+[registre um problema]: {{site.repo.dart.org}}/dartdoc/issues
 
-### Missing API documentation {:#troubleshoot-missing}
+### Documentação da API ausente {:#troubleshoot-missing}
 
-If you can't find or access the generated documentation
-for an API you expect to have docs,
-one of the following scenarios is possible:
+Se você não conseguir encontrar ou acessar a documentação gerada
+para uma API que você espera ter documentação,
+um dos seguintes cenários é possível:
 
-1. The package does not expose the API you are looking for as a public API.
-   `dart doc` only generates documentation for public libraries and members
-   that are exposed for other packages to import and use.
-   To learn more about configuring a package's public libraries,
-   check out the package layout guide on [public libraries][].
-2. The URL you are attempting to access has incorrect capitalization.
-   By default, `dart doc` generates filenames that are case-sensitive,
-   match their corresponding source declarations, and have a `.html` extension.
-   Try verifying the URL matches these expectations.
+1. O pacote não expõe a API que você está procurando como uma API pública.
+   `dart doc` só gera documentação para bibliotecas e membros públicos
+   que são expostos para outros pacotes importarem e usarem.
+   Para saber mais sobre como configurar as bibliotecas públicas de um pacote,
+   confira o guia de layout do pacote em [bibliotecas públicas][].
+2. A URL que você está tentando acessar tem capitalização incorreta.
+   Por padrão, `dart doc` gera nomes de arquivos que diferenciam maiúsculas de minúsculas,
+   correspondem às suas declarações de origem correspondentes e têm uma extensão `.html`.
+   Tente verificar se a URL corresponde a essas expectativas.
 
-[public libraries]: /tools/pub/package-layout#public-libraries
+[bibliotecas públicas]: /tools/pub/package-layout#public-libraries
 
-### Text where icons should be {:#troubleshoot-icons}
+### Texto onde deveriam estar os ícones {:#troubleshoot-icons}
 
-If you see text instead of icons like the menu and theme buttons,
-your browser was likely unable to load the Material Symbols font.
-Some options to solve this include:
+Se você vir texto em vez de ícones, como os botões de menu e tema,
+é provável que seu navegador não tenha conseguido carregar a fonte Material Symbols.
+Algumas opções para resolver isso incluem:
 
-1. Try using a proxy that enables access to the Google Fonts servers.
-2. Update the generated pages to use a local version of the font.
+1. Tente usar um proxy que permita o acesso aos servidores do Google Fonts.
+2. Atualize as páginas geradas para usar uma versão local da fonte.

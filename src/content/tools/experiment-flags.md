@@ -1,37 +1,38 @@
 ---
-title: Experiment flags
-description: Using experiment flags with Dart tools.
+ia-translate: true
+title: Flags de experimento
+description: Usando flags de experimento com ferramentas Dart.
 ---
 
-The Dart SDK often contains experimental features,
-which you can try by passing flags to Dart tools.
+O SDK Dart frequentemente contém funcionalidades experimentais,
+que você pode experimentar passando flags para as ferramentas Dart.
 
 :::warning
-Don't use experiments for production code.
-Experiments might have breaking changes or be removed
-without notice.
+Não use experimentos para código de produção.
+Experimentos podem ter mudanças que quebram o código ou serem removidos
+sem aviso prévio.
 :::
 
 
-## Using experiment flags with command-line tools {:#using-experiment-flags-with-command-line-tools}
+## Usando flags de experimento com ferramentas de linha de comando {:#using-experiment-flags-with-command-line-tools}
 
-To use an experiment with Dart SDK [command line tools](/tools/sdk),
-pass the corresponding flag to the tool.
-For example, to enable the experiments
-`super-mixins` and `no-slow-checks`,
-add those flags to the `dart` command:
+Para usar um experimento com as [ferramentas de linha de comando](/tools/sdk) do SDK Dart,
+passe a flag correspondente para a ferramenta.
+Por exemplo, para habilitar os experimentos
+`super-mixins` e `no-slow-checks`,
+adicione essas flags ao comando `dart`:
 
 ```console
 $ dart run --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 
 
-## Using experiment flags with the Dart analyzer (command-line and IDE) {:#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide}
+## Usando flags de experimento com o analisador Dart (linha de comando e IDE) {:#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide}
 
-To enable experiments affecting analysis,
-use the `enable-experiment` key in the [analysis options file][].
-Here's an example of enabling the experiments
-`super-mixins` and `no-slow-checks` in `analysis_options.yaml`:
+Para habilitar experimentos que afetam a análise,
+use a chave `enable-experiment` no [arquivo de opções de análise][].
+Aqui está um exemplo de como habilitar os experimentos
+`super-mixins` e `no-slow-checks` em `analysis_options.yaml`:
 
 ```yaml title="analysis_options.yaml"
 analyzer:
@@ -40,19 +41,19 @@ analyzer:
     - no-slow-checks
 ```
 
-[analysis options file]: /tools/analysis#the-analysis-options-file
+[arquivo de opções de análise]: /tools/analysis#the-analysis-options-file
 
 
-## Using experiment flags with IDEs {:#using-experiment-flags-with-ides}
+## Usando flags de experimento com IDEs {:#using-experiment-flags-with-ides}
 
-To enable experiments related to running or debugging apps in IDEs,
-edit the launch configuration.
+Para habilitar experimentos relacionados à execução ou depuração de aplicativos em IDEs,
+edite a configuração de lançamento.
 
 ### Visual Studio Code {:#visual-studio-code}
 
-In `launch.json` under `configurations`,
-add a new `toolArgs` key containing the desired flags.
-Example:
+Em `launch.json` sob `configurations`,
+adicione uma nova chave `toolArgs` contendo as flags desejadas.
+Exemplo:
 
 ```json title="launch.json"
  "configurations": [
@@ -68,16 +69,16 @@ Example:
     ]
 ```
 
-For more information, consult the documentation for
-[VS Code launch configurations.][VSC instructions]
+Para mais informações, consulte a documentação para
+[configurações de lançamento do VS Code.][VSC instructions]
 
 [VSC instructions]: https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
 
 
 ### Android Studio {:#android-studio}
 
-Under `VMOptions` add the desired flags.
-Example:
+Em `VMOptions` adicione as flags desejadas.
+Exemplo:
 
 ```xml
 <component name="ProjectRunConfigurationManager">
@@ -89,19 +90,19 @@ Example:
 </component>
 ```
 
-For more information, consult the instructions for
-[Android Studio run/debug configurations.][AS instructions]
+Para mais informações, consulte as instruções para
+[configurações de execução/depuração do Android Studio.][AS instructions]
 
 [AS instructions]: {{site.android-dev}}/studio/run/rundebugconfig
 
 
-## More information {:#more-information}
+## Mais informações {:#more-information}
 
-* For a complete list of experiments,
-  see the Dart SDK file [`experimental_features.yaml`.][]
-* For information on procedures and expectations for experiment flags,
-  see the documentation of the
-  [process for changes that are behind experimental flags.][flags]
+* Para uma lista completa de experimentos,
+  veja o arquivo do SDK Dart [`experimental_features.yaml`.][]
+* Para obter informações sobre procedimentos e expectativas para flags de experimento,
+  veja a documentação do
+  [processo para mudanças que estão por trás de flags experimentais.][flags]
 
 [`experimental_features.yaml`.]: {{site.repo.dart.sdk}}/blob/main/tools/experimental_features.yaml
 [flags]: {{site.repo.dart.sdk}}/blob/main/docs/process/experimental-flags.md

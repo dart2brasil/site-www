@@ -1,38 +1,39 @@
 ---
+ia-translate: true
 title: build_runner
-description: A tool for building, testing, and running Dart code.
+description: Uma ferramenta para construir, testar e executar código Dart.
 ---
 
-The [build_runner][] package provides general-purpose commands for
-generating files, including testing the generated files
-or serving both source and generated files.
-This page explains how to use `build_runner`.
-To learn how to use build_runner with a specific package,
-see the documentation for that package.
+O pacote [build_runner][] fornece comandos de propósito geral para
+gerar arquivos, incluindo testar os arquivos gerados
+ou servir arquivos de origem e gerados.
+Esta página explica como usar `build_runner`.
+Para aprender como usar build_runner com um pacote específico,
+consulte a documentação desse pacote.
 
 :::note
-If you're a web developer, use the [`webdev` tool][webdev] to
-build and serve web apps.
+Se você é um desenvolvedor web, use a ferramenta [`webdev`][webdev] para
+construir e servir aplicativos web.
 :::
 
-The build_runner commands work with _builders_—packages
-that use the [Dart build system][build]
-to generate output files from input files.
-For example, the [json_serializable][] and [built_value_generator][]
-packages define builders that generate Dart code.
+Os comandos build_runner funcionam com _builders_ (construtores)—pacotes
+que usam o [sistema de build do Dart][build]
+para gerar arquivos de saída a partir de arquivos de entrada.
+Por exemplo, os pacotes [json_serializable][] e [built_value_generator][]
+definem builders (construtores) que geram código Dart.
 
-Although the Dart build system is a good alternative to
-reflection (which has performance issues) and
-macros (which Dart's compilers don't support),
-it can do more than just read and write Dart code.
-For example, the [sass_builder][] package implements a builder that
-generates `.css` files from `.scss` and `.sass` files.
+Embora o sistema de build do Dart seja uma boa alternativa para
+reflexão (que tem problemas de desempenho) e
+macros (que os compiladores do Dart não suportam),
+ele pode fazer mais do que apenas ler e escrever código Dart.
+Por exemplo, o pacote [sass_builder][] implementa um builder (construtor) que
+gera arquivos `.css` a partir de arquivos `.scss` e `.sass`.
 
 
-## Setting up build_runner {:#setting-up-build-runner}
+## Configurando build_runner {:#setting-up-build-runner}
 
-To use build_runner, add a [dev dependency][] on **build_runner**
-to your app's pubspec:
+Para usar build_runner, adicione uma [dependência de desenvolvimento][] em **build_runner**
+no pubspec do seu aplicativo:
 
 <?code-excerpt "build_runner_usage/pubspec.yaml" from="dev_dependencies" to="build_test" replace="/args.*/# ···/g"?>
 ```yaml
@@ -42,65 +43,65 @@ dev_dependencies:
   build_test: ^2.2.2
 ```
 
-Depending on **build_test** is optional; do it if you'll be testing your code.
+Depender de **build_test** é opcional; faça isso se você for testar seu código.
 
-As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
+Como de costume após mudanças no `pubspec.yaml`, execute `dart pub get` ou `dart pub upgrade`:
 
 ```console
 $ dart pub get
 ```
 
-## Using built-in commands {:#using-built-in-commands}
+## Usando comandos internos {:#using-built-in-commands}
 
-The following is an example of using the build_runner **build** command:
+O seguinte é um exemplo de uso do comando **build** do build_runner:
 
 ```console
-$ # From a directory that contains a pubspec.yaml file:
+$ # De um diretório que contém um arquivo pubspec.yaml:
 $ dart run build_runner build
 ```
 
-The build_runner package includes the following commands:
+O pacote build_runner inclui os seguintes comandos:
 
 build
-: Performs a one-time build.
+: Executa um build único.
 
 serve
-: Runs a development server.
-  Instead of directly using this command,
-  you can use [`webdev serve`,][webdev serve]
-  which has convenient default behavior.
+: Executa um servidor de desenvolvimento.
+  Em vez de usar este comando diretamente,
+  você pode usar [`webdev serve`,][webdev serve]
+  que tem um comportamento padrão conveniente.
 
 test
-: Runs [tests.][tests]
+: Executa [testes.][tests]
 
 watch
-: Launches a build server that watches for edits to input files.
-  Responds to changes by performing incremental rebuilds.
+: Inicia um servidor de build que observa edições em arquivos de entrada.
+  Responde a mudanças executando rebuilds incrementais.
 
 
-## More information {:#more-information}
+## Mais informações {:#more-information}
 
-If you're working on web-specific code,
-see the [webdev page.][webdev]
+Se você estiver trabalhando em código específico para a web,
+consulte a [página do webdev.][webdev]
 
-For details on using build_runner, see the following:
+Para detalhes sobre como usar build_runner, consulte o seguinte:
 
-- Documentation for packages that require you to use build_runner.
-  These packages generally have a dependency
-  [on build][] or [on build_runner.][]
-- Build_runner documentation:
-  - [Getting started with build_runner][]
-  - [Build FAQ][]
+- Documentação para pacotes que exigem que você use build_runner.
+  Esses pacotes geralmente têm uma dependência
+  [em build][] ou [em build_runner.][]
+- Documentação do Build_runner:
+  - [Começando com build_runner][]
+  - [FAQ do Build][]
 
 [build]: {{site.repo.dart.org}}/build
-[Build FAQ]: {{site.repo.dart.org}}/build/blob/master/docs/faq.md
+[FAQ do Build]: {{site.repo.dart.org}}/build/blob/master/docs/faq.md
 [build_runner]: {{site.pub-pkg}}/build_runner
 [built_value_generator]: {{site.pub-pkg}}/built_value_generator
-[dev dependency]: /tools/pub/dependencies#dev-dependencies
-[Getting started with build_runner]: {{site.repo.dart.org}}/build/blob/master/docs/getting_started.md
+[dependência de desenvolvimento]: /tools/pub/dependencies#dev-dependencies
+[Começando com build_runner]: {{site.repo.dart.org}}/build/blob/master/docs/getting_started.md
 [json_serializable]: {{site.pub-pkg}}/json_serializable
-[on build]: {{site.pub-pkg}}?q=dependency%3Abuild
-[on build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
+[em build]: {{site.pub-pkg}}?q=dependency%3Abuild
+[em build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
 [sass_builder]: {{site.pub-pkg}}/sass_builder
 [tests]: /guides/testing
 [webdev]: /tools/webdev

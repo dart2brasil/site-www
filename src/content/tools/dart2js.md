@@ -1,13 +1,14 @@
 ---
-title: "dart2js: Dart-to-JavaScript compiler"
+ia-translate: true
+title: "dart2js: Compilador Dart para JavaScript"
 short-title: dart2js
-description: The dart2js compiler compiles Dart code to deployable JavaScript.
+description: O compilador dart2js compila código Dart para JavaScript implantável.
 ---
 
 :::version-note
-Dart 2.18 removes the `dart2js` command-line tool from the Dart
-package, but retains the dart2js compiler.
+O Dart 2.18 remove a ferramenta de linha de comando `dart2js` do pacote
+Dart, mas mantém o compilador dart2js.
 
-Use [`dart compile js`](/tools/dart-compile#js) to compile Dart code
-to deployable JavaScript.
+Use [`dart compile js`](/tools/dart-compile#js) para compilar código Dart
+para JavaScript implantável.
 :::
