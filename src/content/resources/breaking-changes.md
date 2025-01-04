@@ -1,48 +1,49 @@
 ---
-title: Breaking changes and deprecations
-description: A list of breaking changes by release in Dart.
+ia-translate: true
+title: Mudanças e descontinuações (Breaking Changes and Deprecations)
+description: Uma lista de mudanças interruptivas por lançamento no Dart.
 lastVerified: 2024-08-04
 ---
 
-{% assign versioned = '<span class="tag-label language-versioned-tag">Language versioned</span>' %}
-{% assign deprecated = '<span class="tag-label deprecated-tag">Deprecated</span>' %}
-{% assign removed = '<span class="tag-label removed-tag">Removed</span>' %}
+{% assign versioned = '<span class="tag-label language-versioned-tag">Com versão de linguagem</span>' %}
+{% assign deprecated = '<span class="tag-label deprecated-tag">Descontinuado</span>' %}
+{% assign removed = '<span class="tag-label removed-tag">Removido</span>' %}
 {% assign experimental = '<span class="tag-label experimental-tag">Experimental</span>' %}
 
-This page lists all language and library breaking changes and deprecations in Dart,
-organized by release and area, to help Dart users understand and manage their
-impact. Complete release notes are available in the [Dart SDK changelog][changelog].
-The [breaking change policy][] document describes the policy and process
-around breaking changes and deprecations in Dart. 
+Esta página lista todas as mudanças interruptivas e descontinuações na linguagem e nas bibliotecas do Dart,
+organizadas por lançamento e área, para ajudar os usuários do Dart a entender e gerenciar seu
+impacto. Notas de lançamento completas estão disponíveis no [changelog do SDK do Dart][changelog].
+O documento [política de mudanças interruptivas (breaking change policy)][] descreve a política e o processo
+em torno de mudanças interruptivas e descontinuações no Dart.
 
-**This page includes the following types of breaking changes**:
+**Esta página inclui os seguintes tipos de mudanças interruptivas**:
 
-* **Unversioned**: The Dart SDK does not maintain backward compatibility, and
-  code may break as soon as you [upgrade your sdk version][sdk] if it relies on
-  the previous behavior.
+* **Sem versão**: O SDK do Dart não mantém compatibilidade com versões anteriores, e
+  o código pode quebrar assim que você [atualizar sua versão do SDK][sdk] se ele depender
+  do comportamento anterior.
   
-  _These are the majority of changes and are not specially marked in this list._
-* **Language versioned**: The Dart SDK maintains backward compatibility for
-  existing code, and the behavior change only takes effect (potentially breaking
-  code that relies on the previous behavior) when you upgrade the
-  [language version][] of your code.
+  _Estas são a maioria das mudanças e não estão especialmente marcadas nesta lista._
+* **Com versão de linguagem**: O SDK do Dart mantém compatibilidade com versões anteriores
+  para o código existente, e a mudança de comportamento só entra em vigor (potencialmente quebrando
+  o código que depende do comportamento anterior) quando você atualiza a
+  [versão da linguagem][] do seu código.
 
-  _These are marked as:_ {{versioned}}
-* **Deprecations**: The Dart SDK maintains compatibility for deprecated code,
-  with a warning. Deprecations are then completely removed in a subsequent release,
-  breaking any code that relies on the previous behavior.
+  _Estas são marcadas como:_ {{versioned}}
+* **Descontinuações**: O SDK do Dart mantém a compatibilidade com o código descontinuado,
+  com um aviso. As descontinuações são então completamente removidas em um lançamento subsequente,
+  quebrando qualquer código que dependa do comportamento anterior.
 
-  _These are marked as:_ {{deprecated}} / {{removed}}
-* **Experimental**: Part of the release but not yet treated as stable in the SDK,
-  and can break from one version to another. Experimental changes don't
-  always have a corresponding breaking change issue, but may have more detail in
-  the [SDK changelog][changelog].
+  _Estas são marcadas como:_ {{deprecated}} / {{removed}}
+* **Experimental**: Parte do lançamento, mas ainda não tratada como estável no SDK,
+  e pode quebrar de uma versão para outra. Mudanças experimentais nem sempre
+  têm um problema de mudança interruptiva correspondente, mas podem ter mais detalhes no
+  [changelog do SDK][changelog].
 
-  These are marked: {{experimental}}
+  Estas são marcadas: {{experimental}}
 
-If you have questions or concerns about any of these breaking changes, please 
-comment on the breaking change issue linked from the relevant entry.
-To be notified about future breaking changes, join the [Dart announce][] group.
+Se você tiver dúvidas ou preocupações sobre alguma dessas mudanças interruptivas, por favor,
+comente sobre o problema da mudança interruptiva (breaking change issue)  linkado a partir da entrada relevante.
+Para ser notificado sobre futuras mudanças interruptivas, junte-se ao grupo [Dart announce][].
 
 [breaking change policy]: {{site.repo.dart.sdk}}/blob/main/docs/process/breaking-changes.md
 [changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
@@ -51,64 +52,64 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 [Dart announce]: {{site.announce}}
 
 {% comment %}
-Create new section from these headers for each release.
-If no changes exist in a section (e.g. Language, `dart:async`, etc.),
-don't include the section header.
+Crie uma nova seção a partir desses cabeçalhos para cada lançamento.
+Se não existirem mudanças em uma seção (por exemplo, Linguagem, `dart:async`, etc.),
+não inclua o cabeçalho da seção.
 
 ## x.x.x {:#x-x-x}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### (`dart:core`, `package:js`, etc) {:#dart-core-package-js-etc}
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### (Dart VM, Pub, Linter, `dart2js`, etc) {:#dart-vm-pub-linter-dart2js-etc}
 {% endcomment %}
 
 ## 3.7.0 {:#3-7-0}
 
-**Tentative**<br>
-The following changes are expected to be included in the 3.7 stable release,
-but the final list might change before then.
-To reduce the potential impact of these changes, consider
-accounting for them before the 3.7 release.
+**Provisório**<br>
+Espera-se que as seguintes mudanças sejam incluídas no lançamento estável 3.7,
+mas a lista final pode mudar antes disso.
+Para reduzir o impacto potencial dessas mudanças, considere
+levá-las em conta antes do lançamento do 3.7.
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-- {{versioned}} [Local variables and parameters named `_`][wildcards] are
-  now non-binding and can no longer be used or accessed.
-- [Reachability analysis now accounts for if a field is
-  type promoted to `Null` using `is` or `as`][56893].
-  This makes the type system more self-consistent, because it
-  mirrors the behavior of promoted local variables.
-  This change isn't expected to make any difference in practice.
+- {{versioned}} [Variáveis locais e parâmetros nomeados `_`][wildcards] agora são
+  não vinculativos e não podem mais ser usados ou acessados.
+- [A análise de alcançabilidade agora leva em conta se um campo é
+  promovido por tipo para `Null` usando `is` ou `as`][56893].
+  Isso torna o sistema de tipos mais autoconsistente, porque
+  espelha o comportamento de variáveis locais promovidas.
+  Não se espera que esta mudança faça qualquer diferença na prática.
 
 [wildcards]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/wildcard-variables/feature-specification.md
 [56893]: {{site.repo.dart.sdk}}/issues/56893
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
-#### Analyzer
+#### Analisador (Analyzer)
 
-- {{removed}} The [`package_api_docs`][] and [`unsafe_html`][] lint rules
-  have been removed and should be removed from `analysis_options.yaml` files.
+- {{removed}} As regras de lint [`package_api_docs`][] e [`unsafe_html`][]
+  foram removidas e devem ser removidas dos arquivos `analysis_options.yaml`.
 
 [`package_api_docs`]: /tools/linter-rules/package_api_docs
 [`unsafe_html`]: /tools/linter-rules/unsafe_html
 
-#### Formatter (`dart format`)
+#### Formatador (`dart format`)
 
-- {{versioned}} The formatter implements a [new style][] that results in
-  new output when formatting code with a [language version][] of 3.7 or greater.
-- {{removed}} The `--fix` flag for `dart format` is no longer supported.
-  To apply similar fixes and more,
-  [configure your analysis options][] and run [`dart fix`][].
-- {{deprecated}} The `--line-length` option for `dart format` has been
-  deprecated and set to be removed.
-  All usages should be migrated to the new `--page-width` option.
+- {{versioned}} O formatador implementa um [novo estilo][] que resulta em
+  nova saída ao formatar o código com uma [versão de linguagem][] de 3.7 ou superior.
+- {{removed}} A flag `--fix` para `dart format` não é mais suportada.
+  Para aplicar correções similares e mais,
+  [configure suas opções de análise][] e execute [`dart fix`][].
+- {{deprecated}} A opção `--line-length` para `dart format` foi
+  descontinuada e definida para ser removida.
+  Todos os usos devem ser migrados para a nova opção `--page-width`.
 
 [new style]: {{site.repo.dart.org}}/dart_style/issues/1253
 [language version]: /guides/language/evolution#language-versioning
@@ -117,109 +118,109 @@ accounting for them before the 3.7 release.
 
 ## 3.6.0 {:#3-6-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-- [The context used by Dart to perform type inference on
-  the operand of a throw expression has been changed from
-  the "unknown type" to `Object`][56065].
-  This makes the type system more self-consistent, because
-  it reflects the fact that it's not legal to throw `null`.
-  This change isn't expected to make any difference in practice.
+- [O contexto usado pelo Dart para realizar a inferência de tipo no
+  operando de uma expressão throw foi alterado do
+  "tipo desconhecido" para `Object`][56065].
+  Isso torna o sistema de tipos mais autoconsistente, porque
+  reflete o fato de que não é legal lançar `null`.
+  Não se espera que esta mudança faça qualquer diferença na prática.
 
 [56065]: {{site.repo.dart.sdk}}/issues/56065
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:io`
 
-- {{removed}} [The `Platform()` constructor has been removed][52444].
-  All instantiations of `Platform` should be removed.
-- `HttpClient` now responds to a redirect that's missing a "Location" header by
-  [throwing a `RedirectException` instead of a `StateError`][53618].
+- {{removed}} [O construtor `Platform()` foi removido][52444].
+  Todas as instanciações de `Platform` devem ser removidas.
+- `HttpClient` agora responde a um redirecionamento que está faltando um cabeçalho "Location"
+  [lançando uma `RedirectException` em vez de um `StateError`][53618].
 
 [52444]: {{site.repo.dart.sdk}}/issues/52444
 [53618]: {{site.repo.dart.sdk}}/issues/53618
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
-#### Analyzer
+#### Analisador (Analyzer)
 
-- {{deprecated}} The [`package_api_docs`][] and [`unsafe_html`][] lint rules
-  have been deprecated and are set to be removed in Dart 3.7.
+- {{deprecated}} As regras de lint [`package_api_docs`][] e [`unsafe_html`][]
+  foram descontinuadas e estão definidas para serem removidas no Dart 3.7.
 
 [`package_api_docs`]: /tools/linter-rules/package_api_docs
 [`unsafe_html`]: /tools/linter-rules/unsafe_html
 
-#### Compiler front end (cfe) {:#compiler-front-end-cfe}
+#### Front end do compilador (cfe) {:#compiler-front-end-cfe}
 
-- The Dart compiler now [computes the upper and lower closures of type schemas
-  just before they're passed into the subtype testing procedure][56466].
-  Before Dart 3.6, the compiler computed them at the very beginning of
-  the upper and lower-bound computations.
-  The analyzer already followed this behavior, so apps that
-  already pass analysis are unlikely to be affected by this change.
+- O compilador Dart agora [computa os closures superiores e inferiores de esquemas de tipo
+  pouco antes de serem passados para o procedimento de teste de subtipo][56466].
+  Antes do Dart 3.6, o compilador computava no início do
+  cálculo do limite superior e inferior.
+  O analisador já seguia este comportamento, então é improvável que os aplicativos que
+  já passam na análise sejam afetados por esta mudança.
 
 [56466]: {{site.repo.dart.sdk}}/issues/56466
 
-#### Wasm compiler (dart2wasm)
+#### Compilador Wasm (dart2wasm)
 
-- The condition `dart.library.js` is now `false` on conditional imports
-  when compiling to WebAssembly.
-  The `dart.library.js_interop` condition should be used instead.
+- A condição `dart.library.js` agora é `false` em imports condicionais
+  ao compilar para WebAssembly.
+  A condição `dart.library.js_interop` deve ser usada em vez disso.
 
-#### Formatter (`dart format`)
+#### Formatador (`dart format`)
 
-The following changes might result in small formatting changes
-when running `dart format` with a Dart 3.6 SDK or later:
+As seguintes mudanças podem resultar em pequenas mudanças de formatação
+ao executar `dart format` com um SDK Dart 3.6 ou posterior:
 
-- Preserve type parameters on old-style function-typed formals that
-  also use `this.` or `super.`.
-- Correctly format imports with both `as` and `if` clauses.
+- Preserve os parâmetros de tipo em formais de tipo de função de estilo antigo que
+  também usam `this.` ou `super.`.
+- Formate corretamente os imports com as cláusulas `as` e `if`.
 
 #### Pub
 
-- `dart pub publish` now warns if files that are
-  tracked in git have uncommitted changes.
+- `dart pub publish` agora avisa se os arquivos que são
+  rastreados no git têm alterações não commitadas.
 
 ## 3.5.0 {:#3-5-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-- [The context used by the compiler to perform type inference on
-  the operand of an `await` expression has been changed to
-  match the behavior of the analyzer.][55418]
-- [The context used by the compiler to perform type inference on
-  the right-hand side of an "if-null" expression (`e1 ?? e2`) has been
-  changed to match the behavior of the analyzer.][55436]
-  The old behavior can be restored by supplying explicit types.
+- [O contexto usado pelo compilador para realizar a inferência de tipo no
+  operando de uma expressão `await` foi alterado para
+  corresponder ao comportamento do analisador.][55418]
+- [O contexto usado pelo compilador para realizar a inferência de tipo no
+  lado direito de uma expressão "if-null" (`e1 ?? e2`) foi
+  alterado para corresponder ao comportamento do analisador.][55436]
+  O comportamento antigo pode ser restaurado fornecendo tipos explícitos.
 
 [55418]: {{site.repo.dart.sdk}}/issues/55418
 [55436]: {{site.repo.dart.sdk}}/issues/55436
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:core`
 
-- [`DateTime` now stores microseconds on the web platform][44876],
-  more closely matching the behavior on native platforms.
+- [`DateTime` agora armazena microssegundos na plataforma web][44876],
+  correspondendo mais de perto ao comportamento em plataformas nativas.
 
 [44876]: {{site.repo.dart.sdk}}/issues/44876
 
 #### `dart:io`
 
-- [`SecurityContext` is now final and can no longer be subclassed][55786].
+- [`SecurityContext` agora é final e não pode mais ser subclassificado][55786].
 
 [55786]: {{site.repo.dart.sdk}}/issues/55786
 
 #### `dart:js_interop`
 
-- [`importModule` now accepts a `JSAny` instead of a `String`][55508] to
-  support other JS values as well, such as `TrustedScriptURL` objects.
-- [`isTruthy` and `not` now return `JSBoolean` instead of `bool`][55267] to
-  be consistent with other JS operator methods.
-- [`ExternalDartReference` no longer implements `Object`][56015].
-  Instead, it now accepts a type parameter (`T`) with a bound of
-  `Object?` to capture the type of the Dart object that is externalized.
+- [`importModule` agora aceita um `JSAny` em vez de um `String`][55508] para
+  também dar suporte a outros valores JS, como objetos `TrustedScriptURL`.
+- [`isTruthy` e `not` agora retornam `JSBoolean` em vez de `bool`][55267] para
+  serem consistentes com outros métodos de operadores JS.
+- [`ExternalDartReference` não implementa mais `Object`][56015].
+  Em vez disso, agora aceita um parâmetro de tipo (`T`) com um limite de
+  `Object?` para capturar o tipo do objeto Dart que está sendo externalizado.
 
 [55508]: {{site.repo.dart.sdk}}/issues/55508
 [55267]: {{site.repo.dart.sdk}}/issues/55267
@@ -228,48 +229,48 @@ when running `dart format` with a Dart 3.6 SDK or later:
 #### `dart:typed_data`
 
 - {{removed}}
-  [The unmodifiable view classes for typed data have been removed][53128].
-  Instead of using the constructors of these classes, use
-  the new `asUnmodifiableView` methods on typed data lists.
+  [As classes de visualização não modificáveis para dados tipados foram removidas][53128].
+  Em vez de usar os construtores dessas classes, use
+  os novos métodos `asUnmodifiableView` em listas de dados tipados.
 
 ### Runtime {:.no_toc}
 
-- {{removed}} The Dart VM no longer supports unsound null safety.
-  - The `--no-sound-null-safety` CLI option has been removed.
-  - The `Dart_NewListOf` and `Dart_IsLegacyType` functions have been
-    removed from the C API.
-- {{removed}} The `Dart_DefaultCanonicalizeUrl` function has been
-  removed from the C API.
+- {{removed}} A VM do Dart não suporta mais segurança nula não-sound.
+  - A opção `--no-sound-null-safety` da CLI foi removida.
+  - As funções `Dart_NewListOf` e `Dart_IsLegacyType` foram
+    removidas da API C.
+- {{removed}} A função `Dart_DefaultCanonicalizeUrl` foi
+  removida da API C.
 
 ## 3.4.0 {:#3-4-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-- [The pattern context type schema for cast patterns
-  is now `_` (the unknown type) instead of `Object?`][54640].
-- [The type schema used by the Dart compilers to
-  perform type inference on the operand of a null-aware spread operator (`...?`)
-  in map and set literals has been made nullable][54828],
-  to match what currently happens in list literals.
+- [O esquema de tipo de contexto de padrão para padrões de cast (cast patterns)
+  agora é `_` (o tipo desconhecido) em vez de `Object?`][54640].
+- [O esquema de tipo usado pelos compiladores Dart para
+  realizar a inferência de tipo no operando de um operador spread com reconhecimento nulo (`...?`)
+  em literais de mapa e conjunto foi tornado anulável][54828],
+  para corresponder ao que acontece atualmente em literais de lista.
 
 [54640]: {{site.repo.dart.sdk}}/issues/54640
 [54828]: {{site.repo.dart.sdk}}/issues/54828
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:cli`
 
-- {{experimental}} {{removed}} [The `waitFor` function][52121]
-  has been removed.
+- {{experimental}} {{removed}} [A função `waitFor`][52121]
+  foi removida.
 
 [52121]: {{site.repo.dart.sdk}}/issues/52121
 
 #### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl` {:#dart-html-dart-indexed-db-dart-svg-dart-web-audo-dart-web-gl}
 
-- {{deprecated}} These libraries are now marked as legacy and
-  will see less support in the future.
-  New projects should prefer to use [`package:web`][] and `dart:js_interop`.
-  To learn more, check out [Migrate to package:web][].
+- {{deprecated}} Estas bibliotecas agora estão marcadas como legado e
+  verão menos suporte no futuro.
+  Novos projetos devem preferir usar [`package:web`][] e `dart:js_interop`.
+  Para saber mais, confira [Migrar para package:web][].
 
 [`package:web`]: {{site.pub-pkg}}/web
 [Migrate to package:web]: /interop/js-interop/package-web
@@ -277,186 +278,186 @@ when running `dart format` with a Dart 3.6 SDK or later:
 #### `dart:js` {:#dart-js}
 
 - {{deprecated}}
-  This library is now marked as legacy and will see less support in the future.
-  Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
-  To learn more, check out [`/go/next-gen-js-interop`][].
+  Esta biblioteca agora está marcada como legado e verá menos suporte no futuro.
+  Os usos devem ser migrados para `dart:js_interop` e `dart:js_interop_unsafe`.
+  Para saber mais, confira [`/go/next-gen-js-interop`][].
 
 [`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
 #### `dart:js_util` {:#dart-js-util}
 
 - {{deprecated}}
-  This library is now marked as legacy and will see less support in the future.
-  Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
-  To learn more, check out [`/go/next-gen-js-interop`][].
+  Esta biblioteca agora está marcada como legado e verá menos suporte no futuro.
+  Os usos devem ser migrados para `dart:js_interop` e `dart:js_interop_unsafe`.
+  Para saber mais, confira [`/go/next-gen-js-interop`][].
 
 [`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
 #### `dart:io`
 
-- [`Stdout` has a new field `lineTerminator`, which allows
-  developers to control the line ending used by `stdout` and `stderr`.][53863]
-  Classes that implement `Stdout` must define the `lineTerminator` field.
-  The default semantics of `stdout` and `stderr` are not changed.
-- {{deprecated}} The `FileSystemDeleteEvent.isDirectory` property. 
-  It always returns `false`.
+- [`Stdout` tem um novo campo `lineTerminator`, que permite
+  que os desenvolvedores controlem o final de linha usado por `stdout` e `stderr`.][53863]
+  Classes que implementam `Stdout` devem definir o campo `lineTerminator`.
+  A semântica padrão de `stdout` e `stderr` não é alterada.
+- {{deprecated}} A propriedade `FileSystemDeleteEvent.isDirectory`.
+  Ela sempre retorna `false`.
 
 [53863]: {{site.repo.dart.sdk}}/issues/53863
 
 #### `dart:typed_data`
 
 - {{deprecated}}
-  [The unmodifiable view classes for typed data are deprecated][53128].
-  Instead of using the constructors of these classes, use
-  the new `asUnmodifiableView` methods on typed data lists.
+  [As classes de visualização não modificáveis para dados tipados estão descontinuadas][53128].
+  Em vez de usar os construtores dessas classes, use
+  os novos métodos `asUnmodifiableView` em listas de dados tipados.
 
 [53128]: {{site.repo.dart.sdk}}/issues/53218
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
-#### Production JavaScript compiler (dart2js)
+#### Compilador JavaScript de Produção (dart2js)
 
-- {{experimental}} {{deprecated}} You should now specify a format to
-  the `--dump-info` CLI option of either `binary` or `json`.
-  The `json` format is deprecated and might be removed in a future Dart release.
+- {{experimental}} {{deprecated}} Você deve agora especificar um formato para
+  a opção `--dump-info` da CLI de `binary` ou `json`.
+  O formato `json` está descontinuado e pode ser removido em um futuro lançamento do Dart.
 
-#### Wasm compiler (dart2wasm)
+#### Compilador Wasm (dart2wasm)
 
-- {{experimental}} Various `dart compile wasm` CLI arguments have
-  been updated, removed, or replaced.
-  To learn more, run `dart compile wasm --verbose --help`.
+- {{experimental}} Vários argumentos da CLI `dart compile wasm` foram
+  atualizados, removidos ou substituídos.
+  Para saber mais, execute `dart compile wasm --verbose --help`.
 
 ### Runtime {:.no_toc}
 
-- {{removed}} The Dart VM longer supports external strings.
-  As a result, the `Dart_IsExternalString`, `Dart_NewExternalLatin1String`, and
-  `Dart_NewExternalUTF16String` functions have been removed from the Dart C API.
+- {{removed}} A VM do Dart não suporta mais strings externas.
+  Como resultado, as funções `Dart_IsExternalString`, `Dart_NewExternalLatin1String` e
+  `Dart_NewExternalUTF16String` foram removidas da API C do Dart.
 
 ## 3.3.0 {:#3-3-0}
 
 ### SDK {:.no_toc} {:#sdk}
 
-* {{experimental}} {{removed}} The following experiments are now retired as
-  they were released in Dart 3 and are no longer necessary with
-  a language version of 3.0 or greater.
-  Configuration of them should be removed from
-  analysis options, CLI commands, and IDE configurations.
+* {{experimental}} {{removed}} Os seguintes experimentos agora estão aposentados, pois
+  foram lançados no Dart 3 e não são mais necessários com
+  uma versão da linguagem de 3.0 ou superior.
+  A configuração deles deve ser removida de
+  opções de análise, comandos da CLI e configurações de IDE.
 
-  * `patterns`
-  * `records`
-  * `class-modifers`
-  * `sealed-class`
+  * `patterns` (padrões)
+  * `records` (registros)
+  * `class-modifers` (modificadores de classe)
+  * `sealed-class` (classe selada)
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* [An abstract getter is now considered promotable if
-  there are no conflicting declarations][54056].
+* [Um getter abstrato agora é considerado promovível se
+  não houver declarações conflitantes][54056].
 
 [54056]: {{site.repo.dart.sdk}}/issues/54056
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:cli`
 
-* {{experimental}} {{deprecated}} [The `waitFor` function][52121]
-  remains deprecated for another release and is set for removal in Dart 3.4.
+* {{experimental}} {{deprecated}} [A função `waitFor`][52121]
+  permanece descontinuada para outro lançamento e está definida para remoção no Dart 3.4.
 
 [52121]: {{site.repo.dart.sdk}}/issues/52121
 
 #### `dart:ffi`
 
-* {{deprecated}} [The `elementAt` pointer arithmetic methods
-  on `Pointer` types are deprecated][54250].
-  Migrate to the `-` and `+` operators instead.
-* {{experimental}} {{removed}} The previously deprecated
-  `@FfiNative` annotation has been removed. Usages should be
-  updated to use the `@Native` annotation.
+* {{deprecated}} [Os métodos de aritmética de ponteiro `elementAt`
+  em tipos `Pointer` estão descontinuados][54250].
+  Migre para os operadores `-` e `+` em vez disso.
+* {{experimental}} {{removed}} A anotação `@FfiNative` previamente descontinuada
+  foi removida. Os usos devem ser
+  atualizados para usar a anotação `@Native`.
 
 [54250]: {{site.repo.dart.sdk}}/issues/54250
 
 #### `dart:html`
 
-* Instead of using `HttpRequest` directly,
-  it is now recommended to use [`package:http`][].
+* Em vez de usar `HttpRequest` diretamente,
+  agora é recomendado usar [`package:http`][].
 
 [`package:http`]: {{site.pub-pkg}}/http
 
 #### `dart:io`
 
-* Instead of using `HttpClient` directly,
-  it is now recommended to use [`package:http`][].
+* Em vez de usar `HttpClient` diretamente,
+  agora é recomendado usar [`package:http`][].
 
 [`package:http`]: {{site.pub-pkg}}/http
 
 #### `dart:js_interop`
 
-* {{experimental}} JS types like `JSAny` have
-  [new compiler-specific representation types][52687].
-* {{experimental}} User-defined `@staticInterop` classes can
-  [no longer implement `JSAny` or `JSObject`][52687].
-  Usages should be migrated to `JSObject.fromInteropObject` or
-  be defined as extension types.
-* {{experimental}} `JSArray` and `JSPromise` now have generic parameters.
-* {{experimental}} Various extension members were moved or renamed.
-  To learn about the updated extensions, reference
-  `JSAnyUtilityExtension` and `JSAnyOperatorExtension`.
+* {{experimental}} Tipos JS como `JSAny` têm
+  [novos tipos de representação específicos do compilador][52687].
+* {{experimental}} Classes `@staticInterop` definidas pelo usuário podem
+  [não implementar mais `JSAny` ou `JSObject`][52687].
+  Os usos devem ser migrados para `JSObject.fromInteropObject` ou
+  serem definidos como tipos de extensão.
+* {{experimental}} `JSArray` e `JSPromise` agora têm parâmetros genéricos.
+* {{experimental}} Vários membros de extensão foram movidos ou renomeados.
+  Para saber mais sobre as extensões atualizadas, consulte
+  `JSAnyUtilityExtension` e `JSAnyOperatorExtension`.
 
 [52687]: {{site.repo.dart.sdk}}/issues/52687
 
 #### `dart:typed_data`
 
-* [The unmodifiable view classes for typed data will
-  be deprecated in Dart 3.4][53128].
-  Instead of using the constructors of these classes, use
-  the new `asUnmodifiableView` methods on typed data lists.
+* [As classes de visualização não modificáveis para dados tipados serão
+  descontinuadas no Dart 3.4][53128].
+  Em vez de usar os construtores dessas classes, use
+  os novos métodos `asUnmodifiableView` em listas de dados tipados.
 
 [53128]: {{site.repo.dart.sdk}}/issues/53218
 
 #### `dart:nativewrappers` {:#dart-nativewrappers}
 
-* {{experimental}} [All native wrapper classes are now marked `base`][51896]
-  so that none of their subtypes can be implemented.
+* {{experimental}} [Todas as classes wrapper nativas agora são marcadas como `base`][51896]
+  para que nenhum de seus subtipos possa ser implementado.
 
 [51896]: {{site.repo.dart.sdk}}/issues/51896
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
-#### Production JavaScript compiler (dart2js)
+#### Compilador JavaScript de Produção (dart2js)
 
-* [The `Invocation` that is passed to `noSuchMethod` no longer
-  has a minified `memberName`][54201], even when compiled with `--minify`.
+* [A `Invocation` que é passada para `noSuchMethod` não tem mais
+  um `memberName` minificado][54201], mesmo quando compilado com `--minify`.
 
 [54201]: {{site.repo.dart.sdk}}/issues/54201
 
-#### Wasm compiler (dart2wasm)
+#### Compilador Wasm (dart2wasm)
 
-* {{experimental}} [Disallow importing legacy JS interop libraries][54004].
-  Prefer using `dart:js_interop` and `dart:js_interop_unsafe` instead.
+* {{experimental}} [Impedir a importação de bibliotecas legadas de interoperação JS][54004].
+  Prefira usar `dart:js_interop` e `dart:js_interop_unsafe` em vez disso.
 
 [54004]: {{site.repo.dart.sdk}}/issues/54004
 
-#### Analyzer
+#### Analisador (Analyzer)
 
-* {{experimental}} Invalid `dart doc` comment directives are
-  now reported by the analyzer.
-* Due to [improvements in type promotion][54056], the following analyzer
-  diagnostics might trigger on existing code that previously passed analysis:
+* {{experimental}} Diretivas de comentários `dart doc` inválidas agora são
+  reportadas pelo analisador.
+* Devido a [melhorias na promoção de tipo][54056], os seguintes diagnósticos
+  do analisador podem ser acionados em códigos existentes que anteriormente passavam na análise:
 
-  * `unnecessary_non_null_assertion`
-  * `unnecessary_cast`
-  * `invalid_null_aware_operator`
+  * `unnecessary_non_null_assertion` (asserção não nula desnecessária)
+  * `unnecessary_cast` (cast desnecessário)
+  * `invalid_null_aware_operator` (operador null-aware inválido)
 
 [54056]: {{site.repo.dart.sdk}}/issues/54056
 
 #### Linter {:#linter}
 
-* The `iterable_contains_unrelated_type` and
-  `list_remove_unrelated_type` lints were removed.
-  Consider migrating to the expanded
-  [`collection_methods_unrelated_type`][] lint.
-* The following lints are removed due to no longer being
-  necessary with sound null safety. You should remove configuration of them
-  from your `analysis_options.yaml` files and any ignore comments.
+* Os lints `iterable_contains_unrelated_type` e
+  `list_remove_unrelated_type` foram removidos.
+  Considere migrar para o lint expandido
+  [`collection_methods_unrelated_type`][].
+* Os seguintes lints são removidos por não serem mais
+  necessários com segurança nula sound. Você deve remover a configuração deles
+  de seus arquivos `analysis_options.yaml` e quaisquer comentários ignore.
   
   * `always_require_non_null_named_parameters`
   * `avoid_returning_null`
@@ -466,69 +467,69 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
 ## 3.2.0 {:#3-2-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* {{versioned}} [Changed the split point for refutable patterns][53167]
-  to the top level pattern so type promotion in if-case statements is consistent
-  regardless of whether the scrutinee might throw an exception.
+* {{versioned}} [Alterado o ponto de divisão para padrões refutáveis][53167]
+  para o padrão de nível superior, de modo que a promoção de tipo em declarações if-case seja consistente
+  independentemente de a scrutinee poder lançar uma exceção.
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:cli`
 
-* {{experimental}} {{deprecated}} [The `waitFor` function.][52121]
+* {{experimental}} {{deprecated}} [A função `waitFor`.][52121]
 
 #### `dart:convert`
 
-* [Changed return types of `utf8.encode()` and `Utf8Codec.encode()`][52801]
- from `List<int>` to `Uint8List`.
+* [Tipos de retorno alterados de `utf8.encode()` e `Utf8Codec.encode()`][52801]
+  de `List<int>` para `Uint8List`.
 
 #### `dart:developer`
 
-* {{deprecated}} The `Service.getIsolateID` method.
+* {{deprecated}} O método `Service.getIsolateID`.
 
 #### `dart:ffi`
 
-* [Changed `NativeCallable.nativeFunction` so calls now throw an error if
-  the receiver is already closed][53311], instead of returning `nullptr`.
+* [Alterado `NativeCallable.nativeFunction` para que as chamadas agora lancem um erro se
+  o receptor já estiver fechado][53311], em vez de retornar `nullptr`.
 
 #### `dart:io`
 
-* [Eliminated trailing whitespace from HTTP headers][53005].
-* [Inserted a space at the fold point of folded header values][53227]
-  that `HttpClientResponse.headers` and `HttpRequest.headers` return.
+* [Eliminado espaço em branco à direita dos cabeçalhos HTTP][53005].
+* [Inserido um espaço no ponto de dobra dos valores de cabeçalho dobrados][53227]
+  que `HttpClientResponse.headers` e `HttpRequest.headers` retornam.
 
 #### `dart:js_interop`
 
-* {{experimental}} {{removed}} `JSNumber.toDart` in favor of `toDartDouble` and
+* {{experimental}} {{removed}} `JSNumber.toDart` em favor de `toDartDouble` e
   `toDartInt`.
-* {{experimental}} {{removed}} `Object.toJS` in favor of `Object.toJSBox.`
-* {{experimental}} Restricted external JS interop APIs using `dart:js_interop`
-  to a set of allowed types.
-* {{experimental}} Prohibited use of `isNull` and `isUndefined` on dart2wasm.
-* {{experimental}} Changed `typeofEquals` and `instanceof` APIs to both return
-  bool instead of `JSBoolean`.
-  Also, `typeofEquals` now takes `String` instead of `JSString`.
-* {{experimental}} Changed `JSAny` and `JSObject` types to only implementable,
-  not extendable, by user `@staticInterop` types.
-* {{experimental}} Changed `JSArray.withLength` to take `int` instead of `JSNumber`.
+* {{experimental}} {{removed}} `Object.toJS` em favor de `Object.toJSBox.`
+* {{experimental}} Restringido as APIs externas de interoperação JS usando `dart:js_interop`
+  para um conjunto de tipos permitidos.
+* {{experimental}} Proibido o uso de `isNull` e `isUndefined` em dart2wasm.
+* {{experimental}} Alterado as APIs `typeofEquals` e `instanceof` para retornarem
+  `bool` em vez de `JSBoolean`.
+  Além disso, `typeofEquals` agora aceita `String` em vez de `JSString`.
+* {{experimental}} Alterado os tipos `JSAny` e `JSObject` para serem apenas implementáveis,
+  não extensíveis, por tipos `@staticInterop` do usuário.
+* {{experimental}} Alterado `JSArray.withLength` para aceitar `int` em vez de `JSNumber`.
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
-#### Development JavaScript compiler (DDC) {:#development-javascript-compiler-ddc}
+#### Compilador JavaScript de Desenvolvimento (DDC) {:#development-javascript-compiler-ddc}
 
-* [Added interceptors for JavaScript `Symbol` and `BigInt` types][53106];
-  they should no longer be used with `package:js` classes.
+* [Adicionado interceptadores para tipos JavaScript `Symbol` e `BigInt`][53106];
+  eles não devem mais ser usados com classes `package:js`.
 
-#### Production JavaScript compiler (dart2js)
+#### Compilador JavaScript de Produção (dart2js)
 
-* [Added interceptors for JavaScript `Symbol` and `BigInt` types][53106];
-  they should no longer be used with `package:js` classes.
+* [Adicionado interceptadores para tipos JavaScript `Symbol` e `BigInt`][53106];
+  eles não devem mais ser usados com classes `package:js`.
 
-#### Analyzer
+#### Analisador (Analyzer)
 
-* {{versioned}} [Private final field promotion][2020] might cause the following
-  analyzer warnings to trigger on existing code that previously passed analysis:
+* {{versioned}} [Promoção de campo final privado][2020] pode fazer com que o seguinte
+  avisos do analisador sejam acionados em códigos existentes que anteriormente passavam na análise:
   
   * [`unnecessary_non_null_assertion`](/tools/diagnostic-messages#unnecessary_non_null_assertion)
   * [`invalid_null_aware_operator`](/tools/diagnostic-messages#invalid_null_aware_operator)
@@ -562,31 +563,31 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
 ## 3.1.0 {:#3-1-0}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:async`
 
-* [Added `interface` modifier to purely abstract classes:][52334]
- `MultiStreamController`, `StreamConsumer`, `StreamIterator` and `StreamTransformer`.
+* [Adicionado o modificador `interface` a classes puramente abstratas:][52334]
+  `MultiStreamController`, `StreamConsumer`, `StreamIterator` e `StreamTransformer`.
 
 #### `dart:io`
 
-* [Added `sameSite` to the `Cookie` class, and added the class `SameSite`][51486].
-* [`FileSystemEvent` is `sealed`][52027]. This means `FileSystemEvent` cannot be 
-  extended or implemented.
+* [Adicionado `sameSite` à classe `Cookie` e adicionado a classe `SameSite`][51486].
+* [`FileSystemEvent` é `sealed`][52027]. Isso significa que `FileSystemEvent` não pode ser 
+  estendida ou implementada.
 
 #### `dart:js_interop`
 
-* {{experimental}} {{removed}} `ObjectLiteral`; create an object literal with
-  no named members using `{}.jsify()`.
+* {{experimental}} {{removed}} `ObjectLiteral`; crie um literal de objeto com
+  sem membros nomeados usando `{}.jsify()`.
 
 #### `package:js`
 
-* `external` `@staticInterop` members and `external` extension members can no
-  longer be used as tear-offs. Declare a closure or a non-`external` method that
-  calls these members, and use that instead.
-* `external` `@staticInterop` members and `external` extension members will
-  generate slightly different JS code for methods that have optional parameters.
+* Membros `external` `@staticInterop` e membros de extensão `external` não podem
+  mais serem usados como tear-offs. Declare um closure ou um método não-`external` que
+  chame esses membros e use isso em vez disso.
+* Membros `external` `@staticInterop` e membros de extensão `external` irão
+  gerar um código JS ligeiramente diferente para métodos que tenham parâmetros opcionais.
 
 [52334]: {{site.repo.dart.sdk}}/issues/52334
 [51486]: {{site.repo.dart.sdk}}/issues/51486
@@ -595,66 +596,66 @@ when running `dart format` with a Dart 3.6 SDK or later:
 ## 3.0.0 {:#3-0-0}
 
 :::tip
-The [Dart 3.0 migration guide][dart3] covers the complete details
-on all the changes in this section.
+O [guia de migração do Dart 3.0][dart3] aborda os detalhes completos
+sobre todas as mudanças nesta seção.
 :::
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* {{versioned}} Changed interpretation of [switch cases] from constant
-  expressions to patterns.
+* {{versioned}} Alterada a interpretação de [casos switch] de constante
+  expressões para padrões.
 
-* {{versioned}} Class declarations from libraries that have been upgraded
-  to Dart 3.0 [can no longer be used as mixins by default][mixin class].
+* {{versioned}} Declarações de classe de bibliotecas que foram atualizadas
+  para o Dart 3.0 [não podem mais ser usadas como mixins por padrão][mixin class].
 
-* [Dart reports a compile-time error][50902] if a `continue` statement targets
-  a [label] that is not a loop (`for`, `do` and `while` statements) or a `switch`
-  member.
+* [O Dart reporta um erro em tempo de compilação][50902] se uma instrução `continue` tem como alvo
+  um [rótulo (label)] que não é um loop (instruções `for`, `do` e `while`) ou
+  um membro `switch`.
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
-* The following existing classes have been made mixin classes:
+* As seguintes classes existentes foram transformadas em classes mixin:
   `Iterable`, `IterableMixin`, `IterableBase`, `ListMixin`, `SetMixin`, `MapMixin`,
   `LinkedListEntry`, `StringConversionSink`.
 
 #### `dart:core`
 
-* {{deprecated}} [Deprecated APIs][49529].
+* {{deprecated}} [APIs descontinuadas][49529].
 
 #### `dart:async`
 
-* {{removed}} [Removed the deprecated][49529] [`DeferredLibrary`][] class.
+* {{removed}} [Removida a classe descontinuada][49529] [`DeferredLibrary`][].
 
 #### `dart:collection` {:#dart-collection}
 
-* {{versioned}} [Changes to platform libraries][collection].
+* {{versioned}} [Mudanças para bibliotecas da plataforma][collection].
 
 #### `dart:developer`
 
-* {{removed}} [Removed the deprecated][49529] [`MAX_USER_TAGS`][] constant.
-  Use [`maxUserTags`][] instead.
-* {{removed}} [Removed the deprecated][50231] [`Metrics`][], [`Metric`][], [`Counter`][],
-  and [`Gauge`][] classes as they have been broken since Dart 2.0.
+* {{removed}} [Removida a constante descontinuada][49529] [`MAX_USER_TAGS`][].
+  Use [`maxUserTags`][] em vez disso.
+* {{removed}} [Removidas as classes descontinuadas][50231] [`Metrics`][], [`Metric`][], [`Counter`][],
+  e [`Gauge`][] pois estão quebradas desde o Dart 2.0.
 
 #### `dart:ffi`
 
-* {{experimental}} {{deprecated}} The `@FfiNative` annotation is
-  now deprecated. Usages should be updated to use the `@Native` annotation.
+* {{experimental}} {{deprecated}} A anotação `@FfiNative` é
+  agora descontinuada. Os usos devem ser atualizados para usar a anotação `@Native`.
 
 #### `dart:html`
 
-* {{removed}} [Removed the deprecated `registerElement` and `registerElement2`][49536]
-  methods in `Document` and `HtmlDocument`.
+* {{removed}} [Removidos os métodos descontinuados `registerElement` e `registerElement2`][49536]
+  em `Document` e `HtmlDocument`.
 
 #### `dart:math` {:#dart-math}
 
-* {{versioned}} The `Random` interface can only be implemented,
-  not extended.
+* {{versioned}} A interface `Random` só pode ser implementada,
+  não estendida.
 
 #### `dart:io`
 
-* [Updated `NetworkProfiling`][51035] to accommodate new `String` ids that are
-  introduced in vm_service:11.0.0
+* [Atualizado `NetworkProfiling`][51035] para acomodar novos ids `String` que são
+  introduzidos em vm_service:11.0.0
 
 [dart3]: /resources/dart-3-migration/
 [switch cases]: /language/branches#switch
@@ -678,64 +679,64 @@ on all the changes in this section.
 
 ## 2.19.0 {:#2-19-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* [Flagged additional code as unreachable][49635] due to types `Null` and `Never`.
-* [Don't delegate inaccessible private names to `noSuchMethod`][49687].
-* [Report a compile-time error][50383] for all cyclic dependencies during
-  top-level type inference.
+* [Sinalizado código adicional como inalcançável][49635] devido aos tipos `Null` e `Never`.
+* [Não delegue nomes privados inacessíveis para `noSuchMethod`][49687].
+* [Reporte um erro em tempo de compilação][50383] para todas as dependências cíclicas durante
+  a inferência de tipo de nível superior.
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:convert`
 
-* {{removed}} [The previously deprecated API][34233] [`DEFAULT_BUFFER_SIZE`] in `JsonUtf8Encoder`
-  has been removed.
+* {{removido}} [A API previamente descontinuada][34233] [`DEFAULT_BUFFER_SIZE`] em `JsonUtf8Encoder`
+  foi removida.
 
 #### `dart:developer`
 
-* {{removed}} [Removed previously deprecated APIs][34233] `kInvalidParams`,
-  `kExtensionError`, `kExtensionErrorMax`, and `kExtensionErrorMin` in
+* {{removido}} [APIs previamente descontinuadas removidas][34233] `kInvalidParams`,
+  `kExtensionError`, `kExtensionErrorMax` e `kExtensionErrorMin` em
   [`ServiceExtensionResponse`].
 
 #### `dart:ffi`
 
-* [Changed the runtime type argument of `Pointer` to `Never`][49935] in
-  preparation of completely removing the runtime type argument. 
-  Changed `Pointer.toString` to not report any type argument.
+* [Alterado o argumento de tipo de tempo de execução de `Pointer` para `Never`][49935]
+  em preparação para remover completamente o argumento de tipo de tempo de execução.
+  Alterado `Pointer.toString` para não relatar nenhum argumento de tipo.
 
 #### `dart:io`
 
-* [Disallow negative or hexadecimal content-length headers][49305].
-* [`File.create` now takes new optional `exclusive` `bool` parameter][49647],
-  and when it is `true` the operation will fail if target file already exists.
-* Calling `ResourceHandle.toFile()`, `ResourceHandle.toSocket()`,
-  `ResourceHandle.toRawSocket()` or `ResourceHandle.toRawDatagramSocket()`,
-  more than once [now throws a `StateError`][49878].
+* [Não permitir cabeçalhos de comprimento de conteúdo negativo ou hexadecimal][49305].
+* [`File.create` agora aceita um novo parâmetro `exclusive` `bool` opcional][49647],
+  e quando for `true` a operação falhará se o arquivo de destino já existir.
+* Chamar `ResourceHandle.toFile()`, `ResourceHandle.toSocket()`,
+  `ResourceHandle.toRawSocket()` ou `ResourceHandle.toRawDatagramSocket()`,
+  mais de uma vez [agora lança um `StateError`][49878].
 
 #### `dart:isolate`
 
-* Reverted [`SendPort.send`] back to strict checks on contents of messages when
-  sending messages between isolates that are not known to share the same code.
+* Revertido [`SendPort.send`] de volta para verificações estritas sobre o conteúdo
+  de mensagens ao enviar mensagens entre isolates que não se sabe que compartilham o mesmo código.
 
 #### `dart:mirrors`
 
-* {{removed}} [Removed APIs][34233] `MirrorsUsed` and `Comment`.
+* {{removido}} [APIs removidas][34233] `MirrorsUsed` e `Comment`.
 
 #### `package:js`
 
-* Breaking changes to the preview feature `@staticInterop`:
-  * Disallowed classes with this annotation from using `external`
-    generative constructors. See [48730] and [49941] for more details.
-  * [Disallowed classes with this annotation's external extension members from
-    using type parameters][49350].
-  * Classes with this annotation should also have the `@JS` annotation.
-  * Classes with this annotation can not be implemented by classes without this
-    annotation.
+* Mudanças que causam quebra na funcionalidade de pré-visualização `@staticInterop`:
+  * Não permitir classes com esta anotação de usar construtores geradores
+    `external`. Veja [48730] e [49941] para mais detalhes.
+  * [Não permitir membros de extensão externa de classes com esta anotação de
+    usar parâmetros de tipo][49350].
+  * Classes com esta anotação também devem ter a anotação `@JS`.
+  * Classes com esta anotação não podem ser implementadas por classes sem esta
+    anotação.
 
 #### `dart2js`
 
-* [`dart2js` no longer supports HTTP URIs as inputs][49473].
+* [`dart2js` não suporta mais URIs HTTP como entradas][49473].
 
 [49635]: {{site.repo.dart.sdk}}/issues/49635
 [49687]: {{site.repo.dart.sdk}}/issues/49687
@@ -756,28 +757,28 @@ on all the changes in this section.
 
 ## 2.18.0 {:#2-18-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* [Removed support for mixin of classes that don't extend `Object`][48167].
+* [Removido o suporte para mixin de classes que não estendem `Object`][48167].
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:io`
 
-* [Changed the `uri` property of `RedirectException` in `dart:io` to be nullable][49045].
-* [Removed constants in `dart:io` networking APIs following the `SCREAMING_CAPS`
-  convention][34218].
-* [The Dart VM no longer automatically restores the initial terminal settings][45630]
-  upon exit.
+* [Alterada a propriedade `uri` de `RedirectException` em `dart:io` para ser anulável][49045].
+* [Removidas constantes nas APIs de rede `dart:io` seguindo a convenção
+  `SCREAMING_CAPS`][34218].
+* [A VM Dart não restaura mais automaticamente as configurações de terminal iniciais][45630]
+  após a saída.
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
-* [Fully discontinued the `.packages` file][48272]. 
+* [Descontinuado completamente o arquivo `.packages`][48272].
 
-#### Dart command line
+#### Linha de comando Dart
 
-* [Removed the standalone `dart2js` and `dartdevc` tools][46100].
-* [Removed the standalone `dartanalyzer` tool][46100].
+* [Removidas as ferramentas `dart2js` e `dartdevc` autônomas][46100].
+* [Removida a ferramenta `dartanalyzer` autônoma][46100].
 
 [48167]: {{site.repo.dart.sdk}}/issues/48167
 [49045]: {{site.repo.dart.sdk}}/issues/49045
@@ -788,24 +789,24 @@ on all the changes in this section.
 
 ## 2.17.0 {:#2-17-0}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:io`
 
-* [Added new `connectionFactory` property to `HttpClient`][47887].
-* [Added new `keyLog` property to `HttpClient`][48093], which allows TLS keys to
-  be logged for debugging purposes.
-* [Removed constants in `dart:io` following the `SCREAMING_CAPS`][34218]
-* [Added a new `allowLegacyUnsafeRenegotiation` property to `SecurityContext`][48513],
-  which allows TLS renegotiation for client secure sockets.
+* [Adicionada nova propriedade `connectionFactory` a `HttpClient`][47887].
+* [Adicionada nova propriedade `keyLog` a `HttpClient`][48093], que permite que
+  chaves TLS sejam registradas para fins de depuração.
+* [Removidas constantes em `dart:io` seguindo `SCREAMING_CAPS`][34218]
+* [Adicionada uma nova propriedade `allowLegacyUnsafeRenegotiation` a
+  `SecurityContext`][48513], que permite a renegociação TLS para sockets seguros de cliente.
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
-#### Dart command line
+#### Linha de comando Dart
 
-* {{deprecated}} [Deprecated the standalone `dart2js` tool][46100].
-* {{deprecated}} [Deprecated the standalone `dartdevc` tool][46100].
-* {{removed}} [Removed the standalone `dartdoc` tool][46100].
+* {{descontinuado}} [Descontinuada a ferramenta `dart2js` autônoma][46100].
+* {{descontinuado}} [Descontinuada a ferramenta `dartdevc` autônoma][46100].
+* {{removido}} [Removida a ferramenta `dartdoc` autônoma][46100].
 
 [47887]: {{site.repo.dart.sdk}}/issues/47887
 [48093]: {{site.repo.dart.sdk}}/issues/48093
@@ -815,25 +816,25 @@ on all the changes in this section.
 
 ## 2.16.0 {:#2-16-0}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:io`
 
-* On Windows, [`Directory.rename` will no longer delete a directory][47653] if
-  `newPath` specifies one. Instead, a `FileSystemException` will be thrown.
-* {{removed}} [Removed the `Platform.packageRoot` API][47769].
+* No Windows, [`Directory.rename` não irá mais apagar um diretório][47653] se
+  `newPath` especificar um. Em vez disso, uma `FileSystemException` será lançada.
+* {{removed}} [Removida a API `Platform.packageRoot`][47769].
 
 #### `dart:isolate`
 
-* {{removed}} [Removed the `Isolate.packageRoot` API][47769].
+* {{removed}} [Removida a API `Isolate.packageRoot`][47769].
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
-#### Dart command line
+#### Linha de comando Dart
 
-* {{deprecated}} [Deprecated the standalone `dartanalyzer` tool][46100].
-* {{deprecated}} [Deprecated the standalone `dartdoc` tool][46100].
-* {{removed}} [Removed the deprecated standalone `pub` tool][46100].
+* {{deprecated}} [Descontinuada a ferramenta `dartanalyzer` independente][46100].
+* {{deprecated}} [Descontinuada a ferramenta `dartdoc` independente][46100].
+* {{removed}} [Removida a ferramenta `pub` independente descontinuada][46100].
 
 [47653]: {{site.repo.dart.sdk}}/issues/47653
 [47769]: {{site.repo.dart.sdk}}/issues/47769
@@ -841,33 +842,33 @@ on all the changes in this section.
 
 ## 2.15.0 {:#2-15-0}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:io`
 
-* [Updated the `SecurityContext` class][46875] to set the minimum
-  TLS protocol version to TLS1_2_VERSION (1.2) instead of TLS1_VERSION.
+* [Atualizada a classe `SecurityContext`][46875] para definir a versão mínima
+  do protocolo TLS para TLS1_2_VERSION (1.2) em vez de TLS1_VERSION.
 
 #### `dart:web_sql` {:#dart-web-sql}
 
-* [Completely deleted the `dart:web_sql` library][46316].
+* [Completamente deletada a biblioteca `dart:web_sql`][46316].
 
 #### `dart:html`
 
-* [Removed `window.openDatabase`][46316] (related to `dart:web_sql` deletion above).
+* [Removido `window.openDatabase`][46316] (relacionado à deleção de `dart:web_sql` acima).
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
-#### Dart command line
+#### Linha de comando Dart
 
-* [Removed the standalone `dart2native` tool][46100].
-* Removed the standalone `dartfmt` tool.
+* [Removida a ferramenta `dart2native` independente][46100].
+* Removida a ferramenta `dartfmt` independente.
 
 #### Dart VM
 
-* [Removed support for `dart-ext:`-style native extensions][45451]
-* [Grouped isolates spawned via the `Isolate.spawn()` API][46754] to operate on the
-  same managed heap, and therefore share various VM-internal data structures.
+* [Removido o suporte para extensões nativas no estilo `dart-ext:`][45451]
+* [Agrupados os isolates gerados via API `Isolate.spawn()`][46754] para operar no
+  mesmo heap gerenciado e, portanto, compartilhar várias estruturas de dados internas da VM.
 
 [46875]: {{site.repo.dart.sdk}}/issues/46875
 [46316]: {{site.repo.dart.sdk}}/issues/46316
@@ -876,39 +877,39 @@ on all the changes in this section.
 
 ## 2.14.0 {:#2-14-0}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:io`
 
-* The setter callbacks `.authenticate` and `.authenticateProxy` in `HttpClient`
-  must now accept a nullable `realm` argument (for pre-migrated null safe code).
+* As funções de retorno de chamada (callbacks) setter `.authenticate` e `.authenticateProxy` em `HttpClient`
+  agora devem aceitar um argumento `realm` anulável (para código null safe pré-migrado).
 
 #### `dart:typed_data`
 
-* Most types exposed by this library [can no longer be extended, implemented or
-  mixed-in][45115].
+* A maioria dos tipos expostos por esta biblioteca [não podem mais ser estendidos, implementados ou
+  misturados (mixed-in)][45115].
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### Dart VM
 
-* Expandos, and the `object` parameters of `Dart_NewWeakPersistentHandle` and 
-  `Dart_NewFinalizableHandle`, [no longer accept `Pointer` and subtypes of `Struct`][45071] 
+* Expandos, e os parâmetros `object` de `Dart_NewWeakPersistentHandle` e
+  `Dart_NewFinalizableHandle`, [não aceitam mais `Pointer` e subtipos de `Struct`][45071]
 
-#### Dart command line
+#### Linha de comando Dart
 
-* [Deprecated the standalone `dart2native` tool][46100]
-* Deprecated the standalone `dartfmt` tool.
+* [Descontinuada a ferramenta `dart2native` independente][46100]
+* Descontinuada a ferramenta `dartfmt` independente.
 
 #### `dart2js`
 
-* [`dart2js` no longer supports legacy browsers][46545], because it emits ES6+
-  JavaScript by default.
+* [`dart2js` não suporta mais navegadores legados][46545], porque emite ES6+
+  JavaScript por padrão.
 
 #### Dart Dev Compiler (DDC)
 
-* [Changed subtyping relations of `package:js` classes][44154] to be more correct and
-  consistent with Dart2JS.
+* [Alteradas as relações de subtipagem de classes `package:js`][44154] para serem mais corretas e
+  consistentes com o Dart2JS.
 
 [45115]: {{site.repo.dart.sdk}}/issues/45115
 [45071]: {{site.repo.dart.sdk}}/issues/45071
@@ -918,47 +919,47 @@ on all the changes in this section.
 
 ## 2.13.0 {:#2-13-0}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `package:js`
 
-* [No longer valid][44211] to use a `String` that matches an `@Native` annotation
-  in an `@JS()` annotation for a non-anonymous JS interop class.
+* [Não é mais válido][44211] usar uma `String` que corresponda a uma anotação `@Native`
+  em uma anotação `@JS()` para uma classe de interop JS não anônima.
 
 [44211]: {{site.repo.dart.sdk}}/issues/44211
 
 ## 2.12.0 {:#2-12-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* [Null safety] is now enabled by default in all code that
-  has not opted out.
-* [Fixed an implementation bug][44660] where `this` would sometimes undergo type
-  promotion in extensions.
+* [Null safety (segurança nula)] agora está habilitado por padrão em todo o código que
+  não foi desativado.
+* [Corrigido um bug de implementação][44660] onde `this` às vezes passava por type
+  promotion em extensões.
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:ffi`
 
-* [Deprecated invocations with a generic `T`][44621] of `sizeOf<T>`,
-  `Pointer<T>.elementAt()`, `Pointer<T extends Struct>.ref`, and
+* [Descontinuadas as invocações com um `T` genérico][44621] de `sizeOf<T>`,
+  `Pointer<T>.elementAt()`, `Pointer<T extends Struct>.ref` e
   `Pointer<T extends Struct>[]`
-* [Deprecated `allocate` in `package:ffi`][44621], as it will no longer be
-  able to invoke `sizeOf<T>` generically.
-* [Deprecated subtypes of `Struct` without any native member][44622].
+* [Descontinuado `allocate` em `package:ffi`][44621], pois não será mais
+  capaz de invocar `sizeOf<T>` genericamente.
+* [Descontinuados subtipos de `Struct` sem nenhum membro nativo][44622].
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### Dart VM
 
-* [`Dart_WeakPersistentHandle` no longer auto-deletes itself][42312] when the
-  referenced object is garbage collected to avoid race conditions.
-* [Renamed `Dart_WeakPersistentHandleFinalizer` to `Dart_HandleFinalizer`][42312] 
-  and removed its `handle` argument.
+* `Dart_WeakPersistentHandle` não se auto-deleta mais][42312] quando o
+  objeto referenciado é coletado pelo garbage collector para evitar condições de corrida.
+* [Renomeado `Dart_WeakPersistentHandleFinalizer` para `Dart_HandleFinalizer`][42312]
+  e removido seu argumento `handle`.
 
-#### Pub 
+#### Pub
 
-* [The Dart SDK constraint is now **required** in `pubspec.yaml`][44072].
+* [A restrição do SDK Dart agora é **obrigatória** em `pubspec.yaml`][44072].
 
 [Null safety]: /null-safety/understanding-null-safety
 [44660]: {{site.repo.dart.sdk}}/issues/44660
@@ -969,125 +970,125 @@ on all the changes in this section.
 
 ## 2.10.0 {:#2-10-0}
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### Dart VM
 
-* [Renamed `dart_api_dl.cc` to `dart_api_dl.c`][42982] and changed to a pure C file.
+* [Renomeado `dart_api_dl.cc` para `dart_api_dl.c`][42982] e alterado para um arquivo C puro.
 
 [42982]: {{site.repo.dart.sdk}}/issues/42982
 
 ## 2.9.0 {:#2-9-0}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:convert`
 
-* When encoding a string containing unpaired surrogates as UTF-8, [the unpaired
-  surrogates will be encoded as replacement characters][41100] (`U+FFFD`).
-* When decoding UTF-8, [encoded surrogates will be treated as malformed input][41100].
-* [Changed the number of replacement characters emitted][41100] for malformed
-  input sequences to match the [WHATWG encoding standard][] when decoding UTF-8
-  with `allowMalformed: true`.
+* Ao codificar uma string contendo substitutos (surrogates) não pareados com
+   UTF-8, [os substitutos não pareados serão codificados como caracteres de substituição][41100] (`U+FFFD`).
+* Ao decodificar UTF-8, [os substitutos codificados serão tratados como entrada malformada][41100].
+* [Alterado o número de caracteres de substituição emitidos][41100] para
+  sequências de entrada malformadas para corresponder ao [padrão de codificação WHATWG][]
+  ao decodificar UTF-8 com `allowMalformed: true`.
 
 #### `dart:html`
 
-* `CssClassSet.add()` and `CssClassSet.toggle` now return `false` instead of
-   `null` if the `CssClassSet` corresponds to multiple elements. 
+* `CssClassSet.add()` e `CssClassSet.toggle` agora retornam `false` em vez de
+  `null` se o `CssClassSet` corresponder a vários elementos.
 
 #### `dart:mirrors`
 
-* [Web compilers (dart2js and DDC) now produce a compile-time error][42714] if
-  `dart:mirrors` is imported.
+* [Compiladores da web (dart2js e DDC) agora produzem um erro de tempo de compilação][42714] se
+  `dart:mirrors` for importado.
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### Dart VM
 
-* When printing a string using the `print` function, [the default implementation
-  will print any unpaired surrogates in the string as replacement characters][41100]
+* Ao imprimir uma string usando a função `print`, [a implementação padrão
+  imprimirá quaisquer substitutos não pareados na string como caracteres de substituição][41100]
   (`U+FFFD`).
-* The `Dart_StringToUTF8` function in the Dart API [will convert unpaired
-  surrogates into replacement characters][41100].
-
+* A função `Dart_StringToUTF8` na API Dart [converterá substitutos não pareados
+  em caracteres de substituição][41100].
+  
 
 [41100]: {{site.repo.dart.sdk}}/issues/41100
-[whatwg encoding standard]: https://encoding.spec.whatwg.org/#utf-8-decoder
+[padrão de codificação whatwg]: https://encoding.spec.whatwg.org/#utf-8-decoder
 [42714]: {{site.repo.dart.sdk}}/issues/42714
 
 ## 2.8.1 {:#2-8-1}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* [Fixed an implementation bug][40675] where local variable inference would
-  incorrectly use the promoted type of a type variable.
-* [Fixed an implementation bug][41362] surrounding the clauses
-  `implements Function`, `extends Function`, or `with Function` no longer having
-  an effect since Dart 2.0.0.
+* [Corrigido um bug de implementação][40675] onde a inferência de variável local
+  usaria incorretamente o tipo promovido de uma variável de tipo.
+* [Corrigido um bug de implementação][41362] em torno das cláusulas
+  `implements Function`, `extends Function` ou `with Function` não tendo mais
+  efeito desde o Dart 2.0.0.
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:async`
 
-* [Changed the return type of `StreamSubscription.cancel()` to `Future<void>`][40676].
-* [Split the `runZoned()` function into two functions][40681]:
-  `runZoned()` and `runZonedGuarded()`, where the latter has a
-  required `onError` parameter, and the former has none.
-* Errors passed to `Completer.completeError()`, `Stream.addError()`,
-  `Future.error()`, etc. [can no longer be `null`][40683].
-* [Made stack traces non-null ][40130].
+* [Alterado o tipo de retorno de `StreamSubscription.cancel()` para `Future<void>`][40676].
+* [Dividida a função `runZoned()` em duas funções][40681]:
+  `runZoned()` e `runZonedGuarded()`, onde a última tem um
+  parâmetro `onError` obrigatório, e a primeira não tem nenhum.
+* Erros passados para `Completer.completeError()`, `Stream.addError()`,
+  `Future.error()`, etc. [não podem mais ser `null`][40683].
+* [Feitas as stack traces não nulas][40130].
 
 #### `dart:core`
 
-* Three members on `RuneIterator` [no longer return `null`][40674] when accessed
-  before the first call to `moveNext()`.
-* The `String.fromEnvironment()` default value for `defaultValue` 
-  [is now an empty string instead of `null`][40678].
-* The default value for `int.fromEnvironment()`'s `defaultValue` parameter
-  [is now zero][40678].
+* Três membros em `RuneIterator` [não retornam mais `null`][40674] quando acessados
+  antes da primeira chamada para `moveNext()`.
+* O valor padrão de `String.fromEnvironment()` para `defaultValue`
+  [agora é uma string vazia em vez de `null`][40678].
+* O valor padrão para o parâmetro `defaultValue` de `int.fromEnvironment()`
+  [agora é zero][40678].
 
 #### `dart:ffi`
 
-* Changed `Pointer.asFunction()` and `DynamicLibrary.lookupFunction()` to
-  extension methods.
+* Alterado `Pointer.asFunction()` e `DynamicLibrary.lookupFunction()` para
+  métodos de extensão.
 
 #### `dart:io`
 
-* [Changed the signature of `HttpHeaders` methods][33501] `add()` and `set`.
-* [The `Socket` class now throws a `SocketException`][40702] if the socket has
-  been explicitly destroyed or upgraded to a secure socket upon setting or getting socket options.
-* [The `Process` class now throws a `StateError`][40483]
-  if the process is detached (`ProcessStartMode.detached` and
-  `ProcessStartMode.detachedWithStdio`) upon accessing the `exitCode` getter.
-* [The `Process` class now also throws][40483] when not connected to the child
-  process's stdio (`ProcessStartMode.detached` and `ProcessStartMode.inheritStdio`) upon accessing the `stdin`, `stdout`, and `stderr` getters.
-* The dummy object returned if `FileStat.stat()` or `FileStat.statSync()` fail
-  [now contains Unix epoch timestamps][40706] instead of `null` for the `accessed`,
-  `changed`, and `modified` getters.
-* [The `HeaderValue` class now parses more strictly][40709] in two invalid edge cases.
+* [Alterada a assinatura dos métodos de `HttpHeaders`][33501] `add()` e `set`.
+* [A classe `Socket` agora lança uma `SocketException`][40702] se o socket foi
+  explicitamente destruído ou atualizado para um socket seguro ao definir ou obter opções de socket.
+* [A classe `Process` agora lança um `StateError`][40483]
+  se o processo for desanexado (`ProcessStartMode.detached` e
+  `ProcessStartMode.detachedWithStdio`) ao acessar o getter `exitCode`.
+* [A classe `Process` agora também lança][40483] quando não conectado ao stdio do processo filho
+  (`ProcessStartMode.detached` e `ProcessStartMode.inheritStdio`) ao acessar os getters `stdin`, `stdout` e `stderr`.
+* O objeto dummy retornado se `FileStat.stat()` ou `FileStat.statSync()` falhar
+  [agora contém timestamps da época Unix][40706] em vez de `null` para os getters
+  `accessed`, `changed` e `modified`.
+* [A classe `HeaderValue` agora analisa mais estritamente][40709] em dois casos extremos inválidos.
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### Dart Dev Compiler (DDC)
 
-We fixed several inconsistencies between DDC and Dart2JS so that users less
-frequently encounter code that is accepted by one compiler but then fails in the
-other.
+Corrigimos várias inconsistências entre o DDC e o Dart2JS para que os usuários
+encontrem menos frequentemente código que é aceito por um compilador, mas falha
+no outro.
 
-* Deleted the legacy (analyzer based) version of [DDC][ddc].
-* Functions passed to JavaScript using the recommended `package:js` interop
-  specification must now be wrapped with a call to `allowInterop`. 
-* Constructors in `@JS()` classes must be marked with `external`.
+* Deletada a versão legada (baseada em analisador) do [DDC][ddc].
+* Funções passadas para JavaScript usando a especificação de interop `package:js` recomendada
+  agora devem ser envolvidas com uma chamada para `allowInterop`.
+* Construtores em classes `@JS()` devem ser marcados com `external`.
 
 #### `dart2js`
 
-* Corresponding type parameter bounds now only need to be mutual
-  subtypes rather than structurally equal up to renaming of bound type variables
-  and equating all top types.
-* Types are now [normalized].
-* Constructors in `@JS()` classes must be marked with `external`.
-* Completely removed the `--package-root` flag, which was hidden and disabled
-  in Dart 2.0.0.
+* Os limites de parâmetros de tipo correspondentes agora só precisam ser subtipos
+  mútuos, em vez de estruturalmente iguais até a renomeação de variáveis de tipo
+  vinculadas e igualar todos os tipos superiores.
+* Os tipos agora são [normalizados].
+* Construtores em classes `@JS()` devem ser marcados com `external`.
+* Removida completamente a flag `--package-root`, que estava oculta e desabilitada
+  no Dart 2.0.0.
 
 [40675]: {{site.repo.dart.sdk}}/issues/40675
 [41362]: {{site.repo.dart.sdk}}/issues/41362
@@ -1107,63 +1108,63 @@ other.
 
 ## 2.7.1 {:#2-7-1}
 
-* [The Dart SDK for macOS is now only available for x64][39810].
+* [O SDK Dart para macOS agora está disponível apenas para x64][39810].
 
 [39810]: {{site.repo.dart.sdk}}/issues/39810
 
 ## 2.7.0 {:#2-7-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* [Static extension members are accessible when imported with a prefix][671].
+* [Membros de extensão estática são acessíveis quando importados com um prefixo][671].
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:io`
 
-* Added `IOOverrides.serverSocketBind` to aid in writing tests that wish to mock
+* Adicionado `IOOverrides.serverSocketBind` para auxiliar na escrita de testes que desejam simular
   `ServerSocket.bind`.
 
 ## 2.6.0 {:#2-6-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* [Changed inference when using `Null` values in a `FutureOr` context][37985].
-  Namely, constraints of the forms similar to `Null` <: `FutureOr<T>` now yield
-  `Null` as the solution for `T`.
+* [Alterada a inferência ao usar valores `Null` em um contexto `FutureOr`][37985].
+  Ou seja, restrições de formas semelhantes a `Null` <: `FutureOr<T>` agora resultam
+  em `Null` como a solução para `T`.
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:ffi`
 
-* The API now makes use of static extension members. 
-* Removed memory management `Pointer.allocate` and `Pointer.free`.
-* `Pointer.offsetBy` was removed, use `cast` and `elementAt` instead.
+* A API agora faz uso de membros de extensão estática.
+* Removido o gerenciamento de memória `Pointer.allocate` e `Pointer.free`.
+* `Pointer.offsetBy` foi removido, use `cast` e `elementAt` em vez disso.
 
 [671]: {{site.repo.dart.lang}}/issues/671
 [37985]: {{site.repo.dart.sdk}}/issues/37985
 
 ## 2.5.0 {:#2-5-0}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
-* Various methods and properties across various core libraries, which used
-  to declare a return type of `List<int>`, were [updated to declare a return type
-  of `Uint8List`][36900].
+* Vários métodos e propriedades em várias bibliotecas principais, que costumavam
+  declarar um tipo de retorno de `List<int>`, foram [atualizados para declarar um tipo de retorno
+  de `Uint8List`][36900].
 
 #### `dart:io`
 
-* The `Cookie` class's constructor's `name` and `value` optional positional
-  parameters [are now mandatory][37192].
-* [The `Cookie` class's `name` and `value` setters now validate][37192]
-  that the strings are made from the allowed character set and are not null.
+* Os parâmetros posicionais opcionais `name` e `value` do construtor da classe `Cookie`
+  [agora são obrigatórios][37192].
+* [Os setters `name` e `value` da classe `Cookie` agora validam][37192]
+  que as strings são feitas a partir do conjunto de caracteres permitido e não são nulas.
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### Pub
 
-* Packages published to [pub.dev]({{site.pub}}) [can no longer contain git
-  dependencies][36765].
+* Pacotes publicados em [pub.dev]({{site.pub}}) [não podem mais conter
+  dependências git][36765].
 
 [36900]: {{site.repo.dart.sdk}}/issues/36900
 [37192]: {{site.repo.dart.sdk}}/issues/37192
@@ -1172,80 +1173,80 @@ other.
 
 ## 2.4.0 {:#2-4-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* [Covariance of type variables used in super-interfaces is now enforced][35097]. 
+* [A covariância de variáveis de tipo usadas em superinterfaces agora é aplicada][35097].
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:isolate`
 
-* `Isolate.resolvePackageUri` will always throw an `UnsupportedError` when
-  compiled with dart2js or DDC.
+* `Isolate.resolvePackageUri` sempre lançará um `UnsupportedError` quando
+  compilado com dart2js ou DDC.
 
 #### `dart:async`
 
-* [Fixed a bug in the `StreamIterator` class][36382] where `await for` allowed
-  `null` as a stream.
+* [Corrigido um bug na classe `StreamIterator`][36382] onde `await for` permitia
+  `null` como um fluxo.
 
 [35097]: {{site.repo.dart.sdk}}/issues/35097
 [36382]: {{site.repo.dart.sdk}}/issues/36382
 
 ## 2.2.0 {:#2-2-0}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `package:kernel` {:#package-kernel}
 
-* The `klass` getter on the `InstanceConstant` class in the
-  Kernel AST API has been renamed to `classNode` for consistency.
-* [Updated `Link` implementation][33966] to utilize true symbolic
-  links instead of junctions on Windows.
+* O getter `klass` na classe `InstanceConstant` na API Kernel AST foi renomeado
+  para `classNode` para consistência.
+* [Atualizada a implementação de `Link`][33966] para utilizar links simbólicos
+  verdadeiros em vez de junções no Windows.
 
 [33966]: {{site.repo.dart.sdk}}/issues/33966
 
 ## 2.1.1 {:#2-1-1}
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
 #### `dart:io`
 
-* [Added to a closed `IOSink` now throws a `StateError`][29554].
+* [Adicionar a um `IOSink` fechado agora lança um `StateError`][29554].
 
 [29554]: {{site.repo.dart.sdk}}/issues/29554
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### Dart VM
 
-* [Fixed a soundness hole when using `dart:mirrors`][35611] to reflectively
-  invoke a method in an incorrect way that violates its static types.
+* [Corrigida uma falha de solidez ao usar `dart:mirrors`][35611] para refletir
+  invocar um método de forma incorreta que viola seus tipos estáticos.
 
 [29554]: {{site.repo.dart.sdk}}/issues/29554
 [35611]: {{site.repo.dart.sdk}}/issues/35611
 
 ## 2.1.0 {:#2-1-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* A number of static errors that should have been detected
-  and reported were not supported in 2.0.0. These are reported now, which means
-  existing incorrect code may show new errors:
-  * [Mixins must correctly override their superclasses][34235].
-  * [Implicit type arguments in extends clauses must satisfy the class bounds][34532].
-  * [Instance members should shadow prefixes][34498].
-  * [Constructor invocations must use valid syntax, even with optional `new`][34403].
-  * [Type arguments to generic typedefs must satisfy their bounds][33308].
-  * [Classes can't implement FutureOr][33744].
-  * [Abstract methods may not unsoundly override a concrete method][32014].
-  * [Constant constructors cannot redirect to non-constant constructors][34161].
-  * [Setters with the same name as the enclosing class aren't allowed][34225].
+* Vários erros estáticos que deveriam ter sido detectados
+  e relatados não foram suportados em 2.0.0. Eles são relatados agora, o que significa
+  que o código incorreto existente pode mostrar novos erros:
+  * [Mixins devem sobrescrever corretamente suas superclasses][34235].
+  * [Argumentos de tipo implícitos em cláusulas extends devem satisfazer os limites da classe][34532].
+  * [Membros de instância devem ocultar prefixos][34498].
+  * [Invocações de construtor devem usar sintaxe válida, mesmo com `new` opcional][34403].
+  * [Argumentos de tipo para typedefs genéricos devem satisfazer seus limites][33308].
+  * [Classes não podem implementar FutureOr][33744].
+  * [Métodos abstratos não podem sobrescrever de forma insegura um método concreto][32014].
+  * [Construtores constantes não podem redirecionar para construtores não constantes][34161].
+  * [Setters com o mesmo nome da classe delimitadora não são permitidos][34225].
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### `dart2js`
 
-* Duplicate keys in a const map are not allowed and produce a compile-time error.
+* Chaves duplicadas em um mapa const não são permitidas e produzem um erro de tempo de compilação.
 
 [32014]: {{site.repo.dart.sdk}}/issues/32014
 [33308]: {{site.repo.dart.sdk}}/issues/33308
@@ -1259,26 +1260,26 @@ other.
 
 ## 2.0.0 {:#2-0-0}
 
-### Language {:.no_toc}
+### Linguagem {:.no_toc}
 
-* Replaced the unsound optional static type system with a sound static type
-  system using type inference and runtime checks, formerly called [strong mode].
-* [Functions marked `async` now run synchronously][30345] until the first
-  `await` statement.
+* Substituído o sistema de tipo estático opcional não seguro por um sistema de tipo
+  estático seguro usando inferência de tipo e verificações de tempo de execução, anteriormente chamado de [strong mode].
+* [Funções marcadas como `async` agora são executadas de forma síncrona][30345] até a primeira
+  instrução `await`.
 
-### Libraries {:.no_toc}
+### Bibliotecas {:.no_toc}
 
-* Renamed constants in the core libraries from `SCREAMING_CAPS` to `lowerCamelCase`.
-* Added many new methods to core library classes that will need to be implemented
-  if you implement the interfaces of these classes.
-* `dart:isolate` and `dart:mirrors` are no longer supported when
-  using Dart for the web.
+* Renomeadas as constantes nas bibliotecas principais de `SCREAMING_CAPS` para `lowerCamelCase`.
+* Adicionados muitos novos métodos às classes da biblioteca principal que precisarão ser implementados
+  se você implementar as interfaces dessas classes.
+* `dart:isolate` e `dart:mirrors` não são mais suportados ao
+  usar o Dart para a web.
 
-### Tools {:.no_toc}
+### Ferramentas {:.no_toc}
 
 #### Pub
 
-* Replaced pub's transformer-based build system with a [new build system][build system].
+* Substituído o sistema de build baseado em transformadores do pub por um [novo sistema de build][build system].
 
 [30345]: {{site.repo.dart.sdk}}/issues/30345
 [strong mode]: /guides/language/type-system

@@ -1,14 +1,15 @@
 ---
-title: Glossary
-description: A glossary reference for terminology used across dart.dev.
+ia-translate: true
+title: Glossário
+description: Um glossário de referência para a terminologia usada em dartbrasil.dev.
 body_class: glossary-page
 ---
 
 {% comment %}
-  Write glossary entries into the src/_data/glossary.yml file.
+  Escreva as entradas do glossário no arquivo src/_data/glossary.yml.
 {% endcomment -%}
 
-The following are definitions of terms used across the Dart documentation.
+A seguir estão as definições de termos usados na documentação Dart.
 
 {% assign sorted_terms = glossary | sort: "term" %}
 
@@ -21,7 +22,7 @@ The following are definitions of terms used across the Dart documentation.
 {{term.long_description | default: term.short_description }}
 
 {% if term.related_links != empty -%}
-**Related docs and resources:**
+**Documentos e recursos relacionados:**
 
 {% for link in term.related_links -%}
 - [{{link.text}}]({{link.link}})

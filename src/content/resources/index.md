@@ -1,24 +1,25 @@
 ---
-title: Resources
-description: Landing page for Dart language resources.
+ia-translate: true
+title: Recursos
+description: Página de destino para recursos da linguagem Dart.
 toc: false
 ---
 
-Check out the following Dart language resources:
+Confira os seguintes recursos da linguagem Dart:
 
 <div class="card-grid">
   <div class="card">
-    <h2><a href="/resources/books">Books</a></h2>
-    <p>A collection of books about Dart.</p>
+    <h2><a href="/resources/books">Livros</a></h2>
+    <p>Uma coleção de livros sobre Dart.</p>
   </div>
 
   <div class="card">
-    <h2><a href="/code-of-conduct">Code of conduct</a></h2>
-    <p>Keeping community spaces safe and respectful.</p>
+    <h2><a href="/code-of-conduct">Código de conduta</a></h2>
+    <p>Mantendo espaços da comunidade seguros e respeitosos.</p>
   </div>
-  
+
   <div class="card">
-    <h2><a href="/resources/videos">Videos</a></h2>
-    <p>Videos aimed at Dart developers.</p>
+    <h2><a href="/resources/videos">Vídeos</a></h2>
+    <p>Vídeos voltados para desenvolvedores Dart.</p>
   </div>
 </div>
