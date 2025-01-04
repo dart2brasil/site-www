@@ -1,38 +1,39 @@
 ---
-title: Web platform
+ia-translate: true
+title: Plataforma Web
 short-title: Web
-description: Resources for developing Dart web apps.
+description: Recursos para desenvolver aplicativos web Dart.
 toc: false
 ---
 
-Dart supports the web as one of its core [platforms](/overview#platform).
-Dart-to-JavaScript compilers are available both for development
-(with a quick edit-refresh cycle)
-and for production
-(with a focus on code size and speed).
+Dart suporta a web como uma de suas [plataformas](/overview#platform) principais.
+Compiladores Dart-para-JavaScript estão disponíveis tanto para desenvolvimento
+(com um ciclo rápido de edição-atualização)
+quanto para produção
+(com foco no tamanho e velocidade do código).
 
-In addition to compilers,
-the Dart web platform provides [core libraries][],
-access to the [DOM (Document Object Model)][DOM],
-and [interoperability for calling JavaScript][interop] from Dart.
+Além dos compiladores,
+a plataforma web Dart fornece [bibliotecas principais][],
+acesso ao [DOM (Document Object Model)][DOM],
+e [interoperabilidade para chamar JavaScript][interop] de Dart.
 
-You have the option of using Dart web with a higher-level web app framework.
-Many apps that support web plus mobile or desktop are built
-using [Flutter][] and [Flutter web][] support.
-Flutter web support
-and other web app frameworks for Dart are powered by the Dart web platform.
+Você tem a opção de usar a web Dart com um framework de aplicativo web de nível superior.
+Muitos aplicativos que suportam web mais mobile ou desktop são construídos
+usando [Flutter][] e o suporte [Flutter web][].
+O suporte Flutter web
+e outros frameworks de aplicativos web para Dart são alimentados pela plataforma web Dart.
 
 <p class="text-center">
-  <a href="/web/get-started" class="btn btn-primary btn-lg">Build a web app with Dart</a>
+  <a href="/web/get-started" class="btn btn-primary btn-lg">Construa um aplicativo web com Dart</a>
 </p>
 
 <p class="text-center">
   <br>
-  <img 
+  <img
     src="/assets/img/flutter-gallery.jpg"
-    alt="screenshot of Flutter Gallery">
+    alt="captura de tela do Flutter Gallery">
   <br>
-  <em>Flutter Gallery, running in a web browser</em>
+  <em>Flutter Gallery, executando em um navegador web</em>
 </p>
 
 [core libraries]: /libraries#web-platform-libraries

@@ -1,62 +1,63 @@
 ---
-title: WebAssembly (Wasm) compilation
-description: Learn how to compile your Dart web app to WebAssembly.
+ia-translate: true
+title: Compilação WebAssembly (Wasm)
+description: Aprenda como compilar seu aplicativo web Dart para WebAssembly.
 ---
 
-The Dart team is excited to add
-[WebAssembly](https://webassembly.org/) as a compilation target when building
-Dart and [Flutter][] applications for the web.
+A equipe do Dart está animada para adicionar
+[WebAssembly](https://webassembly.org/) como um destino (target) de compilação ao construir
+aplicativos Dart e [Flutter][] para a web.
 
-Development of WebAssembly support remains ongoing,
-which will potentially result in frequent changes. 
-Revisit this page for the latest updates.
+O desenvolvimento do suporte ao WebAssembly continua em andamento,
+o que potencialmente resultará em mudanças frequentes.
+Revisite esta página para obter as atualizações mais recentes.
 
 :::note
-**Support for Wasm is now in stable!**
+**O suporte para Wasm agora está na versão estável!**
 
-WebAssembly support for Dart web is available on the Dart 
-*stable* [channel](/get-dart#release-channels).
+O suporte a WebAssembly para Dart web está disponível no
+[canal](/get-dart#release-channels) *estável* do Dart.
 :::
 
-## WebAssembly support {:#webassembly-support}
+## Suporte ao WebAssembly {:#webassembly-support}
 
-The current version of Dart compilation to WebAssembly has a number of
-restrictions:
+A versão atual da compilação Dart para WebAssembly tem uma série de
+restrições:
 
-1. It targets WebAssembly with Garbage Collection ([WasmGC][]),
-   so not all browsers are currently supported.
-   The current list of browsers is available in the [Flutter documentation][Flutter].
+1. Ele tem como destino o WebAssembly com *Garbage Collection* ([WasmGC][]),
+    portanto, nem todos os navegadores são suportados atualmente.
+    A lista atual de navegadores está disponível na [documentação do Flutter][Flutter].
 
-1. The compiled Wasm output currently targets JavaScript environments
-   (such as browsers), and thus currently doesn't support execution in standard
-   Wasm run-times like wasmtime and wasmer. For details, see
-   [issue #53884]({{site.repo.dart.sdk}}/issues/53884)
+1. A saída Wasm compilada atualmente tem como destino ambientes JavaScript
+    (como navegadores) e, portanto, atualmente não suporta execução em
+    *run-times* (tempos de execução) Wasm padrão como wasmtime e wasmer. Para detalhes, veja
+    [problema nº 53884]({{site.repo.dart.sdk}}/issues/53884).
 
-1. Only Dart's
-   [next-gen JS interop mechanism](/interop/js-interop/)
-   is supported when compiling to Wasm.
+1. Apenas o
+    [mecanismo de interoperabilidade JS de próxima geração](/interop/js-interop/) do Dart
+    é suportado ao compilar para Wasm.
 
-1. There is currently no support in the `webdev` tool for running
-   (`webdev serve`) or building (`webdev build`). The steps below
-   contain a temporary workaround. For details, see
-   [webdev issue 2206]({{site.repo.dart.org}}/webdev/issues/2296).
+1. Atualmente, não há suporte na ferramenta `webdev` para executar
+    (`webdev serve`) ou construir (`webdev build`). As etapas abaixo
+    contêm uma solução alternativa temporária. Para detalhes, veja
+    [problema 2206 do webdev]({{site.repo.dart.org}}/webdev/issues/2296).
 
-### Supported packages {:#supported-packages}
+### Pacotes suportados {:#supported-packages}
 
-To find Wasm-compatible packages,
-use the [`wasm-ready`][] filter on [pub.dev][].
+Para encontrar pacotes compatíveis com Wasm,
+use o filtro [`wasm-ready`][] em [pub.dev][].
 
-A package is "wasm-ready" if it doesn't import non-Wasm compliant libraries
-like `dart:html`, `dart:js`, etc. You can find the full list of unallowed
-libraries on the [JS interop page](/interop/js-interop/#next-generation-js-interop).
+Um pacote é "wasm-ready" se não importar bibliotecas não compatíveis com Wasm
+como `dart:html`, `dart:js`, etc. Você pode encontrar a lista completa de bibliotecas não permitidas
+na [página de interoperabilidade JS](/interop/js-interop/#next-generation-js-interop).
 
 [`wasm-ready`]: {{site.pub-pkg}}?q=is%3Awasm-ready
 [pub.dev]: {{site.pub}}
 
-## Compiling your web app to Wasm {:#compiling-to-wasm}
+## Compilando seu aplicativo web para Wasm {:#compiling-to-wasm}
 
-We've landed support in the `dart` CLI for invoking the
-Wasm compiler in Dart and [Flutter][]:
+Nós implementamos suporte no `dart` CLI para invocar o
+compilador Wasm em Dart e [Flutter][]:
 
 ```console
 $ dart help compile wasm
@@ -73,33 +74,33 @@ Usage: dart compile wasm [arguments] <dart entry point>
                             For example: dart compile wasm -Da=1,b=2 main.dart
 ```
 
-Wasm compilation is available in stable, but still in preview.
-While we continue optimizing tooling to improve developer experience,
-you can try compiling Dart to Wasm today
-by following the temporary steps outlined here:
+A compilação Wasm está disponível na versão estável, mas ainda em pré-visualização.
+Enquanto continuamos otimizando as ferramentas para melhorar a experiência do desenvolvedor,
+você pode tentar compilar o Dart para Wasm hoje
+seguindo as etapas temporárias descritas aqui:
 
-1. Start with a web app: `dart create -t web mywebapp`
+1. Comece com um aplicativo web: `dart create -t web mywebapp`
 
-    The template creates a small web app using [`package:web`][],
-    which is necessary to run Wasm.
-    Make sure your web apps are [migrated][] from `dart:html` to `package:web`.
+    O modelo cria um pequeno aplicativo web usando [`package:web`][],
+    que é necessário para executar o Wasm.
+    Certifique-se de que seus aplicativos web foram [migrados][] de `dart:html` para `package:web`.
 
-1. Compile with Wasm to a new `site` output directory: `mywebapp$ dart compile wasm web/main.dart -o site/main.wasm`
+1. Compile com Wasm para um novo diretório de saída `site`: `mywebapp$ dart compile wasm web/main.dart -o site/main.wasm`
 
-1. Copy over the web files: `cp web/index.html web/styles.css site/`
+1. Copie os arquivos web: `cp web/index.html web/styles.css site/`
 
-1. Create a JS bootstrap file to load the Wasm code:
-   
-   Add a new file `site/main.dart.js` and fill it with the contents of
-   this [`main.dart.js` sample](https://gist.github.com/mit-mit/0fcb1247a9444b0cadf611aa5fc6f32e).
+1. Crie um arquivo de *bootstrap* (inicialização) JS para carregar o código Wasm:
 
-1. Serve the output: `dart pub global run dhttpd` ([docs][dhttpd])
+    Adicione um novo arquivo `site/main.dart.js` e preencha-o com o conteúdo
+    deste [exemplo `main.dart.js`](https://gist.github.com/mit-mit/0fcb1247a9444b0cadf611aa5fc6f32e).
 
-You can also try out this small example [here](https://github.com/mit-mit/sandbox).
+1. Sirva a saída: `dart pub global run dhttpd` ([docs][dhttpd])
+
+Você também pode experimentar este pequeno exemplo [aqui](https://github.com/mit-mit/sandbox).
 
 [WasmGC]: https://developer.chrome.com/blog/wasmgc/
 [Flutter]: {{site.flutter}}/wasm
 [`package:web`]: {{site.pub-pkg}}/web
-[`dart:js_interop`]: {{site.dart.api}}/{{site.dart.sdk.channel}}/dart-js_interop 
-[migrated]: /interop/js-interop/package-web/
+[`dart:js_interop`]: {{site.dart.api}}/{{site.dart.sdk.channel}}/dart-js_interop
+[migrados]: /interop/js-interop/package-web/
 [dhttpd]: {{site.pub-pkg}}/dhttpd
