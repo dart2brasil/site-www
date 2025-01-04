@@ -1,30 +1,31 @@
 ---
-title: "Get started: Command-line and server apps"
-description: Get Dart, run and compile a small app.
+ia-translate: true
+title: "Começar: Aplicativos de linha de comando e servidor"
+description: Obtenha o Dart, execute e compile um pequeno aplicativo.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 prevpage:
   url: /tutorials/server
-  title: Dart command-line and server tutorials
+  title: Tutoriais de linha de comando e servidor Dart
 nextpage:
   url: /tutorials/server/cmdline
-  title: Write command-line apps
+  title: Escrever aplicativos de linha de comando
 ---
 
-Follow these steps to start using the Dart SDK to develop command-line and server apps.
-First you'll play with the Dart language in your browser, no download required.
-Then you'll install the Dart SDK, write a small program, and run that program using the Dart VM.
-Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
-which you'll execute using the Dart runtime.
+Siga estas etapas para começar a usar o SDK Dart para desenvolver aplicativos de linha de comando e servidor.
+Primeiro, você vai experimentar a linguagem Dart no seu navegador, sem necessidade de download.
+Em seguida, você vai instalar o SDK Dart, escrever um pequeno programa e executar esse programa usando a Dart VM (máquina virtual Dart).
+Finalmente, você vai usar um compilador AOT (_ahead of time_ - antecipado) para compilar seu programa finalizado em código de máquina nativo,
+que você executará usando o _runtime_ (tempo de execução) Dart.
 
-## 1. Play with Dart code in DartPad {:#1-play-with-dart-code-in-dartpad}
+## 1. Experimente o código Dart no DartPad {:#1-play-with-dart-code-in-dartpad}
 
-With [DartPad](/tools/dartpad) you can experiment with the Dart language and
-APIs, no download necessary.
+Com o [DartPad](/tools/dartpad), você pode experimentar a linguagem Dart e
+APIs, sem necessidade de download.
 
-For example, here's an embedded DartPad that lets you play with the code for a
-small Hello World program. Click **Run** to run the app; output appears in the
-console view. Try editing the source code—perhaps you'd like to change the
-greeting to use another language.
+Por exemplo, aqui está um DartPad incorporado que permite que você experimente o código de um
+pequeno programa Hello World. Clique em **Run** (Executar) para executar o aplicativo; a saída aparece na
+visualização do console. Tente editar o código-fonte — talvez você queira mudar a
+saudação para usar outro idioma.
 
 :::note
 {% render 'dartpad-embedded-troubleshooting.md' %}
@@ -37,48 +38,48 @@ void main() {
 }
 ```
 
-More information:
+Mais informações:
 
-* [DartPad documentation][]
-* [Dart language tour][]
-* [Dart core library documentation][]
+* [Documentação do DartPad][]
+* [Tour da linguagem Dart][]
+* [Documentação da biblioteca principal do Dart][]
 
-## 2. Install Dart {:#2-install-dart}
+## 2. Instale o Dart {:#2-install-dart}
 
 {% include 'get-sdk.md' %}
 
-## 3. Create a small app {:#3-create-a-small-app}
+## 3. Crie um pequeno aplicativo {:#3-create-a-small-app}
 
-Use the [`dart create`](/tools/dart-create) command
-and the `console` template to create a command-line app:
+Use o comando [`dart create`](/tools/dart-create)
+e o _template_ `console` para criar um aplicativo de linha de comando:
 
 ```console
 $ dart create -t console cli
 ```
 
-This command creates a small Dart app that has the following:
+Este comando cria um pequeno aplicativo Dart que tem o seguinte:
 
-* A main Dart source file, `bin/cli.dart`, that contains a top-level
-  `main()` function. This is the entrypoint for your app.
-* An additional Dart file, `lib/cli.dart`, that contains the functionality of
-  the app and is imported by the `cli.dart` file.
-* A pubspec file, `pubspec.yaml`, that contains the app's metadata, including
-  information about which [packages](/tools/pub/packages) the app depends on
-  and which versions of those packages are required.
+* Um arquivo de código-fonte Dart principal, `bin/cli.dart`, que contém uma função
+  `main()` de nível superior. Este é o ponto de entrada para o seu aplicativo.
+* Um arquivo Dart adicional, `lib/cli.dart`, que contém a funcionalidade do
+  aplicativo e é importado pelo arquivo `cli.dart`.
+* Um arquivo pubspec, `pubspec.yaml`, que contém os metadados do aplicativo, incluindo
+  informações sobre quais [pacotes](/tools/pub/packages) o aplicativo depende
+  e quais versões desses pacotes são necessárias.
 
 :::note
-Under the hood, `dart create` runs [`dart pub get`][], which
-scans the generated pubspec file and downloads dependencies.
-If you add other dependencies to your pubspec file,
-then run `dart pub get` to download them.
+Por baixo dos panos (under the hood), `dart create` executa [`dart pub get`][], que
+verifica o arquivo pubspec gerado e baixa as dependências.
+Se você adicionar outras dependências ao seu arquivo pubspec,
+execute `dart pub get` para baixá-las.
 :::
 
 [`dart pub get`]: /tools/pub/cmd/pub-get
 
-## 4. Run the app {:#4-run-the-app}
+## 4. Execute o aplicativo {:#4-run-the-app}
 
-To run the app from the command line, use the Dart VM by running the
-[`dart run`](/tools/dart-run) command in the app's top directory:
+Para executar o aplicativo a partir da linha de comando, use a Dart VM executando o
+comando [`dart run`](/tools/dart-run) no diretório superior do aplicativo:
 
 ```console
 $ cd cli
@@ -86,15 +87,15 @@ $ dart run
 Hello world: 42!
 ```
 
-If you want to run the app with debugging support, see
+Se você quiser executar o aplicativo com suporte de depuração, consulte
 [Dart DevTools](/tools/dart-devtools).
 
-## 5. Modify the app {:#5-modify-the-app}
+## 5. Modifique o aplicativo {:#5-modify-the-app}
 
-Let's customize the app you just created.
+Vamos personalizar o aplicativo que você acabou de criar.
 
- 1. Edit `lib/cli.dart` to calculate a different result. For example, divide the
-    previous value by two (for details about `~/`, see [Arithmetic operators][]):
+ 1. Edite `lib/cli.dart` para calcular um resultado diferente. Por exemplo, divida o
+    valor anterior por dois (para detalhes sobre `~/`, veja [Operadores aritméticos][]):
 
     <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
     ```dart
@@ -103,32 +104,32 @@ Let's customize the app you just created.
     }
     ```
 
- 1. Save your changes.
+ 1. Salve suas alterações.
 
- 1. Rerun the main entrypoint of your app:
+ 1. Execute novamente o ponto de entrada principal do seu aplicativo:
 
     ```console
     $ dart run
     Hello world: 21!
     ```
 
-More information:
-[Write command-line apps](/tutorials/server/cmdline)
+Mais informações:
+[Escrever aplicativos de linha de comando](/tutorials/server/cmdline)
 
-## 6. Compile for production {:#6-compile-for-production}
+## 6. Compile para produção {:#6-compile-for-production}
 
-The steps above used the Dart VM (`dart`) to run the app. The Dart VM is
-optimized for fast, incremental compilation to provide instant feedback
-during development. Now that your small app is done,
-it's time to AOT compile your Dart code to optimized native machine code.
+As etapas acima usaram a Dart VM (`dart`) para executar o aplicativo. A Dart VM é
+otimizada para compilação rápida e incremental para fornecer _feedback_ instantâneo
+durante o desenvolvimento. Agora que seu pequeno aplicativo está pronto,
+é hora de compilar AOT seu código Dart para código de máquina nativo otimizado.
 
-Use the `dart compile` tool to AOT compile the program to machine code:
+Use a ferramenta `dart compile` para compilar AOT o programa para código de máquina:
 
 ```console
 $ dart compile exe bin/cli.dart
 ```
 
-Notice how the compiled program starts instantly, completing quickly:
+Observe como o programa compilado é iniciado instantaneamente, concluindo rapidamente:
 
 ```console
 $ time bin/cli.exe
@@ -139,26 +140,26 @@ user	0m0.008s
 sys	0m0.006s
 ```
 
-## What next? {:#what-next}
+## O que vem a seguir? {:#what-next}
 
-Check out these resources:
+Confira estes recursos:
 
-* Dart [tutorials](/tutorials)
-* Dart language, libraries, and conventions
-  * [Language tour](/language)
-  * [Dart core library documentation](/libraries)
-  * [Effective Dart](/effective-dart)
-* Tools and libraries
-  * [Dart SDK](/tools/sdk)
-  * [Dart tools](/tools)
+* [Tutoriais](/tutorials) Dart
+* Linguagem, bibliotecas e convenções Dart
+  * [Tour da linguagem](/language)
+  * [Documentação da biblioteca principal do Dart](/libraries)
+  * [Dart eficaz](/effective-dart)
+* Ferramentas e bibliotecas
+  * [SDK Dart](/tools/sdk)
+  * [Ferramentas Dart](/tools)
   * [IDEs](/tools#editors)
-* Other examples of natively compiled apps
+* Outros exemplos de aplicativos compilados nativamente
   * [native_app]({{site.repo.dart.org}}/samples/tree/main/native_app)
 
-If you get stuck, find help at [Community and support.](/community)
+Se você ficar preso, encontre ajuda em [Comunidade e suporte.](/community)
 
-[Arithmetic operators]: /language/operators#arithmetic-operators
-[DartPad documentation]: /tools/dartpad
-[Dart language tour]: /language
-[Dart core library documentation]: /libraries
+[Operadores aritméticos]: /language/operators#arithmetic-operators
+[Documentação do DartPad]: /tools/dartpad
+[Tour da linguagem Dart]: /language
+[Documentação da biblioteca principal do Dart]: /libraries
 [ide]: /tools#editors

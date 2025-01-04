@@ -1,9 +1,10 @@
 ---
-title: "Tutorials: Command-line apps and servers"
-description: Tutorials for writing command-line apps and servers.
+ia-translate: true
+title: "Tutoriais: Apps de linha de comando e servidores"
+description: Tutoriais para escrever aplicativos de linha de comando e servidores.
 toc: false
 ---
 
 {% include 'server-tutorials.md' %}
 
-For more tutorials, see the [Dart tutorials page](/tutorials).
+Para mais tutoriais, veja a [página de tutoriais Dart](/tutorials).

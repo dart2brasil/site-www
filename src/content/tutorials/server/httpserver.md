@@ -1,32 +1,33 @@
 ---
-title: "Write HTTP servers"
-description: Communicate over the internet
+ia-translate: true
+title: "Escrever servidores HTTP"
+description: Comunicar-se pela internet
 toc: false
 prevpage:
   url: /tutorials/server/fetch-data
-  title: Fetch data from the internet
+  title: Buscar dados da internet
 ---
 
-Dart resources for writing HTTP servers include:
+Recursos Dart para escrever servidores HTTP incluem:
 
-## Documentation {:#documentation}
+## Documentação {:#documentation}
 
-* [Using Google Cloud][] has information on Google Cloud products
-  that Dart servers can use, such as Cloud Run.
-* [Using Google APIs][] points to resources to help you
-  use Firebase and Google client APIs from a Dart app.
+* [Usando o Google Cloud][] tem informações sobre produtos Google Cloud
+  que servidores Dart podem usar, como o Cloud Run.
+* [Usando APIs Google][] aponta para recursos para ajudar você
+  a usar Firebase e APIs de cliente Google a partir de um app Dart.
 
-## Samples {:#samples}
+## Exemplos {:#samples}
 
-* [A simple Dart HTTP server][simple-sample]
-  * Uses the [`shelf`][] package.
-  * Also uses the [`shelf_router`][] and [`shelf_static`][] packages.
-  * Is deployable on Cloud Run.
-* [A Dart HTTP server that uses Cloud Firestore][cloud-sample]
-  * Uses the Cloud Firestore features in the [`googleapis`][] package.
-  * Also uses the [`googleapis_auth`][], [`shelf`][], and
-    [`shelf_router`][] packages.
-  * Is deployable on Cloud Run.
+* [Um servidor HTTP Dart simples][simple-sample]
+  * Usa o pacote [`shelf`][].
+  * Também usa os pacotes [`shelf_router`][] e [`shelf_static`][].
+  * É implantável no Cloud Run.
+* [Um servidor HTTP Dart que usa o Cloud Firestore][cloud-sample]
+  * Usa os recursos do Cloud Firestore no pacote [`googleapis`][].
+  * Também usa os pacotes [`googleapis_auth`][], [`shelf`][], e
+    [`shelf_router`][].
+  * É implantável no Cloud Run.
 
 [cloud-sample]: {{site.repo.dart.org}}/samples/tree/main/server/google_apis
 [`googleapis`]: {{site.pub-pkg}}/googleapis
@@ -35,5 +36,5 @@ Dart resources for writing HTTP servers include:
 [`shelf_router`]: {{site.pub-pkg}}/shelf_router
 [`shelf_static`]: {{site.pub-pkg}}/shelf_static
 [simple-sample]: {{site.repo.dart.org}}/samples/tree/main/server/simple
-[Using Google APIs]: /resources/google-apis
-[Using Google Cloud]: /server/google-cloud
+[Usando APIs Google]: /resources/google-apis
+[Usando o Google Cloud]: /server/google-cloud
