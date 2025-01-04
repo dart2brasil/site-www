@@ -13,9 +13,9 @@ compilação.
 
 É importante destacar que esses tipos são reificados de forma diferente dependendo se
 você compila para Wasm ou JS. Isso significa que seu tipo em tempo de execução será
-diferente e, portanto, você [não pode usar verificações `is` e conversões `as`](#compatibilidade-verificacoes-de-tipo-e-conversoes).
+diferente e, portanto, você [não pode usar verificações `is` e conversões `as`](#compatibility-type-checks-and-casts).
 Para interagir e examinar esses valores JS, você deve usar membros de
-interoperabilidade [`external`] ou [conversões](#conversoes).
+interoperabilidade [`external`] ou [conversões](#conversions).
 
 ## Hierarquia de tipos {:#hierarquia-de-tipos}
 
@@ -47,7 +47,7 @@ Você pode encontrar a definição de cada tipo na [documentação da API `dart:
 TODO (srujzs): Devemos adicionar um diagrama de árvore em vez disso para os tipos JS?
 {% endcomment %}
 
-## Conversões {:#conversoes}
+## Conversões {:#conversions}
 
 Para usar um valor de um domínio para outro, você provavelmente desejará *converter* o
 valor para o tipo correspondente do outro domínio. Por exemplo, você pode querer
@@ -101,7 +101,7 @@ os mesmos. As conversões de vetores tipados têm uma limitação semelhante. Co
 função de conversão específica para obter mais detalhes.
 :::
 
-## Requisitos para declarações `external` e `Function.toJS` {:#requisitos-para-declaracoes-external-e-function-tojs}
+## Requisitos para declarações `external` e `Function.toJS` {:#requirements-on-external-declarations-and-function-tojs}
 
 Para garantir a segurança de tipos e a consistência, o compilador impõe requisitos
 sobre quais tipos podem fluir para dentro e para fora do JS. Passar valores Dart
@@ -153,7 +153,7 @@ desempenho for crítico e você não precisar examinar o conteúdo da string, us
 `JSString` para evitar o custo de conversão pode fazer sentido, como no
 segundo exemplo.
 
-## Compatibilidade, verificações de tipo e conversões {:#compatibilidade-verificacoes-de-tipo-e-conversoes}
+## Compatibilidade, verificações de tipo e conversões {:#compatibility-type-checks-and-casts}
 
 O tipo em tempo de execução dos tipos JS pode diferir com base no compilador. Isso afeta
 a verificação de tipo e as conversões em tempo de execução. Portanto, quase sempre
