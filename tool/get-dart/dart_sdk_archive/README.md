@@ -1,20 +1,21 @@
-Scripts and utilities for [dart.dev/get-dart/archive](https://dart.dev/get-dart/archive).
+<!-- ia-translate: true -->
+Scripts e utilitários para [dartbrasil.dev/get-dart/archive](https://dartbrasil.dev/get-dart/archive).
 
-## Developing
+## Desenvolvimento
 
-Install webdev if you haven't already:
+Instale o webdev caso ainda não o tenha feito:
 
 ```
 dart pub global activate webdev
 ```
 
-Serve:
+Servir:
 
 ```
 cd src/get-dart/dart_sdk_archive/
 webdev serve
 ```
 
-## Publishing
+## Publicando
 
-See `../archive/README.md`
+Veja `../archive/README.md`

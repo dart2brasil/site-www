@@ -1,11 +1,12 @@
-This directory holds the Dart SDK archive script generation:
-https://dart.dev/get-dart/archive
+<!-- ia-translate: true -->
+Este diretório contém a geração de script de arquivo do SDK Dart:
+https://dartbrasil.dev/get-dart/archive
 
-Note: `download_archive.dart.js` is generated from Dart source code
-located in `../dart_sdk_archive`.
+Observação: `download_archive.dart.js` é gerado a partir do código-fonte Dart
+localizado em `../dart_sdk_archive`.
 
-If you modify that Dart code for this page, don't forget to regenerate
-the JavaScript:
+Se você modificar esse código Dart para esta página, não se esqueça de regenerar
+o JavaScript:
 
 ```terminal
 $ ./compile.sh
