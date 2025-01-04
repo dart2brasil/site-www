@@ -1,22 +1,23 @@
 ---
-title: Native extensions for the standalone Dart VM
-description: The original way for command-line Dart apps to call C/C++ functions.
+ia-translate: true
+title: Extensões nativas para a VM Dart autônoma
+description: A forma original para aplicativos Dart de linha de comando chamarem funções C/C++.
 toc: false
 ---
 
 :::note
-The extension mechanism that was previously discussed
-on this page—_native extensions_—was removed in Dart 2.15.
+O mecanismo de extensão que foi discutido anteriormente
+nesta página — _extensões nativas_ — foi removido no Dart 2.15.
 
-If you need to call existing code written in C or C++, see the
-[FFI documentation](/server/c-interop).
+Se você precisar chamar código existente escrito em C ou C++, consulte a
+[documentação FFI](/server/c-interop).
 
-A mechanism that's similar to 
-native extensions—the [Dart Embedding API][`include/dart_api.h`]—is
-supported when the Dart VM is
-embedded as a library into another application. 
-For examples of how to use the Dart Embedding API, see
-[these examples maintained by the community][examples].
+Um mecanismo semelhante às
+extensões nativas — a [Dart Embedding API][`include/dart_api.h`] (API de incorporação Dart) — é
+compatível quando a VM Dart é
+incorporada como uma biblioteca em outro aplicativo.
+Para exemplos de como usar a Dart Embedding API, veja
+[estes exemplos mantidos pela comunidade][examples].
 :::
 
 [`include/dart_api.h`]: {{site.repo.dart.sdk}}/blob/main/runtime/include/dart_api.h
