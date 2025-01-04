@@ -166,9 +166,9 @@ já que seu valor padrão será `null`:
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-parameters)"?>
 ```dart
 String say(String from, String msg, [String? device]) {
-  var result = '$from says $msg';
+  var result = '$from diz $msg';
   if (device != null) {
-    result = '$result with a $device';
+    result = '$result com um $device';
   }
   return result;
 }
@@ -179,15 +179,15 @@ sem o parâmetro opcional:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-without-optional-param)"?>
 ```dart
-assert(say('Bob', 'Howdy') == 'Bob says Howdy');
+assert(say('Bob', 'Olá') == 'Bob diz Olá');
 ```
 
 E aqui está um exemplo de chamada dessa função com o terceiro parâmetro:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-with-optional-param)"?>
 ```dart
-assert(say('Bob', 'Howdy', 'smoke signal') ==
-    'Bob says Howdy with a smoke signal');
+assert(say('Bob', 'Olá', 'sinal de fumaça') ==
+    'Bob diz Olá com um sinal de fumaça');
 ```
 
 Para definir um valor padrão para um parâmetro posicional opcional além de `null`,
@@ -197,12 +197,12 @@ Por exemplo:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
-String say(String from, String msg, [String device = 'carrier pigeon']) {
-  var result = '$from says $msg with a $device';
+String say(String from, String msg, [String device = 'pombo-correio']) {
+  var result = '$from diz $msg com um $device';
   return result;
 }
 
-assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
+assert(say('Bob', 'Olá') == 'Bob diz Olá com um pombo-correio');
 ```
 
 <a id="the-main-function" aria-hidden="true"></a>
@@ -218,7 +218,7 @@ Aqui está uma função `main()` simples:
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart
 void main() {
-  print('Hello, World!');
+  print('Olá, Mundo!');
 }
 ```
 
@@ -261,7 +261,7 @@ Você também pode atribuir uma função a uma variável, como:
 <?code-excerpt "misc/test/language_tour/functions_test.dart (function-as-var)"?>
 ```dart
 var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
-assert(loudify('hello') == '!!! HELLO !!!');
+assert(loudify('olá') == '!!! OLÁ !!!');
 ```
 
 Este exemplo usa uma função anônima.
@@ -277,12 +277,12 @@ os nomes dos parâmetros nomeados não podem ser omitidos. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-type)"?>
 ```dart
-void greet(String name, {String greeting = 'Hello'}) =>
+void greet(String name, {String greeting = 'Olá'}) =>
     print('$greeting $name!');
 
 // Armazena `greet` em uma variável e chama ela.
 void Function(String, {String greeting}) g = greet;
-g('Dash', greeting: 'Howdy');
+g('Dash', greeting: 'Como vai você');
 ```
 
 :::note
@@ -325,7 +325,7 @@ imprime cada string convertida com seu comprimento.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
-const list = ['apples', 'bananas', 'oranges'];
+const list = ['maçãs', 'bananas', 'laranjas'];
 
 var uppercaseList = list.map((item) {
   return item.toUpperCase();
@@ -342,7 +342,7 @@ Clique em **Executar** para executar o código.
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
 ```dartpad
 void main() {
-  const list = ['apples', 'bananas', 'oranges'];
+  const list = ['maçãs', 'bananas', 'laranjas'];
 
   var uppercaseList = list.map((item) {
     return item.toUpperCase();
@@ -523,7 +523,7 @@ Para retornar vários valores em uma função, agregue os valores em um [registr
 
 ```dart
 (String, int) foo() {
-  return ('something', 42);
+  return ('algo', 42);
 }
 ```
 

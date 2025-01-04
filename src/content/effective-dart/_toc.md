@@ -1,8 +1,9 @@
 <!-- ia-translate: true -->
 {% comment %}
-This file is generated from the other files in this directory.
-To re-generate it, please run the following command from root of
-the project:
+ia-translate: true
+Este arquivo é gerado a partir dos outros arquivos neste diretório.
+Para re-gerá-lo, por favor execute o seguinte comando a partir da raiz
+do projeto:
 
 ```
 ./dash_site effective-dart
@@ -93,14 +94,14 @@ the project:
 ### Uso
 
 
-**Libraries**
+**Bibliotecas**
 
 * <a href='/effective-dart/usage#do-use-strings-in-part-of-directives'>USE *strings* em diretivas <code>part of</code>.</a>
 * <a href='/effective-dart/usage#dont-import-libraries-that-are-inside-the-src-directory-of-another-package'>NÃO importe *libraries* que estão dentro do diretório <code>src</code> de outro pacote.</a>
 * <a href='/effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib'>NÃO permita que um caminho de importação alcance dentro ou fora de <code>lib</code>.</a>
 * <a href='/effective-dart/usage#prefer-relative-import-paths'>PREFIRA caminhos de importação relativos.</a>
 
-**Null**
+**Nulo**
 
 * <a href='/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>NÃO inicialize variáveis explicitamente com <code>null</code>.</a>
 * <a href='/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>NÃO use um valor padrão explícito de <code>null</code>.</a>
@@ -192,7 +193,7 @@ the project:
 * <a href='/effective-dart/design#avoid-describing-the-parameters-in-the-functions-or-methods-name'>EVITE descrever os parâmetros no nome da função ou método.</a>
 * <a href='/effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters'>SIGA as convenções mnemônicas existentes ao nomear parâmetros de tipo.</a>
 
-**Libraries**
+**Bibliotecas**
 
 * <a href='/effective-dart/design#prefer-making-declarations-private'>PREFIRA tornar as declarações privadas.</a>
 * <a href='/effective-dart/design#consider-declaring-multiple-classes-in-the-same-library'>CONSIDERE declarar várias classes na mesma *library*.</a>

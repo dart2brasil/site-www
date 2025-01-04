@@ -25,7 +25,6 @@ rápido para qualquer plataforma.
 [compilador ahead-of-time (AOT)]: /overview#native-platform
 [compilador Dart-para-JavaScript]: /overview#web-platform
 
-
 <p class="text-center">
   <a href="{{site.flutter-docs}}/get-started" class="btn btn-primary btn-lg">
     <img src="/assets/img/logo/flutter-64.png" width="32px" alt="Flutter">

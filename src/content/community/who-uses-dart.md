@@ -39,15 +39,15 @@ Dart é usado em quase todos os grupos de produtos do Google:
 * Tanto a interface do usuário quanto grande parte do código de back-end para os dispositivos [Google Nest Hub][] e Hub Max são escritos em Dart.
 * A lista continua, com muitos outros aplicativos do Google feitos usando Dart e Flutter:
 
-  * [Google Pay][]
-  * [Google One][]
-  * [Google Fibre][]
-  * [Google Elections][]
-  * [Google Shopping][]
-  * [Cloud Search][]
-  * [Family Link][]
-  * [Google One][]
-  * [Cloud Search][] 
+  * [Google Pay][Google Pay]
+  * [Google One][Google One]
+  * [Google Fibre][Google Fibre]
+  * [Google Elections][Google Elections]
+  * [Google Shopping][Google Shopping]
+  * [Cloud Search][Cloud Search]
+  * [Family Link][Family Link]
+  * [Google One][Google One]
+  * [Cloud Search][Cloud Search]
 
 Várias outras equipes do Google estão atualmente reescrevendo seus projetos em Flutter. No total, o Google tem milhares de desenvolvedores escrevendo milhões de linhas de código em Dart.
 

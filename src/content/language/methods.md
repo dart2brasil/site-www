@@ -61,9 +61,9 @@ Seu comportamento é interno ao Dart.
 :::
 
 {%- comment %}
-  Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
-  -  `??`, `&&` and `||` are excluded because they are lazy / short-circuiting operators
-  - `!` is probably excluded for historical reasons
+  Internal note from https://github.com/dart2brasil/site-www/pull/2691#discussion_r506184100:
+  -  `??`, `&&` e `||` são excluídos porque são operadores preguiçosos / de curto-circuito
+  - `!` provavelmente é excluído por razões históricas
 {% endcomment %}
 
 Para declarar um operador, use o identificador embutido

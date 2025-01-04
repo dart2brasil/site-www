@@ -229,6 +229,7 @@ e um método `toString()` que o converte de volta para um `String` Dart.
   for (final file in args) {
     final fileStr = NSString(lib, file);
     print('Loading $fileStr');
+  }
 ```
 
 O reprodutor de áudio espera um `NSURL`, então em seguida usamos o método [`fileURLWithPath:`](

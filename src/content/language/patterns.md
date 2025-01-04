@@ -323,9 +323,9 @@ desestruturadas entre parênteses:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-class-instances)"?>
 ```dart
-final Foo myFoo = Foo(one: 'one', two: 2);
+final Foo myFoo = Foo(one: 'um', two: 2);
 var Foo(:one, :two) = myFoo;
-print('one $one, two $two');
+print('um $one, dois $two');
 ```
 
 ### Tipos de dados algébricos {:#algebraic-data-types}

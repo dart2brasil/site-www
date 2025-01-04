@@ -402,7 +402,7 @@ Separe os inicializadores com vírgulas.
 Point.fromJson(Map<String, double> json)
     : x = json['x']!,
       y = json['y']! {
-  print('In Point.fromJson(): ($x, $y)');
+  print('Em Point.fromJson(): ($x, $y)');
 }
 ```
 
@@ -416,7 +416,7 @@ use `assert` na lista de inicializadores.
 <?code-excerpt "point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
 ```dart
 Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
-  print('In Point.withAssert(): ($x, $y)');
+  print('Em Point.withAssert(): ($x, $y)');
 }
 ```
 
@@ -485,7 +485,7 @@ class Person {
   String? firstName;
 
   Person.fromJson(Map data) {
-    print('in Person');
+    print('em Person');
   }
 }
 
@@ -493,7 +493,7 @@ class Employee extends Person {
   // Person não tem um construtor padrão;
   // você deve chamar super.fromJson().
   Employee.fromJson(Map data) : super.fromJson(data) {
-    print('in Employee');
+    print('em Employee');
   }
 }
 

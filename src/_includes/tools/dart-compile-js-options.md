@@ -57,7 +57,6 @@ As opções comuns incluem:
 `-h` ou `--help`
 : Exibe a ajuda. Para obter informações sobre todas as opções, use `-hv`.
 
-
 ###### Opções de caminho e ambiente {:#path-and-environment-options}
 
 Outras opções úteis incluem:

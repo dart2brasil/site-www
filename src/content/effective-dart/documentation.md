@@ -506,7 +506,7 @@ e é consistente com o uso de backticks para código em linha.
 ///
 /// ```dart
 /// var example = CodeBlockExample();
-/// print(example.isItGreat); // "Yes."
+/// print(example.isItGreat); // "Sim."
 /// ```
 ```
 
@@ -514,7 +514,7 @@ e é consistente com o uso de backticks para código em linha.
 /// Você pode usar [CodeBlockExample] assim:
 ///
 ///     var example = CodeBlockExample();
-///     print(example.isItGreat); // "Yes."
+///     print(example.isItGreat); // "Sim."
 ```
 
 ## Escrita {:#writing}

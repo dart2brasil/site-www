@@ -818,7 +818,7 @@ int median(List<Object> objects) {
 <?code-excerpt "usage_bad.dart (cast-from)"?>
 ```dart tag=bad
 int median(List<Object> objects) {
-  // We happen to know the list only contains ints.
+  // Acontece que sabemos que a lista contém apenas ints.
   var ints = objects.cast<int>();
   ints.sort();
   return ints[ints.length ~/ 2];

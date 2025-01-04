@@ -37,7 +37,7 @@ que usa `package:jnigen` para gerar ligações para uma classe simples.
 ### Pré-requisitos {:#prerequisites}
 
 - JDK
-- [Maven][]
+- [Maven][Maven]
 
 [Maven]: https://maven.apache.org/
 
@@ -145,8 +145,11 @@ Segue alguns exemplos mais abrangentes do uso de `package:jnigen`:
 {:.table}
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
-[in_app_java]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/in_app_java
-[notification_plugin]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/notification_plugin
-[pdfbox_plugin]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/pdfbox_plugin
+[in_app_java]:
+{{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/in_app_java
+[notification_plugin]:
+{{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/notification_plugin
+[pdfbox_plugin]:
+{{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/pdfbox_plugin
 [Apache PDFBox]: https://pdfbox.apache.org/
 

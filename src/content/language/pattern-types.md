@@ -37,7 +37,7 @@ dados, então são avaliados primeiro como padrões externos.
 
 ## Lógico-ou {:#logical-or}
 
-`subpattern1 || subpattern2`
+`subpadrão1 || subpadrão2`
 
 Um padrão lógico-ou separa subpadrões por `||` e corresponde se qualquer um dos
 ramos corresponder. Os ramos são avaliados da esquerda para a direita. Uma vez que um ramo corresponde,
@@ -57,7 +57,7 @@ o padrão corresponder.
 
 ## Lógico-e {:#logical-and}
 
-`subpattern1 && subpattern2`
+`subpadrão1 && subpadrão2`
 
 Um par de padrões separados por `&&` corresponde somente se ambos os subpadrões
 corresponderem. Se o ramo esquerdo não corresponder, o ramo direito não é avaliado.
@@ -76,9 +76,9 @@ switch ((1, 2)) {
 
 ## Relacional {:#relational}
 
-`== expression`
+`== expressão`
 
-`< expression`
+`< expressão`
 
 Padrões relacionais comparam o valor correspondido a uma constante dada usando qualquer
 um dos operadores de igualdade ou relacionais: `==`, `!=`, `<`, `>`, `<=`, e `>=`.
@@ -125,7 +125,7 @@ tipo esperado de algum valor desestruturado.
 
 ## Null-check {:#null-check}
 
-`subpattern?`
+`subpadrão?`
 
 Padrões null-check (verificação de nulo) correspondem primeiro se o valor não é nulo e,
 em seguida, correspondem o padrão interno contra esse mesmo valor. Eles permitem que você vincule
@@ -147,7 +147,7 @@ Para corresponder quando o valor _é_ nulo, use o [padrão constante](#constant)
 
 ## Null-assert {:#null-assert}
 
-`subpattern!`
+`subpadrão!`
 
 Padrões null-assert (afirmação de não nulo) correspondem primeiro se o objeto não é nulo, depois no valor.
 Eles permitem que valores não nulos fluam através, mas [lançam (throw)][] se o valor correspondido
@@ -272,7 +272,7 @@ Padrões de identificador podem se comportar como um [padrão constante](#consta
 
 ## Entre parênteses {:#parenthesized}
 
-`(subpattern)`
+`(subpadrão)`
 
 Como expressões entre parênteses, parênteses em um padrão permitem que você controle a
 [precedência de padrão](#pattern-precedence) e insira um padrão de precedência inferior
@@ -311,7 +311,7 @@ Dart começa a corresponder ao padrão da esquerda para a direita.
 
 ## Lista {:#list}
 
-`[subpattern1, subpattern2]`
+`[subpadrão1, subpadrão2]`
 
 Um padrão de lista corresponde a valores que implementam [`List`][], e então recursivamente
 corresponde seus subpadrões contra os elementos da lista para desestruturá-los por posição:
@@ -356,7 +356,7 @@ print('$a $b $rest $c $d');
 
 ## Mapa {:#map}
 
-`{"key": subpattern1, someConst: subpattern2}`
+`{"chave": subpadrão1, someConst: subpadrão2}`
 
 Padrões de mapa correspondem a valores que implementam [`Map`][], e então recursivamente
 correspondem seus subpadrões contra as chaves do mapa para desestruturá-los.
@@ -366,9 +366,9 @@ ignora quaisquer chaves que o mapa contenha que não sejam correspondidas pelo p
 
 ## Registro {:#record}
 
-`(subpattern1, subpattern2)`
+`(subpadrão1, subpadrão2)`
 
-`(x: subpattern1, y: subpattern2)`
+`(x: subpadrão1, y: subpadrão2)`
 
 Padrões de registro correspondem a um objeto [registro][] e desestruturam seus campos.
 Se o valor não for um registro com a mesma [forma][] que o padrão, a correspondência
@@ -411,7 +411,7 @@ var (:untyped as int, :typed as String) = record;
 
 ## Objeto {:#object}
 
-`SomeClass(x: subpattern1, y: subpattern2)`
+`SomeClass(x: subpadrão1, y: subpadrão2)`
 
 Padrões de objeto verificam o valor correspondido em relação a um tipo nomeado dado para desestruturar
 dados usando getters nas propriedades do objeto. Eles são [refutados][]

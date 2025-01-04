@@ -115,5 +115,5 @@ use o comando `sudo dpkg --purge`.
    ```console
    $ dpkg -l | grep dart
    ```
-
+   
 [sudo]: https://www.sudo.ws/

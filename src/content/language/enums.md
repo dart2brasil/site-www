@@ -111,7 +111,7 @@ qualquer outra [variável estática][]:
 ```dart
 final favoriteColor = Color.blue;
 if (favoriteColor == Color.blue) {
-  print('Your favorite color is blue!');
+  print('Sua cor favorita é azul!');
 }
 ```
 
@@ -145,7 +145,7 @@ var aColor = Color.blue;
 
 switch (aColor) {
   case Color.red:
-    print('Red as roses!');
+    print('Vermelho como rosas!');
   case Color.green:
     print('Green as grass!');
   default: // Sem isso, você vê um AVISO.

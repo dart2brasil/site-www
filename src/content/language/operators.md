@@ -452,7 +452,7 @@ seja tentada nesse objeto nulo.
 querySelector('#confirm') // Obtém um objeto.
   ?..text = 'Confirm' // Usa seus membros.
   ..classes.add('important')
-  ..onClick.listen((e) => window.alert('Confirmed!'))
+  ..onClick.listen((e) => window.alert('Confirmado!'))
   ..scrollIntoView();
 ```
 
@@ -467,7 +467,7 @@ O código anterior é equivalente ao seguinte:
 var button = querySelector('#confirm');
 button?.text = 'Confirm';
 button?.classes.add('important');
-button?.onClick.listen((e) => window.alert('Confirmed!'));
+button?.onClick.listen((e) => window.alert('Confirmado!'));
 button?.scrollIntoView();
 ```
 

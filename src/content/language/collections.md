@@ -4,10 +4,10 @@ title: Coleções
 description: Resumo dos diferentes tipos de coleções em Dart.
 prevpage:
   url: /language/records
-  title: Records
+  title: Registros
 nextpage:
   url: /language/generics
-  title: Generics
+  title: Genéricos
 ---
 
 Dart possui suporte interno para [coleções][] do tipo lista, set e map.

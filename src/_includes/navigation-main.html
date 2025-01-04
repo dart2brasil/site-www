@@ -1,6 +1,5 @@
 <!-- ia-translate: true -->
 {% assign page_url_path = page.url | regexReplace: '/index$|/index\.html$|\.html$|/$' | prepend: '/*' | append: '/' -%}
-
 <nav id="mainnav" class="site-header">
   <div id="menu-toggle"><i class="material-symbols">menu</i></div>
   <a href="/" class="brand" title="{{site.title}}">
@@ -35,10 +34,11 @@
       <form action="/search" class="site-header__search form-inline" id="cse-search-box">
         <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
         <input type="hidden" name="ie" value="UTF-8">
-        <input type="hidden" name="hl" value="en">
+        <input type="hidden" name="hl" value="pt">
         <input class="site-header__searchfield form-control search-field" type="search" name="q"
           id="search-main" autocomplete="off" placeholder="Pesquisar" aria-label="Pesquisar">
       </form>
     </li>
   </ul>
 </nav>
+

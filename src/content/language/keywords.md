@@ -8,7 +8,7 @@ prevpage:
   title: Libraries
 nextpage:
   url: /language/built-in-types
-  title: Built-in types
+  title: Tipos built-in
 ---
 
 {% assign ckw = '&nbsp;<sup>1</sup>' %}

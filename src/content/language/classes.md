@@ -272,7 +272,7 @@ class Person {
 class Impostor implements Person {
   String get _name => '';
 
-  String greet(String who) => 'Hi $who. Do you know who I am?';
+  String greet(String who) => 'Oi $who. Você sabe quem eu sou?';
 }
 
 String greetBob(Person person) => person.greet('Bob');

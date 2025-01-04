@@ -60,8 +60,8 @@ Classes `@staticInterop` quase sempre podem ser migradas para um tipo de extens�
 `dart:js_interop` e `dart:js_interop_unsafe` agora contêm esses auxiliares com sintaxe possivelmente alternativa.
 
 {% comment %}
-TODO: add links (with stable) when ready:
-TODO: Link to `package:web` section
+TODO: adicionar links (com stable) quando pronto:
+TODO: Link para a seção `package:web`
 {% endcomment %}
 
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html

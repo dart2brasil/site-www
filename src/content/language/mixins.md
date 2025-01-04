@@ -51,9 +51,9 @@ mixin Musical {
 
   void entertainMe() {
     if (canPlayPiano) {
-      print('Playing piano');
+      print('Tocando piano');
     } else if (canConduct) {
-      print('Waving hands');
+      print('Acenando com as mãos');
     } else {
       print('Humming to self');
     }
@@ -136,7 +136,7 @@ mixin Guitarist implements Tuner {
   void playSong() {
     tuneInstrument();
 
-    print('Strums guitar majestically.');
+    print('Toca violão majestosamente.');
   }
 }
 
@@ -144,7 +144,7 @@ class PunkRocker with Guitarist {
 
   @override
   void tuneInstrument() {
-    print("Don't bother, being out of tune is punk rock.");
+    print("Não se preocupe, estar fora de sintonia é punk rock.");
   }
 }
 ```
@@ -162,13 +162,13 @@ isso garante que esses membros estejam disponíveis onde o mixin é usado:
 ```dart
 class Musician {
   musicianMethod() {
-    print('Playing music!');
+    print('Tocando música!');
   }
 }
 
 mixin MusicalPerformer [!on Musician!] {
   performerMethod() {
-    print('Performing music!');
+    print('Performando música!');
     super.musicianMethod();
   }
 }

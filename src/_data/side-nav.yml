@@ -23,11 +23,11 @@
       children:
         - title: Tipos built-in (embutidos)
           permalink: /language/built-in-types
-        - title: Records
+        - title: Registros
           permalink: /language/records
         - title: Collections (Coleções)
           permalink: /language/collections
-        - title: Generics
+        - title: Genéricos
           permalink: /language/generics
         - title: Typedefs
           permalink: /language/typedefs

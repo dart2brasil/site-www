@@ -165,7 +165,7 @@ para que os membros de `SomeBaseClass` possam ser chamados em objetos do tipo `T
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart (generic)" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 ```dart
 class Foo<T [!extends SomeBaseClass!]> {
-  // Implementation goes here...
+  // A implementação vai aqui...
   String toString() => "Instance of 'Foo<$T>'";
 }
 
@@ -204,9 +204,9 @@ Métodos e funções também permitem argumentos de tipo:
 <?code-excerpt "misc/test/language_tour/generics_test.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
 ```dart
 [!T!] first[!<T>!](List<[!T!]> ts) {
-  // Do some initial work or error checking, then...
+  // Faça algum trabalho inicial ou verificação de erros, então...
   [!T!] tmp = ts[0];
-  // Do some additional checking or processing...
+  // Faça alguma verificação ou processamento adicional...
   return tmp;
 }
 ```

@@ -67,7 +67,7 @@ que passa na análise estática e é executado sem erros ou avisos.
 void printInts(List<int> a) => print(a);
 
 void main() {
-  final list = [!<int>!][];
+  final list = [!<int>!][!<int>!];
   list.add(1);
   list.add([!2!]);
   printInts(list);
@@ -243,7 +243,7 @@ uma lista do tipo `Cat` (Gato), o que gera um erro durante a análise estática.
 <?code-excerpt "lib/incorrect_animal.dart (invalid-dynamic-list)" replace="/(<dynamic\x3E)(.*?)Error/[!$1!]$2Error/g"?>
 ```dart tag=fails-sa
 void main() {
-  List<Cat> foo = [!<dynamic>!][Dog()]; // Error
+  List<Cat> foo = [!<dynamic>!][Dog()]; // Erro
   List<dynamic> bar = <dynamic>[Dog(), Cat()]; // OK
 }
 ```
@@ -489,12 +489,12 @@ e [Use tipos de parâmetro sólidos ao substituir métodos](#use-sound-parameter
 
 Os seguintes recursos têm mais informações sobre o Dart sólido:
 
-* [Corrigindo problemas de tipo comuns](/deprecated/sound-problems) -
+* [Corrigindo problemas comuns de tipo](/deprecated/sound-problems) -
   Erros que você pode encontrar ao escrever código Dart sólido e como corrigi-los.
 * [Corrigindo falhas de promoção de tipo](/tools/non-promotion-reasons) -
   Entenda e aprenda como corrigir erros de promoção de tipo.
-* [Sound null safety](/null-safety) -
-  Aprenda sobre como escrever código com sound null safety (segurança nula sólida).
+* [Segurança nula sólida](/null-safety) -
+  Aprenda sobre como escrever código com segurança nula sólida.
 * [Personalizando a análise estática][analysis] -
   Como configurar e personalizar o analisador e o linter
   usando um arquivo de opções de análise.

@@ -74,8 +74,8 @@ Por exemplo, considere fazer uma requisição de rede:
 ```dart
 http.get('https://example.com').then((response) {
   if (response.statusCode == 200) {
-    print('Success!');
-  }  
+    print('Sucesso!');
+  }
 }
 ```
 
@@ -261,7 +261,7 @@ a plataforma Dart Web, consulte a
 seção [Concorrência na web](#concurrency-on-the-web).
 :::
 
-[Dart Native platform]: /overview#platform
+[plataforma Dart Native]: /overview#platform
 
 ### O isolate principal {:#the-main-isolate}
 
@@ -487,7 +487,7 @@ para iniciar um isolate. Você também pode iniciar um isolate com
 código e dados](#performance-and-isolate-groups) que o isolate de
 geração. Web workers não têm uma API equivalente.
 
-[Dart web platform]: /overview#platform
+[plataforma Dart web]: /overview#platform
 [web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
 
 ## Recursos adicionais {:#additional-resources}

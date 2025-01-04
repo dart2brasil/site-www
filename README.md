@@ -115,16 +115,16 @@ _escolha uma_ das seguintes técnicas de clonagem de submódulo:
 1. Clone o repositório e seu submódulo ao mesmo tempo
    usando a opção `--recurse-submodules`:
 
-   ```terminal
-   git clone --recurse-submodules https://github.com/dart-lang/site-www.git
-   ```
+    ```terminal
+    git clone --recurse-submodules https://github.com/dart2brasil/site-www.git
+    ```
 
 2. Se você já clonou o repositório sem seu submódulo,
    então execute este comando a partir da raiz do repositório:
 
-   ```terminal
-   git submodule update --init --recursive
-   ```
+    ```terminal
+    git submodule update --init --recursive
+    ```
 
 > [!NOTA]
 > A qualquer momento durante o desenvolvimento,
@@ -150,9 +150,9 @@ as instruções em [Obtenha os pré-requisitos](#get-the-prerequisites).
 2. A partir do diretório raiz do repositório,
    busque as dependências Dart do site.
 
-   ```terminal
-   dart pub get
-   ```
+    ```terminal
+    dart pub get
+    ```
 
 3. Instale o [`pnpm`][] usando seu [método de instalação][pnpm-install] preferido.
    `pnpm` é um gerenciador de pacotes alternativo e eficiente para pacotes npm.
@@ -165,31 +165,31 @@ as instruções em [Obtenha os pré-requisitos](#get-the-prerequisites).
    Então, para instalar a versão correta do `pnpm`, a partir da
    raiz do diretório do repositório, execute `corepack install`:
 
-   ```terminal
-   corepack enable
-   corepack install
-   ```
+    ```terminal
+    corepack enable
+    corepack install
+    ```
 
 4. Depois de ter o `pnpm` instalado e configurado,
    busque as dependências npm do site usando `pnpm install`.
    Recomendamos que você use o `pnpm`, mas você também pode usar o `npm`.
 
-   ```terminal
-   pnpm install
-   ```
+    ```terminal
+    pnpm install
+    ```
 
 5. A partir do diretório raiz, execute a ferramenta `dash_site` para
    validar sua configuração e aprender sobre os comandos disponíveis.
 
-   ```terminal
-   ./dash_site --help
-   ```
+    ```terminal
+    ./dash_site --help
+    ```
 
 6. A partir do diretório raiz, sirva o site localmente.
 
-   ```terminal
-   ./dash_site serve
-   ```
+    ```terminal
+    ./dash_site serve
+    ```
 
    Este comando gera e serve o site em uma
    porta local que é impressa em seu terminal.
@@ -273,9 +273,9 @@ você pode construir uma versão completa e carregá-la no Firebase.
 
    - Volte para o seu terminal local e verifique se você está logado.
 
-     ```terminal
-     firebase login
-     ```
+      ```terminal
+      firebase login
+      ```
 
    - Certifique-se de que seu projeto exista e ative esse projeto:
 
@@ -286,9 +286,9 @@ você pode construir uma versão completa e carregá-la no Firebase.
 
 2. A partir do diretório raiz do repositório, construa o site:
 
-   ```terminal
-   ./dash_site build
-   ```
+    ```terminal
+    ./dash_site build
+    ```
 
    Isso constrói o site e o copia para seu diretório local `_site`.
    Se esse diretório já existia antes, ele será substituído.
@@ -303,12 +303,16 @@ você pode construir uma versão completa e carregá-la no Firebase.
    Considere adicionar uma referência ao commit que você preparou,
    para que os revisores saibam se mais alguma alteração foi feita.
 
+4.  Navegue até o seu PR no GitHub e inclua o link da versão preparada.
+    Considere adicionar uma referência ao commit que você preparou,
+    para que os revisores saibam se alguma outra alteração foi feita.
+    
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
-[OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
+[OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart2brasil/site-www/badge
 [Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
 [clonagem]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
 [Eleventy]: https://www.11ty.dev/
 [Firebase]: https://firebase.google.com/
 [forking]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
-[Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain
+[Repo on GitHub Actions]: https://github.com/dart2brasil/site-www/actions?query=workflow%3Abuild+branch%3Amain

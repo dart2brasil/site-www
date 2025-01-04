@@ -81,7 +81,7 @@ $ make
 $ cd ..
 $ dart pub get
 $ dart run hello.dart
-Hello World
+Olá Mundo
 ```
 
 :::note
