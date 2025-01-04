@@ -258,7 +258,7 @@ Para mais informações, consulte
 
 :::note
 Se você tiver um motivo válido para usar um subtipo, poderá usar a
-palavra-chave [covariant](#the-covariant-keyword).
+palavra-chave [covariant](/language/type-system#covariant-keyword).
 :::
 
 <hr>
@@ -599,35 +599,8 @@ assumeStrings(names.[!cast!]<String>());
 
 ### A palavra-chave covariant {:#the-covariant-keyword}
 
-Alguns padrões de codificação (raramente usados) dependem do aperto de um tipo
-subscrevendo o tipo de um parâmetro com um subtipo, o que é inválido.
-Neste caso, você pode usar a palavra-chave `covariant` para
-informar ao analisador que você está fazendo isso intencionalmente.
-Isso remove o erro estático e, em vez disso, verifica se há um tipo de argumento inválido
-em tempo de execução.
-
-O seguinte mostra como você pode usar `covariant`:
-
-<?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
-```dart tag=passes-sa
-class Animal {
-  void chase(Animal x) { ... }
-}
-
-class Mouse extends Animal { ... }
-
-class Cat extends Animal {
-  @override
-  void chase([!covariant!] Mouse x) { ... }
-}
-```
-
-Embora este exemplo mostre o uso de `covariant` no subtipo,
-a palavra-chave `covariant` pode ser colocada no método da superclasse
-ou na subclasse.
-Geralmente, o método da superclasse é o melhor lugar para colocá-la.
-A palavra-chave `covariant` se aplica a um único parâmetro e também é
-suportada em setters e campos.
+A documentação sobre a palavra-chave `covariant` foi
+movida para [O Sistema de Tipos Dart](/language/type-system#covariant-keyword).
 
 [tipo inferior]: https://en.wikipedia.org/wiki/Bottom_type
 [cast()]: {{site.dart-api}}/dart-core/Iterable/cast.html

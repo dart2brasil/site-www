@@ -180,7 +180,7 @@ subtipo do parâmetro original.
 
 :::note
 Se você tiver um motivo válido para usar um subtipo, você pode usar a
-palavra-chave [`covariant`](/deprecated/sound-problems#the-covariant-keyword).
+palavra-chave [`covariant`](/language/type-system#covariant-keyword).
 :::
 
 Considere o método `chase(Animal)` para a classe `Animal`:
@@ -484,6 +484,38 @@ Para mais informações, veja
 [Use tipos de retorno sólidos ao substituir métodos](#use-sound-return-types-when-overriding-methods)
 e [Use tipos de parâmetro sólidos ao substituir métodos](#use-sound-parameter-types-when-overriding-methods).
 
+<a id="covariant-keyword" aria-hidden="true"></a>
+#### Covariant parameters
+
+Some (rarely used) coding patterns rely on tightening a type
+by overriding a parameter's type with a subtype, which is invalid.
+In this case, you can use the `covariant` keyword to
+tell the analyzer that you're doing this intentionally.
+This removes the static error and instead checks for an invalid
+argument type at runtime.
+
+The following shows how you might use `covariant`:
+
+<?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
+```dart tag=passes-sa
+class Animal {
+  void chase(Animal x) { ... }
+}
+
+class Mouse extends Animal { ... }
+
+class Cat extends Animal {
+  @override
+  void chase([!covariant!] Mouse x) { ... }
+}
+```
+
+Although this example shows using `covariant` in the subtype,
+the `covariant` keyword can be placed in either the superclass
+or the subclass method.
+Usually the superclass method is the best place to put it.
+The `covariant` keyword applies to a single parameter and is
+also supported on setters and fields.
 
 ## Outros recursos {:#other-resources}
 

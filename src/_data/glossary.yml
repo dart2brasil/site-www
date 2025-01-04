@@ -615,7 +615,7 @@
     - text: "Covariância e contravariância"
       link: "https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)"
     - text: "A palavra-chave covariant"
-      link: "/deprecated/sound-problems#the-covariant-keyword"
+      link: "/language/type-system#covariant-keyword"
   labels:
     - "language"
     - "type system (sistema de tipos)"

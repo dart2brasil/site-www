@@ -79,10 +79,10 @@ Isso viola as regras normais, e
 Ainda assim, restringir o tipo é possível
 se o código puder garantir que um erro de tipo não ocorrerá.
 Nesse caso, você pode usar a
-[`covariant` keyword (palavra-chave covariant)](/deprecated/sound-problems#the-covariant-keyword)
+[`covariant` keyword (palavra-chave covariant)](/language/type-system#covariant-keyword)
 em uma declaração de parâmetro.
 Para detalhes, veja a
-[especificação da linguagem Dart][].
+[especificação da linguagem Dart][Dart language specification].
 
 :::warning
 Se você sobrescrever `==`, você também deve sobrescrever o getter `hashCode` de Object.

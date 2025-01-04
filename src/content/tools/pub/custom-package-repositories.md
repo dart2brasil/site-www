@@ -211,22 +211,30 @@ com suporte para autenticação por token por vários fornecedores,
 aliviando você da sobrecarga de hospedar e manter
 seu próprio repositório de pacotes personalizado:
 
-<ul class="cols2">
+<ul class="logo-link-grids">
 <li>
-  <img src="/assets/img/tools/cloudsmith.svg" class="list-image" alt="Logotipo Cloudsmith">
-  <a href="https://help.cloudsmith.io/docs/dart-repository"><b>Cloudsmith</b></a>
+  <a href="https://help.cloudsmith.io/docs/dart-repository">
+    <img src="/assets/img/tools/cloudsmith.svg" alt="Cloudsmith logo">
+    <span>Cloudsmith</span>
+  </a>
 </li>
 <li>
-  <img src="/assets/img/tools/proget.svg" class="list-image" alt="Logotipo Inedo ProGet">
-  <a href="https://docs.inedo.com/docs/proget/feeds/pub"><b>Inedo ProGet</b></a>
+  <a href="https://docs.inedo.com/docs/proget/feeds/pub">
+    <img src="/assets/img/tools/proget.svg" alt="Inedo ProGet logo">
+    <span>Inedo ProGet</span>
+  </a>
 </li>
 <li>
-  <img src="/assets/img/tools/jfrog.svg" class="list-image" alt="Logotipo JFrog">
-  <a href="https://www.jfrog.com/confluence/display/JFROG/Pub+Repositories"><b>JFrog Artifactory</b></a>
+  <a href="https://www.jfrog.com/confluence/display/JFROG/Pub+Repositories">
+    <img src="/assets/img/tools/jfrog.svg" alt="JFrog logo">
+    <span>JFrog Artifactory</span>
+  </a>
 </li>
 <li>
-  <img src="/assets/img/tools/onepub.svg" class="list-image" alt="Logotipo OnePub">
-  <a href="https://onepub.dev"><b>OnePub Dart Repository</b></a>
+  <a href="https://onepub.dev">
+    <img src="/assets/img/tools/onepub.svg" alt="OnePub logo">
+    <span>OnePub Dart Repository</span>
+  </a>
 </li>
 </ul>
 

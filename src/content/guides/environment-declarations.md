@@ -103,7 +103,8 @@ Para saber mais sobre como configurar o `webdev` para passar declarações de am
 
 ### Visual Studio Code {:#visual-studio-code}
 
-Na sua configuração de inicialização (`launch.json`) em `configurations`, adicione uma nova chave `toolArgs` contendo as declarações de ambiente desejadas:
+Na sua configuração de inicialização (`launch.json`) em `configurations`,
+adicione uma nova chave `toolArgs` contendo as declarações de ambiente desejadas:
 
 ```json
 "configurations": [
