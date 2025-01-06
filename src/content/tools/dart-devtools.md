@@ -18,41 +18,41 @@ você pode usar com tipos comuns de aplicativos Dart.
 {% assign b = '&nbsp;' %}
 {% assign na = '&nbsp;' %}
 {% comment %}
-  Considered using this instead:
+  Considerado usar isto em vez disso:
   assign b = '<span class="material-symbols" title="use browser tools instead">web</span>'
 {% endcomment %}
 
-| Ferramenta                | [Flutter para mobile ou desktop][Flutter devtools] | [Flutter web][Flutter devtools] | [Outros web][] | [Linha de comando][] |
-|---------------------------|:-------------------------------------------------:|:-------------------------------:|:--------------:|:--------------------:|
-| [Debugger][]             |                         {{y}}                       |              {{y}}              |      {{y}}     |        {{y}}         |
-| [Visualização de logs]    |                         {{y}}                       |              {{y}}              |      {{y}}     |        {{y}}         |
-| [Ferramenta de tamanho do app][] |                         {{y}}                       |                                 |                |        {{y}}         |
-| [Profiler de CPU][]      |                         {{y}}                       |                                 |                |        {{y}}         |
-| [Visualização de memória][]|                         {{y}}                       |                                 |                |        {{y}}         |
-| [Visualização de rede][]   |                         {{y}}                       |                                 |                |        {{y}}         |
-| [Visualização de desempenho][]|                         {{y}}                       |                                 |                |        {{y}}         |
-| [Inspetor do Flutter][]   |                         {{y}}                       |              {{y}}              |                |                      |
+| Ferramenta                | [Flutter mobile ou desktop][Flutter devtools] | [Flutter web][Flutter devtools] | [Outra web][Other web] | [Linha de comando][Command-line] |
+|--------------------------|:---------------------------------------------:|:-------------------------------:|:-------------:|:-----------------:|
+| [Debugger][Debugger]            |                     {{y}}                     |              {{y}}              |     {{y}}     |      {{y}}       |
+| [Visualização de logs]   |                     {{y}}                     |              {{y}}              |     {{y}}     |      {{y}}       |
+| [Ferramenta de tamanho do app][App size tool] |                     {{y}}                     |                                 |               |      {{y}}       |
+| [Profiler de CPU][CPU profiler]   |                     {{y}}                     |                                 |               |      {{y}}       |
+| [Visualização de memória][Memory view]    |                     {{y}}                     |                                 |               |      {{y}}       |
+| [Visualização de rede][Network view]    |                     {{y}}                     |                                 |               |      {{y}}       |
+| [Visualização de desempenho][Performance view]  |                     {{y}}                     |                                 |               |      {{y}}       |
+| [Inspetor Flutter][Flutter inspector] |                     {{y}}                     |              {{y}}              |               |                  |
 
 {:.table .table-striped .nowrap}
 
 Para obter informações sobre como usar o Dart DevTools com cada tipo de aplicativo
 (por exemplo, aplicativos de linha de comando),
 clique no tipo de aplicativo na linha superior.
-Para obter detalhes sobre ferramentas individuais
-(por exemplo, o depurador),
+Para detalhes sobre ferramentas individuais
+(por exemplo, o debugger),
 clique no nome da ferramenta na coluna da esquerda.
 
-Como a tabela mostra, o depurador e a visualização de logs
+Como a tabela mostra, o debugger e a visualização de logs
 são as únicas partes do Dart DevTools que estão disponíveis para todos os tipos de aplicativos.
-Aplicativos web não podem usar as visualizações de timeline (linha do tempo), memória e desempenho;
-em vez disso, eles podem usar ferramentas do navegador, como o [Chrome DevTools.][]
-O inspetor do Flutter funciona apenas para aplicativos Flutter;
+Aplicativos web não podem usar as visualizações de timeline, memória e desempenho;
+em vez disso, eles podem usar ferramentas do navegador, como o [Chrome DevTools.][Chrome DevTools.]
+O inspetor Flutter funciona apenas para aplicativos Flutter;
 outros aplicativos web devem usar ferramentas do navegador, como o Chrome DevTools.
 
 
 ## Usando o DevTools com um aplicativo de linha de comando {:#using-devtools-with-a-command-line-app}
 
-Você pode usar o DevTools para realizar a depuração em nível de código
+Você pode usar o DevTools para realizar depuração em nível de código-fonte
 ou para visualizar informações gerais de log e diagnóstico
 para um aplicativo de linha de comando em execução.
 
@@ -65,14 +65,14 @@ Opcionalmente, adicione `--pause-isolates-on-start`,
 que interrompe automaticamente a execução no início do script.
 
 ```console
-$ cd path/to/dart/app
+$ cd caminho/para/o/app/dart
 $ dart run --pause-isolates-on-start --observe main.dart
 
-O serviço Dart VM está ouvindo em http://127.0.0.1:8181/afZySiNbDPg=/
-O depurador e profiler do Dart DevTools está disponível em: http://127.0.0.1:8181/afZySiNbDPg=/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2FafZySiNbDPg%3D%2Fws
+O serviço Dart VM está escutando em http://127.0.0.1:8181/afZySiNbDPg=/
+O debugger e profiler Dart DevTools está disponível em: http://127.0.0.1:8181/afZySiNbDPg=/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2FafZySiNbDPg%3D%2Fws
 ```
 
-Observe o URL **Dart DevTools debugger and profiler** (depurador e profiler do Dart DevTools).
+Observe o URL do **debugger e profiler Dart DevTools**.
 Você precisará dele na próxima etapa.
 
 :::important
@@ -82,15 +82,15 @@ Se você parar seu aplicativo e executá-lo novamente,
 você precisa se conectar ao DevTools com o novo URL.
 :::
 
-### 2. Abra o DevTools e conecte-se ao aplicativo de destino {:#2-open-devtools-and-connect-to-the-target-app}
+### 2. Abra o DevTools e conecte-se ao aplicativo alvo {:#2-open-devtools-and-connect-to-the-target-app}
 
-Copie o URL **Dart DevTools debugger and profiler** (depurador e profiler do Dart DevTools),
+Copie o URL do **debugger e profiler Dart DevTools**,
 e cole-o na barra de endereço de uma janela do navegador Chrome.
 
-Quando você visitar esse URL no Chrome,
+Quando você visita esse URL no Chrome,
 a interface do usuário do Dart DevTools aparece,
-exibindo informações sobre o aplicativo de destino.
-Clique em **Debugger** (Depurador) para começar a depurar o aplicativo.
+exibindo informações sobre o aplicativo alvo.
+Clique em **Debugger** para iniciar a depuração do aplicativo.
 
 
 ## Usando o DevTools com um aplicativo Flutter {:#using-devtools-with-a-flutter-app}
@@ -109,7 +109,7 @@ use o comando `webdev serve` com a flag `--debug` ou `--debug-extension`:
 $ webdev serve --debug
 ```
 
-Para mais informações, veja [Depurando aplicativos web Dart][].
+Para mais informações, consulte [Depurando aplicativos web Dart][Debugging Dart web apps].
 
 [App size tool]: {{site.flutter-docs}}/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
