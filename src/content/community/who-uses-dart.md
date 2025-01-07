@@ -9,17 +9,17 @@ toc: false
 
 ## Flutter {:#flutter}
 
-O popular [Flutter toolkit][] (conjunto de ferramentas) é alimentado pela linguagem Dart, runtimes, ferramentas e bibliotecas.  Mais de _um milhão_ de aplicativos Flutter para Android, iOS, web e outros destinos são baseados em Dart.
+O popular [Flutter toolkit][Flutter toolkit] (conjunto de ferramentas) é alimentado pela linguagem Dart, runtimes, ferramentas e bibliotecas.  Mais de _um milhão_ de aplicativos Flutter para Android, iOS, web e outros destinos são baseados em Dart.
 
-A [Flutter showcase][] (vitrine) apresenta aplicativos Flutter populares, incluindo:
+A [Flutter showcase][Flutter showcase] (vitrine) apresenta aplicativos Flutter populares, incluindo:
 
-* [BMW][]
+* [BMW][BMW]
     > "O Grupo BMW está se estabelecendo como um desenvolvedor e fornecedor líder de aplicativos automotivos com uma arquitetura Flutter desenvolvida 100% internamente."
-* [Sonos][]: 
+* [Sonos][Sonos]: 
     > "...Se a configuração é a “grande entrada” para o ecossistema Sonos, o Flutter forma sua fachada elegante..."
-* [Alibaba][]: 
+* [Alibaba][Alibaba]: 
     > "Quando a equipe Xianyu foi desafiada a melhorar a experiência do usuário desenvolvendo um aplicativo consistente em todas as plataformas, com belos gráficos e que ainda carregasse rápido, eles recorreram ao Flutter."
-* [PUBG][]: 
+* [PUBG][PUBG]: 
     > "Quando a equipe do PUBG MOBILE quis adicionar um módulo de comunidade para permitir que jogadores de todo o mundo compartilhassem clipes de gameplay e muito mais, eles recorreram ao Flutter."
 
 [Flutter toolkit]: {{site.flutter}}
@@ -33,10 +33,10 @@ A [Flutter showcase][] (vitrine) apresenta aplicativos Flutter populares, inclui
 
 Dart é usado em quase todos os grupos de produtos do Google:
 
-* O [Google Play Console][] permite que editores de aplicativos comercializem aplicativos Android e é escrito completamente em Dart.
-* A equipe do [Google Ads][] continua crescendo, com centenas de engenheiros de software (SWEs) escrevendo principalmente código Dart.
-* A equipe do [Google Assistant][] usa Flutter e Dart para impulsionar a interface do usuário geral de seus Smart Displays.
-* Tanto a interface do usuário quanto grande parte do código de back-end para os dispositivos [Google Nest Hub][] e Hub Max são escritos em Dart.
+* O [Google Play Console][Google Play Console] permite que editores de aplicativos comercializem aplicativos Android e é escrito completamente em Dart.
+* A equipe do [Google Ads][Google Ads] continua crescendo, com centenas de engenheiros de software (SWEs) escrevendo principalmente código Dart.
+* A equipe do [Google Assistant][Google Assistant] usa Flutter e Dart para impulsionar a interface do usuário geral de seus Smart Displays.
+* Tanto a interface do usuário quanto grande parte do código de back-end para os dispositivos [Google Nest Hub][Google Nest Hub] e Hub Max são escritos em Dart.
 * A lista continua, com muitos outros aplicativos do Google feitos usando Dart e Flutter:
 
   * [Google Pay][Google Pay]
@@ -67,12 +67,12 @@ Várias outras equipes do Google estão atualmente reescrevendo seus projetos em
 
 Além do Google e do Flutter, muitas empresas usam Dart para construir seus aplicativos:
 
-* Os aplicativos cliente de próxima geração da [Workiva][] para seu conjunto de produtividade são construídos com Dart.
-* A [Wrike][] usa a estrutura [AngularDart][] para desenvolver ferramentas de gerenciamento de projetos.
-* [Blossom][] é uma ferramenta de gerenciamento de projetos ágil construída com Dart.
+* Os aplicativos cliente de próxima geração da [Workiva][Workiva's] para seu conjunto de produtividade são construídos com Dart.
+* A [Wrike][Wrike] usa a estrutura [AngularDart][AngularDart] para desenvolver ferramentas de gerenciamento de projetos.
+* [Blossom][Blossom] é uma ferramenta de gerenciamento de projetos ágil construída com Dart.
 * E muitos mais!
 
-Se você constrói software de produção com Dart e deseja ser incluído nesta lista, visite o [GitHub do nosso site][] para abrir uma issue ou pull request, obrigado!
+Se você constrói software de produção com Dart e deseja ser incluído nesta lista, visite o [GitHub do nosso site][our site's GitHub] para abrir uma issue ou pull request, obrigado!
 
 [Workiva's]: https://www.workiva.com/en-in
 [Wrike]: https://www.wrike.com

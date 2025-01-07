@@ -40,9 +40,9 @@ O Functions Framework (estrutura de funções) é uma estrutura FaaS (Função c
 que facilita a escrita de funções Dart
 em vez de aplicativos de servidor para lidar com requisições web.
 Usando a estrutura, você pode criar funções que lidam com requisições HTTP
-e [CloudEvents][] e implantá-las no Google Cloud.
+e [CloudEvents][CloudEvents] e implantá-las no Google Cloud.
 
-O [Dart Functions Framework][] é um projeto com suporte da comunidade.
+O [Dart Functions Framework][Dart Functions Framework] é um projeto com suporte da comunidade.
 
 Para mais informações, veja [o README][functions docs].
 
@@ -65,15 +65,15 @@ Para mais informações, veja a documentação do Compute Engine para
 Para executar Dart em clusters de instâncias do Compute Engine,
 use o Google Kubernetes Engine (GKE).
 
-Para mais informações, veja a [visão geral do GKE][].
+Para mais informações, veja a [visão geral do GKE][GKE overview].
 
 ### App Engine {:#app-engine}
 
-O suporte do [App Engine][] para Dart está incompleto e requer o
-[ambiente flexível do App Engine][], que não
+O suporte do [App Engine][App Engine] para Dart está incompleto e requer o
+[ambiente flexível do App Engine][App Engine flexible environment], que não
 [escala automaticamente para zero instâncias][scale to zero], então recomendamos
 o **Cloud Run** para novos códigos Dart do lado do servidor.
-Se você _quiser_ usar o App Engine, considere usar o pacote [`appengine`][].
+Se você _quiser_ usar o App Engine, considere usar o pacote [`appengine`][`appengine` package].
 
 
 [App Engine]: https://cloud.google.com/appengine

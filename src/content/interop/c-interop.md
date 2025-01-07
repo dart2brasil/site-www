@@ -25,10 +25,10 @@ Ele inclui os seguintes exemplos que mostram como usar a biblioteca `dart:ffi`:
 
 | **Exemplo**     | **Descrição**                                                                                         |
 | --------------- | ------------------------------------------------------------------------------------------------------- |
-| [hello_world][] | Como chamar uma função C sem argumentos e sem valor de retorno.                                         |
-| [primitives][]  | Como chamar funções C que têm argumentos e valores de retorno que são **inteiros ou ponteiros**.            |
-| [structs][]     | Como usar structs para passar **strings** para e de C e para lidar com **estruturas C simples e complexas**. |
-| [test_utils][]  | Utilitários de teste comuns para todos esses exemplos.                                                     |
+| [hello_world][hello_world] | Como chamar uma função C sem argumentos e sem valor de retorno.                                         |
+| [primitives][primitives]  | Como chamar funções C que têm argumentos e valores de retorno que são **inteiros ou ponteiros**.            |
+| [structs][structs]     | Como usar structs para passar **strings** para e de C e para lidar com **estruturas C simples e complexas**. |
+| [test_utils][test_utils]  | Utilitários de teste comuns para todos esses exemplos.                                                     |
 
 {:.table .table-striped }
 
@@ -179,7 +179,7 @@ Para aprender como, consulte as seguintes páginas e exemplos.
 
 ## Interagindo com tipos nativos {:#interface-with-native-types}
 
-A biblioteca `dart:ffi` fornece múltiplos tipos que implementam [`NativeType`][]
+A biblioteca `dart:ffi` fornece múltiplos tipos que implementam [`NativeType`][`NativeType`]
 e representam tipos nativos em C. Você pode instanciar alguns tipos nativos.
 Alguns outros tipos nativos podem ser usados apenas como marcadores em assinaturas de tipo.
 
@@ -194,10 +194,10 @@ Eles ou seus subtipos _podem_ ser instanciados em código Dart.
 
 | **Tipo Dart**   | **Descrição**                                                  |
 | --------------- | ---------------------------------------------------------------- |
-| [Array][]       | Um array de tamanho fixo de itens. Supertipo de arrays específicos de tipo. |
-| [Pointer][]     | Representa um ponteiro para a memória nativa C.                       |
-| [Struct][]      | O supertipo de todos os tipos de struct FFI.                           |
-| [Union][]       | O supertipo de todos os tipos de union FFI.                            |
+| [Array][Array]       | Um array de tamanho fixo de itens. Supertipo de arrays específicos de tipo. |
+| [Pointer][Pointer]     | Representa um ponteiro para a memória nativa C.                       |
+| [Struct][Struct]      | O supertipo de todos os tipos de struct FFI.                           |
+| [Union][Union]       | O supertipo de todos os tipos de union FFI.                            |
 
 {:.table .table-striped }
 
@@ -207,47 +207,47 @@ A lista a seguir mostra quais tipos nativos agnósticos de plataforma
 servem como marcadores em assinaturas de tipo.
 Eles _não podem_ ser instanciados em código Dart.
 
-| **Tipo Dart**      | **Descrição**                                   |
-| ------------------ | ------------------------------------------------- |
-| [Bool][]           | Representa um bool nativo em C.                    |
-| [Double][]         | Representa um double nativo de 64 bits em C.           |
-| [Float][]          | Representa um float nativo de 32 bits em C.            |
-| [Int8][]           | Representa um inteiro nativo com sinal de 8 bits em C.    |
-| [Int16][]          | Representa um inteiro nativo com sinal de 16 bits em C.   |
-| [Int32][]          | Representa um inteiro nativo com sinal de 32 bits em C.   |
-| [Int64][]          | Representa um inteiro nativo com sinal de 64 bits em C.   |
-| [NativeFunction][] | Representa um tipo de função em C.                  |
-| [Opaque][]         | O supertipo de todos os tipos opacos em C.           |
-| [Uint8][]          | Representa um inteiro nativo sem sinal de 8 bits em C.  |
-| [Uint16][]         | Representa um inteiro nativo sem sinal de 16 bits em C. |
-| [Uint32][]         | Representa um inteiro nativo sem sinal de 32 bits em C. |
-| [Uint64][]         | Representa um inteiro nativo sem sinal de 64 bits em C. |
-| [Void][]           | Representa o tipo `void` em C.                  |
+| **Tipo Dart**                    | **Descrição**                                           |
+| -------------------------------- | ------------------------------------------------------- |
+| [Bool][Bool]                     | Representa um bool nativo em C.                         |
+| [Double][Double]                 | Representa um double nativo de 64 bits em C.            |
+| [Float][Float]                   | Representa um float nativo de 32 bits em C.             |
+| [Int8][Int8]                     | Representa um inteiro nativo com sinal de 8 bits em C.  |
+| [Int16][Int16]                   | Representa um inteiro nativo com sinal de 16 bits em C. |
+| [Int32][Int32]                   | Representa um inteiro nativo com sinal de 32 bits em C. |
+| [Int64][Int64]                   | Representa um inteiro nativo com sinal de 64 bits em C. |
+| [NativeFunction][NativeFunction] | Representa um tipo de função em C.                      |
+| [Opaque][Opaque]                 | O supertipo de todos os tipos opacos em C.              |
+| [Uint8][Uint8]                   | Representa um inteiro nativo sem sinal de 8 bits em C.  |
+| [Uint16][Uint16]                 | Representa um inteiro nativo sem sinal de 16 bits em C. |
+| [Uint32][Uint32]                 | Representa um inteiro nativo sem sinal de 32 bits em C. |
+| [Uint64][Uint64]                 | Representa um inteiro nativo sem sinal de 64 bits em C. |
+| [Void][Void]                     | Representa o tipo `void` em C.                  |
 
 {:.table .table-striped }
 
-Há também muitos tipos nativos marcadores específicos de [ABI][]
-que estendem [AbiSpecificInteger][].
+Há também muitos tipos nativos marcadores específicos de [ABI][ABI]
+que estendem [AbiSpecificInteger][AbiSpecificInteger].
 Para saber como esses tipos são mapeados em plataformas específicas,
 consulte a documentação da API vinculada na tabela a seguir.
 
 | **Tipo Dart**            | **Descrição**                                    |
 | -------------------------| -------------------------------------------------- |
-| [AbiSpecificInteger][]   | O supertipo de todos os tipos de inteiros específicos de ABI.   |
-| [Int][]                  | Representa o tipo `int` em C.                    |
-| [IntPtr][]               | Representa o tipo `intptr_t` em C.               |
-| [Long][]                 | Representa o tipo `long int` (`long`) em C.      |
-| [LongLong][]             | Representa o tipo `long long` em C.              |
-| [Short][]                | Representa o tipo `short` em C.                  |
-| [SignedChar][]           | Representa o tipo `signed char` em C.            |
-| [Size][]                 | Representa o tipo `size_t` em C.                 |
-| [UintPtr][]              | Representa o tipo `uintptr_t` em C.              |
-| [UnsignedChar][]         | Representa o tipo `unsigned char` em C.          |
-| [UnsignedInt][]          | Representa o tipo `unsigned int` em C.           |
-| [UnsignedLong][]         | Representa o tipo `unsigned long int` em C.      |
-| [UnsignedLongLong][]     | Representa o tipo `unsigned long long` em C.     |
-| [UnsignedShort][]        | Representa o tipo `unsigned short` em C.         |
-| [WChar][]                | Representa o tipo `wchar_t` em C.                |
+| [AbiSpecificInteger][AbiSpecificInteger]   | O supertipo de todos os tipos de inteiros específicos de ABI.   |
+| [Int][Int]                  | Representa o tipo `int` em C.                    |
+| [IntPtr][IntPtr]               | Representa o tipo `intptr_t` em C.               |
+| [Long][Long]                 | Representa o tipo `long int` (`long`) em C.      |
+| [LongLong][LongLong]             | Representa o tipo `long long` em C.              |
+| [Short][Short]                | Representa o tipo `short` em C.                  |
+| [SignedChar][SignedChar]           | Representa o tipo `signed char` em C.            |
+| [Size][Size]                 | Representa o tipo `size_t` em C.                 |
+| [UintPtr][UintPtr]              | Representa o tipo `uintptr_t` em C.              |
+| [UnsignedChar][UnsignedChar]         | Representa o tipo `unsigned char` em C.          |
+| [UnsignedInt][UnsignedInt]          | Representa o tipo `unsigned int` em C.           |
+| [UnsignedLong][UnsignedLong]         | Representa o tipo `unsigned long int` em C.      |
+| [UnsignedLongLong][UnsignedLongLong]     | Representa o tipo `unsigned long long` em C.     |
+| [UnsignedShort][UnsignedShort]        | Representa o tipo `unsigned short` em C.         |
+| [WChar][WChar]                | Representa o tipo `wchar_t` em C.                |
 
 {:.table .table-striped }
 
@@ -275,9 +275,9 @@ Os Assets Nativos devem fornecer os seguintes benefícios:
 
 * Compilar o código nativo ou obter os binários
   usando um gancho de build `hook/build.dart` do pacote.
-* Empacotar o [`Asset`][] nativo que o gancho de build `build.dart` relata.
+* Empacotar o [`Asset`][`Asset`] nativo que o gancho de build `build.dart` relata.
 * Tornar os assets nativos disponíveis em tempo de execução por meio de
-  funções declarativas `@Native<>() extern` usando o [`assetId`][].
+  funções declarativas `@Native<>() extern` usando o [`assetId`][`assetId`].
 
 Quando você [opta por participar](#opt-in-to-the-experiment) do experimento nativo,
 os comandos `flutter (run|build)` e `dart (run|build)`
@@ -285,7 +285,7 @@ compilam e empacotam o código nativo com o código Dart.
 
 ### Revisando o exemplo `native_add_library` {:#review-the-native-add-library-example}
 
-O exemplo [`native_add_library`][] inclui o código mínimo para
+O exemplo [`native_add_library`][`native_add_library`] inclui o código mínimo para
 compilar e empacotar código C em um pacote Dart.
 
 O exemplo inclui os seguintes arquivos:
@@ -296,10 +296,10 @@ O exemplo inclui os seguintes arquivos:
 
 | **Arquivo fonte**                         | **Descrição**                                                                                                                                                                |
 ------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`src/native_add_library.c`][]          | O arquivo C contendo o código para `add`.                                                                                                                                      |
-| [`lib/native_add_library.dart`][]       | O arquivo Dart que invoca a função C `add` no asset `package:native_add_library/native_add_library.dart` por meio de FFI. (Observe que o _id do asset_ é o URI da biblioteca por padrão.) |
-| [`test/native_add_library_test.dart`][] | Um teste Dart usando o código nativo.                                                                                                                                             |
-| [`hook/build.dart`][]                   | Um gancho de build para compilar `src/native_add_library.c` e declarar o asset compilado com o id `package:native_add_library/native_add_library.dart`.                              |
+| [`src/native_add_library.c`][`src/native_add_library.c`]          | O arquivo C contendo o código para `add`.                                                                                                                                      |
+| [`lib/native_add_library.dart`][`lib/native_add_library.dart`]       | O arquivo Dart que invoca a função C `add` no asset `package:native_add_library/native_add_library.dart` por meio de FFI. (Observe que o _id do asset_ é o URI da biblioteca por padrão.) |
+| [`test/native_add_library_test.dart`][`test/native_add_library_test.dart`] | Um teste Dart usando o código nativo.                                                                                                                                             |
+| [`hook/build.dart`][`hook/build.dart`]                   | Um gancho de build para compilar `src/native_add_library.c` e declarar o asset compilado com o id `package:native_add_library/native_add_library.dart`.                              |
 
 {:.table .table-striped }
 
@@ -310,16 +310,16 @@ O exemplo inclui os seguintes arquivos:
 
 Quando um projeto Dart ou Flutter depende de `package:native_add_library`,
 ele invoca o gancho de build `hook/build.dart` nos comandos `run`, `build` e `test`.
-O exemplo [`native_add_app`][] mostra um uso de `native_add_library`.
+O exemplo [`native_add_app`][`native_add_app`] mostra um uso de `native_add_library`.
 
 ### Revisando a documentação da API de Assets Nativos {:#review-native-asset-api-documentation}
 
 A documentação da API pode ser encontrada para os seguintes pacotes:
 
 * Para saber mais sobre assets nativos em Dart FFI,
-  consulte a referência da API `dart:ffi` para [`Native`][] e [`DefaultAsset`][].
+  consulte a referência da API `dart:ffi` para [`Native`][`Native`] e [`DefaultAsset`][`DefaultAsset`].
 * Para saber mais sobre o gancho de build `hook/build.dart`,
-  consulte a [`referência da API package:native_assets_cli`][].
+  consulte a [`referência da API package:native_assets_cli`][`package:native_assets_cli` API reference].
 
 ### Optando por participar do experimento {:#opt-in-to-the-experiment}
 

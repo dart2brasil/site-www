@@ -119,7 +119,7 @@ enchilada/
 Um arquivo muito comum em código aberto é um arquivo _README_ que
 descreve o projeto. Isso é especialmente importante no pub. Quando você faz o upload
 para o [site pub.dev,]({{site.pub}}) seu arquivo `README.md`
-é mostrado—renderizado como [Markdown][]—na página do seu pacote.
+é mostrado—renderizado como [Markdown][Markdown]—na página do seu pacote.
 Este é o lugar perfeito para apresentar seu código às pessoas.
 
 Para orientações sobre como escrever um ótimo README, veja
@@ -255,7 +255,7 @@ Scripts Dart colocados dentro do diretório `bin` são públicos. Se você está
 dentro do diretório de um pacote, você pode usar
 [`dart run`](/tools/dart-run) para executar scripts dos diretórios `bin`
 de qualquer outro pacote do qual o pacote depende. De _qualquer_
-diretório, você pode [executar scripts][]
+diretório, você pode [executar scripts][run scripts]
 de pacotes que você ativou usando
 [`dart pub global activate`][activate].
 
@@ -311,10 +311,10 @@ maneiras que podem quebrar seu código.
 Como você importa bibliotecas de dentro do seu próprio pacote
 depende das localizações das bibliotecas:
 
- * Ao [alcançar dentro ou fora de `lib/`][]
-   (lint: [_avoid_relative_lib_imports_][]),
+ * Ao [alcançar dentro ou fora de `lib/`][reaching inside or outside `lib/`]
+   (lint: [_avoid_relative_lib_imports_][_avoid_relative_lib_imports_]),
    use `package:`.
- * Caso contrário, [prefira importações relativas][].
+ * Caso contrário, [prefira importações relativas][prefer relative imports].
  
  [reaching inside or outside `lib/`]: /effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib
  [_avoid_relative_lib_imports_]: /tools/linter-rules/avoid_relative_lib_imports
@@ -510,7 +510,7 @@ desses hooks devem ser dependências normais e não `dev_dependencies`.
 O suporte a hook (gancho) é **experimental** e está em desenvolvimento ativo.
 
 Para saber mais sobre como definir hooks e seu status atual,
-consulte a [documentação do hook `build.dart`][].
+consulte a [documentação do hook `build.dart`][`build.dart` hook documentation].
 :::
 
 

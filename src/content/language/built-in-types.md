@@ -15,11 +15,11 @@ A linguagem Dart tem suporte especial para o seguinte:
 - [Números](#numbers) (`int`, `double`)
 - [Strings](#strings) (`String`)
 - [Booleanos](#booleans) (`bool`)
-- [Records][] (`(valor1, valor2)`)
-- [Funções][] (`Function`)
-- [Listas][] (`List`, também conhecidas como *arrays*)
-- [Sets][] (`Set`)
-- [Maps][] (`Map`)
+- [Records][Records] (`(valor1, valor2)`)
+- [Funções][Funções] (`Function`)
+- [Listas][Listas] (`List`, também conhecidas como *arrays*)
+- [Sets][Sets] (`Set`)
+- [Maps][Maps] (`Map`)
 - [Runes](#runes-and-grapheme-clusters) (`Runes`; frequentemente substituído pela API `characters`)
 - [Symbols](#symbols) (`Symbol`)
 - O valor `null` (`Null`)
@@ -37,9 +37,9 @@ Alguns outros tipos também têm funções especiais na linguagem Dart:
 
 * `Object`: A superclasse de todas as classes Dart, exceto `Null`.
 * `Enum`: A superclasse de todos os enums (enumerações).
-* `Future` e `Stream`: Usado em [suporte a assincronia][].
+* `Future` e `Stream`: Usado em [suporte a assincronia][suporte a assincronia].
 * `Iterable`: Usado em [loops for-in][iteration] e
-  em [funções geradoras][generator functions] síncronas.
+  em [funções geradoras][funções geradoras] síncronas.
 * `Never`: Indica que uma expressão nunca pode
   terminar de avaliar com sucesso.
   Mais frequentemente usado para funções que sempre lançam uma exceção.
@@ -50,7 +50,7 @@ Alguns outros tipos também têm funções especiais na linguagem Dart:
 
 As classes `Object`, `Object?`, `Null` e `Never`
 têm funções especiais na hierarquia de classes.
-Saiba mais sobre essas funções em [Entendendo a segurança nula][].
+Saiba mais sobre essas funções em [Entendendo a segurança nula][Entendendo a segurança nula].
 
 {% comment %}
 Se decidirmos cobrir `dynamic` mais,
@@ -67,7 +67,7 @@ aqui está um bom exemplo que ilustra o que dynamic faz:
 
 Os números em Dart vêm em dois tipos:
 
-[`int`][]
+[`int`][`int`]
 
 :   Valores inteiros não maiores que 64 bits,
     [dependendo da plataforma][dart-numbers].
@@ -77,18 +77,18 @@ Os números em Dart vêm em dois tipos:
     (valores de ponto flutuante de 64 bits sem parte fracionária)
     e podem ser de -2<sup>53</sup> a 2<sup>53</sup> - 1.
 
-[`double`][]
+[`double`][`double`]
 
 :   Números de ponto flutuante de 64 bits (precisão dupla), conforme especificado pelo
     padrão IEEE 754.
 
-Tanto `int` quanto `double` são subtipos de [`num`][].
+Tanto `int` quanto `double` são subtipos de [`num`][`num`].
 O tipo num inclui operadores básicos como +, -, / e \*,
 e é também onde você encontrará `abs()`, `ceil()`
 e `floor()`, entre outros métodos.
 (Operadores bit a bit, como \>\>, são definidos na classe `int`.)
 Se `num` e seus subtipos não têm o que você procura, a
-biblioteca [`dart:math`][] pode ter.
+biblioteca [`dart:math`][`dart:math`] pode ter.
 
 Inteiros são números sem ponto decimal. Aqui estão alguns exemplos de
 definição de literais inteiros:
@@ -158,7 +158,7 @@ assert((3 & 4) == 0); // 0011 & 0100 == 0000
 ```
 
 Para mais exemplos, veja a
-seção de [operadores bit a bit e de deslocamento][].
+seção de [operadores bit a bit e de deslocamento][operadores bit a bit e de deslocamento].
 
 Literais numéricos são constantes em tempo de compilação.
 Muitas expressões aritméticas também são constantes em tempo de compilação,
@@ -194,7 +194,7 @@ var n5 = 100__000_000__000_000;  // cem milhões de milhões!
 ```
 
 :::version-note
-O uso de separadores de dígitos requer uma [versão de linguagem][] de pelo menos 3.6.0.
+O uso de separadores de dígitos requer uma [versão de linguagem][versão de linguagem] de pelo menos 3.6.0.
 :::
 
 ## Strings {:#strings}
@@ -332,8 +332,8 @@ assert(iMeantToDoThis.isNaN);
 
 ## Runes e clusters de grafemas {:#runes-and-grapheme-clusters}
 
-Em Dart, [runes][] expõem os pontos de código Unicode de uma string.
-Você pode usar o [pacote characters][]
+Em Dart, [runes][runes] expõem os pontos de código Unicode de uma string.
+Você pode usar o [pacote characters][pacote characters]
 para visualizar ou manipular caracteres percebidos pelo usuário,
 também conhecidos como
 [clusters de grafemas (estendidos) Unicode][grapheme clusters].
@@ -353,7 +353,7 @@ Por exemplo, o emoji de risada (😆) é `\u{1f606}`.
 Se você precisar ler ou escrever caracteres Unicode individuais,
 use o getter `characters` definido em String
 pelo pacote characters.
-O objeto [`Characters`][] retornado é a string como
+O objeto [`Characters`][`Characters`] retornado é a string como
 uma sequência de clusters de grafemas.
 Aqui está um exemplo de como usar a API characters:
 
@@ -384,7 +384,7 @@ para o pacote characters.
 
 ## Symbols {:#symbols}
 
-Um objeto [`Symbol`][]
+Um objeto [`Symbol`][`Symbol`]
 representa um operador ou identificador declarado em um programa Dart. Você
 pode nunca precisar usar symbols (símbolos), mas eles são inestimáveis para APIs que
 se referem a identificadores por nome, porque a minificação altera os nomes

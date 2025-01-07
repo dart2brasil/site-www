@@ -66,7 +66,7 @@ incluindo erros e avisos especificados na
 Você também pode configurar regras do linter (analisador de código),
 para garantir que seu código esteja em conformidade com o
 [Guia de Estilo Dart](/effective-dart/style)
-e outras diretrizes sugeridas em [Effective Dart][].
+e outras diretrizes sugeridas em [Effective Dart][Effective Dart].
 Ferramentas como [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
 e [IDEs e editores](/tools#editors)
@@ -222,7 +222,7 @@ warning - Os argumentos de tipo de 'Map' não podem ser inferidos - inference_fa
 O modo `strict-inference` pode identificar muitas situações
 que resultam em uma falha de inferência.
 
-Consulte [Condições para falha de inferência estrita][]
+Consulte [Condições para falha de inferência estrita][Condições para falha de inferência estrita]
 para obter uma lista exaustiva de condições de falha de inferência.
 :::
 
@@ -251,7 +251,7 @@ warning - O tipo genérico 'List<dynamic>' deve ter argumentos de tipo explícit
 ## Habilitando e desabilitando regras do linter {:#enabling-linter-rules}
 
 O pacote analyzer também fornece um linter de código. Uma grande variedade de
-[regras do linter][] estão disponíveis. Os linters tendem a ser
+[regras do linter][linter rules] estão disponíveis. Os linters tendem a ser
 não denominacionais—as regras não precisam concordar umas com as outras.
 Por exemplo, algumas regras são mais apropriadas para pacotes Dart regulares
 e outras são projetadas para aplicativos Flutter.
@@ -260,7 +260,7 @@ Observe que as regras do linter podem ter falsos positivos, ao contrário da an�
 ### Habilitando as regras do linter recomendadas pela equipe Dart {:#lints}
 
 A equipe Dart fornece dois conjuntos de regras do linter recomendadas
-no [pacote lints][]:
+no [pacote lints][pacote lints]:
 
 Regras principais
 : Ajudam a identificar problemas críticos que provavelmente levarão a problemas
@@ -284,7 +284,7 @@ que fornece um superconjunto das regras recomendadas.
 :::
 
 Para habilitar qualquer um dos conjuntos de lints,
-adicione o [pacote lints][] como uma dependência de desenvolvimento:
+adicione o [pacote lints][pacote lints] como uma dependência de desenvolvimento:
 
 ```console
 $ dart pub add --dev lints
@@ -308,7 +308,7 @@ Quando uma **nova versão de `lints`** é publicada,
 o código que antes passava na análise pode **começar a falhar na análise.**
 Recomendamos atualizar seu código para funcionar com as novas regras.
 Outras opções são habilitar explicitamente regras do linter individuais
-ou [desabilitar regras individuais][].
+ou [desabilitar regras individuais][desabilitar regras individuais].
 :::
 
 [pacote lints]: {{site.pub-pkg}}/lints
@@ -421,9 +421,9 @@ Você tem algumas maneiras de excluir código da análise:
 * Impedir que regras específicas que não sejam de erro sejam aplicadas a arquivos individuais.
 * Impedir que regras específicas que não sejam de erro sejam aplicadas a linhas de código individuais.
 
-Você também pode [desabilitar regras específicas][]
+Você também pode [desabilitar regras específicas][desabilitar regras individuais]
 para todos os arquivos ou
-[alterar a severidade das regras][].
+[alterar a severidade das regras][alterar a severidade das regras].
 
 
 ### Excluindo arquivos {:#excluding-files}
@@ -509,7 +509,7 @@ int x = ''; // ignore: invalid_assignment
 Se você precisar suprimir um diagnóstico que não seja de erro do analisador
 em um arquivo `pubspec.yaml`, adicione um comentário `ignore` acima da linha afetada.
 
-O exemplo a seguir ignora o lint [`sort_pub_dependencies`][]
+O exemplo a seguir ignora o lint [`sort_pub_dependencies`][`sort_pub_dependencies`]
 pois ele quer colocar a dependência `flutter` primeiro:
 
 ```yaml title="pubspec.yaml".
@@ -554,7 +554,7 @@ O analisador oferece suporte a três níveis de severidade:
 
 ### Ignorando regras {:#ignoring-rules}
 
-Você pode ignorar [diagnósticos do analisador][] e [regras do linter][] específicos
+Você pode ignorar [diagnósticos do analisador][analyzer diagnostics] e [regras do linter][linter rules] específicos
 usando o campo `errors:`.
 Liste a regra, seguida por <code>:&nbsp;ignore</code>. Por exemplo, o seguinte
 arquivo de opções de análise instrui as ferramentas de análise a ignorar a regra TODO:

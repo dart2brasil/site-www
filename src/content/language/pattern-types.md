@@ -12,7 +12,7 @@ nextpage:
 
 Esta página é uma referência para os diferentes tipos de padrões.
 Para uma visão geral de como os padrões funcionam, onde você pode usá-los em
-Dart, e casos de uso comuns, visite a página principal [Padrões][].
+Dart, e casos de uso comuns, visite a página principal [Padrões][Padrões].
 
 #### Precedência de padrões {:#pattern-precedence}
 
@@ -110,7 +110,7 @@ String asciiCharType(int char) {
 
 `foo as String`
 
-Um padrão de cast (conversão de tipo) permite inserir um [type cast][] no meio da desestruturação,
+Um padrão de cast (conversão de tipo) permite inserir um [type cast][type cast] no meio da desestruturação,
 antes de passar o valor para outro subpadrão:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (cast)"?>
@@ -119,7 +119,7 @@ antes de passar o valor para outro subpadrão:
 var (i as int, s as String) = record;
 ```
 
-Padrões de cast vão [lançar (throw)][] se o valor não tiver o tipo declarado.
+Padrões de cast vão [lançar (throw)][lançar (throw)] se o valor não tiver o tipo declarado.
 Como o [padrão null-assert](#null-assert), isso permite que você afirme a força o
 tipo esperado de algum valor desestruturado.
 
@@ -150,7 +150,7 @@ Para corresponder quando o valor _é_ nulo, use o [padrão constante](#constant)
 `subpadrão!`
 
 Padrões null-assert (afirmação de não nulo) correspondem primeiro se o objeto não é nulo, depois no valor.
-Eles permitem que valores não nulos fluam através, mas [lançam (throw)][] se o valor correspondido
+Eles permitem que valores não nulos fluam através, mas [lançam (throw)][lançar (throw)] se o valor correspondido
 for nulo.
 
 Para garantir que valores `null` não sejam silenciosamente tratados como falhas de correspondência,
@@ -252,11 +252,11 @@ Você pode usar um [padrão curinga](#wildcard) como um padrão de variável.
 Padrões de identificador podem se comportar como um [padrão constante](#constant) ou como um
 [padrão de variável](#variable), dependendo do contexto em que aparecem:
 
-- Contexto de [Declaração][]: declara uma nova variável com nome de identificador:
+- Contexto de [Declaração][Declaração]: declara uma nova variável com nome de identificador:
   `var (a, b) = (1, 2);`
-- Contexto de [Atribuição][]: atribui à variável existente com nome de identificador:
+- Contexto de [Atribuição][Atribuição]: atribui à variável existente com nome de identificador:
   `(a, b) = (3, 4);`
-- Contexto de [Correspondência][]: tratado como um padrão constante nomeado (a menos que seu nome seja `_`):
+- Contexto de [Correspondência][Correspondência]: tratado como um padrão constante nomeado (a menos que seu nome seja `_`):
   <?code-excerpt "language/lib/patterns/pattern_types.dart (match-context)"?>
   ```dart
   const c = 1;
@@ -313,7 +313,7 @@ Dart começa a corresponder ao padrão da esquerda para a direita.
 
 `[subpadrão1, subpadrão2]`
 
-Um padrão de lista corresponde a valores que implementam [`List`][], e então recursivamente
+Um padrão de lista corresponde a valores que implementam [`List`][`List`], e então recursivamente
 corresponde seus subpadrões contra os elementos da lista para desestruturá-los por posição:
 
 <?code-excerpt "language/lib/patterns/switch.dart (list-pattern)"?>
@@ -358,7 +358,7 @@ print('$a $b $rest $c $d');
 
 `{"chave": subpadrão1, someConst: subpadrão2}`
 
-Padrões de mapa correspondem a valores que implementam [`Map`][], e então recursivamente
+Padrões de mapa correspondem a valores que implementam [`Map`][`Map`], e então recursivamente
 correspondem seus subpadrões contra as chaves do mapa para desestruturá-los.
 
 Padrões de mapa não exigem que o padrão corresponda ao mapa inteiro. Um padrão de mapa
@@ -370,8 +370,8 @@ ignora quaisquer chaves que o mapa contenha que não sejam correspondidas pelo p
 
 `(x: subpadrão1, y: subpadrão2)`
 
-Padrões de registro correspondem a um objeto [registro][] e desestruturam seus campos.
-Se o valor não for um registro com a mesma [forma][] que o padrão, a correspondência
+Padrões de registro correspondem a um objeto [registro][registro] e desestruturam seus campos.
+Se o valor não for um registro com a mesma [forma][forma] que o padrão, a correspondência
 falha. Caso contrário, os subpadrões de campo são correspondidos contra os
 campos correspondentes no registro.
 
@@ -414,7 +414,7 @@ var (:untyped as int, :typed as String) = record;
 `SomeClass(x: subpadrão1, y: subpadrão2)`
 
 Padrões de objeto verificam o valor correspondido em relação a um tipo nomeado dado para desestruturar
-dados usando getters nas propriedades do objeto. Eles são [refutados][]
+dados usando getters nas propriedades do objeto. Eles são [refutados][refutado]
 se o valor não tiver o mesmo tipo.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (object)"?>

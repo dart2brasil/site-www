@@ -13,7 +13,7 @@ Para saber mais,
 veja [Dart 3 e null safety](/null-safety#dart-3-and-null-safety).
 :::
 
-Esta página descreve como e quando migrar seu código para [null safety][].
+Esta página descreve como e quando migrar seu código para [null safety][null safety].
 Aqui estão os passos básicos para migrar cada pacote que você possui:
 
 1. [**Aguarde**](#step1-wait) que os pacotes
@@ -28,7 +28,7 @@ Aqui estão os passos básicos para migrar cada pacote que você possui:
 
 :::tip
 Se sua aplicação ou biblioteca for grande, confira
-[Migração gradual para null safety em grandes projetos Dart][].
+[Migração gradual para null safety em grandes projetos Dart][Migração gradual para null safety em grandes projetos Dart].
 :::
 
 :::note
@@ -124,7 +124,7 @@ têm versões preliminares resolvíveis que suportam null safety.
 
 Se alguma das dependências do seu pacote _ainda não_ suportar null safety,
 nós encorajamos você a entrar em contato com o proprietário do pacote.
-Você pode encontrar os detalhes de contato na página do pacote em [pub.dev][].
+Você pode encontrar os detalhes de contato na página do pacote em [pub.dev][pub.dev].
 
 [pub.dev]: {{site.pub}}
 
@@ -149,7 +149,7 @@ Por exemplo, se uma variável pode ser `null`,
 [seu tipo precisa de um sufixo `?`][tipo anulável].
 Se um parâmetro nomeado não deve ser anulável,
 marque-o como [`required`][required]
-ou dê a ele um [valor padrão][].
+ou dê a ele um [valor padrão][valor padrão].
 
 Você tem duas opções para migrar:
 
@@ -159,7 +159,7 @@ Você tem duas opções para migrar:
 
 :::tip
 Para obter ajuda adicional ao migrar o código, verifique o
-[FAQ de null safety][].
+[FAQ de null safety][FAQ de null safety].
 :::
 
 [tipo anulável]: /null-safety#creating-variables
@@ -174,7 +174,7 @@ Para obter ajuda adicional ao migrar o código, verifique o
 A ferramenta de migração pega um pacote de código Dart não null-safe
 e o converte para null safety.
 Você pode orientar a conversão da ferramenta adicionando
-[marcadores de dica][] ao seu código Dart.
+[marcadores de dica][marcadores de dica] ao seu código Dart.
 
 [marcadores de dica]: #hint-markers
 
@@ -339,10 +339,10 @@ Para excluir um arquivo ou diretório,
 clique em sua caixa de seleção verde.
 Mais tarde, quando você aplicar as alterações,
 cada arquivo excluído permanecerá inalterado
-exceto por um [comentário de versão][] 2.9.
+exceto por um [comentário de versão][comentário de versão] 2.9.
 
 Para obter mais informações sobre migração incremental, consulte
-[Null safety *unsound*][].
+[Null safety *unsound*][Null safety unsound].
 
 Observe que apenas aplicativos e pacotes totalmente migrados
 são compatíveis com Dart 3.
@@ -395,7 +395,7 @@ Para migrar um pacote manualmente, siga estes passos:
      sdk: '>=2.12.0 <3.0.0'
    ```
 
-2. Recompile o [arquivo de configuração do pacote][]:
+2. Recompile o [arquivo de configuração do pacote][arquivo de configuração do pacote]:
 
    ```console
    $ dart pub get
@@ -417,7 +417,7 @@ Para migrar um pacote manualmente, siga estes passos:
    Elimine erros estáticos adicionando `?`, `!`, `required` e `late`,
    conforme necessário.
 
-Veja [Null safety *unsound*][]
+Veja [Null safety *unsound*][Null safety unsound]
 para obter mais ajuda sobre como migrar o código manualmente.
 
 [Null safety unsound]: /null-safety/unsound-null-safety
@@ -428,7 +428,7 @@ para obter mais ajuda sobre como migrar o código manualmente.
 Atualize seus pacotes
 (usando `dart pub get` no seu IDE ou na linha de comando).
 Em seguida, use seu IDE ou a linha de comando
-para realizar [análise estática][] em seu código:
+para realizar [análise estática][análise estática] em seu código:
 
 ```console
 $ dart pub get
@@ -462,7 +462,7 @@ que você migrar:
 * [Atualize as restrições do SDK e as dependências do pacote.](#check-your-pubspec)
 * [Publique o pacote](/tools/pub/publishing).
   Se você não considerar esta versão como um lançamento estável,
-  então [publique o pacote como um pré-lançamento][].
+  então [publique o pacote como um pré-lançamento][publique o pacote como um pré-lançamento].
 
 [publique o pacote como um pré-lançamento]: /tools/pub/publishing#publishing-prereleases
 

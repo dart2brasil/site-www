@@ -18,7 +18,7 @@ Para permitir que uma instância de sua classe Dart seja chamada como uma funç�
 implemente o método `call()`.
 
 O método `call()` permite que uma instância de qualquer classe que o defina emule uma função.
-Este método oferece a mesma funcionalidade que [funções][] normais,
+Este método oferece a mesma funcionalidade que [funções][functions] normais,
 como parâmetros e tipos de retorno.
 
 No exemplo a seguir, a classe `WannabeFunction` define uma função `call()`

@@ -70,7 +70,7 @@ Uma opção é simplesmente deixar o aplicativo usar ambas as
 versões de `collection`. Ele terá duas cópias da biblioteca em versões
 diferentes e `widgets` e `templates` receberão cada uma a que desejam.
 
-Isso é o que o [npm][] faz para node.js. Funcionaria para o Dart? Considere este
+Isso é o que o [npm][npm] faz para node.js. Funcionaria para o Dart? Considere este
 cenário:
 
  1. `collection` define alguma classe `Dictionary` (Dicionário).
@@ -129,7 +129,7 @@ dará espaço suficiente para avançar nossas dependências para versões mais
 recentes. Contanto que haja sobreposição em seus intervalos, ainda podemos
 encontrar uma única versão que os deixe felizes.
 
-Este é o modelo que o [bundler][] segue e também é o modelo do pub. Quando você
+Este é o modelo que o [bundler][bundler] segue e também é o modelo do pub. Quando você
 adiciona uma dependência em seu pubspec, você pode especificar um _intervalo_ de
 versões que você pode aceitar.
 Se o pubspec para `widgets` fosse assim:
@@ -349,7 +349,7 @@ quais seu aplicativo depende direta ou indiretamente e a melhor versão desse
 pacote que funcionará com as restrições do seu aplicativo.
 
 Para cada pacote, o pub pega essa informação,
-calcula um [hash de conteúdo][] a partir dela e grava ambos em um _[lockfile][]_
+calcula um [hash de conteúdo][content hash] a partir dela e grava ambos em um _[lockfile][lockfile]_
 no diretório do seu aplicativo chamado `pubspec.lock`. Quando o pub cria o arquivo
 `.dart_tool/package_config.json` para seu aplicativo, ele usa o lockfile para saber a quais versões de cada pacote se referir. (E se você estiver curioso para ver quais versões ele selecionou, você pode ler o lockfile para descobrir.)
 

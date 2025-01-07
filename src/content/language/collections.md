@@ -10,15 +10,15 @@ nextpage:
   title: Genéricos
 ---
 
-Dart possui suporte interno para [coleções][] do tipo lista, set e map.
+Dart possui suporte interno para [coleções][collections] do tipo lista, set e map.
 Para saber mais sobre como configurar os tipos que as coleções contêm,
-confira [Generics][].
+confira [Generics][generics].
 
 ## Listas {:#lists}
 
 Talvez a coleção mais comum em quase todas as linguagens de programação
 seja o *array* (matriz), ou grupo ordenado de objetos. Em Dart, arrays são
-objetos [`List`][] , então a maioria das pessoas apenas os chama de *listas*.
+objetos [`List`][`List`] , então a maioria das pessoas apenas os chama de *listas*.
 
 Literais de lista em Dart são denotados por
 uma lista separada por vírgulas de expressões ou valores,
@@ -33,7 +33,7 @@ var list = [1, 2, 3];
 :::note
 Dart infere que `list` tem o tipo `List<int>`. Se você tentar adicionar
 objetos não inteiros a esta lista, o analisador ou o tempo de execução gera um erro. Para mais
-informações, leia sobre [inferência de tipo][].
+informações, leia sobre [inferência de tipo][type inference].
 :::
 
 <a id="trailing-comma"></a>
@@ -81,7 +81,7 @@ documentação [`dart:core`](/libraries/dart-core#lists).
 
 Um set em Dart é uma coleção não ordenada de itens únicos.
 O suporte do Dart para sets é fornecido por literais de set e pelo
-tipo [`Set`][].
+tipo [`Set`][`Set`].
 
 Aqui está um set simples do Dart, criado usando um literal de set:
 
@@ -156,7 +156,7 @@ documentação [`dart:core`](/libraries/dart-core#sets).
 Em geral, um map é um objeto que associa chaves e valores. Tanto
 chaves quanto valores podem ser qualquer tipo de objeto. Cada *chave* ocorre apenas uma vez,
 mas você pode usar o mesmo *valor* várias vezes. O suporte do Dart para maps
-é fornecido por literais de map e pelo tipo [`Map`][].
+é fornecido por literais de map e pelo tipo [`Map`][`Map`].
 
 Aqui estão alguns maps simples do Dart, criados usando literais de map:
 
@@ -180,7 +180,7 @@ var nobleGases = {
 Dart infere que `gifts` tem o tipo `Map<String, String>` e `nobleGases`
 tem o tipo `Map<int, String>`. Se você tentar adicionar o tipo errado de valor a
 qualquer um dos maps, o analisador ou o tempo de execução gera um erro. Para mais informações,
-leia sobre [inferência de tipo][].
+leia sobre [inferência de tipo][type inference].
 :::
 
 Você pode criar os mesmos objetos usando um construtor `Map`:
@@ -201,7 +201,7 @@ nobleGases[18] = 'argônio';
 :::note
 Se você vem de uma linguagem como C# ou Java, pode esperar ver `new Map()`
 em vez de apenas `Map()`. Em Dart, a palavra-chave `new` é opcional.
-Para detalhes, veja [Usando construtores][].
+Para detalhes, veja [Usando construtores][Usando construtores].
 :::
 
 Adicione um novo par chave-valor a um map existente
@@ -300,7 +300,7 @@ para criar uma lista com três ou quatro itens nela:
 var nav = ['Home', 'Móveis', 'Plantas', if (promoActive) 'Outlet'];
 ```
 
-Dart também suporta [if-case][] dentro de literais de coleção:
+Dart também suporta [if-case][if-case] dentro de literais de coleção:
 
 ```dart
 var nav = ['Home', 'Móveis', 'Plantas', if (login case 'Gerente') 'Estoque'];

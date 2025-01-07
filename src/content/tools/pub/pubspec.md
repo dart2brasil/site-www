@@ -268,7 +268,7 @@ Para mais informações, consulte
 
 ### Platforms {:#platforms}
 
-Quando você [publica um pacote][], o pub.dev detecta automaticamente as
+Quando você [publica um pacote][publish a package], o pub.dev detecta automaticamente as
 plataformas que o pacote suporta. Se esta lista de suporte à plataforma estiver
 incorreta,
 use `platforms` para declarar explicitamente quais plataformas seu
@@ -301,7 +301,7 @@ platforms:
 
 :::note Se você usa Flutter
 O suporte à plataforma de plugins Flutter é derivado por padrão das
-[declarações de plugin][].
+[declarações de plugin][plugin declarations].
 
 Se houver uma discrepância entre a declaração do plugin e o suporte real
 da plataforma, uma declaração `platforms` de nível superior ainda pode ser
@@ -347,7 +347,7 @@ desenvolvimento de suas dependências.
 
 ### False_secrets {:#false-secrets}
 
-Quando você tenta [publicar um pacote][], o pub realiza uma pesquisa por
+Quando você tenta [publicar um pacote][publish a package], o pub realiza uma pesquisa por
 possíveis vazamentos de credenciais secretas,
 chaves de API ou chaves
 criptográficas. Se o pub detectar um possível vazamento em um arquivo que
@@ -357,7 +357,7 @@ A detecção de vazamentos não é perfeita.
 Para evitar falsos positivos, você
 pode dizer ao pub para não procurar
 vazamentos em determinados arquivos,
-criando uma lista de permissões usando [padrões `gitignore`][] em
+criando uma lista de permissões usando [padrões `gitignore`][`gitignore` patterns] em
 `false_secrets` no pubspec.
 
 [`gitignore` patterns]: https://git-scm.com/docs/gitignore#_pattern_format
@@ -459,7 +459,7 @@ O Pub.dev mescla diferentes grafias de um tópico em um tópico canônico para
 evitar duplicação e melhorar a descoberta por tópico.
 
 Você pode contribuir para a lista de tópicos canônicos e seus aliases
-abrindo um pull request que edita o arquivo [`topics.yaml`][] no GitHub.
+abrindo um pull request que edita o arquivo [`topics.yaml`][`topics.yaml` file] no GitHub.
 :::
 
 [`topics.yaml` file]: {{site.repo.dart.org}}/pub-dev/blob/master/doc/topics.yaml
@@ -503,7 +503,7 @@ dependências.
 Para um pacote usar um recurso introduzido após 2.0, seu pubspec deve ter
 uma restrição inferior que seja pelo
 menos a versão em que o recurso foi
-introduzido. Para mais detalhes, confira [Versionamento de linguagem][].
+introduzido. Para mais detalhes, confira [Versionamento de linguagem][Language versioning].
 :::
 
 [Language versioning]: /resources/language/evolution#language-versioning

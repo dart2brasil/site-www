@@ -35,11 +35,11 @@ class SmartTelevision [!extends!] Television {
 ```
 
 Para outro uso de `extends`, veja a discussão sobre
-[tipos parametrizados][] na página de Generics.
+[tipos parametrizados][parameterized types] na página de Generics.
 
 ## Sobrescrevendo membros {:#overriding-members}
 
-Subclasses podem sobrescrever métodos de instância (incluindo [operadores][]),
+Subclasses podem sobrescrever métodos de instância (incluindo [operadores][operators]),
 getters e setters.
 Você pode usar a anotação `@override` para indicar que você está
 intencionalmente sobrescrevendo um membro:
@@ -69,7 +69,7 @@ ao método (ou métodos) que ele sobrescreve de várias maneiras:
   altera o tipo de parâmetro de `int` para um supertipo, `num`.
 * Se o método sobrescrito aceitar _n_ parâmetros posicionais,
   então o método de sobrescrita também deve aceitar _n_ parâmetros posicionais.
-* Um [método genérico][] não pode sobrescrever um não genérico,
+* Um [método genérico][generic method] não pode sobrescrever um não genérico,
   e um método não genérico não pode sobrescrever um genérico.
 
 Às vezes, você pode querer restringir o tipo de

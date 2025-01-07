@@ -7,7 +7,7 @@ description: Ferramenta de linha de comando para compilar código-fonte Dart.
 Use o comando `dart compile` para compilar
 um programa Dart para uma [plataforma de destino](/overview#platform).
 A saída—que você especifica usando um subcomando—pode
-incluir um [tempo de execução Dart][] ou ser um _módulo_
+incluir um [tempo de execução Dart][Dart runtime] ou ser um _módulo_
 (também conhecido como _snapshot_).
 
 {% render 'tools/dart-tool-note.md' %}
@@ -23,7 +23,7 @@ Gerado: /Users/me/myapp/bin/myapp.exe
 O próximo exemplo usa o subcomando `aot-snapshot` para
 produzir um módulo compilado ahead-of-time (AOT) (`myapp.aot`).
 Em seguida, ele usa o comando [`dartaotruntime` command](/tools/dartaotruntime)
-(que fornece um [tempo de execução Dart][])
+(que fornece um [tempo de execução Dart][Dart runtime])
 para executar o módulo AOT:
 
 ```console
@@ -58,7 +58,7 @@ Para mais informações sobre a compilação AOT e JIT,
 veja a [discussão sobre plataformas](/overview#platform).
 :::
 
-Consulte o exemplo [native_app][] para um exemplo simples de uso do `dart compile`
+Consulte o exemplo [native_app][native_app] para um exemplo simples de uso do `dart compile`
 para compilar um aplicativo nativo,
 seguido por exemplos de execução do aplicativo.
 
@@ -141,7 +141,7 @@ O subcomando `exe` produz um executável independente para
 Windows, macOS ou Linux.
 Um **executável independente** é um código de máquina nativo que é compilado a partir
 do arquivo Dart especificado e suas dependências,
-mais um pequeno [tempo de execução Dart][] que lida com
+mais um pequeno [tempo de execução Dart][Dart runtime] que lida com
 verificação de tipo e coleta de lixo.
 
 Você pode distribuir e executar o arquivo de saída como faria
@@ -173,8 +173,8 @@ suportam assinatura no macOS e Windows.
 Para saber mais sobre a assinatura de código específica da plataforma,
 consulte a documentação da plataforma para esses sistemas operacionais:
 
-* Documentação do Windows [`SignTool.exe`][]
-* [Guia de Assinatura de Código da Apple][]
+* Documentação do Windows [`SignTool.exe`][`SignTool.exe` documentation]
+* [Guia de Assinatura de Código da Apple][Apple Code Signing guide]
 
 [`SignTool.exe` documentation]: https://docs.microsoft.com/dotnet/framework/tools/signtool-exe
 [Apple Code Signing guide]: {{site.apple-dev}}/support/code-signing/
@@ -244,7 +244,7 @@ Use o subcomando `kernel` para empacotar um aplicativo em um
 único arquivo portátil que
 pode ser executado em todos os sistemas operacionais e arquiteturas de CPU.
 Um módulo kernel contém uma forma binária da árvore de sintaxe abstrata
-([Kernel AST][]) para um programa Dart.
+([Kernel AST][Kernel AST]) para um programa Dart.
 
 Aqui está um exemplo de criação e execução de um módulo kernel:
 
@@ -268,9 +268,9 @@ O subcomando `js` compila o código Dart para JavaScript implantável.
 Use a ferramenta [`webdev`][webdev] em vez de executar o
 compilador Dart para JavaScript.
 
-* O comando [`webdev build`][], por padrão, produz JavaScript minificado e implantável.
+* O comando [`webdev build`][`webdev build`], por padrão, produz JavaScript minificado e implantável.
 
-* O comando [`webdev serve`][], por padrão, produz módulos JavaScript
+* O comando [`webdev serve`][`webdev serve`], por padrão, produz módulos JavaScript
   para execução e depuração durante o desenvolvimento.
 :::
 

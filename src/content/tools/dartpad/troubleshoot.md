@@ -35,7 +35,7 @@ tente o seguinte:
   (nesses casos, **dartbrasil.dev** e **docs.flutter.dev**, respectivamente).
 
 * Se você recarregar repetidamente uma página que contém DartPads embutidos,
-  você pode se deparar com a [limitação de taxa do GitHub][].
+  você pode se deparar com a [limitação de taxa do GitHub][GitHub rate limiting.].
   Dentro de 60 minutos, você deverá conseguir recarregar a página e
   ver o código nos DartPads embutidos.
 

@@ -83,7 +83,7 @@ Para evitar fazer alterações que possam ser inseguras,
 Há muito mais para escrever código legível e
 consistente do que apenas espaços em branco, no entanto.
 Para saber mais sobre as melhores práticas para escrever e estilizar código Dart,
-consulte o [guia de estilo Dart][].
+consulte o [guia de estilo Dart][Dart style guide].
 
 ## Saiba mais {:#learn-more}
 

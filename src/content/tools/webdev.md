@@ -11,8 +11,8 @@ Esta página explica como usar `webdev` para compilar seu aplicativo e
 
 Siga estas instruções para começar a usar `webdev`.
 
-Antes de usar `webdev`, adicione as dependências dos pacotes [build_runner][] e
-[build_web_compilers][] ao seu aplicativo. O pacote `build_runner`
+Antes de usar `webdev`, adicione as dependências dos pacotes [build_runner][build_runner] e
+[build_web_compilers][build_web_compilers] ao seu aplicativo. O pacote `build_runner`
 adiciona funcionalidades de script ao `webdev`.
 
 ```console
@@ -21,7 +21,7 @@ $ dart pub add build_runner build_web_compilers --dev
 
 ### Instalando e atualizando o webdev {:#installing-and-updating-webdev}
 
-Use `dart pub` para instalar `webdev` para [todos os usuários][].
+Use `dart pub` para instalar `webdev` para [todos os usuários][all users].
 
 ```console
 $ dart pub global activate webdev
@@ -39,7 +39,7 @@ Para usar `webdev`, você deve estar no diretório raiz de um pacote que
 depende dos pacotes **build_runner** e **build_web_compilers**.
 Se você estiver testando o aplicativo, ele também deve depender de **build_test**.
 
-Para depender desses pacotes, adicione as seguintes [dev_dependencies][] ao
+Para depender desses pacotes, adicione as seguintes [dev_dependencies][dev_dependencies] ao
 arquivo `pubspec.yaml` do seu aplicativo:
 
 ```yaml
@@ -87,7 +87,7 @@ Esta seção descreve como usar os seguintes comandos:
 
 Você pode personalizar sua compilação usando arquivos de configuração de build.
 Para saber mais sobre arquivos de configuração de build, consulte o
-pacote [build_web_compilers][].
+pacote [build_web_compilers][build_web_compilers].
 
 ### webdev serve {:#serve}
 
@@ -117,7 +117,7 @@ O compilador de produção suporta as duas versões mais recentes de Chrome,
 Edge, Firefox e Safari.
 :::
 
-Para habilitar o [Dart DevTools][], adicione a flag `--debug`:
+Para habilitar o [Dart DevTools][Dart DevTools], adicione a flag `--debug`:
 
 ```console
 $ webdev serve --debug  # habilita o Dart DevTools
@@ -183,7 +183,7 @@ $ dart run build_runner test -h
 ```
 
 O Dart passa os argumentos após o argumento vazio `--` diretamente para o
-executor do [pacote test][]. Para ver todas as opções de linha de comando para o
+executor do [pacote test][test package]. Para ver todas as opções de linha de comando para o
 executor do pacote test, use este comando:
 
 ```console

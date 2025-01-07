@@ -15,7 +15,7 @@ nextpage:
 
 :::version-note
 Modificadores de classe, além de `abstract` (abstrato), exigem
-uma [versão de linguagem][] de pelo menos 3.0.
+uma [versão de linguagem][language version] de pelo menos 3.0.
 :::
 
 Modificadores de classe controlam como uma classe ou mixin (mistura) pode ser usado, tanto
@@ -51,9 +51,9 @@ para obter orientação sobre como navegar nessas mudanças para suas biblioteca
 Para permitir permissão irrestrita para construir ou subtipar de qualquer biblioteca,
 use uma declaração `class` ou `mixin` sem um modificador. Por padrão, você pode:
 
-- [Construir][] novas instâncias de uma classe.
-- [Estender][] uma classe para criar um novo subtipo.
-- [Implementar][] uma classe ou interface de mixin.
+- [Construir][construct] novas instâncias de uma classe.
+- [Estender][extend] uma classe para criar um novo subtipo.
+- [Implementar][implement] uma classe ou interface de mixin.
 - [Misturar][mixin] um mixin ou classe mixin.
 
 ## `abstract` {:#abstract}
@@ -62,7 +62,7 @@ Para definir uma classe que não requer uma implementação completa e concreta 
 toda a sua interface, use o modificador `abstract`.
 
 Classes abstratas não podem ser construídas de nenhuma biblioteca, seja a sua própria ou
-uma biblioteca externa. Classes abstratas geralmente têm [métodos abstratos][].
+uma biblioteca externa. Classes abstratas geralmente têm [métodos abstratos][abstract methods].
 
 <?code-excerpt "language/lib/class_modifiers/ex1/a.dart"?>
 ```dart title="a.dart"
@@ -98,7 +98,7 @@ class MockVehicle implements Vehicle {
 ```
 
 Se você quiser que sua classe abstrata pareça ser instanciável,
-defina um [construtor factory][].
+defina um [construtor factory][factory constructor].
 
 ## `base` {:#base}
 
@@ -162,7 +162,7 @@ Isso garante:
   invocará uma implementação conhecida do método da mesma biblioteca.
 - Outras bibliotecas não podem substituir métodos que a interface
   os próprios métodos da classe podem chamar posteriormente de maneiras inesperadas.
-  Isso reduz o [problema da classe base frágil][].
+  Isso reduz o [problema da classe base frágil][fragile base class problem].
 
 <?code-excerpt "language/lib/class_modifiers/ex3/a.dart"?>
 ```dart title="a.dart"
@@ -323,7 +323,7 @@ contraditórios, redundantes ou mutuamente exclusivos:
   impedem [misturar][mixin].
 
 Para obter mais orientações sobre como os modificadores de classe podem ser combinados,
-confira a [Referência de modificadores de classe][].
+confira a [Referência de modificadores de classe][Referência de modificadores de classe].
 
 [Referência de modificadores de classe]: /language/modifier-reference
 

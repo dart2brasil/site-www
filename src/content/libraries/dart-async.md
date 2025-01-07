@@ -14,7 +14,7 @@ nextpage:
 <?code-excerpt plaster="none"?>
 
 A programação assíncrona geralmente usa funções de *callback*, mas o
-Dart oferece alternativas: objetos [Future][] (Futuro) e [Stream][] (Fluxo). Um
+Dart oferece alternativas: objetos [Future][Future] (Futuro) e [Stream][Stream] (Fluxo). Um
 Future é como uma promessa de que um resultado será fornecido em algum momento no
 futuro. Um Stream é uma forma de obter uma sequência de valores, como eventos.
 Future, Stream e mais estão na biblioteca
@@ -108,7 +108,7 @@ consulte o [tutorial de programação assíncrona](/libraries/async/async-await)
 ### Uso básico {:#basic-usage}
 
 Você pode usar `then()` para agendar código que é executado quando o future completa. Por
-exemplo, [`Client.read()`][] retorna um Future, já que as requisições HTTP
+exemplo, [`Client.read()`][`Client.read()`] retorna um Future, já que as requisições HTTP
 podem demorar um pouco. Usar `then()` permite que você execute algum código quando esse Future
 foi concluído e o valor de string prometido está disponível:
 
@@ -189,7 +189,7 @@ try {
 ### Esperando por múltiplos futures {:#waiting-for-multiple-futures}
 
 Às vezes, seu algoritmo precisa invocar muitas funções assíncronas e
-esperar que todas sejam concluídas antes de continuar. Use o método estático [Future.wait()][]
+esperar que todas sejam concluídas antes de continuar. Use o método estático [Future.wait()][Future.wait()]
 para gerenciar múltiplos Futures e esperar que eles sejam concluídos:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
@@ -220,7 +220,7 @@ Essas extensões retornam um future com os valores resultantes de todos os futur
 Ao contrário de `Future.wait`, eles também permitem que você trate erros.
 
 Se qualquer future na coleção for concluído com um erro, `wait` é concluído com um
-[`ParallelWaitError`][]. Isso permite que o chamador trate erros individuais e
+[`ParallelWaitError`][`ParallelWaitError`]. Isso permite que o chamador trate erros individuais e
 descarte os resultados bem-sucedidos, se necessário.
 
 Quando você _não_ precisa dos valores de resultado de cada future individual,
@@ -453,7 +453,7 @@ inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
 ## Mais informações {:#more-information}
 
 Para alguns exemplos de uso de Future e Stream em aplicativos de linha de comando,
-confira a [documentação dart:io][].
+confira a [documentação dart:io][dart:io documentation].
 Veja também estes artigos e tutoriais:
 
 - [Programação assíncrona: futures, async, await](/libraries/async/async-await)

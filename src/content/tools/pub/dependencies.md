@@ -19,7 +19,7 @@ No final, há uma lista de
 
 Para cada dependência, você especifica o _nome_ do pacote do qual você depende
 e o _intervalo de versões_ desse pacote que você permite.
-Você também pode especificar a [_fonte_][].
+Você também pode especificar a [_fonte_][_source_].
 A fonte diz ao pub como localizar o pacote.
 
 [_source_]: /tools/pub/glossary#source (fonte)
@@ -74,7 +74,7 @@ Este exemplo especifica que seu pacote depende de um pacote hospedado chamado
 `transmogrify` e funciona com qualquer versão de 1.4.0 a 2.0.0
 (mas não o próprio 2.0.0).
 
-Se você quiser usar seu [próprio repositório de pacotes][],
+Se você quiser usar seu [próprio repositório de pacotes][own package repository],
 você pode usar `hosted` para especificar sua URL.
 O seguinte código YAML cria uma dependência no pacote `transmogrify`
 usando a fonte `hosted`:
@@ -105,7 +105,7 @@ environment:
   sdk: [!'>=2.14.0 < 3.0.0'!]
 ```
 
-Se seu pacote tiver uma [versão do SDK][] anterior a 2.15,
+Se seu pacote tiver uma [versão do SDK][SDK version] anterior a 2.15,
 você deve usar um formato `hosted` mais detalhado.
 
 ```yaml
@@ -129,7 +129,7 @@ dependencies:
 ainda não foram lançados formalmente. Talvez seu próprio pacote ainda esteja em
 desenvolvimento e esteja usando outros pacotes que estão sendo desenvolvidos ao
 mesmo tempo. Para facilitar isso, você pode depender diretamente de um pacote
-armazenado em um repositório [Git][].
+armazenado em um repositório [Git][git].
 
 [git]: https://git-scm.com/
 
@@ -284,7 +284,7 @@ dependencies:
     version: ^1.4.0
 ```
 
-Para saber mais sobre o sistema de versão do pub, consulte a [página de versionamento de pacote][].
+Para saber mais sobre o sistema de versão do pub, consulte a [página de versionamento de pacote][package versioning page].
 
 [package versioning page]: /tools/pub/versioning#semantic-versions (página de versionamento de pacote)
 
@@ -401,7 +401,7 @@ dependency_overrides:
     path: ../transmogrify_patch/
 ```
 
-Quando você executa [`dart pub get`][] ou [`dart pub upgrade`][],
+Quando você executa [`dart pub get`][`dart pub get`] ou [`dart pub upgrade`][`dart pub upgrade`],
 o lockfile do pubspec é atualizado para refletir o
 novo path para sua dependência e, onde quer que o transmogrify seja usado, o pub
 usa a versão local.
@@ -454,11 +454,11 @@ Além disso, ele coloca um limite superior na versão permitida.
 
 ### Dependa das versões de pacotes estáveis mais recentes {:#depend-on-the-latest-stable-package-versions}
 
-Use [`dart pub upgrade`][] para atualizar para as versões de pacote mais recentes
+Use [`dart pub upgrade`][`dart pub upgrade`] para atualizar para as versões de pacote mais recentes
 que seu pubspec permite.
 Para identificar as dependências em seu aplicativo ou pacote que
 não estão nas versões estáveis mais recentes,
-use [`dart pub outdated`][].
+use [`dart pub outdated`][`dart pub outdated`].
 
 ### Aperte as restrições de versão para dev dependencies {:#tighten-version-constraints-for-dev-dependencies}
 
@@ -484,7 +484,7 @@ Este YAML define `dev_dependencies` para as versões de patch mais recentes.
 
 ### Teste sempre que atualizar as dependências de pacotes {:#test-whenever-you-update-package-dependencies}
 
-Se você executar [`dart pub upgrade`][] sem atualizar seu pubspec,
+Se você executar [`dart pub upgrade`][`dart pub upgrade`] sem atualizar seu pubspec,
 a API deve permanecer a mesma
 e seu código deve ser executado como antes — mas teste para ter certeza.
 Se você modificar o pubspec e atualizar para uma nova versão principal,
@@ -509,7 +509,7 @@ restrição de dependência quando ela se torna necessária.
 Portanto, é uma prática recomendada testar seu pacote
 com dependências rebaixadas antes de publicar.
 
-Para testar com dependências rebaixadas, execute [`dart pub downgrade`][] e
+Para testar com dependências rebaixadas, execute [`dart pub downgrade`][`dart pub downgrade`] e
 verifique se seu pacote ainda é analisado sem erros e passa em todos os testes:
 
 ```console
@@ -542,12 +542,12 @@ próprios pacotes ou de suas `dev_dependencies`.
 Ao recuperar novas dependências,
 use a opção [`--enforce-lockfile`][enforce-lock] para garantir que
 o conteúdo do pacote extraído corresponda ao conteúdo do arquivo original.
-Sem modificar o [lockfile][],
+Sem modificar o [lockfile][lockfile],
 esta flag apenas resolve novas dependências se:
 
 * `pubspec.yaml` é satisfeito
 * `pubspec.lock` não está faltando
-* Os [hashes de conteúdo][] dos pacotes correspondem
+* Os [hashes de conteúdo][content hashes] dos pacotes correspondem
 
 [enforce-lock]: /tools/pub/cmd/pub-get#enforce-lockfile
 [lockfile]: /tools/pub/glossary#lockfile (lockfile)

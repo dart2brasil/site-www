@@ -46,12 +46,12 @@ além de um *linter* para simplificar a conformidade.
 O analisador Dart faz a *lintagem* do código, além de fornecer mais
 funções analíticas.
 Para personalizar as regras de *lint* do seu projeto,
-siga as instruções de [Customizando análise estática][].
+siga as instruções de [Customizando análise estática][Customizing static analysis].
 
-Dart fornece [`dart fix`][] para encontrar e corrigir erros.
+Dart fornece [`dart fix`][`dart fix`] para encontrar e corrigir erros.
 
 Dart também fornece um formatador de código semelhante a
-ferramentas JavaScript como [Prettier][].
+ferramentas JavaScript como [Prettier][Prettier].
 Para formatar o código em qualquer projeto Dart, execute
 [`dart format`](/tools/dart-format) em sua linha de comando.
 Os plugins IDE para Dart e Flutter também fornecem essa capacidade.
@@ -67,9 +67,9 @@ JavaScript suporta vírgulas à direita apenas em literais de lista e mapa.
 
 :::secondary Para saber mais sobre:
 * Usar vírgulas para fazer seu código parecer mais com HTML, leia
-  [Usando vírgulas à direita][] em flutter.dev.
-* Fazer *lint* de Dart, leia [Regras do *Linter*][].
-* Escrever um bom código Dart, leia [Effective Dart][].
+  [Usando vírgulas à direita][Using trailing commas] em flutter.dev.
+* Fazer *lint* de Dart, leia [Regras do *Linter*][Linter rules].
+* Escrever um bom código Dart, leia [Effective Dart][Effective Dart].
 :::
 
 [Customizing static analysis]: /tools/analysis
@@ -105,7 +105,7 @@ Dart suporta os seguintes tipos embutidos:
 * Símbolos (*Symbols*) (`Symbol`)
 * O valor `null` (`Null`)
 
-Para saber mais, confira [Tipos embutidos][] no [Dart Language Tour][](Tour da Linguagem Dart).
+Para saber mais, confira [Tipos embutidos][Built-in types] no [Dart Language Tour][Dart Language Tour](Tour da Linguagem Dart).
 
 Todos os tipos não-`Null` em Dart são subtipos de Object.
 Todos os valores também são objetos.
@@ -215,7 +215,7 @@ final unicode = '\u{1F60E}'; // 😎,  Unicode escalar U+1F60E
 :::note
 Você pode usar caracteres hexadecimais de quatro dígitos com ou sem chaves.
 Para saber mais sobre como trabalhar com caracteres unicode,
-veja [Runes e *grapheme clusters*][].
+veja [Runes e *grapheme clusters*][Runes and grapheme clusters].
 :::
 
 [Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
@@ -232,7 +232,7 @@ Eles usam delimitadores de caractere de crase (`` ` ``) pelos seguintes motivos:
 Em Dart, você não precisa colocar uma string entre crases para concatenar
 strings ou usar interpolações dentro de literais de string.
 
-Para saber mais, confira [Strings][] no Tour da Linguagem Dart.
+Para saber mais, confira [Strings][Strings] no Tour da Linguagem Dart.
 
 [Strings]: /language/built-in-types#strings
 
@@ -1173,7 +1173,7 @@ Alguns desenvolvedores se referem a isso como um operador ternário
 porque ele recebe três operandos.
 Como Dart tem outro operador (`[]=`) que recebe três operandos,
 chame este operador (`?:`) de operador condicional.
-Este operador funciona para expressões como [if-else][] funciona para instruções.
+Este operador funciona para expressões como [if-else][if-else] funciona para instruções.
 
 ```js
 let visibility = isPublic ? "public" : "private";
@@ -1401,7 +1401,7 @@ o que significa que os objetos precisam de valores hash para serem armazenados e
 :::note
 Em Dart, o valor hash assume o padrão como a instância de um objeto
 mas você pode substituí-lo para usar um conjunto de propriedades.
-Para saber mais, consulte a página da propriedade [`hashCode`][].
+Para saber mais, consulte a página da propriedade [`hashCode`][`hashCode`].
 :::
 
 [`hashCode`]: {{site.dart-api}}/dart-core/Object/hashCode.html
@@ -1807,7 +1807,7 @@ Future<void> asyncFunction() async {
 
 Para saber mais sobre `Future`s e a
 sintaxe `async`/`await`, consulte o
-tutorial de [Programação assíncrona][].
+tutorial de [Programação assíncrona][Programação assíncrona].
 
 [Programação assíncrona]: /libraries/async/async-await
 
@@ -1900,13 +1900,13 @@ você tem diversas maneiras diferentes de criar um stream.
 A classe `Stream` possui construtores utilitários para
 criar streams de `Future`s ou `Iterable`s,
 ou para criar streams que emitem valores em um intervalo de tempo.
-Para aprender mais, veja a página da API [`Stream`][].
+Para aprender mais, veja a página da API [`Stream`][`Stream`].
 
 [`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 
 ##### StreamController {:#streamcontroller}
 
-A classe utilitária [`StreamController`][] pode criar e controlar streams.
+A classe utilitária [`StreamController`][`StreamController`] pode criar e controlar streams.
 Sua propriedade stream expõe o stream que ele controla.
 Seus métodos fornecem maneiras de adicionar eventos a esse stream.
 
@@ -1963,7 +1963,7 @@ stream.forEach(print(value));
 
 Aprenda mais sobre futures (futuros), streams,
 e outras funcionalidades assíncronas na
-documentação de [programação assíncrona][].
+documentação de [programação assíncrona][programação assíncrona].
 
 [programação assíncrona]: /libraries/async/using-streams
 
@@ -2034,7 +2034,7 @@ class Point {
 Escrever código para atribuir campos de classe no construtor
 pode parecer criar código repetitivo,
 então Dart tem um "açúcar sintático", chamado
-[parâmetros de inicialização][] para tornar isso mais fácil:
+[parâmetros de inicialização][parâmetros de inicialização] para tornar isso mais fácil:
 
 ```dart
 class Point {
@@ -2574,7 +2574,7 @@ Dart torna membros privados privados para a biblioteca, não para a classe.
 Isso significa que você pode acessar membros privados do código na mesma biblioteca.
 Por padrão, o Dart limita o acesso a membros privados de classe ao código no mesmo arquivo.
 Para expandir o escopo de uma biblioteca além de um arquivo, adicione a diretiva `part`.
-Quando possível, [evite usar `part`][]. Reserve o uso de `part` para geradores de código.
+Quando possível, [evite usar `part`][evite usar `part`]. Reserve o uso de `part` para geradores de código.
 
 [evite usar `part`]: /tools/pub/create-packages#organizing-a-package
 
@@ -2744,8 +2744,8 @@ dele para o restante da linha, e você pode usar `/* ... */`
 para bloquear comentários que abrangem múltiplas linhas.
 
 Além de comentários regulares,
-Dart também tem [doc comments][] (comentários de documentação) que funcionam em conjunto
-com [`dart doc`][]: uma ferramenta primária que gera
+Dart também tem [doc comments][doc comments] (comentários de documentação) que funcionam em conjunto
+com [`dart doc`][`dart doc`]: uma ferramenta primária que gera
 documentação HTML para pacotes Dart.
 É considerado uma melhor prática colocar doc comments
 acima de todas as declarações para membros públicos.
@@ -2775,10 +2775,10 @@ linguagem e formas práticas de começar.
 
 Alguns possíveis próximos passos:
 
-* [Language tour][] (Tour da Linguagem) para aprender mais sobre a linguagem Dart
-* [Core library documentation][] (Documentação da Biblioteca Principal) para aprender sobre as bibliotecas principais do Dart
-* [Dart tutorials][] (Tutoriais Dart) para prática aplicada cobrindo uma variedade de tópicos
-* [Effective Dart][] (Dart Efetivo) para aprender sobre convenções comuns
+* [Language tour][Language tour] (Tour da Linguagem) para aprender mais sobre a linguagem Dart
+* [Core library documentation][Core library documentation] (Documentação da Biblioteca Principal) para aprender sobre as bibliotecas principais do Dart
+* [Dart tutorials][Dart tutorials] (Tutoriais Dart) para prática aplicada cobrindo uma variedade de tópicos
+* [Effective Dart][Effective Dart] (Dart Efetivo) para aprender sobre convenções comuns
    e diretrizes ao escrever código Dart
 
 [Language tour]: /language

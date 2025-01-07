@@ -52,7 +52,7 @@ para permitir que você não apenas escreva código null-safe, mas, com sorte,
 *goste* de fazê-lo.
 
 Este documento é longo. Se você quiser algo mais curto que cubra apenas o que você
-precisa saber para começar, comece com a [visão geral][]. Quando você estiver pronto
+precisa saber para começar, comece com a [visão geral][overview]. Quando você estiver pronto
 para um entendimento mais profundo e tiver tempo, volte aqui para que você possa
 entender *como* a linguagem lida com `null`, *por que* a projetamos dessa forma e
 como escrever Dart idiomático, moderno e null-safe. (Alerta de spoiler: ele acaba
@@ -177,7 +177,7 @@ void makeCoffee(String coffee, [String? dairy]) {
 Aqui, queremos permitir que o parâmetro `dairy` aceite qualquer string, ou o
 valor `null`, mas nada mais. Para expressar isso, damos a `dairy` um *tipo
 anulável* colocando `?` no final do tipo base subjacente `String`. Por baixo
-dos panos, isso está essencialmente definindo uma [união][] do tipo subjacente e
+dos panos, isso está essencialmente definindo uma [união][union] do tipo subjacente e
 do tipo `Null`. Então, `String?` seria uma abreviação para `String|Null` se Dart
 tivesse tipos de união completos.
 
@@ -504,7 +504,7 @@ de fluxo.
 
 ## Análise de fluxo {:#flow-analysis}
 
-A [análise de fluxo de controle][] existe em compiladores há anos. Ela fica
+A [análise de fluxo de controle][control flow analysis] existe em compiladores há anos. Ela fica
 principalmente oculta dos usuários e é usada durante a otimização do compilador,
 mas algumas linguagens mais novas começaram a usar as mesmas técnicas para
 recursos de linguagem visíveis. O Dart já tem uma pitada de análise de fluxo na
@@ -1169,7 +1169,7 @@ mais completa para mim.
 ### Campos abstratos {:#abstract-fields}
 
 Um dos recursos interessantes do Dart é que ele mantém uma coisa chamada
-[princípio de acesso uniforme][]. Em termos humanos, isso significa que
+[princípio de acesso uniforme][uniform access principle]. Em termos humanos, isso significa que
 campos são indistinguíveis de getters e setters. É um detalhe de implementação
 se uma "propriedade" em alguma classe Dart é calculada ou armazenada. Por
 causa disso, ao definir uma interface usando uma classe abstrata, é típico usar

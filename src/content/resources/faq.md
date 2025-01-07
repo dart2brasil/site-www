@@ -141,7 +141,7 @@ e comunicação justa sobre elas.
 
 ### P. Dart usa tipagem estática? {:#q-does-dart-use-static-typing}
 
-Sim, Dart usa tipagem estática. Para saber mais, consulte o [sistema de tipos do Dart][].
+Sim, Dart usa tipagem estática. Para saber mais, consulte o [sistema de tipos do Dart][Dart's type system].
 
 Combinando verificações estáticas e em tempo de execução, Dart tem um sistema de tipos _sound_ (sólido).
 Isso garante que uma expressão de um tipo não possa produzir um
@@ -176,7 +176,7 @@ Novamente, estamos tentando ser pragmáticos e achamos que o resultado é razoá
 
 ### P. Dart suporta JSON? {:#q-does-dart-support-json}
 
-Sim. Para saber mais, consulte os conversores [JSON] na biblioteca [dart:convert][].
+Sim. Para saber mais, consulte os conversores [JSON] na biblioteca [dart:convert][dart:convert].
 
 ### P. Dart pode ser executado no servidor? {:#q-can-dart-run-on-the-server}
 
@@ -193,7 +193,7 @@ Use o comando [`pub`][pub-cmd] para empacotar seu código e enviá-lo para o sit
 Não. Você pode experimentar o código Dart com o [DartPad,][DartPad] e depois
 usar seu editor ou IDE favorito para desenvolvimento. Alguns IDEs completos,
 como IntelliJ IDEA, WebStorm e Visual Studio Code, têm plugins Dart. Plugins
-Dart de código aberto também existem para vários editores. Para mais informações, consulte as [ferramentas Dart][].
+Dart de código aberto também existem para vários editores. Para mais informações, consulte as [ferramentas Dart][Dart tools].
 
 ### P. Posso construir um aplicativo Android com Dart? {:#q-can-i-build-an-android-app-with-dart}
 
@@ -251,7 +251,7 @@ Sim. Ao compilar aplicativos que visam dispositivos como desktops ou celulares,
 compilador _just-in-time_ (JIT) e um
 compilador _ahead-of-time_ (AOT) para produzir código nativo.
 
-O framework [Flutter][] usa a capacidade de compilação nativa do Dart para produzir
+O framework [Flutter][Flutter] usa a capacidade de compilação nativa do Dart para produzir
 aplicativos nativos rápidos.
 
 ### P. Posso compilar um programa Dart para execução em um terminal? {:#q-can-i-compile-a-dart-program-for-running-in-a-terminal}
@@ -259,7 +259,7 @@ aplicativos nativos rápidos.
 Sim. Programas Dart podem ser compilados para código nativo para execução em um
 Terminal macOS, prompt de comando do Windows ou shell Linux.
 
-Consulte a documentação [dart compile][].
+Consulte a documentação [dart compile][dart compile].
 
 ### P. Qual é mais rápido: código compilado AOT ou JIT? {:#q-which-is-faster-aot-or-jit-compiled-code}
 
@@ -293,7 +293,7 @@ oferece suporte apenas ao Chrome para depuração.
 
 De certa forma.
 Aplicativos web Dart não podem usar _isolates_.
-Para obter concorrência de código, os aplicativos web usam [web workers][].
+Para obter concorrência de código, os aplicativos web usam [web workers][web workers].
 Web workers carecem da facilidade e eficiência dos _isolates_,
 e têm capacidades e restrições diferentes.
 Para saber mais, consulte

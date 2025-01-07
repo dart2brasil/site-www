@@ -11,7 +11,7 @@ nextpage:
 ---
 
 :::version-note
-Padrões requerem uma [versão de linguagem][] de pelo menos 3.0.
+Padrões requerem uma [versão de linguagem][language version] de pelo menos 3.0.
 :::
 
 Padrões são uma categoria sintática na linguagem Dart, como declarações e expressões.
@@ -61,7 +61,7 @@ switch (number) {
 
 Muitos padrões fazem uso de subpadrões, às vezes chamados de padrões _externos_ e _internos_, respectivamente.
 Padrões correspondem recursivamente em seus subpadrões.
-Por exemplo, os campos individuais de qualquer padrão de [tipo coleção][] podem ser
+Por exemplo, os campos individuais de qualquer padrão de [tipo coleção][collection-type] podem ser
 [padrões de variáveis][variable] ou [padrões constantes][constant]:
 
 <?code-excerpt "language/lib/patterns/switch.dart (list-pattern)"?>
@@ -76,8 +76,8 @@ switch (obj) {
 }
 ```
 
-Para ignorar partes de um valor correspondido, você pode usar um [padrão curinga][]
-como um marcador. No caso de padrões de lista, você pode usar um [elemento resto][].
+Para ignorar partes de um valor correspondido, você pode usar um [padrão curinga][wildcard pattern]
+como um marcador. No caso de padrões de lista, você pode usar um [elemento resto][rest element].
 
 ### Desestruturação {:#destructuring}
 
@@ -114,7 +114,7 @@ Você pode usar padrões em vários lugares na linguagem Dart:
 - [Declarações](#variable-declaration) e [atribuições](#variable-assignment) de variáveis locais
 - [laços for e for-in][for]
 - [if-case][if] e [switch-case][switch]
-- Fluxo de controle em [literais de coleção][]
+- Fluxo de controle em [literais de coleção][collection literals]
 
 Esta seção descreve casos de uso comuns para correspondência e desestruturação com padrões.
 
@@ -153,10 +153,10 @@ print('$a $b'); // Imprime "direita esquerda".
 ### Declarações e expressões switch {:#switch-statements-and-expressions}
 
 Toda cláusula case contém um padrão. Isso se aplica a [declarações switch][switch]
-e [expressões][], bem como [declarações if-case][if].
+e [expressões][expressions], bem como [declarações if-case][if].
 Você pode usar [qualquer tipo de padrão][types] em um case.
 
-_Padrões de case_ são [refutáveis][].
+_Padrões de case_ são [refutáveis][refutable].
 Eles permitem que o fluxo de controle:
 - Corresponda e desestruture o objeto que está sendo avaliado no switch.
 - Continue a execução se o objeto não corresponder.
@@ -200,7 +200,7 @@ var isPrimary = switch (color) {
 
 As declarações switch podem ter vários cases compartilhando um corpo
 [sem usar padrões lógico-ou][share], mas eles ainda são
-exclusivamente úteis para permitir que vários cases compartilhem uma [cláusula guarda][]:
+exclusivamente úteis para permitir que vários cases compartilhem uma [cláusula guarda][guard]:
 
 <?code-excerpt "language/lib/patterns/switch.dart (or-share-guard)"?>
 ```dart
@@ -234,7 +234,7 @@ Você pode usar padrões em [laços for e for-in][for] para iterar e desestrutur
 valores em uma coleção.
 
 Este exemplo usa [desestruturação de objeto][object] em um laço for-in para desestruturar
-os objetos [`MapEntry`][] que uma chamada `<Map>.entries` retorna:
+os objetos [`MapEntry`][`MapEntry`] que uma chamada `<Map>.entries` retorna:
 
 <?code-excerpt "language/lib/patterns/for_in.dart (for-in-pattern)"?>
 ```dart
@@ -280,7 +280,7 @@ em um mapa. Esta seção descreve ainda mais casos de uso, respondendo:
 
 ### Desestruturando múltiplos retornos {:#destructuring-multiple-returns}
 
-Registros permitem agregar e [retornar múltiplos valores][] de uma única
+Registros permitem agregar e [retornar múltiplos valores][returning multiple values] de uma única
 chamada de função. Padrões adicionam a capacidade de desestruturar os campos de um registro
 diretamente em variáveis locais, em linha com a chamada de função.
 
@@ -331,7 +331,7 @@ print('um $one, dois $two');
 ### Tipos de dados algébricos {:#algebraic-data-types}
 
 A desestruturação de objetos e cases de switch são propícios para escrever
-código em um estilo de [tipo de dados algébrico][].
+código em um estilo de [tipo de dados algébrico][algebraic data type].
 Use este método quando:
 - Você tem uma família de tipos relacionados.
 - Você tem uma operação que precisa de comportamento específico para cada tipo.
@@ -363,7 +363,7 @@ double calculateArea(Shape shape) => switch (shape) {
 
 ### Validando JSON de entrada {:#validating-incoming-json}
 
-Padrões de [Map][] (Mapa) e [list][] (lista) funcionam bem para desestruturar pares chave-valor em
+Padrões de [Map][map] (Mapa) e [list][list] (lista) funcionam bem para desestruturar pares chave-valor em
 dados JSON:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-1)"?>

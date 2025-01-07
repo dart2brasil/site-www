@@ -187,10 +187,10 @@ podem usar o mixin `MusicalPerformer`. Como `SingerDancer` estende `Musician`,
 ## `class`, `mixin` ou `mixin class`? {:#class-mixin-or-mixin-class}
 
 :::version-note
-A declaração `mixin class` requer uma [versão de linguagem][] de pelo menos 3.0.
+A declaração `mixin class` requer uma [versão de linguagem][language version] de pelo menos 3.0.
 :::
 
-Uma declaração `mixin` define um mixin. Uma declaração `class` define uma [classe][].
+Uma declaração `mixin` define um mixin. Uma declaração `class` define uma [classe][class].
 Uma declaração `mixin class` define uma classe que pode ser usada tanto como uma classe regular
 quanto como um mixin, com o mesmo nome e o mesmo tipo.
 

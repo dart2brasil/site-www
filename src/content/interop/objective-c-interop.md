@@ -250,7 +250,7 @@ Métodos com nomes que começam com `init*` fazem a inicialização.
 Algumas interfaces também fornecem métodos `new*` que fazem ambas as etapas.
 
 Para inicializar o `AVAudioPlayer`,
-use o método [`initWithContentsOfURL:error:`][]:
+use o método [`initWithContentsOfURL:error:`][`initWithContentsOfURL:error:`]:
 
 ```dart
     final player =
@@ -267,7 +267,7 @@ o código gerado libera automaticamente essa referência usando um
 
 Em seguida, procure a duração do arquivo de áudio,
 que você precisará mais tarde para esperar que o áudio termine.
-O [`duration`][] é um `@property(readonly)`.
+O [`duration`][`duration`] é um `@property(readonly)`.
 Propriedades Objective-C são traduzidas em getters e setters
 no objeto wrapper Dart gerado.
 Como `duration` é `readonly`, apenas o getter é gerado.
@@ -281,7 +281,7 @@ para arredondar para o próximo segundo:
     print('$durationSeconds sec');
 ```
 
-Finalmente, você pode usar o método [`play`][] para reproduzir o áudio,
+Finalmente, você pode usar o método [`play`][`play`] para reproduzir o áudio,
 então verifique o status e espere pela duração do arquivo de áudio:
 
 ```dart
@@ -307,7 +307,7 @@ e a forma como as APIs da Apple lidam com multithreading:
   mas não há garantia de que sejam executados em nenhuma thread específica,
   e a VM (Virtual Machine) pode mudar em qual thread um isolate está sendo executado
   sem aviso.
-  Existe um [pedido de recurso aberto][] para permitir que isolates sejam
+  Existe um [pedido de recurso aberto][open feature request] para permitir que isolates sejam
   fixados em threads específicas.
 * Embora `ffigen` suporte a conversão
   de funções Dart para blocos Objective-C,
@@ -316,7 +316,7 @@ e a forma como as APIs da Apple lidam com multithreading:
 * A maioria das APIs que envolvem interação com a UI (interface do usuário)
   só podem ser chamadas na thread principal,
   também chamada de thread _platform_ no Flutter.
-* Muitas APIs da Apple [não são thread-safe][].
+* Muitas APIs da Apple [não são thread-safe][not thread safe].
 
 Os dois primeiros pontos significam que um callback criado em um isolate
 pode ser invocado em uma thread executando um isolate diferente,
@@ -324,10 +324,10 @@ ou nenhum isolate.
 Dependendo do tipo de callback que você está usando,
 isso pode fazer com que seu aplicativo falhe.
 Callbacks criados usando
-[`Pointer.fromFunction`][] ou [`NativeCallable.isolateLocal`][]
+[`Pointer.fromFunction`][`Pointer.fromFunction`] ou [`NativeCallable.isolateLocal`][`NativeCallable.isolateLocal`]
 devem ser invocados na thread do isolate proprietário,
 caso contrário, eles falharão.
-Callbacks criados usando [`NativeCallable.listener`][]
+Callbacks criados usando [`NativeCallable.listener`][`NativeCallable.listener`]
 podem ser invocados com segurança de qualquer thread.
 
 O terceiro ponto significa que chamar diretamente algumas APIs da Apple
@@ -336,7 +336,7 @@ Isso pode fazer com que seu aplicativo falhe ou causar outros comportamentos imp
 Você pode contornar essa limitação escrevendo algum
 código Objective-C que despacha sua chamada
 para a thread principal.
-Para mais informações, consulte a [documentação de dispatch Objective-C][].
+Para mais informações, consulte a [documentação de dispatch Objective-C][Objective-C dispatch documentation].
 
 Com relação ao último ponto,
 embora os isolates Dart possam trocar de threads,
@@ -384,7 +384,7 @@ você pode precisar escrever uma classe wrapper compatível com Objective-C
 que exponha os métodos que você deseja usar.
 
 Para obter mais informações sobre a interoperabilidade Objective-C / Swift,
-consulte a [documentação Swift][].
+consulte a [documentação Swift][Swift documentation].
 
 Depois de tornar sua classe compatível,
 você pode gerar um header wrapper Objective-C.

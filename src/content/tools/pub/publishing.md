@@ -12,7 +12,7 @@ comando `dart pub publish`.
 :::note
 Para publicar em um local diferente do pub.dev,
 ou para impedir a publicação em qualquer lugar, use o campo `publish_to`,
-conforme definido no [pubspec][].
+conforme definido no [pubspec][pubspec].
 :::
 
 Assista ao vídeo a seguir para uma visão geral da construção e publicação de pacotes.
@@ -45,7 +45,7 @@ funcione melhor dentro do ecossistema Dart.
 Além dessas convenções, você deve seguir estes requisitos:
 
 * Inclua um arquivo `LICENSE` em seu pacote.
-  Recomendamos a [licença BSD de 3 cláusulas][],
+  Recomendamos a [licença BSD de 3 cláusulas][BSD 3-clause license],
   que as equipes Dart e Flutter normalmente usam.
   No entanto, você pode usar qualquer licença apropriada para o seu pacote.
 
@@ -63,7 +63,7 @@ Além dessas convenções, você deve seguir estes requisitos:
   Essas restrições garantem que as dependências de seus pacotes
   possam ser encontradas e acessadas no futuro.
 
-* Possua uma [Conta do Google][]. O Pub usa uma conta do Google
+* Possua uma [Conta do Google][Google Account]. O Pub usa uma conta do Google
   para gerenciar permissões de envio de pacotes.
   Sua Conta do Google pode ser associada a um endereço do Gmail ou qualquer outro endereço de e-mail.
 
@@ -76,14 +76,14 @@ Os seguintes arquivos afetam o conteúdo da página da web do seu pacote.
 **`README.md`**
   : Este arquivo contém o conteúdo principal apresentado na
   página da web do seu pacote.
-  O conteúdo do arquivo deve ser marcado usando [Markdown][].
+  O conteúdo do arquivo deve ser marcado usando [Markdown][Markdown].
   Para aprender como escrever um ótimo README (leia-me), consulte
   [Escrevendo páginas de pacotes](/tools/pub/writing-package-pages).
 
 **`CHANGELOG.md`**
   : Se encontrado, este arquivo preenche sua própria aba na página da web do seu pacote.
   Os desenvolvedores podem ler suas mudanças diretamente do pub.dev.
-  O conteúdo do arquivo deve ser marcado usando [Markdown][].
+  O conteúdo do arquivo deve ser marcado usando [Markdown][Markdown].
 
 **`pubspec.yaml`**
   : Este arquivo preenche detalhes sobre seu pacote
@@ -137,7 +137,7 @@ editor quando você não estiver disponível.
 
 ## Publique seu pacote {:#publish-your-package}
 
-Use o comando [`dart pub publish`][] para publicar seu pacote
+Use o comando [`dart pub publish`][`dart pub publish`] para publicar seu pacote
 pela primeira vez ou para atualizá-lo para uma nova versão.
 
 ### Quais arquivos são publicados? {:#what-files-are-published}
@@ -254,7 +254,7 @@ exibindo essas plataformas na página do pacote.
 Os usuários do pub.dev podem filtrar as pesquisas por plataforma.
 
 Para alterar a lista gerada de plataformas suportadas,
-[especifique as plataformas suportadas][] no arquivo `pubspec.yaml`.
+[especifique as plataformas suportadas][especifique as plataformas suportadas] no arquivo `pubspec.yaml`.
 
 [especifique as plataformas suportadas]: /tools/pub/pubspec#platforms
 
@@ -362,7 +362,7 @@ Para permitir ou não que outras pessoas enviem versões, você pode:
 
 * Gerenciar uploaders autorizados na página de administração do pacote:
   `https://pub.dev/packages/<pacote>/admin`.
-* Transferir o pacote para um [editor verificado][];
+* Transferir o pacote para um [editor verificado][verified publisher];
   todos os membros de um editor estão autorizados a fazer upload.
 
 :::tip
@@ -490,7 +490,7 @@ no arquivo `pubspec.yaml` e execute `dart pub upgrade`.
 
 Para retirar ou restaurar uma versão de pacote,
 primeiro faça login no pub.dev usando uma Conta do Google
-que seja um uploader ou um administrador de [editor verificado][] para o pacote.
+que seja um uploader ou um administrador de [editor verificado][verified publisher] para o pacote.
 Em seguida, vá para a aba **Admin** do pacote,
 onde você pode retirar ou restaurar versões de pacotes recentes.
 
@@ -510,7 +510,7 @@ Depois de descontinuar um pacote, o pacote:
 Para marcar um pacote como descontinuado:
 
 1. Faça login no pub.dev usando uma Conta do Google com uploader ou
-   permissões de [editor verificado][] para o pacote.
+   permissões de [editor verificado][verified publisher] para o pacote.
 
 1. Navegue até a aba **Admin** do pacote.
 

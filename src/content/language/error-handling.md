@@ -14,14 +14,14 @@ nextpage:
 
 Seu código Dart pode lançar e capturar exceções. Exceções são erros
 indicando que algo inesperado aconteceu. Se a exceção não for
-capturada, o [isolado][] que lançou a exceção é suspenso,
+capturada, o [isolado][isolate] que lançou a exceção é suspenso,
 e tipicamente o isolado e seu programa são encerrados.
 
 Em contraste com Java, todas as exceções de Dart são exceções não verificadas.
 Métodos não declaram quais exceções eles podem lançar, e você não é
 obrigado a capturar nenhuma exceção.
 
-Dart fornece os tipos [`Exception`][] e [`Error`][],
+Dart fornece os tipos [`Exception`][`Exception`] e [`Error`][`Error`],
 assim como inúmeros subtipos predefinidos. Você pode, claro,
 definir suas próprias exceções. No entanto, programas Dart podem lançar qualquer
 objeto não nulo — não apenas objetos Exception e Error — como uma exceção.
@@ -44,7 +44,7 @@ throw 'Sem lhamas!';
 
 :::note
 Código de qualidade de produção geralmente lança tipos que
-implementam [`Error`][] ou [`Exception`][].
+implementam [`Error`][`Error`] ou [`Exception`][`Exception`].
 :::
 
 Como lançar uma exceção é uma expressão, você pode lançar exceções
@@ -97,7 +97,7 @@ seu manipulador de exceção precisar do objeto exceção.
 
 Você pode especificar um ou dois parâmetros para `catch()`.
 O primeiro é a exceção que foi lançada,
-e o segundo é o stack trace (uma objeto [`StackTrace`][]).
+e o segundo é o stack trace (uma objeto [`StackTrace`][`StackTrace`]).
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
 ```dart
@@ -188,7 +188,7 @@ assert(urlString.startsWith('https'));
 
 Para anexar uma mensagem a uma declaração,
 adicione uma string como o segundo argumento para `assert`
-(opcionalmente com uma [vírgula à direita][]):
+(opcionalmente com uma [vírgula à direita][vírgula à direita]):
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert-with-message)"?>
 ```dart
@@ -200,15 +200,15 @@ O primeiro argumento para `assert` pode ser qualquer expressão que
 se resolve para um valor booleano. Se o valor da expressão
 for verdadeiro, a declaração tem sucesso e a execução
 continua. Se for falso, a declaração falha e uma exceção (um
-[`AssertionError`][]) é lançada.
+[`AssertionError`][`AssertionError`]) é lançada.
 
 Quando exatamente as declarações funcionam?
 Isso depende das ferramentas e do framework que você está usando:
 
 * Flutter habilita declarações no [modo de depuração.][Flutter debug mode]
-* Ferramentas apenas para desenvolvimento, como [`webdev serve`][],
+* Ferramentas apenas para desenvolvimento, como [`webdev serve`][`webdev serve`],
   normalmente habilitam declarações por padrão.
-* Algumas ferramentas, como [`dart run`][] e [`dart compile js`][],
+* Algumas ferramentas, como [`dart run`][`dart run`] e [`dart compile js`][`dart compile js`],
   suportam declarações por meio de um flag de linha de comando: `--enable-asserts`.
 
 Em código de produção, as declarações são ignoradas, e

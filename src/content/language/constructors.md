@@ -115,7 +115,7 @@ class ImmutablePoint {
 
 Construtores constantes nem sempre criam constantes.
 Eles podem ser invocados em um contexto não-`const`.
-Para saber mais, consulte a seção sobre [usando construtores][].
+Para saber mais, consulte a seção sobre [usando construtores][using constructors].
 
 ### Construtores de redirecionamento {:#redirecting-constructors}
 
@@ -369,7 +369,7 @@ tanto final quanto apenas no escopo das variáveis inicializadas.
 
 Para realizar uma lógica que você não pode expressar na lista de inicializadores,
 crie um [construtor de fábrica](#factory-constructors)
-ou [método estático][] com essa lógica.
+ou [método estático][static method] com essa lógica.
 Você pode então passar os valores calculados para um construtor normal.
 
 Os parâmetros do construtor podem ser definidos como anuláveis e não serem inicializados.
@@ -537,7 +537,7 @@ Super-parâmetros de inicialização têm sintaxe e semântica como
 
 :::version-note
 Usar super-parâmetros de inicialização
-requer uma [versão de linguagem][] de pelo menos 2.17.
+requer uma [versão de linguagem][language version] de pelo menos 2.17.
 Se você estiver usando uma versão de linguagem anterior,
 você deve passar manualmente todos os parâmetros do super construtor.
 :::

@@ -35,10 +35,10 @@ ListMapper<String> m2 = {}; // Mesmo resultado, mas mais curto e claro.
 
 :::version-note
 Antes da versão 2.13, typedefs (definições de tipo) eram restritos a tipos de função.
-Usar os novos typedefs (definições de tipo) requer uma [versão da linguagem][] de pelo menos 2.13.
+Usar os novos typedefs (definições de tipo) requer uma [versão da linguagem][language version] de pelo menos 2.13.
 :::
 
-Recomendamos usar [tipos de função inline][] em vez de typedefs (definições de tipo) para funções,
+Recomendamos usar [tipos de função inline][inline function types] em vez de typedefs (definições de tipo) para funções,
 na maioria das situações.
 No entanto, typedefs (definições de tipo) de função ainda podem ser úteis:
 

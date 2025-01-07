@@ -25,7 +25,7 @@ isolates.
 
 Você deve usar isolates sempre que seu aplicativo estiver lidando com computações
 que são grandes o suficiente para bloquear temporariamente outras computações.
-O exemplo mais comum é em aplicativos [Flutter][], quando você
+O exemplo mais comum é em aplicativos [Flutter][Flutter], quando você
 precisa realizar grandes computações que, de outra forma, podem fazer com que a
 UI fique sem resposta.
 
@@ -46,7 +46,7 @@ mas aqui estão algumas situações adicionais onde eles podem ser úteis:
 
 Estes exemplos implementam um isolate principal
 que gera um isolate de trabalho simples.
-[`Isolate.run()`][] simplifica as etapas por trás
+[`Isolate.run()`][`Isolate.run()`] simplifica as etapas por trás
 da configuração e gerenciamento de isolates de trabalho:
 
 1. Gera (inicia e cria) um isolate.
@@ -59,7 +59,7 @@ da configuração e gerenciamento de isolates de trabalho:
 [`Isolate.run()`]: {{site.dart-api}}/dart-isolate/Isolate/run.html
 
 :::flutter-note
-Se você estiver usando o Flutter, você pode usar a [função `compute` do Flutter][]
+Se você estiver usando o Flutter, você pode usar a [função `compute` do Flutter][função `compute` do Flutter]
 em vez de `Isolate.run()`.
 :::
 
@@ -67,8 +67,8 @@ em vez de `Isolate.run()`.
 
 ### Executando um método existente em um novo isolate {:#running-an-existing-method-in-a-new-isolate}
 
-1. Chame `run()` para gerar um novo isolate (um [worker em background][]),
-   diretamente no [isolate principal][] enquanto `main()` aguarda o resultado:
+1. Chame `run()` para gerar um novo isolate (um [worker em background][worker em background]),
+   diretamente no [isolate principal][isolate principal] enquanto `main()` aguarda o resultado:
 
 <?code-excerpt "lib/simple_worker_isolate.dart (main)"?>
 ```dart
@@ -117,7 +117,7 @@ Se a computação que o isolate de trabalho executa
 é síncrona ou assíncrona, isso não impacta o
 isolate principal, porque ele está sendo executado simultaneamente de qualquer maneira.
 
-Para o programa completo, consulte o exemplo [send_and_receive.dart][].
+Para o programa completo, consulte o exemplo [send_and_receive.dart][send_and_receive.dart].
 
 [send_and_receive.dart]: {{site.repo.dart.org}}/samples/blob/main/isolates/bin/send_and_receive.dart
 [worker em background]: /language/concurrency#background-workers
@@ -148,7 +148,7 @@ void main() async {
 Este exemplo realiza o mesmo que o anterior.
 Um novo isolate é gerado, computa algo e envia o resultado de volta.
 
-No entanto, agora o isolate envia uma [closure][].
+No entanto, agora o isolate envia uma [closure][closure].
 Closures são menos limitadas do que as funções nomeadas típicas,
 tanto em como elas funcionam quanto em como são escritas no código.
 Neste exemplo, `Isolate.run()` executa o que parece ser código local,
@@ -169,14 +169,14 @@ isolates de longa duração que não saem imediatamente.
 Para fazer isso, você pode usar algumas das APIs de baixo nível de isolate que
 `Isolate.run` abstrai:
 
-* [`Isolate.spawn()`][] e [`Isolate.exit()`][]
-* [`ReceivePort`][] e [`SendPort`][]
-* [`Método SendPort.send()`][]
+* [`Isolate.spawn()`][`Isolate.spawn()`] e [`Isolate.exit()`][`Isolate.exit()`]
+* [`ReceivePort`][`ReceivePort`] e [`SendPort`][`SendPort`]
+* [`Método SendPort.send()`][`Método SendPort.send()`]
 
 
 Esta seção aborda as etapas necessárias para estabelecer
 uma comunicação bidirecional entre um isolate recém-gerado
-e o [isolate principal][].
+e o [isolate principal][isolate principal].
 O primeiro exemplo, [Ports básicos](#basic-ports-example), introduz o processo
 em um nível alto. O segundo exemplo, [Ports robustos](#robust-ports-example),
 adiciona gradualmente mais funcionalidades práticas e do mundo real ao primeiro.
@@ -206,12 +206,12 @@ Você pode criar `SendPort` adicionais que
 podem enviar mensagens para um `ReceivePort` existente.
 :::
 
-Ports se comportam de maneira semelhante a objetos [`Stream`][]
+Ports se comportam de maneira semelhante a objetos [`Stream`][`Stream`]
 (na verdade, os receive ports implementam `Stream`!)
 Você pode pensar em um `SendPort` e um `ReceivePort` como
 `StreamController` e ouvintes de Stream, respectivamente.
 Um `SendPort` é como um `StreamController` porque você "adiciona" mensagens a eles
-com o [`Método SendPort.send()`][], e essas mensagens são tratadas por um ouvinte,
+com o [`Método SendPort.send()`][`Método SendPort.send()`], e essas mensagens são tratadas por um ouvinte,
 neste caso o `ReceivePort`. O `ReceivePort` então lida com as mensagens que
 recebe, passando-as como argumentos para um callback que você fornece.
 
@@ -225,8 +225,8 @@ isolate principal. Isolates só podem se comunicar através da passagem de mensa
 Eles não podem "ver" dentro da memória um do outro,
 que é de onde vem o nome "isolate".
 
-Para configurar essa comunicação bidirecional, primeiro crie um [`ReceivePort`][]
-no isolate principal, depois passe seu [`SendPort`][] como argumento para o
+Para configurar essa comunicação bidirecional, primeiro crie um [`ReceivePort`][`ReceivePort`]
+no isolate principal, depois passe seu [`SendPort`][`SendPort`] como argumento para o
 novo isolate ao gerá-lo com `Isolate.spawn`.
 O novo isolate então cria seu próprio `ReceivePort` e envia _seu_ `SendPort`
 de volta no `SendPort` que foi passado pelo isolate principal.
@@ -282,7 +282,7 @@ Ele não cobre partes importantes da funcionalidade que são esperadas
 em software de produção, como tratamento de erros, desligamento de ports,
 e sequenciamento de mensagens.
 
-O [Exemplo de ports robustos][] na próxima seção cobre essa funcionalidade e
+O [Exemplo de ports robustos][exemplo de ports robustos] na próxima seção cobre essa funcionalidade e
 discute alguns dos problemas que podem surgir sem ela.
 :::
 
@@ -435,7 +435,7 @@ void _handleResponsesFromIsolate(dynamic message) {
 Para completar a classe, defina um método público chamado `parseJson`, que é
 responsável por enviar mensagens para o worker isolate. Ele também precisa garantir
 que as mensagens podem ser enviadas antes que o isolate esteja totalmente configurado.
-Para lidar com isso, use um [`Completer`][].
+Para lidar com isso, use um [`Completer`][`Completer`].
 
 - Primeiro, adicione uma propriedade no nível da classe chamada `Completer` e nomeie-a
   de `_isolateReady`.
@@ -514,7 +514,7 @@ Future<void> parseJson(String message) async {
 
 ### Exemplo de Portas Robustas {:#robust-ports-example}
 
-O [exemplo anterior][] explicou os blocos de construção básicos necessários para
+O [exemplo anterior][previous example] explicou os blocos de construção básicos necessários para
 configurar um _isolate_ de longa duração com comunicação bidirecional. Como
 mencionado, esse exemplo carece de alguns recursos importantes, como tratamento
 de erros, a capacidade de fechar as portas quando não estão mais em uso e
@@ -528,7 +528,7 @@ tenha semelhanças com o primeiro exemplo, não é uma extensão desse exemplo.
 :::note
 Este exemplo pressupõe que você já esteja familiarizado com o estabelecimento
 de comunicação entre _isolates_ com `Isolate.spawn` e portas, o que foi
-abordado no [exemplo anterior][].
+abordado no [exemplo anterior][previous example].
 :::
 
 #### Etapa 1: Definir a classe _worker_
@@ -591,7 +591,7 @@ _isolate_ principal são chamadas de _responses_ (respostas).
 
 #### Etapa 2: Criar um `RawReceivePort` no método `Worker.spawn` {:#step-2-create-a-rawreceiveport-in-the-worker-spawn-method}
 
-Antes de criar um _isolate_, você precisa criar um [`RawReceivePort`][], que é
+Antes de criar um _isolate_, você precisa criar um [`RawReceivePort`][`RawReceivePort`], que é
 um `ReceivePort` de nível inferior. Usar `RawReceivePort` é um padrão preferido
 porque permite separar a lógica de inicialização do seu _isolate_ da lógica
 que lida com a passagem de mensagens no _isolate_.
@@ -608,7 +608,7 @@ No método `Worker.spawn`:
   é uma `Function?` que se comporta como `ReceivePort.listener`. A função é
   chamada quando uma mensagem é recebida por esta porta.
 - Dentro da função _handler_, chame `connection.complete()`. Este método
-  espera um [registro][] com um `ReceivePort` e um `SendPort` como argumento.
+  espera um [registro][record] com um `ReceivePort` e um `SendPort` como argumento.
   O `SendPort` é a mensagem inicial enviada do _isolate_ de trabalho, que será
   atribuída na próxima etapa ao `SendPort` de nível de classe denominado `_commands`.
 - Em seguida, crie um novo `ReceivePort` com o construtor
@@ -639,8 +639,8 @@ class Worker {
 Ao criar primeiro um `RawReceivePort` e depois um `ReceivePort`,
 você poderá adicionar um novo _callback_ a `ReceivePort.listen` posteriormente.
 Por outro lado, se você criasse um `ReceivePort` imediatamente, só seria
-possível adicionar um `listener`, porque `ReceivePort` implementa [`Stream`][],
-em vez de [`BroadcastStream`][].
+possível adicionar um `listener`, porque `ReceivePort` implementa [`Stream`][`Stream`],
+em vez de [`BroadcastStream`][`BroadcastStream`].
 
 Efetivamente, isso permite que você separe a lógica de inicialização do
 seu _isolate_ da lógica que lida com o recebimento de mensagens após a
@@ -652,7 +652,7 @@ conclusão da configuração da comunicação. Esse benefício se tornará mais
 Esta etapa continua a preencher o método `Worker.spawn`. Você adicionará o
 código necessário para criar um _isolate_ e retornar uma instância de `Worker`
 desta classe. Neste exemplo, a chamada para `Isolate.spawn` é encapsulada em
-um bloco [`try`/`catch`][], o que garante que, se o _isolate_ não for iniciado,
+um bloco [`try`/`catch`][`try`/`catch` block], o que garante que, se o _isolate_ não for iniciado,
 o `initPort` será fechado e o objeto `Worker` não será criado.
 
 - Primeiro, tente criar um _isolate_ de trabalho em um bloco `try`/`catch`.
@@ -696,7 +696,7 @@ class Worker {
   }
 ```
 
-Observe que, neste exemplo (em comparação com o [exemplo anterior][]),
+Observe que, neste exemplo (em comparação com o [exemplo anterior][previous example]),
 `Worker.spawn` atua como um construtor estático assíncrono para esta classe
 e é a única maneira de criar uma instância de `Worker`. Isso simplifica a API,
 tornando o código que cria uma instância de `Worker` mais limpo.
@@ -704,7 +704,7 @@ tornando o código que cria uma instância de `Worker` mais limpo.
 #### Etapa 4: Concluir o processo de configuração do _isolate_ {:#step-4-complete-the-isolate-setup-process}
 
 Nesta etapa, você concluirá o processo básico de configuração do _isolate_.
-Isso se correlaciona quase inteiramente com o [exemplo anterior][], e não há
+Isso se correlaciona quase inteiramente com o [exemplo anterior][previous example], e não há
 novos conceitos. Há uma ligeira mudança no fato de o código ser dividido em
 mais métodos, o que é uma prática de _design_ que o prepara para adicionar mais
 funcionalidades durante o restante deste exemplo.
@@ -753,9 +753,9 @@ de trabalho e enviar o JSON decodificado de volta como resposta.
 
 - Primeiro, declare um _listener_ no `ReceivePort` do _isolate_ de trabalho.
 - Dentro do _callback_ adicionado ao _listener_, tente decodificar o JSON
-  passado do _isolate_ principal dentro de um bloco [`try`/`catch`][]. Se a
+  passado do _isolate_ principal dentro de um bloco [`try`/`catch`][`try`/`catch` block]. Se a
   decodificação for bem-sucedida, envie o JSON decodificado de volta para o _isolate_ principal.
-- Se houver um erro, envie um [`RemoteError`][] de volta.
+- Se houver um erro, envie um [`RemoteError`][`RemoteError`] de volta.
 
 <?code-excerpt "lib/robust_ports_example/step_4.dart (handle-commands)"?>
 ```dart
@@ -841,7 +841,7 @@ enviar mensagens para o _isolate_ de trabalho.
   número atual de `_idCounter` e o _completer_ é o valor.
 - Envie a mensagem para o _isolate_ de trabalho, junto com o ID.
   Como você só pode enviar um valor através do `SendPort`, encapsule o ID
-  e a mensagem em um [registro][].
+  e a mensagem em um [registro][record].
 - Finalmente, retorne o futuro do _completer_, que acabará contendo a
   resposta do _isolate_ de trabalho.
 

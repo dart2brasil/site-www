@@ -90,7 +90,7 @@ mantendo um callback para executar mais
 tarde.](/assets/img/language/concurrency/async-event-loop.png)
 
 Este mesmo modelo é geralmente como o loop de eventos lida com todos os outros
-eventos assíncronos em Dart, como objetos [`Stream`][].
+eventos assíncronos em Dart, como objetos [`Stream`][`Stream`].
 
 [`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 
@@ -98,7 +98,7 @@ eventos assíncronos em Dart, como objetos [`Stream`][].
 
 Esta seção resume os diferentes tipos e sintaxes da programação assíncrona em
 Dart. Se você já está familiarizado com `Future`, `Stream` e async-await, pode
-pular para a [seção de isolates][].
+pular para a [seção de isolates][seção de isolates].
 
 [seção de isolates]: #isolates
 
@@ -226,7 +226,7 @@ Stream<int> sumStream(Stream<int> stream) async* {
 ```
 
 Se você quiser saber mais sobre como usar `async`, `await`, `Stream`s e
-`Future`s, consulte o [tutorial de programação assíncrona][].
+`Future`s, consulte o [tutorial de programação assíncrona][tutorial de programação assíncrona].
 
 [tutorial de programação assíncrona]: /libraries/async/async-await
 
@@ -256,7 +256,7 @@ por completo. Para mais informações sobre este modelo de concorrência, leia
 sobre o [modelo de Ator](https://en.wikipedia.org/wiki/Actor_model).
 
 :::note Observação sobre a Plataforma
-Apenas a [plataforma Dart Nativa][] implementa isolates. Para saber mais sobre
+Apenas a [plataforma Dart Nativa][plataforma Dart Native] implementa isolates. Para saber mais sobre
 a plataforma Dart Web, consulte a
 seção [Concorrência na web](#concurrency-on-the-web).
 :::
@@ -274,7 +274,7 @@ eventos e depois sai](/assets/img/language/concurrency/basics-main-isolate.png)
 
 Mesmo programas de isolate único podem ser executados sem problemas. Antes de
 continuar para a próxima linha de código, esses aplicativos usam
-[async-await][] para aguardar a conclusão de operações assíncronas. Um
+[async-await][async-await] para aguardar a conclusão de operações assíncronas. Um
 aplicativo bem-comportado começa rapidamente, chegando ao loop de eventos o
 mais rápido possível. O aplicativo então responde a cada evento enfileirado
 prontamente, usando operações assíncronas conforme necessário.
@@ -349,9 +349,9 @@ bloquear sem afetar outros isolates.
 Existem duas maneiras de trabalhar com isolates em Dart, dependendo do caso de
 uso:
 
-* Use [`Isolate.run()`][] para executar uma única computação em uma thread
+* Use [`Isolate.run()`][`Isolate.run()`] para executar uma única computação em uma thread
   separada.
-* Use [`Isolate.spawn()`][] para criar um isolate que irá lidar com várias
+* Use [`Isolate.spawn()`][`Isolate.spawn()`] para criar um isolate que irá lidar com várias
   mensagens ao longo do tempo, ou um worker em segundo plano. Para mais
   informações sobre como trabalhar com isolates de longa duração, leia a página
   [Isolates](/language/isolates).
@@ -377,7 +377,7 @@ void fib40() async {
 
 ### Desempenho e grupos de isolates {:#performance-and-isolate-groups}
 
-Quando um isolate chama [`Isolate.spawn()`][], os dois isolates têm o mesmo
+Quando um isolate chama [`Isolate.spawn()`][`Isolate.spawn()`], os dois isolates têm o mesmo
 código executável e estão no mesmo _grupo de isolates_. Grupos de isolates
 permitem otimizações de desempenho, como o compartilhamento de código; um novo
 isolate executa imediatamente o código pertencente ao grupo de isolates. Além
@@ -385,7 +385,7 @@ disso, `Isolate.exit()` funciona apenas quando os isolates estão no mesmo
 grupo de isolates.
 
 Em alguns casos especiais, você pode precisar usar
-[`Isolate.spawnUri()`][], que configura o novo isolate com uma cópia do
+[`Isolate.spawnUri()`][`Isolate.spawnUri()`], que configura o novo isolate com uma cópia do
 código que está no URI especificado. No entanto, `spawnUri()` é muito mais
 lento do que `spawn()` e o novo isolate não está no grupo de isolates de seu
 gerador. Outra consequência de desempenho é que a passagem de mensagens é mais
@@ -412,21 +412,21 @@ considerar o uso de isolates.
 
 #### Tipos de mensagens {:#message-types}
 
-As mensagens enviadas via [`SendPort`][] podem ser quase qualquer tipo de
+As mensagens enviadas via [`SendPort`][`SendPort`] podem ser quase qualquer tipo de
 objeto Dart, mas há algumas exceções:
 
-- Objetos com recursos nativos, como [`Socket`][].
-- [`ReceivePort`][]
-- [`DynamicLibrary`][]
-- [`Finalizable`][]
-- [`Finalizer`][]
-- [`NativeFinalizer`][]
-- [`Pointer`][]
-- [`UserTag`][]
+- Objetos com recursos nativos, como [`Socket`][`Socket`].
+- [`ReceivePort`][`ReceivePort`]
+- [`DynamicLibrary`][`DynamicLibrary`]
+- [`Finalizable`][`Finalizable`]
+- [`Finalizer`][`Finalizer`]
+- [`NativeFinalizer`][`NativeFinalizer`]
+- [`Pointer`][`Pointer`]
+- [`UserTag`][`UserTag`]
 - Instâncias de classes marcadas com `@pragma('vm:isolate-unsendable')`
 
 Além dessas exceções, qualquer objeto pode ser enviado. Consulte a
-documentação de [`SendPort.send`][] para mais informações.
+documentação de [`SendPort.send`][`SendPort.send`] para mais informações.
 
 Observe que `Isolate.spawn()` e `Isolate.exit()` abstraem sobre objetos
 `SendPort`, portanto, estão sujeitos às mesmas limitações.
@@ -468,8 +468,8 @@ novamente antes de retornar ao Dart da chamada FFI. Leia sobre
 ## Concorrência na web {:#concurrency-on-the-web}
 
 Todos os aplicativos Dart podem usar `async-await`, `Future` e `Stream` para
-computações não bloqueadoras e intercaladas. A [plataforma Dart web][], no
-entanto, não suporta isolates. Aplicativos web Dart podem usar [web workers][]
+computações não bloqueadoras e intercaladas. A [plataforma Dart web][plataforma Dart web], no
+entanto, não suporta isolates. Aplicativos web Dart podem usar [web workers][web workers]
 para executar scripts em threads de fundo semelhantes a isolates. A
 funcionalidade e os recursos dos web workers diferem um pouco dos isolates.
 
@@ -493,15 +493,15 @@ geração. Web workers não têm uma API equivalente.
 ## Recursos adicionais {:#additional-resources}
 
 - Se você estiver usando muitos isolates,
-  considere o [`IsolateNameServer`][]
-  no Flutter ou o [`package:isolate_name_server`][] que fornece funcionalidade
+  considere o [`IsolateNameServer`][`IsolateNameServer`]
+  no Flutter ou o [`package:isolate_name_server`][`package:isolate_name_server`] que fornece funcionalidade
   semelhante para aplicativos Dart que não são Flutter.
-- Leia mais sobre o [modelo Ator][], no qual os isolates de Dart são baseados.
+- Leia mais sobre o [modelo Ator][modelo Ator], no qual os isolates de Dart são baseados.
 - Documentação adicional sobre as APIs de `Isolate`:
-    - [`Isolate.exit()`][]
-    - [`Isolate.spawn()`][]
-    - [`ReceivePort`][]
-    - [`SendPort`][]
+    - [`Isolate.exit()`][`Isolate.exit()`]
+    - [`Isolate.spawn()`][`Isolate.spawn()`]
+    - [`ReceivePort`][`ReceivePort`]
+    - [`SendPort`][`SendPort`]
 
 [`IsolateNameServer`]: {{site.flutter-api}}/flutter/dart-ui/IsolateNameServer-class.html
 [`package:isolate_name_server`]: {{site.pub-pkg}}/isolate_name_server

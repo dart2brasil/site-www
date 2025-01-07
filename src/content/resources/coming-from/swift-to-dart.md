@@ -27,14 +27,14 @@ Dart oferece compilação AOT (_ahead-of-time_).
 No entanto, Dart também suporta um modo de compilação JIT
 (_just-in-time_) para auxiliar em vários aspectos
 do desenvolvimento, como recompilação incremental
-ou depuração. Para mais informações, consulte a [visão geral do Dart][].
+ou depuração. Para mais informações, consulte a [visão geral do Dart][Dart overview].
 
 [Dart overview]: /overview#native-platform
 
 :::note
 O Flutter usa a linguagem Dart, então se você está
 programando em Flutter, pode achar [Flutter para
-desenvolvedores iOS][] útil.
+desenvolvedores iOS][Flutter for iOS developers] útil.
 :::
 
 [Flutter for iOS developers]: {{site.flutter-docs}}/get-started/flutter-for/ios-devs
@@ -48,13 +48,13 @@ como uma ferramenta independente, Dart tem convenções
 de layout oficiais e inclui um _linter_ (analisador de
 código) para tornar a conformidade fácil. Para
 personalizar as regras de _lint_ para seu projeto, siga as instruções de
-[Personalizando a análise estática][]. (Observe que os _plugins_ IDE para Dart
+[Personalizando a análise estática][Customizing static analysis]. (Observe que os _plugins_ IDE para Dart
 e Flutter também fornecem essa funcionalidade.)
 
 [Customizing static analysis]: /tools/analysis
 
 :::tip
-Dart fornece [`dart fix`][], que encontra e corrige
+Dart fornece [`dart fix`][`dart fix`], que encontra e corrige
 erros encontrados pelo analisador.
 :::
 
@@ -82,7 +82,7 @@ seu código mais legível, consulte
 [Using trailing commas]: {{site.flutter-docs}}/development/tools/formatting#using-trailing-commas
 
 Para mais informações sobre as convenções Dart e _linting_,
-consulte [Effective Dart][] e [Regras do Linter][Linter rules].
+consulte [Effective Dart][Effective Dart] e [Regras do Linter][Linter rules].
 
 [Effective Dart]: /effective-dart
 [Linter rules]: /tools/linter-rules
@@ -154,7 +154,7 @@ permitir que uma variável tenha qualquer tipo, é
 preferível atribuí-la a `Object?` em vez de `dynamic`.
 
 Para mais informações, consulte a seção
-[Variáveis][] no tour da linguagem Dart.
+[Variáveis][Variables section] no tour da linguagem Dart.
 
 [Variables section]: /language/variables
 
@@ -261,7 +261,7 @@ plataforma, como:
   * Sets (`Set`)
   * Maps/dicionários (`Map`)
 
-Para mais informações, consulte [Tipos _built-in_][]
+Para mais informações, consulte [Tipos _built-in_][Built-in types]
 no tour da linguagem Dart.
 
 [Built-in types]: /language/built-in-types
@@ -337,7 +337,7 @@ print(intVariable == doubleVariable); // true
 Este código imprime `true`. No entanto, em Dart a
 implementação subjacente dos números é diferente entre
 a web e as plataformas nativas. A página [Números em
-Dart][] detalha essas diferenças e mostra como escrever
+Dart][Numbers in Dart] detalha essas diferenças e mostra como escrever
 código para que as diferenças não importem.
 
 [Numbers in Dart]: /resources/language/number-representation
@@ -382,7 +382,7 @@ podem ser usados diretamente (por exemplo, `\u2665`),
 no entanto, chaves também funcionam. Para mais
 informações sobre como trabalhar com caracteres
 unicode, consulte
-[Runes e _grapheme clusters_][]
+[Runes e _grapheme clusters_][Runes e _grapheme clusters_]
 no tour da linguagem Dart.
 
 [Runes e _grapheme clusters_]: /language/built-in-types#runes-and-grapheme-clusters
@@ -509,7 +509,7 @@ exemplo, tanto Dart quanto Swift permitem que você
 verifique se uma string está vazia com `isEmpty`.
 Existem outros métodos de conveniência, como
 `toUpperCase` e `toLowerCase`. Para mais informações,
-consulte [Strings][] no tour da linguagem Dart.
+consulte [Strings][Strings] no tour da linguagem Dart.
 
 [Strings]: /language/built-in-types#strings
 
@@ -675,7 +675,7 @@ print("olá mundo")
 ```
 
 Dart não suporta `Tuples` (embora existam
-[vários pacotes de tupla][] disponíveis em
+[vários pacotes de tupla][several tuple packages] disponíveis em
 pub.dev). No caso de uma função precisar retornar
 vários valores, você pode envolvê-los em uma
 coleção, como uma lista, set ou map, ou pode escrever
@@ -689,7 +689,7 @@ sobre isso pode ser encontrado nas seções sobre
 ### Tratamento de exceções e erros {:#exception-and-error-handling}
 
 Assim como em Swift, as funções e métodos de Dart
-suportam o tratamento de [exceções][] e [erros][].
+suportam o tratamento de [exceções][exceptions] e [erros][errors].
 Os _erros_ Dart geralmente representam erros do
 programador ou falhas do sistema, como estouro de
 pilha. Não se espera que erros Dart sejam capturados.
@@ -838,7 +838,7 @@ posicionais opcionais devem ter um valor padrão ou um tipo anulável.
 ### Funções de primeira classe {:#first-class-functions}
 
 Assim como no Swift, as funções Dart também são
-[cidadãos de primeira classe][], o que significa
+[cidadãos de primeira classe][first class citizens], o que significa
 que são tratadas como qualquer outro objeto.
 Por exemplo, o código a seguir mostra como retornar
 uma função de uma função:
@@ -876,7 +876,7 @@ print(multiplyByTwo(3)) // 6
 
 ### Funções anônimas {:#anonymous-functions}
 
-[_Funções anônimas_][] em Dart funcionam quase
+[_Funções anônimas_][_Anonymous functions_] em Dart funcionam quase
 identicamente aos _closures_ (fechamentos) em Swift,
 salvo uma diferença na sintaxe. Assim como as funções
 nomeadas, você pode passar funções anônimas como
@@ -938,7 +938,7 @@ multiply(int a, int b) {
 
 ### Funções geradoras {:#generator-functions}
 
-Dart suporta [_funções geradoras_][] que retornam uma
+Dart suporta [_funções geradoras_][_generator functions_] que retornam uma
 coleção iterável de itens que são construídos de
 forma preguiçosa. Adicione itens à iterável final
 usando a palavra-chave `yield`, ou adicione coleções
@@ -1140,7 +1140,7 @@ assert(25 == 51.6 ~/ 2);
 
 Embora os operadores `++` e `--` existissem em
 versões anteriores do Swift, eles foram
-[removidos no Swift 3.0][].
+[removidos no Swift 3.0][removidos no Swift 3.0].
 Os equivalentes do Dart operam da mesma forma.
 Por exemplo:
 
@@ -1242,8 +1242,8 @@ o Dart usa operações bit a bit do JavaScript
 para melhor desempenho, mas isso pode causar
 comportamento diferente entre nativo e web
 aplicações. Para mais informações,
-consulte [Operações bit a bit][] na
-página [Números no Dart][].
+consulte [Operações bit a bit][Operações bit a bit] na
+página [Números no Dart][Números no Dart].
 :::
 
 [Operações bit a bit]: /resources/language/number-representation#bitwise-operations
@@ -1459,7 +1459,7 @@ classe `Object` é baseado apenas na identidade do objeto.
 Se o operador `==` puder tornar objetos não idênticos iguais,
 o getter `hashCode` precisará ser substituído para corresponder
 à igualdade. Para mais informações,
-consulte a página da API para a [`hashCode` property][].
+consulte a página da API para a [`hashCode` property][`hashCode` property].
 :::
 
 Os seguintes trechos de código mostram as diferenças
@@ -1519,7 +1519,7 @@ No Dart, o `hashCode` herdado da classe `Object`
 Se o operador `==` puder tornar objetos não idênticos iguais,
 o getter `hashCode` precisará ser substituído para corresponder
 à igualdade. Para mais informações,
-consulte a página da API para a [`hashCode` property][].
+consulte a página da API para a [`hashCode` property][`hashCode` property].
 :::
 
 [`hashCode` property]: {{site.dart-api}}/dart-core/Object/hashCode.html
@@ -1623,7 +1623,7 @@ construtores que definem esse estado,
 métodos com funcionalidade,
 e até mesmo substituir membros existentes.
 Para mais informações, consulte
-[Declarando enums aprimorados][] no tour da linguagem Dart.
+[Declarando enums aprimorados][Declarando enums aprimorados] no tour da linguagem Dart.
 
 [Declarando enums aprimorados]: /language/enums#declaring-enhanced-enums
 
@@ -2101,7 +2101,7 @@ class Bat extends Walker {}
 
 :::note
 A palavra-chave `extends` é abordada mais adiante em
-[Estendendo uma classe][] no guia da linguagem Dart.
+[Estendendo uma classe][Estendendo uma classe] no guia da linguagem Dart.
 :::
 
 [Estendendo uma classe]: /language/generics#restricting-the-parameterized-type
@@ -2177,7 +2177,7 @@ print("21".parseInt() * 2) // 42
 Embora as extensões sejam similares em Dart e Swift,
 há algumas diferenças importantes. As seções seguintes
 cobrem as diferenças mais importantes,
-mas confira [Métodos de extensão][] para uma
+mas confira [Métodos de extensão][Métodos de extensão] para uma
 visão geral completa.
 
 [Métodos de extensão]: /language/extension-methods
@@ -2404,7 +2404,7 @@ Swift suporta multithreading e Dart suporta isolates,
 que são similares a threads leves
 e não serão abordados aqui.
 Cada isolate tem seu próprio loop de eventos.
-Para mais informações, veja [Como isolates funcionam][].
+Para mais informações, veja [Como isolates funcionam][Como isolates funcionam].
 
 [Como isolates funcionam]: /language/concurrency#isolates
 
@@ -2558,7 +2558,7 @@ Future<void> asyncFunction() async {
 ```
 
 Para mais informações e prática interativa,
-confira o tutorial de [Programação assíncrona][].
+confira o tutorial de [Programação assíncrona][Programação assíncrona].
 
 [Programação assíncrona]: /libraries/async/async-await
 
@@ -2686,7 +2686,7 @@ Stream<int> stream = asynchronousNaturalsTo(5);
 
 Você também pode criar um stream usando a
 API `StreamController`. Para mais informações,
-veja [Usando um StreamController][].
+veja [Usando um StreamController][Usando um StreamController].
 
 [Usando um StreamController]: /libraries/async/creating-streams#using-a-streamcontroller
 
@@ -2698,8 +2698,8 @@ após a barra dupla pelo resto da linha,
 e blocos `/* ... */` comentam várias linhas.
 
 Além de comentários regulares,
-Dart também tem [comentários de documentação][] que funcionam em conjunto
-com [`dart doc`][]: uma ferramenta própria que gera
+Dart também tem [comentários de documentação][comentários de documentação] que funcionam em conjunto
+com [`dart doc`][`dart doc`]: uma ferramenta própria que gera
 documentação HTML para pacotes Dart.
 É considerada uma boa prática colocar comentários de documentação
 acima de todas as declarações de membros públicos.
@@ -2813,7 +2813,7 @@ class Parrot extends _Animal {
 ```
 
 Para mais informações, confira
-[criando pacotes][].
+[criando pacotes][criando pacotes].
 
 [criando pacotes]: /tools/pub/create-packages#organizing-a-package
 
@@ -2822,7 +2822,7 @@ Para mais informações, confira
 Este guia apresentou a você as principais diferenças
 entre Dart e Swift. Neste ponto,
 você pode considerar passar para a documentação geral
-para [Dart][] ou [Flutter][]
+para [Dart][Dart] ou [Flutter][Flutter]
 (um framework de código aberto que usa Dart para
 construir aplicativos multiplataforma, compilados nativamente,
 bonitos a partir de uma única base de código),

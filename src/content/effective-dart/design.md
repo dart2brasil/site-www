@@ -158,7 +158,7 @@ Bons nomes tendem a começar com um de alguns tipos de verbos:
 *   uma forma de "ser": `isEnabled` (está habilitado), `wasShown` (foi mostrado), `willFire` (irá disparar). Estes são, de longe,
     os mais comuns.
 
-*   um [verbo auxiliar][]: `hasElements` (possui elementos), `canClose` (pode fechar),
+*   um [verbo auxiliar][auxiliary verb]: `hasElements` (possui elementos), `canClose` (pode fechar),
     `shouldConsume` (deve consumir), `mustSave` (deve salvar).
 
 *   um verbo ativo: `ignoresInput` (ignora entrada), `wroteFile` (escreveu arquivo). Estes são raros porque são
@@ -1466,7 +1466,7 @@ omitidas.
 ### PREFIRA assinaturas em anotações de tipo de função {:#prefer-signatures-in-function-type-annotations}
 
 O identificador `Function` sozinho, sem nenhum tipo de retorno ou assinatura de
-parâmetro, refere-se ao tipo especial [Function][]. Este tipo é apenas
+parâmetro, refere-se ao tipo especial [Function][Function]. Este tipo é apenas
 marginalmente mais útil do que usar `dynamic`. Se você for usar anotações,
 prefira um tipo de função completo que inclua os parâmetros e o tipo de retorno
 da função.
@@ -1732,7 +1732,7 @@ FutureOr<int> triple(FutureOr<int> value) {
 ```
 
 A formulação mais precisa desta diretriz é *usar `FutureOr<T>` apenas em
-posições [contravariantes][].* Os parâmetros são contravariantes e os tipos de
+posições [contravariantes][contravariant].* Os parâmetros são contravariantes e os tipos de
 retorno são covariantes. Em tipos de função aninhados, isso é invertido — se
 você tem um parâmetro cujo tipo é ele mesmo uma função, então o tipo de retorno
 do callback agora está em posição contravariante e os parâmetros do callback

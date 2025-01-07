@@ -44,7 +44,7 @@ que usa `package:jnigen` para gerar ligações para uma classe simples.
 ### Configurando `jnigen` {:#configure-jnigen}
 
 Primeiro, adicione `package:jni` como uma dependência e
-`package:jnigen` como uma [dependência de desenvolvimento][].
+`package:jnigen` como uma [dependência de desenvolvimento][dev dependency].
 
 ```console
 $ dart pub add jni dev:jnigen
@@ -138,9 +138,9 @@ Segue alguns exemplos mais abrangentes do uso de `package:jnigen`:
 
 | **Exemplo**             | **Descrição**                                                                                 |
 |-------------------------|-------------------------------------------------------------------------------------------------|
-| [in_app_java][]         | Demonstra como incluir código Java personalizado em um aplicativo Flutter e chamá-lo usando `jnigen`. |
-| [pdfbox_plugin][]       | Exemplo de um plugin Flutter que fornece ligações para a biblioteca [Apache PDFBox][].            |
-| [notification_plugin][] | Exemplo de um plugin Flutter reutilizável com código Java personalizado que usa bibliotecas Android.         |
+| [in_app_java][in_app_java]         | Demonstra como incluir código Java personalizado em um aplicativo Flutter e chamá-lo usando `jnigen`. |
+| [pdfbox_plugin][pdfbox_plugin]       | Exemplo de um plugin Flutter que fornece ligações para a biblioteca [Apache PDFBox][Apache PDFBox].            |
+| [notification_plugin][notification_plugin] | Exemplo de um plugin Flutter reutilizável com código Java personalizado que usa bibliotecas Android.         |
 
 {:.table}
 

@@ -13,7 +13,7 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-As bibliotecas Dart estão repletas de funções que retornam objetos [`Future`][] ou [`Stream`][]. Essas funções são _assíncronas_: elas retornam após configurar uma operação que pode levar tempo (como E/S), sem esperar que essa operação seja concluída.
+As bibliotecas Dart estão repletas de funções que retornam objetos [`Future`][`Future`] ou [`Stream`][`Stream`]. Essas funções são _assíncronas_: elas retornam após configurar uma operação que pode levar tempo (como E/S), sem esperar que essa operação seja concluída.
 
 As palavras-chave `async` e `await` dão suporte à programação assíncrona, permitindo que você escreva código assíncrono que se parece com código síncrono.
 
@@ -79,7 +79,7 @@ void main() [!async!] {
 ```
 
 :::note
-O exemplo anterior usa uma função `async` (`checkVersion()`) sem esperar por um resultado — uma prática que pode causar problemas se o código assumir que a função terminou de executar. Para evitar esse problema, use a [regra do linter `unawaited_futures`][].
+O exemplo anterior usa uma função `async` (`checkVersion()`) sem esperar por um resultado — uma prática que pode causar problemas se o código assumir que a função terminou de executar. Para evitar esse problema, use a [regra do linter `unawaited_futures`][unawaited_futures linter rule].
 :::
 
 Para uma introdução interativa ao uso de `futures`, `async` e `await`, consulte o [tutorial de programação assíncrona](/libraries/async/async-await).

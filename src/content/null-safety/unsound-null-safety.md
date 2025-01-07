@@ -8,11 +8,11 @@ description: A combinação de versões de linguagem permite que você migre par
 Dart 3 e versões posteriores não suportam código sem
 segurança nula ou com segurança nula não confiável.
 Todo o código deve ser totalmente seguro contra nulos.
-Para saber mais, confira a [questão de rastreamento de segurança nula completa do Dart 3][].
+Para saber mais, confira a [questão de rastreamento de segurança nula completa do Dart 3][Dart 3 sound null safety tracking issue].
 :::
 
 Um programa Dart pode conter algumas bibliotecas que
-são [seguras contra nulos][] e algumas que não são.
+são [seguras contra nulos][null safe] e algumas que não são.
 Esses **programas de versão mista**
 dependem de **segurança nula não confiável**.
 
@@ -20,7 +20,7 @@ dependem de **segurança nula não confiável**.
 [migrated]: /null-safety#migrate
 [Dart 3 sound null safety tracking issue]: {{site.repo.dart.sdk}}/issues/49530
 
-A capacidade de misturar [versões de linguagem][]
+A capacidade de misturar [versões de linguagem][language versions]
 libera os mantenedores de pacotes para migrar seu código,
 com o conhecimento de que mesmo usuários legados podem obter novas
 correções de bugs e outras melhorias.
@@ -37,7 +37,7 @@ seguido de detalhes sobre como testar e executar programas de versão mista.
 :::note
 Recomendamos que, se possível, você espere as dependências migrarem
 antes de migrar seu pacote.
-Para detalhes, veja o [guia de migração][].
+Para detalhes, veja o [guia de migração][migration guide].
 :::
 
 [migration guide]: /null-safety/migration-guide
@@ -105,7 +105,7 @@ considere migrar essas bibliotecas juntas.
 ### Usando a ferramenta de migração {:#using-the-migration-tool}
 
 Você pode migrar incrementalmente usando a
-[ferramenta de migração][].
+[ferramenta de migração][migration tool].
 Para desativar arquivos ou diretórios, clique na caixa de seleção verde.
 Na captura de tela a seguir,
 todos os arquivos no diretório `bin` estão desativados.
@@ -115,7 +115,7 @@ todos os arquivos no diretório `bin` estão desativados.
 [migration tool]: /null-safety/migration-guide#step2-migrate
 
 Cada arquivo desativado permanecerá inalterado
-exceto por um [comentário de versão de linguagem][] 2.9.
+exceto por um [comentário de versão de linguagem][language version comment] 2.9.
 Você pode executar `dart migrate` novamente mais tarde para continuar a migração.
 Quaisquer arquivos que já foram migrados apresentam uma caixa de seleção desabilitada:
 você não pode desmigrar um arquivo depois que ele foi migrado.
@@ -132,7 +132,7 @@ Se você quiser migrar um pacote incrementalmente manualmente, siga estas etapas
      sdk: '>=2.12.0 <3.0.0'
    ```
 
-2. Regere o [arquivo de configuração do pacote][]:
+2. Regere o [arquivo de configuração do pacote][package configuration file]:
 
    ```console
    $ dart pub get
@@ -149,7 +149,7 @@ Se você quiser migrar um pacote incrementalmente manualmente, siga estas etapas
    É provável que você veja muitos erros de análise.
    Está tudo bem.
 
-4. Adicione um [comentário de versão de linguagem][] na parte superior de
+4. Adicione um [comentário de versão de linguagem][language version comment] na parte superior de
    quaisquer arquivos Dart que você não deseja considerar durante sua migração atual:
 
    ```dart

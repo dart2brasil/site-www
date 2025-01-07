@@ -126,7 +126,7 @@ Mesmo quando a classe *tem* métodos não abstratos, você pode querer impedir
 que os usuários a estendam.
 A herança é um dos tipos mais poderosos de acoplamento em software,
 porque permite a reutilização de código.
-Mas esse acoplamento também é [perigoso e frágil][].
+Mas esse acoplamento também é [perigoso e frágil][dangerous and fragile].
 Quando a herança cruza os limites do pacote,
 pode ser difícil evoluir a superclasse sem quebrar as subclasses.
 
@@ -235,7 +235,7 @@ sem se preocupar em quebrar nenhum usuário downstream.
 ## O modificador `sealed` {:#the-sealed-modifier}
 
 O último modificador, [`sealed`](/language/class-modifiers#sealed), é especial.
-Ele existe principalmente para habilitar a [verificação de exaustividade][] na correspondência de padrões.
+Ele existe principalmente para habilitar a [verificação de exaustividade][exhaustiveness checking] na correspondência de padrões.
 Se um switch tiver casos para cada subtipo direto de um tipo marcado como `sealed`,
 então o compilador sabe que o switch é exaustivo.
 

@@ -117,7 +117,7 @@ Para resolver esses problemas:
 2. [migre](#migrate) todo o seu código-fonte para usar a segurança contra nulos.
 
 O Dart 3 pode ser encontrado nos canais estáveis para Dart e Flutter.
-Para saber mais, consulte [a página de download][] para obter detalhes.
+Para saber mais, consulte [a página de download][a página de download] para obter detalhes.
 Para testar seu código quanto à compatibilidade com Dart 3, use Dart 3 ou posterior.
 
 ```console
@@ -126,7 +126,7 @@ $ dart pub get / flutter pub get     # isso deve resolver sem problemas
 $ dart analyze / flutter analyze     # isso deve passar sem erros
 ```
 
-Se a etapa `pub get` falhar, verifique o [status das dependências][].
+Se a etapa `pub get` falhar, verifique o [status das dependências][status das dependências].
 
 Se a etapa `analyze` falhar, atualize seu código para resolver os problemas
 listados pelo analisador.
@@ -142,7 +142,7 @@ Você não pode usar a segurança contra nulos em versões do SDK anteriores ao 
 <a id="constraints"></a>
 Para habilitar a segurança contra nulos, defina o
 [limite inferior da restrição do SDK](/tools/pub/pubspec#sdk-constraints)
-para uma [versão de linguagem][] de 2.12 ou posterior.
+para uma [versão de linguagem][versão de linguagem] de 2.12 ou posterior.
 Por exemplo, seu arquivo `pubspec.yaml` pode ter as seguintes restrições:
 
 ```yaml
@@ -173,15 +173,15 @@ $ dart migrate
 ```
 
 Para saber como migrar seu código para a segurança contra nulos,
-confira o [guia de migração][].
+confira o [guia de migração][migration guide].
 
 ## Onde aprender mais {:#where-to-learn-more}
 
 Para saber mais sobre a segurança contra nulos, consulte os seguintes recursos:
 
-* [Entendendo a segurança contra nulos][]
+* [Entendendo a segurança contra nulos][Entendendo a segurança contra nulos]
 * [Guia de migração para código existente][migration guide]
-* [FAQ sobre segurança contra nulos][]
+* [FAQ sobre segurança contra nulos][FAQ sobre segurança contra nulos]
 * [Código de exemplo de segurança contra nulos][calculate_lix]
 
 [calculate_lix]: {{site.repo.dart.org}}/samples/tree/main/null_safety/calculate_lix

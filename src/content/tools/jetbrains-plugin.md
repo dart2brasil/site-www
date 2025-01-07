@@ -4,14 +4,14 @@ title: IntelliJ & Android Studio
 description: Use Dart com uma variedade de IDEs e editores da JetBrains.
 ---
 
-O [plugin Dart][] adiciona suporte a Dart
+O [plugin Dart][Dart plugin] adiciona suporte a Dart
 para IDEs baseados na plataforma IntelliJ desenvolvidos pela JetBrains.
 Essas IDEs fornecem recursos exclusivos para tecnologias de desenvolvimento
 específicas. As IDEs recomendadas para desenvolvimento Dart e Flutter incluem:
 
-- [IntelliJ IDEA][] que se especializa em desenvolvimento de linguagem baseado em JVM.
-- [WebStorm][] que se especializa em desenvolvimento de aplicativos web.
-- [Android Studio][] que se especializa em desenvolvimento para Android e Flutter.
+- [IntelliJ IDEA][IntelliJ IDEA] que se especializa em desenvolvimento de linguagem baseado em JVM.
+- [WebStorm][WebStorm] que se especializa em desenvolvimento de aplicativos web.
+- [Android Studio][Android Studio] que se especializa em desenvolvimento para Android e Flutter.
 
 Qualquer que seja a IDE da JetBrains que você escolher para o desenvolvimento
 Dart, esta página tem recursos para ajudá-lo a começar rapidamente
@@ -141,7 +141,7 @@ em seguida, abrir seu arquivo `pubspec.yaml` ou qualquer um de seus arquivos Dar
 ## Relatando problemas {:#reporting-issues}
 
 Por favor, relate problemas e feedback através do oficial
-[rastreador de problemas da JetBrains para Dart.][]
+[rastreador de problemas da JetBrains para Dart.][Rastreador de problemas da JetBrains para Dart.]
 
 Inclua detalhes do comportamento esperado, o comportamento real
 e capturas de tela, se apropriado.

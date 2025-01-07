@@ -13,7 +13,7 @@ lastVerified: 2024-08-04
 Esta página lista todas as mudanças interruptivas e descontinuações na linguagem e nas bibliotecas do Dart,
 organizadas por lançamento e área, para ajudar os usuários do Dart a entender e gerenciar seu
 impacto. Notas de lançamento completas estão disponíveis no [changelog do SDK do Dart][changelog].
-O documento [política de mudanças interruptivas (breaking change policy)][] descreve a política e o processo
+O documento [política de mudanças interruptivas (breaking change policy)][breaking change policy] descreve a política e o processo
 em torno de mudanças interruptivas e descontinuações no Dart.
 
 **Esta página inclui os seguintes tipos de mudanças interruptivas**:
@@ -26,7 +26,7 @@ em torno de mudanças interruptivas e descontinuações no Dart.
 * **Com versão de linguagem**: O SDK do Dart mantém compatibilidade com versões anteriores
   para o código existente, e a mudança de comportamento só entra em vigor (potencialmente quebrando
   o código que depende do comportamento anterior) quando você atualiza a
-  [versão da linguagem][] do seu código.
+  [versão da linguagem][language version] do seu código.
 
   _Estas são marcadas como:_ {{versioned}}
 * **Descontinuações**: O SDK do Dart mantém a compatibilidade com o código descontinuado,
@@ -43,7 +43,7 @@ em torno de mudanças interruptivas e descontinuações no Dart.
 
 Se você tiver dúvidas ou preocupações sobre alguma dessas mudanças interruptivas, por favor,
 comente sobre o problema da mudança interruptiva (breaking change issue)  linkado a partir da entrada relevante.
-Para ser notificado sobre futuras mudanças interruptivas, junte-se ao grupo [Dart announce][].
+Para ser notificado sobre futuras mudanças interruptivas, junte-se ao grupo [Dart announce][Dart announce].
 
 [breaking change policy]: {{site.repo.dart.sdk}}/blob/main/docs/process/breaking-changes.md
 [changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
@@ -94,7 +94,7 @@ levá-las em conta antes do lançamento do 3.7.
 
 #### Analisador (Analyzer)
 
-- {{removed}} As regras de lint [`package_api_docs`][] e [`unsafe_html`][]
+- {{removed}} As regras de lint [`package_api_docs`][`package_api_docs`] e [`unsafe_html`][`unsafe_html`]
   foram removidas e devem ser removidas dos arquivos `analysis_options.yaml`.
 
 [`package_api_docs`]: /tools/linter-rules/package_api_docs
@@ -102,11 +102,11 @@ levá-las em conta antes do lançamento do 3.7.
 
 #### Formatador (`dart format`)
 
-- {{versioned}} O formatador implementa um [novo estilo][] que resulta em
-  nova saída ao formatar o código com uma [versão de linguagem][] de 3.7 ou superior.
+- {{versioned}} O formatador implementa um [novo estilo][new style] que resulta em
+  nova saída ao formatar o código com uma [versão de linguagem][language version] de 3.7 ou superior.
 - {{removed}} A flag `--fix` para `dart format` não é mais suportada.
   Para aplicar correções similares e mais,
-  [configure suas opções de análise][] e execute [`dart fix`][].
+  [configure suas opções de análise][configure your analysis options] e execute [`dart fix`][`dart fix`].
 - {{deprecated}} A opção `--line-length` para `dart format` foi
   descontinuada e definida para ser removida.
   Todos os usos devem ser migrados para a nova opção `--page-width`.
@@ -145,7 +145,7 @@ levá-las em conta antes do lançamento do 3.7.
 
 #### Analisador (Analyzer)
 
-- {{deprecated}} As regras de lint [`package_api_docs`][] e [`unsafe_html`][]
+- {{deprecated}} As regras de lint [`package_api_docs`][`package_api_docs`] e [`unsafe_html`][`unsafe_html`]
   foram descontinuadas e estão definidas para serem removidas no Dart 3.7.
 
 [`package_api_docs`]: /tools/linter-rules/package_api_docs
@@ -269,8 +269,8 @@ ao executar `dart format` com um SDK Dart 3.6 ou posterior:
 
 - {{deprecated}} Estas bibliotecas agora estão marcadas como legado e
   verão menos suporte no futuro.
-  Novos projetos devem preferir usar [`package:web`][] e `dart:js_interop`.
-  Para saber mais, confira [Migrar para package:web][].
+  Novos projetos devem preferir usar [`package:web`][`package:web`] e `dart:js_interop`.
+  Para saber mais, confira [Migrar para package:web][Migrate to package:web].
 
 [`package:web`]: {{site.pub-pkg}}/web
 [Migrate to package:web]: /interop/js-interop/package-web
@@ -280,7 +280,7 @@ ao executar `dart format` com um SDK Dart 3.6 ou posterior:
 - {{deprecated}}
   Esta biblioteca agora está marcada como legado e verá menos suporte no futuro.
   Os usos devem ser migrados para `dart:js_interop` e `dart:js_interop_unsafe`.
-  Para saber mais, confira [`/go/next-gen-js-interop`][].
+  Para saber mais, confira [`/go/next-gen-js-interop`][`/go/next-gen-js-interop`].
 
 [`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
@@ -289,7 +289,7 @@ ao executar `dart format` com um SDK Dart 3.6 ou posterior:
 - {{deprecated}}
   Esta biblioteca agora está marcada como legado e verá menos suporte no futuro.
   Os usos devem ser migrados para `dart:js_interop` e `dart:js_interop_unsafe`.
-  Para saber mais, confira [`/go/next-gen-js-interop`][].
+  Para saber mais, confira [`/go/next-gen-js-interop`][`/go/next-gen-js-interop`].
 
 [`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
@@ -378,14 +378,14 @@ ao executar `dart format` com um SDK Dart 3.6 ou posterior:
 #### `dart:html`
 
 * Em vez de usar `HttpRequest` diretamente,
-  agora é recomendado usar [`package:http`][].
+  agora é recomendado usar [`package:http`][`package:http`].
 
 [`package:http`]: {{site.pub-pkg}}/http
 
 #### `dart:io`
 
 * Em vez de usar `HttpClient` diretamente,
-  agora é recomendado usar [`package:http`][].
+  agora é recomendado usar [`package:http`][`package:http`].
 
 [`package:http`]: {{site.pub-pkg}}/http
 
@@ -454,7 +454,7 @@ ao executar `dart format` com um SDK Dart 3.6 ou posterior:
 * Os lints `iterable_contains_unrelated_type` e
   `list_remove_unrelated_type` foram removidos.
   Considere migrar para o lint expandido
-  [`collection_methods_unrelated_type`][].
+  [`collection_methods_unrelated_type`][`collection_methods_unrelated_type`].
 * Os seguintes lints são removidos por não serem mais
   necessários com segurança nula sound. Você deve remover a configuração deles
   de seus arquivos `analysis_options.yaml` e quaisquer comentários ignore.
@@ -624,7 +624,7 @@ sobre todas as mudanças nesta seção.
 
 #### `dart:async`
 
-* {{removed}} [Removida a classe descontinuada][49529] [`DeferredLibrary`][].
+* {{removed}} [Removida a classe descontinuada][49529] [`DeferredLibrary`][`DeferredLibrary`].
 
 #### `dart:collection` {:#dart-collection}
 
@@ -632,10 +632,10 @@ sobre todas as mudanças nesta seção.
 
 #### `dart:developer`
 
-* {{removed}} [Removida a constante descontinuada][49529] [`MAX_USER_TAGS`][].
-  Use [`maxUserTags`][] em vez disso.
-* {{removed}} [Removidas as classes descontinuadas][50231] [`Metrics`][], [`Metric`][], [`Counter`][],
-  e [`Gauge`][] pois estão quebradas desde o Dart 2.0.
+* {{removed}} [Removida a constante descontinuada][49529] [`MAX_USER_TAGS`][`MAX_USER_TAGS`].
+  Use [`maxUserTags`][`maxUserTags`] em vez disso.
+* {{removed}} [Removidas as classes descontinuadas][50231] [`Metrics`][`Metrics`], [`Metric`][`Metric`], [`Counter`][`Counter`],
+  e [`Gauge`][`Gauge`] pois estão quebradas desde o Dart 2.0.
 
 #### `dart:ffi`
 
@@ -988,7 +988,7 @@ sobre todas as mudanças nesta seção.
    UTF-8, [os substitutos não pareados serão codificados como caracteres de substituição][41100] (`U+FFFD`).
 * Ao decodificar UTF-8, [os substitutos codificados serão tratados como entrada malformada][41100].
 * [Alterado o número de caracteres de substituição emitidos][41100] para
-  sequências de entrada malformadas para corresponder ao [padrão de codificação WHATWG][]
+  sequências de entrada malformadas para corresponder ao [padrão de codificação WHATWG][padrão de codificação whatwg]
   ao decodificar UTF-8 com `allowMalformed: true`.
 
 #### `dart:html`

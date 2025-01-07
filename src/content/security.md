@@ -29,9 +29,9 @@ A estratégia de segurança do Dart é baseada em cinco pilares principais:
 
 ## Reportando vulnerabilidades {:#reporting-vulnerabilities}
 
-Para reportar um problema de segurança, use [https://g.co/vulnz][].
+Para reportar um problema de segurança, use [https://g.co/vulnz][https://g.co/vulnz].
 A coordenação e divulgação acontecem nos [repositórios do dart-lang no GitHub][repos]
-(incluindo [avisos de segurança do GitHub][]).
+(incluindo [avisos de segurança do GitHub][avisos de segurança do GitHub]).
 Por favor, inclua uma descrição detalhada do problema,
 os passos que você deu para criar o problema, as versões afetadas e quaisquer
 mitigações para o problema.
@@ -39,18 +39,18 @@ A Equipe de Segurança do Google responderá em até 5 dias úteis após
 seu relatório em g.co/vulnz.
 
 Para mais informações sobre como o Google lida com questões de segurança, veja
-[Filosofia de segurança do Google][].
+[Filosofia de segurança do Google][Filosofia de segurança do Google].
 
 ## Sinalizando problemas existentes como relacionados à segurança {:#flagging-existing-issues-as-security-related}
 
 Se você acredita que um problema existente está relacionado à segurança,
-pedimos que você o reporte via [https://g.co/vulnz][] e inclua
+pedimos que você o reporte via [https://g.co/vulnz][https://g.co/vulnz] e inclua
 o ID do problema em seu relatório.
 
 ## Versões suportadas {:#supported-versions}
 
 Nós nos comprometemos a publicar atualizações de segurança para a versão do Dart atualmente
-para a versão mais recente [estável][] do Dart.
+para a versão mais recente [estável][stable] do Dart.
 
 [stable]: https://dartbrasil.dev/get-dart#release-channels
 
@@ -76,11 +76,11 @@ a lista de discussão [dart-announce](https://groups.google.com/a/dartlang.org/g
 * **Mantenha-se atualizado com as últimas versões do Dart SDK.**
   Nós atualizamos o Dart regularmente, e estas atualizações podem corrigir segurança
   defeitos descobertos em versões anteriores.
-  Verifique o [changelog do Dart][]
+  Verifique o [changelog do Dart][changelog do Dart]
   para atualizações relacionadas à segurança.
 
 * **Mantenha as dependências do seu aplicativo atualizadas.**
-  Certifique-se de [atualizar as dependências do seu pacote][]
+  Certifique-se de [atualizar as dependências do seu pacote][atualizar as dependências do seu pacote]
   para manter as dependências atualizadas.
   Evite fixar em versões específicas
   para suas dependências e, se o fizer, certifique-se de verificar

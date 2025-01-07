@@ -13,13 +13,13 @@ quanto para produção
 (com foco no tamanho e velocidade do código).
 
 Além dos compiladores,
-a plataforma web Dart fornece [bibliotecas principais][],
+a plataforma web Dart fornece [bibliotecas principais][core libraries],
 acesso ao [DOM (Document Object Model)][DOM],
 e [interoperabilidade para chamar JavaScript][interop] de Dart.
 
 Você tem a opção de usar a web Dart com um framework de aplicativo web de nível superior.
 Muitos aplicativos que suportam web mais mobile ou desktop são construídos
-usando [Flutter][] e o suporte [Flutter web][].
+usando [Flutter][Flutter] e o suporte [Flutter web][Flutter web].
 O suporte Flutter web
 e outros frameworks de aplicativos web para Dart são alimentados pela plataforma web Dart.
 

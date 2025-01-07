@@ -359,7 +359,7 @@ Classifica uma lista usando o método `sort()`. Você pode fornecer uma
 função de classificação que compare dois objetos. Essa função de
 classificação deve retornar < 0 para *menor*, 0 para *igual* e > 0 para
 *maior*. O exemplo a seguir usa `compareTo()`, que é definido por
-[Comparable][] e implementado por String.
+[Comparable][Comparable] e implementado por String.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (compare-to)"?>
 ```dart
@@ -755,7 +755,7 @@ assert(uri.toString() == 'https://example.org/foo/bar?lang=dart#frag');
 
 Se você não precisar especificar um fragmento,
 para criar um URI com um esquema http ou https,
-você pode usar os construtores de fábrica [`Uri.http`][] ou [`Uri.https`][]:
+você pode usar os construtores de fábrica [`Uri.http`][`Uri.http`] ou [`Uri.https`][`Uri.https`]:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (uri-http)"?>
 ```dart
@@ -848,7 +848,7 @@ exemplo). Use datas UTC se precisar alterar os dias.
 :::
 
 Para obter uma lista completa de métodos,
-consulte a referência da API para [DateTime][] e [Duration.][Duration]
+consulte a referência da API para [DateTime][DateTime] e [Duration.][Duration]
 
 
 ## Classes de utilidade {:#utility-classes}
@@ -858,7 +858,7 @@ mapear valores e iterar.
 
 ### Comparando objetos {:#comparing-objects}
 
-Implemente a interface [Comparable][]
+Implemente a interface [Comparable][Comparable]
 para indicar que um objeto pode ser comparado a outro objeto,
 geralmente para ordenação. O método `compareTo()` retorna < 0 para
 *menor*, 0 para *igual* e > 0 para *maior*.
@@ -894,10 +894,10 @@ Para implementar de forma consistente e fácil o getter `hashCode`,
 considere usar os métodos estáticos de hashing fornecidos pela classe `Object`.
 
 Para gerar um único código hash para várias propriedades de um objeto,
-você pode usar [`Object.hash()`][].
+você pode usar [`Object.hash()`][`Object.hash()`].
 Para gerar um código hash para uma coleção,
-você pode usar [`Object.hashAll()`][] (se a ordem dos elementos importar)
-ou [`Object.hashAllUnordered()`][].
+você pode usar [`Object.hashAll()`][`Object.hashAll()`] (se a ordem dos elementos importar)
+ou [`Object.hashAllUnordered()`][`Object.hashAllUnordered()`].
 :::
 
 [`Object.hash()`]: {{site.dart-api}}/dart-core/Object/hash.html
@@ -945,7 +945,7 @@ void main() {
 
 ### Iteração {:#iteration}
 
-As classes [Iterable][] e [Iterator][]
+As classes [Iterable][Iterable] e [Iterator][Iterator]
 suportam acesso sequencial a uma coleção de valores.
 Para praticar o uso dessas coleções,
 siga o [tutorial de coleções Iterable](/libraries/collections/iterables).
@@ -990,11 +990,11 @@ com antecedência e capturar. Erros são condições que você não espera ou pl
 
 Alguns dos erros mais comuns são:
 
-[NoSuchMethodError][]
+[NoSuchMethodError][NoSuchMethodError]
 : Lançado quando um objeto receptor (que pode ser `null`) não
   implementa um método.
 
-[ArgumentError][]
+[ArgumentError][ArgumentError]
 : Pode ser lançado por um método que encontra um argumento inesperado.
 
 Lançar uma exceção específica do aplicativo é uma forma comum de indicar
@@ -1019,7 +1019,7 @@ Para mais informações, veja
 
 ## Referências fracas e finalizadores {:#weak-references-and-finalizers}
 
-Dart é uma linguagem com [coleta de lixo (garbage-collected)][],
+Dart é uma linguagem com [coleta de lixo (garbage-collected)][garbage-collected],
 o que significa que qualquer objeto Dart
 que não seja referenciado
 pode ser descartado pelo coletor de lixo.
@@ -1027,20 +1027,20 @@ Este comportamento padrão pode não ser desejável em
 alguns cenários envolvendo recursos nativos ou
 se o objeto de destino não puder ser modificado.
 
-Uma [WeakReference (Referência fraca)][]
+Uma [WeakReference (Referência fraca)][WeakReference]
 armazena uma referência ao objeto de destino
 que não afeta como ele é
 coletado pelo coletor de lixo.
-Outra opção é usar um [Expando][]
+Outra opção é usar um [Expando][Expando]
 para adicionar propriedades a um objeto.
 
-Um [Finalizer][] pode ser usado para executar uma função de callback
+Um [Finalizer][Finalizer] pode ser usado para executar uma função de callback
 depois que um objeto não é mais referenciado.
 No entanto, não é garantido que esse callback seja executado.
 
-Um [NativeFinalizer][]
+Um [NativeFinalizer][NativeFinalizer]
 fornece garantias mais fortes
-para interagir com código nativo usando [dart:ffi][];
+para interagir com código nativo usando [dart:ffi][dart:ffi];
 seu callback é invocado pelo menos uma vez
 após o objeto não ser mais referenciado.
 Além disso, ele pode ser usado para fechar recursos nativos
@@ -1048,7 +1048,7 @@ como uma conexão de banco de dados ou arquivos abertos.
 
 Para garantir que um objeto não seja
 coletado pelo lixo e finalizado muito cedo,
-as classes podem implementar a interface [Finalizable][].
+as classes podem implementar a interface [Finalizable][Finalizable].
 Quando uma variável local é Finalizable,
 ela não será coletada pelo lixo
 até que o bloco de código onde foi declarada seja finalizado.

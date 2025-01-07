@@ -19,8 +19,8 @@ instruções de suporte:
 
 Você também pode manipular o fluxo de controle em Dart usando:
 
-- [Ramificações][], como `if` e `switch`
-- [Exceções][], como `try`, `catch` e `throw`
+- [Ramificações][branching], como `if` e `switch`
+- [Exceções][exceptions], como `try`, `catch` e `throw`
 
 ## Loops For {:#for-loops}
 
@@ -53,7 +53,7 @@ A saída é `0` e depois `1`, como esperado. Em contraste, o exemplo
 imprimiria `2` e depois `2` em JavaScript.
 
 Às vezes, você pode não precisar saber o contador de iteração atual
-ao iterar sobre um tipo [`Iterable`][], como `List` ou `Set`.
+ao iterar sobre um tipo [`Iterable`][`Iterable`], como `List` ou `Set`.
 Nesse caso, use o loop `for-in` para um código mais limpo:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (collection)"?>
@@ -64,7 +64,7 @@ for (final candidate in candidates) {
 ```
 
 Para processar os valores obtidos do iterável,
-você também pode usar um [pattern (padrão)][] em um loop `for-in`:
+você também pode usar um [pattern (padrão)][pattern] em um loop `for-in`:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (collection-for-pattern)"?>
 ```dart
@@ -78,7 +78,7 @@ Para praticar o uso de `for-in`, siga o
 [tutorial de coleções Iterable](/libraries/collections/iterables).
 :::
 
-Classes Iterable também possuem um método [forEach()][] como outra opção:
+Classes Iterable também possuem um método [forEach()][forEach()] como outra opção:
 
 <?code-excerpt "language/test/control_flow/loops_test.dart (for-each)"?>
 ```dart
@@ -131,7 +131,7 @@ for (int i = 0; i < candidates.length; i++) {
 }
 ```
 
-Se você estiver usando um [`Iterable`][] como uma lista ou conjunto,
+Se você estiver usando um [`Iterable`][`Iterable`] como uma lista ou conjunto,
 a forma como você escreve o exemplo anterior pode ser diferente:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (where)"?>

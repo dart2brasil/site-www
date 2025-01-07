@@ -55,7 +55,7 @@ Dart permite que você defina operadores com os seguintes nomes:
 {:.table}
 
 :::note
-Você pode ter notado que alguns [operadores][], como `!=`, não estão na
+Você pode ter notado que alguns [operadores][operators], como `!=`, não estão na
 lista de nomes. Esses operadores não são métodos de instância.
 Seu comportamento é interno ao Dart.
 :::
@@ -143,7 +143,7 @@ em uma variável temporária.
 
 Métodos de instância, getter (acessadores) e setter (modificadores) podem ser abstratos, definindo uma
 interface, mas deixando sua implementação para outras classes.
-Métodos abstratos só podem existir em [classes abstratas][] ou [mixins][].
+Métodos abstratos só podem existir em [classes abstratas][abstract classes] ou [mixins][mixins].
 
 Para tornar um método abstrato, use um ponto e vírgula (`;`) em vez de um corpo de método:
 

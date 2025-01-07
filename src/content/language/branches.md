@@ -18,14 +18,14 @@ Esta página mostra como você pode controlar o fluxo do seu código Dart usando
 
 Você também pode manipular o fluxo de controle em Dart usando:
 
-- [Loops][], como `for` e `while`
-- [Exceções][], como `try`, `catch` e `throw`
+- [Loops][loops], como `for` e `while`
+- [Exceções][exceções], como `try`, `catch` e `throw`
 
 ## If {:#if}
 
 Dart suporta instruções `if` com cláusulas `else` opcionais.
 A condição entre parênteses após `if` deve ser
-uma expressão que avalie para um [booleano][]:
+uma expressão que avalie para um [booleano][booleano]:
 
 <?code-excerpt "language/lib/control_flow/branches.dart (if-else)"?>
 ```dart
@@ -39,11 +39,11 @@ if (isRaining()) {
 ```
 
 Para aprender como usar `if` em um contexto de expressão,
-confira [Expressões Condicionais][].
+confira [Expressões Condicionais][expressões condicionais].
 
 ### If-case {:#if-case}
 
-Instruções `if` do Dart suportam cláusulas `case` seguidas por um [pattern (padrão)][]:
+Instruções `if` do Dart suportam cláusulas `case` seguidas por um [pattern (padrão)][pattern (padrão)]:
 
 <?code-excerpt "language/lib/control_flow/branches.dart (if-case)"?>
 ```dart
@@ -71,28 +71,28 @@ if (pair case [int x, int y]) {
 ```
 
 A instrução if-case fornece uma maneira de corresponder e
-[desestruturar][] contra um _único_ pattern (padrão).
+[desestruturar][desestruturar] contra um _único_ pattern (padrão).
 Para testar um valor em relação a _múltiplos_ patterns (padrões), use [switch](#switch).
 
 :::version-note
 Cláusulas Case em instruções if requerem
-uma [versão de linguagem][] de pelo menos 3.0.
+uma [versão de linguagem][versão de linguagem] de pelo menos 3.0.
 :::
 
 <a id="switch"></a>
 ## Instruções Switch {:#switch-statements}
 
 Uma instrução `switch` avalia uma expressão de valor em relação a uma série de cases (casos).
-Cada cláusula `case` é um [pattern (padrão)][] para o valor corresponder.
-Você pode usar [qualquer tipo de pattern (padrão)][] para um case (caso).
+Cada cláusula `case` é um [pattern (padrão)][pattern (padrão)] para o valor corresponder.
+Você pode usar [qualquer tipo de pattern (padrão)][qualquer tipo de pattern (padrão)] para um case (caso).
 
 Quando o valor corresponde ao pattern (padrão) de um case (caso), o corpo do case (caso) é executado.
 Cláusulas `case` não vazias saltam para o final do switch após a conclusão.
 Elas não exigem uma instrução `break`.
 Outras maneiras válidas de finalizar uma cláusula `case` não vazia são uma instrução
-[`continue`][break], [`throw`][] ou [`return`][].
+[`continue`][break], [`throw`][`throw`] ou [`return`][`return`].
 
-Use uma cláusula `default` ou [coringa `_`][] para
+Use uma cláusula `default` ou [coringa `_`][coringa `_`] para
 executar o código quando nenhuma cláusula `case` corresponder:
 
 <?code-excerpt "language/lib/control_flow/branches.dart (switch)"?>
@@ -139,9 +139,9 @@ switch (command) {
 }
 ```
 
-Você pode usar [patterns (padrões) lógico-ou][] para permitir que cases (casos) compartilhem um corpo ou uma guarda.
+Você pode usar [patterns (padrões) lógico-ou][patterns (padrões) lógico-ou] para permitir que cases (casos) compartilhem um corpo ou uma guarda.
 Para saber mais sobre patterns (padrões) e cláusulas case (caso),
-confira a documentação de patterns (padrões) em [Instruções e Expressões Switch][].
+confira a documentação de patterns (padrões) em [Instruções e Expressões Switch][Instruções e Expressões Switch].
 
 [Instruções e Expressões Switch]: /language/patterns#switch-statements-and-expressions
 
@@ -202,7 +202,7 @@ A sintaxe de uma expressão `switch` difere da sintaxe da instrução `switch`:
 - Cases (Casos) padrão podem _apenas_ usar `_`, em vez de permitir tanto `default` quanto `_`.
 
 :::version-note
-Expressões Switch requerem uma [versão de linguagem][] de pelo menos 3.0.
+Expressões Switch requerem uma [versão de linguagem][versão de linguagem] de pelo menos 3.0.
 :::
 
 ### Verificação de Exaustividade {:#exhaustiveness-checking}
@@ -226,10 +226,10 @@ Um case (caso) padrão (`default` ou `_`) cobre todos os valores possíveis que
 podem fluir por um switch.
 Isso torna um switch em qualquer tipo exaustivo.
 
-[Enums (Enumerações)][enum] e [tipos sealed (selados)][sealed] são particularmente úteis para
+[Enums (Enumerações)][enum (enumerações)] e [tipos sealed (selados)][sealed (selado)] são particularmente úteis para
 switches porque, mesmo sem um case (caso) padrão,
 seus valores possíveis são conhecidos e totalmente enumeráveis.
-Use o [`modificador sealed (selado)`][sealed] em uma classe para habilitar
+Use o [`modificador sealed (selado)`][sealed (selado)] em uma classe para habilitar
 a verificação de exaustividade ao trocar os subtipos dessa classe:
 
 <?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic-datatypes)"?>

@@ -44,7 +44,7 @@ para a especificada no comando.
 
 ## Dependência de desenvolvimento {:#dev-dependency}
 
-O prefixo `dev:` adiciona o pacote como uma [dependência de desenvolvimento][],
+O prefixo `dev:` adiciona o pacote como uma [dependência de desenvolvimento][dev dependency],
 em vez de como uma dependência regular.
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
@@ -63,7 +63,7 @@ $ dart pub add --dev foo
 
 ## Substituição de dependência {:#dependency-override}
 
-Para especificar uma [substituição de dependência][], adicione o prefixo `override:` e
+Para especificar uma [substituição de dependência][dependency override], adicione o prefixo `override:` e
 inclua uma [restrição de versão](#version-constraint) ou
 [descritor de fonte](#source-descriptor).
 
@@ -152,7 +152,7 @@ _Anteriormente, a opção `--git-path=<directory_path>`_.
 
 ### `hosted` {:#hosted}
 
-Adiciona uma [dependência hospedada][] que depende
+Adiciona uma [dependência hospedada][hosted dependency] que depende
 do servidor de pacotes na URL especificada.
 
 ```console
@@ -165,7 +165,7 @@ _Anteriormente, a opção `--hosted-url=<package_server_url>`_.
 
 ### `path`
 
-Adiciona uma [dependência de caminho][] em um pacote armazenado localmente.
+Adiciona uma [dependência de caminho][path dependency] em um pacote armazenado localmente.
 
 ```console
 $ dart pub add 'foo:{"path":"../foo"}'

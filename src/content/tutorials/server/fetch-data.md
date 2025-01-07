@@ -25,10 +25,10 @@ recuperação de dados da internet.
 Muitos aplicativos fazem isso por meio de requisições HTTP,
 que são enviadas de um cliente para um servidor
 para realizar uma ação específica para um recurso
-identificado através de um [URI][] (Identificador Uniforme de Recurso).
+identificado através de um [URI][URI] (Identificador Uniforme de Recurso).
 
 Os dados comunicados por HTTP podem tecnicamente estar em qualquer formato,
-mas usar [JSON][] (JavaScript Object Notation)
+mas usar [JSON][JSON] (JavaScript Object Notation)
 é uma escolha popular devido à sua legibilidade
 e natureza independente de linguagem.
 O SDK e o ecossistema Dart também têm amplo suporte para JSON
@@ -49,7 +49,7 @@ As seções a seguir fornecem alguns antecedentes e informações extras
 sobre as tecnologias e conceitos usados no tutorial
 para facilitar a busca de dados do servidor.
 Para pular diretamente para o conteúdo do tutorial,
-veja [Recuperar as dependências necessárias][].
+veja [Recuperar as dependências necessárias][Recuperar as dependências necessárias].
 
 [Recuperar as dependências necessárias]: #retrieve-the-necessary-dependencies
 
@@ -66,15 +66,15 @@ como listas e mapas podem ser serializados e representados por strings.
 A maioria das linguagens tem muitas implementações e
 os analisadores se tornaram extremamente rápidos,
 então você não precisa se preocupar com interoperabilidade ou desempenho.
-Para obter mais informações sobre o formato JSON, consulte [Apresentando JSON][].
+Para obter mais informações sobre o formato JSON, consulte [Apresentando JSON][Apresentando JSON].
 Para aprender mais sobre como trabalhar com JSON em Dart,
-consulte o guia [Usando JSON][].
+consulte o guia [Usando JSON][Usando JSON].
 
 :::secondary
 Existem dois outros pacotes com implementações específicas de plataforma para celular.
 
 * [cronet_http]({{site.pub-pkg}}/cronet_http)
-  fornece acesso ao cliente HTTP [Cronet][] do Android.
+  fornece acesso ao cliente HTTP [Cronet][Cronet] do Android.
 * [cupertino_http]({{site.pub-pkg}}/cupertino_http)
   fornece acesso ao [Sistema de Carregamento de URL da Foundation][furl] da Apple.
 
@@ -112,14 +112,14 @@ especifique os seguintes tipos de comunicação:
   e não apenas recuperá-los.
 
 Para aprender mais sobre o protocolo HTTP,
-confira [Uma visão geral do HTTP][] nos documentos da web mdn.
+confira [Uma visão geral do HTTP][Uma visão geral do HTTP] nos documentos da web mdn.
 
 [Uma visão geral do HTTP]: https://developer.mozilla.org/docs/Web/HTTP/Overview
 
 ### URIs e URLs {:#uris-and-urls}
 
 Para fazer uma requisição HTTP,
-você precisa fornecer um [URI][] (Identificador Uniforme de Recurso) para o recurso.
+você precisa fornecer um [URI][URI] (Identificador Uniforme de Recurso) para o recurso.
 Um URI é uma string de caracteres que identifica exclusivamente um recurso.
 Uma URL (Uniform Resource Locator ou Localizador Uniforme de Recursos) é um tipo específico de URI
 que também fornece a localização do recurso.
@@ -138,7 +138,7 @@ que não são usados pela página atual:
   que aponta para um local específico no recurso: `#uris`
 
 Para saber mais sobre URLs,
-consulte [O que é uma URL?][] nos documentos da web mdn.
+consulte [O que é uma URL?][O que é uma URL?] nos documentos da web mdn.
 
 [O que é uma URL?]: https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL
 
@@ -156,7 +156,7 @@ e estão vinculadas a uma única implementação.
 :::
 
 Para adicionar uma dependência em `package:http`,
-execute o seguinte comando [`dart pub add`][]
+execute o seguinte comando [`dart pub add`][`dart pub add`]
 da parte superior do seu repositório:
 
 ```console
@@ -164,7 +164,7 @@ $ dart pub add http
 ```
 
 Para usar `package:http` em seu código,
-importe-o e opcionalmente [especifique um prefixo de biblioteca][]:
+importe-o e opcionalmente [especifique um prefixo de biblioteca][especifique um prefixo de biblioteca]:
 
 <?code-excerpt "lib/fetch_data.dart (http-import)"?>
 ```dart
@@ -186,7 +186,7 @@ você primeiro precisa de uma URL que identifique
 o recurso que está sendo solicitado
 ou o endpoint que está sendo acessado.
 
-Em Dart, URLs são representadas por meio de objetos [`Uri`][].
+Em Dart, URLs são representadas por meio de objetos [`Uri`][`Uri`].
 Existem muitas maneiras de construir um `Uri`,
 mas devido à sua flexibilidade,
 analisar uma string com `Uri.parse` para
@@ -207,7 +207,7 @@ Uri.https('dart.dev', '/f/packages/http.json');
 ```
 
 Para aprender sobre outras maneiras de construir e interagir com URIs,
-consulte a [documentação `URI`][].
+consulte a [documentação `URI`][`URI` documentação].
 
 [`Uri`]: {{site.dart-api}}/dart-core/Uri-class.html
 [`URI` documentação]: /libraries/dart-core#uris
@@ -228,7 +228,7 @@ e então imprime:
 :::note
 Muitas funções em `package:http`, incluindo `read`,
 acessam a rede e realizam operações potencialmente demoradas,
-portanto, elas fazem isso de forma assíncrona e retornam um [`Future`][].
+portanto, elas fazem isso de forma assíncrona e retornam um [`Future`][`Future`].
 Se você ainda não encontrou Futures,
 você pode aprender sobre eles—assim como as palavras-chave `async` e `await`—no
 [tutorial de programação assíncrona](/libraries/async/async-await).
@@ -262,7 +262,7 @@ Observe a estrutura dos dados
 pois você precisará dele ao decodificar o JSON mais tarde.
 
 Se você precisar de outras informações da resposta,
-como o [código de status][] ou os [cabeçalhos][],
+como o [código de status][código de status] ou os [cabeçalhos][cabeçalhos],
 você pode usar a função de nível superior [`get`][http-get]
 que retorna um `Future` com uma [`Response`][http-response].
 
@@ -286,11 +286,11 @@ void main() async {
 Existem muitos outros códigos de status além de **200**
 e seu aplicativo pode querer tratá-los de forma diferente.
 Para saber mais sobre o que significam diferentes códigos de status,
-consulte [Códigos de status de resposta HTTP][] nos documentos da web mdn.
+consulte [Códigos de status de resposta HTTP][Códigos de status de resposta HTTP] nos documentos da web mdn.
 
 Algumas requisições de servidor exigem mais informações,
 como autenticação ou informações do user-agent;
-nesse caso, você pode precisar incluir [cabeçalhos HTTP][headers].
+nesse caso, você pode precisar incluir [cabeçalhos HTTP][cabeçalhos].
 Você pode especificar cabeçalhos passando um `Map<String, String>`
 dos pares chave-valor como o parâmetro nomeado opcional `headers`:
 
@@ -471,7 +471,7 @@ Um método manuscrito, como no exemplo anterior,
 mas também existem opções mais flexíveis.
 Para saber mais sobre serialização e desserialização JSON,
 incluindo a geração automática da lógica de conversão,
-consulte o guia [Usando JSON][].
+consulte o guia [Usando JSON][Usando JSON].
 
 ### Converter a resposta em um objeto de sua classe estruturada {:#convert-the-response-to-an-object-of-your-structured-class}
 
@@ -524,7 +524,7 @@ os converteu em um formato mais facilmente acessível,
 você pode usá-los como quiser.
 Algumas possibilidades incluem
 exibir informações em um CLI, ou
-exibi-lo em um aplicativo [web][] ou [Flutter][].
+exibi-lo em um aplicativo [web][web] ou [Flutter][Flutter].
 
 Aqui está um exemplo completo e executável
 que solicita, decodifica e exibe
@@ -631,7 +631,7 @@ class PackageRetrievalException implements Exception {
 
 :::flutter-note
 Para outro exemplo que aborda a busca e exibição de dados no Flutter,
-consulte a receita do Flutter [Buscando dados da internet][].
+consulte a receita do Flutter [Buscando dados da internet][Buscando dados da internet].
 :::
 
 [web]: /web
@@ -642,10 +642,10 @@ consulte a receita do Flutter [Buscando dados da internet][].
 
 Agora que você recuperou, analisou e usou
 dados da internet,
-considere aprender mais sobre [Concorrência em Dart][].
+considere aprender mais sobre [Concorrência em Dart][Concorrência em Dart].
 Se seus dados forem grandes e complexos,
 você pode mover a recuperação e decodificação
-para outro [isolado][] como um worker em segundo plano
+para outro [isolado][isolado] como um worker em segundo plano
 para evitar que sua interface fique sem resposta.
 
 [Concorrência em Dart]: /language/concurrency

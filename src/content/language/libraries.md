@@ -15,7 +15,7 @@ As diretivas `import` e `library` podem ajudar você a criar uma base
 de código modular e compartilhável. Bibliotecas não apenas fornecem APIs, mas
 são uma unidade de privacidade: identificadores que começam com um underscore (`_`)
 são visíveis apenas dentro da biblioteca. *Todo arquivo Dart (mais suas partes) é uma
-[biblioteca][]* (library), mesmo que não use uma diretiva [`library`](#library-directive).
+[biblioteca][library]* (library), mesmo que não use uma diretiva [`library`](#library-directive).
 
 Bibliotecas podem ser distribuídas usando [packages](/tools/pub/packages).
 
@@ -32,7 +32,7 @@ como `public` ou `private`, consulte
 Use `import` para especificar como um namespace de uma biblioteca é usado no
 escopo de outra biblioteca.
 
-Por exemplo, aplicativos web Dart geralmente usam a biblioteca [dart:html][],
+Por exemplo, aplicativos web Dart geralmente usam a biblioteca [dart:html][dart:html],
 que eles podem importar assim:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (dart-html-import)"?>
@@ -152,7 +152,7 @@ Tenha em mente o seguinte quando usar o carregamento diferido:
 
 ### A diretiva `library` {:#library-directive}
 
-Para especificar [doc comments][] (comentários de documentação) em nível de biblioteca ou [metadata annotations][] (anotações de metadados),
+Para especificar [doc comments][doc comments] (comentários de documentação) em nível de biblioteca ou [metadata annotations][metadata annotations] (anotações de metadados),
 anexe-os a uma declaração `library` no início do arquivo.
 
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (library-doc)"?>

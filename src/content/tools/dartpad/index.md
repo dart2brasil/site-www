@@ -28,13 +28,13 @@ Veja como o DartPad se parece quando configurado para executar Dart:
 ## Suporte à biblioteca {:#library-support}
 
 O DartPad suporta as `dart:*` [bibliotecas principais](/libraries) marcadas
-como [multiplataforma][].
+como [multiplataforma][multi-platform].
 Ao escrever aplicativos Flutter, o DartPad também suporta
 as bibliotecas `package:flutter` e `dart:ui`.
 
-O DartPad não suporta [carregamento adiado][]
+O DartPad não suporta [carregamento adiado][deferred loading]
 ou usar pacotes do repositório de pacotes [pub.dev]({{site.pub}})
-além dos [pacotes atualmente suportados][].
+além dos [pacotes atualmente suportados][currently supported packages].
 
 [multi-platform]: /libraries#multi-platform-libraries
 [currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
@@ -47,7 +47,7 @@ tente executar alguns exemplos e criar um aplicativo simples de linha de comando
 
 ### Abrir o DartPad e executar um exemplo {:#step-1-open-and-run}
 
-1. Vá para [DartPad][]{:target="_blank" rel="noopener"}.
+1. Vá para [DartPad][DartPad]{:target="_blank" rel="noopener"}.
 
    O código Dart aparece à esquerda, e
    um local para a saída aparece à direita.
@@ -106,12 +106,12 @@ Você pode encontrar esta versão do SDK na parte inferior direita do DartPad.
 
 Você pode incorporar o DartPad dentro de páginas da web,
 personalizando-o para adequar ao seu caso de uso.
-Por exemplo, o [tutorial de futures][]
+Por exemplo, o [tutorial de futures][futures tutorial]
 contém vários DartPads incorporados
 rotulados como _examples_ (exemplos) e _exercises_ (exercícios).
 
 Para detalhes técnicos sobre como incorporar DartPads, consulte o
-[guia de incorporação do DartPad.][]
+[guia de incorporação do DartPad.][DartPad embedding guide.]
 
 [DartPad]: {{site.dartpad}}
 [DartPad embedding guide.]: {{site.repo.dart.org}}/dart-pad/wiki/Embedding-Guide

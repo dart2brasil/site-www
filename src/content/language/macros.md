@@ -32,7 +32,7 @@ o recurso estiver completo.
 ## A macro `JsonCodable` {:#the-jsoncodable-macro}
 
 :::important
-A macro `JsonCodable` não é estável e atualmente está por trás de uma [flag experimental][].
+A macro `JsonCodable` não é estável e atualmente está por trás de uma [flag experimental][experimental flag].
 Ela só funciona com Dart `3.5.0-152` ou posterior.
 Está disponível no [canal de desenvolvimento do Dart][channel]
 ou no [canal master do Flutter][flutter-channel].
@@ -40,7 +40,7 @@ ou no [canal master do Flutter][flutter-channel].
 A funcionalidade está sujeita a alterações.
 :::
 
-A macro [`JsonCodable`][] codifica e decodifica
+A macro [`JsonCodable`][`JsonCodable`] codifica e decodifica
 classes Dart definidas pelo usuário em mapas JSON do tipo `Map<String, Object?>`.
 Ela gera dois membros, um método de serialização `toJson` e
 um construtor de desserialização `fromJson`.
@@ -57,11 +57,11 @@ um construtor de desserialização `fromJson`.
 
 2. Execute `dart --version` e verifique se você tem a versão `3.5.0-152` ou posterior do Dart.
 
-3. Edite a [restrição do SDK][] no seu pubspec para exigir a versão do Dart: `sdk: ^3.5.0-152`.
+3. Edite a [restrição do SDK][SDK constraint] no seu pubspec para exigir a versão do Dart: `sdk: ^3.5.0-152`.
 
-4. [Adicione o pacote][] `json` às `dependencies`: `dart pub add json`.
+4. [Adicione o pacote][Add the package] `json` às `dependencies`: `dart pub add json`.
 
-5. [Habilite o experimento][] no arquivo `analysis_options.yaml` do seu pacote
+5. [Habilite o experimento][Enable the experiment] no arquivo `analysis_options.yaml` do seu pacote
    na raiz do seu projeto:
 
    ```yaml
@@ -158,7 +158,7 @@ serializável, ou se os nomes dos campos não corresponderem exatamente aos nome
 
 :::note
 Para saber mais sobre como usar a macro `JsonCodable`, como tipos de campos suportados,
-tratamento de nulo e genéricos, e muito mais, consulte [o README][].
+tratamento de nulo e genéricos, e muito mais, consulte [o README][the README].
 :::
 
 [the definition of `JsonCodable`]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
@@ -167,7 +167,7 @@ tratamento de nulo e genéricos, e muito mais, consulte [o README][].
 ## O recurso de linguagem macros {:#the-macros-language-feature}
 
 As macros Dart são uma solução de metaprogramação *estática*, ou geração de código.
-Ao contrário das soluções de geração de código *em tempo de execução* (como [build_runner][]),
+Ao contrário das soluções de geração de código *em tempo de execução* (como [build_runner][build_runner]),
 as macros são totalmente integradas à linguagem Dart
 e executadas automaticamente em segundo plano pelas ferramentas Dart.
 Isso torna as macros muito mais eficientes do que depender de uma ferramenta secundária:
@@ -190,9 +190,9 @@ escrever soluções para esses tipos de problemas você mesmo.
 Confira estes exemplos mostrando a mesma serialização JSON
 implementada de três maneiras diferentes:
 
-- Usando a [`JsonCodable` macro][].
-- Usando o [`json_serializable` pacote de geração de código][].
-- Manualmente, [com `dart:convert`][].
+- Usando a [`JsonCodable` macro][`JsonCodable` macro].
+- Usando o [`json_serializable` pacote de geração de código][`json_serializable` code gen package].
+- Manualmente, [com `dart:convert`][with `dart:convert`].
 {% endcomment %}
 
 [build_runner]: /tools/build_runner
@@ -207,11 +207,11 @@ _boilerplate_, e muitas vezes a necessidade de iterar sobre os campos de uma cla
 Alguns exemplos comuns que esperamos resolver com macros no futuro são:
 
 - **Serialização JSON.** As ferramentas extras necessárias para serializar JSON,
- como o pacote [json_serializable][], não é tão eficiente quanto deveria ser.
+ como o pacote [json_serializable][json_serializable], não é tão eficiente quanto deveria ser.
  A macro `JsonCodable` fornece uma maneira muito mais limpa de
  gerar código de serialização; [experimente hoje](#the-jsoncodable-macro).
 
-- **Classes de dados.** O recurso [mais solicitado][] do Dart é para classes de dados
+- **Classes de dados.** O recurso [mais solicitado][most requested] do Dart é para classes de dados
  que fornecem automaticamente um construtor e implementações dos métodos `==`,
  `hashCode` e `copyWith()` para cada campo.
  Implementar a solução com macros significaria que os usuários podem personalizar
@@ -235,7 +235,7 @@ Você pode conferir uma exploração sobre esse tópico nesta
 
 :::important
 O recurso de linguagem de macros não é estável e atualmente está por trás de um
-[flag experimental][]. A funcionalidade está altamente sujeita a alterações.
+[flag experimental][experimental flag]. A funcionalidade está altamente sujeita a alterações.
 Esta seção permanecerá muito genérica até que esteja estável.
 :::
 
@@ -273,7 +273,7 @@ a macro [gere](#view-the-generated-code), bem como qualquer
 
 Em um nível muito alto, escrever macros essencialmente funciona usando métodos de _builder_
 para juntar as *propriedades* de uma declaração com *identificadores* nessas
-propriedades. A macro coleta essas informações através da [introspecção][] profunda
+propriedades. A macro coleta essas informações através da [introspecção][introspection] profunda
 do programa.
 
 As macros ainda estão em desenvolvimento, então isso é o máximo de detalhes que podemos fornecer por enquanto.
@@ -281,7 +281,7 @@ Se você estiver curioso ou quiser experimentá-las por trás de uma flag experi
 a melhor orientação é dar uma olhada na implementação das macros existentes:
 
 - Confira a [definição][json] da macro `JsonCodable`,
-- Ou qualquer um dos [exemplos][] disponíveis no repositório da linguagem.
+- Ou qualquer um dos [exemplos][examples] disponíveis no repositório da linguagem.
 
 [types]: {{site.repo.dart.sdk}}/blob/main/pkg/_macros/lib/src/api/macros.dart
 [json]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
@@ -300,10 +300,10 @@ para a declaração que está aumentando.
 
 Considerando sua aplicação em grandes bases de código, onde múltiplas macros podem
 introspecionar e aumentar a base continuamente em diferentes lugares,
-o _design_ de [ordenação][] e [fases][] de execução é especialmente desafiador
+o _design_ de [ordenação][ordering] e [fases][phases] de execução é especialmente desafiador
 e requer cuidadosa consideração.
 
-Estamos trabalhando para um lançamento estável da macro [`JsonCodable`][]
+Estamos trabalhando para um lançamento estável da macro [`JsonCodable`][`JsonCodable`]
 ainda este ano (2024), e um lançamento estável do recurso de linguagem completo
 (ou seja, escrever suas próprias macros) no início do próximo ano (2025).
 

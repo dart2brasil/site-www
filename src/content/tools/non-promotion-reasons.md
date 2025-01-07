@@ -6,8 +6,8 @@ description: >-
   tipo de um campo do que o Dart consegue determinar.
 ---
 
-[Type promotion][] (promoção de tipo) ocorre quando a análise de fluxo pode confirmar de forma segura que
-uma variável com um [nullable type][] (tipo anulável) é *não nula* e
+[Type promotion][Type promotion] (promoção de tipo) ocorre quando a análise de fluxo pode confirmar de forma segura que
+uma variável com um [nullable type][nullable type] (tipo anulável) é *não nula* e
 que não mudará a partir desse ponto.
 Muitas circunstâncias podem enfraquecer a segurança de um tipo,
 fazendo com que a type promotion falhe.
@@ -15,7 +15,7 @@ fazendo com que a type promotion falhe.
 Esta página lista as razões pelas quais ocorrem falhas de type promotion,
 com dicas sobre como corrigi-las.
 Para saber mais sobre análise de fluxo e type promotion,
-confira a página [Understanding null safety][] (Entendendo a segurança nula).
+confira a página [Understanding null safety][Understanding null safety] (Entendendo a segurança nula).
 
 [Type promotion]: /null-safety/understanding-null-safety#type-promotion-on-null-checks
 [nullable type]: /null-safety/understanding-null-safety#non-nullable-and-nullable-types
@@ -28,10 +28,10 @@ Você está tentando promover um campo, mas a promoção de campo é versionada 
 e seu código está definido para uma versão de linguagem anterior a 3.2.
 
 Se você já estiver usando uma versão do SDK >= Dart 3.2,
-seu código ainda pode ser explicitamente direcionado para uma [versão de linguagem][] anterior.
+seu código ainda pode ser explicitamente direcionado para uma [versão de linguagem][language version] anterior.
 Isso pode acontecer porque:
 
-* Seu [`pubspec.yaml`][] declara uma restrição de SDK com um
+* Seu [`pubspec.yaml`][`pubspec.yaml`] declara uma restrição de SDK com um
   limite inferior abaixo de 3.2, ou
 * Você tem um comentário `// @dart=version` na parte superior do arquivo,
   onde `version` é inferior a 3.2.
@@ -61,9 +61,9 @@ class C {
 
 **Solução:**
 
-Certifique-se de que sua biblioteca não esteja usando uma [versão de linguagem][] anterior a 3.2.
+Certifique-se de que sua biblioteca não esteja usando uma [versão de linguagem][language version] anterior a 3.2.
 Verifique a parte superior do seu arquivo em busca de um comentário `// @dart=version` desatualizado,
-ou seu `pubspec.yaml` em busca de um [limite inferior de restrição de SDK][] desatualizado.
+ou seu `pubspec.yaml` em busca de um [limite inferior de restrição de SDK][limite inferior de restrição de SDK] desatualizado.
 
 [`pubspec.yaml`]: /tools/pub/pubspec
 [limite inferior de restrição de SDK]: /tools/pub/pubspec#sdk-constraints
@@ -179,8 +179,8 @@ ou se faz uma verificação redundante
 Você está tentando promover `this`,
 mas a type promotion para `this` ainda não é suportada.
 
-Um cenário comum de promoção de `this` é ao escrever [extension methods][] (métodos de extensão).
-Se o [`on` type][] (tipo `on`) do método de extensão for um tipo anulável,
+Um cenário comum de promoção de `this` é ao escrever [extension methods][extension methods] (métodos de extensão).
+Se o [`on` type][`on` type] (tipo `on`) do método de extensão for um tipo anulável,
 você gostaria de fazer uma verificação nula para ver se `this` é `null`:
 
 **Exemplo:**
@@ -654,7 +654,7 @@ O compilador cria essa implementação implícita de `_i` porque
 `MockExample` promete oferecer suporte a um getter para `_i` quando implementa
 `Example` em sua declaração, mas não cumpre essa promessa.
 Portanto, a implementação do getter indefinido é tratada por
-[`Mock`'s `noSuchMethod` definition][](definição `noSuchMethod` do `Mock`), que
+[`Mock`'s `noSuchMethod` definition][`Mock`'s `noSuchMethod` definition](definição `noSuchMethod` do `Mock`), que
 cria um encaminhador `noSuchMethod` implícito com o mesmo nome.
 
 A falha também pode ocorrer entre campos em

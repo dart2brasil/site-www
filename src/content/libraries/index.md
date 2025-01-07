@@ -86,7 +86,7 @@ A tabela a seguir lista as bibliotecas principais do Dart que funcionam em todas
 | [`dart:async`][dart-async], [`package:async`][package-async]<br>Suporte para programação assíncrona, com classes como `Future` e `Stream`.<br>`package:async` fornece utilitários adicionais em torno dos tipos `Future` e `Stream`. | |
 | [`dart:collection`][dart-collection], [`package:collection`][package-collection]<br>Classes e utilitários que complementam o suporte a coleções em `dart:core`.<br>`package:collection` fornece mais implementações de coleções e funções para trabalhar com coleções. | |
 | [`dart:convert`][dart-convert], [`package:convert`][package-convert]<br>Codificadores e decodificadores para conversão entre diferentes representações de dados, incluindo JSON e UTF-8.<br>`package:convert` fornece codificadores e decodificadores adicionais. ||
-| [`dart:developer`][dart-developer]<br>Interação com ferramentas de desenvolvedor, como o depurador e o inspetor. | [JIT Nativo][jit] e o [compilador JavaScript de desenvolvimento][] apenas |
+| [`dart:developer`][dart-developer]<br>Interação com ferramentas de desenvolvedor, como o depurador e o inspetor. | [JIT Nativo][jit] e o [compilador JavaScript de desenvolvimento][development JavaScript compiler] apenas |
 | [`dart:math`][dart-math]<br>Constantes e funções matemáticas, além de um gerador de números aleatórios. | |
 | [`dart:typed_data`][dart-typed_data], [`package:typed_data`][package-typed_data]<br>Listas que lidam eficientemente com dados de tamanho fixo (por exemplo, inteiros não assinados de 8 bytes) e tipos numéricos SIMD.<br>`package:typed_data` fornece mais classes e funções trabalhando com dados tipados. | |
 
@@ -111,7 +111,7 @@ A tabela a seguir lista as bibliotecas principais do Dart que funcionam na
 A tabela a seguir lista as bibliotecas principais do Dart que funcionam na
 [plataforma web do Dart](/overview#web-platform) (código compilado para JavaScript).
 As ferramentas mais recentes e recomendadas estão em **negrito**, e as ferramentas legadas estão em *itálico*
-(visite [Interoperabilidade Javascript][] para mais informações).
+(visite [Interoperabilidade Javascript][JavaScript interoperability] para mais informações).
 
 | Biblioteca                                       | Notas                         |
 |-----------------------------------------------|-------------------------------|

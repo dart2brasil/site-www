@@ -7,7 +7,7 @@ lastVerified: 2021-05-13
 ---
 
 Esta página aponta para recursos para ajudar você a usar
-[Firebase][] e [APIs de cliente do Google][] a partir de um aplicativo Dart.
+[Firebase][Firebase] e [APIs de cliente do Google][Google client APIs] a partir de um aplicativo Dart.
 
 
 ## Firebase {:#firebase}
@@ -18,14 +18,14 @@ se você está escrevendo código para um aplicativo Flutter ou outro tipo de ap
 Aplicativos Flutter podem escolher entre muitos plugins oficialmente suportados para
 produtos populares do Firebase como Analytics, Cloud Firestore,
 Cloud Functions e Crashlytics.
-Para uma lista completa desses plugins, veja [FlutterFire][].
+Para uma lista completa desses plugins, veja [FlutterFire][FlutterFire].
 
 Outros tipos de aplicativos Dart podem usar
-o pacote [`firebase`][] com suporte da comunidade.
+o pacote [`firebase`][`firebase` package] com suporte da comunidade.
 
 ## APIs de cliente do Google {:#google-client-apis}
 
-O pacote [`googleapis`][] contém APIs geradas para
+O pacote [`googleapis`][`googleapis` package] contém APIs geradas para
 mais de 180 APIs de cliente do Google,
 como a API do Google Docs, API do YouTube Data,
 API do Cloud Translation e API do Cloud Storage.
@@ -39,7 +39,7 @@ Se você gostaria de usar APIs do Google como parte de um aplicativo de servidor
 Alguns pacotes fornecem wrappers (envoltórios) idiomáticos Dart para
 as APIs fornecidas por `googleapis`.
 Por exemplo, se você quiser usar a API do Google Sheets,
-considere o pacote [`gsheets`][],
+considere o pacote [`gsheets`][`gsheets` package],
 que fornece uma [API alternativa][gsheets-api-docs] para a
 [API gerada automaticamente][gsheets-api-docs-gapi].
 

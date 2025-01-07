@@ -5,7 +5,7 @@ description: Como migrar código Dart existente para ser compatível com o Dart 
 ---
 
 Dart 3 é um lançamento principal que introduz novos recursos essenciais ao Dart:
-[records][], [patterns][] e [modificadores de classe][].
+[records][records], [patterns][patterns] e [modificadores de classe][class modifiers].
 
 Juntamente com esses novos recursos, o Dart 3 contém várias mudanças que
 podem quebrar código existente.
@@ -89,7 +89,7 @@ $ dart pub upgrade
 $ dart analyze      # Isto deve passar sem erros.
 ```
 
-Ou, se necessário, inclua também atualizações de [versões principais][]:
+Ou, se necessário, inclua também atualizações de [versões principais][major versions]:
 
 ```console
 $ dart pub upgrade --major-versions
@@ -103,7 +103,7 @@ $ dart analyze      # Isto deve passar sem erros.
 ### Segurança nula 100% completa {:#100-sound-null-safety}
 
 O Dart 2.12 introduziu a segurança nula há mais de dois anos.
-No Dart 2.12, os usuários precisavam habilitar a segurança nula [com uma configuração no pubspec][].
+No Dart 2.12, os usuários precisavam habilitar a segurança nula [com uma configuração no pubspec][with a pubspec setting].
 No Dart 3, a segurança nula é integrada; você não pode desativá-la.
 
 [with a pubspec setting]: /null-safety#enable-null-safety
@@ -125,7 +125,7 @@ Porque pkg1 não suporta segurança nula, a resolução de versão falhou.
 O limite inferior de "sdk: '>=2.9.0 <3.0.0'" deve ser 2.12.0 ou superior para habilitar a segurança nula.
 ```
 
-Bibliotecas que desabilitam a segurança nula com [comentários de versão da linguagem][]
+Bibliotecas que desabilitam a segurança nula com [comentários de versão da linguagem][language version comments]
 que selecionam qualquer versão da linguagem abaixo de `2.12` causarão
 erros de análise ou compilação:
 
@@ -153,7 +153,7 @@ Antes de iniciar qualquer migração para o Dart 3,
 certifique-se de que seu aplicativo ou pacote foi 100% migrado para habilitar a segurança nula.
 Isso requer um SDK Dart `2.19`, não um SDK Dart 3.
 Para aprender como migrar primeiro seu aplicativo ou pacote para suportar a segurança nula,
-confira o [guia de migração de segurança nula][].
+confira o [guia de migração de segurança nula][null safety migration guide].
 
 [null safety migration guide]: /null-safety/migration-guide
 
@@ -232,7 +232,7 @@ Se a classe definir uma interface, considere usar `implements`.
 ### `switch` {:#switch}
 
 O Dart 3.0 interpreta os casos de [switch](/language/branches#switch)
-como [patterns (padrões)][] em vez de expressões constantes.
+como [patterns (padrões)][patterns] em vez de expressões constantes.
 
 #### Escopo
 
@@ -246,7 +246,7 @@ com o mesmo significado (constantes nomeadas, literais, etc.).
 Estes se comportarão da mesma forma e nenhum sintoma surgirá.
 
 As poucas expressões constantes que não são padrões válidos
-acionarão o [`invalid_case_patterns` lint][].
+acionarão o [`invalid_case_patterns` lint][`invalid_case_patterns` lint].
 
 [`invalid_case_patterns` lint]: /tools/linter-rules/invalid_case_patterns
 
@@ -299,7 +299,7 @@ se comportava como `break`.
 
 ### APIs removidas {:#apis-removed}
 
-**Mudança que quebra o código [#49529][]**: As bibliotecas principais foram limpas
+**Mudança que quebra o código [#49529][#49529]**: As bibliotecas principais foram limpas
 para remover APIs que foram descontinuadas por vários anos.
 As seguintes APIs não existem mais nas bibliotecas principais do Dart.
 
@@ -314,31 +314,31 @@ que se aplica a todo código Dart 3.
 
 - Removido o construtor `List` descontinuado, pois não era nulo seguro.
   Use literais de lista (por exemplo, `[]` para uma lista vazia ou `<int>[]` para uma lista
-  tipada vazia) ou [`List.filled`][]. Isso só afeta o código não seguro nulo,
+  tipada vazia) ou [`List.filled`][`List.filled`]. Isso só afeta o código não seguro nulo,
   já que o código seguro nulo já não podia usar este construtor.
-- Removido o argumento `onError` descontinuado em [`int.parse`][], [`double.parse`][] e
-  [`num.parse`][]. Use o método [`tryParse`][] em vez disso.
-- Removidas as anotações descontinuadas [`proxy`][] e [`Provisional`][].
+- Removido o argumento `onError` descontinuado em [`int.parse`][`int.parse`], [`double.parse`][`double.parse`] e
+  [`num.parse`][`num.parse`]. Use o método [`tryParse`][`tryParse`] em vez disso.
+- Removidas as anotações descontinuadas [`proxy`][`proxy`] e [`Provisional`][`Provisional`].
   A anotação original `proxy` não tem efeito no Dart 2,
-  e o tipo `Provisional` e a constante [`provisional`][]
+  e o tipo `Provisional` e a constante [`provisional`][`provisional`]
   foram usados apenas internamente durante o processo de desenvolvimento do Dart 2.0.
-- Removido o getter descontinuado [`Deprecated.expires`][].
-  Use [`Deprecated.message`][] em vez disso.
-- Removido o erro descontinuado [`CastError`][].
-  Use [`TypeError`][] em vez disso.
-- Removido o erro descontinuado [`FallThroughError`][]. O tipo de
+- Removido o getter descontinuado [`Deprecated.expires`][`Deprecated.expires`].
+  Use [`Deprecated.message`][`Deprecated.message`] em vez disso.
+- Removido o erro descontinuado [`CastError`][`CastError`].
+  Use [`TypeError`][`TypeError`] em vez disso.
+- Removido o erro descontinuado [`FallThroughError`][`FallThroughError`]. O tipo de
   fall-through que anteriormente lançava este erro foi transformado em um erro
   em tempo de compilação no Dart 2.0.
-- Removido o erro descontinuado [`NullThrownError`][]. Este erro nunca é
+- Removido o erro descontinuado [`NullThrownError`][`NullThrownError`]. Este erro nunca é
   lançado de código seguro nulo.
-- Removido o erro descontinuado [`AbstractClassInstantiationError`][].
+- Removido o erro descontinuado [`AbstractClassInstantiationError`][`AbstractClassInstantiationError`].
   Tornou-se um erro em tempo de compilação chamar o construtor de uma classe abstrata no Dart 2.0.
 - Removido o descontinuado [`CyclicInitializationError`]. Dependências cíclicas
   não são mais detectadas em tempo de execução em código seguro nulo. Esse código falhará de outras
   maneiras, possivelmente com um StackOverflowError.
-- Removido o construtor padrão descontinuado [`NoSuchMethodError`][].
-  Use o construtor nomeado [`NoSuchMethodError.withInvocation`][] em vez disso.
-- Removida a classe descontinuada [`BidirectionalIterator`][].
+- Removido o construtor padrão descontinuado [`NoSuchMethodError`][`NoSuchMethodError`].
+  Use o construtor nomeado [`NoSuchMethodError.withInvocation`][`NoSuchMethodError.withInvocation`] em vez disso.
+- Removida a classe descontinuada [`BidirectionalIterator`][`BidirectionalIterator`].
   Iteradores bidirecionais existentes ainda podem funcionar, eles apenas não têm
   um supertipo compartilhado que os prenda a um nome específico para se mover para trás.
 
@@ -368,18 +368,18 @@ que se aplica a todo código Dart 3.
 
 #### `dart:async`
 
-- Removida a classe descontinuada [`DeferredLibrary`][].
-  Use a sintaxe de importação [`deferred as`][] em vez disso.
+- Removida a classe descontinuada [`DeferredLibrary`][`DeferredLibrary`].
+  Use a sintaxe de importação [`deferred as`][`deferred as`] em vez disso.
 
 [`DeferredLibrary`]: {{site.dart-api}}/stable/2.19.6/dart-async/DeferredLibrary-class.html
 [`deferred as`]: /language/libraries#lazily-loading-a-library
 
 #### `dart:developer` {:#dart-developer}
 
-- Removida a constante descontinuada [`MAX_USER_TAGS`][].
-  Use [`maxUserTags`][] em vez disso.
-- Removidas as classes descontinuadas [`Metrics`][], [`Metric`][], [`Counter`][]
-  e [`Gauge`][], pois estão quebradas desde o Dart 2.0.
+- Removida a constante descontinuada [`MAX_USER_TAGS`][`MAX_USER_TAGS`].
+  Use [`maxUserTags`][`maxUserTags`] em vez disso.
+- Removidas as classes descontinuadas [`Metrics`][`Metrics`], [`Metric`][`Metric`], [`Counter`][`Counter`]
+  e [`Gauge`][`Gauge`], pois estão quebradas desde o Dart 2.0.
 
 [`MAX_USER_TAGS`]: {{site.dart-api}}/stable/2.19.6/dart-developer/UserTag/MAX_USER_TAGS-constant.html
 [`maxUserTags`]: {{site.dart-api}}/dart-developer/UserTag/maxUserTags-constant.html
@@ -419,7 +419,7 @@ Migre manualmente para longe do uso dessas APIs.
 
 ### Extends & implements {:#extends-implements}
 
-O Dart 3 suporta novos [modificadores de classe][] que
+O Dart 3 suporta novos [modificadores de classe][class modifiers] que
 podem restringir os recursos de uma classe.
 Eles foram aplicados a várias classes nas bibliotecas principais.
 
@@ -562,7 +562,7 @@ Use o Dart 2.19 para [migrar para a segurança nula](/null-safety/migration-guid
 
 ### Configuração do analisador {:#analyzer-config}
 
-As [opções de configuração do analisador][] para
+As [opções de configuração do analisador][analyzer configuration options] para
 habilitar verificações mais rigorosas foram alteradas.
 
 [analyzer configuration options]: /tools/analysis#enabling-additional-type-checks

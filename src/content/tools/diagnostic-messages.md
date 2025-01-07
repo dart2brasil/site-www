@@ -1727,7 +1727,7 @@ retornado, mas o tipo de retorno, '{0}', é um tipo potencialmente não nulo._
 #### Descrição
 
 O analisador produz este diagnóstico quando um método ou função tem um tipo
-de retorno que é [potencialmente não nulo][] mas retornaria implicitamente
+de retorno que é [potencialmente não nulo][potencialmente não anulável] mas retornaria implicitamente
 `null` se o controle atingisse o final da função.
 
 #### Exemplos
@@ -2353,7 +2353,7 @@ valores em um literal de conjunto 'const'._
 
 O analisador produz este diagnóstico quando um literal de coleção que é
 explicitamente (porque é prefixado pela palavra-chave `const`) ou
-implicitamente (porque aparece em um [contexto constante][]) uma constante
+implicitamente (porque aparece em um [contexto constante][contexto constante]) uma constante
 contém um valor que é declarado em uma biblioteca que é importada usando
 uma importação adiada. As constantes são avaliadas em tempo de compilação,
 e os valores das bibliotecas adiadas não estão disponíveis em tempo de compilação.
@@ -4122,7 +4122,7 @@ _A variável local `late` '{0}' está definitivamente não atribuída neste pont
 #### Descrição
 
 O analisador produz este diagnóstico quando a análise de [atribuição
-definida][] mostra que uma variável local que está marcada como `late` é lida
+definida][atribuição definitiva] mostra que uma variável local que está marcada como `late` é lida
 antes de ser atribuída.
 
 #### Exemplo
@@ -6781,7 +6781,7 @@ _O tipo de representação não pode ser um tipo bottom._
 #### Descrição
 
 O analisador produz este diagnóstico quando o tipo de representação de um
-tipo de extensão é o [tipo bottom][] `Never`. O tipo `Never` não pode ser
+tipo de extensão é o [tipo bottom][tipo bottom] `Never`. O tipo `Never` não pode ser
 o tipo de representação de um tipo de extensão porque não há valores
 que podem ser estendidos.
 
@@ -8828,12 +8828,12 @@ _A biblioteca importada '{0}' não pode ter uma diretiva part-of._
 
 #### Descrição
 
-O analisador produz este diagnóstico quando um [arquivo part][] é importado
+O analisador produz este diagnóstico quando um [arquivo part][arquivo part] é importado
 em uma biblioteca.
 
 #### Exemplo
 
-Dado um [arquivo part][] chamado `part.dart` contendo o seguinte:
+Dado um [arquivo part][arquivo part] chamado `part.dart` contendo o seguinte:
 
 ```dart
 part of lib;
@@ -8850,8 +8850,8 @@ import [!'part.dart'!];
 
 #### Correções comuns
 
-Importe a biblioteca que contém o [arquivo part][] em vez do
-[arquivo part][] em si.
+Importe a biblioteca que contém o [arquivo part][arquivo part] em vez do
+[arquivo part][arquivo part] em si.
 
 ### inconsistent_inheritance {:#inconsistent_inheritance}
 
@@ -8907,13 +8907,13 @@ _Parts devem ter exatamente a mesma substituição de versão de idioma que a bi
 
 #### Descrição
 
-O analisador produz este diagnóstico quando um [arquivo part][] tem um idioma
+O analisador produz este diagnóstico quando um [arquivo part][arquivo part] tem um idioma
 comentário de substituição de versão que especifica uma versão de idioma diferente
 daquela que está sendo usada para a biblioteca à qual a parte pertence.
 
 #### Exemplo
 
-Dado um [arquivo part][] chamado `part.dart` que contém o seguinte:
+Dado um [arquivo part][arquivo part] chamado `part.dart` que contém o seguinte:
 
 ```dart
 // @dart = 2.14
@@ -8930,7 +8930,7 @@ part [!'part.dart'!];
 
 #### Correções comuns
 
-Remova a substituição da versão do idioma do [arquivo part][], para que
+Remova a substituição da versão do idioma do [arquivo part][arquivo part], para que
 use implicitamente a mesma versão que a unidade de compilação de definição:
 
 ```dart
@@ -8939,7 +8939,7 @@ part of 'test.dart';
 
 Se necessário, ajuste a substituição da versão do idioma na definição
 unidade de compilação para ser apropriada para o código na parte, ou migrar
-o código no [arquivo part][] para ser consistente com o novo idioma
+o código no [arquivo part][arquivo part] para ser consistente com o novo idioma
 versão.
 
 ### inconsistent_pattern_variable_logical_or {:#inconsistent_pattern_variable_logical_or}
@@ -9833,7 +9833,7 @@ _O membro '{0}' não pode ser exportado como parte da API pública de um pacote.
 
 #### Descrição
 
-O analisador produz este diagnóstico quando uma [biblioteca pública][]
+O analisador produz este diagnóstico quando uma [biblioteca pública][biblioteca pública]
 exporta uma declaração que é marcada com a anotação
 [`internal`][meta-internal].
 
@@ -9847,7 +9847,7 @@ import 'package:meta/meta.dart';
 @internal class One {}
 ```
 
-O código a seguir, quando encontrado em uma [biblioteca pública][], produz
+O código a seguir, quando encontrado em uma [biblioteca pública][biblioteca pública], produz
 este diagnóstico porque a diretiva `export` está exportando um nome que se
 destina apenas a ser usado internamente:
 
@@ -9873,7 +9873,7 @@ mas é exportado indiretamente como parte da assinatura de '{1}'._
 
 #### Descrição
 
-O analisador produz este diagnóstico quando uma [biblioteca pública][]
+O analisador produz este diagnóstico quando uma [biblioteca pública][biblioteca pública]
 exporta uma função de nível superior com um tipo de retorno ou pelo menos
 um tipo de parâmetro que é marcado com a anotação
 [`internal`][meta-internal].
@@ -10363,13 +10363,13 @@ como sendo internos._
 
 O analisador produz este diagnóstico quando uma declaração é anotada com a
 anotação [`internal`][meta-internal] e essa declaração está em uma
-[biblioteca pública][] ou tem um nome privado.
+[biblioteca pública][biblioteca pública] ou tem um nome privado.
 
 #### Exemplo
 
-O código a seguir, quando em uma [biblioteca pública][], produz este
+O código a seguir, quando em uma [biblioteca pública][biblioteca pública], produz este
 diagnóstico porque a anotação [`internal`][meta-internal] não pode ser
-aplicada a declarações em uma [biblioteca pública][]:
+aplicada a declarações em uma [biblioteca pública][biblioteca pública]:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -12510,7 +12510,7 @@ _Com segurança nula, use a palavra-chave 'required', não a anotação '@requir
 #### Descrição
 
 O analisador produz este diagnóstico quando um parâmetro opcional, seja
-posicional ou nomeado, tem um tipo [potencialmente não anulável][] e não
+posicional ou nomeado, tem um tipo [potencialmente não anulável][potencialmente não anulável] e não
 especifica um valor padrão. Parâmetros opcionais que não têm um padrão
 explícito têm um valor padrão implícito de `null`. Se o tipo do
 parâmetro não permitir que o parâmetro tenha um valor de `null`, então o
@@ -13210,7 +13210,7 @@ _'{0}' não pode ser misturado em '{1}' porque '{1}' não implementa '{2}'._
 #### Descrição
 
 O analisador produz este diagnóstico quando um mixin que tem uma restrição
-de superclasse é usado em uma [aplicação de mixin][] com uma superclasse
+de superclasse é usado em uma [aplicação de mixin][aplicação de mixin] com uma superclasse
 que não implementa a restrição necessária.
 
 #### Exemplo
@@ -13250,7 +13250,7 @@ _A classe não tem uma implementação concreta do setter super-invocado
 
 #### Descrição
 
-O analisador produz este diagnóstico quando uma [aplicação de mixin][]
+O analisador produz este diagnóstico quando uma [aplicação de mixin][aplicação de mixin]
 contém uma invocação de um membro de sua superclasse, e não há membro
 concreto desse nome na superclasse da aplicação de mixin.
 
@@ -13258,7 +13258,7 @@ concreto desse nome na superclasse da aplicação de mixin.
 
 O código a seguir produz este diagnóstico porque o mixin `M` contém a
 invocação `super.m()`, e a classe `A`, que é a superclasse da
-[aplicação de mixin][] `A+M`, não define uma implementação concreta de
+[aplicação de mixin][aplicação de mixin] `A+M`, não define uma implementação concreta de
 `m`:
 
 ```dart
@@ -14734,7 +14734,7 @@ _Os valores em um literal de lista const devem ser constantes._
 O analisador produz este diagnóstico quando um elemento em um literal de
 lista constante não é um valor constante. O literal de lista pode ser
 constante explicitamente (porque é prefixado pela palavra-chave `const`)
-ou implicitamente (porque aparece em um [contexto constante][]).
+ou implicitamente (porque aparece em um [contexto constante][contexto constante]).
 
 #### Exemplo
 
@@ -15789,11 +15789,11 @@ _A variável local não anulável '{0}' deve ser atribuída antes que possa ser 
 
 O analisador produz esse diagnóstico quando uma variável local é referenciada
 e tem todas estas características:
-- Tem um tipo que é [potencialmente não anulável][].
+- Tem um tipo que é [potencialmente não anulável][potencialmente não anulável].
 - Não tem um inicializador.
 - Não é marcada como `late` (tardia).
 - O analisador não pode provar que a variável local será atribuída antes
-  da referência com base na especificação de [atribuição definida][].
+  da referência com base na especificação de [atribuição definida][atribuição definitiva].
 
 #### Exemplos
 
@@ -15990,7 +15990,7 @@ _O campo de instância não anulável '{0}' deve ser inicializado._
 
 O analisador produz esse diagnóstico quando um campo é declarado e tem todos
 estas características:
-- Tem um tipo que é [potencialmente não anulável][]
+- Tem um tipo que é [potencialmente não anulável][potencialmente não anulável]
 - Não tem um inicializador
 - Não é marcado como `late` (tardio)
 
@@ -16218,7 +16218,7 @@ O analisador produz esse diagnóstico quando há uma declaração de método
 para o qual um ou mais tipos precisam ser inferidos, e esses tipos não podem ser
 inferidos porque nenhum dos métodos substituídos tem um tipo de função que é
 um supertipo de todos os outros métodos substituídos, conforme especificado por
-[inferência de sobrescrita][].
+[inferência de sobrescrita][inferência de override].
 
 #### Exemplo
 
@@ -16844,7 +16844,7 @@ part [!'package:a/part.dart'!];
 Se a biblioteca deve usar um arquivo diferente como parte, então altere o
 URI na diretiva part para ser o URI do outro arquivo.
 
-Se o [arquivo part][] deve ser uma parte desta biblioteca, então atualize o
+Se o [arquivo part][arquivo part] deve ser uma parte desta biblioteca, então atualize o
 URI (ou nome da biblioteca) na diretiva part-of para ser o URI (ou nome) da
 biblioteca correta.
 
@@ -16899,12 +16899,12 @@ diretiva part-of._
 
 O analisador produz este diagnóstico quando uma biblioteca que não tem uma
 diretiva `library` (e, portanto, não tem nome) contém uma diretiva `part` e
-a diretiva `part of` no [arquivo part][] usa um nome para especificar
+a diretiva `part of` no [arquivo part][arquivo part] usa um nome para especificar
 a biblioteca da qual faz parte.
 
 #### Exemplo
 
-Dado um [arquivo part][] chamado `part_file.dart` contendo o seguinte
+Dado um [arquivo part][arquivo part] chamado `part_file.dart` contendo o seguinte
 código:
 
 ```dart
@@ -16912,7 +16912,7 @@ part of lib;
 ```
 
 O código a seguir produz este diagnóstico porque a biblioteca que inclui
-o [arquivo part][] não tem um nome, mesmo que o [arquivo part][] use um
+o [arquivo part][arquivo part] não tem um nome, mesmo que o [arquivo part][arquivo part] use um
 nome para especificar de qual biblioteca faz parte:
 
 ```dart
@@ -16921,7 +16921,7 @@ part [!'part_file.dart'!];
 
 #### Correções comuns
 
-Altere a diretiva `part of` no [arquivo part][] para especificar sua biblioteca
+Altere a diretiva `part of` no [arquivo part][arquivo part] para especificar sua biblioteca
 por URI:
 
 ```dart
@@ -18405,8 +18405,8 @@ _Padrões refutáveis não podem ser usados em um contexto irrefutável._
 
 #### Descrição
 
-O analisador produz esse diagnóstico quando um [padrão refutável][] é usado
-em um contexto onde apenas um [padrão irrefutável][] é permitido.
+O analisador produz esse diagnóstico quando um [padrão refutável][padrão refutável] é usado
+em um contexto onde apenas um [padrão irrefutável][padrão irrefutável] é permitido.
 
 Os padrões refutáveis que são proibidos são:
 - logical-or (ou lógico)
@@ -18973,9 +18973,9 @@ versão 2.3.2, mas este código é necessário para poder ser executado em vers�
 #### Descrição
 
 O analisador produz esse diagnóstico quando uma expressão `as` dentro de um
-[contexto constante][] é encontrada em código que tem uma restrição de SDK cujo
+[contexto constante][contexto constante] é encontrada em código que tem uma restrição de SDK cujo
 limite inferior é menor que 2.3.2. Usar uma expressão `as` em um
-[contexto constante][] não era suportado em versões anteriores, então esse código
+[contexto constante][contexto constante] não era suportado em versões anteriores, então esse código
 não poderá ser executado em versões anteriores do SDK.
 
 #### Exemplo
@@ -19008,7 +19008,7 @@ environment:
 
 Se você precisar oferecer suporte a versões mais antigas do SDK, então reescreva o
 código para não usar uma expressão `as`, ou altere o código para que a expressão `as`
-não esteja em um [contexto constante][]:
+não esteja em um [contexto constante][contexto constante]:
 
 ```dart
 num x = 3;
@@ -19023,9 +19023,9 @@ suportado até a versão 2.3.2, mas este código é necessário para poder ser e
 #### Descrição
 
 O analisador produz este diagnóstico quando qualquer uso dos operadores `&`, `|` ou `^`
-na classe `bool` dentro de um [contexto constante][] é encontrado em
+na classe `bool` dentro de um [contexto constante][contexto constante] é encontrado em
 código que tem uma restrição de SDK cujo limite inferior é menor que 2.3.2. Usar
-esses operadores em um [contexto constante][] não era suportado em
+esses operadores em um [contexto constante][contexto constante] não era suportado em
 versões anteriores, então esse código não poderá ser executado em versões anteriores do
 SDK.
 
@@ -19060,7 +19060,7 @@ environment:
 
 Se você precisar oferecer suporte a versões mais antigas do SDK, então reescreva o
 código para não usar esses operadores, ou altere o código para que a expressão
-não esteja em um [contexto constante][]:
+não esteja em um [contexto constante][contexto constante]:
 
 ```dart
 const bool a = true;
@@ -19121,9 +19121,9 @@ _O uso do operador '==' para tipos não primitivos não era suportado até a ver
 #### Descrição
 
 O analisador produz esse diagnóstico quando o operador `==` é usado em um
-tipo não primitivo dentro de um [contexto constante][] é encontrado em
+tipo não primitivo dentro de um [contexto constante][contexto constante] é encontrado em
 código que tem uma restrição de SDK cujo limite inferior é menor que 2.3.2.
-Usar esse operador em um [contexto constante][] não era suportado em
+Usar esse operador em um [contexto constante][contexto constante] não era suportado em
 versões anteriores, então esse código não poderá ser executado em versões anteriores do
 SDK.
 
@@ -19159,7 +19159,7 @@ environment:
 
 Se você precisar oferecer suporte a versões mais antigas do SDK, então reescreva o
 código para não usar o operador `==`, ou altere o código para que a
-expressão não esteja em um [contexto constante][]:
+expressão não esteja em um [contexto constante][contexto constante]:
 
 ```dart
 class C {}
@@ -19285,9 +19285,9 @@ versão 2.3.2, mas este código é necessário para poder ser executado em vers�
 #### Descrição
 
 O analisador produz esse diagnóstico quando uma expressão `is` dentro de um
-[contexto constante][] é encontrada em código que tem uma restrição de SDK cujo
+[contexto constante][contexto constante] é encontrada em código que tem uma restrição de SDK cujo
 limite inferior é menor que 2.3.2. Usar uma expressão `is` em um
-[contexto constante][] não era suportado em versões anteriores, então esse código
+[contexto constante][contexto constante] não era suportado em versões anteriores, então esse código
 não poderá ser executado em versões anteriores do SDK.
 
 #### Exemplo
@@ -19321,7 +19321,7 @@ environment:
 Se você precisa suportar versões mais antigas do SDK, reescreva o
 código para não usar o operador `is` ou, se isso não for possível, altere o
 código para que a expressão `is` não esteja em um
-[contexto constante][]:
+[contexto constante][contexto constante]:
 
 ```dart
 const Object x = 4;
@@ -19480,9 +19480,9 @@ _Os elementos if e spread não eram suportados em expressões constantes até a 
 #### Descrição
 
 O analisador produz este diagnóstico quando um elemento if ou spread dentro
-de um [contexto constante][] é encontrado em código que tem uma restrição de
+de um [contexto constante][contexto constante] é encontrado em código que tem uma restrição de
 SDK cujo limite inferior é menor que 2.5.0. Usar um elemento if ou spread
-dentro de um [contexto constante][] não era suportado em versões anteriores,
+dentro de um [contexto constante][contexto constante] não era suportado em versões anteriores,
 então este código não será capaz de rodar contra versões anteriores do SDK.
 
 #### Exemplo
@@ -19522,7 +19522,7 @@ const b = [1, 2];
 ```
 
 Se isso não for possível, mude o código para que o elemento não esteja em um
-[contexto constante][]:
+[contexto constante][contexto constante]:
 
 ```dart
 const a = [1, 2];
@@ -21086,7 +21086,7 @@ ser 'null'._
 #### Descrição
 
 O analisador produz este diagnóstico quando uma expressão cujo tipo é
-[potencialmente não anulável][] é desreferenciada sem primeiro verificar se
+[potencialmente não anulável][potencialmente não anulável] é desreferenciada sem primeiro verificar se
 o valor não é `null`.
 
 #### Exemplo
@@ -26457,11 +26457,11 @@ _Use 'const' com o construtor para melhorar o desempenho._
 
 #### Descrição
 
-O analisador produz este diagnóstico quando uma invocação de um construtor const não é precedida por `const` ou em um [contexto constante][].
+O analisador produz este diagnóstico quando uma invocação de um construtor const não é precedida por `const` ou em um [contexto constante][contexto constante].
 
 #### Exemplo
 
-O seguinte código produz este diagnóstico porque a invocação do construtor `const` não é prefixada por `const` nem em um [contexto constante][]:
+O seguinte código produz este diagnóstico porque a invocação do construtor `const` não é prefixada por `const` nem em um [contexto constante][contexto constante]:
 
 ```dart
 class C {
@@ -26473,7 +26473,7 @@ C c = [!C()!];
 
 #### Correções comuns
 
-Se o contexto pode ser transformado em um [contexto constante][], faça isso:
+Se o contexto pode ser transformado em um [contexto constante][contexto constante], faça isso:
 
 ```dart
 class C {
@@ -26483,7 +26483,7 @@ class C {
 const C c = C();
 ```
 
-Se o contexto não pode ser transformado em um [contexto constante][], adicione `const` antes da invocação do construtor:
+Se o contexto não pode ser transformado em um [contexto constante][contexto constante], adicione `const` antes da invocação do construtor:
 
 ```dart
 class C {
@@ -26611,7 +26611,7 @@ C c = C([![1]!]);
 
 #### Correções comuns
 
-Se o contexto pode ser transformado em um [contexto constante][], faça isso:
+Se o contexto pode ser transformado em um [contexto constante][contexto constante], faça isso:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -26626,7 +26626,7 @@ class C {
 const C c = C([1]);
 ```
 
-Se o contexto não puder ser transformado em um [contexto constante][] mas o construtor puder ser invocado usando `const`, adicione `const` antes da invocação do construtor:
+Se o contexto não puder ser transformado em um [contexto constante][contexto constante] mas o construtor puder ser invocado usando `const`, adicione `const` antes da invocação do construtor:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -26641,7 +26641,7 @@ class C {
 C c = const C([1]);
 ```
 
-Se o contexto não puder ser transformado em um [contexto constante][] e o construtor não puder ser invocado usando `const`, adicione a palavra-chave `const` antes do literal da coleção:
+Se o contexto não puder ser transformado em um [contexto constante][contexto constante] e o construtor não puder ser invocado usando `const`, adicione a palavra-chave `const` antes do literal da coleção:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -27975,7 +27975,7 @@ _Palavra-chave 'const' desnecessária._
 #### Descrição
 
 O analisador produz este diagnóstico quando a palavra-chave `const` é usada em
-um [contexto constante][]. A palavra-chave não é necessária porque está implícita.
+um [contexto constante][contexto constante]. A palavra-chave não é necessária porque está implícita.
 
 #### Exemplo
 

@@ -6,7 +6,7 @@ toc: false
 ---
 
 O comando `dart analyze`
-executa a mesma [análise estática][]
+executa a mesma [análise estática][static analysis]
 que você obtém quando usa um IDE ou editor que tem suporte a Dart.
 
 {% render 'tools/dart-tool-note.md' %}

@@ -11,10 +11,10 @@ nextpage:
 ---
 
 :::version-note
-  Records exigem uma [versão da linguagem][] de no mínimo 3.0.
+  Records exigem uma [versão da linguagem][language version] de no mínimo 3.0.
 :::
 
-Records (registros) são um tipo agregado, anônimo e imutável. Assim como outros [tipos de coleção][],
+Records (registros) são um tipo agregado, anônimo e imutável. Assim como outros [tipos de coleção][collection types],
 eles permitem que você agrupe múltiplos objetos em um único objeto. Diferente de outros tipos de coleção,
 records têm tamanho fixo, são heterogêneos e tipados.
 
@@ -45,7 +45,7 @@ Por exemplo, as seguintes declarações `(int, int)` são anotações de tipo de
 ```
 
 Campos em expressões de record e anotações de tipo espelham
-como [parâmetros e argumentos][] funcionam em funções.
+como [parâmetros e argumentos][parameters and arguments] funcionam em funções.
 Campos posicionais vão diretamente dentro dos parênteses:
 
 <?code-excerpt "language/test/records_test.dart (record-type-declaration)"?>
@@ -177,7 +177,7 @@ de seus campos.
 
 Records permitem que funções retornem múltiplos valores agrupados.
 Para recuperar valores de record de um retorno,
-[desestruture][] os valores em variáveis locais usando [pattern matching (correspondência de padrão)][pattern].
+[desestruture][destructure] os valores em variáveis locais usando [pattern matching (correspondência de padrão)][pattern].
 
 <?code-excerpt "language/test/records_test.dart (record-multiple-returns)"?>
 ```dart
@@ -204,7 +204,7 @@ var (name, age) = userInfo(json);
 
 Você também pode desestruturar um record usando seus [campos nomeados](#record-fields),
 usando a sintaxe de dois pontos `:`, sobre a qual você pode ler mais na página de
-[Tipos de Pattern][]:
+[Tipos de Pattern][Pattern types]:
 
 <?code-excerpt "language/test/records_test.dart (record-name-destructure)"?>
 ```dart
@@ -222,7 +222,7 @@ como `List` ou `Map` perde a segurança de tipo.
 :::note
 As características de retorno múltiplo e tipo heterogêneo de Records habilitam
 a paralelização de futures de tipos diferentes, sobre a qual você pode ler na
-documentação de [`dart:async`][].
+documentação de [`dart:async`][`dart:async` documentation].
 :::
 
 [language version]: /resources/language/evolution#language-versioning

@@ -15,16 +15,16 @@ A especificação da linguagem Dart 3 está em andamento.
 Você pode encontrar a especificação em andamento em formato PDF:
 
 * [Última especificação em andamento][latest draft]
-  (produzida a partir de um [arquivo LaTeX][])
+  (produzida a partir de um [arquivo LaTeX][LaTeX file])
 
 [latest draft]: https://spec.dartbrasil.dev/DartLangSpecDraft.pdf
 [LaTeX file]: {{site.repo.dart.lang}}/blob/main/specification/dartLangSpec.tex
 
 Novas funcionalidades da linguagem são tipicamente descritas usando
-especificações informais de funcionalidades da linguagem no repositório [dart-lang/language][]:
+especificações informais de funcionalidades da linguagem no repositório [dart-lang/language][dart-lang/language]:
 
-* [Propostas informais aceitas][]
-* [Rascunhos de funcionalidades potenciais][]
+* [Propostas informais aceitas][Accepted informal proposals]
+* [Rascunhos de funcionalidades potenciais][Drafts of potential features]
 
 [dart-lang/language]: {{site.repo.dart.lang}}
 [Accepted informal proposals]: {{site.repo.dart.lang}}/tree/main/accepted

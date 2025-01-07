@@ -33,7 +33,7 @@ sobre seu código quando cada biblioteca é um único arquivo. Se você optar po
 arquivo, por sua vez, indique a qual biblioteca ele faz parte.
 
 O Dart permite que a diretiva `part of` use o *nome* de uma biblioteca.
-Nomear bibliotecas é um recurso legado que agora é [desencorajado][].
+Nomear bibliotecas é um recurso legado que agora é [desencorajado][desencorajado].
 Nomes de bibliotecas podem introduzir ambiguidade
 ao determinar a qual biblioteca uma parte pertence.
 
@@ -335,13 +335,13 @@ para funções que esperam um tipo não anulável.
 
 A promoção de tipo só é suportada, no entanto, para variáveis locais, parâmetros e
 campos finais privados. Valores que estão abertos à manipulação
-[não podem ser promovidos por tipo][].
+[não podem ser promovidos por tipo][can't be type promoted].
 
-Declarar membros [privados][] e [finais][], como geralmente recomendamos, é muitas vezes
+Declarar membros [privados][private] e [finais][final], como geralmente recomendamos, é muitas vezes
 suficiente para contornar essas limitações. Mas, nem sempre é uma opção.
 
 Um padrão para contornar as limitações de promoção de tipo é usar um
-[padrão de verificação nula][]. Isso confirma simultaneamente o valor do membro
+[padrão de verificação nula][null-check pattern]. Isso confirma simultaneamente o valor do membro
 não é nulo e associa esse valor a uma nova variável não anulável do
 mesmo tipo base.
 
@@ -388,11 +388,11 @@ class UploadException {
 
 Tenha cuidado ao usar uma variável local. Se você precisar escrever de volta no campo,
 certifique-se de não escrever de volta na variável local. (Tornar a
-variável local [`final`][] pode evitar tais erros.) Além disso, se o campo puder
+variável local [`final`][`final`] pode evitar tais erros.) Além disso, se o campo puder
 mudar enquanto o local ainda estiver em escopo, o local poderá ter um
 valor obsoleto.
 
-Às vezes, é melhor simplesmente [usar `!`][] no campo.
+Às vezes, é melhor simplesmente [usar `!`][use `!`] no campo.
 Em alguns casos, no entanto, usar uma variável local ou um padrão de verificação nula
 pode ser mais limpo e seguro do que usar `!` toda vez que você precisar tratar o valor
 como não-nulo:
@@ -554,7 +554,7 @@ arguments.addAll(filePaths
 
 {% render 'linter-rule-mention.md', rules:'prefer_is_empty, prefer_is_not_empty' %}
 
-O contrato [Iterable][] não exige que uma coleção saiba seu comprimento ou
+O contrato [Iterable][iterable] não exige que uma coleção saiba seu comprimento ou
 seja capaz de fornecê-lo em tempo constante. Chamar `.length` apenas para ver se a
 coleção contém *algo* pode ser dolorosamente lento.
 
@@ -692,7 +692,7 @@ var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.whereType<int>();
 ```
 
-Usar `whereType()` é conciso, produz um [Iterable][] do tipo desejado,
+Usar `whereType()` é conciso, produz um [Iterable][iterable] do tipo desejado,
 e não tem níveis desnecessários de envolvimento.
 
 
@@ -1456,11 +1456,11 @@ recomendadas se aplicam à captura e lançamento de exceções.
 Uma cláusula `catch` sem qualificador `on` captura *qualquer coisa* lançada pelo
 código no bloco `try`. O [tratamento de exceção Pokémon][pokemon] muito
 provavelmente não é o que você deseja. Seu código lida corretamente com
-[StackOverflowError][] ou [OutOfMemoryError][]? Se você passar incorretamente o
+[StackOverflowError][StackOverflowError] ou [OutOfMemoryError][OutOfMemoryError]? Se você passar incorretamente o
 argumento errado para um método naquele bloco `try`, deseja que seu depurador
-aponte para o erro ou prefere que aquele útil [ArgumentError][] seja
+aponte para o erro ou prefere que aquele útil [ArgumentError][ArgumentError] seja
 engolido? Você quer que quaisquer declarações `assert()` dentro desse código
-desapareçam efetivamente, já que você está capturando os [AssertionError][]s lançados?
+desapareçam efetivamente, já que você está capturando os [AssertionError][AssertionError]s lançados?
 
 A resposta é provavelmente "não", caso em que você deve filtrar os tipos que
 você captura. Na maioria dos casos, você deve ter uma cláusula `on` que o limite
@@ -1469,7 +1469,7 @@ aos tipos de falhas de tempo de execução dos quais você está ciente e está 
 Em casos raros, você pode querer capturar qualquer erro de tempo de execução.
 Isso geralmente ocorre em código de *framework* ou de baixo nível que tenta
 isolar um código de aplicativo arbitrário de causar problemas. Mesmo aqui,
-geralmente é melhor capturar [Exception][] do que capturar todos os tipos.
+geralmente é melhor capturar [Exception][Exception] do que capturar todos os tipos.
 *Exception* é a classe base para todos os erros de *tempo de execução* e exclui erros que indicam bugs *programáticos* no código.
 
 
@@ -1482,8 +1482,8 @@ exiba-o para o usuário ou relance-o, mas não o descarte silenciosamente.
 
 ### LANCE objetos que implementam `Error` apenas para erros programáticos {:#do-throw-objects-that-implement-error-only-for-programmatic-errors}
 
-A classe [Error][] é a classe base para erros *programáticos*. Quando um objeto
-desse tipo ou uma de suas subinterfaces como [ArgumentError][] é lançada, isso
+A classe [Error][Error] é a classe base para erros *programáticos*. Quando um objeto
+desse tipo ou uma de suas subinterfaces como [ArgumentError][ArgumentError] é lançada, isso
 significa que há um *bug* em seu código. Quando sua API deseja relatar a um
 chamador que está sendo usada incorretamente, lançar um `Error` envia esse sinal claramente.
 

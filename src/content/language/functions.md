@@ -15,7 +15,7 @@ Dart é uma linguagem orientada a objetos de verdade, então até mesmo funçõe
 e têm um tipo, [Function.][Function API reference]
 Isso significa que funções podem ser atribuídas a variáveis ou passadas como argumentos
 para outras funções. Você também pode chamar uma instância de uma classe Dart como se
-fosse uma função. Para detalhes, veja [Objetos Chamáveis][].
+fosse uma função. Para detalhes, veja [Objetos Chamáveis][Objetos Chamáveis].
 
 Aqui está um exemplo de implementação de uma função:
 
@@ -27,7 +27,7 @@ bool isNoble(int atomicNumber) {
 ```
 
 Embora o Effective Dart recomende
-[anotações de tipo para APIs públicas][],
+[anotações de tipo para APIs públicas][anotações de tipo para APIs públicas],
 a função ainda funciona se você omitir os tipos:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-omitting-types)"?>
@@ -54,7 +54,7 @@ Apenas _expressões_ podem aparecer entre a seta (`=>`) e o ponto e vírgula (`;
 Expressões avaliam para valores.
 Isso significa que você não pode escrever uma declaração onde Dart espera um valor.
 Por exemplo,
-você pode usar uma [expressão condicional][] mas não um [comando if][].
+você pode usar uma [expressão condicional][expressão condicional] mas não um [comando if][comando if].
 No exemplo anterior,
 `_nobleGases[atomicNumber] != null;` retorna um valor booleano.
 A função então retorna um valor booleano
@@ -68,12 +68,12 @@ seguidos por parâmetros *nomeados* ou por parâmetros *posicionais opcionais*
 (mas não ambos).
 
 :::note
-Algumas APIs—notavelmente os construtores de *widgets* do [Flutter][]—usam
+Algumas APIs—notavelmente os construtores de *widgets* do [Flutter][Flutter]—usam
 apenas parâmetros nomeados, mesmo para parâmetros que são obrigatórios.
 Consulte a próxima seção para obter detalhes.
 :::
 
-Você pode usar [vírgulas à direita][] quando você passa argumentos para uma função
+Você pode usar [vírgulas à direita][vírgulas à direita] quando você passa argumentos para uma função
 ou quando você define parâmetros de função.
 
 
@@ -290,7 +290,7 @@ Em Dart, funções são objetos de primeira classe,
 o que significa que elas podem ser atribuídas a variáveis,
 passadas como argumentos e retornadas de outras funções.
 
-Você pode usar uma declaração [`typedef`][] para nomear explicitamente os tipos de função,
+Você pode usar uma declaração [`typedef`][`typedef`] para nomear explicitamente os tipos de função,
 o que pode ser útil para clareza e reutilização.
 :::
 
@@ -519,7 +519,7 @@ foo() {}
 assert(foo() == null);
 ```
 
-Para retornar vários valores em uma função, agregue os valores em um [registro][].
+Para retornar vários valores em uma função, agregue os valores em um [registro][record].
 
 ```dart
 (String, int) foo() {
@@ -593,11 +593,11 @@ ou, mais comumente, de outra linguagem. Em contextos de *interop*, `external`
 introduz informações de tipo para funções ou valores estrangeiros,
 tornando-os utilizáveis em Dart. A implementação e o uso são
 altamente específicos da plataforma, então consulte os documentos de *interop* em, por exemplo,
-[C][] ou [JavaScript][] para saber mais.
+[C][C] ou [JavaScript][JavaScript] para saber mais.
 
-Funções externas podem ser funções de nível superior, [métodos de instância][],
-[getters ou setters][], ou [construtores não redirecionados][].
-Uma [variável de instância][] também pode ser `external`,
+Funções externas podem ser funções de nível superior, [métodos de instância][métodos de instância],
+[getters ou setters][getters ou setters], ou [construtores não redirecionados][construtores não redirecionados].
+Uma [variável de instância][variável de instância] também pode ser `external`,
 o que é equivalente a um getter externo e (se a variável
 não for `final`) um setter externo.
 

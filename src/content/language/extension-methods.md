@@ -216,7 +216,7 @@ extension NumberParsing on String {
 Os membros de uma extensão podem ser métodos, getters, setters ou operadores.
 Extensões também podem ter campos estáticos e métodos auxiliares estáticos.
 Para acessar membros estáticos fora da declaração de extensão,
-invoque-os através do nome da declaração como [variáveis e métodos de classe][].
+invoque-os através do nome da declaração como [variáveis e métodos de classe][class variables and methods].
 
 [class variables and methods]: /language/classes#class-variables-and-methods
 

@@ -43,7 +43,7 @@ com base na lógica existente no [Google Search Console.][search-console]
 ## Criando uma conta de editor verificado {:#creating-a-verified-publisher-account}
 
 Se você publica pacotes e deseja criar um novo editor verificado,
-consulte as instruções na [página de publicação][].
+consulte as instruções na [página de publicação][publishing page].
 
 [domain-prop]: https://support.google.com/webmasters/answer/34592
 [publishing page]: /tools/pub/publishing#create-verified-publisher

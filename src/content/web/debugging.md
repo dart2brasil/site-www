@@ -4,8 +4,8 @@ title: Depurando aplicativos web Dart
 description: Aprenda como depurar seu aplicativo web Dart.
 ---
 
-Você pode usar uma [IDE Dart][IDE], [Dart DevTools][], e ferramentas do
-navegador como o [Chrome DevTools][] para depurar seus aplicativos web Dart.
+Você pode usar uma [IDE Dart][IDE], [Dart DevTools][Dart DevTools], e ferramentas do
+navegador como o [Chrome DevTools][Chrome DevTools] para depurar seus aplicativos web Dart.
 
 * Para depurar a lógica do seu aplicativo, use sua IDE, Dart DevTools ou
   ferramentas do navegador. O Dart DevTools tem um suporte melhor do que as
@@ -35,7 +35,7 @@ você pode abrir o Dart DevTools pressionando
 Para abrir o Chrome DevTools, pressione <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
 (ou <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> no macOS).
 Se você quiser depurar seu aplicativo usando o Chrome DevTools,
-você pode usar [source maps][] (mapas de origem) para exibir seus arquivos de origem Dart
+você pode usar [source maps][source maps] (mapas de origem) para exibir seus arquivos de origem Dart
 em vez do JavaScript que o compilador produz.
 Para mais informações sobre o uso do Chrome DevTools,
 veja a [documentação do Chrome DevTools][Chrome DevTools].
@@ -46,14 +46,14 @@ Para usar o Dart DevTools ou o Chrome DevTools para depurar um aplicativo
 web Dart, você precisa do seguinte software:
 
 * [Google Chrome.][Google Chrome]
-* [Dart SDK][], versão 2.0.0 ou superior.
+* [Dart SDK][Dart SDK], versão 2.0.0 ou superior.
 * Um dos seguintes ambientes de desenvolvimento:
   * Linha de comando: [Pacotes de ferramentas de linha de comando Dart][cl-tools]
     como o webdev (necessário para Dart e Chrome DevTools) e
     devtools (necessário para Dart DevTools).
     <br>_ou_
   * Uma [IDE ou editor Dart][IDE] que suporte desenvolvimento web.
-* Um [aplicativo web Dart][] para depurar.
+* Um [aplicativo web Dart][Dart web app] para depurar.
 
 [cl-tools]: #getting-command-line-tool-packages
 
@@ -67,10 +67,10 @@ Se você já tem um aplicativo que está pronto para depurar,
 você pode pular a criação do aplicativo de teste (passo 1),
 mas você precisará ajustar as instruções para corresponder ao seu aplicativo.
 
-1. _Opcional:_ Clone o [repositório webdev,][] para que você possa usar seu aplicativo de exemplo
+1. _Opcional:_ Clone o [repositório webdev,][webdev repo,] para que você possa usar seu aplicativo de exemplo
    para experimentar o Dart DevTools.
 
-1. _Opcional:_ Instale a [Dart Debug Extension][]
+1. _Opcional:_ Instale a [Dart Debug Extension][Dart Debug Extension]
    para que você possa executar seu aplicativo e abrir o Dart DevTools
    em uma instância já em execução do Chrome.
 
@@ -94,7 +94,7 @@ mas você precisará ajustar as instruções para corresponder ao seu aplicativo
    o comando a ser usado depende se você quer (ou precisa) executar
    o aplicativo e o depurador em uma instância já em execução do Chrome.
 
-   * Se você tem a [Dart Debug Extension][] instalada e quer usar
+   * Se você tem a [Dart Debug Extension][Dart Debug Extension] instalada e quer usar
      uma instância existente do Chrome para depurar:
 
      ```console
@@ -154,7 +154,7 @@ mas você precisará ajustar as instruções para corresponder ao seu aplicativo
 
 1. Altere seu código fonte e recarregue a janela do Chrome que está executando o aplicativo.
    O aplicativo é reconstruído e recarregado rapidamente.
-   Até que a [issue 1925][] seja corrigida,
+   Até que a [issue 1925][issue 1925] seja corrigida,
    você perderá seus *breakpoints* ao recarregar o aplicativo.
 
 1. Clique no botão **Logging** (Registro) para ver os logs stdout, stderr e do sistema.

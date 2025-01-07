@@ -77,7 +77,7 @@ class C { ... }
 
 {% render 'linter-rule-mention.md', rules:'camel_case_extensions' %}
 
-Como os tipos, as [extensões][] devem capitalizar a primeira letra de cada palavra
+Como os tipos, as [extensões][extensions] devem capitalizar a primeira letra de cada palavra
 (incluindo a primeira palavra) e não usar separadores.
 
 <?code-excerpt "style_good.dart (extension-names)"?>
@@ -186,7 +186,7 @@ como nos seguintes casos:
 
 * Ao adicionar código a um arquivo ou biblioteca que já usa `SCREAMING_CAPS`.
 * Ao gerar código Dart que é paralelo ao código Java — por exemplo,
-  em tipos enumerados gerados a partir de [protobufs.][]
+  em tipos enumerados gerados a partir de [protobufs.][protobufs.]
 
 :::note
 Inicialmente, usamos o estilo `SCREAMING_CAPS` do Java para constantes. Mudamos por algumas razões:
@@ -423,9 +423,9 @@ estilo de espaço em branco consistente ajuda a garantir que os leitores humanos
 
 A formatação é um trabalho tedioso e é particularmente demorado durante
 a refatoração. Felizmente, você não precisa se preocupar com isso. Fornecemos um
-formatador de código automático sofisticado chamado [`dart format`][] que faz isso para
+formatador de código automático sofisticado chamado [`dart format`][`dart format`] que faz isso para
 você. As regras oficiais de tratamento de espaços em branco para Dart são
-*o que `dart format` produz*. A [FAQ do formatador][] pode fornecer mais informações
+*o que `dart format` produz*. A [FAQ do formatador][formatter FAQ] pode fornecer mais informações
 sobre as escolhas de estilo que ele impõe.
 
 As diretrizes de formatação restantes são para as poucas coisas que `dart format` não pode
@@ -478,7 +478,7 @@ outras mais curtas pode alterar o programa.
 
 {% render 'linter-rule-mention.md', rules:'curly_braces_in_flow_control_structures' %}
 
-Fazê-lo evita o problema do [dangling else][]. (else pendente)
+Fazê-lo evita o problema do [dangling else][dangling else]. (else pendente)
 
 [dangling else]: https://en.wikipedia.org/wiki/Dangling_else
 

@@ -32,7 +32,7 @@ $ dart pub upgrade
 
 A tabela a seguir mostra quais comandos você pode usar com a ferramenta `dart`.
 Se você está desenvolvendo para o Flutter,
-pode usar a ferramenta [`flutter`][] em vez disso.
+pode usar a ferramenta [`flutter`][`flutter` tool] em vez disso.
 
 [`flutter` tool]: {{site.flutter-docs}}/reference/flutter-cli
 
@@ -43,7 +43,7 @@ pode usar a ferramenta [`flutter`][] em vez disso.
 | `analyze` | <code>dart analyze [<DIRECTORY&#124;DART_FILE>]</code> | Analisa o código-fonte Dart do projeto.<br>[Saiba mais.][analyze]                                             |
 | `compile` | `dart compile exe <DART_FILE>`                          | Compila o Dart para vários formatos.<br>Substitui `dart2js` e `dart2native`.<br>[Saiba mais.][compile]         |
 | `create`  | `dart create <DIRECTORY>`                               | Cria um novo projeto.<br>[Saiba mais.][create]                                                                |
-| `doc`     | `dart doc <DIRECTORY>`                                  | Gera documentação de referência da API.<br>Substitui [`dartdoc`][].<br>[Saiba mais.][doc]                     |
+| `doc`     | `dart doc <DIRECTORY>`                                  | Gera documentação de referência da API.<br>Substitui [`dartdoc`][`dartdoc`].<br>[Saiba mais.][doc]                     |
 | `fix`     | <code>dart fix <DIRECTORY&#124;DART_FILE></code>       | Aplica correções automatizadas ao código-fonte Dart.<br>[Saiba mais.][fix]                                     |
 | `format`  | <code>dart format <DIRECTORY&#124;DART_FILE></code>    | Formata o código-fonte Dart.<br>[Saiba mais.][format]                                                             |
 | `info`    | `dart info`                                            | Exibe informações de diagnóstico de ferramentas Dart.<br>[Saiba mais.][info]                                  |

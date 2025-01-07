@@ -6,7 +6,7 @@ description: Bibliotecas e pacotes que podem ajudar você a escrever aplicativos
 ---
 
 Dart fornece diversos pacotes e bibliotecas para suportar o desenvolvimento de
-aplicativos web, sendo a opção recomendada o [`package:web`][web]. O [Dart SDK][]
+aplicativos web, sendo a opção recomendada o [`package:web`][web]. O [Dart SDK][Dart SDK]
 também contém outras bibliotecas que fornecem APIs web de baixo nível.
 
 ## Soluções Web {:#web-solutions}
@@ -35,7 +35,7 @@ também contém outras bibliotecas que fornecem APIs web de baixo nível.
 : Uma visão geral rápida de como construir, executar e depurar um aplicativo web com Dart.
 
 Para encontrar outras bibliotecas que oferecem suporte à plataforma web,
-pesquise no pub.dev por [pacotes web][].
+pesquise no pub.dev por [pacotes web][web packages].
 
 [web]: {{site.pub-pkg}}/web
 [Dart SDK]: {{site.dart-api}}
