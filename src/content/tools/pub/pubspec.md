@@ -84,7 +84,7 @@ Um pubspec pode ter os seguintes campos:
 `false_secrets` (falsos segredos)
 : Opcional. Especifique os arquivos a serem ignorados ao realizar uma busca
   pré-publicação por possíveis vazamentos de segredos.
-  [_Saiba mais._](#false-secrets)
+  [_Saiba mais._](#false_secrets)
 
 `screenshots` (capturas de tela)
 : Opcional. Especifique uma lista de arquivos de captura de tela para exibir
@@ -97,7 +97,7 @@ Um pubspec pode ter os seguintes campos:
 
 `ignored_advisories` (avisos ignorados)
 : Opcional. Lista de avisos de segurança ignorados.
-  [_Saiba mais._](#ignored-advisories)
+  [_Saiba mais._](#ignored_advisories)
 
 Pub ignora todos os outros campos.
 
@@ -345,7 +345,7 @@ pacote. Isso tem como objetivo ajudar os usuários a financiar o
 desenvolvimento de suas dependências.
 
 
-### False_secrets {:#false-secrets}
+### False_secrets {:#false_secrets}
 
 Quando você tenta [publicar um pacote][publish a package], o pub realiza uma pesquisa por
 possíveis vazamentos de credenciais secretas,
@@ -464,7 +464,7 @@ abrindo um pull request que edita o arquivo [`topics.yaml`][`topics.yaml` file] 
 
 [`topics.yaml` file]: {{site.repo.dart.org}}/pub-dev/blob/master/doc/topics.yaml
 
-### Ignored_advisories {:#ignored-advisories}
+### Ignored_advisories {:#ignored_advisories}
 
 Se um pacote tiver uma dependência que é afetada por um aviso de segurança,
 o pub avisa sobre o aviso durante a resolução de dependências. Os autores

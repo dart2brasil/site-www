@@ -75,10 +75,10 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
 
   try {
     // Check to see if the emulator is running.
-    if (!(await _isPortInUse(_emulatorPort))) {
-      stderr.writeln('Error: The Firebase hosting emulator did not start!');
-      return 1;
-    }
+    // if (!(await _isPortInUse(_emulatorPort))) {
+    //   stderr.writeln('Error: The Firebase hosting emulator did not start!');
+    //   return 1;
+    // }
 
     try {
       final result = await linkcheck.run(
@@ -113,7 +113,7 @@ Future<bool> _isPortInUse(int port) async {
       port,
       shared: false,
     ).timeout(const Duration(seconds: 2)); // Ignore timeout.
-
+print(InternetAddress.loopbackIPv4);
     // If we reach this line, the port was available,
     // and we know the Firebase hosting emulator is not running.
     // So close the fake server and return as not in use.

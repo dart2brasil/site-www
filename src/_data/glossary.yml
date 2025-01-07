@@ -72,7 +72,7 @@
   alternate:
     - "Implicit const (Const implícito)"
 
-- term: "Definite assignment (Atribuição definitiva)"
+- term: "Definite assignment (Atribuição definitiva) {:#definite-assignment}"
   short_description: |-
     A determinação de se uma variável foi definitivamente
     atribuída a um valor antes de ser usada.
@@ -174,7 +174,7 @@
     - "flow analysis (análise de fluxo)"
     - "understanding diagnostics (entendendo diagnósticos)"
 
-- term: "Function (Função)"
+- term: "Function (Função) {:#function}"
   short_description: |-
     Um termo abrangente para se referir a funções de nível superior,
     funções locais, métodos estáticos e métodos de instância.
@@ -256,7 +256,7 @@
   alternate:
     - "with mixin (com mixin)"
 
-- term: "Override inference (Inferência de override)"
+- term: "Override inference (Inferência de override) {:#override-inference}"
   short_description: |-
     Como os tipos ausentes em uma declaração de método são inferidos.
   long_description: |-
@@ -420,7 +420,7 @@
     - "tools"
     - "analysis (análise)"
 
-- term: "Refutable pattern (Padrão refutável)"
+- term: "Refutable pattern (Padrão refutável) {:#refutable-pattern}"
   short_description: |-
     Um padrão que pode ser testado em relação a um valor.
   long_description: |-

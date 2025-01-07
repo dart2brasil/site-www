@@ -9,7 +9,7 @@ _Global_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 A opção `global` do Pub permite executar scripts Dart a partir da
 linha de comando quando você não está atualmente dentro de um pacote.
 Após [ativar um pacote](#activating-a-package), você pode
-[executar scripts](#executando-um-script) do diretório `bin` desse pacote.
+[executar scripts](#running-a-script) do diretório `bin` desse pacote.
 [Desativar um pacote](#desativando-um-pacote) remove-o da
 sua lista de pacotes disponíveis globalmente.
 
@@ -39,7 +39,7 @@ Você pode ativar pacotes que residem no
 [site pub.dev]({{site.pub}}), um repositório Git,
 ou sua máquina local.
 Depois de ativar um pacote, veja [Executando um
-script](#executando-um-script) para executar scripts
+script](#running-a-script) para executar scripts
 do diretório `bin` do pacote.
 
 Quando você ativa um pacote, pode especificar uma versão opcional
@@ -109,7 +109,7 @@ $ dart pub global activate --source path ~/dart/stopwatch
 Uma vez que um pacote foi ativado, você pode atualizá-lo ativando o
 pacote novamente.
 
-## Executando um script {:#executando-um-script}
+## Executando um script {:#running-a-script}
 
 Você pode executar diretamente um script de um pacote ativado a partir da
 linha de comando. Se você não conseguir executar o script diretamente,

@@ -66,7 +66,7 @@ abordando várias preocupações com as bibliotecas web Dart existentes:
 Essas melhorias resultam naturalmente em algumas
 diferenças de implementação entre `package:web` e `dart:html`.
 As alterações que mais afetam os pacotes existentes,
-como renomeações de IDL [renomeações](#renomeações) e
+como renomeações de IDL [renomeações](#renames) e
 [testes de tipo](#testes-de-tipo),
 são abordadas nas seções de migração a seguir. Embora nos refiramos apenas a
 `dart:html` por brevidade, os mesmos padrões de migração se aplicam a qualquer outra biblioteca web principal do Dart, como `dart:svg`.
@@ -92,7 +92,7 @@ de `dart:html` para `package:web`.
 Para quaisquer outros problemas de migração, verifique o repositório [dart-lang/web][] e
 abra uma issue.
 
-### Renomeações {:#renomeações}
+### Renomeações {:#renames}
 
 Muitos dos símbolos em `dart:html` foram renomeados a partir de
 sua declaração IDL original para se alinhar melhor com o estilo Dart.
