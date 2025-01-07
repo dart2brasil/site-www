@@ -69,10 +69,10 @@ este:
 import 'package:lib1/lib1.dart';
 import 'package:lib2/lib2.dart' as lib2;
 
-// Usa Element de lib1.
+// Uses Element from lib1.
 Element element1 = Element();
 
-// Usa Element de lib2.
+// Uses Element from lib2.
 lib2.Element element2 = lib2.Element();
 ```
 
@@ -83,10 +83,10 @@ a biblioteca. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/libraries/show_hide.dart (imports)" replace="/(lib\d)\.dart/package:$1\/$&/g"?>
 ```dart
-// Importa apenas foo.
+// Import only foo.
 import 'package:lib1/lib1.dart' show foo;
 
-// Importa todos os nomes EXCETO foo.
+// Import all names EXCEPT foo.
 import 'package:lib2/lib2.dart' hide foo;
 ```
 
@@ -157,7 +157,7 @@ anexe-os a uma declaração `library` no início do arquivo.
 
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (library-doc)"?>
 ```dart
-/// Uma ótima biblioteca de teste.
+/// A really great test library.
 @TestOn('browser')
 library;
 ```

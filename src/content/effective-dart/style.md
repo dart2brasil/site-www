@@ -272,7 +272,7 @@ Se a função tiver vários parâmetros não usados, use sublinhados adicionais 
 <?code-excerpt "style_good.dart (unused-callback-params)"?>
 ```dart tag=good
 futureOfVoid.then((_) {
-  print('Operação concluída.');
+  print('Operation complete.');
 });
 ```
 
@@ -329,7 +329,7 @@ library my_library;
 
 <?code-excerpt "docs_good.dart (library-doc)"?>
 ```dart tag=good
-/// Uma biblioteca de teste realmente ótima.
+/// A really great test library.
 @TestOn('browser')
 library;
 ```
@@ -485,9 +485,9 @@ Fazê-lo evita o problema do [dangling else][dangling else]. (else pendente)
 <?code-excerpt "style_good.dart (curly-braces)"?>
 ```dart tag=good
 if (isWeekDay) {
-  print('Vá de bicicleta para o trabalho!');
+  print('Bike to work!');
 } else {
-  print('Vá dançar ou leia um livro!');
+  print('Go dancing or read a book!');
 }
 ```
 

@@ -32,14 +32,14 @@ Aqui está um exemplo de lançar, ou *levantar*, uma exceção:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (throw-FormatException)"?>
 ```dart
-throw FormatException('Esperava pelo menos 1 seção');
+throw FormatException('Expected at least 1 section');
 ```
 
 Você também pode lançar objetos arbitrários:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (out-of-llamas)"?>
 ```dart
-throw 'Sem lhamas!';
+throw 'Out of llamas!';
 ```
 
 :::note
@@ -64,9 +64,9 @@ Capturar uma exceção lhe dá a chance de lidar com ela:
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try)"?>
 ```dart
 try {
-  criarMaisLhamas();
+  breedMoreLlamas();
 } on OutOfLlamasException {
-  comprarMaisLhamas();
+  buyMoreLlamas();
 }
 ```
 
@@ -78,16 +78,16 @@ especificar um tipo, essa cláusula pode lidar com qualquer tipo de objeto lanç
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch)"?>
 ```dart
 try {
-  criarMaisLhamas();
+  breedMoreLlamas();
 } on OutOfLlamasException {
-  // Uma exceção específica
-  comprarMaisLhamas();
+  // A specific exception
+  buyMoreLlamas();
 } on Exception catch (e) {
-  // Qualquer outra coisa que seja uma exceção
-  print('Exceção desconhecida: $e');
+  // Anything else that is an exception
+  print('Unknown exception: $e');
 } catch (e) {
-  // Nenhum tipo especificado, lida com tudo
-  print('Algo realmente desconhecido: $e');
+  // No specified type, handles all
+  print('Something really unknown: $e');
 }
 ```
 
@@ -104,9 +104,9 @@ e o segundo é o stack trace (uma objeto [`StackTrace`][`StackTrace`]).
 try {
   // ···
 } on Exception catch [!(e)!] {
-  print('Detalhes da Exceção:\n $e');
+  print('Exception details:\n $e');
 } catch [!(e, s)!] {
-  print('Detalhes da Exceção:\n $e');
+  print('Exception details:\n $e');
   print('Stack trace:\n $s');
 }
 ```
@@ -120,10 +120,10 @@ use a palavra-chave `rethrow` (relançar).
 void misbehave() {
   try {
     dynamic foo = true;
-    print(foo++); // Erro de tempo de execução
+    print(foo++); // Runtime error
   } catch (e) {
-    print('misbehave() lidou parcialmente com ${e.runtimeType}.');
-    [!rethrow;!] // Permite que os chamadores vejam a exceção.
+    print('misbehave() partially handled ${e.runtimeType}.');
+    [!rethrow;!] // Allow callers to see the exception.
   }
 }
 
@@ -131,7 +131,7 @@ void main() {
   try {
     misbehave();
   } catch (e) {
-    print('main() terminou de lidar com ${e.runtimeType}.');
+    print('main() finished handling ${e.runtimeType}.');
   }
 }
 ```
@@ -145,10 +145,10 @@ exceção é propagada depois que a cláusula `finally` é executada:
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (finally)"?>
 ```dart
 try {
-  criarMaisLhamas();
+  breedMoreLlamas();
 } finally {
-  // Sempre limpe, mesmo que uma exceção seja lançada.
-  limparOsEstabulosDeLhama();
+  // Always clean up, even if an exception is thrown.
+  cleanLlamaStalls();
 }
 ```
 
@@ -157,11 +157,11 @@ A cláusula `finally` é executada após quaisquer cláusulas `catch` correspond
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-finally)"?>
 ```dart
 try {
-  criarMaisLhamas();
+  breedMoreLlamas();
 } catch (e) {
-  print('Erro: $e'); // Lidar com a exceção primeiro.
+  print('Error: $e'); // Handle the exception first.
 } finally {
-  limparOsEstabulosDeLhama(); // Então limpe.
+  cleanLlamaStalls(); // Then clean up.
 }
 ```
 
@@ -176,13 +176,13 @@ interromper a execução normal se uma condição booleana for falsa.
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert)"?>
 ```dart
-// Certifique-se de que a variável tenha um valor não nulo.
+// Make sure the variable has a non-null value.
 assert(text != null);
 
-// Certifique-se de que o valor seja menor que 100.
+// Make sure the value is less than 100.
 assert(number < 100);
 
-// Certifique-se de que esta seja uma URL https.
+// Make sure this is an https URL.
 assert(urlString.startsWith('https'));
 ```
 
@@ -193,7 +193,7 @@ adicione uma string como o segundo argumento para `assert`
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert-with-message)"?>
 ```dart
 assert(urlString.startsWith('https'),
-    'URL ($urlString) deve começar com "https".');
+    'URL ($urlString) should start with "https".');
 ```
 
 O primeiro argumento para `assert` pode ser qualquer expressão que

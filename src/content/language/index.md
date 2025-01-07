@@ -30,7 +30,7 @@ Para exibir texto no console, você pode usar a função `print()` de nível sup
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart
 void main() {
-  print('Olá, Mundo!');
+  print('Hello, World!');
 }
 ```
 
@@ -69,9 +69,9 @@ Dart suporta os comandos de fluxo de controle usuais:
 <?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
 ```dart
 if (year >= 2001) {
-  print('Século 21');
+  print('21st century');
 } else if (year >= 1901) {
-  print('Século 20');
+  print('20th century');
 }
 
 for (final object in flybyObjects) {
@@ -149,13 +149,13 @@ Para acessar APIs definidas em outras bibliotecas, use `import`.
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 ```dart
-// Importando bibliotecas principais
+// Importing core libraries
 import 'dart:math';
 
-// Importando bibliotecas de pacotes externos
+// Importing libraries from external packages
 import 'package:test/test.dart';
 
-// Importando arquivos
+// Importing files
 import 'path/to/my_other_file.dart';
 ```
 
@@ -179,27 +179,27 @@ class Spacecraft {
   String name;
   DateTime? launchDate;
 
-  // Propriedade somente leitura não final
+  // Read-only non-final property
   int? get launchYear => launchDate?.year;
 
-  // Construtor, com syntactic sugar (açúcar sintático) para atribuição a membros.
+  // Constructor, with syntactic sugar for assignment to members.
   Spacecraft(this.name, this.launchDate) {
-    // Código de inicialização vai aqui.
+    // Initialization code goes here.
   }
 
-  // Construtor nomeado que encaminha para o padrão.
+  // Named constructor that forwards to the default one.
   Spacecraft.unlaunched(String name) : this(name, null);
 
-  // Método.
+  // Method.
   void describe() {
-    print('Nave Espacial: $name');
-    // Type promotion (promoção de tipo) não funciona em getters.
+    print('Spacecraft: $name');
+    // Type promotion doesn't work on getters.
     var launchDate = this.launchDate;
     if (launchDate != null) {
       int years = DateTime.now().difference(launchDate).inDays ~/ 365;
-      print('Lançada: $launchYear ($years anos atrás)');
+      print('Launched: $launchYear ($years years ago)');
     } else {
-      print('Não lançada');
+      print('Unlaunched');
     }
   }
 }
@@ -244,8 +244,8 @@ nomeadamente os planetas do nosso próprio sistema solar.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (enhanced-enum)"?>
 ```dart
-/// Enum que enumera os diferentes planetas em nosso sistema solar
-/// e algumas de suas propriedades.
+/// Enum that enumerates the different planets in our solar system
+/// and some of their properties.
 enum Planet {
   mercury(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
   venus(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
@@ -253,16 +253,16 @@ enum Planet {
   uranus(planetType: PlanetType.ice, moons: 27, hasRings: true),
   neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
 
-  /// Um construtor gerador constante
+  /// A constant generating constructor
   const Planet(
       {required this.planetType, required this.moons, required this.hasRings});
 
-  /// Todas as variáveis de instância são finais
+  /// All instance variables are final
   final PlanetType planetType;
   final int moons;
   final bool hasRings;
 
-  /// Enums aprimorados suportam getters e outros métodos
+  /// Enhanced enums support getters and other methods
   bool get isGiant =>
       planetType == PlanetType.gas || planetType == PlanetType.ice;
 }
@@ -275,7 +275,7 @@ Você pode usar o `enum` `Planet` assim:
 final yourPlanet = Planet.earth;
 
 if (!yourPlanet.isGiant) {
-  print('Seu planeta não é um "planeta gigante".');
+  print('Your planet is not a "giant planet".');
 }
 ```
 
@@ -312,7 +312,7 @@ mixin Piloted {
   int astronauts = 1;
 
   void describeCrew() {
-    print('Número de astronautas: $astronauts');
+    print('Number of astronauts: $astronauts');
   }
 }
 ```
@@ -408,13 +408,13 @@ Future<void> createDescriptions(Iterable<String> objects) async {
       if (await file.exists()) {
         var modified = await file.lastModified();
         print(
-            'O arquivo para $object já existe. Foi modificado em $modified.');
+            'File for $object already exists. It was modified on $modified.');
         continue;
       }
       await file.create();
-      await file.writeAsString('Começando a descrever $object neste arquivo.');
+      await file.writeAsString('Start describing $object in this file.');
     } on IOException catch (e) {
-      print('Não é possível criar a descrição para $object: $e');
+      print('Cannot create description for $object: $e');
     }
   }
 }
@@ -427,7 +427,7 @@ Você também pode usar `async*`, que oferece uma maneira agradável e legível 
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (final object in objects) {
     await Future.delayed(oneSecond);
-    yield '${craft.name} passa por $object';
+    yield '${craft.name} flies by $object';
   }
 }
 ```
@@ -444,7 +444,7 @@ Para gerar uma exceção, use `throw`:
 <?code-excerpt "misc/test/samples_test.dart (throw)"?>
 ```dart
 if (astronauts == 0) {
-  throw StateError('Sem astronautas.');
+  throw StateError('No astronauts.');
 }
 ```
 
@@ -459,7 +459,7 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
       print(description);
     }
   } [!on IOException catch (e)!] {
-    print('Não foi possível descrever o objeto: $e');
+    print('Could not describe object: $e');
   } finally {
     flybyObjects.clear();
   }

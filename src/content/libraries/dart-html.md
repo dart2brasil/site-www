@@ -80,23 +80,23 @@ que correspondem ao seletor.
 
 <?code-excerpt "html/lib/html.dart (query-selector)"?>
 ```dart
-// Encontra um elemento por ID (an-id).
+// Find an element by id (an-id).
 Element idElement = querySelector('#an-id')!;
 
-// Encontra um elemento por classe (a-class).
+// Find an element by class (a-class).
 Element classElement = querySelector('.a-class')!;
 
-// Encontra todos os elementos por tag (<div>).
+// Find all elements by tag (<div>).
 List<Element> divElements = querySelectorAll('div');
 
-// Encontra todas as entradas de texto.
+// Find all text inputs.
 List<Element> textInputElements = querySelectorAll(
   'input[type="text"]',
 );
 
-// Encontra todos os elementos com a classe CSS 'class'
-// dentro de um <p> que está dentro de um elemento com
-// o ID 'id'.
+// Find all elements with the CSS class 'class'
+// inside of a <p> that is inside an element with
+// the ID 'id'.
 List<Element> specialParagraphElements = querySelectorAll('#id p.class');
 ```
 
@@ -124,7 +124,7 @@ a propriedade `href` de AnchorElement:
 <?code-excerpt "html/test/html_test.dart (href)" plaster="none"?>
 ```dart
 var anchor = querySelector('#example') as AnchorElement;
-anchor.href = 'https://dartbrasil.dev';
+anchor.href = 'https://dart.dev';
 ```
 
 Frequentemente, você precisa definir propriedades em vários elementos. Por
@@ -134,31 +134,31 @@ true tem o mesmo efeito que adicionar `display: none` ao CSS.
 
 <?code-excerpt "html/test/html_test.dart (os-html)" replace="/.*? = '''|''';$//g"?>
 ```html
-<!-- Em HTML: -->
+<!-- In HTML: -->
 <p>
-  <span class="linux">Palavras para Linux</span>
-  <span class="macos">Palavras para Mac</span>
-  <span class="windows">Palavras para Windows</span>
+  <span class="linux">Words for Linux</span>
+  <span class="macos">Words for Mac</span>
+  <span class="windows">Words for Windows</span>
 </p>
 ```
 
 <?code-excerpt "html/test/html_test.dart (os)"?>
 ```dart
-// Em Dart:
+// In Dart:
 const osList = ['macos', 'windows', 'linux'];
 final userOs = determineUserOs();
 
-// Para cada sistema operacional possível...
+// For each possible OS...
 for (final os in osList) {
-  // Corresponde ao sistema operacional do usuário?
+  // Matches user OS?
   bool shouldShow = (os == userOs);
 
-  // Encontra todos os elementos com class=os. Por exemplo, se
-  // os == 'windows', chama querySelectorAll('.windows')
-  // para encontrar todos os elementos com a classe "windows".
-  // Observe que '.$os' usa interpolação de string.
+  // Find all elements with class=os. For example, if
+  // os == 'windows', call querySelectorAll('.windows')
+  // to find all elements with the class "windows".
+  // Note that '.$os' uses string interpolation.
   for (final elem in querySelectorAll('.$os')) {
-    elem.hidden = !shouldShow; // Mostra ou esconde.
+    elem.hidden = !shouldShow; // Show or hide.
   }
 }
 ```
@@ -184,7 +184,7 @@ anexando-os ao DOM. Aqui está um exemplo de como criar um parágrafo
 <?code-excerpt "html/lib/html.dart (creating-elements)"?>
 ```dart
 var elem = ParagraphElement();
-elem.text = 'Criar é fácil!';
+elem.text = 'Creating is easy!';
 ```
 
 Você também pode criar um elemento analisando o texto HTML. Quaisquer elementos filhos
@@ -193,7 +193,7 @@ também são analisados e criados.
 <?code-excerpt "html/lib/html.dart (creating-from-html)"?>
 ```dart
 var elem2 = Element.html(
-  '<p>Criar <em>é</em> fácil!</p>',
+  '<p>Creating <em>is</em> easy!</p>',
 );
 ```
 
@@ -236,7 +236,7 @@ Para remover um nó, use o método Node `remove()`:
 
 <?code-excerpt "html/lib/html.dart (remove)"?>
 ```dart
-// Encontra um nó por ID e o remove do DOM se for encontrado.
+// Find a node by ID, and remove it from the DOM if it is found.
 querySelector('#expendable')?.remove();
 ```
 
@@ -263,7 +263,7 @@ definir um ID de elemento com a propriedade `id`:
 ```dart
 var message = DivElement();
 message.id = 'message2';
-message.text = 'Por favor, inscreva-se na lista de e-mails do Dart.';
+message.text = 'Please subscribe to the Dart mailing list.';
 ```
 
 Você pode reduzir o texto redundante neste exemplo usando
@@ -273,7 +273,7 @@ cascatas de método:
 ```dart
 var message = DivElement()
   ..id = 'message2'
-  ..text = 'Por favor, inscreva-se na lista de e-mails do Dart.';
+  ..text = 'Please subscribe to the Dart mailing list.';
 ```
 
 Embora usar IDs e classes para associar um elemento a um conjunto de estilos
@@ -305,9 +305,9 @@ Por exemplo, aqui está como você pode manipular cliques em um botão:
 
 <?code-excerpt "html/lib/html.dart (on-click)"?>
 ```dart
-// Encontra um botão por ID e adiciona um manipulador de evento.
+// Find a button by ID and add an event handler.
 querySelector('#submitInfo')!.onClick.listen((e) {
-  // Quando o botão é clicado, ele executa este código.
+  // When the button is clicked, it runs this code.
   submitData();
 });
 ```
@@ -377,7 +377,7 @@ Para enviar dados de string no WebSocket, use o método `send()`:
 
 <?code-excerpt "html/test/html_test.dart (send)"?>
 ```dart
-ws.send('Olá do Dart!');
+ws.send('Hello from Dart!');
 ```
 
 ### Recebendo dados {:#receiving-data}
@@ -388,7 +388,7 @@ eventos de mensagem:
 <?code-excerpt "html/test/html_test.dart (onMessage)" plaster="none"?>
 ```dart
 ws.onMessage.listen((MessageEvent e) {
-  print('Mensagem recebida: ${e.data}');
+  print('Received message: ${e.data}');
 });
 ```
 
@@ -407,7 +407,7 @@ error e message:
 void initWebSocket([int retrySeconds = 1]) {
   var reconnectScheduled = false;
 
-  print('Conectando ao websocket');
+  print('Connecting to websocket');
 
   void scheduleReconnect() {
     if (!reconnectScheduled) {
@@ -418,22 +418,22 @@ void initWebSocket([int retrySeconds = 1]) {
   }
 
   ws.onOpen.listen((e) {
-    print('Conectado');
-    ws.send('Olá do Dart!');
+    print('Connected');
+    ws.send('Hello from Dart!');
   });
 
   ws.onClose.listen((e) {
-    print('Websocket fechado, tentando novamente em $retrySeconds segundos');
+    print('Websocket closed, retrying in $retrySeconds seconds');
     scheduleReconnect();
   });
 
   ws.onError.listen((e) {
-    print('Erro ao conectar ao ws');
+    print('Error connecting to ws');
     scheduleReconnect();
   });
 
   ws.onMessage.listen((MessageEvent e) {
-    print('Mensagem recebida: ${e.data}');
+    print('Received message: ${e.data}');
   });
 }
 ```

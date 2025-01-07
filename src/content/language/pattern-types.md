@@ -69,7 +69,7 @@ corresponder:
 <?code-excerpt "language/lib/patterns/pattern_types.dart (logical-and)"?>
 ```dart
 switch ((1, 2)) {
-  // Erro, ambos os subpadrões tentam vincular 'b'.
+  // Error, both subpatterns attempt to bind 'b'.
   case (var a, var b) && (var b, var c): // ...
 }
 ```
@@ -139,7 +139,7 @@ sem lançar, use o padrão null-check.
 String? maybeString = 'nullable with base type String';
 switch (maybeString) {
   case var s?:
-  // 's' tem tipo String não anulável aqui.
+  // 's' has type non-nullable String here.
 }
 ```
 
@@ -161,7 +161,7 @@ use um padrão null-assert enquanto corresponder:
 List<String?> row = ['user', null];
 switch (row) {
   case ['user', var name!]: // ...
-  // 'name' é uma string não anulável aqui.
+  // 'name' is a non-nullable string here.
 }
 ```
 
@@ -186,7 +186,7 @@ Padrões constantes correspondem quando o valor é igual à constante:
 <?code-excerpt "language/lib/patterns/pattern_types.dart (constant)"?>
 ```dart
 switch (number) {
-  // Corresponde se 1 == number.
+  // Matches if 1 == number.
   case 1: // ...
 }
 ```
@@ -205,10 +205,10 @@ Expressões constantes mais complexas devem ser colocadas entre parênteses e pr
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (complex-constant)"?>
 ```dart
-// Padrão de lista ou mapa:
+// List or map pattern:
 case [a, b]: // ...
 
-// Literal de lista ou mapa:
+// List or map literal:
 case const [a, b]: // ...
 ```
 
@@ -226,9 +226,9 @@ padrão correspondeu.
 <?code-excerpt "language/lib/patterns/pattern_types.dart (variable)"?>
 ```dart
 switch ((1, 2)) {
-  // 'var a' e 'var b' são padrões de variável que se ligam a 1 e 2, respectivamente.
+  // 'var a' and 'var b' are variable patterns that bind to 1 and 2, respectively.
   case (var a, var b): // ...
-  // 'a' e 'b' estão no escopo no corpo do case.
+  // 'a' and 'b' are in scope in the case body.
 }
 ```
 
@@ -238,7 +238,7 @@ e falha caso contrário:
 <?code-excerpt "language/lib/patterns/pattern_types.dart (variable-typed)"?>
 ```dart
 switch ((1, 2)) {
-  // Não corresponde.
+  // Does not match.
   case (int a, String b): // ...
 }
 ```
@@ -264,7 +264,7 @@ Padrões de identificador podem se comportar como um [padrão constante](#consta
     case c:
       print('match $c');
     default:
-      print('no match'); // Imprime "no match".
+      print('no match'); // Prints "no match".
   }
   ```
 - Identificador [Curinga](#wildcard) em qualquer contexto: corresponde a qualquer valor e o descarta:
@@ -289,7 +289,7 @@ o exemplo corresponde a padrões.
 x || y => 'matches true',
 x || y && z => 'matches true',
 x || (y && z) => 'matches true',
-// `x || y && z` é a mesma coisa que `x || (y && z)`.
+// `x || y && z` is the same thing as `x || (y && z)`.
 (x || y) && z => 'matches nothing',
 // ...
 ```
@@ -321,8 +321,8 @@ corresponde seus subpadrões contra os elementos da lista para desestruturá-los
 const a = 'a';
 const b = 'b';
 switch (obj) {
-  // O padrão de lista [a, b] corresponde a obj primeiro se obj for uma lista com dois campos,
-  // então se seus campos corresponderem aos subpadrões constantes 'a' e 'b'.
+  // List pattern [a, b] matches obj first if obj is a list with two fields,
+  // then if its fields match the constant subpatterns 'a' and 'b'.
   case [a, b]:
     print('$a, $b');
 }
@@ -340,7 +340,7 @@ de comprimentos arbitrários.
 <?code-excerpt "language/lib/patterns/pattern_types.dart (rest)"?>
 ```dart
 var [a, b, ..., c, d] = [1, 2, 3, 4, 5, 6, 7];
-// Imprime "1 2 6 7".
+// Prints "1 2 6 7".
 print('$a $b $c $d');
 ```
 
@@ -350,7 +350,7 @@ aos outros subpadrões na lista, em uma nova lista:
 <?code-excerpt "language/lib/patterns/pattern_types.dart (rest-sub)"?>
 ```dart
 var [a, b, ...rest, c, d] = [1, 2, 3, 4, 5, 6, 7];
-// Imprime "1 2 [3, 4, 5] 6 7".
+// Prints "1 2 [3, 4, 5] 6 7".
 print('$a $b $rest $c $d');
 ```
 
@@ -389,7 +389,7 @@ padrões são cada um equivalente:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (record-getter)"?>
 ```dart
-// Padrão de registro com subpadrões de variável:
+// Record pattern with variable subpatterns:
 var (untyped: untyped, typed: int typed) = record;
 var (:untyped, :int typed) = record;
 
@@ -398,13 +398,13 @@ switch (record) {
   case (:var untyped, :int typed): // ...
 }
 
-// Padrão de registro com subpadrões null-check e null-assert:
+// Record pattern with null-check and null-assert subpatterns:
 switch (record) {
   case (checked: var checked?, asserted: var asserted!): // ...
   case (:var checked?, :var asserted!): // ...
 }
 
-// Padrão de registro com subpadrão de cast:
+// Record pattern with cast subpattern:
 var (untyped: untyped as int, typed: typed as String) = record;
 var (:untyped as int, :typed as String) = record;
 ```
@@ -420,7 +420,7 @@ se o valor não tiver o mesmo tipo.
 <?code-excerpt "language/lib/patterns/pattern_types.dart (object)"?>
 ```dart
 switch (shape) {
-  // Corresponde se shape for do tipo Rect e, em seguida, com as propriedades de Rect.
+  // Matches if shape is of type Rect, and then against the properties of Rect.
   case Rect(width: var w, height: var h): // ...
 }
 ```
@@ -430,7 +430,7 @@ ou [padrão de identificador](#identifier) no subpadrão de campo:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (object-getter)"?>
 ```dart
-// Vincula novas variáveis x e y aos valores das propriedades x e y de Point.
+// Binds new variables x and y to the values of Point's x and y properties.
 var Point(:x, :y) = Point(1, 2);
 ```
 
@@ -460,7 +460,7 @@ tipo de um valor, mas não vincular o valor a um nome:
 ```dart
 switch (record) {
   case (int _, String _):
-    print('Primeiro campo é int e o segundo é String.');
+    print('First field is int and second is String.');
 }
 ```
 

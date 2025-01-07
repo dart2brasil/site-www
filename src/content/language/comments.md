@@ -22,8 +22,8 @@ final da linha é ignorado pelo compilador Dart.
 <?code-excerpt "misc/lib/language_tour/comments.dart (single-line-comments)"?>
 ```dart
 void main() {
-  // TODO: refatorar para uma AbstractLlamaGreetingFactory?
-  print('Bem-vindo à minha fazenda de Lhamas!');
+  // TODO: refactor into an AbstractLlamaGreetingFactory?
+  print('Welcome to my Llama farm!');
 }
 ```
 
@@ -38,7 +38,7 @@ várias linhas podem ser aninhados.
 ```dart
 void main() {
   /*
-   * Isso é muito trabalhoso. Considere criar galinhas.
+   * This is a lot of work. Consider raising chickens.
 
   Llama larry = Llama();
   larry.feed();
@@ -65,25 +65,25 @@ classes e argumentos:
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (doc-comments)"?>
 ```dart
-/// Um camelídeo domesticado da América do Sul (Lama glama).
+/// A domesticated South American camelid (Lama glama).
 ///
-/// As culturas andinas usam lhamas como fonte de carne e como
-/// animais de carga desde os tempos pré-hispânicos.
+/// Andean cultures have used llamas as meat and pack
+/// animals since pre-Hispanic times.
 ///
-/// Assim como qualquer outro animal, as lhamas precisam comer,
-/// então não se esqueça de [feed] (alimentá-las) com alguma [Food] (comida).
+/// Just like any other animal, llamas need to eat,
+/// so don't forget to [feed] them some [Food].
 class Llama {
   String? name;
 
-  /// Alimenta sua lhama [food].
+  /// Feeds your llama [food].
   ///
-  /// A lhama típica come um fardo de feno por semana.
+  /// The typical llama eats one bale of hay per week.
   void feed(Food food) {
     // ...
   }
 
-  /// Exercita sua lhama com uma [activity] (atividade) por
-  /// [timeLimit] (limite de tempo) minutos.
+  /// Exercises your llama with an [activity] for
+  /// [timeLimit] minutes.
   void exercise(Activity activity, int timeLimit) {
     // ...
   }

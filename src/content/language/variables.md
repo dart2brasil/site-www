@@ -195,8 +195,8 @@ então a função cara `readThermometer()` nunca é chamada:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
-// Esta é a única chamada do programa para readThermometer().
-[!late!] String temperature = readThermometer(); // Inicializado preguiçosamente.
+// This is the program's only call to readThermometer().
+[!late!] String temperature = readThermometer(); // Lazily initialized.
 ```
 
 
@@ -215,7 +215,7 @@ Aqui está um exemplo de criação e definição de uma variável `final`:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (final)"?>
 ```dart
-final name = 'Bob'; // Sem uma anotação de tipo
+final name = 'Bob'; // Without a type annotation
 final String nickname = 'Bobby';
 ```
 
@@ -223,7 +223,7 @@ Você não pode alterar o valor de uma variável `final`:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-final)"?>
 ```dart tag=fails-sa
-name = 'Alice'; // Erro: uma variável final só pode ser definida uma vez.
+name = 'Alice'; // Error: a final variable can only be set once.
 ```
 
 Use `const` para variáveis que você deseja que sejam **constantes de tempo de compilação**. Se
@@ -234,8 +234,8 @@ de uma operação aritmética em números constantes:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const)"?>
 ```dart
-const bar = 1000000; // Unidade de pressão (dinas/cm2)
-const double atm = 1.01325 * bar; // Atmosfera padrão
+const bar = 1000000; // Unit of pressure (dynes/cm2)
+const double atm = 1.01325 * bar; // Standard atmosphere
 ```
 
 A palavra-chave `const` não é apenas para declarar variáveis constantes.
@@ -247,7 +247,7 @@ Qualquer variável pode ter um valor constante.
 ```dart
 var foo = const [];
 final bar = const [];
-const baz = []; // Equivalente a `const []`
+const baz = []; // Equivalent to `const []`
 ```
 
 Você pode omitir `const` da expressão de inicialização de uma declaração `const`,
@@ -258,14 +258,14 @@ mesmo que ela costumava ter um valor `const`:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
 ```dart
-foo = [1, 2, 3]; // Era const []
+foo = [1, 2, 3]; // Was const []
 ```
 
 Você não pode alterar o valor de uma variável `const`:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
 ```dart tag=fails-sa
-baz = [42]; // Erro: Variáveis constantes não podem receber um valor.
+baz = [42]; // Error: Constant variables can't be assigned a value.
 ```
 
 Você pode definir constantes que usam
@@ -275,10 +275,10 @@ e [operadores spread][] (`...` e `...?`):
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
-const Object i = 3; // Onde i é um Object const com um valor int...
-const list = [i as int]; // Use um typecast.
-const map = {if (i is int) i: 'int'}; // Use is e collection if.
-const set = {if (list is List<int>) ...list}; // ...e um spread.
+const Object i = 3; // Where i is a const Object with an int value...
+const list = [i as int]; // Use a typecast.
+const map = {if (i is int) i: 'int'}; // Use is and collection if.
+const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
 
 :::note

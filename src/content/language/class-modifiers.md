@@ -75,10 +75,10 @@ abstract class Vehicle {
 ```dart title="b.dart"
 import 'a.dart';
 
-// Error: Não pode ser construído.
+// Error: Can't be constructed.
 Vehicle myVehicle = Vehicle();
 
-// Pode ser estendida.
+// Can be extended.
 class Car extends Vehicle {
   int passengers = 4;
 
@@ -88,7 +88,7 @@ class Car extends Vehicle {
   }
 }
 
-// Pode ser implementada.
+// Can be implemented.
 class MockVehicle implements Vehicle {
   @override
   void moveForward(int meters) {
@@ -132,16 +132,16 @@ base class Vehicle {
 ```dart title="b.dart"
 import 'a.dart';
 
-// Pode ser construído.
+// Can be constructed.
 Vehicle myVehicle = Vehicle();
 
-// Pode ser estendida.
+// Can be extended.
 base class Car extends Vehicle {
   int passengers = 4;
   // ...
 }
 
-// ERROR: Não pode ser implementada.
+// ERROR: Can't be implemented.
 base class MockVehicle implements Vehicle {
   @override
   void moveForward() {
@@ -177,16 +177,16 @@ interface class Vehicle {
 ```dart title="b.dart"
 import 'a.dart';
 
-// Pode ser construído.
+// Can be constructed.
 Vehicle myVehicle = Vehicle();
 
-// ERROR: Não pode ser herdada.
+// ERROR: Can't be inherited.
 class Car extends Vehicle {
   int passengers = 4;
   // ...
 }
 
-// Pode ser implementada.
+// Can be implemented.
 class MockVehicle implements Vehicle {
   @override
   void moveForward(int meters) {
@@ -233,17 +233,17 @@ final class Vehicle {
 ```dart title="b.dart"
 import 'a.dart';
 
-// Pode ser construído.
+// Can be constructed.
 Vehicle myVehicle = Vehicle();
 
-// ERROR: Não pode ser herdada.
+// ERROR: Can't be inherited.
 class Car extends Vehicle {
   int passengers = 4;
   // ...
 }
 
 class MockVehicle implements Vehicle {
-  // ERROR: Não pode ser implementada.
+  // ERROR: Can't be implemented.
   @override
   void moveForward(int meters) {
     // ...
@@ -282,14 +282,14 @@ class Truck implements Vehicle {}
 
 class Bicycle extends Vehicle {}
 
-// ERROR: Não pode ser instanciado.
+// ERROR: Can't be instantiated.
 Vehicle myVehicle = Vehicle();
 
-// Subclasses podem ser instanciadas.
+// Subclasses can be instantiated.
 Vehicle myCar = Car();
 
 String getVehicleSound(Vehicle vehicle) {
-  // ERROR: O switch está perdendo o subtipo Bicycle ou um caso default.
+  // ERROR: The switch is missing the Bicycle subtype or a default case.
   return switch (vehicle) {
     Car() => 'vroom',
     Truck() => 'VROOOOMM',

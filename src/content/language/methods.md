@@ -28,8 +28,8 @@ class Point {
   final double x;
   final double y;
 
-  // Define as variáveis de instância x e y
-  // antes da execução do corpo do construtor.
+  // Sets the x and y instance variables
+  // before the constructor body runs.
   Point(this.x, this.y);
 
   double distanceTo(Point other) {
@@ -114,7 +114,7 @@ class Rectangle {
 
   Rectangle(this.left, this.top, this.width, this.height);
 
-  // Define duas propriedades calculadas: right e bottom.
+  // Define two calculated properties: right and bottom.
   double get right => left + width;
   set right(double value) => left = value - width;
   double get bottom => top + height;
@@ -150,14 +150,14 @@ Para tornar um método abstrato, use um ponto e vírgula (`;`) em vez de um corp
 <?code-excerpt "misc/lib/language_tour/classes/doer.dart"?>
 ```dart
 abstract class Doer {
-  // Define variáveis de instância e métodos...
+  // Define instance variables and methods...
 
-  void doSomething(); // Define um método abstrato.
+  void doSomething(); // Define an abstract method.
 }
 
 class EffectiveDoer extends Doer {
   void doSomething() {
-    // Fornece uma implementação, então o método não é abstrato aqui...
+    // Provide an implementation, so the method is not abstract here...
   }
 }
 ```

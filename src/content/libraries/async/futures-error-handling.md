@@ -64,7 +64,7 @@ demonstra a versatilidade de `catchError()` como um tratador de erros:
 myFunc().then((value) {
   doSomethingWith(value);
   ...
-  throw Exception('Algum erro arbitrário');
+  throw Exception('Some arbitrary error');
 }).catchError(handleError);
 ```
 
@@ -97,9 +97,9 @@ entre um erro encaminhado _para_ `then()`, e um erro gerado _dentro_ de
 <?code-excerpt "futures/lib/simple.dart (throws-then-catch)"?>
 ```dart
 asyncErrorFunction().then(successCallback, onError: (e) {
-  handleError(e); // Erro original.
-  anotherAsyncErrorFunction(); // Ops, novo erro.
-}).catchError(handleError); // Erro de dentro de then() tratado.
+  handleError(e); // Original error.
+  anotherAsyncErrorFunction(); // Oops, new error.
+}).catchError(handleError); // Error from within then() handled.
 ```
 
 No exemplo acima, o erro do Future de `asyncErrorFunction()` é tratado com o
@@ -117,28 +117,28 @@ gerados de qualquer parte da cadeia usando `catchError()`:
 
 <?code-excerpt "futures/lib/long_chain.dart"?>
 ```dart
-Future<String> one() => Future.value('de um');
-Future<String> two() => Future.error('erro de dois');
-Future<String> three() => Future.value('de três');
-Future<String> four() => Future.value('de quatro');
+Future<String> one() => Future.value('from one');
+Future<String> two() => Future.error('error from two');
+Future<String> three() => Future.value('from three');
+Future<String> four() => Future.value('from four');
 
 void main() {
-  one() // Future é completado com "de um".
-      .then((_) => two()) // Future é completado com o erro de two().
-      .then((_) => three()) // Future é completado com o erro de two().
-      .then((_) => four()) // Future é completado com o erro de two().
-      .then((value) => value.length) // Future é completado com o erro de two().
+  one() // Future completes with "from one".
+      .then((_) => two()) // Future completes with two()'s error.
+      .then((_) => three()) // Future completes with two()'s error.
+      .then((_) => four()) // Future completes with two()'s error.
+      .then((value) => value.length) // Future completes with two()'s error.
       .catchError((e) {
-    print('Recebeu erro: $e'); // Finalmente, o callback é disparado.
-    return 42; // Future é completado com 42.
+    print('Got error: $e'); // Finally, callback fires.
+    return 42; // Future completes with 42.
   }).then((value) {
-    print('O valor é $value');
+    print('The value is $value');
   });
 }
 
-// Saída deste programa:
-//   Recebeu erro: erro de dois
-//   O valor é 42
+// Output of this program:
+//   Got error: error from two
+//   The value is 42
 ```
 
 No código acima, o Future de `one()` é completado com um valor, mas o Future de `two()`
@@ -212,13 +212,13 @@ o Future de `whenComplete()` também é completado com esse erro.
 ```dart
 void main() {
   asyncErrorFunction()
-      // Future é completado com um erro:
-      .then((_) => print("Não chegará aqui"))
-      // Future é completado com o mesmo erro:
-      .whenComplete(() => print('Chega aqui'))
-      // Future é completado com o mesmo erro:
-      .then((_) => print("Não chegará aqui"))
-      // Erro é tratado aqui:
+      // Future completes with an error:
+      .then((_) => print("Won't reach here"))
+      // Future completes with the same error:
+      .whenComplete(() => print('Reaches here'))
+      // Future completes with the same error:
+      .then((_) => print("Won't reach here"))
+      // Error is handled here:
       .catchError(handleError);
 }
 ```
@@ -231,13 +231,13 @@ No código abaixo, o Future de `then()` é completado com um erro, que agora
 ```dart
 void main() {
   asyncErrorFunction()
-      // Future é completado com um erro:
+      // Future completes with an error:
       .then((_) => ...)
       .catchError((e) {
     handleError(e);
     printErrorMessage();
-    return someObject; // Future é completado com someObject
-  }).whenComplete(() => print('Feito!')); // Future é completado com someObject
+    return someObject; // Future completes with someObject
+  }).whenComplete(() => print('Done!')); // Future completes with someObject
 }
 ```
 
@@ -250,11 +250,11 @@ Se o callback de `whenComplete()` lançar um erro, então o Future de `whenCompl
 ```dart
 void main() {
   asyncErrorFunction()
-      // Future é completado com um valor:
+      // Future completes with a value:
       .catchError(handleError)
-      // Future é completado com um erro:
-      .whenComplete(() => throw Exception('Novo erro'))
-      // Erro é tratado:
+      // Future completes with an error:
+      .whenComplete(() => throw Exception('New error'))
+      // Error is handled:
       .catchError(handleError);
 }
 ```
@@ -272,7 +272,7 @@ este código:
 void main() {
   Future<Object> future = asyncErrorFunction();
 
-  // RUIM: Muito tarde para tratar a exceção de asyncErrorFunction().
+  // BAD: Too late to handle asyncErrorFunction() exception.
   Future.delayed(const Duration(milliseconds: 500), () {
     future.then(...).catchError(...);
   });
@@ -291,7 +291,7 @@ void main() {
   Future.delayed(const Duration(milliseconds: 500), () {
     asyncErrorFunction()
         .then(...)
-        .catchError(...); // Chegamos aqui.
+        .catchError(...); // We get here.
   });
 }
 ```
@@ -306,10 +306,10 @@ erros síncronos vazem. Considere este código:
 <?code-excerpt "futures/bin/mixing_errors_problematic.dart (parse)"?>
 ```dart
 Future<int> parseAndRead(Map<String, dynamic> data) {
-  final filename = obtainFilename(data); // Pode lançar.
+  final filename = obtainFilename(data); // Could throw.
   final file = File(filename);
   return file.readAsString().then((contents) {
-    return parseFileData(contents); // Pode lançar.
+    return parseFileData(contents); // Could throw.
   });
 }
 ```
@@ -328,15 +328,15 @@ lançar, um erro síncrono se propaga:
 ```dart
 void main() {
   parseAndRead(data).catchError((e) {
-    print('Dentro de catchError');
+    print('Inside catchError');
     print(e);
     return -1;
   });
 }
 
-// Saída do programa:
-//   Exceção não tratada:
-//   <erro de obtainFilename>
+// Program Output:
+//   Unhandled exception:
+//   <error from obtainFilename>
 //   ...
 ```
 
@@ -354,10 +354,10 @@ callback `Future.sync()`:
 ```dart
 Future<int> parseAndRead(Map<String, dynamic> data) {
   return Future.sync(() {
-    final filename = obtainFilename(data); // Pode lançar.
+    final filename = obtainFilename(data); // Could throw.
     final file = File(filename);
     return file.readAsString().then((contents) {
-      return parseFileData(contents); // Pode lançar.
+      return parseFileData(contents); // Could throw.
     });
   });
 }
@@ -375,15 +375,15 @@ Com o código envolvido dentro de `Future.sync()`, `catchError()` pode tratar to
 ```dart
 void main() {
   parseAndRead(data).catchError((e) {
-    print('Dentro de catchError');
+    print('Inside catchError');
     print(e);
     return -1;
   });
 }
 
-// Saída do programa:
-//   Dentro de catchError
-//   <erro de obtainFilename>
+// Program Output:
+//   Inside catchError
+//   <error from obtainFilename>
 ```
 
 `Future.sync()` torna seu código resiliente contra exceções não capturadas. Se sua
@@ -394,8 +394,8 @@ algo perigoso sem perceber:
 ```dart
 Future fragileFunc() {
   return Future.sync(() {
-    final x = someFunc(); // Lança inesperadamente em alguns casos raros.
-    var y = 10 / x; // x não deve ser igual a 0.
+    final x = someFunc(); // Unexpectedly throws in some rare cases.
+    var y = 10 / x; // x should not equal 0.
     ...
   });
 }

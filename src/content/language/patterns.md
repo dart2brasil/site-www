@@ -53,9 +53,9 @@ do padrão:
 <?code-excerpt "language/lib/patterns/switch.dart (constant-pattern)"?>
 ```dart
 switch (number) {
-  // Padrão constante corresponde se 1 == número.
+  // Constant pattern matches if 1 == number.
   case 1:
-    print('um');
+    print('one');
 }
 ```
 
@@ -69,8 +69,8 @@ Por exemplo, os campos individuais de qualquer padrão de [tipo coleção][colle
 const a = 'a';
 const b = 'b';
 switch (obj) {
-  // O padrão de lista [a, b] corresponde a obj primeiro se obj for uma lista com dois campos,
-  // depois se seus campos corresponderem aos subpadrões constantes 'a' e 'b'.
+  // List pattern [a, b] matches obj first if obj is a list with two fields,
+  // then if its fields match the constant subpatterns 'a' and 'b'.
   case [a, b]:
     print('$a, $b');
 }
@@ -87,9 +87,9 @@ e extraí-los em partes. Em outras palavras, o padrão _desestrutura_ o objeto:
 <?code-excerpt "language/lib/patterns/destructuring.dart (list-pattern)"?>
 ```dart
 var numList = [1, 2, 3];
-// O padrão de lista [a, b, c] desestrutura os três elementos de numList...
+// List pattern [a, b, c] destructures the three elements from numList...
 var [a, b, c] = numList;
-// ...e atribui-os a novas variáveis.
+// ...and assigns them to new variables.
 print(a + b + c);
 ```
 
@@ -127,7 +127,7 @@ Uma vez correspondido, ele desestrutura o valor e o vincula a novas variáveis l
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (variable-declaration)"?>
 ```dart
-// Declara novas variáveis a, b e c.
+// Declares new variables a, b, and c.
 var (a, [b, c]) = ('str', [1, 2]);
 ```
 
@@ -145,9 +145,9 @@ declarar uma terceira temporária:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (variable-assignment)"?>
 ```dart
-var (a, b) = ('esquerda', 'direita');
-(b, a) = (a, b); // Troca.
-print('$a $b'); // Imprime "direita esquerda".
+var (a, b) = ('left', 'right');
+(b, a) = (a, b); // Swap.
+print('$a $b'); // Prints "right left".
 ```
 
 ### Declarações e expressões switch {:#switch-statements-and-expressions}
@@ -167,17 +167,17 @@ Seu escopo é apenas dentro do corpo desse case.
 <?code-excerpt "language/lib/patterns/switch.dart (switch-statement)"?>
 ```dart
 switch (obj) {
-  // Corresponde se 1 == obj.
+  // Matches if 1 == obj.
   case 1:
-    print('um');
+    print('one');
 
-  // Corresponde se o valor de obj está entre os
-  // valores constantes de 'first' e 'last'.
+  // Matches if the value of obj is between the
+  // constant values of 'first' and 'last'.
   case >= first && <= last:
-    print('em intervalo');
+    print('in range');
 
-  // Corresponde se obj é um registro com dois campos,
-  // em seguida, atribui os campos a 'a' e 'b'.
+  // Matches if obj is a record with two fields,
+  // then assigns the fields to 'a' and 'b'.
   case (var a, var b):
     print('a = $a, b = $b');
 
@@ -206,7 +206,7 @@ exclusivamente úteis para permitir que vários cases compartilhem uma [cláusul
 ```dart
 switch (shape) {
   case Square(size: var s) || Circle(size: var s) when s > 0:
-    print('Forma simétrica não vazia');
+    print('Non-empty symmetric shape');
 }
 ```
 
@@ -218,13 +218,13 @@ sair do switch se a condição for falsa
 ```dart
 switch (pair) {
   case (int a, int b):
-    if (a > b) print('Primeiro elemento maior');
-  // Se falso, não imprime nada e sai do switch.
+    if (a > b) print('First element greater');
+  // If false, prints nothing and exits the switch.
   case (int a, int b) when a > b:
-    // Se falso, não imprime nada, mas prossegue para o próximo case.
-    print('Primeiro elemento maior');
+    // If false, prints nothing but proceeds to next case.
+    print('First element greater');
   case (int a, int b):
-    print('Primeiro elemento não maior');
+    print('First element not greater');
 }
 ```
 
@@ -244,7 +244,7 @@ Map<String, int> hist = {
 };
 
 for (var MapEntry(key: key, value: count) in hist.entries) {
-  print('$key ocorreu $count vezes');
+  print('$key occurred $count times');
 }
 ```
 
@@ -261,7 +261,7 @@ de algo redundante como `key: key` para apenas `:key`:
 <?code-excerpt "language/lib/patterns/for_in.dart (for-in-short)"?>
 ```dart
 for (var MapEntry(:key, value: count) in hist.entries) {
-  print('$key ocorreu $count vezes');
+  print('$key occurred $count times');
 }
 ```
 
@@ -309,7 +309,7 @@ Para desestruturar um registro com campos nomeados usando um padrão:
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-3)"?>
 ```dart
 final (:name, :age) =
-    getData(); // Por exemplo, retorna (name: 'doug', age: 25);
+    getData(); // For example, return (name: 'doug', age: 25);
 ```
 
 ### Desestruturando instâncias de classe {:#destructuring-class-instances}
@@ -323,9 +323,9 @@ desestruturadas entre parênteses:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-class-instances)"?>
 ```dart
-final Foo myFoo = Foo(one: 'um', two: 2);
+final Foo myFoo = Foo(one: 'one', two: 2);
 var Foo(:one, :two) = myFoo;
-print('um $one, dois $two');
+print('one $one, two $two');
 ```
 
 ### Tipos de dados algébricos {:#algebraic-data-types}
@@ -393,7 +393,7 @@ if (json is Map<String, Object?> &&
       user[1] is int) {
     var name = user[0] as String;
     var age = user[1] as int;
-    print('Usuário $name tem $age anos.');
+    print('User $name is $age years old.');
   }
 }
 ```
@@ -407,7 +407,7 @@ de validar JSON:
 <?code-excerpt "language/lib/patterns/json.dart (json-3)"?>
 ```dart
 if (json case {'user': [String name, int age]}) {
-  print('Usuário $name tem $age anos.');
+  print('User $name is $age years old.');
 }
 ```
 

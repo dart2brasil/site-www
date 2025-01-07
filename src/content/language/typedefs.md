@@ -29,8 +29,8 @@ Um alias de tipo pode ter parâmetros de tipo:
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (list-mapper)"?>
 ```dart
 typedef ListMapper<X> = Map<X, List<X>>;
-Map<String, List<String>> m1 = {}; // Verbose. (Verborrágico)
-ListMapper<String> m2 = {}; // Mesmo resultado, mas mais curto e claro.
+Map<String, List<String>> m1 = {}; // Verbose.
+ListMapper<String> m2 = {}; // Same thing but shorter and clearer.
 ```
 
 :::version-note
@@ -49,7 +49,7 @@ typedef Compare<T> = int Function(T a, T b);
 int sort(int a, int b) => a - b;
 
 void main() {
-  assert(sort is Compare<int>); // Verdadeiro!
+  assert(sort is Compare<int>); // True!
 }
 ```
 

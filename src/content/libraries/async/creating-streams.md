@@ -52,23 +52,23 @@ emite novos eventos. Exemplo:
 
 <?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split-into-lines)"?>
 ```dart
-/// Divide um stream de strings consecutivas em linhas.
+/// Splits a stream of consecutive strings into lines.
 ///
-/// A string de entrada é fornecida em partes menores através
-/// do stream `source`.
+/// The input string is provided in smaller chunks through
+/// the `source` stream.
 Stream<String> lines(Stream<String> source) async* {
-  // Armazena qualquer linha parcial do bloco anterior.
+  // Stores any partial line from the previous chunk.
   var partial = '';
-  // Espera até que um novo bloco esteja disponível, então o processa.
+  // Wait until a new chunk is available, then process it.
   await for (final chunk in source) {
     var lines = chunk.split('\n');
-    lines[0] = partial + lines[0]; // Adiciona a linha parcial.
-    partial = lines.removeLast(); // Remove a nova linha parcial.
+    lines[0] = partial + lines[0]; // Prepend partial line.
+    partial = lines.removeLast(); // Remove new partial line.
     for (final line in lines) {
-      yield line; // Adiciona linhas ao stream de saída.
+      yield line; // Add lines to output stream.
     }
   }
-  // Adiciona a linha parcial final ao stream de saída, se houver.
+  // Add final partial line to output stream, if any.
   if (partial.isNotEmpty) yield partial;
 }
 ```
@@ -91,7 +91,7 @@ Para ver rapidamente os eventos, você pode usar um código como este:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic-for-each)"?>
 ```dart
-counterStream.forEach(print); // Imprime um inteiro a cada segundo, 15 vezes.
+counterStream.forEach(print); // Print an integer every second, 15 times.
 ```
 
 Para transformar os eventos do stream, você pode invocar um método de transformação
@@ -100,7 +100,7 @@ O método retorna um novo stream.
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
 ```dart
-// Dobra o inteiro em cada evento.
+// Double the integer in each event.
 var doubleCounterStream = counterStream.map((int x) => x * 2);
 doubleCounterStream.forEach(print);
 ```
@@ -110,9 +110,9 @@ como os seguintes:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
 ```dart
-.where((int x) => x.isEven) // Retém apenas eventos de inteiros pares.
-.expand((var x) => [x, x]) // Duplica cada evento.
-.take(5) // Para após os primeiros cinco eventos.
+.where((int x) => x.isEven) // Retain only even integer events.
+.expand((var x) => [x, x]) // Duplicate each event.
+.take(5) // Stop after the first five events.
 ```
 
 Muitas vezes, um método de transformação é tudo o que você precisa.
@@ -237,21 +237,21 @@ que não são nem futures nem eventos de stream.
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed-stream)"?>
 ```dart tag=bad
-// OBSERVAÇÃO: Esta implementação é FALHA!
-// Ela começa antes de ter assinantes e não implementa pausa.
+// NOTE: This implementation is FLAWED!
+// It starts before it has subscribers, and it doesn't implement pause.
 Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   var controller = StreamController<int>();
   int counter = 0;
   void tick(Timer timer) {
     counter++;
-    controller.add(counter); // Pede ao stream para enviar valores de contador como evento.
+    controller.add(counter); // Ask stream to send counter values as event.
     if (maxCount != null && counter >= maxCount) {
       timer.cancel();
-      controller.close(); // Pede ao stream para desligar e avisar os listeners.
+      controller.close(); // Ask stream to shut down and tell listeners.
     }
   }
 
-  Timer.periodic(interval, tick); // RUIM: Começa antes de ter assinantes.
+  Timer.periodic(interval, tick); // BAD: Starts before it has subscribers.
   return controller.stream;
 }
 ```
@@ -264,7 +264,7 @@ Como antes, você pode usar o stream retornado por `timedCounter()` assim:
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using-stream)"?>
 ```dart
 var counterStream = timedCounter(const Duration(seconds: 1), 15);
-counterStream.listen(print); // Imprime um inteiro a cada segundo, 15 vezes.
+counterStream.listen(print); // Print an integer every second, 15 times.
 ```
 
 Esta implementação de `timedCounter()` tem
@@ -298,9 +298,9 @@ void listenAfterDelay() async {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
   await Future.delayed(const Duration(seconds: 5));
 
-  // Após 5 segundos, adiciona um listener.
+  // After 5 seconds, add a listener.
   await for (final n in counterStream) {
-    print(n); // Imprime um inteiro a cada segundo, 15 vezes.
+    print(n); // Print an integer every second, 15 times.
   }
 }
 ```
@@ -345,9 +345,9 @@ void listenWithPause() {
   late StreamSubscription<int> subscription;
 
   subscription = counterStream.listen((int counter) {
-    print(counter); // Imprime um inteiro a cada segundo.
+    print(counter); // Print an integer every second.
     if (counter == 5) {
-      // Após 5 ticks, pausa por cinco segundos e depois continua.
+      // After 5 ticks, pause for five seconds, then resume.
       subscription.pause(Future.delayed(const Duration(seconds: 5)));
     }
   });
@@ -378,10 +378,10 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
 
   void tick(_) {
     counter++;
-    controller.add(counter); // Pede ao stream para enviar valores de contador como evento.
+    controller.add(counter); // Ask stream to send counter values as event.
     if (counter == maxCount) {
       timer?.cancel();
-      controller.close(); // Pede ao stream para desligar e avisar os listeners.
+      controller.close(); // Ask stream to shut down and tell listeners.
     }
   }
 

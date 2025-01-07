@@ -178,8 +178,8 @@ resulta em um [StateError][StateError class].
 ```dartpad
 void main() {
   Iterable<String> iterable = const ['Salad', 'Popcorn', 'Toast'];
-  print('O primeiro elemento é ${iterable.first}');
-  print('O último elemento é ${iterable.last}');
+  print('The first element is ${iterable.first}');
+  print('The last element is ${iterable.last}');
 }
 ```
 
@@ -221,21 +221,21 @@ bool predicate(String item) {
 void main() {
   const items = ['Salad', 'Popcorn', 'Toast', 'Lasagne'];
 
-  // Você pode encontrar com uma expressão simples:
+  // You can find with a simple expression:
   var foundItem1 = items.firstWhere((item) => item.length > 5);
   print(foundItem1);
 
-  // Ou tente usar um bloco de função:
+  // Or try using a function block:
   var foundItem2 = items.firstWhere((item) {
     return item.length > 5;
   });
   print(foundItem2);
 
-  // Ou até mesmo passar uma referência de função:
+  // Or even pass in a function reference:
   var foundItem3 = items.firstWhere(predicate);
   print(foundItem3);
 
-  // Você também pode usar uma função `orElse` caso nenhum valor seja encontrado!
+  // You can also use an `orElse` function in case no value is found!
   var foundItem4 = items.firstWhere(
     (item) => item.length > 10,
     orElse: () => 'None!',
@@ -428,11 +428,11 @@ void main() {
   const items = ['Salad', 'Popcorn', 'Toast'];
 
   if (items.any((item) => item.contains('a'))) {
-    print('Pelo menos um item contém "a"');
+    print('At least one item contains "a"');
   }
 
   if (items.every((item) => item.length >= 5)) {
-    print('Todos os itens têm comprimento >= 5');
+    print('All items have length >= 5');
   }
 }
 ```
@@ -448,9 +448,9 @@ que ele retorne falso:
 <?code-excerpt "iterables/test/iterables_test.dart (any-false)"?>
 ```dart
 if (items.any((item) => item.contains('Z'))) {
-  print('Pelo menos um item contém "Z"');
+  print('At least one item contains "Z"');
 } else {
-  print('Nenhum item contém "Z"');
+  print('No item contains "Z"');
 }
 ```
 
@@ -652,7 +652,7 @@ No próximo exemplo, a saída de `where()`
 ```dart
 var evenNumbers = numbers.where((number) => number.isEven);
 for (final number in evenNumbers) {
-  print('$number é par');
+  print('$number is even');
 }
 ```
 
@@ -667,17 +667,17 @@ void main() {
   var evenNumbers = const [1, -2, 3, 42].where((number) => number.isEven);
 
   for (final number in evenNumbers) {
-    print('$number é par.');
+    print('$number is even.');
   }
 
   if (evenNumbers.any((number) => number.isNegative)) {
-    print('evenNumbers contém números negativos.');
+    print('evenNumbers contains negative numbers.');
   }
 
-  // Se nenhum elemento satisfizer o predicado, a saída estará vazia.
+  // If no element satisfies the predicate, the output is empty.
   var largeNumbers = evenNumbers.where((number) => number > 1000);
   if (largeNumbers.isEmpty) {
-    print('largeNumbers está vazio!');
+    print('largeNumbers is empty!');
   }
 }
 ```
@@ -710,10 +710,10 @@ void main() {
   const numbers = [1, 3, -2, 0, 4, 5];
 
   var numbersUntilZero = numbers.takeWhile((number) => number != 0);
-  print('Números até 0: $numbersUntilZero');
+  print('Numbers until 0: $numbersUntilZero');
 
   var numbersStartingAtZero = numbers.skipWhile((number) => number != 0);
-  print('Números começando em 0: $numbersStartingAtZero');
+  print('Numbers starting at 0: $numbersStartingAtZero');
 }
 ```
 
@@ -898,7 +898,7 @@ O que você acha que será a saída?
 ```dartpad
 void main() {
   var numbersByTwo = const [1, -2, 3, 42].map((number) => number * 2);
-  print('Números: $numbersByTwo');
+  print('Numbers: $numbersByTwo');
 }
 ```
 

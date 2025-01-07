@@ -26,13 +26,13 @@ Aqui está um exemplo de como usar a anotação `@Deprecated`:
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@Deprecated.*/[!$&!]/g"?>
 ```dart
 class Television {
-  /// Use [turnOn] para ligar a energia.
+  /// Use [turnOn] to turn the power on instead.
   [!@Deprecated('Use turnOn instead')!]
   void activate() {
     turnOn();
   }
 
-  /// Liga a energia da TV.
+  /// Turns the TV's power on.
   void turnOn() {...}
   // ···
 }
@@ -59,9 +59,9 @@ E aqui está um exemplo de como usar a anotação `@Todo`:
 
 <?code-excerpt "misc/lib/language_tour/metadata/misc.dart (usage)"?>
 ```dart
-@Todo('Dash', 'Implementar esta função')
+@Todo('Dash', 'Implement this function')
 void doSomething() {
-  print('Fazer algo');
+  print('Do something');
 }
 ```
 

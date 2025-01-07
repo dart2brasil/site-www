@@ -904,9 +904,9 @@ try {
   // ···
 } catch (e) {
   [!if (i != null) {!]
-    print(i.isEven); // (3) OK devido à verificação nula na linha acima.
+    print(i.isEven); // (3) OK due to the null check in the line above.
   [!} else {!]
-  [!  // Lide com o caso em que i é nulo.!]
+  [!  // Handle the case where i is null.!]
   [!}!]
 }
 ```
@@ -919,7 +919,7 @@ basta usar o operador `!`:
 try {
   // ···
 } catch (e) {
-  print(i[!!!].isEven); // (3) OK por causa do `!`.
+  print(i[!!!].isEven); // (3) OK because of the `!`.
 }
 ```
 
@@ -965,7 +965,7 @@ void f(Object o) {
     [!Object o2 = o;!]
     if ([!o2!] is Pattern /* (2) */) {
       print(
-          [!o2!].matchAsPrefix('foo')); // (3) OK; o2 foi promovido para `Pattern`.
+          [!o2!].matchAsPrefix('foo')); // (3) OK; o2 was promoted to `Pattern`.
     }
   }
 }
@@ -1041,7 +1041,7 @@ a promoção esteja antes da captura de escrita:
 ```dart tag=good
 void f(int? i, int? j) {
   if (i == null) return; // (1)
-  // ... Código adicional ...
+  // ... Additional code ...
   print(i.isEven); // (2) OK
   [!var foo = () {!]
   [!  i = j;!]
@@ -1061,8 +1061,8 @@ void f(int? i, int? j) {
   // ... Use foo ...
   [!var i2 = i;!]
   if ([!i2!] == null) return; // (1)
-  // ... Código adicional ...
-  print([!i2!].isEven); // (2) OK porque `i2` não é capturada por escrita.
+  // ... Additional code ...
+  print([!i2!].isEven); // (2) OK because `i2` isn't write captured.
 }
 ```
 
@@ -1076,8 +1076,8 @@ void f(int? i, int? j) {
   };
   // ... Use foo ...
   if (i == null) return; // (1)
-  // ... Código adicional ...
-  print(i[!!!].isEven); // (2) OK devido à verificação `!`.
+  // ... Additional code ...
+  print(i[!!!].isEven); // (2) OK due to `!` check.
 }
 ```
 
@@ -1118,7 +1118,7 @@ void f(int? i, int? j) {
   if (i == null) return;
   [!var i2 = i;!]
   var foo = () {
-    print([!i2!].isEven); // (1) OK porque `i2` não é alterado depois.
+    print([!i2!].isEven); // (1) OK because `i2` isn't changed later.
   };
   i = j; // (2)
 }
@@ -1203,7 +1203,7 @@ void f(int? i, int? j) {
   var foo = () {
     [!var i2 = i;!]
     if ([!i2!] == null) return;
-    print([!i2!].isEven); // OK porque i2 é local para esta closure.
+    print([!i2!].isEven); // OK because i2 is local to this closure.
   };
   var bar = () {
     i = j;

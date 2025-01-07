@@ -37,10 +37,10 @@ Use um ponto (`.`) para se referir a uma variável de instância ou método:
 ```dart
 var p = Point(2, 2);
 
-// Obtém o valor de y.
+// Get the value of y.
 assert(p.y == 2);
 
-// Invoca distanceTo() em p.
+// Invoke distanceTo() on p.
 double distance = p.distanceTo(Point(4, 4));
 ```
 
@@ -49,7 +49,7 @@ quando o operando mais à esquerda for nulo:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (safe-member-access)"?>
 ```dart
-// Se p não for nulo, define uma variável igual ao seu valor y.
+// If p is non-null, set a variable equal to its y value.
 var a = p?.y;
 ```
 
@@ -94,7 +94,7 @@ instância canônica:
 var a = const ImmutablePoint(1, 1);
 var b = const ImmutablePoint(1, 1);
 
-assert(identical(a, b)); // Elas são a mesma instância!
+assert(identical(a, b)); // They are the same instance!
 ```
 
 Dentro de um *contexto constante*, você pode omitir o `const` antes de um construtor
@@ -102,7 +102,7 @@ ou literal. Por exemplo, veja este código, que cria um mapa constante:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-withconst)" replace="/pointAndLine1/pointAndLine/g"?>
 ```dart
-// Muitas palavras-chave const aqui.
+// Lots of const keywords here.
 const pointAndLine = const {
   'point': const [const ImmutablePoint(0, 0)],
   'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
@@ -113,7 +113,7 @@ Você pode omitir todos, exceto o primeiro uso da palavra-chave `const`:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-noconst)" replace="/pointAndLine2/pointAndLine/g"?>
 ```dart
-// Apenas um const, que estabelece o contexto constante.
+// Only one const, which establishes the constant context.
 const pointAndLine = {
   'point': [ImmutablePoint(0, 0)],
   'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
@@ -126,10 +126,10 @@ ele criará um **objeto não constante**:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (nonconst-const-constructor)"?>
 ```dart
-var a = const ImmutablePoint(1, 1); // Cria uma constante
-var b = ImmutablePoint(1, 1); // NÃO cria uma constante
+var a = const ImmutablePoint(1, 1); // Creates a constant
+var b = ImmutablePoint(1, 1); // Does NOT create a constant
 
-assert(!identical(a, b)); // NÃO são a mesma instância!
+assert(!identical(a, b)); // NOT the same instance!
 ```
 
 
@@ -141,7 +141,7 @@ que retorna um objeto [`Type`][].
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (runtime-type)"?>
 ```dart
-print('O tipo de a é ${a.runtimeType}');
+print('The type of a is ${a.runtimeType}');
 ```
 
 :::warning
@@ -162,9 +162,9 @@ Veja como você declara variáveis de instância:
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class)"?>
 ```dart
 class Point {
-  double? x; // Declara a variável de instância x, inicialmente nula.
-  double? y; // Declara y, inicialmente nula.
-  double z = 0; // Declara z, inicialmente 0.
+  double? x; // Declare instance variable x, initially null.
+  double? y; // Declare y, initially null.
+  double z = 0; // Declare z, initially 0.
 }
 ```
 
@@ -181,15 +181,15 @@ veja [Getters and setters][].
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class-main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
 class Point {
-  double? x; // Declara a variável de instância x, inicialmente nula.
-  double? y; // Declara y, inicialmente nula.
+  double? x; // Declare instance variable x, initially null.
+  double? y; // Declare y, initially null.
 }
 
 void main() {
   var point = Point();
-  point.x = 4; // Usa o método setter para x.
-  assert(point.x == 4); // Usa o método getter para x.
-  assert(point.y == null); // Os valores são nulos por padrão.
+  point.x = 4; // Use the setter method for x.
+  assert(point.x == 4); // Use the getter method for x.
+  assert(point.y == null); // Values default to null.
 }
 ```
 
@@ -204,16 +204,16 @@ de uma variável de instância não `late` não pode acessar `this`.
 double initialX = 1.5;
 
 class Point {
-  // OK, pode acessar declarações que não dependem de `this`:
+  // OK, can access declarations that do not depend on `this`:
   double? x = initialX;
 
-  // ERRO, não pode acessar `this` em inicializador não `late`:
+  // ERROR, can't access `this` in non-`late` initializer:
   double? y = this.x;
 
-  // OK, pode acessar `this` em inicializador `late`:
+  // OK, can access `this` in `late` initializer:
   late double? z = this.x;
 
-  // OK, `this.x` e `this.y` são declarações de parâmetros, não expressões:
+  // OK, `this.x` and `this.y` are parameter declarations, not expressions:
   Point(this.x, this.y);
 }
 ```
@@ -256,23 +256,23 @@ interfaces. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/classes/impostor.dart"?>
 ```dart
-// Uma pessoa. A interface implícita contém greet().
+// A person. The implicit interface contains greet().
 class Person {
-  // Na interface, mas visível apenas nesta biblioteca.
+  // In the interface, but visible only in this library.
   final String _name;
 
-  // Não está na interface, pois este é um construtor.
+  // Not in the interface, since this is a constructor.
   Person(this._name);
 
-  // Na interface.
+  // In the interface.
   String greet(String who) => 'Hello, $who. I am $_name.';
 }
 
-// Uma implementação da interface Person.
+// An implementation of the Person interface.
 class Impostor implements Person {
   String get _name => '';
 
-  String greet(String who) => 'Oi $who. Você sabe quem eu sou?';
+  String greet(String who) => 'Hi $who. Do you know who I am?';
 }
 
 String greetBob(Person person) => person.greet('Bob');

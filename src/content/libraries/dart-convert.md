@@ -34,9 +34,9 @@ Decodifique uma string codificada em JSON para um objeto Dart com `jsonDecode()`
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (json-decode)"?>
 ```dart
-// OBSERVAÇÃO: Certifique-se de usar aspas duplas ("),
-// não aspas simples ('), dentro da string JSON.
-// Esta string é JSON, não Dart.
+// NOTE: Be sure to use double quotes ("),
+// not single quotes ('), inside the JSON string.
+// This string is JSON, not Dart.
 var jsonString = '''
   [
     {"score": 40},

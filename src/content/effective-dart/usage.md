@@ -263,20 +263,20 @@ ou uma verificação explícita `!= null`.
 
 <?code-excerpt "usage_good.dart (nullable-boolean-expression)"?>
 ```dart tag=good
-// Se você quer que null resulte em false:
+// If you want null to result in false:
 if (nullableBool ?? false) { ... }
 
-// Se você quer que null resulte em false
-// e você quer que a variável promova o tipo:
+// If you want null to result in false
+// and you want the variable to type promote:
 if (nullableBool != null && nullableBool) { ... }
 ```
 
 <?code-excerpt "usage_bad.dart (nullable-boolean-expression)"?>
 ```dart tag=bad
-// Erro estático se null:
+// Static error if null:
 if (nullableBool) { ... }
 
-// Se você quer que null seja falso:
+// If you want null to be false:
 if (nullableBool == true) { ... }
 ```
 
@@ -355,10 +355,10 @@ class UploadException {
   @override
   String toString() {
     if (this.response case var response?) {
-      return 'Não foi possível completar o envio para ${response.url} '
-          '(código de erro ${response.errorCode}): ${response.reason}.';
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
     }
-    return 'Não foi possível enviar (sem resposta).';
+    return 'Could not upload (no response).';
   }
 }
 ```
@@ -378,10 +378,10 @@ class UploadException {
   String toString() {
     final response = this.response;
     if (response != null) {
-      return 'Não foi possível completar o envio para ${response.url} '
-          '(código de erro ${response.errorCode}): ${response.reason}.';
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
     }
-    return 'Não foi possível enviar (sem resposta).';
+    return 'Could not upload (no response).';
   }
 }
 ```
@@ -407,11 +407,11 @@ class UploadException {
   @override
   String toString() {
     if (response != null) {
-      return 'Não foi possível completar o envio para ${response[!!!].url} '
-          '(código de erro ${response[!!!].errorCode}): ${response[!!!].reason}.';
+      return 'Could not complete upload to ${response[!!!].url} '
+          '(error code ${response[!!!].errorCode}): ${response[!!!].reason}.';
     }
 
-    return 'Não foi possível enviar (sem resposta).';
+    return 'Could not upload (no response).';
   }
 }
 ```
@@ -438,14 +438,14 @@ uma única string longa que não cabe em uma linha.
 
 <?code-excerpt "usage_good.dart (adjacent-strings-literals)"?>
 ```dart tag=good
-raiseAlarm('ERRO: Partes da nave espacial estão em chamas. Outras '
-    'partes estão invadidas por marcianos. Não está claro quais são quais.');
+raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
+    'parts are overrun by martians. Unclear which are which.');
 ```
 
 <?code-excerpt "usage_bad.dart (adjacent-strings-literals)"?>
 ```dart tag=bad
-raiseAlarm('ERRO: Partes da nave espacial estão em chamas. Outras ' +
-    'partes estão invadidas por marcianos. Não está claro quais são quais.');
+raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
+    'parts are overrun by martians. Unclear which are which.');
 ```
 
 ### PREFIRA usar interpolação para compor strings e valores {:#prefer-using-interpolation-to-compose-strings-and-values}
@@ -458,12 +458,12 @@ para construir uma string a partir de literais e outros valores. Isso funciona n
 
 <?code-excerpt "usage_good.dart (string-interpolation)"?>
 ```dart tag=good
-'Olá, $name! Você tem ${year - birth} anos de idade.';
+'Hello, $name! You are ${year - birth} years old.';
 ```
 
 <?code-excerpt "usage_bad.dart (string-interpolation)"?>
 ```dart tag=bad
-'Olá, ' + name + '! Você tem ' + (year - birth).toString() + ' a...';
+'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
 ```
 
 Note que esta diretriz se aplica à combinação de *múltiplos* literais e valores.
@@ -478,12 +478,12 @@ texto alfanumérico, o `{}` deve ser omitido.
 
 <?code-excerpt "usage_good.dart (string-interpolation-avoid-curly)"?>
 ```dart tag=good
-var greeting = 'Olá, $name! Eu amo sua fantasia dos ${decade}s.';
+var greeting = 'Hi, $name! I love your ${decade}s costume.';
 ```
 
 <?code-excerpt "usage_bad.dart (string-interpolation-avoid-curly)"?>
 ```dart tag=bad
-var greeting = 'Olá, ${name}! Eu amo sua fantasia dos ${decade}s.';
+var greeting = 'Hi, ${name}! I love your ${decade}s costume.';
 ```
 
 ## Coleções {:#collections}
@@ -565,13 +565,13 @@ Em vez disso, existem getters mais rápidos e legíveis: `.isEmpty` e
 
 <?code-excerpt "usage_good.dart (dont-use-length)"?>
 ```dart tag=good
-if (lunchBox.isEmpty) return 'com tanta fome...';
+if (lunchBox.isEmpty) return 'so hungry...';
 if (words.isNotEmpty) return words.join(' ');
 ```
 
 <?code-excerpt "usage_bad.dart (dont-use-length)"?>
 ```dart tag=bad
-if (lunchBox.length == 0) return 'com tanta fome...';
+if (lunchBox.length == 0) return 'so hungry...';
 if (!words.isEmpty) return words.join(' ');
 ```
 
@@ -626,19 +626,19 @@ objeto original:
 
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-good)"?>
 ```dart tag=good
-// Cria uma List<int>:
+// Creates a List<int>:
 var iterable = [1, 2, 3];
 
-// Imprime "List<int>":
+// Prints "List<int>":
 print(iterable.toList().runtimeType);
 ```
 
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-bad)"?>
 ```dart tag=bad
-// Cria uma List<int>:
+// Creates a List<int>:
 var iterable = [1, 2, 3];
 
-// Imprime "List<dynamic>":
+// Prints "List<dynamic>":
 print(List.from(iterable).runtimeType);
 ```
 
@@ -647,7 +647,7 @@ Se você *quer* mudar o tipo, então chamar `List.from()` é útil:
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-3)"?>
 ```dart tag=good
 var numbers = [1, 2.3, 4]; // List<num>.
-numbers.removeAt(1); // Agora ele contém apenas inteiros.
+numbers.removeAt(1); // Now it only contains integers.
 var ints = List<int>.from(numbers);
 ```
 
@@ -786,7 +786,7 @@ Aqui está **convertendo cada elemento no acesso:**
 <?code-excerpt "usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
 ```dart tag=good
 void printEvens(List<Object> objects) {
-  // Acontece que sabemos que a lista contém apenas ints.
+  // We happen to know the list only contains ints.
   for (final n in objects) {
     if ([!(n as int)!].isEven) print(n);
   }
@@ -796,7 +796,7 @@ void printEvens(List<Object> objects) {
 <?code-excerpt "usage_bad.dart (cast-iterate)"?>
 ```dart tag=bad
 void printEvens(List<Object> objects) {
-  // Acontece que sabemos que a lista contém apenas ints.
+  // We happen to know the list only contains ints.
   for (final n in objects.cast<int>()) {
     if (n.isEven) print(n);
   }
@@ -808,7 +808,7 @@ Aqui está **convertendo ansiosamente usando `List.from()`:**
 <?code-excerpt "usage_good.dart (cast-from)"?>
 ```dart tag=good
 int median(List<Object> objects) {
-  // Acontece que sabemos que a lista contém apenas ints.
+  // We happen to know the list only contains ints.
   var ints = List<int>.from(objects);
   ints.sort();
   return ints[ints.length ~/ 2];
@@ -818,7 +818,7 @@ int median(List<Object> objects) {
 <?code-excerpt "usage_bad.dart (cast-from)"?>
 ```dart tag=bad
 int median(List<Object> objects) {
-  // Acontece que sabemos que a lista contém apenas ints.
+  // We happen to know the list only contains ints.
   var ints = objects.cast<int>();
   ints.sort();
   return ints[ints.length ~/ 2];
@@ -882,16 +882,16 @@ Use um *tear-off*.
 var charCodes = [68, 97, 114, 116];
 var buffer = StringBuffer();
 
-// Função:
+// Function:
 charCodes.forEach(print);
 
-// Método:
+// Method:
 charCodes.forEach(buffer.write);
 
-// Construtor nomeado:
+// Named constructor:
 var strings = charCodes.map(String.fromCharCode);
 
-// Construtor não nomeado:
+// Unnamed constructor:
 var buffers = charCodes.map(StringBuffer.new);
 ```
 
@@ -900,20 +900,20 @@ var buffers = charCodes.map(StringBuffer.new);
 var charCodes = [68, 97, 114, 116];
 var buffer = StringBuffer();
 
-// Função:
+// Function:
 charCodes.forEach((code) {
   print(code);
 });
 
-// Método:
+// Method:
 charCodes.forEach((code) {
   buffer.write(code);
 });
 
-// Construtor nomeado:
+// Named constructor:
 var strings = charCodes.map((code) => String.fromCharCode(code));
 
-// Construtor não nomeado:
+// Unnamed constructor:
 var buffers = charCodes.map((code) => StringBuffer(code));
 ```
 
@@ -1191,7 +1191,7 @@ class ShadeOfGray {
 
   ShadeOfGray.black() : this(0);
 
-  // Isso não vai analisar ou compilar!
+  // This won't parse or compile!
   // ShadeOfGray.alsoBlack() : black();
 }
 ```
@@ -1205,7 +1205,7 @@ class ShadeOfGray {
 
   ShadeOfGray.black() : this(0);
 
-  // Mas agora vai!
+  // But now it will!
   ShadeOfGray.alsoBlack() : this.black();
 }
 ```

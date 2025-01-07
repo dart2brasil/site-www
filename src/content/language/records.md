@@ -50,10 +50,10 @@ Campos posicionais vão diretamente dentro dos parênteses:
 
 <?code-excerpt "language/test/records_test.dart (record-type-declaration)"?>
 ```dart
-// Anotação de tipo de record em uma declaração de variável:
+// Record type annotation in a variable declaration:
 (String, int) record;
 
-// Inicializa com uma expressão de record:
+// Initialize it with a record expression:
 record = ('A string', 123);
 ```
 
@@ -63,10 +63,10 @@ os nomes vão antes de cada valor de campo com dois pontos após:
 
 <?code-excerpt "language/test/records_test.dart (record-type-named-declaration)"?>
 ```dart
-// Anotação de tipo de record em uma declaração de variável:
+// Record type annotation in a variable declaration:
 ({int a, bool b}) record;
 
-// Inicializa com uma expressão de record:
+// Initialize it with a record expression:
 record = (a: 123, b: true);
 ```
 
@@ -80,7 +80,7 @@ nomes diferentes têm tipos diferentes:
 ({int a, int b}) recordAB = (a: 1, b: 2);
 ({int x, int y}) recordXY = (x: 3, y: 4);
 
-// Erro de compilação! Esses records não têm o mesmo tipo.
+// Compile error! These records don't have the same type.
 // recordAB = recordXY;
 ```
 
@@ -114,10 +114,10 @@ de nome `$<posição>`, pulando campos nomeados:
 ```dart
 var record = ('first', a: 2, b: true, 'last');
 
-print(record.$1); // Imprime 'first'
-print(record.a); // Imprime 2
-print(record.b); // Imprime true
-print(record.$2); // Imprime 'last'
+print(record.$1); // Prints 'first'
+print(record.a); // Prints 2
+print(record.b); // Prints true
+print(record.$2); // Prints 'last'
 ```
 
 Para otimizar ainda mais o acesso a campos de record,
@@ -137,8 +137,8 @@ do record:
 ```dart
 (num, Object) pair = (42, 'a');
 
-var first = pair.$1; // Tipo estático `num`, tipo em tempo de execução `int`.
-var second = pair.$2; // Tipo estático `Object`, tipo em tempo de execução `String`.
+var first = pair.$1; // Static type `num`, runtime type `int`.
+var second = pair.$2; // Static type `Object`, runtime type `String`.
 ```
 
 Considere duas bibliotecas não relacionadas que criam records com o mesmo conjunto de campos.
@@ -159,7 +159,7 @@ Por exemplo:
 (int x, int y, int z) point = (1, 2, 3);
 (int r, int g, int b) color = (1, 2, 3);
 
-print(point == color); // Imprime 'true'.
+print(point == color); // Prints 'true'.
 ```
 
 <?code-excerpt "language/test/records_test.dart (record-shape-mismatch)"?>
@@ -167,7 +167,7 @@ print(point == color); // Imprime 'true'.
 ({int x, int y, int z}) point = (x: 1, y: 2, z: 3);
 ({int r, int g, int b}) color = (r: 1, g: 2, b: 3);
 
-print(point == color); // Imprime 'false'. Lint: Equals em tipos não relacionados.
+print(point == color); // Prints 'false'. Lint: Equals on unrelated types.
 ```
 
 Records automaticamente definem os métodos `hashCode` e `==` com base na estrutura
@@ -181,7 +181,7 @@ Para recuperar valores de record de um retorno,
 
 <?code-excerpt "language/test/records_test.dart (record-multiple-returns)"?>
 ```dart
-// Retorna múltiplos valores em um record:
+// Returns multiple values in a record:
 (String name, int age) userInfo(Map<String, dynamic> json) {
   return (json['name'] as String, json['age'] as int);
 }
@@ -192,10 +192,10 @@ final json = <String, dynamic>{
   'color': 'blue',
 };
 
-// Desestrutura usando um pattern de record com campos posicionais:
+// Destructures using a record pattern with positional fields:
 var (name, age) = userInfo(json);
 
-/* Equivalente a:
+/* Equivalent to:
   var info = userInfo(json);
   var name = info.$1;
   var age  = info.$2;
@@ -210,7 +210,7 @@ usando a sintaxe de dois pontos `:`, sobre a qual você pode ler mais na página
 ```dart
 ({String name, int age}) userInfo(Map<String, dynamic> json)
 // ···
-// Desestrutura usando um pattern de record com campos nomeados:
+// Destructures using a record pattern with named fields:
 final (:name, :age) = userInfo(json);
 ```
 

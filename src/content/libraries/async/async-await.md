@@ -76,15 +76,15 @@ qual você acha que será a saída?
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
 ```dartpad
-// Este exemplo mostra como *não* escrever código Dart assíncrono.
+// This example shows how *not* to write asynchronous Dart code.
 
 String createOrderMessage() {
   var order = fetchUserOrder();
-  return 'Seu pedido é: $order';
+  return 'Your order is: $order';
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine que esta função seja mais complexa e lenta.
+    // Imagine that this function is more complex and slow.
     Future.delayed(
       const Duration(seconds: 2),
       () => 'Large Latte',
@@ -177,13 +177,13 @@ tente prever qual será impresso primeiro:
 <?code-excerpt "async_await/bin/futures_intro.dart (no-error)"?>
 ```dartpad
 Future<void> fetchUserOrder() {
-  // Imagine que esta função está buscando informações do usuário de outro serviço ou banco de dados.
+  // Imagine that this function is fetching user info from another service or database.
   return Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
 }
 
 void main() {
   fetchUserOrder();
-  print('Buscando pedido do usuário...');
+  print('Fetching user order...');
 }
 ```
 
@@ -201,16 +201,16 @@ Um pouco mais adiante, você aprenderá como lidar com o erro.
 <?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
 ```dartpad
 Future<void> fetchUserOrder() {
-  // Imagine que esta função está buscando informações do usuário, mas encontra um bug.
+  // Imagine that this function is fetching user info but encounters a bug.
   return Future.delayed(
     const Duration(seconds: 2),
-    () => throw Exception('Falha no logout: ID do usuário é inválido'),
+    () => throw Exception('Logout failed: user ID is invalid'),
   );
 }
 
 void main() {
   fetchUserOrder();
-  print('Buscando pedido do usuário...');
+  print('Fetching user order...');
 }
 ```
 
@@ -288,19 +288,19 @@ que—se sua janela for larga o suficiente—está
 ```dart
 String createOrderMessage() {
   var order = fetchUserOrder();
-  return 'Seu pedido é: $order';
+  return 'Your order is: $order';
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine que esta função é
-    // mais complexa e lenta.
+    // Imagine that this function is
+    // more complex and slow.
     Future.delayed(
       const Duration(seconds: 2),
       () => 'Large Latte',
     );
 
 void main() {
-  print('Buscando pedido do usuário...');
+  print('Fetching user order...');
   print(createOrderMessage());
 }
 ```
@@ -319,19 +319,19 @@ ele opera como código síncrono.
 ```dart
 [!Future<String>!] createOrderMessage() [!async!] {
   var order = [!await!] fetchUserOrder();
-  return 'Seu pedido é: $order';
+  return 'Your order is: $order';
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine que esta função é
-    // mais complexa e lenta.
+    // Imagine that this function is
+    // more complex and slow.
     Future.delayed(
       const Duration(seconds: 2),
       () => 'Large Latte',
     );
 
 [!Future<void>!] main() [!async!] {
-  print('Buscando pedido do usuário...');
+  print('Fetching user order...');
   print([!await!] createOrderMessage());
 }
 ```
@@ -374,13 +374,13 @@ Qual você acha que será a saída?
 <?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
 ```dartpad
 Future<void> printOrderMessage() async {
-  print('Aguardando pedido do usuário...');
+  print('Awaiting user order...');
   var order = await fetchUserOrder();
-  print('Seu pedido é: $order');
+  print('Your order is: $order');
 }
 
 Future<String> fetchUserOrder() {
-  // Imagine que esta função seja mais complexa e lenta.
+  // Imagine that this function is more complex and slow.
   return Future.delayed(const Duration(seconds: 4), () => 'Large Latte');
 }
 
@@ -389,7 +389,7 @@ void main() async {
   await printOrderMessage();
 }
 
-// Você pode ignorar esta função - ela está aqui para visualizar o tempo de atraso neste exemplo.
+// You can ignore this function - it's here to visualize delay time in this example.
 void countSeconds(int s) {
   for (var i = 1; i <= s; i++) {
     Future.delayed(Duration(seconds: i), () => print(i));
@@ -402,7 +402,7 @@ Depois de executar o código no exemplo anterior, tente inverter as linhas 2 e 3
 <?code-excerpt "async_await/bin/async_example.dart (swap-stmts)" replace="/\/\/ (print)/$1/g"?>
 ```dart
 var order = await fetchUserOrder();
-print('Aguardando pedido do usuário...');
+print('Awaiting user order...');
 ```
 
 Observe que o tempo da saída muda, agora que `print('Aguardando pedido do usuário')`
@@ -611,10 +611,10 @@ Para tratar erros em uma função `async`, use try-catch:
 <?code-excerpt "async_await/bin/try_catch.dart (try-catch)" remove="print(order)"?>
 ```dart
 try {
-  print('Aguardando pedido do usuário...');
+  print('Awaiting user order...');
   var order = await fetchUserOrder();
 } catch (err) {
-  print('Erro capturado: $err');
+  print('Caught error: $err');
 }
 ```
 
@@ -632,19 +632,19 @@ Qual você acha que será a saída?
 ```dartpad
 Future<void> printOrderMessage() async {
   try {
-    print('Aguardando pedido do usuário...');
+    print('Awaiting user order...');
     var order = await fetchUserOrder();
     print(order);
   } catch (err) {
-    print('Erro capturado: $err');
+    print('Caught error: $err');
   }
 }
 
 Future<String> fetchUserOrder() {
-  // Imagine que esta função seja mais complexa.
+  // Imagine that this function is more complex.
   var str = Future.delayed(
       const Duration(seconds: 4),
-      () => throw 'Não é possível localizar o pedido do usuário');
+      () => throw 'Cannot locate user order');
   return str;
 }
 

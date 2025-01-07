@@ -32,16 +32,16 @@ A biblioteca Math fornece funções trigonométricas básicas:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (trig)"?>
 ```dart
-// Cosseno
+// Cosine
 assert(cos(pi) == -1.0);
 
-// Seno
-var graus = 30;
-var radianos = graus * (pi / 180);
-// radianos agora é 0.52359.
-var senoDe30graus = sin(radianos);
-// seno 30° = 0.5
-assert((senoDe30graus - 0.5).abs() < 0.01);
+// Sine
+var degrees = 30;
+var radians = degrees * (pi / 180);
+// radians is now 0.52359.
+var sinOf30degrees = sin(radians);
+// sin 30° = 0.5
+assert((sinOf30degrees - 0.5).abs() < 0.01);
 ```
 
 :::note
@@ -66,7 +66,7 @@ Encontre suas constantes favoritas—*pi*, *e* e mais—na biblioteca Math:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (constants)"?>
 ```dart
-// Veja a biblioteca Math para constantes adicionais.
+// See the Math library for additional constants.
 print(e); // 2.718281828459045
 print(pi); // 3.141592653589793
 print(sqrt2); // 1.4142135623730951
@@ -81,8 +81,8 @@ opcionalmente, fornecer uma seed (semente) para o construtor Random.
 <?code-excerpt "misc/test/library_tour/math_test.dart (random)"?>
 ```dart
 var random = Random();
-random.nextDouble(); // Entre 0.0 e 1.0: [0, 1)
-random.nextInt(10); // Entre 0 e 9.
+random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
+random.nextInt(10); // Between 0 and 9.
 ```
 
 Você pode até gerar booleanos aleatórios:
@@ -90,7 +90,7 @@ Você pode até gerar booleanos aleatórios:
 <?code-excerpt "misc/test/library_tour/math_test.dart (random-bool)"?>
 ```dart
 var random = Random();
-random.nextBool(); // true ou false
+random.nextBool(); // true or false
 ```
 
 :::warning

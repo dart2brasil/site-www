@@ -154,7 +154,7 @@ tornando-o um subtipo de `Object`
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (non-nullable)"?>
 ```dart
 class Foo<T extends Object> {
-  // Qualquer tipo fornecido para Foo para T deve ser não anulável.
+  // Any type provided to Foo for T must be non-nullable.
 }
 ```
 
@@ -165,7 +165,7 @@ para que os membros de `SomeBaseClass` possam ser chamados em objetos do tipo `T
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart (generic)" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 ```dart
 class Foo<T [!extends SomeBaseClass!]> {
-  // A implementação vai aqui...
+  // Implementation goes here...
   String toString() => "Instance of 'Foo<$T>'";
 }
 
@@ -204,9 +204,9 @@ Métodos e funções também permitem argumentos de tipo:
 <?code-excerpt "misc/test/language_tour/generics_test.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
 ```dart
 [!T!] first[!<T>!](List<[!T!]> ts) {
-  // Faça algum trabalho inicial ou verificação de erros, então...
+  // Do some initial work or error checking, then...
   [!T!] tmp = ts[0];
-  // Faça alguma verificação ou processamento adicional...
+  // Do some additional checking or processing...
   return tmp;
 }
 ```

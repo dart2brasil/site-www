@@ -115,8 +115,8 @@ promessa de eventualmente fornecer um valor `String` (ou erro).
 Future<String> _readFileAsync(String filename) {
   final file = File(filename);
 
-  // .readAsString() retorna um Future.
-  // .then() registra um callback para ser executado quando `readAsString` for resolvido.
+  // .readAsString() returns a Future.
+  // .then() registers a callback to be executed when `readAsString` resolves.
   return file.readAsString().then((contents) {
     return contents.trim();
   });
@@ -136,12 +136,12 @@ E/S de arquivo:
 const String filename = 'with_keys.json';
 
 void main() {
-  // Lê alguns dados.
+  // Read some data.
   final fileData = _readFileSync();
   final jsonData = jsonDecode(fileData);
 
-  // Usa esses dados.
-  print('Número de chaves JSON: ${jsonData.length}');
+  // Use that data.
+  print('Number of JSON keys: ${jsonData.length}');
 }
 
 String _readFileSync() {
@@ -159,12 +159,12 @@ assíncrono:
 const String filename = 'with_keys.json';
 
 void main() [!async!] {
-  // Lê alguns dados.
+  // Read some data.
   final fileData = [!await!] _readFileAsync();
   final jsonData = jsonDecode(fileData);
 
-  // Usa esses dados.
-  print('Número de chaves JSON: ${jsonData.length}');
+  // Use that data.
+  print('Number of JSON keys: ${jsonData.length}');
 }
 
 [!Future<String>!] _readFileAsync() [!async!] {
@@ -368,7 +368,7 @@ executado no isolate recém-gerado.
 ```dart
 int slowFib(int n) => n <= 1 ? 1 : slowFib(n - 1) + slowFib(n - 2);
 
-// Computa sem bloquear o isolate atual.
+// Compute without blocking current isolate.
 void fib40() async {
   var result = await Isolate.run(() => slowFib(40));
   print('Fib(40) = $result');

@@ -92,25 +92,25 @@ como uma sentença.
 
 <?code-excerpt "design_good.dart (code-like-prose)"?>
 ```dart tag=good
-// "Se erros está vazio..."
+// "If errors is empty..."
 if (errors.isEmpty) ...
 
-// "Ei, assinatura, cancele!"
+// "Hey, subscription, cancel!"
 subscription.cancel();
 
-// "Obtenha os monstros onde o monstro tem garras."
+// "Get the monsters where the monster has claws."
 monsters.where((monster) => monster.hasClaws);
 ```
 
 <?code-excerpt "design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
 ```dart tag=bad
-// Dizendo para erros se esvaziar, ou perguntando se está?
+// Telling errors to empty itself, or asking if it is?
 if (errors.empty) ...
 
-// Alternar o quê? Para quê?
+// Toggle what? To what?
 subscription.toggle();
 
-// Filtrar os monstros com garras *para fora* ou incluir *apenas* aqueles?
+// Filter the monsters with claws *out* or include *only* those?
 monsters.filter((monster) => monster.hasClaws);
 ```
 
@@ -1101,7 +1101,7 @@ Em alguns casos, porém, o tipo é tão óbvio que escrevê-lo é inútil:
 
 <?code-excerpt "design_good.dart (inferred)"?>
 ```dart tag=good
-const screenWidth = 640; // Inferido como int.
+const screenWidth = 640; // Inferred as int.
 ```
 
 "Óbvio" não é definido precisamente, mas todos esses são bons candidatos:
@@ -1669,12 +1669,12 @@ valor suporte o membro que você deseja acessar antes de acessá-lo.
 
 <?code-excerpt "design_good.dart (object-vs-dynamic)"?>
 ```dart tag=good
-/// Retorna uma representação booleana para [arg], que deve
-/// ser uma String ou bool.
+/// Returns a Boolean representation for [arg], which must
+/// be a String or bool.
 bool convertToBool(Object arg) {
   if (arg is bool) return arg;
   if (arg is String) return arg.toLowerCase() == 'true';
-  throw ArgumentError('Cannot convert $arg to a bool.'); //Não é possível converter $arg para um bool.
+  throw ArgumentError('Cannot convert $arg to a bool.');
 }
 ```
 

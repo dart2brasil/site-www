@@ -32,7 +32,7 @@ documentação gerada.
 
 <?code-excerpt "docs_good.dart (comments-like-sentences)"?>
 ```dart tag=good
-// Não se houver algo antes.
+// Not if anything comes before it.
 if (_chunks.isNotEmpty) return false;
 ```
 
@@ -45,7 +45,7 @@ coisas em linha, até mesmo TODOs. Mesmo que seja um fragmento de frase.
 <?code-excerpt "docs_good.dart (block-comments)"?>
 ```dart tag=good
 void greet(String name) {
-  // Suponha que temos um nome válido.
+  // Assume we have a valid name.
   print('Hi, $name!');
 }
 ```
@@ -53,7 +53,7 @@ void greet(String name) {
 <?code-excerpt "docs_bad.dart (block-comments)"?>
 ```dart tag=bad
 void greet(String name) {
-  /* Suponha que temos um nome válido. */
+  /* Assume we have a valid name. */
   print('Hi, $name!');
 }
 ```
@@ -81,13 +81,13 @@ e gere a documentação para ele.
 
 <?code-excerpt "docs_good.dart (use-doc-comments)"?>
 ```dart tag=good
-/// O número de caracteres neste bloco quando não dividido.
+/// The number of characters in this chunk when unsplit.
 int get length => ...
 ```
 
 <?code-excerpt "docs_good.dart (use-doc-comments)" replace="/^\///g"?>
 ```dart tag=bad
-// O número de caracteres neste bloco quando não dividido.
+// The number of characters in this chunk when unsplit.
 int get length => ...
 ```
 
@@ -123,7 +123,7 @@ no início do arquivo.
 
 <?code-excerpt "docs_good.dart (library-doc)"?>
 ```dart tag=good
-/// Uma biblioteca de teste realmente ótima.
+/// A really great test library.
 @TestOn('browser')
 library;
 ```
@@ -143,7 +143,7 @@ em outro lugar a solução para seu problema.
 
 <?code-excerpt "docs_good.dart (first-sentence)"?>
 ```dart tag=good
-/// Exclui o arquivo em [path] do sistema de arquivos.
+/// Deletes the file at [path] from the file system.
 void delete(String path) {
   ...
 }
@@ -151,10 +151,10 @@ void delete(String path) {
 
 <?code-excerpt "docs_bad.dart (first-sentence)"?>
 ```dart tag=bad
-/// Dependendo do estado do sistema de arquivos e das permissões do usuário,
-/// certas operações podem ou não ser possíveis. Se não houver nenhum arquivo em
-/// [path] ou se não for possível acessá-lo, esta função lança [IOError]
-/// ou [PermissionError], respectivamente. Caso contrário, isso exclui o arquivo.
+/// Depending on the state of the file system and the user's permissions,
+/// certain operations may or may not be possible. If there is no file at
+/// [path] or it can't be accessed, this function throws either [IOError]
+/// or [PermissionError], respectively. Otherwise, this deletes the file.
 void delete(String path) {
   ...
 }
@@ -172,10 +172,10 @@ como listas de classes e membros.
 
 <?code-excerpt "docs_good.dart (first-sentence-a-paragraph)"?>
 ```dart tag=good
-/// Exclui o arquivo em [path].
+/// Deletes the file at [path].
 ///
-/// Lança um [IOError] se o arquivo não for encontrado. Lança um
-/// [PermissionError] se o arquivo estiver presente, mas não puder ser excluído.
+/// Throws an [IOError] if the file could not be found. Throws a
+/// [PermissionError] if the file is present but could not be deleted.
 void delete(String path) {
   ...
 }
@@ -183,9 +183,9 @@ void delete(String path) {
 
 <?code-excerpt "docs_bad.dart (first-sentence-a-paragraph)"?>
 ```dart tag=bad
-/// Exclui o arquivo em [path]. Lança um [IOError] se o arquivo não puder
-/// ser encontrado. Lança um [PermissionError] se o arquivo estiver presente, mas não puder
-/// ser excluído.
+/// Deletes the file at [path]. Throws an [IOError] if the file could not
+/// be found. Throws a [PermissionError] if the file is present but could
+/// not be deleted.
 void delete(String path) {
   ...
 }
@@ -202,8 +202,8 @@ escrito no comentário de documentação. Em vez disso, concentre-se em explicar
 <?code-excerpt "docs_good.dart (redundant)"?>
 ```dart tag=good
 class RadioButtonWidget extends Widget {
-  /// Define a dica de ferramenta para [lines], que deve ter sido quebrado em palavras usando
-  /// a fonte atual.
+  /// Sets the tooltip to [lines], which should have been word wrapped using
+  /// the current font.
   void tooltip(List<String> lines) {
     ...
   }
@@ -213,7 +213,7 @@ class RadioButtonWidget extends Widget {
 <?code-excerpt "docs_bad.dart (redundant)"?>
 ```dart tag=bad
 class RadioButtonWidget extends Widget {
-  /// Define a dica de ferramenta para este widget de botão de rádio para a lista de strings em
+  /// Sets the tooltip for this radio button widget to the list of strings in
   /// [lines].
   void tooltip(List<String> lines) {
     ...
@@ -234,10 +234,10 @@ O comentário de documentação deve focar no que o código *faz*.
 
 <?code-excerpt "docs_good.dart (third-person)"?>
 ```dart tag=good
-/// Retorna `true` se todos os elementos satisfazem o [predicate].
+/// Returns `true` if every element satisfies the [predicate].
 bool all(bool predicate(T element)) => ...
 
-/// Inicia o cronômetro se ainda não estiver funcionando.
+/// Starts the stopwatch if not already running.
 void start() {
   ...
 }
@@ -251,10 +251,10 @@ o *resultado* desse trabalho, não o trabalho em si.
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-non-boolean-var-etc)"?>
 ```dart tag=good
-/// O dia atual da semana, onde `0` é domingo.
+/// The current day of the week, where `0` is Sunday.
 int weekday;
 
-/// O número de botões marcados na página.
+/// The number of checked buttons on the page.
 int get checkedCount => ...
 ```
 
@@ -266,13 +266,13 @@ O que o chamador se importa é o *resultado* desse trabalho, não o trabalho em 
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
 ```dart tag=good
-/// Se a modal está atualmente sendo exibida para o usuário.
+/// Whether the modal is currently displayed to the user.
 bool isVisible;
 
-/// Se a modal deve confirmar a intenção do usuário na navegação.
+/// Whether the modal should confirm the user's intent on navigation.
 bool get shouldConfirm => ...
 
-/// Se redimensionar a janela do navegador atual também redimensionará a modal.
+/// Whether resizing the current browser window will also resize the modal.
 bool get canResize => ...
 ```
 
@@ -291,19 +291,19 @@ e se tanto o getter quanto o setter tiverem comentários de documentação, ent�
 
 <?code-excerpt "docs_good.dart (getter-and-setter)"?>
 ```dart tag=good
-/// O nível de pH da água na piscina.
+/// The pH level of the water in the pool.
 ///
-/// Varia de 0 a 14, representando ácido a básico, com 7 sendo neutro.
+/// Ranges from 0-14, representing acidic to basic, with 7 being neutral.
 int get phLevel => ...
 set phLevel(int level) => ...
 ```
 
 <?code-excerpt "docs_bad.dart (getter-and-setter)"?>
 ```dart tag=bad
-/// A profundidade da água na piscina, em metros.
+/// The depth of the water in the pool, in meters.
 int get waterDepth => ...
 
-/// Atualiza a profundidade da água para um total de [meters] de altura.
+/// Updates the water depth to a total of [meters] in height.
 set waterDepth(int meters) => ...
 ```
 
@@ -316,7 +316,7 @@ esforço extra aqui pode tornar todos os outros membros mais fáceis de document
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-type-or-lib)"?>
 ```dart tag=good
-/// Um bloco de texto de saída contínuo terminado por uma nova linha rígida ou suave.
+/// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
 /// ...
 class Chunk { ... }
@@ -326,7 +326,7 @@ class Chunk { ... }
 
 <?code-excerpt "docs_good.dart (code-sample)"?>
 ````dart tag=good
-/// Retorna o menor de dois números.
+/// Returns the lesser of two numbers.
 ///
 /// ```dart
 /// min(5, 3) == 3
@@ -348,8 +348,8 @@ mas podem deixar mais claro quando você está se referindo a um método ou cons
 
 <?code-excerpt "docs_good.dart (identifiers)"?>
 ```dart tag=good
-/// Lança um [StateError] se ...
-/// semelhante a [anotherMethod()], mas ...
+/// Throws a [StateError] if ...
+/// similar to [anotherMethod()], but ...
 ```
 
 Para vincular a um membro de uma classe específica, use o nome da classe e o nome do membro,
@@ -357,7 +357,7 @@ separados por um ponto:
 
 <?code-excerpt "docs_good.dart (member)"?>
 ```dart tag=good
-/// Semelhante a [Duration.inDays], mas lida com dias fracionários.
+/// Similar to [Duration.inDays], but handles fractional days.
 ```
 
 A sintaxe de ponto também pode ser usada para referir-se a construtores nomeados. Para o
@@ -365,7 +365,7 @@ construtor sem nome, use `.new` após o nome da classe:
 
 <?code-excerpt "docs_good.dart (ctor)"?>
 ```dart tag=good
-/// Para criar um ponto, chame [Point.new] ou use [Point.polar] para ...
+/// To create a point, call [Point.new] or use [Point.polar] to ...
 ```
 
 ### FAÇA: use prosa para explicar parâmetros, valores retornados e exceções {:#do-use-prose-to-explain-parameters-return-values-and-exceptions}
@@ -375,13 +375,13 @@ e os retornos de um método são.
 
 <?code-excerpt "docs_bad.dart (no-annotations)"?>
 ```dart tag=bad
-/// Define uma flag com o nome e a abreviatura fornecidos.
+/// Defines a flag with the given name and abbreviation.
 ///
-/// @param name O nome da flag.
-/// @param abbr A abreviatura da flag.
-/// @returns A nova flag.
-/// @throws ArgumentError Se já houver uma opção com
-///     o nome ou a abreviatura fornecidos.
+/// @param name The name of the flag.
+/// @param abbr The abbreviation for the flag.
+/// @returns The new flag.
+/// @throws ArgumentError If there is already an option with
+///     the given name or abbreviation.
 Flag addFlag(String name, String abbr) => ...
 ```
 
@@ -390,10 +390,10 @@ e destacar os parâmetros usando colchetes.
 
 <?code-excerpt "docs_good.dart (no-annotations)"?>
 ```dart tag=good
-/// Define uma flag.
+/// Defines a flag.
 ///
-/// Lança um [ArgumentError] se já houver uma opção nomeada [name] ou
-/// se já houver uma opção usando a abreviatura [abbr]. Retorna a nova flag.
+/// Throws an [ArgumentError] if there is already an option named [name] or
+/// there is already an option using abbreviation [abbr]. Returns the new flag.
 Flag addFlag(String name, String abbr) => ...
 ```
 
@@ -401,7 +401,7 @@ Flag addFlag(String name, String abbr) => ...
 
 <?code-excerpt "docs_good.dart (doc-before-meta)"?>
 ```dart tag=good
-/// Um botão que pode ser ligado e desligado.
+/// A button that can be flipped on and off.
 @Component(selector: 'toggle')
 class ToggleComponent {}
 ```
@@ -409,7 +409,7 @@ class ToggleComponent {}
 <?code-excerpt "docs_bad.dart (doc-before-meta)" replace="/\n\n/\n/g"?>
 ```dart tag=bad
 @Component(selector: 'toggle')
-/// Um botão que pode ser ligado e desligado.
+/// A button that can be flipped on and off.
 class ToggleComponent {}
 ```
 
@@ -428,56 +428,56 @@ uma ideia do que é suportado:
 
 <?code-excerpt "docs_good.dart (markdown)"?>
 ````dart
-/// Este é um parágrafo de texto normal.
+/// This is a paragraph of regular text.
 ///
-/// Esta frase tem *duas* _palavras_ enfatizadas (itálico) e **duas**
-/// __palavras__ fortes (negrito).
+/// This sentence has *two* _emphasized_ words (italics) and **two**
+/// __strong__ ones (bold).
 ///
-/// Uma linha em branco cria um parágrafo separado. Ele tem algum `código em linha`
-/// delimitado usando backticks.
+/// A blank line creates a separate paragraph. It has some `inline code`
+/// delimited using backticks.
 ///
-/// * Listas não ordenadas.
-/// * Se parecem com listas de marcadores ASCII.
-/// * Você também pode usar `-` ou `+`.
+/// * Unordered lists.
+/// * Look like ASCII bullet lists.
+/// * You can also use `-` or `+`.
 ///
-/// 1. Listas numeradas.
-/// 2. São, bem, numeradas.
-/// 1. Mas os valores não importam.
+/// 1. Numbered lists.
+/// 2. Are, well, numbered.
+/// 1. But the values don't matter.
 ///
-///     * Você também pode aninhar listas.
-///     * Elas devem ser recuadas pelo menos 4 espaços.
-///     * (Bem, 5 incluindo o espaço após `///`.)
+///     * You can nest lists too.
+///     * They must be indented at least 4 spaces.
+///     * (Well, 5 including the space after `///`.)
 ///
-/// Blocos de código são delimitados por três backticks:
+/// Code blocks are fenced in triple backticks:
 ///
 /// ```dart
-/// este.código
-///     .irá
-///     .manter(sua, formatação);
+/// this.code
+///     .will
+///     .retain(its, formatting);
 /// ```
 ///
-/// A linguagem do código (para destaque de sintaxe) é Dart por padrão. Você pode
-/// especificá-la colocando o nome da linguagem após os backticks de abertura:
+/// The code language (for syntax highlighting) defaults to Dart. You can
+/// specify it by putting the name of the language after the opening backticks:
 ///
 /// ```html
-/// <h1>HTML é mágico!</h1>
+/// <h1>HTML is magical!</h1>
 /// ```
 ///
-/// Links podem ser:
+/// Links can be:
 ///
 /// * https://www.just-a-bare-url.com
-/// * [com a URL em linha](https://google.com)
-/// * [ou separados][ref link]
+/// * [with the URL inline](https://google.com)
+/// * [or separated out][ref link]
 ///
 /// [ref link]: https://google.com
 ///
-/// # Um Título
+/// # A Header
 ///
-/// ## Um subtítulo
+/// ## A subheader
 ///
-/// ### Um subsubtítulo
+/// ### A subsubheader
 ///
-/// #### Se você precisar de tantos níveis de títulos, está fazendo errado
+/// #### If you need this many levels of headers, you're doing it wrong
 ````
 
 ### EVITE: usar Markdown excessivamente {:#avoid-using-markdown-excessively}
@@ -546,10 +546,10 @@ objeto em que o membro está sendo chamado. Usar "o" pode ser ambíguo.
 <?code-excerpt "docs_good.dart (this)"?>
 ```dart
 class Box {
-  /// O valor que este encapsula.
+  /// The value this wraps.
   Object? _value;
 
-  /// Verdadeiro se esta caixa contém um valor.
+  /// True if this box contains a value.
   bool get hasValue => _value != null;
 }
 ```

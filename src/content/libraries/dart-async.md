@@ -91,7 +91,7 @@ try {
   var exitCode = await runExecutable(entryPoint, args);
   await flushThenExit(exitCode);
 } catch (e) {
-  // Lidar com o erro...
+  // Handle the error...
 }
 ```
 
@@ -127,7 +127,7 @@ possa lançar.
 httpClient.read(url).then((String result) {
   print(result);
 }).catchError((e) {
-  // Lidar ou ignorar o erro.
+  // Handle or ignore the error.
 });
 ```
 
@@ -161,7 +161,7 @@ result
     .then((_) => lengthyComputation())
     .then((_) => print('Done!'))
     .catchError((exception) {
-  /* Lidar com exceção... */
+  /* Handle exception... */
 });
 ```
 
@@ -181,7 +181,7 @@ try {
   await lengthyComputation();
   print('Done!');
 } catch (e) {
-  /* Lidar com exceção... */
+  /* Handle exception... */
 }
 ```
 
@@ -203,7 +203,7 @@ await Future.wait([
   copyLotsOfFiles(),
   checksumLotsOfOtherFiles(),
 ]);
-print('Feito com todas as etapas longas!');
+print('Done with all the long steps!');
 ```
 
 `Future.wait()` retorna um future que é concluído quando todos os futures fornecidos
@@ -353,9 +353,9 @@ inscreva-se no stream usando o método `listen()`:
 
 <?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
 ```dart
-// Adiciona um manipulador de eventos a um botão.
+// Add an event handler to a button.
 submitButton.onClick.[!listen!]((e) {
-  // Quando o botão é clicado, ele executa este código.
+  // When the button is clicked, it runs this code.
   submitData();
 });
 ```
@@ -420,9 +420,9 @@ Future<void> readFileAwaitFor() async {
       inputStream.transform(utf8.decoder).transform(const LineSplitter());
   [!try!] {
     await for (final line in lines) {
-      print('Obtido ${line.length} caracteres do stream');
+      print('Got ${line.length} characters from stream');
     }
-    print('arquivo agora está fechado');
+    print('file is now closed');
   } [!catch!] (e) {
     print(e);
   }
@@ -441,9 +441,9 @@ Stream<List<int>> inputStream = config.openRead();
 
 inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
     (String line) {
-  print('Obtido ${line.length} caracteres do stream');
+  print('Got ${line.length} characters from stream');
 }, [!onDone!]: () {
-  print('arquivo agora está fechado');
+  print('file is now closed');
 }, [!onError!]: (e) {
   print(e);
 });

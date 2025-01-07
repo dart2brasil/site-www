@@ -127,15 +127,15 @@ você pode usar uma [`instrução continue`][break] e um label (rótulo):
 switch (command) {
   case 'OPEN':
     executeOpen();
-    continue newCase; // Continua a execução no label newCase.
+    continue newCase; // Continues executing at the newCase label.
 
-  case 'DENIED': // Case vazio passa adiante.
+  case 'DENIED': // Empty case falls through.
   case 'CLOSED':
-    executeClosed(); // Executa para DENIED e CLOSED,
+    executeClosed(); // Runs for both DENIED and CLOSED,
 
   newCase:
   case 'PENDING':
-    executeNowClosed(); // Executa para OPEN e PENDING.
+    executeNowClosed(); // Runs for both OPEN and PENDING.
 }
 ```
 
@@ -167,13 +167,13 @@ Expressões Switch permitem que você reescreva uma _instrução_ switch assim:
 
 <?code-excerpt "language/lib/control_flow/branches.dart (switch-stmt)"?>
 ```dart
-// Onde barra, asterisco, vírgula, ponto e vírgula, etc., são variáveis constantes...
+// Where slash, star, comma, semicolon, etc., are constant variables...
 switch (charCode) {
-  case slash || star || plus || minus: // Pattern lógico-ou
+  case slash || star || plus || minus: // Logical-or pattern
     token = operator(charCode);
-  case comma || semicolon: // Pattern lógico-ou
+  case comma || semicolon: // Logical-or pattern
     token = punctuation(charCode);
-  case >= digit0 && <= digit9: // Patterns relacionais e lógico-e
+  case >= digit0 && <= digit9: // Relational and logical-and patterns
     token = number();
   default:
     throw FormatException('Invalid');
@@ -213,7 +213,7 @@ não corresponder a nenhum dos cases (casos).
 
 <?code-excerpt "language/lib/control_flow/branches.dart (exh-bool)"?>
 ```dart
-// Switch não exaustivo em bool?, faltando case para corresponder a possibilidade null:
+// Non-exhaustive switch on bool?, missing case to match null possibility:
 switch (nullableBool) {
   case true:
     print('yes');

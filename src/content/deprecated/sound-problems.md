@@ -68,7 +68,7 @@ Se configurado corretamente, o analisador produz o seguinte erro:
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/'int' can't be .* 'bool'/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - Um valor do tipo 'int' não pode ser atribuído a uma variável do tipo 'bool'. Tente alterar o tipo da variável ou converter o tipo do lado direito para 'bool'. - invalid_assignment
+error - A value of type 'int' can't be assigned to a variable of type 'bool'. Try changing the type of the variable, or casting the right-hand type to 'bool'. - invalid_assignment
 ```
 
 <a name="common-errors"></a>
@@ -85,7 +85,7 @@ consulte [Erros de tempo de execução](#runtime-errors).
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/getter.*isn't defined for the type/" replace="/. Try.*.'context2D'. / /g; /getter/<member\x3E/g; /'\w+'/'...'/g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - O <member> '...' não está definido para o tipo '...' - undefined_<member>
+error - The <member> '...' isn't defined for the type '...' - undefined_<member>
 ```
 
 Esses erros podem aparecer nas seguintes condições:
@@ -106,7 +106,7 @@ canvas.[!context2D!].lineTo(x, y);
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/context2D.*isn't defined for the type/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - O getter 'context2D' não está definido para o tipo 'Element'. Tente importar a biblioteca que define 'context2D', corrigindo o nome para o nome de um getter existente ou definindo um getter ou campo chamado 'context2D'. - undefined_getter
+error - The getter 'context2D' isn't defined for the type 'Element'. Try importing the library that defines 'context2D', correcting the name to the name of an existing getter, or defining a getter or field named 'context2D'. - undefined_getter
 ```
 
 #### Correção: Substitua a definição do membro por uma declaração de tipo explícita ou uma conversão (downcast) {:#fix-replace-the-definition-of-the-member-with-an-explicit-type-declaration-or-a-downcast}
@@ -158,7 +158,7 @@ var c = C(Iterable.empty()).collection;
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/add.*isn't defined for the type/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - O método 'add' não está definido para o tipo 'Iterable'. Tente corrigir o nome para o nome de um método existente ou definir um método chamado 'add'. - undefined_method
+error - The method 'add' isn't defined for the type 'Iterable'. Try correcting the name to the name of an existing method, or defining a method named 'add'. - undefined_method
 ```
 
 Enquanto o tipo [List][] tem um método `add()`, [Iterable][] não tem.
@@ -190,7 +190,7 @@ c.add(2);
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*add/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g; /-(.*?):(.*?):(.*?)-/-/g; /' . -/' -/g"?>
 ```plaintext
-error - '...' não é uma substituição válida de '...' - invalid_override
+error - '...'  isn't a valid override of '...' - invalid_override
 ```
 
 Esses erros geralmente ocorrem quando uma subclasse restringe os tipos de parâmetro de um método
@@ -220,7 +220,7 @@ class MyAdder extends NumberAdder {
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*add/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - 'MyAdder.add' ('num Function(int, int)') não é uma substituição válida de 'NumberAdder.add' ('num Function(num, num)'). - invalid_override
+error - 'MyAdder.add' ('num Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)'). - invalid_override
 ```
 
 Considere o seguinte cenário em que valores de ponto flutuante
@@ -267,7 +267,7 @@ palavra-chave [covariant](/language/type-system#covariant-keyword).
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*method/" replace="/'\S+'/'...'/g; /\('.*?'\)//g; /-(.*?):(.*?):(.*?)-/-/g; /' . -/' -/g"?>
 ```plaintext
-error - '...' não é uma substituição válida de '...' - invalid_override
+error - '...'  isn't a valid override of '...' - invalid_override
 ```
 
 #### Exemplo
@@ -290,7 +290,7 @@ class Subclass extends Superclass {
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*method/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - 'Subclass.method' ('void Function(int)') não é uma substituição válida de 'Superclass.method' ('void Function(dynamic)'). - invalid_override
+error - 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)'). - invalid_override
 ```
 
 #### Correção: Especifique argumentos de tipo para a subclasse genérica {:#fix-specify-type-arguments-for-the-generic-subclass}
@@ -334,7 +334,7 @@ consulte [Personalizando a análise estática](/tools/analysis).
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/common_fixes_analysis.*'double' can't be assigned to a variable of type 'int'./" replace="/. Try.*'int'. / /g; /'\S+'/'...'/g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - Um valor do tipo '...' não pode ser atribuído a uma variável do tipo '...' - invalid_assignment
+error - A value of type '...' can't be assigned to a variable of type '...' - invalid_assignment
 ```
 
 Isso às vezes acontece quando você cria uma coleção dinâmica simples
@@ -350,14 +350,14 @@ Quando o código adiciona um par (`String`, `double`), o analisador reclama:
 
 <?code-excerpt "lib/common_fixes_analysis.dart (inferred-collection-types)" replace="/1.5/[!1.5!]/g"?>
 ```dart tag=fails-sa
-// Inferido como Map<String, int>
+// Inferred as Map<String, int>
 var map = {'a': 1, 'b': 2, 'c': 3};
 map['d'] = [!1.5!];
 ```
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/common_fixes_analysis.*'double' can't be assigned to a variable of type 'int'/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - Um valor do tipo 'double' não pode ser atribuído a uma variável do tipo 'int'. Tente alterar o tipo da variável ou converter o tipo do lado direito para 'int'. - invalid_assignment
+error - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
 ```
 
 #### Correção: Especifique o tipo explicitamente {:#fix-specify-the-type-explicitly}
@@ -381,7 +381,7 @@ especifique o tipo como `<String, dynamic>`.
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/Animal/.../g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - A chamada do superconstrutor deve ser a última em uma lista de inicializadores: '...'. - super_invocation_not_last
+error - The superconstructor call must be last in an initializer list: '...'. - super_invocation_not_last
 ```
 
 Este erro ocorre quando a chamada `super()` não é a última em uma lista de inicialização de um construtor.
@@ -397,7 +397,7 @@ HoneyBadger(Eats food, String name)
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - A chamada do superconstrutor deve ser a última em uma lista de inicializadores: 'Animal'. - super_invocation_not_last
+error - The superconstructor call must be last in an initializer list: 'Animal'. - super_invocation_not_last
 ```
 
 #### Correção: Coloque a chamada `super()` por último {:#fix-put-the-super-call-last}
@@ -421,7 +421,7 @@ HoneyBadger(Eats food, String name)
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The argument type.*bool Function/" replace="/'bool.*?\)'/'...'/g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - O tipo de argumento '...' não pode ser atribuído ao tipo de parâmetro '...'. - argument_type_not_assignable
+error - The argument type '...' can't be assigned to the parameter type '...'. - argument_type_not_assignable
 ```
 
 Em Dart 1.x, `dynamic` era simultaneamente um [tipo superior][] (supertipo de todos os tipos) e um
@@ -443,7 +443,7 @@ filterValues(([!String!] x) => x.contains('Hello'));
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The argument type.*bool Function/" replace="/-(.*?)-/-/g"?>
 ```plaintext
-error - O tipo de argumento 'bool Function(String)' não pode ser atribuído ao tipo de parâmetro 'bool Function(dynamic)'. - argument_type_not_assignable
+error - The argument type 'bool Function(String)' can't be assigned to the parameter type 'bool Function(dynamic)'. - argument_type_not_assignable
 ```
 
 #### Correção: Adicione parâmetros de tipo _ou_ faça um cast de dynamic explicitamente {:#fix-add-type-parameters-or-cast-from-dynamic-explicitly}
@@ -537,8 +537,8 @@ Considere o seguinte método `assumeStrings`:
 <?code-excerpt "test/strong_test.dart (downcast-check)" replace="/string = objects/[!$&!]/g"?>
 ```dart tag=passes-sa
 void assumeStrings(dynamic objects) {
-  List<String> strings = objects; // Verificação de conversão (downcast) em tempo de execução
-  String string = strings[0]; // Espera um valor String
+  List<String> strings = objects; // Runtime downcast check
+  String string = strings[0]; // Expect a String value
 }
 ```
 
@@ -555,7 +555,7 @@ assumeStrings(<int>[![1, 2, 3]!]);
 
 <?code-excerpt "test/strong_test.dart (downcast-check-msg)" replace="/const msg = ./Exception: /g; /.;//g"?>
 ```plaintext
-Exception: o tipo 'List<int>' não é um subtipo do tipo 'List<String>'
+Exception: type 'List<int>' is not a subtype of type 'List<String>'
 ```
 
 #### Correção: Aperte ou corrija os tipos {:#fix-tighten-or-correct-types}
@@ -566,7 +566,7 @@ Adicionar um argumento de tipo explícito pode ajudar:
 
 <?code-excerpt "test/strong_test.dart (typed-list-lit)" replace="/<String\x3E/[!$&!]/g"?>
 ```dart tag=runtime-success
-var list = [!<String>!][!<String>!];
+var list = [!<String>!][];
 list.add('a string');
 list.add('another');
 assumeStrings(list);

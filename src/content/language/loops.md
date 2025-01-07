@@ -28,7 +28,7 @@ Você pode iterar com o loop `for` padrão. Por exemplo:
 
 <?code-excerpt "language/test/control_flow/loops_test.dart (for)"?>
 ```dart
-var message = StringBuffer('Dart é divertido');
+var message = StringBuffer('Dart is fun');
 for (var i = 0; i < 5; i++) {
   message.write('!');
 }
@@ -69,7 +69,7 @@ você também pode usar um [pattern (padrão)][pattern] em um loop `for-in`:
 <?code-excerpt "language/lib/control_flow/loops.dart (collection-for-pattern)"?>
 ```dart
 for (final Candidate(:name, :yearsExperience) in candidates) {
-  print('$name tem $yearsExperience de experiência.');
+  print('$name has $yearsExperience of experience.');
 }
 ```
 

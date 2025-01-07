@@ -75,11 +75,11 @@ em vez de `Isolate.run()`.
 const String filename = 'with_keys.json';
 
 void main() async {
-  // Lê alguns dados.
+  // Read some data.
   final jsonData = await Isolate.run(_readAndParseJson);
 
-  // Usa esses dados.
-  print('Número de chaves JSON: ${jsonData.length}');
+  // Use that data.
+  print('Number of JSON keys: ${jsonData.length}');
 }
 ```
 
@@ -133,15 +133,15 @@ função literal, ou closure, diretamente no isolate principal.
 const String filename = 'with_keys.json';
 
 void main() async {
-  // Lê alguns dados.
+  // Read some data.
   final jsonData = await Isolate.run(() async {
     final fileData = await File(filename).readAsString();
     final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
     return jsonData;
   });
 
-  // Usa esses dados.
-  print('Número de chaves JSON: ${jsonData.length}');
+  // Use that data.
+  print('Number of JSON keys: ${jsonData.length}');
 }
 ```
 
@@ -308,20 +308,20 @@ preencher os métodos da classe, um por um.
 ```dart
 class Worker {
   Future<void> spawn() async {
-    // TODO: Adicione a funcionalidade para gerar um worker isolate.
+    // TODO: Add functionality to spawn a worker isolate.
   }
 
   void _handleResponsesFromIsolate(dynamic message) {
-    // TODO: Lide com as mensagens enviadas de volta do worker isolate.
+    // TODO: Handle messages sent back from the worker isolate.
   }
 
   static void _startRemoteIsolate(SendPort port) {
-    // TODO: Defina o código que deve ser executado no worker isolate.
+    // TODO: Define code that should be executed on the worker isolate.
   }
 
   Future<void> parseJson(String message) async {
-    // TODO: Defina um método público que pode
-    // ser usado para enviar mensagens para o worker isolate.
+    // TODO: Define a public method that can
+    // be used to send messages to the worker isolate.
   }
 }
 ```
@@ -552,30 +552,30 @@ class Worker {
   final ReceivePort _responses;
 
   Future<Object?> parseJson(String message) async {
-    // TODO: Garantir que a porta ainda esteja aberta.
+    // TODO: Ensure the port is still open.
     _commands.send(message);
   }
 
   static Future<Worker> spawn() async {
-    // TODO: Adicionar funcionalidade para criar um novo objeto Worker com uma
-    // conexão com um isolate criado.
+    // TODO: Add functionality to create a new Worker object with a
+    //  connection to a spawned isolate.
     throw UnimplementedError();
   }
 
   Worker._(this._responses, this._commands) {
-    // TODO: Inicializar o listener da porta de recebimento do isolate principal.
+    // TODO: Initialize main isolate receive port listener.
   }
 
   void _handleResponsesFromIsolate(dynamic message) {
-    // TODO: Lidar com as mensagens enviadas de volta do isolate worker.
+    // TODO: Handle messages sent back from the worker isolate.
   }
 
   static void _handleCommandsToIsolate(ReceivePort rp, SendPort sp) async {
-    // TODO: Lidar com as mensagens enviadas de volta do isolate worker.
+    // TODO: Handle messages sent back from the worker isolate.
   }
 
   static void _startRemoteIsolate(SendPort sp) {
-    // TODO: Inicializar as portas do isolate worker.
+    // TODO: Initialize worker isolate's ports.
   }
 }
 ```
@@ -622,7 +622,7 @@ class Worker {
   final ReceivePort _responses;
 
   static Future<Worker> spawn() async {
-    // Cria uma porta de recebimento e adiciona seu manipulador de mensagem inicial.
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -671,7 +671,7 @@ class Worker {
   final ReceivePort _responses;
 
   static Future<Worker> spawn() async {
-    // Cria uma porta de recebimento e adiciona seu manipulador de mensagem inicial
+    // Create a receive port and add its initial message handler
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -681,7 +681,7 @@ class Worker {
         commandPort,
       ));
     };
-    // Cria o isolate.
+    // Spawn the isolate.
     try {
       await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {
@@ -871,10 +871,10 @@ para passar o ID e o JSON decodificado de volta para o _isolate_ principal, nova
 static void _handleCommandsToIsolate(
     ReceivePort receivePort, SendPort sendPort) {
   receivePort.listen((message) {
-    final (int id, String jsonText) = message as (int, String); // Novo
+    final (int id, String jsonText) = message as (int, String); // New
     try {
       final jsonData = jsonDecode(jsonText);
-      sendPort.send((id, jsonData)); // Atualizado
+      sendPort.send((id, jsonData)); // Updated
     } catch (e) {
       sendPort.send((id, RemoteError(e.toString(), '')));
     }
@@ -894,13 +894,13 @@ Finalmente, atualize o `_handleResponsesFromIsolate`.
 <?code-excerpt "lib/robust_ports_example/step_5_add_completers.dart (handle-response)"?>
 ```dart
 void _handleResponsesFromIsolate(dynamic message) {
-  final (int id, Object? response) = message as (int, Object?); // Novo
-  final completer = _activeRequests.remove(id)!; // Novo
+  final (int id, Object? response) = message as (int, Object?); // New
+  final completer = _activeRequests.remove(id)!; // New
 
   if (response is RemoteError) {
-    completer.completeError(response); // Atualizado
+    completer.completeError(response); // Updated
   } else {
-    completer.complete(response); // Atualizado
+    completer.complete(response); // Updated
   }
 }
 ```
@@ -930,7 +930,7 @@ class Worker {
       _closed = true;
       _commands.send('shutdown');
       if (_activeRequests.isEmpty) _responses.close();
-      print('--- porta fechada --- ');
+      print('--- port closed --- ');
     }
   }
 ```
@@ -947,7 +947,7 @@ static void _handleCommandsToIsolate(
   SendPort sendPort,
 ) {
   receivePort.listen((message) {
-    // Novo bloco if.
+    // New if-block.
     if (message == 'shutdown') {
       receivePort.close();
       return;
@@ -969,7 +969,7 @@ fechadas antes de tentar enviar mensagens. Adicione uma linha no método `Worker
 <?code-excerpt "lib/robust_ports_example/step_6_close_ports.dart (parse-json)"?>
 ```dart
 Future<Object?> parseJson(String message) async {
-  if (_closed) throw StateError('Closed'); // Novo
+  if (_closed) throw StateError('Closed'); // New
   final completer = Completer<Object?>.sync();
   final id = _idCounter++;
   _activeRequests[id] = completer;
@@ -1016,7 +1016,7 @@ class Worker {
   }
 
   static Future<Worker> spawn() async {
-    // Cria uma porta de recebimento e adiciona seu manipulador de mensagem inicial
+    // Create a receive port and add its initial message handler
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -1027,7 +1027,7 @@ class Worker {
       ));
     };
 
-    // Cria o isolate.
+    // Spawn the isolate.
     try {
       await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {
@@ -1088,7 +1088,7 @@ class Worker {
       _closed = true;
       _commands.send('shutdown');
       if (_activeRequests.isEmpty) _responses.close();
-      print('--- porta fechada --- ');
+      print('--- port closed --- ');
     }
   }
 }

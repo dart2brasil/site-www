@@ -38,7 +38,7 @@ Para usar `await`, o código deve estar em uma função `async` — uma função
 ```dart
 Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
-  // Faça algo com a versão
+  // Do something with version
 }
 ```
 
@@ -53,7 +53,7 @@ Use `try`, `catch` e `finally` para lidar com erros e limpeza em código que usa
 try {
   version = await lookUpVersion();
 } catch (e) {
-  // Reaja à incapacidade de procurar a versão
+  // React to inability to look up the version
 }
 ```
 
@@ -74,7 +74,7 @@ Em <code>await <em>expressão</em></code>, o valor de <code><em>expressão</em><
 ```dart
 void main() [!async!] {
   checkVersion();
-  print('Em main: a versão é ${[!await!] lookUpVersion()}');
+  print('In main: version is ${[!await!] lookUpVersion()}');
 }
 ```
 
@@ -128,7 +128,7 @@ Um loop `for` assíncrono tem a seguinte forma:
 <?code-excerpt "misc/lib/language_tour/async.dart (await-for)"?>
 ```dart
 await for (varOrType identifier in expression) {
-  // Executa cada vez que o stream emite um valor.
+  // Executes each time the stream emits a value.
 }
 ```
 

@@ -33,7 +33,7 @@ produz o seguinte aviso:
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```plaintext
-info - example.dart:9:19 - Declaração vazia desnecessária. Tente remover a declaração vazia ou reestruturar o código. - empty_statements
+info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
 
 </blockquote>
@@ -50,7 +50,7 @@ var [!controller = StreamController<String>()!];
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-info - Instância não fechada de 'Sink'. Tente invocar 'close' na função em que o 'Sink' foi criado. - close_sinks
+info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
 
 </blockquote>
@@ -175,13 +175,13 @@ void foo(List<String> lines) {
 }
 
 void bar(String jsonText) {
-  foo([!jsonDecode(jsonText)!]); // Cast implícito
+  foo([!jsonDecode(jsonText)!]); // Implicit cast
 }
 ```
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The argument type 'dynamic' can't be assigned"  replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-error - O tipo de argumento 'dynamic' não pode ser atribuído ao tipo de parâmetro 'List<String>'. - argument_type_not_assignable
+error - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>'. - argument_type_not_assignable
 ```
 
 :::version-note
@@ -205,17 +205,17 @@ analyzer:
 
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-inference)" replace="/{}/[!$&!]/g"?>
 ```dart tag=fails-sa
-final lines = [!{}!]; // Falha de inferência
+final lines = [!{}!]; // Inference failure
 lines['Dart'] = 10000;
 lines['C++'] = 'one thousand';
 lines['Go'] = 2000;
-print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Erro em tempo de execução
+print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
 ```
 {:analyzer}
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The type argument(s) of 'Map'"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-warning - Os argumentos de tipo de 'Map' não podem ser inferidos - inference_failure_on_collection_literal
+warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
 ```
 
 :::tip
@@ -237,15 +237,15 @@ para obter uma lista exaustiva de condições de falha de inferência.
 
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-raw-types)" replace="/List n/[!List!] n/g"?>
 ```dart tag=fails-sa
-[!List!] numbers = [1, 2, 3]; // List com tipo bruto
+[!List!] numbers = [1, 2, 3]; // List with raw type
 for (final n in numbers) {
-  print(n.length); // Erro em tempo de execução
+  print(n.length); // Runtime error
 }
 ```
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
-warning - O tipo genérico 'List<dynamic>' deve ter argumentos de tipo explícitos, mas não tem - strict_raw_type
+warning - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
 ```
 
 ## Habilitando e desabilitando regras do linter {:#enabling-linter-rules}

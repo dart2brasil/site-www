@@ -46,7 +46,7 @@ acima) na chamada de `printInts(list)`:
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/strong_analysis.*List.*argument_type_not_assignable/" replace="/-(.*?):(.*?):(.*?)-/-/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```plaintext
-error - O tipo do argumento 'List<dynamic>' não pode ser atribuído ao tipo do parâmetro 'List<int>'. - argument_type_not_assignable
+error - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
 ```
 
 O erro destaca uma conversão implícita não sólida de `List<dynamic>` para `List<int>`.
@@ -67,7 +67,7 @@ que passa na análise estática e é executado sem erros ou avisos.
 void printInts(List<int> a) => print(a);
 
 void main() {
-  final list = [!<int>!][!<int>!];
+  final list = [!<int>!][];
   list.add(1);
   list.add([!2!]);
   printInts(list);
@@ -226,7 +226,7 @@ um gato e enviá-lo atrás de um jacaré:
 <?code-excerpt "lib/incorrect_animal.dart (would-not-be-type-safe)" replace="/Alligator/[!$&!]/g"?>
 ```dart
 Animal a = Cat();
-a.chase([!Alligator!]()); // Não é type safe ou seguro para felinos.
+a.chase([!Alligator!]()); // Not type safe or feline safe.
 ```
 
 ### Não use uma lista dinâmica como uma lista tipada {:#dont-use-a-dynamic-list-as-a-typed-list}
@@ -243,7 +243,7 @@ uma lista do tipo `Cat` (Gato), o que gera um erro durante a análise estática.
 <?code-excerpt "lib/incorrect_animal.dart (invalid-dynamic-list)" replace="/(<dynamic\x3E)(.*?)Error/[!$1!]$2Error/g"?>
 ```dart tag=fails-sa
 void main() {
-  List<Cat> foo = [!<dynamic>!][Dog()]; // Erro
+  List<Cat> foo = [!<dynamic>!][Dog()]; // Error
   List<dynamic> bar = <dynamic>[Dog(), Cat()]; // OK
 }
 ```
@@ -323,13 +323,13 @@ Se for o caso, você pode adicionar uma anotação de tipo.
 
 <?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-error)"?>
 ```dart tag=fails-sa
-var x = 3; // x é inferido como um int.
+var x = 3; // x is inferred as an int.
 x = 4.0;
 ```
 
 <?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-ok)"?>
 ```dart tag=passes-sa
-num y = 3; // Um num pode ser double ou int.
+num y = 3; // A num can be double or int.
 y = 4.0;
 ```
 
@@ -344,13 +344,13 @@ você sempre pode especificar explicitamente os argumentos de tipo.
 
 <?code-excerpt "lib/strong_analysis.dart (type-arg-inference)"?>
 ```dart tag=passes-sa
-// Inferido como se você escrevesse <int>[].
+// Inferred as if you wrote <int>[].
 List<int> listOfInt = [];
 
-// Inferido como se você escrevesse <double>[3.0].
+// Inferred as if you wrote <double>[3.0].
 var listOfDouble = [3.0];
 
-// Inferido como Iterable<int>.
+// Inferred as Iterable<int>.
 var ints = listOfDouble.map((x) => x.toInt());
 ```
 

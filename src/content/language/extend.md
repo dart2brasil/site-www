@@ -98,11 +98,11 @@ variável de instância, você pode sobrescrever `noSuchMethod()`:
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart (no-such-method-impl)" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
 ```dart
 class A {
-  // A menos que você sobrescreva noSuchMethod, usar um
-  // membro inexistente resulta em um NoSuchMethodError.
+  // Unless you override noSuchMethod, using a
+  // non-existent member results in a NoSuchMethodError.
   @override
   void [!noSuchMethod!](Invocation invocation) {
-    print('Você tentou usar um membro inexistente: '
+    print('You tried to use a non-existent member: '
         '${invocation.memberName}');
   }
 }

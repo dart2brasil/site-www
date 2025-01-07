@@ -51,9 +51,9 @@ mixin Musical {
 
   void entertainMe() {
     if (canPlayPiano) {
-      print('Tocando piano');
+      print('Playing piano');
     } else if (canConduct) {
-      print('Acenando com as mãos');
+      print('Waving hands');
     } else {
       print('Humming to self');
     }

@@ -52,11 +52,11 @@ Para instanciar uma classe, use um construtor generativo.
 <?code-excerpt "point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
-  // Variáveis de instância para armazenar as coordenadas do ponto.
+  // Instance variables to hold the coordinates of the point.
   double x;
   double y;
 
-  // Construtor generativo com parâmetros formais de inicialização:
+  // Generative constructor with initializing formal parameters:
   Point(this.x, this.y);
 }
 ```
@@ -80,11 +80,11 @@ class Point {
   final double x;
   final double y;
 
-  // Define as variáveis de instância x e y
-  // antes da execução do corpo do construtor.
+  // Sets the x and y instance variables
+  // before the constructor body runs.
   Point(this.x, this.y);
 
-  // Construtor nomeado
+  // Named constructor
   [!Point.origin()!]
       : x = xOrigin,
         y = yOrigin;
@@ -128,10 +128,10 @@ O construtor usa `this` em vez do nome da classe após dois pontos (:).
 class Point {
   double x, y;
 
-  // O construtor principal para esta classe.
+  // The main constructor for this class.
   Point(this.x, this.y);
 
-  // Delega para o construtor principal.
+  // Delegates to the main constructor.
   Point.alongXAxis(double x) : this(x, 0);
 }
 ```
@@ -169,8 +169,8 @@ class Logger {
   final String name;
   bool mute = false;
 
-  // _cache é privado da biblioteca, graças ao
-  // _ na frente de seu nome.
+  // _cache is library-private, thanks to
+  // the _ in front of its name.
   static final Map<String, Logger> _cache = <String, Logger>{};
 
   factory Logger(String name) {
@@ -198,7 +198,7 @@ Use um construtor de fábrica como qualquer outro construtor:
 <?code-excerpt "logger.dart (logger)"?>
 ```dart
 var logger = Logger('UI');
-logger.log('Botão clicado');
+logger.log('Button clicked');
 
 var logMap = {'name': 'UI'};
 var loggerJson = Logger.fromJson(logMap);
@@ -274,7 +274,7 @@ class PointA {
   double x = 1.0;
   double y = 2.0;
 
-  // O construtor padrão implícito define essas variáveis para (1.0, 2.0)
+  // The implicit default constructor sets these variables to (1.0,2.0)
   // PointA();
 
   @override
@@ -314,11 +314,11 @@ class PointB {
   final double x;
   final double y;
 
-  // Define as variáveis de instância x e y
-  // antes da execução do corpo do construtor.
+  // Sets the x and y instance variables
+  // before the constructor body runs.
   PointB(this.x, this.y);
 
-  // Parâmetros formais de inicialização também podem ser opcionais.
+  // Initializing formal parameters can also be optional.
   PointB.optional([this.x = 0.0, this.y = 0.0]);
 }
 ```
@@ -347,11 +347,11 @@ Isso também funciona com variáveis nomeadas.
 <?code-excerpt "point_alt.dart (initialize-named)" plaster="none"?>
 ```dart
 class PointC {
-  double x; // deve ser definida no construtor
-  double y; // deve ser definida no construtor
+  double x; // must be set in constructor
+  double y; // must be set in constructor
 
-  // Construtor generativo com parâmetros formais de inicialização
-  // com valores padrão
+  // Generative constructor with initializing formal parameters
+  // with default values
   PointC.named({this.x = 1.0, this.y = 1.0});
 
   @override
@@ -360,7 +360,7 @@ class PointC {
   }
 }
 
-// Construtor usando variáveis nomeadas.
+// Constructor using named variables.
 final pointC = PointC.named(x: 2.0, y: 2.0);
 ```
 
@@ -377,10 +377,10 @@ Os parâmetros do construtor podem ser definidos como anuláveis e não serem in
 <?code-excerpt "point_alt.dart (initialize-null)" plaster="none"?>
 ```dart
 class PointD {
-  double? x; // nulo se não definido no construtor
-  double? y; // nulo se não definido no construtor
+  double? x; // null if not set in constructor
+  double? y; // null if not set in constructor
 
-  // Construtor generativo com parâmetros formais de inicialização
+  // Generative constructor with initializing formal parameters
   PointD(this.x, this.y);
 
   @override
@@ -397,12 +397,12 @@ Separe os inicializadores com vírgulas.
 
 <?code-excerpt "point_alt.dart (initializer-list)"?>
 ```dart
-// A lista de inicializadores define as variáveis de instância antes
-// da execução do corpo do construtor.
+// Initializer list sets instance variables before
+// the constructor body runs.
 Point.fromJson(Map<String, double> json)
     : x = json['x']!,
       y = json['y']! {
-  print('Em Point.fromJson(): ($x, $y)');
+  print('In Point.fromJson(): ($x, $y)');
 }
 ```
 
@@ -416,7 +416,7 @@ use `assert` na lista de inicializadores.
 <?code-excerpt "point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
 ```dart
 Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
-  print('Em Point.withAssert(): ($x, $y)');
+  print('In Point.withAssert(): ($x, $y)');
 }
 ```
 
@@ -485,22 +485,22 @@ class Person {
   String? firstName;
 
   Person.fromJson(Map data) {
-    print('em Person');
+    print('in Person');
   }
 }
 
 class Employee extends Person {
-  // Person não tem um construtor padrão;
-  // você deve chamar super.fromJson().
+  // Person does not have a default constructor;
+  // you must call super.fromJson().
   Employee.fromJson(Map data) : super.fromJson(data) {
-    print('em Employee');
+    print('in Employee');
   }
 }
 
 void main() {
   var employee = Employee.fromJson({});
   print(employee);
-  // Imprime:
+  // Prints:
   // in Person
   // in Employee
   // Instance of 'Employee'
@@ -557,7 +557,7 @@ class Vector2d {
 class Vector3d extends Vector2d {
   final double z;
 
-  // Encaminhe os parâmetros x e y para o construtor super padrão como:
+  // Forward the x and y parameters to the default super constructor like:
   // Vector3d(final double x, final double y, this.z) : super(x, y);
   Vector3d(super.x, super.y, this.z);
 }
@@ -592,7 +592,7 @@ class Vector2d {
 class Vector3d extends Vector2d {
   final double z;
 
-  // Encaminhe o parâmetro y para o construtor super nomeado como:
+  // Forward the y parameter to the named super constructor like:
   // Vector3d.yzPlane({required double y, required this.z})
   //       : super.named(x: 0, y: y);
   Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);

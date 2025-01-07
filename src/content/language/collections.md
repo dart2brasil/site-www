@@ -44,9 +44,9 @@ mas pode ajudar a evitar erros de copiar e colar.
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
 ```dart
 var list = [
-  'Carro',
-  'Barco',
-  'Avião',
+  'Car',
+  'Boat',
+  'Plane',
 ];
 ```
 
@@ -71,7 +71,7 @@ adicione `const` antes do literal da lista:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-list)"?>
 ```dart
 var constantList = const [1, 2, 3];
-// constantList[1] = 1; // Esta linha causará um erro.
+// constantList[1] = 1; // This line will cause an error.
 ```
 
 Para mais informações sobre listas, consulte a seção Listas da
@@ -87,7 +87,7 @@ Aqui está um set simples do Dart, criado usando um literal de set:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-literal)"?>
 ```dart
-var halogens = {'flúor', 'cloro', 'bromo', 'iodo', 'astato'};
+var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 ```
 
 :::note
@@ -103,8 +103,8 @@ ou atribua `{}` a uma variável do tipo `Set`:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
 ```dart
 var names = <String>{};
-// Set<String> names = {}; // Isso também funciona.
-// var names = {}; // Cria um map, não um set.
+// Set<String> names = {}; // This works, too.
+// var names = {}; // Creates a map, not a set.
 ```
 
 :::note Set ou map?
@@ -119,7 +119,7 @@ Adicione itens a um set existente usando os métodos `add()` ou `addAll()`:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-add-items)"?>
 ```dart
 var elements = <String>{};
-elements.add('flúor');
+elements.add('fluorine');
 elements.addAll(halogens);
 ```
 
@@ -128,7 +128,7 @@ Use `.length` para obter o número de itens no set:
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (set-length)"?>
 ```dart
 var elements = <String>{};
-elements.add('flúor');
+elements.add('fluorine');
 elements.addAll(halogens);
 assert(elements.length == 5);
 ```
@@ -139,13 +139,13 @@ adicione `const` antes do literal do set:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-set)"?>
 ```dart
 final constantSet = const {
-  'flúor',
-  'cloro',
-  'bromo',
-  'iodo',
-  'astato',
+  'fluorine',
+  'chlorine',
+  'bromine',
+  'iodine',
+  'astatine',
 };
-// constantSet.add('hélio'); // Esta linha causará um erro.
+// constantSet.add('helium'); // This line will cause an error.
 ```
 
 Para mais informações sobre sets, consulte a seção Sets da
@@ -163,16 +163,16 @@ Aqui estão alguns maps simples do Dart, criados usando literais de map:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-literal)"?>
 ```dart
 var gifts = {
-  // Chave:    Valor
-  'primeiro': 'perdiz',
-  'segundo': 'rola',
-  'quinto': 'anéis de ouro'
+  // Key:    Value
+  'first': 'partridge',
+  'second': 'turtledoves',
+  'fifth': 'golden rings'
 };
 
 var nobleGases = {
-  2: 'hélio',
-  10: 'neônio',
-  18: 'argônio',
+  2: 'helium',
+  10: 'neon',
+  18: 'argon',
 };
 ```
 
@@ -188,14 +188,14 @@ Você pode criar os mesmos objetos usando um construtor `Map`:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-constructor)"?>
 ```dart
 var gifts = Map<String, String>();
-gifts['primeiro'] = 'perdiz';
-gifts['segundo'] = 'rola';
-gifts['quinto'] = 'anéis de ouro';
+gifts['first'] = 'partridge';
+gifts['second'] = 'turtledoves';
+gifts['fifth'] = 'golden rings';
 
 var nobleGases = Map<int, String>();
-nobleGases[2] = 'hélio';
-nobleGases[10] = 'neônio';
-nobleGases[18] = 'argônio';
+nobleGases[2] = 'helium';
+nobleGases[10] = 'neon';
+nobleGases[18] = 'argon';
 ```
 
 :::note
@@ -209,32 +209,32 @@ usando o operador de atribuição de subscrito (`[]=`):
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-add-item)"?>
 ```dart
-var gifts = {'primeiro': 'perdiz'};
-gifts['quarto'] = 'pássaros cantando'; // Adiciona um par chave-valor
+var gifts = {'first': 'partridge'};
+gifts['fourth'] = 'calling birds'; // Add a key-value pair
 ```
 
 Recupere um valor de um map usando o operador de subscrito (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-retrieve-item)"?>
 ```dart
-var gifts = {'primeiro': 'perdiz'};
-assert(gifts['primeiro'] == 'perdiz');
+var gifts = {'first': 'partridge'};
+assert(gifts['first'] == 'partridge');
 ```
 
 Se você procurar por uma chave que não está em um map, você recebe `null` em retorno:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-missing-key)"?>
 ```dart
-var gifts = {'primeiro': 'perdiz'};
-assert(gifts['quinto'] == null);
+var gifts = {'first': 'partridge'};
+assert(gifts['fifth'] == null);
 ```
 
 Use `.length` para obter o número de pares chave-valor no map:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-length)"?>
 ```dart
-var gifts = {'primeiro': 'perdiz'};
-gifts['quarto'] = 'pássaros cantando';
+var gifts = {'first': 'partridge'};
+gifts['fourth'] = 'calling birds';
 assert(gifts.length == 2);
 ```
 
@@ -244,12 +244,12 @@ adicione `const` antes do literal do map:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-map)"?>
 ```dart
 final constantMap = const {
-  2: 'hélio',
-  10: 'neônio',
-  18: 'argônio',
+  2: 'helium',
+  10: 'neon',
+  18: 'argon',
 };
 
-// constantMap[2] = 'Hélio'; // Esta linha causará um erro.
+// constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
 Para mais informações sobre maps, consulte a seção Maps da
@@ -297,7 +297,7 @@ para criar uma lista com três ou quatro itens nela:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
 ```dart
-var nav = ['Home', 'Móveis', 'Plantas', if (promoActive) 'Outlet'];
+var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
 ```
 
 Dart também suporta [if-case][if-case] dentro de literais de coleção:

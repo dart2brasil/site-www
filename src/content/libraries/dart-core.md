@@ -27,7 +27,7 @@ Objeto) e exibe o valor da string desse objeto (conforme retornado por
 <?code-excerpt "misc/test/library_tour/core_test.dart (print)"?>
 ```dart
 print(anObject);
-print('Eu bebo $tea.');
+print('I drink $tea.');
 ```
 
 Para obter mais informações sobre strings básicas e `toString()`, consulte
@@ -74,16 +74,16 @@ dígitos significativos na string, use
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (to-string)"?>
 ```dart
-// Converte um int em uma string.
+// Convert an int to a string.
 assert(42.toString() == '42');
 
-// Converte um double em uma string.
+// Convert a double to a string.
 assert(123.456.toString() == '123.456');
 
-// Especifica o número de dígitos após a decimal.
+// Specify the number of digits after the decimal.
 assert(123.456.toStringAsFixed(2) == '123.46');
 
-// Especifica o número de dígitos significativos.
+// Specify the number of significant figures.
 assert(123.456.toStringAsPrecision(2) == '1.2e+2');
 assert(double.parse('1.2e+2') == 120.0);
 ```
@@ -112,17 +112,17 @@ exemplo:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (contains-etc)"?>
 ```dart
-// Verifica se uma string contém outra string.
-assert('Nunca ímpar ou par'.contains('ímpar'));
+// Check whether a string contains another string.
+assert('Never odd or even'.contains('odd'));
 
-// Uma string começa com outra string?
-assert('Nunca ímpar ou par'.startsWith('Nunca'));
+// Does a string start with another string?
+assert('Never odd or even'.startsWith('Never'));
 
-// Uma string termina com outra string?
-assert('Nunca ímpar ou par'.endsWith('par'));
+// Does a string end with another string?
+assert('Never odd or even'.endsWith('even'));
 
-// Encontra a localização de uma string dentro de uma string.
-assert('Nunca ímpar ou par'.indexOf('ímpar') == 6);
+// Find the location of a string inside a string.
+assert('Never odd or even'.indexOf('odd') == 6);
 ```
 
 ### Extraindo dados de uma string {:#extracting-data-from-a-string}
@@ -137,26 +137,26 @@ de substrings:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (substring-etc)"?>
 ```dart
-// Pega uma substring.
-assert('Nunca ímpar ou par'.substring(6, 9) == 'ímpar');
+// Grab a substring.
+assert('Never odd or even'.substring(6, 9) == 'odd');
 
-// Divide uma string usando um padrão de string.
-var parts = 'aplicativos web progressivos'.split(' ');
+// Split a string using a string pattern.
+var parts = 'progressive web apps'.split(' ');
 assert(parts.length == 3);
-assert(parts[0] == 'aplicativos');
+assert(parts[0] == 'progressive');
 
-// Obtém uma unidade de código UTF-16 (como uma string) por índice.
-assert('Nunca ímpar ou par'[0] == 'N');
+// Get a UTF-16 code unit (as a string) by index.
+assert('Never odd or even'[0] == 'N');
 
-// Use split() com um parâmetro de string vazia para obter
-// uma lista de todos os caracteres (como Strings); bom para
-// iteração.
-for (final char in 'olá'.split('')) {
+// Use split() with an empty string parameter to get
+// a list of all characters (as Strings); good for
+// iterating.
+for (final char in 'hello'.split('')) {
   print(char);
 }
 
-// Obtém todas as unidades de código UTF-16 na string.
-var codeUnitList = 'Nunca ímpar ou par'.codeUnits.toList();
+// Get all the UTF-16 code units in the string.
+var codeUnitList = 'Never odd or even'.codeUnits.toList();
 assert(codeUnitList[0] == 78);
 ```
 
@@ -179,11 +179,11 @@ minúsculas:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (case-conversions)"?>
 ```dart
-// Converte para maiúsculas.
-assert('aplicativos web'.toUpperCase() == 'APLICATIVOS WEB');
+// Convert to uppercase.
+assert('web apps'.toUpperCase() == 'WEB APPS');
 
-// Converte para minúsculas.
-assert('APLICATIVOS WEB'.toLowerCase() == 'aplicativos web');
+// Convert to lowercase.
+assert('WEB APPS'.toLowerCase() == 'web apps');
 ```
 
 :::note
@@ -200,13 +200,13 @@ Para verificar se uma string está vazia (o comprimento é zero), use
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (trim-etc)"?>
 ```dart
-// Remove espaços em branco de uma string.
-assert('  olá  '.trim() == 'olá');
+// Trim a string.
+assert('  hello  '.trim() == 'hello');
 
-// Verifica se uma string está vazia.
+// Check whether a string is empty.
 assert(''.isEmpty);
 
-// Strings com apenas espaços em branco não estão vazias.
+// Strings with only white space are not empty.
 assert('  '.isNotEmpty);
 ```
 
@@ -220,10 +220,10 @@ a String original:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (replace)"?>
 ```dart
-var greetingTemplate = 'Olá, NOME!';
-var greeting = greetingTemplate.replaceAll(RegExp('NOME'), 'Bob');
+var greetingTemplate = 'Hello, NAME!';
+var greeting = greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
 
-// greetingTemplate não mudou.
+// greetingTemplate didn't change.
 assert(greeting != greetingTemplate);
 ```
 
@@ -238,13 +238,13 @@ permite especificar um separador — neste caso, um espaço.
 ```dart
 var sb = StringBuffer();
 sb
-  ..write('Use um StringBuffer para ')
-  ..writeAll(['criação', 'de', 'string', 'eficiente'], ' ')
+  ..write('Use a StringBuffer for ')
+  ..writeAll(['efficient', 'string', 'creation'], ' ')
   ..write('.');
 
 var fullString = sb.toString();
 
-assert(fullString == 'Use um StringBuffer para criação de string eficiente.');
+assert(fullString == 'Use a StringBuffer for efficient string creation.');
 ```
 
 ### Expressões regulares {:#regular-expressions}
@@ -255,19 +255,19 @@ correspondência de padrões de strings.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (regexp)"?>
 ```dart
-// Aqui está uma expressão regular para um ou mais dígitos.
+// Here's a regular expression for one or more digits.
 var numbers = RegExp(r'\d+');
 
-var allCharacters = 'lhamas vivem de quinze a vinte anos';
-var someDigits = 'lhamas vivem 15 a 20 anos';
+var allCharacters = 'llamas live fifteen to twenty years';
+var someDigits = 'llamas live 15 to 20 years';
 
-// contains() pode usar uma expressão regular.
+// contains() can use a regular expression.
 assert(!allCharacters.contains(numbers));
 assert(someDigits.contains(numbers));
 
-// Substitui cada correspondência por outra string.
+// Replace every match with another string.
 var exedOut = someDigits.replaceAll(numbers, 'XX');
-assert(exedOut == 'lhamas vivem XX a XX anos');
+assert(exedOut == 'llamas live XX to XX years');
 ```
 
 Você também pode trabalhar diretamente com a classe RegExp. A classe
@@ -276,14 +276,14 @@ Match fornece acesso a uma correspondência de expressão regular.
 <?code-excerpt "misc/test/library_tour/core_test.dart (match)"?>
 ```dart
 var numbers = RegExp(r'\d+');
-var someDigits = 'lhamas vivem 15 a 20 anos';
+var someDigits = 'llamas live 15 to 20 years';
 
-// Verifica se a expressão regular tem uma correspondência em uma string.
+// Check whether the reg exp has a match in a string.
 assert(numbers.hasMatch(someDigits));
 
-// Percorre todas as correspondências.
+// Loop through all matches.
 for (final match in numbers.allMatches(someDigits)) {
-  print(match.group(0)); // 15, depois 20
+  print(match.group(0)); // 15, then 20
 }
 ```
 
@@ -312,47 +312,47 @@ adicionar e remover itens de listas.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (list)"?>
 ```dart
-// Cria uma lista vazia de strings.
+// Create an empty list of strings.
 var grains = <String>[];
 assert(grains.isEmpty);
 
-// Cria uma lista usando um literal de lista.
-var fruits = ['maçãs', 'laranjas'];
+// Create a list using a list literal.
+var fruits = ['apples', 'oranges'];
 
-// Adiciona à lista.
+// Add to a list.
 fruits.add('kiwis');
 
-// Adiciona vários itens a uma lista.
-fruits.addAll(['uvas', 'bananas']);
+// Add multiple items to a list.
+fruits.addAll(['grapes', 'bananas']);
 
-// Obtém o comprimento da lista.
+// Get the list length.
 assert(fruits.length == 5);
 
-// Remove um único item.
-var appleIndex = fruits.indexOf('maçãs');
+// Remove a single item.
+var appleIndex = fruits.indexOf('apples');
 fruits.removeAt(appleIndex);
 assert(fruits.length == 4);
 
-// Remove todos os elementos de uma lista.
+// Remove all elements from a list.
 fruits.clear();
 assert(fruits.isEmpty);
 
-// Você também pode criar uma Lista usando um dos construtores.
-var vegetables = List.filled(99, 'brócolis');
-assert(vegetables.every((v) => v == 'brócolis'));
+// You can also create a List using one of the constructors.
+var vegetables = List.filled(99, 'broccoli');
+assert(vegetables.every((v) => v == 'broccoli'));
 ```
 
 Use `indexOf()` para encontrar o índice de um objeto em uma lista:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (index-of)"?>
 ```dart
-var fruits = ['maçãs', 'laranjas'];
+var fruits = ['apples', 'oranges'];
 
-// Acessa um item da lista por índice.
-assert(fruits[0] == 'maçãs');
+// Access a list item by index.
+assert(fruits[0] == 'apples');
 
-// Encontra um item em uma lista.
-assert(fruits.indexOf('maçãs') == 0);
+// Find an item in a list.
+assert(fruits.indexOf('apples') == 0);
 ```
 
 Classifica uma lista usando o método `sort()`. Você pode fornecer uma
@@ -363,11 +363,11 @@ classificação deve retornar < 0 para *menor*, 0 para *igual* e > 0 para
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (compare-to)"?>
 ```dart
-var fruits = ['bananas', 'maçãs', 'laranjas'];
+var fruits = ['bananas', 'apples', 'oranges'];
 
-// Classifica uma lista.
+// Sort a list.
 fruits.sort((a, b) => a.compareTo(b));
-assert(fruits[0] == 'maçãs');
+assert(fruits[0] == 'apples');
 ```
 
 Listas são tipos parametrizados
@@ -377,17 +377,17 @@ deve conter:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (list-of-string)"?>
 ```dart
-// Esta lista deve conter apenas strings.
+// This list should contain only strings.
 var fruits = <String>[];
 
-fruits.add('maçãs');
+fruits.add('apples');
 var fruit = fruits[0];
 assert(fruit is String);
 ```
 
 <?code-excerpt "misc/lib/library_tour/core/collections.dart (list-of-string)"?>
 ```dart tag=fails-sa
-fruits.add(5); // Erro: 'int' não pode ser atribuído a 'String'
+fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
 
 :::note
@@ -416,23 +416,23 @@ conjunto não é ordenado, você não pode obter os itens de um conjunto por ín
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (set)"?>
 ```dart
-// Cria um conjunto vazio de strings.
+// Create an empty set of strings.
 var ingredients = <String>{};
 
-// Adiciona novos itens a ele.
-ingredients.addAll(['ouro', 'titânio', 'xenônio']);
+// Add new items to it.
+ingredients.addAll(['gold', 'titanium', 'xenon']);
 assert(ingredients.length == 3);
 
-// Adicionar um item duplicado não tem efeito.
-ingredients.add('ouro');
+// Adding a duplicate item has no effect.
+ingredients.add('gold');
 assert(ingredients.length == 3);
 
-// Remove um item de um conjunto.
-ingredients.remove('ouro');
+// Remove an item from a set.
+ingredients.remove('gold');
 assert(ingredients.length == 2);
 
-// Você também pode criar conjuntos usando
-// um dos construtores.
+// You can also create sets using
+// one of the constructors.
 var atomicNumbers = Set.from([79, 22, 54]);
 ```
 
@@ -442,13 +442,13 @@ estão em um conjunto:
 <?code-excerpt "misc/test/library_tour/core_test.dart (contains)"?>
 ```dart
 var ingredients = Set<String>();
-ingredients.addAll(['ouro', 'titânio', 'xenônio']);
+ingredients.addAll(['gold', 'titanium', 'xenon']);
 
-// Verifica se um item está no conjunto.
-assert(ingredients.contains('titânio'));
+// Check whether an item is in the set.
+assert(ingredients.contains('titanium'));
 
-// Verifica se todos os itens estão no conjunto.
-assert(ingredients.containsAll(['titânio', 'xenônio']));
+// Check whether all the items are in the set.
+assert(ingredients.containsAll(['titanium', 'xenon']));
 ```
 
 Uma interseção é um conjunto cujos itens estão em outros dois conjuntos.
@@ -456,13 +456,13 @@ Uma interseção é um conjunto cujos itens estão em outros dois conjuntos.
 <?code-excerpt "misc/test/library_tour/core_test.dart (intersection)"?>
 ```dart
 var ingredients = Set<String>();
-ingredients.addAll(['ouro', 'titânio', 'xenônio']);
+ingredients.addAll(['gold', 'titanium', 'xenon']);
 
-// Cria a interseção de dois conjuntos.
-var nobleGases = Set.from(['xenônio', 'argônio']);
+// Create the intersection of two sets.
+var nobleGases = Set.from(['xenon', 'argon']);
 var intersection = ingredients.intersection(nobleGases);
 assert(intersection.length == 1);
-assert(intersection.contains('xenônio'));
+assert(intersection.contains('xenon'));
 ```
 
 Consulte a [referência da API Set][Set] para obter uma lista completa de métodos.
@@ -478,18 +478,18 @@ usar um construtor tradicional:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (map)"?>
 ```dart
-// Maps geralmente usam strings como chaves.
+// Maps often use strings as keys.
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
   'Big Island': ['Wailea Bay', 'Pololu Beach'],
   'Kauai': ['Hanalei', 'Poipu']
 };
 
-// Maps podem ser construídos a partir de um construtor.
+// Maps can be built from a constructor.
 var searchTerms = Map();
 
-// Maps são tipos parametrizados; você pode especificar quais
-// tipos a chave e o valor devem ser.
+// Maps are parameterized types; you can specify what
+// types the key and value should be.
 var nobleGases = Map<int, String>();
 ```
 
@@ -498,15 +498,15 @@ Use `remove()` para remover uma chave e seu valor de um map.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (remove)"?>
 ```dart
-var nobleGases = {54: 'xenônio'};
+var nobleGases = {54: 'xenon'};
 
-// Recupera um valor com uma chave.
-assert(nobleGases[54] == 'xenônio');
+// Retrieve a value with a key.
+assert(nobleGases[54] == 'xenon');
 
-// Verifica se um map contém uma chave.
+// Check whether a map contains a key.
 assert(nobleGases.containsKey(54));
 
-// Remove uma chave e seu valor.
+// Remove a key and its value.
 nobleGases.remove(54);
 assert(!nobleGases.containsKey(54));
 ```
@@ -521,15 +521,15 @@ var hawaiianBeaches = {
   'Kauai': ['Hanalei', 'Poipu']
 };
 
-// Obtém todas as chaves como uma coleção não ordenada
-// (um Iterable).
+// Get all the keys as an unordered collection
+// (an Iterable).
 var keys = hawaiianBeaches.keys;
 
 assert(keys.length == 3);
 assert(Set.from(keys).contains('Oahu'));
 
-// Obtém todos os valores como uma coleção não ordenada
-// (um Iterable de Listas).
+// Get all the values as an unordered collection
+// (an Iterable of Lists).
 var values = hawaiianBeaches.values;
 assert(values.length == 3);
 assert(values.any((v) => v.contains('Waikiki')));
@@ -548,7 +548,7 @@ var hawaiianBeaches = {
 };
 
 assert(hawaiianBeaches.containsKey('Oahu'));
-assert(!hawaiianBeaches.containsKey('Flórida'));
+assert(!hawaiianBeaches.containsKey('Florida'));
 ```
 
 Use o método `putIfAbsent()` quando desejar atribuir um valor a uma chave
@@ -580,7 +580,7 @@ Use `isEmpty` ou `isNotEmpty` para verificar se uma lista, conjunto ou map possu
 <?code-excerpt "misc/test/library_tour/core_test.dart (is-empty)"?>
 ```dart
 var coffees = <String>[];
-var teas = ['verde', 'preto', 'camomila', 'earl grey'];
+var teas = ['green', 'black', 'chamomile', 'earl grey'];
 assert(coffees.isEmpty);
 assert(teas.isNotEmpty);
 ```
@@ -590,9 +590,9 @@ pode usar `forEach()`:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (list-for-each)"?>
 ```dart
-var teas = ['verde', 'preto', 'camomila', 'earl grey'];
+var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
-teas.forEach((tea) => print('Eu bebo $tea'));
+teas.forEach((tea) => print('I drink $tea'));
 ```
 
 Quando você invoca `forEach()` em um map, sua função deve receber dois
@@ -601,8 +601,8 @@ argumentos (a chave e o valor):
 <?code-excerpt "misc/test/library_tour/core_test.dart (map-for-each)"?>
 ```dart
 hawaiianBeaches.forEach((k, v) {
-  print('Quero visitar $k e nadar em $v');
-  // Quero visitar Oahu e nadar em
+  print('I want to visit $k and swim at $v');
+  // I want to visit Oahu and swim at
   // [Waikiki, Kailua, Waimanalo], etc.
 });
 ```
@@ -612,7 +612,7 @@ Iterables fornece o método `map()`, que fornece todos os resultados em um
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (list-map)"?>
 ```dart
-var teas = ['verde', 'preto', 'camomila', 'earl grey'];
+var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
 var loudTeas = teas.map((tea) => tea.toUpperCase());
 loudTeas.forEach(print);
@@ -642,22 +642,22 @@ cities instead of isDecaffeinated.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (where-etc)"?>
 ```dart
-var teas = ['verde', 'preto', 'camomila', 'earl grey'];
+var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
-// Camomila não tem cafeína.
-bool isDecaffeinated(String teaName) => teaName == 'camomila';
+// Chamomile is not caffeinated.
+bool isDecaffeinated(String teaName) => teaName == 'chamomile';
 
-// Use where() para encontrar apenas os itens que retornam verdadeiro
-// da função fornecida.
+// Use where() to find only the items that return true
+// from the provided function.
 var decaffeinatedTeas = teas.where((tea) => isDecaffeinated(tea));
-// ou teas.where(isDecaffeinated)
+// or teas.where(isDecaffeinated)
 
-// Use any() para verificar se pelo menos um item na
-// coleção satisfaz uma condição.
+// Use any() to check whether at least one item in the
+// collection satisfies a condition.
 assert(teas.any(isDecaffeinated));
 
-// Use every() para verificar se todos os itens em uma
-// coleção satisfazem uma condição.
+// Use every() to check whether all the items in a
+// collection satisfy a condition.
 assert(!teas.every(isDecaffeinated));
 ```
 
@@ -686,10 +686,10 @@ um URI totalmente qualificado, deixando intactos os caracteres especiais do URI.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (encode-full)"?>
 ```dart
-var uri = 'https://example.org/api?foo=alguma mensagem';
+var uri = 'https://example.org/api?foo=some message';
 
 var encoded = Uri.encodeFull(uri);
-assert(encoded == 'https://example.org/api?foo=alguma%20mensagem');
+assert(encoded == 'https://example.org/api?foo=some%20message');
 
 var decoded = Uri.decodeFull(encoded);
 assert(uri == decoded);
@@ -705,11 +705,11 @@ possuem significado especial em um URI, incluindo (mas não se limitando a)
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (encode-component)"?>
 ```dart
-var uri = 'https://example.org/api?foo=alguma mensagem';
+var uri = 'https://example.org/api?foo=some message';
 
 var encoded = Uri.encodeComponent(uri);
 assert(
-    encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dalguma%20mensagem');
+    encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
 
 var decoded = Uri.decodeComponent(encoded);
 assert(uri == decoded);
@@ -778,25 +778,25 @@ Você pode criar objetos DateTime usando vários construtores e métodos:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (date-time)"?>
 ```dart
-// Obtém a data e hora atuais.
+// Get the current date and time.
 var now = DateTime.now();
 
-// Cria um novo DateTime com o fuso horário local.
-var y2k = DateTime(2000); // 1º de janeiro de 2000
+// Create a new DateTime with the local time zone.
+var y2k = DateTime(2000); // January 1, 2000
 
-// Especifica o mês e o dia.
-y2k = DateTime(2000, 1, 2); // 2 de janeiro de 2000
+// Specify the month and day.
+y2k = DateTime(2000, 1, 2); // January 2, 2000
 
-// Especifica a data como uma hora UTC.
-y2k = DateTime.utc(2000); // 01/01/2000, UTC
+// Specify the date as a UTC time.
+y2k = DateTime.utc(2000); // 1/1/2000, UTC
 
-// Especifica uma data e hora em ms desde a época Unix.
+// Specify a date and time in ms since the Unix epoch.
 y2k = DateTime.fromMillisecondsSinceEpoch(946684800000, isUtc: true);
 
-// Analisa uma data ISO 8601 no fuso horário UTC.
+// Parse an ISO 8601 date in the UTC time zone.
 y2k = DateTime.parse('2000-01-01T00:00:00Z');
 
-// Cria um novo DateTime a partir de um existente, ajustando apenas algumas propriedades:
+// Create a new DateTime from an existing one, adjusting just some properties:
 var sameTimeLastYear = now.copyWith(year: now.year - 1);
 ```
 
@@ -810,11 +810,11 @@ milissegundos desde a "época Unix" — 1º de janeiro de 1970, UTC:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (milliseconds-since-epoch)"?>
 ```dart
-// 01/01/2000, UTC
+// 1/1/2000, UTC
 var y2k = DateTime.utc(2000);
 assert(y2k.millisecondsSinceEpoch == 946684800000);
 
-// 01/01/1970, UTC
+// 1/1/1970, UTC
 var unixEpoch = DateTime.utc(1970);
 assert(unixEpoch.millisecondsSinceEpoch == 0);
 ```
@@ -826,19 +826,19 @@ avançar ou retroceder uma data:
 ```dart
 var y2k = DateTime.utc(2000);
 
-// Adiciona um ano.
+// Add one year.
 var y2001 = y2k.add(const Duration(days: 366));
 assert(y2001.year == 2001);
 
-// Subtrai 30 dias.
+// Subtract 30 days.
 var december2000 = y2001.subtract(const Duration(days: 30));
 assert(december2000.year == 2000);
 assert(december2000.month == 12);
 
-// Calcula a diferença entre duas datas.
-// Retorna um objeto Duration.
+// Calculate the difference between two dates.
+// Returns a Duration object.
 var duration = y2001.difference(y2k);
-assert(duration.inDays == 366); // y2k foi um ano bissexto.
+assert(duration.inDays == 366); // y2k was a leap year.
 ```
 
 :::warning
@@ -918,13 +918,13 @@ class Person {
 
   Person(this.firstName, this.lastName);
 
-  // Substitua o hashCode usando os métodos estáticos de hashing
-  // fornecidos pela classe `Object`.
+  // Override hashCode using the static hashing methods
+  // provided by the `Object` class.
   @override
   int get hashCode => Object.hash(firstName, lastName);
 
-  // Geralmente você deve implementar o operador `==` se você
-  // substituir `hashCode`.
+  // You should generally implement operator `==` if you
+  // override `hashCode`.
   @override
   bool operator ==(Object other) {
     return other is Person &&
@@ -957,7 +957,7 @@ para definir a capacidade de iteração real.
 <?code-excerpt "misc/lib/library_tour/core/iterator.dart (structure)"?>
 ```dart
 class Process {
-  // Representa um processo...
+  // Represents a process...
 }
 
 class ProcessIterator implements Iterator<Process> {
@@ -967,17 +967,17 @@ class ProcessIterator implements Iterator<Process> {
   bool moveNext() => ...
 }
 
-// Uma classe mítica que permite iterar por todos os
-// processos. Estende uma subclasse de [Iterable].
+// A mythical class that lets you iterate through all
+// processes. Extends a subclass of [Iterable].
 class Processes extends IterableBase<Process> {
   @override
   final Iterator<Process> iterator = ProcessIterator();
 }
 
 void main() {
-  // Objetos Iterable podem ser usados com for-in.
+  // Iterable objects can be used with for-in.
   for (final process in Processes()) {
-    // Faça algo com o processo.
+    // Do something with the process.
   }
 }
 ```

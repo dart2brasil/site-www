@@ -89,7 +89,7 @@ Uma variável do tipo `int` não pode ter o valor `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (invalid-null)" replace="/null;/[!null!];/g"?>
 ```dart
-int a = [!null!]; // INVÁLIDO.
+int a = [!null!]; // INVALID.
 ```
 
 Ao criar uma variável, adicione `?` ao tipo para indicar
@@ -97,7 +97,7 @@ que a variável pode ser `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (valid-null)" replace="/int\?/[!int?!]/g"?>
 ```dart
-[!int?!] a = null; // Válido.
+[!int?!] a = null; // Valid.
 ```
 
 Você pode simplificar um pouco esse código porque, em todas as versões do Dart,
@@ -105,7 +105,7 @@ Você pode simplificar um pouco esse código porque, em todas as versões do Dar
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (simple-null)"?>
 ```dart
-int? a; // O valor inicial de a é null.
+int? a; // The initial value of a is null.
 ```
 
 Para saber mais sobre segurança nula no Dart,
@@ -164,10 +164,10 @@ variável estiver nula no momento:
 ```dart
 int? a; // = null
 a ??= 3;
-print(a); // <-- Imprime 3.
+print(a); // <-- Prints 3.
 
 a ??= 5;
-print(a); // <-- Ainda imprime 3.
+print(a); // <-- Still prints 3.
 ```
 
 Outro operador *null-aware* é `??`,
@@ -177,8 +177,8 @@ caso em que ele avalia e retorna a expressão à sua direita:
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (null-aware-operators-2)"?>
 ```dart
-print(1 ?? 3); // <-- Imprime 1.
-print(null ?? 12); // <-- Imprime 12.
+print(1 ?? 3); // <-- Prints 1.
+print(null ?? 12); // <-- Prints 12.
 ```
 
 ### Exemplo de código {:.no_toc}
@@ -250,21 +250,21 @@ coloque um ponto de interrogação (`?`) antes do ponto (`.`):
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access)" replace="/result = //g; /;//g;"?>
 ```dart
-meuObjeto?.algumaPropriedade
+myObject?.someProperty
 ```
 
 O código anterior é equivalente ao seguinte:
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access-equivalent)" replace="/result = //g; /;//g;"?>
 ```dart
-(meuObjeto != null) ? meuObjeto.algumaPropriedade : null
+(myObject != null) ? myObject.someProperty : null
 ```
 
 Você pode encadear vários usos de `?.` em uma única expressão:
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access-multiple)" replace="/result = //g; /;//g;"?>
 ```dart
-meuObjeto?.algumaPropriedade?.algumMetodo()
+myObject?.someProperty?.someMethod()
 ```
 
 O código anterior retorna nulo (e nunca chama `algumMetodo()`) se
@@ -334,12 +334,12 @@ Você pode criá-los usando literais:
 
 <?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-inferred)"?>
 ```dart
-final umaListaDeStrings = ['um', 'dois', 'três'];
-final umSetDeStrings = {'um', 'dois', 'três'};
-final umMapDeStringsParaInts = {
-  'um': 1,
-  'dois': 2,
-  'três': 3,
+final aListOfStrings = ['one', 'two', 'three'];
+final aSetOfStrings = {'one', 'two', 'three'};
+final aMapOfStringsToInts = {
+  'one': 1,
+  'two': 2,
+  'three': 3,
 };
 ```
 
@@ -351,9 +351,9 @@ Ou você pode especificar o tipo você mesmo:
 
 <?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-specified)"?>
 ```dart
-final umaListaDeInts = <int>[];
-final umSetDeInts = <int>{};
-final umMapDeIntParaDouble = <int, double>{};
+final aListOfInts = <int>[];
+final aSetOfInts = <int>{};
+final aMapOfIntToDouble = <int, double>{};
 ```
 
 Especificar tipos é útil quando você inicializa uma lista com conteúdos de um subtipo,
@@ -361,7 +361,7 @@ mas ainda quer que a lista seja `List<TipoBase>`:
 
 <?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-subtypes)"?>
 ```dart
-final umaListaDeTipoBase = <TipoBase>[SubTipo(), SubTipo()];
+final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
 
 ### Exemplo de código {:.no_toc}
@@ -482,7 +482,7 @@ da classe `List`:
 
 <?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-long)"?>
 ```dart
-bool hasEmpty = umaListaDeStrings.any((s) {
+bool hasEmpty = aListOfStrings.any((s) {
   return s.isEmpty;
 });
 ```
@@ -491,7 +491,7 @@ Aqui está uma maneira mais simples de escrever esse código:
 
 <?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-short)"?>
 ```dart
-bool hasEmpty = umaListaDeStrings.any((s) => s.isEmpty);
+bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
 
 ### Exemplo de código {:.no_toc}
@@ -596,7 +596,7 @@ Todos nós já vimos uma expressão como esta:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (no-cascade)" replace="/;//g"?>
 ```dart
-meuObjeto.algumMetodo()
+myObject.someMethod()
 ```
 
 Ele invoca `algumMetodo()` em `meuObjeto`, e o resultado da
@@ -606,7 +606,7 @@ Aqui está a mesma expressão com um *cascade*:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (uses-cascade)" replace="/;//g"?>
 ```dart
-meuObjeto..algumMetodo()
+myObject..someMethod()
 ```
 
 Embora ele ainda invoque `algumMetodo()` em `meuObjeto`, o resultado
@@ -620,11 +620,11 @@ para ler as propriedades de `botao` se ele não for `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
-var botao = querySelector('#confirmar');
-botao?.text = 'Confirmar';
-botao?.classes.add('importante');
-botao?.onClick.listen((e) => window.alert('Confirmado!'));
-botao?.scrollIntoView();
+var button = querySelector('#confirm');
+button?.text = 'Confirm';
+button?.classes.add('important');
+button?.onClick.listen((e) => window.alert('Confirmed!'));
+button?.scrollIntoView();
 ```
 
 Para usar *cascades*,
@@ -636,10 +636,10 @@ e torna a variável `botao` desnecessária:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
-querySelector('#confirmar')
-  ?..text = 'Confirmar'
-  ..classes.add('importante')
-  ..onClick.listen((e) => window.alert('Confirmado!'))
+querySelector('#confirm')
+  ?..text = 'Confirm'
+  ..classes.add('important')
+  ..onClick.listen((e) => window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
 
@@ -743,14 +743,14 @@ Por exemplo, você pode garantir que o valor de uma propriedade seja válido:
 
 <?code-excerpt "misc/lib/cheatsheet/getters_setters.dart"?>
 ```dart
-class MinhaClasse {
-  int _umaPropriedade = 0;
+class MyClass {
+  int _aProperty = 0;
 
-  int get umaPropriedade => _umaPropriedade;
+  int get aProperty => _aProperty;
 
-  set umaPropriedade(int value) {
+  set aProperty(int value) {
     if (value >= 0) {
-      _umaPropriedade = value;
+      _aProperty = value;
     }
   }
 }
@@ -760,16 +760,16 @@ Você também pode usar um *getter* para definir uma propriedade computada:
 
 <?code-excerpt "misc/lib/cheatsheet/getter_compute.dart"?>
 ```dart
-class MinhaClasse {
-  final List<int> _valores = [];
+class MyClass {
+  final List<int> _values = [];
 
-  void adicionaValor(int value) {
-    _valores.add(value);
+  void addValue(int value) {
+    _values.add(value);
   }
 
-  // Uma propriedade computada.
-  int get contagem {
-    return _valores.length;
+  // A computed property.
+  int get count {
+    return _values.length;
   }
 }
 ```
@@ -926,7 +926,7 @@ int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 
 void main() {
   int newTotal = sumUpToFive(1);
-  print(newTotal); // <-- imprime 15
+  print(newTotal); // <-- prints 15
 }
 ```
 
@@ -1042,7 +1042,7 @@ void printName(String firstName, String lastName, {String? middleName}) {
 void main() {
   printName('Dash', 'Dartisan');
   printName('John', 'Smith', middleName: 'Who');
-  // Argumentos nomeados podem ser colocados em qualquer lugar na lista de argumentos
+  // Named arguments can be placed anywhere in the argument list
   printName('John', middleName: 'Who', 'Smith');
 }
 ```
@@ -1186,7 +1186,7 @@ permissão para lançar qualquer objeto não nulo:
 
 <?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (simple-throws)"?>
 ```dart
-throw Exception('Algo ruim aconteceu.');
+throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
 ```
 
@@ -1197,14 +1197,14 @@ Use as palavras-chave `try`, `on` e `catch` ao lidar com exceções:
 try {
   breedMoreLlamas();
 } on OutOfLlamasException {
-  // Uma exceção específica
+  // A specific exception
   buyMoreLlamas();
 } on Exception catch (e) {
-  // Qualquer outra coisa que seja uma exceção
-  print('Exceção desconhecida: $e');
+  // Anything else that is an exception
+  print('Unknown exception: $e');
 } catch (e) {
-  // Nenhum tipo especificado, lida com todos
-  print('Algo realmente desconhecido: $e');
+  // No specified type, handles all
+  print('Something really unknown: $e');
 }
 ```
 
@@ -1220,7 +1220,7 @@ para propagar a exceção:
 try {
   breedMoreLlamas();
 } catch (e) {
-  print('Eu estava apenas tentando criar lhamas!');
+  print('I was just trying to breed llamas!');
   rethrow;
 }
 ```
@@ -1233,9 +1233,9 @@ use `finally`:
 try {
   breedMoreLlamas();
 } catch (e) {
-  // ... lidar com a exceção ...
+  // ... handle exception ...
 } finally {
-  // Sempre limpe, mesmo que uma exceção seja lançada.
+  // Always clean up, even if an exception is thrown.
   cleanLlamaStalls();
 }
 ```
@@ -1443,7 +1443,7 @@ Se você adicionar valores padrão, poderá omitir `required`:
 <?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (defaulted)" replace="/olorO/olor/g; /.positional//g; /.named//g;"?>
 ```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
-// ou
+// or
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
 ```
 
@@ -1531,7 +1531,7 @@ que fica entre a assinatura do construtor e seu corpo:
 Point.fromJson(Map<String, double> json)
     : x = json['x']!,
       y = json['y']! {
-  print('Em Point.fromJson(): ($x, $y)');
+  print('In Point.fromJson(): ($x, $y)');
 }
 ```
 
@@ -1543,7 +1543,7 @@ que são executadas apenas durante o desenvolvimento:
 NonNegativePoint(this.x, this.y)
     : assert(x >= 0),
       assert(y >= 0) {
-  print('Eu acabei de criar um NonNegativePoint: ($x, $y)');
+  print('I just made a NonNegativePoint: ($x, $y)');
 }
 ```
 
@@ -1750,7 +1750,7 @@ class Shape {
     if (typeName == 'square') return Square();
     if (typeName == 'circle') return Circle();
 
-    throw ArgumentError('Não reconhecido $typeName');
+    throw ArgumentError('Unrecognized $typeName');
   }
 }
 ```
@@ -1915,13 +1915,13 @@ class Automobile {
   String model;
   int mpg;
 
-  // O construtor principal para esta classe.
+  // The main constructor for this class.
   Automobile(this.make, this.model, this.mpg);
 
-  // Delega para o construtor principal.
+  // Delegates to the main constructor.
   Automobile.hybrid(String make, String model) : this(make, model, 60);
 
-  // Delega para um construtor nomeado
+  // Delegates to a named constructor
   Automobile.fancyHybrid() : this.hybrid('Futurecar', 'Mark 2');
 }
 ```

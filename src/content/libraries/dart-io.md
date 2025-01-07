@@ -60,13 +60,13 @@ strings (cadeias de caracteres).
 void main() async {
   var config = File('config.txt');
 
-  // Coloca todo o arquivo em uma única string.
+  // Put the whole file in a single string.
   var stringContents = await config.readAsString();
-  print('O arquivo tem ${stringContents.length} caracteres.');
+  print('The file is ${stringContents.length} characters long.');
 
-  // Coloca cada linha do arquivo em sua própria string.
+  // Put each line of the file into its own string.
   var lines = await config.readAsLines();
-  print('O arquivo tem ${lines.length} linhas.');
+  print('The file is ${lines.length} lines long.');
 }
 ```
 
@@ -83,7 +83,7 @@ void main() async {
   var config = File('config.txt');
 
   var contents = await config.readAsBytes();
-  print('O arquivo tem ${contents.length} bytes.');
+  print('The file is ${contents.length} bytes long.');
 }
 ```
 
@@ -125,9 +125,9 @@ void main() async {
   var lines = utf8.decoder.bind(inputStream).transform(const LineSplitter());
   try {
     await for (final line in lines) {
-      print('Obtido ${line.length} caracteres do stream');
+      print('Got ${line.length} characters from stream');
     }
-    print('arquivo agora está fechado');
+    print('file is now closed');
   } catch (e) {
     print(e);
   }
@@ -145,7 +145,7 @@ sobrescreve completamente os dados existentes no arquivo.
 ```dart
 var logFile = File('log.txt');
 var sink = logFile.openWrite();
-sink.write('ARQUIVO ACESSADO ${DateTime.now()}\n');
+sink.write('FILE ACCESSED ${DateTime.now()}\n');
 await sink.flush();
 await sink.close();
 ```
@@ -176,9 +176,9 @@ void main() async {
     var dirList = dir.list();
     await for (final FileSystemEntity f in dirList) {
       if (f is File) {
-        print('Arquivo encontrado ${f.path}');
+        print('Found file ${f.path}');
       } else if (f is Directory) {
-        print('Diretório encontrado ${f.path}');
+        print('Found dir ${f.path}');
       }
     }
   } catch (e) {
@@ -228,7 +228,7 @@ void main() async {
 }
 
 void processRequest(HttpRequest request) {
-  print('Recebida requisição para ${request.uri.path}');
+  print('Got request for ${request.uri.path}');
   final response = request.response;
   if (request.uri.path == '/dart') {
     response
@@ -236,7 +236,7 @@ void processRequest(HttpRequest request) {
         'text',
         'plain',
       )
-      ..write('Olá do servidor');
+      ..write('Hello from the server');
   } else {
     response.statusCode = HttpStatus.notFound;
   }

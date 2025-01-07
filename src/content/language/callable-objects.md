@@ -32,7 +32,7 @@ class WannabeFunction {
 }
 
 var wf = WannabeFunction();
-var out = wf('Oi', 'aí,', 'pessoal');
+var out = wf('Hi', 'there,', 'gang');
 
 void main() => print(out);
 ```

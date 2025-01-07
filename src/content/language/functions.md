@@ -92,7 +92,7 @@ já que seu valor padrão será `null`:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
 ```dart
-/// Define as flags [bold] e [hidden] ...
+/// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool? bold, bool? hidden}) {...}
 ```
 
@@ -114,10 +114,10 @@ Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
 ```dart
-/// Define as flags [bold] e [hidden] ...
+/// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool bold = false, bool hidden = false}) {...}
 
-// bold será true; hidden será false.
+// bold will be true; hidden will be false.
 enableFlags(bold: true);
 ```
 
@@ -166,9 +166,9 @@ já que seu valor padrão será `null`:
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-parameters)"?>
 ```dart
 String say(String from, String msg, [String? device]) {
-  var result = '$from diz $msg';
+  var result = '$from says $msg';
   if (device != null) {
-    result = '$result com um $device';
+    result = '$result with a $device';
   }
   return result;
 }
@@ -179,15 +179,15 @@ sem o parâmetro opcional:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-without-optional-param)"?>
 ```dart
-assert(say('Bob', 'Olá') == 'Bob diz Olá');
+assert(say('Bob', 'Howdy') == 'Bob says Howdy');
 ```
 
 E aqui está um exemplo de chamada dessa função com o terceiro parâmetro:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-with-optional-param)"?>
 ```dart
-assert(say('Bob', 'Olá', 'sinal de fumaça') ==
-    'Bob diz Olá com um sinal de fumaça');
+assert(say('Bob', 'Howdy', 'smoke signal') ==
+    'Bob says Howdy with a smoke signal');
 ```
 
 Para definir um valor padrão para um parâmetro posicional opcional além de `null`,
@@ -197,12 +197,12 @@ Por exemplo:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
-String say(String from, String msg, [String device = 'pombo-correio']) {
-  var result = '$from diz $msg com um $device';
+String say(String from, String msg, [String device = 'carrier pigeon']) {
+  var result = '$from says $msg with a $device';
   return result;
 }
 
-assert(say('Bob', 'Olá') == 'Bob diz Olá com um pombo-correio');
+assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 ```
 
 <a id="the-main-function" aria-hidden="true"></a>
@@ -218,7 +218,7 @@ Aqui está uma função `main()` simples:
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart
 void main() {
-  print('Olá, Mundo!');
+  print('Hello, World!');
 }
 ```
 
@@ -227,7 +227,7 @@ recebe argumentos:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (main-args)"?>
 ```dart title="args.dart"
-// Execute o aplicativo assim: dart run args.dart 1 test
+// Run the app like this: dart run args.dart 1 test
 void main(List<String> arguments) {
   print(arguments);
 
@@ -252,7 +252,7 @@ void printElement(int element) {
 
 var list = [1, 2, 3];
 
-// Passa printElement como um parâmetro.
+// Pass printElement as a parameter.
 list.forEach(printElement);
 ```
 
@@ -261,7 +261,7 @@ Você também pode atribuir uma função a uma variável, como:
 <?code-excerpt "misc/test/language_tour/functions_test.dart (function-as-var)"?>
 ```dart
 var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
-assert(loudify('olá') == '!!! OLÁ !!!');
+assert(loudify('hello') == '!!! HELLO !!!');
 ```
 
 Este exemplo usa uma função anônima.
@@ -277,12 +277,12 @@ os nomes dos parâmetros nomeados não podem ser omitidos. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-type)"?>
 ```dart
-void greet(String name, {String greeting = 'Olá'}) =>
+void greet(String name, {String greeting = 'Hello'}) =>
     print('$greeting $name!');
 
-// Armazena `greet` em uma variável e chama ela.
+// Store `greet` in a variable and call it.
 void Function(String, {String greeting}) g = greet;
-g('Dash', greeting: 'Como vai você');
+g('Dash', greeting: 'Howdy');
 ```
 
 :::note
@@ -325,12 +325,12 @@ imprime cada string convertida com seu comprimento.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
-const list = ['maçãs', 'bananas', 'laranjas'];
+const list = ['apples', 'bananas', 'oranges'];
 
 var uppercaseList = list.map((item) {
   return item.toUpperCase();
 }).toList();
-// Converte para lista após o mapeamento
+// Convert to list after mapping
 
 for (var item in uppercaseList) {
   print('$item: ${item.length}');
@@ -342,12 +342,12 @@ Clique em **Executar** para executar o código.
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
 ```dartpad
 void main() {
-  const list = ['maçãs', 'bananas', 'laranjas'];
+  const list = ['apples', 'bananas', 'oranges'];
 
   var uppercaseList = list.map((item) {
     return item.toUpperCase();
   }).toList();
-  // Converte para lista após o mapeamento
+  // Convert to list after mapping
 
   for (var item in uppercaseList) {
     print('$item: ${item.length}');
@@ -410,17 +410,17 @@ função retornada vá, ela se lembra de `addBy`.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (function-closure)"?>
 ```dart
-/// Retorna uma função que adiciona [addBy] ao
-/// argumento da função.
+/// Returns a function that adds [addBy] to the
+/// function's argument.
 Function makeAdder(int addBy) {
   return (int i) => addBy + i;
 }
 
 void main() {
-  // Cria uma função que adiciona 2.
+  // Create a function that adds 2.
   var add2 = makeAdder(2);
 
-  // Cria uma função que adiciona 4.
+  // Create a function that adds 4.
   var add4 = makeAdder(4);
 
   assert(add2(3) == 5);
@@ -445,21 +445,21 @@ var buffer = StringBuffer();
 
 <?code-excerpt "misc/lib/language_tour/tear_offs.dart (good-example)" ?>
 ```dart tag=good
-// Tear-off de função
+// Function tear-off
 charCodes.forEach(print);
 
-// Tear-off de método
+// Method tear-off
 charCodes.forEach(buffer.write);
 ```
 
 <?code-excerpt "misc/lib/language_tour/tear_offs.dart (bad-example)" ?>
 ```dart tag=bad
-// Lambda de função
+// Function lambda
 charCodes.forEach((code) {
   print(code);
 });
 
-// Lambda de método
+// Method lambda
 charCodes.forEach((code) {
   buffer.write(code);
 });
@@ -472,36 +472,36 @@ métodos de instância quanto à igualdade:
 
 <?code-excerpt "misc/lib/language_tour/function_equality.dart"?>
 ```dart
-void foo() {} // Uma função de nível superior
+void foo() {} // A top-level function
 
 class A {
-  static void bar() {} // Um método estático
-  void baz() {} // Um método de instância
+  static void bar() {} // A static method
+  void baz() {} // An instance method
 }
 
 void main() {
   Function x;
 
-  // Comparando funções de nível superior.
+  // Comparing top-level functions.
   x = foo;
   assert(foo == x);
 
-  // Comparando métodos estáticos.
+  // Comparing static methods.
   x = A.bar;
   assert(A.bar == x);
 
-  // Comparando métodos de instância.
-  var v = A(); // Instância #1 de A
-  var w = A(); // Instância #2 de A
+  // Comparing instance methods.
+  var v = A(); // Instance #1 of A
+  var w = A(); // Instance #2 of A
   var y = w;
   x = w.baz;
 
-  // Esses closures referem-se à mesma instância (#2),
-  // então eles são iguais.
+  // These closures refer to the same instance (#2),
+  // so they're equal.
   assert(y.baz == x);
 
-  // Esses closures referem-se a instâncias diferentes,
-  // então eles são desiguais.
+  // These closures refer to different instances,
+  // so they're unequal.
   assert(v.baz != w.baz);
 }
 ```

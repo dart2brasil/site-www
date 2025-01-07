@@ -153,9 +153,9 @@ verifica a presença de `dart:io` e `dart:js_interop`:
 
 <?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
 ```dart title="lib/hw_mp.dart"
-export 'src/hw_none.dart' // Implementação stub
-    if (dart.library.io) 'src/hw_io.dart' // Implementação dart:io
-    if (dart.library.js_interop) 'src/hw_web.dart'; // Implementação package:web
+export 'src/hw_none.dart' // Stub implementation
+    if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
+    if (dart.library.js_interop) 'src/hw_web.dart'; // package:web implementation
 ```
 
 Aqui está o que esse código faz:
@@ -191,7 +191,7 @@ void alarm([String? text]) {
   stderr.writeln(text ?? message);
 }
 
-String get message => 'Olá Mundo da VM!';
+String get message => 'Hello World from the VM!';
 ```
 
 E aqui está a implementação padrão,
@@ -199,9 +199,9 @@ que usa stubs que lançam `UnsupportedError`:
 
 <?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
 ```dart title="lib/src/hw_none.dart"
-void alarm([String? text]) => throw UnsupportedError('alarme hw_none');
+void alarm([String? text]) => throw UnsupportedError('hw_none alarm');
 
-String get message => throw UnsupportedError('mensagem hw_none');
+String get message => throw UnsupportedError('hw_none message');
 ```
 
 Em qualquer plataforma,

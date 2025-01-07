@@ -113,7 +113,7 @@ pode ter valores inteiros e double.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (declare-num)"?>
 ```dart
-num x = 1; // x pode ter valores int e double
+num x = 1; // x can have both int and double values
 x += 2.5;
 ```
 
@@ -121,7 +121,7 @@ Literais inteiros são automaticamente convertidos em doubles quando necessário
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
 ```dart
-double z = 1; // Equivalente a double z = 1.0.
+double z = 1; // Equivalent to double z = 1.0.
 ```
 
 Veja como transformar uma string em um número ou vice-versa:
@@ -204,10 +204,10 @@ Você pode usar aspas simples ou duplas para criar uma string:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (quoting)"?>
 ```dart
-var s1 = 'Aspas simples funcionam bem para literais de string.';
-var s2 = "Aspas duplas funcionam igualmente bem.";
-var s3 = 'É fácil escapar do delimitador de string.';
-var s4 = "É ainda mais fácil usar o outro delimitador.";
+var s1 = 'Single quotes work well for string literals.';
+var s2 = "Double quotes work just as well.";
+var s3 = 'It\'s easy to escape the string delimiter.';
+var s4 = "It's even easier to use the other delimiter.";
 ```
 
 <a id="string-interpolation"></a>
@@ -219,15 +219,15 @@ método `toString()` do objeto.
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (string-interpolation)"?>
 ```dart
-var s = 'interpolação de string';
+var s = 'string interpolation';
 
-assert('Dart tem $s, o que é muito útil.' ==
-    'Dart tem interpolação de string, '
-        'o que é muito útil.');
-assert('Isso merece letras maiúsculas. '
-        '${s.toUpperCase()} é muito útil!' ==
-    'Isso merece letras maiúsculas. '
-        'INTERPOLAÇÃO DE STRING é muito útil!');
+assert('Dart has $s, which is very handy.' ==
+    'Dart has string interpolation, '
+        'which is very handy.');
+assert('That deserves all caps. '
+        '${s.toUpperCase()} is very handy!' ==
+    'That deserves all caps. '
+        'STRING INTERPOLATION is very handy!');
 ```
 
 :::note
@@ -240,15 +240,15 @@ Você pode concatenar strings usando literais de string adjacentes ou o operador
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (adjacent-string-literals)"?>
 ```dart
-var s1 = 'Concatenação '
-    'de string'
-    " funciona mesmo em quebras de linha.";
+var s1 = 'String '
+    'concatenation'
+    " works even over line breaks.";
 assert(s1 ==
-    'Concatenação de string funciona mesmo em '
-        'quebras de linha.');
+    'String concatenation works even over '
+        'line breaks.');
 
-var s2 = 'O operador + ' + 'também funciona.';
-assert(s2 == 'O operador + também funciona.');
+var s2 = 'The + operator ' + 'works, as well.';
+assert(s2 == 'The + operator works, as well.');
 ```
 
 Para criar uma string multi-linha, use aspas triplas com
@@ -257,19 +257,19 @@ aspas simples ou duplas:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (triple-quotes)"?>
 ```dart
 var s1 = '''
-Você pode criar
-strings multi-linha como esta.
+You can create
+multi-line strings like this one.
 ''';
 
-var s2 = """Esta também é uma
-string multi-linha.""";
+var s2 = """This is also a
+multi-line string.""";
 ```
 
 Você pode criar uma string "crua" prefixando-a com `r`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (raw-strings)"?>
 ```dart
-var s = r'Em uma string crua, nem mesmo \n recebe tratamento especial.';
+var s = r'In a raw string, not even \n gets special treatment.';
 ```
 
 Veja [Runes e clusters de grafemas](#runes-and-grapheme-clusters) para detalhes sobre como
@@ -281,15 +281,15 @@ que avalie para null ou um valor numérico, string ou booleano.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (string-literals)"?>
 ```dart
-// Estes funcionam em uma string const.
+// These work in a const string.
 const aConstNum = 0;
 const aConstBool = true;
-const aConstString = 'uma string constante';
+const aConstString = 'a constant string';
 
-// Estes NÃO funcionam em uma string const.
+// These do NOT work in a const string.
 var aNum = 0;
 var aBool = true;
-var aString = 'uma string';
+var aString = 'a string';
 const aConstList = [1, 2, 3];
 
 const validConstString = '$aConstNum $aConstBool $aConstString';
@@ -313,19 +313,19 @@ Em vez disso, verifique explicitamente os valores, como isto:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (no-truthy)"?>
 ```dart
-// Verifica por uma string vazia.
+// Check for an empty string.
 var fullName = '';
 assert(fullName.isEmpty);
 
-// Verifica por zero.
+// Check for zero.
 var hitPoints = 0;
 assert(hitPoints == 0);
 
-// Verifica por null.
+// Check for null.
 var unicorn = null;
 assert(unicorn == null);
 
-// Verifica por NaN.
+// Check for NaN.
 var iMeantToDoThis = 0 / 0;
 assert(iMeantToDoThis.isNaN);
 ```
@@ -362,10 +362,10 @@ Aqui está um exemplo de como usar a API characters:
 import 'package:characters/characters.dart';
 
 void main() {
-  var hi = 'Olá 🇩🇰';
+  var hi = 'Hi 🇩🇰';
   print(hi);
-  print('O final da string: ${hi.substring(hi.length - 1)}');
-  print('O último caractere: ${hi.characters.last}');
+  print('The end of the string: ${hi.substring(hi.length - 1)}');
+  print('The last character: ${hi.characters.last}');
 }
 ```
 

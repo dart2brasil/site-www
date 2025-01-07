@@ -75,10 +75,10 @@ maneira:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 ```dart
-// Parênteses melhoram a legibilidade.
+// Parentheses improve readability.
 if ((n % i == 0) && (d % i == 0)) ...
 
-// Mais difícil de ler, mas equivalente.
+// Harder to read, but equivalent.
 if (n % i == 0 && d % i == 0) ...
 ```
 
@@ -112,9 +112,9 @@ Exemplo:
 assert(2 + 3 == 5);
 assert(2 - 3 == -1);
 assert(2 * 3 == 6);
-assert(5 / 2 == 2.5); // O resultado é um double
-assert(5 ~/ 2 == 2); // O resultado é um int
-assert(5 % 2 == 1); // Resto
+assert(5 / 2 == 2.5); // Result is a double
+assert(5 ~/ 2 == 2); // Result is an int
+assert(5 % 2 == 1); // Remainder
 
 assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
 ```
@@ -139,19 +139,19 @@ int a;
 int b;
 
 a = 0;
-b = ++a; // Incrementa a antes que b receba seu valor.
+b = ++a; // Increment a before b gets its value.
 assert(a == b); // 1 == 1
 
 a = 0;
-b = a++; // Incrementa a depois que b recebe seu valor.
+b = a++; // Increment a after b gets its value.
 assert(a != b); // 1 != 0
 
 a = 0;
-b = --a; // Decrementa a antes que b receba seu valor.
+b = --a; // Decrement a before b gets its value.
 assert(a == b); // -1 == -1
 
 a = 0;
-b = a--; // Decrementa a depois que b recebe seu valor.
+b = a--; // Decrement a after b gets its value.
 assert(a != b); // -1 != 0
 ```
 
@@ -227,7 +227,7 @@ tipo antes de usar o objeto.
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp-is-person)"?>
 ```dart
 if (employee is Person) {
-  // Verificação de tipo
+  // Type check
   employee.firstName = 'Bob';
 }
 ```
@@ -245,9 +245,9 @@ use o operador `??=`.
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (assignment)"?>
 ```dart
-// Atribuir valor a a
+// Assign value to a
 a = value;
-// Atribuir valor a b se b for nulo; caso contrário, b permanece o mesmo
+// Assign value to b if b is null; otherwise, b stays the same
 b ??= value;
 ```
 
@@ -276,8 +276,8 @@ atribuição composta:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (op-assign)"?>
 ```dart
-var a = 2; // Atribuir usando =
-a *= 3; // Atribuir e multiplicar: a = a * 3
+var a = 2; // Assign using =
+a *= 3; // Assign and multiply: a = a * 3
 assert(a == 6);
 ```
 
@@ -300,7 +300,7 @@ Aqui está um exemplo de uso dos operadores lógicos:
 <?code-excerpt "misc/lib/language_tour/operators.dart (op-logical)"?>
 ```dart
 if (!done && (col == 0 || col == 3)) {
-  // ...Faça algo...
+  // ...Do something...
 }
 ```
 
@@ -341,15 +341,15 @@ assert((value & ~bitmask) == 0x20); // AND NOT
 assert((value | bitmask) == 0x2f); // OR
 assert((value ^ bitmask) == 0x2d); // XOR
 
-assert((value << 4) == 0x220); // Deslocamento para a esquerda
-assert((value >> 4) == 0x02); // Deslocamento para a direita
+assert((value << 4) == 0x220); // Shift left
+assert((value >> 4) == 0x02); // Shift right
 
-// Exemplo de deslocamento para a direita que resulta em um comportamento diferente na web
-// porque o valor do operando muda quando mascarado para 32 bits:
+// Shift right example that results in different behavior on web
+// because the operand value changes when masked to 32 bits:
 assert((-value >> 4) == -0x03);
 
-assert((value >>> 4) == 0x02); // Deslocamento para a direita sem sinal
-assert((-value >>> 4) > 0); // Deslocamento para a direita sem sinal
+assert((value >>> 4) == 0x02); // Unsigned shift right
+assert((-value >>> 4) > 0); // Unsigned shift right
 ```
 
 :::version-note
@@ -395,10 +395,10 @@ mas não de forma tão sucinta:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (if-null-alt)"?>
 ```dart
-// A versão um pouco mais longa usa o operador ?:.
+// Slightly longer version uses ?: operator.
 String playerName(String? name) => name != null ? name : 'Guest';
 
-// A versão muito longa usa a instrução if-else.
+// Very long version uses if-else statement.
 String playerName(String? name) {
   if (name != null) {
     return name;
@@ -449,10 +449,10 @@ seja tentada nesse objeto nulo.
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
-querySelector('#confirm') // Obtém um objeto.
-  ?..text = 'Confirm' // Usa seus membros.
+querySelector('#confirm') // Get an object.
+  ?..text = 'Confirm' // Use its members.
   ..classes.add('important')
-  ..onClick.listen((e) => window.alert('Confirmado!'))
+  ..onClick.listen((e) => window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
 
@@ -467,7 +467,7 @@ O código anterior é equivalente ao seguinte:
 var button = querySelector('#confirm');
 button?.text = 'Confirm';
 button?.classes.add('important');
-button?.onClick.listen((e) => window.alert('Confirmado!'));
+button?.onClick.listen((e) => window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
 
@@ -492,7 +492,7 @@ um objeto real. Por exemplo, o código a seguir falha:
 ```dart
 var sb = StringBuffer();
 sb.write('foo')
-  ..write('bar'); // Erro: método 'write' não é definido para 'void'.
+  ..write('bar'); // Error: method 'write' isn't defined for 'void'.
 ```
 
 A chamada `sb.write()` retorna void,

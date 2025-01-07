@@ -47,7 +47,7 @@ você pode importar uma biblioteca que contém uma extensão da classe `String`:
 ```dart
 import 'string_apis.dart';
 // ···
-print('42'.parseInt()); // Use um método de extensão.
+print('42'.parseInt()); // Use an extension method.
 ```
 
 Extensões podem definir não apenas métodos,
@@ -78,11 +78,11 @@ importar a biblioteca em que ele está e usá-lo como um método comum:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (import-and-use)" replace="/  print/print/g"?>
 ```dart
-// Importe uma biblioteca que contém uma extensão em String.
+// Import a library that contains an extension on String.
 import 'string_apis.dart';
 // ···
-print('42'.padLeft(5)); // Use um método String.
-print('42'.parseInt()); // Use um método de extensão.
+print('42'.padLeft(5)); // Use a String method.
+print('42'.parseInt()); // Use an extension method.
 ```
 
 Isso é tudo que você geralmente precisa saber para usar métodos de extensão.
@@ -98,7 +98,7 @@ Por exemplo, o código a seguir resulta em uma exceção em tempo de execução:
 <?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (dynamic)" plaster="none" replace="/  \/\/ print/print/g"?>
 ```dart
 dynamic d = '2';
-print(d.parseInt()); // Exceção em tempo de execução: NoSuchMethodError
+print(d.parseInt()); // Runtime exception: NoSuchMethodError
 ```
 
 Métodos de extensão _funcionam_ com a inferência de tipo do Dart.
@@ -108,7 +108,7 @@ a variável `v` tem o tipo `String` inferido:
 <?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (var)"?>
 ```dart
 var v = '2';
-print(v.parseInt()); // Saída: 2
+print(v.parseInt()); // Output: 2
 ```
 
 A razão pela qual `dynamic` não funciona é que
@@ -130,15 +130,15 @@ usando `show` ou `hide` para limitar a API exposta:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_import.dart (hide-conflicts)" replace="/  //g"?>
 ```dart
-// Define o método de extensão String parseInt().
+// Defines the String extension method parseInt().
 import 'string_apis.dart';
 
-// Também define parseInt(), mas ocultar NumberParsing2
-// oculta esse método de extensão.
+// Also defines parseInt(), but hiding NumberParsing2
+// hides that extension method.
 import 'string_apis_2.dart' hide NumberParsing2;
 
 // ···
-// Usa o parseInt() definido em 'string_apis.dart'.
+// Uses the parseInt() defined in 'string_apis.dart'.
 print('42'.parseInt());
 ```
 
@@ -147,13 +147,13 @@ o que resulta em código que parece que a extensão é uma classe wrapper (empac
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_explicit.dart (conflicts-explicit)" replace="/  //g"?>
 ```dart
-// Ambas as bibliotecas definem extensões em String que contêm parseInt(),
-// e as extensões têm nomes diferentes.
-import 'string_apis.dart'; // Contém a extensão NumberParsing.
-import 'string_apis_2.dart'; // Contém a extensão NumberParsing2.
+// Both libraries define extensions on String that contain parseInt(),
+// and the extensions have different names.
+import 'string_apis.dart'; // Contains NumberParsing extension.
+import 'string_apis_2.dart'; // Contains NumberParsing2 extension.
 
 // ···
-// print('42'.parseInt()); // Não funciona.
+// print('42'.parseInt()); // Doesn't work.
 print(NumberParsing('42').parseInt());
 print(NumberParsing2('42').parseInt());
 ```
@@ -163,22 +163,22 @@ então você pode precisar importar usando um prefixo:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_prefix.dart (conflicts-prefix)" replace="/  //g"?>
 ```dart
-// Ambas as bibliotecas definem extensões nomeadas NumberParsing
-// que contêm o método de extensão parseInt(). Uma extensão NumberParsing
-// (em 'string_apis_3.dart') também define parseNum().
+// Both libraries define extensions named NumberParsing
+// that contain the extension method parseInt(). One NumberParsing
+// extension (in 'string_apis_3.dart') also defines parseNum().
 import 'string_apis.dart';
 import 'string_apis_3.dart' as rad;
 
 // ···
-// print('42'.parseInt()); // Não funciona.
+// print('42'.parseInt()); // Doesn't work.
 
-// Use a extensão ParseNumbers de string_apis.dart.
+// Use the ParseNumbers extension from string_apis.dart.
 print(NumberParsing('42').parseInt());
 
-// Use a extensão ParseNumbers de string_apis_3.dart.
+// Use the ParseNumbers extension from string_apis_3.dart.
 print(rad.NumberParsing('42').parseInt());
 
-// Somente string_apis_3.dart tem parseNum().
+// Only string_apis_3.dart has parseNum().
 print('42'.parseNum());
 ```
 

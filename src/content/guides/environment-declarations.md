@@ -50,8 +50,8 @@ Por exemplo, se você quiser imprimir mensagens de log apenas quando a declaraç
 <?code-excerpt "misc/lib/development/environment_declarations.dart (debug-log)"?>
 ```dart
 void log(String message) {
-  // Registra a mensagem de depuração se a declaração de ambiente 'DEBUG' for `true`.
-  // Se nenhum valor foi especificado, não registre.
+  // Log the debug message if the environment declaration 'DEBUG' is `true`.
+  // If there was no value specified, do not log.
   if (const bool.fromEnvironment('DEBUG', defaultValue: false)) {
     print('Debug: $message');
   }
@@ -65,7 +65,7 @@ Os construtores `fromEnvironment` retornam um valor padrão quando a declaraçã
 <?code-excerpt "misc/lib/development/environment_declarations.dart (has-debug)"?>
 ```dart
 if (const bool.hasEnvironment('DEBUG')) {
-  print('O comportamento de depuração foi configurado!');
+  print('Debug behavior was configured!');
 }
 ```
 
