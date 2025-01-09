@@ -82,7 +82,7 @@ Outras opções úteis incluem:
 [`int.fromEnvironment`]: {{site.dart-api}}/dart-core/int/int.fromEnvironment.html
 [`bool.fromEnvironment`]: {{site.dart-api}}/dart-core/bool/bool.fromEnvironment.html
 [`bool.hasEnvironment`]: {{site.dart-api}}/dart-core/bool/bool.hasEnvironment.html
-[Configurando aplicativos com declarações de ambiente de compilação]: /guides/environment-declarations
+[Configurando aplicativos com declarações de ambiente de compilação]: /libraries/core/environment-declarations
 
 ###### Opções de exibição {:#display-options}
 

@@ -81,7 +81,7 @@ opção é omitir o segundo argumento, caso em que o codificador chama
 o método `toJson()` do objeto.
 
 Para mais exemplos e links para pacotes relacionados a JSON, consulte
-[Usando JSON](/guides/json).
+[Usando JSON](/libraries/serialization/json).
 
 
 ## Decodificando e codificando caracteres UTF-8 {:#decoding-and-encoding-utf-8-characters}

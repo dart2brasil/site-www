@@ -652,7 +652,7 @@ para evitar que sua interface fique sem resposta.
 [isolado]: /language/concurrency#isolates
 
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
-[Usando JSON]: /guides/json
+[Usando JSON]: /libraries/serialization/json
 [convert-docs]: {{site.dart-api}}/dart-convert/dart-convert-library.html
 [http-pub]: {{site.pub-pkg}}/http
 [http-docs]: {{site.pub-api}}/http

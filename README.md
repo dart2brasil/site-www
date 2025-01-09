@@ -47,7 +47,7 @@ Podemos preparar as alterações automaticamente no seu pull request.
 > siga as instruções abaixo sobre clonagem com seu submódulo.
 
 Se a sua alteração envolver exemplos de código, adicionar/remover páginas ou afetar a navegação,
-considere construir e testar seu trabalho antes de enviar.
+considere compilar e testar seu trabalho antes de enviar.
 
 Se você quiser ou precisar construir o site, siga os passos abaixo.
 
@@ -85,7 +85,7 @@ Se preferir, você pode usar um gerenciador de versões como o [nvm][],
 e executar `nvm install` a partir do diretório raiz do repositório.
 
 Se você já tiver o Node instalado, verifique se ele está disponível no seu path
-e se já é a versão estável mais recente _(atualmente `20.14` ou posterior)_:
+e se já é a versão estável mais recente _(atualmente `22.12` ou posterior)_:
 
 ```terminal
 node --version
@@ -264,7 +264,7 @@ consulte a [documentação do pacote de atualização de excertos][].
 Pull requests enviados podem ser automaticamente preparados
 por um mantenedor do site.
 Se você quiser preparar o site por conta própria, no entanto,
-você pode construir uma versão completa e carregá-la no Firebase.
+você pode construir uma versão completa e fazer o upload para o Firebase.
 
 1. Se você ainda não tiver um projeto Firebase,
 
@@ -290,8 +290,8 @@ você pode construir uma versão completa e carregá-la no Firebase.
     ./dash_site build
     ```
 
-   Isso constrói o site e o copia para seu diretório local `_site`.
-   Se esse diretório já existia antes, ele será substituído.
+   Isso compila o site e o copia para o seu diretório local _site.
+   Se esse diretório existia anteriormente, ele será substituído.
 
 3. Implante no site de hospedagem padrão do seu projeto Firebase ativado:
 

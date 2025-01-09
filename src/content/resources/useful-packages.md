@@ -27,17 +27,17 @@ Use estes pacotes para uma ampla gama de projetos.
 |----|----|----|
 | [archive][] | Codifica e decodifica vários formatos de arquivo e compressão. | Archive, ArchiveFile, TarEncoder, TarDecoder, ZipEncoder, ZipDecoder |
 | [characters][] | Manipula strings para caracteres percebidos pelo usuário (clusters de grafemas Unicode). | String.characters, Characters, CharacterRange |
-| [cronet_http][] | Fornece acesso ao cliente HTTP [Cronet][cronet] do Android usando a mesma interface do `package:http`. | |
-| [cupertino_http][] | Fornece acesso ao [Sistema de Carregamento de URL da Foundation][furl] da Apple usando a mesma interface do `package:http`. | |
+| [cronet_http][] | Fornece acesso ao cliente HTTP [Cronet][cronet] do Android usando a mesma interface que `package:http`. | |
+| [cupertino_http][] | Fornece acesso ao [Sistema de Carregamento de URL da Foundation][furl] da Apple usando a mesma interface que `package:http`. | |
 | [http][] | Fornece um conjunto de funções e classes de alto nível para simplificar o consumo de recursos HTTP. | delete(), get(), post(), read() |
-| [intl][] | Facilidades de internacionalização e localização, com suporte para plurais e gêneros, formatação e análise de data e número, e texto bidirecional. | Bidi, DateFormat, MicroMoney, TextDirection |
-| [json_serializable][] | Gera código de manipulação JSON. Para saber mais, consulte [Suporte JSON](/guides/json). | @JsonSerializable |
+| [intl][] | Facilidades de internacionalização e localização, com suporte para plurais e gêneros, formatação e análise de data e número e texto bidirecional. | Bidi, DateFormat, MicroMoney, TextDirection |
+| [json_serializable][] | Gera código de manipulação JSON. Para saber mais, consulte [Suporte a JSON](/libraries/serialization/json). | @JsonSerializable |
 | [logging][] | Adiciona registro de mensagens ao seu aplicativo. | LoggerHandler, Level, LogRecord |
 | [mockito][] | Simula objetos em testes. Ajuda quando você escreve testes para injeção de dependência. Use com o pacote [test][]. | Answering, Expectation, Verification |
-| [path][] | Manipula diferentes tipos de caminhos. Para saber mais, consulte [Unboxing Packages: path.]( {{site.news}}/2016/06/unboxing-packages-path.html) | absolute(), basename(), extension(), join(), normalize(), relative(), split() |
-| [quiver][] | Simplifica o uso das bibliotecas core do Dart. Algumas das bibliotecas onde o Quiver fornece suporte adicional incluem async, cache, collection, core, iterables, patterns e testing. | CountdownTimer (quiver.async); MapCache (quiver.cache); MultiMap, TreeSet (quiver.collection); EnumerateIterable (quiver.iterables); center(), compareIgnoreCase(), isWhiteSpace() (quiver.strings) |
-| [shelf][] | Fornece middleware de servidor web para Dart. O Shelf facilita a criação e composição de servidores web e partes de servidores web. | Cascade, Pipeline, Request, Response, Server |
-| [stack_trace][] | Analisa, inspeciona e manipula stack traces (rastreamento de pilha) que o Dart produz. Também transforma stack traces em um formato mais legível do que a implementação nativa do StackTrace. Para saber mais, consulte [Unboxing Packages: stack_trace.]({{site.news}}/2016/01/unboxing-packages-stacktrace.html) | Trace.current(), Trace.format(), Trace.from() |
+| [path][] | Manipula diferentes tipos de caminhos. Para saber mais, consulte [Desempacotando Pacotes: path.]({{site.news}}/2016/06/unboxing-packages-path.html) | absolute(), basename(), extension(), join(), normalize(), relative(), split() |
+| [quiver][] | Simplifica o uso de bibliotecas Dart principais. Algumas das bibliotecas onde Quiver fornece suporte adicional incluem async, cache, collection, core, iterables, patterns e testing. | CountdownTimer (quiver.async); MapCache (quiver.cache); MultiMap, TreeSet (quiver.collection); EnumerateIterable (quiver.iterables); center(), compareIgnoreCase(), isWhiteSpace() (quiver.strings) |
+| [shelf][] | Fornece middleware de servidor web para Dart. Shelf facilita a criação e composição de servidores web e partes de servidores web. | Cascade, Pipeline, Request, Response, Server |
+| [stack_trace][] | Analisa, inspeciona e manipula stack traces que o Dart produz. Também transforma stack traces em um formato mais legível do que a implementação nativa de StackTrace. Para saber mais, consulte [Desempacotando Pacotes: stack_trace.]({{site.news}}/2016/01/unboxing-packages-stacktrace.html) | Trace.current(), Trace.format(), Trace.from() |
 | [test][] | Padroniza a escrita e execução de testes em Dart. | expect(), group(), test() |
 | [yaml][] | Analisa a marcação YAML. | loadYaml(), loadYamlStream() |
 

@@ -103,6 +103,6 @@ Para detalhes sobre como usar build_runner, consulte o seguinte:
 [em build]: {{site.pub-pkg}}?q=dependency%3Abuild
 [em build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
 [sass_builder]: {{site.pub-pkg}}/sass_builder
-[tests]: /guides/testing
+[tests]: /tools/testing
 [webdev]: /tools/webdev
 [webdev serve]: /tools/webdev#serve

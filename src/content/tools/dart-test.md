@@ -13,7 +13,7 @@ Para obter informações sobre como escrever testes, consulte a
 Se você estiver trabalhando com código Flutter, use o comando `flutter test` em vez disso,
 como descrito em [Testando aplicativos Flutter][].
 
-[documentação de testes]: /guides/testing
+[documentação de testes]: /tools/testing
 [`test` package]: {{site.pub-pkg}}/test
 [Testando aplicativos Flutter]: {{site.flutter-docs}}/testing
 
