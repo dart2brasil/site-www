@@ -26,16 +26,17 @@ final class BuildSiteCommand extends Command<int> {
     final productionRelease = argResults.get<bool>(_releaseFlag, false);
 
     final process = await Process.start(
-        'npx',
-        const [
-          'tsx',
-          'node_modules/@11ty/eleventy/cmd.cjs',
-          '--config=eleventy.config.ts',
-        ],
-        environment: {
-          'PRODUCTION': '$productionRelease',
-        },
-        runInShell: Platform.isWindows);
+      'npx',
+      const [
+        'tsx',
+        'node_modules/@11ty/eleventy/cmd.cjs',
+        '--config=eleventy.config.ts',
+      ],
+      environment: {
+        'PRODUCTION': '$productionRelease',
+      },
+      runInShell: Platform.isWindows
+    );
 
     await stdout.addStream(process.stdout);
     await stderr.addStream(process.stderr);

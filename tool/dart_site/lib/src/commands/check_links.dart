@@ -57,17 +57,14 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
   }
 
   print('Starting the Firebase hosting emulator asynchronously...');
-  final emulatorProcess = await Process.start(
-      'npx',
-      const [
-        'firebase',
-        'emulators:start',
-        '--only',
-        'hosting',
-        '--project',
-        'default',
-      ],
-      runInShell: true);
+  final emulatorProcess = await Process.start('npx', const [
+    'firebase',
+    'emulators:start',
+    '--only',
+    'hosting',
+    '--project',
+    'default',
+  ], runInShell: true);
 
   // Ignore the stdin and stderr output from the emulator.
   unawaited(emulatorProcess.stdout.drain<void>());
@@ -116,7 +113,7 @@ Future<bool> _isPortInUse(int port) async {
       port,
       shared: false,
     ).timeout(const Duration(seconds: 2)); // Ignore timeout.
-    print(InternetAddress.loopbackIPv4);
+print(InternetAddress.loopbackIPv4);
     // If we reach this line, the port was available,
     // and we know the Firebase hosting emulator is not running.
     // So close the fake server and return as not in use.
