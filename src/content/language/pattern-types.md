@@ -363,6 +363,13 @@ correspondem seus subpadrões contra as chaves do mapa para desestruturá-los.
 
 Padrões de mapa não exigem que o padrão corresponda ao mapa inteiro. Um padrão de mapa
 ignora quaisquer chaves que o mapa contenha que não sejam correspondidas pelo padrão.
+Tentar corresponder uma chave que não existe no mapa lançará um
+[`StateError`][]:
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (map-error)"?>
+```dart
+final {'foo': int? foo} = {};
+```
 
 ## Registro {:#record}
 
@@ -473,6 +480,7 @@ switch (record) {
 [Correspondência]: /language/patterns#matching
 [`List`]: /language/collections#lists
 [`Map`]: /language/collections#maps
+[`StateError`]: {{site.dart-api}}/dart-core/StateError-class.html
 [refutado]: /resources/glossary#refutable-pattern
 [registro]: /language/records
 [forma]: /language/records#record-types

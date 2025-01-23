@@ -32,12 +32,12 @@ como `public` ou `private`, consulte
 Use `import` para especificar como um namespace de uma biblioteca é usado no
 escopo de outra biblioteca.
 
-Por exemplo, aplicativos web Dart geralmente usam a biblioteca [dart:html][dart:html],
+Por exemplo, aplicativos web Dart geralmente usam a biblioteca [`dart:js_interop`][],
 que eles podem importar assim:
 
-<?code-excerpt "misc/test/language_tour/browser_test.dart (dart-html-import)"?>
+<?code-excerpt "misc/test/language_tour/browser_test.dart (dart-js-interop-import)"?>
 ```dart
-import 'dart:html';
+import 'dart:js_interop';
 ```
 
 O único argumento necessário para `import` é um URI especificando a
@@ -75,6 +75,11 @@ Element element1 = Element();
 // Uses Element from lib2.
 lib2.Element element2 = lib2.Element();
 ```
+
+Prefixos de importação com o nome [curinga][] `_` não são vinculativos,
+mas fornecerão acesso às extensões não privadas nessa biblioteca.
+
+[curinga]: /language/variables#wildcard-variables
 
 ### Importando apenas parte de uma biblioteca {:#importing-only-part-of-a-library}
 
@@ -174,6 +179,6 @@ para obter conselhos sobre como implementar um package, incluindo:
 * Como usar importações e exportações condicionais para implementar
   uma biblioteca que suporte múltiplas plataformas.
 
-[dart:html]: {{site.dart-api}}/dart-html
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [doc comments]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [metadata annotations]: /language/metadata

@@ -85,7 +85,7 @@ Se preferir, você pode usar um gerenciador de versões como o [nvm][],
 e executar `nvm install` a partir do diretório raiz do repositório.
 
 Se você já tiver o Node instalado, verifique se ele está disponível no seu path
-e se já é a versão estável mais recente _(atualmente `20.14` ou posterior)_:
+e se já é a versão estável mais recente _(atualmente `22.12` ou posterior)_:
 
 ```terminal
 node --version
@@ -257,14 +257,13 @@ execute `./dash_site refresh-excerpts`.
 Para saber mais sobre a criação, edição e uso de excertos de código,
 consulte a [documentação do pacote de atualização de excertos][].
 
-[documentação do pacote de atualização de excertos]: https://github.com/dart-lang/site-shared/tree/main/packages/excerpter#readme
+[documentação do pacote de atualização de excertos]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
 
 ## [Opcional] Implante em um site de staging
 
-Pull requests enviados podem ser automaticamente preparados
-por um mantenedor do site.
-Se você quiser preparar o site por conta própria, no entanto,
-você pode construir uma versão completa e carregá-la no Firebase.
+Um mantenedor do site pode preparar automaticamente pull requests submetidos.
+Se você preferir preparar o site você mesmo,
+você pode construir uma versão completa e enviá-la para o Firebase.
 
 1. Se você ainda não tiver um projeto Firebase,
 

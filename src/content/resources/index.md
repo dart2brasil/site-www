@@ -8,18 +8,22 @@ toc: false
 Confira os seguintes recursos da linguagem Dart:
 
 <div class="card-grid">
-  <div class="card">
-    <h2><a href="/resources/books">Livros</a></h2>
-    <p>Uma coleção de livros sobre Dart.</p>
-  </div>
-
-  <div class="card">
-    <h2><a href="/code-of-conduct">Código de conduta</a></h2>
-    <p>Mantendo espaços da comunidade seguros e respeitosos.</p>
-  </div>
-
-  <div class="card">
-    <h2><a href="/resources/videos">Vídeos</a></h2>
-    <p>Vídeos voltados para desenvolvedores Dart.</p>
-  </div>
+  {% card "Glossário", "/resources/breaking-changes" %}
+    Terminologia usada pela documentação e desenvolvedores Dart.
+  {% endcard %}
+  {% card "Mudanças de quebra", "/resources/breaking-changes" %}
+    Mudanças de quebra por lançamento do Dart.
+  {% endcard %}
+  {% card "Livros", "/resources/books" %}
+    Uma coleção de livros sobre Dart.
+  {% endcard %}
+  {% card "Vídeos", "/resources/videos" %}
+    Vídeos voltados para desenvolvedores Dart.
+  {% endcard %}
+  {% card "FAQ", "/resources/faq" %}
+    Perguntas frequentes sobre Dart.
+  {% endcard %}
+  {% card "Código de conduta", "/community/code-of-conduct" %}
+    Mantendo espaços da comunidade seguros e respeitosos.
+  {% endcard %}
 </div>

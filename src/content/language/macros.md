@@ -46,7 +46,7 @@ Ela gera dois membros, um método de serialização `toJson` e
 um construtor de desserialização `fromJson`.
 
 [experimental flag]: /tools/experiment-flags
-[`JsonCodable`]: {{site.pub-pkg}}/json/versions/0.20.0
+[`JsonCodable`]: {{site.pub-pkg}}/json
 [channel]: https://dartbrasil.dev/get-dart#release-channels
 [flutter-channel]: {{site.flutter-docs}}/release/upgrade#other-channels
 

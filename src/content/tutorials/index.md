@@ -19,17 +19,12 @@ _iterables_ (iteráveis), _streams_ (fluxos) e _packages_ (pacotes),
 que são fundamentais para a maioria dos programas Dart.
 
 <div class="card-grid no_toc_section">
-  <div class="card">
-    <h3><a href="/libraries/async/using-streams">Programação
-    assíncrona:
-       streams</a></h3>
-    <p>Use _streams_ para gerenciar sequências de dados.</p>
-  </div>
-  <div class="card">
-    <h3><a href="/tools/pub/packages">Como usar _packages_</a></h3>
-    <p>Organize e compartilhe código no
-       <a href="{{site.pub}}">site pub.dev.</a></p>
-  </div>
+  {% card "Programação assíncrona: streams", "/libraries/async/using-streams" %}
+    Use streams para gerenciar sequências de dados.
+  {% endcard %}
+  {% card "Como usar packages", "/tools/pub/packages" %}
+    Organize e compartilhe código no site pub.dev.
+  {% endcard %}
 </div>
 
 
@@ -44,20 +39,16 @@ que são fundamentais para a maioria dos programas Dart.
 Para ter mais experiência no desenvolvimento com Dart, experimente mais tutoriais disponíveis!
 
 <div class="card-grid no_toc_section">
-  <div class="card">
-    <h3><a href="/resources/dart-cheatsheet">Dart cheatsheet (folha de referência)</a></h3>
-    <p>Experimente rapidamente alguns dos recursos exclusivos da linguagem Dart.</p>
-  </div>
-  <div class="card">
-    <h3><a href="https://codelabs.developers.google.com/codelabs/dart-patterns-records">Records and Patterns (Registros e Padrões)</a></h3>
-    <p>Descubra o suporte do Dart para _records_ (registros) e _patterns_ (padrões).</p>
-  </div>
-   <div class="card">
-    <h3><a href="{{site.flutter-docs}}/codelabs">Coleções _Iterable_</a></h3>
-    <p>Aprenda a analisar e manipular dados armazenados em coleções.</p>
-  </div>
-  <div class="card">
-    <h3><a href="{{site.flutter-docs}}/codelabs">Codelabs e tutoriais Flutter</a></h3>
-    <p>Expanda suas habilidades em Dart construindo aplicativos Flutter.</p>
-  </div>
+  {% card "Cheatsheet do Dart", "/resources/dart-cheatsheet" %}
+    Experimente rapidamente alguns recursos exclusivos da linguagem Dart.
+  {% endcard %}
+  {% card "Records e patterns", "https://codelabs.developers.google.com/codelabs/dart-patterns-records" %}
+    Descubra o suporte do Dart para records e patterns.
+  {% endcard %}
+  {% card "Coleções iteráveis", "/libraries/collections/iterables" %}
+    Aprenda a analisar e manipular dados armazenados em coleções.
+  {% endcard %}
+  {% card "Codelabs e tutoriais do Flutter", "https://docs.flutter.dev/codelabs" %}
+    Expanda suas habilidades em Dart construindo aplicativos Flutter.
+  {% endcard %}
 </div>

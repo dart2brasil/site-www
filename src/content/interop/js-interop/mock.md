@@ -1,5 +1,6 @@
 ---
 title: Como simular objetos de interoperação JavaScript
+description: Aprenda como simular objetos de interoperação JS em Dart para testes.
 ---
 
 Neste tutorial, você aprenderá como simular objetos JS para que possa testar

@@ -291,6 +291,69 @@ não podem ser alterados: eles são _imutáveis_.
 Para mais informações sobre como usar `const` para criar valores constantes, veja
 [Listas][], [Mapas][] e [Classes][].
 
+## Variáveis curinga (Wildcard variables)
+
+:::version-note
+Variáveis curinga requerem uma
+[versão de linguagem][language version] de pelo menos 3.7.
+:::
+
+Uma variável curinga com o nome `_` declara uma variável local ou parâmetro
+que não é vinculativo; essencialmente, um espaço reservado.
+O inicializador, se houver um, ainda é executado, mas o valor não é acessível.
+Múltiplas declarações nomeadas `_` podem existir no mesmo namespace sem um erro de colisão.
+
+Declarações de nível superior ou membros onde a privacidade da biblioteca pode ser afetada
+não são usos válidos para variáveis curinga.
+Declarações locais a um escopo de bloco, como nos exemplos a seguir,
+podem declarar um curinga:
+
+* Declaração de variável local.
+  ```dart
+  main() {
+    var _ = 1;
+    int _ = 2;
+  }
+  ```
+
+* Declaração de variável em loop `for`.
+  ```dart
+  for (var _ in list) {}
+  ```
+
+* Parâmetros de cláusula `catch`.
+  ```dart
+  try {
+    throw '!';
+  } catch (_) {
+    print('oops');
+  }
+  ```
+
+* Parâmetros de tipo genérico e tipo de função.
+  ```dart
+  class T<_> {}
+  void genericFunction<_>() {}
+
+  takeGenericCallback(<_>() => true);
+  ```
+
+* Parâmetros de função.
+  ```dart
+  Foo(_, this._, super._, void _()) {}
+
+  list.where((_) => true);
+
+  void f(void g(int _, bool _)) {}
+
+  typedef T = void Function(String _, String _);
+  ```
+
+:::tip
+Habilite o lint [`unnecessary_underscores`][] para identificar onde uma única
+variável curinga não vinculativa `_` pode substituir a convenção anterior de usar
+múltiplos underscores vinculativos (`__`,`___`, etc.) para evitar colisões de nome.
+:::
 
 [Assert]: /language/error-handling#assert
 [Variáveis de instância]: /language/classes#instance-variables
@@ -301,3 +364,5 @@ Para mais informações sobre como usar `const` para criar valores constantes, v
 [Listas]: /language/collections#lists
 [Mapas]: /language/collections#maps
 [Classes]: /language/classes
+[language version]: /resources/language/evolution#language-versioning
+[`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores

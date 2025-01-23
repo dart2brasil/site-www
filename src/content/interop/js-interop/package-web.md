@@ -1,7 +1,10 @@
 ---
 ia-translate: true
 title: Migrar para `package:web`
-description: Como migrar código de interoperabilidade web de `dart:html` para `package:web`.
+description: Como migrar código de interoperabilidade web de dart:html para package:web.
+prevpage:
+  url: /interop/js-interop/past-js-interop
+  title: Past JS interop
 ---
 
 O pacote [`package:web`][] do Dart expõe acesso às APIs do navegador,
@@ -40,7 +43,7 @@ abordando várias preocupações com as bibliotecas web Dart existentes:
    portanto, por padrão, ele é suportado em `dart2wasm`.
 
    As bibliotecas web principais do Dart, como [`dart:html`][html] e [`dart:svg`][svg],
-   **não são suportadas** ao compilar para Wasm.
+   estão obsoletas e **não são suportadas** ao compilar para Wasm.
 
 2. **Permanecer moderno**
 

@@ -1272,13 +1272,7 @@ abstract class Logger {
 void tryFunction(VoidFunction untrustworthy, Logger logger) {
   try {
     untrustworthy();
-  } on ExceptionWithMessage catch (e) {
-    logger.logException(e.runtimeType, e.message); 
-  } on Exception catch (e) {
-    logger.logException(e.runtimeType);
-  } finally {
-    logger.doneLogging();
-  }
+  } // Write your logic here
 }
 
 // Testa sua solução (Não edite!):
