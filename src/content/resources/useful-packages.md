@@ -28,7 +28,7 @@ Use estes pacotes para uma ampla gama de projetos.
 | [archive][] | Codifica e decodifica vários formatos de arquivo e compressão. | Archive, ArchiveFile, TarEncoder, TarDecoder, ZipEncoder, ZipDecoder |
 | [characters][] | Manipula strings para caracteres percebidos pelo usuário (clusters de grafemas Unicode). | String.characters, Characters, CharacterRange |
 | [cronet_http][] | Fornece acesso ao cliente HTTP [Cronet][] do Android usando a mesma interface do `package:http`. | |
-| [cupertino_http][] | Fornece acesso ao [Sistema de Carregamento de URL da Foundation][] da Apple usando a mesma interface do `package:http`. | |
+| [cupertino_http][] | Fornece acesso ao [Sistema de Carregamento de URL da Foundation][furl] da Apple usando a mesma interface do `package:http`. | |
 | [http][] | Fornece um conjunto de funções e classes de alto nível para simplificar o consumo de recursos HTTP. | delete(), get(), post(), read() |
 | [intl][] | Recursos de internacionalização e localização, com suporte para plurais e gêneros, formatação e análise de data e número e texto bidirecional. | Bidi, DateFormat, MicroMoney, TextDirection |
 | [json_serializable][] | Gera código de manipulação JSON. Para saber mais, consulte [Suporte a JSON](/libraries/serialization/json). | @JsonSerializable |
