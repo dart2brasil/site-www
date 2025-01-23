@@ -47,9 +47,9 @@ consulte a [referência da API do Dart][Dart API].
 : I/O para programas que podem usar a VM do Dart,
   incluindo aplicativos Flutter, servidores e scripts de linha de comando.
 
-[dart:html](/libraries/dart-html)
-: DOM e outras APIs para aplicativos baseados em navegador.
-  Agora, recomendamos usar `package:web` em vez de `dart:html`.
+[dart:js_interop](/interop/js-interop)
+: APIs para interoperabilidade com a plataforma web.
+  Juntamente com `package:web`, `dart:js_interop` substitui `dart:html`.
 
 
 Como mencionado, estas páginas são apenas uma visão geral;

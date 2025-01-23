@@ -1,45 +1,57 @@
 ---
 ia-translate: true
 title: Uso
-description: Como declarar e usar membros de interoperação JS.
+description: Como declarar e usar membros de interop JS.
+prevpage:
+  url: /interop/js-interop/
+  title: Interop JS
+nextpage:
+  url: /interop/js-interop/js-types
+  title: Tipos JS
 ---
 
-A interoperação JS fornece os mecanismos para interagir com APIs JavaScript a partir do Dart.
-Ele permite que você invoque essas APIs e interaja com os valores que obtém
-delas usando uma sintaxe explícita e idiomática.
+JS interop fornece os mecanismos para interagir com APIs JavaScript a partir do Dart.
+Ele permite que você invoque essas APIs e interaja com os valores que
+você obtém delas usando uma sintaxe explícita e idiomática.
 
-Normalmente, você acessa uma API JavaScript, tornando-a disponível em algum lugar dentro
-do [escopo global JS]. Para chamar e receber valores JS desta API, você usa
-membros de interoperação [`external`](#interop-members). Para construir e
-fornecer tipos para valores JS, você usa e declara
-[tipos de interoperação](#interop-types), que também contêm membros de interoperação. Para passar
-valores Dart como `List`s ou `Function` para membros de interoperação ou converter de
-valores JS para valores Dart, você usa [funções de conversão], a menos que o membro de interoperação
-[contenha um tipo primitivo].
+Normalmente, você acessa uma API JavaScript tornando-a disponível
+em algum lugar dentro do [escopo JS global][].
+Para chamar e receber valores JS dessa API,
+você usa [membros de interop `external`](#interop-members).
+Para construir e fornecer tipos para valores JS, você usa e declara
+[tipos de interop](#interop-types), que também contêm membros de interop.
+Para passar valores Dart como uma `List` ou `Function` para membros de interop ou
+converter de valores JS para valores Dart, você usa [funções de conversão][] a menos que
+o membro de interop [contenha um tipo primitivo][].
+
+[escopo JS global]: https://developer.mozilla.org/docs/Glossary/Global_scope
+[funções de conversão]: /interop/js-interop/js-types#conversions
+[contenha um tipo primitivo]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 
 ## Tipos de interoperação {:#interop-types}
 
-Ao interagir com um valor JS, você precisa fornecer um tipo Dart para ele. Você
-pode fazer isso usando ou declarando um tipo de interoperação. Os tipos de interoperação são
-um ["tipo JS"] fornecido pelo Dart ou um [tipo de extensão] que envolve um
-tipo de interoperação.
+Ao interagir com um valor JS, você precisa fornecer um tipo Dart para ele.
+Você pode fazer isso usando ou declarando um tipo de interop.
+Tipos de interop são um ["tipo JS"][] fornecido pelo Dart ou
+um [tipo de extensão][] que envolve um tipo de interop.
 
-Os tipos de interoperação permitem que você forneça uma interface para um valor JS e permite
-declarar APIs de interoperação para seus membros. Eles também são usados na assinatura de
-outras APIs de interoperação.
+Tipos de interop permitem que você forneça uma interface para um valor JS e
+permitem que você declare APIs de interop para seus membros.
+Eles também são usados na assinatura de outras APIs de interop.
 
 ```dart
 extension type Window(JSObject _) implements JSObject {}
 ```
 
-`Window` é um tipo de interoperação para um `JSObject` arbitrário. Não há [garantia de tempo
-de execução][] de que `Window` seja realmente um [`Window`] JS. Também não há conflito
-com qualquer outra interface de interoperação que seja definida para o mesmo valor. Se você quiser
-verificar se `Window` é realmente um `Window` JS, você pode
-[verificar o tipo do valor JS por meio de interoperação].
+`Window` é um tipo de interop para um `JSObject` arbitrário.
+Não há [garantia de tempo de execução][] de que `Window` seja realmente um [`Window`][] JS.
+Também não há conflito com qualquer outra interface de interop que
+é definida para o mesmo valor.
+Se você quiser verificar se `Window` é realmente um `Window` JS,
+você pode [verificar o tipo do valor JS por meio de interop][].
 
-Você também pode declarar seu próprio tipo de interoperação para os tipos JS que o Dart fornece
-envolvendo-os:
+Você também pode declarar seu próprio tipo de interop para os tipos JS que
+o Dart fornece, envolvendo-os:
 
 ```dart
 extension type Array._(JSArray<JSAny?> _) implements JSArray<JSAny?> {
@@ -47,24 +59,37 @@ extension type Array._(JSArray<JSAny?> _) implements JSArray<JSAny?> {
 }
 ```
 
-Na maioria dos casos, você provavelmente declarará um tipo de interoperação usando `JSObject` como
-o [tipo de representação], porque você provavelmente está interagindo com objetos JS que
-não têm um tipo de interoperação fornecido pelo Dart.
+Na maioria dos casos, você provavelmente declarará um tipo de interop usando
+`JSObject` como o [tipo de representação][], porque você provavelmente
+está interagindo com objetos JS que não têm um tipo de interop fornecido pelo Dart.
 
-Os tipos de interoperação também devem geralmente [implementar] seu tipo de representação para
-que possam ser usados onde o tipo de representação é esperado, como em muitas
-APIs em [`package:web`].
+Os tipos de interop também devem geralmente [implementar][] seu tipo de representação para
+que possam ser usados onde o tipo de representação é esperado,
+como em muitas APIs fornecidas por [`package:web`][].
+
+["tipo JS"]: /interop/js-interop/js-types
+[tipo de extensão]: /language/extension-types
+[`Window`]: https://developer.mozilla.org/docs/Web/API/Window
+[garantia de tempo de execução]: /language/extension-types#type-considerations
+[verificar o tipo do valor JS por meio de interop]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
+[tipo de representação]: /language/extension-types#declaration
+[implementar]: /language/extension-types#implements
+[`package:web`]: {{site.pub-pkg}}/web
 
 ## Membros de interoperação {:#interop-members}
 
-Membros de interoperação [`external`] fornecem uma sintaxe idiomática para membros JS. Eles
-permitem que você escreva uma assinatura de tipo Dart para seus argumentos e valor de retorno. Os
-tipos que podem ser escritos na assinatura desses membros têm [restrições].
-A API JS a que o membro de interoperação corresponde é determinada por uma combinação de
+Membros de interop [`external`][] fornecem uma sintaxe idiomática para membros JS.
+Eles permitem que você escreva uma assinatura de tipo Dart para seus
+argumentos e valor de retorno.
+Os tipos que podem ser escritos na assinatura desses
+membros têm [restrições][].
+A API JS à qual o membro de interop corresponde é determinada por uma combinação de
 onde ele é declarado, seu nome, que tipo de membro Dart ele é e quaisquer
 [renomeações](#js).
 
-### Membros de interoperação de nível superior {:#interop-members-de-nivel-superior}
+[`external`]: /language/functions#external
+
+### Membros de interop de nível superior
 
 Dados os seguintes membros JS:
 
@@ -88,16 +113,18 @@ external set name(String value);
 external bool isNameEmpty();
 ```
 
-Aqui, existe uma propriedade `name` e uma função `isNameEmpty` que são
-expostas no escopo global. Para acessá-las, você usa membros de interoperação de nível superior.
-Para obter e definir `name`, você declara e usa um getter e setter de interoperação com o
-mesmo nome. Para usar `isNameEmpty`, você declara e chama uma função de interoperação com
-o mesmo nome. Você pode declarar getters, setters, métodos e campos de interoperação de nível
-superior. Campos de interoperação são equivalentes a pares de getter e setter.
+Aqui, existe uma propriedade `name` e uma função `isNameEmpty` que
+são expostas no escopo global.
+Para acessá-las, você usa membros de interop de nível superior.
+Para obter e definir `name`, declare e use
+um getter e setter de interop com o mesmo nome.
+Para usar `isNameEmpty`, declare e chame uma função de interop com o mesmo nome.
+Você pode declarar getters, setters, métodos e campos de interop de nível superior.
+Campos de interop são equivalentes a pares de getter e setter.
 
-Membros de interoperação de nível superior devem ser declarados com uma anotação
-[`@JS()`](#js) para diferenciá-los de outros membros `external` de nível
-superior, como aqueles que podem ser escritos usando `dart:ffi`.
+Membros de interop de nível superior devem ser declarados com uma anotação [`@JS()`](#js) para
+distingui-los de outros membros `external` de nível superior,
+como aqueles que podem ser escritos usando `dart:ffi`.
 
 ### Membros de tipo de interoperação {:#membros-de-tipo-de-interoperacao}
 
@@ -163,17 +190,19 @@ membros de interoperação `external`:
 
 - **Construtores**. Quando chamados, construtores com apenas parâmetros posicionais
   criam um novo objeto JS cujo construtor é definido pelo nome do
-  tipo de extensão usando `new`. Por exemplo, chamar `Time(0, 0)` em Dart irá
-  gerar uma invocação JS que se parece com `new Time(0, 0)`. Da mesma forma, chamar
-  `Time.onlyHours(0)` irá gerar uma invocação JS que se parece com
-  `new Time(0)`. Observe que as invocações JS dos dois construtores seguem a
-  mesma semântica, independentemente de terem um nome Dart ou se são
-  uma fábrica.
+  tipo de extensão usando `new`.
+  Por exemplo, chamar `Time(0, 0)` em Dart gera uma invocação JS que
+  se parece com `new Time(0, 0)`. Da mesma forma, chamar
+  `Time.onlyHours(0)` gera uma invocação JS que se parece com `new Time(0)`.
+  Observe que as invocações JS dos dois construtores seguem a
+  mesma semântica, independentemente de terem
+  um nome Dart ou se são uma fábrica.
 
-  - **Construtores literais de objeto**. Às vezes é útil criar um [objeto literal] JS
-    que simplesmente contém um número de propriedades e seus valores.
-    Para fazer isso, você declara um construtor com apenas
-    parâmetros nomeados, onde os nomes dos parâmetros serão os nomes das propriedades:
+  - **Construtores literais de objeto**. Às vezes, é útil
+    criar um [objeto literal][] JS que simplesmente contém um
+    número de propriedades e seus valores.
+    Para fazer isso, declare um construtor com apenas parâmetros nomeados,
+    onde os nomes dos parâmetros correspondem aos nomes das propriedades:
 
     ```dart
     extension type Options._(JSObject o) implements JSObject {
@@ -183,10 +212,12 @@ membros de interoperação `external`:
     }
     ```
 
-    Uma chamada para `Options(a: 0, b: 1)` resultará na criação do objeto JS
-    `{a: 0, b: 1}`. O objeto é definido pelos argumentos de invocação, então
-    chamar `Options(a: 0)` resultaria em `{a: 0}`. Você pode obter ou definir
-    as propriedades do objeto por meio de membros de instância `external`.
+    Uma chamada para `Options(a: 0, b: 1)` resulta na
+    criação do objeto JS `{a: 0, b: 1}`.
+    O objeto é definido pelos argumentos de invocação, então
+    chamar `Options(a: 0)` resulta em `{a: 0}`.
+    Você pode obter ou definir as propriedades do objeto por meio de
+    membros de instância `external`.
 
     :::warning
     Antes do Dart 3.3.1, os construtores literais de objeto exigiam uma
@@ -194,16 +225,17 @@ membros de interoperação `external`:
     Para saber mais, confira [`dart-lang/sdk#54801`][54801].
     :::
 
-- **Membros `static`**. Como os construtores, esses membros usam o nome do
-  tipo de extensão para gerar o código JS. Por exemplo, chamar
-  `Time.getTimeDifference(t1, t2)` gerará uma invocação JS que se parece com
-  `Time.getTimeDifference(t1, t2)`. Da mesma forma, chamar `Time.dinnerTime`
-  resultará em uma invocação JS que se parece com `Time.dinnerTime`. Como os de nível superior,
-  você pode declarar métodos `static`, getters, setters e campos.
+- Membros **`static`**. Assim como os construtores, os membros estáticos usam
+  o nome do tipo de extensão para gerar o código JS. Por exemplo,
+  chamar `Time.getTimeDifference(t1, t2)` gera uma invocação JS que
+  se parece com `Time.getTimeDifference(t1, t2)`.
+  Da mesma forma, chamar `Time.dinnerTime` resulta em uma invocação JS que
+  se parece com `Time.dinnerTime`. Como os de nível superior,
+  você pode declarar métodos, getters, setters e campos `static`.
 
-- **Membros de instância**. Como com outros tipos Dart, esses membros exigem uma
-  instância para serem usados. Esses membros obtêm, definem ou invocam
-  propriedades na instância. Por exemplo:
+- **Membros de instância**. Como com outros tipos Dart, os membros de instância exigem
+  que uma instância seja usada. Esses membros obtêm, definem ou invocam propriedades na
+  instância. Por exemplo:
 
   ```dart
     final time = Time(0, 0);
@@ -214,16 +246,20 @@ membros de interoperação `external`:
     print(time.isDinnerTime()); // true
   ```
 
-  A chamada para `dinnerTime.hours` obtém o valor da propriedade `hours` de
-  `dinnerTime`. Da mesma forma, a chamada para `time.minutes=` define o valor da
-  propriedade `minutes` de time. A chamada para `time.isDinnerTime()` chama a
-  função na propriedade `isDinnerTime` de `time` e retorna o valor.
-  Como os de nível superior e membros `static`, você pode declarar métodos de instância,
-  getters, setters e campos.
+  A chamada para `dinnerTime.hours` obtém o valor da
+  propriedade `hours` de `dinnerTime`.
+  Da mesma forma, a chamada para `time.minutes=` define o valor da
+  propriedade `minutes` de time.
+  A chamada para `time.isDinnerTime()` chama a função na
+  propriedade `isDinnerTime` de `time` e retorna o valor.
+  Como os de nível superior e membros `static`, você pode declarar
+  métodos de instância, getters, setters e campos.
 
-- **Operadores**. Existem apenas dois operadores de interoperação `external` permitidos em
-  tipos de interoperação: `[]` e `[]=`. Estes são membros de instância que correspondem à
-  semântica dos [acessadores de propriedade] do JS. Por exemplo, você pode declará-los como:
+- **Operadores**. Existem apenas dois operadores de interop `external`
+  permitidos em tipos de interop: `[]` e `[]=`.
+  Estes são membros de instância que
+  correspondem à semântica dos [acessadores de propriedade][] do JS.
+  Por exemplo, você pode declará-los como:
 
   ```dart
   extension type Array(JSArray<JSNumber> _) implements JSArray<JSNumber> {
@@ -232,17 +268,24 @@ membros de interoperação `external`:
   }
   ```
 
-  Chamar `array[i]` obtém o valor no slot `i` de `array`, e
-  `array[i] = i.toJS` define o valor nesse slot como `i.toJS`. Outros operadores JS são expostos
-  por meio de [funções de utilidade] em `dart:js_interop`.
+  Chamar `array[i]` obtém o valor no `i`-ésimo slot de `array`, e
+  `array[i] = i.toJS` define o valor naquele slot como `i.toJS`.
+  Outros operadores JS são expostos por [funções de utilidade][] em `dart:js_interop`.
 
-Por fim, como qualquer outro tipo de extensão, você pode declarar qualquer
-[membro não `external`] no tipo de interoperação. `isMidnight` é um desses exemplos.
+Por fim, como qualquer outro tipo de extensão, você tem permissão para declarar qualquer
+[membro não-`external`][] no tipo de interop.
+Um getter booleano `isMidnight` que usa os valores de interop é um desses exemplos.
+
+[objeto literal]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Object_initializer
+[54801]: {{site.repo.dart.sdk}}/issues/54801
+[acessadores de propriedade]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
+[funções de utilidade]: {{site.dart-api}}/dart-js_interop/JSAnyOperatorExtension.html
+[membros não-`external`]: /language/extension-types#members
 
 ### Membros de extensão em tipos de interoperação {:#membros-de-extensao-em-interop-types}
 
-Você também pode escrever membros `external` em [extensões] de tipos de interoperação. Por
-exemplo:
+Você também pode escrever membros `external` em [extensões] de tipos de interoperação.
+Por exemplo:
 
 ```dart
 extension on Array {
@@ -250,44 +293,54 @@ extension on Array {
 }
 ```
 
-A semântica de chamar `push` é idêntica ao que teria sido se estivesse na
-definição de `Array`. As extensões podem ter membros de instância e operadores `external`,
-mas não podem ter membros `static` ou construtores `external`. Como com tipos de interoperação,
-você pode escrever quaisquer membros não `external` na extensão.
-Essas extensões são úteis para quando um tipo de interoperação não expõe
-o membro `external` que você precisa e você não quer criar um novo
-tipo de interoperação.
+A semântica de chamar `push` é idêntica ao que teria sido se
+estivesse na definição de `Array`.
+Extensões podem ter membros e operadores de instância `external`, mas
+não podem ter membros `static` ou construtores `external`.
+Assim como com os tipos de interop, você pode
+escrever quaisquer membros não-`external` na extensão.
+Essas extensões são úteis para quando um tipo de interop não
+expõe o membro `external` que você precisa e você não deseja
+criar um novo tipo de interop.
+
+[extensões]: /language/extension-methods
 
 ### Parâmetros {:#parametros}
 
-Métodos de interoperação `external` podem conter apenas argumentos posicionais e opcionais.
-Isso ocorre porque os membros JS aceitam apenas argumentos posicionais. A única exceção são
-construtores literais de objeto, onde eles podem conter apenas argumentos nomeados.
+Métodos de interop `external` só podem conter argumentos posicionais e opcionais.
+Isso ocorre porque os membros JS só recebem argumentos posicionais.
+A única exceção são os construtores literais de objeto,
+onde eles podem conter apenas argumentos nomeados.
 
-Ao contrário dos métodos não `external`, os argumentos opcionais não são substituídos por
-seu valor padrão, mas são omitidos. Por exemplo:
+Ao contrário dos métodos não-`external`, os argumentos opcionais não são
+substituídos por seu valor padrão, mas são omitidos.
+Por exemplo:
 
 ```dart
 external int push(JSAny? any, [JSAny? any2]);
 ```
 
-Chamar `array.push(0.toJS)` em Dart resultará em uma invocação JS de
-`array.push(0.toJS)` e *não* `array.push(0.toJS, null)`. Isso permite que os usuários não
-tenham que escrever vários membros de interoperação para a mesma API JS para evitar passar
-`null`s. Se você declarar um parâmetro com um valor padrão explícito, você receberá
-um aviso de que o valor será ignorado.
+Chamar `array.push(0.toJS)` em Dart resulta em
+uma invocação JS de `array.push(0.toJS)` e *não* `array.push(0.toJS, null)`.
+Isso permite que os usuários não precisem escrever vários membros de interop para
+a mesma API JS para evitar passar `null`s.
+Se você declarar um parâmetro com um valor padrão explícito, você
+receberá um aviso de que o valor será ignorado.
 
 ## `@JS()` {:#js}
 
-Às vezes, é útil se referir a uma propriedade JS com um nome diferente do que foi
-escrito. Por exemplo, se você quiser escrever duas APIs `external` que apontam para
-a mesma propriedade JS, você precisaria escrever um nome diferente para pelo menos
-uma delas. Da mesma forma, se você quiser definir vários tipos de interoperação que se referem
-à mesma interface JS, você precisa renomear pelo menos um deles. Outro exemplo é
-se o nome JS não puder ser escrito em Dart, por exemplo, `$a`.
+Às vezes, é útil se referir a uma propriedade JS com
+um nome diferente daquele que foi escrito.
+Por exemplo, se você quiser escrever duas APIs `external` que
+apontam para a mesma propriedade JS, você precisaria
+escrever um nome diferente para pelo menos uma delas.
+Da mesma forma, se você quiser definir vários tipos de interop que
+se referem à mesma interface JS, você precisa renomear pelo menos um deles.
+Outro exemplo é se o nome JS não puder ser escrito em Dart, como `$a`.
 
-Para fazer isso, você pode usar a anotação [`@JS()`] com uma string
-constante. Por exemplo:
+Para fazer isso, você pode usar a anotação [`@JS()`][] com
+um valor de string constante.
+Por exemplo:
 
 ```dart
 extension type Array._(JSArray<JSAny?> _) implements JSArray<JSAny?> {
@@ -373,22 +426,26 @@ extension type JSType._(JSObject _) implements JSObject {
 }
 ```
 
-Chamar `method()` resultará em uma invocação JS de
-`library1.library2.library3.method()`, chamar `JSType()` resultará em uma
-invocação JS de `new library1.library2.library3.JSType()`, e assim por diante.
+Chamar `method()` resulta em
+uma invocação JS de `library1.library2.library3.method()`,
+chamar `JSType()` resulta em
+uma invocação JS de `new library1.library2.library3.JSType()`, e assim por diante.
 
-Você não pode usar anotações `@JS()` com `.` no valor em membros de tipo de
-interoperação ou membros de extensão de tipos de interoperação, no entanto.
+No entanto, você não pode usar anotações `@JS()` com `.` no
+valor em membros de tipo de interop ou membros de extensão de tipos de interop.
 
-Se nenhum valor for fornecido para `@JS()` ou o valor estiver vazio, nenhuma renomeação
-ocorrerá.
+Se nenhum valor for fornecido para `@JS()` ou o valor estiver vazio,
+nenhuma renomeação ocorrerá.
 
-`@JS()` também informa ao compilador que um membro ou tipo deve ser tratado
-como um membro ou tipo de interoperação JS. É necessário (com ou sem um valor) para todos
-os membros de nível superior para distingui-los de outros membros de nível superior
-`external`, mas muitas vezes pode ser omitido em e dentro de tipos de interoperação e em
-membros de extensão, pois o compilador pode dizer que é um tipo de interoperação JS do
-tipo de representação e no tipo.
+`@JS()` também informa ao compilador que um membro ou tipo deve
+ser tratado como um membro ou tipo de interop JS.
+É necessário (com ou sem um valor) para todos os membros de nível superior para
+distingui-los de outros membros `external` de nível superior, mas
+muitas vezes pode ser omitido em e dentro de tipos de interop e em membros de extensão, pois
+o compilador pode dizer que é um tipo de interop JS a partir do
+tipo de representação e do tipo de origem.
+
+[`@JS()`]: {{site.dart-api}}/dart-js_interop/JS-class.html
 
 <a id="exporting-dart-functions-and-objects-to-js" aria-hidden="true"></a>
 ## Exportar funções e objetos Dart para JS {:#export}
@@ -421,14 +478,20 @@ void main() {
 globalThis.exportedFunction('hello world');
 ```
 
-As funções que são exportadas desta forma têm [restrições] de tipo semelhantes àquelas
-de membros de interoperação.
+Funções que são exportadas dessa forma têm [restrições][] de tipo semelhantes às
+dos membros de interop.
 
-Às vezes, é útil exportar uma interface Dart inteira para que o JS possa interagir
-com um objeto Dart. Para fazer isso, marque a classe Dart como exportável usando
-[`@JSExport`] e envolva as instâncias dessa classe usando
-[`createJSInteropWrapper`]. Para uma explicação mais detalhada desta técnica,
-incluindo como simular valores JS, consulte o [tutorial de simulação].
+Às vezes, é útil exportar uma interface Dart inteira para que
+o JS possa interagir com um objeto Dart.
+Para fazer isso, marque a classe Dart como exportável usando [`@JSExport`][] e
+empacote instâncias dessa classe usando [`createJSInteropWrapper`][].
+Para uma explicação mais detalhada dessa técnica, incluindo como
+simular valores JS, confira [Como simular objetos de interop JavaScript][].
+
+[`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`@JSExport`]: {{site.dart-api}}/dart-js_interop/JSExport-class.html
+[`createJSInteropWrapper`]: {{site.dart-api}}/dart-js_interop/createJSInteropWrapper.html
+[Como simular objetos de interop JavaScript]: /interop/js-interop/mock
 
 ## `dart:js_interop` e `dart:js_interop_unsafe` {:#dart-js-interop-and-dart-js-interop-unsafe}
 
@@ -456,48 +519,25 @@ dinamicamente. Por exemplo:
 JSFunction f = console['log'];
 ```
 
-Em vez de declarar um membro de interoperação chamado `log`, estamos usando uma string
-para representar a propriedade. `dart:js_interop_unsafe` fornece funcionalidade para obter,
-definir e chamar propriedades dinamicamente.
+Em vez de declarar um membro de interop chamado `log`,
+uma string pode ser usada para acessar a propriedade.
+`dart:js_interop_unsafe` também fornece funções para
+verificar, obter, definir e chamar propriedades dinamicamente.
 
 :::tip
-Evite usar `dart:js_interop_unsafe` se possível. Isso torna a conformidade de segurança
-mais difícil de garantir e pode levar a violações, e é por isso que pode ser
-"inseguro".
+Evite usar `dart:js_interop_unsafe` se possível.
+Isso torna a conformidade de segurança mais difícil de garantir e
+pode levar a violações, e é por isso que pode ser "inseguro".
 :::
 
-{% comment %}
-TODO: Alguns deles não estão disponíveis em versão estável. Como vinculamos ao dev?
-{% endcomment %}
 
-[escopo global JS]: https://developer.mozilla.org/docs/Glossary/Global_scope
-[funções de conversão]: /interop/js-interop/js-types#conversions
-[contém um tipo primitivo]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
-["tipo JS"]: /interop/js-interop/js-types
-[`Window`]: https://developer.mozilla.org/docs/Web/API/Window
-[verificar o tipo do valor JS por meio de interoperação]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
-[`package:web`]: {{site.pub-pkg}}/web
-[`external`]: /language/functions#external
 [restrições]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
-[objeto literal]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Object_initializer
-[54801]: {{site.repo.dart.sdk}}/issues/54801
-[acessadores de propriedade]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
-[funções de utilidade]: {{site.dart-api}}/dart-js_interop/JSAnyOperatorExtension.html
-[`@JS()`]: {{site.dart-api}}/dart-js_interop/JS-class.html
-[`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`@JSExport`]: {{site.dart-api}}/dart-js_interop/JSExport-class.html
 [`createJSInteropWrapper`]: {{site.dart-api}}/dart-js_interop/createJSInteropWrapper.html
-[tutorial de simulação]: /interop/js-interop/mock
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [`globalContext`]: {{site.dart-api}}/dart-js_interop/globalContext.html
 [Auxiliares para inspecionar o tipo de valores JS]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension.html
 [`dartify`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/dartify.html
 [`jsify`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/jsify.html
 [`importModule`]: {{site.dart-api}}/dart-js_interop/importModule.html
+[`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
-[extensões]: /language/extension-methods
-[tipo de extensão]: /language/extension-types
-[garantia de tempo de execução]: /language/extension-types#type-considerations
-[tipo de representação]: /language/extension-types#declaration
-[implementar]: /language/extension-types#implements
-[membros não `external`]: /language/extension-types#members

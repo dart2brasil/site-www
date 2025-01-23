@@ -257,7 +257,7 @@ execute `./dash_site refresh-excerpts`.
 Para saber mais sobre a criação, edição e uso de excertos de código,
 consulte a [documentação do pacote de atualização de excertos][].
 
-[documentação do pacote de atualização de excertos]: https://github.com/dart-lang/site-shared/tree/main/packages/excerpter#readme
+[documentação do pacote de atualização de excertos]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
 
 ## [Opcional] Implante em um site de staging
 

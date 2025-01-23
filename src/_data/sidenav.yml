@@ -3,7 +3,6 @@
   expanded: false
   children:
     - title: Introdução
-      match-page-url-exactly: true
       permalink: /language
     - title: Fundamentos da sintaxe
       children:
@@ -73,8 +72,7 @@
           permalink: /language/callable-objects
     - title: Modificadores de classe
       children:
-        - title: Visão geral e uso
-          match-page-url-exactly: true
+        - title: Visão geral & Uso
           permalink: /language/class-modifiers
         - title: Modificadores de classe para mantenedores de API
           permalink: /language/class-modifiers-for-apis
@@ -92,7 +90,6 @@
       expanded: false
       children:
         - title: Sound null safety (Segurança nula completa)
-          match-page-url-exactly: true
           permalink: /null-safety
         - title: Migrando para null safety
           permalink: /null-safety/migration-guide
@@ -107,7 +104,6 @@
   expanded: false
   children:
     - title: Visão geral
-      match-page-url-exactly: true
       permalink: /libraries
     - title: dart:core
       permalink: /libraries/dart-core
@@ -119,8 +115,9 @@
       permalink: /libraries/dart-convert
     - title: dart:io
       permalink: /libraries/dart-io
-    - title: dart:html
-      permalink: /libraries/dart-html
+    - title: dart:js_interop
+      permalink: /interop/js-interop
+      match-page-url-exactly: true
     - divider
     - title: Coleções iteráveis
       permalink: /libraries/collections/iterables
@@ -140,7 +137,6 @@
   permalink: /effective-dart
   children:
     - title: Visão geral
-      match-page-url-exactly: true
       permalink: /effective-dart
     - title: Estilo
       permalink: /effective-dart/style
@@ -206,7 +202,6 @@
     - title: Apps de linha de comando e servidor
       children:
         - title: Visão geral
-          match-page-url-exactly: true
           permalink: /server
         - title: Primeiros passos
           permalink: /tutorials/server/get-started
@@ -223,7 +218,6 @@
     - title: Apps web
       children:
         - title: Visão geral
-          match-page-url-exactly: true
           permalink: /web
         - title: Primeiros passos
           permalink: /web/get-started
@@ -249,7 +243,6 @@
     children:
       - title: Visão geral
         permalink: /interop/js-interop
-        match-page-url-exactly: true
       - title: Uso
         permalink: /interop/js-interop/usage
       - title: Tipos JS
@@ -266,7 +259,6 @@
   expanded: false
   children:
   - title: Visão geral
-    match-page-url-exactly: true
     permalink: /tools
   - title: Editores e debuggers
     children:
@@ -279,7 +271,6 @@
       - title: DartPad
         children:
           - title: Visão geral
-            match-page-url-exactly: true
             permalink: /tools/dartpad
           - title: Solução de problemas do DartPad
             permalink: /tools/dartpad/troubleshoot
@@ -373,7 +364,6 @@
     - title: Vídeos
       permalink: /resources/videos
     - title: Tutoriais
-      match-page-url-exactly: true
       permalink: /tutorials
 
 - title: Sites relacionados

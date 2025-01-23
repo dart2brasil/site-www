@@ -14231,6 +14231,116 @@ final class C extends Struct {
 }
 ```
 
+### native_function_missing_type
+
+_O tipo nativo desta função não pôde ser inferido, portanto, deve ser especificado
+na anotação._
+
+#### Descrição
+
+O analisador produz este diagnóstico quando uma função anotada com `@Native`
+requer uma dica de tipo na anotação para inferir o tipo da função nativa.
+
+Tipos Dart como `int` e `double` têm múltiplas representações nativas possíveis.
+Como o tipo nativo precisa ser conhecido em tempo de compilação para gerar
+bindings (ligações) e instruções de chamada corretas para a função, um tipo
+explícito deve ser fornecido.
+
+Para mais informações sobre FFI, veja [Interoperabilidade com C usando dart:ffi][ffi].
+
+#### Exemplo
+
+O código a seguir produz este diagnóstico porque a função `f()` tem o tipo de
+retorno `int`, mas não tem um parâmetro de tipo explícito na anotação `Native`:
+
+```dart
+import 'dart:ffi';
+
+@Native()
+external int [!f!]();
+```
+
+#### Correções Comuns
+
+Adicione o tipo correspondente à anotação. Por exemplo, se `f()` foi declarada
+para retornar um `int32_t` em C, a função Dart deve ser declarada como:
+
+```dart
+import 'dart:ffi';
+
+@Native<Int32 Function()>()
+external int f();
+```
+
+### negative_variable_dimension
+
+_A dimensão variável de um array de comprimento variável deve ser não negativa._
+
+#### Descrição
+
+O analisador produz este diagnóstico em dois casos.
+
+O primeiro é quando a dimensão variável fornecida em uma anotação
+`Array.variableWithVariableDimension` é negativa. A dimensão variável é o
+primeiro argumento na anotação.
+
+O segundo é quando a dimensão variável fornecida em uma anotação
+`Array.variableMulti` é negativa. A dimensão variável é especificada no
+argumento `variableDimension` da anotação.
+
+Para mais informações sobre FFI, veja [Interoperabilidade com C usando dart:ffi][ffi].
+
+#### Exemplos
+
+O código a seguir produz este diagnóstico porque uma dimensão variável de `-1`
+foi fornecida na anotação `Array.variableWithVariableDimension`:
+
+```dart
+import 'dart:ffi';
+
+final class MyStruct extends Struct {
+  @Array.variableWithVariableDimension([!-1!])
+  external Array<Uint8> a0;
+}
+```
+
+O código a seguir produz este diagnóstico porque uma dimensão variável de `-1`
+foi fornecida na anotação `Array.variableMulti`:
+
+```dart
+import 'dart:ffi';
+
+final class MyStruct2 extends Struct {
+  @Array.variableMulti(variableDimension: [!-1!], [1, 2])
+  external Array<Array<Array<Uint8>>> a0;
+}
+```
+
+#### Correções Comuns
+
+Altere a dimensão variável com zero (`0`) ou um número positivo:
+
+```dart
+import 'dart:ffi';
+
+final class MyStruct extends Struct {
+  @Array.variableWithVariableDimension(1)
+  external Array<Uint8> a0;
+}
+```
+
+Altere a dimensão variável com zero (`0`) ou um número positivo:
+
+```dart
+import 'dart:ffi';
+
+final class MyStruct2 extends Struct {
+  @Array.variableMulti(variableDimension: 1, [1, 2])
+  external Array<Array<Array<Uint8>>> a0;
+}
+```
+[ffi]: https://dart.dev/guides/libraries/c-interop
+
 ### new_with_undefined_constructor_default {:#new_with_undefined_constructor_default}
 
 _A classe '{0}' não tem um construtor não nomeado._
@@ -15528,7 +15638,8 @@ Para mais informações sobre FFI (Foreign Function Interface), veja [C interop 
 
 #### Exemplo
 
-O código a seguir produz esse diagnóstico porque uma dimensão de array de `-1` foi fornecida:
+O código a seguir produz esse diagnóstico porque uma dimensão de array de `-8`
+foi fornecida:
 
 ```dart
 import 'dart:ffi';
@@ -15552,7 +15663,8 @@ final class MyStruct extends Struct {
 }
 ```
 
-Se este for um array (matriz) inline de comprimento variável, altere a anotação para `Array.variable()`:
+Se este for um array (matriz) inline de comprimento variável, altere a anotação
+para `Array.variable()`:
 
 ```dart
 import 'dart:ffi';
@@ -28622,6 +28734,32 @@ List<String> toLowercase(List<String> strings) {
 }
 ```
 
+### unnecessary_underscores
+
+_Uso desnecessário de múltiplos underscores (sublinhados)._
+
+#### Descrição
+
+O analisador produz este diagnóstico quando uma variável não utilizada é nomeada
+com múltiplos underscores (por exemplo, `__`). Uma única variável curinga `_`
+pode ser usada em vez disso.
+
+#### Exemplo
+
+O código a seguir produz este diagnóstico porque o parâmetro `__` não é usado:
+
+```dart
+void function(int [!__!]) { }
+```
+
+#### Correções Comuns
+
+Substitua o nome por um único underscore:
+
+```dart
+void function(int _) { }
+```
+
 ### unrelated_type_equality_checks {:#unrelated_type_equality_checks}
 
 _O tipo do operando ('{0}') não é um subtipo ou um supertipo do valor que
@@ -28722,11 +28860,9 @@ localmente na mesma biblioteca que esta restrição é satisfeita:
 **MELHOR:**
 ```dart
 class C<X> {
+  // NB: Ensure manually that `_f` is only accessed on `this`.
   // ignore: unsafe_variance
-  final bool Function(X) _fun;
-  bool fun(X x) => _fun(x);
-  C(this._fun);
-}
+  bool Function(X) _f;
 
 void main() {
   C<num> c = C<int>((i) => i.isEven);

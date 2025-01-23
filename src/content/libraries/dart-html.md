@@ -8,10 +8,8 @@ prevpage:
 ---
 
 :::warning
-`dart:html` está sendo substituído por [`package:web`][].
-Os mantenedores de pacotes devem migrar para `package:web` o
-mais rápido possível para serem compatíveis com Wasm.
-Leia a página [Migrar para package:web][] para obter orientação.
+A biblioteca `dart:html` está depreciada.
+Em vez disso, use [`dart:js_interop`][] e [`package:web`][].
 :::
 
 Use a biblioteca [dart:html][] para programar o navegador, manipular objetos e
@@ -37,6 +35,7 @@ Para usar a biblioteca HTML em seu aplicativo web, importe dart:html:
 import 'dart:html';
 ```
 
+[`dart:js_interop`]: /interop/js-interop
 [`package:web`]: {{site.pub-pkg}}/web
 [Migrar para package:web]: /interop/js-interop/package-web
 

@@ -147,9 +147,9 @@ fornecendo o essencial para muitas tarefas de programação do dia a dia:
   que são semelhantes a threads, mas
   não compartilham memória, comunicando-se apenas por meio de mensagens
   (`dart:isolate`)
-* Elementos HTML e outros recursos para aplicativos baseados na web que precisam
+* Elementos HTML e outros recursos para aplicações baseadas na web que precisam
   interagir com o navegador e o Document Object Model (DOM)
-  (`dart:html`)
+  (`dart:js_interop` e `package:web`)
 
 Além das bibliotecas principais, muitas APIs são fornecidas por meio de
 um conjunto abrangente de pacotes.

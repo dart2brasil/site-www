@@ -3,6 +3,9 @@ ia-translate: true
 title: Interoperabilidade com JavaScript
 short-title: Interop JS
 description: Integre código JavaScript ao seu aplicativo web Dart.
+nextpage:
+  url: /interop/js-interop/usage
+  title: Usage
 ---
 
 A [plataforma web Dart](/overview#web-platform) (Dart web platform) suporta a comunicação com aplicativos e bibliotecas JavaScript, bem como APIs do navegador, usando `dart:js_interop`.

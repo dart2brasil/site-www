@@ -2,6 +2,12 @@
 ia-translate: true
 title: Tipos JS
 description: Informações de uso sobre os tipos principais na interoperabilidade JS.
+prevpage:
+  url: /interop/js-interop/usage
+  title: Usage
+nextpage:
+  url: /interop/js-interop/tutorials
+  title: JS interop tutorials
 ---
 
 Valores Dart e valores JS pertencem a domínios de linguagem separados. Ao compilar para

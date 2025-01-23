@@ -108,6 +108,47 @@ Para usar workspaces do pub, todos os seus pacotes do workspace (mas não suas
 dependências) devem ter uma restrição de versão do SDK de `^3.6.0` ou superior.
 :::
 
+<a name='stray-files'></a>
+## Arquivos perdidos (Stray files)
+
+Quando você migra um monorepo existente para usar workspaces do Pub, haverá
+arquivos "perdidos" `pubspec.lock` e `.dart_tool/package_config.json` existentes
+adjacentes a cada pubspec. Eles sombreiam os arquivos `pubspec.lock` e
+`.dart_tool/package_config.json` colocados próximos à raiz.
+
+Portanto, `pub get` excluirá qualquer `pubspec.lock` e
+`.dart_tool/package_config.json` localizados em diretórios entre a raiz e
+(incluindo) qualquer pacote de workspace.
+
+```plaintext
+/
+  pubspec.yaml                       # Raiz
+  packages/
+    pubspec.lock                     # Excluído por `pub get`
+    .dart_tool/package_config.json   # Excluído por `pub get`
+    foo/
+      pubspec.yaml                   # Membro do workspace
+      pubspec.lock                   # Excluído por `pub get`
+      .dart_tool/package_config.json # Excluído por `pub get`
+```
+
+Se qualquer diretório entre a raiz do workspace e um pacote de workspace contiver um
+arquivo "perdido" `pubspec.yaml` que não seja membro do workspace, `pub get`
+relatará um erro e não conseguirá resolver. Isso ocorre porque resolver tal `pubspec.yaml` criaria
+um arquivo `.dart_tool/package_config.json` que sombreia aquele na raiz.
+
+Por exemplo:
+
+```plaintext
+/
+  pubspec.yaml                      # Raiz `workspace: ['foo/']`
+  packages/
+    pubspec.yaml                    # Não é membro do workspace => erro
+    foo/
+      pubspec.yaml                  # Membro do workspace
+```
+
+
 ## Interdependências entre pacotes do workspace {:#interdependencies-between-workspace-packages}
 
 Se algum dos pacotes do workspace depender um do outro, eles serão resolvidos
@@ -158,8 +199,8 @@ $ cd packages/client_package ; dart pub publish ; cd -
 Às vezes, você pode querer resolver um pacote do workspace sozinho, por exemplo,
 para validar suas restrições de dependência.
 
-Uma maneira de fazer isso é criar um arquivo `pubspec_overides.yaml` que
-redefina a configuração `resolution`, assim:
+Uma maneira de fazer isso é criar um arquivo `pubspec_overrides.yaml` que redefine a
+configuração `resolution`, assim:
 
 ```yaml
 # packages/client_package/pubspec_overrides.yaml {:#packages-client-package-pubspec-overrides-yaml}

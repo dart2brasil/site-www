@@ -2,6 +2,12 @@
 ia-translate: true
 title: Tutoriais de interoperabilidade JS
 description: Tutoriais para casos de uso comuns de interoperabilidade JavaScript em Dart.
+prevpage:
+  url: /interop/js-interop/js-types
+  title: JS types
+nextpage:
+  url: /interop/js-interop/past-js-interop
+  title: Past JS interop
 ---
 
 ## Tutoriais {:#tutorials}

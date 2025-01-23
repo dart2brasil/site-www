@@ -2829,5 +2829,5 @@ bonitos a partir de uma única base de código),
 onde você encontrará informações detalhadas sobre a
 linguagem e formas práticas de começar.
 
-[Dart]: /guides
+[Dart]: /docs
 [Flutter]: {{site.flutter-docs}}

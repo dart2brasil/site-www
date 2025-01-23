@@ -34,7 +34,7 @@ yt:
   watch: 'https://www.youtube.com/watch'
   playlist: 'https://www.youtube.com/playlist?list='
 
-show_banner: true
+show_banner: false
 
 # Incremente este número de versão da URL global og:image (usado como um parâmetro de consulta)
 # quando você atualizar qualquer arquivo og:image. (Também incremente o número correspondente
