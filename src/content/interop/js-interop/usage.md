@@ -280,7 +280,7 @@ Um getter booleano `isMidnight` que usa os valores de interop é um desses exemp
 [54801]: {{site.repo.dart.sdk}}/issues/54801
 [acessadores de propriedade]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
 [funções de utilidade]: {{site.dart-api}}/dart-js_interop/JSAnyOperatorExtension.html
-[membros não-`external`]: /language/extension-types#members
+[membro não-`external`]: /language/extension-types#members
 
 ### Membros de extensão em tipos de interoperação {:#membros-de-extensao-em-interop-types}
 

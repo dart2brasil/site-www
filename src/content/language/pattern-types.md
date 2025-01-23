@@ -364,7 +364,7 @@ correspondem seus subpadrões contra as chaves do mapa para desestruturá-los.
 Padrões de mapa não exigem que o padrão corresponda ao mapa inteiro. Um padrão de mapa
 ignora quaisquer chaves que o mapa contenha que não sejam correspondidas pelo padrão.
 Tentar corresponder a uma chave que não existe no mapa irá
-lançar um [StateError][]:
+lançar um [`StateError`][]:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (map-error)"?>
 ```dart
