@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Como simular objetos de interoperação JavaScript
 description: Aprenda como simular objetos de interoperação JS em Dart para testes.
 ---
