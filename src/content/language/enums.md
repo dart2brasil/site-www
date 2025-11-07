@@ -1,6 +1,7 @@
 ---
-title: Enumerated types
-description: Learn about the enum type in Dart.
+ia-translate: true
+title: Tipos enumerados
+description: Aprenda sobre o tipo enum em Dart.
 shortTitle: Enums
 prevpage:
   url: /language/mixins
