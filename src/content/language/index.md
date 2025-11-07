@@ -1,8 +1,9 @@
 ---
-title: Introduction to Dart
-shortTitle: Dart basics
+ia-translate: true
+title: Introdução ao Dart
+shortTitle: Básico do Dart
 breadcrumb: Language
-description: A brief introduction to Dart programs and important concepts.
+description: Uma breve introdução aos programas Dart e conceitos importantes.
 nextpage:
   url: /language/variables
   title: Variáveis
@@ -282,16 +283,16 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
-When the compiler can infer the enum type from the context, 
-you can use the more concise dot-shorthand syntax to access enum values. 
-Instead of writing the full `EnumName.value`, 
-you can just write `.value`. This can make your code cleaner 
-and easier to read.
+Quando o compilador pode inferir o tipo enum do contexto,
+você pode usar a sintaxe dot-shorthand (abreviação com ponto) mais concisa para acessar valores enum.
+Em vez de escrever o `EnumName.value` completo,
+você pode simplesmente escrever `.value`. Isso pode tornar seu código mais limpo
+e fácil de ler.
 
 
-For example, when declaring a variable with an explicit type of `Planet`, 
-you can omit the enum name because 
-the type of `Planet` is already established:
+Por exemplo, ao declarar uma variável com um tipo explícito de `Planet`,
+você pode omitir o nome do enum porque
+o tipo de `Planet` já está estabelecido:
 
 
 ```dart
@@ -302,14 +303,14 @@ Planet myPlanet = Planet.venus;
 Planet myPlanet = .venus;
 ```
 
-Dot shorthands aren't limited to variable declarations. 
-They can also be used in contexts like function arguments 
-and switch cases where the enum type is clear to the compiler.
+Dot shorthands não se limitam a declarações de variáveis.
+Eles também podem ser usados em contextos como argumentos de função
+e casos de switch onde o tipo enum é claro para o compilador.
 
-[Read more](/language/enums) about enums in Dart,
-including enhanced enum requirements, automatically introduced properties,
-accessing enumerated value names, switch statement support, and much more.
-[Read more](/language/dot-shorthands) about dot shorthand syntax. 
+[Leia mais](/language/enums) sobre enums em Dart,
+incluindo requisitos de enum aprimorado, propriedades introduzidas automaticamente,
+acessando nomes de valores enumerados, suporte a comando switch e muito mais.
+[Leia mais](/language/dot-shorthands) sobre a sintaxe dot shorthand. 
 
 
 ## Herança {:#inheritance}
@@ -495,8 +496,8 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
 }
 ```
 
-Note that the code above is asynchronous;
-`try` works for both synchronous and asynchronous code in an `async` function.
+Observe que o código acima é assíncrono;
+`try` funciona tanto para código síncrono quanto assíncrono em uma função `async`.
 
 [Leia mais](/language/error-handling#exceptions) sobre exceções,
 incluindo stack traces (rastreamento de pilha), `rethrow`,
