@@ -1,6 +1,7 @@
 ---
-title: Metadata
-description: Metadata and annotations in Dart.
+ia-translate: true
+title: Metadados
+description: Metadados e anotações em Dart.
 prevpage:
   url: /language/functions
   title: Functions
@@ -10,37 +11,37 @@ nextpage:
 ---
 
 
-Use metadata to provide additional static information about your code.
-A metadata annotation begins with the character `@`, followed by either
-a reference to a compile-time constant (such as `deprecated`) or
-a call to a constant constructor.
+Use metadados para fornecer informações estáticas adicionais sobre seu código.
+Uma anotação de metadados começa com o caractere `@`, seguido por uma
+referência a uma constante de tempo de compilação (como `deprecated`) ou
+uma chamada a um construtor constante.
 
-Metadata can be attached to most Dart program constructs by
-adding annotations before the construct's declaration or directive.
+Metadados podem ser anexados à maioria das construções de programa Dart
+adicionando anotações antes da declaração ou diretiva da construção.
 
-## Built-in annotations
+## Anotações integradas
 
-The following annotations are available to all Dart code:
+As seguintes anotações estão disponíveis para todo código Dart:
 
 [`@Deprecated`][]
-: Marks a declaration as deprecated,
-  indicating it should be migrated away from,
-  with a message explaining the replacement and potential removal date.
+: Marca uma declaração como obsoleta (deprecated),
+  indicando que deve ser migrada para outra opção,
+  com uma mensagem explicando a substituição e data potencial de remoção.
 
 [`@deprecated`][]
-: Marks a declaration as deprecated until an unspecified future release.
-  Prefer using `@Deprecated` and [providing a deprecation message][].
+: Marca uma declaração como obsoleta até uma versão futura não especificada.
+  Prefira usar `@Deprecated` e [fornecer uma mensagem de depreciação][].
 
 [`@override`][]
-: Marks an instance member as an override or implementation of
-  a member with the same name from a parent class or interface.
-  For examples of using `@override`, check out [Extend a class][].
+: Marca um membro de instância como uma sobrescrita ou implementação de
+  um membro com o mesmo nome de uma classe pai ou interface.
+  Para exemplos de uso de `@override`, confira [Estender uma classe][].
 
 [`@pragma`][]
-: Provides specific instructions or hints about a declaration to
-  Dart tools, such as the compiler or analyzer.
+: Fornece instruções ou dicas específicas sobre uma declaração para
+  ferramentas Dart, como o compilador ou analisador.
 
-Here's an example of using the `@Deprecated` annotation:
+Aqui está um exemplo de uso da anotação `@Deprecated`:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)"?>
 ```dart highlightLines=3
@@ -59,53 +60,53 @@ class Television {
 }
 ```
 
-The [Dart analyzer][] provides feedback as diagnostics if
-the `@override` annotation is needed and when using
-members annotated with `@deprecated` or `@Deprecated`.
+O [analisador Dart][] fornece feedback como diagnósticos se
+a anotação `@override` for necessária e ao usar
+membros anotados com `@deprecated` ou `@Deprecated`.
 
 [`@Deprecated`]: {{site.dart-api}}/dart-core/Deprecated-class.html
 [`@deprecated`]: {{site.dart-api}}/dart-core/deprecated-constant.html
 [`@override`]: {{site.dart-api}}/dart-core/override-constant.html
 [`@pragma`]: {{site.dart-api}}/dart-core/pragma-class.html
-[providing a deprecation message]: /tools/linter-rules/provide_deprecation_message
-[Extend a class]: /language/extend
-[Dart analyzer]: /tools/analysis
+[fornecer uma mensagem de depreciação]: /tools/linter-rules/provide_deprecation_message
+[Estender uma classe]: /language/extend
+[analisador Dart]: /tools/analysis
 
-## Analyzer-supported annotations
+## Anotações suportadas pelo analisador
 
-Beyond providing support and analysis for the [built-in annotations][],
-the [Dart analyzer][] provides additional support and diagnostics for
-a variety of annotations from [`package:meta`][].
-Some commonly used annotations the package provides include:
+Além de fornecer suporte e análise para as [anotações integradas][],
+o [analisador Dart][] fornece suporte adicional e diagnósticos para
+uma variedade de anotações do [`package:meta`][].
+Algumas anotações comumente usadas que o pacote fornece incluem:
 
 [`@visibleForTesting`][]
-: Marks a member of a package as only public so that
-  the member can be accessed from the package's tests.
-  The analyzer hides the member from autocompletion suggestions
-  and warns if it's used from another package.
+: Marca um membro de um pacote como público apenas para que
+  o membro possa ser acessado a partir dos testes do pacote.
+  O analisador oculta o membro das sugestões de autocompletar
+  e avisa se for usado de outro pacote.
 
 [`@awaitNotRequired`][]
-: Marks variables that have a `Future` type or functions that return a `Future`
-  as not requiring the caller to await the `Future`.
-  This stops the analyzer from warning callers that don't await the `Future`
-  due to the [`discarded_futures`][] or [`unawaited_futures`][] lints.
+: Marca variáveis que têm um tipo `Future` ou funções que retornam um `Future`
+  como não exigindo que o chamador aguarde (await) o `Future`.
+  Isso impede que o analisador avise chamadores que não aguardam o `Future`
+  devido aos lints [`discarded_futures`][] ou [`unawaited_futures`][].
 
-To learn more about these and the other annotations the package provides,
-what they indicate, what functionality they enable, and how to use them,
-check out the [`package:meta/meta.dart` API docs][meta-api].
+Para saber mais sobre essas e outras anotações que o pacote fornece,
+o que elas indicam, qual funcionalidade elas habilitam e como usá-las,
+confira a [documentação da API `package:meta/meta.dart`][meta-api].
 
-[built-in annotations]: #built-in-annotations
-[Dart analyzer]: /tools/analysis
+[anotações integradas]: #built-in-annotations
+[analisador Dart]: /tools/analysis
 [`@visibleForTesting`]: {{site.pub-api}}/meta/latest/meta/visibleForTesting-constant.html
 [`@awaitNotRequired`]: {{site.pub-api}}/meta/latest/meta/awaitNotRequired-constant.html
 [`discarded_futures`]: /tools/linter-rules/discarded_futures
 [`unawaited_futures`]: /tools/linter-rules/unawaited_futures
 [meta-api]: {{site.pub-api}}/meta/latest/meta/meta-library.html
 
-## Custom annotations
+## Anotações personalizadas
 
 Você pode definir suas próprias anotações de metadados. Aqui está um exemplo de
-definindo uma anotação `@Todo` que recebe dois argumentos:
+definir uma anotação `@Todo` que recebe dois argumentos:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart (definition)"?>
 ```dart
@@ -127,15 +128,15 @@ void doSomething() {
 }
 ```
 
-### Specifying supported targets {:.no_toc}
+### Especificando alvos suportados {:.no_toc}
 
-To indicate the type of language constructs that
-should be annotated with your annotation,
-use the [`@Target`][] annotation from [`package:meta`][].
+Para indicar o tipo de construções de linguagem que
+devem ser anotadas com sua anotação,
+use a anotação [`@Target`][] do [`package:meta`][].
 
-For example, if you wanted the earlier `@Todo` annotation to
-only be allowed on functions and methods,
-you'd add the following annotation:
+Por exemplo, se você quisesse que a anotação `@Todo` anterior
+só fosse permitida em funções e métodos,
+você adicionaria a seguinte anotação:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart (target-kinds)"?>
 ```dart highlightLines=3
@@ -147,8 +148,8 @@ class Todo {
 }
 ```
 
-With this configuration, the analyzer will warn if `Todo` is used as
-an annotation on any declaration besides a top-level function or method.
+Com esta configuração, o analisador avisará se `Todo` for usado como
+uma anotação em qualquer declaração além de uma função ou método de nível superior.
 
 [`@Target`]: {{site.pub-api}}/meta/latest/meta_meta/Target-class.html
 [`package:meta`]: {{site.pub-pkg}}/meta
