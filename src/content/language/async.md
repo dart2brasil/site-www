@@ -1,7 +1,8 @@
 ---
-title: Asynchronous programming
-description: Information on writing asynchronous code in Dart.
-shortTitle: Async programming
+ia-translate: true
+title: Programação assíncrona
+description: Informações sobre como escrever código assíncrono em Dart.
+shortTitle: Programação async
 prevpage:
   url: /language/concurrency
   title: Concorrência
