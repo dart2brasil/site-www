@@ -1,6 +1,7 @@
 ---
-title: Constructors
-description: Everything about using constructors in Dart.
+ia-translate: true
+title: Construtores
+description: Tudo sobre como usar construtores em Dart.
 prevpage:
   url: /language/classes
   title: Classes

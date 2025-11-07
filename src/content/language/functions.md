@@ -1,6 +1,7 @@
 ---
-title: Functions
-description: Everything about functions in Dart.
+ia-translate: true
+title: Funções
+description: Tudo sobre funções em Dart.
 prevpage:
   url: /language/error-handling
   title: Error handling
