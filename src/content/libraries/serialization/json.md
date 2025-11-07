@@ -1,6 +1,7 @@
 ---
-title: Using JSON
-description: Dart solutions for reading and writing JSON.
+ia-translate: true
+title: Usando JSON
+description: Soluções Dart para ler e escrever JSON.
 showBreadcrumbs: false
 ---
 
