@@ -1,6 +1,7 @@
 ---
-title: Callable objects
-description: Learn how to create and use callable objects in Dart.
+ia-translate: true
+title: Objetos chamáveis
+description: Aprenda como criar e usar objetos chamáveis em Dart.
 showToc: false
 prevpage:
   url: /language/extension-types
