@@ -1,8 +1,9 @@
 ---
-title: Dart SDK overview
-shortTitle: SDK overview
+ia-translate: true
+title: Visão geral do Dart SDK
+shortTitle: Visão geral do SDK
 breadcrumb: SDK
-description: Dart libraries and command-line tools.
+description: Bibliotecas e ferramentas de linha de comando Dart.
 ---
 
 O Dart SDK possui as bibliotecas e ferramentas de linha de comando que você precisa para desenvolver

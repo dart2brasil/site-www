@@ -1,6 +1,7 @@
 ---
-title: Dart documentation
-description: Learn to use the Dart language and libraries.
+ia-translate: true
+title: Documentação Dart
+description: Aprenda a usar a linguagem e as bibliotecas Dart.
 showToc: false
 showBreadcrumbs: false
 ---
