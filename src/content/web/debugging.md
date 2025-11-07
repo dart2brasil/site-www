@@ -1,7 +1,8 @@
 ---
-ia-translate: true
-title: Depurando aplicativos web Dart
-description: Aprenda como depurar seu aplicativo web Dart.
+title: Debugging Dart web apps
+shortTitle: Debugging web apps
+breadcrumb: Debugging
+description: Learn how to debug your Dart web app.
 ---
 
 Você pode usar uma [IDE Dart][IDE], [Dart DevTools][Dart DevTools], e ferramentas do
@@ -189,7 +190,7 @@ atualize as ferramentas ativando-as novamente:
 $ dart pub global activate webdev     # atualiza webdev
 ```
 
-{% include 'tools/debug-prod-js-code.md' %}
+{% render 'tools/debug-prod-js-code.md', site: site %}
 
 ## Recursos {:#resources}
 

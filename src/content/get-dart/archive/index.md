@@ -1,13 +1,9 @@
 ---
-ia-translate: true
-title: Arquivo do Dart SDK
-short-title: Arquivo
-description: Baixe versões específicas dos canais estável, beta, dev e main do Dart SDK e da documentação da API do Dart.
-js:
-- url: /assets/js/get-dart/download_archive.dart.js
-  defer: true
-- url: /assets/js/get-dart/install.js
-  defer: true
+title: Dart SDK archive
+shortTitle: Archive
+description: >-
+  Download specific stable, beta, dev, and main channel versions of
+  the Dart SDK and the Dart API documentation.
 ---
 
 Use este arquivo para baixar
@@ -17,15 +13,15 @@ Use este arquivo para baixar
 Quer instalar o Dart usando o gerenciador de pacotes do seu sistema operacional?
 [Obtenha o Dart.](/get-dart)
 
-:::warning Aviso
-{% include './_sdk-terms.md' %}
+:::warning Notice
+{% render 'install/sdk-terms.md' %}
 :::
 
 ## Canal estável {:#stable-channel}
 
 As builds do canal estável são testadas e aprovadas para uso em produção.
 
-{% include './_archives_table.html', channel:'stable' %}
+<ArchiveTable channel="stable" />
 
 ## Canal beta {:#beta-channel}
 
@@ -33,14 +29,14 @@ As builds do canal beta são pré-visualizações para o canal estável.
 Recomendamos testar, mas não lançar, seus aplicativos no canal beta para pré-visualizar novos recursos ou testar a compatibilidade com versões futuras.
 As builds do canal beta não são adequadas para uso em produção.
 
-{% include './_archives_table.html', channel:'beta' %}
+<ArchiveTable channel="beta" />
 
 ## Canal dev {:#dev-channel}
 
 As builds do canal dev podem fornecer acesso antecipado a novos recursos, mas podem conter bugs.
 As builds do canal dev não são adequadas para uso em produção.
 
-{% include './_archives_table.html', channel:'dev' %}
+<ArchiveTable channel="dev" />
 
 ## Canal main {:#main-channel}
 
@@ -70,8 +66,8 @@ https://storage.googleapis.com/dart-archive/channels/<[!stable|beta|dev!]>/relea
 Exemplos:
 
 ```plaintext
-https://storage.googleapis.com/dart-archive/channels/stable/release/2.7.2/sdk/dartsdk-windows-ia32-release.zip
-https://storage.googleapis.com/dart-archive/channels/stable/release/2.1.1/sdk/dartsdk-macos-x64-release.zip
+https://storage.googleapis.com/dart-archive/channels/stable/release/3.6.2/sdk/dartsdk-windows-x64-release.zip
+https://storage.googleapis.com/dart-archive/channels/stable/release/3.0.7/sdk/dartsdk-macos-arm64-release.zip
 https://storage.googleapis.com/dart-archive/channels/beta/release/2.8.0-20.11.beta/sdk/dartsdk-linux-x64-release.zip
 https://storage.googleapis.com/dart-archive/channels/dev/release/2.9.0-1.0.dev/sdk/dartsdk-linux-x64-release.zip
 ```

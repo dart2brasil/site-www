@@ -2,8 +2,8 @@
 ia-translate: true
 title: Concorrência em Dart
 description: >-
-  Use isolates para habilitar a execução de código paralelo em múltiplos núcleos de processador.
-short-title: Concorrência
+  Use isolates to enable parallel code execution on multiple processor cores.
+shortTitle: Concurrency
 lastVerified: 2023-12-14
 prevpage:
   url: /language/modifier-reference
@@ -15,17 +15,11 @@ nextpage:
 
 <?code-excerpt path-base="concurrency"?>
 
-<style>
-  article img {
-    padding: 15px 0;
-  }
-</style>
-
-Esta página contém uma visão geral conceitual de como a programação concorrente
-funciona em Dart. Ela explica o loop de eventos, os recursos da linguagem
-async e os isolates de alto nível. Para exemplos de código mais práticos de
-como usar concorrência em Dart, leia a página de
-[Suporte a Assincronia](/language/async) e a página de [Isolates](/language/isolates).
+This page contains a conceptual overview of how concurrent programming works in
+Dart. It explains the event-loop, async language features, and isolates from
+a high-level. For more practical code examples of using concurrency in Dart,
+read the [Asynchronous programming](/language/async) page and 
+[Isolates](/language/isolates) page.
 
 A programação concorrente em Dart se refere tanto a APIs assíncronas, como
 `Future` e `Stream`, quanto a *isolates*, que permitem mover processos para
@@ -50,8 +44,7 @@ teclas do usuário, até E/S do disco. Como seu aplicativo não pode prever em q
 ordem os eventos acontecerão, o loop de eventos processa os eventos na ordem
 em que são enfileirados, um de cada vez.
 
-![Uma figura mostrando eventos sendo alimentados, um por um, no loop de
-eventos](/assets/img/language/concurrency/event-loop.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/event-loop.png){:.diagram-wrap}
 
 A forma como o loop de eventos funciona se assemelha a este código:
 
@@ -85,9 +78,7 @@ de eventos para manter o callback (chamada de retorno) na cláusula `then()` at�
 que a requisição HTTP seja resolvida. Quando isso acontecer, ele deve executar
 esse callback, passando o resultado da requisição como um argumento.
 
-![Figura mostrando eventos async sendo adicionadosa um loop de eventos e
-mantendo um callback para executar mais
-tarde.](/assets/img/language/concurrency/async-event-loop.png)
+![Figure showing async events being added to an event loop and holding onto a callback to execute later .](/assets/img/language/concurrency/async-event-loop.png){:.diagram-wrap}
 
 Este mesmo modelo é geralmente como o loop de eventos lida com todos os outros
 eventos assíncronos em Dart, como objetos [`Stream`][`Stream`].
@@ -189,8 +180,7 @@ Como a figura a seguir mostra, o código Dart pausa enquanto `readAsString()`
 executa código não-Dart, seja no tempo de execução do Dart ou no sistema
 operacional. Uma vez que `readAsString()` retorna um valor, a execução do código Dart é retomada.
 
-![Figura semelhante a um fluxograma mostrando o código do aplicativo sendo
-executado do início ao fim, aguardando E/S nativa no meio](/assets/img/language/concurrency/basics-await.png)
+![Flowchart-like figure showing app code executing from start to exit, waiting for native I/O in between](/assets/img/language/concurrency/basics-await.png){:.diagram-wrap}
 
 ### Streams {:#streams}
 
@@ -269,8 +259,7 @@ Na maioria dos casos, você não precisa pensar em isolates. Os programas Dart s
 executados no isolate principal por padrão. É a thread onde um programa começa
 a ser executado e executado, como mostrado na figura a seguir:
 
-![Uma figura mostrando um isolate principal, que executa `main()`, responde a
-eventos e depois sai](/assets/img/language/concurrency/basics-main-isolate.png)
+![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/assets/img/language/concurrency/basics-main-isolate.png){:.diagram-wrap}
 
 Mesmo programas de isolate único podem ser executados sem problemas. Antes de
 continuar para a próxima linha de código, esses aplicativos usam
@@ -291,8 +280,7 @@ eventos — para responder à entrada do usuário ou E/S de arquivo, por exemplo
 Quando a função inicial do isolate retorna, o isolate permanece se precisar
 lidar com eventos. Depois de lidar com os eventos, o isolate sai.
 
-![Uma figura mais geral mostrando que qualquer isolate executa algum código,
-opcionalmente responde a eventos e depois sai](/assets/img/language/concurrency/basics-isolate.png)
+![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/assets/img/language/concurrency/basics-isolate.png){:.diagram-wrap}
 
 ### Tratamento de eventos {:#event-handling}
 
@@ -303,8 +291,7 @@ repintura, seguido por um evento de toque, seguido por dois eventos de
 repintura. O loop de eventos pega os eventos da fila na ordem FIFO (first in,
 first out - primeiro a entrar, primeiro a sair).
 
-![Uma figura mostrando eventos sendo alimentados, um por um, no loop de
-eventos](/assets/img/language/concurrency/event-loop.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/event-loop.png){:.diagram-wrap}
 
 O tratamento de eventos acontece no isolate principal depois que `main()` sai.
 Na figura a seguir, depois que `main()` sai, o isolate principal trata o
@@ -317,7 +304,7 @@ muito tempo, então os eventos subsequentes são tratados muito tarde. O
 aplicativo pode parecer travar e qualquer animação que ele execute pode ser
 instável.
 
-![Uma figura mostrando um manipulador de toque com um tempo de execução muito longo](/assets/img/language/concurrency/event-jank.png)
+![A figure showing a tap handler with a too-long execution time](/assets/img/language/concurrency/event-jank.png){:.diagram-wrap}
 
 Em aplicativos cliente, o resultado de uma operação síncrona muito longa é
 muitas vezes [animação de UI instável (não suave)][jank]. Pior ainda, a UI pode
@@ -336,8 +323,7 @@ worker retorna seu resultado em uma mensagem quando sai.
 
 [json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 
-![Uma figura mostrando um isolate principal e um isolate worker
-simples](/assets/img/language/concurrency/isolate-bg-worker.png)
+![A figure showing a main isolate and a simple worker isolate](/assets/img/language/concurrency/isolate-bg-worker.png){:.diagram-wrap}
 
 Um isolate worker pode executar E/S (leitura e gravação de arquivos, por
 exemplo), definir temporizadores e muito mais. Ele tem sua própria memória e

@@ -4,23 +4,15 @@
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
 
-<a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Fdart-lang%2Fsite-www">
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="https://cdn.idx.dev/btn/open_dark_32.svg">
-    <source
-      media="(prefers-color-scheme: light)"
-      srcset="https://cdn.idx.dev/btn/open_light_32.svg">
-    <img
-      height="32"
-      alt="Abrir no IDX"
-      src="https://cdn.idx.dev/btn/open_purple_32.svg">
-  </picture>
+<a href="https://studio.firebase.google.com/import?url=https%3A%2F%2Fgithub.com%2Fdart-lang%2Fsite-www">
+  <img
+    height="32"
+    alt="Open in Firebase Studio"
+    src="https://cdn.firebasestudio.dev/btn/open_blue_32.svg">
 </a>
 
-O site de documentação para a [linguagem de programação Dart](https://dartbrasil.dev),
-construído com [Eleventy][] e hospedado no [Firebase][].
+The documentation site for the [Dart programming language](https://dart.dev), 
+built with [Jaspr][] and hosted on [Firebase][].
 
 Aceitamos contribuições de todos os tipos!
 Para configurar o site localmente, siga as
@@ -42,12 +34,8 @@ você provavelmente não precisa construir este site.
 Muitas vezes, você pode fazer alterações usando a interface do GitHub.
 Podemos preparar as alterações automaticamente no seu pull request.
 
-> [!IMPORTANTE]
-> Se você estiver clonando este repositório localmente,
-> siga as instruções abaixo sobre clonagem com seu submódulo.
-
-Se a sua alteração envolver exemplos de código, adicionar/remover páginas ou afetar a navegação,
-considere construir e testar seu trabalho antes de enviar.
+If your change involves code samples, adds/removes pages, or affects navigation,
+do consider building and testing your work before submitting.
 
 Se você quiser ou precisar construir o site, siga os passos abaixo.
 
@@ -75,73 +63,29 @@ e se já é a versão estável mais recente:
 dart --version
 ```
 
-#### Node.js
+### Clone this repo
 
-A **mais recente** versão LTS estável do Node.js é necessária para construir o site.
-Se você não tiver o Node.js ou precisar atualizá-lo, baixe a
-versão correspondente do seu computador e siga as instruções
-do [arquivo de download do Node.js][].
-Se preferir, você pode usar um gerenciador de versões como o [nvm][],
-e executar `nvm install` a partir do diretório raiz do repositório.
+If you're not a member of the Dart organization,
+we recommend you [create a fork][] of this repo under your own account,
+and then submit a PR from that fork.
 
-Se você já tiver o Node instalado, verifique se ele está disponível no seu path
-e se já é a versão estável mais recente _(atualmente `22.12` ou posterior)_:
+Once you have a fork (or you're a Dart org member),
+clone the repository with `git clone`:
 
-```terminal
-node --version
+```bash
+git clone https://github.com/dart-lang/site-www.git
 ```
 
-Se a sua versão estiver desatualizada,
-siga as instruções de atualização de como você a instalou originalmente.
-
-[Obtenha o SDK do Dart]: https://dartbrasil.dev/get-dart
-[arquivo de download do Node.js]: https://nodejs.org/en/download/
-[nvm]: https://github.com/nvm-sh/nvm
-
-### Clone este repositório e seus submódulos
-
-> [!NOTA]
-> Este repositório tem _submódulos_ git, o que afeta a forma como você o clona.
-> A documentação do GitHub tem ajuda geral sobre
-> [forking][] e [clonagem][] de repositórios.
-
-Se você não for membro da organização Dart,
-recomendamos que você **crie um fork** deste repositório em sua própria conta,
-e então envie um PR desse fork.
-
-Depois de ter um fork (ou você for um membro da organização Dart),
-_escolha uma_ das seguintes técnicas de clonagem de submódulo:
-
-1. Clone o repositório e seu submódulo ao mesmo tempo
-   usando a opção `--recurse-submodules`:
-
-    ```terminal
-    git clone --recurse-submodules https://github.com/dart2brasil/site-www.git
-    ```
-
-2. Se você já clonou o repositório sem seu submódulo,
-   então execute este comando a partir da raiz do repositório:
-
-    ```terminal
-    git submodule update --init --recursive
-    ```
-
-> [!NOTA]
-> A qualquer momento durante o desenvolvimento,
-> você pode usar o comando `git submodule` para atualizar os submódulos:
->
-> ```terminal
-> git pull && git submodule update --init --recursive
-> ```
+[create a fork]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 
 ## Configure seu ambiente local e sirva as mudanças
 
-Antes de continuar configurando a infraestrutura do site,
-verifique se as versões corretas do Dart e do Node.js estão configuradas e disponíveis, seguindo
-as instruções em [Obtenha os pré-requisitos](#get-the-prerequisites).
+Before you continue setting up the site infrastructure,
+verify the correct version of Dart is set up and available by
+following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
-1. _Opcional:_ Depois de clonar o repositório e seus submódulos,
-   crie um branch para as suas alterações:
+1. _Optional:_ After cloning the repo,
+   create a branch for your changes:
 
    ```terminal
    git checkout -b <NOME_DO_BRANCH>
@@ -154,54 +98,27 @@ as instruções em [Obtenha os pré-requisitos](#get-the-prerequisites).
     dart pub get
     ```
 
-3. Instale o [`pnpm`][] usando seu [método de instalação][pnpm-install] preferido.
-   `pnpm` é um gerenciador de pacotes alternativo e eficiente para pacotes npm.
-   Se você já tiver o `pnpm`, verifique se você tem a versão estável mais recente.
-   Recomendamos o uso do [`corepack`][] para instalar e gerenciar as versões do `pnpm`,
-   já que ele vem junto com a maioria das instalações do Node.
+3. From the root directory, run the `dash_site` tool to
+   validate your setup and learn about the available commands.
 
-   Se você não usou o `corepack` antes, você precisará
-   primeiro habilitá-lo com `corepack enable`.
-   Então, para instalar a versão correta do `pnpm`, a partir da
-   raiz do diretório do repositório, execute `corepack install`:
+   ```terminal
+   dart run dash_site --help
+   ```
 
-    ```terminal
-    corepack enable
-    corepack install
-    ```
+4. From the root directory, serve the site locally.
 
-4. Depois de ter o `pnpm` instalado e configurado,
-   busque as dependências npm do site usando `pnpm install`.
-   Recomendamos que você use o `pnpm`, mas você também pode usar o `npm`.
-
-    ```terminal
-    pnpm install
-    ```
-
-5. A partir do diretório raiz, execute a ferramenta `dash_site` para
-   validar sua configuração e aprender sobre os comandos disponíveis.
-
-    ```terminal
-    ./dash_site --help
-    ```
-
-6. A partir do diretório raiz, sirva o site localmente.
-
-    ```terminal
-    ./dash_site serve
-    ```
+   ```terminal
+   dart run dash_site serve
+   ```
 
    Este comando gera e serve o site em uma
    porta local que é impressa em seu terminal.
 
-7. Veja as suas alterações no navegador navegando para <http://localhost:4000>.
+5. View your changes in the browser by navigating to <http://localhost:8080>.
 
-   Observe que a porta pode ser diferente se `4000` estiver em uso.
+   Note the port might be different if `8080` is taken.
 
-   Se você quiser verificar a saída e estrutura HTML bruta e gerada,
-   veja o diretório `_site` em um explorador de arquivos ou um IDE.
-
-8. Faça as suas alterações no repositório local.
+6. Make your changes to the local repo.
 
    O site deve ser reconstruído automaticamente na maioria das alterações, mas se
    algo não atualizar, saia do processo e execute o comando novamente.
@@ -213,13 +130,9 @@ as instruções em [Obtenha os pré-requisitos](#get-the-prerequisites).
    Se a sua alteração for grande ou se você quiser testá-la,
    considere [validar as suas alterações](#validate-your-changes).
 
-> [!DICA]
-> Para encontrar comandos adicionais que você pode executar,
-> execute `./dash_site --help` a partir do diretório raiz do repositório.
-
-[`corepack`]: https://nodejs.org/api/corepack.html
-[`pnpm`]: https://pnpm.io/
-[pnpm-install]: https://pnpm.io/installation
+> [!TIP]
+> To find additional commands that you can run,
+> run `dart run dash_site --help` from the repository's root directory.
 
 ## Validar as suas alterações
 
@@ -230,7 +143,7 @@ envie seu trabalho e execute o seguinte comando para
 verificar se ele está atualizado e corresponde aos padrões do site.
 
 ```terminal
-./dash_site check-all
+dart run dash_site check-all
 ```
 
 Se este script relatar quaisquer erros ou avisos,
@@ -250,68 +163,19 @@ significa que um ou mais excertos de código nos arquivos Markdown do site
 não são idênticos às regiões de código declaradas
 nos arquivos `.dart` correspondentes.
 
-Para resolver este erro,
-a partir da raiz do diretório `site-www`,
-execute `./dash_site refresh-excerpts`.
+To resolve this error,
+from the root of the `site-www` directory,
+run `dart run dash_site refresh-excerpts`.
 
 Para saber mais sobre a criação, edição e uso de excertos de código,
 consulte a [documentação do pacote de atualização de excertos][].
 
 [documentação do pacote de atualização de excertos]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
 
-## [Opcional] Implante em um site de staging
-
-Um mantenedor do site pode preparar automaticamente pull requests submetidos.
-Se você preferir preparar o site você mesmo,
-você pode construir uma versão completa e enviá-la para o Firebase.
-
-1. Se você ainda não tiver um projeto Firebase,
-
-   - Navegue até o [Console do Firebase](https://console.firebase.google.com)
-     e crie seu próprio projeto Firebase (por exemplo, `dart-dev-staging`).
-
-   - Volte para o seu terminal local e verifique se você está logado.
-
-      ```terminal
-      firebase login
-      ```
-
-   - Certifique-se de que seu projeto exista e ative esse projeto:
-
-     ```terminal
-     firebase projects:list
-     firebase use <seu-projeto>
-     ```
-
-2. A partir do diretório raiz do repositório, construa o site:
-
-    ```terminal
-    ./dash_site build
-    ```
-
-   Isso constrói o site e o copia para seu diretório local `_site`.
-   Se esse diretório já existia antes, ele será substituído.
-
-3. Implante no site de hospedagem padrão do seu projeto Firebase ativado:
-
-   ```terminal
-   firebase deploy --only hosting
-   ```
-
-4. Navegue até o seu PR no GitHub e inclua o link da versão preparada.
-   Considere adicionar uma referência ao commit que você preparou,
-   para que os revisores saibam se mais alguma alteração foi feita.
-
-4.  Navegue até o seu PR no GitHub e inclua o link da versão preparada.
-    Considere adicionar uma referência ao commit que você preparou,
-    para que os revisores saibam se alguma outra alteração foi feita.
-    
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart2brasil/site-www/badge
 [Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
-[clonagem]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
-[Eleventy]: https://www.11ty.dev/
+[Jaspr]: https://jaspr.site
 [Firebase]: https://firebase.google.com/
-[forking]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
-[Repo on GitHub Actions]: https://github.com/dart2brasil/site-www/actions?query=workflow%3Abuild+branch%3Amain
+[Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain

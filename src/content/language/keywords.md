@@ -1,14 +1,8 @@
 ---
 ia-translate: true
 title: Keywords
-description: Palavras-chave em Dart.
-toc: false
-prevpage:
-  url: /language/libraries
-  title: Libraries
-nextpage:
-  url: /language/built-in-types
-  title: Tipos built-in
+description: Keywords in Dart.
+showToc: false
 ---
 
 {% assign ckw = '&nbsp;<sup>1</sup>' %}

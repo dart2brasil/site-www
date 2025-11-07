@@ -2,8 +2,9 @@
 ia-translate: true
 title: Configurando aplicativos com declarações de ambiente de compilação
 description: >-
-  Aprenda a usar declarações de ambiente de compilação 
-  para personalizar o comportamento do aplicativo.
+  Learn about using compilation environment declarations 
+  to customize application behavior.
+showBreadcrumbs: false
 lastVerified: 2023-02-23
 ---
 

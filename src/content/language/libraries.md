@@ -1,14 +1,14 @@
 ---
 ia-translate: true
 title: Libraries & imports
-short-title: Libraries
-description: Orientações sobre importação e implementação de bibliotecas.
+shortTitle: Libraries
+description: Guidance on importing and implementing libraries.
 prevpage:
   url: /language/metadata
   title: Metadados
 nextpage:
-  url: /language/keywords
-  title: Palavras-chave
+  url: /language/classes
+  title: Classes
 ---
 
 As diretivas `import` e `library` podem ajudar você a criar uma base
@@ -19,13 +19,17 @@ são visíveis apenas dentro da biblioteca. *Todo arquivo Dart (mais suas partes
 
 Bibliotecas podem ser distribuídas usando [packages](/tools/pub/packages).
 
-:::note
-Para entender porque o Dart usa underscores em vez de palavras-chave de modificadores de acesso
-como `public` ou `private`, consulte
-[SDK issue 33383]({{site.repo.dart.sdk}}/issues/33383).
-:::
+Dart uses underscores instead of access modifier keywords
+like `public`, `protected`, or `private`.
+While access modifier keywords from other languages
+provide more fine-grained control,
+Dart's use of underscores and library-based privacy
+provides a straightforward configuration mechanism,
+helps enable an efficient implementation of [dynamic access][],
+and improves tree shaking (dead code elimination).
 
-[library]: /tools/pub/glossary#library
+[library]: /resources/glossary#library
+[dynamic access]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 
 ## Usando bibliotecas {:#using-libraries}
 
@@ -135,10 +139,10 @@ Future<void> greet() async {
 }
 ```
 
-No código precedente,
-a palavra-chave `await` pausa a execução até que a biblioteca seja carregada.
-Para mais informações sobre `async` e `await`,
-veja [suporte a assincronia](/language/async).
+In the preceding code,
+the `await` keyword pauses execution until the library is loaded.
+For more information about `async` and `await`,
+check out [asynchronous programming](/language/async).
 
 Você pode invocar `loadLibrary()` várias vezes em uma biblioteca sem problemas.
 A biblioteca é carregada apenas uma vez.

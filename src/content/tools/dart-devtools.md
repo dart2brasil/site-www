@@ -1,7 +1,8 @@
 ---
 ia-translate: true
 title: Dart DevTools
-description: Um conjunto de ferramentas de depuração e desempenho.
+shortTitle: DevTools
+description: A suite of debugging and performance tools.
 ---
 
 Dart DevTools é um conjunto de ferramentas de depuração e desempenho

@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Implementações JS Interop anteriores
-description: Arquivo de implementações JS interop anteriores.
+title: Past JS interop
+breadcrumb: Background
+description: Archive of Dart's previous JS interop support.
 prevpage:
   url: /interop/js-interop/tutorials
   title: JS interop tutorials
@@ -14,15 +14,15 @@ nextpage:
 Nenhuma dessas bibliotecas legacy de interop é suportada ao compilar para [Wasm][].
 :::
 
-Esta página aborda iterações anteriores de interoperação JS para Dart que
-foram consideradas legadas e estão obsoletas a partir do Dart 3.7.
-Portanto, prefira usar [`dart:js_interop`][] daqui para frente e
-migre usos de bibliotecas de interoperação antigas quando possível.
-Embora [`dart:html`][] e outras bibliotecas web estejam intimamente relacionadas,
-elas são abordadas na página [`package:web`][].
+This page addresses previous iterations of JS interop for Dart that
+have been considered legacy and are deprecated as of Dart 3.7 (Feb 2025).
+Therefore, prefer using [`dart:js_interop`][] going forwards and
+migrate usages of old interop libraries when possible.
+Support for browser APIs, such as [`dart:html`][], are now supported by
+[`package:web`][].
 
-[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
-[`dart:html`]: {{site.dart-api}}/dart-html/dart-html-library.html
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/
+[`dart:html`]: {{site.dart-api}}/dart-html/
 [`package:web`]: /interop/js-interop/package-web
 
 ## `dart:js` {:#dart-js}
@@ -85,8 +85,8 @@ Classes `@staticInterop` quase sempre podem ser migradas para um tipo de extens�
 `dart:js_interop` e `dart:js_interop_unsafe` agora contêm esses auxiliares com sintaxe possivelmente alternativa.
 
 
-[`dart:js`]: {{site.dart-api}}/dart-js/dart-js-library.html
-[`wrapper de objeto`]: {{site.dart-api}}/dart-js/JsObject-class.html
+[`dart:js`]: {{site.dart-api}}/dart-js/
+[`object wrapper`]: {{site.dart-api}}/dart-js/JsObject-class.html
 [`allowInterop`]: {{site.dart-api}}/dart-js_util/allowInterop.html
 [`package:js`]: {{site.pub-pkg}}/js
 [`JSObject`]: {{site.dart-api}}/dart-js_interop/JSObject-extension-type.html
@@ -95,6 +95,6 @@ Classes `@staticInterop` quase sempre podem ser migradas para um tipo de extens�
 [`@staticInterop`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L48
 [`dart:js_util`]: {{site.dart-api}}/dart-js_util/dart-js_util-library.html
 [`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/
 [Wasm]: /web/wasm
 

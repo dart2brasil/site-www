@@ -10,12 +10,12 @@ _Deps_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 $ dart pub deps [--style=<style>] [--[no-]dev] [--executables]
 ```
 
-Este comando imprime o gráfico de dependência para um pacote.
-O gráfico inclui tanto as
-[dependências imediatas](/tools/pub/glossary#immediate-dependency)
-que o pacote usa (conforme especificado no pubspec), bem como as
-[dependências transitivas](/tools/pub/glossary#transitive-dependency)
-trazidas pelas dependências imediatas.
+This command prints the dependency graph for a package.
+The graph includes both the
+[immediate dependencies](/resources/glossary#immediate-dependency)
+that the package uses (as specified in the pubspec), as well as the
+[transitive dependencies](/resources/glossary#transitive-dependency)
+pulled in by the immediate dependencies.
 
 As informações de dependência são impressas como uma árvore por padrão.
 

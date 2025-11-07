@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Versionamento de pacotes
-description: "Como a ferramenta de gerenciamento de pacotes do Dart, pub, lida com o versionamento de pacotes."
+title: Package versioning
+description: >-
+  How Dart's package management tool, pub, handles versioning of packages.
 ---
 
 O [gerenciador de pacotes pub][pub] ajuda você a trabalhar com versionamento.
@@ -195,13 +195,13 @@ versionamento e a evolução da API. Vamos ver como eles funcionam juntos e o qu
 
 ## Resolvendo restrições {:#constraint-solving}
 
-Quando você define seu pacote, você lista suas [dependências
-imediatas][immediate-dep]. Esses são pacotes que seu pacote usa.
-Para cada um desses pacotes,
-você especifica o intervalo de versões que seu pacote permite.
-Cada um desses pacotes dependentes pode então ter suas próprias dependências.
-Eles são chamados de [dependências transitivas][transitive-dep]. O pub percorre
-esses e constrói todo o grafo de dependência para seu aplicativo.
+When you define your package, you list its
+[immediate dependencies][immediate-dep].
+These are packages that your package uses.
+For each of these packages, you specify the range of versions your package allows.
+Each of those dependent packages might then have their own dependencies.
+These are called [transitive dependencies][transitive-dep].
+Pub traverses these and builds the entire dependency graph for your app.
 
 Para cada pacote no grafo, o pub analisa tudo o que depende dele. Ele reúne
 todas as suas restrições de versão e tenta resolvê-las simultaneamente.
@@ -282,7 +282,7 @@ dependência do aplicativo que o contém.
 Os autores de pacotes devem definir as restrições de pacotes com cuidado.
 Considere o seguinte cenário:
 
-<img src="/assets/img/tools/pub/PubExportedConstraints.png" alt="grafo de dependência">
+<img src="/assets/img/tools/pub/PubExportedConstraints.png" alt="dependency graph" class="diagram-wrap">
 
 O pacote `bookshelf` depende de `widgets`.
 O pacote `widgets`, atualmente em 1.2.0, exporta
@@ -462,13 +462,13 @@ Em resumo:
 Para saber mais sobre o algoritmo de resolução de versão do pub, consulte o
 artigo [PubGrub][pubgrub] no Medium.
 
-[immediate-dep]: /tools/pub/glossary#immediate-dependency
-[transitive-dep]: /tools/pub/glossary#transitive-dependency
+[immediate-dep]: /resources/glossary#immediate-dependency
+[transitive-dep]: /resources/glossary#transitive-dependency
 [pub]: /tools/pub/packages
 [npm]: https://npmjs.org/
 [bundler]: https://bundler.io
 [caret-syntax]: /tools/pub/dependencies#caret-syntax
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
-[lockfile]: /tools/pub/glossary#lockfile
-[content hash]: /tools/pub/glossary#content-hashes
+[lockfile]: /resources/glossary#lockfile
+[content hash]: /resources/glossary#pub-content-hash
 [pubgrub]: https://medium.com/@nex3/pubgrub-2fb6470504f

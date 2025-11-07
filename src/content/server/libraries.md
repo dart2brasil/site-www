@@ -1,8 +1,9 @@
 ---
-ia-translate: true
-title: Bibliotecas e pacotes de linha de comando e servidor
-short-title: Bibliotecas CLI & servidor
-description: Bibliotecas e pacotes que podem ajudar você a escrever aplicativos Dart de linha de comando e servidor.
+title: Command-line and server libraries and packages
+shortTitle: CLI & server libraries
+description: >-
+  Libraries and packages that can help you
+  write Dart command-line & server apps.
 ---
 
 O [Dart SDK][] contém [dart:io][] e outras bibliotecas

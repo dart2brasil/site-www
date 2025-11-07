@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: "Programação assíncrona: futures, async, await"
-description: Aprenda e pratique a escrita de código assíncrono no DartPad!
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+title: "Asynchronous programming: futures, async, await"
+shortTitle: Futures, async, and await
+description: Learn about and practice writing asynchronous code in DartPad!
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
@@ -85,10 +84,7 @@ String createOrderMessage() {
 
 Future<String> fetchUserOrder() =>
     // Imagine that this function is more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 void main() {
   print(createOrderMessage());
@@ -294,10 +290,7 @@ String createOrderMessage() {
 Future<String> fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 void main() {
   print('Fetching user order...');
@@ -325,10 +318,7 @@ ele opera como código síncrono.
 Future<String> fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 [!Future<void>!] main() [!async!] {
   print('Fetching user order...');
@@ -643,8 +633,9 @@ Future<void> printOrderMessage() async {
 Future<String> fetchUserOrder() {
   // Imagine that this function is more complex.
   var str = Future.delayed(
-      const Duration(seconds: 4),
-      () => throw 'Cannot locate user order');
+    const Duration(seconds: 4),
+    () => throw 'Cannot locate user order',
+  );
   return str;
 }
 
@@ -1075,18 +1066,18 @@ Para detectar erros comuns que surgem ao trabalhar com async e futures (futuros)
 Parabéns, você concluiu o tutorial! Se você quiser aprender mais, aqui
 estão algumas sugestões de para onde ir em seguida:
 
-- Brinque com o [DartPad]({{site.dartpad}}).
-- Experimente outro [tutorial](/tutorials).
-- Aprenda mais sobre futures e código assíncrono em Dart:
-  - [Tutorial de Streams](/libraries/async/using-streams):
-    Aprenda como trabalhar com uma sequência de eventos assíncronos.
-  - [Concorrência em Dart](/language/concurrency):
-    Entenda e aprenda como implementar a concorrência em Dart.
-  - [Suporte a assincronia](/language/async):
-    Mergulhe no suporte da linguagem e biblioteca Dart para codificação assíncrona.
-  - [Vídeos do Dart do Google][Dart videos]:
-    Assista a um ou mais dos vídeos sobre codificação assíncrona.
-- Obtenha o [SDK do Dart](/get-dart)!
+- Play with [DartPad]({{site.dartpad}}).
+- Try another [tutorial](/tutorials).
+- Learn more about futures and asynchronous code in Dart:
+  - [Streams tutorial](/libraries/async/using-streams):
+    Learn how to work with a sequence of asynchronous events.
+  - [Concurrency in Dart](/language/concurrency):
+    Understand and learn how to implement concurrency in Dart.
+  - [Asynchronous programming](/language/async):
+    Dive in to Dart's language and library support for asynchronous coding.
+  - [Dart videos from Google][Dart videos]:
+    Watch one or more of the videos about asynchronous coding.
+- Get the [Dart SDK](/get-dart)!
 
 [Dart videos]: {{site.yt.playlist}}PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
 [Future]: {{site.dart-api}}/dart-async/Future-class.html

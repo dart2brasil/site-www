@@ -8,8 +8,8 @@ description: Aprenda como escrever uma boa página de pacote.
   .screenshot, .screenshot-narrow {
     border-style: solid;
     border-width: 1px;
-    border-color: lightgray;
-    margin: 0px 20px;
+    border-color: var(--site-outline);
+    margin: 0 20px;
     padding: 10px;
     width: 90%;
   }
@@ -27,8 +27,8 @@ na seguinte captura de tela:
 
 <img
   src="/assets/img/libraries/package-page-sections.png"
-  alt="página de pacote contém seções como layout do pacote, Flutter favorito, pontuação do pacote, editores verificados, arquivo pubspec"
-  class="screenshot">
+  alt="package page contains sections like package layout, flutter favorite, package scoring, verified publishers, pubspec file" 
+  class="screenshot diagram-wrap">
 
 Para detalhes sobre outras partes da página do pacote,
 siga estes links:

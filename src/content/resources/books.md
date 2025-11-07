@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Livros sobre Dart
-description: Leia tudo sobre isso! Aqui está uma coleção de livros sobre Dart.
-toc: false
+title: Books about Dart
+shortTitle: Books
+description: Read all about it! Here's a collection of books about Dart.
+showToc: false
 ---
 
 Esta página cobre uma coleção de livros sobre a linguagem Dart.
@@ -22,17 +22,18 @@ e novas ferramentas de desenvolvedor.
 
 {% for book in books-dart %}
 
-<div class="book-img-with-details row">
-<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3">
-  <img src="/assets/img/cover/{{book.cover}}" alt="{{book.title}}">
+<div class="book-img-with-details">
+<a href="{{book.link}}" title="{{book.title}}">
+  <img src="/assets/img/cover/{{book.cover}}" alt="{{book.title}}" />
 </a>
-<div class="details col-sm-9">
+<div class="details">
 
-### [{{book.title}}]({{book.link}})
-{:.title}
+<h3 class="title" id="{{book.title | slugify}}">
+<a href="{{book.link}}">{{book.title}}</a>
+</h3>
 
-por {{book.authors | arrayToSentenceString}}
-{:.authors.h4}
+by {{book.authors | arrayToSentenceString}}
+{:.authors}
 
 {{book.desc}}
 

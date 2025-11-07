@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Solução de Problemas no DartPad
-description: Problemas comuns ao usar o DartPad
+title: Troubleshooting DartPad
+breadcrumb: Troubleshooting
+description: Common problems with using DartPad
 ---
 
 Esta página descreve soluções para problemas que podem ocorrer quando você

@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: O sistema de tipos do Dart
-description: Por que e como escrever código Dart sólido.
+title: The Dart type system
+shortTitle: Type system
+description: Why and how to write sound Dart code.
 prevpage:
   url: /language/typedefs
   title: Typedefs
@@ -127,7 +127,7 @@ Aqui estão algumas das regras menos óbvias:
 Vamos ver essas regras em detalhes, com exemplos que usam a seguinte
 hierarquia de tipos:
 
-<img src="/assets/img/language/type-hierarchy.png" alt="uma hierarquia de animais onde o supertipo é Animal e os subtipos são Jacaré, Gato e Texugo-Melandês. Gato tem os subtipos Leão e MaineCoon">
+<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 <a name="use-proper-return-types"></a>
 ### Use tipos de retorno sólidos ao substituir métodos {:#use-sound-return-types-when-overriding-methods}
@@ -139,7 +139,9 @@ Considere o método getter na classe `Animal`:
 <?code-excerpt "lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
 ```dart
 class Animal {
-  void chase(Animal a) { ... }
+  void chase(Animal a) {
+     ...
+  }
   [!Animal get parent => ...!]
 }
 ```
@@ -152,7 +154,9 @@ você pode substituir o tipo de retorno do getter por `HoneyBadger`
 ```dart tag=passes-sa
 class HoneyBadger extends Animal {
   @override
-  void chase(Animal a) { ... }
+  void chase(Animal a) {
+     ...
+  }
 
   @override
   [!HoneyBadger!] get parent => ...
@@ -163,7 +167,9 @@ class HoneyBadger extends Animal {
 ```dart tag=fails-sa
 class HoneyBadger extends Animal {
   @override
-  void chase(Animal a) { ... }
+  void chase(Animal a) {
+     ...
+  }
 
   @override
   [!Root!] get parent => ...
@@ -188,7 +194,9 @@ Considere o método `chase(Animal)` para a classe `Animal`:
 <?code-excerpt "lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
 ```dart
 class Animal {
-  [!void chase(Animal a) { ... }!]
+  [!void chase(Animal a) {!]
+     ...
+  }
   Animal get parent => ...
 }
 ```
@@ -200,7 +208,9 @@ Não há problema em substituir o método `chase()` para receber qualquer coisa 
 ```dart tag=passes-sa
 class HoneyBadger extends Animal {
   @override
-  void chase([!Object!] a) { ... }
+  void chase([!Object!] a) {
+     ...
+  }
 
   @override
   Animal get parent => ...
@@ -212,11 +222,15 @@ de `Animal` para `Mouse` (Rato), uma subclasse de `Animal`.
 
 <?code-excerpt "lib/incorrect_animal.dart (chase-mouse)" replace="/Mouse/[!$&!]/g"?>
 ```dart tag=fails-sa
-class [!Mouse!] extends Animal { ... }
+class [!Mouse!] extends Animal {
+   ...
+}
 
 class Cat extends Animal {
   @override
-  void chase([!Mouse!] a) { ... }
+  void chase([!Mouse!] a) {
+     ...
+  }
 }
 ```
 
@@ -264,6 +278,43 @@ void main() {
 }
 ```
 
+### Implicit downcasts from `dynamic`
+
+Expressions with a static type of `dynamic` can be
+implicitly cast to a more specific type.
+If the actual type doesn't match, the cast throws an error at run time.
+Consider the following `assumeString` method:
+
+<?code-excerpt "lib/strong_analysis.dart (downcast-check)" replace="/string = object/[!$&!]/g"?>
+```dart tag=passes-sa
+int assumeString(dynamic object) {
+  String [!string = object!]; // Check at run time that `object` is a `String`.
+  return string.length;
+}
+```
+
+In this example, if `object` is a `String`, the cast succeeds.
+If it's not a subtype of `String`, such as `int`,
+a `TypeError` is thrown:
+
+<?code-excerpt "lib/strong_analysis.dart (fail-downcast-check)" replace="/1/[!$&!]/g"?>
+```dart tag=runtime-fail
+final length = assumeString([!1!]);
+```
+
+:::tip
+To prevent implicit downcasts from `dynamic` and avoid this issue,
+consider enabling the analyzer's _strict casts_ mode.
+
+```yaml title="analysis_options.yaml" highlightLines=3
+analyzer:
+  language:
+    strict-casts: true
+```
+
+To learn more about customizing the analyzer's behavior,
+check out [Customizing static analysis](/tools/analysis).
+:::
 
 ## Inferência de tipo {:#type-inference}
 
@@ -278,9 +329,9 @@ emparelha chaves de string com valores de vários tipos.
 
 Se você tipar explicitamente a variável, você pode escrever isso:
 
-<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, Object\?\x3E/[!$&!]/g"?>
 ```dart
-[!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
+[!Map<String, Object?>!] arguments = {'argA': 'hello', 'argB': 42};
 ```
 
 Alternativamente, você pode usar `var` ou `final` e deixar o Dart inferir o tipo:
@@ -359,6 +410,87 @@ O tipo de retorno do closure é inferido como `int` usando informações ascende
 O Dart usa esse tipo de retorno como informações ascendentes ao inferir o
 argumento de tipo do método `map()`: `<int>`.
 
+#### Inference using bounds
+
+:::version-note
+Inference using bounds requires a [language version][] of at least 3.7.0.
+:::
+
+With the inference using bounds feature,
+Dart's type inference algorithm generates constraints by
+combining existing constraints with the declared type bounds,
+not just best-effort approximations.
+
+This is especially important for [F-bounded][] types,
+where inference using bounds correctly infers that, in the example below,
+`X` can be bound to `B`.
+Without the feature, the type argument must be specified explicitly: `f<B>(C())`:
+
+<?code-excerpt "lib/strong_analysis.dart (inference-using-bounds)"?>
+```dart
+class A<X extends A<X>> {}
+
+class B extends A<B> {}
+
+class C extends B {}
+
+void f<X extends A<X>>(X x) {}
+
+void main() {
+  f(B()); // OK.
+
+  // OK. Without using bounds, inference relying on best-effort approximations
+  // would fail after detecting that `C` is not a subtype of `A<C>`.
+  f(C());
+
+  f<B>(C()); // OK.
+}
+```
+
+Here's a more realistic example using everyday types in Dart like `int` or `num`:
+
+<?code-excerpt "lib/bounded/instantiate_to_bound.dart (inference-using-bounds-2)"?>
+```dart
+X max<X extends Comparable<X>>(X x1, X x2) => x1.compareTo(x2) > 0 ? x1 : x2;
+
+void main() {
+  // Inferred as `max<num>(3, 7)` with the feature, fails without it.
+  max(3, 7);
+}
+```
+
+With inference using bounds, Dart can *deconstruct* type arguments,
+extracting type information from a generic type parameter's bound.
+This allows functions like `f` in the following example to preserve both the
+specific iterable type (`List` or `Set`) *and* the element type.
+Before inference using bounds, this wasn't possible 
+without losing type safety or specific type information.
+
+```dart
+(X, Y) f<X extends Iterable<Y>, Y>(X x) => (x, x.first);
+
+void main() {
+  var (myList, myInt) = f([1]);
+  myInt.whatever; // Compile-time error, `myInt` has type `int`.
+
+  var (mySet, myString) = f({'Hello!'});
+  mySet.union({}); // Works, `mySet` has type `Set<String>`.
+}
+```
+
+Without inference using bounds, `myInt` would have the type `dynamic`.
+The previous inference algorithm wouldn't catch the incorrect expression
+`myInt.whatever` at compile time, and would instead throw at run time.
+Conversely, `mySet.union({})` would be a compile-time error
+without inference using bounds, because the previous algorithm couldn't
+preserve the information that `mySet` is a `Set`.
+
+For more information on the inference using bounds algorithm,
+read the [design document][]. 
+
+
+[F-bounded]: /language/generics/#f-bounds
+[design document]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/3009-inference-using-bounds/design-document.md#motivating-example
 
 ## Substituindo tipos {:#substituting-types}
 
@@ -387,7 +519,7 @@ ou um produtor.
 
 Considere a seguinte hierarquia de tipos:
 
-<img src="/assets/img/language/type-hierarchy.png" alt="uma hierarquia de animais onde o supertipo é Animal e os subtipos são Jacaré, Gato e Texugo-Melandês. Gato tem os subtipos Leão e MaineCoon">
+<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 Considere a seguinte atribuição simples onde `Cat c` é um _consumidor_
 e `Cat()` é um _produtor_:
@@ -431,7 +563,7 @@ As regras são as mesmas para tipos genéricos? Sim. Considere a hierarquia
 de listas de animais—uma `List` de `Cat` é um subtipo de uma `List` de
 `Animal` e um supertipo de uma `List` de `MaineCoon`:
 
-<img src="/assets/img/language/type-hierarchy-generics.png" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
+<img src="/assets/img/language/type-hierarchy-generics.png" class="diagram-wrap" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
 
 No exemplo a seguir,
 você pode atribuir uma lista `MaineCoon` a `myCats`
@@ -473,7 +605,7 @@ dependendo do tipo real da lista que está sendo convertida (`myAnimals`).
 Ao substituir um método, as regras de produtor e consumidor ainda se aplicam.
 Por exemplo:
 
-<img src="/assets/img/language/consumer-producer-methods.png" alt="Classe Animal mostrando o método chase como o consumidor e o getter parent como o produtor">
+<img src="/assets/img/language/consumer-producer-methods.png" class="diagram-wrap" alt="Animal class showing the chase method as the consumer and the parent getter as the producer">
 
 Para um consumidor (como o método `chase(Animal)`), você pode substituir
 o tipo de parâmetro por um supertipo. Para um produtor (como
@@ -499,14 +631,20 @@ The following shows how you might use `covariant`:
 <?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
 ```dart tag=passes-sa
 class Animal {
-  void chase(Animal x) { ... }
+  void chase(Animal x) {
+     ...
+  }
 }
 
-class Mouse extends Animal { ... }
+class Mouse extends Animal {
+   ...
+}
 
 class Cat extends Animal {
   @override
-  void chase([!covariant!] Mouse x) { ... }
+  void chase([!covariant!] Mouse x) {
+     ...
+  }
 }
 ```
 
@@ -521,15 +659,13 @@ also supported on setters and fields.
 
 Os seguintes recursos têm mais informações sobre o Dart sólido:
 
-* [Corrigindo problemas comuns de tipo](/deprecated/sound-problems) -
-  Erros que você pode encontrar ao escrever código Dart sólido e como corrigi-los.
-* [Corrigindo falhas de promoção de tipo](/tools/non-promotion-reasons) -
-  Entenda e aprenda como corrigir erros de promoção de tipo.
-* [Segurança nula sólida](/null-safety) -
-  Aprenda sobre como escrever código com segurança nula sólida.
-* [Personalizando a análise estática][analysis] -
-  Como configurar e personalizar o analisador e o linter
-  usando um arquivo de opções de análise.
+* [Fixing type promotion failures](/tools/non-promotion-reasons) -
+  Understand and learn how to fix type promotion errors.
+* [Sound null safety](/null-safety) -
+  Learn about writing code with sound null safety.
+* [Customizing static analysis][analysis] -
+  How to set up and customize the analyzer and linter
+  using an analysis options file.
 
 
 [analysis]: /tools/analysis

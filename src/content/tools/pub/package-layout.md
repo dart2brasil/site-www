@@ -1,6 +1,6 @@
 ---
-ia-translate: true
-title: Convenções de layout de pacote
+title: Package layout conventions
+breadcrumb: Package layout
 description: >-
   Aprenda mais sobre a estrutura de diretórios usada
   pela ferramenta de gerenciamento de pacotes do Dart, pub.
@@ -26,7 +26,8 @@ poderia se parecer:
 enchilada/
   .dart_tool/ *
   pubspec.yaml
-  pubspec.lock **
+  pubspec_overrides.yaml **
+  pubspec.lock ***
   LICENSE
   README.md
   CHANGELOG.md
@@ -35,7 +36,7 @@ enchilada/
   bin/
     enchilada
   doc/
-    api/ ***
+    api/ ****
     getting_started.md
   example/
     main.dart
@@ -66,16 +67,22 @@ enchilada/
    Para saber mais, veja
    [Cache específico do projeto para ferramentas](#project-specific-caching-for-tools).
 
-\** O arquivo `pubspec.lock` existe depois que você executa `dart pub get`.
-    Deixe-o fora do controle de versão, a menos que seu pacote seja um
-    [pacote de aplicação](/tools/pub/glossary#application-package).
+\** The [`pubspec_overrides.yaml`][] file,
+    if present, overrides certain aspects of `pubspec.yaml`.
+    Usually you don't want to check it into source control.
 
-\*** O diretório `doc/api` existe localmente depois que você executa
+\*** The `pubspec.lock` file exists after you've run `dart pub get`.
+    Leave it out of source control unless your package is an
+    [application package](/resources/glossary#application-package).
+
+\**** The `doc/api` directory exists locally after you've run
      [`dart doc`](/tools/dart-doc).
      Não adicione o diretório `api` no controle de versão.
 
 
-## O pubspec {:#the-pubspec}
+[`pubspec_overrides.yaml`]: /tools/pub/dependencies#pubspec-overrides
+
+## The pubspec
 
 ```plaintext
 enchilada/
@@ -87,13 +94,13 @@ Todo pacote tem um [_pubspec_](/tools/pub/pubspec), um arquivo chamado
 `pubspec.yaml`, no diretório raiz do pacote. Isso é o que *o torna* um
 pacote.
 
-Executar [`dart pub get`](/tools/pub/cmd/pub-get),
-[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) ou
-[`dart pub downgrade`](/tools/pub/cmd/pub-downgrade) no pacote
-cria um **arquivo de lock**, chamado `pubspec.lock`.
-Se o seu pacote for um
-[pacote de aplicação](/tools/pub/glossary#application-package),
-adicione o arquivo de lock no controle de versão. Caso contrário, não.
+Running [`dart pub get`](/tools/pub/cmd/pub-get),
+[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), or
+[`dart pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package
+creates a **lockfile**, named `pubspec.lock`. 
+If your package is an 
+[application package](/resources/glossary#application-package), 
+check the lockfile into source control. Otherwise, don't.
 
 Para mais informações, veja a [página pubspec](/tools/pub/pubspec).
 
@@ -197,9 +204,9 @@ enchilada/
     tortilla.dart
 ```
 
-Muitos [pacotes](/tools/pub/glossary#package)
-definem bibliotecas Dart que outros pacotes podem importar e usar.
-Esses arquivos de biblioteca Dart públicos vão dentro de um diretório chamado `lib`.
+Many [packages](/resources/glossary#package)
+define Dart libraries that other packages can import and use.
+These public Dart library files go inside a directory called `lib`.
 
 A maioria dos pacotes define uma única biblioteca que os usuários podem importar. Nesse caso,
 o nome geralmente deve ser o mesmo do nome do pacote, como
@@ -232,12 +239,12 @@ Os usuários importam `olives.dart` da seguinte forma:
 import 'package:enchilada/some/path/olives.dart';
 ```
 
-Note que apenas *bibliotecas* devem estar em `lib`.
-*Entrypoints* (pontos de entrada) — scripts Dart com uma função `main()`—não podem
-ir em `lib`. Se você colocar um script Dart dentro de `lib`,
-você descobrirá que qualquer importação `package:` que ele contenha não
-resolve. Em vez disso, seus entrypoints devem ir no apropriado
-[diretório de entrypoint](/tools/pub/glossary#entrypoint-directory).
+Note that only *libraries* should be in `lib`.
+*Entrypoints*—Dart scripts with a `main()` function—cannot
+go in `lib`. If you place a Dart script inside `lib`,
+you will discover that any `package:` imports it contains don't
+resolve. Instead, your entrypoints should go in the appropriate
+[entrypoint directory](/resources/glossary#entrypoint-directory).
 
 :::note Dica para web apps
 Para o melhor desempenho ao desenvolver web apps,
@@ -506,15 +513,15 @@ Como esses hooks são invocados pelas
 ferramentas `dart` e `flutter` em execuções e builds, as dependências
 desses hooks devem ser dependências normais e não `dev_dependencies`.
 
-:::note
-O suporte a hook (gancho) é **experimental** e está em desenvolvimento ativo.
+:::experimental
+Support for package hooks is **experimental** and in active development.
 
-Para saber mais sobre como definir hooks e seu status atual,
-consulte a [documentação do hook `build.dart`][`build.dart` hook documentation].
+To learn more about how to define hooks and their current status,
+refer to the [build hooks][] documentation.
 :::
 
 
-[`build.dart` hook documentation]: {{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/README.md
+[build hooks]: /tools/hooks
 
 ## Cache específico do projeto para ferramentas {:#project-specific-caching-for-tools}
 

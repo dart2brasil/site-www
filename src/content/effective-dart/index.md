@@ -87,4 +87,4 @@ Para manter as diretrizes concisas, usamos alguns termos abreviados para nos ref
 
 ## Resumo de todas as regras {:#resumo-de-todas-as-regras}
 
-{% include './_toc.md' %}
+{% render 'effective-dart-toc.md' %}

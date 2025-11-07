@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: Referências em comentários de documentação
-short-title: Referências em comentários
-description: Aprenda sobre referências em comentários de documentação e sua sintaxe.
+title: Documentation comment references
+shortTitle: Comment references
+description: Learn about doc comment references and their syntax.
 ---
 
 Comentários de documentação podem conter referências a vários identificadores.
@@ -61,11 +60,14 @@ link é criado.
 
 ## O que pode ser referenciado {:#what-can-be-referenced}
 
-A maioria dos membros da biblioteca pode ser referenciada em um comentário de documentação, incluindo classes,
-constantes, enums (enumerações), named extensions (extensões nomeadas), extension types (tipos de extensão), funções, mixins e
-aliases de tipo. Isso inclui todos os membros da biblioteca em escopo, sejam declarados
-localmente ou importados. Membros da biblioteca que são importados com um prefixo de importação
-podem ser referenciados com o prefixo. Por exemplo:
+Most library members can be referenced in a doc comment, including
+classes, constants, enums, named extensions, extension types,
+functions, mixins, and type aliases.
+This includes all in-scope library members, either
+declared locally, imported, or [imported with a doc import](#doc-imports).
+Library members that are imported with an import prefix can
+be referenced with the prefix.
+For example:
 
 ```dart
 import 'dart:math' as math;
@@ -75,15 +77,15 @@ import 'dart:math' as math;
 int x = 7;
 ```
 
-A maioria dos membros de uma classe, um enum, uma extensão, um tipo de extensão e um mixin
-também pode ser referenciada. Uma referência a um membro que não está em escopo deve ser
-qualificada (prefixada) com o nome de seu container (contêiner). Por exemplo, o método estático `wait`
-na classe `Future` pode ser referenciado em um comentário de documentação com
-`[Future.wait]`. Isso também é válido para membros de instância; o método `add`
-e a propriedade `length` na classe `List` podem ser referenciados com
-`[List.add]` e `[List.length]`. Quando membros do contêiner estão em escopo, como
-em um comentário de documentação de um método de instância, eles podem ser referenciados sem o
-nome do contêiner qualificador:
+Most members of a class, an enum, an extension, an extension type, and a mixin
+can also be referenced. A reference to a member that is not in scope must be
+qualified (prefixed) with its container's name. For example, the `wait` static
+method on the `Future` class can be referenced in a doc comment with
+`[Future.wait]`. This is true for instance members as well; the `add` method
+and the `length` property on the `List` class can be referenced with
+`[List.add]` and `[List.length]`. When container members are in-scope, such as
+in an instance method's doc comment, they can be referenced without the
+qualifying container name:
 
 ```dart
 abstract class MyList<E> implements List<E> {
@@ -107,6 +109,34 @@ ser referenciado apenas dentro de um comentário de documentação nesse element
 de uma classe, enum, extensão, tipo de extensão e mixin pode ser referenciado apenas
 dentro de um comentário de documentação nesse elemento ou em um de seus membros.
 
-O comentário de documentação para um alias de tipo que é um alias de uma classe, enum, tipo de extensão ou
-mixin não pode referenciar nenhum dos membros do tipo alias como se estivessem em
-escopo.
+The doc comment for a type alias that aliases a class, enum, extension type, or
+mixin can't reference any of the aliased type's members as if they were in
+scope.
+
+## Doc imports
+
+Dart supports a `@docImport` documentation tag,
+which enables external elements to be referenced in
+documentation comments without actually importing them.
+This tag can be specified in a doc comment above a `library` directive.
+For example:
+
+```dart highlightLines=1
+/// @docImport 'dart:async';
+library;
+
+/// Doc comments can now reference elements like
+/// [Future] and [Future.value] from `dart:async`,
+/// even if the library is not imported with an actual import.
+class Foo {}
+```
+
+Doc imports support the same URI styles as [regular Dart imports][],
+including the `dart:` and `package:` schemes as well as relative paths.
+However, they can't be deferred or configured with `as`, `show`, or `hide`.
+
+[regular Dart imports]: /language/libraries#using-libraries
+
+:::version-note
+Support for doc imports was introduced in Dart 3.8.
+:::

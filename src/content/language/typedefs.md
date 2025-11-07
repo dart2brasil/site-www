@@ -1,8 +1,8 @@
 ---
 ia-translate: true
 title: Typedefs
-description: Aprenda sobre aliases de tipo em Dart.
-toc: false
+description: Learn about type aliases in Dart.
+showToc: false
 prevpage:
   url: /language/generics
   title: Generics

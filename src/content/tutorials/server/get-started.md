@@ -1,8 +1,6 @@
 ---
-ia-translate: true
-title: "Começar: Aplicativos de linha de comando e servidor"
-description: Obtenha o Dart, execute e compile um pequeno aplicativo.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+title: "Get started: Command-line and server apps"
+description: Get Dart, run and compile a small app.
 prevpage:
   url: /tutorials/server
   title: Tutoriais de linha de comando e servidor Dart
@@ -46,7 +44,14 @@ Mais informações:
 
 ## 2. Instale o Dart {:#2-install-dart}
 
-{% include 'get-sdk.md' %}
+To develop Dart apps, you need the Dart SDK.
+To continue with this guide,
+either [download the Dart SDK][dart-download] or
+[install Flutter][flutter-download],
+which includes the full Dart SDK.
+
+[dart-download]: /get-dart
+[flutter-download]: {{site.flutter-docs}}/get-started/install
 
 ## 3. Crie um pequeno aplicativo {:#3-create-a-small-app}
 
@@ -153,8 +158,8 @@ Confira estes recursos:
   * [SDK Dart](/tools/sdk)
   * [Ferramentas Dart](/tools)
   * [IDEs](/tools#editors)
-* Outros exemplos de aplicativos compilados nativamente
-  * [native_app]({{site.repo.dart.org}}/samples/tree/main/native_app)
+* Other examples of natively compiled apps
+  * [native_app]({{site.repo.dart.samples}}/tree/main/native_app)
 
 Se você ficar preso, encontre ajuda em [Comunidade e suporte.](/community)
 

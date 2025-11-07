@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: "dartdevc: O compilador de desenvolvimento Dart"
-short-title: dartdevc
-description: Um compilador de desenvolvimento para compilação rápida e modular de código Dart para JavaScript.
+title: "dartdevc: The Dart development compiler"
+shortTitle: dartdevc
+description: A development compiler for fast, modular compilation of Dart code to JavaScript.
 ---
 
 O compilador de desenvolvimento Dart (_dartdevc_)

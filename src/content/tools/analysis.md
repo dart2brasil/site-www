@@ -1,9 +1,9 @@
 ---
-ia-translate: true
-title: Customizando a análise estática
+title: Customizing static analysis
+shortTitle: Static analysis
 description: >-
-  Use um arquivo de opções de análise e comentários de código para personalizar a análise estática.
-body_class: highlight-diagnostics
+  Use an analysis options file and code comments to customize static analysis.
+bodyClass: highlight-diagnostics
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
@@ -18,8 +18,7 @@ erros de digitação simples. Por exemplo, talvez um ponto e vírgula acidental
 tenha entrado em uma instrução `if`:
 
 
-<blockquote class="ml-3">
-
+:::secondary
 <?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
 ```dart showLineNumbers=8
 void increment() {
@@ -35,14 +34,12 @@ produz o seguinte aviso:
 ```plaintext
 info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
-
-</blockquote>
+:::
 
 O analisador também pode ajudá-lo a encontrar problemas mais sutis.
 Por exemplo, talvez você tenha se esquecido de fechar um método sink (esgotar/dreno):
 
-<blockquote class="ml-3">
-
+:::secondary
 <?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
 ```dart
 var [!controller = StreamController<String>()!];
@@ -52,8 +49,7 @@ var [!controller = StreamController<String>()!];
 ```plaintext
 info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
-
-</blockquote>
+:::
 
 No ecossistema Dart,
 o Dart Analysis Server e outras ferramentas usam o
@@ -134,7 +130,8 @@ Considere a seguinte estrutura de diretórios para um grande projeto:
 
 <img
   src="/assets/img/guides/analysis-options-directory-structure.png"
-  alt="raiz do projeto contém analysis_options.yaml (#1) e 3 pacotes, um dos quais (my_package) contém um arquivo analysis_options.yaml (#2).">
+  class="diagram-wrap"
+  alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2).">
 
 O analisador usa o arquivo #1 para analisar o código em `my_other_package`
 e `my_other_other_package`, e o arquivo #2 para analisar o código em
@@ -311,7 +308,12 @@ Outras opções são habilitar explicitamente regras do linter individuais
 ou [desabilitar regras individuais][desabilitar regras individuais].
 :::
 
-[pacote lints]: {{site.pub-pkg}}/lints
+:::note
+For more information about including options files, 
+check out the [Including shared options](#including-shared-options) section.
+:::
+
+[lints package]: {{site.pub-pkg}}/lints
 
 ### Habilitando regras individuais {:#individual-rules}
 
@@ -327,6 +329,7 @@ Por exemplo:
 linter:
   rules:
     - always_declare_return_types
+    - annotate_redeclares
     - cancel_subscriptions
     - close_sinks
     - combinators_ordering
@@ -334,7 +337,6 @@ linter:
     - invalid_case_patterns
     - one_member_abstracts
     - only_throw_errors
-    - prefer_single_quotes
 ```
 
 
@@ -369,7 +371,54 @@ Devido às restrições do YAML,
 Você pode usar a outra sintaxe para regras em um arquivo incluído.
 :::
 
-## Habilitando plugins do analisador (experimental) {:#plugins}
+## Including shared options
+
+An analysis options file can include options which are specified in
+another options file, or even a list of other options files.
+You can specify such files using the top-level `include:` field:
+
+```yaml title="analysis_options.yaml"
+include: package:flutter_lints/recommended.yaml
+```
+
+An included options file can be specified with a `package:` path, or a relative
+path. Multiple analysis options files can be specified in a list:
+
+```yaml title="analysis_options.yaml"
+include:
+  - package:flutter_lints/recommended.yaml
+  - ../team_options.yaml
+```
+
+Options in an included file can be overridden in the including file,
+as well as by subsequent included files. 
+In other words, the options specified by an analysis options file are
+computed by first applying the options specified in each of the included files
+(by recursively applying this algorithm), in the order they appear in the list,
+and then overriding them with any locally defined options.
+
+For example, given the following options files:
+
+```yaml title="three.yaml"
+include: two.yaml
+# ...
+```
+
+And a final options file that includes these:
+
+```yaml title="analysis_options.yaml"
+include:
+  - one.yaml
+  - three.yaml
+# ...
+```
+
+Then the combined analysis options are computed by applying the options found
+in `one.yaml`, then `two.yaml`, then `three.yaml`, and finally
+`analysis_options.yaml`.
+
+
+## Enabling analyzer plugins (experimental) {:#plugins}
 
 O analisador tem suporte experimental para plugins.
 Esses plugins se integram ao analisador para adicionar funcionalidades
@@ -584,6 +633,13 @@ analyzer:
     dead_code: info
 ```
 
+## Configuring `dart format`
+
+You can configure the behavior of [`dart format`][] by adding a
+`formatter` section to the analysis options file
+specifying your preferred `page_width`.
+
+For more information, read [Configuring formatter page width][].
 
 ## Recursos {:#resources}
 
@@ -604,3 +660,5 @@ Use os seguintes recursos para saber mais sobre análise estática em Dart:
 [dead_code]: /tools/diagnostic-messages#dead_code
 [desabilitar regras individuais]: #disabling-individual-rules
 [Effective Dart]: /effective-dart
+[`dart format`]: /tools/dart-format
+[Configuring formatter page width]: /tools/dart-format#configuring-formatter-page-width

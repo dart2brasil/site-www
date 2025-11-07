@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: "Programação assíncrona: Streams"
-description: "Aprenda como consumir streams de inscrição única e de transmissão."
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+title: "Asynchronous programming: Streams"
+breadcrumb: Using streams
+description: Learn how to consume single-subscriber and broadcast streams.
 ---
 
 :::secondary Qual é o objetivo?
@@ -14,8 +13,10 @@ js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 * Existem dois tipos de streams: inscrição única ou transmissão (broadcast).
 :::
 
-A programação assíncrona em Dart é caracterizada pelas
-classes [Future][] e [Stream][].
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nQBpOIHE4eE?si=hM5ONj3PXHckEuCS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Asynchronous programming in Dart is characterized by the
+[Future][] and [Stream][] classes.
 
 Um Future representa uma computação que não é concluída imediatamente.
 Onde uma função normal retorna o resultado, uma função assíncrona
@@ -259,10 +260,10 @@ mas principalmente por razões históricas.)
 
 ## Métodos que modificam um stream {:#modify-stream-methods}
 
-Os seguintes métodos em Stream retornam um novo stream baseado
-no stream original.
-Cada um espera até que alguém escute o novo stream antes de
-escutar o original.
+The following methods on `Stream` return a new stream based
+on the original stream.
+Each one waits until something listens on the new stream before
+listening on the original.
 
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/async\w+|distinct|transform/" retain="/^\s*Stream/"?>
 ```dart
@@ -276,10 +277,10 @@ Stream<T> takeWhile(bool Function(T element) test);
 Stream<T> where(bool Function(T event) test);
 ```
 
-Os métodos anteriores correspondem a métodos similares em
-[Iterable][] que transformam um iterável em outro iterável.
-Todos estes podem ser escritos facilmente usando uma função `async`
-com um loop **await for**.
+The preceding methods correspond to similar methods on [Iterable][],
+which transform an iterable into another iterable.
+All of these can be written easily using an `async` function
+with an **await for** loop.
 
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/transform/" retain="/async\w+|distinct/"?>
 ```dart
@@ -296,33 +297,70 @@ assíncrona. A função `distinct()` não existe em `Iterable`, mas poderia exis
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
 ```dart
 Stream<T> handleError(Function onError, {bool Function(dynamic error)? test});
-Stream<T> timeout(Duration timeLimit,
-    {void Function(EventSink<T> sink)? onTimeout});
+Stream<T> timeout(
+  Duration timeLimit, {
+  void Function(EventSink<T> sink)? onTimeout,
+});
 Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
 ```
 
-As três últimas funções são mais especiais.
-Elas envolvem tratamento de erros que um loop **await for**
-não pode fazer—o primeiro erro que atinge os loops encerrará
-o loop e sua inscrição no stream.
-Não há como se recuperar disso.
-O código a seguir mostra como usar `handleError()` para remover erros
-de um stream antes de usá-lo em um loop **await for**.
+The final three functions are more specialized.
+They involve error handling that an **await for** loop
+cannot directly manage; the first error encountered will
+terminate the loop and its stream subscription, with no
+built-in mechanism for recovery.
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)"?>
-```dart
+The following code demonstrates how to use `handleError()`
+to filter out errors from a stream before it's consumed by
+an **await for** loop.
+
+<?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)" plaster="none"?>
+```dart highlightLines=5
 Stream<S> mapLogErrors<S, T>(
   Stream<T> stream,
   S Function(T event) convert,
 ) async* {
   var streamWithoutErrors = stream.handleError((e) => log(e));
+
   await for (final event in streamWithoutErrors) {
     yield convert(event);
   }
 }
 ```
 
-### A função transform() {:#transform-function}
+In the previous example, an **await for** loop is never
+returned to if no events are emitted by the stream.
+To avoid this, use the `timeout()` function to create
+a new stream. `timeout()` enables you to set a
+time limit and continue emitting events on the returned
+stream.
+
+The following code modifies the previous example. 
+It adds a two-second timeout and produces a
+relevant error if no events occur for two or more seconds.
+
+<?code-excerpt "misc/lib/tutorial/misc.dart (stream-timeout)"?>
+```dart highlightLines=6-12
+Stream<S> mapLogErrors<S, T>(
+  Stream<T> stream,
+  S Function(T event) convert,
+) async* {
+  var streamWithoutErrors = stream.handleError((e) => log(e));
+  var streamWithTimeout = streamWithoutErrors.timeout(
+    const Duration(seconds: 2),
+    onTimeout: (eventSink) {
+      eventSink.addError('Timed out after 2 seconds');
+      eventSink.close();
+    },
+  );
+
+  await for (final event in streamWithTimeout) {
+    yield convert(event);
+  }
+}
+```
+
+### The transform() function {:#transform-function}
 
 A função `transform()` não serve apenas para tratamento de erros;
 é um "map" mais generalizado para streams.
@@ -364,8 +402,12 @@ O último método em Stream é `listen()`. Este é um método de "baixo nível"�
 
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (listen)"?>
 ```dart
-StreamSubscription<T> listen(void Function(T event)? onData,
-    {Function? onError, void Function()? onDone, bool? cancelOnError});
+StreamSubscription<T> listen(
+  void Function(T event)? onData, {
+  Function? onError,
+  void Function()? onDone,
+  bool? cancelOnError,
+});
 ```
 
 Para criar um novo tipo `Stream`, você pode simplesmente estender a
@@ -392,13 +434,13 @@ dados ou evento de erro, e quando o stream é fechado.
 Leia a documentação a seguir para obter mais detalhes sobre o uso de
 streams e programação assíncrona em Dart.
 
-* [Criando Streams em Dart](/libraries/async/creating-streams),
-  um artigo sobre como criar seus próprios streams
-* [Futures e Tratamento de Erros](/libraries/async/futures-error-handling),
-  um artigo que explica como lidar com erros usando a API Future
-* [Suporte à Assincronia](/language/async),
-  uma seção no [tour pela linguagem](/language)
-* [Referência da API Stream]({{site.dart-api}}/dart-async/Stream-class.html)
+* [Creating Streams in Dart](/libraries/async/creating-streams),
+  an article about creating your own streams
+* [Futures and Error Handling](/libraries/async/futures-error-handling),
+  an article that explains how to handle errors using the Future API
+* [Asynchronous programming](/language/async),
+  which goes in-depth into Dart's language support for asynchrony
+* [Stream API reference]({{site.dart-api}}/dart-async/Stream-class.html)
 
 [bind()]: {{site.dart-api}}/dart-async/StreamTransformer/bind.html
 [LineSplitter]: {{site.dart-api}}/dart-convert/LineSplitter-class.html

@@ -75,8 +75,8 @@ graças à comunidade Dart.
 <a href="{{site.repo.dart.org}}/dart-vim-plugin"><b>Vim</b></a>
 </li>
 <li>
-<img src="/assets/img/tools/eclipse-logo.png" alt="Logo do Eclipse" class="list-image">
-<a href="https://github.com/eclipse/dartboard"><b>Eclipse</b></a>
+<img src="/assets/img/tools/eclipse-logo.png" alt="Eclipse logo" class="list-image">
+<a href="https://github.com/dart4e/dart4e"><b>Eclipse</b></a>
 </li>
 </ul>
 

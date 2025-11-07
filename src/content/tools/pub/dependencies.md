@@ -1,15 +1,17 @@
 ---
-ia-translate: true
-title: Dependências de Pacotes
-description: Adicione outros pacotes ao seu aplicativo. Especifique locais de pacotes, restrições de versão e mais.
+title: Package dependencies
+breadcrumb: Dependencies
+description: >-
+  Add other packages to your app.
+  Specify package locations, version constraints, and more.
 ---
 
-Dependências são um dos conceitos principais do [gerenciador de pacotes pub][pub package manager].
-Uma _dependência_ é outro pacote que seu pacote precisa para funcionar.
-As dependências são especificadas no seu [pubspec](/tools/pub/pubspec).
-Você lista apenas _dependências imediatas_: o
-software que seu pacote usa diretamente. O Pub gerencia
-[dependências transitivas](/tools/pub/glossary#transitive-dependency) para você.
+Dependencies are one of the core concepts of the [pub package manager][].
+A _dependency_ is another package that your package needs to work.
+Dependencies are specified in your [pubspec](/tools/pub/pubspec).
+You list only _immediate dependencies_: the
+software that your package uses directly. Pub handles
+[transitive dependencies](/resources/glossary#transitive-dependency) for you.
 
 Esta página tem informações detalhadas sobre como especificar dependências.
 No final, há uma lista de
@@ -22,7 +24,7 @@ e o _intervalo de versões_ desse pacote que você permite.
 Você também pode especificar a [_fonte_][_source_].
 A fonte diz ao pub como localizar o pacote.
 
-[_source_]: /tools/pub/glossary#source (fonte)
+[_source_]: /resources/glossary#dependency-source
 
 Como exemplo, você especifica uma dependência no seguinte formato:
 
@@ -172,9 +174,33 @@ O ref pode ser qualquer coisa que o Git permita para [identificar um commit.][co
 
 [commit]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
-O Pub assume que o pacote está na raiz do repositório Git. Para especificar um
-local diferente no repositório, especifique um `path` relativo à raiz do
-repositório:
+If the package you depend on has tagged the
+revision of each version of the package,
+you can use `tag_pattern` instead of `ref`,
+together with a version constraint.
+
+Pub will then query Git for all matching tags, and
+feed those version to the version solver.
+
+```yaml highlightLines=5
+dependencies:
+  kittens:
+    git:
+      url: git@github.com:munificent/kittens.git
+      tag_pattern: v{{version}} # Find version-tag prefixed by 'v'.
+    version: ^2.0.1
+```
+
+:::version-note
+Support for `tag_pattern` was introduced in Dart 3.9.
+
+To use `tag_pattern`, the including pubspec (but not the dependency)
+must have an SDK version constraint of `^3.9.0` or higher.
+:::
+
+Pub assumes that the package is in the root of the Git repository. To specify a
+different location in the repo, specify a `path` relative to the repository
+root:
 
 ```yaml
 dependencies:
@@ -433,7 +459,33 @@ Como resultado, se você publicar um pacote no pub.dev,
 tenha em mente que as substituições de dependência do seu pacote
 são ignoradas por todos os usuários do seu pacote.
 
-## Melhores práticas {:#best-practices}
+If you are using a [pub workspace][workspaces],
+you can have `dependency_overrides` in each workspace package, but
+a single package can only be overridden once in the workspace.
+
+## `pubspec_overrides.yaml` {:#pubspec-overrides}
+
+If you want to change certain aspects of
+the resolution of your `pubspec.yaml` file, but
+do not want to change the actual file, you can
+place a file named `pubspec_overrides.yaml` next to the `pubspec.yaml`.
+
+Attributes from that file will override those from `pubspec.yaml`.
+
+The properties that can be overridden are:
+
+* `dependency_overrides`
+* `workspace`
+* `resolution`
+
+This can be useful to avoid accidentally
+checking temporary overrides in to version control.
+It can also make it easier to generate overrides from a script.
+
+In a [pub workspace][workspaces], each workspace package
+can have a `pubspec_overrides.yaml` file.
+
+## Best practices
 
 Seja proativo no gerenciamento de suas dependências.
 Certifique-se de que seus pacotes dependam das versões mais recentes dos pacotes
@@ -473,9 +525,9 @@ se parecer com o seguinte:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.4.13
-  lints: ^2.1.1
-  test: ^1.25.8
+  build_runner: ^2.8.0
+  lints: ^6.0.0
+  test: ^1.25.15
 ```
 
 Este YAML define `dev_dependencies` para as versões de patch mais recentes.
@@ -550,8 +602,9 @@ esta flag apenas resolve novas dependências se:
 * Os [hashes de conteúdo][content hashes] dos pacotes correspondem
 
 [enforce-lock]: /tools/pub/cmd/pub-get#enforce-lockfile
-[lockfile]: /tools/pub/glossary#lockfile (lockfile)
-[content hashes]: /tools/pub/glossary#content-hashes (hashes de conteúdo)
+[lockfile]: /resources/glossary#lockfile
+[content hashes]: /resources/glossary#pub-content-hash
+
 ---
 
 <aside id="fn:semver" class="footnote">
@@ -570,4 +623,5 @@ para diferenciar as versões. <a href="#fnref:semver">↩</a>
 [`dart pub outdated`]: /tools/pub/cmd/pub-outdated
 [`dart pub upgrade`]: /tools/pub/cmd/pub-upgrade
 [pubsite]: {{site.pub}}
-[semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html (especificação de versionamento semântico)
+[semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html
+[workspaces]: /tools/pub/workspaces

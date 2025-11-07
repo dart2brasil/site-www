@@ -4,28 +4,35 @@ title: Criando pacotes
 description: Aprenda como criar pacotes em Dart.
 ---
 
-O ecossistema Dart usa [pacotes](/tools/pub/packages)
-para compartilhar software como bibliotecas e ferramentas.
-Esta página mostra como criar um
-[pacote](/tools/pub/glossary#package) compartilhado padrão.
+The Dart ecosystem uses [packages](/tools/pub/packages)
+to share software such as libraries and tools.
+This page tells you how to create a standard shared 
+[package](/resources/glossary#package).
 
 ## Criando um novo pacote {:#creating-a-new-package}
 
-Para criar o diretório inicial e a estrutura para um pacote,
-use o comando [`dart create`](/tools/dart-create)
-e o template `package` (pacote):
+To create the initial directory and structure for a package,
+use the [`dart create`][] command
+and the `package` template:
 
 ```console
 $ dart create -t package <NOME_DO_PACOTE>
 ```
 
-## O que define um pacote {:#what-makes-a-package}
+To learn more about available templates and how to use the `-t` flag, 
+see the [`dart create` documentation][].
+
+[`dart create`]: /tools/dart-create
+[`dart create` documentation]: /tools/dart-create#available-templates
+
+## What makes a package
 
 O diagrama a seguir mostra o layout mais simples de um pacote:
 
 <img
   src="/assets/img/libraries/simple-lib2.png"
-  alt="diretório raiz contém pubspec.yaml e lib/arquivo.dart">
+  class="diagram-wrap"
+  alt="root directory contains pubspec.yaml and lib/file.dart">
 
 Os requisitos mínimos para uma biblioteca são:
 
@@ -44,7 +51,7 @@ Diretório lib
   Para tornar as APIs em lib/src públicas, você pode exportar arquivos de lib/src
   de um arquivo que esteja diretamente em lib.
 
-[pacote de aplicação]: /tools/pub/glossary#application-package
+[application package]: /resources/glossary#application-package
 
 ## Organizando um pacote {:#organizing-a-package}
 
@@ -81,7 +88,8 @@ e é organizado em uma estrutura que é comumente usada para pacotes Dart:
 
 <img
   src="/assets/img/libraries/shelf.png"
-  alt="diretório raiz do shelf contém subdiretórios example, lib, test e tool">
+  class="diagram-wrap"
+  alt="shelf root directory contains example, lib, test, and tool subdirectories">
 
 Diretamente em lib, o arquivo da biblioteca principal,
 `shelf.dart`, exporta APIs de vários arquivos em `lib/src`.
@@ -137,7 +145,8 @@ importar `lib/foo/a.dart` de lib e web.
 
 <img
   src="/assets/img/libraries/import-lib-rules.png"
-  alt="lib/bar/b.dart usa uma importação relativa; web/main.dart usa uma importação de pacote">
+  class="diagram-wrap"
+  alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import">
 
 
 ## Importando e exportando arquivos de biblioteca condicionalmente {:#conditionally-importing-and-exporting-library-files}
@@ -312,7 +321,7 @@ Use os seguintes recursos para saber mais sobre pacotes:
   organização [dart-lang]({{site.repo.dart.org}}) tendem
   a mostrar as melhores práticas. Considere estudar estes exemplos:
   [dart_style,]({{site.repo.dart.org}}/dart_style)
-  [path,]({{site.repo.dart.org}}/path)
+  [path,]({{site.repo.dart.org}}/core/tree/main/pkgs/path)
   [shelf,]({{site.repo.dart.org}}/shelf)
   [source_gen,]({{site.repo.dart.org}}/source_gen) e
   [test.]({{site.repo.dart.org}}/test)

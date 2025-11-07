@@ -76,10 +76,14 @@ maneira:
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 ```dart
 // Parentheses improve readability.
-if ((n % i == 0) && (d % i == 0)) ...
+if ((n % i == 0) && (d % i == 0)) {
+  // ...
+}
 
 // Harder to read, but equivalent.
-if (n % i == 0 && d % i == 0) ...
+if (n % i == 0 && d % i == 0) {
+  // ...
+}
 ```
 
 :::warning
@@ -364,13 +368,13 @@ requer uma [versão da linguagem][] de pelo menos 2.14.
 O Dart tem dois operadores que permitem que você avalie concisamente expressões
 que, de outra forma, poderiam exigir instruções [if-else][]:
 
-*`condição`* `?` *`expr1`* `:` *`expr2`*
-: Se _condição_ for verdadeira, avalia _expr1_ (e retorna seu valor);
- caso contrário, avalia e retorna o valor de _expr2_.
+_`condition`_ `?` _`expr1`_ `:` _`expr2`_
+: If _condition_ is true, evaluates _expr1_ (and returns its value);
+  otherwise, evaluates and returns the value of _expr2_.
 
- *`expr1`* `??` *`expr2`*
-: Se _expr1_ não for nulo, retorna seu valor;
- caso contrário, avalia e retorna o valor de _expr2_.
+_`expr1`_ `??` _`expr2`_
+: If _expr1_ is non-null, returns its value;
+  otherwise, evaluates and returns the value of _expr2_.
 
 Quando você precisar atribuir um valor
 com base em uma expressão booleana,
@@ -449,24 +453,21 @@ seja tentada nesse objeto nulo.
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
-querySelector('#confirm') // Get an object.
-  ?..text = 'Confirm' // Use its members.
-  ..classes.add('important')
+document.querySelector('#confirm') // Get an object.
+  ?..textContent =
+      'Confirm' // Use its members.
+  ..classList.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
 
-:::version-note
-A sintaxe `?..` requer uma [versão da linguagem][] de pelo menos 2.12.
-:::
-
-O código anterior é equivalente ao seguinte:
+The previous code is equivalent to the following:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
 ```dart
-var button = querySelector('#confirm');
-button?.text = 'Confirm';
-button?.classes.add('important');
+final button = document.querySelector('#confirm');
+button?.textContent = 'Confirm';
+button?.classList.add('important');
 button?.onClick.listen((e) => window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
@@ -475,14 +476,16 @@ Você também pode aninhar cascatas. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (nested-cascades)"?>
 ```dart
-final addressBook = (AddressBookBuilder()
-      ..name = 'jenny'
-      ..email = 'jenny@example.com'
-      ..phone = (PhoneNumberBuilder()
-            ..number = '415-555-0100'
-            ..label = 'home')
-          .build())
-    .build();
+final addressBook =
+    (AddressBookBuilder()
+          ..name = 'jenny'
+          ..email = 'jenny@example.com'
+          ..phone =
+              (PhoneNumberBuilder()
+                    ..number = '415-555-0100'
+                    ..label = 'home')
+                  .build())
+        .build();
 ```
 
 Tenha cuidado ao construir sua cascata em uma função que retorna
@@ -526,14 +529,14 @@ qualquer tipo de expressão é válido como alvo spread, como:
 
 Você viu a maioria dos operadores restantes em outros exemplos:
 
-| Operador | Nome                           | Significado                                                                                                                                                                                                                                                               |
-|----------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `()`     | Aplicação de função             | Representa uma chamada de função                                                                                                                                                                                                                                        |
-| `[]`     | Acesso de subscrito             | Representa uma chamada ao operador `[]` substituível; exemplo: `fooList[1]` passa o int `1` para `fooList` para acessar o elemento no índice `1`                                                                                                                        |
-| `?[]`    | Acesso de subscrito condicional | Semelhante a `[]`, mas o operando mais à esquerda pode ser nulo; exemplo: `fooList?[1]` passa o int `1` para `fooList` para acessar o elemento no índice `1`, a menos que `fooList` seja nulo (caso em que a expressão avalia como nula)                             |
-| `.`      | Acesso de membro                | Refere-se a uma propriedade de uma expressão; exemplo: `foo.bar` seleciona a propriedade `bar` da expressão `foo`                                                                                                                                                      |
-| `?.`     | Acesso de membro condicional    | Semelhante a `.`, mas o operando mais à esquerda pode ser nulo; exemplo: `foo?.bar` seleciona a propriedade `bar` da expressão `foo`, a menos que `foo` seja nulo (caso em que o valor de `foo?.bar` é nulo)                                                                 |
-| `!`      | Operador de asserção não nula  | Converte uma expressão para seu tipo não anulável subjacente (underlying), lançando uma exceção em tempo de execução se a conversão falhar; exemplo: `foo!.bar` afirma que `foo` não é nulo e seleciona a propriedade `bar`, a menos que `foo` seja nulo, caso em que uma exceção de tempo de execução é lançada |
+| Operator | Name                         | Meaning                                                                                                                                                                                                                                                 |
+|----------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `()`     | Function application         | Represents a function call                                                                                                                                                                                                                              |
+| `[]`     | Subscript access             | Represents a call to the overridable `[]` operator; example: `fooList[1]` passes the int `1` to `fooList` to access the element at index `1`                                                                                                            |
+| `?[]`    | Conditional subscript access | Like `[]`, but the leftmost operand can be null; example: `fooList?[1]` passes the int `1` to `fooList` to access the element at index `1` unless `fooList` is null (in which case the expression evaluates to null)                                    |
+| `.`      | Member access                | Refers to a property of an expression; example: `foo.bar` selects property `bar` from expression `foo`                                                                                                                                                  |
+| `?.`     | Conditional member access    | Like `.`, but the leftmost operand can be null; example: `foo?.bar` selects property `bar` from expression `foo` unless `foo` is null (in which case the value of `foo?.bar` is null)                                                                   |
+| `!`      | Not-null assertion operator  | Casts an expression to its underlying non-nullable type, throwing a runtime exception if the cast fails; example: `foo!.bar` asserts `foo` is non-null and selects the property `bar`, unless `foo` is null (in which case a runtime exception is thrown) |
 
 {:.table .table-striped}
 

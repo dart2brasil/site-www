@@ -1,7 +1,8 @@
 ---
 ia-translate: true
 title: dart pub
-description: A interface de linha de comando para o pub, uma ferramenta de gerenciamento de pacotes para Dart.
+description: >-
+  The command-line interface for pub, a package management tool for Dart.
 ---
 
 O [gerenciador de pacotes pub](/tools/pub/packages) possui uma interface de linha de comando

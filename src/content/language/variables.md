@@ -4,7 +4,7 @@ title: Variáveis
 description: Aprenda sobre variáveis em Dart.
 prevpage:
   url: /language
-  title: Básico
+  title: Introduction
 nextpage:
   url: /language/operators
   title: Operadores
@@ -253,8 +253,8 @@ const baz = []; // Equivalent to `const []`
 Você pode omitir `const` da expressão de inicialização de uma declaração `const`,
 como para `baz` acima. Para detalhes, veja [NÃO use const redundantemente][].
 
-Você pode alterar o valor de uma variável não `final`, não `const`,
-mesmo que ela costumava ter um valor `const`:
+You can change the reference of a non-final, non-const variable,
+even if it used to have a `const` value:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
 ```dart
@@ -316,7 +316,7 @@ podem declarar um curinga:
   }
   ```
 
-* Declaração de variável em loop `for`.
+* For loop variable declaration.
   ```dart
   for (var _ in list) {}
   ```

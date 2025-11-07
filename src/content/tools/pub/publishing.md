@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Publicando pacotes
-description: Aprenda como publicar um pacote Dart no pub.dev.
+title: Publishing packages
+breadcrumb: Publishing
+description: Learn how to publish a Dart package to pub.dev.
 ---
 
 O [gerenciador de pacotes pub][pub] não serve apenas para usar pacotes de outras pessoas.
@@ -17,7 +17,7 @@ conforme definido no [pubspec][pubspec].
 
 Assista ao vídeo a seguir para uma visão geral da construção e publicação de pacotes.
 
-{% ytEmbed "8V_TLiWszK0", "Como construir um pacote em Dart" %}
+<YouTubeEmbed id="8V_TLiWszK0" title="How to build a package in Dart"></YouTubeEmbed>
 
 ## Lembre-se: Publicar é para sempre {:#remember-publishing-is-forever}
 
@@ -327,7 +327,7 @@ Quando você publica este pacote no pub.dev, ele é marcado como uma versão de 
 A captura de tela a seguir ilustra isso.
 Ela lista a versão estável como `1.6.0` e a versão de visualização como `2.0.0`.
 
-![Ilustração de uma versão de visualização](/assets/img/tools/pub/preview-version.png){:width="600px"}<br>
+![Illustration of a preview version](/assets/img/tools/pub/preview-version.png){:width="600px"}
 
 Quando o Dart lança a versão estável `3.0.0`,
 o pub.dev atualiza a listagem do pacote para exibir

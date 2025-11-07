@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: Workspaces do Pub (suporte a monorepo)
-short-title: Workspaces
-description: Saiba mais sobre os workspaces do pub, uma forma de gerenciar monorepos de pacotes.
+title: Pub workspaces (monorepo support)
+shortTitle: Workspaces
+description: Learn more about pub workspaces, a way to manage package monorepos.
 ---
 
 Ao trabalhar em um projeto, você pode desenvolver vários pacotes Dart no mesmo

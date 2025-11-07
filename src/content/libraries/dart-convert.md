@@ -60,14 +60,16 @@ Codifique um objeto Dart suportado em uma string formatada em JSON com
 var scores = [
   {'score': 40},
   {'score': 80},
-  {'score': 100, 'overtime': true, 'special_guest': null}
+  {'score': 100, 'overtime': true, 'special_guest': null},
 ];
 
 var jsonText = jsonEncode(scores);
-assert(jsonText ==
-    '[{"score":40},{"score":80},'
-        '{"score":100,"overtime":true,'
-        '"special_guest":null}]');
+assert(
+  jsonText ==
+      '[{"score":40},{"score":80},'
+          '{"score":100,"overtime":true,'
+          '"special_guest":null}]',
+);
 ```
 
 Apenas objetos do tipo `int`, `double`, `String`, `bool`, `null`, `List`, ou `Map` (com
@@ -95,7 +97,7 @@ List<int> utf8Bytes = [
   0x72, 0xc3, 0xb1, 0xc3, 0xa5, 0xc5, 0xa3, 0xc3,
   0xae, 0xc3, 0xb6, 0xc3, 0xb1, 0xc3, 0xa5, 0xc4,
   0xbc, 0xc3, 0xae, 0xc5, 0xbe, 0xc3, 0xa5, 0xc5,
-  0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1
+  0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1,
 ];
 
 var funnyWord = utf8.decode(utf8Bytes);

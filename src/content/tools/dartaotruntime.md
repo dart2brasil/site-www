@@ -1,8 +1,8 @@
 ---
 ia-translate: true
 title: dartaotruntime
-description: Ferramenta de linha de comando para executar snapshots compilados AOT de código Dart.
-toc: false
+description: Command-line tool for running AOT-compiled snapshots of Dart code.
+showToc: false
 ---
 
 Com Dart, você pode criar aplicações Dart pré-compiladas chamadas *snapshots AOT*.

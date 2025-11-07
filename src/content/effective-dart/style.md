@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: "Dart Eficaz: Estilo | Effective Dart: Style"
-description: Regras de formatação e nomenclatura para código consistente e legível.
+title: "Effective Dart: Style"
+breadcrumb: Style
+description: Formatting and naming rules for consistent, readable code.
 nextpage:
   url: /effective-dart/documentation
   title: Documentação
@@ -40,9 +40,13 @@ letra de cada palavra (incluindo a primeira palavra) e não usar separadores.
 
 <?code-excerpt "style_good.dart (type-names)"?>
 ```dart tag=good
-class SliderMenu { ... }
+class SliderMenu {
+   ...
+}
 
-class HttpRequest { ... }
+class HttpRequest {
+   ...
+}
 
 typedef Predicate<T> = bool Function(T value);
 ```
@@ -56,10 +60,14 @@ class Foo {
 }
 
 @Foo(anArg)
-class A { ... }
+class A {
+   ...
+}
 
 @Foo()
-class B { ... }
+class B {
+   ...
+}
 ```
 
 Se o construtor da classe de anotação não receber parâmetros, você pode querer
@@ -70,7 +78,9 @@ criar uma constante `lowerCamelCase` separada para ela.
 const foo = Foo();
 
 @foo
-class C { ... }
+class C {
+   ...
+}
 ```
 
 ### SIGA a nomenclatura de extensões usando `UpperCamelCase` {:#do-name-extensions-using-uppercamelcase}
@@ -82,9 +92,13 @@ Como os tipos, as [extensões][extensions] devem capitalizar a primeira letra de
 
 <?code-excerpt "style_good.dart (extension-names)"?>
 ```dart tag=good
-extension MyFancyList<T> on List<T> { ... }
+extension MyFancyList<T> on List<T> {
+   ...
+}
 
-extension SmartIterable<T> on Iterable<T> { ... }
+extension SmartIterable<T> on Iterable<T> {
+   ...
+}
 ```
 
 [extensions]: /language/extension-methods
@@ -242,7 +256,7 @@ HTTP // "hypertext transfer protocol"
 NASA // "national aeronautics and space administration"
 URI // "uniform resource identifier"
 esq // "esquire"
-Ave // "avenue"
+ave // "avenue"
 
 Id // "identifier"
 Tv // "television"
@@ -262,27 +276,56 @@ var tvSet = Television();
 var mrRogers = 'hello, neighbor';
 ```
 
-### PREFIRA usar `_`, `__`, etc. para parâmetros de retorno de chamada não usados {:#prefer-using-_-__-etc-for-unused-callback-parameters}
+<a id="prefer-using-_-__-etc-for-unused-callback-parameters" aria-hidden="true"></a>
 
-Às vezes, a assinatura de tipo de uma função de retorno de chamada (callback) requer um parâmetro,
-mas a implementação do retorno de chamada não *usa* o parâmetro.
-Neste caso, é idiomático nomear o parâmetro não usado `_`.
-Se a função tiver vários parâmetros não usados, use sublinhados adicionais para evitar colisões de nome: `__`, `___`, etc.
+### PREFER using wildcards for unused callback parameters
 
-<?code-excerpt "style_good.dart (unused-callback-params)"?>
+Sometimes the type signature of a callback function requires a parameter,
+but the callback implementation doesn't _use_ the parameter.
+In this case, it's idiomatic to name the unused parameter `_`,
+which declares a [wildcard variable][wildcards] that is non-binding.
+
+<?code-excerpt "style_good.dart (unused-callback-param)"?>
 ```dart tag=good
 futureOfVoid.then((_) {
   print('Operation complete.');
 });
 ```
 
-Esta diretriz é apenas para funções que são *anônimas e locais*.
-Essas funções geralmente são usadas imediatamente em um contexto em que está
-claro o que o parâmetro não usado representa.
-Em contraste, as funções de nível superior e as declarações de método não têm esse contexto,
-portanto, seus parâmetros devem ser nomeados para que fique claro para que cada parâmetro serve,
-mesmo que não seja usado.
+Because wildcard variables are non-binding,
+you can name multiple unused parameters `_`.
 
+<?code-excerpt "style_good.dart (unused-callback-params-multiple)"?>
+```dart tag=good
+.onError((_, _) {
+  print('Operation failed.');
+});
+```
+
+This guideline is only for functions that are both *anonymous and local*.
+These functions are usually used immediately in a context where it's
+clear what the unused parameter represents.
+In contrast, top-level functions and method declarations don't have that context,
+so their parameters must be named so that it's clear what each parameter is for,
+even if it isn't used.
+
+:::version-note
+Declaring non-binding [wildcard variables][wildcards] requires
+a [language version][] of at least 3.7.
+
+In earlier language versions, use additional underscores to
+work around name collisions, such as `__` and `___`.
+To enforce not using them and simplify the migration to wildcards later on,
+enable the [`no_wildcard_variable_uses`][] lint.
+
+To help migrate from this convention to wildcard variables,
+enable the [`unnecessary_underscores`][] lint.
+:::
+
+[wildcards]: /language/variables#wildcard-variables
+[language version]: /resources/language/evolution#language-versioning
+[`no_wildcard_variable_uses`]: /tools/linter-rules/no_wildcard_variable_uses
+[`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores
 
 ### NÃO use um sublinhado inicial para identificadores que não são privados {:#dont-use-a-leading-underscore-for-identifiers-that-arent-private}
 
@@ -350,7 +393,7 @@ Uma única regra do linter lida com todas as diretrizes de ordenação:
 <?code-excerpt "style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
 ```dart tag=good
 import 'dart:async';
-import 'dart:html';
+import 'dart:collection';
 
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
@@ -447,8 +490,8 @@ formatando o código manualmente e tentando torná-lo mais legível. Pense em
 `dart format` como uma parceria em que vocês trabalham juntos, às vezes iterativamente,
 para produzir código bonito.
 
-
-### EVITE linhas com mais de 80 caracteres {:#avoid-lines-longer-than-80-characters}
+<a id="avoid-lines-longer-than-80-characters"></a>
+### PREFER lines 80 characters or fewer
 
 {% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
 
@@ -461,9 +504,10 @@ experiência é que seu código provavelmente é muito verboso e poderia ser um 
 compacto. O principal infrator geralmente é `VeryLongCamelCaseClassNames`. Pergunte a si mesmo: "Cada palavra nesse nome de tipo me diz algo crítico ou
 previne uma colisão de nome?". Se não, considere omiti-la.
 
-Observe que `dart format` faz 99% disso por você, mas o último 1% é você.
-Ele não divide literais de string longos para caber em 80 colunas,
-então você tem que fazer isso manualmente.
+Note that `dart format` defaults to 80 characters or fewer, though you can
+[configure][] the default. 
+It does not split long string literals to fit in 80 columns, 
+so you have to do that manually.
 
 **Exceção:** Quando um URI ou caminho de arquivo ocorre em um comentário ou string (geralmente em
 uma importação ou exportação), ele pode permanecer inteiro mesmo que isso faça com que a linha ultrapasse
@@ -472,6 +516,8 @@ uma importação ou exportação), ele pode permanecer inteiro mesmo que isso fa
 **Exceção:** Strings de várias linhas podem conter linhas com mais de 80 caracteres
 porque as novas linhas são significativas dentro da string e dividir as linhas em
 outras mais curtas pode alterar o programa.
+
+[configure]: /tools/dart-format#configuring-formatter-page-width
 
 <a id="do-use-curly-braces-for-all-flow-control-structures"></a>
 ### SIGA o uso de chaves para todas as estruturas de controle de fluxo {:#do-use-curly-braces-for-all-flow-control-statements}

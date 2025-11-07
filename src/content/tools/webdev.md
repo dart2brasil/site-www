@@ -45,9 +45,9 @@ arquivo `pubspec.yaml` do seu aplicativo:
 ```yaml
   dev_dependencies:
     # ···
-    build_runner: ^2.4.13
-    build_test: ^2.2.2
-    build_web_compilers: ^4.0.11
+    build_runner: ^2.8.0
+    build_test: ^3.4.0
+    build_web_compilers: ^4.2.3
 ```
 
 Como de costume após as alterações no `pubspec.yaml`, execute `dart pub get` ou

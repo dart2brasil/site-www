@@ -36,7 +36,7 @@ As combinações válidas de modificadores de classe e suas capacidades resultan
 | `mixin`                     | Não            | Não         | **Sim**        | **Sim**     | Não             |
 | `base mixin`                | Não            | Não         | Não            | **Sim**     | Não             |
 
-{:.table .table-striped .nowrap}
+{: .table .table-striped .nowrap}
 
 [Construir]: /language/classes#using-constructors
 [Estender]: /language/extend
@@ -46,8 +46,7 @@ As combinações válidas de modificadores de classe e suas capacidades resultan
 
 ## Combinações inválidas {:#invalid-combinations}
 
-Certas [combinações](/language/class-modifiers#combining-modifiers)
-de modificadores não são permitidas:
+Certain [combinations][] of modifiers aren't allowed:
 
 | Combinação                                   | Raciocínio                                                                                                                               |
 |-----------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
@@ -59,4 +58,6 @@ de modificadores não são permitidas:
 | `enum` e quaisquer modificadores             | As declarações `enum` não podem ser estendidas, implementadas, mixadas (misturadas) e sempre podem ser instanciadas, portanto, nenhum modificador se aplica a declarações `enum`.   |
 | `extension type` e quaisquer modificadores    | Declarações `extension type` não podem ser estendidas ou mixadas (misturadas) e só podem ser implementadas por outras declarações `extension type`.                 |
 
-{:.table .table-striped .nowrap}
+{: .table .table-striped .nowrap}
+
+[combinations]: /language/class-modifiers#combining-modifiers

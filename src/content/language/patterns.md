@@ -194,7 +194,7 @@ corpo em expressões ou declarações switch:
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
-  _ => false
+  _ => false,
 };
 ```
 
@@ -238,10 +238,7 @@ os objetos [`MapEntry`][`MapEntry`] que uma chamada `<Map>.entries` retorna:
 
 <?code-excerpt "language/lib/patterns/for_in.dart (for-in-pattern)"?>
 ```dart
-Map<String, int> hist = {
-  'a': 23,
-  'b': 100,
-};
+Map<String, int> hist = {'a': 23, 'b': 100};
 
 for (var MapEntry(key: key, value: count) in hist.entries) {
   print('$key occurred $count times');
@@ -356,22 +353,22 @@ class Circle implements Shape {
 }
 
 double calculateArea(Shape shape) => switch (shape) {
-      Square(length: var l) => l * l,
-      Circle(radius: var r) => math.pi * r * r
-    };
+  Square(length: var l) => l * l,
+  Circle(radius: var r) => math.pi * r * r,
+};
 ```
 
 ### Validando JSON de entrada {:#validating-incoming-json}
 
-Padrões de [Map][map] (Mapa) e [list][list] (lista) funcionam bem para desestruturar pares chave-valor em
-dados JSON:
+[Map][] and [list][] patterns work well for destructuring key-value pairs in
+deserialized data, such as data parsed from JSON:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-1)"?>
-```dart
-var json = {
-  'user': ['Lily', 13]
+```dart 
+var data = {
+  'user': ['Lily', 13],
 };
-var {'user': [name, age]} = json;
+var {'user': [name, age]} = data;
 ```
 
 Se você sabe que os dados JSON têm a estrutura que você espera,
@@ -383,10 +380,10 @@ Sem padrões, a validação é verbosa:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-2)"?>
 ```dart
-if (json is Map<String, Object?> &&
-    json.length == 1 &&
-    json.containsKey('user')) {
-  var user = json['user'];
+if (data is Map<String, Object?> &&
+    data.length == 1 &&
+    data.containsKey('user')) {
+  var user = data['user'];
   if (user is List<Object> &&
       user.length == 2 &&
       user[0] is String &&
@@ -406,7 +403,7 @@ de validar JSON:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-3)"?>
 ```dart
-if (json case {'user': [String name, int age]}) {
+if (data case {'user': [String name, int age]}) {
   print('User $name is $age years old.');
 }
 ```

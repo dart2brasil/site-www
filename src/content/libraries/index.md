@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: Bibliotecas principais do Dart
-description: Aprenda sobre as bibliotecas principais e APIs do Dart.
-short-title: Bibliotecas principais
+title: Dart's core libraries
+shortTitle: Core libraries
+description: Learn about Dart's core libraries and APIs.
 nextpage:
   url: /libraries/dart-core
   title: dart:core
@@ -48,8 +47,8 @@ consulte a [referência da API do Dart][Dart API].
   incluindo aplicativos Flutter, servidores e scripts de linha de comando.
 
 [dart:js_interop](/interop/js-interop)
-: APIs para interoperação com a plataforma web.
-  Juntamente com `package:web`, `dart:js_interop` substitui `dart:html`.
+: APIs for interop with the web platform.
+  Along with `package:web`, `dart:js_interop` replaces `dart:html`.
 
 
 Como mencionado, estas páginas são apenas uma visão geral;

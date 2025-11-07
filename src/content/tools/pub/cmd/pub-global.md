@@ -45,7 +45,11 @@ do diretório `bin` do pacote.
 Quando você ativa um pacote, pode especificar uma versão opcional
 _constraint_ (restrição). Veja a flag [constraint](#options) para exemplos de uso.
 
-### Ativando um pacote no site pub.dev {:#ativando-um-pacote-no-site-pub-dev}
+:::note
+[`dart install`][] is a newer alternative to `dart pub global activate`.
+:::
+
+### Activating a package on the pub.dev site
 
 ```console
 $ dart pub global activate <pacote pub.dev>
@@ -277,5 +281,6 @@ o executável preexistente não será substituído.
 
 {% render 'pub-problems.md' %}
 
-[cache do sistema]: /tools/pub/glossary#system-cache
+[`dart install`]: /tools/dart-install
+[system cache]: /resources/glossary#pub-system-cache
 [webdev]: /tools/webdev

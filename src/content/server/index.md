@@ -1,16 +1,15 @@
 ---
-ia-translate: true
-title: Aplicativos de linha de comando e servidor
-short-title: CLI e aplicativos de servidor
-description: Tudo relacionado a aplicativos de linha de comando e servidor.
-toc: false
+title: Command-line and server apps
+shortTitle: CLI & server apps
+description: All things relating to command-line and server apps.
+showToc: false
 ---
 
 Esta página aponta para ferramentas e documentação
 que podem te ajudar a desenvolver aplicativos de linha de comando e servidor.
 
-<p class="text-center">
-  <a href="/tutorials/server/get-started" class="btn btn-primary btn-lg">Começar</a>
+<p class="centered-rows">
+  <a href="/tutorials/server/get-started" class="filled-button large-button">Get started</a>
 </p>
 
 
@@ -40,8 +39,8 @@ Frameworks do lado do servidor escritos em Dart incluem:
 : Um servidor de aplicativos escalável que suporta geração de código,
   autenticação, comunicação em tempo real, bancos de dados e caching (armazenamento em cache).
 
-[Dart Frog](https://dartfrog.vgv.dev/)
-: Um framework de backend rápido e minimalista para Dart.
+[Dart Frog](https://dart-frog.dev/)
+: A fast, minimalistic backend framework for Dart.
 
 Mais ferramentas
 : A página [Ferramentas](/tools) tem links para ferramentas geralmente úteis,

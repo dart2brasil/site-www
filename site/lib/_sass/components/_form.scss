@@ -1,0 +1,43 @@
+@use '../base/mixins' as *;
+
+form {
+  .muted {
+    font-size: 75%;
+    color: var(--site-base-fgColor-alt);
+    text-indent: 0;
+    padding: 10px;
+  }
+
+  &.form-inline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.select {
+  position: relative;
+  cursor: pointer;
+
+  select {
+    min-width: 120px;
+    margin: 0 0.3rem;
+  }
+}
+
+input, select {
+  line-height: 32px;
+  height: 32px;
+  margin: 4px 0;
+  padding: 0 10px;
+  border: none;
+  border-radius: 0;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: var(--site-inset-bgColor);
+  color: var(--site-base-fgColor);
+
+  &:focus, &:active {
+    outline-color: var(--site-primary-color);
+  }
+}

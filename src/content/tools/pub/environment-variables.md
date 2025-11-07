@@ -1,9 +1,9 @@
 ---
-ia-translate: true
-title: Configurando variáveis de ambiente do pub
-short-title: Variáveis de ambiente do Pub
-description: Como configurar seu ambiente para a ferramenta de gerenciamento de pacotes do Dart, pub.
-toc: false
+title: Configuring pub environment variables
+shortTitle: Pub environment variables
+description: >-
+  How to configure your environment for Dart's package management tool, pub.
+showToc: false
 ---
 
 Variáveis de ambiente permitem que você personalize o pub para atender às suas necessidades.

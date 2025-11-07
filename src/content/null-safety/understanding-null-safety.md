@@ -604,23 +604,28 @@ Você pode usá-lo assim:
 ```dart
 // Usando segurança nula:
 class Point {
-  final double x, y;
+  final int x, y;
 
-  bool operator ==(Object other) {
-    if (other is! Point) wrongType('Point', other);
-    return x == other.x && y == other.y;
+  Point(this.x, this.y);
+
+  Point operator +(Object other) {
+    if (other is int) return Point(x + other, y + other);
+    if (other is! Point) wrongType('int | Point', other);
+
+    print('Adding two Point instances together: $this + $other');
+    return Point(x + other.x, y + other.y);
   }
 
-  // Construtor e hashCode...
+  // toString, hashCode, and other implementations...
 }
 ```
 
-Este programa é analisado sem erros. Observe que a última linha do método `==`
-acessa `.x` e `.y` em `other`. Ele foi promovido para `Point` mesmo que a
-função não tenha nenhum `return` ou `throw`. A análise de fluxo de controle sabe
-que o tipo declarado de `wrongType()` é `Never`, o que significa que o branch
-then da instrução `if` *deve* abortar de alguma forma. Já que a segunda
-instrução só pode ser alcançada quando `other` é um `Point`, Dart o promove.
+This program analyzes without error. Notice that the last line of the `+`
+method accesses `.x` and `.y` on `other`. It has been promoted to `Point` even
+though the function doesn't have any `return` or `throw`. The control flow
+analysis knows that the declared type of `wrongType()` is `Never` which means
+the then branch of the `if` statement *must* abort somehow. Since the final
+statement can only be reached when `other` is a `Point`, Dart promotes it.
 
 Em outras palavras, usar `Never` em suas próprias APIs permite que você estenda
 a análise de alcançabilidade do Dart.
@@ -717,12 +722,13 @@ String makeCommand(String executable, [List<String>? arguments]) {
 }
 ```
 
-A linguagem também é mais inteligente sobre quais tipos de expressões causam promoção.
-Um `== null` ou `!= null` explícito, claro, funciona. Mas casts explícitos usando `as`, ou atribuições,
-ou o operador `!` postfix (que abordaremos [adiante](#non-null-assertion-operator))
-também causam promoção. O objetivo geral é que, se o código for dinamicamente
-correto e for razoável descobrir isso estaticamente, a análise deve ser inteligente
-o suficiente para fazê-lo.
+The language is also smarter about what kinds of expressions cause promotion. An
+explicit `== null` or `!= null` of course works. But explicit casts using `as`,
+or assignments, or the postfix `!` operator
+(which we'll cover [later on](#not-null-assertion-operator)) also cause
+promotion. The general goal is that if the code is dynamically correct and it's
+reasonable to figure that out statically, the analysis should be clever enough
+to do so.
 
 Observe que a promoção de tipo originalmente só funcionava em variáveis locais,
 e agora também funciona em campos `private final` a partir do Dart 3.2. Para mais
@@ -899,8 +905,10 @@ Não há um operador de chamada de função que reconheça nulo, mas você pode 
 function?.call(arg1, arg2);
 ```
 
-<a id="null-assertion-operator"></a>
-### Operador de asserção não nulo {:#non-null-assertion-operator}
+<a id="null-assertion-operator" aria-hidden="true"></a>
+<a id="non-null-assertion-operator" aria-hidden="true"></a>
+
+### Not-null assertion operator
 
 O interessante sobre usar a análise de fluxo para mover uma variável anulável para
 o lado não anulável do mundo é que fazer isso é comprovadamente seguro. Você pode
@@ -1011,8 +1019,8 @@ superior, ele tem uma regra conservadora de que campos não anuláveis devem ser
 inicializados em sua declaração (ou na lista de inicialização do construtor para
 campos de instância). Portanto, o Dart relata um erro de compilação nesta classe.
 
-Você pode corrigir o erro tornando o campo anulável e, em seguida, usando
-operadores de asserção não nula nos usos:
+You can fix the error by making the field nullable and then
+using not-null assertion operators on the uses:
 
 ```dart
 // Usando segurança nula:
@@ -1046,12 +1054,14 @@ class Coffee {
 }
 ```
 
-Observe que o campo `_temperature` tem um tipo não anulável, mas não é
-inicializado. Além disso, não há asserção nula explícita quando ela é usada.
-Existem alguns modelos que você pode aplicar à semântica de `late`, mas eu penso
-assim: o modificador `late` significa "reforce as restrições desta variável em
-tempo de execução em vez de em tempo de compilação". É quase como se a palavra
-"late" descrevesse *quando* ela impõe as garantias da variável.
+Note that the `_temperature` field has a non-nullable type,
+but is not initialized.
+Also, there's no explicit not-null assertion when it's used.
+There are a few models you can apply to the semantics of `late`,
+but I think of it like this: The `late` modifier means
+"enforce this variable's constraints at runtime instead of at compile time".
+It's almost like the word "late" describes *when*
+it enforces the variable's guarantees.
 
 Nesse caso, como o campo não está definitivamente inicializado, cada vez que o
 campo é lido, uma verificação em tempo de execução é inserida para garantir que
@@ -1561,11 +1571,10 @@ Os pontos principais a serem lembrados são:
     Campos de instância não anuláveis devem ser inicializados antes que o corpo
     do construtor comece.
 
-*   Cadeias de métodos após operadores que reconhecem nulos entram em curto-circuito
-    se o receptor for `null`. Existem novos operadores de cascade que reconhecem
-    nulos (`?..`) e de índice (`?[]`). O operador "bang" de asserção não nula
-    sufixo (`!`) converte seu operando anulável para o tipo não anulável
-    subjacente.
+*   Method chains after null-aware operators short circuit if the receiver is
+    `null`. There are new null-aware cascade (`?..`) and index (`?[]`)
+    operators. The postfix not-null assertion "bang" operator (`!`) casts its
+    nullable operand to the underlying non-nullable type.
 
 *   A análise de fluxo permite que você transforme com segurança variáveis
     locais e parâmetros anuláveis (e campos finais privados, a partir do Dart

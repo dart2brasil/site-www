@@ -1,8 +1,9 @@
 ---
-ia-translate: true
-title: Pacotes do time Dart
-description: O time Dart publica pacotes sob os publishers verificados dartbrasil.dev, tools.dartbrasil.dev e labs.dartbrasil.dev.
-toc: false
+title: Dart team packages
+description: >-
+  The Dart team publishes packages under the verified publishers:
+  dart.dev, tools.dart.dev, and labs.dart.dev.
+showToc: false
 ---
 
 O time Dart publica pacotes em [pub.dev]({{site.pub}}) sob três

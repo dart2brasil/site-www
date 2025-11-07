@@ -10,20 +10,20 @@ _Upgrade_ (atualizar) é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 $ dart pub upgrade [opções] [dependências]
 ```
 
-Assim como [`dart pub get`](/tools/pub/cmd/pub-get),
-`dart pub upgrade` obtém as dependências.
-A diferença é que `dart pub upgrade` ignora qualquer
-[lockfile (arquivo de bloqueio)](/tools/pub/glossary#lockfile) existente,
-para que o pub possa obter as versões mais recentes de todas as dependências.
-Um comando relacionado é [`dart pub outdated`](/tools/pub/cmd/pub-outdated),
-que você pode executar para encontrar dependências desatualizadas.
+Like [`dart pub get`](/tools/pub/cmd/pub-get),
+`dart pub upgrade` gets dependencies.
+The difference is that `dart pub upgrade` ignores any existing
+[lockfile](/resources/glossary#lockfile),
+so that pub can get the latest versions of all dependencies.
+A related command is [`dart pub outdated`](/tools/pub/cmd/pub-outdated),
+which you can run to find out-of-date dependencies.
 
-Sem nenhum argumento adicional, `dart pub upgrade` obtém as versões mais recentes de
-todas as dependências listadas
-no arquivo [`pubspec.yaml`](/tools/pub/pubspec) no
-diretório de trabalho atual, bem como suas [dependências
-transitivas](/tools/pub/glossary#transitive-dependency).
-Por exemplo:
+Without any additional arguments, `dart pub upgrade` gets the latest
+versions of all the dependencies listed in the
+[`pubspec.yaml`](/tools/pub/pubspec) file in the current working
+directory, as well as their [transitive
+dependencies](/resources/glossary#transitive-dependency).
+For example:
 
 ```console
 $ dart pub upgrade
@@ -44,7 +44,7 @@ usando as versões mais recentes de todas as dependências.
 Consulte a documentação do [`dart pub get`](/tools/pub/cmd/pub-get) para obter mais informações
 sobre a resolução de pacotes e o cache de pacotes do sistema.
 
-[pacotes de aplicativos]: /tools/pub/glossary#application-package
+[application packages]: /resources/glossary#application-package
 
 ## Atualizando dependências específicas {:#upgrading-specific-dependencies}
 

@@ -39,8 +39,8 @@ no pubspec do seu aplicativo:
 ```yaml
 dev_dependencies:
   # ···
-  build_runner: ^2.4.13
-  build_test: ^2.2.2
+  build_runner: ^2.8.0
+  build_test: ^3.4.0
 ```
 
 Depender de **build_test** é opcional; faça isso se você for testar seu código.
@@ -81,27 +81,18 @@ watch
 
 ## Mais informações {:#more-information}
 
-Se você estiver trabalhando em código específico para a web,
-consulte a [página do webdev.][webdev]
-
-Para detalhes sobre como usar build_runner, consulte o seguinte:
-
-- Documentação para pacotes que exigem que você use build_runner.
-  Esses pacotes geralmente têm uma dependência
-  [em build][] ou [em build_runner.][]
-- Documentação do Build_runner:
-  - [Começando com build_runner][]
-  - [FAQ do Build][]
+* [webdev][] guide (use if you're working on web-specific code)
+* [build_runner][] guide
+* [packages with the `build_runner` dependency][]
+* [packages with the `build` dependency][]
 
 [build]: {{site.repo.dart.org}}/build
-[FAQ do Build]: {{site.repo.dart.org}}/build/blob/master/docs/faq.md
 [build_runner]: {{site.pub-pkg}}/build_runner
 [built_value_generator]: {{site.pub-pkg}}/built_value_generator
-[dependência de desenvolvimento]: /tools/pub/dependencies#dev-dependencies
-[Começando com build_runner]: {{site.repo.dart.org}}/build/blob/master/docs/getting_started.md
+[dev dependency]: /tools/pub/dependencies#dev-dependencies
 [json_serializable]: {{site.pub-pkg}}/json_serializable
-[em build]: {{site.pub-pkg}}?q=dependency%3Abuild
-[em build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
+[packages with the `build` dependency]: {{site.pub-pkg}}?q=dependency%3Abuild
+[packages with the `build_runner` dependency]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
 [sass_builder]: {{site.pub-pkg}}/sass_builder
 [tests]: /tools/testing
 [webdev]: /tools/webdev

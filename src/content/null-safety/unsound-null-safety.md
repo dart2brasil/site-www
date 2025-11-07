@@ -1,7 +1,8 @@
 ---
-ia-translate: true
-title: Segurança nula não confiável
-description: A combinação de versões de linguagem permite que você migre para segurança nula no seu próprio ritmo, com alguns dos benefícios da segurança nula.
+title: Unsound null safety
+description: >-
+  Mixing language versions lets you migrate to null safety at your own pace,
+  with some of the benefits of null safety.
 ---
 
 :::version-note
@@ -102,7 +103,9 @@ Se alguma biblioteca tiver importações cíclicas
 (por exemplo, A importa B que importa C e C importa A),
 considere migrar essas bibliotecas juntas.
 
-### Usando a ferramenta de migração {:#using-the-migration-tool}
+<a id="using-the-migration-tool" aria-hidden="true"></a>
+
+### Using the migration tool {: #migration-tool}
 
 Você pode migrar incrementalmente usando a
 [ferramenta de migração][migration tool].

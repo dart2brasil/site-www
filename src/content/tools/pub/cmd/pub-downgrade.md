@@ -10,11 +10,11 @@ _Downgrade_ (rebaixar) é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 $ dart pub downgrade [--[no-]offline] [-n|--dry-run] [dependências...]
 ```
 
-Sem nenhum argumento adicional, `dart pub downgrade` obtém as versões mais baixas de
-todas as dependências listadas no arquivo [`pubspec.yaml`](/tools/pub/pubspec)
-no diretório de trabalho atual, bem como suas [dependências
-transitivas](/tools/pub/glossary#transitive-dependency).
-Por exemplo:
+Without any additional arguments, `dart pub downgrade` gets the lowest versions of
+all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file
+in the current working directory, as well as their [transitive
+dependencies](/resources/glossary#transitive-dependency).
+For example:
 
 ```console
 $ dart pub downgrade

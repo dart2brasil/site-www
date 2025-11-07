@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Especificação da linguagem Dart
-short-title: Especificação da linguagem
-description: A especificação formal para a linguagem Dart.
+title: Dart language specification
+shortTitle: Language specification
+breadcrumb: Specification
+description: The formal specification for the Dart language.
 ---
 
 Use esta página para encontrar a especificação formal da linguagem Dart.
@@ -11,13 +11,14 @@ Para uma introdução mais suave ao Dart, veja o
 
 ## Dart 3 {:#dart-3}
 
-A especificação da linguagem Dart 3 está em andamento.
-Você pode encontrar a especificação em andamento em formato PDF:
+The Dart 3 language specification is in progress and
+not yet up to date for the current release and language features.
+You can find the in-progress specification in PDF format:
 
 * [Última especificação em andamento][latest draft]
   (produzida a partir de um [arquivo LaTeX][LaTeX file])
 
-[latest draft]: https://spec.dartbrasil.dev/DartLangSpecDraft.pdf
+[latest draft]: {{site.url}}/to/spec-draft
 [LaTeX file]: {{site.repo.dart.lang}}/blob/main/specification/dartLangSpec.tex
 
 Novas funcionalidades da linguagem são tipicamente descritas usando
@@ -25,6 +26,9 @@ especificações informais de funcionalidades da linguagem no repositório [dart
 
 * [Propostas informais aceitas][Accepted informal proposals]
 * [Rascunhos de funcionalidades potenciais][Drafts of potential features]
+
+Over time, these feature specifications will be incorporated into
+the official specification.
 
 [dart-lang/language]: {{site.repo.dart.lang}}
 [Accepted informal proposals]: {{site.repo.dart.lang}}/tree/main/accepted
@@ -43,9 +47,9 @@ A especificação da linguagem Dart 2 está disponível em formato PDF:
 
 [2-10 formal spec]: /resources/language/spec/versions/DartLangSpec-v2.10.pdf
 
-Para obter informações sobre as versões do Dart 2.12 e posteriores,
-que têm suporte para [null safety (segurança nula)](/null-safety),
-confira a [especificação do Dart 3](#dart-3) em andamento.
+For information on Dart versions 2.12 and later,
+which have support for [null safety](/null-safety),
+check out the in-progress [Dart 3 specification](#dart-3).
 
 ## Dart 1.x {:#dart-1-x}
 

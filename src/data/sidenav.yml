@@ -1,0 +1,394 @@
+# <!-- ia-translate: true -->
+- title: Linguagem
+  expanded: false
+  children:
+    - title: Introdução
+      permalink: /language
+    - title: Variables
+      permalink: /language/variables
+    - title: Operators
+      permalink: /language/operators
+    - title: Comments
+      permalink: /language/comments
+    - divider
+    - title: Types
+      children:
+        - title: Tipos built-in (embutidos)
+          permalink: /language/built-in-types
+        - title: Registros
+          permalink: /language/records
+        - title: Collections (Coleções)
+          permalink: /language/collections
+        - title: Genéricos
+          permalink: /language/generics
+        - title: Typedefs
+          permalink: /language/typedefs
+        - title: Sistema de tipos
+          permalink: /language/type-system
+    - title: Patterns (Padrões)
+      children:
+        - title: Visão geral e uso
+          permalink: /language/patterns
+        - title: Tipos de pattern
+          permalink: /language/pattern-types
+        - title: Tutorial aplicado
+          permalink: https://codelabs.developers.google.com/codelabs/dart-patterns-records
+    - title: Control flow
+      children:
+      - title: Loops (Laços de repetição)
+        permalink: /language/loops
+      - title: Branches (Desvios)
+        permalink: /language/branches
+      - title: Tratamento de erros
+        permalink: /language/error-handling
+    - title: Functions
+      permalink: /language/functions
+    - title: Metadata
+      permalink: /language/metadata
+    - title: Libraries & imports
+      permalink: /language/libraries
+    - title: Classes & objects
+      children:
+        - title: Classes
+          permalink: /language/classes
+        - title: Construtores
+          permalink: /language/constructors
+        - title: Métodos
+          permalink: /language/methods
+        - title: Estender uma classe
+          permalink: /language/extend
+        - title: Mixins
+          permalink: /language/mixins
+        - title: Enums (Enumerações)
+          permalink: /language/enums
+        - title: Dot shorthands
+          permalink: /language/dot-shorthands
+        - title: Extension methods
+          permalink: /language/extension-methods
+        - title: Tipos de extensão
+          permalink: /language/extension-types
+        - title: Objetos callable (invocáveis)
+          permalink: /language/callable-objects
+    - title: Modificadores de classe
+      children:
+        - title: Visão geral e uso
+          permalink: /language/class-modifiers
+        - title: Modificadores de classe para mantenedores de API
+          permalink: /language/class-modifiers-for-apis
+        - title: Referência
+          permalink: /language/modifier-reference
+    - title: Concorrência
+      children:
+        - title: Visão geral
+          permalink: /language/concurrency
+        - title: Asynchronous programming
+          permalink: /language/async
+        - title: Isolates
+          permalink: /language/isolates
+    - divider
+    - title: Null safety
+      expanded: false
+      children:
+        - title: Sound null safety (Segurança nula completa)
+          permalink: /null-safety
+        - title: Migrando para null safety
+          permalink: /null-safety/migration-guide
+        - title: Entendendo null safety
+          permalink: /null-safety/understanding-null-safety
+        - title: Unsound null safety (Segurança nula incompleta)
+          permalink: /null-safety/unsound-null-safety
+        - title: FAQ (Perguntas frequentes)
+          permalink: /null-safety/faq
+    - title: Keywords
+      permalink: /language/keywords
+
+- title: Bibliotecas principais
+  expanded: false
+  children:
+    - title: Visão geral
+      permalink: /libraries
+    - title: dart:core
+      permalink: /libraries/dart-core
+    - title: dart:async
+      permalink: /libraries/dart-async
+    - title: dart:math
+      permalink: /libraries/dart-math
+    - title: dart:convert
+      permalink: /libraries/dart-convert
+    - title: dart:io
+      permalink: /libraries/dart-io
+    - title: dart:js_interop
+      permalink: /interop/js-interop
+      match-page-url-exactly: true
+    - divider
+    - title: Coleções iteráveis
+      permalink: /libraries/collections/iterables
+    - title: Programação assíncrona
+      children:
+        - title: Tutorial
+          permalink: /libraries/async/async-await
+        - title: Futures e tratamento de erros
+          permalink: /libraries/async/futures-error-handling
+        - title: Usando streams
+          permalink: /libraries/async/using-streams
+        - title: Criando streams
+          permalink: /libraries/async/creating-streams
+
+- title: Effective Dart (Dart Eficaz)
+  expanded: false
+  permalink: /effective-dart
+  children:
+    - title: Visão geral
+      permalink: /effective-dart
+    - title: Estilo
+      permalink: /effective-dart/style
+    - title: Documentação
+      permalink: /effective-dart/documentation
+    - title: Uso
+      permalink: /effective-dart/usage
+    - title: Design
+      permalink: /effective-dart/design
+
+- title: Packages (Pacotes)
+  expanded: false
+  children:
+    - title: Como usar packages
+      permalink: /tools/pub/packages
+    - title: Packages usados com frequência
+      permalink: /resources/useful-packages
+    - title: Criando packages
+      permalink: /tools/pub/create-packages
+    - title: Publicando packages
+      permalink: /tools/pub/publishing
+    - title: Escrevendo páginas de packages
+      permalink: /tools/pub/writing-package-pages
+    - title: Workspaces (Suporte a monorepo)
+      permalink: /tools/pub/workspaces
+    - title: Hooks
+      permalink: /tools/hooks
+    - title: Package reference
+      expanded: false
+      children:
+        - title: Dependências
+          permalink: /tools/pub/dependencies
+        - title: Package layout conventions
+          permalink: /tools/pub/package-layout
+        - title: Variáveis de ambiente do Pub
+          permalink: /tools/pub/environment-variables
+        - title: Arquivo Pubspec
+          permalink: /tools/pub/pubspec
+        - title: Solução de problemas do Pub
+          permalink: /tools/pub/troubleshoot
+        - title: Editores verificados
+          permalink: /tools/pub/verified-publishers
+        - title: Avisos de segurança
+          permalink: /tools/pub/security-advisories
+        - title: Versionamento
+          permalink: /tools/pub/versioning
+        - title: Repositórios de package personalizados
+          permalink: /tools/pub/custom-package-repositories
+    - title: O que não commitar
+      permalink: /tools/pub/private-files
+
+- title: Desenvolvimento
+  expanded: false
+  children:
+    - title: Serialização JSON
+      permalink: /libraries/serialization/json
+    - title: Representação de números
+      permalink: /resources/language/number-representation
+    - title: APIs do Google
+      permalink: /resources/google-apis
+    - title: Apps multi-plataforma
+      permalink: /multiplatform-apps
+    - title: Apps de linha de comando e servidor
+      children:
+        - title: Visão geral
+          permalink: /server
+        - title: Primeiros passos
+          permalink: /tutorials/server/get-started
+        - title: Escreva apps de linha de comando
+          permalink: /tutorials/server/cmdline
+        - title: Busque dados da internet
+          permalink: /tutorials/server/fetch-data
+        - title: Escreva servidores HTTP
+          permalink: /tutorials/server/httpserver
+        - title: Bibliotecas e packages
+          permalink: /server/libraries
+        - title: Google Cloud
+          permalink: /server/google-cloud
+    - title: Apps web
+      children:
+        - title: Visão geral
+          permalink: /web
+        - title: Primeiros passos
+          permalink: /web/get-started
+        - title: Implantação
+          permalink: /web/deployment
+        - title: Bibliotecas e packages
+          permalink: /web/libraries
+        - title: Compilação Wasm
+          permalink: /web/wasm
+    - title: Declarações de ambiente
+      permalink: /libraries/core/environment-declarations
+
+- title: Interoperabilidade
+  expanded: false
+  children:
+  - title: Interoperabilidade com C
+    permalink: /interop/c-interop
+  - title: Interoperabilidade com Objective-C e Swift
+    permalink: /interop/objective-c-interop
+  - title: Interoperabilidade com Java e Kotlin
+    permalink: /interop/java-interop
+  - title: Interoperabilidade com JavaScript
+    children:
+      - title: Visão geral
+        permalink: /interop/js-interop
+      - title: Uso
+        permalink: /interop/js-interop/usage
+      - title: Tipos JS
+        permalink: /interop/js-interop/js-types
+      - title: Tutoriais
+        permalink: /interop/js-interop/tutorials
+      - title: Interoperabilidade JS antiga
+        permalink: /interop/js-interop/past-js-interop
+      - divider
+      - title: Interoperabilidade Web
+        permalink: /interop/js-interop/package-web
+
+- title: Ferramentas e técnicas
+  expanded: false
+  children:
+  - title: Visão geral
+    permalink: /tools
+  - title: AI
+    children:
+        - title: Dart and Flutter MCP Server
+          permalink: https://docs.flutter.dev/ai/mcp-server
+  - title: Editors & debuggers
+    children:
+      - title: IntelliJ e Android Studio
+        permalink: /tools/jetbrains-plugin
+      - title: VS Code
+        permalink: /tools/vs-code
+      - title: Dart DevTools
+        permalink: /tools/dart-devtools
+      - title: DartPad
+        children:
+          - title: Visão geral
+            permalink: /tools/dartpad
+          - title: Solução de problemas do DartPad
+            permalink: /tools/dartpad/troubleshoot
+  - title: Ferramentas de linha de comando
+    children:
+    - title: Dart SDK
+      expanded: true
+      children:
+        - title: Visão geral
+          permalink: /tools/sdk
+        - title: dart
+          permalink: /tools/dart-tool
+        - title: dart analyze
+          permalink: /tools/dart-analyze
+        - title: dart build
+          permalink: /tools/dart-build
+        - title: dart compile
+          permalink: /tools/dart-compile
+        - title: dart create
+          permalink: /tools/dart-create
+        - title: dart doc
+          permalink: /tools/dart-doc
+        - title: dart fix
+          permalink: /tools/dart-fix
+        - title: dart format
+          permalink: /tools/dart-format
+        - title: dart info
+          permalink: /tools/dart-info
+        - title: dart install
+          permalink: /tools/dart-install
+        - title: dart pub
+          permalink: /tools/pub/cmd
+        - title: dart run
+          permalink: /tools/dart-run
+        - title: dart test
+          permalink: /tools/dart-test
+        - title: dartaotruntime
+          permalink: /tools/dartaotruntime
+        - title: Flags de experimento
+          permalink: /tools/experiment-flags
+    - title: Outras ferramentas de linha de comando
+      expanded: true
+      children:
+        - title: build_runner
+          permalink: /tools/build_runner
+        - title: webdev
+          permalink: /tools/webdev
+  - title: Análise estática
+    children:
+      - title: Personalizando a análise estática
+        permalink: /tools/analysis
+      - title: Fixing type promotion failures
+        permalink: /tools/non-promotion-reasons
+      - title: Regras do Linter
+        permalink: /tools/linter-rules
+      - title: Diagnostic messages
+        permalink: /tools/diagnostics
+  - title: Testing & optimization
+    children:
+      - title: Testes
+        permalink: /tools/testing
+      - title: Debugging de apps web
+        permalink: /web/debugging
+
+- divider
+- title: Stay up to date
+  expanded: false
+  children:
+    - title: Dart Blog
+      permalink: https://blog.dart.dev
+    - title: Dart SDK Changelog
+      permalink: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+    - title: Breaking changes
+      permalink: /resources/breaking-changes
+    - title: Language evolution
+      permalink: /resources/language/evolution
+    - title: What's new in the docs
+      permalink: /resources/whats-new
+
+- title: Resources
+  expanded: false
+  children:
+    - title: Cheatsheet da linguagem
+      permalink: /resources/dart-cheatsheet
+    - title: Language specification
+      permalink: /resources/language/spec
+    - title: Guia de migração para o Dart 3
+      permalink: /resources/dart-3-migration
+    - title: From JavaScript to Dart
+      permalink: /resources/coming-from/js-to-dart
+    - title: From Swift to Dart
+      permalink: /resources/coming-from/swift-to-dart
+    - divider
+    - title: FAQ (Perguntas frequentes)
+      permalink: /resources/faq
+    - title: Glossário
+      permalink: /resources/glossary
+    - title: Livros
+      permalink: /resources/books
+    - title: Vídeos
+      permalink: /resources/videos
+    - title: Tutoriais
+      permalink: /tutorials
+
+- title: Sites relacionados
+  expanded: true
+  children:
+    - title: API reference
+      permalink: https://api.dart.dev
+    - title: DartPad (online editor)
+      permalink: https://dartpad.dev
+    - title: Flutter
+      permalink: https://flutter.dev
+    - title: Site de packages
+      permalink: https://pub.dev

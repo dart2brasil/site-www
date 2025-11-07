@@ -1,0 +1,52 @@
+# <!-- ia-translate: true -->
+# Este trecho define várias variáveis globais para serem usadas em todo o site.
+# Você pode acessá-las usando Liquid como: `{{site.dart-api}}`.
+
+title: Dart
+description: >-
+  Dart é uma linguagem otimizada para o cliente para desenvolver aplicativos rápidos em qualquer plataforma.
+url: https://dartbrasil.dev
+redirect:
+  go: https://dartbrasil.dev/go
+repo:
+  this: https://github.com/dart2brasil/site-www
+  shared: https://github.com/dart-lang/site-shared
+  dart:
+    org: https://github.com/dart-lang
+    sdk: https://github.com/dart-lang/sdk
+    lang: https://github.com/dart-lang/language
+    samples: https://github.com/dart-lang/samples
+branch: main
+
+flutter: https://flutter.dev
+flutter-docs: https://docs.flutter.dev
+dart-api: https://api.dartbrasil.dev
+flutter-api: https://api.flutter.dev
+pub: https://pub.dev
+pub-api: https://pub.dev/documentation
+pub-pkg: https://pub.dev/packages
+dartpad: https://dartpad.dev
+news: https://news.dartlang.org
+announce: https://groups.google.com/a/dartlang.org/g/announce
+android-dev: https://developer.android.com
+apple-dev: https://developer.apple.com
+jaspr: https://jaspr.site/
+
+yt:
+  watch: 'https://www.youtube.com/watch'
+  playlist: 'https://www.youtube.com/playlist?list='
+
+showBanner: false
+
+# Incremente este número de versão da URL global og:image (usado como um parâmetro de consulta)
+# quando você atualizar qualquer arquivo og:image. (Também incremente o número correspondente
+# na regra de redirecionamento `firebase.json`.)
+og_image_vers: "?2"
+
+sdkVersion: 3.9.2
+
+# Settings for Jaspr.
+
+# Specify Jaspr as not setting a base href for each document,
+# so that links to fragments still work as expected.
+base: false

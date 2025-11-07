@@ -1,7 +1,8 @@
 ---
 ia-translate: true
 title: "Effective Dart: Design"
-description: Design consistente, bibliotecas utilizáveis.
+breadcrumb: Design
+description: Design consistent, usable libraries.
 prevpage:
   url: /effective-dart/usage
   title: Uso
@@ -93,7 +94,9 @@ como uma sentença.
 <?code-excerpt "design_good.dart (code-like-prose)"?>
 ```dart tag=good
 // "If errors is empty..."
-if (errors.isEmpty) ...
+if (errors.isEmpty) {
+  // ...
+}
 
 // "Hey, subscription, cancel!"
 subscription.cancel();
@@ -105,7 +108,9 @@ monsters.where((monster) => monster.hasClaws);
 <?code-excerpt "design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
 ```dart tag=bad
 // Telling errors to empty itself, or asking if it is?
-if (errors.empty) ...
+if (errors.empty) {
+  // ...
+}
 
 // Toggle what? To what?
 subscription.toggle();
@@ -120,7 +125,9 @@ para forçar seus nomes a *literalmente* serem lidos como uma frase gramaticalme
 
 <?code-excerpt "design_bad.dart (code-like-prose-overdone)"?>
 ```dart tag=bad
-if (theCollectionOfErrors.isEmpty) ...
+if (theCollectionOfErrors.isEmpty) {
+  // ...
+}
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
 ```
@@ -614,13 +621,15 @@ dando à classe um nome óbvio como `IterableBase`. Se o autor da classe
 não fizer isso, é melhor assumir que você *não* deve estender a classe.
 Caso contrário, alterações posteriores podem quebrar seu código.
 
+<a id="do-document-if-your-class-supports-being-extended" aria-hidden="true"></a>
 
-### DOCUMENTA se sua classe suporta ser estendida {:#do-document-if-your-class-supports-being-extended}
+### DO use class modifiers to control if your class can be extended
 
-Este é o corolário da regra acima. Se você quiser permitir subclasses de sua
-classe, declare isso. Sufixe o nome da classe com `Base` ou mencione-o no
-comentário doc da classe.
-
+Class modifiers like `final`, `interface`, or `sealed`
+restrict how a class can be extended.
+For example, use `final class A {}` or `interface class B {}` to prevent 
+extension outside the current library.
+Use these modifiers to communicate your intent, rather than relying on documentation.
 
 ### EVITE implementar uma classe que não se destina a ser uma interface {:#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface}
 
@@ -646,15 +655,21 @@ interfaces implícitas, exceto para classes que são claramente destinadas a ser
 implementadas. Caso contrário, você pode introduzir um acoplamento que o autor não
 pretende, e eles podem quebrar seu código sem perceber.
 
-### DOCUMENTA se sua classe suporta ser usada como uma interface {:#do-document-if-your-class-supports-being-used-as-an-interface}
+<a id="do-document-if-your-class-supports-being-used-as-an-interface" aria-hidden="true"></a>
 
-Se sua classe puder ser usada como uma interface, mencione isso no
-comentário doc da classe.
+### DO use class modifiers to control if your class can be an interface
 
+When designing a library, use class modifiers like `final`, `base`, or `sealed` to enforce intended
+usage. For example, use `final class C {}` or `base class D {}` to prevent
+implementation outside the current library.
+While it's ideal for all libraries to use these modifiers to enforce design intent,
+developers may still encounter cases where they aren't applied. In such cases, be mindful of
+unintended implementation issues.
 
-<a id="do-use-mixin-to-define-a-mixin-type"></a>
-<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
-### PREFIRA definir um `mixin` puro ou `class` puro em vez de um `mixin class` {:#prefer-defining-a-pure-mixin-or-pure-class-to-a-mixin-class}
+<a id="do-use-mixin-to-define-a-mixin-type" aria-hidden="true"></a>
+<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin" aria-hidden="true"></a>
+
+### PREFER defining a pure `mixin` or pure `class` to a `mixin class`
 
 {% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
 
@@ -931,18 +946,20 @@ Cascades de método são uma solução melhor para encadear chamadas de método.
 
 <?code-excerpt "design_good.dart (cascades)"?>
 ```dart tag=good
-var buffer = StringBuffer()
-  ..write('one')
-  ..write('two')
-  ..write('three');
+var buffer =
+    StringBuffer()
+      ..write('one')
+      ..write('two')
+      ..write('three');
 ```
 
 <?code-excerpt "design_bad.dart (cascades)"?>
 ```dart tag=bad
-var buffer = StringBuffer()
-    .write('one')
-    .write('two')
-    .write('three');
+var buffer =
+    StringBuffer()
+        .write('one')
+        .write('two')
+        .write('three');
 ```
 
 
@@ -1517,12 +1534,16 @@ Setters sempre retornam `void` em Dart. Escrever a palavra é inútil.
 
 <?code-excerpt "design_bad.dart (avoid_return_types_on_setters)"?>
 ```dart tag=bad
-void set foo(Foo value) { ... }
+void set foo(Foo value) {
+   ...
+}
 ```
 
 <?code-excerpt "design_good.dart (avoid_return_types_on_setters)"?>
 ```dart tag=good
-set foo(Foo value) { ... }
+set foo(Foo value) {
+   ...
+}
 ```
 
 
@@ -1743,7 +1764,9 @@ são covariantes. Isso significa que está tudo bem para o tipo de *callback* re
 <?code-excerpt "design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
 ```dart tag=good
 Stream<S> asyncMap<T, S>(
-    Iterable<T> iterable, [!FutureOr<S>!] Function(T) callback) async* {
+  Iterable<T> iterable,
+  [!FutureOr<S>!] Function(T) callback,
+) async* {
   for (final element in iterable) {
     yield await callback(element);
   }
@@ -1803,22 +1826,25 @@ omitir um argumento posicional anterior para passar um posterior. É melhor usar
 ```dart tag=good
 String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int? end]);
 
-DateTime(int year,
-    [int month = 1,
-    int day = 1,
-    int hour = 0,
-    int minute = 0,
-    int second = 0,
-    int millisecond = 0,
-    int microsecond = 0]);
+DateTime(
+  int year, [
+  int month = 1,
+  int day = 1,
+  int hour = 0,
+  int minute = 0,
+  int second = 0,
+  int millisecond = 0,
+  int microsecond = 0,
+]);
 
-Duration(
-    {int days = 0,
-    int hours = 0,
-    int minutes = 0,
-    int seconds = 0,
-    int milliseconds = 0,
-    int microseconds = 0});
+Duration({
+  int days = 0,
+  int hours = 0,
+  int minutes = 0,
+  int seconds = 0,
+  int milliseconds = 0,
+  int microseconds = 0,
+});
 ```
 
 

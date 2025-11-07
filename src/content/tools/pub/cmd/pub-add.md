@@ -103,10 +103,11 @@ aplicar diferentes opções e restrições a cada um.
 $ dart pub add [options] [{dev|override}:]<package>[:descriptor] [[{dev|override}:]<package>[:descriptor] ...]
 ```
 
-A sintaxe reflete como as dependências são escritas em `pubspec.yaml`.
+The syntax reflects how dependencies are written in `pubspec.yaml`.
+Follow the same format including spaces.
 
 ```plaintext
-'<package>:{"<source>":"<descriptor>"[,"<source>":"<descriptor>"],"version":"<constraint>"}'
+"<package>:{<source>: <descriptor>[, <source>: <descriptor>], version: <constraint>}"
 ```
 
 ### `git` {:#git}
@@ -114,14 +115,14 @@ A sintaxe reflete como as dependências são escritas em `pubspec.yaml`.
 Adiciona uma [dependência git](/tools/pub/dependencies#git-packages).
 
 ```console
-$ dart pub add 'foo:{"git":"https://github.com/foo/foo"}'
+$ dart pub add "foo:{git: https://github.com/foo/foo}"
 ```
 
 Você pode especificar o repositório e o branch ou commit, ou localização exata,
 dentro desse repositório:
 
 ```console
-$ dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
+$ dart pub add "foo:{git:{url: ../foo.git, ref: branch, path: subdir}}"
 ```
 
 #### `url` {:#url}
@@ -156,7 +157,7 @@ Adiciona uma [dependência hospedada][hosted dependency] que depende
 do servidor de pacotes na URL especificada.
 
 ```console
-$ dart pub add 'foo:{"hosted":"my-pub.dev"}'
+$ dart pub add "foo:{hosted: my-pub.dev}"
 ```
 
 _Anteriormente, a opção `--hosted-url=<package_server_url>`_.
@@ -168,7 +169,7 @@ _Anteriormente, a opção `--hosted-url=<package_server_url>`_.
 Adiciona uma [dependência de caminho][path dependency] em um pacote armazenado localmente.
 
 ```console
-$ dart pub add 'foo:{"path":"../foo"}'
+$ dart pub add "foo:{path: ../foo}"
 ```
 
 _Anteriormente, a opção `--path=<directory_path>`_.
@@ -180,7 +181,7 @@ _Anteriormente, a opção `--path=<directory_path>`_.
 Adiciona um pacote da fonte SDK especificada.
 
 ```console
-$ dart pub add 'foo:{"sdk":"flutter"}'
+$ dart pub add "foo:{sdk: flutter}"
 ```
 
 _Anteriormente, a opção `--sdk=<sdk_name>`_:

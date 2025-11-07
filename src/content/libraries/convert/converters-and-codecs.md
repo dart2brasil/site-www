@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Conversores e Codecs
-description: Aprenda como escrever conversões eficientes.
+title: Converters and codecs
+description: Learn how to write efficient conversions.
+showBreadcrumbs: false
 original-date: 2014-02-06
 date: 2015-03-17
 obsolete: true

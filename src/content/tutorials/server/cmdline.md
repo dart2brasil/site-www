@@ -191,16 +191,16 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # repository: https://github.com/my_org/my_repo
 5
 6 environment:
-7   sdk: ^3.6.0
-8
+7   sdk: ^3.9.0
+8 
 9 # Add regular dependencies here.
 10 dependencies:
-11   args: ^2.5.0
+11   args: ^2.7.0
 12   # path: ^1.8.0
 13
 14 dev_dependencies:
-15   lints: ^5.0.0
-16   test: ^1.24.0
+15   lints: ^6.0.0
+16   test: ^1.25.0
 ```
 
 Este comando exibe cada linha do arquivo especificado.
@@ -254,7 +254,7 @@ Então, o resultado da análise de argumentos de linha de comando é armazenado 
 O diagrama a seguir mostra como a linha de comando `dcat` usada acima
 é analisada em um objeto `ArgResults`.
 
-![Executar dcat da linha de comando](/assets/img/tutorials/server/dcat-dart-run.svg){:width="350"}
+![Run dcat from the command-line](/assets/img/tutorials/server/dcat-dart-run.svg){:width="350" .diagram-wrap}
 
 Você pode acessar sinalizadores e opções por nome,
 tratando um `ArgResults` como um `Map`.
@@ -286,7 +286,8 @@ import 'dart:io';
 ```
 
 :::note
-Aplicativos da web (aplicativos que dependem de `dart:html`) não podem usar a biblioteca `dart:io`.
+Apps that run on the [web platform](/overview#platform)
+can't use the `dart:io` library.
 :::
 
 ### stdout {:#stdout}
@@ -637,7 +638,7 @@ consulte os documentos da API para
 Para outro exemplo de um aplicativo de linha de comando,
 confira o exemplo [`command_line`][].
 
-[`command_line`]: {{site.repo.dart.org}}/samples/tree/main/command_line
+[`command_line`]: {{site.repo.dart.samples}}/tree/main/command_line
 
 ## Próximos passos? {:#what-next}
 
