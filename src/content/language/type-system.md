@@ -1,7 +1,8 @@
 ---
-title: The Dart type system
-shortTitle: Type system
-description: Why and how to write sound Dart code.
+ia-translate: true
+title: O sistema de tipos do Dart
+shortTitle: Sistema de tipos
+description: Por que e como escrever código Dart com tipagem sólida.
 prevpage:
   url: /language/typedefs
   title: Typedefs
