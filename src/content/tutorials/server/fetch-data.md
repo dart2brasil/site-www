@@ -1,6 +1,7 @@
 ---
-title: Fetch data from the internet
-description: Fetch data over the internet using the http package.
+ia-translate: true
+title: Buscar dados da internet
+description: Buscar dados pela internet usando o pacote http.
 prevpage:
   url: /tutorials/server/cmdline
   title: Escrever aplicativos de linha de comando
@@ -147,8 +148,8 @@ para fazer requisições HTTP que podem ser compostas,
 com controle opcional e refinado.
 
 :::note
-Avoid directly using `dart:io` or `dart:html` to make HTTP requests.
-Those libraries are platform-dependent and tied to a single implementation.
+Evite usar diretamente `dart:io` ou `dart:html` para fazer requisições HTTP.
+Essas bibliotecas são dependentes de plataforma e vinculadas a uma única implementação.
 :::
 
 Para adicionar uma dependência em `package:http`,

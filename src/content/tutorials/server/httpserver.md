@@ -1,6 +1,7 @@
 ---
-title: "Write HTTP servers"
-description: Communicate over the internet
+ia-translate: true
+title: "Escrever servidores HTTP"
+description: Comunicar pela internet
 showToc: false
 prevpage:
   url: /tutorials/server/fetch-data

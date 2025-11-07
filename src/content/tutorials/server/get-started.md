@@ -1,6 +1,7 @@
 ---
-title: "Get started: Command-line and server apps"
-description: Get Dart, run and compile a small app.
+ia-translate: true
+title: "Primeiros passos: Aplicativos de linha de comando e servidor"
+description: Obtenha o Dart, execute e compile um pequeno app.
 prevpage:
   url: /tutorials/server
   title: Tutoriais de linha de comando e servidor Dart
@@ -44,11 +45,11 @@ Mais informações:
 
 ## 2. Instale o Dart {:#2-install-dart}
 
-To develop Dart apps, you need the Dart SDK.
-To continue with this guide,
-either [download the Dart SDK][dart-download] or
-[install Flutter][flutter-download],
-which includes the full Dart SDK.
+Para desenvolver apps Dart, você precisa do Dart SDK.
+Para continuar com este guia,
+[baixe o Dart SDK][dart-download] ou
+[instale o Flutter][flutter-download],
+que inclui o Dart SDK completo.
 
 [dart-download]: /get-dart
 [flutter-download]: {{site.flutter-docs}}/get-started/install
@@ -158,7 +159,7 @@ Confira estes recursos:
   * [SDK Dart](/tools/sdk)
   * [Ferramentas Dart](/tools)
   * [IDEs](/tools#editors)
-* Other examples of natively compiled apps
+* Outros exemplos de apps compilados nativamente
   * [native_app]({{site.repo.dart.samples}}/tree/main/native_app)
 
 Se você ficar preso, encontre ajuda em [Comunidade e suporte.](/community)
