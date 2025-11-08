@@ -138,7 +138,7 @@ um objeto é uma List, mas não pode testar se é uma `List<String>`.
 :::
 
 
-## Restringindo o tipo parametrizado
+## Restringindo o tipo parametrizado {:#restricting-the-parameterized-type}
 
 Ao implementar um tipo genérico,
 você pode querer limitar os tipos que podem ser fornecidos como argumentos,
