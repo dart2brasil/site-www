@@ -127,7 +127,7 @@ $ dart run foo arg1 arg2
 
 [args]: /language/functions#the-main-function
 
-## Depuração
+## Depuração {:#debugging}
 
 Para habilitar depuração,
 adicione uma ou mais dessas opções comuns de depuração

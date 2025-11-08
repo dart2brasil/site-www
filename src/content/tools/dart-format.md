@@ -80,7 +80,7 @@ que se divide em múltiplas linhas, e as remove das que não se dividem.
 Para saber mais sobre as melhores práticas para escrever e estilizar código Dart,
 confira o [Dart style guide][].
 
-### Configurando largura de página do formatador
+### Configurando largura de página do formatador {:#configuring-formatter-page-width}
 
 Quando você executa `dart format`, o formatador assume como padrão
 comprimento de linha de 80 caracteres ou menos.

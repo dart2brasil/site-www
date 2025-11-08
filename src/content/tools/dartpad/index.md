@@ -23,7 +23,7 @@ Veja como o DartPad se parece quando configurado para executar Dart:
 <img src="/assets/img/dartpad-hello.png" alt="Showcases what a Hello World app looks like in DartPad"/>
 
 
-## Suporte a bibliotecas
+## Suporte a bibliotecas {:#library-support}
 
 O DartPad suporta as [bibliotecas principais](/libraries) `dart:*` marcadas
 como [multi-platform][].

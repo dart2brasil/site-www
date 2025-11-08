@@ -45,7 +45,7 @@ O Dart SDK inclui dois diretórios:
 
 Para saber mais sobre o SDK, confira seu [arquivo README][readme].
 
-## Política de suporte
+## Política de suporte {:#support-policy}
 
 A equipe Dart oferece suporte apenas à versão estável mais recente do Dart SDK.
 Quando uma nova versão principal ou secundária é lançada,

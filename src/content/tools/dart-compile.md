@@ -239,7 +239,7 @@ Marking binary executable.
 Generated: /tmp/hello.exe
 ```
 
-#### Assinatura
+#### Assinatura {:#signing}
 
 Executáveis criados com `dart compile exe`
 suportam assinatura no macOS e Windows.
