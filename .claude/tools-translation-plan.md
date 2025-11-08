@@ -113,16 +113,16 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ---
 
-## Section 8: Diagnostic Errors - Arguments & Assertions (A)
-**Files:** ~35 files | **Priority:** MEDIUM
+## Section 8: Diagnostic Errors - Arguments & Assertions (A) ✅
+**Files:** 12 files | **Priority:** MEDIUM | **Status:** COMPLETE
 
 ### Pattern:
-- `tools/diagnostics/argument_*.md`
-- `tools/diagnostics/assert_*.md`
-- `tools/diagnostics/asset_*.md`
+- `tools/diagnostics/argument_*.md` (4 files)
+- `tools/diagnostics/assert_*.md` (1 file)
+- `tools/diagnostics/asset_*.md` (7 files)
 
 **Focus:** Function arguments, assertions, and asset configurations
-**Estimated time:** 2-3 hours
+**Completed:** 2025-11-08 | **Actual files:** 12
 
 ---
 
@@ -375,6 +375,7 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 8:** Diagnostic Errors - Arguments & Assertions (12/12 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)

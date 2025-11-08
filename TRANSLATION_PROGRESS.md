@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 107 files (with ia-translate: true metadata)
+- **Remaining:** ~838 files
+- **Progress:** 11.3%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 52 (49 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 107 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,25 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 4: Diagnostic Errors - argument/assert/asset (12 files)
+41. ✅ `src/content/tools/diagnostics/argument_must_be_a_constant.md`
+42. ✅ `src/content/tools/diagnostics/argument_must_be_native.md`
+43. ✅ `src/content/tools/diagnostics/argument_type_not_assignable.md`
+44. ✅ `src/content/tools/diagnostics/argument_type_not_assignable_to_error_handler.md`
+45. ✅ `src/content/tools/diagnostics/assert_in_redirecting_constructor.md`
+46. ✅ `src/content/tools/diagnostics/asset_directory_does_not_exist.md`
+47. ✅ `src/content/tools/diagnostics/asset_does_not_exist.md`
+48. ✅ `src/content/tools/diagnostics/asset_field_not_list.md`
+49. ✅ `src/content/tools/diagnostics/asset_missing_path.md`
+50. ✅ `src/content/tools/diagnostics/asset_not_string.md`
+51. ✅ `src/content/tools/diagnostics/asset_not_string_or_map.md`
+52. ✅ `src/content/tools/diagnostics/asset_path_not_string.md`
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 27/~776 files (3.5%)
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,8 +114,8 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (52 files this session including merge)
+Progress: 11.3% complete (107/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
