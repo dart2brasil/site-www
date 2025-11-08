@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: continue_label_invalid
 description: >-
-  Details about the continue_label_invalid
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico continue_label_invalid
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_(Previously known as `continue_label_on_switch`)_
+_(Anteriormente conhecido como `continue_label_on_switch`)_
 
 _The label used in a 'continue' statement must be defined on either a loop or a switch member._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the label in a `continue`
-statement resolves to a label on a `switch` statement.
+O analisador produz este diagnóstico quando o label em uma declaração
+`continue` resolve para um label em uma declaração `switch`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the label `l`, used to
-label a `switch` statement, is used in the `continue` statement:
+O código a seguir produz este diagnóstico porque o label `l`, usado para
+rotular uma declaração `switch`, é usado na declaração `continue`:
 
 ```dart
 void f(int i) {
@@ -30,7 +31,7 @@ void f(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Find a different way to achieve the control flow you need; for example, by
-introducing a loop that re-executes the `switch` statement.
+Encontre uma maneira diferente de alcançar o fluxo de controle necessário;
+por exemplo, introduzindo um loop que re-execute a declaração `switch`.

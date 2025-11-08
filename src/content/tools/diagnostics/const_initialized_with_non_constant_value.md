@@ -1,42 +1,43 @@
 ---
+ia-translate: true
 title: const_initialized_with_non_constant_value
 description: >-
-  Details about the const_initialized_with_non_constant_value
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico const_initialized_with_non_constant_value
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _Const variables must be initialized with a constant value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a value that isn't statically
-known to be a constant is assigned to a variable that's declared to be a
-`const` variable.
+O analisador produz este diagnóstico quando um valor que não é estaticamente
+conhecido como constante é atribuído a uma variável declarada como
+variável `const`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` isn't declared to
-be `const`:
+O código a seguir produz este diagnóstico porque `x` não está declarado como
+`const`:
 
 ```dart
 var x = 0;
 const y = [!x!];
 ```
 
-## Common fixes
+## Correções comuns
 
-If the value being assigned can be declared to be `const`, then change the
-declaration:
+Se o valor sendo atribuído pode ser declarado como `const`, então altere a
+declaração:
 
 ```dart
 const x = 0;
 const y = x;
 ```
 
-If the value can't be declared to be `const`, then remove the `const`
-modifier from the variable, possibly using `final` in its place:
+Se o valor não pode ser declarado como `const`, então remova o modificador
+`const` da variável, possivelmente usando `final` em seu lugar:
 
 ```dart
 var x = 0;
