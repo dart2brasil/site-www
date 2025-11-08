@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: asset_missing_path
 description: >-
-  Details about the asset_missing_path
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico asset_missing_path
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,13 +12,13 @@ _Asset map entry must contain a 'path' field._
 
 ## Description
 
-The analyzer produces this diagnostic when an asset map is missing a
-`path` value.
+O analisador produz este diagnóstico quando um mapa de asset está sem um
+valor `path`.
 
 ## Example
 
-The following code produces this diagnostic because the asset map
-is missing a `path` value:
+O código a seguir produz este diagnóstico porque o mapa de asset
+está sem um valor `path`:
 
 ```yaml
 name: example
@@ -29,8 +30,8 @@ flutter:
 
 ## Common fixes
 
-Change the asset map so that it contains a `path` field with a string
-value (a valid POSIX-style file path):
+Altere o mapa de asset para que ele contenha um campo `path` com um valor
+string (um caminho de arquivo válido no estilo POSIX):
 
 ```yaml
 name: example
