@@ -1,70 +1,71 @@
 ---
-title: Build a web app with Dart
-description: Get started writing web apps in Dart.
+ia-translate: true
+title: Construa um aplicativo web com Dart
+description: Comece a escrever aplicativos web em Dart.
 ---
 
-This page describes the steps to start developing **web-only** apps with Dart.
-If you want to write a **multi-platform** app, then
-[try Flutter.]({{site.flutter}}/web)
+Esta página descreve os passos para começar a desenvolver aplicativos **somente web** com Dart.
+Se você quiser escrever um aplicativo **multiplataforma**, então
+[experimente o Flutter.]({{site.flutter}}/web)
 
-Before you begin, ensure you're comfortable with Dart basics
-by reading the [Introduction to Dart](/language).
-Then follow the steps below to create a small web app with Dart.
+Antes de começar, certifique-se de estar confortável com os fundamentos do Dart
+lendo a [Introdução ao Dart](/language).
+Em seguida, siga os passos abaixo para criar um pequeno aplicativo web com Dart.
 
-## 1. Install Dart {:#install-dart}
+## 1. Instale o Dart {:#install-dart}
 
-To develop Dart apps, you need the Dart SDK.
-To continue with this guide,
-either [download the Dart SDK][dart-download] or
-[install Flutter][flutter-download],
-which includes the full Dart SDK.
+Para desenvolver aplicativos Dart, você precisa do Dart SDK.
+Para continuar com este guia,
+[baixe o Dart SDK][dart-download] ou
+[instale o Flutter][flutter-download],
+que inclui o Dart SDK completo.
 
 [dart-download]: /get-dart
 [flutter-download]: {{site.flutter-docs}}/get-started/install
 
-## 2. Get CLI tools or an IDE (or both) {:#tools}
+## 2. Obtenha ferramentas CLI ou uma IDE (ou ambos) {:#tools}
 
 <i class="material-symbols">terminal</i>
-If you like to use the command line, install the [`webdev`][] package:
+Se você gosta de usar a linha de comando, instale o pacote [`webdev`][]:
 
 ```console
 $ dart pub global activate webdev
 ```
 
 <i class="material-symbols">web</i>
-Although using an IDE is optional, we highly recommend using one.
-For a list of available IDEs, see the
-[overview of editors & debuggers][].
+Embora usar uma IDE seja opcional, nós recomendamos fortemente usar uma.
+Para uma lista de IDEs disponíveis, veja a
+[visão geral de editores e debuggers][].
 
 [overview of editors & debuggers]: /tools#editors
 
-## 3. Create a web app {:#create}
+## 3. Crie um aplicativo web {:#create}
 
 <i class="material-symbols">terminal</i>
-To create a web app from the command line,
-use the [`dart create`][] command with the `web` template:
+Para criar um aplicativo web a partir da linha de comando,
+use o comando [`dart create`][] com o template `web`:
 
 ```console
 $ dart create -t web quickstart
 ```
 
 <i class="material-symbols">web</i>
-To create the same web app from an IDE that has Dart integration,
-[create a project]({{site.flutter}}/tools/vs-code#creating-a-new-project)
-using the template named **Bare-bones Web App**.
+Para criar o mesmo aplicativo web a partir de uma IDE que tenha integração com Dart,
+[crie um projeto]({{site.flutter}}/tools/vs-code#creating-a-new-project)
+usando o template chamado **Bare-bones Web App**.
 
-The web app template imports [`package:web`][], Dart's powerful and concise web
-interop solution built for the modern web. To learn more about it, check out the
-[web interop overview](/interop/js-interop/package-web).
+O template de aplicativo web importa o [`package:web`][], a solução de interoperabilidade
+web do Dart, poderosa e concisa, construída para a web moderna. Para saber mais sobre ele, confira a
+[visão geral de interoperabilidade web](/interop/js-interop/package-web).
 
 [`dart create`]: /tools/dart-create
 [`package:web`]: {{site.pub-pkg}}/web
 
-## 4. Run the app {:#run}
+## 4. Execute o aplicativo {:#run}
 
 <i class="material-symbols">terminal</i>
-To run the app from the command line,
-use [`webdev`][] to build and serve the app:
+Para executar o aplicativo a partir da linha de comando,
+use [`webdev`][] para compilar e servir o aplicativo:
 
 ```console
 $ cd quickstart
@@ -72,38 +73,38 @@ $ webdev serve
 ```
 
 <i class="material-symbols">web</i>
-Or run the app from your IDE.
+Ou execute o aplicativo a partir da sua IDE.
 
-To view your app, use the Chrome browser
-to visit the app's URL—for example,
+Para visualizar seu aplicativo, use o navegador Chrome
+para visitar a URL do aplicativo—por exemplo,
 [`localhost:8080`](http://localhost:8080).
 
-Whether you use an IDE or the command line,
-[`webdev serve`][] builds and serves your app
-using the development JavaScript compiler.
-Startup is slowest the first time the
-development compiler builds and serves your app.
-After that, assets are cached on disk and incremental builds are much faster.
+Seja usando uma IDE ou a linha de comando,
+[`webdev serve`][] compila e serve seu aplicativo
+usando o compilador JavaScript de desenvolvimento.
+A inicialização é mais lenta na primeira vez que o
+compilador de desenvolvimento compila e serve seu aplicativo.
+Depois disso, os assets são armazenados em cache no disco e as compilações incrementais são muito mais rápidas.
 
-Once your app has compiled, the browser should display
+Uma vez que seu aplicativo tenha sido compilado, o navegador deve exibir
 "Your Dart app is running."
 
 ![Launched bare-bones app](/assets/img/bare-bones-web-app.png){:width="500"}
 
 [`webdev serve`]: /tools/webdev#serve
 
-## 5. Add custom code to the app {:#add-code}
+## 5. Adicione código personalizado ao aplicativo {:#add-code}
 
-Let's customize the app you just created.
+Vamos personalizar o aplicativo que você acabou de criar.
 
-1. Copy the `thingsTodo()` function from the following snippet
-   to the `web/main.dart` file:
+1. Copie a função `thingsTodo()` do seguinte snippet
+   para o arquivo `web/main.dart`:
 
    ```dart
    Iterable<String> thingsTodo() sync* {
      const actions = ['Walk', 'Wash', 'Feed'];
      const pets = ['cats', 'dogs'];
-   
+
      for (final action in actions) {
        for (final pet in pets) {
          if (pet != 'cats' || action == 'Feed') {
@@ -114,20 +115,20 @@ Let's customize the app you just created.
    }
    ```
 
-2. Add the `newLI()` function (as shown below).
-   It creates a new `LIElement` containing the specified `String`.
+2. Adicione a função `newLI()` (como mostrado abaixo).
+   Ela cria um novo `LIElement` contendo a `String` especificada.
 
    ```dart
    Iterable<String> thingsTodo() sync* { /* ... */ }
 
    [!HTMLLIElement newLI(String itemText) =>!]
      [!(document.createElement('li') as HTMLLIElement)..text = itemText;!]
-    
+
    void main() { /* ... */ }
    ```
 
-3. In the `main()` function, append content to the `output` element
-   using `appendChild` and the values from `thingsTodo()`:
+3. Na função `main()`, adicione conteúdo ao elemento `output`
+   usando `appendChild` e os valores de `thingsTodo()`:
 
    ```dart
    Iterable<String> thingsTodo() sync* { /* ... */ }
@@ -143,16 +144,16 @@ Let's customize the app you just created.
    }
    ```
 
-4. Save your changes.
+4. Salve suas alterações.
 
-5. The `webdev` tool automatically rebuilds your app.
-   Refresh the app's browser window.
-   Now your simple Dart app has a todo list!
-   It should look something like this:<br>
+5. A ferramenta `webdev` reconstrói automaticamente seu aplicativo.
+   Atualize a janela do navegador do aplicativo.
+   Agora seu aplicativo Dart simples tem uma lista de tarefas!
+   Deve parecer algo assim:<br>
    ![Running the revised app](/assets/img/bare-bones-todo.png){:width="500"}
 
-6. Optionally, improve the formatting by editing `web/styles.css`,
-   then reload the app to check your changes.
+6. Opcionalmente, melhore a formatação editando `web/styles.css`,
+   depois recarregue o aplicativo para verificar suas alterações.
 
    ```css
    #output {
@@ -162,40 +163,40 @@ Let's customize the app you just created.
    ```
 
 
-## 6. Use Dart DevTools to inspect the app {:#devtools}
+## 6. Use o Dart DevTools para inspecionar o aplicativo {:#devtools}
 
-Use Dart DevTools to set breakpoints, view values and types,
-and step through your app's Dart code.
-For setup details and a walkthrough, see
+Use o Dart DevTools para definir breakpoints, visualizar valores e tipos,
+e percorrer o código Dart do seu aplicativo passo a passo.
+Para detalhes de configuração e um passo a passo, veja
 [Debugging Dart Web Apps][].
 
 [Debugging Dart Web Apps]: /web/debugging
 
-## 7. Build and deploy your web app {:#deploy}
+## 7. Compile e implante seu aplicativo web {:#deploy}
 
-To run your web app outside your development environment,
-you'll need to build and deploy it.
-To learn more about deploying Dart web apps,
-check out [Web deployment][].
+Para executar seu aplicativo web fora do seu ambiente de desenvolvimento,
+você precisará compilá-lo e implantá-lo.
+Para saber mais sobre implantação de aplicativos web Dart,
+confira [Web deployment][].
 
 [Web deployment]: /web/deployment
 
-## What next?
+## O que vem a seguir?
 
-Check out these resources:
+Confira esses recursos:
 
-* Dart language, libraries, and conventions
-  * [Language tour](/language)
-  * [Core library walkthrough](/libraries)
+* Linguagem, bibliotecas e convenções do Dart
+  * [Tour pela linguagem](/language)
+  * [Passo a passo da biblioteca principal](/libraries)
   * [Effective Dart](/effective-dart)
-* Web development
-  * [JavaScript interoperability](/interop/js-interop)
-  * [Web libraries and packages](/web/libraries)
-  * [`package:web` overview](/interop/js-interop/package-web)
+* Desenvolvimento web
+  * [Interoperabilidade JavaScript](/interop/js-interop)
+  * [Bibliotecas e pacotes web](/web/libraries)
+  * [Visão geral do `package:web`](/interop/js-interop/package-web)
   * [Introduction to the DOM][]
-* Dart [tutorials](/tutorials)
+* [Tutoriais](/tutorials) do Dart
 
-If you get stuck, find help at [Community and support.](/community)
+Se você tiver dificuldades, encontre ajuda em [Comunidade e suporte.](/community)
 
 [Introduction to the DOM]: https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction
 

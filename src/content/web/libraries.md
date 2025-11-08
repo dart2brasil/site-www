@@ -1,44 +1,45 @@
 ---
-title: Web libraries and packages
-shortTitle: Web libraries
-description: Libraries and packages that can help you write Dart web apps.
+ia-translate: true
+title: Bibliotecas e pacotes web
+shortTitle: Bibliotecas web
+description: Bibliotecas e pacotes que podem ajudar você a escrever aplicações web em Dart.
 ---
 
-Dart provides several packages and libraries to support
-web app development, the recommended option being [`package:web`][web].
-The [Dart SDK][] also contains other libraries that provide low-level web APIs.
+Dart fornece vários pacotes e bibliotecas para suportar
+o desenvolvimento de aplicações web, sendo a opção recomendada o [`package:web`][web].
+O [Dart SDK][] também contém outras bibliotecas que fornecem APIs web de baixo nível.
 
-## Web solutions
+## Soluções web
 
-[Migrate to `package:web`][migrate]
-: Learn how to migrate to `package:web`
-  from Dart's previous web library solutions, like [`dart:html`][html].
+[Migrar para `package:web`][migrate]
+: Aprenda como migrar para `package:web`
+  a partir das soluções de biblioteca web anteriores do Dart, como [`dart:html`][html].
 
-[`package:web` API reference][web]
-: Dart's recommended web interop solution `package:web` exposes browser
-  APIs with lightweight bindings built around static JS interop. 
+[Referência da API do `package:web`][web]
+: A solução de interoperabilidade web recomendada do Dart, `package:web`, expõe
+  APIs do navegador com bindings leves construídos em torno de interoperabilidade JS estática.
 
-[JavaScript interoperability documentation][js]
-: Learn how to interact with existing JavaScript or TypeScript libraries
-  using Dart's JS interop support.
+[Documentação de interoperabilidade JavaScript][js]
+: Aprenda como interagir com bibliotecas JavaScript ou TypeScript existentes
+  usando o suporte de interoperabilidade JS do Dart.
 
-[`dart:js_interop` API reference][js_interop]
-: Dart's web library `dart:js_interop` provides all the necessary members to
-  facilitate sound interop between JavaScript and Dart types. 
+[Referência da API do `dart:js_interop`][js_interop]
+: A biblioteca web do Dart `dart:js_interop` fornece todos os membros necessários para
+  facilitar a interoperabilidade sound entre tipos JavaScript e Dart.
 
-[Flutter web support][flutter-web]
-: The [Flutter framework][flutter] supports web development with Dart,
-  in addition to mobile, desktop, and embedded device support.
+[Suporte web do Flutter][flutter-web]
+: O [framework Flutter][flutter] suporta desenvolvimento web com Dart,
+  além de suporte para mobile, desktop e dispositivos embarcados.
 
-[Jaspr web framework][jaspr]
-: [Jaspr][jaspr] is a Dart web framework for building fast and dynamic 
-  HTML-based websites.
+[Framework web Jaspr][jaspr]
+: [Jaspr][jaspr] é um framework web Dart para construir sites
+  HTML rápidos e dinâmicos.
 
-[Build a web app with Dart](/web/get-started)
-: A quick overview of how to build, run, and debug a web app with Dart.
+[Construa uma aplicação web com Dart](/web/get-started)
+: Uma rápida visão geral de como construir, executar e depurar uma aplicação web com Dart.
 
-To find other libraries that support the web platform,
-search pub.dev for [web packages][].
+Para encontrar outras bibliotecas que suportam a plataforma web,
+pesquise em pub.dev por [pacotes web][web packages].
 
 [web]: {{site.pub-pkg}}/web
 [Dart SDK]: {{site.dart-api}}
