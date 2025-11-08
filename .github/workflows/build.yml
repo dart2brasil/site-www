@@ -13,7 +13,9 @@ on:
     - cron: "0 11 * * 0"
 
 # Declare default permissions as read only.
-permissions: read-all
+permissions:
+  contents: read
+  pull-requests: write
 
 env:
   # Configure analytics reporting for pub.
@@ -39,3 +41,24 @@ jobs:
         run: dart run dash_site check-link-references
       - name: Check internal site links are functional
         run: dart run dash_site check-links
+
+      # Deploy preview for PRs
+      - name: Deploy preview to Firebase
+        if: github.event_name == 'pull_request'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          projectId: transliteradu
+          channelId: pr-${{ github.event.pull_request.number }}
+          expires: 7d
+
+      # Deploy to production when merged to main
+      - name: Deploy to production
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          projectId: transliteradu
+          channelId: live
