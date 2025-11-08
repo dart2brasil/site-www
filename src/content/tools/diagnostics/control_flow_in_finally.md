@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: control_flow_in_finally
 description: >-
-  Details about the control_flow_in_finally
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico control_flow_in_finally
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use of '{0}' in a 'finally' clause._
+_Uso de '{0}' em uma cláusula 'finally'._
 
 ## Description
 
-The analyzer produces this diagnostic when a `finally` clause contains a
-`return`, `break`, or `continue` statement.
+O analisador produz este diagnóstico quando uma cláusula `finally` contém um
+statement `return`, `break`, ou `continue`.
 
 ## Example
 
-The following code produces this diagnostic because there is a `return`
-statement inside a `finally` block:
+O código a seguir produz este diagnóstico porque há um statement `return`
+dentro de um bloco `finally`:
 
 ```dart
 int f() {
@@ -44,8 +45,8 @@ int f() {
 
 ## Common fixes
 
-If the statement isn't needed, then remove the statement, and remove the
-`finally` clause if the block is empty:
+Se o statement não é necessário, então remova o statement, e remova a
+cláusula `finally` se o bloco estiver vazio:
 
 ```dart
 int f() {
@@ -57,8 +58,8 @@ int f() {
 }
 ```
 
-If the statement is needed, then move the statement outside the `finally`
-block:
+Se o statement é necessário, então mova o statement para fora do bloco
+`finally`:
 
 ```dart
 int f() {

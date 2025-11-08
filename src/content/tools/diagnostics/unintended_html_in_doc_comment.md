@@ -21,7 +21,7 @@ bodyClass: highlight-diagnostics
 
 _Colchetes angulares serão interpretados como HTML._
 
-## Descrição
+## Description
 
 O analisador produz este diagnóstico quando um comentário de documentação
 contém texto entre colchetes angulares (`<...>`) que não é uma das exceções
@@ -33,10 +33,10 @@ Esse texto é interpretado pelo markdown como uma tag HTML, o que raramente
 Veja a [descrição da regra de lint](https://dart.dev/tools/linter-rules/unintended_html_in_doc_comment)
 para a lista de exceções permitidas.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o comentário de documentação
-contém o texto `<int>`, que não é uma das exceções
+O código a seguir produz este diagnóstico porque o comentário de
+documentação contém o texto `<int>`, que não é uma das exceções
 permitidas:
 
 ```dart
@@ -44,9 +44,9 @@ permitidas:
 String f(List<int> l) => '';
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o texto foi destinado a fazer parte de um código em linha, então adicione crases
+Se o texto era para ser parte de um trecho de código, então adicione crases
 ao redor do código:
 
 ```dart
@@ -54,7 +54,7 @@ ao redor do código:
 String f(List<int> l) => '';
 ```
 
-Se o texto foi destinado a fazer parte de um link, então adicione colchetes
+Se o texto era para ser parte de um link, então adicione colchetes
 ao redor do código:
 
 ```dart
@@ -62,7 +62,7 @@ ao redor do código:
 String f(List<int> l) => '';
 ```
 
-Se o texto foi destinado a ser impresso como está, incluindo os colchetes
+Se o texto era para ser impresso como está, incluindo os colchetes
 angulares, então adicione escapes com barra invertida antes dos colchetes angulares:
 
 ```dart

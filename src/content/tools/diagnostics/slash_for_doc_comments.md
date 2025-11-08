@@ -21,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use a forma de fim de linha ('///') para comentários de documentação._
 
-## Descrição
+## Description
 
 O analisador produz este diagnóstico quando um comentário de documentação usa
-o estilo de comentário em bloco (delimitado por `/**` e `*/`).
+o estilo de comentário de bloco (delimitado por `/**` e `*/`).
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o comentário de documentação
-para `f` usa um estilo de comentário em bloco:
+O código a seguir produz este diagnóstico porque o comentário de
+documentação para `f` usa um estilo de comentário de bloco:
 
 ```dart
 [!/**!]
@@ -38,7 +38,7 @@ para `f` usa um estilo de comentário em bloco:
 void f() {}
 ```
 
-## Correções comuns
+## Common fixes
 
 Use um estilo de comentário de fim de linha:
 

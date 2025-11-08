@@ -21,16 +21,16 @@ bodyClass: highlight-diagnostics
 
 _Comentário de documentação de biblioteca solto._
 
-## Descrição
+## Description
 
 O analisador produz este diagnóstico quando um comentário de documentação que
-parece ser documentação de biblioteca não é seguido por uma diretiva `library`.
-Mais especificamente, ele é produzido quando um comentário de documentação
-aparece antes da primeira diretiva na biblioteca, assumindo que não seja
+parece ser documentação de biblioteca não é seguido por uma diretiva
+`library`. Mais especificamente, ele é produzido quando um comentário de documentação
+aparece antes da primeira diretiva na biblioteca, assumindo que não é
 uma diretiva `library`, ou antes da primeira declaração de nível superior e está
 separado da declaração por uma ou mais linhas em branco.
 
-## Exemplo
+## Example
 
 O código a seguir produz este diagnóstico porque há um
 comentário de documentação antes da primeira diretiva `import`:
@@ -50,10 +50,10 @@ linha em branco entre o comentário e a declaração.
 class C {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o comentário for documentação de biblioteca, então adicione uma diretiva `library`
-sem nome:
+Se o comentário é documentação de biblioteca, então adicione uma diretiva `library`
+sem um nome:
 
 ```dart
 /// This is a great library.
@@ -62,7 +62,7 @@ library;
 import 'dart:core';
 ```
 
-Se o comentário for documentação para a declaração seguinte, então remova
+Se o comentário é documentação para a declaração seguinte, então remova
 a linha em branco:
 
 ```dart
