@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' doesn't conform to the bound '{1}' of the type parameter '{2}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type argument isn't the same
+O analisador produz este diagnóstico quando a type argument isn't the same
 as or a subclass of the bounds of the corresponding type parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `String` isn't a
+O código a seguir produz este diagnóstico porque `String` isn't a
 subclass of `num`:
 
 ```dart
@@ -25,7 +26,7 @@ class A<E extends num> {}
 var a = A<[!String!]>();
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the type argument to be a subclass of the bounds:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of parentheses._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when parentheses are used where they
+O analisador produz este diagnóstico quando parentheses are used where they
 do not affect the semantics of the code.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parentheses around
+O código a seguir produz este diagnóstico porque the parentheses around
 the binary expression are not necessary:
 
 ```dart
 int f(int a, int b) => [!(a + b)!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary parentheses:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary statement._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an expression statement has no
+O analisador produz este diagnóstico quando an expression statement has no
 clear effect.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the addition of the
+O código a seguir produz este diagnóstico porque the addition of the
 returned values from the two invocations has no clear effect:
 
 ```dart
@@ -36,7 +37,7 @@ void f(int Function() first, int Function() second) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the expression doesn't need to be computed, then remove it:
 

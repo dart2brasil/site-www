@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The operand can't be 'null', so the condition is always 'false'._
@@ -15,16 +16,16 @@ _The operand must be 'null', so the condition is always 'false'._
 
 _The operand must be 'null', so the condition is always 'true'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it finds an equality comparison
+O analisador produz este diagnóstico quando it finds an equality comparison
 (either `==` or `!=`) with one operand of `null` and the other operand
 can't be `null`. Such comparisons are always either `true` or `false`, so
 they serve no purpose.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `x` can never be
+O código a seguir produz este diagnóstico porque `x` can never be
 `null`, so the comparison always evaluates to `true`:
 
 ```dart
@@ -35,7 +36,7 @@ void f(int x) {
 }
 ```
 
-The following code produces this diagnostic because `x` can never be
+O código a seguir produz este diagnóstico porque `x` can never be
 `null`, so the comparison always evaluates to `false`:
 
 ```dart
@@ -46,7 +47,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the other operand should be able to be `null`, then change the type of
 the operand:

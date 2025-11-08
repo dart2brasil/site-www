@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _(Previously known as `undefined_super_method`)_
@@ -17,15 +18,15 @@ _The operator '{0}' isn't defined in a superclass of '{1}'._
 
 _The setter '{0}' isn't defined in a superclass of '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an inherited member (method,
+O analisador produz este diagnóstico quando an inherited member (method,
 getter, setter, or operator) is referenced using `super`, but there's no
 member with that name in the superclass chain.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `Object` doesn't define
+O código a seguir produz este diagnóstico porque `Object` doesn't define
 a method named `n`:
 
 ```dart
@@ -36,7 +37,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because `Object` doesn't define
+O código a seguir produz este diagnóstico porque `Object` doesn't define
 a getter named `g`:
 
 ```dart
@@ -47,7 +48,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the inherited member you intend to invoke has a different name, then
 make the name of the invoked member match the inherited member.

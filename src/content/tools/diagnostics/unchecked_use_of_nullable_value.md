@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A nullable expression can't be used as a condition._
@@ -23,15 +24,15 @@ _The operator '{0}' can't be unconditionally invoked because the receiver can be
 
 _The property '{0}' can't be unconditionally accessed because the receiver can be 'null'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an expression whose type is
+O analisador produz este diagnóstico quando an expression whose type is
 [potentially non-nullable][] is dereferenced without first verifying that
 the value isn't `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `s` can be `null` at
+O código a seguir produz este diagnóstico porque `s` can be `null` at
 the point where it's referenced:
 
 ```dart
@@ -42,7 +43,7 @@ void f(String? s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the value really can be `null`, then add a test to ensure that members
 are only accessed when the value isn't `null`:

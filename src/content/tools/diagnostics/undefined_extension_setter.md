@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The setter '{0}' isn't defined for the extension '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override is used to
+O analisador produz este diagnóstico quando an extension override is used to
 invoke a setter, but the setter isn't defined by the specified extension.
 The analyzer also produces this diagnostic when a static setter is
 referenced but isn't defined by the specified extension.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the extension `E`
+O código a seguir produz este diagnóstico porque the extension `E`
 doesn't declare an instance setter named `b`:
 
 ```dart
@@ -35,7 +36,7 @@ void f() {
 }
 ```
 
-The following code produces this diagnostic because the extension `E`
+O código a seguir produz este diagnóstico porque the extension `E`
 doesn't declare a static setter named `a`:
 
 ```dart
@@ -46,7 +47,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the name of the setter is incorrect, then change it to the name of an
 existing setter:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary escape in string literal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when characters in a string are
+O analisador produz este diagnóstico quando characters in a string are
 escaped when escaping them is unnecessary.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because single quotes don't
+O código a seguir produz este diagnóstico porque single quotes don't
 need to be escaped inside strings delimited by double quotes:
 
 ```dart
 var s = "Don[!\!]'t use a backslash here.";
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary backslashes:
 

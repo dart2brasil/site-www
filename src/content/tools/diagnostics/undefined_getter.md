@@ -5,28 +5,29 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The getter '{0}' isn't defined for the '{1}' function type._
 
 _The getter '{0}' isn't defined for the type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it encounters an identifier that
+O analisador produz este diagnóstico quando it encounters an identifier that
 appears to be the name of a getter but either isn't defined or isn't
 visible in the scope in which it's being referenced.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `String` has no member
+O código a seguir produz este diagnóstico porque `String` has no member
 named `len`:
 
 ```dart
 int f(String s) => s.[!len!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the identifier isn't defined, then either define it or replace it with
 the name of a getter that is defined. The example above can be corrected by

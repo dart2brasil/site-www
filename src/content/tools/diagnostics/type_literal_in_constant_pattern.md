@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use 'TypeName \_' instead of a type literal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type literal appears as a
+O analisador produz este diagnóstico quando a type literal appears as a
 pattern.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because a type literal is used
+O código a seguir produz este diagnóstico porque a type literal is used
 as a constant pattern:
 
 ```dart
@@ -38,7 +39,7 @@ void f(Object? x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type literal is intended to match an object of the given type, then
 use either a variable pattern:

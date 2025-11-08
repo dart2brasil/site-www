@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _Don't needlessly type annotate initializing formals._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an initializing formal
+O analisador produz este diagnóstico quando an initializing formal
 parameter (`this.x`) or a super parameter (`super.x`) has an explicit type
 annotation that is the same as the field or overridden parameter.
 
@@ -32,9 +33,9 @@ constructor parameter is using `super.x` to forward to a super
 constructor, then the type of the parameter is implicitly the same as the
 super constructor parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameter `this.c`
+O código a seguir produz este diagnóstico porque the parameter `this.c`
 has an explicit type that is the same as the field `c`:
 
 ```dart
@@ -45,7 +46,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the parameter
+O código a seguir produz este diagnóstico porque the parameter
 `super.a` has an explicit type that is the same as the parameter `a` from
 the superclass:
 
@@ -59,7 +60,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the type annotation from the parameter:
 

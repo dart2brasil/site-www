@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Missing type test for '{0}' in '=='._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an override of the `==`
+O analisador produz este diagnóstico quando an override of the `==`
 operator doesn't include a type test on the value of the parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `other` is not type
+O código a seguir produz este diagnóstico porque `other` is not type
 tested:
 
 ```dart
@@ -43,7 +44,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Perform an `is` test as part of computing the return value:
 

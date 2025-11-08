@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The '!' will have no effect because the receiver can't be null._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the operand of the `!` operator
+O analisador produz este diagnóstico quando the operand of the `!` operator
 can't be `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` can't be `null`:
+O código a seguir produz este diagnóstico porque `x` can't be `null`:
 
 ```dart
 int f(int x) {
@@ -24,7 +25,7 @@ int f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the null check operator (`!`):
 

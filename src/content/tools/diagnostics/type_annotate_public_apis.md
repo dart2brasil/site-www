@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,22 +21,22 @@ bodyClass: highlight-diagnostics
 
 _Missing type annotation on a public API._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the declaration of part of the
+O analisador produz este diagnóstico quando the declaration of part of the
 public API of a package doesn't have explicit type annotations.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f`
-doesn't have an explicit return type and the parameters `x` and `y` don't
+O código a seguir produz este diagnóstico porque the function `f`
+não tem uma explicit return type and the parameters `x` and `y` don't
 have explicit types:
 
 ```dart
 [!f!](x, y) => '';
 ```
 
-## Common fixes
+## Correções comuns
 
 Add type annotations to the API:
 

@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The 'super' keyword can't be used in an extension because an extension doesn't have a superclass._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member declared inside an
+O analisador produz este diagnóstico quando a member declared inside an
 extension uses the `super` keyword . Extensions aren't classes and don't
 have superclasses, so the `super` keyword serves no purpose.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `super` can't be used
+O código a seguir produz este diagnóstico porque `super` can't be used
 in an extension:
 
 ```dart
@@ -26,7 +27,7 @@ extension E on Object {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the `super` keyword :
 

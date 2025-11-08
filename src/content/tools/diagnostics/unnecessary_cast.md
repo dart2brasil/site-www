@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Unnecessary cast._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value being cast is already
+O analisador produz este diagnóstico quando the value being cast is already
 known to be of the type that it's being cast to.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `n` is already known to
+O código a seguir produz este diagnóstico porque `n` is already known to
 be an `int` as a result of the `is` test:
 
 ```dart
@@ -27,7 +28,7 @@ void f(num n) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary cast:
 

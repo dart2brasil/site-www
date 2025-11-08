@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The import of '{0}' is unnecessary because all of the used elements are also provided by the import of '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an import isn't needed because
+O analisador produz este diagnóstico quando an import isn't needed because
 all of the names that are imported and referenced within the importing
 library are also visible through another import.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that contains the following:
 
@@ -31,7 +32,7 @@ export 'a.dart';
 class B {}
 ```
 
-The following code produces this diagnostic because the class `A`, which is
+O código a seguir produz este diagnóstico porque a classe `A`, which is
 imported from `a.dart`, is also imported from `b.dart`. Removing the import
 of `a.dart` leaves the semantics unchanged:
 
@@ -42,7 +43,7 @@ import 'b.dart';
 void f(A a, B b) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the import isn't needed, then remove it.
 

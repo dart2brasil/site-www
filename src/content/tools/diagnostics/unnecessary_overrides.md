@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary override._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance member overrides an
+O analisador produz este diagnóstico quando an instance member overrides an
 inherited member but only invokes the overridden member with exactly the
 same arguments.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `D.m`
+O código a seguir produz este diagnóstico porque the method `D.m`
 doesn't do anything other than invoke the overridden method:
 
 ```dart
@@ -42,7 +43,7 @@ class D extends C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the method should do something more than what the overridden method
 does, then implement the missing functionality:

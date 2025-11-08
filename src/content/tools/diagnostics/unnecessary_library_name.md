@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Library names are not necessary._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `library` directive specifies
+O analisador produz este diagnóstico quando a `library` directive specifies
 a name.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `library`
+O código a seguir produz este diagnóstico porque the `library`
 directive includes a name:
 
 ```dart
@@ -36,7 +37,7 @@ library [!some.name!];
 class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the name from the `library` directive:
 

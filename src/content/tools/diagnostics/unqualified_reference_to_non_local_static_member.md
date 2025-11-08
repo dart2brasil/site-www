@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Static members from supertypes must be qualified by the name of the defining type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when code in one class references a
+O analisador produz este diagnóstico quando code in one class references a
 static member in a superclass without prefixing the member's name with the
 name of the superclass. Static members can only be referenced without a
 prefix in the class in which they're declared.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the static field `x` is
+O código a seguir produz este diagnóstico porque the static field `x` is
 referenced in the getter `g` without prefixing it with the name of the
 defining class:
 
@@ -32,7 +33,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Prefix the name of the static member with the name of the declaring class:
 

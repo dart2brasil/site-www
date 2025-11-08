@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,22 +21,22 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of a raw string._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a string literal is marked as
+O analisador produz este diagnóstico quando a string literal está marcado como
 being raw (is prefixed with an `r`), but making the string raw doesn't
 change the value of the string.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string literal
+O código a seguir produz este diagnóstico porque the string literal
 will have the same value without the `r` as it does with the `r`:
 
 ```dart
 var s = [!r'abc'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the `r` in front of the string literal:
 

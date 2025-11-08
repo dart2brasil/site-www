@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Static members from the extended type or one of its superclasses must be qualified by the name of the defining type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an undefined name is found, and
+O analisador produz este diagnóstico quando an undefined name is found, and
 the name is the same as a static member of the extended type or one of its
 superclasses.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` is a static member
+O código a seguir produz este diagnóstico porque `m` is a static member
 of the extended type `C`:
 
 ```dart
@@ -32,7 +33,7 @@ extension E on C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you're trying to reference a static member that's declared outside the
 extension, then add the name of the class or extension before the reference

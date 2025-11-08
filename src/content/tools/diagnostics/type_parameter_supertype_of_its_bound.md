@@ -5,28 +5,29 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' can't be a supertype of its upper bound._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the bound of a type parameter
+O analisador produz este diagnóstico quando the bound of a type parameter
 (the type following the `extends` keyword) is either directly or indirectly
 the type parameter itself. Stating that the type parameter must be the same
 as itself or a subtype of itself or a subtype of itself isn't helpful
 because it will always be the same as itself.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the bound of `T` is
+O código a seguir produz este diagnóstico porque the bound of `T` is
 `T`:
 
 ```dart
 class C<[!T!] extends T> {}
 ```
 
-The following code produces this diagnostic because the bound of `T1` is
+O código a seguir produz este diagnóstico porque the bound of `T1` is
 `T2`, and the bound of `T2` is `T1`, effectively making the bound of `T1`
 be `T1`:
 
@@ -34,7 +35,7 @@ be `T1`:
 class C<[!T1!] extends T2, T2 extends T1> {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type parameter needs to be a subclass of some type, then replace the
 bound with the required type:

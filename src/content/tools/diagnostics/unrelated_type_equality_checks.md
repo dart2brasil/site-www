@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,9 +23,9 @@ _The type of the operand ('{0}') isn't a subtype or a supertype of the value bei
 
 _The type of the right operand ('{0}') isn't a subtype or a supertype of the left operand ('{1}')._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when two objects are being compared
+O analisador produz este diagnóstico quando two objects are being compared
 and neither of the static types of the two objects is a subtype of the
 other.
 
@@ -41,9 +42,9 @@ allow comparing instances to an `int` provided the `int` is on the
 right-hand side. This case is specifically allowed by the diagnostic, but
 other such cases are not.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string `s` is
+O código a seguir produz este diagnóstico porque the string `s` is
 being compared to the integer `1`:
 
 ```dart
@@ -52,7 +53,7 @@ bool f(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace one of the operands with something compatible with the other
 operand:

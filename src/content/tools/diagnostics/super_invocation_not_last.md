@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _(Previously known as `invalid_super_invocation`)_
 
 _The superconstructor call must be last in an initializer list: '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the initializer list of a
+O analisador produz este diagnóstico quando the initializer list of a
 constructor contains an invocation of a constructor in the superclass, but
 the invocation isn't the last item in the initializer list.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the invocation of the
+O código a seguir produz este diagnóstico porque the invocation of the
 superclass' constructor isn't the last item in the initializer list:
 
 ```dart
@@ -32,7 +33,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Move the invocation of the superclass' constructor to the end of the
 initializer list:

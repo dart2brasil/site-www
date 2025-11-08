@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Undefined name 'await' in function body not marked with 'async'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name `await` is used in a
+O analisador produz este diagnóstico quando the name `await` is used in a
 method or function body without being declared, and the body isn't marked
 with the `async` keyword. The name `await` only introduces an await
 expression in an asynchronous function.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name `await` is
+O código a seguir produz este diagnóstico porque the name `await` is
 used in the body of `f` even though the body of `f` isn't marked with the
 `async` keyword:
 
@@ -26,7 +27,7 @@ used in the body of `f` even though the body of `f` isn't marked with the
 void f(p) { [!await!] p; }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add the keyword `async` to the function body:
 

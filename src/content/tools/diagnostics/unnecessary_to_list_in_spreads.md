@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,16 +21,16 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of 'toList' in a spread._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when `toList` is used to convert an
+O analisador produz este diagnóstico quando `toList` is used to convert an
 `Iterable` to a `List` just before a spread operator is applied to the
 list. The spread operator can be applied to any `Iterable`, so the
 conversion isn't necessary.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `toList` is invoked on
+O código a seguir produz este diagnóstico porque `toList` is invoked on
 the result of `map`, which is an `Iterable` that the spread operator could
 be applied to directly:
 
@@ -41,7 +42,7 @@ List<String> toLowercase(List<String> strings) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the invocation of `toList`:
 

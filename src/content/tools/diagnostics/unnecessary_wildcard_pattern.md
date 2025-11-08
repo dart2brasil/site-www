@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Unnecessary wildcard pattern._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a wildcard pattern is used in
+O analisador produz este diagnóstico quando a wildcard pattern is used in
 either an and (`&&`) pattern or an or (`||`) pattern.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the wildcard pattern
+O código a seguir produz este diagnóstico porque the wildcard pattern
 (`_`) will always succeed, making it's use in an and pattern unnecessary:
 
 ```dart
@@ -25,7 +26,7 @@ void f(Object? x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the use of the wildcard pattern:
 

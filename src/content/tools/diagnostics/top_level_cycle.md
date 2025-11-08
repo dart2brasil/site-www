@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type of '{0}' can't be inferred because it depends on itself through the cycle: {1}._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a top-level variable has no type
+O analisador produz este diagnóstico quando a top-level variable has no type
 annotation and the variable's initializer refers to the variable, either
 directly or indirectly.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variables `x` and
+O código a seguir produz este diagnóstico porque the variables `x` and
 `y` are defined in terms of each other, and neither has an explicit type,
 so the type of the other can't be inferred:
 
@@ -26,7 +27,7 @@ var x = y;
 var y = [!x!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the two variables don't need to refer to each other, then break the
 cycle:

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The operator '{0}' isn't defined for the type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a user-definable operator is
+O analisador produz este diagnóstico quando a user-definable operator is
 invoked on an object for which the operator isn't defined.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `C` doesn't
+O código a seguir produz este diagnóstico porque a classe `C` doesn't
 define the operator `+`:
 
 ```dart
@@ -25,7 +26,7 @@ class C {}
 C f(C c) => c [!+!] 2;
 ```
 
-## Common fixes
+## Correções comuns
 
 If the operator should be defined for the class, then define it:
 

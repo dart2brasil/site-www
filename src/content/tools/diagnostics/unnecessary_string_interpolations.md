@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of string interpolation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a string literal contains a
+O analisador produz este diagnóstico quando a string literal contains a
 single interpolation of a `String`-valued variable and no other
 characters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string literal
+O código a seguir produz este diagnóstico porque the string literal
 contains a single interpolation and doesn't contain any character outside
 the interpolation:
 
@@ -36,7 +37,7 @@ the interpolation:
 String f(String s) => [!'$s'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the string literal with the content of the interpolation:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use a type annotation rather than 'assert' to enforce non-nullability._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an `assert` is being used in
+O analisador produz este diagnóstico quando an `assert` is being used in
 the initializer list of a constructor to ensure that only a non-`null`
 value is being used to initialize a field.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because an `assert` is being
+O código a seguir produz este diagnóstico porque an `assert` is being
 used to catch an error that could be caught by the type system:
 
 ```dart
@@ -39,7 +40,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the `assert` and add the non-nullable type before the initializing
 formal:

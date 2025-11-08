@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary assignment of 'null'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the right-hand side of a
+O analisador produz este diagnóstico quando the right-hand side of a
 null-aware assignment is the `null` literal.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the null aware
+O código a seguir produz este diagnóstico porque the null aware
 operator is being used to assign `null` to `s` when `s` is already `null`:
 
 ```dart
@@ -36,7 +37,7 @@ void f(String? s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If a non-null value should be assigned to the left-hand operand, then
 change the right-hand side:

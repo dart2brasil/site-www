@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of a null-aware operator to invoke an extension method on a nullable type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a null-aware operator is used
+O analisador produz este diagnóstico quando a null-aware operator is used
 to invoke an extension method on an extension whose type is nullable.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension method
+O código a seguir produz este diagnóstico porque the extension method
 `m` is invoked using `?.` when it doesn't need to be:
 
 ```dart
@@ -38,7 +39,7 @@ extension E on int? {
 int? f(int? i) => i[!?.!]m();
 ```
 
-## Common fixes
+## Correções comuns
 
 If it isn't a requirement not invoke the method when the receiver is
 `null`, then remove the question mark from the invocation:

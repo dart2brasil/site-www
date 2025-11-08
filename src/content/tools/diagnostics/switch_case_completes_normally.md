@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The 'case' shouldn't complete normally._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the statements following a
+O analisador produz este diagnóstico quando the statements following a
 `case` label in a `switch` statement could fall through to the next `case`
 or `default` label.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `case` label with
+O código a seguir produz este diagnóstico porque the `case` label with
  a value of zero (`0`) falls through to the `default` statements:
 
 ```dart
@@ -31,7 +32,7 @@ void f(int a) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the flow of control so that the `case` won't fall through. There
 are several ways that this can be done, including adding one of the

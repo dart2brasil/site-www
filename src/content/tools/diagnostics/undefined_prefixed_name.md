@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' is being referenced through the prefix '{1}', but it isn't defined in any of the libraries imported using that prefix._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a prefixed identifier is found
+O analisador produz este diagnóstico quando a prefixed identifier is found
 where the prefix is valid, but the identifier isn't declared in any of the
 libraries imported using that prefix.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `dart:core` doesn't
+O código a seguir produz este diagnóstico porque `dart:core` doesn't
 define anything named `a`:
 
 ```dart
@@ -28,7 +29,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the library in which the name is declared isn't imported yet, add an
 import for the library.

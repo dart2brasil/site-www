@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A type alias that expands to a type parameter can't be implemented._
@@ -15,15 +16,15 @@ _A type alias that expands to a type parameter can't be used as a superclass con
 
 _A type alias that expands to a type parameter can't be used as a superclass._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type alias that expands to a
+O analisador produz este diagnóstico quando a type alias that expands to a
 type parameter is used in an `extends`, `implements`, `with`, or `on`
 clause.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type alias `T`,
+O código a seguir produz este diagnóstico porque the type alias `T`,
 which expands to the type parameter `S`, is used in the `extends` clause of
 the class `C`:
 
@@ -33,7 +34,7 @@ typedef T<S> = S;
 class C extends [!T!]<Object> {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Use the value of the type argument directly:
 
