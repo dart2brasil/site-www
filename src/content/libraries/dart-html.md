@@ -327,7 +327,7 @@ subclasses. Alguns eventos comuns incluem:
 -   mouseUp
 
 
-## Usando recursos HTTP com HttpRequest
+## Usando recursos HTTP com HttpRequest {:#using-http-resources-with-httprequest}
 
 Você deve evitar usar `dart:html` diretamente para fazer requisições HTTP.
 A classe [`HttpRequest`][] em `dart:html` é dependente de plataforma
@@ -339,7 +339,7 @@ O tutorial [Fetch data from the internet][]
 explica como fazer requisições HTTP
 usando `package:http`.
 
-## Enviando e recebendo dados em tempo real com WebSockets
+## Enviando e recebendo dados em tempo real com WebSockets {:#sending-and-receiving-real-time-data-with-websockets}
 
 Um WebSocket permite que sua aplicação web troque dados com um servidor
 interativamente—sem necessidade de polling. Um servidor cria o WebSocket e

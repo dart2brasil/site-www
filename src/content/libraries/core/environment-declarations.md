@@ -112,7 +112,7 @@ if (const bool.hasEnvironment('DEBUG')) {
 [bool-from]: {{site.dart-api}}/dart-core/bool/bool.fromEnvironment.html
 [bool-has]: {{site.dart-api}}/dart-core/bool/bool.hasEnvironment.html
 
-## Especificando declarações de ambiente
+## Especificando declarações de ambiente {:#specifying-environment-declarations}
 
 :::warning
 Ferramentas e compiladores Dart atualmente não

@@ -428,7 +428,7 @@ return items.every((item) => item.length >= 5);
 Usar o método `every()` resulta em código que é mais
 legível, compacto e menos propenso a erros.
 
-### Exemplo: Usando any() e every()
+### Exemplo: Usando any() e every() {:#example-using-any-and-every}
 
 A classe `Iterable` fornece dois métodos que
 você pode usar para verificar condições:
@@ -672,7 +672,7 @@ for (final number in evenNumbers) {
 }
 ```
 
-### Exemplo: Usando where()
+### Exemplo: Usando where() {:#example-using-where}
 
 Execute este exemplo para ver como `where()` pode ser usado junto com outros
 métodos como `any()`.
@@ -905,7 +905,7 @@ Iterable<String> output = numbers.map((number) => number.toString());
 é chamada apenas quando os elementos são iterados.
 :::
 
-### Exemplo: Usando map para mudar elementos
+### Exemplo: Usando map para mudar elementos {:#example-using-map-to-change-elements}
 
 Execute este exemplo para ver como usar `map()` para
 multiplicar todos os elementos de um `Iterable` por 2.

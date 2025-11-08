@@ -241,7 +241,7 @@ void processRequest(HttpRequest request) {
 }
 ```
 
-### Cliente HTTP
+### Cliente HTTP {:#http-client}
 
 Você deve evitar usar `dart:io` diretamente para fazer requisições HTTP.
 A classe [HttpClient][] em `dart:io` é dependente de plataforma

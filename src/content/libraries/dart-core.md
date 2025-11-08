@@ -92,7 +92,7 @@ Para mais informações, veja a documentação da API para
 [int,][int] [double,][double] e [num.][num] Veja também
 a [seção dart:math](/libraries/dart-math)
 
-## Strings e expressões regulares
+## Strings e expressões regulares {:#strings-and-regular-expressions}
 
 Uma string em Dart é uma sequência imutável de unidades de código UTF-16.
 O tour da linguagem tem mais informações sobre
@@ -293,7 +293,7 @@ Consulte a [referência da API String][String] para uma lista completa de
 métodos. Veja também a referência da API para [StringBuffer,][StringBuffer]
 [Pattern,][Pattern] [RegExp,][RegExp] e [Match.][Match]
 
-## Coleções
+## Coleções {:#collections}
 
 Dart vem com uma API de coleções principais, que inclui classes para
 lists, sets e maps.
@@ -738,7 +738,7 @@ assert(uri.origin == 'https://example.org:8080');
 
 Veja a [referência da API Uri][Uri] para mais componentes de URI que você pode obter.
 
-### Construindo URIs
+### Construindo URIs {:#building-uris}
 
 Você pode construir um URI a partir de partes individuais usando o construtor `Uri()`:
 
@@ -881,7 +881,7 @@ void main() {
 }
 ```
 
-### Implementando chaves de map
+### Implementando chaves de map {:#implementing-map-keys}
 
 Cada objeto em Dart fornece automaticamente um código hash integer e,
 portanto, pode ser usado como uma chave em um map. No entanto, você pode sobrescrever o
@@ -944,7 +944,7 @@ void main() {
 }
 ```
 
-### Iteração
+### Iteração {:#iteration}
 
 As classes [Iterable][] e [Iterator][]
 suportam acesso sequencial a uma coleção de valores.
@@ -983,7 +983,7 @@ void main() {
 }
 ```
 
-## Exceções
+## Exceções {:#exceptions}
 
 A biblioteca principal do Dart define muitas exceções e erros comuns.
 Exceções são consideradas condições que você pode planejar e

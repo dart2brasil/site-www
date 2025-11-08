@@ -215,7 +215,7 @@ facilmente lidar com múltiplas fontes de dados.
 É aí que a classe `StreamController` entra.
 
 
-## Usando um StreamController
+## Usando um StreamController {:#using-a-streamcontroller}
 
 Se os eventos do seu stream vêm de diferentes partes do seu programa,
 e não apenas de um stream ou futures que podem ser percorridos por uma função `async`,

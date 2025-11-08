@@ -215,7 +215,7 @@ print('Done with all the long steps!');
 fornecidos tiverem completado. Ele completa com seus resultados,
 ou com um erro se qualquer um dos futures fornecidos falhar.
 
-### Tratando erros de múltiplos futures
+### Tratando erros de múltiplos futures {:#handling-errors-for-multiple-futures}
 
 Você também pode aguardar operações paralelas em:
 

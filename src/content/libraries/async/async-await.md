@@ -44,7 +44,7 @@ clicando no botão **Run**.
 Se você precisar de ajuda, expanda o dropdown **Hint** ou **Solution**
 após cada exercício.
 
-## Por que código assíncrono importa
+## Por que código assíncrono importa {:#why-asynchronous-code-matters}
 
 Operações assíncronas permitem que seu programa complete um trabalho
 enquanto aguarda a conclusão de outra operação.
