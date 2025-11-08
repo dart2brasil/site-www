@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: deprecated_field
-description: "Detalhes sobre o diagnóstico deprecated_field produzido pelo analisador Dart."
+description: >-
+  Details about the deprecated_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O campo '{0}' não é mais usado e pode ser removido._
+_The '{0}' field is no longer used and can be removed._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma chave é usada em um
-arquivo `pubspec.yaml` que estava deprecated. Chaves não utilizadas ocupam espaço e
-podem implicar semânticas que não são mais válidas.
+The analyzer produces this diagnostic when a key is used in a
+`pubspec.yaml` file that was deprecated. Unused keys take up space and
+might imply semantics that are no longer valid.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a chave `author` não está
-mais sendo usada:
+The following code produces this diagnostic because the `author` key is no
+longer being used:
 
 ```dart
 name: example
@@ -26,7 +27,7 @@ author: 'Dash'
 
 ## Common fixes
 
-Remova a chave deprecated:
+Remove the deprecated key:
 
 ```dart
 name: example

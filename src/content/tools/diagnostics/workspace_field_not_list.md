@@ -1,31 +1,32 @@
 ---
-ia-translate: true
 title: workspace_field_not_list
-description: "Detalhes sobre o diagnóstico workspace_field_not_list produzido pelo analisador do Dart."
+description: >-
+  Details about the workspace_field_not_list
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O valor do campo 'workspace' é obrigatório para ser uma lista de caminhos de arquivos relativos._
+_The value of the 'workspace' field is required to be a list of relative file paths._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o valor da chave `workspace`
-não é uma lista.
+The analyzer produces this diagnostic when the value of the `workspace` key
+isn't a list.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o valor da
-chave `workspace` é uma string quando uma lista é esperada:
+The following code produces this diagnostic because the value of the
+`workspace` key is a string when a list is expected:
 
 ```yaml
 name: example
 workspace: [!notPaths!]
 ```
 
-## Correções comuns
+## Common fixes
 
-Altere o valor do campo workspace para que seja uma lista:
+Change the value of the workspace field so that it's a list:
 
 ```yaml
 name: example

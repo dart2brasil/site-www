@@ -1,48 +1,50 @@
 ---
-ia-translate: true
 title: sdk_version_gt_gt_gt_operator
-description: "Detalhes sobre o diagnóstico sdk_version_gt_gt_gt_operator produzido pelo analisador Dart."
+description: >-
+  Details about the sdk_version_gt_gt_gt_operator
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O operador '>>>' não era suportado até a versão 2.14.0, mas este código é obrigado a ser capaz de rodar em versões anteriores._
+_The operator '>>>' wasn't supported until version 2.14.0, but this code is required to be able to run on earlier versions._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o operador `>>>` é usado em
-código que tem uma restrição de SDK cuja limite inferior é menor que 2.14.0. Este
-operador não era suportado em versões anteriores, então este código não será capaz
-de rodar em versões anteriores do SDK.
+The analyzer produces this diagnostic when the operator `>>>` is used in
+code that has an SDK constraint whose lower bound is less than 2.14.0. This
+operator wasn't supported in earlier versions, so this code won't be able
+to run against earlier versions of the SDK.
 
-## Exemplo
+## Example
 
-Aqui está um exemplo de um pubspec que define uma restrição de SDK com um
-limite inferior menor que 2.14.0:
+Here's an example of a pubspec that defines an SDK constraint with a lower
+bound of less than 2.14.0:
 
 ```yaml
 environment:
  sdk: '>=2.0.0 <2.15.0'
 ```
 
-No pacote que tem esse pubspec, código como o seguinte produz este diagnóstico:
+In the package that has that pubspec, code like the following produces this
+diagnostic:
 
 ```dart
 int x = 3 [!>>>!] 4;
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você não precisa suportar versões antigas do SDK, então você pode aumentar
-a restrição de SDK para permitir que o operador seja usado:
+If you don't need to support older versions of the SDK, then you can
+increase the SDK constraint to allow the operator to be used:
 
 ```yaml
 environment:
   sdk: '>=2.14.0 <2.15.0'
 ```
 
-Se você precisa suportar versões antigas do SDK, então reescreva o código para
-não usar o operador `>>>`:
+If you need to support older versions of the SDK, then rewrite the code to
+not use the `>>>` operator:
 
 ```dart
 int x = logicalShiftRight(3, 4);

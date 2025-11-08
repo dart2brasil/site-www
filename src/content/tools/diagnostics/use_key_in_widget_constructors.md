@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_key_in_widget_constructors
-description: "Detalhes sobre o diagnóstico use_key_in_widget_constructors produzido pelo analisador Dart."
+description: >-
+  Details about the use_key_in_widget_constructors
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Construtores para widgets públicos devem ter um parâmetro nomeado 'key'._
+_Constructors for public widgets should have a named 'key' parameter._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor em uma subclasse de
-`Widget` que não é privada à sua biblioteca não tem um parâmetro chamado
+The analyzer produces this diagnostic when a constructor in a subclass of
+`Widget` that isn't private to its library doesn't have a parameter named
 `key`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o construtor para
-a classe `MyWidget` não tem um parâmetro chamado `key`:
+The following code produces this diagnostic because the constructor for
+the class `MyWidget` doesn't have a parameter named `key`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -38,8 +39,8 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o construtor padrão
-para a classe `MyWidget` não tem um parâmetro chamado `key`:
+The following code produces this diagnostic because the default
+constructor for the class `MyWidget` doesn't have a parameter named `key`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -47,10 +48,10 @@ import 'package:flutter/material.dart';
 class [!MyWidget!] extends StatelessWidget {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione um parâmetro chamado `key` ao construtor, declarando explicitamente o
-construtor se necessário:
+Add a parameter named `key` to the constructor, explicitly declaring the
+constructor if necessary:
 
 ```dart
 import 'package:flutter/material.dart';

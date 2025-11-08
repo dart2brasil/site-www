@@ -1,25 +1,26 @@
 ---
 title: missing_size_annotation_carray
-description: "Detalhes sobre o diagnóstico missing_size_annotation_carray produzido pelo analisador Dart."
+description: >-
+  Details about the missing_size_annotation_carray
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_Campos do tipo 'Array' devem ter exatamente uma anotação 'Array'._
+_Fields of type 'Array' must have exactly one 'Array' annotation._
 
 ## Description
 
-O analisador produz este diagnóstico quando um campo em uma subclasse de
-`Struct` ou `Union` tem um tipo `Array` mas não tem uma única
-anotação `Array` indicando as dimensões do array.
+The analyzer produces this diagnostic when a field in a subclass of either
+`Struct` or `Union` has a type of `Array` but doesn't have a single
+`Array` annotation indicating the dimensions of the array.
 
-Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o campo `a0` não tem
-uma anotação `Array`:
+The following code produces this diagnostic because the field `a0` doesn't
+have an `Array` annotation:
 
 ```dart
 import 'dart:ffi';
@@ -31,7 +32,7 @@ final class C extends Struct {
 
 ## Common fixes
 
-Certifique-se de que há exatamente uma anotação `Array` no campo:
+Ensure that there's exactly one `Array` annotation on the field:
 
 ```dart
 import 'dart:ffi';

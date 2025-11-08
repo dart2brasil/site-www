@@ -1,24 +1,26 @@
 ---
-ia-translate: true
 title: extension_type_implements_representation_not_supertype
-description: "Detalhes sobre o diagnóstico extension_type_implements_representation_not_supertype produzido pelo analisador Dart."
+description: >-
+  Details about the extension_type_implements_representation_not_supertype
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}', o tipo de representação de '{1}', não é um supertipo de '{2}', o tipo de representação de '{3}'._
+_'{0}', the representation type of '{1}', is not a supertype of '{2}', the representation type of '{3}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um extension type implementa
-outro extension type, e o tipo de representação do extension type implementado
-não é um subtipo do tipo de representação do extension type que implementa.
+The analyzer produces this diagnostic when an extension type implements
+another extension type, and the representation type of the implemented
+extension type isn't a subtype of the representation type of the implementing
+extension type.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o extension type `B`
-implementa `A`, mas o tipo de representação de `A` (`num`) não é um
-subtipo do tipo de representação de `B` (`String`):
+The following code produces this diagnostic because the extension type `B`
+implements `A`, but the representation type of `A` (`num`) isn't a
+subtype of the representation type of `B` (`String`):
 
 ```dart
 extension type A(num i) {}
@@ -26,11 +28,11 @@ extension type A(num i) {}
 extension type B(String s) implements [!A!] {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Altere os tipos de representação dos dois extension types para que
-o tipo de representação do tipo implementado seja um supertipo do
-tipo de representação do tipo que implementa:
+Either change the representation types of the two extension types so that
+the representation type of the implemented type is a supertype of the
+representation type of the implementing type:
 
 ```dart
 extension type A(num i) {}
@@ -38,7 +40,7 @@ extension type A(num i) {}
 extension type B(int n) implements A {}
 ```
 
-Ou remova o tipo implementado da cláusula implements:
+Or remove the implemented type from the implements clause:
 
 ```dart
 extension type A(num i) {}

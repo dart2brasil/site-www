@@ -1,34 +1,34 @@
 ---
-ia-translate: true
 title: invalid_implementation_override
-description: "Detalhes sobre o diagnóstico invalid_implementation_override produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_implementation_override
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}.{1}' ('{2}') não é uma implementação concreta válida de '{3}.{1}' ('{4}')._
+_'{0}.{1}' ('{2}') isn't a valid concrete implementation of '{3}.{1}' ('{4}')._
 
-_O setter '{0}.{1}' ('{2}') não é uma implementação concreta válida de '{3}.{1}' ('{4}')._
+_The setter '{0}.{1}' ('{2}') isn't a valid concrete implementation of '{3}.{1}' ('{4}')._
 
 ## Description
 
-O analisador produz este diagnóstico quando todas as seguintes condições são
-verdadeiras:
+The analyzer produces this diagnostic when all of the following are true:
 
-- Uma classe define um membro abstrato.
-- Há uma implementação concreta desse membro em uma superclasse.
-- A implementação concreta não é uma implementação válida do método
-  abstrato.
+- A class defines an abstract member.
+- There is a concrete implementation of that member in a superclass.
+- The concrete implementation isn't a valid implementation of the abstract
+  method.
 
-A implementação concreta pode ser inválida devido a incompatibilidades no
-tipo de retorno, nos tipos dos parâmetros do método ou nos parâmetros de
-tipo.
+The concrete implementation can be invalid because of incompatibilities in
+either the return type, the types of the method's parameters, or the type
+parameters.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o método `A.add` tem um
-parâmetro do tipo `int`, e o método sobrescrito `B.add` tem um parâmetro
-correspondente do tipo `num`:
+The following code produces this diagnostic because the method `A.add` has
+a parameter of type `int`, and the overriding method `B.add` has a
+corresponding parameter of type `num`:
 
 ```dart
 class A {
@@ -39,7 +39,7 @@ class [!B!] extends A {
 }
 ```
 
-Isso é um problema porque em uma invocação de `B.add` como a seguinte:
+This is a problem because in an invocation of `B.add` like the following:
 
 ```dart
 void f(B b) {
@@ -47,15 +47,16 @@ void f(B b) {
 }
 ```
 
-`B.add` está esperando poder receber, por exemplo, um `double`, mas quando o
-método `A.add` é executado (porque é a única implementação concreta de
-`add`), uma exceção em tempo de execução será lançada porque um `double` não
-pode ser atribuído a um parâmetro do tipo `int`.
+`B.add` is expecting to be able to take, for example, a `double`, but when
+the method `A.add` is executed (because it's the only concrete
+implementation of `add`), a runtime exception will be thrown because a
+`double` can't be assigned to a parameter of type `int`.
 
 ## Common fixes
 
-Se o método na subclasse pode se conformar à implementação na superclasse,
-altere a declaração na subclasse (ou remova-a se for igual):
+If the method in the subclass can conform to the implementation in the
+superclass, then change the declaration in the subclass (or remove it if
+it's the same):
 
 ```dart
 class A {
@@ -66,8 +67,9 @@ class B	extends A {
 }
 ```
 
-Se o método na superclasse pode ser generalizado para ser uma implementação
-válida do método na subclasse, altere o método da superclasse:
+If the method in the superclass can be generalized to be a valid
+implementation of the method in the subclass, then change the superclass
+method:
 
 ```dart
 class A {
@@ -78,8 +80,9 @@ class B	extends A {
 }
 ```
 
-Se nem o método na superclasse nem o método na subclasse podem ser alterados,
-forneça uma implementação concreta do método na subclasse:
+If neither the method in the superclass nor the method in the subclass can
+be changed, then provide a concrete implementation of the method in the
+subclass:
 
 ```dart
 class A {

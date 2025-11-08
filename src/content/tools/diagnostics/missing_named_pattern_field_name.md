@@ -1,27 +1,28 @@
 ---
 title: missing_named_pattern_field_name
-description: "Detalhes sobre o diagnóstico missing_named_pattern_field_name produzido pelo analisador Dart."
+description: >-
+  Details about the missing_named_pattern_field_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_O nome do getter não é especificado explicitamente, e o padrão não é uma variável._
+_The getter name is not specified explicitly, and the pattern is not a variable._
 
 ## Description
 
-O analisador produz este diagnóstico quando, dentro de um padrão de objeto, a
-especificação de uma propriedade e o padrão usado para corresponder ao valor da propriedade
-não tem:
+The analyzer produces this diagnostic when, within an object pattern, the
+specification of a property and the pattern used to match the property's
+value doesn't have either:
 
-- um nome de getter antes dos dois pontos
-- um padrão de variável do qual o nome do getter pode ser inferido
+- a getter name before the colon
+- a variable pattern from which the getter name can be inferred
 
 ## Example
 
-O código a seguir produz este diagnóstico porque não há nome de getter
-antes dos dois pontos e nenhum padrão de variável após os dois pontos no
-padrão de objeto (`C(:0)`):
+The following code produces this diagnostic because there is no getter
+name before the colon and no variable pattern after the colon in the
+object pattern (`C(:0)`):
 
 ```dart
 abstract class C {
@@ -38,9 +39,9 @@ void f(C c) {
 
 ## Common fixes
 
-Se você precisa usar o valor real da propriedade dentro do escopo do padrão,
-então adicione um padrão de variável onde o nome da variável é o
-mesmo que o nome da propriedade sendo correspondida:
+If you need to use the actual value of the property within the pattern's
+scope, then add a variable pattern where the name of the variable is the
+same as the name of the property being matched:
 
 ```dart
 abstract class C {
@@ -55,9 +56,9 @@ void f(C c) {
 }
 ```
 
-Se você não precisa usar o valor real da propriedade dentro do
-escopo do padrão, então adicione o nome da propriedade sendo correspondida antes
-dos dois pontos:
+If you don't need to use the actual value of the property within the
+pattern's scope, then add the name of the property being matched before
+the colon:
 
 ```dart
 abstract class C {

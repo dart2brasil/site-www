@@ -1,30 +1,31 @@
 ---
-ia-translate: true
 title: invalid_null_aware_operator
-description: "Detalhes sobre o diagnóstico invalid_null_aware_operator produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_null_aware_operator
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O elemento não pode ser null, então o operador null-aware '?' é desnecessário._
+_The element can't be null, so the null-aware operator '?' is unnecessary._
 
-_A chave da entrada do mapa não pode ser null, então o operador null-aware '?' é desnecessário._
+_The map entry key can't be null, so the null-aware operator '?' is unnecessary._
 
-_O valor da entrada do mapa não pode ser null, então o operador null-aware '?' é desnecessário._
+_The map entry value can't be null, so the null-aware operator '?' is unnecessary._
 
-_O receptor não pode ser 'null' devido ao curto-circuito, então o operador null-aware '{0}' não pode ser usado._
+_The receiver can't be 'null' because of short-circuiting, so the null-aware operator '{0}' can't be used._
 
-_O receptor não pode ser null, então o operador null-aware '{0}' é desnecessário._
+_The receiver can't be null, so the null-aware operator '{0}' is unnecessary._
 
 ## Description
 
-O analisador produz este diagnóstico quando um operador null-aware (`?.`,
-`?..`, `?[`, `?..[` ou `...?`) é usado em um receptor que é conhecido por
-ser não-nulável.
+The analyzer produces this diagnostic when a null-aware operator (`?.`,
+`?..`, `?[`, `?..[`, or `...?`) is used on a receiver that's known to be
+non-nullable.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque `s` não pode ser `null`:
+The following code produces this diagnostic because `s` can't be `null`:
 
 ```dart
 int? getLength(String s) {
@@ -32,15 +33,15 @@ int? getLength(String s) {
 }
 ```
 
-O código a seguir produz este diagnóstico porque `a` não pode ser `null`:
+The following code produces this diagnostic because `a` can't be `null`:
 
 ```dart
 var a = [];
 var b = [[!...?!]a];
 ```
 
-O código a seguir produz este diagnóstico porque `s?.length` não pode
-retornar `null`:
+The following code produces this diagnostic because `s?.length` can't
+return `null`:
 
 ```dart
 void f(String? s) {
@@ -48,16 +49,16 @@ void f(String? s) {
 }
 ```
 
-A razão pela qual `s?.length` não pode retornar `null` é porque o operador
-null-aware após `s` interrompe (short-circuits) a avaliação de `length` e
-`isEven` se `s` é `null`. Em outras palavras, se `s` é `null`, nem `length`
-nem `isEven` serão invocados, e se `s` não é `null`, então `length` não pode
-retornar um valor `null`. De qualquer forma, `isEven` não pode ser invocado
-em um valor `null`, então o operador null-aware não é necessário. Veja
+The reason `s?.length` can't return `null` is because the null-aware
+operator following `s` short-circuits the evaluation of both `length` and
+`isEven` if `s` is `null`. In other words, if `s` is `null`, then neither
+`length` nor `isEven` will be invoked, and if `s` is non-`null`, then
+`length` can't return a `null` value. Either way, `isEven` can't be invoked
+on a `null` value, so the null-aware operator isn't necessary. See
 [Understanding null safety](/null-safety/understanding-null-safety#smarter-null-aware-methods)
-para mais detalhes.
+for more details.
 
-O código a seguir produz este diagnóstico porque `s` não pode ser `null`.
+The following code produces this diagnostic because `s` can't be `null`.
 
 ```dart
 void f(Object? o) {
@@ -66,12 +67,12 @@ void f(Object? o) {
 }
 ```
 
-A razão pela qual `s` não pode ser null, apesar do fato de que `o` pode ser
-`null`, é por causa da conversão para `String`, que é um tipo não-nulável.
-Se `o` alguma vez tiver o valor `null`, a conversão falhará e a invocação de
-`length` não acontecerá.
+The reason `s` can't be null, despite the fact that `o` can be `null`, is
+because of the cast to `String`, which is a non-nullable type. If `o` ever
+has the value `null`, the cast will fail and the invocation of `length`
+will not happen.
 
-O código a seguir produz este diagnóstico porque `s` não pode ser `null`:
+The following code produces this diagnostic because `s` can't be `null`:
 
 ```dart
 List<String> makeSingletonList(String s) {
@@ -81,8 +82,8 @@ List<String> makeSingletonList(String s) {
 
 ## Common fixes
 
-Substitua o operador null-aware por um equivalente não-null-aware; por
-exemplo, mude `?.` para `.`:
+Replace the null-aware operator with a non-null-aware equivalent; for
+example, change `?.` to  `.`:
 
 ```dart
 int getLength(String s) {
@@ -90,5 +91,5 @@ int getLength(String s) {
 }
 ```
 
-(Observe que o tipo de retorno também foi alterado para ser não-nulável, o
-que pode não ser apropriado em alguns casos.)
+(Note that the return type was also changed to be non-nullable, which might
+not be appropriate in some cases.)

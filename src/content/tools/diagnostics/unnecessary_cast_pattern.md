@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: unnecessary_cast_pattern
-description: "Detalhes sobre o diagnóstico unnecessary_cast_pattern produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_cast_pattern
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Padrão de cast desnecessário._
+_Unnecessary cast pattern._
 
 ## Description
 
-O analisador produz este diagnóstico quando um padrão de cast é usado em um
-valor que já é conhecido por ser do tipo especificado.
+The analyzer produces this diagnostic when a cast pattern is used on a
+value that is known to be of the specified type.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o cast `as num` é
-conhecido por sempre ter sucesso porque o tipo de `z` é `int`:
+The following code produces this diagnostic because the cast `as num` is
+known to always succeed because the type of `z` is `int`:
 
 ```dart
 void f(int x) {
@@ -28,7 +29,7 @@ void f(int x) {
 
 ## Common fixes
 
-Remova o padrão de cast:
+Remove the cast pattern:
 
 ```dart
 void f(int x) {

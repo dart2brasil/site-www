@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: inference_failure_on_function_return_type
-description: "Detalhes sobre o diagnóstico inference_failure_on_function_return_type produzido pelo analisador Dart."
+description: >-
+  Details about the inference_failure_on_function_return_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo de retorno de '{0}' não pode ser inferido._
+_The return type of '{0}' can't be inferred._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando:
-- a opção de linguagem `strict-inference` está habilitada no arquivo de opções de análise,
-- a declaração de um método ou função não possui tipo de retorno, e
-- o tipo de retorno não pode ser inferido.
+The analyzer produces this diagnostic when:
+- the language option `strict-inference` is enabled in the analysis options file,
+- the declaration of a method or function has no return type, and
+- the return type can't be inferred.
 
-## Exemplo
+## Example
 
-Dado um arquivo de opções de análise contendo o seguinte:
+Given an analysis options file containing the following:
 
 ```yaml
 analyzer:
@@ -25,8 +26,8 @@ analyzer:
     strict-inference: true
 ```
 
-O código a seguir produz este diagnóstico porque o método `m` não
-possui um tipo de retorno:
+The following code produces this diagnostic because the method `m` doesn't
+have a return type:
 
 ```dart
 class C {
@@ -34,9 +35,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione um tipo de retorno ao método ou função:
+Add a return type to the method or function:
 
 ```dart
 class C {

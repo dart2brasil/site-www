@@ -1,33 +1,34 @@
 ---
 title: built_in_identifier_in_declaration
-description: "Detalhes sobre o diagnóstico built_in_identifier_in_declaration produzido pelo analisador Dart."
+description: >-
+  Details about the built_in_identifier_in_declaration
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_O built-in identifier '{0}' não pode ser usado como nome de prefixo._
+_The built-in identifier '{0}' can't be used as a prefix name._
 
-_O built-in identifier '{0}' não pode ser usado como nome de type._
+_The built-in identifier '{0}' can't be used as a type name._
 
-_O built-in identifier '{0}' não pode ser usado como nome de parâmetro de type._
+_The built-in identifier '{0}' can't be used as a type parameter name._
 
-_O built-in identifier '{0}' não pode ser usado como nome de typedef._
+_The built-in identifier '{0}' can't be used as a typedef name._
 
-_O built-in identifier '{0}' não pode ser usado como nome de extension._
+_The built-in identifier '{0}' can't be used as an extension name._
 
-_O built-in identifier '{0}' não pode ser usado como nome de extension type._
+_The built-in identifier '{0}' can't be used as an extension type name._
 
 ## Description
 
-O analisador produz este diagnóstico quando o nome usado na declaração
-de uma classe, extension, mixin, typedef, parâmetro de type, ou prefixo de importação é
-um built-in identifier. Built-in identifiers não podem ser usados para nomear nenhum desses
-tipos de declarações.
+The analyzer produces this diagnostic when the name used in the declaration
+of a class, extension, mixin, typedef, type parameter, or import prefix is
+a built-in identifier. Built-in identifiers can't be used to name any of
+these kinds of declarations.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `mixin` é um built-in
+The following code produces this diagnostic because `mixin` is a built-in
 identifier:
 
 ```dart
@@ -36,4 +37,4 @@ extension [!mixin!] on int {}
 
 ## Common fixes
 
-Escolha um nome diferente para a declaração.
+Choose a different name for the declaration.

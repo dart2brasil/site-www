@@ -1,23 +1,25 @@
 ---
-ia-translate: true
 title: invalid_assignment
-description: "Detalhes sobre o diagnóstico invalid_assignment produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_assignment
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um valor do tipo '{0}' não pode ser atribuído a uma variável do tipo '{1}'._
+_A value of type '{0}' can't be assigned to a variable of type '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o tipo estático de uma
-expressão que é atribuída a uma variável não é atribuível ao tipo da
-variável.
+The analyzer produces this diagnostic when the static type of an expression
+that is assigned to a variable isn't assignable to the type of the
+variable.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o tipo do inicializador
-(`int`) não é atribuível ao tipo da variável (`String`):
+The following code produces this diagnostic because the type of the
+initializer (`int`) isn't assignable to the type of the variable
+(`String`):
 
 ```dart
 int i = 0;
@@ -26,19 +28,19 @@ String s = [!i!];
 
 ## Common fixes
 
-Se o valor sendo atribuído é sempre atribuível em tempo de execução, mesmo
-que os tipos estáticos não reflitam isso, adicione um cast explícito.
+If the value being assigned is always assignable at runtime, even though
+the static types don't reflect that, then add an explicit cast.
 
-Caso contrário, altere o valor sendo atribuído para que ele tenha o tipo
-esperado. No exemplo anterior, isso poderia ser:
+Otherwise, change the value being assigned so that it has the expected
+type. In the previous example, this might look like:
 
 ```dart
 int i = 0;
 String s = i.toString();
 ```
 
-Se você não pode alterar o valor, altere o tipo da variável para ser
-compatível com o tipo do valor sendo atribuído:
+If you can't change the value, then change the type of the variable to be
+compatible with the type of the value being assigned:
 
 ```dart
 int i = 0;

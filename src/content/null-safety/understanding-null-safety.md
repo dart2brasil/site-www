@@ -1,24 +1,24 @@
 ---
-ia-translate: true
-title: "Entendendo a segurança nula"
-description: "Um mergulho profundo na linguagem Dart e nas mudanças de biblioteca relacionadas à segurança nula."
+title: Understanding null safety
+description: >-
+    A deep dive into Dart language and library changes related to null safety.
 ---
 
-_Escrito por Bob Nystrom<br>
-Julho de 2020_
+_Written by Bob Nystrom<br>
+July 2020_
 
-A segurança nula (null safety) é a maior mudança que fizemos no Dart desde que substituímos
-o sistema de tipo opcional unsound original por [um sistema de tipo estático sound][strong]
-no Dart 2.0. Quando o Dart foi lançado, a segurança nula em tempo de compilação era um recurso
-raro que precisava de uma longa introdução. Hoje, Kotlin, Swift, Rust e outras
-linguagens têm suas próprias respostas para o que se tornou um [problema muito familiar.][billion]
-Aqui está um exemplo:
+Null safety is the largest change we've made to Dart since we replaced the
+original unsound optional type system with [a sound static type system][strong]
+in Dart 2.0. When Dart first launched, compile-time null safety was a rare
+feature needing a long introduction. Today, Kotlin, Swift, Rust, and other
+languages all have their own answers to what has become a very [familiar
+problem.][billion] Here is an example:
 
 [strong]: /language/type-system
 [billion]: https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
 
 ```dart
-// Sem segurança nula:
+// Without null safety:
 bool isEmpty(String string) => string.length == 0;
 
 void main() {
@@ -26,144 +26,134 @@ void main() {
 }
 ```
 
-Se você executar este programa Dart sem segurança nula, ele lançará uma
-exceção `NoSuchMethodError` na chamada para `.length`. O valor `null` é uma
-instância da classe `Null`, e `Null` não tem um getter "length". Falhas em tempo
-de execução são péssimas. Isso é especialmente verdade em uma linguagem como
-Dart, que foi projetada para ser executada no dispositivo de um usuário final. Se
-um aplicativo de servidor falhar, você pode frequentemente reiniciá-lo antes que
-alguém perceba. Mas quando um aplicativo Flutter trava no celular de um usuário,
-ele não fica feliz. Quando seus usuários não estão felizes, você não está feliz.
+If you run this Dart program without null safety, it throws a
+`NoSuchMethodError` exception on the call to `.length`. The `null` value is an
+instance of the `Null` class, and `Null` has no "length" getter. Runtime
+failures suck. This is especially true in a language like Dart that is designed
+to run on an end-user's device. If a server application fails, you can often
+restart it before anyone notices. But when a Flutter app crashes on a user's
+phone, they are not happy. When your users aren't happy, you aren't happy.
 
-Desenvolvedores gostam de linguagens com tipagem estática como Dart porque elas
-permitem que o verificador de tipo encontre erros no código em tempo de
-compilação, geralmente diretamente no IDE. Quanto mais cedo você encontrar um
-bug, mais cedo poderá corrigi-lo. Quando designers de linguagem falam em
-"corrigir erros de referência nula", eles querem dizer enriquecer o verificador
-de tipo estático para que a linguagem possa detectar erros como a tentativa acima
-de chamar `.length` em um valor que pode ser `null`.
+Developers like statically-typed languages like Dart because they enable the
+type checker to find mistakes in code at compile time, usually right in the IDE.
+The sooner you find a bug, the sooner you can fix it. When language designers
+talk about "fixing null reference errors", they mean enriching the static type
+checker so that the language can detect mistakes like the above attempt to call
+`.length` on a value that might be `null`.
 
-Não existe uma solução única para esse problema. Rust e Kotlin têm sua própria
-abordagem que faz sentido no contexto dessas linguagens. Este documento aborda
-todos os detalhes da nossa resposta para Dart. Ele inclui mudanças no sistema de
-tipo estático e um conjunto de outras modificações e novos recursos da linguagem
-para permitir que você não apenas escreva código null-safe, mas, com sorte,
-*goste* de fazê-lo.
+There is no one true solution to this problem. Rust and Kotlin both have their
+own approach that makes sense in the context of those languages. This doc walks
+through all the details of our answer for Dart. It includes changes to the
+static type system and a suite of other modifications and new language features
+to let you not only write null-safe code but hopefully to *enjoy* doing so.
 
-Este documento é longo. Se você quiser algo mais curto que cubra apenas o que você
-precisa saber para começar, comece com a [visão geral][overview]. Quando você estiver pronto
-para um entendimento mais profundo e tiver tempo, volte aqui para que você possa
-entender *como* a linguagem lida com `null`, *por que* a projetamos dessa forma e
-como escrever Dart idiomático, moderno e null-safe. (Alerta de spoiler: ele acaba
-ficando surpreendentemente parecido com a forma como você escreve Dart hoje.)
+This document is long. If you want something shorter that covers just what you
+need to know to get up and running, start with the [overview][]. When you are
+ready for a deeper understanding and have the time, come back here so you can
+understand *how* the language handles `null`, *why* we designed it that way, and
+how to write idiomatic, modern, null-safe Dart. (Spoiler alert: it ends up
+surprisingly close to how you write Dart today.)
 
 [overview]: /null-safety
 
-As várias maneiras como uma linguagem pode lidar com erros de referência nula
-têm seus prós e contras. Estes princípios guiaram as escolhas que fizemos:
+The various ways a language can tackle null reference errors each have their
+pros and cons. These principles guided the choices we made:
 
-*   **O código deve ser seguro por padrão.** Se você escrever um novo código Dart e
-    não usar nenhum recurso explicitamente inseguro, ele nunca lançará um erro de
-    referência nula em tempo de execução. Todos os possíveis erros de referência
-    nula são capturados estaticamente. Se você quiser adiar algumas dessas
-    verificações para o tempo de execução para obter maior flexibilidade, você
-    pode, mas você tem que escolher isso usando algum recurso que seja
-    textualmente visível no código.
+*   **Code should be safe by default.** If you write new Dart code and don't use
+    any explicitly unsafe features, it never throws a null reference error at
+    runtime. All possible null reference errors are caught statically. If you
+    want to defer some of that checking to runtime to get greater flexibility,
+    you can, but you have to choose that by using some feature that is textually
+    visible in the code.
 
-    Em outras palavras, não estamos dando a você um colete salva-vidas e
-    deixando para você lembrar de colocá-lo toda vez que você sai na água. Em vez
-    disso, estamos dando a você um barco que não afunda. Você permanece seco a
-    menos que pule no mar.
+    In other words, we aren't giving you a life jacket and leaving it up to you
+    to remember to put it on every time you go out on the water. Instead, we
+    give you a boat that doesn't sink. You stay dry unless you jump overboard.
 
-*   **O código null-safe deve ser fácil de escrever.** A maioria dos códigos Dart
-    existentes são dinamicamente corretos e não lançam erros de referência nula.
-    Você gosta do seu programa Dart da forma como ele aparece agora, e queremos que
-    você possa continuar escrevendo código dessa forma. Segurança não deve exigir
-    sacrificar a usabilidade, pagar penitência ao verificador de tipo ou ter que
-    mudar significativamente a forma como você pensa.
+*   **Null-safe code should be easy to write.** Most existing Dart code is
+    dynamically correct and does not throw null reference errors. You like your
+    Dart program the way it looks now, and we want you to be able to keep
+    writing code that way. Safety shouldn't require sacrificing usability,
+    paying penance to the type checker, or having to significantly change the
+    way you think.
 
-*   **O código null-safe resultante deve ser totalmente sound.** "Soundness"
-    (solidez) no contexto da verificação estática significa coisas diferentes para
-    pessoas diferentes. Para nós, no contexto da segurança nula, isso significa que
-    se uma expressão tem um tipo estático que não permite `null`, então nenhuma
-    execução possível dessa expressão pode ser avaliada como `null`. A linguagem
-    fornece essa garantia principalmente através de verificações estáticas, mas
-    pode haver algumas verificações em tempo de execução envolvidas também. (No
-    entanto, observe o primeiro princípio: qualquer lugar onde essas verificações
-    em tempo de execução aconteçam será sua escolha.)
+*   **The resulting null-safe code should be fully sound.** "Soundness" in the
+    context of static checking means different things to different people. For
+    us, in the context of null safety, that means that if an expression has a
+    static type that does not permit `null`, then no possible execution of that
+    expression can ever evaluate to `null`. The language provides this guarantee
+    mostly through static checks, but there can be some runtime checks involved
+    too. (Though, note the first principle: any place where those runtime checks
+    happen will be your choice.)
 
-    A solidez é importante para a confiança do usuário. Um barco que *quase
-    sempre* permanece flutuando não é um que você esteja entusiasmado para se
-    aventurar em mar aberto. Mas também é importante para nossos intrépidos
-    hackers de compilador. Quando a linguagem oferece garantias difíceis sobre
-    as propriedades semânticas de um programa, isso significa que o compilador
-    pode executar otimizações que assumem que essas propriedades são verdadeiras.
-    Quando se trata de `null`, isso significa que podemos gerar um código menor
-    que elimina verificações `null` desnecessárias e um código mais rápido que
-    não precisa verificar se um receptor é não-`null` antes de chamar métodos
-    nele.
+    Soundness is important for user confidence. A boat that *mostly* stays
+    afloat is not one you're enthused to brave the open seas on. But it's also
+    important for our intrepid compiler hackers. When the language makes hard
+    guarantees about semantic properties of a program, it means that the
+    compiler can perform optimizations that assume those properties are true.
+    When it comes to `null`, it means we can generate smaller code that
+    eliminates unneeded `null` checks, and faster code that doesn't need to
+    verify a receiver is non-`null` before calling methods on it.
 
-    Uma ressalva: Nós apenas garantimos a solidez em programas Dart que são
-    totalmente null-safe. Dart oferece suporte a programas que contêm uma mistura
-    de códigos null-safe mais novos e códigos legados mais antigos. Nesses
-    programas de versão mista, erros de referência nula ainda podem ocorrer. Em
-    um programa de versão mista, você obtém todos os benefícios de segurança
-    *estática* nas partes que são null-safe, mas você não obtém solidez completa
-    em tempo de execução até que o aplicativo inteiro seja null-safe.
+    One caveat: We only guarantee soundness in Dart programs that are fully null
+    safe. Dart supports programs that contain a mixture of newer null-safe code
+    and older legacy code. In these mixed-version programs, null reference errors
+    may still occur. In a mixed-version program, you get all of the *static* safety
+    benefits in the portions that are null safe, but you don't get full runtime
+    soundness until the entire application is null safe.
 
-Observe que *eliminar* `null` não é um objetivo. Não há nada de errado com
-`null`. Pelo contrário, é muito útil ser capaz de representar a *ausência* de um
-valor. Construir suporte para um valor especial "ausente" diretamente na
-linguagem torna o trabalho com ausência flexível e utilizável. Ele sustenta
-parâmetros opcionais, o prático operador null-aware `?.` e a inicialização
-padrão. Não é o `null` que é ruim, é ter `null` indo *para onde você não
-espera* que causa problemas.
+Note that *eliminating* `null` is not a goal. There's nothing wrong with `null`.
+On the contrary, it's really useful to be able to represent the *absence* of a
+value. Building support for a special "absent" value directly into the language
+makes working with absence flexible and usable. It underpins optional
+parameters, the handy `?.` null-aware operator, and default initialization. It
+is not `null` that is bad, it is having `null` go *where you don't expect it*
+that causes problems.
 
-Assim, com a segurança nula, nosso objetivo é dar a você *controle* e *insight*
-sobre onde `null` pode fluir através do seu programa e certeza de que ele não
-pode fluir para algum lugar que possa causar uma falha.
+Thus with null safety, our goal is to give you *control* and *insight* into
+where `null` can flow through your program and certainty that it can't flow
+somewhere that would cause a crash.
 
-## Nullabilidade no sistema de tipos {:#nullability-in-the-type-system}
+## Nullability in the type system
 
-A segurança nula começa no sistema de tipo estático porque todo o resto se baseia
-nisso. Seu programa Dart tem um universo inteiro de tipos nele: tipos primitivos
-como `int` e `String`, tipos de coleção como `List`, e todas as classes e tipos
-que você e os pacotes que você usa definem. Antes da segurança nula, o sistema de
-tipo estático permitia que o valor `null` fluísse para expressões de qualquer um
-desses tipos.
+Null safety begins in the static type system because everything else rests upon
+that. Your Dart program has a whole universe of types in it: primitive types
+like `int` and `String`, collection types like `List`, and all of the classes
+and types you and the packages you use define. Before null safety, the static
+type system allowed the value `null` to flow into expressions of any of those
+types.
 
-Na linguagem da teoria de tipos, o tipo `Null` era tratado como um subtipo de
-todos os tipos:
+In type theory lingo, the `Null` type was treated as a subtype of all types:
 
-<img src="/assets/img/null-safety/understanding-null-safety/hierarchy-before.png" alt="Hierarquia da Segurança Nula Antes" width="335">
+<img src="/assets/img/null-safety/understanding-null-safety/hierarchy-before.png" alt="Null Safety Hierarchy Before" width="335">
 
-O conjunto de operações — getters, setters, métodos e operadores — permitidos em
-algumas expressões são definidos pelo seu tipo. Se o tipo é `List`, você pode
-chamar `.add()` ou `[]` nele. Se for `int`, você pode chamar `+`. Mas o valor
-`null` não define nenhum desses métodos. Permitir que `null` flua para uma
-expressão de algum outro tipo significa que qualquer uma dessas operações pode
-falhar. Essa é realmente a essência dos erros de referência nula — toda falha
-vem de tentar procurar um método ou propriedade em `null` que ele não tem.
+The set of operations—getters, setters, methods, and
+operators—allowed on some expressions are defined by its type. If the type
+is `List`, you can call `.add()` or `[]` on it. If it's `int`, you can call `+`.
+But the `null` value doesn't define any of those methods. Allowing `null` to
+flow into an expression of some other type means any of those operations can
+fail. This is really the crux of null reference errors—every failure comes
+from trying to look up a method or property on `null` that it doesn't have.
 
-### Tipos não-anuláveis e anuláveis {:#non-nullable-and-nullable-types}
+### Non-nullable and nullable types
 
-A segurança nula elimina esse problema pela raiz, alterando a hierarquia de
-tipos. O tipo `Null` ainda existe, mas não é mais um subtipo de todos os tipos.
-Em vez disso, a hierarquia de tipos é assim:
+Null safety eliminates that problem at the root by changing the type hierarchy.
+The `Null` type still exists, but it's no longer a subtype of all types.
+Instead, the type hierarchy looks like this:
 
-<img src="/assets/img/null-safety/understanding-null-safety/hierarchy-after.png" alt="Hierarquia da Segurança Nula Depois" width="344">
+<img src="/assets/img/null-safety/understanding-null-safety/hierarchy-after.png" alt="Null Safety Hierarchy After" width="344">
 
-Como `Null` não é mais um subtipo, nenhum tipo, exceto a classe especial `Null`,
-permite o valor `null`. Tornamos todos os tipos *não-anuláveis por padrão*. Se
-você tem uma variável do tipo `String`, ela sempre conterá *uma string*. Pronto,
-corrigimos todos os erros de referência nula.
+Since `Null` is no longer a subtype, no type except the special `Null` class
+permits the value `null`. We've made all types *non-nullable by default*. If you
+have a variable of type `String`, it will always contain *a string*. There,
+we've fixed all null reference errors.
 
-Se não pensássemos que `null` fosse útil, poderíamos parar por aqui. Mas `null`
-é útil, então ainda precisamos de uma maneira de lidar com ele. Parâmetros
-opcionais são um bom caso ilustrativo. Considere este código Dart null-safe:
+If we didn't think `null` was useful at all, we could stop here. But `null` is
+useful, so we still need a way to handle it. Optional parameters are a good
+illustrative case. Consider this null-safe Dart code:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 void makeCoffee(String coffee, [String? dairy]) {
   if (dairy != null) {
     print('$coffee with $dairy');
@@ -173,24 +163,24 @@ void makeCoffee(String coffee, [String? dairy]) {
 }
 ```
 
-Aqui, queremos permitir que o parâmetro `dairy` aceite qualquer string, ou o
-valor `null`, mas nada mais. Para expressar isso, damos a `dairy` um *tipo
-anulável* colocando `?` no final do tipo base subjacente `String`. Por baixo
-dos panos, isso está essencialmente definindo uma [união][union] do tipo subjacente e
-do tipo `Null`. Então, `String?` seria uma abreviação para `String|Null` se Dart
-tivesse tipos de união completos.
+Here, we want to allow the `dairy` parameter to accept any string, or the value
+`null`, but nothing else. To express that, we give `dairy` a *nullable type* by
+slapping `?` at the end of the underlying base type `String`. Under the hood,
+this is essentially defining a [union][] of the underlying type and the `Null`
+type. So `String?` would be a shorthand for `String|Null` if Dart had
+full-featured union types.
 
 [union]: https://en.wikipedia.org/wiki/Union_type
 
-### Usando tipos anuláveis {:#using-nullable-types}
+### Using nullable types
 
-Se você tem uma expressão com um tipo anulável, o que você pode fazer com o
-resultado? Já que nosso princípio é seguro por padrão, a resposta é que não se
-pode fazer muita coisa. Não podemos deixar você chamar métodos do tipo
-subjacente nele porque eles podem falhar se o valor for `null`:
+If you have an expression with a nullable type, what can you do with the result?
+Since our principle is safe by default, the answer is not much. We can't let you
+call methods of the underlying type on it because those might fail if the value
+is `null`:
 
 ```dart
-// Segurança nula hipotética unsound:
+// Hypothetical unsound null safety:
 void bad(String? maybeString) {
   print(maybeString.length);
 }
@@ -200,46 +190,44 @@ void main() {
 }
 ```
 
-Isso travaria se deixássemos você executar. Os únicos métodos e propriedades que
-podemos permitir que você acesse com segurança são aqueles definidos tanto pelo
-tipo subjacente quanto pela classe `Null`. Isso é apenas `toString()`, `==` e
-`hashCode`. Então, você pode usar tipos anuláveis como chaves de mapa,
-armazená-los em conjuntos, compará-los com outros valores e usá-los em
-interpolação de string, mas é só isso.
+This would crash if we let you run it. The only methods and properties we can
+safely let you access are ones defined by both the underlying type and the
+`Null` class. That's just `toString()`, `==`, and `hashCode`. So you can use
+nullable types as map keys, store them in sets, compare them to other values,
+and use them in string interpolation, but that's about it.
 
-Como eles interagem com tipos não-anuláveis? É sempre seguro passar um tipo
-*não*-anulável para algo que espera um tipo anulável. Se uma função aceita
-`String?`, então passar um `String` é permitido porque não causará nenhum
-problema. Modelamos isso tornando cada tipo anulável um supertipo de seu tipo
-subjacente. Você também pode passar `null` com segurança para algo esperando um
-tipo anulável, então `Null` também é um subtipo de cada tipo anulável:
+How do they interact with non-nullable types? It's always safe to pass a
+*non*-nullable type to something expecting a nullable type. If a function
+accepts `String?` then passing a `String` is allowed because it won't cause any
+problems. We model this by making every nullable type a supertype of its
+underlying type. You can also safely pass `null` to something expecting a nullable type, so
+`Null` is also a subtype of every nullable type:
 
-<img src="/assets/img/null-safety/understanding-null-safety/nullable-hierarchy.png" alt="Anulável" width="235">
+<img src="/assets/img/null-safety/understanding-null-safety/nullable-hierarchy.png" alt="Nullable" width="235">
 
-Mas ir na direção oposta e passar um tipo anulável para algo esperando o tipo
-não-anulável subjacente é inseguro. Código que espera um `String` pode chamar
-métodos `String` no valor. Se você passar um `String?` para ele, `null` poderia
-fluir e isso poderia falhar:
+But going the other direction and passing a nullable type to something expecting
+the underlying non-nullable type is unsafe. Code that expects a `String` may
+call `String` methods on the value. If you pass a `String?` to it, `null` could
+flow in and that could fail:
 
 ```dart
-// Segurança nula hipotética unsound:
+// Hypothetical unsound null safety:
 void requireStringNotNull(String definitelyString) {
   print(definitelyString.length);
 }
 
 void main() {
-  String? maybeString = null; // Ou não!
+  String? maybeString = null; // Or not!
   requireStringNotNull(maybeString);
 }
 ```
 
-Este programa não é seguro e não devemos permiti-lo. No entanto, o Dart sempre
-teve essa coisa chamada *downcasts implícitos*. Se você, por exemplo, passar um
-valor do tipo `Object` para uma função esperando um `String`, o verificador de
-tipos permite isso:
+This program is not safe and we shouldn't allow it. However, Dart has always had
+this thing called *implicit downcasts*. If you, for example, pass a value of
+type `Object` to a function expecting a `String`, the type checker allows it:
 
 ```dart
-// Sem segurança nula:
+// Without null safety:
 void requireStringNotObject(String definitelyString) {
   print(definitelyString.length);
 }
@@ -250,23 +238,21 @@ void main() {
 }
 ```
 
-Para manter a solidez, o compilador insere silenciosamente um cast `as String`
-no argumento para `requireStringNotObject()`. Esse cast poderia falhar e lançar
-uma exceção em tempo de execução, mas em tempo de compilação, Dart diz que isso
-está OK. Já que os tipos não-anuláveis são modelados como subtipos de tipos
-anuláveis, downcasts implícitos permitiriam que você passasse um `String?` para
-algo esperando um `String`. Permitir isso violaria nosso objetivo de ser seguro
-por padrão. Portanto, com a segurança nula, estamos removendo os downcasts
-implícitos completamente.
+To maintain soundness, the compiler silently inserts an `as String` cast on the
+argument to `requireStringNotObject()`. That cast could fail and throw an
+exception at runtime, but at compile time, Dart says this is OK. Since
+non-nullable types are modeled as subtypes of nullable types, implicit downcasts
+would let you pass a `String?` to something expecting a `String`. Allowing that
+would violate our goal of being safe by default. So with null safety we are
+removing implicit downcasts entirely.
 
-Isso faz com que a chamada para `requireStringNotNull()` produza um erro de
-compilação, que é o que você deseja. Mas isso também significa que *todos* os
-downcasts implícitos se tornam erros de compilação, incluindo a chamada para
-`requireStringNotObject()`. Você terá que adicionar o downcast explícito você
-mesmo:
+This makes the call to `requireStringNotNull()` produce a compile error, which
+is what you want. But it also means *all* implicit downcasts become compile
+errors, including the call to `requireStringNotObject()`. You'll have to add the
+explicit downcast yourself:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 void requireStringNotObject(String definitelyString) {
   print(definitelyString.length);
 }
@@ -277,132 +263,127 @@ void main() {
 }
 ```
 
-Achamos que esta é uma boa mudança geral. Nossa impressão é que a maioria dos
-usuários nunca gostou de downcasts implícitos. Em particular, você pode ter se
-queimado com isso antes:
+We think this is an overall good change. Our impression is that most users never
+liked implicit downcasts. In particular, you may have been burned by this
+before:
 
 ```dart
-// Sem segurança nula:
+// Without null safety:
 List<int> filterEvens(List<int> ints) {
   return ints.where((n) => n.isEven);
 }
 ```
 
-Percebeu o bug? O método `.where()` é lazy, então ele retorna um `Iterable`,
-não uma `List`. Este programa compila, mas lança uma exceção em tempo de
-execução quando tenta fazer o cast desse `Iterable` para o tipo `List` que
-`filterEvens` declara que retorna. Com a remoção de downcasts implícitos, isso
-se torna um erro de compilação.
+Spot the bug? The `.where()` method is lazy, so it returns an `Iterable`, not a
+`List`. This program compiles but then throws an exception at runtime when it
+tries to cast that `Iterable` to the `List` type that `filterEvens` declares it
+returns. With the removal of implicit downcasts, this becomes a compile error.
 
-Onde estávamos? Certo, OK, então é como se tivéssemos pego o universo de tipos em
-seu programa e dividido em duas metades:
+Where were we? Right, OK, so it's as if we've taken the universe of types in
+your program and split them into two halves:
 
-<img src="/assets/img/null-safety/understanding-null-safety/bifurcate.png" alt="Tipos Anuláveis e Não-Anuláveis" width="668">
+<img src="/assets/img/null-safety/understanding-null-safety/bifurcate.png" alt="Nullable and Non-Nullable types" width="668">
 
-Existe uma região de tipos não-anuláveis. Esses tipos permitem que você acesse
-todos os métodos interessantes, mas nunca podem conter `null`. E então existe
-uma família paralela de todos os tipos anuláveis correspondentes. Esses permitem
-`null`, mas você não pode fazer muito com eles. Deixamos os valores fluírem do
-lado não-anulável para o lado anulável porque isso é seguro, mas não na outra
-direção.
+There is a region of non-nullable types. Those types let you access all of the
+interesting methods, but can never ever contain `null`. And then there is a
+parallel family of all of the corresponding nullable types. Those permit `null`,
+but you can't do much with them. We let values flow from the non-nullable side
+to the nullable side because doing so is safe, but not the other direction.
 
-Parece que os tipos anuláveis são basicamente inúteis. Eles não têm métodos e
-você não pode escapar deles. Não se preocupe, temos um conjunto inteiro de
-recursos para ajudá-lo a mover valores da metade anulável para o outro lado que
-veremos em breve.
+That seems like nullable types are basically useless. They have no methods and
+you can't get away from them. Don't worry, we have a whole suite of features to
+help you move values from the nullable half over to the other side that we will
+get to soon.
 
-### Top e bottom {:#top-and-bottom}
+### Top and bottom
 
-Esta seção é um pouco esotérica. Você pode pular a maior parte, exceto por dois
-itens no final, a menos que você goste de coisas do sistema de tipo. Imagine
-todos os tipos em seu programa com arestas entre aqueles que são subtipos e
-super-tipos uns dos outros. Se você fosse desenhá-lo, como os diagramas neste
-documento, ele formaria um enorme grafo direcionado com supertipos como `Object`
-perto do topo e classes folha como seus próprios tipos perto da parte inferior.
+This section is a little esoteric. You can mostly skip it, except for two
+bullets at the very end, unless you're into type system stuff. Imagine all the
+types in your program with edges between ones that are subtypes and supertypes
+of each other. If you were to draw it, like the diagrams in this doc, it would
+form a huge directed graph with supertypes like `Object` near the top and leaf
+classes like your own types near the bottom.
 
-Se esse grafo direcionado chegar a um ponto no topo onde há um único tipo que é
-o supertipo (direta ou indiretamente), esse tipo é chamado de *tipo top*.
-Da mesma forma, se houver um tipo estranho na parte inferior que é um subtipo de
-cada tipo, você tem um *tipo bottom*. (Nesse caso, seu grafo direcionado é um
-[lattice][lattice].)
+If that directed graph comes to a point at the top where there is a single type
+that is the supertype (directly or indirectly), that type is called the *top
+type*. Likewise, if there is a weird type at that bottom that is a subtype of
+every type, you have a *bottom type*. (In this case, your directed graph is a
+[lattice.][lattice])
 
 [lattice]: https://en.wikipedia.org/wiki/Lattice_(order)
 
-É conveniente se o seu sistema de tipos tiver um tipo top e bottom, porque isso
-significa que operações no nível do tipo, como o menor limite superior (que a
-inferência de tipo usa para descobrir o tipo de uma expressão condicional com
-base nos tipos de seus dois ramos) sempre pode produzir um tipo. Antes da
-segurança nula, `Object` era o tipo top do Dart e `Null` era seu tipo bottom.
+It's convenient if your type system has a top and bottom type, because it means
+that type-level operations like least upper bound (which type inference uses to
+figure out the type of a conditional expression based on the types of its two
+branches) can always produce a type. Before null safety, `Object` was Dart's top
+type and `Null` was its bottom type.
 
-Como `Object` não é anulável agora, ele não é mais um tipo top. `Null` não é
-um subtipo dele. Dart não tem um tipo top *nomeado*. Se você precisa de um tipo
-top, você quer `Object?`. Da mesma forma, `Null` não é mais o tipo bottom. Se
-fosse, tudo ainda seria anulável. Em vez disso, adicionamos um novo tipo bottom
-chamado `Never`:
+Since `Object` is non-nullable now, it is no longer a top type. `Null` is not a
+subtype of it. Dart has no *named* top type. If you need a top type, you want
+`Object?`. Likewise, `Null` is no longer the bottom type. If it was, everything
+would still be nullable. Instead, we've added a new bottom type named `Never`:
 
-<img src="/assets/img/null-safety/understanding-null-safety/top-and-bottom.png" alt="Top e Bottom" width="360">
+<img src="/assets/img/null-safety/understanding-null-safety/top-and-bottom.png" alt="Top and Bottom" width="360">
 
-Na prática, isso significa:
+In practice, this means:
 
-*   Se você quiser indicar que permite um valor de qualquer tipo, use `Object?`
-    em vez de `Object`. De fato, torna-se bastante incomum usar `Object`, já que
-    esse tipo significa "poderia ser qualquer valor possível, exceto este valor
-    estranhamente proibido `null`".
+*   If you want to indicate that you allow a value of any type, use `Object?`
+    instead of `Object`. In fact, it becomes pretty unusual to use `Object`
+    since that type means "could be any possible value except this one weirdly
+    prohibited value `null`".
 
-*   Na rara ocasião em que você precisa de um tipo bottom, use `Never` em vez de
-    `Null`.
-    Isso é particularmente útil para indicar que uma função nunca retorna
-    para [ajudar a análise de alcançabilidade](#never-for-unreachable-code).
-    Se você não sabe se precisa de um tipo bottom, provavelmente não precisa.
+*   On the rare occasion that you need a bottom type, use
+    `Never` instead of `Null`.
+    This is particularly useful to indicate a function never returns
+    to [help reachability analysis](#never-for-unreachable-code).
+    If you don't know if you need a bottom type, you probably don't.
 
-## Garantindo a correção {:#ensuring-correctness}
+## Ensuring correctness
 
-Dividimos o universo de tipos em metades anuláveis e não-anuláveis. Para manter a
-solidez e nosso princípio de que você nunca pode obter um erro de referência
-nula em tempo de execução, a menos que você peça por isso, precisamos garantir
-que `null` nunca apareça em nenhum tipo no lado não-anulável.
+We divided the universe of types into nullable and non-nullable halves. In order
+to maintain soundness and our principle that you can never get a null reference
+error at runtime unless you ask for it, we need to guarantee that `null` never
+appears in any type on the non-nullable side.
 
-Livrar-se de downcasts implícitos e remover `Null` como um tipo bottom cobre
-todos os principais lugares onde os tipos fluem através de um programa através
-de atribuições e de argumentos para parâmetros em chamadas de função. Os
-principais lugares restantes onde `null` pode se infiltrar são quando uma
-variável surge pela primeira vez e quando você sai de uma função. Portanto,
-existem alguns erros de compilação adicionais:
+Getting rid of implicit downcasts and removing `Null` as a bottom type covers
+all of the main places that types flow through a program across assignments and
+from arguments into parameters on function calls. The main remaining places
+where `null` can sneak in are when a variable first comes into being and when
+you leave a function. So there are some additional compile errors:
 
-### Retornos inválidos {:#invalid-returns}
+### Invalid returns
 
-Se uma função tem um tipo de retorno não-anulável, então todo caminho através
-da função deve alcançar uma instrução `return` que retorna um valor. Antes da
-segurança nula, Dart era bastante negligente com relação a retornos ausentes.
-Por exemplo:
+If a function has a non-nullable return type, then every path through the
+function must reach a `return` statement that returns a value. Before null
+safety, Dart was pretty lax about missing returns. For example:
 
 ```dart
-// Sem segurança nula:
+// Without null safety:
 String missingReturn() {
-  // Sem retorno.
+  // No return.
 }
 ```
 
-Se você analisasse isso, você recebia uma *dica* suave de que *talvez* você tenha
-esquecido um retorno, mas se não, tudo bem. Isso ocorre porque se a execução
-atingir o final do corpo de uma função, o Dart retorna implicitamente `null`.
-Como todo tipo é anulável, *tecnicamente* esta função é segura, mesmo que
-provavelmente não seja o que você deseja.
+If you analyzed this, you got a gentle *hint* that *maybe* you forgot a return,
+but if not, no big deal. That's because if execution reaches the end of a
+function body then Dart implicitly returns `null`. Since every type is nullable,
+*technically* this function is safe, even though it's probably not what you
+want.
 
-Com tipos não-anuláveis sound, este programa está completamente errado e
-inseguro. Sob segurança nula, você recebe um erro de compilação se uma função
-com um tipo de retorno não-anulável não retornar um valor de forma confiável. Por
-"confiável", quero dizer que a linguagem analisa todos os caminhos de fluxo de
-controle através da função. Contanto que todos eles retornem algo, ele está
-satisfeito. A análise é bem inteligente, então até mesmo esta função está OK:
+With sound non-nullable types, this program is flat out wrong and unsafe. Under
+null safety, you get a compile error if a function with a non-nullable return
+type doesn't reliably return a value. By "reliably", I mean that the language
+analyzes all of the control flow paths through the function. As long as they all
+return something, it is satisfied. The analysis is pretty smart, so even this
+function is OK:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 String alwaysReturns(int n) {
   if (n == 0) {
     return 'zero';
   } else if (n < 0) {
-    throw ArgumentError('Valores negativos não permitidos.');
+    throw ArgumentError('Negative values not allowed.');
   } else {
     if (n > 1000) {
       return 'big';
@@ -413,24 +394,24 @@ String alwaysReturns(int n) {
 }
 ```
 
-Vamos mergulhar mais profundamente na nova análise de fluxo na próxima seção.
+We'll dive more deeply into the new flow analysis in the next section.
 
-### Variáveis não inicializadas {:#uninitialized-variables}
+### Uninitialized variables
 
-Quando você declara uma variável, se você não lhe dá um inicializador
-explícito, Dart inicializa a variável com `null` por padrão. Isso é
-conveniente, mas obviamente totalmente inseguro se o tipo da variável é
-não-anulável. Portanto, temos que apertar as coisas para variáveis não-anuláveis:
+When you declare a variable, if you don't give it an explicit initializer, Dart
+default initializes the variable with `null`. That's convenient, but obviously
+totally unsafe if the variable's type is non-nullable. So we have to tighten
+things up for non-nullable variables:
 
-*   **Declarações de variáveis de nível superior e de campos estáticos devem ter
-    um inicializador.** Já que estes podem ser acessados e atribuídos de qualquer
-    lugar no programa, é impossível para o compilador garantir que a variável
-    recebeu um valor antes de ser usada. A única opção segura é exigir que a
-    própria declaração tenha uma expressão de inicialização que produza um valor
-    do tipo correto:
+*   **Top level variable and static field declarations must have an
+    initializer.** Since these can be accessed and assigned from anywhere in the
+    program, it's impossible for the compiler to guarantee that the variable has
+    been given a value before it gets used. The only safe option is to require
+    the declaration itself to have an initializing expression that produces a
+    value of the right type:
 
     ```dart
-    // Usando segurança nula:
+    // Using null safety:
     int topLevel = 0;
 
     class SomeClass {
@@ -438,12 +419,12 @@ não-anulável. Portanto, temos que apertar as coisas para variáveis não-anul�
     }
     ```
 
-*   **Campos de instância devem ter um inicializador na declaração, usar um
-    formalizador de inicialização ou ser inicializados na lista de inicialização
-    do construtor.** Isso é muita gíria. Aqui estão os exemplos:
+*   **Instance fields must either have an initializer at the declaration, use an
+    initializing formal, or be initialized in the constructor's initialization
+    list.** That's a lot of jargon. Here are the examples:
 
     ```dart
-    // Usando segurança nula:
+    // Using null safety:
     class SomeClass {
       int atDeclaration = 0;
       int initializingFormal;
@@ -454,14 +435,14 @@ não-anulável. Portanto, temos que apertar as coisas para variáveis não-anul�
     }
     ```
 
-    Em outras palavras, contanto que o campo tenha um valor antes de você
-    atingir o corpo do construtor, está tudo bem.
+    In other words, as long as the field has a value before you reach the
+    constructor body, you're good.
 
-*   Variáveis locais são o caso mais flexível. Uma variável local não-anulável
-    *não* precisa ter um inicializador. Isso é perfeitamente bom:
+*   Local variables are the most flexible case. A non-nullable local variable
+    *doesn't* need to have an initializer. This is perfectly fine:
 
     ```dart
-    // Usando segurança nula:
+    // Using null safety:
     int tracingFibonacci(int n) {
       int result;
       if (n < 2) {
@@ -475,42 +456,39 @@ não-anulável. Portanto, temos que apertar as coisas para variáveis não-anul�
     }
     ```
 
-    A regra é apenas que **uma variável local deve ser *definitivamente
-    atribuída* antes de ser usada.** Podemos confiar na nova análise de fluxo
-    que aludi para isso também. Contanto que cada caminho para o uso de uma
-    variável a inicializa primeiro, o uso está OK.
+    The rule is only that **a local variable must be *definitely assigned*
+    before it is used.** We get to rely on the new flow analysis I alluded to
+    for this as well. As long as every path to a variable's use initializes it
+    first, the use is OK.
 
-*   **Parâmetros opcionais devem ter um valor padrão.** Se você não passar um
-    argumento para um parâmetro posicional ou nomeado opcional, a linguagem o
-    preenche com o valor padrão. Se você não especificar um valor padrão, o valor
-    padrão _default_ é `null`, e isso não funciona se o tipo do parâmetro é
-    não-anulável.
+*   **Optional parameters must have a default value.** If you don't pass an
+    argument for an optional positional or named parameter, then the language
+    fills it in with the default value. If you don't specify a default value,
+    the _default_ default value is `null`, and that doesn't fly if the parameter's
+    type is non-nullable.
 
-    Portanto, se você deseja que um parâmetro seja opcional, você precisa torná-lo
-    anulável ou especificar um valor padrão não-`null` válido.
+    So, if you want a parameter to be optional, you need to either make it
+    nullable or specify a valid non-`null` default value.
 
-Essas restrições parecem trabalhosas, mas não são tão ruins na prática. Elas são
-muito semelhantes às restrições existentes em torno de variáveis `final` e você
-provavelmente tem trabalhado com elas por anos sem nem mesmo perceber. Além
-disso, lembre-se de que elas se aplicam apenas a variáveis *não-anuláveis*. Você
-sempre pode tornar o tipo anulável e então obter a inicialização padrão para
-`null`.
+These restrictions sound onerous, but they aren't too bad in practice. They are
+very similar to the existing restrictions around `final` variables and you've
+likely been working with those for years without even really noticing. Also,
+remember that these only apply to *non-nullable* variables. You can always make
+the type nullable and then get the default initialization to `null`.
 
-Mesmo assim, as regras causam atrito. Felizmente, temos um conjunto de novos
-recursos da linguagem para lubrificar os padrões mais comuns em que essas novas
-limitações o tornam mais lento. Primeiro, porém, é hora de falar sobre análise
-de fluxo.
+Even so, the rules do cause friction. Fortunately, we have a suite of new
+language features to lubricate the most common patterns where these new
+limitations slow you down. First, though, it's time to talk about flow analysis.
 
-## Análise de fluxo {:#flow-analysis}
+## Flow analysis
 
-A [análise de fluxo de controle][control flow analysis] existe em compiladores há anos. Ela fica
-principalmente oculta dos usuários e é usada durante a otimização do compilador,
-mas algumas linguagens mais novas começaram a usar as mesmas técnicas para
-recursos de linguagem visíveis. O Dart já tem uma pitada de análise de fluxo na
-forma de *promoção de tipo*:
+[Control flow analysis][] has been around in compilers for years. It's mostly
+hidden from users and used during compiler optimization, but some newer
+languages have started to use the same techniques for visible language features.
+Dart already has a dash of flow analysis in the form of *type promotion*:
 
 ```dart
-// Com (ou sem) segurança nula:
+// With (or without) null safety:
 bool isEmptyList(Object object) {
   if (object is List) {
     return object.isEmpty; // <-- OK!
@@ -522,86 +500,84 @@ bool isEmptyList(Object object) {
 
 [control flow analysis]: https://en.wikipedia.org/wiki/Control_flow_analysis
 
-Observe como na linha marcada, podemos chamar `isEmpty` em `object`. Esse
-método é definido em `List`, não em `Object`. Isso funciona porque o verificador
-de tipo analisa todas as expressões `is` e os caminhos de fluxo de controle no
-programa. Se o corpo de algum construto de fluxo de controle for executado
-apenas quando uma certa expressão `is` em uma variável é verdadeira, então
-dentro desse corpo o tipo da variável é "promovido" para o tipo testado.
+Note how on the marked line, we can call `isEmpty` on `object`. That method is
+defined on `List`, not `Object`. This works because the type checker looks at
+all of the `is` expressions and the control flow paths in the program. If the
+body of some control flow construct only executes when a certain `is` expression
+on a variable is true, then inside that body the variable's type is "promoted"
+to the tested type.
 
-No exemplo aqui, o branch then da instrução `if` é executado apenas quando
-`object` realmente contém uma lista. Portanto, Dart promove `object` para o
-tipo `List` em vez de seu tipo declarado `Object`. Este é um recurso útil, mas
-é bem limitado. Antes da segurança nula, o programa funcionalmente idêntico
-seguinte não funcionava:
+In the example here, the then branch of the `if` statement only runs when
+`object` actually contains a list. Therefore, Dart promotes `object` to type
+`List` instead of its declared type `Object`. This is a handy feature, but it's
+pretty limited. Prior to null safety, the following functionally identical
+program did not work:
 
 ```dart
-// Sem segurança nula:
+// Without null safety:
 bool isEmptyList(Object object) {
   if (object is! List) return false;
-  return object.isEmpty; // <-- Erro!
+  return object.isEmpty; // <-- Error!
 }
 ```
 
-Novamente, você só pode chegar na chamada `.isEmpty` quando `object` contém uma
-lista, então este programa é dinamicamente correto. Mas as regras de promoção de
-tipo não eram inteligentes o suficiente para ver que a instrução `return`
-significa que a segunda instrução só pode ser alcançada quando `object` é uma
-lista.
+Again, you can only reach the `.isEmpty` call when `object` contains a list, so
+this program is dynamically correct. But the type promotion rules were not smart
+enough to see that the `return` statement means the second statement can only be
+reached when `object` is a list.
 
-Para a segurança nula, pegamos essa análise limitada e a tornamos [muito mais
-poderosa de várias maneiras.][flow analysis]
+For null safety, we've taken this limited analysis and made it [much more
+powerful in several ways.][flow analysis]
 
 [flow analysis]: {{site.repo.dart.lang}}/blob/main/resources/type-system/flow-analysis.md
 
-### Análise de alcançabilidade {:#reachability-analysis}
+### Reachability analysis
 
-Primeiramente, corrigimos a [reclamação de longa data][18921] de que a promoção
-de tipo não é inteligente sobre retornos antecipados e outros caminhos de código
-inalcançáveis. Ao analisar uma função, ela agora leva em consideração `return`,
-`break`, `throw` e qualquer outra forma de a execução terminar prematuramente em
-uma função. Sob segurança nula, esta função:
+First off, we fixed the [long-standing complaint][18921] that type promotion
+isn't smart about early returns and other unreachable code paths. When analyzing
+a function, it now takes into account `return`, `break`, `throw`, and any other
+way execution might terminate early in a function. Under null safety, this function:
 
 [18921]: {{site.repo.dart.sdk}}/issues/18921
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 bool isEmptyList(Object object) {
   if (object is! List) return false;
   return object.isEmpty;
 }
 ```
 
-Agora é perfeitamente válida. Já que a instrução `if` sairá da função quando
-`object` *não* for uma `List`, Dart promove `object` para ser `List` na
-segunda instrução. Esta é uma melhoria muito boa que ajuda muito no código Dart,
-até mesmo em coisas não relacionadas à nulidade.
+Is now perfectly valid. Since the `if` statement will exit the function when
+`object` is *not* a `List`, Dart promotes `object` to be `List` on the second
+statement. This is a really nice improvement that helps a lot of Dart code, even
+stuff not related to nullability.
 
-### Never para código inalcançável {:#never-for-unreachable-code}
+### Never for unreachable code
 
-Você também pode *programar* essa análise de alcançabilidade. O novo tipo
-bottom `Never` não tem valores. (Que tipo de valor é simultaneamente um
-`String`, `bool` e `int`?) Então, o que significa uma expressão ter o tipo
-`Never`? Isso significa que a expressão nunca pode terminar de ser avaliada com
-sucesso. Ele deve lançar uma exceção, abortar ou garantir que o código
-circundante que espera o resultado da expressão nunca seja executado.
+You can also *program* this reachability analysis. The new bottom type `Never`
+has no values. (What kind of value is simultaneously a `String`, `bool`, and
+`int`?) So what does it mean for an expression to have type `Never`? It means
+that expression can never successfully finish evaluating. It must throw an
+exception, abort, or otherwise ensure that the surrounding code expecting the
+result of the expression never runs.
 
-De fato, de acordo com a linguagem, o tipo estático de uma expressão `throw` é
-`Never`. O tipo `Never` é declarado nas bibliotecas principais e você pode usá-lo
-como uma anotação de tipo. Talvez você tenha uma função auxiliar para facilitar
-o lançamento de um certo tipo de exceção:
+In fact, according to the language, the static type of a `throw` expression is
+`Never`. The type `Never` is declared in the core libraries and you can use it
+as a type annotation. Maybe you have a helper function to make it easier to
+throw a certain kind of exception:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 Never wrongType(String type, Object value) {
-  throw ArgumentError('Esperado $type, mas era ${value.runtimeType}.');
+  throw ArgumentError('Expected $type, but was ${value.runtimeType}.');
 }
 ```
 
-Você pode usá-lo assim:
+You might use it like so:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Point {
   final int x, y;
 
@@ -626,28 +602,27 @@ analysis knows that the declared type of `wrongType()` is `Never` which means
 the then branch of the `if` statement *must* abort somehow. Since the final
 statement can only be reached when `other` is a `Point`, Dart promotes it.
 
-Em outras palavras, usar `Never` em suas próprias APIs permite que você estenda
-a análise de alcançabilidade do Dart.
+In other words, using `Never` in your own APIs lets you extend Dart's
+reachability analysis.
 
-### Análise de atribuição definitiva {:#definite-assignment-analysis}
+### Definite assignment analysis
 
-Eu mencionei isso brevemente com variáveis locais. O Dart precisa garantir que
-uma variável local não-anulável seja sempre inicializada antes de ser lida.
-Usamos a *análise de atribuição definitiva* para ser o mais flexível possível
-sobre isso. A linguagem analisa cada corpo de função e rastreia as atribuições a
-variáveis locais e parâmetros através de todos os caminhos de fluxo de controle.
-Contanto que a variável seja atribuída em todos os caminhos que atingem algum
-uso de uma variável, a variável é considerada inicializada. Isso permite que
-você declare uma variável sem um inicializador e a inicialize posteriormente
-usando um fluxo de controle complexo, mesmo quando a variável tem um tipo
-não-anulável.
+I mentioned this one briefly with local variables. Dart needs to ensure a
+non-nullable local variable is always initialized before it is read. We use
+*definite assignment analysis* to be as flexible about that as possible. The
+language analyzes each function body and tracks the assignments to local
+variables and parameters through all control flow paths. As long as the variable
+is assigned on every path that reaches some use of a variable, the variable is
+considered initialized. This lets you declare a variable with no initializer and
+then initialize it afterwards using complex control flow, even when the variable
+has a non-nullable type.
 
-Também usamos análise de atribuição definitiva para tornar as variáveis *final*
-mais flexíveis. Antes da segurança nula, pode ser difícil usar `final` para
-variáveis locais se você precisar inicializá-las de alguma forma interessante:
+We also use definite assignment analysis to make *final* variables more
+flexible. Before null safety, it can be difficult to use `final` for local
+variables if you need to initialize them in any sort of interesting way:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 int tracingFibonacci(int n) {
   final int result;
   if (n < 2) {
@@ -661,32 +636,32 @@ int tracingFibonacci(int n) {
 }
 ```
 
-Isso seria um erro, pois a variável `result` é `final` mas não tem
-inicializador. Com a análise de fluxo mais inteligente sob segurança nula, este
-programa está bom. A análise pode dizer que `result` é definitivamente
-inicializado exatamente uma vez em cada caminho de fluxo de controle, então as
-restrições para marcar uma variável como `final` são satisfeitas.
+This would be an error since the `result` variable is `final` but has no
+initializer. With the smarter flow analysis under null safety, this program is
+fine. The analysis can tell that `result` is definitely initialized exactly once
+on every control flow path, so the constraints for marking a variable `final`
+are satisfied.
 
-### Promoção de Tipo em Verificações de Nulo {:#type-promotion-on-null-checks}
+### Type promotion on null checks
 
-A análise de fluxo (flow analysis) mais inteligente ajuda muito o código Dart,
-mesmo códigos não relacionados à anulabilidade. Mas não é coincidência que estamos
-fazendo essas mudanças agora. Nós particionamos os tipos em conjuntos anuláveis
-e não anuláveis. Se você tem um valor de um tipo anulável, você realmente não
-pode *fazer* nada de útil com ele. Nos casos em que o valor *é* `null`, essa
-restrição é boa. Ela está impedindo você de ter erros.
+The smarter flow analysis helps lots of Dart code, even code not related to
+nullability. But it's not a coincidence that we're making these changes now. We
+have partitioned types into nullable and non-nullable sets. If you have a value
+of a nullable type, you can't really *do* anything useful with it. In cases
+where the value *is* `null`, that restriction is good. It's preventing you from
+crashing.
 
-Mas se o valor não é `null`, seria bom poder movê-lo para o lado não anulável
-para que você possa chamar métodos nele. A análise de fluxo é uma das principais
-maneiras de fazer isso para variáveis locais e parâmetros (e campos `private final`,
-a partir do Dart 3.2). Estendemos a promoção de tipo para também observar
-expressões `== null` e `!= null`.
+But if the value isn't `null`, it would be good to be able to move it over to
+the non-nullable side so you can call methods on it. Flow analysis is one of the
+primary ways to do this for local variables and parameters
+(and private final fields, as of Dart 3.2). We've extended type
+promotion to also look at `== null` and `!= null` expressions.
 
-Se você verificar uma variável local com tipo anulável para ver se ela não é `null`,
-o Dart então promove a variável para o tipo não anulável subjacente (underlying):
+If you check a local variable with nullable type to see if it is not `null`, 
+Dart then promotes the variable to the underlying non-nullable type:
 
 ```dart
-// Usando null safety:
+// Using null safety:
 String makeCommand(String executable, [List<String>? arguments]) {
   var result = executable;
   if (arguments != null) {
@@ -696,24 +671,23 @@ String makeCommand(String executable, [List<String>? arguments]) {
 }
 ```
 
-Aqui, `arguments` tem um tipo anulável. Normalmente, isso impede que você chame
-`.join()` nele. Mas como nós protegemos essa chamada em uma instrução `if` que
-verifica para garantir que o valor não é `null`, o Dart o promove de `List<String>?`
-para `List<String>` e permite que você chame métodos nele ou o passe para funções
-que esperam listas não anuláveis.
+Here, `arguments` has a nullable type. Normally, that prohibits you from calling
+`.join()` on it. But because we have guarded that call in an `if` statement that
+checks to ensure the value is not `null`, Dart promotes it from `List<String>?`
+to `List<String>` and lets you call methods on it or pass it to functions that
+expect non-nullable lists.
 
-Isso parece algo relativamente pequeno, mas essa promoção baseada em fluxo em
-verificações de nulo é o que faz a maior parte do código Dart existente funcionar
-sob null safety. A maior parte do código Dart *é* dinamicamente correto e evita
-lançar erros de referência nula verificando se há `null` antes de chamar métodos.
-A nova análise de fluxo em verificações de nulo transforma essa correção *dinâmica*
-em correção *estática* comprovável.
+This sounds like a fairly minor thing, but this flow-based promotion on null
+checks is what makes most existing Dart code work under null safety. Most Dart
+code *is* dynamically correct and does avoid throwing null reference errors by
+checking for `null` before calling methods. The new flow analysis on null checks
+turns that *dynamic* correctness into provable *static* correctness.
 
-Ela também, é claro, funciona com a análise mais inteligente que fazemos para a
-acessibilidade. A função acima pode ser escrita da mesma forma como:
+It also, of course, works with the smarter analysis we do for reachability. The
+above function can be written just as well as:
 
 ```dart
-// Usando null safety:
+// Using null safety:
 String makeCommand(String executable, [List<String>? arguments]) {
   var result = executable;
   if (arguments == null) return result;
@@ -729,20 +703,20 @@ promotion. The general goal is that if the code is dynamically correct and it's
 reasonable to figure that out statically, the analysis should be clever enough
 to do so.
 
-Observe que a promoção de tipo originalmente só funcionava em variáveis locais,
-e agora também funciona em campos `private final` a partir do Dart 3.2. Para mais
-informações sobre como trabalhar com variáveis não locais,
-veja [Trabalhando com campos anuláveis](#working-with-nullable-fields).
+Note that type promotion originally only worked on local variables,
+and now also works on private final fields as of Dart 3.2.
+For more information about working with non-local variables,
+see [Working with nullable fields](#working-with-nullable-fields).
 
-### Avisos de código desnecessário {:#unnecessary-code-warnings}
+### Unnecessary code warnings
 
-Ter uma análise de acessibilidade mais inteligente e saber onde `null` pode
-fluir pelo seu programa ajuda a garantir que você *adicione* código para lidar
-com `null`. Mas também podemos usar essa mesma análise para detectar códigos
-que você *não* precisa. Antes do null safety, se você escrevesse algo como:
+Having smarter reachability analysis and knowing where `null` can flow through
+your program helps ensure that you *add* code to handle `null`. But we can also
+use that same analysis to detect code that you *don't* need. Before null safety,
+if you wrote something like:
 
 ```dart
-// Usando null safety:
+// Using null safety:
 String checkList(List<Object> list) {
   if (list?.isEmpty ?? false) {
     return 'Got nothing';
@@ -751,23 +725,23 @@ String checkList(List<Object> list) {
 }
 ```
 
-O Dart não tinha como saber se esse operador `?.` null-aware é útil ou não.
-Pelo  que sabe, você poderia passar `null` para a função. Mas no Dart com null
-safety , se você anotou essa função com o tipo agora não anulável `List`, então
-ele sab e que `list` nunca será `null`. Isso implica que `?.` nunca fará nada de
-útil e  você pode e deve usar apenas `.`.
+Dart had no way of knowing if that null-aware `?.` operator is useful or not.
+For all it knows, you could pass `null` to the function. But in null-safe Dart,
+if you have annotated that function with the now non-nullable `List` type, then
+it knows `list` will never be `null`. That implies the `?.` will never do
+anything useful and you can and should just use `.`.
 
-Para ajudá-lo a simplificar seu código, adici onamos avisos para código desnecessário
-como esse agora que a análise estática é  precisa o suficiente para detectá-lo.
-Usar um operador null-aware ou mesmo uma  verificação como `== null` ou `!= null`
-em um tipo não anulável é reportado como  um aviso.
+To help you simplify your code, we've added warnings for unnecessary code like
+this now that the static analysis is precise enough to detect it. Using a
+null-aware operator or even a check like `== null` or `!= null` on a
+non-nullable type gets reported as a warning.
 
-E, claro, isso também se aplica à promoção de tipo não anulável. Uma vez que uma
-variável é promovida a um tipo não anulável, você recebe um aviso se a verificar
-redundantemente novamente para `null`:
+And, of course, this plays with non-nullable type promotion too. Once a
+variable has been promoted to a non-nullable type, you get a warning if you
+redundantly check it again for `null`:
 
 ```dart
-// Usando null safety:
+// Using null safety:
 String checkList(List<Object>? list) {
   if (list == null) return 'No list';
   if (list?.isEmpty ?? false) {
@@ -777,130 +751,131 @@ String checkList(List<Object>? list) {
 }
 ```
 
-Você recebe um aviso em `?.` aqui porque no ponto em que ele é executado, já
-sabemos que `list` não pode ser `null`. O objetivo com esses avisos não é apenas
-limpar código sem sentido. Ao remover verificações *desnecessárias* para `null`,
-garantimos que as verificações significativas restantes se destaquem. Queremos
-que você seja capaz de olhar para o seu código e *ver* onde `null` pode fluir.
+You get a warning on the `?.` here because at the point that it executes, we
+already know `list` cannot be `null`. The goal with these warnings is not just
+to clean up pointless code. By removing *unneeded* checks for `null`, we ensure
+that the remaining meaningful checks stand out. We want you to be able to look
+at your code and *see* where `null` can flow.
 
-## Trabalhando com tipos anuláveis {:#working-with-nullable-types}
+## Working with nullable types
 
-Agora nós agrupamos `null` no conjunto de tipos anuláveis. Com análise de fluxo,
-podemos com segurança deixar alguns valores não `null` passarem para o lado não
-anulável, onde podemos usá-los. Esse é um grande passo, mas se pararmos aqui, o
-sistema resultante ainda é dolorosamente restritivo. A análise de fluxo só ajuda
-com locais, parâmetros e campos `private final`.
+We've now corralled `null` into the set of nullable types. With flow analysis,
+we can safely let some non-`null` values hop over the fence to the non-nullable
+side where we can use them. That's a big step, but if we stop here, the
+resulting system is still painfully restrictive. Flow analysis only helps with
+locals, parameters, and private final fields.
 
-Para tentar recuperar o máximo possível da flexibilidade que o Dart tinha antes
-do null safety—e para ir além em alguns lugares—temos um punhado de outros
-novos recursos.
+To try to regain as much of the flexibility that Dart had before null
+safety—and to go beyond it in some places—we have a handful of other
+new features.
 
-### Métodos Null-aware mais inteligentes {:#smarter-null-aware-methods}
+### Smarter null-aware methods
 
-O operador null aware `?.` do Dart é muito mais antigo que o null safety.
-A semântica de tempo de execução afirma que se o receptor for `null`, então
-o acesso à propriedade no lado direito é ignorado e a expressão avalia para `null`:
+Dart's null aware operator `?.` is much older than null safety. The runtime
+semantics state that if the receiver is `null` then the property access on the
+right-hand side is skipped and the expression evaluates to `null`:
 
 ```dart
-// Sem null safety:
+// Without null safety:
 String notAString = null;
 print(notAString?.length);
 ```
 
-Em vez de lançar uma exceção, isso imprime "null". O operador null-aware é uma
-boa ferramenta para tornar os tipos anuláveis utilizáveis no Dart. Embora não
-possamos deixar você chamar métodos em tipos anuláveis, podemos e deixamos você
-usar operadores null-aware neles. A versão pós-null safety do programa é:
+Instead of throwing an exception, this prints "null". The null-aware operator is
+a nice tool for making nullable types usable in Dart. While we can't let you
+call methods on nullable types, we can and do let you use null-aware operators
+on them. The post-null safety version of the program is:
 
 ```dart
-// Usando null safety:
+// Using null safety:
 String? notAString = null;
 print(notAString?.length);
 ```
 
-Funciona exatamente como o anterior.
+It works just like the previous one.
 
-No entanto, se você já usou operadores null-aware no Dart, provavelmente encontrou
-um incômodo ao usá-los em cadeias de métodos. Digamos que você queira ver se o
-tamanho de uma string potencialmente ausente é um número par (não é um problema
-particularmente realista, eu sei, mas colabore comigo aqui):
+However, if you've ever used null-aware operators in Dart, you've probably
+encountered an annoyance when using them in method chains. Let's say you want to
+see if the length of a potentially absent string is an even number (not a
+particularly realistic problem, I know, but work with me here):
 
 ```dart
-// Usando null safety:
+// Using null safety:
 String? notAString = null;
 print(notAString?.length.isEven);
 ```
 
-Mesmo que este programa use `?.`, ele ainda lança uma exceção em tempo de execução.
-O problema é que o receptor da expressão `.isEven` é o resultado de toda a
-expressão `notAString?.length` à sua esquerda. Essa expressão avalia para `null`,
-então obtemos um erro de referência nula ao tentar chamar `.isEven`. Se você
-já usou `?.` no Dart, provavelmente aprendeu da maneira difícil que você tem que
-aplicar o operador null-aware a *toda* propriedade ou método em uma cadeia
-depois de usá-lo uma vez:
+Even though this program uses `?.`, it still throws an exception at runtime. The
+problem is that the receiver of the `.isEven` expression is the result of the
+entire `notAString?.length` expression to its left. That expression evaluates to
+`null`, so we get a null reference error trying to call `.isEven`. If you've
+ever used `?.` in Dart, you probably learned the hard way that you have to apply
+the null-aware operator to *every* property or method in a chain after you use
+it once:
 
 ```dart
 String? notAString = null;
 print(notAString?.length?.isEven);
 ```
 
-Isso é irritante, mas, pior, obscurece informações importantes. Considere:
+This is annoying, but, worse, it obscures important information. Consider:
 
 ```dart
-// Usando null safety:
+// Using null safety:
 showGizmo(Thing? thing) {
   print(thing?.doohickey?.gizmo);
 }
 ```
 
-Aqui está uma pergunta para você: O getter `doohickey` em `Thing` pode retornar
-`null`? Parece que *poderia* porque você está usando `?.` no resultado. Mas pode
-ser apenas que o segundo `?.` esteja lá apenas para lidar com casos onde `thing`
-é `null`, não o resultado de `doohickey`. Você não pode dizer.
+Here's a question for you: Can the `doohickey` getter on `Thing` return `null`?
+It looks like it *could* because you're using `?.` on the result. But it may
+just be that the second `?.` is only there to handle cases where `thing` is
+`null`, not the result of `doohickey`. You can't tell.
 
-Para resolver isso, pegamos emprestada uma ideia inteligente do design do C#
-para o mesmo recurso. Quando você usa um operador null-aware em uma cadeia de
-métodos, se o receptor avaliar para `null`, então *todo o resto da cadeia de
-métodos é curto-circuitado e ignorado*. Isso significa que, se `doohickey`
-tiver um tipo de retorno não anulável, você pode e deve escrever:
+To address this, we borrowed a smart idea from C#'s design of the same feature.
+When you use a null-aware operator in a method chain, if the receiver evaluates
+to `null`, then *the entire rest of the method chain is short-circuited and
+skipped*. This means if `doohickey` has a non-nullable return type, then you
+can and should write:
 
 ```dart
-// Usando null safety:
+// Using null safety:
 void showGizmo(Thing? thing) {
   print(thing?.doohickey.gizmo);
 }
 ```
 
-Na verdade, você receberá um aviso de código desnecessário no segundo `?.` se
-não o fizer. Se você vir um código como:
+In fact, you'll get an unnecessary code warning on the second `?.` if you
+don't. If you see code like:
 
 ```dart
-// Usando null safety:
+// Using null safety:
 void showGizmo(Thing? thing) {
   print(thing?.doohickey?.gizmo);
 }
 ```
-Então você sabe com certeza que significa que `doohickey` em si tem um tipo de
-retorno anulável. Cada `?.` corresponde a um caminho *único* que pode fazer com
-que `null` flua para a cadeia de métodos. Isso torna os operadores que reconhecem
-nulos em cadeias de métodos mais concisos e mais precisos.
 
-Enquanto estávamos nisso, adicionamos mais alguns operadores que reconhecem nulos:
+Then you know for certain it means that `doohickey` itself has a nullable return
+type. Each `?.` corresponds to a *unique* path that can cause `null` to flow
+into the method chain. This makes null-aware operators in method chains both
+more terse and more precise.
+
+While we were at it, we added a couple of other null-aware operators:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 
-// Cascade que reconhece nulo:
+// Null-aware cascade:
 receiver?..method();
 
-// Operador de índice que reconhece nulo:
+// Null-aware index operator:
 receiver?[index];
 ```
 
-Não há um operador de chamada de função que reconheça nulo, mas você pode escrever:
+There isn't a null-aware function call operator, but you can write:
 
 ```dart
-// Permitido com ou sem segurança nula:
+// Allowed with or without null safety:
 function?.call(arg1, arg2);
 ```
 
@@ -909,16 +884,16 @@ function?.call(arg1, arg2);
 
 ### Not-null assertion operator
 
-O interessante sobre usar a análise de fluxo para mover uma variável anulável para
-o lado não anulável do mundo é que fazer isso é comprovadamente seguro. Você pode
-chamar métodos na variável anteriormente anulável sem abrir mão da segurança ou do
-desempenho de tipos não anuláveis.
+The great thing about using flow analysis to move a nullable variable to the
+non-nullable side of the world is that doing so is provably safe. You get to
+call methods on the previously-nullable variable without giving up any of the
+safety or performance of non-nullable types.
 
-Mas muitos usos válidos de tipos anuláveis não podem ser *comprovados* como
-seguros de uma forma que agrade a análise estática. Por exemplo:
+But many valid uses of nullable types can't be *proven* to be safe in a way that
+pleases static analysis. For example:
 
 ```dart
-// Usando segurança nula, incorretamente:
+// Using null safety, incorrectly:
 class HttpResponse {
   final int code;
   final String? error;
@@ -938,59 +913,59 @@ class HttpResponse {
 }
 ```
 
-Se você tentar executar isso, receberá um erro de compilação na chamada para `toUpperCase()`.
-O campo `error` é anulável porque não terá um valor em uma resposta bem-sucedida.
-Podemos ver ao inspecionar a classe que nunca acessamos a mensagem `error` quando
-ela é `null`. Mas isso requer entender a relação entre o valor de `code` e a
-anulabilidade de `error`. O verificador de tipo não consegue ver essa conexão.
+If you try to run this, you get a compile error on the call to `toUpperCase()`.
+The `error` field is nullable because it won't have a value in a successful
+response. We can see by inspecting the class that we never access the `error`
+message when it is `null`. But that requires understanding the relationship
+between the value of `code` and the nullability of `error`. The type checker
+can't see that connection.
 
-Em outras palavras, nós, mantenedores humanos do código, *sabemos* que error não
-será `null` no ponto em que o usamos e precisamos de uma maneira de afirmar isso.
-Normalmente, você afirma tipos usando um cast `as`, e você pode fazer a mesma
-coisa aqui:
+In other words, we human maintainers of the code *know* that error won't be
+`null` at the point that we use it and we need a way to assert that. Normally,
+you assert types using an `as` cast, and you can do the same thing here:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 String toString() {
   if (code == 200) return 'OK';
   return 'ERROR $code ${(error as String).toUpperCase()}';
 }
 ```
 
-Converter `error` para o tipo `String` não anulável lançará uma exceção em tempo
-de execução se o cast falhar. Caso contrário, ele nos fornece uma string não
-anulável na qual podemos então chamar métodos.
+Casting `error` to the non-nullable `String` type will throw a runtime exception
+if the cast fails. Otherwise, it gives us a non-nullable string that we can then
+call methods on.
 
-"Remover a anulabilidade" aparece com frequência suficiente para termos uma nova
-sintaxe abreviada. Um ponto de exclamação sufixo (`!`) pega a expressão à
-esquerda e a converte para seu tipo não anulável subjacente. Portanto, a função
-acima é equivalente a:
+"Casting away nullability" comes up often enough that we have a new shorthand
+syntax. A postfix exclamation mark (`!`) takes the expression on the left and
+casts it to its underlying non-nullable type. So the above function is
+equivalent to:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 String toString() {
   if (code == 200) return 'OK';
   return 'ERROR $code ${error!.toUpperCase()}';
 }
 ```
 
-Este "operador bang" de um caractere é particularmente útil quando o tipo
-subjacente é verboso. Seria muito irritante ter que escrever `as
-Map<TransactionProviderFactory, List<Set<ResponseFilter>>>` apenas para remover um
-único `?` de algum tipo.
+This one-character "bang operator" is particularly handy when the underlying
+type is verbose. It would be really annoying to have to write `as
+Map<TransactionProviderFactory, List<Set<ResponseFilter>>>` just to cast away a
+single `?` from some type.
 
-Claro, como qualquer cast, usar `!` vem com uma perda de segurança estática. O
-cast deve ser verificado em tempo de execução para preservar a integridade e
-pode falhar e lançar uma exceção. Mas você tem controle sobre onde esses casts
-são inseridos e sempre pode vê-los ao percorrer seu código.
+Of course, like any cast, using `!` comes with a loss of static safety. The cast
+must be checked at runtime to preserve soundness and it may fail and throw an
+exception. But you have control over where these casts are inserted, and you can
+always see them by looking through your code.
 
-### Variáveis late (tardias) {:#late-variables}
+### Late variables
 
-O lugar mais comum onde o verificador de tipo não pode provar a segurança do código
-é em torno de variáveis de nível superior e campos. Aqui está um exemplo:
+The most common place where the type checker cannot prove the safety of code is
+around top-level variables and fields. Here is an example:
 
 ```dart
-// Usando segurança nula, incorretamente:
+// Using null safety, incorrectly:
 class Coffee {
   String _temperature;
 
@@ -1007,22 +982,22 @@ void main() {
 }
 ```
 
-Aqui, o método `heat()` é chamado antes de `serve()`. Isso significa que
-`_temperature` será inicializado com um valor não nulo antes de ser usado. Mas
-não é viável para uma análise estática determinar isso. (Pode ser possível para
-um exemplo trivial como este, mas o caso geral de tentar rastrear o estado de
-cada instância de uma classe é intratável.)
+Here, the `heat()` method is called before `serve()`. That means `_temperature`
+will be initialized to a non-null value before it is used. But it's not feasible
+for a static analysis to determine that. (It might be possible for a trivial
+example like this one, but the general case of trying to track the state of each
+instance of a class is intractable.)
 
-Como o verificador de tipo não pode analisar usos de campos e variáveis de nível
-superior, ele tem uma regra conservadora de que campos não anuláveis devem ser
-inicializados em sua declaração (ou na lista de inicialização do construtor para
-campos de instância). Portanto, o Dart relata um erro de compilação nesta classe.
+Because the type checker can't analyze uses of fields and top-level variables,
+it has a conservative rule that non-nullable fields have to be initialized
+either at their declaration (or in the constructor initialization list for
+instance fields). So Dart reports a compile error on this class.
 
 You can fix the error by making the field nullable and then
 using not-null assertion operators on the uses:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Coffee {
   String? _temperature;
 
@@ -1033,16 +1008,16 @@ class Coffee {
 }
 ```
 
-Isso funciona bem. Mas envia um sinal confuso para o mantenedor da classe. Ao
-marcar `_temperature` como anulável, você está a implicar que `null` é um valor
-útil e significativo para esse campo. Mas essa não é a intenção. O campo
-`_temperature` nunca deve ser *observado* em seu estado `null`.
+This works fine. But it sends a confusing signal to the maintainer of the class.
+By marking `_temperature` nullable, you imply that `null` is a useful,
+meaningful value for that field. But that's not the intent. The `_temperature`
+field should never be *observed* in its `null` state.
 
-Para lidar com o padrão comum de estado com inicialização atrasada, adicionamos
-um novo modificador, `late` (tardio). Você pode usá-lo assim:
+To handle the common pattern of state with delayed initialization, we've added a
+new modifier, `late`. You can use it like this:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Coffee {
   late String _temperature;
 
@@ -1062,56 +1037,54 @@ but I think of it like this: The `late` modifier means
 It's almost like the word "late" describes *when*
 it enforces the variable's guarantees.
 
-Nesse caso, como o campo não está definitivamente inicializado, cada vez que o
-campo é lido, uma verificação em tempo de execução é inserida para garantir que
-ele recebeu um valor. Caso contrário, uma exceção é lançada. Dar à variável o
-tipo `String` significa "você nunca deve me ver com um valor diferente de uma
-string" e o modificador `late` significa "verifique isso em tempo de execução".
+In this case, since the field is not definitely initialized, every time the
+field is read, a runtime check is inserted to make sure it has been assigned a
+value. If it hasn't, an exception is thrown. Giving the variable the type
+`String` means "you should never see me with a value other than a string" and
+the `late` modifier means "verify that at runtime".
 
-De certa forma, o modificador `late` é mais "mágico" do que usar `?` porque
-qualquer uso do campo pode falhar e não há nada textualmente visível no local de
-uso. Mas você *tem* que escrever `late` na declaração para obter esse
-comportamento, e nossa crença é que ver o modificador lá é explícito o suficiente
-para que isso seja sustentável.
+In some ways, the `late` modifier is more "magical" than using `?` because any
+use of the field could fail, and there isn't anything textually visible at the
+use site. But you *do* have to write `late` at the declaration to get this
+behavior, and our belief is that seeing the modifier there is explicit enough
+for this to be maintainable.
 
-Em troca, você obtém uma segurança estática melhor do que usar um tipo anulável.
-Como o tipo do campo agora é não anulável, é um erro de *compilação* tentar
-atribuir `null` ou uma `String` anulável ao campo. O modificador `late` permite
-que você *adie* a inicialização, mas ainda o proíbe de tratá-la como uma variável
-anulável.
+In return, you get better static safety than using a nullable type. Because the
+field's type is non-nullable now, it is a *compile* error to try to assign
+`null` or a nullable `String` to the field. The `late` modifier lets you *defer*
+initialization, but still prohibits you from treating it like a nullable
+variable.
 
-### Inicialização tardia (lazy) {:#lazy-initialization}
+### Lazy initialization
 
-O modificador `late` também tem alguns outros poderes especiais. Pode parecer
-paradoxal, mas você pode usar `late` em um campo que tenha um inicializador:
+The `late` modifier has some other special powers too. It may seem paradoxical,
+but you can use `late` on a field that has an initializer:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Weather {
   late int _temperature = _readThermometer();
 }
 ```
 
-Quando você faz isso, o inicializador se torna *lazy* (preguiçoso). Em vez de
-executá-lo assim que a instância é construída, ele é adiado e executado
-preguiçosamente na primeira vez que o campo é acessado. Em outras palavras, ele
-funciona exatamente como um inicializador em uma variável de nível superior ou
-campo estático. Isso pode ser útil quando a expressão de inicialização é cara e
-pode não ser necessária.
+When you do this, the initializer becomes *lazy*. Instead of running it as soon
+as the instance is constructed, it is deferred and run lazily the first time the
+field is accessed. In other words, it works exactly like an initializer on a
+top-level variable or static field. This can be handy when the initialization
+expression is costly and may not be needed.
 
-Executar o inicializador preguiçosamente oferece um bônus extra quando você usa
-`late` em um campo de instância. Normalmente, os inicializadores de campo de
-instância não podem acessar `this` porque você não tem acesso ao novo objeto até
-que todos os inicializadores de campo sejam concluídos. Mas com um campo `late`,
-isso não é mais verdade, então você *pode* acessar `this`, chamar métodos ou
-acessar campos na instância.
+Running the initializer lazily gives you an extra bonus when you use `late` on
+an instance field. Usually instance field initializers cannot access `this`
+because you don't have access to the new object until all field initializers
+have completed. But with a `late` field, that's no longer true, so you *can*
+access `this`, call methods, or access fields on the instance.
 
-### Variáveis late final {:#late-final-variables}
+### Late final variables
 
-Você também pode combinar `late` com `final`:
+You can also combine `late` with `final`:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Coffee {
   late final String _temperature;
 
@@ -1122,67 +1095,69 @@ class Coffee {
 }
 ```
 
-Ao contrário dos campos `final` normais, você não precisa inicializar o campo em
-sua declaração ou na lista de inicialização do construtor. Você pode atribuir a
-ele mais tarde em tempo de execução. Mas você só pode atribuir a ele *uma vez*, e
-esse fato é verificado em tempo de execução. Se você tentar atribuir a ele mais
-de uma vez — como chamar `heat()` e `chill()` aqui — a segunda atribuição lança
-uma exceção. Esta é uma ótima maneira de modelar um estado que é inicializado
-eventualmente e é imutável depois disso.
+Unlike normal `final` fields, you do not have to initialize the field in its
+declaration or in the constructor initialization list. You can assign to it
+later at runtime. But you can only assign to it *once*, and that fact is checked
+at runtime. If you try to assign to it more than once—like calling both
+`heat()` and `chill()` here—the second assignment throws an exception.
+This is a great way to model state that gets initialized eventually and is
+immutable afterwards.
 
-Em outras palavras, o novo modificador `late` em combinação com os outros
-modificadores de variável do Dart cobre a maior parte do espaço de recursos do
-`lateinit` em Kotlin e `lazy` em Swift. Você pode até mesmo usá-lo em variáveis
-locais se quiser uma pequena avaliação local preguiçosa.
+In other words, the new `late` modifier in combination with Dart's other
+variable modifiers covers most of the feature space of `lateinit` in Kotlin and
+`lazy` in Swift. You can even use it on local variables if you want a little
+local lazy evaluation.
 
-### Parâmetros nomeados obrigatórios {:#required-named-parameters}
+### Required named parameters
 
-Para garantir que você nunca veja um parâmetro `null` com um tipo não anulável,
-o verificador de tipo exige que todos os parâmetros opcionais tenham um tipo
-anulável ou um valor padrão. E se você quiser ter um parâmetro nomeado com um
-tipo não anulável e nenhum valor padrão? Isso implicaria que você deseja exigir
-que o chamador sempre o passe. Em outras palavras, você quer um parâmetro que
-seja *nomeado*, mas não opcional.
+To guarantee that you never see a `null` parameter with a non-nullable type, the
+type checker requires all optional parameters to either have a nullable type or
+a default value. What if you want to have a named parameter with a non-nullable
+type and no default value? That would imply that you want to require the caller
+to *always* pass it. In other words, you want a parameter that is *named*
+but not optional.
 
-Eu visualizo os vários tipos de parâmetros do Dart com esta tabela:
+I visualize the various kinds of Dart parameters with this table:
 
 ```plaintext
-             obrigatório    opcional
+             mandatory    optional
             +------------+------------+
-posicional  | f(int x)   | f([int x]) |
+positional  | f(int x)   | f([int x]) |
             +------------+------------+
-nomeado     | ???        | f({int x}) |
+named       | ???        | f({int x}) |
             +------------+------------+
 ```
 
-Por razões não claras, o Dart há muito tempo suporta três cantos desta tabela,
-mas deixou a combinação de nomeado+obrigatório vazia. Com segurança nula, nós a
-preenchemos. Você declara um parâmetro nomeado obrigatório colocando `required`
-antes do parâmetro:
+For unclear reasons, Dart has long supported three corners of this table but
+left the combination of named+mandatory empty. With null safety, we filled that
+in. You declare a required named parameter by placing `required` before the
+parameter:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 function({int? a, required int? b, int? c, required int? d}) {}
 ```
 
-Aqui, todos os parâmetros devem ser passados por nome. Os parâmetros `a` e `c`
-são opcionais e podem ser omitidos. Os parâmetros `b` e `d` são obrigatórios e
-devem ser passados. Observe que a obrigatoriedade é independente da anulabilidade.
-Você pode ter parâmetros nomeados obrigatórios de tipos anuláveis e parâmetros
-nomeados opcionais de tipos não anuláveis (se eles tiverem um valor padrão).
+Here, all the parameters must be passed by name. The parameters `a` and `c` are
+optional and can be omitted. The parameters `b` and `d` are required and must
+be passed. Note that required-ness is independent of nullability. You can have
+required named parameters of nullable types, and optional named parameters of
+non-nullable types (if they have a default value).
 
-Este é outro daqueles recursos que eu acho que torna o Dart melhor
-independentemente da segurança nula. Simplesmente faz com que a linguagem pareça
-mais completa para mim.
+This is another one of those features that I think makes Dart better regardless
+of null safety. It simply makes the language feel more complete to me.
 
-### Campos abstratos {:#abstract-fields}
+### Abstract fields
 
-Um dos recursos interessantes do Dart é que ele mantém uma coisa chamada
-[princípio de acesso uniforme][uniform access principle]. Em termos humanos, isso significa que
-campos são indistinguíveis de getters e setters. É um detalhe de implementação
-se uma "propriedade" em alguma classe Dart é calculada ou armazenada. Por
-causa disso, ao definir uma interface usando uma classe abstrata, é típico usar
-uma declaração de campo:
+One of the neat features of Dart is that
+it upholds a thing called the [uniform access principle][].
+In human terms it means that
+fields are indistinguishable from getters and setters.
+It's an implementation detail whether a "property" in some Dart class
+is computed or stored.
+Because of this,
+when defining an interface using an abstract class,
+it's typical to use a field declaration:
 
 [uniform access principle]: https://en.wikipedia.org/wiki/Uniform_access_principle
 
@@ -1192,8 +1167,8 @@ abstract class Cup {
 }
 ```
 
-A intenção é que os usuários apenas implementem essa classe e não a estendam. A
-sintaxe de campo é simplesmente uma forma mais curta de escrever um par getter/setter:
+The intent is that users only implement that class and don't extend it.
+The field syntax is simply a shorter way of writing a getter/setter pair:
 
 ```dart
 abstract class Cup {
@@ -1202,13 +1177,16 @@ abstract class Cup {
 }
 ```
 
-Mas o Dart não *sabe* que esta classe nunca será usada como um tipo concreto.
-Ele vê a declaração `contents` como um campo real. E, infelizmente, esse campo
-não é anulável e não tem inicializador, então você recebe um erro de compilação.
+But Dart doesn't *know* that this class will never be used as a concrete type.
+It sees that `contents` declaration as a real field.
+And, unfortunately, that field is non-nullable and has no initializer,
+so you get a compile error.
 
-Uma correção é usar declarações abstratas explícitas de getter/setter como no
-segundo exemplo. Mas isso é um pouco verboso, então com segurança nula também
-adicionamos suporte para declarações de campo abstratas explícitas:
+One fix is to use explicit abstract getter/setter declarations
+like in the second example.
+But that's a little verbose,
+so with null safety
+we also added support for explicit abstract field declarations:
 
 ```dart
 abstract class Cup {
@@ -1216,27 +1194,27 @@ abstract class Cup {
 }
 ```
 
-Isso se comporta exatamente como o segundo exemplo. Ele simplesmente declara um
-getter e um setter abstrato com o nome e tipo fornecidos.
+This behaves exactly like the second example.
+It simply declares an abstract getter and setter with the given name and type.
 
-### Trabalhando com campos anuláveis {:#working-with-nullable-fields}
+### Working with nullable fields
 
-Esses novos recursos cobrem muitos padrões comuns e tornam o trabalho com `null`
-muito fácil na maioria das vezes. Mas mesmo assim, nossa experiência é que
-campos anuláveis ainda podem ser difíceis. Nos casos em que você pode tornar o
-campo `late` e não anulável, você está no lucro. Mas em muitos casos, você
-precisa *verificar* para ver se o campo tem um valor, e isso exige torná-lo
-anulável para que você possa observar o `null`.
+These new features cover many common patterns and make working with `null`
+pretty painless most of the time. But even so, our experience is that nullable
+fields can still be difficult. In cases where you can make the field `late` and
+non-nullable, you're golden. But in many cases you need to *check* to see if the
+field has a value, and that requires making it nullable so you can observe the
+`null`.
 
-Campos anuláveis que são privados e finais são capazes de promover o tipo
-(exceto por [algumas razões particulares](/tools/non-promotion-reasons)).
-Se você não pode tornar um campo privado e final por qualquer motivo,
-ainda precisará de uma solução alternativa.
+Nullable fields that are both private and final are able to type promote
+(barring [some particular reasons](/tools/non-promotion-reasons)).
+If you can't make a field private and final
+for whatever reason, you'll still need a workaround. 
 
-Por exemplo, você pode esperar que isso funcione:
+For example, you might expect this to work:
 
 ```dart
-// Usando segurança nula, incorretamente:
+// Using null safety, incorrectly:
 class Coffee {
   String? _temperature;
 
@@ -1253,23 +1231,25 @@ class Coffee {
 }
 ```
 
-Dentro de `checkTemp()`, verificamos se `_temperature` é `null`. Caso
-contrário, nós o acessamos e acabamos chamando `+` nele. Infelizmente, isso não é permitido.
+Inside `checkTemp()`, we check to see if `_temperature` is `null`. If not, we
+access it and end up calling `+` on it. Unfortunately, this is not allowed.
 
-A promoção de tipo baseada em fluxo só pode ser aplicada a campos que são *privados e finais*. Caso contrário, a análise estática não pode *provar* que o valor do campo não muda entre o ponto em que você verifica se há `null` e o ponto em que o usa.
-(Considere que, em casos patológicos, o próprio campo pode ser substituído por um
-getter em uma subclasse que retorna `null` na segunda vez que é chamado.)
+Flow-based type promotion can only apply to fields that are *both private and final*.
+Otherwise, static analysis cannot *prove* that the field's value doesn't
+change between the point that you check for `null` and the point that you use it.
+(Consider that in pathological cases, the field itself could be overridden by a
+getter in a subclass that returns `null` the second time it is called.)
 
-Então, como nos preocupamos com a integridade, campos públicos e/ou não finais
-não são promovidos, e o método acima não é compilado. Isso é irritante. Em casos
-simples como aqui, sua melhor aposta é colocar um `!` no uso do campo. Parece
-redundante, mas é mais ou menos assim que o Dart se comporta hoje.
+So, since we care about soundness, public and/or non-final fields don't promote,
+and the above method does not compile. This is annoying.
+In simple cases like here, your best bet is to slap a `!` on the use of the field.
+It seems redundant, but that's more or less how Dart behaves today.
 
-Outro padrão que ajuda é copiar o campo para uma variável local primeiro e, em
-seguida, usá-la:
+Another pattern that helps is to copy the field to a local variable first and
+then use that instead:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 void checkTemp() {
   var temperature = _temperature;
   if (temperature != null) {
@@ -1278,24 +1258,23 @@ void checkTemp() {
 }
 ```
 
-Como a promoção de tipo se aplica a variáveis locais, isso agora funciona bem. Se
-você precisar *alterar* o valor, lembre-se de armazená-lo de volta no campo e
-não apenas na variável local.
+Since the type promotion does apply to locals, this now works fine. If you need
+to *change* the value, just remember to store back to the field and not just the
+local.
 
-Para obter mais informações sobre como lidar com esses e outros problemas de
-promoção de tipo, consulte [Corrigindo falhas de promoção de tipo]
-(/tools/non-promotion-reasons).
+For more information on handling these and other type promotion issues,
+see [Fixing type promotion failures](/tools/non-promotion-reasons).
 
-### Anulabilidade e genéricos {:#nullability-and-generics}
+### Nullability and generics
 
-Como a maioria das linguagens modernas com tipagem estática, o Dart tem classes
-genéricas e métodos genéricos. Eles interagem com a anulabilidade de algumas
-maneiras que parecem contra-intuitivas, mas fazem sentido depois que você pensa
-nas implicações. Primeiro é que "este tipo é anulável?" não é mais uma simples
-questão de sim ou não. Considere:
+Like most modern statically-typed languages, Dart has generic classes and
+generic methods. They interact with nullability in a few ways that seem
+counter-intuitive but make sense once you think through the implications. First
+is that "is this type nullable?" is no longer a simple yes or no question.
+Consider:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Box<T> {
   final T object;
   Box(this.object);
@@ -1307,30 +1286,28 @@ void main() {
 }
 ```
 
-Na definição de `Box`, `T` é um tipo anulável ou um tipo não anulável? Como você
-pode ver, ele pode ser instanciado com qualquer tipo. A resposta é que `T` é um
-*tipo potencialmente anulável*. Dentro do corpo de uma classe ou método
-genérico, um tipo potencialmente anulável tem todas as restrições de tipos
-anuláveis *e* tipos não anuláveis.
+In the definition of `Box`, is `T` a nullable type or a non-nullable type? As
+you can see, it can be instantiated with either kind. The answer is that `T` is a
+*potentially nullable type*. Inside the body of a generic class or method, a
+potentially nullable type has all of the restrictions of both nullable types
+*and* non-nullable types.
 
-O primeiro significa que você não pode chamar nenhum método nele, exceto o
-punhado definido em Object. O último significa que você deve inicializar
-quaisquer campos ou variáveis desse tipo antes de serem usados. Isso pode tornar
-os parâmetros de tipo bem difíceis de trabalhar.
+The former means you can't call any methods on it except the handful defined on
+Object. The latter means that you must initialize any fields or variables of
+that type before they're used. This can make type parameters pretty hard to work with.
 
-Na prática, alguns padrões aparecem. Em classes semelhantes a coleções, onde o
-parâmetro de tipo pode ser instanciado com qualquer tipo, você só precisa lidar
-com as restrições. Na maioria dos casos, como o exemplo aqui, isso significa
-garantir que você tenha acesso a um valor do tipo do argumento de tipo sempre que
-precisar trabalhar com um. Felizmente, as classes semelhantes a coleções
-raramente chamam métodos em seus elementos.
+In practice, a few patterns show up. In collection-like classes where the type
+parameter can be instantiated with any type at all, you just have to deal with
+the restrictions. In most cases, like the example here, it means ensuring you do
+have access to a value of the type argument's type whenever you need to work
+with one. Fortunately, collection-like classes rarely call methods on their
+elements.
 
-Em lugares onde você não tem acesso a um valor, você pode tornar o uso do
-parâmetro de tipo anulável:
-
+In places where you don't have access to a value, you can make the use of the
+type parameter nullable:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Box<T> {
   T? object;
   Box.empty();
@@ -1338,15 +1315,15 @@ class Box<T> {
 }
 ```
 
-Observe o `?` na declaração de `object`. Agora o campo tem um tipo
-explicitamente anulável, então não há problema em deixá-lo não inicializado.
+Note the `?` on the declaration of `object`. Now the field has an explicitly
+nullable type, so it is fine to leave it uninitialized.
 
-Quando você torna um parâmetro de tipo anulável como `T?` aqui, pode ser
-necessário remover a anulabilidade. A maneira correta de fazer isso é usar um
-cast `as T` explícito, *não* o operador `!`:
+When you make a type parameter type nullable like `T?` here, you may need to
+cast the nullability away. The correct way to do that is using an explicit `as
+T` cast, *not* the `!` operator:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Box<T> {
   T? object;
   Box.empty();
@@ -1356,26 +1333,26 @@ class Box<T> {
 }
 ```
 
-O operador `!` *sempre* lança um erro se o valor for `null`. Mas se o parâmetro
-de tipo foi instanciado com um tipo anulável, então `null` é um valor
-perfeitamente válido para `T`:
+The `!` operator *always* throws if the value is `null`. But if the type
+parameter has been instantiated with a nullable type, then `null` is a perfectly
+valid value for `T`:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 void main() {
   var box = Box<int?>.full(null);
   print(box.unbox());
 }
 ```
 
-Este programa deve ser executado sem erros. Usar `as T` consegue isso. Usar `!`
-lançaria uma exceção.
+This program should run without error. Using `as T` accomplishes that. Using
+`!` would throw an exception.
 
-Outros tipos genéricos têm algum limite que restringe os tipos de argumentos de
-tipo que podem ser aplicados:
+Other generic types have some bound that restricts the kinds of type arguments
+that can be applied:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Interval<T extends num> {
   T min, max;
 
@@ -1385,21 +1362,21 @@ class Interval<T extends num> {
 }
 ```
 
-Se o limite for não anulável, o parâmetro de tipo também é não anulável. Isso
-significa que você tem as restrições de tipos não anuláveis — você não pode
-deixar campos e variáveis não inicializados. A classe de exemplo aqui deve ter
-um construtor que inicializa os campos.
+If the bound is non-nullable, then the type parameter is also non-nullable. This
+means you have the restrictions of non-nullable types—you can't leave
+fields and variables uninitialized. The example class here must have a
+constructor that initializes the fields.
 
-Em troca dessa restrição, você pode chamar qualquer método em valores do tipo do
-parâmetro de tipo que são declarados em seu limite. Ter um limite não anulável,
-no entanto, impede que os *usuários* de sua classe genérica a instanciem com um
-argumento de tipo anulável. Essa é provavelmente uma limitação razoável para a
-maioria das classes.
+In return for that restriction, you can call any methods on values of the type
+parameter type that are declared on its bound. Having a non-nullable bound does,
+however, prevent *users* of your generic class from instantiating it with a
+nullable type argument. That's probably a reasonable limitation for most
+classes.
 
-Você também pode usar um *limite* anulável:
+You can also use a nullable *bound*:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 class Interval<T extends num?> {
   T min, max;
 
@@ -1409,186 +1386,177 @@ class Interval<T extends num?> {
     var localMin = min;
     var localMax = max;
 
-    // Nenhum min ou max significa um intervalo aberto.
+    // No min or max means an open-ended interval.
     if (localMin == null || localMax == null) return false;
     return localMax <= localMin;
   }
 }
 ```
 
-Isso significa que no corpo da classe você tem a flexibilidade de tratar o
-parâmetro de tipo como anulável, mas também tem as limitações da anulabilidade.
-Você não pode chamar nada em uma variável desse tipo, a menos que lide com a
-anulabilidade primeiro. No exemplo aqui, copiamos os campos em variáveis locais
-e verificamos se essas variáveis locais são `null` para que a análise de fluxo
-as promova para tipos não anuláveis antes de usarmos `<=`.
+This means that in the body of the class you get the flexibility of treating the
+type parameter as nullable, but you also have the limitations of nullability. 
+You can't call anything on a variable of that type
+unless you deal with the nullability first. In the example here, 
+we copy the fields in local variables and check those locals for `null` 
+so that flow analysis promotes them to non-nullable types before we use `<=`.
 
-Observe que um limite anulável não impede que os usuários instanciem a classe
-com tipos não anuláveis. Um limite anulável significa que o argumento de tipo
-*pode* ser anulável, não que *deva*. (Na verdade, o limite padrão nos parâmetros
-de tipo se você não escrever uma cláusula `extends` é o limite anulável
-`Object?`.) Não há como *exigir* um argumento de tipo anulável. Se você quiser
-que os usos do parâmetro de tipo sejam confiavelmente anuláveis e sejam
-inicializados implicitamente como `null`, você pode usar `T?` dentro do corpo da
-classe.
+Note that a nullable bound does not prevent users from instantiating the class
+with non-nullable types. A nullable bound means that the type argument *can* be
+nullable, not that it *must*. (In fact, the default bound on type parameters if
+you don't write an `extends` clause is the nullable bound `Object?`.) There is
+no way to *require* a nullable type argument. If you want uses of the type
+parameter to reliably be nullable and be implicitly initialized to `null`, 
+you can use `T?` inside the body of the class.
 
-## Alterações na biblioteca principal {:#core-library-changes}
+## Core library changes
 
-Existem alguns outros ajustes aqui e ali na linguagem, mas eles são menores. Coisas
-como o tipo padrão de um `catch` sem cláusula `on` agora é `Object` em vez de
-`dynamic`. A análise de fallthrough em instruções switch usa a nova análise de fluxo.
+There are a couple of other tweaks here and there in the language, but they are
+minor. Things like the default type of a `catch` with no `on` clause is now
+`Object` instead of `dynamic`. Fallthrough analysis in switch statements uses
+the new flow analysis.
 
-As mudanças restantes que realmente importam para você estão nas bibliotecas
-principais. Antes de embarcarmos na Grande Aventura da Segurança Nula, nos
-preocupamos que não houvesse como tornar nossas bibliotecas principais seguras
-para nulos sem quebrar massivamente o mundo. Aconteceu de não ser tão terrível.
-*Há* algumas mudanças significativas, mas na maior parte, a migração ocorreu
-sem problemas. A maioria das bibliotecas principais não aceitava `null` e
-naturalmente passava para tipos não anuláveis, ou aceitava e aceitava
-graciosamente com um tipo anulável.
+The remaining changes that really matter to you are in the core libraries.
+Before we embarked on the Grand Null Safety Adventure, we worried that it would
+turn out there was no way to make our core libraries null safe without massively
+breaking the world. It turned out not so dire. There *are* a few significant
+changes, but for the most part, the migration went smoothly. Most core libraries
+either did not accept `null` and naturally move to non-nullable types, or do and
+gracefully accept it with a nullable type.
 
-Há alguns cantos importantes, no entanto:
+There are a few important corners, though:
 
-### O operador de índice Map é anulável {:#the-map-index-operator-is-nullable}
+### The Map index operator is nullable
 
-Isso não é realmente uma mudança, mas mais algo a saber. O operador de índice
-`[]` na classe Map retorna `null` se a chave não estiver presente. Isso implica
-que o tipo de retorno desse operador deve ser anulável: `V?` em vez de `V`.
+This isn't really a change, but more a thing to know. The index `[]` operator on
+the Map class returns `null` if the key isn't present. This implies that the
+return type of that operator must be nullable: `V?` instead of `V`.
 
-Poderíamos ter alterado esse método para lançar uma exceção quando a chave não
-estivesse presente e, em seguida, dar a ele um tipo de retorno não anulável mais
-fácil de usar. Mas o código que usa o operador de índice e verifica se há
-`null` para ver se a chave está ausente é muito comum, cerca de metade de todos
-os usos com base em nossa análise. Quebrar todo esse código teria incendiado o
-ecossistema Dart.
+We could have changed that method to throw an exception when the key isn't
+present and then given it an easier-to-use non-nullable return type. But code
+that uses the index operator and checks for `null` to see if the key is absent
+is very common, around half of all uses based on our analysis. Breaking all of
+that code would have set the Dart ecosystem aflame.
 
-Em vez disso, o comportamento em tempo de execução é o mesmo e, portanto, o tipo
-de retorno é obrigado a ser anulável. Isso significa que geralmente você não pode
-usar imediatamente o resultado de uma pesquisa de mapa:
+Instead, the runtime behavior is the same and thus the return type is obliged
+to be nullable. This means you generally cannot immediately use the result of
+a map lookup:
 
 ```dart
-// Usando segurança nula, incorretamente:
+// Using null safety, incorrectly:
 var map = {'key': 'value'};
-print(map['key'].length); // Erro.
+print(map['key'].length); // Error.
 ```
 
-Isso gera um erro de compilação na tentativa de chamar `.length` em uma string
-anulável. Nos casos em que você *sabe* que a chave está presente, você pode
-ensinar ao verificador de tipo usando `!`:
+This gives you a compile error on the attempt to call `.length` on a nullable
+string. In cases where you *know* the key is present you can teach the type
+checker by using `!`:
 
 ```dart
-// Usando segurança nula:
+// Using null safety:
 var map = {'key': 'value'};
 print(map['key']!.length); // OK.
 ```
 
-Consideramos adicionar outro método ao Map que faria isso para você: procurar a
-chave, lançar um erro se não for encontrada ou retornar um valor não anulável
-caso contrário. Mas como chamá-lo? Nenhum nome seria mais curto do que o único
-caractere `!`, e nenhum nome de método seria mais claro do que ver um `!` com
-sua semântica embutida ali no local da chamada. Portanto, a maneira idiomática de
-acessar um elemento conhecido presente em um mapa é usar `[]!`. Você se acostuma.
+We considered adding another method to Map that would do this for you: look up
+the key, throw if not found, or return a non-nullable value otherwise. But what
+to call it? No name would be shorter than the single-character `!`, and no
+method name would be clearer than seeing a `!` with its built-in semantics right
+there at the call site. So the idiomatic way to access a known-present element
+in a map is to use `[]!`. You get used to it.
 
-### Nenhum construtor List sem nome {:#no-unnamed-list-constructor}
+### No unnamed List constructor
 
-O construtor sem nome em `List` cria uma nova lista com o tamanho fornecido, mas
-não inicializa nenhum dos elementos. Isso abriria um buraco muito grande nas
-garantias de integridade se você criasse uma lista de um tipo não anulável e
-depois acessasse um elemento.
+The unnamed constructor on `List` creates a new list with the given size but
+does not initialize any of the elements. This would poke a very large hole in
+the soundness guarantees if you created a list of a non-nullable type and then
+accessed an element.
 
-Para evitar isso, removemos o construtor completamente. É um erro chamar `List()`
-em código seguro para nulos, mesmo com um tipo anulável. Isso parece assustador,
-mas na prática a maioria dos códigos cria listas usando literais de lista,
-`List.filled()`, `List.generate()` ou como resultado da transformação de alguma
-outra coleção. Para o caso extremo em que você deseja criar uma lista vazia de
-algum tipo, adicionamos um novo construtor `List.empty()`.
+To avoid that, we have removed the constructor entirely. It is an error to call
+`List()` in null-safe code, even with a nullable type. That sounds scary, but
+in practice most code creates lists using list literals, `List.filled()`,
+`List.generate()`, or as a result of transforming some other collection. For
+the edge case where you want to create an empty list of some type, we added a
+new `List.empty()` constructor.
 
-O padrão de criar uma lista completamente não inicializada sempre pareceu
-fora de lugar no Dart, e agora é ainda mais. Se você tiver código quebrado por
-isso, sempre poderá corrigi-lo usando uma das muitas outras maneiras de produzir
-uma lista.
+The pattern of creating a completely uninitialized list has always felt out of
+place in Dart, and now it is even more so. If you have code broken by this,
+you can always fix it by using one of the many other ways to produce a list.
 
-### Não é possível definir um comprimento maior em listas não anuláveis {:#cannot-set-a-larger-length-on-non-nullable-lists}
+### Cannot set a larger length on non-nullable lists
 
-Isso é pouco conhecido, mas o getter `length` em `List` também tem um
-*setter* correspondente. Você pode definir o comprimento para um valor mais
-curto para truncar a lista. E você também pode defini-lo para um comprimento
-*maior* para preencher a lista com elementos não inicializados.
+This is little known, but the `length` getter on `List` also has a corresponding
+*setter*. You can set the length to a shorter value to truncate the list. And
+you can also set it to a *longer* length to pad the list with uninitialized
+elements.
 
-Se você fizesse isso com uma lista de um tipo não anulável, violaria a
-integridade quando acessasse posteriormente esses elementos não gravados. Para
-evitar isso, o setter `length` lançará uma exceção em tempo de execução se (e
-somente se) a lista tiver um tipo de elemento não anulável *e* você o definir
-para um comprimento *maior*. Ainda é bom truncar listas de todos os tipos e você
-pode aumentar listas de tipos anuláveis.
+If you were to do that with a list of a non-nullable type, you'd violate
+soundness when you later accessed those unwritten elements. To prevent that, the
+`length` setter will throw a runtime exception if (and only if) the list has a
+non-nullable element type *and* you set it to a *longer* length. It is still
+fine to truncate lists of all types, and you can grow lists of nullable types.
 
-Há uma consequência importante disso se você definir seus próprios tipos de lista
-que estendem `ListBase` ou aplicam `ListMixin`. Ambos os tipos fornecem uma
-implementação de `insert()` que anteriormente abria espaço para o elemento
-inserido definindo o comprimento. Isso falharia com a segurança nula, então, em
-vez disso, mudamos a implementação de `insert()` em `ListMixin` (que `ListBase`
-compartilha) para chamar `add()` em vez disso. Sua classe de lista personalizada
-deve fornecer uma definição de `add()` se você quiser ser capaz de usar esse
-método `insert()` herdado.
+There is an important consequence of this if you define your own list types that
+extend `ListBase` or apply `ListMixin`. Both of those types provide an
+implementation of `insert()` that previously made room for the inserted element
+by setting the length. That would fail with null safety, so instead we changed
+the implementation of `insert()` in `ListMixin` (which `ListBase` shares) to
+call `add()` instead. Your custom list class should provide a definition of
+`add()` if you want to be able to use that inherited `insert()` method.
 
-### Não é possível acessar Iterator.current antes ou depois da iteração {:#cannot-access-iterator-current-before-or-after-iteration}
+### Cannot access Iterator.current before or after iteration
 
-A classe `Iterator` é a classe "cursor" mutável usada para percorrer os
-elementos de um tipo que implementa `Iterable`. Espera-se que você chame
-`moveNext()` antes de acessar quaisquer elementos para avançar para o primeiro
-elemento. Quando esse método retorna `false`, você chegou ao fim e não há mais
-elementos.
+The `Iterator` class is the mutable "cursor" class used to traverse the elements
+of a type that implements `Iterable`. You are expected to call `moveNext()`
+before accessing any elements to advance to the first element. When that method
+returns `false`, you have reached the end and there are no more elements.
 
-Costumava ser que `current` retornava `null` se você o chamasse antes de chamar
-`moveNext()` pela primeira vez ou após o término da iteração. Com segurança
-nula, isso exigiria que o tipo de retorno de `current` fosse `E?` e não `E`.
-Isso, por sua vez, significa que cada acesso ao elemento exigiria uma verificação
-de `null` em tempo de execução.
+It used to be that `current` returned `null` if you called it either before
+calling `moveNext()` the first time or after iteration finished. With null
+safety, that would require the return type of `current` to be `E?` and not `E`.
+That in turn means every element access would require a runtime `null` check.
 
-Essas verificações seriam inúteis, dado que quase ninguém acessa o elemento
-atual dessa forma errônea. Em vez disso, tornamos o tipo de `current` como `E`.
-Como *pode* haver um valor desse tipo disponível antes ou depois da iteração,
-deixamos o comportamento do iterador indefinido se você o chamar quando não
-deveria. A maioria das implementações de `Iterator` lançam um `StateError`.
+Those checks would be useless given that almost no one ever accesses the current
+element in that erroneous way. Instead, we have made the type of `current` be
+`E`. Since there *may* be a value of that type available before or after
+iterating, we've left the iterator's behavior undefined if you call it when you
+aren't supposed to. Most implementations of `Iterator` throw a `StateError`.
 
-## Resumo {:#summary}
+## Summary
 
-Este é um tour muito detalhado por todas as mudanças de linguagem e biblioteca
-em torno da segurança nula. É muita coisa, mas esta é uma mudança de linguagem
-muito grande. Mais importante, queríamos chegar a um ponto em que o Dart ainda
-parecesse coeso e utilizável. Isso exige mudar não apenas o sistema de tipos,
-mas também vários outros recursos de usabilidade em torno dele. Não queríamos
-que parecesse que a segurança nula foi adicionada.
+That is a very detailed tour through all of the language and library changes
+around null safety. It's a lot of stuff, but this is a pretty big language
+change. More importantly, we wanted to get to a point where Dart still feels
+cohesive and usable. That requires changing not just the type system, but a
+number of other usability features around it. We didn't want it to feel like
+null safety was bolted on.
 
-Os pontos principais a serem lembrados são:
+The core points to take away are:
 
-*   Os tipos são não anuláveis por padrão e tornados anuláveis adicionando `?`.
+*   Types are non-nullable by default and made nullable by adding `?`.
 
-*   Parâmetros opcionais devem ser anuláveis ou ter um valor padrão. Você pode
-    usar `required` para tornar os parâmetros nomeados não opcionais. Variáveis
-    de nível superior não anuláveis e campos estáticos devem ter inicializadores.
-    Campos de instância não anuláveis devem ser inicializados antes que o corpo
-    do construtor comece.
+*   Optional parameters must be nullable or have a default value. You can use
+    `required` to make named parameters non-optional. Non-nullable top-level
+    variables and static fields must have initializers. Non-nullable instance
+    fields must be initialized before the constructor body begins.
 
 *   Method chains after null-aware operators short circuit if the receiver is
     `null`. There are new null-aware cascade (`?..`) and index (`?[]`)
     operators. The postfix not-null assertion "bang" operator (`!`) casts its
     nullable operand to the underlying non-nullable type.
 
-*   A análise de fluxo permite que você transforme com segurança variáveis
-    locais e parâmetros anuláveis (e campos finais privados, a partir do Dart
-    3.2) em não anuláveis utilizáveis. A nova análise de fluxo também possui
-    regras mais inteligentes para promoção de tipo, retornos ausentes, código
-    inalcançável e inicialização de variáveis.
+*   Flow analysis lets you safely turn nullable local variables and parameters
+    (and private final fields, as of Dart 3.2)
+    into usable non-nullable ones. The new flow analysis also has smarter rules
+    for type promotion, missing returns, unreachable code, and variable
+    initialization.
 
-*   O modificador `late` permite que você use tipos não anuláveis e `final` em
-    lugares onde você poderia não ser capaz de fazê-lo, ao custo de verificação
-    em tempo de execução. Ele também oferece campos inicializados preguiçosamente.
+*   The `late` modifier lets you use non-nullable types and `final` in places
+    you otherwise might not be able to, at the expense of runtime checking. It
+    also gives you lazy-initialized fields.
 
-*   A classe `List` é alterada para evitar elementos não inicializados.
+*   The `List` class is changed to prevent uninitialized elements.
 
-Finalmente, depois que você absorve tudo isso e coloca seu código no mundo da
-segurança nula, você obtém um programa íntegro que os compiladores podem
-otimizar e onde todo lugar onde um erro de tempo de execução pode ocorrer é
-visível em seu código. Esperamos que você sinta que vale a pena o esforço para
-chegar lá.
+Finally, once you absorb all of that and get your code into the world of null
+safety, you get a sound program that the compilers can optimize and where every
+place a runtime error can occur is visible in your code. We hope you feel that's
+worth the effort to get there.

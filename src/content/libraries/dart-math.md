@@ -1,7 +1,6 @@
 ---
-ia-translate: true
-title: "dart:math"
-description: "Saiba mais sobre os principais recursos da biblioteca dart:math do Dart."
+title: dart:math
+description: Learn about the major features in Dart's dart:math library.
 prevpage:
   url: /libraries/dart-async
   title: dart:async
@@ -13,12 +12,12 @@ nextpage:
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-A biblioteca dart:math ([referência da API][dart:math])
-fornece funcionalidades comuns como seno e cosseno,
-máximo e mínimo, e constantes como *pi* e *e*. A maior parte da
-funcionalidade na biblioteca Math é implementada como funções de nível superior.
+The dart:math library ([API reference][dart:math])
+provides common functionality such as sine and cosine,
+maximum and minimum, and constants such as *pi* and *e*. Most of the
+functionality in the Math library is implemented as top-level functions.
 
-Para usar esta biblioteca em seu aplicativo, importe dart:math.
+To use this library in your app, import dart:math.
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (import)"?>
 ```dart
@@ -26,9 +25,9 @@ import 'dart:math';
 ```
 
 
-## Trigonometria {:#trigonometry}
+## Trigonometry
 
-A biblioteca Math fornece funções trigonométricas básicas:
+The Math library provides basic trigonometric functions:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (trig)"?>
 ```dart
@@ -45,13 +44,13 @@ assert((sinOf30degrees - 0.5).abs() < 0.01);
 ```
 
 :::note
-Essas funções usam radianos, não graus!
+These functions use radians, not degrees!
 :::
 
 
-## Máximo e mínimo {:#maximum-and-minimum}
+## Maximum and minimum
 
-A biblioteca Math fornece os métodos `max()` e `min()`:
+The Math library provides `max()` and `min()` methods:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (min-max)"?>
 ```dart
@@ -60,9 +59,9 @@ assert(min(1, -1000) == -1000);
 ```
 
 
-## Constantes matemáticas {:#math-constants}
+## Math constants
 
-Encontre suas constantes favoritas—*pi*, *e* e mais—na biblioteca Math:
+Find your favorite constants—*pi*, *e*, and more—in the Math library:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (constants)"?>
 ```dart
@@ -73,10 +72,10 @@ print(sqrt2); // 1.4142135623730951
 ```
 
 
-## Números aleatórios {:#random-numbers}
+## Random numbers
 
-Gere números aleatórios com a classe [Random][] (Aleatório). Você pode,
-opcionalmente, fornecer uma seed (semente) para o construtor Random.
+Generate random numbers with the [Random][] class. You can
+optionally provide a seed to the Random constructor.
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (random)"?>
 ```dart
@@ -85,7 +84,7 @@ random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
 random.nextInt(10); // Between 0 and 9.
 ```
 
-Você pode até gerar booleanos aleatórios:
+You can even generate random booleans:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (random-bool)"?>
 ```dart
@@ -94,16 +93,16 @@ random.nextBool(); // true or false
 ```
 
 :::warning
-A implementação padrão de `Random` fornece um fluxo de bits pseudoaleatórios
-que não são adequados para fins criptográficos.
-Para criar um gerador de números aleatórios criptograficamente seguro,
-use o construtor [`Random.secure()`][].
+The default implementation of `Random` supplies a stream of pseudorandom bits
+that are unsuitable for cryptographic purposes.
+To create a cryptographically secure random number generator,
+use the [`Random.secure()`][] constructor.
 :::
 
-## Mais informações {:#more-information}
+## More information
 
-Consulte a [referência da API Math][dart:math] para obter uma lista completa de métodos.
-Consulte também a referência da API para [num,][num] [int,][int] e [double.][double]
+Refer to the [Math API reference][dart:math] for a full list of methods.
+Also see the API reference for [num,][num] [int,][int] and [double.][double]
 
 [Random]: {{site.dart-api}}/dart-math/Random-class.html
 [`Random.secure()`]: {{site.dart-api}}/dart-math/Random/Random.secure.html

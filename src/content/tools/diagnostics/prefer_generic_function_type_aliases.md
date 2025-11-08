@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_generic_function_type_aliases
-description: "Detalhes sobre o diagnóstico prefer_generic_function_type_aliases produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_generic_function_type_aliases
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a sintaxe de tipo de função genérica em 'typedef's._
+_Use the generic function type syntax in 'typedef's._
 
 ## Description
 
-O analisador produz este diagnóstico quando um typedef é escrito usando a
-sintaxe mais antiga para aliases de tipo de função, na qual o nome sendo declarado é
-incorporado no tipo de função.
+The analyzer produces this diagnostic when a typedef is written using the
+older syntax for function type aliases in which the name being declared is
+embedded in the function type.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque usa a sintaxe
-mais antiga:
+The following code produces this diagnostic because it uses the older
+syntax:
 
 ```dart
 typedef void [!F!]<T>();
@@ -36,7 +37,7 @@ typedef void [!F!]<T>();
 
 ## Common fixes
 
-Reescreva o typedef para usar a sintaxe mais nova:
+Rewrite the typedef to use the newer syntax:
 
 ```dart
 typedef F<T> = void Function();

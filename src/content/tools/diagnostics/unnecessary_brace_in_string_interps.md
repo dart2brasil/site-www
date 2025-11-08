@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_brace_in_string_interps
-description: "Detalhes sobre o diagnóstico unnecessary_brace_in_string_interps produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_brace_in_string_interps
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Chaves desnecessárias em uma interpolação de string._
+_Unnecessary braces in a string interpolation._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma interpolação de string com
-chaves é usada para interpolar um identificador simples e não é seguida por
-texto alfanumérico.
+The analyzer produces this diagnostic when a string interpolation with
+braces is used to interpolate a simple identifier and isn't followed by
+alphanumeric text.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o elemento de interpolação
-`${s}` usa chaves quando elas não são necessárias:
+The following code produces this diagnostic because the interpolation
+element `${s}` uses braces when they are not necessary:
 
 ```dart
 String f(String s) {
@@ -38,7 +39,7 @@ String f(String s) {
 
 ## Common fixes
 
-Remova as chaves desnecessárias:
+Remove the unnecessary braces:
 
 ```dart
 String f(String s) {

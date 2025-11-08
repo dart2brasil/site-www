@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: const_instance_field
-description: "Detalhes sobre o diagnóstico const_instance_field produzido pelo analisador do Dart."
+description: >-
+  Details about the const_instance_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _Only static fields can be declared as const._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um field de instância é marcado
-como const.
+The analyzer produces this diagnostic when an instance field is marked as
+being const.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `f` é um field de
-instância:
+The following code produces this diagnostic because `f` is an instance
+field:
 
 ```dart
 class C {
@@ -24,10 +25,10 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o field precisa ser um field de instância, então remova a keyword
-`const`, ou substitua por `final`:
+If the field needs to be an instance field, then remove the keyword
+`const`, or replace it with `final`:
 
 ```dart
 class C {
@@ -35,8 +36,7 @@ class C {
 }
 ```
 
-Se o field realmente deve ser um field const, então torne-o um field
-static:
+If the field really should be a const field, then make it a static field:
 
 ```dart
 class C {

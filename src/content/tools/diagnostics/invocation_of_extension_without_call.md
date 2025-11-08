@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: invocation_of_extension_without_call
-description: "Detalhes sobre o diagnóstico invocation_of_extension_without_call produzido pelo analisador do Dart."
+description: >-
+  Details about the invocation_of_extension_without_call
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A extension '{0}' não define um método 'call' então a sobrescrita não pode ser usada em uma invocação._
+_The extension '{0}' doesn't define a 'call' method so the override can't be used in an invocation._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma sobrescrita de extension é usada para
-invocar uma função mas a extension não declara um método `call`.
+The analyzer produces this diagnostic when an extension override is used to
+invoke a function but the extension doesn't declare a `call` method.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a extension `E`
-não define um método `call`:
+The following code produces this diagnostic because the extension `E`
+doesn't define a `call` method:
 
 ```dart
 extension E on String {}
@@ -26,9 +27,9 @@ void f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se a extension deve definir um método `call`, então declare-o:
+If the extension is intended to define a `call` method, then declare it:
 
 ```dart
 extension E on String {
@@ -40,8 +41,8 @@ void f() {
 }
 ```
 
-Se o tipo estendido define um método `call`, então remova a
-sobrescrita de extension.
+If the extended type defines a `call` method, then remove the extension
+override.
 
-Se o método `call` não estiver definido, então reescreva o código para que ele
-não invoque o método `call`.
+If the `call` method isn't defined, then rewrite the code so that it
+doesn't invoke the `call` method.

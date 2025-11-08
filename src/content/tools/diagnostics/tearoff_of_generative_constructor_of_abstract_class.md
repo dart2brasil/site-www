@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: tearoff_of_generative_constructor_of_abstract_class
-description: "Detalhes sobre o diagnóstico tearoff_of_generative_constructor_of_abstract_class produzido pelo analisador Dart."
+description: >-
+  Details about the tearoff_of_generative_constructor_of_abstract_class
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um generative constructor de uma classe abstract não pode ter tearoff._
+_A generative constructor of an abstract class can't be torn off._
 
 ## Description
 
-O analisador produz este diagnóstico quando um generative constructor de uma
-classe abstract está tendo tearoff. Isso não é permitido porque não é válido
-criar uma instância de uma classe abstract, o que significa que não há
-nenhum uso válido para o construtor com tearoff.
+The analyzer produces this diagnostic when a generative constructor from an
+abstract class is being torn off. This isn't allowed because it isn't valid
+to create an instance of an abstract class, which means that there isn't
+any valid use for the torn off constructor.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o construtor `C.new`
-está tendo tearoff e a classe `C` é uma classe abstract:
+The following code produces this diagnostic because the constructor `C.new`
+is being torn off and the class `C` is an abstract class:
 
 ```dart
 abstract class C {
@@ -32,4 +33,4 @@ void f() {
 
 ## Common fixes
 
-Faça tearoff do construtor de uma classe concreta.
+Tear off the constructor of a concrete class.

@@ -1,31 +1,32 @@
 ---
-ia-translate: true
 title: duplicate_field_name
-description: "Detalhes sobre o diagnóstico duplicate_field_name produzido pelo analisador Dart."
+description: >-
+  Details about the duplicate_field_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome do campo '{0}' já está sendo usado neste record._
+_The field name '{0}' is already used in this record._
 
 ## Description
 
-O analisador produz este diagnóstico quando um literal de record ou uma
-anotação de tipo record contém um campo cujo nome é o mesmo de um
-campo declarado anteriormente no mesmo literal ou tipo.
+The analyzer produces this diagnostic when either a record literal or a
+record type annotation contains a field whose name is the same as a
+previously declared field in the same literal or type.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque o literal de record tem
-dois campos nomeados `a`:
+The following code produces this diagnostic because the record literal has
+two fields named `a`:
 
 ```dart
 var r = (a: 1, [!a!]: 2);
 ```
 
-O código a seguir produz este diagnóstico porque a anotação de tipo record
-tem dois campos nomeados `a`, um campo posicional e outro
-um campo nomeado:
+The following code produces this diagnostic because the record type
+annotation has two fields named `a`, one a positional field and the other
+a named field:
 
 ```dart
 void f((int a, {int [!a!]}) r) {}
@@ -33,7 +34,7 @@ void f((int a, {int [!a!]}) r) {}
 
 ## Common fixes
 
-Renomeie um ou ambos os campos:
+Rename one or both of the fields:
 
 ```dart
 var r = (a: 1, b: 2);

@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: duplicate_import
-description: "Detalhes sobre o diagnóstico duplicate_import produzido pelo analisador Dart."
+description: >-
+  Details about the duplicate_import
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Import duplicate._
+_Duplicate import._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma diretiva import é encontrada
-que é a mesma que um import anterior no arquivo. O segundo import
-não adiciona valor e deve ser removido.
+The analyzer produces this diagnostic when an import directive is found
+that is the same as an import before it in the file. The second import
+doesn't add value and should be removed.
 
 ## Example
 
-O código a seguir produz este diagnóstico:
+The following code produces this diagnostic:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -27,7 +28,7 @@ import [!'package:meta/meta.dart'!];
 
 ## Common fixes
 
-Remova o import desnecessário:
+Remove the unnecessary import:
 
 ```dart
 import 'package:meta/meta.dart';

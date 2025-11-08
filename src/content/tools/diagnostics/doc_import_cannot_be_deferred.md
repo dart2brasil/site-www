@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: doc_import_cannot_be_deferred
-description: "Detalhes sobre o diagnóstico doc_import_cannot_be_deferred produzido pelo analisador do Dart."
+description: >-
+  Details about the doc_import_cannot_be_deferred
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Imports de documentação não podem ser deferred._
+_Doc imports can't be deferred._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um import de documentação usa a
-keyword `deferred`.
+The analyzer produces this diagnostic when a documentation import uses the
+`deferred` keyword.
 
-Imports de documentação não podem ser deferred porque adiá-los não
-impactaria o tamanho do código compilado.
+Documentation imports can't be deferred because deferring them wouldn't
+impact the size of the compiled code.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o import de documentação
-tem uma keyword `deferred`:
+The following code produces this diagnostic because the documentation
+import has a `deferred` keyword:
 
 ```dart
 // ignore:missing_prefix_in_deferred_import
@@ -27,9 +28,9 @@ tem uma keyword `deferred`:
 library;
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova a keyword `deferred`:
+Remove the `deferred` keyword:
 
 ```dart
 /// @docImport 'package:meta/meta.dart';

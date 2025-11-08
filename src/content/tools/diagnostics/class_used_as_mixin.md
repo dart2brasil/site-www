@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: class_used_as_mixin
-description: "Detalhes sobre o diagnóstico class_used_as_mixin produzido pelo analisador Dart."
+description: >-
+  Details about the class_used_as_mixin
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A classe '{0}' não pode ser usada como mixin porque não é nem uma mixin class nem um mixin._
+_The class '{0}' can't be used as a mixin because it's neither a mixin class nor a mixin._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma classe que não é nem uma
-`mixin class` nem um `mixin` é usada em uma cláusula `with`.
+The analyzer produces this diagnostic when a class that is neither a
+`mixin class` nor a `mixin` is used in a `with` clause.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a classe `M` está sendo
-usada como mixin, mas não está definida como uma `mixin class`:
+The following code produces this diagnostic because the class `M` is being
+used as a mixin, but it isn't defined as a `mixin class`:
 
 ```dart
 class M {}
@@ -25,14 +26,14 @@ class C with [!M!] {}
 
 ## Common fixes
 
-Se a classe pode ser um mixin puro, então mude `class` para `mixin`:
+If the class can be a pure mixin, then change `class` to `mixin`:
 
 ```dart
 mixin M {}
 class C with M {}
 ```
 
-Se a classe precisa ser tanto uma classe quanto um mixin, então adicione `mixin`:
+If the class needs to be both a class and a mixin, then add `mixin`:
 
 ```dart
 mixin class M {}

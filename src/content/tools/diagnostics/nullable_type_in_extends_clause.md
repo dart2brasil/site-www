@@ -1,39 +1,40 @@
 ---
-ia-translate: true
 title: nullable_type_in_extends_clause
-description: "Detalhes sobre o diagnóstico nullable_type_in_extends_clause produzido pelo analisador Dart."
+description: >-
+  Details about the nullable_type_in_extends_clause
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Uma classe não pode estender um tipo nulo._
+_A class can't extend a nullable type._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração de classe usa uma
-cláusula `extends` para especificar uma superclasse, e a superclasse é seguida por
-um `?`.
+The analyzer produces this diagnostic when a class declaration uses an
+`extends` clause to specify a superclass, and the superclass is followed by
+a `?`.
 
-Não é válido especificar uma superclasse nula porque fazer isso não teria
-nenhum significado; não alteraria nem a interface nem a implementação sendo
-herdada pela classe contendo a cláusula `extends`.
+It isn't valid to specify a nullable superclass because doing so would have
+no meaning; it wouldn't change either the interface or implementation being
+inherited by the class containing the `extends` clause.
 
-Note, porém, que _é_ válido usar um tipo nulo como um argumento de tipo
-para a superclasse, como `class A extends B<C?> {}`.
+Note, however, that it _is_ valid to use a nullable type as a type argument
+to the superclass, such as `class A extends B<C?> {}`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `A?` é um tipo nulo,
-e tipos nulos não podem ser usados em uma cláusula `extends`:
+The following code produces this diagnostic because `A?` is a nullable
+type, and nullable types can't be used in an `extends` clause:
 
 ```dart
 class A {}
 class B extends [!A?!] {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova o ponto de interrogação do tipo:
+Remove the question mark from the type:
 
 ```dart
 class A {}

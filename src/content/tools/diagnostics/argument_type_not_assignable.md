@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: argument_type_not_assignable
-description: "Detalhes sobre o diagnóstico argument_type_not_assignable produzido pelo analisador Dart."
+description: >-
+  Details about the argument_type_not_assignable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,13 +11,13 @@ _The argument type '{0}' can't be assigned to the parameter type '{1}'. {2}_
 
 ## Description
 
-O analisador produz este diagnóstico quando o type estático de um argument
-não pode ser atribuído ao type estático do parameter correspondente.
+The analyzer produces this diagnostic when the static type of an argument
+can't be assigned to the static type of the corresponding parameter.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque um `num` não pode ser
-atribuído a um `String`:
+The following code produces this diagnostic because a `num` can't be
+assigned to a `String`:
 
 ```dart
 String f(String x) => x;
@@ -25,33 +26,33 @@ String g(num y) => f([!y!]);
 
 ## Common fixes
 
-Se possível, reescreva o código para que o type estático seja assignable. No
-exemplo acima você pode conseguir alterar o type do parameter `y`:
+If possible, rewrite the code so that the static type is assignable. In the
+example above you might be able to change the type of the parameter `y`:
 
 ```dart
 String f(String x) => x;
 String g(String y) => f(y);
 ```
 
-Se essa correção não for possível, então adicione código para lidar com o caso onde o
-valor do argument não é o type esperado. Uma abordagem é coagir outros
-types para o type esperado:
+If that fix isn't possible, then add code to handle the case where the
+argument value isn't the required type. One approach is to coerce other
+types to the required type:
 
 ```dart
 String f(String x) => x;
 String g(num y) => f(y.toString());
 ```
 
-Outra abordagem é adicionar verificações de type explícitas e código alternativo:
+Another approach is to add explicit type tests and fallback code:
 
 ```dart
 String f(String x) => x;
 String g(Object y) => f(y is String ? y : '');
 ```
 
-Se você acredita que o type em tempo de execução do argument será sempre o
-mesmo que o type estático do parameter, e está disposto a arriscar ter
-uma exceção lançada em tempo de execução se estiver errado, então adicione um cast explícito:
+If you believe that the runtime type of the argument will always be the
+same as the static type of the parameter, and you're willing to risk having
+an exception thrown at runtime if you're wrong, then add an explicit cast:
 
 ```dart
 String f(String x) => x;

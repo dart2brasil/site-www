@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: const_constructor_with_non_final_field
-description: "Detalhes sobre o diagnóstico const_constructor_with_non_final_field produzido pelo analisador do Dart."
+description: >-
+  Details about the const_constructor_with_non_final_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _Can't define a const constructor for a class with non-final fields._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um constructor é marcado como
-constructor const, mas o constructor é definido em uma classe que tem pelo
-menos um field de instância não final (seja diretamente ou por herança).
+The analyzer produces this diagnostic when a constructor is marked as a
+const constructor, but the constructor is defined in a class that has at
+least one non-final instance field (either directly or by inheritance).
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o field `x` não é
+The following code produces this diagnostic because the field `x` isn't
 final:
 
 ```dart
@@ -27,9 +28,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se é possível marcar todos os fields como final, então faça isso:
+If it's possible to mark all of the fields as final, then do so:
 
 ```dart
 class C {
@@ -39,8 +40,8 @@ class C {
 }
 ```
 
-Se não é possível marcar todos os fields como final, então remova a
-keyword `const` do constructor:
+If it isn't possible to mark all of the fields as final, then remove the
+keyword `const` from the constructor:
 
 ```dart
 class C {

@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: label_undefined
-description: "Detalhes sobre o diagnóstico label_undefined produzido pelo analisador do Dart."
+description: >-
+  Details about the label_undefined
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Não é possível referenciar um label indefinido '{0}'._
+_Can't reference an undefined label '{0}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando encontra uma referência a um label
-que não está definido no escopo do statement `break` ou `continue` que
-está referenciando-o.
+The analyzer produces this diagnostic when it finds a reference to a label
+that isn't defined in the scope of the `break` or `continue` statement that
+is referencing it.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o label `loop` não está
-definido em lugar algum:
+The following code produces this diagnostic because the label `loop` isn't
+defined anywhere:
 
 ```dart
 void f() {
@@ -33,8 +34,8 @@ void f() {
 
 ## Common fixes
 
-Se o label deve estar no statement `do`, `for`, `switch`, ou
-`while` envolvente mais interno, então remova o label:
+If the label should be on the innermost enclosing `do`, `for`, `switch`, or
+`while` statement, then remove the label:
 
 ```dart
 void f() {
@@ -48,7 +49,7 @@ void f() {
 }
 ```
 
-Se o label deve estar em algum outro statement, então adicione o label:
+If the label should be on some other statement, then add the label:
 
 ```dart
 void f() {

@@ -1,38 +1,39 @@
 ---
-ia-translate: true
 title: final_not_initialized
-description: "Detalhes sobre o diagnóstico final_not_initialized produzido pelo analisador Dart."
+description: >-
+  Details about the final_not_initialized
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A variável final '{0}' deve ser inicializada._
+_The final variable '{0}' must be initialized._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um campo ou variável final não é
-inicializado.
+The analyzer produces this diagnostic when a final field or variable isn't
+initialized.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `x` não tem um
-inicializador:
+The following code produces this diagnostic because `x` doesn't have an
+initializer:
 
 ```dart
 final [!x!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Para variáveis e campos static, você pode adicionar um inicializador:
+For variables and static fields, you can add an initializer:
 
 ```dart
 final x = 0;
 ```
 
-Para campos de instância, você pode adicionar um inicializador como mostrado no
-exemplo anterior, ou pode inicializar o campo em todo construtor. Você pode
-inicializar o campo usando um parâmetro formal inicializador:
+For instance fields, you can add an initializer as shown in the previous
+example, or you can initialize the field in every constructor. You can
+initialize the field by using an initializing formal parameter:
 
 ```dart
 class C {
@@ -41,8 +42,8 @@ class C {
 }
 ```
 
-Você também pode inicializar o campo usando um inicializador no
-construtor:
+You can also initialize the field by using an initializer in the
+constructor:
 
 ```dart
 class C {

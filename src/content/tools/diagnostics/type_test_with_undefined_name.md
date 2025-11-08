@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: type_test_with_undefined_name
-description: "Detalhes sobre o diagnóstico type_test_with_undefined_name produzido pelo analisador Dart."
+description: >-
+  Details about the type_test_with_undefined_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome '{0}' não está definido, então não pode ser usado em uma expressão 'is'._
+_The name '{0}' isn't defined, so it can't be used in an 'is' expression._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o nome após `is` em uma
-expressão de teste de tipo não está definido.
+The analyzer produces this diagnostic when the name following the `is` in a
+type test expression isn't defined.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o nome `Srting` não está
-definido:
+The following code produces this diagnostic because the name `Srting` isn't
+defined:
 
 ```dart
 void f(Object o) {
@@ -26,9 +27,9 @@ void f(Object o) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Substitua o nome pelo nome de um tipo:
+Replace the name with the name of a type:
 
 ```dart
 void f(Object o) {

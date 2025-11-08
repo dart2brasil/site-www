@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Interoperabilidade nativa com Dart
+title: Native interop with Dart
 shortTitle: Interop
-description: "Aprenda a interagir com código nativo e outras linguagens de programação a partir do Dart."
+description: >-
+  Learn to interact with native code and other programming languages from Dart.
 toc: false
 sitemap: false
 noindex: true
@@ -10,16 +10,16 @@ noindex: true
 
 <div class="card-grid no_toc_section">
   <Card title="C interop & FFI" link="/interop/c-interop">
-    Aprenda como fazer interop com bibliotecas e código C a partir do Dart.
+    Learn how to interop with C libraries and code from Dart.
   </Card>
   <Card title="Java interop" link="/interop/java-interop">
-    Aprenda como fazer interop com código Java, como em Android, a partir do Dart.
+    Learn how to interop with Java code, such as on Android, from Dart.
   </Card>
   <Card title="Objective-C & Swift interop" link="/interop/objective-c-interop">
-    Aprenda como fazer interop com código Objective-C e Swift,
-    como em iOS, a partir do Dart.
+    Learn how to interop with Objective-C and Swift code,
+    such as on iOS, from Dart.
   </Card>
   <Card title="JS interop" link="/interop/js-interop">
-    Aprenda como fazer interop com a web e outros códigos JavaScript a partir do Dart.
+    Learn how to interop with the web and other JavaScript code from Dart.
   </Card>
 </div>

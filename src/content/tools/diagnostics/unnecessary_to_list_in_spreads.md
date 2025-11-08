@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_to_list_in_spreads
-description: "Detalhes sobre o diagnóstico unnecessary_to_list_in_spreads produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_to_list_in_spreads
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,20 +18,20 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário de 'toList' em um spread._
+_Unnecessary use of 'toList' in a spread._
 
 ## Description
 
-O analisador produz este diagnóstico quando `toList` é usado para converter um
-`Iterable` em uma `List` logo antes de um operador spread ser aplicado à
-lista. O operador spread pode ser aplicado a qualquer `Iterable`, então a
-conversão não é necessária.
+The analyzer produces this diagnostic when `toList` is used to convert an
+`Iterable` to a `List` just before a spread operator is applied to the
+list. The spread operator can be applied to any `Iterable`, so the
+conversion isn't necessary.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `toList` é invocado no
-resultado de `map`, que é um `Iterable` ao qual o operador spread poderia
-ser aplicado diretamente:
+The following code produces this diagnostic because `toList` is invoked on
+the result of `map`, which is an `Iterable` that the spread operator could
+be applied to directly:
 
 ```dart
 List<String> toLowercase(List<String> strings) {
@@ -42,7 +43,7 @@ List<String> toLowercase(List<String> strings) {
 
 ## Common fixes
 
-Remova a invocação de `toList`:
+Remove the invocation of `toList`:
 
 ```dart
 List<String> toLowercase(List<String> strings) {

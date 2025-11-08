@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: mixin_super_class_constraint_deferred_class
-description: "Detalhes sobre o diagnóstico mixin_super_class_constraint_deferred_class produzido pelo analisador Dart."
+description: >-
+  Details about the mixin_super_class_constraint_deferred_class
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Classes deferred não podem ser usadas como superclass constraints._
+_Deferred classes can't be used as superclass constraints._
 
 ## Description
 
-O analisador produz este diagnóstico quando um superclass constraint de um
-mixin é importado de uma biblioteca deferred.
+The analyzer produces this diagnostic when a superclass constraint of a
+mixin is imported from a deferred library.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o superclass
-constraint de `math.Random` é importado de uma biblioteca deferred:
+The following code produces this diagnostic because the superclass
+constraint of `math.Random` is imported from a deferred library:
 
 ```dart
 import 'dart:async' deferred as async;
@@ -26,7 +27,8 @@ mixin M<T> on [!async.Stream<T>!] {}
 
 ## Common fixes
 
-Se o import não precisa ser deferred, então remova a keyword `deferred`:
+If the import doesn't need to be deferred, then remove the `deferred`
+keyword:
 
 ```dart
 import 'dart:async' as async;
@@ -34,7 +36,7 @@ import 'dart:async' as async;
 mixin M<T> on async.Stream<T> {}
 ```
 
-Se o import precisa ser deferred, então remova o superclass
+If the import does need to be deferred, then remove the superclass
 constraint:
 
 ```dart

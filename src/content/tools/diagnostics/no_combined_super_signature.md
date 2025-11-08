@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: no_combined_super_signature
-description: "Detalhes sobre o diagnóstico no_combined_super_signature produzido pelo analisador do Dart."
+description: >-
+  Details about the no_combined_super_signature
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,17 +11,17 @@ _Can't infer missing types in '{0}' from overridden methods: {1}._
 
 ## Description
 
-O analisador produz este diagnóstico quando há uma declaração de método
-para a qual um ou mais tipos precisam ser inferidos, e esses tipos não podem ser
-inferidos porque nenhum dos métodos sobrescritos possui um tipo de função que é
-um supertipo de todos os outros métodos sobrescritos, conforme especificado por
+The analyzer produces this diagnostic when there is a method declaration
+for which one or more types needs to be inferred, and those types can't be
+inferred because none of the overridden methods has a function type that is
+a supertype of all the other overridden methods, as specified by
 [override inference][].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o método `m` declarado
-na classe `C` está sem o tipo de retorno e o tipo do
-parâmetro `a`, e nenhum dos tipos faltantes pode ser inferido para ele:
+The following code produces this diagnostic because the method `m` declared
+in the class `C` is missing both the return type and the type of the
+parameter `a`, and neither of the missing types can be inferred for it:
 
 ```dart
 abstract class A {
@@ -36,15 +37,15 @@ abstract class C implements A, B {
 }
 ```
 
-Neste exemplo, override inference não pode ser realizado porque os
-métodos sobrescritos são incompatíveis destas maneiras:
-- Nenhum tipo de parâmetro (`String` e `int`) é um supertipo do outro.
-- Nenhum tipo de retorno é um subtipo do outro.
+In this example, override inference can't be performed because the
+overridden methods are incompatible in these ways:
+- Neither parameter type (`String` and `int`) is a supertype of the other.
+- Neither return type is a subtype of the other.
 
 ## Common fixes
 
-Se possível, adicione tipos ao método na subclasse que sejam consistentes
-com os tipos de todos os métodos sobrescritos:
+If possible, add types to the method in the subclass that are consistent
+with the types from all the overridden methods:
 
 ```dart
 abstract class A {

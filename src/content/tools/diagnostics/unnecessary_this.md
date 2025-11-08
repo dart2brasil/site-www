@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_this
-description: "Detalhes sobre o diagnóstico unnecessary_this produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_this
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Qualificador 'this.' desnecessário._
+_Unnecessary 'this.' qualifier._
 
 ## Description
 
-O analisador produz este diagnóstico quando a keyword `this` é usada para
-acessar um membro que não está sombreado.
+The analyzer produces this diagnostic when the keyword `this` is used to
+access a member that isn't shadowed.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o uso de `this` para
-acessar o campo `_f` não é necessário:
+The following code produces this diagnostic because the use of `this` to
+access the field `_f` isn't necessary:
 
 ```dart
 class C {
@@ -39,7 +40,7 @@ class C {
 
 ## Common fixes
 
-Remova o `this.`:
+Remove the `this.`:
 
 ```dart
 class C {

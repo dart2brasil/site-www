@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_if_null_to_convert_nulls_to_bools
-description: "Detalhes sobre o diagnóstico use_if_null_to_convert_nulls_to_bools produzido pelo analisador Dart."
+description: >-
+  Details about the use_if_null_to_convert_nulls_to_bools
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,34 +18,34 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use um operador if-null para converter um 'null' em um 'bool'._
+_Use an if-null operator to convert a 'null' to a 'bool'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma expressão com valor `bool` nullable
-é comparada (usando `==` ou `!=`) a um literal booleano.
+The analyzer produces this diagnostic when a nullable `bool`-valued
+expression is compared (using `==` or `!=`) to a boolean literal.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a variável booleana nullable
-`b` é comparada a `true`:
+The following code produces this diagnostic because the nullable boolean
+variable `b` is compared to `true`:
 
 ```dart
 void f(bool? b) {
   if ([!b == true!]) {
-    // Trata `null` como `false`.
+    // Treats `null` as `false`.
   }
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Reescreva a condição para usar `??` em vez disso:
+Rewrite the condition to use `??` instead:
 
 ```dart
 void f(bool? b) {
   if (b ?? false) {
-    // Trata `null` como `false`.
+    // Treats `null` as `false`.
   }
 }
 ```

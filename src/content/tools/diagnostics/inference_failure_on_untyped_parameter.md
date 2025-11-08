@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: inference_failure_on_untyped_parameter
-description: "Detalhes sobre o diagnóstico inference_failure_on_untyped_parameter produzido pelo analisador Dart."
+description: >-
+  Details about the inference_failure_on_untyped_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo de {0} não pode ser inferido; um tipo deve ser fornecido explicitamente._
+_The type of {0} can't be inferred; a type must be explicitly provided._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando:
-- a opção de linguagem `strict-inference` está habilitada no arquivo de opções de análise,
-- a declaração de um parâmetro formal não possui tipo, e
-- o tipo do parâmetro não pode ser inferido.
+The analyzer produces this diagnostic when:
+- the language option `strict-inference` is enabled in the analysis options file,
+- the declaration of a formal parameter has no type, and
+- the type of the parameter can't be inferred.
 
-O tipo de um parâmetro de método pode ser inferido se ele sobrescreve um
-método herdado.
+The type of a method's parameter can be inferred if it overrides an
+inherited method.
 
-## Exemplo
+## Example
 
-Dado um arquivo de opções de análise contendo o seguinte:
+Given an analysis options file containing the following:
 
 ```yaml
 analyzer:
@@ -28,16 +29,16 @@ analyzer:
     strict-inference: true
 ```
 
-O código a seguir produz este diagnóstico porque o parâmetro formal
-`p` não possui um tipo explícito e o tipo não pode ser inferido:
+The following code produces this diagnostic because the formal parameter
+`p` doesn't have an explicit type and the type can't be inferred:
 
 ```dart
 void f([!p!]) => print(p);
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione um tipo explícito:
+Add an explicit type:
 
 ```dart
 void f(int p) => print(p);

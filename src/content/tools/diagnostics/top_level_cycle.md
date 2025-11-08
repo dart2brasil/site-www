@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: top_level_cycle
-description: "Detalhes sobre o diagnóstico top_level_cycle produzido pelo analisador do Dart."
+description: >-
+  Details about the top_level_cycle
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo de '{0}' não pode ser inferido porque depende de si mesmo através do ciclo: {1}._
+_The type of '{0}' can't be inferred because it depends on itself through the cycle: {1}._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma variável de nível superior não tem
-anotação de tipo e o inicializador da variável se refere à variável, seja
-direta ou indiretamente.
+The analyzer produces this diagnostic when a top-level variable has no type
+annotation and the variable's initializer refers to the variable, either
+directly or indirectly.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque as variáveis `x` e
-`y` são definidas em termos uma da outra, e nenhuma tem um tipo explícito,
-então o tipo da outra não pode ser inferido:
+The following code produces this diagnostic because the variables `x` and
+`y` are defined in terms of each other, and neither has an explicit type,
+so the type of the other can't be inferred:
 
 ```dart
 var x = y;
@@ -27,23 +28,23 @@ var y = [!x!];
 
 ## Common fixes
 
-Se as duas variáveis não precisam se referir uma à outra, então quebre o
-ciclo:
+If the two variables don't need to refer to each other, then break the
+cycle:
 
 ```dart
 var x = 0;
 var y = x;
 ```
 
-Se as duas variáveis precisam se referir uma à outra, então forneça a pelo menos uma delas
-um tipo explícito:
+If the two variables need to refer to each other, then give at least one of
+them an explicit type:
 
 ```dart
 int x = y;
 var y = x;
 ```
 
-Note, no entanto, que embora este código não produza nenhum diagnóstico, ele
-produzirá um estouro de pilha em tempo de execução, a menos que pelo menos uma das
-variáveis seja atribuída a um valor que não dependa das outras variáveis
-antes que qualquer uma das variáveis no ciclo seja referenciada.
+Note, however, that while this code doesn't produce any diagnostics, it
+will produce a stack overflow at runtime unless at least one of the
+variables is assigned a value that doesn't depend on the other variables
+before any of the variables in the cycle are referenced.

@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: invalid_visible_for_overriding_annotation
-description: "Detalhes sobre o diagnóstico invalid_visible_for_overriding_annotation produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_visible_for_overriding_annotation
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A anotação 'visibleForOverriding' só pode ser aplicada a um membro de instância público que pode sofrer override._
+_The annotation 'visibleForOverriding' can only be applied to a public instance member that can be overridden._
 
 ## Description
 
-O analisador produz este diagnóstico quando algo diferente de um membro de
-instância público de uma classe está anotado com
-[`visibleForOverriding`][meta-visibleForOverriding]. Como apenas membros
-de instância públicos podem ter override fora da biblioteca onde foram definidos, não há
-valor em anotar quaisquer outras declarações.
+The analyzer produces this diagnostic when anything other than a public
+instance member of a class is annotated with
+[`visibleForOverriding`][meta-visibleForOverriding]. Because only public
+instance members can be overridden outside the defining library, there's
+no value to annotating any other declarations.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a anotação está em uma
-classe, e classes não podem ter override:
+The following code produces this diagnostic because the annotation is on a
+class, and classes can't be overridden:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -30,7 +31,7 @@ class C {}
 
 ## Common fixes
 
-Remova a anotação:
+Remove the annotation:
 
 ```dart
 class C {}

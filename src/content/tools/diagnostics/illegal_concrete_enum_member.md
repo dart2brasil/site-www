@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: illegal_concrete_enum_member
-description: "Detalhes sobre o diagnóstico illegal_concrete_enum_member produzido pelo analisador do Dart."
+description: >-
+  Details about the illegal_concrete_enum_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um membro de instância concreto chamado '{0}' não pode ser declarado em uma classe que implementa 'Enum'._
+_A concrete instance member named '{0}' can't be declared in a class that implements 'Enum'._
 
-_Um membro de instância concreto chamado '{0}' não pode ser herdado de '{1}' em uma classe que implementa 'Enum'._
+_A concrete instance member named '{0}' can't be inherited from '{1}' in a class that implements 'Enum'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma declaração de enum, uma
-classe que implementa `Enum`, ou um mixin com uma restrição de superclasse de
-`Enum`, declara ou herda um membro de instância concreto chamado
-`index`, `hashCode`, ou `==`.
+The analyzer produces this diagnostic when either an enum declaration, a
+class that implements `Enum`, or a mixin with a superclass constraint of
+`Enum`, declares or inherits a concrete instance member named either
+`index`, `hashCode`, or `==`.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque o enum `E` declara
-um getter de instância chamado `index`:
+The following code produces this diagnostic because the enum `E` declares
+an instance getter named `index`:
 
 ```dart
 enum E {
@@ -30,8 +31,8 @@ enum E {
 }
 ```
 
-O código a seguir produz este diagnóstico porque a classe `C`, que
-implementa `Enum`, declara um campo de instância chamado `hashCode`:
+The following code produces this diagnostic because the class `C`, which
+implements `Enum`, declares an instance field named `hashCode`:
 
 ```dart
 abstract class C implements Enum {
@@ -39,9 +40,9 @@ abstract class C implements Enum {
 }
 ```
 
-O código a seguir produz este diagnóstico porque a classe `C`, que
-implementa `Enum` indiretamente através da classe `A`, declara um
-getter de instância chamado `hashCode`:
+The following code produces this diagnostic because the class `C`, which
+indirectly implements `Enum` through the class `A`, declares an instance
+getter named `hashCode`:
 
 ```dart
 abstract class A implements Enum {}
@@ -51,8 +52,8 @@ abstract class C implements A {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o mixin `M`, que
-tem `Enum` na cláusula `on`, declara um operador explícito chamado `==`:
+The following code produces this diagnostic because the mixin `M`, which
+has `Enum` in the `on` clause, declares an explicit operator named `==`:
 
 ```dart
 mixin M on Enum {
@@ -62,7 +63,7 @@ mixin M on Enum {
 
 ## Common fixes
 
-Renomeie o membro conflitante:
+Rename the conflicting member:
 
 ```dart
 enum E {

@@ -1,35 +1,35 @@
 ---
 title: dart pub add
-description: "Use dart pub add para adicionar uma dependência."
+description: Use dart pub add to add a dependency.
 ---
 
-_Add_ (Adicionar) é um dos comandos da [ferramenta pub](/tools/pub/cmd).
+_Add_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```plaintext
 $ dart pub add [{dev|override}:]<package>[:descriptor] [[{dev|override}:]<package>[:descriptor] ...] [options]
 ```
 
-Este comando adiciona os pacotes especificados ao `pubspec.yaml` como dependências,
-e então recupera as dependências para resolver `pubspec.yaml`.
+This command adds the specified packages to the `pubspec.yaml` as dependencies,
+and then retrieves the dependencies to resolve `pubspec.yaml`.
 
-O exemplo de comando a seguir é equivalente a
-editar `pubspec.yaml` para adicionar o pacote `http`,
-e então chamar `dart pub get`:
+The following example command is equivalent to
+editing `pubspec.yaml` to add the `http` package,
+and then calling `dart pub get`:
 
 ```console
 $ dart pub add http
 ```
 
-## Restrição de versão {:#version-constraint}
+## Version constraint
 
-Por padrão, `dart pub add` usa a
-versão estável mais recente do pacote do site [pub.dev]({{site.pub}})
-que é compatível com suas restrições de SDK e dependências.
-Por exemplo, se `0.13.3` for a versão estável mais recente do pacote `http`,
-então `dart pub add http` adiciona `http: ^0.13.3`
-em `dependencies` no seu `pubspec.yaml`.
+By default, `dart pub add` uses the
+latest stable version of the package from the [pub.dev site]({{site.pub}})
+that is compatible with your SDK constraints and dependencies.
+For example, if `0.13.3` is the latest stable version of the `http` package,
+then `dart pub add http` adds `http: ^0.13.3`
+under `dependencies` in your `pubspec.yaml`.
 
-Você também pode especificar uma restrição ou um intervalo de restrição:
+You can also specify a constraint or constraint range:
 
 ```console
 $ dart pub add foo:2.0.0
@@ -37,66 +37,66 @@ $ dart pub add foo:'^2.0.0'
 $ dart pub add foo:'>=2.0.0 <3.0.1'
 ```
 
-Se o pacote especificado for uma dependência existente no seu `pubspec.yaml`,
-`dart pub add` atualiza a restrição da dependência
-para a especificada no comando.
+If the specified package is an existing dependency in your `pubspec.yaml`,
+`dart pub add` updates the dependency's constraint
+to the one specified in the command.
 
-## Dependência de desenvolvimento {:#dev-dependency}
+## Dev dependency
 
-O prefixo `dev:` adiciona o pacote como uma [dependência de desenvolvimento][dev dependency],
-em vez de como uma dependência regular.
+The `dev:` prefix adds the package as a [dev dependency][],
+instead of as a regular dependency.
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 
 ```console
-$ dart pub add dev:foo           # adiciona a versão estável compatível mais recente de foo
-$ dart pub add dev:foo:^2.0.0    # adiciona a restrição especificada de foo
-$ dart pub add foo dev:bar       # adiciona a dependência regular foo e a dependência de desenvolvimento bar simultaneamente
+$ dart pub add dev:foo           # adds newest compatible stable version of foo
+$ dart pub add dev:foo:^2.0.0    # adds specified constraint of foo
+$ dart pub add foo dev:bar       # adds regular dependency foo and dev dependency bar simultaneously
 ```
 
-_Anteriormente, a opção `-d, --dev`_:
+_Previously the `-d, --dev` option_:
 
 ```console
 $ dart pub add --dev foo
 ```
 
-## Substituição de dependência {:#dependency-override}
+## Dependency override
 
-Para especificar uma [substituição de dependência][dependency override], adicione o prefixo `override:` e
-inclua uma [restrição de versão](#version-constraint) ou
-[descritor de fonte](#source-descriptor).
+To specify a [dependency override][], add the `override:` prefix and
+include a [version constraint](#version-constraint) or
+[source descriptor](#source-descriptor).
 
 [dependency override]: /tools/pub/dependencies#dependency-overrides
 
-**Por exemplo:** Para substituir todas as referências a `package:foo`
-para usar a versão `1.0.0` do pacote,
-execute o seguinte comando:
+**For example:** To override all references to `package:foo`
+to use version `1.0.0` of the package,
+run the following command:
 
 ```console
 $ dart pub add override:foo:1.0.0
 ```
 
-Isso adiciona a substituição ao seu arquivo `pubspec.yaml`:
+This adds the override to your `pubspec.yaml` file:
 
 ```yaml
 dependency_overrides:
   foo: 1.0.0
 ```
 
-## Descritor de fonte {:#source-descriptor}
+## Source descriptor
 
 :::version-note
-A sintaxe de descritor formatada em YAML foi adicionada no Dart 2.19.
-O descritor substitui argumentos como
+The YAML-formatted descriptor syntax was added in Dart 2.19.
+The descriptor replaces arguments like
 `--path`, `--sdk`, `--git-<option>`, etc.
-O Pub ainda suporta esses argumentos, mas
-o método recomendado agora é o descritor YAML.
-O descritor e os argumentos substituídos não podem ser usados juntos.
+Pub still supports these arguments, but
+the recommended method is now the YAML-descriptor.
+The descriptor and the replaced arguments can't be used together.
 :::
 
-A sintaxe do descritor YAML permite adicionar
-vários pacotes de diferentes fontes e
-aplicar diferentes opções e restrições a cada um.
+The YAML descriptor syntax allows you to add 
+multiple packages from different sources, and 
+apply different options and constraints to each.
 
 ```plaintext
 $ dart pub add [options] [{dev|override}:]<package>[:descriptor] [[{dev|override}:]<package>[:descriptor] ...]
@@ -109,36 +109,36 @@ Follow the same format including spaces.
 "<package>:{<source>: <descriptor>[, <source>: <descriptor>], version: <constraint>}"
 ```
 
-### `git` {:#git}
+### `git`
 
-Adiciona uma [dependência git](/tools/pub/dependencies#git-packages).
+Adds a [git dependency](/tools/pub/dependencies#git-packages).
 
 ```console
 $ dart pub add "foo:{git: https://github.com/foo/foo}"
 ```
 
-Você pode especificar o repositório e o branch ou commit, ou localização exata,
-dentro desse repositório:
+You can specify the repository, and the branch or commit, or exact location,
+within that repository:
 
 ```console
 $ dart pub add "foo:{git:{url: ../foo.git, ref: branch, path: subdir}}"
 ```
 
-#### `url` {:#url}
+#### `url`
 
-Depende do pacote no repositório Git especificado.
+Depends on the package in the specified Git repository.
 
-_Anteriormente, a opção `--git-url=<git_repo_url>`_:
+_Previously the `--git-url=<git_repo_url>` option_:
 
 ```console
 $ dart pub add http --git-url=https://github.com/my/http.git
 ```
 
-#### `ref` {:#ref}
+#### `ref`
 
-Com `url`, depende do branch ou commit especificado de um repositório Git.
+With `url`, depends on the specified branch or commit of a Git repo.
 
-_Anteriormente, a opção `--git-ref=<branch_or_commit>`_:
+_Previously the `--git-ref=<branch_or_commit>` option_:
 
 ```console
 $ dart pub add http --git-url=https://github.com/my/http.git --git-ref=tmpfixes
@@ -146,82 +146,82 @@ $ dart pub add http --git-url=https://github.com/my/http.git --git-ref=tmpfixes
 
 #### `path`
 
-Com `url`, especifica a localização de um pacote dentro de um repositório Git.
+With `url`, specifies the location of a package within a Git repo.
 
-_Anteriormente, a opção `--git-path=<directory_path>`_.
+_Previously the `--git-path=<directory_path>` option_.
 
-### `hosted` {:#hosted}
+### `hosted`
 
-Adiciona uma [dependência hospedada][hosted dependency] que depende
-do servidor de pacotes na URL especificada.
+Adds a [hosted dependency][] that depends on
+the package server at the specified URL.
 
 ```console
 $ dart pub add "foo:{hosted: my-pub.dev}"
 ```
 
-_Anteriormente, a opção `--hosted-url=<package_server_url>`_.
+_Previously the `--hosted-url=<package_server_url>` option_.
 
 [hosted dependency]: /tools/pub/dependencies#hosted-packages
 
 ### `path`
 
-Adiciona uma [dependência de caminho][path dependency] em um pacote armazenado localmente.
+Adds a [path dependency][] on a locally stored package.
 
 ```console
 $ dart pub add "foo:{path: ../foo}"
 ```
 
-_Anteriormente, a opção `--path=<directory_path>`_.
+_Previously the `--path=<directory_path>` option_.
 
 [path dependency]: /tools/pub/dependencies#path-packages
 
-### `sdk` {:#sdk}
+### `sdk`
 
-Adiciona um pacote da fonte SDK especificada.
+Adds a package from the specified SDK source.
 
 ```console
 $ dart pub add "foo:{sdk: flutter}"
 ```
 
-_Anteriormente, a opção `--sdk=<sdk_name>`_:
+_Previously the `--sdk=<sdk_name>` option_:
 
 ```console
 $ dart pub add foo --sdk=flutter
 ```
 
-## Opções {:#options}
+## Options
 
-Para opções que se aplicam a todos os comandos pub, consulte
-[Opções globais](/tools/pub/cmd#global-options).
+For options that apply to all pub commands, see
+[Global options](/tools/pub/cmd#global-options).
 
 :::note
-A sintaxe anterior `pub add` para opções
-(sem descritores YAML) aplica as
-opções especificadas a todos os pacotes
-incluídos em uma invocação do comando.
-Por exemplo, `dart pub add test http --dev`
-adicionará os pacotes `test` e `http`
-como dependências de desenvolvimento.
+The previous `pub add` syntax for options
+(without YAML descriptors) applies the
+specified options to all the packages
+included in an invocation of the command.
+For example, `dart pub add test http --dev`
+will add both the `test` and `http` packages
+as dev dependencies.
 :::
 
-### `--[no-]offline` {:#no-offline}
+### `--[no-]offline`
 
 {% render 'tools/pub-option-no-offline.md' %}
 
-### `-n, --dry-run` {:#n-dry-run}
+### `-n, --dry-run`
 
-Relata quais dependências seriam alteradas,
-mas não altera nenhuma.
+Reports which dependencies would change,
+but doesn't change any.
 
-### `--[no-]precompile` {:#no-precompile}
+### `--[no-]precompile`
 
-Por padrão, o pub pré-compila executáveis
-em dependências imediatas (`--precompile`).
-Para evitar a pré-compilação, use `--no-precompile`.
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
 
-## Em um workspace {:#in-a-workspace}
+## In a workspace
 
-Em um [Pub workspace](/tools/pub/workspaces) `dart pub add` adicionará
-dependências apenas ao pacote no diretório atual.
+In a [Pub workspace](/tools/pub/workspaces) `dart pub add` will add
+dependencies only to the package in the current directory.
 
 {% render 'pub-problems.md' %}

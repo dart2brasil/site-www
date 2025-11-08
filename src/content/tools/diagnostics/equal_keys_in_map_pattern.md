@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: equal_keys_in_map_pattern
-description: "Detalhes sobre o diagnóstico equal_keys_in_map_pattern produzido pelo analisador Dart."
+description: >-
+  Details about the equal_keys_in_map_pattern
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Duas chaves em um map pattern não podem ser equal._
+_Two keys in a map pattern can't be equal._
 
 ## Description
 
-O analisador produz este diagnóstico quando um map pattern contém mais
-de uma chave com o mesmo nome. A mesma chave não pode ser correspondida duas vezes.
+The analyzer produces this diagnostic when a map pattern contains more
+than one key with the same name. The same key can't be matched twice.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a chave `'a'` aparece
-duas vezes:
+The following code produces this diagnostic because the key `'a'` appears
+twice:
 
 ```dart
 void f(Map<String, int> x) {
@@ -26,8 +27,8 @@ void f(Map<String, int> x) {
 
 ## Common fixes
 
-Se você está tentando corresponder duas chaves diferentes, então altere uma das chaves
-no pattern:
+If you are trying to match two different keys, then change one of the keys
+in the pattern:
 
 ```dart
 void f(Map<String, int> x) {
@@ -35,8 +36,8 @@ void f(Map<String, int> x) {
 }
 ```
 
-Se você está tentando corresponder a mesma chave, mas permitir que qualquer um de múltiplos
-patterns corresponda, use um logical-or pattern:
+If you are trying to match the same key, but allow any one of multiple
+patterns to match, the use a logical-or pattern:
 
 ```dart
 void f(Map<String, int> x) {

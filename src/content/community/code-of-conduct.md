@@ -1,19 +1,25 @@
 ---
-ia-translate: true
-title: "Código de conduta"
-description: Seja excelente uns com os outros.
+title: Code of conduct
+description: Be excellent to each other.
 showToc: false
 skipFreshness: true
 ---
 
-Esperamos que os membros da comunidade Dart ajam de forma profissional e respeitosa, e esperamos que nossos espaços sociais sejam ambientes seguros e dignos.
+We expect Dart community members to act professionally and respectfully, and
+we expect our social spaces to be safe and dignified environments.
 
-Especificamente:
+Specifically:
 
-* Respeite as pessoas, suas identidades, sua cultura e seu trabalho.
-* Seja gentil. Seja cortês. Seja acolhedor.
-* Ouça. Considere e reconheça os pontos das pessoas antes de responder.
+* Respect people, their identities, their culture, and their work.
+* Be kind. Be courteous. Be welcoming.
+* Listen. Consider and acknowledge people's points before responding.
 
-Se algum membro da comunidade violar este código de conduta, os mantenedores do projeto Dart poderão tomar medidas, removendo problemas, comentários e PRs (Pull Requests) ou bloqueando contas, conforme considerado apropriado.  Não toleraremos assédio de ninguém na comunidade Dart, mesmo fora dos canais de comunicação públicos do Dart.
+If any member of the community violates this code of conduct,
+the maintainers of the Dart project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.
+We will not tolerate harassment from anyone in the Dart community,
+even outside of Dart's public communication channels.
 
-Se você estiver sujeito a ou testemunhar comportamento inaceitável, ou tiver outras preocupações, por favor, [entre em contato conosco](mailto:conduct@dartlang.org).
+If you are subject to or witness unacceptable behavior,
+or have any other concerns,
+please [email us](mailto:conduct@dartlang.org).
+

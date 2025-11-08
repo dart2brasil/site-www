@@ -4,44 +4,45 @@ description: Command-line tool for running AOT-compiled snapshots of Dart code.
 showToc: false
 ---
 
-Com Dart, você pode criar aplicações Dart pré-compiladas chamadas *snapshots AOT*.
+With Dart, you can create pre-compiled Dart applications called *AOT snapshots*.
 
-## Criar um app snapshot AOT {:#create-aot-snapshot-app}
+## Create AOT snapshot app
 
-Para produzir snapshots AOT, use o subcomando `aot-snapshot` do
-comando [`dart compile`][dart compile].
+To produce AOT snapshots, use the `aot-snapshot` subcommand of the
+[`dart compile` command][dart compile].
 
-## Executar um app snapshot AOT {:#run-aot-snapshot-app}
+## Run AOT snapshot app
 
-Para executar programas AOT, use o comando `dartaotruntime`.
-Esta ferramenta suporta Windows, macOS e Linux.
+To run AOT programs, use the `dartaotruntime` command.
+This tool supports Windows, macOS, and Linux.
 
 :::note
-Para executar use o comando `dartaotruntime`,
-adicione o caminho para seu diretório Dart `bin` à sua variável de ambiente `PATH`.
+To run use the `dartaotruntime` command,
+add the path to your Dart `bin` directory to your `PATH` environment variable.
 :::
 
 [dart compile]: /tools/dart-compile
 
-## Revisar um exemplo {:#review-an-example}
+## Review an example
 
-Eis um exemplo de como criar e executar um snapshot AOT:
+Here's an example of creating and running an AOT snapshot:
 
 ```console
 $ dart compile aot-snapshot bin/myapp.dart
 ```
 
 ```console
-Gerado: /Users/me/simpleapp/bin/myapp.aot
+Generated: /Users/me/simpleapp/bin/myapp.aot
 ```
 
 ```console
 $ dartaotruntime bin/simpleapp.aot
 ```
 
-## Aprender mais opções {:#learn-more-options}
+## Learn more options
 
-Para aprender mais sobre as opções de linha de comando, use a flag `--help`:
+To learn more about command-line options, use the `--help` flag:
 
 ```console
 $ dartaotruntime --help
+```

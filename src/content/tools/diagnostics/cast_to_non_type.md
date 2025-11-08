@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: cast_to_non_type
-description: "Detalhes sobre o diagnóstico cast_to_non_type produzido pelo analisador do Dart."
+description: >-
+  Details about the cast_to_non_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome '{0}' não é um type, então não pode ser usado em uma expressão 'as'._
+_The name '{0}' isn't a type, so it can't be used in an 'as' expression._
 
 ## Description
 
-O analisador produz este diagnóstico quando o nome que segue o `as` em uma
-expressão de cast é definido como algo diferente de um type.
+The analyzer produces this diagnostic when the name following the `as` in a
+cast expression is defined to be something other than a type.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `x` é uma variável, não
-um type:
+The following code produces this diagnostic because `x` is a variable, not
+a type:
 
 ```dart
 num x = 0;
@@ -25,7 +26,7 @@ int y = x as [!x!];
 
 ## Common fixes
 
-Substitua o nome pelo nome de um type:
+Replace the name with the name of a type:
 
 ```dart
 num x = 0;

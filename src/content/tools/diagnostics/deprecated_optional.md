@@ -1,31 +1,32 @@
 ---
-ia-translate: true
 title: deprecated_optional
-description: "Detalhes sobre o diagnóstico deprecated_optional produzido pelo analisador Dart."
+description: >-
+  Details about the deprecated_optional
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Omitir um argumento para o parâmetro '{0}' está deprecated._
+_Omitting an argument for the '{0}' parameter is deprecated._
 
 ## Description
 
-O analisador produz este diagnóstico quando um argumento é omitido para um
-parâmetro opcional anotado com `@Deprecated.optional`. Esta anotação
-indica que omitir um argumento para o parâmetro está deprecated, e
-o parâmetro em breve se tornará obrigatório.
+The analyzer produces this diagnostic when an argument is omitted for an
+optional parameter annotated with `@Deprecated.optional`. This annotation
+indicates that omitting an argument for the parameter is deprecated, and
+the parameter will soon become required.
 
 ## Example
 
-Dada uma biblioteca `p` que define uma função com um parâmetro opcional
-anotado com `@Deprecated.optional`:
+Given a library `p` that defines a function with an optional parameter
+annotated with `@Deprecated.optional`:
 
 ```dart
 void f({@Deprecated.optional() int a = 0}) {}
 ```
 
-O código a seguir produz este diagnóstico, porque a invocação
-não passa um valor para o parâmetro `a`:
+The following code produces this diagnostic, because the invocation
+doesn't pass a value for the parameter `a`:
 
 ```dart
 import 'package:p/p.dart';
@@ -37,10 +38,11 @@ void g() {
 
 ## Common fixes
 
-Siga quaisquer instruções específicas fornecidas na anotação `@Deprecated.optional`.
+Follow any specific instructions provided in the `@Deprecated.optional`
+annotation.
 
-Se nenhuma instrução estiver presente, passe um argumento apropriado para o
-parâmetro correspondente:
+If no instructions are present, pass an appropriate argument for the
+corresponding parameter:
 
 
 ```dart
@@ -51,4 +53,4 @@ void g() {
 }
 ```
 
-Usar o valor default preservará o comportamento atual do código.
+Using the default value will preserve the current behavior of the code.

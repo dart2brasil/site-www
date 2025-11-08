@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: non_const_argument_for_const_parameter
-description: "Detalhes sobre o diagnóstico non_const_argument_for_const_parameter produzido pelo analisador do Dart."
+description: >-
+  Details about the non_const_argument_for_const_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,15 +11,15 @@ _Argument '{0}' must be a constant._
 
 ## Description
 
-O analisador produz este diagnóstico quando um parâmetro é
-anotado com a annotation [`mustBeConst`][meta-mustBeConst] e
-o argumento correspondente não é uma expressão constante.
+The analyzer produces this diagnostic when a parameter is
+annotated with the [`mustBeConst`][meta-mustBeConst] annotation and
+the corresponding argument is not a constant expression.
 
 ## Example
 
-O código a seguir produz este diagnóstico na invocação da
-função `f` porque o valor do argumento passado para a
-função `g` não é uma constante:
+The following code produces this diagnostic on the invocation of
+the function `f` because the value of the argument passed to the
+function `g` isn't a constant:
 
 ```dart
 import 'package:meta/meta.dart' show mustBeConst;
@@ -30,8 +31,8 @@ int g(@mustBeConst int value) => value + 1;
 
 ## Common fixes
 
-Se uma constante adequada está disponível para uso, então substitua o argumento
-por uma constante:
+If a suitable constant is available to use, then replace the argument
+with a constant:
 
 ```dart
 import 'package:meta/meta.dart' show mustBeConst;

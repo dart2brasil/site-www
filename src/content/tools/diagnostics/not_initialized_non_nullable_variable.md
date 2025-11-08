@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: not_initialized_non_nullable_variable
-description: "Detalhes sobre o diagnóstico not_initialized_non_nullable_variable produzido pelo analisador do Dart."
+description: >-
+  Details about the not_initialized_non_nullable_variable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,16 +11,16 @@ _The non-nullable variable '{0}' must be initialized._
 
 ## Description
 
-O analisador produz este diagnóstico quando um campo static ou variável
-top-level possui um tipo que é non-nullable e não possui um inicializador.
-Campos e variáveis que não possuem um inicializador são normalmente
-inicializados para `null`, mas o tipo do campo ou variável não permite
-que seja definido como `null`, então um inicializador explícito deve ser fornecido.
+The analyzer produces this diagnostic when a static field or top-level
+variable has a type that's non-nullable and doesn't have an initializer.
+Fields and variables that don't have an initializer are normally
+initialized to `null`, but the type of the field or variable doesn't allow
+it to be set to `null`, so an explicit initializer must be provided.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque o campo `f` não pode ser
-inicializado para `null`:
+The following code produces this diagnostic because the field `f` can't be
+initialized to `null`:
 
 ```dart
 class C {
@@ -27,8 +28,8 @@ class C {
 }
 ```
 
-Similarmente, o código a seguir produz este diagnóstico porque a
-variável top-level `v` não pode ser inicializada para `null`:
+Similarly, the following code produces this diagnostic because the
+top-level variable `v` can't be initialized to `null`:
 
 ```dart
 int [!v!];
@@ -36,8 +37,8 @@ int [!v!];
 
 ## Common fixes
 
-Se o campo ou variável não pode ser inicializado para `null`, então adicione um
-inicializador que o defina como um valor non-null:
+If the field or variable can't be initialized to `null`, then add an
+initializer that sets it to a non-null value:
 
 ```dart
 class C {
@@ -45,15 +46,15 @@ class C {
 }
 ```
 
-Se o campo ou variável deveria ser inicializado para `null`, então mude o
-tipo para ser nullable:
+If the field or variable should be initialized to `null`, then change the
+type to be nullable:
 
 ```dart
 int? v;
 ```
 
-Se o campo ou variável não pode ser inicializado na declaração mas será
-sempre inicializado antes de ser referenciado, então marque-o como `late`:
+If the field or variable can't be initialized in the declaration but will
+always be initialized before it's referenced, then mark it as being `late`:
 
 ```dart
 class C {

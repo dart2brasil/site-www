@@ -1,40 +1,41 @@
 ---
-ia-translate: true
 title: nullable_type_in_implements_clause
-description: "Detalhes sobre o diagnóstico nullable_type_in_implements_clause produzido pelo analisador Dart."
+description: >-
+  Details about the nullable_type_in_implements_clause
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Uma classe, mixin ou tipo de extensão não pode implementar um tipo nulo._
+_A class, mixin, or extension type can't implement a nullable type._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma classe, mixin ou
-declaração de tipo de extensão tem uma cláusula `implements`, e uma
-interface é seguida por um `?`.
+The analyzer produces this diagnostic when a class, mixin, or
+extension type declaration has an `implements` clause, and an
+interface is followed by a `?`.
 
-Não é válido especificar uma interface nula porque fazer isso não teria
-nenhum significado; não alteraria a interface sendo herdada pela classe
-contendo a cláusula `implements`.
+It isn't valid to specify a nullable interface because doing so would have
+no meaning; it wouldn't change the interface being inherited by the class
+containing the `implements` clause.
 
-Note, porém, que _é_ válido usar um tipo nulo como um argumento de tipo
-para a interface, como `class A implements B<C?> {}`.
+Note, however, that it _is_ valid to use a nullable type as a type argument
+to the interface, such as `class A implements B<C?> {}`.
 
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `A?` é um tipo nulo,
-e tipos nulos não podem ser usados em uma cláusula `implements`:
+The following code produces this diagnostic because `A?` is a nullable
+type, and nullable types can't be used in an `implements` clause:
 
 ```dart
 class A {}
 class B implements [!A?!] {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova o ponto de interrogação do tipo:
+Remove the question mark from the type:
 
 ```dart
 class A {}

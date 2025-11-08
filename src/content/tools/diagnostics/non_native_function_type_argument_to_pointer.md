@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: non_native_function_type_argument_to_pointer
-description: "Detalhes sobre o diagnóstico non_native_function_type_argument_to_pointer produzido pelo analisador do Dart."
+description: >-
+  Details about the non_native_function_type_argument_to_pointer
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Não é possível invocar 'asFunction' porque a assinatura da função '{0}' para o ponteiro não é uma assinatura de função C válida._
+_Can't invoke 'asFunction' because the function signature '{0}' for the pointer isn't a valid C function signature._
 
 ## Description
 
-O analisador produz este diagnóstico quando o método `asFunction` é
-invocado em um ponteiro para uma função nativa, mas a assinatura da função nativa
-não é uma assinatura de função C válida.
+The analyzer produces this diagnostic when the method `asFunction` is
+invoked on a pointer to a native function, but the signature of the native
+function isn't a valid C function signature.
 
-Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a assinatura da função
-associada ao ponteiro `p` (`FNative`) não é uma assinatura de função C
-válida:
+The following code produces this diagnostic because function signature
+associated with the pointer `p` (`FNative`) isn't a valid C function
+signature:
 
 ```dart
 import 'dart:ffi';
@@ -37,7 +38,7 @@ class C {
 
 ## Common fixes
 
-Torne a assinatura `NativeFunction` uma assinatura C válida:
+Make the `NativeFunction` signature a valid C signature:
 
 ```dart
 import 'dart:ffi';

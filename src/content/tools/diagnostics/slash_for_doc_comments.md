@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: slash_for_doc_comments
-description: "Detalhes sobre o diagnóstico slash_for_doc_comments produzido pelo analisador do Dart."
+description: >-
+  Details about the slash_for_doc_comments
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a forma de fim de linha ('///') para comentários de documentação._
+_Use the end-of-line form ('///') for doc comments._
 
 ## Description
 
-O analisador produz este diagnóstico quando um comentário de documentação usa
-o estilo de comentário de bloco (delimitado por `/**` e `*/`).
+The analyzer produces this diagnostic when a documentation comment uses
+the block comment style (delimited by `/**` and `*/`).
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o comentário de
-documentação para `f` usa um estilo de comentário de bloco:
+The following code produces this diagnostic because the documentation
+comment for `f` uses a block comment style:
 
 ```dart
 [!/**!]
@@ -38,7 +39,7 @@ void f() {}
 
 ## Common fixes
 
-Use um estilo de comentário de fim de linha:
+Use an end-of-line comment style:
 
 ```dart
 /// Example.

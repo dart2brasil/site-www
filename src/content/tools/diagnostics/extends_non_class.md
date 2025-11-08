@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: extends_non_class
-description: "Detalhes sobre o diagnóstico extends_non_class produzido pelo analisador Dart."
+description: >-
+  Details about the extends_non_class
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Classes só podem estender outras classes._
+_Classes can only extend other classes._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma cláusula `extends` contém um
-nome que é declarado como algo diferente de uma classe.
+The analyzer produces this diagnostic when an `extends` clause contains a
+name that is declared to be something other than a class.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `f` é declarado como uma
-função:
+The following code produces this diagnostic because `f` is declared to be a
+function:
 
 ```dart
 void f() {}
@@ -26,8 +27,8 @@ class C extends [!f!] {}
 
 ## Common fixes
 
-Se você quer que a classe estenda uma classe diferente de `Object`, então substitua
-o nome na cláusula `extends` pelo nome dessa classe:
+If you want the class to extend a class other than `Object`, then replace
+the name in the `extends` clause with the name of that class:
 
 ```dart
 void f() {}
@@ -37,7 +38,7 @@ class C extends B {}
 class B {}
 ```
 
-Se você quer que a classe estenda `Object`, então remova a cláusula `extends`:
+If you want the class to extend `Object`, then remove the `extends` clause:
 
 ```dart
 void f() {}

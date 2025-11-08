@@ -1,47 +1,46 @@
 ---
-ia-translate: true
-title: "Tipos de padrões"
-description: "Referência de tipos de padrões em Dart."
+title: Pattern types
+description: Pattern type reference in Dart.
 prevpage:
   url: /language/patterns
-  title: "Padrões"
+  title: Patterns
 nextpage:
   url: /language/loops
   title: Loops
 ---
 
-Esta página é uma referência para os diferentes tipos de padrões.
-Para uma visão geral de como os padrões funcionam, onde você pode usá-los em
-Dart, e casos de uso comuns, visite a página principal [Padrões][Padrões].
+This page is a reference for the different kinds of patterns.
+For an overview of how patterns work, where you can use them in Dart, and common
+use cases, visit the main [Patterns][] page.
 
-#### Precedência de padrões {:#pattern-precedence}
+#### Pattern precedence
 
-Semelhante à [precedência de operadores](/language/operators#operator-precedence-example),
-a avaliação de padrões segue regras de precedência.
-Você pode usar [padrões entre parênteses](#parenthesized) para
-avaliar padrões de precedência inferior primeiro.
+Similar to [operator precedence](/language/operators#operator-precedence-example),
+pattern evaluation adheres to precedence rules.
+You can use [parenthesized patterns](#parenthesized) to 
+evaluate lower-precedence patterns first.  
 
-Este documento lista os tipos de padrões em ordem crescente de precedência:
+This document lists the pattern types in ascending order of precedence:
 
-* Padrões [lógicos-ou](#logical-or) têm precedência menor que os [lógicos-e](#logical-and),
-padrões lógicos-e têm precedência menor que padrões [relacionais](#relational),
-e assim por diante.
+* [Logical-or](#logical-or) patterns are lower-precedence than [logical-and](#logical-and),
+logical-and patterns are lower-precedence than [relational](#relational) patterns,
+and so on. 
 
-* Padrões unários pós-fixados ([cast](#cast), [null-check](#null-check),
-e [null-assert](#null-assert)) compartilham o mesmo nível de precedência.
+* Post-fix unary patterns ([cast](#cast), [null-check](#null-check),
+and [null-assert](#null-assert)) share the same level of precedence. 
 
-* Os padrões primários restantes compartilham a maior precedência.
-Padrões de tipo coleção ([registro](#record), [lista](#list) e [mapa](#map))
-e padrões de [Objeto](#object) englobam outros
-dados, então são avaliados primeiro como padrões externos.
+* The remaining primary patterns share the highest precedence.
+Collection-type ([record](#record), [list](#list), and [map](#map))
+and [Object](#object) patterns encompass other
+data, so are evaluated first as outer-patterns. 
 
-## Lógico-ou {:#logical-or}
+## Logical-or
 
-`subpadrão1 || subpadrão2`
+`subpattern1 || subpattern2`
 
-Um padrão lógico-ou separa subpadrões por `||` e corresponde se qualquer um dos
-ramos corresponder. Os ramos são avaliados da esquerda para a direita. Uma vez que um ramo corresponde,
-o resto não é avaliado.
+A logical-or pattern separates subpatterns by `||` and matches if any of the
+branches match. Branches are evaluated left-to-right. Once a branch matches, the
+rest are not evaluated.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (logical-or)"?>
 ```dart
@@ -51,20 +50,20 @@ var isPrimary = switch (color) {
 };
 ```
 
-Subpadrões em um padrão lógico-ou podem vincular variáveis, mas os ramos devem
-definir o mesmo conjunto de variáveis, porque apenas um ramo será avaliado quando
-o padrão corresponder.
+Subpatterns in a logical-or pattern can bind variables, but the branches must
+define the same set of variables, because only one branch will be evaluated when
+the pattern matches.
 
 ## Logical-and
 
-`subpadrão1 && subpadrão2`
+`subpattern1 && subpattern2`
 
-Um par de padrões separados por `&&` corresponde somente se ambos os subpadrões
-corresponderem. Se o ramo esquerdo não corresponder, o ramo direito não é avaliado.
+A pair of patterns separated by `&&` matches only if both subpatterns match. If the
+left branch does not match, the right branch is not evaluated.
 
-Subpadrões em um padrão lógico-e podem vincular variáveis, mas as variáveis em
-cada subpadrão não devem se sobrepor, porque ambos serão vinculados se o padrão
-corresponder:
+Subpatterns in a logical-and pattern can bind variables, but the variables in
+each subpattern must not overlap, because they will both be bound if the pattern
+matches:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (logical-and)"?>
 ```dart
@@ -74,20 +73,20 @@ switch ((1, 2)) {
 }
 ```
 
-## Relacional {:#relational}
+## Relational
 
-`== expressão`
+`== expression`
 
-`< expressão`
+`< expression`
 
-Padrões relacionais comparam o valor correspondido a uma constante dada usando qualquer
-um dos operadores de igualdade ou relacionais: `==`, `!=`, `<`, `>`, `<=`, e `>=`.
+Relational patterns compare the matched value to a given constant using any of
+the equality or relational operators: `==`, `!=`, `<`, `>`, `<=`, and `>=`.
 
-O padrão corresponde quando chamar o operador apropriado no valor correspondido
-com a constante como argumento retorna `true`.
+The pattern matches when calling the appropriate operator on the matched value
+with the constant as an argument returns `true`.
 
-Padrões relacionais são úteis para corresponder em intervalos numéricos, especialmente quando
-combinados com o [padrão lógico-e](#logical-and):
+Relational patterns are useful for matching on numeric ranges, especially when
+combined with the [logical-and pattern](#logical-and):
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (relational)"?>
 ```dart
@@ -106,12 +105,12 @@ String asciiCharType(int char) {
 }
 ```
 
-## Cast {:#cast}
+## Cast
 
 `foo as String`
 
-Um padrão de cast (conversão de tipo) permite inserir um [type cast][type cast] no meio da desestruturação,
-antes de passar o valor para outro subpadrão:
+A cast pattern lets you insert a [type cast][] in the middle of destructuring,
+before passing the value to another subpattern:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (cast)"?>
 ```dart
@@ -119,20 +118,20 @@ antes de passar o valor para outro subpadrão:
 var (i as int, s as String) = record;
 ```
 
-Padrões de cast vão [lançar (throw)][lançar (throw)] se o valor não tiver o tipo declarado.
-Como o [padrão null-assert](#null-assert), isso permite que você afirme a força o
-tipo esperado de algum valor desestruturado.
+Cast patterns will [throw][] if the value doesn't have the stated type.
+Like the [null-assert pattern](#null-assert), this lets you forcibly assert the
+expected type of some destructured value.
 
 ## Null-check
 
-`subpadrão?`
+`subpattern?`
 
-Padrões null-check (verificação de nulo) correspondem primeiro se o valor não é nulo e,
-em seguida, correspondem o padrão interno contra esse mesmo valor. Eles permitem que você vincule
-uma variável cujo tipo é o tipo base não anulável do valor anulável que está sendo correspondido.
+Null-check patterns match first if the value is not null, and then match the inner
+pattern against that same value. They let you bind a variable whose type is the
+non-nullable base type of the nullable value being matched.
 
-Para tratar valores `null` como falhas de correspondência
-sem lançar, use o padrão null-check.
+To treat `null` values as match failures
+without throwing, use the null-check pattern.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (null-check)"?>
 ```dart
@@ -143,18 +142,18 @@ switch (maybeString) {
 }
 ```
 
-Para corresponder quando o valor _é_ nulo, use o [padrão constante](#constant) `null`.
+To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
 ## Null-assert
 
-`subpadrão!`
+`subpattern!`
 
-Padrões null-assert (afirmação de não nulo) correspondem primeiro se o objeto não é nulo, depois no valor.
-Eles permitem que valores não nulos fluam através, mas [lançam (throw)][lançar (throw)] se o valor correspondido
-for nulo.
+Null-assert patterns match first if the object is not null, then on the value.
+They permit non-null values to flow through, but [throw][] if the matched value
+is null. 
 
-Para garantir que valores `null` não sejam silenciosamente tratados como falhas de correspondência,
-use um padrão null-assert enquanto corresponder:
+To ensure `null` values are not silently treated as match failures,
+use a null-assert pattern while matching:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (null-assert-match)"?>
 ```dart
@@ -165,8 +164,8 @@ switch (row) {
 }
 ```
 
-Para eliminar valores `null` de padrões de declaração de variáveis,
-use o padrão null-assert:
+To eliminate `null` values from variable declaration patterns,
+use the null-assert pattern:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (null-assert-dec)"?>
 ```dart
@@ -175,13 +174,13 @@ use o padrão null-assert:
 var (x!, y!) = position;
 ```
 
-Para corresponder quando o valor _é_ nulo, use o [padrão constante](#constant) `null`.
+To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
 ## Constant
 
 `123, null, 'string', math.pi, SomeClass.constant, const Thing(1, 2), const (1 + 2)`
 
-Padrões constantes correspondem quando o valor é igual à constante:
+Constant patterns match when the value is equal to the constant: 
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (constant)"?>
 ```dart
@@ -191,16 +190,16 @@ switch (number) {
 }
 ```
 
-Você pode usar literais simples e referências a constantes nomeadas diretamente como padrões constantes:
+You can use simple literals and references to named constants directly as constant patterns:
 
-- Literais numéricos (`123`, `45.56`)
-- Literais booleanos (`true`)
-- Literais de string (`'string'`)
-- Constantes nomeadas (`someConstant`, `math.pi`, `double.infinity`)
-- Construtores constantes (`const Point(0, 0)`)
-- Literais de coleção constantes (`const []`, `const {1, 2}`)
+- Number literals (`123`, `45.56`)
+- Boolean literals (`true`)
+- String literals (`'string'`)
+- Named constants (`someConstant`, `math.pi`, `double.infinity`)
+- Constant constructors (`const Point(0, 0)`)
+- Constant collection literals (`const []`, `const {1, 2}`)
 
-Expressões constantes mais complexas devem ser colocadas entre parênteses e prefixadas com
+More complex constant expressions must be parenthesized and prefixed with
 `const` (`const (1 + 2)`):
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (complex-constant)"?>
@@ -212,16 +211,16 @@ case [a, b]: // ...
 case const [a, b]: // ...
 ```
 
-## Variável {:#variable}
+## Variable
 
 `var bar, String str, final int _`
 
-Padrões de variável vinculam novas variáveis a valores que foram correspondidos ou
-desestruturados. Eles geralmente ocorrem como parte de um [padrão de desestruturação][destructure] para
-capturar um valor desestruturado.
+Variable patterns bind new variables to values that have been matched or destructured. 
+They usually occur as part of a [destructuring pattern][destructure] to
+capture a destructured value.
 
-As variáveis estão no escopo em uma região de código que só é alcançável quando o
-padrão correspondeu.
+The variables are in scope in a region of code that is only reachable when the
+pattern has matched.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (variable)"?>
 ```dart
@@ -232,8 +231,8 @@ switch ((1, 2)) {
 }
 ```
 
-Um padrão de variável _tipada_ só corresponde se o valor correspondido tiver o tipo declarado,
-e falha caso contrário:
+A _typed_ variable pattern only matches if the matched value has the declared type,
+and fails otherwise:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (variable-typed)"?>
 ```dart
@@ -243,20 +242,20 @@ switch ((1, 2)) {
 }
 ```
 
-Você pode usar um [padrão curinga](#wildcard) como um padrão de variável.
+You can use a [wildcard pattern](#wildcard) as a variable pattern. 
 
 ## Identifier
 
 `foo, _`
 
-Padrões de identificador podem se comportar como um [padrão constante](#constant) ou como um
-[padrão de variável](#variable), dependendo do contexto em que aparecem:
+Identifier patterns may behave like a [constant pattern](#constant) or like a
+[variable pattern](#variable), depending on the context where they appear:
 
-- Contexto de [Declaração][Declaração]: declara uma nova variável com nome de identificador:
+- [Declaration][] context: declares a new variable with identifier name:
   `var (a, b) = (1, 2);`
-- Contexto de [Atribuição][Atribuição]: atribui à variável existente com nome de identificador:
+- [Assignment][] context: assigns to existing variable with identifier name:
   `(a, b) = (3, 4);`
-- Contexto de [Correspondência][Correspondência]: tratado como um padrão constante nomeado (a menos que seu nome seja `_`):
+- [Matching][] context: treated as a named constant pattern (unless its name is `_`):
   <?code-excerpt "language/lib/patterns/pattern_types.dart (match-context)"?>
   ```dart
   const c = 1;
@@ -266,22 +265,22 @@ Padrões de identificador podem se comportar como um [padrão constante](#consta
     default:
       print('no match'); // Prints "no match".
   }
-  ```
-- Identificador [Curinga](#wildcard) em qualquer contexto: corresponde a qualquer valor e o descarta:
-  `case [_, var y, _]: print('O elemento do meio é $y');`
+  ``` 
+- [Wildcard](#wildcard) identifier in any context: matches any value and discards it:
+  `case [_, var y, _]: print('The middle element is $y');`
 
-## Entre parênteses {:#parenthesized}
+## Parenthesized
 
-`(subpadrão)`
+`(subpattern)`
 
-Como expressões entre parênteses, parênteses em um padrão permitem que você controle a
-[precedência de padrão](#pattern-precedence) e insira um padrão de precedência inferior
-onde um de precedência superior é esperado.
+Like parenthesized expressions, parentheses in a pattern let you control
+[pattern precedence](#pattern-precedence) and insert a lower-precedence
+pattern where a higher precedence one is expected.
 
-Por exemplo, imagine que as constantes booleanas `x`, `y` e `z`
-são iguais a `true`, `true` e `false`, respectivamente.
-Embora o exemplo a seguir se assemelhe à avaliação de expressão booleana,
-o exemplo corresponde a padrões.
+For example, imagine the boolean constants `x`, `y`, and `z`
+equal `true`, `true`, and `false`, respectively.
+Though the following example resembles boolean expression evaluation,
+the example matches patterns.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (parens)"?>
 ```dart
@@ -294,27 +293,27 @@ x || (y && z) => 'matches true',
 // ...
 ```
 
-Dart começa a corresponder ao padrão da esquerda para a direita.
+Dart starts matching the pattern from left to right.
 
-1. O primeiro padrão corresponde a `true` quando `x` corresponde a `true`.
-2. O segundo padrão corresponde a `true` quando `x` corresponde a `true`.
-3. O terceiro padrão corresponde a `true` quando `x` corresponde a `true`.
-4. O quarto padrão `(x || y) && z` não tem correspondência.
+1. The first pattern matches `true` as `x` matches `true`.
+1. The second pattern matches `true` as `x` matches `true`.
+1. The third pattern matches `true` as `x` matches `true`.
+1. The fourth pattern `(x || y) && z` has no match.
 
-   * O `x` corresponde a `true`, então Dart não tenta corresponder a `y`.
-   * Embora `(x || y)` corresponda a `true`, `z` não corresponde a `true`
-   * Portanto, o padrão `(x || y) && z` não corresponde a `true`.
-   * O subpadrão `(x || y)` não corresponde a `false`,
-     então Dart não tenta corresponder a `z`.
-   * Portanto, o padrão `(x || y) && z` não corresponde a `false`.
-   * Em conclusão, `(x || y) && z` não tem correspondência.
+   * The `x` matches `true`, so Dart doesn't try to match `y`.
+   * Though `(x || y)` matches `true`, `z` doesn't match `true`
+   * Therefore, pattern `(x || y) && z` doesn't match `true`.
+   * The subpattern `(x || y)` doesn't match `false`,
+     so Dart doesn't try to match `z`.
+   * Therefore, pattern `(x || y) && z` doesn't match `false`.
+   * As a conclusion, `(x || y) && z` has no match.
 
-## Lista {:#list}
+## List
 
-`[subpadrão1, subpadrão2]`
+`[subpattern1, subpattern2]`
 
-Um padrão de lista corresponde a valores que implementam [`List`][`List`], e então recursivamente
-corresponde seus subpadrões contra os elementos da lista para desestruturá-los por posição:
+A list pattern matches values that implement [`List`][], and then recursively
+matches its subpatterns against the list's elements to destructure them by position:
 
 <?code-excerpt "language/lib/patterns/switch.dart (list-pattern)"?>
 ```dart
@@ -326,16 +325,16 @@ switch (obj) {
   case [a, b]:
     print('$a, $b');
 }
-```
+```  
 
-Padrões de lista exigem que o número de elementos no padrão corresponda à lista inteira. Você pode,
-no entanto, usar um [elemento rest](#rest-element) como um espaço reservado para
-considerar qualquer número de elementos em uma lista.
+List patterns require that the number of elements in the pattern match the entire
+list. You can, however, use a [rest element](#rest-element) as a place holder to
+account for any number of elements in a list. 
 
-### Elemento rest {:#rest-element}
+### Rest element
 
-Padrões de lista podem conter _um_ elemento rest (`...`) que permite corresponder listas
-de comprimentos arbitrários.
+List patterns can contain _one_ rest element (`...`) which allows matching lists
+of arbitrary lengths.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (rest)"?>
 ```dart
@@ -344,8 +343,8 @@ var [a, b, ..., c, d] = [1, 2, 3, 4, 5, 6, 7];
 print('$a $b $c $d');
 ```
 
-Um elemento rest também pode ter um subpadrão que coleta elementos que não correspondem
-aos outros subpadrões na lista, em uma nova lista:
+A rest element can also have a subpattern that collects elements that don't match
+the other subpatterns in the list, into a new list:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (rest-sub)"?>
 ```dart
@@ -354,45 +353,45 @@ var [a, b, ...rest, c, d] = [1, 2, 3, 4, 5, 6, 7];
 print('$a $b $rest $c $d');
 ```
 
-## Mapa {:#map}
+## Map
 
-`{"chave": subpadrão1, someConst: subpadrão2}`
+`{"key": subpattern1, someConst: subpattern2}`
 
-Padrões de mapa correspondem a valores que implementam [`Map`][`Map`], e então recursivamente
-correspondem seus subpadrões contra as chaves do mapa para desestruturá-los.
+Map patterns match values that implement [`Map`][], and then recursively 
+match its subpatterns against the map's keys to destructure them.
 
-Padrões de mapa não exigem que o padrão corresponda ao mapa inteiro. Um padrão de mapa
-ignora quaisquer chaves que o mapa contenha que não sejam correspondidas pelo padrão.
-Tentar corresponder uma chave que não existe no mapa lançará um
-[`StateError`][]:
+Map patterns don't require the pattern to match the entire map. A map pattern
+ignores any keys that the map contains that aren't matched by the pattern.
+Trying to match a key that does not exist in the map will
+throw a [`StateError`][]:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (map-error)"?>
 ```dart
 final {'foo': int? foo} = {};
 ```
 
-## Registro {:#record}
+## Record
 
-`(subpadrão1, subpadrão2)`
+`(subpattern1, subpattern2)`
 
-`(x: subpadrão1, y: subpadrão2)`
+`(x: subpattern1, y: subpattern2)`
 
-Padrões de registro correspondem a um objeto [registro][registro] e desestruturam seus campos.
-Se o valor não for um registro com a mesma [forma][forma] que o padrão, a correspondência
-falha. Caso contrário, os subpadrões de campo são correspondidos contra os
-campos correspondentes no registro.
+Record patterns match a [record][] object and destructure its fields.
+If the value isn't a record with the same [shape][] as the pattern, the match
+fails. Otherwise, the field subpatterns are matched against the corresponding
+fields in the record.
 
-Padrões de registro exigem que o padrão corresponda ao registro inteiro. Para desestruturar
-um registro com campos _nomeados_ usando um padrão, inclua os nomes dos campos no padrão:
+Record patterns require that the pattern match the entire record. To destructure 
+a record with _named_ fields using a pattern, include the field names in the pattern:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (record)"?>
 ```dart
 var (myString: foo, myNumber: bar) = (myString: 'string', myNumber: 1);
 ```
 
-O nome do getter pode ser omitido e inferido do [padrão de variável](#variable)
-ou [padrão de identificador](#identifier) no subpadrão de campo. Estes pares de
-padrões são cada um equivalente:
+The getter name can be omitted and inferred from the [variable pattern](#variable)
+or [identifier pattern](#identifier) in the field subpattern. These pairs of
+patterns are each equivalent:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (record-getter)"?>
 ```dart
@@ -416,13 +415,13 @@ var (untyped: untyped as int, typed: typed as String) = record;
 var (:untyped as int, :typed as String) = record;
 ```
 
-## Objeto {:#object}
+## Object
 
-`SomeClass(x: subpadrão1, y: subpadrão2)`
+`SomeClass(x: subpattern1, y: subpattern2)`
 
-Padrões de objeto verificam o valor correspondido em relação a um tipo nomeado dado para desestruturar
-dados usando getters nas propriedades do objeto. Eles são [refutados][refutado]
-se o valor não tiver o mesmo tipo.
+Object patterns check the matched value against a given named type to destructure
+data using getters on the object's properties. They are [refuted][]
+if the value doesn't have the same type.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (object)"?>
 ```dart
@@ -430,10 +429,10 @@ switch (shape) {
   // Matches if shape is of type Rect, and then against the properties of Rect.
   case Rect(width: var w, height: var h): // ...
 }
-```
+```  
 
-O nome do getter pode ser omitido e inferido do [padrão de variável](#variable)
-ou [padrão de identificador](#identifier) no subpadrão de campo:
+The getter name can be omitted and inferred from the [variable pattern](#variable)
+or [identifier pattern](#identifier) in the field subpattern:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (object-getter)"?>
 ```dart
@@ -441,18 +440,18 @@ ou [padrão de identificador](#identifier) no subpadrão de campo:
 var Point(:x, :y) = Point(1, 2);
 ```
 
-Padrões de objeto não exigem que o padrão corresponda ao objeto inteiro.
-Se um objeto tiver campos extras que o padrão não desestrutura, ele ainda pode corresponder.
+Object patterns don't require the pattern to match the entire object.
+If an object has extra fields that the pattern doesn't destructure, it can still match.
 
-## Curinga {:#wildcard}
+## Wildcard
 
 `_`
 
-Um padrão nomeado `_` é um curinga, seja um [padrão de variável](#variable) ou
-[padrão de identificador](#identifier), que não vincula ou atribui a nenhuma variável.
+A pattern named `_` is a wildcard, either a [variable pattern](#variable) or
+[identifier pattern](#identifier), that doesn't bind or assign to any variable.
 
-É útil como um espaço reservado em locais onde você precisa de um subpadrão para
-desestruturar valores posicionais posteriores:
+It's useful as a placeholder in places where you need a subpattern in order to
+destructure later positional values:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (wildcard)"?>
 ```dart
@@ -460,8 +459,8 @@ var list = [1, 2, 3];
 var [_, two, _] = list;
 ```
 
-Um nome curinga com uma anotação de tipo é útil quando você deseja testar o
-tipo de um valor, mas não vincular o valor a um nome:
+A wildcard name with a type annotation is useful when you want to test a value's
+type but not bind the value to a name:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (wildcard-typed)"?>
 ```dart
@@ -471,17 +470,17 @@ switch (record) {
 }
 ```
 
-[Padrões]: /language/patterns
+[Patterns]: /language/patterns
 [type cast]: /language/operators#type-test-operators
 [destructure]: /language/patterns#destructuring
-[lançar (throw)]: /language/error-handling#throw
-[Declaração]: /language/patterns#variable-declaration
-[Atribuição]: /language/patterns#variable-assignment
-[Correspondência]: /language/patterns#matching
+[throw]: /language/error-handling#throw
+[Declaration]: /language/patterns#variable-declaration
+[Assignment]: /language/patterns#variable-assignment
+[Matching]: /language/patterns#matching
 [`List`]: /language/collections#lists
 [`Map`]: /language/collections#maps
 [`StateError`]: {{site.dart-api}}/dart-core/StateError-class.html
-[refutado]: /resources/glossary#refutable-pattern
-[registro]: /language/records
-[forma]: /language/records#record-types
+[refuted]: /resources/glossary#refutable-pattern
+[record]: /language/records
+[shape]: /language/records#record-types
 [switch]: /language/branches#switch

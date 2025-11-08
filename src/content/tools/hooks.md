@@ -1,32 +1,31 @@
 ---
-ia-translate: true
 title: Hooks
-description: Execute scripts de build personalizados.
+description: Run custom build scripts.
 ---
 
 :::version-note
-O suporte para build hooks foi introduzido no Dart 3.10.
+Support for build hooks was introduced in Dart 3.10.
 :::
 
-Este guia explica o que são hooks e como usá-los
-com um pacote.
+This guide explains what hooks are and how to use them
+with a package.
 
-## Introdução
+## Introduction
 
-Você pode atualmente usar hooks para fazer coisas
-como compilar ou baixar native assets (código escrito em
-outras linguagens que são compiladas em machine code), e
-então chamar esses assets do código Dart de um pacote.
+You can currently use hooks to do things
+such as compile or download native assets (code written in
+other languages that are compiled into machine code), and
+then call these assets from the Dart code of a package.
 
-Hooks são scripts Dart colocados no diretório `hook/` do
-seu pacote Dart. Eles têm um formato predefinido para seu
-input e output, o que permite ao Dart SDK:
+Hooks are Dart scripts placed in the `hook/` directory of
+your Dart package. They have a predefined format for their
+input and output, which allows the Dart SDK to:
 
-1. Descobrir os hooks.
-1. Executar os hooks com o input necessário.
-1. Consumir o output produzido pelos hooks.
+1. Discover the hooks.
+1. Execute the hooks with the necessary input.
+1. Consume the output produced by the hooks.
 
-Exemplo de projeto com um build hook:
+Example project with a build hook:
 
 ```plaintext
 📁  example_project                   // Project with hooks.
@@ -43,33 +42,33 @@ Exemplo de projeto com um build hook:
 
 ## Hooks
 
-Atualmente, o build hook está disponível, mas mais estão
-planejados. Para saber mais, consulte o seguinte.
+Currently, the build hook is available, but more are
+planned. To learn more, see the following.
 
 ### Build hooks {:.no_toc}
 
-Com build hooks, um pacote pode fazer coisas como
-compilar ou baixar native assets como bibliotecas C ou Rust.
-Depois disso, esses assets podem ser chamados do código Dart de
-um pacote.
+With build hooks, a package can do things such as
+compile or download native assets such as C or Rust libraries.
+Afterwards, these assets can be called from the Dart code of
+a package.
 
-O build hook de um pacote é automaticamente invocado pelo
-Dart SDK em um momento apropriado durante o processo de build.
-Build hooks são executados em paralelo com a compilação Dart e
-podem fazer operações de longa duração, como download ou
-chamar um compilador nativo.
+A package's build hook is automatically invoked by the
+Dart SDK at an appropriate time during the build process.
+Build hooks are run in parallel with Dart compilation and
+might do longer running operations such as downloading or
+calling a native compiler.
 
-Use a função [`build`][] para analisar o
-input do hook com [`BuildInput`] e então escrever o output do hook
-com [`BuildOutputBuilder`]. O hook deve colocar
-assets baixados e gerados em
+Use the [`build`][] function to parse the hook
+input with [`BuildInput`] and then write the hook output
+with [`BuildOutputBuilder`]. The hook should place
+downloaded and generated assets in
 [`BuildInput.sharedOutputDirectory`][].
 
-Os assets produzidos para seu pacote podem depender de
-[`assets`][] ou [`metadata`][] produzidos pelos build hooks
-dos pacotes nas dependências diretas no pubspec. Portanto,
-build hooks são executados na ordem das dependências no pubspec, e dependências
-cíclicas entre pacotes não são suportadas ao usar hooks.
+The assets produced for your package might depend on
+[`assets`][] or [`metadata`][] produced by the build hooks
+from the packages in the direct dependencies in the pubspec. Therefore,
+build hooks are run in the order of dependencies in the pubspec, and cyclic
+dependencies between packages are not supported when using hooks.
 
 [`assets`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput/assets.html
 [`build`]: {{site.pub-api}}/hooks/latest/hooks/build.html
@@ -80,48 +79,49 @@ cíclicas entre pacotes não são suportadas ao usar hooks.
 
 ## Assets
 
-Assets são os arquivos que são produzidos por um hook e então
-empacotados em uma aplicação Dart. Assets podem ser acessados
-em tempo de execução do código Dart. Atualmente, o Dart SDK pode
-usar o tipo `CodeAsset`, mas mais tipos de assets estão planejados.
-Para saber mais, consulte o seguinte.
+Assets are the files that are produced by a hook and then
+bundled in a Dart application. Assets can be accessed
+at run time from the Dart code. Currently, the Dart SDK can
+use the `CodeAsset` type, but more asset types are planned.
+To learn more, see the following.
 
-### Tipo CodeAsset {:.no_toc}
+### CodeAsset type {:.no_toc}
 
-Um [`CodeAsset`][] representa um code asset. Um code asset é uma biblioteca dinâmica
-compilada de uma linguagem diferente de Dart, como C, C++, Rust ou Go.
-`CodeAsset` faz parte do pacote `code_asset`. APIs fornecidas por code assets
-são acessadas em tempo de execução através de membros Dart externos correspondentes anotados
-com a anotação [`@Native`][] de `dart:ffi`.
+A [`CodeAsset`][] represents a code asset. A code asset is a dynamic library
+compiled from a language other than Dart, such as C, C++, Rust, or Go.
+`CodeAsset` is part of the `code_asset` package. APIs provided by code assets
+are accessed at run time through corresponding external Dart members annotated
+with the [`@Native`][] annotation from `dart:ffi`.
 
 [`CodeAsset`]: {{site.pub-api}}/code_assets/latest/code_assets/CodeAsset-class.html
 [`@Native`]: {{site.dart-api}}/dart-ffi/Native-class.html
 
-## Usar um hook {: #use-hooks-assets }
+## Use a hook {: #use-hooks-assets }
 
-Para adicionar assets ao seu projeto, use um hook. Para detalhes,
-consulte as seções seguintes.
+To add assets to your project, use a hook. For details,
+see the following sections.
 
-### Adicionar dependências {: #add-dependencies-hooks-assets }
+### Add dependencies {: #add-dependencies-hooks-assets }
 
-Para usar um hook, você deve primeiro adicionar os pacotes auxiliares
-`hooks` e `code_assets` às dependências do seu `pubspec.yaml`:
+To use a hook, you must first add the helper packages
+`hooks` and `code_assets` to your `pubspec.yaml`
+dependencies:
 
 1. `dart pub add hooks code_assets`.
 
-Se você precisa compilar fontes C, você também precisará do pacote `native_toolchain_c`:
+If you need to compile C sources, you'll also need package `native_toolchain_c`:
 
 2. `dart pub add native_toolchain_c`.
 
 :::note
-Você precisa adicionar as dependências em `dependencies`, não
-`dev_dependencies`. Os hooks serão executados por pacotes e
-aplicações que dependem do seu pacote, então o
-código Dart precisa fazer parte da resolução nesses
-pacotes.
+You need to add the dependencies under `dependencies`, not
+`dev_dependencies`. The hooks will be run by packages and
+applications depending on your package, so the
+Dart code needs to be part of the resolution in those
+packages.
 :::
 
-Exemplo de dependências para um build hook:
+Example dependencies for a build hook:
 
 ```yaml title="pubspec.yaml"
 name: native_add_library
@@ -132,7 +132,7 @@ environment:
   sdk: '^3.9.0'
 
 dependencies:
-  # ...
+  # ... 
   code_assets: any
   hooks: any
   native_toolchain_c: any
@@ -142,18 +142,18 @@ dev_dependencies:
   ffigen: ^18.0.0
  ```
 
-### Criar um build hook para gerar native assets {: #create-hook }
+### Create a build hook to generate native assets {: #create-hook }
 
-Se você quiser usar um build hook para compilar de forma transparente
-native assets (como bibliotecas C ou Rust), que então são
-disponibilizados para serem chamados do código Dart de um pacote,
-crie um script `build.dart` semelhante ao seguinte:
+If you want to use a build hook to transparently compile
+native assets (such as C or Rust libraries), which are then
+made available to be called from the Dart code of a package,
+create a `build.dart` script similar to the following:
 
-1.  No seu projeto Dart, crie ou abra `hooks/build.dart`.
+1.  In your Dart project, create or open `hooks/build.dart`. 
 
-1.  No método `main`, chame a função `build` de
-    `package:hooks/hooks.dart` e use a toolchain apropriada
-    para compilar a biblioteca nativa. Por exemplo:
+1.  In the `main` method, call the `build` function from
+    `package:hooks/hooks.dart` and use the appropriate
+    toolchain to compile the native library. For example:
 
     ```dart title="hooks/build.dart" highlightLines=6
     import 'package:hooks/hooks.dart';
@@ -179,43 +179,43 @@ crie um script `build.dart` semelhante ao seguinte:
     }
     ```
 
-    O segundo parâmetro de `build` espera uma função para a qual passará dois
-    argumentos:
+    The second parameter of `build` expects a function that it will pass two
+    arguments to:
 
-    * `input`: O input somente leitura para o hook.
-      Inclui informações para o hook
-      produzir o tipo de asset correto (por exemplo,
-      sistema operacional alvo, arquitetura alvo, diretório de output, e
-      mais). Para detalhes, consulte a classe [`BuildInput`][].
+    * `input`: The read-only input for the hook.
+      Includes information for the hook
+      to produce the right asset type (for example,
+      target OS, target architecture, output directory, and
+      more). For details, see the [`BuildInput`][] class.
 
-    * `output`: O builder somente escrita para o output do hook. Depois que o
-      build hook lê o input, ele produz um asset e
-      então fornece o que produziu como output.
-      Para detalhes, consulte a classe [`BuildOutputBuilder`][].
+    * `output`: The write-only builder for the hook output. After the
+      build hook reads the input, it produces an asset and
+      then provides what it produced as the output.
+      For details, see the [`BuildOutputBuilder`][] class.
 
 [`BuildInput`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput-class.html
 [`BuildOutputBuilder`]: {{site.pub-api}}/hooks/latest/hooks/BuildOutputBuilder-class.html
 
-### Assets empacotados automaticamente {: #generate-assets }
+### Automatically bundled assets {: #generate-assets }
 
-Os hooks são executados automaticamente ao invocar os comandos `run`, `build` ou `test`.
-Os assets resultantes são armazenados no diretório de output especificado no
-input do hook. O Dart SDK então automaticamente empacota esses assets com
-seu aplicativo Dart para que possam ser acessados em tempo de execução.
+The hooks are run automatically when invoking the `run`, `build`, or `test`
+commands. The resulting assets are stored in the output directory specified in
+the hook input. The Dart SDK then automatically bundles those assets with
+your Dart app so that that they can be accessed at run time.
 
-### Usar assets {: #reference-assets }
+### Use assets {: #reference-assets }
 
-Assets são os arquivos que os hooks criam. Uma vez que um asset é
-criado, você pode referenciá-lo em seu código e em tempo de execução
-com seu asset ID ([`assetId`][]). Asset IDs são estruturados
-como `package:<package-name>/<asset-name>`. Build hooks podem
-apenas produzir assets em seu próprio pacote. `CBuilder` no
-build hook no exemplo anterior produz o asset ID
-`package:native_add_library/native_add_library.dart`, e é
-baseado no `packageName` e `assetName`.
+Assets are the files that hooks create. Once an asset is
+created, you can reference it in your code and at run time
+with its asset ID ([`assetId`][]). Asset IDs are structured
+as `package:<package-name>/<asset-name>`. Build hooks can
+only output assets in their own package. `CBuilder` in
+the build hook in the previous example outputs the asset ID
+`package:native_add_library/native_add_library.dart`, and is
+based on the `packageName` and `assetName`.
 
-O exemplo seguinte ilustra como fazer o binding para a função
-C nativa `add` de `native_add_library.c` e chamá-la:
+The following example illustrates how to bind to the native
+C function `add` from `native_add_library.c` and call it:
 
 ```dart title="my_package/lib/my_package.dart"
 import 'dart:ffi';
@@ -232,25 +232,25 @@ void main() {
 }
 ```
 
-O asset ID em `@Native` é opcional e assume como padrão a
-URI da biblioteca. No exemplo anterior, isso é
-`package:native_add_library/native_add_library.dart`, que
-é o mesmo asset ID produzido pelo build hook. Isso
-permite ao Dart conectar um asset referenciado em tempo de execução ao
-fornecido pelo hook durante o processo de build.
+The asset ID in `@Native` is optional and defaults to the
+library URI. In the previous example, this is
+`package:native_add_library/native_add_library.dart`, which
+is the same asset ID as output from the build hook. This
+enables Dart to connect an asset referenced at run time to
+the one provided by the hook during the build process.
 
 [`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
 
-### Testar assets {: #test-assets }
+### Test assets {: #test-assets }
 
-Depois de ter escrito um hook que gera um asset e
-usado esse asset em seu código Dart, considere escrever
-um teste para verificar se o hook e o asset gerado funcionam
-como esperado.
+After you've written a hook that generates an asset and
+you've used that asset in your Dart code, consider writing
+a test to verify that the hook and the generated asset works
+as expected.
 
-No exemplo seguinte, um teste é criado para
-`native_add_library.dart`, um script que referencia uma
-função C nativa chamada `add`:
+In the following example, a test is created for
+`native_add_library.dart`, a script that references a
+native C function called `add`: 
 
 ```dart title="test/native_add_library_test.dart"
 import 'package:native_add_library/native_add_library.dart';
@@ -263,23 +263,23 @@ void main() {
 }
 ```
 
-## Projetos de exemplo
+## Example projects
 
-Existem vários projetos de exemplo para ajudá-lo a começar
-com hooks e code assets:
+There are several example projects to help you get started
+with hooks and code assets:
 
-| **Projeto**                  | **Descrição**                                                                         |
+| **Project**                  | **Description**                                                                         |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
-| [`sqlite`][]                 | Um pacote compilando, empacotando e usando um mecanismo de banco de dados nativo.                       |
-| [`mini_audio`][]             | Um pacote compilando, empacotando e usando um player de áudio nativo.                          |
-| [`stb_image`][]              | Um pacote compilando, empacotando e usando uma biblioteca de imagens nativa.                         |
-| [`host_name`][]              | Um pacote usando uma biblioteca de sistema nativa.                                                |
-| [`native_add_library`][]     | Um pacote compilando, empacotando e usando código C simples.                             |
-| [`native_add_app`][]         | Uma aplicação CLI Dart que depende de `native_add_library`.                            |
-| [`download_asset`][]         | Um pacote empacotando e usando assets pré-compilados que são baixados no build hook.    |
-| [`native_dynamic_linking`][] | Um pacote compilando, empacotando e usando três bibliotecas nativas que dependem umas das outras. |
-| [`use_dart_api`][]           | Um pacote que usa a API C da Dart VM.                                           |
-
+| [`sqlite`][]                 | A package compiling, bundling, and using a native database engine.                       |
+| [`mini_audio`][]             | A package compiling, bundling, and using a native audio player.                          |
+| [`stb_image`][]              | A package compiling, bundling, and using a native image library.                         |
+| [`host_name`][]              | A package using a native system library.                                                |
+| [`native_add_library`][]     | A package compiling, bundling, and using some simple C code.                             |
+| [`native_add_app`][]         | A Dart CLI application that depends on `native_add_library`.                            |
+| [`download_asset`][]         | A package bundling and using prebuilt assets that are downloaded in the build hook.    |
+| [`native_dynamic_linking`][] | A package compiling, bundling, and using three native libraries that depend on each other. |
+| [`use_dart_api`][]           | A package that uses the C API of the Dart VM.                                           |
+ 
 {: .table .table-striped }
 
 [`native_add_library`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library
@@ -292,15 +292,15 @@ com hooks e code assets:
 [`mini_audio`]: {{site.repo.dart.org}}/native/tree/main/pkgs/code_assets/example/mini_audio
 [`stb_image`]: {{site.repo.dart.org}}/native/tree/main/pkgs/code_assets/example/stb_image
 
-## Mais informações
+## More information
 
-Consulte os links seguintes para mais informações:
+See the following links for more information:
 
-* [Pacote Hooks][Hooks package]
-* [Referência da biblioteca Hooks][Hooks library reference]
-* [Pacote Code assets][Code assets package]
-* [Referência da biblioteca Code assets][Code assets library reference]
-* [Interoperabilidade C][C interop]
+* [Hooks package][]
+* [Hooks library reference][]
+* [Code assets package][]
+* [Code assets library reference][]
+* [C interop][]
 
 [Hooks package]: {{site.pub-pkg}}/hooks
 [Hooks library reference]: {{site.pub-api}}/hooks/latest/hooks/

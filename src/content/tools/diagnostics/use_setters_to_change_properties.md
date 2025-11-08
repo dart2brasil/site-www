@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_setters_to_change_properties
-description: "Detalhes sobre o diagnóstico use_setters_to_change_properties produzido pelo analisador Dart."
+description: >-
+  Details about the use_setters_to_change_properties
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O método é usado para alterar uma propriedade._
+_The method is used to change a property._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um método é usado para definir o
-valor de um campo, ou uma função é usada para definir o valor de uma variável
-de nível superior, e nada mais.
+The analyzer produces this diagnostic when a method is used to set the
+value of a field, or a function is used to set the value of a top-level
+variable, and nothing else.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o método `setF` é
-usado para definir o valor do campo `_f` e não faz nenhum outro trabalho:
+The following code produces this diagnostic because the method `setF` is
+used to set the value of the field `_f` and does no other work:
 
 ```dart
 class C {
@@ -38,9 +39,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Converta o método em um setter:
+Convert the method to a setter:
 
 ```dart
 class C {

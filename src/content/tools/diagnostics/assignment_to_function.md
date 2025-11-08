@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: assignment_to_function
-description: "Detalhes sobre o diagnóstico assignment_to_function produzido pelo analisador do Dart."
+description: >-
+  Details about the assignment_to_function
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Funções não podem receber um valor._
+_Functions can't be assigned a value._
 
 ## Description
 
-O analisador produz este diagnóstico quando o nome de uma função aparece
-no lado esquerdo de uma expressão de atribuição.
+The analyzer produces this diagnostic when the name of a function appears
+on the left-hand side of an assignment expression.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a atribuição à
-função `f` é inválida:
+The following code produces this diagnostic because the assignment to the
+function `f` is invalid:
 
 ```dart
 void f() {}
@@ -28,8 +29,8 @@ void g() {
 
 ## Common fixes
 
-Se o lado direito deve ser atribuído a outra coisa, como uma
-variável local, então altere o lado esquerdo:
+If the right-hand side should be assigned to something else, such as a
+local variable, then change the left-hand side:
 
 ```dart
 void f() {}
@@ -40,8 +41,8 @@ void g() {
 }
 ```
 
-Se a intenção é alterar a implementação da função, então defina
-uma variável com valor de função ao invés de uma função:
+If the intent is to change the implementation of the function, then define
+a function-valued variable instead of a function:
 
 ```dart
 void Function() f = () {};

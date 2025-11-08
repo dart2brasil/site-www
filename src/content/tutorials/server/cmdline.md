@@ -1,13 +1,12 @@
 ---
-ia-translate: true
-title: Escreva aplicativos de linha de comando
-description: Explore um aplicativo de linha de comando escrito em Dart.
+title: Write command-line apps
+description: Explore a command-line application written in Dart.
 nextpage:
   url: /tutorials/server/fetch-data
-  title: Buscar dados da internet
+  title: Fetch data from the internet
 prevpage:
   url: /tutorials/server/get-started
-  title: "Primeiros passos: aplicativos de linha de comando e servidor"
+  title: "Get started: Command-line and server apps"
 ---
 
 {% assign argsAPI = site.pub-api | append: '/args/latest/args' -%}
@@ -15,49 +14,49 @@ prevpage:
 
 <?code-excerpt replace="/ ?\/\/!tip.*//g"?>
 
-:::secondary Qual é o objetivo?
-* Aplicativos de linha de comando precisam fazer entrada e saída.
-* A biblioteca `dart:io` fornece funcionalidade de I/O (Input/Output - Entrada/Saída).
-* O pacote args ajuda a definir e analisar argumentos de linha de comando.
-* Um objeto `Future` representa um valor que estará disponível em algum
-  momento no futuro.
-* Streams (Fluxos) fornecem uma série de eventos de dados assíncronos.
-* A maioria das entradas e saídas requer o uso de streams.
+:::secondary What's the point?
+* Command-line applications need to do input and output.
+* The `dart:io` library provides I/O functionality.
+* The args package helps define and parse command-line arguments.
+* A `Future` object represents a value that will be
+  available at some time in the future.
+* Streams provide a series of asynchronous data events.
+* Most input and output requires the use of streams.
 :::
 
 :::note
-Este tutorial usa os recursos de linguagem `async` e `await`, que dependem
-das classes [`Future`]({{site.dart-api}}/dart-async/Future-class.html) e
+This tutorial uses the `async` and `await` language features, which rely on
+the [`Future`]({{site.dart-api}}/dart-async/Future-class.html) and
 [`Stream`]({{site.dart-api}}/dart-async/Stream-class.html)
-para suporte assíncrono.
-Para saber mais sobre esses recursos, consulte o
-[tutorial de programação assíncrona](/libraries/async/async-await) e o
-[tutorial de streams](/libraries/async/using-streams).
+classes for asynchronous support.
+To learn more about these features, see the
+[asynchronous programming tutorial](/libraries/async/async-await) and the
+[streams tutorial](/libraries/async/using-streams).
 :::
 
-Este tutorial ensina como construir aplicativos de linha de comando
-e mostra alguns pequenos aplicativos de linha de comando.
-Esses programas usam recursos que a maioria dos aplicativos de linha de comando precisa,
-incluindo as streams de saída padrão, erro e entrada,
-argumentos de linha de comando, arquivos e diretórios, e mais.
+This tutorial teaches you how to build command-line apps
+and shows you a few small command-line applications.
+These programs use resources that most command-line applications need,
+including the standard output, error, and input streams,
+command-line arguments, files and directories, and more.
 
-## Executando um aplicativo com a VM Dart autônoma {:#running-an-app-with-the-standalone-dart-vm}
+## Running an app with the standalone Dart VM
 
-Para executar um aplicativo de linha de comando na VM (Virtual Machine - Máquina Virtual) Dart, use `dart run`.
-Os comandos `dart` estão incluídos no [SDK (Software Development Kit - Kit de Desenvolvimento de Software) Dart](/tools/sdk).
+To run a command-line app in the Dart VM, use `dart run`.
+The `dart` commands are included with the [Dart SDK](/tools/sdk).
 
 :::important
-A localização do diretório de instalação do SDK
-(vamos chamá-lo de `<sdk-install-dir>`) depende da sua plataforma
-e de como você instalou o SDK.
-Você pode encontrar `dart` em `<sdk-install-dir>/bin`.
-Ao colocar este diretório em seu PATH
-você pode se referir ao comando `dart` por nome.
+The location of the SDK installation directory
+(we'll call it `<sdk-install-dir>`) depends on your platform
+and how you installed the SDK.
+You can find `dart` in `<sdk-install-dir>/bin`.
+By putting this directory in your PATH
+you can refer to the `dart` command by name.
 :::
 
-Vamos executar um pequeno programa.
+Let's run a small program.
 
- 1. Crie um arquivo chamado `hello_world.dart` que contenha este código:
+ 1. Create a file called `hello_world.dart` that contains this code:
 
     <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
     ```dart
@@ -66,25 +65,25 @@ Vamos executar um pequeno programa.
     }
     ```
 
- 2. No diretório que contém o arquivo que você acabou de criar, execute o programa:
+ 2. In the directory that contains the file you just created, run the program:
 
     ```console
     $ dart run hello_world.dart
     Hello, World!
     ```
 
-A ferramenta Dart suporta muitos comandos e opções.
-Use `dart --help` para ver os comandos e opções comumente usados.
-Use `dart --verbose` para ver todas as opções.
+The Dart tool supports many commands and options.
+Use `dart --help` to see commonly used commands and options.
+Use `dart --verbose` to see all options.
 
-## Visão geral do código do aplicativo dcat {:#overview-of-the-dcat-app-code}
+## Overview of the dcat app code
 
-Este tutorial aborda os detalhes de um pequeno aplicativo de exemplo chamado `dcat`, que
-exibe o conteúdo de quaisquer arquivos listados na linha de comando.
-Este aplicativo usa várias classes, funções e propriedades
-disponíveis para aplicativos de linha de comando.
-Continue no tutorial para aprender sobre cada parte do aplicativo
-e as várias APIs (Application Programming Interface - Interface de Programação de Aplicativos) usadas.
+This tutorial covers the details of a small sample app called `dcat`, which
+displays the contents of any files listed on the command line.
+This app uses various classes, functions, and properties
+available to command-line apps.
+Continue on in the tutorial to learn about each part of the app
+and the various APIs used.
 
 <?code-excerpt "cli/bin/dcat.dart (dcat-app)"?>
 ```dart
@@ -138,50 +137,50 @@ Future<void> _handleError(String path) async {
 }
 ```
 
-### Obtendo dependências {:#getting-dependencies}
+### Getting dependencies
 
-Você pode notar que o dcat depende de um pacote chamado **args**.
-Para obter o pacote args, use o
-[gerenciador de pacotes pub](/tools/pub/packages).
+You might notice that dcat depends on a package named **args**.
+To get the args package, use the
+[pub package manager](/tools/pub/packages).
 
-Um aplicativo real tem testes, arquivos de licença, arquivos de dependência, exemplos e assim por diante.
-Para o primeiro aplicativo, no entanto, podemos facilmente criar apenas o que é necessário
-com o comando [`dart create`](/tools/dart-create).
+A real app has tests, license files, dependency files, examples, and so on.
+For the first app though, we can easily create only what is necessary
+with the [`dart create`](/tools/dart-create) command.
 
-1. Dentro de um diretório, crie o aplicativo dcat com a ferramenta dart.
+1. Inside a directory, create the dcat app with the dart tool.
    
    ```console
    $ dart create dcat
    ```
    
-2. Mude para o diretório criado.
+2. Change to the created directory.
 
    ```console
    $ cd dcat
    ```
    
-3. Dentro do diretório `dcat`, use [`dart pub add`](/tools/pub/cmd/pub-add)
-   para adicionar o pacote `args` como uma dependência.
-   Isso adiciona `args` à lista de suas dependências
-   encontradas no arquivo `pubspec.yaml`.
+3. Inside the `dcat` directory, use [`dart pub add`](/tools/pub/cmd/pub-add) 
+   to add the `args` package as a dependency.
+   This adds `args` to the list of your dependencies
+   found in the `pubspec.yaml` file.
 
    ```console
    $ dart pub add args
    ```
 
-4. Abra o arquivo `bin/dcat.dart` e copie o código anterior para ele.
+4. Open the `bin/dcat.dart` file and copy the preceding code into it.
 
 :::note
-Para saber mais sobre como usar pacotes e organizar seu código, confira
-[Como usar pacotes](/tools/pub/packages) e
-[Convenções de layout de pacotes](/tools/pub/package-layout).
+To learn more about using packages and organizing your code, check out
+[How to use packages](/tools/pub/packages) and
+[Package layout conventions](/tools/pub/package-layout).
 :::
 
-### Executando dcat {:#running-dcat}
+### Running dcat
 
-Depois de ter as dependências do seu aplicativo,
-você pode executar o aplicativo a partir da linha de comando sobre qualquer arquivo de texto,
-como `pubspec.yaml`:
+Once you have your app's dependencies,
+you can run the app from the command line over any text file,
+like `pubspec.yaml`:
 
 ```console
 $ dart run bin/dcat.dart -n pubspec.yaml
@@ -189,7 +188,7 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 2 description: A sample command-line application.
 3 version: 1.0.0
 4 # repository: https://github.com/my_org/my_repo
-5
+5 
 6 environment:
 7   sdk: ^3.9.0
 8 
@@ -197,41 +196,41 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 10 dependencies:
 11   args: ^2.7.0
 12   # path: ^1.8.0
-13
+13 
 14 dev_dependencies:
 15   lints: ^6.0.0
 16   test: ^1.25.0
 ```
 
-Este comando exibe cada linha do arquivo especificado.
-Como você especificou a opção `-n`,
-um número de linha é exibido antes de cada linha.
+This command displays each line of the specified file.
+Because you specified the `-n` option,
+a line number is displayed before each line.
 
-## Analisando argumentos de linha de comando {:#parsing-command-line-arguments}
+## Parsing command-line arguments
 
-O [pacote args]({{site.pub-pkg}}/args) fornece
-suporte para parser (analisador) para transformar
-argumentos de linha de comando
-em um conjunto de opções, flags (sinalizadores) e valores adicionais.
-Importe a [biblioteca args]({{argsAPI}}/args-library.html) do pacote
-da seguinte forma:
+The [args package]({{site.pub-pkg}}/args) provides
+parser support for transforming command-line arguments
+into a set of options, flags, and additional values.
+Import the package's
+[args library]({{argsAPI}}/args-library.html)
+as follows:
 
 <?code-excerpt "cli/bin/dcat.dart" retain="package:args"?>
 ```dart
 import 'package:args/args.dart';
 ```
 
-A biblioteca `args` contém essas classes, entre outras:
+The `args` library contains these classes, among others:
 
-| Classe                                           | Descrição                                                     |
+| Class                                           | Description                                                     |
 |-------------------------------------------------|-----------------------------------------------------------------|
-| [ArgParser]({{argsAPI}}/ArgParser-class.html)   | Um analisador de argumentos de linha de comando.                 |
-| [ArgResults]({{argsAPI}}/ArgResults-class.html) | O resultado da análise de argumentos de linha de comando usando `ArgParser`. |
+| [ArgParser]({{argsAPI}}/ArgParser-class.html)   | A command-line argument parser.                                 |
+| [ArgResults]({{argsAPI}}/ArgResults-class.html) | The result of parsing command-line arguments using `ArgParser`. |
 
 {: .table }
 
-O código a seguir no aplicativo `dcat` usa essas classes para
-analisar e armazenar os argumentos de linha de comando especificados:
+The following code in the `dcat` app uses these classes to
+parse and store the specified command-line arguments:
 
 <?code-excerpt "cli/bin/dcat.dart (arg-processing)" plaster="none" replace="/(ArgR.*|List[^\)]*|\..*|parser.*|argResults\S[^);]+)/[!$&!]/g"?>
 ```dart
@@ -246,39 +245,39 @@ void main([!List<String> arguments!]) {
 }
 ```
 
-O runtime (tempo de execução) Dart passa argumentos de linha de comando para
-a função `main` do aplicativo como uma lista de strings.
-O `ArgParser` é configurado para analisar a opção `-n`.
-Então, o resultado da análise de argumentos de linha de comando é armazenado em `argResults`.
+The Dart runtime passes command-line arguments to
+the app's `main` function as a list of strings.
+The `ArgParser` is configured to parse the `-n` option.
+Then, the result of parsing command-line arguments is stored in `argResults`.
 
-O diagrama a seguir mostra como a linha de comando `dcat` usada acima
-é analisada em um objeto `ArgResults`.
+The following diagram shows how the `dcat` command line used above
+is parsed into an `ArgResults` object.
 
 ![Run dcat from the command-line](/assets/img/tutorials/server/dcat-dart-run.svg){:width="350" .diagram-wrap}
 
-Você pode acessar sinalizadores e opções por nome,
-tratando um `ArgResults` como um `Map`.
-Você pode acessar outros valores usando a propriedade `rest`.
+You can access flags and options by name,
+treating an `ArgResults` like a `Map`.
+You can access other values using the `rest` property.
 
-A [referência da API]({{argsAPI}}/args-library.html)
-para a biblioteca `args` fornece informações detalhadas para ajudá-lo a usar
-as classes `ArgParser` e `ArgResults`.
+The [API reference]({{argsAPI}}/args-library.html)
+for the `args` library provides detailed information to help you use
+the `ArgParser` and `ArgResults` classes.
 
-## Lendo e escrevendo com stdin, stdout e stderr {:#reading-and-writing-with-stdin-stdout-and-stderr}
+## Reading and writing with stdin, stdout, and stderr
 
-Como outras linguagens,
-Dart tem streams de saída padrão, erro padrão e entrada padrão.
-As streams de I/O padrão são definidas no nível superior da biblioteca `dart:io`:
+Like other languages,
+Dart has standard output, standard error, and standard input streams.
+The standard I/O streams are defined at the top level of the `dart:io` library:
 
-| Stream                          | Descrição         |
+| Stream                          | Description         |
 |---------------------------------|---------------------|
-| [stdout]({{ioAPI}}/stdout.html) | A saída padrão      |
-| [stderr]({{ioAPI}}/stderr.html) | O erro padrão       |
-| [stdin]({{ioAPI}}/stdin.html)   | A entrada padrão    |
+| [stdout]({{ioAPI}}/stdout.html) | The standard output |
+| [stderr]({{ioAPI}}/stderr.html) | The standard error  |
+| [stdin]({{ioAPI}}/stdin.html)   | The standard input  |
 
 {: .table }
 
-Importe a biblioteca `dart:io` da seguinte forma:
+Import the `dart:io` library as follows:
 
 <?code-excerpt "cli/bin/dcat.dart" retain="dart:io"?>
 ```dart
@@ -290,11 +289,11 @@ Apps that run on the [web platform](/overview#platform)
 can't use the `dart:io` library.
 :::
 
-### stdout {:#stdout}
+### stdout
 
-O código a seguir do aplicativo `dcat`
-escreve os números de linha para `stdout` (se a opção `-n` for especificada)
-seguido pelo conteúdo da linha do arquivo.
+The following code from the `dcat` app
+writes the line numbers to `stdout` (if the `-n` option is specified)
+followed by the contents of the line from the file.
 
 <?code-excerpt "cli/bin/dcat.dart (show-line-numbers)" replace="/stdout\..*/[!$&!]/g"?>
 ```dart
@@ -304,32 +303,32 @@ if (showLineNumbers) {
 [!stdout.writeln(line);!]
 ```
 
-Os métodos `write()` e `writeln()` recebem um objeto de qualquer tipo,
-convertem-no em uma string e imprimem-no.
-O método `writeln()` também imprime um caractere de nova linha.
-O aplicativo `dcat` usa o método `write()` para imprimir o número da linha para que
-o número da linha e o texto apareçam na mesma linha.
+The `write()` and `writeln()` methods take an object of any type,
+convert it to a string, and print it.
+The `writeln()` method also prints a newline character.
+The `dcat` app uses the `write()` method to print the line number so
+the line number and text appear on the same line.
 
-Você também pode usar o método `writeAll()` para imprimir uma lista de objetos,
-ou usar `addStream()` para imprimir de forma assíncrona todos os elementos de uma stream.
+You can also use the `writeAll()` method to print a list of objects,
+or use `addStream()` to asynchronously print all the elements from a stream.
 
-`stdout` fornece mais funcionalidades do que a função `print()`.
-Por exemplo, você pode exibir o conteúdo de uma stream com `stdout`.
-No entanto, você deve usar `print()` em vez de `stdout`
-para aplicativos que são executados na web.
+`stdout` provides more functionality than the `print()` function.
+For example, you can display the contents of a stream with `stdout`.
+However, you must use `print()` instead of `stdout`
+for apps that run on the web.
 
-### stderr {:#stderr}
+### stderr
 
-Use `stderr` para escrever mensagens de erro no console.
-A stream de erro padrão tem os mesmos métodos que `stdout`,
-e você a usa da mesma forma.
-Embora `stdout` e `stderr` imprimam no console,
-sua saída é separada e
-pode ser redirecionada ou enviada por pipe (encadeada) na linha de comando
-ou programaticamente para destinos diferentes.
+Use `stderr` to write error messages to the console.
+The standard error stream has the same methods as `stdout`,
+and you use it in the same way.
+Although both `stdout` and `stderr` print to the console,
+their output is separate and
+can be redirected or piped in the command line
+or programmatically to different destinations.
 
-O código a seguir do aplicativo `dcat` imprime uma mensagem de erro se
-o usuário tentar emitir as linhas de um diretório em vez de um arquivo.
+The following code from the `dcat` app prints an error message if
+the user tries to output the lines of a directory instead of a file.
 
 <?code-excerpt "cli/bin/dcat.dart (await-entity)" replace="/stderr\..*/[!$&!]/g"?>
 ```dart
@@ -340,14 +339,14 @@ if (await FileSystemEntity.isDirectory(path)) {
 }
 ```
 
-### stdin {:#stdin}
+### stdin
 
-A stream de entrada padrão normalmente
-lê dados de forma síncrona do teclado,
-embora possa ler de forma assíncrona
-e obter entrada enviada por pipe (encadeada) a partir da saída padrão de outro programa.
+The standard input stream typically
+reads data synchronously from the keyboard,
+although it can read asynchronously
+and get input piped in from the standard output of another program.
 
-Aqui está um pequeno programa que lê uma única linha de `stdin`:
+Here's a small program that reads a single line from `stdin`:
 
 <?code-excerpt "cli/bin/dcat_stdin.dart"?>
 ```dart
@@ -360,26 +359,26 @@ void main() {
 }
 ```
 
-O método `readLineSync()` lê texto da stream de entrada padrão,
-bloqueando até que o usuário digite um texto e pressione return.
-Este pequeno programa imprime o texto digitado.
+The `readLineSync()` method reads text from the standard input stream,
+blocking until the user types in text and presses return.
+This little program prints out the typed text.
 
-No aplicativo `dcat`,
-se o usuário não fornecer um nome de arquivo na linha de comando,
-o programa, em vez disso, lê de stdin usando o método `pipe()`.
-Como `pipe()` é assíncrono
-(retornando um `Future`, mesmo que este código não use esse valor de retorno),
-o código que o chama usa `await`.
+In the `dcat` app,
+if the user does not provide a filename on the command line,
+the program instead reads from stdin using the `pipe()` method.
+Because `pipe()` is asynchronous
+(returning a `Future`, even though this code doesn't use that return value),
+the code that calls it uses `await`.
 
 <?code-excerpt "cli/bin/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
 ```dart
 await stdin.[!pipe!](stdout);
 ```
 
-Neste caso, o usuário digita linhas de texto,
-e o aplicativo as copia para stdout.
-O usuário sinaliza o fim da entrada pressionando <kbd>Control</kbd>+<kbd>D</kbd>
-(ou <kbd>Control</kbd>+<kbd>Z</kbd> no Windows).
+In this case, the user types in lines of text,
+and the app copies them to stdout.
+The user signals the end of input by pressing <kbd>Control</kbd>+<kbd>D</kbd>
+(or <kbd>Control</kbd>+<kbd>Z</kbd> on Windows).
 
 ```console
 $ dart run bin/dcat.dart
@@ -387,24 +386,24 @@ The quick brown fox jumps over the lazy dog.
 The quick brown fox jumps over the lazy dog.
 ```
 
-## Obtendo informações sobre um arquivo {:#getting-info-about-a-file}
+## Getting info about a file
 
-A classe [`FileSystemEntity`]({{ioAPI}}/FileSystemEntity-class.html)
-na biblioteca `dart:io` fornece propriedades e métodos estáticos
-que ajudam você a inspecionar e manipular o sistema de arquivos.
+The [`FileSystemEntity`]({{ioAPI}}/FileSystemEntity-class.html)
+class in the `dart:io` library provides properties and static methods
+that help you inspect and manipulate the file system.
 
-Por exemplo, se você tiver um caminho, você pode
-determinar se o caminho é um arquivo, um diretório, um link ou não encontrado por
-usando o método `type()` da classe `FileSystemEntity`.
-Como o método `type()` acessa o sistema de arquivos,
-ele executa a verificação de forma assíncrona.
+For example, if you have a path, you can
+determine whether the path is a file, a directory, a link, or not found by
+using the `type()` method from the `FileSystemEntity` class.
+Because the `type()` method accesses the file system,
+it performs the check asynchronously.
 
-O código a seguir do aplicativo `dcat` usa `FileSystemEntity`
-para determinar se o caminho fornecido na linha de comando é um diretório.
-O `Future` retornado é concluído com um booleano que
-indica se o caminho é um diretório ou não.
-Como a verificação é assíncrona, o
-código chama `isDirectory()` usando `await`.
+The following code from the `dcat` app uses `FileSystemEntity`
+to determine if the path provided on the command line is a directory.
+The returned `Future` completes with a boolean that
+indicates if the path is a directory or not.
+Because the check is asynchronous, the
+code calls `isDirectory()` using `await`.
 
 <?code-excerpt "cli/bin/dcat.dart (await-entity)" replace="/await.*path\)/[!$&!]/g"?>
 ```dart
@@ -415,20 +414,20 @@ if ([!await FileSystemEntity.isDirectory(path)!]) {
 }
 ```
 
-Outros métodos interessantes na classe `FileSystemEntity`
-incluem `isFile()`, `exists()`, `stat()`, `delete()` e `rename()`,
-todos os quais também usam um `Future` para retornar um valor.
+Other interesting methods in the `FileSystemEntity` class
+include `isFile()`, `exists()`, `stat()`, `delete()`, and `rename()`,
+all of which also use a `Future` to return a value.
 
-`FileSystemEntity` é a superclasse para as classes
-`File`, `Directory` e `Link`.
+`FileSystemEntity` is the superclass for the
+`File`, `Directory`, and `Link` classes.
 
-## Lendo um arquivo {:#reading-a-file}
+## Reading a file
 
-O aplicativo `dcat` abre cada arquivo listado na linha de comando
-com o método `openRead()`, que retorna um `Stream`.
-O bloco `await for` espera que o arquivo seja lido e decodificado de forma assíncrona.
-Quando os dados se tornam disponíveis na stream,
-o aplicativo os imprime em stdout.
+The `dcat` apps opens each file listed on the command line
+with the `openRead()` method, which returns a `Stream`.
+The `await for` block waits for the file to be read and decoded asynchronously.
+When the data becomes available on the stream,
+the app prints it to stdout.
 
 <?code-excerpt "cli/bin/dcat.dart (for-path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
 ```dart
@@ -450,10 +449,10 @@ for (final path in paths) {
 }
 ```
 
-O seguinte destaca o restante do código, que usa dois decodificadores que
-transformam os dados antes de torná-los disponíveis no bloco `await for`.
-O decodificador UTF8 converte os dados em strings Dart.
-`LineSplitter` divide os dados em novas linhas.
+The following highlights the rest of the code, which uses two decoders that
+transform the data before making it available in the `await for` block.
+The UTF8 decoder converts the data into Dart strings.
+`LineSplitter` splits the data at newlines.
 
 <?code-excerpt "cli/bin/dcat.dart (for-path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
 ```dart
@@ -475,20 +474,20 @@ for (final path in paths) {
 }
 ```
 
-A biblioteca `dart:convert` fornece esses e outros conversores de dados,
-incluindo um para JSON.
-Para usar esses conversores, você precisa importar a biblioteca `dart:convert`:
+The `dart:convert` library provides these and other data converters,
+including one for JSON.
+To use these converters you need to import the `dart:convert` library:
 
 <?code-excerpt "cli/bin/dcat.dart" retain="dart:convert"?>
 ```dart
 import 'dart:convert';
 ```
 
-## Escrevendo em um arquivo {:#writing-to-a-file}
+## Writing to a file
 
-A maneira mais fácil de escrever texto em um arquivo é criar um
-objeto [`File`]({{ioAPI}}/File-class.html)
-e usar o método `writeAsString()`:
+The easiest way to write text to a file is to create a
+[`File`]({{ioAPI}}/File-class.html)
+object and use the `writeAsString()` method:
 
 <?code-excerpt "cli/lib/cmdline.dart (write-quote)"?>
 ```dart
@@ -498,20 +497,20 @@ const stronger = 'That which does not kill us makes us stronger. -Nietzsche';
 await quotes.writeAsString(stronger, mode: FileMode.append);
 ```
 
-O método `writeAsString()` grava os dados de forma assíncrona.
-Ele abre o arquivo antes de escrever e fecha o arquivo quando termina.
-Para anexar dados a um arquivo existente, você pode usar o parâmetro nomeado
-opcional `mode` e definir seu valor como `FileMode.append`.
-Caso contrário, o modo padrão é `FileMode.write` e
-o conteúdo anterior do arquivo, se houver, é sobrescrito.
+The `writeAsString()` method writes the data asynchronously.
+It opens the file before writing and closes the file when done.
+To append data to an existing file, you can use the optional
+named parameter `mode` and set its value to `FileMode.append`.
+Otherwise, the mode defaults to `FileMode.write` and
+the previous contents of the file, if any, are overwritten.
 
-Se você quiser escrever mais dados, pode abrir o arquivo para gravação.
-O método `openWrite()` retorna um `IOSink`,
-que tem o mesmo tipo que stdin e stderr.
-Ao usar o `IOSink` retornado de `openWrite()`,
-você pode continuar gravando no arquivo até terminar,
-momento em que você deve fechar o arquivo manualmente.
-O método `close()` é assíncrono e retorna um `Future`.
+If you want to write more data, you can open the file for writing.
+The `openWrite()` method returns an `IOSink`,
+which has the same type as stdin and stderr.
+When using the `IOSink` returned from `openWrite()`,
+you can continue to write to the file until done,
+at which time, you must manually close the file.
+The `close()` method is asynchronous and returns a `Future`.
 
 <?code-excerpt "cli/lib/cmdline.dart (write-quotes)"?>
 ```dart
@@ -522,18 +521,18 @@ quotes.writeln('smile because it happened. -Dr. Seuss');
 await quotes.close();
 ```
 
-## Obtendo informações do ambiente {:#getting-environment-information}
+## Getting environment information
 
 {% assign PlatformAPI = ioAPI | append: '/Platform' -%}
 
-Use a classe [`Platform`]({{PlatformAPI}}-class.html)
-para obter informações sobre a máquina e o sistema operacional
-em que seu aplicativo está sendo executado.
+Use the [`Platform`]({{PlatformAPI}}-class.html) class
+to get information about the machine and operating system
+that your app is running on.
 
-A propriedade estática [`Platform.environment`]({{PlatformAPI}}/environment.html)
-fornece uma cópia das variáveis de ambiente em um mapa imutável.
-Se você precisar de um mapa mutável (cópia modificável), você
-pode usar `Map.of(Platform.environment)`.
+The static [`Platform.environment`]({{PlatformAPI}}/environment.html) property
+provides a copy of the environment variables in an immutable map.
+If you need a mutable map (modifiable copy) you
+can use `Map.of(Platform.environment)`.
 
 <?code-excerpt "cli/lib/cmdline.dart (env)"?>
 ```dart
@@ -544,27 +543,27 @@ print('LOGNAME = ${envVarMap['LOGNAME']}');
 print('PATH = ${envVarMap['PATH']}');
 ```
 
-`Platform` fornece outras propriedades úteis que fornecem
-informações sobre a máquina, o sistema operacional e o aplicativo
-em execução no momento. Por exemplo:
+`Platform` provides other useful properties that give
+information about the machine, OS, and currently
+running app. For example:
 
 - [`Platform.isMacOS()`]({{PlatformAPI}}/isMacOS.html)
 - [`Platform.numberOfProcessors`]({{PlatformAPI}}/numberOfProcessors.html)
 - [`Platform.script`]({{PlatformAPI}}/script.html)
 
-## Definindo códigos de saída {:#setting-exit-codes}
+## Setting exit codes
 
-A biblioteca `dart:io` define uma propriedade de nível superior,
-`exitCode`, que você pode alterar para definir o código de saída para
-a invocação atual da VM Dart.
-Um código de saída é um número passado de
-um aplicativo Dart para o processo pai
-para indicar o sucesso, falha ou outro estado de
-a execução do aplicativo.
+The `dart:io` library defines a top-level property,
+`exitCode`, that you can change to set the exit code for
+the current invocation of the Dart VM.
+An exit code is a number passed from
+a Dart app to the parent process
+to indicate the success, failure, or other state of
+the execution of the app.
 
-O aplicativo `dcat` define o código de saída
-na função `_handleError()` para indicar que um erro
-ocorreu durante a execução.
+The `dcat` app sets the exit code
+in the `_handleError()` function to indicate that an error
+occurred during execution.
 
 <?code-excerpt "cli/bin/dcat.dart (handle-error)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
 ```dart
@@ -577,70 +576,70 @@ Future<void> _handleError(String path) async {
 }
 ```
 
-Um código de saída de `2` indica que o aplicativo encontrou um erro.
+An exit code of `2` indicates that the app encountered an error.
 
-Uma alternativa ao uso de `exitCode` é usar a função de nível superior `exit()`,
-que define o código de saída e sai do aplicativo imediatamente.
-Por exemplo, a função `_handleError()` poderia chamar `exit(2)`
-em vez de definir `exitCode` como 2,
-mas `exit()` encerraria o programa e
-pode não processar todos os arquivos especificados pelo comando em execução.
+An alternative to using `exitCode` is to use the top-level `exit()` function,
+which sets the exit code and exits the app immediately.
+For example, the `_handleError()` function could call `exit(2)`
+instead of setting `exitCode` to 2,
+but `exit()` would quit the program and
+it might not process all of the files specified by the running command.
 
 :::note
-De modo geral, é melhor usar a propriedade `exitCode`,
-que define o código de saída, mas permite que o programa continue até sua
-conclusão natural.
+Generally speaking, you're better off using the `exitCode` property,
+which sets the exit code but allows the program to continue through to its
+natural completion.
 :::
 
-Embora você possa usar qualquer número para um código de saída,
-por convenção, os códigos na tabela abaixo têm os seguintes significados:
+Although you can use any number for an exit code,
+by convention, the codes in the table below have the following meanings:
 
-| Código | Significado |
+| Code | Meaning  |
 |------|----------|
-| 0    | Sucesso  |
-| 1    | Avisos   |
-| 2    | Erros    |
+| 0    | Success  |
+| 1    | Warnings |
+| 2    | Errors   |
 
 
 {: .table }
 
-## Resumo {:#summary}
+## Summary
 
-Este tutorial descreveu algumas APIs básicas
-encontradas nas seguintes classes da biblioteca `dart:io`:
+This tutorial described some basic APIs
+found in the following classes from the `dart:io` library:
 
-| API | Descrição |
+| API | Description |
 |---|---|
-| [`IOSink`]({{ioAPI}}/IOSink-class.html) | Classe auxiliar para objetos que consomem dados de streams |
-| [`File`]({{ioAPI}}/File-class.html) | Representa um arquivo no sistema de arquivos nativo |
-| [`Directory`]({{ioAPI}}/Directory-class.html) | Representa um diretório no sistema de arquivos nativo |
-| [`FileSystemEntity`]({{ioAPI}}/FileSystemEntity-class.html) | Superclasse para File e Directory |
-| [`Platform`]({{ioAPI}}/Platform-class.html) | Fornece informações sobre a máquina e o sistema operacional |
-| [`stdout`]({{ioAPI}}/stdout.html) | A stream de saída padrão |
-| [`stderr`]({{ioAPI}}/stderr.html) | A stream de erro padrão |
-| [`stdin`]({{ioAPI}}/stdin.html) | A stream de entrada padrão |
-| [`exitCode`]({{ioAPI}}/exitCode.html) | Acesse e defina o código de saída |
-| [`exit()`]({{ioAPI}}/exit.html) | Define o código de saída e sai |
+| [`IOSink`]({{ioAPI}}/IOSink-class.html) | Helper class for objects that consume data from streams |
+| [`File`]({{ioAPI}}/File-class.html) | Represents a file on the native file system |
+| [`Directory`]({{ioAPI}}/Directory-class.html) | Represents a directory on the native file system |
+| [`FileSystemEntity`]({{ioAPI}}/FileSystemEntity-class.html) | Superclass for File and Directory |
+| [`Platform`]({{ioAPI}}/Platform-class.html) | Provides information about the machine and operating system |
+| [`stdout`]({{ioAPI}}/stdout.html) | The standard output stream |
+| [`stderr`]({{ioAPI}}/stderr.html) | The standard error stream |
+| [`stdin`]({{ioAPI}}/stdin.html) | The standard input stream |
+| [`exitCode`]({{ioAPI}}/exitCode.html) | Access and set the exit code |
+| [`exit()`]({{ioAPI}}/exit.html) | Sets the exit code and quits |
 
 {: .table }
 
-Além disso, este tutorial abordou duas classes de `package:args`
-que ajudam na análise e uso de argumentos de linha de comando:
-[`ArgParser`]({{argsAPI}}/ArgParser-class.html) e
+In addition, this tutorial covered two classes from `package:args`
+that help with parsing and using command-line arguments:
+[`ArgParser`]({{argsAPI}}/ArgParser-class.html) and
 [`ArgResults`]({{argsAPI}}/ArgResults-class.html).
 
-Para mais classes, funções e propriedades,
-consulte os documentos da API para
+For more classes, functions, and properties,
+consult the API docs for
 [`dart:io`]({{ioAPI}}/dart-io-library.html),
-[`dart:convert`]({{site.dart-api}}/dart-convert/dart-convert-library.html) e
-[`package:args`]({{argsAPI}}/args-library.html).
+[`dart:convert`]({{site.dart-api}}/dart-convert/dart-convert-library.html),
+and [`package:args`]({{argsAPI}}/args-library.html).
 
-Para outro exemplo de um aplicativo de linha de comando,
-confira o exemplo [`command_line`][].
+For another example of a command line app, 
+check out the [`command_line`][] sample.
 
 [`command_line`]: {{site.repo.dart.samples}}/tree/main/command_line
 
-## Próximos passos? {:#what-next}
+## What next?
 
-Se você estiver interessado em programação do lado do servidor,
-confira o [próximo tutorial](/tutorials/server/httpserver).
+If you're interested in server-side programming,
+check out the [next tutorial](/tutorials/server/httpserver).

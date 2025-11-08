@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_const_constructors_in_immutables
-description: "Detalhes sobre o diagnóstico prefer_const_constructors_in_immutables produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_const_constructors_in_immutables
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Construtores em classes '@immutable' devem ser declarados como 'const'._
+_Constructors in '@immutable' classes should be declared as 'const'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um construtor não-`const` é
-encontrado em uma classe que tem a anotação `@immutable`.
+The analyzer produces this diagnostic when a non-`const` constructor is
+found in a class that has the `@immutable` annotation.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o construtor em `C`
-não está declarado como `const` mesmo que `C` tenha a anotação `@immutable`:
+The following code produces this diagnostic because the constructor in `C`
+isn't declared as `const` even though `C` has the `@immutable` annotation:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -42,8 +43,8 @@ class C {
 
 ## Common fixes
 
-Se a classe realmente é imutável, adicione o modificador `const`
-ao construtor:
+If the class really is intended to be immutable, then add the `const`
+modifier to the constructor:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -56,7 +57,7 @@ class C {
 }
 ```
 
-Se a classe é mutável, remova a anotação `@immutable`:
+If the class is mutable, then remove the `@immutable` annotation:
 
 ```dart
 class C {

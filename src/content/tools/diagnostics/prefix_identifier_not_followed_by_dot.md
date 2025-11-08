@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: prefix_identifier_not_followed_by_dot
-description: "Detalhes sobre o diagnóstico prefix_identifier_not_followed_by_dot produzido pelo analisador do Dart."
+description: >-
+  Details about the prefix_identifier_not_followed_by_dot
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome '{0}' refere-se a um prefixo de import, então deve ser seguido por '.'._
+_The name '{0}' refers to an import prefix, so it must be followed by '.'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um prefixo de import é usado
-sozinho, sem acessar nenhum dos nomes declarados nas bibliotecas
-associadas ao prefixo. Prefixos não são variáveis e, portanto, não podem
-ser usados como um valor.
+The analyzer produces this diagnostic when an import prefix is used by
+itself, without accessing any of the names declared in the libraries
+associated with the prefix. Prefixes aren't variables, and therefore can't
+be used as a value.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o prefixo `math` está
-sendo usado como se fosse uma variável:
+The following code produces this diagnostic because the prefix `math` is
+being used as if it were a variable:
 
 ```dart
 import 'dart:math' as math;
@@ -28,10 +29,10 @@ void f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o código estiver incompleto, então referencie algo em uma das bibliotecas
-associadas ao prefixo:
+If the code is incomplete, then reference something in one of the libraries
+associated with the prefix:
 
 ```dart
 import 'dart:math' as math;
@@ -41,4 +42,4 @@ void f() {
 }
 ```
 
-Se o nome estiver errado, então corrija o nome.
+If the name is wrong, then correct the name.

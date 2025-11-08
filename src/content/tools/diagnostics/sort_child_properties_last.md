@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: sort_child_properties_last
-description: "Detalhes sobre o diagnóstico sort_child_properties_last produzido pelo analisador do Dart."
+description: >-
+  Details about the sort_child_properties_last
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,19 +18,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O argumento '{0}' deve ser o último nas invocações de construtores de widgets._
+_The '{0}' argument should be last in widget constructor invocations._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o argumento `child` ou `children`
-não é o último argumento em uma invocação de um construtor de classe de widget.
-Uma exceção é feita se todos os argumentos após o
-argumento `child` ou `children` forem expressões de função.
+The analyzer produces this diagnostic when the `child` or `children`
+argument isn't the last argument in an invocation of a widget class'
+constructor. An exception is made if all of the arguments after the
+`child` or `children` argument are function expressions.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o argumento `child`
-não é o último argumento na invocação do construtor `Center`:
+The following code produces this diagnostic because the `child` argument
+isn't the last argument in the invocation of the `Center` constructor:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -42,9 +43,9 @@ Widget createWidget() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Mova o argumento `child` ou `children` para ser o último:
+Move the `child` or `children` argument to be last:
 
 ```dart
 import 'package:flutter/material.dart';

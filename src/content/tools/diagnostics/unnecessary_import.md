@@ -1,28 +1,29 @@
 ---
-ia-translate: true
 title: unnecessary_import
-description: "Detalhes sobre o diagnóstico unnecessary_import produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_import
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O import de '{0}' é desnecessário porque todos os elementos usados também são fornecidos pelo import de '{1}'._
+_The import of '{0}' is unnecessary because all of the used elements are also provided by the import of '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um import não é necessário porque
-todos os nomes que são importados e referenciados dentro da biblioteca importadora
-também estão visíveis através de outro import.
+The analyzer produces this diagnostic when an import isn't needed because
+all of the names that are imported and referenced within the importing
+library are also visible through another import.
 
 ## Example
 
-Dado um arquivo `a.dart` que contém o seguinte:
+Given a file `a.dart` that contains the following:
 
 ```dart
 class A {}
 ```
 
-E, dado um arquivo `b.dart` que contém o seguinte:
+And, given a file `b.dart` that contains the following:
 
 ```dart
 export 'a.dart';
@@ -30,9 +31,9 @@ export 'a.dart';
 class B {}
 ```
 
-O código a seguir produz este diagnóstico porque a classe `A`, que é
-importada de `a.dart`, também é importada de `b.dart`. Remover o import
-de `a.dart` mantém a semântica inalterada:
+The following code produces this diagnostic because the class `A`, which is
+imported from `a.dart`, is also imported from `b.dart`. Removing the import
+of `a.dart` leaves the semantics unchanged:
 
 ```dart
 import [!'a.dart'!];
@@ -43,8 +44,8 @@ void f(A a, B b) {}
 
 ## Common fixes
 
-Se o import não for necessário, então remova-o.
+If the import isn't needed, then remove it.
 
-Se alguns dos nomes importados por este import são destinados a serem usados mas
-ainda não são, e se esses nomes não são importados por outros imports, então adicione
-as referências ausentes a esses nomes.
+If some of the names imported by this import are intended to be used but
+aren't yet, and if those names aren't imported by other imports, then add
+the missing references to those names.

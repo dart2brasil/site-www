@@ -1,33 +1,34 @@
 ---
-ia-translate: true
 title: leaf_call_must_not_return_handle
-description: "Detalhes sobre o diagnóstico leaf_call_must_not_return_handle produzido pelo analisador do Dart."
+description: >-
+  Details about the leaf_call_must_not_return_handle
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Chamada FFI leaf não pode retornar um 'Handle'._
+_FFI leaf call can't return a 'Handle'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o valor do argumento `isLeaf`
-em uma invocação de `Pointer.asFunction` ou
-`DynamicLibrary.lookupFunction` é `true` e a função que seria
-retornada teria um tipo de retorno `Handle`.
+The analyzer produces this diagnostic when the value of the `isLeaf`
+argument in an invocation of either `Pointer.asFunction` or
+`DynamicLibrary.lookupFunction` is `true` and the function that would be
+returned would have a return type of `Handle`.
 
-O analisador também produz este diagnóstico quando o valor do argumento `isLeaf`
-em uma anotação `Native` é `true` e o argumento de tipo na
-anotação é um tipo de função cujo tipo de retorno é `Handle`.
+The analyzer also produces this diagnostic when the value of the `isLeaf`
+argument in an `Native` annotation is `true` and the type argument on
+the annotation is a function type whose return type is `Handle`.
 
-Em todos esses casos, chamadas leaf são suportadas apenas para os tipos `bool`,
-`int`, `float`, `double`, e, como tipo de retorno `void`.
+In all of these cases, leaf calls are only supported for the types `bool`,
+`int`, `float`, `double`, and, as a return type `void`.
 
-Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a função `p`
-retorna um `Handle`, mas o argumento `isLeaf` é `true`:
+The following code produces this diagnostic because the function `p`
+returns a `Handle`, but the `isLeaf` argument is `true`:
 
 ```dart
 import 'dart:ffi';
@@ -39,7 +40,7 @@ void f(Pointer<NativeFunction<Handle Function()>> p) {
 
 ## Common fixes
 
-Se a função retorna um handle, então remova o argumento `isLeaf`:
+If the function returns a handle, then remove the `isLeaf` argument:
 
 ```dart
 import 'dart:ffi';
@@ -49,8 +50,8 @@ void f(Pointer<NativeFunction<Handle Function()>> p) {
 }
 ```
 
-Se a função retorna um dos tipos suportados, então corrija a informação de
-tipo:
+If the function returns one of the supported types, then correct the type
+information:
 
 ```dart
 import 'dart:ffi';

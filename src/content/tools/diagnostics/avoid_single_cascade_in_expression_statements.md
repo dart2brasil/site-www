@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: avoid_single_cascade_in_expression_statements
-description: "Detalhes sobre o diagnóstico avoid_single_cascade_in_expression_statements produzido pelo analisador do Dart."
+description: >-
+  Details about the avoid_single_cascade_in_expression_statements
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Expressão cascade desnecessária._
+_Unnecessary cascade expression._
 
 ## Description
 
-O analisador produz este diagnóstico quando um único operador cascade é
-usado e o valor da expressão não está sendo usado para nada (como
-ser atribuído a uma variável ou ser passado como argumento).
+The analyzer produces this diagnostic when a single cascade operator is
+used and the value of the expression isn't being used for anything (such
+as being assigned to a variable or being passed as an argument).
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o valor da
-expressão cascade `s..length` não está sendo usado:
+The following code produces this diagnostic because the value of the
+cascade expression `s..length` isn't being used:
 
 ```dart
 void f(String s) {
@@ -38,7 +39,7 @@ void f(String s) {
 
 ## Common fixes
 
-Substitua o operador cascade por um operador de acesso simples:
+Replace the cascade operator with a simple access operator:
 
 ```dart
 void f(String s) {

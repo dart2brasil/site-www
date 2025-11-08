@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: duplicate_rest_element_in_pattern
-description: "Detalhes sobre o diagnóstico duplicate_rest_element_in_pattern produzido pelo analisador Dart."
+description: >-
+  Details about the duplicate_rest_element_in_pattern
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_No máximo um elemento rest é permitido em um pattern de lista ou mapa._
+_At most one rest element is allowed in a list or map pattern._
 
 ## Description
 
-O analisador produz este diagnóstico quando há mais de um pattern rest
-em um pattern de lista ou mapa. Um pattern rest capturará quaisquer
-valores não correspondidos por outros subpatterns, tornando os patterns rest subsequentes
-desnecessários porque não há mais nada para capturar.
+The analyzer produces this diagnostic when there's more than one rest
+pattern in either a list or map pattern. A rest pattern will capture any
+values unmatched by other subpatterns, making subsequent rest patterns
+unnecessary because there's nothing left to capture.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque há dois patterns
-rest no pattern de lista:
+The following code produces this diagnostic because there are two rest
+patterns in the list pattern:
 
 ```dart
 void f(List<int> x) {
@@ -28,7 +29,7 @@ void f(List<int> x) {
 
 ## Common fixes
 
-Remova todos exceto um dos patterns rest:
+Remove all but one of the rest patterns:
 
 ```dart
 void f(List<int> x) {

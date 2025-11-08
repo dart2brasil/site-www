@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: const_with_non_const
-description: "Detalhes sobre o diagnóstico const_with_non_const produzido pelo analisador do Dart."
+description: >-
+  Details about the const_with_non_const
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _The constructor being called isn't a const constructor._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando a keyword `const` é usada para
-invocar um constructor que não está marcado com `const`.
+The analyzer produces this diagnostic when the keyword `const` is used to
+invoke a constructor that isn't marked with `const`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o constructor em `A`
-não é um constructor const:
+The following code produces this diagnostic because the constructor in `A`
+isn't a const constructor:
 
 ```dart
 class A {
@@ -26,11 +27,11 @@ class A {
 A f() => [!const!] A();
 ```
 
-## Correções comuns
+## Common fixes
 
-Se é desejável e possível tornar a classe uma classe constante (tornando
-todos os fields da classe, incluindo fields herdados, final),
-então adicione a keyword `const` ao constructor:
+If it's desirable and possible to make the class a constant class (by
+making all of the fields of the class, including inherited fields, final),
+then add the keyword `const` to the constructor:
 
 ```dart
 class A {
@@ -40,7 +41,7 @@ class A {
 A f() => const A();
 ```
 
-Caso contrário, remova a keyword `const`:
+Otherwise, remove the keyword `const`:
 
 ```dart
 class A {

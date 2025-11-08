@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unsafe_variance
-description: "Detalhes sobre o diagnóstico unsafe_variance produzido pelo analisador do Dart."
+description: >-
+  Details about the unsafe_variance
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,23 +18,23 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Este tipo não é seguro: um type parameter ocorre em uma posição não-covariant._
+_This type is unsafe: a type parameter occurs in a non-covariant position._
 
 ## Description
 
-O analisador produz este diagnóstico quando um membro de instância tem um tipo de
-resultado que é [contravariant ou invariant](https://dart.dev/resources/glossary#variance)
-em um type parameter da declaração que o contém. O tipo de resultado de uma
-variável é seu tipo, e o tipo de resultado de um getter ou método é seu
-tipo de retorno. Este lint avisa contra tais membros porque eles provavelmente
-causarão uma verificação de tipo com falha em tempo de execução, sem aviso estático ou erro
-no local da chamada.
+The analyzer produces this diagnostic when an instance member has a result
+type which is [contravariant or invariant](https://dart.dev/resources/glossary#variance)
+in a type parameter of the enclosing declaration. The result type of a
+variable is its type, and the result type of a getter or method is its
+return type. This lint warns against such members because they are likely
+to cause a failing type check at run time, with no static warning or error
+at the call site.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `X` ocorre
-como um tipo de parâmetro no tipo de `f`, que é uma
-ocorrência contravariant deste type parameter:
+The following code produces this diagnostic because `X` occurs
+as a parameter type in the type of `f`, which is a
+contravariant occurrence of this type parameter:
 
 ```dart
 class C<X> {
@@ -42,16 +43,16 @@ class C<X> {
 }
 ```
 
-Isso não é seguro: Se `c` tem tipo estático `C<num>` e tipo em tempo de execução `C<int>`
-então `c.f` lançará uma exceção. Portanto, toda invocação `c.f(a)` também lançará uma exceção,
-mesmo no caso onde `a` tem um tipo correto como argumento para `c.f`.
+This is unsafe: If `c` has static type `C<num>` and run-time type `C<int>`
+then `c.f` will throw. Hence, every invocation `c.f(a)` will also throw,
+even in the case where `a` has a correct type as an argument to `c.f`.
 
 ## Common fixes
 
-Se o membro com lint é ou pode ser privado, então você pode ser capaz
-de garantir que ele nunca seja acessado em nenhum outro receptor além de `this`.
-Isso é suficiente para garantir que o erro de tipo em tempo de execução não
-ocorra. Por exemplo:
+If the linted member is or can be private then you may be able
+to enforce that it is never accessed on any other receiver than `this`.
+This is sufficient to ensure that that the run-time type error does not
+occur. For example:
 
 ```dart
 class C<X> {
@@ -66,9 +67,9 @@ class C<X> {
 }
 ```
 
-Você pode eliminar a variance não segura usando um tipo mais geral para
-o membro com lint. Neste caso, você pode precisar verificar o tipo em tempo de execução
-e executar um downcast nos locais de chamada.
+You can eliminate the unsafe variance by using a more general type for
+the linted member. In this case you may need to check the run-time type
+and perform a downcast at call sites.
 
 ```dart
 class C<X> {
@@ -77,13 +78,13 @@ class C<X> {
 }
 ```
 
-Se `c` tem tipo estático `C<num>`, então você pode testar o tipo. Por exemplo,
-`c.f is bool Function(num)`. Você pode chamá-lo com segurança com um argumento do
-tipo `num` se ele tiver esse tipo.
+If `c` has static type `C<num>` then you may test the type. For example,
+`c.f is bool Function(num)`. You may safely call it with an argument of
+type `num` if it has that type.
 
-Você também pode eliminar a variance não segura usando um tipo muito mais geral
-como `Function`, que é essencialmente o tipo `dynamic` para
-funções.
+You can also eliminate the unsafe variance by using a much more general
+type like `Function`, which is essentially the type `dynamic` for
+functions.
 
 ```dart
 class C<X> {
@@ -92,8 +93,8 @@ class C<X> {
 }
 ```
 
-Isso tornará `c.f(a)` dinamicamente seguro: Ele lançará uma exceção se e somente se o
-argumento `a` não tiver o tipo exigido pela função. Isso é
-melhor do que a versão original porque não lançará uma exceção por causa de um
-tipo estático incompatível. Ele só lança uma exceção quando _deve_ lançar por razões de
-soundness.
+This will make `c.f(a)` dynamically safe: It will throw if and only if the
+argument `a` does not have the type required by the function. This is
+better than the original version because it will not throw because of a
+mismatched static type. It only throws when it _must_ throw for soundness
+reasons.

@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_for_elements_to_map_fromiterable
-description: "Detalhes sobre o diagnóstico prefer_for_elements_to_map_fromiterable produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_for_elements_to_map_fromiterable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use elementos 'for' ao construir mapas a partir de iteráveis._
+_Use 'for' elements when building maps from iterables._
 
 ## Description
 
-O analisador produz este diagnóstico quando `Map.fromIterable` é usado para
-construir um mapa que poderia ser construído usando o elemento `for`.
+The analyzer produces this diagnostic when `Map.fromIterable` is used to
+build a map that could be built using the `for` element.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `fromIterable` está
-sendo usado para construir um mapa que poderia ser construído usando um elemento `for`:
+The following code produces this diagnostic because `fromIterable` is
+being used to build a map that could be built using a `for` element:
 
 ```dart
 void f(Iterable<String> data) {
@@ -41,7 +42,7 @@ void f(Iterable<String> data) {
 
 ## Common fixes
 
-Use um elemento `for` para construir o mapa:
+Use a `for` element to build the map:
 
 ```dart
 void f(Iterable<String> data) {

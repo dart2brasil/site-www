@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: assignment_to_final_no_setter
-description: "Detalhes sobre o diagnóstico assignment_to_final_no_setter produzido pelo analisador do Dart."
+description: >-
+  Details about the assignment_to_final_no_setter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Não há um setter chamado '{0}' na classe '{1}'._
+_There isn't a setter named '{0}' in class '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma referência a um setter é
-encontrada; não há setter definido para o tipo; mas há um getter
-definido com o mesmo nome.
+The analyzer produces this diagnostic when a reference to a setter is
+found; there is no setter defined for the type; but there is a getter
+defined with the same name.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque não há setter
-chamado `x` em `C`, mas há um getter chamado `x`:
+The following code produces this diagnostic because there is no setter
+named `x` in `C`, but there is a getter named `x`:
 
 ```dart
 class C {
@@ -32,7 +33,7 @@ void f(C c) {
 
 ## Common fixes
 
-Se você quer invocar um setter existente, então corrija o nome:
+If you want to invoke an existing setter, then correct the name:
 
 ```dart
 class C {
@@ -45,8 +46,8 @@ void f(C c) {
 }
 ```
 
-Se você quer invocar o setter mas ele ainda não existe, então
-declare-o:
+If you want to invoke the setter but it just doesn't exist yet, then
+declare it:
 
 ```dart
 class C {

@@ -1,34 +1,33 @@
 ---
-ia-translate: true
-title: "dart:html"
-description: "Saiba mais sobre os principais recursos da biblioteca dart:html do Dart."
+title: dart:html
+description: Learn about the major features in Dart's dart:html library.
 prevpage:
   url: /libraries/dart-io
   title: dart:io
 ---
 
 :::warning
-A biblioteca `dart:html` está obsoleta.
-Em vez disso, use [`dart:js_interop`][] e [`package:web`][].
+The `dart:html` library is deprecated.
+Instead, use [`dart:js_interop`][] and [`package:web`][].
 :::
 
-Use a biblioteca [dart:html][] para programar o navegador, manipular objetos e
-elementos no DOM e acessar APIs HTML5. DOM significa *Document Object
-Model* (Modelo de Objeto de Documento), que descreve a hierarquia de uma página HTML.
+Use the [dart:html][] library to program the browser, manipulate objects and
+elements in the DOM, and access HTML5 APIs. DOM stands for *Document Object
+Model*, which describes the hierarchy of an HTML page.
 
-Outros usos comuns de dart:html são manipular estilos (*CSS*), obter
-dados usando requisições HTTP e trocar dados usando
+Other common uses of dart:html are manipulating styles (*CSS*), getting
+data using HTTP requests, and exchanging data using
 [WebSockets](#sending-and-receiving-real-time-data-with-websockets).
-HTML5 (e dart:html) possui muitas
-APIs adicionais que esta seção não aborda. Apenas aplicativos web podem usar
-dart:html, não aplicativos de linha de comando.
+HTML5 (and dart:html) has many
+additional APIs that this section doesn't cover. Only web apps can use
+dart:html, not command-line apps.
 
 :::note
-Para aplicações maiores ou se você já tem um aplicativo Flutter,
-considere usar o [Flutter para web.]({{site.flutter}}/web)
+For larger applications or if you already have a Flutter application,
+consider using [Flutter for web.]({{site.flutter}}/web)
 :::
 
-Para usar a biblioteca HTML em seu aplicativo web, importe dart:html:
+To use the HTML library in your web app, import dart:html:
 
 <?code-excerpt "html/lib/html.dart (import)"?>
 ```dart
@@ -37,45 +36,45 @@ import 'dart:html';
 
 [`dart:js_interop`]: /interop/js-interop
 [`package:web`]: {{site.pub-pkg}}/web
-[Migrar para package:web]: /interop/js-interop/package-web
+[Migrate to package:web]: /interop/js-interop/package-web
 
-## Manipulando o DOM {:#manipulating-the-dom}
+## Manipulating the DOM
 
-Para usar o DOM, você precisa saber sobre *janelas* (windows), *documentos*,
-*elementos* e *nós* (nodes).
+To use the DOM, you need to know about *windows*, *documents*,
+*elements*, and *nodes*.
 
-Um objeto [Window][] representa
-a janela real do navegador web. Cada Window tem um objeto Document,
-que aponta para o documento que está atualmente carregado. O objeto Window
-também tem acessadores para várias APIs, como IndexedDB (para armazenar dados),
-requestAnimationFrame (para animações) e muito mais. Em navegadores com guias,
-cada guia tem seu próprio objeto Window.
+A [Window][] object represents
+the actual window of the web browser. Each Window has a Document object,
+which points to the document that's currently loaded. The Window object
+also has accessors to various APIs such as IndexedDB (for storing data),
+requestAnimationFrame (for animations), and more. In tabbed browsers,
+each tab has its own Window object.
 
-Com o objeto [Document][], você pode criar e manipular objetos [Element][]
-dentro do documento. Observe que o próprio documento é um elemento e pode ser
-manipulado.
+With the [Document][] object, you can create and manipulate [Element][] objects
+within the document. Note that the document itself is an element and can be
+manipulated.
 
-O DOM modela uma árvore de
-[Nodes.][Nodes] Esses nós são frequentemente
-elementos, mas também podem ser atributos, texto, comentários e outros tipos do
-DOM. Exceto pelo nó raiz, que não tem pai, cada nó no DOM tem um pai e pode
-ter muitos filhos.
+The DOM models a tree of
+[Nodes.][Nodes] These nodes are often
+elements, but they can also be attributes, text, comments, and other DOM
+types. Except for the root node, which has no parent, each node in the
+DOM has one parent and might have many children.
 
-### Encontrando elementos {:#finding-elements}
+### Finding elements
 
-Para manipular um elemento, você primeiro precisa de um objeto que o
-represente. Você pode obter este objeto usando uma consulta.
+To manipulate an element, you first need an object that represents it.
+You can get this object using a query.
 
-Encontre um ou mais elementos usando as funções de nível superior
-`querySelector()` e `querySelectorAll()`.
-Você pode consultar por ID, classe, tag, nome ou qualquer combinação desses.
-O [guia de Especificação de Seletores CSS](https://www.w3.org/TR/css3-selectors/)
-define os formatos dos seletores, como usar um prefixo \# para especificar IDs
-e um ponto (.) para classes.
+Find one or more elements using the top-level functions
+`querySelector()` and `querySelectorAll()`. 
+You can query by ID, class, tag, name, or any combination of these. 
+The [CSS Selector Specification guide](https://www.w3.org/TR/css3-selectors/) 
+defines the formats of the selectors such as using a \# prefix to specify IDs 
+and a period (.) for classes.
 
-A função `querySelector()` retorna o primeiro elemento que corresponde
-ao seletor, enquanto `querySelectorAll()` retorna uma coleção de elementos
-que correspondem ao seletor.
+The `querySelector()` function returns the first element that matches
+the selector, while `querySelectorAll()`returns a collection of elements
+that match the selector.
 
 <?code-excerpt "html/lib/html.dart (query-selector)"?>
 ```dart
@@ -97,26 +96,26 @@ List<Element> textInputElements = querySelectorAll('input[type="text"]');
 List<Element> specialParagraphElements = querySelectorAll('#id p.class');
 ```
 
-### Manipulando elementos {:#manipulating-elements}
+### Manipulating elements
 
-Você pode usar propriedades para alterar o estado de um elemento. Node e seu
-subtipo Element definem as propriedades que todos os elementos possuem. Por
-exemplo, todos os elementos têm propriedades `classes`, `hidden`, `id`, `style` e
-`title` que você pode usar para definir o estado. Subclasses de Element
-definem propriedades adicionais, como a propriedade `href` de
-[AnchorElement.][AnchorElement] (Elemento de Âncora)
+You can use properties to change the state of an element. Node and its
+subtype Element define the properties that all elements have. For
+example, all elements have `classes`, `hidden`, `id`, `style`, and
+`title` properties that you can use to set state. Subclasses of Element
+define additional properties, such as the `href` property of
+[AnchorElement.][AnchorElement]
 
-Considere este exemplo de especificação de um elemento de âncora em HTML:
+Consider this example of specifying an anchor element in HTML:
 
 <?code-excerpt "html/test/html_test.dart (anchor-html)" replace="/.*'(.*?)'.*/$1/g"?>
 ```html
 <a id="example" href="/another/example">link text</a>
 ```
 
-Esta tag `<a>` especifica um elemento com um atributo `href` e um texto
-nó (acessível através de uma propriedade `text`) que contém a string
-"link text". Para alterar o URL para o qual o link vai, você pode usar
-a propriedade `href` de AnchorElement:
+This `<a>` tag specifies an element with an `href` attribute and a text
+node (accessible via a `text` property) that contains the string
+"link text". To change the URL that the link goes to, you can use
+AnchorElement's `href` property:
 
 <?code-excerpt "html/test/html_test.dart (href)" plaster="none"?>
 ```dart
@@ -124,10 +123,10 @@ var anchor = querySelector('#example') as AnchorElement;
 anchor.href = 'https://dart.dev';
 ```
 
-Frequentemente, você precisa definir propriedades em vários elementos. Por
-exemplo, o código a seguir define a propriedade `hidden` de todos os elementos
-que têm uma classe de "mac", "win" ou "linux". Definir a propriedade `hidden` como
-true tem o mesmo efeito que adicionar `display: none` ao CSS.
+Often you need to set properties on multiple elements. For example, the
+following code sets the `hidden` property of all elements that have a
+class of "mac", "win", or "linux". Setting the `hidden` property to true
+has the same effect as adding `display: none` to the CSS.
 
 <?code-excerpt "html/test/html_test.dart (os-html)" replace="/.*? = '''|''';$//g"?>
 ```html
@@ -160,23 +159,23 @@ for (final os in osList) {
 }
 ```
 
-Quando a propriedade correta não está disponível ou conveniente, você pode usar
-a propriedade `attributes` de Element. Esta propriedade é um `Map<String, String>`,
-onde as chaves são nomes de atributos.
-Para uma lista de nomes de atributos e seus significados,
-consulte a página [MDN Attributes.](https://developer.mozilla.org/docs/Web/HTML/Attributes)
-Aqui está um exemplo de como definir o valor de um atributo:
+When the right property isn't available or convenient, you can use
+Element's `attributes` property. This property is a
+`Map<String, String>`, where the keys are attribute names. For a list of
+attribute names and their meanings, see the [MDN Attributes
+page.](https://developer.mozilla.org/docs/Web/HTML/Attributes) Here's an
+example of setting an attribute's value:
 
 <?code-excerpt "html/lib/html.dart (attributes)"?>
 ```dart
 elem.attributes['someAttribute'] = 'someValue';
 ```
 
-### Criando elementos {:#creating-elements}
+### Creating elements
 
-Você pode adicionar às páginas HTML existentes criando novos elementos e
-anexando-os ao DOM. Aqui está um exemplo de como criar um parágrafo
-(<\p\>) elemento:
+You can add to existing HTML pages by creating new elements and
+attaching them to the DOM. Here's an example of creating a paragraph
+(\<p\>) element:
 
 <?code-excerpt "html/lib/html.dart (creating-elements)"?>
 ```dart
@@ -184,50 +183,50 @@ var elem = ParagraphElement();
 elem.text = 'Creating is easy!';
 ```
 
-Você também pode criar um elemento analisando o texto HTML. Quaisquer elementos filhos
-também são analisados e criados.
+You can also create an element by parsing HTML text. Any child elements
+are also parsed and created.
 
 <?code-excerpt "html/lib/html.dart (creating-from-html)"?>
 ```dart
 var elem2 = Element.html('<p>Creating <em>is</em> easy!</p>');
 ```
 
-Observe que `elem2` é um `ParagraphElement` no exemplo anterior.
+Note that `elem2` is a `ParagraphElement` in the preceding example.
 
-Anexe o elemento recém-criado ao documento atribuindo um pai
-ao elemento. Você pode adicionar um elemento aos filhos de qualquer elemento
-existente. No exemplo a seguir, `body` é um elemento e seus elementos filhos
-são acessíveis (como um `List<Element>`) da propriedade `children`.
+Attach the newly created element to the document by assigning a parent
+to the element. You can add an element to any existing element's
+children. In the following example, `body` is an element, and its child
+elements are accessible (as a `List<Element>`) from the `children` property.
 
 <?code-excerpt "html/lib/html.dart (body-children-add)"?>
 ```dart
 document.body!.children.add(elem2);
 ```
 
-### Adicionando, substituindo e removendo nós {:#adding-replacing-and-removing-nodes}
+### Adding, replacing, and removing nodes
 
-Lembre-se de que elementos são apenas um tipo de nó. Você pode encontrar todos os
-filhos de um nó usando a propriedade `nodes` de Node, que retorna um
-`List<Node>` (em vez de `children`, que omite nós não Element).
-Depois de ter esta lista, você pode usar os métodos e
-operadores de List usuais para manipular os filhos do nó.
+Recall that elements are just a kind of node. You can find all the
+children of a node using the `nodes` property of Node, which returns a
+`List<Node>` (as opposed to `children`, which omits non-Element nodes).
+Once you have this list, you can use the usual List methods and
+operators to manipulate the children of the node.
 
-Para adicionar um nó como o último filho de seu pai, use o
-método List `add()`:
+To add a node as the last child of its parent, use the List `add()`
+method:
 
 <?code-excerpt "html/lib/html.dart (nodes-add)"?>
 ```dart
 querySelector('#inputs')!.nodes.add(elem);
 ```
 
-Para substituir um nó, use o método Node `replaceWith()`:
+To replace a node, use the Node `replaceWith()` method:
 
 <?code-excerpt "html/lib/html.dart (replace-with)"?>
 ```dart
 querySelector('#status')!.replaceWith(elem);
 ```
 
-Para remover um nó, use o método Node `remove()`:
+To remove a node, use the Node `remove()` method:
 
 <?code-excerpt "html/lib/html.dart (remove)"?>
 ```dart
@@ -235,15 +234,15 @@ Para remover um nó, use o método Node `remove()`:
 querySelector('#expendable')?.remove();
 ```
 
-### Manipulando estilos CSS {:#manipulating-css-styles}
+### Manipulating CSS styles
 
-CSS, ou *folhas de estilo em cascata*, define os estilos de apresentação
-dos elementos DOM. Você pode alterar a aparência de um elemento anexando
-atributos de ID e classe a ele.
+CSS, or *cascading style sheets*, defines the presentation styles of DOM
+elements. You can change the appearance of an element by attaching ID
+and class attributes to it.
 
-Cada elemento possui um campo `classes`, que é uma lista. Adicione e remova classes
-CSS simplesmente adicionando e removendo strings desta coleção. Para
-exemplo, o exemplo a seguir adiciona a classe `warning` a um elemento:
+Each element has a `classes` field, which is a list. Add and remove CSS
+classes simply by adding and removing strings from this collection. For
+example, the following sample adds the `warning` class to an element:
 
 <?code-excerpt "html/lib/html.dart (classes-add)"?>
 ```dart
@@ -251,8 +250,8 @@ var elem = querySelector('#message')!;
 elem.classes.add('warning');
 ```
 
-Muitas vezes, é muito eficiente encontrar um elemento por ID. Você pode dinamicamente
-definir um ID de elemento com a propriedade `id`:
+It's often very efficient to find an element by ID. You can dynamically
+set an element ID with the `id` property:
 
 <?code-excerpt "html/lib/html.dart (set-id)"?>
 ```dart
@@ -261,8 +260,8 @@ message.id = 'message2';
 message.text = 'Please subscribe to the Dart mailing list.';
 ```
 
-Você pode reduzir o texto redundante neste exemplo usando
-cascatas de método:
+You can reduce the redundant text in this example by using method
+cascades:
 
 <?code-excerpt "html/lib/html.dart (elem-set-cascade)"?>
 ```dart
@@ -271,9 +270,9 @@ var message = DivElement()
   ..text = 'Please subscribe to the Dart mailing list.';
 ```
 
-Embora usar IDs e classes para associar um elemento a um conjunto de estilos
-seja a melhor prática, às vezes você deseja anexar um estilo específico diretamente
-ao elemento:
+While using IDs and classes to associate an element with a set of styles
+is best practice, sometimes you want to attach a specific style directly
+to the element:
 
 <?code-excerpt "html/lib/html.dart (set-style)"?>
 ```dart
@@ -282,21 +281,21 @@ message.style
   ..fontSize = '3em';
 ```
 
-### Manipulando eventos {:#handling-events}
+### Handling events
 
-Para responder a eventos externos, como cliques, mudanças de foco e
-seleções, adicione um ouvinte de evento (event listener).
-Você pode adicionar um ouvinte de evento a qualquer
-elemento na página. O envio e a propagação de eventos são um assunto complicado;
-[pesquise os detalhes](https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture)
-se você é novo em programação web.
+To respond to external events such as clicks, changes of focus, and
+selections, add an event listener. You can add an event listener to any
+element on the page. Event dispatch and propagation is a complicated
+subject; [research the
+details](https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture)
+if you're new to web programming.
 
-Adicione um manipulador de evento usando
-<code><em>element</em>.on<em>Event</em>.listen(<em>função</em>)</code>,
-onde <code><em>Event</em></code> é o nome do evento
-e <code><em>função</em></code> é o manipulador de evento.
+Add an event handler using
+<code><em>element</em>.on<em>Event</em>.listen(<em>function</em>)</code>,
+where <code><em>Event</em></code> is the event
+name and <code><em>function</em></code> is the event handler.
 
-Por exemplo, aqui está como você pode manipular cliques em um botão:
+For example, here's how you can handle clicks on a button:
 
 <?code-excerpt "html/lib/html.dart (on-click)"?>
 ```dart
@@ -307,8 +306,8 @@ querySelector('#submitInfo')!.onClick.listen((e) {
 });
 ```
 
-Os eventos podem se propagar para cima e para baixo na árvore DOM. Para descobrir qual
-elemento disparou o evento originalmente, use `e.target`:
+Events can propagate up and down through the DOM tree. To discover which
+element originally fired the event, use `e.target`:
 
 <?code-excerpt "html/lib/html.dart (target)"?>
 ```dart
@@ -318,47 +317,47 @@ document.body!.onClick.listen((e) {
 });
 ```
 
-Para ver todos os eventos para os quais você pode registrar um ouvinte de evento, procure
-por propriedades "onEventType" na documentação da API para [Element][] e suas
-subclasses. Alguns eventos comuns incluem:
+To see all the events for which you can register an event listener, look
+for "onEventType" properties in the API docs for [Element][] and its
+subclasses. Some common events include:
 
--   change (mudança)
--   blur (perda de foco)
--   keyDown (tecla pressionada)
--   keyUp (tecla liberada)
--   mouseDown (botão do mouse pressionado)
--   mouseUp (botão do mouse liberado)
+-   change
+-   blur
+-   keyDown
+-   keyUp
+-   mouseDown
+-   mouseUp
 
 
-## Usando recursos HTTP com HttpRequest {:#using-http-resources-with-httprequest}
+## Using HTTP resources with HttpRequest
 
-Você deve evitar o uso direto de `dart:html` para fazer requisições HTTP.
-A classe [`HttpRequest`][] em `dart:html` é dependente da plataforma
-e vinculada a uma única implementação.
-Em vez disso, use uma biblioteca de nível superior como
+You should avoid directly using `dart:html` to make HTTP requests.
+The [`HttpRequest`][] class in `dart:html` is platform-dependent
+and tied to a single implementation.
+Instead, use a higher-level library like
 [`package:http`]({{site.pub-pkg}}/http).
 
-O tutorial [Buscar dados da internet][]
-explica como fazer requisições
-HTTP usando `package:http`.
+The [Fetch data from the internet][] tutorial
+explains how to make HTTP requests
+using `package:http`.
 
-## Enviando e recebendo dados em tempo real com WebSockets {:#sending-and-receiving-real-time-data-with-websockets}
+## Sending and receiving real-time data with WebSockets
 
-Um WebSocket permite que seu aplicativo web troque dados com um servidor
-interativamente—sem necessidade de polling. Um servidor cria o WebSocket e
-ouve as requisições em um URL que começa com **ws://**—por exemplo,
-ws://127.0.0.1:1337/ws. Os dados transmitidos por um WebSocket podem ser uma
-string ou um blob (objeto binário grande). Muitas vezes, os dados são uma string formatada em JSON.
+A WebSocket allows your web app to exchange data with a server
+interactively—no polling necessary. A server creates the WebSocket and
+listens for requests on a URL that starts with **ws://**—for example,
+ws://127.0.0.1:1337/ws. The data transmitted over a WebSocket can be a
+string or a blob.  Often, the data is a JSON-formatted string.
 
-Para usar um WebSocket em seu aplicativo web, primeiro crie um objeto
-[WebSocket][], passando o URL do WebSocket como um argumento:
+To use a WebSocket in your web app, first create a [WebSocket][] object, passing
+the WebSocket URL as an argument:
 
 {% comment %}
-Código inspirado em:
+Code inspired by:
 https://github.com/dart-lang/dart-samples/blob/master/html5/web/websockets/basics/websocket_sample.dart
 
-Depois que os testes forem escritos para os exemplos, considere obter trechos de código do
-aplicativo de exemplo websocket.
+Once tests are written for the samples, consider getting code excerpts from
+the websocket sample app.
 {% endcomment %}
 
 <?code-excerpt "html/test/html_test.dart (WebSocket)"?>
@@ -366,19 +365,19 @@ aplicativo de exemplo websocket.
 var ws = WebSocket('ws://echo.websocket.org');
 ```
 
-### Enviando dados {:#sending-data}
+### Sending data
 
-Para enviar dados de string no WebSocket, use o método `send()`:
+To send string data on the WebSocket, use the `send()` method:
 
 <?code-excerpt "html/test/html_test.dart (send)"?>
 ```dart
 ws.send('Hello from Dart!');
 ```
 
-### Recebendo dados {:#receiving-data}
+### Receiving data
 
-Para receber dados no WebSocket, registre um listener para
-eventos de mensagem:
+To receive data on the WebSocket, register a listener for message
+events:
 
 <?code-excerpt "html/test/html_test.dart (onMessage)" plaster="none"?>
 ```dart
@@ -387,15 +386,15 @@ ws.onMessage.listen((MessageEvent e) {
 });
 ```
 
-O manipulador de eventos de mensagem recebe um objeto [MessageEvent][].
-O campo `data` deste objeto tem os dados do servidor.
+The message event handler receives a [MessageEvent][] object.
+This object's `data` field has the data from the server.
 
-### Manipulando eventos WebSocket {:#handling-websocket-events}
+### Handling WebSocket events
 
-Seu aplicativo pode manipular os seguintes eventos WebSocket: open (abrir), close (fechar),
-error (erro) e (como mostrado anteriormente) message (mensagem). Aqui está um exemplo de um método que cria
-um objeto WebSocket e registra manipuladores para eventos open, close,
-error e message:
+Your app can handle the following WebSocket events: open, close, error,
+and (as shown earlier) message. Here's an example of a method that
+creates a WebSocket object and registers handlers for open, close,
+error, and message events:
 
 <?code-excerpt "html/test/html_test.dart (initWebSocket)" plaster="none"?>
 ```dart
@@ -436,20 +435,20 @@ void initWebSocket([int retrySeconds = 1]) {
 ```
 
 
-## Mais informações {:#more-information}
+## More information
 
-Esta seção apenas arranhou a superfície do uso da biblioteca dart:html. Para
-mais informações, consulte a documentação para
+This section barely scratched the surface of using the dart:html
+library. For more information, see the documentation for
 [dart:html.][dart:html]
-Dart tem bibliotecas adicionais para APIs da web mais especializadas, como
-[web audio,][web audio] [IndexedDB,][IndexedDB] e [WebGL.][WebGL]
+Dart has additional libraries for more specialized web APIs, such as
+[web audio,][web audio] [IndexedDB,][IndexedDB] and [WebGL.][WebGL]
 
-Para mais informações sobre bibliotecas web Dart, consulte a
-[visão geral da biblioteca web.][web library overview]
+For more information about Dart web libraries, see the
+[web library overview.][web library overview]
 
 [AnchorElement]: {{site.dart-api}}/dart-html/AnchorElement-class.html
 [dart:html]: {{site.dart-api}}/dart-html/dart-html-library.html
-[Buscar dados da internet]: /tutorials/server/fetch-data
+[Fetch data from the internet]: /tutorials/server/fetch-data
 [Document]: {{site.dart-api}}/dart-html/Document-class.html
 [Element]: {{site.dart-api}}/dart-html/Element-class.html
 [`HttpRequest`]: {{site.dart-api}}/dart-html/HttpRequest-class.html

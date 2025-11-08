@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: unused_element_parameter
-description: "Detalhes sobre o diagnóstico unused_element_parameter produzido pelo analisador Dart."
+description: >-
+  Details about the unused_element_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um valor para o parâmetro opcional '{0}' nunca é fornecido._
+_A value for optional parameter '{0}' isn't ever given._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um valor nunca é passado para um
-parâmetro opcional declarado dentro de uma declaração privada.
+The analyzer produces this diagnostic when a value is never passed for an
+optional parameter declared within a private declaration.
 
-## Exemplo
+## Example
 
-Assumindo que nenhum código na biblioteca passa um valor para `y` em qualquer
-invocação de `_m`, o código a seguir produz este diagnóstico:
+Assuming that no code in the library passes a value for `y` in any
+invocation of `_m`, the following code produces this diagnostic:
 
 ```dart
 class C {
@@ -26,9 +27,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se a declaração não é necessária, então remova-a:
+If the declaration isn't needed, then remove it:
 
 ```dart
 class C {
@@ -38,4 +39,4 @@ class C {
 }
 ```
 
-Se a declaração pretende ser usada, então adicione o código para usá-la.
+If the declaration is intended to be used, then add the code to use it.

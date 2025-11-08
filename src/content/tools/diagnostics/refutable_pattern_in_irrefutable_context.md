@@ -1,34 +1,35 @@
 ---
-ia-translate: true
 title: refutable_pattern_in_irrefutable_context
-description: "Detalhes sobre o diagnóstico refutable_pattern_in_irrefutable_context produzido pelo analisador do Dart."
+description: >-
+  Details about the refutable_pattern_in_irrefutable_context
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Refutable patterns não podem ser usados em um contexto irrefutable._
+_Refutable patterns can't be used in an irrefutable context._
 
 ## Description
 
-O analisador produz este diagnóstico quando um [refutable pattern][refutable pattern] é usado
-em um contexto onde apenas um [irrefutable pattern][irrefutable pattern] é permitido.
+The analyzer produces this diagnostic when a [refutable pattern][] is used
+in a context where only an [irrefutable pattern][] is allowed.
 
-Os refutable patterns que não são permitidos são:
+The refutable patterns that are disallowed are:
 - logical-or
 - relational
 - null-check
 - constant
 
-Os contextos que são verificados são:
-- declarações de variáveis baseadas em pattern
-- loops for baseados em pattern
-- atribuições com um pattern no lado esquerdo
+The contexts that are checked are:
+- pattern-based variable declarations
+- pattern-based for loops
+- assignments with a pattern on the left-hand side
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o null-check
-pattern, que é um refutable pattern, está em uma declaração de variável
-baseada em pattern, que não permite refutable patterns:
+The following code produces this diagnostic because the null-check
+pattern, which is a refutable pattern, is in a pattern-based variable
+declaration, which doesn't allow refutable patterns:
 
 ```dart
 void f(int? x) {
@@ -38,7 +39,7 @@ void f(int? x) {
 
 ## Common fixes
 
-Reescreva o código para não usar um refutable pattern em um contexto irrefutable.
+Rewrite the code to not use a refutable pattern in an irrefutable context.
 
 [irrefutable pattern]: /resources/glossary#irrefutable-pattern
 [refutable pattern]: /resources/glossary#refutable-pattern

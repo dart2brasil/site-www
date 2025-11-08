@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: close_sinks
-description: "Detalhes sobre o diagnóstico close_sinks produzido pelo analisador Dart."
+description: >-
+  Details about the close_sinks
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Instância não fechada de 'Sink'._
+_Unclosed instance of 'Sink'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma instância de `Sink` é
-criada mas o método `close` não é invocado.
+The analyzer produces this diagnostic when an instance of `Sink` is
+created but the method `close` isn't invoked.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o `sink` não é
-fechado:
+The following code produces this diagnostic because the `sink` isn't
+closed:
 
 ```dart
 import 'dart:io';
@@ -40,7 +41,7 @@ void g(File f) {
 
 ## Common fixes
 
-Feche o sink:
+Close the sink:
 
 ```dart
 import 'dart:io';

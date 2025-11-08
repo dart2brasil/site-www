@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: flutter_field_not_map
-description: "Detalhes sobre o diagnóstico flutter_field_not_map produzido pelo analisador do Dart."
+description: >-
+  Details about the flutter_field_not_map
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O valor do campo 'flutter' é esperado ser um map._
+_The value of the 'flutter' field is expected to be a map._
 
 ## Description
 
-O analisador produz este diagnóstico quando o valor da chave `flutter`
-não é um map.
+The analyzer produces this diagnostic when the value of the `flutter` key
+isn't a map.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o valor da
-chave `flutter` de nível superior é uma string:
+The following code produces this diagnostic because the value of the
+top-level `flutter` key is a string:
 
 ```yaml
 name: example
@@ -25,8 +26,8 @@ flutter: [!true!]
 
 ## Common fixes
 
-Se você precisa especificar opções específicas do Flutter, então altere o valor para
-ser um map:
+If you need to specify Flutter-specific options, then change the value to
+be a map:
 
 ```yaml
 name: example
@@ -34,8 +35,8 @@ flutter:
   uses-material-design: true
 ```
 
-Se você não precisa especificar opções específicas do Flutter, então remova a
-chave `flutter`:
+If you don't need to specify Flutter-specific options, then remove the
+`flutter` key:
 
 ```yaml
 name: example

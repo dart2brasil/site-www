@@ -1,21 +1,22 @@
 ---
-ia-translate: true
 title: private_setter
-description: "Detalhes sobre o diagnóstico private_setter produzido pelo analisador Dart."
+description: >-
+  Details about the private_setter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O setter '{0}' é private e não pode ser acessado fora da biblioteca que o declara._
+_The setter '{0}' is private and can't be accessed outside the library that declares it._
 
 ## Description
 
-O analisador produz este diagnóstico quando um setter private é usado em uma
-biblioteca onde ele não está visível.
+The analyzer produces this diagnostic when a private setter is used in a
+library where it isn't visible.
 
 ## Example
 
-Dado um arquivo `a.dart` que contém o seguinte:
+Given a file `a.dart` that contains the following:
 
 ```dart
 class A {
@@ -23,8 +24,8 @@ class A {
 }
 ```
 
-O código a seguir produz este diagnóstico porque referencia o
-setter private `_f` mesmo que o setter não esteja visível:
+The following code produces this diagnostic because it references the
+private setter `_f` even though the setter isn't visible:
 
 ```dart
 import 'a.dart';
@@ -36,7 +37,7 @@ void f() {
 
 ## Common fixes
 
-Se você pode tornar o setter público, faça isso:
+If you're able to make the setter public, then do so:
 
 ```dart
 class A {
@@ -44,5 +45,5 @@ class A {
 }
 ```
 
-Se você não pode tornar o setter público, encontre uma maneira diferente de
-implementar o código.
+If you aren't able to make the setter public, then find a different way to
+implement the code.

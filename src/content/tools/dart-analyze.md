@@ -4,52 +4,52 @@ description: Command-line tool for static analysis
 showToc: false
 ---
 
-O comando `dart analyze`
-executa a mesma [análise estática][static analysis]
-que você obtém quando usa um IDE ou editor que tem suporte a Dart.
+The `dart analyze` command
+performs the same [static analysis][]
+that you get when you use an IDE or editor that has Dart support.
 
 {% render 'tools/dart-tool-note.md' %}
 
-Aqui está um exemplo de como realizar a análise estática em todos os arquivos
-Dart no diretório atual:
+Here's an example of performing static analysis over all the Dart files
+under the current directory:
 
 ```console
 $ dart analyze
 ```
 
-Você pode customizar como o analisador trata avisos e problemas em nível de informação.
-Normalmente o analisador reporta falha quando encontra quaisquer erros ou avisos,
-mas não quando encontra problemas em nível de informação.
-Você pode customizar este comportamento usando as
-flags `--fatal-infos` e `--no-fatal-warnings`.
-Por exemplo, para fazer o analisador falhar quando encontrar qualquer problema use
-a flag `--fatal-infos`:
+You can customize how the analyzer treats warnings and info-level issues.
+Normally the analyzer reports failure when it finds any errors or warnings,
+but not when it finds info-level issues.
+You can customize this behavior using the
+`--fatal-infos` and `--no-fatal-warnings` flags.
+For example, to make the analyzer fail when any issue is 
+the `--fatal-infos` flag:
 
 ```console
 $ dart analyze --fatal-infos
 ```
 
-Você pode adicionar um diretório ou um argumento de arquivo único:
+You can add a directory or a single file argument:
 
 ```console
-$ dart analyze [<DIRETÓRIO> | <ARQUIVO_DART>]
+$ dart analyze [<DIRECTORY> | <DART_FILE>]
 ```
 
-Por exemplo, aqui está o comando para analisar o diretório `bin`:
+For example, here's the command to analyze the `bin` directory:
 
 ```console
 $ dart analyze bin
 ```
 
 :::version-note
-Antes do Dart 2.13, `dart analyze` suportava apenas argumentos de diretório.
+Before Dart 2.13, `dart analyze` supported only directory arguments.
 :::
 
-Para customizar a análise, use um arquivo de opções de análise
-ou comentários especiais no código-fonte Dart,
-como descrito em [Customizando análise estática][static analysis].
+To customize the analysis, use an analysis options file
+or special comments in Dart source code,
+as described in [Customizing static analysis][static analysis].
 
-Para informações sobre as opções de linha de comando, use a flag `--help`:
+For information on command-line options, use the `--help` flag:
 
 ```console
 $ dart analyze --help

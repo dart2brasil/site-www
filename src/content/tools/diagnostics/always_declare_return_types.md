@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: always_declare_return_types
-description: "Detalhes sobre o diagnóstico always_declare_return_types produzido pelo analisador do Dart."
+description: >-
+  Details about the always_declare_return_types
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -23,13 +24,13 @@ _The method '{0}' should have a return type but doesn't._
 
 ## Description
 
-O analisador produz este diagnóstico quando um método ou função não
-possui um tipo de retorno explícito.
+The analyzer produces this diagnostic when a method or function doesn't
+have an explicit return type.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a função `f`
-não tem um tipo de retorno:
+The following code produces this diagnostic because the function `f`
+doesn't have a return type:
 
 ```dart
 [!f!]() {}
@@ -37,7 +38,7 @@ não tem um tipo de retorno:
 
 ## Common fixes
 
-Adicione um tipo de retorno explícito:
+Add an explicit return type:
 
 ```dart
 void f() {}

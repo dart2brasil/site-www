@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: super_in_extension_type
-description: "Detalhes sobre o diagnóstico super_in_extension_type produzido pelo analisador Dart."
+description: >-
+  Details about the super_in_extension_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A keyword 'super' não pode ser usada em um extension type porque um extension type não possui uma superclasse._
+_The 'super' keyword can't be used in an extension type because an extension type doesn't have a superclass._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando `super` é usado em um membro
-de instância de um extension type. Extension types não possuem superclasses, então
-não há membro herdado que possa ser invocado.
+The analyzer produces this diagnostic when `super` is used in an instance
+member of an extension type. Extension types don't have superclasses, so
+there's no inherited member that could be invoked.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque:
+The following code produces this diagnostic because :
 
 ```dart
 extension type E(String s) {
@@ -26,9 +27,9 @@ extension type E(String s) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Substitua ou remova a invocação de `super`:
+Replace or remove the `super` invocation:
 
 ```dart
 extension type E(String s) {

@@ -1,78 +1,80 @@
 ---
 title: Using Google Cloud
 shortTitle: Google Cloud
-description: "Your Dart app can use many Google Cloud services: Firebase, Google Cloud Platform, and more."
+description: >-
+  Your Dart app can use many Google Cloud services:
+  Firebase, Google Cloud Platform, and more.
 ---
 
-Servidores Dart podem usar muitos
-[produtos do Google Cloud](https://cloud.google.com/products),
-frequentemente com a ajuda do Docker pré-empacotado
-[Imagens Oficiais para Dart](https://hub.docker.com/_/dart).
-Para informações sobre como criar servidores HTTP com Dart, veja a
-página [Escrever servidores HTTP](/tutorials/server/httpserver).
+Dart servers can use many
+[Google Cloud products](https://cloud.google.com/products),
+often with the help of the pre-packaged Docker
+[Official Images for Dart](https://hub.docker.com/_/dart).
+For information about creating HTTP servers with Dart, see the
+[Write HTTP servers page](/tutorials/server/httpserver).
 
-Para informações sobre outras APIs do Google (incluindo Firebase)
-que você pode querer usar a partir do código Dart,
-veja a página [APIs do Google](/resources/google-apis).
+For information about other Google APIs (including Firebase)
+that you might want to use from Dart code,
+see the [Google APIs page](/resources/google-apis).
 
-## Soluções recomendadas {:#recommended-solutions}
+## Recommended solutions
 
-Para executar Dart na nuvem, recomendamos usar soluções de computação serverless (sem servidor).
+To run Dart in the Cloud, we recommend using serverless computing solutions.
 
-### Cloud Run {:#cloud-run}
+### Cloud Run
 
-Você pode usar o suporte flexível a containers do Cloud Run,
-combinado com as imagens Docker do Dart, para executar código Dart no lado do servidor.
-Criar APIs escaláveis e de alto desempenho e aplicativos orientados a eventos
-são bons casos de uso para a plataforma serverless do Cloud Run,
-que libera os desenvolvedores do gerenciamento de infraestrutura.
+You can use Cloud Run's flexible container support,
+combined with Dart's Docker images, to run server-side Dart code.
+Creating scalable, high performance APIs and event-driven apps
+are good use cases for Cloud Run's serverless platform,
+which frees developers from managing infrastructure.
 
-Exemplos de servidores Dart implementados para serem executados no Cloud Run estão
-[no dart-lang/samples/repo][server examples].
+Examples of Dart servers implemented to run on Cloud Run are
+[in the dart-lang/samples/repo][server examples].
 
-Para mais informações sobre como usar o Cloud Run, veja a documentação para
-[construir e implantar um serviço em outras linguagens][cr].
+For more information about using Cloud Run, see the documentation for
+[building and deploying a service in other languages][cr].
 
-### Functions Framework para Dart {:#functions-framework-for-dart}
+### Functions Framework for Dart
 
-O Functions Framework (estrutura de funções) é uma estrutura FaaS (Função como Serviço)
-que facilita a escrita de funções Dart
-em vez de aplicativos de servidor para lidar com requisições web.
-Usando a estrutura, você pode criar funções que lidam com requisições HTTP
-e [CloudEvents][CloudEvents] e implantá-las no Google Cloud.
+The Functions Framework is a FaaS (Function as a Service) framework
+that makes it easy to write Dart functions
+instead of server applications for handling web requests.
+Using the framework, you can create functions that handle HTTP requests
+and [CloudEvents][] and deploy them to Google Cloud.
 
-O [Dart Functions Framework][Dart Functions Framework] é um projeto com suporte da comunidade.
+The [Dart Functions Framework][] is a community-supported project. 
 
-Para mais informações, veja [o README][functions docs].
+For more information, see [the README][functions docs].
 
-## Outras soluções {:#other-solutions}
+## Other solutions
 
-Dependendo das suas necessidades, você também pode considerar executar Dart nas
-seguintes plataformas de computação do Google Cloud.
+Depending on your needs, you may also want to consider running Dart on the
+following Google Cloud compute platforms.
 
-### Compute Engine {:#compute-engine}
+### Compute Engine
 
-Para executar código Dart no Compute Engine,
-use o suporte do Compute Engine para executar containers,
-combinado com as imagens Docker do Dart.
+To run Dart code on Compute Engine,
+use Compute Engine's support for running containers,
+combined with Dart's Docker images.
 
-Para mais informações, veja a documentação do Compute Engine para
-[usar containers de software][ce].
+For more information, see the Compute Engine documentation for
+[using software containers][ce].
 
-### Kubernetes {:#kubernetes}
+### Kubernetes
 
-Para executar Dart em clusters de instâncias do Compute Engine,
-use o Google Kubernetes Engine (GKE).
+To run Dart on clusters of Compute Engine instances,
+use Google Kubernetes Engine (GKE).
 
-Para mais informações, veja a [visão geral do GKE][GKE overview].
+For more information, see the [GKE overview][].
 
-### App Engine {:#app-engine}
+### App Engine
 
-O suporte do [App Engine][App Engine] para Dart está incompleto e requer o
-[ambiente flexível do App Engine][App Engine flexible environment], que não
-[escala automaticamente para zero instâncias][scale to zero], então recomendamos
-o **Cloud Run** para novos códigos Dart do lado do servidor.
-Se você _quiser_ usar o App Engine, considere usar o pacote [`appengine`][`appengine` package].
+[App Engine][] support for Dart is incomplete and requires the
+[App Engine flexible environment][], which does not
+[autoscale to zero instances][scale to zero], so we recommend **Cloud Run** for new
+server-side Dart code.
+If you _want_ to use App Engine, consider using the [`appengine` package][].
 
 
 [App Engine]: https://cloud.google.com/appengine

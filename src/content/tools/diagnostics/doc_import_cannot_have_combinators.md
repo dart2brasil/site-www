@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: doc_import_cannot_have_combinators
-description: "Detalhes sobre o diagnóstico doc_import_cannot_have_combinators produzido pelo analisador Dart."
+description: >-
+  Details about the doc_import_cannot_have_combinators
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Doc imports não podem ter combinators show ou hide._
+_Doc imports can't have show or hide combinators._
 
 ## Description
 
-O analisador produz este diagnóstico quando um documentation import tem um
-ou mais combinators `hide` ou `show`.
+The analyzer produces this diagnostic when a documentation import has one
+or more `hide` or `show` combinators.
 
-Usar combinators não é suportado para documentation imports.
+Using combinators isn't supported for documentation imports.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o documentation
-import tem um combinator `show`:
+The following code produces this diagnostic because the documentation
+import has a `show` combinator:
 
 ```dart
 /// @docImport 'package:meta/meta.dart' [!show max!];
@@ -27,7 +28,7 @@ library;
 
 ## Common fixes
 
-Remova os combinators `hide` e `show`:
+Remove the `hide` and `show` combinators:
 
 ```dart
 /// @docImport 'package:meta/meta.dart';

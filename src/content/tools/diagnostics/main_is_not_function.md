@@ -1,22 +1,23 @@
 ---
 title: main_is_not_function
-description: "Detalhes sobre o diagnóstico main_is_not_function produzido pelo analisador Dart."
+description: >-
+  Details about the main_is_not_function
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_A declaração chamada 'main' deve ser uma função._
+_The declaration named 'main' must be a function._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma biblioteca contém uma declaração
-do nome `main` que não é a declaração de uma função de nível superior.
+The analyzer produces this diagnostic when a library contains a declaration
+of the name `main` that isn't the declaration of a top-level function.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o nome `main` está
-sendo usado para declarar uma variável de nível superior:
+The following code produces this diagnostic because the name `main` is
+being used to declare a top-level variable:
 
 ```dart
 var [!main!] = 3;
@@ -24,7 +25,7 @@ var [!main!] = 3;
 
 ## Common fixes
 
-Use um nome diferente para a declaração:
+Use a different name for the declaration:
 
 ```dart
 var mainIndex = 3;

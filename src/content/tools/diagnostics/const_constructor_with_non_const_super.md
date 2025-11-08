@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: const_constructor_with_non_const_super
-description: "Detalhes sobre o diagnóstico const_constructor_with_non_const_super produzido pelo analisador do Dart."
+description: >-
+  Details about the const_constructor_with_non_const_super
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _A constant constructor can't call a non-constant super constructor of '{0}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um constructor marcado como
-`const` invoca um constructor de sua superclasse que não está marcado como
+The analyzer produces this diagnostic when a constructor that is marked as
+`const` invokes a constructor from its superclass that isn't marked as
 `const`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o constructor `const`
-em `B` invoca o constructor `nonConst` da classe `A`, e o
-constructor da superclasse não é um constructor `const`:
+The following code produces this diagnostic because the `const` constructor
+in `B` invokes the constructor `nonConst` from the class `A`, and the
+superclass constructor isn't a `const` constructor:
 
 ```dart
 class A {
@@ -31,11 +32,11 @@ class B extends A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se não é essencial invocar o constructor da superclasse que está
-sendo atualmente invocado, então invoque um constructor constante da
-superclasse:
+If it isn't essential to invoke the superclass constructor that is
+currently being invoked, then invoke a constant constructor from the
+superclass:
 
 ```dart
 class A {
@@ -48,8 +49,8 @@ class B extends A {
 }
 ```
 
-Se é essencial que o constructor atual seja invocado e você pode
-modificá-lo, então adicione `const` ao constructor na superclasse:
+If it's essential that the current constructor be invoked and if you can
+modify it, then add `const` to the constructor in the superclass:
 
 ```dart
 class A {
@@ -62,8 +63,8 @@ class B extends A {
 }
 ```
 
-Se é essencial que o constructor atual seja invocado e você não pode
-modificá-lo, então remova `const` do constructor na subclasse:
+If it's essential that the current constructor be invoked and you can't
+modify it, then remove `const` from the constructor in the subclass:
 
 ```dart
 class A {

@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: inference_failure_on_uninitialized_variable
-description: "Detalhes sobre o diagnóstico inference_failure_on_uninitialized_variable produzido pelo analisador Dart."
+description: >-
+  Details about the inference_failure_on_uninitialized_variable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo de {0} não pode ser inferido sem um tipo ou inicializador._
+_The type of {0} can't be inferred without either a type or initializer._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando:
-- a opção de linguagem `strict-inference` está habilitada no arquivo de opções de análise,
-- a declaração de uma variável não possui tipo, e
-- o tipo da variável não pode ser inferido.
+The analyzer produces this diagnostic when:
+- the language option `strict-inference` is enabled in the analysis options file,
+- the declaration of a variable has no type, and
+- the type of the variable can't be inferred.
 
-## Exemplo
+## Example
 
-Dado um arquivo de opções de análise contendo o seguinte:
+Given an analysis options file containing the following:
 
 ```yaml
 analyzer:
@@ -25,17 +26,17 @@ analyzer:
     strict-inference: true
 ```
 
-O código a seguir produz este diagnóstico porque a variável `s`
-não possui um tipo explícito e o tipo não pode ser inferido porque
-não há um inicializador:
+The following code produces this diagnostic because the variable `s`
+doesn't have an explicit type and the type can't be inferred because
+there's no initializer:
 
 ```dart
 var [!s!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione um tipo explícito:
+Add an explicit type:
 
 ```dart
 String? s;

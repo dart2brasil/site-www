@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: on_repeated
-description: "Detalhes sobre o diagnóstico on_repeated produzido pelo analisador do Dart."
+description: >-
+  Details about the on_repeated
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo '{0}' pode ser incluído nas restrições de superclasse apenas uma vez._
+_The type '{0}' can be included in the superclass constraints only once._
 
 ## Description
 
-O analisador produz este diagnóstico quando o mesmo tipo é listado nas
-restrições de superclasse de um mixin múltiplas vezes.
+The analyzer produces this diagnostic when the same type is listed in the
+superclass constraints of a mixin multiple times.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `A` é incluído duas vezes
-nas restrições de superclasse para `M`:
+The following code produces this diagnostic because `A` is included twice
+in the superclass constraints for `M`:
 
 ```dart
 mixin M on A, [!A!] {
@@ -28,8 +29,8 @@ class B {}
 
 ## Common fixes
 
-Se um tipo diferente deve ser incluído nas restrições de superclasse, então
-substitua uma das ocorrências pelo outro tipo:
+If a different type should be included in the superclass constraints, then
+replace one of the occurrences with the other type:
 
 ```dart
 mixin M on A, B {
@@ -39,7 +40,7 @@ class A {}
 class B {}
 ```
 
-Se nenhum outro tipo foi pretendido, então remova o nome de tipo repetido:
+If no other type was intended, then remove the repeated type name:
 
 ```dart
 mixin M on A {

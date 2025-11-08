@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: non_constant_map_element
-description: "Detalhes sobre o diagnóstico non_constant_map_element produzido pelo analisador do Dart."
+description: >-
+  Details about the non_constant_map_element
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,21 +11,21 @@ _The elements in a const map literal must be constant._
 
 ## Description
 
-O analisador produz este diagnóstico quando um elemento `if` ou um elemento
-spread em um map constante não é um elemento constante.
+The analyzer produces this diagnostic when an `if` element or a spread
+element in a constant map isn't a constant element.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque está tentando
-fazer spread de um map não constante:
+The following code produces this diagnostic because it's attempting to
+spread a non-constant map:
 
 ```dart
 var notConst = <int, int>{};
 var map = const <int, int>{...[!notConst!]};
 ```
 
-Similarmente, o código a seguir produz este diagnóstico porque a
-condição no elemento `if` não é uma expressão constante:
+Similarly, the following code produces this diagnostic because the
+condition in the `if` element isn't a constant expression:
 
 ```dart
 bool notConst = true;
@@ -33,16 +34,17 @@ var map = const <int, int>{if ([!notConst!]) 1 : 2};
 
 ## Common fixes
 
-Se o map precisa ser um map constante, então torne os elementos constantes.
-No exemplo de spread, você pode fazer isso tornando a coleção sendo
-espalhada uma constante:
+If the map needs to be a constant map, then make the elements constants.
+In the spread example, you might do that by making the collection being
+spread a constant:
 
 ```dart
 const notConst = <int, int>{};
 var map = const <int, int>{...notConst};
 ```
 
-Se o map não precisa ser um map constante, então remova a keyword `const`:
+If the map doesn't need to be a constant map, then remove the `const`
+keyword:
 
 ```dart
 bool notConst = true;

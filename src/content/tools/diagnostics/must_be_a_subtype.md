@@ -1,30 +1,31 @@
 ---
-ia-translate: true
 title: must_be_a_subtype
-description: "Detalhes sobre o diagnóstico must_be_a_subtype produzido pelo analisador Dart."
+description: >-
+  Details about the must_be_a_subtype
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _The type '{0}' must be a subtype of '{1}' for '{2}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico em dois casos:
-- Numa invocação de `Pointer.fromFunction` ou um construtor
-  `NativeCallable` onde o argumento de tipo
-  (explícito ou inferido) não é um supertipo do tipo da
-  função passada como primeiro argumento do método.
-- Numa invocação de `DynamicLibrary.lookupFunction` onde o primeiro argumento de tipo
-  não é um supertipo do segundo argumento de tipo.
+The analyzer produces this diagnostic in two cases:
+- In an invocation of `Pointer.fromFunction`, or a
+  `NativeCallable` constructor where the type argument
+  (whether explicit or inferred) isn't a supertype of the type of the
+  function passed as the first argument to the method.
+- In an invocation of `DynamicLibrary.lookupFunction` where the first type
+  argument isn't a supertype of the second type argument.
 
-Para mais informações sobre FFI, veja [C interop usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o tipo da
-função `f` (`String Function(int)`) não é um subtipo do argumento de tipo
-`T` (`Int8 Function(Int8)`):
+The following code produces this diagnostic because the type of the
+function `f` (`String Function(int)`) isn't a subtype of the type
+argument `T` (`Int8 Function(Int8)`):
 
 ```dart
 import 'dart:ffi';
@@ -38,9 +39,9 @@ void g() {
 }
 ```
 
-## Soluções comuns
+## Common fixes
 
-Se a função estiver correta, então altere o argumento de tipo para corresponder:
+If the function is correct, then change the type argument to match:
 
 ```dart
 import 'dart:ffi';
@@ -54,7 +55,7 @@ void g() {
 }
 ```
 
-Se o argumento de tipo estiver correto, então altere a função para corresponder:
+If the type argument is correct, then change the function to match:
 
 ```dart
 import 'dart:ffi';

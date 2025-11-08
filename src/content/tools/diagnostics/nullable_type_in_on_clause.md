@@ -1,40 +1,41 @@
 ---
-ia-translate: true
 title: nullable_type_in_on_clause
-description: "Detalhes sobre o diagnóstico nullable_type_in_on_clause produzido pelo analisador Dart."
+description: >-
+  Details about the nullable_type_in_on_clause
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um mixin não pode ter um tipo nulo como uma restrição de superclasse._
+_A mixin can't have a nullable type as a superclass constraint._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração de mixin usa uma cláusula `on`
-para especificar uma restrição de superclasse, e a classe que é especificada
-é seguida por um `?`.
+The analyzer produces this diagnostic when a mixin declaration uses an `on`
+clause to specify a superclass constraint, and the class that's specified
+is followed by a `?`.
 
-Não é válido especificar uma restrição de superclasse nula porque fazer isso
-não teria nenhum significado; não alteraria a interface sendo dependida
-pelo mixin contendo a cláusula `on`.
+It isn't valid to specify a nullable superclass constraint because doing so
+would have no meaning; it wouldn't change the interface being depended on
+by the mixin containing the `on` clause.
 
-Note, porém, que _é_ válido usar um tipo nulo como um argumento de tipo
-para a restrição de superclasse, como `mixin A on B<C?> {}`.
+Note, however, that it _is_ valid to use a nullable type as a type argument
+to the superclass constraint, such as `mixin A on B<C?> {}`.
 
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `A?` é um tipo nulo
-e tipos nulos não podem ser usados em uma cláusula `on`:
+The following code produces this diagnostic because `A?` is a nullable type
+and nullable types can't be used in an `on` clause:
 
 ```dart
 class C {}
 mixin M on [!C?!] {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova o ponto de interrogação do tipo:
+Remove the question mark from the type:
 
 ```dart
 class C {}

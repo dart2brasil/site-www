@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: unused_catch_stack
-description: "Detalhes sobre o diagnóstico unused_catch_stack produzido pelo analisador Dart."
+description: >-
+  Details about the unused_catch_stack
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A variável de stack trace '{0}' não é usada e pode ser removida._
+_The stack trace variable '{0}' isn't used and can be removed._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o parâmetro de stack trace em uma
-cláusula `catch` não é referenciado dentro do corpo do bloco `catch`.
+The analyzer produces this diagnostic when the stack trace parameter in a
+`catch` clause isn't referenced within the body of the `catch` block.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `stackTrace` não é
-referenciado:
+The following code produces this diagnostic because `stackTrace` isn't
+referenced:
 
 ```dart
 void f() {
@@ -28,10 +29,10 @@ void f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você precisa referenciar o parâmetro de stack trace, então adicione uma referência a
-ele. Caso contrário, remova-o:
+If you need to reference the stack trace parameter, then add a reference to
+it. Otherwise, remove it:
 
 ```dart
 void f() {

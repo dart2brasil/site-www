@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: invalid_annotation
-description: "Detalhes sobre o diagnóstico invalid_annotation produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_annotation
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Annotation deve ser uma referência a uma variável const ou uma invocação de construtor const._
+_Annotation must be either a const variable reference or const constructor invocation._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma annotation é encontrada que
-está usando algo que não é nem uma variável marcada como `const` nem a
-invocação de um construtor `const`.
+The analyzer produces this diagnostic when an annotation is found that is
+using something that is neither a variable marked as `const` or the
+invocation of a `const` constructor.
 
-Getters não podem ser usados como annotations.
+Getters can't be used as annotations.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque a variável `v` não é uma
-variável `const`:
+The following code produces this diagnostic because the variable `v` isn't
+a `const` variable:
 
 ```dart
 var v = 0;
@@ -29,7 +30,7 @@ void f() {
 }
 ```
 
-O código a seguir produz este diagnóstico porque `f` não é uma variável:
+The following code produces this diagnostic because `f` isn't a variable:
 
 ```dart
 [!@f!]
@@ -37,7 +38,8 @@ void f() {
 }
 ```
 
-O código a seguir produz este diagnóstico porque `f` não é um construtor:
+The following code produces this diagnostic because `f` isn't a
+constructor:
 
 ```dart
 [!@f()!]
@@ -45,7 +47,7 @@ void f() {
 }
 ```
 
-O código a seguir produz este diagnóstico porque `g` é um getter:
+The following code produces this diagnostic because `g` is a getter:
 
 ```dart
 [!@g!]
@@ -54,8 +56,8 @@ int get g => 0;
 
 ## Common fixes
 
-Se a annotation estiver referenciando uma variável que não é um construtor
-`const`, adicione a keyword `const` à declaração da variável:
+If the annotation is referencing a variable that isn't a `const`
+constructor, add the keyword `const` to the variable's declaration:
 
 ```dart
 const v = 0;
@@ -65,7 +67,7 @@ void f() {
 }
 ```
 
-Se a annotation não estiver referenciando uma variável, remova-a:
+If the annotation isn't referencing a variable, then remove it:
 
 ```dart
 int v = 0;

@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: duplicate_pattern_field
-description: "Detalhes sobre o diagnóstico duplicate_pattern_field produzido pelo analisador Dart."
+description: >-
+  Details about the duplicate_pattern_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O campo '{0}' já foi correspondido neste pattern._
+_The field '{0}' is already matched in this pattern._
 
 ## Description
 
-O analisador produz este diagnóstico quando um pattern de record corresponde ao
-mesmo campo mais de uma vez, ou quando um pattern de objeto corresponde ao mesmo
-getter mais de uma vez.
+The analyzer produces this diagnostic when a record pattern matches the
+same field more than once, or when an object pattern matches the same
+getter more than once.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque o campo de record `a`
-é correspondido duas vezes no mesmo pattern de record:
+The following code produces this diagnostic because the record field `a`
+is matched twice in the same record pattern:
 
 ```dart
 void f(({int a, int b}) r) {
@@ -28,8 +29,8 @@ void f(({int a, int b}) r) {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o getter `f` é
-correspondido duas vezes no mesmo pattern de objeto:
+The following code produces this diagnostic because the getter `f` is
+matched twice in the same object pattern:
 
 ```dart
 void f(Object o) {
@@ -45,8 +46,8 @@ class C {
 
 ## Common fixes
 
-Se o pattern deve corresponder a mais de um valor do campo duplicado,
-então use um pattern logical-or:
+If the pattern should match for more than one value of the duplicated
+field, then use a logical-or pattern:
 
 ```dart
 void f(({int a, int b}) r) {
@@ -57,8 +58,8 @@ void f(({int a, int b}) r) {
 }
 ```
 
-Se o pattern deve corresponder a múltiplos campos, então mude o nome
-de um dos campos:
+If the pattern should match against multiple fields, then change the name
+of one of the fields:
 
 ```dart
 void f(({int a, int b}) r) {

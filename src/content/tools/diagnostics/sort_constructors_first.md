@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: sort_constructors_first
-description: "Detalhes sobre o diagnóstico sort_constructors_first produzido pelo analisador do Dart."
+description: >-
+  Details about the sort_constructors_first
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Declarações de construtores devem vir antes de declarações não-construtoras._
+_Constructor declarations should be before non-constructor declarations._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração de construtor é
-precedida por uma ou mais declarações não-construtoras.
+The analyzer produces this diagnostic when a constructor declaration is
+preceded by one or more non-constructor declarations.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o construtor para
-`C` aparece depois do método `m`:
+The following code produces this diagnostic because the constructor for
+`C` appears after the method `m`:
 
 ```dart
 class C {
@@ -37,9 +38,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Mova todas as declarações de construtores antes de quaisquer outras declarações:
+Move all of the constructor declarations before any other declarations:
 
 ```dart
 class C {
