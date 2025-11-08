@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: avoid_type_to_string
 description: >-
-  Details about the avoid_type_to_string
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico avoid_type_to_string
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Using 'toString' on a 'Type' is not safe in production code._
+_Usar 'toString' em um 'Type' não é seguro em código de produção._
 
 ## Description
 
-The analyzer produces this diagnostic when the method `toString` is
-invoked on a value whose static type is `Type`.
+O analisador produz este diagnóstico quando o método `toString` é
+invocado em um valor cujo tipo estático é `Type`.
 
 ## Example
 
-The following code produces this diagnostic because the method `toString`
-is invoked on the `Type` returned by `runtimeType`:
+O código a seguir produz este diagnóstico porque o método `toString`
+é invocado no `Type` retornado por `runtimeType`:
 
 ```dart
 bool isC(Object o) => o.runtimeType.[!toString!]() == 'C';
@@ -38,8 +39,8 @@ class C {}
 
 ## Common fixes
 
-If it's essential that the type is exactly the same, then use an explicit
-comparison:
+Se é essencial que o tipo seja exatamente o mesmo, então use uma
+comparação explícita:
 
 ```dart
 bool isC(Object o) => o.runtimeType == C;
@@ -47,8 +48,8 @@ bool isC(Object o) => o.runtimeType == C;
 class C {}
 ```
 
-If it's alright for instances of subtypes of the type to return `true`,
-then use a type check:
+Se não há problema para instâncias de subtipos do tipo retornarem `true`,
+então use uma verificação de tipo:
 
 ```dart
 bool isC(Object o) => o is C;
