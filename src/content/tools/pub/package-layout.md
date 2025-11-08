@@ -1,26 +1,27 @@
 ---
-title: Package layout conventions
-breadcrumb: Package layout
+title: Convenções de layout de pacotes
+breadcrumb: Layout de pacotes
 description: >-
-  Learn more about the directory structure used by
-  Dart's package management tool, pub.
+  Saiba mais sobre a estrutura de diretórios usada pela
+  ferramenta de gerenciamento de pacotes do Dart, pub.
+ia-translate: true
 ---
 
-When you build a [pub package](/tools/pub/packages),
-we encourage you to follow the conventions that this page describes.
-They describe how you organize the files and directories within your
-package, and how to name things.
+Quando você constrói um [pacote pub](/tools/pub/packages),
+nós encorajamos você a seguir as convenções que esta página descreve.
+Elas descrevem como você organiza os arquivos e diretórios dentro do seu
+pacote, e como nomear as coisas.
 
 :::flutter-note
-Flutter apps can use custom directories for their assets.
-For details, see
+Apps Flutter podem usar diretórios personalizados para seus assets.
+Para detalhes, veja
 [Adding assets and images]({{site.flutter-docs}}/development/ui/assets-and-images)
-on the [Flutter website.]({{site.flutter-docs}})
+no [site Flutter.]({{site.flutter-docs}})
 :::
 
-Here's what a complete package (named `enchilada`)
-that uses every corner of these guidelines
-might look like:
+Aqui está como um pacote completo (chamado `enchilada`)
+que usa todos os aspectos dessas diretrizes
+pode parecer:
 
 ```plaintext
 enchilada/
@@ -62,27 +63,27 @@ enchilada/
     style.css
 ```
 
-\* The `.dart_tool/` directory exists after you've run `dart pub get`.
-   Don't check it into source control.
-   To learn more, see 
-   [Project specific caching for tools](#project-specific-caching-for-tools).
+\* O diretório `.dart_tool/` existe após você executar `dart pub get`.
+   Não faça check-in dele no controle de versão.
+   Para saber mais, veja
+   [Caching específico de projeto para ferramentas](#project-specific-caching-for-tools).
 
-\** The [`pubspec_overrides.yaml`][] file,
-    if present, overrides certain aspects of `pubspec.yaml`.
-    Usually you don't want to check it into source control.
+\** O arquivo [`pubspec_overrides.yaml`][],
+    se presente, sobrescreve certos aspectos de `pubspec.yaml`.
+    Geralmente você não quer fazer check-in dele no controle de versão.
 
-\*** The `pubspec.lock` file exists after you've run `dart pub get`.
-    Leave it out of source control unless your package is an
-    [application package](/resources/glossary#application-package).
+\*** O arquivo `pubspec.lock` existe após você executar `dart pub get`.
+    Deixe-o fora do controle de versão a menos que seu pacote seja um
+    [pacote de aplicação](/resources/glossary#application-package).
 
-\**** The `doc/api` directory exists locally after you've run
+\**** O diretório `doc/api` existe localmente após você executar
      [`dart doc`](/tools/dart-doc).
-     Don't check the `api` directory into source control.
+     Não faça check-in do diretório `api` no controle de versão.
 
 
 [`pubspec_overrides.yaml`]: /tools/pub/dependencies#pubspec-overrides
 
-## The pubspec
+## O pubspec
 
 ```plaintext
 enchilada/
@@ -90,19 +91,19 @@ enchilada/
   pubspec.lock
 ```
 
-Every package has a [_pubspec_](/tools/pub/pubspec), a file named
-`pubspec.yaml`, in the root directory of the package. That's what *makes* it a
-package.
+Todo pacote tem um [_pubspec_](/tools/pub/pubspec), um arquivo chamado
+`pubspec.yaml`, no diretório raiz do pacote. É isso que *faz* dele um
+pacote.
 
-Running [`dart pub get`](/tools/pub/cmd/pub-get),
-[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), or
-[`dart pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package
-creates a **lockfile**, named `pubspec.lock`. 
-If your package is an 
-[application package](/resources/glossary#application-package), 
-check the lockfile into source control. Otherwise, don't.
+Executar [`dart pub get`](/tools/pub/cmd/pub-get),
+[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), ou
+[`dart pub downgrade`](/tools/pub/cmd/pub-downgrade) no pacote
+cria um **lockfile**, chamado `pubspec.lock`.
+Se o seu pacote é um
+[pacote de aplicação](/resources/glossary#application-package),
+faça check-in do lockfile no controle de versão. Caso contrário, não.
 
-For more information, see the [pubspec page](/tools/pub/pubspec).
+Para mais informações, veja a [página do pubspec](/tools/pub/pubspec).
 
 ## LICENSE
 
@@ -111,10 +112,10 @@ enchilada/
   LICENSE
 ```
 
-If you're publishing your package, include a license file named `LICENSE`.
-We recommend using an [OSI-approved license](https://opensource.org/licenses)
-such as [BSD-3-Clause,](https://opensource.org/licenses/BSD-3-Clause)
-so that others can reuse your work.
+Se você está publicando seu pacote, inclua um arquivo de licença chamado `LICENSE`.
+Recomendamos usar uma [licença aprovada pela OSI](https://opensource.org/licenses)
+como [BSD-3-Clause,](https://opensource.org/licenses/BSD-3-Clause)
+para que outros possam reutilizar seu trabalho.
 
 ## README.md
 
@@ -123,14 +124,14 @@ enchilada/
   README.md
 ```
 
-One file that's very common in open source is a _README_ file that
-describes the project. This is especially important in pub. When you upload
-to the [pub.dev site,]({{site.pub}}) your `README.md` file
-is shown—rendered as [Markdown][]—on the page for your package. 
-This is the perfect place to introduce people to your code.
+Um arquivo muito comum em código aberto é um arquivo _README_ que
+descreve o projeto. Isso é especialmente importante no pub. Quando você faz upload
+para o [site pub.dev,]({{site.pub}}) seu arquivo `README.md`
+é mostrado—renderizado como [Markdown][]—na página do seu pacote.
+Este é o lugar perfeito para apresentar as pessoas ao seu código.
 
-For guidance on how to write a great README, see
-[Writing package pages](/tools/pub/writing-package-pages).
+Para orientação sobre como escrever um ótimo README, veja
+[Escrevendo páginas de pacotes](/tools/pub/writing-package-pages).
 
 <a id="changelogmd"></a>
 ## CHANGELOG.md {:#changelog}
@@ -140,28 +141,28 @@ enchilada/
   CHANGELOG.md
 ```
 
-Include a `CHANGELOG.md` file that has a section for
-each release of your package,
-with notes to help users of your package upgrade.
-Users of your package often review the changelog
-to discover bug fixes and new features,
-or to determine how much effort it will take to upgrade
-to the latest version of your package.
+Inclua um arquivo `CHANGELOG.md` que tenha uma seção para
+cada lançamento do seu pacote,
+com notas para ajudar os usuários do seu pacote a atualizar.
+Os usuários do seu pacote frequentemente revisam o changelog
+para descobrir correções de bugs e novos recursos,
+ou para determinar quanto esforço será necessário para atualizar
+para a versão mais recente do seu pacote.
 
-To support tools that parse `CHANGELOG.md`,
-use the following format:
+Para suportar ferramentas que analisam `CHANGELOG.md`,
+use o seguinte formato:
 
-* Each version has its own section with a heading.
-* The version headings are either all level 1 or all level 2.
-* The version heading text contains a package version number,
-  optionally prefixed with "v".
+* Cada versão tem sua própria seção com um cabeçalho.
+* Os cabeçalhos de versão são todos de nível 1 ou todos de nível 2.
+* O texto do cabeçalho de versão contém um número de versão do pacote,
+  opcionalmente prefixado com "v".
 
-When you upload your package to the [pub.dev site,]({{site.pub}})
-your package's `CHANGELOG.md` file (if any)
-appears in the **Changelog** tab, rendered as [Markdown.][Markdown]
+Quando você faz upload do seu pacote para o [site pub.dev,]({{site.pub}})
+o arquivo `CHANGELOG.md` do seu pacote (se houver)
+aparece na aba **Changelog**, renderizado como [Markdown.][Markdown]
 
-Here's an example of a `CHANGELOG.md` file.
-As the example shows, you can add subsections.
+Aqui está um exemplo de um arquivo `CHANGELOG.md`.
+Como o exemplo mostra, você pode adicionar subseções.
 
 ```markdown
 # 1.0.1
@@ -187,15 +188,15 @@ Change all calls to `sayHello()` to instead be to `sayHi()`.
 ```
 
 
-## Public directories
+## Diretórios públicos
 
-Two directories in your package are public to other packages: `lib` and
-`bin`. You place [public libraries](#public-libraries) in `lib` and
-[public tools](#public-tools) in `bin`.
+Dois diretórios no seu pacote são públicos para outros pacotes: `lib` e
+`bin`. Você coloca [bibliotecas públicas](#public-libraries) em `lib` e
+[ferramentas públicas](#public-tools) em `bin`.
 
-### Public libraries
+### Bibliotecas públicas
 
-The following directory structure shows the `lib` portion of enchilada:
+A seguinte estrutura de diretórios mostra a porção `lib` de enchilada:
 
 ```plaintext
 enchilada/
@@ -204,26 +205,26 @@ enchilada/
     tortilla.dart
 ```
 
-Many [packages](/resources/glossary#package)
-define Dart libraries that other packages can import and use.
-These public Dart library files go inside a directory called `lib`.
+Muitos [pacotes](/resources/glossary#package)
+definem bibliotecas Dart que outros pacotes podem importar e usar.
+Esses arquivos de biblioteca Dart públicos vão dentro de um diretório chamado `lib`.
 
-Most packages define a single library that users can import. In that case,
-its name should usually be the same as the name of the package, like
-`enchilada.dart` in the example here. But you can also define other
-libraries with whatever names make sense for your package.
+A maioria dos pacotes define uma única biblioteca que os usuários podem importar. Nesse caso,
+seu nome geralmente deve ser o mesmo que o nome do pacote, como
+`enchilada.dart` no exemplo aqui. Mas você também pode definir outras
+bibliotecas com quaisquer nomes que façam sentido para o seu pacote.
 
-When you do, users can import these libraries using the name of the
-package and the library file, like so:
+Quando você faz isso, os usuários podem importar essas bibliotecas usando o nome do
+pacote e o arquivo da biblioteca, assim:
 
 ```dart
 import 'package:enchilada/enchilada.dart';
 import 'package:enchilada/tortilla.dart';
 ```
 
-If you want to organize your public libraries, you can also create
-subdirectories inside `lib`. If you do that, users will specify that path
-when they import it. Say you have the following file hierarchy:
+Se você quiser organizar suas bibliotecas públicas, você também pode criar
+subdiretórios dentro de `lib`. Se você fizer isso, os usuários especificarão esse caminho
+quando importarem. Digamos que você tenha a seguinte hierarquia de arquivos:
 
 ```plaintext
 enchilada/
@@ -233,50 +234,50 @@ enchilada/
         olives.dart
 ```
 
-Users import `olives.dart` as follows:
+Os usuários importam `olives.dart` da seguinte forma:
 
 ```dart
 import 'package:enchilada/some/path/olives.dart';
 ```
 
-Note that only *libraries* should be in `lib`.
-*Entrypoints*—Dart scripts with a `main()` function—cannot
-go in `lib`. If you place a Dart script inside `lib`,
-you will discover that any `package:` imports it contains don't
-resolve. Instead, your entrypoints should go in the appropriate
-[entrypoint directory](/resources/glossary#entrypoint-directory).
+Note que apenas *bibliotecas* devem estar em `lib`.
+*Entrypoints*—scripts Dart com uma função `main()`—não podem
+ir em `lib`. Se você colocar um script Dart dentro de `lib`,
+você descobrirá que quaisquer importações `package:` que ele contém não
+resolvem. Em vez disso, seus entrypoints devem ir no
+[diretório de entrypoint](/resources/glossary#entrypoint-directory) apropriado.
 
-:::note Tip for web apps
-For the best performance when developing web apps,
-put [implementation files](#implementation-files) under `/lib/src`,
-instead of elsewhere under `/lib`.
-Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+:::note Dica para apps web
+Para o melhor desempenho ao desenvolver apps web,
+coloque [arquivos de implementação](#implementation-files) em `/lib/src`,
+em vez de em outro lugar em `/lib`.
+Além disso, evite importações de <code>package:<em>package_name</em>/src/...</code>.
 :::
 
-For more information on packages, see
-[Creating packages](/tools/pub/create-packages).
+Para mais informações sobre pacotes, veja
+[Criando pacotes](/tools/pub/create-packages).
 
-### Public tools
+### Ferramentas públicas
 
-Dart scripts placed inside of the `bin` directory are public. If you're
-inside the directory of a package, you can use
-[`dart run`](/tools/dart-run) to run scripts from the `bin`
-directories of any other package the package depends on. From _any_
-directory, you can [run scripts][]
-from packages that you have activated using
+Scripts Dart colocados dentro do diretório `bin` são públicos. Se você está
+dentro do diretório de um pacote, você pode usar
+[`dart run`](/tools/dart-run) para executar scripts dos diretórios `bin`
+de qualquer outro pacote do qual o pacote depende. De _qualquer_
+diretório, você pode [executar scripts][run scripts]
+de pacotes que você ativou usando
 [`dart pub global activate`][activate].
 
 [run scripts]: /tools/pub/cmd/pub-global#running-a-script
 [activate]: /tools/pub/cmd/pub-global#activating-a-package
 
-If you intend for your package to be depended on,
-and you want your scripts to be private to your package, place them
-in the top-level `tool` directory.
-If you don't intend for your package to be depended on, you can leave your
-scripts in `bin`.
+Se você pretende que seu pacote seja dependido,
+e quer que seus scripts sejam privados ao seu pacote, coloque-os
+no diretório de nível superior `tool`.
+Se você não pretende que seu pacote seja dependido, você pode deixar seus
+scripts em `bin`.
 
 
-## Public assets
+## Assets públicos
 
 ```plaintext
 enchilada/
@@ -284,16 +285,16 @@ enchilada/
     guacamole.css
 ```
 
-While most packages exist to let you reuse Dart code, you can also
-reuse other kinds of content. For example, a package for
-[Bootstrap](https://getbootstrap.com/) might include a number of CSS files
-for consumers of the package to use.
+Embora a maioria dos pacotes exista para permitir que você reutilize código Dart, você também pode
+reutilizar outros tipos de conteúdo. Por exemplo, um pacote para
+[Bootstrap](https://getbootstrap.com/) pode incluir vários arquivos CSS
+para os consumidores do pacote usarem.
 
-These go in the top-level `lib` directory. You can put any kind of file
-in there and organize it with subdirectories however you like.
+Esses vão no diretório de nível superior `lib`. Você pode colocar qualquer tipo de arquivo
+lá e organizá-lo com subdiretórios como quiser.
 
 
-## Implementation files
+## Arquivos de implementação
 
 ```plaintext
 enchilada/
@@ -303,31 +304,31 @@ enchilada/
       queso.dart
 ```
 
-The libraries inside `lib` are publicly visible: other packages are free to
-import them. But much of a package's code is internal implementation libraries
-that should only be imported and used by the package itself. Those go inside a
-subdirectory of `lib` called `src`. You can create subdirectories in there if
-it helps you organize things.
+As bibliotecas dentro de `lib` são publicamente visíveis: outros pacotes são livres para
+importá-las. Mas muito do código de um pacote são bibliotecas de implementação internas
+que devem ser importadas e usadas apenas pelo próprio pacote. Essas vão dentro de um
+subdiretório de `lib` chamado `src`. Você pode criar subdiretórios lá se
+isso ajudar a organizar as coisas.
 
-You are free to import libraries that live in `lib/src` from within other Dart
-code in the *same* package (like other libraries in `lib`, scripts in `bin`, and
-tests) but you should never import from another package's `lib/src` directory.
-Those files are not part of the package's public API, and they might change in
-ways that could break your code.
+Você é livre para importar bibliotecas que vivem em `lib/src` de dentro de outro código Dart
+no *mesmo* pacote (como outras bibliotecas em `lib`, scripts em `bin`, e
+testes) mas você nunca deve importar do diretório `lib/src` de outro pacote.
+Esses arquivos não fazem parte da API pública do pacote, e eles podem mudar de
+formas que poderiam quebrar seu código.
 
-How you import libraries from within your own package
-depends on the locations of the libraries:
+Como você importa bibliotecas de dentro do seu próprio pacote
+depende das localizações das bibliotecas:
 
- * When [reaching inside or outside `lib/`][]
+ * Quando [alcançando dentro ou fora de `lib/`][reaching inside or outside `lib/`]
    (lint: [_avoid_relative_lib_imports_][]),
    use `package:`.
- * Otherwise, [prefer relative imports][].
- 
+ * Caso contrário, [prefira importações relativas][prefer relative imports].
+
  [reaching inside or outside `lib/`]: /effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib
  [_avoid_relative_lib_imports_]: /tools/linter-rules/avoid_relative_lib_imports
  [prefer relative imports]: /effective-dart/usage#prefer-relative-import-paths
 
-For example:
+Por exemplo:
 
 ```dart title="lib/beans.dart"
 // When importing from within lib:
@@ -339,10 +340,10 @@ import 'src/beans.dart';
 import 'package:enchilada/src/beans.dart';
 ```
 
-The name you use here (in this case `enchilada`) is the name you specify for
-your package in its [pubspec](/tools/pub/pubspec).
+O nome que você usa aqui (neste caso `enchilada`) é o nome que você especifica para
+seu pacote em seu [pubspec](/tools/pub/pubspec).
 
-## Web files
+## Arquivos web
 
 ```plaintext
 enchilada/
@@ -352,18 +353,18 @@ enchilada/
     style.css
 ```
 
-For web packages, place entrypoint code—Dart scripts that include
-`main()` and supporting files, such as CSS or HTML—under `web`.
-You can organize the `web` directory into subdirectories if you like.
+Para pacotes web, coloque código de entrypoint—scripts Dart que incluem
+`main()` e arquivos de suporte, como CSS ou HTML—em `web`.
+Você pode organizar o diretório `web` em subdiretórios se quiser.
 
-Put [library code](#public-libraries) under `lib`.
-If the library isn't imported directly by code under `web`, or by
-another package, put it under `lib/src`.
-Put [web-based examples](#examples) under `example`. See
-[Public assets](#public-assets) for tips on where to put assets,
-such as images.
+Coloque [código de biblioteca](#public-libraries) em `lib`.
+Se a biblioteca não for importada diretamente por código em `web`, ou por
+outro pacote, coloque-a em `lib/src`.
+Coloque [exemplos baseados em web](#examples) em `example`. Veja
+[Assets públicos](#public-assets) para dicas sobre onde colocar assets,
+como imagens.
 
-## Command-line apps
+## Apps de linha de comando
 
 ```plaintext
 enchilada/
@@ -371,16 +372,16 @@ enchilada/
     enchilada
 ```
 
-Some packages define programs that can be run directly from the command
-line. These can be shell scripts or any other scripting language,
-including Dart.
+Alguns pacotes definem programas que podem ser executados diretamente da linha
+de comando. Estes podem ser scripts shell ou qualquer outra linguagem de script,
+incluindo Dart.
 
-If your package defines code like this, put it in a directory named `bin`.
-You can run that script from anywhere on the command line, if you set it up
-using
+Se o seu pacote define código assim, coloque-o em um diretório chamado `bin`.
+Você pode executar esse script de qualquer lugar na linha de comando, se configurá-lo
+usando
 [`dart pub global`](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
 
-## Tests and benchmarks
+## Testes e benchmarks
 
 ```plaintext
 enchilada/
@@ -389,11 +390,11 @@ enchilada/
     tortilla_test.dart
 ```
 
-Every package should have tests. With pub, the convention is
-that most of these go in a `test` directory (or some directory inside it if you
-like) and have `_test` at the end of their file names.
+Todo pacote deve ter testes. Com pub, a convenção é
+que a maioria deles vai em um diretório `test` (ou algum diretório dentro dele se você
+quiser) e tem `_test` no final dos nomes dos arquivos.
 
-Typically, these use the [test]({{site.pub-pkg}}/test) package.
+Tipicamente, estes usam o pacote [test]({{site.pub-pkg}}/test).
 
 ```plaintext
 enchilada/
@@ -401,13 +402,13 @@ enchilada/
     app_test.dart
 ```
 
-Flutter app packages may also have special integration tests, which use the
-[integration_test]({{site.flutter-docs}}/cookbook/testing/integration/introduction)
-package. These tests live in their own `integration_test` directory.
+Pacotes de apps Flutter também podem ter testes de integração especiais, que usam o
+pacote [integration_test]({{site.flutter-docs}}/cookbook/testing/integration/introduction).
+Esses testes ficam em seu próprio diretório `integration_test`.
 
-Other packages may choose to follow a similar pattern, to separate their slower
-integration tests from their unit tests, but note that by default `dart test`
-will not run these tests. You will have to explicitly run them with
+Outros pacotes podem escolher seguir um padrão similar, para separar seus testes de
+integração mais lentos de seus testes unitários, mas note que por padrão `dart test`
+não executará esses testes. Você terá que executá-los explicitamente com
 `dart test integration_test`.
 
 ```plaintext
@@ -416,11 +417,11 @@ enchilada/
     make_lunch.dart
 ```
 
-Packages that have performance critical code may also include *benchmarks*.
-These test the API not for correctness but for speed (or memory use, or maybe
-other empirical metrics).
+Pacotes que têm código crítico de desempenho também podem incluir *benchmarks*.
+Estes testam a API não por correção mas por velocidade (ou uso de memória, ou talvez
+outras métricas empíricas).
 
-## Documentation
+## Documentação
 
 ```plaintext
 enchilada/
@@ -429,19 +430,19 @@ enchilada/
     getting_started.md
 ```
 
-If you have code and tests, the next piece you might want
-is good documentation. That goes inside a directory named `doc`.
+Se você tem código e testes, a próxima peça que você pode querer
+é boa documentação. Essa vai dentro de um diretório chamado `doc`.
 
-When you run the [`dart doc`](/tools/dart-doc)
-tool, it places the API documentation, by default, under `doc/api`.
-Since the API documentation is generated from the source code,
-you should not place it under source control.
+Quando você executa a ferramenta [`dart doc`](/tools/dart-doc),
+ela coloca a documentação da API, por padrão, em `doc/api`.
+Como a documentação da API é gerada do código-fonte,
+você não deve colocá-la sob controle de versão.
 
-Other than the generated `api`, we don't
-have any guidelines about format or organization of the documentation
-that you author.  Use whatever markup format that you prefer.
+Além do `api` gerado, não
+temos diretrizes sobre formato ou organização da documentação
+que você criar. Use qualquer formato de marcação que você preferir.
 
-## Examples
+## Exemplos
 
 ```plaintext
 enchilada/
@@ -449,18 +450,18 @@ enchilada/
     main.dart
 ```
 
-Code, tests, docs, what else
-could your users want? Standalone example programs that use your package, of
-course! Those go inside the `example` directory. If the examples are complex
-and use multiple files, consider making a directory for each example. Otherwise,
-you can place each one right inside `example`.
+Código, testes, docs, o que mais
+seus usuários poderiam querer? Programas de exemplo independentes que usam seu pacote, é
+claro! Esses vão dentro do diretório `example`. Se os exemplos são complexos
+e usam vários arquivos, considere fazer um diretório para cada exemplo. Caso contrário,
+você pode colocar cada um diretamente dentro de `example`.
 
-In your examples, use `package:` to import files from your own package.
-That ensures that the example code in your package looks exactly
-like code outside of your package would look.
+Em seus exemplos, use `package:` para importar arquivos do seu próprio pacote.
+Isso garante que o código de exemplo no seu pacote se pareça exatamente
+como código fora do seu pacote se pareceria.
 
-If you might publish your package,
-consider creating an example file with one of the following names:
+Se você pode publicar seu pacote,
+considere criar um arquivo de exemplo com um dos seguintes nomes:
 
 * <code>example/example[.md]</code>
 * <code>example[/lib]/main.dart</code>
@@ -469,13 +470,13 @@ consider creating an example file with one of the following names:
 * <code>example[/lib]/example.dart</code>
 * <code>example/README[.md]</code>
 
-When you publish a package that contains one or more of the above files,
-the pub.dev site creates an **Example** tab to display the first file it finds
-(searching in the order shown in the list above).
-For example, if your package has many files under its `example` directory,
-including a file named `README.md`,
-then your package's Example tab displays the contents of `example/README.md`
-(parsed as [Markdown.)][Markdown]
+Quando você publica um pacote que contém um ou mais dos arquivos acima,
+o site pub.dev cria uma aba **Example** para exibir o primeiro arquivo que encontrar
+(pesquisando na ordem mostrada na lista acima).
+Por exemplo, se o seu pacote tiver muitos arquivos em seu diretório `example`,
+incluindo um arquivo chamado `README.md`,
+então a aba Example do seu pacote exibe o conteúdo de `example/README.md`
+(analisado como [Markdown.)][Markdown]
 
 {% comment %}
 To see how the example file is chosen,
@@ -483,7 +484,7 @@ search the dart-lang repos for exampleFileCandidates:
 https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code
 {% endcomment %}
 
-## Internal tools and scripts
+## Ferramentas internas e scripts
 
 ```plaintext
 enchilada/
@@ -491,12 +492,12 @@ enchilada/
     generate_docs.dart
 ```
 
-Mature packages often have little helper scripts and programs that people
-run while developing the package itself. Think things like test runners,
-documentation generators, or other bits of automation.
+Pacotes maduros frequentemente têm pequenos scripts e programas auxiliares que as pessoas
+executam enquanto desenvolvem o próprio pacote. Pense em coisas como executores de teste,
+geradores de documentação ou outros bits de automação.
 
-Unlike the scripts in `bin`, these are *not* for external users of the package.
-If you have any of these, place them in a directory called `tool`.
+Ao contrário dos scripts em `bin`, estes *não* são para usuários externos do pacote.
+Se você tem algum deles, coloque-os em um diretório chamado `tool`.
 
 ## Hooks
 
@@ -506,71 +507,71 @@ enchilada/
     build.dart
 ```
 
-Packages can define hooks to be invoked by the Dart and Flutter SDK.
-These hooks have a predefined CLI, and will be invoked by the SDK tools if present.
+Pacotes podem definir hooks para serem invocados pelo Dart e Flutter SDK.
+Esses hooks têm uma CLI predefinida, e serão invocados pelas ferramentas do SDK se presentes.
 
-Because these hooks are invoked by the
-`dart` and `flutter` tools on runs and builds, the dependencies
-of these hooks must be normal dependencies and not `dev_dependencies`.
+Porque esses hooks são invocados pelas
+ferramentas `dart` e `flutter` em execuções e builds, as dependências
+desses hooks devem ser dependências normais e não `dev_dependencies`.
 
 :::experimental
-Support for package hooks is **experimental** and in active development.
+O suporte para hooks de pacote é **experimental** e em desenvolvimento ativo.
 
-To learn more about how to define hooks and their current status,
-refer to the [build hooks][] documentation.
+Para saber mais sobre como definir hooks e seu status atual,
+consulte a documentação de [build hooks][].
 :::
 
 
 [build hooks]: /tools/hooks
 
-## Project-specific caching for tools
+## Caching específico de projeto para ferramentas
 
 :::note
-Do not check the `.dart_tool/` directory into source control.
-Instead, keep `.dart_tool/` in `.gitignore`.
+Não faça check-in do diretório `.dart_tool/` no controle de versão.
+Em vez disso, mantenha `.dart_tool/` no `.gitignore`.
 :::
 
-The `.dart_tool/` directory is created when you run `dart pub get`
-and might be deleted at any time. Various tools use this directory
-for caching files specific to your project and/or local machine.
-The `.dart_tool/` directory should never be checked into
-source control, or copied between machines.
+O diretório `.dart_tool/` é criado quando você executa `dart pub get`
+e pode ser deletado a qualquer momento. Várias ferramentas usam este diretório
+para fazer cache de arquivos específicos do seu projeto e/ou máquina local.
+O diretório `.dart_tool/` nunca deve ser feito check-in no
+controle de versão, ou copiado entre máquinas.
 
-It is also generally safe to delete the `.dart_tool/` directory,
-though some tools might need recompute the cached information. 
+Também é geralmente seguro deletar o diretório `.dart_tool/`,
+embora algumas ferramentas possam precisar recomputar a informação em cache.
 
-**Example:** The [`dart pub get`](/tools/pub/cmd/pub-get) tool
-will download and extract dependencies to a global `$PUB_CACHE` directory,
-and then write a `.dart_tool/package_config.json` file mapping _package names_
-to directories in the global `$PUB_CACHE` directory.
-The `.dart_tool/package_config.json` file is used by other tools,
-such as the analyzer and compilers when they need to resolve statements
-such as `import 'package:foo/foo.dart'`.
+**Exemplo:** A ferramenta [`dart pub get`](/tools/pub/cmd/pub-get)
+vai baixar e extrair dependências para um diretório global `$PUB_CACHE`,
+e então escrever um arquivo `.dart_tool/package_config.json` mapeando _nomes de pacotes_
+para diretórios no diretório global `$PUB_CACHE`.
+O arquivo `.dart_tool/package_config.json` é usado por outras ferramentas,
+como o analisador e compiladores quando precisam resolver declarações
+como `import 'package:foo/foo.dart'`.
 
-When developing a tool that needs project-specific caching, 
-you might consider using the `.dart_tool/` directory 
-because most users already ignore it with `.gitignore`.
-When caching files for your tool in a user's `.dart_tool/` directory,
-you should use a unique subdirectory. To avoid collisions,
-subdirectories of the form `.dart_tool/<tool_package_name>/`
-are reserved for the package named `<tool_package_name>`.
-If your tool isn't distributed through the [pub.dev site,]({{site.pub}})
-you might consider publishing a placeholder package in order to 
-reserve the unique name.
+Ao desenvolver uma ferramenta que precisa de caching específico de projeto,
+você pode considerar usar o diretório `.dart_tool/`
+porque a maioria dos usuários já o ignora com `.gitignore`.
+Ao fazer cache de arquivos para sua ferramenta em um diretório `.dart_tool/` de um usuário,
+você deve usar um subdiretório único. Para evitar colisões,
+subdiretórios da forma `.dart_tool/<tool_package_name>/`
+são reservados para o pacote chamado `<tool_package_name>`.
+Se sua ferramenta não é distribuída através do [site pub.dev,]({{site.pub}})
+você pode considerar publicar um pacote placeholder para
+reservar o nome único.
 
-**Example:** [`package:build`]({{site.pub-pkg}}/build) provides a
-framework for writing code generation steps.
-When running these build steps, files are cached in `.dart_tool/build/`.
-This helps speed-up future re-runs of the build steps.
+**Exemplo:** [`package:build`]({{site.pub-pkg}}/build) fornece um
+framework para escrever etapas de geração de código.
+Ao executar essas etapas de build, arquivos são armazenados em cache em `.dart_tool/build/`.
+Isso ajuda a acelerar futuras re-execuções das etapas de build.
 
 :::warning
-When developing a tool that wants to cache files in `.dart_tool/`,
-ensure the following:
-  
-* You are using a subdirectory named after a package you own
+Ao desenvolver uma ferramenta que quer fazer cache de arquivos em `.dart_tool/`,
+garanta o seguinte:
+
+* Você está usando um subdiretório nomeado após um pacote que você possui
   (`.dart_tool/<my_tool_package_name>/`)
-* Your files don't belong under source control, 
-  as `.dart_tool/` is generally listed in `.gitignore`
+* Seus arquivos não pertencem ao controle de versão,
+  já que `.dart_tool/` é geralmente listado em `.gitignore`
 :::
 
 

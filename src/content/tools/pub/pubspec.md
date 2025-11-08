@@ -2,120 +2,125 @@
 title: The pubspec file
 shortTitle: Pubspec file
 description: Reference guide for the fields in pubspec.yaml.
+ia-translate: true
 ---
 
-Every [pub package](/tools/pub/packages) needs some metadata so it can specify its
-[dependencies](/resources/glossary#dependency). Pub packages that are shared with
-others also need to provide some other information so users can discover them.
-All of this metadata goes in the package's _pubspec:_
-a file named `pubspec.yaml` that's written in the
-[YAML](https://yaml.org/) language.
+<!--
+ia-translate: true
+-->
+
+Todo [pub package](/tools/pub/packages) precisa de alguns metadados para poder especificar suas
+[dependencies](/resources/glossary#dependency). Pacotes Pub que são compartilhados com
+outros também precisam fornecer algumas outras informações para que os usuários possam descobri-los.
+Todos esses metadados vão no _pubspec_ do pacote:
+um arquivo chamado `pubspec.yaml` que é escrito na
+linguagem [YAML](https://yaml.org/).
 
 {% comment %}
 PENDING: acknowledge the existence of pubspec.lock files.
 {% endcomment %}
 
 
-## Supported fields
+## Campos suportados
 
-A pubspec can have the following fields:
+Um pubspec pode ter os seguintes campos:
 
 `name`
-: Required for every package.
-  [_Learn more._](#name)
+: Obrigatório para todo pacote.
+  [_Saiba mais._](#name)
 
 `version`
-: Required for packages that are hosted on the pub.dev site.
-  [_Learn more._](#version)
+: Obrigatório para pacotes que são hospedados no site pub.dev.
+  [_Saiba mais._](#version)
 
 `description`
-: Required for packages that are hosted on the pub.dev site.
-  [_Learn more._](#description)
+: Obrigatório para pacotes que são hospedados no site pub.dev.
+  [_Saiba mais._](#description)
 
 `homepage`
-: Optional. URL pointing to the package's homepage (or source code repository).
-  [_Learn more._](#homepage)
+: Opcional. URL apontando para a homepage do pacote (ou repositório de código-fonte).
+  [_Saiba mais._](#homepage)
 
 `repository`
-: Optional. URL pointing to the package's source code repository.
-  [_Learn more._](#repository)
+: Opcional. URL apontando para o repositório de código-fonte do pacote.
+  [_Saiba mais._](#repository)
 
 `issue_tracker`
-: Optional. URL pointing to an issue tracker for the package.
-  [_Learn more._](#issue-tracker)
+: Opcional. URL apontando para um rastreador de issues do pacote.
+  [_Saiba mais._](#issue-tracker)
 
 `documentation`
-: Optional. URL pointing to documentation for the package.
-  [_Learn more._](#documentation)
+: Opcional. URL apontando para a documentação do pacote.
+  [_Saiba mais._](#documentation)
 
 `dependencies`
-: Can be omitted if your package has no dependencies.
-  [_Learn more._](#dependencies)
+: Pode ser omitido se seu pacote não tem dependências.
+  [_Saiba mais._](#dependencies)
 
 `dev_dependencies`
-: Can be omitted if your package has no dev dependencies.
-  [_Learn more._](#dependencies)
+: Pode ser omitido se seu pacote não tem dev dependencies.
+  [_Saiba mais._](#dependencies)
 
 `dependency_overrides`
-: Can be omitted if you do not need to override any dependencies.
-  [_Learn more._](#dependencies)
+: Pode ser omitido se você não precisa sobrescrever nenhuma dependência.
+  [_Saiba mais._](#dependencies)
 
 `environment`
-: Required as of Dart 2.
-  [_Learn more._](#sdk-constraints)
+: Obrigatório desde o Dart 2.
+  [_Saiba mais._](#sdk-constraints)
 
 `executables`
-: Optional. Used to put a package's executables on your PATH.
-  [_Learn more._](#executables)
+: Opcional. Usado para colocar os executáveis de um pacote no seu PATH.
+  [_Saiba mais._](#executables)
 
 `platforms`
-: Optional. Used to explicitly declare supported platforms
-  on the pub.dev site.
-  [_Learn more._](#platforms)
+: Opcional. Usado para declarar explicitamente plataformas suportadas
+  no site pub.dev.
+  [_Saiba mais._](#platforms)
 
 `publish_to`
-: Optional. Specify where to publish a package.
-  [_Learn more._](#publish_to)
+: Opcional. Especifica onde publicar um pacote.
+  [_Saiba mais._](#publish_to)
 
 `funding`
-: Optional. List of URLs where users can sponsor development of the package.
-  [_Learn more._](#funding)
+: Opcional. Lista de URLs onde os usuários podem patrocinar o desenvolvimento do pacote.
+  [_Saiba mais._](#funding)
 
 `false_secrets`
-: Optional. Specify files to ignore when conducting a pre-publishing search
-  for potential leaks of secrets.
-  [_Learn more._](#false_secrets)
-  
+: Opcional. Especifica arquivos a serem ignorados ao conduzir uma busca pré-publicação
+  por possíveis vazamentos de secrets.
+  [_Saiba mais._](#false_secrets)
+
 `screenshots`
-: Optional. Specify a list of screenshot files to display 
-  on the [pub.dev site]({{site.pub}}).
-  [_Learn more._](#screenshots)
+: Opcional. Especifica uma lista de arquivos de screenshot para exibir
+  no [site pub.dev]({{site.pub}}).
+  [_Saiba mais._](#screenshots)
 
 `topics`
-: Optional. List of topics for the package.
-  [_Learn more._](#topics)
+: Opcional. Lista de tópicos para o pacote.
+  [_Saiba mais._](#topics)
 
 `ignored_advisories`
-: Optional. List of ignored security advisories.
-  [_Learn more._](#ignored_advisories)
+: Opcional. Lista de security advisories ignorados.
+  [_Saiba mais._](#ignored_advisories)
 
-Pub ignores all other fields.
+Pub ignora todos os outros campos.
 
 :::flutter-note
-Pubspecs for [Flutter apps]({{site.flutter}}) can have
-[additional fields]({{site.flutter-docs}}/development/tools/pubspec)
-for configuring the environment and managing assets.
+Pubspecs para [Flutter apps]({{site.flutter}}) podem ter
+[campos adicionais]({{site.flutter-docs}}/development/tools/pubspec)
+para configurar o ambiente e gerenciar assets.
 :::
 
-If you add a custom field, give it a unique name
-that won't clash with future pubspec fields.
-For example, instead of adding `bugs`,
-you might add a field named `my_pkg_bugs`.
+Se você adicionar um campo personalizado, dê a ele um nome único
+que não entre em conflito com futuros campos pubspec.
+Por exemplo, em vez de adicionar `bugs`,
+você pode adicionar um campo chamado `my_pkg_bugs`.
 
 
-## Example
+## Exemplo
 
-A simple but complete pubspec looks something like the following:
+Um pubspec simples mas completo se parece com o seguinte:
 
 ```yaml
 name: newtify
@@ -140,116 +145,116 @@ dev_dependencies:
 ```
 
 
-## Details
+## Detalhes
 
-This section has more information about each of the pubspec fields.
+Esta seção tem mais informações sobre cada um dos campos do pubspec.
 
 ### Name
 
-Every package needs a name.  It's how other packages refer to yours,
-and how it appears to the world, should you publish it.
+Todo pacote precisa de um nome. É como outros pacotes se referem ao seu,
+e como ele aparece para o mundo, caso você o publique.
 
-The name should be all lowercase, with underscores to separate words,
-`just_like_this`. Use only basic Latin letters and Arabic digits:
-`[a-z0-9_]`. Also, make sure the name is a valid Dart identifier—that it
-doesn't start with digits and isn't a
-[reserved word](/language/keywords).
+O nome deve ser todo em minúsculas, com underscores para separar palavras,
+`assim_como_isso`. Use apenas letras latinas básicas e dígitos arábicos:
+`[a-z0-9_]`. Além disso, certifique-se de que o nome seja um identificador Dart válido—que
+não comece com dígitos e não seja uma
+[palavra reservada](/language/keywords).
 
-Try to pick a name that is clear, terse, and not already in use.
-A quick search of packages on the
-[pub.dev site]({{site.pub-pkg}})
-to make sure that nothing else is using your name is recommended.
+Tente escolher um nome que seja claro, conciso e que ainda não esteja em uso.
+É recomendável fazer uma busca rápida de pacotes no
+[site pub.dev]({{site.pub-pkg}})
+para garantir que nada mais esteja usando seu nome.
 
 ### Version
 
-Every package has a version. A version number is required to host your package
-on the pub.dev site, but can be omitted for local-only packages. If you omit
-it, your package is implicitly versioned `0.0.0`.
+Todo pacote tem uma versão. Um número de versão é obrigatório para hospedar seu pacote
+no site pub.dev, mas pode ser omitido para pacotes apenas locais. Se você omitir,
+seu pacote é implicitamente versionado como `0.0.0`.
 
-Versioning is necessary for reusing code while letting it evolve quickly. A
-version number is three numbers separated by dots, like `0.2.43`. It can also
-optionally have a build ( `+1`, `+2`, `+hotfix.oopsie`) or prerelease
-(`-dev.4`, `-alpha.12`, `-beta.7`, `-rc.5`) suffix.
+Versionamento é necessário para reutilizar código enquanto permite que ele evolua rapidamente. Um
+número de versão são três números separados por pontos, como `0.2.43`. Também pode
+opcionalmente ter um sufixo de build (`+1`, `+2`, `+hotfix.oopsie`) ou prerelease
+(`-dev.4`, `-alpha.12`, `-beta.7`, `-rc.5`).
 
-Each time you publish your package, you publish it at a specific version.
-Once that's been done, consider it hermetically sealed: you can't touch it
-anymore. To make more changes, you'll need a new version.
+Cada vez que você publica seu pacote, você o publica em uma versão específica.
+Uma vez feito isso, considere-o hermeticamente selado: você não pode mais tocá-lo.
+Para fazer mais alterações, você precisará de uma nova versão.
 
-When you select a version, follow [semantic versioning.][semantic versioning]
+Ao selecionar uma versão, siga o [versionamento semântico.][semantic versioning]
 
 [semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
 
 ### Description
 
-This is optional for your own personal packages, but if you intend to
-publish your package you must provide a description, which should be in English.
-The description should be relatively short—60 to 180 characters—and
-tell a casual reader what they might want to know about your package.
+Isto é opcional para seus próprios pacotes pessoais, mas se você pretende
+publicar seu pacote, deve fornecer uma descrição, que deve estar em inglês.
+A descrição deve ser relativamente curta—60 a 180 caracteres—e
+informar a um leitor casual o que ele pode querer saber sobre seu pacote.
 
-Think of the description as the sales pitch for your package. Users see it
-when they [browse for packages.]({{site.pub-pkg}})
-The description is plain text: no markdown or HTML.
+Pense na descrição como o argumento de venda para seu pacote. Os usuários a veem
+quando eles [navegam por pacotes.]({{site.pub-pkg}})
+A descrição é texto simples: sem markdown ou HTML.
 
 ### Homepage
 
-This should be a URL pointing to the website for your package.
-For [hosted packages](/tools/pub/dependencies#hosted-packages),
-this URL is linked from the package's page.
-While providing a `homepage` is optional, *please provide* it or `repository`
-(or both). It helps users understand where your package is coming from.
+Esta deve ser uma URL apontando para o site do seu pacote.
+Para [hosted packages](/tools/pub/dependencies#hosted-packages),
+esta URL é linkada a partir da página do pacote.
+Embora fornecer uma `homepage` seja opcional, *por favor forneça* ela ou `repository`
+(ou ambos). Isso ajuda os usuários a entender de onde seu pacote vem.
 
 ### Repository
 
-The optional `repository` field should contain the URL for your package's source
-code repository—for example, `https://github.com/<user>/<repository>`.
-If you publish your package to the pub.dev site, then your package's page
-displays the repository URL.
-While providing a `repository` is optional, *please provide* it or `homepage`
-(or both). It helps users understand where your package is coming from.
+O campo opcional `repository` deve conter a URL do repositório de código-fonte
+do seu pacote—por exemplo, `https://github.com/<user>/<repository>`.
+Se você publicar seu pacote no site pub.dev, então a página do seu pacote
+exibirá a URL do repositório.
+Embora fornecer um `repository` seja opcional, *por favor forneça* ele ou `homepage`
+(ou ambos). Isso ajuda os usuários a entender de onde seu pacote vem.
 
 ### Issue tracker
 
-The optional `issue_tracker` field should contain a URL for the package's
-issue tracker, where existing bugs can be viewed and new bugs can be filed.
-The pub.dev site attempts to display a link to each package's issue
-tracker, using the value of this field. If `issue_tracker` is missing but
-`repository` is present and points to GitHub, then the pub.dev site uses the
-default issue tracker (`https://github.com/<user>/<repository>/issues`).
+O campo opcional `issue_tracker` deve conter uma URL para o rastreador de
+issues do pacote, onde bugs existentes podem ser visualizados e novos bugs podem ser reportados.
+O site pub.dev tenta exibir um link para o rastreador de issues de cada pacote,
+usando o valor deste campo. Se `issue_tracker` estiver faltando mas
+`repository` estiver presente e apontar para o GitHub, então o site pub.dev usa o
+rastreador de issues padrão (`https://github.com/<user>/<repository>/issues`).
 
 ### Documentation
 
-Some packages have a site that hosts documentation, separate from the main
-homepage and from the Pub-generated API reference.
-If your package has additional documentation, add a `documentation:` field
-with that URL; pub shows a link to this documentation on your package's page.
+Alguns pacotes têm um site que hospeda documentação, separada da
+homepage principal e da referência de API gerada pelo Pub.
+Se seu pacote tiver documentação adicional, adicione um campo `documentation:`
+com essa URL; pub mostra um link para esta documentação na página do seu pacote.
 
 ### Dependencies
 
-[Dependencies](/resources/glossary#dependency) are the pubspec's *raison d'être*.
-In this section you list each package that your package needs in order to work.
+[Dependencies](/resources/glossary#dependency) são a *raison d'être* do pubspec.
+Nesta seção você lista cada pacote que seu pacote precisa para funcionar.
 
-Dependencies fall into one of two types. _Regular dependencies_ are listed
-under `dependencies:`—these are packages that anyone using your package
-will also need. Dependencies that are only needed in the development phase of
-the package itself are listed under `dev_dependencies`.
+Dependencies se enquadram em um de dois tipos. _Regular dependencies_ são listadas
+sob `dependencies:`—estes são pacotes que qualquer pessoa usando seu pacote
+também precisará. Dependencies que são necessárias apenas na fase de desenvolvimento do
+próprio pacote são listadas sob `dev_dependencies`.
 
-During the development process, you might need to temporarily override
-a dependency.  You can do so using `dependency_overrides`.
+Durante o processo de desenvolvimento, você pode precisar sobrescrever temporariamente
+uma dependência. Você pode fazer isso usando `dependency_overrides`.
 
-For more information, see [Package dependencies](/tools/pub/dependencies).
+Para mais informações, consulte [Package dependencies](/tools/pub/dependencies).
 
 ### Executables
 
-A package may expose one or more of its scripts as executables that
-can be run directly from the command line. To make a script publicly
-available, list it under the `executables` field.
-Entries are listed as key/value pairs:
+Um pacote pode expor um ou mais de seus scripts como executáveis que
+podem ser executados diretamente da linha de comando. Para tornar um script publicamente
+disponível, liste-o sob o campo `executables`.
+Entradas são listadas como pares de chave/valor:
 
 ```plaintext
-<name-of-executable>: <Dart-script-from-bin>
+<nome-do-executável>: <script-Dart-do-bin>
 ```
 
-For example, the following pubspec entry lists two scripts:
+Por exemplo, a seguinte entrada pubspec lista dois scripts:
 
 ```yaml
 executables:
@@ -257,29 +262,29 @@ executables:
   fvm:
 ```
 
-Once the package is activated using `dart pub global activate`,
-typing `slidy` executes `bin/main.dart`.
-Typing `fvm` executes `bin/fvm.dart`.
-If you don't specify the value, it is inferred from the key.
+Uma vez que o pacote é ativado usando `dart pub global activate`,
+digitar `slidy` executa `bin/main.dart`.
+Digitar `fvm` executa `bin/fvm.dart`.
+Se você não especificar o valor, ele é inferido da chave.
 
-For more information, see
+Para mais informações, consulte
 [pub global](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
 
 
 ### Platforms
 
-When you [publish a package][], pub.dev automatically 
-detects the platforms that the package supports.
-If this platform-support list is incorrect,
-use `platforms` to explicitly declare
-which platforms your package supports.
+Quando você [publica um pacote][publish a package], pub.dev automaticamente
+detecta as plataformas que o pacote suporta.
+Se esta lista de suporte de plataforma estiver incorreta,
+use `platforms` para declarar explicitamente
+quais plataformas seu pacote suporta.
 
-For example, the following `platforms` entry causes pub.dev
-to list the package as supporting
-Android, iOS, Linux, macOS, Web, and Windows:
+Por exemplo, a seguinte entrada `platforms` faz com que pub.dev
+liste o pacote como suportando
+Android, iOS, Linux, macOS, Web e Windows:
 
 ```yaml
-# This package supports all platforms listed below.
+# Este pacote suporta todas as plataformas listadas abaixo.
 platforms:
   android:
   ios:
@@ -289,27 +294,27 @@ platforms:
   windows:
 ```
 
-Here is an example of declaring that the package supports
-only Linux and macOS (and not, for example, Windows):
+Aqui está um exemplo de declarar que o pacote suporta
+apenas Linux e macOS (e não, por exemplo, Windows):
 
 ```yaml
-# This package supports only Linux and macOS.
+# Este pacote suporta apenas Linux e macOS.
 platforms:
   linux:
   macos:
 ```
 
-:::note If you use Flutter
-Flutter plugins platform support is by default derived from the
+:::note Se você usa Flutter
+O suporte de plataforma de plugins Flutter é por padrão derivado das
 [plugin declarations][].
 
-If there is a discrepancy between the plugin declaration and the actual platform
-support, a top-level `platforms` declaration can still be used and takes
-precedence over the Flutter plugin declaration when deciding platform support.
+Se houver uma discrepância entre a declaração do plugin e o suporte de plataforma real,
+uma declaração `platforms` de nível superior ainda pode ser usada e tem
+precedência sobre a declaração do plugin Flutter ao decidir o suporte de plataforma.
 :::
 
 :::version-note
-Support for the `platforms` entry was added in Dart 2.16.
+O suporte para a entrada `platforms` foi adicionado no Dart 2.16.
 :::
 
 [publish a package]: /tools/pub/publishing
@@ -318,10 +323,10 @@ Support for the `platforms` entry was added in Dart 2.16.
 
 ### Publish_to
 
-The default uses the [pub.dev site.]({{site.pub}}) Specify `none` to prevent
-a package from being published. This setting can be used to specify a
-[custom pub package server](/tools/pub/custom-package-repositories)
-to publish.
+O padrão usa o [site pub.dev.]({{site.pub}}) Especifique `none` para evitar
+que um pacote seja publicado. Esta configuração pode ser usada para especificar um
+[servidor de pacotes pub personalizado](/tools/pub/custom-package-repositories)
+para publicar.
 
 ```yaml
 publish_to: none
@@ -330,9 +335,9 @@ publish_to: none
 
 ### Funding
 
-Package authors can use the `funding` property to specify a list of URLs that
-provide information on how users can help fund the development of the package.
-For example:
+Autores de pacotes podem usar a propriedade `funding` para especificar uma lista de URLs que
+fornecem informações sobre como os usuários podem ajudar a financiar o desenvolvimento do pacote.
+Por exemplo:
 
 ```yaml
 funding:
@@ -340,31 +345,31 @@ funding:
  - https://www.patreon.com/some-account
 ```
 
-If published to [pub.dev]({{site.pub}}) the links are displayed on the
-package page. This aims to help users fund the development
-of their dependencies.
+Se publicado no [pub.dev]({{site.pub}}), os links são exibidos na
+página do pacote. Isso visa ajudar os usuários a financiar o desenvolvimento
+de suas dependências.
 
 
 ### False_secrets
 
-When you try to [publish a package][],
-pub conducts a search for potential leaks of
-secret credentials, API keys, or cryptographic keys.
-If pub detects a potential leak in a file that would be published,
-then pub warns you and refuses to publish the package.
+Quando você tenta [publicar um pacote][publish a package],
+pub conduz uma busca por possíveis vazamentos de
+credenciais secretas, chaves de API ou chaves criptográficas.
+Se pub detecta um possível vazamento em um arquivo que seria publicado,
+então pub avisa você e se recusa a publicar o pacote.
 
-Leak detection isn't perfect.
-To avoid false positives,
-you can tell pub not to search for leaks in certain files,
-by creating an allowlist
-using [`gitignore` patterns][] under
-`false_secrets` in the pubspec.
+A detecção de vazamento não é perfeita.
+Para evitar falsos positivos,
+você pode dizer ao pub para não procurar vazamentos em certos arquivos,
+criando uma allowlist
+usando [padrões `gitignore`][`gitignore` patterns] sob
+`false_secrets` no pubspec.
 
 [`gitignore` patterns]: https://git-scm.com/docs/gitignore#_pattern_format
 
-For example, the following entry causes pub not to look for leaks in
-the file `lib/src/hardcoded_api_key.dart`
-and in all `.pem` files in the `test/localhost_certificates/` directory:
+Por exemplo, a seguinte entrada faz com que pub não procure vazamentos no
+arquivo `lib/src/hardcoded_api_key.dart`
+e em todos os arquivos `.pem` no diretório `test/localhost_certificates/`:
 
 [publish a package]: /tools/pub/publishing
 
@@ -374,66 +379,66 @@ false_secrets:
  - /test/localhost_certificates/*.pem
 ```
 
-Starting a `gitignore` pattern with slash (`/`) ensures that
-the pattern is considered relative to the package's root directory.
+Iniciar um padrão `gitignore` com barra (`/`) garante que
+o padrão seja considerado relativo ao diretório raiz do pacote.
 
 :::warning
-**Don't rely on leak detection.**
-It uses a limited set of patterns
-to detect common mistakes.
-You're responsible for managing your credentials,
-preventing accidental leaks, and
-revoking credentials that are accidentally leaked.
+**Não confie na detecção de vazamento.**
+Ela usa um conjunto limitado de padrões
+para detectar erros comuns.
+Você é responsável por gerenciar suas credenciais,
+prevenir vazamentos acidentais e
+revogar credenciais que são acidentalmente vazadas.
 :::
 
 :::version-note
-Dart 2.15 added support for the `false_secrets` field.
+Dart 2.15 adicionou suporte para o campo `false_secrets`.
 :::
 
 ### Screenshots
 
-Packages can showcase their widgets or other visual elements
-using screenshots displayed on their pub.dev page. 
-To specify screenshots for the package to display,
-use the `screenshots` field.
+Pacotes podem mostrar seus widgets ou outros elementos visuais
+usando screenshots exibidos em sua página pub.dev.
+Para especificar screenshots para o pacote exibir,
+use o campo `screenshots`.
 
-A package can list up to 10 screenshots under the `screenshots` field.
-Don't include logos or other branding imagery in this section.
-Each screenshot includes one `description` and one `path`. 
-The `description` explains what the screenshot depicts in
-no more than 160 characters. 
-For example:
+Um pacote pode listar até 10 screenshots sob o campo `screenshots`.
+Não inclua logos ou outras imagens de marca nesta seção.
+Cada screenshot inclui uma `description` e um `path`.
+A `description` explica o que o screenshot mostra em
+não mais que 160 caracteres.
+Por exemplo:
 
 ```yaml
 screenshots:
-  - description: 'This screenshot shows the transformation of a number of bytes 
-  to a human-readable expression.'
+  - description: 'Este screenshot mostra a transformação de um número de bytes
+  para uma expressão legível por humanos.'
     path: path/to/image/in/package/500x500.webp
-  - description: 'This screenshot shows a stack trace returning a human-readable
-  representation.'
+  - description: 'Este screenshot mostra um stack trace retornando uma representação
+  legível por humanos.'
     path: path/to/image/in/package.png
 ```
 
-Pub.dev limits screenshots to the following specifications:
+Pub.dev limita screenshots às seguintes especificações:
 
-- File size: max 4 MB per image.
-- File types: `png`, `jpg`, `gif`, or `webp`. 
-- Static and animated images are both allowed.
+- Tamanho do arquivo: máximo de 4 MB por imagem.
+- Tipos de arquivo: `png`, `jpg`, `gif` ou `webp`.
+- Imagens estáticas e animadas são ambas permitidas.
 
-Keep screenshot files small.
-Each download of the package includes all screenshot files.
+Mantenha os arquivos de screenshot pequenos.
+Cada download do pacote inclui todos os arquivos de screenshot.
 
-Pub.dev generates the package's thumbnail image from the first screenshot. If 
-this screenshot uses animation, pub.dev uses its first frame.
- 
+Pub.dev gera a imagem em miniatura do pacote a partir do primeiro screenshot. Se
+este screenshot usa animação, pub.dev usa seu primeiro frame.
+
 ### Topics
 
-Package authors can use the `topics` field to categorize their package. Topics
-can be used to assist discoverability during search with filters on pub.dev.
-Pub.dev displays the topics on the package page as well as in the search
-results.
+Autores de pacotes podem usar o campo `topics` para categorizar seu pacote. Topics
+podem ser usados para auxiliar a descoberta durante a pesquisa com filtros no pub.dev.
+Pub.dev exibe os topics na página do pacote, bem como nos resultados de
+pesquisa.
 
-The field consists of a list of names. For example:
+O campo consiste em uma lista de nomes. Por exemplo:
 
 ```yaml
 topics:
@@ -441,39 +446,39 @@ topics:
   - http
 ```
 
-Pub.dev requires topics to follow these specifications:
+Pub.dev requer que os topics sigam estas especificações:
 
-- Tag each package with at most 5 topics.
-- Write the topic name following these requirements:
-  - Use between 2 and 32 characters.
-  - Use only lowercase alphanumeric characters or hyphens (`a-z`, `0-9`, `-`).
-  - Don't use two consecutive hyphens (`--`).
-  - Start the name with lowercase alphabet characters (`a-z`).
-  - End with alphanumeric characters (`a-z` or `0-9`).
+- Marque cada pacote com no máximo 5 topics.
+- Escreva o nome do topic seguindo estes requisitos:
+  - Use entre 2 e 32 caracteres.
+  - Use apenas caracteres alfanuméricos minúsculos ou hífens (`a-z`, `0-9`, `-`).
+  - Não use dois hífens consecutivos (`--`).
+  - Comece o nome com caracteres alfabéticos minúsculos (`a-z`).
+  - Termine com caracteres alfanuméricos (`a-z` ou `0-9`).
 
-When choosing topics, consider if [existing topics]({{site.pub}}/topics)
-are relevant. Tagging with existing topics helps users discover your package.
+Ao escolher topics, considere se [topics existentes]({{site.pub}}/topics)
+são relevantes. Marcar com topics existentes ajuda os usuários a descobrir seu pacote.
 
 :::note
-Pub.dev merges different spellings of a topic into a canonical topic to
-avoid duplication and improve discovery by topic.
+Pub.dev mescla diferentes ortografias de um topic em um topic canônico para
+evitar duplicação e melhorar a descoberta por topic.
 
-You can contribute to the list of canonical topics and their aliases
-by opening a pull request that edits the [`topics.yaml` file][] on GitHub.
+Você pode contribuir para a lista de topics canônicos e seus aliases
+abrindo um pull request que edita o [arquivo `topics.yaml`][`topics.yaml` file] no GitHub.
 :::
 
 [`topics.yaml` file]: {{site.repo.dart.org}}/pub-dev/blob/master/doc/topics.yaml
 
 ### Ignored_advisories
 
-If a package has a dependency that is affected by a security advisory,
-pub warns about the advisory during dependency resolution.
-Package authors can use the `ignored_advisories` field as an allowlist
-of triggered advisories that are not relevant for the package.
+Se um pacote tem uma dependência que é afetada por um security advisory,
+pub avisa sobre o advisory durante a resolução de dependências.
+Autores de pacotes podem usar o campo `ignored_advisories` como uma allowlist
+de advisories disparados que não são relevantes para o pacote.
 
-To suppress the warning about an advisory,
-add the advisory identifier to the `ignored_advisories` list.
-For example:
+Para suprimir o aviso sobre um advisory,
+adicione o identificador do advisory à lista `ignored_advisories`.
+Por exemplo:
 
 ```yaml
 name: myapp
@@ -483,45 +488,45 @@ ignored_advisories:
  - GHSA-4rgh-jx4f-qfcq
 ```
 
-For more information, check out
+Para mais informações, confira
 [Security advisories](/tools/pub/security-advisories).
 
 ### SDK constraints
 
-A package can indicate which versions of its dependencies it supports, but
-packages have another implicit dependency: the Dart platform itself.
-The Dart platform evolves over time, and a package might only work with certain
-versions of the platform.
+Um pacote pode indicar quais versões de suas dependências ele suporta, mas
+pacotes têm outra dependência implícita: a própria plataforma Dart.
+A plataforma Dart evolui ao longo do tempo, e um pacote pode funcionar apenas com certas
+versões da plataforma.
 
-A package can specify those versions using an *SDK constraint*. This
-constraint goes inside a separate top-level `environment` field in the pubspec
-and uses the same
-[version constraint](/tools/pub/dependencies#version-constraints) syntax as
+Um pacote pode especificar essas versões usando uma *SDK constraint*. Esta
+constraint vai dentro de um campo `environment` separado de nível superior no pubspec
+e usa a mesma sintaxe de
+[version constraint](/tools/pub/dependencies#version-constraints) que as
 dependencies.
 
 :::version-note
-For a package to use a feature introduced after 2.0,
-its pubspec must have a lower constraint that's at least
-the version when the feature was introduced.
-For details, check out [Language versioning][].
+Para que um pacote use um recurso introduzido após 2.0,
+seu pubspec deve ter uma constraint inferior que seja pelo menos
+a versão quando o recurso foi introduzido.
+Para detalhes, confira [Language versioning][].
 :::
 
 [Language versioning]: /resources/language/evolution#language-versioning
 
-For example, the following constraint says that this package
-works with any Dart SDK that's version 3.0.0 or higher:
+Por exemplo, a seguinte constraint diz que este pacote
+funciona com qualquer Dart SDK que seja versão 3.0.0 ou superior:
 
 ```yaml
 environment:
   sdk: ^3.0.0
 ```
 
-Pub tries to find the latest version of a package whose SDK constraint works
-with the version of the Dart SDK that you have installed.
+Pub tenta encontrar a versão mais recente de um pacote cuja SDK constraint funcione
+com a versão do Dart SDK que você tem instalado.
 
-Omitting the SDK constraint is an error.
-When the pubspec has no SDK constraint,
-`dart pub get` fails with a message like the following:
+Omitir a SDK constraint é um erro.
+Quando o pubspec não tem SDK constraint,
+`dart pub get` falha com uma mensagem como a seguinte:
 
 ```plaintext
 pubspec.yaml has no lower-bound SDK constraint.
@@ -529,23 +534,23 @@ You should edit pubspec.yaml to contain an SDK constraint:
 
 environment:
   sdk: '^3.2.0'
-  
+
 See https://dart.dev/go/sdk-constraint
 ```
 
 :::version-note
-Before Dart 2.19, pub disallowed caret syntax in SDK constraints.
-In earlier versions, provide a complete range,
-such as `'>=2.12.0 <3.0.0'`.
-For more information, check out
-the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
+Antes do Dart 2.19, pub não permitia sintaxe caret em SDK constraints.
+Em versões anteriores, forneça um intervalo completo,
+como `'>=2.12.0 <3.0.0'`.
+Para mais informações, confira
+a documentação de [sintaxe Caret](/tools/pub/dependencies#caret-syntax).
 :::
 
 
 #### Flutter SDK constraints
 
-Pub supports specifying Flutter SDK constraints
-under the `environment:` field:
+Pub suporta especificação de Flutter SDK constraints
+sob o campo `environment:`:
 
 ```yaml
 environment:
@@ -553,21 +558,21 @@ environment:
   flutter: '>=3.22.0'
 ```
 
-A Flutter SDK constraint is satisfied only if pub is running in the
-context of the `flutter` executable, and the Flutter SDK's
-`version` file meets the version constraint's lower bound. Otherwise,
-the package won't be selected.
+Uma Flutter SDK constraint é satisfeita apenas se pub está sendo executado no
+contexto do executável `flutter`, e o arquivo `version` do Flutter SDK
+atende ao limite inferior da constraint de versão. Caso contrário,
+o pacote não será selecionado.
 
 :::note
-The Flutter SDK only enforces the lower bound of the flutter constraint.
-To learn more, check out
+O Flutter SDK apenas impõe o limite inferior da constraint flutter.
+Para saber mais, confira
 [issue #95472](https://github.com/flutter/flutter/issues/95472)
-in the `flutter/flutter` repository.
+no repositório `flutter/flutter`.
 :::
 
-To publish a package with a Flutter SDK constraint,
-you must specify a Dart SDK constraint with a minimum version of
-at least 1.19.0, to ensure that older versions of pub won't
-accidentally install packages that need Flutter.
+Para publicar um pacote com uma Flutter SDK constraint,
+você deve especificar uma Dart SDK constraint com uma versão mínima de
+pelo menos 1.19.0, para garantir que versões mais antigas do pub não
+instalem acidentalmente pacotes que precisam do Flutter.
 
 [pubsite]: {{site.pub}}

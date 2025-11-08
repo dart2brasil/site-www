@@ -2,32 +2,37 @@
 title: Package versioning
 description: >-
   How Dart's package management tool, pub, handles versioning of packages.
+ia-translate: true
 ---
 
-The [pub package manager][pub] helps you work with versioning.
-This guide explains a bit about the history of versioning and pub's
-approach to it.
+<!--
+ia-translate: true
+-->
 
-Consider this to be advanced information.
-To learn _why_ pub was designed the way it was, keep reading.
-If you want to _use_ pub, consult the [other docs][pub].
+O [gerenciador de pacotes pub][pub] ajuda você a trabalhar com versionamento.
+Este guia explica um pouco sobre a história do versionamento e a
+abordagem do pub para isso.
 
-Modern software development, especially web development, leans heavily on
-reusing lots and lots of existing code. That includes code _you_ wrote in the
-past, but also code from third-parties, everything from big frameworks to small
-utility libraries. It's not uncommon for an application to depend on
-dozens of different packages and libraries.
+Considere isto como informação avançada.
+Para aprender _por que_ o pub foi projetado da maneira que foi, continue lendo.
+Se você quer _usar_ o pub, consulte a [outra documentação][pub].
 
-It's hard to understate how powerful this is. When you see stories of small web
-startups building a site in a few weeks that gets millions of users, the
-only reason they can achieve this is because the open source community has
-laid a feast of software at their feet.
+O desenvolvimento de software moderno, especialmente desenvolvimento web, depende muito de
+reutilizar muito e muito código existente. Isso inclui código que _você_ escreveu no
+passado, mas também código de terceiros, desde grandes frameworks até pequenas
+bibliotecas utilitárias. Não é incomum que uma aplicação dependa de
+dezenas de pacotes e bibliotecas diferentes.
 
-But this doesn't come for free: There's a challenge to code
-reuse, especially reusing code you don't maintain. When your app uses code
-being developed by other people, what happens when they change it?
-They don't want to break your app, and you certainly don't either.
-We solve this problem by _versioning_.
+É difícil subestimar o quão poderoso isso é. Quando você vê histórias de pequenas startups web
+construindo um site em poucas semanas que recebe milhões de usuários, a
+única razão pela qual elas conseguem isso é porque a comunidade open source
+colocou uma festa de software aos seus pés.
+
+Mas isso não vem de graça: Há um desafio para a reutilização de código,
+especialmente reutilizar código que você não mantém. Quando seu app usa código
+sendo desenvolvido por outras pessoas, o que acontece quando elas o mudam?
+Elas não querem quebrar seu app, e você certamente também não quer.
+Resolvemos este problema com _versionamento_.
 
 ## A name and a number
 
