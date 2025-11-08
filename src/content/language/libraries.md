@@ -1,7 +1,8 @@
 ---
 title: Libraries & imports
 shortTitle: Libraries
-description: Guidance on importing and implementing libraries.
+description: Orientação sobre importar e implementar bibliotecas.
+ia-translate: true
 prevpage:
   url: /language/metadata
   title: Metadata
@@ -10,45 +11,45 @@ nextpage:
   title: Classes
 ---
 
-The `import` and `library` directives can help you create a
-modular and shareable code base. Libraries not only provide APIs, but
-are a unit of privacy: identifiers that start with an underscore (`_`)
-are visible only inside the library. *Every Dart file (plus its parts) is a
-[library][]*, even if it doesn't use a [`library`](#library-directive) directive.
+As diretivas `import` e `library` podem ajudá-lo a criar uma
+base de código modular e compartilhável. Bibliotecas não apenas fornecem APIs, mas
+são uma unidade de privacidade: identificadores que começam com um underscore (`_`)
+são visíveis apenas dentro da biblioteca. *Cada arquivo Dart (mais suas partes) é uma
+[biblioteca][]*, mesmo que não use uma diretiva [`library`](#library-directive).
 
-Libraries can be distributed using [packages](/tools/pub/packages).
+Bibliotecas podem ser distribuídas usando [pacotes](/tools/pub/packages).
 
-Dart uses underscores instead of access modifier keywords
-like `public`, `protected`, or `private`.
-While access modifier keywords from other languages
-provide more fine-grained control,
-Dart's use of underscores and library-based privacy
-provides a straightforward configuration mechanism,
-helps enable an efficient implementation of [dynamic access][],
-and improves tree shaking (dead code elimination).
+Dart usa underscores em vez de palavras-chave de modificador de acesso
+como `public`, `protected` ou `private`.
+Enquanto palavras-chave de modificador de acesso de outras linguagens
+fornecem controle mais refinado,
+o uso de underscores por Dart e privacidade baseada em biblioteca
+fornece um mecanismo de configuração direto,
+ajuda a habilitar uma implementação eficiente de [acesso dinâmico][],
+e melhora tree shaking (eliminação de código morto).
 
-[library]: /resources/glossary#library
-[dynamic access]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
+[biblioteca]: /resources/glossary#library
+[acesso dinâmico]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 
-## Using libraries
+## Usando bibliotecas
 
-Use `import` to specify how a namespace from one library is used in the
-scope of another library.
+Use `import` para especificar como um namespace de uma biblioteca é usado no
+escopo de outra biblioteca.
 
-For example, Dart web apps generally use the [`dart:js_interop`][]
-library, which they can import like this:
+Por exemplo, aplicações web Dart geralmente usam a biblioteca [`dart:js_interop`][],
+que elas podem importar assim:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (dart-js-interop-import)"?>
 ```dart
 import 'dart:js_interop';
 ```
 
-The only required argument to `import` is a URI specifying the
-library.
-For built-in libraries, the URI has the special `dart:` scheme.
-For other libraries, you can use a file system path or the `package:`
-scheme. The `package:` scheme specifies libraries provided by a package
-manager such as the pub tool. For example:
+O único argumento obrigatório para `import` é um URI especificando a
+biblioteca.
+Para bibliotecas integradas, o URI tem o esquema especial `dart:`.
+Para outras bibliotecas, você pode usar um caminho de sistema de arquivos ou o esquema `package:`.
+O esquema `package:` especifica bibliotecas fornecidas por um gerenciador de pacotes
+como a ferramenta pub. Por exemplo:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (package-import)"?>
 ```dart
@@ -56,16 +57,15 @@ import 'package:test/test.dart';
 ```
 
 :::note
-*URI* stands for uniform resource identifier.
-*URLs* (uniform resource locators) are a common kind of URI.
+*URI* significa identificador de recurso uniforme.
+*URLs* (localizadores de recursos uniformes) são um tipo comum de URI.
 :::
 
-### Specifying a library prefix
+### Especificando um prefixo de biblioteca
 
-If you import two libraries that have conflicting identifiers, then you
-can specify a prefix for one or both libraries. For example, if library1
-and library2 both have an Element class, then you might have code like
-this:
+Se você importar duas bibliotecas que têm identificadores conflitantes, então você
+pode especificar um prefixo para uma ou ambas as bibliotecas. Por exemplo, se library1
+e library2 ambas têm uma classe Element, então você pode ter código assim:
 
 <?code-excerpt "misc/lib/language_tour/libraries/import_as.dart" replace="/(lib\d)\.dart/package:$1\/$&/g"?>
 ```dart
@@ -79,15 +79,15 @@ Element element1 = Element();
 lib2.Element element2 = lib2.Element();
 ```
 
-Import prefixes with the [wildcard][] name `_` are non-binding,
-but will provide access to the non-private extensions in that library.
+Prefixos de importação com o nome [wildcard][] `_` são não vinculantes,
+mas fornecerão acesso às extensões não privadas nessa biblioteca.
 
 [wildcard]: /language/variables#wildcard-variables
 
-### Importing only part of a library
+### Importando apenas parte de uma biblioteca
 
-If you want to use only part of a library, you can selectively import
-the library. For example:
+Se você deseja usar apenas parte de uma biblioteca, você pode importar seletivamente
+a biblioteca. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/libraries/show_hide.dart (imports)" replace="/(lib\d)\.dart/package:$1\/$&/g"?>
 ```dart
@@ -98,37 +98,37 @@ import 'package:lib1/lib1.dart' show foo;
 import 'package:lib2/lib2.dart' hide foo;
 ```
 
-#### Lazily loading a library {:#lazily-loading-a-library}
+#### Carregando uma biblioteca preguiçosamente {:#lazily-loading-a-library}
 
-*Deferred loading* (also called *lazy loading*)
-allows a web app to load a library on demand,
-if and when the library is needed.
-Use deferred loading when you want to meet one or more of the following needs.
+*Carregamento diferido* (também chamado de *lazy loading*)
+permite que uma aplicação web carregue uma biblioteca sob demanda,
+se e quando a biblioteca é necessária.
+Use carregamento diferido quando você quiser atender a uma ou mais das seguintes necessidades.
 
-* Reduce a web app's initial startup time.
-* Perform A/B testing—trying out
-  alternative implementations of an algorithm, for example.
-* Load rarely used functionality, such as optional screens and dialogs.
+* Reduzir o tempo de inicialização inicial de uma aplicação web.
+* Realizar testes A/B—experimentar
+  implementações alternativas de um algoritmo, por exemplo.
+* Carregar funcionalidades raramente usadas, como telas e diálogos opcionais.
 
-That doesn't mean Dart loads all the deferred components at start time.
-The web app can download deferred components via the web when needed.
+Isso não significa que Dart carrega todos os componentes diferidos no tempo de início.
+A aplicação web pode baixar componentes diferidos via web quando necessário.
 
-The `dart` tool doesn't support deferred loading for targets other than web.
-If you're building a Flutter app,
-consult its implementation of deferred loading in the Flutter guide on
-[deferred components][flutter-deferred].
+A ferramenta `dart` não suporta carregamento diferido para alvos diferentes de web.
+Se você está construindo uma aplicação Flutter,
+consulte sua implementação de carregamento diferido no guia Flutter sobre
+[componentes diferidos][flutter-deferred].
 
 [flutter-deferred]: {{site.flutter-docs}}/perf/deferred-components
 
-To lazily load a library, first import it using `deferred as`.
+Para carregar uma biblioteca preguiçosamente, primeiro importe-a usando `deferred as`.
 
 <?code-excerpt "misc/lib/language_tour/libraries/greeter.dart (import)" replace="/hello\.dart/package:greetings\/$&/g"?>
 ```dart
 import 'package:greetings/hello.dart' deferred as hello;
 ```
 
-When you need the library, invoke
-`loadLibrary()` using the library's identifier.
+Quando você precisar da biblioteca, invoque
+`loadLibrary()` usando o identificador da biblioteca.
 
 <?code-excerpt "misc/lib/language_tour/libraries/greeter.dart (load-library)"?>
 ```dart
@@ -138,30 +138,30 @@ Future<void> greet() async {
 }
 ```
 
-In the preceding code,
-the `await` keyword pauses execution until the library is loaded.
-For more information about `async` and `await`,
-check out [asynchronous programming](/language/async).
+No código anterior,
+a palavra-chave `await` pausa a execução até que a biblioteca seja carregada.
+Para mais informações sobre `async` e `await`,
+confira [programação assíncrona](/language/async).
 
-You can invoke `loadLibrary()` multiple times on a library without problems.
-The library is loaded only once.
+Você pode invocar `loadLibrary()` múltiplas vezes em uma biblioteca sem problemas.
+A biblioteca é carregada apenas uma vez.
 
-Keep in mind the following when you use deferred loading:
+Tenha em mente o seguinte quando você usar carregamento diferido:
 
-* A deferred library's constants aren't constants in the importing file.
-  Remember, these constants don't exist until the deferred library is loaded.
-* You can't use types from a deferred library in the importing file.
-  Instead, consider moving interface types to a library imported by
-  both the deferred library and the importing file.
-* Dart implicitly inserts `loadLibrary()` into the namespace that you define
-  using <code>deferred as <em>namespace</em></code>.
-  The `loadLibrary()` function returns
-  a [`Future`](/libraries/dart-async#future).
+* As constantes de uma biblioteca diferida não são constantes no arquivo de importação.
+  Lembre-se, essas constantes não existem até que a biblioteca diferida seja carregada.
+* Você não pode usar tipos de uma biblioteca diferida no arquivo de importação.
+  Em vez disso, considere mover tipos de interface para uma biblioteca importada por
+  tanto a biblioteca diferida quanto o arquivo de importação.
+* Dart implicitamente insere `loadLibrary()` no namespace que você define
+  usando <code>deferred as <em>namespace</em></code>.
+  A função `loadLibrary()` retorna
+  uma [`Future`](/libraries/dart-async#future).
 
-### The `library` directive {:#library-directive}
+### A diretiva `library` {:#library-directive}
 
-To specify library-level [doc comments][] or [metadata annotations][],
-attach them to a `library` declaration at the start of the file.
+Para especificar [comentários de documentação][doc comments] ou [anotações de metadados][metadata annotations] em nível de biblioteca,
+anexe-os a uma declaração `library` no início do arquivo.
 
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (library-doc)"?>
 ```dart
@@ -170,17 +170,17 @@ attach them to a `library` declaration at the start of the file.
 library;
 ```
 
-## Implementing libraries
+## Implementando bibliotecas
 
-See
-[Create Packages](/tools/pub/create-packages)
-for advice on how to implement a package, including:
+Veja
+[Criar Pacotes](/tools/pub/create-packages)
+para orientação sobre como implementar um pacote, incluindo:
 
-* How to organize library source code.
-* How to use the `export` directive.
-* When to use the `part` directive.
-* How to use conditional imports and exports to implement
-  a library that supports multiple platforms.
+* Como organizar o código-fonte da biblioteca.
+* Como usar a diretiva `export`.
+* Quando usar a diretiva `part`.
+* Como usar importações e exportações condicionais para implementar
+  uma biblioteca que suporta múltiplas plataformas.
 
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [doc comments]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
