@@ -2,8 +2,7 @@
 ia-translate: true
 title: "dart: A ferramenta de linha de comando do Dart"
 shortTitle: Dart CLI
-description: >-
-  Aprenda sobre o CLI 'dart' e seus subcomandos disponíveis.
+description: "Aprenda sobre o CLI 'dart' e seus subcomandos disponíveis."
 ---
 
 A ferramenta `dart` é a interface de linha de comando para o [Dart SDK][].

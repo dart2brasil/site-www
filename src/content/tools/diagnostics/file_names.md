@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: file_names
-description: >-
-  Detalhes sobre o diagnóstico file_names
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico file_names produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

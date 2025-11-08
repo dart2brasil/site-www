@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: dead_null_aware_expression
-description: >-
-  Detalhes sobre o diagnóstico dead_null_aware_expression
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico dead_null_aware_expression produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

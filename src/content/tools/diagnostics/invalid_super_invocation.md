@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: super_invocation_not_last
-description: >-
-  Detalhes sobre o diagnóstico super_invocation_not_last
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico super_invocation_not_last produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 canonical: https://dart.dev/tools/diagnostics/super_invocation_not_last
 redirectTo: /tools/diagnostics/super_invocation_not_last

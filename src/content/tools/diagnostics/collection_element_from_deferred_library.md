@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: collection_element_from_deferred_library
-description: >-
-  Detalhes sobre o diagnóstico collection_element_from_deferred_library
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico collection_element_from_deferred_library produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

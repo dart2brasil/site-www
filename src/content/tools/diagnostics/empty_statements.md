@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: empty_statements
-description: >-
-  Detalhes sobre o diagnóstico empty_statements
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico empty_statements produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: diagnostic_describe_all_properties
-description: >-
-  Detalhes sobre o diagnóstico diagnostic_describe_all_properties
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico diagnostic_describe_all_properties produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

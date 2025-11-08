@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_null_aware_operator
-description: >-
-  Detalhes sobre o diagnóstico invalid_null_aware_operator
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_null_aware_operator produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

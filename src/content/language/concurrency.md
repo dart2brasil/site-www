@@ -1,8 +1,6 @@
 ---
-ia-translate: true
 title: "Concorrência em Dart"
-description: >-
-  Use isolates to enable parallel code execution on multiple processor cores.
+description: Use isolates to enable parallel code execution on multiple processor cores.
 shortTitle: Concurrency
 lastVerified: 2023-12-14
 prevpage:

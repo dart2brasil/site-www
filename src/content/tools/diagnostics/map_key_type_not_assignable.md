@@ -1,8 +1,6 @@
 ---
 title: map_key_type_not_assignable
-description: >-
-  Detalhes sobre o diagnóstico map_key_type_not_assignable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico map_key_type_not_assignable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

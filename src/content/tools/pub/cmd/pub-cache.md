@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dart pub cache
 description: Use dart pub cache para gerenciar o cache do seu sistema.
 ---

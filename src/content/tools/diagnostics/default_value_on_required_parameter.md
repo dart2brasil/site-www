@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: default_value_on_required_parameter
-description: >-
-  Detalhes sobre o diagnóstico default_value_on_required_parameter
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico default_value_on_required_parameter produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

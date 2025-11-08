@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: import_deferred_library_with_load_function
-description: >-
-  Detalhes sobre o diagnóstico import_deferred_library_with_load_function
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico import_deferred_library_with_load_function produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

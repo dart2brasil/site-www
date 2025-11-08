@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: no_generative_constructors_in_superclass
-description: >-
-  Detalhes sobre o diagnóstico no_generative_constructors_in_superclass
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico no_generative_constructors_in_superclass produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: ffi_native_invalid_duplicate_default_asset
-description: >-
-  Detalhes sobre o diagnóstico ffi_native_invalid_duplicate_default_asset
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico ffi_native_invalid_duplicate_default_asset produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

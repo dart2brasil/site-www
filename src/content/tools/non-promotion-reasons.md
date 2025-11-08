@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: Corrigindo falhas de type promotion
-description: >-
-  Soluções para casos em que você sabe mais sobre o
-  tipo de um campo do que o Dart consegue determinar.
+description: "Soluções para casos em que você sabe mais sobre o tipo de um campo do que o Dart consegue determinar."
 ---
 
 [Type promotion][Type promotion] (promoção de tipo) ocorre quando a análise de fluxo pode confirmar de forma segura que

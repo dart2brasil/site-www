@@ -2,9 +2,7 @@
 ia-translate: true
 title: Torne seu programa CLI interativo
 shortTitle: Adicionar comandos
-description: >-
-  Adicione comandos simples à sua aplicação CLI. Aprenda os fundamentos da
-  sintaxe Dart incluindo controle de fluxo, coleções, variáveis, funções e mais.
+description: "Adicione comandos simples à sua aplicação CLI. Aprenda os fundamentos da sintaxe Dart incluindo controle de fluxo, coleções, variáveis, funções e mais."
 sitemap: false
 noindex: true
 layout: learn

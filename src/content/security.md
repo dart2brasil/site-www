@@ -1,8 +1,7 @@
 ---
 ia-translate: true
 title: "Segurança"
-description: >-
-  An overview of the Dart team's philosophy and processes for security.
+description: An overview of the Dart team's philosophy and processes for security.
 showBreadcrumbs: false
 skipFreshness: true
 ---

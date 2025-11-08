@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: always_declare_return_types
-description: >-
-  Detalhes sobre o diagnóstico always_declare_return_types
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico always_declare_return_types produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

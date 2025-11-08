@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: optional_parameter_in_operator
-description: >-
-  Detalhes sobre o diagnóstico optional_parameter_in_operator
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico optional_parameter_in_operator produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

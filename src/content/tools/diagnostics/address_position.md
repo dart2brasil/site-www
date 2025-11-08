@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: address_position
-description: >-
-  Detalhes sobre o diagnóstico address_position
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico address_position produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,8 +1,6 @@
 ---
-ia-translate: true
 title: dart fix
-description: >-
-  Command-line tool for applying analysis fixes and migrating API usages.
+description: "Command-line tool for applying analysis fixes and migrating API usages."
 ---
 
 O comando `dart fix`

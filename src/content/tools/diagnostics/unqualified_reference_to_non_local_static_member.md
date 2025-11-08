@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unqualified_reference_to_non_local_static_member
-description: >-
-  Detalhes sobre o diagnóstico unqualified_reference_to_non_local_static_member
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico unqualified_reference_to_non_local_static_member produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

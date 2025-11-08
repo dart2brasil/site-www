@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: super_formal_parameter_type_is_not_subtype_of_associated
-description: >-
-  Detalhes sobre o diagnóstico super_formal_parameter_type_is_not_subtype_of_associated
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico super_formal_parameter_type_is_not_subtype_of_associated produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

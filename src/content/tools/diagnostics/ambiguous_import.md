@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: ambiguous_import
-description: >-
-  Detalhes sobre o diagnóstico ambiguous_import
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico ambiguous_import produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

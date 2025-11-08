@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: always_put_control_body_on_new_line
-description: >-
-  Detalhes sobre o diagnóstico always_put_control_body_on_new_line
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico always_put_control_body_on_new_line produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

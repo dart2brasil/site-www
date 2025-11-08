@@ -2,9 +2,7 @@
 ia-translate: true
 title: Arquivo do SDK do Dart
 shortTitle: Arquivo
-description: >-
-  Baixe versões específicas dos canais stable, beta, dev e main do
-  SDK do Dart e da documentação da API do Dart.
+description: "Baixe versões específicas dos canais stable, beta, dev e main do SDK do Dart e da documentação da API do Dart."
 ---
 
 Use este arquivo para baixar

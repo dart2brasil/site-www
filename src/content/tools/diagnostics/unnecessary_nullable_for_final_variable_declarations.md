@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_nullable_for_final_variable_declarations
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_nullable_for_final_variable_declarations
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_nullable_for_final_variable_declarations produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

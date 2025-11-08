@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_asserts_with_message
-description: >-
-  Detalhes sobre o diagnóstico prefer_asserts_with_message
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_asserts_with_message produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

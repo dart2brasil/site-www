@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dart pub remove
 description: "Use dart pub remove para remover uma dependência."
 ---

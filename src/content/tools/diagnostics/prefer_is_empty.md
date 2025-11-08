@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_is_empty
-description: >-
-  Detalhes sobre o diagnóstico prefer_is_empty
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_is_empty produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

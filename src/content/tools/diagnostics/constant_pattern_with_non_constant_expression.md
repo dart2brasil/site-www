@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: constant_pattern_with_non_constant_expression
-description: >-
-  Detalhes sobre o diagnóstico constant_pattern_with_non_constant_expression
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico constant_pattern_with_non_constant_expression produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

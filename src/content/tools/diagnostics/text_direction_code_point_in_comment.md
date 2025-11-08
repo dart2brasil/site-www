@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: text_direction_code_point_in_comment
-description: >-
-  Detalhes sobre o diagnóstico text_direction_code_point_in_comment
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico text_direction_code_point_in_comment produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

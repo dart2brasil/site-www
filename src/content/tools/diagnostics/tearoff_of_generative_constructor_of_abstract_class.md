@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: tearoff_of_generative_constructor_of_abstract_class
-description: >-
-  Detalhes sobre o diagnóstico tearoff_of_generative_constructor_of_abstract_class
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico tearoff_of_generative_constructor_of_abstract_class produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

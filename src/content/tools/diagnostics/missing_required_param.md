@@ -1,8 +1,6 @@
 ---
 title: missing_required_param
-description: >-
-  Detalhes sobre o diagnóstico missing_required_param
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico missing_required_param produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

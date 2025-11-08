@@ -2,9 +2,7 @@
 ia-translate: true
 title: HTTP
 shortTitle: HTTP
-description: >-
-  Implemente chamadas à API do Wikipedia para completar a funcionalidade principal
-  do CLI do Wikipedia.
+description: "Implemente chamadas à API do Wikipedia para completar a funcionalidade principal do CLI do Wikipedia."
 sitemap: false
 noindex: true
 layout: learn

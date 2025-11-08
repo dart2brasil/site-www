@@ -1,8 +1,6 @@
 ---
 title: mixin_application_not_implemented_interface
-description: >-
-  Detalhes sobre o diagnóstico mixin_application_not_implemented_interface
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico mixin_application_not_implemented_interface produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unintended_html_in_doc_comment
-description: >-
-  Detalhes sobre o diagnóstico unintended_html_in_doc_comment
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico unintended_html_in_doc_comment produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

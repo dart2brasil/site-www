@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: workspace_value_not_string
-description: >-
-  Detalhes sobre o diagnóstico workspace_value_not_string
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico workspace_value_not_string produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

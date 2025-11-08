@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: non_covariant_type_parameter_position_in_representation_type
-description: >-
-  Detalhes sobre o diagnóstico non_covariant_type_parameter_position_in_representation_type
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico non_covariant_type_parameter_position_in_representation_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

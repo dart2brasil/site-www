@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: throw_of_invalid_type
-description: >-
-  Detalhes sobre o diagnóstico throw_of_invalid_type
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico throw_of_invalid_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

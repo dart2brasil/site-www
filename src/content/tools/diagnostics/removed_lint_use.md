@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: removed_lint_use
-description: >-
-  Detalhes sobre o diagnóstico removed_lint_use
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico removed_lint_use produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

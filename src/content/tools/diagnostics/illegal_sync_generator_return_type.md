@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: illegal_sync_generator_return_type
-description: >-
-  Detalhes sobre o diagnóstico illegal_sync_generator_return_type
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico illegal_sync_generator_return_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

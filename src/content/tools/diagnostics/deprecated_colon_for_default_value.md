@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: deprecated_colon_for_default_value
-description: >-
-  Detalhes sobre o diagnóstico deprecated_colon_for_default_value
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico deprecated_colon_for_default_value produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

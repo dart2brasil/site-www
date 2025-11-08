@@ -1,8 +1,6 @@
 ---
 title: await_in_late_local_variable_initializer
-description: >-
-  Detalhes sobre o diagnóstico await_in_late_local_variable_initializer
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico await_in_late_local_variable_initializer produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

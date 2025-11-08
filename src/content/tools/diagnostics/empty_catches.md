@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: empty_catches
-description: >-
-  Detalhes sobre o diagnóstico empty_catches
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico empty_catches produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

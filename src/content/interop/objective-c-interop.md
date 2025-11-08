@@ -3,8 +3,7 @@ ia-translate: true
 title: "Interoperabilidade com Objective-C e Swift usando package:ffigen"
 shortTitle: "Objective-C & Swift interop"
 breadcrumb: Objective-C & Swift
-description: >-
-  Para usar código Objective-C e Swift em seu programa Dart, use package:ffigen.
+description: "Para usar código Objective-C e Swift em seu programa Dart, use package:ffigen."
 ffigen: "https://pub.dev/packages/ffigen"
 example: "https://github.com/dart-lang/native/tree/main/pkgs/ffigen/example/objective_c"
 ffigenapi: "https://pub.dev/documentation/ffigen/latest/ffigen"

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: super_formal_parameter_without_associated_positional
-description: >-
-  Detalhes sobre o diagnóstico super_formal_parameter_without_associated_positional
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico super_formal_parameter_without_associated_positional produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

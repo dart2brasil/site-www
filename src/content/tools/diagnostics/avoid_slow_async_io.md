@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: avoid_slow_async_io
-description: >-
-  Detalhes sobre o diagnóstico avoid_slow_async_io
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico avoid_slow_async_io produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

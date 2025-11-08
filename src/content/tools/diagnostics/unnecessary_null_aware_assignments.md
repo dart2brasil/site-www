@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_null_aware_assignments
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_null_aware_assignments
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_null_aware_assignments produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: avoid_empty_else
-description: >-
-  Detalhes sobre o diagnóstico avoid_empty_else
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico avoid_empty_else produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: dot_shorthand_missing_context
-description: >-
-  Detalhes sobre o diagnóstico dot_shorthand_missing_context
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico dot_shorthand_missing_context produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

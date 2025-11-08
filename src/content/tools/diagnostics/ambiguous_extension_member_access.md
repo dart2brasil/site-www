@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: ambiguous_extension_member_access
-description: >-
-  Detalhes sobre o diagnóstico ambiguous_extension_member_access
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico ambiguous_extension_member_access produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

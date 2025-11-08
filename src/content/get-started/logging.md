@@ -2,9 +2,7 @@
 ia-translate: true
 title: Logging
 short-title: Logging
-description: >-
-  Aprenda como adicionar logging ao seu aplicativo Dart para ajudar na depuração e
-  monitoramento.
+description: "Aprenda como adicionar logging ao seu aplicativo Dart para ajudar na depuração e monitoramento."
 sitemap: false
 noindex: true
 layout: learn

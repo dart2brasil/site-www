@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dart analyze
 description: Command-line tool for static analysis
 showToc: false

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: return_without_value
-description: >-
-  Detalhes sobre o diagnóstico return_without_value
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico return_without_value produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

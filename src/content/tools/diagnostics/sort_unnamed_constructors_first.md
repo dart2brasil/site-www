@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: sort_unnamed_constructors_first
-description: >-
-  Detalhes sobre o diagnóstico sort_unnamed_constructors_first
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico sort_unnamed_constructors_first produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

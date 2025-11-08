@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: referenced_before_declaration
-description: >-
-  Detalhes sobre o diagnóstico referenced_before_declaration
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico referenced_before_declaration produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

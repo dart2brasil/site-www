@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: sort_child_properties_last
-description: >-
-  Detalhes sobre o diagnóstico sort_child_properties_last
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico sort_child_properties_last produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

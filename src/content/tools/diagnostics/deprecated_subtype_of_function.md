@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: deprecated_subtype_of_function
-description: >-
-  Detalhes sobre o diagnóstico deprecated_subtype_of_function
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico deprecated_subtype_of_function produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

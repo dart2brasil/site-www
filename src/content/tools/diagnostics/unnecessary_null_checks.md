@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_null_checks
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_null_checks
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_null_checks produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

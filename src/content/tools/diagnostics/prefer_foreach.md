@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_foreach
-description: >-
-  Detalhes sobre o diagnóstico prefer_foreach
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_foreach produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

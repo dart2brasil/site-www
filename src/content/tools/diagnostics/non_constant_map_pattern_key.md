@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: non_constant_map_pattern_key
-description: >-
-  Detalhes sobre o diagnóstico non_constant_map_pattern_key
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico non_constant_map_pattern_key produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

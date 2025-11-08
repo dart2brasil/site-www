@@ -2,8 +2,7 @@
 ia-translate: true
 title: "Introdução a async e HTTP"
 shortTitle: Async e HTTP
-description: >-
-  Aprenda sobre programação assíncrona em Dart e como fazer requisições HTTP.
+description: "Aprenda sobre programação assíncrona em Dart e como fazer requisições HTTP."
 sitemap: false
 noindex: true
 layout: learn

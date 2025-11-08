@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: avoid_function_literals_in_foreach_calls
-description: >-
-  Detalhes sobre o diagnóstico avoid_function_literals_in_foreach_calls
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico avoid_function_literals_in_foreach_calls produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: for_in_with_const_variable
-description: >-
-  Detalhes sobre o diagnóstico for_in_with_const_variable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico for_in_with_const_variable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

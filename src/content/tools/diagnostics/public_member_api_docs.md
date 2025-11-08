@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: public_member_api_docs
-description: >-
-  Detalhes sobre o diagnóstico public_member_api_docs
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico public_member_api_docs produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

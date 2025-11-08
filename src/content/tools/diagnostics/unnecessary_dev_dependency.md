@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_dev_dependency
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_dev_dependency
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_dev_dependency produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

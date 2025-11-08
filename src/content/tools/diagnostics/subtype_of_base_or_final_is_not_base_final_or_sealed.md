@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: subtype_of_base_or_final_is_not_base_final_or_sealed
-description: >-
-  Detalhes sobre o diagnóstico subtype_of_base_or_final_is_not_base_final_or_sealed
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico subtype_of_base_or_final_is_not_base_final_or_sealed produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

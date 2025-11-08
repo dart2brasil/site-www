@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: variable_length_array_not_last
-description: >-
-  Detalhes sobre o diagnóstico variable_length_array_not_last
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico variable_length_array_not_last produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

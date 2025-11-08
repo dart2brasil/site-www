@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unreachable_switch_case
-description: >-
-  Detalhes sobre o diagnóstico unreachable_switch_case
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico unreachable_switch_case produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

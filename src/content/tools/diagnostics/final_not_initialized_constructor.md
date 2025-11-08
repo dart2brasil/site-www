@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: final_not_initialized_constructor
-description: >-
-  Detalhes sobre o diagnóstico final_not_initialized_constructor
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico final_not_initialized_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

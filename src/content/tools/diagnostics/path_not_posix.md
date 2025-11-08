@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: path_not_posix
-description: >-
-  Detalhes sobre o diagnóstico path_not_posix
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico path_not_posix produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -2,9 +2,7 @@
 ia-translate: true
 title: "Convenções de layout de pacotes"
 breadcrumb: Layout de pacotes
-description: >-
-  Aprenda mais sobre a estrutura de diretórios usada
-  pela ferramenta de gerenciamento de pacotes do Dart, pub.
+description: "Aprenda mais sobre a estrutura de diretórios usada pela ferramenta de gerenciamento de pacotes do Dart, pub."
 ---
 
 Ao construir um [pacote pub](/tools/pub/packages),

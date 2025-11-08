@@ -1,8 +1,6 @@
 ---
 title: late_final_local_already_assigned
-description: >-
-  Detalhes sobre o diagnóstico late_final_local_already_assigned
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico late_final_local_already_assigned produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

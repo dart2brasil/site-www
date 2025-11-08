@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: collection_methods_unrelated_type
-description: >-
-  Detalhes sobre o diagnóstico collection_methods_unrelated_type
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico collection_methods_unrelated_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

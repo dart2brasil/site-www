@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_function_type_syntax_for_parameters
-description: >-
-  Detalhes sobre o diagnóstico use_function_type_syntax_for_parameters
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_function_type_syntax_for_parameters produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

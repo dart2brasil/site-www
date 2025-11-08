@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: equal_keys_in_map
-description: >-
-  Detalhes sobre o diagnóstico equal_keys_in_map
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico equal_keys_in_map produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

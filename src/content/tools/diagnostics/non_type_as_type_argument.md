@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: non_type_as_type_argument
-description: >-
-  Detalhes sobre o diagnóstico non_type_as_type_argument
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico non_type_as_type_argument produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

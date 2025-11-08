@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_wildcard_pattern
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_wildcard_pattern
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_wildcard_pattern produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

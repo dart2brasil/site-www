@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: path_does_not_exist
-description: >-
-  Detalhes sobre o diagnóstico path_does_not_exist
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico path_does_not_exist produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

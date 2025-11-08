@@ -1,8 +1,6 @@
 ---
 title: unnecessary_non_null_assertion
-description: >-
-  Details about the unnecessary_non_null_assertion
-  diagnostic produced by the Dart analyzer.
+description: Details about the unnecessary_non_null_assertion diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

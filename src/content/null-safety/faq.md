@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: "Null safety: Frequently asked questions"
 description: FAQs to help you migrate your Dart code to null safety
 shortTitle: FAQ (null safety)

@@ -1,8 +1,7 @@
 ---
 ia-translate: true
 title: Diretrizes de marca Dart
-description: >-
-  As diretrizes que regem o uso das marcas e ativos Dart.
+description: As diretrizes que regem o uso das marcas e ativos Dart.
 skipFreshness: true
 showBreadcrumbs: false
 ---

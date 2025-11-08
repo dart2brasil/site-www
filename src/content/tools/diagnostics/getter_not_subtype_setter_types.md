@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: getter_not_subtype_setter_types
-description: >-
-  Detalhes sobre o diagnóstico getter_not_subtype_setter_types
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico getter_not_subtype_setter_types produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

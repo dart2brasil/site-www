@@ -2,8 +2,7 @@
 ia-translate: true
 title: "Organizando código Dart com packages e libraries"
 shortTitle: Packages e libraries
-description: >-
-  Aprenda como organizar seu código Dart em libraries e packages reutilizáveis.
+description: "Aprenda como organizar seu código Dart em libraries e packages reutilizáveis."
 sitemap: false
 noindex: true
 layout: learn

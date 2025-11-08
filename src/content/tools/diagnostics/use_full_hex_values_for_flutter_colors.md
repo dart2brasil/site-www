@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_full_hex_values_for_flutter_colors
-description: >-
-  Detalhes sobre o diagnóstico use_full_hex_values_for_flutter_colors
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_full_hex_values_for_flutter_colors produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

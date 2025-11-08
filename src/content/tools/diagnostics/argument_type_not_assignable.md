@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: argument_type_not_assignable
-description: >-
-  Detalhes sobre o diagnóstico argument_type_not_assignable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico argument_type_not_assignable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

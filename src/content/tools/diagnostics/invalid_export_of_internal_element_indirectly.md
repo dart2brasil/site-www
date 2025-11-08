@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_export_of_internal_element_indirectly
-description: >-
-  Detalhes sobre o diagnóstico invalid_export_of_internal_element_indirectly
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_export_of_internal_element_indirectly produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

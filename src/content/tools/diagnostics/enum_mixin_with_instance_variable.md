@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: enum_mixin_with_instance_variable
-description: >-
-  Detalhes sobre o diagnóstico enum_mixin_with_instance_variable
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico enum_mixin_with_instance_variable produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

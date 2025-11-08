@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dart pub outdated
 description: "Use dart pub outdated para ajudar você a atualizar as dependências do seu pacote."
 ---

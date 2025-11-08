@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: private_named_non_field_parameter
-description: >-
-  Detalhes sobre o diagnóstico private_named_non_field_parameter
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico private_named_non_field_parameter produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

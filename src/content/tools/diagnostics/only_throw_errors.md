@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: only_throw_errors
-description: >-
-  Detalhes sobre o diagnóstico only_throw_errors
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico only_throw_errors produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extension_type_representation_type_bottom
-description: >-
-  Detalhes sobre o diagnóstico extension_type_representation_type_bottom
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico extension_type_representation_type_bottom produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

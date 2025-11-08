@@ -2,8 +2,7 @@
 ia-translate: true
 title: Testing
 shortTitle: Testing
-description: >-
-  Aprenda como escrever testes para seu código Dart usando a biblioteca `package:test`.
+description: "Aprenda como escrever testes para seu código Dart usando a biblioteca `package:test`."
 sitemap: false
 noindex: true
 layout: learn

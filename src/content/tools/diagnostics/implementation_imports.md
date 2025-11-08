@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: implementation_imports
-description: >-
-  Detalhes sobre o diagnóstico implementation_imports
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico implementation_imports produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

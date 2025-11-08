@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: must_be_a_subtype
-description: >-
-  Detalhes sobre o diagnóstico must_be_a_subtype
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico must_be_a_subtype produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

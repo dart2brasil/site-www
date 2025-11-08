@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_getters_setters
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_getters_setters
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_getters_setters produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

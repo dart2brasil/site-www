@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: abi_specific_integer_invalid
-description: >-
-  Detalhes sobre o diagnóstico abi_specific_integer_invalid
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico abi_specific_integer_invalid produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

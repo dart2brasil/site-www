@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: field_must_be_external_in_struct
-description: >-
-  Detalhes sobre o diagnóstico field_must_be_external_in_struct
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico field_must_be_external_in_struct produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

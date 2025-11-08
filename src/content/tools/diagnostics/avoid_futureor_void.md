@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: avoid_futureor_void
-description: >-
-  Detalhes sobre o diagnóstico avoid_futureor_void
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico avoid_futureor_void produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

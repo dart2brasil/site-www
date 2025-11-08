@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: concrete_class_has_enum_superinterface
-description: >-
-  Detalhes sobre o diagnóstico concrete_class_has_enum_superinterface
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico concrete_class_has_enum_superinterface produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

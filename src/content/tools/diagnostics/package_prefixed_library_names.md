@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: package_prefixed_library_names
-description: >-
-  Detalhes sobre o diagnóstico package_prefixed_library_names
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico package_prefixed_library_names produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: implicit_call_tearoffs
-description: >-
-  Detalhes sobre o diagnóstico implicit_call_tearoffs
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico implicit_call_tearoffs produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

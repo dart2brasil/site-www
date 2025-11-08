@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_init_formals
-description: >-
-  Detalhes sobre o diagnóstico type_init_formals
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_init_formals produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

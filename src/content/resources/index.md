@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Resources
 description: Landing page for Dart language resources.
 showToc: false

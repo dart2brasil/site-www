@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: label_in_outer_scope
-description: >-
-  Detalhes sobre o diagnóstico label_in_outer_scope
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico label_in_outer_scope produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

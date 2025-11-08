@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: avoid_renaming_method_parameters
-description: >-
-  Detalhes sobre o diagnóstico avoid_renaming_method_parameters
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico avoid_renaming_method_parameters produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

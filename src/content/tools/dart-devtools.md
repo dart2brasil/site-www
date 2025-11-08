@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Dart DevTools
 shortTitle: DevTools
 description: A suite of debugging and performance tools.

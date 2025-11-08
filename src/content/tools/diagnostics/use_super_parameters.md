@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_super_parameters
-description: >-
-  Detalhes sobre o diagnóstico use_super_parameters
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_super_parameters produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

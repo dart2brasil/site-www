@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: relational_pattern_operator_return_type_not_assignable_to_bool
-description: >-
-  Detalhes sobre o diagnóstico relational_pattern_operator_return_type_not_assignable_to_bool
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico relational_pattern_operator_return_type_not_assignable_to_bool produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

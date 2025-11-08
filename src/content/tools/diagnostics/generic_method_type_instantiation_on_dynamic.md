@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: generic_method_type_instantiation_on_dynamic
-description: >-
-  Detalhes sobre o diagnóstico generic_method_type_instantiation_on_dynamic
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico generic_method_type_instantiation_on_dynamic produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

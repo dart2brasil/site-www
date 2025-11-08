@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_of_native_extension
-description: >-
-  Detalhes sobre o diagnóstico use_of_native_extension
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_of_native_extension produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

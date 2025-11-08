@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: tighten_type_of_initializing_formals
-description: >-
-  Detalhes sobre o diagnóstico tighten_type_of_initializing_formals
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico tighten_type_of_initializing_formals produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

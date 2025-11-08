@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: remove_deprecations_in_breaking_versions
-description: >-
-  Detalhes sobre o diagnóstico remove_deprecations_in_breaking_versions
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico remove_deprecations_in_breaking_versions produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

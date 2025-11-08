@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_expression_function_bodies
-description: >-
-  Detalhes sobre o diagnóstico prefer_expression_function_bodies
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_expression_function_bodies produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

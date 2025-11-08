@@ -3,8 +3,7 @@ ia-translate: true
 title: Aprenda Dart
 shortTitle: Aprenda
 breadcrumb: Tutorial
-description: >-
-  Inicie sua jornada de aprendizado de Dart construindo uma aplicação CLI interativa.
+description: "Inicie sua jornada de aprendizado de Dart construindo uma aplicação CLI interativa."
 sitemap: false
 noindex: true
 layout: learn

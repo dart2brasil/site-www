@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: equal_elements_in_set
-description: >-
-  Detalhes sobre o diagnóstico equal_elements_in_set
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico equal_elements_in_set produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

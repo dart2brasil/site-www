@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: return_in_generative_constructor
-description: >-
-  Detalhes sobre o diagnóstico return_in_generative_constructor
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico return_in_generative_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: field_initializer_not_assignable
-description: >-
-  Detalhes sobre o diagnóstico field_initializer_not_assignable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico field_initializer_not_assignable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

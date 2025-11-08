@@ -1,8 +1,6 @@
 ---
 title: library_annotations
-description: >-
-  Detalhes sobre o diagnóstico library_annotations
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico library_annotations produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

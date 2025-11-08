@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: hash_and_equals
-description: >-
-  Detalhes sobre o diagnóstico hash_and_equals
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico hash_and_equals produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefix_identifier_not_followed_by_dot
-description: >-
-  Detalhes sobre o diagnóstico prefix_identifier_not_followed_by_dot
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico prefix_identifier_not_followed_by_dot produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

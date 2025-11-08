@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: mismatched_annotation_on_struct_field
-description: >-
-  Detalhes sobre o diagnóstico mismatched_annotation_on_struct_field
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico mismatched_annotation_on_struct_field produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

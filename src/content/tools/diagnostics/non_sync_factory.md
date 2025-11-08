@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: non_sync_factory
-description: >-
-  Detalhes sobre o diagnóstico non_sync_factory
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico non_sync_factory produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

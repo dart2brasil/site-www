@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: overridden_fields
-description: >-
-  Detalhes sobre o diagnóstico overridden_fields
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico overridden_fields produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_rethrow_when_possible
-description: >-
-  Detalhes sobre o diagnóstico use_rethrow_when_possible
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_rethrow_when_possible produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: field_initializer_factory_constructor
-description: >-
-  Detalhes sobre o diagnóstico field_initializer_factory_constructor
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico field_initializer_factory_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

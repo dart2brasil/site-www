@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: inconsistent_language_version_override
-description: >-
-  Detalhes sobre o diagnóstico inconsistent_language_version_override
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico inconsistent_language_version_override produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

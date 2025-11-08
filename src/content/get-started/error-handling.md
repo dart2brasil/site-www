@@ -2,9 +2,7 @@
 ia-translate: true
 title: Tratamento de erros
 shortTitle: Tratamento de erros
-description: >-
-  Melhore a robustez da aplicação lidando com erros. Aprenda sobre exceptions, errors,
-  `try/catch`, `throw` e `rethrow`.
+description: "Melhore a robustez da aplicação lidando com erros. Aprenda sobre exceptions, errors, `try/catch`, `throw` e `rethrow`."
 sitemap: false
 noindex: true
 layout: learn

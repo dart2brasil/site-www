@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Learning Dart as a JavaScript developer
 description: Leverage your JavaScript knowledge when learning Dart.
 bodyClass: highlight-languages

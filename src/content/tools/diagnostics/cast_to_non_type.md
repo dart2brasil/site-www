@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: cast_to_non_type
-description: >-
-  Detalhes sobre o diagnóstico cast_to_non_type
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico cast_to_non_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: doc_import_cannot_be_deferred
-description: >-
-  Detalhes sobre o diagnóstico doc_import_cannot_be_deferred
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico doc_import_cannot_be_deferred produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

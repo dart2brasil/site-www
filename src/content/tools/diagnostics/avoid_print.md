@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: avoid_print
-description: >-
-  Detalhes sobre o diagnóstico avoid_print
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico avoid_print produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

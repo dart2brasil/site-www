@@ -2,9 +2,7 @@
 ia-translate: true
 title: Refinando o command_runner
 shortTitle: Refinando o command_runner
-description: >-
-  Melhore o HelpCommand para fornecer informações mais detalhadas e adicione um
-  argumento onOutput para tratamento de saída flexível.
+description: "Melhore o HelpCommand para fornecer informações mais detalhadas e adicione um argumento onOutput para tratamento de saída flexível."
 sitemap: false
 noindex: true
 layout: learn

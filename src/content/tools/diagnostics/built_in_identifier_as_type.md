@@ -1,8 +1,6 @@
 ---
 title: built_in_identifier_as_type
-description: >-
-  Detalhes sobre o diagnóstico built_in_identifier_as_type
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico built_in_identifier_as_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_final_locals
-description: >-
-  Detalhes sobre o diagnóstico prefer_final_locals
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_final_locals produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

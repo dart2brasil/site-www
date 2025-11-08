@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extension_declares_abstract_member
-description: >-
-  Detalhes sobre o diagnóstico extension_declares_abstract_member
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico extension_declares_abstract_member produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

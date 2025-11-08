@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: variable_pattern_keyword_in_declaration_context
-description: >-
-  Detalhes sobre o diagnóstico variable_pattern_keyword_in_declaration_context
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico variable_pattern_keyword_in_declaration_context produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

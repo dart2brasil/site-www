@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer
-description: >-
-  Detalhes sobre o diagnóstico ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: part_of_non_part
-description: >-
-  Detalhes sobre o diagnóstico part_of_non_part
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico part_of_non_part produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

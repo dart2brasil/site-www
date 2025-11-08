@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: expected_one_set_type_arguments
-description: >-
-  Detalhes sobre o diagnóstico expected_one_set_type_arguments
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico expected_one_set_type_arguments produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

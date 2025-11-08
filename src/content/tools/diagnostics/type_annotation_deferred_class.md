@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_annotation_deferred_class
-description: >-
-  Detalhes sobre o diagnóstico type_annotation_deferred_class
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_annotation_deferred_class produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

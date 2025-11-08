@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: yield_in_non_generator
-description: >-
-  Detalhes sobre o diagnóstico yield_in_non_generator
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico yield_in_non_generator produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

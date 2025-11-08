@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: relational_pattern_operand_type_not_assignable
-description: >-
-  Detalhes sobre o diagnóstico relational_pattern_operand_type_not_assignable
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico relational_pattern_operand_type_not_assignable produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

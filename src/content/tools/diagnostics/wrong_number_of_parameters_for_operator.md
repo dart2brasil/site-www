@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: wrong_number_of_parameters_for_operator
-description: >-
-  Detalhes sobre o diagnóstico wrong_number_of_parameters_for_operator
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico wrong_number_of_parameters_for_operator produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

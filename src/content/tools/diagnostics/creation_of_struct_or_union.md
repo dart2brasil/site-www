@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: creation_of_struct_or_union
-description: >-
-  Detalhes sobre o diagnóstico creation_of_struct_or_union
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico creation_of_struct_or_union produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

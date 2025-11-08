@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_annotate_public_apis
-description: >-
-  Detalhes sobre o diagnóstico type_annotate_public_apis
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_annotate_public_apis produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

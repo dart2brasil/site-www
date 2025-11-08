@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_interpolation_to_compose_strings
-description: >-
-  Detalhes sobre o diagnóstico prefer_interpolation_to_compose_strings
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_interpolation_to_compose_strings produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unreachable_switch_default
-description: >-
-  Detalhes sobre o diagnóstico unreachable_switch_default
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico unreachable_switch_default produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

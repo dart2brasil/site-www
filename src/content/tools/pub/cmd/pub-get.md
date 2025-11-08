@@ -1,8 +1,7 @@
 ---
 ia-translate: true
 title: dart pub get
-description: >-
-  Use dart pub get para recuperar as dependências usadas pela sua aplicação Dart.
+description: "Use dart pub get para recuperar as dependências usadas pela sua aplicação Dart."
 ---
 
 _Get_ (obter) é um dos comandos da [ferramenta pub](/tools/pub/cmd).

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_key_in_widget_constructors
-description: >-
-  Detalhes sobre o diagnóstico use_key_in_widget_constructors
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_key_in_widget_constructors produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

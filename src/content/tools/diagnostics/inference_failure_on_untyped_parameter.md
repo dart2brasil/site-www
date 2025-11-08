@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: inference_failure_on_untyped_parameter
-description: >-
-  Detalhes sobre o diagnóstico inference_failure_on_untyped_parameter
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico inference_failure_on_untyped_parameter produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: abstract_super_member_reference
-description: >-
-  Detalhes sobre o diagnóstico abstract_super_member_reference
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico abstract_super_member_reference produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

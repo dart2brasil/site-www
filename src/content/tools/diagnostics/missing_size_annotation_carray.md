@@ -1,8 +1,6 @@
 ---
 title: missing_size_annotation_carray
-description: >-
-  Detalhes sobre o diagnóstico missing_size_annotation_carray
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico missing_size_annotation_carray produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

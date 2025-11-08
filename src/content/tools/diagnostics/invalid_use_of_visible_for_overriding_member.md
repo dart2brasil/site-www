@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_use_of_visible_for_overriding_member
-description: >-
-  Detalhes sobre o diagnóstico invalid_use_of_visible_for_overriding_member
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_use_of_visible_for_overriding_member produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

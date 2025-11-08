@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: always_use_package_imports
-description: >-
-  Detalhes sobre o diagnóstico always_use_package_imports
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico always_use_package_imports produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: rest_element_in_map_pattern
-description: >-
-  Detalhes sobre o diagnóstico rest_element_in_map_pattern
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico rest_element_in_map_pattern produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

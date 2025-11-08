@@ -2,9 +2,7 @@
 ia-translate: true
 title: "Dependências de pacotes"
 breadcrumb: Dependências
-description: >-
-  Adicione outros pacotes ao seu aplicativo.
-  Especifique localizações de pacotes, restrições de versão e mais.
+description: "Adicione outros pacotes ao seu aplicativo. Especifique localizações de pacotes, restrições de versão e mais."
 ---
 
 Dependências são um dos conceitos principais do [gerenciador de pacotes pub][pub package manager].

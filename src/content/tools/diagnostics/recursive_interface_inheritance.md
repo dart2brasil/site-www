@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: recursive_interface_inheritance
-description: >-
-  Detalhes sobre o diagnóstico recursive_interface_inheritance
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico recursive_interface_inheritance produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

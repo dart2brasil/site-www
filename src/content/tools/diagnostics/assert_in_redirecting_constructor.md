@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: assert_in_redirecting_constructor
-description: >-
-  Detalhes sobre o diagnóstico assert_in_redirecting_constructor
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico assert_in_redirecting_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: shared_deferred_prefix
-description: >-
-  Detalhes sobre o diagnóstico shared_deferred_prefix
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico shared_deferred_prefix produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

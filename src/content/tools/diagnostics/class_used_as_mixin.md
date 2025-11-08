@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: class_used_as_mixin
-description: >-
-  Detalhes sobre o diagnóstico class_used_as_mixin
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico class_used_as_mixin produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

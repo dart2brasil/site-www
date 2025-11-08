@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: const_initialized_with_non_constant_value
-description: >-
-  Detalhes sobre o diagnóstico const_initialized_with_non_constant_value
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico const_initialized_with_non_constant_value produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

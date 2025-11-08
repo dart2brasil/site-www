@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: recursive_compile_time_constant
-description: >-
-  Detalhes sobre o diagnóstico recursive_compile_time_constant
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico recursive_compile_time_constant produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

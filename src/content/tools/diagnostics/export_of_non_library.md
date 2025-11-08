@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: export_of_non_library
-description: >-
-  Detalhes sobre o diagnóstico export_of_non_library
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico export_of_non_library produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

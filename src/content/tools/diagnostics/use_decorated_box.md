@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_decorated_box
-description: >-
-  Detalhes sobre o diagnóstico use_decorated_box
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_decorated_box produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

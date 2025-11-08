@@ -1,8 +1,6 @@
 ---
 title: library_private_types_in_public_api
-description: >-
-  Detalhes sobre o diagnóstico library_private_types_in_public_api
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico library_private_types_in_public_api produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

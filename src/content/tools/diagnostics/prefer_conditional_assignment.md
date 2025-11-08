@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_conditional_assignment
-description: >-
-  Detalhes sobre o diagnóstico prefer_conditional_assignment
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_conditional_assignment produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

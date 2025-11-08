@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: null_check_always_fails
-description: >-
-  Detalhes sobre o diagnóstico null_check_always_fails
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico null_check_always_fails produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

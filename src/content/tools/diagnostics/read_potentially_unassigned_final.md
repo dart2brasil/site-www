@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: read_potentially_unassigned_final
-description: >-
-  Detalhes sobre o diagnóstico read_potentially_unassigned_final
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico read_potentially_unassigned_final produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

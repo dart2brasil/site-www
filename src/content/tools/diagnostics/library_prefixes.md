@@ -1,8 +1,6 @@
 ---
 title: library_prefixes
-description: >-
-  Detalhes sobre o diagnóstico library_prefixes
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico library_prefixes produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

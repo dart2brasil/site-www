@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: native_field_missing_type
-description: >-
-  Detalhes sobre o diagnóstico native_field_missing_type
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico native_field_missing_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

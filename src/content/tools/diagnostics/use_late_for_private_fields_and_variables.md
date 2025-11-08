@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_late_for_private_fields_and_variables
-description: >-
-  Detalhes sobre o diagnóstico use_late_for_private_fields_and_variables
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_late_for_private_fields_and_variables produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

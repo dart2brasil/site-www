@@ -1,8 +1,6 @@
 ---
 title: break_label_on_switch_member
-description: >-
-  Detalhes sobre o diagnóstico break_label_on_switch_member
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico break_label_on_switch_member produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

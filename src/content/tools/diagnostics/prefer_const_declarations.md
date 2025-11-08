@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_const_declarations
-description: >-
-  Detalhes sobre o diagnóstico prefer_const_declarations
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_const_declarations produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

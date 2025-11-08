@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: throw_in_finally
-description: >-
-  Detalhes sobre o diagnóstico throw_in_finally
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico throw_in_finally produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

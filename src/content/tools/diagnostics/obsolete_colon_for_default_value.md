@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: obsolete_colon_for_default_value
-description: >-
-  Detalhes sobre o diagnóstico obsolete_colon_for_default_value
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico obsolete_colon_for_default_value produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

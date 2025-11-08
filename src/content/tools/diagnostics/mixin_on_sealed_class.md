@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: mixin_on_sealed_class
-description: >-
-  Detalhes sobre o diagnóstico mixin_on_sealed_class
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico mixin_on_sealed_class produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

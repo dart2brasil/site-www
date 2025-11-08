@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_reference_to_generative_enum_constructor
-description: >-
-  Detalhes sobre o diagnóstico invalid_reference_to_generative_enum_constructor
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_reference_to_generative_enum_constructor produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

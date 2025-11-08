@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: redirect_to_invalid_function_type
-description: >-
-  Detalhes sobre o diagnóstico redirect_to_invalid_function_type
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico redirect_to_invalid_function_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

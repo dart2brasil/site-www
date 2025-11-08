@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extension_override_without_access
-description: >-
-  Detalhes sobre o diagnóstico extension_override_without_access
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico extension_override_without_access produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

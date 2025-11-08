@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: uri_with_interpolation
-description: >-
-  Detalhes sobre o diagnóstico uri_with_interpolation
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico uri_with_interpolation produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

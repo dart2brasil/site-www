@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: close_sinks
-description: >-
-  Detalhes sobre o diagnóstico close_sinks
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico close_sinks produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefix_collides_with_top_level_member
-description: >-
-  Detalhes sobre o diagnóstico prefix_collides_with_top_level_member
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico prefix_collides_with_top_level_member produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: const_constructor_with_non_const_super
-description: >-
-  Detalhes sobre o diagnóstico const_constructor_with_non_const_super
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico const_constructor_with_non_const_super produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

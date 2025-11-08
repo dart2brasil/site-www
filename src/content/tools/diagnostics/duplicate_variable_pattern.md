@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: duplicate_variable_pattern
-description: >-
-  Detalhes sobre o diagnóstico duplicate_variable_pattern
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico duplicate_variable_pattern produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

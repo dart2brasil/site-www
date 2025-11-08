@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: implicit_this_reference_in_initializer
-description: >-
-  Detalhes sobre o diagnóstico implicit_this_reference_in_initializer
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico implicit_this_reference_in_initializer produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

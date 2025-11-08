@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: const_constructor_param_type_mismatch
-description: >-
-  Detalhes sobre o diagnóstico const_constructor_param_type_mismatch
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico const_constructor_param_type_mismatch produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

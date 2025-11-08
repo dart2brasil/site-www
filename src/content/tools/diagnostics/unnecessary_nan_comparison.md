@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_nan_comparison
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_nan_comparison
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_nan_comparison produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

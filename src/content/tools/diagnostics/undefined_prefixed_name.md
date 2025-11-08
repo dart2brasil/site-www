@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: undefined_prefixed_name
-description: >-
-  Detalhes sobre o diagnóstico undefined_prefixed_name
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico undefined_prefixed_name produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

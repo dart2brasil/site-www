@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: instantiate_enum
-description: >-
-  Detalhes sobre o diagnóstico instantiate_enum
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico instantiate_enum produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

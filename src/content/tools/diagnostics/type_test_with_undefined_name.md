@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_test_with_undefined_name
-description: >-
-  Detalhes sobre o diagnóstico type_test_with_undefined_name
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_test_with_undefined_name produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

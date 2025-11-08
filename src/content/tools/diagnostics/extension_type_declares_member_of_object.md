@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extension_type_declares_member_of_object
-description: >-
-  Detalhes sobre o diagnóstico extension_type_declares_member_of_object
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico extension_type_declares_member_of_object produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

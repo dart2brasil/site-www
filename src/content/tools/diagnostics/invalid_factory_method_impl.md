@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_factory_method_impl
-description: >-
-  Detalhes sobre o diagnóstico invalid_factory_method_impl
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_factory_method_impl produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

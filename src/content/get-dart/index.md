@@ -2,9 +2,7 @@
 ia-translate: true
 title: Obtenha o SDK do Dart
 shortTitle: Obtenha o Dart
-description: >-
-  Obtenha as bibliotecas e ferramentas de linha de comando necessárias para desenvolver
-  aplicativos Dart para web, linha de comando e servidor.
+description: "Obtenha as bibliotecas e ferramentas de linha de comando necessárias para desenvolver aplicativos Dart para web, linha de comando e servidor."
 channelList: [Stable, Beta, Dev]
 ---
 

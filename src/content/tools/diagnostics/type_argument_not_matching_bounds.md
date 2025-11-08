@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_argument_not_matching_bounds
-description: >-
-  Detalhes sobre o diagnóstico type_argument_not_matching_bounds
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_argument_not_matching_bounds produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
