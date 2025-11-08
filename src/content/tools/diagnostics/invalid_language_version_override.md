@@ -1,42 +1,43 @@
 ---
+ia-translate: true
 title: invalid_language_version_override
 description: >-
-  Details about the invalid_language_version_override
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_language_version_override
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The Dart language version override comment can't be followed by any non-whitespace characters._
+_O comentário de override de versão da linguagem Dart não pode ser seguido por caracteres que não sejam espaços em branco._
 
-_The Dart language version override comment must be specified with a version number, like '2.0', after the '=' character._
+_O comentário de override de versão da linguagem Dart deve ser especificado com um número de versão, como '2.0', após o caractere '='._
 
-_The Dart language version override comment must be specified with an '=' character._
+_O comentário de override de versão da linguagem Dart deve ser especificado com um caractere '='._
 
-_The Dart language version override comment must be specified with exactly two slashes._
+_O comentário de override de versão da linguagem Dart deve ser especificado com exatamente duas barras._
 
-_The Dart language version override comment must be specified with the word 'dart' in all lower case._
+_O comentário de override de versão da linguagem Dart deve ser especificado com a palavra 'dart' toda em minúsculas._
 
-_The Dart language version override number can't be prefixed with a letter._
+_O número de override de versão da linguagem Dart não pode ter prefixo com uma letra._
 
-_The Dart language version override number must begin with '@dart'._
+_O número de override de versão da linguagem Dart deve começar com '@dart'._
 
-_The language version override can't specify a version greater than the latest known language version: {0}.{1}._
+_O override de versão da linguagem não pode especificar uma versão maior que a versão de linguagem mais recente conhecida: {0}.{1}._
 
-_The language version override must be specified before any declaration or directive._
+_O override de versão da linguagem deve ser especificado antes de qualquer declaração ou diretiva._
 
 ## Description
 
-The analyzer produces this diagnostic when a comment that appears to be an
-attempt to specify a language version override doesn't conform to the
-requirements for such a comment. For more information, see
-[Per-library language version selection](https://dart.dev/resources/language/evolution#per-library-language-version-selection).
+O analisador produz este diagnóstico quando um comentário que parece ser uma
+tentativa de especificar um override de versão da linguagem não está em
+conformidade com os requisitos para tal comentário. Para mais informações,
+veja [Per-library language version selection](https://dart.dev/resources/language/evolution#per-library-language-version-selection).
 
 ## Example
 
-The following code produces this diagnostic because the word `dart` must
-be lowercase in such a comment and because there's no equal sign between
-the word `dart` and the version number:
+O código a seguir produz este diagnóstico porque a palavra `dart` deve estar
+em minúsculas em tal comentário e porque não há sinal de igual entre a
+palavra `dart` e o número da versão:
 
 ```dart
 [!// @Dart 2.13!]
@@ -44,8 +45,8 @@ the word `dart` and the version number:
 
 ## Common fixes
 
-If the comment is intended to be a language version override, then change
-the comment to follow the correct format:
+Se o comentário pretende ser um override de versão da linguagem, altere o
+comentário para seguir o formato correto:
 
 ```dart
 // @dart = 2.13

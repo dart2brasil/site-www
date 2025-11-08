@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: cast_from_null_always_fails
 description: >-
-  Details about the cast_from_null_always_fails
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico cast_from_null_always_fails
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_This cast always throws an exception because the expression always evaluates to 'null'._
+_Este cast sempre lança uma exceção porque a expressão sempre avalia para 'null'._
 
 ## Description
 
-The analyzer produces this diagnostic when an expression whose type is
-`Null` is being cast to a non-nullable type.
+O analisador produz este diagnóstico quando uma expressão cujo type é
+`Null` está sendo convertida (cast) para um type não-nullable.
 
 ## Example
 
-The following code produces this diagnostic because `n` is known to always
-be `null`, but it's being cast to a non-nullable type:
+O código a seguir produz este diagnóstico porque `n` é conhecido por sempre
+ser `null`, mas está sendo convertido (cast) para um type não-nullable:
 
 ```dart
 void f(Null n) {
@@ -27,7 +28,7 @@ void f(Null n) {
 
 ## Common fixes
 
-Remove the unnecessary cast:
+Remova o cast desnecessário:
 
 ```dart
 void f(Null n) {

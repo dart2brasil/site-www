@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: private_collision_in_mixin_application
 description: >-
-  Details about the private_collision_in_mixin_application
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico private_collision_in_mixin_application
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The private name '{0}', defined by '{1}', conflicts with the same name defined by '{2}'._
+_O nome private '{0}', definido por '{1}', conflita com o mesmo nome definido por '{2}'._
 
 ## Description
 
-The analyzer produces this diagnostic when two mixins that define the same
-private member are used together in a single class in a library other than
-the one that defines the mixins.
+O analisador produz este diagnóstico quando dois mixins que definem o mesmo
+membro private são usados juntos em uma única classe em uma biblioteca diferente
+daquela que define os mixins.
 
 ## Example
 
-Given a file `a.dart` containing the following code:
+Dado um arquivo `a.dart` contendo o seguinte código:
 
 ```dart
 mixin A {
@@ -29,8 +30,8 @@ mixin B {
 }
 ```
 
-The following code produces this diagnostic because the mixins `A` and `B`
-both define the method `_foo`:
+O código a seguir produz este diagnóstico porque os mixins `A` e `B`
+definem ambos o método `_foo`:
 
 ```dart
 import 'a.dart';
@@ -40,8 +41,8 @@ class C extends Object with A, [!B!] {}
 
 ## Common fixes
 
-If you don't need both of the mixins, then remove one of them from the
-`with` clause:
+Se você não precisa de ambos os mixins, remova um deles da
+cláusula `with`:
 
 ```dart
 import 'a.dart';
@@ -49,5 +50,5 @@ import 'a.dart';
 class C extends Object with A, [!B!] {}
 ```
 
-If you need both of the mixins, then rename the conflicting member in one
-of the two mixins.
+Se você precisa de ambos os mixins, renomeie o membro conflitante em um
+dos dois mixins.

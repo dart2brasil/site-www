@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: pattern_variable_assignment_inside_guard
 description: >-
-  Details about the pattern_variable_assignment_inside_guard
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico pattern_variable_assignment_inside_guard
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Pattern variables can't be assigned inside the guard of the enclosing guarded pattern._
+_Variáveis de padrão não podem ser atribuídas dentro do guard do padrão guardado envolvente._
 
 ## Description
 
-The analyzer produces this diagnostic when a pattern variable is assigned
-a value inside a guard (`when`) clause.
+O analisador produz este diagnóstico quando uma variável de padrão recebe
+um valor dentro de uma cláusula guard (`when`).
 
 ## Example
 
-The following code produces this diagnostic because the variable `a` is
-assigned a value inside the guard clause:
+O código a seguir produz este diagnóstico porque a variável `a` recebe
+um valor dentro da cláusula guard:
 
 ```dart
 void f(int x) {
@@ -29,8 +30,8 @@ void f(int x) {
 
 ## Common fixes
 
-If there's a value you need to capture, then assign it to a different
-variable:
+Se há um valor que você precisa capturar, então atribua-o a uma
+variável diferente:
 
 ```dart
 void f(int x) {
@@ -41,7 +42,7 @@ void f(int x) {
 }
 ```
 
-If there isn't a value you need to capture, then remove the assignment:
+Se não há um valor que você precisa capturar, então remova a atribuição:
 
 ```dart
 void f(int x) {

@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: use_rethrow_when_possible
 description: >-
-  Details about the use_rethrow_when_possible
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico use_rethrow_when_possible
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'rethrow' to rethrow a caught exception._
+_Use 'rethrow' para relançar uma exceção capturada._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a caught exception is thrown
-using a `throw` expression rather than a `rethrow` statement.
+O analisador produz este diagnóstico quando uma exceção capturada é lançada
+usando uma expressão `throw` em vez de uma declaração `rethrow`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the caught exception
-`e` is thrown using a `throw` expression:
+O código a seguir produz este diagnóstico porque a exceção capturada
+`e` é lançada usando uma expressão `throw`:
 
 ```dart
 void f() {
@@ -40,9 +41,9 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Use `rethrow` instead of `throw`:
+Use `rethrow` em vez de `throw`:
 
 ```dart
 void f() {

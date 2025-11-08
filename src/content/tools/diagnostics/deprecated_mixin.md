@@ -1,33 +1,34 @@
 ---
+ia-translate: true
 title: deprecated_mixin
 description: >-
-  Details about the deprecated_mixin
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico deprecated_mixin
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Mixing in '{0}' is deprecated._
+_Misturar '{0}' está deprecated._
 
 ## Description
 
-The analyzer produces this diagnostic when a mixin class annotated with
-`@Deprecated.mixin` is used in the `with` clause of a class or enum
-declaration. This annotation indicates that using the annotated mixin is
-deprecated and will soon be removed. This change will likely be enforced
-by removing the `mixin` class modifier.
+O analisador produz este diagnóstico quando uma classe mixin anotada com
+`@Deprecated.mixin` é usada na cláusula `with` de uma declaração de classe ou enum.
+Esta anotação indica que usar o mixin anotado está deprecated
+e será removido em breve. Esta mudança provavelmente será aplicada
+removendo o modificador de classe `mixin`.
 
 ## Example
 
-If the library `p` defines a class annotated with `@Deprecated.mixin`:
+Se a biblioteca `p` define uma classe anotada com `@Deprecated.mixin`:
 
 ```dart
 @Deprecated.mixin()
 mixin class C {}
 ```
 
-Then, in any library other than `p`, the following code produces this
-diagnostic:
+Então, em qualquer biblioteca diferente de `p`, o código a seguir produz este
+diagnóstico:
 
 ```dart
 import 'package:p/p.dart';
@@ -37,8 +38,8 @@ class D with [!C!] {}
 
 ## Common fixes
 
-Follow any directions found in the `Deprecation.mixin` annotation.
-Otherwise, remove the mixin class name from the `with` clause.
+Siga quaisquer direções encontradas na anotação `Deprecation.mixin`.
+Caso contrário, remova o nome da classe mixin da cláusula `with`.
 
 ```dart
 class D {}

@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: for_in_of_invalid_element_type
 description: >-
-  Details about the for_in_of_invalid_element_type
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico for_in_of_invalid_element_type
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' used in the 'for' loop must implement '{1}' with a type argument that can be assigned to '{2}'._
+_O tipo '{0}' usado no loop 'for' deve implementar '{1}' com um argumento de tipo que possa ser atribuído a '{2}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `Iterable` or `Stream` in a
-for-in loop has an element type that can't be assigned to the loop
-variable.
+O analisador produz este diagnóstico quando o `Iterable` ou `Stream` em um
+loop for-in tem um tipo de elemento que não pode ser atribuído à variável
+do loop.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `<String>[]` has an
-element type of `String`, and `String` can't be assigned to the type of `e`
+O código a seguir produz este diagnóstico porque `<String>[]` tem um
+tipo de elemento `String`, e `String` não pode ser atribuído ao tipo de `e`
 (`int`):
 
 ```dart
@@ -29,10 +30,10 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the type of the loop variable is correct, then update the type of the
-iterable:
+Se o tipo da variável do loop está correto, então atualize o tipo do
+iterável:
 
 ```dart
 void f() {
@@ -42,8 +43,8 @@ void f() {
 }
 ```
 
-If the type of the iterable is correct, then update the type of the loop
-variable:
+Se o tipo do iterável está correto, então atualize o tipo da variável
+do loop:
 
 ```dart
 void f() {

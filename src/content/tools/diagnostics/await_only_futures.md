@@ -1,10 +1,11 @@
 ---
 title: await_only_futures
 description: >-
-  Details about the await_only_futures
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico await_only_futures
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -18,24 +19,24 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uses 'await' on an instance of '{0}', which is not a subtype of 'Future'._
+_Usa 'await' em uma instância de '{0}', que não é um subtipo de 'Future'._
 
 ## Description
 
-The analyzer produces this diagnostic when the expression after `await`
-has any type other than `Future<T>`, `FutureOr<T>`, `Future<T>?`,
-`FutureOr<T>?` or `dynamic`.
+O analisador produz este diagnóstico quando a expressão após `await`
+tem qualquer type diferente de `Future<T>`, `FutureOr<T>`, `Future<T>?`,
+`FutureOr<T>?` ou `dynamic`.
 
-An exception is made for the expression `await null` because it is a
-common way to introduce a microtask delay.
+Uma exceção é feita para a expressão `await null` porque é uma
+maneira comum de introduzir um atraso de microtask.
 
-Unless the expression can produce a `Future`, the `await` is unnecessary
-and can cause a reader to assume a level of asynchrony that doesn't exist.
+A menos que a expressão possa produzir um `Future`, o `await` é desnecessário
+e pode levar um leitor a assumir um nível de assincronia que não existe.
 
 ## Example
 
-The following code produces this diagnostic because the expression after
-`await` has the type `int`:
+O código a seguir produz este diagnóstico porque a expressão após
+`await` tem o type `int`:
 
 ```dart
 void f() async {
@@ -45,7 +46,7 @@ void f() async {
 
 ## Common fixes
 
-Remove the `await`:
+Remova o `await`:
 
 ```dart
 void f() async {

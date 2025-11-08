@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: private_optional_parameter
 description: >-
-  Details about the private_optional_parameter
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico private_optional_parameter
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Named parameters can't start with an underscore._
+_Parâmetros nomeados não podem começar com um underscore._
 
 ## Description
 
-The analyzer produces this diagnostic when the name of a named parameter
-starts with an underscore.
+O analisador produz este diagnóstico quando o nome de um parâmetro nomeado
+começa com um underscore.
 
 ## Example
 
-The following code produces this diagnostic because the named parameter
-`_x` starts with an underscore:
+O código a seguir produz este diagnóstico porque o parâmetro nomeado
+`_x` começa com um underscore:
 
 ```dart
 class C {
@@ -27,7 +28,7 @@ class C {
 
 ## Common fixes
 
-Rename the parameter so that it doesn't start with an underscore:
+Renomeie o parâmetro para que não comece com um underscore:
 
 ```dart
 class C {

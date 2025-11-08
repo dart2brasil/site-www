@@ -1,24 +1,25 @@
 ---
 title: missing_variable_pattern
 description: >-
-  Details about the missing_variable_pattern
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico missing_variable_pattern
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_Variable pattern '{0}' is missing in this branch of the logical-or pattern._
+_O padrão de variável '{0}' está missing neste ramo do padrão OR lógico._
 
 ## Description
 
-The analyzer produces this diagnostic when one branch of a logical-or
-pattern doesn't declare a variable that is declared on the other branch of
-the same pattern.
+O analisador produz este diagnóstico quando um ramo de um padrão
+OR lógico não declara uma variável que é declarada no outro ramo do
+mesmo padrão.
 
 ## Example
 
-The following code produces this diagnostic because the right-hand side of
-the logical-or pattern doesn't declare the variable `a`:
+O código a seguir produz este diagnóstico porque o lado direito do
+padrão OR lógico não declara a variável `a`:
 
 ```dart
 void f((int, int) r) {
@@ -30,9 +31,9 @@ void f((int, int) r) {
 
 ## Common fixes
 
-If the variable needs to be referenced in the controlled statements, then
-add a declaration of the variable to every branch of the logical-or
-pattern:
+Se a variável precisa ser referenciada nas instruções controladas, então
+adicione uma declaração da variável a cada ramo do padrão OR
+lógico:
 
 ```dart
 void f((int, int) r) {
@@ -42,9 +43,9 @@ void f((int, int) r) {
 }
 ```
 
-If the variable doesn't need to be referenced in the controlled
-statements, then remove the declaration of the variable from every branch
-of the logical-or pattern:
+Se a variável não precisa ser referenciada nas instruções
+controladas, então remova a declaração da variável de cada ramo
+do padrão OR lógico:
 
 ```dart
 void f((int, int) r) {
@@ -54,9 +55,9 @@ void f((int, int) r) {
 }
 ```
 
-If the variable needs to be referenced if one branch of the pattern
-matches but not when the other matches, then break the pattern into two
-pieces:
+Se a variável precisa ser referenciada se um ramo do padrão
+corresponder mas não quando o outro corresponder, então divida o padrão em duas
+partes:
 
 ```dart
 void f((int, int) r) {

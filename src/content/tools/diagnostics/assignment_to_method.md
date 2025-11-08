@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: assignment_to_method
 description: >-
-  Details about the assignment_to_method
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico assignment_to_method
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Methods can't be assigned a value._
+_Métodos não podem receber um valor._
 
 ## Description
 
-The analyzer produces this diagnostic when the target of an assignment is a
-method.
+O analisador produz este diagnóstico quando o alvo de uma atribuição é um
+método.
 
 ## Example
 
-The following code produces this diagnostic because `f` can't be assigned a
-value because it's a method:
+O código a seguir produz este diagnóstico porque `f` não pode receber um
+valor porque é um método:
 
 ```dart
 class C {
@@ -31,4 +32,4 @@ class C {
 
 ## Common fixes
 
-Rewrite the code so that there isn't an assignment to a method.
+Reescreva o código para que não haja uma atribuição a um método.

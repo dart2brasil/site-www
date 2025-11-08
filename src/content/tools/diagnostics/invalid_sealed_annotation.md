@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: invalid_sealed_annotation
 description: >-
-  Details about the invalid_sealed_annotation
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_sealed_annotation
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@sealed' can only be applied to classes._
+_A anotação '@sealed' só pode ser aplicada a classes._
 
 ## Description
 
-The analyzer produces this diagnostic when a declaration other than a
-class declaration has the `@sealed` annotation on it.
+O analisador produz este diagnóstico quando uma declaração que não seja uma
+declaração de classe possui a anotação `@sealed`.
 
 ## Example
 
-The following code produces this diagnostic because the `@sealed`
-annotation is on a method declaration:
+O código a seguir produz este diagnóstico porque a anotação `@sealed`
+está em uma declaração de método:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -30,7 +31,7 @@ class A {
 
 ## Common fixes
 
-Remove the annotation:
+Remova a anotação:
 
 ```dart
 class A {

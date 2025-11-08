@@ -1,26 +1,26 @@
 ---
+ia-translate: true
 title: invalid_deprecated_subclass_annotation
 description: >-
-  Details about the invalid_deprecated_subclass_annotation
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_deprecated_subclass_annotation
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@Deprecated.subclass' can only be applied to subclassable classes and mixins._
+_A anotação '@Deprecated.subclass' só pode ser aplicada a classes e mixins que podem ter subclasses._
 
 ## Description
 
-The analyzer produces this diagnostic when anything other than a
-subclassable class or mixin is annotated with
-`@Deprecated.subclass`. A subclassable
-class is a class not declared with the `final` or `sealed` keywords. A
-subclassable mixin is a mixin not declared with the `base` keyword.
+O analisador produz este diagnóstico quando algo diferente de uma
+classe ou mixin que pode ter subclasses é anotado com
+`@Deprecated.subclass`. Uma classe que pode ter subclasses é uma classe não declarada com as keywords `final` ou `sealed`. Um
+mixin que pode ter subclasses é um mixin não declarado com a keyword `base`.
 
 ## Example
 
-The following code produces this diagnostic because the annotation is on a
-sealed class:
+O código a seguir produz este diagnóstico porque a anotação está em uma
+classe sealed:
 
 ```dart
 @[!Deprecated.subclass!]()
@@ -29,7 +29,7 @@ sealed class C {}
 
 ## Common fixes
 
-Remove the annotation:
+Remova a anotação:
 
 ```dart
 sealed class C {}

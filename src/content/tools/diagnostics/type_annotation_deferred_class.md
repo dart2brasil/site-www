@@ -1,28 +1,29 @@
 ---
+ia-translate: true
 title: type_annotation_deferred_class
 description: >-
-  Details about the type_annotation_deferred_class
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico type_annotation_deferred_class
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The deferred type '{0}' can't be used in a declaration, cast, or type test._
+_O tipo deferred '{0}' não pode ser usado em uma declaração, cast ou teste de tipo._
 
 ## Description
 
-The analyzer produces this diagnostic when the type annotation is in a
-variable declaration, or the type used in a cast (`as`) or type test (`is`)
-is a type declared in a library that is imported using a deferred import.
-These types are required to be available at compile time, but aren't.
+O analisador produz este diagnóstico quando a anotação de tipo está em uma
+declaração de variável, ou o tipo usado em um cast (`as`) ou teste de tipo (`is`)
+é um tipo declarado em uma biblioteca que é importada usando um import deferred.
+Esses tipos precisam estar disponíveis em tempo de compilação, mas não estão.
 
-For more information, check out
+Para mais informações, consulte
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 ## Example
 
-The following code produces this diagnostic because the type of the
-parameter `f` is imported from a deferred library:
+O código a seguir produz este diagnóstico porque o tipo do
+parâmetro `f` é importado de uma biblioteca deferred:
 
 ```dart
 import 'dart:io' deferred as io;
@@ -32,8 +33,7 @@ void f([!io.File!] f) {}
 
 ## Common fixes
 
-If you need to reference the imported type, then remove the `deferred`
-keyword:
+Se você precisa referenciar o tipo importado, então remova a keyword `deferred`:
 
 ```dart
 import 'dart:io' as io;
@@ -41,6 +41,5 @@ import 'dart:io' as io;
 void f(io.File f) {}
 ```
 
-If the import is required to be deferred and there's another type that is
-appropriate, then use that type in place of the type from the deferred
-library.
+Se o import precisa ser deferred e há outro tipo que é
+apropriado, então use esse tipo no lugar do tipo da biblioteca deferred.

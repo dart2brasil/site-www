@@ -1,22 +1,23 @@
 ---
+ia-translate: true
 title: const_with_non_constant_argument
 description: >-
-  Details about the const_with_non_constant_argument
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico const_with_non_constant_argument
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _Arguments of a constant creation must be constant expressions._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a const constructor is invoked
-with an argument that isn't a constant expression.
+O analisador produz este diagnóstico quando um constructor const é invocado
+com um argumento que não é uma expressão constante.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `i` isn't a constant:
+O código a seguir produz este diagnóstico porque `i` não é uma constante:
 
 ```dart
 class C {
@@ -26,10 +27,10 @@ class C {
 C f(int i) => const C([!i!]);
 ```
 
-## Common fixes
+## Correções comuns
 
-Either make all of the arguments constant expressions, or remove the
-`const` keyword to use the non-constant form of the constructor:
+Ou torne todos os argumentos expressões constantes, ou remova a
+keyword `const` para usar a forma não constante do constructor:
 
 ```dart
 class C {

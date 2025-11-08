@@ -1,26 +1,27 @@
 ---
+ia-translate: true
 title: variable_length_array_not_last
 description: >-
-  Details about the variable_length_array_not_last
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico variable_length_array_not_last
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Variable length 'Array's must only occur as the last field of Structs._
+_'Array's de comprimento variável devem ocorrer apenas como o último campo de Structs._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a variable length inline `Array`
-is not the last member of a `Struct`.
+O analisador produz este diagnóstico quando um `Array` inline de comprimento variável
+não é o último membro de um `Struct`.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `a0` has a
-type with three nested arrays, but only two dimensions are given in the
-`Array` annotation:
+O código a seguir produz este diagnóstico porque o campo `a0` tem um
+tipo com três arrays aninhados, mas apenas duas dimensões são fornecidas na
+anotação `Array`:
 
 ```dart
 import 'dart:ffi';
@@ -34,9 +35,9 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Move the variable length inline `Array` to be the last field in the struct.
+Mova o `Array` inline de comprimento variável para ser o último campo no struct.
 
 ```dart
 import 'dart:ffi';
@@ -50,7 +51,7 @@ final class C extends Struct {
 }
 ```
 
-If the inline array has a fixed size, annotate it with the size:
+Se o array inline tem tamanho fixo, anote-o com o tamanho:
 
 ```dart
 import 'dart:ffi';

@@ -1,33 +1,34 @@
 ---
+ia-translate: true
 title: extension_type_representation_type_bottom
 description: >-
-  Details about the extension_type_representation_type_bottom
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico extension_type_representation_type_bottom
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The representation type can't be a bottom type._
+_O tipo de representação não pode ser um tipo bottom._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the representation type of an
-extension type is the [bottom type][] `Never`. The type `Never` can't be
-the representation type of an extension type because there are no values
-that can be extended.
+O analisador produz este diagnóstico quando o tipo de representação de um
+extension type é o [tipo bottom][bottom type] `Never`. O tipo `Never` não pode ser
+o tipo de representação de um extension type porque não há valores
+que possam ser estendidos.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the representation
-type of the extension type `E` is `Never`:
+O código a seguir produz este diagnóstico porque o tipo de representação
+do extension type `E` é `Never`:
 
 ```dart
 extension type E([!Never!] n) {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Replace the extension type with a different type:
+Substitua o extension type por um tipo diferente:
 
 ```dart
 extension type E(String s) {}

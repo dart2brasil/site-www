@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: instantiate_abstract_class
 description: >-
-  Details about the instantiate_abstract_class
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico instantiate_abstract_class
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Abstract classes can't be instantiated._
+_Classes abstract não podem ser instanciadas._
 
 ## Description
 
-The analyzer produces this diagnostic when it finds a constructor
-invocation and the constructor is declared in an abstract class. Even
-though you can't create an instance of an abstract class, abstract classes
-can declare constructors that can be invoked by subclasses.
+O analisador produz este diagnóstico quando encontra uma invocação de construtor
+e o construtor é declarado em uma classe abstract. Mesmo
+que você não possa criar uma instância de uma classe abstract, classes abstract
+podem declarar construtores que podem ser invocados por subclasses.
 
 ## Example
 
-The following code produces this diagnostic because `C` is an abstract
-class:
+O código a seguir produz este diagnóstico porque `C` é uma classe
+abstract:
 
 ```dart
 abstract class C {}
@@ -29,5 +30,5 @@ var c = new [!C!]();
 
 ## Common fixes
 
-If there's a concrete subclass of the abstract class that can be used, then
-create an instance of the concrete subclass.
+Se há uma subclasse concreta da classe abstract que pode ser usada, então
+crie uma instância da subclasse concreta.

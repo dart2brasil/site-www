@@ -1,29 +1,30 @@
 ---
 title: missing_exception_value
 description: >-
-  Details about the missing_exception_value
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico missing_exception_value
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The method {0} must have an exceptional return value (the second argument) when the return type of the function is neither 'void', 'Handle', nor 'Pointer'._
+_O method {0} deve ter um valor de retorno excepcional (o segundo argumento) quando o tipo de retorno da função não é 'void', 'Handle' nem 'Pointer'._
 
 ## Description
 
-The analyzer produces this diagnostic when an invocation of the method
-`Pointer.fromFunction` or `NativeCallable.isolateLocal`
-doesn't have a second argument (the exceptional
-return value) when the type to be returned from the invocation is neither
-`void`, `Handle`, nor `Pointer`.
+O analisador produz este diagnóstico quando uma invocação do method
+`Pointer.fromFunction` ou `NativeCallable.isolateLocal`
+não tem um segundo argumento (o valor de retorno
+excepcional) quando o tipo a ser retornado da invocação não é
+`void`, `Handle` nem `Pointer`.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because the type returned by
-`f` is expected to be an 8-bit integer but the call to `fromFunction`
-doesn't include an exceptional return argument:
+O código a seguir produz este diagnóstico porque o tipo retornado por
+`f` deve ser um inteiro de 8 bits, mas a chamada a `fromFunction`
+não inclui um argumento de retorno excepcional:
 
 ```dart
 import 'dart:ffi';
@@ -37,7 +38,7 @@ void g() {
 
 ## Common fixes
 
-Add an exceptional return type:
+Adicione um tipo de retorno excepcional:
 
 ```dart
 import 'dart:ffi';

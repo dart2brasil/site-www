@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: non_constant_set_element
 description: >-
-  Details about the non_constant_set_element
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_constant_set_element
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,12 +12,12 @@ _The values in a const set literal must be constants._
 
 ## Description
 
-The analyzer produces this diagnostic when a constant set literal contains
-an element that isn't a compile-time constant.
+O analisador produz este diagnóstico quando um literal de set constante contém
+um elemento que não é uma constante em tempo de compilação.
 
 ## Example
 
-The following code produces this diagnostic because `i` isn't a constant:
+O código a seguir produz este diagnóstico porque `i` não é uma constante:
 
 ```dart
 var i = 0;
@@ -26,7 +27,7 @@ var s = const {[!i!]};
 
 ## Common fixes
 
-If the element can be changed to be a constant, then change it:
+Se o elemento pode ser mudado para uma constante, então mude-o:
 
 ```dart
 const i = 0;
@@ -34,7 +35,7 @@ const i = 0;
 var s = const {i};
 ```
 
-If the element can't be a constant, then remove the keyword `const`:
+Se o elemento não pode ser uma constante, então remova a keyword `const`:
 
 ```dart
 var i = 0;

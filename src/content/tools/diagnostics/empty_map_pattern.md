@@ -1,22 +1,23 @@
 ---
+ia-translate: true
 title: empty_map_pattern
 description: >-
-  Details about the empty_map_pattern
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico empty_map_pattern
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A map pattern must have at least one entry._
+_Um map pattern deve ter pelo menos uma entrada._
 
 ## Description
 
-The analyzer produces this diagnostic when a map pattern is empty.
+O analisador produz este diagnóstico quando um map pattern está empty.
 
 ## Example
 
-The following code produces this diagnostic because the map pattern
-is empty:
+O código a seguir produz este diagnóstico porque o map pattern
+está empty:
 
 ```dart
 void f(Map<int, String> x) {
@@ -26,7 +27,7 @@ void f(Map<int, String> x) {
 
 ## Common fixes
 
-If the pattern should match any map, then replace it with an object
+Se o pattern deve corresponder a qualquer map, então substitua-o por um object
 pattern:
 
 ```dart
@@ -35,8 +36,8 @@ void f(Map<int, String> x) {
 }
 ```
 
-If the pattern should only match an empty map, then check the length
-in the pattern:
+Se o pattern deve corresponder apenas a um map empty, então verifique o tamanho
+no pattern:
 
 ```dart
 void f(Map<int, String> x) {

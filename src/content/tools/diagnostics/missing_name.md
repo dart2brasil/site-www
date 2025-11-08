@@ -1,23 +1,24 @@
 ---
 title: missing_name
 description: >-
-  Details about the missing_name
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico missing_name
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The 'name' field is required but missing._
+_O campo 'name' é required mas está missing._
 
 ## Description
 
-The analyzer produces this diagnostic when there's no top-level `name` key.
-The `name` key provides the name of the package, which is required.
+O analisador produz este diagnóstico quando não há uma chave `name` de nível superior.
+A chave `name` fornece o nome do pacote, que é required.
 
 ## Example
 
-The following code produces this diagnostic because the package doesn't
-have a name:
+O código a seguir produz este diagnóstico porque o pacote não tem
+um nome:
 
 ```yaml
 dependencies:
@@ -26,7 +27,7 @@ dependencies:
 
 ## Common fixes
 
-Add the top-level key `name` with a value that's the name of the package:
+Adicione a chave de nível superior `name` com um valor que seja o nome do pacote:
 
 ```yaml
 name: example

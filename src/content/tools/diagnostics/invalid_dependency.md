@@ -1,27 +1,28 @@
 ---
+ia-translate: true
 title: invalid_dependency
 description: >-
-  Details about the invalid_dependency
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_dependency
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Publishable packages can't have '{0}' dependencies._
+_Pacotes publicáveis não podem ter dependências '{0}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a publishable package
-includes a package in the `dependencies` list of its `pubspec.yaml` file
-that isn't a pub-hosted dependency.
+O analisador produz este diagnóstico quando um pacote publicável inclui um
+pacote na lista `dependencies` de seu arquivo `pubspec.yaml` que não é uma
+dependência hospedada no pub.
 
-To learn more about the different types of dependency sources,
-check out [Package dependencies](https://dart.dev/tools/pub/dependencies).
+Para saber mais sobre os diferentes tipos de fontes de dependências,
+confira [Package dependencies](https://dart.dev/tools/pub/dependencies).
 
 ## Example
 
-The following code produces this diagnostic because the dependency on
-the package `transmogrify` isn't a pub-hosted dependency.
+O código a seguir produz este diagnóstico porque a dependência no pacote
+`transmogrify` não é uma dependência hospedada no pub.
 
 ```yaml
 name: example
@@ -32,12 +33,12 @@ dependencies:
 
 ## Common fixes
 
-If you want to publish the package to `pub.dev`, then change
-the dependency to a hosted package that is published on `pub.dev`.
+Se você deseja publicar o pacote no `pub.dev`, altere a dependência para um
+pacote hospedado que está publicado no `pub.dev`.
 
-If the package isn't intended to be published on `pub.dev`, then
-add a `publish_to: none` entry to its `pubspec.yaml` file to
-mark it as not intended to be published:
+Se o pacote não pretende ser publicado no `pub.dev`, adicione uma entrada
+`publish_to: none` ao seu arquivo `pubspec.yaml` para marcá-lo como não
+destinado a ser publicado:
 
 ```yaml
 name: example

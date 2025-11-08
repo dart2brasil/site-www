@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: invalid_non_virtual_annotation
 description: >-
-  Details about the invalid_non_virtual_annotation
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_non_virtual_annotation
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@nonVirtual' can only be applied to a concrete instance member._
+_A annotation '@nonVirtual' só pode ser aplicada a um membro de instância concreto._
 
 ## Description
 
-The analyzer produces this diagnostic when the `nonVirtual` annotation is
-found on a declaration other than a member of a class, mixin, or enum, or
-if the member isn't a concrete instance member.
+O analisador produz este diagnóstico quando a annotation `nonVirtual` é
+encontrada em uma declaração que não é um membro de uma classe, mixin ou
+enum, ou se o membro não é um membro de instância concreto.
 
 ## Examples
 
-The following code produces this diagnostic because the annotation is on a
-class declaration rather than a member inside the class:
+O código a seguir produz este diagnóstico porque a annotation está em uma
+declaração de classe em vez de um membro dentro da classe:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -27,8 +28,8 @@ import 'package:meta/meta.dart';
 class C {}
 ```
 
-The following code produces this diagnostic because the method `m` is an
-abstract method:
+O código a seguir produz este diagnóstico porque o método `m` é um método
+abstrato:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -39,8 +40,8 @@ abstract class C {
 }
 ```
 
-The following code produces this diagnostic because the method `m` is a
-static method:
+O código a seguir produz este diagnóstico porque o método `m` é um método
+estático:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -53,15 +54,15 @@ abstract class C {
 
 ## Common fixes
 
-If the declaration isn't a member of a class, mixin, or enum, then remove
-the annotation:
+Se a declaração não é um membro de uma classe, mixin ou enum, remova a
+annotation:
 
 ```dart
 class C {}
 ```
 
-If the member is intended to be a concrete instance member, then make it
-so:
+Se o membro é destinado a ser um membro de instância concreto, torne-o
+assim:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -72,8 +73,8 @@ abstract class C {
 }
 ```
 
-If the member is not intended to be a concrete instance member, then
-remove the annotation:
+Se o membro não é destinado a ser um membro de instância concreto, remova a
+annotation:
 
 ```dart
 abstract class C {

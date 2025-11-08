@@ -1,28 +1,29 @@
 ---
+ia-translate: true
 title: const_map_key_not_primitive_equality
 description: >-
-  Details about the const_map_key_not_primitive_equality
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico const_map_key_not_primitive_equality
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _The type of a key in a constant map can't override the '==' operator, or 'hashCode', but the class '{0}' does._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the class of object used as a
-key in a constant map literal implements either the `==` operator, the
-getter `hashCode`, or both. The implementation of constant maps uses both
-the `==` operator and the `hashCode` getter, so any implementation other
-than the ones inherited from `Object` requires executing arbitrary code at
-compile time, which isn't supported.
+O analisador produz este diagnóstico quando a classe do objeto usado como
+chave em um literal de Map constante implementa o operador `==`, o
+getter `hashCode`, ou ambos. A implementação de Maps constantes usa tanto
+o operador `==` quanto o getter `hashCode`, então qualquer implementação
+diferente daquelas herdadas de `Object` requer executar código arbitrário em
+tempo de compilação, o que não é suportado.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the constant map
-contains a key whose type is `C`, and the class `C` overrides the
-implementation of `==`:
+O código a seguir produz este diagnóstico porque o Map constante
+contém uma chave cujo tipo é `C`, e a classe `C` sobrescreve a
+implementação de `==`:
 
 ```dart
 class C {
@@ -34,9 +35,9 @@ class C {
 const map = {[!C()!] : 0};
 ```
 
-The following code produces this diagnostic because the constant map
-contains a key whose type is `C`, and the class `C` overrides the
-implementation of `hashCode`:
+O código a seguir produz este diagnóstico porque o Map constante
+contém uma chave cujo tipo é `C`, e a classe `C` sobrescreve a
+implementação de `hashCode`:
 
 ```dart
 class C {
@@ -48,10 +49,10 @@ class C {
 const map = {[!C()!] : 0};
 ```
 
-## Common fixes
+## Correções comuns
 
-If you can remove the implementation of `==` and `hashCode` from the
-class, then do so:
+Se você pode remover a implementação de `==` e `hashCode` da
+classe, então faça isso:
 
 ```dart
 class C {
@@ -61,8 +62,8 @@ class C {
 const map = {C() : 0};
 ```
 
-If you can't remove the implementation of `==` and `hashCode` from the
-class, then make the map non-constant:
+Se você não pode remover a implementação de `==` e `hashCode` da
+classe, então torne o Map não constante:
 
 ```dart
 class C {

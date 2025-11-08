@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: avoid_web_libraries_in_flutter
 description: >-
-  Details about the avoid_web_libraries_in_flutter
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico avoid_web_libraries_in_flutter
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,12 +19,12 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Don't use web-only libraries outside Flutter web plugins._
+_Não use bibliotecas exclusivas para web fora de plugins web do Flutter._
 
 ## Description
 
-The analyzer produces this diagnostic when a library in a package that
-isn't a web plugin contains an import of a web-only library:
+O analisador produz este diagnóstico quando uma biblioteca em um pacote que
+não é um plugin web contém um import de uma biblioteca exclusiva para web:
 - `dart:html`
 - `dart:js`
 - `dart:js_util`
@@ -34,8 +35,8 @@ isn't a web plugin contains an import of a web-only library:
 
 ## Example
 
-When found in a package that isn't a web plugin, the following code
-produces this diagnostic because it imports `dart:html`:
+Quando encontrado em um pacote que não é um plugin web, o código a seguir
+produz este diagnóstico porque importa `dart:html`:
 
 ```dart
 import [!'dart:html'!];
@@ -47,7 +48,7 @@ class C {}
 
 ## Common fixes
 
-If the package isn't intended to be a web plugin, then remove the import:
+Se o pacote não é destinado a ser um plugin web, então remova o import:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -55,8 +56,8 @@ import 'package:flutter/material.dart';
 class C {}
 ```
 
-If the package is intended to be a web plugin, then add the following
-lines to the `pubspec.yaml` file of the package:
+Se o pacote é destinado a ser um plugin web, então adicione as seguintes
+linhas ao arquivo `pubspec.yaml` do pacote:
 
 ```yaml
 flutter:
@@ -67,5 +68,5 @@ flutter:
         fileName: hello_web.dart
 ```
 
-See [Developing packages & plugins](https://flutter.dev/to/develop-packages)
-for more information.
+Veja [Developing packages & plugins](https://flutter.dev/to/develop-packages)
+para mais informações.

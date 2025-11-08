@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: undefined_shown_name
 description: >-
-  Details about the undefined_shown_name
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico undefined_shown_name
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The library '{0}' doesn't export a member with the shown name '{1}'._
+_A biblioteca '{0}' não exporta um membro com o nome mostrado '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a show combinator includes a
-name that isn't defined by the library being imported.
+O analisador produz este diagnóstico quando um combinador show inclui um
+nome que não está definido pela biblioteca sendo importada.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `dart:math` doesn't
-define the name `String`:
+O código a seguir produz este diagnóstico porque `dart:math` não
+define o nome `String`:
 
 ```dart
 import 'dart:math' show min, [!String!];
@@ -25,10 +26,10 @@ import 'dart:math' show min, [!String!];
 var x = min(0, 1);
 ```
 
-## Common fixes
+## Correções comuns
 
-If a different name should be shown, then correct the name. Otherwise,
-remove the name from the list:
+Se um nome diferente deve ser mostrado, então corrija o nome. Caso contrário,
+remova o nome da lista:
 
 ```dart
 import 'dart:math' show min;

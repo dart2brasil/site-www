@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: use_raw_strings
 description: >-
-  Details about the use_raw_strings
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico use_raw_strings
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,27 +19,27 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a raw string to avoid using escapes._
+_Use uma raw string para evitar usar escapes._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a string literal containing
-escapes, and no interpolations, could be marked as being raw in order to
-avoid the need for the escapes.
+O analisador produz este diagnóstico quando um literal de string contendo
+escapes, e sem interpolações, poderia ser marcado como sendo raw para
+evitar a necessidade dos escapes.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string contains
-escaped characters that wouldn't need to be escaped if the string is
-made a raw string:
+O código a seguir produz este diagnóstico porque a string contém
+caracteres escapados que não precisariam ser escapados se a string for
+transformada em uma raw string:
 
 ```dart
 var s = [!'A string with only \\ and \$'!];
 ```
 
-## Common fixes
+## Correções comuns
 
-Mark the string as being raw and remove the unnecessary backslashes:
+Marque a string como sendo raw e remova as barras invertidas desnecessárias:
 
 ```dart
 var s = r'A string with only \ and $';

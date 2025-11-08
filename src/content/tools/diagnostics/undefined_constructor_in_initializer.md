@@ -1,26 +1,27 @@
 ---
+ia-translate: true
 title: undefined_constructor_in_initializer
 description: >-
-  Details about the undefined_constructor_in_initializer
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico undefined_constructor_in_initializer
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' doesn't have a constructor named '{1}'._
+_A classe '{0}' não possui um construtor chamado '{1}'._
 
-_The class '{0}' doesn't have an unnamed constructor._
+_A classe '{0}' não possui um construtor sem nome._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a superclass constructor is
-invoked in the initializer list of a constructor, but the superclass
-doesn't define the constructor being invoked.
+O analisador produz este diagnóstico quando um construtor de superclasse é
+invocado na lista de inicializadores de um construtor, mas a superclasse
+não define o construtor sendo invocado.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `A` doesn't have an
-unnamed constructor:
+O código a seguir produz este diagnóstico porque `A` não possui um
+construtor sem nome:
 
 ```dart
 class A {
@@ -31,8 +32,8 @@ class B extends A {
 }
 ```
 
-The following code produces this diagnostic because `A` doesn't have a
-constructor named `m`:
+O código a seguir produz este diagnóstico porque `A` não possui um
+construtor chamado `m`:
 
 ```dart
 class A {
@@ -43,10 +44,10 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the superclass defines a constructor that should be invoked, then change
-the constructor being invoked:
+Se a superclasse define um construtor que deve ser invocado, então altere
+o construtor sendo invocado:
 
 ```dart
 class A {
@@ -57,8 +58,8 @@ class B extends A {
 }
 ```
 
-If the superclass doesn't define an appropriate constructor, then define
-the constructor being invoked:
+Se a superclasse não define um construtor apropriado, então defina
+o construtor sendo invocado:
 
 ```dart
 class A {
