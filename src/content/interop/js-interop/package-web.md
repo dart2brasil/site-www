@@ -301,6 +301,8 @@ para `package:web`:
 Do we have any other package migrations to show off here?
 {% endcomment -%}
 
+[renames]: #renomeações
+[type tests]: #testes-de-tipo
 [`package:web`]: {{site.pub-pkg}}/web
 [Wasm]: /web/wasm
 [html]: {{site.dart-api}}/dart-html/dart-html-library.html

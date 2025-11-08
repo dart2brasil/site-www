@@ -33,7 +33,7 @@ o membro de interop [contenha um tipo primitivo][contains a primitive type].
 
 Ao interagir com um valor JS, você precisa fornecer um tipo Dart para ele.
 Você pode fazer isso usando ou declarando um tipo de interop.
-Tipos de interop são ou um ["tipo JS"][" JS type"] fornecido pelo Dart ou
+Tipos de interop são ou um ["tipo JS"]["JS type"] fornecido pelo Dart ou
 um [extension type][] envolvendo um tipo de interop.
 
 Tipos de interop permitem que você forneça uma interface para um valor JS e
