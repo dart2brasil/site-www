@@ -100,6 +100,21 @@ final class DashFooter extends StatelessComponent {
             ),
           ]),
         ]),
+        div(classes: 'footer-section footer-translation-feedback', [
+          p([
+            text('Achou erro de tradução? Achou algo faltando? '),
+            a(
+              href: 'https://github.com/dart2brasil/site-www/issues/new',
+              target: Target.blank,
+              attributes: {
+                'rel': 'noopener',
+                'title': 'Abrir issue no GitHub',
+              },
+              [text('Abra um issue')],
+            ),
+            text(' e nos ajude a manter o mais atualizado possível.'),
+          ]),
+        ]),
         div(classes: 'footer-section footer-tray', [
           div(classes: 'footer-licenses', [
             text('Except as otherwise noted, this site is licensed under a '),
