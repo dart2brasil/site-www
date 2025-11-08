@@ -96,7 +96,7 @@ Null safety sinaliza uma variável não-null quando ela foi:
 
 Esta verificação permite que você corrija esses erros _antes_ de implantar sua aplicação.
 
-## Valor padrão
+## Valor padrão {:#default-value}
 
 Variáveis não inicializadas que têm um tipo nullable
 têm um valor inicial de `null`.
