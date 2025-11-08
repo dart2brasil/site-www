@@ -54,7 +54,7 @@ var a = p?.y;
 ```
 
 
-## Usando construtores
+## Usando construtores {:#using-constructors}
 
 Você pode criar um objeto usando um *construtor*.
 Nomes de construtores podem ser <code><em>NomeDaClasse</em></code> ou
@@ -294,7 +294,7 @@ class Point implements Comparable, Location {
 ```
 
 
-## Variáveis e métodos de classe
+## Variáveis e métodos de classe {:#class-variables-and-methods}
 
 Use a palavra-chave `static` para implementar variáveis e métodos que abrangem toda a classe.
 
