@@ -84,7 +84,7 @@ dependency_overrides:
   foo: 1.0.0
 ```
 
-## Descritor de fonte
+## Descritor de fonte {:#source-descriptor}
 
 :::version-note
 A sintaxe do descritor formatado em YAML foi adicionada no Dart 2.19.

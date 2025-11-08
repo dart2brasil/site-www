@@ -88,7 +88,7 @@ Remover uma dependência nunca altera as versões de nenhuma
 dependência já adquirida.
 
 
-## O cache do pacote do sistema
+## O cache do pacote do sistema {:#the-system-package-cache}
 
 Dependências baixadas pela internet, como as do Git e do
 [site pub.dev]({{site.pub}}), são armazenadas em um
@@ -106,7 +106,7 @@ variável de ambiente [`PUB_CACHE`](/tools/pub/environment-variables)
 antes de executar pub.
 
 
-## Obter enquanto offline
+## Obter enquanto offline {:#getting-while-offline}
 
 Se você não tiver acesso à rede, ainda poderá executar `dart pub get`.
 Como pub baixa pacotes para um cache central compartilhado por todos os pacotes
@@ -128,7 +128,7 @@ Na próxima vez que você estiver online, você provavelmente desejará
 executar [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) para atualizar para uma versão mais recente.
 
 
-## Opções
+## Opções {:#options}
 
 Para opções que se aplicam a todos os comandos pub, consulte
 [Opções globais](/tools/pub/cmd#global-options).
