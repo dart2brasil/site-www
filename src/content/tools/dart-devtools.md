@@ -51,7 +51,7 @@ O Flutter inspector funciona apenas para aplicações Flutter;
 outras aplicações web devem usar ferramentas de navegador como o Chrome DevTools.
 
 
-## Usando DevTools com uma aplicação de linha de comando
+## Usando DevTools com uma aplicação de linha de comando {:#usando-devtools-com-uma-aplicao-de-linha-de-comando}
 
 Você pode usar DevTools para realizar depuração em nível de código-fonte
 ou para visualizar informações gerais de log e diagnóstico
@@ -101,7 +101,7 @@ Para detalhes sobre como usar DevTools com uma aplicação Flutter para qualquer
 [documentação do DevTools no flutter.dev.][Flutter devtools]
 
 
-## Usando DevTools com uma aplicação web não-Flutter
+## Usando DevTools com uma aplicação web não-Flutter {:#usando-devtools-com-uma-aplicao-web-no-flutter}
 
 Para iniciar uma aplicação web para que você possa usar o Dart DevTools,
 use o comando `webdev serve` com a flag `--debug` ou `--debug-extension`:
