@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: default_value_on_required_parameter
 description: >-
-  Details about the default_value_on_required_parameter
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico default_value_on_required_parameter
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Required named parameters can't have a default value._
+_Parâmetros nomeados required não podem ter um valor default._
 
 ## Description
 
-The analyzer produces this diagnostic when a named parameter has both the
-`required` modifier and a default value. If the parameter is required, then
-a value for the parameter is always provided at the call sites, so the
-default value can never be used.
+O analisador produz este diagnóstico quando um parâmetro nomeado tem tanto o
+modificador `required` quanto um valor default. Se o parâmetro é obrigatório, então
+um valor para o parâmetro é sempre fornecido nos locais de chamada, então o
+valor default nunca pode ser usado.
 
 ## Example
 
-The following code generates this diagnostic:
+O código a seguir gera este diagnóstico:
 
 ```dart
 void log({required String [!message!] = 'no message'}) {}
@@ -26,14 +27,13 @@ void log({required String [!message!] = 'no message'}) {}
 
 ## Common fixes
 
-If the parameter is really required, then remove the default value:
+Se o parâmetro é realmente obrigatório, então remova o valor default:
 
 ```dart
 void log({required String message}) {}
 ```
 
-If the parameter isn't always required, then remove the `required`
-modifier:
+Se o parâmetro não é sempre obrigatório, então remova o modificador `required`:
 
 ```dart
 void log({String message = 'no message'}) {}

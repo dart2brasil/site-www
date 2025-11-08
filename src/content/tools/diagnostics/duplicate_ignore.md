@@ -1,26 +1,27 @@
 ---
+ia-translate: true
 title: duplicate_ignore
 description: >-
-  Details about the duplicate_ignore
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico duplicate_ignore
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The diagnostic '{0}' doesn't need to be ignored here because it's already being ignored._
+_O diagnóstico '{0}' não precisa ser ignorado aqui porque já está sendo ignorado._
 
 ## Description
 
-The analyzer produces this diagnostic when a diagnostic name appears in an
-`ignore` comment, but the diagnostic is already being ignored, either
-because it's already included in the same `ignore` comment or because it
-appears in an `ignore-in-file` comment.
+O analisador produz este diagnóstico quando um nome de diagnóstico aparece em um
+comentário `ignore`, mas o diagnóstico já está sendo ignorado, seja
+porque já está incluído no mesmo comentário `ignore` ou porque
+aparece em um comentário `ignore-in-file`.
 
 ## Examples
 
-The following code produces this diagnostic because the diagnostic named
-`unused_local_variable` is already being ignored for the whole file so it
-doesn't need to be ignored on a specific line:
+O código a seguir produz este diagnóstico porque o diagnóstico nomeado
+`unused_local_variable` já está sendo ignorado para todo o arquivo, então não
+precisa ser ignorado em uma linha específica:
 
 ```dart
 // ignore_for_file: unused_local_variable
@@ -30,8 +31,8 @@ void f() {
 }
 ```
 
-The following code produces this diagnostic because the diagnostic named
-`unused_local_variable` is being ignored twice on the same line:
+O código a seguir produz este diagnóstico porque o diagnóstico nomeado
+`unused_local_variable` está sendo ignorado duas vezes na mesma linha:
 
 ```dart
 void f() {
@@ -42,8 +43,8 @@ void f() {
 
 ## Common fixes
 
-Remove the ignore comment, or remove the unnecessary diagnostic name if the
-ignore comment is ignoring more than one diagnostic:
+Remova o comentário ignore, ou remova o nome do diagnóstico desnecessário se o
+comentário ignore estiver ignorando mais de um diagnóstico:
 
 ```dart
 // ignore_for_file: unused_local_variable

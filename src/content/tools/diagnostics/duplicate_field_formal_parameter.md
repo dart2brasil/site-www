@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: duplicate_field_formal_parameter
 description: >-
-  Details about the duplicate_field_formal_parameter
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico duplicate_field_formal_parameter
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The field '{0}' can't be initialized by multiple parameters in the same constructor._
+_O campo '{0}' não pode ser inicializado por múltiplos parâmetros no mesmo construtor._
 
 ## Description
 
-The analyzer produces this diagnostic when there's more than one
-initializing formal parameter for the same field in a constructor's
-parameter list. It isn't useful to assign a value that will immediately be
-overwritten.
+O analisador produz este diagnóstico quando há mais de um
+parâmetro formal inicializador para o mesmo campo na lista de
+parâmetros de um construtor. Não é útil atribuir um valor que será imediatamente
+sobrescrito.
 
 ## Example
 
-The following code produces this diagnostic because `this.f` appears twice
-in the parameter list:
+O código a seguir produz este diagnóstico porque `this.f` aparece duas vezes
+na lista de parâmetros:
 
 ```dart
 class C {
@@ -31,7 +32,7 @@ class C {
 
 ## Common fixes
 
-Remove one of the initializing formal parameters:
+Remova um dos parâmetros formais inicializadores:
 
 ```dart
 class C {
