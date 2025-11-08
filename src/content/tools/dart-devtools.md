@@ -1,18 +1,19 @@
 ---
+ia-translate: true
 title: Dart DevTools
 shortTitle: DevTools
-description: A suite of debugging and performance tools.
+description: Um conjunto de ferramentas de depuração e desempenho.
 ---
 
-Dart DevTools is a suite of debugging and performance tools
-for Dart and Flutter.
-These tools are distributed as part of the `dart` tool
-and interact with tools such as IDEs, `dart run`, and `webdev`.
+Dart DevTools é um conjunto de ferramentas de depuração e desempenho
+para Dart e Flutter.
+Essas ferramentas são distribuídas como parte da ferramenta `dart`
+e interagem com ferramentas como IDEs, `dart run` e `webdev`.
 
 <img src="/assets/img/tools/devtools.png" width="800" alt="Screenshot of DevTools' Memory page">
 
-The following table shows which tools
-you can use with common Dart app types.
+A tabela a seguir mostra quais ferramentas
+você pode usar com tipos comuns de aplicativos Dart.
 
 {% assign y = '<span class="material-symbols user-select-none" title="Supported" aria-label="Supported">done</span>' %}
 {% assign b = '&nbsp;' %}
@@ -22,7 +23,7 @@ you can use with common Dart app types.
   assign b = '<span class="material-symbols" title="use browser tools instead">web</span>'
 {% endcomment %}
 
-| Tool                  | [Flutter mobile or desktop][Flutter devtools] | [Flutter web][Flutter devtools] | [Other web][] | [Command-line][] |
+| Ferramenta            | [Flutter mobile ou desktop][Flutter devtools] | [Flutter web][Flutter devtools] | [Outra web][] | [Linha de comando][] |
 |-----------------------|:---------------------------------------------:|:-------------------------------:|:-------------:|:----------------:|
 | [Debugger][]          |                     {{y}}                     |              {{y}}              |     {{y}}     |      {{y}}       |
 | [Logging view]        |                     {{y}}                     |              {{y}}              |     {{y}}     |      {{y}}       |
@@ -35,34 +36,34 @@ you can use with common Dart app types.
 
 {:.table .table-striped .nowrap}
 
-For information about using Dart DevTools with each app type
-(for example, command-line apps),
-click the app type in the top row.
-For details about individual tools
-(for example, the debugger),
-click the tool name in the left column.
+Para informações sobre usar Dart DevTools com cada tipo de aplicativo
+(por exemplo, aplicativos de linha de comando),
+clique no tipo de aplicativo na linha superior.
+Para detalhes sobre ferramentas individuais
+(por exemplo, o debugger),
+clique no nome da ferramenta na coluna esquerda.
 
-As the table shows, the debugger and the logging view
-are the only parts of Dart DevTools that are available to all app types.
-Web apps can't use the timeline, memory, and performance views;
-instead, they can use browser tools such as the [Chrome DevTools.][]
-The Flutter inspector works only for Flutter apps;
-other web apps should use browser tools such as the Chrome DevTools.
-
-
-## Using DevTools with a command-line app
-
-You can use DevTools to perform source-level debugging 
-or to view general log and diagnostics information
-for a running command-line app.
+Como a tabela mostra, o debugger e a visualização de logging
+são as únicas partes do Dart DevTools que estão disponíveis para todos os tipos de aplicativos.
+Aplicativos web não podem usar as visualizações de timeline, memória e desempenho;
+em vez disso, eles podem usar ferramentas do navegador como o [Chrome DevTools.][]
+O Flutter inspector funciona apenas para aplicativos Flutter;
+outros aplicativos web devem usar ferramentas do navegador como o Chrome DevTools.
 
 
-### 1. Start the target app
+## Usando DevTools com um aplicativo de linha de comando
 
-Use the `dart run --observe` command to execute the main file
-for the Dart command-line app that you want to debug or observe.
-Optionally add `--pause-isolates-on-start`,
-which automatically breaks execution at the start of the script.
+Você pode usar DevTools para realizar depuração em nível de código fonte
+ou para visualizar informações gerais de log e diagnóstico
+de um aplicativo de linha de comando em execução.
+
+
+### 1. Iniciar o aplicativo alvo
+
+Use o comando `dart run --observe` para executar o arquivo principal
+do aplicativo Dart de linha de comando que você deseja depurar ou observar.
+Opcionalmente adicione `--pause-isolates-on-start`,
+que interrompe automaticamente a execução no início do script.
 
 ```console
 $ cd path/to/dart/app
@@ -72,56 +73,59 @@ The Dart VM service is listening on http://127.0.0.1:8181/afZySiNbDPg=/
 The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/afZySiNbDPg=/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2FafZySiNbDPg%3D%2Fws
 ```
 
-Note the **Dart DevTools debugger and profiler** URL.
-You'll need it in the next step.
+Observe a URL do **Dart DevTools debugger and profiler**.
+Você precisará dela no próximo passo.
 
 :::important
-This URL contains a security token and
-is different for each run of your app.
-If you stop your app and rerun it,
-then you need to connect to DevTools with the new URL.
+Esta URL contém um token de segurança e
+é diferente para cada execução do seu aplicativo.
+Se você parar seu aplicativo e executá-lo novamente,
+então você precisa conectar ao DevTools com a nova URL.
 :::
 
-### 2. Open DevTools and connect to the target app
+### 2. Abrir DevTools e conectar ao aplicativo alvo
 
-Copy the **Dart DevTools debugger and profiler** URL,
-and paste it into the address bar of a Chrome browser window.
+Copie a URL do **Dart DevTools debugger and profiler**,
+e cole-a na barra de endereços de uma janela do navegador Chrome.
 
-When you visit that URL in Chrome,
-the Dart DevTools UI appears,
-displaying information about the target app.
-Click **Debugger** to start debugging the app.
-
-
-## Using DevTools with a Flutter app
-
-For details on using DevTools with a Flutter app for any platform
-(including web) see the
-[DevTools documentation on flutter.dev.][Flutter devtools]
+Quando você visita essa URL no Chrome,
+a interface do Dart DevTools aparece,
+exibindo informações sobre o aplicativo alvo.
+Clique em **Debugger** para começar a depurar o aplicativo.
 
 
-## Using DevTools with a non-Flutter web app
+## Usando DevTools com um aplicativo Flutter
 
-To launch a web app so that you can use Dart DevTools,
-use the `webdev serve` command with the `--debug` or `--debug-extension` flag:
+Para detalhes sobre usar DevTools com um aplicativo Flutter para qualquer plataforma
+(incluindo web) consulte a
+[documentação do DevTools em flutter.dev.][Flutter devtools]
+
+
+## Usando DevTools com um aplicativo web não-Flutter
+
+Para executar um aplicativo web para que você possa usar Dart DevTools,
+use o comando `webdev serve` com a flag `--debug` ou `--debug-extension`:
 
 ```console
 $ webdev serve --debug
 ```
 
-For more information, see [Debugging Dart web apps][].
+Para mais informações, consulte [Depurando aplicativos web Dart][].
 
 [App size tool]: {{site.flutter-docs}}/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
 [Command-line]: #using-devtools-with-a-command-line-app
+[Linha de comando]: #using-devtools-with-a-command-line-app
 [CPU profiler]: {{site.flutter-docs}}/tools/devtools/cpu-profiler
 [Debugger]: {{site.flutter-docs}}/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
+[Depurando aplicativos web Dart]: /web/debugging
 [Flutter inspector]: {{site.flutter-docs}}/tools/devtools/inspector
 [Flutter devtools]: {{site.flutter-docs}}/tools/devtools/overview
 [Logging view]: {{site.flutter-docs}}/tools/devtools/logging
 [Memory view]: {{site.flutter-docs}}/tools/devtools/memory
 [Network view]: {{site.flutter-docs}}/tools/devtools/network
 [Other web]: #using-devtools-with-a-non-flutter-web-app
+[Outra web]: #using-devtools-with-a-non-flutter-web-app
 [Performance view]: {{site.flutter-docs}}/tools/devtools/performance
 [Timeline view]: {{site.flutter-docs}}/tools/devtools/timeline

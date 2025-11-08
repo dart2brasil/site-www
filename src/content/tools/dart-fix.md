@@ -1,22 +1,23 @@
 ---
+ia-translate: true
 title: dart fix
 description: >-
-  Command-line tool for applying analysis fixes and migrating API usages.
+  Ferramenta de linha de comando para aplicar correções de análise e migrar usos de API.
 ---
 
-The `dart fix` command
-finds and fixes two types of issues:
+O comando `dart fix`
+encontra e corrige dois tipos de problemas:
 
-* Analysis issues identified by [`dart analyze`][]
-  that have associated automated fixes
-  (sometimes called _quick-fixes_ or _code actions_).
+* Problemas de análise identificados por [`dart analyze`][]
+  que têm correções automatizadas associadas
+  (às vezes chamadas de _quick-fixes_ ou _code actions_).
 
-* Outdated API usages when updating to
-  newer releases of the Dart and Flutter SDKs.
+* Usos de API desatualizados ao atualizar para
+  versões mais recentes dos SDKs Dart e Flutter.
 
 :::tip
-To learn about `dart fix` in a video format,
-check out this [deep dive][] on **Decoding Flutter**:
+Para aprender sobre `dart fix` em formato de vídeo,
+confira este [deep dive][] no **Decoding Flutter**:
 
 <YouTubeEmbed id="OBIuSrg_Quo" title="Using Dart analyze & Dart fix"></YouTubeEmbed>
 :::
@@ -24,37 +25,37 @@ check out this [deep dive][] on **Decoding Flutter**:
 [deep dive]: {{site.yt.watch}}/OBIuSrg_Quo
 
 <a id="usage"></a>
-## Apply fixes
+## Aplicar correções
 
-To preview proposed changes, use the `--dry-run` flag:
+Para visualizar as mudanças propostas, use a flag `--dry-run`:
 
 ```console
 $ dart fix --dry-run
 ```
 
-To apply the proposed changes, use the `--apply` flag:
+Para aplicar as mudanças propostas, use a flag `--apply`:
 
 ```console
 $ dart fix --apply
 ```
 
 <a id="customization"></a>
-## Customize behavior {:#customize}
+## Personalizar comportamento {:#customize}
 
-The `dart fix` command only applies fixes
-when there is a "problem" identified by a diagnostic.
-Some diagnostics, such as compilation errors, are implicitly enabled,
-while others, such as lints, must be explicitly enabled
-in the [analysis options file](/tools/analysis),
-as individual preferences for these vary.
+O comando `dart fix` aplica correções apenas
+quando há um "problema" identificado por um diagnóstico.
+Alguns diagnósticos, como erros de compilação, são implicitamente habilitados,
+enquanto outros, como lints, devem ser explicitamente habilitados
+no [arquivo de opções de análise](/tools/analysis),
+pois as preferências individuais para estes variam.
 
-You can sometimes increase the number of fixes that can be applied
-by enabling additional lints.
-Note that not all diagnostics have associated fixes.
+Você pode às vezes aumentar o número de correções que podem ser aplicadas
+habilitando lints adicionais.
+Observe que nem todos os diagnósticos têm correções associadas.
 
-### Example
+### Exemplo
 
-Imagine you have code like this:
+Imagine que você tem código assim:
 
 ```dart
 class Vector2d {
@@ -68,9 +69,9 @@ class Vector3d extends Vector2d {
 }
 ```
 
-Dart 2.17 introduced a new language feature called super initializers,
-which allows you to write the constructor of `Vector3d`
-with a more compact style:
+Dart 2.17 introduziu um novo recurso de linguagem chamado super initializers,
+que permite que você escreva o construtor de `Vector3d`
+com um estilo mais compacto:
 
 ```dart
 class Vector3d extends Vector2d {
@@ -79,9 +80,9 @@ class Vector3d extends Vector2d {
 }
 ```
 
-To enable `dart fix` to upgrade existing code to use this feature,
-and to ensure that the analyzer warns you when you later forget to use it,
-configure your `analysis_options.yaml` file as follows:
+Para habilitar o `dart fix` a atualizar código existente para usar este recurso,
+e para garantir que o analyzer avise quando você esquecer de usá-lo mais tarde,
+configure seu arquivo `analysis_options.yaml` da seguinte forma:
 
 ```yaml
 linter:
@@ -89,17 +90,17 @@ linter:
     - use_super_parameters
 ```
 
-We also need to make sure the code enables the required [language version][].
-Super initializers were introduced in Dart 2.17,
-so update `pubspec.yaml` to have at least that
-in the lower SDK constraint:
+Também precisamos garantir que o código habilite a [versão de linguagem][language version] necessária.
+Super initializers foram introduzidos no Dart 2.17,
+então atualize o `pubspec.yaml` para ter pelo menos isso
+na restrição inferior do SDK:
 
 ```yaml
 environment:
   sdk: ">=2.17.0 <4.0.0"
 ```
 
-You should then see the following when viewing the proposed changes:
+Você deve então ver o seguinte ao visualizar as mudanças propostas:
 
 ```console
 $ dart fix --dry-run
@@ -111,23 +112,23 @@ lib/myapp.dart
   use_super_parameters • 1 fix
 ```
 
-To learn more about customizing analysis results and behavior,
-see [Customizing static analysis](/tools/analysis).
+Para saber mais sobre personalizar resultados e comportamento de análise,
+consulte [Personalizando a análise estática](/tools/analysis).
 
 [`dart analyze`]: /tools/dart-analyze
 [language version]: /resources/language/evolution#language-versioning
 
-## VS Code support
+## Suporte do VS Code
 
-When you open a project in VS Code,
-the Dart plugin scans the project for issues that `dart fix` can repair.
-If it finds issues for repair, VS Code displays a prompt to remind you.
+Quando você abre um projeto no VS Code,
+o plugin Dart escaneia o projeto em busca de problemas que `dart fix` pode reparar.
+Se encontrar problemas para reparar, o VS Code exibe um prompt para lembrá-lo.
 
 <img src="/assets/img/tools/vscode/dart_fix_notification.png" width="550" height="175" alt="VS Code notification about 'dart fix'">
 
-After running `dart pub get` or `dart pub upgrade`,
-VS Code might also display this prompt if package changes
-add issues that `dart fix` can repair.
+Após executar `dart pub get` ou `dart pub upgrade`,
+o VS Code também pode exibir este prompt se mudanças de pacote
+adicionarem problemas que `dart fix` pode reparar.
 
-Save all of your files before running `dart fix`.
-This ensures that Dart uses the latest versions of your files.
+Salve todos os seus arquivos antes de executar `dart fix`.
+Isso garante que o Dart use as versões mais recentes dos seus arquivos.
