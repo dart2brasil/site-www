@@ -253,7 +253,7 @@ veja a seção [Concorrência na web](#concurrency-on-the-web).
 
 [Dart Native platform]: /overview#platform
 
-### O isolate main
+### O isolate main {:#the-main-isolate}
 
 Na maioria dos casos, você não precisa pensar sobre isolates de forma alguma. Programas Dart executam
 no isolate main por padrão. É a thread onde um programa começa a executar
