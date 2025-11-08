@@ -79,7 +79,7 @@ Sound null safety em todo o programa permite que o Dart
 aproveite esses princípios para
 menos bugs, binários menores e execução mais rápida.
 
-## Dart 3 e null safety
+## Dart 3 e null safety {:#dart-3-and-null-safety}
 
 O Dart 3 tem sound null safety integrado.
 O Dart 3 impede que código sem ele seja executado.

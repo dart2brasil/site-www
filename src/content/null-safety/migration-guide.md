@@ -92,7 +92,7 @@ $ dart --version
 Dart SDK version: 2.19.6
 ```
 
-### Verifique o status das dependências
+### Verifique o status das dependências {:#check-dependency-status}
 
 Obtenha o estado de migração das dependências do seu pacote,
 usando o seguinte comando:
@@ -366,7 +366,7 @@ Então, se você publicou seu código no pub.dev,
 [publique uma prerelease null-safe](#step5-publish).
 
 
-### Migrando manualmente
+### Migrando manualmente {:#migrating-by-hand}
 
 Se você preferir não usar a ferramenta de migração,
 você pode migrar manualmente.
@@ -483,7 +483,7 @@ para indicar uma mudança significativa:
   Por exemplo, se a versão anterior é `0.3.2`,
   a nova versão é `0.4.0` ou `1.0.0`.
 
-### Verifique seu pubspec
+### Verifique seu pubspec {:#check-your-pubspec}
 
 Antes de publicar uma versão estável null safety de um pacote,
 recomendamos fortemente seguir estas regras de pubspec:
@@ -492,7 +492,7 @@ recomendamos fortemente seguir estas regras de pubspec:
   que você testou (pelo menos `2.12.0`).
 * Use versões estáveis de todas as dependências diretas.
 
-### Atualize exemplos e docs
+### Atualize exemplos e docs {:#update-examples-and-docs}
 
 Se você ainda não fez, atualize todos os [exemplos][examples] e amostras
 do seu pacote para usar uma versão migrada do seu pacote
