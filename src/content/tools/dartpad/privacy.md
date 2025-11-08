@@ -1,6 +1,7 @@
 ---
-title: DartPad Privacy Notice
-description: How Google uses the source code that you enter into DartPad.
+ia-translate: true
+title: Aviso de Privacidade do DartPad
+description: Como o Google usa o código fonte que você insere no DartPad.
 showToc: false
 ---
 
@@ -9,11 +10,11 @@ aprender sobre a linguagem e bibliotecas Dart. O código fonte inserido no DartP
 pode ser enviado para servidores executados no Google Cloud para ser analisado em
 busca de erros/avisos, compilado para JavaScript e retornado ao navegador.
 
-Source code, or prompts used to generate source code
-entered into DartPad may be stored, processed, and aggregated in
-order to improve the user experience of DartPad and other Dart tools. For
-example, we may use the source code to help offer better code completion
-suggestions. The raw source code is deleted after no more than 60 days.
+O código fonte, ou prompts usados para gerar código fonte inseridos no DartPad,
+podem ser armazenados, processados e agregados a fim de melhorar a experiência
+do usuário do DartPad e outras ferramentas Dart. Por exemplo, podemos usar o
+código fonte para ajudar a oferecer melhores sugestões de autocompletar código.
+O código fonte bruto é excluído após no máximo 60 dias.
 
 O DartPad usa o Google Analytics para relatar estatísticas de uso de recursos.
 Esses dados são usados para ajudar a melhorar as ferramentas Dart e Flutter ao longo do tempo.
