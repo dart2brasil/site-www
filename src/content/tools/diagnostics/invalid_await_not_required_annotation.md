@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: invalid_await_not_required_annotation
 description: >-
-  Details about the invalid_await_not_required_annotation
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_await_not_required_annotation
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation 'awaitNotRequired' can only be applied to a Future-returning function, or a Future-typed field._
+_A annotation 'awaitNotRequired' só pode ser aplicada a uma função que retorna Future, ou a um campo do tipo Future._
 
 ## Description
 
-The analyzer produces this diagnostic when anything other than a
-`Future`-returning function or a `Future`-typed field or top-level
-variable is annotated with [`awaitNotRequired`][meta-awaitNotRequired].
+O analisador produz este diagnóstico quando algo diferente de uma função
+que retorna `Future` ou um campo ou variável de nível superior do tipo
+`Future` é anotado com [`awaitNotRequired`][meta-awaitNotRequired].
 
 ## Example
 
-The following code produces this diagnostic because the annotation is on a
-`void`-returning function:
+O código a seguir produz este diagnóstico porque a annotation está em uma
+função que retorna `void`:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -29,7 +30,7 @@ void f() {}
 
 ## Common fixes
 
-Remove the annotation:
+Remova a annotation:
 
 ```dart
 void f() {}

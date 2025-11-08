@@ -2,16 +2,17 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 161 files (with ia-translate: true metadata)
+- **Remaining:** ~784 files
+- **Progress:** 17.0%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
-- **Starting count:** 55 files
-- **Current count:** 95 files
+- **Files translated this session:** 66 (Section 14 - Diagnostic Errors)
+- **Starting count:** 95 files
+- **Current count:** 161 files
+- **Section completed:** Section 14 - implements/import/invalid diagnostic errors
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +67,39 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+### Section 14: Diagnostic Errors - implements/import/invalid (66 files)
+All diagnostic error files matching `implements_*`, `import_*`, and `invalid_*` patterns:
+
+#### implements_* (3 files)
+41. ✅ `src/content/tools/diagnostics/implements_non_class.md`
+42. ✅ `src/content/tools/diagnostics/implements_repeated.md`
+43. ✅ `src/content/tools/diagnostics/implements_super_class.md`
+
+#### import_* (4 files)
+44. ✅ `src/content/tools/diagnostics/import_deferred_library_with_load_function.md`
+45. ✅ `src/content/tools/diagnostics/import_internal_library.md`
+46. ✅ `src/content/tools/diagnostics/import_of_legacy_library_into_null_safe.md`
+47. ✅ `src/content/tools/diagnostics/import_of_non_library.md`
+
+#### invalid_* (59 files)
+48-106. ✅ All 59 `invalid_*` diagnostic error files including:
+- invalid_annotation* (7 files)
+- invalid_deprecated_* (6 files)
+- invalid_exception through invalid_widget_preview_* (46 files)
+
+**Translation approach:** Batch translation using dart-docs-translator agent
+- ✅ Added `ia-translate: true` to all frontmatter
+- ✅ Kept error names (title) in English
+- ✅ Translated descriptions to PT-BR
+- ✅ Translated all error explanations to natural PT-BR
+- ✅ Preserved all code blocks, import statements, error messages
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 81/~776 files (10.4%)
+  - ✅ Section 14 (Diagnostic Errors - implements/import/invalid): 66 files complete
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,12 +129,14 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (66 files - Section 14 Diagnostic Errors)
+Progress: 17.0% complete (161/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
 - ✅ Libraries section 100% COMPLETE! 🎉
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
+- ✅ Section 14 (Diagnostic Errors - implements/import/invalid) 100% COMPLETE! 🎉
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)
+- ✅ Tools section progress: 81 files (10.4%)

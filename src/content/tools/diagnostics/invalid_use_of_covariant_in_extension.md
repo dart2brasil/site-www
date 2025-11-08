@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: invalid_use_of_covariant_in_extension
 description: >-
-  Details about the invalid_use_of_covariant_in_extension
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_use_of_covariant_in_extension
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Can't have modifier '{0}' in an extension._
+_Não é possível ter o modificador '{0}' em uma extension._
 
 ## Description
 
-The analyzer produces this diagnostic when a member declared inside an
-extension uses the keyword `covariant` in the declaration of a parameter.
-Extensions aren't classes and don't have subclasses, so the keyword serves
-no purpose.
+O analisador produz este diagnóstico quando um membro declarado dentro de uma
+extension usa a keyword `covariant` na declaração de um parâmetro.
+Extensions não são classes e não possuem subclasses, portanto a keyword não serve
+para nenhum propósito.
 
 ## Example
 
-The following code produces this diagnostic because `i` is marked as being
+O código a seguir produz este diagnóstico porque `i` está marcado como sendo
 covariant:
 
 ```dart
@@ -29,7 +30,7 @@ extension E on String {
 
 ## Common fixes
 
-Remove the `covariant` keyword:
+Remova a keyword `covariant`:
 
 ```dart
 extension E on String {

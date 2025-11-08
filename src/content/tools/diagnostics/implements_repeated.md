@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: implements_repeated
 description: >-
-  Details about the implements_repeated
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico implements_repeated
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' can only be implemented once._
+_'{0}' só pode ser implementado uma vez._
 
 ## Description
 
-The analyzer produces this diagnostic when a single class is specified more
-than once in an `implements` clause.
+O analisador produz este diagnóstico quando uma única classe é especificada
+mais de uma vez em uma cláusula `implements`.
 
 ## Example
 
-The following code produces this diagnostic because `A` is in the list
-twice:
+O código a seguir produz este diagnóstico porque `A` está na lista duas
+vezes:
 
 ```dart
 class A {}
@@ -26,7 +27,7 @@ class B implements A, [!A!] {}
 
 ## Common fixes
 
-Remove all except one occurrence of the class name:
+Remova todas as ocorrências exceto uma do nome da classe:
 
 ```dart
 class A {}

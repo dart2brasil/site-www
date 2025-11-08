@@ -1,58 +1,59 @@
 ---
+ia-translate: true
 title: invalid_widget_preview_application
 description: >-
-  Details about the invalid_widget_preview_application
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_widget_preview_application
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The '@Preview(...)' annotation can only be applied to public, statically accessible constructors and functions._
+_A anotação '@Preview(...)' só pode ser aplicada a construtores e funções públicos e acessíveis estaticamente._
 
 ## Description
 
-The analyzer produces this diagnostic when a `@Preview(...)` annotation
-is applied to an invalid widget preview target. Widget previews can only
-be applied to public, statically accessible, explicitly defined
-constructors and functions.
+O analisador produz este diagnóstico quando uma anotação `@Preview(...)` é
+aplicada a um alvo de preview de widget inválido. Previews de widget só podem
+ser aplicados a construtores e funções públicos, acessíveis estaticamente e
+definidos explicitamente.
 
 ## Examples
 
-The following code produces this diagnostic because `_myPrivatePreview`
-is private:
+O código a seguir produz este diagnóstico porque `_myPrivatePreview`
+é privado:
 
 ```dart
 import 'package:flutter/widgets.dart';
 import 'package:flutter/widget_previews.dart';
 
-// Invalid application to private top-level function.
+// Aplicação inválida a uma função de nível superior privada.
 @[!Preview!]()
 // ignore: unused_element
 Widget _myPrivatePreview() => Text('Foo');
 ```
 
-The following code produces this diagnostic because `myExternalPreview`
-is `external`:
+O código a seguir produz este diagnóstico porque `myExternalPreview`
+é `external`:
 
 ```dart
 import 'package:flutter/widgets.dart';
 import 'package:flutter/widget_previews.dart';
 
 
-// Invalid application to an external function.
+// Aplicação inválida a uma função external.
 @[!Preview!]()
 external Widget myExternalPreview();
 ```
 
-The following code produces this diagnostic because `PublicWidget._()` is
-private:
+O código a seguir produz este diagnóstico porque `PublicWidget._()` é
+privado:
 
 ```dart
 import 'package:flutter/widgets.dart';
 import 'package:flutter/widget_previews.dart';
 
 class PublicWidget extends StatelessWidget {
-  // Invalid application to a private constructor.
+  // Aplicação inválida a um construtor privado.
   @[!Preview!]()
   PublicWidget._();
 
@@ -61,15 +62,15 @@ class PublicWidget extends StatelessWidget {
 }
 ```
 
-The following code produces this diagnostic because `instancePreview` is
-an instance method:
+O código a seguir produz este diagnóstico porque `instancePreview` é
+um método de instância:
 
 ```dart
 import 'package:flutter/widgets.dart';
 import 'package:flutter/widget_previews.dart';
 
 class PublicWidget extends StatelessWidget {
-  // Invalid application to a instance member.
+  // Aplicação inválida a um membro de instância.
   @[!Preview!]()
   Widget instancePreview() => PublicWidget();
 
@@ -78,8 +79,8 @@ class PublicWidget extends StatelessWidget {
 }
 ```
 
-The following code produces this diagnostic because `_PrivateWidget` is
-private:
+O código a seguir produz este diagnóstico porque `_PrivateWidget` é
+privado:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -87,7 +88,7 @@ import 'package:flutter/widget_previews.dart';
 
 // ignore: unused_element
 class _PrivateWidget extends StatelessWidget {
-  // Invalid application to a constructor of a private class.
+  // Aplicação inválida a um construtor de uma classe privada.
   @[!Preview!]()
   _PrivateWidget();
 
@@ -96,8 +97,8 @@ class _PrivateWidget extends StatelessWidget {
 }
 ```
 
-The following code produces this diagnostic because `_PrivateWidget` is
-private:
+O código a seguir produz este diagnóstico porque `_PrivateWidget` é
+privado:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -105,7 +106,7 @@ import 'package:flutter/widget_previews.dart';
 
 // ignore: unused_element
 class _PrivateWidget extends StatelessWidget {
-  // Invalid application to a static method of a private class.
+  // Aplicação inválida a um método static de uma classe privada.
   @[!Preview!]()
   Widget privateStatic() => _PrivateWidget();
 
@@ -114,15 +115,15 @@ class _PrivateWidget extends StatelessWidget {
 }
 ```
 
-The following code produces this diagnostic because `AbstractWidget` is
-an `abstract` class:
+O código a seguir produz este diagnóstico porque `AbstractWidget` é
+uma classe `abstract`:
 
 ```dart
 import 'package:flutter/widgets.dart';
 import 'package:flutter/widget_previews.dart';
 
 abstract class AbstractWidget extends StatelessWidget {
-  // Invalid application to a constructor of an abstract class.
+  // Aplicação inválida a um construtor de uma classe abstract.
   @[!Preview!]()
   AbstractWidget();
 
@@ -133,5 +134,5 @@ abstract class AbstractWidget extends StatelessWidget {
 
 ## Common fixes
 
-Create a dedicated public, statically accessible, and explicitly defined
-constructor, top-level function, or class member for use as a preview:
+Crie um construtor, função de nível superior ou membro de classe dedicado, público,
+acessível estaticamente e definido explicitamente para uso como um preview:

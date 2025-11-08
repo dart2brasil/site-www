@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: invalid_reopen_annotation
 description: >-
-  Details about the invalid_reopen_annotation
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_reopen_annotation
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@reopen' can only be applied to a class that opens capabilities that the supertype intentionally disallows._
+_A anotação '@reopen' só pode ser aplicada a uma classe que abre capacidades que o supertipo intencionalmente não permite._
 
 ## Description
 
-The analyzer produces this diagnostic when a `@reopen` annotation has been
-placed on a class or mixin that does not remove restrictions placed on the
-superclass.
+O analisador produz este diagnóstico quando uma anotação `@reopen` foi
+colocada em uma classe ou mixin que não remove restrições colocadas na
+superclasse.
 
 ## Example
 
-The following code produces this diagnostic because the class `B` is
-annotated with `@reopen` even though it doesn't expand the ability of `A`
-to be subclassed:
+O código a seguir produz este diagnóstico porque a classe `B` está
+anotada com `@reopen` mesmo que ela não expanda a capacidade de `A`
+de ter subclasses:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -32,8 +33,8 @@ class B extends A {}
 
 ## Common fixes
 
-If the superclass should be restricted in a way that the subclass would
-change, then modify the superclass to reflect those restrictions:
+Se a superclasse deve ser restrita de uma forma que a subclasse
+modificaria, então modifique a superclasse para refletir essas restrições:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -44,7 +45,7 @@ interface class A {}
 class B extends A {}
 ```
 
-If the superclass is correct, then remove the annotation:
+Se a superclasse está correta, então remova a anotação:
 
 ```dart
 sealed class A {}

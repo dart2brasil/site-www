@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: implements_non_class
 description: >-
-  Details about the implements_non_class
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico implements_non_class
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Classes and mixins can only implement other classes and mixins._
+_Classes e mixins só podem implementar outras classes e mixins._
 
 ## Description
 
-The analyzer produces this diagnostic when a name used in the `implements`
-clause of a class or mixin declaration is defined to be something other
-than a class or mixin.
+O analisador produz este diagnóstico quando um nome usado na cláusula
+`implements` de uma declaração de classe ou mixin é definido como algo
+diferente de uma classe ou mixin.
 
 ## Example
 
-The following code produces this diagnostic because `x` is a variable
-rather than a class or mixin:
+O código a seguir produz este diagnóstico porque `x` é uma variável em vez
+de uma classe ou mixin:
 
 ```dart
 var x;
@@ -27,14 +28,13 @@ class C implements [!x!] {}
 
 ## Common fixes
 
-If the name is the name of an existing class or mixin that's already being
-imported, then add a prefix to the import so that the local definition of
-the name doesn't shadow the imported name.
+Se o nome for o nome de uma classe ou mixin existente que já está sendo
+importado, adicione um prefixo ao import para que a definição local do
+nome não oculte o nome importado.
 
-If the name is the name of an existing class or mixin that isn't being
-imported, then add an import, with a prefix, for the library in which it's
-declared.
+Se o nome for o nome de uma classe ou mixin existente que não está sendo
+importado, adicione um import, com um prefixo, para a biblioteca na qual
+está declarado.
 
-Otherwise, either replace the name in the `implements` clause with the name
-of an existing class or mixin, or remove the name from the `implements`
-clause.
+Caso contrário, substitua o nome na cláusula `implements` pelo nome de uma
+classe ou mixin existente, ou remova o nome da cláusula `implements`.

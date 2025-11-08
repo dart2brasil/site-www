@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: invalid_deprecated_implement_annotation
 description: >-
-  Details about the invalid_deprecated_implement_annotation
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_deprecated_implement_annotation
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@Deprecated.implement' can only be applied to implementable classes._
+_A annotation '@Deprecated.implement' só pode ser aplicada a classes implementáveis._
 
 ## Description
 
-The analyzer produces this diagnostic when the `@Deprecated.implement`
-annotation is applied to a declaration that isn't an implementable class
-or mixin. An implementable class or mixin is one that isn't declared with
-the base, final, or sealed keywords.
+O analisador produz este diagnóstico quando a annotation
+`@Deprecated.implement` é aplicada a uma declaração que não é uma classe ou
+mixin implementável. Uma classe ou mixin implementável é aquele que não é
+declarado com as keywords base, final ou sealed.
 
 ## Example
 
-The following code produces this diagnostic because the annotation is on a
-sealed class:
+O código a seguir produz este diagnóstico porque a annotation está em uma
+classe sealed:
 
 ```dart
 @[!Deprecated.implement!]()
@@ -28,7 +29,7 @@ sealed class C {}
 
 ## Common fixes
 
-Remove the annotation:
+Remova a annotation:
 
 ```dart
 sealed class C {}

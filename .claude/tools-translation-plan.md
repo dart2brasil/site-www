@@ -216,19 +216,21 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 ---
 
 ## Section 15: Diagnostic Errors - G-I (Generic, Import, Invalid)
-**Files:** ~40 files | **Priority:** LOW-MEDIUM
+**Files:** ~40 files | **Priority:** LOW-MEDIUM | **Status:** ✅ PARTIALLY COMPLETE
 
 ### Pattern:
-- `tools/diagnostics/generic_*.md`
-- `tools/diagnostics/getter_*.md`
-- `tools/diagnostics/if_*.md`
-- `tools/diagnostics/illegal_*.md`
-- `tools/diagnostics/implements_*.md`
-- `tools/diagnostics/import_*.md`
-- `tools/diagnostics/invalid_*.md`
+- `tools/diagnostics/generic_*.md` (NOT STARTED)
+- `tools/diagnostics/getter_*.md` (NOT STARTED)
+- `tools/diagnostics/if_*.md` (NOT STARTED)
+- `tools/diagnostics/illegal_*.md` (NOT STARTED)
+- `tools/diagnostics/implements_*.md` ✅ **COMPLETE (3 files)**
+- `tools/diagnostics/import_*.md` ✅ **COMPLETE (4 files)**
+- `tools/diagnostics/invalid_*.md` ✅ **COMPLETE (59 files)**
 
 **Focus:** Generics, imports, validation errors
 **Estimated time:** 2-3 hours
+**Completed:** 66 files (implements/import/invalid patterns)
+**Remaining:** generic/getter/if/illegal patterns
 
 ---
 
@@ -377,10 +379,16 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
 
 ### In Progress:
-- ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
+- 🔄 **Section 15:** Diagnostic Errors - G-I (66/~80 files) - implements/import/invalid COMPLETE
+  - ✅ implements_*.md (3 files)
+  - ✅ import_*.md (4 files)
+  - ✅ invalid_*.md (59 files)
+  - ⬜ generic_*.md, getter_*.md, if_*.md, illegal_*.md (remaining)
 
 ### Not Started:
-All sections 1-20 pending
+- ⬜ **Sections 1-5:** Core Pub Documentation & Commands (25 files) - CRITICAL PRIORITY
+- ⬜ **Sections 6-14:** Diagnostic Errors A-F (remaining)
+- ⬜ **Sections 16-20:** Diagnostic Errors L-Z (remaining)
 
 ---
 
