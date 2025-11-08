@@ -1,6 +1,7 @@
 ---
-title: Extend a class
-description: Learn how to create subclasses from a superclass.
+ia-translate: true
+title: Estender uma classe
+description: Aprenda como criar subclasses a partir de uma superclasse.
 prevpage:
   url: /language/methods
   title: Methods
@@ -9,8 +10,8 @@ nextpage:
   title: Mixins
 ---
 
-Use `extends` to create a subclass, and `super` to refer to the
-superclass:
+Use `extends` para criar uma subclasse, e `super` para referenciar a
+superclasse:
 
 <?code-excerpt "misc/lib/language_tour/classes/extends.dart (smart-tv)" replace="/extends|super/[!$&!]/g"?>
 ```dart
@@ -33,15 +34,15 @@ class SmartTelevision [!extends!] Television {
 }
 ```
 
-For another usage of `extends`, see the discussion of
-[parameterized types][] on the Generics page.
+Para outro uso de `extends`, veja a discussão sobre
+[tipos parametrizados][parameterized types] na página de Generics.
 
-## Overriding members
+## Sobrescrevendo membros
 
-Subclasses can override instance methods (including [operators][]),
-getters, and setters.
-You can use the `@override` annotation to indicate that you are
-intentionally overriding a member:
+Subclasses podem sobrescrever métodos de instância (incluindo [operadores][operators]),
+getters e setters.
+Você pode usar a annotation `@override` para indicar que você está
+intencionalmente sobrescrevendo um membro:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
 ```dart
@@ -61,42 +62,42 @@ class SmartTelevision extends Television {
 }
 ```
 
-An overriding method declaration must match
-the method (or methods) that it overrides in several ways:
+Uma declaração de método sobrescrito deve corresponder
+ao método (ou métodos) que ele sobrescreve de várias maneiras:
 
-* The return type must be the same type as (or a subtype of)
-  the overridden method's return type.
-* Parameter types must be the same type as (or a supertype of)
-  the overridden method's parameter types.
-  In the preceding example, the `contrast` setter of `SmartTelevision`
-  changes the parameter type from `int` to a supertype, `num`.
-* If the overridden method accepts _n_ positional parameters,
-  then the overriding method must also accept _n_ positional parameters.
-* A [generic method][] can't override a non-generic one,
-  and a non-generic method can't override a generic one.
+* O tipo de retorno deve ser do mesmo tipo (ou um subtipo do)
+  tipo de retorno do método sobrescrito.
+* Os tipos de parâmetro devem ser do mesmo tipo (ou um supertipo dos)
+  tipos de parâmetro do método sobrescrito.
+  No exemplo anterior, o setter `contrast` de `SmartTelevision`
+  muda o tipo de parâmetro de `int` para um supertipo, `num`.
+* Se o método sobrescrito aceita _n_ parâmetros posicionais,
+  então o método que sobrescreve também deve aceitar _n_ parâmetros posicionais.
+* Um [método genérico][generic method] não pode sobrescrever um não-genérico,
+  e um método não-genérico não pode sobrescrever um genérico.
 
-Sometimes you might want to narrow the type of
-a method parameter or an instance variable.
-This violates the normal rules, and
-it's similar to a downcast in that it can cause a type error at runtime.
-Still, narrowing the type is possible
-if the code can guarantee that a type error won't occur.
-In this case, you can use the
-[`covariant` keyword](/language/type-system#covariant-keyword)
-in a parameter declaration.
-For details, see the
-[Dart language specification][].
+Às vezes você pode querer restringir o tipo de
+um parâmetro de método ou uma variável de instância.
+Isso viola as regras normais, e
+é similar a um downcast no sentido de que pode causar um erro de tipo em tempo de execução.
+Ainda assim, restringir o tipo é possível
+se o código pode garantir que um erro de tipo não ocorrerá.
+Neste caso, você pode usar a
+[keyword `covariant`](/language/type-system#covariant-keyword)
+em uma declaração de parâmetro.
+Para detalhes, veja a
+[especificação da linguagem Dart][Dart language specification].
 
 :::warning
-If you override `==`, you should also override Object's `hashCode` getter.
-For an example of overriding `==` and `hashCode`, check out
-[Implementing map keys](/libraries/dart-core#implementing-map-keys).
+Se você sobrescrever `==`, você também deve sobrescrever o getter `hashCode` de Object.
+Para um exemplo de sobrescrita de `==` e `hashCode`, confira
+[Implementando chaves de map](/libraries/dart-core#implementing-map-keys).
 :::
 
 ## noSuchMethod()
 
-To detect or react whenever code attempts to use a non-existent method or
-instance variable, you can override `noSuchMethod()`:
+Para detectar ou reagir sempre que o código tenta usar um método ou
+variável de instância inexistente, você pode sobrescrever `noSuchMethod()`:
 
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart (no-such-method-impl)" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
 ```dart
@@ -113,18 +114,18 @@ class A {
 }
 ```
 
-You **can't invoke** an unimplemented method unless
-**one** of the following is true:
+Você **não pode invocar** um método não implementado a menos que
+**uma** das seguintes condições seja verdadeira:
 
-* The receiver has the static type `dynamic`.
+* O receptor tem o tipo estático `dynamic`.
 
-* The receiver has a static type that
-defines the unimplemented method (abstract is OK),
-and the dynamic type of the receiver has an implementation of `noSuchMethod()`
-that's different from the one in class `Object`.
+* O receptor tem um tipo estático que
+define o método não implementado (abstract é aceitável),
+e o tipo dinâmico do receptor tem uma implementação de `noSuchMethod()`
+que é diferente daquela na classe `Object`.
 
-For more information, see the informal
-[noSuchMethod forwarding specification.]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
+Para mais informações, veja a
+[especificação informal de encaminhamento noSuchMethod.]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
 
 [parameterized types]: /language/generics#restricting-the-parameterized-type
 [operators]: /language/methods#operators
