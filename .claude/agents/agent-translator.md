@@ -24,11 +24,30 @@ description: Descrição em português
 **Critical:** Links are the #1 cause of broken documentation. Follow these rules strictly:
 
 - **Reference-style links:** Keep the reference keys in English, translate only the display text
+
+  📋 **Padrão Correto de Links:**
+
+  ✅ **CORRETO:**
   ```markdown
-  ❌ WRONG: [Documentação Dart][Dart documentation]
+  [texto traduzido em português][reference-key-in-english]
+  ...
+  [reference-key-in-english]: /url/path
+  ```
+
+  ❌ **INCORRETO:**
+  ```markdown
+  [texto traduzido em português][]
+  # Esperava encontrar definição traduzida, mas só existe em inglês
+  ```
+
+  **Example:**
+  ```markdown
   ✅ RIGHT: [Documentação Dart][Dart documentation]
 
   Then keep definition: [Dart documentation]: /docs/...
+
+  ❌ WRONG: [Documentação Dart][]
+  # This would try to find [Documentação Dart]: /docs/... which doesn't exist!
   ```
 
 - **Header anchors:** Keep custom anchors in English, translate only the header text
@@ -351,10 +370,16 @@ Note: Translate the header text, but keep the anchor {:#...} exactly as is!
 
 ### ❌ Common Mistakes to Avoid:
 
-1. **Translating link reference keys**
+1. **Translating link reference keys or using empty reference keys**
    ```markdown
-   ❌ [texto][documentação]
-   ✅ [texto][documentation]
+   ❌ WRONG: [texto traduzido em português][]
+   # This tries to find [texto traduzido em português]: /url which doesn't exist!
+
+   ❌ WRONG: [texto][documentação]
+   # Reference key should stay in English!
+
+   ✅ RIGHT: [texto traduzido em português][documentation]
+   # Keep reference key in English: [documentation]: /url/path
    ```
 
 2. **Translating type names**
