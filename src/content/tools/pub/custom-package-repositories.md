@@ -1,8 +1,9 @@
 ---
-title: Custom package repositories
+ia-translate: true
+title: Repositórios de pacotes personalizados
 description: >-
-  How Dart's package management tool, pub,
-  works with custom package repositories.
+  Como a ferramenta de gerenciamento de pacotes do Dart, pub,
+  funciona com repositórios de pacotes personalizados.
 ---
 
 A ferramenta `dart pub` suporta repositórios de pacotes de terceiros.

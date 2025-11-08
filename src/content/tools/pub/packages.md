@@ -1,8 +1,9 @@
 ---
-title: How to use packages
-shortTitle: Packages
-breadcrumb: Overview
-description: Learn more about pub, Dart's tool for managing packages.
+ia-translate: true
+title: Como usar pacotes
+shortTitle: Pacotes
+breadcrumb: Visão geral
+description: Saiba mais sobre pub, a ferramenta do Dart para gerenciar pacotes.
 ---
 
 O ecossistema Dart usa _packages_ (pacotes) para gerenciar software compartilhado,
@@ -83,16 +84,16 @@ $ dart pub get
 
 Este processo é chamado de _obtenção das dependências_.
 
-The `dart pub get` command
-determines which packages your app depends on,
-and puts them in a central [system cache](/resources/glossary#pub-system-cache).
-If your app depends on a published package, pub downloads that package from the
-[pub.dev site.]({{site.pub}})
-For a [Git dependency](/tools/pub/dependencies#git-packages),
-pub clones the Git repository.
-Transitive dependencies are included, too.
-For example, if the `js` package depends on the `test` package, `pub`
-grabs both the `js` package and the `test` package.
+O comando `dart pub get`
+determina de quais packages seu aplicativo depende
+e os coloca em um [cache do sistema](/resources/glossary#pub-system-cache) central.
+Se seu aplicativo depende de um package publicado, o pub baixa esse package do
+[site pub.dev.]({{site.pub}})
+Para uma [dependência Git](/tools/pub/dependencies#git-packages),
+o pub clona o repositório Git.
+Dependências transitivas também são incluídas.
+Por exemplo, se o package `js` depende do package `test`, o `pub`
+obtém tanto o package `js` quanto o package `test`.
 
 O Pub cria um arquivo
 `package_config.json` (no diretório `.dart_tool/`)
@@ -146,13 +147,13 @@ e armazena próximo ao seu pubspec.
 Ele lista as versões específicas de cada dependência (imediata e transitiva)
 que seu package usa.
 
-If your package is an [application package](/resources/glossary#application-package)
-you should check this file into
-[source control](/tools/pub/private-files).
-That way, everyone working on your app uses the same versions
-of all of its dependencies.
-Checking in the lockfile also ensures that your deployed app
-uses the same versions of code.
+Se o seu package for um [package de aplicação](/resources/glossary#application-package),
+você deve incluir este arquivo no
+[controle de versão](/tools/pub/private-files).
+Dessa forma, todos que trabalham no seu aplicativo usam as mesmas versões
+de todas as suas dependências.
+Incluir o lockfile também garante que seu aplicativo implantado
+use as mesmas versões de código.
 
 Quando você estiver pronto para atualizar suas dependências para as versões mais recentes,
 use o comando [`dart pub upgrade`][upgrade]:

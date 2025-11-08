@@ -1,15 +1,16 @@
 ---
-title: The pubspec file
-shortTitle: Pubspec file
-description: Reference guide for the fields in pubspec.yaml.
+ia-translate: true
+title: O arquivo pubspec
+shortTitle: Arquivo Pubspec
+description: Guia de referência para os campos em pubspec.yaml.
 ---
 
-Every [pub package](/tools/pub/packages) needs some metadata so it can specify its
-[dependencies](/resources/glossary#dependency). Pub packages that are shared with
-others also need to provide some other information so users can discover them.
-All of this metadata goes in the package's _pubspec:_
-a file named `pubspec.yaml` that's written in the
-[YAML](https://yaml.org/) language.
+Todo [pacote pub](/tools/pub/packages) precisa de alguns metadados para que possa especificar suas
+[dependências](/resources/glossary#dependency). Pacotes Pub que são compartilhados com
+outros também precisam fornecer algumas outras informações para que os usuários possam descobri-los.
+Todos esses metadados vão no _pubspec_ do pacote:
+um arquivo chamado `pubspec.yaml` que é escrito na
+linguagem [YAML](https://yaml.org/).
 
 {% comment %}
 PENDENTE: reconhecer a existência de arquivos pubspec.lock.

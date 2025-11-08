@@ -1,7 +1,8 @@
 ---
-title: Publishing packages
-breadcrumb: Publishing
-description: Learn how to publish a Dart package to pub.dev.
+ia-translate: true
+title: Publicando pacotes
+breadcrumb: Publicação
+description: Aprenda como publicar um pacote Dart no pub.dev.
 ---
 
 O [gerenciador de pacotes pub][pub] não serve apenas para usar pacotes de outras pessoas.

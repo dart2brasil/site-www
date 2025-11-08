@@ -2,9 +2,9 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 108 files (with ia-translate: true metadata)
-- **Remaining:** ~837 files
-- **Progress:** 11.4%
+- **Translated:** 106 files (with ia-translate: true metadata)
+- **Remaining:** ~839 files
+- **Progress:** 11.2%
 
 ## Recently Completed (This Session)
 
@@ -66,6 +66,18 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 1: Complete Pub Documentation (11 files - NEW!)
+41. ✅ `src/content/tools/pub/index.md` - Added ia-translate + PT-BR frontmatter
+42. ✅ `src/content/tools/pub/packages.md` - Added ia-translate + completed English sections
+43. ✅ `src/content/tools/pub/dependencies.md` - Added ia-translate + completed English sections
+44. ✅ `src/content/tools/pub/pubspec.md` - Added ia-translate + PT-BR frontmatter
+45. ✅ `src/content/tools/pub/package-layout.md` - Added ia-translate + PT-BR frontmatter
+46. ✅ `src/content/tools/pub/versioning.md` - Added ia-translate + PT-BR frontmatter
+47. ✅ `src/content/tools/pub/publishing.md` - Added ia-translate + PT-BR frontmatter
+48. ✅ `src/content/tools/pub/workspaces.md` - Added ia-translate + PT-BR frontmatter
+49. ✅ `src/content/tools/pub/custom-package-repositories.md` - Added ia-translate + PT-BR frontmatter
+50. ✅ `src/content/tools/pub/environment-variables.md` - Added ia-translate + PT-BR frontmatter
+51. ✅ `src/content/tools/pub/automated-publishing.md` - Added ia-translate + PT-BR frontmatter
 #### Section 2: Diagnostic Errors - abi/abstract/address/always (13 files)
 41. ✅ `src/content/tools/diagnostics/abi_specific_integer_invalid.md` - ABI validation errors
 42. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_extra.md` - Multiple ABI mapping
@@ -85,6 +97,8 @@
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
+- ✅ **Pub Documentation:** 23/23 core files done (100%) 🎉
+- ⏳ **Tools:** 26/~776 files (3.4%)
 - ⏳ **Tools:** 28/~776 files (3.6%)
   - ✅ Section 2 (Diagnostic Errors): 13 files complete
 
@@ -123,5 +137,6 @@ Progress: 11.4% complete (108/945 files)
 - ✅ Language section 100% COMPLETE! 🎉
 - ✅ Libraries section 100% COMPLETE! 🎉
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
+- ✅ Pub Documentation section 100% COMPLETE! 🎉 (23 core + command files)
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)
