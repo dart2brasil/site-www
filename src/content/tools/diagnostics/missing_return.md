@@ -1,23 +1,24 @@
 ---
 title: missing_return
 description: >-
-  Details about the missing_return
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico missing_return
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_This function has a return type of '{0}', but doesn't end with a return statement._
+_Esta função tem um tipo de retorno '{0}', mas não termina com uma instrução return._
 
 ## Description
 
-Any function or method that doesn't end with either an explicit return or a
-throw implicitly returns `null`. This is rarely the desired behavior. The
-analyzer produces this diagnostic when it finds an implicit return.
+Qualquer função ou method que não termina com um return explícito ou um
+throw retorna implicitamente `null`. Esse raramente é o comportamento desejado. O
+analisador produz este diagnóstico quando encontra um return implícito.
 
 ## Example
 
-The following code produces this diagnostic because `f` doesn't end with a
+O código a seguir produz este diagnóstico porque `f` não termina com um
 return:
 
 ```dart
@@ -30,5 +31,5 @@ int [!f!](int x) {
 
 ## Common fixes
 
-Add a `return` statement that makes the return value explicit, even if
-`null` is the appropriate value.
+Adicione uma instrução `return` que torna o valor de retorno explícito, mesmo se
+`null` é o valor apropriado.

@@ -1,29 +1,30 @@
 ---
 title: mixin_application_concrete_super_invoked_member_type
 description: >-
-  Details about the mixin_application_concrete_super_invoked_member_type
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico mixin_application_concrete_super_invoked_member_type
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The super-invoked member '{0}' has the type '{1}', and the concrete member in the class has the type '{2}'._
+_O member super-invocado '{0}' tem o tipo '{1}', e o member concreto na classe tem o tipo '{2}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a mixin that invokes a method
-using `super` is used in a class where the concrete implementation of that
-method has a different signature than the signature defined for that method
-by the mixin's `on` type. The reason this is an error is because the
-invocation in the mixin might invoke the method in a way that's
-incompatible with the method that will actually be executed.
+O analisador produz este diagnóstico quando um mixin que invoca um method
+usando `super` é usado em uma classe onde a implementação concreta desse
+method tem uma assinatura diferente da assinatura definida para esse method
+pelo tipo `on` do mixin. A razão disso ser um erro é porque a
+invocação no mixin pode invocar o method de uma forma que é
+incompatível com o method que será realmente executado.
 
 ## Example
 
-The following code produces this diagnostic because the class `C` uses the
-mixin `M`, the mixin `M` invokes `foo` using `super`, and the abstract
-version of `foo` declared in `I` (the mixin's `on` type) doesn't have the
-same signature as the concrete version of `foo` declared in `A`:
+O código a seguir produz este diagnóstico porque a classe `C` usa o
+mixin `M`, o mixin `M` invoca `foo` usando `super`, e a versão abstract
+de `foo` declarada em `I` (o tipo `on` do mixin) não tem a
+mesma assinatura que a versão concreta de `foo` declarada em `A`:
 
 ```dart
 class I {
@@ -50,8 +51,7 @@ abstract class C extends B with [!M!] {}
 
 ## Common fixes
 
-If the class doesn't need to use the mixin, then remove it from the `with`
-clause:
+Se a classe não precisa usar o mixin, então remova-o da cláusula `with`:
 
 ```dart
 class I {
@@ -76,8 +76,8 @@ mixin M on I {
 abstract class C extends B {}
 ```
 
-If the class needs to use the mixin, then ensure that there's a concrete
-implementation of the method that conforms to the signature expected by the
+Se a classe precisa usar o mixin, então certifique-se de que há uma
+implementação concreta do method que está em conformidade com a assinatura esperada pelo
 mixin:
 
 ```dart

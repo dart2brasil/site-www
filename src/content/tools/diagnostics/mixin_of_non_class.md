@@ -6,6 +6,7 @@ description: >-
   produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Classes só podem misturar mixins e classes._
