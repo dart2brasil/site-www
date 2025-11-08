@@ -1,31 +1,32 @@
 ---
-title: Introduction to Dart
-shortTitle: Dart basics
+title: Introdução ao Dart
+shortTitle: Básicos do Dart
 breadcrumb: Language
-description: A brief introduction to Dart programs and important concepts.
+description: Uma breve introdução aos programas Dart e conceitos importantes.
+ia-translate: true
 nextpage:
   url: /language/variables
   title: Variables
 ---
 
-This page provides a brief introduction to the Dart language
-through samples of its main features. 
+Esta página fornece uma breve introdução à linguagem Dart
+através de amostras de seus principais recursos.
 
-To learn more about the Dart language, 
-visit the in-depth, individual topic pages
-listed under **Language** in the left side menu.
+Para aprender mais sobre a linguagem Dart,
+visite as páginas detalhadas de tópicos individuais
+listadas em **Language** no menu lateral esquerdo.
 
-For coverage of Dart's core libraries,
-check out the [core library documentation](/libraries).
-You can also check out the [Dart cheatsheet](/resources/dart-cheatsheet),
-for a more interactive introduction.
+Para cobertura das bibliotecas principais do Dart,
+confira a [documentação da biblioteca principal](/libraries).
+Você também pode conferir o [Dart cheatsheet](/resources/dart-cheatsheet),
+para uma introdução mais interativa.
 
 
 ## Hello World
 
-Every app requires the top-level `main()` function, where execution starts.
-Functions that don't explicitly return a value have the `void` return type.
-To display text on the console, you can use the top-level `print()` function:
+Cada aplicação requer a função `main()` de nível superior, onde a execução começa.
+Funções que não retornam explicitamente um valor têm o tipo de retorno `void`.
+Para exibir texto no console, você pode usar a função `print()` de nível superior:
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart
@@ -34,16 +35,16 @@ void main() {
 }
 ```
 
-Read more about [the `main()` function][] in Dart,
-including optional parameters for command-line arguments.
+Leia mais sobre [a função `main()`][] em Dart,
+incluindo parâmetros opcionais para argumentos de linha de comando.
 
-[the `main()` function]: /language/functions#the-main-function
+[a função `main()`]: /language/functions#the-main-function
 
-## Variables
+## Variáveis
 
-Even in [type-safe](/language/type-system) Dart code,
-you can declare most variables without explicitly specifying their type using `var`. 
-Thanks to type inference, these variables' types are determined by their initial values: 
+Mesmo em código Dart [type-safe](/language/type-system),
+você pode declarar a maioria das variáveis sem especificar explicitamente seu tipo usando `var`.
+Graças à inferência de tipos, os tipos dessas variáveis são determinados por seus valores iniciais:
 
 
 <?code-excerpt "misc/test/samples_test.dart (var)"?>
@@ -58,13 +59,13 @@ var image = {
 };
 ```
 
-[Read more](/language/variables) about variables in Dart, 
-including default values, the `final` and `const` keywords, and static types.
+[Leia mais](/language/variables) sobre variáveis em Dart,
+incluindo valores padrão, as palavras-chave `final` e `const`, e tipos estáticos.
 
 
-## Control flow statements
+## Instruções de fluxo de controle
 
-Dart supports the usual control flow statements:
+Dart suporta as instruções de fluxo de controle usuais:
 
 <?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
 ```dart
@@ -87,16 +88,16 @@ while (year < 2016) {
 }
 ```
 
-Read more about control flow statements in Dart,
-including [`break` and `continue`](/language/loops),
-[`switch` and `case`](/language/branches),
-and [`assert`](/language/error-handling#assert).
+Leia mais sobre instruções de fluxo de controle em Dart,
+incluindo [`break` e `continue`](/language/loops),
+[`switch` e `case`](/language/branches),
+e [`assert`](/language/error-handling#assert).
 
 
-## Functions
+## Funções
 
-[We recommend](/effective-dart/design#types)
-specifying the types of each function's arguments and return value:
+[Recomendamos](/effective-dart/design#types)
+especificar os tipos dos argumentos e valor de retorno de cada função:
 
 <?code-excerpt "misc/test/samples_test.dart (functions)"?>
 ```dart
@@ -108,26 +109,26 @@ int fibonacci(int n) {
 var result = fibonacci(20);
 ```
 
-A shorthand `=>` (_arrow_) syntax is handy for functions that
-contain a single statement.
-This syntax is especially useful when passing anonymous functions as arguments:
+Uma sintaxe abreviada `=>` (_arrow_) é conveniente para funções que
+contêm uma única instrução.
+Esta sintaxe é especialmente útil ao passar funções anônimas como argumentos:
 
 <?code-excerpt "misc/test/samples_test.dart (arrow)"?>
 ```dart
 flybyObjects.where((name) => name.contains('turn')).forEach(print);
 ```
 
-Besides showing an anonymous function (the argument to `where()`),
-this code shows that you can use a function as an argument:
-the top-level `print()` function is an argument to `forEach()`.
+Além de mostrar uma função anônima (o argumento para `where()`),
+este código mostra que você pode usar uma função como argumento:
+a função `print()` de nível superior é um argumento para `forEach()`.
 
-[Read more](/language/functions) about functions in Dart,
-including optional parameters, default parameter values, and lexical scope.
+[Leia mais](/language/functions) sobre funções em Dart,
+incluindo parâmetros opcionais, valores de parâmetro padrão e escopo léxico.
 
 
-## Comments
+## Comentários
 
-Dart comments usually start with `//`.
+Comentários Dart geralmente começam com `//`.
 
 ```dart
 // This is a normal, one-line comment.
@@ -139,13 +140,13 @@ Dart comments usually start with `//`.
 /* Comments like these are also supported. */
 ```
 
-[Read more](/language/comments) about comments in Dart,
-including how the documentation tooling works.
+[Leia mais](/language/comments) sobre comentários em Dart,
+incluindo como as ferramentas de documentação funcionam.
 
 
 ## Imports
 
-To access APIs defined in other libraries, use `import`.
+Para acessar APIs definidas em outras bibliotecas, use `import`.
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 ```dart
@@ -159,19 +160,19 @@ import 'package:test/test.dart';
 import 'path/to/my_other_file.dart';
 ```
 
-[Read more](/language/libraries) 
-about libraries and visibility in Dart,
-including library prefixes, `show` and `hide`, 
-and lazy loading through the `deferred` keyword.
+[Leia mais](/language/libraries)
+sobre bibliotecas e visibilidade em Dart,
+incluindo prefixos de biblioteca, `show` e `hide`,
+e carregamento preguiçoso através da palavra-chave `deferred`.
 
 
 ## Classes
 
-Here's an example of a class with three properties, two constructors,
-and a method. One of the properties can't be set directly, so it's
-defined using a getter method (instead of a variable). The method 
-uses string interpolation to print variables' string equivalents inside
-of string literals. 
+Aqui está um exemplo de uma classe com três propriedades, dois construtores,
+e um método. Uma das propriedades não pode ser definida diretamente, então ela é
+definida usando um método getter (em vez de uma variável). O método
+usa interpolação de string para imprimir equivalentes de string de variáveis dentro
+de literais de string.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
 ```dart
@@ -205,10 +206,10 @@ class Spacecraft {
 }
 ```
 
-[Read more](/language/built-in-types#strings) about strings,
-including string interpolation, literals, expressions, and the `toString()` method.
+[Leia mais](/language/built-in-types#strings) sobre strings,
+incluindo interpolação de string, literais, expressões e o método `toString()`.
 
-You might use the `Spacecraft` class like this:
+Você pode usar a classe `Spacecraft` assim:
 
 <?code-excerpt "misc/test/samples_test.dart (use-class)" plaster="none"?>
 ```dart
@@ -219,28 +220,28 @@ var voyager3 = Spacecraft.unlaunched('Voyager III');
 voyager3.describe();
 ```
 
-[Read more](/language/classes) about classes in Dart,
-including initializer lists, optional `new` and `const`, redirecting constructors,
-`factory` constructors, getters, setters, and much more.
+[Leia mais](/language/classes) sobre classes em Dart,
+incluindo listas de inicialização, `new` e `const` opcionais, construtores de redirecionamento,
+construtores `factory`, getters, setters e muito mais.
 
 
 ## Enums
 
-Enums are a way of enumerating a predefined set of values or instances
-in a way which ensures that there cannot be any other instances of that type.
+Enums são uma maneira de enumerar um conjunto predefinido de valores ou instâncias
+de uma forma que garante que não podem existir outras instâncias desse tipo.
 
-Here is an example of a simple `enum` that defines
-a simple list of predefined planet types:
+Aqui está um exemplo de um `enum` simples que define
+uma lista simples de tipos de planeta predefinidos:
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (simple-enum)"?>
 ```dart
 enum PlanetType { terrestrial, gas, ice }
 ```
 
-Here is an example of an enhanced enum declaration
-of a class describing planets,
-with a defined set of constant instances,
-namely the planets of our own solar system.
+Aqui está um exemplo de uma declaração de enum aprimorado
+de uma classe descrevendo planetas,
+com um conjunto definido de instâncias constantes,
+ou seja, os planetas do nosso próprio sistema solar.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (enhanced-enum)"?>
 ```dart
@@ -271,7 +272,7 @@ enum Planet {
 }
 ```
 
-You might use the `Planet` enum like this:
+Você pode usar o enum `Planet` assim:
 
 <?code-excerpt "misc/test/samples_test.dart (use-enum)" plaster="none"?>
 ```dart
@@ -282,16 +283,16 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
-When the compiler can infer the enum type from the context, 
-you can use the more concise dot-shorthand syntax to access enum values. 
-Instead of writing the full `EnumName.value`, 
-you can just write `.value`. This can make your code cleaner 
-and easier to read.
+Quando o compilador pode inferir o tipo do enum a partir do contexto,
+você pode usar a sintaxe dot-shorthand mais concisa para acessar valores de enum.
+Em vez de escrever o `EnumName.value` completo,
+você pode escrever apenas `.value`. Isso pode tornar seu código mais limpo
+e mais fácil de ler.
 
 
-For example, when declaring a variable with an explicit type of `Planet`, 
-you can omit the enum name because 
-the type of `Planet` is already established:
+Por exemplo, ao declarar uma variável com um tipo explícito de `Planet`,
+você pode omitir o nome do enum porque
+o tipo de `Planet` já está estabelecido:
 
 
 ```dart
@@ -302,19 +303,19 @@ Planet myPlanet = Planet.venus;
 Planet myPlanet = .venus;
 ```
 
-Dot shorthands aren't limited to variable declarations. 
-They can also be used in contexts like function arguments 
-and switch cases where the enum type is clear to the compiler.
+Dot shorthands não estão limitados a declarações de variáveis.
+Eles também podem ser usados em contextos como argumentos de função
+e casos switch onde o tipo de enum é claro para o compilador.
 
-[Read more](/language/enums) about enums in Dart,
-including enhanced enum requirements, automatically introduced properties,
-accessing enumerated value names, switch statement support, and much more.
-[Read more](/language/dot-shorthands) about dot shorthand syntax. 
+[Leia mais](/language/enums) sobre enums em Dart,
+incluindo requisitos de enum aprimorado, propriedades automaticamente introduzidas,
+acesso a nomes de valores enumerados, suporte a instrução switch e muito mais.
+[Leia mais](/language/dot-shorthands) sobre sintaxe dot shorthand.
 
 
-## Inheritance
+## Herança
 
-Dart has single inheritance.
+Dart tem herança única.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
 ```dart
@@ -325,14 +326,14 @@ class Orbiter extends Spacecraft {
 }
 ```
 
-[Read more](/language/extend) 
-about extending classes, the optional `@override` annotation, and more.
+[Leia mais](/language/extend)
+sobre extensão de classes, a anotação `@override` opcional e muito mais.
 
 
 ## Mixins
 
-Mixins are a way of reusing code in multiple class hierarchies. The following is
-a mixin declaration:
+Mixins são uma maneira de reutilizar código em múltiplas hierarquias de classes. O seguinte é
+uma declaração de mixin:
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
 ```dart
@@ -345,7 +346,7 @@ mixin Piloted {
 }
 ```
 
-To add a mixin's capabilities to a class, just extend the class with the mixin.
+Para adicionar as capacidades de um mixin a uma classe, apenas estenda a classe com o mixin.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin-use)" replace="/with/[!$&!]/g"?>
 ```dart
@@ -354,15 +355,15 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 }
 ```
 
-`PilotedCraft` now has the `astronauts` field as well as the `describeCrew()` method.
+`PilotedCraft` agora tem o campo `astronauts` assim como o método `describeCrew()`.
 
-[Read more](/language/mixins) about mixins.
+[Leia mais](/language/mixins) sobre mixins.
 
 
-## Interfaces and abstract classes
+## Interfaces e classes abstratas
 
-All classes implicitly define an interface. 
-Therefore, you can implement any class.
+Todas as classes implicitamente definem uma interface.
+Portanto, você pode implementar qualquer classe.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
 ```dart
@@ -371,12 +372,12 @@ class MockSpaceship implements Spacecraft {
 }
 ```
 
-Read more about [implicit interfaces](/language/classes#implicit-interfaces), or
-about the explicit [`interface` keyword](/language/class-modifiers#interface).
+Leia mais sobre [interfaces implícitas](/language/classes#implicit-interfaces), ou
+sobre a palavra-chave explícita [`interface`](/language/class-modifiers#interface).
 
-You can create an abstract class
-to be extended (or implemented) by a concrete class. 
-Abstract classes can contain abstract methods (with empty bodies).
+Você pode criar uma classe abstrata
+para ser estendida (ou implementada) por uma classe concreta.
+Classes abstratas podem conter métodos abstratos (com corpos vazios).
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
 ```dart
@@ -391,17 +392,17 @@ Abstract classes can contain abstract methods (with empty bodies).
 }
 ```
 
-Any class extending `Describable` has the `describeWithEmphasis()` method, 
-which calls the extender's implementation of `describe()`.
+Qualquer classe estendendo `Describable` tem o método `describeWithEmphasis()`,
+que chama a implementação do estendedor de `describe()`.
 
-[Read more](/language/class-modifiers#abstract) 
-about abstract classes and methods.
+[Leia mais](/language/class-modifiers#abstract)
+sobre classes e métodos abstratos.
 
 
 ## Async
 
-Avoid callback hell and make your code much more readable by
-using `async` and `await`.
+Evite callback hell e torne seu código muito mais legível
+usando `async` e `await`.
 
 <?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 ```dart
@@ -413,7 +414,7 @@ Future<void> printWithDelay(String message) [!async!] {
 }
 ```
 
-The method above is equivalent to:
+O método acima é equivalente a:
 
 <?code-excerpt "misc/test/samples_test.dart (future-then)"?>
 ```dart
@@ -424,8 +425,8 @@ Future<void> printWithDelay(String message) {
 }
 ```
 
-As the next example shows, `async` and `await` help make asynchronous code
-easy to read.
+Como o próximo exemplo mostra, `async` e `await` ajudam a tornar código assíncrono
+fácil de ler.
 
 <?code-excerpt "misc/test/samples_test.dart (await)"?>
 ```dart
@@ -449,7 +450,7 @@ Future<void> createDescriptions(Iterable<String> objects) async {
 }
 ```
 
-You can also use `async*`, which gives you a nice, readable way to build streams.
+Você também pode usar `async*`, que lhe dá uma maneira agradável e legível de construir streams.
 
 <?code-excerpt "misc/test/samples_test.dart (async-star)"?>
 ```dart
@@ -461,14 +462,14 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
 }
 ```
 
-[Read more](/language/async) about
-asynchrony support, including `async` functions, `Future`, `Stream`,
-and the asynchronous loop (`await for`).
+[Leia mais](/language/async) sobre
+suporte a assincronia, incluindo funções `async`, `Future`, `Stream`,
+e o loop assíncrono (`await for`).
 
 
-## Exceptions
+## Exceções
 
-To raise an exception, use `throw`:
+Para lançar uma exceção, use `throw`:
 
 <?code-excerpt "misc/test/samples_test.dart (throw)"?>
 ```dart
@@ -477,7 +478,7 @@ if (astronauts == 0) {
 }
 ```
 
-To catch an exception, use a `try` statement with `on` or `catch` (or both):
+Para capturar uma exceção, use uma instrução `try` com `on` ou `catch` (ou ambos):
 
 <?code-excerpt "misc/test/samples_test.dart (try)" replace="/on.*e\)/[!$&!]/g"?>
 ```dart
@@ -495,95 +496,95 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
 }
 ```
 
-Note that the code above is asynchronous;
-`try` works for both synchronous and asynchronous code in an `async` function.
+Note que o código acima é assíncrono;
+`try` funciona tanto para código síncrono quanto assíncrono em uma função `async`.
 
-[Read more](/language/error-handling#exceptions) about exceptions, 
-including stack traces, `rethrow`, 
-and the difference between `Error` and `Exception`.
+[Leia mais](/language/error-handling#exceptions) sobre exceções,
+incluindo stack traces, `rethrow`,
+e a diferença entre `Error` e `Exception`.
 
 
-## Important concepts
+## Conceitos importantes
 
-As you continue to learn about the Dart language, 
-keep these facts and concepts in mind:
+Ao continuar a aprender sobre a linguagem Dart,
+mantenha esses fatos e conceitos em mente:
 
--   Everything you can place in a variable is an *object*, and every
-    object is an instance of a *class*. Even numbers, functions, and
-    `null` are objects.
-    With the exception of `null` (if you enable [sound null safety][ns]),
-    all objects inherit from the [`Object`][] class.
+-   Tudo o que você pode colocar em uma variável é um *objeto*, e todo
+    objeto é uma instância de uma *classe*. Até números, funções e
+    `null` são objetos.
+    Com exceção de `null` (se você habilitar [null safety sólido][ns]),
+    todos os objetos herdam da classe [`Object`][].
 
     :::version-note
-    [Null safety][ns] was introduced in Dart 2.12.
-    Using null safety requires a [language version][] of at least 2.12.
+    [Null safety][ns] foi introduzido no Dart 2.12.
+    Usar null safety requer uma [versão de linguagem][language version] de pelo menos 2.12.
     :::
 
--   Although Dart is strongly typed, type annotations are optional
-    because Dart can infer types. In `var number = 101`, `number`
-    is inferred to be of type `int`.
+-   Embora Dart seja fortemente tipado, anotações de tipo são opcionais
+    porque Dart pode inferir tipos. Em `var number = 101`, `number`
+    é inferido como sendo do tipo `int`.
 
--   If you enable [null safety][ns],
-    variables can't contain `null` unless you say they can.
-    You can make a variable nullable by
-    putting a question mark (`?`) at the end of its type.
-    For example, a variable of type `int?` might be an integer,
-    or it might be `null`.
-    If you _know_ that an expression never evaluates to `null`
-    but Dart disagrees,
-    you can add `!` to assert that it isn't null
-    (and to throw an exception if it is).
-    An example: `int x = nullableButNotNullInt!`
+-   Se você habilitar [null safety][ns],
+    variáveis não podem conter `null` a menos que você diga que podem.
+    Você pode tornar uma variável nullable colocando
+    um ponto de interrogação (`?`) no final do seu tipo.
+    Por exemplo, uma variável do tipo `int?` pode ser um inteiro,
+    ou pode ser `null`.
+    Se você _sabe_ que uma expressão nunca avalia para `null`
+    mas Dart discorda,
+    você pode adicionar `!` para afirmar que não é null
+    (e para lançar uma exceção se for).
+    Um exemplo: `int x = nullableButNotNullInt!`
 
--   When you want to explicitly say
-    that any type is allowed, use the type `Object?`
-    (if you've enabled null safety), `Object`,
-    or—if you must defer type checking until runtime—the
-    [special type `dynamic`][ObjectVsDynamic].
+-   Quando você quer explicitamente dizer
+    que qualquer tipo é permitido, use o tipo `Object?`
+    (se você habilitou null safety), `Object`,
+    ou—se você deve adiar verificação de tipo até o tempo de execução—o
+    [tipo especial `dynamic`][ObjectVsDynamic].
 
--   Dart supports generic types, like `List<int>` (a list of integers)
-    or `List<Object>` (a list of objects of any type).
+-   Dart suporta tipos genéricos, como `List<int>` (uma lista de inteiros)
+    ou `List<Object>` (uma lista de objetos de qualquer tipo).
 
--   Dart supports top-level functions (such as `main()`), as well as
-    functions tied to a class or object (*static* and *instance
-    methods*, respectively). You can also create functions within
-    functions (*nested* or *local functions*).
+-   Dart suporta funções de nível superior (como `main()`), assim como
+    funções vinculadas a uma classe ou objeto (métodos *static* e *instance*,
+    respectivamente). Você também pode criar funções dentro
+    de funções (funções *nested* ou *local*).
 
--   Similarly, Dart supports top-level *variables*, as well as variables
-    tied to a class or object (static and instance variables). Instance
-    variables are sometimes known as *fields* or *properties*.
+-   Similarmente, Dart suporta *variáveis* de nível superior, assim como variáveis
+    vinculadas a uma classe ou objeto (variáveis static e instance). Variáveis instance
+    são às vezes conhecidas como *fields* ou *properties*.
 
--   Unlike Java, Dart doesn't have the keywords `public`, `protected`,
-    and `private`. If an identifier starts with an underscore (`_`), it's
-    private to its library. For details, see
+-   Diferente de Java, Dart não tem as palavras-chave `public`, `protected`,
+    e `private`. Se um identificador começa com um underscore (`_`), é
+    privado para sua biblioteca. Para detalhes, veja
     [Libraries and imports][].
 
--   *Identifiers* can start with a letter or underscore (`_`), followed by any
-    combination of those characters plus digits.
+-   *Identificadores* podem começar com uma letra ou underscore (`_`), seguido por qualquer
+    combinação desses caracteres mais dígitos.
 
--   Dart has both *expressions* (which have runtime values) and
-    *statements* (which don't).
-    For example, the [conditional expression][]
-    `condition ? expr1 : expr2` has a value of `expr1` or `expr2`.
-    Compare that to an [if-else statement][], which has no value.
-    A statement often contains one or more expressions,
-    but an expression can't directly contain a statement.
+-   Dart tem tanto *expressões* (que têm valores em tempo de execução) quanto
+    *instruções* (que não têm).
+    Por exemplo, a [expressão condicional][conditional expression]
+    `condition ? expr1 : expr2` tem um valor de `expr1` ou `expr2`.
+    Compare isso com uma [instrução if-else][if-else statement], que não tem valor.
+    Uma instrução frequentemente contém uma ou mais expressões,
+    mas uma expressão não pode conter diretamente uma instrução.
 
--   Dart tools can report two kinds of problems: _warnings_ and _errors_.
-    Warnings are just indications that your code might not work, but
-    they don't prevent your program from executing. Errors can be either
-    compile-time or run-time. A compile-time error prevents the code
-    from executing at all; a run-time error results in an
-    [exception][] being raised while the code executes.
+-   Ferramentas Dart podem reportar dois tipos de problemas: _warnings_ e _errors_.
+    Warnings são apenas indicações de que seu código pode não funcionar, mas
+    eles não impedem que seu programa execute. Errors podem ser tanto
+    em tempo de compilação quanto em tempo de execução. Um erro de tempo de compilação impede que o código
+    execute de qualquer forma; um erro de tempo de execução resulta em uma
+    [exceção][exception] sendo lançada enquanto o código executa.
 
 
-## Additional resources
+## Recursos adicionais
 
-You can find more documentation and code samples in the
-[core library documentation](/libraries/dart-core)
-and the [Dart API reference]({{site.dart-api}}).
-This site's code follows the conventions in the
-[Dart style guide](/effective-dart/style).
+Você pode encontrar mais documentação e exemplos de código na
+[documentação da biblioteca principal](/libraries/dart-core)
+e na [referência da API Dart]({{site.dart-api}}).
+O código deste site segue as convenções no
+[guia de estilo Dart](/effective-dart/style).
 
 [Dart language specification]: /resources/language/spec
 [Comments]: /language/comments
