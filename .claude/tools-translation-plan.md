@@ -1,10 +1,12 @@
 # Tools Section Translation Plan (20 Sections)
 
 ## Overview
-- **Total estimated files:** ~945 markdown files
-- **Already completed:** 92 files (9.7%)
-- **Remaining:** ~853 files
-- **Target for Tools section:** ~700 files remaining
+- **Total estimated files:** ~945 markdown files (all documentation)
+- **Tools section total:** ~776 files
+- **Tools section completed:** 34 files (4.4%)
+  - Pre-section: 15 files
+  - Section 12 (const/constructor/continue): 19 files
+- **Tools section remaining:** ~742 files
 - **Strategy:** 20 focused sections (~35-40 files each), prioritizing high-value documentation
 
 ---
@@ -169,16 +171,16 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 ---
 
 ## Section 12: Diagnostic Errors - C (Const, Continue, Combinators)
-**Files:** ~40 files | **Priority:** LOW-MEDIUM
+**Files:** 19 files (completed!) | **Priority:** LOW-MEDIUM | **Status:** ✅ COMPLETE
 
 ### Pattern:
-- `tools/diagnostics/combinators_*.md`
-- `tools/diagnostics/const_*.md`
-- `tools/diagnostics/constructor_*.md`
-- `tools/diagnostics/continue_*.md`
+- ~~`tools/diagnostics/combinators_*.md`~~ (0 files found)
+- ✅ `tools/diagnostics/const_*.md` (17 files)
+- ✅ `tools/diagnostics/constructor_*.md` (0 files - included in const_constructor_*)
+- ✅ `tools/diagnostics/continue_*.md` (2 files)
 
 **Focus:** Constants, constructors, control flow
-**Estimated time:** 2-3 hours
+**Actual time:** Completed in this session (19 files translated)
 
 ---
 
@@ -375,12 +377,13 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 12:** Diagnostic Errors - Const/Constructor/Continue (19/19 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 1-11, 13-20 pending
 
 ---
 

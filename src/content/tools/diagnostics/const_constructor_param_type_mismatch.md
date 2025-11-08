@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: const_constructor_param_type_mismatch
 description: >-
-  Details about the const_constructor_param_type_mismatch
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico const_constructor_param_type_mismatch
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _A value of type '{0}' can't be assigned to a parameter of type '{1}' in a const constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the runtime type of a constant
-value can't be assigned to the static type of a constant constructor's
-parameter.
+O analisador produz este diagnóstico quando o tipo em tempo de execução de um
+valor constante não pode ser atribuído ao tipo estático de um parâmetro de
+constructor constante.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the runtime type of `i`
-is `int`, which can't be assigned to the static type of `s`:
+O código a seguir produz este diagnóstico porque o tipo em tempo de execução
+de `i` é `int`, que não pode ser atribuído ao tipo estático de `s`:
 
 ```dart
 class C {
@@ -34,9 +35,9 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Pass a value of the correct type to the constructor:
+Passe um valor do tipo correto para o constructor:
 
 ```dart
 class C {

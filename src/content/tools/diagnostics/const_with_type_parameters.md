@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: const_with_type_parameters
 description: >-
-  Details about the const_with_type_parameters
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico const_with_type_parameters
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -13,17 +14,17 @@ _A constant creation can't use a type parameter as a type argument._
 
 _A constant function tearoff can't use a type parameter as a type argument._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type parameter is used as a
-type argument in a `const` invocation of a constructor. This isn't allowed
-because the value of the type parameter (the actual type that will be used
-at runtime) can't be known at compile time.
+O analisador produz este diagnóstico quando um type parameter é usado como
+um argumento de tipo em uma invocação `const` de um constructor. Isso não é
+permitido porque o valor do type parameter (o tipo real que será usado
+em tempo de execução) não pode ser conhecido em tempo de compilação.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type parameter `T`
-is being used as a type argument when creating a constant:
+O código a seguir produz este diagnóstico porque o type parameter `T`
+está sendo usado como argumento de tipo ao criar uma constante:
 
 ```dart
 class C<T> {
@@ -33,10 +34,10 @@ class C<T> {
 C<T> newC<T>() => const C<[!T!]>();
 ```
 
-## Common fixes
+## Correções comuns
 
-If the type that will be used for the type parameter can be known at
-compile time, then remove the use of the type parameter:
+Se o tipo que será usado para o type parameter pode ser conhecido em
+tempo de compilação, então remova o uso do type parameter:
 
 ```dart
 class C<T> {
@@ -46,8 +47,8 @@ class C<T> {
 C<int> newC() => const C<int>();
 ```
 
-If the type that will be used for the type parameter can't be known until
-runtime, then remove the keyword `const`:
+Se o tipo que será usado para o type parameter não pode ser conhecido até
+o tempo de execução, então remova a keyword `const`:
 
 ```dart
 class C<T> {

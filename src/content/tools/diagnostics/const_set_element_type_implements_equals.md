@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: const_set_element_not_primitive_equality
 description: >-
-  Details about the const_set_element_not_primitive_equality
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico const_set_element_not_primitive_equality
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 canonical: https://dart.dev/tools/diagnostics/const_set_element_not_primitive_equality
 redirectTo: /tools/diagnostics/const_set_element_not_primitive_equality
@@ -11,24 +12,24 @@ noindex: true
 bodyClass: highlight-diagnostics
 ---
 
-_(Previously known as `const_set_element_type_implements_equals`)_
+_(Anteriormente conhecido como `const_set_element_type_implements_equals`)_
 
 _An element in a constant set can't override the '==' operator, or 'hashCode', but the type '{0}' does._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the class of object used as an
-element in a constant set literal implements either the `==` operator, the
-getter `hashCode`, or both. The implementation of constant sets uses both
-the `==` operator and the `hashCode` getter, so any implementation other
-than the ones inherited from `Object` requires executing arbitrary code at
-compile time, which isn't supported.
+O analisador produz este diagnóstico quando a classe do objeto usado como
+elemento em um literal de Set constante implementa o operador `==`, o
+getter `hashCode`, ou ambos. A implementação de Sets constantes usa tanto
+o operador `==` quanto o getter `hashCode`, então qualquer implementação
+diferente daquelas herdadas de `Object` requer executar código arbitrário em
+tempo de compilação, o que não é suportado.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constant set
-contains an element whose type is `C`, and the class `C` overrides the
-implementation of `==`:
+O código a seguir produz este diagnóstico porque o Set constante
+contém um elemento cujo tipo é `C`, e a classe `C` sobrescreve a
+implementação de `==`:
 
 ```dart
 class C {
@@ -40,9 +41,9 @@ class C {
 const set = {[!C()!]};
 ```
 
-The following code produces this diagnostic because the constant set
-contains an element whose type is `C`, and the class `C` overrides the
-implementation of `hashCode`:
+O código a seguir produz este diagnóstico porque o Set constante
+contém um elemento cujo tipo é `C`, e a classe `C` sobrescreve a
+implementação de `hashCode`:
 
 ```dart
 class C {
@@ -54,10 +55,10 @@ class C {
 const map = {[!C()!]};
 ```
 
-## Common fixes
+## Correções comuns
 
-If you can remove the implementation of `==` and `hashCode` from the
-class, then do so:
+Se você pode remover a implementação de `==` e `hashCode` da
+classe, então faça isso:
 
 ```dart
 class C {
@@ -67,8 +68,8 @@ class C {
 const set = {C()};
 ```
 
-If you can't remove the implementation of `==` and `hashCode` from the
-class, then make the set non-constant:
+Se você não pode remover a implementação de `==` e `hashCode` da
+classe, então torne o Set não constante:
 
 ```dart
 class C {

@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 114 files (with ia-translate: true metadata)
+- **Remaining:** ~831 files
+- **Progress:** 12.1%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 59 (56 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 114 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,33 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 9: Diagnostic Errors - const/constructor/continue (19 files)
+41. ✅ `src/content/tools/diagnostics/const_constructor_param_type_mismatch.md`
+42. ✅ `src/content/tools/diagnostics/const_constructor_with_field_initialized_by_non_const.md`
+43. ✅ `src/content/tools/diagnostics/const_constructor_with_non_const_super.md`
+44. ✅ `src/content/tools/diagnostics/const_constructor_with_non_final_field.md`
+45. ✅ `src/content/tools/diagnostics/const_deferred_class.md`
+46. ✅ `src/content/tools/diagnostics/const_initialized_with_non_constant_value.md`
+47. ✅ `src/content/tools/diagnostics/const_initialized_with_non_constant_value_from_deferred_library.md`
+48. ✅ `src/content/tools/diagnostics/const_instance_field.md`
+49. ✅ `src/content/tools/diagnostics/const_map_key_not_primitive_equality.md`
+50. ✅ `src/content/tools/diagnostics/const_not_initialized.md`
+51. ✅ `src/content/tools/diagnostics/const_set_element_not_primitive_equality.md`
+52. ✅ `src/content/tools/diagnostics/const_set_element_type_implements_equals.md`
+53. ✅ `src/content/tools/diagnostics/const_spread_expected_list_or_set.md`
+54. ✅ `src/content/tools/diagnostics/const_spread_expected_map.md`
+55. ✅ `src/content/tools/diagnostics/const_with_non_const.md`
+56. ✅ `src/content/tools/diagnostics/const_with_non_constant_argument.md`
+57. ✅ `src/content/tools/diagnostics/const_with_type_parameters.md`
+58. ✅ `src/content/tools/diagnostics/continue_label_invalid.md`
+59. ✅ `src/content/tools/diagnostics/continue_label_on_switch.md`
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 34/~776 files (4.4%)
+  - ✅ Section 9: Diagnostic Errors (const/constructor/continue) - 19 files COMPLETE!
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -83,7 +105,9 @@ Major tools documentation files completed:
 ## Files Still Needing Translation
 
 ### Large Sections
-- **Tools documentation:** ~761 files remaining (mostly diagnostic error codes)
+- **Tools documentation:** ~742 files remaining (mostly diagnostic error codes)
+  - ✅ Section 9 complete (const/constructor/continue - 19 files)
+  - ⏳ Sections 1-8, 10-20 remaining (~723+ files)
 - **Web, server, interop:** ~200+ files
 - **Resources & guides:** ~50+ files
 - **Effective Dart:** ~30+ files
@@ -100,12 +124,14 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (59 files this session including merge)
+Progress: 12.1% complete (114/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
 - ✅ Libraries section 100% COMPLETE! 🎉
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
+- ✅ Section 9: Diagnostic Errors (const/constructor/continue) 100% COMPLETE! 🎉
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)
+- ✅ First diagnostic errors section completed (19 files)
