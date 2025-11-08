@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: extension_declares_constructor
 description: >-
-  Details about the extension_declares_constructor
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico extension_declares_constructor
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extensions can't declare constructors._
+_Extensions não podem declarar construtores._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor declaration is
-found in an extension. It isn't valid to define a constructor because
-extensions aren't classes, and it isn't possible to create an instance of
-an extension.
+O analisador produz este diagnóstico quando uma declaração de construtor é
+encontrada em uma extension. Não é válido definir um construtor porque
+extensions não são classes, e não é possível criar uma instância de
+uma extension.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is a constructor
-declaration in `E`:
+O código a seguir produz este diagnóstico porque há uma declaração de construtor
+em `E`:
 
 ```dart
 extension E on String {
@@ -27,6 +28,6 @@ extension E on String {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the constructor or replace it with a static method.
+Remova o construtor ou substitua-o por um método static.
