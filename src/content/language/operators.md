@@ -200,7 +200,7 @@ assert(2 <= 3);
 ```
 
 
-## Operadores de teste de tipo
+## Operadores de teste de tipo {:#type-test-operators}
 
 Os operadores `as`, `is` e `is!` são úteis para verificar tipos em
 tempo de execução.
