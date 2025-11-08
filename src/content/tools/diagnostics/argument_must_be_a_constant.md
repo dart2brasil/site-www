@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: argument_must_be_a_constant
 description: >-
-  Details about the argument_must_be_a_constant
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico argument_must_be_a_constant
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,20 +12,20 @@ _Argument '{0}' must be a constant._
 
 ## Description
 
-The analyzer produces this diagnostic when an invocation of either
-`Pointer.asFunction` or `DynamicLibrary.lookupFunction` has an `isLeaf`
-argument whose value isn't a constant expression.
+O analisador produz este diagnóstico quando uma invocação de
+`Pointer.asFunction` ou `DynamicLibrary.lookupFunction` tem um argument
+`isLeaf` cujo valor não é uma expressão constante.
 
-The analyzer also produces this diagnostic when an invocation of either
-`Pointer.fromFunction` or `NativeCallable.isolateLocal` has an
-`exceptionalReturn` argument whose value isn't a constant expression.
+O analisador também produz este diagnóstico quando uma invocação de
+`Pointer.fromFunction` ou `NativeCallable.isolateLocal` tem um
+argument `exceptionalReturn` cujo valor não é uma expressão constante.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, veja [C interop using dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because the value of the
-`isLeaf` argument is a parameter, and hence isn't a constant:
+O código a seguir produz este diagnóstico porque o valor do
+argument `isLeaf` é um parameter, e portanto não é uma constante:
 
 ```dart
 import 'dart:ffi';
@@ -37,8 +38,8 @@ int Function(int) fromPointer(
 
 ## Common fixes
 
-If there's a suitable constant that can be used, then replace the argument
-with a constant:
+Se houver uma constante adequada que possa ser usada, então substitua o argument
+por uma constante:
 
 ```dart
 import 'dart:ffi';
@@ -50,8 +51,8 @@ int Function(int) fromPointer(Pointer<NativeFunction<Int8 Function(Int8)>> p) {
 }
 ```
 
-If there isn't a suitable constant, then replace the argument with a
-boolean literal:
+Se não houver uma constante adequada, então substitua o argument por um
+literal booleano:
 
 ```dart
 import 'dart:ffi';
