@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Breaking changes and deprecations
 description: A list of breaking changes by release in Dart.
 maxTocDepth: 2
@@ -10,48 +11,48 @@ lastVerified: 2025-08-13
 {% assign removed = '<span class="tag-label removed-tag">Removido</span>' %}
 {% assign experimental = '<span class="tag-label experimental-tag">Experimental</span>' %}
 
-This page lists all breaking changes and deprecations in
-updates to the Dart SDK, organized by release and area,
-to help Dart developers understand and manage their impact.
-Complete release notes are available in the [Dart SDK changelog][changelog].
-The [breaking change policy][] document describes the policy and process
-around breaking changes and deprecations in Dart.
+Esta página lista todas as mudanças que quebram compatibilidade (breaking changes) e descontinuações em
+atualizações do SDK do Dart, organizadas por lançamento e área,
+para ajudar desenvolvedores Dart a entender e gerenciar seu impacto.
+Notas de lançamento completas estão disponíveis no [changelog do SDK Dart][changelog].
+O documento [política de mudanças que quebram compatibilidade][breaking change policy] descreve a política e o processo
+sobre mudanças que quebram compatibilidade e descontinuações em Dart.
 
-**This page includes the following types of breaking changes:**
+**Esta página inclui os seguintes tipos de mudanças que quebram compatibilidade:**
 
-**Unversioned**
-: The Dart SDK doesn't maintain backward compatibility,
-  and code might break as soon as you [upgrade your sdk version][sdk] if
-  it relies on the previous behavior.
+**Sem versão (Unversioned)**
+: O SDK Dart não mantém compatibilidade retroativa,
+  e o código pode quebrar assim que você [atualizar sua versão do sdk][sdk] se
+  ele depender do comportamento anterior.
 
-  _These are the majority of changes and aren't specially marked in this list._
+  _Estas são a maioria das mudanças e não são especialmente marcadas nesta lista._
 
-**Language versioned**
-: The Dart SDK maintains backward compatibility for existing code,
-  and the behavior change only takes effect (potentially breaking
-  code that relies on the previous behavior) when you
-  upgrade the [language version][] of your code.
+**Com versão de linguagem (Language versioned)**
+: O SDK Dart mantém compatibilidade retroativa para código existente,
+  e a mudança de comportamento só entra em vigor (potencialmente quebrando
+  código que depende do comportamento anterior) quando você
+  atualiza a [versão da linguagem][language version] do seu código.
 
-  _These are marked as:_ {{versioned}}
+  _Estas são marcadas como:_ {{versioned}}
 
-**Deprecations**
-: The Dart SDK maintains compatibility for deprecated code, with a warning.
-  Deprecations are then completely removed in a later release,
-  breaking any code that relies on the previous behavior.
+**Descontinuações (Deprecations)**
+: O SDK Dart mantém compatibilidade para código descontinuado, com um aviso.
+  Descontinuações são então completamente removidas em um lançamento posterior,
+  quebrando qualquer código que dependa do comportamento anterior.
 
-  _These are marked as:_ {{deprecated}} / {{removed}}
+  _Estas são marcadas como:_ {{deprecated}} / {{removed}}
 
 **Experimental**
-: Part of the release but not yet treated as stable in the SDK and
-  can break from one version to another.
-  Experimental changes don't always have a corresponding breaking change issue,
-  but might have more details in the [SDK changelog][changelog].
+: Parte do lançamento mas ainda não tratado como estável no SDK e
+  pode quebrar de uma versão para outra.
+  Mudanças experimentais nem sempre têm uma issue de breaking change correspondente,
+  mas podem ter mais detalhes no [changelog do SDK][changelog].
 
   Estas são marcadas: {{experimental}}
 
-If you have questions or concerns about any of these breaking changes,
-please comment on the breaking change issue linked from the relevant entry.
-To be notified about future breaking changes, join the [Dart announce][] group.
+Se você tiver questões ou preocupações sobre qualquer uma dessas mudanças que quebram compatibilidade,
+por favor comente na issue de breaking change vinculada à entrada relevante.
+Para ser notificado sobre futuras mudanças que quebram compatibilidade, junte-se ao grupo [Dart announce][].
 
 [breaking change policy]: {{site.repo.dart.sdk}}/blob/main/docs/process/breaking-changes.md
 [changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
@@ -79,120 +80,120 @@ não inclua o cabeçalho da seção.
 
 ## 3.11.0
 
-:::note Tentative
-The following changes are expected to be included in the 3.11 stable release,
-but the final list might change before then.
-To reduce the potential impact of these changes, consider
-accounting for them before the 3.11 release.
+:::note Provisório
+As seguintes mudanças devem ser incluídas no lançamento estável 3.11,
+mas a lista final pode mudar antes disso.
+Para reduzir o impacto potencial dessas mudanças, considere
+contabilizá-las antes do lançamento 3.11.
 :::
 
 ### Tools
 
-#### Wasm compilation (`dart compile wasm`)
+#### Compilação Wasm (`dart compile wasm`)
 
 - {{removed}}
-  Code that imports `dart:js_util` or `package:js` now
-  [results in a compilation error][61550] when compiling to WebAssembly.
-  
-  Invoking any API from these libraries will result in a runtime error.
-  Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
+  Código que importa `dart:js_util` ou `package:js` agora
+  [resulta em um erro de compilação][61550] ao compilar para WebAssembly.
+
+  Invocar qualquer API dessas bibliotecas resultará em um erro de runtime.
+  Usos devem ser migrados para `dart:js_interop` e `dart:js_interop_unsafe`.
 
 [61550]: {{site.repo.dart.sdk}}/issues/61550
 
 ## 3.10.0
 
-:::note Tentative
-The following changes are expected to be included in the 3.10 stable release,
-but the final list might change before then.
-To reduce the potential impact of these changes, consider
-accounting for them before the 3.10 release.
+:::note Provisório
+As seguintes mudanças devem ser incluídas no lançamento estável 3.10,
+mas a lista final pode mudar antes disso.
+Para reduzir o impacto potencial dessas mudanças, considere
+contabilizá-las antes do lançamento 3.10.
 :::
 
 ### Language
 
-- `sync*` and `async*` generator functions without a specified return now
-  correctly infer return types as non-nullable when no `null` value is yielded.
-  This might trigger new diagnostics related to unnecessary code elements,
-  such as an unnecessary null-aware access operator (`?.`).
+- Funções geradoras `sync*` e `async*` sem um retorno especificado agora
+  inferem corretamente tipos de retorno como não anuláveis quando nenhum valor `null` é produzido (yielded).
+  Isso pode acionar novos diagnósticos relacionados a elementos de código desnecessários,
+  como um operador de acesso null-aware desnecessário (`?.`).
 
 ### Libraries
 
 #### `dart:core`
 
-- The `Uri.parseIPv4Address` and `Uri.parseIPv6Address` functions
-  [no longer incorrectly allow][61392] leading zeros in IPv4 addresses.
+- As funções `Uri.parseIPv4Address` e `Uri.parseIPv6Address`
+  [não permitem mais incorretamente][61392] zeros à esquerda em endereços IPv4.
 
 - {{deprecated}}
-  The ability to implement `RegExp` and `RegExpMatch` is deprecated
-  and will be removed in a future release.
+  A capacidade de implementar `RegExp` e `RegExpMatch` está descontinuada
+  e será removida em um lançamento futuro.
 
 [61392]: {{site.repo.dart.sdk}}/issues/61392
 
 #### `dart:io`
 
-- `IOOverrides` can [no longer be implemented][56468],
-  but can still be extended.
+- `IOOverrides` [não pode mais ser implementado][56468],
+  mas ainda pode ser estendido.
 
 [56468]: {{site.repo.dart.sdk}}/issues/56468
 
 #### `dart:js_interop`
 
-- The `Uint16ListToJSInt16Array` extension has been
-  renamed to `Uint16ListToJSUint16Array`.
+- A extensão `Uint16ListToJSInt16Array` foi
+  renomeada para `Uint16ListToJSUint16Array`.
 
-- The `JSUint16ArrayToInt16List` extension has been
-  renamed to `JSUint16ArrayToUint16List`.
+- A extensão `JSUint16ArrayToInt16List` foi
+  renomeada para `JSUint16ArrayToUint16List`.
 
-- The `Function.toJSCaptureThis` function now results in addditional
-  compile-time checks to match `Function.toJS`.
-  If the function doesn't have a statically known type,
-  has unsupported types in its signature, includes type parameters,
-  or has any named parameters, the call will result in a compile-time error.
+- A função `Function.toJSCaptureThis` agora resulta em verificações adicionais
+  em tempo de compilação para corresponder a `Function.toJS`.
+  Se a função não tiver um tipo estaticamente conhecido,
+  tiver tipos não suportados em sua assinatura, incluir parâmetros de tipo,
+  ou tiver quaisquer parâmetros nomeados, a chamada resultará em um erro de tempo de compilação.
 
 ### Tools
 
 #### SDK
 
-- The `dart` CLI and Dart VM are now separate executables,
-  with the pure Dart VM executable and process called `dartvm`.
-  Dart programs should still be run with [`dart run`][].
+- A CLI `dart` e a VM Dart agora são executáveis separados,
+  com o executável e processo da VM Dart pura chamado `dartvm`.
+  Programas Dart ainda devem ser executados com [`dart run`][].
 
-- Subcommands of the `dart` tool, such as `dart format` and `dart compile`
-  now run AOT-compiled snapshots of the underlying tools.
-  There should be no functional difference outside of performance improvements,
-  but if you come across incompatibilities, please [report them][sdk report].
+- Subcomandos da ferramenta `dart`, como `dart format` e `dart compile`
+  agora executam snapshots compilados AOT das ferramentas subjacentes.
+  Não deve haver diferença funcional fora de melhorias de desempenho,
+  mas se você encontrar incompatibilidades, por favor [reporte-as][sdk report].
 
 - {{removed}}
-  The `dart` tool is no longer available for IA32 platforms
-  as the Dart SDK no longer supports IA32.
+  A ferramenta `dart` não está mais disponível para plataformas IA32
+  pois o SDK Dart não suporta mais IA32.
 
 [`dart run`]: /tools/dart-run
 [sdk report]: {{site.repo.dart.sdk}}/issues/new/choose
 
 #### Analyzer
 
-- Using members marked as `@experimental` outside
-  the package they are declared in
-  now results in a warning.
+- Usar membros marcados como `@experimental` fora
+  do pacote em que são declarados
+  agora resulta em um aviso.
 
-- Lint rules enabled in included analysis options files
-  now result in incompatible lint diagnostics when appropriate.
+- Regras de lint habilitadas em arquivos de opções de análise incluídos
+  agora resultam em diagnósticos de lint incompatíveis quando apropriado.
 
 - {{removed}}
-  The deprecated `@required` annotation from
-  `package:meta` is no longer supported.
-  To mark a parameter as required, instead use the `required` keyword.
+  A anotação descontinuada `@required` do
+  `package:meta` não é mais suportada.
+  Para marcar um parâmetro como obrigatório, use a keyword `required` em vez disso.
 
-#### Wasm compilation (`dart compile wasm`)
+#### Compilação Wasm (`dart compile wasm`)
 
-- `dart:js_util` and `package:js` are [no longer supported][61550] when
-  compiling to WebAssembly.
-  Invoking any API from these libraries will result in a runtime error.
-  Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
+- `dart:js_util` e `package:js` [não são mais suportados][61550] ao
+  compilar para WebAssembly.
+  Invocar qualquer API dessas bibliotecas resultará em um erro de runtime.
+  Usos devem ser migrados para `dart:js_interop` e `dart:js_interop_unsafe`.
 
-- To match the JS compilers, `dartify` when compiled to Wasm,
-  [now converts][54573] JS `Promise` objects to Dart `Future` objects
-  instead of Dart `JSValue` objects. 
+- Para corresponder aos compiladores JS, `dartify` quando compilado para Wasm,
+  [agora converte][54573] objetos JS `Promise` em objetos Dart `Future`
+  em vez de objetos Dart `JSValue`. 
 
 [61550]: {{site.repo.dart.sdk}}/issues/61550
 [54573]: {{site.repo.dart.sdk}}/issues/54573
@@ -202,35 +203,35 @@ accounting for them before the 3.10 release.
 ### Language
 
 - {{versioned}}
-  Null safety is now assumed when computing
-  type promotion, reachability, and definite assignment.
-  As a result, improved dead code analysis might
-  cause new analyzer diagnostics to trigger on
-  existing code that previously passed analysis.
+  Null safety agora é assumida ao computar
+  promoção de tipo, alcançabilidade e atribuição definida.
+  Como resultado, análise melhorada de código morto pode
+  fazer com que novos diagnósticos do analisador sejam acionados em
+  código existente que anteriormente passava na análise.
 
 ### Tools
 
-- Some subcommands of the `dart` tool, such as `dart analyze` and `dart fix`
-  now run AOT-compiled snapshots of the underlying tools.
-  There should be no functional difference outside of performance improvements,
-  but if you come across incompatibilities, please [report them][sdk report].
+- Alguns subcomandos da ferramenta `dart`, como `dart analyze` e `dart fix`
+  agora executam snapshots compilados AOT das ferramentas subjacentes.
+  Não deve haver diferença funcional fora de melhorias de desempenho,
+  mas se você encontrar incompatibilidades, por favor [reporte-as][sdk report].
 
 [sdk report]: {{site.repo.dart.sdk}}/issues/new/choose
 
 #### Pub
 
 - {{versioned}}
-  The upper bound of the  `flutter` SDK constraint
-  in your workspace's root package is now respected.
-  If your current SDK doesn't meet the specified bound,
-  `dart pub get` and other actions that retrieve dependencies will fail.
+  O limite superior da restrição do SDK `flutter`
+  no pacote raiz do seu workspace agora é respeitado.
+  Se seu SDK atual não atender ao limite especificado,
+  `dart pub get` e outras ações que recuperam dependências falharão.
 
 #### Dart build
 
 - {{experimental}}
-  Building a CLI app bundle with experimental native asset support now
-  requires using the `dart build cli` subcommand and
-  specifying the app entrypoint with a new `--target` option.
+  Construir um bundle de app CLI com suporte experimental a native assets agora
+  requer usar o subcomando `dart build cli` e
+  especificar o ponto de entrada do app com uma nova opção `--target`.
 
 ## 3.8.0
 
@@ -239,9 +240,9 @@ accounting for them before the 3.10 release.
 #### `dart:html`
 
 - {{removed}}
-  The `Element.created` constructor has been removed.
-- Native classes in `dart:html`, such as `HtmlElement`,
-  [can no longer be extended][53264].
+  O construtor `Element.created` foi removido.
+- Classes nativas em `dart:html`, como `HtmlElement`,
+  [não podem mais ser estendidas][53264].
 
 [53264]: {{site.repo.dart.sdk}}/issues/53264
 
@@ -250,30 +251,30 @@ accounting for them before the 3.10 release.
 #### Analyzer
 
 - {{deprecated}}
-  The [`avoid_null_checks_in_equality_operators`][] lint rule
-  is deprecated and should be removed from `analysis_options.yaml` files.
+  A regra de lint [`avoid_null_checks_in_equality_operators`][]
+  está descontinuada e deve ser removida dos arquivos `analysis_options.yaml`.
 
 [`avoid_null_checks_in_equality_operators`]: /tools/linter-rules/avoid_null_checks_in_equality_operators
 
-#### Development JavaScript compiler (DDC)
+#### Compilador JavaScript de Desenvolvimento (DDC)
 
-- Now throws a runtime error when a
-  redirecting factory constructor is [torn off][tear-offs] and
-  one of its optional non-nullable parameters is provided no value.
-  In the future this is likely to be a compile-time error.
+- Agora lança um erro de runtime quando um
+  construtor factory de redirecionamento é [torn off][tear-offs] e
+  um de seus parâmetros opcionais não anuláveis não recebe nenhum valor.
+  No futuro isso provavelmente será um erro de tempo de compilação.
 
 [tear-offs]: /language/functions#tear-offs
 
-#### Production JavaScript compiler (dart2js)
+#### Compilador JavaScript de Produção (dart2js)
 
 - {{experimental}} {{removed}}
-  The `--experiment-new-rti` and `--use-old-rti` flags are no longer supported.
+  As flags `--experiment-new-rti` e `--use-old-rti` não são mais suportadas.
 
-#### Formatter (`dart format`)
+#### Formatador (`dart format`)
 
 - {{versioned}}
-  The formatter made changes and fixes that result in new output when
-  formatting code with a [language version][] of 3.8 or greater.
+  O formatador fez mudanças e correções que resultam em nova saída ao
+  formatar código com uma [versão de linguagem][language version] de 3.8 ou superior.
 
 [language version]: /resources/language/evolution#language-versioning
 
@@ -296,20 +297,20 @@ accounting for them before the 3.10 release.
 
 #### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl`, `dart:js`
 
-- {{deprecated}} These legacy web libraries are officially deprecated.
-  They are expected to be removed in a future release.
-  Project should migrate to use [`package:web`][] and `dart:js_interop`.
-  To learn more, check out [Migrate to package:web][].
+- {{deprecated}} Estas bibliotecas web legadas estão oficialmente descontinuadas.
+  Espera-se que sejam removidas em um lançamento futuro.
+  Projetos devem migrar para usar [`package:web`][] e `dart:js_interop`.
+  Para saber mais, confira [Migrar para package:web][Migrate to package:web].
 
 [`package:web`]: {{site.pub-pkg}}/web
 [Migrate to package:web]: /interop/js-interop/package-web
 
 #### `dart:js`, `dart:js_util`, `package:js`
 
-- {{deprecated}} These legacy JS-interop libraries are officially deprecated.
-  They are expected to be removed in a future release.
-  Projects should migrate to use `dart:js_interop`.
-  To learn more, check out [JS interop usage][].
+- {{deprecated}} Estas bibliotecas legadas de interoperabilidade JS estão oficialmente descontinuadas.
+  Espera-se que sejam removidas em um lançamento futuro.
+  Projetos devem migrar para usar `dart:js_interop`.
+  Para saber mais, confira [Uso de interop JS][JS interop usage].
 
 [JS interop usage]: /interop/js-interop/usage
 
@@ -1452,18 +1453,18 @@ no outro.
 
 ### Language
 
-* A number of static errors that should have been detected
-  and reported were not supported in 2.0.0. These are reported now, which means
-  existing incorrect code might show new errors:
-  * [Mixins must correctly override their superclasses][34235].
-  * [Implicit type arguments in extends clauses must satisfy the class bounds][34532].
-  * [Instance members should shadow prefixes][34498].
-  * [Constructor invocations must use valid syntax, even with optional `new`][34403].
-  * [Type arguments to generic typedefs must satisfy their bounds][33308].
-  * [Classes can't implement FutureOr][33744].
-  * [Abstract methods may not unsoundly override a concrete method][32014].
-  * [Constant constructors cannot redirect to non-constant constructors][34161].
-  * [Setters with the same name as the enclosing class aren't allowed][34225].
+* Vários erros estáticos que deveriam ter sido detectados
+  e relatados não foram suportados no 2.0.0. Estes são relatados agora, o que significa
+  que código incorreto existente pode mostrar novos erros:
+  * [Mixins devem sobrescrever corretamente suas superclasses][34235].
+  * [Argumentos de tipo implícitos em cláusulas extends devem satisfazer os limites da classe][34532].
+  * [Membros de instância devem sombrear prefixos][34498].
+  * [Invocações de construtor devem usar sintaxe válida, mesmo com `new` opcional][34403].
+  * [Argumentos de tipo para typedefs genéricos devem satisfazer seus limites][33308].
+  * [Classes não podem implementar FutureOr][33744].
+  * [Métodos abstratos não podem sobrescrever de forma não sólida um método concreto][32014].
+  * [Construtores constantes não podem redirecionar para construtores não constantes][34161].
+  * [Setters com o mesmo nome da classe envolvente não são permitidos][34225].
 
 ### Tools
 
@@ -1505,5 +1506,5 @@ no outro.
 * Substituído o sistema de build baseado em transformadores do pub por um [novo sistema de build][build system].
 
 [30345]: {{site.repo.dart.sdk}}/issues/30345
-[strong mode]:/language/type-system
+[strong mode]: /language/type-system
 [build system]: {{site.repo.dart.org}}/build
