@@ -12,12 +12,12 @@ ao usar um IDE ou editor com suporte para Dart.
 
 {% render 'tools/dart-tool-note.md' %}
 
-## Especificar arquivos para formatar
+## Especificar arquivos para formatar {:#specifying-files-to-format}
 
 Para reformatar um ou mais arquivos Dart,
 forneça uma lista de caminhos para os arquivos ou diretórios desejados.
 
-### Especificar um caminho
+### Especificar um caminho {:#specifying-a-path}
 
 Forneça o caminho para um arquivo ou diretório.
 Se você passar um caminho de diretório,
@@ -29,7 +29,7 @@ Se você passar um caminho de diretório,
 $ dart format .
 ```
 
-### Especificar múltiplos caminhos
+### Especificar múltiplos caminhos {:#specifying-multiple-paths}
 
 Para especificar múltiplos arquivos ou diretórios, use uma lista delimitada por espaços.
 
@@ -40,7 +40,7 @@ mais um arquivo Dart no diretório `bin`:
 $ dart format lib bin/updater.dart
 ```
 
-### Prevenir sobrescrita de arquivos Dart
+### Prevenir sobrescrita de arquivos Dart {:#preventing-overwriting}
 
 Por padrão, `dart format` **sobrescreve** os arquivos Dart.
 
@@ -52,7 +52,7 @@ Por padrão, `dart format` **sobrescreve** os arquivos Dart.
 $ dart format -o show bin/my_app.dart
 ```
 
-## Notificar quando ocorrerem mudanças
+## Notificar quando ocorrerem mudanças {:#getting-notified-of-changes}
 
 Para fazer o `dart format` retornar um código de saída quando mudanças de formatação ocorrerem,
 adicione a flag `--set-exit-if-changed`.
@@ -67,7 +67,7 @@ para que eles possam acionar outra ação em resposta ao código de saída.
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
-## O que muda?
+## O que muda? {:#what-changes}
 
 `dart format` faz as seguintes mudanças de formatação:
 
@@ -109,7 +109,7 @@ Largura de página configurável requer
 uma [language version][] de pelo menos 3.7.
 :::
 
-## Saiba mais
+## Saiba mais {:#learn-more}
 
 Para aprender sobre opções adicionais de linha de comando,
 use o comando `dart help` ou veja a documentação do

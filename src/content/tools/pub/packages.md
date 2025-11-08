@@ -72,7 +72,7 @@ Para detalhes sobre a criação de um pubspec,
 veja a [documentação do pubspec](/tools/pub/pubspec)
 e a documentação dos pacotes que você deseja usar.
 
-## Obtendo pacotes
+## Obtendo pacotes {:#getting-packages}
 
 Uma vez que você tenha um pubspec, você pode executar [`dart pub get`][get] do
 diretório principal da sua aplicação:
@@ -101,7 +101,7 @@ que mapeia cada nome de pacote do qual seu app depende
 para o pacote correspondente no cache do sistema.
 
 
-## Importando bibliotecas de pacotes
+## Importando bibliotecas de pacotes {:#importing-libraries-from-packages}
 
 Para importar bibliotecas encontradas em pacotes,
 use o prefixo `package:`:
@@ -263,19 +263,19 @@ To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 
 [content hash]: /resources/glossary#pub-content-hash
 
-## Mais informações
+## Mais informações {:#more-information}
 
 As páginas a seguir têm mais informações sobre pacotes e
 o gerenciador de pacotes pub.
 
 
-### Como fazer
+### Como fazer {:#how-to}
 
 * [Criando pacotes](/tools/pub/create-packages)
 * [Publicando pacotes](/tools/pub/publishing)
 * [Workspaces do pub (suporte a monorepo)](/tools/pub/workspaces)
 
-### Referência
+### Referência {:#reference}
 
 * [Dependências do pub](/tools/pub/dependencies)
 * [Variáveis de ambiente do pub](/tools/pub/environment-variables)
@@ -284,7 +284,7 @@ o gerenciador de pacotes pub.
 * [Formato do pubspec](/tools/pub/pubspec)
 * [Glossário com termos do pub](/resources/glossary)
 
-### Subcomandos do pub
+### Subcomandos do pub {:#pub-commands}
 
 A ferramenta `dart pub` fornece os seguintes subcomandos:
 
@@ -293,7 +293,7 @@ A ferramenta `dart pub` fornece os seguintes subcomandos:
 Para uma visão geral de todos os subcomandos do `dart pub`,
 veja a [documentação da ferramenta pub](/tools/pub/cmd).
 
-### Solução de problemas
+### Solução de problemas {:#troubleshooting}
 
 [Solução de problemas do pub](/tools/pub/troubleshoot) fornece soluções para problemas que
 você pode encontrar ao usar o pub.
