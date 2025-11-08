@@ -122,7 +122,7 @@ eles são tão rápidos quanto chamar uma função estática.
 Para mais informações sobre static types e `dynamic`, veja
 [O sistema de tipos do Dart](/language/type-system).
 
-### Conflitos de API
+### Conflitos de API {:#api-conflicts}
 
 Se um membro extension entra em conflito com
 uma interface ou com outro membro extension,
