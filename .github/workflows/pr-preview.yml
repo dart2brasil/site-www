@@ -24,7 +24,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.3.3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          check-name: 'Build site and check links'
+          check-name: 'build'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
@@ -32,7 +32,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.3.3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          check-name: 'Analyze and test code examples'
+          check-name: 'test'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
