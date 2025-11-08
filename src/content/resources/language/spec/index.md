@@ -1,60 +1,61 @@
 ---
-title: Dart language specification
-shortTitle: Language specification
-breadcrumb: Specification
-description: The formal specification for the Dart language.
+title: Especificação da linguagem Dart
+shortTitle: Especificação da linguagem
+breadcrumb: Especificação
+description: A especificação formal para a linguagem Dart.
+ia-translate: true
 ---
 
-Use this page to find the formal Dart language specification.
-For a gentler introduction to Dart, see the
-[language tour](/language).
+Use esta página para encontrar a especificação formal da linguagem Dart.
+Para uma introdução mais suave ao Dart, veja o
+[tour da linguagem](/language).
 
 ## Dart 3
 
-The Dart 3 language specification is in progress and
-not yet up to date for the current release and language features.
-You can find the in-progress specification in PDF format:
+A especificação da linguagem Dart 3 está em andamento e
+ainda não está atualizada para a versão atual e recursos da linguagem.
+Você pode encontrar a especificação em andamento no formato PDF:
 
-* [Latest, in-progress specification][latest draft]
-  (produced from a [LaTeX file][])
+* [Especificação mais recente, em andamento][latest draft]
+  (produzida a partir de um [arquivo LaTeX][LaTeX file])
 
 [latest draft]: {{site.url}}/to/spec-draft
 [LaTeX file]: {{site.repo.dart.lang}}/blob/main/specification/dartLangSpec.tex
 
-New language features are typically described using
-informal language feature specifications in the [dart-lang/language][] repo:
+Novos recursos da linguagem são tipicamente descritos usando
+especificações informais de recursos da linguagem no repositório [dart-lang/language][]:
 
-* [Accepted informal proposals][]
-* [Drafts of potential features][]
+* [Propostas informais aceitas][Accepted informal proposals]
+* [Rascunhos de recursos potenciais][Drafts of potential features]
 
-Over time, these feature specifications will be incorporated into
-the official specification.
+Com o tempo, essas especificações de recursos serão incorporadas à
+especificação oficial.
 
 [dart-lang/language]: {{site.repo.dart.lang}}
 [Accepted informal proposals]: {{site.repo.dart.lang}}/tree/main/accepted
 [Drafts of potential features]: {{site.repo.dart.lang}}/tree/main/working
 
 :::version-note
-Dart 3 changed the Dart language in a few ways,
-primarily requiring [sound null safety](/null-safety).
+Dart 3 mudou a linguagem Dart de algumas formas,
+principalmente exigindo [null safety sólido](/null-safety).
 :::
 
 ## Dart 2
 
-The Dart 2 language specification is available in PDF format:
+A especificação da linguagem Dart 2 está disponível no formato PDF:
 
-  * [Formal specification (Dart 2.10)][2-10 formal spec]
+  * [Especificação formal (Dart 2.10)][2-10 formal spec]
 
 [2-10 formal spec]: /resources/language/spec/versions/DartLangSpec-v2.10.pdf
 
-For information on Dart versions 2.12 and later,
-which have support for [null safety](/null-safety),
-check out the in-progress [Dart 3 specification](#dart-3).
+Para informações sobre versões do Dart 2.12 e posteriores,
+que têm suporte para [null safety](/null-safety),
+confira a [especificação Dart 3](#dart-3) em andamento.
 
 ## Dart 1.x
 
-The formal Dart 1.x language specification is available from
-the Ecma International website:
+A especificação formal da linguagem Dart 1.x está disponível no
+site da Ecma International:
 
 * <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-408/"
    target="_blank" rel="noopener">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>
