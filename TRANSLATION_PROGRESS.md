@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 121 files (with ia-translate: true metadata)
+- **Remaining:** ~824 files
+- **Progress:** 12.8%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 66 (37 initial + 3 from merged PR + 26 Section 5)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 121 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,40 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 5: Diagnostic Errors - assignment/async/avoid (26 files)
+41. ✅ `src/content/tools/diagnostics/assignment_of_do_not_store.md`
+42. ✅ `src/content/tools/diagnostics/assignment_to_const.md`
+43. ✅ `src/content/tools/diagnostics/assignment_to_final.md`
+44. ✅ `src/content/tools/diagnostics/assignment_to_final_local.md`
+45. ✅ `src/content/tools/diagnostics/assignment_to_final_no_setter.md`
+46. ✅ `src/content/tools/diagnostics/assignment_to_function.md`
+47. ✅ `src/content/tools/diagnostics/assignment_to_method.md`
+48. ✅ `src/content/tools/diagnostics/assignment_to_type.md`
+49. ✅ `src/content/tools/diagnostics/async_for_in_wrong_context.md`
+50. ✅ `src/content/tools/diagnostics/avoid_dynamic_calls.md`
+51. ✅ `src/content/tools/diagnostics/avoid_empty_else.md`
+52. ✅ `src/content/tools/diagnostics/avoid_function_literals_in_foreach_calls.md`
+53. ✅ `src/content/tools/diagnostics/avoid_futureor_void.md`
+54. ✅ `src/content/tools/diagnostics/avoid_init_to_null.md`
+55. ✅ `src/content/tools/diagnostics/avoid_print.md`
+56. ✅ `src/content/tools/diagnostics/avoid_relative_lib_imports.md`
+57. ✅ `src/content/tools/diagnostics/avoid_renaming_method_parameters.md`
+58. ✅ `src/content/tools/diagnostics/avoid_return_types_on_setters.md`
+59. ✅ `src/content/tools/diagnostics/avoid_returning_null_for_void.md`
+60. ✅ `src/content/tools/diagnostics/avoid_shadowing_type_parameters.md`
+61. ✅ `src/content/tools/diagnostics/avoid_single_cascade_in_expression_statements.md`
+62. ✅ `src/content/tools/diagnostics/avoid_slow_async_io.md`
+63. ✅ `src/content/tools/diagnostics/avoid_type_to_string.md`
+64. ✅ `src/content/tools/diagnostics/avoid_types_as_parameter_names.md`
+65. ✅ `src/content/tools/diagnostics/avoid_unnecessary_containers.md`
+66. ✅ `src/content/tools/diagnostics/avoid_web_libraries_in_flutter.md`
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 41/~776 files (5%)
+  - ✅ **Section 5 (Diagnostic Errors - assignment/async/avoid):** 26/26 files (100%) 🎉
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,12 +129,13 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (66 files this session including merge)
+Progress: 12.8% complete (121/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
 - ✅ Libraries section 100% COMPLETE! 🎉
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
+- ✅ Section 5 (Diagnostic Errors - assignment/async/avoid) 100% COMPLETE! 🎉
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)

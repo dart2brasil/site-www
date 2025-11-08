@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: avoid_shadowing_type_parameters
 description: >-
-  Details about the avoid_shadowing_type_parameters
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico avoid_shadowing_type_parameters
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,21 +19,21 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The type parameter '{0}' shadows a type parameter from the enclosing {1}._
+_O parâmetro de tipo '{0}' oculta um parâmetro de tipo da {1} envolvente._
 
 ## Description
 
-The analyzer produces this diagnostic when a type parameter shadows a type
-parameter from an enclosing declaration.
+O analisador produz este diagnóstico quando um parâmetro de tipo oculta um parâmetro
+de tipo de uma declaração envolvente.
 
-Shadowing a type parameter with a different type parameter can lead to
-subtle bugs that are difficult to debug.
+Ocultar um parâmetro de tipo com um parâmetro de tipo diferente pode levar a
+bugs sutis que são difíceis de depurar.
 
 ## Example
 
-The following code produces this diagnostic because the type parameter `T`
-defined by the method `m` shadows the type parameter `T` defined by the
-class `C`:
+O código a seguir produz este diagnóstico porque o parâmetro de tipo `T`
+definido pelo método `m` oculta o parâmetro de tipo `T` definido pela
+classe `C`:
 
 ```dart
 class C<T> {
@@ -42,7 +43,7 @@ class C<T> {
 
 ## Common fixes
 
-Rename one of the type parameters:
+Renomeie um dos parâmetros de tipo:
 
 ```dart
 class C<T> {

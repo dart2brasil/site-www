@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: avoid_return_types_on_setters
 description: >-
-  Details about the avoid_return_types_on_setters
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico avoid_return_types_on_setters
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,20 +19,20 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary return type on a setter._
+_Tipo de retorno desnecessário em um setter._
 
 ## Description
 
-The analyzer produces this diagnostic when a setter has an explicit return
-type.
+O analisador produz este diagnóstico quando um setter tem um tipo de retorno
+explícito.
 
-Setters never return a value, so declaring the return type of one is
-redundant.
+Setters nunca retornam um valor, então declarar o tipo de retorno de um é
+redundante.
 
 ## Example
 
-The following code produces this diagnostic because the setter `s` has an
-explicit return type (`void`):
+O código a seguir produz este diagnóstico porque o setter `s` tem um
+tipo de retorno explícito (`void`):
 
 ```dart
 [!void!] set s(int p) {}
@@ -39,7 +40,7 @@ explicit return type (`void`):
 
 ## Common fixes
 
-Remove the return type:
+Remova o tipo de retorno:
 
 ```dart
 set s(int p) {}

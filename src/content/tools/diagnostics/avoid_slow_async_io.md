@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: avoid_slow_async_io
 description: >-
-  Details about the avoid_slow_async_io
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico avoid_slow_async_io
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,14 +19,14 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use of an async 'dart:io' method._
+_Uso de um método async 'dart:io'._
 
 ## Description
 
-The analyzer produces this diagnostic when an asynchronous file I/O method
-with a synchronous equivalent is used.
+O analisador produz este diagnóstico quando um método assíncrono de I/O de arquivo
+com um equivalente síncrono é usado.
 
-The following are the specific flagged asynchronous methods:
+Os seguintes são os métodos assíncronos específicos sinalizados:
 
 - `Directory.exists`
 - `Directory.stat`
@@ -39,8 +40,8 @@ The following are the specific flagged asynchronous methods:
 
 ## Example
 
-The following code produces this diagnostic because the async method
-`exists` is invoked:
+O código a seguir produz este diagnóstico porque o método async
+`exists` é invocado:
 
 ```dart
 import 'dart:io';
@@ -52,7 +53,7 @@ Future<void> g(File f) async {
 
 ## Common fixes
 
-Use the synchronous version of the method:
+Use a versão síncrona do método:
 
 ```dart
 import 'dart:io';
