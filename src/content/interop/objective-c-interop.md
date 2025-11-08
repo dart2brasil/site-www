@@ -400,7 +400,7 @@ void main(List<String> args) async {
 [dylib]: {{page.appledoc}}/avfaudio?language=objc
 [`fileURLWithPath:`]: {{page.appledoc}}/foundation/nsurl/1410828-fileurlwithpath?language=objc
 
-### Limitações de callbacks e multithreading
+### Limitações de callbacks e multithreading {:#callbacks-and-multithreading-limitations}
 
 Multithreading introduz complexidade à interop entre Objective-C e Dart.
 Isso decorre das diferenças entre isolates Dart e threads do SO,

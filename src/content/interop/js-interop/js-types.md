@@ -52,7 +52,7 @@ Você pode encontrar a definição de cada tipo na [documentação da API `dart:
 TODO (srujzs): Should we add a tree diagram instead for JS types?
 {% endcomment %}
 
-## Conversões
+## Conversões {:#conversions}
 
 Para usar um valor de um domínio para outro, você provavelmente vai querer *converter* o
 valor para o tipo correspondente do outro domínio. Por exemplo, você pode querer
@@ -106,7 +106,7 @@ os mesmos. Conversões de typed array têm uma limitação similar. Consulte a
 função de conversão específica para mais detalhes.
 :::
 
-## Requisitos em declarações `external` e `Function.toJS`
+## Requisitos em declarações `external` e `Function.toJS` {:#requirements-on-external-declarations-and-function-tojs}
 
 Para garantir segurança de tipos e consistência, o compilador estabelece requisitos
 sobre quais tipos podem fluir para dentro e para fora de JS. Passar valores Dart arbitrários para JS
@@ -158,7 +158,7 @@ compilador para converter esse valor de um valor JS para um valor Dart. Se o des
 `JSString` em vez disso para evitar o custo de conversão pode fazer sentido como no
 segundo exemplo.
 
-## Compatibilidade, verificações de tipo e conversões
+## Compatibilidade, verificações de tipo e conversões {:#compatibility-type-checks-and-casts}
 
 O tipo em runtime dos tipos JS pode diferir com base no compilador. Isso afeta
 verificação de tipo em runtime e conversões. Portanto, quase sempre evite verificações `is`

@@ -20,7 +20,7 @@ A documentação da API está disponível na
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [dart-ffi]: {{site.dart-api}}/dart-ffi/dart-ffi-library.html
 
-## Baixar arquivos de exemplo
+## Baixar arquivos de exemplo {:#download-example-files}
 
 Para trabalhar com os exemplos neste guia,
 baixe o diretório completo de [exemplos ffi][ffi samples].
@@ -207,7 +207,7 @@ Para aprender como, consulte as seguintes páginas e exemplos.
 [macos]: {{site.flutter-docs}}/platform-integration/macos/c-interop
 [ffi-samples]: {{site.repo.dart.samples}}/tree/main/ffi
 
-## Interface com tipos nativos
+## Interface com tipos nativos {:#interface-with-native-types}
 
 A biblioteca `dart:ffi` fornece múltiplos tipos que implementam [`NativeType`][]
 e representam tipos nativos em C. Você pode instanciar alguns tipos nativos.

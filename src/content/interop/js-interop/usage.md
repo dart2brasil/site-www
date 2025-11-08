@@ -29,7 +29,7 @@ o membro de interop [contenha um tipo primitivo][contains a primitive type].
 [conversion functions]: /interop/js-interop/js-types#conversions
 [contains a primitive type]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 
-## Tipos de interop
+## Tipos de interop {:#interop-types}
 
 Ao interagir com um valor JS, você precisa fornecer um tipo Dart para ele.
 Você pode fazer isso usando ou declarando um tipo de interop.
@@ -77,7 +77,7 @@ como em muitas APIs fornecidas por [`package:web`][].
 [implement]: /language/extension-types#implements
 [`package:web`]: {{site.pub-pkg}}/web
 
-## Membros de interop
+## Membros de interop {:#interop-members}
 
 Membros [`external`][] de interop fornecem uma sintaxe idiomática para membros JS.
 Eles permitem que você escreva uma assinatura de tipo Dart para seus
