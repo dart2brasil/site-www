@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Learning Dart as a Swift developer
 description: Leverage your Swift knowledge when learning Dart.
 bodyClass: highlight-languages
