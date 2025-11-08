@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: duplicate_pattern_field
 description: >-
-  Details about the duplicate_pattern_field
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico duplicate_pattern_field
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The field '{0}' is already matched in this pattern._
+_O campo '{0}' já foi correspondido neste pattern._
 
 ## Description
 
-The analyzer produces this diagnostic when a record pattern matches the
-same field more than once, or when an object pattern matches the same
-getter more than once.
+O analisador produz este diagnóstico quando um pattern de record corresponde ao
+mesmo campo mais de uma vez, ou quando um pattern de objeto corresponde ao mesmo
+getter mais de uma vez.
 
 ## Examples
 
-The following code produces this diagnostic because the record field `a`
-is matched twice in the same record pattern:
+O código a seguir produz este diagnóstico porque o campo de record `a`
+é correspondido duas vezes no mesmo pattern de record:
 
 ```dart
 void f(({int a, int b}) r) {
@@ -29,8 +30,8 @@ void f(({int a, int b}) r) {
 }
 ```
 
-The following code produces this diagnostic because the getter `f` is
-matched twice in the same object pattern:
+O código a seguir produz este diagnóstico porque o getter `f` é
+correspondido duas vezes no mesmo pattern de objeto:
 
 ```dart
 void f(Object o) {
@@ -46,8 +47,8 @@ class C {
 
 ## Common fixes
 
-If the pattern should match for more than one value of the duplicated
-field, then use a logical-or pattern:
+Se o pattern deve corresponder a mais de um valor do campo duplicado,
+então use um pattern logical-or:
 
 ```dart
 void f(({int a, int b}) r) {
@@ -58,8 +59,8 @@ void f(({int a, int b}) r) {
 }
 ```
 
-If the pattern should match against multiple fields, then change the name
-of one of the fields:
+Se o pattern deve corresponder a múltiplos campos, então mude o nome
+de um dos campos:
 
 ```dart
 void f(({int a, int b}) r) {

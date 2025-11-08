@@ -1,31 +1,31 @@
 ---
+ia-translate: true
 title: deprecated_export_use
 description: >-
-  Details about the deprecated_export_use
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico deprecated_export_use
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The ability to import '{0}' indirectly is deprecated._
+_A capacidade de importar '{0}' indiretamente está deprecated._
 
 ## Description
 
-The analyzer produces this diagnostic when one library imports a name from
-a second library, and the second library exports the name from a third
-library but has indicated that it won't export the third library in the
-future.
+O analisador produz este diagnóstico quando uma biblioteca importa um nome de
+uma segunda biblioteca, e a segunda biblioteca exporta o nome de uma terceira
+biblioteca mas indicou que não exportará a terceira biblioteca no futuro.
 
 ## Example
 
-Given a library `a.dart` defining the class `A`:
+Dada uma biblioteca `a.dart` definindo a classe `A`:
 
 ```dart
 class A {}
 ```
 
-And a second library `b.dart` that exports `a.dart` but has marked the
-export as being deprecated:
+E uma segunda biblioteca `b.dart` que exporta `a.dart` mas marcou a
+exportação como deprecated:
 
 ```dart
 import 'a.dart';
@@ -34,8 +34,8 @@ import 'a.dart';
 export 'a.dart';
 ```
 
-The following code produces this diagnostic because the class `A` won't be
-exported from `b.dart` in some future version:
+O código a seguir produz este diagnóstico porque a classe `A` não será
+exportada de `b.dart` em alguma versão futura:
 
 ```dart
 import 'b.dart';
@@ -45,9 +45,9 @@ import 'b.dart';
 
 ## Common fixes
 
-If the name is available from a different library that you can import,
-then replace the existing import with an import for that library (or add
-an import for the defining library if you still need the old import):
+Se o nome está disponível em uma biblioteca diferente que você pode importar,
+então substitua a importação existente por uma importação para essa biblioteca (ou adicione
+uma importação para a biblioteca que define o nome se você ainda precisar da importação antiga):
 
 ```dart
 import 'a.dart';
@@ -55,5 +55,5 @@ import 'a.dart';
 A? a;
 ```
 
-If the name isn't available, then look for instructions from the library
-author or contact them directly to find out how to update your code.
+Se o nome não está disponível, então procure por instruções do autor da biblioteca
+ou entre em contato diretamente para descobrir como atualizar seu código.
