@@ -289,7 +289,7 @@ seguintes navegadores:
 O [compilador JavaScript de _desenvolvimento_](/tools/webdev#serve) apenas
 suporta Chrome para depuração.
 
-### P. Dart é single-threaded na web?
+### P. Dart é single-threaded na web? {:#q-is-dart-single-threaded-on-the-web}
 
 De certa forma.
 Apps web Dart não podem usar isolates.

@@ -10,7 +10,7 @@ Use esta página para encontrar a especificação formal da linguagem Dart.
 Para uma introdução mais suave ao Dart, veja o
 [tour da linguagem](/language).
 
-## Dart 3
+## Dart 3 {:#dart-3}
 
 A especificação da linguagem Dart 3 está em andamento e
 ainda não está atualizada para a versão atual e recursos da linguagem.

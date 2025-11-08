@@ -251,7 +251,7 @@ those classes como constantes de tempo de compilação.
 Para mais informações, confira
 [const construtores](#const-construtores).
 
-## Tipos integrados
+## Tipos integrados {:#built-in-types}
 Dart includes a number of types no platform
 libraries, such as:
 
@@ -522,7 +522,7 @@ confira [Strings][] no tour da linguagem Dart.
 Booleans represent a binary value in both Dart
 (`bool`) and Swift (`Bool`).
 
-### Null safety
+### Null safety {:#null-safety}
 
 Dart enforces sound null safety.
 By default, types don't allow a null value unless marked as nullable.
@@ -1319,7 +1319,7 @@ print(animal.name)
 print(animal.age)
 ```
 
-## Collections
+## Collections {:#collections}
 
 This section covers some collection types in
 Swift and how they compare to their equivalents in Dart.
@@ -1598,7 +1598,7 @@ gifts.remove('first');
 gifts.removeWhere((key, value) => value == 'partridge');
 ```
 
-## Classes 
+## Classes {:#classes}
 
 Dart doesn't define an interface type&mdash;_any_
 class can be used as an interface.
@@ -1742,7 +1742,7 @@ class Point {
 }
 ```
 
-#### Const construtores
+#### Const construtores {:#const-constructors}
 
 When your class instances are always immutable
 (sem alterações), you can enforce this by adding a
@@ -1890,7 +1890,7 @@ class Rectangle {
 }
 ```
 
-### Abstract classes
+### Abstract classes {:#abstract-classes}
 
 Dart has the concept of _abstract_ classes,
 something that isn't supported by Swift.
@@ -1923,7 +1923,7 @@ abstract class AbstractContainer {
 }
 ```
 
-### Implicit interfaces
+### Implicit interfaces {:#implicit-interfaces}
 
 In the Dart language, every class implicitly
 defines an interface containing all the
@@ -1974,7 +1974,7 @@ class Dog: Animal {
 }
 ```
 
-### Extending a class
+### Extending a class {:#extending-a-class}
 
 Class inheritance in Dart is very similar to Swift.
 In Dart, you can use `extends` to create a subclass,
@@ -2000,7 +2000,7 @@ class Dog: Animal {
 }
 ```
 
-### Mixins 
+### Mixins {:#mixins}
 
 Mixins allow your code to share functionality between classes.
 You can use the mixin's campos and methods in a class,
@@ -2134,7 +2134,7 @@ until an implementation is found.
 If no implementation is found,
 the parent class, `Animal`, is checked last. 
 
-### Extension methods 
+### Extension methods {:#extension-methods}
 
 Like Swift, Dart offers extension methods that allow you
 to add functionality&mdash;specifically, methods,
@@ -2278,7 +2278,7 @@ class Dog: Animal {
 }
 ```
 
-## Generics 
+## Generics {:#generics}
 
 Como no Swift, Dart suporta the use of generics
 to improve type safety or reduce code duplication. 
@@ -2402,7 +2402,7 @@ var map = <String, Object>{
 }; // Type: Map<String, Object>
 ```
 
-## Concurrency
+## Concurrency {:#concurrency}
 
 Swift supports multithreading and Dart supports isolates, 
 which are similar to lightweight threads

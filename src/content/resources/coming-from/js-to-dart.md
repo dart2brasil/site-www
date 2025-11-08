@@ -437,7 +437,7 @@ Dart does not.
 
 Para aprender mais, see the [Classes](#classes) section.
 
-## Null safety
+## Null safety {:#null-safety}
 
 Unlike JavaScript, Dart supports null safety.
 In Dart, all types default to non-nullable.
@@ -477,7 +477,7 @@ String returnsNonNullable() {
 }
 ```
 
-### Null-aware operators
+### Null-aware operators {:#null-aware-operators}
 
 Dart supports several operators to deal with nullability.
 As in JavaScript, Dart supports the null assignment operator (`??=`),
@@ -1268,7 +1268,7 @@ var result = maybePerson
 
 Dart ignores the entire cascade if the `maybePerson` value is `null`.
 
-## Collections
+## Collections {:#collections}
 
 This section covers some collection types in Dart and compare them
 to similar types in JavaScript.
@@ -1671,7 +1671,7 @@ var listaOfStrings = [
 
 This also works no same way for maps and sets.
 
-## Asynchrony
+## Asynchrony {:#asynchrony}
 
 Like JavaScript, the Dart Virtual Machine (VM)
 runs a single event loop that processes all your Dart code.
@@ -1971,7 +1971,7 @@ and other asynchronous functionality no
 
 [asynchronous programming]: /libraries/async/using-streams
 
-## Classes
+## Classes {:#classes}
 
 On the surface, classes in Dart are similar to classes
 in JavaScript, although JavaScript classes are technically

@@ -15,7 +15,7 @@ após [atualizar para Dart 3](/get-dart).
 
 ## Introdução
 
-### Mudanças versionadas vs não versionadas
+### Mudanças versionadas vs não versionadas {:#unversioned-vs-versioned-changes}
 
 As mudanças potencialmente incompatíveis listadas abaixo se enquadram em uma de duas categorias:
 
@@ -100,7 +100,7 @@ $ dart analyze      # Isso deve passar sem erros.
 
 ## Mudanças na linguagem Dart 3
 
-### Null safety 100% sólido
+### Null safety 100% sólido {:#100-sound-null-safety}
 
 Dart 2.12 introduziu null safety há mais de dois anos.
 No Dart 2.12, os usuários precisavam habilitar null safety [com uma configuração no pubspec][with a pubspec setting].

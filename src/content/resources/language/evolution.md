@@ -667,7 +667,7 @@ environment:
   sdk: '>=2.18.0 <3.0.0'
 ```
 
-### Números de versão de linguagem
+### Números de versão de linguagem {:#language-version-numbers}
 
 O Dart formata suas versões de linguagem como dois números separados por um ponto.
 Lê-se como um número de versão principal e um número de versão secundária.
@@ -695,7 +695,7 @@ Derivar a versão de linguagem da versão do SDK implica o seguinte:
   Por exemplo: A versão 2.18.3 _permanece_ versão de linguagem 2.18.
   Ela deve permanecer compatível com 2.18.2, 2.18.1 e 2.18.0.
 
-### Seleção de versão de linguagem por biblioteca
+### Seleção de versão de linguagem por biblioteca {:#per-library-language-version-selection}
 
 Por padrão, cada arquivo Dart em um pacote usa a mesma versão de linguagem.
 O Dart identifica a versão de linguagem padrão como o
