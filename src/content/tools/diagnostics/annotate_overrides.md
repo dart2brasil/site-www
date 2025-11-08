@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _The member '{0}' overrides an inherited member but isn't annotated with '@override'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member overrides an inherited
+O analisador produz este diagnóstico quando a member overrides an inherited
 member, but isn't annotated with `@override`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `m` in the
+O código a seguir produz este diagnóstico porque the method `m` in the
 class `B` overrides the method with the same name in class `A`, but isn't
 marked as an intentional override:
 
@@ -41,7 +42,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the member in the subclass is intended to override the member in the
 superclass, then add an `@override` annotation:

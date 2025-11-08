@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The receiver of '.address' must be a concrete 'TypedData', a concrete 'TypedData' '[]', an 'Array', an 'Array' '[]', a Struct field, or a Union field._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `.address` getter is used
+O analisador produz este diagnóstico quando the `.address` getter is used
 on a receiver whose static type isn't one of the allowed FFI types. The
 `.address` getter is used to obtain a `Pointer` to the underlying memory
 of an FFI data structure.
@@ -24,7 +25,7 @@ The receiver of `.address` must be one of the following:
 - A field of a `Struct` or `Union` subclass, if that field's type is `Array<T>`, a nested `Struct`, or a nested `Union`.
 - A `Struct` or `Union` instance.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic for various incorrect receivers:
 
@@ -50,7 +51,7 @@ void main() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Ensure that the receiver of the `.address` getter is one of the allowed
 types.  The `.address` getter is for obtaining a `Pointer` to the memory

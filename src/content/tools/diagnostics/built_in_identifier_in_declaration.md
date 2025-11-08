@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The built-in identifier '{0}' can't be used as a prefix name._
@@ -19,22 +20,22 @@ _The built-in identifier '{0}' can't be used as an extension name._
 
 _The built-in identifier '{0}' can't be used as an extension type name._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name used in the declaration
+O analisador produz este diagnóstico quando the name used in the declaration
 of a class, extension, mixin, typedef, type parameter, or import prefix is
 a built-in identifier. Built-in identifiers can't be used to name any of
 these kinds of declarations.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `mixin` is a built-in
+O código a seguir produz este diagnóstico porque `mixin` is a built-in
 identifier:
 
 ```dart
 extension [!mixin!] on int {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Choose a different name for the declaration.

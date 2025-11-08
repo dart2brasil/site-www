@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Methods can't be assigned a value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the target of an assignment is a
+O analisador produz este diagnóstico quando the target of an assignment is a
 method.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` can't be assigned a
+O código a seguir produz este diagnóstico porque `f` can't be assigned a
 value because it's a method:
 
 ```dart
@@ -29,6 +30,6 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the code so that there isn't an assignment to a method.

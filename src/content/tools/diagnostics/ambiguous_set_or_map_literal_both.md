@@ -5,11 +5,12 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The literal can't be either a map or a set because it contains at least one literal map entry or a spread operator spreading a 'Map', and at least one element which is neither of these._
 
-## Description
+## Descrição
 
 Because map and set literals use the same delimiters (`{` and `}`), the
 analyzer looks at the type arguments and the elements to determine which
@@ -20,12 +21,12 @@ a `Map`. If none of the elements are literal map entries and all of the
 spread operators are spreading an `Iterable`, then it's a `Set`. If neither
 of those is true then it's ambiguous.
 
-The analyzer produces this diagnostic when at least one element is a
+O analisador produz este diagnóstico quando at least one element is a
 literal map entry or a spread operator spreading a `Map`, and at least one
 element is neither of these, making it impossible for the analyzer to
 determine whether you are writing a map literal or a set literal.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic:
 
@@ -37,7 +38,7 @@ union(Map<String, String> a, List<String> b, Map<String, String> c) =>
 The list `b` can only be spread into a set, and the maps `a` and `c` can
 only be spread into a map, and the literal can't be both.
 
-## Common fixes
+## Correções comuns
 
 There are two common ways to fix this problem. The first is to remove all
 of the spread elements of one kind or another, so that the elements are

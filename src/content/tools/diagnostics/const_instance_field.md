@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Only static fields can be declared as const._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance field is marked as
+O analisador produz este diagnóstico quando an instance field está marcado como
 being const.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` is an instance
+O código a seguir produz este diagnóstico porque `f` is an instance
 field:
 
 ```dart
@@ -25,7 +26,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the field needs to be an instance field, then remove the keyword
 `const`, or replace it with `final`:

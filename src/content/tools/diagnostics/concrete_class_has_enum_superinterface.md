@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Concrete classes can't have 'Enum' as a superinterface._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a concrete class indirectly has
+O analisador produz este diagnóstico quando a concrete class indirectly has
 the class `Enum` as a superinterface.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the concrete class `B`
+O código a seguir produz este diagnóstico porque the concrete class `B`
 has `Enum` as a superinterface as a result of implementing `A`:
 
 ```dart
@@ -25,7 +26,7 @@ abstract class A implements Enum {}
 class [!B!] implements A {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the implemented class isn't the class you intend to implement, then
 change it:

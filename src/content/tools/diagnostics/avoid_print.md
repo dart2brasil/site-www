@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Don't invoke 'print' in production code._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the function `print` is invoked
+O analisador produz este diagnóstico quando the function `print` is invoked
 in production code.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `print`
+O código a seguir produz este diagnóstico porque the function `print`
 can't be invoked in production:
 
 ```dart
@@ -36,7 +37,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you're writing code that uses Flutter, then use the function
 [`debugPrint`][debugPrint], guarded by a test

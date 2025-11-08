@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _Uses 'await' on an instance of '{0}', which is not a subtype of 'Future'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the expression after `await`
+O analisador produz este diagnóstico quando the expression after `await`
 has any type other than `Future<T>`, `FutureOr<T>`, `Future<T>?`,
 `FutureOr<T>?` or `dynamic`.
 
@@ -32,9 +33,9 @@ common way to introduce a microtask delay.
 Unless the expression can produce a `Future`, the `await` is unnecessary
 and can cause a reader to assume a level of asynchrony that doesn't exist.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the expression after
+O código a seguir produz este diagnóstico porque the expression after
 `await` has the type `int`:
 
 ```dart
@@ -43,7 +44,7 @@ void f() async {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the `await`:
 

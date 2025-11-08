@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,23 +23,23 @@ _The function '{0}' should have a return type but doesn't._
 
 _The method '{0}' should have a return type but doesn't._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function doesn't
+O analisador produz este diagnóstico quando a method or function doesn't
 have an explicit return type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f`
+O código a seguir produz este diagnóstico porque the function `f`
 doesn't have a return type:
 
 ```dart
 [!f!]() {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an explicit return type:
+Adicione uma explicit return type:
 
 ```dart
 void f() {}

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,13 +21,13 @@ bodyClass: highlight-diagnostics
 
 _Use 'package:' imports for files in the 'lib' directory._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an `import` in a library inside
+O analisador produz este diagnóstico quando an `import` in a library inside
 the `lib` directory uses a relative path to import another library inside
 the `lib` directory of the same package.
 
-## Example
+## Exemplo
 
 Given that a file named `a.dart` and the code below are both inside the
 `lib` directory of the same package, the following code produces this
@@ -36,7 +37,7 @@ diagnostic because a relative URI is used to import `a.dart`:
 import [!'a.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a package import:
 

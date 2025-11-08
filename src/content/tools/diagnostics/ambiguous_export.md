@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' is defined in the libraries '{1}' and '{2}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when two or more export directives
+O analisador produz este diagnóstico quando two or more export directives
 cause the same name to be exported from multiple libraries.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` containing
 
@@ -28,7 +29,7 @@ And a file `b.dart` containing
 class C {}
 ```
 
-The following code produces this diagnostic because the name `C` is being
+O código a seguir produz este diagnóstico porque the name `C` is being
 exported from both `a.dart` and `b.dart`:
 
 ```dart
@@ -36,7 +37,7 @@ export 'a.dart';
 export [!'b.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If none of the names in one of the libraries needs to be exported, then
 remove the unnecessary export directives:

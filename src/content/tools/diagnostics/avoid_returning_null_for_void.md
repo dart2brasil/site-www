@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,14 +23,14 @@ _Don't return 'null' from a function with a return type of 'void'._
 
 _Don't return 'null' from a method with a return type of 'void'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a function that has a return
+O analisador produz este diagnóstico quando a function that has a return
 type of `void` explicitly returns `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is an explicit
+O código a seguir produz este diagnóstico porque there is an explicit
 return of `null` in a `void` function:
 
 ```dart
@@ -38,7 +39,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary explicit `null`:
 

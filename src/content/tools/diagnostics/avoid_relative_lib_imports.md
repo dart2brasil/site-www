@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,12 +21,12 @@ bodyClass: highlight-diagnostics
 
 _Can't use a relative path to import a library in 'lib'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the URI in an `import`
+O analisador produz este diagnóstico quando the URI in an `import`
 directive has `lib` in the path.
 
-## Example
+## Exemplo
 
 Assuming that there is a file named `a.dart` in the `lib` directory:
 
@@ -33,14 +34,14 @@ Assuming that there is a file named `a.dart` in the `lib` directory:
 class A {}
 ```
 
-The following code produces this diagnostic because the import contains a
+O código a seguir produz este diagnóstico porque the import contains a
 path that includes `lib`:
 
 ```dart
 import [!'../lib/a.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the import to not include `lib` in the URI:
 

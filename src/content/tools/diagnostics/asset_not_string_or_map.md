@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _An asset value is required to be a file path (string) or map._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an asset value isn't a string
+O analisador produz este diagnóstico quando an asset value isn't a string
 or a map.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the asset value
+O código a seguir produz este diagnóstico porque the asset value
 is a list:
 
 ```yaml
@@ -26,7 +27,7 @@ flutter:
     - [![one, two, three]!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to specify more than just the path to the asset, then replace
 the value with a map with a `path` key (a valid POSIX-style file path):

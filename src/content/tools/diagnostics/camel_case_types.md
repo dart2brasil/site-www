@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,22 +21,22 @@ bodyClass: highlight-diagnostics
 
 _The type name '{0}' isn't an UpperCamelCase identifier._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a type (a class,
+O analisador produz este diagnóstico quando the name of a type (a class,
 mixin, enum, or typedef) doesn't use the 'UpperCamelCase' naming
 convention.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name of the class
+O código a seguir produz este diagnóstico porque the name of the class
 doesn't start with an uppercase letter:
 
 ```dart
 class [!c!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Rename the type so that it has a valid name:
 

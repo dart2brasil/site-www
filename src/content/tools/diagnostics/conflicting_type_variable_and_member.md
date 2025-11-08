@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' can't be used to name both a type parameter and a member in this class._
@@ -17,15 +18,15 @@ _'{0}' can't be used to name both a type parameter and a member in this extensio
 
 _'{0}' can't be used to name both a type parameter and a member in this mixin._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class, mixin, or extension
+O analisador produz este diagnóstico quando a class, mixin, or extension
 declaration declares a type parameter with the same name as one of the
 members of the class, mixin, or extension that declares it.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type parameter `T`
+O código a seguir produz este diagnóstico porque the type parameter `T`
 has the same name as the field `T`:
 
 ```dart
@@ -34,7 +35,7 @@ class C<[!T!]> {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rename either the type parameter or the member with which it conflicts:
 

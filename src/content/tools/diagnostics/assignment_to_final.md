@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' can't be used as a setter because it's final._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it finds an invocation of a
+O analisador produz este diagnóstico quando it finds an invocation of a
 setter, but there's no setter because the field with the same name was
 declared to be `final` or `const`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `v` is final:
+O código a seguir produz este diagnóstico porque `v` is final:
 
 ```dart
 class C {
@@ -29,7 +30,7 @@ f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to be able to set the value of the field, then remove the
 modifier `final` from the field:

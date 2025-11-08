@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,17 +21,17 @@ bodyClass: highlight-diagnostics
 
 _Empty statements are not allowed in an 'else' clause._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the statement after an `else`
+O analisador produz este diagnóstico quando the statement after an `else`
 is an empty statement (a semicolon).
 
 For more information, see the documentation for
 [`avoid_empty_else`](https://dart.dev/diagnostics/avoid_empty_else).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the statement
+O código a seguir produz este diagnóstico porque the statement
 following the `else` is an empty statement:
 
 ```dart
@@ -42,7 +43,7 @@ void f(int x, int y) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the statement after the empty statement is intended to be executed only
 when the condition is `false`, then remove the empty statement:

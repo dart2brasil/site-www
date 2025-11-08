@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' isn't a type, so it can't be used in an 'as' expression._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name following the `as` in a
+O analisador produz este diagnóstico quando the name following the `as` in a
 cast expression is defined to be something other than a type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` is a variable, not
+O código a seguir produz este diagnóstico porque `x` is a variable, not
 a type:
 
 ```dart
@@ -24,7 +25,7 @@ num x = 0;
 int y = x as [!x!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the name with the name of a type:
 

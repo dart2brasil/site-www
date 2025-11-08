@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The async for-in loop can only be used in an async function._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an async for-in loop is found in
+O analisador produz este diagnóstico quando an async for-in loop is found in
 a function or method whose body isn't marked as being either `async` or
 `async*`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the body of `f` isn't
+O código a seguir produz este diagnóstico porque the body of `f` isn't
 marked as being either `async` or `async*`, but `f` contains an async
 for-in loop:
 
@@ -29,7 +30,7 @@ void f(list) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function should return a `Future`, then mark the body with `async`:
 

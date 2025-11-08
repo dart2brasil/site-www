@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Asset map entry must contain a 'path' field._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an asset map is missing a
+O analisador produz este diagnóstico quando an asset map is missing a
 `path` value.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the asset map
+O código a seguir produz este diagnóstico porque the asset map
 is missing a `path` value:
 
 ```yaml
@@ -27,7 +28,7 @@ flutter:
       - premium
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the asset map so that it contains a `path` field with a string
 value (a valid POSIX-style file path):

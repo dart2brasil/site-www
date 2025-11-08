@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _The extension name '{0}' isn't an UpperCamelCase identifier._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of an extension
+O analisador produz este diagnóstico quando the name of an extension
 doesn't use the 'UpperCamelCase' naming convention.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name of the
+O código a seguir produz este diagnóstico porque the name of the
 extension doesn't start with an uppercase letter:
 
 ```dart
 extension [!stringExtension!] on String {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the extension needs to have a name (needs to be visible outside this
 library), then rename the extension so that it has a valid name:

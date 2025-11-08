@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Argument '{0}' must be a constant._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an invocation of either
+O analisador produz este diagnóstico quando an invocation of either
 `Pointer.asFunction` or `DynamicLibrary.lookupFunction` has an `isLeaf`
 argument whose value isn't a constant expression.
 
@@ -21,9 +22,9 @@ The analyzer also produces this diagnostic when an invocation of either
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of the
+O código a seguir produz este diagnóstico porque the value of the
 `isLeaf` argument is a parameter, and hence isn't a constant:
 
 ```dart
@@ -35,7 +36,7 @@ int Function(int) fromPointer(
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there's a suitable constant that can be used, then replace the argument
 with a constant:

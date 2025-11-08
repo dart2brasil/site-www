@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Uncancelled instance of 'StreamSubscription'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance of
+O analisador produz este diagnóstico quando an instance of
 `StreamSubscription` is created but the method `cancel` isn't invoked.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `subscription`
+O código a seguir produz este diagnóstico porque the `subscription`
 isn't canceled:
 
 ```dart
@@ -39,7 +40,7 @@ void f(Stream stream) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Cancel the subscription:
 

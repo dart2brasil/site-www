@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _This 'onError' handler must return a value assignable to '{0}', but ends without returning a value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the closure passed to the
+O analisador produz este diagnóstico quando the closure passed to the
 `onError` parameter of the `Future.catchError` method is required to
 return a non-`null` value (because of the `Future`s type argument) but can
 implicitly return `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the closure passed to
+O código a seguir produz este diagnóstico porque the closure passed to
 the `catchError` method is required to return an `int` but doesn't end
 with an explicit `return`, causing it to implicitly return `null`:
 
@@ -28,7 +29,7 @@ void g(Future<int> f) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the closure should sometimes return a non-`null` value, then add an
 explicit return to the closure:

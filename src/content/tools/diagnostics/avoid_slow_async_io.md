@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _Use of an async 'dart:io' method._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an asynchronous file I/O method
+O analisador produz este diagnóstico quando an asynchronous file I/O method
 with a synchronous equivalent is used.
 
 The following are the specific flagged asynchronous methods:
@@ -37,9 +38,9 @@ The following are the specific flagged asynchronous methods:
 - `FileSystemEntity.isLink`
 - `FileSystemEntity.type`
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the async method
+O código a seguir produz este diagnóstico porque the async method
 `exists` is invoked:
 
 ```dart
@@ -50,7 +51,7 @@ Future<void> g(File f) async {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use the synchronous version of the method:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The final variable '{0}' can only be set once._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a local variable that was
+O analisador produz este diagnóstico quando a local variable that was
 declared to be final is assigned after it was initialized.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` is final, so it
+O código a seguir produz este diagnóstico porque `x` is final, so it
 can't have a value assigned to it after it was initialized:
 
 ```dart
@@ -27,7 +28,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the keyword `final`, and replace it with `var` if there's no type
 annotation:

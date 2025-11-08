@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A member named '{0}' is defined in '{1}' and '{2}', and neither is more specific._
 
 _A member named '{0}' is defined in {1}, and none are more specific._
 
-## Description
+## Descrição
 
 When code refers to a member of an object (for example, `o.m()` or `o.m` or
 `o[i]`) where the static type of `o` doesn't declare the member (`m` or
@@ -22,13 +23,13 @@ the static type of `o` can be assigned to. When there's more than one such
 extension in scope, the extension whose extended type is most specific is
 selected.
 
-The analyzer produces this diagnostic when none of the extensions has an
+O analisador produz este diagnóstico quando none of the extensions has an
 extended type that's more specific than the extended types of all of the
 other extensions, making the reference to the member ambiguous.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there's no way to
+O código a seguir produz este diagnóstico porque não há way to
 choose between the member in `E1` and the member in `E2`:
 
 ```dart
@@ -45,7 +46,7 @@ void f(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you don't need both extensions, then you can delete or hide one of them.
 

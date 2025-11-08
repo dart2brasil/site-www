@@ -5,26 +5,27 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _This function has a nullable return type of '{0}', but ends without returning a value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function can
+O analisador produz este diagnóstico quando a method or function can
 implicitly return `null` by falling off the end. While this is valid Dart
 code, it's better for the return of `null` to be explicit.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f`
+O código a seguir produz este diagnóstico porque the function `f`
 implicitly returns `null`:
 
 ```dart
 String? [!f!]() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the return of `null` is intentional, then make it explicit:
 

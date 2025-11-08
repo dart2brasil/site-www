@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Argument to 'Native.addressOf' must be annotated with @Native_
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the argument passed to
+O analisador produz este diagnóstico quando the argument passed to
 `Native.addressOf` isn't annotated with the `Native` annotation.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the argument to
+O código a seguir produz este diagnóstico porque the argument to
 `addressOf` is a string, not a field, and strings can't be annotated:
 
 ```dart
@@ -30,7 +31,7 @@ void g() {
 }
 ```
 
-The following code produces this diagnostic because the function `f` is
+O código a seguir produz este diagnóstico porque the function `f` is
 being passed to `addressOf` but isn't annotated as being `Native`:
 
 ```dart
@@ -43,7 +44,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the argument isn't either a field or a function, then replace the
 argument with a field or function that's annotated with `Native`:

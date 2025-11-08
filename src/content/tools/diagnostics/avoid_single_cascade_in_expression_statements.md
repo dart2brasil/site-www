@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary cascade expression._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a single cascade operator is
+O analisador produz este diagnóstico quando a single cascade operator is
 used and the value of the expression isn't being used for anything (such
 as being assigned to a variable or being passed as an argument).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of the
+O código a seguir produz este diagnóstico porque the value of the
 cascade expression `s..length` isn't being used:
 
 ```dart
@@ -37,7 +38,7 @@ void f(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the cascade operator with a simple access operator:
 

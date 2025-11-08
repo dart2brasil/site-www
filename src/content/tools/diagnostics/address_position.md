@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The '.address' expression can only be used as argument to a leaf native external call._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `.address` getter is used
+O analisador produz este diagnóstico quando the `.address` getter is used
 in a context other than as an argument to a native external call that is
 marked as a leaf call (`isLeaf: true`).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `.address` is used
+O código a seguir produz este diagnóstico porque `.address` is used
 incorrectly:
 
 ```dart
@@ -35,7 +36,7 @@ void main() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Ensure that the `.address` expression is used directly as an argument to a
 native external call that is annotated with `@Native(...)` and has

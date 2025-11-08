@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A constant constructor can't call a non-constant super constructor of '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor that is marked as
+O analisador produz este diagnóstico quando a constructor that está marcado como
 `const` invokes a constructor from its superclass that isn't marked as
 `const`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `const` constructor
+O código a seguir produz este diagnóstico porque the `const` constructor
 in `B` invokes the constructor `nonConst` from the class `A`, and the
-superclass constructor isn't a `const` constructor:
+superclass constructor isn't um construtor `const`:
 
 ```dart
 class A {
@@ -32,7 +33,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If it isn't essential to invoke the superclass constructor that is
 currently being invoked, then invoke a constant constructor from the

@@ -5,11 +5,12 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _This literal must be either a map or a set, but the elements don't have enough information for type inference to work._
 
-## Description
+## Descrição
 
 Because map and set literals use the same delimiters (`{` and `}`), the
 analyzer looks at the type arguments and the elements to determine which
@@ -23,7 +24,7 @@ This diagnostic is produced when none of the expressions being spread have
 a type that allows the analyzer to decide whether you were writing a map
 literal or a set literal.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic:
 
@@ -34,7 +35,7 @@ union(a, b) => [!{...a, ...b}!];
 The problem occurs because there are no type arguments, and there is no
 information about the type of either `a` or `b`.
 
-## Common fixes
+## Correções comuns
 
 There are three common ways to fix this problem. The first is to add type
 arguments to the literal. For example, if the literal is intended to be a

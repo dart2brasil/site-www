@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,9 +23,9 @@ _The parameter name '{0}' matches a visible type name._
 
 _The type parameter name '{0}' matches a visible type name._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a parameter in a
+O analisador produz este diagnóstico quando the name of a parameter in a
 parameter list is the same as a visible type (a type whose name is in
 scope).
 
@@ -40,16 +41,16 @@ parameter in a type parameter list is the same as a type whose name is
 in scope. It is again recommended that the type parameter is renamed
 such that the error-prone shadowing is avoided.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f` has a
+O código a seguir produz este diagnóstico porque the function `f` has a
 parameter named `int`, which shadows the type `int` from `dart:core`:
 
 ```dart
 void f([!int!]) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the parameter name is missing, then add a name for the parameter:
 

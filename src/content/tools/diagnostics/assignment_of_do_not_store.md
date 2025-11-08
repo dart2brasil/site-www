@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' is marked 'doNotStore' and shouldn't be assigned to a field or top-level variable._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value of a function
+O analisador produz este diagnóstico quando the value of a function
 (including methods and getters) that is explicitly or implicitly marked by
 the [`doNotStore`][meta-doNotStore] annotation is stored in either a field
 or top-level variable.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of the
+O código a seguir produz este diagnóstico porque the value of the
 function `f` is being stored in the top-level variable `x`:
 
 ```dart
@@ -30,7 +31,7 @@ int f() => 1;
 var x = [!f()!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace references to the field or variable with invocations of the
 function producing the value.
