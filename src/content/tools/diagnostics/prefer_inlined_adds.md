@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_inlined_adds
-description: >-
-  Details about the prefer_inlined_adds
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_inlined_adds produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,21 +17,21 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The addition of a list item could be inlined._
+_A adição de um item de lista poderia ser embutida._
 
-_The addition of multiple list items could be inlined._
+_A adição de múltiplos itens de lista poderia ser embutida._
 
 ## Description
 
-The analyzer produces this diagnostic when the methods `add` and `addAll`
-are invoked on a list literal where the elements being added could be
-included in the list literal.
+O analisador produz este diagnóstico quando os métodos `add` e `addAll`
+são invocados em um literal de lista onde os elementos sendo adicionados poderiam ser
+incluídos no literal de lista.
 
 ## Example
 
-The following code produces this diagnostic because the `add` method is
-being used to add `b`, when it could have been included directly in the
-list literal:
+O código a seguir produz este diagnóstico porque o método `add` está
+sendo usado para adicionar `b`, quando poderia ter sido incluído diretamente no
+literal de lista:
 
 ```dart
 List<String> f(String a, String b) {
@@ -40,9 +39,9 @@ List<String> f(String a, String b) {
 }
 ```
 
-The following code produces this diagnostic because the `addAll` method is
-being used to add the elements of `b`, when it could have been included
-directly in the list literal:
+O código a seguir produz este diagnóstico porque o método `addAll` está
+sendo usado para adicionar os elementos de `b`, quando poderiam ter sido incluídos
+diretamente no literal de lista:
 
 ```dart
 List<String> f(String a, List<String> b) {
@@ -52,8 +51,8 @@ List<String> f(String a, List<String> b) {
 
 ## Common fixes
 
-If the `add` method is being used, then make the argument an element of
-the list and remove the invocation:
+Se o método `add` está sendo usado, torne o argumento um elemento da
+lista e remova a invocação:
 
 ```dart
 List<String> f(String a, String b) {
@@ -61,8 +60,8 @@ List<String> f(String a, String b) {
 }
 ```
 
-If the `addAll` method is being used, then use the spread operator on the
-argument to add its elements to the list and remove the invocation:
+Se o método `addAll` está sendo usado, use o operador spread no
+argumento para adicionar seus elementos à lista e remova a invocação:
 
 ```dart
 List<String> f(String a, List<String> b) {

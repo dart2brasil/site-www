@@ -1,29 +1,30 @@
 ---
+ia-translate: true
 title: invalid_annotation_constant_value_from_deferred_library
-description: >-
-  Details about the invalid_annotation_constant_value_from_deferred_library
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_annotation_constant_value_from_deferred_library produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Constant values from a deferred library can't be used in annotations._
+_Valores constantes de uma biblioteca deferred não podem ser usados em annotations._
 
 ## Description
 
-The analyzer produces this diagnostic when a constant defined in a library
-that is imported as a deferred library is referenced in the argument list
-of an annotation. Annotations are evaluated at compile time, and values
-from deferred libraries aren't available at compile time.
+O analisador produz este diagnóstico quando uma constante definida em uma
+biblioteca que é importada como uma biblioteca deferred é referenciada na
+lista de argumentos de uma annotation. Annotations são avaliadas em tempo
+de compilação, e valores de bibliotecas deferred não estão disponíveis em
+tempo de compilação.
 
-For more information, check out
+Para mais informações, confira
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 ## Example
 
-The following code produces this diagnostic because the constant `pi` is
-being referenced in the argument list of an annotation, even though the
-library that defines it is being imported as a deferred library:
+O código a seguir produz este diagnóstico porque a constante `pi` está
+sendo referenciada na lista de argumentos de uma annotation, mesmo que a
+biblioteca que a define esteja sendo importada como uma biblioteca
+deferred:
 
 ```dart
 import 'dart:math' deferred as math;
@@ -38,8 +39,8 @@ void f () {}
 
 ## Common fixes
 
-If you need to reference the imported constant, then remove the `deferred`
-keyword:
+Se você precisa referenciar a constante importada, remova a keyword
+`deferred`:
 
 ```dart
 import 'dart:math' as math;
@@ -52,6 +53,5 @@ class C {
 void f () {}
 ```
 
-If the import is required to be deferred and there's another constant that
-is appropriate, then use that constant in place of the constant from the
-deferred library.
+Se o import precisa ser deferred e há outra constante apropriada, use essa
+constante no lugar da constante da biblioteca deferred.

@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: cast_from_nullable_always_fails
-description: >-
-  Details about the cast_from_nullable_always_fails
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico cast_from_nullable_always_fails produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_This cast will always throw an exception because the nullable local variable '{0}' is not assigned._
+_Este cast sempre lançará uma exceção porque a variável local nullable '{0}' não foi atribuída._
 
 ## Description
 
-The analyzer produces this diagnostic when a local variable that has a
-nullable type hasn't been assigned and is cast to a non-nullable type.
-Because the variable hasn't been assigned it has the default value of
-`null`, causing the cast to throw an exception.
+O analisador produz este diagnóstico quando uma variável local que tem um
+type nullable não foi atribuída e é convertida (cast) para um type não-nullable.
+Como a variável não foi atribuída, ela tem o valor padrão de
+`null`, fazendo com que o cast lance uma exceção.
 
 ## Example
 
-The following code produces this diagnostic because the variable `x` is
-cast to a non-nullable type (`int`) when it's known to have the value
+O código a seguir produz este diagnóstico porque a variável `x` é
+convertida (cast) para um type não-nullable (`int`) quando se sabe que ela tem o valor
 `null`:
 
 ```dart
@@ -32,8 +31,8 @@ void f() {
 
 ## Common fixes
 
-If the variable is expected to have a value before the cast, then add an
-initializer or an assignment:
+Se a variável deve ter um valor antes do cast, então adicione um
+inicializador ou uma atribuição:
 
 ```dart
 void f() {
@@ -43,7 +42,7 @@ void f() {
 }
 ```
 
-If the variable isn't expected to be assigned, then remove the cast:
+Se a variável não deve ser atribuída, então remova o cast:
 
 ```dart
 void f() {

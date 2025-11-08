@@ -1,30 +1,29 @@
 ---
+ia-translate: true
 title: must_return_void
-description: >-
-  Details about the must_return_void
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico must_return_void produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _The return type of the function passed to 'NativeCallable.listener' must be 'void' rather than '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when you pass a function
-that doesn't return `void` to the `NativeCallable.listener` constructor.
+O analisador produz este diagnóstico quando você passa uma função
+que não retorna `void` para o construtor `NativeCallable.listener`.
 
-`NativeCallable.listener` creates a native callable that can be invoked
-from any thread. The native code that invokes the callable sends a message
-back to the isolate that created the callable, and doesn't wait for a
-response. So it isn't possible to return a result from the callable.
+`NativeCallable.listener` cria um callable nativo que pode ser invocado
+de qualquer thread. O código nativo que invoca o callable envia uma mensagem
+de volta para o isolate que criou o callable e não aguarda uma
+resposta. Portanto, não é possível retornar um resultado do callable.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, veja [C interop usando dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function
-`f` returns `int` rather than `void`.
+O código a seguir produz este diagnóstico porque a função
+`f` retorna `int` em vez de `void`.
 
 ```dart
 import 'dart:ffi';
@@ -36,9 +35,9 @@ void g() {
 }
 ```
 
-## Common fixes
+## Soluções comuns
 
-Change the return type of the function to `void`.
+Altere o tipo de retorno da função para `void`.
 
 ```dart
 import 'dart:ffi';

@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: invalid_use_of_internal_member
-description: >-
-  Details about the invalid_use_of_internal_member
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_use_of_internal_member produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The member '{0}' can only be used within its package._
+_O membro '{0}' só pode ser usado dentro de seu pacote._
 
 ## Description
 
-The analyzer produces this diagnostic when a reference to a declaration
-that is annotated with the [`internal`][meta-internal] annotation is found
-outside the package containing the declaration.
+O analisador produz este diagnóstico quando uma referência a uma declaração
+que está anotada com a anotação [`internal`][meta-internal] é encontrada
+fora do pacote que contém a declaração.
 
 ## Example
 
-Given a package `p` that defines a library containing a declaration marked
-with the [`internal`][meta-internal] annotation:
+Dado um pacote `p` que define uma biblioteca contendo uma declaração marcada
+com a anotação [`internal`][meta-internal]:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -27,8 +26,8 @@ import 'package:meta/meta.dart';
 class C {}
 ```
 
-The following code produces this diagnostic because it's referencing the
-class `C`, which isn't intended to be used outside the package `p`:
+O código a seguir produz este diagnóstico porque está referenciando a
+classe `C`, que não é destinada a ser usada fora do pacote `p`:
 
 ```dart
 import 'package:p/src/p.dart';
@@ -38,6 +37,6 @@ void f([!C!] c) {}
 
 ## Common fixes
 
-Remove the reference to the internal declaration.
+Remova a referência à declaração internal.
 
 [meta-internal]: https://pub.dev/documentation/meta/latest/meta/internal-constant.html

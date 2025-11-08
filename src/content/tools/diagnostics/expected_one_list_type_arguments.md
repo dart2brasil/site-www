@@ -1,31 +1,30 @@
 ---
+ia-translate: true
 title: expected_one_list_type_arguments
-description: >-
-  Details about the expected_one_list_type_arguments
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico expected_one_list_type_arguments produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_List literals require one type argument or none, but {0} found._
+_Literais de lista exigem um argumento de tipo ou nenhum, mas {0} foi encontrado._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a list literal has more than one
-type argument.
+O analisador produz este diagnóstico quando um literal de lista tem mais de um
+argumento de tipo.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the list literal has
-two type arguments when it can have at most one:
+O código a seguir produz este diagnóstico porque o literal de lista tem
+dois argumentos de tipo quando pode ter no máximo um:
 
 ```dart
 var l = [!<int, int>!][];
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove all except one of the type arguments:
+Remova todos exceto um dos argumentos de tipo:
 
 ```dart
 var l = <int>[];

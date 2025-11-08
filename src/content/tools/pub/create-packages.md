@@ -1,6 +1,7 @@
 ---
-title: Creating packages
-description: Learn how to create packages in Dart.
+ia-translate: true
+title: Criando pacotes
+description: Aprenda como criar pacotes em Dart.
 ---
 
 The Dart ecosystem uses [packages](/tools/pub/packages)
@@ -8,14 +9,14 @@ to share software such as libraries and tools.
 This page tells you how to create a standard shared 
 [package](/resources/glossary#package).
 
-## Creating a new package
+## Criando um novo pacote {:#creating-a-new-package}
 
 To create the initial directory and structure for a package,
 use the [`dart create`][] command
 and the `package` template:
 
 ```console
-$ dart create -t package <PACKAGE_NAME>
+$ dart create -t package <NOME_DO_PACOTE>
 ```
 
 To learn more about available templates and how to use the `-t` flag, 
@@ -26,76 +27,76 @@ see the [`dart create` documentation][].
 
 ## What makes a package
 
-The following diagram shows the simplest layout of a package:
+O diagrama a seguir mostra o layout mais simples de um pacote:
 
 <img
   src="/assets/img/libraries/simple-lib2.png"
   class="diagram-wrap"
   alt="root directory contains pubspec.yaml and lib/file.dart">
 
-The minimal requirements for a library are:
+Os requisitos mínimos para uma biblioteca são:
 
-pubspec file
-: The `pubspec.yaml` file for a library is the same
-  as for an [application package][]—there is no special
-  designation to indicate that the package is a library.
+Arquivo pubspec
+: O arquivo `pubspec.yaml` para uma biblioteca é o mesmo
+  que para um [pacote de aplicação][]—não há nenhuma
+  designação especial para indicar que o pacote é uma biblioteca.
 
-lib directory
-: As you might expect, the library code lives under the _lib_
-  directory and is public to other packages.
-  You can create any hierarchy under lib, as needed.
-  By convention, implementation code is placed under _lib/src_.
-  Code under lib/src is considered private;
-  other packages should never need to import `src/...`.
-  To make APIs under lib/src public, you can export lib/src files
-  from a file that's directly under lib.
+Diretório lib
+: Como você deve imaginar, o código da biblioteca fica no diretório _lib_
+  e é público para outros pacotes.
+  Você pode criar qualquer hierarquia em lib, conforme necessário.
+  Por convenção, o código de implementação é colocado em _lib/src_.
+  O código em lib/src é considerado privado;
+  outros pacotes nunca devem precisar importar `src/...`.
+  Para tornar as APIs em lib/src públicas, você pode exportar arquivos de lib/src
+  de um arquivo que esteja diretamente em lib.
 
 [application package]: /resources/glossary#application-package
 
-## Organizing a package
+## Organizando um pacote {:#organizing-a-package}
 
-Packages are easiest to maintain, extend, and test
-when you create small, individual libraries, referred to as
-_mini libraries_.
-In most cases, each class should be in its own mini library, unless
-you have a situation where two classes are tightly coupled.
+Pacotes são mais fáceis de manter, estender e testar
+quando você cria bibliotecas pequenas e individuais, referidas como
+_mini bibliotecas_.
+Na maioria dos casos, cada classe deve estar em sua própria mini biblioteca, a menos
+que você tenha uma situação em que duas classes estejam fortemente acopladas.
 
 :::note
-You might know about the `part` directive.
-This directive allows you to split a library into multiple Dart files.
-Though part files can incorporate generated code into a library,
-the Dart team doesn't recommend using them.
-Instead, create small libraries.
+Você pode conhecer a diretiva `part` (parte).
+Essa diretiva permite dividir uma biblioteca em vários arquivos Dart.
+Embora os arquivos part possam incorporar código gerado em uma biblioteca,
+a equipe do Dart não recomenda usá-los.
+Em vez disso, crie pequenas bibliotecas.
 :::
 
-Create a "main" library file directly under lib,
-lib/_&lt;package-name&gt;_.dart, that
-exports all of the public APIs.
-This allows the user to get all of a library's functionality
-by importing a single file.
+Crie um arquivo de biblioteca "principal" diretamente em lib,
+lib/_&lt;nome-do-pacote&gt;_.dart, que
+exporta todas as APIs públicas.
+Isso permite que o usuário obtenha toda a funcionalidade de uma biblioteca
+importando um único arquivo.
 
-The lib directory might also include other importable, non-src, libraries.
-For example, perhaps your main library works across platforms, but
-you create separate libraries that rely on `dart:io` or `dart:js_interop`.
-Some packages have separate libraries that are meant to be imported
-with a prefix, when the main library is not.
+O diretório lib também pode incluir outras bibliotecas importáveis, não-src.
+Por exemplo, talvez sua biblioteca principal funcione em várias plataformas, mas
+você crie bibliotecas separadas que dependem de `dart:io` ou `dart:js_interop`.
+Alguns pacotes têm bibliotecas separadas que devem ser importadas
+com um prefixo, quando a biblioteca principal não é.
 
-Let's look at the organization of a real-world package: shelf. The
+Vamos analisar a organização de um pacote do mundo real: shelf (prateleira). O
 [shelf]({{site.repo.dart.org}}/shelf)
-package provides an easy way to create web servers using Dart,
-and is laid out in a structure that is commonly used for Dart packages:
+pacote fornece uma maneira fácil de criar servidores web usando Dart,
+e é organizado em uma estrutura que é comumente usada para pacotes Dart:
 
 <img
   src="/assets/img/libraries/shelf.png"
   class="diagram-wrap"
   alt="shelf root directory contains example, lib, test, and tool subdirectories">
 
-Directly under lib, the main library file,
-`shelf.dart`, exports API from several files in `lib/src`.
-To avoid exposing more API than intended—and 
-to give developers an overview of the entire
-public API of the package—`shelf.dart` 
-uses `show` to specify exactly which symbols to export:
+Diretamente em lib, o arquivo da biblioteca principal,
+`shelf.dart`, exporta APIs de vários arquivos em `lib/src`.
+Para evitar expor mais API do que o pretendido—e
+para dar aos desenvolvedores uma visão geral de toda a
+API pública do pacote—`shelf.dart`
+usa `show` para especificar exatamente quais símbolos exportar:
 
 ```dart title="lib/shelf.dart"
 export 'src/cascade.dart' show Cascade;
@@ -112,35 +113,35 @@ export 'src/server.dart' show Server;
 export 'src/server_handler.dart' show ServerHandler;
 ```
 
-The shelf package also contains a mini library: shelf_io.
-This adapter handles HttpRequest objects from `dart:io`.
+O pacote shelf também contém uma mini biblioteca: shelf_io.
+Este adaptador lida com objetos HttpRequest de `dart:io`.
 
 :::tip
-For the best performance when developing with the
-development JavaScript compiler through [`webdev serve`][],
-put [implementation files](/tools/pub/package-layout#implementation-files) 
-under `/lib/src`, instead of elsewhere under `/lib`.
-Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+Para o melhor desempenho ao desenvolver com o
+compilador JavaScript de desenvolvimento através de [`webdev serve`][],
+coloque os [arquivos de implementação](/tools/pub/package-layout#implementation-files)
+em `/lib/src`, em vez de em outro lugar em `/lib`.
+Além disso, evite importações de <code>package:<em>nome_do_pacote</em>/src/...</code>.
 :::
 
 [`webdev serve`]: /tools/webdev#serve
 
-## Importing library files
+## Importando arquivos de biblioteca {:#importing-library-files}
 
-When importing a library file from another package, use
-the `package:` directive to specify the URI of that file.
+Ao importar um arquivo de biblioteca de outro pacote, use
+a diretiva `package:` para especificar o URI desse arquivo.
 
 ```dart
 import 'package:utilities/utilities.dart';
 ```
 
-When importing a library file from your own package,
-use a relative path when both files are inside of lib,
-or when both files are outside of lib. 
-Use `package:` when the imported file is in lib and the importer is outside.
+Ao importar um arquivo de biblioteca do seu próprio pacote,
+use um caminho relativo quando ambos os arquivos estiverem dentro de lib,
+ou quando ambos os arquivos estiverem fora de lib.
+Use `package:` quando o arquivo importado estiver em lib e o importador estiver fora.
 
-The following graphic shows how
-to import `lib/foo/a.dart` from both lib and web.
+O gráfico a seguir mostra como
+importar `lib/foo/a.dart` de lib e web.
 
 <img
   src="/assets/img/libraries/import-lib-rules.png"
@@ -148,16 +149,16 @@ to import `lib/foo/a.dart` from both lib and web.
   alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import">
 
 
-## Conditionally importing and exporting library files
+## Importando e exportando arquivos de biblioteca condicionalmente {:#conditionally-importing-and-exporting-library-files}
 
-If your library supports multiple platforms,
-then you might need to conditionally import or export library files.
-A common use case is a library that supports both web and native platforms.
+Se sua biblioteca suporta várias plataformas,
+então você pode precisar importar ou exportar arquivos de biblioteca condicionalmente.
+Um caso de uso comum é uma biblioteca que suporta plataformas web e nativas.
 
-To conditionally import or export,
-you need to check for the presence of `dart:*` libraries.
-Here's an example of conditional export code that
-checks for the presence of `dart:io` and `dart:js_interop`:
+Para importar ou exportar condicionalmente,
+você precisa verificar a presença de bibliotecas `dart:*`.
+Aqui está um exemplo de código de exportação condicional que
+verifica a presença de `dart:io` e `dart:js_interop`:
 
 <?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
 ```dart title="lib/hw_mp.dart"
@@ -166,30 +167,30 @@ export 'src/hw_none.dart' // Stub implementation
     if (dart.library.js_interop) 'src/hw_web.dart'; // package:web implementation
 ```
 
-Here's what that code does:
+Aqui está o que esse código faz:
 
-* In an app that can use `dart:io`
-  (for example, a command-line app),
-  export `src/hw_io.dart`.
-* In an app that can use `dart:js_interop`
-  (a web app),
-  export `src/hw_web.dart`.
-* Otherwise, export `src/hw_none.dart`.
+* Em um aplicativo que pode usar `dart:io`
+  (por exemplo, um aplicativo de linha de comando),
+  exporte `src/hw_io.dart`.
+* Em um aplicativo que pode usar `dart:js_interop`
+  (um aplicativo web),
+  exporte `src/hw_web.dart`.
+* Caso contrário, exporte `src/hw_none.dart`.
 
-To conditionally import a file, use the same code as above,
-but change `export` to `import`.
+Para importar um arquivo condicionalmente, use o mesmo código acima,
+mas altere `export` para `import`.
 
 :::note
-Conditional imports or exports only work with keys in the compilation
-environment. Any sequence of dot-separated identifiers is valid syntax.
-Currently, only keys of the form  `dart.library.name` are provided.
-`dart.library.name` is set to `"true"` in the compilation 
-environment if the library `dart:name` is _available for use_ on
-the current platform, not whether it's actually imported or used.
+Importações ou exportações condicionais funcionam apenas com chaves no ambiente de compilação.
+Qualquer sequência de identificadores separados por pontos é uma sintaxe válida.
+Atualmente, apenas chaves da forma `dart.library.name` são fornecidas.
+`dart.library.name` é definido como `"true"` no ambiente de compilação
+se a biblioteca `dart:name` estiver _disponível para uso_ na
+plataforma atual, não se ela está realmente importada ou usada.
 :::
 
-All of the conditionally exported libraries must implement the same API.
-For example, here's the `dart:io` implementation:
+Todas as bibliotecas exportadas condicionalmente devem implementar a mesma API.
+Por exemplo, aqui está a implementação `dart:io`:
 
 <?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
 ```dart title="lib/src/hw_io.dart"
@@ -202,8 +203,8 @@ void alarm([String? text]) {
 String get message => 'Hello World from the VM!';
 ```
 
-And here's the default implementation,
-which uses stubs that throw `UnsupportedError`:
+E aqui está a implementação padrão,
+que usa stubs que lançam `UnsupportedError`:
 
 <?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
 ```dart title="lib/src/hw_none.dart"
@@ -212,8 +213,8 @@ void alarm([String? text]) => throw UnsupportedError('hw_none alarm');
 String get message => throw UnsupportedError('hw_none message');
 ```
 
-On any platform,
-you can import the library that has the conditional export code:
+Em qualquer plataforma,
+você pode importar a biblioteca que tem o código de exportação condicional:
 
 <?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
 ```dart
@@ -224,105 +225,105 @@ void main() {
 }
 ```
 
-## Providing additional files
+## Fornecendo arquivos adicionais {:#providing-additional-files}
 
-A well-designed package is easy to test.
-We recommend that you write tests using the
-[test]({{site.repo.dart.org}}/test) package,
-placing the test code in the `test` directory at the
-top of the package.
+Um pacote bem projetado é fácil de testar.
+Recomendamos que você escreva testes usando o
+pacote [test]({{site.repo.dart.org}}/test),
+colocando o código de teste no diretório `test` no
+topo do pacote.
 
-If you create any command-line tools intended for public consumption,
-place those in the `bin` directory, which is public.
-Enable running a tool from the command line, using
+Se você criar quaisquer ferramentas de linha de comando destinadas ao consumo público,
+coloque-as no diretório `bin`, que é público.
+Permita executar uma ferramenta a partir da linha de comando, usando
 [`dart pub global activate`](/tools/pub/cmd/pub-global#activating-a-package).
-Listing the tool in the
-[`executables` section](/tools/pub/pubspec#executables)
-of the pubspec allows a user to run it directly without calling
+Listar a ferramenta na
+seção [`executables`](/tools/pub/pubspec#executables)
+do pubspec permite que um usuário execute-a diretamente sem chamar
 [`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-dart-pub-global-run).
 
-It's helpful if you include an example of how to use your library.
-This goes into the `example` directory at the top of the package.
+É útil se você incluir um exemplo de como usar sua biblioteca.
+Isso vai para o diretório `example` no topo do pacote.
 
-Any tools or executables that you create during development that aren't for
-public use go into the `tool` directory.
+Quaisquer ferramentas ou executáveis que você criar durante o desenvolvimento que não sejam para
+uso público vão para o diretório `tool` (ferramenta).
 
-Other files that are required if you publish your library to the
-[pub.dev]({{site.pub}}) site, such as `README.md` and `CHANGELOG.md`, are
-described in [Publishing a package](/tools/pub/publishing).
-For more information on how to organize a package directory,
-see the [pub package layout conventions](/tools/pub/package-layout).
+Outros arquivos que são necessários se você publicar sua biblioteca no
+site [pub.dev]({{site.pub}}), como `README.md` e `CHANGELOG.md`, são
+descritos em [Publicando um pacote](/tools/pub/publishing).
+Para mais informações sobre como organizar um diretório de pacote,
+veja as [convenções de layout de pacotes do pub](/tools/pub/package-layout).
 
-## Documenting a library
+## Documentando uma biblioteca {:#documenting-a-library}
 
-You can generate API docs for your library using
-the [`dart doc`][] tool.
-`dart doc` parses the source looking for
-[documentation comments](/effective-dart/documentation#doc-comments),
-which use the `///` syntax:
+Você pode gerar documentação de API para sua biblioteca usando
+a ferramenta [`dart doc`][].
+`dart doc` analisa a fonte procurando por
+[comentários de documentação](/effective-dart/documentation#doc-comments),
+que usam a sintaxe `///`:
 
 ```dart
-/// The event handler responsible for updating the badge in the UI.
+/// O manipulador de eventos responsável por atualizar o badge na UI.
 void updateBadge() {
   ...
 }
 ```
 
-For an example of generated docs, see the
-[shelf documentation.]({{site.pub-api}}/shelf/latest)
+Para um exemplo de documentação gerada, veja a
+[documentação do shelf.]({{site.pub-api}}/shelf/latest)
 
-To include any *library-level* documentation in the generated docs,
-add a `library` directive and attach the comment directly above it.
-For the how-and-why of documenting libraries, see
-[Effective Dart: Documentation](/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
+Para incluir qualquer documentação de *nível de biblioteca* na documentação gerada,
+adicione uma diretiva `library` e anexe o comentário diretamente acima dela.
+Para o como e o porquê de documentar bibliotecas, veja
+[Effective Dart: Documentação](/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
 
 
-## Distributing an open source library {:#distributing-a-library}
+## Distribuindo uma biblioteca de código aberto {:#distributing-a-library}
 
-If your library is open source,
-we recommend sharing it on the [pub.dev site.]({{site.pub}})
-To publish or update the library,
+Se sua biblioteca é de código aberto,
+recomendamos compartilhá-la no [site pub.dev.]({{site.pub}})
+Para publicar ou atualizar a biblioteca,
 use [pub publish](/tools/pub/cmd/pub-lish),
-which uploads your package and creates or updates its page.
-For example, see the page for the [shelf package.]({{site.pub-pkg}}/shelf)
-See [Publishing a package](/tools/pub/publishing)
-for details on how to prepare your package for publishing.
+que envia seu pacote e cria ou atualiza sua página.
+Por exemplo, veja a página do [pacote shelf.]({{site.pub-pkg}}/shelf)
+Veja [Publicando um pacote](/tools/pub/publishing)
+para detalhes sobre como preparar seu pacote para publicação.
 
-The pub.dev site not only hosts your package,
-but also generates and hosts your package's API reference docs.
-A link to the latest generated docs is in the package's **About** box;
-for example, see the shelf package's
-[API docs.]({{site.pub-api}}/shelf)
-Links to previous versions' docs are in the
-**Versions** tab of the package's page.
+O site pub.dev não apenas hospeda seu pacote,
+mas também gera e hospeda a documentação de referência da API do seu pacote.
+Um link para a documentação gerada mais recente está na caixa **Sobre** do pacote;
+por exemplo, veja a
+[documentação da API.]({{site.pub-api}}/shelf) do pacote shelf.
+Links para a documentação de versões anteriores estão na
+aba **Versões** da página do pacote.
 
-To ensure that your package's API docs look good on the pub.dev site,
-follow these steps:
+Para garantir que a documentação da API do seu pacote fique boa no site pub.dev,
+siga estas etapas:
 
-* Before publishing your package, run the [`dart doc`][] tool
-  to make sure that your docs generate successfully and look as expected.
-* After publishing your package, check the **Versions** tab
-  to make sure that the docs generated successfully.
-* If the docs didn't generate at all,
-  click **failed** in the **Versions** tab to see the `dart doc` output.
+* Antes de publicar seu pacote, execute a ferramenta [`dart doc`][]
+  para garantir que sua documentação seja gerada com sucesso e pareça como esperado.
+* Depois de publicar seu pacote, verifique a aba **Versões**
+  para garantir que a documentação foi gerada com sucesso.
+* Se a documentação não foi gerada,
+  clique em **falhou** na aba **Versões** para ver a saída do `dart doc`.
 
-## Resources
+## Recursos {:#resources}
 
-Use the following resources to learn more about packages:
+Use os seguintes recursos para saber mais sobre pacotes:
 
-* [Libraries and imports](/language/libraries) covers
-  using library files.
-* The [package](/tools/pub/packages) documentation is useful, particularly the
-  [package layout conventions](/tools/pub/package-layout).
-* [What not to commit](/tools/pub/private-files)
-  covers what shouldn't be checked into a source code repository.
-* The newer packages under the
-  [dart-lang]({{site.repo.dart.org}}) organization tend
-  to show best practices. Consider studying these examples:
+* [Bibliotecas e importações](/language/libraries) cobre
+  o uso de arquivos de biblioteca.
+* A documentação do [pacote](/tools/pub/packages) é útil, particularmente as
+  [convenções de layout de pacotes](/tools/pub/package-layout).
+* [O que não commitar](/tools/pub/private-files)
+  cobre o que não deve ser incluído em um repositório de código fonte.
+* Os pacotes mais novos sob a
+  organização [dart-lang]({{site.repo.dart.org}}) tendem
+  a mostrar as melhores práticas. Considere estudar estes exemplos:
   [dart_style,]({{site.repo.dart.org}}/dart_style)
   [path,]({{site.repo.dart.org}}/core/tree/main/pkgs/path)
   [shelf,]({{site.repo.dart.org}}/shelf)
-  [source_gen,]({{site.repo.dart.org}}/source_gen) and
+  [source_gen,]({{site.repo.dart.org}}/source_gen) e
   [test.]({{site.repo.dart.org}}/test)
 
 [`dart doc`]: /tools/dart-doc

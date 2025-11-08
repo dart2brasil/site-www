@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: concrete_class_has_enum_superinterface
-description: >-
-  Details about the concrete_class_has_enum_superinterface
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico concrete_class_has_enum_superinterface produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Concrete classes can't have 'Enum' as a superinterface._
+_Classes concretas não podem ter 'Enum' como superinterface._
 
 ## Description
 
-The analyzer produces this diagnostic when a concrete class indirectly has
-the class `Enum` as a superinterface.
+O analisador produz este diagnóstico quando uma classe concreta indiretamente tem
+a classe `Enum` como superinterface.
 
 ## Example
 
-The following code produces this diagnostic because the concrete class `B`
-has `Enum` as a superinterface as a result of implementing `A`:
+O código a seguir produz este diagnóstico porque a classe concreta `B`
+tem `Enum` como superinterface como resultado de implementar `A`:
 
 ```dart
 abstract class A implements Enum {}
@@ -27,8 +26,8 @@ class [!B!] implements A {}
 
 ## Common fixes
 
-If the implemented class isn't the class you intend to implement, then
-change it:
+Se a classe implementada não é a classe que você pretende implementar, então
+mude-a:
 
 ```dart
 abstract class A implements Enum {}
@@ -38,8 +37,8 @@ class B implements C {}
 class C {}
 ```
 
-If the implemented class can be changed to not implement `Enum`, then do
-so:
+Se a classe implementada pode ser alterada para não implementar `Enum`, então faça
+isso:
 
 ```dart
 abstract class A {}
@@ -47,8 +46,8 @@ abstract class A {}
 class B implements A {}
 ```
 
-If the implemented class can't be changed to not implement `Enum`, then
-remove it from the `implements` clause:
+Se a classe implementada não pode ser alterada para não implementar `Enum`, então
+remova-a da cláusula `implements`:
 
 ```dart
 abstract class A implements Enum {}

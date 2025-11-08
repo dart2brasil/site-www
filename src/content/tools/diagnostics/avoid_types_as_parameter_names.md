@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: avoid_types_as_parameter_names
-description: >-
-  Details about the avoid_types_as_parameter_names
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico avoid_types_as_parameter_names produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,32 +17,32 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The parameter name '{0}' matches a visible type name._
+_O nome do parâmetro '{0}' corresponde a um nome de tipo visível._
 
-_The type parameter name '{0}' matches a visible type name._
+_O nome do parâmetro de tipo '{0}' corresponde a um nome de tipo visível._
 
 ## Description
 
-The analyzer produces this diagnostic when the name of a parameter in a
-parameter list is the same as a visible type (a type whose name is in
-scope).
+O analisador produz este diagnóstico quando o nome de um parâmetro em uma
+lista de parâmetros é o mesmo de um tipo visível (um tipo cujo nome está no
+escopo).
 
-This often indicates that the intended name of the parameter is missing,
-causing the name of the type to be used as the name of the parameter
-rather than the type of the parameter. Even when that's not the case (the
-name of the parameter is intentional), the name of the parameter will
-shadow the existing type, which can lead to bugs that are difficult to
-diagnose.
+Isso frequentemente indica que o nome pretendido do parâmetro está faltando,
+fazendo com que o nome do tipo seja usado como o nome do parâmetro
+em vez do tipo do parâmetro. Mesmo quando não é o caso (o
+nome do parâmetro é intencional), o nome do parâmetro
+ofuscará o tipo existente, o que pode levar a bugs que são difíceis de
+diagnosticar.
 
-The analyzer also produces this diagnostic when the name of a type
-parameter in a type parameter list is the same as a type whose name is
-in scope. It is again recommended that the type parameter is renamed
-such that the error-prone shadowing is avoided.
+O analisador também produz este diagnóstico quando o nome de um parâmetro
+de tipo em uma lista de parâmetros de tipo é o mesmo de um tipo cujo nome está
+no escopo. É novamente recomendado que o parâmetro de tipo seja renomeado
+de modo que o ofuscamento propenso a erros seja evitado.
 
 ## Example
 
-The following code produces this diagnostic because the function `f` has a
-parameter named `int`, which shadows the type `int` from `dart:core`:
+O código a seguir produz este diagnóstico porque a função `f` tem um
+parâmetro chamado `int`, que oculta o tipo `int` de `dart:core`:
 
 ```dart
 void f([!int!]) {}
@@ -51,14 +50,14 @@ void f([!int!]) {}
 
 ## Common fixes
 
-If the parameter name is missing, then add a name for the parameter:
+Se o nome do parâmetro está faltando, então adicione um nome para o parâmetro:
 
 ```dart
 void f(int x) {}
 ```
 
-If the parameter is intended to have an implicit type of `dynamic`, then
-rename the parameter so that it doesn't shadow the name of any visible type:
+Se o parâmetro deve ter um tipo implícito de `dynamic`, então
+renomeie o parâmetro para que ele não oculte o nome de nenhum tipo visível:
 
 ```dart
 void f(int_) {}

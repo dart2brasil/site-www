@@ -1,41 +1,40 @@
 ---
+ia-translate: true
 title: invalid_pattern_variable_in_shared_case_scope
-description: >-
-  Details about the invalid_pattern_variable_in_shared_case_scope
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_pattern_variable_in_shared_case_scope produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The variable '{0}' doesn't have the same type and/or finality in all cases that share this body._
+_A variável '{0}' não possui o mesmo tipo e/ou finality em todos os cases que compartilham este corpo._
 
-_The variable '{0}' is available in some, but not all cases that share this body._
+_A variável '{0}' está disponível em alguns, mas não em todos os cases que compartilham este corpo._
 
-_The variable '{0}' is not available because there is a label or 'default' case._
+_A variável '{0}' não está disponível porque existe um label ou case 'default'._
 
 ## Description
 
-The analyzer produces this diagnostic when multiple case clauses in a
-switch statement share a body, and at least one of them declares a
-variable that is referenced in the shared statements, but the variable is
-either not declared in all of the case clauses or it is declared in
-inconsistent ways.
+O analisador produz este diagnóstico quando múltiplas cláusulas case em uma
+instrução switch compartilham um corpo, e pelo menos uma delas declara uma
+variável que é referenciada nas instruções compartilhadas, mas a variável
+não está declarada em todas as cláusulas case ou está declarada de
+forma inconsistente.
 
-If the variable isn't declared in all of the case clauses, then it won't
-have a value if one of the clauses that doesn't declare the variable is
-the one that matches and executes the body. This includes the situation
-where one of the case clauses is the `default` clause.
+Se a variável não está declarada em todas as cláusulas case, então ela não
+terá um valor se uma das cláusulas que não declara a variável for
+aquela que corresponde e executa o corpo. Isso inclui a situação
+em que uma das cláusulas case é a cláusula `default`.
 
-If the variable is declared in inconsistent ways, either being `final` in
-some cases and not `final` in others or having a different type in
-different cases, then the semantics of what the type or finality of the
-variable should be are not defined.
+Se a variável é declarada de forma inconsistente, sendo `final` em
+alguns cases e não `final` em outros, ou tendo um tipo diferente em
+cases diferentes, então a semântica de qual deve ser o tipo ou finality da
+variável não está definida.
 
 ## Examples
 
-The following code produces this diagnostic because the variable `a` is
-only declared in one of the case clauses, and won't have a value if the
-second clause is the one that matched `x`:
+O código a seguir produz este diagnóstico porque a variável `a` está
+declarada apenas em uma das cláusulas case, e não terá um valor se a
+segunda cláusula for aquela que correspondeu a `x`:
 
 ```dart
 void f(Object? x) {
@@ -47,9 +46,9 @@ void f(Object? x) {
 }
 ```
 
-The following code produces this diagnostic because the variable `a` isn't
-declared in the `default` clause, and won't have a value if the body is
-executed because none of the other clauses matched `x`:
+O código a seguir produz este diagnóstico porque a variável `a` não está
+declarada na cláusula `default`, e não terá um valor se o corpo for
+executado porque nenhuma das outras cláusulas correspondeu a `x`:
 
 ```dart
 void f(Object? x) {
@@ -61,9 +60,9 @@ void f(Object? x) {
 }
 ```
 
-The following code produces this diagnostic because the variable `a` won't
-have a value if the body is executed because a different group of cases
-caused control to continue at the label:
+O código a seguir produz este diagnóstico porque a variável `a` não
+terá um valor se o corpo for executado porque um grupo diferente de cases
+fez o controle continuar no label:
 
 ```dart
 void f(Object? x) {
@@ -77,9 +76,9 @@ void f(Object? x) {
 }
 ```
 
-The following code produces this diagnostic because the variable `a`,
-while being assigned in all of the case clauses, doesn't have then same
-type associated with it in every clause:
+O código a seguir produz este diagnóstico porque a variável `a`,
+embora seja atribuída em todas as cláusulas case, não possui o mesmo
+tipo associado a ela em todas as cláusulas:
 
 ```dart
 void f(Object? x) {
@@ -91,9 +90,9 @@ void f(Object? x) {
 }
 ```
 
-The following code produces this diagnostic because the variable `a` is
-`final` in the first case clause and isn't `final` in the second case
-clause:
+O código a seguir produz este diagnóstico porque a variável `a` é
+`final` na primeira cláusula case e não é `final` na segunda cláusula
+case:
 
 ```dart
 void f(Object? x) {
@@ -107,8 +106,8 @@ void f(Object? x) {
 
 ## Common fixes
 
-If the variable isn't declared in all of the cases, and you need to
-reference it in the statements, then declare it in the other cases:
+Se a variável não está declarada em todos os cases, e você precisa
+referenciá-la nas instruções, então declare-a nos outros cases:
 
 ```dart
 void f(Object? x) {
@@ -120,9 +119,9 @@ void f(Object? x) {
 }
 ```
 
-If the variable isn't declared in all of the cases, and you don't need to
-reference it in the statements, then remove the references to it and
-remove the declarations from the other cases:
+Se a variável não está declarada em todos os cases, e você não precisa
+referenciá-la nas instruções, então remova as referências a ela e
+remova as declarações dos outros cases:
 
 ```dart
 void f(int x) {
@@ -133,8 +132,8 @@ void f(int x) {
 }
 ```
 
-If the type of the variable is different, decide the type the variable
-should have and make the cases consistent:
+Se o tipo da variável é diferente, decida qual tipo a variável
+deve ter e torne os cases consistentes:
 
 ```dart
 void f(Object? x) {
@@ -146,8 +145,8 @@ void f(Object? x) {
 }
 ```
 
-If the finality of the variable is different, decide whether it should be
-`final` or not `final` and make the cases consistent:
+Se o finality da variável é diferente, decida se ela deve ser
+`final` ou não `final` e torne os cases consistentes:
 
 ```dart
 void f(Object? x) {

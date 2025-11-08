@@ -1,30 +1,29 @@
 ---
+ia-translate: true
 title: const_not_initialized
-description: >-
-  Details about the const_not_initialized
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico const_not_initialized produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _The constant '{0}' must be initialized._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a variable that is declared to
-be a constant doesn't have an initializer.
+O analisador produz este diagnóstico quando uma variável declarada como
+constante não tem um inicializador.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `c` isn't initialized:
+O código a seguir produz este diagnóstico porque `c` não está inicializado:
 
 ```dart
 const [!c!];
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an initializer:
+Adicione um inicializador:
 
 ```dart
 const c = 'c';

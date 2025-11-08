@@ -1,35 +1,34 @@
 ---
 title: missing_default_value_for_parameter
-description: >-
-  Details about the missing_default_value_for_parameter
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico missing_default_value_for_parameter produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The parameter '{0}' can't have a value of 'null' because of its type, but the implicit default value is 'null'._
+_O parameter '{0}' não pode ter um valor 'null' por causa de seu tipo, mas o valor padrão implícito é 'null'._
 
-_With null safety, use the 'required' keyword, not the '@required' annotation._
+_Com null safety, use a palavra-chave 'required', não a anotação '@required'._
 
 ## Description
 
-The analyzer produces this diagnostic when an optional parameter, whether
-positional or named, has a [potentially non-nullable][] type and doesn't
-specify a default value. Optional parameters that have no explicit default
-value have an implicit default value of `null`. If the type of the
-parameter doesn't allow the parameter to have a value of `null`, then the
-implicit default value isn't valid.
+O analisador produz este diagnóstico quando um parameter opcional, seja
+positional ou named, tem um tipo [potencialmente não-anulável][potentially non-nullable] e não
+especifica um valor padrão. Parameters opcionais que não têm valor padrão explícito
+têm um valor padrão implícito de `null`. Se o tipo do
+parameter não permite que o parameter tenha um valor `null`, então o
+valor padrão implícito não é válido.
 
 ## Examples
 
-The following code produces this diagnostic because `x` can't be `null`,
-and no non-`null` default value is specified:
+O código a seguir produz este diagnóstico porque `x` não pode ser `null`,
+e nenhum valor padrão não-`null` é especificado:
 
 ```dart
 void f([int [!x!]]) {}
 ```
 
-As does this:
+Assim como este:
 
 ```dart
 void g({int [!x!]}) {}
@@ -37,22 +36,22 @@ void g({int [!x!]}) {}
 
 ## Common fixes
 
-If you want to use `null` to indicate that no value was provided, then you
-need to make the type nullable:
+Se você quer usar `null` para indicar que nenhum valor foi fornecido, então você
+precisa tornar o tipo anulável:
 
 ```dart
 void f([int? x]) {}
 void g({int? x}) {}
 ```
 
-If the parameter can't be null, then either provide a default value:
+Se o parameter não pode ser null, então forneça um valor padrão:
 
 ```dart
 void f([int x = 1]) {}
 void g({int x = 2}) {}
 ```
 
-or make the parameter a required parameter:
+ou torne o parameter um parameter required:
 
 ```dart
 void f(int x) {}

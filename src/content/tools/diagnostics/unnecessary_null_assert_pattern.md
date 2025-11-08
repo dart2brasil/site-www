@@ -1,22 +1,21 @@
 ---
+ia-translate: true
 title: unnecessary_null_assert_pattern
-description: >-
-  Details about the unnecessary_null_assert_pattern
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unnecessary_null_assert_pattern produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The null-assert pattern will have no effect because the matched type isn't nullable._
+_O padrão null-assert não terá efeito porque o tipo correspondido não é nullable._
 
 ## Description
 
-The analyzer produces this diagnostic when a null-assert pattern is used
-to match a value that isn't nullable.
+O analisador produz este diagnóstico quando um padrão null-assert é usado
+para corresponder a um valor que não é nullable.
 
 ## Example
 
-The following code produces this diagnostic because the variable `x` isn't
+O código a seguir produz este diagnóstico porque a variável `x` não é
 nullable:
 
 ```dart
@@ -27,7 +26,7 @@ void f(int x) {
 
 ## Common fixes
 
-Remove the null-assert pattern:
+Remova o padrão null-assert:
 
 ```dart
 void f(int x) {

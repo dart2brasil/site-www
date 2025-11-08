@@ -1,83 +1,80 @@
 ---
-title: Community and support
-shortTitle: Community
-description: Communities, mailing lists, and bug databases for the Dart project.
+ia-translate: true
+title: Comunidade e suporte
+shortTitle: Comunidade
+description: "Comunidades, listas de discussão e bancos de dados de bugs para o projeto Dart."
 group: https://groups.google.com/a/dartlang.org
 showBreadcrumbs: false
 ---
 
-We pledge to maintain an open and welcoming environment.
-To learn more about our community standards, check out
-our [code of conduct](/community/code-of-conduct).
+Nos comprometemos a manter um ambiente aberto e acolhedor.
+Para saber mais sobre os padrões da nossa comunidade, confira
+nosso [código de conduta](/community/code-of-conduct).
 
-## Stay informed {:style="font-size: 2rem"}
+## Mantenha-se informado {:style="font-size: 2rem"}
 
 <div class="card-grid">
   <Card title="Dart announce" link="{{page.group}}/d/forum/announce">
-    Low-traffic announcements of new releases, breaking changes,
-    and other important news. Recommended!
+    Anúncios de baixo tráfego sobre novos lançamentos, breaking changes
+    e outras notícias importantes. Recomendado!
   </Card>
   <Card title="Dart blog" link="https://blog.dart.dev">
-    The latest news and insights from a diverse group of Dart users.
+    As últimas notícias e insights de um grupo diversificado de usuários Dart.
   </Card>
   <Card title="@dart_lang" link="https://twitter.com/dart_lang">
-    Dart's official X (Twitter) account.
+    Conta oficial do Dart no X (Twitter).
   </Card>
   <Card title="@dart.dev" link="https://bsky.app/profile/dart.dev">
-    Dart's official Bluesky account.
+    Conta oficial do Dart no Bluesky.
   </Card>
 </div>
 
-## Contribute {:style="font-size: 2rem"}
-
-Dart is open source.
-Learn how to
-[contribute to the core SDK.]({{site.repo.dart.sdk}}/blob/main/CONTRIBUTING.md)
+## Contribua {:style="font-size: 2rem"}
 
 <div class="card-grid">
   <Card title="Dart GitHub repositories" link="{{site.repo.dart.org}}/">
-    Track new changes and contribute to various Dart projects.
+    Acompanhe novas mudanças e contribua para vários projetos Dart.
   </Card>
   <Card title="Dart code reviews" link="{{page.group}}/d/forum/reviews">
-    High-traffic list of all core SDK code reviews.
+    Lista de alto tráfego de todas as revisões de código do SDK principal.
   </Card>
   <Card title="Dart SDK repo" link="{{site.repo.dart.sdk}}">
-    The Dart SDK, including the VM, JS and Wasm compilers, analysis, 
-    core libraries, and more.
+    O SDK do Dart, incluindo a VM, compiladores JS e Wasm, análise,
+    bibliotecas principais e mais.
   </Card>
   <Card title="Dart language repo" link="{{site.repo.dart.lang}}">
-    The design of the Dart language.
+    O design da linguagem Dart.
   </Card>
   <Card title="Dart website repo" link="{{site.repo.this}}/">
-    The source for the Dart website, built with Jaspr.
+    O código-fonte do site Dart, construído com Jaspr.
   </Card>
   <Card title="DartPad" link="{{site.dartpad}}/">
-    An online Dart editor with support for console, web, and Flutter apps.
+    Um editor Dart online com suporte para aplicativos console, web e Flutter.
   </Card>
 </div>
 
 
-## Join the conversation {:style="font-size: 2rem"}
+## Participe da conversa {:style="font-size: 2rem"}
 
-Get answers and connect with Dart developers.
+Obtenha respostas e conecte-se com desenvolvedores Dart.
 
-### Communities
+### Comunidades
 
 <div class="card-grid">
   <Card title="StackOverflow" link="https://stackoverflow.com/tags/dart">
-    The best place for how-to questions.
+    O melhor lugar para perguntas sobre como fazer algo.
   </Card>
   <Card title="The dart_community Discord" link="https://discord.gg/Qt6DgfAWWx">
-    Chat with and get help from other Dart developers.
+    Converse e obtenha ajuda de outros desenvolvedores Dart.
   </Card>
   <Card title="Dart on Reddit" link="https://www.reddit.com/r/dartlang">
-    The subreddit for all things related to Dart.
+    O subreddit para tudo relacionado a Dart.
   </Card>
   <Card title="It's All Widgets Flutter Forum" link="https://forum.itsallwidgets.com/">
-    Asynchronously discuss anything Flutter or Dart related.
+    Discuta de forma assíncrona qualquer coisa relacionada a Flutter ou Dart.
   </Card>
   <Card title="Flutter communities" link="{{site.flutter}}/community#community-grid">
-    Discuss and get help with Flutter.
+    Discuta e obtenha ajuda com Flutter.
   </Card>
 </div>
 
@@ -85,9 +82,9 @@ Get answers and connect with Dart developers.
 
 <div class="card-grid">
   <Card title="General discussions" link="{{page.group}}/d/forum/misc">
-    Discuss miscellaneous Dart topics.
+    Discuta tópicos diversos sobre Dart.
   </Card>
   <Card title="Dart analyzer" link="{{page.group}}/d/forum/analyzer-discuss>">
-    Get help understanding the Dart analyzer.
+    Obtenha ajuda para entender o Dart analyzer.
   </Card>
 </div>

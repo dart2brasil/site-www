@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: throw_in_finally
-description: >-
-  Details about the throw_in_finally
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico throw_in_finally produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use of '{0}' in 'finally' block._
+_Uso de '{0}' em bloco 'finally'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `throw` statement is found
-inside a `finally` block.
+O analisador produz este diagnóstico quando uma declaração `throw` é encontrada
+dentro de um bloco `finally`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is a `throw`
-statement inside a `finally` block:
+O código a seguir produz este diagnóstico porque há uma declaração `throw`
+dentro de um bloco `finally`:
 
 ```dart
 void f() {
@@ -42,10 +41,10 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Rewrite the code so that the `throw` statement isn't inside a `finally`
-block:
+Reescreva o código para que a declaração `throw` não esteja dentro de um bloco
+`finally`:
 
 ```dart
 void f() {

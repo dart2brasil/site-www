@@ -1,28 +1,27 @@
 ---
 title: missing_annotation_on_struct_field
-description: >-
-  Details about the missing_annotation_on_struct_field
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico missing_annotation_on_struct_field produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_Fields of type '{0}' in a subclass of '{1}' must have an annotation indicating the native type._
+_Campos do tipo '{0}' em uma subclasse de '{1}' devem ter uma anotação indicando o tipo nativo._
 
 ## Description
 
-The analyzer produces this diagnostic when a field in a subclass of
-`Struct` or `Union` whose type requires an annotation doesn't have one.
-The Dart types `int`, `double`, and `Array` are used to represent multiple
-C types, and the annotation specifies which of the compatible C types the
-field represents.
+O analisador produz este diagnóstico quando um campo em uma subclasse de
+`Struct` ou `Union` cujo tipo requer uma anotação não tem uma.
+Os tipos Dart `int`, `double` e `Array` são usados para representar múltiplos
+tipos C, e a anotação especifica qual dos tipos C compatíveis o
+campo representa.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because the field `x` doesn't
-have an annotation indicating the underlying width of the integer value:
+O código a seguir produz este diagnóstico porque o campo `x` não tem
+uma anotação indicando a largura subjacente do valor inteiro:
 
 ```dart
 import 'dart:ffi';
@@ -34,7 +33,7 @@ final class C extends Struct {
 
 ## Common fixes
 
-Add an appropriate annotation to the field:
+Adicione uma anotação apropriada ao campo:
 
 ```dart
 import 'dart:ffi';

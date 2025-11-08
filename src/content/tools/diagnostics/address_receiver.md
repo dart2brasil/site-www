@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: address_receiver
-description: >-
-  Details about the address_receiver
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico address_receiver produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,22 +10,22 @@ _The receiver of '.address' must be a concrete 'TypedData', a concrete 'TypedDat
 
 ## Description
 
-The analyzer produces this diagnostic when the `.address` getter is used
-on a receiver whose static type isn't one of the allowed FFI types. The
-`.address` getter is used to obtain a `Pointer` to the underlying memory
-of an FFI data structure.
+O analisador produz este diagnóstico quando o getter `.address` é usado
+em um receptor cujo tipo estático não é um dos tipos FFI permitidos. O
+getter `.address` é usado para obter um `Pointer` para a memória subjacente
+de uma estrutura de dados FFI.
 
-The receiver of `.address` must be one of the following:
-- A concrete `TypedData` instance (e.g., `Uint8List`).
-- An element of a concrete `TypedData` instance accessed via `[]`.
-- An `Array<T>` instance (from `dart:ffi`).
-- An element of an `Array<T>` instance accessed via `[]`.
-- A field of a `Struct` or `Union` subclass, if that field's type is `Array<T>`, a nested `Struct`, or a nested `Union`.
-- A `Struct` or `Union` instance.
+O receptor de `.address` deve ser um dos seguintes:
+- Uma instância concreta de `TypedData` (por exemplo, `Uint8List`).
+- Um elemento de uma instância concreta de `TypedData` acessado via `[]`.
+- Uma instância de `Array<T>` (de `dart:ffi`).
+- Um elemento de uma instância de `Array<T>` acessado via `[]`.
+- Um campo de uma subclasse `Struct` ou `Union`, se o tipo desse campo for `Array<T>`, um `Struct` aninhado ou um `Union` aninhado.
+- Uma instância de `Struct` ou `Union`.
 
 ## Example
 
-The following code produces this diagnostic for various incorrect receivers:
+O código a seguir produz este diagnóstico para vários receptores incorretos:
 
 ```dart
 import 'dart:ffi';
@@ -52,10 +51,10 @@ void main() {
 
 ## Common fixes
 
-Ensure that the receiver of the `.address` getter is one of the allowed
-types.  The `.address` getter is for obtaining a `Pointer` to the memory
-of `TypedData`, `Array`, `Struct`, or `Union` instances, or certain
-fields/elements thereof.
+Certifique-se de que o receptor do getter `.address` seja um dos tipos
+permitidos. O getter `.address` é para obter um `Pointer` para a memória
+de instâncias `TypedData`, `Array`, `Struct` ou `Union`, ou certos
+campos/elementos delas.
 
 ```dart
 import 'dart:ffi';

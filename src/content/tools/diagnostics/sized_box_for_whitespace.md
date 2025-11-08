@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: sized_box_for_whitespace
-description: >-
-  Details about the sized_box_for_whitespace
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico sized_box_for_whitespace produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a 'SizedBox' to add whitespace to a layout._
+_Use um 'SizedBox' para adicionar espaço em branco a um layout._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `Container` is created using
-only the `height` and/or `width` arguments.
+O analisador produz este diagnóstico quando um `Container` é criado usando
+apenas os argumentos `height` e/ou `width`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `Container` has
-only the `width` argument:
+O código a seguir produz este diagnóstico porque o `Container` tem
+apenas o argumento `width`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -49,9 +48,9 @@ Widget buildRow() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Replace the `Container` with a `SizedBox` of the same dimensions:
+Substitua o `Container` por um `SizedBox` das mesmas dimensões:
 
 ```dart
 import 'package:flutter/material.dart';

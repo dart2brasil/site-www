@@ -1,26 +1,25 @@
 ---
+ia-translate: true
 title: ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer
-description: >-
-  Details about the ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Only classes extending NativeFieldWrapperClass1 can be passed as Pointer._
+_Apenas classes que estendem NativeFieldWrapperClass1 podem ser passadas como Pointer._
 
 ## Description
 
-The analyzer produces this diagnostic when a function or method annotated
-with `@Native` has a parameter in its FFI signature that is a `Pointer`,
-but the corresponding Dart parameter type is a class instance that doesn't
-extend `NativeFieldWrapperClass1` (or is a Pointer or TypedData).
+O analisador produz este diagnóstico quando uma função ou método anotado
+com `@Native` tem um parâmetro em sua assinatura FFI que é um `Pointer`,
+mas o tipo do parâmetro Dart correspondente é uma instância de classe que não
+estende `NativeFieldWrapperClass1` (ou é um Pointer ou TypedData).
 
 ## Example
 
-The following code produces this diagnostic because `MyService` doesn't
-extend `NativeFieldWrapperClass1`, but the `@Native` signature for its
-`process` method indicates the receiver should be passed as a `Pointer<Void>`:
+O código a seguir produz este diagnóstico porque `MyService` não
+estende `NativeFieldWrapperClass1`, mas a assinatura `@Native` para seu
+método `process` indica que o receptor deve ser passado como um `Pointer<Void>`:
 
 ```dart
 import 'dart:ffi';
@@ -33,10 +32,10 @@ class MyService { // MyService does not extend NativeFieldWrapperClass1
 
 ## Common fixes
 
-1.  **If the Dart class is intended to wrap a native object:**
-    Make the Dart class extend `NativeFieldWrapperClass1`. This is the
-    correct approach if the Dart class instance has a corresponding native
-    object whose pointer should be passed.
+1.  **Se a classe Dart pretende envolver um objeto nativo:**
+    Faça a classe Dart estender `NativeFieldWrapperClass1`. Esta é a
+    abordagem correta se a instância da classe Dart tem um objeto nativo
+    correspondente cujo ponteiro deve ser passado.
     ```dart
     import 'dart:ffi';
 
@@ -46,11 +45,11 @@ class MyService { // MyService does not extend NativeFieldWrapperClass1
     }
     ```
 
-2.  **If you intend to pass an opaque handle to the Dart object:**
-    Change the FFI signature in the `@Native` annotation to use `Handle`
-    instead of `Pointer` for the parameter. This allows passing a
-    reference to the Dart object itself, which native code can interact
-    with using the Dart C API.
+2.  **Se você pretende passar um identificador opaco para o objeto Dart:**
+    Altere a assinatura FFI na anotação `@Native` para usar `Handle`
+    em vez de `Pointer` para o parâmetro. Isso permite passar uma
+    referência ao próprio objeto Dart, com o qual o código nativo pode interagir
+    usando a API C do Dart.
     ```dart
     import 'dart:ffi';
 

@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: variable_pattern_keyword_in_declaration_context
-description: >-
-  Details about the variable_pattern_keyword_in_declaration_context
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico variable_pattern_keyword_in_declaration_context produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Variable patterns in declaration context can't specify 'var' or 'final' keyword._
+_Padrões de variable em contexto de declaração não podem especificar a keyword 'var' ou 'final'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a variable pattern is used
-within a declaration context.
+O analisador produz este diagnóstico quando um padrão de variable é usado
+dentro de um contexto de declaração.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variable patterns
-in the record pattern are in a declaration context:
+O código a seguir produz este diagnóstico porque os padrões de variable
+no padrão de registro estão em um contexto de declaração:
 
 ```dart
 void f((int, int) r) {
@@ -26,9 +25,9 @@ void f((int, int) r) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the `var` or `final` keyword(s) within the variable pattern:
+Remova a keyword `var` ou `final` dentro do padrão de variable:
 
 ```dart
 void f((int, int) r) {

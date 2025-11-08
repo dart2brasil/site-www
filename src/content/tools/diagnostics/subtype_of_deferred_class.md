@@ -1,39 +1,38 @@
 ---
+ia-translate: true
 title: subtype_of_deferred_class
-description: >-
-  Details about the subtype_of_deferred_class
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico subtype_of_deferred_class produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Classes and mixins can't implement deferred classes._
+_Classes e mixins não podem implementar classes deferred._
 
-_Classes can't extend deferred classes._
+_Classes não podem estender classes deferred._
 
-_Classes can't mixin deferred classes._
+_Classes não podem misturar classes deferred._
 
 ## Description
 
-The analyzer produces this diagnostic when a type (class or mixin) is a
-subtype of a class from a library being imported using a deferred import.
-The supertypes of a type must be compiled at the same time as the type, and
-classes from deferred libraries aren't compiled until the library is
-loaded.
+O analisador produz este diagnóstico quando um tipo (classe ou mixin) é um
+subtipo de uma classe de uma biblioteca sendo importada usando um import deferred.
+Os supertipos de um tipo devem ser compilados ao mesmo tempo que o tipo, e
+classes de bibliotecas deferred não são compiladas até que a biblioteca seja
+carregada.
 
-For more information, check out
+Para mais informações, consulte
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 ## Example
 
-Given a file `a.dart` that defines the class `A`:
+Dado um arquivo `a.dart` que define a classe `A`:
 
 ```dart
 class A {}
 ```
 
-The following code produces this diagnostic because the superclass of `B`
-is declared in a deferred library:
+O código a seguir produz este diagnóstico porque a superclasse de `B`
+é declarada em uma biblioteca deferred:
 
 ```dart
 import 'a.dart' deferred as a;
@@ -43,8 +42,8 @@ class B extends [!a.A!] {}
 
 ## Common fixes
 
-If you need to create a subtype of a type from the deferred library, then
-remove the `deferred` keyword:
+Se você precisa criar um subtipo de um tipo da biblioteca deferred, então
+remova a keyword `deferred`:
 
 ```dart
 import 'a.dart' as a;

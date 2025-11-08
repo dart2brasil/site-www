@@ -1,26 +1,25 @@
 ---
+ia-translate: true
 title: dead_code_on_catch_subtype
-description: >-
-  Details about the dead_code_on_catch_subtype
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico dead_code_on_catch_subtype produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Dead code: This on-catch block won't be executed because '{0}' is a subtype of '{1}' and hence will have been caught already._
+_Dead code: Este bloco on-catch não será executado porque '{0}' é um subtipo de '{1}' e, portanto, já terá sido capturado._
 
 ## Description
 
-The analyzer produces this diagnostic when a `catch` clause is found that
-can't be executed because it is after a `catch` clause that catches either
-the same type or a supertype of the clause's type. The first `catch` clause
-that matches the thrown object is selected, and the earlier clause always
-matches anything matchable by the highlighted clause, so the highlighted
-clause will never be selected.
+O analisador produz este diagnóstico quando uma cláusula `catch` é encontrada que
+não pode ser executada porque está após uma cláusula `catch` que captura
+o mesmo tipo ou um supertipo do tipo da cláusula. A primeira cláusula `catch`
+que corresponde ao objeto lançado é selecionada, e a cláusula anterior sempre
+corresponde a qualquer coisa correspondível pela cláusula destacada, então a
+cláusula destacada nunca será selecionada.
 
 ## Example
 
-The following code produces this diagnostic:
+O código a seguir produz este diagnóstico:
 
 ```dart
 void f() {
@@ -33,8 +32,8 @@ void f() {
 
 ## Common fixes
 
-If the clause should be selectable, then move the clause before the general
-clause:
+Se a cláusula deve ser selecionável, então mova a cláusula antes da cláusula
+geral:
 
 ```dart
 void f() {
@@ -45,7 +44,7 @@ void f() {
 }
 ```
 
-If the clause doesn't need to be selectable, then remove it:
+Se a cláusula não precisa ser selecionável, então remova-a:
 
 ```dart
 void f() {

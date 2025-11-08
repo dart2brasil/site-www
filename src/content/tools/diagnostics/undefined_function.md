@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: undefined_function
-description: >-
-  Details about the undefined_function
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico undefined_function produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The function '{0}' isn't defined._
+_A função '{0}' não está definida._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it encounters an identifier that
-appears to be the name of a function but either isn't defined or isn't
-visible in the scope in which it's being referenced.
+O analisador produz este diagnóstico quando encontra um identificador que
+parece ser o nome de uma função, mas não está definido ou não está
+visível no escopo em que está sendo referenciado.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name `emty` isn't
-defined:
+O código a seguir produz este diagnóstico porque o nome `emty` não está
+definido:
 
 ```dart
 List<int> empty() => [];
@@ -28,11 +27,11 @@ void main() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the identifier isn't defined, then either define it or replace it with
-the name of a function that is defined. The example above can be corrected
-by fixing the spelling of the function:
+Se o identificador não está definido, então defina-o ou substitua-o pelo
+nome de uma função que está definida. O exemplo acima pode ser corrigido
+corrigindo a ortografia da função:
 
 ```dart
 List<int> empty() => [];
@@ -42,5 +41,5 @@ void main() {
 }
 ```
 
-If the function is defined but isn't visible, then you probably need to add
-an import or re-arrange your code to make the function visible.
+Se a função está definida mas não está visível, então você provavelmente precisa adicionar
+um import ou reorganizar seu código para tornar a função visível.

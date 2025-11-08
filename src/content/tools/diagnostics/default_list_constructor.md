@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: default_list_constructor
-description: >-
-  Details about the default_list_constructor
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico default_list_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The default 'List' constructor isn't available when null safety is enabled._
+_O construtor default 'List' não está disponível quando null safety está habilitado._
 
 ## Description
 
-The analyzer produces this diagnostic when it finds a use of the default
-constructor for the class `List` in code that has opted in to null safety.
+O analisador produz este diagnóstico quando encontra um uso do construtor
+default para a classe `List` em código que optou por null safety.
 
 ## Example
 
-Assuming the following code is opted in to null safety, it produces this
-diagnostic because it uses the default `List` constructor:
+Assumindo que o código a seguir optou por null safety, ele produz este
+diagnóstico porque usa o construtor default `List`:
 
 ```dart
 var l = [!List<int>!]();
@@ -25,22 +24,22 @@ var l = [!List<int>!]();
 
 ## Common fixes
 
-If no initial size is provided, then convert the code to use a list
-literal:
+Se nenhum tamanho inicial é fornecido, então converta o código para usar um
+literal de lista:
 
 ```dart
 var l = <int>[];
 ```
 
-If an initial size needs to be provided and there is a single reasonable
-initial value for the elements, then use `List.filled`:
+Se um tamanho inicial precisa ser fornecido e há um único valor inicial
+razoável para os elementos, então use `List.filled`:
 
 ```dart
 var l = List.filled(3, 0);
 ```
 
-If an initial size needs to be provided but each element needs to be
-computed, then use `List.generate`:
+Se um tamanho inicial precisa ser fornecido mas cada elemento precisa ser
+computado, então use `List.generate`:
 
 ```dart
 var l = List.generate(3, (i) => i);

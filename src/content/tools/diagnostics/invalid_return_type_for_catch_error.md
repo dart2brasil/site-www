@@ -1,29 +1,28 @@
 ---
+ia-translate: true
 title: invalid_return_type_for_catch_error
-description: >-
-  Details about the invalid_return_type_for_catch_error
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_return_type_for_catch_error produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A value of type '{0}' can't be returned by the 'onError' handler because it must be assignable to '{1}'._
+_Um valor do tipo '{0}' não pode ser retornado pelo handler 'onError' porque deve ser atribuível a '{1}'._
 
-_The return type '{0}' isn't assignable to '{1}', as required by 'Future.catchError'._
+_O tipo de retorno '{0}' não é atribuível a '{1}', como requerido por 'Future.catchError'._
 
 ## Description
 
-The analyzer produces this diagnostic when an invocation of
-`Future.catchError` has an argument whose return type isn't compatible with
-the type returned by the instance of `Future`. At runtime, the method
-`catchError` attempts to return the value from the callback as the result
-of the future, which results in another exception being thrown.
+O analisador produz este diagnóstico quando uma invocação de
+`Future.catchError` possui um argumento cujo tipo de retorno não é compatível com
+o tipo retornado pela instância de `Future`. Em tempo de execução, o método
+`catchError` tenta retornar o valor do callback como resultado
+do future, o que resulta em outra exceção sendo lançada.
 
 ## Examples
 
-The following code produces this diagnostic because `future` is declared to
-return an `int` while `callback` is declared to return a `String`, and
-`String` isn't a subtype of `int`:
+O código a seguir produz este diagnóstico porque `future` é declarado para
+retornar um `int` enquanto `callback` é declarado para retornar uma `String`, e
+`String` não é um subtipo de `int`:
 
 ```dart
 void f(Future<int> future, String Function(dynamic, StackTrace) callback) {
@@ -31,9 +30,9 @@ void f(Future<int> future, String Function(dynamic, StackTrace) callback) {
 }
 ```
 
-The following code produces this diagnostic because the closure being
-passed to `catchError` returns an `int` while `future` is declared to
-return a `String`:
+O código a seguir produz este diagnóstico porque o closure sendo
+passado para `catchError` retorna um `int` enquanto `future` é declarado para
+retornar uma `String`:
 
 ```dart
 void f(Future<String> future) {
@@ -43,8 +42,8 @@ void f(Future<String> future) {
 
 ## Common fixes
 
-If the instance of `Future` is declared correctly, then change the callback
-to match:
+Se a instância de `Future` está declarada corretamente, então altere o callback
+para corresponder:
 
 ```dart
 void f(Future<int> future, int Function(dynamic, StackTrace) callback) {
@@ -52,8 +51,8 @@ void f(Future<int> future, int Function(dynamic, StackTrace) callback) {
 }
 ```
 
-If the declaration of the instance of `Future` is wrong, then change it to
-match the callback:
+Se a declaração da instância de `Future` está errada, então altere-a para
+corresponder ao callback:
 
 ```dart
 void f(Future<String> future, String Function(dynamic, StackTrace) callback) {

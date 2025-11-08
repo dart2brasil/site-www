@@ -1,24 +1,22 @@
 ---
+ia-translate: true
 title: invalid_factory_method_impl
-description: >-
-  Details about the invalid_factory_method_impl
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_factory_method_impl produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Factory method '{0}' doesn't return a newly allocated object._
+_O método factory '{0}' não retorna um objeto recém-alocado._
 
 ## Description
 
-The analyzer produces this diagnostic when a method that is annotated with
-the [`factory`][meta-factory] annotation doesn't return a newly allocated
-object.
+O analisador produz este diagnóstico quando um método que é anotado com a
+annotation [`factory`][meta-factory] não retorna um objeto recém-alocado.
 
 ## Example
 
-The following code produces this diagnostic because the method `createC`
-returns the value of a field rather than a newly created instance of `C`:
+O código a seguir produz este diagnóstico porque o método `createC` retorna
+o valor de um campo em vez de uma instância recém-criada de `C`:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -35,7 +33,8 @@ class C {}
 
 ## Common fixes
 
-Change the method to return a newly created instance of the return type:
+Altere o método para retornar uma instância recém-criada do tipo de
+retorno:
 
 ```dart
 import 'package:meta/meta.dart';

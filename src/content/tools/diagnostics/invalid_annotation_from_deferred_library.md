@@ -1,29 +1,28 @@
 ---
+ia-translate: true
 title: invalid_annotation_from_deferred_library
-description: >-
-  Details about the invalid_annotation_from_deferred_library
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_annotation_from_deferred_library produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Constant values from a deferred library can't be used as annotations._
+_Valores constantes de uma biblioteca deferred não podem ser usados como annotations._
 
 ## Description
 
-The analyzer produces this diagnostic when a constant from a library that
-is imported using a deferred import is used as an annotation. Annotations
-are evaluated at compile time, and constants from deferred libraries aren't
-available at compile time.
+O analisador produz este diagnóstico quando uma constante de uma biblioteca
+que é importada usando um import deferred é usada como uma annotation.
+Annotations são avaliadas em tempo de compilação, e constantes de
+bibliotecas deferred não estão disponíveis em tempo de compilação.
 
-For more information, check out
+Para mais informações, confira
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 ## Example
 
-The following code produces this diagnostic because the constant `pi` is
-being used as an annotation when the library `dart:math` is imported as
-`deferred`:
+O código a seguir produz este diagnóstico porque a constante `pi` está
+sendo usada como uma annotation quando a biblioteca `dart:math` é importada
+como `deferred`:
 
 ```dart
 import 'dart:math' deferred as math;
@@ -34,8 +33,8 @@ void f() {}
 
 ## Common fixes
 
-If you need to reference the constant as an annotation, then remove the
-keyword `deferred` from the import:
+Se você precisa referenciar a constante como uma annotation, remova a
+keyword `deferred` do import:
 
 ```dart
 import 'dart:math' as math;
@@ -44,8 +43,8 @@ import 'dart:math' as math;
 void f() {}
 ```
 
-If you can use a different constant as an annotation, then replace the
-annotation with a different constant:
+Se você pode usar uma constante diferente como annotation, substitua a
+annotation por uma constante diferente:
 
 ```dart
 @deprecated

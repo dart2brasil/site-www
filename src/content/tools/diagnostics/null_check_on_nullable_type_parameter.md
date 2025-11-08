@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: null_check_on_nullable_type_parameter
-description: >-
-  Details about the null_check_on_nullable_type_parameter
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico null_check_on_nullable_type_parameter produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -22,24 +21,24 @@ _The null check operator shouldn't be used on a variable whose type is a potenti
 
 ## Description
 
-The analyzer produces this diagnostic when a null check operator is used
-on a variable whose type is `T?`, where `T` is a type parameter that
-allows the type argument to be nullable (either has no bound or has a
-bound that is nullable).
+O analisador produz este diagnóstico quando um operador de verificação null é usado
+em uma variável cujo tipo é `T?`, onde `T` é um parâmetro de tipo que
+permite que o argumento de tipo seja nullable (não possui bound ou possui um
+bound que é nullable).
 
-Given a generic type parameter `T` which has a nullable bound, it is very
-easy to introduce erroneous null checks when working with a variable of
-type `T?`. Specifically, it is not uncommon to have `T? x;` and want to
-assert that `x` has been set to a valid value of type `T`. A common
-mistake is to do so using `x!`. This is almost always incorrect, because
-if `T` is a nullable type, `x` may validly hold `null` as a value of type
+Dado um parâmetro de tipo genérico `T` que possui um bound nullable, é muito
+fácil introduzir verificações null errôneas ao trabalhar com uma variável do
+tipo `T?`. Especificamente, não é incomum ter `T? x;` e querer
+afirmar que `x` foi definido com um valor válido do tipo `T`. Um erro
+comum é fazer isso usando `x!`. Isso está quase sempre incorreto, porque
+se `T` é um tipo nullable, `x` pode validamente conter `null` como um valor do tipo
 `T`.
 
 ## Example
 
-The following code produces this diagnostic because `t` has the type `T?`
-and `T` allows the type argument to be nullable (because it has no
-`extends` clause):
+O código a seguir produz este diagnóstico porque `t` possui o tipo `T?`
+e `T` permite que o argumento de tipo seja nullable (porque não possui
+cláusula `extends`):
 
 ```dart
 T f<T>(T? t) => t[!!!];
@@ -47,7 +46,7 @@ T f<T>(T? t) => t[!!!];
 
 ## Common fixes
 
-Use the type parameter to cast the variable:
+Use o parâmetro de tipo para fazer cast da variável:
 
 ```dart
 T f<T>(T? t) => t as T;

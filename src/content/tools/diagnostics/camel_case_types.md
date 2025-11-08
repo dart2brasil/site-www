@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: camel_case_types
-description: >-
-  Details about the camel_case_types
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico camel_case_types produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,18 +17,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The type name '{0}' isn't an UpperCamelCase identifier._
+_O nome do type '{0}' não é um identificador UpperCamelCase._
 
 ## Description
 
-The analyzer produces this diagnostic when the name of a type (a class,
-mixin, enum, or typedef) doesn't use the 'UpperCamelCase' naming
-convention.
+O analisador produz este diagnóstico quando o nome de um type (uma classe,
+mixin, enum ou typedef) não usa a convenção de nomenclatura
+'UpperCamelCase'.
 
 ## Example
 
-The following code produces this diagnostic because the name of the class
-doesn't start with an uppercase letter:
+O código a seguir produz este diagnóstico porque o nome da classe
+não começa com uma letra maiúscula:
 
 ```dart
 class [!c!] {}
@@ -37,7 +36,7 @@ class [!c!] {}
 
 ## Common fixes
 
-Rename the type so that it has a valid name:
+Renomeie o type para que ele tenha um nome válido:
 
 ```dart
 class C {}

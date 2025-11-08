@@ -1,48 +1,49 @@
 ---
-title: Dart SDK overview
-shortTitle: SDK overview
+ia-translate: true
+title: "Visão geral do Dart SDK"
+shortTitle: "Visão geral do SDK"
 breadcrumb: SDK
-description: Dart libraries and command-line tools.
+description: Bibliotecas e ferramentas de linha de comando Dart.
 ---
 
-The Dart SDK has the libraries and command-line tools that you need to develop
-Dart web, command-line, and server apps.
-To install the Dart SDK, see [Get Dart](/get-dart).
-If you're developing Flutter apps, [install the Flutter SDK][flutter].
-The Flutter SDK includes the Dart SDK.
+O Dart SDK possui as bibliotecas e ferramentas de linha de comando que você precisa para desenvolver
+aplicativos web, de linha de comando e de servidor Dart.
+Para instalar o Dart SDK, veja [Obtenha o Dart](/get-dart).
+Se você estiver desenvolvendo aplicativos Flutter, [instale o Flutter SDK][flutter].
+O Flutter SDK inclui o Dart SDK.
 
-To learn about other tools you can use for Dart development,
-check out the [Dart tools](/tools) page.
+Para saber mais sobre outras ferramentas que você pode usar para o desenvolvimento Dart,
+consulte a página [Ferramentas Dart](/tools).
 
 :::version-note
-Unless stated otherwise,
-this site's documentation and examples assume
-version `{{site.sdkVersion}}` of the **Dart SDK**.
+A menos que seja declarado o contrário,
+a documentação e os exemplos deste site assumem
+a versão `{{site.sdkVersion}}` do **Dart SDK**.
 :::
 
 {% comment %}
-  IMPORTANT: After each release, EDIT src/_data/pkg-vers.json
-  to update the SDK version number.
-  More info: https://github.com/dart-lang/site-www/wiki/Updating-to-new-SDK-releases
+  IMPORTANTE: Após cada lançamento, EDITE src/_data/pkg-vers.json
+  para atualizar o número da versão do SDK.
+  Mais informações: https://github.com/dart-lang/site-www/wiki/Updating-to-new-SDK-releases
 {% endcomment %}
 
-## What's in the Dart SDK
+## O que há no Dart SDK {:#what-s-in-the-dart-sdk}
 
-The Dart SDK includes two directories:
+O Dart SDK inclui dois diretórios:
 
-* `lib` contains the [Dart libraries][].
-* `bin` contains the following command-line tools.
+* `lib` contém as [bibliotecas Dart][].
+* `bin` contém as seguintes ferramentas de linha de comando.
 
 [`dart`](/tools/dart-tool)
-: The command-line interface to create, format, analyze, test,
-  document, compile, and run Dart code.
-  
+: A interface de linha de comando para criar, formatar, analisar, testar,
+  documentar, compilar e executar código Dart.
+
 [`dartaotruntime`](/tools/dartaotruntime)
-: A Dart runtime for AOT-compiled snapshots.
+: Um *runtime* Dart para *snapshots* (instantâneos) compilados AOT.
 
 {% render 'tools/utf-8.md' %}
 
-To learn more about the SDK, check out its [README file][readme].
+Para saber mais sobre o SDK, consulte o seu [arquivo README][readme].
 
 ## Support policy
 
@@ -72,10 +73,10 @@ and link out to the breaking change index.
 
 ## Filing bugs and feature requests
 
-To see existing issues or create a new one,
-go to [the SDK issue tracker][sdk-issues].
+Para ver problemas existentes ou criar um novo,
+acesse [o rastreador de problemas do SDK][sdk-issues].
 
-[Dart libraries]: /libraries
+[Bibliotecas Dart]: /libraries
 [flutter]: {{site.flutter-docs}}/get-started/install
 [readme]: {{site.repo.dart.sdk}}/blob/main/README.dart-sdk
 [sdk-issues]: {{site.repo.dart.sdk}}/issues

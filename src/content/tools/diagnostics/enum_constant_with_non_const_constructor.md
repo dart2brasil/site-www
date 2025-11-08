@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: enum_constant_with_non_const_constructor
-description: >-
-  Details about the enum_constant_with_non_const_constructor
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico enum_constant_with_non_const_constructor produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The invoked constructor isn't a 'const' constructor._
+_O construtor invocado não é um construtor 'const'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an enum value is being created
-using either a factory constructor or a generative constructor that isn't
-marked as being `const`.
+O analisador produz este diagnóstico quando um valor de enum está sendo criado
+usando um construtor factory ou um construtor generativo que não está
+marcado como `const`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the enum value `e` is
-being initialized by a factory constructor:
+O código a seguir produz este diagnóstico porque o valor do enum `e` está
+sendo inicializado por um construtor factory:
 
 ```dart
 enum E {
@@ -28,9 +27,9 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Use a generative constructor marked as `const`:
+Use um construtor generativo marcado como `const`:
 
 ```dart
 enum E {

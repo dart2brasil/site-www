@@ -1,10 +1,9 @@
 ---
 title: library_annotations
-description: >-
-  Details about the library_annotations
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico library_annotations produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -18,18 +17,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_This annotation should be attached to a library directive._
+_Esta anotação deve ser anexada a uma diretiva library._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an annotation that applies to
-a whole library isn't associated with a `library` directive.
+O analisador produz este diagnóstico quando uma anotação que se aplica a
+uma library inteira não está associada a uma diretiva `library`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `TestOn`
-annotation, which applies to the whole library, is associated with an
-`import` directive rather than a `library` directive:
+O código a seguir produz este diagnóstico porque a anotação `TestOn`,
+que se aplica à library inteira, está associada a uma
+diretiva `import` em vez de uma diretiva `library`:
 
 ```dart
 [!@TestOn('browser')!]
@@ -39,10 +38,10 @@ import 'package:test/test.dart';
 void main() {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Associate the annotation with a `library` directive, adding one if
-necessary:
+Associe a anotação a uma diretiva `library`, adicionando uma se
+necessário:
 
 ```dart
 @TestOn('browser')

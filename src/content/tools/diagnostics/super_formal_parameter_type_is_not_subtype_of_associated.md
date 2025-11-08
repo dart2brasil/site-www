@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: super_formal_parameter_type_is_not_subtype_of_associated
-description: >-
-  Details about the super_formal_parameter_type_is_not_subtype_of_associated
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico super_formal_parameter_type_is_not_subtype_of_associated produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' of this parameter isn't a subtype of the type '{1}' of the associated super constructor parameter._
+_O type '{0}' deste parâmetro não é um subtipo do type '{1}' do parâmetro do construtor super associado._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type of a super parameter
-isn't a subtype of the corresponding parameter from the super constructor.
+O analisador produz este diagnóstico quando o tipo de um parâmetro super
+não é um subtipo do parâmetro correspondente do construtor super.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type of the super
-parameter `x` in the constructor for `B` isn't a subtype of the parameter
-`x` in the constructor for `A`:
+O código a seguir produz este diagnóstico porque o tipo do parâmetro
+super `x` no construtor de `B` não é um subtipo do parâmetro
+`x` no construtor de `A`:
 
 ```dart
 class A {
@@ -30,12 +29,12 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the type of the super parameter can be the same as the parameter from
-the super constructor, then remove the type annotation from the super
-parameter (if the type is implicit, it is inferred from the type in the
-super constructor):
+Se o tipo do parâmetro super puder ser o mesmo que o parâmetro do
+construtor super, então remova a anotação de tipo do parâmetro
+super (se o tipo for implícito, ele é inferido do tipo no
+construtor super):
 
 ```dart
 class A {
@@ -47,8 +46,8 @@ class B extends A {
 }
 ```
 
-If the type of the super parameter can be a subtype of the corresponding
-parameter's type, then change the type of the super parameter:
+Se o tipo do parâmetro super puder ser um subtipo do tipo do
+parâmetro correspondente, então altere o tipo do parâmetro super:
 
 ```dart
 class A {
@@ -60,8 +59,8 @@ class B extends A {
 }
 ```
 
-If the type of the super parameter can't be changed, then use a normal
-parameter instead of a super parameter:
+Se o tipo do parâmetro super não puder ser alterado, então use um
+parâmetro normal em vez de um parâmetro super:
 
 ```dart
 class A {

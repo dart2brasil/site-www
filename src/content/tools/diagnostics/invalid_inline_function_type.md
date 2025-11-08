@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: invalid_inline_function_type
-description: >-
-  Details about the invalid_inline_function_type
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_inline_function_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Inline function types can't be used for parameters in a generic function type._
+_Tipos de função inline não podem ser usados para parâmetros em um tipo de função genérica._
 
 ## Description
 
-The analyzer produces this diagnostic when a generic function type has a
-function-valued parameter that is written using the older inline function
-type syntax.
+O analisador produz este diagnóstico quando um tipo de função genérica tem
+um parâmetro com valor de função que é escrito usando a sintaxe de tipo de
+função inline mais antiga.
 
 ## Example
 
-The following code produces this diagnostic because the parameter `f`, in
-the generic function type used to define `F`, uses the inline function
-type syntax:
+O código a seguir produz este diagnóstico porque o parâmetro `f`, no tipo
+de função genérica usado para definir `F`, usa a sintaxe de tipo de função
+inline:
 
 ```dart
 typedef F = int Function(int f[!(!]String s));
@@ -27,7 +26,7 @@ typedef F = int Function(int f[!(!]String s));
 
 ## Common fixes
 
-Use the generic function syntax for the parameter's type:
+Use a sintaxe de função genérica para o tipo do parâmetro:
 
 ```dart
 typedef F = int Function(int Function(String));

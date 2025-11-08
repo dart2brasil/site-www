@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: avoid_relative_lib_imports
-description: >-
-  Details about the avoid_relative_lib_imports
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico avoid_relative_lib_imports produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,23 +17,23 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Can't use a relative path to import a library in 'lib'._
+_Não é possível usar um caminho relativo para importar uma biblioteca em 'lib'._
 
 ## Description
 
-The analyzer produces this diagnostic when the URI in an `import`
-directive has `lib` in the path.
+O analisador produz este diagnóstico quando a URI em uma diretiva `import`
+tem `lib` no caminho.
 
 ## Example
 
-Assuming that there is a file named `a.dart` in the `lib` directory:
+Assumindo que há um arquivo chamado `a.dart` no diretório `lib`:
 
 ```dart
 class A {}
 ```
 
-The following code produces this diagnostic because the import contains a
-path that includes `lib`:
+O código a seguir produz este diagnóstico porque o import contém um
+caminho que inclui `lib`:
 
 ```dart
 import [!'../lib/a.dart'!];
@@ -42,7 +41,7 @@ import [!'../lib/a.dart'!];
 
 ## Common fixes
 
-Rewrite the import to not include `lib` in the URI:
+Reescreva o import para não incluir `lib` na URI:
 
 ```dart
 import 'a.dart';

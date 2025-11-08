@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: mixin_on_sealed_class
-description: >-
-  Details about the mixin_on_sealed_class
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico mixin_on_sealed_class produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' shouldn't be used as a mixin constraint because it is sealed, and any class mixing in this mixin must have '{0}' as a superclass._
+_A classe '{0}' não deve ser usada como mixin constraint porque é sealed, e qualquer classe que mistura este mixin deve ter '{0}' como superclasse._
 
 ## Description
 
-The analyzer produces this diagnostic when the superclass constraint of a
-mixin is a class from a different package that was marked as
-[`sealed`][meta-sealed]. Classes that are sealed can't be extended,
-implemented, mixed in, or used as a superclass constraint.
+O analisador produz este diagnóstico quando o superclass constraint de um
+mixin é uma classe de um pacote diferente que foi marcada como
+[`sealed`][meta-sealed]. Classes que são sealed não podem ser estendidas,
+implementadas, misturadas ou usadas como superclass constraint.
 
 ## Example
 
-If the package `p` defines a sealed class:
+Se o pacote `p` define uma classe sealed:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -27,8 +26,8 @@ import 'package:meta/meta.dart';
 class C {}
 ```
 
-Then, the following code, when in a package other than `p`, produces this
-diagnostic:
+Então, o código a seguir, quando em um pacote diferente de `p`, produz este
+diagnóstico:
 
 ```dart
 import 'package:p/p.dart';
@@ -38,8 +37,8 @@ import 'package:p/p.dart';
 
 ## Common fixes
 
-If the classes that use the mixin don't need to be subclasses of the sealed
-class, then consider adding a field and delegating to the wrapped instance
-of the sealed class.
+Se as classes que usam o mixin não precisam ser subclasses da classe
+sealed, então considere adicionar um campo e delegar para a instância envolvida
+da classe sealed.
 
 [meta-sealed]: https://pub.dev/documentation/meta/latest/meta/sealed-constant.html

@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: test_types_in_equals
-description: >-
-  Details about the test_types_in_equals
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico test_types_in_equals produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Missing type test for '{0}' in '=='._
+_Teste de tipo ausente para '{0}' em '=='._
 
 ## Description
 
-The analyzer produces this diagnostic when an override of the `==`
-operator doesn't include a type test on the value of the parameter.
+O analisador produz este diagnóstico quando uma sobrescrita do operador `==`
+não inclui um teste de tipo no valor do parâmetro.
 
 ## Example
 
-The following code produces this diagnostic because `other` is not type
-tested:
+O código a seguir produz este diagnóstico porque `other` não é
+testado quanto ao tipo:
 
 ```dart
 class C {
@@ -45,7 +44,7 @@ class C {
 
 ## Common fixes
 
-Perform an `is` test as part of computing the return value:
+Execute um teste `is` como parte do cálculo do valor de retorno:
 
 ```dart
 class C {

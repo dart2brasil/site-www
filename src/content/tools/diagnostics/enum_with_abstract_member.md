@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: enum_with_abstract_member
-description: >-
-  Details about the enum_with_abstract_member
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico enum_with_abstract_member produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' must have a method body because '{1}' is an enum._
+_'{0}' deve ter um corpo de método porque '{1}' é um enum._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member of an enum is found
-that doesn't have a concrete implementation. Enums aren't allowed to
-contain abstract members.
+O analisador produz este diagnóstico quando um membro de um enum é encontrado
+que não tem uma implementação concreta. Enums não são permitidos para
+conter membros abstratos.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` is an abstract
-method and `E` is an enum:
+O código a seguir produz este diagnóstico porque `m` é um método abstrato
+e `E` é um enum:
 
 ```dart
 enum E {
@@ -28,9 +27,9 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Provide an implementation for the member:
+Forneça uma implementação para o membro:
 
 ```dart
 enum E {

@@ -1,40 +1,40 @@
 ---
-title: Class modifiers
-description: >-
-  Modifier keywords for class declarations to control external library access.
+ia-translate: true
+title: Modificadores de classe
+description: "Palavras-chave modificadoras para declarações de classe para controlar o acesso externo à biblioteca."
 prevpage:
   url: /language/callable-objects
-  title: Callable objects
+  title: "Objetos invocáveis"
 nextpage:
   url: /language/class-modifiers-for-apis
-  title: Class modifiers for API maintainers
+  title: Modificadores de classe para mantenedores de API
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
 :::version-note
-Class modifiers, besides `abstract`, require
-a [language version][] of at least 3.0.
+Modificadores de classe, além de `abstract` (abstrato), exigem
+uma [versão de linguagem][language version] de pelo menos 3.0.
 :::
 
-Class modifiers control how a class or mixin can be used, both
-[from within its own library](#abstract), and
-from outside the library where it's defined.
+Modificadores de classe controlam como uma classe ou mixin (mistura) pode ser usado, tanto
+[de dentro de sua própria biblioteca](#abstract), quanto
+de fora da biblioteca onde está definido.
 
-Modifier keywords come before a class or mixin declaration.
-For example, writing `abstract class` defines an abstract class.
-The full set of modifiers that can appear before a class declaration include:
+Palavras-chave modificadoras vêm antes de uma declaração de classe ou mixin.
+Por exemplo, escrever `abstract class` define uma classe abstrata.
+O conjunto completo de modificadores que podem aparecer antes de uma declaração de classe inclui:
 
-- `abstract`
-- `base`
-- `final`
-- `interface`
-- `sealed`
+- `abstract` (abstrato)
+- `base` (base)
+- `final` (final)
+- `interface` (interface)
+- `sealed` (selada)
 - [`mixin`][class, mixin, or mixin class]
 
-Only the `base` modifier can appear before a mixin declaration.
-The modifiers do not apply to other declarations like
-`enum`, `typedef`, `extension`, or `extension type`.
+Apenas o modificador `base` pode aparecer antes de uma declaração de mixin.
+Os modificadores não se aplicam a outras declarações como
+`enum`, `typedef`, `extension` (extensão) ou `extension type` (tipo de extensão).
 
 When deciding whether to use class modifiers,
 consider the intended uses of the class and
@@ -55,21 +55,21 @@ guidance on how to navigate these changes for your libraries.
 
 ## No modifier
 
-To allow unrestricted permission to construct or subtype from any library,
-use a `class` or `mixin` declaration without a modifier. By default, you can:
+Para permitir permissão irrestrita para construir ou subtipar de qualquer biblioteca,
+use uma declaração `class` ou `mixin` sem um modificador. Por padrão, você pode:
 
-- [Construct][] new instances of a class.
-- [Extend][] a class to create a new subtype.
-- [Implement][] a class or mixin's interface.
-- [Mix in][mixin] a mixin or mixin class.
+- [Construir][construct] novas instâncias de uma classe.
+- [Estender][extend] uma classe para criar um novo subtipo.
+- [Implementar][implement] uma classe ou interface de mixin.
+- [Misturar][mixin] um mixin ou classe mixin.
 
-## `abstract`
+## `abstract` {:#abstract}
 
-To define a class that doesn't require a full, concrete implementation of
-its entire interface, use the `abstract` modifier.
+Para definir uma classe que não requer uma implementação completa e concreta de
+toda a sua interface, use o modificador `abstract`.
 
-Abstract classes cannot be constructed from any library, whether its own or
-an outside library. Abstract classes often have [abstract methods][].
+Classes abstratas não podem ser construídas de nenhuma biblioteca, seja a sua própria ou
+uma biblioteca externa. Classes abstratas geralmente têm [métodos abstratos][abstract methods].
 
 <?code-excerpt "language/lib/class_modifiers/ex1/a.dart"?>
 ```dart title="a.dart"
@@ -105,23 +105,23 @@ class MockVehicle implements Vehicle {
 }
 ```
 
-If you want your abstract class to appear to be instantiable,
-define a [factory constructor][].
+Se você quiser que sua classe abstrata pareça ser instanciável,
+defina um [construtor factory][factory constructor].
 
-## `base`
+## `base` {:#base}
 
-To enforce inheritance of a class or mixin's implementation,
-use the `base` modifier.
-A base class disallows implementation outside of its own library.
-This guarantees:
+Para impor a herança da implementação de uma classe ou mixin,
+use o modificador `base`.
+Uma classe base não permite implementação fora de sua própria biblioteca.
+Isso garante:
 
-- The base class constructor is called whenever
-  an instance of a subtype of the class is created.
-- All implemented private members exist in subtypes.
-- A new implemented member in a `base` class does not break subtypes,
-  since all subtypes inherit the new member.
-  - This is true unless the subtype already declares a member with
-    the same name and an incompatible signature.
+- O construtor da classe base é chamado sempre que
+  uma instância de um subtipo da classe é criada.
+- Todos os membros privados implementados existem em subtipos.
+- Um novo membro implementado em uma classe `base` não quebra subtipos,
+  já que todos os subtipos herdam o novo membro.
+  - Isso é verdade, a menos que o subtipo já declare um membro com
+    o mesmo nome e uma assinatura incompatível.
 
 You must mark any class that implements or extends a base class as
 `base`, `final`, or `sealed`. This prevents outside libraries from
@@ -159,19 +159,19 @@ base class MockVehicle implements Vehicle {
 }
 ```
 
-## `interface`
+## `interface` {:#interface}
 
-To define an interface, use the `interface` modifier.
-Libraries outside of the interface's own defining library can
-implement the interface, but not extend it.
-This guarantees:
+Para definir uma interface, use o modificador `interface`.
+Bibliotecas fora da própria biblioteca de definição da interface podem
+implementar a interface, mas não estendê-la.
+Isso garante:
 
-- When one of the class's instance methods calls
-  another instance method on `this`, it will always
-  invoke a known implementation of the method from the same library.
-- Other libraries can't override methods that the interface
-  class's own methods might later call in unexpected ways.
-  This reduces the [fragile base class problem][].
+- Quando um dos métodos de instância da classe chama
+  outro método de instância em `this`, ele sempre
+  invocará uma implementação conhecida do método da mesma biblioteca.
+- Outras bibliotecas não podem substituir métodos que a interface
+  os próprios métodos da classe podem chamar posteriormente de maneiras inesperadas.
+  Isso reduz o [problema da classe base frágil][fragile base class problem].
 
 <?code-excerpt "language/lib/class_modifiers/ex3/a.dart"?>
 ```dart title="a.dart"
@@ -205,30 +205,30 @@ class MockVehicle implements Vehicle {
 }
 ```
 
-### `abstract interface`
+### `abstract interface` {:#abstract-interface}
 
-The most common use for the `interface` modifier is to define a pure interface. 
-[Combine](#combining-modifiers) the `interface` and [`abstract`](#abstract)
-modifiers for an `abstract interface class`.
+O uso mais comum para o modificador `interface` é definir uma interface pura.
+[Combine](#combining-modifiers) os modificadores `interface` e [`abstract`](#abstract)
+para uma `abstract interface class` (classe de interface abstrata).
 
-Like an `interface` class, other libraries can
-implement, but can't inherit, a pure interface.
-Like an `abstract` class, a pure interface can have abstract members.
+Como uma classe `interface`, outras bibliotecas podem
+implementar, mas não podem herdar, uma interface pura.
+Como uma classe `abstract`, uma interface pura pode ter membros abstratos.
 
-## `final` 
+## `final` {:#final}
 
-To close the type hierarchy, use the `final` modifier.
-This prevents subtyping from a class outside of the current library. 
-Disallowing both inheritance and implementation prevents subtyping entirely.
-This guarantees:
+Para fechar a hierarquia de tipos, use o modificador `final`.
+Isso impede a subtipagem de uma classe fora da biblioteca atual.
+Impedir a herança e a implementação impede totalmente a subtipagem.
+Isso garante:
 
-- You can safely add incremental changes to the API.
-- You can call instance methods knowing that they haven't been overwritten in
-  a third-party subclass.
+- Você pode adicionar mudanças incrementais à API com segurança.
+- Você pode chamar métodos de instância sabendo que eles não foram sobrescritos em
+  uma subclasse de terceiros.
 
-Final classes can be extended or implemented within the same library.
-The `final` modifier encompasses the effects of `base`, and
-therefore any subclasses must also be marked `base`, `final`, or `sealed`.
+Classes finais podem ser estendidas ou implementadas dentro da mesma biblioteca.
+O modificador `final` abrange os efeitos de `base` e,
+portanto, quaisquer subclasses também devem ser marcadas como `base`, `final` ou `sealed`.
 
 <?code-excerpt "language/lib/class_modifiers/ex4/a.dart"?>
 ```dart title="a.dart"
@@ -263,26 +263,26 @@ class MockVehicle implements Vehicle {
 }
 ```
 
-## `sealed`
+## `sealed` {:#sealed}
 
-To create a known, enumerable set of subtypes, use the `sealed` modifier.
-This allows you to create a switch over those subtypes that
-is statically ensured to be [_exhaustive_][exhaustive].
+Para criar um conjunto conhecido e enumerável de subtipos, use o modificador `sealed`.
+Isso permite criar um switch (alternância) sobre esses subtipos que
+estaticamente é garantido que seja [_exaustivo_][exhaustive].
 
-The `sealed` modifier prevents a class from being extended or
-implemented outside its own library. Sealed classes are implicitly
-[abstract](#abstract).
+O modificador `sealed` impede que uma classe seja estendida ou
+implementada fora de sua própria biblioteca. Classes seladas são implicitamente
+[abstratas](#abstract).
 
-- They cannot be constructed themselves.
-- They can have [factory constructors](/language/constructors#factory-constructors).
-- They can define constructors for their subclasses to use.
+- Elas não podem ser construídas por si mesmas.
+- Elas podem ter [construtores factory](/language/constructors#factory-constructors).
+- Elas podem definir construtores para suas subclasses usarem.
 
-Subclasses of sealed classes are, however, not implicitly abstract.
+Subclasses de classes seladas, no entanto, não são implicitamente abstratas.
 
-The compiler is aware of any possible direct subtypes
-because they can only exist in the same library. 
-This allows the compiler to alert you when a switch does not
-exhaustively handle all possible subtypes in its cases:
+O compilador está ciente de quaisquer possíveis subtipos diretos
+porque eles só podem existir na mesma biblioteca.
+Isso permite que o compilador o alerte quando um switch não
+manipula exaustivamente todos os subtipos possíveis em seus casos:
 
 <?code-excerpt "language/lib/class_modifiers/ex5/sealed.dart"?>
 ```dart
@@ -315,35 +315,35 @@ extension VehicleSounds on Vehicle {
 }
 ```
 
-If you don't want [exhaustive switching][exhaustive], 
-or want to be able to add subtypes later without breaking the API, 
-use the [`final`](#final) modifier. For a more in depth comparison,
-read [`sealed` versus `final`](/language/class-modifiers-for-apis#sealed-versus-final).
+Se você não quiser [alternância exaustiva][exhaustive],
+ou quiser adicionar subtipos mais tarde sem quebrar a API,
+use o modificador [`final`](#final). Para uma comparação mais detalhada,
+leia [`sealed` versus `final`](/language/class-modifiers-for-apis#sealed-versus-final).
 
-## Combining modifiers
+## Combinando modificadores {:#combining-modifiers}
 
-You can combine some modifiers for layered restrictions. 
-A class declaration can be, in order:
+Você pode combinar alguns modificadores para restrições em camadas.
+Uma declaração de classe pode ser, em ordem:
 
-1. (Optional) `abstract`, describing whether the class can
-   contain abstract members and prevents instantiation.
-2. (Optional) One of `base`, `interface`, `final` or `sealed`, describing
-   restrictions on other libraries subtyping the class.
-3. (Optional) `mixin`, describing whether the declaration can be mixed in.
-4. The `class` keyword itself.
+1. (Opcional) `abstract`, descrevendo se a classe pode
+   conter membros abstratos e impede a instanciação.
+2. (Opcional) Um de `base`, `interface`, `final` ou `sealed`, descrevendo
+   restrições em outras bibliotecas subtipando a classe.
+3. (Opcional) `mixin`, descrevendo se a declaração pode ser misturada.
+4. A própria palavra-chave `class`.
 
-You can't combine some modifiers because they are
-contradictory, redundant, or otherwise mutually exclusive:
+Você não pode combinar alguns modificadores porque eles são
+contraditórios, redundantes ou mutuamente exclusivos:
 
-* `abstract` with `sealed`. A [sealed](#sealed) class is
-  implicitly [abstract](#abstract).
-* `interface`, `final` or `sealed` with `mixin`. These access modifiers
-  prevent [mixing in][mixin].
+* `abstract` com `sealed`. Uma classe [selada](#sealed) é
+  implicitamente [abstrata](#abstract).
+* `interface`, `final` ou `sealed` com `mixin`. Esses modificadores de acesso
+  impedem [misturar][mixin].
 
-For further guidance on how class modifiers can be combined,
-check out the [Class modifiers reference][].
+Para obter mais orientações sobre como os modificadores de classe podem ser combinados,
+confira a [Referência de modificadores de classe][Referência de modificadores de classe].
 
-[Class modifiers reference]: /language/modifier-reference
+[Referência de modificadores de classe]: /language/modifier-reference
 
 
 [language version]: /resources/language/evolution#language-versioning

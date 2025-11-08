@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: constant_identifier_names
-description: >-
-  Details about the constant_identifier_names
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico constant_identifier_names produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,25 +17,25 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The constant name '{0}' isn't a lowerCamelCase identifier._
+_O nome da constante '{0}' não é um identificador lowerCamelCase._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a constant doesn't
-follow the lowerCamelCase naming convention.
+O analisador produz este diagnóstico quando o nome de uma constante não
+segue a convenção de nomenclatura lowerCamelCase.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name of the
-top-level variable isn't a lowerCamelCase identifier:
+O código a seguir produz este diagnóstico porque o nome da
+variável de nível superior não é um identificador lowerCamelCase:
 
 ```dart
 const [!EMPTY_STRING!] = '';
 ```
 
-## Common fixes
+## Correções comuns
 
-Rewrite the name to follow the lowerCamelCase naming convention:
+Reescreva o nome para seguir a convenção de nomenclatura lowerCamelCase:
 
 ```dart
 const emptyString = '';

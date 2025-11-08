@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: field_initializer_outside_constructor
-description: >-
-  Details about the field_initializer_outside_constructor
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico field_initializer_outside_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Field formal parameters can only be used in a constructor._
+_Parâmetros formais de campo só podem ser usados em um construtor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an initializing formal
-parameter is used in the parameter list for anything other than a
-constructor.
+O analisador produz este diagnóstico quando um parâmetro formal
+inicializador é usado na lista de parâmetros para qualquer coisa que não seja um
+construtor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the initializing
-formal parameter `this.x` is being used in the method `m`:
+O código a seguir produz este diagnóstico porque o parâmetro formal
+inicializador `this.x` está sendo usado no método `m`:
 
 ```dart
 class A {
@@ -28,10 +27,10 @@ class A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Replace the initializing formal parameter with a normal parameter and
-assign the field within the body of the method:
+Substitua o parâmetro formal inicializador por um parâmetro normal e
+atribua o campo dentro do corpo do método:
 
 ```dart
 class A {

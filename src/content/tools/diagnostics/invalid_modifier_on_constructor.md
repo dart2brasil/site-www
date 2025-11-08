@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: invalid_modifier_on_constructor
-description: >-
-  Details about the invalid_modifier_on_constructor
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_modifier_on_constructor produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The modifier '{0}' can't be applied to the body of a constructor._
+_O modificador '{0}' não pode ser aplicado ao corpo de um construtor._
 
 ## Description
 
-The analyzer produces this diagnostic when the body of a constructor is
-prefixed by one of the following modifiers: `async`, `async*`, or `sync*`.
-Constructor bodies must be synchronous.
+O analisador produz este diagnóstico quando o corpo de um construtor é
+prefixado por um dos seguintes modificadores: `async`, `async*` ou `sync*`.
+Corpos de construtores devem ser síncronos.
 
 ## Example
 
-The following code produces this diagnostic because the body of the
-constructor for `C` is marked as being `async`:
+O código a seguir produz este diagnóstico porque o corpo do construtor de
+`C` está marcado como `async`:
 
 ```dart
 class C {
@@ -28,7 +27,7 @@ class C {
 
 ## Common fixes
 
-If the constructor can be synchronous, then remove the modifier:
+Se o construtor pode ser síncrono, remova o modificador:
 
 ```dart
 class C {
@@ -36,8 +35,8 @@ class C {
 }
 ```
 
-If the constructor can't be synchronous, then use a static method to create
-the instance instead:
+Se o construtor não pode ser síncrono, use um método estático para criar a
+instância:
 
 ```dart
 class C {

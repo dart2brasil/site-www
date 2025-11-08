@@ -1,8 +1,8 @@
 ---
+ia-translate: true
 title: Testing
 shortTitle: Testing
-description: >-
-  Learn how to write tests for your Dart code using the `package:test` library.
+description: "Aprenda como escrever testes para seu código Dart usando a biblioteca `package:test`."
 sitemap: false
 noindex: true
 layout: learn
@@ -16,44 +16,44 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-In this chapter, you'll learn how to write tests for your Dart code. Testing is
-crucial for ensuring that your application behaves as expected and remains
-stable as you make changes. You'll use the `package:test` library, a popular
-testing framework for Dart, to write unit tests for the data models you created
-in the previous chapter.
+Neste capítulo, você aprenderá como escrever testes para seu código Dart. Testing é
+crucial para garantir que sua aplicação se comporte conforme esperado e permaneça
+estável conforme você faz mudanças. Você usará a biblioteca `package:test`, um framework
+de testes popular para Dart, para escrever testes unitários para os modelos de dados que você criou
+no capítulo anterior.
 
-:::secondary What you'll learn
+:::secondary O que você aprenderá
 
-*   Install and import the `package:test` library.
-*   Write tests using `group`, `test`, `expect`, and matchers.
-*   Create test files and organize tests.
-*   Write tests for JSON deserialization logic.
+*   Instalar e importar a biblioteca `package:test`.
+*   Escrever testes usando `group`, `test`, `expect` e matchers.
+*   Criar arquivos de teste e organizar testes.
+*   Escrever testes para lógica de deserialização JSON.
 
 :::
 
-## Prerequisites
+## Pré-requisitos
 
-Before you begin this chapter, ensure you:
+Antes de começar este capítulo, certifique-se de:
 
-*   Have completed Chapter 9 and have a working Dart development environment with
-    the `dartpedia` project.
-*   Are familiar with basic programming concepts like variables, functions, and
-    control flow.
-*   Understand the purpose of testing in software development.
+*   Ter completado o Capítulo 9 e ter um ambiente de desenvolvimento Dart funcionando com
+    o projeto `dartpedia`.
+*   Estar familiarizado com conceitos básicos de programação como variáveis, funções e
+    fluxo de controle.
+*   Entender o propósito de testing no desenvolvimento de software.
 
-## Tasks
+## Tarefas
 
-In this chapter, you will add tests to the `wikipedia` package, ensuring that
-the JSON deserialization logic for your data models is working correctly.
+Neste capítulo, você adicionará testes ao pacote `wikipedia`, garantindo que
+a lógica de deserialização JSON para seus modelos de dados esteja funcionando corretamente.
 
-### Task 1: Add the test dependency
+### Tarefa 1: Adicionar a dependência de teste
 
-First, you need to confirm that the `test` package is already a development
-dependency in your project.
+Primeiro, você precisa confirmar que o pacote `test` já é uma dependência de
+desenvolvimento em seu projeto.
 
-1.  Open the `wikipedia/pubspec.yaml` file within your project.
-1.  Locate the `dev_dependencies` section.
-1.  Verify that `test: ^1.24.0` (or the latest stable version) is present under
+1.  Abra o arquivo `wikipedia/pubspec.yaml` dentro do seu projeto.
+1.  Localize a seção `dev_dependencies`.
+1.  Verifique se `test: ^1.24.0` (ou a versão estável mais recente) está presente em
     `dev_dependencies`.
 
     ```yaml
@@ -62,15 +62,15 @@ dependency in your project.
       test: ^1.24.0
     ```
 
-    If the `test` dependency is missing, add it to your `pubspec.yaml` file. The
-    `^` symbol allows compatible versions to be used.
+    Se a dependência `test` estiver faltando, adicione-a ao seu arquivo `pubspec.yaml`. O
+    símbolo `^` permite que versões compatíveis sejam usadas.
 
-1.  If you made any changes to the file, save `pubspec.yaml` and run
-    `dart pub get` in your terminal from the `wikipedia` directory. This command
-    fetches any newly added dependencies and makes them available for use in
-    your project.
+1.  Se você fez alguma alteração no arquivo, salve `pubspec.yaml` e execute
+    `dart pub get` no seu terminal a partir do diretório `wikipedia`. Este comando
+    busca quaisquer dependências recém-adicionadas e as torna disponíveis para uso em
+    seu projeto.
 
-    You should see output similar to this:
+    Você deverá ver uma saída similar a esta:
 
     ```bash
     Resolving dependencies...
@@ -79,15 +79,15 @@ dependency in your project.
     Changed 2 dependencies!
     ```
 
-### Task 2: Create a test file and add imports
+### Tarefa 2: Criar um arquivo de teste e adicionar imports
 
-Next, create a test file for your data models and add the necessary imports to
-it.
+Em seguida, crie um arquivo de teste para seus modelos de dados e adicione os imports necessários a
+ele.
 
-1.  Navigate to the `wikipedia/test` directory.
-1.  Create a new file named `model_test.dart` in this directory.
-1.  Open the `wikipedia/test/model_test.dart` file and add the following
-    `import` statements at the top of the file:
+1.  Navegue até o diretório `wikipedia/test`.
+1.  Crie um novo arquivo chamado `model_test.dart` neste diretório.
+1.  Abra o arquivo `wikipedia/test/model_test.dart` e adicione as seguintes
+    declarações `import` no topo do arquivo:
 
     ```dart
     import 'dart:convert';
@@ -103,22 +103,22 @@ it.
     const String openSearchResponse = './test/test_data/open_search_response.json';
     ```
 
-    These lines import the `test` package, which provides the testing
-    framework, and the data model files you want to test. The constant strings
-    declare the location of your sample data.
+    Essas linhas importam o pacote `test`, que fornece o framework
+    de testes, e os arquivos de modelo de dados que você quer testar. As strings constantes
+    declaram a localização dos seus dados de exemplo.
 
-### Task 3: Create the test data files
+### Tarefa 3: Criar os arquivos de dados de teste
 
-The tests you need to write rely on local JSON files that mimic the
-responses from the Wikipedia API. You need to create a
-`test_data` directory and populate it with three files.
+Os testes que você precisa escrever dependem de arquivos JSON locais que imitam as
+respostas da API da Wikipedia. Você precisa criar um
+diretório `test_data` e populá-lo com três arquivos.
 
-1.  Navigate to the `wikipedia/test` directory.
+1.  Navegue até o diretório `wikipedia/test`.
 
-1.  Create a new directory named `test_data`.
+1.  Crie um novo diretório chamado `test_data`.
 
-1.  Inside the `test_data` directory, create a new file named
-    `dart_lang_summary.json` and paste the following content into it:
+1.  Dentro do diretório `test_data`, crie um novo arquivo chamado
+    `dart_lang_summary.json` e cole o seguinte conteúdo nele:
 
     ```json
     {
@@ -162,11 +162,11 @@ responses from the Wikipedia API. You need to create a
     }
     ```
 
-1.  Next, create a file named `cat_extract.json`. This file is very long, so copy
-    the contents from this link: https://github.com/ericwindmill/dash_getting_started/blob/main/dart_step_by_step/step_10/wikipedia/test/test_data/cat_extract.json
+1.  Em seguida, crie um arquivo chamado `cat_extract.json`. Este arquivo é muito longo, então copie
+    o conteúdo deste link: https://github.com/ericwindmill/dash_getting_started/blob/main/dart_step_by_step/step_10/wikipedia/test/test_data/cat_extract.json
 
-1.  Next, create a file named `open_search_response.json` and paste this content
-    into it:
+1.  Em seguida, crie um arquivo chamado `open_search_response.json` e cole este conteúdo
+    nele:
 
     ```json
     [
@@ -210,16 +210,16 @@ responses from the Wikipedia API. You need to create a
     ]
     ```
 
-With these files in place, you're ready to write the tests that will verify your
-data models.
+Com esses arquivos em vigor, você está pronto para escrever os testes que verificarão seus
+modelos de dados.
 
-### Task 4: Write tests for JSON deserialization
+### Tarefa 4: Escrever testes para deserialização JSON
 
-Now, you'll write tests for the JSON deserialization logic in your data models.
-You'll use the `group`, `test`, and `expect` functions from the `test` package.
+Agora, você escreverá testes para a lógica de deserialização JSON em seus modelos de dados.
+Você usará as funções `group`, `test` e `expect` do pacote `test`.
 
-1.  Use the `group` function to group related tests together.
-    Add the following to your `wikipedia/test/model_test.dart` file:
+1.  Use a função `group` para agrupar testes relacionados.
+    Adicione o seguinte ao seu arquivo `wikipedia/test/model_test.dart`:
 
     ```dart
     void main() {
@@ -229,11 +229,11 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     }
     ```
 
-    The `group` function takes a description of the group and a callback
-    function that contains the tests.
+    A função `group` recebe uma descrição do grupo e uma função callback
+    que contém os testes.
 
-1.  Create a test for the `Summary` model.
-    Add the following `test` function inside the `group` function:
+1.  Crie um teste para o modelo `Summary`.
+    Adicione a seguinte função `test` dentro da função `group`:
 
     ```dart
     void main() {
@@ -251,22 +251,22 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     }
     ```
 
-    This `test` function does the following:
+    Esta função `test` faz o seguinte:
 
-    *   Reads the contents of the `dart_lang_summary.json` file.
-    *   Decodes the JSON string into a `Map<String, Object?>`.
-    *   Creates a `Summary` object from the map using the `Summary.fromJson`
-        constructor.
-    *   Uses the `expect` function to assert that the `canonical` property of
-        the `titles` object is equal to `'Dart_(programming_language)'`.
+    *   Lê o conteúdo do arquivo `dart_lang_summary.json`.
+    *   Decodifica a string JSON em um `Map<String, Object?>`.
+    *   Cria um objeto `Summary` a partir do map usando o construtor
+        `Summary.fromJson`.
+    *   Usa a função `expect` para afirmar que a propriedade `canonical` do
+        objeto `titles` é igual a `'Dart_(programming_language)'`.
 
-    The `expect` function takes a value and a matcher. The matcher is used to
-    assert that the value meets certain criteria. In this case, the
-    `equals` matcher is used to assert that the value is equal to a specific
-    string.
+    A função `expect` recebe um valor e um matcher. O matcher é usado para
+    afirmar que o valor atende a certos critérios. Neste caso, o
+    matcher `equals` é usado para afirmar que o valor é igual a uma string
+    específica.
 
-1.  Create a test for the `Article` model. Add the following `test` function
-    inside the `group` function, after the previous test:
+1.  Crie um teste para o modelo `Article`. Adicione a seguinte função `test`
+    dentro da função `group`, após o teste anterior:
 
     ```dart
     void main() {
@@ -306,18 +306,18 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     }
     ```
 
-    This `test` function does the following:
+    Esta função `test` faz o seguinte:
 
-    *   Reads the contents of the `cat_extract.json` file.
-    *   Decodes the JSON string into a `List<Object?>`.
-    *   Creates the `Article` object from the list using the
-        `Article.listFromJson` constructor.
-    *   Uses the `expect` function to assert that the `title` property of the
-        first article is equal to `'cat'`.
+    *   Lê o conteúdo do arquivo `cat_extract.json`.
+    *   Decodifica a string JSON em uma `List<Object?>`.
+    *   Cria o objeto `Article` a partir da lista usando o
+        construtor `Article.listFromJson`.
+    *   Usa a função `expect` para afirmar que a propriedade `title` do
+        primeiro artigo é igual a `'cat'`.
 
-1.  Create a test for the `SearchResults` model.
-    Add the following `test` function inside the `group` function, after the
-    previous test:
+1.  Crie um teste para o modelo `SearchResults`.
+    Adicione a seguinte função `test` dentro da função `group`, após o
+    teste anterior:
 
     ```dart
     void main() {
@@ -367,60 +367,60 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     }
     ```
 
-    This `test` function does the following:
+    Esta função `test` faz o seguinte:
 
-    *   Reads the contents of the `open_search_response.json` file.
-    *   Decodes the JSON string into a `List<Object?>`.
-    *   Creates a `SearchResults` object from the list using the
-        `SearchResults.fromJson` constructor.
-    *   Uses the `expect` function to assert that the `results` list has a
-        length greater than `1`.
+    *   Lê o conteúdo do arquivo `open_search_response.json`.
+    *   Decodifica a string JSON em uma `List<Object?>`.
+    *   Cria um objeto `SearchResults` a partir da lista usando o
+        construtor `SearchResults.fromJson`.
+    *   Usa a função `expect` para afirmar que a lista `results` tem um
+        comprimento maior que `1`.
 
-### Task 5: Run the tests
+### Tarefa 5: Executar os testes
 
-Now that you've written the tests, you can run them to verify that they pass.
+Agora que você escreveu os testes, pode executá-los para verificar se eles passam.
 
-1.  Open your terminal and navigate to the `wikipedia` directory.
-1.  Run the command `dart test`.
+1.  Abra seu terminal e navegue até o diretório `wikipedia`.
+1.  Execute o comando `dart test`.
 
-    You should see output similar to this:
+    Você deverá ver uma saída similar a esta:
 
     ```bash
     00:02 +4: All tests passed!
     ```
 
-    This confirms that all three tests are passing.
+    Isso confirma que todos os três testes estão passando.
 
-## Review
+## Revisão
 
-In this chapter, you learned about:
+Neste capítulo, você aprendeu sobre:
 
-*   Installing the `package:test` library.
-*   Writing tests using `group`, `test`, and `expect`.
-*   Creating test files and organizing tests.
-*   Writing tests for JSON deserialization logic.
-*   Using matchers to assert that values meet certain criteria.
+*   Instalar a biblioteca `package:test`.
+*   Escrever testes usando `group`, `test` e `expect`.
+*   Criar arquivos de teste e organizar testes.
+*   Escrever testes para lógica de deserialização JSON.
+*   Usar matchers para afirmar que valores atendem a certos critérios.
 
 ## Quiz
 
-**Question 1:** What is the purpose of the `group` function in the
-`package:test` library?
+**Questão 1:** Qual é o propósito da função `group` na
+biblioteca `package:test`?
 
-*   A) To run all tests in a project.
-*   B) To group related tests together.
-*   C) To define a new test case.
-*   D) To assert that a value meets certain criteria.
+*   A) Executar todos os testes em um projeto.
+*   B) Agrupar testes relacionados.
+*   C) Definir um novo caso de teste.
+*   D) Afirmar que um valor atende a certos critérios.
 
-**Question 2:** What is the purpose of the `expect` function in the
-`package:test` library?
+**Questão 2:** Qual é o propósito da função `expect` na
+biblioteca `package:test`?
 
-*   A) To define a new test case.
-*   B) To group related tests together.
-*   C) To assert that a value meets certain criteria.
-*   D) To run all tests in a project.
+*   A) Definir um novo caso de teste.
+*   B) Agrupar testes relacionados.
+*   C) Afirmar que um valor atende a certos critérios.
+*   D) Executar todos os testes em um projeto.
 
-## Next lesson
+## Próxima lição
 
-In the next lesson, you'll implement the Wikipedia API calls in your
-`dartpedia` application. You'll use the `http` package to fetch data from the
-Wikipedia API and display it to the user.
+Na próxima lição, você implementará as chamadas da API da Wikipedia em sua
+aplicação `dartpedia`. Você usará o pacote `http` para buscar dados da
+API da Wikipedia e exibi-los ao usuário.

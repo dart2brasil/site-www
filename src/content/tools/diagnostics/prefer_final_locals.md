@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_final_locals
-description: >-
-  Details about the prefer_final_locals
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_final_locals produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Local variables should be final._
+_Variáveis locais devem ser final._
 
 ## Description
 
-The analyzer produces this diagnostic when a local variable isn't marked
-as being `final`.
+O analisador produz este diagnóstico quando uma variável local não está marcada
+como `final`.
 
 ## Example
 
-The following code produces this diagnostic because the variable `s` isn't
-marked as being `final`:
+O código a seguir produz este diagnóstico porque a variável `s` não está
+marcada como `final`:
 
 ```dart
 int f(int i) {
@@ -39,8 +38,8 @@ int f(int i) {
 
 ## Common fixes
 
-Add the modifier `final` to the variable, removing the `var` if there is
-one:
+Adicione o modificador `final` à variável, removendo o `var` se houver
+um:
 
 ```dart
 int f(int i) {

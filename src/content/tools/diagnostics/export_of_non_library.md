@@ -1,29 +1,28 @@
 ---
+ia-translate: true
 title: export_of_non_library
-description: >-
-  Details about the export_of_non_library
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico export_of_non_library produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The exported library '{0}' can't have a part-of directive._
+_A library exportada '{0}' não pode ter uma diretiva part-of._
 
 ## Description
 
-The analyzer produces this diagnostic when an export directive references a
-part rather than a library.
+O analisador produz este diagnóstico quando uma diretiva export referencia uma
+parte ao invés de uma library.
 
 ## Example
 
-Given a file `part.dart` containing
+Dado um arquivo `part.dart` contendo
 
 ```dart
 part of lib;
 ```
 
-The following code produces this diagnostic because the file `part.dart` is
-a part, and only libraries can be exported:
+O código a seguir produz este diagnóstico porque o arquivo `part.dart` é
+uma parte, e apenas libraries podem ser exportadas:
 
 ```dart
 library lib;
@@ -33,5 +32,5 @@ export [!'part.dart'!];
 
 ## Common fixes
 
-Either remove the export directive, or change the URI to be the URI of the
-library containing the part.
+Remova a diretiva export, ou altere o URI para ser o URI da
+library que contém a parte.

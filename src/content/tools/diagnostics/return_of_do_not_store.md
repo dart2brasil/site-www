@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: return_of_do_not_store
-description: >-
-  Details about the return_of_do_not_store
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico return_of_do_not_store produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is annotated with 'doNotStore' and shouldn't be returned unless '{1}' is also annotated._
+_'{0}' está anotado com 'doNotStore' e não deve ser retornado a menos que '{1}' também esteja anotado._
 
 ## Description
 
-The analyzer produces this diagnostic when a value that is annotated with
-the [`doNotStore`][meta-doNotStore] annotation is returned from a method,
-getter, or function that doesn't have the same annotation.
+O analisador produz este diagnóstico quando um valor que está anotado com
+a anotação [`doNotStore`][meta-doNotStore] é retornado de um método,
+getter ou função que não tem a mesma anotação.
 
 ## Example
 
-The following code produces this diagnostic because the result of invoking
-`f` shouldn't be stored, but the function `g` isn't annotated to preserve
-that semantic:
+O código a seguir produz este diagnóstico porque o resultado de invocar
+`f` não deve ser armazenado, mas a função `g` não está anotada para preservar
+essa semântica:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -32,8 +31,8 @@ int g() => [!f()!];
 
 ## Common fixes
 
-If the value that shouldn't be stored is the correct value to return, then
-mark the function with the [`doNotStore`][meta-doNotStore] annotation:
+Se o valor que não deve ser armazenado é o valor correto a retornar, então
+marque a função com a anotação [`doNotStore`][meta-doNotStore]:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -45,7 +44,7 @@ int f() => 0;
 int g() => f();
 ```
 
-Otherwise, return a different value from the function:
+Caso contrário, retorne um valor diferente da função:
 
 ```dart
 import 'package:meta/meta.dart';

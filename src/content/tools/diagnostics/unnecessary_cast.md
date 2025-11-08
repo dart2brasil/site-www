@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: unnecessary_cast
-description: >-
-  Details about the unnecessary_cast
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unnecessary_cast produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Unnecessary cast._
+_Cast desnecessário._
 
 ## Description
 
-The analyzer produces this diagnostic when the value being cast is already
-known to be of the type that it's being cast to.
+O analisador produz este diagnóstico quando o valor que está sendo convertido já é
+conhecido por ser do tipo para o qual está sendo convertido.
 
 ## Example
 
-The following code produces this diagnostic because `n` is already known to
-be an `int` as a result of the `is` test:
+O código a seguir produz este diagnóstico porque `n` já é conhecido por
+ser um `int` como resultado do teste `is`:
 
 ```dart
 void f(num n) {
@@ -29,7 +28,7 @@ void f(num n) {
 
 ## Common fixes
 
-Remove the unnecessary cast:
+Remova o cast desnecessário:
 
 ```dart
 void f(num n) {

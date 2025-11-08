@@ -1,28 +1,27 @@
 ---
+ia-translate: true
 title: disallowed_type_instantiation_expression
-description: >-
-  Details about the disallowed_type_instantiation_expression
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico disallowed_type_instantiation_expression produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Only a generic type, generic function, generic instance method, or generic constructor can have type arguments._
+_Apenas um tipo genérico, função genérica, método de instância genérico, ou construtor genérico pode ter argumentos de tipo._
 
 ## Description
 
-The analyzer produces this diagnostic when an expression with a value that
-is anything other than one of the allowed kinds of values is followed by
-type arguments. The allowed kinds of values are:
-- generic types,
-- generic constructors, and
-- generic functions, including top-level functions, static and instance
-  members, and local functions.
+O analisador produz este diagnóstico quando uma expressão com um valor que
+é qualquer coisa além de um dos tipos permitidos de valores é seguido por
+argumentos de tipo. Os tipos permitidos de valores são:
+- tipos genéricos,
+- construtores genéricos, e
+- funções genéricas, incluindo funções de nível superior, membros static e de instância,
+  e funções locais.
 
 ## Example
 
-The following code produces this diagnostic because `i` is a top-level
-variable, which isn't one of the allowed cases:
+O código a seguir produz este diagnóstico porque `i` é uma variável
+de nível superior, que não é um dos casos permitidos:
 
 ```dart
 int i = 1;
@@ -34,7 +33,7 @@ void f() {
 
 ## Common fixes
 
-If the referenced value is correct, then remove the type arguments:
+Se o valor referenciado está correto, então remova os argumentos de tipo:
 
 ```dart
 int i = 1;
