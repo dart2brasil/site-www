@@ -50,7 +50,7 @@ essas funções usam o mesmo nome de sua classe.
 
 ## Tipos de construtores
 
-### Construtores generativos
+### Construtores generativos {:#generative-constructors}
 
 Para instanciar uma classe, use um construtor generativo.
 
@@ -226,7 +226,7 @@ Construtores factory de redirecionamento têm várias vantagens:
 * Um construtor factory de redirecionamento evita a necessidade de forwarders
   para repetir os parâmetros formais e seus valores padrão.
 
-### Tear-offs de construtor
+### Tear-offs de construtor {:#constructor-tear-offs}
 
 O Dart permite que você forneça um construtor como parâmetro sem chamá-lo.
 Chamado de _tear-off_ (como você _arranca_ os parênteses)
@@ -288,7 +288,7 @@ class PointA {
 }
 ```
 
-### Usar parâmetros formais de inicialização
+### Usar parâmetros formais de inicialização {:#use-initializing-formal-parameters}
 
 Para simplificar o padrão comum de atribuir um argumento de construtor
 a uma variável de instância, o Dart tem *parâmetros formais de inicialização*.
@@ -527,7 +527,7 @@ Por exemplo, argumentos podem chamar métodos *static*
 mas não métodos de *instância*.
 :::
 
-### Super parâmetros
+### Super parâmetros {:#super-parameters}
 
 Para evitar passar cada parâmetro para a invocação super de um construtor,
 use parâmetros super-initializer para encaminhar parâmetros
