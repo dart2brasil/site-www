@@ -1,49 +1,50 @@
 ---
-title: Dart cheatsheet
-breadcrumb: Cheatsheet
-description: Interactively learn (or relearn) some of Dart's unique features.
+title: Folha de referência do Dart
+breadcrumb: Folha de referência
+description: Aprenda (ou reaprenda) interativamente alguns dos recursos únicos do Dart.
 maxTocDepth: 2
+ia-translate: true
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
-The Dart language is designed to be easy to learn for
-coders coming from other languages,
-but it has a few unique features.
-This tutorial walks you through
-the most important of these language features.
+A linguagem Dart foi projetada para ser fácil de aprender para
+programadores vindos de outras linguagens,
+mas possui alguns recursos únicos.
+Este tutorial guia você através dos
+mais importantes desses recursos da linguagem.
 
-The embedded editors in this tutorial have partially completed code snippets.
-You can use these editors to test your knowledge by completing the code and
-clicking the **Run** button. The editors also contain thorough test code;
-**don't edit the test code**, but feel free to study it to learn about testing.
+Os editores incorporados neste tutorial têm trechos de código parcialmente completados.
+Você pode usar esses editores para testar seu conhecimento completando o código e
+clicando no botão **Run**. Os editores também contêm código de teste completo;
+**não edite o código de teste**, mas sinta-se à vontade para estudá-lo para aprender sobre testes.
 
 
-If you need help, expand the **Solution for...** dropdown beneath each DartPad
-for an explanation and the answer.
+Se precisar de ajuda, expanda o dropdown **Solution for...** abaixo de cada DartPad
+para obter uma explicação e a resposta.
 
 :::note
-This page uses embedded DartPads to display runnable examples.
+Esta página usa DartPads incorporados para exibir exemplos executáveis.
 {% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
-## String interpolation
+## Interpolação de strings
 
-To put the value of an expression inside a string, use `${expression}`.
-If the expression is an identifier, you can omit the `{}`.
+Para colocar o valor de uma expressão dentro de uma string, use `${expression}`.
+Se a expressão for um identificador, você pode omitir as `{}`.
 
-Here are some examples of using string interpolation:
+Aqui estão alguns exemplos de uso de interpolação de strings:
 
-| String                      | Result                             |
+| String                      | Resultado                          |
 |-----------------------------|------------------------------------|
 | `'${3 + 2}'`                | `'5'`                              |
 | `'${"word".toUpperCase()}'` | `'WORD'`                           |
-| `'$myObject'`               | The value of `myObject.toString()` |
+| `'$myObject'`               | O valor de `myObject.toString()`   |
 
-### Exercise
+### Exercício
 
-The following function takes two integers as parameters.
-Make it return a string containing both integers separated by a space.
-For example, `stringify(2, 3)` should return `'2 3'`.
+A função a seguir recebe dois inteiros como parâmetros.
+Faça com que ela retorne uma string contendo ambos os inteiros separados por um espaço.
+Por exemplo, `stringify(2, 3)` deve retornar `'2 3'`.
 
 ```dartpad theme="dark"
 String stringify(int x, int y) {
@@ -60,13 +61,13 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for string interpolation example</summary>
+  <summary>Solução para exemplo de interpolação de strings</summary>
 
-  Both `x` and `y` are simple values,
-  and Dart's string interpolation will handle
-  converting them to string representations.
-  All you need to do is use the `$` operator to
-  reference them inside single quotes, with a space in between:
+  Tanto `x` quanto `y` são valores simples,
+  e a interpolação de strings do Dart cuidará de
+  convertê-los em representações de string.
+  Tudo que você precisa fazer é usar o operador `$` para
+  referenciá-los dentro de aspas simples, com um espaço entre eles:
 
   ```dart
   String stringify(int x, int y) {
@@ -77,48 +78,48 @@ void main() {
 </details>
 
 
-## Nullable variables
+## Variáveis anuláveis
 
-Dart enforces sound null safety.
-This means values can't be null unless you say they can be.
-In other words, types default to non-nullable.
+Dart impõe null safety sólido.
+Isso significa que os valores não podem ser null a menos que você diga que podem ser.
+Em outras palavras, os tipos são não anuláveis por padrão.
 
-For example, consider the following code.
-With null safety, this code returns an error.
-A variable of type `int` can't have the value `null`:
+Por exemplo, considere o seguinte código.
+Com null safety, este código retorna um erro.
+Uma variável do tipo `int` não pode ter o valor `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (invalid-null)" replace="/null;/[!null!];/g"?>
 ```dart
 int a = [!null!]; // INVALID.
 ```
 
-When creating a variable, add `?` to the type to indicate
-that the variable can be `null`:
+Ao criar uma variável, adicione `?` ao tipo para indicar
+que a variável pode ser `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (valid-null)" replace="/int\?/[!int?!]/g"?>
 ```dart
-[!int?!] a = null; // Valid.
+[!int?!] a = null; // Válido.
 ```
 
-You can simplify that code a bit because, in all versions of Dart,
-`null` is the default value for uninitialized variables:
+Você pode simplificar esse código um pouco porque, em todas as versões do Dart,
+`null` é o valor padrão para variáveis não inicializadas:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (simple-null)"?>
 ```dart
-int? a; // The initial value of a is null.
+int? a; // O valor inicial de a é null.
 ```
 
-To learn more about null safety in Dart,
-read the [sound null safety guide](/null-safety).
+Para aprender mais sobre null safety no Dart,
+leia o [guia de null safety sólido](/null-safety).
 
-### Exercise
+### Exercício
 
-Declare two variables in this DartPad:
+Declare duas variáveis neste DartPad:
 
-* A nullable `String` named `name` with the value `'Jane'`.
-* A nullable `String` named `address` with the value `null`.
+* Uma `String` anulável chamada `name` com o valor `'Jane'`.
+* Uma `String` anulável chamada `address` com o valor `null`.
 
-Ignore all initial errors in the DartPad.
+Ignore todos os erros iniciais no DartPad.
 
 ```dartpad theme="dark"
 // TODO: Declare the two variables here
@@ -141,11 +142,11 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for nullable variables example</summary>
+  <summary>Solução para exemplo de variáveis anuláveis</summary>
 
-  Declare the two variables as `String` followed by `?`.
-  Then, assign `'Jane'` to `name`
-  and leave `address` uninitialized:
+  Declare as duas variáveis como `String` seguido de `?`.
+  Em seguida, atribua `'Jane'` a `name`
+  e deixe `address` não inicializado:
 
   ```dart
   String? name = 'Jane';
@@ -154,11 +155,11 @@ void main() {
 
 </details>
 
-## Null-aware operators
+## Operadores null-aware
 
-Dart offers some handy operators for dealing with values that might be null. One is the
-`??=` assignment operator, which assigns a value to a variable only if that
-variable is currently null:
+Dart oferece alguns operadores úteis para lidar com valores que podem ser null. Um deles é o
+operador de atribuição `??=`, que atribui um valor a uma variável apenas se essa
+variável estiver atualmente null:
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (null-aware-operators)"?>
 ```dart
@@ -170,23 +171,23 @@ a ??= 5;
 print(a); // <-- Still prints 3.
 ```
 
-Another null-aware operator is `??`,
-which returns the expression on its left unless
-that expression's value is null,
-in which case it evaluates and returns the expression on its right:
+Outro operador null-aware é `??`,
+que retorna a expressão à sua esquerda a menos que
+o valor dessa expressão seja null,
+caso em que ele avalia e retorna a expressão à sua direita:
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (null-aware-operators-2)"?>
 ```dart
-print(1 ?? 3); // <-- Prints 1.
-print(null ?? 12); // <-- Prints 12.
+print(1 ?? 3); // <-- Imprime 1.
+print(null ?? 12); // <-- Imprime 12.
 ```
 
-### Exercise
+### Exercício
 
-Try substituting in the `??=` and `??` operators
-to implement the described behavior in the following snippet.
+Tente substituir pelos operadores `??=` e `??`
+para implementar o comportamento descrito no seguinte trecho.
 
-Ignore all initial errors in the DartPad.
+Ignore todos os erros iniciais no DartPad.
 
 ```dartpad theme="dark"
 String? foo = 'a string';
@@ -222,19 +223,19 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for null-aware operators example</summary>
+  <summary>Solução para exemplo de operadores null-aware</summary>
 
-  All you need to do in this exercise is
-  replace the `TODO` comments with either `??` or `??=`.
-  Read the text above to make sure you understand both,
-  and then give it a try:
+  Tudo que você precisa fazer neste exercício é
+  substituir os comentários `TODO` por `??` ou `??=`.
+  Leia o texto acima para ter certeza de que entende ambos,
+  e então tente:
 
   ```dart
-  // Substitute an operator that makes 'a string' be assigned to baz.
+  // Substitua por um operador que faz 'a string' ser atribuída a baz.
   String? baz = foo ?? bar;
 
   void updateSomeVars() {
-    // Substitute an operator that makes 'a string' be assigned to bar.
+    // Substitua por um operador que faz 'a string' ser atribuída a bar.
     bar ??= 'a string';
   }
   ```
@@ -242,39 +243,39 @@ void main() {
 </details>
 
 
-## Conditional property access
+## Acesso condicional a propriedades
 
-To guard access to a property or method of an object that might be null,
-put a question mark (`?`) before the dot (`.`):
+Para proteger o acesso a uma propriedade ou método de um objeto que pode ser null,
+coloque um ponto de interrogação (`?`) antes do ponto (`.`):
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access)" replace="/result = //g; /;//g;"?>
 ```dart
 myObject?.someProperty
 ```
 
-The preceding code is equivalent to the following:
+O código anterior é equivalente ao seguinte:
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access-equivalent)" replace="/result = //g; /;//g;"?>
 ```dart
 (myObject != null) ? myObject.someProperty : null
 ```
 
-You can chain multiple uses of `?.` together in a single expression:
+Você pode encadear múltiplos usos de `?.` em uma única expressão:
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access-multiple)" replace="/result = //g; /;//g;"?>
 ```dart
 myObject?.someProperty?.someMethod()
 ```
 
-The preceding code returns null (and never calls `someMethod()`) if either
-`myObject` or `myObject.someProperty` is null.
+O código anterior retorna null (e nunca chama `someMethod()`) se
+`myObject` ou `myObject.someProperty` for null.
 
 
-### Exercise
+### Exercício
 
-The following function takes a nullable string as a parameter.
-Try using conditional property access to make it
-return the uppercase version of `str`, or `null` if `str` is `null`.
+A função a seguir recebe uma string anulável como parâmetro.
+Tente usar acesso condicional a propriedades para fazê-la
+retornar a versão em maiúsculas de `str`, ou `null` se `str` for `null`.
 
 ```dartpad theme="dark"
 String? upperCaseIt(String? str) {
@@ -311,11 +312,11 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for conditional property access example</summary>
+  <summary>Solução para exemplo de acesso condicional a propriedades</summary>
 
-  If this exercise wanted you to conditionally lowercase a string,
-  you could do it like this: `str?.toLowerCase()`. Use the equivalent
-  method to uppercase a string!
+  Se este exercício quisesse que você colocasse condicionalmente uma string em minúsculas,
+  você poderia fazer assim: `str?.toLowerCase()`. Use o método equivalente
+  para colocar uma string em maiúsculas!
 
   ```dart
   String? upperCaseIt(String? str) {
@@ -325,10 +326,10 @@ void main() {
 
 </details>
 
-## Collection literals
+## Literais de coleções
 
-Dart has built-in support for lists, maps, and sets.
-You can create them using literals:
+Dart tem suporte integrado para listas, maps e sets.
+Você pode criá-los usando literais:
 
 <?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-inferred)"?>
 ```dart
@@ -337,11 +338,11 @@ final aSetOfStrings = {'one', 'two', 'three'};
 final aMapOfStringsToInts = {'one': 1, 'two': 2, 'three': 3};
 ```
 
-Dart's type inference can assign types to these variables for you.
-In this case, the inferred types are `List<String>`,
-`Set<String>`, and `Map<String, int>`.
+A inferência de tipo do Dart pode atribuir tipos a essas variáveis para você.
+Neste caso, os tipos inferidos são `List<String>`,
+`Set<String>` e `Map<String, int>`.
 
-Or you can specify the type yourself:
+Ou você pode especificar o tipo você mesmo:
 
 <?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-specified)"?>
 ```dart
@@ -350,17 +351,17 @@ final aSetOfInts = <int>{};
 final aMapOfIntToDouble = <int, double>{};
 ```
 
-Specifying types is handy when you initialize a list with contents of a subtype,
-but still want the list to be `List<BaseType>`:
+Especificar tipos é útil quando você inicializa uma lista com conteúdo de um subtipo,
+mas ainda quer que a lista seja `List<BaseType>`:
 
 <?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-subtypes)"?>
 ```dart
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
 
-### Exercise
+### Exercício
 
-Try setting the following variables to the indicated values. Replace the existing null values.
+Tente definir as seguintes variáveis para os valores indicados. Substitua os valores null existentes.
 
 ```dartpad theme="dark"
 // Assign this a list containing 'a', 'b', and 'c' in that order:
@@ -437,42 +438,41 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for collection literals example</summary>
+  <summary>Solução para exemplo de literais de coleções</summary>
 
-  Add a list, set, or map literal after each equal sign (`=`).
-  Remember to specify the types for the empty declarations,
-  since they can't be inferred.
+  Adicione um literal de lista, set ou map após cada sinal de igual (`=`).
+  Lembre-se de especificar os tipos para as declarações vazias,
+  pois eles não podem ser inferidos.
 
   ```dart
-  // Assign this a list containing 'a', 'b', and 'c' in that order:
+  // Atribua a isso uma lista contendo 'a', 'b' e 'c' nessa ordem:
   final aListOfStrings = ['a', 'b', 'c'];
 
-  // Assign this a set containing 3, 4, and 5:
+  // Atribua a isso um set contendo 3, 4 e 5:
   final aSetOfInts = {3, 4, 5};
 
-  // Assign this a map of String to int so that aMapOfStringsToInts['myKey'] returns 12:
+  // Atribua a isso um map de String para int de forma que aMapOfStringsToInts['myKey'] retorne 12:
   final aMapOfStringsToInts = {'myKey': 12};
 
-  // Assign this an empty List<double>:
+  // Atribua a isso uma List<double> vazia:
   final anEmptyListOfDouble = <double>[];
 
-  // Assign this an empty Set<String>:
+  // Atribua a isso um Set<String> vazio:
   final anEmptySetOfString = <String>{};
 
-  // Assign this an empty Map of double to int:
+  // Atribua a isso um Map vazio de double para int:
   final anEmptyMapOfDoublesToInts = <double, int>{};
   ```
 
 </details>
 
-## Arrow syntax
+## Sintaxe arrow
 
-You might have seen the `=>` symbol in Dart code.
-This arrow syntax is a way to define a function that executes the
-expression to its right and returns its value.
+Você pode ter visto o símbolo `=>` em código Dart.
+Esta sintaxe arrow é uma forma de definir uma função que executa a
+expressão à sua direita e retorna seu valor.
 
-For example, consider this call to the `List` class's
-`any()` method:
+Por exemplo, considere esta chamada ao método `any()` da classe `List`:
 
 <?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-long)"?>
 ```dart
@@ -481,16 +481,16 @@ bool hasEmpty = aListOfStrings.any((s) {
 });
 ```
 
-Here's a simpler way to write that code:
+Aqui está uma forma mais simples de escrever esse código:
 
 <?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-short)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
 
-### Exercise
+### Exercício
 
-Try finishing the following statements, which use arrow syntax.
+Tente completar as seguintes instruções, que usam sintaxe arrow.
 
 ```dartpad theme="dark"
 class MyClass {
@@ -557,11 +557,11 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for arrow syntax example</summary>
+  <summary>Solução para exemplo de sintaxe arrow</summary>
 
-  For the product, you can use `*` to multiply the three values together.
-  For `incrementValue1`, you can use the increment operator (`++`).
-  For `joinWithCommas`, use the `join` method found in the `List` class.
+  Para o produto, você pode usar `*` para multiplicar os três valores juntos.
+  Para `incrementValue1`, você pode usar o operador de incremento (`++`).
+  Para `joinWithCommas`, use o método `join` encontrado na classe `List`.
 
   ```dart
   class MyClass {
@@ -569,48 +569,48 @@ void main() {
     int value2 = 3;
     int value3 = 5;
 
-    // Returns the product of the above values:
+    // Retorna o produto dos valores acima:
     int get product => value1 * value2 * value3;
 
-    // Adds 1 to value1:
+    // Adiciona 1 a value1:
     void incrementValue1() => value1++;
 
-    // Returns a string containing each item in the
-    // list, separated by commas (e.g. 'a,b,c'):
+    // Retorna uma string contendo cada item na
+    // lista, separados por vírgulas (ex: 'a,b,c'):
     String joinWithCommas(List<String> strings) => strings.join(',');
   }
   ```
 </details>
 
 
-## Cascades
+## Cascatas
 
-To perform a sequence of operations on the same object, use cascades (`..`).
-We've all seen an expression like this:
+Para executar uma sequência de operações no mesmo objeto, use cascatas (`..`).
+Todos nós já vimos uma expressão como esta:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (no-cascade)" replace="/;//g"?>
 ```dart
 myObject.someMethod()
 ```
 
-It invokes `someMethod()` on `myObject`, and the result of
-the expression is the return value of `someMethod()`.
+Ela invoca `someMethod()` em `myObject`, e o resultado da
+expressão é o valor de retorno de `someMethod()`.
 
-Here's the same expression with a cascade:
+Aqui está a mesma expressão com uma cascata:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (uses-cascade)" replace="/;//g"?>
 ```dart
 myObject..someMethod()
 ```
 
-Although it still invokes `someMethod()` on `myObject`, the result
-of the expression **isn't** the return value—it's a reference to `myObject`!
+Embora ainda invoque `someMethod()` em `myObject`, o resultado
+da expressão **não é** o valor de retorno—é uma referência a `myObject`!
 
-Using cascades, you can chain together operations that
-would otherwise require separate statements.
-For example, consider the following code,
-which uses the conditional member access operator (`?.`)
-to read properties of `button` if it isn't `null`:
+Usando cascatas, você pode encadear operações que
+de outra forma exigiriam instruções separadas.
+Por exemplo, considere o seguinte código,
+que usa o operador de acesso condicional a membro (`?.`)
+para ler propriedades de `button` se não for `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
@@ -621,12 +621,12 @@ button?.onClick.listen((e) => web.window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
 
-To instead use cascades,
-you can start with the _null-shorting_ cascade (`?..`),
-which guarantees that none of the cascade operations
-are attempted on a `null` object.
-Using cascades shortens the code
-and makes the `button` variable unnecessary:
+Para usar cascatas em vez disso,
+você pode começar com a cascata _null-shorting_ (`?..`),
+que garante que nenhuma das operações em cascata
+seja tentada em um objeto `null`.
+Usar cascatas encurta o código
+e torna a variável `button` desnecessária:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
@@ -637,12 +637,12 @@ web.document.querySelector('#confirm')
   ..scrollIntoView();
 ```
 
-### Exercise
+### Exercício
 
-Use cascades to create a single statement that
-sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
-to `1`, `'String!'`, and `[3.0]` (respectively)
-and then calls `allDone()`.
+Use cascatas para criar uma única instrução que
+defina as propriedades `anInt`, `aString` e `aList` de um `BigObject`
+para `1`, `'String!'` e `[3.0]` (respectivamente)
+e então chame `allDone()`.
 
 ```dartpad theme="dark"
 class BigObject {
@@ -708,12 +708,12 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for cascades example</summary>
+  <summary>Solução para exemplo de cascatas</summary>
 
-  The best solution for this exercise starts with `obj..` and
-  has four assignment operations chained together.
-  Start with `return obj..anInt = 1`,
-  then add another cascade (`..`) and start the next assignment.
+  A melhor solução para este exercício começa com `obj..` e
+  tem quatro operações de atribuição encadeadas juntas.
+  Comece com `return obj..anInt = 1`,
+  depois adicione outra cascata (`..`) e inicie a próxima atribuição.
 
   ```dart
   BigObject fillBigObject(BigObject obj) {
@@ -727,13 +727,13 @@ void main() {
 </details>
 
 
-## Getters and setters
+## Getters e setters
 
-You can define getters and setters
-whenever you need more control over a property
-than a simple field allows.
+Você pode definir getters e setters
+sempre que precisar de mais controle sobre uma propriedade
+do que um campo simples permite.
 
-For example, you can make sure a property's value is valid:
+Por exemplo, você pode garantir que o valor de uma propriedade seja válido:
 
 <?code-excerpt "misc/lib/cheatsheet/getters_setters.dart"?>
 ```dart
@@ -750,7 +750,7 @@ class MyClass {
 }
 ```
 
-You can also use a getter to define a computed property:
+Você também pode usar um getter para definir uma propriedade computada:
 
 <?code-excerpt "misc/lib/cheatsheet/getter_compute.dart"?>
 ```dart
@@ -761,25 +761,25 @@ class MyClass {
     _values.add(value);
   }
 
-  // A computed property.
+  // Uma propriedade computada.
   int get count {
     return _values.length;
   }
 }
 ```
 
-### Exercise
+### Exercício
 
-Imagine you have a shopping cart class that keeps a
-private `List<double>` of prices.
-Add the following:
+Imagine que você tem uma classe de carrinho de compras que mantém uma
+`List<double>` privada de preços.
+Adicione o seguinte:
 
-* A getter called `total` that returns the sum of the prices
-* A setter that replaces the list with a new one,
-  as long as the new list doesn't contain any negative prices
-  (in which case the setter should throw an `InvalidPriceException`).
+* Um getter chamado `total` que retorna a soma dos preços
+* Um setter que substitui a lista por uma nova,
+  desde que a nova lista não contenha preços negativos
+  (caso contrário, o setter deve lançar uma `InvalidPriceException`).
 
-Ignore all initial errors in the DartPad.
+Ignore todos os erros iniciais no DartPad.
 
 ```dartpad theme="dark"
 class InvalidPriceException {}
@@ -851,20 +851,20 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for getters and setters example</summary>
+  <summary>Solução para exemplo de getters e setters</summary>
 
-  Two functions are handy for this exercise.
-  One is `fold`, which can reduce a list to a single value
-  (use it to calculate the total).
-  The other is `any`, which can check each item in a list
-  with a function you give it
-  (use it to check if there are any negative prices in the `prices` setter).
+  Duas funções são úteis para este exercício.
+  Uma é `fold`, que pode reduzir uma lista a um único valor
+  (use-a para calcular o total).
+  A outra é `any`, que pode verificar cada item em uma lista
+  com uma função que você fornece
+  (use-a para verificar se há preços negativos no setter `prices`).
 
   ```dart
-  /// The total price of the shopping cart.
+  /// O preço total do carrinho de compras.
   double get total => _prices.fold(0, (e, t) => e + t);
 
-  /// Set [prices] to the [value] list of item prices.
+  /// Define [prices] para a lista [value] de preços de itens.
   set prices(List<double> value) {
     if (value.any((p) => p < 0)) {
       throw InvalidPriceException();
@@ -877,10 +877,10 @@ void main() {
 </details>
 
 
-## Optional positional parameters
+## Parâmetros posicionais opcionais
 
-Dart has two kinds of function parameters: positional and named.
-Positional parameters are the kind you're likely familiar with:
+Dart tem dois tipos de parâmetros de função: posicionais e nomeados.
+Parâmetros posicionais são o tipo com o qual você provavelmente está familiarizado:
 
 <?code-excerpt "misc/lib/cheatsheet/optional_positional_args.dart (optional-positional-args)"?>
 ```dart
@@ -891,7 +891,7 @@ int sumUp(int a, int b, int c) {
   int total = sumUp(1, 2, 3);
 ```
 
-With Dart, you can make these positional parameters optional by wrapping them in brackets:
+Com Dart, você pode tornar esses parâmetros posicionais opcionais envolvendo-os em colchetes:
 
 <?code-excerpt "misc/lib/cheatsheet/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
 ```dart
@@ -908,9 +908,9 @@ int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
 ```
 
-Optional positional parameters are always last
-in a function's parameter list.
-Their default value is null unless you provide another default value:
+Parâmetros posicionais opcionais estão sempre no final
+da lista de parâmetros de uma função.
+Seu valor padrão é null a menos que você forneça outro valor padrão:
 
 <?code-excerpt "misc/lib/cheatsheet/optional_positional_args2.dart (sum-no-impl)"?>
 ```dart
@@ -920,17 +920,17 @@ int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 
 void main() {
   int newTotal = sumUpToFive(1);
-  print(newTotal); // <-- prints 15
+  print(newTotal); // <-- imprime 15
 }
 ```
 
-### Exercise
+### Exercício
 
-Implement a function called `joinWithCommas()` that accepts one to
-five integers, then returns a string of those numbers separated by commas.
-Here are some examples of function calls and returned values:
+Implemente uma função chamada `joinWithCommas()` que aceita de um a
+cinco inteiros e então retorna uma string desses números separados por vírgulas.
+Aqui estão alguns exemplos de chamadas de função e valores retornados:
 
-| Function call                   | Returned value |
+| Chamada de função               | Valor retornado |
 |---------------------------------|----------------|
 | `joinWithCommas(1)`             | `'1'`          |
 | `joinWithCommas(1, 2, 3)`       | `'1,2,3'`      |
@@ -999,11 +999,11 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for positional parameters example</summary>
+  <summary>Solução para exemplo de parâmetros posicionais</summary>
 
-  The `b`, `c`, `d`, and `e` parameters are null if they aren't provided by the
-  caller. The important thing, then, is to check whether those arguments are `null`
-  before you add them to the final string.
+  Os parâmetros `b`, `c`, `d` e `e` são null se não forem fornecidos pelo
+  chamador. A coisa importante, então, é verificar se esses argumentos são `null`
+  antes de adicioná-los à string final.
 
   ```dart
   String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
@@ -1019,13 +1019,13 @@ void main() {
 </details>
 
 <a id="optional-named-parameters"></a>
-## Named parameters
+## Parâmetros nomeados
 
-Using a curly brace syntax at the end of the parameter list,
-you can define parameters that have names.
+Usando uma sintaxe de chaves no final da lista de parâmetros,
+você pode definir parâmetros que têm nomes.
 
-Named parameters are optional
-unless they're explicitly marked as `required`.
+Parâmetros nomeados são opcionais
+a menos que sejam explicitamente marcados como `required`.
 
 <?code-excerpt "misc/lib/cheatsheet/named_parameters.dart"?>
 ```dart
@@ -1041,16 +1041,16 @@ void main() {
 }
 ```
 
-As you might expect,
-the default value of a nullable named parameter is `null`,
-but you can provide a custom default value.
+Como você pode esperar,
+o valor padrão de um parâmetro nomeado anulável é `null`,
+mas você pode fornecer um valor padrão personalizado.
 
-If the type of a parameter is non-nullable,
-then you must either provide a default value
-(as shown in the following code)
-or mark the parameter as `required`
-(as shown in the
-[constructor section](#using-this-in-a-constructor)).
+Se o tipo de um parâmetro não é anulável,
+então você deve fornecer um valor padrão
+(como mostrado no código a seguir)
+ou marcar o parâmetro como `required`
+(como mostrado na
+[seção de construtores](#using-this-in-a-constructor)).
 
 <?code-excerpt "misc/test/cheatsheet/arguments_test.dart (defaulted-middle)" replace="/ = ''/[! = ''!]/g;"?>
 ```dart
@@ -1059,26 +1059,26 @@ void printName(String firstName, String lastName, {String middleName[! = ''!]}) 
 }
 ```
 
-A function can't have both optional positional and named parameters.
+Uma função não pode ter parâmetros posicionais opcionais e nomeados ao mesmo tempo.
 
 
-### Exercise
+### Exercício
 
-Add a `copyWith()` instance method to the `MyDataObject`
-class. It should take three named, nullable parameters:
+Adicione um método de instância `copyWith()` à classe `MyDataObject`.
+Ele deve receber três parâmetros nomeados e anuláveis:
 
 * `int? newInt`
 * `String? newString`
 * `double? newDouble`
 
-Your `copyWith()` method should return a new `MyDataObject`
-based on the current instance,
-with data from the preceding parameters (if any)
-copied into the object's properties.
-For example, if `newInt` is non-null,
-then copy its value into `anInt`.
+Seu método `copyWith()` deve retornar um novo `MyDataObject`
+baseado na instância atual,
+com dados dos parâmetros anteriores (se houver)
+copiados nas propriedades do objeto.
+Por exemplo, se `newInt` não for null,
+então copie seu valor em `anInt`.
 
-Ignore all initial errors in the DartPad.
+Ignore todos os erros iniciais no DartPad.
 
 ```dartpad theme="dark"
 class MyDataObject {
@@ -1169,15 +1169,15 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for named parameters example</summary>
+  <summary>Solução para exemplo de parâmetros nomeados</summary>
 
-  The `copyWith` method shows up in a lot of classes and libraries.
-  Yours should do a few things:
-  use optional named parameters,
-  create a new instance of `MyDataObject`,
-  and use the data from the parameters to fill it
-  (or the data from the current instance if the parameters are null).
-  This is a chance to get more practice with the `??` operator!
+  O método `copyWith` aparece em muitas classes e bibliotecas.
+  O seu deve fazer algumas coisas:
+  usar parâmetros nomeados opcionais,
+  criar uma nova instância de `MyDataObject`,
+  e usar os dados dos parâmetros para preenchê-la
+  (ou os dados da instância atual se os parâmetros forem null).
+  Esta é uma chance de praticar mais com o operador `??`!
 
   ```dart
   MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
@@ -1191,15 +1191,15 @@ void main() {
 </details>
 
 
-## Exceptions
+## Exceções
 
-Dart code can throw and catch exceptions.
-In contrast to Java, all of Dart's exceptions are unchecked.
-Methods don't declare which exceptions they might throw and
-you aren't required to catch any exceptions.
+Código Dart pode lançar e capturar exceções.
+Em contraste com Java, todas as exceções do Dart não são verificadas.
+Métodos não declaram quais exceções eles podem lançar e
+você não é obrigado a capturar nenhuma exceção.
 
-Dart provides `Exception` and `Error` types, but you're
-allowed to throw any non-null object:
+Dart fornece os tipos `Exception` e `Error`, mas você pode
+lançar qualquer objeto não nulo:
 
 <?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (simple-throws)"?>
 ```dart
@@ -1207,30 +1207,30 @@ throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
 ```
 
-Use the `try`, `on`, and `catch` keywords when handling exceptions:
+Use as palavras-chave `try`, `on` e `catch` ao lidar com exceções:
 
 <?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (try-on-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
 } on OutOfLlamasException {
-  // A specific exception
+  // Uma exceção específica
   buyMoreLlamas();
 } on Exception catch (e) {
-  // Anything else that is an exception
+  // Qualquer outra coisa que seja uma exceção
   print('Unknown exception: $e');
 } catch (e) {
-  // No specified type, handles all
+  // Nenhum tipo especificado, lida com tudo
   print('Something really unknown: $e');
 }
 ```
 
-The `try` keyword works as it does in most other languages.
-Use the `on` keyword to filter for specific exceptions by type,
-and the `catch` keyword to get a reference to the exception object.
+A palavra-chave `try` funciona como na maioria das outras linguagens.
+Use a palavra-chave `on` para filtrar exceções específicas por tipo,
+e a palavra-chave `catch` para obter uma referência ao objeto de exceção.
 
-If you can't completely handle the exception, use the `rethrow` keyword
-to propagate the exception:
+Se você não pode lidar completamente com a exceção, use a palavra-chave `rethrow`
+para propagar a exceção:
 
 <?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (try-catch)"?>
 ```dart
@@ -1242,7 +1242,7 @@ try {
 }
 ```
 
-To execute code whether or not an exception is thrown,
+Para executar código seja ou não lançada uma exceção,
 use `finally`:
 
 <?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (try-catch-finally)"?>
@@ -1250,27 +1250,27 @@ use `finally`:
 try {
   breedMoreLlamas();
 } catch (e) {
-  // ... handle exception ...
+  // ... lidar com exceção ...
 } finally {
-  // Always clean up, even if an exception is thrown.
+  // Sempre limpar, mesmo se uma exceção for lançada.
   cleanLlamaStalls();
 }
 ```
 
-### Exercise
+### Exercício
 
-Implement `tryFunction()` below. It should execute an untrustworthy method and
-then do the following:
+Implemente `tryFunction()` abaixo. Ela deve executar um método não confiável e
+então fazer o seguinte:
 
-* If `untrustworthy()` throws an `ExceptionWithMessage`,
-  call `logger.logException` with the exception type and message
-  (try using `on` and `catch`).
-* If `untrustworthy()` throws an `Exception`,
-  call `logger.logException` with the exception type
-  (try using `on` for this one).
-* If `untrustworthy()` throws any other object, don't catch the exception.
-* After everything's caught and handled, call `logger.doneLogging`
-  (try using `finally`).
+* Se `untrustworthy()` lançar uma `ExceptionWithMessage`,
+  chame `logger.logException` com o tipo de exceção e mensagem
+  (tente usar `on` e `catch`).
+* Se `untrustworthy()` lançar uma `Exception`,
+  chame `logger.logException` com o tipo de exceção
+  (tente usar `on` para este).
+* Se `untrustworthy()` lançar qualquer outro objeto, não capture a exceção.
+* Depois de tudo ser capturado e tratado, chame `logger.doneLogging`
+  (tente usar `finally`).
 
 ```dartpad theme="dark"
 typedef VoidFunction = void Function();
@@ -1390,12 +1390,12 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for exceptions example</summary>
+  <summary>Solução para exemplo de exceções</summary>
 
-  This exercise looks tricky, but it's really one big `try` statement.
-  Call `untrustworthy` inside the `try`, and
-  then use `on`, `catch`, and `finally` to catch exceptions and
-  call methods on the logger.
+  Este exercício parece complicado, mas é realmente uma grande instrução `try`.
+  Chame `untrustworthy` dentro do `try`, e
+  então use `on`, `catch` e `finally` para capturar exceções e
+  chamar métodos no logger.
 
   ```dart
   void tryFunction(VoidFunction untrustworthy, Logger logger) {
@@ -1414,11 +1414,11 @@ void main() {
 </details>
 
 
-## Using `this` in a constructor
+## Usando `this` em um construtor
 
-Dart provides a handy shortcut for assigning
-values to properties in a constructor:
-use `this.propertyName` when declaring the constructor:
+Dart fornece um atalho conveniente para atribuir
+valores a propriedades em um construtor:
+use `this.propertyName` ao declarar o construtor:
 
 <?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-positional)"?>
 ```dart
@@ -1433,8 +1433,8 @@ class MyColor {
 final color = MyColor(80, 80, 128);
 ```
 
-This technique works for named parameters, too.
-Property names become the names of the parameters:
+Esta técnica funciona para parâmetros nomeados também.
+Os nomes das propriedades se tornam os nomes dos parâmetros:
 
 <?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-named)" replace="/int.*;/\/\/ .../g; /olorRN/olor/g;"?>
 ```dart
@@ -1447,24 +1447,24 @@ class MyColor {
 final color = MyColor(red: 80, green: 80, blue: 80);
 ```
 
-In the preceding code, `red`, `green`, and `blue` are marked as `required`
-because these `int` values can't be null.
-If you add default values, you can omit `required`:
+No código anterior, `red`, `green` e `blue` são marcados como `required`
+porque esses valores `int` não podem ser null.
+Se você adicionar valores padrão, pode omitir `required`:
 
 <?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (defaulted)" replace="/olorO/olor/g; /.positional//g; /.named//g;"?>
 ```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
-// or
+// ou
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
 ```
 
-### Exercise
+### Exercício
 
-Add a one-line constructor to `MyClass` that uses
-`this.` syntax to receive and assign values for
-all three properties of the class.
+Adicione um construtor de uma linha a `MyClass` que usa
+a sintaxe `this.` para receber e atribuir valores para
+todas as três propriedades da classe.
 
-Ignore all initial errors in the DartPad.
+Ignore todos os erros iniciais no DartPad.
 
 ```dartpad theme="dark"
 class MyClass {
@@ -1507,12 +1507,12 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for `this` example</summary>
+  <summary>Solução para exemplo de `this`</summary>
 
-  This exercise has a one-line solution.
-  Declare the constructor with
-  `this.anInt`, `this.aString`, and `this.aDouble`
-  as its parameters in that order.
+  Este exercício tem uma solução de uma linha.
+  Declare o construtor com
+  `this.anInt`, `this.aString` e `this.aDouble`
+  como seus parâmetros nessa ordem.
 
   ```dart
   MyClass(this.anInt, this.aString, this.aDouble);
@@ -1520,14 +1520,14 @@ void main() {
 
 </details>
 
-## Initializer lists
+## Listas de inicialização
 
-Sometimes when you implement a constructor,
-you need to do some setup before the constructor body executes.
-For example, final fields must have values
-before the constructor body executes.
-Do this work in an initializer list,
-which goes between the constructor's signature and its body:
+Às vezes, ao implementar um construtor,
+você precisa fazer alguma configuração antes que o corpo do construtor seja executado.
+Por exemplo, campos finais devem ter valores
+antes que o corpo do construtor seja executado.
+Faça este trabalho em uma lista de inicialização,
+que fica entre a assinatura do construtor e seu corpo:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-no-comment)"?>
 ```dart
@@ -1536,8 +1536,8 @@ Point.fromJson(Map<String, double> json) : x = json['x']!, y = json['y']! {
 }
 ```
 
-The initializer list is also a handy place to put asserts,
-which run only during development:
+A lista de inicialização também é um lugar conveniente para colocar asserts,
+que são executados apenas durante o desenvolvimento:
 
 <?code-excerpt "misc/lib/cheatsheet/initializer_lists.dart (assert)"?>
 ```dart
@@ -1546,14 +1546,14 @@ NonNegativePoint(this.x, this.y) : assert(x >= 0), assert(y >= 0) {
 }
 ```
 
-### Exercise
+### Exercício
 
-Complete the `FirstTwoLetters` constructor below.
-Use an initializer list to assign the first two characters in `word` to
-the `letterOne` and `LetterTwo` properties.
-For extra credit, add an `assert` to catch words of less than two characters.
+Complete o construtor `FirstTwoLetters` abaixo.
+Use uma lista de inicialização para atribuir os dois primeiros caracteres em `word` às
+propriedades `letterOne` e `LetterTwo`.
+Para crédito extra, adicione um `assert` para capturar palavras com menos de dois caracteres.
 
-Ignore all initial errors in the DartPad.
+Ignore todos os erros iniciais no DartPad.
 
 ```dartpad theme="dark"
 class FirstTwoLetters {
@@ -1605,11 +1605,11 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for initializer lists example</summary>
+  <summary>Solução para exemplo de listas de inicialização</summary>
 
-  Two assignments need to happen:
-  `letterOne` should be assigned `word[0]`,
-  and `letterTwo` should be assigned `word[1]`.
+  Duas atribuições precisam acontecer:
+  `letterOne` deve receber `word[0]`,
+  e `letterTwo` deve receber `word[1]`.
 
   ```dart
     FirstTwoLetters(String word)
@@ -1619,10 +1619,10 @@ void main() {
   ```
 </details>
 
-## Named constructors
+## Construtores nomeados
 
-To allow classes to have multiple constructors,
-Dart supports named constructors:
+Para permitir que classes tenham múltiplos construtores,
+Dart suporta construtores nomeados:
 
 <?code-excerpt "misc/lib/cheatsheet/named_constructor.dart (point-class)"?>
 ```dart
@@ -1635,19 +1635,19 @@ class Point {
 }
 ```
 
-To use a named constructor, invoke it using its full name:
+Para usar um construtor nomeado, invoque-o usando seu nome completo:
 
 <?code-excerpt "misc/test/cheatsheet/constructor_test.dart (origin-point)"?>
 ```dart
 final myPoint = Point.origin();
 ```
 
-### Exercise
+### Exercício
 
-Give the `Color` class a constructor named `Color.black`
-that sets all three properties to zero.
+Dê à classe `Color` um construtor nomeado `Color.black`
+que defina todas as três propriedades como zero.
 
-Ignore all initial errors in the DartPad.
+Ignore todos os erros iniciais no DartPad.
 
 ```dartpad theme="dark"
 class Color {
@@ -1693,11 +1693,11 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for named constructors example</summary>
+  <summary>Solução para exemplo de construtores nomeados</summary>
 
-  The declaration for your constructor should begin with `Color.black():`.
-  In the initializer list (after the colon),
-  set `red`, `green`, and `blue` to `0`.
+  A declaração do seu construtor deve começar com `Color.black():`.
+  Na lista de inicialização (após os dois pontos),
+  defina `red`, `green` e `blue` como `0`.
 
   ```dart
   Color.black() : red = 0, green = 0, blue = 0;
@@ -1705,11 +1705,11 @@ void main() {
 
 </details>
 
-## Factory constructors
+## Construtores factory
 
-Dart supports factory constructors,
-which can return subtypes or even null.
-To create a factory constructor, use the `factory` keyword:
+Dart suporta construtores factory,
+que podem retornar subtipos ou até null.
+Para criar um construtor factory, use a palavra-chave `factory`:
 
 <?code-excerpt "misc/lib/cheatsheet/factory_constructors.dart"?>
 ```dart
@@ -1729,20 +1729,20 @@ class Shape {
 }
 ```
 
-### Exercise
+### Exercício
 
-Replace the line `TODO();` in the factory constructor
-named `IntegerHolder.fromList` to return the following:
+Substitua a linha `TODO();` no construtor factory
+nomeado `IntegerHolder.fromList` para retornar o seguinte:
 
-* If the list has **one** value,
-  create an `IntegerSingle` instance using that value.
-* If the list has **two** values,
-  create an `IntegerDouble` instance using the values in order.
-* If the list has **three** values,
-  create an `IntegerTriple` instance using the values in order.
-* Otherwise, throw an `Error`.
+* Se a lista tiver **um** valor,
+  crie uma instância `IntegerSingle` usando esse valor.
+* Se a lista tiver **dois** valores,
+  crie uma instância `IntegerDouble` usando os valores em ordem.
+* Se a lista tiver **três** valores,
+  crie uma instância `IntegerTriple` usando os valores em ordem.
+* Caso contrário, lance um `Error`.
 
-If you succeed, the console should display `Success!`.
+Se você tiver sucesso, o console deve exibir `Success!`.
 
 ```dartpad theme="dark"
 class IntegerHolder {
@@ -1851,13 +1851,13 @@ void testValues(List<String> errs, List<int> expectedValues, IntegerHolder obj,
 ```
 
 <details>
-  <summary>Solution for factory constructors example</summary>
+  <summary>Solução para exemplo de construtores factory</summary>
 
-  Inside the factory constructor,
-  check the length of the list, then create and return an
-  `IntegerSingle`, `IntegerDouble`, or `IntegerTriple` as appropriate.
+  Dentro do construtor factory,
+  verifique o comprimento da lista, então crie e retorne um
+  `IntegerSingle`, `IntegerDouble` ou `IntegerTriple` conforme apropriado.
 
-  Replace `TODO();` with the following code block.
+  Substitua `TODO();` pelo seguinte bloco de código.
 
   ```dart
     switch (list.length) {
@@ -1874,12 +1874,12 @@ void testValues(List<String> errs, List<int> expectedValues, IntegerHolder obj,
 
 </details>
 
-## Redirecting constructors
+## Construtores de redirecionamento
 
-Sometimes a constructor's only purpose is to redirect to
-another constructor in the same class.
-A redirecting constructor's body is empty,
-with the constructor call appearing after a colon (`:`).
+Às vezes, o único propósito de um construtor é redirecionar para
+outro construtor na mesma classe.
+O corpo de um construtor de redirecionamento está vazio,
+com a chamada do construtor aparecendo após dois pontos (`:`).
 
 <?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (redirecting-constructors)"?>
 ```dart
@@ -1888,24 +1888,24 @@ class Automobile {
   String model;
   int mpg;
 
-  // The main constructor for this class.
+  // O construtor principal para esta classe.
   Automobile(this.make, this.model, this.mpg);
 
-  // Delegates to the main constructor.
+  // Delega ao construtor principal.
   Automobile.hybrid(String make, String model) : this(make, model, 60);
 
-  // Delegates to a named constructor
+  // Delega a um construtor nomeado
   Automobile.fancyHybrid() : this.hybrid('Futurecar', 'Mark 2');
 }
 ```
 
-### Exercise
+### Exercício
 
-Remember the `Color` class from above? Create a named constructor called
-`black`, but rather than manually assigning the properties, redirect it to the
-default constructor with zeros as the arguments.
+Lembra da classe `Color` acima? Crie um construtor nomeado chamado
+`black`, mas em vez de atribuir manualmente as propriedades, redirecione-o para o
+construtor padrão com zeros como argumentos.
 
-Ignore all initial errors in the DartPad.
+Ignore todos os erros iniciais no DartPad.
 
 ```dartpad theme="dark"
 class Color {
@@ -1952,9 +1952,9 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for redirecting constructors example</summary>
+  <summary>Solução para exemplo de construtores de redirecionamento</summary>
 
-  Your constructor should redirect to `this(0, 0, 0)`.
+  Seu construtor deve redirecionar para `this(0, 0, 0)`.
 
   ```dart
   Color.black() : this(0, 0, 0);
@@ -1962,12 +1962,12 @@ void main() {
 
 </details>
 
-## Const constructors
+## Construtores const
 
-If your class produces objects that never change,
-you can make these objects compile-time constants.
-To do this, define a `const` constructor and
-make sure that all instance variables are final.
+Se sua classe produz objetos que nunca mudam,
+você pode tornar esses objetos constantes de tempo de compilação.
+Para fazer isso, defina um construtor `const` e
+certifique-se de que todas as variáveis de instância sejam final.
 
 <?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (const-constructors)"?>
 ```dart
@@ -1981,19 +1981,19 @@ class ImmutablePoint {
 }
 ```
 
-### Exercise
+### Exercício
 
-Modify the `Recipe` class so its instances can be constants,
-and create a constant constructor that does the following:
+Modifique a classe `Recipe` para que suas instâncias possam ser constantes,
+e crie um construtor constante que faça o seguinte:
 
-* Has three parameters: `ingredients`, `calories`,
-  and `milligramsOfSodium` (in that order).
-* Uses `this.` syntax to automatically assign the parameter values to the
-  object properties of the same name.
-* Is constant, with the `const` keyword just before
-  `Recipe` in the constructor declaration.
+* Tenha três parâmetros: `ingredients`, `calories`,
+  e `milligramsOfSodium` (nessa ordem).
+* Use a sintaxe `this.` para atribuir automaticamente os valores dos parâmetros às
+  propriedades do objeto com o mesmo nome.
+* Seja constante, com a palavra-chave `const` logo antes de
+  `Recipe` na declaração do construtor.
 
-Ignore all initial errors in the DartPad.
+Ignore todos os erros iniciais no DartPad.
 
 ```dartpad theme="dark"
 class Recipe {
@@ -2045,9 +2045,9 @@ void main() {
 ```
 
 <details>
-  <summary>Solution for const constructors example</summary>
+  <summary>Solução para exemplo de construtores const</summary>
 
-  To make the constructor const, you'll need to make all the properties final.
+  Para tornar o construtor const, você precisará tornar todas as propriedades final.
 
   ```dart
   class Recipe {
@@ -2061,14 +2061,14 @@ void main() {
 
 </details>
 
-## What's next?
+## Qual é o próximo passo?
 
-We hope you enjoyed using this tutorial to learn or test your knowledge of
-some of the most interesting features of the Dart language.
+Esperamos que você tenha gostado de usar este tutorial para aprender ou testar seu conhecimento de
+alguns dos recursos mais interessantes da linguagem Dart.
 
-What you can try next includes:
+O que você pode tentar a seguir inclui:
 
-* Try [other Dart tutorials](/tutorials).
-* Read the [Dart language tour](/language).
-* Play with [DartPad.]({{site.dartpad}})
-* [Get the Dart SDK](/get-dart).
+* Experimente [outros tutoriais do Dart](/tutorials).
+* Leia o [tour da linguagem Dart](/language).
+* Brinque com o [DartPad.]({{site.dartpad}})
+* [Obtenha o SDK do Dart](/get-dart).
