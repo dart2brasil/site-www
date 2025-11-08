@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: non_constant_case_expression_from_deferred_library
 description: >-
-  Details about the non_constant_case_expression_from_deferred_library
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_constant_case_expression_from_deferred_library
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,26 +12,26 @@ _Constant values from a deferred library can't be used as a case expression._
 
 ## Description
 
-The analyzer produces this diagnostic when the expression in a case clause
-references a constant from a library that is imported using a deferred
-import. In order for switch statements to be compiled efficiently, the
-constants referenced in case clauses need to be available at compile time,
-and constants from deferred libraries aren't available at compile time.
+O analisador produz este diagnóstico quando a expressão em uma cláusula case
+referencia uma constante de uma biblioteca que é importada usando um
+import deferred. Para que comandos switch sejam compilados eficientemente, as
+constantes referenciadas em cláusulas case precisam estar disponíveis em tempo de compilação,
+e constantes de bibliotecas deferred não estão disponíveis em tempo de compilação.
 
-For more information, check out
+Para mais informações, consulte
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 ## Example
 
-Given a file `a.dart` that defines the constant `zero`:
+Dado um arquivo `a.dart` que define a constante `zero`:
 
 ```dart
 const zero = 0;
 ```
 
-The following code produces this diagnostic because the library `a.dart` is
-imported using a `deferred` import, and the constant `a.zero`, declared in
-the imported library, is used in a case clause:
+O código a seguir produz este diagnóstico porque a biblioteca `a.dart` é
+importada usando um import `deferred`, e a constante `a.zero`, declarada na
+biblioteca importada, é usada em uma cláusula case:
 
 ```dart
 import 'a.dart' deferred as a;
@@ -46,8 +47,8 @@ void f(int x) {
 
 ## Common fixes
 
-If you need to reference the constant from the imported library, then
-remove the `deferred` keyword:
+Se você precisa referenciar a constante da biblioteca importada, então
+remova a keyword `deferred`:
 
 ```dart
 import 'a.dart' as a;
@@ -61,9 +62,9 @@ void f(int x) {
 }
 ```
 
-If you need to reference the constant from the imported library and also
-need the imported library to be deferred, then rewrite the switch statement
-as a sequence of `if` statements:
+Se você precisa referenciar a constante da biblioteca importada e também
+precisa que a biblioteca importada seja deferred, então reescreva o comando switch
+como uma sequência de comandos `if`:
 
 ```dart
 import 'a.dart' deferred as a;
@@ -75,8 +76,8 @@ void f(int x) {
 }
 ```
 
-If you don't need to reference the constant, then replace the case
-expression:
+Se você não precisa referenciar a constante, então substitua a expressão
+case:
 
 ```dart
 void f(int x) {

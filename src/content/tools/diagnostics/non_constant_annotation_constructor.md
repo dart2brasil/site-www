@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: non_constant_annotation_constructor
 description: >-
-  Details about the non_constant_annotation_constructor
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_constant_annotation_constructor
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,14 +12,14 @@ _Annotation creation can only call a const constructor._
 
 ## Description
 
-The analyzer produces this diagnostic when an annotation is the invocation
-of an existing constructor even though the invoked constructor isn't a
-const constructor.
+O analisador produz este diagnóstico quando uma annotation é a invocação
+de um construtor existente, embora o construtor invocado não seja um
+construtor const.
 
 ## Example
 
-The following code produces this diagnostic because the constructor for `C`
-isn't a const constructor:
+O código a seguir produz este diagnóstico porque o construtor de `C`
+não é um construtor const:
 
 ```dart
 [!@C()!]
@@ -32,8 +33,8 @@ class C {
 
 ## Common fixes
 
-If it's valid for the class to have a const constructor, then create a
-const constructor that can be used for the annotation:
+Se é válido para a classe ter um construtor const, então crie um
+construtor const que possa ser usado para a annotation:
 
 ```dart
 @C()
@@ -45,5 +46,5 @@ class C {
 }
 ```
 
-If it isn't valid for the class to have a const constructor, then either
-remove the annotation or use a different class for the annotation.
+Se não é válido para a classe ter um construtor const, então
+remova a annotation ou use uma classe diferente para a annotation.

@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: no_logic_in_create_state
 description: >-
-  Details about the no_logic_in_create_state
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico no_logic_in_create_state
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -22,14 +23,14 @@ _Don't put any logic in 'createState'._
 
 ## Description
 
-The analyzer produces this diagnostic when an implementation of
-`createState` in a subclass of `StatefulWidget` contains any logic other
-than the return of the result of invoking a zero argument constructor.
+O analisador produz este diagnóstico quando uma implementação de
+`createState` em uma subclasse de `StatefulWidget` contém qualquer lógica além
+do retorno do resultado da invocação de um construtor sem argumentos.
 
 ## Examples
 
-The following code produces this diagnostic because the constructor
-invocation has arguments:
+O código a seguir produz este diagnóstico porque a invocação do construtor
+possui argumentos:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -48,7 +49,7 @@ class MyState extends State {
 
 ## Common fixes
 
-Rewrite the code so that `createState` doesn't contain any logic:
+Reescreva o código para que `createState` não contenha nenhuma lógica:
 
 ```dart
 import 'package:flutter/material.dart';
