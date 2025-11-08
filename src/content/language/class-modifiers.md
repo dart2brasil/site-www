@@ -321,7 +321,7 @@ ou quiser poder adicionar subtipos posteriormente sem quebrar a API,
 use o modificador [`final`](#final). Para uma comparação mais aprofundada,
 leia [`sealed` versus `final`](/language/class-modifiers-for-apis#sealed-versus-final).
 
-## Combinando modificadores
+## Combinando modificadores {:#combining-modifiers}
 
 Você pode combinar alguns modificadores para restrições em camadas.
 Uma declaração de classe pode ser, em ordem:
