@@ -29,7 +29,7 @@ As seguintes ferramentas suportam a linguagem Dart em todas as plataformas.
 * [Ferramentas de linha de comando](#cli)
 
 
-### DartPad
+### DartPad {:#dartpad}
 
 <img src="/assets/img/dartpad-hello.png" alt="DartPad Hello World" width="200px" align="right" />
 
@@ -95,7 +95,7 @@ O Dart SDK inclui a seguinte ferramenta `dart` de uso geral:
   além de trabalhar com o [gerenciador de pacotes pub](/tools/pub/packages).
 
 
-### Depuração
+### Depuração {:#debugging}
 
 [Dart DevTools](/tools/dart-devtools)
 : Um conjunto de ferramentas de depuração e desempenho.
