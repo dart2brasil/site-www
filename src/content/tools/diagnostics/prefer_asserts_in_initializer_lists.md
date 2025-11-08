@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: prefer_asserts_in_initializer_lists
 description: >-
-  Details about the prefer_asserts_in_initializer_lists
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico prefer_asserts_in_initializer_lists
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Assert should be in the initializer list._
+_Assert deve estar na lista de inicializadores._
 
 ## Description
 
-The analyzer produces this diagnostic when the body of a constructor
-begins with one or more assert statements.
+O analisador produz este diagnóstico quando o corpo de um construtor
+começa com uma ou mais instruções assert.
 
 ## Example
 
-The following code produces this diagnostic because the body of the
-constructor begins with an assert statement:
+O código a seguir produz este diagnóstico porque o corpo do
+construtor começa com uma instrução assert:
 
 ```dart
 class C {
@@ -40,8 +41,8 @@ class C {
 
 ## Common fixes
 
-Move the assert to the initializer list, removing the body if there are
-only assert statements in it:
+Mova o assert para a lista de inicializadores, removendo o corpo se houver
+apenas instruções assert nele:
 
 ```dart
 class C {

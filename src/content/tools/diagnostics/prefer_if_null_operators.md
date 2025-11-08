@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: prefer_if_null_operators
 description: >-
-  Details about the prefer_if_null_operators
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico prefer_if_null_operators
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,19 +19,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use the '??' operator rather than '?:' when testing for 'null'._
+_Use o operador '??' em vez de '?:' ao testar por 'null'._
 
 ## Description
 
-The analyzer produces this diagnostic when a conditional expression (using
-the `?:` operator) is used to select a different value when a local
-variable is `null`.
+O analisador produz este diagnóstico quando uma expressão condicional (usando
+o operador `?:`) é usada para selecionar um valor diferente quando uma variável
+local é `null`.
 
 ## Example
 
-The following code produces this diagnostic because the variable `s` is
-being compared to `null` so that a different value can be returned when
-`s` is `null`:
+O código a seguir produz este diagnóstico porque a variável `s` está
+sendo comparada a `null` para que um valor diferente possa ser retornado quando
+`s` for `null`:
 
 ```dart
 String f(String? s) => [!s == null ? '' : s!];
@@ -38,7 +39,7 @@ String f(String? s) => [!s == null ? '' : s!];
 
 ## Common fixes
 
-Use the if-null operator instead:
+Use o operador if-null em vez disso:
 
 ```dart
 String f(String? s) => s ?? '';
