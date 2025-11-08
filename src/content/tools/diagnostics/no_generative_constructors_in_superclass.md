@@ -1,28 +1,29 @@
 ---
+ia-translate: true
 title: no_generative_constructors_in_superclass
 description: >-
-  Details about the no_generative_constructors_in_superclass
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico no_generative_constructors_in_superclass
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't extend '{1}' because '{1}' only has factory constructors (no generative constructors), and '{0}' has at least one generative constructor._
+_A classe '{0}' não pode estender '{1}' porque '{1}' tem apenas factory constructors (nenhum generative constructor), e '{0}' tem pelo menos um generative constructor._
 
 ## Description
 
-The analyzer produces this diagnostic when a class that has at least one
-generative constructor (whether explicit or implicit) has a superclass
-that doesn't have any generative constructors. Every generative
-constructor, except the one defined in `Object`, invokes, either
-explicitly or implicitly, one of the generative constructors from its
-superclass.
+O analisador produz este diagnóstico quando uma classe que tem pelo menos um
+generative constructor (seja explícito ou implícito) tem uma superclasse
+que não tem nenhum generative constructor. Todo generative
+constructor, exceto o definido em `Object`, invoca, seja
+explícita ou implicitamente, um dos generative constructors de sua
+superclasse.
 
 ## Example
 
-The following code produces this diagnostic because the class `B` has an
-implicit generative constructor that can't invoke a generative constructor
-from `A` because `A` doesn't have any generative constructors:
+O código a seguir produz este diagnóstico porque a classe `B` tem um
+generative constructor implícito que não pode invocar um generative constructor
+de `A` porque `A` não tem nenhum generative constructor:
 
 ```dart
 class A {
@@ -34,7 +35,7 @@ class B extends [!A!] {}
 
 ## Common fixes
 
-If the superclass should have a generative constructor, then add one:
+Se a superclasse deve ter um generative constructor, então adicione um:
 
 ```dart
 class A {
@@ -45,8 +46,8 @@ class A {
 class B extends A {}
 ```
 
-If the subclass shouldn't have a generative constructor, then remove it by
-adding a factory constructor:
+Se a subclasse não deve ter um generative constructor, então remova-o adicionando
+um factory constructor:
 
 ```dart
 class A {
@@ -58,8 +59,8 @@ class B extends A {
 }
 ```
 
-If the subclass must have a generative constructor but the superclass
-can't have one, then implement the superclass instead:
+Se a subclasse deve ter um generative constructor mas a superclasse
+não pode ter um, então implemente a superclasse em vez disso:
 
 ```dart
 class A {

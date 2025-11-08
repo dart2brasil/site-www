@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: concrete_class_with_abstract_member
 description: >-
-  Details about the concrete_class_with_abstract_member
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico concrete_class_with_abstract_member
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' must have a method body because '{1}' isn't abstract._
+_'{0}' deve ter um corpo de método porque '{1}' não é abstract._
 
 ## Description
 
-The analyzer produces this diagnostic when a member of a concrete class is
-found that doesn't have a concrete implementation. Concrete classes aren't
-allowed to contain abstract members.
+O analisador produz este diagnóstico quando um membro de uma classe concreta é
+encontrado que não possui uma implementação concreta. Classes concretas não são
+permitidas conter membros abstract.
 
 ## Example
 
-The following code produces this diagnostic because `m` is an abstract
-method but `C` isn't an abstract class:
+O código a seguir produz este diagnóstico porque `m` é um método abstract
+mas `C` não é uma classe abstract:
 
 ```dart
 class C {
@@ -28,8 +29,8 @@ class C {
 
 ## Common fixes
 
-If it's valid to create instances of the class, provide an implementation
-for the member:
+Se é válido criar instâncias da classe, forneça uma implementação
+para o membro:
 
 ```dart
 class C {
@@ -37,7 +38,7 @@ class C {
 }
 ```
 
-If it isn't valid to create instances of the class, mark the class as being
+Se não é válido criar instâncias da classe, marque a classe como sendo
 abstract:
 
 ```dart

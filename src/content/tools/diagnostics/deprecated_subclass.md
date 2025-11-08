@@ -1,35 +1,36 @@
 ---
+ia-translate: true
 title: deprecated_subclass
 description: >-
-  Details about the deprecated_subclass
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico deprecated_subclass
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Subclassing '{0}' is deprecated._
+_Criar subclasse de '{0}' está deprecated._
 
 ## Description
 
-The analyzer produces this diagnostic when a class annotated with
-`@Deprecated.subclass` is used in the `extends` clause of a class
-declaration, or the `implements` clause of a class or enum declaration.
+O analisador produz este diagnóstico quando uma classe anotada com
+`@Deprecated.subclass` é usada na cláusula `extends` de uma declaração de classe,
+ou na cláusula `implements` de uma declaração de classe ou enum.
 
-This annotation indicates that extending or implementing the annotated
-class is deprecated and will soon be removed. This change will likely be
-enforced by marking the class with `final` or `sealed`.
+Esta anotação indica que estender ou implementar a classe anotada
+está deprecated e em breve será removido. Esta mudança provavelmente será
+aplicada marcando a classe com `final` ou `sealed`.
 
 ## Example
 
-If the library `p` defines a class annotated with `@Deprecated.subclass`:
+Se a biblioteca `p` define uma classe anotada com `@Deprecated.subclass`:
 
 ```dart
 @Deprecated.subclass()
 class C {}
 ```
 
-Then, in any library other than `p`, the following code produces this
-diagnostic:
+Então, em qualquer biblioteca diferente de `p`, o código a seguir produz este
+diagnóstico:
 
 ```dart
 import 'package:p/p.dart';
@@ -39,9 +40,9 @@ class D extends [!C!] {}
 
 ## Common fixes
 
-Follow any specific instructions provided in the `@Deprecated.subclass`
-annotation. Otherwise, remove the relevant `extends` clause or remove the
-class name from the `implements` clause:
+Siga quaisquer instruções específicas fornecidas na anotação `@Deprecated.subclass`.
+Caso contrário, remova a cláusula `extends` relevante ou remova o
+nome da classe da cláusula `implements`:
 
 ```dart
 class D {}
