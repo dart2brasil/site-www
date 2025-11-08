@@ -20,7 +20,7 @@ Pacotes comumente usados se enquadram em três grupos:
 * [Pacotes que expandem bibliotecas principais do Dart](#packages-that-correspond-to-sdk-libraries)
 * [Pacotes especializados](#specialized-packages)
 
-## Pacotes de propósito geral
+## Pacotes de propósito geral {:#general-purpose-packages}
 
 Use esses pacotes para uma ampla variedade de projetos.
 
@@ -83,7 +83,7 @@ adicionando funcionalidade e preenchendo recursos ausentes:
 [async-3]: {{site.news}}/2016/04/unboxing-packages-async-part-3.html
 [collect]: {{site.news}}/2016/01/unboxing-packages-collection.html
 
-## Pacotes especializados
+## Pacotes especializados {:#specialized-packages}
 
 Para encontrar pacotes especializados como pacotes para Flutter e desenvolvimento web,
 consulte as seguintes seções.

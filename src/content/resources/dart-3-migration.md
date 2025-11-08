@@ -601,7 +601,7 @@ analyzer:
     strict-raw-types: true
 ```
 
-### Outras mudanças de ferramentas
+### Outras mudanças de ferramentas {:#other-tools-changes}
 
 * O Observatory descontinuado foi ocultado por padrão.
   Recomendamos usar [DevTools](/tools/dart-devtools).

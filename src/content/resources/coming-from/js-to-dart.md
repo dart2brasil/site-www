@@ -2054,7 +2054,7 @@ class Point {
 Point p = Point(3, 5);
 ```
 
-[initializing parameters]: /language/construtores
+[initializing parameters]: /language/constructors
 
 Similar to functions, construtores have the
 option to take positioned or named parameters:
