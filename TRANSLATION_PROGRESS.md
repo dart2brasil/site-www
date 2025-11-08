@@ -2,23 +2,23 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 107 files (with ia-translate: true metadata)
-- **Remaining:** ~838 files
-- **Progress:** 11.3%
+- **Translated:** 125 files (with ia-translate: true metadata)
+- **Remaining:** ~820 files
+- **Progress:** 13.2%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 52 (49 new + 3 from merged PR)
+- **Files translated this session:** 72 (37 base + 3 from merged PR + 11 pub + 13 Section 2 + 7 Section 3 + 12 Section 4)
 - **Starting count:** 55 files
-- **Current count:** 107 files
+- **Current count:** 125 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
 - ✅ Merged upstream `dart-lang/site-www` main branch
 - ✅ Created `TRANSLATION_PROGRESS.md` tracker
 
-### Documentation Files Translated (This Session - 40 files)
+### Documentation Files Translated (This Session - 72 files)
 
 #### Initial Session (23 files)
 1. ✅ `src/content/interop/js-interop/mock.md`
@@ -66,25 +66,66 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 1: Complete Pub Documentation (11 files)
+41. ✅ `src/content/tools/pub/index.md` - Added ia-translate + PT-BR frontmatter
+42. ✅ `src/content/tools/pub/packages.md` - Added ia-translate + completed English sections
+43. ✅ `src/content/tools/pub/dependencies.md` - Added ia-translate + completed English sections
+44. ✅ `src/content/tools/pub/pubspec.md` - Added ia-translate + PT-BR frontmatter
+45. ✅ `src/content/tools/pub/package-layout.md` - Added ia-translate + PT-BR frontmatter
+46. ✅ `src/content/tools/pub/versioning.md` - Added ia-translate + PT-BR frontmatter
+47. ✅ `src/content/tools/pub/publishing.md` - Added ia-translate + PT-BR frontmatter
+48. ✅ `src/content/tools/pub/workspaces.md` - Added ia-translate + PT-BR frontmatter
+49. ✅ `src/content/tools/pub/custom-package-repositories.md` - Added ia-translate + PT-BR frontmatter
+50. ✅ `src/content/tools/pub/environment-variables.md` - Added ia-translate + PT-BR frontmatter
+51. ✅ `src/content/tools/pub/automated-publishing.md` - Added ia-translate + PT-BR frontmatter
+
+#### Section 2: Diagnostic Errors - abi/abstract/address/always (13 files)
+52. ✅ `src/content/tools/diagnostics/abi_specific_integer_invalid.md` - ABI validation errors
+53. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_extra.md` - Multiple ABI mapping
+54. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_missing.md` - Missing ABI mapping
+55. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_unsupported.md` - Unsupported ABI types
+56. ✅ `src/content/tools/diagnostics/abstract_field_initializer.md` - Abstract field init
+57. ✅ `src/content/tools/diagnostics/abstract_sealed_class.md` - Abstract/sealed conflicts
+58. ✅ `src/content/tools/diagnostics/abstract_super_member_reference.md` - Abstract member invocation
+59. ✅ `src/content/tools/diagnostics/address_position.md` - Address expression usage
+60. ✅ `src/content/tools/diagnostics/address_receiver.md` - Address receiver validation
+61. ✅ `src/content/tools/diagnostics/always_declare_return_types.md` - Return type lint rule
+62. ✅ `src/content/tools/diagnostics/always_put_control_body_on_new_line.md` - Control flow lint
+63. ✅ `src/content/tools/diagnostics/always_put_required_named_parameters_first.md` - Parameter ordering
+64. ✅ `src/content/tools/diagnostics/always_use_package_imports.md` - Package import lint
+
+#### Section 3: Diagnostic Errors - ambiguous/annotate/annotation (7 files)
+65. ✅ `src/content/tools/diagnostics/ambiguous_export.md`
+66. ✅ `src/content/tools/diagnostics/ambiguous_extension_member_access.md`
+67. ✅ `src/content/tools/diagnostics/ambiguous_import.md`
+68. ✅ `src/content/tools/diagnostics/ambiguous_set_or_map_literal_both.md`
+69. ✅ `src/content/tools/diagnostics/ambiguous_set_or_map_literal_either.md`
+70. ✅ `src/content/tools/diagnostics/annotate_overrides.md`
+71. ✅ `src/content/tools/diagnostics/annotation_on_pointer_field.md`
+
 #### Section 4: Diagnostic Errors - argument/assert/asset (12 files)
-41. ✅ `src/content/tools/diagnostics/argument_must_be_a_constant.md`
-42. ✅ `src/content/tools/diagnostics/argument_must_be_native.md`
-43. ✅ `src/content/tools/diagnostics/argument_type_not_assignable.md`
-44. ✅ `src/content/tools/diagnostics/argument_type_not_assignable_to_error_handler.md`
-45. ✅ `src/content/tools/diagnostics/assert_in_redirecting_constructor.md`
-46. ✅ `src/content/tools/diagnostics/asset_directory_does_not_exist.md`
-47. ✅ `src/content/tools/diagnostics/asset_does_not_exist.md`
-48. ✅ `src/content/tools/diagnostics/asset_field_not_list.md`
-49. ✅ `src/content/tools/diagnostics/asset_missing_path.md`
-50. ✅ `src/content/tools/diagnostics/asset_not_string.md`
-51. ✅ `src/content/tools/diagnostics/asset_not_string_or_map.md`
-52. ✅ `src/content/tools/diagnostics/asset_path_not_string.md`
+72. ✅ `src/content/tools/diagnostics/argument_must_be_a_constant.md`
+73. ✅ `src/content/tools/diagnostics/argument_must_be_native.md`
+74. ✅ `src/content/tools/diagnostics/argument_type_not_assignable.md`
+75. ✅ `src/content/tools/diagnostics/argument_type_not_assignable_to_error_handler.md`
+76. ✅ `src/content/tools/diagnostics/assert_in_redirecting_constructor.md`
+77. ✅ `src/content/tools/diagnostics/asset_directory_does_not_exist.md`
+78. ✅ `src/content/tools/diagnostics/asset_does_not_exist.md`
+79. ✅ `src/content/tools/diagnostics/asset_field_not_list.md`
+80. ✅ `src/content/tools/diagnostics/asset_missing_path.md`
+81. ✅ `src/content/tools/diagnostics/asset_not_string.md`
+82. ✅ `src/content/tools/diagnostics/asset_not_string_or_map.md`
+83. ✅ `src/content/tools/diagnostics/asset_path_not_string.md`
 
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 27/~776 files (3.5%)
+- ✅ **Pub Documentation:** 23/23 core files done (100%) 🎉
+- ⏳ **Tools:** 47/~776 files (6.1%)
+  - ✅ **Section 2 (Diagnostic Errors - abi/abstract/address/always):** 13/13 files (100%) 🎉
+  - ✅ **Section 3 (Diagnostic Errors - ambiguous/annotate/annotation):** 7/7 files (100%) 🎉
+  - ✅ **Section 4 (Diagnostic Errors - argument/assert/asset):** 12/12 files (100%) 🎉
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -93,11 +134,13 @@ Major tools documentation files completed:
 - ✅ IDE support: vs-code.md, jetbrains-plugin.md (already done)
 - ✅ DartPad: troubleshoot.md, privacy.md
 - ✅ Configuration: analysis.md, experiment-flags.md
+- ✅ Pub documentation: Complete (11 core files)
+- ✅ Diagnostic errors: Sections 2, 3, 4 complete (32 files)
 
 ## Files Still Needing Translation
 
 ### Large Sections
-- **Tools documentation:** ~761 files remaining (mostly diagnostic error codes)
+- **Tools documentation:** ~729 files remaining (mostly diagnostic error codes)
 - **Web, server, interop:** ~200+ files
 - **Resources & guides:** ~50+ files
 - **Effective Dart:** ~30+ files
@@ -111,15 +154,19 @@ Following `.claude/agents/dart-docs-translator.md`:
 - ✅ Commit files individually with clear messages
 
 ## Branch
-`claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
+Combined: `claude/section-prompts-prompt-1-011CUuWLRpohpMPwPaLgTHZH` (merged with main)
 
 ## Last Updated
-Session: 2025-11-08 (52 files this session including merge)
-Progress: 11.3% complete (107/945 files)
+Session: 2025-11-08 (72 files this session including merge)
+Progress: 13.2% complete (125/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
 - ✅ Libraries section 100% COMPLETE! 🎉
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
+- ✅ Pub Documentation section 100% COMPLETE! 🎉 (23 core + command files)
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)
+- ✅ Section 2 (Diagnostic Errors - abi/abstract/address/always) 100% COMPLETE! 🎉 (13 files)
+- ✅ Section 3 (Diagnostic Errors - ambiguous/annotate/annotation) 100% COMPLETE! 🎉 (7 files)
+- ✅ Section 4 (Diagnostic Errors - argument/assert/asset) 100% COMPLETE! 🎉 (12 files)

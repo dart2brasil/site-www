@@ -1,9 +1,10 @@
 ---
-title: Dart package support and tools
-shortTitle: Dart packages
-breadcrumb: Packages
+ia-translate: true
+title: Suporte e ferramentas para pacotes Dart
+shortTitle: Pacotes Dart
+breadcrumb: Pacotes
 description: >-
-  Learn about package support in Dart and supporting tooling.
+  Aprenda sobre o suporte a pacotes no Dart e ferramentas de suporte.
 # This page exists for configuring the breadcrumb entries of descendants.
 # It is redirected to a different page by the Firebase config.
 sitemap: false

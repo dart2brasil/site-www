@@ -1,52 +1,53 @@
 ---
+ia-translate: true
 title: ambiguous_export
 description: >-
-  Details about the ambiguous_export
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico ambiguous_export
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The name '{0}' is defined in the libraries '{1}' and '{2}'._
+_O nome '{0}' está definido nas bibliotecas '{1}' e '{2}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when two or more export directives
-cause the same name to be exported from multiple libraries.
+O analisador produz este diagnóstico quando duas ou mais diretivas export
+fazem com que o mesmo nome seja exportado de múltiplas bibliotecas.
 
-## Example
+## Exemplo
 
-Given a file `a.dart` containing
-
-```dart
-class C {}
-```
-
-And a file `b.dart` containing
+Dado um arquivo `a.dart` contendo
 
 ```dart
 class C {}
 ```
 
-The following code produces this diagnostic because the name `C` is being
-exported from both `a.dart` and `b.dart`:
+E um arquivo `b.dart` contendo
+
+```dart
+class C {}
+```
+
+O código a seguir produz este diagnóstico porque o nome `C` está sendo
+exportado tanto de `a.dart` quanto de `b.dart`:
 
 ```dart
 export 'a.dart';
 export [!'b.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
-If none of the names in one of the libraries needs to be exported, then
-remove the unnecessary export directives:
+Se nenhum dos nomes em uma das bibliotecas precisa ser exportado, então
+remova as diretivas export desnecessárias:
 
 ```dart
 export 'a.dart';
 ```
 
-If all of the export directives are needed, then hide the name in all
-except one of the directives:
+Se todas as diretivas export são necessárias, então oculte o nome em todas
+exceto uma das diretivas:
 
 ```dart
 export 'a.dart';

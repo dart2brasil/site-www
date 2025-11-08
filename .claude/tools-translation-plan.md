@@ -86,35 +86,37 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ---
 
-## Section 6: Diagnostic Errors - Abstract & Always (A)
-**Files:** ~35 files | **Priority:** MEDIUM
+## Section 6: Diagnostic Errors - Abstract & Always (A) ✅ COMPLETE
+**Files:** 13 files | **Priority:** MEDIUM | **Status:** ✅ DONE
 
 ### Pattern:
-- `tools/diagnostics/abi_*.md`
-- `tools/diagnostics/abstract_*.md`
-- `tools/diagnostics/address_*.md`
-- `tools/diagnostics/always_*.md`
+- `tools/diagnostics/abi_*.md` (4 files)
+- `tools/diagnostics/abstract_*.md` (3 files)
+- `tools/diagnostics/address_*.md` (2 files)
+- `tools/diagnostics/always_*.md` (4 files)
 
 **Focus:** ABI errors, abstract class errors, address errors, always-style lint rules
-**Estimated time:** 2-3 hours
+**Completed:** 2025-11-08
+**Actual files:** 13 (not ~35 as estimated)
 
 ---
 
-## Section 7: Diagnostic Errors - Ambiguous & Annotations (A)
-**Files:** ~35 files | **Priority:** MEDIUM
+## Section 7: Diagnostic Errors - Ambiguous & Annotations (A) ✅ COMPLETE
+**Files:** 7 files | **Priority:** MEDIUM | **Status:** ✅ DONE
 
 ### Pattern:
-- `tools/diagnostics/ambiguous_*.md`
-- `tools/diagnostics/annotate_*.md`
-- `tools/diagnostics/annotation_*.md`
+- `tools/diagnostics/ambiguous_*.md` (5 files)
+- `tools/diagnostics/annotate_*.md` (1 file)
+- `tools/diagnostics/annotation_*.md` (1 file)
 
 **Focus:** Ambiguity errors and annotation-related issues
-**Estimated time:** 2-3 hours
+**Completed:** 2025-11-08
+**Actual files:** 7 (not ~35 as estimated)
 
 ---
 
-## Section 8: Diagnostic Errors - Arguments & Assertions (A) ✅
-**Files:** 12 files | **Priority:** MEDIUM | **Status:** COMPLETE
+## Section 8: Diagnostic Errors - Arguments & Assertions (A) ✅ COMPLETE
+**Files:** 12 files | **Priority:** MEDIUM | **Status:** ✅ DONE
 
 ### Pattern:
 - `tools/diagnostics/argument_*.md` (4 files)
@@ -375,13 +377,19 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 1:** Complete Pub Documentation (23/23 files) - 100% COMPLETE! 🎉
+  - All core pub files: index, packages, dependencies, pubspec, package-layout, versioning, publishing, workspaces, custom-package-repositories, environment-variables, automated-publishing
+  - All pub command files: cmd/index, pub-add, pub-get, pub-upgrade, pub-downgrade, pub-deps, pub-outdated, pub-cache, pub-global
+  - Already completed: create-packages, writing-package-pages, verified-publishers
+- ✅ **Section 6:** Diagnostic Errors - abi/abstract/address/always (13/13 files) - 100% COMPLETE!
+- ✅ **Section 7:** Diagnostic Errors - Ambiguous & Annotations (7/7 files) - 100% COMPLETE!
 - ✅ **Section 8:** Diagnostic Errors - Arguments & Assertions (12/12 files) - 100% COMPLETE!
 
 ### In Progress:
-- ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
+- None
 
 ### Not Started:
-All sections 1-20 pending
+Sections 2-5, 9-20 pending
 
 ---
 
