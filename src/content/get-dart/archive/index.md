@@ -1,9 +1,10 @@
 ---
-title: Dart SDK archive
-shortTitle: Archive
+ia-translate: true
+title: Arquivo do SDK do Dart
+shortTitle: Arquivo
 description: >-
-  Download specific stable, beta, dev, and main channel versions of
-  the Dart SDK and the Dart API documentation.
+  Baixe versões específicas dos canais stable, beta, dev e main do
+  SDK do Dart e da documentação da API do Dart.
 ---
 
 Use este arquivo para baixar
