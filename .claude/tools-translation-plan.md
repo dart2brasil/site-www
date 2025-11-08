@@ -375,12 +375,16 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 19 (NEW PLAN):** Diagnostic Errors - prefer/private/record/recursive/return (50/50 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Most sections 1-20 pending
+
+### Note:
+This plan is being superseded by `.claude/20-section-prompts.md` which provides a more detailed breakdown of the Tools section into 20 complete, self-contained translation prompts.
 
 ---
 
