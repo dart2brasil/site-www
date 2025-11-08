@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: abi_specific_integer_mapping_extra
 description: >-
-  Details about the abi_specific_integer_mapping_extra
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico abi_specific_integer_mapping_extra
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,14 +12,13 @@ _Classes extending 'AbiSpecificInteger' must have exactly one 'AbiSpecificIntege
 
 ## Description
 
-The analyzer produces this diagnostic when a class that extends
-`AbiSpecificInteger` has more than one `AbiSpecificIntegerMapping`
-annotation.
+O analisador produz este diagnóstico quando uma classe que estende
+`AbiSpecificInteger` tem mais de uma anotação `AbiSpecificIntegerMapping`.
 
 ## Example
 
-The following code produces this diagnostic because there are two
-`AbiSpecificIntegerMapping` annotations on the class `C`:
+O código a seguir produz este diagnóstico porque há duas
+anotações `AbiSpecificIntegerMapping` na classe `C`:
 
 ```dart
 import 'dart:ffi';
@@ -32,8 +32,8 @@ final class C extends AbiSpecificInteger {
 
 ## Common fixes
 
-Remove all but one of the annotations, merging the arguments as
-appropriate:
+Remova todas as anotações exceto uma, mesclando os argumentos conforme
+apropriado:
 
 ```dart
 import 'dart:ffi';
