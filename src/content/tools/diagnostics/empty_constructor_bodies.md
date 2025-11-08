@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: empty_constructor_bodies
 description: >-
-  Details about the empty_constructor_bodies
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico empty_constructor_bodies
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Empty constructor bodies should be written using a ';' rather than '{}'._
+_Corpos de construtores empty devem ser escritos usando ';' ao invés de '{}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a constructor has an empty
-block body.
+O analisador produz este diagnóstico quando um construtor tem um
+corpo de bloco empty.
 
 ## Example
 
-The following code produces this diagnostic because the constructor for
-`C` has a block body that is empty:
+O código a seguir produz este diagnóstico porque o construtor de
+`C` tem um corpo de bloco que está empty:
 
 ```dart
 class C {
@@ -38,7 +39,7 @@ class C {
 
 ## Common fixes
 
-Replace the block with a semicolon:
+Substitua o bloco por um ponto e vírgula:
 
 ```dart
 class C {

@@ -1,31 +1,32 @@
 ---
+ia-translate: true
 title: export_legacy_symbol
 description: >-
-  Details about the export_legacy_symbol
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico export_legacy_symbol
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The symbol '{0}' is defined in a legacy library, and can't be re-exported from a library with null safety enabled._
+_O símbolo '{0}' é definido em uma biblioteca legada, e não pode ser reexportado de uma biblioteca com null safety habilitado._
 
 ## Description
 
-The analyzer produces this diagnostic when a library that was opted in to
-null safety exports another library, and the exported library is opted out
-of null safety.
+O analisador produz este diagnóstico quando uma biblioteca que foi aderida ao
+null safety exporta outra biblioteca, e a biblioteca exportada está fora
+do null safety.
 
 ## Example
 
-Given a library that is opted out of null safety:
+Dado uma biblioteca que está fora do null safety:
 
 ```dart
 // @dart = 2.8
 String s;
 ```
 
-The following code produces this diagnostic because it's exporting symbols
-from an opted-out library:
+O código a seguir produz este diagnóstico porque está exportando símbolos
+de uma biblioteca que não aderiu:
 
 ```dart
 export [!'optedOut.dart'!];
@@ -35,21 +36,21 @@ class C {}
 
 ## Common fixes
 
-If you're able to do so, migrate the exported library so that it doesn't
-need to opt out:
+Se você puder fazer isso, migre a biblioteca exportada para que ela não
+precise estar fora:
 
 ```dart
 String? s;
 ```
 
-If you can't migrate the library, then remove the export:
+Se você não puder migrar a biblioteca, então remova o export:
 
 ```dart
 class C {}
 ```
 
-If the exported library (the one that is opted out) itself exports an
-opted-in library, then it's valid for your library to indirectly export the
-symbols from the opted-in library. You can do so by adding a hide
-combinator to the export directive in your library that hides all of the
-names declared in the opted-out library.
+Se a biblioteca exportada (aquela que está fora) ela mesma exporta uma
+biblioteca que aderiu, então é válido para sua biblioteca exportar indiretamente os
+símbolos da biblioteca que aderiu. Você pode fazer isso adicionando um
+combinador hide à diretiva export em sua biblioteca que oculta todos os
+nomes declarados na biblioteca que não aderiu.
