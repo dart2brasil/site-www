@@ -1,178 +1,179 @@
 ---
-title: Debugging Dart web apps
-shortTitle: Debugging web apps
-breadcrumb: Debugging
-description: Learn how to debug your Dart web app.
+ia-translate: true
+title: Depurando aplicações web Dart
+shortTitle: Depurando aplicações web
+breadcrumb: Depuração
+description: Aprenda como depurar sua aplicação web Dart.
 ---
 
-You can use a [Dart IDE][IDE], [Dart DevTools][], and browser tools
-such as [Chrome DevTools][] to debug your Dart web apps.
+Você pode usar uma [IDE Dart][IDE], [Dart DevTools][], e ferramentas de navegador
+como [Chrome DevTools][] para depurar suas aplicações web Dart.
 
-* To debug your app's logic,
-  use your IDE, Dart DevTools, or browser tools.
-  Dart DevTools has better support than browser tools
-  for inspecting and automatically reloading Dart code.
-* To debug your app's appearance (HTML/CSS) and performance,
-  use your IDE or browser tools such as Chrome DevTools.
+* Para depurar a lógica da sua aplicação,
+  use sua IDE, Dart DevTools, ou ferramentas de navegador.
+  Dart DevTools tem melhor suporte do que ferramentas de navegador
+  para inspecionar e recarregar automaticamente código Dart.
+* Para depurar a aparência da sua aplicação (HTML/CSS) e performance,
+  use sua IDE ou ferramentas de navegador como Chrome DevTools.
 
 
-## Overview
+## Visão geral
 
-To serve your app, use `webdev serve`
-(either at the command line or through your IDE)
-to start up the Dart development compiler.
-To enable Dart DevTools, add the `--debug` or `--debug-extension` option
-(at the command line or through your IDE):
+Para servir sua aplicação, use `webdev serve`
+(na linha de comando ou através da sua IDE)
+para iniciar o compilador de desenvolvimento Dart.
+Para habilitar o Dart DevTools, adicione a opção `--debug` ou `--debug-extension`
+(na linha de comando ou através da sua IDE):
 
 ```console
 $ webdev serve --debug
 ```
 
-When running your app using the `--debug` flag of `webdev`,
-you can open Dart DevTools by pressing
+Ao executar sua aplicação usando a flag `--debug` do `webdev`,
+você pode abrir o Dart DevTools pressionando
 <kbd>Alt</kbd>+<kbd>D</kbd>
-(or <kbd>Option</kbd>+<kbd>D</kbd> on macOS).
+(ou <kbd>Option</kbd>+<kbd>D</kbd> no macOS).
 
-To open Chrome DevTools, press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
-(or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on macOS).
-If you want to debug your app using Chrome DevTools,
-you can use [source maps][] to display your Dart source files
-instead of the JavaScript that the compiler produces.
-For more information on using Chrome DevTools,
-see the [Chrome DevTools documentation.][Chrome DevTools]
+Para abrir o Chrome DevTools, pressione <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
+(ou <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> no macOS).
+Se você quiser depurar sua aplicação usando Chrome DevTools,
+você pode usar [source maps][] para exibir seus arquivos fonte Dart
+em vez do JavaScript que o compilador produz.
+Para mais informações sobre o uso do Chrome DevTools,
+veja a [documentação do Chrome DevTools.][Chrome DevTools]
 
 [source maps]: https://developer.chrome.com/docs/devtools/javascript/source-maps/
 
-To use the Dart DevTools or Chrome DevTools
-to debug a Dart web app, you need the following software:
+Para usar o Dart DevTools ou Chrome DevTools
+para depurar uma aplicação web Dart, você precisa do seguinte software:
 
 * [Google Chrome.][Google Chrome]
-* [Dart SDK][], version 2.0.0 or higher.
-* One of the following development environments:
-  * Command-line: [Dart command-line tool packages][cl-tools]
-    such as webdev (required for both Dart and Chrome DevTools) and
-    devtools (required for Dart DevTools).
-    <br>_or_
-  * A [Dart IDE or editor][IDE] that supports web development.
-* A [Dart web app][] to debug.
+* [Dart SDK][], versão 2.0.0 ou superior.
+* Um dos seguintes ambientes de desenvolvimento:
+  * Linha de comando: [pacotes de ferramentas de linha de comando Dart][cl-tools]
+    como webdev (necessário tanto para Dart quanto para Chrome DevTools) e
+    devtools (necessário para Dart DevTools).
+    <br>_ou_
+  * Uma [IDE ou editor Dart][IDE] que suporte desenvolvimento web.
+* Uma [aplicação web Dart][Dart web app] para depurar.
 
 [cl-tools]: #getting-command-line-tool-packages
 
-## Getting started with Dart DevTools {:#using-dart-devtools}
+## Começando com Dart DevTools {:#using-dart-devtools}
 
 <img src="/assets/img/dart-devtools-screenshot.png" alt="DevTools">
 
-This section leads you through the basics of
-using Dart DevTools to debug a web app.
-If you already have an app that's ready to debug,
-you can skip creating the test app (step 1),
-but you'll need to adjust the instructions to match your app.
+Esta seção guia você pelos conceitos básicos de
+usar o Dart DevTools para depurar uma aplicação web.
+Se você já tem uma aplicação pronta para depurar,
+você pode pular a criação da aplicação de teste (passo 1),
+mas você precisará ajustar as instruções para corresponder à sua aplicação.
 
-1. _Optional:_ Clone the [webdev repo,][] so you can use its example app
-   to play with Dart DevTools.
+1. _Opcional:_ Clone o [repositório webdev][webdev repo,] para que você possa usar sua aplicação de exemplo
+   para experimentar o Dart DevTools.
 
-1. _Optional:_ Install the [Dart Debug Extension][]
-   so that you can run your app and open the Dart DevTools
-   in an already-running instance of Chrome.
+1. _Opcional:_ Instale a [Dart Debug Extension][]
+   para que você possa executar sua aplicação e abrir o Dart DevTools
+   em uma instância do Chrome já em execução.
 
-1. In your app's top directory, run `dart pub get` to get its dependencies.
+1. No diretório principal da sua aplicação, execute `dart pub get` para obter suas dependências.
 
    ```console
    $ cd example
    $ dart pub get
    ```
 
-1. Compile and serve the app in debug mode,
-   using either your IDE or `webdev` at the command line.
+1. Compile e sirva a aplicação em modo debug,
+   usando sua IDE ou `webdev` na linha de comando.
 
    :::note
-   The first compilation takes the longest,
-   because the entire app must be compiled.
-   After that, refreshes are much faster.
+   A primeira compilação leva mais tempo,
+   porque toda a aplicação deve ser compilada.
+   Depois disso, as atualizações são muito mais rápidas.
    :::
 
-   If you're using webdev at the command line,
-   the command to use depends on whether you want (or need) to
-   run the app and debugger in an already-running instance of Chrome.
+   Se você estiver usando webdev na linha de comando,
+   o comando a usar depende se você quer (ou precisa)
+   executar a aplicação e o depurador em uma instância do Chrome já em execução.
 
-   * If you have [Dart Debug Extension][] installed and want to use
-     an existing instance of Chrome to debug:
+   * Se você tem a [Dart Debug Extension][] instalada e quer usar
+     uma instância existente do Chrome para depurar:
 
      ```console
      $ webdev serve --debug-extension
      ```
 
-   * Otherwise, use the following command, 
-     which launches a new instance of Chrome
-     and runs the app:
+   * Caso contrário, use o seguinte comando,
+     que inicia uma nova instância do Chrome
+     e executa a aplicação:
 
      ```console
      $ webdev serve --debug
      ```
 
-1. If your app isn't already running, open it in a Chrome browser window.
+1. Se sua aplicação ainda não estiver em execução, abra-a em uma janela do navegador Chrome.
    <br>
-   For example, if you use `webdev serve --debug-extension` with no arguments,
-   open [http://127.0.0.1:8080](http://http://127.0.0.1:8080).
+   Por exemplo, se você usar `webdev serve --debug-extension` sem argumentos,
+   abra [http://127.0.0.1:8080](http://http://127.0.0.1:8080).
 
-1. Open Dart DevTools to debug the app that's running in the current window.
+1. Abra o Dart DevTools para depurar a aplicação que está em execução na janela atual.
 
-   * If Dart Debug Extension is installed and
-     you used the `--debug-extension` flag to `webdev`,
-     click the Dart logo
+   * Se a Dart Debug Extension estiver instalada e
+     você usou a flag `--debug-extension` com `webdev`,
+     clique no logo do Dart
      <img src="/assets/img/logo/dart-64.png" alt="Dart logo" class="align-baseline text-icon">
-     at the top right of the browser window.
-     
-   * If you used the `--debug` flag to `webdev`,
-     press <kbd>Alt</kbd>+<kbd>D</kbd>
-     (or <kbd>Option</kbd>+<kbd>D</kbd> on macOS).
-   
-   The Dart DevTools window comes up
-   and displays the source code for your app's main file.
+     no canto superior direito da janela do navegador.
 
-1. Set a breakpoint inside a timer or event handler
-   by clicking to the left of one of its lines of code.
+   * Se você usou a flag `--debug` com `webdev`,
+     pressione <kbd>Alt</kbd>+<kbd>D</kbd>
+     (ou <kbd>Option</kbd>+<kbd>D</kbd> no macOS).
+
+   A janela do Dart DevTools abre
+   e exibe o código fonte do arquivo principal da sua aplicação.
+
+1. Defina um breakpoint dentro de um timer ou manipulador de evento
+   clicando à esquerda de uma das linhas de código.
    <br>
-   For example, click the line number for the first line inside
-   an event handler or timer callback.
+   Por exemplo, clique no número da linha para a primeira linha dentro
+   de um manipulador de evento ou callback de timer.
 
-1. Trigger the event that causes the function call.
-   Execution stops at the breakpoint.
+1. Acione o evento que causa a chamada da função.
+   A execução para no breakpoint.
 
-1. In the **Variables** pane, inspect the values of variables.
+1. No painel **Variables**, inspecione os valores das variáveis.
 
-1. Resume script execution, and trigger the event again or press **Pause**.
-   Execution pauses again.
+1. Retome a execução do script, e acione o evento novamente ou pressione **Pause**.
+   A execução pausa novamente.
 
-1. Try stepping through code line-by-line using the
-   **Step In**, **Step Over**, and **Step Out** buttons.
+1. Tente percorrer o código linha por linha usando os
+   botões **Step In**, **Step Over**, e **Step Out**.
 
    :::note
-   Dart DevTools doesn't step into SDK code.
-   For example, if you press **Step In** at a call to `print()`,
-   you go to the next line, not into the SDK code that implements `print()`.
+   O Dart DevTools não entra no código do SDK.
+   Por exemplo, se você pressionar **Step In** em uma chamada para `print()`,
+   você vai para a próxima linha, não para o código do SDK que implementa `print()`.
    :::
 
-1. Change your source code and reload the Chrome window that's running the app.
-   The app quickly rebuilds and reloads.
-   Until [issue 1925][] is fixed,
-   you lose your breakpoints when reloading the app.
+1. Altere seu código fonte e recarregue a janela do Chrome que está executando a aplicação.
+   A aplicação recompila e recarrega rapidamente.
+   Até que a [issue 1925][] seja corrigida,
+   você perde seus breakpoints ao recarregar a aplicação.
 
-1. Click the **Logging** button to see stdout, stderr, and system logs.
+1. Clique no botão **Logging** para ver stdout, stderr, e logs do sistema.
 
 
-## Getting command-line tool packages
+## Obtendo pacotes de ferramentas de linha de comando {:#getting-command-line-tool-packages}
 
-If you're using the command line instead of an IDE or Dart-enabled editor,
-then you need the [webdev tool][webdev].
-Dart DevTools is provided by the SDK.
+Se você está usando a linha de comando em vez de uma IDE ou editor habilitado para Dart,
+então você precisa da [ferramenta webdev][webdev].
+O Dart DevTools é fornecido pelo SDK.
 
 ```console
 $ dart pub global activate webdev
 ```
 
-If your PATH environment variable is set up correctly,
-you can now use these tools at the command line:
+Se sua variável de ambiente PATH estiver configurada corretamente,
+você pode agora usar essas ferramentas na linha de comando:
 
 ```console
 $ webdev --help
@@ -180,11 +181,11 @@ A tool to develop Dart web projects.
 ...
 ```
 
-For information on setting PATH, see the
-[`dart pub global` documentation.][dart pub global documentation]
+Para informações sobre configurar PATH, veja a
+[documentação do `dart pub global`.][dart pub global documentation]
 
-Whenever you update the Dart SDK,
-update the tools by activating them again:
+Sempre que você atualizar o Dart SDK,
+atualize as ferramentas ativando-as novamente:
 
 ```console
 $ dart pub global activate webdev     # update webdev
@@ -192,14 +193,14 @@ $ dart pub global activate webdev     # update webdev
 
 {% render 'tools/debug-prod-js-code.md', site: site %}
 
-## Resources
+## Recursos
 
-To learn more, see the following:
+Para saber mais, veja o seguinte:
 
-* Documentation for [your IDE][IDE]
-* [Dart DevTools documentation][Dart DevTools]
-* [webdev tool documentation][webdev]
-* [webdev package documentation][webdev-pkg]
+* Documentação para [sua IDE][IDE]
+* [Documentação do Dart DevTools][Dart DevTools]
+* [Documentação da ferramenta webdev][webdev]
+* [Documentação do pacote webdev][webdev-pkg]
 
 [Chrome DevTools]: https://developer.chrome.com/docs/devtools/
 [Dart Debug Extension]: https://chrome.google.com/webstore/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
