@@ -24,11 +24,30 @@ description: Descrição em português
 **Critical:** Links are the #1 cause of broken documentation. Follow these rules strictly:
 
 - **Reference-style links:** Keep the reference keys in English, translate only the display text
+
+  📋 **Padrão Correto de Links:**
+
+  ✅ **CORRETO:**
   ```markdown
-  ❌ WRONG: [Documentação Dart][Dart documentation]
+  [texto traduzido em português][reference-key-in-english]
+  ...
+  [reference-key-in-english]: /url/path
+  ```
+
+  ❌ **INCORRETO:**
+  ```markdown
+  [texto traduzido em português][]
+  # Esperava encontrar definição traduzida, mas só existe em inglês
+  ```
+
+  **Example:**
+  ```markdown
   ✅ RIGHT: [Documentação Dart][Dart documentation]
 
   Then keep definition: [Dart documentation]: /docs/...
+
+  ❌ WRONG: [Documentação Dart][]
+  # This would try to find [Documentação Dart]: /docs/... which doesn't exist!
   ```
 
 - **Header anchors:** Keep custom anchors in English, translate only the header text
@@ -183,14 +202,40 @@ $ pub get
 
 ### 9. **Quality Checks Before Committing**
 
-Run these checks on every translated file:
+**🚨 CRITICAL: Link Validation is MANDATORY - Cannot proceed without passing! 🚨**
 
-**Link Validation:**
-```bash
-# Check all reference-style links have definitions
-grep -E "\[.*\]\[.*\]" file.md
-grep -E "^\[.*\]:" file.md
-```
+Run these checks on every translated file and **FIX ALL ISSUES** before advancing:
+
+**Link Validation (MANDATORY):**
+
+1. **Check for empty reference keys:**
+   ```bash
+   # Search for [text][] pattern - these are WRONG!
+   grep -E "\[.*\]\[\]" file.md
+   # If found: FIX by adding English reference key: [text][english-key]
+   ```
+
+2. **Check all reference-style links have definitions:**
+   ```bash
+   # Extract all reference keys used
+   grep -oE "\]\[([^\]]+)\]" file.md | sed 's/\]\[//' | sed 's/\]//' | sort -u > /tmp/refs_used.txt
+
+   # Extract all reference definitions
+   grep -oE "^\[([^\]]+)\]:" file.md | sed 's/\[//' | sed 's/\]://' | sort -u > /tmp/refs_defined.txt
+
+   # Find missing definitions
+   comm -23 /tmp/refs_used.txt /tmp/refs_defined.txt
+   # If output is not empty: MISSING DEFINITIONS - MUST FIX!
+   ```
+
+3. **Verify reference keys are in English:**
+   ```bash
+   # Check if reference keys contain Portuguese characters (á, é, í, ó, ú, ã, õ, ç)
+   grep -E "^\[[^]]*[áéíóúãõçÁÉÍÓÚÃÕÇ][^]]*\]:" file.md
+   # If found: FIX by changing to English reference keys
+   ```
+
+**⛔ DO NOT PROCEED if any link validation fails! Fix all issues first!**
 
 **Metadata Validation:**
 ```bash
@@ -240,17 +285,41 @@ translate: folder/filename.md
    - Translate prose naturally to PT-BR
    - Keep technical terms in English
    - Preserve all code blocks exactly
-   - Keep all links intact
+   - Keep all links intact with English reference keys
 
-4. **Validate links**
+4. **🚨 MANDATORY: Validate ALL links (BLOCKING STEP)**
+
+   **Run ALL these validations and FIX issues before proceeding:**
+
+   a. **Check for empty reference keys:**
    ```bash
-   # Ensure all reference links have definitions
-   grep -E "\[.*\]\[" file.md | while read line; do
-     # Extract reference key and verify definition exists
-   done
+   grep -E "\[.*\]\[\]" file.md
+   # Must return empty! If not, FIX immediately!
    ```
 
-5. **Commit individually**
+   b. **Verify all reference keys have definitions:**
+   ```bash
+   # Extract used reference keys
+   grep -oE "\]\[([^\]]+)\]" file.md | sed 's/\]\[//' | sed 's/\]//' | sort -u > /tmp/refs_used.txt
+
+   # Extract defined reference keys
+   grep -oE "^\[([^\]]+)\]:" file.md | sed 's/\[//' | sed 's/\]://' | sort -u > /tmp/refs_defined.txt
+
+   # Find missing definitions
+   comm -23 /tmp/refs_used.txt /tmp/refs_defined.txt
+   # Must return empty! If not, FIX immediately!
+   ```
+
+   c. **Verify reference keys are in English (no PT characters):**
+   ```bash
+   grep -E "^\[[^]]*[áéíóúãõçÁÉÍÓÚÃÕÇ][^]]*\]:" file.md
+   # Must return empty! If not, FIX immediately!
+   ```
+
+   **⛔ STOP! Do NOT proceed to step 5 if ANY validation fails!**
+   **⛔ You MUST fix all link issues before committing!**
+
+5. **Commit individually** (only after ALL validations pass)
    ```bash
    git add path/to/file.md
    git commit -m "translate: path/to/file.md [details]"
@@ -351,10 +420,16 @@ Note: Translate the header text, but keep the anchor {:#...} exactly as is!
 
 ### ❌ Common Mistakes to Avoid:
 
-1. **Translating link reference keys**
+1. **Translating link reference keys or using empty reference keys**
    ```markdown
-   ❌ [texto][documentação]
-   ✅ [texto][documentation]
+   ❌ WRONG: [texto traduzido em português][]
+   # This tries to find [texto traduzido em português]: /url which doesn't exist!
+
+   ❌ WRONG: [texto][documentação]
+   # Reference key should stay in English!
+
+   ✅ RIGHT: [texto traduzido em português][documentation]
+   # Keep reference key in English: [documentation]: /url/path
    ```
 
 2. **Translating type names**
@@ -438,17 +513,22 @@ você precisa do [Dart SDK][]:
 
 ## Success Metrics
 
+**🚨 MANDATORY CHECKS - All must pass before committing:**
+
 After translating a file, verify:
 
 - ✅ `ia-translate: true` in frontmatter
-- ✅ All reference-style links have definitions
+- ✅ **NO empty reference keys `[]` found** (blocking!)
+- ✅ **ALL reference-style links have matching definitions** (blocking!)
+- ✅ **ALL reference keys are in English** (blocking!)
 - ✅ Code blocks unchanged
 - ✅ Technical terms in English
 - ✅ Natural PT-BR prose
 - ✅ File compiles without errors
-- ✅ Links work correctly
 - ✅ Command names unchanged
 - ✅ Type names and keywords in English
+
+**If ANY of the link validations (marked with 🚨) fail, you CANNOT proceed to commit!**
 
 ## When to Ask for Help
 
@@ -471,3 +551,26 @@ Your translations should read naturally in PT-BR while maintaining 100% technica
 3. **Translate naturally** - Explanatory text should sound natural in PT-BR
 4. **Protect links** - Reference keys and URLs never change
 5. **Add metadata** - Always include `ia-translate: true`
+
+---
+
+## 🚨 CRITICAL REMINDER: Link Validation is BLOCKING
+
+**You CANNOT advance to the next file until ALL link validations pass:**
+
+1. ✅ No empty reference keys `[text][]`
+2. ✅ All reference keys have definitions `[key]: /url`
+3. ✅ All reference keys are in English (no PT characters)
+
+**WORKFLOW ENFORCEMENT:**
+- After translating → Run validations
+- If validations FAIL → Fix issues immediately
+- Only after ALL validations PASS → Commit and move to next file
+
+**DO NOT:**
+- ❌ Skip link validation
+- ❌ Commit files with broken links
+- ❌ Move to next file without validating
+- ❌ Assume links are OK without running checks
+
+This is a **hard requirement** to prevent broken documentation!
