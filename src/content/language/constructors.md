@@ -66,12 +66,12 @@ class Point {
 }
 ```
 
-### Construtores padrão
+### Construtores padrão {:#default-constructors}
 
 Se você não declarar um construtor, o Dart usa o construtor padrão.
 O construtor padrão é um construtor generativo sem argumentos ou nome.
 
-### Construtores nomeados
+### Construtores nomeados {:#named-constructors}
 
 Use um construtor nomeado para implementar múltiplos construtores para uma classe
 ou para fornecer clareza extra:
@@ -120,7 +120,7 @@ Construtores constantes nem sempre criam constantes.
 Eles podem ser invocados em um contexto não-`const`.
 Para saber mais, consulte a seção sobre [usando construtores][using constructors].
 
-### Construtores de redirecionamento
+### Construtores de redirecionamento {:#redirecting-constructors}
 
 Um construtor pode redirecionar para outro construtor na mesma classe.
 Um construtor de redirecionamento tem um corpo vazio.
@@ -394,7 +394,7 @@ class PointD {
 }
 ```
 
-### Usar uma lista de inicializadores
+### Usar uma lista de inicializadores {:#use-an-initializer-list}
 
 Antes do corpo do construtor ser executado, você pode inicializar variáveis de instância.
 Separe os inicializadores com vírgulas.
