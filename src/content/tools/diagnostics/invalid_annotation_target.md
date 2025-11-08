@@ -1,23 +1,25 @@
 ---
+ia-translate: true
 title: invalid_annotation_target
 description: >-
-  Details about the invalid_annotation_target
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_annotation_target
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '{0}' can only be used on {1}._
+_A annotation '{0}' só pode ser usada em {1}._
 
 ## Description
 
-The analyzer produces this diagnostic when an annotation is applied to a
-kind of declaration that it doesn't support.
+O analisador produz este diagnóstico quando uma annotation é aplicada a um
+tipo de declaração que ela não suporta.
 
 ## Example
 
-The following code produces this diagnostic because the `optionalTypeArgs`
-annotation isn't defined to be valid for top-level variables:
+O código a seguir produz este diagnóstico porque a annotation
+`optionalTypeArgs` não está definida para ser válida para variáveis de
+nível superior:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -28,4 +30,4 @@ int x = 0;
 
 ## Common fixes
 
-Remove the annotation from the declaration.
+Remova a annotation da declaração.

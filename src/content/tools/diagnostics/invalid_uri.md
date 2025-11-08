@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: invalid_uri
 description: >-
-  Details about the invalid_uri
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_uri
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Invalid URI syntax: '{0}'._
+_Sintaxe de URI inválida: '{0}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a URI in a directive doesn't
-conform to the syntax of a valid URI.
+O analisador produz este diagnóstico quando um URI em uma diretiva não
+está em conformidade com a sintaxe de um URI válido.
 
 ## Example
 
-The following code produces this diagnostic because `'#'` isn't a valid
-URI:
+O código a seguir produz este diagnóstico porque `'#'` não é um URI
+válido:
 
 ```dart
 import [!'#'!];
@@ -25,4 +26,4 @@ import [!'#'!];
 
 ## Common fixes
 
-Replace the invalid URI with a valid URI.
+Substitua o URI inválido por um URI válido.

@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: invalid_factory_method_decl
 description: >-
-  Details about the invalid_factory_method_decl
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_factory_method_decl
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Factory method '{0}' must have a return type._
+_O método factory '{0}' deve ter um tipo de retorno._
 
 ## Description
 
-The analyzer produces this diagnostic when a method that is annotated with
-the [`factory`][meta-factory] annotation has a return type of `void`.
+O analisador produz este diagnóstico quando um método que é anotado com a
+annotation [`factory`][meta-factory] tem um tipo de retorno `void`.
 
 ## Example
 
-The following code produces this diagnostic because the method `createC`
-is annotated with the [`factory`][meta-factory] annotation but doesn't
-return any value:
+O código a seguir produz este diagnóstico porque o método `createC` é
+anotado com a annotation [`factory`][meta-factory] mas não retorna nenhum
+valor:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -33,7 +34,7 @@ class C {}
 
 ## Common fixes
 
-Change the return type to something other than `void`:
+Altere o tipo de retorno para algo diferente de `void`:
 
 ```dart
 import 'package:meta/meta.dart';

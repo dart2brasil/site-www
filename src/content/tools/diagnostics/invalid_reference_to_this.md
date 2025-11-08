@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: invalid_reference_to_this
 description: >-
-  Details about the invalid_reference_to_this
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico invalid_reference_to_this
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Invalid reference to 'this' expression._
+_Referência inválida à expressão 'this'._
 
 ## Description
 
-The analyzer produces this diagnostic when `this` is used outside of an
-instance method or a generative constructor. The reserved word `this` is
-only defined in the context of an instance method, a generative
-constructor, or the initializer of a late instance field declaration.
+O analisador produz este diagnóstico quando `this` é usado fora de um
+método de instância ou de um construtor generativo. A palavra reservada `this`
+só é definida no contexto de um método de instância, um construtor
+generativo ou o inicializador de uma declaração de campo de instância late.
 
 ## Example
 
-The following code produces this diagnostic because `v` is a top-level
-variable:
+O código a seguir produz este diagnóstico porque `v` é uma variável
+de nível superior:
 
 ```dart
 C f() => [!this!];
@@ -29,8 +30,8 @@ class C {}
 
 ## Common fixes
 
-Use a variable of the appropriate type in place of `this`, declaring it if
-necessary:
+Use uma variável do tipo apropriado no lugar de `this`, declarando-a se
+necessário:
 
 ```dart
 C f(C c) => c;
