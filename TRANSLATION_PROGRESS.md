@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 102 files (with ia-translate: true metadata)
+- **Remaining:** ~843 files
+- **Progress:** 10.8%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 47 (37 new + 3 from merged PR + 7 diagnostics)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 102 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,21 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 3: Diagnostic Errors - ambiguous/annotate/annotation (7 files)
+41. ✅ `src/content/tools/diagnostics/ambiguous_export.md`
+42. ✅ `src/content/tools/diagnostics/ambiguous_extension_member_access.md`
+43. ✅ `src/content/tools/diagnostics/ambiguous_import.md`
+44. ✅ `src/content/tools/diagnostics/ambiguous_set_or_map_literal_both.md`
+45. ✅ `src/content/tools/diagnostics/ambiguous_set_or_map_literal_either.md`
+46. ✅ `src/content/tools/diagnostics/annotate_overrides.md`
+47. ✅ `src/content/tools/diagnostics/annotation_on_pointer_field.md`
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 22/~776 files (2.8%)
+  - ✅ **Section 3 (Diagnostic Errors - ambiguous/annotate/annotation):** 7/7 files (100%) 🎉
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,8 +110,8 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (47 files this session including merge)
+Progress: 10.8% complete (102/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
@@ -109,3 +119,4 @@ Progress: 10.1% complete (95/945 files)
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)
+- ✅ Section 3 (Diagnostic Errors - ambiguous/annotate/annotation) 100% COMPLETE! 🎉 (7 files)

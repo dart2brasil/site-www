@@ -100,16 +100,17 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ---
 
-## Section 7: Diagnostic Errors - Ambiguous & Annotations (A)
-**Files:** ~35 files | **Priority:** MEDIUM
+## Section 7: Diagnostic Errors - Ambiguous & Annotations (A) ✅ COMPLETE
+**Files:** 7 files | **Priority:** MEDIUM | **Status:** ✅ DONE
 
 ### Pattern:
-- `tools/diagnostics/ambiguous_*.md`
-- `tools/diagnostics/annotate_*.md`
-- `tools/diagnostics/annotation_*.md`
+- `tools/diagnostics/ambiguous_*.md` (5 files)
+- `tools/diagnostics/annotate_*.md` (1 file)
+- `tools/diagnostics/annotation_*.md` (1 file)
 
 **Focus:** Ambiguity errors and annotation-related issues
-**Estimated time:** 2-3 hours
+**Completed:** 2025-11-08
+**Actual files:** 7 (not ~35 as estimated)
 
 ---
 
@@ -375,12 +376,13 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 7:** Diagnostic Errors - Ambiguous & Annotations (7/7 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 1-6, 8-20 pending
 
 ---
 
