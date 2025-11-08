@@ -79,7 +79,7 @@ https://storage.googleapis.com/dart-archive/channels/beta/release/2.8.0-20.11.be
 https://storage.googleapis.com/dart-archive/channels/dev/release/2.9.0-1.0.dev/sdk/dartsdk-linux-x64-release.zip
 ```
 
-### Esquema de URL do canal main {#main-channel-url-scheme}
+### Esquema de URL do canal main {:#main-channel-url-scheme}
 
 A build mais recente do canal main
 está disponível em URLs como a seguinte:
