@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: 'Interoperabilidade com Java usando package:jnigen'
 shortTitle: Java interop
 breadcrumb: Java

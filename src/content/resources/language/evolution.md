@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Dart language evolution
 shortTitle: Language evolution
 breadcrumb: Evolution

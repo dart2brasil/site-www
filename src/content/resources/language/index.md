@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Dart language resources
 breadcrumb: Language
 description: Find resources covering the Dart language.

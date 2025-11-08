@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: "dartdevc: The Dart development compiler"
 shortTitle: dartdevc
 description: A development compiler for fast, modular compilation of Dart code to JavaScript.

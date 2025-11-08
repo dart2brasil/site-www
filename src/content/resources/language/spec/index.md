@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Dart language specification
 shortTitle: Language specification
 breadcrumb: Specification

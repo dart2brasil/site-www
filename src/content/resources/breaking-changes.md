@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Breaking changes and deprecations
 description: A list of breaking changes by release in Dart.
 maxTocDepth: 2

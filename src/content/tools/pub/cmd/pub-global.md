@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dart pub global
 description: Use dart pub global para executar scripts Dart hospedados no site pub.dev a partir da linha de comando.
 ---

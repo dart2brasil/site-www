@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dart pub
 description: "The command-line interface for pub, a package management tool for Dart."
 ---

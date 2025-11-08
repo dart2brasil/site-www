@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dartaotruntime
 description: Command-line tool for running AOT-compiled snapshots of Dart code.
 showToc: false

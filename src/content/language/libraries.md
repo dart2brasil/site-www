@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Libraries & imports
 shortTitle: Libraries
 description: Guidance on importing and implementing libraries.

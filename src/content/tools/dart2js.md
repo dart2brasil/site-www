@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: "dart2js: Dart-to-JavaScript compiler"
 shortTitle: dart2js
 description: The dart2js compiler compiles Dart code to deployable JavaScript.

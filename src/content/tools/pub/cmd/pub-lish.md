@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dart pub publish
 description: Use dart pub publish para publicar seu pacote Dart no site pub.dev.
 ---

@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dart pub add
 description: "Use dart pub add para adicionar uma dependência."
 ---

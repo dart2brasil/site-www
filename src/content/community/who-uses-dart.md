@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Quem usa Dart
 description: Mobile and web apps are two of the most common uses for the Dart language. Learn about and try some examples of where Dart is used.
 showToc: false

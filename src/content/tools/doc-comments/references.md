@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: Documentation comment references
 shortTitle: Comment references
 description: Learn about doc comment references and their syntax.

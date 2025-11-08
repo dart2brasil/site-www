@@ -1,5 +1,4 @@
 ---
-ia-translate: true
 title: dart test
 description: Command-line tool for testing Dart projects.
 showToc: false
