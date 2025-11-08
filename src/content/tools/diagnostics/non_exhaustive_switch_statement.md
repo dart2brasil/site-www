@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type '{0}' isn't exhaustively matched by the switch cases since it doesn't match the pattern '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `switch` statement switching
+O analisador produz este diagnóstico quando a `switch` statement switching
 over an exhaustive type is missing a case for one or more of the possible
 values that could flow through it.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the switch statement
+O código a seguir produz este diagnóstico porque the switch statement
 doesn't have a case for the value `E.three`, and `E` is an exhaustive
 type:
 
@@ -32,7 +33,7 @@ void f(E e) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add a case for each of the constants that aren't currently being matched:
 

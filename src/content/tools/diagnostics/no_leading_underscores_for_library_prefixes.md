@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,24 +21,24 @@ bodyClass: highlight-diagnostics
 
 _The library prefix '{0}' starts with an underscore._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a prefix declared
+O analisador produz este diagnóstico quando the name of a prefix declared
 on an import starts with an underscore.
 
 Library prefixes are inherently not visible outside the declaring library,
 so a leading underscore indicating private adds no value.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the prefix `_core`
+O código a seguir produz este diagnóstico porque the prefix `_core`
 starts with an underscore:
 
 ```dart
 import 'dart:core' as [!_core!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the underscore:
 

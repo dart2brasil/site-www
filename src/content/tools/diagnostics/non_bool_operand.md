@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The operands of the operator '{0}' must be assignable to 'bool'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when one of the operands of either
+O analisador produz este diagnóstico quando one of the operands of either
 the `&&` or `||` operator doesn't have the type `bool`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `a` isn't a Boolean
+O código a seguir produz este diagnóstico porque `a` isn't a Boolean
 value:
 
 ```dart
@@ -24,7 +25,7 @@ int a = 3;
 bool b = [!a!] || a > 1;
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the operand to a Boolean value:
 

@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The values in a const map literal must be constant._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a value in a constant map
+O analisador produz este diagnóstico quando a value in a constant map
 literal isn't a constant value.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `a` isn't a constant:
+O código a seguir produz este diagnóstico porque `a` isn't a constant:
 
 ```dart
 var a = 'a';
 var m = const {0: [!a!]};
 ```
 
-## Common fixes
+## Correções comuns
 
 If the map needs to be a constant map, then make the key a constant:
 

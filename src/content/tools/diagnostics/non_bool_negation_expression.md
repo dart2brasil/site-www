@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A negation operand must have a static type of 'bool'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the operand of the unary
+O analisador produz este diagnóstico quando the operand of the unary
 negation operator (`!`) doesn't have the type `bool`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` is an `int` when it
+O código a seguir produz este diagnóstico porque `x` is an `int` when it
 must be a `bool`:
 
 ```dart
@@ -24,7 +25,7 @@ int x = 0;
 bool y = ![!x!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the operand with an expression that has the type `bool`:
 

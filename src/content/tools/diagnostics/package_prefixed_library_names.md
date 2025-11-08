@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _The library name is not a dot-separated path prefixed by the package name._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library has a name that
+O analisador produz este diagnóstico quando a library has a name that
 doesn't follow these guidelines:
 
 - Prefix all library names with the package name.
@@ -35,7 +36,7 @@ For example, given a package named `my_package`, here are the library
 names for various files in the package:
 
 
-## Example
+## Exemplo
 
 Assuming that the file containing the following code is not in a file
 named `special.dart` in the `lib` directory of a package named `something`
@@ -47,6 +48,6 @@ guidelines above:
 library [!something.special!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the name of the library to conform to the guidelines.

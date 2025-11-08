@@ -5,26 +5,27 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Spread elements in map literals must implement 'Map'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the static type of the
+O analisador produz este diagnóstico quando the static type of the
 expression of a spread element that appears in a map literal doesn't
 implement the type `Map`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `l` isn't a `Map`:
+O código a seguir produz este diagnóstico porque `l` isn't a `Map`:
 
 ```dart
 var l =  <String>['a', 'b'];
 var m = <int, String>{...[!l!]};
 ```
 
-## Common fixes
+## Correções comuns
 
 The most common fix is to replace the expression with one that produces a
 map:

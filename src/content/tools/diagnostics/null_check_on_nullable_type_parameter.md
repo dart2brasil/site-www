@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _The null check operator shouldn't be used on a variable whose type is a potentially nullable type parameter._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a null check operator is used
+O analisador produz este diagnóstico quando a null check operator is used
 on a variable whose type is `T?`, where `T` is a type parameter that
 allows the type argument to be nullable (either has no bound or has a
 bound that is nullable).
@@ -35,9 +36,9 @@ mistake is to do so using `x!`. This is almost always incorrect, because
 if `T` is a nullable type, `x` may validly hold `null` as a value of type
 `T`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `t` has the type `T?`
+O código a seguir produz este diagnóstico porque `t` has the type `T?`
 and `T` allows the type argument to be nullable (because it has no
 `extends` clause):
 
@@ -45,7 +46,7 @@ and `T` allows the type argument to be nullable (because it has no
 T f<T>(T? t) => t[!!!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Use the type parameter to cast the variable:
 

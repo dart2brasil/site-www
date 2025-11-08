@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,16 +21,16 @@ bodyClass: highlight-diagnostics
 
 _The referenced identifier is a wildcard._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when either a parameter or local
+O analisador produz este diagnóstico quando either a parameter or local
 variable whose name consists of only underscores is referenced. Such
 names will become non-binding in a future version of the Dart language,
 making the reference illegal.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name of the
+O código a seguir produz este diagnóstico porque the name of the
 parameter consists of two underscores:
 
 ```dart
@@ -39,7 +40,7 @@ void f(int __) {
 }
 ```
 
-The following code produces this diagnostic because the name of the
+O código a seguir produz este diagnóstico porque the name of the
 local variable consists of a single underscore:
 
 ```dart
@@ -50,7 +51,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the variable or parameter is intended to be referenced, then give it a
 name that has at least one non-underscore character:

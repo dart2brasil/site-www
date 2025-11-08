@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Constant values from a deferred library can't be used in patterns._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a pattern contains a value
+O analisador produz este diagnóstico quando a pattern contains a value
 declared in a different library, and that library is imported using a
 deferred import. Constants are evaluated at compile time, but values from
 deferred libraries aren't available at compile time.
@@ -19,7 +20,7 @@ deferred libraries aren't available at compile time.
 For more information, check out
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that defines the constant `zero`:
 
@@ -27,7 +28,7 @@ Given a file `a.dart` that defines the constant `zero`:
 const zero = 0;
 ```
 
-The following code produces this diagnostic because the constant pattern
+O código a seguir produz este diagnóstico porque the constant pattern
 `a.zero` is imported using a deferred import:
 
 ```dart
@@ -42,7 +43,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to reference the constant from the imported library, then
 remove the `deferred` keyword:

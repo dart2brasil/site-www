@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _String literals shouldn't be concatenated by the '+' operator._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `+` operator is used to
+O analisador produz este diagnóstico quando the `+` operator is used to
 concatenate two string literals.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because two string literals
+O código a seguir produz este diagnóstico porque two string literals
 are being concatenated by using the `+` operator:
 
 ```dart
 var s = 'a' [!+!] 'b';
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the operator:
 

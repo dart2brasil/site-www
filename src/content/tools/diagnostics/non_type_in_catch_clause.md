@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' isn't a type and can't be used in an on-catch clause._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the identifier following the
+O analisador produz este diagnóstico quando the identifier following the
 `on` in a `catch` clause is defined to be something other than a type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` is a function, not
+O código a seguir produz este diagnóstico porque `f` is a function, not
 a type:
 
 ```dart
@@ -29,7 +30,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the name to the type of object that should be caught:
 

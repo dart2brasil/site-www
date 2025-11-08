@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The default value of an optional parameter must be constant._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an optional parameter, either
+O analisador produz este diagnóstico quando an optional parameter, either
 named or positional, has a default value that isn't a compile-time
 constant.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic:
 
@@ -25,7 +26,7 @@ var defaultValue = 3;
 void f([int value = [!defaultValue!]]) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the default value can be converted to be a constant, then convert it:
 

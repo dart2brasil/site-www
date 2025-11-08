@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A class, mixin, or extension type can't implement a nullable type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class, mixin, or
+O analisador produz este diagnóstico quando a class, mixin, or
 extension type declaration has an `implements` clause, and an
 interface is followed by a `?`.
 
@@ -23,9 +24,9 @@ Note, however, that it _is_ valid to use a nullable type as a type argument
 to the interface, such as `class A implements B<C?> {}`.
 
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `A?` is a nullable
+O código a seguir produz este diagnóstico porque `A?` is a nullable
 type, and nullable types can't be used in an `implements` clause:
 
 ```dart
@@ -33,7 +34,7 @@ class A {}
 class B implements [!A?!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the question mark from the type:
 

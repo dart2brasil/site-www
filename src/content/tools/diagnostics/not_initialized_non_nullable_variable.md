@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The non-nullable variable '{0}' must be initialized._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a static field or top-level
-variable has a type that's non-nullable and doesn't have an initializer.
+O analisador produz este diagnóstico quando a static field or top-level
+variable has a type that's non-nullable and não tem uma initializer.
 Fields and variables that don't have an initializer are normally
 initialized to `null`, but the type of the field or variable doesn't allow
 it to be set to `null`, so an explicit initializer must be provided.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the field `f` can't be
+O código a seguir produz este diagnóstico porque the field `f` can't be
 initialized to `null`:
 
 ```dart
@@ -35,7 +36,7 @@ top-level variable `v` can't be initialized to `null`:
 int [!v!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the field or variable can't be initialized to `null`, then add an
 initializer that sets it to a non-null value:

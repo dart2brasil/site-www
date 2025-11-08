@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Constant values from a deferred library can't be used as a case expression._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the expression in a case clause
+O analisador produz este diagnóstico quando the expression in a case clause
 references a constant from a library that is imported using a deferred
 import. In order for switch statements to be compiled efficiently, the
 constants referenced in case clauses need to be available at compile time,
@@ -20,7 +21,7 @@ and constants from deferred libraries aren't available at compile time.
 For more information, check out
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that defines the constant `zero`:
 
@@ -28,7 +29,7 @@ Given a file `a.dart` that defines the constant `zero`:
 const zero = 0;
 ```
 
-The following code produces this diagnostic because the library `a.dart` is
+O código a seguir produz este diagnóstico porque the library `a.dart` is
 imported using a `deferred` import, and the constant `a.zero`, declared in
 the imported library, is used in a case clause:
 
@@ -44,7 +45,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to reference the constant from the imported library, then
 remove the `deferred` keyword:

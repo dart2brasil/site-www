@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A mixin can't have a nullable type as a superclass constraint._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a mixin declaration uses an `on`
+O analisador produz este diagnóstico quando a mixin declaration uses an `on`
 clause to specify a superclass constraint, and the class that's specified
 is followed by a `?`.
 
@@ -23,9 +24,9 @@ Note, however, that it _is_ valid to use a nullable type as a type argument
 to the superclass constraint, such as `mixin A on B<C?> {}`.
 
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `A?` is a nullable type
+O código a seguir produz este diagnóstico porque `A?` is a nullable type
 and nullable types can't be used in an `on` clause:
 
 ```dart
@@ -33,7 +34,7 @@ class C {}
 mixin M on [!C?!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the question mark from the type:
 

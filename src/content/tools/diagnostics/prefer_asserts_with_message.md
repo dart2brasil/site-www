@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Missing a message in an assert._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an assert statement doesn't
+O analisador produz este diagnóstico quando an assert statement doesn't
 have a message.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there's no message
+O código a seguir produz este diagnóstico porque não há message
 in the assert statement:
 
 ```dart
@@ -36,7 +37,7 @@ void f(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add a message to the assert statement:
 

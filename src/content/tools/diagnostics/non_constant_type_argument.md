@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type arguments to '{0}' must be known at compile time, so they can't be type parameters._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type arguments to a method
+O analisador produz este diagnóstico quando the type arguments to a method
 are required to be known at compile time, but a type parameter, whose
 value can't be known at compile time, is used as a type argument.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type argument to
+O código a seguir produz este diagnóstico porque the type argument to
 `Pointer.asFunction` must be known at compile time, but the type parameter
 `R`, which isn't known at compile time, is being used as the type
 argument:
@@ -36,7 +37,7 @@ class C<R extends T> {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove any uses of type parameters:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Optional parameters aren't allowed when defining an operator._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when one or more of the parameters in
+O analisador produz este diagnóstico quando one or more of the parameters in
 an operator declaration are optional.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameter `other`
+O código a seguir produz este diagnóstico porque the parameter `other`
 is an optional parameter:
 
 ```dart
@@ -25,7 +26,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Make all of the parameters be required parameters:
 

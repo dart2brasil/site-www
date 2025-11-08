@@ -5,11 +5,12 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The variable dimension of a variable-length array must be non-negative._
 
-## Description
+## Descrição
 
 The analyzer produces this diagnostic in two cases.
 
@@ -23,9 +24,9 @@ specified in the `variableDimension` argument of the annotation.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because a variable dimension
+O código a seguir produz este diagnóstico porque a variable dimension
 of `-1` was provided in the `Array.variableWithVariableDimension`
 annotation:
 
@@ -38,7 +39,7 @@ final class MyStruct extends Struct {
 }
 ```
 
-The following code produces this diagnostic because a variable dimension
+O código a seguir produz este diagnóstico porque a variable dimension
 of `-1` was provided in the `Array.variableMulti` annotation:
 
 ```dart
@@ -50,7 +51,7 @@ final class MyStruct2 extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the variable dimension with zero (`0`) or a positive number:
 

@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The generative constructor '{0}' is expected, but a factory was found._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the initializer list of a
+O analisador produz este diagnóstico quando the initializer list of a
 constructor invokes a constructor from the superclass, and the invoked
 constructor is a factory constructor. Only a generative constructor can be
 invoked in the initializer list.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the invocation of the
-constructor `super.one()` is invoking a factory constructor:
+O código a seguir produz este diagnóstico porque the invocation of the
+constructor `super.one()` is invoking a factory construtor:
 
 ```dart
 class A {
@@ -32,9 +33,9 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Change the super invocation to invoke a generative constructor:
+Change the super invocation to invoke a generative construtor:
 
 ```dart
 class A {

@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Expected this library to be part of '{0}', not '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library attempts to include a
+O analisador produz este diagnóstico quando a library attempts to include a
 file as a part of itself when the other file is a part of a different
 library.
 
-## Example
+## Exemplo
 
 Given a file `part.dart` containing
 
@@ -31,7 +32,7 @@ when `part.dart` is a part of a different library:
 part [!'package:a/part.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the library should be using a different file as a part, then change the
 URI in the part directive to be the URI of the other file.

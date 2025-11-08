@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _1 positional argument expected by '{0}', but 0 found._
@@ -15,15 +16,15 @@ _{0} positional arguments expected by '{1}', but {2} found._
 
 _{0} positional arguments expected, but {1} found._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function invocation
+O analisador produz este diagnóstico quando a method or function invocation
 has fewer positional arguments than the number of required positional
 parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` declares two
+O código a seguir produz este diagnóstico porque `f` declares two
 required parameters, but only one argument is provided:
 
 ```dart
@@ -33,7 +34,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add arguments corresponding to the remaining parameters:
 

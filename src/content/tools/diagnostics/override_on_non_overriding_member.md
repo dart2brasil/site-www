@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The field doesn't override an inherited getter or setter._
@@ -15,15 +16,15 @@ _The method doesn't override an inherited method._
 
 _The setter doesn't override an inherited setter._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class member is annotated with
+O analisador produz este diagnóstico quando a class member is annotated with
 the `@override` annotation, but the member isn't declared in any of the
 supertypes of the class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` isn't declared in
+O código a seguir produz este diagnóstico porque `m` isn't declared in
 any of the supertypes of `C`:
 
 ```dart
@@ -33,7 +34,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the member is intended to override a member with a different name, then
 update the member to have the same name:

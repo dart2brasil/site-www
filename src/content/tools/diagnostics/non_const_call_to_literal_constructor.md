@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _This instance creation must be 'const', because the {0} constructor is marked as '@literal'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor that has the
+O analisador produz este diagnóstico quando a constructor that has the
 [`literal`][meta-literal] annotation is invoked without using the `const`
 keyword, but all of the arguments to the constructor are constants. The
 annotation indicates that the constructor should be used to create a
 constant value whenever possible.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic:
 
@@ -32,7 +33,7 @@ class C {
 C f() => [!C()!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Add the keyword `const` before the constructor invocation:
 

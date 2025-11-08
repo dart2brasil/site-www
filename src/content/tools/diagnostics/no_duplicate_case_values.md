@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _The value of the case clause ('{0}') is equal to the value of an earlier case clause ('{1}')._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when two or more `case` clauses in
+O analisador produz este diagnóstico quando two or more `case` clauses in
 the same `switch` statement have the same value.
 
 Any `case` clauses after the first can't be executed, so having duplicate
@@ -31,9 +32,9 @@ Any `case` clauses after the first can't be executed, so having duplicate
 This diagnostic is often the result of either a typo or a change to the
 value of a constant.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because two case clauses have
+O código a seguir produz este diagnóstico porque two case clauses have
 the same value (1):
 
 ```dart
@@ -48,7 +49,7 @@ void f(int v) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If one of the clauses should have a different value, then change the value
 of the clause:

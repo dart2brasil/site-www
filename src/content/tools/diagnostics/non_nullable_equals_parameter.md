@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The parameter type of '==' operators should be non-nullable._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an override of the operator
+O analisador produz este diagnóstico quando an override of the operator
 `==` has a parameter whose type is nullable. The language spec makes it
 impossible for the argument of the method to be `null`, and the
 parameter's type should reflect that.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the implementation of
+O código a seguir produz este diagnóstico porque the implementation of
 the operator `==` in `C` :
 
 ```dart
@@ -28,7 +29,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Make the parameter type be non-nullable:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Case expressions must be constant._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the expression in a `case`
+O analisador produz este diagnóstico quando the expression in a `case`
 clause isn't a constant expression.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `j` isn't a constant:
+O código a seguir produz este diagnóstico porque `j` isn't a constant:
 
 ```dart
 void f(int i, int j) {
@@ -28,7 +29,7 @@ void f(int i, int j) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Either make the expression a constant expression, or rewrite the `switch`
 statement as a sequence of `if` statements:

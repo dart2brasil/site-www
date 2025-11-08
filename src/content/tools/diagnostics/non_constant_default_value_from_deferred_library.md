@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Constant values from a deferred library can't be used as a default parameter value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the default value of an optional
+O analisador produz este diagnóstico quando the default value of an optional
 parameter uses a constant from a library imported using a deferred import.
 Default values need to be available at compile time, and constants from
 deferred libraries aren't available at compile time.
@@ -19,7 +20,7 @@ deferred libraries aren't available at compile time.
 For more information, check out
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that defines the constant `zero`:
 
@@ -27,7 +28,7 @@ Given a file `a.dart` that defines the constant `zero`:
 const zero = 0;
 ```
 
-The following code produces this diagnostic because `zero` is declared in a
+O código a seguir produz este diagnóstico porque `zero` is declared in a
 library imported using a deferred import:
 
 ```dart
@@ -36,7 +37,7 @@ import 'a.dart' deferred as a;
 void f({int x = a.[!zero!]}) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to reference the constant from the imported library, then
 remove the `deferred` keyword:

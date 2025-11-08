@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Can't invoke 'asFunction' because the function signature '{0}' for the pointer isn't a valid C function signature._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the method `asFunction` is
+O analisador produz este diagnóstico quando the method `asFunction` is
 invoked on a pointer to a native function, but the signature of the native
 function isn't a valid C function signature.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because function signature
+O código a seguir produz este diagnóstico porque function signature
 associated with the pointer `p` (`FNative`) isn't a valid C function
 signature:
 
@@ -36,7 +37,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Make the `NativeFunction` signature a valid C signature:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary constructor invocation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor is used to create
+O analisador produz este diagnóstico quando a constructor is used to create
 a list, map, or set, but a literal would produce the same result.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor for
+O código a seguir produz este diagnóstico porque the constructor for
 `Map` is being used to create a map that could also be created using a
 literal:
 
@@ -35,7 +36,7 @@ literal:
 var m = [!Map<String, String>()!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Use the literal representation:
 

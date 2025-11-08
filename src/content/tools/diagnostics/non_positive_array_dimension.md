@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Array dimensions must be positive numbers._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a dimension given in an `Array`
+O analisador produz este diagnóstico quando a dimension given in an `Array`
 annotation is less than or equal to zero (`0`).
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because an array dimension of
+O código a seguir produz este diagnóstico porque an array dimension of
 `-8` was provided:
 
 ```dart
@@ -30,7 +31,7 @@ final class MyStruct extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the dimension to be a positive integer:
 

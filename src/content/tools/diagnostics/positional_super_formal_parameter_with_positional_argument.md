@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Positional super parameters can't be used when the super constructor invocation has a positional argument._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when some, but not all, of the
+O analisador produz este diagnóstico quando some, but not all, of the
 positional parameters provided to the constructor of the superclass are
 using a super parameter.
 
@@ -23,9 +24,9 @@ positional arguments. Having both positional super parameters and
 positional arguments means that there are two values associated with the
 same parameter in the superclass's constructor, and hence isn't allowed.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor
+O código a seguir produz este diagnóstico porque the constructor
 `B.new` is using a super parameter to pass one of the required positional
 parameters to the super constructor in `A`, but is explicitly passing the
 other in the super constructor invocation:
@@ -40,7 +41,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If all the positional parameters can be super parameters, then convert the
 normal positional parameters to be super parameters:
