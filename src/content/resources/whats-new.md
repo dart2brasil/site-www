@@ -13,7 +13,7 @@ Para uma lista de mudanças na linguagem Dart em cada Dart SDK, veja a
 [página de evolução da linguagem][evolution].
 Para ficar por dentro dos anúncios, incluindo breaking changes,
 participe do [grupo Google de anúncios do Dart][dart-announce]
-e siga o [blog do Dart][].
+e siga o [blog do Dart][Dart blog].
 
 [flutter-whats-new]: {{site.flutter-docs}}/whats-new
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
@@ -26,7 +26,7 @@ _Lançada em: 13 de agosto de 2025_
 Esta seção lista mudanças notáveis feitas de 20 de maio de 2025
 até 13 de agosto de 2025 no [dart.dev](https://dart.dev/docs).
 Para detalhes sobre a versão 3.9 do Dart,
-confira o [anúncio do 3.9][] e o
+confira o [anúncio do 3.9][3.9 announcement] e o
 [changelog do SDK 3.9][3-8-changelog].
 
 ### Documentação atualizada ou adicionada ao dart.dev {:.no_toc}
@@ -34,16 +34,16 @@ confira o [anúncio do 3.9][] e o
 Além de correções de bugs e melhorias incrementais,
 fizemos as seguintes alterações na documentação deste site:
 
-* [Habilitamos breadcrumbs por padrão][] em todo o site.
-* Atualizamos a [documentação do `dart compile`][] para cross-compilation para ARM e
+* [Habilitamos breadcrumbs por padrão][Enabled breadcrumbs by default] em todo o site.
+* Atualizamos a [documentação do `dart compile`][`dart compile` documentation] para cross-compilation para ARM e
   RISC-V64.
-* Reformulamos a [documentação de metadata e annotations][].
-* Reestruturamos a [página do `dart create`][] para explicar melhor os templates.
-* Adicionamos um [guia abrangente do Dart MCP Server][].
-* Expandimos o [glossário][] com "combinator", "bottom type", "context type",
+* Reformulamos a [documentação de metadata e annotations][metadata and annotations documentation].
+* Reestruturamos a [página do `dart create`][`dart create` page] para explicar melhor os templates.
+* Adicionamos um [guia abrangente do Dart MCP Server][Dart MCP Server guide].
+* Expandimos o [glossário][glossary] com "combinator", "bottom type", "context type",
   "shadowing", "immutable", "wildcard", "late", "zone", e
   "type alias". (Obrigado, [IldySilva](https://github.com/IldySilva))
-* Atualizamos a [documentação do JNIGen][] para remover uma referência desatualizada do Maven.
+* Atualizamos a [documentação do JNIGen][JNIGen documentation] para remover uma referência desatualizada do Maven.
 
 [JNIGen documentation]: /interop/java-interop
 [`dart compile` documentation]: /tools/dart-compile
@@ -64,7 +64,7 @@ _Lançada em: 20 de maio de 2025_
 Esta seção lista mudanças notáveis feitas de 13 de fevereiro de 2025
 até 20 de maio de 2025 no [dart.dev](https://dart.dev/docs).
 Para detalhes sobre a versão 3.8 do Dart,
-confira o [anúncio do 3.8][] e o
+confira o [anúncio do 3.8][3.8 announcement] e o
 [changelog do SDK 3.8][3-8-changelog].
 
 ### Documentação atualizada ou adicionada ao dart.dev {:.no_toc}
@@ -112,7 +112,7 @@ fizemos as seguintes alterações na documentação deste site:
   explica como fazer cast implícito de expressões com tipo
   estático `dynamic` para um tipo mais específico.
 
-* Adicionamos uma [política de suporte][] para o Dart SDK.
+* Adicionamos uma [política de suporte][support policy] para o Dart SDK.
 
 * Atualizamos a orientação sobre quando usar ou não
   class modifiers no guia [Effective Dart Design][].
@@ -133,7 +133,7 @@ Além de correções de bugs e melhorias incrementais,
 fizemos as seguintes mudanças estruturais neste site:
 
 * Adicionamos um novo design baseado em cards e a capacidade de pesquisar
-  por entradas no [glossário][].
+  por entradas no [glossário][glossary].
 
   <img src="/assets/img/whats-new/3-8-glossary.png" alt="Glossary" style="width:50%">
 
@@ -141,7 +141,7 @@ fizemos as seguintes mudanças estruturais neste site:
 
   <img src="/assets/img/whats-new/3-8-prev-next-buttons-new.png" alt="New page buttons" style="width:80%">
 
-* Adicionamos páginas individuais para algumas [mensagens de diagnóstico][].
+* Adicionamos páginas individuais para algumas [mensagens de diagnóstico][diagnostic messages].
   Para ver uma página individual para uma mensagem de diagnóstico, selecione
   o botão **Learn more**.
 
@@ -173,7 +173,7 @@ _Lançada em: 12 de fevereiro de 2025_
 Esta seção lista mudanças notáveis feitas de 12 de dezembro de 2024
 até 12 de fevereiro de 2025.
 Para detalhes sobre a versão 3.7 do Dart,
-confira o [anúncio do 3.7][] e o [changelog do SDK][3-7-changelog].
+confira o [anúncio do 3.7][3.7 announcement] e o [changelog do SDK][3-7-changelog].
 
 [3.7 announcement]: https://blog.dart.dev/announcing-dart-3-7-bf864a1b195c
 [3-7-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#370
@@ -192,14 +192,14 @@ fizemos as seguintes alterações neste site:
   estilo do formatter.
 * Introduzimos detalhes sobre [stray files][] na página Workspaces.
 * Adicionamos o novo recurso da linguagem [wildcard variables][] à página Variables.
-* Movemos a [explicação de covariant][] para a página Type system, que é mais adequada.
+* Movemos a [explicação de covariant][covariant explanation] para a página Type system, que é mais adequada.
 * Alteramos as referências às bibliotecas de [legacy JS interop][] explicitamente para "deprecated".
-* Removemos a página experimental de macros, já que a equipe [pausou indefinidamente][]
+* Removemos a página experimental de macros, já que a equipe [pausou indefinidamente][indefinitely paused]
   o trabalho no recurso.
 * Adicionamos um [aviso][map-warn] de que desestruturar um padrão Map por uma chave inexistente
   lançará um `StateError`.
 * Reformulamos a página de [linter rules][] com novos cards, formato de pesquisa e
-  ícones com código de cores nas páginas de lint individuais ([por exemplo][]).
+  ícones com código de cores nas páginas de lint individuais ([por exemplo][for example]).
 * Redesenhamos a implementação do layout e sidenav para eficiência.
 * Removemos a página da biblioteca `dart:html` oficialmente descontinuada.
 
@@ -223,7 +223,7 @@ _Lançada em: 11 de dezembro de 2024_
 Esta seção lista mudanças notáveis feitas de 7 de agosto de 2024
 até 11 de dezembro de 2024.
 Para detalhes sobre a versão 3.6 do Dart,
-confira o [anúncio do 3.6][] e o [changelog do SDK][3-6-changelog].
+confira o [anúncio do 3.6][3.6 announcement] e o [changelog do SDK][3-6-changelog].
 
 [3.6 announcement]: https://blog.dart.dev/announcing-dart-3-6-778dd7a80983
 [3-6-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#360
@@ -240,21 +240,21 @@ fizemos as seguintes alterações neste site:
 * Adicionamos o novo recurso da linguagem [digit separators][] à página Built-in types.
 * Definimos [variance and variance positions][] na página do glossário.
 * Criamos uma nova página para o novo recurso [documentation comment references][].
-* Atualizamos e melhoramos o [gráfico de plataformas Dart][] para incluir suporte recém-disponível
+* Atualizamos e melhoramos o [gráfico de plataformas Dart][Dart platforms graphic] para incluir suporte recém-disponível
   para compilação para RISC-V e WASM.
 * Definimos [function types][].
 * Adicionamos definições no glossário para os diferentes tipos de code fixes disponíveis
   do analyzer ([assists][], [refactors][] e [quick fixes][]).
 * Criamos uma [página][bump-page] para o novo comando `pub bump`.
-* Atualizamos o [exemplo para generative constructors][] para refletir o uso de
+* Atualizamos o [exemplo para generative constructors][example for generative constructors] para refletir o uso de
   parâmetros posicionais opcionais com valores padrão.
-* Melhoramos a [documentação de import/export][] condicional na página de criação de pacotes.
-* Incluímos annotations `@override` nos [exemplos de código de mixin][] para mostrar corretamente
+* Melhoramos a [documentação de import/export][import/export documentation] condicional na página de criação de pacotes.
+* Incluímos annotations `@override` nos [exemplos de código de mixin][mixin code examples] para mostrar corretamente
   como trabalhar com funções mixed-in.
 * Fornecemos uma alternativa ao SSH para acessar dependências de repositórios privados na
-  [página de dependências pub][].
+  [página de dependências pub][pub dependencies page].
 * Adicionamos um novo aviso do `pub publish` sobre validação de `git status` limpo à
-  [lista de tarefas de publicação][].
+  [lista de tarefas de publicação][publishing task list].
 * Descontinuamos as páginas Language e Library tour (o conteúdo agora está em páginas individuais
   em [Language][lang-sidenav] e [Core libraries][lib-sidenav]
   no painel de navegação lateral esquerdo).
@@ -286,7 +286,7 @@ _Lançada em: 6 de agosto de 2024_
 Esta seção lista mudanças notáveis feitas de 15 de maio de 2024
 até 6 de agosto de 2024.
 Para detalhes sobre a versão 3.5 do Dart,
-confira o [anúncio do 3.5][] e o [changelog do SDK][3-5-changelog].
+confira o [anúncio do 3.5][3.5 announcement] e o [changelog do SDK][3-5-changelog].
 
 [3.5 announcement]: https://blog.dart.dev/dart-3-5-6ca36259fa2f
 [3-5-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#350---2024-08-06
@@ -297,17 +297,17 @@ Além de correções de bugs e melhorias incrementais,
 fizemos as seguintes alterações neste site:
 
 * Esclarecemos o status e usos pretendidos das
-  [bibliotecas de plataforma web][] novas e legadas.
-* Expandimos a documentação sobre [publicação de versões prerelease][]
+  [bibliotecas de plataforma web][web platform libraries] novas e legadas.
+* Expandimos a documentação sobre [publicação de versões prerelease][publishing prerelease versions]
   de pacotes no site pub.dev.
-* Adicionamos uma página cobrindo o novo [comando `dart pub unpack`][].
-* Documentamos a nova [flag `--skip-validation`][] para `dart pub publish` e
+* Adicionamos uma página cobrindo o novo [comando `dart pub unpack`][`dart pub unpack` command].
+* Documentamos a nova [flag `--skip-validation`][`--skip-validation` flag] para `dart pub publish` e
   a [flag `--tighten`][] para `dart pub downgrade`.
 * Fornecemos orientação de melhores práticas para autores de pacotes
   [testarem seus pacotes com dependências rebaixadas][].
 * Melhoramos o guia [Fixing type promotion failures][] e adicionamos
   destaque de código para indicar melhor o código relevante.
-* Complementamos a [documentação de instalação do Dart][] com
+* Complementamos a [documentação de instalação do Dart][Dart installation documentation] com
   instruções de desinstalação e limpeza.
 * Introduzimos nova documentação e exemplos de código cobrindo
   [function][func-tear] e [constructor][cons-tear] tear-offs.
@@ -406,7 +406,7 @@ confira o [post do blog 3.3][] e o [changelog do SDK][3-3-changelog].
 Além de correções de bugs e melhorias incrementais,
 fizemos as seguintes alterações neste site:
 
-* Alteramos a infraestrutura do site para [executar no 11ty][] em vez de Jekyll.
+* Alteramos a infraestrutura do site para [executar no 11ty][run on 11ty] em vez de Jekyll.
 * Adicionamos uma página cobrindo o novo recurso da linguagem [extension types][].
 * Adicionamos um novo conjunto de documentação sobre [JavaScript interop][]:
   * [Usage][]
@@ -428,7 +428,7 @@ fizemos as seguintes alterações neste site:
 * Deixamos de recomendar [`dart:html`][] e [`dart:io`][]
   para fazer requisições HTTP, em favor de `package:http`.
 * Documentamos [supressão de diagnósticos em um arquivo pubspec][].
-* Adicionamos conteúdo sobre [criação][] e [ignorar][] avisos de segurança em um arquivo pubspec.
+* Adicionamos conteúdo sobre [criação][creating] e [ignorar][ignoring] avisos de segurança em um arquivo pubspec.
 * Documentamos [como migrar de uma versão de pacote retraída][retract].
 
 [run on 11ty]: {{site.repo.this}}/pull/5483
@@ -541,8 +541,8 @@ fizemos as seguintes alterações neste site:
   * Movemos a documentação de cada linter rule para sua própria página.
     Por exemplo: [`avoid_dynamic_calls`][].
   * Adicionamos um exemplo de `analysis_options.yaml` que habilita
-    [todas as linter rules][] disponíveis na versão mais recente do Dart.
-  * Atualizamos o [índice de todas as linter rules disponíveis][]
+    [todas as linter rules][all linter rules] disponíveis na versão mais recente do Dart.
+  * Atualizamos o [índice de todas as linter rules disponíveis][index of all available linter rules]
     para permitir descoberta mais fácil de lints.
 * Aumentamos a documentação de [class modifiers][] adicionando uma
   [Class modifiers reference][] para delinear como eles interagem entre si.
@@ -555,10 +555,10 @@ fizemos as seguintes alterações neste site:
 * Esclarecemos que [package screenshots][] são destinados a
   mostrar a funcionalidade do pacote, não o logo ou ícone do pacote.
 * Adicionamos botões anterior e próximo à
-  [documentação da linguagem][] do Dart para permitir uma experiência de aprendizado guiada.
+  [documentação da linguagem][language documentation] do Dart para permitir uma experiência de aprendizado guiada.
 * Continuamos expandindo o novo [glossário][] em todo o site.
 * Adicionamos uma nota de migração sobre como a
-  [movimentação do pub cache][] no Windows foi finalizada no Dart 3.
+  [movimentação do pub cache][pub cache move] no Windows foi finalizada no Dart 3.
 * Simplificamos e atualizamos documentação antiga agora que
   o sistema de tipos do Dart é sempre [null safe][].
 
@@ -619,7 +619,7 @@ adicionamos documentação para cada um dos principais recursos do Dart 3:
 Para ajudá-lo na transição para a aplicação de [sound null safety][] do Dart 3
 e outras mudanças, também preparamos as seguintes atualizações:
 
-- Criamos um [guia de migração para Dart 3][] abrangente.
+- Criamos um [guia de migração para Dart 3][Dart 3 migration guide] abrangente.
 - Migramos toda a documentação e exemplos de código
   para Dart 3, as versões mais recentes das ferramentas e as dependências mais recentes.
 - Esclarecemos que o sistema de tipos do Dart agora é sempre null-safe no Dart 3.
@@ -734,7 +734,7 @@ fizemos as seguintes alterações neste site:
 * Atualizamos [Concurrency in Dart][] para usar como padrão a nova função `Isolate.run()`.
 * Documentamos especificar um caminho de arquivo ao ativar um pacote na [página `pub global`][].
 * Reescrevemos [Learning Dart as a JavaScript developer][].
-* Adicionamos uma breve visão geral do Dart DevTools à [página `dart run`][].
+* Adicionamos uma breve visão geral do Dart DevTools à [página `dart run`][`dart run` page].
 * Fornecemos mais clareza sobre [operator precedence and associativity][] no Language tour.
 * Expandimos a seção Library tour sobre [Building URIs][] com informações sobre URI http e factory constructor.
 * Contabilizamos a [transição do pub para pub.dev][] de pub.dartlang.org.
@@ -812,14 +812,14 @@ fizemos as seguintes alterações neste site:
   para o caso raro em que a inferência de tipo pode inferir incorretamente que um tipo de argumento é null.
 * Removemos toda menção de arquivos `.packages` descontinuados de [What not to commit][].
   Se você ainda precisa gerar um arquivo `.packages` devido a dependências legadas de terceiros,
-  veja [Opções do `dart pub get`][].
+  veja [Opções do `dart pub get`][`dart pub get` Options].
 * Removemos páginas dedicadas e qualquer outra menção das ferramentas de linha de comando descontinuadas `dart2js`
   e `dartdevc`.
   * Adicionamos opções de linha de comando e problemas conhecidos anteriormente associados ao
   `dart2js` à página [`dart compile`][].
   * Adicionamos informações sobre depuração de código de produção a [Debugging Dart web apps][].
 * Adicionamos suporte para download de builds experimentais Windows ARM
-  ao [arquivo do Dart SDK][].
+  ao [arquivo do Dart SDK][Dart SDK archive].
 * Atualizamos o [Library tour][] para incluir informações sobre weak references e finalizers.
 * Adicionamos uma seção sobre personalização de [`dart fix`][].
 
@@ -857,12 +857,12 @@ fizemos as seguintes alterações neste site:
   * Adicionamos documentação para [super-initializer parameters][].
   * Expandimos a seção [Enumerated types][] do language tour
     e documentamos [enhanced enums][].
-  * Documentamos o suporte para [assinatura][] de executáveis macOS e Windows
+  * Documentamos o suporte para [assinatura][signing] de executáveis macOS e Windows
     compilados com `dart compile exe`.
   * Atualizamos os templates suportados por [`dart create`][]
     para seus novos nomes padronizados.
 * Contabilizamos mudanças no [site pub.dev][] e na [ferramenta pub][].
-  * Listamos vendors oferecendo [repositórios de pacotes Dart como serviço][].
+  * Listamos vendors oferecendo [repositórios de pacotes Dart como serviço][Dart package repositories as a service].
   * Removemos a documentação para o comando descontinuado `dart pub uploader`.
   * Expandimos a documentação para gerenciamento de [uploaders][] de projeto pub.
   * Removemos a maioria das menções ao arquivo `.packages` descontinuado,
@@ -873,7 +873,7 @@ fizemos as seguintes alterações neste site:
   * Atualizamos as [instruções de instalação][get-dart-install] do Linux
     para usar [SecureApt][] e seguir as melhores práticas mais recentes.
   * Adicionamos suporte para download de builds experimentais Linux RISC-V (RV64GC)
-    do [arquivo do Dart SDK][].
+    do [arquivo do Dart SDK][Dart SDK archive].
 * Continuamos o trabalho para melhorar e atualizar a documentação
   da [ferramenta `dart` unificada][dart-tool]:
   * Expandimos a documentação sobre a funcionalidade da ferramenta [`dart fix`][].
@@ -897,17 +897,17 @@ fizemos as seguintes alterações neste site:
 * Aumentamos a cobertura de documentação de null safety:
   * Documentamos o operador not-null assertion (`!`) como parte da
     seção [Other operators][] do language tour.
-  * Migramos os [tutoriais de HTML de baixo nível][] para suportar null safety
+  * Migramos os [tutoriais de HTML de baixo nível][Low-level HTML tutorials] para suportar null safety
     e discutir como interagir com APIs web ao usá-lo.
 * Fizemos outras atualizações diversas:
-  * Documentamos os [tipos nativos][] fornecidos por `dart:ffi`
+  * Documentamos os [tipos nativos][native types] fornecidos por `dart:ffi`
     para uso em interoperabilidade C.
   * Introduzimos uma nova seção ao language tour documentando
     [initializing formal parameters][].
-  * Documentamos o [suporte a pacotes][] do DartPad.
-  * Corrigimos a formatação no [tutorial de programação assíncrona][]
-    e elaboramos sobre [por que código assíncrono importa][].
-  * Atualizamos a página de [segurança][] para corresponder às nossas práticas de segurança atuais.
+  * Documentamos o [suporte a pacotes][support for packages] do DartPad.
+  * Corrigimos a formatação no [tutorial de programação assíncrona][asynchronous programming tutorial]
+    e elaboramos sobre [por que código assíncrono importa][why asynchronous code matters].
+  * Atualizamos a página de [segurança][security] para corresponder às nossas práticas de segurança atuais.
   * Adicionamos uma combinação de teclas (`/`) para focar automaticamente a barra de pesquisa.
 
 [Learning Dart as a JavaScript developer]: /resources/coming-from/js-to-dart
@@ -983,8 +983,8 @@ veja [Dart 2.16: Improved tooling and platform handling][].
 
 ### Documentação atualizada ou adicionada ao dart.dev {:.no_toc}
 
-[Atualizamos a infraestrutura do site][] para uma configuração baseada em Docker
-para permitir [contribuições mais fáceis][] e alinhar mais de perto com
+[Atualizamos a infraestrutura do site][updated the website infrastructure] para uma configuração baseada em Docker
+para permitir [contribuições mais fáceis][easier contributions] e alinhar mais de perto com
 a configuração do [docs.flutter.dev]({{site.flutter-docs}}).
 
 Além de outras correções de bugs e melhorias incrementais,
@@ -992,11 +992,11 @@ fizemos as seguintes alterações neste site:
 
 * Mudamos para documentar a nova ferramenta [`dart doc`][]
   que substitui `dartdoc`.
-* Documentamos a nova [entrada `platform`][] para especificar plataformas suportadas
+* Documentamos a nova [entrada `platform`][`platform` entry] para especificar plataformas suportadas
   no `pubspec.yaml` de um pacote.
-* Atualizamos as páginas de [mensagens de diagnóstico][] e [linter rules][].
-* Documentamos como [ignorar todas as linter rules][] em um arquivo.
-* Removemos menções das antigas ferramentas standalone da [visão geral do Dart SDK][].
+* Atualizamos as páginas de [mensagens de diagnóstico][diagnostic messages] e [linter rules][].
+* Documentamos como [ignorar todas as linter rules][ignore all linter rules] em um arquivo.
+* Removemos menções das antigas ferramentas standalone da [visão geral do Dart SDK][Dart SDK overview].
 * Atualizamos as menções restantes das antigas ferramentas standalone
   para seus equivalentes da ferramenta [`dart`].
 * Adicionamos esclarecimentos à orientação do Effective Dart
@@ -1033,20 +1033,20 @@ fizemos as seguintes alterações neste site:
   isolates que permitem execução paralela de código Dart.
 * Documentamos recursos do pub adicionados ou melhorados no 2.15:
   * Adicionamos uma página para um novo subcomando pub, [dart pub token][],
-    e uma página sobre [repositórios de pacotes personalizados][]
-  * Adicionamos informações sobre [retração de pacotes][]
+    e uma página sobre [repositórios de pacotes personalizados][custom package repositories]
+  * Adicionamos informações sobre [retração de pacotes][package retraction]
   * Adicionamos o campo [false_secrets][] à página pubspec
-  * Atualizamos a sintaxe para [dependências hospedadas][]
-* Removemos todas as entradas de [livros][] do Dart 1
-* Expandimos sobre [dicas de solução de problemas do DartPad][]
-* Atualizamos a página de [mensagens de diagnóstico][]
+  * Atualizamos a sintaxe para [dependências hospedadas][hosted dependencies]
+* Removemos todas as entradas de [livros][books] do Dart 1
+* Expandimos sobre [dicas de solução de problemas do DartPad][DartPad troubleshooting tips]
+* Atualizamos a página de [mensagens de diagnóstico][diagnostic messages]
 * Atualizamos a página de [linter rules][];
   removemos referências a conjuntos de regras descontinuadas como
   `effective_dart`
 * Atualizamos as instruções para instalação e uso do
   [Dart DevTools][]
-* Adicionamos informações sobre o que o [runtime do Dart][] fornece,
-  e esclarecemos os [formatos de compilação][]
+* Adicionamos informações sobre o que o [runtime do Dart][Dart runtime] fornece,
+  e esclarecimos os [formatos de compilação][compilation formats]
 
 [books]: /resources/books
 [compilation formats]: /tools/dart-compile
@@ -1079,20 +1079,20 @@ Além de correções de bugs e melhorias incrementais,
 fizemos as seguintes alterações neste site:
 
 * Desenvolvemos a página sobre [fixing type promotion failures][no-promo].
-* Documentamos como usar o [arquivo `.pubignore`][],
+* Documentamos como usar o [arquivo `.pubignore`][`.pubignore` file],
   um recurso que foi introduzido no Dart 2.14.
 * Adicionamos cobertura do [unsigned shift operator][] (`>>>`),
   que foi introduzido no Dart 2.14.
-* Construímos a [página de linter rule][];
+* Construímos a [página de linter rule][linter rule page];
   atualizamos o Effective Dart para vincular a ela.
 * Adicionamos páginas para os
   comandos [`dart create`][] e [`dart test`][].
 * Terminamos de converter exemplos do uso de antigas ferramentas de linha de comando
   (por exemplo, `dartfmt`) para usar a [ferramenta `dart` unificada][dart-tool]
   (por exemplo, `dart format`).
-* Atualizamos o código do site para usar as [linter rules recomendadas][],
+* Atualizamos o código do site para usar as [linter rules recomendadas][recommended linter rules],
   em vez de pedantic.
-* Atualizamos as listas de [bibliotecas principais][] e [pacotes comumente usados][].
+* Atualizamos as listas de [bibliotecas principais][core libraries] e [pacotes comumente usados][commonly used packages].
 * Adicionamos um redirecionamento de [dart.dev/jobs][] para flutter.dev/jobs,
   para facilitar a localização de vagas abertas nas
   equipes Dart e Flutter.
@@ -1140,19 +1140,19 @@ Para detalhes sobre a versão 2.13, veja [Announcing Dart 2.13][].
 Além de correções de bugs e melhorias incrementais,
 fizemos as seguintes alterações neste site:
 
-* Atualizamos a [seção typedef][] do language tour para refletir
+* Atualizamos a [seção typedef][typedef section] do language tour para refletir
   aliases de tipos não-função,
   que foram introduzidos no Dart 2.13.
 * Publicamos ou atualizamos documentação relacionada à linha de comando e servidores:
   * [Using Google Cloud][] descreve produtos do Google Cloud que
     servidores Dart podem usar,
     frequentemente com a ajuda de imagens Docker pré-empacotadas.
-  * O [tutorial de servidor HTTP][],
+  * O [tutorial de servidor HTTP][HTTP server tutorial],
     que apresentava o pacote `http_server` descontinuado,
     foi temporariamente substituído por
     uma página "em construção" que
     vincula a documentação e exemplos úteis.
-  * O [tutorial de linha de comando][] foi completamente atualizado.
+  * O [tutorial de linha de comando][command-line tutorial] foi completamente atualizado.
 * Publicamos algumas outras páginas novas:
   * Codelab de null safety que ensina sobre o sistema de tipos null-safe do Dart,
     que foi introduzido no Dart 2.12.
@@ -1165,15 +1165,15 @@ fizemos as seguintes alterações neste site:
   * [Fixing type promotion failures][]
     tem informações para ajudá-lo a entender
     por que falhas de type promotion ocorrem, e dá dicas sobre como corrigi-las.
-  * A nova [página `dart run`][]
+  * A nova [página `dart run`][`dart run` page]
     descreve como executar um programa Dart a partir da linha de comando.
 * Continuamos o trabalho de migração de código para null safety, em particular o
-  [tutorial de streams][].
+  [tutorial de streams][streams tutorial].
 * Fizemos outras atualizações diversas:
   * Removemos referências ao Stagehand, em favor de [`dart create`][].
   * Alteramos as opções de analytics para código de exemplo do dart.dev de
     usar `pedantic` para usar as regras recomendadas em [`lints`][].
-  * Adicionamos Docker como uma forma de [obter Dart][].
+  * Adicionamos Docker como uma forma de [obter Dart][get Dart].
   * Atualizamos a [página de evolução da linguagem][evolution] para refletir o Dart 2.13.
 
 [command-line tutorial]: /tutorials/server/cmdline
@@ -1218,27 +1218,27 @@ Para detalhes sobre a versão 2.12, veja [Announcing Dart 2.12][].
 Além de correções de bugs e melhorias incrementais, fizemos as seguintes alterações neste site:
 
 * Atualizamos e desenvolvemos a documentação de null safety. Notavelmente:
-  * Fornecemos um [guia de migração][].
+  * Fornecemos um [guia de migração][migration guide].
   * Adicionamos um [FAQ][ns-faq].
   * Criamos [Unsound null safety][].
-  * Simplificamos a [página inicial de null safety][].
+  * Simplificamos a [página inicial de null safety][null safety homepage].
 * Renovamos o [Effective Dart][], atualizando código para ser null safe e
   alterando regras para refletir nova orientação.
 * Renovamos o [language tour][], atualizando código para ser null safe e
   adicionando informações sobre novos recursos como
-  [variáveis `late`][].
+  [variáveis `late`][`late` variables].
 * Atualizamos a [página de evolução da linguagem][evolution]
   para adicionar informações sobre versionamento de linguagem
   e para refletir o Dart 2.12.
-* Atualizamos o [library tour][] e [tutoriais][]
+* Atualizamos o [library tour][] e [tutoriais][tutorials]
   para refletir sound null safety.
-* Atualizamos páginas em todo o site para usar [a ferramenta `dart`][]
+* Atualizamos páginas em todo o site para usar [a ferramenta `dart`][the `dart` tool]
   em vez de comandos descontinuados.
   Começamos a adicionar páginas para vários comandos `dart`, incluindo
   [`dart analyze`][], [`dart compile`][], [`dart fix`][]
   e [`dart format`][].
-* Criamos uma página documentando a qualidade e suporte de [pacotes da equipe Dart][].
-* Substituímos a página Platforms por uma nova [página Overview][].
+* Criamos uma página documentando a qualidade e suporte de [pacotes da equipe Dart][Dart team packages].
+* Substituímos a página Platforms por uma nova [página Overview][Overview page].
 * Criamos esta página ("Novidades").
 
 Também mudamos do Travis CI para GitHub Actions, e fizemos múltiplas alterações CSS para melhorar a legibilidade do site.

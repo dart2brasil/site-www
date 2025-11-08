@@ -16,8 +16,8 @@ linguagem de programação Dart.
   consulte a [documentação da linguagem][] ou a [especificação da linguagem][].
 * Para um histórico completo de mudanças no Dart SDK, veja o [changelog do SDK][].
 * Para um histórico completo de mudanças incompatíveis,
-  incluindo mudanças [versionadas da linguagem][],
-  consulte a página [Mudanças incompatíveis][].
+  incluindo mudanças [versionadas da linguagem][language versioned],
+  consulte a página [Mudanças incompatíveis][Breaking changes].
 
 Para usar um recurso de linguagem introduzido após a versão 2.0,
 defina uma [restrição de SDK][] não inferior à
@@ -80,7 +80,7 @@ Dart 3.9:
     Para mais contexto sobre essa mudança, veja [flutter/flutter#95472][].
 
 Para mais informações sobre essas e outras mudanças, veja
-o [changelog do Dart 3.9][].
+o [changelog do Dart 3.9][Dart 3.9 changelog].
 
 [Dart 3.9 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#390
 [flutter SDK constraint]: /tools/pub/pubspec#flutter-sdk-constraints
@@ -108,7 +108,7 @@ Os seguintes recursos de suporte foram atualizados:
     e melhorar a saída do código.
 
 Para mais informações sobre essas e outras mudanças, veja
-o [changelog do Dart 3.8][].
+o [changelog do Dart 3.8][Dart 3.8 changelog].
 
 [Null-aware elements]: /language/collections#null-aware-element
 [Dart format]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380

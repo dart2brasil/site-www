@@ -141,7 +141,7 @@ e comunicação justa sobre elas.
 
 ### P. Dart usa tipagem estática?
 
-Sim, Dart usa tipagem estática. Para saber mais, consulte o [sistema de tipos do Dart][].
+Sim, Dart usa tipagem estática. Para saber mais, consulte o [sistema de tipos do Dart][Dart's type system].
 
 Combinando verificações estáticas e em tempo de execução, Dart tem um sistema de tipos sound.
 Isso garante que uma expressão de um tipo não possa produzir um valor
@@ -193,7 +193,7 @@ Use o [comando `pub`][pub-cmd] para empacotar seu código e fazer upload para o 
 Não. Você pode experimentar código Dart com [DartPad,][DartPad] e depois usar seu
 editor ou IDE favorito para desenvolvimento. Algumas IDEs completas como IntelliJ IDEA,
 WebStorm e Visual Studio Code têm plugins Dart. Plugins Dart de código aberto
-também existem para vários editores. Para mais informações, veja as [ferramentas Dart][].
+também existem para vários editores. Para mais informações, veja as [ferramentas Dart][Dart tools].
 
 ### P. Posso criar um app Android com Dart?
 
