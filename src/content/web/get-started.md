@@ -35,7 +35,7 @@ $ dart pub global activate webdev
 <i class="material-symbols">web</i>
 Embora usar uma IDE seja opcional, nós recomendamos fortemente usar uma.
 Para uma lista de IDEs disponíveis, veja a
-[visão geral de editores e debuggers][].
+[visão geral de editores e debuggers][overview of editors & debuggers].
 
 [overview of editors & debuggers]: /tools#editors
 
