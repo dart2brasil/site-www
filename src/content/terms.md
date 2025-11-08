@@ -1,37 +1,39 @@
 ---
-title: Terms of use
-description: The terms of use for dart.dev.
+ia-translate: true
+title: Termos de uso
+description: Os termos de uso do dart.dev.
 showToc: false
 showBreadcrumbs: false
 skipFreshness: true
 ---
 
-The Dart website (the "Website") is hosted by Google.
-By using and/or visiting the Website,
-you consent to be bound by Google's general [Terms of Service][]
-and Google's general [Privacy Policy.][Privacy Policy]
+O site Dart (o "Site") é hospedado pelo Google.
+Ao usar e/ou visitar o Site,
+você consente em estar vinculado aos [Termos de Serviço][Terms of Service] gerais do Google
+e à [Política de Privacidade][Privacy Policy] geral do Google.
 
-The "Dart" name and the Dart logo
+O nome "Dart" e o logo Dart
 <img src="/assets/img/logo/dart-64.png" alt="Dart logo" class="align-baseline text-icon">
-(the "Dart Marks") are trademarks owned by Google and are not included
-within the assets licensed under the Creative Commons Attribution 4.0
-International License.  Google grants you a non-transferable,
-non-exclusive, royalty-free limited license to use the Dart Marks
-subject to your compliance with the [Dart brand guidelines](/brand).
-Except as set forth above, nothing herein grants or should be deemed
-to grant to you any right, title or interest in or to the Dart Marks.
+(as "Marcas Dart") são marcas registradas de propriedade do Google e não estão incluídas
+nos ativos licenciados sob a Licença Internacional Creative Commons Attribution 4.0.
+O Google concede a você uma licença limitada não transferível,
+não exclusiva e livre de royalties para usar as Marcas Dart
+sujeito à sua conformidade com as [diretrizes de marca Dart][Dart brand guidelines].
+Exceto conforme estabelecido acima, nada neste documento concede ou deve ser considerado
+como concessão de qualquer direito, título ou interesse nas Marcas Dart.
 
-As noted above, Google owns the Dart trademarks, but we license them
-so they can be used by the developer community to support the Dart
-SDK, including through training materials and other community content.
+Conforme observado acima, o Google é proprietário das marcas registradas Dart,
+mas nós as licenciamos para que possam ser usadas pela comunidade de desenvolvedores
+para apoiar o Dart SDK, incluindo através de materiais de treinamento e outro conteúdo da comunidade.
 
-At the same time, it's important to make sure that people don't
-use the marks in ways that could cause confusion or otherwise misuse
-the marks, so we have prepared [brand guidelines](/brand) that describe the
-allowed uses of the marks. Our goal in protecting the Dart trademarks
-is to benefit the entire community by ensuring that the marks are only used
-in ways that are consistent with Google's mission to provide a free and open
-source SDK.
+Ao mesmo tempo, é importante garantir que as pessoas não
+usem as marcas de maneiras que possam causar confusão ou usar indevidamente
+as marcas, então preparamos [diretrizes de marca][Dart brand guidelines] que descrevem os
+usos permitidos das marcas. Nosso objetivo ao proteger as marcas registradas Dart
+é beneficiar toda a comunidade, garantindo que as marcas sejam usadas apenas
+de maneiras consistentes com a missão do Google de fornecer um
+SDK gratuito e de código aberto.
 
 [Terms of Service]: https://policies.google.com/terms
 [Privacy Policy]: https://policies.google.com/privacy
+[Dart brand guidelines]: /brand
