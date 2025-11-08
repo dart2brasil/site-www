@@ -49,7 +49,7 @@ Consulte o sinalizador [constraint](#options) para exemplos de uso.
 [`dart install`][] é uma alternativa mais recente para `dart pub global activate`.
 :::
 
-### Ativar um pacote no site pub.dev
+### Ativar um pacote no site pub.dev {:#activate-pubdev}
 
 ```console
 $ dart pub global activate <pub.dev package>
@@ -61,7 +61,7 @@ Especifique um pacote no site pub.dev para ativá-lo. Por exemplo:
 $ dart pub global activate markdown
 ```
 
-### Ativar um pacote com Git
+### Ativar um pacote com Git {:#activate-git}
 
 ```console
 $ dart pub global activate --source git <Git URL>
@@ -94,7 +94,7 @@ branch ou commit diferente, use a opção `--git-ref`:
 $ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-ref 36f98e900347335af2338a0e087538009b7de2f9
 ```
 
-### Ativar um pacote em sua máquina local
+### Ativar um pacote em sua máquina local {:#activate-path}
 
 ```console
 $ dart pub global activate --source path <path>
@@ -108,7 +108,7 @@ diretório `~/dart`:
 $ dart pub global activate --source path ~/dart/stopwatch
 ```
 
-### Atualizar um pacote ativado
+### Atualizar um pacote ativado {:#updating-an-activated-package}
 
 Depois que um pacote foi ativado, você pode atualizá-lo ativando o
 pacote novamente.
@@ -180,7 +180,7 @@ pacote `foo`, passando dois argumentos.
 $ dart pub global run foo:bar arg1 arg2
 ```
 
-### Configurar executáveis de pacote
+### Configurar executáveis de pacote {:#configuring-package-executables}
 
 Se você não for um desenvolvedor de pacotes, pode pular esta seção.
 
@@ -203,7 +203,7 @@ A falha em listar um script sob a tag `executables` reduz a
 usabilidade do script: scripts não listados podem ser executados usando `dart pub global run`, mas não
 diretamente a partir da linha de comando.
 
-## Desativar um pacote
+## Desativar um pacote {:#deactivating-a-package}
 
 ```console
 $ dart pub global deactivate <package>
@@ -219,7 +219,7 @@ $ dart pub global deactivate markdown
 Você não pode mais invocar os scripts do pacote usando `dart pub global run`,
 ou a partir da linha de comando.
 
-## Listar pacotes ativos
+## Listar pacotes ativos {:#listing-active-packages}
 
 ```console
 $ dart pub global list

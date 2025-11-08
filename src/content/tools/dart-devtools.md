@@ -51,7 +51,7 @@ O Flutter inspector funciona apenas para aplicações Flutter;
 outras aplicações web devem usar ferramentas de navegador como o Chrome DevTools.
 
 
-## Usando DevTools com uma aplicação de linha de comando {:#usando-devtools-com-uma-aplicao-de-linha-de-comando}
+## Usando DevTools com uma aplicação de linha de comando {:#using-devtools-with-a-command-line-app}
 
 Você pode usar DevTools para realizar depuração em nível de código-fonte
 ou para visualizar informações gerais de log e diagnóstico
@@ -101,7 +101,7 @@ Para detalhes sobre como usar DevTools com uma aplicação Flutter para qualquer
 [documentação do DevTools no flutter.dev.][Flutter devtools]
 
 
-## Usando DevTools com uma aplicação web não-Flutter {:#usando-devtools-com-uma-aplicao-web-no-flutter}
+## Usando DevTools com uma aplicação web não-Flutter {:#using-devtools-with-a-non-flutter-web-app}
 
 Para iniciar uma aplicação web para que você possa usar o Dart DevTools,
 use o comando `webdev serve` com a flag `--debug` ou `--debug-extension`:
@@ -114,7 +114,7 @@ Para mais informações, consulte [Debugging Dart web apps][].
 
 [App size tool]: {{site.flutter-docs}}/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
-[Linha de comando]: #usando-devtools-com-uma-aplicao-de-linha-de-comando
+[Linha de comando]: #using-devtools-with-a-command-line-app
 [CPU profiler]: {{site.flutter-docs}}/tools/devtools/cpu-profiler
 [Debugger]: {{site.flutter-docs}}/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
@@ -123,6 +123,6 @@ Para mais informações, consulte [Debugging Dart web apps][].
 [Logging view]: {{site.flutter-docs}}/tools/devtools/logging
 [Memory view]: {{site.flutter-docs}}/tools/devtools/memory
 [Network view]: {{site.flutter-docs}}/tools/devtools/network
-[Outras web]: #usando-devtools-com-uma-aplicao-web-no-flutter
+[Outras web]: #using-devtools-with-a-non-flutter-web-app
 [Performance view]: {{site.flutter-docs}}/tools/devtools/performance
 [Timeline view]: {{site.flutter-docs}}/tools/devtools/timeline

@@ -26,7 +26,7 @@ $ dart run
 
 {% render 'tools/dart-tool-note.md' %}
 
-## Executando um arquivo Dart
+## Executando um arquivo Dart {:#running-a-dart-file}
 
 Você pode executar um arquivo Dart passando seu caminho relativo:
 
@@ -34,7 +34,7 @@ Você pode executar um arquivo Dart passando seu caminho relativo:
 $ dart run tool/debug.dart
 ```
 
-## Executando um programa que está em um pacote
+## Executando um programa que está em um pacote {:#running-a-program-from-a-package}
 
 As instruções nesta seção assumem que
 você está executando o comando `dart run`
@@ -43,7 +43,7 @@ do diretório que está no topo de um pacote Dart
 Para informações sobre a estrutura de diretórios de pacotes Dart, consulte
 [convenções de layout de pacote](/tools/pub/create-packages).
 
-### Em um pacote dependente
+### Em um pacote dependente {:#in-a-dependency}
 
 Você pode executar programas que são
 distribuídos no diretório `bin` de qualquer pacote
@@ -73,7 +73,7 @@ $ dart run bar:baz
 O diretório `bin` é o único lugar com programas visíveis.
 Todos os outros diretórios no pacote dependente são privados.
 
-### No pacote atual
+### No pacote atual {:#in-the-current-package}
 
 Quando o diretório atual corresponde ao nome do pacote
 (ou seja, você está no diretório que corresponde
@@ -107,7 +107,7 @@ passe um caminho relativo (como mostrado antes):
 $ dart run tool/debug.dart
 ```
 
-## Fornecendo argumentos para main()
+## Fornecendo argumentos para main() {:#providing-arguments}
 
 Para fornecer [argumentos para a função `main()`][args],
 coloque-os no final do comando:
@@ -154,9 +154,9 @@ ao seu comando `dart run`:
 Para saber mais sobre outras opções de depuração, execute `dart run --help`.
 
 [assert]: /language/error-handling#assert
-[Using DevTools with a command-line app]: /tools/dart-devtools#usando-devtools-com-uma-aplicao-de-linha-de-comando
+[Using DevTools with a command-line app]: /tools/dart-devtools#using-devtools-with-a-command-line-app
 
-## Habilitando recursos experimentais
+## Habilitando recursos experimentais {:#enabling-experiments}
 
 Para habilitar novos recursos e melhorias que estão atualmente em desenvolvimento,
 use [experiment flags](/tools/experiment-flags).
