@@ -1,4 +1,8 @@
-# <img src="https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/dart/logo/64.png" alt="Dart" width="28" height="28"/> The Dart language site (dart.dev)
+---
+ia-translate: true
+---
+
+# <img src="https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/dart/logo/64.png" alt="Dart" width="28" height="28"/> O site da linguagem Dart (dartbrasil.dev)
 
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
@@ -10,66 +14,66 @@
     src="https://cdn.firebasestudio.dev/btn/open_blue_32.svg">
 </a>
 
-The documentation site for the [Dart programming language](https://dart.dev), 
-built with [Jaspr][] and hosted on [Firebase][].
+O site de documentação para a [linguagem de programação Dart](https://dartbrasil.dev),
+construído com [Jaspr][] e hospedado no [Firebase][].
 
-We welcome contributions of all kinds!
-To set up the site locally, follow the
-below guidelines on [Building the site](#build-the-site).
-To learn more about contributing to this repository,
-check out the [Contributing guidelines](CONTRIBUTING.md).
+Recebemos contribuições de todos os tipos!
+Para configurar o site localmente, siga as
+orientações abaixo em [Construindo o site](#build-the-site).
+Para saber mais sobre como contribuir com este repositório,
+confira as [Diretrizes de contribuição](CONTRIBUTING.md).
 
-## Getting started
+## Primeiros passos
 
-Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
-that catches your interest, or create an issue with your proposed change.
-Consider adding a comment to let everyone know that you're working on it, and
-feel free to ask any questions you have on the same issue.
+Comece procurando por uma [issue](https://github.com/dart-lang/site-www/issues)
+que desperte seu interesse, ou crie uma issue com sua mudança proposta.
+Considere adicionar um comentário para informar a todos que você está trabalhando nela, e
+fique à vontade para fazer quaisquer perguntas na mesma issue.
 
-To update this site, fork the repo, make your changes,
-and generate a pull request.
-For small, contained changes (such as style and typo fixes),
-you probably don't need to build this site.
-Often you can make changes using the GitHub UI.
-We can stage the changes automatically in your pull request.
+Para atualizar este site, faça um fork do repo, faça suas mudanças,
+e gere um pull request.
+Para mudanças pequenas e contidas (como correções de estilo e erros de digitação),
+você provavelmente não precisa construir este site.
+Frequentemente você pode fazer mudanças usando a interface do GitHub.
+Podemos preparar as mudanças automaticamente no seu pull request.
 
-If your change involves code samples, adds/removes pages, or affects navigation,
-do consider building and testing your work before submitting.
+Se sua mudança envolve exemplos de código, adiciona/remove páginas, ou afeta a navegação,
+considere construir e testar seu trabalho antes de enviar.
 
-If you want or need to build the site, follow the steps below.
+Se você quer ou precisa construir o site, siga os passos abaixo.
 
-## Build the site
+## Construindo o site
 
-For changes beyond simple text and CSS tweaks,
-we recommend running the site locally to
-enable an edit-refresh cycle. 
+Para mudanças além de simples ajustes de texto e CSS,
+recomendamos executar o site localmente para
+permitir um ciclo de edição e atualização.
 
-### Get the prerequisites
+### Obtenha os pré-requisitos
 
-Install the following tools to build and develop the site:
+Instale as seguintes ferramentas para construir e desenvolver o site:
 
 #### Dart
 
-The latest stable release of Dart is required to build the site
-and run its tooling. This can be the Dart included in the Flutter SDK.
-If you don't have Dart or need to update, follow the
-instructions at [Get the Dart SDK][].
+A versão stable mais recente do Dart é necessária para construir o site
+e executar suas ferramentas. Pode ser o Dart incluído no Flutter SDK.
+Se você não tem o Dart ou precisa atualizar, siga as
+instruções em [Get the Dart SDK][].
 
-If you already have Dart installed, verify it's on your path
-and already the latest stable version:
+Se você já tem o Dart instalado, verifique se está no seu path
+e já é a versão stable mais recente:
 
 ```terminal
 dart --version
 ```
 
-### Clone this repo
+### Clone este repo
 
-If you're not a member of the Dart organization,
-we recommend you [create a fork][] of this repo under your own account,
-and then submit a PR from that fork.
+Se você não é membro da organização Dart,
+recomendamos que você [crie um fork][create a fork] deste repo na sua própria conta,
+e então envie um PR a partir desse fork.
 
-Once you have a fork (or you're a Dart org member),
-clone the repository with `git clone`:
+Depois de ter um fork (ou se você é membro da organização Dart),
+clone o repositório com `git clone`:
 
 ```bash
 git clone https://github.com/dart-lang/site-www.git
@@ -77,97 +81,97 @@ git clone https://github.com/dart-lang/site-www.git
 
 [create a fork]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 
-## Set up your local environment and serve changes
+## Configure seu ambiente local e sirva as mudanças
 
-Before you continue setting up the site infrastructure,
-verify the correct version of Dart is set up and available by
-following the instructions in [Get the prerequisites](#get-the-prerequisites).
+Antes de continuar configurando a infraestrutura do site,
+verifique se a versão correta do Dart está configurada e disponível
+seguindo as instruções em [Obtenha os pré-requisitos](#get-the-prerequisites).
 
-1. _Optional:_ After cloning the repo,
-   create a branch for your changes:
+1. _Opcional:_ Depois de clonar o repo,
+   crie um branch para suas mudanças:
 
    ```terminal
    git checkout -b <BRANCH_NAME>
    ```
 
-2. From the root directory of the repository,
-   fetch the site's Dart dependencies.
+2. Do diretório raiz do repositório,
+   busque as dependências Dart do site.
 
    ```terminal
    dart pub get
    ```
 
-3. From the root directory, run the `dash_site` tool to
-   validate your setup and learn about the available commands.
+3. Do diretório raiz, execute a ferramenta `dash_site` para
+   validar sua configuração e aprender sobre os comandos disponíveis.
 
    ```terminal
    dart run dash_site --help
    ```
 
-4. From the root directory, serve the site locally.
+4. Do diretório raiz, sirva o site localmente.
 
    ```terminal
    dart run dash_site serve
    ```
 
-   This command generates and serves the site on a
-   local port that's printed to your terminal.
+   Este comando gera e serve o site em uma
+   porta local que é impressa no seu terminal.
 
-5. View your changes in the browser by navigating to <http://localhost:8080>.
+5. Visualize suas mudanças no navegador navegando para <http://localhost:8080>.
 
-   Note the port might be different if `8080` is taken.
+   Note que a porta pode ser diferente se `8080` estiver ocupada.
 
-6. Make your changes to the local repo.
+6. Faça suas mudanças no repo local.
 
-   The site should automatically rebuild on most changes, but if
-   something doesn't update, exit the process and rerun the command.
-   Improvements to this functionality are planned.
-   Please open a new issue to track the issue if this occurs.
+   O site deve reconstruir automaticamente na maioria das mudanças, mas se
+   algo não atualizar, saia do processo e execute o comando novamente.
+   Melhorias nesta funcionalidade estão planejadas.
+   Por favor, abra uma nova issue para acompanhar o problema se isso ocorrer.
 
-9. Commit your changes to the branch and submit your PR.
+9. Faça commit das suas mudanças no branch e envie seu PR.
 
-   If your change is large, or you'd like to test it,
-   consider [validating your changes](#validate-your-changes).
+   Se sua mudança é grande, ou você gostaria de testá-la,
+   considere [validar suas mudanças](#validate-your-changes).
 
 > [!TIP]
-> To find additional commands that you can run,
-> run `dart run dash_site --help` from the repository's root directory.
+> Para encontrar comandos adicionais que você pode executar,
+> execute `dart run dash_site --help` do diretório raiz do repositório.
 
-## Validate your changes
+## Valide suas mudanças
 
-### Check documentation and example code
+### Verifique a documentação e o código de exemplo
 
-If you've made changes to the code in the `/examples` or `/tool` directories,
-commit your work, then run the following command to
-verify it is up to date and matches the site standards.
+Se você fez mudanças no código nos diretórios `/examples` ou `/tool`,
+faça commit do seu trabalho, então execute o seguinte comando para
+verificar se está atualizado e corresponde aos padrões do site.
 
 ```terminal
 dart run dash_site check-all
 ```
 
-If this script reports any errors or warnings,
-then address those issues and rerun the command.
-If you have any issues, leave a comment on your issue or pull request,
-and we'll try our best to help you.
-You can also chat with us on the `#hackers-devrel` channel
-on the [Flutter contributors Discord][]!
+Se este script reportar erros ou avisos,
+então resolva esses problemas e execute o comando novamente.
+Se você tiver problemas, deixe um comentário na sua issue ou pull request,
+e faremos o nosso melhor para ajudá-lo.
+Você também pode conversar conosco no canal `#hackers-devrel`
+no [Flutter contributors Discord][]!
 
-[Flutter contributors Discord]: https://github.com/flutter/flutter/wiki/Chat
+[Flutter contributors Discord]: https://github.com/flutterbrasil/flutter/wiki/Chat
 
-### Refresh code excerpts
+### Atualize os trechos de código
 
-A build that fails with the error
+Uma build que falha com o erro
 `Error: Some code excerpts needed to be updated!`
-means that one or more code excerpts in the site Markdown files
-aren't identical to the code regions declared
-in the corresponding `.dart` files.
+significa que um ou mais trechos de código nos arquivos Markdown do site
+não são idênticos às regiões de código declaradas
+nos arquivos `.dart` correspondentes.
 
-To resolve this error,
-from the root of the `site-www` directory,
-run `dart run dash_site refresh-excerpts`.
+Para resolver este erro,
+a partir da raiz do diretório `site-www`,
+execute `dart run dash_site refresh-excerpts`.
 
-To learn more about creating, editing, and using code excerpts,
-check out the [excerpt updater package documentation][].
+Para saber mais sobre criar, editar e usar trechos de código,
+confira a [documentação do pacote excerpt updater][excerpt updater package documentation].
 
 [excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
 
@@ -178,3 +182,4 @@ check out the [excerpt updater package documentation][].
 [Jaspr]: https://jaspr.site
 [Firebase]: https://firebase.google.com/
 [Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain
+[Get the Dart SDK]: https://dartbrasil.dev/get-dart
