@@ -1,118 +1,121 @@
+---
+ia-translate: true
+---
 
-### Install using a Linux package manager {:.no_toc}
+### Instalar usando um gerenciador de pacotes do Linux {:.no_toc}
 
-You have two options to install the Dart SDK on Ubuntu or Debian:
+Você tem duas opções para instalar o Dart SDK no Ubuntu ou Debian:
 
-* Use the [apt-get](#install-using-the-apt-get-package-manager) command.
-* Download a [`.deb`](#install-as-a-debian-package) package
-  and run the `dpkg` command.
+* Use o comando [apt-get](#install-using-the-apt-get-package-manager).
+* Baixe um pacote [`.deb`](#install-as-a-debian-package)
+  e execute o comando `dpkg`.
 
-### Install using the `apt-get` package manager {:.no_toc}
+### Instalar usando o gerenciador de pacotes `apt-get` {:.no_toc}
 
-To install Dart with `apt-get`, perform the following steps.
-You need steps 1 to 3 only for the first install.
+Para instalar o Dart com `apt-get`, execute os seguintes passos.
+Você precisa dos passos 1 a 3 apenas para a primeira instalação.
 
-1. Update the package index files and install the secure HTTP package.
+1. Atualize os arquivos de índice de pacotes e instale o pacote HTTP seguro.
 
    ```console
    $ sudo apt-get update && sudo apt-get install apt-transport-https
    ```
 
-1. Download and add the Google Linux GPG public key.
+1. Baixe e adicione a chave pública GPG do Google Linux.
 
    ```console
    $ wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub \
      | sudo gpg  --dearmor -o /usr/share/keyrings/dart.gpg
    ```
 
-1. Add the Dart package repository to your Linux system.
+1. Adicione o repositório de pacotes do Dart ao seu sistema Linux.
 
    ```console
    $ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' \
      | sudo tee /etc/apt/sources.list.d/dart_stable.list
    ```
 
-   Substitute `amd64` with `armhf`, `arm64`, or `riscv64` as
-   needed for your system.
+   Substitua `amd64` por `armhf`, `arm64` ou `riscv64` conforme
+   necessário para o seu sistema.
 
-1. Use the following `sudo apt-get` commands.
+1. Use os seguintes comandos `sudo apt-get`.
 
    ```console
    $ sudo apt-get update && sudo apt-get install dart
    ```
 
-### Install as a Debian package {:.no_toc}
+### Instalar como um pacote Debian {:.no_toc}
 
-To install the Dart SDK as a Debian package (`*.deb`),
-perform the following steps.
+Para instalar o Dart SDK como um pacote Debian (`*.deb`),
+execute os seguintes passos.
 
-1. Download the Dart SDK [Debian package](#){:.debian-link-stable}.
+1. Baixe o [pacote Debian do Dart SDK](#){:.debian-link-stable}.
 
-1. Use the `sudo dpkg` command to install the `*.deb` package.
+1. Use o comando `sudo dpkg` para instalar o pacote `*.deb`.
 
    ```console
    $ sudo dpkg -i dart_3.4.0-1_amd64.deb
    ```
 
-   Substitute `dart_3.4.0-1_amd64.deb` with the current filename.
+   Substitua `dart_3.4.0-1_amd64.deb` pelo nome do arquivo atual.
 
-## Upgrade the Dart SDK {:.no_toc}
+## Atualizar o Dart SDK {:.no_toc}
 
-Use the same command that you used to install the SDK.
+Use o mesmo comando que você usou para instalar o SDK.
 
-### Upgrade using `apt-get` {:.no_toc}
+### Atualizar usando `apt-get` {:.no_toc}
 
-If you installed the Dart SDK with `apt-get`,
-use the following `sudo apt-get` commands.
+Se você instalou o Dart SDK com `apt-get`,
+use os seguintes comandos `sudo apt-get`.
 
 ```console
 $ sudo apt-get update && sudo apt-get install dart
 ```
 
-### Upgrade using `dpkg` {:.no_toc}
+### Atualizar usando `dpkg` {:.no_toc}
 
-If you installed the Dart SDK with `dpkg`,
-use the `sudo dpkg` command.
+Se você instalou o Dart SDK com `dpkg`,
+use o comando `sudo dpkg`.
 
 ```console
 $ sudo dpkg -i dart_3.2.6-1_amd64.deb
 ```
 
-Substitute `dart_3.4.0-1_amd64.deb` with the new upgrade's filename.
+Substitua `dart_3.4.0-1_amd64.deb` pelo nome do arquivo da nova atualização.
 
-## Uninstall the Dart SDK {:.no_toc}
+## Desinstalar o Dart SDK {:.no_toc}
 
-### Uninstall using `apt-get` {:.no_toc}
+### Desinstalar usando `apt-get` {:.no_toc}
 
-If you installed the Dart SDK with `apt-get`,
-use the `sudo apt-get remove` command.
+Se você instalou o Dart SDK com `apt-get`,
+use o comando `sudo apt-get remove`.
 
-1. Use the `sudo apt-get remove` command.
+1. Use o comando `sudo apt-get remove`.
 
    ```console
    $ sudo apt-get remove -y dart
    ```
 
-1. Remove the Dart configuration files from your home directory.
+1. Remova os arquivos de configuração do Dart do seu diretório home.
 
    ```console
    $ rm -rf  ~/.dart*
    ```
 
-### Uninstall using `dpkg` {:.no_toc}
+### Desinstalar usando `dpkg` {:.no_toc}
 
-If you installed the Dart SDK with `dpkg`,
-use the `sudo dpkg --purge` command.
+Se você instalou o Dart SDK com `dpkg`,
+use o comando `sudo dpkg --purge`.
 
-1. Use the `sudo dpkg --purge` command.
+1. Use o comando `sudo dpkg --purge`.
 
    ```console
    $ sudo dpkg --purge dart
    ```
 
-   This removes the configuration files at the same time.
+   Isso remove os arquivos de configuração ao mesmo tempo.
 
-1. Verify the SDK has been removed.
+1. Verifique se o SDK foi removido.
 
    ```console
    $ dpkg -l | grep dart
