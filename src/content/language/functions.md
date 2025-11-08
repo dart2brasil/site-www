@@ -511,7 +511,7 @@ void main() {
 }
 ```
 
-## Valores de retorno
+## Valores de retorno {:#return-values}
 
 Todas as funções retornam um valor. Se nenhum valor de retorno for especificado, a
 instrução `return null;` é implicitamente anexada ao corpo da função.
@@ -611,7 +611,7 @@ void main() {
 }
 ```
 
-## Geradores
+## Geradores {:#generators}
 
 Quando você precisa produzir preguiçosamente uma sequência de valores,
 considere usar uma _função geradora_.
