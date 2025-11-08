@@ -376,26 +376,18 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 1:** Complete Pub Documentation (23/23 files) - 100% COMPLETE! 🎉
+  - All core pub files: index, packages, dependencies, pubspec, package-layout, versioning, publishing, workspaces, custom-package-repositories, environment-variables, automated-publishing
+  - All pub command files: cmd/index, pub-add, pub-get, pub-upgrade, pub-downgrade, pub-deps, pub-outdated, pub-cache, pub-global
+  - Already completed: create-packages, writing-package-pages, verified-publishers
+- ✅ **Section 6:** Diagnostic Errors - abi/abstract/address/always (13/13 files) - 100% COMPLETE!
 - ✅ **Section 7:** Diagnostic Errors - Ambiguous & Annotations (7/7 files) - 100% COMPLETE!
 
 ### In Progress:
-- ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
+- None
 
 ### Not Started:
-Sections 1-6, 8-20 pending
-
----
-
-## Success Criteria
-
-- ✅ All ~700 Tools section files translated to PT-BR
-- ✅ All files have `ia-translate: true` metadata
-- ✅ Technical terms preserved in English
-- ✅ Natural PT-BR prose throughout
-- ✅ All code blocks and formatting preserved
-- ✅ Regular commits and progress tracking
-- ✅ Updated documentation at each milestone
-
+Sections 2-5, 8-20 pending
 ---
 
 ## Notes

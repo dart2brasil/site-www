@@ -1,7 +1,8 @@
 ---
-title: Package versioning
+ia-translate: true
+title: Versionamento de pacotes
 description: >-
-  How Dart's package management tool, pub, handles versioning of packages.
+  Como a ferramenta de gerenciamento de pacotes do Dart, pub, lida com o versionamento de pacotes.
 ---
 
 O [gerenciador de pacotes pub][pub] ajuda você a trabalhar com versionamento.

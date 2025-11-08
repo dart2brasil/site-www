@@ -1,17 +1,18 @@
 ---
-title: Package dependencies
-breadcrumb: Dependencies
+ia-translate: true
+title: Dependências de pacotes
+breadcrumb: Dependências
 description: >-
-  Add other packages to your app.
-  Specify package locations, version constraints, and more.
+  Adicione outros pacotes ao seu aplicativo.
+  Especifique localizações de pacotes, restrições de versão e mais.
 ---
 
-Dependencies are one of the core concepts of the [pub package manager][].
-A _dependency_ is another package that your package needs to work.
-Dependencies are specified in your [pubspec](/tools/pub/pubspec).
-You list only _immediate dependencies_: the
-software that your package uses directly. Pub handles
-[transitive dependencies](/resources/glossary#transitive-dependency) for you.
+Dependências são um dos conceitos principais do [gerenciador de pacotes pub][pub package manager].
+Uma _dependência_ é outro pacote que seu pacote precisa para funcionar.
+As dependências são especificadas no seu [pubspec](/tools/pub/pubspec).
+Você lista apenas as _dependências imediatas_: o
+software que seu pacote usa diretamente. O Pub cuida das
+[dependências transitivas](/resources/glossary#transitive-dependency) para você.
 
 Esta página tem informações detalhadas sobre como especificar dependências.
 No final, há uma lista de
@@ -174,33 +175,33 @@ O ref pode ser qualquer coisa que o Git permita para [identificar um commit.][co
 
 [commit]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
-If the package you depend on has tagged the
-revision of each version of the package,
-you can use `tag_pattern` instead of `ref`,
-together with a version constraint.
+Se o pacote do qual você depende marcou a
+revisão de cada versão do pacote,
+você pode usar `tag_pattern` em vez de `ref`,
+junto com uma restrição de versão.
 
-Pub will then query Git for all matching tags, and
-feed those version to the version solver.
+O Pub então consultará o Git para todas as tags correspondentes e
+alimentará essas versões para o solucionador de versão.
 
 ```yaml highlightLines=5
 dependencies:
   kittens:
     git:
       url: git@github.com:munificent/kittens.git
-      tag_pattern: v{{version}} # Find version-tag prefixed by 'v'.
+      tag_pattern: v{{version}} # Encontra tags de versão prefixadas com 'v'.
     version: ^2.0.1
 ```
 
 :::version-note
-Support for `tag_pattern` was introduced in Dart 3.9.
+O suporte para `tag_pattern` foi introduzido no Dart 3.9.
 
-To use `tag_pattern`, the including pubspec (but not the dependency)
-must have an SDK version constraint of `^3.9.0` or higher.
+Para usar `tag_pattern`, o pubspec incluído (mas não a dependência)
+deve ter uma restrição de versão do SDK de `^3.9.0` ou superior.
 :::
 
-Pub assumes that the package is in the root of the Git repository. To specify a
-different location in the repo, specify a `path` relative to the repository
-root:
+O Pub assume que o pacote está na raiz do repositório Git. Para especificar uma
+localização diferente no repositório, especifique um `path` relativo à raiz do
+repositório:
 
 ```yaml
 dependencies:
@@ -459,33 +460,33 @@ Como resultado, se você publicar um pacote no pub.dev,
 tenha em mente que as substituições de dependência do seu pacote
 são ignoradas por todos os usuários do seu pacote.
 
-If you are using a [pub workspace][workspaces],
-you can have `dependency_overrides` in each workspace package, but
-a single package can only be overridden once in the workspace.
+Se você estiver usando um [workspace pub][workspaces],
+você pode ter `dependency_overrides` em cada pacote do workspace, mas
+um único pacote só pode ser substituído uma vez no workspace.
 
 ## `pubspec_overrides.yaml` {:#pubspec-overrides}
 
-If you want to change certain aspects of
-the resolution of your `pubspec.yaml` file, but
-do not want to change the actual file, you can
-place a file named `pubspec_overrides.yaml` next to the `pubspec.yaml`.
+Se você quiser alterar certos aspectos da
+resolução do seu arquivo `pubspec.yaml`, mas
+não quiser alterar o arquivo real, você pode
+colocar um arquivo chamado `pubspec_overrides.yaml` ao lado do `pubspec.yaml`.
 
-Attributes from that file will override those from `pubspec.yaml`.
+Os atributos desse arquivo substituirão aqueles do `pubspec.yaml`.
 
-The properties that can be overridden are:
+As propriedades que podem ser substituídas são:
 
 * `dependency_overrides`
 * `workspace`
 * `resolution`
 
-This can be useful to avoid accidentally
-checking temporary overrides in to version control.
-It can also make it easier to generate overrides from a script.
+Isso pode ser útil para evitar acidentalmente
+incluir substituições temporárias no controle de versão.
+Também pode facilitar a geração de substituições a partir de um script.
 
-In a [pub workspace][workspaces], each workspace package
-can have a `pubspec_overrides.yaml` file.
+Em um [workspace pub][workspaces], cada pacote do workspace
+pode ter um arquivo `pubspec_overrides.yaml`.
 
-## Best practices
+## Melhores práticas
 
 Seja proativo no gerenciamento de suas dependências.
 Certifique-se de que seus pacotes dependam das versões mais recentes dos pacotes
