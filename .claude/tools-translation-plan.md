@@ -375,12 +375,17 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 18 (per 20-section-prompts.md):** Diagnostic Errors - override/package/part/pattern (11/11 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 1-17, 19-20 pending
+
+### Note:
+The 20-section-prompts.md defines sections differently than the original plan.
+Section 18 per 20-section-prompts.md (override, package, parameter, part, pattern) is now complete.
 
 ---
 

@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 106 files (with ia-translate: true metadata)
+- **Remaining:** ~839 files
+- **Progress:** 11.2%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 51 (48 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 106 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,25 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 18: Diagnostic Errors (11 files)
+41. ✅ `src/content/tools/diagnostics/override_on_non_overriding_member.md`
+42. ✅ `src/content/tools/diagnostics/package_names.md`
+43. ✅ `src/content/tools/diagnostics/package_prefixed_library_names.md`
+44. ✅ `src/content/tools/diagnostics/part_of_different_library.md`
+45. ✅ `src/content/tools/diagnostics/part_of_non_part.md`
+46. ✅ `src/content/tools/diagnostics/part_of_unnamed_library.md`
+47. ✅ `src/content/tools/diagnostics/pattern_assignment_not_local_variable.md`
+48. ✅ `src/content/tools/diagnostics/pattern_constant_from_deferred_library.md`
+49. ✅ `src/content/tools/diagnostics/pattern_never_matches_value_type.md`
+50. ✅ `src/content/tools/diagnostics/pattern_type_mismatch_in_irrefutable_context.md`
+51. ✅ `src/content/tools/diagnostics/pattern_variable_assignment_inside_guard.md`
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ✅ **Tools Section 18:** 11 diagnostic error files (100%) 🎉
+- ⏳ **Tools:** 26/~776 files (3.4%)
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,8 +114,8 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (51 files this session including merge)
+Progress: 11.2% complete (106/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
