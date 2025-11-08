@@ -259,7 +259,7 @@ o método `listen` em cada respectivo `ReceivePort`.
    `SendPort` do isolate principal.
 4. Receba a mensagem via um listener no `ReceivePort` do isolate principal.
 
-### Exemplo de ports básicos
+### Exemplo de ports básicos {:#basic-ports-example}
 
 Este exemplo demonstra como você pode configurar um worker isolate de longa duração
 com comunicação bidirecional entre ele e o isolate principal.
@@ -640,7 +640,7 @@ lógica que manipula o recebimento de mensagens após a configuração de comuni
 completa. Este benefício se tornará mais óbvio conforme a lógica nos outros
 métodos crescer.
 
-#### Passo 3: Gerar um worker isolate com `Isolate.spawn`
+#### Passo 3: Gerar um worker isolate com `Isolate.spawn` {:#step-3-spawn-a-worker-isolate-with-isolate-spawn}
 
 Este passo continua a preencher o método `Worker.spawn`. Você adicionará o código
 necessário para gerar um isolate e retornar uma instância de `Worker` desta classe.

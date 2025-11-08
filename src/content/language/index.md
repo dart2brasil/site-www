@@ -504,7 +504,7 @@ incluindo stack traces, `rethrow`,
 e a diferença entre `Error` e `Exception`.
 
 
-## Conceitos importantes
+## Conceitos importantes {:#important-concepts}
 
 Ao continuar a aprender sobre a linguagem Dart,
 mantenha esses fatos e conceitos em mente:
