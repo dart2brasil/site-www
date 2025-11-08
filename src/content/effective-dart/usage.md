@@ -1,7 +1,8 @@
 ---
-title: "Effective Dart: Usage"
-breadcrumb: Usage
-description: Guidelines for using language features to write maintainable code.
+ia-translate: true
+title: "Dart Efetivo: Uso"
+breadcrumb: Uso
+description: Diretrizes para usar recursos da linguagem para escrever código de fácil manutenção.
 nextpage:
   url: /effective-dart/design
   title: Design

@@ -2,23 +2,23 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 92 files (with ia-translate: true metadata)
-- **Remaining:** ~853 files
-- **Progress:** 9.7%
+- **Translated:** 95 files (with ia-translate: true metadata)
+- **Remaining:** ~850 files
+- **Progress:** 10.1%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 37
+- **Files translated this session:** 40 (37 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 92 files
+- **Current count:** 95 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
 - ✅ Merged upstream `dart-lang/site-www` main branch
 - ✅ Created `TRANSLATION_PROGRESS.md` tracker
 
-### Documentation Files Translated (This Session - 37 files)
+### Documentation Files Translated (This Session - 40 files)
 
 #### Initial Session (23 files)
 1. ✅ `src/content/interop/js-interop/mock.md`
@@ -61,6 +61,11 @@
 36. ✅ `src/content/tools/vs-code.md` - Completed translation
 37. ✅ `src/content/tools/experiment-flags.md` - Completed translation
 
+#### Merged from PR #80 (3 files)
+38. ✅ `src/content/effective-dart/documentation.md` - From merged PR
+39. ✅ `src/content/effective-dart/style.md` - From merged PR
+40. ✅ `src/content/effective-dart/usage.md` - From merged PR
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
@@ -95,11 +100,12 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (37 files this session)
-Progress: 9.7% complete (92/945 files)
+Session: 2025-11-08 (40 files this session including merge)
+Progress: 10.1% complete (95/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
 - ✅ Libraries section 100% COMPLETE! 🎉
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
 - ✅ Core Tools documentation started (15 essential files translated)
+- ✅ Effective Dart documentation started (3 files from merged PR)
