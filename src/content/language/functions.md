@@ -60,7 +60,7 @@ A função então retorna um valor booleano
 que indica se o `atomicNumber` está na faixa de gases nobres.
 :::
 
-## Parâmetros
+## Parâmetros {:#parameters}
 
 Uma função pode ter qualquer número de parâmetros _posicionais obrigatórios_. Estes podem ser
 seguidos por parâmetros _nomeados_ ou por parâmetros _posicionais opcionais_
