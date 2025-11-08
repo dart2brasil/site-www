@@ -79,6 +79,7 @@ Cláusulas case em instruções if requerem
 uma [language version][] de pelo menos 3.0.
 :::
 
+<a id="switch"></a>
 ## Instruções Switch {:#switch-statements}
 
 Uma instrução `switch` avalia uma expressão de valor contra uma série de cases.
