@@ -55,7 +55,7 @@ Os subcomandos do Pub se enquadram nas seguintes categorias:
 
 
 <a id="managing-apps"></a>
-### Gerenciando dependências de pacotes
+### Gerenciando dependências de pacotes {:#managing-package-dependencies}
 
 O Pub fornece vários subcomandos para gerenciar os
 [pacotes dos quais seu código depende](/tools/pub/dependencies).
@@ -102,7 +102,7 @@ ou qualquer modificação do pubspec.
   Cria ou atualiza o arquivo de bloqueio, conforme necessário.
 
 
-### Executando apps de linha de comando
+### Executando apps de linha de comando {:#running-command-line-apps}
 
 O subcomando [`global`](/tools/pub/cmd/pub-global) permite que você
 torne um pacote globalmente disponível,
@@ -112,7 +112,7 @@ Para executar scripts globalmente disponíveis, você deve
 
 [add-path]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 
-### Implantando pacotes e apps
+### Implantando pacotes e apps {:#deploying-packages-and-apps}
 
 Com o pub você pode publicar pacotes e apps de linha de comando.
 
@@ -135,7 +135,7 @@ Quando um script está listado em `executables`, os usuários podem executar
 para torná-lo diretamente disponível na linha de comando.
 
 
-## Opções globais
+## Opções globais {:#global-options}
 
 Várias opções de linha de comando funcionam com todos os subcomandos do pub.
 Estas incluem:
