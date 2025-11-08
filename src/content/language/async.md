@@ -1,7 +1,8 @@
 ---
-title: Asynchronous programming
-description: Information on writing asynchronous code in Dart.
-shortTitle: Async programming
+ia-translate: true
+title: Programação assíncrona
+description: Informações sobre como escrever código assíncrono em Dart.
+shortTitle: Programação async
 prevpage:
   url: /language/concurrency
   title: Concurrency
@@ -12,41 +13,41 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-Dart libraries are full of functions that
-return [`Future`][] or [`Stream`][] objects.
-These functions are _asynchronous_:
-they return after setting up
-a possibly time-consuming operation
-(such as I/O),
-without waiting for that operation to complete.
+As bibliotecas Dart são repletas de funções que
+retornam objetos [`Future`][] ou [`Stream`][].
+Essas funções são _assíncronas_:
+elas retornam após configurar
+uma operação possivelmente demorada
+(como I/O),
+sem aguardar a conclusão dessa operação.
 
-The `async` and `await` keywords support asynchronous programming,
-letting you write asynchronous code that
-looks similar to synchronous code.
+As keywords `async` e `await` suportam programação assíncrona,
+permitindo que você escreva código assíncrono que
+se parece com código síncrono.
 
 
-## Handling Futures
+## Lidando com Futures
 
-When you need the result of a completed Future,
-you have two options:
+Quando você precisa do resultado de um Future concluído,
+você tem duas opções:
 
-* Use `async` and `await`, as described here and in the
-  [asynchronous programming tutorial](/libraries/async/async-await).
-* Use the Future API, as described in the
-  [`dart:async` documentation](/libraries/dart-async#future).
+* Use `async` e `await`, conforme descrito aqui e no
+  [tutorial de programação assíncrona](/libraries/async/async-await).
+* Use a API Future, conforme descrito na
+  [documentação `dart:async`](/libraries/dart-async#future).
 
-Code that uses `async` and `await` is asynchronous,
-but it looks a lot like synchronous code.
-For example, here's some code that uses `await`
-to wait for the result of an asynchronous function:
+O código que usa `async` e `await` é assíncrono,
+mas parece muito com código síncrono.
+Por exemplo, aqui está algum código que usa `await`
+para aguardar o resultado de uma função assíncrona:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (await-look-up-version)"?>
 ```dart
 await lookUpVersion();
 ```
 
-To use `await`, code must be in an `async` function—a
-function marked as `async`:
+Para usar `await`, o código deve estar em uma função `async`—uma
+função marcada como `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
 ```dart
@@ -57,16 +58,16 @@ Future<void> checkVersion() [!async!] {
 ```
 
 :::note
-Although an `async` function might perform time-consuming operations, 
-it doesn't wait for those operations. 
-Instead, the `async` function executes only
-until it encounters its first `await` expression.
-Then it returns a `Future` object,
-resuming execution only after the `await` expression completes.
+Embora uma função `async` possa realizar operações demoradas,
+ela não aguarda essas operações.
+Em vez disso, a função `async` executa apenas
+até encontrar sua primeira expressão `await`.
+Em seguida, ela retorna um objeto `Future`,
+retomando a execução apenas após a conclusão da expressão `await`.
 :::
 
-Use `try`, `catch`, and `finally` to handle errors and cleanup
-in code that uses `await`:
+Use `try`, `catch` e `finally` para lidar com erros e limpeza
+em código que usa `await`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (try-catch)"?>
 ```dart
@@ -77,9 +78,9 @@ try {
 }
 ```
 
-You can use `await` multiple times in an `async` function.
-For example, the following code waits three times
-for the results of functions:
+Você pode usar `await` várias vezes em uma função `async`.
+Por exemplo, o código a seguir aguarda três vezes
+pelos resultados de funções:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (repeated-await)"?>
 ```dart
@@ -88,17 +89,17 @@ var exitCode = await runExecutable(entrypoint, args);
 await flushThenExit(exitCode);
 ```
 
-In <code>await <em>expression</em></code>,
-the value of <code><em>expression</em></code> is usually a Future;
-if it isn't, then the value is automatically wrapped in a Future.
-This Future object indicates a promise to return an object.
-The value of <code>await <em>expression</em></code> is that returned object.
-The await expression makes execution pause until that object is available.
+Em <code>await <em>expression</em></code>,
+o valor de <code><em>expression</em></code> geralmente é um Future;
+se não for, então o valor é automaticamente encapsulado em um Future.
+Este objeto Future indica uma promessa de retornar um objeto.
+O valor de <code>await <em>expression</em></code> é esse objeto retornado.
+A expressão await faz a execução pausar até que esse objeto esteja disponível.
 
-**If you get a compile-time error when using `await`,
-make sure `await` is in an `async` function.**
-For example, to use `await` in your app's `main()` function,
-the body of `main()` must be marked as `async`:
+**Se você receber um erro de compilação ao usar `await`,
+certifique-se de que `await` está em uma função `async`.**
+Por exemplo, para usar `await` na função `main()` do seu aplicativo,
+o corpo de `main()` deve ser marcado como `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 ```dart
@@ -109,70 +110,70 @@ void main() [!async!] {
 ```
 
 :::note
-The preceding example uses an `async` function (`checkVersion()`)
-without waiting for a result—a practice that can cause problems
-if the code assumes that the function has finished executing.
-To avoid this problem,
-use the [unawaited_futures linter rule][].
+O exemplo anterior usa uma função `async` (`checkVersion()`)
+sem aguardar um resultado—uma prática que pode causar problemas
+se o código assume que a função terminou de executar.
+Para evitar esse problema,
+use a [regra do linter unawaited_futures][unawaited_futures linter rule].
 :::
 
-For an interactive introduction to using futures, `async`, and `await`,
-see the [asynchronous programming tutorial](/libraries/async/async-await).
+Para uma introdução interativa ao uso de futures, `async` e `await`,
+veja o [tutorial de programação assíncrona](/libraries/async/async-await).
 
 
-## Declaring async functions
+## Declarando funções async
 
-An `async` function is a function whose body is marked with
-the `async` modifier.
+Uma função `async` é uma função cujo corpo é marcado com
+o modificador `async`.
 
-Adding the `async` keyword to a function makes it return a Future.
-For example, consider this synchronous function,
-which returns a String:
+Adicionar a keyword `async` a uma função faz com que ela retorne um Future.
+Por exemplo, considere esta função síncrona,
+que retorna uma String:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (sync-look-up-version)"?>
 ```dart
 String lookUpVersion() => '1.0.0';
 ```
 
-If you change it to be an `async` function—for example,
-because a future implementation will be time consuming—the
-returned value is a Future:
+Se você mudá-la para ser uma função `async`—por exemplo,
+porque uma implementação futura será demorada—o
+valor retornado é um Future:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (async-look-up-version)"?>
 ```dart
 Future<String> lookUpVersion() async => '1.0.0';
 ```
 
-Note that the function's body doesn't need to use the Future API.
-Dart creates the Future object if necessary.
-If your function doesn't return a useful value,
-make its return type `Future<void>`.
+Observe que o corpo da função não precisa usar a API Future.
+Dart cria o objeto Future se necessário.
+Se sua função não retorna um valor útil,
+torne seu tipo de retorno `Future<void>`.
 
-For an interactive introduction to using futures, `async`, and `await`,
-see the [asynchronous programming tutorial](/libraries/async/async-await).
+Para uma introdução interativa ao uso de futures, `async` e `await`,
+veja o [tutorial de programação assíncrona](/libraries/async/async-await).
 
 {% comment %}
 TODO #1117: Where else should we cover generalized void?
 {% endcomment %}
 
 
-## Handling Streams
+## Lidando com Streams
 
-When you need to get values from a Stream,
-you have two options:
+Quando você precisa obter valores de um Stream,
+você tem duas opções:
 
-* Use `async` and an _asynchronous for loop_ (`await for`).
-* Use the Stream API, as described in the
-  [`dart:async` documentation](/libraries/dart-async#stream).
+* Use `async` e um _loop for assíncrono_ (`await for`).
+* Use a API Stream, conforme descrito na
+  [documentação `dart:async`](/libraries/dart-async#stream).
 
 :::note
-Before using `await for`, be sure that it makes the code clearer and that you
-really do want to wait for all of the stream's results. For example, you
-usually should **not** use `await for` for UI event listeners, because UI
-frameworks send endless streams of events.
+Antes de usar `await for`, certifique-se de que isso torna o código mais claro e que você
+realmente deseja aguardar todos os resultados do stream. Por exemplo, você
+geralmente **não** deve usar `await for` para listeners de eventos de UI, porque frameworks de UI
+enviam fluxos infinitos de eventos.
 :::
 
-An asynchronous for loop has the following form:
+Um loop for assíncrono tem a seguinte forma:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (await-for)"?>
 ```dart
@@ -181,23 +182,23 @@ await for (varOrType identifier in expression) {
 }
 ```
 
-The value of <code><em>expression</em></code> must have type Stream.
-Execution proceeds as follows:
+O valor de <code><em>expression</em></code> deve ter tipo Stream.
+A execução procede da seguinte forma:
 
-1. Wait until the stream emits a value.
-2. Execute the body of the for loop,
-   with the variable set to that emitted value.
-3. Repeat 1 and 2 until the stream is closed.
+1. Aguarde até que o stream emita um valor.
+2. Execute o corpo do loop for,
+   com a variável definida para esse valor emitido.
+3. Repita 1 e 2 até que o stream seja fechado.
 
-To stop listening to the stream,
-you can use a `break` or `return` statement,
-which breaks out of the for loop
-and unsubscribes from the stream.
+Para parar de escutar o stream,
+você pode usar uma instrução `break` ou `return`,
+que sai do loop for
+e cancela a inscrição no stream.
 
-**If you get a compile-time error when implementing an asynchronous for loop,
-make sure the `await for` is in an `async` function.**
-For example, to use an asynchronous for loop in your app's `main()` function,
-the body of `main()` must be marked as `async`:
+**Se você receber um erro de compilação ao implementar um loop for assíncrono,
+certifique-se de que o `await for` está em uma função `async`.**
+Por exemplo, para usar um loop for assíncrono na função `main()` do seu aplicativo,
+o corpo de `main()` deve ser marcado como `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (number-thinker)" replace="/async|await for/[!$&!]/g"?>
 ```dart
@@ -210,8 +211,8 @@ void main() [!async!] {
 }
 ```
 
-For more information about Dart's asynchronous programming support,
-check out the [`dart:async`](/libraries/dart-async) library documentation.
+Para mais informações sobre o suporte de programação assíncrona do Dart,
+consulte a documentação da biblioteca [`dart:async`](/libraries/dart-async).
 
 [`Future`]: {{site.dart-api}}/dart-async/Future-class.html
 [`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
