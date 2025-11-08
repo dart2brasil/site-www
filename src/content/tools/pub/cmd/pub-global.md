@@ -122,7 +122,7 @@ você também pode usar `dart pub global run`.
 ### Executar um script a partir do seu PATH
 
 Para executar um script diretamente a partir da linha de comando, adicione o `bin`
-do [cache do sistema][] ao sua variável de ambiente `PATH`.
+do [cache do sistema][system cache] ao sua variável de ambiente `PATH`.
 
 Por exemplo, digamos que você tenha ativado o pacote webdev,
 mas ainda não consiga executar o comando:

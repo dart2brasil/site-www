@@ -132,7 +132,7 @@ library;
 class Foo {}
 ```
 
-Doc imports suportam os mesmos estilos de URI que [importações Dart regulares][],
+Doc imports suportam os mesmos estilos de URI que [importações Dart regulares][regular Dart imports],
 incluindo os esquemas `dart:` e `package:`, bem como caminhos relativos.
 No entanto, eles não podem ser adiados ou configurados com `as`, `show` ou `hide`.
 

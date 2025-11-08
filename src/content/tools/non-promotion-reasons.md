@@ -7,7 +7,7 @@ ia-translate: true
 ---
 
 [Type promotion][] ocorre quando a análise de fluxo pode confirmar de forma sólida
-que uma variável com um [tipo nullable][] *não é null*, e
+que uma variável com um [tipo nullable][nullable type] *não é null*, e
 que ela não mudará a partir desse ponto.
 Muitas circunstâncias podem enfraquecer a solidez de um tipo,
 causando falha na promoção de tipo.

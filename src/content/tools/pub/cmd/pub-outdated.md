@@ -10,9 +10,9 @@ _Outdated_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 $ dart pub outdated [options]
 ```
 
-Use `dart pub outdated` para identificar [dependências de pacotes][] desatualizadas
+Use `dart pub outdated` para identificar [dependências de pacotes][package dependencies] desatualizadas
 e obter conselhos sobre como atualizá-las.
-[As melhores práticas de gerenciamento de dependências][melhores práticas]
+[As melhores práticas de gerenciamento de dependências][best practices]
 incluem o uso das versões mais recentes de pacotes estáveis,
 para que você possa obter as correções de bugs mais recentes e melhorias.
 
@@ -40,7 +40,7 @@ atualizar as dependências de um pacote que você possui
 5. **Teste** seu pacote para confirmar que ele ainda funciona conforme esperado.
 
 Você ainda pode ter dependências desatualizadas devido a
-[dependências transitivas][].
+[dependências transitivas][transitive dependencies].
 Se quiser determinar a causa,
 tente executar [`dart pub deps`][] e procure na saída
 o nome de cada pacote desatualizado.
@@ -93,7 +93,7 @@ que está listada como resolvível,
 você pode alterar a entrada `http` do pubspec para usar
 a versão na coluna **Resolvable**
 (ou uma versão superior compatível).
-Na [sintaxe de acento circunflexo][], isso é **`^0.12.1`**.
+Na [sintaxe de acento circunflexo][caret syntax], isso é **`^0.12.1`**.
 Aqui está o diff para `pubspec.yaml`:
 
 ```diff
@@ -207,7 +207,7 @@ Para não considerar substituições, use `--no-dependency-overrides`.
 
 ### `--[no-]dev-dependencies`
 
-Por padrão, considera [dependências de desenvolvimento][dependência de desenvolvimento]
+Por padrão, considera [dependências de desenvolvimento][dev dependency]
 ao resolver restrições de pacotes (`--dev-dependencies`).
 Para não considerar dependências de desenvolvimento, use `--no-dev-dependencies`.
 
@@ -223,7 +223,7 @@ Para não considerar pré-lançamentos, use `--no-prereleases`.
 
 ### `--[no-]transitive`
 
-Por padrão, não inclui [dependências transitivas][]
+Por padrão, não inclui [dependências transitivas][transitive dependencies]
 como parte da saída (`--no-transitive`).
 Para incluir dependências transitivas, use `--transitive`.
 
