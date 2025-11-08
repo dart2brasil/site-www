@@ -1,67 +1,68 @@
 ---
-title: Command-line and server libraries and packages
-shortTitle: CLI & server libraries
+ia-translate: true
+title: Bibliotecas e pacotes de linha de comando e servidor
+shortTitle: Bibliotecas CLI e servidor
 description: >-
-  Libraries and packages that can help you
-  write Dart command-line & server apps.
+  Bibliotecas e pacotes que podem ajudar você
+  a escrever aplicações de linha de comando e servidor em Dart.
 ---
 
-The [Dart SDK][] contains [dart:io][] and other libraries
-that provide low-level command-line & server APIs.
+O [Dart SDK][] contém [dart:io][] e outras bibliotecas
+que fornecem APIs de baixo nível para linha de comando e servidor.
 
 [Dart SDK]: /tools/sdk
 [dart:io]: {{site.dart-api}}/dart-io/dart-io-library.html
 
-## SDK libraries
+## Bibliotecas do SDK
 
-The Dart SDK contains dart:io and other libraries
-that provide low-level web APIs.
+O Dart SDK contém dart:io e outras bibliotecas
+que fornecem APIs de baixo nível para web.
 
-[The dart:io documentation](/libraries/dart-io)
-: An example-driven tour of using the dart:io library.
-  Topics include working with files & directories, and making & handling 
-  HTTP requests.
+[A documentação do dart:io](/libraries/dart-io)
+: Um tour com exemplos de uso da biblioteca dart:io.
+  Os tópicos incluem trabalhar com arquivos e diretórios, e fazer e manipular
+  requisições HTTP.
 
-[dart:io API reference][dart:io]
-: Complete reference documentation for the dart:io library.
-
-
-## Community packages
-
-The [pub.dev site]({{site.pub}}) allows you to search for packages
-that support command-line and server apps
-by specifying the platforms your app needs to support.
-You can also search for words that describe the functionality you need.
-
-### Command-line packages
-
-Command-line apps often use the following packages,
-in addition to [general-purpose packages][] such as `archive`, `intl`, and `yaml`:
+[Referência da API dart:io][dart:io]
+: Documentação de referência completa para a biblioteca dart:io.
 
 
-| **Package**                               | **Description**                                                           |
-|-------------------------------------------|---------------------------------------------------------------------------|
-| [args]({{site.pub-pkg}}/args)             | Parses raw command-line arguments into a set of options and values.       |
-| [cli_util]({{site.pub-pkg}}/cli_util)     | Provides utilities for building command-line apps.                        |
-| [completion]({{site.pub-pkg}}/completion) | Adds command-line completion to apps that use the `args` package.         |
-| [path]({{site.pub-pkg}}/path)             | Provides comprehensive, cross-platform operations for manipulating paths. |
-| [usage]({{site.pub-pkg}}/usage)           | Wraps Google Analytics.                                                   |
+## Pacotes da comunidade
+
+O [site pub.dev]({{site.pub}}) permite que você busque por pacotes
+que suportam aplicações de linha de comando e servidor
+especificando as plataformas que sua aplicação precisa suportar.
+Você também pode buscar por palavras que descrevem a funcionalidade que você precisa.
+
+### Pacotes de linha de comando
+
+Aplicações de linha de comando frequentemente usam os seguintes pacotes,
+além de [pacotes de propósito geral][general-purpose packages] como `archive`, `intl` e `yaml`:
+
+
+| **Pacote**                                | **Descrição**                                                                          |
+|-------------------------------------------|----------------------------------------------------------------------------------------|
+| [args]({{site.pub-pkg}}/args)             | Analisa argumentos brutos de linha de comando em um conjunto de opções e valores.      |
+| [cli_util]({{site.pub-pkg}}/cli_util)     | Fornece utilitários para construir aplicações de linha de comando.                    |
+| [completion]({{site.pub-pkg}}/completion) | Adiciona completação de linha de comando para aplicações que usam o pacote `args`.    |
+| [path]({{site.pub-pkg}}/path)             | Fornece operações abrangentes e multiplataforma para manipular caminhos.              |
+| [usage]({{site.pub-pkg}}/usage)           | Encapsula o Google Analytics.                                                          |
 
 {:.table .table-striped .nowrap}
 
-### Server packages
+### Pacotes de servidor
 
-Server apps can choose from many packages, in addition to
-the packages listed in the previous table
-and [general-purpose packages][] such as `logging`:
+Aplicações de servidor podem escolher entre vários pacotes, além dos
+pacotes listados na tabela anterior
+e [pacotes de propósito geral][general-purpose packages] como `logging`:
 
-| **Package**                             | **Description**                                                                                                       |
-|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| [crypto]({{site.pub-pkg}}/crypto)       | Implements cryptographic hashing functions for algorithms such as SHA-1, SHA-256, MD5, and HMAC.                      |
-| [grpc]({{site.pub-pkg}}/grpc)           | Implements [gRPC][], a high performance, open source, general RPC framework that puts mobile and HTTP/2 first.        |
-| [shelf]({{site.pub-pkg}}/shelf)         | Provides a model for web server middleware that encourages composition and easy reuse.                                |
-| [dart_frog]({{site.pub-pkg}}/dart_frog) | A fast, minimalistic backend framework for Dart built on top of Shelf.                                                |
-| [serverpod]({{site.pub-pkg}}/serverpod) | A scalable app server that supports code generation, authentication, real-time communication, databases, and caching. |
+| **Pacote**                              | **Descrição**                                                                                                                    |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| [crypto]({{site.pub-pkg}}/crypto)       | Implementa funções de hash criptográfico para algoritmos como SHA-1, SHA-256, MD5 e HMAC.                                        |
+| [grpc]({{site.pub-pkg}}/grpc)           | Implementa [gRPC][], um framework RPC de código aberto e alta performance que prioriza mobile e HTTP/2.                          |
+| [shelf]({{site.pub-pkg}}/shelf)         | Fornece um modelo para middleware de servidor web que incentiva composição e reutilização fácil.                                |
+| [dart_frog]({{site.pub-pkg}}/dart_frog) | Um framework de backend rápido e minimalista para Dart construído sobre o Shelf.                                                |
+| [serverpod]({{site.pub-pkg}}/serverpod) | Um servidor de aplicação escalável que suporta geração de código, autenticação, comunicação em tempo real, bancos de dados e caching. |
 
 {:.table .table-striped .nowrap}
 
