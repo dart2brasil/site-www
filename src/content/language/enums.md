@@ -42,7 +42,7 @@ Você também pode usar [vírgulas finais][trailing commas] ao declarar um tipo 
 para ajudar a evitar erros de copiar e colar.
 :::
 
-## Declarando enums aprimorados
+## Declarando enums aprimorados {:#declaring-enhanced-enums}
 
 Dart também permite que declarações enum declarem classes
 com campos, métodos e construtores const
