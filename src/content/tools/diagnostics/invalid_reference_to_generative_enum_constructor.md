@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: invalid_reference_to_generative_enum_constructor
-description: "Detalhes sobre o diagnóstico invalid_reference_to_generative_enum_constructor produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_reference_to_generative_enum_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Construtores generativos de enum só podem ser usados para criar uma constante de enum._
+_Generative enum constructors can only be used to create an enum constant._
 
-_Construtores generativos de enum não podem ser separados (torn off)._
+_Generative enum constructors can't be torn off._
 
 ## Description
 
-O analisador produz este diagnóstico quando um construtor generativo
-definido em um enum é usado em qualquer lugar que não seja para criar uma das constantes
-do enum ou como alvo de um redirecionamento de outro construtor no
-mesmo enum.
+The analyzer produces this diagnostic when a generative constructor
+defined on an enum is used anywhere other than to create one of the enum
+constants or as the target of a redirection from another constructor in
+the same enum.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o construtor de
-`E` está sendo usado para criar uma instância na função `f`:
+The following code produces this diagnostic because the constructor for
+`E` is being used to create an instance in the function `f`:
 
 ```dart
 enum E {
@@ -34,8 +35,8 @@ E f() => const [!E!](2);
 
 ## Common fixes
 
-Se existe um valor de enum com o mesmo valor, ou se você adicionar tal
-constante, então referencie a constante diretamente:
+If there's an enum value with the same value, or if you add such a
+constant, then reference the constant directly:
 
 ```dart
 enum E {
@@ -47,8 +48,8 @@ enum E {
 E f() => E.b;
 ```
 
-Se você precisa usar uma invocação de construtor, então use um construtor
-factory:
+If you need to use a constructor invocation, then use a factory
+constructor:
 
 ```dart
 enum E {

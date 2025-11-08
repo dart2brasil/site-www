@@ -1,10 +1,9 @@
 ---
-ia-translate: true
-title: "dart:core"
-description: "Saiba mais sobre os principais recursos na biblioteca dart:core do Dart."
+title: dart:core
+description: Learn about the major features in Dart's dart:core library.
 prevpage:
   url: /libraries
-  title: Bibliotecas principais
+  title: Core libraries
 nextpage:
   url: /libraries/dart-async
   title: dart:async
@@ -13,16 +12,16 @@ nextpage:
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-A biblioteca dart:core ([referência da API][dart:core])
-fornece um conjunto pequeno, porém crítico, de funcionalidades integradas.
-Esta biblioteca é automaticamente importada em todo programa Dart.
+The dart:core library ([API reference][dart:core])
+provides a small but critical set of built-in functionality.
+This library is automatically imported into every Dart program.
 
 
-## Imprimindo no console {:#printing-to-the-console}
+## Printing to the console
 
-O método de nível superior `print()` recebe um único argumento (qualquer
-Objeto) e exibe o valor da string desse objeto (conforme retornado por
-`toString()`) no console.
+The top-level `print()` method takes a single argument (any Object)
+and displays that object's string value (as returned by `toString()`)
+in the console.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (print)"?>
 ```dart
@@ -30,17 +29,17 @@ print(anObject);
 print('I drink $tea.');
 ```
 
-Para obter mais informações sobre strings básicas e `toString()`, consulte
-[Strings](/language/built-in-types#strings) no tour da linguagem.
+For more information on basic strings and `toString()`, see
+[Strings](/language/built-in-types#strings) in the language tour.
 
 
-## Números {:#numbers}
+## Numbers
 
-A biblioteca dart:core define as classes num, int e double, que possuem
-algumas utilidades básicas para trabalhar com números.
+The dart:core library defines the num, int, and double classes, which
+have some basic utilities for working with numbers.
 
-Você pode converter uma string em um inteiro ou double com os métodos
-`parse()` de int e double, respectivamente:
+You can convert a string into an integer or double with the `parse()`
+methods of int and double, respectively:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (int-double-parse)"?>
 ```dart
@@ -49,8 +48,8 @@ assert(int.parse('0x42') == 66);
 assert(double.parse('0.50') == 0.5);
 ```
 
-Ou use o método parse() de num, que cria um inteiro, se possível, e,
-caso contrário, um double:
+Or use the parse() method of num, which creates an integer if possible
+and otherwise a double:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (num-parse)"?>
 ```dart
@@ -59,17 +58,17 @@ assert(num.parse('0x42') is int);
 assert(num.parse('0.50') is double);
 ```
 
-Para especificar a base de um inteiro, adicione um parâmetro `radix`:
+To specify the base of an integer, add a `radix` parameter:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (radix)"?>
 ```dart
 assert(int.parse('42', radix: 16) == 66);
 ```
 
-Use o método `toString()` para converter um int ou double em uma string.
-Para especificar o número de dígitos à direita da decimal, use
-[toStringAsFixed().][toStringAsFixed()] Para especificar o número de
-dígitos significativos na string, use
+Use the `toString()` method to convert an
+int or double to a string. To specify the number of digits to the right
+of the decimal, use [toStringAsFixed().][toStringAsFixed()] To specify the
+number of significant digits in the string, use
 [toStringAsPrecision():][toStringAsPrecision()]
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (to-string)"?>
@@ -88,27 +87,27 @@ assert(123.456.toStringAsPrecision(2) == '1.2e+2');
 assert(double.parse('1.2e+2') == 120.0);
 ```
 
-Para mais informações, veja a documentação da API para
-[int,][int] [double,][double] e [num.][num] Veja também a seção
-[dart:math](/libraries/dart-math).
+For more information, see the API documentation for
+[int,][int] [double,][double] and [num.][num] Also see
+the [dart:math section](/libraries/dart-math)
 
-## Strings e expressões regulares {:#strings-and-regular-expressions}
+## Strings and regular expressions
 
-Uma string em Dart é uma sequência imutável de unidades de código UTF-16.
-O tour da linguagem tem mais informações sobre
+A string in Dart is an immutable sequence of UTF-16 code units.
+The language tour has more information about
 [strings](/language/built-in-types#strings).
-Você pode usar expressões regulares
-(objetos RegExp) para pesquisar em strings e para substituir
-partes de strings.
+You can use regular expressions (RegExp objects)
+to search within strings and to
+replace parts of strings.
 
-A classe String define métodos como `split()`, `contains()`,
-`startsWith()`, `endsWith()` e outros.
+The String class defines such methods as `split()`, `contains()`,
+`startsWith()`, `endsWith()`, and more.
 
-### Pesquisando dentro de uma string {:#searching-inside-a-string}
+### Searching inside a string
 
-Você pode encontrar locais específicos dentro de uma string, bem como
-verificar se uma string começa ou termina com um padrão específico. Por
-exemplo:
+You can find particular locations within a string, as well as check
+whether a string begins with or ends with a particular pattern. For
+example:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (contains-etc)"?>
 ```dart
@@ -125,15 +124,15 @@ assert('Never odd or even'.endsWith('even'));
 assert('Never odd or even'.indexOf('odd') == 6);
 ```
 
-### Extraindo dados de uma string {:#extracting-data-from-a-string}
+### Extracting data from a string
 
-Você pode obter os caracteres individuais de uma string como Strings ou
-ints, respectivamente. Para ser preciso, você realmente obtém unidades
-de código UTF-16 individuais; caracteres de alta numeração, como o
-símbolo da clave de sol ('\\u{1D11E}'), são duas unidades de código cada.
+You can get the individual characters from a string as Strings or ints,
+respectively. To be precise, you actually get individual UTF-16 code
+units; high-numbered characters such as the treble clef symbol
+('\\u{1D11E}') are two code units apiece.
 
-Você também pode extrair uma substring ou dividir uma string em uma lista
-de substrings:
+You can also extract a substring or split a string into a list of
+substrings:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (substring-etc)"?>
 ```dart
@@ -161,21 +160,21 @@ assert(codeUnitList[0] == 78);
 ```
 
 :::
-Em muitos casos, você deseja trabalhar com
-*clusters de grafemas* Unicode,
-em vez de unidades de código puras.
-Esses são caracteres como são percebidos
-pelo usuário (por exemplo, "🇬🇧" é um
-caractere percebido pelo usuário, mas várias
-unidades de código UTF-16).
-Para isso, a equipe do Dart fornece o
-pacote [`characters`.]({{site.pub-pkg}}/characters)
+In many cases, you want to work with
+Unicode grapheme clusters
+as opposed to pure code units.
+These are characters as they are perceived
+by the user (for example, "🇬🇧" is one
+user-perceived character but several
+UTF-16 code units).
+For this, the Dart team provides the
+[`characters` package.]({{site.pub-pkg}}/characters)
 :::
 
-### Convertendo para maiúsculas ou minúsculas {:#converting-to-uppercase-or-lowercase}
+### Converting to uppercase or lowercase
 
-Você pode facilmente converter strings para suas variantes em maiúsculas e
-minúsculas:
+You can easily convert strings to their uppercase and lowercase
+variants:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (case-conversions)"?>
 ```dart
@@ -187,16 +186,15 @@ assert('WEB APPS'.toLowerCase() == 'web apps');
 ```
 
 :::note
-Esses métodos não funcionam para todos os idiomas. Por exemplo, o *I* sem
-ponto do alfabeto turco é convertido incorretamente.
+These methods don't work for every language. For example, the Turkish
+alphabet's dotless *I* is converted incorrectly.
 :::
 
 
-### Removendo espaços em branco e strings vazias {:#trimming-and-empty-strings}
+### Trimming and empty strings
 
-Remova todos os espaços em branco à esquerda e à direita com `trim()`.
-Para verificar se uma string está vazia (o comprimento é zero), use
-`isEmpty`.
+Remove all leading and trailing white space with `trim()`. To check
+whether a string is empty (length is zero), use `isEmpty`.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (trim-etc)"?>
 ```dart
@@ -210,13 +208,14 @@ assert(''.isEmpty);
 assert('  '.isNotEmpty);
 ```
 
-### Substituindo parte de uma string {:#replacing-part-of-a-string}
+### Replacing part of a string
 
-Strings são objetos imutáveis, o que significa que você pode criá-los,
-mas não pode alterá-los. Se você observar atentamente a [referência da API String,][String]
-perceberá que nenhum dos métodos realmente altera o estado de uma String.
-Por exemplo, o método `replaceAll()` retorna uma nova String sem alterar
-a String original:
+Strings are immutable objects, which means you can create them but you
+can't change them. If you look closely at the [String API reference,][String]
+you'll notice that
+none of the methods actually changes the state of a String. For example,
+the method `replaceAll()` returns a new String without changing the
+original String:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (replace)"?>
 ```dart
@@ -227,12 +226,12 @@ var greeting = greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
 assert(greeting != greetingTemplate);
 ```
 
-### Construindo uma string {:#building-a-string}
+### Building a string
 
-Para gerar uma string programaticamente, você pode usar StringBuffer.
-Um StringBuffer não gera um novo objeto String até que `toString()` seja
-chamado. O método `writeAll()` possui um segundo parâmetro opcional que
-permite especificar um separador — neste caso, um espaço.
+To programmatically generate a string, you can use StringBuffer. A
+StringBuffer doesn't generate a new String object until `toString()` is
+called. The `writeAll()` method has an optional second parameter that
+lets you specify a separator—in this case, a space.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (string-buffer)"?>
 ```dart
@@ -247,11 +246,11 @@ var fullString = sb.toString();
 assert(fullString == 'Use a StringBuffer for efficient string creation.');
 ```
 
-### Expressões regulares {:#regular-expressions}
+### Regular expressions
 
-A classe RegExp fornece os mesmos recursos que as expressões regulares
-JavaScript. Use expressões regulares para pesquisa eficiente e
-correspondência de padrões de strings.
+The RegExp class provides the same capabilities as JavaScript regular
+expressions. Use regular expressions for efficient searching and pattern
+matching of strings.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (regexp)"?>
 ```dart
@@ -270,8 +269,8 @@ var exedOut = someDigits.replaceAll(digitSequence, 'XX');
 assert(exedOut == 'llamas live XX to XX years');
 ```
 
-Você também pode trabalhar diretamente com a classe RegExp. A classe
-Match fornece acesso a uma correspondência de expressão regular.
+You can work directly with the RegExp class, too. The Match class
+provides access to a regular expression match.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (match)"?>
 ```dart
@@ -287,28 +286,28 @@ for (final match in digitSequence.allMatches(someDigits)) {
 }
 ```
 
-### Mais informações {:#more-information}
+### More information
 
-Consulte a [referência da API String][String] para obter uma lista
-completa de métodos. Veja também a referência da API para [StringBuffer,][StringBuffer]
-[Pattern,][Pattern] [RegExp,][RegExp] e [Match.][Match]
+Refer to the [String API reference][String] for a full list of
+methods. Also see the API reference for [StringBuffer,][StringBuffer]
+[Pattern,][Pattern] [RegExp,][RegExp] and [Match.][Match]
 
-## Coleções {:#collections}
+## Collections
 
-O Dart é fornecido com uma API de coleções principal, que inclui classes
-para listas, conjuntos e maps.
+Dart ships with a core collections API, which includes classes for
+lists, sets, and maps.
 
 :::tip
-Para praticar o uso de APIs que estão disponíveis para listas e
-conjuntos, siga o [tutorial de coleções Iterable](/libraries/collections/iterables).
+To practice using APIs that are available to both lists and sets,
+follow the [Iterable collections tutorial](/libraries/collections/iterables).
 :::
 
-### Listas {:#lists}
+### Lists
 
-Como mostra o tour da linguagem, você pode usar literais para criar e
-inicializar [listas](/language/collections#lists). Alternativamente, use um dos
-construtores de List. A classe List também define vários métodos para
-adicionar e remover itens de listas.
+As the language tour shows, you can use literals to create and
+initialize [lists](/language/collections#lists). Alternatively, use one of the List
+constructors. The List class also defines several methods for adding
+items to and removing items from lists.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (list)"?>
 ```dart
@@ -342,7 +341,7 @@ var vegetables = List.filled(99, 'broccoli');
 assert(vegetables.every((v) => v == 'broccoli'));
 ```
 
-Use `indexOf()` para encontrar o índice de um objeto em uma lista:
+Use `indexOf()` to find the index of an object in a list:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (index-of)"?>
 ```dart
@@ -355,11 +354,11 @@ assert(fruits[0] == 'apples');
 assert(fruits.indexOf('apples') == 0);
 ```
 
-Classifica uma lista usando o método `sort()`. Você pode fornecer uma
-função de classificação que compare dois objetos. Essa função de
-classificação deve retornar < 0 para *menor*, 0 para *igual* e > 0 para
-*maior*. O exemplo a seguir usa `compareTo()`, que é definido por
-[Comparable][Comparable] e implementado por String.
+Sort a list using the `sort()` method. You can provide a sorting
+function that compares two objects. This sorting function must return \<
+0 for *smaller*, 0 for the *same*, and \> 0 for *bigger*. The following
+example uses `compareTo()`, which is defined by
+[Comparable][] and implemented by String.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (compare-to)"?>
 ```dart
@@ -370,10 +369,10 @@ fruits.sort((a, b) => a.compareTo(b));
 assert(fruits[0] == 'apples');
 ```
 
-Listas são tipos parametrizados
-([genéricos](/language/generics)),
-para que você possa especificar o tipo que uma lista
-deve conter:
+Lists are parameterized types
+([generics](/language/generics)),
+so you can specify the type that a list
+should contain:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (list-of-string)"?>
 ```dart
@@ -391,28 +390,28 @@ fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
 
 :::note
-Em muitos casos, você não precisa
-especificar explicitamente tipos genéricos,
-porque o Dart os
-[inferirá](/language/type-system#type-inference)
-para você.
-Uma lista como `['Dash', 'Dart']` é entendida
-como sendo uma `List<String>` (lê-se: lista de strings).
+In many cases, you don't
+need to explicitly specify generic
+types, because Dart will
+[infer](/language/type-system#type-inference)
+them for you.
+A list like `['Dash', 'Dart']` is understood
+to be a `List<String>` (read: list of strings).
 
-Mas há momentos em que você _deve_ especificar
-o tipo genérico. Como, por exemplo, quando o Dart não tem
-nada para inferir: `[]` pode ser uma lista de qualquer
-combinação de coisas.
-Isso geralmente não é o que você deseja, então você escreve `<String>[]`
-ou `<Person>[]` ou algo semelhante.
+But there are times when you _should_ specify
+the generic type. Like, for example, when Dart doesn't have
+anything to infer from: `[]` could be a list of any
+combination of things.
+That's often not what you want, so you write `<String>[]`
+or `<Person>[]` or something similar.
 :::
 
-Consulte a [referência da API List][List] para obter uma lista completa de métodos.
+Refer to the [List API reference][List] for a full list of methods.
 
-### Conjuntos {:#sets}
+### Sets
 
-Um conjunto em Dart é uma coleção não ordenada de itens exclusivos. Como um
-conjunto não é ordenado, você não pode obter os itens de um conjunto por índice (posição).
+A set in Dart is an unordered collection of unique items. Because a set
+is unordered, you can't get a set's items by index (position).
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (set)"?>
 ```dart
@@ -436,8 +435,8 @@ assert(ingredients.length == 2);
 var atomicNumbers = Set.from([79, 22, 54]);
 ```
 
-Use `contains()` e `containsAll()` para verificar se um ou mais objetos
-estão em um conjunto:
+Use `contains()` and `containsAll()` to check whether one or more
+objects are in a set:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (contains)"?>
 ```dart
@@ -451,7 +450,7 @@ assert(ingredients.contains('titanium'));
 assert(ingredients.containsAll(['titanium', 'xenon']));
 ```
 
-Uma interseção é um conjunto cujos itens estão em outros dois conjuntos.
+An intersection is a set whose items are in two other sets.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (intersection)"?>
 ```dart
@@ -465,16 +464,16 @@ assert(intersection.length == 1);
 assert(intersection.contains('xenon'));
 ```
 
-Consulte a [referência da API Set][Set] para obter uma lista completa de métodos.
+Refer to the [Set API reference][Set] for a full list of methods.
 
-### Maps {:#maps}
+### Maps
 
-Um map (mapa), comumente conhecido como *dicionário* ou *hash*, é uma coleção
-não ordenada de pares chave-valor. Maps associam uma chave a algum valor para
-fácil recuperação. Ao contrário do JavaScript, os objetos Dart não são maps.
+A map, commonly known as a *dictionary* or *hash*, is an unordered
+collection of key-value pairs. Maps associate a key to some value for
+easy retrieval. Unlike in JavaScript, Dart objects are not maps.
 
-Você pode declarar um map usando uma sintaxe literal concisa, ou pode
-usar um construtor tradicional:
+You can declare a map using a terse literal syntax, or you can use a
+traditional constructor:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (map)"?>
 ```dart
@@ -493,8 +492,8 @@ var searchTerms = Map();
 var nobleGases = Map<int, String>();
 ```
 
-Você adiciona, obtém e define itens de map usando a sintaxe de colchetes.
-Use `remove()` para remover uma chave e seu valor de um map.
+You add, get, and set map items using the bracket syntax. Use `remove()`
+to remove a key and its value from a map.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (remove)"?>
 ```dart
@@ -511,7 +510,7 @@ nobleGases.remove(54);
 assert(!nobleGases.containsKey(54));
 ```
 
-Você pode recuperar todos os valores ou todas as chaves de um map:
+You can retrieve all the values or all the keys from a map:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (keys)"?>
 ```dart
@@ -535,9 +534,9 @@ assert(values.length == 3);
 assert(values.any((v) => v.contains('Waikiki')));
 ```
 
-Para verificar se um map contém uma chave, use `containsKey()`. Como os
-valores do map podem ser nulos, você não pode confiar simplesmente em
-obter o valor da chave e verificar se há nulo para determinar a existência de uma chave.
+To check whether a map contains a key, use `containsKey()`. Because map
+values can be null, you cannot rely on simply getting the value for the
+key and checking for null to determine the existence of a key.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (contains-key)"?>
 ```dart
@@ -551,9 +550,9 @@ assert(hawaiianBeaches.containsKey('Oahu'));
 assert(!hawaiianBeaches.containsKey('Florida'));
 ```
 
-Use o método `putIfAbsent()` quando desejar atribuir um valor a uma chave
-se e somente se a chave ainda não existir em um map. Você deve fornecer
-uma função que retorne o valor.
+Use the `putIfAbsent()` method when you want to assign a value to a key
+if and only if the key does not already exist in a map. You must provide
+a function that returns the value.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (put-if-absent)"?>
 ```dart
@@ -562,20 +561,20 @@ teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
 assert(teamAssignments['Catcher'] != null);
 ```
 
-Consulte a [referência da API Map][Map] para obter uma lista completa de métodos.
+Refer to the [Map API reference][Map] for a full list of methods.
 
-### Métodos comuns de coleção {:#common-collection-methods}
+### Common collection methods
 
-List, Set e Map compartilham funcionalidades comuns encontradas em muitas
-coleções. Parte dessa funcionalidade comum é definida pela classe
-Iterable, que List e Set implementam.
+List, Set, and Map share common functionality found in many collections.
+Some of this common functionality is defined by the Iterable class,
+which List and Set implement.
 
 :::note
-Embora Map não implemente Iterable, você pode obter Iterables dele usando
-as propriedades `keys` e `values` do Map.
+  Although Map doesn't implement Iterable, you can get Iterables from it using
+  the Map `keys` and `values` properties.
 :::
 
-Use `isEmpty` ou `isNotEmpty` para verificar se uma lista, conjunto ou map possui itens:
+Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (is-empty)"?>
 ```dart
@@ -585,8 +584,8 @@ assert(coffees.isEmpty);
 assert(teas.isNotEmpty);
 ```
 
-Para aplicar uma função a cada item em uma lista, conjunto ou map, você
-pode usar `forEach()`:
+To apply a function to each item in a list, set, or map, you can use
+`forEach()`:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (list-for-each)"?>
 ```dart
@@ -595,8 +594,8 @@ var teas = ['green', 'black', 'chamomile', 'earl grey'];
 teas.forEach((tea) => print('I drink $tea'));
 ```
 
-Quando você invoca `forEach()` em um map, sua função deve receber dois
-argumentos (a chave e o valor):
+When you invoke `forEach()` on a map, your function must take two
+arguments (the key and value):
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (map-for-each)"?>
 ```dart
@@ -607,8 +606,8 @@ hawaiianBeaches.forEach((k, v) {
 });
 ```
 
-Iterables fornece o método `map()`, que fornece todos os resultados em um
-único objeto:
+Iterables provide the `map()` method, which gives you all the results in
+a single object:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (list-map)"?>
 ```dart
@@ -619,21 +618,21 @@ loudTeas.forEach(print);
 ```
 
 :::note
-O objeto retornado por `map()` é um Iterable que é *avaliado
-preguiçosamente*: sua função não é chamada até que você solicite um item do objeto retornado.
+The object returned by `map()` is an Iterable that's *lazily evaluated*: your
+function isn't called until you ask for an item from the returned object.
 :::
 
-Para forçar sua função a ser chamada imediatamente em cada item, use
-`map().toList()` ou `map().toSet()`:
+To force your function to be called immediately on each item, use
+`map().toList()` or `map().toSet()`:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (to-list)"?>
 ```dart
 var loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
 ```
 
-Use o método `where()` do Iterable para obter todos os itens que
-correspondem a uma condição. Use os métodos `any()` e `every()` do
-Iterable para verificar se alguns ou todos os itens correspondem a uma condição.
+Use Iterable's `where()` method to get all the items that match a
+condition. Use Iterable's `any()` and `every()` methods to check whether
+some or all items match a condition.
 {% comment %}
 PENDING: Change example as suggested by floitsch to have (maybe)
 cities instead of isDecaffeinated.
@@ -661,28 +660,28 @@ assert(teas.any(isDecaffeinated));
 assert(!teas.every(isDecaffeinated));
 ```
 
-Para obter uma lista completa de métodos, consulte a [referência da API
-Iterable,][Iterable] bem como aquelas para [List,][List] [Set,][Set] e
-[Map.][Map]
+For a full list of methods, refer to the [Iterable API reference,][Iterable]
+as well as those for [List,][List] [Set,][Set] and [Map.][Map]
 
-## URIs {:#uris}
 
-A [classe Uri][Uri] fornece funções para codificar e decodificar strings
-para uso em URIs (que você pode conhecer como *URLs*). Essas funções
-lidam com caracteres especiais para URIs, como `&` e `=`. A classe Uri
-também analisa e expõe os componentes de um URI — host, porta, esquema e
-assim por diante.
+## URIs
+
+The [Uri class][Uri] provides
+functions to encode and decode strings for use in URIs (which you might
+know as *URLs*). These functions handle characters that are special for
+URIs, such as `&` and `=`. The Uri class also parses and exposes the
+components of a URI—host, port, scheme, and so on.
 {% comment %}
 {PENDING: show
 constructors: Uri.http, Uri.https, Uri.file, per floitsch's suggestion}
 {% endcomment %}
 
-### Codificando e decodificando URIs totalmente qualificados {:#encoding-and-decoding-fully-qualified-uris}
+### Encoding and decoding fully qualified URIs
 
-Para codificar e decodificar caracteres *exceto* aqueles com significado
-especial em um URI (como `/`, `:`, `&`, `#`), use os métodos `encodeFull()`
-e `decodeFull()`. Esses métodos são bons para codificar ou decodificar
-um URI totalmente qualificado, deixando intactos os caracteres especiais do URI.
+To encode and decode characters *except* those with special meaning in a
+URI (such as `/`, `:`, `&`, `#`), use the `encodeFull()` and
+`decodeFull()` methods. These methods are good for encoding or decoding
+a fully qualified URI, leaving intact special URI characters.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (encode-full)"?>
 ```dart
@@ -695,13 +694,13 @@ var decoded = Uri.decodeFull(encoded);
 assert(uri == decoded);
 ```
 
-Observe como apenas o espaço entre `alguma` e `mensagem` foi codificado.
+Notice how only the space between `some` and `message` was encoded.
 
-### Codificando e decodificando componentes de URI {:#encoding-and-decoding-uri-components}
+### Encoding and decoding URI components
 
-Para codificar e decodificar todos os caracteres de uma string que
-possuem significado especial em um URI, incluindo (mas não se limitando a)
-`/`, `&` e `:`, use os métodos `encodeComponent()` e `decodeComponent()`.
+To encode and decode all of a string's characters that have special
+meaning in a URI, including (but not limited to) `/`, `&`, and `:`, use
+the `encodeComponent()` and `decodeComponent()` methods.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (encode-component)"?>
 ```dart
@@ -716,14 +715,14 @@ var decoded = Uri.decodeComponent(encoded);
 assert(uri == decoded);
 ```
 
-Observe como cada caractere especial é codificado. Por exemplo, `/` é
-codificado para `%2F`.
+Notice how every special character is encoded. For example, `/` is
+encoded to `%2F`.
 
-### Analisando URIs {:#parsing-uris}
+### Parsing URIs
 
-Se você tiver um objeto Uri ou uma string URI, poderá obter suas partes
-usando campos Uri como `path`. Para criar um Uri a partir de uma string,
-use o método estático `parse()`:
+If you have a Uri object or a URI string, you can get its parts using
+Uri fields such as `path`. To create a Uri from a string, use the
+`parse()` static method:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (uri-parse)"?>
 ```dart
@@ -736,12 +735,12 @@ assert(uri.fragment == 'frag');
 assert(uri.origin == 'https://example.org:8080');
 ```
 
-Consulte a [referência da API Uri][Uri] para obter mais componentes de URI que você pode obter.
+See the [Uri API reference][Uri] for more URI components that you can get.
 
-### Construindo URIs {:#building-uris}
+### Building URIs
 
-Você pode construir um URI a partir de partes individuais usando o
-construtor `Uri()`:
+You can build up a URI from individual parts using the `Uri()`
+constructor:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (uri)"?>
 ```dart
@@ -755,9 +754,9 @@ var uri = Uri(
 assert(uri.toString() == 'https://example.org/foo/bar?lang=dart#frag');
 ```
 
-Se você não precisar especificar um fragmento,
-para criar um URI com um esquema http ou https,
-você pode usar os construtores de fábrica [`Uri.http`][`Uri.http`] ou [`Uri.https`][`Uri.https`]:
+If you don't need to specify a fragment,
+to create a URI with a http or https scheme,
+you can instead use the [`Uri.http`][] or [`Uri.https`][] factory constructors:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (uri-http)"?>
 ```dart
@@ -771,12 +770,12 @@ assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 [`Uri.http`]: {{site.dart-api}}/dart-core/Uri/Uri.http.html
 [`Uri.https`]: {{site.dart-api}}/dart-core/Uri/Uri.https.html
 
-## Datas e horas {:#dates-and-times}
+## Dates and times
 
-Um objeto DateTime é um ponto no tempo. O fuso horário é UTC ou o fuso
-horário local.
+A DateTime object is a point in time. The time zone is either UTC or the
+local time zone.
 
-Você pode criar objetos DateTime usando vários construtores e métodos:
+You can create DateTime objects using several constructors and methods:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (date-time)"?>
 ```dart
@@ -803,12 +802,12 @@ var sameTimeLastYear = now.copyWith(year: now.year - 1);
 ```
 
 :::warning
-As operações `DateTime` podem fornecer resultados inesperados relacionados
-ao Horário de Verão e outros ajustes de tempo não padronizados.
+`DateTime` operations might give unexpected results related to
+Daylight Savings Time and other non-standard time adjustments.  
 :::
 
-A propriedade `millisecondsSinceEpoch` de uma data retorna o número de
-milissegundos desde a "época Unix" — 1º de janeiro de 1970, UTC:
+The `millisecondsSinceEpoch` property of a date returns the number of
+milliseconds since the "Unix epoch"—January 1, 1970, UTC:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (milliseconds-since-epoch)"?>
 ```dart
@@ -821,8 +820,8 @@ var unixEpoch = DateTime.utc(1970);
 assert(unixEpoch.millisecondsSinceEpoch == 0);
 ```
 
-Use a classe Duration para calcular a diferença entre duas datas e para
-avançar ou retroceder uma data:
+Use the Duration class to calculate the difference between two dates and
+to shift a date forward or backward:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (duration)"?>
 ```dart
@@ -844,26 +843,26 @@ assert(duration.inDays == 366); // y2k was a leap year.
 ```
 
 :::warning
-O uso de uma `Duration` para alterar um `DateTime` por dias pode ser
-problemático, devido a mudanças de relógio (para o horário de verão, por
-exemplo). Use datas UTC se precisar alterar os dias.
+Using a `Duration` to shift a `DateTime` by days can be problematic, due to
+clock shifts (to daylight saving time, for example).
+Use UTC dates if you must shift days.
 :::
 
-Para obter uma lista completa de métodos,
-consulte a referência da API para [DateTime][DateTime] e [Duration.][Duration]
+For a full list of methods,
+refer to the API reference for [DateTime][] and [Duration.][Duration]
 
 
-## Classes de utilidade {:#utility-classes}
+## Utility classes
 
-A biblioteca principal contém várias classes de utilidade, úteis para ordenar,
-mapear valores e iterar.
+The core library contains various utility classes, useful for sorting,
+mapping values, and iterating.
 
-### Comparando objetos {:#comparing-objects}
+### Comparing objects
 
-Implemente a interface [Comparable][Comparable]
-para indicar que um objeto pode ser comparado a outro objeto,
-geralmente para ordenação. O método `compareTo()` retorna < 0 para
-*menor*, 0 para *igual* e > 0 para *maior*.
+Implement the [Comparable][]
+interface to indicate that an object can be compared to another object,
+usually for sorting. The `compareTo()` method returns \< 0 for
+*smaller*, 0 for the *same*, and \> 0 for *bigger*.
 
 <?code-excerpt "misc/lib/library_tour/core/comparable.dart"?>
 ```dart
@@ -882,24 +881,24 @@ void main() {
 }
 ```
 
-### Implementando chaves de mapa {:#implementing-map-keys}
+### Implementing map keys
 
-Cada objeto em Dart automaticamente fornece um código hash inteiro e,
-portanto, pode ser usado como chave em um mapa. No entanto, você pode
-substituir o getter `hashCode` para gerar um código hash personalizado.
-Se você fizer isso, também poderá substituir o operador `==`. Objetos que
-são iguais (via `==`) devem ter códigos hash idênticos. Um código hash
-não precisa ser único, mas deve ser bem distribuído.
+Each object in Dart automatically provides an integer hash code, and
+thus can be used as a key in a map. However, you can override the
+`hashCode` getter to generate a custom hash code. If you do, you might
+also want to override the `==` operator. Objects that are equal (via
+`==`) must have identical hash codes. A hash code doesn't have to be
+unique, but it should be well distributed.
 
 :::tip
-Para implementar de forma consistente e fácil o getter `hashCode`,
-considere usar os métodos estáticos de hashing fornecidos pela classe `Object`.
+To consistently and easily implement the `hashCode` getter,
+consider using the static hashing methods provided by the `Object` class.
 
-Para gerar um único código hash para várias propriedades de um objeto,
-você pode usar [`Object.hash()`][`Object.hash()`].
-Para gerar um código hash para uma coleção,
-você pode usar [`Object.hashAll()`][`Object.hashAll()`] (se a ordem dos elementos importar)
-ou [`Object.hashAllUnordered()`][`Object.hashAllUnordered()`].
+To generate a single hash code for multiple properties of an object,
+you can use [`Object.hash()`][].
+To generate a hash code for a collection,
+you can use either [`Object.hashAll()`][] (if element order matters)
+or [`Object.hashAllUnordered()`][].
 :::
 
 [`Object.hash()`]: {{site.dart-api}}/dart-core/Object/hash.html
@@ -907,10 +906,10 @@ ou [`Object.hashAllUnordered()`][`Object.hashAllUnordered()`].
 [`Object.hashAllUnordered()`]: {{site.dart-api}}/dart-core/Object/hashAllUnordered.html
 
 {% comment %}
-Observação: Há discordância sobre se deve incluir identical() na
-implementação de ==. Isso pode melhorar a velocidade, pelo menos quando
-você precisa comparar muitos campos. Eles não fazem identical()
-automaticamente porque, por convenção, NaN != NaN.
+Note: There's disagreement over whether to include identical() in the ==
+implementation. It might improve speed, at least when you need to
+compare many fields. They don't do identical() automatically because, by
+convention, NaN != NaN.
 {% endcomment %}
 
 <?code-excerpt "misc/lib/library_tour/core/hash_code.dart"?>
@@ -945,16 +944,16 @@ void main() {
 }
 ```
 
-### Iteração {:#iteration}
+### Iteration
 
-As classes [Iterable][Iterable] e [Iterator][Iterator]
-suportam acesso sequencial a uma coleção de valores.
-Para praticar o uso dessas coleções,
-siga o [tutorial de coleções Iterable](/libraries/collections/iterables).
+The [Iterable][] and [Iterator][] classes
+support sequential access to a collection of values.
+To practice using these collections,
+follow the [Iterable collections tutorial](/libraries/collections/iterables).
 
-Se você criar uma classe que pode fornecer Iterators para uso em loops
-for-in, estenda (se possível) ou implemente Iterable. Implemente Iterator
-para definir a capacidade de iteração real.
+If you create a class that can provide Iterators for use in for-in loops,
+extend (if possible) or implement Iterable.
+Implement Iterator to define the actual iteration ability.
 
 <?code-excerpt "misc/lib/library_tour/core/iterator.dart (structure)"?>
 ```dart
@@ -984,24 +983,24 @@ void main() {
 }
 ```
 
-## Exceções {:#exceptions}
+## Exceptions
 
-A biblioteca core (núcleo) do Dart define muitas exceções e erros comuns.
-Exceções são consideradas condições para as quais você pode se planejar
-com antecedência e capturar. Erros são condições que você não espera ou planeja.
+The Dart core library defines many common exceptions and errors.
+Exceptions are considered conditions that you can plan ahead for and
+catch. Errors are conditions that you don't expect or plan for.
 
-Alguns dos erros mais comuns são:
+A couple of the most common errors are:
 
-[NoSuchMethodError][NoSuchMethodError]
-: Lançado quando um objeto receptor (que pode ser `null`) não
-  implementa um método.
+[NoSuchMethodError][]
+: Thrown when a receiving object (which might be `null`) does not
+  implement a method.
 
-[ArgumentError][ArgumentError]
-: Pode ser lançado por um método que encontra um argumento inesperado.
+[ArgumentError][]
+: Can be thrown by a method that encounters an unexpected argument.
 
-Lançar uma exceção específica do aplicativo é uma forma comum de indicar
-que ocorreu um erro. Você pode definir uma exceção personalizada
-implementando a interface Exception:
+Throwing an application-specific exception is a common way to indicate
+that an error has occurred. You can define a custom exception by
+implementing the Exception interface:
 
 <?code-excerpt "misc/lib/library_tour/core/exception.dart"?>
 ```dart
@@ -1015,48 +1014,48 @@ class FooException implements Exception {
 }
 ```
 
-Para mais informações, veja
-[Exceções](/language/error-handling#exceptions)
-(no tour da linguagem) e a [referência da API de Exception][Exception].
+For more information, see
+[Exceptions](/language/error-handling#exceptions)
+(in the language tour) and the [Exception API reference.][Exception]
 
-## Referências fracas e finalizadores {:#weak-references-and-finalizers}
+## Weak references and finalizers
 
-Dart é uma linguagem com [coleta de lixo (garbage-collected)][garbage-collected],
-o que significa que qualquer objeto Dart
-que não seja referenciado
-pode ser descartado pelo coletor de lixo.
-Este comportamento padrão pode não ser desejável em
-alguns cenários envolvendo recursos nativos ou
-se o objeto de destino não puder ser modificado.
+Dart is a [garbage-collected][] language,
+which means that any Dart object
+that isn't referenced
+can be disposed by the garbage collector.
+This default behavior might not be desirable in
+some scenarios involving native resources or
+if the target object can't be modified.
 
-Uma [WeakReference (Referência fraca)][WeakReference]
-armazena uma referência ao objeto de destino
-que não afeta como ele é
-coletado pelo coletor de lixo.
-Outra opção é usar um [Expando][Expando]
-para adicionar propriedades a um objeto.
+A [WeakReference][]
+stores a reference to the target object
+that does not affect how it is
+collected by the garbage collector.
+Another option is to use an [Expando][]
+to add properties to an object.
 
-Um [Finalizer][Finalizer] pode ser usado para executar uma função de callback
-depois que um objeto não é mais referenciado.
-No entanto, não é garantido que esse callback seja executado.
+A [Finalizer][] can be used to execute a callback function
+after an object is no longer referenced.
+However, it is not guaranteed to execute this callback.
 
-Um [NativeFinalizer][NativeFinalizer]
-fornece garantias mais fortes
-para interagir com código nativo usando [dart:ffi][dart:ffi];
-seu callback é invocado pelo menos uma vez
-após o objeto não ser mais referenciado.
-Além disso, ele pode ser usado para fechar recursos nativos
-como uma conexão de banco de dados ou arquivos abertos.
+A [NativeFinalizer][]
+provides stronger guarantees
+for interacting with native code using [dart:ffi][];
+its callback is invoked at least once
+after the object is no longer referenced.
+Also, it can be used to close native resources
+such as a database connection or open files.
 
-Para garantir que um objeto não seja
-coletado pelo lixo e finalizado muito cedo,
-as classes podem implementar a interface [Finalizable][Finalizable].
-Quando uma variável local é Finalizable,
-ela não será coletada pelo lixo
-até que o bloco de código onde foi declarada seja finalizado.
+To ensure that an object won't be
+garbage collected and finalized too early,
+classes can implement the [Finalizable][] interface.
+When a local variable is Finalizable,
+it won't be garbage collected
+until the code block where it is declared has exited.
 
 :::version-note
-O suporte para referências fracas e finalizadores foi adicionado no Dart 2.17.
+Support for weak references and finalizers was added in Dart 2.17.
 :::
 
 

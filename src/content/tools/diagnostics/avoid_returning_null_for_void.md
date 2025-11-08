@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: avoid_returning_null_for_void
-description: "Detalhes sobre o diagnóstico avoid_returning_null_for_void produzido pelo analisador do Dart."
+description: >-
+  Details about the avoid_returning_null_for_void
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,19 +18,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Não retorne 'null' de uma função com tipo de retorno 'void'._
+_Don't return 'null' from a function with a return type of 'void'._
 
-_Não retorne 'null' de um método com tipo de retorno 'void'._
+_Don't return 'null' from a method with a return type of 'void'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma função que tem um tipo de
-retorno `void` explicitamente retorna `null`.
+The analyzer produces this diagnostic when a function that has a return
+type of `void` explicitly returns `null`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque há um
-retorno explícito de `null` em uma função `void`:
+The following code produces this diagnostic because there is an explicit
+return of `null` in a `void` function:
 
 ```dart
 void f() {
@@ -39,7 +40,7 @@ void f() {
 
 ## Common fixes
 
-Remova o `null` explícito desnecessário:
+Remove the unnecessary explicit `null`:
 
 ```dart
 void f() {

@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: relational_pattern_operand_type_not_assignable
-description: "Detalhes sobre o diagnóstico relational_pattern_operand_type_not_assignable produzido pelo analisador do Dart."
+description: >-
+  Details about the relational_pattern_operand_type_not_assignable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo da expressão constante '{0}' não é atribuível ao tipo do parâmetro '{1}' do operador '{2}'._
+_The constant expression type '{0}' is not assignable to the parameter type '{1}' of the '{2}' operator._
 
 ## Description
 
-O analisador produz este diagnóstico quando o operando de um relational
-pattern tem um tipo que não é atribuível ao parâmetro do operador
-que será invocado.
+The analyzer produces this diagnostic when the operand of a relational
+pattern has a type that isn't assignable to the parameter of the operator
+that will be invoked.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o operando no
-relational pattern (`0`) é um `int`, mas o operador `>` definido em `C`
-espera um objeto do tipo `C`:
+The following code produces this diagnostic because the operand in the
+relational pattern (`0`) is an `int`, but the `>` operator defined in `C`
+expects an object of type `C`:
 
 ```dart
 class C {
@@ -37,8 +38,8 @@ void f(C c) {
 
 ## Common fixes
 
-Se o switch está usando o valor correto, então altere o case para comparar
-o valor com o tipo correto de objeto:
+If the switch is using the correct value, then change the case to compare
+the value to the right type of object:
 
 ```dart
 class C {
@@ -55,8 +56,8 @@ void f(C c) {
 }
 ```
 
-Se o switch está usando o valor errado, então altere a expressão usada para
-calcular o valor sendo comparado:
+If the switch is using the wrong value, then change the expression used to
+compute the value being matched:
 
 ```dart
 class C {

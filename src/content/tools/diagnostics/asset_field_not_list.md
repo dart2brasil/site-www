@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: asset_field_not_list
-description: "Detalhes sobre o diagnóstico asset_field_not_list produzido pelo analisador Dart."
+description: >-
+  Details about the asset_field_not_list
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,13 +11,13 @@ _The value of the 'assets' field is expected to be a list of relative file paths
 
 ## Description
 
-O analisador produz este diagnóstico quando o valor da chave `assets`
-não é uma lista.
+The analyzer produces this diagnostic when the value of the `assets` key
+isn't a list.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o valor da
-chave `assets` é uma string quando uma lista é esperada:
+The following code produces this diagnostic because the value of the
+`assets` key is a string when a list is expected:
 
 ```yaml
 name: example
@@ -26,7 +27,7 @@ flutter:
 
 ## Common fixes
 
-Altere o valor da lista de assets para que seja uma lista:
+Change the value of the asset list so that it's a list:
 
 ```yaml
 name: example

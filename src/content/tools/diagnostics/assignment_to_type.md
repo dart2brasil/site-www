@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: assignment_to_type
-description: "Detalhes sobre o diagnóstico assignment_to_type produzido pelo analisador do Dart."
+description: >-
+  Details about the assignment_to_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Tipos não podem receber um valor._
+_Types can't be assigned a value._
 
 ## Description
 
-O analisador produz este diagnóstico quando o nome de um tipo aparece
-no lado esquerdo de uma expressão de atribuição.
+The analyzer produces this diagnostic when the name of a type name appears
+on the left-hand side of an assignment expression.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a atribuição à
-classe `C` é inválida:
+The following code produces this diagnostic because the assignment to the
+class `C` is invalid:
 
 ```dart
 class C {}
@@ -28,8 +29,8 @@ void f() {
 
 ## Common fixes
 
-Se o lado direito deve ser atribuído a outra coisa, como uma
-variável local, então altere o lado esquerdo:
+If the right-hand side should be assigned to something else, such as a
+local variable, then change the left-hand side:
 
 ```dart
 void f() {}

@@ -1,23 +1,22 @@
 ---
-ia-translate: true
 title: Books about Dart
 shortTitle: Books
 description: Read all about it! Here's a collection of books about Dart.
 showToc: false
 ---
 
-Esta página cobre uma coleção de livros sobre a linguagem Dart.
-Muitos [livros sobre Flutter]({{site.flutter-docs}}/resources/books)
-também cobrem Dart.
-Se você encontrar outro livro sobre Dart que possa ser útil,
-[nos avise.]({{site.repo.this}}/issues)
+This page covers a collection of books about the Dart language.
+Many [Flutter books]({{site.flutter-docs}}/resources/books)
+also cover Dart.
+If you find another Dart book that might be helpful,
+[let us know.]({{site.repo.this}}/issues)
 
 :::warning
-Se você encontrar um livro sobre Dart que não esteja listado nesta página,
-verifique as datas de publicação posteriores a junho de 2021.
-Livros mais antigos não cobrem tópicos do Dart 2 e 3, como
-tipagem forte (strong typing), null safety, FFI (Foreign Function Interface - Interface de Função Estrangeira), o utilitário de linha de comando `dart`
-e novas ferramentas de desenvolvedor.
+If you find a Dart book not listed on this page,
+check for publication dates after June 2021.
+Older books lack coverage of Dart 2 and 3 topics such as
+strong typing, null safety, FFI, the `dart` command-line utility,
+and new developer tools.
 :::
 
 

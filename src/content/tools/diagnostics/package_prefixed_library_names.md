@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: package_prefixed_library_names
-description: "Detalhes sobre o diagnóstico package_prefixed_library_names produzido pelo analisador do Dart."
+description: >-
+  Details about the package_prefixed_library_names
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,30 +18,30 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O nome da biblioteca não é um caminho separado por pontos prefixado pelo nome do pacote._
+_The library name is not a dot-separated path prefixed by the package name._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma biblioteca tem um nome que
-não segue estas diretrizes:
+The analyzer produces this diagnostic when a library has a name that
+doesn't follow these guidelines:
 
-- Prefixe todos os nomes de bibliotecas com o nome do pacote.
-- Faça a biblioteca de entrada ter o mesmo nome do pacote.
-- Para todas as outras bibliotecas em um pacote, após o nome do pacote adicione o
-  caminho separado por pontos para o arquivo Dart da biblioteca.
-- Para bibliotecas sob `lib`, omita o nome do diretório superior.
+- Prefix all library names with the package name.
+- Make the entry library have the same name as the package.
+- For all other libraries in a package, after the package name add the
+  dot-separated path to the library's Dart file.
+- For libraries under `lib`, omit the top directory name.
 
-Por exemplo, dado um pacote chamado `my_package`, aqui estão os nomes de bibliotecas
-para vários arquivos no pacote:
+For example, given a package named `my_package`, here are the library
+names for various files in the package:
 
 
 ## Example
 
-Assumindo que o arquivo contendo o código a seguir não está em um arquivo
-chamado `special.dart` no diretório `lib` de um pacote chamado `something`
-(o que seria uma exceção à regra), o analisador produz este
-diagnóstico porque o nome da biblioteca não está em conformidade com as
-diretrizes acima:
+Assuming that the file containing the following code is not in a file
+named `special.dart` in the `lib` directory of a package named `something`
+(which would be an exception to the rule), the analyzer produces this
+diagnostic because the name of the library doesn't conform to the
+guidelines above:
 
 ```dart
 library [!something.special!];
@@ -48,4 +49,4 @@ library [!something.special!];
 
 ## Common fixes
 
-Altere o nome da biblioteca para estar em conformidade com as diretrizes.
+Change the name of the library to conform to the guidelines.

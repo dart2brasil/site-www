@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: always_put_control_body_on_new_line
-description: "Detalhes sobre o diagnóstico always_put_control_body_on_new_line produzido pelo analisador do Dart."
+description: >-
+  Details about the always_put_control_body_on_new_line
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -21,15 +22,15 @@ _Statement should be on a separate line._
 
 ## Description
 
-O analisador produz este diagnóstico quando o código controlado por uma
-instrução de fluxo de controle (`if`, `for`, `while` ou `do`) está na mesma linha
-que a instrução de fluxo de controle.
+The analyzer produces this diagnostic when the code being controlled by a
+control flow statement (`if`, `for`, `while`, or `do`) is on the same line
+as the control flow statement.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a instrução `return`
-está na mesma linha que o `if` que controla se o `return` será
-executado:
+The following code produces this diagnostic because the `return` statement
+is on the same line as the `if` that controls whether the `return` will be
+executed:
 
 ```dart
 void f(bool b) {
@@ -39,7 +40,7 @@ void f(bool b) {
 
 ## Common fixes
 
-Coloque a instrução controlada em uma linha separada e indentada:
+Put the controlled statement onto a separate, indented, line:
 
 ```dart
 void f(bool b) {

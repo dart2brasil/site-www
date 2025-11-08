@@ -1,29 +1,30 @@
 ---
-ia-translate: true
 title: subtype_of_ffi_class
-description: "Detalhes sobre o diagnóstico subtype_of_ffi_class produzido pelo analisador Dart."
+description: >-
+  Details about the subtype_of_ffi_class
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A classe '{0}' não pode estender '{1}'._
+_The class '{0}' can't extend '{1}'._
 
-_A classe '{0}' não pode implementar '{1}'._
+_The class '{0}' can't implement '{1}'._
 
-_A classe '{0}' não pode misturar '{1}'._
+_The class '{0}' can't mix in '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma classe estende qualquer classe FFI
-diferente de `Struct` ou `Union`, ou implementa ou mistura qualquer classe FFI.
-`Struct` e `Union` são as únicas classes FFI que podem ser subtipos, e
-apenas estendendo-as.
+The analyzer produces this diagnostic when a class extends any FFI class
+other than `Struct` or `Union`, or implements or mixes in any FFI class.
+`Struct` and `Union` are the only FFI classes that can be subtyped, and
+then only by extending them.
 
-Para mais informações sobre FFI, veja [C interop using dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a classe `C` estende
+The following code produces this diagnostic because the class `C` extends
 `Double`:
 
 ```dart
@@ -34,8 +35,8 @@ final class C extends [!Double!] {}
 
 ## Common fixes
 
-Se a classe deve estender `Struct` ou `Union`, então mude a
-declaração da classe:
+If the class should extend either `Struct` or `Union`, then change the
+declaration of the class:
 
 ```dart
 import 'dart:ffi';
@@ -46,8 +47,8 @@ final class C extends Struct {
 }
 ```
 
-Se a classe não deve estender `Struct` ou `Union`, então remova quaisquer
-referências a classes FFI:
+If the class shouldn't extend either `Struct` or `Union`, then remove any
+references to FFI classes:
 
 ```dart
 final class C {}

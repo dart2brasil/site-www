@@ -1,27 +1,28 @@
 ---
-ia-translate: true
 title: unused_result
-description: "Detalhes sobre o diagnóstico unused_result produzido pelo analisador Dart."
+description: >-
+  Details about the unused_result
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' deve ser usado. {1}._
+_'{0}' should be used. {1}._
 
-_O valor de '{0}' deve ser usado._
+_The value of '{0}' should be used._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma função anotada com
-[`useResult`][meta-useResult] é invocada, e o valor retornado por essa
-função não é usado. O valor é considerado usado se um membro do
-valor é invocado, se o valor é passado para outra função, ou se o
-valor é atribuído a uma variável ou campo.
+The analyzer produces this diagnostic when a function annotated with
+[`useResult`][meta-useResult] is invoked, and the value returned by that
+function isn't used. The value is considered to be used if a member of the
+value is invoked, if the value is passed to another function, or if the
+value is assigned to a variable or field.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a invocação de
-`c.a()` não é usada, mesmo que o método `a` esteja anotado com
+The following code produces this diagnostic because the invocation of
+`c.a()` isn't used, even though the method `a` is annotated with
 [`useResult`][meta-useResult]:
 
 ```dart
@@ -39,10 +40,10 @@ void f(C c) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você pretendia invocar a função anotada, então use o valor que
-foi retornado:
+If you intended to invoke the annotated function, then use the value that
+was returned:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -59,8 +60,8 @@ void f(C c) {
 }
 ```
 
-Se você pretendia invocar uma função diferente, então corrija o nome da
-função sendo invocada:
+If you intended to invoke a different function, then correct the name of
+the function being invoked:
 
 ```dart
 import 'package:meta/meta.dart';

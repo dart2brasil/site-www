@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_statements
-description: "Detalhes sobre o diagnóstico unnecessary_statements produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_statements
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Declaração desnecessária._
+_Unnecessary statement._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma declaração de expressão não tem
-efeito claro.
+The analyzer produces this diagnostic when an expression statement has no
+clear effect.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a adição dos
-valores retornados das duas invocações não tem efeito claro:
+The following code produces this diagnostic because the addition of the
+returned values from the two invocations has no clear effect:
 
 ```dart
 void f(int Function() first, int Function() second) {
@@ -37,15 +38,15 @@ void f(int Function() first, int Function() second) {
 
 ## Common fixes
 
-Se a expressão não precisa ser computada, então remova-a:
+If the expression doesn't need to be computed, then remove it:
 
 ```dart
 void f(int Function() first, int Function() second) {
 }
 ```
 
-Se o valor da expressão é necessário, então use-o, possivelmente
-atribuindo-o a uma variável local primeiro:
+If the value of the expression is needed, then make use of it, possibly
+assigning it to a local variable first:
 
 ```dart
 void f(int Function() first, int Function() second) {
@@ -53,8 +54,8 @@ void f(int Function() first, int Function() second) {
 }
 ```
 
-Se porções da expressão precisam ser executadas, então remova as
-porções desnecessárias:
+If portions of the expression need to be executed, then remove the
+unnecessary portions:
 
 ```dart
 void f(int Function() first, int Function() second) {

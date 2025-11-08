@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_ignore
-description: "Detalhes sobre o diagnóstico unnecessary_ignore produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_ignore
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,19 +18,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O diagnóstico '{0}' não é produzido neste local, então não precisa ser ignorado._
+_The diagnostic '{0}' isn't produced at this location so it doesn't need to be ignored._
 
-_O diagnóstico '{0}' não é produzido neste arquivo, então não precisa ser ignorado._
+_The diagnostic '{0}' isn't produced in this file so it doesn't need to be ignored._
 
 ## Description
 
-O analisador produz este diagnóstico quando um ignore é especificado para
-ignorar um diagnóstico que não é produzido.
+The analyzer produces this diagnostic when an ignore is specified to
+ignore a diagnostic that isn't produced.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o
-diagnóstico `unused_local_variable` não é reportado no local ignorado:
+The following code produces this diagnostic because the
+`unused_local_variable` diagnostic isn't reported at the ignored location:
 
 ```dart
 // ignore: [!unused_local_variable!]
@@ -38,7 +39,7 @@ void f() {}
 
 ## Common fixes
 
-Remova o comentário ignore:
+Remove the ignore comment:
 
 ```dart
 void f() {}

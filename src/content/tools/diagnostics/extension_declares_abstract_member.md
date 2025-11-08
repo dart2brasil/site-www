@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: extension_declares_abstract_member
-description: "Detalhes sobre o diagnóstico extension_declares_abstract_member produzido pelo analisador Dart."
+description: >-
+  Details about the extension_declares_abstract_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extensions não podem declarar membros abstratos._
+_Extensions can't declare abstract members._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração abstrata é
-declarada em uma extension. Extensions podem declarar apenas membros concretos.
+The analyzer produces this diagnostic when an abstract declaration is
+declared in an extension. Extensions can declare only concrete members.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o método `a` não
-possui um corpo:
+The following code produces this diagnostic because the method `a` doesn't
+have a body:
 
 ```dart
 extension E on String {
@@ -24,6 +25,6 @@ extension E on String {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Forneça uma implementação para o membro ou remova-o.
+Either provide an implementation for the member or remove it.

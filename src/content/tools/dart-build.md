@@ -1,26 +1,25 @@
 ---
-ia-translate: true
 title: dart build
-description: "Ferramenta de linha de comando para compilar aplicações Dart."
+description: Command-line tool for building Dart applications.
 ---
 
 :::version-note
-O suporte para `dart build` foi introduzido no Dart 3.10.
+Support for `dart build` was introduced in Dart 3.10.
 :::
 
-Use o comando `dart build` para compilar uma aplicação Dart.
-Este comando executa automaticamente [build hooks](/tools/hooks)
-do seu projeto e suas dependências para compilar ou baixar
-code assets e empacotá-los com sua aplicação.
+Use the `dart build` command to build a Dart application.
+This command automatically runs [build hooks](/tools/hooks) 
+from your project and its dependencies to compile or download 
+code assets and bundle them with your application.
 
 
-## Compilar uma aplicação CLI
+## Build a CLI application 
 
-O comando `dart build cli`
-compila uma aplicação Dart com uma interface de linha de comando (CLI)
-incluindo quaisquer code assets.
+The `dart build cli` command
+builds a Dart application with a command-line interface (CLI)
+including any code assets.
 
-O bundle da aplicação resultante é estruturado da seguinte forma:
+The resulting app bundle is structured as follows:
 
 ```plaintext
 bundle/
@@ -30,13 +29,13 @@ bundle/
     <dynamic libraries>
 ```
 
-## Opções para `dart build cli`
+## Options for `dart build cli`
 
-As seguintes opções podem ser usadas para o comando `dart build cli`.
+The following options can be used for the `dart build cli` command. 
 
 ### `-h`, `--help`
 
-Use a opção `-h` ou `--help` para obter ajuda para o subcomando `cli`.
+Use the `-h` or `--help` option to get help for the `cli` subcommand.
 
 ```console
 $ dart build cli --help
@@ -49,10 +48,10 @@ $ dart build cli -h
 
 ### `-o`, `--output`
 
-Use `-o` ou `--output` para especificar onde `dart build` salva
-os arquivos gerados. A saída é colocada em um diretório `bundle/`
-dentro do caminho fornecido, que pode ser absoluto ou relativo.
-Se omitido, o caminho padrão é `build/cli/_/`.
+Use `-o` or `--output` to specify where `dart build` saves 
+the generated files. The output is placed in a `bundle/` directory 
+within the given path, which can be absolute or relative. 
+If omitted, the default path is `build/cli/_/`.
 
 ```console
 $ dart build cli --output=<path>
@@ -62,7 +61,7 @@ $ dart build cli --output=<path>
 $ dart build cli -o=<path>
 ```
 
-Por exemplo, para definir o diretório de saída como `./my_custom_output`:
+For example, to set the output directory to `./my_custom_output`:
 
 ```console
 $ dart build cli --output=./my_custom_output
@@ -71,12 +70,12 @@ $ dart build cli --output=./my_custom_output
 
 ### `-t`, `--target`
 
-Use a opção `-t` ou `--target` para especificar o arquivo de ponto de entrada
-principal da aplicação de linha de comando.
+Use the `-t` or `--target` option to specify the main entry-point 
+file of the command-line application.
 
-Este deve ser um arquivo Dart no diretório `bin/`.
-Se a opção for omitida e houver um único
-arquivo Dart em `bin/`, então esse é usado em vez disso.
+This must be a Dart file in the `bin/` directory. 
+If the option is omitted and there is a single 
+Dart file in `bin/`, then that is used instead.
 
 ```console
 $ dart build cli --target=<path>
@@ -86,7 +85,7 @@ $ dart build cli --target=<path>
 $ dart build cli -t=<path>
 ```
 
-Por exemplo, para definir o ponto de entrada como o arquivo `bin/my_command.dart`:
+For example, to set the entrypoint to the `bin/my_command.dart` file:
 
 ```console
 $ dart build cli --target=bin/my_command.dart
@@ -94,14 +93,14 @@ $ dart build cli --target=bin/my_command.dart
 
 ### `--verbosity`
 
-Use a opção `--verbosity` para definir o nível de verbosidade da compilação.
-O nível pode ser `error`, `warning`, `info` ou `all`.
+Use the `--verbosity` option to set the verbosity level of the compilation.
+The level can be `error`, `warning`, `info`, or `all`.
 
 ```console
 $ dart build cli --verbosity=<level>
 ```
 
-Por exemplo, para mostrar apenas mensagens de erro:
+For example, to show only error messages:
 
 ```console
 $ dart build cli --verbosity=error

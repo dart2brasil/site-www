@@ -16,54 +16,54 @@ showBreadcrumbs: false
   alt="Dart product logo">
 
 
-Dart é uma linguagem otimizada para cliente (client-optimized)
-para desenvolver aplicativos rápidos em qualquer plataforma.
-Seu objetivo é oferecer a linguagem de programação mais produtiva para desenvolvimento multiplataforma,
-juntamente com uma [plataforma de tempo de execução flexível](#platform) para frameworks de aplicativos.
+Dart is a client-optimized language for developing fast apps on any platform.
+Its goal is to offer the most productive programming language for
+multi-platform development, paired with a
+[flexible execution runtime platform](#platform) for app frameworks.
 
-As linguagens são definidas por seu _envelope técnico_—as
-escolhas feitas durante o desenvolvimento que
-moldam os recursos e os pontos fortes de uma linguagem.
-Dart é projetado para um envelope técnico que é
-particularmente adequado para o desenvolvimento do cliente,
-priorizando o desenvolvimento (hot reload stateful (com estado) em menos de um segundo) e
-experiências de produção de alta qualidade em
-uma ampla variedade de destinos de compilação (web, mobile e desktop).
+Languages are defined by their _technical envelope_—the 
+choices made during development that
+shape the capabilities and strengths of a language.
+Dart is designed for a technical envelope that is
+particularly suited to client development,
+prioritizing both development (sub-second stateful hot reload) and
+high-quality production experiences across
+a wide variety of compilation targets (web, mobile, and desktop).
 
-Dart também forma a base do [Flutter]({{site.flutter}}).
-Dart fornece a linguagem e os tempos de execução que alimentam os aplicativos Flutter,
-mas o Dart também suporta muitas tarefas essenciais do desenvolvedor, como
-formatação, análise e teste de código.
+Dart also forms the foundation of [Flutter]({{site.flutter}}).
+Dart provides the language and runtimes that power Flutter apps,
+but Dart also supports many core developer tasks like
+formatting, analyzing, and testing code.
 
 
-## Dart: A linguagem {:#language}
+## Dart: The language {:#language}
 
-A linguagem Dart é type safe;
-ela usa verificação de tipo estática para garantir que
-o valor de uma variável _sempre_ corresponda ao tipo estático da variável.
-Às vezes, isso é chamado de tipagem sólida.
-Embora os tipos sejam obrigatórios,
-as anotações de tipo são opcionais devido à inferência de tipo.
-O sistema de tipagem do Dart também é flexível,
-permitindo o uso de um tipo `dynamic` combinado com verificações de tempo de execução,
-o que pode ser útil durante a experimentação ou
-para código que precisa ser especialmente dinâmico.
+The Dart language is type safe;
+it uses static type checking to ensure that
+a variable's value _always_ matches the variable's static type.
+Sometimes, this is referred to as sound typing.
+Although types are mandatory,
+type annotations are optional because of type inference.
+The Dart typing system is also flexible,
+allowing the use of a `dynamic` type combined with runtime checks,
+which can be useful during experimentation or
+for code that needs to be especially dynamic.
 
-Dart tem [sound null safety](/null-safety) incorporada.
-Isso significa que os valores não podem ser nulos, a menos que você diga que podem ser.
-Com sound null safety, o Dart pode protegê-lo de
-exceções nulas em tempo de execução por meio da análise estática de código.
-Ao contrário de muitas outras linguagens null-safe,
-quando o Dart determina que uma variável não é anulável,
-essa variável nunca pode ser nula.
-Se você inspecionar seu código em execução no depurador,
-verá que a não nulidade é mantida em tempo de execução; daí _sound_ null safety.
+Dart has built-in [sound null safety](/null-safety).
+This means values can't be null unless you say they can be.
+With sound null safety, Dart can protect you from
+null exceptions at runtime through static code analysis.
+Unlike many other null-safe languages,
+when Dart determines that a variable is non-nullable,
+that variable can never be null.
+If you inspect your running code in the debugger,
+you see that non-nullability is retained at runtime; hence _sound_ null safety.
 
-O seguinte exemplo de código mostra vários recursos da linguagem Dart,
-incluindo bibliotecas, chamadas assíncronas, tipos anuláveis e não anuláveis,
-sintaxe de seta (arrow syntax), geradores, streams e getters.
-Para aprender mais sobre a linguagem,
-confira o [tour da linguagem Dart](/language).
+The following code sample showcases several Dart language features,
+including libraries, async calls, nullable and non-nullable types,
+arrow syntax, generators, streams, and getters.
+To learn more about the language, 
+check out the [Dart language tour](/language).
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
 ```dartpad
@@ -117,128 +117,128 @@ class Point {
 ```
 
 :::note
-Este exemplo está sendo executado em um [DartPad](/tools/dartpad) incorporado.
-Você também pode
+This example is running in an embedded [DartPad](/tools/dartpad).
+You can also
 <a href="{{site.dartpad}}/?id=bc63d212c3252e44058ff76f34ef5730"
-target="_blank" rel="noopener">abrir este exemplo em sua própria janela</a>.
+target="_blank" rel="noopener">open this example in its own window</a>.
 :::
 
 
-## Dart: As bibliotecas {:#libraries}
+## Dart: The libraries {:#libraries}
 
-Dart tem [um rico conjunto de bibliotecas principais](/libraries),
-fornecendo o essencial para muitas tarefas de programação do dia a dia:
+Dart has [a rich set of core libraries](/libraries),
+providing essentials for many everyday programming tasks:
 
-* Tipos integrados, coleções e outras funcionalidades básicas para
-  cada programa Dart
+* Built-in types, collections, and other core functionality for
+  every Dart program
   (`dart:core`)
-* Tipos de coleção mais ricos, como filas, listas vinculadas, mapas de hash e
-  árvores binárias
+* Richer collection types such as queues, linked lists, hashmaps, and
+  binary trees
   (`dart:collection`)
-* Codificadores e decodificadores para conversão entre diferentes representações de dados,
-  incluindo JSON e UTF-8
+* Encoders and decoders for converting between different data representations,
+  including JSON and UTF-8
   (`dart:convert`)
-* Constantes e funções matemáticas e geração de números aleatórios
+* Mathematical constants and functions, and random number generation
   (`dart:math`)
-* Suporte para programação assíncrona,
-  com classes como `Future` e `Stream`
+* Support for asynchronous programming,
+  with classes such as `Future` and `Stream`
   (`dart:async`)
-* Listas que lidam com eficiência com dados de tamanho fixo
-  (por exemplo, inteiros de 8 bits não assinados) e tipos numéricos SIMD
+* Lists that efficiently handle fixed-sized data
+  (for example, unsigned 8-byte integers) and SIMD numeric types
   (`dart:typed_data`)
-* Suporte a arquivos, soquetes, HTTP e outras E/S para aplicativos não web
+* File, socket, HTTP, and other I/O support for non-web applications
   (`dart:io`)
-* Interfaces de função estrangeira para interoperabilidade com
-  outro código que apresenta uma interface estilo C
+* Foreign function interfaces for interoperability with
+  other code that presents a C-style interface
   (`dart:ffi`)
-* Programação simultânea usando _isolates_—trabalhadores independentes
-  que são semelhantes a threads, mas
-  não compartilham memória, comunicando-se apenas por meio de mensagens
+* Concurrent programming using _isolates_—independent workers
+  that are similar to threads but
+  don't share memory, communicating only through messages
   (`dart:isolate`)
-* Elementos HTML e outros recursos para aplicações web que precisam
-  interagir com o navegador e o Modelo de Objeto de Documento (DOM)
-  (`dart:js_interop` e `package:web`)
+* HTML elements and other resources for web-based applications that need to
+  interact with the browser and the Document Object Model (DOM)
+  (`dart:js_interop` and `package:web`)
 
-Além das bibliotecas principais, muitas APIs são fornecidas por meio de
-um conjunto abrangente de pacotes.
-A equipe do Dart publica muitos pacotes suplementares úteis,
-como estes:
+Beyond the core libraries, many APIs are provided through
+a comprehensive set of packages.
+The Dart team publishes many useful supplementary packages,
+such as these:
 
 * [characters]({{site.pub-pkg}}/characters)
-* [intl]({{site.pub-pkg}}/intl)
+* [intl]({{site.pub-pkg}}/intl) 
 * [http]({{site.pub-pkg}}/http)
 * [crypto]({{site.pub-pkg}}/crypto)
 * [markdown]({{site.pub-pkg}}/markdown)
 
-Além disso, editores terceirizados e a comunidade em geral
-publicam milhares de pacotes, com suporte para recursos como estes:
+Additionally, third-party publishers and the broader community
+publish thousands of packages, with support for features like these:
 
-* [XML]({{site.pub-pkg}}/xml)
-* [Integração com Windows]({{site.pub-pkg}}/win32)
+* [XML]({{site.pub-pkg}}/xml) 
+* [Windows integration]({{site.pub-pkg}}/win32)
 * [SQLite]({{site.pub-pkg}}/sqflite_common)
-* [compressão]({{site.pub-pkg}}/archive)
+* [compression]({{site.pub-pkg}}/archive)
 
-Para ver uma série de exemplos funcionais com as bibliotecas principais do Dart,
-leia a [documentação da biblioteca principal](/libraries).
-Para encontrar APIs adicionais, confira a
-[página de pacotes comumente usados](/resources/useful-packages).
+To see a series of working examples featuring the Dart core libraries,
+read the [core library documentation](/libraries).
+To find additional APIs, check out the
+[commonly used packages page](/resources/useful-packages).
 
 
-## Dart: As plataformas {:#platform}
+## Dart: The platforms {:#platform}
 
-A tecnologia de compilador do Dart permite que você execute o código de diferentes maneiras:
+Dart's compiler technology lets you run code in different ways:
 
-* **Plataforma nativa**: para aplicativos destinados a dispositivos móveis e desktop,
-  O Dart inclui uma Dart VM com compilação just-in-time (JIT) e
-  um compilador ahead-of-time (AOT) para produzir código de máquina.
+* **Native platform**: For apps targeting mobile and desktop devices,
+  Dart includes both a Dart VM with just-in-time (JIT) compilation and
+  an ahead-of-time (AOT) compiler for producing machine code.
 
-* **Plataforma Web**: para aplicativos destinados à web, o Dart pode compilar para
-  fins de desenvolvimento ou produção. Seus compiladores web traduzem Dart
-  em JavaScript ou WebAssembly.
+* **Web platform**: For apps targeting the web, Dart can compile for
+  development or production purposes. Its web compilers translate Dart
+  into JavaScript or WebAssembly.
 
-<img
-  src="/assets/img/Dart-platforms.svg"
-  width="800"
-  alt="Uma ilustração dos alvos suportados pelo Dart">
+<img 
+  src="/assets/img/Dart-platforms.svg" 
+  width="800" 
+  alt="An illustration of the targets supported by Dart">
 
-O [framework Flutter]({{site.flutter}}) é um popular
-kit de ferramentas de interface do usuário multiplataforma que é alimentado pela plataforma Dart,
-e que fornece ferramentas e bibliotecas de interface do usuário para construir experiências de interface do usuário que são executadas
-em iOS, Android, macOS, Windows, Linux e web.
+The [Flutter framework]({{site.flutter}}) is a popular,
+multi-platform UI toolkit that's powered by the Dart platform,
+and that provides tooling and UI libraries to build UI experiences that run
+on iOS, Android, macOS, Windows, Linux, and the web.
 
-#### Dart Native (código de máquina JIT e AOT) {:#native-platform}
+#### Dart Native (machine code JIT and AOT) {:#native-platform}
 
-Durante o desenvolvimento, um ciclo de desenvolvimento rápido é crítico para a iteração.
-A Dart VM oferece um compilador just-in-time (JIT) com
-recompilação incremental (permitindo hot reload), coleta de métricas ao vivo
-(alimentando [DevTools](/tools/dart-devtools)) e rico suporte à depuração.
+During development, a fast developer cycle is critical for iteration.
+The Dart VM offers a just-in-time compiler (JIT) with
+incremental recompilation (enabling hot reload), live metrics collections
+(powering [DevTools](/tools/dart-devtools)), and rich debugging support.
 
-Quando os aplicativos estão prontos para serem implantados na produção —seja
-publicando em uma loja de aplicativos ou implantando em um back-end de produção—o
-compilador ahead-of-time (AOT) do Dart pode compilar para código de máquina ARM ou x64 nativo.
-Seu aplicativo compilado com AOT é iniciado com um
-tempo de inicialização curto e consistente.
+When apps are ready to be deployed to production—whether you're
+publishing to an app store or deploying to a production backend—the 
+Dart ahead-of-time (AOT) compiler can compile to native ARM or x64
+machine code. Your AOT-compiled app launches with consistent, short
+startup time.
 
-O código compilado com AOT é executado dentro de um tempo de execução Dart eficiente que
-aplica o sistema de tipos Dart e
-gerencia a memória usando alocação rápida de objetos e um
-[coletor de lixo geracional](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
+The AOT-compiled code runs inside an efficient Dart runtime that
+enforces the sound Dart type system and
+manages memory using fast object allocation and a
+[generational garbage collector](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
-Mais Informações:
-* [Primeiros passos: aplicativos de linha de comando e servidor](/tutorials/server/get-started)
-* [ferramenta `dart` para executar com compilação JIT ou AOT para código de máquina](/tools/dart-tool)
-* [Escrever aplicativos de linha de comando](/tutorials/server/cmdline)
-* [Escrever servidores HTTP](/tutorials/server/httpserver)
+More information:
+* [Get started: Command-line and server apps](/tutorials/server/get-started)
+* [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
+* [Write command-line apps](/tutorials/server/cmdline)
+* [Write HTTP servers](/tutorials/server/httpserver)
 
-#### Dart Web (JavaScript dev & prod e WebAssembly) {:#web-platform}
+#### Dart Web (JavaScript dev & prod and WebAssembly) {:#web-platform}
 
-O Dart Web permite a execução de código Dart em plataformas web alimentadas por
-JavaScript. Com o Dart Web, você compila o código Dart em código JavaScript, que por sua vez
-é executado em um navegador—por exemplo, [V8](https://v8.dev/) dentro do
+Dart Web enables running Dart code on web platforms powered by
+JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
+turn runs in a browser—for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
-Alternativamente, o código Dart pode ser compilado para WebAssembly.
+Alternatively, Dart code can be compiled to WebAssembly.
 
-O Dart web contém três modos de compilação:
+Dart web contains three compilation modes:
 
 * An incremental JavaScript development compiler enabling a fast developer 
   cycle with incremental recompilation (enabling hot reload).
@@ -248,53 +248,53 @@ O Dart web contém três modos de compilação:
 * An optimizing WebAssembly (WasmGC) production compiler which compiles Dart
   code to super-fast, deployable WebAssembly GC code.
 
-Mais Informações:
+More information:
 
-* [Construir um aplicativo web com Dart](/web/get-started)
+* [Build a web app with Dart](/web/get-started)
 * [`dart compile js`](/tools/dart-compile#js)
-* [ferramenta `webdev`](/tools/webdev)
-* [Dicas de implantação na web](/web/deployment)
-* [Compilação WebAssembly](/web/wasm)
+* [`webdev` tool](/tools/webdev)
+* [Web deployment tips](/web/deployment)
+* [WebAssembly compilation](/web/wasm)
 
-#### O tempo de execução Dart {:#runtime}
+#### The Dart runtime {:#runtime}
 
-Independentemente de qual plataforma você usa ou como você compila seu código,
-a execução do código requer um tempo de execução Dart.
-Este tempo de execução é responsável pelas seguintes tarefas críticas:
+Regardless of which platform you use or how you compile your code,
+executing the code requires a Dart runtime.
+This runtime is responsible for the following critical tasks:
 
-* Gerenciamento de memória:
-  O Dart usa um modelo de memória gerenciada,
-  onde a memória não utilizada é recuperada por um coletor de lixo (GC).
+* Managing memory:
+  Dart uses a managed memory model,
+  where unused memory is reclaimed by a garbage collector (GC). 
 
-* Impondo o sistema de tipos Dart:
-  Embora a maioria das verificações de tipo no Dart sejam estáticas (tempo de compilação),
-  algumas verificações de tipo são dinâmicas (tempo de execução).
-  Por exemplo, o tempo de execução do Dart impõe verificações dinâmicas por meio de
-  [operadores de verificação de tipo e conversão](/language/operators#type-test-operators).
+* Enforcing the Dart type system:
+  Although most type checks in Dart are static (compile-time),
+  some type checks are dynamic (runtime).
+  For example, the Dart runtime enforces dynamic checks by
+  [type check and cast operators](/language/operators#type-test-operators).
 
-* Gerenciando [isolates](/language/concurrency):
-  O tempo de execução do Dart controla o isolate principal (onde o código normalmente é executado)
-  e quaisquer outros isolates que o aplicativo cria.
+* Managing [isolates](/language/concurrency):
+  The Dart runtime controls the main isolate (where code normally runs)
+  and any other isolates that the app creates.
 
-Em plataformas nativas, o tempo de execução do Dart é automaticamente
-incluído dentro de executáveis autocontidos,
-e faz parte da Dart VM fornecida pelo
-comando [`dart run`](/tools/dart-run).
+On native platforms, the Dart runtime is automatically
+included inside self-contained executables, 
+and is part of the Dart VM provided by
+the [`dart run`](/tools/dart-run) command.
 
-## Aprendendo Dart {:#learning-dart}
+## Learning Dart {:#learning-dart}
 
-Você tem muitas opções para aprender Dart. Aqui estão algumas que recomendamos:
+You have many choices for learning Dart. Here are a few that we recommend:
 
-* [Explore o Dart no navegador]({{site.dartpad}}/) por meio do DartPad,
-  um ambiente de execução baseado na web para código Dart.
-* [Faça um tour da linguagem Dart](/language),
-  que mostra como usar cada um dos principais recursos do Dart.
-* [Conclua um tutorial do Dart](/tutorials/server/cmdline) que
-  cobre o básico do uso do Dart para construir para a linha de comando.
-* [Trabalhe com treinamento online extensivo][udemy]
-  de especialistas em Dart.
-* [Explore a documentação da API]({{site.dart-api}}) que
-  descreve as bibliotecas principais do Dart.
-* [Leia um livro sobre programação Dart](/resources/books).
+* [Explore Dart in the browser]({{site.dartpad}}/) through DartPad,
+  a web-based execution environment for Dart code.
+* [Take a tour of the Dart language](/language),
+  which shows you how to use each major Dart feature.
+* [Complete a Dart tutorial](/tutorials/server/cmdline) that 
+  covers the basics of using Dart to build for the command line.
+* [Work through extensive online training][udemy]
+  from Dart experts.
+* [Explore the API documentation]({{site.dart-api}}) that
+  describes the Dart core libraries.
+* [Read a book about Dart programming](/resources/books).
 
 [udemy]: https://www.udemy.com/course/complete-dart-guide/?couponCode=NOV-20

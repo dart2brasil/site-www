@@ -6,70 +6,68 @@ showBreadcrumbs: false
 lastVerified: 2022-11-21
 ---
 
-Este guia tem como objetivo aproveitar seu conhecimento de programação
-JavaScript ao aprender Dart.
-Ele mostra as principais semelhanças e diferenças em ambas as linguagens,
-e apresenta conceitos de Dart que não são suportados em JavaScript.
-Como um desenvolvedor JavaScript, Dart deve parecer bastante familiar,
-pois ambas as linguagens compartilham muitos conceitos.
+This guide aims to leverage your JavaScript programming knowledge
+when learning Dart.
+It showcases key similarities and differences in both languages,
+and introduces Dart concepts that are unsupported in JavaScript.
+As a JavaScript developer, Dart should feel quite familiar,
+as both languages share many concepts.
 
-Assim como JavaScript, Dart é executado em um *event loop* (loop de eventos),
-então ambas as linguagens executam o código de maneira semelhante.
-Por exemplo, conceitos assíncronos como *futures*
-(*promises* em JavaScript) e a sintaxe `async/await` são muito similares.
+Like JavaScript, Dart runs on an event loop,
+so both languages execute code in a similar way.
+For example, asynchronous concepts like futures
+(promises in JavaScript) and the `async/await` syntax are very similar.
 
-Dart é fortemente tipado, ao contrário do JavaScript.
-Se você já usou TypeScript ou Flow,
-isso deve simplificar o aprendizado de Dart.
-Se você trabalhou principalmente com JavaScript puro,
-pode ser mais uma adaptação.
-Com a tipagem forte, Dart detecta muitos erros antes da compilação
-que podem existir no código JavaScript.
+Dart is strongly typed, unlike JavaScript.
+If you have used with TypeScript or Flow,
+this should simplify learning Dart.
+If you've mostly worked with pure JavaScript,
+it might be more of an adjustment.
+With strong typing, Dart catches many errors before compiling
+that might exist in JavaScript code.
 
-Dart habilita *null safety* (segurança nula) por padrão.
-JavaScript não oferece suporte a *null safety*.
-Como desenvolvedor JavaScript,
-pode levar um tempo para aprender a escrever código com *null safety*,
-mas a vantagem é uma melhor proteção contra
-exceções de referência nula que são detectadas mesmo
-antes de compilar o código Dart. (Evitando assim aqueles
-temidos `TypeError`s que ocorrem ao realizar operações
-em uma variável JavaScript que acaba sendo nula.)
+Dart enables null safety by default.
+JavaScript doesn't support null safety.
+As a JavaScript developer,
+it might take a while to learn how to write null safe code,
+but the trade-off is better protection against
+null reference exceptions that are detected even
+before compiling Dart code. (Thereby avoiding those
+dreaded `TypeError`s that occur when doing operations
+on a JavaScript variable that turns out to be null.)
 
-## Convenções e *linting* {:#conventions-and-linting}
+## Conventions and linting
 
-JavaScript e Dart possuem ferramentas de *linting* para impor convenções
-padrão.
-Enquanto JavaScript oferece muitas ferramentas, padrões e configurações,
-Dart possui um conjunto oficial de convenções de layout e estilo,
-além de um *linter* para simplificar a conformidade.
-O analisador Dart faz a *lintagem* do código, além de fornecer mais
-funções analíticas.
-Para personalizar as regras de *lint* do seu projeto,
-siga as instruções de [Customizando análise estática][Customizing static analysis].
+JavaScript and Dart both have linting tools to enforce standard conventions.
+While JavaScript offers many tools, standards, and configurations,
+Dart has one official set of layout and style conventions plus a linter
+to simplify compliance.
+The Dart analyzer lints code along with providing more analytical functions.
+To customize the lint rules for your project,
+follow the [Customizing static analysis][] instructions.
 
-Dart fornece [`dart fix`][`dart fix`] para encontrar e corrigir erros.
+Dart provides [`dart fix`][] to find and fix errors.
 
-Dart também fornece um formatador de código semelhante a
-ferramentas JavaScript como [Prettier][Prettier].
-Para formatar o código em qualquer projeto Dart, execute
-[`dart format`](/tools/dart-format) em sua linha de comando.
-Os plugins IDE para Dart e Flutter também fornecem essa capacidade.
+Dart also provides a code formatter similar to
+JavaScript tools like [Prettier][].
+To format code in any Dart project, run
+[`dart format`](/tools/dart-format) on your command line.
+The IDE plugins for Dart and Flutter also provide this ability.
 
-Dart suporta vírgulas à direita para listas separadas por vírgula
-de coleções, parâmetros ou argumentos. Quando você adiciona a vírgula
-à direita, o formatador coloca cada item da lista em sua própria linha.
-Quando você acredita que sua lista pode ter mais itens posteriormente,
-adicione a vírgula à direita. Evite adicionar a vírgula à direita apenas
-para o benefício da formatação.
+Dart supports trailing commas for comma-separated lists of collections,
+parameters, or arguments. When you add the trailing comma,
+the formatter places each list item on its own line.
+When you believe your list may have more items at a later date,
+add the trailing comma. Avoid adding the trailing comma for the formatting
+benefit alone.
 
-JavaScript suporta vírgulas à direita apenas em literais de lista e mapa.
+JavaScript supports trailing commas in list and map literals only.
 
-:::secondary Para saber mais sobre:
-* Usar vírgulas para fazer seu código parecer mais com HTML, leia
-  [Usando vírgulas à direita][Using trailing commas] em flutter.dev.
-* Fazer *lint* de Dart, leia [Regras do *Linter*][Linter rules].
-* Escrever um bom código Dart, leia [Effective Dart][Effective Dart].
+:::secondary To learn more about:
+* Using commas to make your code read more like HTML, read
+  [Using trailing commas][] on flutter.dev.
+* Linting Dart, read [Linter rules][].
+* Writing good Dart code, read [Effective Dart][].
 :::
 
 [Customizing static analysis]: /tools/analysis
@@ -79,96 +77,95 @@ JavaScript suporta vírgulas à direita apenas em literais de lista e mapa.
 [Prettier]: https://prettier.io/
 [Using trailing commas]: {{site.flutter-docs}}/development/tools/formatting#using-trailing-commas
 
-## Tipos embutidos {:#built-in-types}
+## Built-in types
 
-Tanto JavaScript quanto Dart categorizam seus dados em _tipos_.
-Cada variável tem um tipo associado.
-O tipo determina o tipo de valor que a variável pode armazenar e
-quais operações podem ser realizadas nesses valores.
-Dart difere do JavaScript, pois atribui um tipo estático
-a cada expressão e variável.
-O tipo estático prevê o tipo em tempo de execução
-dos valores de uma variável ou do valor de uma expressão.
-Isso significa que os aplicativos Dart têm tipagem estática sólida.
+Both JavaScript and Dart categorize their data into _types_.
+Every variable has an associated type.
+The type determines the kind of value the variable can store and
+what operations can be performed on these values.
+Dart differs from JavaScript in that it assigns a static type
+to every expression and variable.
+The static type predicts the runtime type
+of the values of a variable, or of the value of an expression.
+This means that Dart apps have sound static typing.
 
-JavaScript fornece os tipos primitivos `num`, `string` e `boolean`
-e o valor `null`, bem como _arrays_ e um tipo `Map`.
+JavaScript provides primitive types `num`, `string`, and `boolean`
+and the `null` value as well as _arrays_ and a `Map` type.
 
-Dart suporta os seguintes tipos embutidos:
+Dart supports the following built-in types:
 
-* Números (`num`, `int`, `double`)
+* Numbers (`num`, `int`, `double`)
 * Strings (`String`)
 * Booleans (`bool`)
-* Listas (`List`, também conhecidas como *arrays*)
-* Conjuntos (*Sets*) (`Set`)
-* Mapas (*Maps*) (`Map`)
-* Símbolos (*Symbols*) (`Symbol`)
-* O valor `null` (`Null`)
+* Lists (`List`, also known as arrays)
+* Sets (`Set`)
+* Maps (`Map`)
+* Symbols (`Symbol`)
+* The value `null` (`Null`)
 
-Para saber mais, confira [Tipos embutidos][Built-in types] no [Dart Language Tour][Dart Language Tour](Tour da Linguagem Dart).
+To learn more, check out [Built-in types][] in the [Dart Language Tour][].
 
-Todos os tipos não-`Null` em Dart são subtipos de Object.
-Todos os valores também são objetos.
-Dart não usa "tipos primitivos" como JavaScript.
-Por outro lado, Dart normaliza ou _canoniza_ número, booleanos
-e valores `null`.
-Isso significa que existe apenas um valor `int` com o valor numérico `1`.
+All non-`Null` types in Dart are subtypes of Object.
+All values are also objects.
+Dart doesn't use "primitive types" like JavaScript.
+By contrast, Dart normalizes or _canonicalizes_ number, boolean
+and `null` values.
+This means only one `int` value with the numerical value `1` exists.
 
 :::note
-JavaScript tem dois operadores de igualdade, `==` e `===`.
-O operador `==` executa o teste de igualdade após realizar as conversões
-de tipo necessárias em ou para valores primitivos.
-O operador `===` não realiza conversões de tipo.
-Dart usa a função `identical` para verificar se dois valores são o
-mesmo objeto e o operador `==` para verificar se os objetos
-se consideram iguais.
+JavaScript has two equality operators, `==` and `===`.
+The `==` operator performs the equality test after doing any necessary
+type conversions on or to primitive values.
+The `===` operator doesn't perform type conversions.
+Dart uses the `identical` function to check if two values are the
+same object, and the `==` operator to check whether the objects
+consider themselves as equal.
 :::
 
 [Built-in types]: /language/built-in-types
 [Dart Language Tour]: /language
 
-Por exemplo:
-O operador de igualdade `==` e o método `identical()` retornam `true`
-para os mesmos valores de tipos numéricos. Revise o exemplo mostrado no
-código a seguir:
+For example:
+The equals operator `==` and the `identical()` method return `true`
+for the same values of number types. Review the example shown in the
+following code:
 
 ```dart
 var a = 2;
 var b = 1 + 1;
 
-print(a == b); // Imprime true
-print(identical(a, b)); // Imprime true; existe apenas um objeto "2"
+print(a == b); // Prints true
+print(identical(a, b)); // Prints true; only one "2" object exists
 ```
 
-### Tipos Primitivos {:#primitive-types}
+### Primitive Types
 
-Esta seção aborda como Dart representa os tipos primitivos do JavaScript.
+This section covers how Dart represents primitive types from JavaScript.
+#### Numbers
 
-#### Números {:#numbers}
-
-Dart tem três tipos de dados para armazenar números:
+Dart has three data types for holding numbers:
 
 `num`
-: O equivalente ao tipo numérico genérico em JavaScript.
+: The equivalent to the generic number type in JavaScript.
 
 `int`
-: Um valor numérico sem parte fracionária.
+: A numeric value without a fractional part.
 
 `double`
-: Qualquer número de ponto flutuante de 64 bits (precisão dupla).
+: Any 64-bit (double-precision) floating point number.
 
-A API do Dart inclui todos esses tipos como classes.
-Tanto os tipos `int` quanto `double` compartilham `num` como sua classe pai:
+The Dart API includes all these types as classes.
+Both the `int` and `double` types share `num` as their parent class:
 
 <img
   src="/assets/img/guides/number-classes.png"
   alt="num subclasses Object and int and double each subclass num">
 
-Como o Dart considera os números como objetos, os números podem expor seus
-próprias funções utilitárias como métodos de objeto.
-Você não precisa usar um objeto adicional para aplicar uma função a um número.
+As Dart considers numbers as objects, numbers can expose their
+own utility functions as object methods.
+You don't need to use an additional object to apply a function to a number.
 
-Por exemplo, para arredondar um `double` para um inteiro:
+For example, to round a `double` to an integer:
 
 ```js
 let rounded = Math.round(2.5);
@@ -178,134 +175,133 @@ let rounded = Math.round(2.5);
 var rounded = 2.5.round();
 ```
 
-#### Strings {:#strings}
+#### Strings
 
-Strings em Dart funcionam como strings em JavaScript.
-Para escrever um literal de string, coloque-o entre aspas simples (`'`) ou
-duplas (`"`).
-A maioria dos desenvolvedores Dart usa aspas simples,
-mas a linguagem não impõe nenhum padrão.
-Use aspas duplas se não quiser escapar
-aspas simples dentro da string.
+Strings in Dart work like strings in JavaScript.
+To write a string literal, enclose it in single (`'`) or double (`"`)
+quotation marks.
+The majority of Dart developers use single quotes,
+but the language enforces no standard.
+Use double quotation marks if you don't want to escape
+single quotes within the string.
 
 ```dart
-var a = 'Isto é uma string.';
+var a = 'This is a string.';
 ```
 
-##### Escapando caracteres especiais {:#escaping-special-characters}
+##### Escaping special characters
 
-Para incluir um caractere com outro significado em uma string,
-como um `$` usado para interpolação de string, você deve escapar desse
-caractere.
-O escape de caracteres especiais em Dart funciona como JavaScript
-e a maioria das outras linguagens.
-Para escapar caracteres especiais,
-preceda esse caractere com a barra invertida (`\`).
+To include a character with another meaning in a string,
+like a `$` used for string interpolation, you must escape that character.
+Escaping special characters in Dart works like JavaScript
+and most other languages.
+To escape special characters,
+precede that character with the backslash character (`\`).
 
-O código a seguir mostra alguns exemplos.
+The following code shows some examples.
 
 ```dart
-final singleQuotes = 'Eu \'estou aprendendo Dart'; // Eu 'estou aprendendo Dart
-final doubleQuotes = "Escapando o caractere \""; // Escapando o caractere "
-final dollarEscape = 'O preço é \$3,14.'; // O preço é $3,14.
-final backslashEscape = 'O caractere de escape de string Dart é \\.';
-final unicode = '\u{1F60E}'; // 😎,  Unicode escalar U+1F60E
+final singleQuotes = 'I\'m learning Dart'; // I'm learning Dart
+final doubleQuotes = "Escaping the \" character"; // Escaping the " character
+final dollarEscape = 'The price is \$3.14.'; // The price is $3.14.
+final backslashEscape = 'The Dart string escape character is \\.';
+final unicode = '\u{1F60E}'; // 😎,  Unicode scalar U+1F60E
 ```
 
 :::note
-Você pode usar caracteres hexadecimais de quatro dígitos com ou sem chaves.
-Para saber mais sobre como trabalhar com caracteres unicode,
-veja [Runes e *grapheme clusters*][Runes and grapheme clusters].
+You can use four-digit hexadecimal characters with or without curly braces.
+To learn more about working with unicode characters,
+see [Runes and grapheme clusters][].
 :::
 
 [Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
 
-##### Interpolação de string {:#string-interpolation}
+##### String interpolation
 
-JavaScript suporta *template literals* (literais de template).
-Eles usam delimitadores de caractere de crase (`` ` ``) pelos seguintes motivos:
+JavaScript supports template literals.
+These use backtick (`` ` ``) character delimiters for the following reasons:
 
-* Para permitir strings de várias linhas
-* Para interpolar strings com expressões incorporadas
-* Para criar construções especiais chamadas *tagged templates*
+* To allow for multiline strings
+* To interpolate strings with embedded expressions
+* To create special constructs called tagged templates
 
-Em Dart, você não precisa colocar uma string entre crases para concatenar
-strings ou usar interpolações dentro de literais de string.
+In Dart, you don't need to enclose a string in backticks to concatenate
+strings or use interpolations within string literals.
 
-Para saber mais, confira [Strings][Strings] no Tour da Linguagem Dart.
+To learn more, check out [Strings][] in the Dart Language Tour.
 
 [Strings]: /language/built-in-types#strings
 
-Como em *template literals* JavaScript,
-você pode usar a sintaxe `${<expressão>}` para inserir expressões em
-um literal de string.
-Dart usa essa sintaxe e permite que você omita as chaves
-quando a expressão usa um único identificador.
+As in JavaScript template literals,
+you can use the `${<expression>}` syntax to insert expressions into
+a string literal.
+Dart uses this syntax and allows you to omit the curly braces
+when the expression uses a single identifier.
 
 ```dart
-var food = 'pão';
-var str = 'Eu como $food'; // Eu como pão
-var str = 'Eu como ${food}'; // Eu como pão
+var food = 'bread';
+var str = 'I eat $food'; // I eat bread
+var str = 'I eat ${food}'; // I eat bread
 ```
 
-#### Concatenação de strings e declaração de várias linhas {:#string-concatenation-and-multiline-declaration}
+#### String concatenation and multiline declaration
 
-Em JavaScript, você pode definir strings de várias linhas
-usando *template literals*.
-Dart tem duas maneiras de definir strings de várias linhas.
+In JavaScript, you can define multiline strings
+using template literals.
+Dart has two ways to define multiline strings.
 
 <ol>
-<li> Usando concatenação de string implícita:
-    Dart concatena quaisquer literais de string vizinhos,
-    mesmo quando distribuídos por várias linhas:
+<li> Using implicit string concatenation:
+    Dart concatenates any neighboring string literals,
+    even when spread over multiple lines:
 
 ```dart
 final s1 = 'String '
-    'concatenação'
-    " funciona mesmo em quebras de linha.";
+    'concatenation'
+    " even works over line breaks.";
 ```
 </li>
 
-<li> Usando um literal de string de várias linhas:
-Ao usar três aspas (simples ou duplas)
-em ambos os lados da string, o literal pode abranger várias linhas.
+<li> Using a multi line string literal:
+When using three quotation marks (either single or double)
+on either side of the string, the literal can span multiple lines.
 
 
 ```dart
 final s2 = '''
-Você pode criar
-strings de várias linhas como esta.
+You can create
+multiline strings like this one.
 ''';
 
 final s3 = """
-Isto também é uma
-string de várias linhas.""";
+This is also a
+multiline string.""";
 ```
 </li>
 </ol>
 
-#### Igualdade {:#equality}
+#### Equality
 
-Dart considera duas strings iguais quando elas contêm a mesma sequência
-de unidades de código. Para determinar se duas strings têm as mesmas sequências,
-use o operador de igual a (`==`).
+Dart considers two strings equal when they contain the same sequence
+of code units. To determine if two strings have the same sequences,
+use the equal-to operator (`==`).
 
 ```dart
 final s1 = 'String '
-    'concatenação'
-    " funciona mesmo em quebras de linha.";
+    'concatenation'
+    " works even over line breaks.";
 assert(s1 ==
-    'String concatenação funciona mesmo em '
-        'quebras de linha.');
+    'String concatenation works even over '
+        'line breaks.');
 ```
 
-#### Booleans {:#booleans}
+#### Booleans
 
-Valores Booleanos tanto em Dart quanto em Javascript expressam uma condição binária.
-Esses dois valores representam se um valor ou expressão é
-`true` ou `false`.
-Você pode retornar os valores usando os literais `true` e `false`,
-ou produzi-los usando expressões como `x < 5` ou `y == null`.
+Boolean values in both Dart and Javascript express a binary condition.
+These two values represent whether a value or expression is
+`true` or `false`.
+You can return the values using the literals `true` and `false`,
+or produced them using expressions like `x < 5` or `y == null`.
 
 ```js
 let isBananaPeeled = false;
@@ -316,230 +312,230 @@ let isBananaPeeled = false;
 var isBananaPeeled = false;
 ```
 
-## Variáveis {:#variables}
+## Variables
 
-Variáveis em Dart funcionam como variáveis em JavaScript,
-com duas exceções:
+Variables in Dart work like variables in JavaScript,
+with two exceptions:
 
-1. Cada variável tem um tipo.
-2. Dart escopa todas as variáveis no nível do bloco,
-   como as variáveis `let` e `const` em JavaScript.
+1. Each variable has a type.
+1. Dart scopes all variables at the block level,
+   like `let` and `const` variables in JavaScript.
 
-Uma variável Dart obtém seu tipo de uma de duas maneiras:
+A Dart variable gets its type in one of two ways:
 
-1. Declarada: um tipo escrito na declaração.
-2. Inferida: uma expressão usada para inicializar a variável.
-   Por [convenção][omit_local_variable_types],
-   use `var` ou `final` quando o analisador puder inferir o tipo.
+1. Declared: A type written in the declaration.
+1. Inferred: An expression used to initialize the variable.
+   By [convention][omit_local_variable_types], 
+   use `var` or `final` when the analyzer can infer the type.
 
 [omit_local_variable_types]: /effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables
 
 ```js
-// Declare e inicialize uma variável de uma vez
+// Declare and initialize a variable at once
 let name = "bob";
 ```
 
 ```dart
-// Declare uma variável com um tipo específico
-// quando você não fornece um valor inicial
+// Declare a variable with a specific type
+// when you don't provide an initial value
 String name;
-// Declare e inicialize uma variável
-// ao mesmo tempo e o Dart infere
-// o tipo
+// Declare and initialize a variable
+// at the same time and Dart infers
+// the type
 var name = 'bob';
 ```
 
-Variáveis só podem aceitar valores de seu tipo.
+Variables can only accept values of their type.
 
 ```dart
 var name = 'bob';
-name = 5; // Proibido, pois `name` tem tipo `String`.
+name = 5; // Forbidden, as `name` has type `String`.
 ```
 
-Se você não fornecer um valor inicial ou tipo explícito,
-Dart infere que o tipo da variável é o tipo *catch-all* `dynamic`.
+If you don't provide an initial value or explicit type,
+Dart infers the variable's type to be the catch-all type `dynamic`.
 
-Como as variáveis JavaScript, você pode atribuir qualquer valor a variáveis Dart
-que usam o tipo `dynamic`.
+Like JavaScript variables, you can assign any value to Dart variables
+that use the `dynamic` type.
 
 ```js
-// Declare uma variável
+// Declare a variable
 let name;
-// Inicialize a variável
+// Initialize the variable
 name = "bob";
 ```
 
+
 ```dart
-// Declare uma variável sem tipo ou valor atribuído
-// e Dart infere o tipo 'dynamic'
+// Declare a variable without a type or assigned value
+// and Dart infers the 'dynamic' type
 var name;
-// Inicialize a variável e o tipo permanece `dynamic`
+// Initialize the variable and the type remains `dynamic`
 name = 'bob';
-name = 5; // Permitido, pois `name` tem tipo `dynamic`.
+name = 5; // Allowed, as `name` has type `dynamic`.
 ```
 
-### Final e const {:#final-and-const}
+### Final and const
 
-Tanto JavaScript quanto Dart usam modificadores de variável. Ambos usam `const`, mas
-diferem em como `const` funciona. Onde JavaScript usaria `const`,
-Dart usa `final`.
+Both JavaScript and Dart use variable modifiers. Both use `const`, but
+differ in how `const` works. Where JavaScript would use `const`,
+Dart uses `final`.
 
-Quando você adiciona `final` a uma variável Dart ou `const` a uma variável
-JavaScript,
-você deve inicializar a variável antes que outro código possa ler seu valor.
-Uma vez inicializadas, você não pode alterar as referências dessas variáveis.
+When you add `final` to a Dart variable or `const` to a JavaScript variable,
+you must initialize the variable before other code can read its value.
+Once initialized, you can't change these variables' references.
 
-Quando Dart usa `const`, ele se refere a valores especiais que ele cria
-ao compilar.
-Dart usa expressões limitadas para criar esses valores imutáveis.
-Essas expressões _não podem_ ter efeitos colaterais.
-Sob essas condições, o compilador pode então prever o valor preciso
-de uma variável ou expressão constante, não apenas seu tipo estático.
+When Dart uses `const`, it refers to special values that it creates
+when compiling.
+Dart uses limited expressions to create these immutable values.
+These expressions _cannot_ have side effects.
+Under these conditions, the compiler can then predict the precise value
+of a constant variable or expression, not just its static type.
 
 ```dart
 final String name;
-// Não é possível ler o name aqui, não inicializado.
+// Cannot read name here, not initialized.
 if (useNickname) {
   name = "Bob";
 } else {
   name = "Robert";
 }
-print(name); // Inicializado corretamente aqui.
+print(name); // Properly initialized here.
 ```
 
 :::note
-Quando você cria um objeto, o construtor da classe deve inicializar o
-variáveis de instância `final`.
-Isso garante que essas variáveis tenham um valor antes que alguém possa lê-las.
+When you create an object, the class constructor must initialize the
+`final` instance variables.
+This ensures that these variables have a value before anyone can read them.
 
-Saiba mais na seção [Classes](#classes).
+Learn more in the [Classes](#classes) section.
 :::
 
-Em Dart, _variáveis constantes devem conter valores constantes_.
-Variáveis não constantes podem conter valores constantes que
-você também pode marcar como `const`.
+In Dart, _constant variables must contain constant values_.
+Non-constant variables can contain constant values that
+you can also mark as `const`.
 
 ```dart
 var foo = const [];
-  // foo não é constante, mas o valor para o qual ele aponta é.
-  // Você pode reatribuir foo a um valor de lista diferente,
-  // mas seu valor de lista atual não pode ser alterado.
+  // foo is not constant, but the value it points to is.
+  // You can reassign foo to a different list value,
+  // but its current list value cannot be altered.
 
-const baz = []; // Equivalente a `const []`
+const baz = []; // Equivalent to `const []`
 ```
 
-Da mesma forma, as classes podem ter seus próprios construtores `const`
-que produzem instâncias imutáveis.
+Likewise, classes can have their own `const` constructors
+that produce immutable instances.
 
-Você não pode modificar uma variável `const` em JavaScript ou Dart.
-JavaScript permite que você modifique os campos de um objeto `const`, mas
-Dart não permite.
+You can't modify a `const` variable in JavaScript or Dart.
+JavaScript does allow you to modify a `const` object's fields, but
+Dart does not.
 
-Para saber mais, consulte a seção [Classes](#classes).
+To learn more, see the [Classes](#classes) section.
 
-## Segurança nula {:#null-safety}
+## Null safety
 
-Ao contrário do JavaScript, Dart oferece suporte à segurança nula (*null safety*).
-Em Dart, todos os tipos são não anuláveis por padrão.
-Isso beneficia os desenvolvedores Dart porque Dart detecta referências nulas
-exceções ao escrever código, em vez de em tempo de execução.
+Unlike JavaScript, Dart supports null safety.
+In Dart, all types default to non-nullable.
+This benefits Dart developers because Dart catches null reference
+exceptions when writing code, rather than at runtime.
 
-### Tipos anuláveis vs. não anuláveis {:#nullable-vs-non-nullable-types}
+### Nullable vs non-nullable types
 
-Nenhuma das variáveis no exemplo de código a seguir pode ser `null`.
+None of the variables in the following code example can be `null`.
 
 ```dart
-// No Dart com segurança nula, nenhuma delas pode ser nula.
-var i = 42; // Inferido como um int.
+// In null-safe Dart, none of these can ever be null.
+var i = 42; // Inferred to be an int.
 String name = getFileName();
-final b = Foo(); // Foo() invoca um construtor
+final b = Foo(); // Foo() invokes a constructor
 ```
 
-Para indicar que uma variável pode ter o valor `null`,
-adicione `?` à sua declaração de tipo:
+To indicate that a variable might have the value `null`,
+add `?` to its type declaration:
 
 ```dart
 int? aNullableInt = null;
 ```
 
-O mesmo vale para qualquer outra declaração de tipo,
-como uma declaração de função:
+The same goes for any other type declaration,
+such as a function declaration:
 
 ```dart
 String? returnsNullable() {
   return random.nextDouble() < 0.5
-    ? 'Às vezes nulo!'
+    ? 'Sometimes null!'
     : null;
 }
 
 String returnsNonNullable() {
-  return 'Nunca nulo!';
+  return 'Never null!';
 }
 ```
 
-### Operadores *null-aware* {:#null-aware-operators}
+### Null-aware operators
 
-Dart suporta vários operadores para lidar com a possibilidade de ser nulo.
-Como em JavaScript, Dart oferece suporte ao operador de atribuição nula (`??=`),
-operador de coalescência nula (`??`) e operador de encadeamento opcional (`?.`).
-Esses operadores funcionam da mesma forma que o JavaScript.
+Dart supports several operators to deal with nullability.
+As in JavaScript, Dart supports the null assignment operator (`??=`),
+null-coalescing operator (`??`), and optional chaining operator (`?.`).
+These operators work the same as JavaScript.
 
-#### ! Operador {:#operator}
+#### ! Operator
 
-Nos casos em que uma variável ou expressão anulável pode não ser nula,
-você pode dizer ao compilador para reprimir quaisquer erros de tempo de compilação
-usando o operador (`!`). Coloque este operador após a expressão.
+In cases where a nullable variable or expression might be non-null,
+you can tell the compiler to repress any compile time errors
+using the (`!`) operator. Place this operator after the expression.
 
-Não confunda isso com o operador not (`!`) do Dart,
-que usa o mesmo símbolo, mas colocado antes da expressão.
+Don't confuse this with Dart's not (`!`) operator,
+which uses the same symbol but place before the expression.
 
 ```dart
 int? a = 5;
 
-int b = a; // Não permitido.
-int b = a!; // Permitido.
+int b = a; // Not allowed.
+int b = a!; // Allowed.
 ```
 
-Em tempo de execução, se a acabar sendo `null`,
-ocorre um erro de tempo de execução.
+At runtime, if a turns out to be `null`,
+a runtime error occurs.
 
-Como o operador `?.`,
-use o operador `!` ao acessar propriedades
-ou métodos em um objeto:
+Like the `?.` operator,
+use the `!` operator when accessing properties
+or methods on an object:
 
 ```dart
 myObject!.someProperty;
 myObject!.someMethod();
 ```
 
-Se `myObject` for `null` em tempo de execução,
-ocorre um erro de tempo de execução.
+If `myObject` is `null` at runtime,
+a runtime error occurs.
 
-### Funções {:#functions}
+### Functions
 
-Embora as funções do Dart funcionem de maneira muito semelhante
-às suas contrapartes em JavaScript,
-elas têm alguns recursos adicionais,
-e algumas pequenas diferenças de sintaxe ao declará-las.
-Semelhante ao JavaScript,
-você pode declarar funções praticamente em qualquer lugar,
-seja no nível superior,
-como um campo de classe ou no escopo local.
+While Dart's functions work much the same
+as their counterparts in JavaScript,
+they do have some additional features,
+and some minor syntax differences when declaring them.
+Similar to JavaScript,
+you can declare functions pretty much anywhere,
+whether at the top level,
+as a class field, or in the local scope.
 
 ```js
-// No nível superior
+// On the top level
 function multiply(a, b) {
   return a * b;
 }
 
-// Como um campo de classe
+// As a class field
 class Multiplier {
   multiply(a, b) {
     return a * b;
   }
 }
 
-// Em um escopo local
+// In a local scope
 function main() {
   function multiply(a, b) {
     return a * b;
@@ -550,19 +546,19 @@ function main() {
 ```
 
 ```dart
-// No nível superior
+// On the top level
 int multiply(a, b) {
   return a * b;
 }
 
-// Como um campo de classe
+// As a class field
 class Multiplier {
   multiply(a, b) {
     return a * b;
   }
 }
 
-// Em um escopo local
+// In a local scope
 main() {
   multiply(a, b) {
     return a * b;
@@ -572,14 +568,14 @@ main() {
 }
 ```
 
-### Sintaxe de seta {:#arrow-syntax}
+### Arrow syntax
 
-Tanto Dart quanto JavaScript suportam a sintaxe de seta (`=>`),
-mas diferem em como eles a suportam.
-Em Dart, você só pode usar a sintaxe de seta quando a função
-contém uma única expressão ou instrução de retorno.
+Both Dart and JavaScript support arrow syntax (`=>`),
+but differ in how they support it.
+In Dart, you can only use the arrow syntax when the function
+contains a single expression or return statement.
 
-Por exemplo, as seguintes funções `isNoble` são equivalentes:
+For example, the following `isNoble` functions are equivalent:
 
 ```dart
 bool isNoble(int atomicNumber) {
@@ -591,11 +587,11 @@ bool isNoble(int atomicNumber) {
 bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 ```
 
-### Parâmetros {:#parameters}
+### Parameters
 
-Em JavaScript, todos os parâmetros _podem_ ser parâmetros posicionais.
-Por padrão, Dart _exige_ que você passe todos os parâmetros como argumentos
-para funções.
+In JavaScript, all parameters _can_ be positional parameters.
+By default, Dart _requires_ you to pass all parameters as arguments
+to functions.
 
 ```dart
 int multiply(int a, int b) {
@@ -603,44 +599,44 @@ int multiply(int a, int b) {
 }
 
 main() {
-  multiply(3, 5); // Válido. Todos os parâmetros são fornecidos.
-  multiply(3); // Inválido. Todos os parâmetros devem ser fornecidos.
+  multiply(3, 5); // Valid. All parameters are provided.
+  multiply(3); // Invalid. All parameters must be provided.
 }
 ```
 
-Isso pode mudar em duas situações:
+This can change in two situations:
 
-1. Os parâmetros posicionais são marcados como opcionais.
-2. Os parâmetros são nomeados e não marcados como obrigatórios.
+1. The positional parameters are marked as optional.
+1. The parameters are named and not marked as required.
 
-Para definir parâmetros posicionais opcionais, coloque-os
-entre colchetes após quaisquer parâmetros posicionais obrigatórios.
-Você não pode seguir parâmetros opcionais com parâmetros obrigatórios.
+To define optional positional parameters, enclose them
+in square brackets following any required positional parameters.
+You can't follow optional parameters with required parameters.
 
-Devido à segurança nula, parâmetros posicionais opcionais
-devem ter um valor padrão ou serem marcados como anuláveis.
-Para saber mais, consulte a seção anterior sobre [segurança nula](#null-safety).
+Due to null safety, optional positional parameters
+must have a default value or be marked as nullable.
+To learn more, see the preceding section about [null safety](#null-safety).
 
-O código a seguir tem um exemplo válido e dois exemplos inválidos
-de funções que definem parâmetros posicionais opcionais.
+The following code has one valid and two invalid examples
+of functions that define optional positional parameters.
 
 ```dart
-// Válido: `b` tem um valor padrão de 5. `c` é marcado como anulável.
+// Valid: `b` has a default value of 5. `c` is marked as nullable.
 multiply(int a, [int b = 5, int? c]) {
   ...
 }
-// Inválido: um parâmetro posicional obrigatório segue um opcional.
+// Invalid: a required positional parameter follows an optional one.
 multiply(int a, [int b = 5], int c) {
   ...
 }
-// Inválido: Nenhum parâmetro posicional opcional tem um padrão
-//          valor ou foi sinalizado como anulável.
+// Invalid: Neither optional positional parameter has a default
+//          value or has been flagged as nullable.
 multiply(int a, [int b, int c]) {
   ...
 }
 ```
 
-O exemplo a seguir mostra como chamar uma função com parâmetros opcionais:
+The following example shows how to call a function with optional parameters:
 
 ```dart
 multiply(int a, [int b = 5, int? c]) {
@@ -648,59 +644,59 @@ multiply(int a, [int b = 5, int? c]) {
 }
 
 main() {
-  // Todas são chamadas de função válidas.
+  // All are valid function calls.
   multiply(3);
   multiply(3, 5);
   multiply(3, 5, 7);
 }
 ```
 
-Dart oferece suporte a **parâmetros nomeados**.
-Eles não precisam ser fornecidos na ordem
-em que estão definidos, como com parâmetros posicionais.
-Você se refere a eles pelo nome. Por padrão,
-estes são opcionais, a menos que sejam sinalizados como obrigatórios.
-Parâmetros nomeados são definidos envolvendo-os com chaves.
-Você pode combinar parâmetros nomeados com obrigatórios
-parâmetros posicionais - neste cenário,
-os parâmetros nomeados são sempre colocados após posicionais.
-Ao chamar uma função com parâmetros nomeados,
-passe valores prefixando o valor passado com o
-nome do parâmetro, separados por dois pontos.
-Por exemplo, `f(namedParameter: 5)`.
+Dart supports **named parameters**.
+These don't have to be provided in the order
+they're defined, as with positional parameters.
+You refer to them by name instead. By default,
+these are optional, unless they're flagged as required.
+Named parameters are defined by surrounding them with curly braces.
+You can combine named parameters with required
+positional parameters—in this scenario,
+the named parameters are always placed after positional.
+When calling a function with named parameters,
+pass values by prefixing the passed value with the
+name of the parameter, separated by a colon.
+For example, `f(namedParameter: 5)`.
 
-Novamente, com segurança nula, parâmetros nomeados que não são sinalizados como
-obrigatórios precisam ter um valor padrão ou serem sinalizados como anuláveis.
+Again, with null safety, named parameters that are not flagged as
+required either need to have a default value or be flagged as nullable.
 
-O código a seguir define uma função com parâmetros nomeados:
+The following code defines a function with named parameters:
 
 ```dart
-// Válido:
-// - `a` foi sinalizado como obrigatório
-// - `b` tem um valor padrão de 5
-// - `c` é marcado como anulável
-// - Parâmetros nomeados seguem o posicional
+// Valid:
+// - `a` has been flagged as required
+// - `b` has a default value of 5
+// - `c` is marked as nullable
+// - Named parameters follow the positional one
 multiply(bool x, {required int a, int b = 5, int? c}) {
   ...
 }
 ```
 
-Os exemplos a seguir chamam uma função com parâmetros nomeados:
+The following examples call a function with named parameters:
 
 ```dart
-// Todas são chamadas de função válidas.
-// Além de fornecer o parâmetro posicional obrigatório:
-multiply(false, a: 3); // Fornece apenas parâmetros nomeados obrigatórios
-multiply(false, a: 3, b: 9); // Substitui o valor padrão de `b`
-multiply(false, c: 9, a: 3, b: 2); // Fornece todos os parâmetros nomeados fora de ordem
+// All are valid function calls.
+// Beyond providing the required positional parameter:
+multiply(false, a: 3); // Only provide required named parameters
+multiply(false, a: 3, b: 9); // Override default value of `b`
+multiply(false, c: 9, a: 3, b: 2); // Provide all named parameters out of order
 ```
 
-### Funções de primeira classe {:#first-class-functions}
+### First-class functions
 
-JavaScript e Dart tratam funções como cidadãos de primeira classe.
-Isso significa que o Dart trata as funções como qualquer outro objeto.
-Por exemplo, o código a seguir mostra como
-passar uma função como um parâmetro para outra função:
+JavaScript and Dart treat functions as first-class citizens.
+This means that Dart treats functions as any other object.
+For example, the following code shows how to
+pass a function as a parameter to another function:
 
 ```dart
 void printElement(int element) {
@@ -709,76 +705,77 @@ void printElement(int element) {
 
 var list = [1, 2, 3];
 
-// Passar printElement como um parâmetro.
+// Pass printElement as a parameter.
 list.forEach(printElement);
 ```
 
-### Funções anônimas {:#anonymous-functions}
+### Anonymous functions
 
-JavaScript e Dart ambos suportam [_funções anônimas_],
-ou funções sem nome. Assim como com funções nomeadas,
-você pode passar funções anônimas como qualquer outro valor.
-Por exemplo, armazene funções anônimas em uma variável,
-passe-as como um argumento para outra função,
-ou retorne-as de outra função.
+JavaScript and Dart both support [_anonymous_ functions],
+or functions without a name. As with named functions,
+you can pass anonymous functions like any other value.
+For example, store anonymous functions in a variable,
+pass them as an argument to another function,
+or return them from another function.
 
 [_anonymous_ functions]: https://en.wikipedia.org/wiki/Anonymous_function
 
-JavaScript tem duas maneiras de declarar uma função anônima:
+JavaScript has two ways to declare an anonymous function:
 
-1. Use uma expressão de função padrão
-2. Use a sintaxe de seta
+1. Use a standard function expression
+2. Use arrow syntax
 
-Da mesma forma, Dart também tem duas maneiras de declarar funções anônimas.
-Ambas funcionam de maneira semelhante à expressão de seta JavaScript.
-As funções anônimas do Dart não suportam a funcionalidade extra
-que vem com expressões de função regulares.
-Por exemplo, o suporte do JavaScript para uma expressão de função agindo
-como um construtor ou criando uma ligação personalizada a este.
+Likewise, Dart also has two ways to declare anonymous functions.
+Both work in a similar manner to the JavaScript arrow expression.
+Dart's anonymous functions do not support the extra functionality
+that comes with regular function expressions.
+For example, JavaScript's support for a function expression acting
+like a constructor, or creating a custom binding to this.
 
-Para saber mais, consulte a seção [Classes](#classes).
+To learn more, see the [Classes](#classes) section.
 
 ```js
-// Uma expressão de função regular
-// atribuída a uma variável
+// A regular function expression
+// assigned to a variable
 let funcExpr = function(a, b) {
   return a * b;
 }
-// A mesma função anônima
-// expressa como uma seta
-// função com chaves.
+// The same anonymous function
+// expressed as an arrow
+// function with curly braces.
 let arrowFuncExpr = (a, b) => {
   return a * b;
 }
-// Uma função de seta com apenas
-// uma instrução de retorno como
-// seu conteúdo não
-// requer um bloco.
+// An arrow function with only
+// one return statement as
+// its contents does not
+// require a block.
 let arrowFuncExpr2 = (a, b) => a * b;
 ```
 
+
 ```dart
-// Atribua uma função anônima
-// a uma variável.
+// Assign an anonymous function
+// to a variable.
 var blockFunc =
   optionalCallback ?? (int a, int b) {
     return a * b;
 };
 
-// Para uma expressão com apenas uma instrução de retorno,
-// você pode usar a sintaxe de seta:
+// For an expression with only a return statement,
+// you can use the arrow syntax:
 var singleFunc = (int a, int b) => a * b;
 ```
 
-Como no JavaScript, você pode passar funções anônimas para outras funções.
-Os desenvolvedores geralmente passam funções anônimas ao usar a função `map`
-para *arrays* e listas:
+As with JavaScript, you can pass anonymous functions to other functions.
+Developers often pass anonymous functions when using the `map` function
+for arrays and lists:
 
 ```js
-// retorna [4, 5, 6]
+// returns [4, 5, 6]
 [1, 2, 3].map(e => e + 3);
 
-// retorna [5, 7, 9]
+// returns [5, 7, 9]
 [1, 2, 3].map(e => {
   e *= 2;
   return e + 3;
@@ -786,10 +783,10 @@ para *arrays* e listas:
 ```
 
 ```dart
-// retorna [4, 5, 6]
+// returns [4, 5, 6]
 [1, 2, 3].map((e) => e + 3).toList();
 
-// retorna [5, 7, 9]
+// returns [5, 7, 9]
 var list2 = [1, 2, 3].map((e) {
   e *= 2;
   return e + 3;
@@ -797,36 +794,37 @@ var list2 = [1, 2, 3].map((e) {
 ```
 
 :::note
-A função `map` nos exemplos anteriores retorna
-um `Iterable<T>`, em vez de um `List<T>`.
-A função `toList` converte o retornado
-`Iterable` de volta para uma `List`.
+The `map` function in the previous examples returns
+an `Iterable<T>`, rather than a `List<T>`.
+The `toList` function converts the returned
+`Iterable` back to a `List`.
 
-Um literal de lista pode atingir o mesmo objetivo.
+A list literal could achieve the same goal.
 
 ```dart
-// Essas duas instruções são equivalentes:
+// These two statements are equivalent:
 print([for (var e in [1, 2, 3]) e + 3]);
 print([1, 2, 3].map((e) => e + 3).toList());
 ```
 :::
 
-### Funções geradoras {:#generator-functions}
+### Generator functions
 
-Ambas as linguagens suportam [_funções geradoras_].
-Essas funções retornam uma coleção iterável de itens
-computados para evitar trabalhos desnecessários.
+Both languages support [_generator functions_].
+These functions return an iterable collection of items
+computed to avoid unnecessary work.
 
-Para escrever uma função geradora em Dart,
-adicione a palavra-chave `sync*` após os parâmetros da função,
-e retorne um `Iterable`.
-Adicione itens ao iterável final usando o
-palavra-chave `yield` ou adicione conjuntos inteiros de itens usando `yield*`.
+To write a generator function in Dart,
+add the `sync*` keyword after the function parameters,
+and return an `Iterable`.
+Add items to the final iterable using the
+`yield` keyword, or add whole sets of items using `yield*`.
 
 [_generator functions_]: /language/functions#generators
 
-O exemplo a seguir mostra como escrever um
-função geradora básica:
+The following example shows how to write a
+basic generator function:
+
 
 ```js
 function* naturalsTo(n) {
@@ -836,11 +834,12 @@ function* naturalsTo(n) {
   }
 }
 
-// Retorna [0, 1, 2, 3, 4]
+// Returns [0, 1, 2, 3, 4]
 for (let value of naturalsTo(5)) {
   console.log(value);
 }
 ```
+
 
 ```dart
 Iterable<int> naturalsTo(int n) sync* {
@@ -850,9 +849,10 @@ Iterable<int> naturalsTo(int n) sync* {
   }
 }
 
-// Retorna um iterável com [0, 1, 2, 3, 4]
+// Returns an iterable with [0, 1, 2, 3, 4]
 print(naturalsTo(5).toList());
 ```
+
 
 ```js
 function* doubleNaturalsTo(n) {
@@ -863,7 +863,7 @@ function* doubleNaturalsTo(n) {
   }
 }
 
-// Retorna [0, 0, 1, 1, 2, 2]
+// Returns [0, 0, 1, 1, 2, 2]
 for (let value of doubleNaturalsTo(3)) {
   console.log(value);
 }
@@ -878,36 +878,36 @@ Iterable<int> doubleNaturalsTo(int n) sync* {
   }
 }
 
-// Retorna um iterável com [0, 0, 1, 1, 2, 2]
+// Returns an iterable with [0, 0, 1, 1, 2, 2]
 print(doubleNaturalsTo(3));
 ```
 
-Você também pode definir funções geradoras assíncronas,
-que retornam *streams* em vez de *iterables*.
-Saiba mais na próxima seção [Assincronia](#asynchrony).
+You can also define asynchronous generator functions,
+which return streams instead of iterables.
+Learn more in the upcoming [Asynchrony](#asynchrony) section.
 
-## Declarações {:#statements}
+## Statements
 
-Esta seção descreve as diferenças nas declarações entre
-JavaScript e Dart.
+This section describes differences in statements between
+JavaScript and Dart.
 
-### Fluxo de controle (if/else, for, while, switch) {:#control-flow-if-else-for-while-switch}
+### Control flow (if/else, for, while, switch)
 
-A maioria das declarações de controle funciona como suas contrapartes JavaScript.
-Alguns têm usos adicionais para [Coleções](#collections).
+Most control statements work like their JavaScript counterparts.
+Some have additional uses for [Collections](#collections).
 
-#### Iteração {:#iteration}
+#### Iteration
 
-Embora tanto JavaScript quanto Dart tenham loops `for-in`,
-seus comportamentos diferem.
+While both JavaScript and Dart have `for-in` loops,
+their behaviors differ.
 
-O loop `for-in` do JavaScript itera sobre as propriedades de um objeto.
-Para iterar sobre os elementos de um objeto iterável do JavaScript,
-você deve usar `for-of` ou `Array.forEach()`.
-O loop `for-in` do Dart funciona como o `for-of` do JavaScript.
+JavaScript's `for-in` loop iterates over an object's properties.
+To iterate over a JavaScript iterable object's elements,
+you must use `for-of` or `Array.forEach()`.
+Dart's `for-in` loop works like JavaScripts `for-of`.
 
-O exemplo a seguir mostra a iteração
-sobre uma coleção e imprimindo cada elemento:
+The following example shows iterating
+over a collection and printing out each element:
 
 ```js
 for (const element of list) {
@@ -921,19 +921,19 @@ for (final element in list) {
 }
 ```
 
-#### Switch {:#switch}
+#### Switch
 
 :::note
-Uma diferença fundamental com a declaração `switch`
-em JavaScript e Dart: quando um caso não tem `break`,
-declaração `continue` ou `return`,
-JavaScript permite que a execução avance e continue
-com a próxima declaração. No entanto,
-Dart só permite isso quando o corpo de um caso está vazio.
+One key difference with the `switch` statement
+in JavaScript and Dart: when a case has no `break`,
+`continue`, or `return` statement,
+JavaScript allows execution to fall through and continue
+with the next statement. However,
+Dart only allows this when a case's body is empty.
 :::
 
-Ao usar `continue` em uma declaração `switch`,
-você pode combiná-lo com um rótulo que é colocado em um caso:
+When using `continue` in a `switch` statement,
+you can combine it with a label that is put on a case:
 
 ```dart
 switch (testEnum) {
@@ -947,12 +947,12 @@ switch (testEnum) {
 }
 ```
 
-### Operadores {:#operators}
+### Operators
 
-Tanto Dart quanto JavaScript contêm operadores predefinidos.
-Nenhuma das linguagens suporta a adição de novos operadores.
-Dart suporta o _overloading_ (sobrecarga) de alguns operadores
-existentes com a palavra-chave `operator`. Por exemplo:
+Both Dart and JavaScript contain predefined operators.
+Neither language supports adding new operators.
+Dart supports overloading some existing operators
+with the `operator` keyword. For example:
 
 ```dart
 class Vector {
@@ -973,57 +973,57 @@ class Vector {
 }
 ```
 
-#### Operadores aritméticos {:#arithmetic-operators}
+#### Arithmetic operators
 
-Os operadores de igualdade e relacionais de ambas as linguagens
-são quase idênticos, conforme mostrado na tabela a seguir:
+The equality and relational operators of both languages
+are almost identical, as shown in the following table:
 
-| Significado                                             | Operador JavaScript | Operador Dart |
-|---------------------------------------------------------|---------------------|---------------|
-| Adição                                                 | `+`                 | `+`           |
-| Subtração                                              | `-`                 | `-`           |
-| Menos unário, também conhecido como negação             | `-expr`             | `-expr`       |
-| Multiplicação                                          | `*`                 | `*`           |
-| Divisão                                                | `/`                 | `/`           |
-| Divisão retornando um resultado inteiro                 |                     | `~/`          |
-| Obter o resto de uma divisão inteira (módulo)            | `%`                 | `%`           |
-| `x = x + 1` (o valor da expressão é `x + 1`)            | `++x`               | `++x`         |
-| `x = x + 1` (o valor da expressão é `x`)                | `x++`               | `x++`         |
-| `x = x - 1` (o valor da expressão é `x - 1`)            | `--x`               | `--x`         |
-| `x = x - 1` (o valor da expressão é `x`)                | `x--`               | `x--`         |
+| Meaning                                           | JavaScript operator | Dart operator |
+|---------------------------------------------------|---------------------|---------------|
+| Add                                               | `+`                 | `+`           |
+| Subtract                                          | `-`                 | `-`           |
+| Unary minus, also known as negation               | `-expr`             | `-expr`       |
+| Multiply                                          | `*`                 | `*`           |
+| Divide                                            | `/`                 | `/`           |
+| Divide returning an integer result                |                     | `~/`          |
+| Get the remainder of an integer division (modulo) | `%`                 | `%`           |
+| `x = x + 1` (expression value is `x + 1`)         | `++x`               | `++x`         |
+| `x = x + 1` (expression value is `x`)             | `x++`               | `x++`         |
+| `x = x - 1` (expression value is `x - 1`)         | `--x`               | `--x`         |
+| `x = x - 1` (expression value is `x`)             | `x--`               | `x--`         |
 
 {:.table .table-striped}
 
-Por exemplo:
+For example:
 
 ```dart
 assert(2 + 3 == 5);
 assert(2 - 3 == -1);
 assert(2 * 3 == 6);
-assert(5 / 2 == 2.5); // Resultado é um double
-assert(5 ~/ 2 == 2); // Resultado é um int
-assert(5 % 2 == 1); // Resto
+assert(5 / 2 == 2.5); // Result is a double
+assert(5 ~/ 2 == 2); // Result is an int
+assert(5 % 2 == 1); // Remainder
 
 a = 0;
-b = ++a; // Incrementa a antes que b receba seu valor.
+b = ++a; // Increment a before b gets its value.
 assert(a == b); // 1 == 1
 
 a = 0;
-b = a++; // Incrementa a DEPOIS que b recebe seu valor.
+b = a++; // Increment a AFTER b gets its value.
 assert(a != b); // 1 != 0
 
 a = 0;
-b = --a; // Decrementa a antes que b receba seu valor.
+b = --a; // Decrement a before b gets its value.
 assert(a == b); // -1 == -1
 
 a = 0;
-b = a--; // Decrementa a DEPOIS que b recebe seu valor.
+b = a--; // Decrement a AFTER b gets its value.
 assert(a != b); // -1 != 0
 ```
 
-Você provavelmente notou que Dart também contém
-um operador `~/` (chamado de _operador de divisão truncada_),
-que divide um double e retorna um inteiro com o valor arredondado para baixo:
+You've probably noticed that Dart also contains
+a `~/` operator (called a _truncating division operator_),
+that divides a double and outputs a floored integer:
 
 ```dart
 assert(25 == 50.4 ~/ 2);
@@ -1031,27 +1031,27 @@ assert(25 == 50.6 ~/ 2);
 assert(25 == 51.6 ~/ 2);
 ```
 
-#### Operadores de igualdade e relacionais {:#equality-and-relational-operators}
+#### Equality and relational operators
 
-Os operadores de igualdade e relacionais de ambas as linguagens
-funcionam da mesma maneira:
+The equality and relational operators of both languages
+work in the same way:
 
-| Significado                  | Operador JavaScript | Operador Dart |
-|------------------------------|---------------------|---------------|
-| Estritamente igual           | `===`               | `==`          |
-| Igualmente abstrato (Abstract equal) | `==`                |               |
-| Estritamente não igual       | `!==`               | `!=`          |
-| Não igual abstrato (Abstract not equal)      | `!=`                |               |
-| Maior que                    | `>`                 | `>`           |
-| Menor que                    | `<`                 | `<`           |
-| Maior que ou igual a         | `>=`                | `>=`          |
-| Menor que ou igual a         | `<=`                | `<=`          |
+| Meaning                   | JavaScript operator | Dart operator |
+|---------------------------|---------------------|---------------|
+| Strict equal              | `===`               | `==`          |
+| Abstract equal            | `==`                |               |
+| Strict not equal          | `!==`               | `!=`          |
+| Abstract not equal        | `!=`                |               |
+| Greater than              | `>`                 | `>`           |
+| Less than                 | `<`                 | `<`           |
+| Greater than or equal to  | `>=`                | `>=`          |
+| Less than or equal to     | `<=`                | `<=`          |
 
 {:.table .table-striped}
 
-Os operadores `==` e `!=` de JavaScript não têm equivalentes.
+The `==` and `!=` JavaScript operators have no equivalent.
 
-Por exemplo:
+For example:
 
 ```dart
 assert(2 == 2);
@@ -1062,39 +1062,39 @@ assert(3 >= 3);
 assert(2 <= 3);
 ```
 
-#### Operadores de teste de tipo {:#type-test-operators}
+#### Type test operators
 
-A implementação de operadores de teste é um pouco
-diferente entre as duas linguagens:
+The implementation of test operators is a bit
+different between the two languages:
 
-| Significado                           | Operador JavaScript | Operador Dart |
-|---------------------------------------|---------------------|---------------|
-| Typecast (conversão de tipo)                   |                     | `x as T`      |
-| Verdadeiro se o objeto tem o tipo especificado | `x instanceof T`    | `x is T`      |
-| Verdadeiro se o objeto não tem o tipo especificado | `!(x instanceof T)` | `x is! T`     |
+| Meaning                             | JavaScript operator | Dart operator |
+|-------------------------------------|---------------------|---------------|
+| Typecast                            |                     | `x as T`      |
+| True if object has specified type   | `x instanceof T`    | `x is T`      |
+| True if object lacks specified type | `!(x instanceof T)` | `x is! T`     |
 
 {:.table .table-striped}
 
-O resultado de `obj is T` é verdadeiro se `obj`
-implementa a interface especificada por `T`.
-Por exemplo, `obj is Object?` é sempre verdadeiro.
+The result of `obj is T` is true if `obj`
+implements the interface specified by `T`.
+For example, `obj is Object?` is always true.
 
-Use o operador typecast (`as`) para garantir que um valor
-tenha um tipo específico. O compilador pode usar isso,
-se você _sabe_ que o objeto terá esse tipo.
+Use the typecast operator (`as`) to ensure that a value
+has a particular type. The compiler can use that,
+if you _know_ that the object will have that type.
 
-Por exemplo:
+For example:
 
 ```dart
 (person as Employee).employeeNumber = 4204583;
 ```
 
-Se você não _sabe_ que o objeto é do tipo `T`,
-use `is T` para verificar o tipo _antes_ de usar o objeto.
+If you don't _know_ that the object is of type `T`,
+then use `is T` to check the type _before_ using the object.
 
-Em Dart, os tipos de variáveis locais são atualizados dentro
-do escopo da instrução `if`.
-Este não é o caso para variáveis de instância.
+In Dart, the types of local variables update within
+the scope of the if statement.
+This is not the case for instance variables.
 
 ```dart
 if (person is Employee) {
@@ -1102,53 +1102,53 @@ if (person is Employee) {
 }
 ```
 
-#### Operadores lógicos {:#logical-operators}
+#### Logical operators
 
-Você pode inverter ou combinar expressões booleanas
-usando operadores lógicos. Os operadores lógicos
-de ambas as linguagens são idênticos.
+You can invert or combine boolean expressions
+using logical operators. The logical operators
+of both languages are identical.
 
-| Significado                                                          | Operador JavaScript | Operador Dart |
-|----------------------------------------------------------------------|---------------------|---------------|
-| Inverte a próxima expressão (altera falso para verdadeiro e vice-versa) | `!x`                | `!x`          |
-| OR lógico                                                           | `\|\|`              | `\|\|`        |
-| AND lógico                                                          | `&&`                | `&&`          |
+| Meaning                                                        | JavaScript operator | Dart operator |
+|----------------------------------------------------------------|---------------------|---------------|
+| Inverts next expression (changes false to true and vice versa) | `!x`                | `!x`          |
+| Logical OR                                                     | `\|\|`              | `\|\|`        |
+| Logical AND                                                    | `&&`                | `&&`          |
 
 {:.table .table-striped}
 
-JavaScript permite que qualquer valor seja usado onde você precisa de um valor booleano.
-Em seguida, ele converte esses valores para `true` ou `false`.
-JavaScript considera strings vazias e o número `0` como valores "falsy" (falsos).
-Dart permite valores `bool` em condições e como operandos de operadores lógicos.
+JavaScript allows any value to be used where you need a Boolean value.
+It then converts those values to either `true` or `false`.
+JavaScript considers empty strings and the number `0` to be "falsy" values.
+Dart allows `bool` values in conditions and as operands of logical operators.
 
-Por exemplo:
+For example:
 
 ```dart
 if (!done && (col == 0 || col == 3)) {
-  // ...Faça algo...
+  // ...Do something...
 }
 ```
 
-#### Operadores bit a bit e de deslocamento {:#bitwise-and-shift-operators}
+#### Bitwise and shift operators
 
-Você pode manipular os bits individuais de números
-usando operadores bit a bit e de deslocamento com inteiros.
-Os operadores de ambas as linguagens são quase idênticos,
-conforme mostrado na tabela a seguir:
+You can manipulate the individual bits of numbers
+by using bitwise and shift operators with integers.
+The operators of both languages are almost identical,
+as shown in the following table:
 
-| Significado                                                       | Operador JavaScript | Operador Dart |
-|-------------------------------------------------------------------|---------------------|---------------|
-| AND bit a bit                                                     | `&`                 | `&`           |
-| OR bit a bit                                                      | `\|`                | `\|`          |
-| XOR bit a bit                                                     | `^`                 | `^`           |
-| Complemento bit a bit unário (0s se tornam 1s; 1s se tornam 0s)  | `~expr`             | `~expr`       |
-| Deslocamento para a esquerda                                       | `<<`                | `<<`          |
-| Deslocamento para a direita                                        | `>>`                | `>>`          |
-| Deslocamento não assinado para a direita                            | `>>>`               | `>>>`         |
+| Meaning                                               | JavaScript operator | Dart operator |
+|-------------------------------------------------------|---------------------|---------------|
+| Bitwise AND                                           | `&`                 | `&`           |
+| Bitwise OR                                            | `\|`                | `\|`          |
+| Bitwise XOR                                           | `^`                 | `^`           |
+| Unary bitwise complement (0s become 1s; 1s become 0s) | `~expr`             | `~expr`       |
+| Shift left                                            | `<<`                | `<<`          |
+| Shift right                                           | `>>`                | `>>`          |
+| Unsigned shift right                                  | `>>>`               | `>>>`         |
 
 {:.table .table-striped}
 
-Por exemplo:
+For example:
 
 ```dart
 final value = 0x22;
@@ -1158,22 +1158,22 @@ assert((value & bitmask) == 0x02); // AND
 assert((value & ~bitmask) == 0x20); // AND NOT
 assert((value | bitmask) == 0x2f); // OR
 assert((value ^ bitmask) == 0x2d); // XOR
-assert((value << 4) == 0x220); // Deslocamento para a esquerda
-assert((value >> 4) == 0x02); // Deslocamento para a direita
-assert((-value >> 4) == -0x03); // Deslocamento para a direita
-assert((value >>> 4) == 0x02); // Deslocamento não assinado para a direita
-assert((-value >>> 4) > 0); // Deslocamento não assinado para a direita
+assert((value << 4) == 0x220); // Shift left
+assert((value >> 4) == 0x02); // Shift right
+assert((-value >> 4) == -0x03); // Shift right
+assert((value >>> 4) == 0x02); // Unsigned shift right
+assert((-value >>> 4) > 0); // Unsigned shift right
 ```
 
-#### Operador condicional {:#conditional-operator}
+#### Conditional operator
 
-Tanto Dart quanto JavaScript contêm um operador condicional (`?:`)
-para avaliar expressões.
-Alguns desenvolvedores se referem a isso como um operador ternário
-porque ele recebe três operandos.
-Como Dart tem outro operador (`[]=`) que recebe três operandos,
-chame este operador (`?:`) de operador condicional.
-Este operador funciona para expressões como [if-else][if-else] funciona para instruções.
+Both Dart and JavaScript contain a conditional operator (`?:`)
+for evaluating expressions.
+Some developers refer to this as a ternary operator
+because it takes three operands.
+As Dart has another operator (`[]=`) that takes three operands,
+call this operator (`?:`) the conditional operator.
+This operator works for expressions like [if-else][] does for statements.
 
 ```js
 let visibility = isPublic ? "public" : "private";
@@ -1185,66 +1185,66 @@ final visibility = isPublic ? 'public' : 'private';
 
 [if-else]: /language/branches#if
 
-### Operadores de atribuição {:#assignment-operators}
+### Assignment operators
 
-Use o operador (`=`) para atribuir valores.
+Use the (`=`) operator to assign values.
 
 ```dart
-// Atribui valor a a
+// Assign value to a
 a = value;
 ```
 
-Este operador também tem uma variante com reconhecimento de nulo (`??=`).
+This operator also has a null-aware variant (`??=`).
 
-Para saber mais,
-consulte a seção do operador de [atribuição nula](#null-aware-operators).
+To learn more,
+see the [null-assignment](#null-aware-operators) operator section.
 
-JavaScript e Dart incluem operadores que calculam e atribuem
-novos valores à variável na expressão.
-Esses operadores de atribuição usam o valor do lado direito e
-o valor inicial da variável como operandos.
+JavaScript and Dart include operators that calculate and assign
+new values to the variable in the expression.
+These assignment operators use the right-side value and
+the variable initial value as operands.
 
-A tabela a seguir lista esses operadores de atribuição:
+The following table lists these assignment operators:
 
-| Operador | Descrição                        |
-|----------|------------------------------------|
-| `=`      | Atribuição                         |
-| `+=`     | Atribuição de adição              |
-| `-=`     | Atribuição de subtração           |
-| `*=`     | Atribuição de multiplicação        |
-| `/=`     | Atribuição de divisão             |
-| `~/=`    | Atribuição de divisão truncada      |
-| `%=`     | Atribuição de resto (módulo)       |
-| `>>>=`   | Atribuição de deslocamento não assinado para a direita |
-| `^=`     | Atribuição de XOR bit a bit       |
-| `<<=`    | Atribuição de deslocamento para a esquerda      |
-| `>>=`    | Atribuição de deslocamento para a direita     |
-| `&=`     | Atribuição de AND bit a bit        |
-| `\|=`    | Atribuição de OR bit a bit         |
+| Operator | Description                     |
+|----------|---------------------------------|
+| `=`      | Assignment                      |
+| `+=`     | Addition assignment             |
+| `-=`     | Subtraction assignment          |
+| `*=`     | Multiplication assignment       |
+| `/=`     | Division assignment             |
+| `~/=`    | Truncating division assignment  |
+| `%=`     | Remainder (modulo) assignment   |
+| `>>>=`   | Unsigned right shift assignment |
+| `^=`     | Bitwise XOR assignment          |
+| `<<=`    | Left shift assignment           |
+| `>>=`    | Right shift assignment          |
+| `&=`     | Bitwise AND assignment          |
+| `\|=`    | Bitwise OR assignment           |
 
 {:.table .table-striped}
 
-JavaScript não suporta o operador de atribuição `~/=`.
+JavaScript does not support the `~/=` assignment operator.
 
 ```dart
 var a = 5;
-a *= 2; // Multiplica `a` por 2 e atribui o resultado de volta a a.
-print(a); // `a` agora é 10.
+a *= 2; // Multiply `a` by 2 and assign the result back to a.
+print(a); // `a` is now 10.
 ```
 
-### Cascades (operador `..`) {:#cascades-operator}
+### Cascades (`..` operator)
 
-Dart permite encadear múltiplas chamadas de método, atribuições de propriedade,
-ou ambos em um único objeto. Dart se refere a isso como _cascading_ (em cascata) e
-usa a sintaxe de cascade (`..`) para realizar esta ação.
+Dart allows you to chain multiple method calls, property assignments,
+or both on a single object. Dart refers to this as _cascading_ and
+uses the cascade syntax (`..`) to perform this action.
 
-JavaScript não possui esta sintaxe.
+JavaScript lacks this syntax.
 
-O exemplo a seguir mostra o encadeamento de vários métodos
-em um objeto recém-construído usando a sintaxe de cascade:
+The following example shows chaining multiple methods
+on a newly constructed object using the cascade syntax:
 
 ```dart
-var animal = Animal() // Define múltiplas propriedades e métodos
+var animal = Animal() // Sets multiple properties and methods
   ..name = "Bob"
   ..age = 5
   ..feed()
@@ -1254,7 +1254,7 @@ print(animal.name); // "Bob"
 print(animal.age); // 5
 ```
 
-Para tornar a primeira sintaxe de cascade com reconhecimento de nulo, escreva-a como `?..`.
+To make the first cascade syntax null-aware, write it as `?..`.
 
 ```dart
 var result = maybePerson
@@ -1262,347 +1262,347 @@ var result = maybePerson
     ..salary = salary;
 ```
 
-Dart ignora toda a cascade se o valor de `maybePerson` for `null`.
+Dart ignores the entire cascade if the `maybePerson` value is `null`.
 
-## Coleções {:#collections}
+## Collections
 
-Esta seção aborda alguns tipos de coleção em Dart e os compara
-com tipos semelhantes em JavaScript.
+This section covers some collection types in Dart and compare them
+to similar types in JavaScript.
 
-### Listas {:#lists}
+### Lists
 
-Dart escreve literais de lista da mesma forma que _arrays_ em JavaScript.
-Dart inclui listas entre colchetes e separa os valores com vírgulas.
+Dart writes list literals in the same ways as JavaScript arrays.
+Dart encloses lists in square brackets and separate values with commas.
 
 ```dart
-// Inicializa a lista e especifica o tipo completo
-final List<String> list1 = <String>['um', 'dois', 'três'];
+// Initialize list and specify full type
+final List<String> list1 = <String>['one', 'two', 'three'];
 
-// Inicializa a lista usando um tipo abreviado
-final list2 = <String>['um', 'dois', 'três'];
+// Initialize list using shorthand type
+final list2 = <String>['one', 'two', 'three'];
 
-// Dart também pode inferir o tipo
-final list3 = ['um', 'dois', 'três'];
+// Dart can also infer the type
+final list3 = ['one', 'two', 'three'];
 ```
 
-Os exemplos de código a seguir fornecem uma visão geral das ações básicas que
-você pode realizar em uma `List` do Dart.
-O exemplo a seguir mostra como recuperar um valor de uma `List`
-usando o operador de índice.
+The following code samples give an overview of the basic actions that
+you can perform on a Dart `List`.
+The following example shows how to retrieve a value from a `List`
+using the index operator.
 
 ```dart
-final fruits = <String>['maçã', 'laranja', 'pera'];
+final fruits = <String>['apple', 'orange', 'pear'];
 final fruit = fruits[1];
 ```
 
-Adicione um valor ao final da `List` usando o método `add`.
-Adicione outra `List` usando o método `addAll`:
+Add a value to the end of the `List` using the `add` method.
+Add another `List` using the `addAll` method:
 
 ```dart
-final fruits = <String>['maçã', 'laranja', 'pera'];
-fruits.add('pêssego');
-fruits.addAll(['kiwi', 'manga']);
+final fruits = <String>['apple', 'orange', 'pear'];
+fruits.add('peach');
+fruits.addAll(['kiwi', 'mango']);
 ```
 
-Insira um valor em uma posição específica usando o
-método `insert`. Insira outra `List` em uma
-posição específica usando o método `insertAll`:
+Insert a value at a specific position using the
+`insert` method. Insert another `List` at a
+specific position using the `insertAll` method:
 
 ```dart
-final fruits = <String>['maçã', 'laranja', 'pera'];
-fruits.insert(0, 'pêssego');
-fruits.insertAll(0, ['kiwi', 'manga']);
+final fruits = <String>['apple', 'orange', 'pear'];
+fruits.insert(0, 'peach');
+fruits.insertAll(0, ['kiwi', 'mango']);
 ```
 
-Atualize um valor na `List` combinando o
-índice e os operadores de atribuição:
+Update a value in the `List` combining the
+index and assignment operators:
 
 ```dart
-final fruits = <String>['maçã', 'laranja', 'pera'];
-fruits[2] = 'pêssego';
+final fruits = <String>['apple', 'orange', 'pear'];
+fruits[2] = 'peach';
 ```
 
-Remova itens de uma `List` usando um dos seguintes métodos:
+Remove items from a `List` using one of the following methods:
 
 ```dart
-final fruits = <String>['maçã', 'laranja', 'pera'];
-// Remove o valor 'pera' da lista.
-fruits.remove('pera');
-// Remove o último elemento da lista.
+final fruits = <String>['apple', 'orange', 'pear'];
+// Remove the value 'pear' from the list.
+fruits.remove('pear');
+// Removes the last element from the list.
 fruits.removeLast();
-// Remove o elemento na posição 1 da lista.
+// Removes the element at position 1 from the list.
 fruits.removeAt(1);
-// Remove os elementos com posições maiores ou iguais a
-// start (1) e menores que end (3) da lista.
+// Removes the elements with positions greater than
+// or equal to start (1) and less than end (3) from the list.
 fruits.removeRange(1, 3);
-// Remove todos os elementos da lista que correspondem ao predicado fornecido.
+// Removes all elements from the list that match the given predicate.
 fruits.removeWhere((fruit) => fruit.contains('p'));
 ```
 
-Use `length` para obter o número de valores na `List`:
+Use `length` to obtain the number of values in the `List`:
 
 ```dart
-final fruits = <String>['maçã', 'laranja', 'pera'];
+final fruits = <String>['apple', 'orange', 'pear'];
 assert(fruits.length == 3);
 ```
 
-Use `isEmpty` para verificar se a `List` está vazia:
+Use `isEmpty` to check if the `List` is empty:
 
 ```dart
 var fruits = [];
 assert(fruits.isEmpty);
 ```
 
-Use `isNotEmpty` para verificar se a `List` não está vazia:
+Use `isNotEmpty` to check if the `List` is not empty:
 
 ```dart
-final fruits = <String>['maçã', 'laranja', 'pera'];
+final fruits = <String>['apple', 'orange', 'pear'];
 assert(fruits.isNotEmpty);
 ```
 
-#### Filled (preenchido) {:#filled}
+#### Filled
 
-A classe `List` do Dart inclui uma maneira de criar uma lista com
-cada item tendo o mesmo valor.
-Este construtor `filled` cria uma lista de tamanho fixo `n` com
-um valor padrão.
-O exemplo a seguir cria uma lista de 3 itens:
+Dart's `List` class includes a way to create a List with
+each item having the same value.
+This `filled` constructor creates a fixed-length list of size `n` with
+one default value.
+The following example create a list of 3 items:
 
 ```dart
-final list1 = List.filled(3, 'a'); // Cria: [ 'a', 'a', 'a' ]
+final list1 = List.filled(3, 'a'); // Creates: [ 'a', 'a', 'a' ]
 ```
 
-* Você não pode adicionar ou remover elementos desta lista por padrão.
-  Para permitir que esta lista adicione ou remova elementos, adicione `, growable: true`
-  ao final da lista de parâmetros.
-* Você pode acessar e atualizar elementos desta lista usando seu valor de índice.
+* You cannot add or remove elements from this list by default.
+  To permit this list to add or remove elements, add `, growable: true`
+  to the end of the parameter list.
+* You can access and update elements of this list using their index value.
 
-#### Generate (gerar) {:#generate}
+#### Generate
 
-A classe `List` do Dart inclui uma maneira de criar uma lista de valores incrementados.
-Este construtor `generate` cria uma lista de tamanho fixo `n`
-com um modelo para construir valores de elementos.
-Este modelo usa o índice como um parâmetro.
+The Dart `List` class includes a way to create a List of incrementing values.
+This `generate` constructor creates a fixed-length list of size `n`
+with a template to build element values.
+This template takes the index as a parameter.
 
 ```dart
-// Cria: [ 'a0', 'a1', 'a2' ]
+// Creates: [ 'a0', 'a1', 'a2' ]
 final list1 = List.generate(3, (index) => 'a$index');
 ```
 
-### Sets (conjuntos) {:#sets}
+### Sets
 
-Ao contrário do JavaScript, o Dart suporta a definição de `Set`s com literais.
-Dart define conjuntos da mesma forma que listas,
-mas usando chaves em vez de colchetes.
-Conjuntos são coleções não ordenadas que contêm apenas itens exclusivos.
-Dart impõe a exclusividade desses itens usando códigos hash,
-o que significa que os objetos precisam de valores hash para serem armazenados em um `Set`.
+Unlike JavaScript, Dart supports defining `Set`s with literals.
+Dart defines sets in the same way as lists,
+but using curly braces rather than square brackets.
+Sets are unordered collections that only contain unique items.
+Dart enforces the uniqueness of these items using hash codes,
+meaning that objects need hash values to be stored in a `Set`.
 
 :::note
-Em Dart, o valor hash assume o padrão como a instância de um objeto
-mas você pode substituí-lo para usar um conjunto de propriedades.
-Para saber mais, consulte a página da propriedade [`hashCode`][`hashCode`].
+In Dart, the hash value defaults to the instance of an object
+but you can override it to use a set of properties.
+To learn more, see the [`hashCode`][] property page.
 :::
 
 [`hashCode`]: {{site.dart-api}}/dart-core/Object/hashCode.html
 
-O trecho de código a seguir mostra como inicializar um `Set`:
+The following code snippet shows how to initialize a `Set`:
 
 ```dart
 final abc = {'a', 'b', 'c'};
 ```
 
-A sintaxe para criar um conjunto vazio pode parecer
-confusa no início, porque especificar
-chaves vazias (`{}`) resulta na criação de um `Map` vazio.
-Para criar um `Set` vazio, preceda a declaração `{}`
-com um argumento de tipo ou atribua `{}` a uma variável do tipo `Set`:
+The syntax for creating an empty set might seem
+confusing at first, because specifying empty
+curly braces (`{}`) results in creating an empty `Map`.
+To create an empty `Set`, precede the `{}` declaration
+with a type argument or assign `{}` to a variable of type `Set`:
 
 ```dart
 final names = <String>{};
-// Set<String> names = {}; // Isso também funciona.
-// final names = {}; // Cria um mapa vazio, não um conjunto.
+// Set<String> names = {}; // This works, too.
+// final names = {}; // Creates an empty map, not a set.
 ```
 
-Os exemplos a seguir fornecem uma visão geral das
-ações básicas que você pode realizar em um `Set` do Dart.
+The following examples provide an overview of the
+basic actions that you can perform on a Dart `Set`.
 
-Adicione um valor ao `Set` usando o método `add`.
-Use o método `addAll` para adicionar vários valores:
+Add a value to the `Set` using the `add` method.
+Use the `addAll` method to add multiple values:
 
 ```dart
-final fruits = {'maçã', 'laranja', 'pera'};
-fruits.add('pêssego');
-fruits.addAll(['kiwi', 'manga']);
+final fruits = {'apple', 'orange', 'pear'};
+fruits.add('peach');
+fruits.addAll(['kiwi', 'mango']);
 ```
 
-Use um dos seguintes métodos em `Set`
-para remover o conteúdo do conjunto:
+Use one of the following methods in `Set`
+to remove content from the set:
 
 ```dart
-final fruits = {'maçã', 'laranja', 'pera'};
-// Remove o valor 'pera' do conjunto.
-fruits.remove('pera');
-// Remove todos os elementos da lista fornecida do conjunto.
-fruits.removeAll(['laranja', 'maçã']);
-// Remove todos os elementos da lista que correspondem ao predicado fornecido.
+final fruits = {'apple', 'orange', 'pear'};
+// Remove the value 'pear' from the set.
+fruits.remove('pear');
+// Remove all elements in the supplied list from the set.
+fruits.removeAll(['orange', 'apple']);
+// Removes all elements from the list that match the given predicate.
 fruits.removeWhere((fruit) => fruit.contains('p'));
 ```
 
-Use `length` para obter o número de valores no `Set`:
+Use `length` to get the number of values in the `Set`:
 
 ```dart
-final fruits = {'maçã', 'laranja', 'pera'};
+final fruits = {'apple', 'orange', 'pear'};
 assert(fruits.length == 3);
 ```
 
-Use `isEmpty` para verificar se o `Set` está vazio:
+Use `isEmpty` to check if the `Set` is empty:
 
 ```dart
 var fruits = <String>{};
 assert(fruits.isEmpty);
 ```
 
-Use `isNotEmpty` para verificar se o `Set` não está vazio:
+Use `isNotEmpty` to check if the `Set` is not empty:
 
 ```dart
-final fruits = {'maçã', 'laranja', 'pera'};
+final fruits = {'apple', 'orange', 'pear'};
 assert(fruits.isNotEmpty);
 ```
 
-### Maps (mapas) {:#maps}
+### Maps
 
-O tipo `Map` em Dart se assemelha ao tipo `Map` em JavaScript.
-Ambos os tipos associam chaves a valores.
-Uma chave pode ser qualquer tipo de objeto se todas as chaves tiverem o mesmo tipo.
-Essa regra também se aplica aos valores.
-Cada chave ocorre no máximo uma vez, mas você pode usar o mesmo valor várias vezes.
+The `Map` type in Dart resembles the `Map` type in JavaScript.
+Both types associate keys with values.
+A key can be any object type if all keys have the same type.
+This rule applies to values as well.
+Each key occurs once at most, but you can use the same value multiple times.
 
-Dart baseia o dicionário em uma tabela hash.
-Isso significa que as chaves precisam ser hashable (passível de hash).
-Cada objeto Dart contém um hash.
+Dart bases the dictionary on a hash table.
+This means that keys need to be hashable.
+Every Dart object contains a hash.
 
 :::note
-Em Dart, o valor hash de um objeto assume o padrão como um valor derivado da
-identidade do objeto, e sendo compatível com uma igualdade onde o
-objeto só pode ser igual a si mesmo. Para introduzir uma igualdade baseada no
-_conteúdo_ do objeto, substitua `hashCode` e `operator==`.
+In Dart, the hash value of an object defaults to a value derived from
+the object's identity, and being compatible with an equality where the
+object can only equal itself. To introduce an equality based on the
+_contents_ of the object, override `hashCode` and `operator==`.
 :::
 
-Considere estes exemplos simples de `Map`, criados usando literais:
+Consider these simple `Map` examples, created using literals:
 
 ```dart
 final gifts = {
-  'primeiro': 'perdiz',
-  'segundo': 'pombas',
-  'quinto': 'anéis de ouro'
+  'first': 'partridge',
+  'second': 'turtle doves',
+  'fifth': 'golden rings'
 };
 
 final nobleGases = {
-  2: 'hélio',
-  10: 'neônio',
-  18: 'argônio',
+  2: 'helium',
+  10: 'neon',
+  18: 'argon',
 };
 ```
 
-Os exemplos de código a seguir fornecem uma visão geral das ações básicas que
-você pode realizar em um `Map` do Dart.
-O exemplo a seguir mostra como recuperar um valor de um `Map` usando
-o operador de índice.
+The following code samples provide an overview of the basic actions that
+you can perform on a Dart `Map`.
+The following example shows how to retrieve a value from a `Map` using
+the index operator.
 
 ```dart
-final gifts = {'primeiro': 'perdiz'};
-final gift = gifts['primeiro'];
+final gifts = {'first': 'partridge'};
+final gift = gifts['first'];
 ```
 
 :::note
-Se o mapa não incluir a chave de pesquisa, o operador de índice retornará `null`.
+If the map does not include the lookup key, the index operator returns `null`.
 :::
 
-Use o método `containsKey` para verificar se o `Map` inclui uma chave.
+Use the `containsKey` method to check if the `Map` includes a key.
 
 ```dart
-final gifts = {'primeiro': 'perdiz'};
-assert(gifts.containsKey('quinto'));
+final gifts = {'first': 'partridge'};
+assert(gifts.containsKey('fifth'));
 ```
 
-Use o operador de atribuição de índice (`[]=`) para adicionar ou atualizar uma entrada
-no `Map`.
-Se o `Map` ainda não contiver a chave, Dart adicionará a entrada.
-Se a chave existir, Dart atualizará seu valor.
+Use the index assignment operator (`[]=`) to add or update an entry
+in the `Map`.
+If the `Map` doesn't yet contain the key, Dart adds the entry.
+If the key exists, Dart updates its value.
 
 ```dart
-final gifts = {'primeiro': 'perdiz'};
-gifts['segundo'] = 'tartaruga'; // É adicionado
-gifts['segundo'] = 'pombas'; // É atualizado
+final gifts = {'first': 'partridge'};
+gifts['second'] = 'turtle'; // Gets added
+gifts['second'] = 'turtle doves'; // Gets updated
 ```
 
-Use o método `addAll` para adicionar outro `Map`.
-Use o método `addEntries` para adicionar outras entradas ao `Map`.
+Use the `addAll` method to add another `Map`.
+Use the `addEntries` method to add other entries to the `Map`.
 
 ```dart
-final gifts = {'primeiro': 'perdiz'};
-gifts['segundo'] = 'pombas';
+final gifts = {'first': 'partridge'};
+gifts['second'] = 'turtle doves';
 gifts.addAll({
-  'segundo': 'pombas',
-  'quinto': 'anéis de ouro',
+  'second': 'turtle doves',
+  'fifth': 'golden rings',
 });
 gifts.addEntries([
-  MapEntry('segundo', 'pombas'),
-  MapEntry('quinto', 'anéis de ouro'),
+  MapEntry('second', 'turtle doves'),
+  MapEntry('fifth', 'golden rings'),
 ]);
 ```
 
-Use o método `remove` para remover uma entrada do `Map`.
-Use o método `removeWhere` para remover todas as entradas que satisfaçam um determinado teste.
+Use the `remove` method to remove an entry from the `Map`.
+Use the `removeWhere` method to remove all entries that satisfy a given test.
 
 ```dart
-final gifts = {'primeiro': 'perdiz'};
-gifts.remove('primeiro');
-gifts.removeWhere((key, value) => value == 'perdiz');
+final gifts = {'first': 'partridge'};
+gifts.remove('first');
+gifts.removeWhere((key, value) => value == 'partridge');
 ```
 
-Use `length` para obter o número de pares chave-valor no `Map`.
+Use `length` to obtain the number of key-value pairs in the `Map`.
 
 ```dart
-final gifts = {'primeiro': 'perdiz'};
-gifts['quarto'] = 'pássaros cantores';
+final gifts = {'first': 'partridge'};
+gifts['fourth'] = 'calling birds';
 assert(gifts.length == 2);
 ```
 
-Use `isEmpty` para verificar se o `Map` está vazio.
+Use `isEmpty` to check if the `Map` is empty.
 
 ```dart
 final gifts = {};
 assert(gifts.isEmpty);
 ```
 
-Use `isNotEmpty` para verificar se o `Map` não está vazio.
+Use `isNotEmpty` to check if the `Map` is not empty.
 
 ```dart
-final gifts = {'primeiro': 'perdiz'};
+final gifts = {'first': 'partridge'};
 assert(gifts.isNotEmpty);
 ```
 
-### Não modificável (Unmodifiable) {:#unmodifiable}
+### Unmodifiable
 
-JavaScript puro não suporta imutabilidade.
-Dart oferece várias maneiras de tornar coleções como _arrays_, conjuntos ou
-dicionários imutáveis.
+Pure JavaScript doesn't support immutability.
+Dart offers multiple ways to make collections like arrays, sets, or
+dictionaries immutable.
 
-* Se a coleção for uma constante de tempo de compilação e não deva
-  ser modificada, use a palavra-chave `const`:<br>
-  `const fruits = <String>{'maçã', 'laranja', 'pera'};`
-* Atribua o `Set` a um campo `final`, o que significa que
-  o próprio `Set` não precisa ser uma constante de tempo de compilação.
-  Isso garante que o campo não possa ser sobrescrito com
-  outro `Set`, mas ainda permite que o tamanho ou o conteúdo
-  do `Set` seja modificado:<br>
-  `final fruits = <String>{'maçã', 'laranja', 'pera'};`
-* Crie uma versão final do seu tipo de coleção
-  usando o construtor `unmodifiable`
-  (como mostrado no exemplo a seguir).
-  Isso cria uma coleção que não pode alterar seu tamanho ou conteúdo:
+* If the collection is a compile-time constant and shouldn't
+  be modified, use the `const` keyword:<br>
+  `const fruits = <String>{'apple', 'orange', 'pear'};`
+* Assign the `Set` to a `final` field, meaning that
+  the `Set` itself doesn't have to be a compile-time constant.
+  This ensures that the field can't be overridden with
+  another `Set`, but it still allows the size or the contents
+  of the `Set` to be modified:<br>
+  `final fruits = <String>{'apple', 'orange', 'pear'};`
+* Create a final version of your collection type
+  using the `unmodifiable` constructor
+  (as shown in the following example).
+  This creates a collection that cannot change its size or content:
 
 ```dart
 final _set = Set<String>.unmodifiable(['a', 'b', 'c']);
@@ -1610,52 +1610,52 @@ final _list = List<String>.unmodifiable(['a', 'b', 'c']);
 final _map = Map<String, String>.unmodifiable({'foo': 'bar'});
 ```
 
-### Operador Spread {:#spread-operator}
+### Spread operator
 
-Como em JavaScript, Dart suporta a incorporação de uma lista
-em outra lista usando o operador _spread_ (`...`)
-e o operador _spread_ com reconhecimento de nulo (`...?`).
+As in JavaScript, Dart supports embedding a list
+into another list using the spread operator (`...`)
+and the null-aware spread operator (`...?`).
 
 ```dart
 var list1 = [1, 2, 3];
 var list2 = [0, ...list1];　// [0, 1, 2, 3]
-// Quando a lista a ser inserida pode ser nula:
+// When the list being inserted could be null:
 list1 = null;
 var list2 = [0, ...?list1]; // [0]
 ```
 
-Isso também funciona para conjuntos e mapas:
+This also works for sets and maps:
 
 ```dart
-// Operador spread com mapas
+// Spread operator with maps
 var map1 = {'foo': 'bar', 'key': 'value'};
 var map2 = {'foo': 'baz', ...map1}; // {foo: bar, key: value}
-// Operador spread com conjuntos
+// Spread operator with sets
 var set1 = {'foo', 'bar'};
 var set2 = {'foo', 'baz', ...set1}; // {foo, baz, bar}
 ```
 
-### Coleção if/for {:#collection-if-for}
+### Collection if/for
 
-Em Dart, as palavras-chave `for` e `if` têm
-funcionalidade adicional quando se trata de coleções.
+In Dart, the `for` and `if` keywords have additional
+functionality when it comes to collections.
 
-Uma instrução `if` de coleção inclui itens de um
-literal de lista apenas quando a condição especificada é atendida:
+A collection `if` statement includes items from a
+list literal only when the specified condition is met:
 
 ```dart
 var nav = [
-  'Início',
-  'Móveis',
-  'Plantas',
+  'Home',
+  'Furniture',
+  'Plants',
   if (promoActive) 'Outlet',
 ];
 ```
 
-Funciona de forma semelhante para mapas e conjuntos.
+It works similarly for maps and sets.
 
-Uma instrução `for` de coleção permite que
-vários itens sejam mapeados em outra lista:
+A collection `for` statement allows
+multiple items to be mapped into another list:
 
 ```dart
 var listOfInts = [1, 2, 3];
@@ -1665,38 +1665,38 @@ var listOfStrings = [
 ]; // [#0, #1, #2, #3]
 ```
 
-Isso também funciona da mesma forma para mapas e conjuntos.
+This also works in the same way for maps and sets.
 
-## Assincronia {:#asynchrony}
+## Asynchrony
 
-Como o JavaScript, a Máquina Virtual (VM) Dart
-executa um único _event loop_ (loop de eventos) que processa todo o seu código Dart.
-Isso significa que regras semelhantes para assincronia se aplicam aqui.
-Todo o seu código é executado de forma síncrona,
-mas você pode tratá-lo em uma ordem diferente,
-dependendo de como você usa as ferramentas assíncronas à sua disposição.
-Aqui estão algumas dessas construções e como elas se relacionam
-com suas contrapartes em JavaScript.
+Like JavaScript, the Dart Virtual Machine (VM)
+runs a single event loop that processes all your Dart code.
+This means that similar rules for asynchrony apply here.
+All of your code runs synchronously,
+but you can handle it in a different order,
+depending on how you use the asynchronous tools at your disposal.
+Here are some of these constructs and how they relate
+to their JavaScript counterparts.
 
-### Futures {:#futures}
+### Futures
 
-`Future` é a versão do Dart para um `Promise` do JavaScript.
-Ambos são o _resultado_ de uma operação assíncrona que é resolvida em um
-momento posterior.
+`Future` is Dart's version of a JavaScript `Promise`.
+Both are the _result_ of an asynchronous operation that resolves at a
+later point.
 
-Funções em Dart ou em pacotes Dart podem retornar um `Future`,
-em vez do valor que representam, pois o valor pode não estar
-disponível até mais tarde.
+Functions in Dart or in Dart packages might return a `Future`,
+rather than the value they represent, as the value might not be
+available until later.
 
-O exemplo a seguir mostra que o tratamento de um _future_ funciona
-da mesma forma em Dart como uma _promise_ funciona em JavaScript.
+The following example shows that handling a future works
+in the same way in Dart as a promise works in JavaScript.
 
 ```js
 const httpResponseBody = func();
 
 httpResponseBody.then(value => {
   console.log(
-    `Promise resolvida para um valor: ${value}`
+    `Promise resolved to a value: ${value}`
   );
 });
 ```
@@ -1706,19 +1706,19 @@ httpResponseBody.then(value => {
 Future<String> httpResponseBody = func();
 
 httpResponseBody.then((String value) {
-  print('Future resolvida para um valor: $value');
+  print('Future resolved to a value: $value');
 });
 ```
 
-Da mesma forma, _futures_ podem falhar como _promises_.
-A captura de erros também funciona da mesma forma:
+Similarly, futures can fail like promises.
+Catching errors works the same as well:
 
 ```js
 httpResponseBody
   .then(...)
   .catch(err => {
     console.log(
-      "Promise encontrou um erro antes de ser resolvida."
+      "Promise encountered an error before resolving."
     );
   });
 ```
@@ -1729,146 +1729,146 @@ httpResponseBody
   .then(...)
   .catchError((err) {
     print(
-      'Future encontrou um erro antes de ser resolvida.'
+      'Future encountered an error before resolving.'
     );
   });
 ```
 
-Você também pode criar _futures_.
-Para criar um `Future`, defina e chame uma função `async`.
-Quando você tem um valor que precisa ser um `Future`,
-converta a função como no exemplo a seguir.
+You can also create futures.
+To create a `Future`, define and call an `async` function.
+When you have a value that needs to be a `Future`,
+convert the function as in the following example.
 
 ```dart
-String str = 'Valor String';
+String str = 'String Value';
 Future<String> strFuture = Future<String>.value(str);
 ```
 
-#### Async/Await {:#async-await}
+#### Async/Await
 
-Se você está familiarizado com _promises_ em JavaScript,
-você provavelmente também está familiarizado com a sintaxe `async`/`await`.
-Esta sintaxe é idêntica em Dart: funções são marcadas como `async`,
-e funções `async` sempre retornam um `Future`.
-Se a função retornar uma `String` e for marcada como `async`,
-ela retornará um `Future<String>` em vez disso.
-Se não retornar nada, mas for `async`,
-ela retornará `Future<void>`.
+If you're familiar with promises in JavaScript,
+you're likely also familiar with the `async`/`await` syntax.
+This syntax is identical in Dart: functions are marked `async`,
+and `async` functions always return a `Future`.
+If the function returns a `String` and is marked `async`,
+it returns a `Future<String>` instead.
+If it returns nothing, but it is `async`,
+it returns `Future<void>`.
 
-O exemplo a seguir mostra como escrever uma função `async`:
+The following example shows how to write an `async` function:
 
 ```js
-// Retorna uma Promise de uma string,
-// pois o método é async
+// Returns a Promise of a string,
+// as the method is async
 async fetchString() {
-  // Normalmente algumas outras async
-  // operações seriam feitas aqui.
-  return "Valor String";
+  // Typically some other async
+  // operations would be done here.
+  return "String Value";
 }
 ```
 
 
 ```dart
-// Retorna uma future de uma string,
-// pois o método é async
+// Returns a future of a string,
+// as the method is async
 Future<String> fetchString() async {
-  // Normalmente algumas outras async
-  // operações seriam feitas aqui.
-  return 'Valor String';
+  // Typically some other async
+  // operations would be done here.
+  return 'String Value';
 }
 ```
 
-Chame esta função `async` da seguinte forma:
+Call this `async` function as follows:
 
 ```dart
 Future<String> stringFuture = fetchString();
 stringFuture.then((String str) {
-  print(str); // 'Valor String'
+  print(str); // 'String Value'
 });
 ```
 
-Obtenha o valor de um _future_ usando a palavra-chave `await`.
-Como no JavaScript, isso remove a necessidade de chamar `then`
-no `Future` para obter seu valor,
-e permite que você escreva código assíncrono de uma
-maneira mais semelhante a síncrona.
-Como no JavaScript, aguardar _futures_ só é possível
-dentro de um contexto `async` (como outra função `async`).
+Obtain a future's value using the `await` keyword.
+As in JavaScript, this removes the need to call `then`
+on the `Future` to obtain its value,
+and it allows you to write asynchronous code in a
+more synchronous-like way.
+As in JavaScript, awaiting futures is only possible
+within an `async` context (such as another `async` function).
 
-O exemplo a seguir mostra como aguardar um _future_ por seu valor:
+The following example shows how to await a future for its value:
 
 ```dart
-// Só podemos aguardar futures dentro de um contexto async.
+// We can only await futures within an async context.
 Future<void> asyncFunction() async {
   var str = await fetchString();
-  print(str); // 'Valor String'
+  print(str); // 'String Value'
 }
 ```
 
-Para saber mais sobre `Future`s e a
-sintaxe `async`/`await`, consulte o
-tutorial de [Programação assíncrona][Programação assíncrona].
+To learn more about `Future`s and the
+`async`/`await` syntax, see the
+[Asynchronous programming][] tutorial.
 
-[Programação assíncrona]: /libraries/async/async-await
+[Asynchronous programming]: /libraries/async/async-await
 
-### Streams {:#streams}
+### Streams
 
-Outra ferramenta no conjunto de ferramentas assíncronas do Dart são os `Stream`s.
-Enquanto o JavaScript tem seu próprio conceito de streams,
-os do Dart são mais parecidos com `Observable`s (Observáveis),
-como encontrado na biblioteca `rxjs` comumente utilizada.
-Se você estiver familiarizado com esta biblioteca,
-os streams do Dart devem parecer familiares.
+Another tool in Dart's async toolbox is `Stream`s.
+While JavaScript has its own concept of streams,
+Dart's are more akin to `Observable`s,
+as found in the commonly used `rxjs` library.
+If you happen to be familiar with this library,
+Dart's streams should feel familiar.
 
-Para aqueles não familiarizados com esses conceitos:
-`Stream`s basicamente agem como `Future`s (Futuros),
-mas com múltiplos valores espalhados ao longo do tempo,
-como um barramento de eventos. Seu código pode escutar um stream,
-e ele pode tanto ser completado quanto atingir um estado de falha.
+For those not familiar with these concepts:
+`Stream`s basically act like `Future`s,
+but with multiple values spread out over time,
+like an event bus. Your code can listen to a stream,
+and it can either complete or reach a fail state.
 
-#### Escutando {:#listening}
+#### Listening
 
-Para escutar um stream, chame seu método `listen`
-e forneça um método de callback (retorno de chamada). Sempre que o stream emite um valor,
-o Dart chama este método:
+To listen to a stream, call its `listen` method
+and provide a callback method. Whenever the stream emits a value,
+Dart calls this method:
 
 ```dart
 Stream<int> stream = ...
 stream.listen((int value) {
-  print('Um valor foi emitido: $value');
+  print('A value has been emitted: $value');
 });
 ```
 
-O método `listen` inclui callbacks opcionais
-para lidar com erros ou para quando o stream é completado:
+The `listen` method includes optional callbacks
+for handling errors or for when the stream completes:
 
 ```dart
 stream.listen(
   (int value) { ... },
   onError: (err) {
-    print('Stream encontrou um erro! $err');
+    print('Stream encountered an error! $err');
   },
   onDone: () {
-    print('Stream completado!');
+    print('Stream completed!');
   },
 );
 ```
 
-O método `listen` retorna uma instância de um
-`StreamSubscription` (Assinatura de Stream), que você pode usar para parar
-de escutar o stream:
+The `listen` method returns an instance of a
+`StreamSubscription`, which you can use to stop
+listening to the stream:
 
 ```dart
 StreamSubscription subscription = stream.listen(...);
 subscription.cancel();
 ```
 
-Esta não é a única maneira de escutar um stream.
-Similar à sintaxe `async`/`await` para `Future`s,
-você pode combinar um stream com um loop `for-in` em um
-contexto `async`. O loop `for` invoca o
-método de callback para cada item emitido,
-e ele termina quando o stream completa ou gera um erro:
+This is not the only way to listen to a stream.
+Similar to the `async`/`await` syntax for `Future`s,
+you can combine a stream with a `for-in` loop in an
+`async` context. The `for` loop invokes the
+callback method for each item emitted,
+and it ends when the stream completes or errors out:
 
 ```dart
 Future<int> sumStream(Stream<int> stream) async {
@@ -1880,55 +1880,55 @@ Future<int> sumStream(Stream<int> stream) async {
 }
 ```
 
-Quando um erro ocorre ao escutar um stream
-dessa forma, o erro é relançado na linha
-contendo a palavra-chave `await`.
-Você pode lidar com este erro com uma declaração `try-catch`:
+When an error occurs when listening to a stream
+in this way, the error is rethrown at the line
+containing the `await` keyword.
+You can handle this error with a `try-catch` statement:
 
 ```dart
 try {
   await for (final value in stream) { ... }
 } catch (err) {
-  print('Stream encontrou um erro! $err');
+  print('Stream encountered an error! $err');
 }
 ```
 
-#### Criando streams {:#creating-streams}
+#### Creating streams
 
-Assim como com `Future`s,
-você tem diversas maneiras diferentes de criar um stream.
-A classe `Stream` possui construtores utilitários para
-criar streams de `Future`s ou `Iterable`s,
-ou para criar streams que emitem valores em um intervalo de tempo.
-Para aprender mais, veja a página da API [`Stream`][`Stream`].
+As with `Future`s,
+you have several different ways to create a stream.
+The `Stream` class has utility constructors for
+creating streams from `Future`s or `Iterable`s,
+or for creating streams that emit values at a timed interval.
+To learn more, see the [`Stream`][] API page.
 
 [`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 
-##### StreamController {:#streamcontroller}
+##### StreamController
 
-A classe utilitária [`StreamController`][`StreamController`] pode criar e controlar streams.
-Sua propriedade stream expõe o stream que ele controla.
-Seus métodos fornecem maneiras de adicionar eventos a esse stream.
+The utility class [`StreamController`][] can create and control streams.
+Its stream property exposes the stream it controls.
+Its methods provides ways to add events to that stream.
 
-Por exemplo, o método `add` pode emitir novos itens e o método `close`
-completa o stream.
+For example, the `add` method can emit new items and the `close` method
+completes the stream.
 
-O exemplo a seguir mostra o uso básico de um controlador de stream:
+The following example shows basic usage of a stream controller:
 
 ```dart
 var listeners = 0;
 StreamController<int>? controller;
 controller = StreamController<int>(
   onListen: () {
-    // Emite um novo valor toda vez que o stream obtém um novo listener.
+    // Emit a new value every time the stream gets a new listener.
     controller!.add(listeners++);
-    // Fecha o stream após o quinto listener.
+    // Close the stream after the fifth listener.
     if (listeners > 5) controller.close();
   }
 );
-// Obtém o stream para o controlador de stream
+// Get the stream for the stream controller
 var stream = controller.stream;
-// Escuta o stream
+// Listen to the stream
 stream.listen((int value) {
   print('$value');
 });
@@ -1936,18 +1936,18 @@ stream.listen((int value) {
 
 [`StreamController`]: {{site.dart-api}}/dart-async/StreamController-class.html
 
-##### Geradores assíncronos {:#async-generators}
+##### Async generators
 
-Funções geradoras assíncronas podem criar streams.
-Estas funções se assemelham a uma função geradora síncrona
-mas usam a palavra-chave `async*` e retornam um `Stream`.
+Async generator functions can create streams.
+These functions resemble a synchronous generator function
+but use the `async*` keyword and return a `Stream`.
 
-Em uma função geradora assíncrona, a palavra-chave `yield`
-emite o valor fornecido para o stream. A palavra-chave `yield*`,
-no entanto, trabalha com streams ao invés de outros iteráveis.
-Isso permite que eventos de outros streams sejam emitidos para este stream.
-No exemplo a seguir,
-a função continua uma vez que o stream recém emitido tenha completado.
+In an async generator function, the `yield` keyword
+emits the given value to the stream. The `yield*` keyword,
+however, works with streams instead of other iterables.
+This allows events from other streams to be emitted to this stream.
+In the following example,
+the function continues once the newly yielded stream has completed.
 
 ```dart
 Stream<int> asynchronousNaturalsTo(int n) async* {
@@ -1957,47 +1957,47 @@ Stream<int> asynchronousNaturalsTo(int n) async* {
 
 Stream<int> stream = asynchronousNaturalsTo(5);
 
-// Imprime cada um de 0 1 2 3 4 em sequência.
+// Prints each of 0 1 2 3 4 in succession.
 stream.forEach(print(value));
 ```
 
-Aprenda mais sobre futures (futuros), streams,
-e outras funcionalidades assíncronas na
-documentação de [programação assíncrona][programação assíncrona].
+Learn more about futures, streams,
+and other asynchronous functionality in the
+[asynchronous programming][] docs.
 
-[programação assíncrona]: /libraries/async/using-streams
+[asynchronous programming]: /libraries/async/using-streams
 
-## Classes {:#classes}
+## Classes
 
-Superficialmente, classes em Dart são similares a classes
-em JavaScript, apesar de classes em JavaScript serem tecnicamente
-mais um wrapper (invólucro) em torno de prototypes (protótipos). Em Dart,
-classes são um recurso padrão da linguagem.
-Esta seção aborda como definir e usar classes em Dart
-e como elas diferem do JavaScript.
+On the surface, classes in Dart are similar to classes
+in JavaScript, although JavaScript classes are technically
+more of a wrapper around prototypes. In Dart,
+classes are a standard feature of the language.
+This section covers defining and using classes in Dart
+and how they differ from JavaScript.
 
-### Contexto "this" {:#this-context}
+### "this" context
 
-A palavra-chave `this` em Dart é mais direta
-do que em JavaScript. Em Dart, você não pode associar funções
-a `this`, e `this` nunca depende do contexto de execução
-(como acontece em JavaScript). Em Dart,
-`this` é usado somente dentro de classes,
-e sempre se refere à instância atual.
+The `this` keyword in Dart is more straightforward
+than in JavaScript. In Dart, you can't bind functions
+to `this`, and `this` never depends on the execution
+context (as it does in JavaScript). In Dart,
+`this` is only used within classes,
+and always refers to the current instance.
 
-### Construtores {:#constructors}
+### Constructors
 
-Esta seção discute como os construtores diferem em
-Dart do JavaScript.
+This section discusses how constructors differ in
+Dart from JavaScript.
 
-#### Construtor padrão {:#standard-constructor}
+#### Standard constructor
 
-Um construtor de classe padrão parece muito similar a
-um construtor de JavaScript. Em Dart,
-a palavra-chave `constructor` é substituída pelo nome completo da classe,
-e todos os parâmetros devem ser explicitamente tipados. Em Dart,
-a palavra-chave `new` era antes requerida para criar instâncias de classe,
-mas agora é opcional e seu uso não é mais recomendado.
+A standard class constructor looks very similar to
+a JavaScript constructor. In Dart,
+the `constructor` keyword is replaced by the full class name,
+and all parameters must be explicitly typed. In Dart,
+the `new` keyword was once required for creating class instances,
+but is now optional and its use is no longer recommended.
 
 ```dart
 class Point {
@@ -2007,15 +2007,15 @@ class Point {
   Point(double x, double y) : this.x = x, this.y = y { }
 }
 
-// Cria uma nova instância da classe Point
+// Create a new instance of the Point class
 Point p = Point(3, 5);
 ```
 
-#### Listas de inicializadores {:#initializer-lists}
+#### Initializer lists
 
-Use listas de inicializadores para escrever seu construtor.
-Insira a lista de inicializadores entre os parâmetros do construtor
-e o corpo.
+Use initializer lists to write your constructor.
+Insert the initializer list between the constructor's parameters
+and body.
 
 ```dart
 class Point {
@@ -2023,46 +2023,46 @@ class Point {
   Point.fromJson(Map<String, double> json)
       : x = json['x']!,
         y = json['y']! {
-    print('Em Point.fromJson(): ($x, $y)');
+    print('In Point.fromJson(): ($x, $y)');
   }
   ...
 }
 ```
 
-#### Parâmetros do construtor {:#constructor-parameters}
+#### Constructor parameters
 
-Escrever código para atribuir campos de classe no construtor
-pode parecer criar código repetitivo,
-então Dart tem um "açúcar sintático", chamado
-[parâmetros de inicialização][parâmetros de inicialização] para tornar isso mais fácil:
+Writing code to assign class fields in the constructor
+can feel like creating boilerplate code,
+so Dart has some syntactic sugar, called
+[initializing parameters][] to make this easier:
 
 ```dart
 class Point {
   double x;
   double y;
 
-  // "Açúcar sintático" para definir x e y
-  // antes do corpo do construtor rodar.
+  // Syntactic sugar for setting x and y
+  // before the constructor body runs.
   Point(this.x, this.y);
 }
 
-// Cria uma nova instância da classe Point
+// Create a new instance of the Point class
 Point p = Point(3, 5);
 ```
 
-[parâmetros de inicialização]: /language/constructors
+[initializing parameters]: /language/constructors
 
-Similar a funções, construtores têm a
-opção de receber parâmetros posicionados ou nomeados:
+Similar to functions, constructors have the
+option to take positioned or named parameters:
 
 ```dart
 class Point {
   ...
-  // Com um parâmetro posicional opcional
+  // With an optional positioned parameter
   Point(this.x, [this.y = 5]);
-  // Com parâmetros nomeados
+  // With named parameters
   Point({ required this.y, this.x = 5 });
-  // Com parâmetros posicionais e nomeados
+  // With both positional and named parameters
   Point(int x, int y, { boolean multiply }) {
     ...
   }
@@ -2070,12 +2070,12 @@ class Point {
 }
 ```
 
-#### Construtores nomeados {:#named-constructors}
+#### Named constructors
 
-Diferente de JavaScript, Dart permite que classes tenham
-múltiplos construtores, permitindo que você os nomeie.
-Você pode opcionalmente ter um único construtor não nomeado,
-qualquer construtor adicional deve ser nomeado:
+Unlike JavaScript, Dart allows classes to have
+multiple constructors, by allowing you to name them.
+You can optionally have one single unnamed constructor,
+any additional constructors must be named:
 
 ```dart
 const double xOrigin = 0;
@@ -2087,17 +2087,17 @@ class Point {
 
   Point(this.x, this.y);
 
-  // Construtor nomeado
+  // Named constructor
   Point.origin()
       : x = xOrigin,
         y = yOrigin;
 }
 ```
 
-#### Construtores const {:#const-constructors}
+#### Const constructors
 
-Para habilitar instâncias de classe imutáveis, use um construtor `const`.
-Uma classe com um construtor `const` pode ter somente variáveis de instância `final`.
+To enable immutable class instances, use a `const` constructor.
+A class with a `const` constructor can have `final` instance variables only.
 
 ```dart
 class ImmutablePoint {
@@ -2107,28 +2107,28 @@ class ImmutablePoint {
 }
 ```
 
-#### Redirecionamento de construtor {:#constructor-redirection}
+#### Constructor redirection
 
-Você pode chamar construtores de outros construtores para evitar código
-duplicado ou para adicionar valores padrão adicionais para parâmetros:
+You can call constructors from other constructors to prevent code
+duplication or to add additional defaults for parameters:
 
 ```dart
 class Point {
   double x, y;
 
-  // O construtor principal para esta classe.
+  // The main constructor for this class.
   Point(this.x, this.y);
 
-  // Delega para o construtor principal.
+  // Delegates to the main constructor.
   Point.alongXAxis(double x) : this(x, 0);
 }
 ```
 
-#### Construtores factory {:#factory-constructors}
+#### Factory constructors
 
-Você pode usar um construtor factory (fábrica) quando você
-não precisa criar uma nova instância de classe.
-Um exemplo seria ao retornar uma instância em cache:
+You can use a factory constructor when you
+don't need to create a new class instance.
+One example would be when returning a cached instance:
 
 ```dart
 class Logger {
@@ -2137,53 +2137,53 @@ class Logger {
  
   final String name;
  
-  // Construtor factory que retorna uma cópia em cache,
-  // ou cria uma nova se ela ainda não estiver disponível.
+  // Factory constructor that returns a cached copy,
+  // or creates a new one if it is not yet available.
   factory Logger(String name) {
     return _cache.putIfAbsent(
         name, () => _cache[name] ??= Logger._internal(name);
   }
 
-  // Construtor privado para uso interno somente
+  // Private constructor for internal use only
   Logger._internal(this.name);
 }
 ```
 
-### Métodos {:#methods}
+### Methods
 
-Tanto em Dart quanto em JavaScript, métodos servem como funções que fornecem
-comportamento para um objeto.
+In both Dart and JavaScript, methods serve as functions that provide
+behavior for an object.
 
 ```js
-function doSomething() { // Isso é uma função
-  // Implementação..
+function doSomething() { // This is a function
+  // Implementation..
 }
 
 class Example {
-  doSomething() { // Isso é um método
-    // Implementação..
+  doSomething() { // This is a method
+    // Implementation..
   }
 }
 ```
 
 ```dart
-void doSomething() { // Isso é uma função
- // Implementação..
+void doSomething() { // This is a function
+ // Implementation..
 }
 
 class Example {
- void doSomething() { // Isso é um método
-   // Implementação..
+ void doSomething() { // This is a method
+   // Implementation..
  }
 }
 ```
 
 
 
-### Estendendo classes {:#extending-classes}
+### Extending classes
 
-Dart permite que classes estendam outra classe,
-da mesma forma que JavaScript faz.
+Dart allows classes to extend another class,
+in the same way that JavaScript does.
 
 ```dart
 class Animal {
@@ -2201,152 +2201,152 @@ class Cat extends Animal {
 
   @override
   makeNoise() {
-    print('Miau');
+    print('Meow');
   }
 }
 Animal animal = Cat();
 print(animal.eyes); // 2
-animal.makeNoise(); // Miau
+animal.makeNoise(); // Meow
 ```
 
-Ao sobrescrever um método da classe pai,
-use a anotação `@override`.
-Apesar dessa anotação ser opcional,
-ela mostra que a sobrescrita é intencional.
-O analisador do Dart mostra um aviso se o método
-não estiver realmente sobrescrevendo um método de superclasse.
+When overriding a method from the parent class,
+use the `@override` annotation.
+While this annotation is optional,
+it shows that the override is intentional.
+The Dart analyzer shows a warning if the method
+is not actually overriding a superclass method.
 
-O método pai que está sendo sobrescrito ainda pode
-ser chamado usando a palavra-chave `super`:
+The parent method that is being overridden can
+still be called using the `super` keyword:
 
 ```dart
 class Cat extends Animal {
   ...
   @override
   makeNoise() {
-    print('Miau');
+    print('Meow');
     super.makeNoise();
   }
 }
 Animal animal = Cat();
-animal.makeNoise(); // Miau
+animal.makeNoise(); // Meow
                     // ???
 ```
 
-### Classes como interfaces {:#classes-as-interfaces}
+### Classes as interfaces
 
-Assim como JavaScript, Dart não tem uma
-definição separada para interfaces. No entanto,
-diferente de JavaScript, todas as definições de classe funcionam
-como uma interface; você pode implementar uma classe como
-uma interface usando a palavra-chave `implements`.
+Like JavaScript, Dart doesn't have a
+separate definition for interfaces. However,
+unlike JavaScript, all class definitions double
+as an interface; you can implement a class as
+an interface using the `implements` keyword.
 
-Quando uma classe é implementada como uma interface,
-sua API pública deve ser implementada pela nova classe.
-Diferente de `extends`, suas implementações de método e campo
-não são compartilhadas com a nova classe.
-Enquanto uma classe pode apenas estender uma única classe,
-você pode implementar múltiplas interfaces por vez,
-mesmo quando a classe que implementa já estende outra.
+When a class is implemented as an interface,
+its public API must be implemented by the new class.
+Unlike `extends`, its method and field implementations
+aren't shared with the new class.
+While a class can only extend a single class,
+you can implement multiple interfaces at a time,
+even when the implementing class already extends another.
 
 ```dart
 class Consumer {
   consume() {
-    print('Comendo comida...');
+    print('Eating food...');
   }
 }
 class Cat implements Consumer {
   consume() {
-    print('Comendo ratos...');
+    print('Eating mice...');
   }
 }
 Consumer consumer = Cat();
-consumer.consume(); // Comendo ratos
+consumer.consume(); // Eating mice
 ```
 
-Ao implementar uma interface,
-o método `super` não pode ser chamado
-pois os corpos dos métodos não são herdados:
+When implementing an interface,
+the `super` method can't be called
+as the method bodies are not inherited:
 
 ```dart
 class Cat implements Consumer {
   @override
   consume() {
-    print('Comendo ratos...');
+    print('Eating mice...');
     super.consume(); 
-    // Inválido. A superclasse `Object` não tem o método `consume`.
+    // Invalid. The superclass `Object` has no `consume` method.
   }
 }
 ```
 
-### Classes e métodos abstratos {:#abstract-classes-and-methods}
+### Abstract classes and methods
 
-Para garantir que uma classe possa somente ser estendida
-ou ter sua interface implementada,
-mas para não permitir a construção de quaisquer instâncias,
-marque-a como `abstract` (abstrata).
+To ensure that a class can only be extended
+or have its interface implemented,
+but to disallow the construction of any instances,
+mark it as `abstract`.
 
-Classes marcadas como `abstract` podem ter métodos abstratos,
-que não requerem um corpo e são, em vez disso, requeridos
-para serem implementados quando a classe é estendida
-ou sua interface é implementada:
+Classes marked as `abstract` can have abstract methods,
+which do not require a body and are instead required
+to be implemented when the class is either extended
+or its interface is implemented:
 
 ```dart
 abstract class Consumer {
   consume();
 }
-// Estendendo a classe completa
+// Extending the full class
 class Dog extends Consumer {
   consume() {
-    print('Comendo biscoitos...');
+    print('Eating cookies...');
   }
 }
-// Apenas implementando a interface
+// Just implementing the interface
 class Cat implements Consumer {
   consume() {
-    print('Comendo ratos...');
+    print('Eating mice...');
   }
 }
 Consumer consumer;
 consumer = Dog();
-consumer.consume(); // Comendo biscoitos...
+consumer.consume(); // Eating cookies...
 consumer = Cat();
-consumer.consume(); // Comendo ratos...
+consumer.consume(); // Eating mice...
 ```
 
-### Mixins {:#mixins}
+### Mixins
 
-Mixins são usados para compartilhar funcionalidades entre classes.
-Você pode usar os campos e métodos do mixin na classe,
-usando suas funcionalidades como se fossem parte da classe.
-Uma classe pode usar múltiplos mixins. Isso ajuda quando múltiplas classes compartilham a
-mesma funcionalidade,
-sem precisar herdar umas das outras ou compartilhar um ancestral comum.
+Mixins are used to share functionality between classes.
+You can use the mixin's fields and methods in the class,
+using their functionality as if it were part of the class.
+A class can use multiple mixins. This helps when multiple classes share the
+same functionality,
+without needing to inherit from each other or share a common ancestor.
 
-Use a palavra-chave `with` para adicionar um ou mais mixins separados por vírgula para uma classe.
+Use the `with` keyword to add one or more comma-separated mixins to a class.
 
-JavaScript não tem uma palavra-chave equivalente. JavaScript pode usar `Object.assign`
-para mesclar objetos adicionais em um objeto existente, após instanciar.
+JavaScript has no keyword equivalent. JavaScript can use `Object.assign`
+to merge additional objects into an existing object, after instantiating.
 
-Os exemplos a seguir mostram como JavaScript e Dart alcançam um comportamento similar:
+The following examples show how JavaScript and Dart achieve similar behavior:
 
 ```js
 class Animal {}
 
-// Definindo os mixins
+// Defining the mixins
 class Flyer {
-  fly = () => console.log('Bate asas');
+  fly = () => console.log('Flaps wings');
 }
 class Walker {
-  walk = () => console.log('Anda sobre as pernas');
+  walk = () => console.log('Walks on legs');
 }
  
 class Bat extends Animal {}
 class Goose extends Animal {}
 class Dog extends Animal {}
 
-// Compondo as instâncias de classe com
-// suas funcionalidades corretas.
+// Composing the class instances with
+// their correct functionality.
 const bat =
   Object.assign(
     new Bat(),
@@ -2364,87 +2364,87 @@ const dog =
     new Walker()
     );
 
-// Chamadas corretas
+// Correct calls
 bat.fly();
 goose.fly();
 goose.walk();
 dog.walk();
-// Chamadas incorretas
-bat.walk(); // `bat` não tem o método `walk`
-dog.fly(); // `dog` não tem o método `fly`
+// Incorrect calls
+bat.walk(); // `bat` lacks the `walk` method
+dog.fly(); // `dog` lacks the `fly` method
 ```
 
 
 ```dart
 abstract class Animal {}
 
-// Definindo os mixins
+// Defining the mixins
 class Flyer {
-  fly() => print('Bate asas');
+  fly() => print('Flaps wings');
 }
 class Walker {
-  walk() => print('Anda sobre as pernas');
+  walk() => print('Walks on legs');
 }
  
 class Bat extends Animal with Flyer {}
 class Goose extends Animal with Flyer, Walker {}
 class Dog extends Animal with Walker {}
 
-// Chamadas corretas
+// Correct calls
 Bat().fly();
 Goose().fly();
 Goose().walk();
 Dog().walk();
-// Chamadas incorretas
-Bat().walk(); // Não usando o mixin Walker
-Dog().fly(); // Não usando o mixin Flyer
+// Incorrect calls
+Bat().walk(); // Not using the Walker mixin
+Dog().fly(); // Not using the Flyer mixin
 ```
 
-Alternativamente, você pode substituir a palavra-chave `class`
-com `mixin` para impedir que o mixin seja usado
-como uma classe regular:
+Alternatively, you can replace the `class` keyword
+with `mixin` to prevent the mixin from being used
+as a regular class:
 
 ```dart
 mixin Walker {
-  walk() => print('Anda sobre as pernas');
+  walk() => print('Walks legs');
 }
-// Não é possível, pois Walker não é mais uma classe.
+// Not possible, as Walker is no longer a class.
 class Bat extends Walker {}
 ```
 
-Já que você pode usar múltiplos mixins,
-eles podem ter métodos ou campos sobrepostos
-uns com os outros quando usados na mesma classe.
-Eles podem até se sobrepor com a classe que os usa,
-ou com a superclasse daquela classe.
-A ordem na qual eles são adicionados a uma classe importa.
+Since you can use multiple mixins,
+they can have overlapping methods or fields
+with each other when used on the same class.
+They can even overlap with the class that uses them,
+or that class's superclass.
+The order in which they are added to a class matters.
 
-Para dar um exemplo:
+To give an example:
 
 ```dart
 class Bird extends Animal with Consumer, Flyer {
 ```
 
-Quando um método é chamado em uma instância de `Bird`,
-Dart começa com sua própria classe, `Bird`,
-que tem precedência sobre outras implementações.
-Se `Bird` não tem implementação,
-então `Flyer` é verificado, seguido por `Consumer`,
-até que uma implementação seja encontrada.
-A classe pai, `Animal`, é verificada por último.
+When a method is called on an instance of `Bird`,
+Dart starts with its own class, `Bird`,
+which takes precedence over other implementations.
+If `Bird` has no implementation,
+then `Flyer` is checked, followed by `Consumer`,
+until an implementation is found.
+The parent class, `Animal`, is checked last.
 
-### Extensões {:#extensions}
+### Extensions
 
-Estender classes, implementar interfaces, ou usar
-mixins, tudo funciona quando a classe afetada é editável.
-No entanto, às vezes é útil estender uma classe que
-já existe ou faz parte de outra biblioteca ou do SDK Dart.
+Extending classes, implementing interfaces, or using
+mixins all work when the affected class is editable.
+However, sometimes it's useful to extend a class that
+already exists or is part of another library or the Dart SDK.
 
-Nesses casos, Dart oferece a capacidade de escrever extensões
-para classes existentes.
+In these cases, Dart offers the ability to write extensions
+for existing classes.
 
-Como um exemplo, a seguinte extensão na classe `String`
-do SDK Dart permite analisar inteiros:
+As an example, the following extension on the `String` class
+from the Dart SDK allows parsing of integers:
 
 ```dart
 extension NumberParsing on String {
@@ -2454,21 +2454,21 @@ extension NumberParsing on String {
 }
 ```
 
-Para que a extensão se torne disponível,
-ela tem que estar presente no mesmo arquivo,
-ou seu arquivo deve ser importado.
+For the extension to become available,
+it has to be present in the same file,
+or its file must be imported.
 
-Use-a da seguinte forma:
+Use it as follows:
 
 ```dart
-import 'string_apis.dart'; // Importa o arquivo onde a extensão está
-var age = '42'.parseInt(); // Usa o método de extensão.
+import 'string_apis.dart'; // Import the file the extension is in
+var age = '42'.parseInt(); // Use the extension method.
 ```
 
-### Getters e setters {:#getters-and-setters}
+### Getters and setters
 
-Getters e setters em Dart funcionam exatamente como
-suas contrapartes em JavaScript:
+Getters and setters in Dart work exactly like
+their JavaScript counterparts:
 
 ```js
 class Person {
@@ -2481,7 +2481,7 @@ class Person {
   set age(value) {
     if (value < 0) {
       throw new Error(
-        'A idade não pode ser negativa'
+        'age cannot be negative'
         );
     }
     this._age = value;
@@ -2505,7 +2505,7 @@ class Person {
   set age(int value) {
     if (value < 0) {
       throw ArgumentError(
-        'A idade não pode ser negativa'
+        'Age cannot be negative'
         );
     }
     _age = value;
@@ -2521,83 +2521,83 @@ void main() {
 
 
 
-### Membros públicos e privados {:#public-and-private-members}
+### Public and private members
 
-Assim como JavaScript, Dart não tem palavras-chave de modificador de acesso:
-todos os membros de classe são públicos por padrão.
+Like JavaScript, Dart has no access modifier keywords:
+all class members are public by default.
 
-JavaScript incluirá membros de classe privados na próxima
-revisão prática do padrão EcmaScript.
-Como tal, implementações para isso têm estado disponíveis em
-vários browsers e runtimes por algum tempo.
+JavaScript will include private class members in the next
+practical revision of the EcmaScript standard.
+As such, implementations for this have been available in
+various browsers and runtimes for some time.
 
-Para tornar um membro de classe privado em JavaScript,
-prefixe seu nome com um símbolo de libra (ou hash) (`#`).
+To make a class member private in JavaScript,
+prefix its name with a pound (or hash) symbol (`#`).
 
 ```js
 class Animal {
-  eyes; // Campo público
-  #paws; // Campo privado
+  eyes; // Public field
+  #paws; // Private field
 
-  #printEyes() { // Método privado
+  #printEyes() { // Private method
     print(this.eyes);
   }
 
-  printPaws() { // Método público
+  printPaws() { // Public method
     print(this.#paws);
   }
 }
 ```
 
-Para tornar um membro de classe privado em Dart, prefixe seu nome
-com um underscore (`_`).
+To make a class member private in Dart, prefix its name
+with an underscore (`_`).
 
 ```dart
 class Animal {
-  int eyes; // Campo público
-  int _paws; // Campo privado
+  int eyes; // Public field
+  int _paws; // Private field
 
-  void _printEyes() { // Método privado
+  void _printEyes() { // Private method
     print(this.eyes);
   }
 
-  void printPaws() { // Método público
+  void printPaws() { // Public method
     print(this._paws);
   }
 }
 ```
 
-JavaScript usa o hash como uma convenção.
-O compilador do Dart impõe o uso do underscore para esse recurso.
+JavaScript uses the hash as a convention.
+Dart's compiler enforces use of the underscore for this feature.
 
-Dart torna membros privados privados para a biblioteca, não para a classe.
-Isso significa que você pode acessar membros privados do código na mesma biblioteca.
-Por padrão, o Dart limita o acesso a membros privados de classe ao código no mesmo arquivo.
-Para expandir o escopo de uma biblioteca além de um arquivo, adicione a diretiva `part`.
-Quando possível, [evite usar `part`][evite usar `part`]. Reserve o uso de `part` para geradores de código.
+Dart makes private members private to the library, not the class.
+This means that you can access private members from code in the same library.
+By default, Dart limits access to private class members to code in the same file.
+To expand the scope of a library beyond one file, add the `part` directive.
+When possible, [avoid using `part`][]. Reserve using `part` for code generators.
 
-[evite usar `part`]: /tools/pub/create-packages#organizing-a-package
+[avoid using `part`]: /tools/pub/create-packages#organizing-a-package
 
-### Variáveis late {:#late-variables}
+### Late variables
 
-Para indicar que Dart inicializa campos de classe em um ponto posterior,
-atribua a palavra-chave `late` para esses campos de classe.
-Esses campos de classe permanecem não anuláveis.
-Faça isso quando uma variável não precisa ser observada ou acessada imediatamente
-e pode ser inicializada depois.
-Isso difere de rotular o campo como anulável.
+To indicate that Dart initializes class fields at a later point,
+assign the `late` keyword to those class fields.
+Those class fields remain non-nullable.
+Do this when a variable doesn't need to be observed or accessed immediately
+and can be initialized later.
+This differs from labeling the field as nullable.
 
-* Campos `late` (não anuláveis) não podem ter null atribuído em um ponto posterior.
+* (Non-nullable) late fields cannot have null assigned at a later point.
 
-* Campos `late` (não anuláveis) lançam um erro em tempo de execução quando
-  acessados antes de serem inicializados. Isso deve ser evitado.
+* (Non-nullable) late fields throw a runtime error when
+  accessed before they initialize. This should be avoided.
 
 ```dart
 class PetOwner {
   final String name;
   late final Pet _pet;
   PetOwner(this.name, String petName) {
-    // Gráfico de objeto cíclico, não pode definir _pet antes que o dono exista.
+    // Cyclic object graph, cannot set _pet before owner exists.
     _pet = Pet(petName, this);
   }
   Pet get pet => _pet;
@@ -2609,8 +2609,8 @@ class Pet {
 }
 ```
 
-Use `late` para variáveis locais somente se um código não claro resultar
-no compilador sendo incapaz de determinar se o código inicializou a variável.
+Use `late` for local variables only if unclear code results
+in the compiler being unable determine if the code initialized the variable.
 
 ```dart
 doSomething(int n, bool capture) {
@@ -2623,163 +2623,163 @@ doSomething(int n, bool capture) {
 }
 ```
 
-No exemplo anterior, o compilador não sabe atribuir
-`captures` se `capture` for verdadeiro. Usar `late` atrasa o normal
-"atribuído" verifica até o tempo de execução.
+In the preceding example, the compiler does not know to assign
+`captures` if `capture` is true. Using `late` delays the normal
+"assigned" checks until runtime.
 
-## Generics {:#generics}
+## Generics
 
-Enquanto JavaScript não oferece generics (genéricos),
-Dart oferece para melhorar a segurança de tipo e reduzir a duplicação de código.
+While JavaScript doesn't offer generics,
+Dart does to improve type safety and reduce code duplication.
 
-### Métodos genéricos {:#generic-methods}
+### Generic methods
 
-Você pode aplicar generics a métodos.
-Para definir um parâmetro de tipo genérico, coloque-o entre colchetes angulares `< >`
-após o nome do método.
-Você pode então usar este tipo dentro do método
-como o tipo de retorno ou dentro dos parâmetros do método:
+You can apply generics to methods.
+To define a generic type parameter, place it between angle brackets `< >`
+after the method name.
+You can then use this type within the method
+as the return type or within the method's parameters:
 
 ```dart
 Map<Object?, Object?> _cache = {};
 T cache<T>(T value) => (_cache[value] ??= value) as T;
 ```
 
-Defina múltiplos tipos genéricos separando-os com uma vírgula:
+Define multiple generic types by separating them with a comma:
 
 ```dart
-// Definindo um método com múltiplos genéricos.
+// Defining a method with multiple generics.
 T transform<T, Q>(T param1, Q param2) {
    ...
 }
-// Chamando o método com tipos explicitamente definidos.
-transform<int, String>(5, 'valor string');
-// Tipos são opcionais quando o analisador pode inferi-los.
-transform(5, 'valor string');
+// Calling the method with explicitly defined types.
+transform<int, String>(5, 'string value');
+// Types are optional when the analyzer can infer them.
+transform(5, 'string value');
 ```
 
-### Classes genéricas {:#generic-classes}
+### Generic classes
 
-Generics também podem ser aplicados a classes.
-Você pode incluir o tipo para usar quando chamar um construtor.
-Isso permite que você personalize classes reutilizáveis para tipos específicos.
+Generics can also be applied to classes.
+You can include the type to use when calling a constructor.
+This allows you to tailor reusable classes to specific types.
 
-No exemplo a seguir, a classe `Cache` armazena em cache tipos específicos:
+In the following example, the `Cache` class caches specific types:
 
 ```dart
 class Cache<T> {
   T getByKey(String key) {}
   void setByKey(String key, T value) {}
 }
-// Criando um cache para strings
-var stringCache = Cache<String>(); // stringCache tem tipo Cache<String>
-stringCache.setByKey('Foo', 'Bar'); // Válido, definindo um valor string.
-stringCache.setByKey('Baz', 5); // Inválido, o tipo int não corresponde ao genérico.
+// Creating a cache for strings
+var stringCache = Cache<String>(); // stringCache has type Cache<String>
+stringCache.setByKey('Foo', 'Bar'); // Valid, setting a string value.
+stringCache.setByKey('Baz', 5); // Invalid, int type does not match generic.
 ```
 
-Se você omitir a declaração de tipo,
-o tipo de tempo de execução se torna `Cache<dynamic>`
-e ambas as chamadas para `setByKey` são válidas.
+If you omit the type declaration,
+the runtime type becomes `Cache<dynamic>`
+and both calls to `setByKey` are valid.
 
-### Restringindo generics {:#restricting-generics}
+### Restricting generics
 
-Você pode usar generics para restringir seu código para
-uma família de tipos usando `extends`. Isso garante
-que sua classe é instanciada com um tipo genérico
-que estende um tipo específico:
+You can use generics to restrict your code to
+a family of types using `extends`. This ensures
+that your class is instantiated with a generic type
+that extends a specific type:
 
 ```dart
 class NumberManager<T extends num> {
    ...
 }
-// Válido.
+// Valid.
 var manager = NumberManager<int>();
 var manager = NumberManager<double>();
-// Inválido, String nem suas classes pai estendem num.
+// Invalid, String nor its parent classes extend num.
 var manager = NumberManager<String>();
 ```
 
-### Generics em literais {:#generics-in-literals}
+### Generics in literals
 
-Literais `Map`, `Set` e `List` podem aceitar argumentos de tipo.
-Isso ajuda quando Dart não consegue inferir o tipo ou inferir o tipo corretamente.
+`Map`, `Set`, and `List` literals can accept type arguments.
+This helps when Dart cannot infer the type or infer the type correctly.
 
-Por exemplo, a classe `List` tem uma definição genérica:
-`class List<E>`. O parâmetro de tipo `E` se refere ao tipo de
-conteúdo da lista. Normalmente, esse tipo é automaticamente inferido,
-que é usado em alguns tipos de membro da classe `List`.
-(Por exemplo, seu primeiro getter retorna um valor de tipo `E`.)
-Ao definir um literal `List`,
-você pode definir explicitamente o tipo genérico da seguinte forma:
+For example, the `List` class has a generic definition:
+`class List<E>`. The type parameter `E` refers to the type of
+the list's contents. Normally, this type is automatically inferred,
+which is used in some `List` class's member types.
+(For example, its first getter returns a value of type `E`.)
+When defining a `List` literal,
+you can explicitly define the generic type as follows:
 
 ```dart
-// Inferência automática de tipo
-var objList = [5, 2.0]; // Tipo: List<num>
-// Definição explícita de tipo:
-var objList = <Object>[5, 2.0]; // Tipo: List<Object>
-// Sets funcionam de forma idêntica:
+// Automatic type inference
+var objList = [5, 2.0]; // Type: List<num>
+// Explicit type definition:
+var objList = <Object>[5, 2.0]; // Type: List<Object>
+// Sets work identically:
 var objSet = <Object>{5, 2.0};
 ```
 
-Isso também é verdade para `Map`s,
-que também definem seus tipos de chave e valor
-usando generics (`class Map<K, V>`):
+This is also true for `Map`s,
+which also define their key and value types
+using generics (`class Map<K, V>`):
 
 ```dart
-// Inferência automática de tipo
+// Automatic type inference
 var map = {
   'foo': 'bar'
-}; // Tipo: Map<String, String>
-// Definição explícita de tipo:
+}; // Type: Map<String, String>
+// Explicit type definition:
 var map = <String, Object>{
   'foo': 'bar'
-}; // Tipo: Map<String, Object>
+}; // Type: Map<String, Object>
 ```
 
-## Doc comments {:#doc-comments}
+## Doc comments
 
-Comentários regulares funcionam da mesma forma em Dart como funcionam
-em JavaScript. Usar `//` comenta tudo depois
-dele para o restante da linha, e você pode usar `/* ... */`
-para bloquear comentários que abrangem múltiplas linhas.
+Regular comments work the same in Dart as they do
+in JavaScript. Using `//` comments out everything beyond
+it for the remaining line, and you can use `/* ... */`
+to block comments spanning multiple lines.
 
-Além de comentários regulares,
-Dart também tem [doc comments][doc comments] (comentários de documentação) que funcionam em conjunto
-com [`dart doc`][`dart doc`]: uma ferramenta primária que gera
-documentação HTML para pacotes Dart.
-É considerado uma melhor prática colocar doc comments
-acima de todas as declarações para membros públicos.
+In addition to regular comments,
+Dart also has [doc comments][] that work in tandem
+with [`dart doc`][]: a first party tool that generates
+HTML documentation for Dart packages.
+It's considered best practice to place doc comments
+above all declarations for public members.
 
-Defina um doc comment usando três barras para frente
-ao invés de duas (`///`):
+Define a doc comment by using three forward slashes
+instead of two (`///`):
 
 ```dart
-/// O número de caracteres neste chunk (pedaço) quando não dividido.
+/// The number of characters in this chunk when unsplit.
 int get length => ...
 ```
 
 [`dart doc`]: /tools/dart-doc
 [doc comments]: /effective-dart/documentation#doc-comments
 
-## Próximos passos {:#next-steps}
+## Next steps
 
-Este guia apresentou você às principais diferenças
-entre Dart e JavaScript. Neste ponto,
-considere ler a documentação do Dart.
-Você também pode ler a documentação do [Flutter]({{site.flutter}}).
-Construído com Dart, Flutter é um framework de código aberto que
-usa Dart para construir aplicações multi-plataforma, compiladas nativamente,
-de uma única base de código.
-Essas documentações fornecem informações detalhadas sobre a
-linguagem e formas práticas de começar.
+This guide has introduced you to the major differences
+between Dart and JavaScript. At this point,
+consider reading the Dart documentation.
+You could also read the [Flutter]({{site.flutter}}) docs.
+Built with Dart, Flutter is an open-source framework that
+uses Dart for building natively compiled,
+multi-platform applications from a single codebase.
+These docs provide in-depth information about the
+language and practical ways of getting started.
 
-Alguns possíveis próximos passos:
+Some possible next steps:
 
-* [Language tour][Language tour] (Tour da Linguagem) para aprender mais sobre a linguagem Dart
-* [Core library documentation][Core library documentation] (Documentação da Biblioteca Principal) para aprender sobre as bibliotecas principais do Dart
-* [Dart tutorials][Dart tutorials] (Tutoriais Dart) para prática aplicada cobrindo uma variedade de tópicos
-* [Effective Dart][Effective Dart] (Dart Efetivo) para aprender sobre convenções comuns
-   e diretrizes ao escrever código Dart
+* [Language tour][] to learn more about the Dart language
+* [Core library documentation][] to learn about Dart's core libraries
+* [Dart tutorials][] for applied practice covering a variety of topics
+* [Effective Dart][] to learn about common conventions
+  and guidelines when writing Dart code
 
 [Language tour]: /language
 [Core library documentation]: /libraries

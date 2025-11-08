@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: redirect_to_invalid_function_type
-description: "Detalhes sobre o diagnóstico redirect_to_invalid_function_type produzido pelo analisador Dart."
+description: >-
+  Details about the redirect_to_invalid_function_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O construtor redirecionado '{0}' tem parâmetros incompatíveis com '{1}'._
+_The redirected constructor '{0}' has incompatible parameters with '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um factory constructor tenta
-redirecionar para outro construtor, mas os dois têm
-parâmetros incompatíveis. Os parâmetros são compatíveis se todos os parâmetros do
-construtor redirecionador podem ser passados para o outro construtor e se o
-outro construtor não requer parâmetros que não estejam declarados pelo
-construtor redirecionador.
+The analyzer produces this diagnostic when a factory constructor attempts
+to redirect to another constructor, but the two have incompatible
+parameters. The parameters are compatible if all of the parameters of the
+redirecting constructor can be passed to the other constructor and if the
+other constructor doesn't require any parameters that aren't declared by
+the redirecting constructor.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque o construtor para `A`
-não declara um parâmetro que o construtor para `B` requer:
+The following code produces this diagnostic because the constructor for `A`
+doesn't declare a parameter that the constructor for `B` requires:
 
 ```dart
 abstract class A {
@@ -33,9 +34,9 @@ class B implements A {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o construtor para `A`
-declara um parâmetro nomeado (`y`) que o construtor para `B` não
-permite:
+The following code produces this diagnostic because the constructor for `A`
+declares a named parameter (`y`) that the constructor for `B` doesn't
+allow:
 
 ```dart
 abstract class A {
@@ -47,10 +48,10 @@ class B implements A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se houver um construtor diferente que seja compatível com o
-construtor redirecionador, redirecione para esse construtor:
+If there's a different constructor that is compatible with the redirecting
+constructor, then redirect to that constructor:
 
 ```dart
 abstract class A {
@@ -63,7 +64,7 @@ class B implements A {
 }
 ```
 
-Caso contrário, atualize o construtor redirecionador para ser compatível:
+Otherwise, update the redirecting constructor to be compatible:
 
 ```dart
 abstract class A {

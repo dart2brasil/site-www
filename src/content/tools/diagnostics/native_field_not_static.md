@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: native_field_not_static
-description: "Detalhes sobre o diagnóstico native_field_not_static produzido pelo analisador do Dart."
+description: >-
+  Details about the native_field_not_static
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,18 +11,18 @@ _Native fields must be static._
 
 ## Description
 
-O analisador produz este diagnóstico quando um campo de instância em uma classe
-foi anotado com `@Native`.
-Campos native se referem a variáveis globais em C, C++ ou outras linguagens native,
-enquanto campos de instância em Dart são específicos para uma instância daquela
-classe. Portanto, campos native devem ser static.
+The analyzer produces this diagnostic when an instance field in a class
+has been annotated with `@Native`.
+Native fields refer to global variables in C, C++ or other native
+languages, whereas instance fields in Dart are specific to an instance of
+that class. Hence, native fields must be static.
 
-Para mais informações sobre FFI, veja [C interop using dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o campo `f` na
-classe `C` é `@Native`, mas não é `static`:
+The following code produces this diagnostic because the field `f` in the
+class `C` is `@Native`, but not `static`:
 
 ```dart
 import 'dart:ffi';
@@ -34,7 +35,7 @@ class C {
 
 ## Common fixes
 
-Torne o campo static:
+Either make the field static:
 
 ```dart
 import 'dart:ffi';
@@ -45,8 +46,8 @@ class C {
 }
 ```
 
-Ou mova-o para fora da classe, caso em que nenhum modificador `static` explícito é
-necessário:
+Or move it out of a class, in which case no explicit `static` modifier is
+required:
 
 ```dart
 import 'dart:ffi';
@@ -58,8 +59,8 @@ class C {
 external int f;
 ```
 
-Se você pretendia anotar um campo de instância que deveria fazer parte de uma
-struct, omita a annotation `@Native`:
+If you meant to annotate an instance field that should be part of a
+struct, omit the `@Native` annotation:
 
 ```dart
 import 'dart:ffi';

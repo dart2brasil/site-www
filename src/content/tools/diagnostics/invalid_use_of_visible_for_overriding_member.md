@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: invalid_use_of_visible_for_overriding_member
-description: "Detalhes sobre o diagnóstico invalid_use_of_visible_for_overriding_member produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_use_of_visible_for_overriding_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O membro '{0}' só pode ser usado para override._
+_The member '{0}' can only be used for overriding._
 
 ## Description
 
-O analisador produz este diagnóstico quando um membro de instância que está
-anotado com [`visibleForOverriding`][meta-visibleForOverriding] é
-referenciado fora da biblioteca em que foi declarado por qualquer razão que não
-seja para fazer override dele.
+The analyzer produces this diagnostic when an instance member that is
+annotated with [`visibleForOverriding`][meta-visibleForOverriding] is
+referenced outside the library in which it's declared for any reason other
+than to override it.
 
 ## Example
 
-Dado um arquivo `a.dart` contendo a seguinte declaração:
+Given a file `a.dart` containing the following declaration:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -28,9 +29,9 @@ class A {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o método `m` está sendo
-invocado mesmo que a única razão de ser público seja para permitir que tenha
-override:
+The following code produces this diagnostic because the method `m` is being
+invoked even though the only reason it's public is to allow it to be
+overridden:
 
 ```dart
 import 'a.dart';
@@ -44,6 +45,6 @@ class B extends A {
 
 ## Common fixes
 
-Remova o uso inválido do membro.
+Remove the invalid use of the member.
 
 [meta-visibleForOverriding]: https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html

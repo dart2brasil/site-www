@@ -1,48 +1,49 @@
 ---
-ia-translate: true
 title: inconsistent_language_version_override
-description: "Detalhes sobre o diagnóstico inconsistent_language_version_override produzido pelo analisador do Dart."
+description: >-
+  Details about the inconsistent_language_version_override
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Parts devem ter exatamente a mesma sobrescrita de versão de linguagem que a biblioteca._
+_Parts must have exactly the same language version override as the library._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um [arquivo part][part file] tem um comentário de
-sobrescrita de versão de linguagem que especifica uma versão de linguagem diferente da
-que está sendo usada para a biblioteca à qual o part pertence.
+The analyzer produces this diagnostic when a [part file][] has a language
+version override comment that specifies a different language version than
+the one being used for the library to which the part belongs.
 
-## Exemplo
+## Example
 
-Dado um [arquivo part][part file] chamado `part.dart` que contém o seguinte:
+Given a [part file][] named `part.dart` that contains the following:
 
 ```dart
 // @dart = 2.14
 part of 'test.dart';
 ```
 
-O código a seguir produz este diagnóstico porque os parts de uma biblioteca
-devem ter a mesma versão de linguagem que a unidade de compilação definidora:
+The following code produces this diagnostic because the parts of a library
+must have the same language version as the defining compilation unit:
 
 ```dart
 // @dart = 2.15
 part [!'part.dart'!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova a sobrescrita de versão de linguagem do [arquivo part][part file], para que ele
-use implicitamente a mesma versão que a unidade de compilação definidora:
+Remove the language version override from the [part file][], so that it
+implicitly uses the same version as the defining compilation unit:
 
 ```dart
 part of 'test.dart';
 ```
 
-Se necessário, ajuste a sobrescrita de versão de linguagem na unidade de
-compilação definidora para ser apropriada para o código no part, ou migre
-o código no [arquivo part][part file] para ser consistente com a nova versão de
-linguagem.
+If necessary, either adjust the language version override in the defining
+compilation unit to be appropriate for the code in the part, or migrate
+the code in the [part file][] to be consistent with the new language
+version.
 
 [part file]: /resources/glossary#part-file

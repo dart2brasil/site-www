@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: duplicate_shown_name
-description: "Detalhes sobre o diagnóstico duplicate_shown_name produzido pelo analisador Dart."
+description: >-
+  Details about the duplicate_shown_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Nome exibido duplicate._
+_Duplicate shown name._
 
 ## Description
 
-O analisador produz este diagnóstico quando um nome ocorre múltiplas vezes em
-uma cláusula `show`. Repetir o nome é desnecessário.
+The analyzer produces this diagnostic when a name occurs multiple times in
+a `show` clause. Repeating the name is unnecessary.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o nome `min` é exibido
-mais de uma vez:
+The following code produces this diagnostic because the name `min` is shown
+more than once:
 
 ```dart
 import 'dart:math' show min, [!min!];
@@ -26,8 +27,8 @@ var x = min(2, min(0, 1));
 
 ## Common fixes
 
-Se o nome foi digitado incorretamente em um ou mais lugares, então corrija os nomes
-digitados incorretamente:
+If the name was mistyped in one or more places, then correct the mistyped
+names:
 
 ```dart
 import 'dart:math' show max, min;
@@ -35,8 +36,8 @@ import 'dart:math' show max, min;
 var x = max(2, min(0, 1));
 ```
 
-Se o nome não foi digitado incorretamente, então remova o nome desnecessário da
-lista:
+If the name wasn't mistyped, then remove the unnecessary name from the
+list:
 
 ```dart
 import 'dart:math' show min;

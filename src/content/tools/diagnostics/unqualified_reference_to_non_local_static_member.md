@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: unqualified_reference_to_non_local_static_member
-description: "Detalhes sobre o diagnóstico unqualified_reference_to_non_local_static_member produzido pelo analisador do Dart."
+description: >-
+  Details about the unqualified_reference_to_non_local_static_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Membros static de supertipos devem ser qualificados pelo nome do tipo definidor._
+_Static members from supertypes must be qualified by the name of the defining type._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando código em uma classe referencia um
-membro static em uma superclasse sem prefixar o nome do membro com o
-nome da superclasse. Membros static só podem ser referenciados sem um
-prefixo na classe na qual são declarados.
+The analyzer produces this diagnostic when code in one class references a
+static member in a superclass without prefixing the member's name with the
+name of the superclass. Static members can only be referenced without a
+prefix in the class in which they're declared.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o campo static `x` é
-referenciado no getter `g` sem prefixá-lo com o nome da
-classe definidora:
+The following code produces this diagnostic because the static field `x` is
+referenced in the getter `g` without prefixing it with the name of the
+defining class:
 
 ```dart
 class A {
@@ -31,9 +32,9 @@ class B extends A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Prefixe o nome do membro static com o nome da classe declarante:
+Prefix the name of the static member with the name of the declaring class:
 
 ```dart
 class A {

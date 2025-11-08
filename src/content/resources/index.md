@@ -4,25 +4,25 @@ description: Landing page for Dart language resources.
 showToc: false
 ---
 
-Confira os seguintes recursos da linguagem Dart:
+Check out the following Dart language resources:
 
 <div class="card-grid">
   <Card title="Glossary" link="/resources/glossary">
-    Terminologia usada pela documentação Dart e desenvolvedores.
+    Terminology used by Dart documentation and developers.
   </Card>
   <Card title="Breaking changes" link="/resources/breaking-changes">
-    Mudanças que quebram compatibilidade por versão do Dart.
+    Breaking changes by Dart release.
   </Card>
   <Card title="Books" link="/resources/books">
-    Uma coleção de livros sobre Dart.
+    A collection of books about Dart.
   </Card>
   <Card title="Videos" link="/resources/videos">
-    Vídeos direcionados a desenvolvedores Dart.
+    Videos aimed at Dart developers.
   </Card>
   <Card title="FAQ" link="/resources/faq">
-    Perguntas frequentes sobre Dart.
+    Frequently asked questions about Dart.
   </Card>
   <Card title="Code of conduct" link="/community/code-of-conduct">
-    Mantendo espaços da comunidade seguros e respeitosos.
+    Keeping community spaces safe and respectful.
   </Card>
 </div>

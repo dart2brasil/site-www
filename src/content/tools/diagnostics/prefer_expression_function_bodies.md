@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_expression_function_bodies
-description: "Detalhes sobre o diagnóstico prefer_expression_function_bodies produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_expression_function_bodies
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário de um corpo de função em bloco._
+_Unnecessary use of a block function body._
 
 ## Description
 
-O analisador produz este diagnóstico quando o corpo de uma função consiste
-em uma única instrução return com uma expressão.
+The analyzer produces this diagnostic when the body of a function consists
+of a single return statement with an expression.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o corpo de `f` tem uma
-única instrução return:
+The following code produces this diagnostic because the body of `f` has a
+single return statement:
 
 ```dart
 int f() [!{!]
@@ -37,10 +38,10 @@ int f() [!{!]
 
 ## Common fixes
 
-Se o corpo está completo, substitua o corpo por um corpo de expressão:
+If the body is complete, then replace the body with an expression body:
 
 ```dart
 int f() => 0;
 ```
 
-Se o corpo não está completo, adicione as instruções faltantes.
+If the body isn't complete, then add the missing statements.

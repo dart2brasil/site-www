@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: switch_on_type
-description: "Detalhes sobre o diagnóstico switch_on_type produzido pelo analisador Dart."
+description: >-
+  Details about the switch_on_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Evite instruções switch em um 'Type'._
+_Avoid switch statements on a 'Type'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma instrução switch ou uma expressão
-switch é usada no valor de um `Type` ou em uma chamada `toString`
-em um `Type`.
+The analyzer produces this diagnostic when a switch statement or switch
+expression is used on either the value of a `Type` or a `toString` call
+on a `Type`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a instrução switch
-é usada em um `Type`:
+The following code produces this diagnostic because the switch statement
+is used on a `Type`:
 
 ```dart
 void f(Object o) {
@@ -41,9 +42,9 @@ void f(Object o) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Use correspondência de padrões na variável em vez disso:
+Use pattern matching on the variable instead:
 
 ```dart
 void f(Object o) {

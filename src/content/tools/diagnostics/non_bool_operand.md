@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: non_bool_operand
-description: "Detalhes sobre o diagnóstico non_bool_operand produzido pelo analisador do Dart."
+description: >-
+  Details about the non_bool_operand
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,13 +11,13 @@ _The operands of the operator '{0}' must be assignable to 'bool'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um dos operandos dos operadores
-`&&` ou `||` não possui o tipo `bool`.
+The analyzer produces this diagnostic when one of the operands of either
+the `&&` or `||` operator doesn't have the type `bool`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `a` não é um valor
-Boolean:
+The following code produces this diagnostic because `a` isn't a Boolean
+value:
 
 ```dart
 int a = 3;
@@ -25,7 +26,7 @@ bool b = [!a!] || a > 1;
 
 ## Common fixes
 
-Mude o operando para um valor Boolean:
+Change the operand to a Boolean value:
 
 ```dart
 int a = 3;

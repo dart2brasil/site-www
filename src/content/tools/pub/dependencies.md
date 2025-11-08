@@ -1,47 +1,48 @@
 ---
-ia-translate: true
-title: "Dependências de pacotes"
-breadcrumb: Dependências
-description: "Adicione outros pacotes ao seu aplicativo. Especifique localizações de pacotes, restrições de versão e mais."
+title: Package dependencies
+breadcrumb: Dependencies
+description: >-
+  Add other packages to your app.
+  Specify package locations, version constraints, and more.
 ---
 
-Dependências são um dos conceitos principais do [gerenciador de pacotes pub][pub package manager].
-Uma _dependência_ é outro pacote que seu pacote precisa para funcionar.
-As dependências são especificadas no seu [pubspec](/tools/pub/pubspec).
-Você lista apenas as _dependências imediatas_: o
-software que seu pacote usa diretamente. O Pub cuida das
-[dependências transitivas](/resources/glossary#transitive-dependency) para você.
+Dependencies are one of the core concepts of the [pub package manager][].
+A _dependency_ is another package that your package needs to work.
+Dependencies are specified in your [pubspec](/tools/pub/pubspec).
+You list only _immediate dependencies_: the
+software that your package uses directly. Pub handles
+[transitive dependencies](/resources/glossary#transitive-dependency) for you.
 
-Esta página tem informações detalhadas sobre como especificar dependências.
-No final, há uma lista de
-[melhores práticas para dependências de pacotes](#best-practices).
+This page has detailed information on how to specify dependencies.
+At the end is a list of
+[best practices for package dependencies](#best-practices).
 
-## Visão geral {:#overview}
+## Overview
 
-Para cada dependência, você especifica o _nome_ do pacote do qual você depende
-e o _intervalo de versões_ desse pacote que você permite.
-Você também pode especificar a [_fonte_][_source_].
-A fonte diz ao pub como localizar o pacote.
+For each dependency, you specify the _name_ of the package you depend on
+and the _range of versions_ of that package that you allow.
+You can also specify the [_source_][].
+The source tells pub how to locate the package.
 
 [_source_]: /resources/glossary#dependency-source
 
-Como exemplo, você especifica uma dependência no seguinte formato:
+As an example, you specify a dependency in the following format:
 
 ```yaml
 dependencies:
   transmogrify: ^1.0.0
 ```
 
-Este código YAML cria uma dependência no pacote `transmogrify`
-usando o repositório de pacotes padrão ([pub.dev]({{site.pub}})) e
-permitindo qualquer versão de `1.0.0` até `2.0.0` (mas não incluindo `2.0.0`).
-Para aprender sobre esta sintaxe, confira
-[restrições de versão](#version-constraints).
+This YAML code creates a dependency on the `transmogrify` package
+using the default package repository ([pub.dev]({{site.pub}})) and
+allowing any version from `1.0.0` to `2.0.0` (but not including `2.0.0`).
+To learn about this syntax, check out
+[version constraints](#version-constraints).
 
-Para especificar uma fonte diferente de pub.dev,
-use `sdk`, `hosted`, `git` ou `path`.
-Por exemplo, o seguinte código YAML usa `path`
-para dizer ao pub para obter `transmogrify` de um diretório local:
+To specify a source other than pub.dev,
+use `sdk`, `hosted`, `git`, or `path`.
+For example, the following YAML code uses `path`
+to tell pub to get `transmogrify` from a local directory:
 
 ```yaml
 dependencies:
@@ -49,38 +50,38 @@ dependencies:
     path: /Users/me/transmogrify
 ```
 
-A próxima seção descreve o formato para cada fonte de dependência.
+The next section describes the format for each dependency source.
 
-## Fontes de dependência {:#dependency-sources}
+## Dependency sources
 
-O Pub pode usar as seguintes fontes para localizar pacotes:
+Pub can use the following sources to locate packages:
 
 * [SDK](#sdk)
-* [Pacotes hospedados](#hosted-packages)
-* [Pacotes Git](#git-packages)
-* [Pacotes Path](#path-packages)
+* [Hosted packages](#hosted-packages)
+* [Git packages](#git-packages)
+* [Path packages](#path-packages)
 
-### Pacotes hospedados {:#hosted-packages}
+### Hosted packages
 
-Um pacote _hospedado_ é aquele que pode ser baixado do site pub.dev
-(ou outro servidor HTTP que use a mesma API). Aqui está um exemplo
-de como declarar uma dependência em um pacote hospedado:
+A _hosted_ package is one that can be downloaded from the pub.dev site
+(or another HTTP server that speaks the same API). Here's an example
+of declaring a dependency on a hosted package:
 
 ```yaml
 dependencies:
   transmogrify: ^1.4.0
 ```
 
-Este exemplo especifica que seu pacote depende de um pacote hospedado chamado
-`transmogrify` e funciona com qualquer versão de 1.4.0 a 2.0.0
-(mas não o próprio 2.0.0).
+This example specifies that your package depends on a hosted package named
+`transmogrify` and works with any version from 1.4.0 to 2.0.0
+(but not 2.0.0 itself).
 
-Se você quiser usar seu [próprio repositório de pacotes][own package repository],
-você pode usar `hosted` para especificar sua URL.
-O seguinte código YAML cria uma dependência no pacote `transmogrify`
-usando a fonte `hosted`:
+If you want to use your [own package repository][],
+you can use `hosted` to specify its URL.
+The following YAML code creates a dependency on the `transmogrify` package
+using the `hosted` source:
 
-[own package repository]: /tools/pub/custom-package-repositories (próprio repositório de pacotes)
+[own package repository]: /tools/pub/custom-package-repositories
 
 ```yaml
 environment:
@@ -92,22 +93,22 @@ dependencies:
     version: ^1.4.0
 ```
 
-A restrição de versão é opcional, mas recomendada.
-Se nenhuma restrição de versão for fornecida, `any` é assumido.
+The version constraint is optional but recommended.
+If no version constraint is given, `any` is assumed.
 
 :::version-note
-Se seu pacote tiver uma [restrição de SDK][SDK version] anterior a 2.19,
-você deve usar o formato de limite inferior e superior para as versões do SDK.
-O validador de restrição do SDK nessas versões não oferece suporte
-à sintaxe de acento circunflexo.
+If your package has a [SDK constraints][SDK version] earlier than 2.19,
+you must use the lower and upper bound format for SDK versions.
+The SDK constraint validator in those versions doesn't support
+the caret syntax.
 
 ```yaml
 environment:
   sdk: [!'>=2.14.0 < 3.0.0'!]
 ```
 
-Se seu pacote tiver uma [versão do SDK][SDK version] anterior a 2.15,
-você deve usar um formato `hosted` mais detalhado.
+If your package has a [SDK version][] earlier than 2.15,
+you must use a more verbose `hosted` format.
 
 ```yaml
 environment:
@@ -122,15 +123,15 @@ dependencies:
 ```
 :::
 
-[SDK version]: /resources/language/evolution#language-versioning (versão do SDK)
+[SDK version]: /resources/language/evolution#language-versioning
 
-### Pacotes Git {:#git-packages}
+### Git packages
 
-Às vezes, você está na vanguarda e precisa usar pacotes que
-ainda não foram lançados formalmente. Talvez seu próprio pacote ainda esteja em
-desenvolvimento e esteja usando outros pacotes que estão sendo desenvolvidos ao
-mesmo tempo. Para facilitar isso, você pode depender diretamente de um pacote
-armazenado em um repositório [Git][git].
+Sometimes you live on the bleeding edge and need to use packages that
+haven't been formally released yet. Maybe your package itself is still in
+development and is using other packages that are being developed at the
+same time. To make that easier, you can depend directly on a package
+stored in a [Git][] repository.
 
 [git]: https://git-scm.com/
 
@@ -140,26 +141,26 @@ dependencies:
     git: https://github.com/munificent/kittens.git
 ```
 
-O `git` aqui diz que este pacote é encontrado usando o Git, e a URL depois disso é
-a URL do Git que pode ser usada para clonar o pacote.
+The `git` here says this package is found using Git, and the URL after that is
+the Git URL that can be used to clone the package.
 
-Mesmo que o repositório do pacote seja privado,
-você pode configurar sua configuração `git` para acessar o repositório usando uma
-[chave de acesso HTTPS][GitHub HTTPS] ou um [par de chaves SSH][GitHub SSH].
-Então, você pode depender do pacote usando a URL correspondente do repositório:
+Even if the package repo is private, 
+you can configure your `git` setup to access the repo using an
+[HTTPS access key][GitHub HTTPS] or an [SSH key-pair][GitHub SSH].
+Then you can depend on the package by using the repo's corresponding URL:
 
 ```yaml
 dependencies:
   kittens:
-    # URL SSH:
+    # SSH URL:
     git: git@github.com:munificent/kittens.git
 ```
 
-O comando `dart pub` chama `git clone` como um subprocesso, então tudo o que você precisa
-fornecer é uma `<url>` que funcione quando `git clone <url>` é executado.
+The `dart pub` command calls `git clone` as a subprocess, so all you need to
+provide is a `<url>` that works when `git clone <url>` is executed.
 
-Se você quiser depender de um commit, branch ou tag específica,
-adicione uma chave `ref` à descrição:
+If you want to depend on a specific commit, branch, or tag,
+add a `ref` key to the description:
 
 ```yaml
 dependencies:
@@ -169,37 +170,37 @@ dependencies:
       ref: some-branch
 ```
 
-O ref pode ser qualquer coisa que o Git permita para [identificar um commit.][commit]
+The ref can be anything that Git allows to [identify a commit.][commit]
 
 [commit]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
-Se o pacote do qual você depende marcou a
-revisão de cada versão do pacote,
-você pode usar `tag_pattern` em vez de `ref`,
-junto com uma restrição de versão.
+If the package you depend on has tagged the
+revision of each version of the package,
+you can use `tag_pattern` instead of `ref`,
+together with a version constraint.
 
-O Pub então consultará o Git para todas as tags correspondentes e
-alimentará essas versões para o solucionador de versão.
+Pub will then query Git for all matching tags, and
+feed those version to the version solver.
 
 ```yaml highlightLines=5
 dependencies:
   kittens:
     git:
       url: git@github.com:munificent/kittens.git
-      tag_pattern: v{{version}} # Encontra tags de versão prefixadas com 'v'.
+      tag_pattern: v{{version}} # Find version-tag prefixed by 'v'.
     version: ^2.0.1
 ```
 
 :::version-note
-O suporte para `tag_pattern` foi introduzido no Dart 3.9.
+Support for `tag_pattern` was introduced in Dart 3.9.
 
-Para usar `tag_pattern`, o pubspec incluído (mas não a dependência)
-deve ter uma restrição de versão do SDK de `^3.9.0` ou superior.
+To use `tag_pattern`, the including pubspec (but not the dependency)
+must have an SDK version constraint of `^3.9.0` or higher.
 :::
 
-O Pub assume que o pacote está na raiz do repositório Git. Para especificar uma
-localização diferente no repositório, especifique um `path` relativo à raiz do
-repositório:
+Pub assumes that the package is in the root of the Git repository. To specify a
+different location in the repo, specify a `path` relative to the repository
+root:
 
 ```yaml
 dependencies:
@@ -209,20 +210,20 @@ dependencies:
       path: path/to/kittens
 ```
 
-O path é relativo à raiz do repositório Git.
+The path is relative to the Git repo's root.
 
-Dependências Git não são permitidas como dependências
-para pacotes enviados para [pub.dev][pubsite].
+Git dependencies are not allowed as dependencies
+for packages uploaded to [pub.dev][pubsite].
 
-### Pacotes Path {:#path-packages}
+### Path packages
 
-Às vezes, você se vê trabalhando em vários pacotes relacionados ao mesmo tempo.
-Talvez você esteja criando um framework enquanto cria um aplicativo que o utiliza.
-Nesses casos, durante o desenvolvimento, você realmente deseja depender da
-versão _ativa_ desse pacote em seu sistema de arquivos local. Dessa forma, as
-alterações em um pacote são captadas instantaneamente por aquele que depende dele.
+Sometimes you find yourself working on multiple related packages at the same
+time. Maybe you are creating a framework while building an app that uses it.
+In those cases, during development you really want to depend on the _live_
+version of that package on your local file system. That way changes in one
+package are instantly picked up by the one that depends on it.
 
-Para lidar com isso, o pub oferece suporte a _dependências de path_ (caminho).
+To handle that, pub supports _path dependencies_.
 
 ```yaml
 dependencies:
@@ -230,35 +231,35 @@ dependencies:
     path: /Users/me/transmogrify
 ```
 
-Isso diz que o diretório raiz para `transmogrify` é `/Users/me/transmogrify`.
-Para esta dependência, o pub gera um link simbólico diretamente para o diretório
-`lib` do diretório do pacote referenciado. Quaisquer alterações que você fizer no
-pacote dependente são vistas imediatamente. Você não precisa executar o pub toda vez
-que alterar o pacote dependente.
+This says the root directory for `transmogrify` is `/Users/me/transmogrify`.
+For this dependency, pub generates a symlink directly to the `lib` directory
+of the referenced package directory. Any changes you make to the dependent
+package are seen immediately. You don't need to run pub every time you
+change the dependent package.
 
-Paths relativos são permitidos e são considerados relativos ao diretório que
-contém seu pubspec.
+Relative paths are allowed and are considered relative to the directory
+containing your pubspec.
 
-Dependências de path são úteis para desenvolvimento local, mas não funcionam ao
-compartilhar código com o mundo exterior — nem todos podem acessar seu sistema
-de arquivos. Por causa disso, você não pode enviar um pacote para o
-[site pub.dev][pubsite] se ele tiver alguma dependência de path em seu pubspec.
+Path dependencies are useful for local development, but do not work when
+sharing code with the outside world—not everyone can get to
+your file system. Because of this, you cannot upload a package to the
+[pub.dev site][pubsite] if it has any path dependencies in its pubspec.
 
-Em vez disso, o fluxo de trabalho típico é:
+Instead, the typical workflow is:
 
-1. Edite seu pubspec localmente para usar uma dependência de path.
-2. Trabalhe no pacote principal e no pacote do qual ele depende.
-3. Depois que ambos estiverem funcionando, publique o pacote dependente.
-4. Altere seu pubspec para apontar para a versão agora hospedada de seu dependente.
-5. Publique seu pacote principal também, se desejar.
+1. Edit your pubspec locally to use a path dependency.
+2. Work on the main package and the package it depends on.
+3. Once they're both working, publish the dependent package.
+4. Change your pubspec to point to the now hosted version of its dependent.
+5. Publish your main package too, if you want.
 
-### SDK {:#sdk}
+### SDK
 
-A fonte SDK é usada para qualquer SDKs que são enviados junto com os pacotes,
-que podem eles mesmos ser dependências.
-Atualmente, o Flutter é o único SDK que é suportado.
+The SDK source is used for any SDKs that are shipped along with packages,
+which may themselves be dependencies.
+Currently, Flutter is the only SDK that is supported.
 
-A sintaxe se parece com isto:
+The syntax looks like this:
 
 ```yaml
 dependencies:
@@ -266,38 +267,38 @@ dependencies:
     sdk: flutter
 ```
 
-O identificador após `sdk:` indica de qual SDK o pacote vem.
-Se for `flutter`, a dependência é satisfatória, desde que:
+The identifier after `sdk:` indicates which SDK the package comes from.
+If it's `flutter`, the dependency is satisfiable as long as:
 
-* O Pub esteja sendo executado no contexto do executável `flutter`
-* O SDK do Flutter contenha um pacote com o nome fornecido
+* Pub is running in the context of the `flutter` executable
+* The Flutter SDK contains a package with the given name
 
-Se for um identificador desconhecido, a dependência é sempre considerada insatisfeita.
+If it's an unknown identifier, the dependency is always considered unsatisfied.
 
-## Restrições de versão {:#version-constraints}
+## Version constraints
 
-Digamos que seu Pacote A depende do Pacote B.
-Como você pode comunicar a outros desenvolvedores qual versão do Pacote B
-permanece compatível com uma determinada versão do Pacote A?
+Let's say that your Package A depends upon Package B.
+How can you communicate to other developers which version of Package B
+remains compatible with a given version of Package A?
 
-Para informar aos desenvolvedores a compatibilidade de versão, especifique as restrições de versão.
-Você deseja permitir a maior variedade possível de versões
-para dar flexibilidade aos usuários do seu pacote.
-O intervalo deve excluir as versões que não funcionam ou não foram testadas.
+To let developers know version compatibility, specify version constraints.
+You want to allow the widest range of versions possible
+to give your package users flexibility.
+The range should exclude versions that don't work or haven't been tested.
 
-A comunidade Dart usa versionamento semântico<sup id="fnref:semver"><a
+The Dart community uses semantic versioning<sup id="fnref:semver"><a
 href="#fn:semver">1</a></sup>.
 
-Você pode expressar restrições de versão usando a _sintaxe tradicional_
-ou _sintaxe de acento circunflexo_ a partir do Dart 2.19.
-Ambas as sintaxes especificam um intervalo de versões compatíveis.
+You can express version constraints using either _traditional syntax_
+or _caret syntax_ starting with Dart 2.19.
+Both syntaxes specify a range of compatible versions.
 
-A sintaxe tradicional fornece um intervalo explícito como `'>=1.2.3 <2.0.0'`.
-A sintaxe de acento circunflexo fornece uma versão inicial explícita `^1.2.3`
+The traditional syntax provides an explicit range like `'>=1.2.3 <2.0.0'`.
+The caret syntax provides an explicit starting version `^1.2.3`
 
 ```yaml
 environment:
-  # Este pacote deve usar uma versão 3.x do Dart SDK começando com 3.2.
+  # This package must use a 3.x version of the Dart SDK starting with 3.2.
   sdk: ^3.2.0
 
 dependencies:
@@ -305,117 +306,117 @@ dependencies:
     hosted:
       name: transmogrify
       url: https://some-package-server.com
-    # Este pacote deve usar uma versão 1.x do transmogrify começando com 1.4.
+    # This package must use a 1.x version of transmogrify starting with 1.4.
     version: ^1.4.0
 ```
 
-Para saber mais sobre o sistema de versão do pub, consulte a [página de versionamento de pacote][package versioning page].
+To learn more about pub's version system, see the [package versioning page][].
 
-[package versioning page]: /tools/pub/versioning#semantic-versions (página de versionamento de pacote)
+[package versioning page]: /tools/pub/versioning#semantic-versions
 
-### Sintaxe tradicional {:#traditional-syntax}
+### Traditional syntax
 
-Uma restrição de versão que usa a sintaxe tradicional pode usar qualquer
-um dos seguintes valores:
+A version constraint that uses the traditional syntax can use any
+of the following values:
 
-| **Valor** |                **Permite**               | **Usar?** |                                                                        **Notas**                                                                        |
+| **Value** |                **Allows**               | **Use?** |                                                                        **Notes**                                                                        |
 |:---------:|:----------------------------------------|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   `any`   | Todas as versões                         |    Não   | Serve como uma declaração explícita de restrição de versão vazia.                                                                                         |
-|  `1.2.3`  | Apenas a versão fornecida                |    Não   | Limita a adoção do seu pacote devido aos limites adicionais que ele impõe aos aplicativos que usam seu pacote.                                             |
-| `>=1.2.3` | Versão fornecida ou posterior           |    Sim   |                                                                                                                                                         |
-|  `>1.2.3` | Versões posteriores à versão fornecida |    Não   |                                                                                                                                                         |
-| `<=1.2.3` | Versão fornecida ou anterior            |    Não   |                                                                                                                                                         |
-|  `<1.2.3` | Versões anteriores à versão fornecida  |    Não   | Use isso quando você souber uma versão de limite superior que _não_ funciona com seu pacote. Esta versão pode ser a primeira a introduzir alguma alteração. |
+|   `any`   | All versions                            |    No    | Serves as a explicit declaration of empty version constraint.                                                                                           |
+|  `1.2.3`  | Only the given version                  |    No    | Limits adoption of your package due the additional limits it places on apps that use your package.                                                      |
+| `>=1.2.3` | Given version or later                  |    Yes   |                                                                                                                                                         |
+|  `>1.2.3` | Versions later than the given version   |    No    |                                                                                                                                                         |
+| `<=1.2.3` | Given version or earlier                |    No    |                                                                                                                                                         |
+|  `<1.2.3` | Versions earlier than the given version |    No    | Use this when you know an upper bound version that _doesn't_ work with your package. This version might be the first to introduce some breaking change. |
 
 {:.table}
 
-Você pode especificar qualquer combinação de valores de versão conforme seus intervalos se cruzam.
-Por exemplo, se você definir o valor da versão como `'>=1.2.3 <2.0.0'`,
-isso combina ambas as limitações para que a dependência possa ser qualquer versão
-de `1.2.3` a `2.0.0`, excluindo o próprio `2.0.0`.
+You can specify any combination of version values as their ranges intersect.
+For example, if you set the version value as `'>=1.2.3 <2.0.0'`,
+this combines the both limitations so the dependency can be any version
+from `1.2.3` to `2.0.0` excluding `2.0.0` itself.
 
 :::warning
-Se você incluir o caractere maior que (**>**) na restrição de versão,
-**coloque toda a string de restrição entre aspas**.
-Isso evita que o YAML interprete o caractere como sintaxe YAML.
-Por exemplo: nunca use `>=1.2.3 <2.0.0`. Use `'>=1.2.3 <2.0.0'` ou `^1.2.3`.
+If you include the greater than (**>**) character in the version constraint,
+**quote the entire constraint string**.
+This prevents YAML from interpreting the character as YAML syntax.
+For example: never use `>=1.2.3 <2.0.0`. Use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
 :::
 
-### Sintaxe de acento circunflexo {:#caret-syntax}
+### Caret syntax
 
-A sintaxe de acento circunflexo expressa a restrição de versão de forma compacta.
-`^versão` significa _o intervalo de todas as versões que têm garantia de compatibilidade
-com versões anteriores à versão fornecida_.
-Este intervalo incluiria todas as versões até a próxima a introduzir uma
-alteração incompatível. Como o Dart usa versionamento semântico, esta seria a próxima
-versão principal para qualquer versão de pacote 1.0 ou posterior
-ou a próxima versão secundária para qualquer versão de pacote anterior a 1.0.
+Caret syntax expresses the version constraint in a compact way.
+`^version` means _the range of all versions guaranteed to be backwards
+compatible with the given version_.
+This range would include all versions up to the next one to introduce a
+breaking change. As Dart uses semantic versioning, this would be the next
+major version for any package version 1.0 or later
+or the next minor version for any package version earlier than 1.0.
 
-| Valor da versão | Intervalo cobre até | Sintaxe de acento circunflexo | Sintaxe tradicional  |
-|:---------------:|:------------------:|:----------------------------:|:-------------------:|
-| >=1.0           | Próxima principal  | `^1.3.0`                     | `'>=1.3.0 <2.0.0'`  |
-| <1.0            | Próxima secundária | `^0.1.2`                     | `'>=0.1.2 <0.2.0'`  |
+| Version value | Range covers to | Caret Syntax | Traditional Syntax  |
+|:-------------:|:---------------:|:------------:|:-------------------:|
+| >=1.0         | Next major      | `^1.3.0`     | `'>=1.3.0 <2.0.0'`  |
+| <1.0          | Next minor      | `^0.1.2`     | `'>=0.1.2 <0.2.0'`  |
 
 {:.table}
 
-O exemplo a seguir mostra a sintaxe de acento circunflexo:
+The following example shows caret syntax:
 
 ```yaml
 dependencies:
-  # Abrange todas as versões de 1.3.0 a 1.y.z, não incluindo 2.0.0
+  # Covers all versions from 1.3.0 to 1.y.z, not including 2.0.0
   path: ^1.3.0
-  # Abrange todas as versões de 1.1.0 a 1.y.z, não incluindo 2.0.0
+  # Covers all versions from 1.1.0 to 1.y.z, not including 2.0.0
   collection: ^1.1.0
-  # Abrange todas as versões de 0.1.2 a 0.1.z, não incluindo 0.2.0
+  # Covers all versions from 0.1.2 to 0.1.z, not including 0.2.0
   string_scanner: ^0.1.2
 ```
 
-## Dev dependencies {:#dev-dependencies}
+## Dev dependencies
 
-O Pub oferece suporte a dois tipos de dependências: dependências regulares e _dev
-dependencies_ (dependências de desenvolvimento). As dependências de desenvolvimento
-diferem das dependências regulares no sentido de que _as dependências de desenvolvimento de pacotes dos quais você depende são ignoradas_. Veja um exemplo:
+Pub supports two flavors of dependencies: regular dependencies and _dev
+dependencies._ Dev dependencies differ from regular dependencies in that _dev
+dependencies of packages you depend on are ignored_. Here's an example:
 
-Digamos que o pacote `transmogrify` use o pacote `test` em seus testes e
-apenas em seus testes. Se alguém só quiser usar `transmogrify`—importar suas
-bibliotecas—ele não precisa realmente de `test`. Neste caso, ele especifica
-`test` como uma dependência de desenvolvimento. Seu pubspec terá algo como:
+Say the `transmogrify` package uses the `test` package in its tests and only
+in its tests. If someone just wants to use `transmogrify`—import its
+libraries—it doesn't actually need `test`. In this case, it specifies
+`test` as a dev dependency. Its pubspec will have something like:
 
 ```yaml
 dev_dependencies:
   test: ^1.25.0
 ```
 
-O Pub obtém todos os pacotes dos quais seu pacote depende e tudo o que _esses_
-pacotes dependem, transitivamente. Ele também obtém as dependências de
-desenvolvimento do seu pacote, mas _ignora_ as dependências de desenvolvimento de
-qualquer pacote dependente. O Pub obtém apenas as dependências de desenvolvimento
-_do seu_ pacote. Portanto, quando seu pacote depende de `transmogrify`, ele obterá `transmogrify`, mas não `test`.
+Pub gets every package that your package depends on, and everything _those_
+packages depend on, transitively. It also gets your package's dev dependencies,
+but it _ignores_ the dev dependencies of any dependent packages. Pub only gets
+_your_ package's dev dependencies. So when your package depends on
+`transmogrify` it will get `transmogrify` but not `test`.
 
-A regra para decidir entre uma dependência regular ou de desenvolvimento é
-simples: se a dependência for importada de algo em seus diretórios `lib` ou
-`bin`, ela precisa ser uma dependência regular. Se for importada apenas de
-`test`, `example` etc., pode e deve ser uma dependência de desenvolvimento.
+The rule for deciding between a regular or dev dependency is simple: If
+the dependency is imported from something in your `lib` or `bin` directories,
+it needs to be a regular dependency. If it's only imported from `test`,
+`example`, etc. it can and should be a dev dependency.
 
-O uso de dependências de desenvolvimento torna os gráficos de dependência menores.
-Isso faz com que o `pub` seja executado mais rapidamente e torna mais fácil
-encontrar um conjunto de versões de pacotes que satisfaça todas as restrições.
+Using dev dependencies makes dependency graphs smaller. That makes `pub` run
+faster, and makes it easier to find a set of package versions that satisfies all
+constraints.
 
-## Substituições de dependência {:#dependency-overrides}
+## Dependency overrides
 
-Você pode usar `dependency_overrides` para substituir temporariamente todas as
-referências a uma dependência.
+You can use `dependency_overrides` to temporarily override all references
+to a dependency.
 
-Por exemplo, talvez você esteja atualizando uma cópia local do transmogrify, um
-pacote publicado. O transmogrify é usado por outros pacotes em seu
-gráfico de dependência, mas você não deseja clonar cada pacote localmente
-e alterar cada pubspec para testar sua cópia local do transmogrify.
+For example, perhaps you are updating a local copy of transmogrify, a
+published package. Transmogrify is used by other packages in your
+dependency graph, but you don't want to clone each package locally
+and change each pubspec to test your local copy of transmogrify.
 
-Nessa situação, você pode substituir a dependência usando
-`dependency_overrides` para especificar o diretório que contém a cópia local
-do pacote.
+In this situation, you can override the dependency using
+`dependency_overrides` to specify the directory holding the local
+copy of the package.
 
-O pubspec seria algo como o seguinte:
+The pubspec would look something like the following:
 
 ```yaml
 name: my_app
@@ -426,13 +427,13 @@ dependency_overrides:
     path: ../transmogrify_patch/
 ```
 
-Quando você executa [`dart pub get`][`dart pub get`] ou [`dart pub upgrade`][`dart pub upgrade`],
-o lockfile do pubspec é atualizado para refletir o
-novo path para sua dependência e, onde quer que o transmogrify seja usado, o pub
-usa a versão local.
+When you run [`dart pub get`][] or [`dart pub upgrade`][],
+the pubspec's lockfile is updated to reflect the
+new path to your dependency and, wherever transmogrify is used, pub
+uses the local version instead.
 
-Você também pode usar `dependency_overrides` para especificar um
-versão específica de um pacote:
+You can also use `dependency_overrides` to specify a particular
+version of a package:
 
 ```yaml
 name: my_app
@@ -443,84 +444,84 @@ dependency_overrides:
 ```
 
 :::warning
-Usar uma substituição de dependência envolve algum risco. Por exemplo,
-usar uma substituição para especificar uma versão fora do intervalo que o
-pacote afirma oferecer suporte, ou usar uma substituição para especificar
-uma cópia local de um pacote que tenha comportamentos inesperados,
-pode quebrar seu aplicativo.
+Using a dependency override involves some risk. For example,
+using an override to specify a version outside the range that the
+package claims to support, or using an override to specify
+a local copy of a package that has unexpected behaviors,
+may break your application.
 :::
 
-Apenas as substituições de dependência no **próprio pubspec de um pacote**
-são consideradas durante a resolução do pacote.
-As substituições de dependência dentro de quaisquer pacotes dependentes são ignoradas.
+Only the dependency overrides in a **package's own pubspec**
+are considered during package resolution. 
+Dependency overrides inside any depended-on packages are ignored.
 
-Como resultado, se você publicar um pacote no pub.dev,
-tenha em mente que as substituições de dependência do seu pacote
-são ignoradas por todos os usuários do seu pacote.
+As a result, if you publish a package to pub.dev,
+keep in mind that your package's dependency overrides
+are ignored by all users of your package.
 
-Se você estiver usando um [workspace pub][workspaces],
-você pode ter `dependency_overrides` em cada pacote do workspace, mas
-um único pacote só pode ser substituído uma vez no workspace.
+If you are using a [pub workspace][workspaces],
+you can have `dependency_overrides` in each workspace package, but
+a single package can only be overridden once in the workspace.
 
 ## `pubspec_overrides.yaml` {:#pubspec-overrides}
 
-Se você quiser alterar certos aspectos da
-resolução do seu arquivo `pubspec.yaml`, mas
-não quiser alterar o arquivo real, você pode
-colocar um arquivo chamado `pubspec_overrides.yaml` ao lado do `pubspec.yaml`.
+If you want to change certain aspects of
+the resolution of your `pubspec.yaml` file, but
+do not want to change the actual file, you can
+place a file named `pubspec_overrides.yaml` next to the `pubspec.yaml`.
 
-Os atributos desse arquivo substituirão aqueles do `pubspec.yaml`.
+Attributes from that file will override those from `pubspec.yaml`.
 
-As propriedades que podem ser substituídas são:
+The properties that can be overridden are:
 
 * `dependency_overrides`
 * `workspace`
 * `resolution`
 
-Isso pode ser útil para evitar acidentalmente
-incluir substituições temporárias no controle de versão.
-Também pode facilitar a geração de substituições a partir de um script.
+This can be useful to avoid accidentally
+checking temporary overrides in to version control.
+It can also make it easier to generate overrides from a script.
 
-Em um [workspace pub][workspaces], cada pacote do workspace
-pode ter um arquivo `pubspec_overrides.yaml`.
+In a [pub workspace][workspaces], each workspace package
+can have a `pubspec_overrides.yaml` file.
 
-## Melhores práticas
+## Best practices
 
-Seja proativo no gerenciamento de suas dependências.
-Certifique-se de que seus pacotes dependam das versões mais recentes dos pacotes
-quando possível.
-Se seu pacote depender de um pacote obsoleto,
-esse pacote obsoleto pode depender de outros pacotes obsoletos em sua árvore de dependência.
-Versões obsoletas de pacotes podem ter um impacto negativo na
-estabilidade, desempenho e qualidade do seu aplicativo.
+Be proactive in managing your dependencies.
+Ensure that your packages depend on the freshest versions of packages
+when possible.
+If your package depends on a stale package,
+that stale package may depend on other stale packages in its dependency tree.
+Stale versions of packages can have a negative impact on
+the stability, performance, and quality of your app.
 
-Recomendamos as seguintes práticas recomendadas para dependências de pacotes.
+We recommend the following best practices for package dependencies.
 
-### Use a sintaxe de acento circunflexo {:#use-caret-syntax}
+### Use caret syntax
 
-Especifique dependências usando a [sintaxe de acento circunflexo](#caret-syntax).
-Isso permite que a ferramenta pub selecione versões mais recentes do pacote
-quando elas estiverem disponíveis.
-Além disso, ele coloca um limite superior na versão permitida.
+Specify dependencies using the [caret syntax](#caret-syntax).
+This allows the pub tool to select newer versions of the package
+when they become available.
+Further, it places an upper bound on the allowed version.
 
-### Dependa das versões de pacotes estáveis mais recentes {:#depend-on-the-latest-stable-package-versions}
+### Depend on the latest stable package versions
 
-Use [`dart pub upgrade`][`dart pub upgrade`] para atualizar para as versões de pacote mais recentes
-que seu pubspec permite.
-Para identificar as dependências em seu aplicativo ou pacote que
-não estão nas versões estáveis mais recentes,
-use [`dart pub outdated`][`dart pub outdated`].
+Use [`dart pub upgrade`][] to update to the latest package versions
+that your pubspec allows.
+To identify dependencies in your app or package that
+aren't on the latest stable versions,
+use [`dart pub outdated`][].
 
-### Aperte as restrições de versão para dev dependencies {:#tighten-version-constraints-for-dev-dependencies}
+### Tighten version constraints for dev dependencies
 
-Uma dependência de desenvolvimento define um pacote que você precisa apenas durante o
-desenvolvimento. Um aplicativo finalizado não precisará desses pacotes.
-Exemplos desses pacotes incluem testes ou ferramentas de geração de código.
-Defina as restrições de versão dos pacotes em [`dev_dependencies`][dev-dep]
-para ter um limite inferior da versão mais recente da qual seu pacote depende.
+A dev dependency defines a package that you need only when developing.
+A finished app won't need these packages.
+Examples of these packages include tests or code generation tooling.
+Set the version constraints of packages in [`dev_dependencies`][dev-dep]
+to have a lower bound of the latest version on which your package depends.
 
-O aperto das restrições de versão de suas dependências de desenvolvimento pode
-se parecer com o seguinte:
+Tightening the version constraints of your dev dependencies might
+resemble the following:
 
 ```yaml
 dev_dependencies:
@@ -529,39 +530,39 @@ dev_dependencies:
   test: ^1.25.15
 ```
 
-Este YAML define `dev_dependencies` para as versões de patch mais recentes.
+This YAML sets the `dev_dependencies` to the latest patch versions.
 
 [dev-dep]: /tools/pub/dependencies#dev-dependencies
 
-### Teste sempre que atualizar as dependências de pacotes {:#test-whenever-you-update-package-dependencies}
+### Test whenever you update package dependencies
 
-Se você executar [`dart pub upgrade`][`dart pub upgrade`] sem atualizar seu pubspec,
-a API deve permanecer a mesma
-e seu código deve ser executado como antes — mas teste para ter certeza.
-Se você modificar o pubspec e atualizar para uma nova versão principal,
-então você pode encontrar alterações incompatíveis,
-portanto, você precisa testar ainda mais minuciosamente.
+If you run [`dart pub upgrade`][] without updating your pubspec,
+the API should stay the same
+and your code should run as before—but test to make sure.
+If you modify the pubspec and update to a new major version,
+then you might encounter breaking changes,
+so you need to test even more thoroughly.
 
-### Teste com dependências rebaixadas {:#test-with-downgraded-dependencies}
+### Test with downgraded dependencies
 
-Ao desenvolver pacotes para publicação, muitas vezes é preferível
-permitir as restrições de dependência mais amplas possíveis.
-Uma restrição de dependência ampla reduz a probabilidade de que
-os consumidores de pacotes enfrentem um conflito de resolução de versão.
+When developing packages for publication, it is often preferable to
+allow the widest dependency constraints possible.
+A wide dependency constraint reduces the likelihood that
+package consumers face a version resolution conflict.
 
-Por exemplo, se você tiver uma dependência em `foo: ^1.2.3` e
-a versão `1.3.0` de `foo` for lançada, pode ser razoável
-manter a restrição de dependência existente (`^1.2.3`).
-Mas se seu pacote começar a usar recursos adicionados em `1.3.0`, então
-você precisará aumentar sua restrição para `^1.3.0`.
+For example, if you have a dependency on `foo: ^1.2.3` and
+version `1.3.0` of `foo` is released, it might be reasonable to
+keep the existing dependency constraint (`^1.2.3`).
+But if your package starts using features that were added in `1.3.0`, then
+you'll need to bump your constraint to `^1.3.0`.
 
-No entanto, é fácil esquecer de aumentar uma
-restrição de dependência quando ela se torna necessária.
-Portanto, é uma prática recomendada testar seu pacote
-com dependências rebaixadas antes de publicar.
+However, it's easy to forget to bump a
+dependency constraint when it becomes necessary.
+Therefore, it's a best practice to test your package
+against downgraded dependencies before publishing.
 
-Para testar com dependências rebaixadas, execute [`dart pub downgrade`][`dart pub downgrade`] e
-verifique se seu pacote ainda é analisado sem erros e passa em todos os testes:
+To test against downgraded dependencies, run [`dart pub downgrade`][] and
+verify your package still analyzes without errors and passes all tests:
 
 ```console
 dart pub downgrade
@@ -569,36 +570,36 @@ dart analyze
 dart test
 ```
 
-O teste com dependências rebaixadas deve
-acontecer junto com os testes normais com as dependências mais recentes.
-Se as restrições de dependência precisarem ser aumentadas, altere-as você mesmo ou
-use `dart pub upgrade --tighten` para atualizar as dependências para as versões mais recentes.
+Testing with downgraded dependencies should
+happen alongside normal tests with latest dependencies.
+If dependency constraints need to be bumped, change them yourself or
+use `dart pub upgrade --tighten` to update dependencies to the latest versions.
 
 :::note
-O teste com `dart pub downgrade` permite que você encontre incompatibilidades que
-você pode não ter descoberto de outra forma.
-Mas isso não exclui a possibilidade de incompatibilidades.
+Testing with `dart pub downgrade` enables you to find incompatibilities that
+you might not otherwise have discovered.
+But it doesn't exclude the possibility of incompatibilities.
 
-Muitas vezes, existem tantas combinações diferentes de versões que
-testá-las todas é inviável.
-Também pode haver versões mais antigas permitidas por suas restrições de dependência que
-não podem ser resolvidas devido a restrições de versão mutuamente incompatíveis de
-próprios pacotes ou de suas `dev_dependencies`.
+There are often so many different combinations of versions that
+testing them all is infeasible.
+There might also be older versions allowed by your dependency constraints that
+can't be resolved due to mutually incompatible version constraints from
+packages themselves or from your `dev_dependencies`.
 :::
 
 [`dart pub downgrade`]: /tools/pub/cmd/pub-downgrade
 
-### Verifique a integridade dos pacotes baixados {:#verify-the-integrity-of-downloaded-packages}
+### Verify the integrity of downloaded packages
 
-Ao recuperar novas dependências,
-use a opção [`--enforce-lockfile`][enforce-lock] para garantir que
-o conteúdo do pacote extraído corresponda ao conteúdo do arquivo original.
-Sem modificar o [lockfile][lockfile],
-esta flag apenas resolve novas dependências se:
+When retrieving new dependencies,
+use the [`--enforce-lockfile`][enforce-lock] option to ensure
+the extracted package contents match the contents of the original archive.
+Without modifying the [lockfile][],
+this flag only resolves new dependencies if:
 
-* `pubspec.yaml` é satisfeito
-* `pubspec.lock` não está faltando
-* Os [hashes de conteúdo][content hashes] dos pacotes correspondem
+* `pubspec.yaml` is satisfied
+* `pubspec.lock` is not missing
+* The packages' [content hashes][] match
 
 [enforce-lock]: /tools/pub/cmd/pub-get#enforce-lockfile
 [lockfile]: /resources/glossary#lockfile
@@ -608,16 +609,16 @@ esta flag apenas resolve novas dependências se:
 
 <aside id="fn:semver" class="footnote">
 
-[1] O Pub segue a versão `2.0.0-rc.1` da
-[especificação de versionamento semântico][semantic versioning specification]
-porque essa versão permite que os pacotes usem identificadores de build (`+12345`)
-para diferenciar as versões. <a href="#fnref:semver">↩</a>
+[1] Pub follows version `2.0.0-rc.1` of the
+[semantic versioning specification][]
+because that version allows packages to use build identifiers (`+12345`)
+to differentiate versions. <a href="#fnref:semver">↩</a>
 
 </aside>
 
 [GitHub HTTPS]: https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
 [GitHub SSH]: https://help.github.com/articles/connecting-to-github-with-ssh/
-[pub package manager]: /tools/pub/packages (gerenciador de pacotes pub)
+[pub package manager]: /tools/pub/packages
 [`dart pub get`]: /tools/pub/cmd/pub-get
 [`dart pub outdated`]: /tools/pub/cmd/pub-outdated
 [`dart pub upgrade`]: /tools/pub/cmd/pub-upgrade

@@ -1,31 +1,32 @@
 ---
-ia-translate: true
 title: unnecessary_no_such_method
-description: "Detalhes sobre o diagnóstico unnecessary_no_such_method produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_no_such_method
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Declaração 'noSuchMethod' desnecessária._
+_Unnecessary 'noSuchMethod' declaration._
 
 ## Description
 
-O analisador produz este diagnóstico quando há uma declaração de
-`noSuchMethod`, a única coisa que a declaração faz é invocar a
-declaração sobrescrita, e a declaração sobrescrita não é a
-declaração em `Object`.
+The analyzer produces this diagnostic when there's a declaration of
+`noSuchMethod`, the only thing the declaration does is invoke the
+overridden declaration, and the overridden declaration isn't the
+declaration in `Object`.
 
-Sobrescrever a implementação de `noSuchMethod` do `Object` (não importa o que
-a implementação faça) sinaliza ao analisador que ele não deve marcar nenhum
-método abstrato herdado que não está implementado nessa classe. Isso
-funciona mesmo se a implementação que sobrescreve é herdada de uma superclasse,
-então não há valor em declará-la novamente em uma subclasse.
+Overriding the implementation of `Object`'s `noSuchMethod` (no matter what
+the implementation does) signals to the analyzer that it shouldn't flag any
+inherited abstract methods that aren't implemented in that class. This
+works even if the overriding implementation is inherited from a superclass,
+so there's no value to declare it again in a subclass.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a declaração de
-`noSuchMethod` em `A` torna a declaração de `noSuchMethod` em `B`
-desnecessária:
+The following code produces this diagnostic because the declaration of
+`noSuchMethod` in `A` makes the declaration of `noSuchMethod` in `B`
+unnecessary:
 
 ```dart
 class A {
@@ -42,7 +43,7 @@ class B extends A {
 
 ## Common fixes
 
-Remova a declaração desnecessária:
+Remove the unnecessary declaration:
 
 ```dart
 class A {

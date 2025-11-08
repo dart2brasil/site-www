@@ -1,21 +1,23 @@
 ---
-ia-translate: true
 title: invalid_export_of_internal_element
-description: "Detalhes sobre o diagnóstico invalid_export_of_internal_element produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_export_of_internal_element
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O membro '{0}' não pode ser exportado como parte da API pública de um pacote._
+_The member '{0}' can't be exported as a part of a package's public API._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma [public library][] exporta
-uma declaração que é marcada com a annotation [`internal`][meta-internal].
+The analyzer produces this diagnostic when a [public library][] exports a
+declaration that is marked with the [`internal`][meta-internal]
+annotation.
 
 ## Example
 
-Dado um arquivo `a.dart` no diretório `src` que contém:
+Given a file `a.dart` in the `src` directory that contains:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -23,9 +25,9 @@ import 'package:meta/meta.dart';
 @internal class One {}
 ```
 
-O código a seguir, quando encontrado em uma [public library][], produz
-este diagnóstico porque a diretiva `export` está exportando um nome que é
-destinado apenas para uso interno:
+The following code, when found in a [public library][] produces this
+diagnostic because the `export` directive is exporting a name that is only
+intended to be used internally:
 
 ```dart
 [!export 'src/a.dart';!]
@@ -33,14 +35,14 @@ destinado apenas para uso interno:
 
 ## Common fixes
 
-Se o export é necessário, adicione uma cláusula `hide` para ocultar os
-nomes internos:
+If the export is needed, then add a `hide` clause to hide the internal
+names:
 
 ```dart
 export 'src/a.dart' hide One;
 ```
 
-Se o export não é necessário, remova-o.
+If the export isn't needed, then remove it.
 
 [meta-internal]: https://pub.dev/documentation/meta/latest/meta/internal-constant.html
 [public library]: /resources/glossary#public-library

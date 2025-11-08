@@ -1,11 +1,10 @@
 ---
-ia-translate: true
-title: "Recursos avançados adjacentes a OOP"
-shortTitle: "Recursos OOP Avançados"
+title: Advanced OOP-adjacent features
+shortTitle: Advanced OOP Features
 description: >-
-  Aprimore suas habilidades em Dart explorando recursos avançados como enhanced enums
-  e extensions. Melhore a formatação e cor da saída da sua aplicação,
-  tornando-a mais amigável ao usuário.
+  Enhance your Dart skills by exploring advanced features like enhanced enums
+  and extensions. Improve your application's output formatting and color,
+  making it more user-friendly.
 sitemap: false
 noindex: true
 layout: learn
@@ -19,45 +18,45 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-Neste capítulo, você explorará recursos avançados do Dart que melhoram a
-experiência do usuário da sua aplicação de linha de comando. Você aprenderá como usar enhanced
-enums para gerenciar cores do console e extensions para adicionar novas funcionalidades a
-tipos existentes, tornando sua aplicação mais interativa e visualmente atraente.
+In this chapter, you'll explore advanced Dart features that improve the user
+experience of your command-line application. You'll learn how to use enhanced
+enums to manage console colors and extensions to add new functionality to
+existing types, making your application more interactive and visually appealing.
 
-:::secondary O que você aprenderá
+:::secondary What you'll learn
 
-*   Usar enhanced enums para definir e gerenciar cores do console.
-*   Aplicar extensions para adicionar novos métodos à classe `String`.
-*   Melhorar a formatação e cor da saída para uma melhor experiência do usuário.
+*   Use enhanced enums to define and manage console colors.
+*   Apply extensions to add new methods to the `String` class.
+*   Improve output formatting and color for a better user experience.
 
 :::
 
-## Pré-requisitos
+## Prerequisites
 
-Antes de começar este capítulo, certifique-se de que você:
+Before you begin this chapter, ensure you:
 
-*   Completou o Capítulo 6 e tem um ambiente de desenvolvimento Dart funcionando
-    com o projeto `dartpedia`.
-*   Está familiarizado com conceitos básicos de programação como variáveis, funções e
-    controle de fluxo.
-*   Entende os conceitos de pacotes e bibliotecas em Dart.
-*   Tem um entendimento básico de conceitos de programação orientada a objetos como
-    classes e enums.
+*   Have completed Chapter 6 and have a working Dart development environment
+    with the `dartpedia` project.
+*   Are familiar with basic programming concepts like variables, functions, and
+    control flow.
+*   Understand the concepts of packages and libraries in Dart.
+*   Have a basic understanding of object-oriented programming concepts like
+    classes and enums.
 
-## Tarefas
+## Tasks
 
-Você melhorará a experiência do usuário da sua aplicação CLI Dartpedia adicionando
-cor à saída e melhorando a formatação de texto.
+You will improve the user experience of your Dartpedia CLI application by adding
+color to the output and improving text formatting.
 
-### Tarefa 1: Melhorar o enum de cor do console
+### Task 1: Enhance the console color enum
 
-Primeiro, adicione cor à saída do console. O
-enum `ConsoleColor` incluirá valores RGB e métodos para aplicar
-cores ao texto.
+First, add color to the console output. The
+`ConsoleColor` enum will include RGB values and methods for applying
+colors to text.
 
-1.  Crie o arquivo `command_runner/lib/src/console.dart`.
+1.  Create the `command_runner/lib/src/console.dart` file.
 
-2.  Adicione o seguinte código para definir o enum `ConsoleColor`:
+2.  Add the following code to define the `ConsoleColor` enum:
 
     ```dart title="command_runner/lib/src/console.dart"
     import 'dart:io';
@@ -113,10 +112,10 @@ cores ao texto.
     }
     ```
 
-    Este enum define um conjunto de cores de console com seus valores RGB
-    correspondentes. Cada cor é uma instância constante do enum `ConsoleColor`.
+    This enum defines a set of console colors with their corresponding RGB
+    values. Each color is a constant instance of the `ConsoleColor` enum.
 
-3.  Adicione métodos ao enum `ConsoleColor` para aplicar cores ao texto:
+3.  Add methods to the `ConsoleColor` enum for applying colors to text:
 
     ```dart title="command_runner/lib/src/console.dart"
     enum ConsoleColor {
@@ -159,16 +158,16 @@ cores ao texto.
     }
     ```
 
-    Esses métodos usam [ANSI escape codes][] para aplicar cores de primeiro plano e plano de fundo
-    ao texto. Os métodos `applyForeground` e `applyBackground` retornam
-    uma string com os códigos de escape ANSI aplicados.
+    These methods use [ANSI escape codes][] to apply foreground and background
+    colors to text. The `applyForeground` and `applyBackground` methods return
+    a string with the ANSI escape codes applied.
 
-### Tarefa 2: Criar uma extension de String
+### Task 2: Create a String extension
 
-Em seguida, crie uma extension na classe `String` para adicionar métodos utilitários
-para aplicar cores de console e formatar texto.
+Next, create an extension on the `String` class to add utility methods
+for applying console colors and formatting text.
 
-1.  Adicione o seguinte código ao arquivo `command_runner/lib/src/console.dart`:
+1.  Add the following code to the `command_runner/lib/src/console.dart` file:
 
     ```dart title="command_runner/lib/src/console.dart"
     // Add this code to the bottom of the file
@@ -204,16 +203,16 @@ para aplicar cores de console e formatar texto.
     }
     ```
 
-    Este código define uma extension chamada `TextRenderUtils` na classe `String`.
-    Ela adiciona três métodos getter para aplicar cores de console:
-    `errorText`, `instructionText` e `titleText`. Ela também adiciona um método para
-    dividir uma string em linhas de um comprimento especificado chamado `splitLinesByLength`.
+    This code defines an extension called `TextRenderUtils` on the `String`
+    class. It adds three getter methods for applying console colors:
+    `errorText`, `instructionText`, and `titleText`. It also adds a method for
+    splitting a string into lines of a specified length called `splitLinesByLength`.
 
-### Tarefa 3: Atualizar o pacote command_runner
+### Task 3: Update command_runner package
 
-Atualize o pacote `command_runner` para exportar `console.dart`.
+Update the `command_runner` package to export `console.dart`.
 
-1.  Abra `command_runner/lib/command_runner.dart` e adicione a seguinte linha:
+1.  Open `command_runner/lib/command_runner.dart` and add the following line:
 
     ```dart title="command_runner/lib/command_runner.dart"
     library;
@@ -227,15 +226,15 @@ Atualize o pacote `command_runner` para exportar `console.dart`.
     // TODO: Export any libraries intended for clients of this package.
     ```
 
-### Tarefa 4: Implementar comando echo colorido
+### Task 4: Implement colorful echo command
 
-Finalmente, implemente um comando de exemplo para testar a impressão. É
-uma boa prática implementar um exemplo de uso de um pacote em Dart para
-desenvolvedores que usarão seu pacote. Este exemplo cria um comando
-que torna a saída do console colorida.
+Finally, implement an example command to test the print. It's
+good practice to implement example usage of a package in Dart for
+developers that will use your package.  This example creates a command
+that makes console output colorful.
 
-1.  Abra o arquivo `example/command_runner_example.dart`.
-2.  Substitua o conteúdo do arquivo pelo seguinte código:
+1.  Open the `example/command_runner_example.dart` file.
+2.  Replace the contents of the file with the following code:
 
     ```dart title="command_runner/example/command_runner_example.dart"
     import 'dart:async';
@@ -301,54 +300,54 @@ que torna a saída do console colorida.
     }
     ```
 
-    Este código define um comando `PrettyEcho` que estende a classe `Command`.
-    Ele recebe uma string como argumento e aplica cores diferentes a cada palavra
-    com base em sua posição na string. O método `run` usa os métodos getter `titleText`,
-    `instructionText` e `errorText` da extension `TextRenderUtils`
-    para aplicar as cores.
+    This code defines a `PrettyEcho` command that extends the `Command` class.
+    It takes a string as an argument and applies different colors to each word
+    based on its position in the string. The `run` method uses the `titleText`,
+    `instructionText`, and `errorText` getter methods from the `TextRenderUtils`
+    extension to apply the colors.
 
-3.  Navegue até `/dartpedia/command_runner` e execute o seguinte comando:
+3.  Navigate to `/dartpedia/command_runner` and run the following command:
 
     ```bash
     dart run example/command_runner_example.dart echo "hello world goodbye"
     ```
 
-    Você deve ver o seguinte texto impresso no console, com a primeira
-    palavra aparecendo em azul claro, a segunda em amarelo e a terceira em vermelho.
+    You should see the following text printed to the console, with the first
+    word appearing in light blue, the second in yellow, and the third in red.
 
     ```bash
     hello world goodbye
     ```
 
-## Revisão
+## Review
 
-Nesta lição, você aprendeu sobre:
+In this lesson, you learned about:
 
-*   Usar enhanced enums para definir e gerenciar cores de console.
-*   Aplicar extensions para adicionar novos métodos à classe `String`.
-*   Melhorar a formatação e cor da saída para uma melhor experiência do usuário.
+*   Using enhanced enums to define and manage console colors.
+*   Applying extensions to add new methods to the `String` class.
+*   Improving output formatting and color for a better user experience.
 
 ## Quiz
 
-**Questão 1:** O que é um enhanced enum em Dart?
+**Question 1:** What is an enhanced enum in Dart?
 
-*   A) Um enum que pode ter apenas valores string.
-*   B) Um enum que pode ter métodos e propriedades.
-*   C) Um enum que é gerado automaticamente pelo compilador Dart.
-*   D) Um enum que só pode ser usado em aplicações Flutter.
+*   A) An enum that can only have string values.
+*   B) An enum that can have methods and properties.
+*   C) An enum that is automatically generated by the Dart compiler.
+*   D) An enum that can only be used in Flutter applications.
 
-**Questão 2:** O que é uma extension Dart?
+**Question 2:** What is a Dart extension?
 
-*   A) Uma maneira de adicionar novos métodos a classes existentes.
-*   B) Uma maneira de criar novas classes a partir de classes existentes.
-*   C) Uma maneira de definir novos operadores em Dart.
-*   D) Uma maneira de criar novas variáveis em Dart.
+*   A) A way to add new methods to existing classes.
+*   B) A way to create new classes from existing classes.
+*   C) A way to define new operators in Dart.
+*   D) A way to create new variables in Dart.
 
-## Próxima lição
+## Next lesson
 
-Na próxima lição, você aprenderá como melhorar ainda mais o
-pacote `command_runner` polindo o `HelpCommand`, completando a
-classe `CommandRunner`, adicionando o argumento `onOutput` e fornecendo um
-exemplo completo.
+In the next lesson, you'll learn how to further improve the
+`command_runner` package by polishing the `HelpCommand`, completing the
+`CommandRunner` class, adding the `onOutput` argument, and providing a complete
+example.
 
 [ANSI escape codes]: https://en.wikipedia.org/wiki/ANSI_escape_code

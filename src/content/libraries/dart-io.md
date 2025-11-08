@@ -1,7 +1,6 @@
 ---
-ia-translate: true
-title: "dart:io"
-description: "Saiba mais sobre os principais recursos na biblioteca dart:io do Dart."
+title: dart:io
+description: Learn about the major features in Dart's dart:io library.
 prevpage:
   url: /libraries/dart-convert
   title: dart:convert
@@ -12,48 +11,48 @@ nextpage:
 
 <?code-excerpt plaster="none"?>
 
-A biblioteca [dart:io][] fornece APIs para lidar com
-arquivos, diretórios, processos, sockets, WebSockets e HTTP
-clientes e servidores.
+The [dart:io][] library provides APIs to deal with
+files, directories, processes, sockets, WebSockets, and HTTP
+clients and servers.
 
 :::important
-Apenas aplicativos [Flutter]({{site.flutter}}) não web, scripts de linha de comando,
-e servidores podem importar e usar `dart:io`, não aplicativos web.
+Only non-web [Flutter apps,]({{site.flutter}}) command-line scripts, 
+and servers can import and use `dart:io`, not web apps.
 :::
 
-Em geral, a biblioteca dart:io implementa e promove uma API assíncrona.
-Métodos síncronos podem facilmente bloquear um aplicativo, dificultando
-o dimensionamento. Portanto, a maioria das operações retorna resultados por meio de objetos
-Future ou Stream, um padrão comum em plataformas de servidor modernas como
+In general, the dart:io library implements and promotes an asynchronous
+API. Synchronous methods can easily block an application, making it
+difficult to scale. Therefore, most operations return results via Future
+or Stream objects, a pattern common with modern server platforms such as
 Node.js.
 
-Os poucos métodos síncronos na biblioteca dart:io são claramente marcados
-com um sufixo Sync no nome do método. Métodos síncronos não são abordados aqui.
+The few synchronous methods in the dart:io library are clearly marked
+with a Sync suffix on the method name. Synchronous methods aren't covered here.
 
-Para usar a biblioteca dart:io, você deve importá-la:
+To use the dart:io library you must import it:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (import)"?>
 ```dart
 import 'dart:io';
 ```
 
-## Arquivos e diretórios {:#files-and-directories}
+## Files and directories
 
-A biblioteca I/O permite que aplicativos de linha de comando leiam e gravem arquivos e
-naveguem por diretórios. Você tem duas opções para ler o conteúdo de um
-arquivo: tudo de uma vez ou por streaming (transmissão). Ler um arquivo tudo de uma vez requer
-memória suficiente para armazenar todo o conteúdo do arquivo. Se o arquivo for muito
-grande ou você quiser processá-lo durante a leitura, você deve usar um
-Stream, conforme descrito em
-[Streaming de conteúdo de arquivo](#streaming-file-contents).
+The I/O library enables command-line apps to read and write files and
+browse directories. You have two choices for reading the contents of a
+file: all at once, or streaming. Reading a file all at once requires
+enough memory to store all the contents of the file. If the file is very
+large or you want to process it while reading it, you should use a
+Stream, as described in
+[Streaming file contents](#streaming-file-contents).
 
-### Lendo um arquivo como texto {:#reading-a-file-as-text}
+### Reading a file as text
 
-Ao ler um arquivo de texto codificado usando UTF-8, você pode ler todo o
-conteúdo do arquivo com `readAsString()`. Quando as linhas individuais são
-importantes, você pode usar `readAsLines()`. Em ambos os casos, um objeto Future
-é retornado que fornece o conteúdo do arquivo como uma ou mais
-strings (cadeias de caracteres).
+When reading a text file encoded using UTF-8, you can read the entire
+file contents with `readAsString()`. When the individual lines are
+important, you can use `readAsLines()`. In both cases, a Future object
+is returned that provides the contents of the file as one or more
+strings.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (read-as-string)" replace="/\btest_data\///g"?>
 ```dart
@@ -71,11 +70,11 @@ void main() async {
 ```
 
 
-### Lendo um arquivo como binário {:#reading-a-file-as-binary}
+### Reading a file as binary
 
-O código a seguir lê um arquivo inteiro como bytes em uma lista de ints.
-A chamada para `readAsBytes()` retorna um Future, que fornece o resultado
-quando ele estiver disponível.
+The following code reads an entire file as bytes into a list of ints.
+The call to `readAsBytes()` returns a Future, which provides the result
+when it's available.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (read-as-bytes)" replace="/\btest_data\///g"?>
 ```dart
@@ -87,11 +86,11 @@ void main() async {
 }
 ```
 
-### Lidando com erros {:#handling-errors}
+### Handling errors
 
-Para capturar erros para que eles não resultem em exceções não tratadas, você pode
-registrar um manipulador `catchError` no Future,
-ou (em uma função `async`) usar try-catch:
+To capture errors so they don't result in uncaught exceptions, you can
+register a `catchError` handler on the Future,
+or (in an `async` function) use try-catch:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 ```dart
@@ -106,12 +105,12 @@ void main() async {
 }
 ```
 
-### Streaming de conteúdo de arquivo {:#streaming-file-contents}
+### Streaming file contents
 
-Use um Stream para ler um arquivo, um pouco de cada vez.
-Você pode usar a [API Stream](/libraries/dart-async#stream)
-ou `await for`, parte do
-[suporte de assincronia do Dart.](/language/async)
+Use a Stream to read a file, a little at a time.
+You can use either the [Stream API](/libraries/dart-async#stream)
+or `await for`, part of Dart's
+[asynchrony support.](/language/async)
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
 ```dart
@@ -134,12 +133,12 @@ void main() async {
 }
 ```
 
-### Gravando conteúdo de arquivo {:#writing-file-contents}
+### Writing file contents
 
-Você pode usar um [IOSink][] para
-gravar dados em um arquivo. Use o método `openWrite()` de File para obter um IOSink
-no qual você pode gravar. O modo padrão, `FileMode.write`,
-sobrescreve completamente os dados existentes no arquivo.
+You can use an [IOSink][] to
+write data to a file. Use the File `openWrite()` method to get an IOSink
+that you can write to. The default mode, `FileMode.write`, completely
+overwrites existing data in the file.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
 ```dart
@@ -150,22 +149,22 @@ await sink.flush();
 await sink.close();
 ```
 
-Para adicionar ao final do arquivo, use o parâmetro opcional `mode` para
-especificar `FileMode.append`:
+To add to the end of the file, use the optional `mode` parameter to
+specify `FileMode.append`:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
 ```dart
 var sink = logFile.openWrite(mode: FileMode.append);
 ```
 
-Para gravar dados binários, use `add(List<int> data)`.
+To write binary data, use `add(List<int> data)`.
 
 
-### Listando arquivos em um diretório {:#listing-files-in-a-directory}
+### Listing files in a directory
 
-Encontrar todos os arquivos e subdiretórios de um diretório é uma
-operação assíncrona. O método `list()` retorna um Stream que emite um
-objeto quando um arquivo ou diretório é encontrado.
+Finding all files and subdirectories for a directory is an asynchronous
+operation. The `list()` method returns a Stream that emits an object
+when a file or directory is encountered.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 ```dart
@@ -188,35 +187,35 @@ void main() async {
 ```
 
 
-### Outra funcionalidade comum {:#other-common-functionality}
+### Other common functionality
 
-As classes File e Directory contêm outras funcionalidades, incluindo,
-mas não se limitando a:
+The File and Directory classes contain other functionality, including
+but not limited to:
 
-- Criando um arquivo ou diretório: `create()` em File e Directory
-- Excluindo um arquivo ou diretório: `delete()` em File e Directory
-- Obtendo o tamanho de um arquivo: `length()` em File
-- Obtendo acesso aleatório a um arquivo: `open()` em File
+- Creating a file or directory: `create()` in File and Directory
+- Deleting a file or directory: `delete()` in File and Directory
+- Getting the length of a file: `length()` in File
+- Getting random access to a file: `open()` in File
 
-Consulte a documentação da API para [File][] e [Directory][] para uma lista
-completa de métodos.
+Refer to the API docs for [File][] and [Directory][] for a full
+list of methods.
 
 
-## Clientes e servidores HTTP {:#http-clients-and-servers}
+## HTTP clients and servers
 
-A biblioteca dart:io fornece classes que aplicativos de linha de comando podem usar para
-acessar recursos HTTP, bem como executar servidores HTTP.
+The dart:io library provides classes that command-line apps can use for
+accessing HTTP resources, as well as running HTTP servers.
 
-### Servidor HTTP {:#http-server}
+### HTTP server
 
-A classe [HttpServer][]
-fornece a funcionalidade de baixo nível para construir servidores web. Você pode
-corresponder manipuladores de requisição, definir cabeçalhos, transmitir dados e muito mais.
+The [HttpServer][] class
+provides the low-level functionality for building web servers. You can
+match request handlers, set headers, stream data, and more.
 
-O exemplo de servidor web a seguir retorna informações de texto simples.
-Este servidor escuta na porta 8888 e no endereço 127.0.0.1 (localhost),
-respondendo a requisições para o caminho `/dart`. Para qualquer outro caminho,
-a resposta é o código de status 404 (página não encontrada).
+The following sample web server returns simple text information.
+This server listens on port 8888 and address 127.0.0.1 (localhost),
+responding to requests for the path `/dart`. For any other path,
+the response is status code 404 (page not found).
 
 <?code-excerpt "misc/lib/library_tour/io/http_server.dart (process-requests)" replace="/Future<\w+\W/void/g; /\b_//g"?>
 ```dart
@@ -241,31 +240,31 @@ void processRequest(HttpRequest request) {
 }
 ```
 
-### Cliente HTTP {:#http-client}
+### HTTP client
 
-Você deve evitar usar diretamente `dart:io` para fazer requisições HTTP.
-A classe [HttpClient][] em `dart:io` é dependente da plataforma
-e vinculada a uma única implementação.
-Em vez disso, use uma biblioteca de nível superior como
+You should avoid directly using `dart:io` to make HTTP requests.
+The [HttpClient][] class in `dart:io` is platform-dependent
+and tied to a single implementation.
+Instead, use a higher-level library like
 [`package:http`]({{site.pub-pkg}}/http).
 
-O tutorial [Buscar dados da internet][]
-explica como fazer requisições HTTP
-usando `package:http`.
+The [Fetch data from the internet][] tutorial
+explains how to make HTTP requests
+using `package:http`.
 
-## Mais informações {:#more-information}
+## More information
 
-Esta página mostrou como usar os principais recursos da biblioteca [dart:io][].
-Além das APIs discutidas nesta seção, a biblioteca dart:io também
-fornece APIs para [processos,][Process] [sockets,][Socket] e
-[web sockets.][WebSocket] Para obter mais informações sobre o desenvolvimento
-de aplicativos do lado do servidor e de linha de comando,
-consulte a [visão geral do Dart do lado do servidor.](/server)
+This page showed how to use the major features of the [dart:io][] library.
+Besides the APIs discussed in this section, the dart:io library also
+provides APIs for [processes,][Process] [sockets,][Socket] and
+[web sockets.][WebSocket]
+For more information about server-side and command-line app development, see the
+[server-side Dart overview.](/server)
 
 
 [dart:io]: {{site.dart-api}}/dart-io/dart-io-library.html
 [Directory]: {{site.dart-api}}/dart-io/Directory-class.html
-[Buscar dados da internet]: /tutorials/server/fetch-data
+[Fetch data from the internet]: /tutorials/server/fetch-data
 [File]: {{site.dart-api}}/dart-io/File-class.html
 [HttpClient]: {{site.dart-api}}/dart-io/HttpClient-class.html
 [HttpRequest]: {{site.dart-api}}/dart-html/HttpRequest-class.html

@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: implicit_super_initializer_missing_arguments
-description: "Detalhes sobre o diagnóstico implicit_super_initializer_missing_arguments produzido pelo analisador do Dart."
+description: >-
+  Details about the implicit_super_initializer_missing_arguments
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O construtor sem nome invocado implicitamente de '{0}' tem parâmetros obrigatórios._
+_The implicitly invoked unnamed constructor from '{0}' has required parameters._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor implicitamente
-invoca o construtor sem nome da superclasse, o construtor sem nome
-da superclasse tem um parâmetro obrigatório, e não há
-parâmetro super correspondente ao parâmetro obrigatório.
+The analyzer produces this diagnostic when a constructor implicitly
+invokes the unnamed constructor from the superclass, the unnamed
+constructor of the superclass has a required parameter, and there's no
+super parameter corresponding to the required parameter.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque o construtor sem nome
-na classe `B` implicitamente invoca o construtor sem nome na
-classe `A`, mas o construtor em `A` tem um parâmetro posicional
-obrigatório chamado `x`:
+The following code produces this diagnostic because the unnamed
+constructor in the class `B` implicitly invokes the unnamed constructor in
+the class `A`, but the constructor in `A` has a required positional
+parameter named `x`:
 
 ```dart
 class A {
@@ -32,10 +33,10 @@ class B extends A {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o construtor sem nome
-na classe `B` implicitamente invoca o construtor sem nome na
-classe `A`, mas o construtor em `A` tem um parâmetro nomeado
-obrigatório chamado `x`:
+The following code produces this diagnostic because the unnamed
+constructor in the class `B` implicitly invokes the unnamed constructor in
+the class `A`, but the constructor in `A` has a required named parameter
+named `x`:
 
 ```dart
 class A {
@@ -47,11 +48,11 @@ class B extends A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você puder adicionar um parâmetro ao construtor na subclasse, então adicione um
-parâmetro super correspondente ao parâmetro obrigatório no construtor da superclasse.
-O novo parâmetro pode ser obrigatório:
+If you can add a parameter to the constructor in the subclass, then add a
+super parameter corresponding to the required parameter in the superclass'
+constructor. The new parameter can either be required:
 
 ```dart
 class A {
@@ -63,7 +64,7 @@ class B extends A {
 }
 ```
 
-ou pode ser opcional:
+or it can be optional:
 
 ```dart
 class A {
@@ -75,8 +76,8 @@ class B extends A {
 }
 ```
 
-Se você não puder adicionar um parâmetro ao construtor na subclasse, então adicione
-uma invocação explícita do construtor super com o argumento obrigatório:
+If you can't add a parameter to the constructor in the subclass, then add
+an explicit super constructor invocation with the required argument:
 
 ```dart
 class A {

@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: name_not_string
-description: "Detalhes sobre o diagnóstico name_not_string produzido pelo analisador do Dart."
+description: >-
+  Details about the name_not_string
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O valor do campo 'name' é obrigatório ser uma string._
+_The value of the 'name' field is required to be a string._
 
 ## Description
 
-O analisador produz este diagnóstico quando a chave `name` de nível superior tem um
-valor que não é uma string.
+The analyzer produces this diagnostic when the top-level `name` key has a
+value that isn't a string.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o valor seguindo a
-chave `name` é uma lista:
+The following code produces this diagnostic because the value following the
+`name` key is a list:
 
 ```yaml
 name:
@@ -25,7 +26,7 @@ name:
 
 ## Common fixes
 
-Substitua o valor por uma string:
+Replace the value with a string:
 
 ```yaml
 name: example

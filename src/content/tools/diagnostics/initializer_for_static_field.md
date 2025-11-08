@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: initializer_for_static_field
-description: "Detalhes sobre o diagnóstico initializer_for_static_field produzido pelo analisador do Dart."
+description: >-
+  Details about the initializer_for_static_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' é um campo static na classe envolvente. Campos inicializados em um construtor não podem ser static._
+_'{0}' is a static field in the enclosing class. Fields initialized in a constructor can't be static._
 
 ## Description
 
-O analisador produz este diagnóstico quando um campo static é inicializado
-em um construtor usando um parâmetro formal inicializador ou uma
-atribuição na lista de inicializadores.
+The analyzer produces this diagnostic when a static field is initialized
+in a constructor using either an initializing formal parameter or an
+assignment in the initializer list.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o campo static `a`
-está sendo inicializado pelo parâmetro formal inicializador `this.a`:
+The following code produces this diagnostic because the static field `a`
+is being initialized by the initializing formal parameter `this.a`:
 
 ```dart
 class C {
@@ -28,7 +29,7 @@ class C {
 
 ## Common fixes
 
-Se o campo deve ser um campo de instância, então remova a keyword `static`:
+If the field should be an instance field, then remove the keyword `static`:
 
 ```dart
 class C {
@@ -37,8 +38,8 @@ class C {
 }
 ```
 
-Se você pretendia inicializar um campo de instância e digitou o nome errado,
-então corrija o nome do campo sendo inicializado:
+If you intended to initialize an instance field and typed the wrong name,
+then correct the name of the field being initialized:
 
 ```dart
 class C {
@@ -48,8 +49,8 @@ class C {
 }
 ```
 
-Se você realmente quer inicializar o campo static, então mova a
-inicialização para o corpo do construtor:
+If you really want to initialize the static field, then move the
+initialization into the constructor body:
 
 ```dart
 class C {

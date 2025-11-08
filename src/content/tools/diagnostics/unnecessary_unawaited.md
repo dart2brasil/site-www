@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_unawaited
-description: "Detalhes sobre o diagnóstico unnecessary_unawaited produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_unawaited
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,20 +18,20 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário de 'unawaited'._
+_Unnecessary use of 'unawaited'._
 
 ## Description
 
-O analisador produz este diagnóstico quando `unawaited` é usado para marcar uma
-chamada a uma função, método, ou operador, ou uma referência a um campo,
-getter, ou variável de nível superior como seguramente não sendo esperado, mas o membro
-chamado também está anotado com `@awaitNotRequired`. Esta anotação em si
-sinaliza que envolver com `unawaited` é desnecessário em qualquer local de chamada.
+The analyzer produces this diagnostic when `unawaited` is used to mark a
+call to a function, method, or operator, or a reference to a field,
+getter, or top-level variable as safely not being awaited, but the called
+member is also annotated with `@awaitNotRequired`. This annotation itself
+signals that wrapping with `unawaited` is unnecessary at any call site.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `unawaited` é invocado
-em uma chamada a uma função que está anotada com `@awaitNotRequired`:
+The following code produces this diagnostic because `unawaited` is invoked
+on a call to a function that's annotated with `@awaitNotRequired`:
 
 ```dart
 import 'dart:async';
@@ -46,7 +47,7 @@ void f() {
 
 ## Common fixes
 
-Remova a invocação de `unawaited`:
+Remove the invocation of `unawaited`:
 
 ```dart
 import 'package:meta/meta.dart';

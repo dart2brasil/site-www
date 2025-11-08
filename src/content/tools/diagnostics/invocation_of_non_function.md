@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: invocation_of_non_function
-description: "Detalhes sobre o diagnóstico invocation_of_non_function produzido pelo analisador do Dart."
+description: >-
+  Details about the invocation_of_non_function
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' não é uma função._
+_'{0}' isn't a function._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando encontra uma invocação de função,
-mas o nome da função sendo invocada é definido como algo diferente
-de uma função.
+The analyzer produces this diagnostic when it finds a function invocation,
+but the name of the function being invoked is defined to be something other
+than a function.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `Binary` é o nome de
-um tipo de função, não uma função:
+The following code produces this diagnostic because `Binary` is the name of
+a function type, not a function:
 
 ```dart
 typedef Binary = int Function(int, int);
@@ -27,6 +28,6 @@ int f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Substitua o nome pelo nome de uma função.
+Replace the name with the name of a function.

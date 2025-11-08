@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: static_access_to_instance_member
-description: "Detalhes sobre o diagnóstico static_access_to_instance_member produzido pelo analisador Dart."
+description: >-
+  Details about the static_access_to_instance_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O membro de instância '{0}' não pode ser acessado usando acesso static._
+_Instance member '{0}' can't be accessed using static access._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um nome de classe é usado para acessar
-um campo de instância. Campos de instância não existem em uma classe; eles existem apenas
-em uma instância da classe.
+The analyzer produces this diagnostic when a class name is used to access
+an instance field. Instance fields don't exist on a class; they exist only
+on an instance of the class.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `x` é um campo de
-instância:
+The following code produces this diagnostic because `x` is an instance
+field:
 
 ```dart
 class C {
@@ -29,10 +30,10 @@ class C {
 int f() => C.[!b!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você pretende acessar um campo static, então altere o nome do campo
-para um campo static existente:
+If you intend to access a static field, then change the name of the field
+to an existing static field:
 
 ```dart
 class C {
@@ -44,8 +45,8 @@ class C {
 int f() => C.a;
 ```
 
-Se você pretende acessar o campo de instância, então use uma instância da
-classe para acessar o campo:
+If you intend to access the instance field, then use an instance of the
+class to access the field:
 
 ```dart
 class C {

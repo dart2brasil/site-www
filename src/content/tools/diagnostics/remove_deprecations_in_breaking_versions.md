@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: remove_deprecations_in_breaking_versions
-description: "Detalhes sobre o diagnóstico remove_deprecations_in_breaking_versions produzido pelo analisador do Dart."
+description: >-
+  Details about the remove_deprecations_in_breaking_versions
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Remova elementos obsoletos em versões breaking._
+_Remove deprecated elements in breaking versions._
 
 ## Description
 
-O analisador produz este diagnóstico em pacotes que têm um número de versão
-"breaking" (`x.0.0` ou `0.x.0`) para toda declaração que tem uma
-anotação `@Deprecated`.
+The analyzer produces this diagnostic in packages that have a "breaking"
+version number (`x.0.0` or `0.x.0`) for every declaration that has a
+`@Deprecated` annotation.
 
 ## Example
 
-Dado um pacote com um arquivo `pubspec.yaml` contendo:
+Given a package with a `pubspec.yaml` file containing:
 
 ```yaml
 name: p
@@ -25,8 +26,8 @@ environment:
   sdk: ^3.9.0
 ```
 
-O código a seguir produz este diagnóstico porque a função `f` está
-anotada com `@deprecated`:
+The following code produces this diagnostic because the function `f` is
+annotated with `@deprecated`:
 
 ```dart
 @[!deprecated!]
@@ -37,15 +38,15 @@ void g() {}
 
 ## Common fixes
 
-* Se a declaração deve ser removida na próxima versão do pacote,
-então remova a declaração:
+* If the declaration should be removed in the next release of the package,
+then remove the declaration:
 
 ```dart
 void g() {}
 ```
 
-* Se você não está fazendo uma mudança breaking, então use um incremento de versão
-  minor ou patch para o pacote:
+* If you are not making a breaking change, then use a minor or patch
+  version increment for the package:
 
 ```yaml
 name: p

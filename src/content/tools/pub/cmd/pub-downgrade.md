@@ -1,13 +1,12 @@
 ---
-ia-translate: true
 title: dart pub downgrade
-description: "Use dart pub downgrade para obter as versões mais baixas de todas as dependências usadas pela sua aplicação Dart."
+description: Use dart pub downgrade to get the lowest versions of all dependencies used by your Dart application.
 ---
 
-_Downgrade_ (rebaixar) é um dos comandos da [ferramenta pub](/tools/pub/cmd).
+_Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```plaintext
-$ dart pub downgrade [--[no-]offline] [-n|--dry-run] [dependências...]
+$ dart pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...] 
 ```
 
 Without any additional arguments, `dart pub downgrade` gets the lowest versions of
@@ -18,33 +17,33 @@ For example:
 
 ```console
 $ dart pub downgrade
-Resolvendo dependências... (1.2s)
+Resolving dependencies... (1.2s)
 + barback 0.13.0
 + collection 0.9.1
 + path 1.2.0
 + source_maps 0.9.0
 + source_span 1.0.0
 + stack_trace 0.9.1
-Alteradas 6 dependências!
+Changed 6 dependencies!
 ```
 
-O comando `dart pub downgrade` cria um arquivo de lock (bloqueio). Se já existir um,
-o pub ignora esse arquivo e gera um novo do zero, usando as versões mais baixas
-de todas as dependências.
+The `dart pub downgrade` command creates a lockfile. If one already exists,
+pub ignores that file and generates a new one from scratch, using the lowest
+versions of all dependencies.
 
-Veja a documentação de [`dart pub get`](/tools/pub/cmd/pub-get) para mais informações
-sobre resolução de pacotes e o cache de pacotes do sistema.
+See the [`dart pub get` documentation](/tools/pub/cmd/pub-get) for more information
+on package resolution and the system package cache.
 
 
-## Rebaixando dependências específicas {:#downgrading-specific-dependencies}
+## Downgrading specific dependencies
 
-É possível instruir o `dart pub downgrade` a rebaixar dependências específicas para a
-versão mais baixa, mantendo as demais dependências o mais intactas possível.
-Por exemplo:
+It's possible to tell `dart pub downgrade` to downgrade specific dependencies to the
+lowest version while leaving the rest of the dependencies alone as much as
+possible. For example:
 
 ```console
 $ dart pub downgrade test
-Resolvendo dependências...
+Resolving dependencies...
   barback 0.15.2+2
   bot 0.27.0+2
   browser 0.10.0+2
@@ -53,76 +52,76 @@ Resolvendo dependências...
   path 1.3.0
   pool 1.0.1
   source_span 1.0.2
-< stack_trace 0.9.2 (era 1.1.1)
+< stack_trace 0.9.2 (was 1.1.1)
   stagexl 0.10.2
-< test 0.10.0 (era 0.11.4)
-Estes pacotes não são mais necessários:
+< test 0.10.0 (was 0.11.4)
+These packages are no longer being depended on:
 - matcher 0.11.3
-Alteradas 3 dependências!
+Changed 3 dependencies!
 ```
 
-Se você estiver rebaixando uma dependência específica, o pub tenta encontrar as
-versões mais altas de quaisquer dependências transitivas que se encaixem nas novas
-restrições de dependência. Quaisquer dependências transitivas são geralmente também
-rebaixadas como resultado.
+If you are downgrading a specific dependency, pub tries to find the
+highest versions of any transitive dependencies that fit the new dependency
+constraints. Any transitive dependencies are usually also downgraded
+as a result.
 
 
-## Obtendo uma nova dependência {:#getting-a-new-dependency}
+## Getting a new dependency
 
-Se uma dependência for adicionada ao pubspec antes de `dart pub downgrade` ser
-executado, ele obtém a nova dependência e quaisquer de suas dependências transitivas.
-Isso compartilha o mesmo comportamento que `dart pub get`.
-
-
-## Removendo uma dependência {:#removing-a-dependency}
-
-Se uma dependência for removida do pubspec antes de `dart pub downgrade` ser
-executado, a dependência não estará mais disponível para importação.
-Quaisquer dependências transitivas da dependência removida também são removidas,
-contanto que nenhuma dependência imediata restante também dependa delas.
-Este é o mesmo comportamento de `dart pub get`.
+If a dependency is added to the pubspec before `dart pub downgrade` is run,
+it gets the new dependency and any of its transitive dependencies.
+This shares the same behavior as `dart pub get`.
 
 
-## Rebaixando enquanto offline {:#downgrading-while-offline}
+## Removing a dependency
 
-Se você não tiver acesso à rede, ainda pode executar `dart pub downgrade`.
-Como o pub baixa pacotes para um cache central compartilhado por todos os pacotes
-em seu sistema, ele pode frequentemente encontrar pacotes baixados anteriormente
-sem precisar usar a rede.
+If a dependency is removed from the pubspec before `dart pub downgrade` is run,
+the dependency is no longer available for importing.
+Any transitive dependencies of the removed dependency are also removed,
+as long as no remaining immediate dependencies also depend on them.
+This is the same behavior as `dart pub get`.
 
-No entanto, por padrão, `dart pub downgrade` tenta se conectar se você
-tiver alguma dependência hospedada.
-Se você não quiser que o pub faça isso, passe a flag `--offline`.
-No modo offline, o pub procura apenas em seu cache de pacotes local,
-tentando encontrar um conjunto de versões que funcionem com seu pacote a partir do que já
-está disponível.
 
-## Opções {:#options}
+## Downgrading while offline
 
-Para opções que se aplicam a todos os comandos pub, veja
-[Opções globais](/tools/pub/cmd#global-options).
+If you don't have network access, you can still run `dart pub downgrade`.
+Because pub downloads packages to a central cache shared by all packages
+on your system, it can often find previously downloaded packages
+without needing to use the network.
 
-### `--[no-]offline` {:#no-offline}
+However, by default, `dart pub downgrade` tries to go online if you
+have any hosted dependencies.
+If you don't want pub to do that, pass it the `--offline` flag.
+In offline mode, pub looks only in your local package cache,
+trying to find a set of versions that work with your package from what's already
+available.
+
+## Options
+
+For options that apply to all pub commands, see
+[Global options](/tools/pub/cmd#global-options).
+
+### `--[no-]offline`
 
 {% render 'tools/pub-option-no-offline.md' %}
 
-### `--dry-run` ou `-n` {:#dry-run-or-n}
+### `--dry-run` or `-n`
 
-Relata quais dependências seriam alteradas, mas não altera nenhuma.
+Reports what dependencies would change but doesn't change any.
 
-### `--tighten` {:#tighten}
+### `--tighten`
 
 :::version-note
-O suporte para a opção `--tighten` foi adicionado no Dart 3.5.
+Support for the `--tighten` option was added in Dart 3.5.
 :::
 
-Atualiza os limites inferiores das dependências em `pubspec.yaml` para corresponder às
-versões resolvidas e retorna uma lista das restrições alteradas.
-Pode ser aplicado a [dependências específicas](#downgrading-specific-dependencies).
+Updates the lower bounds of dependencies in `pubspec.yaml` to match the
+resolved versions, and returns a list of the changed constraints. 
+Can be applied to [specific dependencies](#downgrading-specific-dependencies).
 
 {% render 'pub-problems.md' %}
 
-## Em um workspace (espaço de trabalho) {:#in-a-workspace}
+## In a workspace
 
-Em um [workspace Pub](/tools/pub/workspaces), `dart pub downgrade` irá
-rebaixar todas as dependências em todo o workspace.
+In a [Pub workspace](/tools/pub/workspaces) `dart pub downgrade` will
+downgrade all dependencies across the workspace.

@@ -1,47 +1,46 @@
 ---
-ia-translate: true
 title: Visual Studio Code
-description: "Você pode usar o VS Code para desenvolver aplicativos Dart."
+description: You can use VS Code to develop Dart apps.
 showToc: false
 ---
 
-Para desenvolver aplicativos Dart,
-instale o [Visual Studio Code][vs-code] (VS Code)
-e adicione a [extensão Dart][Dart extension].
+To develop Dart apps,
+install [Visual Studio Code][vs-code] (VS Code)
+and add the [Dart extension][].
 
-## Instale o VS Code {:#install-vs-code}
+## Install VS Code
 
-Para instalar a versão mais recente do [VS Code][VS Code],
-siga as instruções da Microsoft para a plataforma relevante:
+To install the latest version of [VS Code][],
+follow Microsoft's instructions for the relevant platform:
 
-- [Instalar no macOS][Instalar no macOS]
-- [Instalar no Windows][Instalar no Windows]
-- [Instalar no Linux][Instalar no Linux]
+- [Install on macOS][]
+- [Install on Windows][]
+- [Install on Linux][]
 
 [VS Code]: https://code.visualstudio.com/
-[Instalar no macOS]: https://code.visualstudio.com/docs/setup/mac
-[Instalar no Windows]: https://code.visualstudio.com/docs/setup/windows
-[Instalar no Linux]: https://code.visualstudio.com/docs/setup/linux
+[Install on macOS]: https://code.visualstudio.com/docs/setup/mac
+[Install on Windows]: https://code.visualstudio.com/docs/setup/windows
+[Install on Linux]: https://code.visualstudio.com/docs/setup/linux
 
-## Instale a extensão Dart do VS Code {:#install-the-vs-code-dart-extension}
+## Install the VS Code Dart extension
 
-A extensão Dart para VS Code oferece suporte a recursos de desenvolvimento específicos
-do Dart. Isso inclui realce de sintaxe, resolução de pacotes, hot reload e outros.
+The Dart extension for VS Code supports Dart-specific development capabilities.
+These include syntax highlighting, package resolution, hot reload, and others.
 
-1. Inicie o **VS Code**.
+1. Launch **VS Code**.
 
-1. Clique em **Extensões** na **Barra de Atividades** (Activity Bar).
-   Você também pode pressionar
+1. Click **Extensions** in the **Activity Bar**.  
+   You can also press
    <kbd>Control</kbd> / <kbd>Command</kbd> +
    <kbd>Shift</kbd> + <kbd>X</kbd>.
 
-1. Na caixa de pesquisa, digite `Dart`.
-   A primeira extensão retornada deve ser a [extensão Dart][Dart extension].
+1. In the Search box, type `Dart`.
+   The first extension returned should be the [Dart extension][].
 
-1. Clique em **Instalar**.
+1. Click **Install**.
 
-Para revisar a lista completa de recursos,
-consulte a [documentação da extensão][Dart extension].
+To review the full list of features,
+consult the [extension documentation][Dart extension].
 
 [Dart extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code
 [documentation]: https://dartcode.org/docs/

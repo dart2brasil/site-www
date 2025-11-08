@@ -1,31 +1,31 @@
 ---
-ia-translate: true
-title: "Tutoriais de interoperação JS"
-breadcrumb: Tutoriais
-description: Tutoriais para casos de uso comuns de interoperabilidade JavaScript em Dart.
+title: JS interop tutorials
+breadcrumb: Tutorials
+description: Tutorials for common JavaScript interop use cases in Dart.
 prevpage:
   url: /interop/js-interop/js-types
-  title: Tipos JS
+  title: JS types
 nextpage:
   url: /interop/js-interop/past-js-interop
-  title: "Interoperação JS anterior"
+  title: Past JS interop
 ---
 
-## Tutoriais {:#tutorials}
+## Tutorials
 
-### [Começando com interoperabilidade JavaScript][]
+### [Getting started with Javascript interop][]
 
-Neste tutorial, você aprenderá os conceitos básicos de interação com JavaScript
-em Dart, usando várias APIs JavaScript e do navegador.
+In this tutorial, you'll learn the basics of interacting with JavaScript 
+in Dart, using various JavaScript and browser APIs.
 
-### [Como simular interoperabilidade JavaScript em Dart][]
+### [How to mock JavaScript interop in Dart][]
 
-Este tutorial mostrará como usar classes Dart para simular os membros de instância `external` (externos) de um tipo de interoperabilidade.
+This tutorial will walk through how you can use Dart classes to mock the
+`external` instance members of an interop type.
 
 {% comment %}
-TODO: adicionar uma seção sobre como empacotar um aplicativo JS e Dart para interoperabilidade
-TODO: talvez adicionar uma seção sobre conversões
+TODO: add a section on how to bundle a JS and Dart app for interop
+TODO: maybe add a section on conversions
 {% endcomment %}
 
-[Começando com interoperabilidade JavaScript]: /interop/js-interop/start
-[Como simular interoperabilidade JavaScript em Dart]: /interop/js-interop/mock
+[Getting started with Javascript interop]: /interop/js-interop/start
+[How to mock JavaScript interop in Dart]: /interop/js-interop/mock

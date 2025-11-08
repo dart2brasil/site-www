@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: unused_import
-description: "Detalhes sobre o diagnóstico unused_import produzido pelo analisador Dart."
+description: >-
+  Details about the unused_import
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Import não usado: '{0}'._
+_Unused import: '{0}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um import não é necessário porque
-nenhum dos nomes que são importados são referenciados dentro da biblioteca
-importadora.
+The analyzer produces this diagnostic when an import isn't needed because
+none of the names that are imported are referenced within the importing
+library.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque nada definido em
-`dart:async` é referenciado na biblioteca:
+The following code produces this diagnostic because nothing defined in
+`dart:async` is referenced in the library:
 
 ```dart
 import [!'dart:async'!];
@@ -25,9 +26,9 @@ import [!'dart:async'!];
 void main() {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o import não é necessário, então remova-o.
+If the import isn't needed, then remove it.
 
-Se alguns dos nomes importados devem ser usados, então adicione o código
-faltante.
+If some of the imported names are intended to be used, then add the missing
+code.

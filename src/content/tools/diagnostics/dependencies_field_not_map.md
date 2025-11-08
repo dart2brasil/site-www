@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: dependencies_field_not_map
-description: "Detalhes sobre o diagnóstico dependencies_field_not_map produzido pelo analisador do Dart."
+description: >-
+  Details about the dependencies_field_not_map
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O valor do campo '{0}' é esperado ser um map._
+_The value of the '{0}' field is expected to be a map._
 
 ## Description
 
-O analisador produz este diagnóstico quando o valor da chave
-`dependencies` ou `dev_dependencies` não é um map.
+The analyzer produces this diagnostic when the value of either the
+`dependencies` or `dev_dependencies` key isn't a map.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o valor da
-chave `dependencies` de nível superior é uma lista:
+The following code produces this diagnostic because the value of the
+top-level `dependencies` key is a list:
 
 ```yaml
 name: example
@@ -26,7 +27,7 @@ dependencies:
 
 ## Common fixes
 
-Use um map como o valor da chave `dependencies`:
+Use a map as the value of the `dependencies` key:
 
 ```yaml
 name: example

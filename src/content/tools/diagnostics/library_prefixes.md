@@ -1,9 +1,10 @@
 ---
 title: library_prefixes
-description: "Detalhes sobre o diagnóstico library_prefixes produzido pelo analisador Dart."
+description: >-
+  Details about the library_prefixes
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
 <div class="tags">
@@ -17,26 +18,26 @@ ia-translate: true
   </a>
 </div>
 
-_O prefixo '{0}' não é um identificador lower\_case\_with\_underscores._
+_The prefix '{0}' isn't a lower\_case\_with\_underscores identifier._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um prefixo de import não usa
-a convenção de nomenclatura lower_case_with_underscores.
+The analyzer produces this diagnostic when an import prefix doesn't use
+the lower_case_with_underscores naming convention.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o prefixo
-`ffiSupport` não é um identificador lower_case_with_underscores:
+The following code produces this diagnostic because the prefix
+`ffiSupport` isn't a lower_case_with_underscores identifier:
 
 ```dart
 import 'package:ffi/ffi.dart' as [!ffiSupport!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Converta o prefixo para usar a convenção de nomenclatura
-lower_case_with_underscores:
+Convert the prefix to use the lower_case_with_underscores naming
+convention:
 
 ```dart
 import 'package:ffi/ffi.dart' as ffi_support;

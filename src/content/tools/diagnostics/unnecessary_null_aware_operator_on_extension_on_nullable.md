@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_null_aware_operator_on_extension_on_nullable
-description: "Detalhes sobre o diagnóstico unnecessary_null_aware_operator_on_extension_on_nullable produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_null_aware_operator_on_extension_on_nullable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário de um operador null-aware para invocar um método de extensão em um tipo nullable._
+_Unnecessary use of a null-aware operator to invoke an extension method on a nullable type._
 
 ## Description
 
-O analisador produz este diagnóstico quando um operador null-aware é usado
-para invocar um método de extensão em uma extensão cujo tipo é nullable.
+The analyzer produces this diagnostic when a null-aware operator is used
+to invoke an extension method on an extension whose type is nullable.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o método de extensão
-`m` é invocado usando `?.` quando não precisa ser:
+The following code produces this diagnostic because the extension method
+`m` is invoked using `?.` when it doesn't need to be:
 
 ```dart
 extension E on int? {
@@ -39,8 +40,8 @@ int? f(int? i) => i[!?.!]m();
 
 ## Common fixes
 
-Se não for um requisito não invocar o método quando o receptor é
-`null`, então remova o ponto de interrogação da invocação:
+If it isn't a requirement not invoke the method when the receiver is
+`null`, then remove the question mark from the invocation:
 
 ```dart
 extension E on int? {

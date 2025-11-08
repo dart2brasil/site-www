@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: undefined_referenced_parameter
-description: "Detalhes sobre o diagnóstico undefined_referenced_parameter produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_referenced_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O parâmetro '{0}' não está definido por '{1}'._
+_The parameter '{0}' isn't defined by '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma anotação da forma
+The analyzer produces this diagnostic when an annotation of the form
 [`UseResult.unless(parameterDefined: parameterName)`][meta-UseResult]
-especifica um nome de parâmetro que não está definido pela função anotada.
+specifies a parameter name that isn't defined by the annotated function.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a função `f`
-não tem um parâmetro chamado `b`:
+The following code produces this diagnostic because the function `f`
+doesn't have a parameter named `b`:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -26,10 +27,10 @@ import 'package:meta/meta.dart';
 int f([int? a]) => a ?? 0;
 ```
 
-## Correções comuns
+## Common fixes
 
-Mude o argumento chamado `parameterDefined` para corresponder ao nome de um dos
-parâmetros da função:
+Change the argument named `parameterDefined` to match the name of one of
+the parameters to the function:
 
 ```dart
 import 'package:meta/meta.dart';

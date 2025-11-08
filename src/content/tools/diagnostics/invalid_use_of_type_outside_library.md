@@ -1,45 +1,46 @@
 ---
-ia-translate: true
 title: invalid_use_of_type_outside_library
-description: "Detalhes sobre o diagnóstico invalid_use_of_type_outside_library produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_use_of_type_outside_library
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A classe '{0}' não pode ser estendida fora de sua biblioteca porque é uma classe final._
+_The class '{0}' can't be extended outside of its library because it's a final class._
 
-_A classe '{0}' não pode ser estendida fora de sua biblioteca porque é uma classe interface._
+_The class '{0}' can't be extended outside of its library because it's an interface class._
 
-_A classe '{0}' não pode ser estendida, implementada ou misturada fora de sua biblioteca porque é uma classe sealed._
+_The class '{0}' can't be extended, implemented, or mixed in outside of its library because it's a sealed class._
 
-_A classe '{0}' não pode ser implementada fora de sua biblioteca porque é uma classe base._
+_The class '{0}' can't be implemented outside of its library because it's a base class._
 
-_A classe '{0}' não pode ser implementada fora de sua biblioteca porque é uma classe final._
+_The class '{0}' can't be implemented outside of its library because it's a final class._
 
-_A classe '{0}' não pode ser usada como uma restrição de superclasse de mixin fora de sua biblioteca porque é uma classe final._
+_The class '{0}' can't be used as a mixin superclass constraint outside of its library because it's a final class._
 
-_O mixin '{0}' não pode ser implementado fora de sua biblioteca porque é um mixin base._
+_The mixin '{0}' can't be implemented outside of its library because it's a base mixin._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma cláusula `extends`, `implements`,
-`with` ou `on` usa uma classe ou mixin de uma forma que não é permitida
-considerando os modificadores na declaração dessa classe ou mixin.
+The analyzer produces this diagnostic when an `extends`, `implements`,
+`with`, or `on` clause uses a class or mixin in a way that isn't allowed
+given the modifiers on that class or mixin's declaration.
 
-A mensagem especifica como a declaração está sendo usada e por que não é
-permitida.
+The message specifies how the declaration is being used and why it isn't
+allowed.
 
 ## Example
 
-Dado um arquivo `a.dart` que define uma classe base `A`:
+Given a file `a.dart` that defines a base class `A`:
 
 ```dart
 base class A {}
 ```
 
-O código a seguir produz este diagnóstico porque a classe `B`
-implementa a classe `A`, mas o modificador `base` impede que `A` seja
-implementada fora da biblioteca onde foi definida:
+The following code produces this diagnostic because the class `B`
+implements the class `A`, but the `base` modifier prevents `A` from being
+implemented outside of the library where it's defined:
 
 ```dart
 import 'a.dart';
@@ -49,17 +50,17 @@ final class B implements [!A!] {}
 
 ## Common fixes
 
-O uso deste tipo é restrito fora de sua biblioteca declarante. Se um
-tipo diferente e irrestrito está disponível e pode fornecer funcionalidade
-similar, então substitua o tipo:
+Use of this type is restricted outside of its declaring library. If a
+different, unrestricted type is available that can provide similar
+functionality, then replace the type:
 
 ```dart
 class B implements C {}
 class C {}
 ```
 
-Se não há um tipo diferente que seria apropriado, então remova o
-tipo, e possivelmente a cláusula inteira:
+If there isn't a different type that would be appropriate, then remove the
+type, and possibly the whole clause:
 
 ```dart
 class B {}

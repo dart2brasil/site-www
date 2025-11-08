@@ -1,7 +1,6 @@
 ---
-ia-translate: true
-title: "Escrevendo páginas de pacotes"
-description: "Aprenda como escrever uma boa página de pacote."
+title: Writing package pages
+description: Learn how to write a good package page.
 ---
 
 <style>
@@ -19,284 +18,284 @@ description: "Aprenda como escrever uma boa página de pacote."
   }
 </style>
 
-As diretrizes nesta página podem ajudar você a criar boas páginas de pacotes no pub.dev.
-Especificamente, esta página tem dicas para
-escrever um README melhor para o pacote,
-que fornece o conteúdo marcado como **README (este documento)**
-na seguinte captura de tela:
+The guidelines on this page can help you create good package pages on pub.dev.
+Specifically, this page has tips for
+writing a better package README,
+which provides the content marked **README (this document)**
+in the following screenshot:
 
-<img
+<img 
   src="/assets/img/libraries/package-page-sections.png"
   alt="package page contains sections like package layout, flutter favorite, package scoring, verified publishers, pubspec file" 
   class="screenshot diagram-wrap">
 
-Para detalhes sobre outras partes da página do pacote,
-siga estes links:
+For details about other parts of the package page,
+follow these links:
 
-1.  [Layout do pacote](/tools/pub/package-layout)
-2.  [Flutter Favorito]({{site.flutter-docs}}/development/packages-and-plugins/favorites)
-3.  [Pontuação do pacote]({{site.pub}}/help/scoring)
-4.  [Editores verificados](/tools/pub/verified-publishers)
-5.  [Arquivo Pubspec](/tools/pub/pubspec)
+1. [Package layout ](/tools/pub/package-layout)
+2. [Flutter Favorite]({{site.flutter-docs}}/development/packages-and-plugins/favorites)
+3. [Package scoring]({{site.pub}}/help/scoring)
+4. [Verified publishers](/tools/pub/verified-publishers)
+5. [Pubspec file](/tools/pub/pubspec)
 
 
-## Escrever um bom README é importante {:#writing-a-good-readme-is-important}
+## Writing a good README is important
 
-Pessoas que encontram seu pacote no pub.dev provavelmente
-irão escanear rapidamente o README ao decidir se devem experimentar seu pacote.
-Um bom README chama a atenção do leitor e
-mostra que seu pacote vale a pena ser experimentado.
+People who find your package on pub.dev are likely to
+quickly scan the README when deciding whether to try your package.
+A good README catches the reader's attention and
+shows that your package is worth trying.
 
 :::note
-O README do pacote é usado de várias maneiras.
-Por exemplo, seu conteúdo aparece não apenas na página do pacote no pub.dev,
-mas também na documentação de referência da API produzida por [`dart doc`][].
+The package README is used in multiple ways.
+For example, its content appears not only in the package page on pub.dev,
+but also in [`dart doc`][]-produced API reference documentation.
 :::
 
-Embora esta página apresente o README do pacote [`in_app_purchase`][],
-o seu pode não precisar ser tão grande ou detalhado.
-Se seu pacote for simples e não tiver nenhuma UI (interface do usuário) associada,
-seu README pode se parecer mais com o do pacote [`yaml`][].
+Although this page features the [`in_app_purchase`][] package README,
+yours might not need to be as large or detailed.
+If your package is simple and has no associated UI,
+its README might look more like the one for the [`yaml`][] package. 
 
 
-## Sete dicas para um bom README {:#seven-tips-for-good-readme}
+## Seven tips for good README
 
-Aqui estão algumas sugestões para criar um README
-que funcione bem no pub.dev:
+Here are some suggestions for creating a README
+that works well on pub.dev:
 
-1.  [Coloque uma descrição curta no topo](#tip1)
-2.  [Inclua conteúdo visual](#tip2)
-3.  [Use listas para apresentar informações importantes](#tip3)
-4.  [Inclua exemplos de uso](#tip4)
-5.  [Use formatação de código Dart](#tip5)
-6.  [Mencione termos relacionados](#tip6)
-7.  [Diga aos usuários onde ir em seguida](#tip7)
+1. [Put a short description at the top](#tip1)
+2. [Include visual content](#tip2)
+3. [Use lists to present important information](#tip3)
+4. [Include usage examples](#tip4)
+5. [Use Dart code formatting](#tip5)
+6. [Mention related terms](#tip6)
+7. [Tell users where to go next](#tip7)
 
 
-### 1. Coloque uma descrição curta no topo {:#tip1}
+### 1. Put a short description at the top {:#tip1}
 
-De acordo com nossa pesquisa com usuários,
-os usuários de pacotes gastam apenas alguns segundos para
-ler a descrição do pacote e decidir se devem
-ler o resto do README.
-Assim, você deve descrever concisamente o que o pacote faz ou alcança,
-de relance.
-Dedique algum tempo para elaborar uma descrição curta e agradável e
-ajude o usuário a tomar decisões.
+According to our user research,
+package users spend only a few seconds to
+read the package description and decide whether to
+read the rest of the README.
+Thus, you should concisely describe what the package does or achieves,
+at a glance.
+Spend some time to craft a short and sweet description and
+help the user to make decisions.
 
 :::tip
-Não escreva o nome do pacote novamente no topo.
-Ele já está visível na UI (interface do usuário) do pub.dev.
+Don't write the package name again at the top.
+It's already visible in the pub.dev UI.
 :::
 
-Aqui estão alguns exemplos de boas descrições:
+Here are some examples of good descriptions:
 
-*   `Um plugin Flutter para exibir arco-íris.`
-*   `Use aprendizado de máquina para categorizar sons de pássaros.`
+*   `A Flutter plugin for showing rainbows.`
+*   `Use machine learning to categorize bird sounds.`
 
-Informações importantes como o status do projeto ou restrições
-também devem estar próximas do topo.
-Por exemplo:
+Important information such as project status or constraints
+should also be near the top.
+For example:
 
-*   `Não funciona em versões iOS abaixo de 10.3.`
+*   `Does not work on iOS versions below 10.3.`
 
-Aqui está uma captura de tela da página do pacote [`in_app_purchase`][],
-que começa com uma breve explicação do pacote e um aviso:
+Here's a screenshot of the [`in_app_purchase`][] package page,
+which starts with a brief explanation of the package and a caution:
 
-<img
+<img 
   src="/assets/img/libraries/package-page-description.png"
-  alt="descrição do pacote in_app_purchase"
+  alt="description of the package in_app_purchase" 
   class="screenshot">
 
-[Badges][] (selos) geralmente estão perto do topo do README,
-acima ou abaixo da descrição curta.
+[Badges][] are often near the top of the README,
+either above or under the short description. 
 
 
-### 2. Inclua conteúdo visual {:#tip2}
+### 2. Include visual content {:#tip2}
 
-Se sua página de pacote for um mural de texto sem conteúdo visual,
-os usuários podem achá-la intimidante e parar de ler.
-Imagens são especialmente importantes se seu pacote suportar UI (interface do usuário),
-mas elas também são úteis para explicar conceitos importantes.
-De qualquer forma, o conteúdo visual pode ajudar os usuários
-a se sentirem confiantes sobre o uso do pacote.
+If your package page is a wall of text with no visual content,
+users might find it intimidating and stop reading.
+Images are especially important if your package supports UI,
+but they're also useful for explaining important concepts.
+Either way, visual content can help users
+feel confident about using the package.
 
-Coloque conteúdo visual como imagens estáticas, GIFs animados e
-vídeos (como arquivos MOV ou MP4)
-perto do início do README,
-onde os usuários provavelmente os verão.
+Place visual content such as static images, animated GIFs, and
+videos (such as MOV or MP4 files)
+close to the beginning of the README,
+where users are likely to see them.
 
 :::tip
-Prefira GIFs animados e vídeos para conteúdo relacionado à UI (interface do usuário),
-porque a maioria das UIs não são estáticas,
-e a animação transmite mais informações sobre o comportamento da UI.
+Prefer animated GIFs and videos for UI-related content,
+because most UIs aren't static,
+and animation conveys more information about the UI's behavior.
 :::
 
-As capturas de tela abaixo mostram como
-a adição de conteúdo visual tornou a página do pacote `in_app_purchase` informativa à primeira vista.
-(A imagem _antes_ está à esquerda; _depois_ está à direita.)
+The screenshots below show how
+adding visual content made the `in_app_purchase` package page look informative at first glance.
+(The _before_ picture is on the left; _after_ is on the right.)
 
-<img
+<img 
   src="/assets/img/libraries/package-page-example-iap.png"
-  alt="readme do in_app_purchase sem e com imagens"
+  alt="in_app_purchase readme without and with images" 
   class="screenshot">
 
 :::tip
-Ao adicionar conteúdo visual,
-use URLs absolutos para os arquivos
-para que as imagens apareçam de forma confiável,
-não importa onde o README seja publicado.
-Um lugar para hospedar suas imagens é no próprio repositório,
-como `in_app_purchase` faz.
+When adding visual content,
+use absolute URLs for the files
+to make the images reliably appear,
+no matter where the README is published.
+One place to host your images is in the repository itself,
+like `in_app_purchase` does.
 :::
 
 
-### 3. Use listas para apresentar informações importantes {:#tip3}
+### 3. Use lists to present important information {:#tip3}
 
-Listas podem chamar a atenção para informações importantes em seu README.
-Você pode usar listas para o seguinte:
+Lists can draw attention to important information on your README.
+You might use lists for the following:
 
-*   [Principais recursos do pacote](#list1)
-*   [Parâmetros, atributos ou propriedades](#list2)
-*   [Requisitos incomuns](#list3)
-*   [Funcionalidade que está fora do escopo do seu pacote](#list4)
-*   [Um resumo do conteúdo de uma página ou uma seção dentro de uma página
-    (como esta lista)](#list5)
+*   [Key features of the package](#list1)
+*   [Parameters, attributes, or properties](#list2)
+*   [Unusual requirements](#list3)
+*   [Functionality that's out of scope of your package](#list4)
+*   [A summary of the contents of a page or a section within a page
+    (like this list)](#list5)
 
-Normalmente, as listas são marcadas com marcadores, como a lista acima.
-Outra opção é usar uma tabela,
-como a tabela de suporte de plataforma na próxima seção.
+Usually, lists are bulleted, like the list above.
+Another option is using a table,
+like the table of platform support in the next section.
 
 
-#### Principais recursos do pacote {:#list1}
+#### Key features of the package {:#list1}
 
-Primeiro, liste claramente o que seu pacote pode fazer.
-Alguns usuários podem estar procurando por um recurso muito específico.
-Ajude esses usuários a descobrir se seu pacote atende às suas necessidades.
+First, clearly list what your package can do.
+Some users might be looking for a very specific feature.
+Help those users find out whether your package supports their needs.
 
-A seguinte captura de tela mostra como o README do `in_app_purchase`
-apresenta os recursos do pacote:
+The following screenshot shows how the `in_app_purchase` README
+presents the package's features:
 
-<img
+<img 
   src="/assets/img/libraries/package-page-features-list.png"
-  alt="lista de recursos do pacote in_app_purchase"
+  alt="list of features of the package in_app_purchase" 
   class="screenshot">
 
-A próxima captura de tela mostra uma tabela do README do `just_audio`
-que lista os recursos do pacote e o suporte da plataforma:
+The next screenshot shows a table from the `just_audio` README
+that lists the package's features and platform support:
 
-<img
+<img 
   src="/assets/img/libraries/package-page-features-table.png"
-  alt="lista de recursos do pacote just_audio em formato de tabela"
+  alt="list of features of the package just_audio in a table format" 
   class="screenshot-narrow">
 
 
-#### Parâmetros, atributos ou propriedades {:#list2}
+#### Parameters, attributes, or properties {:#list2}
 
-Considere listar parâmetros, atributos ou propriedades para referência rápida.
-(Lembre-se, o conteúdo do README do pacote aparece na
-documentação de referência da API, bem como na página do pacote.)
+Consider listing parameters, attributes, or properties for quick reference.
+(Remember, the content of the package README appears in the
+API reference documentation, as well as in the package page.)
 
-Por exemplo, o pacote `url_launcher` tem uma tabela de esquemas de URL suportados:
+For example, the `url_launcher` package has a table of supported URL schemes:
 
-<img
+<img 
   src="/assets/img/libraries/package-page-list-property.png"
-  alt="lista de esquemas suportados do pacote url_launcher"
+  alt="list of supported schemes of the package url_launcher" 
   class="screenshot">
 
-Fazer link para funções ou classes específicas
-na documentação de referência da API também pode ser útil.
-Veja o pacote [async]({{site.pub-pkg}}/async) para um exemplo.
+Linking to specific functions or classes
+in the API reference documentation can also be useful.
+See the [async]({{site.pub-pkg}}/async) package for an example.
 
 
-#### Requisitos incomuns {:#list3}
+#### Unusual requirements {:#list3}
 
-Se seu pacote precisar de uma configuração específica, além do que todos os pacotes exigem,
-liste as instruções de configuração no README.
+If your package needs a specific setup, beyond what all packages require,
+list setup instructions in the README.
 
-Por exemplo, a seguinte captura de tela do pacote `google_maps_flutter`
-mostra instruções sobre como começar a usar a plataforma Google Maps:
+For example, the following screenshot for the `google_maps_flutter` package
+shows instructions on getting started with Google Maps Platform:
 
-<img
-  src="/assets/img/libraries/package-page-list-requirements.png"
-  alt="instruções adicionais para usar google_maps_flutter"
-  class="screenshot">
-
-
-#### Funcionalidade que está fora do escopo do seu pacote {:#list4}
-
-Para ajudar os usuários a saber se seu pacote pode ajudá-los,
-liste os recursos que os usuários podem esperar,
-mas que seu pacote _não_ suporta.
-
-Aqui estão alguns exemplos de quando
-você pode querer listar a funcionalidade fora do escopo:
-
-*   Se seu pacote de botões se concentra apenas em botões de texto
-    e não em botões de ícone,
-    deixe isso claro no README.
-*   Se seu pacote suporta apenas certas versões do Android,
-    diga isso no README.
-
-
-#### Conteúdo {:#list5}
-
-Os usuários acham mais fácil navegar em uma página ou seção
-quando ela tem um índice.
-Se uma seção em seu README for muito longa,
-considere listar as subseções claramente no início da seção.
-
-Por exemplo, a seção "Uso" do README do `in_app_purchase`
-tem muitos exemplos.
-O seguinte índice ajuda os usuários a entender quais exemplos existem,
-e ir para o código que lhes interessa:
-
-<img
-  src="/assets/img/libraries/package-page-list-subsections.png"
-  alt="conteúdo da seção de uso do pacote in_app_purchase"
+<img 
+  src="/assets/img/libraries/package-page-list-requirements.png" 
+  alt="additional instructions to use google_maps_flutter" 
   class="screenshot">
 
 
-### 4. Inclua exemplos de uso {:#tip4}
+#### Functionality that's out of scope of your package {:#list4}
 
-Se seu pacote parece promissor, os usuários podem querer testá-lo.
-Inclua uma seção "Começar" ou "Uso" que tenha
-pelo menos um exemplo de código que os usuários possam entender facilmente—e,
-idealmente, que eles possam copiar e colar em seu projeto.
-É ainda melhor se você puder fornecer mais exemplos com mais detalhes
-para ajudar os usuários a entender seu pacote.
+To help users know whether your package can help them,
+list the features that users might expect,
+but that your package _doesn't_ support.
 
-Lembre-se de que nem todos os usuários falam inglês, mas todos falam Dart!
-Bons exemplos de código podem ajudar muito.
-Considere adicionar exemplos mais completos
-no diretório `example` do seu pacote,
-que o pub.dev pode usar para preencher uma aba **Exemplos**.
-Para detalhes, veja [Exemplos][] em
-as [convenções de layout de pacote][].
+Here are some examples of when
+you might want to list out-of-scope functionality:
 
-[Exemplos]: /tools/pub/package-layout#examples
-[convenções de layout de pacote]: /tools/pub/package-layout
+* If your button package is focused only on text buttons
+  and not on icon buttons,
+  make that clear in the README.
+* If your package supports only certain versions of Android,
+  say that in the README.
 
-A seguinte captura de tela mostra um dos vários exemplos no README para
-o pacote `in_app_purchase`:
 
-<img
+#### Contents {:#list5}
+
+Users find it easier to navigate a page or section
+when it has a table of contents.
+If a section in your README is very long,
+consider listing the subsections clearly at the beginning of the section. 
+
+For example, the "Usage" section of the `in_app_purchase` README
+has a lot of examples.
+The following table of contents helps users understand which examples exist,
+and go to the code that interests them:
+
+<img 
+  src="/assets/img/libraries/package-page-list-subsections.png" 
+  alt="content of the usage section of the package in_app_purchase" 
+  class="screenshot">
+
+
+### 4. Include usage examples {:#tip4}
+
+If your package looks promising, users might want to test your package.
+Include a "Get started" or "Usage" section that has
+at least one code sample that users can easily understand—and, 
+ideally, that they can copy and paste into their project.
+It's even better if you can provide more examples with more details
+to help users to understand your package. 
+
+Remember that not all users speak English, but they all speak Dart!
+Good code samples can go a long way.
+Consider adding more complete examples
+under your package's `example` directory,
+which pub.dev can use to populate an **Examples** tab.
+For details, see [Examples][] in
+the [package layout conventions][].
+
+[Examples]: /tools/pub/package-layout#examples
+[package layout conventions]: /tools/pub/package-layout
+
+The following screenshot shows one of several examples in the README for
+the `in_app_purchase` package:
+
+<img 
   src="/assets/img/libraries/package-page-usage-example.png"
-  alt="código de amostra do pacote in_app_purchase"
+  alt="sample code of the package in_app_purchase" 
   class="screenshot">
 
-### 5. Use formatação de código Dart {:#tip5}
+### 5. Use Dart code formatting {:#tip5}
 
-Ao adicionar exemplos de código,
-use três acentos graves mais `dart` (<code>&#96;&#96;&#96;dart</code>) em vez de
-três acentos graves (<code>&#96;&#96;&#96;</code>).
-Como os exemplos a seguir mostram,
-adicionar `dart` diz ao pub.dev para usar o realce de sintaxe Dart:
+When adding code examples,
+use three backticks plus `dart` (<code>&#96;&#96;&#96;dart</code>) instead of
+three backticks (<code>&#96;&#96;&#96;</code>).
+As the following examples show,
+adding `dart` tells pub.dev to use Dart syntax highlighting:
 
 <table width="100%">
 <tr>
-<th> <b>Formatado apenas com <code>&#96;&#96;&#96;</code></b> </th>
-<th> <b>Formatado com <code>&#96;&#96;&#96;dart</code></b> </th>
+<th> <b>Formatted with just <code>&#96;&#96;&#96;</code></b> </th>
+<th> <b>Formatted with <code>&#96;&#96;&#96;dart</code></b> </th>
 </tr>
 <tr>
 <td>
@@ -317,110 +316,110 @@ final like = 'this';
 </table>
 
 
-### 6. Mencione termos relacionados {:#tip6}
+### 6. Mention related terms {:#tip6}
 
-Um estudo recente de UX descobriu que
-muitos usuários usam o recurso de pesquisa dentro da página
-(`Control+F` ou `Command+F`)
-para procurar o recurso que estão procurando.
-Assim, certifique-se de mencionar termos importantes no README,
-para que os usuários possam encontrá-los.
+A recent UX study found that
+many users use the within-page search feature
+(`Control+F` or `Command+F`)
+to search for the feature they are looking for.
+Thus, be sure to mention important terms in the README,
+so that users can find them. 
 
-Por exemplo, os usuários podem querer saber se o pacote `in_app_purchase`
-suporta assinatura no aplicativo.
-Um usuário que pesquisa a palavra-chave _assinatura_
-pode abandonar a página se a página não usar esse termo.
+For example, users might want to know whether the `in_app_purchase` package
+supports in-app subscription.
+A user who searches for the keyword _subscription_
+might abandon the page if the page doesn't use that term.
 
-<img
+<img 
   src="/assets/img/libraries/package-page-terms.png"
-  alt="a palavra-chave é destacada quando os usuários a pesquisam dentro da página"
+  alt="the keyword is highlighted when users search for it within the page" 
   class="screenshot">
 
-Depois de mencionar todos os termos que as pessoas podem procurar,
-seja consistente sobre os termos que você usa.
-Se necessário, defina claramente os termos.
+After mentioning all the terms that people might search for,
+be consistent about the terms you use.
+If needed, clearly define the terms.
 
-Por exemplo, o pacote [`in_app_purchase`][] define
-_underlying store_ (loja subjacente) no início:
+For example, the [`in_app_purchase`][] package defines
+_underlying store_ at the beginning:
 
-<img
+<img 
   src="/assets/img/libraries/package-page-terms-definition.png"
-  alt="o significado de loja subjacente"
+  alt="the meaning of underlying store" 
   class="screenshot">
 
-O resto da página usa esse termo consistentemente:
+The rest of the page consistently uses that term:
 
-<img
+<img 
   src="/assets/img/libraries/package-page-terms-consistent.png"
-  alt="O termo loja subjacente é usado consistentemente em toda a página"
+  alt="The term underlying store is used consistently across the page" 
   class="screenshot">
 
 
-### 7. Diga aos usuários onde ir em seguida {:#tip7}
+### 7. Tell users where to go next {:#tip7}
 
-Ajude seus usuários a descobrir mais sobre o pacote.
-Aqui estão algumas sugestões sobre o que dizer aos usuários potenciais:
+Help your users find out more about the package.
+Here are some suggestions for what to tell potential users:
 
-*   Onde aprender mais sobre o pacote.
-    Você pode vincular a um artigo no Medium ou a um vídeo no YouTube.
-*   Onde obter ajuda sobre como usar o pacote.
-    As possibilidades incluem um rastreador de problemas, uma sala de chat ou um endereço de e-mail.
-*   O que você está planejando fazer com o pacote.
-    Um roteiro—seja no README ou em uma página externa—pode
-    ajudar os usuários a saber se o recurso de que precisam estará disponível em breve.
-*   Como contribuir com código para o pacote.
+* Where to learn more about the package.
+  You might link to an article on Medium, or to a video on YouTube.
+* Where to get help on using the package.
+  Possibilities include an issue tracker, a chat room, or an email address.
+* What you're planning to do with the package.
+  A roadmap—either in the README or in an external page—can 
+  help users know whether the feature they need is coming soon.
+* How to contribute code to the package.
 
-A seguinte captura de tela mostra a parte do README do `in_app_purchase`
-que tem informações para potenciais colaboradores:
+The following screenshot shows the part of the `in_app_purchase` README
+that has information for potential contributors:
 
-<img
+<img 
   src="/assets/img/libraries/package-page-contribute.png"
-  alt="como contribuir para in_app_purchase"
+  alt="how to contribute to in_app_purchase" 
   class="screenshot">
 
 
-## Saiba mais sobre a boa autoria de READMEs {:#learn-more-about-good-readme-authoring}
+## Learn more about good README authoring
 
-Sugerimos sete dicas para um bom README nesta documentação.
-Você pode aprender mais sobre recomendações comuns para documentação de desenvolvedores
-no [Guia de estilo de documentação para desenvolvedores do Google][style-guide].
-Algumas dicas adicionais incluem:
+We've suggested seven tips for good README in this documentation.
+You can learn more about common recommendations for developer documentation
+from the [Google Developer Documentation Style Guide][style-guide].
+Some additional tips include:  
 
-*   Forneça texto alternativo para imagens.
-*   Seja sucinto. Não diga por favor.
-*   Mantenha o comprimento da linha &lt;= 80 caracteres.
-*   Formate o código corretamente (como `dart format` faria).
+*   Supply alt text for images.
+*   Be succinct. Don't say please.
+*   Keep the line length &lt;= 80 chars.
+*   Format code correctly (as `dart format` would).
 
-Para saber mais sobre boas práticas de README,
-veja estes recursos:
+To learn more about good README practices,
+see these resources:
 
-[Lista de verificação do README][]
-: Uma lista de verificação para escrever um README que
-  ajuda os leitores a se sentirem confiantes sobre seu projeto.
+[README Checklist][]
+: A checklist for writing a README that
+  helps readers feel confident about your project.
 
-[README Incrível][]
-: Uma lista selecionada e anotada de ótimos READMEs.
+[Awesome README][]
+: A curated, annotated list of great READMEs.
 
-[Crie um README][]
-: Uma introdução aos READMEs,
-  com um modelo e sugestões para um bom README.
+[Make a README][]
+: An introduction to READMEs,
+  with a template and suggestions for a good README.
 
-[Como escrever um ótimo README para seu projeto GitHub][]
-: Elementos principais de um bom README e um modelo.
+[How to write a great README for your GitHub project][]
+: Key elements of a good README, and a template.
 
-As sugestões nesta página e em outras podem não funcionar para todos os pacotes.
-Seja criativo!
-Coloque-se no lugar dos usuários e
-imagine o que o leitor pode querer ler e saber.
-Você é a única pessoa que pode fornecer as informações de que o leitor precisa.
+The suggestions in this page and others might not work for all packages.
+Be creative!
+Put yourself into users' shoes and
+imagine what the reader might want to read and know.
+You're the only person who can provide the information that the reader needs.
 
-[README Incrível]: https://github.com/matiassingers/awesome-readme
+[Awesome README]: https://github.com/matiassingers/awesome-readme
 [Badges]: https://github.com/badges/shields#readme
 [`dart doc`]: /tools/dart-doc
-[Como escrever um ótimo README para seu projeto GitHub]: https://dbader.org/blog/write-a-great-readme-for-your-github-project
+[How to write a great README for your GitHub project]: https://dbader.org/blog/write-a-great-readme-for-your-github-project
 [`in_app_purchase`]: {{site.pub-pkg}}/in_app_purchase
 [in its repo]: https://github.com/flutter/plugins/tree/master/packages/in_app_purchase/in_app_purchase/doc
-[Crie um README]: https://www.makeareadme.com
-[Lista de verificação do README]: https://github.com/ddbeck/readme-checklist/blob/main/checklist.md
+[Make a README]: https://www.makeareadme.com
+[README Checklist]: https://github.com/ddbeck/readme-checklist/blob/main/checklist.md
 [style-guide]: https://developers.google.com/style/highlights
-[`yaml`]: {{site.pub-pkg}}/yaml
+[`yaml`]: {{site.pub-pkg}}/yaml 

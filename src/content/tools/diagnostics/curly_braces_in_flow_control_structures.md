@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: curly_braces_in_flow_control_structures
-description: "Detalhes sobre o diagnóstico curly_braces_in_flow_control_structures produzido pelo analisador do Dart."
+description: >-
+  Details about the curly_braces_in_flow_control_structures
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Statements em {0} devem ser incluídos em um bloco._
+_Statements in {0} should be enclosed in a block._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma estrutura de controle (`if`,
-`for`, `while`, ou statement `do`) tem um statement diferente de um bloco.
+The analyzer produces this diagnostic when a control structure (`if`,
+`for`, `while`, or `do` statement) has a statement other than a block.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o statement `then`
-não está incluído em um bloco:
+The following code produces this diagnostic because the `then` statement
+is not enclosed in a block:
 
 ```dart
 int f(bool b) {
@@ -39,7 +40,7 @@ int f(bool b) {
 
 ## Common fixes
 
-Adicione chaves ao redor do statement que deve ser um bloco:
+Add braces around the statement that should be a block:
 
 ```dart
 int f(bool b) {

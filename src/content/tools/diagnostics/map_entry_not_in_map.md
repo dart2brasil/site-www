@@ -1,22 +1,23 @@
 ---
 title: map_entry_not_in_map
-description: "Detalhes sobre o diagnóstico map_entry_not_in_map produzido pelo analisador Dart."
+description: >-
+  Details about the map_entry_not_in_map
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_Entradas de Map podem ser usadas apenas em um literal de map._
+_Map entries can only be used in a map literal._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma entrada de map (um par chave/valor)
-é encontrada em um literal de conjunto.
+The analyzer produces this diagnostic when a map entry (a key/value pair)
+is found in a set literal.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o literal tem uma entrada de map
-mesmo sendo um literal de conjunto:
+The following code produces this diagnostic because the literal has a map
+entry even though it's a set literal:
 
 ```dart
 var collection = <String>{[!'a' : 'b'!]};
@@ -24,20 +25,20 @@ var collection = <String>{[!'a' : 'b'!]};
 
 ## Common fixes
 
-Se você pretendia que a coleção fosse um map, então altere o código para
-que seja um map. No exemplo anterior, você poderia fazer isso adicionando
-outro argumento de tipo:
+If you intended for the collection to be a map, then change the code so
+that it is a map. In the previous example, you could do this by adding
+another type argument:
 
 ```dart
 var collection = <String, String>{'a' : 'b'};
 ```
 
-Em outros casos, você pode precisar alterar o tipo explícito de `Set` para
+In other cases, you might need to change the explicit type from `Set` to
 `Map`.
 
-Se você pretendia que a coleção fosse um conjunto, então remova a entrada de map,
-possivelmente substituindo os dois pontos por uma vírgula se ambos os valores devem ser
-incluídos no conjunto:
+If you intended for the collection to be a set, then remove the map entry,
+possibly by replacing the colon with a comma if both values should be
+included in the set:
 
 ```dart
 var collection = <String>{'a', 'b'};

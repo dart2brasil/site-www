@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: assignment_to_const
-description: "Detalhes sobre o diagnóstico assignment_to_const produzido pelo analisador do Dart."
+description: >-
+  Details about the assignment_to_const
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Variáveis constantes não podem receber um valor após a inicialização._
+_Constant variables can't be assigned a value after initialization._
 
 ## Description
 
-O analisador produz este diagnóstico quando encontra uma atribuição a uma
-variável de nível superior, um campo estático ou uma variável local que possui o
-modificador `const`. O valor de uma constante em tempo de compilação não pode ser alterado em
-tempo de execução.
+The analyzer produces this diagnostic when it finds an assignment to a
+top-level variable, a static field, or a local variable that has the
+`const` modifier. The value of a compile-time constant can't be changed at
+runtime.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `c` está recebendo um
-valor mesmo tendo o modificador `const`:
+The following code produces this diagnostic because `c` is being assigned a
+value even though it has the `const` modifier:
 
 ```dart
 const c = 0;
@@ -31,7 +32,7 @@ void f() {
 
 ## Common fixes
 
-Se a variável deve ser atribuível, então remova o modificador `const`:
+If the variable must be assignable, then remove the `const` modifier:
 
 ```dart
 var c = 0;
@@ -42,8 +43,8 @@ void f() {
 }
 ```
 
-Se a constante não deve ser alterada, então remova a atribuição ou
-use uma variável local no lugar das referências à constante:
+If the constant shouldn't be changed, then either remove the assignment or
+use a local variable in place of references to the constant:
 
 ```dart
 const c = 0;

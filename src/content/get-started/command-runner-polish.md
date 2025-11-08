@@ -1,8 +1,9 @@
 ---
-ia-translate: true
-title: Refinando o command_runner
-shortTitle: Refinando o command_runner
-description: "Melhore o HelpCommand para fornecer informações mais detalhadas e adicione um argumento onOutput para tratamento de saída flexível."
+title: Command_runner polish
+shortTitle: Command_runner polish
+description: >-
+  Improve the HelpCommand to provide more detailed information and add an
+  onOutput argument for flexible output handling.
 sitemap: false
 noindex: true
 layout: learn
@@ -16,47 +17,48 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-Neste capítulo, você dará os toques finais no pacote `command_runner`.
-Você refinará o `HelpCommand` para fornecer informações de uso mais detalhadas
-e adicionará um argumento `onOutput` para tratamento de saída mais flexível.
-Isso finaliza o pacote `CommandRunner` e o prepara para uso em cenários mais
-complexos.
+In this chapter, you'll put the finishing touches on the `command_runner`
+package. You'll refine the `HelpCommand` to provide more detailed usage
+information and add an `onOutput` argument for more flexible output handling.
+This finalizes the `CommandRunner` package and prepares it for use in more
+complex scenarios.
 
-:::secondary O que você aprenderá
+:::secondary What you'll learn
 
-* Usar `StringBuffer` para concatenação eficiente de strings.
-* Aprimorar o `HelpCommand` para fornecer informações de uso mais detalhadas.
-* Adicionar um argumento `onOutput` ao `CommandRunner` para tratamento de saída personalizável.
+* Use `StringBuffer` for efficient string concatenation.
+* Enhance the `HelpCommand` to provide more detailed usage information.
+* Add an `onOutput` argument to the `CommandRunner` for customizable output
+* handling.
 
 :::
 
-## Pré-requisitos
+## Prerequisites
 
-Antes de começar este capítulo, certifique-se de:
+Before you begin this chapter, ensure you:
 
-* Ter completado o Capítulo 7 e ter um ambiente de desenvolvimento Dart funcionando
-  com o projeto `dartpedia`.
-* Estar familiarizado com conceitos básicos de programação como variáveis, funções e
-  fluxo de controle.
-* Entender os conceitos de pacotes e bibliotecas em Dart.
-* Estar familiarizado com princípios de programação orientada a objetos como herança e
-  classes abstratas.
+* Have completed Chapter 7 and have a working Dart development environment
+  with the `dartpedia` project.
+* Are familiar with basic programming concepts like variables, functions, and
+  control flow.
+* Understand the concepts of packages and libraries in Dart.
+* Are familiar with object-oriented programming principles like inheritance and
+  abstract classes.
 
-## Tarefas
+## Tasks
 
-Você refinará o pacote `command_runner` para torná-lo mais robusto e
-fácil de usar.
+You will polish the `command_runner` package to make it more robust and
+user-friendly.
 
-### Tarefa 1: Melhorar a saída do `HelpCommand`
+### Task 1 Improve the `HelpCommand` output
 
-Aprimore o `HelpCommand` para fornecer informações de uso mais detalhadas,
-incluindo opções e suas descrições. Isso facilitará para os usuários
-entenderem como usar sua aplicação CLI.
+Enhance the `HelpCommand` to provide more detailed usage information,
+including options and their descriptions. This will make it easier for users to
+understand how to use your CLI application.
 
-1.  Abra o arquivo `command_runner/lib/src/help_command.dart`.
+1.  Open the `command_runner/lib/src/help_command.dart` file.
 
-1.  Adicione imports para `console.dart` e `exceptions.dart` no topo do arquivo.
-    Você precisa deles para usar as extensões de cor e para lançar uma
+1.  Add imports for `console.dart` and `exceptions.dart` at the top of the file.
+    You need these to use the color extensions and to throw an
     `ArgumentException`.
 
     ```dart
@@ -68,9 +70,9 @@ entenderem como usar sua aplicação CLI.
     import 'exceptions.dart';
     ```
 
-1.  Substitua o método `run` existente pelo seguinte. Esta nova versão usa
-    um `StringBuffer` para construir eficientemente a string de ajuda e inclui lógica para
-    lidar com saída detalhada.
+1.  Replace the existing `run` method with the following. This new version uses
+    a `StringBuffer` to efficiently build the help string and includes logic to
+    handle verbose output.
 
     ```dart
     @override
@@ -110,12 +112,12 @@ entenderem como usar sua aplicação CLI.
     }
     ```
 
-    `StringBuffer` é uma classe do Dart que permite construir strings de forma eficiente.
-    É mais performático do que usar o operador `+`, especialmente ao realizar
-    muitas concatenações dentro de um loop.
+    `StringBuffer` is a Dart class that allows you to efficiently build strings.
+    It's more performant than using the `+` operator, especially when performing
+    many concatenations inside a loop.
 
-1.  Adicione o método auxiliar privado `_renderCommandVerbose` à classe `HelpCommand`.
-    Este método formata a saída detalhada para um único comando.
+1.  Add the `_renderCommandVerbose` private helper method to the `HelpCommand`
+    class. This method formats the detailed output for a single command.
 
     ```dart
     String _renderCommandVerbose(Command cmd) {
@@ -136,15 +138,15 @@ entenderem como usar sua aplicação CLI.
     }
     ```
 
-### Tarefa 2: Adicionar um callback `onOutput`
+### Task 2 Add an `onOutput` callback
 
-Em seguida, adicione um argumento `onOutput` ao `CommandRunner` para permitir
-tratamento de saída flexível.
+Next, add an `onOutput` argument to the `CommandRunner` to allow for
+flexible output handling.
 
-1.  Abra o arquivo `command_runner/lib/src/command_runner_base.dart`.
+1.  Open the `command_runner/lib/src/command_runner_base.dart` file.
 
-1.  Adicione o argumento `onOutput` ao construtor do `CommandRunner`, e adicione o
-    membro `onOutput` correspondente à classe.
+1.  Add the `onOutput` argument to the `CommandRunner` constructor, and add the
+    corresponding `onOutput` member to the class.
 
     ```dart
     class CommandRunner {
@@ -162,7 +164,7 @@ tratamento de saída flexível.
     }
     ```
 
-1.  Atualize o método `run` para usar o argumento `onOutput`.
+1.  Update the `run` method to use the `onOutput` argument.
 
     ```dart
       Future<void> run(List<String> input) async {
@@ -182,18 +184,18 @@ tratamento de saída flexível.
       }
     ```
 
-    Isso atualiza o método `run` para usar a função `onOutput` se ela for
-    fornecida, caso contrário, o padrão é imprimir no console.
+    This updates the `run` method to use the `onOutput` function if it is
+    provided, otherwise it defaults to printing to the console.
 
-### Tarefa 3: Usar o callback `onOutput`
+### Task 3 Use the `onOutput` callback
 
-Por fim, atualize sua aplicação principal para usar o novo recurso `onOutput`.
+Finally, update your main application to use the new `onOutput` feature.
 
-1.  Abra o arquivo `cli/bin/cli.dart`.
+1.  Open the `cli/bin/cli.dart` file.
 
-1.  Atualize a função `main` para passar a função `onOutput` ao
-    `CommandRunner`. Você também precisará adicionar um import para `console.dart` para
-    tornar a função `write` disponível.
+1.  Update the `main` function to pass the `onOutput` function to the
+    `CommandRunner`. You will also need to add an import for `console.dart` to
+    make the `write` function available.
 
     ```dart
     import 'package:command_runner/command_runner.dart';
@@ -219,43 +221,43 @@ Por fim, atualize sua aplicação principal para usar o novo recurso `onOutput`.
     }
     ```
 
-### Tarefa 4: Testar as alterações
+### Task 4 Test the changes
 
-Teste o `HelpCommand` aprimorado e o callback `onOutput`.
+Test the improved `HelpCommand` and the `onOutput` callback.
 
-1.  Abra seu terminal e navegue até o diretório `cli`.
+1.  Open your terminal and navigate to the `cli` directory.
 
-1.  Execute o comando `dart run bin/cli.dart help --verbose`.
+1.  Run the command `dart run bin/cli.dart help --verbose`.
 
-    Você deverá ver informações de uso detalhadas para o comando `help`, impressas
-    usando a função `write` personalizada.
+    You should see detailed usage information for the `help` command, printed
+    using the custom `write` function.
 
-## Revisão
+## Review
 
-Nesta lição, você aprendeu:
+In this lesson, you learned:
 
-* Como usar `StringBuffer` para manipulação eficiente de strings.
-* Como melhorar o `HelpCommand` para exibir informações de uso detalhadas.
-* Como adicionar um argumento `onOutput` ao `CommandRunner` para tratamento de
-  saída personalizável.
+* How to use `StringBuffer` for efficient string manipulation.
+* How to improve the `HelpCommand` to display detailed usage information.
+* How to add an `onOutput` argument to the `CommandRunner` for customizable
+  output handling.
 
 ## Quiz
 
-**Questão 1:** Qual é o propósito da classe `StringBuffer` em Dart?
+**Question 1:** What is the purpose of the `StringBuffer` class in Dart?
 
-* A) Armazenar uma string de tamanho fixo.
-* B) Construir strings de forma eficiente adicionando múltiplas partes.
-* C) Criptografar strings.
-* D) Comparar duas strings quanto à igualdade.
+* A) To store a fixed-size string.
+* B) To efficiently build strings by appending multiple parts.
+* C) To encrypt strings.
+* D) To compare two strings for equality.
 
-**Questão 2:** O que o argumento `onOutput` na classe `CommandRunner`
-permite que você faça?
+**Question 2:** What does the `onOutput` argument in the `CommandRunner` class
+allow you to do?
 
-* A) Especificar a entrada para um comando.
-* B) Personalizar o tratamento de saída de um comando.
-* C) Definir a mensagem de erro para um comando.
-* D) Definir o nome de um comando.
+* A) Specify the input for a command.
+* B) Customize the output handling of a command.
+* C) Set the error message for a command.
+* D) Define the name of a command.
 
-## Próxima lição
+## Next lesson
 
-Na próxima lição, você se preparará para a parte do Wikipedia da aplicação.
+In the next lesson, you'll prepare for the Wikipedia portion of the application.

@@ -1,33 +1,34 @@
 ---
-ia-translate: true
 title: undefined_identifier_await
-description: "Detalhes sobre o diagnóstico undefined_identifier_await produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_identifier_await
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Nome indefinido 'await' em corpo de função não marcado com 'async'._
+_Undefined name 'await' in function body not marked with 'async'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o nome `await` é usado em um
-corpo de método ou função sem ser declarado, e o corpo não está marcado
-com a keyword `async`. O nome `await` apenas introduz uma expressão await
-em uma função assíncrona.
+The analyzer produces this diagnostic when the name `await` is used in a
+method or function body without being declared, and the body isn't marked
+with the `async` keyword. The name `await` only introduces an await
+expression in an asynchronous function.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o nome `await` é
-usado no corpo de `f` mesmo que o corpo de `f` não esteja marcado com a
-keyword `async`:
+The following code produces this diagnostic because the name `await` is
+used in the body of `f` even though the body of `f` isn't marked with the
+`async` keyword:
 
 ```dart
 void f(p) { [!await!] p; }
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione a keyword `async` ao corpo da função:
+Add the keyword `async` to the function body:
 
 ```dart
 void f(p) async { await p; }

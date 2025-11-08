@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: rest_element_in_map_pattern
-description: "Detalhes sobre o diagnóstico rest_element_in_map_pattern produzido pelo analisador do Dart."
+description: >-
+  Details about the rest_element_in_map_pattern
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um map pattern não pode conter um rest pattern._
+_A map pattern can't contain a rest pattern._
 
 ## Description
 
-O analisador produz este diagnóstico quando um map pattern contém um rest
-pattern. Map patterns fazem match com um map com mais chaves
-do que aquelas explicitamente fornecidas no pattern (desde que as chaves fornecidas façam match),
-então um rest pattern é desnecessário.
+The analyzer produces this diagnostic when a map pattern contains a rest
+pattern. Map patterns match a map with more keys
+than those explicitly given in the pattern (as long as the given keys match),
+so a rest pattern is unnecessary.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o map pattern contém
-um rest pattern:
+The following code produces this diagnostic because the map pattern contains
+a rest pattern:
 
 ```dart
 void f(Map<int, String> x) {
@@ -28,7 +29,7 @@ void f(Map<int, String> x) {
 
 ## Common fixes
 
-Remova o rest pattern:
+Remove the rest pattern:
 
 ```dart
 void f(Map<int, String> x) {

@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: non_type_in_catch_clause
-description: "Detalhes sobre o diagnóstico non_type_in_catch_clause produzido pelo analisador do Dart."
+description: >-
+  Details about the non_type_in_catch_clause
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome '{0}' não é um tipo e não pode ser usado em uma cláusula on-catch._
+_The name '{0}' isn't a type and can't be used in an on-catch clause._
 
 ## Description
 
-O analisador produz este diagnóstico quando o identificador após o
-`on` em uma cláusula `catch` é definido como algo diferente de um tipo.
+The analyzer produces this diagnostic when the identifier following the
+`on` in a `catch` clause is defined to be something other than a type.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `f` é uma função, não
-um tipo:
+The following code produces this diagnostic because `f` is a function, not
+a type:
 
 ```dart
 void f() {
@@ -30,7 +31,7 @@ void f() {
 
 ## Common fixes
 
-Altere o nome para o tipo de objeto que deve ser capturado:
+Change the name to the type of object that should be caught:
 
 ```dart
 void f() {

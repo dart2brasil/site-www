@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: inconsistent_inheritance
-description: "Detalhes sobre o diagnóstico inconsistent_inheritance produzido pelo analisador do Dart."
+description: >-
+  Details about the inconsistent_inheritance
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Superinterfaces não têm uma sobrescrita válida para '{0}': {1}._
+_Superinterfaces don't have a valid override for '{0}': {1}._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma classe herda duas ou mais
-assinaturas conflitantes para um membro e não fornece uma implementação
-que satisfaça todas as assinaturas herdadas.
+The analyzer produces this diagnostic when a class inherits two or more
+conflicting signatures for a member and doesn't provide an implementation
+that satisfies all the inherited signatures.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `C` está herdando a
-declaração de `m` de `A`, e essa implementação não é consistente com
-a assinatura de `m` que é herdada de `B`:
+The following code produces this diagnostic because `C` is inheriting the
+declaration of `m` from `A`, and that implementation isn't consistent with
+the signature of `m` that's inherited from `B`:
 
 ```dart
 class A {
@@ -33,10 +34,10 @@ class [!C!] extends A implements B {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione uma implementação do método que satisfaça todas as assinaturas
-herdadas:
+Add an implementation of the method that satisfies all the inherited
+signatures:
 
 ```dart
 class A {

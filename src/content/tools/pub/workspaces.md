@@ -1,14 +1,13 @@
 ---
-ia-translate: true
-title: Workspaces Pub (suporte a monorepo)
+title: Pub workspaces (monorepo support)
 shortTitle: Workspaces
-description: Saiba mais sobre workspaces pub, uma forma de gerenciar monorepos de pacotes.
+description: Learn more about pub workspaces, a way to manage package monorepos.
 ---
 
-Ao trabalhar em um projeto, você pode desenvolver vários pacotes Dart no mesmo
-repositório de controle de versão (um _monorepo_).
+When working on a project, you might develop multiple Dart packages in the same
+version control repository (a _monorepo_).
 
-Por exemplo, você pode ter um layout de diretório como:
+For example you might have a directory layout like: 
 
 ```plaintext
 /
@@ -27,34 +26,34 @@ Por exemplo, você pode ter um layout de diretório como:
       .dart_tool/package_config.json
 ```
 
-Existem algumas desvantagens nessa configuração:
+There are some downsides to this setup:
 
-* Você precisa executar `dart pub get` uma vez para cada pacote.
-* Você corre o risco de acabar com diferentes versões de dependências para cada
-  pacote, levando à confusão ao alternar o contexto entre os pacotes.
-* Se você abrir a pasta raiz em seu IDE, o analisador Dart criará
-  contextos de análise separados para cada pacote, aumentando o uso de memória.
+* You need to run `dart pub get` once for each package.
+* You risk ending up with different versions of dependencies for each package,
+  leading to confusion when context switching between the packages.
+* If you open the root folder in your IDE, the dart analyzer will create
+  separate analysis contexts for each package, increasing memory usage.
 
-O Pub permite que você organize seu repositório como um _workspace_ usando uma
-resolução compartilhada única para todos os seus pacotes.
-Usar workspaces para grandes repositórios reduz a quantidade de memória
-necessária para análise, melhorando assim o desempenho.
+Pub allows you to organize your repository as a _workspace_ using a single
+shared resolution for all your packages. 
+Using workspaces for large repositories reduces the amount of memory
+required for analysis, hence improving performance.
 
 :::note
-Usar uma única resolução de dependência compartilhada para todos os seus
-pacotes aumenta os riscos de conflitos de dependência, porque o Dart não
-permite várias versões do mesmo pacote.
+Using a single shared dependency resolution for all your packages increases
+the risks of dependency conflicts, because Dart doesn't allow multiple versions
+of the same package.
 
-Se os pacotes forem usados juntos (como é comum), esse risco é um recurso útil.
-Ele força você a resolver as incompatibilidades entre seus pacotes quando elas
-surgem, em vez de quando você começa a usar os pacotes.
+If the packages are going to be used together (as is commonly the case),
+this risk is a useful feature. It forces you to resolve incompatibilities between
+your packages when they arise, rather than when you start using the packages.
 :::
 
-Para criar um workspace:
+To create a workspace:
 
-* Adicione um `pubspec.yaml` no diretório raiz do repositório com uma entrada
-  `workspace` enumerando os caminhos para os pacotes do repositório (os pacotes do
-  workspace):
+* Add a `pubspec.yaml` at the repository root directory with a `workspace` entry
+  enumerating the paths to the packages of the repository (the workspace
+  packages):
 
   ```yaml
   name: _
@@ -67,8 +66,8 @@ Para criar um workspace:
     - packages/server_package
   ```
 
-* Para cada um dos arquivos `pubspec.yaml` existentes, certifique-se de que
-  sua restrição de SDK seja pelo menos `^3.6.0` e adicione uma entrada `resolution`:
+* For each of the existing `pubspec.yaml` files, make sure their SDK constraint
+  is at least `^3.6.0` and add a `resolution` entry:
 
   ```yaml
   environment:
@@ -76,16 +75,16 @@ Para criar um workspace:
   resolution: workspace
   ```
 
-* Execute `dart pub get` em qualquer lugar no repositório. Isso irá:
-  * Criar um único `pubspec.lock` ao lado do `pubspec.yaml` raiz que contém a
-    resolução de todas as `dependencies` (dependências) e `dev_dependencies`
-    (dependências de desenvolvimento) de todos os pacotes do workspace.
-  * Criar um único `.dart_tool/package_config.json` compartilhado que mapeia
-    nomes de pacotes para localizações de arquivos.
-  * Excluir quaisquer outros arquivos `pubspec.lock` e
-    `.dart_tool/package_config.json` existentes ao lado dos pacotes do workspace.
+* Run `dart pub get` anywhere in the repository. This will:
+  * Create a single `pubspec.lock` next to the root `pubspec.yaml` that contains
+    the resolution of all the `dependencies` and `dev_dependencies` of all the
+    workspace packages. 
+  * Create a single shared `.dart_tool/package_config.json` that maps package
+    names to file locations.
+  * Delete any other existing `pubspec.lock` and
+    `.dart_tool/package_config.json` files next to workspace packages.
 
-Agora a estrutura de arquivos se parece com isto:
+Now the file structure looks like this:
 
 ```plaintext
 /
@@ -102,123 +101,123 @@ Agora a estrutura de arquivos se parece com isto:
 ```
 
 :::version-note
-O suporte para workspaces do pub foi introduzido no Dart 3.6.0.
+Support for pub workspaces was introduced in Dart 3.6.0.
 
-Para usar workspaces do pub, todos os seus pacotes do workspace (mas não suas
-dependências) devem ter uma restrição de versão do SDK de `^3.6.0` ou superior.
+To use pub workspaces, all your workspace packages (but not your dependencies)
+must have an SDK version constraint of `^3.6.0` or higher.
 :::
 
 <a name='stray-files'></a>
-## Arquivos extraviados
+## Stray files
 
-Quando você migra um monorepo existente para usar espaços de trabalho do Pub, haverá
-arquivos "extraviados" `pubspec.lock` e `.dart_tool/package_config.json` existentes
-adjacentes a cada pubspec. Eles ofuscam os arquivos `pubspec.lock` e
-`.dart_tool/package_config.json` colocados próximos à raiz.
+When you migrate an existing monorepo to use Pub workspaces, there will
+be existing "stray" `pubspec.lock` and `.dart_tool/package_config.json` files
+adjacent to each pubspec. These shadow the `pubspec.lock` and
+`.dart_tool/package_config.json` files placed next to the root.
 
-Portanto, `pub get` excluirá qualquer `pubspec.lock` e
-`.dart_tool/package_config.json` localizados em diretórios entre a raiz e
-(incluindo) qualquer pacote do espaço de trabalho.
-
-```plaintext
-/
-  pubspec.yaml                       # Raiz
-  packages/
-    pubspec.lock                     # Excluído por `pub get`
-    .dart_tool/package_config.json   # Excluído por `pub get`
-    foo/
-      pubspec.yaml                   # Membro do espaço de trabalho
-      pubspec.lock                   # Excluído por `pub get`
-      .dart_tool/package_config.json # Excluído por `pub get`
-```
-
-Se qualquer diretório entre a raiz do espaço de trabalho e um pacote do espaço de trabalho contiver um
-arquivo `pubspec.yaml` "extraviado" que não seja membro do espaço de trabalho, `pub get`
-reportará um erro e não conseguirá resolver. Isso ocorre porque resolver tal `pubspec.yaml` criaria
-um arquivo `.dart_tool/package_config.json` que ofusca o da raiz.
-
-Por exemplo:
+Therefore, `pub get` will delete any `pubspec.lock` and
+`.dart_tool/package_config.json` located in directories between the root and
+(including) any workspace package.
 
 ```plaintext
 /
-  pubspec.yaml                      # Raiz `workspace: ['foo/']`
+  pubspec.yaml                       # Root
   packages/
-    pubspec.yaml                    # Não é membro do espaço de trabalho => erro
+    pubspec.lock                     # Deleted by `pub get`
+    .dart_tool/package_config.json   # Deleted by `pub get`
     foo/
-      pubspec.yaml                  # Membro do espaço de trabalho
+      pubspec.yaml                   # Workspace member
+      pubspec.lock                   # Deleted by `pub get`
+      .dart_tool/package_config.json # Deleted by `pub get`
+```
+
+If any directory between the workspace root and a workspace package contains a
+"stray" `pubspec.yaml` file that is not member of the workspace, `pub get` will
+report an error and fail to resolve. This is because resolving such a `pubspec.yaml` would
+create a `.dart_tool/package_config.json` file that shadows the one at the root.
+
+For example:
+
+```plaintext
+/
+  pubspec.yaml                      # Root `workspace: ['foo/']`
+  packages/
+    pubspec.yaml                    # Not workspace member => error
+    foo/
+      pubspec.yaml                  # Workspace member
 ```
 
 
-## Interdependências entre pacotes do workspace {:#interdependencies-between-workspace-packages}
+## Interdependencies between workspace packages
 
-Se algum dos pacotes do workspace depender um do outro, eles serão resolvidos
-automaticamente para o do workspace, independentemente da fonte.
+If any of the workspace packages depend on each other, they will automatically
+resolve to the one in the workspace, regardless of the source.
 
-Ex: `packages/client_package/pubspec.yaml` pode depender de `shared`:
+Eg. `packages/client_package/pubspec.yaml` might depend on `shared`:
 
 ```yaml
 dependencies:
   shared: ^2.3.0
 ```
 
-Quando resolvido dentro do workspace, a versão _local_ de `shared`
-será usada.
+When resolved inside the workspace, the _local_ version of `shared` will be
+used.
 
-A versão local de `shared` ainda teria que corresponder à restrição (`^2.3.0`),
-no entanto.
+The local version of `shared` would still have to match the constraint
+(`^2.3.0`) though.
 
-Mas quando o pacote é consumido como uma dependência sem fazer parte do
-workspace, a fonte original (aqui implicitamente `hosted`) é usada.
+But when the package is consumed as a dependency without being part of the
+workspace, the original source (here implicitly `hosted`) is used.
 
-Portanto, se o `client_package` for publicado no pub.dev e alguém depender
-dele, obterá a versão hospedada de `shared` como uma dependência transitiva.
+So if `client_package` is published to pub.dev and someone depends on it, they
+will get the hosted version of `shared` as a transitive dependency.
 
-## Substituições de dependência em um workspace {:#dependency-overrides-in-a-workspace}
+## Dependency overrides in a workspace
 
-Todas as seções `dependency_overrides` (substituições de dependência) nos pacotes
-do workspace são respeitadas. Você também pode colocar um arquivo
-`pubspec_overrides.yaml` ao lado de qualquer um dos arquivos `pubspec.yaml` do workspace.
+All `dependency_overrides` sections in the workspace packages are respected.
+You can also place a `pubspec_overrides.yaml` file next to any of the
+workspace `pubspec.yaml` files.
 
-Você só pode substituir um pacote uma vez no workspace. Para manter as
-substituições organizadas, é preferível manter `dependency_overrides` no `pubspec.yaml` raiz.
+You can only override a package once in the workspace. To keep overrides organized,
+it's preferable to keep `dependency_overrides` in the root `pubspec.yaml`.
 
-## Executando um comando em um pacote específico do workspace {:#running-a-command-in-a-specific-workspace-package}
+## Running a command in a specific workspace package
 
-Alguns comandos do pub, como `dart pub add` e `dart pub publish`, operam em um
-pacote "atual". Você pode alterar o diretório ou usar `-C` para apontar o pub
-para um diretório:
+Some pub commands, such as `dart pub add`, and `dart pub publish` operate on a
+"current" package. You can either change the directory, or use `-C` to point pub at
+a directory:
 
 ```console
 $ dart pub -C packages/client_package publish
-# Igual a {:#same-as}
+# Same as
 $ cd packages/client_package ; dart pub publish ; cd -
 ```
 
-## Resolvendo temporariamente um pacote fora de seu workspace: {:#temporarily-resolving-a-package-outside-its-workspace}
+## Temporarily resolving a package outside its workspace:
 
-Às vezes, você pode querer resolver um pacote do workspace sozinho, por exemplo,
-para validar suas restrições de dependência.
+Sometimes you might want to resolve a workspace package on its own, for example
+to validate its dependency constraints.
 
-Uma maneira de fazer isso é criar um arquivo `pubspec_overrides.yaml` que redefine a
-configuração de `resolution`, como este:
+One way to do this is to create a `pubspec_overrides.yaml` file that resets the
+`resolution` setting, like so:
 
 ```yaml
-# packages/client_package/pubspec_overrides.yaml {:#packages-client-package-pubspec-overrides-yaml}
+# packages/client_package/pubspec_overrides.yaml
 resolution:
 ```
 
-Agora, executar `dart pub get` dentro de `packages/client_package` criará uma
-resolução independente.
+Now running `dart pub get` inside `packages/client_package` will create an
+independent resolution.
 
-## Listando todos os pacotes do workspace {:#listing-all-workspace-packages}
+## Listing all workspace packages
 
-Você pode executar `dart pub workspace list` para listar os pacotes de um workspace.
+You can run `dart pub workspace list` to list the packages of a workspace.
 
 ```console
 $ dart pub workspace list
-Package         Path
-_               ./
-client_package  packages/client_package/
-server_package  packages/server_package/
+Package         Path                      
+_               ./                        
+client_package  packages/client_package/  
+server_package  packages/server_package/  
 shared          packages/shared/
 ```

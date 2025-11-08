@@ -1,23 +1,25 @@
 ---
-ia-translate: true
 title: rethrow_outside_catch
-description: "Detalhes sobre o diagnóstico rethrow_outside_catch produzido pelo analisador do Dart."
+description: >-
+  Details about the rethrow_outside_catch
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um rethrow deve estar dentro de uma cláusula catch._
+_A rethrow must be inside of a catch clause._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma instrução `rethrow` está fora
-de uma cláusula `catch`. A instrução `rethrow` é usada para lançar uma exceção
-capturada novamente, mas não há exceção capturada fora de uma cláusula `catch`.
+The analyzer produces this diagnostic when a `rethrow` statement is outside
+a `catch` clause. The `rethrow` statement is used to throw a caught
+exception again, but there's no caught exception outside of a `catch`
+clause.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a instrução `rethrow`
-está fora de uma cláusula `catch`:
+The following code produces this diagnostic because the`rethrow` statement
+is outside of a `catch` clause:
 
 ```dart
 void f() {
@@ -27,8 +29,8 @@ void f() {
 
 ## Common fixes
 
-Se você está tentando relançar uma exceção, então envolva a instrução `rethrow`
-em uma cláusula `catch`:
+If you're trying to rethrow an exception, then wrap the `rethrow` statement
+in a `catch` clause:
 
 ```dart
 void f() {
@@ -40,8 +42,8 @@ void f() {
 }
 ```
 
-Se você está tentando lançar uma nova exceção, então substitua a instrução `rethrow`
-por uma expressão `throw`:
+If you're trying to throw a new exception, then replace the `rethrow`
+statement with a `throw` expression:
 
 ```dart
 void f() {

@@ -1,21 +1,22 @@
 ---
-ia-translate: true
 title: unnecessary_null_check_pattern
-description: "Detalhes sobre o diagnóstico unnecessary_null_check_pattern produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_null_check_pattern
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O padrão null-check não terá efeito porque o tipo correspondido não é nullable._
+_The null-check pattern will have no effect because the matched type isn't nullable._
 
 ## Description
 
-O analisador produz este diagnóstico quando um padrão null-check é usado para
-corresponder a um valor que não é nullable.
+The analyzer produces this diagnostic when a null-check pattern is used to
+match a value that isn't nullable.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o valor `x` não é
+The following code produces this diagnostic because the value `x` isn't
 nullable:
 
 ```dart
@@ -26,7 +27,7 @@ void f(int x) {
 
 ## Common fixes
 
-Remova o padrão null-check:
+Remove the null-check pattern:
 
 ```dart
 void f(int x) {

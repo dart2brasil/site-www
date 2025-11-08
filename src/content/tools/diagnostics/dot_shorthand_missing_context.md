@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: dot_shorthand_missing_context
-description: "Detalhes sobre o diagnóstico dot_shorthand_missing_context produzido pelo analisador do Dart."
+description: >-
+  Details about the dot_shorthand_missing_context
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um dot shorthand não pode ser usado onde não há tipo de contexto._
+_A dot shorthand can't be used where there is no context type._
 
 ## Description
 
-O analisador produz este diagnóstico quando um dot shorthand é usado onde
-não há tipo de contexto.
+The analyzer produces this diagnostic when a dot shorthand is used where
+there is no context type.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque não há tipo de contexto
-para a expressão `.a`:
+The following code produces this diagnostic because there is no context
+type for the expression `.a`:
 
 ```dart
 void f() {
@@ -29,8 +30,8 @@ enum E {a, b}
 
 ## Common fixes
 
-Se você quer usar um dot shorthand, então adicione um tipo de contexto, que neste
-exemplo significa adicionar o tipo explícito `E` à variável local:
+If you want to use a dot shorthand, then add a context type, which in this
+example means adding the explicit type `E` to the local variable:
 
 ```dart
 void f() {
@@ -41,8 +42,8 @@ void f() {
 enum E {a, b}
 ```
 
-Se você não quer adicionar um tipo de contexto, então especifique o nome do
-tipo contendo o membro sendo referenciado, que neste caso é `E`:
+If you don't want to add a context type, then specify the name of the
+type containing the member being referenced, which in this case is `E`:
 
 ```dart
 void f() {

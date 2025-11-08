@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: invalid_visible_outside_template_annotation
-description: "Detalhes sobre o diagnóstico invalid_visible_outside_template_annotation produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_visible_outside_template_annotation
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A anotação 'visibleOutsideTemplate' só pode ser aplicada a um membro de uma classe, enum ou mixin que está anotado com 'visibleForTemplate'._
+_The annotation 'visibleOutsideTemplate' can only be applied to a member of a class, enum, or mixin that is annotated with 'visibleForTemplate'._
 
 ## Description
 
-O analisador produz este diagnóstico quando a anotação `@visibleOutsideTemplate`
-é usada incorretamente. Esta anotação serve apenas para anotar
-membros de uma classe, enum ou mixin que possui a anotação `@visibleForTemplate`,
-para excluir esses membros das restrições de visibilidade que
-`@visibleForTemplate` impõe.
+The analyzer produces this diagnostic when the `@visibleOutsideTemplate`
+annotation is used incorrectly. This annotation is only meant to annotate
+members of a class, enum, or mixin that has the `@visibleForTemplate`
+annotation, to opt those members out of the visibility restrictions that
+`@visibleForTemplate` imposes.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque não há
-anotação `@visibleForTemplate` no nível da classe:
+The following code produces this diagnostic because there is no
+`@visibleForTemplate` annotation at the class level:
 
 ```dart
 import 'package:angular_meta/angular_meta.dart';
@@ -32,8 +33,8 @@ class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque a anotação está em
-uma declaração de classe, não em um membro de uma classe, enum ou mixin:
+The following code produces this diagnostic because the annotation is on
+a class declaration, not a member of a class, enum, or mixin:
 
 ```dart
 import 'package:angular_meta/angular_meta.dart';
@@ -44,8 +45,8 @@ class C {}
 
 ## Common fixes
 
-Se a classe é visível apenas para que templates possam referenciá-la, então adicione
-a anotação `@visibleForTemplate` à classe:
+If the class is only visible so that templates can reference it, then add
+the `@visibleForTemplate` annotation to the class:
 
 ```dart
 import 'package:angular_meta/angular_meta.dart';
@@ -59,9 +60,9 @@ class C {
 }
 ```
 
-Se a anotação `@visibleOutsideTemplate` está em algo diferente de um
-membro de uma classe, enum ou mixin com a anotação `@visibleForTemplate`,
-remova a anotação:
+If the `@visibleOutsideTemplate` annotation is on anything other than a
+member of a class, enum, or mixin with the `@visibleForTemplate`
+annotation, remove the annotation:
 
 ```dart
 class C {}

@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: prefix_collides_with_top_level_member
-description: "Detalhes sobre o diagnóstico prefix_collides_with_top_level_member produzido pelo analisador do Dart."
+description: >-
+  Details about the prefix_collides_with_top_level_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome '{0}' já é usado como um prefixo de import e não pode ser usado para nomear um elemento de nível superior._
+_The name '{0}' is already used as an import prefix and can't be used to name a top-level element._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um nome é usado tanto como prefixo de import
-quanto como o nome de uma declaração de nível superior na mesma biblioteca.
+The analyzer produces this diagnostic when a name is used as both an import
+prefix and the name of a top-level declaration in the same library.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `f` é usado tanto como
-prefixo de import quanto como nome de uma função:
+The following code produces this diagnostic because `f` is used as both an
+import prefix and the name of a function:
 
 ```dart
 import 'dart:math' as f;
@@ -24,10 +25,10 @@ import 'dart:math' as f;
 int [!f!]() => f.min(0, 1);
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você quiser usar o nome para o prefixo de import, então renomeie a
-declaração de nível superior:
+If you want to use the name for the import prefix, then rename the
+top-level declaration:
 
 ```dart
 import 'dart:math' as f;
@@ -35,8 +36,8 @@ import 'dart:math' as f;
 int g() => f.min(0, 1);
 ```
 
-Se você quiser usar o nome para a declaração de nível superior, então renomeie o
-prefixo de import:
+If you want to use the name for the top-level declaration, then rename the
+import prefix:
 
 ```dart
 import 'dart:math' as math;

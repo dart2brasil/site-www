@@ -1,22 +1,23 @@
 ---
 title: main_has_too_many_required_positional_parameters
-description: "Detalhes sobre o diagnóstico main_has_too_many_required_positional_parameters produzido pelo analisador Dart."
+description: >-
+  Details about the main_has_too_many_required_positional_parameters
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_A função 'main' não pode ter mais de dois positional parameters required._
+_The function 'main' can't have more than two required positional parameters._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma função chamada `main` tem mais
-de dois positional parameters required.
+The analyzer produces this diagnostic when a function named `main` has more
+than two required positional parameters.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a função `main` tem
-três positional parameters required:
+The following code produces this diagnostic because the function `main` has
+three required positional parameters:
 
 ```dart
 void [!main!](List<String> args, int x, int y) {}
@@ -24,22 +25,22 @@ void [!main!](List<String> args, int x, int y) {}
 
 ## Common fixes
 
-Se a função é um ponto de entrada e os parameters extras não são usados,
-então remova-os:
+If the function is an entry point and the extra parameters aren't used,
+then remove them:
 
 ```dart
 void main(List<String> args, int x) {}
 ```
 
-Se a função é um ponto de entrada, mas os parameters extras usados são para
-quando a função não está sendo usada como ponto de entrada, então torne os parameters
-extras opcionais:
+If the function is an entry point, but the extra parameters used are for
+when the function isn't being used as an entry point, then make the extra
+parameters optional:
 
 ```dart
 void main(List<String> args, int x, [int y = 0]) {}
 ```
 
-Se a função não é um ponto de entrada, então altere o nome da função:
+If the function isn't an entry point, then change the name of the function:
 
 ```dart
 void f(List<String> args, int x, int y) {}

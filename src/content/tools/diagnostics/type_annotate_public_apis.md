@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: type_annotate_public_apis
-description: "Detalhes sobre o diagnóstico type_annotate_public_apis produzido pelo analisador Dart."
+description: >-
+  Details about the type_annotate_public_apis
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,26 +18,26 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Anotação de type ausente em uma API pública._
+_Missing type annotation on a public API._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando a declaração de parte da
-API pública de um pacote não possui anotações de tipo explícitas.
+The analyzer produces this diagnostic when the declaration of part of the
+public API of a package doesn't have explicit type annotations.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a função `f`
-não possui um tipo de retorno explícito e os parâmetros `x` e `y` não
-possuem tipos explícitos:
+The following code produces this diagnostic because the function `f`
+doesn't have an explicit return type and the parameters `x` and `y` don't
+have explicit types:
 
 ```dart
 [!f!](x, y) => '';
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione anotações de tipo à API:
+Add type annotations to the API:
 
 ```dart
 String f(int x, int y) => '';

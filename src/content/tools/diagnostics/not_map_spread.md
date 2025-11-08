@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: not_map_spread
-description: "Detalhes sobre o diagnóstico not_map_spread produzido pelo analisador do Dart."
+description: >-
+  Details about the not_map_spread
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,13 +11,13 @@ _Spread elements in map literals must implement 'Map'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o tipo estático da
-expressão de um elemento spread que aparece em um literal de map não
-implementa o tipo `Map`.
+The analyzer produces this diagnostic when the static type of the
+expression of a spread element that appears in a map literal doesn't
+implement the type `Map`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `l` não é um `Map`:
+The following code produces this diagnostic because `l` isn't a `Map`:
 
 ```dart
 var l =  <String>['a', 'b'];
@@ -25,7 +26,7 @@ var m = <int, String>{...[!l!]};
 
 ## Common fixes
 
-A correção mais comum é substituir a expressão por uma que produza um
+The most common fix is to replace the expression with one that produces a
 map:
 
 ```dart

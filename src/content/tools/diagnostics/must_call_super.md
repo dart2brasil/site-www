@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: must_call_super
-description: "Detalhes sobre o diagnóstico must_call_super produzido pelo analisador Dart."
+description: >-
+  Details about the must_call_super
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _This method overrides a method annotated as '@mustCallSuper' in '{0}', but doesn't invoke the overridden method._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um método que sobrescreve um método
-que é anotado como [`mustCallSuper`][meta-mustCallSuper] não invoca
-o método sobrescrito conforme necessário.
+The analyzer produces this diagnostic when a method that overrides a method
+that is annotated as [`mustCallSuper`][meta-mustCallSuper] doesn't invoke
+the overridden method as required.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o método `m` em `B`
-não invoca o método sobrescrito `m` em `A`:
+The following code produces this diagnostic because the method `m` in `B`
+doesn't invoke the overridden method `m` in `A`:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -33,9 +34,9 @@ class B extends A {
 }
 ```
 
-## Soluções comuns
+## Common fixes
 
-Adicione uma invocação do método sobrescrito no método que sobrescreve:
+Add an invocation of the overridden method in the overriding method:
 
 ```dart
 import 'package:meta/meta.dart';

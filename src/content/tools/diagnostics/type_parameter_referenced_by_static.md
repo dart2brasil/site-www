@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: type_parameter_referenced_by_static
-description: "Detalhes sobre o diagnóstico type_parameter_referenced_by_static produzido pelo analisador Dart."
+description: >-
+  Details about the type_parameter_referenced_by_static
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Membros static não podem referenciar parâmetros de tipo da classe._
+_Static members can't reference type parameters of the class._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um membro static referencia um
-parâmetro de tipo que é declarado para a classe. Parâmetros de tipo só têm
-significado para instâncias da classe.
+The analyzer produces this diagnostic when a static member references a
+type parameter that is declared for the class. Type parameters only have
+meaning for instances of the class.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o método static
-`hasType` possui uma referência ao parâmetro de tipo `T`:
+The following code produces this diagnostic because the static method
+`hasType` has a reference to the type parameter `T`:
 
 ```dart
 class C<T> {
@@ -25,9 +26,9 @@ class C<T> {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o membro puder ser um membro de instância, então remova a keyword `static`:
+If the member can be an instance member, then remove the keyword `static`:
 
 ```dart
 class C<T> {
@@ -35,7 +36,7 @@ class C<T> {
 }
 ```
 
-Se o membro deve ser um membro static, então torne o membro genérico:
+If the member must be a static member, then make the member be generic:
 
 ```dart
 class C<T> {
@@ -43,5 +44,5 @@ class C<T> {
 }
 ```
 
-Observe, no entanto, que não há uma relação entre `T` e `S`, então esta
-segunda opção altera a semântica do que provavelmente foi o pretendido.
+Note, however, that there isn't a relationship between `T` and `S`, so this
+second option changes the semantics from what was likely to be intended.

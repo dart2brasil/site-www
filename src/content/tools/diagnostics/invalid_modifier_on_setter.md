@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: invalid_modifier_on_setter
-description: "Detalhes sobre o diagnóstico invalid_modifier_on_setter produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_modifier_on_setter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Setters não podem usar 'async', 'async*' ou 'sync*'._
+_Setters can't use 'async', 'async*', or 'sync*'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o corpo de um setter é prefixado
-por um dos seguintes modificadores: `async`, `async*` ou `sync*`. Corpos de
-setters devem ser síncronos.
+The analyzer produces this diagnostic when the body of a setter is prefixed
+by one of the following modifiers: `async`, `async*`, or `sync*`. Setter
+bodies must be synchronous.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o corpo do setter `x` está
-marcado como `async`:
+The following code produces this diagnostic because the body of the setter
+`x` is marked as being `async`:
 
 ```dart
 class C {
@@ -27,7 +28,7 @@ class C {
 
 ## Common fixes
 
-Se o setter pode ser síncrono, remova o modificador:
+If the setter can be synchronous, then remove the modifier:
 
 ```dart
 class C {
@@ -35,7 +36,8 @@ class C {
 }
 ```
 
-Se o setter não pode ser síncrono, use um método para definir o valor:
+If the setter can't be synchronous, then use a method to set the value
+instead:
 
 ```dart
 class C {

@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: unnecessary_wildcard_pattern
-description: "Detalhes sobre o diagnóstico unnecessary_wildcard_pattern produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_wildcard_pattern
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Padrão wildcard desnecessário._
+_Unnecessary wildcard pattern._
 
 ## Description
 
-O analisador produz este diagnóstico quando um padrão wildcard é usado em
-um padrão and (`&&`) ou um padrão or (`||`).
+The analyzer produces this diagnostic when a wildcard pattern is used in
+either an and (`&&`) pattern or an or (`||`) pattern.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o padrão wildcard
-(`_`) sempre terá sucesso, tornando seu uso em um padrão and desnecessário:
+The following code produces this diagnostic because the wildcard pattern
+(`_`) will always succeed, making it's use in an and pattern unnecessary:
 
 ```dart
 void f(Object? x) {
@@ -26,7 +27,7 @@ void f(Object? x) {
 
 ## Common fixes
 
-Remova o uso do padrão wildcard:
+Remove the use of the wildcard pattern:
 
 ```dart
 void f(Object? x) {

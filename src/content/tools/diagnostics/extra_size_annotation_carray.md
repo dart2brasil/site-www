@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: extra_size_annotation_carray
-description: "Detalhes sobre o diagnóstico extra_size_annotation_carray produzido pelo analisador do Dart."
+description: >-
+  Details about the extra_size_annotation_carray
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'Array's devem ter exatamente uma anotação 'Array'._
+_'Array's must have exactly one 'Array' annotation._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um campo em uma subclasse de
-`Struct` tem mais de uma anotação descrevendo o tamanho do array
-nativo.
+The analyzer produces this diagnostic when a field in a subclass of
+`Struct` has more than one annotation describing the size of the native
+array.
 
-Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o campo `a0` tem duas
-anotações que especificam o tamanho do array nativo:
+The following code produces this diagnostic because the field `a0` has two
+annotations that specify the size of the native array:
 
 ```dart
 import 'dart:ffi';
@@ -31,9 +32,9 @@ final class C extends Struct {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova todas as anotações exceto uma:
+Remove all but one of the annotations:
 
 ```dart
 import 'dart:ffi';

@@ -1,28 +1,29 @@
 ---
-ia-translate: true
 title: wrong_number_of_type_arguments_constructor
-description: "Detalhes sobre o diagnóstico wrong_number_of_type_arguments_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the wrong_number_of_type_arguments_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O construtor '{0}.{1}' não tem parâmetros de tipo._
+_The constructor '{0}.{1}' doesn't have type parameters._
 
-_O construtor '{0}.{1}` não tem parâmetros de tipo._
+_The constructor '{0}.{1}` doesn't have type parameters._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando argumentos de tipo são fornecidos
-após o nome de um construtor nomeado. Construtores não podem declarar parâmetros de
-tipo, então invocações só podem fornecer os argumentos de tipo associados
-com a classe, e esses argumentos de tipo devem seguir o nome da
-classe em vez do nome do construtor.
+The analyzer produces this diagnostic when type arguments are provided
+after the name of a named constructor. Constructors can't declare type
+parameters, so invocations can only provide the type arguments associated
+with the class, and those type arguments are required to follow the name of
+the class rather than the name of the constructor.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque os parâmetros de tipo
-(`<String>`) seguem o nome do construtor em vez do nome da
-classe:
+The following code produces this diagnostic because the type parameters
+(`<String>`) follow the name of the constructor rather than the name of the
+class:
 
 ```dart
 class C<T> {
@@ -31,10 +32,10 @@ class C<T> {
 C f() => C.named[!<String>!]();
 ```
 
-## Correções comuns
+## Common fixes
 
-Se os argumentos de tipo são para os parâmetros de tipo da classe, então mova os
-argumentos de tipo para seguir o nome da classe:
+If the type arguments are for the class' type parameters, then move the
+type arguments to follow the class name:
 
 ```dart
 class C<T> {
@@ -43,8 +44,8 @@ class C<T> {
 C f() => C<String>.named();
 ```
 
-Se os argumentos de tipo não são para os parâmetros de tipo da classe, então remova-
-os:
+If the type arguments aren't for the class' type parameters, then remove
+them:
 
 ```dart
 class C<T> {

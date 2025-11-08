@@ -1,33 +1,34 @@
 ---
-ia-translate: true
 title: positional_super_formal_parameter_with_positional_argument
-description: "Detalhes sobre o diagnóstico positional_super_formal_parameter_with_positional_argument produzido pelo analisador do Dart."
+description: >-
+  Details about the positional_super_formal_parameter_with_positional_argument
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Parâmetros super posicionais não podem ser usados quando a invocação do construtor super tem um argumento posicional._
+_Positional super parameters can't be used when the super constructor invocation has a positional argument._
 
 ## Description
 
-O analisador produz este diagnóstico quando alguns, mas não todos, dos
-parâmetros posicionais fornecidos ao construtor da superclasse estão
-usando um parâmetro super.
+The analyzer produces this diagnostic when some, but not all, of the
+positional parameters provided to the constructor of the superclass are
+using a super parameter.
 
-Parâmetros super posicionais são associados com parâmetros posicionais no
-construtor super pelo seu índice. Ou seja, o primeiro parâmetro super
-é associado com o primeiro parâmetro posicional no construtor
-super, o segundo com o segundo, e assim por diante. O mesmo é verdade para
-argumentos posicionais. Ter ambos parâmetros super posicionais e
-argumentos posicionais significa que há dois valores associados com o
-mesmo parâmetro no construtor da superclasse, e portanto não é permitido.
+Positional super parameters are associated with positional parameters in
+the super constructor by their index. That is, the first super parameter
+is associated with the first positional parameter in the super
+constructor, the second with the second, and so on. The same is true for
+positional arguments. Having both positional super parameters and
+positional arguments means that there are two values associated with the
+same parameter in the superclass's constructor, and hence isn't allowed.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o construtor
-`B.new` está usando um parâmetro super para passar um dos parâmetros posicionais
-obrigatórios para o construtor super em `A`, mas está explicitamente passando o
-outro na invocação do construtor super:
+The following code produces this diagnostic because the constructor
+`B.new` is using a super parameter to pass one of the required positional
+parameters to the super constructor in `A`, but is explicitly passing the
+other in the super constructor invocation:
 
 ```dart
 class A {
@@ -41,8 +42,8 @@ class B extends A {
 
 ## Common fixes
 
-Se todos os parâmetros posicionais podem ser parâmetros super, então converta os
-parâmetros posicionais normais para serem parâmetros super:
+If all the positional parameters can be super parameters, then convert the
+normal positional parameters to be super parameters:
 
 ```dart
 class A {
@@ -54,8 +55,8 @@ class B extends A {
 }
 ```
 
-Se alguns parâmetros posicionais não podem ser parâmetros super, então converta os
-parâmetros super para serem parâmetros normais:
+If some positional parameters can't be super parameters, then convert the
+super parameters to be normal parameters:
 
 ```dart
 class A {

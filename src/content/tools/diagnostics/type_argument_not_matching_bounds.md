@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: type_argument_not_matching_bounds
-description: "Detalhes sobre o diagnóstico type_argument_not_matching_bounds produzido pelo analisador Dart."
+description: >-
+  Details about the type_argument_not_matching_bounds
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' não está em conformidade com o limite '{1}' do parâmetro de tipo '{2}'._
+_'{0}' doesn't conform to the bound '{1}' of the type parameter '{2}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um argumento de tipo não é o mesmo
-que ou uma subclasse dos limites do parâmetro de tipo correspondente.
+The analyzer produces this diagnostic when a type argument isn't the same
+as or a subclass of the bounds of the corresponding type parameter.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `String` não é uma
-subclasse de `num`:
+The following code produces this diagnostic because `String` isn't a
+subclass of `num`:
 
 ```dart
 class A<E extends num> {}
@@ -24,9 +25,9 @@ class A<E extends num> {}
 var a = A<[!String!]>();
 ```
 
-## Correções comuns
+## Common fixes
 
-Altere o argumento de tipo para ser uma subclasse dos limites:
+Change the type argument to be a subclass of the bounds:
 
 ```dart
 class A<E extends num> {}

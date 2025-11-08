@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: mixin_super_class_constraint_non_interface
-description: "Detalhes sobre o diagnóstico mixin_super_class_constraint_non_interface produzido pelo analisador Dart."
+description: >-
+  Details about the mixin_super_class_constraint_non_interface
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Apenas classes e mixins podem ser usados como superclass constraints._
+_Only classes and mixins can be used as superclass constraints._
 
 ## Description
 
-O analisador produz este diagnóstico quando um tipo após a keyword `on`
-em uma declaração de mixin não é nem uma classe nem um mixin.
+The analyzer produces this diagnostic when a type following the `on`
+keyword in a mixin declaration is neither a class nor a mixin.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `F` não é nem uma classe
-nem um mixin:
+The following code produces this diagnostic because `F` is neither a class
+nor a mixin:
 
 ```dart
 typedef F = void Function();
@@ -26,7 +27,7 @@ mixin M on [!F!] {}
 
 ## Common fixes
 
-Se o tipo era pretendido ser uma classe mas foi digitado incorretamente, então substitua o
-nome.
+If the type was intended to be a class but was mistyped, then replace the
+name.
 
-Caso contrário, remova o tipo da cláusula `on`.
+Otherwise, remove the type from the `on` clause.

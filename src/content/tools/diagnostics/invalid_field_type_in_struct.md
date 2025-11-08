@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: invalid_field_type_in_struct
-description: "Detalhes sobre o diagnóstico invalid_field_type_in_struct produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_field_type_in_struct
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Campos em classes struct não podem ter o tipo '{0}'. Eles só podem ser declarados como 'int', 'double', 'Array', 'Pointer', ou subtipo de 'Struct' ou 'Union'._
+_Fields in struct classes can't have the type '{0}'. They can only be declared as 'int', 'double', 'Array', 'Pointer', or subtype of 'Struct' or 'Union'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um campo em uma subclasse de
-`Struct` tem um tipo diferente de `int`, `double`, `Array`, `Pointer`, ou
-subtipo de `Struct` ou `Union`.
+The analyzer produces this diagnostic when a field in a subclass of
+`Struct` has a type other than `int`, `double`, `Array`, `Pointer`, or
+subtype of `Struct` or `Union`.
 
-Para mais informações sobre FFI, veja [C interop using dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o campo `str` tem o tipo
-`String`, que não é um dos tipos permitidos para campos em uma subclasse de
-`Struct`:
+The following code produces this diagnostic because the field `str` has
+the type `String`, which isn't one of the allowed types for fields in a
+subclass of `Struct`:
 
 ```dart
 import 'dart:ffi';
@@ -35,7 +36,7 @@ final class C extends Struct {
 
 ## Common fixes
 
-Use um dos tipos permitidos para o campo:
+Use one of the allowed types for the field:
 
 ```dart
 import 'dart:ffi';

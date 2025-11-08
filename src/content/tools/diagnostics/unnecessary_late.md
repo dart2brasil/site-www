@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_late
-description: "Detalhes sobre o diagnóstico unnecessary_late produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_late
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,19 +18,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Modificador 'late' desnecessário._
+_Unnecessary 'late' modifier._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma variável de nível superior ou campo
-estático com um inicializador é marcado como `late`. Variáveis de nível superior e
-campos estáticos são implicitamente late, então não precisam ser explicitamente
-marcados.
+The analyzer produces this diagnostic when a top-level variable or static
+field with an initializer is marked as `late`. Top-level variables and
+static fields are implicitly late, so they don't need to be explicitly
+marked.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o campo estático `c`
-tem o modificador `late` mesmo tendo um inicializador:
+The following code produces this diagnostic because the static field `c`
+has the modifier `late` even though it has an initializer:
 
 ```dart
 class C {
@@ -39,7 +40,7 @@ class C {
 
 ## Common fixes
 
-Remova a keyword `late`:
+Remove the keyword `late`:
 
 ```dart
 class C {

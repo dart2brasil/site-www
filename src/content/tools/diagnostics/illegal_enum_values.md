@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: illegal_enum_values
-description: "Detalhes sobre o diagnóstico illegal_enum_values produzido pelo analisador do Dart."
+description: >-
+  Details about the illegal_enum_values
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um membro de instância chamado 'values' não pode ser declarado em uma classe que implementa 'Enum'._
+_An instance member named 'values' can't be declared in a class that implements 'Enum'._
 
-_Um membro de instância chamado 'values' não pode ser herdado de '{0}' em uma classe que implementa 'Enum'._
+_An instance member named 'values' can't be inherited from '{0}' in a class that implements 'Enum'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma classe que implementa
-`Enum` ou um mixin com uma restrição de superclasse de `Enum` possui um membro de
-instância chamado `values`.
+The analyzer produces this diagnostic when either a class that implements
+`Enum` or a mixin with a superclass constraint of `Enum` has an instance
+member named `values`.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque a classe `C`, que
-implementa `Enum`, declara um campo de instância chamado `values`:
+The following code produces this diagnostic because the class `C`, which
+implements `Enum`, declares an instance field named `values`:
 
 ```dart
 abstract class C implements Enum {
@@ -27,8 +28,8 @@ abstract class C implements Enum {
 }
 ```
 
-O código a seguir produz este diagnóstico porque a classe `B`, que
-implementa `Enum`, herda um método de instância chamado `values` de `A`:
+The following code produces this diagnostic because the class `B`, which
+implements `Enum`, inherits an instance method named `values` from `A`:
 
 ```dart
 abstract class A {
@@ -40,7 +41,7 @@ abstract class [!B!] extends A implements Enum {}
 
 ## Common fixes
 
-Altere o nome do membro conflitante:
+Change the name of the conflicting member:
 
 ```dart
 abstract class C implements Enum {

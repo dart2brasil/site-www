@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: sort_unnamed_constructors_first
-description: "Detalhes sobre o diagnóstico sort_unnamed_constructors_first produzido pelo analisador do Dart."
+description: >-
+  Details about the sort_unnamed_constructors_first
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Localização inválida para o construtor sem nome._
+_Invalid location for the unnamed constructor._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor sem nome aparece
-depois de um construtor nomeado.
+The analyzer produces this diagnostic when an unnamed constructor appears
+after a named constructor.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o construtor sem nome
-está depois do construtor nomeado:
+The following code produces this diagnostic because the unnamed
+constructor is after the named constructor:
 
 ```dart
 class C {
@@ -37,9 +38,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Mova o construtor sem nome antes de quaisquer outros construtores:
+Move the unnamed constructor before any other constructors:
 
 ```dart
 class C {

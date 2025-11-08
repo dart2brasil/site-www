@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: instance_access_to_static_member
-description: "Detalhes sobre o diagnóstico instance_access_to_static_member produzido pelo analisador do Dart."
+description: >-
+  Details about the instance_access_to_static_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O {0} static '{1}' não pode ser acessado através de uma instância._
+_The static {0} '{1}' can't be accessed through an instance._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um operador de acesso é usado para
-acessar um membro static através de uma instância da classe.
+The analyzer produces this diagnostic when an access operator is used to
+access a static member through an instance of the class.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `zero` é um
-campo static, mas está sendo acessado como se fosse um campo de instância:
+The following code produces this diagnostic because `zero` is a static
+field, but it's being accessed as if it were an instance field:
 
 ```dart
 void f(C c) {
@@ -28,9 +29,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Use a classe para acessar o membro static:
+Use the class to access the static member:
 
 ```dart
 void f(C c) {

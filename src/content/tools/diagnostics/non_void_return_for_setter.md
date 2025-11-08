@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: non_void_return_for_setter
-description: "Detalhes sobre o diagnóstico non_void_return_for_setter produzido pelo analisador do Dart."
+description: >-
+  Details about the non_void_return_for_setter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo de retorno do setter deve ser 'void' ou ausente._
+_The return type of the setter must be 'void' or absent._
 
 ## Description
 
-O analisador produz este diagnóstico quando um setter é definido com um
-tipo de retorno diferente de `void`.
+The analyzer produces this diagnostic when a setter is defined with a
+return type other than `void`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o setter `p` tem um
-tipo de retorno de `int`:
+The following code produces this diagnostic because the setter `p` has a
+return type of `int`:
 
 ```dart
 class C {
@@ -26,7 +27,7 @@ class C {
 
 ## Common fixes
 
-Altere o tipo de retorno para `void` ou omita o tipo de retorno:
+Change the return type to `void` or omit the return type:
 
 ```dart
 class C {

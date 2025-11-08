@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: abi_specific_integer_mapping_unsupported
-description: "Detalhes sobre o diagnóstico abi_specific_integer_mapping_unsupported produzido pelo analisador do Dart."
+description: >-
+  Details about the abi_specific_integer_mapping_unsupported
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,9 +11,9 @@ _Invalid mapping to '{0}'; only mappings to 'Int8', 'Int16', 'Int32', 'Int64', '
 
 ## Description
 
-O analisador produz este diagnóstico quando um valor no argumento de mapa de
-uma anotação `AbiSpecificIntegerMapping` é algo diferente de um dos
-seguintes tipos de inteiro:
+The analyzer produces this diagnostic when a value in the map argument of
+an `AbiSpecificIntegerMapping` annotation is anything other than one of
+the following integer types:
 - `Int8`
 - `Int16`
 - `Int32`
@@ -24,8 +25,8 @@ seguintes tipos de inteiro:
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o valor da entrada do mapa
-é `Array<Uint8>`, que não é um tipo de inteiro válido:
+The following code produces this diagnostic because the value of the map
+entry is `Array<Uint8>`, which isn't a valid integer type:
 
 ```dart
 import 'dart:ffi';
@@ -38,7 +39,7 @@ final class C extends AbiSpecificInteger {
 
 ## Common fixes
 
-Use um dos tipos válidos como valor no mapa:
+Use one of the valid types as a value in the map:
 
 ```dart
 import 'dart:ffi';

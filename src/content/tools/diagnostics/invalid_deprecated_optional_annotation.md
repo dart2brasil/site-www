@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: invalid_deprecated_optional_annotation
-description: "Detalhes sobre o diagnóstico invalid_deprecated_optional_annotation produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_deprecated_optional_annotation
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A annotation '@Deprecated.optional' só pode ser aplicada a parâmetros opcionais._
+_The annotation '@Deprecated.optional' can only be applied to optional parameters._
 
 ## Description
 
-O analisador produz este diagnóstico quando a annotation
-`@Deprecated.optional` é aplicada a um parâmetro que não é um parâmetro
-opcional. A annotation não deve ser usada em um parâmetro em uma função
-local, uma função anônima, um parâmetro do tipo função ou um typedef. Ela
-só é válida em parâmetros opcionais em uma função de nível superior, um
-método ou um construtor.
+The analyzer produces this diagnostic when the `@Deprecated.optional`
+annotation is applied to a parameter that isn't an optional parameter. The
+annotation must not be used on a parameter in a local function, an
+anonymous function, a function-typed parameter, or a typedef. It is only
+valid on optional parameters in a top-level function, a method, or a
+constructor.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a annotation está em um
-parâmetro obrigatório:
+The following code produces this diagnostic because the annotation is on a
+required parameter:
 
 ```dart
 void f(@[!Deprecated.optional!]() int p) {}
@@ -28,7 +29,7 @@ void f(@[!Deprecated.optional!]() int p) {}
 
 ## Common fixes
 
-Remova a annotation:
+Remove the annotation:
 
 ```dart
 void f(int p) {}

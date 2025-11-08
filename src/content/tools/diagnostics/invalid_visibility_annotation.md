@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: invalid_visibility_annotation
-description: "Detalhes sobre o diagnóstico invalid_visibility_annotation produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_visibility_annotation
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O membro '{0}' está anotado com '{1}', mas esta anotação só é significativa em declarações de membros públicos._
+_The member '{0}' is annotated with '{1}', but this annotation is only meaningful on declarations of public members._
 
 ## Description
 
-O analisador produz este diagnóstico quando a anotação `visibleForTemplate`
-ou [`visibleForTesting`][meta-visibleForTesting] é aplicada a
-uma declaração não pública.
+The analyzer produces this diagnostic when either the `visibleForTemplate`
+or [`visibleForTesting`][meta-visibleForTesting] annotation is applied to
+a non-public declaration.
 
 ## Example
 
-O código a seguir produz este diagnóstico:
+The following code produces this diagnostic:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -29,8 +30,8 @@ void f() => _someFunction();
 
 ## Common fixes
 
-Se a declaração não precisa ser usada por código de teste, então remova a
-anotação:
+If the declaration doesn't need to be used by test code, then remove the
+annotation:
 
 ```dart
 void _someFunction() {}
@@ -38,7 +39,7 @@ void _someFunction() {}
 void f() => _someFunction();
 ```
 
-Se ela precisa, então torne-a pública:
+If it does, then make it public:
 
 ```dart
 import 'package:meta/meta.dart';

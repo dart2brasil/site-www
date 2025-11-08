@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: extension_override_with_cascade
-description: "Detalhes sobre o diagnóstico extension_override_with_cascade produzido pelo analisador Dart."
+description: >-
+  Details about the extension_override_with_cascade
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Overrides de extension não têm valor, portanto não podem ser usados como receptor de uma expressão cascade._
+_Extension overrides have no value so they can't be used as the receiver of a cascade expression._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um override de extension é usado como
-o receptor de uma expressão cascade. O valor de uma expressão cascade
-`e..m` é o valor do receptor `e`, mas overrides de extension não são
-expressões e não têm um valor.
+The analyzer produces this diagnostic when an extension override is used as
+the receiver of a cascade expression. The value of a cascade expression
+`e..m` is the value of the receiver `e`, but extension overrides aren't
+expressions and don't have a value.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `E(3)` não é uma
-expressão:
+The following code produces this diagnostic because `E(3)` isn't an
+expression:
 
 ```dart
 extension E on int {
@@ -29,9 +30,9 @@ f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Use `.` ao invés de `..`:
+Use `.` rather than `..`:
 
 ```dart
 extension E on int {
@@ -42,5 +43,5 @@ f() {
 }
 ```
 
-Se houver múltiplos acessos em cascata, você precisará duplicar o
-override de extension para cada um.
+If there are multiple cascaded accesses, you'll need to duplicate the
+extension override for each one.

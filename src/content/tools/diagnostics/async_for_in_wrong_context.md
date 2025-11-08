@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: async_for_in_wrong_context
-description: "Detalhes sobre o diagnóstico async_for_in_wrong_context produzido pelo analisador do Dart."
+description: >-
+  Details about the async_for_in_wrong_context
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O loop async for-in só pode ser usado em uma função async._
+_The async for-in loop can only be used in an async function._
 
 ## Description
 
-O analisador produz este diagnóstico quando um loop async for-in é encontrado em
-uma função ou método cujo corpo não está marcado como `async` ou
+The analyzer produces this diagnostic when an async for-in loop is found in
+a function or method whose body isn't marked as being either `async` or
 `async*`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o corpo de `f` não está
-marcado como `async` ou `async*`, mas `f` contém um loop async
-for-in:
+The following code produces this diagnostic because the body of `f` isn't
+marked as being either `async` or `async*`, but `f` contains an async
+for-in loop:
 
 ```dart
 void f(list) {
@@ -30,7 +31,7 @@ void f(list) {
 
 ## Common fixes
 
-Se a função deve retornar um `Future`, então marque o corpo com `async`:
+If the function should return a `Future`, then mark the body with `async`:
 
 ```dart
 Future<void> f(list) async {
@@ -40,7 +41,7 @@ Future<void> f(list) async {
 }
 ```
 
-Se a função deve retornar um `Stream` de valores, então marque o corpo com
+If the function should return a `Stream` of values, then mark the body with
 `async*`:
 
 ```dart
@@ -51,7 +52,7 @@ Stream<void> f(list) async* {
 }
 ```
 
-Se a função deve ser síncrona, então remova o `await` antes do
+If the function should be synchronous, then remove the `await` before the
 loop:
 
 ```dart

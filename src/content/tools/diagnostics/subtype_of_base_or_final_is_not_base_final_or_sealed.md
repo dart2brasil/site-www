@@ -1,39 +1,40 @@
 ---
-ia-translate: true
 title: subtype_of_base_or_final_is_not_base_final_or_sealed
-description: "Detalhes sobre o diagnóstico subtype_of_base_or_final_is_not_base_final_or_sealed produzido pelo analisador do Dart."
+description: >-
+  Details about the subtype_of_base_or_final_is_not_base_final_or_sealed
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O mixin '{0}' deve ser 'base' porque o supertipo '{1}' é 'base'._
+_The mixin '{0}' must be 'base' because the supertype '{1}' is 'base'._
 
-_O mixin '{0}' deve ser 'base' porque o supertipo '{1}' é 'final'._
+_The mixin '{0}' must be 'base' because the supertype '{1}' is 'final'._
 
-_O tipo '{0}' deve ser 'base', 'final' ou 'sealed' porque o supertipo '{1}' é 'base'._
+_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}' is 'base'._
 
-_O tipo '{0}' deve ser 'base', 'final' ou 'sealed' porque o supertipo '{1}' é 'final'._
+_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}' is 'final'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma classe ou mixin tem um
-supertipo direto ou indireto que é `base` ou `final`, mas a própria classe ou
-mixin não está marcada como `base`, `final` ou `sealed`.
+The analyzer produces this diagnostic when a class or mixin has a direct
+or indirect supertype that is either `base` or `final`, but the class or
+mixin itself isn't marked either `base`, `final`, or `sealed`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a classe `B` é um
-subtipo de `A`, e `A` é uma classe `base`, mas `B` não é `base`,
-`final` ou `sealed`:
+The following code produces this diagnostic because the class `B` is a
+subtype of `A`, and `A` is a `base` class, but `B` is neither `base`,
+`final` or `sealed`:
 
 ```dart
 base class A {}
 class [!B!] extends A {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione `base`, `final` ou `sealed` à declaração da classe ou mixin:
+Add either `base`, `final` or `sealed` to the class or mixin declaration:
 
 ```dart
 base class A {}

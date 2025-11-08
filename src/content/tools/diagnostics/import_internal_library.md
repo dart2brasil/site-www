@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: import_internal_library
-description: "Detalhes sobre o diagnóstico import_internal_library produzido pelo analisador do Dart."
+description: >-
+  Details about the import_internal_library
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A biblioteca '{0}' é interna e não pode ser importada._
+_The library '{0}' is internal and can't be imported._
 
 ## Description
 
-O analisador produz este diagnóstico quando encontra um import cujo URI
-`dart:` referencia uma biblioteca interna.
+The analyzer produces this diagnostic when it finds an import whose `dart:`
+URI references an internal library.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `_interceptors` é uma
-biblioteca interna:
+The following code produces this diagnostic because `_interceptors` is an
+internal library:
 
 ```dart
 import [!'dart:_interceptors'!];
@@ -24,4 +25,4 @@ import [!'dart:_interceptors'!];
 
 ## Common fixes
 
-Remova a diretiva import.
+Remove the import directive.

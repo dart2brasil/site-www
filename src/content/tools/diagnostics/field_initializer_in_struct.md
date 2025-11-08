@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: field_initializer_in_struct
-description: "Detalhes sobre o diagnóstico field_initializer_in_struct produzido pelo analisador Dart."
+description: >-
+  Details about the field_initializer_in_struct
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Construtores em subclasses de 'Struct' e 'Union' não podem ter inicializadores de campo._
+_Constructors in subclasses of 'Struct' and 'Union' can't have field initializers._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor em uma subclasse de
-`Struct` ou `Union` possui um ou mais inicializadores de campo.
+The analyzer produces this diagnostic when a constructor in a subclass of
+either `Struct` or `Union` has one or more field initializers.
 
-Para mais informações sobre FFI, veja [C interop usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a classe `C` possui um
-construtor com um inicializador para o campo `f`:
+The following code produces this diagnostic because the class `C` has a
+constructor with an initializer for the field `f`:
 
 ```dart
 // @dart = 2.9
@@ -32,9 +33,9 @@ final class C extends Struct {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova o inicializador de campo:
+Remove the field initializer:
 
 ```dart
 // @dart = 2.9

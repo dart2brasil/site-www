@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: non_constant_case_expression
-description: "Detalhes sobre o diagnóstico non_constant_case_expression produzido pelo analisador do Dart."
+description: >-
+  Details about the non_constant_case_expression
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,12 +11,12 @@ _Case expressions must be constant._
 
 ## Description
 
-O analisador produz este diagnóstico quando a expressão em uma cláusula
-`case` não é uma expressão constante.
+The analyzer produces this diagnostic when the expression in a `case`
+clause isn't a constant expression.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `j` não é uma constante:
+The following code produces this diagnostic because `j` isn't a constant:
 
 ```dart
 void f(int i, int j) {
@@ -29,8 +30,8 @@ void f(int i, int j) {
 
 ## Common fixes
 
-Torne a expressão uma expressão constante, ou reescreva o comando `switch`
-como uma sequência de comandos `if`:
+Either make the expression a constant expression, or rewrite the `switch`
+statement as a sequence of `if` statements:
 
 ```dart
 void f(int i, int j) {

@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: void_checks
-description: "Detalhes sobre o diagnóstico void_checks produzido pelo analisador Dart."
+description: >-
+  Details about the void_checks
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,20 +18,20 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Atribuição a uma variável de tipo 'void'._
+_Assignment to a variable of type 'void'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um valor é atribuído a uma
-variável de tipo `void`.
+The analyzer produces this diagnostic when a value is assigned to a
+variable of type `void`.
 
-Não é possível acessar o valor de tal variável, então a
-atribuição não tem valor.
+It isn't possible to access the value of such a variable, so the
+assignment has no value.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o campo `value` tem
-o tipo `void`, mas um valor está sendo atribuído a ele:
+The following code produces this diagnostic because the field `value` has
+the type `void`, but a value is being assigned to it:
 
 ```dart
 class A<T> {
@@ -42,9 +43,9 @@ void f(A<void> a) {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o tipo do
-parâmetro `p` no método `m` é `void`, mas um valor está sendo atribuído
-a ele na invocação:
+The following code produces this diagnostic because the type of the
+parameter `p` in the method `m` is `void`, but a value is being assigned
+to it in the invocation:
 
 ```dart
 class A<T> {
@@ -56,10 +57,10 @@ void f(A<void> a) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o tipo da variável está incorreto, então mude o tipo da
-variável:
+If the type of the variable is incorrect, then change the type of the
+variable:
 
 ```dart
 class A<T> {
@@ -71,7 +72,7 @@ void f(A<int> a) {
 }
 ```
 
-Se o tipo da variável está correto, então remova a atribuição:
+If the type of the variable is correct, then remove the assignment:
 
 ```dart
 class A<T> {

@@ -1,38 +1,39 @@
 ---
-ia-translate: true
 title: nullable_type_in_with_clause
-description: "Detalhes sobre o diagnóstico nullable_type_in_with_clause produzido pelo analisador Dart."
+description: >-
+  Details about the nullable_type_in_with_clause
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Uma classe ou mixin não pode misturar em um tipo nulo._
+_A class or mixin can't mix in a nullable type._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração de classe ou mixin tem
-uma cláusula `with`, e um mixin é seguido por um `?`.
+The analyzer produces this diagnostic when a class or mixin declaration has
+a `with` clause, and a mixin is followed by a `?`.
 
-Não é válido especificar um mixin nulo porque fazer isso não teria nenhum
-significado; não alteraria nem a interface nem a implementação sendo
-herdada pela classe contendo a cláusula `with`.
+It isn't valid to specify a nullable mixin because doing so would have no
+meaning; it wouldn't change either the interface or implementation being
+inherited by the class containing the `with` clause.
 
-Note, porém, que _é_ válido usar um tipo nulo como um argumento de tipo
-para o mixin, como `class A with B<C?> {}`.
+Note, however, that it _is_ valid to use a nullable type as a type argument
+to the mixin, such as `class A with B<C?> {}`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `A?` é um tipo nulo,
-e tipos nulos não podem ser usados em uma cláusula `with`:
+The following code produces this diagnostic because `A?` is a nullable
+type, and nullable types can't be used in a `with` clause:
 
 ```dart
 mixin M {}
 class C with [!M?!] {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova o ponto de interrogação do tipo:
+Remove the question mark from the type:
 
 ```dart
 mixin M {}

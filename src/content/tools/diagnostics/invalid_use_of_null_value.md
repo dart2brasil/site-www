@@ -1,21 +1,22 @@
 ---
-ia-translate: true
 title: invalid_use_of_null_value
-description: "Detalhes sobre o diagnóstico invalid_use_of_null_value produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_use_of_null_value
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Uma expressão cujo valor é sempre 'null' não pode ser dereferenciada._
+_An expression whose value is always 'null' can't be dereferenced._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma expressão cujo valor sempre
-será `null` é dereferenciada.
+The analyzer produces this diagnostic when an expression whose value will
+always be `null` is dereferenced.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `x` sempre será
+The following code produces this diagnostic because `x` will always be
 `null`:
 
 ```dart
@@ -26,8 +27,8 @@ int f(Null x) {
 
 ## Common fixes
 
-Se o valor pode ser algo diferente de `null`, então altere o
-tipo da expressão:
+If the value is allowed to be something other than `null`, then change the
+type of the expression:
 
 ```dart
 int f(String? x) {

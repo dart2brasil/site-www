@@ -1,19 +1,20 @@
 ---
-ia-translate: true
 title: uri_has_not_been_generated
-description: "Detalhes sobre o diagnóstico uri_has_not_been_generated produzido pelo analisador Dart."
+description: >-
+  Details about the uri_has_not_been_generated
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O destino do URI não foi gerado: '{0}'._
+_Target of URI hasn't been generated: '{0}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma diretiva import, export ou part
-é encontrada onde o URI se refere a um arquivo que não existe e
-o nome do arquivo termina com um padrão que é comumente produzido por
-geradores de código, como um dos seguintes:
+The analyzer produces this diagnostic when an import, export, or part
+directive is found where the URI refers to a file that doesn't exist and
+the name of the file ends with a pattern that's commonly produced by code
+generators, such as one of the following:
 - `.g.dart`
 - `.pb.dart`
 - `.pbenum.dart`
@@ -21,19 +22,19 @@ geradores de código, como um dos seguintes:
 - `.pbjson.dart`
 - `.template.dart`
 
-## Exemplo
+## Example
 
-Se o arquivo `lib.g.dart` não existe, o código a seguir produz este
-diagnóstico:
+If the file `lib.g.dart` doesn't exist, the following code produces this
+diagnostic:
 
 ```dart
 import [!'lib.g.dart'!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o arquivo é um arquivo gerado, então execute o gerador que gera o
-arquivo.
+If the file is a generated file, then run the generator that generates the
+file.
 
-Se o arquivo não é um arquivo gerado, então verifique a ortografia do URI ou
-crie o arquivo.
+If the file isn't a generated file, then check the spelling of the URI or
+create the file.

@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: argument_type_not_assignable_to_error_handler
-description: "Detalhes sobre o diagnóstico argument_type_not_assignable_to_error_handler produzido pelo analisador Dart."
+description: >-
+  Details about the argument_type_not_assignable_to_error_handler
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,19 +11,19 @@ _The argument type '{0}' can't be assigned to the parameter type '{1} Function(O
 
 ## Description
 
-O analisador produz este diagnóstico quando uma invocação de
-`Future.catchError` tem um argument que é uma função cujos parameters
-não são compatíveis com os arguments que serão passados para a função
-quando ela for invocada. O type estático do primeiro argument para `catchError`
-é apenas `Function`, mesmo que a função que é passada seja esperada
-ter um único parameter do type `Object` ou dois parameters dos
-types `Object` e `StackTrace`.
+The analyzer produces this diagnostic when an invocation of
+`Future.catchError` has an argument that is a function whose parameters
+aren't compatible with the arguments that will be passed to the function
+when it's invoked. The static type of the first argument to `catchError`
+is just `Function`, even though the function that is passed in is expected
+to have either a single parameter of type `Object` or two parameters of
+type `Object` and `StackTrace`.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque o closure sendo
-passado para `catchError` não recebe nenhum parameter, mas a função é
-obrigada a receber pelo menos um parameter:
+The following code produces this diagnostic because the closure being
+passed to `catchError` doesn't take any parameters, but the function is
+required to take at least one parameter:
 
 ```dart
 void f(Future<int> f) {
@@ -30,9 +31,9 @@ void f(Future<int> f) {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o closure sendo
-passado para `catchError` recebe três parameters, mas não pode ter mais que
-dois parameters obrigatórios:
+The following code produces this diagnostic because the closure being
+passed to `catchError` takes three parameters, but it can't have more than
+two required parameters:
 
 ```dart
 void f(Future<int> f) {
@@ -40,9 +41,9 @@ void f(Future<int> f) {
 }
 ```
 
-O código a seguir produz este diagnóstico porque mesmo que o closure
-sendo passado para `catchError` receba um parameter, o closure não tem
-um type que seja compatível com `Object`:
+The following code produces this diagnostic because even though the closure
+being passed to `catchError` takes one parameter, the closure doesn't have
+a type that is compatible with `Object`:
 
 ```dart
 void f(Future<int> f) {
@@ -52,8 +53,8 @@ void f(Future<int> f) {
 
 ## Common fixes
 
-Altere a função sendo passada para `catchError` para que ela tenha um
-ou dois parameters obrigatórios, e os parameters tenham os types esperados:
+Change the function being passed to `catchError` so that it has either one
+or two required parameters, and the parameters have the required types:
 
 ```dart
 void f(Future<int> f) {

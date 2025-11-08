@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: annotate_overrides
-description: "Detalhes sobre o diagnóstico annotate_overrides produzido pelo analisador Dart."
+description: >-
+  Details about the annotate_overrides
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O membro '{0}' sobrescreve um membro herdado mas não está anotado com '@override'._
+_The member '{0}' overrides an inherited member but isn't annotated with '@override'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um membro sobrescreve um membro
-herdado, mas não está anotado com `@override`.
+The analyzer produces this diagnostic when a member overrides an inherited
+member, but isn't annotated with `@override`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o método `m` na
-classe `B` sobrescreve o método com o mesmo nome na classe `A`, mas não está
-marcado como um override intencional:
+The following code produces this diagnostic because the method `m` in the
+class `B` overrides the method with the same name in class `A`, but isn't
+marked as an intentional override:
 
 ```dart
 class A {
@@ -40,10 +41,10 @@ class B extends A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o membro na subclasse pretende sobrescrever o membro na
-superclasse, então adicione uma anotação `@override`:
+If the member in the subclass is intended to override the member in the
+superclass, then add an `@override` annotation:
 
 ```dart
 class A {
@@ -56,8 +57,8 @@ class B extends A {
 }
 ```
 
-Se o membro na subclasse não pretende sobrescrever o membro na
-superclasse, então renomeie um dos membros:
+If the member in the subclass is not intended to override the member in
+the superclass, then rename one of the members:
 
 ```dart
 class A {

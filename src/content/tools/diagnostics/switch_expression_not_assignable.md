@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: switch_expression_not_assignable
-description: "Detalhes sobre o diagnóstico switch_expression_not_assignable produzido pelo analisador Dart."
+description: >-
+  Details about the switch_expression_not_assignable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O type '{0}' da expressão switch não é atribuível ao type '{1}' das expressões case._
+_Type '{0}' of the switch expression isn't assignable to the type '{1}' of case expressions._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o tipo da expressão em uma
-instrução `switch` não é atribuível ao tipo das expressões nas
-cláusulas `case`.
+The analyzer produces this diagnostic when the type of the expression in a
+`switch` statement isn't assignable to the type of the expressions in the
+`case` clauses.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o tipo de `s`
-(`String`) não é atribuível ao tipo de `0` (`int`):
+The following code produces this diagnostic because the type of `s`
+(`String`) isn't assignable to the type of `0` (`int`):
 
 ```dart
 void f(String s) {
@@ -28,10 +29,10 @@ void f(String s) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o tipo das expressões `case` estiver correto, então altere a
-expressão na instrução `switch` para ter o tipo correto:
+If the type of the `case` expressions is correct, then change the
+expression in the `switch` statement to have the correct type:
 
 ```dart
 void f(String s) {
@@ -42,8 +43,8 @@ void f(String s) {
 }
 ```
 
-Se o tipo da expressão `switch` estiver correto, então altere as expressões
-`case` para ter o tipo correto:
+If the type of the `switch` expression is correct, then change the `case`
+expressions to have the correct type:
 
 ```dart
 void f(String s) {

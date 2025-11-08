@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: redirect_to_invalid_return_type
-description: "Detalhes sobre o diagnóstico redirect_to_invalid_return_type produzido pelo analisador Dart."
+description: >-
+  Details about the redirect_to_invalid_return_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo de retorno '{0}' do construtor redirecionado não é um subtipo de '{1}'._
+_The return type '{0}' of the redirected constructor isn't a subtype of '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um factory constructor redireciona
-para um construtor cujo tipo de retorno não é um subtipo do tipo que o
-factory constructor é declarado para produzir.
+The analyzer produces this diagnostic when a factory constructor redirects
+to a constructor whose return type isn't a subtype of the type that the
+factory constructor is declared to produce.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `A` não é uma subclasse
-de `C`, o que significa que o valor retornado pelo construtor `A()`
-não pode ser retornado do construtor `C()`:
+The following code produces this diagnostic because `A` isn't a subclass
+of `C`, which means that the value returned by the constructor `A()`
+couldn't be returned from the constructor `C()`:
 
 ```dart
 class A {}
@@ -30,11 +31,11 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o factory constructor está redirecionando para um construtor na classe errada,
-atualize o factory constructor para redirecionar para o construtor
-correto:
+If the factory constructor is redirecting to a constructor in the wrong
+class, then update the factory constructor to redirect to the correct
+constructor:
 
 ```dart
 class A {}
@@ -46,8 +47,8 @@ class C {
 }
 ```
 
-Se a classe que define o construtor sendo redirecionado é a classe que
-deveria ser retornada, faça dela um subtipo do tipo de retorno da factory:
+If the class defining the constructor being redirected to is the class that
+should be returned, then make it a subtype of the factory's return type:
 
 ```dart
 class A implements C {}

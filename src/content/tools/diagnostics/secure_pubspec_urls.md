@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: secure_pubspec_urls
-description: "Detalhes sobre o diagnóstico secure_pubspec_urls produzido pelo analisador do Dart."
+description: >-
+  Details about the secure_pubspec_urls
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O protocolo '{0}' não deve ser usado porque não é seguro._
+_The '{0}' protocol shouldn't be used because it isn't secure._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma URL em um arquivo `pubspec.yaml` está
-usando um esquema não seguro, como `http`.
+The analyzer produces this diagnostic when a URL in a `pubspec.yaml` file is
+using a non-secure scheme, such as `http`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o arquivo `pubspec.yaml`
-contém uma URL `http`:
+The following code produces this diagnostic because the `pubspec.yaml` file
+contains an `http` URL:
 
 ```yaml
 dependencies:
@@ -37,7 +38,7 @@ dependencies:
 
 ## Common fixes
 
-Altere o esquema da URL para usar um esquema seguro, como `https`:
+Change the scheme of the URL to use a secure scheme, such as `https`:
 
 ```yaml
 dependencies:

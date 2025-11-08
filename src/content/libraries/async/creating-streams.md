@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: Criando streams em Dart
-shortTitle: Criando streams
-description: "Um stream é uma sequência de resultados; aprenda como criar o seu próprio."
+title: Creating streams in Dart
+shortTitle: Creating streams
+description: A stream is a sequence of results; learn how to create your own.
 original-date: 2013-04-08
 date: 2021-05-16
 ---
@@ -11,45 +10,45 @@ date: 2021-05-16
 .comment {color:red;}
 </style>
 
-_Escrito por Lasse Nielsen <br>
-Abril de 2013 (atualizado em Maio de 2021)_
+_Written by Lasse Nielsen <br>
+April 2013 (updated May 2021)_
 
-A biblioteca dart:async contém dois tipos
-que são importantes para muitas APIs Dart:
-[Stream]({{site.dart-api}}/dart-async/Stream-class.html) e
+The dart:async library contains two types
+that are important for many Dart APIs:
+[Stream]({{site.dart-api}}/dart-async/Stream-class.html) and
 [Future.]({{site.dart-api}}/dart-async/Future-class.html)
-Onde um Future representa o resultado de um único cálculo,
-um stream é uma _sequência_ de resultados.
-Você escuta em um stream para ser notificado dos resultados
-(tanto dados quanto erros)
-e do encerramento do stream.
-Você também pode pausar enquanto escuta ou parar de escutar o stream
-antes que ele seja concluído.
+Where a Future represents the result of a single computation,
+a stream is a _sequence_ of results.
+You listen on a stream to get notified of the results
+(both data and errors)
+and of the stream shutting down.
+You can also pause while listening or stop listening to the stream
+before it is complete.
 
-Mas este artigo não é sobre _usar_ streams.
-É sobre criar seus próprios streams.
-Você pode criar streams de algumas maneiras:
+But this article is not about _using_ streams.
+It's about creating your own streams.
+You can create streams in a few ways:
 
-* Transformando streams existentes.
-* Criando um stream do zero usando uma função `async*`.
-* Criando um stream usando um `StreamController`.
+* Transforming existing streams.
+* Creating a stream from scratch by using an `async*` function.
+* Creating a stream by using a `StreamController`.
 
-Este artigo mostra o código para cada abordagem
-e dá dicas para ajudá-lo a implementar seu stream corretamente.
+This article shows the code for each approach
+and gives tips to help you implement your stream correctly.
 
-Para obter ajuda sobre como usar streams, veja
-[Programação Assíncrona: Streams](/libraries/async/using-streams).
+For help on using streams, see
+[Asynchronous Programming: Streams](/libraries/async/using-streams).
 
 
-## Transformando um stream existente {:#transforming-an-existing-stream}
+## Transforming an existing stream
 
-O caso comum para criar streams é que você já tem um stream,
-e você quer criar um novo stream baseado nos eventos do stream original.
-Por exemplo, você pode ter um stream de bytes que
-você quer converter em um stream de strings decodificando a entrada em UTF-8.
-A abordagem mais geral é criar um novo stream que
-espera por eventos no stream original e então
-emite novos eventos. Exemplo:
+The common case for creating streams is that you already have a stream,
+and you want to create a new stream based on the original stream's events.
+For example you might have a stream of bytes that
+you want to convert to a stream of strings by UTF-8 decoding the input.
+The most general approach is to create a new stream that
+waits for events on the original stream and then
+outputs new events. Example:
 
 <?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split-into-lines)"?>
 ```dart
@@ -74,13 +73,13 @@ Stream<String> lines(Stream<String> source) async* {
 }
 ```
 
-Para muitas transformações comuns,
-você pode usar métodos de transformação fornecidos por `Stream`
-como `map()`, `where()`, `expand()` e `take()`.
+For many common transformations,
+you can use `Stream`-supplied transforming methods
+such as `map()`, `where()`, `expand()`, and `take()`.
 
-Por exemplo, suponha que você tenha um stream, `counterStream`,
-que emite um contador crescente a cada segundo.
-Veja como ele pode ser implementado:
+For example, assume you have a stream, `counterStream`,
+that emits an increasing counter every second.
+Here's how it might be implemented:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic-usage)"?>
 ```dart
@@ -90,16 +89,16 @@ var counterStream = Stream<int>.periodic(
 ).take(15);
 ```
 
-Para ver rapidamente os eventos, você pode usar um código como este:
+To quickly see the events, you can use code like this:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic-for-each)"?>
 ```dart
 counterStream.forEach(print); // Print an integer every second, 15 times.
 ```
 
-Para transformar os eventos do stream, você pode invocar um método de transformação
-como `map()` no stream antes de ouvi-lo.
-O método retorna um novo stream.
+To transform the stream events, you can invoke a transforming method
+such as `map()` on the stream before listening to it.
+The method returns a new stream.
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
 ```dart
@@ -108,8 +107,8 @@ var doubleCounterStream = counterStream.map((int x) => x * 2);
 doubleCounterStream.forEach(print);
 ```
 
-Em vez de `map()`, você pode usar qualquer outro método de transformação,
-como os seguintes:
+Instead of `map()`, you could use any other transforming method,
+such as the following:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
 ```dart
@@ -118,14 +117,14 @@ como os seguintes:
 .take(5) // Stop after the first five events.
 ```
 
-Muitas vezes, um método de transformação é tudo o que você precisa.
-No entanto, se você precisar de ainda mais controle sobre a transformação,
-você pode especificar um
+Often, a transforming method is all you need.
+However, if you need even more control over the transformation,
+you can specify a
 [StreamTransformer]({{site.dart-api}}/dart-async/StreamTransformer-class.html)
-com o método `transform()` de `Stream`.
-As bibliotecas da plataforma fornecem stream transformers (transformadores de stream) para muitas tarefas comuns.
-Por exemplo, o código a seguir usa os transformadores `utf8.decoder` e `LineSplitter`
-fornecidos pela biblioteca dart:convert.
+with `Stream`'s `transform()` method.
+The platform libraries provide stream transformers for many common tasks.
+For example, the following code uses the `utf8.decoder` and `LineSplitter`
+transformers provided by the dart:convert library.
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
 ```dart
@@ -137,17 +136,17 @@ List<String> lines = await content
 ```
 
 
-## Criando um stream do zero {:#creating-a-stream-from-scratch}
+## Creating a stream from scratch
 
-Uma maneira de criar um novo stream é com
-uma função geradora assíncrona (`async*`).
-O stream é criado quando a função é chamada,
-e o corpo da função começa a ser executado quando o stream é escutado.
-Quando a função retorna, o stream é fechado.
-Até que a função retorne, ela pode emitir eventos no stream usando
-as declarações `yield` ou `yield*`.
+One way to create a new stream is with
+an asynchronous generator (`async*`) function.
+The stream is created when the function is called,
+and the function's body starts running when the stream is listened to.
+When the function returns, the stream closes.
+Until the function returns, it can emit events on the stream by
+using `yield` or `yield*` statements.
 
-Aqui está um exemplo primitivo que emite números em intervalos regulares:
+Here's a primitive example that emits numbers at regular intervals:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
 ```dart
@@ -166,30 +165,30 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) async* {
 the mention of StreamSubscription?]
 {% endcomment %}
 
-Essa função retorna um `Stream`.
-Quando esse stream é escutado, o corpo começa a ser executado.
-Ele atrasa repetidamente pelo intervalo solicitado e então emite o próximo número.
-Se o parâmetro `maxCount` for omitido, não há condição de parada no loop,
-portanto, o stream emite números cada vez maiores para sempre -
-ou até que o listener cancele sua assinatura.
+This function returns a `Stream`.
+When that stream is listened to, the body starts running.
+It repeatedly delays for the requested interval and then yields the next number.
+If the `maxCount` parameter is omitted, there is no stop condition on the loop,
+so the stream outputs increasingly larger numbers forever -
+or until the listener cancels its subscription.
 
-Quando o listener cancela
-(invocando `cancel()` no objeto `StreamSubscription`
-retornado pelo método `listen()`),
-então, na próxima vez que o corpo atingir uma declaração `yield`,
-o `yield` age como uma declaração `return`.
-Qualquer bloco `finally` envolvente é executado,
-e a função sai.
-Se a função tentar emitir um valor antes de sair,
-isso falha e age como um retorno.
+When the listener cancels
+(by invoking `cancel()` on the `StreamSubscription`
+object returned by the `listen()` method),
+then the next time the body reaches a `yield` statement,
+the `yield` instead acts as a `return` statement.
+Any enclosing `finally` block is executed,
+and the function exits.
+If the function attempts to yield a value before exiting,
+that fails and acts as a return.
 
-Quando a função finalmente sai, o future (promessa) retornado por
-o método `cancel()` é concluído.
-Se a função sair com um erro, o future é concluído com esse erro;
-caso contrário, ele é concluído com `null`.
+When the function finally exits, the future returned by
+the `cancel()` method completes.
+If the function exits with an error, the future completes with that error;
+otherwise, it completes with `null`.
 
-Outro exemplo mais útil é uma função que converte
-uma sequência de futures em um stream:
+Another, more useful example is a function that converts
+a sequence of futures to a stream:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
 ```dart
@@ -201,40 +200,40 @@ Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
 }
 ```
 
-Essa função pergunta ao iterável `futures` por um novo future,
-espera por esse future, emite o valor resultante e então faz um loop.
-Se um future for concluído com um erro, o stream será concluído com esse erro.
+This function asks the `futures` iterable for a new future,
+waits for that future, emits the resulting value, and then loops.
+If a future completes with an error, then the stream completes with that error.
 
-É raro ter uma função `async*` construindo um stream do nada.
-Ela precisa obter seus dados de algum lugar,
-e na maioria das vezes esse lugar é outro stream.
-Em alguns casos, como na sequência de futures acima,
-os dados vêm de outras fontes de eventos assíncronos.
-Em muitos casos, entretanto, uma função `async*` é muito simplista para
-lidar facilmente com múltiplas fontes de dados.
-É aí que entra a classe `StreamController`.
+It's rare to have an `async*` function building a stream from nothing.
+It needs to get its data from somewhere,
+and most often that somewhere is another stream.
+In some cases, like the sequence of futures above,
+the data comes from other asynchronous event sources.
+In many cases, however, an `async*` function is too simplistic to
+easily handle multiple data sources.
+That's where the `StreamController` class comes in.
 
 
-## Usando um StreamController {:#using-a-streamcontroller}
+## Using a StreamController
 
-Se os eventos do seu stream vêm de diferentes partes do seu programa,
-e não apenas de um stream ou futures que podem ser percorridos por uma função `async`,
-então use um
+If the events of your stream comes from different parts of your program,
+and not just from a stream or futures that can traversed by an `async` function,
+then use a
 [StreamController]({{site.dart-api}}/dart-async/StreamController-class.html)
-para criar e popular o stream.
+to create and populate the stream.
 
-Um `StreamController` fornece um novo stream
-e uma maneira de adicionar eventos ao stream em qualquer ponto e de qualquer lugar.
-O stream tem toda a lógica necessária para lidar com listeners e pausas.
-Você retorna o stream e mantém o controller para si.
+A `StreamController` gives you a new stream
+and a way to add events to the stream at any point, and from anywhere.
+The stream has all the logic necessary to handle listeners and pausing.
+You return the stream and keep the controller to yourself.
 
-O exemplo a seguir
-(de [stream_controller_bad.dart][])
-mostra um uso básico, embora falho, de `StreamController`
-para implementar a função `timedCounter()` dos exemplos anteriores.
-Este código cria um stream para retornar,
-e então alimenta dados nele com base em eventos de timer,
-que não são nem futures nem eventos de stream.
+The following example
+(from [stream_controller_bad.dart][])
+shows a basic, though flawed, usage of `StreamController`
+to implement the `timedCounter()` function from the previous examples.
+This code creates a stream to return,
+and then feeds data into it based on timer events,
+which are neither futures nor stream events.
 
 [stream_controller_bad.dart]: {{site.repo.this}}/blob/main/examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
 
@@ -259,7 +258,7 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
 }
 ```
 
-Como antes, você pode usar o stream retornado por `timedCounter()` assim:
+As before, you can use the stream returned by `timedCounter()` like this:
 {% comment %}
 **[PENDING: Did we show this before?]**
 {% endcomment %}
@@ -270,30 +269,30 @@ var counterStream = timedCounter(const Duration(seconds: 1), 15);
 counterStream.listen(print); // Print an integer every second, 15 times.
 ```
 
-Esta implementação de `timedCounter()` tem
-alguns problemas:
+This implementation of `timedCounter()` has
+a couple of problems:
 
-* Ela começa a produzir eventos antes de ter assinantes.
-* Ela continua produzindo eventos mesmo se o assinante solicitar uma pausa.
+* It starts producing events before it has subscribers.
+* It keeps producing events even if the subscriber requests a pause.
 
-Como as próximas seções mostram,
-você pode corrigir esses dois problemas especificando
-callbacks como `onListen` e `onPause`
-ao criar o `StreamController`.
+As the next sections show,
+you can fix both of these problems by specifying
+callbacks such as `onListen` and `onPause`
+when creating the `StreamController`.
 
 
-### Esperando por uma assinatura {:#waiting-for-a-subscription}
+### Waiting for a subscription
 
-Como regra, os streams devem esperar por assinantes antes de iniciar seu trabalho.
-Uma função `async*` faz isso automaticamente,
-mas ao usar um `StreamController`,
-você está no controle total e pode adicionar eventos mesmo quando não deveria.
-Quando um stream não tem assinante,
-seu `StreamController` armazena eventos em buffer,
-o que pode levar a um vazamento de memória
-se o stream nunca conseguir um assinante.
+As a rule, streams should wait for subscribers before starting their work.
+An `async*` function does this automatically,
+but when using a `StreamController`,
+you are in full control and can add events even when you shouldn't.
+When a stream has no subscriber,
+its `StreamController` buffers events,
+which can lead to a memory leak
+if the stream never gets a subscriber.
 
-Tente alterar o código que usa o stream para o seguinte:
+Try changing the code that uses the stream to the following:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe-problem)"?>
 ```dart
@@ -308,38 +307,38 @@ void listenAfterDelay() async {
 }
 ```
 
-Quando este código é executado,
-nada é impresso nos primeiros 5 segundos,
-embora o stream esteja fazendo trabalho.
-Então o listener é adicionado,
-e os primeiros 5 ou mais eventos são impressos todos de uma vez,
-já que foram armazenados em buffer pelo `StreamController`.
+When this code runs,
+nothing is printed for the first 5 seconds,
+although the stream is doing work.
+Then the listener is added,
+and the first 5 or so events are printed all at once,
+since they were buffered by the `StreamController`.
 
-Para ser notificado de assinaturas, especifique um
-argumento `onListen` ao criar o `StreamController`.
-O callback `onListen` é chamado
-quando o stream recebe seu primeiro assinante.
-Se você especificar um callback `onCancel`,
-ele é chamado quando o controller perde seu último assinante.
-No exemplo anterior,
+To be notified of subscriptions, specify an
+`onListen` argument when you create the `StreamController`.
+The `onListen` callback is called
+when the stream gets its first subscriber.
+If you specify an `onCancel` callback,
+it's called when the controller loses its last subscriber.
+In the preceding example,
 `Timer.periodic()`
-deve mudar para um manipulador `onListen`,
-como mostrado na próxima seção.
+should move to an `onListen` handler,
+as shown in the next section.
 
 
-### Honrando o estado de pausa {:#honoring-the-pause-state}
+### Honoring the pause state
 
-Evite produzir eventos quando o listener solicitou uma pausa.
-Uma função `async*` pausa automaticamente em uma declaração `yield`
-enquanto a assinatura do stream está pausada.
-Um `StreamController`, por outro lado, armazena eventos em buffer durante a pausa.
-Se o código que fornece os eventos não respeitar a pausa,
-o tamanho do buffer pode crescer indefinidamente.
-Além disso, se o listener parar de escutar logo após a pausa,
-o trabalho gasto na criação do buffer é desperdiçado.
+Avoid producing events when the listener has requested a pause.
+An `async*` function automatically pauses at a `yield` statement
+while the stream subscription is paused.
+A `StreamController`, on the other hand, buffers events during the pause.
+If the code providing the events doesn't respect the pause,
+the size of the buffer can grow indefinitely.
+Also, if the listener stops listening soon after pausing,
+then the work spent creating the buffer is wasted.
 
-Para ver o que acontece sem suporte para pausa,
-tente alterar o código que usa o stream para o seguinte:
+To see what happens without pause support,
+try changing the code that uses the stream to the following:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pause-problem)"?>
 ```dart
@@ -357,18 +356,18 @@ void listenWithPause() {
 }
 ```
 
-Quando os cinco segundos de pausa terminam,
-os eventos disparados durante esse tempo são todos recebidos de uma vez.
-Isso acontece porque a fonte do stream não respeita as pausas
-e continua adicionando eventos ao stream.
-Portanto, o stream armazena os eventos em buffer,
-e então esvazia seu buffer quando o stream deixa de ser pausado.
+When the five seconds of pause are up,
+the events fired during that time are all received at once.
+That happens because the stream's source doesn't honor pauses
+and keeps adding events to the stream.
+So the stream buffers the events,
+and it then empties its buffer when the stream becomes unpaused.
 
-A seguinte versão de `timedCounter()`
-(de [stream_controller.dart][])
-implementa a pausa usando os callbacks
-`onListen`, `onPause`, `onResume` e `onCancel`
-no `StreamController`.
+The following version of `timedCounter()`
+(from [stream_controller.dart][])
+implements pause by using the
+`onListen`, `onPause`, `onResume`, and `onCancel` callbacks
+on the `StreamController`.
 
 [stream_controller.dart]: {{site.repo.this}}/blob/main/examples/misc/lib/articles/creating-streams/stream_controller.dart
 
@@ -408,72 +407,72 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
 }
 ```
 
-Execute este código com a função `listenWithPause()` acima.
-Você verá que ele para de contar enquanto pausado,
-e continua normalmente depois.
+Run this code with the `listenWithPause()` function above.
+You'll see that it stops counting while paused,
+and it resumes nicely afterwards.
 
-Você deve usar todos os listeners - `onListen`,
-`onCancel`, `onPause` e `onResume` - para ser
-notificado de mudanças no estado de pausa.
-A razão é que se o
-assinatura e os estados de pausa mudarem ao mesmo tempo,
-apenas o callback `onListen` ou `onCancel` é chamado.
+You must use all of the listeners—`onListen`,
+`onCancel`, `onPause`, and `onResume`—to be
+notified of changes in pause state.
+The reason is that if the
+subscription and pause states both change at the same time,
+only the `onListen` or `onCancel` callback is called.
 
 
-## Dicas finais {:#final-hints}
+## Final hints
 
-Ao criar um stream sem usar uma função async*,
-tenha estas dicas em mente:
+When creating a stream without using an async* function,
+keep these tips in mind:
 
-* Tenha cuidado ao usar um controller síncrono - por exemplo,
-  um criado usando `StreamController(sync: true)`.
-  Quando você envia um evento em um controller síncrono não pausado
-  (por exemplo, usando os métodos `add()`, `addError()` ou `close()` definidos por
+* Be careful when using a synchronous controller—for example,
+  one created using `StreamController(sync: true)`.
+  When you send an event on an unpaused synchronous controller
+  (for example, using the `add()`, `addError()`, or `close()` methods defined by
   [EventSink]({{site.dart-api}}/dart-async/EventSink-class.html)),
-  o evento é enviado imediatamente para todos os listeners no stream.
-  Os listeners de `Stream` nunca devem ser chamados até que
-  o código que adicionou o listener tenha retornado totalmente,
-  e usar um controller síncrono no momento errado pode
-  quebrar essa promessa e fazer com que um código bom falhe.
-  Evite usar controllers síncronos.
+  the event is sent immediately to all listeners on the stream.
+  `Stream` listeners must never be called until
+  the code that added the listener has fully returned,
+  and using a synchronous controller at the wrong time can
+  break this promise and cause good code to fail.
+  Avoid using synchronous controllers.
 
-* Se você usar `StreamController`,
-  o callback `onListen` é chamado antes que
-  a chamada `listen` retorne o `StreamSubscription`.
-  Não deixe o callback `onListen` depender
-  da assinatura já existente.
-  Por exemplo, no código a seguir,
-  um evento `onListen` é disparado
-  (e `handler` é chamado)
-  antes que a variável `subscription`
-  tenha um valor válido.
+* If you use `StreamController`,
+  the `onListen` callback is called before
+  the `listen` call returns the `StreamSubscription`.
+  Don't let the `onListen` callback depend
+  on the subscription already existing.
+  For example, in the following code,
+  an `onListen` event fires
+  (and `handler` is called)
+  before the `subscription` variable
+  has a valid value.
 
   <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-listen-hint)"?>
   ```dart
   subscription = stream.listen(handler);
   ```
 
-* Os callbacks `onListen`, `onPause`, `onResume` e `onCancel`
-  definidos por `StreamController` são
-  chamados pelo stream quando o estado do listener do stream muda,
-  mas nunca durante o disparo de um evento
-  ou durante a chamada de outro manipulador de mudança de estado.
-  Nesses casos, o callback de mudança de estado é atrasado até que
-  o callback anterior seja concluído.
+* The `onListen`, `onPause`, `onResume`, and `onCancel`
+  callbacks defined by `StreamController` are
+  called by the stream when the stream's listener state changes,
+  but never during the firing of an event
+  or during the call of another state change handler.
+  In those cases, the state change callback is delayed until
+  the previous callback is complete.
 
-* Não tente implementar a interface `Stream` você mesmo.
-  É fácil errar sutilmente a interação entre eventos, callbacks,
-  e adicionar e remover listeners.
-  Sempre use um stream existente, possivelmente de um `StreamController`,
-  para implementar a chamada `listen` de um novo stream.
+* Don't try to implement the `Stream` interface yourself.
+  It's easy to get the interaction between events, callbacks,
+  and adding and removing listeners subtly wrong.
+  Always use an existing stream, possibly from a `StreamController`,
+  to implement the `listen` call of a new stream.
 
-* Embora seja possível criar classes que estendem `Stream` com
-  mais funcionalidade estendendo a classe `Stream` e
-  implementando o método `listen` e a funcionalidade extra em cima,
-  isso geralmente não é recomendado porque
-  ele introduz um novo tipo que os usuários precisam considerar.
-  Em vez de uma classe que _é_ um `Stream` (e mais),
-  você pode muitas vezes fazer uma classe que _tem_ um `Stream` (e mais).
+* Although it's possible to create classes that extend `Stream` with
+  more functionality by extending the `Stream` class and
+  implementing the `listen` method and the extra functionality on top,
+  that is generally not recommended because
+  it introduces a new type that users have to consider.
+  Instead of a class that _is_ a `Stream` (and more), 
+  you can often make a class that _has_ a `Stream` (and more).
 
 {% comment %}
 The tests for this article are at /src/tests/site/articles/creating-streams.

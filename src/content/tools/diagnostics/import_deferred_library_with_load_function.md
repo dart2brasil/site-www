@@ -1,27 +1,28 @@
 ---
-ia-translate: true
 title: import_deferred_library_with_load_function
-description: "Detalhes sobre o diagnóstico import_deferred_library_with_load_function produzido pelo analisador do Dart."
+description: >-
+  Details about the import_deferred_library_with_load_function
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A biblioteca importada define uma função de nível superior chamada 'loadLibrary' que é ocultada ao adiar esta biblioteca._
+_The imported library defines a top-level function named 'loadLibrary' that is hidden by deferring this library._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma biblioteca que declara uma
-função chamada `loadLibrary` é importada usando um import deferred. Um
-import deferred introduz uma função implícita chamada `loadLibrary`. Esta
-função é usada para carregar o conteúdo da biblioteca deferred, e a função
-implícita oculta a declaração explícita na biblioteca deferred.
+The analyzer produces this diagnostic when a library that declares a
+function named `loadLibrary` is imported using a deferred import. A
+deferred import introduces an implicit function named `loadLibrary`. This
+function is used to load the contents of the deferred library, and the
+implicit function hides the explicit declaration in the deferred library.
 
-Para mais informações, confira
+For more information, check out
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 ## Example
 
-Dado um arquivo `a.dart` que define uma função chamada `loadLibrary`:
+Given a file `a.dart` that defines a function named `loadLibrary`:
 
 ```dart
 void loadLibrary(Library library) {}
@@ -29,9 +30,9 @@ void loadLibrary(Library library) {}
 class Library {}
 ```
 
-O código a seguir produz este diagnóstico porque a declaração implícita de
-`a.loadLibrary` está ocultando a declaração explícita de `loadLibrary` em
-`a.dart`:
+The following code produces this diagnostic because the implicit
+declaration of `a.loadLibrary` is hiding the explicit declaration of
+`loadLibrary` in `a.dart`:
 
 ```dart
 [!import 'a.dart' deferred as a;!]
@@ -43,8 +44,8 @@ void f() {
 
 ## Common fixes
 
-Se a biblioteca importada não precisa ser deferred, remova a keyword
-`deferred`:
+If the imported library isn't required to be deferred, then remove the
+keyword `deferred`:
 
 ```dart
 import 'a.dart' as a;
@@ -54,8 +55,9 @@ void f() {
 }
 ```
 
-Se a biblioteca importada precisa ser deferred e você precisa referenciar a
-função importada, renomeie a função na biblioteca importada:
+If the imported library is required to be deferred and you need to
+reference the imported function, then rename the function in the imported
+library:
 
 ```dart
 void populateLibrary(Library library) {}
@@ -63,8 +65,8 @@ void populateLibrary(Library library) {}
 class Library {}
 ```
 
-Se a biblioteca importada precisa ser deferred e você não precisa
-referenciar a função importada, adicione uma cláusula `hide`:
+If the imported library is required to be deferred and you don't need to
+reference the imported function, then add a `hide` clause:
 
 ```dart
 import 'a.dart' deferred as a hide loadLibrary;

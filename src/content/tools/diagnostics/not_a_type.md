@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: not_a_type
-description: "Detalhes sobre o diagnóstico not_a_type produzido pelo analisador do Dart."
+description: >-
+  Details about the not_a_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,12 +11,12 @@ _{0} isn't a type._
 
 ## Description
 
-O analisador produz este diagnóstico quando um nome é usado como um tipo mas
-está declarado como algo diferente de um tipo.
+The analyzer produces this diagnostic when a name is used as a type but
+declared to be something other than a type.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `f` é uma função:
+The following code produces this diagnostic because `f` is a function:
 
 ```dart
 f() {}
@@ -24,4 +25,4 @@ g([!f!] v) {}
 
 ## Common fixes
 
-Substitua o nome pelo nome de um tipo.
+Replace the name with the name of a type.

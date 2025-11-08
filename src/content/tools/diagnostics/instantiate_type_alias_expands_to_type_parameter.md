@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: instantiate_type_alias_expands_to_type_parameter
-description: "Detalhes sobre o diagnóstico instantiate_type_alias_expands_to_type_parameter produzido pelo analisador do Dart."
+description: >-
+  Details about the instantiate_type_alias_expands_to_type_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Type aliases que expandem para um parâmetro de tipo não podem ser instanciados._
+_Type aliases that expand to a type parameter can't be instantiated._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma invocação de construtor é
-encontrada onde o tipo sendo instanciado é um type alias para um dos parâmetros de tipo
-do type alias. Isso não é permitido porque o valor do
-parâmetro de tipo é um tipo em vez de uma classe.
+The analyzer produces this diagnostic when a constructor invocation is
+found where the type being instantiated is a type alias for one of the type
+parameters of the type alias. This isn't allowed because the value of the
+type parameter is a type rather than a class.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque ele cria uma instância
-de `A`, mesmo que `A` seja um type alias que é definido para ser equivalente a
-um parâmetro de tipo:
+The following code produces this diagnostic because it creates an instance
+of `A`, even though `A` is a type alias that is defined to be equivalent to
+a type parameter:
 
 ```dart
 typedef A<T> = T;
@@ -31,8 +32,8 @@ void f() {
 
 ## Common fixes
 
-Use um nome de classe ou um type alias definido para ser uma classe, em vez de
-um type alias definido para ser um parâmetro de tipo:
+Use either a class name or a type alias defined to be a class, rather than
+a type alias defined to be a type parameter:
 
 ```dart
 typedef A<T> = C<T>;

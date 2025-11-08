@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: uri_with_interpolation
-description: "Detalhes sobre o diagnóstico uri_with_interpolation produzido pelo analisador Dart."
+description: >-
+  Details about the uri_with_interpolation
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_URIs não podem usar interpolação de string._
+_URIs can't use string interpolation._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o literal de string em uma
-diretiva `import`, `export` ou `part` contém uma interpolação. A
-resolução dos URIs nas diretivas deve acontecer antes das declarações
-serem compiladas, então expressões não podem ser avaliadas ao determinar os
-valores dos URIs.
+The analyzer produces this diagnostic when the string literal in an
+`import`, `export`, or `part` directive contains an interpolation. The
+resolution of the URIs in directives must happen before the declarations
+are compiled, so expressions can't be  evaluated  while determining the
+values of the URIs.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a string na
-diretiva `import` contém uma interpolação:
+The following code produces this diagnostic because the string in the
+`import` directive contains an interpolation:
 
 ```dart
 import [!'dart:$m'!];
@@ -27,9 +28,9 @@ import [!'dart:$m'!];
 const m = 'math';
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova a interpolação do URI:
+Remove the interpolation from the URI:
 
 ```dart
 import 'dart:math';
