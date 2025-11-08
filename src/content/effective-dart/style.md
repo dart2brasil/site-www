@@ -1,7 +1,8 @@
 ---
-title: "Effective Dart: Style"
-breadcrumb: Style
-description: Formatting and naming rules for consistent, readable code.
+ia-translate: true
+title: "Effective Dart: Estilo"
+breadcrumb: Estilo
+description: Regras de formatação e nomenclatura para código consistente e legível.
 nextpage:
   url: /effective-dart/documentation
   title: Documentação
@@ -278,12 +279,12 @@ var mrRogers = 'hello, neighbor';
 
 <a id="prefer-using-_-__-etc-for-unused-callback-parameters" aria-hidden="true"></a>
 
-### PREFER using wildcards for unused callback parameters
+### PREFIRA usar wildcards para parâmetros de callback não utilizados
 
-Sometimes the type signature of a callback function requires a parameter,
-but the callback implementation doesn't _use_ the parameter.
-In this case, it's idiomatic to name the unused parameter `_`,
-which declares a [wildcard variable][wildcards] that is non-binding.
+Às vezes, a assinatura de tipo de uma função de callback requer um parâmetro,
+mas a implementação do callback não *usa* o parâmetro.
+Nesse caso, é idiomático nomear o parâmetro não utilizado como `_`,
+o que declara uma [variável wildcard][wildcards] que não faz binding.
 
 <?code-excerpt "style_good.dart (unused-callback-param)"?>
 ```dart tag=good
@@ -292,8 +293,8 @@ futureOfVoid.then((_) {
 });
 ```
 
-Because wildcard variables are non-binding,
-you can name multiple unused parameters `_`.
+Como variáveis wildcard não fazem binding,
+você pode nomear múltiplos parâmetros não utilizados como `_`.
 
 <?code-excerpt "style_good.dart (unused-callback-params-multiple)"?>
 ```dart tag=good
@@ -302,24 +303,24 @@ you can name multiple unused parameters `_`.
 });
 ```
 
-This guideline is only for functions that are both *anonymous and local*.
-These functions are usually used immediately in a context where it's
-clear what the unused parameter represents.
-In contrast, top-level functions and method declarations don't have that context,
-so their parameters must be named so that it's clear what each parameter is for,
-even if it isn't used.
+Esta diretriz é apenas para funções que são tanto *anônimas quanto locais*.
+Essas funções geralmente são usadas imediatamente em um contexto onde fica
+claro o que o parâmetro não utilizado representa.
+Em contraste, funções de nível superior e declarações de método não têm esse contexto,
+então seus parâmetros devem ser nomeados para que fique claro para que serve cada parâmetro,
+mesmo que não seja utilizado.
 
 :::version-note
-Declaring non-binding [wildcard variables][wildcards] requires
-a [language version][] of at least 3.7.
+Declarar [variáveis wildcard][wildcards] que não fazem binding requer
+uma [versão da linguagem][language version] de pelo menos 3.7.
 
-In earlier language versions, use additional underscores to
-work around name collisions, such as `__` and `___`.
-To enforce not using them and simplify the migration to wildcards later on,
-enable the [`no_wildcard_variable_uses`][] lint.
+Em versões anteriores da linguagem, use sublinhados adicionais para
+evitar colisões de nome, como `__` e `___`.
+Para forçar o não uso delas e simplificar a migração para wildcards mais tarde,
+ative o lint [`no_wildcard_variable_uses`][].
 
-To help migrate from this convention to wildcard variables,
-enable the [`unnecessary_underscores`][] lint.
+Para ajudar a migrar desta convenção para variáveis wildcard,
+ative o lint [`unnecessary_underscores`][].
 :::
 
 [wildcards]: /language/variables#wildcard-variables
@@ -491,7 +492,7 @@ formatando o código manualmente e tentando torná-lo mais legível. Pense em
 para produzir código bonito.
 
 <a id="avoid-lines-longer-than-80-characters"></a>
-### PREFER lines 80 characters or fewer
+### PREFIRA linhas com 80 caracteres ou menos
 
 {% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
 
@@ -504,10 +505,10 @@ experiência é que seu código provavelmente é muito verboso e poderia ser um 
 compacto. O principal infrator geralmente é `VeryLongCamelCaseClassNames`. Pergunte a si mesmo: "Cada palavra nesse nome de tipo me diz algo crítico ou
 previne uma colisão de nome?". Se não, considere omiti-la.
 
-Note that `dart format` defaults to 80 characters or fewer, though you can
-[configure][] the default. 
-It does not split long string literals to fit in 80 columns, 
-so you have to do that manually.
+Note que `dart format` usa como padrão 80 caracteres ou menos, embora você possa
+[configurar][] o padrão.
+Ele não divide literais de string longos para caber em 80 colunas,
+então você terá que fazer isso manualmente.
 
 **Exceção:** Quando um URI ou caminho de arquivo ocorre em um comentário ou string (geralmente em
 uma importação ou exportação), ele pode permanecer inteiro mesmo que isso faça com que a linha ultrapasse
@@ -517,7 +518,7 @@ uma importação ou exportação), ele pode permanecer inteiro mesmo que isso fa
 porque as novas linhas são significativas dentro da string e dividir as linhas em
 outras mais curtas pode alterar o programa.
 
-[configure]: /tools/dart-format#configuring-formatter-page-width
+[configurar]: /tools/dart-format#configuring-formatter-page-width
 
 <a id="do-use-curly-braces-for-all-flow-control-structures"></a>
 ### SIGA o uso de chaves para todas as estruturas de controle de fluxo {:#do-use-curly-braces-for-all-flow-control-statements}
@@ -559,4 +560,3 @@ if (overflowChars != other.overflowChars) {
 if (overflowChars != other.overflowChars)
   return overflowChars < other.overflowChars;
 ```
-

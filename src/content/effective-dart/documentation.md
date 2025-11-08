@@ -1,7 +1,8 @@
 ---
-title: "Effective Dart: Documentation"
-breadcrumb: Documentation
-description: Clear, helpful comments and documentation.
+ia-translate: true
+title: "Effective Dart: Documentação"
+breadcrumb: Documentação
+description: Comentários e documentação claros e úteis.
 nextpage:
   url: /effective-dart/usage
   title: Uso
@@ -230,7 +231,7 @@ do que perder o tempo do leitor dizendo a ele algo que ele já sabe.
 
 <a id="prefer-starting-function-or-method-comments-with-third-person-verbs" aria-hidden="true"></a>
 
-### PREFER starting comments of a function or method with third-person verbs if its main purpose is a side effect
+### PREFIRA: iniciar comentários de função ou método com verbos na terceira pessoa se seu propósito principal é um efeito colateral
 
 O comentário de documentação deve focar no que o código *faz*.
 
@@ -260,9 +261,9 @@ int get checkedCount => ...
 
 ### PREFIRA: iniciar um comentário de variável ou propriedade booleana com "Se" seguido de uma frase nominal ou gerundiva {:#prefer-starting-a-boolean-variable-or-property-comment-with-whether-followed-by-a-noun-or-gerund-phrase}
 
-The doc comment should clarify the states this variable represents.
-This is true even for getters which may do calculation or other work.
-What the caller cares about is the *result* of that work, not the work itself.
+O comentário de documentação deve esclarecer os estados que esta variável representa.
+Isso é válido mesmo para getters que podem fazer cálculos ou outros trabalhos.
+O que o chamador se importa é o *resultado* desse trabalho, não o trabalho em si.
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
 ```dart tag=good
@@ -282,14 +283,14 @@ casos, o uso de "ou não" com "se" é supérfluo e pode ser omitido,
 especialmente quando usado neste contexto.
 :::
 
-### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose
+### PREFIRA: uma frase nominal ou frase verbal não imperativa para uma função ou método se retornar um valor é seu propósito principal
 
-If a method is *syntactically* a method, but *conceptually* it is a property,
-and is therefore [named with a noun phrase or non-imperative verb phrase][parameterized_property_name],
-it should also be documented as such.
-Use a noun-phrase for such non-boolean functions, and
-a phrase starting with "Whether" for such boolean functions,
-just as for a syntactic property or variable.
+Se um método é *sintaticamente* um método, mas *conceitualmente* é uma propriedade,
+e portanto é [nomeado com uma frase nominal ou frase verbal não imperativa][parameterized_property_name],
+ele também deve ser documentado como tal.
+Use uma frase nominal para tais funções não booleanas, e
+uma frase começando com "Se" para tais funções booleanas,
+assim como para uma propriedade ou variável sintática.
 
 <?code-excerpt "docs_good.dart (noun-for-func-returning-value)"?>
 ```dart tag=good
@@ -301,20 +302,20 @@ bool contains(Object? element);
 ```
 
 :::note
-This guideline should be applied based on whether the declaration is
-conceptually seen as a property.
+Esta diretriz deve ser aplicada com base em se a declaração é
+conceitualmente vista como uma propriedade.
 
-Sometimes a method has no side effects, and might
-conceptually be seen as a property, but is still
-simpler to name with a verb phrase like `list.take()`.
-Then a noun phrase should still be used to document it.
-_For example `Iterable.take` can be described as
-"The first \[count\] elements of ..."._
+Às vezes, um método não tem efeitos colaterais e pode
+ser conceitualmente visto como uma propriedade, mas ainda é
+mais simples nomear com uma frase verbal como `list.take()`.
+Então uma frase nominal ainda deve ser usada para documentá-lo.
+_Por exemplo, `Iterable.take` pode ser descrito como
+"Os primeiros \[count\] elementos de ..."._
 :::
 
 [parameterized_property_name]: design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
 
-### DON'T write documentation for both the getter and setter of a property
+### NÃO FAÇA: escreva documentação tanto para o getter quanto para o setter de uma propriedade
 
 Se uma propriedade tiver um getter e um setter, crie um comentário de documentação para
 apenas um deles. `dart doc` trata o getter e o setter como um único campo,
@@ -346,7 +347,7 @@ programa. Eles descrevem os invariantes do tipo, estabelecem a terminologia que 
 e fornecem contexto aos outros comentários de documentação para os membros da classe. Um pouco de
 esforço extra aqui pode tornar todos os outros membros mais fáceis de documentar.
 
-The documentation should describe an *instance* of the type.
+A documentação deve descrever uma *instância* do tipo.
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-type-or-lib)"?>
 ```dart tag=good
@@ -377,12 +378,12 @@ torna uma API mais fácil de aprender.
 
 {% render 'linter-rule-mention.md', rules:'comment_references' %}
 
-If you surround things like variable, method, or type names in square brackets,
-then `dart doc` looks up the name and links to the relevant API docs.
-Parentheses are optional but can
-clarify you're referring to a function or constructor.
-The following partial doc comments illustrate a few cases
-where these comment references can be helpful:
+Se você colocar coisas como nomes de variável, método ou tipo entre colchetes,
+então `dart doc` procura o nome e cria links para a documentação da API relevante.
+Parênteses são opcionais, mas podem
+esclarecer que você está se referindo a uma função ou construtor.
+Os seguintes comentários de documentação parciais ilustram alguns casos
+onde essas referências de comentários podem ser úteis:
 
 <?code-excerpt "docs_good.dart (identifiers)"?>
 ```dart tag=good
@@ -407,13 +408,13 @@ construtor sem nome, use `.new` após o nome da classe:
 /// To create a point, call [Point.new] or use [Point.polar] to ...
 ```
 
-To learn more about the references that
-the analyzer and `dart doc` support in doc comments,
-check out [Documentation comment references][].
+Para saber mais sobre as referências que
+o analyzer e `dart doc` suportam em comentários de documentação,
+confira [Referências de comentários de documentação][].
 
-[Documentation comment references]: /tools/doc-comments/references
+[Referências de comentários de documentação]: /tools/doc-comments/references
 
-### DO use prose to explain parameters, return values, and exceptions
+### FAÇA: use prosa para explicar parâmetros, valores de retorno e exceções
 
 Outras linguagens usam tags e seções verbosas para descrever o que os parâmetros
 e os retornos de um método são.
@@ -433,11 +434,11 @@ Flag addFlag(String name, String abbreviation) => ...
 A convenção em Dart é integrar isso na descrição do método
 e destacar os parâmetros usando colchetes.
 
-Consider having sections starting with "The \[parameter\]" to describe
-parameters, with "Returns" for the returned value and "Throws" for exceptions.
-Errors can be documented the same way as exceptions,
-or just as requirements that must be satisfied, without documenting the
-precise error which will be thrown.
+Considere ter seções começando com "O \[parâmetro\]" para descrever
+parâmetros, com "Retorna" para o valor retornado e "Lança" para exceções.
+Erros podem ser documentados da mesma forma que exceções,
+ou apenas como requisitos que devem ser satisfeitos, sem documentar o
+erro preciso que será lançado.
 
 <?code-excerpt "docs_good.dart (no-annotations)"?>
 ```dart tag=good
@@ -594,9 +595,9 @@ pensa.
 
 ### PREFIRA: usar "este" em vez de "o" para referir-se à instância de um membro {:#prefer-using-this-instead-of-the-to-refer-to-a-members-instance}
 
-When documenting a member for a class, you often need to refer back to the
-object the member is being called on. Using "the" can be ambiguous.
-Prefer having some qualifier after "this", a sole "this" can be ambiguous too.
+Ao documentar um membro para uma classe, você frequentemente precisa se referir de volta ao
+objeto no qual o membro está sendo chamado. Usar "o" pode ser ambíguo.
+Prefira ter algum qualificador após "este", um "este" sozinho também pode ser ambíguo.
 
 <?code-excerpt "docs_good.dart (this)"?>
 ```dart
@@ -608,4 +609,3 @@ class Box {
   bool get hasValue => _value != null;
 }
 ```
-

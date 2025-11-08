@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Customizing static analysis
 shortTitle: Static analysis
 description: >-
@@ -309,8 +310,8 @@ ou [desabilitar regras individuais][desabilitar regras individuais].
 :::
 
 :::note
-For more information about including options files, 
-check out the [Including shared options](#including-shared-options) section.
+Para mais informações sobre inclusão de arquivos de opções,
+consulte a seção [Incluindo opções compartilhadas](#including-shared-options).
 :::
 
 [lints package]: {{site.pub-pkg}}/lints
@@ -371,18 +372,18 @@ Devido às restrições do YAML,
 Você pode usar a outra sintaxe para regras em um arquivo incluído.
 :::
 
-## Including shared options
+## Incluindo opções compartilhadas {:#including-shared-options}
 
-An analysis options file can include options which are specified in
-another options file, or even a list of other options files.
-You can specify such files using the top-level `include:` field:
+Um arquivo de opções de análise pode incluir opções que são especificadas em
+outro arquivo de opções, ou até mesmo uma lista de outros arquivos de opções.
+Você pode especificar esses arquivos usando o campo de nível superior `include:`:
 
 ```yaml title="analysis_options.yaml"
 include: package:flutter_lints/recommended.yaml
 ```
 
-An included options file can be specified with a `package:` path, or a relative
-path. Multiple analysis options files can be specified in a list:
+Um arquivo de opções incluído pode ser especificado com um caminho `package:`, ou um caminho relativo.
+Vários arquivos de opções de análise podem ser especificados em uma lista:
 
 ```yaml title="analysis_options.yaml"
 include:
@@ -390,21 +391,21 @@ include:
   - ../team_options.yaml
 ```
 
-Options in an included file can be overridden in the including file,
-as well as by subsequent included files. 
-In other words, the options specified by an analysis options file are
-computed by first applying the options specified in each of the included files
-(by recursively applying this algorithm), in the order they appear in the list,
-and then overriding them with any locally defined options.
+As opções em um arquivo incluído podem ser sobrescritas no arquivo que o inclui,
+bem como por arquivos incluídos subsequentes.
+Em outras palavras, as opções especificadas por um arquivo de opções de análise são
+calculadas aplicando primeiro as opções especificadas em cada um dos arquivos incluídos
+(aplicando recursivamente este algoritmo), na ordem em que aparecem na lista,
+e então sobrescrevendo-as com quaisquer opções definidas localmente.
 
-For example, given the following options files:
+Por exemplo, dados os seguintes arquivos de opções:
 
 ```yaml title="three.yaml"
 include: two.yaml
 # ...
 ```
 
-And a final options file that includes these:
+E um arquivo de opções final que os inclui:
 
 ```yaml title="analysis_options.yaml"
 include:
@@ -413,8 +414,8 @@ include:
 # ...
 ```
 
-Then the combined analysis options are computed by applying the options found
-in `one.yaml`, then `two.yaml`, then `three.yaml`, and finally
+Então, as opções de análise combinadas são calculadas aplicando as opções encontradas
+em `one.yaml`, depois `two.yaml`, depois `three.yaml`, e finalmente
 `analysis_options.yaml`.
 
 
@@ -633,13 +634,13 @@ analyzer:
     dead_code: info
 ```
 
-## Configuring `dart format`
+## Configurando `dart format` {:#configuring-dart-format}
 
-You can configure the behavior of [`dart format`][] by adding a
-`formatter` section to the analysis options file
-specifying your preferred `page_width`.
+Você pode configurar o comportamento de [`dart format`][] adicionando uma
+seção `formatter` ao arquivo de opções de análise
+especificando seu `page_width` preferido.
 
-For more information, read [Configuring formatter page width][].
+Para mais informações, leia [Configurando a largura de página do formatter][Configuring formatter page width].
 
 ## Recursos {:#resources}
 
