@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: dart:math
-description: Saiba mais sobre os principais recursos da biblioteca dart:math do Dart.
+title: "dart:math"
+description: "Saiba mais sobre os principais recursos da biblioteca dart:math do Dart."
 prevpage:
   url: /libraries/dart-async
   title: dart:async

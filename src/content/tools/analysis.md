@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: "Personalizando análise estática"
-shortTitle: Análise estática
+shortTitle: "Análise estática"
 description: >-
   Use um arquivo de opções de análise e comentários de código para personalizar a análise estática.
 bodyClass: highlight-diagnostics

@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: "Depurando aplicações web Dart"
-shortTitle: Depurando aplicações web
+shortTitle: "Depurando aplicações web"
 breadcrumb: Depuração
 description: "Aprenda como depurar sua aplicação web Dart."
 ---

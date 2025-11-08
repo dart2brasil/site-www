@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: dart:io
-description: Saiba mais sobre os principais recursos na biblioteca dart:io do Dart.
+title: "dart:io"
+description: "Saiba mais sobre os principais recursos na biblioteca dart:io do Dart."
 prevpage:
   url: /libraries/dart-convert
   title: dart:convert

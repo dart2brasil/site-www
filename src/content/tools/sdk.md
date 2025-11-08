@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: "Visão geral do Dart SDK"
-shortTitle: Visão geral do SDK
+shortTitle: "Visão geral do SDK"
 breadcrumb: SDK
 description: Bibliotecas e ferramentas de linha de comando Dart.
 ---

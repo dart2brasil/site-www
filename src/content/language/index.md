@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: "Introdução ao Dart"
-shortTitle: Básico do Dart
+shortTitle: "Básico do Dart"
 breadcrumb: Language
 description: "Uma breve introdução aos programas Dart e conceitos importantes."
 nextpage:

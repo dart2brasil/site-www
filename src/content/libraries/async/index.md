@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: "Suporte do Dart para programação assíncrona"
-shortTitle: Programação assíncrona
+shortTitle: "Programação assíncrona"
 breadcrumb: Async
 description: >-
   Aprenda sobre o suporte de biblioteca do Dart para programação assíncrona.

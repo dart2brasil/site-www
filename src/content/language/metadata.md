@@ -7,7 +7,7 @@ prevpage:
   title: Functions
 nextpage:
   url: /language/libraries
-  title: Libraries & imports
+  title: "Libraries & imports"
 ---
 
 

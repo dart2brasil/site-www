@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: IntelliJ & Android Studio
+title: "IntelliJ & Android Studio"
 description: Use Dart com uma variedade de IDEs e editores da JetBrains.
 ---
 

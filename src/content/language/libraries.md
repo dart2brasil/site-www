@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: Libraries & imports
+title: "Libraries & imports"
 shortTitle: Libraries
 description: Guidance on importing and implementing libraries.
 prevpage:

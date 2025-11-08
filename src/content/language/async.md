@@ -2,7 +2,7 @@
 ia-translate: true
 title: "Programação assíncrona"
 description: "Informações sobre como escrever código assíncrono em Dart."
-shortTitle: Programação async
+shortTitle: "Programação async"
 prevpage:
   url: /language/concurrency
   title: "Concorrência"

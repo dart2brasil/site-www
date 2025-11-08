@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: dart:async
-description: Saiba mais sobre os principais recursos na biblioteca dart:async do Dart.
+title: "dart:async"
+description: "Saiba mais sobre os principais recursos na biblioteca dart:async do Dart."
 prevpage:
   url: /libraries/dart-core
   title: dart:core

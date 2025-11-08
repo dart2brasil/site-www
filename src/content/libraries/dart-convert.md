@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: dart:convert
-description: Saiba mais sobre os principais recursos na biblioteca dart:convert do Dart.
+title: "dart:convert"
+description: "Saiba mais sobre os principais recursos na biblioteca dart:convert do Dart."
 prevpage:
   url: /libraries/dart-math
   title: dart:math

@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: dart:core
-description: Saiba mais sobre os principais recursos na biblioteca dart:core do Dart.
+title: "dart:core"
+description: "Saiba mais sobre os principais recursos na biblioteca dart:core do Dart."
 prevpage:
   url: /libraries
   title: Bibliotecas principais

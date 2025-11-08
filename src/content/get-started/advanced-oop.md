@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: "Recursos avançados adjacentes a OOP"
-shortTitle: Recursos OOP Avançados
+shortTitle: "Recursos OOP Avançados"
 description: >-
   Aprimore suas habilidades em Dart explorando recursos avançados como enhanced enums
   e extensions. Melhore a formatação e cor da saída da sua aplicação,
