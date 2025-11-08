@@ -45,7 +45,7 @@ $ dart run --define=DEBUG=true -DFLAVOR=free
 ```
 
 Para aprender como definir essas declarações com outras ferramentas,
-confira a seção [especificando declarações de ambiente][] neste guia.
+confira a seção [especificando declarações de ambiente][specifying environment declarations] neste guia.
 Essa seção explica a sintaxe de declaração e
 como especificá-las na linha de comando e em IDEs e editores.
 
