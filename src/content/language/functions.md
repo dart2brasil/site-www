@@ -75,7 +75,7 @@ detalhes.
 Você pode usar [vírgulas finais][trailing commas] quando passar argumentos para uma função
 ou quando definir parâmetros de função.
 
-### Parâmetros nomeados
+### Parâmetros nomeados {:#named-parameters}
 
 Parâmetros nomeados são opcionais
 a menos que estejam explicitamente marcados como `required`.
@@ -272,7 +272,7 @@ assert(loudify('hello') == '!!! HELLO !!!');
 Este exemplo usa uma função anônima.
 Mais sobre isso na próxima seção.
 
-## Tipos de função
+## Tipos de função {:#function-types}
 
 Você pode especificar o tipo de uma função, que é conhecido como _tipo de função_.
 Um tipo de função é obtido de um cabeçalho de declaração de função
