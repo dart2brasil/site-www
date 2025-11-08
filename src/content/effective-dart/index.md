@@ -138,6 +138,6 @@ construções Dart.
   superior, instance ou static), setter (o mesmo) ou field (instance ou static).
   Basicamente qualquer construção nomeada semelhante a um "field".
 
-## Resumo de todas as regras {#summary-of-all-rules}
+## Resumo de todas as regras {:#summary-of-all-rules}
 
 {% render 'effective-dart-toc.md' %}

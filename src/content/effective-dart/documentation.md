@@ -61,7 +61,7 @@ void greet(String name) {
 Você pode usar um comentário de bloco (`/* ... */`) para comentar temporariamente uma seção
 de código, mas todos os outros comentários devem usar `//`.
 
-## Comentários de documentação {#doc-comments}
+## Comentários de documentação {:#doc-comments}
 
 Os comentários de documentação são especialmente úteis porque o [`dart doc`][] os analisa
 e gera [belas páginas de documentação][docs] a partir deles.

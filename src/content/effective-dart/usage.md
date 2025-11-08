@@ -598,7 +598,7 @@ if (!words.isEmpty) return words.join(' ');
 ```
 
 
-### EVITE usar `Iterable.forEach()` com um literal de função {#avoid-using-iterable-foreach-with-a-function-literal}
+### EVITE usar `Iterable.forEach()` com um literal de função {:#avoid-using-iterable-foreach-with-a-function-literal}
 
 {% render 'linter-rule-mention.md', rules:'avoid_function_literals_in_foreach_calls' %}
 
@@ -631,7 +631,7 @@ people.forEach(print);
 Note também que é sempre OK usar `Map.forEach()`. Maps não são iteráveis, então
 esta diretriz não se aplica.
 
-### NÃO use `List.from()` a menos que você pretenda mudar o tipo do resultado {#dont-use-list-from-unless-you-intend-to-change-the-type-of-the-result}
+### NÃO use `List.from()` a menos que você pretenda mudar o tipo do resultado {:#dont-use-list-from-unless-you-intend-to-change-the-type-of-the-result}
 
 Dado um Iterable, há duas maneiras óbvias de produzir uma nova List que
 contém os mesmos elementos:

@@ -19,7 +19,7 @@ a poderosa capacidade de reconhecimento de padrões que a maioria de nós tem em
 sistemas oculares. Se usarmos um estilo consistente em todo o ecossistema Dart,
 isso facilita para todos nós aprendermos e contribuirmos com o código uns dos outros.
 
-## Identificadores {#identifiers}
+## Identificadores {:#identifiers}
 
 Os identificadores vêm em três variações no Dart.
 
@@ -461,7 +461,7 @@ import 'foo.dart';
 ```
 
 
-## Formatação {#formatting}
+## Formatação {:#formatting}
 
 Como muitas linguagens, Dart ignora espaços em branco. No entanto, *humanos* não. Ter um
 estilo de espaços em branco consistente ajuda a garantir que leitores humanos vejam o código da mesma

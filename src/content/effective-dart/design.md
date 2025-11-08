@@ -1909,7 +1909,7 @@ considerados "iguais" pela sua classe. **Quaisquer dois objetos que são iguais 
 mesmo código hash.** Caso contrário, mapas e outras coleções baseadas em hash vão falhar em
 reconhecer que os dois objetos são equivalentes.
 
-### FAÇA seu operador `==` obedecer as regras matemáticas de igualdade {#do-make-your-operator-obey-the-mathematical-rules-of-equality}
+### FAÇA seu operador `==` obedecer as regras matemáticas de igualdade {:#do-make-your-operator-obey-the-mathematical-rules-of-equality}
 
 Uma relação de equivalência deveria ser:
 
