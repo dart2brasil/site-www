@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Visual Studio Code
-description: You can use VS Code to develop Dart apps.
+description: Você pode usar o VS Code para desenvolver aplicativos Dart.
 showToc: false
 ---
 
