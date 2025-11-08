@@ -98,7 +98,7 @@ que a variável pode ser `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (valid-null)" replace="/int\?/[!int?!]/g"?>
 ```dart
-[!int?!] a = null; // Válido.
+[!int?!] a = null; // Valid.
 ```
 
 Você pode simplificar esse código um pouco porque, em todas as versões do Dart,
@@ -106,7 +106,7 @@ Você pode simplificar esse código um pouco porque, em todas as versões do Dar
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (simple-null)"?>
 ```dart
-int? a; // O valor inicial de a é null.
+int? a; // The initial value of a is null.
 ```
 
 Para aprender mais sobre null safety no Dart,
@@ -178,8 +178,8 @@ caso em que ele avalia e retorna a expressão à sua direita:
 
 <?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (null-aware-operators-2)"?>
 ```dart
-print(1 ?? 3); // <-- Imprime 1.
-print(null ?? 12); // <-- Imprime 12.
+print(1 ?? 3); // <-- Prints 1.
+print(null ?? 12); // <-- Prints 12.
 ```
 
 ### Exercício
@@ -761,7 +761,7 @@ class MyClass {
     _values.add(value);
   }
 
-  // Uma propriedade computada.
+  // A computed property.
   int get count {
     return _values.length;
   }
@@ -920,7 +920,7 @@ int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 
 void main() {
   int newTotal = sumUpToFive(1);
-  print(newTotal); // <-- imprime 15
+  print(newTotal); // <-- prints 15
 }
 ```
 
@@ -1214,13 +1214,13 @@ Use as palavras-chave `try`, `on` e `catch` ao lidar com exceções:
 try {
   breedMoreLlamas();
 } on OutOfLlamasException {
-  // Uma exceção específica
+  // A specific exception
   buyMoreLlamas();
 } on Exception catch (e) {
-  // Qualquer outra coisa que seja uma exceção
+  // Anything else that is an exception
   print('Unknown exception: $e');
 } catch (e) {
-  // Nenhum tipo especificado, lida com tudo
+  // No specified type, handles all
   print('Something really unknown: $e');
 }
 ```
@@ -1250,9 +1250,9 @@ use `finally`:
 try {
   breedMoreLlamas();
 } catch (e) {
-  // ... lidar com exceção ...
+  // ... handle exception ...
 } finally {
-  // Sempre limpar, mesmo se uma exceção for lançada.
+  // Always clean up, even if an exception is thrown.
   cleanLlamaStalls();
 }
 ```
@@ -1454,7 +1454,7 @@ Se você adicionar valores padrão, pode omitir `required`:
 <?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (defaulted)" replace="/olorO/olor/g; /.positional//g; /.named//g;"?>
 ```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
-// ou
+// or
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
 ```
 
@@ -1888,13 +1888,13 @@ class Automobile {
   String model;
   int mpg;
 
-  // O construtor principal para esta classe.
+  // The main constructor for this class.
   Automobile(this.make, this.model, this.mpg);
 
-  // Delega ao construtor principal.
+  // Delegates to the main constructor.
   Automobile.hybrid(String make, String model) : this(make, model, 60);
 
-  // Delega a um construtor nomeado
+  // Delegates to a named constructor
   Automobile.fancyHybrid() : this.hybrid('Futurecar', 'Mark 2');
 }
 ```
