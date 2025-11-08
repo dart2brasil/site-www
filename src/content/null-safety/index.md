@@ -1,40 +1,41 @@
 ---
+ia-translate: true
 title: Sound null safety
 breadcrumb: Null safety
-description: Information about Dart's null safety feature.
+description: Informações sobre o recurso null safety do Dart.
 ---
 
-The Dart language enforces sound null safety.
+A linguagem Dart implementa sound null safety.
 
-Null safety prevents errors that result from unintentional access
-of variables set to `null`.
+Null safety previne erros que resultam do acesso não intencional
+de variáveis definidas como `null`.
 
-For example, if a method expects an integer but receives `null`,
-your app causes a runtime error.
-This type of error, a null dereference error, can be difficult to debug.
+Por exemplo, se um método espera um inteiro mas recebe `null`,
+seu aplicativo causa um erro em tempo de execução.
+Este tipo de erro, um erro de desreferenciamento nulo, pode ser difícil de depurar.
 
-With sound null safety, all variables require a value.
-This means Dart considers all variables _non-nullable_.
-You can assign values of the declared type only, like `int i=42`.
-You can never assign a value of `null` to default variable types.
-To specify that a variable type can have a `null` value, add a `?` after
-the type annotation: `int? i`.
-These specific types can contain either a `null` _or_
-a value of the defined type.
+Com sound null safety, todas as variáveis requerem um valor.
+Isso significa que o Dart considera todas as variáveis como _non-nullable_.
+Você pode atribuir valores apenas do tipo declarado, como `int i=42`.
+Você nunca pode atribuir um valor `null` aos tipos de variável padrão.
+Para especificar que um tipo de variável pode ter um valor `null`, adicione um `?` após
+a anotação de tipo: `int? i`.
+Esses tipos específicos podem conter tanto `null` _quanto_
+um valor do tipo definido.
 
-Sound null safety changes potential **runtime errors**
-into **edit-time** analysis errors.
-With null safety, the Dart analyzer and compilers
-flag if a non-nullable variable has either:
+Sound null safety transforma **erros de runtime** potenciais
+em erros de análise em **tempo de edição**.
+Com null safety, o analisador e compiladores do Dart
+sinalizam se uma variável non-nullable tem:
 
-* Not been initialized with a non-null value
-* Been assigned a `null` value.
+* Não sido inicializada com um valor non-null
+* Sido atribuída um valor `null`.
 
-These checks allow you to fix these errors _before_ deploying your app.
+Essas verificações permitem que você corrija esses erros _antes_ de fazer deploy do seu aplicativo.
 
-## Introduction through examples
+## Introdução através de exemplos
 
-With null safety, none of the variables in the following code can be `null`:
+Com null safety, nenhuma das variáveis no código a seguir pode ser `null`:
 
 ```dart
 // With null safety, none of these can ever be null.
@@ -44,49 +45,49 @@ final b = Foo();
 ```
 
 <a id="creating-variables"></a>
-To indicate that a variable might have the value `null`,
-just add `?` to its type declaration:
+Para indicar que uma variável pode ter o valor `null`,
+apenas adicione `?` à sua declaração de tipo:
 
 ```dart
 int? aNullableInt = null;
 ```
 
-- To try some interactive examples,
-  try out some of the null-safety orientated examples in the
+- Para experimentar alguns exemplos interativos,
+  confira alguns dos exemplos orientados a null-safety na
   [Dart cheatsheet](/resources/dart-cheatsheet).
-- To learn more about null safety, check out
+- Para aprender mais sobre null safety, confira
   [Understanding null safety](/null-safety/understanding-null-safety).
 
 
-## Null safety principles
+## Princípios do null safety
 
-Dart supports null safety using the following two core design principles:
+O Dart suporta null safety usando os seguintes dois princípios fundamentais de design:
 
-**Non-nullable by default**
-: Unless you explicitly tell Dart that a variable can be null,
-  it's considered non-nullable.
-  This default was chosen after research found that
-  non-null was by far the most common choice in APIs.
+**Non-nullable por padrão**
+: A menos que você explicitamente diga ao Dart que uma variável pode ser null,
+  ela é considerada non-nullable.
+  Este padrão foi escolhido após pesquisas constatarem que
+  non-null era de longe a escolha mais comum em APIs.
 
-**Fully sound**
-: Dart's null safety is sound.
-  If the type system determines that
-  a variable or expression has a non-nullable type,
-  it's guaranteed that it can never evaluate to `null` at runtime.
+**Totalmente sound**
+: O null safety do Dart é sound.
+  Se o sistema de tipos determina que
+  uma variável ou expressão tem um tipo non-nullable,
+  é garantido que ela nunca pode ser avaliada como `null` em tempo de execução.
 
-Program-wide sound null safety lets Dart
-leverage these principles for
-fewer bugs, smaller binaries, and faster execution.
+Sound null safety em todo o programa permite que o Dart
+aproveite esses princípios para
+menos bugs, binários menores e execução mais rápida.
 
-## Dart 3 and null safety
+## Dart 3 e null safety
 
-Dart 3 has built-in sound null safety.
-Dart 3 prevents code without it from running.
+O Dart 3 tem sound null safety integrado.
+O Dart 3 impede que código sem ele seja executado.
 
-To learn how to migrate to Dart 3, 
-check out the [Dart 3 migration guide](/resources/dart-3-migration).
-Packages developed without null safety support cause issues
-when resolving dependencies:
+Para aprender como migrar para o Dart 3,
+confira o [guia de migração do Dart 3](/resources/dart-3-migration).
+Pacotes desenvolvidos sem suporte a null safety causam problemas
+ao resolver dependências:
 
 ```console
 $ dart pub get
@@ -95,14 +96,14 @@ Because pkg1 doesn't support null safety, version solving failed.
 The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
 ```
 
-Libraries incompatible with Dart 3 cause analysis or compilation errors.
+Bibliotecas incompatíveis com o Dart 3 causam erros de análise ou compilação.
 
 
 ```console
 $ dart analyze .
 Analyzing ....                         0.6s
 
-  error • lib/pkg1.dart:1:1 • The language version must be >=2.12.0. 
+  error • lib/pkg1.dart:1:1 • The language version must be >=2.12.0.
   Try removing the language version override and migrating the code.
   • illegal_language_version_override
 ```
@@ -114,15 +115,15 @@ $ dart run bin/my_app.dart
 ^^^^^^^^^^^^
 ```
 
-To resolve these issues:
+Para resolver esses problemas:
 
-1. Check for [null safe versions](/null-safety/migration-guide#check-dependency-status)
-   of any packages you installed from pub.dev
-2. [migrate](#migrate) all of your source code to use sound null safety.
+1. Verifique por [versões null safe](/null-safety/migration-guide#check-dependency-status)
+   de quaisquer pacotes que você instalou do pub.dev
+2. [migre](#migrate) todo o seu código fonte para usar sound null safety.
 
-Dart 3 can be found in the stable channels for Dart and Flutter.
-To learn more, check out [the download page][] for details.
-To test your code for Dart 3 compatibility, use Dart 3 or later.
+O Dart 3 pode ser encontrado nos canais estáveis do Dart e Flutter.
+Para aprender mais, confira [a página de download][] para detalhes.
+Para testar seu código para compatibilidade com Dart 3, use Dart 3 ou posterior.
 
 ```console
 $ dart --version                     # make sure this reports 3.0.0-417.1.beta or higher
@@ -130,24 +131,24 @@ $ dart pub get / flutter pub get     # this should resolve without issues
 $ dart analyze / flutter analyze     # this should pass without errors
 ```
 
-If the `pub get` step fails, check the [status of the dependencies][].
+Se a etapa `pub get` falhar, verifique o [status das dependências][].
 
-If the `analyze` step fails, update your code to resolve the issues
-listed by the analyzer.
+Se a etapa `analyze` falhar, atualize seu código para resolver os problemas
+listados pelo analisador.
 
 [the download page]: /get-dart/archive
 [status of the dependencies]: /null-safety/migration-guide#check-dependency-status
 
-## Dart 2.x and null safety {:#enable-null-safety}
+## Dart 2.x e null safety {:#enable-null-safety}
 
-From Dart 2.12 to 2.19, you need to enable null safety.
-You can't use null safety in SDK versions earlier than Dart 2.12.
+Do Dart 2.12 ao 2.19, você precisa habilitar null safety.
+Você não pode usar null safety em versões do SDK anteriores ao Dart 2.12.
 
 <a id="constraints"></a>
-To enable sound null safety, set the
-[SDK constraint lower-bound](/tools/pub/pubspec#sdk-constraints)
-to a [language version][] of 2.12 or later.
-For example, your `pubspec.yaml` file might have the following constraints:
+Para habilitar sound null safety, defina o
+[limite inferior da restrição do SDK](/tools/pub/pubspec#sdk-constraints)
+para uma [versão da linguagem][] de 2.12 ou posterior.
+Por exemplo, seu arquivo `pubspec.yaml` pode ter as seguintes restrições:
 
 ```yaml
 environment:
@@ -156,37 +157,37 @@ environment:
 
 [language version]: /resources/language/evolution#language-versioning
 
-## Migrating existing code {:#migrate}
+## Migrando código existente {:#migrate}
 
 :::warning
-Dart 3 removes the `dart migrate` tool.
-If you need help migrating your code,
-run the tool with the 2.19 SDK, then upgrade to Dart 3.
+O Dart 3 remove a ferramenta `dart migrate`.
+Se você precisa de ajuda para migrar seu código,
+execute a ferramenta com o SDK 2.19, e então faça upgrade para o Dart 3.
 
-You can migrate without the tool, but it involves
-hand editing code.
+Você pode migrar sem a ferramenta, mas isso envolve
+edição manual de código.
 :::
 
-Dart code written without null safety support can be migrated to use null
-safety. We recommend using the `dart migrate` tool, included in the Dart SDK
-versions 2.12 to 2.19.
+Código Dart escrito sem suporte a null safety pode ser migrado para usar null
+safety. Recomendamos usar a ferramenta `dart migrate`, incluída nas versões do Dart SDK
+de 2.12 a 2.19.
 
 ```console
 $ cd my_app
 $ dart migrate
 ```
 
-To learn how to migrate your code to null safety,
-check out the [migration guide][].
+Para aprender como migrar seu código para null safety,
+confira o [guia de migração][].
 
-## Where to learn more
+## Onde aprender mais
 
-To learn more about null safety, check out the following resources:
+Para aprender mais sobre null safety, confira os seguintes recursos:
 
 * [Understanding null safety][]
-* [Migration guide for existing code][migration guide]
+* [Guia de migração para código existente][migration guide]
 * [Null safety FAQ][]
-* [Null safety sample code][calculate_lix]
+* [Código de exemplo de null safety][calculate_lix]
 
 [calculate_lix]: {{site.repo.dart.samples}}/tree/main/null_safety/calculate_lix
 [migration guide]: /null-safety/migration-guide
@@ -195,4 +196,3 @@ To learn more about null safety, check out the following resources:
 [#34233]: {{site.repo.dart.sdk}}/issues/34233
 [#49529]: {{site.repo.dart.sdk}}/issues/49529
 [#2357]: {{site.repo.dart.lang}}/issues/2357
-
