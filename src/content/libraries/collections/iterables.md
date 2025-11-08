@@ -1,97 +1,98 @@
 ---
-title: Iterable collections
+ia-translate: true
+title: Coleções Iterable
 description: >-
-  An interactive guide to using Iterable objects such as lists and sets.
+  Um guia interativo para usar objetos Iterable como listas e conjuntos.
 showBreadcrumbs: false
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-This tutorial teaches you how to use collections that
-implement the [Iterable][iterable class] class—for example
-[List][list class] and [Set.][set class]
-Iterables are basic building blocks for
-all sorts of Dart applications,
-and you're probably already using them,
-even without noticing.
-This tutorial helps you make the most out of them.
+Este tutorial ensina como usar coleções que
+implementam a classe [Iterable][iterable class]—por exemplo
+[List][list class] e [Set.][set class]
+Iterables são blocos de construção básicos para
+todos os tipos de aplicações Dart,
+e você provavelmente já está usando-os,
+mesmo sem perceber.
+Este tutorial ajuda você a tirar o máximo proveito deles.
 
-Using the embedded DartPad editors,
-you can test your knowledge by
-running example code and completing exercises.
+Usando os editores DartPad incorporados,
+você pode testar seu conhecimento
+executando código de exemplo e completando exercícios.
 
-To get the most out of this tutorial,
-you should have basic knowledge of [Dart syntax](/language).
+Para tirar o máximo proveito deste tutorial,
+você deve ter conhecimento básico de [sintaxe Dart](/language).
 
-This tutorial covers the following material:
+Este tutorial cobre o seguinte material:
 
-* How to read elements of an Iterable.
-* How to check if the elements of an Iterable satisfy a condition.
-* How to filter the contents of an Iterable.
-* How to map the contents of an Iterable to a different value.
+* Como ler elementos de um Iterable.
+* Como verificar se os elementos de um Iterable satisfazem uma condição.
+* Como filtrar o conteúdo de um Iterable.
+* Como mapear o conteúdo de um Iterable para um valor diferente.
 
-Estimated time to complete this tutorial: 60 minutes.
+Tempo estimado para completar este tutorial: 60 minutos.
 
 :::note
-This page uses embedded DartPads to display examples and exercises.
+Esta página usa DartPads incorporados para exibir exemplos e exercícios.
 {% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
-The exercises in this tutorial have partially completed code snippets.
-You can use DartPad to test your knowledge by completing the code and
-clicking the **Run** button.
-**Don't edit the test code in the `main` function or below**.
+Os exercícios neste tutorial têm trechos de código parcialmente completos.
+Você pode usar o DartPad para testar seu conhecimento completando o código e
+clicando no botão **Run**.
+**Não edite o código de teste na função `main` ou abaixo**.
 
-If you need help, expand the **Hint** or **Solution** dropdown
-after each exercise.
+Se você precisar de ajuda, expanda o dropdown **Hint** ou **Solution**
+após cada exercício.
 
-## What are collections?
+## O que são coleções?
 
-A collection is an object that
-represents a group of objects, which are called _elements_. 
-Iterables are a kind of collection.
+Uma coleção é um objeto que
+representa um grupo de objetos, que são chamados de _elementos_.
+Iterables são um tipo de coleção.
 
-A collection can be empty, or it can contain many elements.
-Depending on the purpose,
-collections can have different structures and implementations.
-These are some of the most common collection types:
+Uma coleção pode estar vazia ou pode conter muitos elementos.
+Dependendo do propósito,
+coleções podem ter diferentes estruturas e implementações.
+Estes são alguns dos tipos de coleção mais comuns:
 
-* [List:][list class] Used to read elements by their indexes.
-* [Set:][set class] Used to contain elements that can occur only once.
-* [Map:][map class] Used to read elements using a key.
+* [List:][list class] Usado para ler elementos por seus índices.
+* [Set:][set class] Usado para conter elementos que podem ocorrer apenas uma vez.
+* [Map:][map class] Usado para ler elementos usando uma chave.
 
 
-## What is an Iterable?
+## O que é um Iterable?
 
-An `Iterable` is a collection of elements that can be accessed sequentially.
+Um `Iterable` é uma coleção de elementos que pode ser acessada sequencialmente.
 
-In Dart, an `Iterable` is an abstract class,
-meaning that you can't instantiate it directly.
-However, you can create a new `Iterable` by creating a new `List` or `Set`.
+No Dart, um `Iterable` é uma classe abstrata,
+o que significa que você não pode instanciá-lo diretamente.
+No entanto, você pode criar um novo `Iterable` criando um novo `List` ou `Set`.
 
-Both `List` and `Set` are `Iterable`,
-so they have the same methods and properties as the `Iterable` class.
+Tanto `List` quanto `Set` são `Iterable`,
+então eles têm os mesmos métodos e propriedades que a classe `Iterable`.
 
-A `Map` uses a different data structure internally,
-depending on its implementation.
-For example, [HashMap][hashmap class] uses a hash table
-in which the elements (also called _values_) are obtained using a key.
-Elements of a `Map` can also be read as `Iterable` objects
-by using the map's `entries` or `values` property.
+Um `Map` usa uma estrutura de dados diferente internamente,
+dependendo de sua implementação.
+Por exemplo, [HashMap][hashmap class] usa uma hash table
+na qual os elementos (também chamados de _values_) são obtidos usando uma chave.
+Elementos de um `Map` também podem ser lidos como objetos `Iterable`
+usando a propriedade `entries` ou `values` do map.
 
-This example shows a `List` of `int`,
-which is also an `Iterable` of `int`:
+Este exemplo mostra um `List` de `int`,
+que também é um `Iterable` de `int`:
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable)"?>
 ```dart
 Iterable<int> iterable = [1, 2, 3];
 ```
 
-The difference with a `List` is that with the `Iterable`,
-you can't guarantee that reading elements by index will be efficient.
-`Iterable`, as opposed to `List`, doesn't have the `[]` operator.
+A diferença com um `List` é que com o `Iterable`,
+você não pode garantir que a leitura de elementos por índice será eficiente.
+`Iterable`, ao contrário de `List`, não tem o operador `[]`.
 
-For example, consider the following code, which is **invalid**:
+Por exemplo, considere o seguinte código, que é **inválido**:
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
 ```dart tag=bad
@@ -99,14 +100,14 @@ Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
 ```
 
-If you read elements with `[]`,
-the compiler tells you that the operator `'[]'`
-isn't defined for the class `Iterable`,
-which means that you can't use `[index]` in this case.
+Se você ler elementos com `[]`,
+o compilador informa que o operador `'[]'`
+não está definido para a classe `Iterable`,
+o que significa que você não pode usar `[index]` neste caso.
 
-You can instead read elements with `elementAt()`,
-which can step through the items of the iterable until
-it reaches the item at that position.
+Você pode em vez disso ler elementos com `elementAt()`,
+que pode percorrer os itens do iterable até
+alcançar o item naquela posição.
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
 ```dart
@@ -114,11 +115,11 @@ Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
 ```
 
-Depending on the iterable implementation and number of items,
-`elementAt` can have a linear complexity and be expensive.
-If you plan to access specific items repeatedly, then consider
-calling `.toList()` on the iterable to convert it to a list once,
-then use the `[]` operator.
+Dependendo da implementação do iterable e do número de itens,
+`elementAt` pode ter complexidade linear e ser custoso.
+Se você planeja acessar itens específicos repetidamente, então considere
+chamar `.toList()` no iterable para convertê-lo em uma lista uma vez,
+então use o operador `[]`.
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-to-list)"?>
 ```dart
@@ -130,17 +131,17 @@ final thousandthItem = items[999];
 final lastItem = items.last;
 ```
 
-Continue to the next section to learn more about
-how to access elements of an `Iterable`.
+Continue para a próxima seção para aprender mais sobre
+como acessar elementos de um `Iterable`.
 
-## Reading elements
+## Lendo elementos
 
-You can read the elements of an iterable sequentially,
-using a `for-in` loop.
+Você pode ler os elementos de um iterable sequencialmente,
+usando um loop `for-in`.
 
-### Example: Using a for-in loop
+### Exemplo: Usando um loop for-in
 
-The following example shows you how to read elements using  a `for-in` loop.
+O exemplo a seguir mostra como ler elementos usando um loop `for-in`.
 
 <?code-excerpt "iterables/test/iterables_test.dart (for-in)"?>
 ```dartpad
@@ -153,40 +154,40 @@ void main() {
 ```
 
 :::note Details
-Behind the scenes, the `for-in` loop uses an _iterator._
-You rarely see the [Iterator API][iterator class] used directly, however,
-because `for-in` is easier to read and understand,
-and is less prone to errors.
+Por trás dos bastidores, o loop `for-in` usa um _iterator._
+Você raramente vê a [API Iterator][iterator class] usada diretamente, no entanto,
+porque `for-in` é mais fácil de ler e entender,
+e é menos propenso a erros.
 :::
 
 :::secondary Key terms
-* **Iterable**: The Dart [Iterable][iterable class] class.
-* **Iterator**: An object used by `for-in` to read elements from
-  an `Iterable` object.
-* **`for-in` loop**: An easy way to sequentially read elements from
-  an `Iterable`.
+* **Iterable**: A classe [Iterable][iterable class] do Dart.
+* **Iterator**: Um objeto usado por `for-in` para ler elementos de
+  um objeto `Iterable`.
+* **`for-in` loop**: Uma maneira fácil de ler elementos sequencialmente de
+  um `Iterable`.
 :::
 
-### Example: Using first and last
+### Exemplo: Usando first e last
 
-In some cases, you want to access only the first or the last element
-of an `Iterable`.
+Em alguns casos, você quer acessar apenas o primeiro ou o último elemento
+de um `Iterable`.
 
-With the `Iterable` class, you can't access the elements directly,
-so you can't call `iterable[0]` to access the first element.
-Instead, you can use `first`,
-which gets the first element.
+Com a classe `Iterable`, você não pode acessar os elementos diretamente,
+então você não pode chamar `iterable[0]` para acessar o primeiro elemento.
+Em vez disso, você pode usar `first`,
+que obtém o primeiro elemento.
 
-Also, with the `Iterable` class,
-you can't use the operator `[]` to access the last element,
-but you can use the `last` property.
+Além disso, com a classe `Iterable`,
+você não pode usar o operador `[]` para acessar o último elemento,
+mas você pode usar a propriedade `last`.
 
 :::warning
-Because accessing the last element of an `Iterable` requires
-stepping through all the other elements,
-**`last` can be slow.**
-Using `first` or `last` on an **empty `Iterable`**
-results in a [StateError.][StateError class]
+Como acessar o último elemento de um `Iterable` requer
+percorrer todos os outros elementos,
+**`last` pode ser lento.**
+Usar `first` ou `last` em um **`Iterable` vazio**
+resulta em um [StateError.][StateError class]
 :::
 
 <?code-excerpt "iterables/test/iterables_test.dart (first-last)"?>
@@ -198,34 +199,34 @@ void main() {
 }
 ```
 
-In this example you saw how to use `first` and `last` to
-get the first and last elements of an `Iterable`.
-It's also possible to find the first element that satisfies a condition.
-The next section shows how to do that using a method called `firstWhere()`.
+Neste exemplo você viu como usar `first` e `last` para
+obter o primeiro e último elementos de um `Iterable`.
+Também é possível encontrar o primeiro elemento que satisfaz uma condição.
+A próxima seção mostra como fazer isso usando um método chamado `firstWhere()`.
 
-### Example: Using firstWhere()
+### Exemplo: Usando firstWhere()
 
-You already saw that you can access the elements of an `Iterable` sequentially,
-and you can easily get the first or last element.
+Você já viu que pode acessar os elementos de um `Iterable` sequencialmente,
+e você pode facilmente obter o primeiro ou último elemento.
 
-Now, you learn how to use `firstWhere()` to find the first element that
-satisfies certain conditions.
-This method requires you to pass a _predicate_,
-which is a function that returns true if
-the input satisfies a certain condition.
+Agora, você aprende como usar `firstWhere()` para encontrar o primeiro elemento que
+satisfaz certas condições.
+Este método requer que você passe um _predicate_,
+que é uma função que retorna true se
+a entrada satisfaz uma certa condição.
 
 <?code-excerpt "iterables/test/iterables_test.dart (firstwhere)"?>
 ```dart
 String element = iterable.firstWhere((element) => element.length > 5);
 ```
 
-For example, if you want to find the first `String` that has
-more than 5 characters,
-you must pass a predicate that returns true when
-the element size is greater than 5.
+Por exemplo, se você quiser encontrar o primeiro `String` que tem
+mais de 5 caracteres,
+você deve passar um predicate que retorna true quando
+o tamanho do elemento é maior que 5.
 
-Run the following example to see how `firstWhere()` works.
-Do you think all the functions will give the same result?
+Execute o exemplo a seguir para ver como `firstWhere()` funciona.
+Você acha que todas as funções darão o mesmo resultado?
 
 <?code-excerpt "iterables/test/iterables_test.dart (first-where-long)"?>
 ```dartpad
@@ -259,76 +260,76 @@ void main() {
 }
 ```
 
-In this example, you can see three different ways to write a predicate:
+Neste exemplo, você pode ver três maneiras diferentes de escrever um predicate:
 
-* **As an expression:**
-  The test code has one line that uses arrow syntax (`=>`).
-* **As a block:**
-  The test code has multiple lines between brackets and a return statement.
-* **As a function:**
-  The test code is in an external function that's passed to
-  the `firstWhere()` method as a parameter.
+* **Como uma expressão:**
+  O código de teste tem uma linha que usa sintaxe de seta (`=>`).
+* **Como um bloco:**
+  O código de teste tem múltiplas linhas entre chaves e uma instrução return.
+* **Como uma função:**
+  O código de teste está em uma função externa que é passada para
+  o método `firstWhere()` como um parâmetro.
 
-There is no right or wrong way.
-Use the way that works best for you, 
-and that makes your code easier to read and understand.
+Não há maneira certa ou errada.
+Use a maneira que funciona melhor para você,
+e que torna seu código mais fácil de ler e entender.
 
-The final example calls `firstWhere()` with
-the optional named parameter `orElse`,
-which provides an alternative when an element isn't found.
-In this case, the text `'None!'` is returned because
-no element satisfies the provided condition.
+O exemplo final chama `firstWhere()` com
+o parâmetro nomeado opcional `orElse`,
+que fornece uma alternativa quando um elemento não é encontrado.
+Neste caso, o texto `'None!'` é retornado porque
+nenhum elemento satisfaz a condição fornecida.
 
 :::note
-If no element satisfies the test predicate and
-the `orElse` parameter isn't provided,
-then `firstWhere()` throws a [StateError.][StateError class]
+Se nenhum elemento satisfaz o predicate de teste e
+o parâmetro `orElse` não é fornecido,
+então `firstWhere()` lança um [StateError.][StateError class]
 :::
 
 :::secondary Quick review
-* The elements of an `Iterable` must be accessed sequentially.
-* The easiest way to iterate through all the elements is
-  using a `for-in` loop.
-* You can use the `first` and `last` getters to get
-  the first and last elements.
-* You can also find the first element that
-  satisfies a condition with `firstWhere()`.
-* You can write test predicates as expressions, blocks, or functions.
+* Os elementos de um `Iterable` devem ser acessados sequencialmente.
+* A maneira mais fácil de iterar através de todos os elementos é
+  usando um loop `for-in`.
+* Você pode usar os getters `first` e `last` para obter
+  o primeiro e último elementos.
+* Você também pode encontrar o primeiro elemento que
+  satisfaz uma condição com `firstWhere()`.
+* Você pode escrever predicates de teste como expressões, blocos ou funções.
 
-  **Key terms:**
+  **Termos-chave:**
 * **Predicate:**
-  A function that returns `true` when a certain condition is satisfied.
+  Uma função que retorna `true` quando uma certa condição é satisfeita.
 :::
 
-### Exercise: Practice writing a test predicate
+### Exercício: Pratique escrever um predicate de teste
 
-The following exercise is a failing unit test that
-contains a partially complete code snippet.
-Your task is to complete the exercise by writing code to make the tests pass.
-You don't need to implement `main()`.
+O exercício a seguir é um teste unitário que falha e que
+contém um trecho de código parcialmente completo.
+Sua tarefa é completar o exercício escrevendo código para fazer os testes passarem.
+Você não precisa implementar `main()`.
 
-This exercise introduces `singleWhere()`
-This method works similarly to `firstWhere()`,
-but in this case it expects only one element of the `Iterable` to
-satisfy the predicate.
-If more than one or no element in the `Iterable`
-satisfies the predicate condition,
-then the method throws a [StateError][StateError class] exception.
+Este exercício apresenta `singleWhere()`
+Este método funciona de forma semelhante a `firstWhere()`,
+mas neste caso ele espera que apenas um elemento do `Iterable`
+satisfaça o predicate.
+Se mais de um ou nenhum elemento no `Iterable`
+satisfaz a condição do predicate,
+então o método lança uma exceção [StateError][StateError class].
 
 :::warning
-`singleWhere()` steps through the whole `Iterable` until the last element,
-which can cause problems if the `Iterable` is infinite or
-contains a large collection of elements.
+`singleWhere()` percorre todo o `Iterable` até o último elemento,
+o que pode causar problemas se o `Iterable` é infinito ou
+contém uma grande coleção de elementos.
 :::
 
-Your goal is to implement the predicate for `singleWhere()` that
-satisfies the following conditions:
+Seu objetivo é implementar o predicate para `singleWhere()` que
+satisfaz as seguintes condições:
 
-* The element contains the character `'a'`.
-* The element starts with the character `'M'`.
+* O elemento contém o caractere `'a'`.
+* O elemento começa com o caractere `'M'`.
 
-All the elements in the test data are [strings][String class];
-you can check the class documentation for help.
+Todos os elementos nos dados de teste são [strings][String class];
+você pode consultar a documentação da classe para ajuda.
 
 ```dartpad theme="dark"
 // Implement the predicate of singleWhere
@@ -400,12 +401,12 @@ void main() {
 
 </details>
 
-## Checking conditions
+## Verificando condições
 
-When working with `Iterable`, sometimes you need to verify that
-all the elements of a collection satisfy some condition.
+Ao trabalhar com `Iterable`, às vezes você precisa verificar se
+todos os elementos de uma coleção satisfazem alguma condição.
 
-You might be tempted to write a solution using a `for-in` loop like this one:
+Você pode ser tentado a escrever uma solução usando um loop `for-in` como este:
 
 <?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
 ```dart tag=bad
@@ -417,25 +418,25 @@ for (final item in items) {
 return true;
 ```
 
-However, you can accomplish the same using the `every()` method:
+No entanto, você pode realizar o mesmo usando o método `every()`:
 
 <?code-excerpt "iterables/test/iterables_test.dart (every-good)"?>
 ```dart
 return items.every((item) => item.length >= 5);
 ```
 
-Using the `every()` method results in code that is more
-readable, compact, and less error-prone.
+Usar o método `every()` resulta em código que é mais
+legível, compacto e menos propenso a erros.
 
-### Example: Using any() and every()
+### Exemplo: Usando any() e every()
 
-The `Iterable` class provides two methods that
-you can use to verify conditions:
+A classe `Iterable` fornece dois métodos que
+você pode usar para verificar condições:
 
-* `any()`: Returns true if at least one element satisfies the condition.
-* `every()`: Returns true if all elements satisfy the condition.
+* `any()`: Retorna true se pelo menos um elemento satisfaz a condição.
+* `every()`: Retorna true se todos os elementos satisfazem a condição.
 
-Run this exercise to see them in action.
+Execute este exercício para vê-los em ação.
 
 <?code-excerpt "iterables/test/iterables_test.dart (any-every)"?>
 ```dartpad
@@ -452,13 +453,13 @@ void main() {
 }
 ```
 
-In the example, `any()` verifies that
-at least one element contains the character `a`,
-and `every()` verifies that all elements
-have a length equal to or greater than 5.
+No exemplo, `any()` verifica que
+pelo menos um elemento contém o caractere `a`,
+e `every()` verifica que todos os elementos
+têm um comprimento igual ou maior que 5.
 
-After running the code, try changing the predicate of `any()` so
-it returns false:
+Após executar o código, tente mudar o predicate de `any()` para
+que ele retorne false:
 
 <?code-excerpt "iterables/test/iterables_test.dart (any-false)"?>
 ```dart
@@ -469,23 +470,23 @@ if (items.any((item) => item.contains('Z'))) {
 }
 ```
 
-You can also use `any()` to verify that no element of an `Iterable`
-satisfies a certain condition.
+Você também pode usar `any()` para verificar que nenhum elemento de um `Iterable`
+satisfaz uma certa condição.
 
 
-### Exercise: Verify that an Iterable satisfies a condition
+### Exercício: Verifique que um Iterable satisfaz uma condição
 
-The following exercise provides practice using the
-`any()` and `every()` methods, described in the previous example.
-In this case, you work with a group of users,
-represented by `User` objects that have the member field `age`.
+O exercício a seguir fornece prática usando os
+métodos `any()` e `every()`, descritos no exemplo anterior.
+Neste caso, você trabalha com um grupo de usuários,
+representados por objetos `User` que têm o campo membro `age`.
 
-Use `any()` and `every()` to implement two functions:
+Use `any()` e `every()` para implementar duas funções:
 
-* Part 1: Implement `anyUserUnder18()`.
-  * Return `true` if at least one user is 17 or younger.
-* Part 2: Implement `everyUserOver13()`.
-  * Return `true` if all users are 14 or older.
+* Parte 1: Implemente `anyUserUnder18()`.
+  * Retorne `true` se pelo menos um usuário tem 17 anos ou menos.
+* Parte 2: Implemente `everyUserOver13()`.
+  * Retorne `true` se todos os usuários têm 14 anos ou mais.
 
 ```dartpad
 bool anyUserUnder18(Iterable<User> users) {
@@ -621,7 +622,7 @@ void main() {
   bool anyUserUnder18(Iterable<User> users) {
     return users.any((user) => user.age < 18);
   }
-  
+
   bool everyUserOver13(Iterable<User> users) {
     return users.every((user) => user.age > 13);
   }
@@ -630,38 +631,38 @@ void main() {
 </details>
 
 :::secondary Quick review
-* Although you can use `for-in` loops to check conditions,
-  there are better ways to do that.
-* The method `any()` enables you to check whether
-  any element satisfies a condition.
-* The method `every()` enables you to verify that
-  all elements satisfy a condition.
+* Embora você possa usar loops `for-in` para verificar condições,
+  existem maneiras melhores de fazer isso.
+* O método `any()` permite que você verifique se
+  algum elemento satisfaz uma condição.
+* O método `every()` permite que você verifique que
+  todos os elementos satisfazem uma condição.
 :::
 
-## Filtering
+## Filtrando
 
-The previous sections cover methods like `firstWhere()` or
-`singleWhere()` that can help you find an element that
-satisfies a certain predicate.
+As seções anteriores cobrem métodos como `firstWhere()` ou
+`singleWhere()` que podem ajudá-lo a encontrar um elemento que
+satisfaz um certo predicate.
 
-But what if you want to find all the elements that
-satisfy a certain condition?
-You can accomplish that using the `where()` method.
+Mas e se você quiser encontrar todos os elementos que
+satisfazem uma certa condição?
+Você pode realizar isso usando o método `where()`.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where)"?>
 ```dart
 var evenNumbers = numbers.where((number) => number.isEven);
 ```
 
-In this example,
-`numbers` contains an `Iterable` with multiple `int` values, and
-`where()` finds all the numbers that are even.
+Neste exemplo,
+`numbers` contém um `Iterable` com múltiplos valores `int`, e
+`where()` encontra todos os números que são pares.
 
-The output of `where()` is another `Iterable`,
-and you can use it as such to iterate over it or
-apply other `Iterable` methods.
-In the next example, the output of `where()`
-is used directly inside the `for-in` loop.
+A saída de `where()` é outro `Iterable`,
+e você pode usá-lo como tal para iterar sobre ele ou
+aplicar outros métodos `Iterable`.
+No próximo exemplo, a saída de `where()`
+é usada diretamente dentro do loop `for-in`.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
 ```dart
@@ -671,10 +672,10 @@ for (final number in evenNumbers) {
 }
 ```
 
-### Example: Using where()
+### Exemplo: Usando where()
 
-Run this example to see how `where()` can be used together with other
-methods like `any()`.
+Execute este exemplo para ver como `where()` pode ser usado junto com outros
+métodos como `any()`.
 
 <?code-excerpt "iterables/test/iterables_test.dart (numbers-where)"?>
 ```dartpad
@@ -697,27 +698,27 @@ void main() {
 }
 ```
 
-In this example, `where()` is used to find all numbers that are even, then
-`any()` is used to check if the results contain a negative number.
+Neste exemplo, `where()` é usado para encontrar todos os números que são pares, então
+`any()` é usado para verificar se os resultados contêm um número negativo.
 
-Later in the example, `where()` is used again to
-find all numbers larger than 1000.
-Because there are none, the result is an empty `Iterable`.
+Mais tarde no exemplo, `where()` é usado novamente para
+encontrar todos os números maiores que 1000.
+Como não há nenhum, o resultado é um `Iterable` vazio.
 
 :::note
-If no element satisfies the predicate in `where()`,
-then the method returns an empty `Iterable`.
-Unlike `singleWhere()` or `firstWhere()`,
-`where()` doesn't throw a [StateError][StateError class] exception.
+Se nenhum elemento satisfaz o predicate em `where()`,
+então o método retorna um `Iterable` vazio.
+Ao contrário de `singleWhere()` ou `firstWhere()`,
+`where()` não lança uma exceção [StateError][StateError class].
 :::
 
-### Example: Using takeWhile
+### Exemplo: Usando takeWhile
 
-The methods `takeWhile()` and `skipWhile()` can also
-help you filter elements from an `Iterable`.
+Os métodos `takeWhile()` e `skipWhile()` também podem
+ajudá-lo a filtrar elementos de um `Iterable`.
 
-Run this example to see how `takeWhile()` and `skipWhile()` can
-split an `Iterable` containing numbers.
+Execute este exemplo para ver como `takeWhile()` e `skipWhile()` podem
+dividir um `Iterable` contendo números.
 
 <?code-excerpt "iterables/test/iterables_test.dart (take-while-long)"?>
 ```dartpad
@@ -732,16 +733,16 @@ void main() {
 }
 ```
 
-In this example, `takeWhile()` returns an `Iterable` that
-contains all the elements before the one that
-satisfies the predicate.
-On the other hand, `skipWhile()` returns an `Iterable` 
-that contains all elements after and including the first one
-that _doesn't_ satisfy the predicate.
+Neste exemplo, `takeWhile()` retorna um `Iterable` que
+contém todos os elementos antes do que
+satisfaz o predicate.
+Por outro lado, `skipWhile()` retorna um `Iterable`
+que contém todos os elementos depois e incluindo o primeiro que
+_não_ satisfaz o predicate.
 
-After running the example,
-change `takeWhile()` to take elements until
-it reaches the first negative number.
+Após executar o exemplo,
+mude `takeWhile()` para pegar elementos até
+alcançar o primeiro número negativo.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
 ```dart
@@ -750,20 +751,20 @@ var numbersUntilNegative = numbers.takeWhile(
 );
 ```
 
-Notice that the condition `number.isNegative` is negated with `!`.
+Note que a condição `number.isNegative` é negada com `!`.
 
-### Exercise: Filtering elements from a list
+### Exercício: Filtrando elementos de uma lista
 
-The following exercise provides practice using the `where()` method with 
-the class `User` from the previous exercise.
+O exercício a seguir fornece prática usando o método `where()` com
+a classe `User` do exercício anterior.
 
-Use `where()` to implement two functions:
+Use `where()` para implementar duas funções:
 
-* Part 1: Implement `filterOutUnder21()`.
-  * Return an `Iterable` containing all users of age 21 or more.
-* Part 2: Implement `findShortNamed()`.
-  * Return an `Iterable` containing all users with
-    names of length 3 or less.
+* Parte 1: Implemente `filterOutUnder21()`.
+  * Retorne um `Iterable` contendo todos os usuários de idade 21 ou mais.
+* Parte 2: Implemente `findShortNamed()`.
+  * Retorne um `Iterable` contendo todos os usuários com
+    nomes de comprimento 3 ou menos.
 
 ```dartpad theme="dark"
 Iterable<User> filterOutUnder21(Iterable<User> users) {
@@ -860,7 +861,7 @@ void main() {
   Iterable<User> filterOutUnder21(Iterable<User> users) {
     return users.where((user) => user.age >= 21);
   }
-  
+
   Iterable<User> findShortNamed(Iterable<User> users) {
     return users.where((user) => user.name.length <= 3);
   }
@@ -869,30 +870,30 @@ void main() {
 </details>
 
 :::secondary Quick review
-* Filter the elements of an `Iterable` with `where()`.
-* The output of `where()` is another `Iterable`.
-* Use `takeWhile()` and `skipWhile()` to obtain elements until or after
-  a condition is met.
-* The output of these methods can be an empty `Iterable`.
+* Filtre os elementos de um `Iterable` com `where()`.
+* A saída de `where()` é outro `Iterable`.
+* Use `takeWhile()` e `skipWhile()` para obter elementos até ou depois
+  que uma condição é atendida.
+* A saída desses métodos pode ser um `Iterable` vazio.
 :::
 
-## Mapping
+## Mapeando
 
-Mapping `Iterables` with the method `map()` enables you to
-apply a function over each of the elements,
-replacing each element with a new one.
+Mapear `Iterables` com o método `map()` permite que você
+aplique uma função sobre cada um dos elementos,
+substituindo cada elemento por um novo.
 
 <?code-excerpt "iterables/test/iterables_test.dart (map-int)"?>
 ```dart
 Iterable<int> output = numbers.map((number) => number * 10);
 ```
 
-In this example, each element of the `Iterable` numbers is multiplied by 10.
+Neste exemplo, cada elemento do `Iterable` numbers é multiplicado por 10.
 
-You can also use `map()` 
-to transform an element into a different object—for example, 
-to convert all `int` to `String`,
-as you can see in the following example:
+Você também pode usar `map()`
+para transformar um elemento em um objeto diferente—por exemplo,
+para converter todos os `int` em `String`,
+como você pode ver no exemplo a seguir:
 
 <?code-excerpt "iterables/test/iterables_test.dart (map-string)"?>
 ```dart
@@ -900,15 +901,15 @@ Iterable<String> output = numbers.map((number) => number.toString());
 ```
 
 :::note
-`map()` returns a _lazy_ `Iterable`, meaning that the supplied function
-is called only when the elements are iterated.
+`map()` retorna um `Iterable` _lazy_, o que significa que a função fornecida
+é chamada apenas quando os elementos são iterados.
 :::
 
-### Example: Using map to change elements
+### Exemplo: Usando map para mudar elementos
 
-Run this example to see how to use `map()` to
-multiply all the elements of an `Iterable` by 2.
-What do you think the output will be?
+Execute este exemplo para ver como usar `map()` para
+multiplicar todos os elementos de um `Iterable` por 2.
+O que você acha que será a saída?
 
 <?code-excerpt "iterables/test/iterables_test.dart (numbers-by-two)"?>
 ```dartpad
@@ -919,17 +920,17 @@ void main() {
 ```
 
 
-### Exercise: Mapping to a different type
+### Exercício: Mapeando para um tipo diferente
 
-In the previous example, you multiplied the elements of an `Iterable` by 2.
-Both the input and the output of that operation were an `Iterable` of `int`.
+No exemplo anterior, você multiplicou os elementos de um `Iterable` por 2.
+Tanto a entrada quanto a saída dessa operação eram um `Iterable` de `int`.
 
-In this exercise, your code takes an `Iterable` of `User`,
-and you need to return an `Iterable` that
-contains strings containing each user's name and age.
+Neste exercício, seu código recebe um `Iterable` de `User`,
+e você precisa retornar um `Iterable` que
+contém strings contendo o nome e idade de cada usuário.
 
-Each string in the `Iterable` must follow this format:
-`'{name} is {age}'`—for example `'Alice is 21'`.
+Cada string no `Iterable` deve seguir este formato:
+`'{name} is {age}'`—por exemplo `'Alice is 21'`.
 
 ```dartpad theme="dark"
 Iterable<String> getNameAndAges(Iterable<User> users) {
@@ -1012,51 +1013,51 @@ bool _listEquals<T>(List<T>? a, List<T>? b) {
 </details>
 
 :::secondary Quick review
-* `map()` applies a function to all the elements of an `Iterable`.
-* The output of `map()` is another `Iterable`.
-* The function isn't evaluated until the `Iterable` is iterated.
+* `map()` aplica uma função a todos os elementos de um `Iterable`.
+* A saída de `map()` é outro `Iterable`.
+* A função não é avaliada até que o `Iterable` seja iterado.
 :::
 
-## Exercise: Putting it all together
+## Exercício: Juntando tudo
 
-It's time to practice what you learned, in one final exercise.
+É hora de praticar o que você aprendeu, em um exercício final.
 
-This exercise provides the class `EmailAddress`,
-which has a constructor that takes a string.
-Another provided function is `isValidEmailAddress()`,
-which tests whether an email address is valid.
+Este exercício fornece a classe `EmailAddress`,
+que tem um construtor que recebe uma string.
+Outra função fornecida é `isValidEmailAddress()`,
+que testa se um endereço de email é válido.
 
 | Constructor/function  | Type signature                           | Description                                             |
 |-----------------------|------------------------------------------|---------------------------------------------------------|
-| EmailAddress()        | `EmailAddress(String address)`           | Creates an `EmailAddress` for the specified address.    | 
+| EmailAddress()        | `EmailAddress(String address)`           | Creates an `EmailAddress` for the specified address.    |
 | isValidEmailAddress() | `bool isValidEmailAddress(EmailAddress)` | Returns `true` if the provided `EmailAddress` is valid. |
 
 {:.table .table-striped}
 
-Write the following code:
+Escreva o seguinte código:
 
-Part 1: Implement `parseEmailAddresses()`.
-- Write the function `parseEmailAddresses()`,
-  which takes an `Iterable<String>` containing email addresses, 
-  and returns an `Iterable<EmailAddress>`.
-- Use the method `map()` to map from a `String` to `EmailAddress`.
-- Create the `EmailAddress` objects using
-  the constructor `EmailAddress(String)`.
+Parte 1: Implemente `parseEmailAddresses()`.
+- Escreva a função `parseEmailAddresses()`,
+  que recebe um `Iterable<String>` contendo endereços de email,
+  e retorna um `Iterable<EmailAddress>`.
+- Use o método `map()` para mapear de um `String` para `EmailAddress`.
+- Crie os objetos `EmailAddress` usando
+  o construtor `EmailAddress(String)`.
 
-Part 2: Implement `anyInvalidEmailAddress()`.
-- Write the function `anyInvalidEmailAddress()`,
-  which takes an `Iterable<EmailAddress>` and
-  returns `true` if any `EmailAddress` in the `Iterable` isn't valid.
-- Use the method `any()` together with
-  the provided function `isValidEmailAddress()`.
+Parte 2: Implemente `anyInvalidEmailAddress()`.
+- Escreva a função `anyInvalidEmailAddress()`,
+  que recebe um `Iterable<EmailAddress>` e
+  retorna `true` se qualquer `EmailAddress` no `Iterable` não for válido.
+- Use o método `any()` junto com
+  a função fornecida `isValidEmailAddress()`.
 
-Part 3: Implement `validEmailAddresses()`.
-- Write the function `validEmailAddresses()`,
-  which takes an `Iterable<EmailAddress>` and
-  returns another `Iterable<EmailAddress>` containing only valid addresses.
-- Use the method `where()` to filter the `Iterable<EmailAddress>`.
-- Use the provided function `isValidEmailAddress()` to evaluate whether
-  an `EmailAddress` is valid.
+Parte 3: Implemente `validEmailAddresses()`.
+- Escreva a função `validEmailAddresses()`,
+  que recebe um `Iterable<EmailAddress>` e
+  retorna outro `Iterable<EmailAddress>` contendo apenas endereços válidos.
+- Use o método `where()` para filtrar o `Iterable<EmailAddress>`.
+- Use a função fornecida `isValidEmailAddress()` para avaliar se
+  um `EmailAddress` é válido.
 
 ```dartpad theme="dark"
 Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
@@ -1212,11 +1213,11 @@ bool isValidEmailAddress(EmailAddress email) {
   Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
     return strings.map((s) => EmailAddress(s));
   }
-  
+
   bool anyInvalidEmailAddress(Iterable<EmailAddress> emails) {
     return emails.any((email) => !isValidEmailAddress(email));
   }
-  
+
   Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
     return emails.where((email) => isValidEmailAddress(email));
   }
@@ -1224,16 +1225,16 @@ bool isValidEmailAddress(EmailAddress email) {
 
 </details>
 
-## What's next
+## Próximos passos
 
-Congratulations, you finished the tutorial!
-If you want to learn more,
-here are some suggestions for where to go next:
+Parabéns, você terminou o tutorial!
+Se você quiser aprender mais,
+aqui estão algumas sugestões sobre para onde ir em seguida:
 
-* Play with [DartPad.]({{site.dartpad}})
-* Try another [tutorial](/tutorials).
-* Read the [Iterable API reference][iterable class]
-  to learn about methods that this tutorial doesn't cover.
+* Brinque com [DartPad.]({{site.dartpad}})
+* Experimente outro [tutorial](/tutorials).
+* Leia a [referência da API Iterable][iterable class]
+  para aprender sobre métodos que este tutorial não cobre.
 
 [hashmap class]: {{site.dart-api}}/dart-collection/HashMap-class.html
 [iterable class]: {{site.dart-api}}/dart-core/Iterable-class.html
