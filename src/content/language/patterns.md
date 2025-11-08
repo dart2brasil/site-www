@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 title: Patterns
-description: Summary of patterns in Dart.
+description: Resumo de patterns em Dart.
 prevpage:
   url: /language/type-system
   title: Type system
@@ -10,44 +11,42 @@ nextpage:
 ---
 
 :::version-note
-Patterns require a [language version][] of at least 3.0.
+Patterns requerem uma [language version][] de pelo menos 3.0.
 :::
 
-Patterns are a syntactic category in the Dart language, like statements and expressions.
-A pattern represents the shape of a set of values that it may match against actual
-values.
+Patterns são uma categoria sintática na linguagem Dart, como statements e expressions.
+Um pattern representa a forma de um conjunto de valores que pode corresponder contra valores
+reais.
 
-This page describes:
-- What patterns do.
-- Where patterns are allowed in Dart code.
-- What the common use cases for patterns are.
+Esta página descreve:
+- O que patterns fazem.
+- Onde patterns são permitidos no código Dart.
+- Quais são os casos de uso comuns para patterns.
 
-To learn about the different kinds of patterns, visit the [pattern types][types]
-page.
+Para aprender sobre os diferentes tipos de patterns, visite a página de [tipos de pattern][types].
 
-## What patterns do
+## O que patterns fazem {:#what-patterns-do}
 
-In general, a pattern may **match** a value, **destructure** a value, or both,
-depending on the context and shape of the pattern.
+Em geral, um pattern pode **corresponder** a um valor, **desestruturar** um valor, ou ambos,
+dependendo do contexto e da forma do pattern.
 
-First, _pattern matching_ allows you to check whether a given value:
-- Has a certain shape.
-- Is a certain constant.
-- Is equal to something else.
-- Has a certain type.
+Primeiro, _correspondência de pattern_ permite verificar se um determinado valor:
+- Tem uma certa forma.
+- É uma certa constante.
+- É igual a algo mais.
+- Tem um certo tipo.
 
-Then, _pattern destructuring_ provides you with a convenient declarative syntax to
-break that value into its constituent parts. The same pattern can also let you 
-bind variables to some or all of those parts in the process.
+Então, _desestruturação de pattern_ fornece uma sintaxe declarativa conveniente para
+quebrar esse valor em suas partes constituintes. O mesmo pattern também pode permitir que você
+vincule variáveis a algumas ou todas essas partes no processo.
 
-### Matching
+### Correspondência {:#matching}
 
-A pattern always tests against a value to determine if the value has the form
-you expect. In other words, you are checking if the value _matches_ the pattern. 
+Um pattern sempre testa contra um valor para determinar se o valor tem a forma
+que você espera. Em outras palavras, você está verificando se o valor _corresponde_ ao pattern.
 
-What constitutes a match depends on [what kind of pattern][types] you are using.
-For example, a constant pattern matches if the value is equal to the pattern's 
-constant:
+O que constitui uma correspondência depende de [que tipo de pattern][types] você está usando.
+Por exemplo, um pattern constant corresponde se o valor for igual à constante do pattern:
 
 <?code-excerpt "language/lib/patterns/switch.dart (constant-pattern)"?>
 ```dart
@@ -58,10 +57,10 @@ switch (number) {
 }
 ```
 
-Many patterns make use of subpatterns, sometimes called _outer_ and _inner_
-patterns, respectively. Patterns match recursively on their subpatterns.
-For example, the individual fields of any [collection-type][] pattern could be 
-[variable patterns][variable] or [constant patterns][constant]:
+Muitos patterns fazem uso de subpatterns, às vezes chamados de patterns _externos_ e _internos_,
+respectivamente. Patterns correspondem recursivamente em seus subpatterns.
+Por exemplo, os campos individuais de qualquer pattern de [tipo coleção][collection-type] podem ser
+[patterns variable][variable] ou [patterns constant][constant]:
 
 <?code-excerpt "language/lib/patterns/switch.dart (list-pattern)"?>
 ```dart
@@ -75,13 +74,13 @@ switch (obj) {
 }
 ```
 
-To ignore parts of a matched value, you can use a [wildcard pattern][]
-as a placeholder. In the case of list patterns, you can use a [rest element][].
+Para ignorar partes de um valor correspondido, você pode usar um [pattern wildcard][]
+como um espaço reservado. No caso de patterns list, você pode usar um [elemento rest][rest element].
 
-### Destructuring
+### Desestruturação {:#destructuring}
 
-When an object and pattern match, the pattern can then access the object's data 
-and extract it in parts. In other words, the pattern _destructures_ the object:
+Quando um objeto e pattern correspondem, o pattern pode então acessar os dados do objeto
+e extraí-los em partes. Em outras palavras, o pattern _desestrutura_ o objeto:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (list-pattern)"?>
 ```dart
@@ -92,9 +91,9 @@ var [a, b, c] = numList;
 print(a + b + c);
 ```
 
-You can nest [any kind of pattern][types] inside a destructuring pattern. 
-For example, this case pattern matches and destructures a two-element
-list whose first element is `'a'` or `'b'`:
+Você pode aninhar [qualquer tipo de pattern][types] dentro de um pattern de desestruturação.
+Por exemplo, este case pattern corresponde e desestrutura uma lista de dois elementos cujo primeiro
+elemento é `'a'` ou `'b'`:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (nested-pattern)"?>
 ```dart
@@ -104,25 +103,25 @@ switch (list) {
 }
 ```
 
-## Places patterns can appear
+## Lugares onde patterns podem aparecer {:#places-patterns-can-appear}
 
-You can use patterns in several places in the Dart language:
+Você pode usar patterns em vários lugares na linguagem Dart:
 
 <a id="pattern-uses"></a>
 
-- Local variable [declarations](#variable-declaration) and [assignments](#variable-assignment)
-- [for and for-in loops][for]
-- [if-case][if] and [switch-case][switch]
-- Control flow in [collection literals][]
+- [Declarações](#variable-declaration) e [atribuições](#variable-assignment) de variáveis locais
+- [Loops for e for-in][for]
+- [if-case][if] e [switch-case][switch]
+- Fluxo de controle em [literais de coleção][collection literals]
 
-This section describes common use cases for matching and destructuring with patterns.
+Esta seção descreve casos de uso comuns para correspondência e desestruturação com patterns.
 
-### Variable declaration
+### Declaração de variável {:#variable-declaration}
 
-You can use a _pattern variable declaration_ anywhere Dart allows local variable
-declaration. 
-The pattern matches against the value on the right of the declaration.
-Once matched, it destructures the value and binds it to new local variables:
+Você pode usar uma _declaração de variável pattern_ em qualquer lugar que Dart permita declaração de variável
+local.
+O pattern corresponde contra o valor à direita da declaração.
+Uma vez correspondido, ele desestrutura o valor e o vincula a novas variáveis locais:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (variable-declaration)"?>
 ```dart
@@ -130,17 +129,17 @@ Once matched, it destructures the value and binds it to new local variables:
 var (a, [b, c]) = ('str', [1, 2]);
 ```
 
-A pattern variable declaration must start with either `var` or `final`, followed
-by a pattern. 
+Uma declaração de variável pattern deve começar com `var` ou `final`, seguido
+por um pattern.
 
-### Variable assignment 
+### Atribuição de variável {:#variable-assignment}
 
-A _variable assignment pattern_ falls on the left side of an assignment.
-First, it destructures the matched object. Then it assigns the values to
-_existing_ variables, instead of binding new ones. 
+Um _pattern de atribuição de variável_ fica no lado esquerdo de uma atribuição.
+Primeiro, ele desestrutura o objeto correspondido. Então atribui os valores a
+variáveis _existentes_, em vez de vincular novas.
 
-Use a variable assignment pattern to swap the values of two variables without
-declaring a third temporary one:
+Use um pattern de atribuição de variável para trocar os valores de duas variáveis sem
+declarar uma terceira temporária:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (variable-assignment)"?>
 ```dart
@@ -149,19 +148,19 @@ var (a, b) = ('left', 'right');
 print('$a $b'); // Prints "right left".
 ```
 
-### Switch statements and expressions
+### Switch statements e expressions {:#switch-statements-and-expressions}
 
-Every case clause contains a pattern. This applies to [switch statements][switch]
-and [expressions][], as well as [if-case statements][if].
-You can use [any kind of pattern][types] in a case.
+Toda cláusula case contém um pattern. Isso se aplica a [switch statements][switch]
+e [expressions][], assim como [if-case statements][if].
+Você pode usar [qualquer tipo de pattern][types] em um case.
 
-_Case patterns_ are [refutable][].
-They allow control flow to either:
-- Match and destructure the object being switched on.
-- Continue execution if the object doesn't match.
+_Case patterns_ são [refutáveis][refutable].
+Eles permitem que o fluxo de controle:
+- Corresponda e desestruture o objeto sendo verificado no switch.
+- Continue a execução se o objeto não corresponder.
 
-The values that a pattern destructures in a case become local variables.
-Their scope is only within the body of that case.
+Os valores que um pattern desestrutura em um case se tornam variáveis locais.
+Seu escopo está apenas dentro do corpo desse case.
 
 <?code-excerpt "language/lib/patterns/switch.dart (switch-statement)"?>
 ```dart
@@ -186,8 +185,8 @@ switch (obj) {
 
 <a id="or-pattern-switch"></a>
 
-[Logical-or patterns][logical-or] are useful for having multiple cases share a
-body in switch expressions or statements:
+[Patterns logical-or][logical-or] são úteis para ter múltiplos cases compartilhando um
+corpo em switch expressions ou statements:
 
 <?code-excerpt "language/lib/patterns/switch.dart (or-share-body)"?>
 ```dart
@@ -197,9 +196,9 @@ var isPrimary = switch (color) {
 };
 ```
 
-Switch statements can have multiple cases share a body
-[without using logical-or patterns][share], but they are
-still uniquely useful for allowing multiple cases to share a [guard][]:
+Switch statements podem ter múltiplos cases compartilhando um corpo
+[sem usar patterns logical-or][share], mas eles ainda são
+unicamente úteis por permitirem múltiplos cases compartilharem uma [guard][]:
 
 <?code-excerpt "language/lib/patterns/switch.dart (or-share-guard)"?>
 ```dart
@@ -209,9 +208,9 @@ switch (shape) {
 }
 ```
 
-[Guard clauses][guard] evaluate an arbitrary condition as part of a case, without
-exiting the switch if the condition is false
-(like using an `if` statement in the case body would cause).
+[Cláusulas guard][guard] avaliam uma condição arbitrária como parte de um case, sem
+sair do switch se a condição for falsa
+(como usar um statement `if` no corpo do case causaria).
 
 <?code-excerpt "language/lib/control_flow/branches.dart (guard)"?>
 ```dart
@@ -227,13 +226,13 @@ switch (pair) {
 }
 ```
 
-### For and for-in loops
+### Loops For e for-in {:#for-and-for-in-loops}
 
-You can use patterns in [for and for-in loops][for] to iterate-over and destructure
-values in a collection.
+Você pode usar patterns em [loops for e for-in][for] para iterar sobre e desestruturar
+valores em uma coleção.
 
-This example uses [object destructuring][object] in a for-in loop to destructure
-the [`MapEntry`][] objects that a `<Map>.entries` call returns:
+Este exemplo usa [desestruturação de objeto][object] em um loop for-in para desestruturar
+os objetos [`MapEntry`][] que uma chamada `<Map>.entries` retorna:
 
 <?code-excerpt "language/lib/patterns/for_in.dart (for-in-pattern)"?>
 ```dart
@@ -244,15 +243,15 @@ for (var MapEntry(key: key, value: count) in hist.entries) {
 }
 ```
 
-The object pattern checks that `hist.entries` has the named type `MapEntry`,
-and then recurses into the named field subpatterns `key` and `value`.
-It calls the `key` getter and `value` getter on the `MapEntry` in each iteration,
-and binds the results to local variables `key` and `count`, respectively.
+O pattern object verifica que `hist.entries` tem o tipo nomeado `MapEntry`,
+e então recursa nos subpatterns de campo nomeados `key` e `value`.
+Ele chama o getter `key` e o getter `value` no `MapEntry` em cada iteração,
+e vincula os resultados às variáveis locais `key` e `count`, respectivamente.
 
-Binding the result of a getter call to a variable of the same name is a common
-use case, so object patterns can also infer the getter name from the
-[variable subpattern][variable]. This allows you to simplify the variable pattern
-from something redundant like `key: key` to just `:key`:
+Vincular o resultado de uma chamada de getter a uma variável com o mesmo nome é um
+caso de uso comum, então patterns object também podem inferir o nome do getter do
+[subpattern variable][variable]. Isso permite simplificar o pattern variable
+de algo redundante como `key: key` para apenas `:key`:
 
 <?code-excerpt "language/lib/patterns/for_in.dart (for-in-short)"?>
 ```dart
@@ -261,27 +260,27 @@ for (var MapEntry(:key, value: count) in hist.entries) {
 }
 ```
 
-## Use cases for patterns
+## Casos de uso para patterns {:#use-cases-for-patterns}
 
-The [previous section](#places-patterns-can-appear)
-describes _how_ patterns fit into other Dart code constructs. 
-You saw some interesting use cases as examples, like [swapping](#variable-assignment)
-the values of two variables, or
-[destructuring key-value pairs](#for-and-for-in-loops)
-in a map. This section describes even more use cases, answering:
+A [seção anterior](#places-patterns-can-appear)
+descreve _como_ patterns se encaixam em outros construtos de código Dart.
+Você viu alguns exemplos de casos de uso interessantes, como [trocar](#variable-assignment)
+os valores de duas variáveis, ou
+[desestruturar pares chave-valor](#for-and-for-in-loops)
+em um map. Esta seção descreve ainda mais casos de uso, respondendo:
 
-- _When and why_ you might want to use patterns.
-- What kinds of problems they solve.
-- Which idioms they best suit.
+- _Quando e por que_ você pode querer usar patterns.
+- Que tipos de problemas eles resolvem.
+- Quais idiomas eles se adequam melhor.
 
-### Destructuring multiple returns
+### Desestruturando múltiplos retornos {:#destructuring-multiple-returns}
 
-Records allow aggregating and [returning multiple values][] from a single
-function call. Patterns add the ability to destructure a record's fields
-directly into local variables, inline with the function call.
+Records permitem agregar e [retornar múltiplos valores][] de uma única
+chamada de função. Patterns adicionam a habilidade de desestruturar os campos de um record
+diretamente em variáveis locais, em linha com a chamada de função.
 
-Instead of individually declaring new local variables for each record field,
-like this:
+Em vez de declarar individualmente novas variáveis locais para cada campo do record,
+assim:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-1)"?>
 ```dart
@@ -290,17 +289,17 @@ var name = info.$1;
 var age = info.$2;
 ```
 
-You can destructure the fields of a record that a function returns into local
-variables using a [variable declaration](#variable-declaration) or
-[assigment pattern](#variable-assignment), and a [record pattern][record]
-as its subpattern:
+Você pode desestruturar os campos de um record que uma função retorna em variáveis
+locais usando uma [declaração de variável](#variable-declaration) ou
+[pattern de atribuição](#variable-assignment), e um [pattern record][record]
+como seu subpattern:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-2)"?>
 ```dart
 var (name, age) = userInfo(json);
 ```
 
-To destructure a record with named fields using a pattern:
+Para desestruturar um record com campos nomeados usando um pattern:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-3)"?>
 ```dart
@@ -308,14 +307,14 @@ final (:name, :age) =
     getData(); // For example, return (name: 'doug', age: 25);
 ```
 
-### Destructuring class instances
+### Desestruturando instâncias de classe {:#destructuring-class-instances}
 
-[Object patterns][object] match against named object types, allowing
-you to destructure their data using the getters the object's class already exposes.
+[Patterns object][object] correspondem contra tipos de objeto nomeados, permitindo
+que você desestruture seus dados usando os getters que a classe do objeto já expõe.
 
-To destructure an instance of a class, use the named type, 
-followed by the properties to 
-destructure enclosed in parentheses:
+Para desestruturar uma instância de uma classe, use o tipo nomeado,
+seguido pelas propriedades a
+desestruturar entre parênteses:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-class-instances)"?>
 ```dart
@@ -324,18 +323,18 @@ var Foo(:one, :two) = myFoo;
 print('one $one, two $two');
 ```
 
-### Algebraic data types 
+### Tipos de dados algébricos {:#algebraic-data-types}
 
-Object destructuring and switch cases are conducive to writing
-code in an [algebraic data type][] style.
-Use this method when:
-- You have a family of related types.
-- You have an operation that needs specific behavior for each type.
-- You want to group that behavior in one place instead of spreading it across all
-the different type definitions. 
+Desestruturação de objetos e cases de switch são propícios para escrever
+código em estilo de [tipo de dados algébrico][algebraic data type].
+Use este método quando:
+- Você tem uma família de tipos relacionados.
+- Você tem uma operação que precisa de comportamento específico para cada tipo.
+- Você quer agrupar esse comportamento em um lugar em vez de espalhá-lo por todos
+as diferentes definições de tipo.
 
-Instead of implementing the operation as an instance method for every type,
-keep the operation's variations in a single function that switches over the subtypes:
+Em vez de implementar a operação como um método de instância para cada tipo,
+mantenha as variações da operação em uma única função que faz switch sobre os subtipos:
 
 <?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic-datatypes)"?>
 ```dart
@@ -357,25 +356,25 @@ double calculateArea(Shape shape) => switch (shape) {
 };
 ```
 
-### Validating incoming JSON
+### Validando JSON de entrada {:#validating-incoming-json}
 
-[Map][] and [list][] patterns work well for destructuring key-value pairs in
-deserialized data, such as data parsed from JSON:
+Patterns [map][] e [list][] funcionam bem para desestruturar pares chave-valor em
+dados desserializados, como dados analisados de JSON:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-1)"?>
-```dart 
+```dart
 var data = {
   'user': ['Lily', 13],
 };
 var {'user': [name, age]} = data;
 ```
 
-If you know that the JSON data has the structure you expect,
-the previous example is realistic.
-But data typically comes from an external source, like over the network.
-You need to validate it first to confirm its structure. 
+Se você sabe que os dados JSON têm a estrutura que você espera,
+o exemplo anterior é realista.
+Mas os dados normalmente vêm de uma fonte externa, como pela rede.
+Você precisa validá-los primeiro para confirmar sua estrutura.
 
-Without patterns, validation is verbose:
+Sem patterns, validação é verbosa:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-2)"?>
 ```dart
@@ -394,11 +393,11 @@ if (data is Map<String, Object?> &&
 }
 ```
 
-A single [case pattern](#switch-statements-and-expressions)
-can achieve the same validation.
-Single cases work best as [if-case][if] statements.
-Patterns provide a more declarative, and much less verbose
-method of validating JSON:
+Um único [case pattern](#switch-statements-and-expressions)
+pode alcançar a mesma validação.
+Cases únicos funcionam melhor como [if-case][if] statements.
+Patterns fornecem um método mais declarativo, e muito menos verboso
+de validar JSON:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-3)"?>
 ```dart
@@ -407,14 +406,14 @@ if (data case {'user': [String name, int age]}) {
 }
 ```
 
-This case pattern simultaneously validates that:
+Este case pattern valida simultaneamente que:
 
-- `json` is a map, because it must first match the outer [map pattern][map] to proceed.
-  - And, since it's a map, it also confirms `json` is not null.
-- `json` contains a key `user`.
-- The key `user` pairs with a list of two values.
-- The types of the list values are `String` and `int`.
-- The new local variables to hold the values are `name` and `age`. 
+- `json` é um map, porque ele deve primeiro corresponder ao [pattern map][map] externo para prosseguir.
+  - E, como é um map, também confirma que `json` não é null.
+- `json` contém uma chave `user`.
+- A chave `user` é pareada com uma lista de dois valores.
+- Os tipos dos valores da lista são `String` e `int`.
+- As novas variáveis locais para armazenar os valores são `name` e `age`.
 
 
 [language version]: /resources/language/evolution#language-versioning
@@ -430,7 +429,7 @@ This case pattern simultaneously validates that:
 [collection literals]: /language/collections#control-flow-operators
 [null-assert pattern]: /language/pattern-types#null-assert
 [record]: /language/pattern-types#record
-[returning multiple values]: /language/records#multiple-returns
+[retornar múltiplos valores]: /language/records#multiple-returns
 [refutable]: /resources/glossary#refutable-pattern
 [constant]: /language/pattern-types#constant
 [list]: /language/pattern-types#list
