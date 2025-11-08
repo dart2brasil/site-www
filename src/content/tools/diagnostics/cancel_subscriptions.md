@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: cancel_subscriptions
 description: >-
-  Details about the cancel_subscriptions
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico cancel_subscriptions
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uncancelled instance of 'StreamSubscription'._
+_Instância não cancelada de 'StreamSubscription'._
 
 ## Description
 
-The analyzer produces this diagnostic when an instance of
-`StreamSubscription` is created but the method `cancel` isn't invoked.
+O analisador produz este diagnóstico quando uma instância de
+`StreamSubscription` é criada mas o método `cancel` não é invocado.
 
 ## Example
 
-The following code produces this diagnostic because the `subscription`
-isn't canceled:
+O código a seguir produz este diagnóstico porque a `subscription`
+não foi cancelada:
 
 ```dart
 import 'dart:async';
@@ -41,7 +42,7 @@ void f(Stream stream) {
 
 ## Common fixes
 
-Cancel the subscription:
+Cancele a subscription:
 
 ```dart
 import 'dart:async';
