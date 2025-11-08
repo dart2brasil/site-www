@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 124 files (with ia-translate: true metadata)
+- **Remaining:** ~821 files
+- **Progress:** 13.1%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 69 (66 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 124 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,44 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 12: Diagnostic Errors (extends, extension, final, for, function) - 29 files
+41-69. ✅ All 29 diagnostic error files for extends/extension/final/for/function patterns
+   - extends_non_class.md
+   - extension_as_expression.md
+   - extension_conflicting_static_and_instance.md
+   - extension_declares_abstract_member.md
+   - extension_declares_constructor.md
+   - extension_declares_instance_field.md
+   - extension_declares_member_of_object.md
+   - extension_override_access_to_static_member.md
+   - extension_override_argument_not_assignable.md
+   - extension_override_with_cascade.md
+   - extension_override_without_access.md
+   - extension_type_constructor_with_super_formal_parameter.md
+   - extension_type_constructor_with_super_invocation.md
+   - extension_type_declares_instance_field.md
+   - extension_type_declares_member_of_object.md
+   - extension_type_implements_disallowed_type.md
+   - extension_type_implements_itself.md
+   - extension_type_implements_not_supertype.md
+   - extension_type_implements_representation_not_supertype.md
+   - extension_type_inherited_member_conflict.md
+   - extension_type_representation_depends_on_itself.md
+   - extension_type_representation_type_bottom.md
+   - extension_type_with_abstract_member.md
+   - final_initialized_in_declaration_and_constructor.md
+   - final_not_initialized.md
+   - final_not_initialized_constructor.md
+   - for_in_of_invalid_element_type.md
+   - for_in_of_invalid_type.md
+   - for_in_with_const_variable.md
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 44/~776 files (5.7%)
+- ✅ **Section 12 (20-section plan):** Diagnostic Errors extends/extension/final/for/function (29 files) 🎉
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,12 +133,14 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (69 files this session including merge)
+Progress: 13.1% complete (124/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
 - ✅ Libraries section 100% COMPLETE! 🎉
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
+- ✅ Section 12 (20-section plan) 100% COMPLETE! 🎉
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)
+- ✅ Diagnostic Errors documentation started (29 files from Section 12)

@@ -375,12 +375,16 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 12 (per 20-section-prompts.md):** Diagnostic Errors extends/extension/final/for/function (29/29 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 1-11, 13-20 pending (per this plan)
+
+### Note:
+Section 12 completed per `.claude/20-section-prompts.md` PROMPT 12 which differs from Section 12 in this plan. The 20-section-prompts.md provides more specific groupings for diagnostic errors.
 
 ---
 
