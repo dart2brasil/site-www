@@ -249,7 +249,7 @@ tornando essas classes imutáveis (sem alterações)
 and making it possible to create instances of
 those classes como constantes de tempo de compilação.
 Para mais informações, confira
-[const construtores](#const-construtores).
+[const construtores](#const-constructors).
 
 ## Tipos integrados {:#built-in-types}
 Dart includes a number of types no platform
