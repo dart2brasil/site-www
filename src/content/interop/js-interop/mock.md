@@ -1,22 +1,23 @@
 ---
-title: How to mock JavaScript interop objects
-shortTitle: Mock JS interop objects
-description: Learn how to mock JS interop objects in Dart for testing.
+title: Como fazer mock de objetos de interop JavaScript
+shortTitle: Mock de objetos JS interop
+description: Aprenda como fazer mock de objetos JS interop em Dart para testes.
+ia-translate: true
 ---
 
-In this tutorial, you'll learn how to mock JS objects so that you can test
-interop instance members without having to use a real implementation.
+Neste tutorial, você aprenderá como fazer mock de objetos JS para que possa testar
+membros de instância interop sem precisar usar uma implementação real.
 
-## Background and motivation
+## Contexto e motivação
 
-Mocking classes in Dart is usually done through overriding instance members.
-However, since [extension types] are used to declare interop types, all
-extension type members are dispatched statically and therefore overriding can't
-be used. This [limitation is true for extension members] as well, and therefore
-instance extension type or extension members can't be mocked.
+Fazer mock de classes em Dart geralmente é feito através de sobrescrita de membros de instância.
+No entanto, como [extension types] são usados para declarar tipos interop, todos os
+membros de extension type são despachados estaticamente e, portanto, a sobrescrita não pode
+ser usada. Essa [limitação também é verdadeira para membros de extension][limitation is true for extension members], e portanto
+membros de extension type ou extension de instância não podem ter mock feito.
 
-While this applies to any non-`external` extension type member, `external`
-interop members are special as they invoke members on a JS value.
+Embora isso se aplique a qualquer membro de extension type não-`external`, membros
+interop `external` são especiais, pois invocam membros em um valor JS.
 
 ```dart
 extension type Date(JSObject _) implements JSObject {
@@ -24,27 +25,27 @@ extension type Date(JSObject _) implements JSObject {
 }
 ```
 
-As discussed in the [Usage] section, calling `getDay()` will result in calling
-`getDay()` on the JS object. Therefore, by using a different `JSObject`, a
-different *implementation* of `getDay` can be called.
+Como discutido na seção [Uso][Usage], chamar `getDay()` resultará em chamar
+`getDay()` no objeto JS. Portanto, ao usar um `JSObject` diferente, uma
+*implementação* diferente de `getDay` pode ser chamada.
 
-In order to do this, there should be some mechanism of creating a JS object that
-has a property `getDay` which when called, calls a Dart function. A simple way
-is to create a JS object and set the property `getDay` to a converted callback
-e.g.
+Para fazer isso, deve haver algum mecanismo de criar um objeto JS que
+tenha uma propriedade `getDay` que quando chamada, chame uma função Dart. Uma maneira simples
+é criar um objeto JS e definir a propriedade `getDay` para um callback convertido
+por exemplo
 
 ```dart
 final date = Date(JSObject());
 date['getDay'] = (() => 0).toJS;
 ```
 
-While this works, this is prone to error and doesn't scale well when you are
-using many interop members. It also doesn't handle getters or setters properly.
-Instead, you should use a combination of [`createJSInteropWrapper`] and
-[`@JSExport`] to declare a type that provides an implementation for all the
-`external` instance members.
+Embora isso funcione, é propenso a erros e não escala bem quando você está
+usando muitos membros interop. Também não lida com getters ou setters adequadamente.
+Em vez disso, você deve usar uma combinação de [`createJSInteropWrapper`] e
+[`@JSExport`] para declarar um tipo que fornece uma implementação para todos os
+membros de instância `external`.
 
-## Mocking example
+## Exemplo de mocking
 
 ```dart
 import 'dart:js_interop';
@@ -95,23 +96,23 @@ void main() {
 }
 ```
 
-## [`@JSExport`] and [`createJSInteropWrapper`]
+## [`@JSExport`] e [`createJSInteropWrapper`]
 
-`@JSExport` allows you to declare a class that can be used in
-`createJSInteropWrapper`. `createJSInteropWrapper` will create an object literal
-that maps each of the class' instance member names (or renames) to a JS
-callback, which is created using [`Function.toJS`]. When called, the JS callback
-will in turn call the instance member. In the above example, getting and setting
-`counter.value` gets and sets `fakeCounter.value`.
+`@JSExport` permite que você declare uma classe que pode ser usada em
+`createJSInteropWrapper`. `createJSInteropWrapper` criará um object literal
+que mapeia cada um dos nomes de membros de instância da classe (ou renomeações) para um
+callback JS, que é criado usando [`Function.toJS`]. Quando chamado, o callback JS
+por sua vez chamará o membro de instância. No exemplo acima, obter e definir
+`counter.value` obtém e define `fakeCounter.value`.
 
-You can specify only some members of a class to be exported by omitting the
-annotation from the class and instead only annotate the specific members. You
-can see more specifics on more specialized exporting (including inheritance) in
-the documentation of [`@JSExport`].
+Você pode especificar apenas alguns membros de uma classe para serem exportados omitindo a
+anotação da classe e em vez disso anotar apenas os membros específicos. Você
+pode ver mais especificidades sobre exportação mais especializada (incluindo herança) na
+documentação de [`@JSExport`].
 
-Note that this mechanism isn't specific to testing only. You can use this to
-provide a JS interface for an arbitrary Dart object, allowing you to essentially
-*export* Dart objects to JS with a predefined interface.
+Note que este mecanismo não é específico apenas para testes. Você pode usar isso para
+fornecer uma interface JS para um objeto Dart arbitrário, permitindo que você essencialmente
+*exporte* objetos Dart para JS com uma interface predefinida.
 
 {% comment %}
 TODO: Should we add a section on general testing? We can't really mock

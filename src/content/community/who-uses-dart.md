@@ -1,35 +1,36 @@
 ---
-title: Who uses Dart
+ia-translate: true
+title: Quem usa Dart
 description: >-
-  Mobile and web apps are two of
-  the most common uses for the Dart language.
-  Learn about and try some examples
-  of where Dart is used.
+  Aplicações mobile e web são dois dos
+  usos mais comuns para a linguagem Dart.
+  Aprenda sobre e experimente alguns exemplos
+  de onde Dart é usado.
 showToc: false
 ---
 
 ## Flutter
 
-The popular [Flutter toolkit][] is powered by the
-Dart language, runtimes, tooling, and libraries.
-Over _one million_ Flutter apps for Android,
-iOS, the web, and other targets, are all Dart-based.
+O popular [Flutter toolkit][] é alimentado pela
+linguagem Dart, runtimes, ferramentas e bibliotecas.
+Mais de _um milhão_ de aplicações Flutter para Android,
+iOS, web e outros alvos, são todas baseadas em Dart.
 
-The [Flutter showcase][] features popular Flutter apps, including:
+O [Flutter showcase][] apresenta aplicações Flutter populares, incluindo:
 
 * [BMW][]
-    > "The BMW Group is establishing itself as a leading automotive app developer
-    and provider with a Flutter architecture developed 100% in-house."
-* [Sonos][]: 
-    > "...If setup is the “grand entryway” to the Sonos ecosystem, Flutter forms
-    its elegant façade..."
-* [Alibaba][]: 
-    > "When the Xianyu team was challenged to improve their user experience by
-    developing an app that was consistent across platforms, had beautiful graphics,
-    and still loaded fast, they turned to Flutter."
-* [PUBG][]: 
-    > "When the PUBG MOBILE team wanted to add a community module to allow players
-    from all over the world to share gameplay clips and more, they turned to Flutter."
+    > "O BMW Group está se estabelecendo como um desenvolvedor e provedor líder de aplicações automotivas
+    com uma arquitetura Flutter desenvolvida 100% internamente."
+* [Sonos][]:
+    > "...Se a configuração é a "grande entrada" para o ecossistema Sonos, Flutter forma
+    sua fachada elegante..."
+* [Alibaba][]:
+    > "Quando a equipe Xianyu foi desafiada a melhorar sua experiência do usuário
+    desenvolvendo uma aplicação consistente entre plataformas, com gráficos bonitos
+    e que ainda carregasse rápido, eles recorreram ao Flutter."
+* [PUBG][]:
+    > "Quando a equipe PUBG MOBILE quis adicionar um módulo de comunidade para permitir que jogadores
+    de todo o mundo compartilhassem clipes de gameplay e mais, eles recorreram ao Flutter."
 
 [Flutter toolkit]: {{site.flutter}}
 [Flutter showcase]: {{site.flutter}}/showcase
@@ -38,20 +39,20 @@ The [Flutter showcase][] features popular Flutter apps, including:
 [Alibaba]: {{site.flutter}}/showcase/alibaba-group
 [PUBG]: {{site.flutter}}/showcase/pubg-mobile
 
-## Google 
+## Google
 
-Dart is used in almost every product group at Google:
+Dart é usado em quase todos os grupos de produtos do Google:
 
-* The [Google Play Console][] lets app publishers market Android apps, and
-  is written completely in Dart.
-* The [Google Ads][] team continues to grow, with
-  hundreds of SWEs primarily writing Dart code.
-* The [Google Assistant][] team uses Flutter and Dart to
-  drive the overall system UI of their Smart Displays.
-* Both the UI and much of the back-end code for the
-  [Google Nest Hub][] and Hub Max devices are written in Dart.
-* The list goes on, with many more Google applications
-  made using Dart and Flutter:
+* O [Google Play Console][] permite que publicadores de aplicações comercializem aplicações Android, e
+  é escrito completamente em Dart.
+* A equipe do [Google Ads][] continua crescendo, com
+  centenas de SWEs escrevendo principalmente código Dart.
+* A equipe do [Google Assistant][] usa Flutter e Dart para
+  conduzir a UI geral do sistema de seus Smart Displays.
+* Tanto a UI quanto grande parte do código de back-end para os
+  dispositivos [Google Nest Hub][] e Hub Max são escritos em Dart.
+* A lista continua, com muitas outras aplicações Google
+  feitas usando Dart e Flutter:
 
   * [Google Pay][]
   * [Google One][]
@@ -61,9 +62,9 @@ Dart is used in almost every product group at Google:
   * [Cloud Search][]
   * [Family Link][]
 
-Several other Google teams are currently rewriting their projects in Flutter.
-In all, Google has thousands of developers
-writing millions of lines of code in Dart.
+Várias outras equipes do Google estão atualmente reescrevendo seus projetos em Flutter.
+No total, o Google tem milhares de desenvolvedores
+escrevendo milhões de linhas de código em Dart.
 
 [Google Play Console]: https://android-developers.googleblog.com/2020/06/introducing-new-google-play-console-beta.html
 [Google Ads]: https://ads.google.com/getstarted
@@ -77,20 +78,20 @@ writing millions of lines of code in Dart.
 [Google One]: https://one.google.com/about
 [Cloud Search]: https://workspace.google.com/intl/en_in/products/cloud-search
 
-## Community
+## Comunidade
 
-Beyond Google and Flutter, many companies use Dart
-for building their applications:
+Além do Google e Flutter, muitas empresas usam Dart
+para construir suas aplicações:
 
-* [Workiva's][] next-generation client applications for
-  their productivity suite are built with Dart.
-* [Wrike][] uses the [AngularDart][] framework to
-  develop project management tools.
-* [Blossom][] is an agile project management tool built with Dart.
-* And many more!
+* As aplicações cliente de próxima geração da [Workiva's][] para
+  sua suíte de produtividade são construídas com Dart.
+* [Wrike][] usa o framework [AngularDart][] para
+  desenvolver ferramentas de gerenciamento de projetos.
+* [Blossom][] é uma ferramenta de gerenciamento de projetos ágil construída com Dart.
+* E muitas mais!
 
-If you build production software with Dart and want to be included in this list,
-please visit [our site's GitHub][] to open an issue or pull request, thanks!
+Se você constrói software em produção com Dart e quer ser incluído nesta lista,
+por favor visite [o GitHub do nosso site][our site's GitHub] para abrir uma issue ou pull request, obrigado!
 
 [Workiva's]: https://www.workiva.com/en-in
 [Wrike]: https://www.wrike.com
