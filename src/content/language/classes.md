@@ -323,7 +323,7 @@ Esta página segue a
 de preferir `lowerCamelCase` para nomes de constantes.
 :::
 
-### Métodos static
+### Métodos static {:#static-methods}
 
 Métodos static (métodos de classe) não operam em uma instância e, portanto,
 não têm acesso a `this`.
