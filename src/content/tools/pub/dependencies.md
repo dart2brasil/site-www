@@ -53,7 +53,7 @@ dependencies:
 
 A próxima seção descreve o formato para cada fonte de dependência.
 
-## Fontes de dependências
+## Fontes de dependências {:#dependency-sources}
 
 O pub pode usar as seguintes fontes para localizar pacotes:
 
@@ -62,7 +62,7 @@ O pub pode usar as seguintes fontes para localizar pacotes:
 * [Pacotes Git](#git-packages)
 * [Pacotes de caminho](#path-packages)
 
-### Pacotes hospedados
+### Pacotes hospedados {:#hosted-packages}
 
 Um pacote _hospedado_ é aquele que pode ser baixado do site pub.dev
 (ou outro servidor HTTP que fala a mesma API). Aqui está um exemplo
@@ -126,7 +126,7 @@ dependencies:
 
 [SDK version]: /resources/language/evolution#language-versioning
 
-### Pacotes Git
+### Pacotes Git {:#git-packages}
 
 Às vezes você está na vanguarda e precisa usar pacotes que
 ainda não foram formalmente lançados. Talvez o seu próprio pacote ainda esteja em
@@ -216,7 +216,7 @@ O caminho é relativo à raiz do repositório Git.
 Dependências Git não são permitidas como dependências
 para pacotes enviados para [pub.dev][pubsite].
 
-### Pacotes de caminho
+### Pacotes de caminho {:#path-packages}
 
 Às vezes você se encontra trabalhando em vários pacotes relacionados ao mesmo
 tempo. Talvez você esteja criando um framework enquanto constrói um app que o usa.
@@ -276,7 +276,7 @@ Se for `flutter`, a dependência é satisfatória desde que:
 
 Se for um identificador desconhecido, a dependência é sempre considerada não satisfeita.
 
-## Restrições de versão
+## Restrições de versão {:#version-constraints}
 
 Digamos que o seu Pacote A depende do Pacote B.
 Como você pode comunicar a outros desenvolvedores qual versão do Pacote B
@@ -343,7 +343,7 @@ Isso evita que o YAML interprete o caractere como sintaxe YAML.
 Por exemplo: nunca use `>=1.2.3 <2.0.0`. Use `'>=1.2.3 <2.0.0'` ou `^1.2.3`.
 :::
 
-### Sintaxe de circunflexo
+### Sintaxe de circunflexo {:#caret-syntax}
 
 A sintaxe de circunflexo expressa a restrição de versão de forma compacta.
 `^version` significa _a faixa de todas as versões garantidas de serem retrocompatíveis
@@ -372,7 +372,7 @@ dependencies:
   string_scanner: ^0.1.2
 ```
 
-## Dependências de desenvolvimento
+## Dependências de desenvolvimento {:#dev-dependencies}
 
 O pub suporta dois tipos de dependências: dependências regulares e _dependências
 de desenvolvimento._ Dependências de desenvolvimento diferem de dependências regulares no fato de que _dependências
@@ -403,7 +403,7 @@ Usar dependências de desenvolvimento torna os grafos de dependências menores. 
 mais rápido, e torna mais fácil encontrar um conjunto de versões de pacotes que satisfaz todas
 as restrições.
 
-## Sobrescrição de dependências
+## Sobrescrição de dependências {:#dependency-overrides}
 
 Você pode usar `dependency_overrides` para sobrescrever temporariamente todas as referências
 a uma dependência.
@@ -486,7 +486,7 @@ Também pode facilitar a geração de sobrescrições a partir de um script.
 Em um [workspace do pub][workspaces], cada pacote do workspace
 pode ter um arquivo `pubspec_overrides.yaml`.
 
-## Melhores práticas
+## Melhores práticas {:#best-practices}
 
 Seja proativo no gerenciamento de suas dependências.
 Certifique-se de que seus pacotes dependam das versões mais recentes de pacotes
@@ -544,7 +544,7 @@ Se você modificar o pubspec e atualizar para uma nova versão principal,
 então você pode encontrar mudanças incompatíveis,
 então você precisa testar ainda mais completamente.
 
-### Teste com dependências rebaixadas
+### Teste com dependências rebaixadas {:#test-with-downgraded-dependencies}
 
 Ao desenvolver pacotes para publicação, geralmente é preferível
 permitir as restrições de dependência mais amplas possíveis.

@@ -188,13 +188,13 @@ Change all calls to `sayHello()` to instead be to `sayHi()`.
 ```
 
 
-## Diretórios públicos
+## Diretórios públicos {:#public-directories}
 
 Dois diretórios no seu pacote são públicos para outros pacotes: `lib` e
 `bin`. Você coloca [bibliotecas públicas](#public-libraries) em `lib` e
 [ferramentas públicas](#public-tools) em `bin`.
 
-### Bibliotecas públicas
+### Bibliotecas públicas {:#public-libraries}
 
 A seguinte estrutura de diretórios mostra a porção `lib` de enchilada:
 
@@ -257,7 +257,7 @@ Além disso, evite importações de <code>package:<em>package_name</em>/src/...<
 Para mais informações sobre pacotes, veja
 [Criando pacotes](/tools/pub/create-packages).
 
-### Ferramentas públicas
+### Ferramentas públicas {:#public-tools}
 
 Scripts Dart colocados dentro do diretório `bin` são públicos. Se você está
 dentro do diretório de um pacote, você pode usar
@@ -277,7 +277,7 @@ Se você não pretende que seu pacote seja dependido, você pode deixar seus
 scripts em `bin`.
 
 
-## Assets públicos
+## Assets públicos {:#public-assets}
 
 ```plaintext
 enchilada/
@@ -294,7 +294,7 @@ Esses vão no diretório de nível superior `lib`. Você pode colocar qualquer t
 lá e organizá-lo com subdiretórios como quiser.
 
 
-## Arquivos de implementação
+## Arquivos de implementação {:#implementation-files}
 
 ```plaintext
 enchilada/
@@ -442,7 +442,7 @@ Além do `api` gerado, não
 temos diretrizes sobre formato ou organização da documentação
 que você criar. Use qualquer formato de marcação que você preferir.
 
-## Exemplos
+## Exemplos {:#examples}
 
 ```plaintext
 enchilada/
@@ -524,7 +524,7 @@ consulte a documentação de [build hooks][].
 
 [build hooks]: /tools/hooks
 
-## Caching específico de projeto para ferramentas
+## Caching específico de projeto para ferramentas {:#project-specific-caching-for-tools}
 
 :::note
 Não faça check-in do diretório `.dart_tool/` no controle de versão.
