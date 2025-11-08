@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Books about Dart
 shortTitle: Books
 description: Read all about it! Here's a collection of books about Dart.
