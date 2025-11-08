@@ -1,10 +1,14 @@
 ---
+ia-translate: true
 title: Learning Dart as a Swift developer
 description: Leverage your Swift knowledge when learning Dart.
 bodyClass: highlight-languages
 showBreadcrumbs: false
 lastVerified: 2022-12-13
 ---
+
+<!-- ia-translate: true -->
+
 
 This guide aims to leverage your Swift programming
 knowledge when learning Dart. It showcases key
@@ -27,7 +31,7 @@ Like Swift, Dart offers AOT (ahead-of-time) compilation.
 However, Dart also supports a JIT (just-in-time)
 compilation mode to aid with various development aspects,
 such as incremental recompilation or debugging.
-For more information, check out the [Dart overview][].
+Para mais informações, confira the [Dart overview][].
 
 [Dart overview]: /overview#native-platform
 
@@ -68,32 +72,32 @@ or through the IDE.
 :::tip
 Dart supports optional trailing
 commas for any comma-separated values,
-such as function parameters or list items.
+such as function parameters or lista items.
 This forces the formatter to place each item
 onto its own line, which helps with readability,
 especially when you have a lot of nested code
 (as can happen in Flutter layout code).
 
-For more information on using commas to make
-your code more readable, check out
+Para mais informações on using commas to make
+your code more readable, confira
 [Using trailing commas][] on docs.flutter.dev.
 :::
 
 [Using trailing commas]: {{site.flutter-docs}}/development/tools/formatting#using-trailing-commas
 
-For more information about Dart conventions and linting,
-check out [Effective Dart][] and [Linter rules][]. 
+Para mais informações about Dart conventions and linting,
+confira [Effective Dart][] and [Linter rules][]. 
 
 [Effective Dart]: /effective-dart
 [Linter rules]: /tools/linter-rules
 
 ## Variables
 
-Declaring and initializing variables in Dart
-is a bit different when compared to Swift.
-A variable declaration always begins with the
+Declarar e inicializar variáveis in Dart
+é um pouco diferente quando comparado ao Swift.
+A variable declaration sempre começa com o
 variable's type, the `var` keyword, or the `final` keyword.
-As in Swift, Dart supports type inference where the
+Como no Swift, Dart suporta type inference where the
 compiler infers the type based on the value assigned
 to the variable:
 
@@ -112,11 +116,11 @@ var name = 'Bob';
 final name = 'Bob';
 ```
 
-Each Dart statement ends with a semicolon to
+Cada declaração Dart termina com um ponto e vírgula to
 indicate the end of the statement.
-You can replace `var` in Dart with an explicit type.
-However, by convention, [`var` is recommended
-when the analyzer can implicitly infer the type][inference].
+Você pode substituir `var` in Dart com um tipo explícito.
+No entanto, por convenção, [`var` is recommended
+when o analisador pode inferir implicitamente o tipo][inference].
 
 [inference]: /effective-dart/design#types
 
@@ -130,7 +134,7 @@ var name = 'bob';
 ```
 
 The Swift equivalent of the above Dart code
-would look as follows:
+ficaria assim:
 
 ```swift
 // Declare a variable first: 
@@ -142,35 +146,35 @@ name = "bob"
 var name = "bob"
 ```
 
-In Dart, when a variable without an explicit type
-is initialized after its declaration,
-its type is inferred as the catch-all `dynamic` type.
-Likewise, when a type cannot be automatically inferred,
-it defaults to the `dynamic` type,
-**which removes all type-safety**.
-Therefore, the Dart linter discourages this by
+In Dart, quando uma variável sem tipo explícito
+é inicializada após sua declaração,
+seu tipo é inferido como o tipo genérico `dynamic` type.
+Da mesma forma, quando um tipo não pode ser automaticamente inferido,
+ele é padronizado para o tipo `dynamic` type,
+**o que remove toda a segurança de tipo**.
+Portanto, o linter Dart desencoraja isso by
 generating a warning. If you _intend_ to allow a
 variable to have any type, it's preferred to
-assign it to `Object?` rather than `dynamic`.
+assign it to `Object?` em vez de `dynamic`.
 
-For more information, check out the
-[Variables section][] in the Dart language tour.
+Para mais informações, confira the
+[seção Variables][] no tour da linguagem Dart.
 
-[Variables section]: /language/variables
+[seção Variables]: /language/variables
 
 ### Final
 
 The `final` keyword in Dart indicates that a
 variable can be set only once. This is similar
-to the `let` keyword in Swift. 
+to the `let` palavra-chave no Swift. 
 
-In both Dart and Swift, you can only initialize a
-`final` variable once, either in the declaration
-statement or in the initializer list.
-Any attempt to assign a value a second time results
-in a compile-time error. Both of the following code
-snippets are valid, but subsequently setting `name`
-results in compilation errors.
+Tanto no Dart quanto no Swift, você só pode inicializar uma
+`final` variável uma vez, either no declaration
+statement or no initializer lista.
+Qualquer tentativa de atribuir um valor uma segunda vez results
+in a compile-time error. Both of o seguinte code
+snippets are valid, mas definir posteriormente `name`
+resulta em erros de compilação.
 
 ```dart
 final String name;
@@ -219,36 +223,36 @@ constant values:
 ```dart
 var foo = const ['one', 'two', 'three'];
 foo.add('four'); // Error: foo contains a constant value.
-foo = ['apple', 'pear']; // This is allowed as foo itself isn't constant.
+foo = ['apple', 'pear']; // This is allowed as foo itself não é constante.
 foo.add('orange'); // Allowed as foo no longer contains a constant value.
 ```
 
-In the above example, you can't change the `const` value
-(add, update, or remove the elements in the given list),
-but you can assign a new value to `foo`.
-After `foo` is assigned a new (non-constant) list,
-you _can_ add, update, or remove the contents of the list. 
+No exemplo acima, você não pode alterar o `const` value
+(adicionar, atualizar ou remover os elementos no given lista),
+mas você pode atribuir um novo valor a `foo`.
+Depois que `foo` recebe uma nova (não constante) lista,
+you _can_ add, update, or remove the contents of the lista. 
 
-You can also assign a constant value to a `final` field.
-You can't use the `final` field in a constant context,
-but you can use the constant. For example:
+Você também pode atribuir um valor constante a um `final` campo.
+Você não pode usar o `final` campo em um contexto constante,
+mas você pode usar a constante. Por exemplo:
 
 ```dart
 final foo1 = const [1, 2, 3];
 const foo2 = [1, 2, 3]; // Equivalent to `const [1, 2, 3]`
 const bar2 = foo2; // OK
-const bar1 = foo1; // Compile-time error, `foo1` isn't constant
+const bar1 = foo1; // Erro de tempo de compilação, `foo1` não é constante
 ```
 
-You can also define `const` constructors,
-making those classes immutable (unchanging)
+Você também pode definir `const` construtores,
+tornando essas classes imutáveis (sem alterações)
 and making it possible to create instances of
-those classes as compile-time constants.
-For more information, check out
-[const constructors](#const-constructors).
+those classes como constantes de tempo de compilação.
+Para mais informações, confira
+[const construtores](#const-constructors).
 
-## Built-in types
-Dart includes a number of types in the platform
+## Tipos integrados {:#built-in-types}
+Dart includes a number of types no platform
 libraries, such as:
 
 * Basic value types like
@@ -261,10 +265,10 @@ libraries, such as:
   * Sets (`Set`)
   * Maps/dictionaries (`Map`)
 
-For more information, check out [Built-in types][]
-in the Dart language tour.
+Para mais informações, confira [Tipos integrados][]
+no tour da linguagem Dart.
 
-[Built-in types]: /language/built-in-types
+[Tipos integrados]: /language/built-in-types
 
 ### Numbers
 
@@ -285,7 +289,7 @@ Dart defines three numeric types for holding numbers:
 Unlike Swift, there are no specific types for
 unsigned integers.
 
-All these types are also classes in the Dart API.
+All these types are also classes no Dart API.
 Both the `int` and `double` types share `num`
 as their parent class:
 
@@ -317,7 +321,7 @@ var doubleVariable: Double = Double(intVariable)
 
 In the case of literal values,
 Dart automatically converts the integer literal
-into a `double` value. The following code
+into a `double` value. O seguinte code
 is perfectly fine:
 
 ```dart
@@ -369,7 +373,7 @@ to Swift (and most other languages).
 To include special characters escape them
 using the backslash character.
 
-The following code shows some examples:
+O seguinte code shows some examples:
 
 ```dart
 final singleQuotes = 'I\'m learning Dart'; // I'm learning Dart
@@ -380,16 +384,16 @@ final unicode = '\u{1F60E}'; // 😎,  Unicode scalar U+1F60E
 Note that 4-digit hexadecimal values can also
 be used directly (for example, `\u2665`),
 however, curly braces also work.
-For more information on working with
-unicode characters, check out
+Para mais informações on working with
+unicode characters, confira
 [Runes and grapheme clusters][]
-in the Dart language tour.
+no tour da linguagem Dart.
 
 [Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
 
 #### String concatenation and multiline declaration
 
-In both Dart and Swift,
+Tanto no Dart quanto no Swift,
 you can escape the line breaks in a multiline string,
 which allows you to keep your source code easier
 to read but still output the `String` in a single line.
@@ -457,9 +461,9 @@ let c = "Swift has \(s), which is very handy."
 
 As in Swift, you can define raw strings in Dart.
 A raw string ignores the escape character and
-includes any special characters present in the string.
+includes any special characters present no string.
 You can do this in Dart by prefixing the string literal
-with the letter `r`, as shown in the following example.
+with the letter `r`, as shown no following example.
 
 ```dart
 // Include the \n characters.
@@ -489,7 +493,7 @@ let s2 = #"""
 
 As in Swift, Dart's equality operator (`==`)
 compares whether two strings are equal.
-Two strings are equal if they contain the same
+Two strings are equal if they contano same
 sequence of code units.
 
 ```dart
@@ -504,12 +508,12 @@ assert(s1 ==
 #### Commonly used API
 
 Dart offers several common API for strings.
-For example, both Dart and Swift allow you
+Por exemplo, both Dart and Swift allow you
 to check if a string is empty with `isEmpty`.
 There are other convenience methods,
 such as `toUpperCase` and `toLowerCase`.
-For more information,
-check out [Strings][] in the Dart language tour. 
+Para mais informações,
+confira [Strings][] no tour da linguagem Dart. 
 
 [Strings]: /language/built-in-types#strings
 
@@ -518,7 +522,7 @@ check out [Strings][] in the Dart language tour.
 Booleans represent a binary value in both Dart
 (`bool`) and Swift (`Bool`).
 
-### Null safety
+### Null safety {:#null-safety}
 
 Dart enforces sound null safety.
 By default, types don't allow a null value unless marked as nullable.
@@ -549,7 +553,7 @@ Dart also offers the null assignment operator (`??=`),
 which Swift doesn't.
 If a variable with a nullable type has a current value of `null`,
 this operator assigns a value to that variable.
-Expressed as `a ??= b;`, it serves as shorthand for the following:
+Expressed as `a ??= b;`, it serves as shorthand for o seguinte:
 
 ```dart
 a = a ?? b;
@@ -595,18 +599,18 @@ myObject!.someMethod();
 If `myObject` is `null` at runtime,
 a runtime error occurs.
 
-### Late fields 
+### Late campos 
 
-The `late` keyword can be assigned to class fields
+The `late` keyword can be assigned to class campos
 to indicate they are initialized at a later point,
 while remaining non-nullable. This is similar to Swift's
 "implicitly unwrapped optionals."
 This is useful for cases where a variable is
 never observed before being initialized,
 allowing it to be initialized later.
-A non-nullable `late` field can't have null
+A non-nullable `late` campo can't have null
 assigned at a later point. Also,
-a non-nullable `late` field throws a runtime error
+a non-nullable `late` campo throws a runtime error
 when observed before being initialized,
 a scenario you want to avoid in a well-behaved app.
 
@@ -638,8 +642,8 @@ class Weather {
 ```
 
 In this case, `_readThermometer()` is only run
-when the field is first accessed,
-rather than on initialization. 
+when the campo is first accessed,
+em vez de on initialization. 
 
 Another advantage in Dart is using the `late`
 keyword to delay initialization of `final` variables.
@@ -660,7 +664,7 @@ a = 2; // Throws a runtime exception because
 Swift uses the `main.swift` file as an app's
 entry point. Dart uses the `main` function
 as an app's entry point. Every program must
-have a `main` function to be executable. For example:
+have a `main` function to be executable. Por exemplo:
 
 ```dart
 void main() {
@@ -678,10 +682,10 @@ Dart doesn't support `Tuples` (though there are
 [several tuple packages][] available on pub.dev).
 In the case that a function needs to return
 multiple values, you can wrap them in a collection,
-like a list, set, or map,
+like a lista, set, or map,
 or you can write a wrapper class where an instance
 can be returned that contains these values.
-More on this can be found in the sections on
+More on this can be found no sections on
 [collections](#collections) and [classes](#classes).
 
 [several tuple packages]: {{site.pub-pkg}}?q=tuples
@@ -695,7 +699,7 @@ or system failures like stack overflow.
 Dart errors aren't supposed to be caught.
 On the other hand, Dart _exceptions_ represent
 a recoverable failure, and are intended to be caught.
-For example, at runtime the code might try to access
+Por exemplo, at runtime the code might try to access
 a streaming feed, but instead receives an exception which,
 if not caught, results in termination of the app.
 You can manage exceptions in Dart by wrapping the
@@ -719,7 +723,7 @@ catch {
 ```
 
 Similarly, Swift uses a `do-try-catch` block.
-For example:
+Por exemplo:
 
 ```swift
 do {
@@ -737,7 +741,7 @@ catch {
 
 You can use the `try-catch` block in both
 synchronous and asynchronous Dart code.
-For more information,
+Para mais informações,
 see the docs for the [`Error`][errors] and
 [`Exception`][exceptions] classes.
 
@@ -788,13 +792,13 @@ func multiply(_ a: Int, _ b: Int, c: Int = 1, d: Int = 1) -> Int {
 }
 ```
 
-Named parameters must include one of the following:
+Named parameters must include one of o seguinte:
 
 * A default value
 * A `?` at the end of the type to set the type as nullable
 * The keyword `required` before the variable type
 
-To learn more about nullable types, check out [null safety](#null-safety).
+Para aprender mais about nullable types, confira [null safety](#null-safety).
 
 To mark a named parameter as required in Dart,
 you must prefix it with the `required` keyword:
@@ -811,7 +815,7 @@ A third parameter type is the _optional
 positional parameter_. As the name suggests,
 these are similar to the default positional parameters,
 but they can be omitted when calling the function.
-They must be listed after any required positional
+They must be listaed after any required positional
 parameters and can't be used in conjunction
 with named parameters.
 
@@ -840,7 +844,7 @@ must have either a default value or a nullable type.
 As in Swift, Dart functions are also
 [first class citizens][],
 which means they're treated as any other object.
-For example, the following code shows how to
+Por exemplo, o seguinte code shows how to
 return a function from a function:
 
 [first class citizens]: https://en.wikipedia.org/wiki/First-class_citizen
@@ -880,7 +884,7 @@ print(multiplyByTwo(3)) // 6
 identically to closures in Swift,
 save for a difference in syntax. As with named functions,
 you can pass anonymous functions like any other value.
-For example, you can store anonymous functions in a variable,
+Por exemplo, you can store anonymous functions in a variable,
 pass them as an argument to another function,
 or return them from another function.
 
@@ -900,8 +904,8 @@ needs a return statement for any value to be returned.
 ```
 
 :::note
-As the map function used in the example returns
-an `Iterable<T`> rather than a `List<T>`,
+As the map function used no example returns
+an `Iterable<T`> em vez de a `List<T>`,
 the `toList` function needs to be called on
 the returned `Iterator` to turn it back into a `List`. 
 :::
@@ -946,18 +950,18 @@ or add whole collections of items using `yield*`.
 
 [_generator functions_]: /language/functions#generators
 
-The following example shows how to write a basic
+O seguinte example shows how to write a basic
 generator function:
 
 ```dart
-Iterable<int> listNumbers(int n) sync* {
+Iterable<int> listaNumbers(int n) sync* {
   int k = 0;
   while (k < n) yield k++;
 }
 
 // Returns an `Iterable<int>` that iterates
 // through 0, 1, 2, 3, and 4.
-print(listNumbers(5));
+print(listaNumbers(5));
 
 Iterable<int> doubleNumbersTo(int n) sync* {
   int k = 0;
@@ -971,9 +975,9 @@ print(doubleNumbersTo(3)); // Returns an iterable with [0, 0], [1, 1], and [2, 2
 ```
 
 This is an example of a **synchronous** generator function.
-You can also define **asynchronous** generator functions,
+Você também pode definir **asynchronous** generator functions,
 which return streams instead of iterables.
-Learn more in the [Concurrency](#concurrency) section.
+Learn more no [Concurrency](#concurrency) section.
 
 ## Statements 
 
@@ -1033,11 +1037,11 @@ in addition to `for-in` that loops over collections.
 
 Dart's `for-in` loop works like its Swift counterpart,
 and it can loop over any value that is an `Iterable`,
-as in the `List` example below:
+as no `List` example below:
 
 ```dart
-var list = [0, 1, 2, 3, 4];
-for (var i in list) {
+var lista = [0, 1, 2, 3, 4];
+for (var i in lista) {
   print(i);
 }
 ```
@@ -1084,7 +1088,7 @@ for (key, value) in dict {
 Unlike Swift, Dart doesn't allow the addition
 of new operators, but it does allow you to overload
 existing operators with the operator keyword.
-For example:
+Por exemplo:
 
 ```dart
 class Vector {
@@ -1129,7 +1133,7 @@ On the web, an `integer` is also a `double`
 (because all numbers are),
 but on the VM it's a pure floored `int 2`.
 (_Floored_ meaning that the result is truncated
-and not rounded.) For example:
+and not rounded.) Por exemplo:
 
 ```dart
 assert(25 == 50.4 ~/ 2);
@@ -1142,7 +1146,7 @@ While the `++` and `–` operators existed in
 earlier versions of Swift, they've been
 [removed in Swift 3.0][].
 The Dart equivalents operate the same way.
-For example:
+Por exemplo:
 
 [removed in Swift 3.0]: https://www.appsloveworld.com/swift/100/9/-is-deprecated-it-will-be-removed-in-swift-3
 
@@ -1182,11 +1186,11 @@ different between the two languages.
 
 The result of `obj is T` is `true` if `obj`
 is a subtype of the type specified by `T`.
-For example, `obj is Object?` is always true.
+Por exemplo, `obj is Object?` is always true.
 
 Use the typecast operator to cast an object
 to a particular type&mdash;if and only if&mdash;you're
-sure that the object is of that type. For example:
+sure that the object is of that type. Por exemplo:
 
 ```dart
 (person as Employee).employeeNumber = 4204583;
@@ -1204,7 +1208,7 @@ If you aren't sure that the object is of type `T`,
 then use `is T` to check before using the object. 
 
 In Dart, type promotion updates the types of
-local variables within the scope of the `if` statement.
+local variables withno scope of the `if` statement.
 This also happens for null checks.
 Promotion only applies to _local_ variables,
 not to instance variables.
@@ -1226,7 +1230,7 @@ if let person = person as? Employee {
 
 The logical operators (such as AND (`&&`),
 OR (`||`) and NOT (`!`)) are identical
-in both languages. For example:
+in both languages. Por exemplo:
 
 ```dart
 if (!done && (col == 0 || col == 3)) {
@@ -1241,8 +1245,8 @@ On the web,
 Dart uses JavaScript bitwise operations
 for better performance, but this can cause
 different behavior between native and web
-applications. For more information,
-see [Bitwise operations][] in the
+applications. Para mais informações,
+see [Bitwise operations][] no
 [Numbers in Dart][] page.
 :::
 
@@ -1252,7 +1256,7 @@ see [Bitwise operations][] in the
 The bitwise operators are mostly identical
 in both languages.
 
-For example: 
+Por exemplo: 
 
 ```dart
 final value = 0x22;
@@ -1288,7 +1292,7 @@ the cascading operator. This allows you to
 chain multiple method calls or property
 assignments on a single object.
 
-The following example shows setting the
+O seguinte example shows setting the
 value of multiple properties, then calling
 multiple methods on a newly constructed object,
 all within a single chain using the cascade operator:
@@ -1315,7 +1319,7 @@ print(animal.name)
 print(animal.age)
 ```
 
-## Collections
+## Collections {:#collections}
 
 This section covers some collection types in
 Swift and how they compare to their equivalents in Dart.
@@ -1326,31 +1330,31 @@ Swift and how they compare to their equivalents in Dart.
 arrays are in Swift, using square brackets and
 separated by commas. The syntax between the two
 languages is very similar, however there are some
-subtle differences, shown in the following example:
+subtle differences, shown no following example:
 
 ```dart
-final List<String> list1 = <String>['one', 'two', 'three']; // Initialize list and specify full type
-final list2 = <String>['one', 'two', 'three']; // Initialize list using shorthand type
-final list3 = ['one', 'two', 'three']; // Dart can also infer the type
+final List<String> lista1 = <String>['one', 'two', 'three']; // Initialize lista and specify full type
+final lista2 = <String>['one', 'two', 'three']; // Initialize lista using shorthand type
+final lista3 = ['one', 'two', 'three']; // Dart can also infer the type
 ```
 
 ```swift
-var list1: Array<String> = ["one", "two", "three"] // Initialize array and specify the full type
-var list2: [String] = ["one", "two", "three"] // Initialize array using shorthand type
-var list3 = ["one", "two", "three"] // Swift can also infer the type
+var lista1: Array<String> = ["one", "two", "three"] // Initialize array and specify the full type
+var lista2: [String] = ["one", "two", "three"] // Initialize array using shorthand type
+var lista3 = ["one", "two", "three"] // Swift can also infer the type
 ```
 
-The following code samples give an overview of the
+O seguinte code samples give an overview of the
 basic actions that you can perform on a Dart `List`.
 The first example shows how to retrieve a value
-from a list using the `index` operator:
+from a lista using the `index` operator:
 
 ```dart
 final fruits = ['apple', 'orange', 'pear'];
 final fruit = fruits[1];
 ```
 
-To add a value to the back of the list,
+To add a value to the back of the lista,
 use the `add` method. To add another `List`
 use the `addAll` method:
 
@@ -1376,19 +1380,19 @@ In Dart, this works a little differently and,
 depending on your needs,
 you have several options to choose from:
 
-* If the list is a compile-time constant and shouldn't
+* If the lista is a compile-time constant and shouldn't
   be modified, use the `const` keyword:<br>
   `const fruits = ['apple', 'orange', 'pear'];`
-* Assign the list to a `final` field.
-  This means that the list itself doesn't
+* Assign the lista to a `final` campo.
+  This means that the lista itself doesn't
   have to be a compile-time constant and
-  ensures that the field can't be overridden
-  with another list. However,
+  ensures that the campo can't be overridden
+  with another lista. However,
   it still allows the size or the contents
-  of the list to be modified:<br>
+  of the lista to be modified:<br>
   `final fruits = ['apple', 'orange', 'pear'];`
 * Create a `final List` using the unmodifiable
-  constructor (shown in the following example).
+  constructor (shown no following example).
   This creates a `List` that can't change its size
   or content, making it behave just like a constant
   `Array` in Swift.
@@ -1408,22 +1412,22 @@ Another useful feature in Dart is the **spread operator**
 which provide a concise way to insert multiple values
 into a collection.
 
-For example, you can use the spread operator
-(`...`) to insert all the values of a list
-into another list, as shown below:
+Por exemplo, you can use the spread operator
+(`...`) to insert all the values of a lista
+into another lista, as shown below:
 
 ```dart
-final list = [1, 2, 3];
-final list2 = [0, ...list]; // [ 0, 1, 2, 3 ]
-assert(list2.length == 4);
+final lista = [1, 2, 3];
+final lista2 = [0, ...lista]; // [ 0, 1, 2, 3 ]
+assert(lista2.length == 4);
 ```
 
 Though Swift has no spread operator,
 the equivalent to line 2 above would
-be the following:
+be o seguinte:
 
 ```swift
-let list2 = [0] + list
+let lista2 = [0] + lista
 ```
 
 If the expression to the right of the spread operator
@@ -1431,19 +1435,19 @@ might be `null`, you can avoid exceptions by using
 a null-aware spread operator (`...?`):
 
 ```dart
-List<int>? list;
-final list2 = [0, ...?list]; //[ 0 ]
-assert(list2.length == 1);
+List<int>? lista;
+final lista2 = [0, ...?lista]; //[ 0 ]
+assert(lista2.length == 1);
 ```
 
 ```swift
-let list2 = [0] + list ?? []
+let lista2 = [0] + lista ?? []
 ```
 
 ### Sets
 
 Both Dart and Swift support defining `Set`s with literals.
-Sets are defined in the same way as lists,
+Sets are defined no same way as listas,
 but using curly braces instead of square brackets.
 Sets are unordered collections that only contain unique items.
 The uniqueness of these items is implemented using
@@ -1458,11 +1462,11 @@ In Dart, the `hashCode` inherited from the
 `Object` class is only based on the object's identity.
 If the `==` operator can make non-identical objects equal,
 the `hashCode` getter needs to be overridden to match
-the equality. For more information,
-check out the API page for the [`hashCode` property][].
+the equality. Para mais informações,
+confira the API page for the [`hashCode` property][].
 :::
 
-The following code snippets show the differences
+O seguinte code snippets show the differences
 between initializing a `Set` in Dart and Swift:
 
 ```dart
@@ -1489,7 +1493,7 @@ Set<String> alsoNames = {}; // This works, too.
 #### Unmodifiable
 
 Similar to `List`, `Set` also has an unmodifiable version.
-For example: 
+Por exemplo: 
 
 ```dart
 final abc = Set<String>.unmodifiable(['a', 'b', 'c']);
@@ -1518,8 +1522,8 @@ In Dart, the `hashCode` inherited from the `Object`
 class is only based on the object's identity.
 If the `==` operator can make non-identical objects equal,
 the `hashCode` getter needs to be overridden
-to match the equality. For more information,
-check out the API page for the [`hashCode` property][].
+to match the equality. Para mais informações,
+confira the API page for the [`hashCode` property][].
 :::
 
 [`hashCode` property]: {{site.dart-api}}/dart-core/Object/hashCode.html
@@ -1555,7 +1559,7 @@ let nobleGases = [
 ]
 ```
 
-The following code samples provide an overview
+O seguinte code samples provide an overview
 of the basic actions that you can perform on a
 Dart `Map`. The first example shows how to
 retrieve a value from a `Map` using the `key` operator:
@@ -1566,7 +1570,7 @@ final gift = gifts['first']; // 'partridge'
 ```
 
 Use the `containsKey` method to check whether a
-key is already present in the `Map`:
+key is already present no `Map`:
 
 ```dart
 final gifts = {'first': 'partridge'};
@@ -1574,8 +1578,8 @@ assert(gifts.containsKey('fifth')); // false
 ```
 
 Use the index assignment operator (`[]=`) to add
-or update an entry in the `Map`. If the `Map`
-doesn't contain the key yet, the entry is added.
+or update an entry no `Map`. If the `Map`
+doesn't contano key yet, the entry is added.
 If the key is present, the entry's value is updated:
 
 ```dart
@@ -1594,20 +1598,20 @@ gifts.remove('first');
 gifts.removeWhere((key, value) => value == 'partridge');
 ```
 
-## Classes 
+## Classes {:#classes}
 
 Dart doesn't define an interface type&mdash;_any_
 class can be used as an interface.
 If you want to introduce just an interface,
 create an abstract class with no concrete members.
 To get a more detailed understanding of these categories,
-check out the documentation in the
+confira the documentation no
 [abstract classes](#abstract-classes),
 [implicit interfaces](#implicit-interfaces),
 and [extending a class](#extending-a-class) sections.
 
 Dart doesn't provide support for value types.
-As mentioned in the [Built-in types](#built-in-types) section,
+As mentioned no [Tipos integrados](#built-in-types) section,
 all types in Dart are reference types (even primitives),
 meaning that Dart doesn't provide a `struct` keyword.
 
@@ -1618,18 +1622,18 @@ are a special kind of class used to represent
 a fixed number of constant values. Enums have been
 part of the Dart language for a long time,
 but Dart 2.17 added enhanced enums support for members.
-That means you can add fields holding state,
-constructors that set that state,
+That means you can add campos holding state,
+construtores that set that state,
 methods with functionality,
 and even override existing members.
-For more information, check out
-[Declaring enhanced enums][] in the Dart language tour.
+Para mais informações, confira
+[Declaring enhanced enums][] no tour da linguagem Dart.
 
 [Declaring enhanced enums]: /language/enums#declaring-enhanced-enums
 
 ### Constructors 
 
-Dart's class constructors work similarly to class
+Dart's class construtores work similarly to class
 initializers in Swift. However, in Dart,
 they offer more functionality for setting class properties.
 
@@ -1659,8 +1663,8 @@ Point p = Point(3, 5);
 
 #### Constructor parameters
 
-Since writing code to assign all class fields
-in the constructor is often quite redundant,
+Since writing code to assign all class campos
+no constructor is often quite redundant,
 Dart has some syntactic sugar to make this easier:
 
 ```dart
@@ -1677,7 +1681,7 @@ class Point {
 Point p = Point(3, 5);
 ```
 
-Similar to functions, constructors can also take
+Similar to functions, construtores can also take
 optional positional or named parameters:
 
 ```dart
@@ -1695,11 +1699,11 @@ class Point {
 }
 ```
 
-#### Initializer lists
+#### Initializer listas
 
-You can also use initializer lists,
-which run after any fields that are directly set
-using `this` in the constructor parameters,
+You can also use initializer listas,
+which run after any campos that are directly set
+using `this` no constructor parameters,
 but still before the constructor body:
 
 ```dart
@@ -1714,15 +1718,15 @@ class Point {
 }
 ```
 
-An initializer list is a good place to use an assert.
+An initializer lista is a good place to use an assert.
 
-#### Named constructors
+#### Named construtores
 
 Unlike Swift, Dart allows classes to have multiple
-constructors by allowing you to name them.
+construtores by allowing you to name them.
 You have the option of using one unnamed constructor,
-but any additional constructors must be named.
-A class can also have only named constructors.
+but any additional construtores must be named.
+A class can also have only named construtores.
 
 ```dart
 class Point {
@@ -1738,15 +1742,15 @@ class Point {
 }
 ```
 
-#### Const constructors
+#### Const construtores {:#const-constructors}
 
 When your class instances are always immutable
-(unchanging), you can enforce this by adding a
+(sem alterações), you can enforce this by adding a
 `const` constructor. Removing a `const` constructor
 is a breaking change for those who use your class,
 so employ this feature judiciously.
 Defining a constructor as `const` makes the class
-unmodifiable: all non-static fields in the class
+unmodifiable: all non-static campos no class
 must be flagged as `final`. 
 
 ```dart
@@ -1766,7 +1770,7 @@ const ImmutablePoint origin = ImmutablePoint(0, 0);
 
 #### Constructor redirection
 
-You can call constructors from other constructors,
+You can call construtores from other construtores,
 for example, to prevent code duplication or to
 add additional defaults for parameters:
 
@@ -1782,9 +1786,9 @@ class Point {
 }
 ```
 
-#### Factory constructors
+#### Factory construtores
 
-You can use factory constructors when you don't
+You can use factory construtores when you don't
 need to create a new class instance.
 One example is if a cached instance could be returned instead:
 
@@ -1805,7 +1809,7 @@ class Logger {
 
 ### Methods
 
-In both Dart and Swift, methods are functions
+Tanto no Dart quanto no Swift, methods are functions
 that provide behavior for an object. 
 
 ```dart
@@ -1834,9 +1838,9 @@ class Example {
 
 ### Getters and setters
 
-You can define getters and setters by prefixing a field name
+You can define getters and setters by prefixing a campo name
 with a `get` or `set` keyword. You might recall
-that each instance field has an implicit getter,
+that each instance campo has an implicit getter,
 plus a setter if appropriate. In Swift,
 the syntax is a little different,
 as the `get` and `set` keywords need to be defined
@@ -1886,7 +1890,7 @@ class Rectangle {
 }
 ```
 
-### Abstract classes
+### Abstract classes {:#abstract-classes}
 
 Dart has the concept of _abstract_ classes,
 something that isn't supported by Swift.
@@ -1905,7 +1909,7 @@ if they don't override these methods when
 extending the abstract class.
 
 To define an abstract class, use the `abstract` modifier.
-The following example declares an abstract class
+O seguinte example declares an abstract class
 that has an abstract method and a method
 containing a default implementation:
 
@@ -1919,7 +1923,7 @@ abstract class AbstractContainer {
 }
 ```
 
-### Implicit interfaces
+### Implicit interfaces {:#implicit-interfaces}
 
 In the Dart language, every class implicitly
 defines an interface containing all the
@@ -1936,7 +1940,7 @@ defined as a protocol and implemented by the developer.
 A class can implement one or more interfaces
 and then provide the APIs required by the interfaces.
 Both Dart and Swift have a different ways of
-implementing interfaces. For example:
+implementing interfaces. Por exemplo:
 
 ```dart
 abstract class Animal {
@@ -1970,7 +1974,7 @@ class Dog: Animal {
 }
 ```
 
-### Extending a class
+### Extending a class {:#extending-a-class}
 
 Class inheritance in Dart is very similar to Swift.
 In Dart, you can use `extends` to create a subclass,
@@ -1978,28 +1982,28 @@ and `super` to refer to the superclass:
 
 ```dart
 abstract class Animal {
-  // Define constructors, fields, methods...
+  // Define construtores, campos, methods...
 }
 
 class Dog extends Animal {
-  // Define constructors, fields, methods...
+  // Define construtores, campos, methods...
 }
 ```
 
 ```swift
 class Animal {
-  // Define constructors, fields, methods...
+  // Define construtores, campos, methods...
 }
 
 class Dog: Animal {
-  // Define constructors, fields, methods...
+  // Define construtores, campos, methods...
 }
 ```
 
-### Mixins 
+### Mixins {:#mixins}
 
 Mixins allow your code to share functionality between classes.
-You can use the mixin's fields and methods in a class,
+You can use the mixin's campos and methods in a class,
 using their functionality as if it were part of the class.
 A class can use multiple mixins&mdash;which is useful
 when multiple classes share the same functionality&mdash;without
@@ -2008,17 +2012,17 @@ needing to inherit from each other or share a common ancestor.
 While Swift doesn't support mixins, it can approximate
 this functionality if you write a protocol together
 with an extension that provides default implementations
-for the methods specified in the protocol.
+for the methods specified no protocol.
 The main issue with this approach is that,
 unlike in Dart,
-these protocol extensions don't maintain their own state. 
+these protocol extensions don't maintanoir own state. 
 
 You can declare a mixin just like a regular class,
 as long as it doesn't extend any class other than `Object`
-and has no constructors. Use the `with` keyword to add
+and has no construtores. Use the `with` keyword to add
 one or more comma-separated mixins to a class. 
 
-The following example shows how this behavior is
+O seguinte example shows how this behavior is
 achieved in Dart, and how similar behavior is
 replicated in Swift:
 
@@ -2101,13 +2105,13 @@ class Bat extends Walker {}
 
 :::note
 The `extends` keyword is covered further in
-[Extending a class][] in the Dart language tour.
+[Extending a class][] no tour da linguagem Dart.
 :::
 
 [Extending a class]: /language/generics#restricting-the-parameterized-type
 
 Since you can use multiple mixins,
-their methods or fields can overlap with
+their methods or campos can overlap with
 each other when used on the same class.
 They can even overlap with the class that uses them,
 or that class's superclass. To work around this,
@@ -2130,7 +2134,7 @@ until an implementation is found.
 If no implementation is found,
 the parent class, `Animal`, is checked last. 
 
-### Extension methods 
+### Extension methods {:#extension-methods}
 
 Like Swift, Dart offers extension methods that allow you
 to add functionality&mdash;specifically, methods,
@@ -2150,7 +2154,7 @@ extension <type> {
 }
 ```
 
-As an example, the following extension on
+As an example, o seguinte extension on
 the `String` class from the Dart SDK
 allows parsing of integers:
 
@@ -2175,9 +2179,9 @@ print("21".parseInt() * 2) // 42
 ```
 
 Although extensions are similar in Dart and Swift,
-there are some key differences. The following sections
+there are some key differences. O seguinte sections
 cover the most important differences,
-but check out [Extension methods][] for a complete
+but confira [Extension methods][] for a complete
 overview.
 
 [Extension methods]: /language/extension-methods
@@ -2194,7 +2198,7 @@ Naming an extension allows you to control its
 scope&mdash;meaning it's possible to either
 hide or show the extension in case it conflicts
 with another library. If the name begins with an underscore,
-the extension is only available within the library
+the extension is only available withno library
 in which it's defined.
 
 ```dart
@@ -2216,9 +2220,9 @@ extension _Private on String {
 In Swift, you can use extensions to add new
 convenience initializers to a type. In Dart,
 you can't use extensions to add additional
-constructors to a class, but you can add a
+construtores to a class, but you can add a
 static extension method that creates an instance
-of the type. Consider the following example: 
+of the type. Consider o seguinte example: 
 
 ```dart
 class Person {
@@ -2274,9 +2278,9 @@ class Dog: Animal {
 }
 ```
 
-## Generics 
+## Generics {:#generics}
 
-As in Swift, Dart supports the use of generics
+Como no Swift, Dart suporta the use of generics
 to improve type safety or reduce code duplication. 
 
 ### Generic methods 
@@ -2284,13 +2288,13 @@ to improve type safety or reduce code duplication.
 You can apply generics to methods.
 To define a generic type, place it between
 `< >` symbols after the method name.
-This type can then be used within the method
-(as the return type), or in the method's parameters:
+This type can then be used withno method
+(as the return type), or no method's parameters:
 
 ```dart
 // Defining a method that uses generics.
 T transform<T>(T param) {
-  // For example,  doing some transformation on `param`...
+  // Por exemplo,  doing some transformation on `param`...
   return param;
 }
 
@@ -2324,7 +2328,7 @@ Generics can also be applied to classes.
 You can specify the type when calling a constructor,
 which allows you to tailor reusable classes to specific types.
 
-In the following example,
+In o seguinte example,
 the `Cache` class is for caching specific types:
 
 ```dart
@@ -2368,12 +2372,12 @@ var manager = NumberManager<String>();
 declare generic types, which is useful when the
 type isn't inferred or is incorrectly inferred. 
 
-For example, the `List` class has a generic definition:
+Por exemplo, the `List` class has a generic definition:
 `class List<E>`. Generic type `E` refers to the type
-of the list's contents. Normally,
+of the lista's contents. Normally,
 this type is automatically inferred,
 which is used in some membery types of the `List` class's.
-(For example, its first getter returns a value of type `E`).
+(Por exemplo, its first getter returns a value of type `E`).
 When defining a `List` literal,
 you can explicitly define the generic type as follows:
 
@@ -2398,13 +2402,13 @@ var map = <String, Object>{
 }; // Type: Map<String, Object>
 ```
 
-## Concurrency
+## Concurrency {:#concurrency}
 
 Swift supports multithreading and Dart supports isolates, 
 which are similar to lightweight threads
 and won't be covered here.
 Each isolate has its own event loop.
-For more information, see [How isolates work][].
+Para mais informações, see [How isolates work][].
 
 [How isolates work]: /language/concurrency#isolates
 
@@ -2419,9 +2423,9 @@ In a nutshell, a future represents the result
 of an asynchronous operation, which becomes available
 at a later time. If you have a function that returns
 a `Future` of a `String` (`Future<String>`)
-rather than just a `String`,
+em vez de just a `String`,
 you are basically receiving a value that might exist
-some time later&mdash;in the future. 
+some time later&mdash;no future. 
 
 When a future's asynchronous operation completes,
 the value becomes available. You should keep in mind,
@@ -2438,7 +2442,7 @@ the future completes with an error instead.
 Futures can be created manually, too.
 The easiest way to create a future is by
 defining and calling an `async` function,
-which is discussed in the next section.
+which is discussed no next section.
 When you have a value that needs to be a `Future`,
 you can easily turn it into one using the `Future` class: 
 
@@ -2456,12 +2460,12 @@ and works in a similar way, though without `Future` objects.
 As in Swift, functions can be marked as `async`.
 The difference in Dart is that any `async` function
 always implicitly returns a `Future`.
-For example, if your function returns a `String`,
+Por exemplo, if your function returns a `String`,
 the async counterpart to this function returns a
 `Future<String>`.
 
 The `throws` keyword that's placed after the
-`async` keyword in Swift
+`async` palavra-chave no Swift
 (but only if the function is throwable),
 doesn't exist in Dart's syntax because Dart
 exceptions and errors aren't checked by the compiler.
@@ -2504,8 +2508,8 @@ func fetchString() async throws -> String {
 }
 ```
 
-Similarly, any exception that occurs in the `async`
-function can be handled in the same way as handling
+Similarly, any exception that occurs no `async`
+function can be handled no same way as handling
 a failed `Future`, using the `catchError` method.
 
 In Swift, an async function can't be invoked from
@@ -2557,8 +2561,8 @@ Future<void> asyncFunction() async {
 }
 ```
 
-For more information and interactive practice,
-check out the [Asynchronous programming][] tutorial.
+Para mais informações and interactive practice,
+confira the [Asynchronous programming][] tutorial.
 
 [Asynchronous programming]: /libraries/async/async-await
 
@@ -2576,13 +2580,13 @@ For those not familiar with `Streams`,
 the concept is as follows: a `Stream`
 essentially acts like a `Future`,
 but with multiple values spread out over time,
-like an event bus. Streams can be listened to,
+like an event bus. Streams can be listaened to,
 to receive value or error events,
 and they can be closed when no further events will be sent.
 
 #### Listening
 
-To listen to a stream, you can combine a stream
+To listaen to a stream, you can combine a stream
 with a `for-in` loop in an `async` context.
 The `for` loop invokes the callback method
 for each item emitted, and ends when the stream
@@ -2602,7 +2606,7 @@ Future<int> sumStream(Stream<int> stream) async {
 }
 ```
 
-If an error occurs when listening to a stream,
+If an error occurs when listaening to a stream,
 the error is thrown at the line containing the
 `await` keyword, which you can handle with a
 `try-catch` statement:
@@ -2615,23 +2619,23 @@ try {
 }
 ```
 
-This isn't the only way to listen to a stream:
-you can also call its `listen` method and
+This isn't the only way to listaen to a stream:
+you can also call its `listaen` method and
 provide a callback, which is called whenever
 the stream emits a value:
 
 ```dart
 Stream<int> stream = ...
-stream.listen((int value) {
+stream.listaen((int value) {
   print('A value has been emitted: $value');
 });
 ```
 
-The `listen` method has some optional callbacks
+The `listaen` method has some optional callbacks
 for error handling, or for when the stream completes:
 
 ```dart
-stream.listen(
+stream.listaen(
   (int value) { ... },
   onError: (err) {
     print('Stream encountered an error! $err');
@@ -2642,12 +2646,12 @@ stream.listen(
 );
 ```
 
-The `listen` method returns an instance of a
+The `listaen` method returns an instance of a
 `StreamSubscription`, which you can use to
-stop listening to the stream:
+stop listaening to the stream:
 
 ```dart
-StreamSubscription subscription = stream.listen(...);
+StreamSubscription subscription = stream.listaen(...);
 subscription.cancel();
 ```
 
@@ -2671,7 +2675,7 @@ emits the given value to the stream.
 The `yield*` keyword, however,
 works with streams instead of other iterables.
 This allows events from other streams to be
-emitted to this stream. In the following example,
+emitted to this stream. In o seguinte example,
 the function only continues once the newly yielded
 stream has completed:
 
@@ -2685,7 +2689,7 @@ Stream<int> stream = asynchronousNaturalsTo(5);
 ```
 
 You can also create a stream using the
-`StreamController` API. For more information,
+`StreamController` API. Para mais informações,
 see [Using a StreamController][].
 
 [Using a StreamController]: /libraries/async/creating-streams#using-a-streamcontroller
@@ -2812,7 +2816,7 @@ class Parrot extends _Animal {
 }
 ```
 
-For more information, check out
+Para mais informações, confira
 [creating packages][].
 
 [creating packages]: /tools/pub/create-packages#organizing-a-package
