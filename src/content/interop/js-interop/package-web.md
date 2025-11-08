@@ -96,7 +96,7 @@ de `dart:html` para `package:web`.
 Para quaisquer outros problemas de migração, confira o repositório [dart-lang/web][] e
 registre uma issue.
 
-### Renomeações
+### Renomeações {:#renames}
 
 Muitos dos símbolos em `dart:html` foram renomeados de
 sua declaração IDL original para se alinhar mais com o estilo Dart.
@@ -157,7 +157,7 @@ Node append(Node node) native;
 `native` é uma palavra-chave interna que significa o mesmo que `external` neste
 contexto.
 
-### Testes de tipo
+### Testes de tipo {:#type-tests}
 
 É comum para código que usa `dart:html` utilizar verificações em runtime como `is`.
 Quando usado com um objeto `dart:html`, `is` e `as` verificam que o objeto é
@@ -301,8 +301,8 @@ para `package:web`:
 Do we have any other package migrations to show off here?
 {% endcomment -%}
 
-[renames]: #renomeações
-[type tests]: #testes-de-tipo
+[renames]: #renames
+[type tests]: #type-tests
 [`package:web`]: {{site.pub-pkg}}/web
 [Wasm]: /web/wasm
 [html]: {{site.dart-api}}/dart-html/dart-html-library.html
