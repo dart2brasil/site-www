@@ -1,7 +1,8 @@
 ---
-title: Dart's core libraries
-shortTitle: Core libraries
-description: Learn about Dart's core libraries and APIs.
+ia-translate: true
+title: Bibliotecas principais do Dart
+shortTitle: Bibliotecas principais
+description: Aprenda sobre as bibliotecas principais e APIs do Dart.
 nextpage:
   url: /libraries/dart-core
   title: dart:core
@@ -13,62 +14,61 @@ nextpage:
   }
 </style>
 
-Dart has a rich set of core libraries that provide essentials for many everyday
-programming tasks such as 
-working on collections of objects (`dart:collection`), 
-making calculations (`dart:math`), 
-and encoding/decoding data (`dart:convert`). 
-Additional APIs are available in
-[commonly used packages](/resources/useful-packages).
+Dart possui um rico conjunto de bibliotecas principais que fornecem recursos essenciais para muitas tarefas de programação do dia a dia, como
+trabalhar com coleções de objetos (`dart:collection`),
+fazer cálculos (`dart:math`),
+e codificar/decodificar dados (`dart:convert`).
+APIs adicionais estão disponíveis em
+[pacotes comumente usados](/resources/useful-packages).
 
-## Library tour
+## Tour pelas bibliotecas
 
-The following guides cover how to use major features of Dart's core libraries.
-They provide just an overview, and are by no means comprehensive.
-Whenever you need more details about a library or its members,
-consult the [Dart API reference.][Dart API]
+Os guias a seguir cobrem como usar as principais funcionalidades das bibliotecas principais do Dart.
+Eles fornecem apenas uma visão geral e não são de forma alguma abrangentes.
+Sempre que você precisar de mais detalhes sobre uma biblioteca ou seus membros,
+consulte a [referência da API Dart.][Dart API]
 
 [dart:core](/libraries/dart-core)
-: Built-in types, collections, and other core functionality.
-  This library is automatically imported into every Dart program.
+: Tipos embutidos, coleções e outras funcionalidades principais.
+  Esta biblioteca é automaticamente importada em todo programa Dart.
 
 [dart:async](/libraries/dart-async)
-: Support for asynchronous programming, with classes such as Future and Stream.
+: Suporte para programação assíncrona, com classes como Future e Stream.
 
 [dart:math](/libraries/dart-math)
-: Mathematical constants and functions, plus a random number generator.
+: Constantes e funções matemáticas, além de um gerador de números aleatórios.
 
 [dart:convert](/libraries/dart-convert)
-: Encoders and decoders for converting between different data representations,
-  including JSON and UTF-8.
+: Encoders e decoders para converter entre diferentes representações de dados,
+  incluindo JSON e UTF-8.
 
 [dart:io](/libraries/dart-io)
-: I/O for programs that can use the Dart VM,
-  including Flutter apps, servers, and command-line scripts.
+: I/O para programas que podem usar a Dart VM,
+  incluindo aplicativos Flutter, servidores e scripts de linha de comando.
 
 [dart:js_interop](/interop/js-interop)
-: APIs for interop with the web platform.
-  Along with `package:web`, `dart:js_interop` replaces `dart:html`.
+: APIs para interoperabilidade com a plataforma web.
+  Junto com `package:web`, `dart:js_interop` substitui `dart:html`.
 
 
-As mentioned, these pages are just an overview;
-they cover only a few dart:* libraries
-and no third-party libraries.
+Como mencionado, essas páginas são apenas uma visão geral;
+elas cobrem apenas algumas bibliotecas dart:*
+e nenhuma biblioteca de terceiros.
 
-For an overview of all libraries that Dart supports on different platforms,
-check out the [Multi-platform libraries](#multi-platform-libraries),
-[Native platform libraries](#native-platform-libraries), and
-[Web platform libraries](#web-platform-libraries) lists below.
+Para uma visão geral de todas as bibliotecas que o Dart suporta em diferentes plataformas,
+confira as listas de [Bibliotecas multiplataforma](#multi-platform-libraries),
+[Bibliotecas da plataforma nativa](#native-platform-libraries) e
+[Bibliotecas da plataforma web](#web-platform-libraries) abaixo.
 
-Other places to find library information are the
-[pub.dev site]({{site.pub}}) and the
-[Dart web developer library guide][webdev libraries].
-You can find API documentation for all dart:* libraries in the
-[Dart API reference][Dart API] or, if you're using Flutter,
-the [Flutter API reference][api-flutter].
+Outros lugares para encontrar informações sobre bibliotecas são o
+[site pub.dev]({{site.pub}}) e o
+[guia de bibliotecas para desenvolvedores web Dart][webdev libraries].
+Você pode encontrar documentação da API para todas as bibliotecas dart:* na
+[referência da API Dart][Dart API] ou, se você estiver usando Flutter,
+na [referência da API Flutter][api-flutter].
 
-To learn more about the Dart language,
-check out the [language documentation and samples](/language).
+Para saber mais sobre a linguagem Dart,
+confira a [documentação e exemplos da linguagem](/language).
 
 [Dart API]: {{site.dart-api}}
 [webdev libraries]: /web/libraries
@@ -76,53 +76,53 @@ check out the [language documentation and samples](/language).
 
 ## Multi-platform libraries
 
-The following table lists the Dart core libraries that work on all
-[Dart platforms](/overview#platform).
+A tabela a seguir lista as bibliotecas principais do Dart que funcionam em todas as
+[plataformas Dart](/overview#platform).
 
 | Library                                       | Notes                         |
 |-----------------------------------------------|-------------------------------|
-| [`dart:core`][dart-core]<br>Built-in types, collections, and other core functionality for every Dart program. | |
-| [`dart:async`][dart-async], [`package:async`][package-async]<br>Support for asynchronous programming, with classes such as `Future` and `Stream`.<br>`package:async` provides additional utilities around the `Future` and `Stream` types. | |
-| [`dart:collection`][dart-collection], [`package:collection`][package-collection]<br>Classes and utilities that supplement the collection support in `dart:core`.<br>`package:collection` provides further collection implementations and functions for working on and with collections. | |
-| [`dart:convert`][dart-convert], [`package:convert`][package-convert]<br>Encoders and decoders for converting between different data representations, including JSON and UTF-8.<br>`package:convert` provides additional encoders and decoders. ||
-| [`dart:developer`][dart-developer]<br>Interaction with developer tools such as the debugger and inspector. | [Native JIT][jit] and the [development JavaScript compiler][] only |
-| [`dart:math`][dart-math]<br>Mathematical constants and functions, plus a random number generator. | |
-| [`dart:typed_data`][dart-typed_data], [`package:typed_data`][package-typed_data]<br>Lists that efficiently handle fixed sized data (for example, unsigned 8-byte integers) and SIMD numeric types.<br>`package:typed_data` provides further classes and functions working on typed data. | |
+| [`dart:core`][dart-core]<br>Tipos embutidos, coleções e outras funcionalidades principais para todo programa Dart. | |
+| [`dart:async`][dart-async], [`package:async`][package-async]<br>Suporte para programação assíncrona, com classes como `Future` e `Stream`.<br>`package:async` fornece utilitários adicionais em torno dos tipos `Future` e `Stream`. | |
+| [`dart:collection`][dart-collection], [`package:collection`][package-collection]<br>Classes e utilitários que complementam o suporte a coleções em `dart:core`.<br>`package:collection` fornece implementações de coleções adicionais e funções para trabalhar com coleções. | |
+| [`dart:convert`][dart-convert], [`package:convert`][package-convert]<br>Encoders e decoders para converter entre diferentes representações de dados, incluindo JSON e UTF-8.<br>`package:convert` fornece encoders e decoders adicionais. ||
+| [`dart:developer`][dart-developer]<br>Interação com ferramentas de desenvolvedor como o debugger e inspector. | Apenas [Native JIT][jit] e o [compilador JavaScript de desenvolvimento][] |
+| [`dart:math`][dart-math]<br>Constantes e funções matemáticas, além de um gerador de números aleatórios. | |
+| [`dart:typed_data`][dart-typed_data], [`package:typed_data`][package-typed_data]<br>Listas que manipulam eficientemente dados de tamanho fixo (por exemplo, inteiros sem sinal de 8 bytes) e tipos numéricos SIMD.<br>`package:typed_data` fornece classes e funções adicionais para trabalhar com dados tipados. | |
 
 {:.table .table-striped}
 
 ## Native platform libraries
 
-The following table lists the Dart core libraries that work on the
-[Dart native platform](/overview#native-platform) (AOT- and JIT-compiled code).
+A tabela a seguir lista as bibliotecas principais do Dart que funcionam na
+[plataforma nativa Dart](/overview#native-platform) (código compilado AOT e JIT).
 
 | Library                                       | Notes                         |
 |-----------------------------------------------|-------------------------------|
-| [`dart:ffi`][dart-ffi], [`package:ffi`][package-ffi]<br>A foreign function interface that lets Dart code use native C APIs.<br>`package:ffi` contains utilities incl. support for converting Dart strings and C strings. | |
-| [`dart:io`][dart-io], [`package:io`][package-io]<br>File, socket, HTTP, and other I/O support for non-web applications.<br>`package:io` provides functionality including support for ANSI colors, file copying, and standard exit codes. | |
-| [`dart:isolate`][dart-isolate]<br> Concurrent programming using isolates: independent workers similar to threads. | |
-| [`dart:mirrors`][dart-mirrors]<br> Basic reflection with support for introspection and dynamic invocation. | Experimental<br>[Native JIT][jit] only (_not_&nbsp;Flutter) |
+| [`dart:ffi`][dart-ffi], [`package:ffi`][package-ffi]<br>Uma interface de função externa que permite que o código Dart use APIs C nativas.<br>`package:ffi` contém utilitários incluindo suporte para converter strings Dart e strings C. | |
+| [`dart:io`][dart-io], [`package:io`][package-io]<br>Suporte a arquivo, socket, HTTP e outras operações de I/O para aplicações não-web.<br>`package:io` fornece funcionalidades incluindo suporte para cores ANSI, cópia de arquivos e códigos de saída padrão. | |
+| [`dart:isolate`][dart-isolate]<br> Programação concorrente usando isolates: workers independentes semelhantes a threads. | |
+| [`dart:mirrors`][dart-mirrors]<br> Reflexão básica com suporte para introspecção e invocação dinâmica. | Experimental<br>Apenas [Native JIT][jit] (_não_&nbsp;Flutter) |
 
 {:.table .table-striped}
 
 ## Web platform libraries
 
-The following table lists the Dart core libraries that work on the
-[Dart web platform](/overview#web-platform) (code compiled to JavaScript).
-The latest, recommended tools are **bolded**, and legacy tools are *italicized*
-(visit [Javascript interoperability][] for more information).
+A tabela a seguir lista as bibliotecas principais do Dart que funcionam na
+[plataforma web Dart](/overview#web-platform) (código compilado para JavaScript).
+As ferramentas mais recentes e recomendadas estão em **negrito**, e as ferramentas legadas estão em *itálico*
+(visite [Interoperabilidade JavaScript][] para mais informações).
 
 | Library                                       | Notes                         |
 |-----------------------------------------------|-------------------------------|
-| [**`package:web`**][pkg-web] <br>Lightweight browser API bindings built around JS interop | Replaces all `dart:*` web libraries. Read the [migration guide][html-web]. |
-| [**`dart:js_interop`**][js-interop] <br>Interop with JavaScript and browser APIs. | Replaces `package:js`. |
-| [**`dart:js_interop_unsafe`**][js-interop-unsafe] <br>Utility methods to manipulate JavaScript objects dynamically. | Replaces `dart:js_util`. |
-| [*`dart:html`*][dart-html] *(legacy)* <br>HTML elements and other resources for web-based applications. | Use `package:web` instead. |
-| [*`dart:indexed_db`*][dart-indexed_db] *(legacy)* <br>Client-side key-value store with support for indexes.  | Use `package:web` instead. |
-| [*`dart:js`*][dart-js], [*`dart:js_util`*][dart-js_util], [*`package:js`*][package-js] *(legacy)* <br>Low-level primitives and higher-level annotations for JS interop. | Use `dart:js_interop` or `dart:js_interop_unsafe` instead. |
-| [*`dart:svg`*][dart-svg] *(legacy)* <br>Scalable Vector Graphics.  | Use `package:web` instead. |
-| [*`dart:web_audio`*][dart-web_audio] *(legacy)* <br>High-fidelity audio programming in the browser. | Use `package:web` instead. |
-| [*`dart:web_gl`*][dart-web_gl] *(legacy)* <br>3D programming in the browser. | Use `package:web` instead. |
+| [**`package:web`**][pkg-web] <br>Bindings leves de API do navegador construídos em torno da interoperabilidade JS | Substitui todas as bibliotecas web `dart:*`. Leia o [guia de migração][html-web]. |
+| [**`dart:js_interop`**][js-interop] <br>Interoperabilidade com JavaScript e APIs do navegador. | Substitui `package:js`. |
+| [**`dart:js_interop_unsafe`**][js-interop-unsafe] <br>Métodos utilitários para manipular objetos JavaScript dinamicamente. | Substitui `dart:js_util`. |
+| [*`dart:html`*][dart-html] *(legado)* <br>Elementos HTML e outros recursos para aplicações baseadas na web. | Use `package:web` em vez disso. |
+| [*`dart:indexed_db`*][dart-indexed_db] *(legado)* <br>Armazenamento chave-valor no lado do cliente com suporte para índices.  | Use `package:web` em vez disso. |
+| [*`dart:js`*][dart-js], [*`dart:js_util`*][dart-js_util], [*`package:js`*][package-js] *(legado)* <br>Primitivas de baixo nível e anotações de alto nível para interoperabilidade JS. | Use `dart:js_interop` ou `dart:js_interop_unsafe` em vez disso. |
+| [*`dart:svg`*][dart-svg] *(legado)* <br>Scalable Vector Graphics.  | Use `package:web` em vez disso. |
+| [*`dart:web_audio`*][dart-web_audio] *(legado)* <br>Programação de áudio de alta fidelidade no navegador. | Use `package:web` em vez disso. |
+| [*`dart:web_gl`*][dart-web_gl] *(legado)* <br>Programação 3D no navegador. | Use `package:web` em vez disso. |
 
 {:.table .table-striped}
 
@@ -171,6 +171,8 @@ Web platform libraries
 Misc
 -->
 [development JavaScript compiler]: /tools/webdev#serve
+[compilador JavaScript de desenvolvimento]: /tools/webdev#serve
 [jit]: /overview#native-platform
 [JavaScript interoperability]: /interop/js-interop
+[Interoperabilidade JavaScript]: /interop/js-interop
 [html-web]: /interop/js-interop/package-web
