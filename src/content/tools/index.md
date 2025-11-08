@@ -1,49 +1,49 @@
 ---
-title: Tools
-description: The tools that support the Dart language.
+ia-translate: true
+title: Ferramentas
+description: As ferramentas que suportam a linguagem Dart.
 ---
 
-When you're ready to create an app, get the SDK and tools for your app
-type. If you aren't sure which tools you need, **get the Flutter SDK.**
+Quando estiver pronto para criar uma aplicação, obtenha o SDK e as ferramentas para o seu tipo de aplicação. Se não tiver certeza de quais ferramentas precisa, **obtenha o Flutter SDK.**
 
-| App type                  | Get started instructions                                     | Tool information                                           |
+| Tipo de aplicação         | Instruções de início                                         | Informações sobre ferramentas                              |
 |---------------------------|--------------------------------------------------------------|------------------------------------------------------------|
-| Flutter (mobile and more) | [Install Flutter]({{site.flutter-docs}}/get-started/install) | [Flutter tools]({{site.flutter-docs}}/using-ide)           |
-| Web app (non-Flutter)     | [Install the Dart SDK](/tools/sdk)                           | [General-purpose tools][] and [web tools](#web)            |
-| Server or command line    | [Install the Dart SDK](/tools/sdk)                           | [General-purpose tools][] and [specialized tools](#server) |
+| Flutter (mobile e mais)   | [Instalar Flutter]({{site.flutter-docs}}/get-started/install) | [Ferramentas Flutter]({{site.flutter-docs}}/using-ide)    |
+| Aplicação web (não-Flutter) | [Instalar o Dart SDK](/tools/sdk)                          | [Ferramentas de uso geral][General-purpose tools] e [ferramentas web](#web) |
+| Servidor ou linha de comando | [Instalar o Dart SDK](/tools/sdk)                        | [Ferramentas de uso geral][General-purpose tools] e [ferramentas especializadas](#server) |
 
 {:.table .table-striped}
 
 [General-purpose tools]: #general-purpose-tools
 
 :::note
-  The Flutter SDK includes the full Dart SDK.
+  O Flutter SDK inclui o Dart SDK completo.
 :::
 
-## General-purpose tools
+## Ferramentas de uso geral {:#general-purpose-tools}
 
-The following tools support the Dart language on all platforms.
+As seguintes ferramentas suportam a linguagem Dart em todas as plataformas.
 
 * [DartPad](#dartpad)
-* [IDEs and editors](#editors)
-* [Command-line tools](#cli)
+* [IDEs e editores](#editors)
+* [Ferramentas de linha de comando](#cli)
 
 
 ### DartPad
 
 <img src="/assets/img/dartpad-hello.png" alt="DartPad Hello World" width="200px" align="right" />
 
-[DartPad](/tools/dartpad) is
-a great, no-download-required way to learn Dart syntax
-and to experiment with Dart language features.
-It supports Dart's core libraries,
-except for VM libraries such as `dart:io`.
+O [DartPad](/tools/dartpad) é
+uma ótima maneira de aprender a sintaxe do Dart, sem necessidade de download,
+e de experimentar os recursos da linguagem Dart.
+Ele suporta as bibliotecas principais do Dart,
+exceto bibliotecas de VM como `dart:io`.
 
 
 <a id="ides-and-editors"></a>
-### IDEs and editors {:#editors}
+### IDEs e editores {:#editors}
 
-Dart plugins exist for these commonly used IDEs.
+Existem plugins Dart para estas IDEs comumente usadas.
 
 <ul class="cols2">
 <li>
@@ -61,8 +61,8 @@ Dart plugins exist for these commonly used IDEs.
 </li>
 </ul>
 
-The following Dart plugins are also available,
-thanks to the Dart community.
+Os seguintes plugins Dart também estão disponíveis,
+graças à comunidade Dart.
 
 <ul class="cols2">
 <li>
@@ -79,43 +79,43 @@ thanks to the Dart community.
 </li>
 </ul>
 
-A [Language Server Protocol implementation][LSP] is also available for
-[LSP-capable editors][] that don't have specific Dart extensions.
+Uma [implementação do Language Server Protocol][LSP] também está disponível para
+[editores compatíveis com LSP][LSP-capable editors] que não possuem extensões específicas do Dart.
 
 [LSP]: {{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
-### Command-line tools {:#cli}
+### Ferramentas de linha de comando {:#cli}
 
-The Dart SDK includes the following general-purpose `dart` tool:
+O Dart SDK inclui a seguinte ferramenta `dart` de uso geral:
 
 [`dart`](/tools/dart-tool)
-: A command-line interface (CLI) for creating, formatting, analyzing,
-  testing, documenting, compiling, and running Dart code,
-  as well as working with the [pub package manager](/tools/pub/packages).
+: Uma interface de linha de comando (CLI) para criar, formatar, analisar,
+  testar, documentar, compilar e executar código Dart,
+  além de trabalhar com o [gerenciador de pacotes pub](/tools/pub/packages).
 
 
-### Debugging
+### Depuração
 
 [Dart DevTools](/tools/dart-devtools)
-: A suite of debugging and performance tools.
+: Um conjunto de ferramentas de depuração e desempenho.
 
 
-## Tool for developing web apps {:#web}
+## Ferramenta para desenvolver aplicações web {:#web}
 
-The following tool supports developing web apps:
+A seguinte ferramenta suporta o desenvolvimento de aplicações web:
 
 [`webdev`](/tools/webdev)
-: A CLI to build and serve Dart web apps.
+: Uma CLI para construir e servir aplicações web Dart.
 
-## Tools for developing command-line apps and servers {:#server}
+## Ferramentas para desenvolver aplicações de linha de comando e servidores {:#server}
 
-The following tools support developing or running
-command-line apps and servers:
+As seguintes ferramentas suportam o desenvolvimento ou execução de
+aplicações de linha de comando e servidores:
 
 [`dart run`](/tools/dart-run)
-: Use the `dart run` command to run uncompiled Dart command-line apps
-  and some kinds of snapshots.
+: Use o comando `dart run` para executar aplicações Dart de linha de comando não compiladas
+  e alguns tipos de snapshots.
 
 [`dartaotruntime`](/tools/dartaotruntime)
-: Use this Dart runtime to run AOT snapshots.
+: Use este runtime Dart para executar snapshots AOT.

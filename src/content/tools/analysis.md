@@ -1,21 +1,22 @@
 ---
-title: Customizing static analysis
-shortTitle: Static analysis
+ia-translate: true
+title: Personalizando a análise estática
+shortTitle: Análise estática
 description: >-
-  Use an analysis options file and code comments to customize static analysis.
+  Use um arquivo de opções de análise e comentários no código para personalizar a análise estática.
 bodyClass: highlight-diagnostics
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
-Static analysis allows you to find problems before
-executing a single line of code. It's a powerful tool
-used to prevent bugs and ensure that code conforms to style
-guidelines.
+A análise estática permite encontrar problemas antes
+de executar uma única linha de código. É uma ferramenta poderosa
+usada para prevenir bugs e garantir que o código esteja em conformidade com as
+diretrizes de estilo.
 
-With the help of the analyzer, you can find
-simple typos. For example, perhaps an accidental semicolon
-made its way into an `if` statement:
+Com a ajuda do analyzer, você pode encontrar
+erros de digitação simples. Por exemplo, talvez um ponto e vírgula acidental
+tenha sido inserido em uma instrução `if`:
 
 
 :::secondary
@@ -27,8 +28,8 @@ void increment() {
 }
 ```
 
-If properly configured, the analyzer points to the semicolon and
-produces the following warning:
+Se configurado corretamente, o analyzer aponta para o ponto e vírgula e
+produz o seguinte aviso:
 
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```plaintext
@@ -36,8 +37,8 @@ info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty s
 ```
 :::
 
-The analyzer can also help you find more subtle problems.
-For example, perhaps you've forgotten to close a sink method:
+O analyzer também pode ajudá-lo a encontrar problemas mais sutis.
+Por exemplo, talvez você tenha esquecido de fechar um método sink:
 
 :::secondary
 <?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
@@ -51,40 +52,40 @@ info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in whic
 ```
 :::
 
-In the Dart ecosystem,
-the Dart Analysis Server and other tools use the
-[analyzer package]({{site.pub-pkg}}/analyzer)
-to perform static analysis.
+No ecossistema Dart,
+o Dart Analysis Server e outras ferramentas usam o
+[pacote analyzer]({{site.pub-pkg}}/analyzer)
+para realizar análise estática.
 
-You can customize static analysis to look for a variety of potential
-problems, including errors and warnings specified in the
-[Dart language spec](/resources/language/spec).
-You can also configure linter rules,
-to ensure that your code complies with the
-[Dart Style Guide](/effective-dart/style)
-and other suggested guidelines in [Effective Dart][]. 
-Tools such as [`dart analyze`](/tools/dart-analyze),
+Você pode personalizar a análise estática para procurar uma variedade de possíveis
+problemas, incluindo erros e avisos especificados na
+[especificação da linguagem Dart](/resources/language/spec).
+Você também pode configurar regras do linter,
+para garantir que seu código esteja em conformidade com o
+[Guia de Estilo Dart](/effective-dart/style)
+e outras diretrizes sugeridas no [Effective Dart][].
+Ferramentas como [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
-and [IDEs and editors](/tools#editors)
-use the analyzer package to evaluate your code.
+e [IDEs e editores](/tools#editors)
+usam o pacote analyzer para avaliar seu código.
 
-This document explains how to customize the behavior of the analyzer
-using either an analysis options file or comments in Dart source code. If you want to
-add static analysis to your tool, see the
-[analyzer package]({{site.pub-pkg}}/analyzer) docs and the
-[Analysis Server API Specification.](https://htmlpreview.github.io/?{{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/doc/api.html)
+Este documento explica como personalizar o comportamento do analyzer
+usando um arquivo de opções de análise ou comentários no código-fonte Dart. Se você deseja
+adicionar análise estática à sua ferramenta, consulte a
+documentação do [pacote analyzer]({{site.pub-pkg}}/analyzer) e a
+[Especificação da API do Analysis Server.](https://htmlpreview.github.io/?{{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/doc/api.html)
 
 :::note
-To view various analyzer diagnostics with explanations and common fixes,
-see [Diagnostic messages][diagnostics].
+Para visualizar vários diagnósticos do analyzer com explicações e correções comuns,
+consulte [Mensagens de diagnóstico][diagnostics].
 :::
 
-## The analysis options file
+## O arquivo de opções de análise
 
-Place the analysis options file, `analysis_options.yaml`,
-at the root of the package, in the same directory as the pubspec file.
+Coloque o arquivo de opções de análise, `analysis_options.yaml`,
+na raiz do pacote, no mesmo diretório que o arquivo pubspec.
 
-Here's a sample analysis options file:
+Aqui está um exemplo de arquivo de opções de análise:
 
 <?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="https:"?>
 ```yaml title="analysis_options.yaml"
@@ -101,49 +102,49 @@ linter:
     - cancel_subscriptions
 ```
 
-The sample illustrates the most common top-level entries:
+O exemplo ilustra as entradas de nível superior mais comuns:
 
-- Use <code>include: <em>url</em></code> to
-  bring in options from the specified URL—in this case,
-  from a file in the `lints` package.
-  Because YAML doesn't allow duplicate keys,
-  you can include at most one file.
-- Use the `analyzer:` entry to customize static analysis:
-  [enabling stricter type checks](#enabling-additional-type-checks),
-  [excluding files](#excluding-files),
-  [ignoring specific rules](#ignoring-rules),
-  [changing the severity of rules](#changing-the-severity-of-rules), or
-  [enabling experiments](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
-- Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
+- Use <code>include: <em>url</em></code> para
+  incluir opções da URL especificada—neste caso,
+  de um arquivo no pacote `lints`.
+  Como YAML não permite chaves duplicadas,
+  você pode incluir no máximo um arquivo.
+- Use a entrada `analyzer:` para personalizar a análise estática:
+  [habilitando verificações de tipo mais rigorosas](#enabling-additional-type-checks),
+  [excluindo arquivos](#excluding-files),
+  [ignorando regras específicas](#ignoring-rules),
+  [alterando a gravidade das regras](#changing-the-severity-of-rules), ou
+  [habilitando experimentos](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
+- Use a entrada `linter:` para configurar [regras do linter](#enabling-linter-rules).
 
 :::warning
-**YAML is sensitive to whitespace.** 
-Don't use tabs in a YAML file,
-and use 2 spaces to denote each level of indentation.
+**YAML é sensível a espaços em branco.**
+Não use tabs em um arquivo YAML,
+e use 2 espaços para indicar cada nível de indentação.
 :::
 
-If the analyzer can't find an analysis options file at the package root,
-it walks up the directory tree, looking for one.
-If no file is available, the analyzer defaults to standard checks.
+Se o analyzer não conseguir encontrar um arquivo de opções de análise na raiz do pacote,
+ele percorre a árvore de diretórios procurando por um.
+Se nenhum arquivo estiver disponível, o analyzer usa as verificações padrão.
 
-Consider the following directory structure for a large project:
+Considere a seguinte estrutura de diretórios para um grande projeto:
 
 <img
   src="/assets/img/guides/analysis-options-directory-structure.png"
   class="diagram-wrap"
   alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2).">
 
-The analyzer uses file #1 to analyze the code in `my_other_package`
-and `my_other_other_package`, and file #2 to analyze the code in
+O analyzer usa o arquivo #1 para analisar o código em `my_other_package`
+e `my_other_other_package`, e o arquivo #2 para analisar o código em
 `my_package`.
 
 
-## Enabling stricter type checks {:#enabling-additional-type-checks}
+## Habilitando verificações de tipo mais rigorosas {:#enabling-additional-type-checks}
 
-If you want stricter static checks than
-the [Dart type system][type-system] requires,
-consider enabling the 
-`strict-casts`, `strict-inference`, and `strict-raw-types` language modes:
+Se você deseja verificações estáticas mais rigorosas do que
+o [sistema de tipos Dart][type-system] exige,
+considere habilitar os
+modos de linguagem `strict-casts`, `strict-inference` e `strict-raw-types`:
 
 <?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="strict-raw-types" remove="exclude"?>
 ```yaml title="analysis_options.yaml"
@@ -154,16 +155,16 @@ analyzer:
     strict-raw-types: true
 ```
 
-You can use the modes together or separately; all default to `false`.
+Você pode usar os modos juntos ou separadamente; todos têm `false` como padrão.
 
 `strict-casts: <bool>`
-: A value of `true` ensures that the type inference engine never
-  implicitly casts from `dynamic` to a more specific type.
-  The following valid Dart code includes an implicit downcast from the
-  `dynamic` value returned by `jsonDecode` to `List<String>`
-  that could fail at runtime.
-  This mode reports the potential error, 
-  requiring you to add an explicit cast or otherwise adjust your code.
+: Um valor `true` garante que o mecanismo de inferência de tipos nunca
+  converta implicitamente de `dynamic` para um tipo mais específico.
+  O seguinte código Dart válido inclui um downcast implícito do
+  valor `dynamic` retornado por `jsonDecode` para `List<String>`
+  que pode falhar em tempo de execução.
+  Este modo relata o erro potencial,
+  exigindo que você adicione um cast explícito ou ajuste seu código de outra forma.
 
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-casts)" replace="/jsonDecode\(jsonText\)/[!$&!]/g"?>
 ```dart tag=fails-sa
@@ -182,9 +183,9 @@ error - The argument type 'dynamic' can't be assigned to the parameter type 'Lis
 ```
 
 :::version-note
-The `strict-casts` mode was introduced in Dart 2.16.
-To enable similar checks with earlier SDK releases,
-consider using the now deprecated `implicit-casts` option:
+O modo `strict-casts` foi introduzido no Dart 2.16.
+Para habilitar verificações semelhantes em versões anteriores do SDK,
+considere usar a opção `implicit-casts` agora obsoleta:
 
 ```yaml
 analyzer:
@@ -194,11 +195,11 @@ analyzer:
 :::
 
 `strict-inference: <bool>`
-: A value of `true` ensures that the type inference engine never chooses
-  the `dynamic` type when it can't determine a static type.
-  The following valid Dart code creates a `Map`
-  whose type argument cannot be inferred, 
-  resulting in an inference failure hint by this mode:
+: Um valor `true` garante que o mecanismo de inferência de tipos nunca escolha
+  o tipo `dynamic` quando não consegue determinar um tipo estático.
+  O seguinte código Dart válido cria um `Map`
+  cujo argumento de tipo não pode ser inferido,
+  resultando em uma dica de falha de inferência por este modo:
 
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-inference)" replace="/{}/[!$&!]/g"?>
 ```dart tag=fails-sa
