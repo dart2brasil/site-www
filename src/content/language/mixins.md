@@ -184,7 +184,7 @@ Neste exemplo, apenas classes que estendem ou implementam a classe `Musician`
 podem usar o mixin `MusicalPerformer`. Porque `SingerDancer` estende `Musician`,
 `SingerDancer` pode misturar `MusicalPerformer`.
 
-## `class`, `mixin` ou `mixin class`?
+## `class`, `mixin` ou `mixin class`? {:#class-mixin-or-mixin-class}
 
 :::version-note
 A declaração `mixin class` requer uma [versão de linguagem][language version] de pelo menos 3.0.
