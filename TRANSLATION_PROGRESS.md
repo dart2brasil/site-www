@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 130 files (with ia-translate: true metadata)
+- **Remaining:** ~815 files
+- **Progress:** 13.8%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 75 (72 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 130 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,15 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 10: Diagnostic Errors - dead/default/deprecated/duplicate (35 files)
+41-75. ✅ All 35 diagnostic error files (dead_*, default_*, deprecated_*, duplicate_*)
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 50/~776 files (6.4%)
+  - ✅ Section 10 (Prompt 10): Diagnostic Errors - dead/default/deprecated/duplicate (35 files) 🎉
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,8 +104,8 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (75 files this session including merge)
+Progress: 13.8% complete (130/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉

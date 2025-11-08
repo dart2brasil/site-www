@@ -2,10 +2,12 @@
 
 ## Overview
 - **Total estimated files:** ~945 markdown files
-- **Already completed:** 92 files (9.7%)
-- **Remaining:** ~853 files
+- **Already completed:** 130 files (13.8%)
+- **Remaining:** ~815 files
 - **Target for Tools section:** ~700 files remaining
 - **Strategy:** 20 focused sections (~35-40 files each), prioritizing high-value documentation
+
+**Recent completion:** PROMPT 10 from 20-section-prompts.md (35 diagnostic error files: dead, default, deprecated, duplicate)
 
 ---
 
@@ -375,12 +377,13 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **PROMPT 10** (from 20-section-prompts.md): Diagnostic Errors - dead/default/deprecated/duplicate (35/35 files) - 100% COMPLETE! 🎉
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+All sections 1-20 pending (except PROMPT 10 completed)
 
 ---
 
