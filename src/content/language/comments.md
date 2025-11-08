@@ -14,7 +14,7 @@ Dart suporta comentários de linha única, comentários multi-linha e
 comentários de documentação.
 
 
-## Comentários de linha única
+## Comentários de linha única {:#single-line-comments}
 
 Um comentário de linha única começa com `//`. Tudo entre `//` e o
 final da linha é ignorado pelo compilador Dart.
@@ -27,7 +27,7 @@ void main() {
 }
 ```
 
-## Comentários multi-linha
+## Comentários multi-linha {:#multi-line-comments}
 
 Um comentário multi-linha começa com `/*` e termina com `*/`. Tudo
 entre `/*` e `*/` é ignorado pelo compilador Dart (a menos que o
@@ -48,7 +48,7 @@ void main() {
 }
 ```
 
-## Comentários de documentação
+## Comentários de documentação {:#documentation-comments}
 
 Comentários de documentação são comentários multi-linha ou de linha única que começam
 com `///` ou `/**`. Usar `///` em linhas consecutivas tem o mesmo

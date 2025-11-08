@@ -21,7 +21,7 @@ Você também pode manipular o fluxo de controle em Dart usando:
 - [Loops][], como `for` e `while`
 - [Exceptions][], como `try`, `catch` e `throw`
 
-## If
+## If {:#if}
 
 Dart suporta instruções `if` com cláusulas `else` opcionais.
 A condição entre parênteses após `if` deve ser
@@ -41,7 +41,7 @@ if (isRaining()) {
 Para aprender como usar `if` em um contexto de expressão,
 confira [Conditional expressions][].
 
-### If-case
+### If-case {:#if-case}
 
 Instruções `if` do Dart suportam cláusulas `case` seguidas por um [pattern][]:
 
@@ -79,8 +79,7 @@ Cláusulas case em instruções if requerem
 uma [language version][] de pelo menos 3.0.
 :::
 
-<a id="switch"></a>
-## Instruções Switch
+## Instruções Switch {:#switch-statements}
 
 Uma instrução `switch` avalia uma expressão de valor contra uma série de cases.
 Cada cláusula `case` é um [pattern][] para o valor corresponder.
@@ -145,7 +144,7 @@ confira a documentação de patterns sobre [Switch statements and expressions][]
 
 [Switch statements and expressions]: /language/patterns#switch-statements-and-expressions
 
-### Expressões Switch
+### Expressões Switch {:#switch-expressions}
 
 Uma _expressão_ `switch` produz um valor com base no corpo da expressão
 de qualquer case que corresponda.
@@ -205,7 +204,7 @@ A sintaxe de uma expressão `switch` difere da sintaxe de instrução `switch`:
 Expressões switch requerem uma [language version][] de pelo menos 3.0.
 :::
 
-### Verificação de exaustividade
+### Verificação de exaustividade {:#exhaustiveness-checking}
 
 A verificação de exaustividade é um recurso que relata um
 erro em tempo de compilação se for possível que um valor entre em um switch mas
@@ -258,8 +257,7 @@ A verificação de exaustividade informaria você sobre o subtipo faltante.
 Isso permite que você use Dart de uma forma um tanto
 [funcional de tipo de dado algébrico](https://en.wikipedia.org/wiki/Algebraic_data_type).
 
-<a id="when"></a>
-## Cláusula Guard
+## Cláusula Guard {:#guard-clause}
 
 Para definir uma cláusula guard opcional após uma cláusula `case`, use a keyword `when`.
 Uma cláusula guard pode seguir `if case`, e
