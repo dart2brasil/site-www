@@ -383,7 +383,7 @@ var future = subscription.asFuture();
 ```
 
 
-### EVITE descrever os parâmetros no nome da função ou método {:#avoid-describing-the-parameters-in-the-function-or-method-name}
+### EVITE descrever os parâmetros no nome da função ou método {:#avoid-describing-the-parameters-in-the-functions-or-methods-name}
 
 O usuário verá o argumento no local da chamada, então geralmente não ajuda
 a legibilidade também se referir a ele no próprio nome.
@@ -608,7 +608,7 @@ class Color {
 ```
 
 
-### EVITE estender uma classe que não é destinada a ser subclasse {:#avoid-extending-a-class-that-wasnt-designed-to-be-subclassed}
+### EVITE estender uma classe que não é destinada a ser subclasse {:#avoid-extending-a-class-that-isnt-intended-to-be-subclassed}
 
 Se um construtor é mudado de um construtor gerativo para um construtor de fábrica,
 qualquer construtor de subclasse chamando esse construtor vai quebrar.
@@ -624,7 +624,7 @@ Caso contrário, mudanças posteriores podem quebrar seu código.
 
 <a id="do-document-if-your-class-supports-being-extended" aria-hidden="true"></a>
 
-### FAÇA use modificadores de classe para controlar se sua classe pode ser estendida {:#do-use-class-modifiers-to-control-whether-your-class-can-be-extended}
+### FAÇA use modificadores de classe para controlar se sua classe pode ser estendida {:#do-use-class-modifiers-to-control-if-your-class-can-be-extended}
 
 Modificadores de classe como `final`, `interface`, ou `sealed`
 restringem como uma classe pode ser estendida.
@@ -658,7 +658,7 @@ pretende, e eles podem quebrar seu código sem perceber.
 
 <a id="do-document-if-your-class-supports-being-used-as-an-interface" aria-hidden="true"></a>
 
-### FAÇA use modificadores de classe para controlar se sua classe pode ser uma interface {:#do-use-class-modifiers-to-control-whether-your-class-can-be-an-interface}
+### FAÇA use modificadores de classe para controlar se sua classe pode ser uma interface {:#do-use-class-modifiers-to-control-if-your-class-can-be-an-interface}
 
 Ao projetar uma biblioteca, use modificadores de classe como `final`, `base`, ou `sealed` para impor o uso
 pretendido. Por exemplo, use `final class C {}` ou `base class D {}` para prevenir
@@ -1896,7 +1896,7 @@ sobre como igualdade funciona que seus objetos precisam corresponder, e
 tipos de coleção como tabelas hash têm contratos sutis que eles esperam que
 elementos sigam.
 
-### FAÇA sobrescreva `hashCode` se você sobrescrever `==` {:#do-override-hashcode-if-you-override-}
+### FAÇA sobrescreva `hashCode` se você sobrescrever `==` {:#do-override-hashcode-if-you-override}
 
 {% render 'linter-rule-mention.md', rules:'hash_and_equals' %}
 
@@ -1936,7 +1936,7 @@ A maioria das coleções baseadas em hash não antecipa isso—elas assumem que 
 será o mesmo para sempre e podem se comportar imprevisivelmente se isso não for
 verdade.
 
-### NÃO torne o parâmetro para `==` anulável {:#dont-make-the-parameter-to--nullable}
+### NÃO torne o parâmetro para `==` anulável {:#dont-make-the-parameter-to-nullable}
 
 {% render 'linter-rule-mention.md', rules:'avoid_null_checks_in_equality_operators' %}
 

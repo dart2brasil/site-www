@@ -1110,7 +1110,7 @@ construtor, pode precisar fazer o padrão "campo privado, getter público", mas
 não recorra a isso até precisar.
 
 
-### CONSIDERE usar `=>` para membros simples {:#consider-using--for-simple-members}
+### CONSIDERE usar `=>` para membros simples {:#consider-using-for-simple-members}
 
 {% render 'linter-rule-mention.md', rules:'prefer_expression_function_bodies' %}
 
@@ -1358,7 +1358,7 @@ isso é melhor do que tornar o campo `late` e perder alguma segurança estática
 desempenho.
 
 
-### FAÇA uso de `;` em vez de `{}` para corpos de construtor vazios {:#do-use--instead-of--for-empty-constructor-bodies}
+### FAÇA uso de `;` em vez de `{}` para corpos de construtor vazios {:#do-use-instead-of-for-empty-constructor-bodies}
 
 {% render 'linter-rule-mention.md', rules:'empty_constructor_bodies' %}
 
