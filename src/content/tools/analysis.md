@@ -80,7 +80,7 @@ Para visualizar vários diagnósticos do analyzer com explicações e correçõe
 consulte [Mensagens de diagnóstico][diagnostics].
 :::
 
-## O arquivo de opções de análise
+## O arquivo de opções de análise {:#the-analysis-options-file}
 
 Coloque o arquivo de opções de análise, `analysis_options.yaml`,
 na raiz do pacote, no mesmo diretório que o arquivo pubspec.
