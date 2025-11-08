@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The switch case expression type '{0}' can't override the '==' operator._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type of the expression
+O analisador produz este diagnóstico quando the type of the expression
 following the keyword `case` has an implementation of the `==` operator
 other than the one in `Object`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the expression
+O código a seguir produz este diagnóstico porque the expression
 following the keyword `case` (`C(0)`) has the type `C`, and the class `C`
 overrides the `==` operator:
 
@@ -40,7 +41,7 @@ void f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there isn't a strong reason not to do so, then rewrite the code to use
 an if-else structure:

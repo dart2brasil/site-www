@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Fields in struct classes must have an explicitly declared type of 'int', 'double' or 'Pointer'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field in a subclass of
+O analisador produz este diagnóstico quando a field in a subclass of
 `Struct` or `Union` doesn't have a type annotation. Every field must have
 an explicit type, and the type must either be `int`, `double`, `Pointer`,
 or a subclass of either `Struct` or `Union`.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `str`
+O código a seguir produz este diagnóstico porque the field `str`
 doesn't have a type annotation:
 
 ```dart
@@ -34,7 +35,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Explicitly specify the type of the field:
 

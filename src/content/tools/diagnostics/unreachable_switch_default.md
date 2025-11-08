@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _This default clause is covered by the previous cases._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `default` clause in a
+O analisador produz este diagnóstico quando a `default` clause in a
 `switch` statement doesn't match anything because all of the matchable
 values are matched by an earlier `case` clause.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the values `E.e1` and
+O código a seguir produz este diagnóstico porque the values `E.e1` and
 `E.e2` were matched in the preceding cases:
 
 ```dart
@@ -35,7 +36,7 @@ void f(E x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary `default` clause:
 

@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Fields in a struct class whose type is 'Pointer' shouldn't have any annotations._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field that's declared in a
+O analisador produz este diagnóstico quando a field that's declared in a
 subclass of `Struct` and has the type `Pointer` also has an annotation
 associated with it.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `p`, which
+O código a seguir produz este diagnóstico porque the field `p`, which
 has the type `Pointer` and is declared in a subclass of `Struct`, has the
 annotation `@Double()`:
 
@@ -32,7 +33,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the annotations from the field:
 

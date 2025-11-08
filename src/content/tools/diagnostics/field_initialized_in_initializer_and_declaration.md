@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Fields can't be initialized in the constructor if they are final and were already initialized at their declaration._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a final field is initialized in
+O analisador produz este diagnóstico quando a final field is initialized in
 both the declaration of the field and in an initializer in a constructor.
 Final fields can only be assigned once, so it can't be initialized in both
 places.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` is :
+O código a seguir produz este diagnóstico porque `f` is :
 
 ```dart
 class C {
@@ -27,11 +28,11 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the initialization doesn't depend on any values passed to the
 constructor, and if all of the constructors need to initialize the field to
-the same value, then remove the initializer from the constructor:
+the same value, then remove the initializer from the construtor:
 
 ```dart
 class C {

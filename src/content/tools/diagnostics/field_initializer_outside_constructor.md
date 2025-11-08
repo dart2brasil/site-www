@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Field formal parameters can only be used in a constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an initializing formal
+O analisador produz este diagnóstico quando an initializing formal
 parameter is used in the parameter list for anything other than a
 constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the initializing
+O código a seguir produz este diagnóstico porque the initializing
 formal parameter `this.x` is being used in the method `m`:
 
 ```dart
@@ -28,7 +29,7 @@ class A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the initializing formal parameter with a normal parameter and
 assign the field within the body of the method:

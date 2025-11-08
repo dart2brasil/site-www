@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of a null check ('!')._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a null check operator (`!`) is
+O analisador produz este diagnóstico quando a null check operator (`!`) is
 used in a context where a nullable value is acceptable.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because a null check is being
+O código a seguir produz este diagnóstico porque a null check is being
 used even though `null` is a valid value to return:
 
 ```dart
@@ -36,7 +37,7 @@ int? f(int? i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the null check operator:
 

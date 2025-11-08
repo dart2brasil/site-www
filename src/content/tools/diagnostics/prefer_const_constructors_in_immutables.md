@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Constructors in '@immutable' classes should be declared as 'const'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a non-`const` constructor is
+O analisador produz este diagnóstico quando a non-`const` constructor is
 found in a class that has the `@immutable` annotation.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor in `C`
+O código a seguir produz este diagnóstico porque the constructor in `C`
 isn't declared as `const` even though `C` has the `@immutable` annotation:
 
 ```dart
@@ -41,10 +42,10 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the class really is intended to be immutable, then add the `const`
-modifier to the constructor:
+modifier to the construtor:
 
 ```dart
 import 'package:meta/meta.dart';

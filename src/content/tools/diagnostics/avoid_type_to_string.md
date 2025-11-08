@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Using 'toString' on a 'Type' is not safe in production code._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the method `toString` is
+O analisador produz este diagnóstico quando the method `toString` is
 invoked on a value whose static type is `Type`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `toString`
+O código a seguir produz este diagnóstico porque the method `toString`
 is invoked on the `Type` returned by `runtimeType`:
 
 ```dart
@@ -36,7 +37,7 @@ bool isC(Object o) => o.runtimeType.[!toString!]() == 'C';
 class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If it's essential that the type is exactly the same, then use an explicit
 comparison:

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Arguments of a constant creation must be constant expressions._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a const constructor is invoked
+O analisador produz este diagnóstico quando a const constructor is invoked
 with an argument that isn't a constant expression.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `i` isn't a constant:
+O código a seguir produz este diagnóstico porque `i` isn't a constant:
 
 ```dart
 class C {
@@ -26,10 +27,10 @@ class C {
 C f(int i) => const C([!i!]);
 ```
 
-## Common fixes
+## Correções comuns
 
 Either make all of the arguments constant expressions, or remove the
-`const` keyword to use the non-constant form of the constructor:
+`const` keyword to use the non-constant form of the construtor:
 
 ```dart
 class C {

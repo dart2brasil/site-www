@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Required named parameters should be before optional named parameters._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when required named parameters occur
+O analisador produz este diagnóstico quando required named parameters occur
 after optional named parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the required parameter
+O código a seguir produz este diagnóstico porque the required parameter
 `x` is after the optional parameter `y`:
 
 ```dart
 void f({int? y, required int [!x!]}) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Reorder the parameters so that all required named parameters are before
 any optional named parameters:

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The platform '{0}' is not a recognized platform._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an unknown platform name is
+O analisador produz este diagnóstico quando an unknown platform name is
 used as a key in the `platforms` map.
 To learn more about specifying your package's supported platforms,
 check out the [documentation on platform declarations](https://dart.dev/tools/pub/pubspec#platforms).
 
-## Example
+## Exemplo
 
 The following `pubspec.yaml` produces this diagnostic because the platform
 `browser` is unknown.
@@ -27,7 +28,7 @@ platforms:
   [!browser:!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If you can rely on automatic platform detection, then omit the
 top-level `platforms` key.

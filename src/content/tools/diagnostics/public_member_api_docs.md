@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Missing documentation for a public member._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the declaration of part of the
+O analisador produz este diagnóstico quando the declaration of part of the
 public API of a package doesn't have a documentation comment.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `C` doesn't
+O código a seguir produz este diagnóstico porque a classe `C` doesn't
 have a documentation comment:
 
 ```dart
 class [!C!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Add a documentation comment.
 

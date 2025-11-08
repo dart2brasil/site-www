@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Constant variables can't be assigned a value after initialization._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it finds an assignment to a
+O analisador produz este diagnóstico quando it finds an assignment to a
 top-level variable, a static field, or a local variable that has the
 `const` modifier. The value of a compile-time constant can't be changed at
 runtime.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `c` is being assigned a
-value even though it has the `const` modifier:
+O código a seguir produz este diagnóstico porque `c` is being assigned a
+value even though it has the `const` modificador:
 
 ```dart
 const c = 0;
@@ -30,9 +31,9 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the variable must be assignable, then remove the `const` modifier:
+If the variable must be assignable, then remove the `const` modificador:
 
 ```dart
 var c = 0;

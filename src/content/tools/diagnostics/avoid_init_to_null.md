@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _Redundant initialization to 'null'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a nullable variable is
+O analisador produz este diagnóstico quando a nullable variable is
 explicitly initialized to `null`. The variable can be a local variable,
 field, or top-level variable.
 
@@ -30,9 +31,9 @@ A variable or field that isn't explicitly initialized automatically gets
 initialized to `null`. There's no concept of "uninitialized memory" in
 Dart.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variable `f` is
+O código a seguir produz este diagnóstico porque the variable `f` is
 explicitly initialized to `null`:
 
 ```dart
@@ -47,7 +48,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary initialization:
 

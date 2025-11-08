@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'Array's must have an 'Array' annotation that matches the dimensions._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the number of dimensions
+O analisador produz este diagnóstico quando the number of dimensions
 specified in an `Array` annotation doesn't match the number of nested
 arrays specified by the type of a field.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `a0` has a
+O código a seguir produz este diagnóstico porque the field `a0` has a
 type with three nested arrays, but only two dimensions are given in the
 `Array` annotation:
 
@@ -32,7 +33,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type of the field is correct, then fix the annotation to have the
 required number of dimensions:

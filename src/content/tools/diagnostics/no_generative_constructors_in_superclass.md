@@ -5,24 +5,25 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' can't extend '{1}' because '{1}' only has factory constructors (no generative constructors), and '{0}' has at least one generative constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class that has at least one
+O analisador produz este diagnóstico quando a class that has at least one
 generative constructor (whether explicit or implicit) has a superclass
-that doesn't have any generative constructors. Every generative
+that não tem umay generative constructors. Every generative
 constructor, except the one defined in `Object`, invokes, either
 explicitly or implicitly, one of the generative constructors from its
 superclass.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `B` has an
+O código a seguir produz este diagnóstico porque a classe `B` has an
 implicit generative constructor that can't invoke a generative constructor
-from `A` because `A` doesn't have any generative constructors:
+from `A` because `A` não tem umay generative construtores:
 
 ```dart
 class A {
@@ -32,7 +33,7 @@ class A {
 class B extends [!A!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the superclass should have a generative constructor, then add one:
 
@@ -46,7 +47,7 @@ class B extends A {}
 ```
 
 If the subclass shouldn't have a generative constructor, then remove it by
-adding a factory constructor:
+adding a factory construtor:
 
 ```dart
 class A {

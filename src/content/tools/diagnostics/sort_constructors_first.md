@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Constructor declarations should be before non-constructor declarations._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor declaration is
+O analisador produz este diagnóstico quando a constructor declaration is
 preceded by one or more non-constructor declarations.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor for
+O código a seguir produz este diagnóstico porque the constructor for
 `C` appears after the method `m`:
 
 ```dart
@@ -38,7 +39,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Move all of the constructor declarations before any other declarations:
 

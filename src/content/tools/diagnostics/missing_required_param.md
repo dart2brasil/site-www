@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The parameter '{0}' is required._
 
 _The parameter '{0}' is required. {1}._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function with a
+O analisador produz este diagnóstico quando a method or function with a
 named parameter that is annotated as being required is invoked without
 providing a value for the parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the named parameter `x`
+O código a seguir produz este diagnóstico porque the named parameter `x`
 is required:
 
 ```dart
@@ -32,7 +33,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Provide the required value:
 

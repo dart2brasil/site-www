@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The value of the 'flutter' field is expected to be a map._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value of the `flutter` key
+O analisador produz este diagnóstico quando the value of the `flutter` key
 isn't a map.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of the
+O código a seguir produz este diagnóstico porque the value of the
 top-level `flutter` key is a string:
 
 ```yaml
@@ -24,7 +25,7 @@ name: example
 flutter: [!true!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to specify Flutter-specific options, then change the value to
 be a map:

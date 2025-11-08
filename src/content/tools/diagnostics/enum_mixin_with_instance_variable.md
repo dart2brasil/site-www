@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Mixins applied to enums can't have instance variables._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a mixin that's applied to an
+O analisador produz este diagnóstico quando a mixin that's applied to an
 enum declares one or more instance variables. This isn't allowed because
 the enum values are constant, and there isn't any way for the constructor
 in the enum to initialize any of the mixin's fields.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the mixin `M` defines
+O código a seguir produz este diagnóstico porque the mixin `M` defines
 the instance field `x`:
 
 ```dart
@@ -31,7 +32,7 @@ enum E with [!M!] {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to apply the mixin, then change all instance fields into
 getter and setter pairs and implement them in the enum if necessary:

@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The native type of this function couldn't be inferred so it must be specified in the annotation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `@Native`-annotated function
+O analisador produz este diagnóstico quando a `@Native`-annotated function
 requires a type hint on the annotation to infer the native function type.
 
 Dart types like `int` and `double` have multiple possible native
@@ -21,10 +22,10 @@ explicit type must be given.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f()` has
-the return type `int`, but doesn't have an explicit type parameter on the
+O código a seguir produz este diagnóstico porque the function `f()` has
+the return type `int`, but não tem uma explicit type parameter on the
 `Native` annotation:
 
 ```dart
@@ -34,7 +35,7 @@ import 'dart:ffi';
 external int [!f!]();
 ```
 
-## Common fixes
+## Correções comuns
 
 Add the corresponding type to the annotation. For instance, if `f()` was
 declared to return an `int32_t` in C, the Dart function should be declared

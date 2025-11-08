@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Doc imports can't be deferred._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a documentation import uses the
+O analisador produz este diagnóstico quando a documentation import uses the
 `deferred` keyword.
 
 Documentation imports can't be deferred because deferring them wouldn't
 impact the size of the compiled code.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the documentation
+O código a seguir produz este diagnóstico porque the documentation
 import has a `deferred` keyword:
 
 ```dart
@@ -28,7 +29,7 @@ import has a `deferred` keyword:
 library;
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the `deferred` keyword:
 

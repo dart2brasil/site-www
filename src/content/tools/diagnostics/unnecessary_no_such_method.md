@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Unnecessary 'noSuchMethod' declaration._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there's a declaration of
+O analisador produz este diagnóstico quando there's a declaration of
 `noSuchMethod`, the only thing the declaration does is invoke the
 overridden declaration, and the overridden declaration isn't the
 declaration in `Object`.
@@ -22,9 +23,9 @@ inherited abstract methods that aren't implemented in that class. This
 works even if the overriding implementation is inherited from a superclass,
 so there's no value to declare it again in a subclass.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the declaration of
+O código a seguir produz este diagnóstico porque the declaration of
 `noSuchMethod` in `A` makes the declaration of `noSuchMethod` in `B`
 unnecessary:
 
@@ -41,7 +42,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary declaration:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,22 +21,22 @@ bodyClass: highlight-diagnostics
 
 _Use 'const' for final variables initialized to a constant value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a top-level variable, static
-field, or local variable is marked as `final` and is initialized to a
+O analisador produz este diagnóstico quando a top-level variable, static
+field, or local variable está marcado como `final` and is initialized to a
 constant value.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the top-level variable
+O código a seguir produz este diagnóstico porque the top-level variable
 `v` is both `final` and initialized to a constant value:
 
 ```dart
 [!final v = const <int>[]!];
 ```
 
-The following code produces this diagnostic because the static field `f`
+O código a seguir produz este diagnóstico porque the static field `f`
 is both `final` and initialized to a constant value:
 
 ```dart
@@ -44,7 +45,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the local variable `v`
+O código a seguir produz este diagnóstico porque the local variable `v`
 is both `final` and initialized to a constant value:
 
 ```dart
@@ -54,7 +55,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the keyword `final` with `const` and remove `const` from the
 initializer:

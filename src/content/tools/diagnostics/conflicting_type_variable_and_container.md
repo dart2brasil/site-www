@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' can't be used to name both a type parameter and the class in which the type parameter is defined._
@@ -17,22 +18,22 @@ _'{0}' can't be used to name both a type parameter and the extension type in whi
 
 _'{0}' can't be used to name both a type parameter and the mixin in which the type parameter is defined._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class, mixin, or extension
+O analisador produz este diagnóstico quando a class, mixin, or extension
 declaration declares a type parameter with the same name as the class,
 mixin, or extension that declares it.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type parameter `C`
+O código a seguir produz este diagnóstico porque the type parameter `C`
 has the same name as the class `C` of which it's a part:
 
 ```dart
 class C<[!C!]> {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Rename either the type parameter, or the class, mixin, or extension:
 

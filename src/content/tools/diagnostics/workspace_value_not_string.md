@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Workspace entries are required to be directory paths (strings)._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `workspace` list contains a
+O analisador produz este diagnóstico quando a `workspace` list contains a
 value that isn't a string.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `workspace` list
+O código a seguir produz este diagnóstico porque the `workspace` list
 contains a map:
 
 ```yaml
@@ -25,7 +26,7 @@ workspace:
     - [!image.gif: true!]
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the `workspace` list so that it only contains valid POSIX-style directory
 paths:

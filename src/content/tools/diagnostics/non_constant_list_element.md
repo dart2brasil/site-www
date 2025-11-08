@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The values in a const list literal must be constants._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an element in a constant list
+O analisador produz este diagnóstico quando an element in a constant list
 literal isn't a constant value. The list literal can be constant either
 explicitly (because it's prefixed by the `const` keyword) or implicitly
 (because it appears in a [constant context][]).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` isn't a constant,
+O código a seguir produz este diagnóstico porque `x` isn't a constant,
 even though it appears in an implicitly constant list literal:
 
 ```dart
@@ -26,7 +27,7 @@ var x = 2;
 var y = const <int>[0, 1, [!x!]];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the list needs to be a constant list, then convert the element to be a
 constant. In the example above, you might add the `const` keyword to the

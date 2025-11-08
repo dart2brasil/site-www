@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of getter and setter to wrap a field._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a getter and setter pair
+O analisador produz este diagnóstico quando a getter and setter pair
 returns and sets the value of a field without any additional processing.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the getter/setter pair
+O código a seguir produz este diagnóstico porque the getter/setter pair
 named `c` only expose the field named `_c`:
 
 ```dart
@@ -40,7 +41,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Make the field public and remove the getter and setter:
 

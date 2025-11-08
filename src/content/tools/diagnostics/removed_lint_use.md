@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' was removed in Dart '{1}'_
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a lint that has been removed is
+O analisador produz este diagnóstico quando a lint that has been removed is
 used in an analysis options file. Because the lint no longer exists,
 referencing it will have no effect.
 
-## Example
+## Exemplo
 
 Assuming that the lint `removed_lint` has been removed, the following
 options file produces this diagnostic:
@@ -27,7 +28,7 @@ linter:
   - [!removed_lint!]
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the reference to the lint code:
 

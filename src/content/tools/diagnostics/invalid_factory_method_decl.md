@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Factory method '{0}' must have a return type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method that is annotated with
+O analisador produz este diagnóstico quando a method that is annotated with
 the [`factory`][meta-factory] annotation has a return type of `void`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `createC`
+O código a seguir produz este diagnóstico porque the method `createC`
 is annotated with the [`factory`][meta-factory] annotation but doesn't
 return any value:
 
@@ -31,7 +32,7 @@ class Factory {
 class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the return type to something other than `void`:
 

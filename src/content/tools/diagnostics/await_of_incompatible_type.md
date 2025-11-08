@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The 'await' expression can't be used for an expression with an extension type that is not a subtype of 'Future'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type of the expression in
+O analisador produz este diagnóstico quando the type of the expression in
 an `await` expression is an extension type, and the extension type isn't a
 subclass of `Future`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension type `E`
+O código a seguir produz este diagnóstico porque the extension type `E`
 isn't a subclass of `Future`:
 
 ```dart
@@ -28,7 +29,7 @@ void f(E e) async {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the extension type is correctly defined, then remove the `await`:
 

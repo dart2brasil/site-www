@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The extension type '{0}' has more than one distinct member named '{1}' from implemented types._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension type implements
+O analisador produz este diagnóstico quando an extension type implements
 two or more other types, and at least two of those types declare a member
 with the same name.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension type `C`
+O código a seguir produz este diagnóstico porque the extension type `C`
 implements both `A` and `B`, and both declare a member named `m`:
 
 ```dart
@@ -32,7 +33,7 @@ extension type B(A a) {
 extension type [!C!](A a) implements A, B {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the extension type doesn't need to implement all of the listed types,
 then remove all but one of the types introducing the conflicting members:

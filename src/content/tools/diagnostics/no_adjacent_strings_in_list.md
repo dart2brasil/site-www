@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,23 +21,23 @@ bodyClass: highlight-diagnostics
 
 _Don't use adjacent strings in a list literal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when two string literals are
+O analisador produz este diagnóstico quando two string literals are
 adjacent in a list literal. Adjacent strings in Dart are concatenated
 together to form a single string, but the intent might be for each string
 to be a separate element in the list.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the strings `'a'` and
+O código a seguir produz este diagnóstico porque the strings `'a'` and
 `'b'` are adjacent:
 
 ```dart
 List<String> list = [[!'a' 'b'!], 'c'];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the two strings are intended to be separate elements of the list, then
 add a comma between them:

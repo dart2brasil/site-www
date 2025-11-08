@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The field '{0}' can't be initialized by multiple parameters in the same constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there's more than one
+O analisador produz este diagnóstico quando there's more than one
 initializing formal parameter for the same field in a constructor's
 parameter list. It isn't useful to assign a value that will immediately be
 overwritten.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `this.f` appears twice
+O código a seguir produz este diagnóstico porque `this.f` appears twice
 in the parameter list:
 
 ```dart
@@ -29,7 +30,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove one of the initializing formal parameters:
 

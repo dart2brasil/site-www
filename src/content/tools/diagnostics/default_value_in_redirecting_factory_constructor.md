@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Default values aren't allowed in factory constructors that redirect to another constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a factory constructor that
+O analisador produz este diagnóstico quando a factory constructor that
 redirects to another constructor specifies a default value for an optional
 parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the factory constructor
+O código a seguir produz este diagnóstico porque the factory constructor
 in `A` has a default value for the optional parameter `x`:
 
 ```dart
@@ -30,9 +31,9 @@ class B implements A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the default value from the factory constructor:
+Remove the default value from the factory construtor:
 
 ```dart
 class A {

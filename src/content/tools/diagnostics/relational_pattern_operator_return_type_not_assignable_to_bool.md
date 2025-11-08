@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The return type of operators used in relational patterns must be assignable to 'bool'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a relational pattern references
+O analisador produz este diagnóstico quando a relational pattern references
 an operator that doesn't produce a value of type `bool`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the operator `>`, used
+O código a seguir produz este diagnóstico porque the operator `>`, used
 in the relational pattern `> c2`, returns a value of type `int` rather
 than a `bool`:
 
@@ -36,7 +37,7 @@ void f(C c1) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there's a different operator that should be used, then change the
 operator:

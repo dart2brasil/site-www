@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A generative constructor of an abstract class can't be torn off._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a generative constructor from an
+O analisador produz este diagnóstico quando a generative constructor from an
 abstract class is being torn off. This isn't allowed because it isn't valid
 to create an instance of an abstract class, which means that there isn't
 any valid use for the torn off constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor `C.new`
+O código a seguir produz este diagnóstico porque the constructor `C.new`
 is being torn off and the class `C` is an abstract class:
 
 ```dart
@@ -31,6 +32,6 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Tear off the constructor of a concrete class.

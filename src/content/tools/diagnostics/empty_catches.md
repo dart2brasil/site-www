@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Empty catch block._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the block in a `catch` clause
+O analisador produz este diagnóstico quando the block in a `catch` clause
 is empty.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the catch block is
+O código a seguir produz este diagnóstico porque the catch block is
 empty:
 
 ```dart
@@ -38,7 +39,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the exception shouldn't be ignored, then add code to handle the
 exception:

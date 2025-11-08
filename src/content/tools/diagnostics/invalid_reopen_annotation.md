@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The annotation '@reopen' can only be applied to a class that opens capabilities that the supertype intentionally disallows._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `@reopen` annotation has been
+O analisador produz este diagnóstico quando a `@reopen` annotation has been
 placed on a class or mixin that does not remove restrictions placed on the
 superclass.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `B` is
+O código a seguir produz este diagnóstico porque a classe `B` is
 annotated with `@reopen` even though it doesn't expand the ability of `A`
 to be subclassed:
 
@@ -30,7 +31,7 @@ sealed class A {}
 class B extends A {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the superclass should be restricted in a way that the subclass would
 change, then modify the superclass to reflect those restrictions:

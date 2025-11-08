@@ -1,104 +1,105 @@
 ---
 title: dart pub token
-description: Manage authentication tokens for package repositories.
+description: Gerenciar tokens de autenticação para repositórios de pacotes.
+ia-translate: true
 ---
 
-The `dart pub token` subcommand manages a store of tokens.
-When [publishing](pub-lish) packages and [retrieving](pub-get) dependencies,
-the `dart pub` command uses tokens to authenticate against third-party servers.
+O subcomando `dart pub token` gerencia um armazenamento de tokens.
+Ao [publicar](pub-lish) pacotes e [recuperar](pub-get) dependências,
+o comando `dart pub` usa tokens para autenticar com servidores de terceiros.
 
-It stores these tokens in a [user-wide config directory][config-dir].
-The `dart pub token` subcommand has three subcommands:
-[`add`][], [`list`][] and [`remove`][].
+Ele armazena esses tokens em um [diretório de configuração em nível de usuário][config-dir].
+O subcomando `dart pub token` tem três subcomandos:
+[`add`][], [`list`][] e [`remove`][].
 
-The `dart pub` command considers the terms _credential_, _token_, _secret_,
-and _secret token_ to be interchangeable.
+O comando `dart pub` considera os termos _credencial_, _token_, _segredo_,
+e _token secreto_ como intercambiáveis.
 
-[`add`]: #add-a-new-credential
-[`list`]: #return-a-list-of-credentials
-[`remove`]: #remove-one-or-more-credentials
+[`add`]: #adicionar-uma-nova-credencial
+[`list`]: #retornar-uma-lista-de-credenciais
+[`remove`]: #remover-uma-ou-mais-credenciais
 
-## Use case for credentials
+## Caso de uso para credenciais
 
-Consider a scenario when you have a [dependency](/tools/pub/dependencies)
-hosted on a private repository.
-When you use the `dart pub get` command, it _might_ return a prompt
-to provide credentials:
+Considere um cenário quando você tem uma [dependência](/tools/pub/dependencies)
+hospedada em um repositório privado.
+Quando você usa o comando `dart pub get`, ele _pode_ retornar um aviso
+para fornecer credenciais:
 
 ```console
 $ dart pub get
-Resolving dependencies... 
+Resolving dependencies...
 https://some-package-repo.com/my-org/my-repo package repository requested authentication!
 You can provide credentials using:
     dart pub token add https://some-package-repo.com/my-org/my-repo
 ```
 
-Some, but not all, servers also return a message with instructions as
-to how you can obtain a token.
+Alguns, mas não todos os servidores, também retornam uma mensagem com instruções sobre
+como você pode obter um token.
 
-## Add a new credential
+## Adicionar uma nova credencial
 
-To create a new credential,
-use the `dart pub token add` command.
+Para criar uma nova credencial,
+use o comando `dart pub token add`.
 
-### Add a credential for the current session
+### Adicionar uma credencial para a sessão atual
 
-At the prompt, type the credential on the command line (`stdin`).
+No aviso, digite a credencial na linha de comando (`stdin`).
 
 ```console
 $ dart pub token add https://some-package-repo.com/my-org/my-repo
 Enter secret token: <Type token on stdin>
- Requests to "https://some-package-repo.com/my-org/my-repo" will now be 
+ Requests to "https://some-package-repo.com/my-org/my-repo" will now be
  authenticated using the secret token.
 ```
 
 :::note
-To keep the token out of the shell history,
-the `dart pub token` command takes input on `stdin` rather than
-as a command line option.
+Para manter o token fora do histórico do shell,
+o comando `dart pub token` recebe entrada em `stdin` em vez de
+como uma opção de linha de comando.
 :::
 
-### Add a credential for all sessions
+### Adicionar uma credencial para todas as sessões
 
-To use the same token for any and all terminal sessions and in scripts,
-store the token in an environment variable.
+Para usar o mesmo token em qualquer e todas as sessões de terminal e em scripts,
+armazene o token em uma variável de ambiente.
 
-1. Store your token in an environment variable.
+1. Armazene seu token em uma variável de ambiente.
 
-   Make sure to hide the token from your shell history.
-   To explore one way of doing this, consult [this post on Medium][zsh-post].
+   Certifique-se de ocultar o token do histórico do seu shell.
+   Para explorar uma maneira de fazer isso, consulte [este post no Medium][zsh-post].
 
-1. To enable any environment variables that you add,
-   restart any open consoles.
+1. Para ativar qualquer variável de ambiente que você adicione,
+   reinicie qualquer console aberto.
 
-1. To use an environment variable as a token,
-   use the `dart pub token add` command:
+1. Para usar uma variável de ambiente como um token,
+   use o comando `dart pub token add`:
 
    ```console
    $ dart pub token add <hosted-url> --env-var <TOKEN_VAR>
    ```
 
-   This command reads the token stored in `$TOKEN_VAR`
-   then uses it to authenticate with the `hosted-url`
-   hosting the desired package.
-   It should print the following response to the terminal.
+   Este comando lê o token armazenado em `$TOKEN_VAR`
+   e o usa para autenticar com `hosted-url`
+   que hospeda o pacote desejado.
+   Ele deve imprimir a seguinte resposta no terminal.
 
    ```console
    $ dart pub token add https://other-package-repo.com/ --env-var TOKEN_VAR
    Requests to "https://other-package-repo.com/" will now be authenticated using the secret token stored in the environment variable "TOKEN_VAR".
    ```
 
-Most CI environments can inject tokens into an environment variable.
-To learn how, consult documentation for [GitHub Actions][] or
-[GitLab][] as examples.
+A maioria dos ambientes de CI pode injetar tokens em uma variável de ambiente.
+Para saber como, consulte a documentação de [GitHub Actions][] ou
+[GitLab][] como exemplos.
 
 [GitHub Actions]: https://docs.github.com/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow
 [GitLab]: https://docs.gitlab.com/ee/ci/secrets/
 [zsh-post]: https://medium.com/@prasincs/hiding-secret-keys-from-shell-history-part-1-5875eb5556cc
 
-## Return a list of credentials
+## Retornar uma lista de credenciais
 
-To see a list of all active credentials, use the `dart pub token list` command:
+Para ver uma lista de todas as credenciais ativas, use o comando `dart pub token list`:
 
 ```console
 $ dart pub token list
@@ -107,16 +108,16 @@ https://some-package-repo.com/my-org/my-repo
 https://other-package-repo.com/
 ```
 
-## Remove one or more credentials
+## Remover uma ou mais credenciais
 
-To remove a single token, use the `dart pub token remove` command:
+Para remover um único token, use o comando `dart pub token remove`:
 
 ```console
 $ dart pub token remove https://other-package-repo.com
 Removed secret token for package repository: https://other-package-repo.com
 ```
 
-To remove all tokens, use the preceding command with the `remove --all` option:
+Para remover todos os tokens, use o comando anterior com a opção `remove --all`:
 
 ```console
 $ dart pub token remove --all

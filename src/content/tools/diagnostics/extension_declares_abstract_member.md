@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Extensions can't declare abstract members._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an abstract declaration is
+O analisador produz este diagnóstico quando an abstract declaration is
 declared in an extension. Extensions can declare only concrete members.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `a` doesn't
+O código a seguir produz este diagnóstico porque the method `a` doesn't
 have a body:
 
 ```dart
@@ -25,6 +26,6 @@ extension E on String {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Either provide an implementation for the member or remove it.

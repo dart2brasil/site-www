@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The return type '{0}' of the redirected constructor isn't a subtype of '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a factory constructor redirects
+O analisador produz este diagnóstico quando a factory constructor redirects
 to a constructor whose return type isn't a subtype of the type that the
 factory constructor is declared to produce.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `A` isn't a subclass
+O código a seguir produz este diagnóstico porque `A` isn't a subclass
 of `C`, which means that the value returned by the constructor `A()`
 couldn't be returned from the constructor `C()`:
 
@@ -31,7 +32,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the factory constructor is redirecting to a constructor in the wrong
 class, then update the factory constructor to redirect to the correct

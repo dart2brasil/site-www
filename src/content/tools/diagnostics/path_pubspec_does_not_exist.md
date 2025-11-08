@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The directory '{0}' doesn't contain a pubspec._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a dependency has a `path` key
+O analisador produz este diagnóstico quando a dependency has a `path` key
 that references a directory that doesn't contain a `pubspec.yaml` file.
 
-## Example
+## Exemplo
 
 Assuming that the directory `local_package` doesn't contain a file
 `pubspec.yaml`, the following code produces this diagnostic because it's
@@ -27,7 +28,7 @@ dependencies:
     path: [!local_package!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If the path is intended to be the root of a package, then add a
 `pubspec.yaml` file in the directory:

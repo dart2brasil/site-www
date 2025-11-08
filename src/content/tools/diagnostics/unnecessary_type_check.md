@@ -5,27 +5,28 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Unnecessary type check; the result is always 'false'._
 
 _Unnecessary type check; the result is always 'true'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value of a type check (using
+O analisador produz este diagnóstico quando the value of a type check (using
 either `is` or `is!`) is known at compile time.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the test `a is Object?`
+O código a seguir produz este diagnóstico porque the test `a is Object?`
 is always `true`:
 
 ```dart
 bool f<T>(T a) => [!a is Object?!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type check doesn't check what you intended to check, then change the
 test:

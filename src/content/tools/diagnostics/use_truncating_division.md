@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,24 +21,24 @@ bodyClass: highlight-diagnostics
 
 _Use truncating division._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the result of dividing two
+O analisador produz este diagnóstico quando the result of dividing two
 numbers is converted to an integer using `toInt`.
 
 Dart has a built-in integer division operator that is both more efficient
 and more concise.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the result of dividing
+O código a seguir produz este diagnóstico porque the result of dividing
 `x` and `y` is converted to an integer using `toInt`:
 
 ```dart
 int divide(int x, int y) => [!(x / y).toInt()!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Use the integer division operator (`~/`):
 

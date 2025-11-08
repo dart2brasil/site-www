@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _List literals require one type argument or none, but {0} found._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a list literal has more than one
+O analisador produz este diagnóstico quando a list literal tem mais de uma
 type argument.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the list literal has
+O código a seguir produz este diagnóstico porque the list literal has
 two type arguments when it can have at most one:
 
 ```dart
 var l = [!<int, int>!][];
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all except one of the type arguments:
 

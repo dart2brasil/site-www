@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _This function has a return type of '{0}', but doesn't end with a return statement._
 
-## Description
+## Descrição
 
 Any function or method that doesn't end with either an explicit return or a
 throw implicitly returns `null`. This is rarely the desired behavior. The
 analyzer produces this diagnostic when it finds an implicit return.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` doesn't end with a
+O código a seguir produz este diagnóstico porque `f` doesn't end with a
 return:
 
 ```dart
@@ -28,7 +29,7 @@ int [!f!](int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add a `return` statement that makes the return value explicit, even if
 `null` is the appropriate value.

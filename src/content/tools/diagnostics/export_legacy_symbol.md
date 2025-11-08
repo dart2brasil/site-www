@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The symbol '{0}' is defined in a legacy library, and can't be re-exported from a library with null safety enabled._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library that was opted in to
+O analisador produz este diagnóstico quando a library that was opted in to
 null safety exports another library, and the exported library is opted out
 of null safety.
 
-## Example
+## Exemplo
 
 Given a library that is opted out of null safety:
 
@@ -24,7 +25,7 @@ Given a library that is opted out of null safety:
 String s;
 ```
 
-The following code produces this diagnostic because it's exporting symbols
+O código a seguir produz este diagnóstico porque it's exporting symbols
 from an opted-out library:
 
 ```dart
@@ -33,7 +34,7 @@ export [!'optedOut.dart'!];
 class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If you're able to do so, migrate the exported library so that it doesn't
 need to opt out:

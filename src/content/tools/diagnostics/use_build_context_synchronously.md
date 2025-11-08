@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,9 +23,9 @@ _Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' 
 
 _Don't use 'BuildContext's across async gaps._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `BuildContext` is referenced
+O analisador produz este diagnóstico quando a `BuildContext` is referenced
 by a `StatefulWidget` after an asynchronous gap without first checking the
 `mounted` property.
 
@@ -32,9 +33,9 @@ Storing a `BuildContext` for later use can lead to difficult-to-diagnose
 crashes. Asynchronous gaps implicitly store a `BuildContext`, making them
 easy to overlook for diagnosis.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `context` is
+O código a seguir produz este diagnóstico porque the `context` is
 passed to a constructor after the `await`:
 
 ```dart
@@ -48,7 +49,7 @@ class MyWidget extends Widget {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you can remove the asynchronous gap, do so:
 

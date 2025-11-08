@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' is final and was given a value when it was declared, so it can't be set to a new value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a final field is initialized
+O analisador produz este diagnóstico quando a final field is initialized
 twice: once where it's declared and once by a constructor's parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `f` is
+O código a seguir produz este diagnóstico porque the field `f` is
 initialized twice:
 
 ```dart
@@ -27,7 +28,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the field should have the same value for all instances, then remove the
 initialization in the parameter list:

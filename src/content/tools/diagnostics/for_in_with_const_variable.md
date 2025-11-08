@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A for-in loop variable can't be a 'const'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the loop variable declared in a
+O analisador produz este diagnóstico quando the loop variable declared in a
 for-in loop is declared to be a `const`. The variable can't be a `const`
 because the value can't be computed at compile time.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the loop variable `x`
+O código a seguir produz este diagnóstico porque the loop variable `x`
 is declared to be a `const`:
 
 ```dart
@@ -28,7 +29,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there's a type annotation, then remove the `const` modifier from the
 declaration.

@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The function 'main' can't have more than two required positional parameters._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a function named `main` has more
+O analisador produz este diagnóstico quando a function named `main` has more
 than two required positional parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `main` has
+O código a seguir produz este diagnóstico porque the function `main` has
 three required positional parameters:
 
 ```dart
 void [!main!](List<String> args, int x, int y) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function is an entry point and the extra parameters aren't used,
 then remove them:

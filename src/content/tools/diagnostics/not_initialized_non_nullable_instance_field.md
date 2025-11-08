@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Non-nullable instance field '{0}' must be initialized._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field is declared and has all
+O analisador produz este diagnóstico quando a field is declared and has all
 these characteristics:
 - Has a type that's [potentially non-nullable][]
 - Doesn't have an initializer
 - Isn't marked as `late`
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `x` is implicitly
+O código a seguir produz este diagnóstico porque `x` is implicitly
 initialized to `null` when it isn't allowed to be `null`:
 
 ```dart
@@ -43,7 +44,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there's a reasonable default value for the field that's the same for all
 instances, then add an initializer expression:
@@ -56,7 +57,7 @@ class C {
 
 If the value of the field should be provided when an instance is created,
 then add a constructor that sets the value of the field or update an
-existing constructor:
+existing construtor:
 
 ```dart
 class C {

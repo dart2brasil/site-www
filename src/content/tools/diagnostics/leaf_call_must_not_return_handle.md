@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _FFI leaf call can't return a 'Handle'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value of the `isLeaf`
+O analisador produz este diagnóstico quando the value of the `isLeaf`
 argument in an invocation of either `Pointer.asFunction` or
 `DynamicLibrary.lookupFunction` is `true` and the function that would be
 returned would have a return type of `Handle`.
@@ -25,9 +26,9 @@ In all of these cases, leaf calls are only supported for the types `bool`,
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `p`
+O código a seguir produz este diagnóstico porque the function `p`
 returns a `Handle`, but the `isLeaf` argument is `true`:
 
 ```dart
@@ -38,7 +39,7 @@ void f(Pointer<NativeFunction<Handle Function()>> p) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function returns a handle, then remove the `isLeaf` argument:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Use 'isNotEmpty' rather than negating the result of 'isEmpty'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the result of invoking
+O analisador produz este diagnóstico quando the result of invoking
 `Iterable.isEmpty` or `Map.isEmpty` is negated.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the result of invoking
+O código a seguir produz este diagnóstico porque the result of invoking
 `Iterable.isEmpty` is negated:
 
 ```dart
 void f(Iterable<int> p) => [!!p.isEmpty!] ? p.first : 0;
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the code to use `isNotEmpty`:
 

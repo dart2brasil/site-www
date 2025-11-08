@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Extension overrides have no value so they can't be used as the receiver of a cascade expression._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override is used as
+O analisador produz este diagnóstico quando an extension override is used as
 the receiver of a cascade expression. The value of a cascade expression
 `e..m` is the value of the receiver `e`, but extension overrides aren't
 expressions and don't have a value.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `E(3)` isn't an
+O código a seguir produz este diagnóstico porque `E(3)` isn't an
 expression:
 
 ```dart
@@ -30,7 +31,7 @@ f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use `.` rather than `..`:
 

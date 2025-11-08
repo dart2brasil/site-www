@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type '{0}' used in the 'for' loop must implement '{1}' with a type argument that can be assigned to '{2}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `Iterable` or `Stream` in a
+O analisador produz este diagnóstico quando the `Iterable` or `Stream` in a
 for-in loop has an element type that can't be assigned to the loop
 variable.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `<String>[]` has an
+O código a seguir produz este diagnóstico porque `<String>[]` has an
 element type of `String`, and `String` can't be assigned to the type of `e`
 (`int`):
 
@@ -29,7 +30,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type of the loop variable is correct, then update the type of the
 iterable:

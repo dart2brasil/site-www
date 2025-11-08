@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,17 +21,17 @@ bodyClass: highlight-diagnostics
 
 _The type parameter '{0}' shadows a type parameter from the enclosing {1}._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type parameter shadows a type
+O analisador produz este diagnóstico quando a type parameter shadows a type
 parameter from an enclosing declaration.
 
 Shadowing a type parameter with a different type parameter can lead to
 subtle bugs that are difficult to debug.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type parameter `T`
+O código a seguir produz este diagnóstico porque the type parameter `T`
 defined by the method `m` shadows the type parameter `T` defined by the
 class `C`:
 
@@ -40,7 +41,7 @@ class C<T> {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rename one of the type parameters:
 

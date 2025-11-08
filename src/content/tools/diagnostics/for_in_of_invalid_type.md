@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type '{0}' used in the 'for' loop must implement '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the expression following `in` in
+O analisador produz este diagnóstico quando the expression following `in` in
 a for-in loop has a type that isn't a subclass of `Iterable`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` is a `Map`, and
+O código a seguir produz este diagnóstico porque `m` is a `Map`, and
 `Map` isn't a subclass of `Iterable`:
 
 ```dart
@@ -27,7 +28,7 @@ void f(Map<String, String> m) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the expression with one that produces an iterable value:
 

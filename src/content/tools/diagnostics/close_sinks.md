@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Unclosed instance of 'Sink'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance of `Sink` is
+O analisador produz este diagnóstico quando an instance of `Sink` is
 created but the method `close` isn't invoked.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `sink` isn't
+O código a seguir produz este diagnóstico porque the `sink` isn't
 closed:
 
 ```dart
@@ -39,7 +40,7 @@ void g(File f) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Close the sink:
 

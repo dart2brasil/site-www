@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The unnamed constructor of superclass '{0}' (called by the default constructor of '{1}') must be a generative constructor, but factory found._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class has an implicit
+O analisador produz este diagnóstico quando a class has an implicit
 generative constructor and the superclass has an explicit unnamed factory
 constructor. The implicit constructor in the subclass implicitly invokes
 the unnamed constructor in the superclass, but generative constructors can
 only invoke another generative constructor, not a factory constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the implicit
+O código a seguir produz este diagnóstico porque the implicit
 constructor in `B` invokes the unnamed constructor in `A`, but the
 constructor in `A` is a factory constructor, when a generative constructor
 is required:
@@ -33,10 +34,10 @@ class A {
 class [!B!] extends A {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the unnamed constructor in the superclass can be a generative
-constructor, then change it to be a generative constructor:
+constructor, then change it to be a generative construtor:
 
 ```dart
 class A {

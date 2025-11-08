@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _The constant name '{0}' isn't a lowerCamelCase identifier._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a constant doesn't
+O analisador produz este diagnóstico quando the name of a constant doesn't
 follow the lowerCamelCase naming convention.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name of the
+O código a seguir produz este diagnóstico porque the name of the
 top-level variable isn't a lowerCamelCase identifier:
 
 ```dart
 const [!EMPTY_STRING!] = '';
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the name to follow the lowerCamelCase naming convention:
 

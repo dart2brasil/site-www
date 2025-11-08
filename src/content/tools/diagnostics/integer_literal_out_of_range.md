@@ -5,26 +5,27 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The integer literal {0} can't be represented in 64 bits._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an integer literal has a value
+O analisador produz este diagnóstico quando an integer literal has a value
 that is too large (positive) or too small (negative) to be represented in a
 64-bit word.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value can't be
+O código a seguir produz este diagnóstico porque the value can't be
 represented in 64 bits:
 
 ```dart
 var x = [!9223372036854775810!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to represent the current value, then wrap it in an instance of
 the class `BigInt`:

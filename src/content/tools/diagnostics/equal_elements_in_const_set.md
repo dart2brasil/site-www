@@ -5,26 +5,27 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Two elements in a constant set literal can't be equal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when two elements in a constant set
+O analisador produz este diagnóstico quando two elements in a constant set
 literal have the same value. The set can only contain each value once,
 which means that one of the values is unnecessary.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string `'a'` is
+O código a seguir produz este diagnóstico porque the string `'a'` is
 specified twice:
 
 ```dart
 const Set<String> set = {'a', [!'a'!]};
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove one of the duplicate values:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The expression in an assert must be of type 'bool'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the first expression in an
+O analisador produz este diagnóstico quando the first expression in an
 assert has a type other than `bool`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type of `p` is
+O código a seguir produz este diagnóstico porque the type of `p` is
 `int`, but a `bool` is required:
 
 ```dart
@@ -25,7 +26,7 @@ void f(int p) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the expression so that it has the type `bool`:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The element can't be null, so the null-aware operator '?' is unnecessary._
@@ -17,15 +18,15 @@ _The receiver can't be 'null' because of short-circuiting, so the null-aware ope
 
 _The receiver can't be null, so the null-aware operator '{0}' is unnecessary._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a null-aware operator (`?.`,
+O analisador produz este diagnóstico quando a null-aware operator (`?.`,
 `?..`, `?[`, `?..[`, or `...?`) is used on a receiver that's known to be
 non-nullable.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `s` can't be `null`:
+O código a seguir produz este diagnóstico porque `s` can't be `null`:
 
 ```dart
 int? getLength(String s) {
@@ -33,14 +34,14 @@ int? getLength(String s) {
 }
 ```
 
-The following code produces this diagnostic because `a` can't be `null`:
+O código a seguir produz este diagnóstico porque `a` can't be `null`:
 
 ```dart
 var a = [];
 var b = [[!...?!]a];
 ```
 
-The following code produces this diagnostic because `s?.length` can't
+O código a seguir produz este diagnóstico porque `s?.length` can't
 return `null`:
 
 ```dart
@@ -58,7 +59,7 @@ on a `null` value, so the null-aware operator isn't necessary. See
 [Understanding null safety](/null-safety/understanding-null-safety#smarter-null-aware-methods)
 for more details.
 
-The following code produces this diagnostic because `s` can't be `null`.
+O código a seguir produz este diagnóstico porque `s` can't be `null`.
 
 ```dart
 void f(Object? o) {
@@ -72,7 +73,7 @@ because of the cast to `String`, which is a non-nullable type. If `o` ever
 has the value `null`, the cast will fail and the invocation of `length`
 will not happen.
 
-The following code produces this diagnostic because `s` can't be `null`:
+O código a seguir produz este diagnóstico porque `s` can't be `null`:
 
 ```dart
 List<String> makeSingletonList(String s) {
@@ -80,7 +81,7 @@ List<String> makeSingletonList(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the null-aware operator with a non-null-aware equivalent; for
 example, change `?.` to  `.`:

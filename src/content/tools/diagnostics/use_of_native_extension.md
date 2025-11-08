@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Dart native extensions are deprecated and aren't available in Dart 2.15._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library is imported using the
+O analisador produz este diagnóstico quando a library is imported using the
 `dart-ext` scheme.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the native library `x`
+O código a seguir produz este diagnóstico porque the native library `x`
 is being imported using a scheme of `dart-ext`:
 
 ```dart
 import [!'dart-ext:x'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the code to use `dart:ffi` as a way of invoking the contents of the
 native library.

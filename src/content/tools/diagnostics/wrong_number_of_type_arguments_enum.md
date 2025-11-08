@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The enum is declared with {0} type parameters, but {1} type arguments were given._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an enum value in an enum that
+O analisador produz este diagnóstico quando an enum value in an enum that
 has type parameters is instantiated and type arguments are provided, but
 the number of type arguments isn't the same as the number of type
 parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the enum value `c`
+O código a seguir produz este diagnóstico porque the enum value `c`
 provides one type argument even though the enum `E` is declared to have
 two type parameters:
 
@@ -28,7 +29,7 @@ enum E<T, U> {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the number of type parameters is correct, then change the number of
 type arguments to match the number of type parameters:

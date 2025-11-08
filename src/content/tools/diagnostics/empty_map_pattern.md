@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A map pattern must have at least one entry._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a map pattern is empty.
+O analisador produz este diagnóstico quando a map pattern is empty.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the map pattern
+O código a seguir produz este diagnóstico porque the map pattern
 is empty:
 
 ```dart
@@ -24,7 +25,7 @@ void f(Map<int, String> x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the pattern should match any map, then replace it with an object
 pattern:

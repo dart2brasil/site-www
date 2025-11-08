@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' is deprecated and shouldn't be used._
 
 _'{0}' is deprecated and shouldn't be used. {1}_
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a deprecated library member or
+O analisador produz este diagnóstico quando a deprecated library member or
 class member is used in the same package in which it's declared.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` is deprecated:
+O código a seguir produz este diagnóstico porque `x` is deprecated:
 
 ```dart
 @deprecated
@@ -26,7 +27,7 @@ var x = 0;
 var y = [!x!];
 ```
 
-## Common fixes
+## Correções comuns
 
 The fix depends on what's been deprecated and what the replacement is. The
 documentation for deprecated declarations should indicate what code to use

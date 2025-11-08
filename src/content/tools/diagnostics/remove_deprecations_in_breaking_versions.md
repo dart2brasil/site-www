@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Remove deprecated elements in breaking versions._
 
-## Description
+## Descrição
 
 The analyzer produces this diagnostic in packages that have a "breaking"
 version number (`x.0.0` or `0.x.0`) for every declaration that has a
 `@Deprecated` annotation.
 
-## Example
+## Exemplo
 
 Given a package with a `pubspec.yaml` file containing:
 
@@ -26,7 +27,7 @@ environment:
   sdk: ^3.9.0
 ```
 
-The following code produces this diagnostic because the function `f` is
+O código a seguir produz este diagnóstico porque the function `f` is
 annotated with `@deprecated`:
 
 ```dart
@@ -36,7 +37,7 @@ void f() {}
 void g() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 * If the declaration should be removed in the next release of the package,
 then remove the declaration:

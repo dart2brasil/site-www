@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,16 +21,16 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary 'late' modifier._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a top-level variable or static
-field with an initializer is marked as `late`. Top-level variables and
+O analisador produz este diagnóstico quando a top-level variable or static
+field with an initializer está marcado como `late`. Top-level variables and
 static fields are implicitly late, so they don't need to be explicitly
 marked.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the static field `c`
+O código a seguir produz este diagnóstico porque the static field `c`
 has the modifier `late` even though it has an initializer:
 
 ```dart
@@ -38,7 +39,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the keyword `late`:
 

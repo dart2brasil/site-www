@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The modifier '{0}' can't be applied to the body of a constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the body of a constructor is
+O analisador produz este diagnóstico quando the body of a constructor is
 prefixed by one of the following modifiers: `async`, `async*`, or `sync*`.
 Constructor bodies must be synchronous.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the body of the
-constructor for `C` is marked as being `async`:
+O código a seguir produz este diagnóstico porque the body of the
+constructor for `C` está marcado como being `async`:
 
 ```dart
 class C {
@@ -26,9 +27,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the constructor can be synchronous, then remove the modifier:
+If the constructor can be synchronous, then remove the modificador:
 
 ```dart
 class C {

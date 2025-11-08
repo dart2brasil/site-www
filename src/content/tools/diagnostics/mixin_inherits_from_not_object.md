@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' can't be used as a mixin because it extends a class other than 'Object'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class that extends a class
+O analisador produz este diagnóstico quando uma classe que estende a class
 other than `Object` is used as a mixin.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `B`, which
+O código a seguir produz este diagnóstico porque a classe `B`, which
 extends `A`, is being used as a mixin by `C`:
 
 ```dart
@@ -28,7 +29,7 @@ class B extends A {}
 class C with [!B!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the class being used as a mixin can be changed to extend `Object`, then
 change it:

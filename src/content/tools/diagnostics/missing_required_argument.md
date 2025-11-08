@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The named parameter '{0}' is required, but there's no corresponding argument._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an invocation of a function is
+O analisador produz este diagnóstico quando an invocation of a function is
 missing a required named parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the invocation of `f`
+O código a seguir produz este diagnóstico porque the invocation of `f`
 doesn't include a value for the required named parameter `end`:
 
 ```dart
@@ -26,7 +27,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add a named argument corresponding to the missing required parameter:
 

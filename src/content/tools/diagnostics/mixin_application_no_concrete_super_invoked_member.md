@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class doesn't have a concrete implementation of the super-invoked member '{0}'._
 
 _The class doesn't have a concrete implementation of the super-invoked setter '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a [mixin application][] contains
+O analisador produz este diagnóstico quando a [mixin application][] contains
 an invocation of a member from its superclass, and there's no concrete
 member of that name in the mixin application's superclass.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the mixin `M` contains
+O código a seguir produz este diagnóstico porque the mixin `M` contains
 the invocation `super.m()`, and the class `A`, which is the superclass of
 the [mixin application][] `A+M`, doesn't define a concrete implementation
 of `m`:
@@ -38,7 +39,7 @@ mixin M on A {
 abstract class B extends A with [!M!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If you intended to apply the mixin `M` to a different class, one that has a
 concrete implementation of `m`, then change the superclass of `B` to that

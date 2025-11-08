@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Statement should be on a separate line._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the code being controlled by a
+O analisador produz este diagnóstico quando the code being controlled by a
 control flow statement (`if`, `for`, `while`, or `do`) is on the same line
 as the control flow statement.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `return` statement
+O código a seguir produz este diagnóstico porque the `return` statement
 is on the same line as the `if` that controls whether the `return` will be
 executed:
 
@@ -38,7 +39,7 @@ void f(bool b) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Put the controlled statement onto a separate, indented, line:
 

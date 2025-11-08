@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Const variables must be initialized with a constant value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a value that isn't statically
+O analisador produz este diagnóstico quando a value that isn't statically
 known to be a constant is assigned to a variable that's declared to be a
 `const` variable.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` isn't declared to
+O código a seguir produz este diagnóstico porque `x` isn't declared to
 be `const`:
 
 ```dart
@@ -25,7 +26,7 @@ var x = 0;
 const y = [!x!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the value being assigned can be declared to be `const`, then change the
 declaration:

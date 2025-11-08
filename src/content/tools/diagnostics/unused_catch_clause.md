@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The exception variable '{0}' isn't used, so the 'catch' clause can be removed._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `catch` clause is found, and
+O analisador produz este diagnóstico quando a `catch` clause is found, and
 neither the exception parameter nor the optional stack trace parameter are
 used in the `catch` block.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `e` isn't referenced:
+O código a seguir produz este diagnóstico porque `e` isn't referenced:
 
 ```dart
 void f() {
@@ -29,7 +30,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unused `catch` clause:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Statements in {0} should be enclosed in a block._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a control structure (`if`,
+O analisador produz este diagnóstico quando a control structure (`if`,
 `for`, `while`, or `do` statement) has a statement other than a block.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `then` statement
+O código a seguir produz este diagnóstico porque the `then` statement
 is not enclosed in a block:
 
 ```dart
@@ -38,7 +39,7 @@ int f(bool b) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add braces around the statement that should be a block:
 

@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Fields in a struct class must have exactly one annotation indicating the native type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field in a subclass of
-`Struct` has more than one annotation describing the native type of the
+O analisador produz este diagnóstico quando a field in a subclass of
+`Struct` tem mais de uma annotation describing the native type of the
 field.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `x` has two
+O código a seguir produz este diagnóstico porque the field `x` has two
 annotations describing the native type of the field:
 
 ```dart
@@ -32,7 +33,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all but one of the annotations:
 

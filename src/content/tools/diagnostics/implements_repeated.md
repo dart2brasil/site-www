@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' can only be implemented once._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a single class is specified more
+O analisador produz este diagnóstico quando a single class is specified more
 than once in an `implements` clause.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `A` is in the list
+O código a seguir produz este diagnóstico porque `A` is in the list
 twice:
 
 ```dart
@@ -24,7 +25,7 @@ class A {}
 class B implements A, [!A!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all except one occurrence of the class name:
 

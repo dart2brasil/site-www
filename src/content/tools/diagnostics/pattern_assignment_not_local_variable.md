@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Only local variables can be assigned in pattern assignments._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a pattern assignment assigns a
+O analisador produz este diagnóstico quando a pattern assignment assigns a
 value to anything other than a local variable. Patterns can't assign to
 fields or top-level variables.
 
-## Example
+## Exemplo
 
 If the code is cleaner when destructuring with a pattern, then rewrite the
 code to assign the value to a local variable in a pattern declaration,
@@ -31,7 +32,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the code is cleaner when using a pattern assignment, then rewrite the
 code to assign the value to a local variable, assigning the non-local

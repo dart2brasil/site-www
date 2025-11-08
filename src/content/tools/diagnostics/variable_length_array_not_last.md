@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Variable length 'Array's must only occur as the last field of Structs._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a variable length inline `Array`
+O analisador produz este diagnóstico quando a variable length inline `Array`
 is not the last member of a `Struct`.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `a0` has a
+O código a seguir produz este diagnóstico porque the field `a0` has a
 type with three nested arrays, but only two dimensions are given in the
 `Array` annotation:
 
@@ -34,7 +35,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Move the variable length inline `Array` to be the last field in the struct.
 

@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The variable '{0}' is already defined in this pattern._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a branch of a logical-and
+O analisador produz este diagnóstico quando a branch of a logical-and
 pattern declares a variable that is already declared in an earlier branch
 of the same pattern.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variable `a` is
+O código a seguir produz este diagnóstico porque the variable `a` is
 declared in both branches of the logical-and pattern:
 
 ```dart
@@ -28,7 +29,7 @@ void f((int, int) r) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to capture the matched value in multiple branches, then change
 the names of the variables so that they are unique:

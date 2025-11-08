@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type '{0}' can be included in the superclass constraints only once._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the same type is listed in the
+O analisador produz este diagnóstico quando the same type is listed in the
 superclass constraints of a mixin multiple times.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `A` is included twice
+O código a seguir produz este diagnóstico porque `A` is included twice
 in the superclass constraints for `M`:
 
 ```dart
@@ -27,7 +28,7 @@ class A {}
 class B {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If a different type should be included in the superclass constraints, then
 replace one of the occurrences with the other type:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,24 +21,24 @@ bodyClass: highlight-diagnostics
 
 _The local variable '{0}' starts with an underscore._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a local variable
+O analisador produz este diagnóstico quando the name of a local variable
 starts with an underscore.
 
 Local variables are inherently not visible outside the declaring library,
 so a leading underscore indicating private adds no value.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameter `_s`
+O código a seguir produz este diagnóstico porque the parameter `_s`
 starts with an underscore:
 
 ```dart
 int f(String [!_s!]) => _s.length;
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the underscore:
 

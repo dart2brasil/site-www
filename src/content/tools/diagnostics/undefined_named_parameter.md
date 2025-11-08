@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The named parameter '{0}' isn't defined._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function invocation
+O analisador produz este diagnóstico quando a method or function invocation
 has a named argument, but the method or function being invoked doesn't
 define a parameter with the same name.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` doesn't declare a
+O código a seguir produz este diagnóstico porque `m` doesn't declare a
 named parameter named `a`:
 
 ```dart
@@ -30,7 +31,7 @@ void f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the argument name is mistyped, then replace it with the correct name.
 The example above can be fixed by changing `a` to `b`:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Constant values from a deferred library can't be used as keys in a 'const' map literal._
@@ -17,9 +18,9 @@ _Constant values from a deferred library can't be used as values in a 'const' ma
 
 _Constant values from a deferred library can't be used as values in a 'const' set literal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a collection literal that is
+O analisador produz este diagnóstico quando a collection literal that is
 either explicitly (because it's prefixed by the `const` keyword) or
 implicitly (because it appears in a [constant context][]) a constant
 contains a value that is declared in a library that is imported using a
@@ -29,7 +30,7 @@ deferred libraries aren't available at compile time.
 For more information, check out
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that defines the constant `zero`:
 
@@ -37,7 +38,7 @@ Given a file `a.dart` that defines the constant `zero`:
 const zero = 0;
 ```
 
-The following code produces this diagnostic because the constant list
+O código a seguir produz este diagnóstico porque the constant list
 literal contains `a.zero`, which is imported using a `deferred` import:
 
 ```dart
@@ -46,7 +47,7 @@ import 'a.dart' deferred as a;
 var l = const [a.[!zero!]];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the collection literal isn't required to be constant, then remove the
 `const` keyword:

@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The late local variable '{0}' is definitely unassigned at this point._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when [definite assignment][] analysis
+O analisador produz este diagnóstico quando [definite assignment][] analysis
 shows that a local variable that's marked as `late` is read before being
 assigned.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` wasn't assigned a
+O código a seguir produz este diagnóstico porque `x` wasn't assigned a
 value before being read:
 
 ```dart
@@ -27,7 +28,7 @@ void f(bool b) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Assign a value to the variable before reading from it:
 

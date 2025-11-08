@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The method {0} can't have an exceptional return value (the second argument) when the return type of the function is either 'void', 'Handle' or 'Pointer'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an invocation of the method
+O analisador produz este diagnóstico quando an invocation of the method
 `Pointer.fromFunction` or `NativeCallable.isolateLocal`
 has a second argument (the exceptional return
 value) and the type to be returned from the invocation is either `void`,
@@ -19,9 +20,9 @@ value) and the type to be returned from the invocation is either `void`,
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because a second argument is
+O código a seguir produz este diagnóstico porque a second argument is
 provided when the return type of `f` is `void`:
 
 ```dart
@@ -36,7 +37,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the exception value:
 

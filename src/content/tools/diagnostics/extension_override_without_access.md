@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _An extension override can only be used to access instance members._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override is found
+O analisador produz este diagnóstico quando an extension override is found
 that isn't being used to access one of the members of the extension. The
-extension override syntax doesn't have any runtime semantics; it only
+extension override syntax não tem umay runtime semantics; it only
 controls which member is selected at compile time.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `E(i)` isn't an
+O código a seguir produz este diagnóstico porque `E(i)` isn't an
 expression:
 
 ```dart
@@ -31,7 +32,7 @@ void f(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you want to invoke one of the members of the extension, then add the
 invocation:

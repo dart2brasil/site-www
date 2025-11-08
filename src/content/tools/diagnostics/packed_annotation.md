@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Structs must have at most one 'Packed' annotation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a subclass of `Struct` has more
+O analisador produz este diagnóstico quando a subclass of `Struct` has more
 than one `Packed` annotation.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `C`, which
+O código a seguir produz este diagnóstico porque a classe `C`, which
 is a subclass of `Struct`, has two `Packed` annotations:
 
 ```dart
@@ -31,7 +32,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all but one of the annotations:
 

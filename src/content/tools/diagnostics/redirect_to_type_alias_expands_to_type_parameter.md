@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A redirecting constructor can't redirect to a type alias that expands to a type parameter._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a redirecting factory
+O analisador produz este diagnóstico quando a redirecting factory
 constructor redirects to a type alias, and the type alias expands to one of
 the type parameters of the type alias. This isn't allowed because the value
 of the type parameter is a type rather than a class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the redirect to `B<A>`
+O código a seguir produz este diagnóstico porque the redirect to `B<A>`
 is to a type alias whose value is `T`, even though it looks like the value
 should be `A`:
 
@@ -32,7 +33,7 @@ abstract class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use either a class name or a type alias that is defined to be a class
 rather than a type alias defined to be a type parameter:

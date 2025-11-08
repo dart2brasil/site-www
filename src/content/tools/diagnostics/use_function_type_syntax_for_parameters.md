@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Use the generic function type syntax to declare the parameter '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the older style function-valued
+O analisador produz este diagnóstico quando the older style function-valued
 parameter syntax is used.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function-valued
+O código a seguir produz este diagnóstico porque the function-valued
 parameter `f` is declared using an older style syntax:
 
 ```dart
 void g([!bool f(String s)!]) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Use the generic function type syntax to declare the parameter:
 

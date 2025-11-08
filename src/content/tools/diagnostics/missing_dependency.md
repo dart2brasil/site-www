@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Missing a dependency on imported package '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there's a package that has been
+O analisador produz este diagnóstico quando there's a package that has been
 imported in the source but is not listed as a dependency of the
 importing package.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the package `path` is
+O código a seguir produz este diagnóstico porque the package `path` is
 not listed as a dependency, while there is an import statement
 with package `path` in the source code of package `example`:
 
@@ -27,7 +28,7 @@ dependencies:
   meta: ^1.0.2
 ```
 
-## Common fixes
+## Correções comuns
 
 Add the missing package `path` to the `dependencies` field:
 

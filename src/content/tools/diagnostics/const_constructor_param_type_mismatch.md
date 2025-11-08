@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A value of type '{0}' can't be assigned to a parameter of type '{1}' in a const constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the runtime type of a constant
+O analisador produz este diagnóstico quando the runtime type of a constant
 value can't be assigned to the static type of a constant constructor's
 parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the runtime type of `i`
+O código a seguir produz este diagnóstico porque the runtime type of `i`
 is `int`, which can't be assigned to the static type of `s`:
 
 ```dart
@@ -34,9 +35,9 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Pass a value of the correct type to the constructor:
+Pass a value of the correct type to the construtor:
 
 ```dart
 class C {

@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Imports of deferred libraries must hide all extensions._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library that is imported using
+O analisador produz este diagnóstico quando a library that is imported using
 a deferred import declares an extension that is visible in the importing
 library. Extension methods are resolved at compile time, and extensions
 from deferred libraries aren't available at compile time.
@@ -19,7 +20,7 @@ from deferred libraries aren't available at compile time.
 For more information, check out
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that defines a named extension:
 
@@ -31,7 +32,7 @@ extension E on String {
 }
 ```
 
-The following code produces this diagnostic because the named extension is
+O código a seguir produz este diagnóstico porque the named extension is
 visible to the library:
 
 ```dart
@@ -42,7 +43,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the library must be imported as `deferred`, then either add a `show`
 clause listing the names being referenced or add a `hide` clause listing

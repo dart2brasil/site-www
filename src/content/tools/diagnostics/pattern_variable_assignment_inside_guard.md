@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Pattern variables can't be assigned inside the guard of the enclosing guarded pattern._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a pattern variable is assigned
+O analisador produz este diagnóstico quando a pattern variable is assigned
 a value inside a guard (`when`) clause.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variable `a` is
+O código a seguir produz este diagnóstico porque the variable `a` is
 assigned a value inside the guard clause:
 
 ```dart
@@ -27,7 +28,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there's a value you need to capture, then assign it to a different
 variable:

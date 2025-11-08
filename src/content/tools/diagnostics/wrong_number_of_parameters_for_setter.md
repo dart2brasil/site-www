@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Setters must declare exactly one required positional parameter._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a setter is found that doesn't
+O analisador produz este diagnóstico quando a setter is found that doesn't
 declare exactly one required positional parameter.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the setter `s` declares
+O código a seguir produz este diagnóstico porque the setter `s` declares
 two required parameters:
 
 ```dart
@@ -25,7 +26,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the setter `s` declares
+O código a seguir produz este diagnóstico porque the setter `s` declares
 one optional parameter:
 
 ```dart
@@ -34,7 +35,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the declaration so that there's exactly one required positional
 parameter:

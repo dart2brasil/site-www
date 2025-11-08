@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Don't put any logic in 'createState'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an implementation of
+O analisador produz este diagnóstico quando an implementation of
 `createState` in a subclass of `StatefulWidget` contains any logic other
 than the return of the result of invoking a zero argument constructor.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the constructor
+O código a seguir produz este diagnóstico porque the constructor
 invocation has arguments:
 
 ```dart
@@ -46,7 +47,7 @@ class MyState extends State {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the code so that `createState` doesn't contain any logic:
 

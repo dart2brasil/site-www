@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Native functions and fields must have exactly one `@Native` annotation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there is more than one `Native`
+O analisador produz este diagnóstico quando there is more than one `Native`
 annotation on a single declaration.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f` has
+O código a seguir produz este diagnóstico porque the function `f` has
 two `Native` annotations associated with it:
 
 ```dart
@@ -27,7 +28,7 @@ import 'dart:ffi';
 external int f(int v);
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all but one of the annotations:
 

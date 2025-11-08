@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' isn't a type and can't be used in an 'is' expression._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the right-hand side of an `is`
+O analisador produz este diagnóstico quando the right-hand side of an `is`
 or `is!` test isn't a type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the right-hand side is
+O código a seguir produz este diagnóstico porque the right-hand side is
 a parameter, not a type:
 
 ```dart
@@ -29,7 +30,7 @@ void f(Object a, B b) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you intended to use a type test, then replace the right-hand side with a
 type:

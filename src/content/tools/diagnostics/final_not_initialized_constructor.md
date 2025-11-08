@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _All final variables must be initialized, but '{0}' and '{1}' aren't._
@@ -13,15 +14,15 @@ _All final variables must be initialized, but '{0}' isn't._
 
 _All final variables must be initialized, but '{0}', '{1}', and {2} others aren't._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class defines one or more
+O analisador produz este diagnóstico quando a class defines one or more
 final instance fields without initializers and has at least one constructor
 that doesn't initialize those fields. All final instance fields must be
 initialized when the instance is created, either by the field's initializer
 or by the constructor.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic:
 
@@ -33,7 +34,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the value should be passed in to the constructor directly, then use an
 initializing formal parameter to initialize the field `value`:

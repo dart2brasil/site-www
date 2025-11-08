@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _This case is covered by the previous cases._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `case` clause in a `switch`
+O analisador produz este diagnóstico quando a `case` clause in a `switch`
 statement doesn't match anything because all of the matchable values are
 matched by an earlier `case` clause.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value `1` was
+O código a seguir produz este diagnóstico porque the value `1` was
 matched in the preceding case:
 
 ```dart
@@ -31,7 +32,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change one or both of the conflicting cases to match different values:
 

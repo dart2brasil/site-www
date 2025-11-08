@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _This method overrides a method annotated as '@mustCallSuper' in '{0}', but doesn't invoke the overridden method._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method that overrides a method
+O analisador produz este diagnóstico quando a method that overrides a method
 that is annotated as [`mustCallSuper`][meta-mustCallSuper] doesn't invoke
 the overridden method as required.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `m` in `B`
+O código a seguir produz este diagnóstico porque the method `m` in `B`
 doesn't invoke the overridden method `m` in `A`:
 
 ```dart
@@ -34,9 +35,9 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an invocation of the overridden method in the overriding method:
+Adicione uma invocation of the overridden method in the overriding method:
 
 ```dart
 import 'package:meta/meta.dart';

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' can't be used as a mixin because it's neither a mixin class nor a mixin._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class that is neither a
+O analisador produz este diagnóstico quando a class that is neither a
 `mixin class` nor a `mixin` is used in a `with` clause.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `M` is being
+O código a seguir produz este diagnóstico porque a classe `M` is being
 used as a mixin, but it isn't defined as a `mixin class`:
 
 ```dart
@@ -24,7 +25,7 @@ class M {}
 class C with [!M!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the class can be a pure mixin, then change `class` to `mixin`:
 

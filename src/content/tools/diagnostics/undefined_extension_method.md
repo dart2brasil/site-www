@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The method '{0}' isn't defined for the extension '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override is used to
+O analisador produz este diagnóstico quando an extension override is used to
 invoke a method, but the method isn't defined by the specified extension.
 The analyzer also produces this diagnostic when a static method is
 referenced but isn't defined by the specified extension.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the extension `E`
+O código a seguir produz este diagnóstico porque the extension `E`
 doesn't declare an instance method named `b`:
 
 ```dart
@@ -35,7 +36,7 @@ void f() {
 }
 ```
 
-The following code produces this diagnostic because the extension `E`
+O código a seguir produz este diagnóstico porque the extension `E`
 doesn't declare a static method named `a`:
 
 ```dart
@@ -44,7 +45,7 @@ extension E on String {}
 var x = E.[!a!]();
 ```
 
-## Common fixes
+## Correções comuns
 
 If the name of the method is incorrect, then change it to the name of an
 existing method:

@@ -1,38 +1,39 @@
 ---
 title: dart pub bump
 description: Use dart pub bump to increase the version number of the current package.
+ia-translate: true
 ---
 
-_Bump_ is one of the commands of the [pub tool](/tools/pub/cmd).
+_Bump_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 
 ```plaintext
 $ dart pub bump <subcommand> [options]
 ```
 
-This command increments the version number of the current package.
-Use one of the subcommands `breaking`, `major`, `minor`,
-or `patch` according to the type of increment desired. 
+Este comando incrementa o número de versão do pacote atual.
+Use um dos subcomandos `breaking`, `major`, `minor`,
+ou `patch` de acordo com o tipo de incremento desejado.
 
-Refer to [semver](https://semver.org/spec/v2.0.0-rc.1.html) for guidance on versioning your package.
-For example:
+Consulte [semver](https://semver.org/spec/v2.0.0-rc.1.html) para orientação sobre o versionamento do seu pacote.
+Por exemplo:
 
 ```console
 $ dart pub bump minor
   Updating version from 1.0.0 to 1.1.0
-  
+
   Diff:
   - version: 1.0.0
   + version: 1.1.0
-  
+
   Remember to update `CHANGELOG.md` before publishing.
 ```
 
-## Options
+## Opções
 
-For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd#global-options).
+Para opções que se aplicam a todos os comandos pub, veja
+[Opções globais](/tools/pub/cmd#global-options).
 
 ### `-n, --dry-run`
 
-Reports what would change for the version number under each subcommand,
-and shows the version diff, without changing anything.
+Relata o que mudaria para o número de versão em cada subcomando,
+e mostra o diff da versão, sem alterar nada.

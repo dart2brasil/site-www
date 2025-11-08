@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Constructors for public widgets should have a named 'key' parameter._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor in a subclass of
+O analisador produz este diagnóstico quando a constructor in a subclass of
 `Widget` that isn't private to its library doesn't have a parameter named
 `key`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor for
+O código a seguir produz este diagnóstico porque the constructor for
 the class `MyWidget` doesn't have a parameter named `key`:
 
 ```dart
@@ -39,7 +40,7 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-The following code produces this diagnostic because the default
+O código a seguir produz este diagnóstico porque the default
 constructor for the class `MyWidget` doesn't have a parameter named `key`:
 
 ```dart
@@ -48,7 +49,7 @@ import 'package:flutter/material.dart';
 class [!MyWidget!] extends StatelessWidget {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Add a parameter named `key` to the constructor, explicitly declaring the
 constructor if necessary:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary instance of 'Container'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a widget tree contains an
+O analisador produz este diagnóstico quando a widget tree contains an
 instance of `Container` and the only argument to the constructor is
 `child:`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the invocation of the
+O código a seguir produz este diagnóstico porque the invocation of the
 `Container` constructor only has a `child:` argument:
 
 ```dart
@@ -46,7 +47,7 @@ Widget buildRow() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you intended to provide other arguments to the constructor, then add
 them:

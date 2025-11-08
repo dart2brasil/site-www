@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Only const constructors can have the `@literal` annotation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the [`literal`][meta-literal]
+O analisador produz este diagnóstico quando the [`literal`][meta-literal]
 annotation is applied to anything other than a const constructor.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the constructor isn't
-a `const` constructor:
+O código a seguir produz este diagnóstico porque o construtor não é
+um construtor `const`:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -28,7 +29,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because `x` isn't a
+O código a seguir produz este diagnóstico porque `x` isn't a
 constructor:
 
 ```dart
@@ -38,7 +39,7 @@ import 'package:meta/meta.dart';
 var x;
 ```
 
-## Common fixes
+## Correções comuns
 
 If the annotation is on a constructor and the constructor should always be
 invoked with `const`, when possible, then mark the constructor with the

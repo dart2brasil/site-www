@@ -5,6 +5,7 @@ description: >-
   An index of the diagnostics produced by the Dart analyzer.
 skipFreshness: true
 bodyClass: diagnostics
+ia-translate: true
 ---
 
 This page lists diagnostic messages produced by the Dart analyzer,

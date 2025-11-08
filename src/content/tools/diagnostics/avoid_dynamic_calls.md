@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Method invocation or property access on a 'dynamic' target._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member of a class is accessed
+O analisador produz este diagnóstico quando a member of a class is accessed
 on an expression whose type is `dynamic`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the getter `length` is
+O código a seguir produz este diagnóstico porque the getter `length` is
 being invoked on `s`, which has the type `dynamic`:
 
 ```dart
@@ -36,7 +37,7 @@ void f(dynamic s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Provide enough type information that the expression has a type other than
 `dynamic`:

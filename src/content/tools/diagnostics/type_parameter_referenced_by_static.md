@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Static members can't reference type parameters of the class._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a static member references a
+O analisador produz este diagnóstico quando a static member references a
 type parameter that is declared for the class. Type parameters only have
 meaning for instances of the class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the static method
+O código a seguir produz este diagnóstico porque the static method
 `hasType` has a reference to the type parameter `T`:
 
 ```dart
@@ -26,7 +27,7 @@ class C<T> {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the member can be an instance member, then remove the keyword `static`:
 

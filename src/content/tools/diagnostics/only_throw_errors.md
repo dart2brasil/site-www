@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Don't throw instances of classes that don't extend either 'Exception' or 'Error'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value being thrown isn't a
+O analisador produz este diagnóstico quando the value being thrown isn't a
 subclass of either `Exception` or `Error`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string `'f'` is
+O código a seguir produz este diagnóstico porque the string `'f'` is
 being thrown:
 
 ```dart
 void f() => throw [!'f'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the value with an instance of a subclass of either `Exception` or
 `Error`:

@@ -5,26 +5,27 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Undefined name '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it encounters an identifier that
+O analisador produz este diagnóstico quando it encounters an identifier that
 either isn't defined or isn't visible in the scope in which it's being
 referenced.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name `rihgt` isn't
+O código a seguir produz este diagnóstico porque the name `rihgt` isn't
 defined:
 
 ```dart
 int min(int left, int right) => left <= [!rihgt!] ? left : right;
 ```
 
-## Common fixes
+## Correções comuns
 
 If the identifier isn't defined, then either define it or replace it with
 an identifier that is defined. The example above can be corrected by

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,16 +21,16 @@ bodyClass: highlight-diagnostics
 
 _The imported package '{0}' isn't a dependency of the importing package._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a package import refers to a
+O analisador produz este diagnóstico quando a package import refers to a
 package that is not specified in the `pubspec.yaml` file.
 
 Depending explicitly on packages that you reference ensures they will
 always exist and allows you to put a dependency constraint on them to
 guard against breaking changes.
 
-## Example
+## Exemplo
 
 Given a `pubspec.yaml` file containing the following:
 
@@ -38,14 +39,14 @@ dependencies:
   meta: ^3.0.0
 ```
 
-The following code produces this diagnostic because there is no dependency
+O código a seguir produz este diagnóstico porque there is no dependency
 on the package `a`:
 
 ```dart
 import 'package:a/a.dart';
 ```
 
-## Common fixes
+## Correções comuns
 
 Whether the dependency should be a regular dependency or dev dependency
 depends on whether the package is referenced from a public library (one

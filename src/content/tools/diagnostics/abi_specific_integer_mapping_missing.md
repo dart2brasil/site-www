@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Classes extending 'AbiSpecificInteger' must have exactly one 'AbiSpecificIntegerMapping' annotation specifying the mapping from ABI to a 'NativeType' integer with a fixed size._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class that extends
-`AbiSpecificInteger` doesn't have an `AbiSpecificIntegerMapping`
+O analisador produz este diagnóstico quando uma classe que estende
+`AbiSpecificInteger` não tem uma `AbiSpecificIntegerMapping`
 annotation.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there's no
-`AbiSpecificIntegerMapping` annotation on the class `C`:
+O código a seguir produz este diagnóstico porque não há
+`AbiSpecificIntegerMapping` annotation na classe `C`:
 
 ```dart
 import 'dart:ffi';
@@ -28,9 +29,9 @@ final class [!C!] extends AbiSpecificInteger {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an `AbiSpecificIntegerMapping` annotation to the class:
+Adicione uma `AbiSpecificIntegerMapping` anotação à classe:
 
 ```dart
 import 'dart:ffi';

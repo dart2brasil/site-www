@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The ability to import '{0}' indirectly is deprecated._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when one library imports a name from
+O analisador produz este diagnóstico quando one library imports a name from
 a second library, and the second library exports the name from a third
 library but has indicated that it won't export the third library in the
 future.
 
-## Example
+## Exemplo
 
 Given a library `a.dart` defining the class `A`:
 
@@ -34,7 +35,7 @@ import 'a.dart';
 export 'a.dart';
 ```
 
-The following code produces this diagnostic because the class `A` won't be
+O código a seguir produz este diagnóstico porque a classe `A` won't be
 exported from `b.dart` in some future version:
 
 ```dart
@@ -43,7 +44,7 @@ import 'b.dart';
 [!A!]? a;
 ```
 
-## Common fixes
+## Correções comuns
 
 If the name is available from a different library that you can import,
 then replace the existing import with an import for that library (or add

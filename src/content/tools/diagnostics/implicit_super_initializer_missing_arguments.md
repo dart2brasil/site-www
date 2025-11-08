@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The implicitly invoked unnamed constructor from '{0}' has required parameters._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor implicitly
+O analisador produz este diagnóstico quando a constructor implicitly
 invokes the unnamed constructor from the superclass, the unnamed
 constructor of the superclass has a required parameter, and there's no
 super parameter corresponding to the required parameter.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the unnamed
+O código a seguir produz este diagnóstico porque the unnamed
 constructor in the class `B` implicitly invokes the unnamed constructor in
 the class `A`, but the constructor in `A` has a required positional
 parameter named `x`:
@@ -33,7 +34,7 @@ class B extends A {
 }
 ```
 
-The following code produces this diagnostic because the unnamed
+O código a seguir produz este diagnóstico porque the unnamed
 constructor in the class `B` implicitly invokes the unnamed constructor in
 the class `A`, but the constructor in `A` has a required named parameter
 named `x`:
@@ -48,7 +49,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you can add a parameter to the constructor in the subclass, then add a
 super parameter corresponding to the required parameter in the superclass'

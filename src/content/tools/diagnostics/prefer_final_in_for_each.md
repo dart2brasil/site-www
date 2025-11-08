@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,14 +23,14 @@ _The pattern should be final._
 
 _The variable '{0}' should be final._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the loop variable in a for-each
+O analisador produz este diagnóstico quando the loop variable in a for-each
 statement isn't marked as being `final`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the loop variable `e`
+O código a seguir produz este diagnóstico porque the loop variable `e`
 isn't marked as being `final`:
 
 ```dart
@@ -40,7 +41,7 @@ void f(List<int> l) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add the modifier `final` to the loop variable, removing the `var` if there
 is one:

@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The enum doesn't have a constructor named '{0}'._
 
 _The enum doesn't have an unnamed constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the constructor invoked to
+O analisador produz este diagnóstico quando the constructor invoked to
 initialize an enum value doesn't exist.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the enum value `c`
+O código a seguir produz este diagnóstico porque the enum value `c`
 is being initialized by the unnamed constructor, but there's no unnamed
 constructor defined in `E`:
 
@@ -30,7 +31,7 @@ enum E {
 }
 ```
 
-The following code produces this diagnostic because the enum value `c` is
+O código a seguir produz este diagnóstico porque the enum value `c` is
 being initialized by the constructor named `x`, but there's no constructor
 named `x` defined in `E`:
 
@@ -42,7 +43,7 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the enum value is being initialized by the unnamed constructor and one
 of the named constructors should have been used, then add the name of the

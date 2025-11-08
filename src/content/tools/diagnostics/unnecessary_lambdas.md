@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Closure should be a tearoff._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a closure (lambda) could be
+O analisador produz este diagnóstico quando a closure (lambda) could be
 replaced by a tear-off.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the closure passed to
+O código a seguir produz este diagnóstico porque the closure passed to
 `forEach` contains only an invocation of the function `print` with the
 parameter of the closure:
 
@@ -39,7 +40,7 @@ void f(List<String> strings) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the closure with a tear-off of the function or method being
 invoked with the closure:

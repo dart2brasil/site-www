@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A constructor can have at most one 'super' initializer._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the initializer list of a
+O analisador produz este diagnóstico quando the initializer list of a
 constructor contains more than one invocation of a constructor from the
 superclass. The initializer list is required to have exactly one such call,
 which can either be explicit or implicit.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the initializer list
+O código a seguir produz este diagnóstico porque the initializer list
 for `B`'s constructor invokes both the constructor `one` and the
 constructor `two` from the superclass `A`:
 
@@ -35,7 +36,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If one of the super constructors will initialize the instance fully, then
 remove the other:

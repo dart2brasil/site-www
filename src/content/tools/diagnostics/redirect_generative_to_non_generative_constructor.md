@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Generative constructors can't redirect to a factory constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a generative constructor
+O analisador produz este diagnóstico quando a generative constructor
 redirects to a factory constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the generative
+O código a seguir produz este diagnóstico porque the generative
 constructor `C.a` redirects to the factory constructor `C.b`:
 
 ```dart
@@ -26,7 +27,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the generative constructor doesn't need to redirect to another
 constructor, then remove the redirect.
@@ -39,7 +40,7 @@ class C {
 ```
 
 If the generative constructor must redirect to another constructor, then
-make the other constructor be a generative (non-factory) constructor:
+make the other constructor be a generative (non-factory) construtor:
 
 ```dart
 class C {

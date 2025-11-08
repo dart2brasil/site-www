@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Super parameters can only be used in non-redirecting generative constructors._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a super parameter is used
+O analisador produz este diagnóstico quando a super parameter is used
 anywhere other than a non-redirecting generative constructor.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the super parameter
-`x` is in a redirecting generative constructor:
+O código a seguir produz este diagnóstico porque the super parameter
+`x` is in a redirecting generative construtor:
 
 ```dart
 class A {
@@ -30,8 +31,8 @@ class B extends A {
 }
 ```
 
-The following code produces this diagnostic because the super parameter
-`x` isn't in a generative constructor:
+O código a seguir produz este diagnóstico porque the super parameter
+`x` isn't in a generative construtor:
 
 ```dart
 class A {
@@ -44,7 +45,7 @@ class C extends A {
 }
 ```
 
-The following code produces this diagnostic because the super parameter
+O código a seguir produz este diagnóstico porque the super parameter
 `x` is in a method:
 
 ```dart
@@ -59,7 +60,7 @@ class D extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function containing the super parameter can be changed to be a
 non-redirecting generative constructor, then do so:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,7 +21,7 @@ bodyClass: highlight-diagnostics
 
 _Missing an 'await' for the 'Future' computed by this expression._
 
-## Description
+## Descrição
 
 The analyzer produces this diagnostic on an expression with a `Future`
 type, only in a few specific cases:
@@ -35,9 +36,9 @@ The analyzer only produces this diagnostic on expressions inside an
 The two common corrections are to 'await' the expression, or to wrap the
 expression in a call to `unawaited()`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `g`
+O código a seguir produz este diagnóstico porque the function `g`
 returns a future, but the future isn't awaited:
 
 ```dart
@@ -48,7 +49,7 @@ Future<void> f() async {
 Future<int> g() => Future.value(0);
 ```
 
-## Common fixes
+## Correções comuns
 
 If the future needs to complete before the following code is executed,
 then add an `await` before the invocation:

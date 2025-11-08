@@ -1,83 +1,84 @@
 ---
 title: dart pub outdated
-description: Use dart pub outdated to help you update your package dependencies.
+description: Use dart pub outdated para ajudá-lo a atualizar suas dependências de pacotes.
+ia-translate: true
 ---
 
-_Outdated_ is one of the commands of the [pub tool](/tools/pub/cmd).
+_Outdated_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 
 ```plaintext
 $ dart pub outdated [options]
 ```
 
-Use `dart pub outdated` to identify out-of-date [package dependencies][]
-and get advice on how to update them.
-[Best practices for dependency management][best practices]
-include using the most recent stable package versions,
-so you can get the latest bug fixes and improvements.
+Use `dart pub outdated` para identificar [dependências de pacotes][package dependencies] desatualizadas
+e obter conselhos sobre como atualizá-las.
+[As melhores práticas de gerenciamento de dependências][best practices]
+incluem o uso das versões mais recentes de pacotes estáveis,
+para que você possa obter as correções de bugs mais recentes e melhorias.
 
-## Overview
+## Visão geral
 
-Here's how you can use `dart pub outdated` to help you
-update the dependencies of a package that you own
-(whether it's an app or regular package):
+Aqui está como você pode usar `dart pub outdated` para ajudá-lo a
+atualizar as dependências de um pacote que você possui
+(seja um aplicativo ou pacote normal):
 
-1. If your package doesn't have a `pubspec.lock` file
-   checked into source control,
-   **run `dart pub get`** in the top directory of the package—the
-   directory that contains your package's
-   [`pubspec.yaml`](/tools/pub/pubspec) file.
-2. **Run `dart pub outdated`**
-   to identify which package dependencies are out-of-date.
-   Note the affected packages,
-   so that later you can test the behavior of code that uses them.
-3. Follow the recommendations of `dart pub outdated` for updating the packages.
-   Some updates might require only running `dart pub upgrade`.
-   Others might require updating `pubspec.yaml`
-   before running `dart pub upgrade`.
-4. **Run `dart pub outdated`** to confirm that you're using
-   the latest compatible package versions.
-5. **Test** your package to confirm that it still works as expected.
+1. Se seu pacote não tiver um arquivo `pubspec.lock`
+   verificado no controle de origem,
+   **execute `dart pub get`** no diretório superior do pacote—o
+   diretório que contém o arquivo
+   [`pubspec.yaml`](/tools/pub/pubspec) do seu pacote.
+2. **Execute `dart pub outdated`**
+   para identificar quais dependências de pacotes estão desatualizadas.
+   Anote os pacotes afetados,
+   para que mais tarde você possa testar o comportamento do código que os usa.
+3. Siga as recomendações de `dart pub outdated` para atualizar os pacotes.
+   Algumas atualizações podem exigir apenas a execução de `dart pub upgrade`.
+   Outras podem exigir a atualização de `pubspec.yaml`
+   antes de executar `dart pub upgrade`.
+4. **Execute `dart pub outdated`** para confirmar que você está usando
+   as versões mais recentes de pacotes compatíveis.
+5. **Teste** seu pacote para confirmar que ele ainda funciona conforme esperado.
 
-You might still have out-of-date dependencies due to
-[transitive dependencies][].
-If you want to determine the cause,
-try running [`dart pub deps`][] and searching the output for
-the name of each out-of-date package.
+Você ainda pode ter dependências desatualizadas devido a
+[dependências transitivas][transitive dependencies].
+Se quiser determinar a causa,
+tente executar [`dart pub deps`][] e procure na saída
+o nome de cada pacote desatualizado.
 
 
-## Example
+## Exemplo
 
-Here's an example of running `dart pub outdated` on
-an example that has several out-of-date dependencies.
-Three of the dependencies (`args`, `http`, and `path`) are direct,
-and one is transitive (`meta`).
-As the following example shows,
-`dart pub outdated` colorizes the output by default
-when you run it on the command line.
+Aqui está um exemplo de execução de `dart pub outdated` em
+um exemplo que tem várias dependências desatualizadas.
+Três das dependências (`args`, `http` e `path`) são diretas,
+e uma é transitiva (`meta`).
+Como mostra o exemplo a seguir,
+`dart pub outdated` colore a saída por padrão
+quando você a executa na linha de comando.
 
 {% render 'tools/pub-outdated-output.html' %}
 
-The **Resolvable** column shows which versions you can upgrade to
-for each out-of-date dependency.
-You can get more information by looking for
-the **leftmost column** with a **non-red value**.
-For example, `args` is _upgradable_ to 1.6.0,
-and `http` is _resolvable_ to 0.12.1.
-The `path` and `meta` packages aren't the latest versions,
-but are the most current _resolvable_ versions,
-considering all the other dependencies.
+A coluna **Resolvable** mostra quais versões você pode atualizar para
+cada dependência desatualizada.
+Você pode obter mais informações procurando pela
+**coluna mais à esquerda** com um **valor não vermelho**.
+Por exemplo, `args` é _atualizável_ para 1.6.0,
+e `http` é _resolvível_ para 0.12.1.
+Os pacotes `path` e `meta` não são as versões mais recentes,
+mas são as versões mais atuais _resolvíveis_,
+considerando todas as outras dependências.
 
 :::tip
-To see what changed in the new version of a package
-that's published on [pub.dev,]({{site.pub}})
-look at the changelog in the package page.
-For example, you can look at the **Changelog** tabs on the pages for the
-[`args`][] and [`http`][] packages.
+Para ver o que mudou na nova versão de um pacote
+que é publicado em [pub.dev,]({{site.pub}})
+procure o changelog na página do pacote.
+Por exemplo, você pode procurar as abas **Changelog** nas páginas dos
+pacotes [`args`][] e [`http`][].
 :::
 
-To fix the first dependency (`args`),
-which is listed as upgradable,
-you just need to run `dart pub upgrade`:
+Para corrigir a primeira dependência (`args`),
+que está listada como atualizável,
+você só precisa executar `dart pub upgrade`:
 
 ```console
 $ dart pub upgrade
@@ -87,25 +88,25 @@ Resolving dependencies...
 Changed 1 dependency!
 ```
 
-To fix the second dependency (`http`),
-which is listed as resolvable,
-you can change the pubspec's `http` entry to use
-the version in the **Resolvable** column
-(or a compatible higher version).
-In [caret syntax][], that's **`^0.12.1`**.
-Here's the diff for `pubspec.yaml`:
+Para corrigir a segunda dependência (`http`),
+que está listada como resolvível,
+você pode alterar a entrada `http` do pubspec para usar
+a versão na coluna **Resolvable**
+(ou uma versão superior compatível).
+Na [sintaxe de acento circunflexo][caret syntax], isso é **`^0.12.1`**.
+Aqui está o diff para `pubspec.yaml`:
 
 ```diff
 -  http: ^0.11.0
 +  http: ^0.12.1
 ```
 
-After editing `pubspec.yaml`, you run `dart pub upgrade` to
-update the `pubspec.lock` file.
-You can then run `dart pub outdated` to confirm that
-you've made all necessary changes.
-In this example, the `path` and `meta` packages are still out-of-date,
-due to constraints determined by other dependencies:
+Depois de editar `pubspec.yaml`, você executa `dart pub upgrade` para
+atualizar o arquivo `pubspec.lock`.
+Você pode então executar `dart pub outdated` para confirmar que
+você fez todas as alterações necessárias.
+Neste exemplo, os pacotes `path` e `meta` ainda estão desatualizados,
+devido a restrições determinadas por outras dependências:
 
 ```console
 $ dart pub upgrade
@@ -127,8 +128,8 @@ Dependencies are all on the latest resolvable versions.
 Newer versions, while available, are not mutually compatible.
 ```
 
-To see why these packages are out-of-date, you can run `dart pub deps`
-and look for dependencies on these packages:
+Para ver por que esses pacotes estão desatualizados, você pode executar `dart pub deps`
+e procurar dependências nesses pacotes:
 
 ```console
 $ dart pub deps -s list
@@ -141,102 +142,102 @@ dependencies:
 ...
 ```
 
-As the preceding output shows,
-this package depends on the `terminal_tools` package,
-which depends on old versions of `path` and `meta`.
-Once the `terminal_tools` package is updated,
-it should be possible to update this package.
+Como mostra a saída anterior,
+este pacote depende do pacote `terminal_tools`,
+que depende de versões antigas de `path` e `meta`.
+Depois que o pacote `terminal_tools` for atualizado,
+deve ser possível atualizar este pacote.
 
 :::important
-Test your code to verify that it still works as expected
-after updating the packages.
+Teste seu código para verificar se ele ainda funciona conforme esperado
+depois de atualizar os pacotes.
 :::
 
 
-## Output columns
+## Colunas de saída
 
-The output of `dart pub outdated` has four columns of version information
-for each out-of-date dependency.
-Here is the part of the [example](#example) output
-that shows the four version columns:
-Current, Upgradable, Resolvable, and Latest.
+A saída de `dart pub outdated` tem quatro colunas de informações de versão
+para cada dependência desatualizada.
+Aqui está a parte da saída do [exemplo](#exemplo)
+que mostra as quatro colunas de versão:
+Atual, Atualizável, Resolvível e Mais recente.
 
 {% render 'tools/pub-outdated-output-columns.html' %}
 
-Current
-: The version used in your package, as recorded in `pubspec.lock`.
-  If the package isn't in `pubspec.lock`,
-  the value is `-`.
+Atual
+: A versão usada em seu pacote, conforme registrada em `pubspec.lock`.
+  Se o pacote não estiver em `pubspec.lock`,
+  o valor é `-`.
 
-Upgradable
-: The latest version allowed by your `pubspec.yaml` file.
-  This is the version that `dart pub upgrade` resolves to.
-  The value is `-` if the value in the **Current** column is `-`.
+Atualizável
+: A versão mais recente permitida pelo seu arquivo `pubspec.yaml`.
+  Esta é a versão que `dart pub upgrade` resolve.
+  O valor é `-` se o valor na coluna **Atual** é `-`.
 
-Resolvable
-: The latest version that can be resolved,
-  when combined with all other dependencies.
-  This version corresponds to what `dart pub upgrade` gives you
-  if all version constraints in `pubspec.yaml` are unbounded.
-  A value of `-` means that the package won't be needed.
+Resolvível
+: A versão mais recente que pode ser resolvida,
+  quando combinada com todas as outras dependências.
+  Esta versão corresponde ao que `dart pub upgrade` oferece a você
+  se todas as restrições de versão em `pubspec.yaml` forem ilimitadas.
+  Um valor de `-` significa que o pacote não será necessário.
 
-Latest
-: The latest version of the package available,
-  excluding prereleases unless you use the option `--prereleases`.
+Mais recente
+: A versão mais recente do pacote disponível,
+  excluindo pré-lançamentos, a menos que você use a opção `--prereleases`.
 
-For example, say your app depends on the `foo` and `bar` packages,
-but the latest version of `bar` allows only older major versions of `foo`.
-The result is that the latest _resolvable_ version of `foo`
-is different from the _latest_ version of `foo`.
+Por exemplo, digamos que seu aplicativo depende dos pacotes `foo` e `bar`,
+mas a versão mais recente de `bar` permite apenas versões principais mais antigas de `foo`.
+O resultado é que a versão _resolvível_ mais recente de `foo`
+é diferente da versão _mais recente_ de `foo`.
 
-When you edit the `pubspec.yaml` file,
-you generally update the **dependencies** and **dev_dependencies** sections
-so that each package uses the versions in the **Resolvable** column.
+Ao editar o arquivo `pubspec.yaml`,
+você geralmente atualiza as seções **dependencies** e **dev_dependencies**
+para que cada pacote use as versões na coluna **Resolvível**.
 
-## Options
+## Opções
 
-For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd#global-options).
+Para opções que se aplicam a todos os comandos pub, consulte
+[Opções globais](/tools/pub/cmd#global-options).
 
 ### `--[no-]dependency-overrides`
 
-By default, accounts for [`dependency_overrides`][]
-when resolving package constraints (`--dependency-overrides`).
-To not consider overrides, use `--no-dependency-overrides`.
+Por padrão, considera [`dependency_overrides`][]
+ao resolver restrições de pacotes (`--dependency-overrides`).
+Para não considerar substituições, use `--no-dependency-overrides`.
 
 ### `--[no-]dev-dependencies`
 
-By default, accounts for [dev dependencies][dev dependency]
-when resolving package constraints (`--dev-dependencies`).
-To not consider dev dependencies, use `--no-dev-dependencies`.
+Por padrão, considera [dependências de desenvolvimento][dev dependency]
+ao resolver restrições de pacotes (`--dev-dependencies`).
+Para não considerar dependências de desenvolvimento, use `--no-dev-dependencies`.
 
 ### `--json`
 
-Generates output in JSON format.
+Gera saída em formato JSON.
 
 ### `--[no-]prereleases`
 
-By default, includes prereleases
-when determining the last package versions (`--prereleases`).
-To not consider preleases, use `--no-prereleases`.
+Por padrão, inclui pré-lançamentos
+ao determinar as últimas versões de pacotes (`--prereleases`).
+Para não considerar pré-lançamentos, use `--no-prereleases`.
 
 ### `--[no-]transitive`
 
-By default, doesn't include [transitive dependencies][]
-as part of the output (`--no-transitive`).
-To include transitive dependencies, use `--transitive`.
+Por padrão, não inclui [dependências transitivas][transitive dependencies]
+como parte da saída (`--no-transitive`).
+Para incluir dependências transitivas, use `--transitive`.
 
 ### `--[no-]up-to-date`
 
-By default, doesn't include dependencies that
-are at the latest version (`--no-up-to-date`).
-To include up-to-date dependencies, use `--up-to-date`.
+Por padrão, não inclui dependências que
+estão na versão mais recente (`--no-up-to-date`).
+Para incluir dependências atualizadas, use `--up-to-date`.
 
 
-## In a workspace
+## Em um workspace
 
-In a [Pub workspace](/tools/pub/workspaces) `dart pub outdated` lists
-all dependencies 
+Em um [Pub workspace](/tools/pub/workspaces), `dart pub outdated` lista
+todas as dependências 
 
 {% render 'pub-problems.md' %}
 

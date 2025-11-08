@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Deferred classes can't be used as superclass constraints._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a superclass constraint of a
+O analisador produz este diagnóstico quando a superclass constraint of a
 mixin is imported from a deferred library.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the superclass
+O código a seguir produz este diagnóstico porque the superclass
 constraint of `math.Random` is imported from a deferred library:
 
 ```dart
@@ -25,7 +26,7 @@ import 'dart:async' deferred as async;
 mixin M<T> on [!async.Stream<T>!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the import doesn't need to be deferred, then remove the `deferred`
 keyword:

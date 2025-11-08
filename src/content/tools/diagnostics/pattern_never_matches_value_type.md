@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The matched value type '{0}' can never match the required type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the object's type can't be
+O analisador produz este diagnóstico quando the object's type can't be
 matched by the pattern.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because a `double` is matched
+O código a seguir produz este diagnóstico porque a `double` is matched
 by an `int` pattern, which can never succeed:
 
 ```dart
@@ -25,7 +26,7 @@ void f(String? s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If one of the types is wrong, then change one or both so the pattern match
 can succeed:

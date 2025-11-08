@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use of '{0}' in a 'finally' clause._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `finally` clause contains a
+O analisador produz este diagnóstico quando a `finally` clause contains a
 `return`, `break`, or `continue` statement.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is a `return`
+O código a seguir produz este diagnóstico porque there is a `return`
 statement inside a `finally` block:
 
 ```dart
@@ -42,7 +43,7 @@ int f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the statement isn't needed, then remove the statement, and remove the
 `finally` clause if the block is empty:

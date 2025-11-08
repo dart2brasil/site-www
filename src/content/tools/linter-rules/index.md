@@ -1,120 +1,121 @@
 ---
-title: Linter rules
-description: Details about the Dart linter and its style rules you can choose.
+ia-translate: true
+title: Regras do linter
+description: Detalhes sobre o linter Dart e as regras de estilo que você pode escolher.
 bodyClass: diagnostics
 ---
 
-Use the Dart linter to identify possible problems in your Dart code.
-You can use the linter through your IDE
-or with the [`dart analyze`](/tools/dart-analyze) command.
-For information on how to enable and disable individual linter rules, see
-[individual rules sections][] of the [analyzer documentation][].
+Use o linter Dart para identificar possíveis problemas no seu código Dart.
+Você pode usar o linter através da sua IDE
+ou com o comando [`dart analyze`](/tools/dart-analyze).
+Para informações sobre como habilitar e desabilitar regras individuais do linter, consulte
+as [seções de regras individuais][individual rules sections] da [documentação do analyzer][analyzer documentation].
 
 [individual rules sections]: /tools/analysis#individual-rules
 [analyzer documentation]: /tools/analysis
 
-This page lists all the linter rules,
-with details such as when you might want to use each rule,
-what code patterns trigger it, and
-how you might fix your code.
+Esta página lista todas as regras do linter,
+com detalhes como quando você pode querer usar cada regra,
+quais padrões de código a acionam, e
+como você pode corrigir seu código.
 
 :::tip
-Linter rules (sometimes called _lints_) can have false positives,
-and they don't all agree with each other.
-For example, some rules are more appropriate for regular Dart packages,
-and others are designed for Flutter apps.
+Regras do linter (às vezes chamadas de _lints_) podem ter falsos positivos,
+e elas não concordam todas entre si.
+Por exemplo, algumas regras são mais apropriadas para pacotes Dart regulares,
+e outras são projetadas para aplicações Flutter.
 :::
 
 <a id="predefined-rule-sets"></a>
-## Sets
+## Conjuntos {:#sets}
 
-To avoid the need to individually select compatible linter rules,
-consider starting with a linter rule set,
-which the following packages provide:
+Para evitar a necessidade de selecionar individualmente regras compatíveis do linter,
+considere começar com um conjunto de regras do linter,
+que os seguintes pacotes fornecem:
 
 <a id="lints"></a>
 
 [lints][]
-: Contains two rule sets curated by the Dart team. 
-  We recommend using at least the `core` rule set, 
-  which is used when [scoring]({{site.pub}}/help/scoring) 
-  packages uploaded to [pub.dev]({{site.pub}}). 
-  Or, better yet, use the `recommended` rule set, 
-  a superset of `core` that identifies additional issues
-  and enforces style and format. 
-  If you're writing Flutter code, 
-  use the rule set in the [`flutter_lints`](#flutter_lints) package,
-  which builds on `lints`.
+: Contém dois conjuntos de regras organizados pela equipe Dart.
+  Recomendamos usar pelo menos o conjunto de regras `core`,
+  que é usado ao [pontuar]({{site.pub}}/help/scoring)
+  pacotes enviados para [pub.dev]({{site.pub}}).
+  Ou, melhor ainda, use o conjunto de regras `recommended`,
+  um superconjunto de `core` que identifica problemas adicionais
+  e impõe estilo e formato.
+  Se você estiver escrevendo código Flutter,
+  use o conjunto de regras no pacote [`flutter_lints`](#flutter_lints),
+  que é baseado em `lints`.
 
 <a id="flutter_lints"></a>
 
 [flutter_lints][]
-: Contains the `flutter` rule set,
-  which the Flutter team encourages you to use
-  in Flutter apps, packages, and plugins.
-  This rule set is a superset of the [`recommended`](#lints) set,
-  which is itself a superset of the [`core`](#lints) set that
-  partially determines the [score]({{site.pub}}/help/scoring) of
-  packages uploaded to [pub.dev]({{site.pub}}).
+: Contém o conjunto de regras `flutter`,
+  que a equipe Flutter encoraja você a usar
+  em aplicações, pacotes e plugins Flutter.
+  Este conjunto de regras é um superconjunto do conjunto [`recommended`](#lints),
+  que é ele próprio um superconjunto do conjunto [`core`](#lints) que
+  determina parcialmente a [pontuação]({{site.pub}}/help/scoring) de
+  pacotes enviados para [pub.dev]({{site.pub}}).
 
 [lints]: {{site.pub-pkg}}/lints
 [flutter_lints]: {{site.pub-pkg}}/flutter_lints
 
-To learn how to use a specific rule set,
-visit the documentation for [enabling and disabling linter rules][].
+Para aprender como usar um conjunto de regras específico,
+visite a documentação para [habilitar e desabilitar regras do linter][enabling and disabling linter rules].
 
-To find more predefined rule sets,
-check out the [`#lints` topic]({{site.pub-pkg}}?q=topic:lints) on pub.dev.
+Para encontrar mais conjuntos de regras predefinidos,
+confira o [tópico `#lints`]({{site.pub-pkg}}?q=topic:lints) no pub.dev.
 
 [enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 
 <a id="maturity-levels"></a>
-## Status
+## Status {:#status}
 
-Each rule has a status or maturity level:
+Cada regra tem um status ou nível de maturidade:
 
-**Stable**
-: These rules are safe to use and are verified as functional
-  with the latest versions of the Dart language.
-  All rules are considered stable unless
-  they're marked as experimental, deprecated, or removed.
+**Estável (Stable)**
+: Estas regras são seguras de usar e são verificadas como funcionais
+  com as versões mais recentes da linguagem Dart.
+  Todas as regras são consideradas estáveis a menos que
+  sejam marcadas como experimentais, descontinuadas ou removidas.
 
 **Experimental**
-: These rules are still under evaluation and might never be stabilized.
-  Use these with caution and report any issues you come across.
+: Estas regras ainda estão sob avaliação e podem nunca ser estabilizadas.
+  Use-as com cautela e reporte quaisquer problemas que encontrar.
 
-**Deprecated**
-: These rules are no longer suggested for use
-  and might be removed in a future Dart release.
+**Descontinuada (Deprecated)**
+: Estas regras não são mais sugeridas para uso
+  e podem ser removidas em uma futura versão do Dart.
 
-**Removed**
-: These rules have already been removed in the
-  latest stable Dart release.
+**Removida (Removed)**
+: Estas regras já foram removidas na
+  última versão estável do Dart.
 
-## Quick fixes
+## Correções rápidas {:#quick-fixes}
 
-Some rules can be fixed automatically using quick fixes.
-A quick fix is an automated edit 
-targeted at fixing the issue
-reported by the linter rule.
+Algumas regras podem ser corrigidas automaticamente usando correções rápidas.
+Uma correção rápida é uma edição automatizada
+direcionada para corrigir o problema
+reportado pela regra do linter.
 
-If the rule has a quick fix,
-it can be applied using [`dart fix`](/tools/dart-fix)
-or using your [editor with Dart support](/tools#editors).
-To learn more, see [Quick fixes for analysis issues][].
+Se a regra possui uma correção rápida,
+ela pode ser aplicada usando [`dart fix`](/tools/dart-fix)
+ou usando seu [editor com suporte a Dart](/tools#editors).
+Para aprender mais, consulte [Correções rápidas para problemas de análise][Quick fixes for analysis issues].
 
 [Quick fixes for analysis issues]: https://blog.dart.dev/quick-fixes-for-analysis-issues-c10df084971a
 
-## Rules
+## Regras {:#rules}
 
-The following is an index of all linter rules and 
-a short description of their functionality.
-To learn more about a specific rule, 
-click the **Learn more** button on its card.
+O seguinte é um índice de todas as regras do linter e
+uma breve descrição de sua funcionalidade.
+Para aprender mais sobre uma regra específica,
+clique no botão **Learn more** em seu card.
 
-For an auto-generated list containing all linter rules
-in Dart `{{site.sdkVersion}}`,
-check out [All linter rules](/tools/linter-rules/all).
+Para uma lista gerada automaticamente contendo todas as regras do linter
+no Dart `{{site.sdkVersion}}`,
+confira [Todas as regras do linter](/tools/linter-rules/all).
 
 ---
 

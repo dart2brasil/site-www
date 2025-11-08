@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Enums can only declare final fields._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance field in an enum
+O analisador produz este diagnóstico quando an instance field in an enum
 isn't marked as `final`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `f` isn't a
+O código a seguir produz este diagnóstico porque the field `f` isn't a
 final field:
 
 ```dart
@@ -27,7 +28,7 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the field must be defined for the enum, then mark the field as being
 `final`:

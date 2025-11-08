@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _The method is used to change a property._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method is used to set the
+O analisador produz este diagnóstico quando a method is used to set the
 value of a field, or a function is used to set the value of a top-level
 variable, and nothing else.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `setF` is
+O código a seguir produz este diagnóstico porque the method `setF` is
 used to set the value of the field `_f` and does no other work:
 
 ```dart
@@ -39,7 +40,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Convert the method to a setter:
 

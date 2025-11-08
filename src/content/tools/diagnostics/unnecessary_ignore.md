@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,14 +23,14 @@ _The diagnostic '{0}' isn't produced at this location so it doesn't need to be i
 
 _The diagnostic '{0}' isn't produced in this file so it doesn't need to be ignored._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an ignore is specified to
+O analisador produz este diagnóstico quando an ignore is specified to
 ignore a diagnostic that isn't produced.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the
+O código a seguir produz este diagnóstico porque the
 `unused_local_variable` diagnostic isn't reported at the ignored location:
 
 ```dart
@@ -37,7 +38,7 @@ The following code produces this diagnostic because the
 void f() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the ignore comment:
 

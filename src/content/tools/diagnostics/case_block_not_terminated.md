@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The last statement of the 'case' should be 'break', 'continue', 'rethrow', 'return', or 'throw'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the last statement in a `case`
+O analisador produz este diagnóstico quando the last statement in a `case`
 block isn't one of the required terminators: `break`, `continue`,
 `rethrow`, `return`, or `throw`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `case` block ends
+O código a seguir produz este diagnóstico porque the `case` block ends
 with an assignment:
 
 ```dart
@@ -31,7 +32,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add one of the required terminators:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Types can't be assigned a value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a type name appears
+O analisador produz este diagnóstico quando the name of a type name appears
 on the left-hand side of an assignment expression.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the assignment to the
+O código a seguir produz este diagnóstico porque the assignment to the
 class `C` is invalid:
 
 ```dart
@@ -27,7 +28,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the right-hand side should be assigned to something else, such as a
 local variable, then change the left-hand side:

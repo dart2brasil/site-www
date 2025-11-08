@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The value of the field '{0}' isn't used._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a private field is declared but
+O analisador produz este diagnóstico quando a private field is declared but
 never read, even if it's written in one or more places.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field
+O código a seguir produz este diagnóstico porque the field
 `_originalValue` isn't read anywhere in the library:
 
 ```dart
@@ -34,7 +35,7 @@ It might appear that the field `_originalValue` is being read in the
 initializer (`_currentValue = _originalValue`), but that is actually a
 reference to the parameter of the same name, not a reference to the field.
 
-## Common fixes
+## Correções comuns
 
 If the field isn't needed, then remove it.
 

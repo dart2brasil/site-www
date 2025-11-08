@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary 'this.' qualifier._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the keyword `this` is used to
+O analisador produz este diagnóstico quando the keyword `this` is used to
 access a member that isn't shadowed.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the use of `this` to
+O código a seguir produz este diagnóstico porque the use of `this` to
 access the field `_f` isn't necessary:
 
 ```dart
@@ -38,7 +39,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the `this.`:
 

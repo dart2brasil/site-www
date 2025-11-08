@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' doesn't have an unnamed constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an unnamed constructor is
+O analisador produz este diagnóstico quando an unnamed constructor is
 invoked on a class that defines named constructors but the class doesn't
 have an unnamed constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `A` doesn't define an
-unnamed constructor:
+O código a seguir produz este diagnóstico porque `A` doesn't define an
+unnamed construtor:
 
 ```dart
 class A {
@@ -28,7 +29,7 @@ class A {
 A f() => [!A!]();
 ```
 
-## Common fixes
+## Correções comuns
 
 If one of the named constructors does what you need, then use it:
 
@@ -41,7 +42,7 @@ A f() => A.a();
 ```
 
 If none of the named constructors does what you need, and you're able to
-add an unnamed constructor, then add the constructor:
+add an unnamed constructor, then add the construtor:
 
 ```dart
 class A {

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _Angle brackets will be interpreted as HTML._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a documentation comment
+O analisador produz este diagnóstico quando a documentation comment
 contains angle bracketed text (`<...>`) that isn't one of the allowed
 exceptions.
 
@@ -32,9 +33,9 @@ what was intended.
 See the [lint rule description](https://dart.dev/tools/linter-rules/unintended_html_in_doc_comment)
 for the list of allowed exceptions.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the documentation
+O código a seguir produz este diagnóstico porque the documentation
 comment contains the text `<int>`, which isn't one of the allowed
 exceptions:
 
@@ -43,7 +44,7 @@ exceptions:
 String f(List<int> l) => '';
 ```
 
-## Common fixes
+## Correções comuns
 
 If the text was intended to be part of a code span, then add backticks
 around the code:

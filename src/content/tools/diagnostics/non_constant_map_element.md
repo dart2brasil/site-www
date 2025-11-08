@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The elements in a const map literal must be constant._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an `if` element or a spread
+O analisador produz este diagnóstico quando an `if` element or a spread
 element in a constant map isn't a constant element.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because it's attempting to
+O código a seguir produz este diagnóstico porque it's attempting to
 spread a non-constant map:
 
 ```dart
@@ -32,7 +33,7 @@ bool notConst = true;
 var map = const <int, int>{if ([!notConst!]) 1 : 2};
 ```
 
-## Common fixes
+## Correções comuns
 
 If the map needs to be a constant map, then make the elements constants.
 In the spread example, you might do that by making the collection being

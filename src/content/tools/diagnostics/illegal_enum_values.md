@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _An instance member named 'values' can't be declared in a class that implements 'Enum'._
 
 _An instance member named 'values' can't be inherited from '{0}' in a class that implements 'Enum'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when either a class that implements
+O analisador produz este diagnóstico quando either uma classe que implementa
 `Enum` or a mixin with a superclass constraint of `Enum` has an instance
 member named `values`.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the class `C`, which
+O código a seguir produz este diagnóstico porque a classe `C`, which
 implements `Enum`, declares an instance field named `values`:
 
 ```dart
@@ -28,7 +29,7 @@ abstract class C implements Enum {
 }
 ```
 
-The following code produces this diagnostic because the class `B`, which
+O código a seguir produz este diagnóstico porque a classe `B`, which
 implements `Enum`, inherits an instance method named `values` from `A`:
 
 ```dart
@@ -39,7 +40,7 @@ abstract class A {
 abstract class [!B!] extends A implements Enum {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the name of the conflicting member:
 

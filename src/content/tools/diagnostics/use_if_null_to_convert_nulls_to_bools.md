@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use an if-null operator to convert a 'null' to a 'bool'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a nullable `bool`-valued
+O analisador produz este diagnóstico quando a nullable `bool`-valued
 expression is compared (using `==` or `!=`) to a boolean literal.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the nullable boolean
+O código a seguir produz este diagnóstico porque the nullable boolean
 variable `b` is compared to `true`:
 
 ```dart
@@ -38,7 +39,7 @@ void f(bool? b) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the condition to use `??` instead:
 

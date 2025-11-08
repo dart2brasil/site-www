@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The initializer type '{0}' can't be assigned to the field type '{1}' in a const constructor._
 
 _The initializer type '{0}' can't be assigned to the field type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the initializer list of a
+O analisador produz este diagnóstico quando the initializer list of a
 constructor initializes a field to a value that isn't assignable to the
 field.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `0` has the type `int`,
+O código a seguir produz este diagnóstico porque `0` has the type `int`,
 and an `int` can't be assigned to a field of type `String`:
 
 ```dart
@@ -30,7 +31,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type of the field is correct, then change the value assigned to it
 so that the value has a valid type:

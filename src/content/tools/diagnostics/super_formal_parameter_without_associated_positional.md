@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _No associated positional super constructor parameter._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there's a positional super
+O analisador produz este diagnóstico quando there's a positional super
 parameter in a constructor and the implicitly or explicitly invoked super
 constructor doesn't have a positional parameter at the corresponding
 index.
@@ -21,9 +22,9 @@ the super constructor by their index. That is, the first super parameter
 is associated with the first positional parameter in the super
 constructor, the second with the second, and so on.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the constructor in `B`
+O código a seguir produz este diagnóstico porque the constructor in `B`
 has a positional super parameter, but there's no positional parameter in
 the super constructor in `A`:
 
@@ -37,7 +38,7 @@ class B extends A {
 }
 ```
 
-The following code produces this diagnostic because the constructor in `B`
+O código a seguir produz este diagnóstico porque the constructor in `B`
 has two positional super parameters, but there's only one positional
 parameter in the super constructor in `A`, which means that there's no
 corresponding parameter for `y`:
@@ -52,7 +53,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the super constructor should have a positional parameter corresponding
 to the super parameter, then update the super constructor appropriately:

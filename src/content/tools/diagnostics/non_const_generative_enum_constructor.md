@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Generative enum constructors must be 'const'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an enum declaration contains a
+O analisador produz este diagnóstico quando an enum declaration contains a
 generative constructor that isn't marked as `const`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor in `E`
+O código a seguir produz este diagnóstico porque the constructor in `E`
 isn't marked as being `const`:
 
 ```dart
@@ -27,9 +28,9 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add the `const` keyword before the constructor:
+Add the `const` keyword before the construtor:
 
 ```dart
 enum E {

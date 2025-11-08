@@ -5,26 +5,27 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The field name '{0}' is already used in this record._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when either a record literal or a
+O analisador produz este diagnóstico quando either a record literal or a
 record type annotation contains a field whose name is the same as a
 previously declared field in the same literal or type.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the record literal has
+O código a seguir produz este diagnóstico porque the record literal has
 two fields named `a`:
 
 ```dart
 var r = (a: 1, [!a!]: 2);
 ```
 
-The following code produces this diagnostic because the record type
+O código a seguir produz este diagnóstico porque the record type
 annotation has two fields named `a`, one a positional field and the other
 a named field:
 
@@ -32,7 +33,7 @@ a named field:
 void f((int a, {int [!a!]}) r) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Rename one or both of the fields:
 

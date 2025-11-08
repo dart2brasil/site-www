@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _The library name '{0}' isn't a lower\_case\_with\_underscores identifier._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a library doesn't
+O analisador produz este diagnóstico quando the name of a library doesn't
 use the lower_case_with_underscores naming convention.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the library name
+O código a seguir produz este diagnóstico porque the library name
 `libraryName` isn't a lower_case_with_underscores identifier:
 
 ```dart
 library [!libraryName!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the library name is not required, then remove the library name:
 

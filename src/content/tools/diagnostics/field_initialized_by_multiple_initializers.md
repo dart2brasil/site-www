@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The field '{0}' can't be initialized twice in the same constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the initializer list of a
+O analisador produz este diagnóstico quando the initializer list of a
 constructor initializes a field more than once. There is no value to allow
 both initializers because only the last value is preserved.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `f` is being
+O código a seguir produz este diagnóstico porque the field `f` is being
 initialized twice:
 
 ```dart
@@ -28,7 +29,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove one of the initializers:
 

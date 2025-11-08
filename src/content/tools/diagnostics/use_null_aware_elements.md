@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use the null-aware marker '?' rather than a null check via an 'if'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a null check is used instead
+O analisador produz este diagnóstico quando a null check is used instead
 of a null-aware marker inside of a collection literal.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because a null check is used
+O código a seguir produz este diagnóstico porque a null check is used
 to decide whether `x` should be inserted into the list, while the
 null-aware marker '?' would be less brittle and less verbose.
 
@@ -35,7 +36,7 @@ null-aware marker '?' would be less brittle and less verbose.
 f(int? x) => [[!if!] (x != null) x];
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the null-check with the null-aware marker '?':
 

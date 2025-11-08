@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Can't return a value from a generator function that uses the 'async*' or 'sync*' modifier._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a generator function (one whose
+O analisador produz este diagnóstico quando a generator function (one whose
 body is marked with either `async*` or `sync*`) uses either a `return`
 statement to return a value or implicitly returns a value because of using
 `=>`. In any of these cases, they should use `yield` instead of `return`.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the method `f` is a
+O código a seguir produz este diagnóstico porque the method `f` is a
 generator and is using `return` to return a value:
 
 ```dart
@@ -27,14 +28,14 @@ Iterable<int> f() sync* {
 }
 ```
 
-The following code produces this diagnostic because the function `f` is a
+O código a seguir produz este diagnóstico porque the function `f` is a
 generator and is implicitly returning a value:
 
 ```dart
 Stream<int> f() async* [!=>!] 3;
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function is using `=>` for the body of the function, then convert it
 to a block function body, and use `yield` to return a value:

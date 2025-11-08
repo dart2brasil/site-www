@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The operator '{0}' isn't defined for the extension '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an operator is invoked on a
+O analisador produz este diagnóstico quando an operator is invoked on a
 specific extension when that extension doesn't implement the operator.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension `E`
+O código a seguir produz este diagnóstico porque the extension `E`
 doesn't define the operator `*`:
 
 ```dart
@@ -25,7 +26,7 @@ var x = E('') [!*!] 4;
 extension E on String {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the extension is expected to implement the operator, then add an
 implementation of the operator to the extension:

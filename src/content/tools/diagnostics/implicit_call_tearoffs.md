@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Implicit tear-off of the 'call' method._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an object with a `call` method
+O analisador produz este diagnóstico quando an object with a `call` method
 is assigned to a function-typed variable, implicitly tearing off the
 `call` method.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because an instance of
+O código a seguir produz este diagnóstico porque an instance of
 `Callable` is passed to a function expecting a `Function`:
 
 ```dart
@@ -45,7 +46,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Explicitly tear off the `call` method:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Named parameters that don't refer to instance variables can't start with underscore._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a named parameter starts with
+O analisador produz este diagnóstico quando a named parameter starts with
 an underscore, unless it's an initializing formal or field parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the named parameter
+O código a seguir produz este diagnóstico porque the named parameter
 `_x` starts with an underscore:
 
 ```dart
@@ -25,7 +26,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the parameter is intended to refer to a field, then add the missing
 field:

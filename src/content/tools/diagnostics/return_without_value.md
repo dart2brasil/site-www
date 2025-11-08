@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The return value is missing after 'return'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it finds a `return` statement
+O analisador produz este diagnóstico quando it finds a `return` statement
 without an expression in a function that declares a return type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f` is
+O código a seguir produz este diagnóstico porque the function `f` is
 expected to return an `int`, but no value is being returned:
 
 ```dart
@@ -25,9 +26,9 @@ int f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an expression that computes the value to be returned:
+Adicione uma expression that computes the value to be returned:
 
 ```dart
 int f() {

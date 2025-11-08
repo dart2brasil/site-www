@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The return type of '{0}' can't be inferred._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when:
+O analisador produz este diagnóstico quando:
 - the language option `strict-inference` is enabled in the analysis options file,
 - the declaration of a method or function has no return type, and
 - the return type can't be inferred.
 
-## Example
+## Exemplo
 
 Given an analysis options file containing the following:
 
@@ -26,7 +27,7 @@ analyzer:
     strict-inference: true
 ```
 
-The following code produces this diagnostic because the method `m` doesn't
+O código a seguir produz este diagnóstico porque the method `m` doesn't
 have a return type:
 
 ```dart
@@ -35,7 +36,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add a return type to the method or function:
 

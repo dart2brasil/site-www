@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type of the first positional parameter of the 'main' function must be a supertype of 'List<String>'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the first positional parameter
+O analisador produz este diagnóstico quando the first positional parameter
 of a function named `main` isn't a supertype of `List<String>`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `List<int>` isn't a
+O código a seguir produz este diagnóstico porque `List<int>` isn't a
 supertype of `List<String>`:
 
 ```dart
 void main([!List<int>!] args) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function is an entry point, then change the type of the first
 positional parameter to be a supertype of `List<String>`:

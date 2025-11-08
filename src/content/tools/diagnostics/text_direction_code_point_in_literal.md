@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The Unicode code point 'U+{0}' changes the appearance of text from how it's interpreted by the compiler._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it encounters source that
+O analisador produz este diagnóstico quando it encounters source that
 contains text direction Unicode code points. These code points cause
 source code in either a string literal or a comment to be interpreted
 and compiled differently than how it appears in editors, leading to
 possible security vulnerabilities.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic twice because there are
 hidden characters at the start and end of the label string:
@@ -26,7 +27,7 @@ hidden characters at the start and end of the label string:
 var label = '[!I!]nteractive text[!'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the code points are intended to be included in the string literal,
 then escape them:

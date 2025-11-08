@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Unexpected number of Native annotation parameters. Expected {0} but has {1}._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the number of parameters in the
+O analisador produz este diagnóstico quando the number of parameters in the
 function type used as a type argument for the `@Native` annotation doesn't
 match the number of parameters in the function being annotated.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function type used
+O código a seguir produz este diagnóstico porque the function type used
 as a type argument for the `@Native` annotation (`Void Function(Double)`)
 has one argument and the type of the annotated function
 (`void f(double, double)`) has two arguments:
@@ -29,7 +30,7 @@ import 'dart:ffi';
 external void [!f!](double x, double y);
 ```
 
-## Common fixes
+## Correções comuns
 
 If the annotated function is correct, then update the function type in the
 `@Native` annotation to match:

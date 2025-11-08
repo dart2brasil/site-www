@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A redirecting constructor can't have an 'assert' initializer._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a redirecting constructor (a
+O analisador produz este diagnóstico quando a redirecting constructor (a
 constructor that redirects to another constructor in the same class) has an
 assert in the initializer list.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the unnamed constructor
+O código a seguir produz este diagnóstico porque the unnamed constructor
 is a redirecting constructor and also has an assert in the initializer
 list:
 
@@ -28,7 +29,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the assert isn't needed, then remove it:
 

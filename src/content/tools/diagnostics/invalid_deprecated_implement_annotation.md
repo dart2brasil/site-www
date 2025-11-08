@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The annotation '@Deprecated.implement' can only be applied to implementable classes._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `@Deprecated.implement`
+O analisador produz este diagnóstico quando the `@Deprecated.implement`
 annotation is applied to a declaration that isn't an implementable class
 or mixin. An implementable class or mixin is one that isn't declared with
 the base, final, or sealed keywords.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the annotation is on a
+O código a seguir produz este diagnóstico porque the annotation is on a
 sealed class:
 
 ```dart
@@ -26,7 +27,7 @@ sealed class:
 sealed class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the annotation:
 

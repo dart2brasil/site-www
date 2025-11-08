@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' is an unsupported type for native fields. Native fields only support pointers, arrays or numeric and compound types._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an `@Native`-annotated field
+O analisador produz este diagnóstico quando an `@Native`-annotated field
 has a type not supported for native fields.
 
 Native fields support pointers, arrays, numeric types and subtypes of
@@ -26,9 +27,9 @@ store Dart objects into pointers.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `free` uses
+O código a seguir produz este diagnóstico porque the field `free` uses
 an unsupported native type, `NativeFunction`:
 
 ```dart
@@ -38,7 +39,7 @@ import 'dart:ffi';
 external void Function() [!free!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If you meant to bind to an existing native function with a
 `NativeFunction` field, use `@Native` methods instead:

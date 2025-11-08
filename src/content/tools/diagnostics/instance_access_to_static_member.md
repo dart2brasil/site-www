@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The static {0} '{1}' can't be accessed through an instance._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an access operator is used to
+O analisador produz este diagnóstico quando an access operator is used to
 access a static member through an instance of the class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `zero` is a static
+O código a seguir produz este diagnóstico porque `zero` is a static
 field, but it's being accessed as if it were an instance field:
 
 ```dart
@@ -29,7 +30,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use the class to access the static member:
 

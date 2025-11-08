@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' isn't a type, so it can't be used as a type argument._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an identifier that isn't a type
+O analisador produz este diagnóstico quando an identifier that isn't a type
 is used as a type argument.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` is a variable, not
+O código a seguir produz este diagnóstico porque `x` is a variable, not
 a type:
 
 ```dart
@@ -24,7 +25,7 @@ var x = 0;
 List<[!x!]> xList = [];
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the type argument to be a type:
 

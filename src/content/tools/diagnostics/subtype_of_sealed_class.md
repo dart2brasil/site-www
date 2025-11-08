@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' shouldn't be extended, mixed in, or implemented because it's sealed._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a sealed class (one that either
+O analisador produz este diagnóstico quando a sealed class (one that either
 has the [`sealed`][meta-sealed] annotation or inherits or mixes in a
 sealed class) is referenced in either the `extends`, `implements`, or
 `with` clause of a class or mixin declaration if the declaration isn't in
 the same package as the sealed class.
 
-## Example
+## Exemplo
 
 Given a library in a package other than the package being analyzed that
 contains the following:
@@ -31,7 +32,7 @@ class A {}
 class B {}
 ```
 
-The following code produces this diagnostic because `C`, which isn't in the
+O código a seguir produz este diagnóstico porque `C`, which isn't in the
 same package as `B`, is extending the sealed class `B`:
 
 ```dart
@@ -40,7 +41,7 @@ import 'package:a/a.dart';
 [!class C extends B {}!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If the class doesn't need to be a subtype of the sealed class, then change
 the declaration so that it isn't:

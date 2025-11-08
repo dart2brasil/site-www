@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The included part '{0}' must have a part-of directive._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a part directive is found and
+O analisador produz este diagnóstico quando a part directive is found and
 the referenced file doesn't have a part-of directive.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` containing:
 
@@ -22,14 +23,14 @@ Given a file `a.dart` containing:
 class A {}
 ```
 
-The following code produces this diagnostic because `a.dart` doesn't
+O código a seguir produz este diagnóstico porque `a.dart` doesn't
 contain a part-of directive:
 
 ```dart
 part [!'a.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the referenced file is intended to be a part of another library, then
 add a part-of directive to the file:

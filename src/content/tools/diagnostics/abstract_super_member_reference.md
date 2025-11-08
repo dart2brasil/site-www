@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The {0} '{1}' is always abstract in the supertype._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an inherited member is
+O analisador produz este diagnóstico quando um membro herdado é
 referenced using `super`, but there is no concrete implementation of the
 member in the superclass chain. Abstract members can't be invoked.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `B` doesn't inherit a
+O código a seguir produz este diagnóstico porque `B` doesn't inherit a
 concrete implementation of `a`:
 
 ```dart
@@ -29,7 +30,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the invocation of the abstract member, possibly replacing it with an
+Remova a invocação do membro abstrato, possivelmente substituindo-a por uma
 invocation of a concrete member.

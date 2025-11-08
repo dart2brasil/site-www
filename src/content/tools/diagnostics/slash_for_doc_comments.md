@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use the end-of-line form ('///') for doc comments._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a documentation comment uses
+O analisador produz este diagnóstico quando a documentation comment uses
 the block comment style (delimited by `/**` and `*/`).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the documentation
+O código a seguir produz este diagnóstico porque the documentation
 comment for `f` uses a block comment style:
 
 ```dart
@@ -37,7 +38,7 @@ comment for `f` uses a block comment style:
 void f() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Use an end-of-line comment style:
 

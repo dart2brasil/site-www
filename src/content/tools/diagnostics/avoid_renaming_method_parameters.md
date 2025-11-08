@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _The parameter name '{0}' doesn't match the name '{1}' in the overridden method._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method that overrides a
+O analisador produz este diagnóstico quando a method that overrides a
 method from a superclass changes the names of the parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameter of the
+O código a seguir produz este diagnóstico porque the parameter of the
 method `m` in `B` is named `b`, which is different from the name of the
 overridden method's parameter in `A`:
 
@@ -42,7 +43,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rename one of the parameters so that they are the same:
 

@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type of a key in a constant map can't override the '==' operator, or 'hashCode', but the class '{0}' does._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the class of object used as a
+O analisador produz este diagnóstico quando the class of object used as a
 key in a constant map literal implements either the `==` operator, the
 getter `hashCode`, or both. The implementation of constant maps uses both
 the `==` operator and the `hashCode` getter, so any implementation other
 than the ones inherited from `Object` requires executing arbitrary code at
 compile time, which isn't supported.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the constant map
+O código a seguir produz este diagnóstico porque the constant map
 contains a key whose type is `C`, and the class `C` overrides the
 implementation of `==`:
 
@@ -34,7 +35,7 @@ class C {
 const map = {[!C()!] : 0};
 ```
 
-The following code produces this diagnostic because the constant map
+O código a seguir produz este diagnóstico porque the constant map
 contains a key whose type is `C`, and the class `C` overrides the
 implementation of `hashCode`:
 
@@ -48,7 +49,7 @@ class C {
 const map = {[!C()!] : 0};
 ```
 
-## Common fixes
+## Correções comuns
 
 If you can remove the implementation of `==` and `hashCode` from the
 class, then do so:

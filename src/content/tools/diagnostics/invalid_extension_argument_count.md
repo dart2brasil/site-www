@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Extension overrides must have exactly one argument: the value of 'this' in the extension method._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override doesn't
+O analisador produz este diagnóstico quando an extension override doesn't
 have exactly one argument. The argument is the expression used to compute
 the value of `this` within the extension method, so there must be one
 argument.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because there are no arguments:
+O código a seguir produz este diagnóstico porque there are no arguments:
 
 ```dart
 extension E on String {
@@ -43,7 +44,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Provide one argument for the extension override:
 

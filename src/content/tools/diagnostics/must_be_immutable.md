@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _This class (or a class that this class inherits from) is marked as '@immutable', but one or more of its instance fields aren't final: {0}_
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an immutable class defines one
+O analisador produz este diagnóstico quando an immutable class defines one
 or more instance fields that aren't final. A class is immutable if it's
 marked as being immutable using the annotation
 [`immutable`][meta-immutable] or if it's a subclass of an immutable class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `x` isn't
+O código a seguir produz este diagnóstico porque the field `x` isn't
 final:
 
 ```dart
@@ -32,7 +33,7 @@ class [!C!] {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If instances of the class should be immutable, then add the keyword `final`
 to all non-final field declarations:

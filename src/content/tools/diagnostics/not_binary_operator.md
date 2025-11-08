@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' isn't a binary operator._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an operator that can only be
+O analisador produz este diagnóstico quando an operator that can only be
 used as a unary operator is used as a binary operator.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the operator `~` can
+O código a seguir produz este diagnóstico porque the operator `~` can
 only be used as a unary operator:
 
 ```dart
 var a = 5 [!~!] 3;
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the operator with the correct binary operator:
 

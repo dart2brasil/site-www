@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of multiple underscores._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an unused variable is named
+O analisador produz este diagnóstico quando an unused variable is named
 with multiple underscores (for example `__`). A single `_` wildcard variable
 can be used instead.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `__` parameter is unused:
+O código a seguir produz este diagnóstico porque the `__` parameter is unused:
 
 ```dart
 void function(int [!__!]) { }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the name with a single underscore:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Extension types can't declare instance fields._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there's a field declaration in
+O analisador produz este diagnóstico quando there's a field declaration in
 the body of an extension type declaration.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension type `E`
+O código a seguir produz este diagnóstico porque the extension type `E`
 declares a field named `f`:
 
 ```dart
@@ -25,7 +26,7 @@ extension type E(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you don't need the field, then remove it or replace it with a getter
 and/or setter:

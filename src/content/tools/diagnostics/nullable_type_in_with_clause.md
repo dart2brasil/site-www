@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A class or mixin can't mix in a nullable type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class or mixin declaration has
+O analisador produz este diagnóstico quando a class or mixin declaration has
 a `with` clause, and a mixin is followed by a `?`.
 
 It isn't valid to specify a nullable mixin because doing so would have no
@@ -21,9 +22,9 @@ inherited by the class containing the `with` clause.
 Note, however, that it _is_ valid to use a nullable type as a type argument
 to the mixin, such as `class A with B<C?> {}`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `A?` is a nullable
+O código a seguir produz este diagnóstico porque `A?` is a nullable
 type, and nullable types can't be used in a `with` clause:
 
 ```dart
@@ -31,7 +32,7 @@ mixin M {}
 class C with [!M?!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the question mark from the type:
 

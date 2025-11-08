@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Functions marked 'async' must have a return type which is a supertype of 'Future'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the body of a function has the
+O analisador produz este diagnóstico quando the body of a function has the
 `async` modifier even though the return type of the function isn't
 assignable to `Future`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the body of the
+O código a seguir produz este diagnóstico porque the body of the
 function `f` has the `async` modifier even though the return type isn't
 assignable to `Future`:
 
@@ -27,7 +28,7 @@ assignable to `Future`:
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function should be asynchronous, then change the return type to be
 assignable to `Future`:
@@ -38,7 +39,7 @@ Future<int> f() async {
 }
 ```
 
-If the function should be synchronous, then remove the `async` modifier:
+If the function should be synchronous, then remove the `async` modificador:
 
 ```dart
 int f() => 0;

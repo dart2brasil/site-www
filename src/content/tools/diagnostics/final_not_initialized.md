@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The final variable '{0}' must be initialized._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a final field or variable isn't
+O analisador produz este diagnóstico quando a final field or variable isn't
 initialized.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` doesn't have an
+O código a seguir produz este diagnóstico porque `x` não tem uma
 initializer:
 
 ```dart
 final [!x!];
 ```
 
-## Common fixes
+## Correções comuns
 
 For variables and static fields, you can add an initializer:
 

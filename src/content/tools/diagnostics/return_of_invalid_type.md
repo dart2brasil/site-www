@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A value of type '{0}' can't be returned from the constructor '{1}' because it has a return type of '{2}'._
@@ -13,21 +14,21 @@ _A value of type '{0}' can't be returned from the function '{1}' because it has 
 
 _A value of type '{0}' can't be returned from the method '{1}' because it has a return type of '{2}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function returns a
+O analisador produz este diagnóstico quando a method or function returns a
 value whose type isn't assignable to the declared return type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` has a return type
+O código a seguir produz este diagnóstico porque `f` has a return type
 of `String` but is returning an `int`:
 
 ```dart
 String f() => [!3!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the return type is correct, then replace the value being returned with a
 value of the correct type, possibly by converting the existing value:

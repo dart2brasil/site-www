@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The values in a const set literal must be constants._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constant set literal contains
+O analisador produz este diagnóstico quando a constant set literal contains
 an element that isn't a compile-time constant.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `i` isn't a constant:
+O código a seguir produz este diagnóstico porque `i` isn't a constant:
 
 ```dart
 var i = 0;
@@ -24,7 +25,7 @@ var i = 0;
 var s = const {[!i!]};
 ```
 
-## Common fixes
+## Correções comuns
 
 If the element can be changed to be a constant, then change it:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use 'const' with the constructor to improve performance._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an invocation of a const
+O analisador produz este diagnóstico quando an invocation of a const
 constructor isn't either preceded by `const` or in a [constant context][].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the invocation of the
+O código a seguir produz este diagnóstico porque the invocation of the
 `const` constructor is neither prefixed by `const` nor in a
 [constant context][]:
 
@@ -39,7 +40,7 @@ class C {
 C c = [!C()!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the context can be made a [constant context][], then do so:
 

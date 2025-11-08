@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use the 'is!' operator rather than negating the value of the 'is' operator._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the prefix `!` operator is used
+O analisador produz este diagnóstico quando the prefix `!` operator is used
 to negate the result of an `is` test.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the result of testing
+O código a seguir produz este diagnóstico porque the result of testing
 to see whether `o` is a `String` is negated using the prefix `!` operator:
 
 ```dart
@@ -39,7 +40,7 @@ String f(Object o) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use the `is!` operator instead:
 

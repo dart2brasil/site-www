@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The annotation 'visibleOutsideTemplate' can only be applied to a member of a class, enum, or mixin that is annotated with 'visibleForTemplate'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `@visibleOutsideTemplate`
+O analisador produz este diagnóstico quando the `@visibleOutsideTemplate`
 annotation is used incorrectly. This annotation is only meant to annotate
 members of a class, enum, or mixin that has the `@visibleForTemplate`
 annotation, to opt those members out of the visibility restrictions that
 `@visibleForTemplate` imposes.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because there is no
+O código a seguir produz este diagnóstico porque there is no
 `@visibleForTemplate` annotation at the class level:
 
 ```dart
@@ -33,7 +34,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the annotation is on
+O código a seguir produz este diagnóstico porque the annotation is on
 a class declaration, not a member of a class, enum, or mixin:
 
 ```dart
@@ -43,10 +44,10 @@ import 'package:angular_meta/angular_meta.dart';
 class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the class is only visible so that templates can reference it, then add
-the `@visibleForTemplate` annotation to the class:
+the `@visibleForTemplate` anotação à classe:
 
 ```dart
 import 'package:angular_meta/angular_meta.dart';

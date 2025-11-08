@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The redirecting constructor '{0}' can't redirect to a constructor of the abstract class '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor redirects to a
+O analisador produz este diagnóstico quando a constructor redirects to a
 constructor in an abstract class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the factory
+O código a seguir produz este diagnóstico porque the factory
 constructor in `A` redirects to a constructor in `B`, but `B` is an
 abstract class:
 
@@ -28,7 +29,7 @@ class A {
 abstract class B implements A {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the code redirects to the correct constructor, then change the class so
 that it isn't abstract:

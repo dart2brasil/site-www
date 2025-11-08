@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The constant expression type '{0}' is not assignable to the parameter type '{1}' of the '{2}' operator._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the operand of a relational
+O analisador produz este diagnóstico quando the operand of a relational
 pattern has a type that isn't assignable to the parameter of the operator
 that will be invoked.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the operand in the
+O código a seguir produz este diagnóstico porque the operand in the
 relational pattern (`0`) is an `int`, but the `>` operator defined in `C`
 expects an object of type `C`:
 
@@ -36,7 +37,7 @@ void f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the switch is using the correct value, then change the case to compare
 the value to the right type of object:

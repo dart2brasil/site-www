@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The library '{0}' doesn't export a member with the hidden name '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a hide combinator includes a
+O analisador produz este diagnóstico quando a hide combinator includes a
 name that isn't defined by the library being imported.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `dart:math` doesn't
+O código a seguir produz este diagnóstico porque `dart:math` doesn't
 define the name `String`:
 
 ```dart
@@ -25,7 +26,7 @@ import 'dart:math' hide [!String!], max;
 var x = min(0, 1);
 ```
 
-## Common fixes
+## Correções comuns
 
 If a different name should be hidden, then correct the name. Otherwise,
 remove the name from the list:

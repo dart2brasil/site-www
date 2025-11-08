@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The redirecting constructor can't have a 'super' initializer._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor that redirects to
+O analisador produz este diagnóstico quando a constructor that redirects to
 another constructor also attempts to invoke a constructor from the
 superclass. The superclass constructor will be invoked when the constructor
 that the redirecting constructor is redirected to is invoked.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor `C.a`
+O código a seguir produz este diagnóstico porque the constructor `C.a`
 both redirects to `C.b` and invokes a constructor from the superclass:
 
 ```dart
@@ -28,9 +29,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the invocation of the `super` constructor:
+Remove the invocation of the `super` construtor:
 
 ```dart
 class C {

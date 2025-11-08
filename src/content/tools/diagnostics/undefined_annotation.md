@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Undefined name '{0}' used as an annotation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a name that isn't defined is
+O analisador produz este diagnóstico quando a name that isn't defined is
 used as an annotation.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name `undefined`
+O código a seguir produz este diagnóstico porque the name `undefined`
 isn't defined:
 
 ```dart
@@ -24,7 +25,7 @@ isn't defined:
 void f() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the name is correct, but it isn't declared yet, then declare the name as
 a constant value:

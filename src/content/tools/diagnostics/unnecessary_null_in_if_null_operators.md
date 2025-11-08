@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of '??' with 'null'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the right operand of the `??`
+O analisador produz este diagnóstico quando the right operand of the `??`
 operator is the literal `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the right-hand operand
+O código a seguir produz este diagnóstico porque the right-hand operand
 of the `??` operator is `null`:
 
 ```dart
 String? f(String? s) => s ?? [!null!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If a non-null value should be used for the right-hand operand, then
 change the right-hand side:

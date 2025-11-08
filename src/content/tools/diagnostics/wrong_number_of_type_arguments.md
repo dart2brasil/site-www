@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type '{0}' is declared with {1} type parameters, but {2} type arguments were given._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type that has type parameters
+O analisador produz este diagnóstico quando a type that has type parameters
 is used and type arguments are provided, but the number of type arguments
 isn't the same as the number of type parameters.
 
@@ -19,9 +20,9 @@ The analyzer also produces this diagnostic when a constructor is invoked
 and the number of type arguments doesn't match the number of type
 parameters declared for the class.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `C` has one type
+O código a seguir produz este diagnóstico porque `C` has one type
 parameter but two type arguments are provided when it is used as a type
 annotation:
 
@@ -31,7 +32,7 @@ class C<E> {}
 void f([!C<int, int>!] x) {}
 ```
 
-The following code produces this diagnostic because `C` declares one type
+O código a seguir produz este diagnóstico porque `C` declares one type
 parameter, but two type arguments are provided when creating an instance:
 
 ```dart
@@ -40,7 +41,7 @@ class C<E> {}
 var c = [!C<int, int>!]();
 ```
 
-## Common fixes
+## Correções comuns
 
 Add or remove type arguments, as necessary, to match the number of type
 parameters defined for the type:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _The package name '{0}' isn't a lower\_case\_with\_underscores identifier._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a package doesn't
+O analisador produz este diagnóstico quando the name of a package doesn't
 use the lower_case_with_underscores naming convention.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name of the
+O código a seguir produz este diagnóstico porque the name of the
 package uses the lowerCamelCase naming convention:
 
 ```yaml
 name: [!somePackage!]
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the name of the package using the lower_case_with_underscores
 naming convention:

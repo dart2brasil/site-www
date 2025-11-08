@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' is defined in the libraries {1}._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a name is referenced that is
+O analisador produz este diagnóstico quando a name is referenced that is
 declared in two or more imported libraries.
 
-## Example
+## Exemplo
 
 Given a library (`a.dart`) that defines a class (`C` in this example):
 
@@ -39,7 +40,7 @@ import 'b.dart';
 void f([!C!] c1, [!C!] c2) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If any of the libraries aren't needed, then remove the import directives
 for them:

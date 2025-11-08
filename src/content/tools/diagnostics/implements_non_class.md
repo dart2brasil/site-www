@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Classes and mixins can only implement other classes and mixins._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a name used in the `implements`
+O analisador produz este diagnóstico quando a name used in the `implements`
 clause of a class or mixin declaration is defined to be something other
 than a class or mixin.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` is a variable
+O código a seguir produz este diagnóstico porque `x` is a variable
 rather than a class or mixin:
 
 ```dart
@@ -25,7 +26,7 @@ var x;
 class C implements [!x!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the name is the name of an existing class or mixin that's already being
 imported, then add a prefix to the import so that the local definition of

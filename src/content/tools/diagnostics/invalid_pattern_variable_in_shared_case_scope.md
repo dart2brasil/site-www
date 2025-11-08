@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The variable '{0}' doesn't have the same type and/or finality in all cases that share this body._
@@ -13,9 +14,9 @@ _The variable '{0}' is available in some, but not all cases that share this body
 
 _The variable '{0}' is not available because there is a label or 'default' case._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when multiple case clauses in a
+O analisador produz este diagnóstico quando multiple case clauses in a
 switch statement share a body, and at least one of them declares a
 variable that is referenced in the shared statements, but the variable is
 either not declared in all of the case clauses or it is declared in
@@ -31,9 +32,9 @@ some cases and not `final` in others or having a different type in
 different cases, then the semantics of what the type or finality of the
 variable should be are not defined.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the variable `a` is
+O código a seguir produz este diagnóstico porque the variable `a` is
 only declared in one of the case clauses, and won't have a value if the
 second clause is the one that matched `x`:
 
@@ -47,7 +48,7 @@ void f(Object? x) {
 }
 ```
 
-The following code produces this diagnostic because the variable `a` isn't
+O código a seguir produz este diagnóstico porque the variable `a` isn't
 declared in the `default` clause, and won't have a value if the body is
 executed because none of the other clauses matched `x`:
 
@@ -61,7 +62,7 @@ void f(Object? x) {
 }
 ```
 
-The following code produces this diagnostic because the variable `a` won't
+O código a seguir produz este diagnóstico porque the variable `a` won't
 have a value if the body is executed because a different group of cases
 caused control to continue at the label:
 
@@ -77,7 +78,7 @@ void f(Object? x) {
 }
 ```
 
-The following code produces this diagnostic because the variable `a`,
+O código a seguir produz este diagnóstico porque the variable `a`,
 while being assigned in all of the case clauses, doesn't have then same
 type associated with it in every clause:
 
@@ -91,7 +92,7 @@ void f(Object? x) {
 }
 ```
 
-The following code produces this diagnostic because the variable `a` is
+O código a seguir produz este diagnóstico porque the variable `a` is
 `final` in the first case clause and isn't `final` in the second case
 clause:
 
@@ -105,7 +106,7 @@ void f(Object? x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the variable isn't declared in all of the cases, and you need to
 reference it in the statements, then declare it in the other cases:

@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The imported library defines a top-level function named 'loadLibrary' that is hidden by deferring this library._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library that declares a
+O analisador produz este diagnóstico quando a library that declares a
 function named `loadLibrary` is imported using a deferred import. A
 deferred import introduces an implicit function named `loadLibrary`. This
 function is used to load the contents of the deferred library, and the
@@ -20,7 +21,7 @@ implicit function hides the explicit declaration in the deferred library.
 For more information, check out
 [Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that defines a function named `loadLibrary`:
 
@@ -30,7 +31,7 @@ void loadLibrary(Library library) {}
 class Library {}
 ```
 
-The following code produces this diagnostic because the implicit
+O código a seguir produz este diagnóstico porque the implicit
 declaration of `a.loadLibrary` is hiding the explicit declaration of
 `loadLibrary` in `a.dart`:
 
@@ -42,7 +43,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the imported library isn't required to be deferred, then remove the
 keyword `deferred`:

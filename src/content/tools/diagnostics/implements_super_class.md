@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' can't be used in both the 'extends' and 'implements' clauses._
 
 _'{0}' can't be used in both the 'extends' and 'with' clauses._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class is listed in the
+O analisador produz este diagnóstico quando a class is listed in the
 `extends` clause of a class declaration and also in either the
 `implements` or `with` clause of the same declaration.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `A` is used
+O código a seguir produz este diagnóstico porque a classe `A` is used
 in both the `extends` and `implements` clauses for the class `B`:
 
 ```dart
@@ -28,7 +29,7 @@ class A {}
 class B extends A implements [!A!] {}
 ```
 
-The following code produces this diagnostic because the class `A` is used
+O código a seguir produz este diagnóstico porque a classe `A` is used
 in both the `extends` and `with` clauses for the class `B`:
 
 ```dart
@@ -37,7 +38,7 @@ mixin class A {}
 class B extends A with [!A!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If you want to inherit the implementation from the class, then remove the
 class from the `implements` clause:

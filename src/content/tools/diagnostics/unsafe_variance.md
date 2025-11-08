@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _This type is unsafe: a type parameter occurs in a non-covariant position._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance member has a result
+O analisador produz este diagnóstico quando an instance member has a result
 type which is [contravariant or invariant](https://dart.dev/resources/glossary#variance)
 in a type parameter of the enclosing declaration. The result type of a
 variable is its type, and the result type of a getter or method is its
@@ -30,9 +31,9 @@ return type. This lint warns against such members because they are likely
 to cause a failing type check at run time, with no static warning or error
 at the call site.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `X` occurs
+O código a seguir produz este diagnóstico porque `X` occurs
 as a parameter type in the type of `f`, which is a
 contravariant occurrence of this type parameter:
 
@@ -47,7 +48,7 @@ This is unsafe: If `c` has static type `C<num>` and run-time type `C<int>`
 then `c.f` will throw. Hence, every invocation `c.f(a)` will also throw,
 even in the case where `a` has a correct type as an argument to `c.f`.
 
-## Common fixes
+## Correções comuns
 
 If the linted member is or can be private then you may be able
 to enforce that it is never accessed on any other receiver than `this`.

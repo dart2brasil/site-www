@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Instances of 'Color' should be created using an 8-digit hexadecimal integer (such as '0xFFFFFFFF')._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the argument to the constructor
+O analisador produz este diagnóstico quando the argument to the constructor
 of the `Color` class is a literal integer that isn't represented as an
 8-digit hexadecimal integer.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the argument (`1`)
+O código a seguir produz este diagnóstico porque the argument (`1`)
 isn't represented as an 8-digit hexadecimal integer:
 
 ```dart
@@ -37,7 +38,7 @@ import 'package:flutter/material.dart';
 Color c = Color([!1!]);
 ```
 
-## Common fixes
+## Correções comuns
 
 Convert the representation to be an 8-digit hexadecimal integer:
 

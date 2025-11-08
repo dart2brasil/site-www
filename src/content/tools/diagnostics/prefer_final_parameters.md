@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _The parameter '{0}' should be final._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a parameter of a constructor,
+O analisador produz este diagnóstico quando a parameter of a constructor,
 method, function, or closure isn't marked as being `final`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameter `s`
+O código a seguir produz este diagnóstico porque the parameter `s`
 isn't a `final` parameter:
 
 ```dart
 String f([!String s!]) => s;
 ```
 
-## Common fixes
+## Correções comuns
 
 Add the modifier `final` to the parameter:
 

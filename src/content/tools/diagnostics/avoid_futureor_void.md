@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _Don't use the type 'FutureOr<void>'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type `FutureOr<void>`
+O analisador produz este diagnóstico quando the type `FutureOr<void>`
 is used as the type of a result (to be precise: it is used in a
 position that isn't contravariant). The type `FutureOr<void>` is
 problematic because it may appear to encode that a result is either a
@@ -45,7 +46,7 @@ contravariant position (e.g., as the type of a formal
 parameter). Hence, in type alias declarations, only the type
 parameter bounds are checked.
 
-## Example
+## Exemplo
 
 ```dart
 import 'dart:async';
@@ -53,7 +54,7 @@ import 'dart:async';
 [!FutureOr<void>!] m() => null;
 ```
 
-## Common fixes
+## Correções comuns
 
 A replacement for the type `FutureOr<void>` which is often useful is
 `Future<void>?`. This type encodes that a result is either a

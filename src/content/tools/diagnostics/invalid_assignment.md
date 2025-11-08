@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A value of type '{0}' can't be assigned to a variable of type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the static type of an expression
+O analisador produz este diagnóstico quando the static type of an expression
 that is assigned to a variable isn't assignable to the type of the
 variable.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type of the
+O código a seguir produz este diagnóstico porque the type of the
 initializer (`int`) isn't assignable to the type of the variable
 (`String`):
 
@@ -26,7 +27,7 @@ int i = 0;
 String s = [!i!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the value being assigned is always assignable at runtime, even though
 the static types don't reflect that, then add an explicit cast.

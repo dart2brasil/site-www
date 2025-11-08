@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,24 +21,24 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary return type on a setter._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a setter has an explicit return
+O analisador produz este diagnóstico quando a setter has an explicit return
 type.
 
 Setters never return a value, so declaring the return type of one is
 redundant.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the setter `s` has an
+O código a seguir produz este diagnóstico porque the setter `s` has an
 explicit return type (`void`):
 
 ```dart
 [!void!] set s(int p) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the return type:
 

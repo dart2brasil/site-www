@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The path '{0}' isn't a POSIX-style path._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a dependency has a `path` key
+O analisador produz este diagnóstico quando a dependency has a `path` key
 whose value is a string, but isn't a POSIX-style path.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the path following the
+O código a seguir produz este diagnóstico porque the path following the
 `path` key is a Windows path:
 
 ```yaml
@@ -26,6 +27,6 @@ dependencies:
     path: [!E:\local_package!]
 ```
 
-## Common fixes
+## Correções comuns
 
 Convert the path to a POSIX path.

@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The asset file '{0}' doesn't exist._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an asset list contains a value
+O analisador produz este diagnóstico quando an asset list contains a value
 referencing a file that doesn't exist.
 
-## Example
+## Exemplo
 
 Assuming that the file `doesNotExist.gif` doesn't exist, the following code
 produces this diagnostic because it's listed as an asset:
@@ -26,7 +27,7 @@ flutter:
     - [!doesNotExist.gif!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If the path is correct, then create a file at that path.
 

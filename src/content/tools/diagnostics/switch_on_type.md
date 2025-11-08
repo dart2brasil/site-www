@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Avoid switch statements on a 'Type'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a switch statement or switch
+O analisador produz este diagnóstico quando a switch statement or switch
 expression is used on either the value of a `Type` or a `toString` call
 on a `Type`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the switch statement
+O código a seguir produz este diagnóstico porque the switch statement
 is used on a `Type`:
 
 ```dart
@@ -42,7 +43,7 @@ void f(Object o) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use pattern matching on the variable instead:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Fields can't be initialized in both the parameter list and the initializers._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field is initialized in both
+O analisador produz este diagnóstico quando a field is initialized in both
 the parameter list and in the initializer list of a constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `f` is
+O código a seguir produz este diagnóstico porque the field `f` is
 initialized both by an initializing formal parameter and in the
 initializer list:
 
@@ -28,7 +29,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the field should be initialized by the parameter, then remove the
 initialization in the initializer list:

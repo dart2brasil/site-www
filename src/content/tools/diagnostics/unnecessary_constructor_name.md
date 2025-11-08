@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,22 +21,22 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary '.new' constructor name._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a reference to an unnamed
+O analisador produz este diagnóstico quando a reference to an unnamed
 constructor uses `.new`. The only place where `.new` is required is in a
 constructor tear-off.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `.new` is being used
+O código a seguir produz este diagnóstico porque `.new` is being used
 to refer to the unnamed constructor where it isn't required:
 
 ```dart
 var o = Object.[!new!]();
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary `.new`:
 

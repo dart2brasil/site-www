@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The '@Preview(...)' annotation can only be applied to public, statically accessible constructors and functions._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `@Preview(...)` annotation
+O analisador produz este diagnóstico quando a `@Preview(...)` annotation
 is applied to an invalid widget preview target. Widget previews can only
 be applied to public, statically accessible, explicitly defined
 constructors and functions.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `_myPrivatePreview`
+O código a seguir produz este diagnóstico porque `_myPrivatePreview`
 is private:
 
 ```dart
@@ -31,7 +32,7 @@ import 'package:flutter/widget_previews.dart';
 Widget _myPrivatePreview() => Text('Foo');
 ```
 
-The following code produces this diagnostic because `myExternalPreview`
+O código a seguir produz este diagnóstico porque `myExternalPreview`
 is `external`:
 
 ```dart
@@ -44,7 +45,7 @@ import 'package:flutter/widget_previews.dart';
 external Widget myExternalPreview();
 ```
 
-The following code produces this diagnostic because `PublicWidget._()` is
+O código a seguir produz este diagnóstico porque `PublicWidget._()` is
 private:
 
 ```dart
@@ -61,7 +62,7 @@ class PublicWidget extends StatelessWidget {
 }
 ```
 
-The following code produces this diagnostic because `instancePreview` is
+O código a seguir produz este diagnóstico porque `instancePreview` is
 an instance method:
 
 ```dart
@@ -78,7 +79,7 @@ class PublicWidget extends StatelessWidget {
 }
 ```
 
-The following code produces this diagnostic because `_PrivateWidget` is
+O código a seguir produz este diagnóstico porque `_PrivateWidget` is
 private:
 
 ```dart
@@ -96,7 +97,7 @@ class _PrivateWidget extends StatelessWidget {
 }
 ```
 
-The following code produces this diagnostic because `_PrivateWidget` is
+O código a seguir produz este diagnóstico porque `_PrivateWidget` is
 private:
 
 ```dart
@@ -114,7 +115,7 @@ class _PrivateWidget extends StatelessWidget {
 }
 ```
 
-The following code produces this diagnostic because `AbstractWidget` is
+O código a seguir produz este diagnóstico porque `AbstractWidget` is
 an `abstract` class:
 
 ```dart
@@ -131,7 +132,7 @@ abstract class AbstractWidget extends StatelessWidget {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Create a dedicated public, statically accessible, and explicitly defined
 constructor, top-level function, or class member for use as a preview:

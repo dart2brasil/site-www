@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' can't be empty because it's a subclass of '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a subclass of `Struct` or
-`Union` doesn't have any fields. Having an empty `Struct` or `Union`
+O analisador produz este diagnóstico quando a subclass of `Struct` or
+`Union` não tem umay fields. Having an empty `Struct` or `Union`
 isn't supported.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `C`, which
+O código a seguir produz este diagnóstico porque a classe `C`, which
 extends `Struct`, doesn't declare any fields:
 
 ```dart
@@ -28,7 +29,7 @@ import 'dart:ffi';
 final class [!C!] extends Struct {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the class is intended to be a struct, then declare one or more fields:
 

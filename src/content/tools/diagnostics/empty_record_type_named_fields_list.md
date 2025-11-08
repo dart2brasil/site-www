@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The list of named fields in a record type can't be empty._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a record type has an empty list
+O analisador produz este diagnóstico quando a record type has an empty list
 of named fields.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the record type has an
+O código a seguir produz este diagnóstico porque the record type has an
 empty list of named fields:
 
 ```dart
 void f((int, int, {[!}!]) r) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the record is intended to have named fields, then add the types and
 names of the fields:

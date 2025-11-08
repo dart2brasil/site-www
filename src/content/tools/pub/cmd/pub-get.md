@@ -1,20 +1,21 @@
 ---
 title: dart pub get
 description: >-
-  Use dart pub get to retrieve the dependencies used by your Dart application.
+  Use dart pub get para recuperar as dependências usadas pelo seu aplicativo Dart.
+ia-translate: true
 ---
 
-_Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
+_Get_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 
 ```plaintext
 $ dart pub get [options]
 ```
 
-This command gets all the dependencies listed in the
-[`pubspec.yaml`](/tools/pub/pubspec) file in the current working
-directory, as well as their
-[transitive dependencies](/resources/glossary#transitive-dependency).
-For example:
+Este comando obtém todas as dependências listadas no
+arquivo [`pubspec.yaml`](/tools/pub/pubspec) no diretório
+de trabalho atual, bem como suas
+[dependências transitivas](/resources/glossary#transitive-dependency).
+Por exemplo:
 
 ```console
 $ dart pub get
@@ -22,143 +23,143 @@ Resolving dependencies...
 Got dependencies!
 ```
 
-If the [system cache](/resources/glossary#pub-system-cache)
-doesn't already contain the dependencies, `dart pub get`
-updates the cache,
-downloading dependencies if necessary.
-To map packages back to the system cache,
-this command creates a `package_config.json` file
-in the `.dart_tool/` directory.
+Se o [cache do sistema](/resources/glossary#pub-system-cache)
+ainda não contiver as dependências, `dart pub get`
+atualiza o cache,
+baixando dependências se necessário.
+Para mapear pacotes de volta para o cache do sistema,
+este comando cria um arquivo `package_config.json`
+no diretório `.dart_tool/`.
 
-Once the dependencies are acquired, they may be referenced in Dart code.
-For example, if a package depends on `test`:
+Depois que as dependências são adquiridas, elas podem ser referenciadas no código Dart.
+Por exemplo, se um pacote depende de `test`:
 
 ```dart
 import 'package:test/test.dart';
 ```
 
-When `dart pub get` gets new dependencies, it writes a
-[lockfile](/resources/glossary#lockfile) to ensure that future
-gets will use the same versions of those dependencies.
-[Application packages][] should check in the lockfile to source control;
-this ensures the application will use the exact same versions
-of all dependencies for all developers and when deployed to production.
-Regular packages should not check in the lockfile, though, since they're
-expected to work with a range of dependency versions.
+Quando `dart pub get` obtém novas dependências, ele escreve um
+[arquivo de bloqueio](/resources/glossary#lockfile) para garantir que futuras
+buscas usem as mesmas versões dessas dependências.
+[Pacotes de aplicação][] devem fazer check-in do arquivo de bloqueio no controle de origem;
+isso garante que o aplicativo use as mesmas versões
+de todas as dependências para todos os desenvolvedores e quando implantado em produção.
+Pacotes normais não devem fazer check-in do arquivo de bloqueio, porém, já que se espera
+que funcionem com uma variedade de versões de dependência.
 
-If a lockfile already exists, `dart pub get` uses the versions of dependencies
-locked in it if possible. If a dependency isn't locked, pub gets the
-latest version of that dependency that satisfies all the [version
-constraints](/resources/glossary#version-constraint).
-This is the primary difference between `dart pub get` and
-[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
-get the latest versions of all dependencies.
+Se um arquivo de bloqueio já existir, `dart pub get` usa as versões de dependências
+bloqueadas nele, se possível. Se uma dependência não estiver bloqueada, pub obtém a
+versão mais recente dessa dependência que satisfaz todas as [restrições de
+versão](/resources/glossary#version-constraint).
+Esta é a diferença principal entre `dart pub get` e
+[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), que sempre tenta
+obter as versões mais recentes de todas as dependências.
 
-[Application packages]: /resources/glossary#application-package
+[Pacotes de aplicação]: /resources/glossary#application-package
 
-## Package resolution
+## Resolução de pacotes {:#package-resolution}
 
-By default, pub creates a `package_config.json` file
-in the `.dart_tool/` directory that maps from package names to location URIs.
+Por padrão, pub cria um arquivo `package_config.json`
+no diretório `.dart_tool/` que mapeia nomes de pacotes para URIs de localização.
 
 :::note
-Don't check the generated `.dart_tool/` directory into your repo;
-add it to your repo's `.gitignore` file.
-For more information,
-see [What not to commit](/tools/pub/private-files).
+Não faça check-in do diretório gerado `.dart_tool/` em seu repositório;
+adicione-o ao arquivo `.gitignore` do seu repositório.
+Para mais informações,
+consulte [O que não fazer commit](/tools/pub/private-files).
 :::
 
 
-## Getting a new dependency
+## Obter uma nova dependência {:#getting-a-new-dependency}
 
-If a dependency is added to the pubspec and then `dart pub get` is run,
-it gets the new dependency and any of its transitive dependencies.
-However, pub won't change the versions of any already-acquired
-dependencies unless that's necessary to get the new dependency.
-
-
-## Removing a dependency
-
-If a dependency is removed from the pubspec and then `dart pub get` is run,
-the dependency is no longer available for importing.
-Any transitive dependencies of the removed dependency are also removed,
-as long as no remaining immediate dependencies also depend on them.
-Removing a dependency never changes the versions of any
-already-acquired dependencies.
+Se uma dependência for adicionada ao pubspec e depois `dart pub get` for executado,
+ela obtém a nova dependência e qualquer uma de suas dependências transitivas.
+No entanto, pub não alterará as versões de nenhuma dependência já adquirida
+a menos que seja necessário para obter a nova dependência.
 
 
-## The system package cache
+## Remover uma dependência {:#removing-a-dependency}
 
-Dependencies downloaded over the internet, such as those from Git and the
-[pub.dev site]({{site.pub}}), are stored in a
-[system-wide cache](/resources/glossary#pub-system-cache).
-This means that if multiple packages use the same version of the
-same dependency, it only needs to be
-downloaded and stored locally once.
-
-By default, the system package cache is located in the `.pub-cache`
-subdirectory of your home directory (on macOS and Linux),
-or in `%LOCALAPPDATA%\Pub\Cache` (on Windows;
-the location might vary depending on the Windows version).
-You can configure the location of the cache by setting the
-[`PUB_CACHE`](/tools/pub/environment-variables)
-environment variable before running pub.
+Se uma dependência for removida do pubspec e depois `dart pub get` for executado,
+a dependência não estará mais disponível para importação.
+Qualquer dependência transitiva da dependência removida também será removida,
+desde que nenhuma dependência imediata restante também dependa delas.
+Remover uma dependência nunca altera as versões de nenhuma
+dependência já adquirida.
 
 
-## Getting while offline
+## O cache do pacote do sistema {:#the-system-package-cache}
 
-If you don't have network access, you can still run `dart pub get`.
-Because pub downloads packages to a central cache shared by all packages
-on your system, it can often find previously downloaded packages
-without needing to use the network.
+Dependências baixadas pela internet, como as do Git e do
+[site pub.dev]({{site.pub}}), são armazenadas em um
+[cache em todo o sistema](/resources/glossary#pub-system-cache).
+Isso significa que se vários pacotes usarem a mesma versão da
+mesma dependência, ela só precisa ser
+baixada e armazenada localmente uma vez.
 
-However, by default, `dart pub get` tries to go online if you
-have any hosted dependencies,
-so that pub can detect newer versions of dependencies.
-If you don't want pub to do that, pass it the `--offline` flag.
-In offline mode, pub looks only in your local package cache,
-trying to find a set of versions that work with your package from what's already
-available.
-
-Keep in mind that pub generates a lockfile. If the
-only version of some dependency in your cache happens to be old,
-offline `dart pub get` locks your app to that old version.
-The next time you are online, you will likely want to
-run [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later version.
+Por padrão, o cache do pacote do sistema está localizado no subdiretório `.pub-cache`
+do seu diretório home (no macOS e Linux),
+ou em `%LOCALAPPDATA%\Pub\Cache` (no Windows;
+a localização pode variar dependendo da versão do Windows).
+Você pode configurar a localização do cache configurando a
+variável de ambiente [`PUB_CACHE`](/tools/pub/environment-variables)
+antes de executar pub.
 
 
-## Options
+## Obter enquanto offline {:#getting-while-offline}
 
-For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd#global-options).
+Se você não tiver acesso à rede, ainda poderá executar `dart pub get`.
+Como pub baixa pacotes para um cache central compartilhado por todos os pacotes
+em seu sistema, muitas vezes pode encontrar pacotes baixados anteriormente
+sem precisar usar a rede.
+
+No entanto, por padrão, `dart pub get` tenta ficar online se você
+tiver qualquer dependência hospedada,
+para que pub possa detectar versões mais recentes de dependências.
+Se você não quiser que pub faça isso, passe o sinalizador `--offline`.
+No modo offline, pub procura apenas em seu cache de pacotes local,
+tentando encontrar um conjunto de versões que funcione com seu pacote a partir do que já está
+disponível.
+
+Tenha em mente que pub gera um arquivo de bloqueio. Se a
+única versão de alguma dependência em seu cache for antiga,
+`dart pub get` offline bloqueia seu aplicativo nessa versão antiga.
+Na próxima vez que você estiver online, você provavelmente desejará
+executar [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) para atualizar para uma versão mais recente.
+
+
+## Opções {:#options}
+
+Para opções que se aplicam a todos os comandos pub, consulte
+[Opções globais](/tools/pub/cmd#global-options).
 
 ### `--[no-]offline`
 
 {% render 'tools/pub-option-no-offline.md' %}
 
-### `--dry-run` or `-n`
+### `--dry-run` ou `-n`
 
-Reports the dependencies that would be changed,
-but doesn't make the changes. This is useful if you
-want to analyze updates before making them.
+Relata as dependências que seriam alteradas,
+mas não faz as alterações. Isso é útil se você
+deseja analisar atualizações antes de fazê-las.
 
 ### `--[no-]precompile`
 
-By default, pub precompiles executables
-in immediate dependencies (`--precompile`).
-To prevent precompilation, use `--no-precompile`.
+Por padrão, pub pré-compila executáveis
+em dependências imediatas (`--precompile`).
+Para evitar pré-compilação, use `--no-precompile`.
 
 ### `--enforce-lockfile`
 
-Enforce the resolution of the current `pubspec.lock`.
+Impor a resolução do `pubspec.lock` atual.
 
-Fail the `pub get` with an error message if the `pubspec.lock` does not exactly
-specify a valid resolution of `pubspec.yaml` or if any content hash of a hosted
-package has changed.
+Falha no `pub get` com uma mensagem de erro se o `pubspec.lock` não especificar exatamente
+uma resolução válida de `pubspec.yaml` ou se algum hash de conteúdo de um pacote
+hospedado mudou.
 
-Useful for CI or deploying to production.
+Útil para CI ou implantação em produção.
 
-Read [Get dependencies for production](/tools/pub/packages#get-dependencies-for-production)
-for more details.
+Leia [Obter dependências para produção](/tools/pub/packages#get-dependencies-for-production)
+para mais detalhes.
 
 {% render 'pub-problems.md' %}

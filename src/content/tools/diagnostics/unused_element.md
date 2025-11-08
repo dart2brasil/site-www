@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The declaration '{0}' isn't referenced._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a private declaration isn't
+O analisador produz este diagnóstico quando a private declaration isn't
 referenced in the library that contains the declaration. The following
 kinds of declarations are analyzed:
 - Private top-level declarations and all of their members
@@ -26,7 +27,7 @@ Not all references to an element will mark it as "used":
 - Referring to a class, mixin, or enum on the right side of an `is`
   expression does not count as using it.
 
-## Example
+## Exemplo
 
 Assuming that no code in the library references `_C`, the following code
 produces this diagnostic:
@@ -35,7 +36,7 @@ produces this diagnostic:
 class [!_C!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the declaration isn't needed, then remove it.
 

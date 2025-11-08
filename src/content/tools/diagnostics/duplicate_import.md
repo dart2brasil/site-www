@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Duplicate import._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an import directive is found
+O analisador produz este diagnóstico quando an import directive is found
 that is the same as an import before it in the file. The second import
 doesn't add value and should be removed.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic:
 
@@ -26,7 +27,7 @@ import [!'package:meta/meta.dart'!];
 @sealed class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary import:
 

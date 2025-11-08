@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use the '??' operator rather than '?:' when testing for 'null'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a conditional expression (using
+O analisador produz este diagnóstico quando a conditional expression (using
 the `?:` operator) is used to select a different value when a local
 variable is `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variable `s` is
+O código a seguir produz este diagnóstico porque the variable `s` is
 being compared to `null` so that a different value can be returned when
 `s` is `null`:
 
@@ -36,7 +37,7 @@ being compared to `null` so that a different value can be returned when
 String f(String? s) => [!s == null ? '' : s!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Use the if-null operator instead:
 

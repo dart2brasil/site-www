@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A record type without fields can't have a trailing comma._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a record type that has no
+O analisador produz este diagnóstico quando a record type that has no
 fields has a trailing comma. Empty record types can't contain a comma.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the empty record type
+O código a seguir produz este diagnóstico porque the empty record type
 has a trailing comma:
 
 ```dart
 void f(([!,!]) r) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the record type is intended to be empty, then remove the comma:
 

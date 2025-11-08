@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary 'const' keyword._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the keyword `const` is used in
+O analisador produz este diagnóstico quando the keyword `const` is used in
 a [constant context][]. The keyword isn't required because it's implied.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the keyword `const` in
+O código a seguir produz este diagnóstico porque the keyword `const` in
 the list literal isn't needed:
 
 ```dart
@@ -37,7 +38,7 @@ const l = [!const!] <int>[];
 The list is implicitly `const` because of the keyword `const` on the
 variable declaration.
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary keyword:
 

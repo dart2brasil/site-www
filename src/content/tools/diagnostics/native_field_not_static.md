@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Native fields must be static._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance field in a class
+O analisador produz este diagnóstico quando an instance field in a class
 has been annotated with `@Native`.
 Native fields refer to global variables in C, C++ or other native
 languages, whereas instance fields in Dart are specific to an instance of
@@ -19,9 +20,9 @@ that class. Hence, native fields must be static.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `f` in the
+O código a seguir produz este diagnóstico porque the field `f` in the
 class `C` is `@Native`, but not `static`:
 
 ```dart
@@ -33,7 +34,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Either make the field static:
 

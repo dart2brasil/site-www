@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Type could be non-nullable._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a final field or variable has a
+O analisador produz este diagnóstico quando a final field or variable has a
 nullable type but is initialized to a non-nullable value.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the final variable `i`
+O código a seguir produz este diagnóstico porque the final variable `i`
 has a nullable type (`int?`), but can never be `null`:
 
 ```dart
 final int? [!i!] = 1;
 ```
 
-## Common fixes
+## Correções comuns
 
 Make the type non-nullable:
 

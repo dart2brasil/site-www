@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The function '{0}' isn't defined._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it encounters an identifier that
+O analisador produz este diagnóstico quando it encounters an identifier that
 appears to be the name of a function but either isn't defined or isn't
 visible in the scope in which it's being referenced.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name `emty` isn't
+O código a seguir produz este diagnóstico porque the name `emty` isn't
 defined:
 
 ```dart
@@ -28,7 +29,7 @@ void main() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the identifier isn't defined, then either define it or replace it with
 the name of a function that is defined. The example above can be corrected

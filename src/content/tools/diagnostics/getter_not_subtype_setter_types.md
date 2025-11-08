@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The return type of getter '{0}' is '{1}' which isn't a subtype of the type '{2}' of its setter '{3}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the return type of a getter
+O analisador produz este diagnóstico quando the return type of a getter
 isn't a subtype of the type of the parameter of a setter with the same
 name.
 
 The subtype relationship is a requirement whether the getter and setter are
 in the same class or whether one of them is in a superclass of the other.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the return type of the
+O código a seguir produz este diagnóstico porque the return type of the
 getter `x` is `num`, the parameter type of the setter `x` is `int`, and
 `num` isn't a subtype of `int`:
 
@@ -32,7 +33,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type of the getter is correct, then change the type of the setter:
 

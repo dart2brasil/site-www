@@ -5,27 +5,28 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The integer literal is being used as a double, but can't be represented as a 64-bit double without overflow or loss of precision: '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an integer literal is being
+O analisador produz este diagnóstico quando an integer literal is being
 implicitly converted to a double, but can't be represented as a 64-bit
 double without overflow or loss of precision. Integer literals are
 implicitly converted to a double if the context requires the type `double`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the integer value
+O código a seguir produz este diagnóstico porque the integer value
 `9223372036854775807` can't be represented exactly as a double:
 
 ```dart
 double x = [!9223372036854775807!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to use the exact value, then use the class `BigInt` to
 represent the value:

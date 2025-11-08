@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The value of the '{0}' field is expected to be a map._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value of either the
+O analisador produz este diagnóstico quando the value of either the
 `dependencies` or `dev_dependencies` key isn't a map.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of the
+O código a seguir produz este diagnóstico porque the value of the
 top-level `dependencies` key is a list:
 
 ```yaml
@@ -25,7 +26,7 @@ dependencies:
   [!- meta!]
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a map as the value of the `dependencies` key:
 

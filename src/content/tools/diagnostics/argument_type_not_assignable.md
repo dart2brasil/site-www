@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The argument type '{0}' can't be assigned to the parameter type '{1}'. {2}_
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the static type of an argument
+O analisador produz este diagnóstico quando the static type of an argument
 can't be assigned to the static type of the corresponding parameter.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because a `num` can't be
+O código a seguir produz este diagnóstico porque a `num` can't be
 assigned to a `String`:
 
 ```dart
@@ -24,7 +25,7 @@ String f(String x) => x;
 String g(num y) => f([!y!]);
 ```
 
-## Common fixes
+## Correções comuns
 
 If possible, rewrite the code so that the static type is assignable. In the
 example above you might be able to change the type of the parameter `y`:

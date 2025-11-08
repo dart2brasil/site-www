@@ -1,16 +1,17 @@
 ---
+ia-translate: true
 title: dart test
-description: Command-line tool for testing Dart projects.
+description: Ferramenta de linha de comando para testar projetos Dart.
 showToc: false
 ---
 
-The `dart test` command runs tests that
-rely on the [`test` package][] and
-are under the `test` directory of the current Dart project.
-For information on writing tests, see the 
-[testing documentation][].
-If you're working on Flutter code, then use the `flutter test` command instead,
-as described in [Testing Flutter apps][].
+O comando `dart test` executa testes que
+dependem do [pacote `test`][`test` package] e
+estão no diretório `test` do projeto Dart atual.
+Para informações sobre como escrever testes, consulte a
+[documentação de testes][testing documentation].
+Se você estiver trabalhando em código Flutter, use o comando `flutter test`,
+conforme descrito em [Testing Flutter apps][].
 
 [testing documentation]: /tools/testing
 [`test` package]: {{site.pub-pkg}}/test
@@ -18,16 +19,16 @@ as described in [Testing Flutter apps][].
 
 {% render 'tools/dart-tool-note.md' %}
 
-Here's an example of using `dart test` to run all tests
-that are under the current project's `test` directory:
+Aqui está um exemplo de uso do `dart test` para executar todos os testes
+que estão no diretório `test` do projeto atual:
 
 ```console
 $ cd my_app
 $ dart test
 ```
 
-To control which tests run, you can add the paths to
-directories or files under the `test` directory:
+Para controlar quais testes executam, você pode adicionar os caminhos para
+diretórios ou arquivos no diretório `test`:
 
 {% comment %}
   I ran these commands in site-www/misc
@@ -40,9 +41,9 @@ $ dart test test/library_tour/io_test.dart
 ...
 ```
 
-Another way to run a subset of tests is to use the `--name` (`-n`),
-`--tags` (`-t`), or `--exclude-tags` (`-x`) flag,
-adding part or all of the string to match:
+Outra maneira de executar um subconjunto de testes é usar a flag `--name` (`-n`),
+`--tags` (`-t`), ou `--exclude-tags` (`-x`),
+adicionando parte ou toda a string para corresponder:
 
 ```console
 $ dart test --name String
@@ -53,8 +54,8 @@ $ dart test --name String
 ...
 ```
 
-When you use these flags more than once in the same command line,
-only the tests that match _all_ the conditions run:
+Quando você usa essas flags mais de uma vez na mesma linha de comando,
+apenas os testes que correspondem a _todas_ as condições executam:
 
 ```console
 $ dart test --name String --name print
@@ -63,13 +64,13 @@ $ dart test --name String --name print
 00:00 +2: All tests passed!
 ```
 
-The `dart test` command has many more flags to control
-which tests run,
-how they run (for example, concurrency and timeout), and
-where and how the output appears.
-For further information on command-line options,
-see the [`test` package][] or
-use the `--help` flag:
+O comando `dart test` tem muito mais flags para controlar
+quais testes executam,
+como eles executam (por exemplo, concorrência e timeout), e
+onde e como a saída aparece.
+Para mais informações sobre opções de linha de comando,
+consulte o [pacote `test`][`test` package] ou
+use a flag `--help`:
 
 ```console
 $ dart test --help

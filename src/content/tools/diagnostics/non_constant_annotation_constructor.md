@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Annotation creation can only call a const constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an annotation is the invocation
+O analisador produz este diagnóstico quando an annotation is the invocation
 of an existing constructor even though the invoked constructor isn't a
 const constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor for `C`
-isn't a const constructor:
+O código a seguir produz este diagnóstico porque the constructor for `C`
+isn't a const construtor:
 
 ```dart
 [!@C()!]
@@ -30,7 +31,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If it's valid for the class to have a const constructor, then create a
 const constructor that can be used for the annotation:

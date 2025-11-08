@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Assets are required to be file paths (strings)._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an `assets` list contains a
+O analisador produz este diagnóstico quando an `assets` list contains a
 value that isn't a string.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `assets` list
+O código a seguir produz este diagnóstico porque the `assets` list
 contains a map:
 
 ```yaml
@@ -26,7 +27,7 @@ flutter:
     - [!image.gif: true!]
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the `assets` list so that it only contains valid POSIX-style file
 paths:

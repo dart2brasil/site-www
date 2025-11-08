@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -24,15 +25,15 @@ _Always 'true' because 'indexOf' is always greater than or equal to -1._
 
 _Unnecessary use of 'indexOf' to test for containment._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the method `indexOf` is used and
+O analisador produz este diagnóstico quando the method `indexOf` is used and
 the result is only compared with `-1` or `0` in a way where the semantics
 are equivalent to using `contains`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the condition in the
+O código a seguir produz este diagnóstico porque the condition in the
 `if` statement is checking to see whether the list contains the string:
 
 ```dart
@@ -43,7 +44,7 @@ void f(List<String> l, String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use `contains` instead, negating the condition when necessary:
 

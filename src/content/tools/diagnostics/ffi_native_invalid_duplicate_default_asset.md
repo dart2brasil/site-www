@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _There may be at most one @DefaultAsset annotation on a library._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library directive has more
+O analisador produz este diagnóstico quando a library directive has more
 than one `DefaultAsset` annotation associated with it.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the library directive
+O código a seguir produz este diagnóstico porque the library directive
 has two `DefaultAsset` annotations associated with it:
 
 ```dart
@@ -27,7 +28,7 @@ library;
 import 'dart:ffi';
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all but one of the `DefaultAsset` annotations:
 

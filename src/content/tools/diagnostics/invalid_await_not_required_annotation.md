@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The annotation 'awaitNotRequired' can only be applied to a Future-returning function, or a Future-typed field._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when anything other than a
+O analisador produz este diagnóstico quando anything other than a
 `Future`-returning function or a `Future`-typed field or top-level
 variable is annotated with [`awaitNotRequired`][meta-awaitNotRequired].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the annotation is on a
+O código a seguir produz este diagnóstico porque the annotation is on a
 `void`-returning function:
 
 ```dart
@@ -27,7 +28,7 @@ import 'package:meta/meta.dart';
 void f() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the annotation:
 

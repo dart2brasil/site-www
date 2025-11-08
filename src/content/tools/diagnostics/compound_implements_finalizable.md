@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' can't implement Finalizable._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a subclass of either `Struct`
+O analisador produz este diagnóstico quando a subclass of either `Struct`
 or `Union` implements `Finalizable`.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `S`
+O código a seguir produz este diagnóstico porque a classe `S`
 implements `Finalizable`:
 
 ```dart
@@ -29,7 +30,7 @@ final class [!S!] extends Struct implements Finalizable {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Try removing the implements clause from the class:
 

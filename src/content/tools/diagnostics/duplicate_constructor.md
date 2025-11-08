@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The constructor with name '{0}' is already defined._
 
 _The unnamed constructor is already defined._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class declares more than one
+O analisador produz este diagnóstico quando a class declares more than one
 unnamed constructor or when it declares more than one constructor with the
 same name.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because there are two
-declarations for the unnamed constructor:
+O código a seguir produz este diagnóstico porque há duas
+declarations for the unnamed construtor:
 
 ```dart
 class C {
@@ -30,7 +31,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because there are two
+O código a seguir produz este diagnóstico porque há duas
 declarations for the constructor named `m`:
 
 ```dart
@@ -41,7 +42,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there are multiple unnamed constructors and all of the constructors are
 needed, then give all of them, or all except one of them, a name:

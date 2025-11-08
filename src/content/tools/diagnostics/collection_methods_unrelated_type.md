@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _The argument type '{0}' isn't related to '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when any one of several methods in
+O analisador produz este diagnóstico quando any one of several methods in
 the core libraries are invoked with arguments of an inappropriate type.
 These methods are ones that don't provide a specific enough type for the
 parameter to allow the normal type checking to catch the error.
@@ -38,9 +39,9 @@ The arguments that are checked are:
 - an argument to `Set<E>.lookup` should be related to `E`
 - an argument to `Set<E>.remove` should be related to `E`
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the argument to
+O código a seguir produz este diagnóstico porque the argument to
 `contains` is a `String`, which isn't assignable to `int`, the element
 type of the list `l`:
 
@@ -48,7 +49,7 @@ type of the list `l`:
 bool f(List<int> l)  => l.contains([!'1'!]);
 ```
 
-## Common fixes
+## Correções comuns
 
 If the element type is correct, then change the argument to have the same
 type:

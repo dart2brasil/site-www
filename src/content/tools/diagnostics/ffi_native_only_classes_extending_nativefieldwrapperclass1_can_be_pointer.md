@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Only classes extending NativeFieldWrapperClass1 can be passed as Pointer._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a function or method annotated
+O analisador produz este diagnóstico quando a function or method annotated
 with `@Native` has a parameter in its FFI signature that is a `Pointer`,
 but the corresponding Dart parameter type is a class instance that doesn't
 extend `NativeFieldWrapperClass1` (or is a Pointer or TypedData).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `MyService` doesn't
+O código a seguir produz este diagnóstico porque `MyService` doesn't
 extend `NativeFieldWrapperClass1`, but the `@Native` signature for its
 `process` method indicates the receiver should be passed as a `Pointer<Void>`:
 
@@ -31,7 +32,7 @@ class MyService { // MyService does not extend NativeFieldWrapperClass1
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 1.  **If the Dart class is intended to wrap a native object:**
     Make the Dart class extend `NativeFieldWrapperClass1`. This is the

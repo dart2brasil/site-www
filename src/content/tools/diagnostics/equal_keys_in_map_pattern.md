@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Two keys in a map pattern can't be equal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a map pattern contains more
+O analisador produz este diagnóstico quando a map pattern contains more
 than one key with the same name. The same key can't be matched twice.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the key `'a'` appears
+O código a seguir produz este diagnóstico porque the key `'a'` appears
 twice:
 
 ```dart
@@ -25,7 +26,7 @@ void f(Map<String, int> x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you are trying to match two different keys, then change one of the keys
 in the pattern:

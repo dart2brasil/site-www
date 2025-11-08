@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type of the argument to the extension override '{0}' isn't assignable to the extended type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the argument to an extension
+O analisador produz este diagnóstico quando the argument to an extension
 override isn't assignable to the type being extended by the extension.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `3` isn't a `String`:
+O código a seguir produz este diagnóstico porque `3` isn't a `String`:
 
 ```dart
 extension E on String {
@@ -28,7 +29,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you're using the correct extension, then update the argument to have the
 correct type:

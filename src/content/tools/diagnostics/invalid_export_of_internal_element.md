@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The member '{0}' can't be exported as a part of a package's public API._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a [public library][] exports a
+O analisador produz este diagnóstico quando a [public library][] exports a
 declaration that is marked with the [`internal`][meta-internal]
 annotation.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` in the `src` directory that contains:
 
@@ -33,7 +34,7 @@ intended to be used internally:
 [!export 'src/a.dart';!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If the export is needed, then add a `hide` clause to hide the internal
 names:

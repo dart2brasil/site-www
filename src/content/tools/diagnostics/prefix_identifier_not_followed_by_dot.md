@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' refers to an import prefix, so it must be followed by '.'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an import prefix is used by
+O analisador produz este diagnóstico quando an import prefix is used by
 itself, without accessing any of the names declared in the libraries
 associated with the prefix. Prefixes aren't variables, and therefore can't
 be used as a value.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the prefix `math` is
+O código a seguir produz este diagnóstico porque the prefix `math` is
 being used as if it were a variable:
 
 ```dart
@@ -29,7 +30,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the code is incomplete, then reference something in one of the libraries
 associated with the prefix:

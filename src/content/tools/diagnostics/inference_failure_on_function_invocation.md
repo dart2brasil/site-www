@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type argument(s) of the function '{0}' can't be inferred._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when:
+O analisador produz este diagnóstico quando:
 - the language option `strict-inference` is enabled in the analysis options file,
 - the invocation of a method or function has no type arguments, and
 - the values for the type arguments can't be inferred.
 
-## Example
+## Exemplo
 
 Given an analysis options file containing the following:
 
@@ -26,7 +27,7 @@ analyzer:
     strict-inference: true
 ```
 
-The following code produces this diagnostic because the invocation of `m`
+O código a seguir produz este diagnóstico porque the invocation of `m`
 has no explicit type arguments, and the arguments can't be inferred:
 
 ```dart
@@ -39,7 +40,7 @@ void f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Provide explicit type arguments for the invocation:
 

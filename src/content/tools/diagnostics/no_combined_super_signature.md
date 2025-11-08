@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Can't infer missing types in '{0}' from overridden methods: {1}._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there is a method declaration
+O analisador produz este diagnóstico quando there is a method declaration
 for which one or more types needs to be inferred, and those types can't be
 inferred because none of the overridden methods has a function type that is
 a supertype of all the other overridden methods, as specified by
 [override inference][].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `m` declared
+O código a seguir produz este diagnóstico porque the method `m` declared
 in the class `C` is missing both the return type and the type of the
 parameter `a`, and neither of the missing types can be inferred for it:
 
@@ -42,7 +43,7 @@ overridden methods are incompatible in these ways:
 - Neither parameter type (`String` and `int`) is a supertype of the other.
 - Neither return type is a subtype of the other.
 
-## Common fixes
+## Correções comuns
 
 If possible, add types to the method in the subclass that are consistent
 with the types from all the overridden methods:

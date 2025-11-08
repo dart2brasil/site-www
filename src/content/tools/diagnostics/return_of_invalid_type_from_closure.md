@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The returned type '{0}' isn't returnable from a '{1}' function, as required by the closure's context._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the static type of a returned
+O analisador produz este diagnóstico quando the static type of a returned
 expression isn't assignable to the return type that the closure is required
 to have.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` is defined to be a
+O código a seguir produz este diagnóstico porque `f` is defined to be a
 function that returns a `String`, but the closure assigned to it returns an
 `int`:
 
@@ -25,7 +26,7 @@ function that returns a `String`, but the closure assigned to it returns an
 String Function(String) f = (s) => [!3!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the return type is correct, then replace the returned value with a value
 of the correct type, possibly by converting the existing value:

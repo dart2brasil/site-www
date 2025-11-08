@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The constructor being called isn't a const constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the keyword `const` is used to
+O analisador produz este diagnóstico quando the keyword `const` is used to
 invoke a constructor that isn't marked with `const`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor in `A`
-isn't a const constructor:
+O código a seguir produz este diagnóstico porque the constructor in `A`
+isn't a const construtor:
 
 ```dart
 class A {
@@ -27,11 +28,11 @@ class A {
 A f() => [!const!] A();
 ```
 
-## Common fixes
+## Correções comuns
 
 If it's desirable and possible to make the class a constant class (by
 making all of the fields of the class, including inherited fields, final),
-then add the keyword `const` to the constructor:
+then add the keyword `const` to the construtor:
 
 ```dart
 class A {

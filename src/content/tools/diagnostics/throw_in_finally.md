@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use of '{0}' in 'finally' block._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `throw` statement is found
+O analisador produz este diagnóstico quando a `throw` statement is found
 inside a `finally` block.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is a `throw`
+O código a seguir produz este diagnóstico porque there is a `throw`
 statement inside a `finally` block:
 
 ```dart
@@ -42,7 +43,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the code so that the `throw` statement isn't inside a `finally`
 block:

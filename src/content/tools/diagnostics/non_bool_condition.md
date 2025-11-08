@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Conditions must have a static type of 'bool'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a condition, such as an `if` or
+O analisador produz este diagnóstico quando a condition, such as an `if` or
 `while` loop, doesn't have the static type `bool`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` has the static type
+O código a seguir produz este diagnóstico porque `x` has the static type
 `int`:
 
 ```dart
@@ -27,7 +28,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the condition so that it produces a Boolean value:
 

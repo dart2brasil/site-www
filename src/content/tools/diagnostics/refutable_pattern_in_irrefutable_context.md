@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Refutable patterns can't be used in an irrefutable context._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a [refutable pattern][] is used
+O analisador produz este diagnóstico quando a [refutable pattern][] is used
 in a context where only an [irrefutable pattern][] is allowed.
 
 The refutable patterns that are disallowed are:
@@ -25,9 +26,9 @@ The contexts that are checked are:
 - pattern-based for loops
 - assignments with a pattern on the left-hand side
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the null-check
+O código a seguir produz este diagnóstico porque the null-check
 pattern, which is a refutable pattern, is in a pattern-based variable
 declaration, which doesn't allow refutable patterns:
 
@@ -37,7 +38,7 @@ void f(int? x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the code to not use a refutable pattern in an irrefutable context.
 

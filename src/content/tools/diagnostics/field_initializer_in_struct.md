@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Constructors in subclasses of 'Struct' and 'Union' can't have field initializers._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor in a subclass of
+O analisador produz este diagnóstico quando a constructor in a subclass of
 either `Struct` or `Union` has one or more field initializers.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `C` has a
+O código a seguir produz este diagnóstico porque a classe `C` has a
 constructor with an initializer for the field `f`:
 
 ```dart
@@ -33,7 +34,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the field initializer:
 

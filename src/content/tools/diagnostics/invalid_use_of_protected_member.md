@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The member '{0}' can only be used within instance members of subclasses of '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a getter, setter, field, or
+O analisador produz este diagnóstico quando a getter, setter, field, or
 method that has been annotated with `@protected` is referenced anywhere
 other than in the library in which it is declared or in a subclass of the
 class in which it is declared.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that contains the following:
 
@@ -29,7 +30,7 @@ class A {
 }
 ```
 
-The following code produces this diagnostic because the method `a` is
+O código a seguir produz este diagnóstico porque the method `a` is
 being invoked in code that isn't in a subclass of `A`:
 
 ```dart
@@ -40,7 +41,7 @@ void b(A a) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If it's reasonable for the member to be marked as `@protected`, then
 remove the reference to the protected member, replacing it with some

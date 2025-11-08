@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Function literals shouldn't be passed to 'forEach'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the argument to
+O analisador produz este diagnóstico quando the argument to
 `Iterable.forEach` is a closure.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the argument to the
+O código a seguir produz este diagnóstico porque the argument to the
 invocation of `forEach` is a closure:
 
 ```dart
@@ -36,7 +37,7 @@ void f(Iterable<String> s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the closure can be replaced by a tear-off, then replace the closure:
 

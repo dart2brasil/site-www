@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,17 +21,17 @@ bodyClass: highlight-diagnostics
 
 _Invalid use of a private type in a public API._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type that is not part of the
+O analisador produz este diagnóstico quando a type that is not part of the
 public API of a library is referenced in the public API of that library.
 
 Using a private type in a public API can make the API unusable outside the
 defining library.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameter `c` of
+O código a seguir produz este diagnóstico porque the parameter `c` of
 the public function `f` has a type that is library private (`_C`):
 
 ```dart
@@ -39,7 +40,7 @@ void f([!_C!] c) {}
 class _C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the API doesn't need to be used outside the defining library, then make
 it private:

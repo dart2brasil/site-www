@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The non-nullable local variable '{0}' must be assigned before it can be used._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a local variable is referenced
+O analisador produz este diagnóstico quando a local variable is referenced
 and has all these characteristics:
 - Has a type that's [potentially non-nullable][].
 - Doesn't have an initializer.
@@ -19,9 +20,9 @@ and has all these characteristics:
 - The analyzer can't prove that the local variable will be assigned before
   the reference based on the specification of [definite assignment][].
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `x` can't have a value
+O código a seguir produz este diagnóstico porque `x` can't have a value
 of `null`, but is referenced before a value was assigned to it:
 
 ```dart
@@ -31,7 +32,7 @@ String f() {
 }
 ```
 
-The following code produces this diagnostic because the assignment to `x`
+O código a seguir produz este diagnóstico porque the assignment to `x`
 might not be executed, so it might have a value of `null`:
 
 ```dart
@@ -44,7 +45,7 @@ int g(bool b) {
 }
 ```
 
-The following code produces this diagnostic because the analyzer can't
+O código a seguir produz este diagnóstico porque the analyzer can't
 prove, based on definite assignment analysis, that `x` won't be referenced
 without having a value assigned to it:
 
@@ -61,7 +62,7 @@ int h(bool b) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If `null` is a valid value, then make the variable nullable:
 

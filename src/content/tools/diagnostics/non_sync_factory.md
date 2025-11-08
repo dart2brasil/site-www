@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Factory bodies can't use 'async', 'async*', or 'sync*'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the body of a factory
+O analisador produz este diagnóstico quando the body of a factory
 constructor is marked with `async`, `async*`, or `sync*`. All constructors,
 including factory constructors, are required to return an instance of the
 class in which they're declared, not a `Future`, `Stream`, or `Iterator`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the body of the factory
+O código a seguir produz este diagnóstico porque the body of the factory
 constructor is marked with `async`:
 
 ```dart
@@ -30,7 +31,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the member must be declared as a factory constructor, then remove the
 keyword appearing before the body:

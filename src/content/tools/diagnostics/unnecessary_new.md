@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary 'new' keyword._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the keyword `new` is used to
+O analisador produz este diagnóstico quando the keyword `new` is used to
 invoke a constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the keyword `new` is
+O código a seguir produz este diagnóstico porque the keyword `new` is
 used to invoke the unnamed constructor from `Object`:
 
 ```dart
 var o = [!new!] Object();
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the keyword `new`:
 

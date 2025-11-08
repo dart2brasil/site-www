@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Can't reference label '{0}' declared in an outer method._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `break` or `continue`
+O analisador produz este diagnóstico quando a `break` or `continue`
 statement references a label that is declared in a method or function
 containing the function in which the `break` or `continue` statement
 appears. The `break` and `continue` statements can't be used to transfer
 control outside the function that contains them.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the label `loop` is
+O código a seguir produz este diagnóstico porque the label `loop` is
 declared outside the local function `g`:
 
 ```dart
@@ -35,7 +36,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Try rewriting the code so that it isn't necessary to transfer control
 outside the local function, possibly by inlining the local function:

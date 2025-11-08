@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The 'name' field is required but missing._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there's no top-level `name` key.
+O analisador produz este diagnóstico quando there's no top-level `name` key.
 The `name` key provides the name of the package, which is required.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the package doesn't
+O código a seguir produz este diagnóstico porque the package doesn't
 have a name:
 
 ```yaml
@@ -24,7 +25,7 @@ dependencies:
   meta: ^1.0.2
 ```
 
-## Common fixes
+## Correções comuns
 
 Add the top-level key `name` with a value that's the name of the package:
 

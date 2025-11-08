@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The argument for the named parameter '{0}' was already specified._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an invocation has two or more
+O analisador produz este diagnóstico quando an invocation has two or more
 named arguments that have the same name.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there are two arguments
+O código a seguir produz este diagnóstico porque há duas arguments
 with the name `a`:
 
 ```dart
@@ -29,7 +30,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If one of the arguments should have a different name, then change the name:
 

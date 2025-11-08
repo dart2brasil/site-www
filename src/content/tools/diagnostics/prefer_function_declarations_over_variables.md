@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use a function declaration rather than a variable assignment to bind a function to a name._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a closure is assigned to a
+O analisador produz este diagnóstico quando a closure is assigned to a
 local variable and the local variable is not re-assigned anywhere.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the local variable `f`
+O código a seguir produz este diagnóstico porque the local variable `f`
 is initialized to be a closure and isn't assigned any other value:
 
 ```dart
@@ -37,7 +38,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the local variable with a local function:
 

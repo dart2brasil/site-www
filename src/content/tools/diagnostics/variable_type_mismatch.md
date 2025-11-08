@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A value of type '{0}' can't be assigned to a const variable of type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the evaluation of a constant
+O analisador produz este diagnóstico quando the evaluation of a constant
 expression would result in a `CastException`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of `x` is an
+O código a seguir produz este diagnóstico porque the value of `x` is an
 `int`, which can't be assigned to `y` because an `int` isn't a `String`:
 
 ```dart
@@ -24,7 +25,7 @@ const dynamic x = 0;
 const String y = [!x!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the declaration of the constant is correct, then change the value being
 assigned to be of the correct type:

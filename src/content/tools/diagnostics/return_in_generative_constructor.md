@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Constructors can't return values._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a generative constructor
+O analisador produz este diagnóstico quando a generative constructor
 contains a `return` statement that specifies a value to be returned.
 Generative constructors always return the object that was created, and
 therefore can't return a different object.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `return` statement
+O código a seguir produz este diagnóstico porque the `return` statement
 has an expression:
 
 ```dart
@@ -29,7 +30,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the constructor should create a new instance, then remove either the
 `return` statement or the expression:
@@ -41,7 +42,7 @@ class C {
 ```
 
 If the constructor shouldn't create a new instance, then convert it to be a
-factory constructor:
+factory construtor:
 
 ```dart
 class C {

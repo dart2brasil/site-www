@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Type aliases that expand to a type parameter can't be instantiated._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor invocation is
+O analisador produz este diagnóstico quando a constructor invocation is
 found where the type being instantiated is a type alias for one of the type
 parameters of the type alias. This isn't allowed because the value of the
 type parameter is a type rather than a class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because it creates an instance
+O código a seguir produz este diagnóstico porque it creates an instance
 of `A`, even though `A` is a type alias that is defined to be equivalent to
 a type parameter:
 
@@ -30,7 +31,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use either a class name or a type alias defined to be a class, rather than
 a type alias defined to be a type parameter:

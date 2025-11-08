@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,15 +23,15 @@ _The addition of a list item could be inlined._
 
 _The addition of multiple list items could be inlined._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the methods `add` and `addAll`
+O analisador produz este diagnóstico quando the methods `add` and `addAll`
 are invoked on a list literal where the elements being added could be
 included in the list literal.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `add` method is
+O código a seguir produz este diagnóstico porque the `add` method is
 being used to add `b`, when it could have been included directly in the
 list literal:
 
@@ -40,7 +41,7 @@ List<String> f(String a, String b) {
 }
 ```
 
-The following code produces this diagnostic because the `addAll` method is
+O código a seguir produz este diagnóstico porque the `addAll` method is
 being used to add the elements of `b`, when it could have been included
 directly in the list literal:
 
@@ -50,7 +51,7 @@ List<String> f(String a, List<String> b) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the `add` method is being used, then make the argument an element of
 the list and remove the invocation:

@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The path '{0}' doesn't exist._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a dependency has a `path` key
+O analisador produz este diagnóstico quando a dependency has a `path` key
 referencing a directory that doesn't exist.
 
-## Example
+## Exemplo
 
 Assuming that the directory `doesNotExist` doesn't exist, the following
 code produces this diagnostic because it's listed as the path of a package:
@@ -26,7 +27,7 @@ dependencies:
     path: [!doesNotExist!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If the path is correct, then create a directory at that path.
 

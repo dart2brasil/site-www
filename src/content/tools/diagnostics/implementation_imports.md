@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Import of a library in the 'lib/src' directory of another package._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an import references a library
+O analisador produz este diagnóstico quando an import references a library
 that's inside the `lib/src` directory of a different package, which
 violates [the convention for pub
 packages](https://dart.dev/tools/pub/package-layout#implementation-files).
 
-## Example
+## Exemplo
 
 The following code, assuming that it isn't part of the `ffi` package,
 produces this diagnostic because the library being imported is inside the
@@ -37,7 +38,7 @@ top-level `src` directory:
 import [!'package:ffi/src/allocation.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the library being imported contains code that's part of the public API,
 then import the public library that exports the public API:

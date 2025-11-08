@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Duplicate export._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an export directive is found
+O analisador produz este diagnóstico quando an export directive is found
 that is the same as an export before it in the file. The second export
 doesn't add value and should be removed.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the same library is
+O código a seguir produz este diagnóstico porque the same library is
 being exported twice:
 
 ```dart
@@ -25,7 +26,7 @@ export 'package:meta/meta.dart';
 export [!'package:meta/meta.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary export:
 

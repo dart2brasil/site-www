@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The asset directory '{0}' doesn't exist._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an asset list contains a value
+O analisador produz este diagnóstico quando an asset list contains a value
 referencing a directory that doesn't exist.
 
-## Example
+## Exemplo
 
 Assuming that the directory `assets` doesn't exist, the following code
 produces this diagnostic because it's listed as a directory containing
@@ -27,7 +28,7 @@ flutter:
     - [!assets/!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If the path is correct, then create a directory at that path.
 

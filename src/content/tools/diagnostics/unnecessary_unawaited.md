@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,17 +21,17 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of 'unawaited'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when `unawaited` is used to mark a
+O analisador produz este diagnóstico quando `unawaited` is used to mark a
 call to a function, method, or operator, or a reference to a field,
 getter, or top-level variable as safely not being awaited, but the called
 member is also annotated with `@awaitNotRequired`. This annotation itself
 signals that wrapping with `unawaited` is unnecessary at any call site.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `unawaited` is invoked
+O código a seguir produz este diagnóstico porque `unawaited` is invoked
 on a call to a function that's annotated with `@awaitNotRequired`:
 
 ```dart
@@ -45,7 +46,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the invocation of `unawaited`:
 

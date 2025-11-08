@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Key expressions in map patterns must be constants._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a key in a map pattern isn't a
+O analisador produz este diagnóstico quando a key in a map pattern isn't a
 constant expression.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the key `A()` isn't a
+O código a seguir produz este diagnóstico porque the key `A()` isn't a
 constant:
 
 ```dart
@@ -29,7 +30,7 @@ class A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a constant for the key:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use the null-aware operator '?.' rather than an explicit 'null' comparison._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a comparison with `null` is
+O analisador produz este diagnóstico quando a comparison with `null` is
 used to guard a member reference, and `null` is used as a result when the
 guarded target is `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the invocation of
+O código a seguir produz este diagnóstico porque the invocation of
 `length` is guarded by a `null` comparison even though the default value
 is `null`:
 
@@ -38,7 +39,7 @@ int? f(List<int>? p) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a null-aware access operator instead:
 

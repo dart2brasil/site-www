@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Missing concrete implementation of '{0}'._
@@ -13,14 +14,14 @@ _Missing concrete implementations of '{0}' and '{1}'._
 
 _Missing concrete implementations of '{0}', '{1}', and {2} more._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance member that has the
+O analisador produz este diagnóstico quando an instance member that has the
 `@mustBeOverridden` annotation isn't overridden in a subclass.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `B` doesn't
+O código a seguir produz este diagnóstico porque a classe `B` doesn't
 have an override of the inherited method `A.m` when `A.m` is annotated
 with `@mustBeOverridden`:
 
@@ -35,7 +36,7 @@ class A {
 class [!B!] extends A {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the annotation is appropriate for the member, then override the member
 in the subclass:

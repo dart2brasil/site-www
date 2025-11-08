@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The dev dependency on {0} is unnecessary because there is also a normal dependency on that package._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there's an entry under
+O analisador produz este diagnóstico quando there's an entry under
 `dev_dependencies` for a package that is also listed under `dependencies`.
 The packages under `dependencies` are available to all of the code in the
 package, so there's no need to also list them under `dev_dependencies`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the package `meta` is
+O código a seguir produz este diagnóstico porque the package `meta` is
 listed under both `dependencies` and `dev_dependencies`:
 
 ```yaml
@@ -29,7 +30,7 @@ dev_dependencies:
   [!meta!]: ^1.0.2
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the entry under `dev_dependencies` (and the `dev_dependencies` key
 if that's the only package listed there):

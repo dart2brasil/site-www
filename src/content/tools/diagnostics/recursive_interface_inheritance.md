@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' can't be a superinterface of itself: {1}._
@@ -17,15 +18,15 @@ _'{0}' can't use itself as a mixin._
 
 _'{0}' can't use itself as a superclass constraint._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when there's a circularity in the
+O analisador produz este diagnóstico quando there's a circularity in the
 type hierarchy. This happens when a type, either directly or indirectly,
 is declared to be a subtype of itself.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `A` is
+O código a seguir produz este diagnóstico porque a classe `A` is
 declared to be a subtype of `B`, and `B` is a subtype of `A`:
 
 ```dart
@@ -33,6 +34,6 @@ class [!A!] extends B {}
 class B implements A {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the type hierarchy so that there's no circularity.

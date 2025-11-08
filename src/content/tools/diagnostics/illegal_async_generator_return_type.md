@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Functions marked 'async*' must have a return type that is a supertype of 'Stream<T>' for some type 'T'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the body of a function has the
+O analisador produz este diagnóstico quando the body of a function has the
 `async*` modifier even though the return type of the function isn't either
 `Stream` or a supertype of `Stream`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the body of the
+O código a seguir produz este diagnóstico porque the body of the
 function `f` has the 'async*' modifier even though the return type `int`
 isn't a supertype of `Stream`:
 
@@ -25,7 +26,7 @@ isn't a supertype of `Stream`:
 [!int!] f() async* {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function should be asynchronous, then change the return type to be
 either `Stream` or a supertype of `Stream`:
@@ -34,7 +35,7 @@ either `Stream` or a supertype of `Stream`:
 Stream<int> f() async* {}
 ```
 
-If the function should be synchronous, then remove the `async*` modifier:
+If the function should be synchronous, then remove the `async*` modificador:
 
 ```dart
 int f() => 0;

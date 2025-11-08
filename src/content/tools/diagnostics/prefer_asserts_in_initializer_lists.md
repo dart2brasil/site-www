@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Assert should be in the initializer list._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the body of a constructor
+O analisador produz este diagnóstico quando the body of a constructor
 begins with one or more assert statements.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the body of the
+O código a seguir produz este diagnóstico porque the body of the
 constructor begins with an assert statement:
 
 ```dart
@@ -38,7 +39,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Move the assert to the initializer list, removing the body if there are
 only assert statements in it:

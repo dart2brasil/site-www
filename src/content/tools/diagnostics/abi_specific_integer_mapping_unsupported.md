@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Invalid mapping to '{0}'; only mappings to 'Int8', 'Int16', 'Int32', 'Int64', 'Uint8', 'Uint16', 'UInt32', and 'Uint64' are supported._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a value in the map argument of
+O analisador produz este diagnóstico quando um valor no argumento de mapa de
 an `AbiSpecificIntegerMapping` annotation is anything other than one of
 the following integer types:
 - `Int8`
@@ -23,9 +24,9 @@ the following integer types:
 - `UInt32`
 - `Uint64`
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of the map
+O código a seguir produz este diagnóstico porque the value of the map
 entry is `Array<Uint8>`, which isn't a valid integer type:
 
 ```dart
@@ -37,9 +38,9 @@ final class C extends AbiSpecificInteger {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Use one of the valid types as a value in the map:
+Use um dos tipos válidos como um valor no mapa:
 
 ```dart
 import 'dart:ffi';

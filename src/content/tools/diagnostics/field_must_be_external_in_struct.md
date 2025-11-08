@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Fields of 'Struct' and 'Union' subclasses must be marked external._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field in a subclass of either
+O analisador produz este diagnóstico quando a field in a subclass of either
 `Struct` or `Union` isn't marked as being `external`.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `a` isn't
+O código a seguir produz este diagnóstico porque the field `a` isn't
 marked as being `external`:
 
 ```dart
@@ -30,9 +31,9 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add the required `external` modifier:
+Add the required `external` modificador:
 
 ```dart
 import 'dart:ffi';

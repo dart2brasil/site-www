@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _There isn't a setter named '{0}' in class '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a reference to a setter is
+O analisador produz este diagnóstico quando a reference to a setter is
 found; there is no setter defined for the type; but there is a getter
 defined with the same name.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is no setter
+O código a seguir produz este diagnóstico porque there is no setter
 named `x` in `C`, but there is a getter named `x`:
 
 ```dart
@@ -31,7 +32,7 @@ void f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you want to invoke an existing setter, then correct the name:
 

@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Instance members can't be accessed from a factory constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a factory constructor contains
+O analisador produz este diagnóstico quando a factory constructor contains
 an unqualified reference to an instance member. In a generative
 constructor, the instance of the class is created and initialized before
 the body of the constructor is executed, so the instance can be bound to
@@ -19,10 +20,10 @@ the body of the constructor is executed, so the instance can be bound to
 factory constructor, the instance isn't created before executing the body,
 so `this` can't be used to reference it.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` isn't in scope in
-the factory constructor:
+O código a seguir produz este diagnóstico porque `x` isn't in scope in
+the factory construtor:
 
 ```dart
 class C {
@@ -34,7 +35,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the code so that it doesn't reference the instance member:
 

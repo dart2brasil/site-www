@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Can't have modifier '{0}' in an extension._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member declared inside an
+O analisador produz este diagnóstico quando a member declared inside an
 extension uses the keyword `covariant` in the declaration of a parameter.
 Extensions aren't classes and don't have subclasses, so the keyword serves
 no purpose.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `i` is marked as being
+O código a seguir produz este diagnóstico porque `i` está marcado como being
 covariant:
 
 ```dart
@@ -27,7 +28,7 @@ extension E on String {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the `covariant` keyword:
 

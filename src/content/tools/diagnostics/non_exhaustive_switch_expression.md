@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type '{0}' isn't exhaustively matched by the switch cases since it doesn't match the pattern '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `switch` expression is
+O analisador produz este diagnóstico quando a `switch` expression is
 missing a case for one or more of the possible values that could flow
 through it.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the switch expression
+O código a seguir produz este diagnóstico porque the switch expression
 doesn't have a case for the value `E.three`:
 
 ```dart
@@ -29,7 +30,7 @@ String f(E e) => [!switch!] (e) {
   };
 ```
 
-## Common fixes
+## Correções comuns
 
 If the missing values are distinctly meaningful to the switch expression,
 then add a case for each of the values missing a match:

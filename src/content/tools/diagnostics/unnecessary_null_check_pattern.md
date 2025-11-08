@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The null-check pattern will have no effect because the matched type isn't nullable._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a null-check pattern is used to
+O analisador produz este diagnóstico quando a null-check pattern is used to
 match a value that isn't nullable.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value `x` isn't
+O código a seguir produz este diagnóstico porque the value `x` isn't
 nullable:
 
 ```dart
@@ -25,7 +26,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the null-check pattern:
 

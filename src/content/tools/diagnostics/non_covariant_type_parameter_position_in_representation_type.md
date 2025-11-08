@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _An extension type parameter can't be used in a non-covariant position of its representation type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type parameter of an
+O analisador produz este diagnóstico quando a type parameter of an
 extension type is used in a non-covariant position in the representation
 type of that extension type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type parameter `T`
+O código a seguir produz este diagnóstico porque the type parameter `T`
 is used as a parameter type in the function type `void Function(T)`, and
 parameters are not covariant:
 
@@ -25,7 +26,7 @@ parameters are not covariant:
 extension type A<[!T!]>(void Function(T) f) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the use of the type parameter:
 

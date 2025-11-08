@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The relational pattern expression must be a constant._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value in a relational
+O analisador produz este diagnóstico quando the value in a relational
 pattern expression isn't a constant expression.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the operand of the `>`
+O código a seguir produz este diagnóstico porque the operand of the `>`
 operator, `a`, isn't a constant:
 
 ```dart
@@ -27,7 +28,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the value with a constant expression:
 

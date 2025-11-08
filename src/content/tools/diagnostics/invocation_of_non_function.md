@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' isn't a function._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it finds a function invocation,
+O analisador produz este diagnóstico quando it finds a function invocation,
 but the name of the function being invoked is defined to be something other
 than a function.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `Binary` is the name of
+O código a seguir produz este diagnóstico porque `Binary` is the name of
 a function type, not a function:
 
 ```dart
@@ -28,6 +29,6 @@ int f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the name with the name of a function.

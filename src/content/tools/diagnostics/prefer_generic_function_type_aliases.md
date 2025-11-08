@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,22 +21,22 @@ bodyClass: highlight-diagnostics
 
 _Use the generic function type syntax in 'typedef's._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a typedef is written using the
+O analisador produz este diagnóstico quando a typedef is written using the
 older syntax for function type aliases in which the name being declared is
 embedded in the function type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because it uses the older
+O código a seguir produz este diagnóstico porque it uses the older
 syntax:
 
 ```dart
 typedef void [!F!]<T>();
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the typedef to use the newer syntax:
 

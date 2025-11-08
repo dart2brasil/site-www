@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The instance member '{0}' can't be accessed in an initializer._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it finds a reference to an
+O analisador produz este diagnóstico quando it finds a reference to an
 instance member in a constructor's initializer list.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `defaultX` is an
+O código a seguir produz este diagnóstico porque `defaultX` is an
 instance member:
 
 ```dart
@@ -29,7 +30,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the member can be made static, then do so:
 

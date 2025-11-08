@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Extensions can't declare instance fields._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance field declaration is
+O analisador produz este diagnóstico quando an instance field declaration is
 found in an extension. It isn't valid to define an instance field because
 extensions can only add behavior, not state.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `s` is an instance
+O código a seguir produz este diagnóstico porque `s` is an instance
 field:
 
 ```dart
@@ -26,7 +27,7 @@ extension E on String {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the value can be computed without storing it in a field, then try
 using a getter or a method:

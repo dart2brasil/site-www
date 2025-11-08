@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Static method should be a constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a static method returns a newly
+O analisador produz este diagnóstico quando a static method returns a newly
 created instance of the class and could, therefore, be a constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the static method
-`all` could be a constructor:
+O código a seguir produz este diagnóstico porque the static method
+`all` could be a construtor:
 
 ```dart
 class C {
@@ -38,9 +39,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Convert the static method to a named constructor:
+Convert the static method to a named construtor:
 
 ```dart
 class C {

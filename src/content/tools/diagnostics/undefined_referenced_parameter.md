@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The parameter '{0}' isn't defined by '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an annotation of the form
+O analisador produz este diagnóstico quando an annotation of the form
 [`UseResult.unless(parameterDefined: parameterName)`][meta-UseResult]
 specifies a parameter name that isn't defined by the annotated function.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f`
+O código a seguir produz este diagnóstico porque the function `f`
 doesn't have a parameter named `b`:
 
 ```dart
@@ -27,7 +28,7 @@ import 'package:meta/meta.dart';
 int f([int? a]) => a ?? 0;
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the argument named `parameterDefined` to match the name of one of
 the parameters to the function:

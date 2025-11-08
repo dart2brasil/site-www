@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _Field overrides a field inherited from '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class defines a field that
+O analisador produz este diagnóstico quando a class defines a field that
 overrides a field from a superclass.
 
 Overriding a field with another field causes the object to have two
@@ -31,9 +32,9 @@ fields can be referenced in a given scope. That can lead to confusion
 where a reference to one of the fields can be mistaken for a reference to
 the other.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `f` in `B`
+O código a seguir produz este diagnóstico porque the field `f` in `B`
 shadows the field `f` in `A`:
 
 ```dart
@@ -47,7 +48,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the two fields are representing the same property, then remove the
 field from the subclass:

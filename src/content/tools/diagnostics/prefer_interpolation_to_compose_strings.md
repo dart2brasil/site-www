@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use interpolation to compose strings and values._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when string literals and computed
+O analisador produz este diagnóstico quando string literals and computed
 strings are being concatenated using the `+` operator, but string
 interpolation would achieve the same result.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the String `s` is
+O código a seguir produz este diagnóstico porque the String `s` is
 concatenated with other strings using the `+` operator:
 
 ```dart
@@ -37,7 +38,7 @@ String f(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use string interpolation:
 

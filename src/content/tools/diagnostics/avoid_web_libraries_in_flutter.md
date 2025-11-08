@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _Don't use web-only libraries outside Flutter web plugins._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library in a package that
+O analisador produz este diagnóstico quando a library in a package that
 isn't a web plugin contains an import of a web-only library:
 - `dart:html`
 - `dart:js`
@@ -32,7 +33,7 @@ isn't a web plugin contains an import of a web-only library:
 - `package:js`
 - `package:web`
 
-## Example
+## Exemplo
 
 When found in a package that isn't a web plugin, the following code
 produces this diagnostic because it imports `dart:html`:
@@ -45,7 +46,7 @@ import 'package:flutter/material.dart';
 class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the package isn't intended to be a web plugin, then remove the import:
 

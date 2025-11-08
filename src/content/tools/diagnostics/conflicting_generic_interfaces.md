@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The {0} '{1}' can't implement both '{2}' and '{3}' because the type arguments are different._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class attempts to implement a
+O analisador produz este diagnóstico quando a class attempts to implement a
 generic interface multiple times, and the values of the type arguments
 aren't the same.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `C` is defined to
+O código a seguir produz este diagnóstico porque `C` is defined to
 implement both `I<int>` (because it extends `A`) and `I<String>` (because
 it implements`B`), but `int` and `String` aren't the same type:
 
@@ -28,7 +29,7 @@ class B implements I<String> {}
 class [!C!] extends A implements B {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Rework the type hierarchy to avoid this situation. For example, you might
 make one or both of the inherited types generic so that `C` can specify the

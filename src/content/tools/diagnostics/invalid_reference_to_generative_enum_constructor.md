@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Generative enum constructors can only be used to create an enum constant._
 
 _Generative enum constructors can't be torn off._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a generative constructor
+O analisador produz este diagnóstico quando a generative constructor
 defined on an enum is used anywhere other than to create one of the enum
 constants or as the target of a redirection from another constructor in
 the same enum.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor for
+O código a seguir produz este diagnóstico porque the constructor for
 `E` is being used to create an instance in the function `f`:
 
 ```dart
@@ -33,7 +34,7 @@ enum E {
 E f() => const [!E!](2);
 ```
 
-## Common fixes
+## Correções comuns
 
 If there's an enum value with the same value, or if you add such a
 constant, then reference the constant directly:

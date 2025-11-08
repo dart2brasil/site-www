@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The member '{0}' can't be exported as a part of a package's public API, but is indirectly exported as part of the signature of '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a [public library][] exports a
+O analisador produz este diagnóstico quando a [public library][] exports a
 top-level function  with a return type or at least one parameter type that
 is marked with the [`internal`][meta-internal] annotation.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` in the `src` directory that contains the
 following:
@@ -29,7 +30,7 @@ typedef IntFunction = int Function();
 int f(IntFunction g) => g();
 ```
 
-The following code produces this diagnostic because the function `f` has a
+O código a seguir produz este diagnóstico porque the function `f` has a
 parameter of type `IntFunction`, and `IntFunction` is only intended to be
 used internally:
 
@@ -37,7 +38,7 @@ used internally:
 [!export 'src/a.dart' show f;!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function must be public, then make all the types in the function's
 signature public types.

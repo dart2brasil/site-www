@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary braces in a string interpolation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a string interpolation with
+O analisador produz este diagnóstico quando a string interpolation with
 braces is used to interpolate a simple identifier and isn't followed by
 alphanumeric text.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the interpolation
+O código a seguir produz este diagnóstico porque the interpolation
 element `${s}` uses braces when they are not necessary:
 
 ```dart
@@ -37,7 +38,7 @@ String f(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the unnecessary braces:
 

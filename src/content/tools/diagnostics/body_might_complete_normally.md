@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The body might complete normally, causing 'null' to be returned, but the return type, '{0}', is a potentially non-nullable type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function has a
+O analisador produz este diagnóstico quando a method or function has a
 return type that's [potentially non-nullable][] but would implicitly return
 `null` if control reached the end of the function.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the method `m` has an
+O código a seguir produz este diagnóstico porque the method `m` has an
 implicit return of `null` inserted at the end of the method, but the method
 is declared to not return `null`:
 
@@ -29,7 +30,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the method `m` has an
+O código a seguir produz este diagnóstico porque the method `m` has an
 implicit return of `null` inserted at the end of the method, but because
 the class `C` can be instantiated with a non-nullable type argument, the
 method is effectively declared to not return `null`:
@@ -42,7 +43,7 @@ class C<T> {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there's a reasonable value that can be returned, then add a `return`
 statement at the end of the method:

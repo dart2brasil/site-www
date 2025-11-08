@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A class can't extend a nullable type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class declaration uses an
+O analisador produz este diagnóstico quando a class declaration uses an
 `extends` clause to specify a superclass, and the superclass is followed by
 a `?`.
 
@@ -22,9 +23,9 @@ inherited by the class containing the `extends` clause.
 Note, however, that it _is_ valid to use a nullable type as a type argument
 to the superclass, such as `class A extends B<C?> {}`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `A?` is a nullable
+O código a seguir produz este diagnóstico porque `A?` is a nullable
 type, and nullable types can't be used in an `extends` clause:
 
 ```dart
@@ -32,7 +33,7 @@ class A {}
 class B extends [!A?!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the question mark from the type:
 

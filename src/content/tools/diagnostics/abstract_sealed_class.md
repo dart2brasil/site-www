@@ -5,36 +5,37 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A 'sealed' class can't be marked 'abstract' because it's already implicitly abstract._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class is declared using both
+O analisador produz este diagnóstico quando uma classe é declarada usando both
 the modifier `abstract` and the modifier `sealed`. Sealed classes are
 implicitly abstract, so explicitly using both modifiers is not allowed.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `C` is
+O código a seguir produz este diagnóstico porque a classe `C` is
 declared using both `abstract` and `sealed`:
 
 ```dart
 abstract [!sealed!] class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
-If the class should be abstract but not sealed, then remove the `sealed`
-modifier:
+Se a classe deve ser abstrata mas não sealed, remova o modificador `sealed`
+modificador:
 
 ```dart
 abstract class C {}
 ```
 
-If the class should be both abstract and sealed, then remove the
-`abstract` modifier:
+Se a classe deve ser abstrata e sealed, remova o modificador
+`abstract` modificador:
 
 ```dart
 sealed class C {}

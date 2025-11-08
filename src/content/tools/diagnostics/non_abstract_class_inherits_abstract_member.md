@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Missing concrete implementation of '{0}'._
@@ -17,15 +18,15 @@ _Missing concrete implementations of '{0}', '{1}', '{2}', and '{3}'._
 
 _Missing concrete implementations of '{0}', '{1}', and '{2}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a concrete class inherits one or
+O analisador produz este diagnóstico quando a concrete class inherits one or
 more abstract members, and doesn't provide or inherit an implementation for
 at least one of those abstract members.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `B` doesn't
+O código a seguir produz este diagnóstico porque a classe `B` doesn't
 have a concrete implementation of `m`:
 
 ```dart
@@ -36,7 +37,7 @@ abstract class A {
 class [!B!] extends A {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the subclass can provide a concrete implementation for some or all of
 the abstract inherited members, then add the concrete implementations:
