@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: wrong_number_of_parameters_for_setter
-description: >-
-  Details about the wrong_number_of_parameters_for_setter
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico wrong_number_of_parameters_for_setter produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Setters must declare exactly one required positional parameter._
+_Setters devem declarar exatamente um parâmetro posicional obrigatório._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a setter is found that doesn't
-declare exactly one required positional parameter.
+O analisador produz este diagnóstico quando um setter é encontrado que não
+declara exatamente um parâmetro posicional obrigatório.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the setter `s` declares
-two required parameters:
+O código a seguir produz este diagnóstico porque o setter `s` declara
+dois parâmetros obrigatórios:
 
 ```dart
 class C {
@@ -25,8 +24,8 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the setter `s` declares
-one optional parameter:
+O código a seguir produz este diagnóstico porque o setter `s` declara
+um parâmetro opcional:
 
 ```dart
 class C {
@@ -34,10 +33,10 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Change the declaration so that there's exactly one required positional
-parameter:
+Mude a declaração para que haja exatamente um parâmetro posicional
+obrigatório:
 
 ```dart
 class C {

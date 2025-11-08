@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: use_string_buffers
-description: >-
-  Details about the use_string_buffers
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico use_string_buffers produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,18 +17,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a string buffer rather than '+' to compose strings._
+_Use um string buffer em vez de '+' para compor strings._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when values are concatenated to a
-string inside a loop without using a `StringBuffer` to do the
-concatenation.
+O analisador produz este diagnóstico quando valores são concatenados a uma
+string dentro de um loop sem usar um `StringBuffer` para fazer a
+concatenação.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string `result` is
-computed by repeated concatenation within the `for` loop:
+O código a seguir produz este diagnóstico porque a string `result` é
+computada por concatenação repetida dentro do loop `for`:
 
 ```dart
 String f() {
@@ -41,9 +40,9 @@ String f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Use a `StringBuffer` to compute the result:
+Use um `StringBuffer` para computar o resultado:
 
 ```dart
 String f() {

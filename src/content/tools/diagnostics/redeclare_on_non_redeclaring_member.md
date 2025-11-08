@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: redeclare_on_non_redeclaring_member
-description: >-
-  Details about the redeclare_on_non_redeclaring_member
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico redeclare_on_non_redeclaring_member produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The {0} doesn't redeclare a {0} declared in a superinterface._
+_O {0} não redeclara um {0} declarado em uma superinterface._
 
 ## Description
 
-The analyzer produces this diagnostic when a member of an extension type
-is annotated with `@redeclare`, but none of the implemented interfaces
-has a member with the same name.
+O analisador produz este diagnóstico quando um membro de um extension type
+é anotado com `@redeclare`, mas nenhuma das interfaces implementadas
+possui um membro com o mesmo nome.
 
 ## Example
 
-The following code produces this diagnostic because the member `n`
-declared by the extension type `E` is annotated with `@redeclare`, but `C`
-doesn't have a member named `n`:
+O código a seguir produz este diagnóstico porque o membro `n`
+declarado pelo extension type `E` é anotado com `@redeclare`, mas `C`
+não possui um membro chamado `n`:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -36,7 +35,7 @@ extension type E(C c) implements C {
 
 ## Common fixes
 
-If the annotated member has the right name, then remove the annotation:
+Se o membro anotado tem o nome correto, então remova a anotação:
 
 ```dart
 class C {
@@ -48,9 +47,9 @@ extension type E(C c) implements C {
 }
 ```
 
-If the annotated member is suppose to replace a member from the
-implemented interfaces, then change the name of the annotated member to
-match the member being replaced:
+Se o membro anotado deve substituir um membro das
+interfaces implementadas, então altere o nome do membro anotado para
+corresponder ao membro sendo substituído:
 
 ```dart
 import 'package:meta/meta.dart';

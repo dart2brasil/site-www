@@ -1,34 +1,31 @@
 ---
+ia-translate: true
 title: invalid_override
-description: >-
-  Details about the invalid_override
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_override produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._
+_'{0}.{1}' ('{2}') não é um override válido de '{3}.{1}' ('{4}')._
 
-_The setter '{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._
+_O setter '{0}.{1}' ('{2}') não é um override válido de '{3}.{1}' ('{4}')._
 
 ## Description
 
-The analyzer produces this diagnostic when a member of a class is found
-that overrides a member from a supertype and the override isn't valid. An
-override is valid if all of these are true:
-- It allows all of the arguments allowed by the overridden member.
-- It doesn't require any arguments that aren't required by the overridden
-  member.
-- The type of every parameter of the overridden member is assignable to the
-  corresponding parameter of the override.
-- The return type of the override is assignable to the return type of the
-  overridden member.
+O analisador produz este diagnóstico quando um membro de uma classe é
+encontrado que sobrescreve um membro de um supertipo e o override não é
+válido. Um override é válido se todas essas condições são verdadeiras:
+- Permite todos os argumentos permitidos pelo membro sobrescrito.
+- Não requer argumentos que não são requeridos pelo membro sobrescrito.
+- O tipo de cada parâmetro do membro sobrescrito é atribuível ao parâmetro
+  correspondente do override.
+- O tipo de retorno do override é atribuível ao tipo de retorno do membro
+  sobrescrito.
 
 ## Example
 
-The following code produces this diagnostic because the type of the
-parameter `s` (`String`) isn't assignable to the type of the parameter `i`
-(`int`):
+O código a seguir produz este diagnóstico porque o tipo do parâmetro `s`
+(`String`) não é atribuível ao tipo do parâmetro `i` (`int`):
 
 ```dart
 class A {
@@ -42,8 +39,8 @@ class B extends A {
 
 ## Common fixes
 
-If the invalid method is intended to override the method from the
-superclass, then change it to conform:
+Se o método inválido é destinado a sobrescrever o método da superclasse,
+altere-o para estar em conformidade:
 
 ```dart
 class A {
@@ -55,8 +52,7 @@ class B extends A {
 }
 ```
 
-If it isn't intended to override the method from the superclass, then
-rename it:
+Se não é destinado a sobrescrever o método da superclasse, renomeie-o:
 
 ```dart
 class A {

@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: inference_failure_on_function_invocation
-description: >-
-  Details about the inference_failure_on_function_invocation
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico inference_failure_on_function_invocation produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type argument(s) of the function '{0}' can't be inferred._
+_Os argumentos de tipo da função '{0}' não podem ser inferidos._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when:
-- the language option `strict-inference` is enabled in the analysis options file,
-- the invocation of a method or function has no type arguments, and
-- the values for the type arguments can't be inferred.
+O analisador produz este diagnóstico quando:
+- a opção de linguagem `strict-inference` está habilitada no arquivo de opções de análise,
+- a invocação de um método ou função não possui argumentos de tipo, e
+- os valores dos argumentos de tipo não podem ser inferidos.
 
-## Example
+## Exemplo
 
-Given an analysis options file containing the following:
+Dado um arquivo de opções de análise contendo o seguinte:
 
 ```yaml
 analyzer:
@@ -26,8 +25,8 @@ analyzer:
     strict-inference: true
 ```
 
-The following code produces this diagnostic because the invocation of `m`
-has no explicit type arguments, and the arguments can't be inferred:
+O código a seguir produz este diagnóstico porque a invocação de `m`
+não possui argumentos de tipo explícitos e os argumentos não podem ser inferidos:
 
 ```dart
 abstract class C {
@@ -39,9 +38,9 @@ void f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Provide explicit type arguments for the invocation:
+Forneça argumentos de tipo explícitos para a invocação:
 
 ```dart
 abstract class C {

@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: avoid_empty_else
-description: >-
-  Details about the avoid_empty_else
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico avoid_empty_else produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,20 +17,20 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Empty statements are not allowed in an 'else' clause._
+_Declarações vazias não são permitidas em uma cláusula 'else'._
 
 ## Description
 
-The analyzer produces this diagnostic when the statement after an `else`
-is an empty statement (a semicolon).
+O analisador produz este diagnóstico quando a declaração após um `else`
+é uma declaração vazia (um ponto e vírgula).
 
-For more information, see the documentation for
+Para mais informações, veja a documentação para
 [`avoid_empty_else`](https://dart.dev/diagnostics/avoid_empty_else).
 
 ## Example
 
-The following code produces this diagnostic because the statement
-following the `else` is an empty statement:
+O código a seguir produz este diagnóstico porque a declaração
+após o `else` é uma declaração vazia:
 
 ```dart
 void f(int x, int y) {
@@ -44,8 +43,8 @@ void f(int x, int y) {
 
 ## Common fixes
 
-If the statement after the empty statement is intended to be executed only
-when the condition is `false`, then remove the empty statement:
+Se a declaração após a declaração vazia deve ser executada apenas
+quando a condição é `false`, então remova a declaração vazia:
 
 ```dart
 void f(int x, int y) {
@@ -56,8 +55,8 @@ void f(int x, int y) {
 }
 ```
 
-If there is no code that is intended to be executed only when the
-condition is `false`, then remove the whole `else` clause:
+Se não há código que deve ser executado apenas quando a
+condição é `false`, então remova toda a cláusula `else`:
 
 ```dart
 void f(int x, int y) {

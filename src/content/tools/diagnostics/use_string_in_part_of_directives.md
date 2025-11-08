@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: use_string_in_part_of_directives
-description: >-
-  Details about the use_string_in_part_of_directives
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico use_string_in_part_of_directives produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,16 +17,16 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The part-of directive uses a library name._
+_A diretiva part-of usa um nome de biblioteca._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `part of` directive uses a
-library name to refer to the library that the part is a part of.
+O analisador produz este diagnóstico quando uma diretiva `part of` usa um
+nome de biblioteca para se referir à biblioteca da qual a parte faz parte.
 
-## Example
+## Exemplo
 
-Given a file named `lib.dart` that contains the following:
+Dado um arquivo chamado `lib.dart` que contém o seguinte:
 
 ```dart
 library lib;
@@ -35,17 +34,17 @@ library lib;
 part 'test.dart';
 ```
 
-The following code produces this diagnostic because the `part of`
-directive uses the name of the library rather than the URI of the library
-it's part of:
+O código a seguir produz este diagnóstico porque a diretiva `part of`
+usa o nome da biblioteca em vez do URI da biblioteca
+da qual faz parte:
 
 ```dart
 [!part of lib;!]
 ```
 
-## Common fixes
+## Correções comuns
 
-Use a URI to reference the library:
+Use um URI para referenciar a biblioteca:
 
 ```dart
 part of 'lib.dart';

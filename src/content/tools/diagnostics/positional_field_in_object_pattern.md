@@ -1,26 +1,25 @@
 ---
+ia-translate: true
 title: positional_field_in_object_pattern
-description: >-
-  Details about the positional_field_in_object_pattern
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico positional_field_in_object_pattern produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Object patterns can only use named fields._
+_Object patterns só podem usar campos nomeados._
 
 ## Description
 
-The analyzer produces this diagnostic when an object pattern contains a
-field without specifying the getter name. Object pattern fields match
-against values that the object's getters return. Without a getter name
-specified, the pattern field can't access a value to attempt to match against.
+O analisador produz este diagnóstico quando um object pattern contém um
+campo sem especificar o nome do getter. Campos de object pattern correspondem
+a valores que os getters do objeto retornam. Sem um nome de getter
+especificado, o campo do pattern não pode acessar um valor para tentar corresponder.
 
 ## Example
 
-The following code produces this diagnostic because the object pattern
-`String(1)` doesn't specify which getter of `String` to access and compare
-with the value `1`:
+O código a seguir produz este diagnóstico porque o object pattern
+`String(1)` não especifica qual getter de `String` acessar e comparar
+com o valor `1`:
 
 ```dart
 void f(Object o) {
@@ -30,8 +29,8 @@ void f(Object o) {
 
 ## Common fixes
 
-Add the getter name to access the value, followed
-by a colon before the pattern to match against:
+Adicione o nome do getter para acessar o valor, seguido
+de dois-pontos antes do pattern a corresponder:
 
 ```dart
 void f(Object o) {

@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: instance_member_access_from_static
-description: >-
-  Details about the instance_member_access_from_static
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico instance_member_access_from_static produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Instance members can't be accessed from a static method._
+_Membros de instância não podem ser acessados de um método static._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a static method contains an
-unqualified reference to an instance member.
+O analisador produz este diagnóstico quando um método static contém uma
+referência não qualificada a um membro de instância.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the instance field `x`
-is being referenced in a static method:
+O código a seguir produz este diagnóstico porque o campo de instância `x`
+está sendo referenciado em um método static:
 
 ```dart
 class C {
@@ -29,10 +28,10 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the method must reference the instance member, then it can't be static,
-so remove the keyword:
+Se o método deve referenciar o membro de instância, então ele não pode ser static,
+então remova a keyword:
 
 ```dart
 class C {
@@ -44,8 +43,8 @@ class C {
 }
 ```
 
-If the method can't be made an instance method, then add a parameter so
-that an instance of the class can be passed in:
+Se o método não puder ser tornado um método de instância, então adicione um parâmetro para
+que uma instância da classe possa ser passada:
 
 ```dart
 class C {

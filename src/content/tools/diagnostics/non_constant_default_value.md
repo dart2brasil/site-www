@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: non_constant_default_value
-description: >-
-  Details about the non_constant_default_value
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico non_constant_default_value produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,13 +10,13 @@ _The default value of an optional parameter must be constant._
 
 ## Description
 
-The analyzer produces this diagnostic when an optional parameter, either
-named or positional, has a default value that isn't a compile-time
-constant.
+O analisador produz este diagnóstico quando um parâmetro opcional, seja
+nomeado ou posicional, possui um valor default que não é uma constante
+em tempo de compilação.
 
 ## Example
 
-The following code produces this diagnostic:
+O código a seguir produz este diagnóstico:
 
 ```dart
 var defaultValue = 3;
@@ -27,7 +26,7 @@ void f([int value = [!defaultValue!]]) {}
 
 ## Common fixes
 
-If the default value can be converted to be a constant, then convert it:
+Se o valor default pode ser convertido para uma constante, então converta-o:
 
 ```dart
 const defaultValue = 3;
@@ -35,8 +34,8 @@ const defaultValue = 3;
 void f([int value = defaultValue]) {}
 ```
 
-If the default value needs to change over time, then apply the default
-value inside the function:
+Se o valor default precisa mudar ao longo do tempo, então aplique o valor
+default dentro da função:
 
 ```dart
 var defaultValue = 3;

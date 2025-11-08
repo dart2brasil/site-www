@@ -1,10 +1,9 @@
 ---
 title: library_private_types_in_public_api
-description: >-
-  Details about the library_private_types_in_public_api
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico library_private_types_in_public_api produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -18,20 +17,20 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Invalid use of a private type in a public API._
+_Uso inválido de um tipo privado em uma API pública._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type that is not part of the
-public API of a library is referenced in the public API of that library.
+O analisador produz este diagnóstico quando um tipo que não faz parte da
+API pública de uma library é referenciado na API pública dessa library.
 
-Using a private type in a public API can make the API unusable outside the
-defining library.
+Usar um tipo privado em uma API pública pode tornar a API inutilizável fora da
+library onde foi definida.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameter `c` of
-the public function `f` has a type that is library private (`_C`):
+O código a seguir produz este diagnóstico porque o parâmetro `c` da
+função pública `f` tem um tipo que é privado da library (`_C`):
 
 ```dart
 void f([!_C!] c) {}
@@ -39,10 +38,10 @@ void f([!_C!] c) {}
 class _C {}
 ```
 
-## Common fixes
+## Correções comuns
 
-If the API doesn't need to be used outside the defining library, then make
-it private:
+Se a API não precisa ser usada fora da library onde foi definida, então torne-a
+privada:
 
 ```dart
 void _f(_C c) {}
@@ -50,8 +49,8 @@ void _f(_C c) {}
 class _C {}
 ```
 
-If the API needs to be part of the public API of the library, then either
-use a different type that's public, or make the referenced type public:
+Se a API precisa fazer parte da API pública da library, então use
+um tipo diferente que seja público, ou torne o tipo referenciado público:
 
 ```dart
 void f(C c) {}

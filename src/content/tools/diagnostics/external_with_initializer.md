@@ -1,26 +1,25 @@
 ---
+ia-translate: true
 title: external_with_initializer
-description: >-
-  Details about the external_with_initializer
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico external_with_initializer produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_External fields can't have initializers._
+_Campos external não podem ter inicializadores._
 
-_External variables can't have initializers._
+_Variáveis external não podem ter inicializadores._
 
 ## Description
 
-The analyzer produces this diagnostic when a field or variable marked with
-the keyword `external` has an initializer, or when an external field is
-initialized in a constructor.
+O analisador produz este diagnóstico quando um campo ou variável marcado com
+a keyword `external` tem um inicializador, ou quando um campo external é
+inicializado em um construtor.
 
 ## Examples
 
-The following code produces this diagnostic because the external field `x`
-is assigned a value in an initializer:
+O código a seguir produz este diagnóstico porque o campo external `x`
+é atribuído um valor em um inicializador:
 
 ```dart
 class C {
@@ -29,8 +28,8 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the external field `x`
-has an initializer:
+O código a seguir produz este diagnóstico porque o campo external `x`
+tem um inicializador:
 
 ```dart
 class C {
@@ -38,8 +37,8 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the external top level
-variable `x` has an initializer:
+O código a seguir produz este diagnóstico porque a variável external de nível superior
+`x` tem um inicializador:
 
 ```dart
 external final int [!x!] = 0;
@@ -47,7 +46,7 @@ external final int [!x!] = 0;
 
 ## Common fixes
 
-Remove the initializer:
+Remova o inicializador:
 
 ```dart
 class C {

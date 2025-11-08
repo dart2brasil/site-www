@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_adjacent_string_concatenation
-description: >-
-  Details about the prefer_adjacent_string_concatenation
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_adjacent_string_concatenation produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_String literals shouldn't be concatenated by the '+' operator._
+_Literais de string não devem ser concatenados pelo operador '+'._
 
 ## Description
 
-The analyzer produces this diagnostic when the `+` operator is used to
-concatenate two string literals.
+O analisador produz este diagnóstico quando o operador `+` é usado para
+concatenar dois literais de string.
 
 ## Example
 
-The following code produces this diagnostic because two string literals
-are being concatenated by using the `+` operator:
+O código a seguir produz este diagnóstico porque dois literais de string
+estão sendo concatenados usando o operador `+`:
 
 ```dart
 var s = 'a' [!+!] 'b';
@@ -36,7 +35,7 @@ var s = 'a' [!+!] 'b';
 
 ## Common fixes
 
-Remove the operator:
+Remova o operador:
 
 ```dart
 var s = 'a' 'b';

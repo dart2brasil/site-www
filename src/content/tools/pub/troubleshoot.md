@@ -1,33 +1,34 @@
 ---
-title: Troubleshooting pub
-description: Common gotchas you might run into when using pub.
+ia-translate: true
+title: "Solução de problemas do pub"
+description: "Problemas comuns que você pode encontrar ao usar o pub."
 ---
 
-## Getting a "403" error when publishing a package {:#pub-publish-403}
+## Recebendo um erro "403" ao publicar um pacote {:#pub-publish-403}
 
-You receive the following error when running `pub publish`:
+Você recebe o seguinte erro ao executar `pub publish`:
 
 ```plaintext
-HTTP error 403: Forbidden
+Erro HTTP 403: Proibido
 ...
-You aren't an uploader for package '<foo>'
+Você não é um uploader (responsável pelo envio) para o pacote '<foo>'
 ```
 
-This problem can occur if one of your accounts was granted permission to
-publish a package, but the pub client registers you with another account.
+Esse problema pode ocorrer se uma de suas contas recebeu permissão para
+publicar um pacote, mas o cliente pub registra você com outra conta.
 
-You can reset pub's authentication process
-by deleting the pub credentials file:
+Você pode redefinir o processo de autenticação do pub
+excluindo o arquivo de credenciais do pub:
 
 #### Linux {:#pub-credentials-linux}
 
-If `$XDG_CONFIG_HOME` is defined:
+Se `$XDG_CONFIG_HOME` estiver definido:
 
 ```console
 $ rm $XDG_CONFIG_HOME/dart/pub-credentials.json
 ```
 
-Otherwise:
+Caso contrário:
 
 ```console
 $ rm $HOME/.config/dart/pub-credentials.json
@@ -41,162 +42,162 @@ $ rm $HOME/Library/Application Support/dart/pub-credentials.json
 
 #### Windows {:#pub-credentials-windows}
 
-If you're using Command Prompt:
+Se você estiver usando o Prompt de Comando:
 
 ```cmd
 $ del "%APPDATA%\dart\pub-credentials.json"
 ```
 
-If you're using PowerShell:
+Se você estiver usando o PowerShell:
 
 ```ps
 $ Remove-Item -Path "%APPDATA%\dart\pub-credentials.json"
 ```
 
 :::version-note
-In Dart 2.14 or earlier,
-you should instead delete the `credentials.json` file
-found in the [`PUB_CACHE`][] folder.
+No Dart 2.14 ou anterior,
+você deve, em vez disso, excluir o arquivo `credentials.json`
+encontrado na pasta [`PUB_CACHE`][].
 :::
 
 [`PUB_CACHE`]: /tools/pub/environment-variables
 
-## Getting an "UnauthorizedAccess" error when publishing a package {:#pub-publish-unauthorized}
+## Recebendo um erro "UnauthorizedAccess" ao publicar um pacote {:#pub-publish-unauthorized}
 
-You receive the following error when running `pub publish`:
-
-```plaintext
-UnauthorizedAccess: Unauthorized user: <username> is not allowed to upload versions to package '<foo>'.
-```
-
-You will see this message if you are not on the list of people
-authorized to publish new versions of a package.
-See [Uploaders](/tools/pub/publishing#uploaders).
-
-## Pub build fails with HttpException error {:#pub-get-fails}
-
-You receive an HttpException error similar to the following when
-running `pub build`:
+Você recebe o seguinte erro ao executar `pub publish`:
 
 ```plaintext
-Pub build failed, [1] IsolateSpawnException: 'HttpException: Connection closed while receiving data,
+UnauthorizedAccess: Usuário não autorizado: <nome de usuário> não tem permissão para enviar versões para o pacote '<foo>'.
+```
+
+Você verá esta mensagem se não estiver na lista de pessoas
+autorizadas a publicar novas versões de um pacote.
+Veja [Uploaders](/tools/pub/publishing#uploaders) (Responsáveis pelo envio).
+
+## O Pub build falha com erro HttpException {:#pub-get-fails}
+
+Você recebe um erro HttpException semelhante ao seguinte ao
+executar `pub build`:
+
+```plaintext
+Pub build falhou, [1] IsolateSpawnException: 'HttpException: Conexão fechada ao receber dados,
 ...
-library handler failed
+manipulador da biblioteca falhou
 ...
 ```
 
-This can happen as a result of some antivirus software, such as the
-AVG 2013 Internet security suite. Check the manual for your security
-suite to see how to temporarily
-disable this feature. For example, see
-[How to Disable AVG Components](https://support.avg.com/SupportArticleView?urlName=How-to-disable-AVG).
+Isso pode acontecer como resultado de algum software antivírus, como o
+AVG 2013 Internet security suite. Consulte o manual do seu pacote de segurança
+para ver como desabilitar temporariamente
+esse recurso. Por exemplo, veja
+[How to Disable AVG Components](https://support.avg.com/SupportArticleView?urlName=How-to-disable-AVG) (Como desabilitar componentes AVG).
 
-## Pub get fails from behind a corporate firewall
+## Pub get falha por trás de um firewall corporativo {:#pub-get-fails-from-behind-a-corporate-firewall}
 
-From the command line, pub honors the `http_proxy` and `https_proxy`
-environment variables.
-You can set the proxy server environment variable as follows.
+Na linha de comando, o pub respeita as variáveis de ambiente `http_proxy` e `https_proxy`.
+Você pode definir a variável de ambiente do servidor
+proxy da seguinte forma.
 
-On Linux/macOS:
+No Linux/macOS:
 
 ```console
 $ export https_proxy=hostname:port
 ```
 
-On Windows Command Prompt:
+No Prompt de Comando do Windows:
 
 ```cmd
 $ set https_proxy=hostname:port
 ```
 
-On Windows PowerShell:
+No Windows PowerShell:
 
 ```ps
 $ $Env:https_proxy="hostname:port"
 ```
 
-If the proxy requires credentials, you can set them as follows.
+Se o proxy exigir credenciais, você pode defini-las da seguinte forma.
 
-On Linux/macOS:
+No Linux/macOS:
 
 ```console
 $ export https_proxy=username:password@hostname:port
 ```
 
-On Windows Command Prompt:
+No Prompt de Comando do Windows:
 
 ```cmd
 $ set https_proxy=username:password@hostname:port
 ```
 
-On Windows PowerShell:
+No Windows PowerShell:
 
 ```ps
 $ $Env:https_proxy="username:password@hostname:port"
 ```
 
-## Localhost unreachable after sign-in
+## Localhost inacessível após o login {:#localhost-unreachable-after-sign-in}
 
-When you run `dart pub publish` in a container or over an SSH session,
-the `localhost` that `dart pub` is listening to might be different from
-the `localhost` that's accessible in your browser.
-Although you can sign in using the browser,
-the browser then complains that `http://localhost:<port>?code=...`
-is not reachable.
+Quando você executa `dart pub publish` em um container (recipiente) ou por meio de uma sessão SSH,
+o `localhost` que o `dart pub` está monitorando pode ser diferente do
+`localhost` que está acessível em seu navegador.
+Embora você possa fazer login usando o navegador,
+o navegador reclama que `http://localhost:<port>?code=...`
+não está acessível.
 
-Try this workaround, which uses the command line to complete sign-in:
+Tente esta solução alternativa, que usa a linha de comando para concluir o login:
 
-1. In a terminal window, run `dart pub publish`.
-2. In the browser window that comes up, sign in. <br>
-   The browser is redirected to a _new localhost URL_
+1. Em uma janela de terminal, execute `dart pub publish`.
+2. Na janela do navegador que aparece, faça login. <br>
+   O navegador é redirecionado para um _nova URL localhost_
    (`http://localhost:<port>?code=...`)
-   but complains that the URL isn't reachable.
-3. Copy the _new localhost URL_  from the browser.
-4. In another terminal window in the same container or on the same host
-   as the one where `dart pub publish` was called, use the `curl` command to
-   complete sign-in using the _new localhost URL_:
+   mas reclama que a URL não está acessível.
+3. Copie a _nova URL localhost_ do navegador.
+4. Em outra janela de terminal no mesmo container ou no mesmo host
+   onde `dart pub publish` foi chamado, use o comando `curl` para
+   concluir o login usando a _nova URL localhost_:
 
    ```console
    $ curl 'http://localhost:<port>?code=...'
    ```
 
-## Getting a socket error trying to find a package {:#pub-get-socket-error}
+## Recebendo um erro de socket ao tentar encontrar um pacote {:#pub-get-socket-error}
 
-The following error might occur if
-you have no internet access, your ISP is blocking `pub.dev`,
-or security software is blocking internet access from `dart`.
+O seguinte erro pode ocorrer se
+você não tiver acesso à internet, seu ISP (provedor de serviços de internet) estiver bloqueando o `pub.dev`,
+ou um software de segurança estiver bloqueando o acesso à internet do `dart`.
 
 ```plaintext
-Got socket error trying to find package ... at https://pub.dev.
-pub get failed (server unavailable) -- attempting retry 1 in 1 second...
+Obteve erro de socket ao tentar encontrar o pacote ... em https://pub.dev.
+pub get falhou (servidor indisponível) -- tentando novamente 1 em 1 segundo...
 ```
 
-Check your internet connection, and
-verify that you don't have a firewall or other security software
-that blocks internet access from `dart`.
+Verifique sua conexão com a internet e
+verifique se você não tem um firewall ou outro software de segurança
+que bloqueie o acesso à internet do `dart`.
 
 <details>
  <summary>
-   <b>Detailed instructions for Kaspersky Internet Security</b>
+   <b>Instruções detalhadas para Kaspersky Internet Security</b>
   </summary>
 
-   When you have turned off _Kaspersky Internet Security_ protection
-   from the menu bar,
-   the VPN application filter `sysextctrld`
-   still runs in the background.
-   This filter causes a failure to connect to `pub.dev`.
-   To resolve this issue, 
-   add both `https://pub.dev` and `https://pub.dartlang.org`
-   to the trusted zone:
+   Quando você desativa a proteção _Kaspersky Internet Security_
+   na barra de menus,
+   o filtro de aplicativo VPN `sysextctrld`
+   ainda é executado em segundo plano.
+   Este filtro causa uma falha na conexão com `pub.dev`.
+   Para resolver este problema,
+   adicione `https://pub.dev` e `https://pub.dartlang.org`
+   à zona confiável:
 
-   1. Open Kaspersky Internet Security.
-   2. Click the **Privacy** icon.
-   3. Under the **Block website tracking** section, click the **Preferences** button.
-   4. In the top icon bar, select **Threats**.
-   5. Under **Threats**, click **Trusted Zone**.
-   6. Select the **Trusted web addresses** tab.
-   7. Click the **+** button, and add the URL `https://pub.dev`.
-   8. Click **OK**.
-   9. Repeat the previous two steps for `https://pub.dartlang.org`
+   1. Abra o Kaspersky Internet Security.
+   2. Clique no ícone **Privacidade**.
+   3. Na seção **Bloquear rastreamento de sites**, clique no botão **Preferências**.
+   4. Na barra de ícones superior, selecione **Ameaças**.
+   5. Em **Ameaças**, clique em **Zona confiável**.
+   6. Selecione a guia **Endereços da web confiáveis**.
+   7. Clique no botão **+** e adicione a URL `https://pub.dev`.
+   8. Clique em **OK**.
+   9. Repita as duas etapas anteriores para `https://pub.dartlang.org`
 
 </details>

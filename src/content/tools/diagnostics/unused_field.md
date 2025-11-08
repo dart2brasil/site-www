@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: unused_field
-description: >-
-  Details about the unused_field
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unused_field produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The value of the field '{0}' isn't used._
+_O valor do campo '{0}' não é usado._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a private field is declared but
-never read, even if it's written in one or more places.
+O analisador produz este diagnóstico quando um campo privado é declarado mas
+nunca lido, mesmo que seja escrito em um ou mais lugares.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field
-`_originalValue` isn't read anywhere in the library:
+O código a seguir produz este diagnóstico porque o campo
+`_originalValue` não é lido em nenhum lugar da biblioteca:
 
 ```dart
 class C {
@@ -30,12 +29,12 @@ class C {
 }
 ```
 
-It might appear that the field `_originalValue` is being read in the
-initializer (`_currentValue = _originalValue`), but that is actually a
-reference to the parameter of the same name, not a reference to the field.
+Pode parecer que o campo `_originalValue` está sendo lido no
+inicializador (`_currentValue = _originalValue`), mas isso é na verdade uma
+referência ao parâmetro de mesmo nome, não uma referência ao campo.
 
-## Common fixes
+## Correções comuns
 
-If the field isn't needed, then remove it.
+Se o campo não é necessário, então remova-o.
 
-If the field was intended to be used, then add the missing code.
+Se o campo era para ser usado, então adicione o código faltante.

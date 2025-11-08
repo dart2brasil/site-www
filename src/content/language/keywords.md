@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Keywords
 description: Keywords in Dart.
 showToc: false
@@ -8,12 +9,12 @@ showToc: false
 {% assign bii = '&nbsp;<sup>2</sup>' %}
 {% assign unr = '&nbsp;<sup>3</sup>' %}
 
-The following table lists the words
-that the Dart language reserves for its own use.
-These words can't be used as identifiers unless otherwise noted.
-Even when allowed, using keywords as identifiers can confuse other
-developers reading your code and should be avoided.
-To learn more about identifier usage, click on the term.
+A tabela a seguir lista as palavras que a linguagem Dart reserva para seu
+próprio uso. Essas palavras não podem ser usadas como identificadores, a menos
+que seja indicado o contrário. Mesmo quando permitido,
+usar palavras-chave como identificadores pode confundir
+outros desenvolvedores que leem seu código e deve ser
+evitado. Para saber mais sobre o uso de identificadores, clique no termo.
 
 <table class="table table-striped">
 
@@ -27,12 +28,12 @@ To learn more about identifier usage, click on the term.
 {% endtablerow %}
 </table>
 
-{{ckw}} This keyword can be used as an identifier
-        depending on **context**.
+{{ckw}} Esta palavra-chave pode ser usada como um identificador
+        dependendo do **contexto**.
 
-{{bii}} This keyword can't be used as the name of a type
-        (a class, a mixin, an enum, an extension type, or a type alias),
-        the name of an extension, or as an import prefix.
-        It can be used as an identifier in all other circumstances.
+{{bii}} Esta palavra-chave não pode ser usada como o nome de um tipo
+        (uma classe, um mixin, um enum, um tipo de extensão ou um alias de tipo),
+        o nome de uma extensão, ou como um prefixo de importação.
+        Ela pode ser usada como um identificador em todas as outras circunstâncias.
 
-{{unr}} This keyword can be used as an identifier without restriction.
+{{unr}} Esta palavra-chave pode ser usada como um identificador sem restrição.

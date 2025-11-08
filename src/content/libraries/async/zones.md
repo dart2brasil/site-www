@@ -1,8 +1,7 @@
 ---
-title: Zones
-description: >-
-  Manage your asynchronous code: handle uncaught errors, 
-  override behavior (such as printing and scheduling tasks), and more.
+ia-translate: true
+title: Zonas
+description: "Gerencie seu código assíncrono: lide com erros não capturados, substitua o comportamento (como impressão e agendamento de tarefas) e muito mais."
 date: 2014-03-03
 obsolete: true
 ---
@@ -21,259 +20,259 @@ obsolete: true
 }
 </style>
 
-## Asynchronous dynamic extents
+## Extensões Dinâmicas Assíncronas {:#asynchronous-dynamic-extents}
 
-This article discusses zone-related APIs in the [dart:async][] library,
-with a focus on the top-level [`runZoned()`][]
-and [`runZonedGuarded()`][] functions.
-Review the techniques covered in
-[Futures and Error Handling](/libraries/async/futures-error-handling)
-before reading this article.
+Este artigo discute APIs relacionadas a zonas na biblioteca [dart:async][],
+com foco nas funções de nível superior [`runZoned()`][]
+e [`runZonedGuarded()`][].
+Revise as técnicas abordadas em
+[Futures e Tratamento de Erros](/libraries/async/futures-error-handling)
+antes de ler este artigo.
 
 [dart:async]: ({{site.dart-api}}/dart-async/dart-async-library.html)
 [`runZoned()`]: ({{site.dart-api}}/dart-async/runZoned.html)
 [`runZonedGuarded()`]: ({{site.dart-api}}/dart-async/runZonedGuarded.html)
 
-Zones make the following tasks possible:
+Zonas tornam as seguintes tarefas possíveis:
 
-* **Protecting your app from exiting due to
-  an uncaught exception**.
-  For example,
-  a simple HTTP server
-  might use the following asynchronous code:
+*   **Proteger seu aplicativo de sair devido a
+    uma exceção não capturada**.
+    Por exemplo,
+    um servidor HTTP simples
+    pode usar o seguinte código assíncrono:
 
-  ```dart
-  [!runZonedGuarded(() {!]
-    HttpServer.bind('0.0.0.0', port).then((server) {
-      server.listen(staticFiles.serveRequest);
-    });
-  [!},!]
-  [!(error, stackTrace) => print('Oh noes! $error $stackTrace'));!]
-  ```
-  
-  Running the HTTP server in a zone
-  enables the app to continue running despite uncaught (but non-fatal)
-  errors in the server's asynchronous code.
+    ```dart
+    [!runZonedGuarded(() {!]
+      HttpServer.bind('0.0.0.0', port).then((server) {
+        server.listen(staticFiles.serveRequest);
+      });
+    [!},!]
+    [!(error, stackTrace) => print('Oh não! $error $stackTrace'));!]
+    ```
 
-* **Associating data**—known as
-  <em>zone-local values</em>—**with individual zones**.
+    Executar o servidor HTTP em uma zona
+    permite que o aplicativo continue em execução apesar de erros
+    não capturados (mas não fatais)
+    no código assíncrono do servidor.
 
-* **Overriding a limited set of methods**,
-  such as `print()` and `scheduleMicrotask()`,
-  within part or all of the code.
+*   **Associar dados**—conhecidos como
+    *valores locais de zona*—**com zonas individuais**.
 
-* **Performing an operation each time that
-  code enters or exits a zone**.
-  Such operations could include
-  starting or stopping a timer,
-  or saving a stack trace.
+*   **Substituir um conjunto limitado de métodos**,
+    como `print()` e `scheduleMicrotask()`,
+    dentro de parte ou todo o código.
 
-You might have encountered something similar to zones in other languages.
-_Domains_ in Node.js were an inspiration for Dart's zones.
-Java's _thread-local storage_
-also has some similarities.
-Closest of all is Brian Ford's JavaScript port of Dart zones,
-[zone.js](https://github.com/btford/zone.js/), which he describes in
-[this video]({{site.yt.watch}}?v=3IqtmUscE_U).
+*   **Executar uma operação cada vez que
+    o código entra ou sai de uma zona**.
+    Tais operações podem incluir
+    iniciar ou parar um temporizador,
+    ou salvar um stack trace (rastreamento de pilha).
 
+Você pode ter encontrado algo semelhante a zonas em outras linguagens.
+_Domains_ (domínios) em Node.js foram uma inspiração para as zonas do Dart.
+O _armazenamento local de threads_ do Java
+também tem algumas semelhanças.
+O mais próximo de todos é o port JavaScript de zonas Dart de Brian Ford,
+[zone.js](https://github.com/btford/zone.js/), que ele descreve neste
+[vídeo]({{site.yt.watch}}?v=3IqtmUscE_U).
 
-## Zone basics
+## Noções básicas de zona {:#zone-basics}
 
-A _zone_ represents the asynchronous dynamic extent of a call.
-It is the computation that is performed as part of a call and, transitively,
-the asynchronous callbacks that have been registered by that code.
+Uma _zona_ representa a extensão dinâmica assíncrona de uma chamada.
+É a computação que é realizada como parte de uma chamada e, transitivamente,
+os callbacks assíncronos que foram registrados por esse código.
 
-For example,
-in the HTTP server example,
-`bind()`, `then()`, and the callback of `then()`
-all execute in the same zone—the zone
-that was created using `runZoned()`.
+Por exemplo,
+no exemplo do servidor HTTP,
+`bind()`, `then()` e o callback de `then()`
+executam todos na mesma zona—a zona
+que foi criada usando `runZoned()`.
 
-In the next example,
-the code executes in 3 different zones:
-<span class="zone1">zone #1</span> (the root zone),
-<span class="zone2">zone #2</span>, and
-<span class="zone3">zone #3</span>.
+No próximo exemplo,
+o código é executado em 3 zonas diferentes:
+<span class="zone1">zona #1</span> (a zona raiz),
+<span class="zone2">zona #2</span> e
+<span class="zone3">zona #3</span>.
 
 <!-- ex1.dart -->
-<!-- Using pre instead of prettify so we can use background colors -->
+<!-- Usando pre em vez de prettify para que possamos usar cores de fundo -->
 <pre>
 import 'dart:async';
 
 <span class="zone1">main() {
   foo();
   var future;
-  runZoned(() {</span>          // Starts a new child zone (zone #2).
+  runZoned(() {</span>          // Inicia uma nova zona filha (zona #2).
 <span class="zone2">    future = new Future(bar).then(baz);
   </span><span class="zone1">});
   future.then(qux);
 }</span>
 
-foo() => <em><span class="zone1">...foo</span><span class="zone3">-body...</span></em>  // Executed twice (once each in two zones).
+foo() => <em><span class="zone1">...foo</span><span class="zone3">-body...</span></em>  // Executado duas vezes (uma vez em cada zona).
 bar() => <em><span class="zone2">...bar-body...</span></em>
-baz(x) => <span class="zone2">runZoned(() =></span> <span class="zone3">foo()</span><span class="zone2">);</span> // New child zone (zone #3).
+baz(x) => <span class="zone2">runZoned(() =></span> <span class="zone3">foo()</span><span class="zone2">);</span> // Nova zona filha (zona #3).
 qux(x) => <em><span class="zone1">...qux-body...</span></em>
 </pre>
 
-The following figure shows the code's execution order,
-as well as which zone the code executes in.
+A figura a seguir mostra a ordem de execução do código,
+bem como em qual zona o código é executado.
 
-![illustration of program execution](/assets/img/articles/zones/trace.png)
+![ilustração da execução do programa](/assets/img/articles/zones/trace.png)
 
-Each call to `runZoned()` creates a new zone
-and executes code in that zone.
-When that code schedules a task—such
-as calling baz()—that
-task executes in the zone where it was scheduled.
-For example, the call to qux() (last line of main())
-runs in
-<span class="zone1">zone #1</span> (the root zone)
-even though it's attached to a future that itself runs in
-<span class="zone2">zone #2</span>.
+Cada chamada para `runZoned()` cria uma nova zona
+e executa o código nessa zona.
+Quando esse código agenda uma tarefa—como
+chamar baz()—essa
+tarefa é executada na zona onde foi agendada.
+Por exemplo, a chamada para qux() (última linha de main())
+é executada em
+<span class="zone1">zona #1</span> (a zona raiz)
+mesmo que esteja anexada a um future que é executado em
+<span class="zone2">zona #2</span>.
 
-Child zones don't completely replace their parent zone.
-Instead new zones are nested inside their surrounding zone.
-For example,
-<span class="zone2">zone #2</span> contains
-<span class="zone3">zone #3</span>, and
-<span class="zone1">zone #1</span> (the root zone)
-contains both
-<span class="zone2">zone #2</span> and
-<span class="zone3">zone #3</span>.
+Zonas filhas não substituem completamente sua zona pai.
+Em vez disso, novas zonas são aninhadas dentro de sua zona circundante.
+Por exemplo,
+<span class="zone2">zona #2</span> contém
+<span class="zone3">zona #3</span>, e
+<span class="zone1">zona #1</span> (a zona raiz)
+contém ambos
+<span class="zone2">zona #2</span> e
+<span class="zone3">zona #3</span>.
 
-All Dart code executes in the root zone.
-Code might execute in other nested child zones as well,
-but at a minimum it always runs in the root zone.
+Todo o código Dart é executado na zona raiz.
+O código também pode ser executado em outras zonas filhas aninhadas,
+mas, no mínimo, sempre é executado na zona raiz.
 
 
-## Handling uncaught errors
+## Lidando com erros não capturados {:#handling-uncaught-errors}
 
-Zones are able to catch and handle uncaught errors.
+Zonas são capazes de capturar e lidar com erros não capturados.
 
-_Uncaught errors_ often occur because of code using `throw`
-to raise an exception without an accompanying `catch`
-statement to handle it.
-Uncaught errors can also arise in `async` functions
-when a Future completes with an error result,
-but is missing a corresponding `await` to handle the error.
+_Erros não capturados_ geralmente ocorrem devido ao código usar `throw`
+para lançar uma exceção sem uma instrução `catch` acompanhante
+para tratá-la.
+Erros não capturados também podem surgir em funções `async`
+quando um Future é concluído com um resultado de erro,
+mas está faltando um `await` correspondente para lidar com o erro.
 
-An uncaught error reports to the current zone that failed to catch it.
-By default, zones will crash the program in response to uncaught errors.
-You can install your own custom _uncaught error handler_ to a new zone
-to intercept and handle uncaught errors however you prefer.
+Um erro não capturado é reportado para a zona atual que não conseguiu capturá-lo.
+Por padrão, as zonas irão travar o programa em resposta a erros não capturados.
+Você pode instalar seu próprio _tratador de erros não capturados_ personalizado em uma nova zona
+para interceptar e lidar com erros não capturados da maneira que preferir.
 
-To introduce a new zone with an uncaught error handler,
-use the `runZoneGuarded` method. Its `onError` callback becomes the
-uncaught error handler of a new zone. This callback handles any
-synchronous errors that the call throws.
+Para introduzir uma nova zona com um tratador de erros não capturados,
+use o método `runZoneGuarded`. Seu callback `onError` se torna o
+tratador de erros não capturados de uma nova zona. Este callback lida com quaisquer
+erros síncronos que a chamada lança.
 
 <!-- run_zoned1.dart -->
 ```dart
 runZonedGuarded(() {
-  Timer.run(() { throw 'Would normally kill the program'; });
+  Timer.run(() { throw 'Normalmente mataria o programa'; });
 }, (error, stackTrace) {
-  print('Uncaught error: $error');
+  print('Erro não capturado: $error');
 });
 ```
 
-_Other zone APIs that facilitate uncaught error handling include
+_Outras APIs de zona que facilitam o tratamento de erros não capturados incluem
 [`Zone.fork`][], [`Zone.runGuarded`][]
-and [`ZoneSpecification.uncaughtErrorHandler`][]._
+e [`ZoneSpecification.uncaughtErrorHandler`][]._
 
 [`Zone.fork`]:  {{site.dart-api}}/dart-async/Zone/fork.html
 [`Zone.runGuarded`]:  {{site.dart-api}}/dart-async/Zone/runGuarded.html
 [`ZoneSpecification.uncaughtErrorHandler`]:  {{site.dart-api}}/dart-async/ZoneSpecification/handleUncaughtError.html
 
-The preceding code has an asynchronous callback
-(through `Timer.run()`) that throws an exception.
-Normally this exception would be an unhandled error and reach the top level
-(which, in the standalone Dart executable, would kill the running process).
-However, with the zoned error handler,
-the error is passed to the error handler and doesn't shut down the program.
+O código anterior tem um callback assíncrono
+(através de `Timer.run()`) que lança uma exceção.
+Normalmente, essa exceção seria um erro não tratado e atingiria o nível superior
+(o que, no executável Dart independente, mataria o processo em execução).
+No entanto, com o tratador de erros em zonas,
+o erro é passado para o tratador de erros e não desliga o programa.
 
-One notable difference between try-catch and zoned error handlers is
-that zones continue to execute after uncaught errors occur.
-If other asynchronous callbacks are scheduled within the zone,
-they still execute.
-As a consequence a zoned error handler might
-be invoked multiple times.
+Uma diferença notável entre try-catch e tratadores de erros em zonas é
+que as zonas continuam a ser executadas após a ocorrência de erros não capturados.
+Se outros callbacks assíncronos forem agendados dentro da zona,
+eles ainda serão executados.
+Como consequência, um tratador de erros em zonas pode
+ser invocado várias vezes.
 
-Any zone with an uncaught error handler is called an _error zone_.
-An error zone might handle errors that originate
-in a descendant of that zone.
-A simple rule determines where
-errors are handled in a sequence of future transformations
-(using `then()` or `catchError()`):
-Errors on Future chains never cross the boundaries of error zones.
+Qualquer zona com um tratador de erros não capturados é chamada de _zona de erro_.
+Uma zona de erro pode lidar com erros que se originam
+em um descendente dessa zona.
+Uma regra simples determina onde
+os erros são tratados em uma sequência de transformações futuras
+(usando `then()` ou `catchError()`):
+Erros em cadeias Future nunca cruzam os limites de zonas de erro.
 
-If an error reaches an error zone boundary,
-it is treated as unhandled error at that point.
+Se um erro atinge um limite de zona de erro,
+ele é tratado como erro não tratado naquele ponto.
 
 :::note API note
-Handling uncaught errors doesn't *require* zones.
-The isolate API [`Isolate.run()`][] also handles 
-listening for uncaught errors.
+Lidar com erros não capturados não *requer* zonas.
+A API de isolamento [`Isolate.run()`][] também lida com
+a escuta de erros não capturados.
 :::
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
-### Example: Errors can't cross into error zones
+### Exemplo: Erros não podem cruzar para zonas de erro {:#example-errors-can-t-cross-into-error-zones}
 
-In the following example,
-the error raised by the first line
-can't cross into an error zone.
+No exemplo a seguir,
+o erro gerado pela primeira linha
+não pode cruzar para uma zona de erro.
 
 <!-- run_zoned2.dart -->
 ```dart
 var f = new Future.error(499);
-f = f.whenComplete(() { print('Outside of zones'); });
+f = f.whenComplete(() { print('Fora das zonas'); });
 runZoned(() {
-  f = f.whenComplete(() { print('Inside non-error zone'); });
+  f = f.whenComplete(() { print('Dentro da zona sem erro'); });
 });
 runZonedGuarded(() {
-  f = f.whenComplete(() { print('Inside error zone (not called)'); });
+  f = f.whenComplete(() { print('Dentro da zona de erro (não chamada)'); });
 }, (error) { print(error); });
 ```
 
-Here's the output you see if you run the example:
+Aqui está a saída que você vê se executar o exemplo:
 
 ```plaintext
-Outside of zones
-Inside non-error zone
-Uncaught Error: 499
-Unhandled exception:
+Fora das zonas
+Dentro da zona sem erro
+Erro não capturado: 499
+Exceção não tratada:
 499
 ...stack trace...
 ```
 
-If you remove the call to `runZoned()` or
-to `runZonedGuarded()`,
-you see this output:
+Se você remover a chamada para `runZoned()` ou
+para `runZonedGuarded()`,
+você vê esta saída:
 
 ```plaintext
-Outside of zones
-Inside non-error zone
-[!Inside error zone (not called)!]
-Uncaught Error: 499
-Unhandled exception:
+Fora das zonas
+Dentro da zona sem erro
+[!Dentro da zona de erro (não chamada)!]
+Erro não capturado: 499
+Exceção não tratada:
 499
 ...stack trace...
 ```
 
-Note how removing either the zone or error zone causes
-the error to propagate further.
+Observe como a remoção da zona ou da zona de erro faz com que
+o erro se propague mais.
 
-The stack trace appears because the error happens outside an error zone.
-If you add an error zone around the whole code snippet,
-then you can avoid the stack trace.
+O stack trace aparece porque o erro acontece fora de uma zona de erro.
+Se você adicionar uma zona de erro em torno de todo o trecho de código,
+então você pode evitar o stack trace.
 
 
-### Example: Errors can't leave error zones
+### Exemplo: Erros não podem sair de zonas de erro {:#example-errors-can-t-leave-error-zones}
 
-As the preceding code shows,
-errors can't cross into error zones.
-Similarly, errors can't cross _out_ of error zones.
-Consider this example:
+Como o código anterior mostra,
+erros não podem cruzar para zonas de erro.
+Da mesma forma, erros não podem cruzar *para fora* de zonas de erro.
+Considere este exemplo:
 
 <!-- run_zoned3.dart -->
 ```dart
@@ -281,75 +280,75 @@ var completer = new Completer();
 var future = completer.future.then((x) => x + 1);
 var zoneFuture;
 runZonedGuarded(() {
-  zoneFuture = future.then((y) => throw 'Inside zone');
-}, (error) { print('Caught: $error'); });
+  zoneFuture = future.then((y) => throw 'Dentro da zona');
+}, (error) { print('Capturado: $error'); });
 
-zoneFuture.catchError((e) { print('Never reached'); });
+zoneFuture.catchError((e) { print('Nunca alcançado'); });
 completer.complete(499);
 ```
 
-Even though the future chain ends in a `catchError()`,
-the asynchronous error can't leave the error zone.
-The zoned error handler found in `runZonedGuarded()`
-handles the error.
-As a result, *zoneFuture never completes* — neither
-with a value, nor with an error.
+Mesmo que a cadeia future termine em um `catchError()`,
+o erro assíncrono não pode sair da zona de erro.
+O tratador de erros em zonas encontrado em `runZonedGuarded()`
+lida com o erro.
+Como resultado, *zoneFuture nunca é concluído* — nem
+com um valor, nem com um erro.
 
-## Using zones with streams
+## Usando zonas com streams {:#using-zones-with-streams}
 
-The rule for zones and streams
-is simpler than for futures:
+A regra para zonas e streams
+é mais simples do que para futures:
 
 :::note
-Transformations and other callbacks execute in the zone
-where the stream is listened to.
+Transformações e outros callbacks são executados na zona
+onde o stream é escutado.
 :::
 
-This rule follows from the guideline that
-streams should have no side effect until listened to.
-A similar situation in synchronous code is the behavior of Iterables,
-which aren't evaluated until you ask for values.
+Essa regra segue da diretriz de que
+streams não devem ter efeito colateral até serem escutados.
+Uma situação semelhante em código síncrono é o comportamento de Iterables,
+que não são avaliados até você pedir por valores.
 
-### Example: Using a stream with `runZonedGuarded()`
+### Exemplo: Usando um stream com `runZonedGuarded()` {:#example-using-a-stream-with-runzonedguarded}
 
-The following example sets up a stream with a callback,
-and then executes that stream in a new zone with `runZonedGuarded()`:
+O exemplo a seguir configura um stream com um callback,
+e então executa esse stream em uma nova zona com `runZonedGuarded()`:
 
 <!-- stream.dart -->
 ```dart
 var stream = new File('stream.dart').openRead()
-    .map((x) => throw 'Callback throws');
+    .map((x) => throw 'Callback lança um erro');
 
 runZonedGuarded(() { stream.listen(print); },
-         (e) { print('Caught error: $e'); });
+         (e) { print('Erro capturado: $e'); });
 ```
 
-The error handler in `runZonedGuarded()`
-catches the error the callback throws.
-Here's the output:
+O tratador de erros em `runZonedGuarded()`
+captura o erro que o callback lança.
+Aqui está a saída:
 
 ```plaintext
-Caught error: Callback throws
+Erro capturado: Callback lança um erro
 ```
 
-As the output shows,
-the callback is associated with the listening zone,
-not with the zone where `map()` is called.
+Como a saída mostra,
+o callback está associado à zona de escuta,
+não com a zona onde `map()` é chamado.
 
 
-## Storing zone-local values
+## Armazenando valores locais de zona {:#storing-zone-local-values}
 
-If you ever wanted to use a static variable
-but couldn't because
-multiple concurrently running computations interfered with each other,
-consider using a zone-local value.
-You might add a zone-local value to help with debugging.
-Another use case is dealing with an HTTP request:
-you could have the user ID
-and its authorization token in zone-local values.
+Se você já quis usar uma variável estática
+mas não conseguiu porque
+várias computações em execução simultânea interferiam umas nas outras,
+considere usar um valor local de zona.
+Você pode adicionar um valor local de zona para ajudar na depuração.
+Outro caso de uso é lidar com uma requisição HTTP:
+você pode ter o ID do usuário
+e seu token de autorização em valores locais de zona.
 
-Use the `zoneValues` argument to `runZoned()` to
-store values in the newly created zone:
+Use o argumento `zoneValues` para `runZoned()` para
+armazenar valores na zona recém-criada:
 
 <!-- value1.dart -->
 ```dart
@@ -358,17 +357,17 @@ runZoned(() {
 }, zoneValues: { #key: 499 });
 ```
 
-To read zone-local values, use the zone's index operator and the value's key:
+Para ler valores locais de zona, use o operador de índice da zona e a chave do valor:
 <code>[<em>key</em>]</code>.
-Any object can be used as a key, as long as it has compatible
-`operator ==` and `hashCode` implementations.
-Typically, a key is a symbol literal:
+Qualquer objeto pode ser usado como chave, desde que tenha implementações
+`operator ==` e `hashCode` compatíveis.
+Normalmente, uma chave é um literal de símbolo:
 <code>#<em>identifier</em></code>.
 
-You can't change the object that a key maps to,
-but you can manipulate the object.
-For example, the following code
-adds an item to a zone-local list:
+Você não pode alterar o objeto para o qual uma chave mapeia,
+mas você pode manipular o objeto.
+Por exemplo, o código a seguir
+adiciona um item a uma lista local de zona:
 
 <!-- value1_1.dart -->
 ```dart
@@ -378,21 +377,21 @@ runZoned(() {
 }, zoneValues: { #key: [] });
 ```
 
-A zone inherits zone-local values from its parent zone,
-so adding nested zones doesn't accidentally drop existing values.
-Nested zones can, however, shadow parent values.
+Uma zona herda valores locais de zona de sua zona pai,
+portanto, adicionar zonas aninhadas não descarta acidentalmente valores existentes.
+Zonas aninhadas podem, no entanto, sombrear valores pai.
 
 :::important
-Try to use unique objects for keys,
-so they're less likely to conflict with other libraries.
+Tente usar objetos únicos para chaves,
+para que seja menos provável que entrem em conflito com outras bibliotecas.
 :::
 
 
-### Example: Using a zone-local value for debug logs
+### Exemplo: Usando um valor local de zona para logs de depuração {:#example-using-a-zone-local-value-for-debug-logs}
 
-Say you have two files, foo.txt and bar.txt,
-and want to print all of their lines.
-The program might look like this:
+Digamos que você tenha dois arquivos, foo.txt e bar.txt,
+e queira imprimir todas as suas linhas.
+O programa pode ser assim:
 
 <!-- value2.dart -->
 ```dart
@@ -417,12 +416,12 @@ main() {
 }
 ```
 
-This program works,
-but let's assume that you now want to know
-which file each line comes from,
-and that you can't just add a filename argument to `splitLinesStream()`.
-With zone-local values you can add the filename to the returned string
-(new lines are highlighted):
+Este programa funciona,
+mas vamos supor que agora você queira saber
+de qual arquivo cada linha vem,
+e que você não pode apenas adicionar um argumento de nome de arquivo para `splitLinesStream()`.
+Com valores locais de zona, você pode adicionar o nome do arquivo à string retornada
+(as novas linhas são destacadas):
 
 <!-- value3.dart -->
 ```dart
@@ -451,32 +450,32 @@ main() {
 }
 ```
 
-Note that the new code doesn't modify the function signatures or
-pass the filename from `splitLines()` to `splitLinesStream()`.
-Instead, it uses zone-local values to implement
-a feature similar to a static variable
-that works in asynchronous contexts.
+Observe que o novo código não modifica as assinaturas de função ou
+passa o nome do arquivo de `splitLines()` para `splitLinesStream()`.
+Em vez disso, ele usa valores locais de zona para implementar
+um recurso semelhante a uma variável estática
+que funciona em contextos assíncronos.
 
 
-## Overriding functionality
+## Substituindo a funcionalidade {:#overriding-functionality}
 
-Use the `zoneSpecification` argument to `runZoned()`
-to override functionality that is managed by zones.
-The argument's value is a
-[ZoneSpecification]({{site.dart-api}}/dart-async/ZoneSpecification-class.html) object,
-with which you can override any of the following functionality:
+Use o argumento `zoneSpecification` para `runZoned()`
+para substituir a funcionalidade que é gerenciada por zonas.
+O valor do argumento é um objeto
+[ZoneSpecification]({{site.dart-api}}/dart-async/ZoneSpecification-class.html),
+com o qual você pode substituir qualquer uma das seguintes funcionalidades:
 
-* Forking child zones
-* Registering and running callbacks in the zone
-* Scheduling microtasks and timers
-* Handling uncaught asynchronous errors
-  (`runZonedGuarded()` is a shortcut for this)
-* Printing
+*   Criar zonas filhas
+*   Registrar e executar callbacks na zona
+*   Agendamento de microtasks e temporizadores
+*   Lidar com erros assíncronos não capturados
+    (`runZonedGuarded()` é um atalho para isso)
+*   Impressão
 
-### Example: Overriding print
+### Exemplo: Substituindo a impressão {:#example-overriding-print}
 
-As a simple example of overriding functionality,
-here is a way to silence all prints inside a zone:
+Como um exemplo simples de substituição de funcionalidade,
+aqui está uma maneira de silenciar todas as impressões dentro de uma zona:
 
 <!-- specification1.dart -->
 ```dart
@@ -484,74 +483,74 @@ import 'dart:async';
 
 main() {
   runZoned(() {
-    print('Will be ignored');
+    print('Será ignorado');
   }, zoneSpecification: new ZoneSpecification(
     print: (self, parent, zone, message) {
-      // Ignore message.
+      // Ignorar mensagem.
     }));
 }
 ```
 
-Inside the forked zone,
-the `print()` function is overridden by the specified print interceptor,
-which simply discards the message.
-Overriding print is possible because `print()`
-(like `scheduleMicrotask()` and the Timer constructors)
-uses the current zone (`Zone.current`) to do its work.
+Dentro da zona bifurcada,
+a função `print()` é substituída pelo interceptador de impressão especificado,
+que simplesmente descarta a mensagem.
+Substituir a impressão é possível porque `print()`
+(como `scheduleMicrotask()` e os construtores Timer)
+usa a zona atual (`Zone.current`) para fazer seu trabalho.
 
 
-### Arguments to interceptors and delegates
+### Argumentos para interceptadores e delegados {:#arguments-to-interceptors-and-delegates}
 
-As the print example shows,
-an interceptor adds three arguments
-to those defined in the Zone class's corresponding method.
-For example, Zone's `print()` method has one argument:
+Como o exemplo de impressão mostra,
+um interceptador adiciona três argumentos
+àqueles definidos no método correspondente da classe Zone.
+Por exemplo, o método `print()` de Zone tem um argumento:
 `print(String line)`.
-The interceptor version of `print()`,
-as defined by ZoneSpecification,
-has four arguments:
+A versão interceptadora de `print()`,
+como definido por ZoneSpecification,
+tem quatro argumentos:
 `print(Zone self, ZoneDelegate parent, Zone zone, String line)`.
 
-The three interceptor arguments always appear in the same order,
-before any other arguments.
+Os três argumentos do interceptador sempre aparecem na mesma ordem,
+antes de quaisquer outros argumentos.
 
 `self`
-: The zone that's handling the callback.
+: A zona que está lidando com o callback.
 
 `parent`
-: A ZoneDelegate representing the parent zone.
-  Use it to forward operations to the parent.
+: Um ZoneDelegate representando a zona pai.
+  Use-o para encaminhar operações para o pai.
 
 `zone`
-: The zone where the operation originated.
-  Some operations need to know which zone the operation was invoked on.
-  For example, `zone.fork(specification)` must
-  create a new zone as child of `zone`.
-  As another example,
-  even when you delegate `scheduleMicrotask()` to another zone,
-  the original `zone` must be the one that executes the microtask.
+: A zona onde a operação se originou.
+  Algumas operações precisam saber em qual zona a operação foi invocada.
+  Por exemplo, `zone.fork(specification)` deve
+  criar uma nova zona como filha de `zone`.
+  Como outro exemplo,
+  mesmo quando você delega `scheduleMicrotask()` para outra zona,
+  a `zone` original deve ser aquela que executa a microtask.
 
 
-When an interceptor delegates a method to the parent,
-the parent (ZoneDelegate) version of the method
-has just one additional argument:
-`zone`, the zone where the original call originated from.
-For example,
-the signature of the `print()` method on a ZoneDelegate is
+Quando um interceptador delega um método para o pai,
+a versão pai (ZoneDelegate) do método
+tem apenas um argumento adicional:
+`zone`, a zona onde a chamada original se originou.
+Por exemplo,
+a assinatura do método `print()` em um ZoneDelegate é
 `print(Zone zone, String line)`.
 
-Here's an example of the arguments
-for another interceptable method, `scheduleMicrotask()`:
+Aqui está um exemplo dos argumentos
+para outro método interceptável, `scheduleMicrotask()`:
 
-| **Where defined** | **Method signature** |
+| **Onde definido** | **Assinatura do método** |
 | Zone              | `void scheduleMicrotask(void f())` |
 | ZoneSpecification&nbsp; | `void scheduleMicrotask(Zone self, ZoneDelegate parent, Zone zone, void f())` |
 | ZoneDelegate      | `void scheduleMicrotask(Zone zone, void f())` |
 
 
-### Example: Delegating to the parent zone
+### Exemplo: Delegando para a zona pai {:#example-delegating-to-the-parent-zone}
 
-Here is an example that shows how to delegate to the parent zone:
+Aqui está um exemplo que mostra como delegar para a zona pai:
 
 <!-- specification2.dart -->
 ```dart
@@ -561,46 +560,46 @@ main() {
   runZoned(() {
     var currentZone = Zone.current;
     scheduleMicrotask(() {
-      print(identical(currentZone, Zone.current));  // prints true.
+      print(identical(currentZone, Zone.current));  // imprime true.
     });
   }, zoneSpecification: new ZoneSpecification(
     scheduleMicrotask: (self, parent, zone, task) {
-      print('scheduleMicrotask has been called inside the zone');
-      // The origin `zone` needs to be passed to the parent so that
-      // the task can be executed in it.
+      print('scheduleMicrotask foi chamado dentro da zona');
+      // A `zone` de origem precisa ser passada para o pai para que
+      // a tarefa possa ser executada nela.
       parent.scheduleMicrotask(zone, task);
     }));
 }
 ```
 
 
-### Example: Executing code when entering and leaving a zone
+### Exemplo: Executando código ao entrar e sair de uma zona {:#example-executing-code-when-entering-and-leaving-a-zone}
 
-Say you want to know how much time some asynchronous code
-spends executing.
-You can do this by putting the code in a zone,
-starting a timer every time the zone is entered,
-and stopping the timer whenever the zone is left.
+Digamos que você queira saber quanto tempo algum código assíncrono
+gasta executando.
+Você pode fazer isso colocando o código em uma zona,
+iniciando um temporizador cada vez que a zona é entrada,
+e parando o temporizador sempre que a zona é deixada.
 
-Providing `run*` parameters to the ZoneSpecification
-lets you specify the code that the zone executes.
+Fornecer parâmetros `run*` para ZoneSpecification
+permite que você especifique o código que a zona executa.
 
 :::note API note
-In the future, zones might provide a simpler alternative
-for the common case of sandwiching zone code:
-an onEnter/onLeave API.
-See [issue 17532]({{site.repo.dart.sdk}}/issues/17532)
-for details.
+No futuro, as zonas podem fornecer uma alternativa mais simples
+para o caso comum de intercalar código de zona:
+uma API onEnter/onLeave.
+Veja [issue 17532]({{site.repo.dart.sdk}}/issues/17532)
+para detalhes.
 :::
 
-The `run*` parameters—`run`, `runUnary`, and `runBinary`—specify
-code to execute every time the zone is asked to execute code.
-These parameters work for zero-argument, one-argument,
-and two-argument callbacks, respectively.
-The `run` parameter also works for the initial, synchronous code
-that executes just after calling `runZoned()`.
+Os parâmetros `run*`—`run`, `runUnary` e `runBinary`—especificam
+o código a ser executado toda vez que a zona é solicitada a executar o código.
+Esses parâmetros funcionam para callbacks de zero argumento, um argumento
+e dois argumentos, respectivamente.
+O parâmetro `run` também funciona para o código síncrono inicial,
+que é executado logo após chamar `runZoned()`.
 
-Here's an example of profiling code using `run*`:
+Aqui está um exemplo de código de perfil usando `run*`:
 
 <!-- profile_run.dart -->
 ```dart
@@ -627,8 +626,8 @@ final specification = new ZoneSpecification(
 
 runZoned(() {
   total.start();
-  // ... Code that runs synchronously...
-  // ... Then code that runs asynchronously ...
+  // ... Código que é executado de forma síncrona...
+  // ... Então o código que é executado de forma assíncrona ...
     .then((...) {
       print(total.elapsedMilliseconds);
       print(user.elapsedMilliseconds);
@@ -636,26 +635,26 @@ runZoned(() {
 }, zoneSpecification: specification);
 ```
 
-In this code,
-each `run*` override just starts the user timer,
-executes the specified function,
-and then stops the user timer.
+Neste código,
+cada substituição de `run*` apenas inicia o temporizador do usuário,
+executa a função especificada
+e então para o temporizador do usuário.
 
 
-### Example: Handling callbacks
+### Exemplo: Lidando com callbacks {:#example-handling-callbacks}
 
-Provide `register*Callback` parameters to the ZoneSpecification
-to wrap or change callback code—the code
-that's executed asynchronously in the zone.
-Like the `run*` parameters,
-the `register*Callback` parameters have three forms:
-`registerCallback` (for callbacks with no arguments),
-`registerUnaryCallback` (one argument), and
-`registerBinaryCallback` (two arguments).
+Forneça os parâmetros `register*Callback` para ZoneSpecification
+para envolver ou alterar o código de callback—o código
+que é executado de forma assíncrona na zona.
+Como os parâmetros `run*`,
+os parâmetros `register*Callback` têm três formas:
+`registerCallback` (para callbacks sem argumentos),
+`registerUnaryCallback` (um argumento) e
+`registerBinaryCallback` (dois argumentos).
 
-Here's an example that makes the zone
-save a stack trace
-before the code disappears into an asynchronous context.
+Aqui está um exemplo que faz a zona
+salvar um stack trace
+antes que o código desapareça em um contexto assíncrono.
 
 <!-- debug.dart -->
 ```dart
@@ -671,7 +670,7 @@ get currentStackTrace {
 
 var lastStackTrace = null;
 
-bar() => throw "in bar";
+bar() => throw "em bar";
 foo() => new Future(bar);
 
 main() {
@@ -698,7 +697,7 @@ main() {
       });
     },
     handleUncaughtError: (self, parent, zone, error, stackTrace) {
-      if (lastStackTrace != null) print("last stack: $lastStackTrace");
+      if (lastStackTrace != null) print("última pilha: $lastStackTrace");
       return parent.handleUncaughtError(zone, error, stackTrace);
     });
 
@@ -708,89 +707,89 @@ main() {
 }
 ```
 
-Go ahead and run the example.
-You'll see a "last stack" trace (`lastStackTrace`)
-that includes `foo()`,
-since `foo()` was called synchronously.
-The next stack trace (`stackTrace`)
-is from the asynchronous context,
-which knows about `bar()` but not `foo()`.
+Vá em frente e execute o exemplo.
+Você verá um rastreamento de "última pilha" (`lastStackTrace`)
+que inclui `foo()`,
+já que `foo()` foi chamado de forma síncrona.
+O próximo stack trace (`stackTrace`)
+é do contexto assíncrono,
+que sabe sobre `bar()` mas não `foo()`.
 
 
-### Implementing asynchronous callbacks
+### Implementando callbacks assíncronos {:#implementing-asynchronous-callbacks}
 
-Even if you're implementing an asynchronous API,
-you might not have to deal with zones at all.
-For example, although you might expect the dart:io library
-to keep track of the current zones,
-it instead relies on the zone handling of dart:async classes
-such as Future and Stream.
+Mesmo se você estiver implementando uma API assíncrona,
+você pode não ter que lidar com zonas.
+Por exemplo, embora você possa esperar que a biblioteca dart:io
+rastreie as zonas atuais,
+ela, em vez disso, confia no tratamento de zonas de classes dart:async
+como Future e Stream.
 
-If you do handle zones explicitly,
-then you need to register all asynchronous callbacks
-and ensure that each callback is invoked in the zone
-where it was registered.
-The `bind*Callback` helper methods of Zone
-make this task easier.
-They're shortcuts for `register*Callback` and `run*`,
-ensuring that each callback is registered and runs in that Zone.
+Se você lidar com zonas explicitamente,
+então você precisa registrar todos os callbacks assíncronos
+e garantir que cada callback seja invocado na zona
+onde foi registrado.
+Os métodos auxiliares `bind*Callback` de Zone
+tornam esta tarefa mais fácil.
+Eles são atalhos para `register*Callback` e `run*`,
+garantindo que cada callback seja registrado e executado nessa Zona.
 
-If you need more control than `bind*Callback` gives you,
-then you need to use `register*Callback` and `run*`.
-You might also want to use the `run*Guarded` methods of Zone,
-which wrap the call into a try-catch
-and invoke the `uncaughtErrorHandler`
-if an error occurs.
-
-
-## Summary
-
-Zones are good for protecting your code from
-uncaught exceptions in asynchronous code,
-but they can do much more.
-You can associate data with zones,
-and you can override core functionality such as
-printing and task scheduling.
-Zones enable better debugging and provide hooks
-that you can use for functionality such as profiling.
+Se você precisar de mais controle do que `bind*Callback` oferece,
+então você precisa usar `register*Callback` e `run*`.
+Você também pode querer usar os métodos `run*Guarded` de Zone,
+que envolvem a chamada em um try-catch
+e invocam o `uncaughtErrorHandler`
+se ocorrer um erro.
 
 
-### More resources
+## Resumo {:#summary}
 
-Zone-related API documentation
-: Read the docs for
+Zonas são boas para proteger seu código contra
+exceções não capturadas em código assíncrono,
+mas elas podem fazer muito mais.
+Você pode associar dados a zonas,
+e você pode substituir funcionalidades essenciais, como
+impressão e agendamento de tarefas.
+Zonas permitem uma melhor depuração e fornecem hooks
+que você pode usar para funcionalidades como o perfil.
+
+
+### Mais recursos {:#more-resources}
+
+Documentação da API relacionada a zonas
+: Leia a documentação para
   [runZoned()]({{site.dart-api}}/dart-async/runZoned.html),
   [runZonedGuarded()]({{site.dart-api}}/dart-async/runZonedGuarded.html),
   [Zone]({{site.dart-api}}/dart-async/Zone-class.html),
-  [ZoneDelegate]({{site.dart-api}}/dart-async/ZoneDelegate-class.html), and
+  [ZoneDelegate]({{site.dart-api}}/dart-async/ZoneDelegate-class.html), e
   [ZoneSpecification]({{site.dart-api}}/dart-async/ZoneSpecification-class.html).
 
 stack_trace
-: With the stack_trace library's
-  [Chain class]({{site.pub-api}}/stack_trace/latest/stack_trace/Chain-class.html)
-  you can get better stack traces for asynchronously executed code.
-  See the [stack_trace package]({{site.pub-pkg}}/stack_trace)
-  at the pub.dev site for more information.
+: Com a biblioteca stack_trace's
+  [Classe Chain]({{site.pub-api}}/stack_trace/latest/stack_trace/Chain-class.html)
+  você pode obter melhores stack traces para código executado de forma assíncrona.
+  Veja o [pacote stack_trace]({{site.pub-pkg}}/stack_trace)
+  no site pub.dev para mais informações.
 
 
-### More examples
+### Mais exemplos {:#more-examples}
 
-Here are some more complex examples of using zones.
+Aqui estão alguns exemplos mais complexos de uso de zonas.
 
-The task_interceptor example
-: The toy zone in
+O exemplo task_interceptor
+: A zona de brinquedo em
   [task_interceptor.dart](https://github.com/dart-archive/www.dartlang.org/blob/master/src/tests/site/articles/zones/task_interceptor.dart)
-  intercepts `scheduleMicrotask`, `createTimer`, and `createPeriodicTimer`
-  to simulate the behavior of the Dart primitives
-  without yielding to the event loop.
+  intercepta `scheduleMicrotask`, `createTimer` e `createPeriodicTimer`
+  para simular o comportamento dos primitivos Dart
+  sem ceder ao loop de eventos.
 
-The source code for the stack_trace package
-: The [stack_trace package]({{site.pub-pkg}}/stack_trace)
-  uses zones to form chains of stack traces
-  for debugging asynchronous code.
-  Zone features used include error handling, zone-local values, and callbacks.
-  You can find the stack_trace source code in the
-  [stack_trace GitHub project]({{site.repo.dart.org}}/stack_trace).
+O código-fonte do pacote stack_trace
+: O [pacote stack_trace]({{site.pub-pkg}}/stack_trace)
+  usa zonas para formar cadeias de stack traces
+  para depurar código assíncrono.
+  Os recursos de zona usados incluem tratamento de erros, valores locais de zona e callbacks.
+  Você pode encontrar o código-fonte do stack_trace no
+  [projeto stack_trace no GitHub]({{site.repo.dart.org}}/stack_trace).
 
 The source code for dart:async
 : These two SDK libraries implement APIs featuring asynchronous callbacks,
@@ -801,5 +800,5 @@ The source code for dart:async
   [Dart GitHub project]({{site.repo.dart.sdk}}).
 
 
-_Thanks to Anders Johnsen and Lasse Reichstein Nielsen
-for their reviews of this article._
+_Obrigado a Anders Johnsen e Lasse Reichstein Nielsen
+pelas suas revisões deste artigo._

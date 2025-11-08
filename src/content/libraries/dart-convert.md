@@ -1,6 +1,7 @@
 ---
-title: dart:convert
-description: Learn about the major features in Dart's dart:convert library.
+ia-translate: true
+title: "dart:convert"
+description: "Saiba mais sobre os principais recursos na biblioteca dart:convert do Dart."
 prevpage:
   url: /libraries/dart-math
   title: dart:math
@@ -12,14 +13,14 @@ nextpage:
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-The dart:convert library ([API reference][dart:convert])
-has converters for JSON and UTF-8, as well as support for creating
-additional converters. [JSON][] is a simple text format for representing
-structured objects and collections. [UTF-8][] is a common variable-width
-encoding that can represent every character in the Unicode character
-set.
+A biblioteca `dart:convert` ([referência da API][dart:convert])
+possui conversores para JSON e UTF-8, bem como suporte para criar
+conversores adicionais. [JSON][] é um formato de texto simples para representar
+objetos e coleções estruturadas. [UTF-8][] é uma codificação comum de largura variável
+que pode representar todos os caracteres no conjunto de
+caracteres Unicode.
 
-To use this library, import dart:convert.
+Para usar esta biblioteca, importe `dart:convert`.
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (import)"?>
 ```dart
@@ -27,9 +28,9 @@ import 'dart:convert';
 ```
 
 
-## Decoding and encoding JSON
+## Decodificando e codificando JSON {:#decoding-and-encoding-json}
 
-Decode a JSON-encoded string into a Dart object with `jsonDecode()`:
+Decodifique uma string codificada em JSON para um objeto Dart com `jsonDecode()`:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (json-decode)"?>
 ```dart
@@ -51,7 +52,7 @@ assert(firstScore is Map);
 assert(firstScore['score'] == 40);
 ```
 
-Encode a supported Dart object into a JSON-formatted string with
+Codifique um objeto Dart suportado em uma string formatada em JSON com
 `jsonEncode()`:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (json-encode)"?>
@@ -71,23 +72,23 @@ assert(
 );
 ```
 
-Only objects of type int, double, String, bool, null, List, or Map (with
-string keys) are directly encodable into JSON. List and Map objects are
-encoded recursively.
+Apenas objetos do tipo `int`, `double`, `String`, `bool`, `null`, `List`, ou `Map` (com
+chaves de string) são diretamente codificáveis em JSON. Objetos `List` e `Map` são
+codificados recursivamente.
 
-You have two options for encoding objects that aren't directly
-encodable. The first is to invoke `jsonEncode()` with a second argument: a
-function that returns an object that is directly encodable. Your second
-option is to omit the second argument, in which case the encoder calls
-the object's `toJson()` method.
+Você tem duas opções para codificar objetos que não são diretamente
+codificáveis. A primeira é invocar `jsonEncode()` com um segundo argumento: uma
+função que retorna um objeto que é diretamente codificável. Sua segunda
+opção é omitir o segundo argumento, caso em que o codificador chama
+o método `toJson()` do objeto.
 
-For more examples and links to JSON-related packages, see
-[Using JSON](/libraries/serialization/json).
+Para mais exemplos e links para pacotes relacionados a JSON, consulte
+[Usando JSON](/libraries/serialization/json).
 
 
-## Decoding and encoding UTF-8 characters
+## Decodificando e codificando caracteres UTF-8 {:#decoding-and-encoding-utf-8-characters}
 
-Use `utf8.decode()` to decode UTF8-encoded bytes to a Dart string:
+Use `utf8.decode()` para decodificar bytes codificados em UTF8 para uma string Dart:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-decode)" replace="/ \/\/line-br.*//g"?>
 ```dart
@@ -104,8 +105,8 @@ var funnyWord = utf8.decode(utf8Bytes);
 assert(funnyWord == 'Îñţérñåţîöñåļîžåţîờñ');
 ```
 
-To convert a stream of UTF-8 characters into a Dart string, specify
-`utf8.decoder` to the Stream `transform()` method:
+Para converter um stream de caracteres UTF-8 em uma string Dart, especifique
+`utf8.decoder` para o método `transform()` do Stream:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
 ```dart
@@ -120,8 +121,8 @@ try {
 }
 ```
 
-Use `utf8.encode()` to encode a Dart string as a list of UTF8-encoded
-bytes:
+Use `utf8.encode()` para codificar uma string Dart como uma lista de bytes
+codificados em UTF8:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-encode)" replace="/ \/\/line-br.*//g"?>
 ```dart
@@ -134,10 +135,10 @@ for (int i = 0; i < encoded.length; i++) {
 ```
 
 
-## Other functionality
+## Outras funcionalidades {:#other-functionality}
 
-The dart:convert library also has converters for ASCII and ISO-8859-1
-(Latin1). For details, see the [API reference for the dart:convert library.][dart:convert]
+A biblioteca `dart:convert` também possui conversores para ASCII e ISO-8859-1
+(Latin1). Para mais detalhes, consulte a [referência da API para a biblioteca `dart:convert`][dart:convert].
 
 [JSON]: https://www.json.org/
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8

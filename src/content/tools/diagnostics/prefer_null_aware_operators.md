@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_null_aware_operators
-description: >-
-  Details about the prefer_null_aware_operators
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_null_aware_operators produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,19 +17,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use the null-aware operator '?.' rather than an explicit 'null' comparison._
+_Use o operador null-aware '?.' em vez de uma comparação explícita com 'null'._
 
 ## Description
 
-The analyzer produces this diagnostic when a comparison with `null` is
-used to guard a member reference, and `null` is used as a result when the
-guarded target is `null`.
+O analisador produz este diagnóstico quando uma comparação com `null` é
+usada para proteger uma referência de membro, e `null` é usado como resultado quando o
+alvo protegido é `null`.
 
 ## Example
 
-The following code produces this diagnostic because the invocation of
-`length` is guarded by a `null` comparison even though the default value
-is `null`:
+O código a seguir produz este diagnóstico porque a invocação de
+`length` é protegida por uma comparação com `null` mesmo que o valor padrão
+seja `null`:
 
 ```dart
 int? f(List<int>? p) {
@@ -40,7 +39,7 @@ int? f(List<int>? p) {
 
 ## Common fixes
 
-Use a null-aware access operator instead:
+Use um operador de acesso null-aware em vez disso:
 
 ```dart
 int? f(List<int>? p) {

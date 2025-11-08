@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: type_literal_in_constant_pattern
-description: >-
-  Details about the type_literal_in_constant_pattern
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico type_literal_in_constant_pattern produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'TypeName \_' instead of a type literal._
+_Use 'TypeName \_' em vez de um literal de tipo._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type literal appears as a
-pattern.
+O analisador produz este diagnóstico quando um literal de tipo aparece como um
+padrão.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because a type literal is used
-as a constant pattern:
+O código a seguir produz este diagnóstico porque um literal de tipo é usado
+como um padrão constante:
 
 ```dart
 void f(Object? x) {
@@ -38,10 +37,10 @@ void f(Object? x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the type literal is intended to match an object of the given type, then
-use either a variable pattern:
+Se o literal de tipo se destina a corresponder a um objeto do tipo fornecido, então
+use um padrão de variável:
 
 ```dart
 void f(Object? x) {
@@ -51,7 +50,7 @@ void f(Object? x) {
 }
 ```
 
-Or an object pattern:
+Ou um padrão de objeto:
 
 ```dart
 void f(Object? x) {
@@ -61,8 +60,8 @@ void f(Object? x) {
 }
 ```
 
-If the type literal is intended to match the type literal, then write it
-as a constant pattern:
+Se o literal de tipo se destina a corresponder ao literal de tipo, então escreva-o
+como um padrão constante:
 
 ```dart
 void f(Object? x) {

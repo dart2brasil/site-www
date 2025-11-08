@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: return_of_invalid_type_from_closure
-description: >-
-  Details about the return_of_invalid_type_from_closure
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico return_of_invalid_type_from_closure produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The returned type '{0}' isn't returnable from a '{1}' function, as required by the closure's context._
+_O tipo retornado '{0}' não é retornável de uma função '{1}', conforme requerido pelo contexto do closure._
 
 ## Description
 
-The analyzer produces this diagnostic when the static type of a returned
-expression isn't assignable to the return type that the closure is required
-to have.
+O analisador produz este diagnóstico quando o tipo estático de uma expressão
+retornada não é atribuível ao tipo de retorno que o closure é obrigado
+a ter.
 
 ## Example
 
-The following code produces this diagnostic because `f` is defined to be a
-function that returns a `String`, but the closure assigned to it returns an
+O código a seguir produz este diagnóstico porque `f` é definido como uma
+função que retorna uma `String`, mas o closure atribuído a ele retorna um
 `int`:
 
 ```dart
@@ -27,8 +26,8 @@ String Function(String) f = (s) => [!3!];
 
 ## Common fixes
 
-If the return type is correct, then replace the returned value with a value
-of the correct type, possibly by converting the existing value:
+Se o tipo de retorno está correto, substitua o valor retornado por um valor
+do tipo correto, possivelmente convertendo o valor existente:
 
 ```dart
 String Function(String) f = (s) => 3.toString();

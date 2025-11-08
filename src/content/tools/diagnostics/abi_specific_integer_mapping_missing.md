@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: abi_specific_integer_mapping_missing
-description: >-
-  Details about the abi_specific_integer_mapping_missing
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico abi_specific_integer_mapping_missing produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,14 +10,13 @@ _Classes extending 'AbiSpecificInteger' must have exactly one 'AbiSpecificIntege
 
 ## Description
 
-The analyzer produces this diagnostic when a class that extends
-`AbiSpecificInteger` doesn't have an `AbiSpecificIntegerMapping`
-annotation.
+O analisador produz este diagnóstico quando uma classe que estende
+`AbiSpecificInteger` não possui uma anotação `AbiSpecificIntegerMapping`.
 
 ## Example
 
-The following code produces this diagnostic because there's no
-`AbiSpecificIntegerMapping` annotation on the class `C`:
+O código a seguir produz este diagnóstico porque não há
+anotação `AbiSpecificIntegerMapping` na classe `C`:
 
 ```dart
 import 'dart:ffi';
@@ -30,7 +28,7 @@ final class [!C!] extends AbiSpecificInteger {
 
 ## Common fixes
 
-Add an `AbiSpecificIntegerMapping` annotation to the class:
+Adicione uma anotação `AbiSpecificIntegerMapping` à classe:
 
 ```dart
 import 'dart:ffi';

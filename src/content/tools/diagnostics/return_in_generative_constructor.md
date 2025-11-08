@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: return_in_generative_constructor
-description: >-
-  Details about the return_in_generative_constructor
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico return_in_generative_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Constructors can't return values._
+_Construtores não podem retornar valores._
 
 ## Description
 
-The analyzer produces this diagnostic when a generative constructor
-contains a `return` statement that specifies a value to be returned.
-Generative constructors always return the object that was created, and
-therefore can't return a different object.
+O analisador produz este diagnóstico quando um construtor generativo
+contém uma instrução `return` que especifica um valor a ser retornado.
+Construtores generativos sempre retornam o objeto que foi criado e,
+portanto, não podem retornar um objeto diferente.
 
 ## Example
 
-The following code produces this diagnostic because the `return` statement
-has an expression:
+O código a seguir produz este diagnóstico porque a instrução `return`
+tem uma expressão:
 
 ```dart
 class C {
@@ -31,8 +30,8 @@ class C {
 
 ## Common fixes
 
-If the constructor should create a new instance, then remove either the
-`return` statement or the expression:
+Se o construtor deve criar uma nova instância, remova a
+instrução `return` ou a expressão:
 
 ```dart
 class C {
@@ -40,8 +39,8 @@ class C {
 }
 ```
 
-If the constructor shouldn't create a new instance, then convert it to be a
-factory constructor:
+Se o construtor não deve criar uma nova instância, converta-o para um
+construtor factory:
 
 ```dart
 class C {

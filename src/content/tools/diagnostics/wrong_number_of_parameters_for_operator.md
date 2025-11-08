@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: wrong_number_of_parameters_for_operator
-description: >-
-  Details about the wrong_number_of_parameters_for_operator
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico wrong_number_of_parameters_for_operator produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Operator '-' should declare 0 or 1 parameter, but {0} found._
+_Operador '-' deve declarar 0 ou 1 parâmetro, mas {0} encontrado._
 
-_Operator '{0}' should declare exactly {1} parameters, but {2} found._
+_Operador '{0}' deve declarar exatamente {1} parâmetros, mas {2} encontrado._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a declaration of an operator has
-the wrong number of parameters.
+O analisador produz este diagnóstico quando uma declaração de um operador tem
+o número errado de parâmetros.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the operator `+` must
-have a single parameter corresponding to the right operand:
+O código a seguir produz este diagnóstico porque o operador `+` deve
+ter um único parâmetro correspondente ao operando direito:
 
 ```dart
 class C {
@@ -27,9 +26,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add or remove parameters to match the required number:
+Adicione ou remova parâmetros para corresponder ao número necessário:
 
 ```dart
 class C {

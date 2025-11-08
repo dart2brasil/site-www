@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: unawaited_futures
-description: >-
-  Details about the unawaited_futures
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unawaited_futures produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,27 +17,27 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Missing an 'await' for the 'Future' computed by this expression._
+_Falta um 'await' para o 'Future' calculado por esta expressão._
 
 ## Description
 
-The analyzer produces this diagnostic on an expression with a `Future`
-type, only in a few specific cases:
+O analisador produz este diagnóstico em uma expressão com tipo `Future`,
+apenas em alguns casos específicos:
 
-* when the expression is itself a statement (like `f();`),
-* when the expression is part of a cascade (like `C()..f()`),
-* when the expression is a String interpolation (like `'${f()}'`).
+* quando a expressão é em si uma instrução (como `f();`),
+* quando a expressão é parte de um cascade (como `C()..f()`),
+* quando a expressão é uma interpolação de String (como `'${f()}'`).
 
-The analyzer only produces this diagnostic on expressions inside an
-`async` or `async*` function.
+O analisador só produz este diagnóstico em expressões dentro de uma
+função `async` ou `async*`.
 
-The two common corrections are to 'await' the expression, or to wrap the
-expression in a call to `unawaited()`.
+As duas correções comuns são fazer 'await' da expressão, ou envolver a
+expressão em uma chamada para `unawaited()`.
 
 ## Example
 
-The following code produces this diagnostic because the function `g`
-returns a future, but the future isn't awaited:
+O código a seguir produz este diagnóstico porque a função `g`
+retorna um future, mas o future não é aguardado:
 
 ```dart
 Future<void> f() async {
@@ -50,8 +49,8 @@ Future<int> g() => Future.value(0);
 
 ## Common fixes
 
-If the future needs to complete before the following code is executed,
-then add an `await` before the invocation:
+Se o future precisa ser completado antes que o código seguinte seja executado,
+então adicione um `await` antes da invocação:
 
 ```dart
 Future<void> f() async {
@@ -61,9 +60,9 @@ Future<void> f() async {
 Future<int> g() => Future.value(0);
 ```
 
-If the future doesn't need to complete before the following code is
-executed, then wrap the `Future`-returning invocation in an invocation of
-the `unawaited` function:
+Se o future não precisa ser completado antes que o código seguinte seja
+executado, então envolva a invocação que retorna `Future` em uma invocação da
+função `unawaited`:
 
 ```dart
 import 'dart:async';

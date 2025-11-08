@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: unnecessary_type_check
-description: >-
-  Details about the unnecessary_type_check
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unnecessary_type_check produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Unnecessary type check; the result is always 'false'._
+_Verificação de tipo desnecessária; o resultado é sempre 'false'._
 
-_Unnecessary type check; the result is always 'true'._
+_Verificação de tipo desnecessária; o resultado é sempre 'true'._
 
 ## Description
 
-The analyzer produces this diagnostic when the value of a type check (using
-either `is` or `is!`) is known at compile time.
+O analisador produz este diagnóstico quando o valor de uma verificação de tipo (usando
+`is` ou `is!`) é conhecido em tempo de compilação.
 
 ## Example
 
-The following code produces this diagnostic because the test `a is Object?`
-is always `true`:
+O código a seguir produz este diagnóstico porque o teste `a is Object?`
+é sempre `true`:
 
 ```dart
 bool f<T>(T a) => [!a is Object?!];
@@ -27,15 +26,15 @@ bool f<T>(T a) => [!a is Object?!];
 
 ## Common fixes
 
-If the type check doesn't check what you intended to check, then change the
-test:
+Se a verificação de tipo não verifica o que você pretendia verificar, então altere o
+teste:
 
 ```dart
 bool f<T>(T a) => a is Object;
 ```
 
-If the type check does check what you intended to check, then replace the
-type check with its known value or completely remove it:
+Se a verificação de tipo verifica o que você pretendia verificar, então substitua a
+verificação de tipo pelo seu valor conhecido ou remova-a completamente:
 
 ```dart
 bool f<T>(T a) => true;

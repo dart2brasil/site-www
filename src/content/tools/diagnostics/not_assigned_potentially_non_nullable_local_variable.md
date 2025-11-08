@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: not_assigned_potentially_non_nullable_local_variable
-description: >-
-  Details about the not_assigned_potentially_non_nullable_local_variable
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico not_assigned_potentially_non_nullable_local_variable produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,18 +10,18 @@ _The non-nullable local variable '{0}' must be assigned before it can be used._
 
 ## Description
 
-The analyzer produces this diagnostic when a local variable is referenced
-and has all these characteristics:
-- Has a type that's [potentially non-nullable][].
-- Doesn't have an initializer.
-- Isn't marked as `late`.
-- The analyzer can't prove that the local variable will be assigned before
-  the reference based on the specification of [definite assignment][].
+O analisador produz este diagnóstico quando uma variável local é referenciada
+e possui todas estas características:
+- Possui um tipo que é [potentially non-nullable][].
+- Não possui um inicializador.
+- Não está marcada como `late`.
+- O analisador não pode provar que a variável local será atribuída antes
+  da referência com base na especificação de [definite assignment][].
 
 ## Examples
 
-The following code produces this diagnostic because `x` can't have a value
-of `null`, but is referenced before a value was assigned to it:
+O código a seguir produz este diagnóstico porque `x` não pode ter um valor
+de `null`, mas é referenciado antes de um valor ser atribuído a ele:
 
 ```dart
 String f() {
@@ -31,8 +30,8 @@ String f() {
 }
 ```
 
-The following code produces this diagnostic because the assignment to `x`
-might not be executed, so it might have a value of `null`:
+O código a seguir produz este diagnóstico porque a atribuição a `x`
+pode não ser executada, então ele pode ter um valor de `null`:
 
 ```dart
 int g(bool b) {
@@ -44,9 +43,9 @@ int g(bool b) {
 }
 ```
 
-The following code produces this diagnostic because the analyzer can't
-prove, based on definite assignment analysis, that `x` won't be referenced
-without having a value assigned to it:
+O código a seguir produz este diagnóstico porque o analisador não pode
+provar, com base na análise de definite assignment, que `x` não será referenciado
+sem ter um valor atribuído a ele:
 
 ```dart
 int h(bool b) {
@@ -63,7 +62,7 @@ int h(bool b) {
 
 ## Common fixes
 
-If `null` is a valid value, then make the variable nullable:
+Se `null` é um valor válido, então torne a variável nullable:
 
 ```dart
 String f() {
@@ -72,8 +71,8 @@ String f() {
 }
 ```
 
-If `null` isn't a valid value, and there's a reasonable default value, then
-add an initializer:
+Se `null` não é um valor válido, e há um valor default razoável, então
+adicione um inicializador:
 
 ```dart
 int g(bool b) {
@@ -85,8 +84,8 @@ int g(bool b) {
 }
 ```
 
-Otherwise, ensure that a value was assigned on every possible code path
-before the value is accessed:
+Caso contrário, garanta que um valor foi atribuído em todos os caminhos de código possíveis
+antes do valor ser acessado:
 
 ```dart
 int g(bool b) {
@@ -100,11 +99,11 @@ int g(bool b) {
 }
 ```
 
-You can also mark the variable as `late`, which removes the diagnostic, but
-if the variable isn't assigned a value before it's accessed, then it
-results in an exception being thrown at runtime. This approach should only
-be used if you're sure that the variable will always be assigned, even
-though the analyzer can't prove it based on definite assignment analysis.
+Você também pode marcar a variável como `late`, o que remove o diagnóstico, mas
+se a variável não for atribuída com um valor antes de ser acessada, então isso
+resulta em uma exceção sendo lançada em tempo de execução. Esta abordagem só deve
+ser usada se você tiver certeza de que a variável sempre será atribuída, mesmo
+que o analisador não possa provar isso com base na análise de definite assignment.
 
 ```dart
 int h(bool b) {

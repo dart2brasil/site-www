@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: unnecessary_null_aware_assignments
-description: >-
-  Details about the unnecessary_null_aware_assignments
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unnecessary_null_aware_assignments produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary assignment of 'null'._
+_Atribuição desnecessária de 'null'._
 
 ## Description
 
-The analyzer produces this diagnostic when the right-hand side of a
-null-aware assignment is the `null` literal.
+O analisador produz este diagnóstico quando o lado direito de uma
+atribuição null-aware é o literal `null`.
 
 ## Example
 
-The following code produces this diagnostic because the null aware
-operator is being used to assign `null` to `s` when `s` is already `null`:
+O código a seguir produz este diagnóstico porque o operador null aware
+está sendo usado para atribuir `null` a `s` quando `s` já é `null`:
 
 ```dart
 void f(String? s) {
@@ -38,8 +37,8 @@ void f(String? s) {
 
 ## Common fixes
 
-If a non-null value should be assigned to the left-hand operand, then
-change the right-hand side:
+Se um valor não-null deve ser atribuído ao operando do lado esquerdo, então
+altere o lado direito:
 
 ```dart
 void f(String? s) {
@@ -47,8 +46,8 @@ void f(String? s) {
 }
 ```
 
-If there is no non-null value to assign to the left-hand operand, then
-remove the assignment:
+Se não houver valor não-null para atribuir ao operando do lado esquerdo, então
+remova a atribuição:
 
 ```dart
 void f(String? s) {

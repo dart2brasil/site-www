@@ -1,124 +1,125 @@
 ---
+ia-translate: true
 title: dart format
-description: Command-line tool for formatting Dart source code.
+description: "Ferramenta de linha de comando para formatar código-fonte Dart."
 ---
 
-To update your code to follow the
-[Dart formatting guidelines][dart-guidelines],
-use the `dart format` command.
-This formatting follows what you get
-when using an IDE or editor with Dart support.
+Para atualizar seu código para seguir as
+[diretrizes de formatação Dart][dart-guidelines],
+use o comando `dart format`.
+Essa formatação segue o que você obtém
+ao usar um IDE ou editor com suporte a Dart.
 
 {% render 'tools/dart-tool-note.md' %}
 
-## Specify files to format
+## Especificar arquivos para formatar {:#specify-files-to-format}
 
-To reformat one or more Dart files,
-provide a list of paths to the desired files or directories.
+Para reformatar um ou mais arquivos Dart,
+forneça uma lista de caminhos para os arquivos ou diretórios desejados.
 
-### Specify one path
+### Especificar um caminho {:#specify-one-path}
 
-Provide the path to one file or directory.
-If you pass a directory path,
-`dart format` recurses into its subdirectories as well.
+Forneça o caminho para um arquivo ou diretório.
+Se você passar o caminho de um diretório,
+o `dart format` percorre recursivamente seus subdiretórios também.
 
-**Example:** To format all the Dart files in or under the current directory:
+**Exemplo:** Para formatar todos os arquivos Dart no diretório atual ou abaixo dele:
 
 ```console
 $ dart format .
 ```
 
-### Specify multiple paths
+### Especificar múltiplos caminhos {:#specify-multiple-paths}
 
-To specify multiple files or directories, use a space-delimited list.
+Para especificar vários arquivos ou diretórios, use uma lista delimitada por espaços.
 
-**Example:** To format all Dart files under the `lib` directory,
-plus one Dart file under the `bin` directory:
+**Exemplo:** Para formatar todos os arquivos Dart no diretório `lib`,
+mais um arquivo Dart no diretório `bin`:
 
 ```console
-$ dart format lib bin/updater.dart 
+$ dart format lib bin/updater.dart
 ```
 
-### Prevent overwriting Dart files
+### Impedir a sobrescrita de arquivos Dart {:#prevent-overwriting-dart-files}
 
-By default, `dart format` **overwrites** the Dart files.
+Por padrão, `dart format` **sobrescreve** os arquivos Dart.
 
-* To not overwrite the files, add the `--output` or `-o` flag.
-* To get the contents of the formatted files, add `-o show` or `-o json`.
-* To see only which files _would_ change, add `-o none`.
+* Para não sobrescrever os arquivos, adicione a flag `--output` ou `-o`.
+* Para obter o conteúdo dos arquivos formatados, adicione `-o show` ou `-o json`.
+* Para ver apenas quais arquivos _seriam_ alterados, adicione `-o none`.
 
 ```console
 $ dart format -o show bin/my_app.dart
 ```
 
-## Notify when changes occur
+## Notificar quando ocorrem alterações {:#notify-when-changes-occur}
 
-To make `dart format` return an exit code when formatting changes occur,
-add the `--set-exit-if-changed` flag.
+Para fazer o `dart format` retornar um código de saída quando ocorrerem alterações de formatação,
+adicione a flag `--set-exit-if-changed`.
 
-* If changes occur, the `dart format` command returns an exit code of `1`.
-* If changes don't occur, the `dart format` command returns an exit code of `0`.
+* Se ocorrerem alterações, o comando `dart format` retorna um código de saída `1`.
+* Se não ocorrerem alterações, o comando `dart format` retorna um código de saída `0`.
 
-Use exit codes with continuous integration (CI) systems
-so they can trigger another action in response to the exit code.
+Use códigos de saída com sistemas de integração contínua (CI)
+para que eles possam acionar outra ação em resposta ao código de saída.
 
 ```console
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
-## What changes?
+## Quais alterações são feitas? {:#what-changes}
 
-`dart format` makes the following formatting changes:
+O `dart format` faz as seguintes alterações de formatação:
 
-* Removes whitespace.
-* Wraps every line to 80 characters long or shorter.
-* Adds trailing commas to any argument or parameter list
-that splits across multiple lines, and removes them from ones that don't.
-* Might move comments before or after a comma.
+* Remove whitespace.
+* Quebra cada linha em 80 caracteres ou menos.
+* Adiciona trailing commas a qualquer lista de argumentos ou parâmetros
+que se divide em várias linhas, e os remove daquelas que não se dividem.
+* Pode mover comentários antes ou depois de uma vírgula.
 
-To learn more about best practices for writing and styling Dart code,
-check out the [Dart style guide][].
+Para saber mais sobre as melhores práticas para escrever e estilizar código Dart,
+confira o [guia de estilo Dart][Dart style guide].
 
-### Configuring formatter page width
+### Configurando a largura de página do formatter {:#configuring-formatter-page-width}
 
-When you run `dart format`, the formatter defaults to
-80 character line length or shorter. 
-If you'd like to configure the line length for your project,
-you can add a top-level `formatter` section to the
-[`analysis_options.yaml`][] file, like so:
+Quando você executa o `dart format`, o formatter usa por padrão
+o comprimento de linha de 80 caracteres ou menos.
+Se você quiser configurar o comprimento de linha para seu projeto,
+pode adicionar uma seção `formatter` no nível superior do
+arquivo [`analysis_options.yaml`][], assim:
 
 ```yaml title="analysis_options.yaml"
 formatter:
   page_width: 123
 ```
 
-With the analysis options file typically at the root,
-the configured line length will apply to everything in the package.
+Com o arquivo de opções de análise normalmente na raiz,
+o comprimento de linha configurado se aplicará a tudo no pacote.
 
-You can also configure individual files' line length,
-overriding the analysis options file,
-with a marker comment at the top of the file before any other code:
+Você também pode configurar o comprimento de linha de arquivos individuais,
+sobrescrevendo o arquivo de opções de análise,
+com um comentário marcador no topo do arquivo antes de qualquer outro código:
 
 ```dart
 // dart format width=123
 ```
 
 :::version-note
-Configurable page width requires
-a [language version][] of at least 3.7.
+A largura de página configurável requer
+uma [versão da linguagem][language version] de pelo menos 3.7.
 :::
 
-## Learn more
+## Saiba mais {:#learn-more}
 
-To learn about additional command-line options,
-use the `dart help` command or see the documentation for the
-[dart_style package][dart_style]
+Para saber mais sobre opções adicionais de linha de comando,
+use o comando `dart help` ou consulte a documentação do
+[pacote dart_style][dart_style]
 
 ```console
 $ dart help format
 ```
 
-Check out the [formatter FAQ][] for more context behind formatting decisions.
+Confira o [FAQ do formatter][formatter FAQ] para mais contexto sobre as decisões de formatação.
 
 [Dart style guide]: /effective-dart/style
 [dart_style]: {{site.pub-pkg}}/dart_style

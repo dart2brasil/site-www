@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: multiple_combinators
-description: >-
-  Details about the multiple_combinators
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico multiple_combinators produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Using multiple 'hide' or 'show' combinators is never necessary and often produces surprising results._
+_Usar múltiplos combinators 'hide' ou 'show' nunca é necessário e frequentemente produz resultados surpreendentes._
 
 ## Description
 
-The analyzer produces this diagnostic when an import or export directive
-contains more than one combinator.
+O analisador produz este diagnóstico quando uma diretiva import ou export
+contém mais de um combinator.
 
 ## Examples
 
-The following code produces this diagnostic because the second `show`
-combinator hides `List` and `int`:
+O código a seguir produz este diagnóstico porque o segundo combinator `show`
+oculta `List` e `int`:
 
 ```dart
 import 'dart:core' [!show Future, List, int show Future!];
@@ -25,8 +24,8 @@ import 'dart:core' [!show Future, List, int show Future!];
 var x = Future.value(1);
 ```
 
-The following code produces this diagnostic because
-the second `hide` combinator is redundant:
+O código a seguir produz este diagnóstico porque
+o segundo combinator `hide` é redundante:
 
 ```dart
 import 'dart:math' [!hide Random, max, min hide min!];
@@ -34,8 +33,8 @@ import 'dart:math' [!hide Random, max, min hide min!];
 var x = pi;
 ```
 
-The following codes produce this diagnostic because
-the `hide` combinator is redundant:
+Os códigos a seguir produzem este diagnóstico porque
+o combinator `hide` é redundante:
 
 ```dart
 import 'dart:math' [!show Random, max hide min!];
@@ -44,9 +43,9 @@ var x = max(0, 1);
 var r = Random();
 ```
 
-The following code produces this diagnostic because
-the `show` combinator already hides `Random` and `max`,
-so the `hide` combinator is redundant:
+O código a seguir produz este diagnóstico porque
+o combinator `show` já oculta `Random` e `max`,
+então o combinator `hide` é redundante:
 
 ```dart
 import 'dart:math' [!hide Random, max show min!];
@@ -56,8 +55,8 @@ var x = min(0, 1);
 
 ## Common fixes
 
-If you prefer to list the names that should be visible,
-then use a single `show` combinator:
+Se você prefere listar os nomes que devem ser visíveis,
+então use um único combinator `show`:
 
 ```dart
 import 'dart:math' show min;
@@ -65,8 +64,8 @@ import 'dart:math' show min;
 var x = min(0, 1);
 ```
 
-If you prefer to list the names that should be hidden,
-then use a single `hide` combinator:
+Se você prefere listar os nomes que devem ser ocultados,
+então use um único combinator `hide`:
 
 ```dart
 import 'dart:math' hide Random, max, min;

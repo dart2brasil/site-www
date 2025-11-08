@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: throw_of_invalid_type
-description: >-
-  Details about the throw_of_invalid_type
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico throw_of_invalid_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' of the thrown expression must be assignable to 'Object'._
+_O type '{0}' da expressão lançada deve ser atribuível a 'Object'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type of the expression in a
-throw expression isn't assignable to `Object`. It isn't valid to throw
-`null`, so it isn't valid to use an expression that might evaluate to
+O analisador produz este diagnóstico quando o tipo da expressão em uma
+expressão throw não é atribuível a `Object`. Não é válido lançar
+`null`, então não é válido usar uma expressão que possa ser avaliada como
 `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `s` might be `null`:
+O código a seguir produz este diagnóstico porque `s` pode ser `null`:
 
 ```dart
 void f(String? s) {
@@ -26,9 +25,9 @@ void f(String? s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an explicit null-check to the expression:
+Adicione uma verificação explícita de null à expressão:
 
 ```dart
 void f(String? s) {

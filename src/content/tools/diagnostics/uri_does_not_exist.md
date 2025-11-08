@@ -1,30 +1,29 @@
 ---
+ia-translate: true
 title: uri_does_not_exist
-description: >-
-  Details about the uri_does_not_exist
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico uri_does_not_exist produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Target of URI doesn't exist: '{0}'._
+_O destino do URI não existe: '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an import, export, or part
-directive is found where the URI refers to a file that doesn't exist.
+O analisador produz este diagnóstico quando uma diretiva import, export ou part
+é encontrada onde o URI se refere a um arquivo que não existe.
 
-## Examples
+## Exemplos
 
-If the file `lib.dart` doesn't exist, the following code produces this
-diagnostic:
+Se o arquivo `lib.dart` não existe, o código a seguir produz este
+diagnóstico:
 
 ```dart
 import [!'lib.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
-If the URI was mistyped or invalid, then correct the URI.
+Se o URI foi digitado incorretamente ou é inválido, então corrija o URI.
 
-If the URI is correct, then create the file.
+Se o URI está correto, então crie o arquivo.

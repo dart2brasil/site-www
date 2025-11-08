@@ -1,45 +1,44 @@
 ---
 title: list_element_type_not_assignable
-description: >-
-  Details about the list_element_type_not_assignable
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico list_element_type_not_assignable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The element type '{0}' can't be assigned to the list type '{1}'._
+_O tipo do elemento '{0}' não pode ser atribuído ao tipo da list '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type of an element in a list
-literal isn't assignable to the element type of the list.
+O analisador produz este diagnóstico quando o tipo de um elemento em um
+literal de list não é atribuível ao tipo de elemento da list.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `2.5` is a double, and
-the list can hold only integers:
+O código a seguir produz este diagnóstico porque `2.5` é um double, e
+a list só pode conter inteiros:
 
 ```dart
 List<int> x = [1, [!2.5!], 3];
 ```
 
-## Common fixes
+## Correções comuns
 
-If you intended to add a different object to the list, then replace the
-element with an expression that computes the intended object:
+Se você pretendia adicionar um objeto diferente à list, então substitua o
+elemento por uma expressão que calcule o objeto pretendido:
 
 ```dart
 List<int> x = [1, 2, 3];
 ```
 
-If the object shouldn't be in the list, then remove the element:
+Se o objeto não deveria estar na list, então remova o elemento:
 
 ```dart
 List<int> x = [1, 3];
 ```
 
-If the object being computed is correct, then widen the element type of the
-list to allow all of the different types of objects it needs to contain:
+Se o objeto sendo calculado está correto, então amplie o tipo de elemento da
+list para permitir todos os diferentes tipos de objetos que ela precisa conter:
 
 ```dart
 List<num> x = [1, 2.5, 3];

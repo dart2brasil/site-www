@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: unused_local_variable
-description: >-
-  Details about the unused_local_variable
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unused_local_variable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The value of the local variable '{0}' isn't used._
+_O valor da variável local '{0}' não é usado._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a local variable is declared but
-never read, even if it's written in one or more places.
+O analisador produz este diagnóstico quando uma variável local é declarada mas
+nunca lida, mesmo que seja escrita em um ou mais lugares.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of `count` is
-never read:
+O código a seguir produz este diagnóstico porque o valor de `count` nunca é
+lido:
 
 ```dart
 void main() {
@@ -25,8 +24,8 @@ void main() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the variable isn't needed, then remove it.
+Se a variável não é necessária, então remova-a.
 
-If the variable was intended to be used, then add the missing code.
+Se a variável era para ser usada, então adicione o código faltante.

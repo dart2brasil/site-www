@@ -1,104 +1,103 @@
 ---
-title: What not to commit
-description: >-
-  Your development tools generate a bunch of files.
-  Not all of them should be committed.
+ia-translate: true
+title: "O que não commitar"
+description: Suas ferramentas de desenvolvimento geram um monte de arquivos. Nem todos eles devem ser commitados.
 ---
 
-When you put Dart source code in a repository—using the
-[pub tool](/tools/pub/cmd), [GitHub](https://github.com/),
-or another source code management system—don't include most of the files
-that your IDE or code editor, the pub tool, and other tools generate.
+Quando você coloca código-fonte Dart em um repositório — usando a
+[ferramenta pub](/tools/pub/cmd), [GitHub](https://github.com/),
+ou outro sistema de gerenciamento de código-fonte — não inclua a maioria dos arquivos
+que seu IDE ou editor de código, a ferramenta pub e outras ferramentas geram.
 
 :::note
-Except where noted, this page discusses only source code repositories,
-_not_ app deployment.
-Some files that you wouldn't normally put in a repository
-are useful or essential when you deploy an app.
+Exceto onde indicado, esta página discute apenas repositórios de código-fonte,
+_não_ o deploy do aplicativo.
+Alguns arquivos que você normalmente não colocaria em um repositório
+são úteis ou essenciais quando você faz o deploy de um aplicativo.
 :::
 
-## The rules
+## As regras {:#the-rules}
 
-**Don't commit** the following files and directories
-created by pub:
+**Não commite** os seguintes arquivos e diretórios
+criados pelo pub:
 
 ```plaintext
 .dart_tool/
 build/
-pubspec.lock  # Except for application packages
+pubspec.lock  # Exceto para pacotes de aplicação
 ```
 
-**Don't commit** the API documentation directory
-created by [`dart doc`](/tools/dart-doc):
+**Não commite** o diretório de documentação da API
+criado por [`dart doc`](/tools/dart-doc):
 
 ```plaintext
 doc/api/
 ```
 
-**Don't commit** files and directories
-created by other development environments.
-For example, if your development environment creates
-any of the following files,
-consider putting them in a global ignore file:
+**Não commite** arquivos e diretórios
+criados por outros ambientes de desenvolvimento.
+Por exemplo, se seu ambiente de desenvolvimento criar
+qualquer um dos seguintes arquivos,
+considere colocá-los em um arquivo de ignore global:
 
 ```plaintext
-# IntelliJ
+# IntelliJ {:#intellij}
 *.iml
 *.ipr
 *.iws
 .idea/
 
-# Mac
+# Mac {:#mac}
 .DS_Store
 ```
 
-For more details, read on.
+Para mais detalhes, continue lendo.
 
-## Details
+## Detalhes {:#details}
 
-As a rule, commit only the files that people need
-to use your package or source code repository.
-Including additional files is unnecessary,
-could be counterproductive,
-and might have security implications
-if you expose details about your machine's setup.
-In many source code repositories,
-the common practice is not to commit generated files, at all.
+Como regra geral, commite apenas os arquivos que as pessoas precisam
+para usar seu pacote ou repositório de código-fonte.
+Incluir arquivos adicionais é desnecessário,
+poderia ser contraproducente,
+e pode ter implicações de segurança
+se você expor detalhes sobre a configuração da sua máquina.
+Em muitos repositórios de código-fonte,
+a prática comum é não commitar arquivos gerados, de forma alguma.
 
-To avoid committing files that are
-specific to your personal workflow or setup,
-consider using a global ignore file
-(for example, `.gitignore_global`).
+Para evitar commitar arquivos que são
+específicos do seu fluxo de trabalho pessoal ou configuração,
+considere usar um arquivo de ignore global
+(por exemplo, `.gitignore_global`).
 
-When you use pub from within a Git repo,
-pub ignores the same files that Git does.
-For example, if you run `pub publish` from a Git repo
-that has a `.gitignore` file containing `keys.txt`,
-then your published package won't contain the `keys.txt` file.
+Quando você usa o pub de dentro de um repositório Git,
+o pub ignora os mesmos arquivos que o Git ignora.
+Por exemplo, se você executar `pub publish` de um repositório Git
+que tenha um arquivo `.gitignore` contendo `keys.txt`,
+então seu pacote publicado não conterá o arquivo `keys.txt`.
 
-For more information on `.gitignore` files,
-see the GitHub help page
-[Ignoring files.](https://help.github.com/articles/ignoring-files)
+Para mais informações sobre arquivos `.gitignore`,
+veja a página de ajuda do GitHub
+[Ignorando arquivos.](https://help.github.com/articles/ignoring-files)
 
-### .dart_tool/
+### .dart_tool/ {:#dart-tool}
 
-The `.dart_tool/` directory contains files used by 
-various Dart tools.
+O diretório `.dart_tool/` contém arquivos usados por
+várias ferramentas Dart.
 
 
-### pubspec.lock
+### pubspec.lock {:#pubspec-lock}
 
-The `pubspec.lock` file is a special case,
-similar to Ruby's `Gemfile.lock`.
+O arquivo `pubspec.lock` é um caso especial,
+semelhante ao `Gemfile.lock` do Ruby.
 
-**For regular packages**, **don't commit** the `pubspec.lock` file.
-Regenerating the `pubspec.lock` file lets you test your package
-against the latest compatible versions of its dependencies.
+**Para pacotes regulares**, **não commite** o arquivo `pubspec.lock`.
+Regenerar o arquivo `pubspec.lock` permite testar seu pacote
+contra as versões compatíveis mais recentes de suas dependências.
 
-**For application packages**, 
-we recommend that you commit the `pubspec.lock` file.
-Versioning the `pubspec.lock` file
-ensures changes to transitive dependencies are explicit.
-Each time the dependencies change due to `dart pub upgrade`
-or a change in `pubspec.yaml` 
-the difference will be apparent in the lock file.
+**Para pacotes de aplicação**,
+recomendamos que você commite o arquivo `pubspec.lock`.
+Versionar o arquivo `pubspec.lock`
+garante que as mudanças nas dependências transitivas sejam explícitas.
+Cada vez que as dependências mudam devido a `dart pub upgrade`
+ou uma mudança em `pubspec.yaml`
+a diferença ficará aparente no arquivo de lock.

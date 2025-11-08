@@ -1,25 +1,23 @@
 ---
+ia-translate: true
 title: expected_two_map_pattern_type_arguments
-description: >-
-  Details about the expected_two_map_pattern_type_arguments
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico expected_two_map_pattern_type_arguments produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Map patterns require two type arguments or none, but {0} found._
+_Padrões de mapa exigem dois argumentos de tipo ou nenhum, mas {0} foi encontrado._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a map pattern has either one
-type argument or more than two type arguments. Map patterns can have
-either two type arguments or zero type arguments, but can't have any other
-number.
+O analisador produz este diagnóstico quando um padrão de mapa tem um ou
+mais de dois argumentos de tipo. Padrões de mapa podem ter dois argumentos
+de tipo ou zero argumentos de tipo, mas não podem ter qualquer outro número.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the map pattern
-(`<int>{}`) has one type argument:
+O código a seguir produz este diagnóstico porque o padrão de mapa
+(`<int>{}`) tem um argumento de tipo:
 
 ```dart
 void f(Object x) {
@@ -27,9 +25,9 @@ void f(Object x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add or remove type arguments until there are two, or none:
+Adicione ou remova argumentos de tipo até que haja dois ou nenhum:
 
 ```dart
 void f(Object x) {

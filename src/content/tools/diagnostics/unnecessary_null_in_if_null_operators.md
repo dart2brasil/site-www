@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: unnecessary_null_in_if_null_operators
-description: >-
-  Details about the unnecessary_null_in_if_null_operators
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unnecessary_null_in_if_null_operators produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary use of '??' with 'null'._
+_Uso desnecessário de '??' com 'null'._
 
 ## Description
 
-The analyzer produces this diagnostic when the right operand of the `??`
-operator is the literal `null`.
+O analisador produz este diagnóstico quando o operando direito do operador `??`
+é o literal `null`.
 
 ## Example
 
-The following code produces this diagnostic because the right-hand operand
-of the `??` operator is `null`:
+O código a seguir produz este diagnóstico porque o operando do lado direito
+do operador `??` é `null`:
 
 ```dart
 String? f(String? s) => s ?? [!null!];
@@ -36,15 +35,15 @@ String? f(String? s) => s ?? [!null!];
 
 ## Common fixes
 
-If a non-null value should be used for the right-hand operand, then
-change the right-hand side:
+Se um valor não-null deve ser usado para o operando do lado direito, então
+altere o lado direito:
 
 ```dart
 String f(String? s) => s ?? '';
 ```
 
-If there is no non-null value to use for the right-hand operand, then
-remove the operator and the right-hand operand:
+Se não houver valor não-null para usar no operando do lado direito, então
+remova o operador e o operando do lado direito:
 
 ```dart
 String? f(String? s) => s;

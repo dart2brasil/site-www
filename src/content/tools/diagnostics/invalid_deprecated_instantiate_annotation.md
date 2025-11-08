@@ -1,25 +1,25 @@
 ---
+ia-translate: true
 title: invalid_deprecated_instantiate_annotation
-description: >-
-  Details about the invalid_deprecated_instantiate_annotation
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_deprecated_instantiate_annotation produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@Deprecated.instantiate' can only be applied to classes._
+_A annotation '@Deprecated.instantiate' só pode ser aplicada a classes._
 
 ## Description
 
-The analyzer produces this diagnostic when the `@Deprecated.instantiate`
-annotation is applied to a declaration that isn't an instantiable class.
-An instantiable class is one that isn't declared with the `abstract` or
-`sealed` keywords and has at least one public, generative constructor.
+O analisador produz este diagnóstico quando a annotation
+`@Deprecated.instantiate` é aplicada a uma declaração que não é uma classe
+instanciável. Uma classe instanciável é aquela que não é declarada com as
+keywords `abstract` ou `sealed` e tem pelo menos um construtor público e
+generativo.
 
 ## Example
 
-The following code produces this diagnostic because the annotation is on a
-sealed class:
+O código a seguir produz este diagnóstico porque a annotation está em uma
+classe sealed:
 
 ```dart
 @[!Deprecated.instantiate!]()
@@ -28,7 +28,7 @@ sealed class C {}
 
 ## Common fixes
 
-Remove the annotation:
+Remova a annotation:
 
 ```dart
 sealed class C {}

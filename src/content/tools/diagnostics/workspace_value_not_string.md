@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: workspace_value_not_string
-description: >-
-  Details about the workspace_value_not_string
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico workspace_value_not_string produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Workspace entries are required to be directory paths (strings)._
+_Entradas de workspace são obrigatórias para serem caminhos de diretórios (strings)._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `workspace` list contains a
-value that isn't a string.
+O analisador produz este diagnóstico quando uma lista `workspace` contém um
+valor que não é uma string.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `workspace` list
-contains a map:
+O código a seguir produz este diagnóstico porque a lista `workspace`
+contém um mapa:
 
 ```yaml
 name: example
@@ -25,10 +24,10 @@ workspace:
     - [!image.gif: true!]
 ```
 
-## Common fixes
+## Correções comuns
 
-Change the `workspace` list so that it only contains valid POSIX-style directory
-paths:
+Altere a lista `workspace` para que ela contenha apenas caminhos de diretórios
+no estilo POSIX válidos:
 
 ```yaml
 name: example

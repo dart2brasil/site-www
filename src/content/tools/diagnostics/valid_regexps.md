@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: valid_regexps
-description: >-
-  Details about the valid_regexps
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico valid_regexps produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,21 +17,21 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Invalid regular expression syntax._
+_Sintaxe de expressão regular inválida._
 
 ## Description
 
-The analyzer produces this diagnostic when the string passed to the
-default constructor of the class `RegExp` doesn't contain a valid regular
-expression.
+O analisador produz este diagnóstico quando a string passada para o
+construtor padrão da classe `RegExp` não contém uma expressão regular
+válida.
 
-A regular expression created with invalid syntax will throw a
-`FormatException` at runtime.
+Uma expressão regular criada com sintaxe inválida lançará uma
+`FormatException` em tempo de execução.
 
 ## Example
 
-The following code produces this diagnostic because the regular expression
-isn't valid:
+O código a seguir produz este diagnóstico porque a expressão regular
+não é válida:
 
 ```dart
 var r = RegExp([!r'('!]);
@@ -40,7 +39,7 @@ var r = RegExp([!r'('!]);
 
 ## Common fixes
 
-Fix the regular expression:
+Corrija a expressão regular:
 
 ```dart
 var r = RegExp(r'\(');

@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: non_final_field_in_enum
-description: >-
-  Details about the non_final_field_in_enum
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico non_final_field_in_enum produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Enums can only declare final fields._
+_Enums só podem declarar campos final._
 
 ## Description
 
-The analyzer produces this diagnostic when an instance field in an enum
-isn't marked as `final`.
+O analisador produz este diagnóstico quando um campo de instância em um enum
+não está marcado como `final`.
 
 ## Example
 
-The following code produces this diagnostic because the field `f` isn't a
-final field:
+O código a seguir produz este diagnóstico porque o campo `f` não é um
+campo final:
 
 ```dart
 enum E {
@@ -29,7 +28,7 @@ enum E {
 
 ## Common fixes
 
-If the field must be defined for the enum, then mark the field as being
+Se o campo deve ser definido para o enum, então marque o campo como sendo
 `final`:
 
 ```dart
@@ -40,7 +39,7 @@ enum E {
 }
 ```
 
-If the field can be removed, then remove it:
+Se o campo pode ser removido, então remova-o:
 
 ```dart
 enum E {

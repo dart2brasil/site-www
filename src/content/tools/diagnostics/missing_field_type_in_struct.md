@@ -1,27 +1,26 @@
 ---
 title: missing_field_type_in_struct
-description: >-
-  Details about the missing_field_type_in_struct
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico missing_field_type_in_struct produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_Fields in struct classes must have an explicitly declared type of 'int', 'double' or 'Pointer'._
+_Campos em classes struct devem ter um tipo declarado explicitamente de 'int', 'double' ou 'Pointer'._
 
 ## Description
 
-The analyzer produces this diagnostic when a field in a subclass of
-`Struct` or `Union` doesn't have a type annotation. Every field must have
-an explicit type, and the type must either be `int`, `double`, `Pointer`,
-or a subclass of either `Struct` or `Union`.
+O analisador produz este diagnóstico quando um campo em uma subclasse de
+`Struct` ou `Union` não tem uma anotação de tipo. Todo campo deve ter
+um tipo explícito, e o tipo deve ser `int`, `double`, `Pointer`,
+ou uma subclasse de `Struct` ou `Union`.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because the field `str`
-doesn't have a type annotation:
+O código a seguir produz este diagnóstico porque o campo `str`
+não tem uma anotação de tipo:
 
 ```dart
 import 'dart:ffi';
@@ -36,7 +35,7 @@ final class C extends Struct {
 
 ## Common fixes
 
-Explicitly specify the type of the field:
+Especifique explicitamente o tipo do campo:
 
 ```dart
 import 'dart:ffi';

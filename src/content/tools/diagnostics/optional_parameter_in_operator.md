@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: optional_parameter_in_operator
-description: >-
-  Details about the optional_parameter_in_operator
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico optional_parameter_in_operator produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Optional parameters aren't allowed when defining an operator._
+_Parâmetros opcionais não são permitidos ao definir um operador._
 
 ## Description
 
-The analyzer produces this diagnostic when one or more of the parameters in
-an operator declaration are optional.
+O analisador produz este diagnóstico quando um ou mais dos parâmetros em
+uma declaração de operador são opcionais.
 
 ## Example
 
-The following code produces this diagnostic because the parameter `other`
-is an optional parameter:
+O código a seguir produz este diagnóstico porque o parâmetro `other`
+é um parâmetro opcional:
 
 ```dart
 class C {
@@ -27,7 +26,7 @@ class C {
 
 ## Common fixes
 
-Make all of the parameters be required parameters:
+Faça todos os parâmetros serem parâmetros obrigatórios:
 
 ```dart
 class C {

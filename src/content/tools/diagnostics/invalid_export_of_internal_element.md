@@ -1,23 +1,21 @@
 ---
+ia-translate: true
 title: invalid_export_of_internal_element
-description: >-
-  Details about the invalid_export_of_internal_element
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_export_of_internal_element produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The member '{0}' can't be exported as a part of a package's public API._
+_O membro '{0}' não pode ser exportado como parte da API pública de um pacote._
 
 ## Description
 
-The analyzer produces this diagnostic when a [public library][] exports a
-declaration that is marked with the [`internal`][meta-internal]
-annotation.
+O analisador produz este diagnóstico quando uma [public library][] exporta
+uma declaração que é marcada com a annotation [`internal`][meta-internal].
 
 ## Example
 
-Given a file `a.dart` in the `src` directory that contains:
+Dado um arquivo `a.dart` no diretório `src` que contém:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -25,9 +23,9 @@ import 'package:meta/meta.dart';
 @internal class One {}
 ```
 
-The following code, when found in a [public library][] produces this
-diagnostic because the `export` directive is exporting a name that is only
-intended to be used internally:
+O código a seguir, quando encontrado em uma [public library][], produz
+este diagnóstico porque a diretiva `export` está exportando um nome que é
+destinado apenas para uso interno:
 
 ```dart
 [!export 'src/a.dart';!]
@@ -35,14 +33,14 @@ intended to be used internally:
 
 ## Common fixes
 
-If the export is needed, then add a `hide` clause to hide the internal
-names:
+Se o export é necessário, adicione uma cláusula `hide` para ocultar os
+nomes internos:
 
 ```dart
 export 'src/a.dart' hide One;
 ```
 
-If the export isn't needed, then remove it.
+Se o export não é necessário, remova-o.
 
 [meta-internal]: https://pub.dev/documentation/meta/latest/meta/internal-constant.html
 [public library]: /resources/glossary#public-library

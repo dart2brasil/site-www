@@ -1,22 +1,21 @@
 ---
 title: mixin_instantiate
-description: >-
-  Details about the mixin_instantiate
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico mixin_instantiate produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_Mixins can't be instantiated._
+_Mixins não podem ser instanciados._
 
 ## Description
 
-The analyzer produces this diagnostic when a mixin is instantiated.
+O analisador produz este diagnóstico quando um mixin é instanciado.
 
 ## Example
 
-The following code produces this diagnostic because the mixin `M` is being
-instantiated:
+O código a seguir produz este diagnóstico porque o mixin `M` está sendo
+instanciado:
 
 ```dart
 mixin M {}
@@ -26,5 +25,5 @@ var m = [!M!]();
 
 ## Common fixes
 
-If you intend to use an instance of a class, then use the name of that
-class in place of the name of the mixin.
+Se você pretende usar uma instância de uma classe, então use o nome dessa
+classe no lugar do nome do mixin.

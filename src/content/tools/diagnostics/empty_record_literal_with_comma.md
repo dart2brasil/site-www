@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: empty_record_literal_with_comma
-description: >-
-  Details about the empty_record_literal_with_comma
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico empty_record_literal_with_comma produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A record literal without fields can't have a trailing comma._
+_Um literal de record sem campos não pode ter uma vírgula final._
 
 ## Description
 
-The analyzer produces this diagnostic when a record literal that has no
-fields has a trailing comma. Empty record literals can't contain a comma.
+O analisador produz este diagnóstico quando um literal de record que não tem
+campos possui uma vírgula final. Literais de record empty não podem conter uma vírgula.
 
 ## Example
 
-The following code produces this diagnostic because the empty record
-literal has a trailing comma:
+O código a seguir produz este diagnóstico porque o literal de record empty
+tem uma vírgula final:
 
 ```dart
 var r = ([!,!]);
@@ -25,14 +24,14 @@ var r = ([!,!]);
 
 ## Common fixes
 
-If the record is intended to be empty, then remove the comma:
+Se o record deve ser empty, então remova a vírgula:
 
 ```dart
 var r = ();
 ```
 
-If the record is intended to have one or more fields, then add the
-expressions used to compute the values of those fields:
+Se o record deve ter um ou mais campos, então adicione as
+expressões usadas para calcular os valores desses campos:
 
 ```dart
 var r = (3, 4);

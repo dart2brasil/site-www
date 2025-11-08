@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: deprecated_member_use_from_same_package
-description: >-
-  Details about the deprecated_member_use_from_same_package
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico deprecated_member_use_from_same_package produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is deprecated and shouldn't be used._
+_'{0}' está deprecated e não deve ser usado._
 
-_'{0}' is deprecated and shouldn't be used. {1}_
+_'{0}' está deprecated e não deve ser usado. {1}_
 
 ## Description
 
-The analyzer produces this diagnostic when a deprecated library member or
-class member is used in the same package in which it's declared.
+O analisador produz este diagnóstico quando um membro de biblioteca ou
+classe deprecated é usado no mesmo pacote em que está declarado.
 
 ## Example
 
-The following code produces this diagnostic because `x` is deprecated:
+O código a seguir produz este diagnóstico porque `x` está deprecated:
 
 ```dart
 @deprecated
@@ -28,6 +27,6 @@ var y = [!x!];
 
 ## Common fixes
 
-The fix depends on what's been deprecated and what the replacement is. The
-documentation for deprecated declarations should indicate what code to use
-in place of the deprecated code.
+A correção depende do que foi deprecated e qual é o substituto. A
+documentação para declarações deprecated deve indicar qual código usar
+no lugar do código deprecated.

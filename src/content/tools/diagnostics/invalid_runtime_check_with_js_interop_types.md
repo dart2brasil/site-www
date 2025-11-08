@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: invalid_runtime_check_with_js_interop_types
-description: >-
-  Details about the invalid_runtime_check_with_js_interop_types
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_runtime_check_with_js_interop_types produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,31 +17,31 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Cast from '{0}' to '{1}' casts a Dart value to a JS interop type, which might not be platform-consistent._
+_Cast de '{0}' para '{1}' converte um valor Dart para um tipo JS interop, o que pode não ser consistente entre plataformas._
 
-_Cast from '{0}' to '{1}' casts a JS interop value to a Dart type, which might not be platform-consistent._
+_Cast de '{0}' para '{1}' converte um valor JS interop para um tipo Dart, o que pode não ser consistente entre plataformas._
 
-_Cast from '{0}' to '{1}' casts a JS interop value to an incompatible JS interop type, which might not be platform-consistent._
+_Cast de '{0}' para '{1}' converte um valor JS interop para um tipo JS interop incompatível, o que pode não ser consistente entre plataformas._
 
-_Runtime check between '{0}' and '{1}' checks whether a Dart value is a JS interop type, which might not be platform-consistent._
+_Verificação em tempo de execução entre '{0}' e '{1}' verifica se um valor Dart é um tipo JS interop, o que pode não ser consistente entre plataformas._
 
-_Runtime check between '{0}' and '{1}' checks whether a JS interop value is a Dart type, which might not be platform-consistent._
+_Verificação em tempo de execução entre '{0}' e '{1}' verifica se um valor JS interop é um tipo Dart, o que pode não ser consistente entre plataformas._
 
-_Runtime check between '{0}' and '{1}' involves a non-trivial runtime check between two JS interop types that might not be platform-consistent._
+_Verificação em tempo de execução entre '{0}' e '{1}' envolve uma verificação em tempo de execução não trivial entre dois tipos JS interop que pode não ser consistente entre plataformas._
 
-_Runtime check between '{0}' and '{1}' involves a runtime check between a JS interop value and an unrelated JS interop type that will always be true and won't check the underlying type._
+_Verificação em tempo de execução entre '{0}' e '{1}' envolve uma verificação em tempo de execução entre um valor JS interop e um tipo JS interop não relacionado que sempre será true e não verificará o tipo subjacente._
 
 ## Description
 
-The analyzer produces this diagnostic when an `is` test has either:
-- a JS interop type on the right-hand side, whether directly or as a type
-  argument to another type, or
-- a JS interop value on the left-hand side.
+O analisador produz este diagnóstico quando um teste `is` possui:
+- um tipo JS interop no lado direito, seja diretamente ou como um argumento
+  de tipo para outro tipo, ou
+- um valor JS interop no lado esquerdo.
 
 ## Examples
 
-The following code produces this diagnostic because the JS interop type
-`JSBoolean` is on the right-hand side of an `is` test:
+O código a seguir produz este diagnóstico porque o tipo JS interop
+`JSBoolean` está no lado direito de um teste `is`:
 
 ```dart
 import 'dart:js_interop';
@@ -50,9 +49,9 @@ import 'dart:js_interop';
 bool f(Object b) => [!b is JSBoolean!];
 ```
 
-The following code produces this diagnostic because the JS interop type
-`JSString` is used as a type argument on the right-hand side of an `is`
-test:
+O código a seguir produz este diagnóstico porque o tipo JS interop
+`JSString` é usado como um argumento de tipo no lado direito de um teste
+`is`:
 
 ```dart
 import 'dart:js_interop';
@@ -60,8 +59,8 @@ import 'dart:js_interop';
 bool f(List<Object> l) => [!l is List<JSString>!];
 ```
 
-The following code produces this diagnostic because the JS interop value
-`a` is on the left-hand side of an `is` test:
+O código a seguir produz este diagnóstico porque o valor JS interop
+`a` está no lado esquerdo de um teste `is`:
 
 ```dart
 import 'dart:js_interop';
@@ -71,8 +70,8 @@ bool f(JSAny a) => [!a is String!];
 
 ## Common fixes
 
-Use a JS interop helper, such as `isA`, to check the underlying type of
-JS interop values:
+Use um helper JS interop, como `isA`, para verificar o tipo subjacente de
+valores JS interop:
 
 ```dart
 import 'dart:js_interop';

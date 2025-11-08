@@ -1,57 +1,56 @@
 ---
+ia-translate: true
 title: ambiguous_set_or_map_literal_both
-description: >-
-  Details about the ambiguous_set_or_map_literal_both
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico ambiguous_set_or_map_literal_both produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The literal can't be either a map or a set because it contains at least one literal map entry or a spread operator spreading a 'Map', and at least one element which is neither of these._
+_O literal não pode ser nem um map nem um set porque contém pelo menos uma entrada de map literal ou um operador spread espalhando um 'Map', e pelo menos um elemento que não é nenhum desses._
 
-## Description
+## Descrição
 
-Because map and set literals use the same delimiters (`{` and `}`), the
-analyzer looks at the type arguments and the elements to determine which
-kind of literal you meant. When there are no type arguments, then the
-analyzer uses the types of the elements. If all of the elements are literal
-map entries and all of the spread operators are spreading a `Map` then it's
-a `Map`. If none of the elements are literal map entries and all of the
-spread operators are spreading an `Iterable`, then it's a `Set`. If neither
-of those is true then it's ambiguous.
+Como os literais map e set usam os mesmos delimitadores (`{` e `}`), o
+analisador olha para os argumentos de tipo e os elementos para determinar qual
+tipo de literal você quis dizer. Quando não há argumentos de tipo, então o
+analisador usa os tipos dos elementos. Se todos os elementos são entradas de
+map literal e todos os operadores spread estão espalhando um `Map` então é
+um `Map`. Se nenhum dos elementos é uma entrada de map literal e todos os
+operadores spread estão espalhando um `Iterable`, então é um `Set`. Se nenhum
+desses é verdadeiro então é ambíguo.
 
-The analyzer produces this diagnostic when at least one element is a
-literal map entry or a spread operator spreading a `Map`, and at least one
-element is neither of these, making it impossible for the analyzer to
-determine whether you are writing a map literal or a set literal.
+O analisador produz este diagnóstico quando pelo menos um elemento é uma
+entrada de map literal ou um operador spread espalhando um `Map`, e pelo menos um
+elemento não é nenhum desses, tornando impossível para o analisador
+determinar se você está escrevendo um literal map ou um literal set.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic:
+O código a seguir produz este diagnóstico:
 
 ```dart
 union(Map<String, String> a, List<String> b, Map<String, String> c) =>
     [!{...a, ...b, ...c}!];
 ```
 
-The list `b` can only be spread into a set, and the maps `a` and `c` can
-only be spread into a map, and the literal can't be both.
+A lista `b` só pode ser espalhada em um set, e os maps `a` e `c` só podem
+ser espalhados em um map, e o literal não pode ser ambos.
 
-## Common fixes
+## Correções comuns
 
-There are two common ways to fix this problem. The first is to remove all
-of the spread elements of one kind or another, so that the elements are
-consistent. In this case, that likely means removing the list and deciding
-what to do about the now unused parameter:
+Existem duas formas comuns de corrigir este problema. A primeira é remover todos
+os elementos spread de um tipo ou outro, para que os elementos sejam
+consistentes. Neste caso, isso provavelmente significa remover a lista e decidir
+o que fazer sobre o parâmetro agora não utilizado:
 
 ```dart
 union(Map<String, String> a, List<String> b, Map<String, String> c) =>
     {...a, ...c};
 ```
 
-The second fix is to change the elements of one kind into elements that are
-consistent with the other elements. For example, you can add the elements
-of the list as keys that map to themselves:
+A segunda correção é mudar os elementos de um tipo em elementos que são
+consistentes com os outros elementos. Por exemplo, você pode adicionar os elementos
+da lista como chaves que mapeiam para si mesmos:
 
 ```dart
 union(Map<String, String> a, List<String> b, Map<String, String> c) =>

@@ -1,28 +1,27 @@
 ---
 title: mixin_application_no_concrete_super_invoked_member
-description: >-
-  Details about the mixin_application_no_concrete_super_invoked_member
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico mixin_application_no_concrete_super_invoked_member produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The class doesn't have a concrete implementation of the super-invoked member '{0}'._
+_A classe não tem uma implementação concreta do member super-invocado '{0}'._
 
-_The class doesn't have a concrete implementation of the super-invoked setter '{0}'._
+_A classe não tem uma implementação concreta do setter super-invocado '{0}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a [mixin application][] contains
-an invocation of a member from its superclass, and there's no concrete
-member of that name in the mixin application's superclass.
+O analisador produz este diagnóstico quando uma [application de mixin][mixin application] contém
+uma invocação de um member de sua superclasse, e não há member
+concreto com esse nome na superclasse da application de mixin.
 
 ## Example
 
-The following code produces this diagnostic because the mixin `M` contains
-the invocation `super.m()`, and the class `A`, which is the superclass of
-the [mixin application][] `A+M`, doesn't define a concrete implementation
-of `m`:
+O código a seguir produz este diagnóstico porque o mixin `M` contém
+a invocação `super.m()`, e a classe `A`, que é a superclasse da
+[application de mixin][mixin application] `A+M`, não define uma implementação concreta
+de `m`:
 
 ```dart
 abstract class A {
@@ -40,9 +39,9 @@ abstract class B extends A with [!M!] {}
 
 ## Common fixes
 
-If you intended to apply the mixin `M` to a different class, one that has a
-concrete implementation of `m`, then change the superclass of `B` to that
-class:
+Se você pretendia aplicar o mixin `M` a uma classe diferente, uma que tenha uma
+implementação concreta de `m`, então altere a superclasse de `B` para essa
+classe:
 
 ```dart
 abstract class A {
@@ -62,8 +61,8 @@ class C implements A {
 abstract class B extends C with M {}
 ```
 
-If you need to make `B` a subclass of `A`, then add a concrete
-implementation of `m` in `A`:
+Se você precisa fazer `B` uma subclasse de `A`, então adicione uma
+implementação concreta de `m` em `A`:
 
 ```dart
 abstract class A {

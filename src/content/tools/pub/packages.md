@@ -1,51 +1,52 @@
 ---
-title: How to use packages
-shortTitle: Packages
-breadcrumb: Overview
-description: Learn more about pub, Dart's tool for managing packages.
+ia-translate: true
+title: Como usar pacotes
+shortTitle: Pacotes
+breadcrumb: Visão geral
+description: Saiba mais sobre pub, a ferramenta do Dart para gerenciar pacotes.
 ---
 
-The Dart ecosystem uses _packages_ to manage shared software
-such as libraries and tools.
-To get Dart packages, you use the **pub package manager**.
-You can find publicly available packages on the
-[**pub.dev site**,]({{site.pub}})
-or you can load packages from the local file system or elsewhere,
-such as Git repositories.
-Wherever your packages come from, pub manages version dependencies,
-helping you get package versions that work with each other and
-with your SDK version.
+O ecossistema Dart usa _packages_ (pacotes) para gerenciar software compartilhado,
+como bibliotecas e ferramentas.
+Para obter packages Dart, você usa o **gerenciador de packages pub**.
+Você pode encontrar packages disponíveis publicamente no
+[**site pub.dev**,]({{site.pub}})
+ou você pode carregar packages do sistema de arquivos local ou de outro lugar,
+como repositórios Git.
+De onde quer que seus packages venham, o pub gerencia as dependências de versão,
+ajudando você a obter versões de packages que funcionem entre si e
+com a sua versão do SDK.
 
-Most [Dart-savvy IDEs][] offer support for using pub that
-includes creating, downloading, updating, and publishing packages.
-Or you can use [`dart pub` on the command line](/tools/pub/cmd).
+A maioria das [IDEs com conhecimento de Dart][] oferece suporte para o uso do pub que
+inclui criação, download, atualização e publicação de packages.
+Ou você pode usar [`dart pub` na linha de comando](/tools/pub/cmd).
 
-At a minimum,
-a Dart package is a directory containing a [pubspec file](/tools/pub/pubspec).
-The pubspec contains some metadata about the package. 
-Additionally, a package can contain dependencies (listed in the pubspec),
-Dart libraries, apps, resources, tests, images, and examples.
+No mínimo,
+um package Dart é um diretório contendo um [arquivo pubspec](/tools/pub/pubspec).
+O pubspec contém alguns metadados sobre o package.
+Além disso, um package pode conter dependências (listadas no pubspec),
+bibliotecas Dart, aplicativos, recursos, testes, imagens e exemplos.
 
-To use a package, do the following:
+Para usar um package, faça o seguinte:
 
-* Create a pubspec (a file named `pubspec.yaml` that
-  lists package dependencies and includes
-  other metadata, such as a version number).
-* Use [`dart pub get`][get] to retrieve your package's dependencies.
-* If your Dart code depends on a library in the package, import the library.
+* Crie um pubspec (um arquivo chamado `pubspec.yaml` que
+  lista as dependências do package e inclui
+  outros metadados, como um número de versão).
+* Use [`dart pub get`][get] para recuperar as dependências do seu package.
+* Se o seu código Dart depende de uma biblioteca no package, importe a biblioteca.
 
-## Creating a pubspec
+## Criando um pubspec {:#creating-a-pubspec}
 
-The pubspec is a file named `pubspec.yaml`
-that's in the top directory of your application.
-The simplest possible pubspec lists only the package name:
+O pubspec é um arquivo chamado `pubspec.yaml`
+que está no diretório superior do seu aplicativo.
+O pubspec mais simples possível lista apenas o nome do package:
 
 ```yaml
 name: my_app
 ```
 
-Here is an example of a pubspec that declares dependencies on
-two packages (`intl` and `path`) that are hosted on the pub.dev site:
+Aqui está um exemplo de um pubspec que declara dependências de
+dois packages (`intl` e `path`) que estão hospedados no site pub.dev:
 
 ```yaml
 name: my_app
@@ -55,67 +56,67 @@ dependencies:
   path: ^1.9.1
 ```
 
-To update the `pubspec.yaml` file, without manual editing, 
-you can run `dart pub add` command.
-The following example adds a dependency on `vector_math`.
+Para atualizar o arquivo `pubspec.yaml`, sem edição manual,
+você pode executar o comando `dart pub add`.
+O exemplo a seguir adiciona uma dependência em `vector_math`.
 
 ```console
 $ dart pub add vector_math
-Resolving dependencies... 
+Resolving dependencies...
 + vector_math 2.1.3
 Downloading vector_math 2.1.3...
 Changed 1 dependency!
 ```
 
-For details on creating a pubspec,
-see the [pubspec documentation](/tools/pub/pubspec)
-and the documentation for the packages that you want to use.
+Para detalhes sobre a criação de um pubspec,
+consulte a [documentação do pubspec](/tools/pub/pubspec)
+e a documentação dos packages que você deseja usar.
 
-## Getting packages
+## Obtendo packages {:#getting-packages}
 
-Once you have a pubspec, you can run [`dart pub get`][get] from the top 
-directory of your application:
+Depois de ter um pubspec, você pode executar [`dart pub get`][get] do diretório
+superior do seu aplicativo:
 
 ```console
-$ cd <path-to-my_app>
+$ cd <caminho-para-my_app>
 $ dart pub get
 ```
 
-This process is called _getting the dependencies_.
+Este processo é chamado de _obtenção das dependências_.
 
-The `dart pub get` command
-determines which packages your app depends on,
-and puts them in a central [system cache](/resources/glossary#pub-system-cache).
-If your app depends on a published package, pub downloads that package from the
-[pub.dev site.]({{site.pub}})
-For a [Git dependency](/tools/pub/dependencies#git-packages),
-pub clones the Git repository.
-Transitive dependencies are included, too.
-For example, if the `js` package depends on the `test` package, `pub`
-grabs both the `js` package and the `test` package.
+O comando `dart pub get`
+determina de quais packages seu aplicativo depende
+e os coloca em um [cache do sistema](/resources/glossary#pub-system-cache) central.
+Se seu aplicativo depende de um package publicado, o pub baixa esse package do
+[site pub.dev.]({{site.pub}})
+Para uma [dependência Git](/tools/pub/dependencies#git-packages),
+o pub clona o repositório Git.
+Dependências transitivas também são incluídas.
+Por exemplo, se o package `js` depende do package `test`, o `pub`
+obtém tanto o package `js` quanto o package `test`.
 
-Pub creates a
-`package_config.json` file (under the `.dart_tool/` directory)
-that maps each package name that your app depends on
-to the corresponding package in the system cache.
+O Pub cria um arquivo
+`package_config.json` (no diretório `.dart_tool/`)
+que mapeia cada nome de package do qual seu aplicativo depende
+para o package correspondente no cache do sistema.
 
 
-## Importing libraries from packages
+## Importando bibliotecas de packages {:#importing-libraries-from-packages}
 
-To import libraries found in packages, 
-use the `package:` prefix:
+Para importar bibliotecas encontradas em packages,
+use o prefixo `package:`:
 
 ```dart
 import 'package:js/js.dart' as js;
 import 'package:intl/intl.dart';
 ```
 
-The Dart runtime takes everything after `package:`
-and looks it up within the `package_config.json` file for
-your app.
+O runtime Dart pega tudo depois de `package:`
+e procura no arquivo `package_config.json` do
+seu aplicativo.
 
-You can also use this style to import libraries from within your own package.
-Let's say that the `transmogrify` package is laid out as follows:
+Você também pode usar este estilo para importar bibliotecas de dentro do seu próprio package.
+Digamos que o package `transmogrify` esteja organizado da seguinte forma:
 
 ```plaintext
 transmogrify/
@@ -127,95 +128,95 @@ transmogrify/
       parser_test.dart
 ```
 
-The `parser_test.dart` file can import `parser.dart` like this:
+O arquivo `parser_test.dart` pode importar `parser.dart` assim:
 
 ```dart
 import 'package:transmogrify/parser.dart';
 ```
 
 
-## Upgrading a dependency
+## Atualizando uma dependência {:#upgrading-a-dependency}
 
-The first time you get a new dependency for your package,
-pub downloads the latest version of it that's compatible with
-your other dependencies.
-It then locks your package to *always* use that version by
-creating a **lockfile**.
-This is a file named `pubspec.lock` that pub creates
-and stores next to your pubspec. 
-It lists the specific versions of each dependency (immediate and transitive) 
-that your package uses.
+A primeira vez que você obtém uma nova dependência para o seu package,
+o pub baixa a versão mais recente que é compatível com
+suas outras dependências.
+Em seguida, ele trava seu package para *sempre* usar essa versão,
+criando um **lockfile** (arquivo de bloqueio).
+Este é um arquivo chamado `pubspec.lock` que o pub cria
+e armazena próximo ao seu pubspec.
+Ele lista as versões específicas de cada dependência (imediata e transitiva)
+que seu package usa.
 
-If your package is an [application package](/resources/glossary#application-package)
-you should check this file into
-[source control](/tools/pub/private-files).
-That way, everyone working on your app uses the same versions
-of all of its dependencies.
-Checking in the lockfile also ensures that your deployed app
-uses the same versions of code.
+Se o seu package for um [package de aplicação](/resources/glossary#application-package),
+você deve incluir este arquivo no
+[controle de versão](/tools/pub/private-files).
+Dessa forma, todos que trabalham no seu aplicativo usam as mesmas versões
+de todas as suas dependências.
+Incluir o lockfile também garante que seu aplicativo implantado
+use as mesmas versões de código.
 
-When you're ready to upgrade your dependencies to the latest versions,
-use the [`dart pub upgrade`][upgrade] command:
+Quando você estiver pronto para atualizar suas dependências para as versões mais recentes,
+use o comando [`dart pub upgrade`][upgrade]:
 
 ```console
 $ dart pub upgrade
 ```
 
-The `dart pub upgrade` command tells pub to regenerate the lockfile,
-using the newest available versions of your package's dependencies.
-If you want to upgrade only one dependency,
-you can specify the package to upgrade:
+O comando `dart pub upgrade` diz ao pub para regenerar o lockfile,
+usando as versões mais recentes disponíveis das dependências do seu package.
+Se você deseja atualizar apenas uma dependência,
+você pode especificar o package para atualizar:
 
 ```console
 $ dart pub upgrade transmogrify
 ```
 
-That command upgrades `transmogrify` to the latest version
-but leaves everything else the same.
+Esse comando atualiza `transmogrify` para a versão mais recente,
+mas deixa todo o resto igual.
 
-The `dart pub upgrade` command can't always upgrade every package
-to its latest version,
-due to conflicting version constraints in the pubspec.
-To identify out-of-date packages that require editing the pubspec,
+O comando `dart pub upgrade` nem sempre pode atualizar todos os packages
+para sua versão mais recente,
+devido a restrições de versão conflitantes no pubspec.
+Para identificar packages desatualizados que exigem a edição do pubspec,
 use [`dart pub outdated`][outdated].
 
-## Get dependencies for production
+## Obter dependências para produção {:#get-dependencies-for-production}
 
-In some situations, `dart pub get` does not retrieve
-the exact package versions locked in the `pubspec.lock` file:
+Em algumas situações, `dart pub get` não recupera
+as versões exatas de package bloqueadas no arquivo `pubspec.lock`:
 
-* If new dependencies are added to or removed from `pubspec.yaml` after
-  the `pubspec.lock` file was last updated.
-* If the locked version no longer exists in the package repository.
-* If you changed to a different version of the Dart SDK,
-  and some packages are no longer compatible with that new version.
-  
-In these cases `dart pub get` will:
+* Se novas dependências forem adicionadas ou removidas de `pubspec.yaml` depois que
+  o arquivo `pubspec.lock` foi atualizado pela última vez.
+* Se a versão bloqueada não existir mais no repositório de packages.
+* Se você mudou para uma versão diferente do Dart SDK,
+  e alguns packages não são mais compatíveis com essa nova versão.
 
-* Unlock enough of the locked dependency versions that
-  a resolution becomes possible.
-* Notify you about any dependency changes relative to
-  the existing `pubspec.lock`.
+Nesses casos, `dart pub get` irá:
 
-For example, after adding `retry: ^3.0.0` to your dependencies:
+* Desbloquear versões de dependência bloqueadas o suficiente para que
+  uma resolução se torne possível.
+* Notificá-lo sobre quaisquer alterações de dependência em relação a
+  o `pubspec.lock` existente.
+
+Por exemplo, depois de adicionar `retry: ^3.0.0` às suas dependências:
 
 ```console
 $ dart pub get
 Resolving dependencies... (1.0s)
-Downloading packages... 
+Downloading packages...
 + retry 3.1.2
 ```
 
-Also, if the [content hash][] of a published package version
-differs from the hash in the `pubspec.lock` file, pub will
-warn you and update the lockfile to reflect the published version.
+Além disso, se o [hash de conteúdo][] de uma versão de package publicada
+diferir do hash no arquivo `pubspec.lock`, o pub irá
+avisá-lo e atualizar o lockfile para refletir a versão publicada.
 
-For example, if you manually change the hash of `retry` in `pubspec.lock`:
+Por exemplo, se você alterar manualmente o hash de `retry` em `pubspec.lock`:
 
 ```console
 $ dart pub get
-Resolving dependencies... 
-Downloading packages... 
+Resolving dependencies...
+Downloading packages...
 ~ retry 3.1.2 (was 3.1.2)
 The existing content-hash from pubspec.lock doesn't match contents for:
  * retry-3.1.2 from "https://pub.dev"
@@ -227,23 +228,23 @@ This indicates one of:
 The content-hashes in pubspec.lock has been updated.
 
 For more information see:
-https://dart.dev/go/content-hashes
+https://dartbrasil.dev/go/content-hashes
 Changed 1 dependency!
 ```
 
-When deploying your project to production,
-use `dart pub get --enforce-lockfile` to retrieve dependencies.
+Ao implantar seu projeto em produção,
+use `dart pub get --enforce-lockfile` para recuperar as dependências.
 
-If your project's dependency constraints can't be
-satisfied with the exact versions and content hashes in `pubspec.lock`,
-package retrieval and the command will fail.
-This helps avoid deploying untested
-dependencies and dependency versions to production.
+Se as restrições de dependência do seu projeto não puderem ser
+satisfeitas com as versões exatas e os hashes de conteúdo em `pubspec.lock`,
+a recuperação do package e o comando falharão.
+Isso ajuda a evitar a implantação de
+dependências e versões de dependência não testadas em produção.
 
 ```console
 $ dart pub get --enforce-lockfile
-Resolving dependencies... 
-Downloading packages... 
+Resolving dependencies...
+Downloading packages...
 ~ retry 3.1.2 (was 3.1.2)
 The existing content-hash from pubspec.lock doesn't match contents for:
  * retry-3.1.2 from "https://pub.dev"
@@ -253,7 +254,7 @@ This indicates one of:
  * The pubspec.lock has been corrupted.
 
 For more information see:
-https://dart.dev/go/content-hashes
+https://dartbrasil.dev/go/content-hashes
 Would change 1 dependency.
 Unable to satisfy `pubspec.yaml` using `pubspec.lock`.
 
@@ -262,19 +263,19 @@ To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 
 [content hash]: /resources/glossary#pub-content-hash
 
-## More information
+## Mais informações {:#more-information}
 
-The following pages have more information about packages and
-the pub package manager.
+As páginas a seguir têm mais informações sobre packages e
+o gerenciador de packages pub.
 
 
-### How to
+### Como {:#how-to}
 
-* [Creating packages](/tools/pub/create-packages)
-* [Publishing packages](/tools/pub/publishing)
-* [Pub workspaces (monorepo support)](/tools/pub/workspaces)
+* [Criando packages](/tools/pub/create-packages)
+* [Publicando packages](/tools/pub/publishing)
+* [Workspaces Pub (suporte a monorepo)](/tools/pub/workspaces)
 
-### Reference
+### Referência {:#reference}
 
 * [Pub dependencies](/tools/pub/dependencies)
 * [Pub environment variables](/tools/pub/environment-variables)
@@ -283,21 +284,21 @@ the pub package manager.
 * [Pubspec format](/tools/pub/pubspec)
 * [Glossary with pub terms](/resources/glossary)
 
-### Pub subcommands
+### Subcomandos Pub {:#pub-subcommands}
 
-The `dart pub` tool provides the following subcommands:
+A ferramenta `dart pub` fornece os seguintes subcomandos:
 
 {% render 'pub-subcommands.md' %}
 
-For an overview of all the `dart pub` subcommands,
-see the [pub tool documentation](/tools/pub/cmd).
+Para uma visão geral de todos os subcomandos `dart pub`,
+consulte a [documentação da ferramenta pub](/tools/pub/cmd).
 
-### Troubleshooting
+### Solução de problemas {:#troubleshooting}
 
-[Troubleshooting pub](/tools/pub/troubleshoot) gives solutions to problems that
-you might encounter when using pub.
+[Solução de problemas do Pub](/tools/pub/troubleshoot) oferece soluções para problemas que
+você pode encontrar ao usar o pub.
 
-[Dart-savvy IDEs]: /tools#editors
+[IDEs com conhecimento de Dart]: /tools#editors
 [get]: /tools/pub/cmd/pub-get
 [upgrade]: /tools/pub/cmd/pub-upgrade
 [outdated]: /tools/pub/cmd/pub-outdated

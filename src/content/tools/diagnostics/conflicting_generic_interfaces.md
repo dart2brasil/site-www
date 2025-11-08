@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: conflicting_generic_interfaces
-description: >-
-  Details about the conflicting_generic_interfaces
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico conflicting_generic_interfaces produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The {0} '{1}' can't implement both '{2}' and '{3}' because the type arguments are different._
+_O {0} '{1}' não pode implementar tanto '{2}' quanto '{3}' porque os argumentos de tipo são diferentes._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class attempts to implement a
-generic interface multiple times, and the values of the type arguments
-aren't the same.
+O analisador produz este diagnóstico quando uma classe tenta implementar uma
+interface genérica várias vezes, e os valores dos argumentos de tipo
+não são os mesmos.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `C` is defined to
-implement both `I<int>` (because it extends `A`) and `I<String>` (because
-it implements`B`), but `int` and `String` aren't the same type:
+O código a seguir produz este diagnóstico porque `C` é definida para
+implementar tanto `I<int>` (porque estende `A`) quanto `I<String>` (porque
+implementa `B`), mas `int` e `String` não são o mesmo tipo:
 
 ```dart
 class I<T> {}
@@ -28,11 +27,11 @@ class B implements I<String> {}
 class [!C!] extends A implements B {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Rework the type hierarchy to avoid this situation. For example, you might
-make one or both of the inherited types generic so that `C` can specify the
-same type for both type arguments:
+Refaça a hierarquia de tipos para evitar esta situação. Por exemplo, você pode
+tornar um ou ambos os tipos herdados genéricos para que `C` possa especificar o
+mesmo tipo para ambos os argumentos de tipo:
 
 ```dart
 class I<T> {}

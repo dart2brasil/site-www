@@ -1,23 +1,22 @@
 ---
 title: await_in_late_local_variable_initializer
-description: >-
-  Details about the await_in_late_local_variable_initializer
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico await_in_late_local_variable_initializer produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The 'await' expression can't be used in a 'late' local variable's initializer._
+_A expressão 'await' não pode ser usada no inicializador de uma variável local 'late'._
 
 ## Description
 
-The analyzer produces this diagnostic when a local variable that has the
-`late` modifier uses an `await` expression in the initializer.
+O analisador produz este diagnóstico quando uma variável local que possui o
+modificador `late` usa uma expressão `await` no inicializador.
 
 ## Example
 
-The following code produces this diagnostic because an `await` expression
-is used in the initializer for `v`, a local variable that is marked `late`:
+O código a seguir produz este diagnóstico porque uma expressão `await`
+é usada no inicializador de `v`, uma variável local marcada como `late`:
 
 ```dart
 Future<int> f() async {
@@ -28,7 +27,7 @@ Future<int> f() async {
 
 ## Common fixes
 
-If the initializer can be rewritten to not use `await`, then rewrite it:
+Se o inicializador puder ser reescrito para não usar `await`, então reescreva-o:
 
 ```dart
 Future<int> f() async {
@@ -37,7 +36,7 @@ Future<int> f() async {
 }
 ```
 
-If the initializer can't be rewritten, then remove the `late` modifier:
+Se o inicializador não puder ser reescrito, então remova o modificador `late`:
 
 ```dart
 Future<int> f() async {

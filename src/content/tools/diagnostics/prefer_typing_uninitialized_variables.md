@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_typing_uninitialized_variables
-description: >-
-  Details about the prefer_typing_uninitialized_variables
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_typing_uninitialized_variables produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,23 +17,23 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_An uninitialized field should have an explicit type annotation._
+_Um campo não inicializado deve ter uma anotação de tipo explícita._
 
-_An uninitialized variable should have an explicit type annotation._
+_Uma variável não inicializada deve ter uma anotação de tipo explícita._
 
 ## Description
 
-The analyzer produces this diagnostic when a variable without an
-initializer doesn't have an explicit type annotation.
+O analisador produz este diagnóstico quando uma variável sem um
+inicializador não tem uma anotação de tipo explícita.
 
-Without either a type annotation or an initializer, a variable has the
-type `dynamic`, which allows any value to be assigned to the variable,
-often causing hard to identify bugs.
+Sem uma anotação de tipo ou um inicializador, uma variável tem o
+tipo `dynamic`, que permite que qualquer valor seja atribuído à variável,
+frequentemente causando bugs difíceis de identificar.
 
 ## Example
 
-The following code produces this diagnostic because the variable `r`
-doesn't have either a type annotation or an initializer:
+O código a seguir produz este diagnóstico porque a variável `r`
+não tem uma anotação de tipo nem um inicializador:
 
 ```dart
 Object f() {
@@ -46,7 +45,7 @@ Object f() {
 
 ## Common fixes
 
-If the variable can be initialized, then add an initializer:
+Se a variável pode ser inicializada, adicione um inicializador:
 
 ```dart
 Object f() {
@@ -55,8 +54,8 @@ Object f() {
 }
 ```
 
-If the variable can't be initialized, then add an explicit type
-annotation:
+Se a variável não pode ser inicializada, adicione uma anotação de tipo
+explícita:
 
 ```dart
 Object f() {

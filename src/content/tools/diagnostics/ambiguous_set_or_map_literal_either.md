@@ -1,66 +1,65 @@
 ---
+ia-translate: true
 title: ambiguous_set_or_map_literal_either
-description: >-
-  Details about the ambiguous_set_or_map_literal_either
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico ambiguous_set_or_map_literal_either produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_This literal must be either a map or a set, but the elements don't have enough information for type inference to work._
+_Este literal deve ser um map ou um set, mas os elementos não têm informação suficiente para a inferência de tipo funcionar._
 
-## Description
+## Descrição
 
-Because map and set literals use the same delimiters (`{` and `}`), the
-analyzer looks at the type arguments and the elements to determine which
-kind of literal you meant. When there are no type arguments and all of the
-elements are spread elements (which are allowed in both kinds of literals)
-then the analyzer uses the types of the expressions that are being spread.
-If all of the expressions have the type `Iterable`, then it's a set
-literal; if they all have the type `Map`, then it's a map literal.
+Como os literais map e set usam os mesmos delimitadores (`{` e `}`), o
+analisador olha para os argumentos de tipo e os elementos para determinar qual
+tipo de literal você quis dizer. Quando não há argumentos de tipo e todos os
+elementos são elementos spread (que são permitidos em ambos os tipos de literais)
+então o analisador usa os tipos das expressões que estão sendo espalhadas.
+Se todas as expressões têm o tipo `Iterable`, então é um literal set;
+se todas têm o tipo `Map`, então é um literal map.
 
-This diagnostic is produced when none of the expressions being spread have
-a type that allows the analyzer to decide whether you were writing a map
-literal or a set literal.
+Este diagnóstico é produzido quando nenhuma das expressões sendo espalhadas tem
+um tipo que permita ao analisador decidir se você estava escrevendo um literal
+map ou um literal set.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic:
+O código a seguir produz este diagnóstico:
 
 ```dart
 union(a, b) => [!{...a, ...b}!];
 ```
 
-The problem occurs because there are no type arguments, and there is no
-information about the type of either `a` or `b`.
+O problema ocorre porque não há argumentos de tipo, e não há
+informação sobre o tipo de `a` ou `b`.
 
-## Common fixes
+## Correções comuns
 
-There are three common ways to fix this problem. The first is to add type
-arguments to the literal. For example, if the literal is intended to be a
-map literal, you might write something like this:
+Existem três formas comuns de corrigir este problema. A primeira é adicionar argumentos de
+tipo ao literal. Por exemplo, se o literal pretende ser um
+literal map, você pode escrever algo assim:
 
 ```dart
 union(a, b) => <String, String>{...a, ...b};
 ```
 
-The second fix is to add type information so that the expressions have
-either the type `Iterable` or the type `Map`. You can add an explicit cast
-or, in this case, add types to the declarations of the two parameters:
+A segunda correção é adicionar informação de tipo para que as expressões tenham
+ou o tipo `Iterable` ou o tipo `Map`. Você pode adicionar um cast explícito
+ou, neste caso, adicionar tipos às declarações dos dois parâmetros:
 
 ```dart
 union(List<int> a, List<int> b) => {...a, ...b};
 ```
 
-The third fix is to add context information. In this case, that means
-adding a return type to the function:
+A terceira correção é adicionar informação de contexto. Neste caso, isso significa
+adicionar um tipo de retorno à função:
 
 ```dart
 Set<String> union(a, b) => {...a, ...b};
 ```
 
-In other cases, you might add a type somewhere else. For example, say the
-original code looks like this:
+Em outros casos, você pode adicionar um tipo em outro lugar. Por exemplo, digamos que o
+código original se pareça com isto:
 
 ```dart
 union(a, b) {
@@ -69,7 +68,7 @@ union(a, b) {
 }
 ```
 
-You might add a type annotation on `x`, like this:
+Você pode adicionar uma anotação de tipo em `x`, assim:
 
 ```dart
 union(a, b) {

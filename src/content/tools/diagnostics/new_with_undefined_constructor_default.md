@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: new_with_undefined_constructor_default
-description: >-
-  Details about the new_with_undefined_constructor_default
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico new_with_undefined_constructor_default produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,14 +10,14 @@ _The class '{0}' doesn't have an unnamed constructor._
 
 ## Description
 
-The analyzer produces this diagnostic when an unnamed constructor is
-invoked on a class that defines named constructors but the class doesn't
-have an unnamed constructor.
+O analisador produz este diagnóstico quando um construtor sem nome é
+invocado em uma classe que define construtores nomeados, mas a classe não
+possui um construtor sem nome.
 
 ## Example
 
-The following code produces this diagnostic because `A` doesn't define an
-unnamed constructor:
+O código a seguir produz este diagnóstico porque `A` não define um
+construtor sem nome:
 
 ```dart
 class A {
@@ -30,7 +29,7 @@ A f() => [!A!]();
 
 ## Common fixes
 
-If one of the named constructors does what you need, then use it:
+Se um dos construtores nomeados faz o que você precisa, então use-o:
 
 ```dart
 class A {
@@ -40,8 +39,8 @@ class A {
 A f() => A.a();
 ```
 
-If none of the named constructors does what you need, and you're able to
-add an unnamed constructor, then add the constructor:
+Se nenhum dos construtores nomeados faz o que você precisa, e você pode
+adicionar um construtor sem nome, então adicione o construtor:
 
 ```dart
 class A {

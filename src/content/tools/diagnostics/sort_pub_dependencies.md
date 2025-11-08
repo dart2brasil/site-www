@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: sort_pub_dependencies
-description: >-
-  Details about the sort_pub_dependencies
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico sort_pub_dependencies produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,19 +17,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Dependencies not sorted alphabetically._
+_Dependências não estão ordenadas alfabeticamente._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the keys in a dependency map in
-the `pubspec.yaml` file aren't sorted alphabetically. The dependency maps
-that are checked are the `dependencies`, `dev_dependencies`, and
-`dependency_overrides` maps.
+O analisador produz este diagnóstico quando as chaves em um mapa de dependências no
+arquivo `pubspec.yaml` não estão ordenadas alfabeticamente. Os mapas de dependências
+que são verificados são os mapas `dependencies`, `dev_dependencies` e
+`dependency_overrides`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the entries in the
-`dependencies` map are not sorted:
+O código a seguir produz este diagnóstico porque as entradas no
+mapa `dependencies` não estão ordenadas:
 
 ```yaml
 dependencies:
@@ -38,9 +37,9 @@ dependencies:
   collection: any
 ```
 
-## Common fixes
+## Correções comuns
 
-Sort the entries:
+Ordene as entradas:
 
 ```yaml
 dependencies:

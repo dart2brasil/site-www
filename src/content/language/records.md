@@ -1,39 +1,40 @@
 ---
+ia-translate: true
 title: Records
-description: Summary of the record data structure in Dart.
+description: Resumo da estrutura de dados record em Dart.
 prevpage:
   url: /language/built-in-types
-  title: Built-in types
+  title: Tipos built-in (embutidos)
 nextpage:
   url: /language/collections
-  title: Collections
+  title: "Collections (Coleções)"
 ---
 
 :::version-note
-  Records require a [language version][] of at least 3.0.
+  Records exigem uma [versão da linguagem][language version] de no mínimo 3.0.
 :::
 
-Records are an anonymous, immutable, aggregate type. Like other [collection types][], 
-they let you bundle multiple objects into a single object. Unlike other collection 
-types, records are fixed-sized, heterogeneous, and typed.
+Records (registros) são um tipo agregado, anônimo e imutável. Assim como outros [tipos de coleção][collection types],
+eles permitem que você agrupe múltiplos objetos em um único objeto. Diferente de outros tipos de coleção,
+records têm tamanho fixo, são heterogêneos e tipados.
 
-Records are real values; you can store them in variables, 
-nest them, pass them to and from functions, 
-and store them in data structures such as lists, maps, and sets.
+Records são valores reais; você pode armazená-los em variáveis,
+aninhá-los, passá-los para e de funções,
+e armazená-los em estruturas de dados como listas, maps e sets.
 
-## Record syntax
+## Sintaxe de Record {:#record-syntax}
 
-_Records expressions_ are comma-delimited lists of named or positional fields,
-enclosed in parentheses:
+_Expressões de records_ são listas delimitadas por vírgulas de campos nomeados ou posicionais,
+envolvidas em parênteses:
 
 <?code-excerpt "language/test/records_test.dart (record-syntax)"?>
 ```dart
 var record = ('first', a: 2, b: true, 'last');
 ```
 
-_Record type annotations_ are comma-delimited lists of types enclosed in parentheses.
-You can use record type annotations to define return types and parameter types.
-For example, the following `(int, int)` statements are record type annotations:
+_Anotações de tipo de record_ são listas de tipos delimitadas por vírgulas, envolvidas em parênteses.
+Você pode usar anotações de tipo de record para definir tipos de retorno e tipos de parâmetros.
+Por exemplo, as seguintes declarações `(int, int)` são anotações de tipo de record:
 
 <?code-excerpt "language/test/records_test.dart (record-type-annotation)"?>
 ```dart
@@ -43,9 +44,9 @@ For example, the following `(int, int)` statements are record type annotations:
 }
 ```
 
-Fields in record expressions and type annotations mirror
-how [parameters and arguments][] work in functions. 
-Positional fields go directly inside the parentheses:
+Campos em expressões de record e anotações de tipo espelham
+como [parâmetros e argumentos][parameters and arguments] funcionam em funções.
+Campos posicionais vão diretamente dentro dos parênteses:
 
 <?code-excerpt "language/test/records_test.dart (record-type-declaration)"?>
 ```dart
@@ -56,9 +57,9 @@ Positional fields go directly inside the parentheses:
 record = ('A string', 123);
 ```
 
-In a record type annotation, named fields go inside a curly brace-delimited
-section of type-and-name pairs, after all positional fields. In a record
-expression, the names go before each field value with a colon after:
+Em uma anotação de tipo de record, campos nomeados vão dentro de uma seção delimitada por chaves
+de pares tipo-e-nome, depois de todos os campos posicionais. Em uma expressão de record,
+os nomes vão antes de cada valor de campo com dois pontos após:
 
 <?code-excerpt "language/test/records_test.dart (record-type-named-declaration)"?>
 ```dart
@@ -69,10 +70,10 @@ expression, the names go before each field value with a colon after:
 record = (a: 123, b: true);
 ```
 
-The names of named fields in a record type are part of
-the [record's type definition](#record-types), or its _shape_. 
-Two records with named fields with
-different names have different types:
+Os nomes de campos nomeados em um tipo de record fazem parte da
+[definição de tipo do record](#record-types), ou seu _formato_.
+Dois records com campos nomeados com
+nomes diferentes têm tipos diferentes:
 
 <?code-excerpt "language/test/records_test.dart (record-type-mismatched-names)"?>
 ```dart
@@ -83,8 +84,8 @@ different names have different types:
 // recordAB = recordXY;
 ```
 
-In a record type annotation, you can also name the *positional* fields, but
-these names are purely for documentation and don't affect the record's type:
+Em uma anotação de tipo de record, você também pode nomear os campos *posicionais*, mas
+esses nomes são puramente para documentação e não afetam o tipo do record:
 
 <?code-excerpt "language/test/records_test.dart (record-type-matched-names)"?>
 ```dart
@@ -98,16 +99,16 @@ This is similar to how positional parameters
 in a [function declaration or function typedef][function-type]
 can have names but those names don't affect the signature of the function.
 
-For more information and examples, check out 
-[Record types](#record-types) and [Record equality](#record-equality).
+Para mais informações e exemplos, confira
+[Tipos de record](#record-types) e [Igualdade de record](#record-equality).
 
-## Record fields
+## Campos de Record {:#record-fields}
 
-Record fields are accessible through built-in getters. Records are immutable,
-so fields do not have setters. 
+Campos de record são acessíveis através de getters (métodos de acesso) built-in (embutidos). Records são imutáveis,
+então campos não possuem setters (métodos de atribuição).
 
-Named fields expose getters of the same name. Positional fields expose getters
-of the name `$<position>`, skipping named fields:
+Campos nomeados expõem getters de mesmo nome. Campos posicionais expõem getters
+de nome `$<posição>`, pulando campos nomeados:
 
 <?code-excerpt "language/test/records_test.dart (record-getters)"?>
 ```dart
@@ -119,19 +120,19 @@ print(record.b); // Prints true
 print(record.$2); // Prints 'last'
 ```
 
-To streamline record field access even more, 
-check out the page on [Patterns][pattern].
+Para otimizar ainda mais o acesso a campos de record,
+confira a página sobre [Patterns (Padrões)][pattern].
 
-## Record types
+## Tipos de Record {:#record-types}
 
 There is no type declaration for individual record types.
 Records are structurally typed based on the types of their fields.
 A record's _shape_ (the set of its fields, the fields' types,
 and their names, if any) uniquely determines the type of a record.
 
-Each field in a record has its own type. Field types can differ within the same
-record. The type system is aware of each field's type wherever it is accessed
-from the record:
+Cada campo em um record tem seu próprio tipo. Tipos de campos podem diferir dentro do mesmo
+record. O sistema de tipos está ciente do tipo de cada campo onde quer que ele seja acessado
+do record:
 
 <?code-excerpt "language/test/records_test.dart (record-getters-two)"?>
 ```dart
@@ -141,9 +142,9 @@ var first = pair.$1; // Static type `num`, runtime type `int`.
 var second = pair.$2; // Static type `Object`, runtime type `String`.
 ```
 
-Consider two unrelated libraries that create records with the same set of fields.
-The type system understands that those records are the same type even though the
-libraries are not coupled to each other.
+Considere duas bibliotecas não relacionadas que criam records com o mesmo conjunto de campos.
+O sistema de tipos entende que esses records são do mesmo tipo, mesmo que as
+bibliotecas não estejam acopladas entre si.
 
 :::tip
 While you can't declare a unique type for a record shape,
@@ -154,12 +155,12 @@ check out [Records and typedefs](#records-and-typedefs).
 
 ## Record equality
 
-Two records are equal if they have the same _shape_ (set of fields),
-and their corresponding fields have the same values.
-Since named field _order_ is not part of a record's shape, the order of named
-fields does not affect equality.
+Dois records são iguais se eles têm o mesmo _formato_ (conjunto de campos)
+e seus campos correspondentes têm os mesmos valores.
+Como a _ordem_ dos campos nomeados não faz parte do formato de um record, a ordem dos
+campos nomeados não afeta a igualdade.
 
-For example:
+Por exemplo:
 
 <?code-excerpt "language/test/records_test.dart (record-shape)"?>
 ```dart
@@ -177,14 +178,14 @@ print(point == color); // Prints 'true'.
 print(point == color); // Prints 'false'. Lint: Equals on unrelated types.
 ```
 
-Records automatically define `hashCode` and `==` methods based on the structure
-of their fields.
+Records automaticamente definem os métodos `hashCode` e `==` com base na estrutura
+de seus campos.
 
-## Multiple returns
+## Retornos Múltiplos {:#multiple-returns}
 
-Records allow functions to return multiple values bundled together.
-To retrieve record values from a return,
-[destructure][] the values into local variables using [pattern matching][pattern].
+Records permitem que funções retornem múltiplos valores agrupados.
+Para recuperar valores de record de um retorno,
+[desestruture][destructure] os valores em variáveis locais usando [pattern matching (correspondência de padrão)][pattern].
 
 <?code-excerpt "language/test/records_test.dart (record-multiple-returns)"?>
 ```dart
@@ -205,9 +206,9 @@ var (name, age) = userInfo(json);
 */
 ```
 
-You can also destructure a record using its [named fields](#record-fields),
-using the colon `:` syntax, which you can read more about on the
-[Pattern types][] page:
+Você também pode desestruturar um record usando seus [campos nomeados](#record-fields),
+usando a sintaxe de dois pontos `:`, sobre a qual você pode ler mais na página de
+[Tipos de Pattern][Pattern types]:
 
 <?code-excerpt "language/test/records_test.dart (record-name-destructure)"?>
 ```dart
@@ -217,15 +218,15 @@ using the colon `:` syntax, which you can read more about on the
 final (:name, :age) = userInfo(json);
 ```
 
-You can return multiple values from a function without records,
-but other methods come with downsides.
-For example, creating a class is much more verbose, and using other collection
-types like `List` or `Map` loses type safety. 
+Você pode retornar múltiplos valores de uma função sem records,
+mas outros métodos vêm com desvantagens.
+Por exemplo, criar uma classe é muito mais verboso, e usar outros tipos de coleção
+como `List` ou `Map` perde a segurança de tipo.
 
 :::note
-Records' multiple-return and heterogeneous-type characteristics enable
-parallelization of futures of different types, which you can read about in the
-[`dart:async` documentation][].
+As características de retorno múltiplo e tipo heterogêneo de Records habilitam
+a paralelização de futures de tipos diferentes, sobre a qual você pode ler na
+documentação de [`dart:async`][`dart:async` documentation].
 :::
 
 ## Records as simple data structures

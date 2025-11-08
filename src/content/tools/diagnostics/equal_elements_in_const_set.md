@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: equal_elements_in_const_set
-description: >-
-  Details about the equal_elements_in_const_set
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico equal_elements_in_const_set produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Two elements in a constant set literal can't be equal._
+_Dois elementos em um literal de set constant não podem ser equal._
 
 ## Description
 
-The analyzer produces this diagnostic when two elements in a constant set
-literal have the same value. The set can only contain each value once,
-which means that one of the values is unnecessary.
+O analisador produz este diagnóstico quando dois elementos em um literal de set
+constant têm o mesmo valor. O set pode conter cada valor apenas uma vez,
+o que significa que um dos valores é desnecessário.
 
 ## Example
 
-The following code produces this diagnostic because the string `'a'` is
-specified twice:
+O código a seguir produz este diagnóstico porque a string `'a'` é
+especificada duas vezes:
 
 ```dart
 const Set<String> set = {'a', [!'a'!]};
@@ -26,12 +25,12 @@ const Set<String> set = {'a', [!'a'!]};
 
 ## Common fixes
 
-Remove one of the duplicate values:
+Remova um dos valores duplicados:
 
 ```dart
 const Set<String> set = {'a'};
 ```
 
-Note that literal sets preserve the order of their elements, so the choice
-of which element to remove might affect the order in which elements are
-returned by an iterator.
+Note que literais de set preservam a ordem de seus elementos, então a escolha
+de qual elemento remover pode afetar a ordem em que os elementos são
+retornados por um iterador.

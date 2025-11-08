@@ -1,56 +1,55 @@
 ---
-title: 'Java interop using package:jnigen'
+title: 'Interoperabilidade com Java usando package:jnigen'
 shortTitle: Java interop
 breadcrumb: Java
-description: >-
-  To use Java in your Dart program, use package:jnigen.
+description: Para usar Java em seu programa Dart, use package:jnigen.
 example: 'https://github.com/HosseinYousefi/jnigen_example/tree/main'
 ---
 
-Dart mobile, command-line, and server apps
-running on the [Dart Native platform](/overview#platform), on
-Android, Windows, macOS, and Linux can use [`package:jni`][jni-pkg]
-and [`package:jnigen`][jnigen-pkg]
-to call Java and Kotlin APIs.
+Aplicativos Dart mobile, de linha de comando e servidor
+executando na [plataforma Dart Native](/overview#platform), em
+Android, Windows, macOS e Linux podem usar [`package:jni`][jni-pkg]
+e [`package:jnigen`][jnigen-pkg]
+para chamar APIs Java e Kotlin.
 
 :::note
-This interop feature is **experimental**,
-and [in active development]({{site.repo.dart.sdk}}/issues/49674).
+Este recurso de interoperabilidade é **experimental**
+e [em desenvolvimento ativo]({{site.repo.dart.sdk}}/issues/49674).
 :::
 
-`package:jni` allows Dart code to interact
-with Java through [JNI][jnidoc].
-However, doing so involves a lot of boilerplate code,
-so you can use `package:jnigen` to automatically generate
-the Dart bindings for a given Java API.
+`package:jni` permite que o código Dart interaja
+com Java através de [JNI][jnidoc] (Java Native Interface).
+No entanto, isso envolve muito código redundante,
+portanto, você pode usar `package:jnigen` para gerar automaticamente
+as ligações Dart para uma determinada API Java.
 
-You can compile Kotlin to Java bytecode, allowing `package:jnigen`
-to generate bindings for Kotlin as well.
+Você pode compilar Kotlin para bytecode Java, permitindo que `package:jnigen`
+gere ligações para Kotlin também.
 
 [jni-pkg]: {{site.pub-pkg}}/jni
 [jnigen-pkg]: {{site.pub-pkg}}/jnigen
 [jnidoc]: https://docs.oracle.com/en/java/javase/17/docs/specs/jni/index.html
 
-## Simple Java example
+## Exemplo simples em Java {:#simple-java-example}
 
-This guide walks you through [an example]({{page.example}})
-that uses `package:jnigen` to generate bindings for a simple class.
+Este guia orienta você através de [um exemplo]({{page.example}})
+que usa `package:jnigen` para gerar bindings para uma classe simples.
 
-### Prerequisites
+### Pré-requisitos {:#prerequisites}
 
 - JDK
 
-### Configure `jnigen`
+### Configurando `jnigen` {:#configure-jnigen}
 
-First, add `package:jni` as a dependency and
-`package:jnigen` as a [dev dependency][].
+Primeiro, adicione `package:jni` como uma dependência e
+`package:jnigen` como uma [dependência de desenvolvimento][dev dependency].
 
 ```console
 $ dart pub add jni dev:jnigen
 ```
 
-Next, create a top-level file called `jnigen.yaml`. 
-This file contains the configuration for generating the bindings.
+Em seguida, crie um arquivo de nível superior chamado `jnigen.yaml`.
+Este arquivo contém a configuração para gerar as ligações.
 
 ```yaml
 output:
@@ -64,14 +63,14 @@ classes:
   - 'dev.dart.Example'
 ```
 
-`path` specifies the path for the generated `dart` bindings.
+`path` especifica o caminho para as ligações Dart geradas.
 
-`source_path` specifies the path of the Java source file that
-you want to generate bindings for, 
-and `classes` specifies the Java class.
+`source_path` especifica o caminho do arquivo fonte Java para o qual
+você deseja gerar as ligações,
+e `classes` especifica a classe Java.
 
-`java/dev/dart/Example.java` contains a very simple class, which
-has a public static method called `sum`:
+`java/dev/dart/Example.java` contém uma classe muito simples, que
+possui um método estático público chamado `sum`:
 
 ```java
 package dev.dart;
@@ -83,68 +82,72 @@ public class Example {
 }
 ```
 
-### Generate the Dart bindings
+### Gerando as ligações Dart {:#generate-the-dart-bindings}
 
-To generate the Dart bindings, run `jnigen` and
-specify the config file using the `--config` option:
+Para gerar as ligações Dart, execute `jnigen` e
+especifique o arquivo de configuração usando a opção `--config`:
 
 ```console
 $ dart run jnigen --config jnigen.yaml
 ```
 
-In this example, this generates
-[`lib/example.dart`]({{page.example}}/lib/example.dart), just
-as you specified in `jnigen.yaml`.
+Neste exemplo, isso gera
+[`lib/example.dart`]({{page.example}}/lib/example.dart), exatamente
+como você especificou em `jnigen.yaml`.
 
-This file contains a class called `Example`, 
-which has a static method called `sum`, 
-just like the Java file.
+Este arquivo contém uma classe chamada `Example`,
+que possui um método estático chamado `sum`,
+assim como o arquivo Java.
 
-### Use the bindings
+### Usando as ligações {:#use-the-bindings}
 
-Now you're ready to load and interact with the generated library.
-The example app, [`bin/sum.dart`]({{page.example}}/bin/sum.dart), gets 
-two numbers as arguments and prints their sum. 
-Using the `Example.sum` method is identical to Java.
+Agora você está pronto para carregar e interagir com a biblioteca gerada.
+O aplicativo de exemplo, [`bin/sum.dart`]({{page.example}}/bin/sum.dart), recebe
+dois números como argumentos e imprime sua soma.
+Usar o método `Example.sum` é idêntico ao Java.
 
 ```dart
-// a and b are integer arguments
+// a e b são argumentos inteiros
 print(Example.sum(a, b));
 ```
 
-### Run the example
+### Executando o exemplo {:#run-the-example}
 
-Before running the example, 
-you must build the dynamic library for `jni`.
-The Java sources also must be compiled. To do so, run:
+Antes de executar o exemplo,
+você deve construir a biblioteca dinâmica para `jni`.
+As fontes Java também devem ser compiladas. Para fazer isso, execute:
 
 ```console
 $ dart run jni:setup
 $ javac java/dev/dart/Example.java
 ```
 
-Now you can run the example:
+Agora você pode executar o exemplo:
 
 ```console
 $ dart run jnigen_example:sum 17 25
 ```
 
-Which outputs `42`!
+Que retorna `42`!
 
-## More examples
+## Mais exemplos {:#more-examples}
 
-The following are some more comprehensive examples of using `package:jnigen`:
+Segue alguns exemplos mais abrangentes do uso de `package:jnigen`:
 
-| **Example**             | **Description**                                                                                 |
+| **Exemplo**             | **Descrição**                                                                                 |
 |-------------------------|-------------------------------------------------------------------------------------------------|
-| [in_app_java][]         | Demonstrates how to include custom Java code in a Flutter application and call it use `jnigen`. |
-| [pdfbox_plugin][]       | Example of a Flutter plugin that provides bindings to the [Apache PDFBox][] library.            |
-| [notification_plugin][] | Example of a reusable Flutter plugin with custom Java code that uses Android libraries.         |
+| [in_app_java][in_app_java]         | Demonstra como incluir código Java personalizado em um aplicativo Flutter e chamá-lo usando `jnigen`. |
+| [pdfbox_plugin][pdfbox_plugin]       | Exemplo de um plugin Flutter que fornece ligações para a biblioteca [Apache PDFBox][Apache PDFBox].            |
+| [notification_plugin][notification_plugin] | Exemplo de um plugin Flutter reutilizável com código Java personalizado que usa bibliotecas Android.         |
 
 {:.table}
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
-[in_app_java]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/in_app_java
-[notification_plugin]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/notification_plugin
-[pdfbox_plugin]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/pdfbox_plugin
+[in_app_java]:
+{{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/in_app_java
+[notification_plugin]:
+{{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/notification_plugin
+[pdfbox_plugin]:
+{{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/pdfbox_plugin
 [Apache PDFBox]: https://pdfbox.apache.org/
+

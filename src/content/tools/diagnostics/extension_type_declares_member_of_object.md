@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: extension_type_declares_member_of_object
-description: >-
-  Details about the extension_type_declares_member_of_object
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico extension_type_declares_member_of_object produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extension types can't declare members with the same name as a member declared by 'Object'._
+_Extension types não podem declarar membros com o mesmo nome de um membro declarado por 'Object'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the body of an extension type
-declaration contains a member with the same name as one of the members
-declared by `Object`.
+O analisador produz este diagnóstico quando o corpo de uma declaração de extension type
+contém um membro com o mesmo nome de um dos membros
+declarados por `Object`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `Object`
-already defines a member named `hashCode`:
+O código a seguir produz este diagnóstico porque a classe `Object`
+já define um membro chamado `hashCode`:
 
 ```dart
 extension type E(int i) {
@@ -26,10 +25,10 @@ extension type E(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If you need a member with the implemented semantics, then rename the
-member:
+Se você precisa de um membro com a semântica implementada, então renomeie o
+membro:
 
 ```dart
 extension type E(int i) {
@@ -37,8 +36,8 @@ extension type E(int i) {
 }
 ```
 
-If you don't need a member with the implemented semantics, then remove the
-member:
+Se você não precisa de um membro com a semântica implementada, então remova o
+membro:
 
 ```dart
 extension type E(int i) {}

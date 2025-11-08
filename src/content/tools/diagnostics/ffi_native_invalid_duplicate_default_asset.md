@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: ffi_native_invalid_duplicate_default_asset
-description: >-
-  Details about the ffi_native_invalid_duplicate_default_asset
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico ffi_native_invalid_duplicate_default_asset produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_There may be at most one @DefaultAsset annotation on a library._
+_Pode haver no máximo uma anotação @DefaultAsset em uma biblioteca._
 
 ## Description
 
-The analyzer produces this diagnostic when a library directive has more
-than one `DefaultAsset` annotation associated with it.
+O analisador produz este diagnóstico quando uma diretiva de biblioteca tem
+mais de uma anotação `DefaultAsset` associada a ela.
 
 ## Example
 
-The following code produces this diagnostic because the library directive
-has two `DefaultAsset` annotations associated with it:
+O código a seguir produz este diagnóstico porque a diretiva de biblioteca
+tem duas anotações `DefaultAsset` associadas a ela:
 
 ```dart
 @DefaultAsset('a')
@@ -29,7 +28,7 @@ import 'dart:ffi';
 
 ## Common fixes
 
-Remove all but one of the `DefaultAsset` annotations:
+Remova todas as anotações `DefaultAsset`, exceto uma:
 
 ```dart
 @DefaultAsset('a')

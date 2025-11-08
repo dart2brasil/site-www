@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: assignment_of_do_not_store
-description: >-
-  Details about the assignment_of_do_not_store
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico assignment_of_do_not_store produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is marked 'doNotStore' and shouldn't be assigned to a field or top-level variable._
+_'{0}' está marcado como 'doNotStore' e não deve ser atribuído a um campo ou variável de nível superior._
 
 ## Description
 
-The analyzer produces this diagnostic when the value of a function
-(including methods and getters) that is explicitly or implicitly marked by
-the [`doNotStore`][meta-doNotStore] annotation is stored in either a field
-or top-level variable.
+O analisador produz este diagnóstico quando o valor de uma função
+(incluindo métodos e getters) que é explícita ou implicitamente marcada pela
+anotação [`doNotStore`][meta-doNotStore] é armazenado em um campo
+ou variável de nível superior.
 
 ## Example
 
-The following code produces this diagnostic because the value of the
-function `f` is being stored in the top-level variable `x`:
+O código a seguir produz este diagnóstico porque o valor da
+função `f` está sendo armazenado na variável de nível superior `x`:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -32,7 +31,7 @@ var x = [!f()!];
 
 ## Common fixes
 
-Replace references to the field or variable with invocations of the
-function producing the value.
+Substitua referências ao campo ou variável por invocações da
+função que produz o valor.
 
 [meta-doNotStore]: https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html

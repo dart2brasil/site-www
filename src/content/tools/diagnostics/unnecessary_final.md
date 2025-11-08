@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: unnecessary_final
-description: >-
-  Details about the unnecessary_final
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unnecessary_final produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Local variables should not be marked as 'final'._
+_Variáveis locais não devem ser marcadas como 'final'._
 
 ## Description
 
-The analyzer produces this diagnostic when a local variable is marked as
-being `final`.
+O analisador produz este diagnóstico quando uma variável local é marcada como
+sendo `final`.
 
 ## Example
 
-The following code produces this diagnostic because the local variable `c`
-is marked as being `final`:
+O código a seguir produz este diagnóstico porque a variável local `c`
+está marcada como sendo `final`:
 
 ```dart
 void f(int a, int b) {
@@ -39,8 +38,8 @@ void f(int a, int b) {
 
 ## Common fixes
 
-If the variable doesn't have a type annotation, then replace the `final`
-with `var`:
+Se a variável não tiver uma anotação de tipo, então substitua o `final`
+por `var`:
 
 ```dart
 void f(int a, int b) {
@@ -49,8 +48,7 @@ void f(int a, int b) {
 }
 ```
 
-If the variable has a type annotation, then remove the `final`
-modifier:
+Se a variável tiver uma anotação de tipo, então remova o modificador `final`:
 
 ```dart
 void f(int a, int b) {

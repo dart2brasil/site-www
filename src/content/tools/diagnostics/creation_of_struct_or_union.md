@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: creation_of_struct_or_union
-description: >-
-  Details about the creation_of_struct_or_union
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico creation_of_struct_or_union produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Subclasses of 'Struct' and 'Union' are backed by native memory, and can't be instantiated by a generative constructor._
+_Subclasses de 'Struct' e 'Union' são suportadas por memória nativa, e não podem ser instanciadas por um construtor generativo._
 
 ## Description
 
-The analyzer produces this diagnostic when a subclass of either `Struct`
-or `Union` is instantiated using a generative constructor.
+O analisador produz este diagnóstico quando uma subclasse de `Struct`
+ou `Union` é instanciada usando um construtor generativo.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because the class `C` is being
-instantiated using a generative constructor:
+O código a seguir produz este diagnóstico porque a classe `C` está sendo
+instanciada usando um construtor generativo:
 
 ```dart
 import 'dart:ffi';
@@ -36,8 +35,8 @@ void f() {
 
 ## Common fixes
 
-If you need to allocate the structure described by the class, then use the
-`ffi` package to do so:
+Se você precisa alocar a estrutura descrita pela classe, então use o
+pacote `ffi` para fazer isso:
 
 ```dart
 import 'dart:ffi';

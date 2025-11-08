@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: unused_label
-description: >-
-  Details about the unused_label
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unused_label produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The label '{0}' isn't used._
+_O rótulo '{0}' não é usado._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a label that isn't used is
-found.
+O analisador produz este diagnóstico quando um rótulo que não é usado é
+encontrado.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the label `loop` isn't
-referenced anywhere in the method:
+O código a seguir produz este diagnóstico porque o rótulo `loop` não é
+referenciado em nenhum lugar do método:
 
 ```dart
 void f(int limit) {
@@ -27,9 +26,9 @@ void f(int limit) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the label isn't needed, then remove it:
+Se o rótulo não é necessário, então remova-o:
 
 ```dart
 void f(int limit) {
@@ -39,7 +38,7 @@ void f(int limit) {
 }
 ```
 
-If the label is needed, then use it:
+Se o rótulo é necessário, então use-o:
 
 ```dart
 void f(int limit) {

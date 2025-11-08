@@ -1,22 +1,23 @@
 ---
-title: How to mock JavaScript interop objects
-shortTitle: Mock JS interop objects
-description: Learn how to mock JS interop objects in Dart for testing.
+ia-translate: true
+title: "Como simular objetos de interoperação JavaScript"
+shortTitle: "Simular objetos de interoperação JS"
+description: "Aprenda como simular objetos de interoperação JS em Dart para testes."
 ---
 
-In this tutorial, you'll learn how to mock JS objects so that you can test
-interop instance members without having to use a real implementation.
+Neste tutorial, você aprenderá como simular objetos JS para que possa testar
+membros de instância de interop sem ter que usar uma implementação real.
 
-## Background and motivation
+## Contexto e motivação
 
-Mocking classes in Dart is usually done through overriding instance members.
-However, since [extension types] are used to declare interop types, all
-extension type members are dispatched statically and therefore overriding can't
-be used. This [limitation is true for extension members] as well, and therefore
-instance extension type or extension members can't be mocked.
+A simulação de classes em Dart geralmente é feita através da sobrescrita de membros de instância.
+No entanto, como [tipos de extensão] são usados para declarar tipos de interop, todos os
+membros de tipo de extensão são despachados estaticamente e, portanto, a sobrescrita não pode
+ser usada. Esta [limitação é válida para membros de extensão] também e, portanto,
+membros de tipo de extensão de instância ou membros de extensão não podem ser simulados.
 
-While this applies to any non-`external` extension type member, `external`
-interop members are special as they invoke members on a JS value.
+Embora isso se aplique a qualquer membro de tipo de extensão não-`external`, membros de
+interop `external` são especiais, pois invocam membros em um valor JS.
 
 ```dart
 extension type Date(JSObject _) implements JSObject {
@@ -24,35 +25,35 @@ extension type Date(JSObject _) implements JSObject {
 }
 ```
 
-As discussed in the [Usage] section, calling `getDay()` will result in calling
-`getDay()` on the JS object. Therefore, by using a different `JSObject`, a
-different *implementation* of `getDay` can be called.
+Conforme discutido na seção [Uso], chamar `getDay()` resultará em chamar
+`getDay()` no objeto JS. Portanto, usando um `JSObject` diferente, uma
+*implementação* diferente de `getDay` pode ser chamada.
 
-In order to do this, there should be some mechanism of creating a JS object that
-has a property `getDay` which when called, calls a Dart function. A simple way
-is to create a JS object and set the property `getDay` to a converted callback
-e.g.
+Para fazer isso, deve haver algum mecanismo de criação de um objeto JS que
+tenha uma propriedade `getDay` que, quando chamada, chame uma função Dart. Uma maneira simples
+é criar um objeto JS e definir a propriedade `getDay` para um callback convertido,
+por exemplo:
 
 ```dart
 final date = Date(JSObject());
 date['getDay'] = (() => 0).toJS;
 ```
 
-While this works, this is prone to error and doesn't scale well when you are
-using many interop members. It also doesn't handle getters or setters properly.
-Instead, you should use a combination of [`createJSInteropWrapper`] and
-[`@JSExport`] to declare a type that provides an implementation for all the
-`external` instance members.
+Embora isso funcione, é propenso a erros e não escala bem quando você está
+usando muitos membros de interop. Também não lida com getters ou setters corretamente.
+Em vez disso, você deve usar uma combinação de [`createJSInteropWrapper`] e
+[`@JSExport`] para declarar um tipo que fornece uma implementação para todos os
+membros de instância `external`.
 
-## Mocking example
+## Exemplo de simulação
 
 ```dart
 import 'dart:js_interop';
 
 import 'package:expect/minitest.dart';
 
-// The Dart class must have `@JSExport` on it or at least one of its instance
-// members.
+// A classe Dart deve ter `@JSExport` nela ou pelo menos um de seus membros de
+// instância.
 @JSExport()
 class FakeCounter {
   int value = 0;
@@ -75,52 +76,53 @@ extension type Counter(JSObject _) implements JSObject {
 
 void main() {
   var fakeCounter = FakeCounter();
-  // Returns a JS object whose properties call the relevant instance members in
-  // `fakeCounter`.
+  // Retorna um objeto JS cujas propriedades chamam os membros de instância
+  // relevantes em `fakeCounter`.
   var counter = createJSInteropWrapper<FakeCounter>(fakeCounter) as Counter;
-  // Calls `FakeCounter.value`.
+  // Chama `FakeCounter.value`.
   expect(counter.value, 0);
-  // `FakeCounter.renamedIncrement` is renamed to `increment`, so it gets
-  // called.
+  // `FakeCounter.renamedIncrement` é renomeado para `increment`, então ele é
+  // chamado.
   counter.increment();
   expect(counter.value, 1);
   expect(fakeCounter.value, 1);
-   // Changes in the fake affect the wrapper and vice-versa.
+   // As mudanças no fake afetam o wrapper e vice-versa.
   fakeCounter.value = 0;
   expect(counter.value, 0);
   counter.decrement();
-  // Because `Counter.decrement` is non-`external`, we never called
+  // Como `Counter.decrement` não é `external`, nunca chamamos
   // `FakeCounter.decrement`.
   expect(counter.value, -2);
 }
 ```
 
-## [`@JSExport`] and [`createJSInteropWrapper`]
+## [`@JSExport`] e [`createJSInteropWrapper`]
 
-`@JSExport` allows you to declare a class that can be used in
-`createJSInteropWrapper`. `createJSInteropWrapper` will create an object literal
-that maps each of the class' instance member names (or renames) to a JS
-callback, which is created using [`Function.toJS`]. When called, the JS callback
-will in turn call the instance member. In the above example, getting and setting
-`counter.value` gets and sets `fakeCounter.value`.
+`@JSExport` permite que você declare uma classe que pode ser usada em
+`createJSInteropWrapper`. `createJSInteropWrapper` irá criar um literal de objeto
+que mapeia cada um dos nomes de membros de instância da classe (ou renomeações) para
+um callback JS, que é criado usando [`Function.toJS`]. Quando chamado, o callback JS
+por sua vez chamará o membro de instância. No exemplo acima, obter e definir
+`counter.value` obtém e define `fakeCounter.value`.
 
-You can specify only some members of a class to be exported by omitting the
-annotation from the class and instead only annotate the specific members. You
-can see more specifics on more specialized exporting (including inheritance) in
-the documentation of [`@JSExport`].
+Você pode especificar apenas alguns membros de uma classe para serem exportados omitindo a
+anotação da classe e, em vez disso, anotar apenas os membros específicos. Você
+pode ver mais detalhes sobre exportação mais especializada (incluindo herança) na
+documentação de [`@JSExport`].
 
-Note that this mechanism isn't specific to testing only. You can use this to
-provide a JS interface for an arbitrary Dart object, allowing you to essentially
-*export* Dart objects to JS with a predefined interface.
+Observe que este mecanismo não é específico apenas para testes. Você pode usar isso para
+fornecer uma interface JS para um objeto Dart arbitrário, permitindo que você essencialmente
+*exporte* objetos Dart para JS com uma interface predefinida.
 
 {% comment %}
-TODO: Should we add a section on general testing? We can't really mock
-non-instance members unless the user explicitly replaces the real API in JS.
+TODO: Devemos adicionar uma seção sobre testes gerais? Não podemos realmente simular
+membros não-instância, a menos que o usuário substitua explicitamente a API real em JS.
 {% endcomment %}
 
-[Usage]: /interop/js-interop/usage
+[Uso]: /interop/js-interop/usage
 [`createJSInteropWrapper`]: {{site.dart-api}}/dart-js_interop/createJSInteropWrapper.html
 [`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
 [`@JSExport`]: {{site.dart-api}}/dart-js_interop/JSExport-class.html
-[limitation is true for extension members]: {{site.repo.dart.org}}/mockito/blob/master/FAQ.md#how-do-i-mock-an-extension-method
-[extension types]: /language/extension-types
+[limitação é válida para membros de extensão]: {{site.repo.dart.org}}/mockito/blob/master/FAQ.md#how-do-i-mock-an-extension-method
+[tipos de extensão]: /language/extension-types
+

@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: unknown_platform
-description: >-
-  Details about the unknown_platform
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unknown_platform produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The platform '{0}' is not a recognized platform._
+_A plataforma '{0}' não é uma plataforma reconhecida._
 
 ## Description
 
-The analyzer produces this diagnostic when an unknown platform name is
-used as a key in the `platforms` map.
-To learn more about specifying your package's supported platforms,
-check out the [documentation on platform declarations](https://dart.dev/tools/pub/pubspec#platforms).
+O analisador produz este diagnóstico quando um nome de plataforma desconhecido é
+usado como chave no mapa `platforms`.
+Para saber mais sobre como especificar as plataformas suportadas do seu pacote,
+confira a [documentação sobre declarações de plataforma](https://dart.dev/tools/pub/pubspec#platforms).
 
 ## Example
 
-The following `pubspec.yaml` produces this diagnostic because the platform
-`browser` is unknown.
+O seguinte `pubspec.yaml` produz este diagnóstico porque a plataforma
+`browser` é desconhecida.
 
 ```yaml
 name: example
@@ -29,15 +28,15 @@ platforms:
 
 ## Common fixes
 
-If you can rely on automatic platform detection, then omit the
-top-level `platforms` key.
+Se você pode confiar na detecção automática de plataforma, então omita a
+chave `platforms` de nível superior.
 
 ```yaml
 name: example
 ```
 
-If you need to manually specify the list of supported platforms, then
-write the `platforms` field as a map with known platform names as keys.
+Se você precisa especificar manualmente a lista de plataformas suportadas, então
+escreva o campo `platforms` como um mapa com nomes de plataformas conhecidos como chaves.
 
 ```yaml
 name: example

@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: avoid_print
-description: >-
-  Details about the avoid_print
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico avoid_print produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Don't invoke 'print' in production code._
+_Não invoque 'print' em código de produção._
 
 ## Description
 
-The analyzer produces this diagnostic when the function `print` is invoked
-in production code.
+O analisador produz este diagnóstico quando a função `print` é invocada
+em código de produção.
 
 ## Example
 
-The following code produces this diagnostic because the function `print`
-can't be invoked in production:
+O código a seguir produz este diagnóstico porque a função `print`
+não pode ser invocada em produção:
 
 ```dart
 void f(int x) {
@@ -38,9 +37,9 @@ void f(int x) {
 
 ## Common fixes
 
-If you're writing code that uses Flutter, then use the function
-[`debugPrint`][debugPrint], guarded by a test
-using [`kDebugMode`][kDebugMode]:
+Se você está escrevendo código que usa Flutter, então use a função
+[`debugPrint`][debugPrint], protegida por um teste
+usando [`kDebugMode`][kDebugMode]:
 
 ```dart
 import 'package:flutter/foundation.dart';
@@ -52,9 +51,9 @@ void f(int x) {
 }
 ```
 
-If you're writing code that doesn't use Flutter, then use a logging
-service, such as [`package:logging`][package-logging], to write the
-information.
+Se você está escrevendo código que não usa Flutter, então use um serviço
+de logging, como [`package:logging`][package-logging], para escrever as
+informações.
 
 [debugPrint]: https://api.flutter.dev/flutter/foundation/debugPrint.html
 [kDebugMode]: https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html

@@ -1,35 +1,34 @@
 ---
+ia-translate: true
 title: ambiguous_extension_member_access
-description: >-
-  Details about the ambiguous_extension_member_access
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico ambiguous_extension_member_access produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A member named '{0}' is defined in '{1}' and '{2}', and neither is more specific._
+_Um membro chamado '{0}' está definido em '{1}' e '{2}', e nenhum é mais específico._
 
-_A member named '{0}' is defined in {1}, and none are more specific._
+_Um membro chamado '{0}' está definido em {1}, e nenhum é mais específico._
 
-## Description
+## Descrição
 
-When code refers to a member of an object (for example, `o.m()` or `o.m` or
-`o[i]`) where the static type of `o` doesn't declare the member (`m` or
-`[]`, for example), then the analyzer tries to find the member in an
-extension. For example, if the member is `m`, then the analyzer looks for
-extensions that declare a member named `m` and have an extended type that
-the static type of `o` can be assigned to. When there's more than one such
-extension in scope, the extension whose extended type is most specific is
-selected.
+Quando o código se refere a um membro de um objeto (por exemplo, `o.m()` ou `o.m` ou
+`o[i]`) onde o tipo estático de `o` não declara o membro (`m` ou
+`[]`, por exemplo), então o analisador tenta encontrar o membro em uma
+extension. Por exemplo, se o membro é `m`, então o analisador procura por
+extensions que declaram um membro chamado `m` e têm um tipo estendido ao qual
+o tipo estático de `o` pode ser atribuído. Quando há mais de uma extension
+no escopo, a extension cujo tipo estendido é mais específico é
+selecionada.
 
-The analyzer produces this diagnostic when none of the extensions has an
-extended type that's more specific than the extended types of all of the
-other extensions, making the reference to the member ambiguous.
+O analisador produz este diagnóstico quando nenhuma das extensions tem um
+tipo estendido que seja mais específico do que os tipos estendidos de todas as
+outras extensions, tornando a referência ao membro ambígua.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there's no way to
-choose between the member in `E1` and the member in `E2`:
+O código a seguir produz este diagnóstico porque não há forma de
+escolher entre o membro em `E1` e o membro em `E2`:
 
 ```dart
 extension E1 on String {
@@ -45,12 +44,12 @@ void f(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If you don't need both extensions, then you can delete or hide one of them.
+Se você não precisa de ambas as extensions, então você pode deletar ou ocultar uma delas.
 
-If you need both, then explicitly select the one you want to use by using
-an extension override:
+Se você precisa de ambas, então selecione explicitamente a que você quer usar usando
+um override de extension:
 
 ```dart
 extension E1 on String {

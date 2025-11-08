@@ -1,26 +1,25 @@
 ---
+ia-translate: true
 title: undefined_setter
-description: >-
-  Details about the undefined_setter
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico undefined_setter produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The setter '{0}' isn't defined for the '{1}' function type._
+_O setter '{0}' não está definido para o tipo de função '{1}'._
 
-_The setter '{0}' isn't defined for the type '{1}'._
+_O setter '{0}' não está definido para o tipo '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it encounters an identifier that
-appears to be the name of a setter but either isn't defined or isn't
-visible in the scope in which the identifier is being referenced.
+O analisador produz este diagnóstico quando encontra um identificador que
+parece ser o nome de um setter, mas não está definido ou não está
+visível no escopo em que o identificador está sendo referenciado.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there isn't a setter
-named `z`:
+O código a seguir produz este diagnóstico porque não há setter
+chamado `z`:
 
 ```dart
 class C {
@@ -31,11 +30,11 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the identifier isn't defined, then either define it or replace it with
-the name of a setter that is defined. The example above can be corrected by
-fixing the spelling of the setter:
+Se o identificador não está definido, então defina-o ou substitua-o pelo
+nome de um setter que está definido. O exemplo acima pode ser corrigido
+corrigindo a ortografia do setter:
 
 ```dart
 class C {

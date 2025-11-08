@@ -1,9 +1,9 @@
 ---
-title: "Objective-C and Swift interop using package:ffigen"
-shortTitle: Objective-C & Swift interop
+ia-translate: true
+title: "Interoperabilidade com Objective-C e Swift usando package:ffigen"
+shortTitle: "Objective-C & Swift interop"
 breadcrumb: Objective-C & Swift
-description: >-
-  To use Objective-C and Swift code in your Dart program, use package:ffigen.
+description: "Para usar código Objective-C e Swift em seu programa Dart, use package:ffigen."
 ffigen: "https://pub.dev/packages/ffigen"
 example: "https://github.com/dart-lang/native/tree/main/pkgs/ffigen/example/objective_c"
 ffigenapi: "https://pub.dev/documentation/ffigen/latest/ffigen"
@@ -11,25 +11,25 @@ ffigendoc: "https://github.com/dart-lang/native/blob/main/pkgs/ffigen/doc/README
 appledoc: "https://developer.apple.com/documentation"
 ---
 
-Dart apps running on the [Dart Native platform][] (macOS or iOS)
-can use `dart:ffi` and [`package:ffigen`][]
-to call Objective-C and Swift APIs.
+Aplicações Dart executando na [plataforma Dart Native][Dart Native platform] (macOS ou iOS)
+podem usar `dart:ffi` e [`package:ffigen`][]
+para chamar APIs Objective-C e Swift.
 
-`dart:ffi` enables Dart code to interact with native C APIs.
-Objective-C is based on and compatible with C,
-so it's possible to interact with Objective-C APIs using only `dart:ffi`.
-However, doing so requires significant boilerplate,
-so you can use `package:ffigen` to automatically generate
-the Dart FFI bindings for a given Objective-C API.
-To learn more about FFI and interfacing with C code directly,
-see the [C interop guide][].
+`dart:ffi` permite que código Dart interaja com APIs nativas C.
+Objective-C é baseado e compatível com C,
+então é possível interagir com APIs Objective-C usando apenas `dart:ffi`.
+No entanto, fazer isso requer um código boilerplate significativo,
+então você pode usar `package:ffigen` para gerar automaticamente
+os bindings Dart FFI para uma determinada API Objective-C.
+Para aprender mais sobre FFI e interfaceamento direto com código C,
+consulte o [guia de interop com C][C interop guide].
 
-You can generate Objective-C headers for Swift APIs,
-enabling `dart:ffi` and `package:ffigen` to interact with Swift.
+Você pode gerar headers (cabeçalhos) Objective-C para APIs Swift,
+permitindo que `dart:ffi` e `package:ffigen` interajam com Swift.
 
-For more information about using FFIgen,
-see the [FFIgen README][]
-and the [additional documentation][].
+Para mais informações sobre o uso do FFIgen,
+consulte o [README do FFIgen][FFIgen README]
+e a [documentação adicional][additional documentation].
 
 [Dart Native platform]: /overview#platform
 [`package:ffigen`]: {{page.ffigen}}
@@ -37,52 +37,52 @@ and the [additional documentation][].
 [FFIgen README]: {{page.ffigen}}
 [additional documentation]: {{page.ffigendoc}}
 
-## Objective-C example
+## Exemplo Objective-C
 
-This guide walks you through [an example][]
-that uses `package:ffigen` to generate bindings for
+Este guia orienta você através de [um exemplo][an example]
+que usa `package:ffigen` para gerar bindings para
 [`AVAudioPlayer`][].
-This API requires at least macOS SDK 10.7,
-so check your version and update Xcode if necessary:
+Esta API requer pelo menos macOS SDK 10.7,
+então verifique sua versão e atualize o Xcode se necessário:
 
 ```console
 $ xcodebuild -showsdks
 ```
 
-Generating bindings to wrap an Objective-C API is similar to wrapping a C API.
-Direct `package:ffigen` at the header file that describes the API,
-and then load the library with `dart:ffi`.
+Gerar bindings para envolver uma API Objective-C é semelhante a envolver uma API C.
+Direcione `package:ffigen` para o arquivo de header que descreve a API,
+e então carregue a biblioteca com `dart:ffi`.
 
-`package:ffigen` parses Objective-C header files
-using [LLVM][],
-so you'll need to install that first.
-See [Installing LLVM][]
-from the FFIgen README for more details.
+`package:ffigen` analisa arquivos de header Objective-C
+usando [LLVM][],
+então você precisará instalá-lo primeiro.
+Consulte [Installing LLVM][]
+no README do FFIgen para mais detalhes.
 
 [an example]: {{page.example}}
 [`AVAudioPlayer`]: {{page.appledoc}}/avfaudio/avaudioplayer?language=objc
 [LLVM]: https://llvm.org/
 [Installing LLVM]: {{page.ffigen}}#installing-llvm
 
-### Configure FFIgen for Objective-C
+### Configurar FFIgen para Objective-C
 
-First, add `package:ffigen` as a dev dependency and the helpers
-`package:objective_c` and `package:ffi` as a regular dependency:
+Primeiro, adicione `package:ffigen` como uma dependência de desenvolvimento e os helpers
+`package:objective_c` e `package:ffi` como uma dependência regular:
 
 ```console
 $ dart pub add dev:ffigen objective_c ffi
 ```
 
-Then, configure FFIgen to generate bindings for the
-Objective-C header containing the API.
-Configure FFIgen using YAML or Dart code; we recommend Dart for new projects.
-The YAML config will be deprecated in future versions of FFIgen.
-Start by creating a `generate_code.dart` script somewhere in your package.
-We recommend placing this file in `my_package/tool`.
+Em seguida, configure o FFIgen para gerar bindings para o
+header Objective-C contendo a API.
+Configure o FFIgen usando YAML ou código Dart; recomendamos Dart para novos projetos.
+A configuração YAML será descontinuada em versões futuras do FFIgen.
+Comece criando um script `generate_code.dart` em algum lugar do seu pacote.
+Recomendamos colocar este arquivo em `my_package/tool`.
 
-The `generate_code.dart` script should create an `FfiGenerator` object,
-which will contain all your configuration options,
-then call its `.generate()` method.
+O script `generate_code.dart` deve criar um objeto `FfiGenerator`,
+que conterá todas as suas opções de configuração,
+e então chamar seu método `.generate()`.
 
 ```dart
 import 'package:ffigen/ffigen.dart';
@@ -93,25 +93,25 @@ final config = FfiGenerator(
 void main() => config.generate();
 ```
 
-First, you'll tell FFIgen where to find the API you're trying to
-generate bindings for.
-To do this, set the `headers.entryPoints` option.
+Primeiro, você dirá ao FFIgen onde encontrar a API para a qual está tentando
+gerar bindings.
+Para fazer isso, defina a opção `headers.entryPoints`.
 
-For this example, you'll load `AVAudioPlayer.h`.
-This is part of the `AVFAudio` framework,
-which is located in your Xcode installation.
-FFIgen includes some helper functions to locate these sorts of APIs,
-such as `macSdkPath`.
-Using these helper functions makes your code generation script
-more reliable across different machines,
-which might have different SDK installation locations.
+Para este exemplo, você carregará `AVAudioPlayer.h`.
+Este faz parte do framework `AVFAudio`,
+que está localizado na sua instalação do Xcode.
+O FFIgen inclui algumas funções auxiliares para localizar esses tipos de APIs,
+como `macSdkPath`.
+Usar essas funções auxiliares torna seu script de geração de código
+mais confiável em diferentes máquinas,
+que podem ter diferentes locais de instalação do SDK.
 
-The `macSdkPath` utility finds the macOS SDK by running `xcrun --show-sdk-path --sdk macosx`.
-You can run this command in a terminal to locate your macOS SDKs,
-or with `--sdk iphoneos` to find your iOS SDKs.
-When generating bindings for an Apple API,
-exploring these directories is a great way to find
-the right headers to pass to FFIgen.
+O utilitário `macSdkPath` encontra o macOS SDK executando `xcrun --show-sdk-path --sdk macosx`.
+Você pode executar este comando em um terminal para localizar seus macOS SDKs,
+ou com `--sdk iphoneos` para encontrar seus iOS SDKs.
+Ao gerar bindings para uma API Apple,
+explorar esses diretórios é uma ótima maneira de encontrar
+os headers corretos para passar ao FFIgen.
 
 ```dart highlightLines=4-10
 import 'package:ffigen/ffigen.dart';
@@ -129,21 +129,21 @@ final config = FfiGenerator(
 void main() => config.generate();
 ```
 
-Next, you'll define the output file.
-The main output of FFIgen is a single Dart file
-containing bindings for the given inputs.
-This file's location is defined by the `output.dartFile` option.
+Em seguida, você definirá o arquivo de saída.
+A saída principal do FFIgen é um único arquivo Dart
+contendo bindings para as entradas fornecidas.
+A localização deste arquivo é definida pela opção `output.dartFile`.
 
-FFIgen sometimes generates a `.m` file,
-containing Objective-C code required for interop with the API.
-FFIgen generates this file only if the API requires it
-(for example, if you're using blocks or protocols).
-By default, this file has the same name as the Dart bindings,
-but with `.m` at the end of the file name.
-You can change its location with the `output.objectiveCFile` option.
-If FFIgen produces this file, you must compile it into your package,
-otherwise you might get runtime exceptions relating to missing symbols.
-For this example, FFIgen doesn't generate a `.m` file.
+O FFIgen às vezes gera um arquivo `.m`,
+contendo código Objective-C necessário para interop com a API.
+O FFIgen gera este arquivo apenas se a API exigir
+(por exemplo, se você estiver usando blocks ou protocols).
+Por padrão, este arquivo tem o mesmo nome que os bindings Dart,
+mas com `.m` no final do nome do arquivo.
+Você pode alterar sua localização com a opção `output.objectiveCFile`.
+Se o FFIgen produzir este arquivo, você deve compilá-lo no seu pacote,
+caso contrário, você pode obter exceções em tempo de execução relacionadas a símbolos ausentes.
+Para este exemplo, o FFIgen não gera um arquivo `.m`.
 
 ```dart highlightLines=11-13
 import 'package:ffigen/ffigen.dart';
@@ -164,15 +164,15 @@ final config = FfiGenerator(
 void main() => config.generate();
 ```
 
-Finally, tell FFIgen which parts of the input API to generate bindings for.
-By default, FFIgen filters out all the bindings.
-In this case, to generate bindings for `AVAudioPlayer`,
-which is an Objective-C interface,
-you have to set the `objectiveC.interfaces` field.
+Finalmente, diga ao FFIgen quais partes da API de entrada gerar bindings.
+Por padrão, o FFIgen filtra todos os bindings.
+Neste caso, para gerar bindings para `AVAudioPlayer`,
+que é uma interface Objective-C,
+você precisa definir o campo `objectiveC.interfaces`.
 
-Setting the `objectiveC` field tells FFIgen
-to generate bindings for the Objective-C language.
-By default, FFIgen generates C bindings.
+Definir o campo `objectiveC` diz ao FFIgen
+para gerar bindings para a linguagem Objective-C.
+Por padrão, o FFIgen gera bindings C.
 
 ```dart highlightLines=11-13
 import 'package:ffigen/ffigen.dart';
@@ -196,46 +196,46 @@ final config = FfiGenerator(
 void main() => config.generate();
 ```
 
-You can use `includeMember` to filter out specific methods from the class,
-and `rename` or `renameMember` to rename the included classes or methods.
-There are similar options for protocols and categories.
+Você pode usar `includeMember` para filtrar métodos específicos da classe,
+e `rename` ou `renameMember` para renomear as classes ou métodos incluídos.
+Existem opções semelhantes para protocols e categories.
 
-For a full list of configuration options,
-check out the [FFIgen API documentation][].
+Para uma lista completa de opções de configuração,
+confira a [documentação da API do FFIgen][FFIgen API documentation].
 
 [FFIgen API documentation]: {{page.ffigenapi}}
 
-### Generate the Objective-C bindings
+### Gerar os bindings Objective-C
 
-To generate the bindings,
-navigate to the `example` directory and run the script:
+Para gerar os bindings,
+navegue até o diretório `example` e execute o script:
 
 ```console
 $ dart run tool/generate_code.dart
 ```
 
-This should generate a large `avf_audio_bindings.dart` file,
-similar to [this one][].
-The main class of interest is `AVAudioPlayer`.
+Isso deve gerar um grande arquivo `avf_audio_bindings.dart`,
+semelhante a [este][this one].
+A classe principal de interesse é `AVAudioPlayer`.
 
-You might notice other classes in the file
-with a comment indicating they are a stub.
-FFIgen generates stub bindings for all transitive dependencies
-of the directly included APIs.
-To generate full bindings for these stubs,
-add them to the includes in your config.
-This stubbing behavior can be changed
-with the `includeTransitive` options.
+Você pode notar outras classes no arquivo
+com um comentário indicando que são um stub.
+O FFIgen gera bindings stub para todas as dependências transitivas
+das APIs diretamente incluídas.
+Para gerar bindings completos para esses stubs,
+adicione-os aos includes na sua configuração.
+Este comportamento de stubbing pode ser alterado
+com as opções `includeTransitive`.
 
 [this one]: {{page.example}}/avf_audio_bindings.dart
 
-### Use the Objective-C bindings
+### Usar os bindings Objective-C
 
-Now you're ready to load and interact with the generated library.
-The example app, [play_audio.dart][],
-loads and plays audio files passed as command line arguments.
-The first step is to load the [dylib][]
-and instantiate the native `AVFAudio` library:
+Agora você está pronto para carregar e interagir com a biblioteca gerada.
+O aplicativo de exemplo, [play_audio.dart][],
+carrega e reproduz arquivos de áudio passados como argumentos de linha de comando.
+O primeiro passo é carregar o [dylib][]
+e instanciar a biblioteca nativa `AVFAudio`:
 
 ```dart
 import 'dart:ffi';
@@ -252,19 +252,19 @@ void main(List<String> args) async {
 }
 ```
 
-Because this example loads a system library,
-the dylib path points to the framework's internal dylib.
-You can also load your own `.dylib` file,
-or if the library is statically linked into your app (often the case on iOS)
-you don't need to load anything.
+Como este exemplo carrega uma biblioteca do sistema,
+o caminho do dylib aponta para o dylib interno do framework.
+Você também pode carregar seu próprio arquivo `.dylib`,
+ou se a biblioteca estiver estaticamente vinculada ao seu aplicativo (frequentemente o caso no iOS)
+você não precisa carregar nada.
 
-The example plays each of the audio files
-specified as command line arguments one by one.
-For each argument,
-you first have to convert the Dart `String` to an Objective-C `NSString`.
-The generated `NSString` wrapper has a convenient constructor
-that handles this conversion,
-and a `toDartString()` method that converts it back to a Dart `String`.
+O exemplo reproduz cada um dos arquivos de áudio
+especificados como argumentos de linha de comando um por um.
+Para cada argumento,
+você primeiro precisa converter a `String` Dart para uma `NSString` Objective-C.
+O wrapper `NSString` gerado tem um construtor conveniente
+que lida com essa conversão,
+e um método `toDartString()` que o converte de volta para uma `String` Dart.
 
 ```dart highlightLines=4-7
 void main(List<String> args) async {
@@ -277,8 +277,8 @@ void main(List<String> args) async {
 }
 ```
 
-The audio player expects an `NSURL`, so next,
-use the [`fileURLWithPath:`][] method to convert the `NSString` to an `NSURL`.
+O player de áudio espera uma `NSURL`, então a seguir,
+use o método [`fileURLWithPath:`][] para converter a `NSString` em uma `NSURL`.
 
 ```dart highlightLines=8
 void main(List<String> args) async {
@@ -293,15 +293,15 @@ void main(List<String> args) async {
 }
 ```
 
-Now, you can construct the `AVAudioPlayer`.
-Constructing an Objective-C object has two stages.
-`alloc` allocates the memory for the object,
-but doesn't initialize it.
-Methods with names starting with `init*` do the initialization.
-Some interfaces also provide `new*` methods that do both of these steps.
+Agora, você pode construir o `AVAudioPlayer`.
+A construção de um objeto Objective-C tem duas etapas.
+`alloc` aloca a memória para o objeto,
+mas não a inicializa.
+Métodos com nomes que começam com `init*` fazem a inicialização.
+Algumas interfaces também fornecem métodos `new*` que fazem ambas as etapas.
 
-To initialize the `AVAudioPlayer`,
-use the [`initWithContentsOfURL:error:`][] method:
+Para inicializar o `AVAudioPlayer`,
+use o método [`initWithContentsOfURL:error:`][`initWithContentsOfURL:error:`]:
 
 ```dart highlightLines=9-13
 void main(List<String> args) async {
@@ -321,26 +321,26 @@ void main(List<String> args) async {
 }
 ```
 
-This Dart `AVAudioPlayer` object is a wrapper around an underlying
-Objective-C `AVAudioPlayer*` object pointer.
+Este objeto `AVAudioPlayer` Dart é um wrapper em torno de um
+ponteiro de objeto `AVAudioPlayer*` Objective-C subjacente.
 
-Objective-C uses reference counting for memory management
-(through retain, release, and other functions),
-but on the Dart side memory management is handled automatically.
-The Dart wrapper object retains a reference to the Objective-C object,
-and when the Dart object is garbage collected,
-the reference is automatically released.
+Objective-C usa contagem de referência para gerenciamento de memória
+(através de retain, release e outras funções),
+mas no lado Dart o gerenciamento de memória é tratado automaticamente.
+O objeto wrapper Dart mantém uma referência ao objeto Objective-C,
+e quando o objeto Dart é coletado pelo garbage collector,
+a referência é automaticamente liberada.
 
-Next, look up the length of the audio file,
-which you'll need later to wait for the audio to finish.
-The [`duration`][] is a `@property(readonly)`.
-Objective-C properties are translated into getters and setters
-on the generated Dart wrapper object.
-Since `duration` is `readonly`, only the getter is generated.
+Em seguida, procure a duração do arquivo de áudio,
+que você precisará mais tarde para esperar que o áudio termine.
+O [`duration`][`duration`] é um `@property(readonly)`.
+Propriedades Objective-C são traduzidas em getters e setters
+no objeto wrapper Dart gerado.
+Como `duration` é `readonly`, apenas o getter é gerado.
 
-`NSTimeInterval` is a type alias for `double`,
-so you can immediately use the Dart `.ceil()` method
-to round up to the next second:
+`NSTimeInterval` é um alias de tipo para `double`,
+então você pode usar imediatamente o método Dart `.ceil()`
+para arredondar para o próximo segundo:
 
 ```dart highlightLines=15-16
 void main(List<String> args) async {
@@ -363,8 +363,8 @@ void main(List<String> args) async {
 }
 ```
 
-Finally, you can use the [`play`][] method to play the audio,
-then check the status, and wait for the duration of the audio file:
+Finalmente, você pode usar o método [`play`][`play`] para reproduzir o áudio,
+então verifique o status e espere pela duração do arquivo de áudio:
 
 ```dart highlightLines=18-24
 void main(List<String> args) async {
@@ -399,111 +399,111 @@ void main(List<String> args) async {
 [dylib]: {{page.appledoc}}/avfaudio?language=objc
 [`fileURLWithPath:`]: {{page.appledoc}}/foundation/nsurl/1410828-fileurlwithpath?language=objc
 
-### Callbacks and multithreading limitations
+### Callbacks e limitações de multithreading
 
-Multithreading introduces complexity to interop between Objective-C and Dart.
-This stems from differences between Dart isolates and OS threads,
-and how Apple's APIs handle concurrency:
+Multithreading introduz complexidade ao interop entre Objective-C e Dart.
+Isso decorre das diferenças entre isolates Dart e threads do SO,
+e como as APIs da Apple lidam com concorrência:
 
-1. Dart isolates aren't the same thing as threads.
-   Isolates run on threads but aren't
-   guaranteed to run on any particular thread,
-   and the VM might change which thread an isolate is
-   running on without warning.
-   There is an [open feature request][] to enable isolates to be
-   pinned to specific threads.
-2. While FFIgen supports converting
-   Dart functions to Objective-C blocks,
-   most Apple APIs don't make any guarantees about
-   which thread a callback will run on.
-3. Most APIs that involve UI interaction
-   can only be called on the main thread,
-   also called the platform thread in Flutter.
-4. Many Apple APIs are [not thread safe][].
+1. Isolates Dart não são a mesma coisa que threads.
+   Isolates executam em threads, mas não têm
+   garantia de executar em nenhuma thread específica,
+   e a VM pode mudar em qual thread um isolate está
+   executando sem aviso.
+   Há uma [solicitação de funcionalidade aberta][open feature request] para permitir que isolates sejam
+   fixados a threads específicas.
+2. Embora o FFIgen suporte converter
+   funções Dart em blocks Objective-C,
+   a maioria das APIs Apple não faz nenhuma garantia sobre
+   em qual thread um callback será executado.
+3. A maioria das APIs que envolvem interação com UI
+   só podem ser chamadas na thread principal,
+   também chamada de platform thread no Flutter.
+4. Muitas APIs Apple [não são thread safe][not thread safe].
 
-The first two points mean that a block created in one isolate
-might be invoked on a thread running a different isolate,
-or no isolate at all.
-Depending on the type of block you are using,
-this could cause your app to crash.
-When a block is created, the isolate it was created in is its owner.
-Blocks created using `FooBlock.fromFunction`
-must be invoked on the owner isolate's thread,
-otherwise they will crash.
-Blocks created using `FooBlock.listener` or `FooBlock.blocking`
-can be safely invoked from any thread,
-and the function they wrap will (eventually) be invoked
-inside the owner isolate,
-though these constructors are only supported for blocks that return `void`.
-If there is user demand for it, `FooBlock.blocking` might
-add support for non-`void` return values in the future.
+Os dois primeiros pontos significam que um block criado em um isolate
+pode ser invocado em uma thread executando um isolate diferente,
+ou nenhum isolate.
+Dependendo do tipo de block que você está usando,
+isso pode fazer com que seu aplicativo falhe.
+Quando um block é criado, o isolate em que foi criado é seu proprietário.
+Blocks criados usando `FooBlock.fromFunction`
+devem ser invocados na thread do isolate proprietário,
+caso contrário eles irão falhar.
+Blocks criados usando `FooBlock.listener` ou `FooBlock.blocking`
+podem ser invocados com segurança de qualquer thread,
+e a função que eles encapsulam será (eventualmente) invocada
+dentro do isolate proprietário,
+embora esses construtores sejam suportados apenas para blocks que retornam `void`.
+Se houver demanda do usuário para isso, `FooBlock.blocking` pode
+adicionar suporte para valores de retorno não-`void` no futuro.
 
-The third point means that directly calling some Apple APIs
-using the generated Dart bindings might be thread unsafe.
-This could crash your app or cause other unpredictable behavior.
-In recent versions of Flutter, the main isolate runs on the platform thread,
-so this isn't an issue when invoking these thread-locked APIs
-from the main isolate.
-If you need to invoke these APIs from other isolates,
-or you need to support older versions of Flutter,
-you can use the [`runOnPlatformThread`][] function.
-For more information, see the [Objective-C dispatch documentation][].
+O terceiro ponto significa que chamar diretamente algumas APIs Apple
+usando os bindings Dart gerados pode ser thread unsafe.
+Isso pode fazer com que seu aplicativo falhe ou cause outro comportamento imprevisível.
+Em versões recentes do Flutter, o isolate principal executa na platform thread,
+então isso não é um problema ao invocar essas APIs bloqueadas por thread
+do isolate principal.
+Se você precisar invocar essas APIs de outros isolates,
+ou se precisar suportar versões mais antigas do Flutter,
+você pode usar a função [`runOnPlatformThread`][].
+Para mais informações, consulte a [documentação de dispatch Objective-C][Objective-C dispatch documentation].
 
-Regarding the last point,
-although Dart isolates can switch threads,
-they only ever run on one thread at a time.
-The API you interact with doesn't need to be thread safe,
-as long as it doesn't have constraints about
-which thread it's called from.
+Com relação ao último ponto,
+embora os isolates Dart possam trocar de threads,
+eles só executam em uma thread por vez.
+A API com a qual você interage não precisa ser thread safe,
+desde que não tenha restrições sobre
+de qual thread é chamada.
 
-You can safely interact with Objective-C code
-as long as you keep these limitations in mind.
+Você pode interagir com segurança com código Objective-C
+desde que mantenha essas limitações em mente.
 
 [`runOnPlatformThread`]: {{site.flutter-api}}/flutter/dart-ui/runOnPlatformThread.html
 
-## Swift example
+## Exemplo Swift {:#swift-example}
 
-This [example][swift_example] demonstrates how to
-make a Swift class compatible with Objective-C,
-generate a wrapper header, and invoke it from Dart code.
+Este [exemplo][swift_example] demonstra como
+tornar uma classe Swift compatível com Objective-C,
+gerar um header wrapper e invocá-lo a partir do código Dart.
 
-The process below is manual.
-There's an experimental project to automate these steps
-called [Swiftgen][].
+O processo abaixo é manual.
+Há um projeto experimental para automatizar essas etapas
+chamado [Swiftgen][].
 
 [Swiftgen]: {{site.pub-pkg}}/swiftgen
 
-### Generating the Objective-C wrapper header
+### Gerar o header wrapper Objective-C
 
-Swift APIs can be made compatible with Objective-C,
-by using the `@objc` annotation.
-Make sure to make any classes or methods you want to use
-`public`, and have your classes extend `NSObject`.
+As APIs Swift podem ser tornadas compatíveis com Objective-C,
+usando a anotação `@objc`.
+Certifique-se de tornar quaisquer classes ou métodos que você deseja usar
+`public`, e que suas classes estendam `NSObject`.
 
 ```swift
 import Foundation
 
 @objc public class SwiftClass: NSObject {
   @objc public func sayHello() -> String {
-    return "Hello from Swift!";
+    return "Olá do Swift!";
   }
 
   @objc public var someField = 123;
 }
 ```
 
-To interact with a third-party library you can't modify,
-you might need to write an Objective-C compatible wrapper class
-that exposes the methods you want to use.
+Para interagir com uma biblioteca de terceiros que você não pode modificar,
+você pode precisar escrever uma classe wrapper compatível com Objective-C
+que exponha os métodos que você deseja usar.
 
-For more information about Objective-C / Swift interoperability,
-see the [Swift documentation][].
+Para obter mais informações sobre a interoperabilidade Objective-C / Swift,
+consulte a [documentação Swift][Swift documentation].
 
-Once you've made your class compatible,
-you can generate an Objective-C wrapper header.
-You can do this using Xcode,
-or using the Swift command-line compiler, `swiftc`.
-This example uses the command line:
+Depois de tornar sua classe compatível,
+você pode gerar um header wrapper Objective-C.
+Você pode fazer isso usando o Xcode,
+ou usando o compilador de linha de comando Swift, `swiftc`.
+Este exemplo usa a linha de comando:
 
 ```console
 $ swiftc -c swift_api.swift             \
@@ -512,15 +512,15 @@ $ swiftc -c swift_api.swift             \
     -emit-library -o libswiftapi.dylib
 ```
 
-This command compiles the Swift file, `swift_api.swift`,
-and generates a wrapper header, `swift_api.h`.
-It also generates the dylib you're going to load later,
+Este comando compila o arquivo Swift, `swift_api.swift`,
+e gera um header wrapper, `swift_api.h`.
+Ele também gera o dylib que você vai carregar mais tarde,
 `libswiftapi.dylib`.
 
-You can verify that the header generated correctly by opening it
-and checking that the interfaces are what you expect.
-Towards the bottom of the file,
-you should see something like the following:
+Você pode verificar se o header foi gerado corretamente abrindo-o
+e verificando se as interfaces são o que você espera.
+Perto do final do arquivo,
+você deve ver algo como o seguinte:
 
 ```objc
 SWIFT_CLASS("_TtC12swift_module10SwiftClass")
@@ -531,20 +531,20 @@ SWIFT_CLASS("_TtC12swift_module10SwiftClass")
 @end
 ```
 
-If the interface is missing, or doesn't have all of its methods,
-make sure they're all annotated with `@objc` and `public`.
+Se a interface estiver ausente ou não tiver todos os seus métodos,
+certifique-se de que todos estejam anotados com `@objc` e `public`.
 
-### Configuring FFIgen for Swift
+### Configurar FFIgen para Swift
 
-FFIgen only sees the Objective-C wrapper header, `swift_api.h`.
-So most of this config looks similar
-to the Objective-C example,
-including setting the language to `objc`.
+O FFIgen vê apenas o header wrapper Objective-C, `swift_api.h`.
+Então a maior parte dessa configuração parece semelhante
+ao exemplo Objective-C,
+incluindo definir a linguagem como `objc`.
 
 ```yaml
 ffigen:
   name: SwiftLibrary
-  description: Bindings for swift_api.
+  description: Bindings para swift_api.
   language: objc
   output: 'swift_api_bindings.dart'
   exclude-all-by-default: true
@@ -558,70 +558,70 @@ ffigen:
       - 'swift_api.h'
 ```
 
-As before, set the language to `objc`,
-and the entry point to the header;
-exclude everything by default,
-and explicitly include the interface you are binding.
+Como antes, defina a linguagem para `objc`,
+e o ponto de entrada para o header;
+exclua tudo por padrão,
+e inclua explicitamente a interface que você está vinculando.
 
-A key configuration difference for wrapped Swift APIs
-is the `objc-interfaces` -> `module` option.
-When `swiftc` compiles the library,
-it gives the Objective-C interface a module prefix.
-Internally, `SwiftClass` is registered as
+Uma diferença chave de configuração para APIs Swift encapsuladas
+é a opção `objc-interfaces` -> `module`.
+Quando `swiftc` compila a biblioteca,
+ele dá à interface Objective-C um prefixo de módulo.
+Internamente, `SwiftClass` é registrado como
 `swift_module.SwiftClass`.
-You need to tell `ffigen` about this prefix,
-so it loads the correct class from the dylib.
+Você precisa dizer ao `ffigen` sobre este prefixo,
+para que ele carregue a classe correta do dylib.
 
-Not every class gets this prefix.
-For example, `NSString` and `NSObject` 
-won't get a module prefix, 
-because they're internal classes.
-This is why the `module` option maps
-from class name to module prefix.
-You can also use regular expressions to match
-multiple class names at once.
+Nem toda classe recebe este prefixo.
+Por exemplo, `NSString` e `NSObject`
+não receberão um prefixo de módulo,
+porque são classes internas.
+É por isso que a opção `module` mapeia
+do nome da classe para o prefixo do módulo.
+Você também pode usar expressões regulares para corresponder
+vários nomes de classe de uma vez.
 
-The module prefix is whatever you passed to
-`swiftc` in the `-module-name` flag.
-In this example, it's `swift_module`.
-If you don't explicitly set this flag,
-it defaults to the name of the Swift file.
+O prefixo do módulo é o que você passou para
+`swiftc` na flag `-module-name`.
+Neste exemplo, é `swift_module`.
+Se você não definir explicitamente esta flag,
+ele assume como padrão o nome do arquivo Swift.
 
-If you aren't sure what the module name is,
-you can also check the generated Objective-C header.
-Above the `@interface`, you'll find a `SWIFT_CLASS` macro:
+Se você não tiver certeza de qual é o nome do módulo,
+você também pode verificar o header Objective-C gerado.
+Acima de `@interface`, você encontrará uma macro `SWIFT_CLASS`:
 
 ```objc
 SWIFT_CLASS("_TtC12swift_module10SwiftClass")
 @interface SwiftClass : NSObject
 ```
 
-The string inside the macro contains the module name and the class name:
+A string dentro da macro contém o nome do módulo e o nome da classe:
 `"_TtC12`***`swift_module`***`10`***`SwiftClass`***`"`.
 
-Swift can even demangle this name for us:
+O Swift pode até mesmo desmascarar este nome para nós:
 
 ```console
 $ echo "_TtC12swift_module10SwiftClass" | swift demangle
 ```
 
-This outputs `swift_module.SwiftClass`.
+Isso produz `swift_module.SwiftClass`.
 
-### Generating the Swift bindings
+### Gerar os bindings Swift
 
-As before, to generate the bindings,
-navigate to the example directory and run FFIgen:
+Como antes, para gerar os bindings,
+navegue até o diretório de exemplo e execute o FFIgen:
 
 ```console
 $ dart run ffigen
 ```
 
-This generates `swift_api_bindings.dart`.
+Isso gera `swift_api_bindings.dart`.
 
-### Using the Swift bindings
+### Usar os bindings Swift
 
-Interacting with these bindings is exactly the same
-as for a normal Objective-C library:
+A interação com esses bindings é exatamente a mesma
+que para uma biblioteca Objective-C normal:
 
 ```dart
 import 'dart:ffi';
@@ -637,12 +637,12 @@ void main() {
 }
 ```
 
-Note that the module name is not mentioned
-in the generated Dart API.
-It's only used internally
-to load the class from the dylib.
+Observe que o nome do módulo não é mencionado
+na API Dart gerada.
+Ele é usado apenas internamente
+para carregar a classe do dylib.
 
-Now you can run the example using:
+Agora você pode executar o exemplo usando:
 
 ```console
 $ dart run example.dart

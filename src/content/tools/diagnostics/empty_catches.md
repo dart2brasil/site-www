@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: empty_catches
-description: >-
-  Details about the empty_catches
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico empty_catches produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,16 +17,16 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Empty catch block._
+_Bloco catch empty._
 
 ## Description
 
-The analyzer produces this diagnostic when the block in a `catch` clause
-is empty.
+O analisador produz este diagnóstico quando o bloco em uma cláusula `catch`
+está empty.
 
 ## Example
 
-The following code produces this diagnostic because the catch block is
+O código a seguir produz este diagnóstico porque o bloco catch está
 empty:
 
 ```dart
@@ -40,8 +39,8 @@ void f() {
 
 ## Common fixes
 
-If the exception shouldn't be ignored, then add code to handle the
-exception:
+Se a exceção não deve ser ignorada, então adicione código para tratar a
+exceção:
 
 ```dart
 void f() {
@@ -53,8 +52,8 @@ void f() {
 }
 ```
 
-If the exception is intended to be ignored, then add a comment explaining
-why:
+Se a exceção deve ser intencionalmente ignorada, então adicione um comentário explicando
+o motivo:
 
 ```dart
 void f() {
@@ -66,8 +65,8 @@ void f() {
 }
 ```
 
-If the exception is intended to be ignored and there isn't any good
-explanation for why, then rename the exception parameter:
+Se a exceção deve ser intencionalmente ignorada e não há uma boa
+explicação do motivo, então renomeie o parâmetro da exceção:
 
 ```dart
 void f() {

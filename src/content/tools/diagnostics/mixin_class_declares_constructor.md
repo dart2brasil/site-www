@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: mixin_class_declares_constructor
-description: >-
-  Details about the mixin_class_declares_constructor
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico mixin_class_declares_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't be used as a mixin because it declares a constructor._
+_A classe '{0}' não pode ser usada como mixin porque declara um construtor._
 
 ## Description
 
-The analyzer produces this diagnostic when a class is used as a mixin and
-the mixed-in class defines a constructor.
+O analisador produz este diagnóstico quando uma classe é usada como mixin e
+a classe mixed-in define um construtor.
 
 ## Example
 
-The following code produces this diagnostic because the class `A`, which
-defines a constructor, is being used as a mixin:
+O código a seguir produz este diagnóstico porque a classe `A`, que
+define um construtor, está sendo usada como mixin:
 
 ```dart
 //@dart=2.19
@@ -30,7 +29,7 @@ class B with [!A!] {}
 
 ## Common fixes
 
-If it's possible to convert the class to a mixin, then do so:
+Se é possível converter a classe para um mixin, então faça isso:
 
 ```dart
 mixin A {
@@ -39,8 +38,8 @@ mixin A {
 class B with A {}
 ```
 
-If the class can't be a mixin and it's possible to remove the constructor,
-then do so:
+Se a classe não pode ser um mixin e é possível remover o construtor,
+então faça isso:
 
 ```dart
 //@dart=2.19
@@ -50,8 +49,8 @@ class A {
 class B with A {}
 ```
 
-If the class can't be a mixin and you can't remove the constructor, then
-try extending or implementing the class rather than mixing it in:
+Se a classe não pode ser um mixin e você não pode remover o construtor, então
+tente estender ou implementar a classe em vez de misturá-la:
 
 ```dart
 class A {
