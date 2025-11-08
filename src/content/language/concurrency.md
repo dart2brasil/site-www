@@ -86,7 +86,7 @@ eventos assíncronos em Dart, como objetos [`Stream`][].
 
 [`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 
-## Programação assíncrona
+## Programação assíncrona {:#asynchronous-programming}
 
 Esta seção resume os diferentes tipos e sintaxes de programação assíncrona em Dart.
 Se você já está familiarizado com `Future`, `Stream` e async-await,
@@ -355,7 +355,7 @@ void fib40() async {
 }
 ```
 
-### Performance e grupos de isolate
+### Performance e grupos de isolate {:#performance-and-isolate-groups}
 
 Quando um isolate chama [`Isolate.spawn()`][], os dois isolates têm o mesmo
 código executável e estão no mesmo _grupo de isolate_. Grupos de isolate permitem
