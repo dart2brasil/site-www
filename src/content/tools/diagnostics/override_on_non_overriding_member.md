@@ -1,30 +1,31 @@
 ---
+ia-translate: true
 title: override_on_non_overriding_member
 description: >-
-  Details about the override_on_non_overriding_member
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico override_on_non_overriding_member
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The field doesn't override an inherited getter or setter._
+_O campo não sobrescreve um getter ou setter herdado._
 
-_The getter doesn't override an inherited getter._
+_O getter não sobrescreve um getter herdado._
 
-_The method doesn't override an inherited method._
+_O método não sobrescreve um método herdado._
 
-_The setter doesn't override an inherited setter._
+_O setter não sobrescreve um setter herdado._
 
 ## Description
 
-The analyzer produces this diagnostic when a class member is annotated with
-the `@override` annotation, but the member isn't declared in any of the
-supertypes of the class.
+O analisador produz este diagnóstico quando um membro de classe é anotado com
+a anotação `@override`, mas o membro não está declarado em nenhum dos
+supertipos da classe.
 
 ## Example
 
-The following code produces this diagnostic because `m` isn't declared in
-any of the supertypes of `C`:
+O código a seguir produz este diagnóstico porque `m` não está declarado em
+nenhum dos supertipos de `C`:
 
 ```dart
 class C {
@@ -35,8 +36,8 @@ class C {
 
 ## Common fixes
 
-If the member is intended to override a member with a different name, then
-update the member to have the same name:
+Se o membro tem a intenção de sobrescrever um membro com um nome diferente, então
+atualize o membro para ter o mesmo nome:
 
 ```dart
 class C {
@@ -45,7 +46,7 @@ class C {
 }
 ```
 
-If the member is intended to override a member that was removed from the
-superclass, then consider removing the member from the subclass.
+Se o membro tem a intenção de sobrescrever um membro que foi removido da
+superclasse, então considere remover o membro da subclasse.
 
-If the member can't be removed, then remove the annotation.
+Se o membro não pode ser removido, então remova a anotação.
