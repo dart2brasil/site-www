@@ -41,7 +41,7 @@ class Point {
 }
 ```
 
-## Operadores
+## Operadores {:#operators}
 
 A maioria dos operadores são métodos de instância com nomes especiais.
 Dart permite que você defina operadores com os seguintes nomes:
@@ -100,7 +100,7 @@ void main() {
 ```
 
 
-## Getters e setters
+## Getters e setters {:#getters-and-setters}
 
 Getters e setters são métodos especiais que fornecem acesso de leitura e escrita
 às propriedades de um objeto. Lembre-se de que cada variável de instância tem
