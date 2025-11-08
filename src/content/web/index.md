@@ -1,7 +1,8 @@
 ---
-title: Web platform
+ia-translate: true
+title: Plataforma web
 shortTitle: Web
-description: Resources for developing Dart web apps.
+description: Recursos para desenvolver aplicações web Dart.
 showToc: false
 ---
 
@@ -16,12 +17,12 @@ a plataforma web Dart fornece [bibliotecas principais][core libraries],
 acesso ao [DOM (Document Object Model)][DOM],
 e [interoperabilidade para chamar JavaScript][interop] de Dart.
 
-You have the option of using Dart web with a higher-level framework.
-Many apps that support web plus mobile or desktop are built
-using [Flutter][] and [Flutter web][] support.
-You can also use [Jaspr][] to build fast and dynamic HTML-based websites.
-Flutter web support, Jaspr
-and other web frameworks for Dart are powered by the Dart web platform.
+Você tem a opção de usar Dart web com um framework de nível superior.
+Muitas aplicações que suportam web além de mobile ou desktop são construídas
+usando [Flutter][] e suporte a [Flutter web][].
+Você também pode usar [Jaspr][] para construir sites rápidos e dinâmicos baseados em HTML.
+O suporte a Flutter web, Jaspr
+e outros frameworks web para Dart são alimentados pela plataforma web Dart.
 
 <div class="side-by-side">
 <div class="centered-rows">

@@ -1,7 +1,8 @@
 ---
-title: Web libraries and packages
-shortTitle: Web libraries
-description: Libraries and packages that can help you write Dart web apps.
+ia-translate: true
+title: Bibliotecas e pacotes web
+shortTitle: Bibliotecas web
+description: Bibliotecas e pacotes que podem ajudá-lo a escrever aplicações web Dart.
 ---
 
 Dart fornece diversos pacotes e bibliotecas para suportar o desenvolvimento de
@@ -30,12 +31,12 @@ também contém outras bibliotecas que fornecem APIs web de baixo nível.
 : O [framework Flutter][flutter] oferece suporte ao desenvolvimento web
   com Dart, além do suporte a dispositivos móveis, desktop e embarcados.
 
-[Jaspr web framework][jaspr]
-: [Jaspr][jaspr] is a Dart web framework for building fast and dynamic 
-  HTML-based websites.
+[Framework web Jaspr][jaspr]
+: [Jaspr][jaspr] é um framework web Dart para construir sites rápidos e dinâmicos
+  baseados em HTML.
 
-[Build a web app with Dart](/web/get-started)
-: A quick overview of how to build, run, and debug a web app with Dart.
+[Construa uma aplicação web com Dart](/web/get-started)
+: Uma visão geral rápida de como construir, executar e depurar uma aplicação web com Dart.
 
 Para encontrar outras bibliotecas que oferecem suporte à plataforma web,
 pesquise no pub.dev por [pacotes web][web packages].

@@ -1,8 +1,9 @@
 ---
-title: "C interop using dart:ffi"
+ia-translate: true
+title: "Interoperabilidade com C usando dart:ffi"
 shortTitle: C interop
 description: >-
-  To use C code in your Dart program, use the dart:ffi library.
+  Para usar código C em seu programa Dart, use a biblioteca dart:ffi.
 ---
 
 Aplicativos Dart mobile, de linha de comando e servidor
@@ -13,17 +14,17 @@ _FFI_ significa [_foreign function interface._][FFI] (interface de função exte
 Outros termos para funcionalidades similares incluem
 _interface nativa_ e _bindings de linguagem._
 
-API documentation is available in the
-[`dart:ffi` API reference][dart-ffi].
+A documentação da API está disponível na
+[referência da API `dart:ffi`][dart-ffi].
 
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [dart-ffi]: {{site.dart-api}}/dart-ffi/dart-ffi-library.html
 
 ## Baixar arquivos de exemplo {:#download-example-files}
 
-To work with the examples in this guide,
-download the full [ffi samples][] directory.
-It includes the following examples show how to use the `dart:ffi` library:
+Para trabalhar com os exemplos neste guia,
+baixe o diretório completo de [exemplos ffi][ffi samples].
+Ele inclui os seguintes exemplos que mostram como usar a biblioteca `dart:ffi`:
 
 | **Exemplo**     | **Descrição**                                                                                         |
 | --------------- | ------------------------------------------------------------------------------------------------------- |
@@ -49,18 +50,18 @@ seção anterior.
 
 [hello_world]: {{site.repo.dart.samples}}/tree/main/ffi/hello_world
 
-#### Files
+#### Arquivos
 
 O exemplo `hello_world` possui os seguintes arquivos:
 
-| **Source file**                    | **Description**                                                                |
+| **Arquivo fonte**                  | **Descrição**                                                                |
 |------------------------------------|--------------------------------------------------------------------------------|
-| [`hello.dart`][]                   | A Dart file that uses the `hello_world()` function from a C library.           |
-| [`pubspec.yaml`][]                 | The Dart [pubspec](/tools/pub/pubspec) file, with an SDK lower bound of 3.4.   |
-| [`hello_library/hello.h`][]        | Declares the `hello_world()` function.                                         |
-| [`hello_library/hello.c`][]        | A C file that imports `hello.h` and defines the `hello_world()` function.      |
-| [`hello_library/hello.def`][]      | A module-definition file which specifies information used when building a DLL. |
-| [`hello_library/CMakeLists.txt`][] | A CMake build file for compiling the C code into a dynamic library.            |
+| [`hello.dart`][]                   | Um arquivo Dart que usa a função `hello_world()` de uma biblioteca C.           |
+| [`pubspec.yaml`][]                 | O arquivo [pubspec](/tools/pub/pubspec) do Dart, com limite inferior do SDK de 3.4.   |
+| [`hello_library/hello.h`][]        | Declara a função `hello_world()`.                                         |
+| [`hello_library/hello.c`][]        | Um arquivo C que importa `hello.h` e define a função `hello_world()`.      |
+| [`hello_library/hello.def`][]      | Um arquivo de definição de módulo que especifica informações usadas ao compilar uma DLL. |
+| [`hello_library/CMakeLists.txt`][] | Um arquivo de build CMake para compilar o código C em uma biblioteca dinâmica.            |
 
 {: .table .table-striped }
 
@@ -105,9 +106,9 @@ consulte o [Guia de Assinatura de Código da Apple.][codesign]
 
 #### Utilizando dart:ffi {:#leverage-dart-ffi}
 
-To learn how to call a C function using the `dart:ffi` library,
-review the [`hello.dart` file][`hello.dart`].
-This section explains the contents of this file.
+Para aprender como chamar uma função C usando a biblioteca `dart:ffi`,
+revise o [arquivo `hello.dart`][`hello.dart`].
+Esta seção explica o conteúdo deste arquivo.
 
 1. Importe `dart:ffi`.
 
@@ -115,8 +116,8 @@ This section explains the contents of this file.
    import 'dart:ffi' as ffi;
    ```
 
-2. Import the path library that you'll use to
-   store the path of the dynamic library.
+2. Importe a biblioteca path que você usará para
+   armazenar o caminho da biblioteca dinâmica.
 
    ```dart
    import 'dart:io' show Platform, Directory;
@@ -169,10 +170,10 @@ This section explains the contents of this file.
    final dylib = ffi.DynamicLibrary.open(libraryPath);
    ```
 
-7. Get a reference to the C function,
-   and put it into a variable.
-   This code uses the `typedefs` from steps 2 and 3,
-   along with the dynamic library variable from step 4.
+7. Obtenha uma referência para a função C
+   e coloque-a em uma variável.
+   Este código usa os `typedefs` dos passos 2 e 3,
+   junto com a variável da biblioteca dinâmica do passo 4.
 
    ```dart
    final HelloWorld hello = dylib
@@ -196,10 +197,10 @@ carregar uma biblioteca C nativa depende da plataforma e do tipo de biblioteca.
 
 Para aprender como, consulte as seguintes páginas e exemplos.
 
-* Flutter `dart:ffi` for [Android][android] apps
-* Flutter `dart:ffi` for [iOS][ios] apps
-* Flutter `dart:ffi` for [macOS][macos] apps
-* [`dart:ffi` examples][ffi-samples]
+* Flutter `dart:ffi` para aplicativos [Android][android]
+* Flutter `dart:ffi` para aplicativos [iOS][ios]
+* Flutter `dart:ffi` para aplicativos [macOS][macos]
+* [Exemplos de `dart:ffi`][ffi-samples]
 
 [android]: {{site.flutter-docs}}/platform-integration/android/c-interop
 [ios]: {{site.flutter-docs}}/platform-integration/ios/c-interop
@@ -214,17 +215,17 @@ Alguns outros tipos nativos podem ser usados apenas como marcadores em assinatur
 
 [`NativeType`]: {{site.dart-api}}/dart-ffi/NativeType-class.html
 
-### Can instantiate these type signature markers
+### Podem instanciar esses marcadores de assinatura de tipo
 
 Os seguintes tipos nativos podem ser usados como marcadores em assinaturas de tipo.
 Eles ou seus subtipos _podem_ ser instanciados em código Dart.
 
-| **Dart type** | **Description**                                                  |
+| **Tipo Dart** | **Descrição**                                                  |
 | ------------- | ---------------------------------------------------------------- |
-| [Array][]     | A fixed-sized array of items. Supertype of type specific arrays. |
-| [Pointer][]   | Represents a pointer into native C memory.                       |
-| [Struct][]    | The supertype of all FFI struct types.                           |
-| [Union][]     | The supertype of all FFI union types.                            |
+| [Array][]     | Um array de tamanho fixo de itens. Supertipo de arrays de tipos específicos. |
+| [Pointer][]   | Representa um ponteiro para a memória nativa C.                       |
+| [Struct][]    | O supertipo de todos os tipos struct FFI.                           |
+| [Union][]     | O supertipo de todos os tipos union FFI.                            |
 
 {: .table .table-striped }
 
@@ -263,23 +264,23 @@ que estendem [AbiSpecificInteger][AbiSpecificInteger].
 Para saber como esses tipos são mapeados em plataformas específicas,
 consulte a documentação da API vinculada na tabela a seguir.
 
-| **Dart type**          | **Description**                                  |
+| **Tipo Dart**          | **Descrição**                                  |
 | ---------------------- | ------------------------------------------------ |
-| [AbiSpecificInteger][] | The supertype of all ABI-specific integer types. |
-| [Int][]                | Represents the `int` type in C.                  |
-| [IntPtr][]             | Represents the `intptr_t` type in C.             |
-| [Long][]               | Represents the `long int` (`long`) type in C.    |
-| [LongLong][]           | Represents the `long long` type in C.            |
-| [Short][]              | Represents the `short` type in C.                |
-| [SignedChar][]         | Represents the `signed char` type in C.          |
-| [Size][]               | Represents the `size_t` type in C.               |
-| [UintPtr][]            | Represents the `uintptr_t` type in C.            |
-| [UnsignedChar][]       | Represents the `unsigned char` type in C.        |
-| [UnsignedInt][]        | Represents the `unsigned int` type in C.         |
-| [UnsignedLong][]       | Represents the `unsigned long int` type in C.    |
-| [UnsignedLongLong][]   | Represents the `unsigned long long` type in C.   |
-| [UnsignedShort][]      | Represents the `unsigned short` type in C.       |
-| [WChar][]              | Represents the `wchar_t` type in C.              |
+| [AbiSpecificInteger][] | O supertipo de todos os tipos inteiros específicos de ABI. |
+| [Int][]                | Representa o tipo `int` em C.                  |
+| [IntPtr][]             | Representa o tipo `intptr_t` em C.             |
+| [Long][]               | Representa o tipo `long int` (`long`) em C.    |
+| [LongLong][]           | Representa o tipo `long long` em C.            |
+| [Short][]              | Representa o tipo `short` em C.                |
+| [SignedChar][]         | Representa o tipo `signed char` em C.          |
+| [Size][]               | Representa o tipo `size_t` em C.               |
+| [UintPtr][]            | Representa o tipo `uintptr_t` em C.            |
+| [UnsignedChar][]       | Representa o tipo `unsigned char` em C.        |
+| [UnsignedInt][]        | Representa o tipo `unsigned int` em C.         |
+| [UnsignedLong][]       | Representa o tipo `unsigned long int` em C.    |
+| [UnsignedLongLong][]   | Representa o tipo `unsigned long long` em C.   |
+| [UnsignedShort][]      | Representa o tipo `unsigned short` em C.       |
+| [WChar][]              | Representa o tipo `wchar_t` em C.              |
 
 {: .table .table-striped }
 
@@ -322,9 +323,9 @@ escrever os bindings Dart que se integram ao código C.
 Para que o Dart crie wrappers FFI a partir de arquivos de cabeçalho C,
 use o gerador de bindings [`package:ffigen`][ffigen].
 
-To learn about support for code assets in Dart FFI,
-consult the `dart:ffi` API reference for [`Native`][]
-and [`DefaultAsset`][].
+Para aprender sobre o suporte para code assets em Dart FFI,
+consulte a referência da API `dart:ffi` para [`Native`][]
+e [`DefaultAsset`][].
 
 [ffigen]: {{site.pub-pkg}}/ffigen
 [`Native`]: {{site.dart-api}}/dart-ffi/Native-class.html
@@ -332,11 +333,11 @@ and [`DefaultAsset`][].
 
 <a id="native-assets" aria-hidden="true"></a>
 
-## Build and bundle native code {: #build-hooks }
+## Compilar e empacotar código nativo {: #build-hooks }
 
-Dart _build hooks_ (formerly known as _native assets_)
-enable packages to contain native code assets that are
-transparently built, bundled, and made available at runtime.
-For more information, see [Hooks][].
+Os _build hooks_ do Dart (anteriormente conhecidos como _native assets_)
+permitem que pacotes contenham assets de código nativo que são
+transparentemente compilados, empacotados e disponibilizados em tempo de execução.
+Para mais informações, consulte [Hooks][].
 
 [Hooks]: /tools/hooks
