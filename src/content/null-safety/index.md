@@ -122,7 +122,7 @@ Para resolver esses problemas:
 2. [migre](#migrate) todo o seu código fonte para usar sound null safety.
 
 O Dart 3 pode ser encontrado nos canais estáveis do Dart e Flutter.
-Para aprender mais, confira [a página de download][] para detalhes.
+Para aprender mais, confira [a página de download][the download page] para detalhes.
 Para testar seu código para compatibilidade com Dart 3, use Dart 3 ou posterior.
 
 ```console
@@ -131,7 +131,7 @@ $ dart pub get / flutter pub get     # this should resolve without issues
 $ dart analyze / flutter analyze     # this should pass without errors
 ```
 
-Se a etapa `pub get` falhar, verifique o [status das dependências][].
+Se a etapa `pub get` falhar, verifique o [status das dependências][status of the dependencies].
 
 Se a etapa `analyze` falhar, atualize seu código para resolver os problemas
 listados pelo analisador.
@@ -147,7 +147,7 @@ Você não pode usar null safety em versões do SDK anteriores ao Dart 2.12.
 <a id="constraints"></a>
 Para habilitar sound null safety, defina o
 [limite inferior da restrição do SDK](/tools/pub/pubspec#sdk-constraints)
-para uma [versão da linguagem][] de 2.12 ou posterior.
+para uma [versão da linguagem][language version] de 2.12 ou posterior.
 Por exemplo, seu arquivo `pubspec.yaml` pode ter as seguintes restrições:
 
 ```yaml
@@ -178,7 +178,7 @@ $ dart migrate
 ```
 
 Para aprender como migrar seu código para null safety,
-confira o [guia de migração][].
+confira o [guia de migração][migration guide].
 
 ## Onde aprender mais
 

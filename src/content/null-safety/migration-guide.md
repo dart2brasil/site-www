@@ -150,7 +150,7 @@ Por exemplo, se uma variável pode ser `null`,
 [seu tipo precisa de um sufixo `?`][nullable type].
 Se um parâmetro nomeado não deve ser nullable,
 marque-o como [`required`][required]
-ou dê a ele um [valor padrão][].
+ou dê a ele um [valor padrão][default value].
 
 Você tem duas opções para migrar:
 
@@ -160,14 +160,14 @@ Você tem duas opções para migrar:
 
 :::tip
 Para ajuda adicional durante a migração de código, confira o
-[FAQ de null safety][].
+[FAQ de null safety][null safety FAQ].
 :::
 
 [nullable type]: /null-safety#creating-variables
 [required]: /null-safety/understanding-null-safety#required-named-parameters
-[valor padrão]: /language/functions#default-parameters
+[default value]: /language/functions#default-parameters
 [migration tool]: #migration-tool
-[FAQ de null safety]: /null-safety/faq
+[null safety FAQ]: /null-safety/faq
 
 
 ### Usando a ferramenta de migração {:#migration-tool}
@@ -340,7 +340,7 @@ Para optar um arquivo ou diretório para fora,
 clique em sua caixa de seleção verde.
 Mais tarde, quando você aplicar mudanças,
 cada arquivo optado para fora ficará inalterado
-exceto por um [comentário de versão][] 2.9.
+exceto por um [comentário de versão][version comment] 2.9.
 
 Para mais informações sobre migração incremental, veja
 [Unsound null safety][].
@@ -348,7 +348,7 @@ Para mais informações sobre migração incremental, veja
 Note que apenas aplicativos e pacotes totalmente migrados
 são compatíveis com Dart 3.
 
-[comentário de versão]: /resources/language/evolution#per-library-language-version-selection
+[version comment]: /resources/language/evolution#per-library-language-version-selection
 
 
 #### Aplicando mudanças
@@ -396,13 +396,13 @@ Para migrar um pacote manualmente, siga estes passos:
      sdk: '>=2.12.0 <3.0.0'
    ```
 
-2. Regenere o [arquivo de configuração do pacote][]:
+2. Regenere o [arquivo de configuração do pacote][package configuration file]:
 
    ```console
    $ dart pub get
    ```
 
-   [arquivo de configuração do pacote]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
+   [package configuration file]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
 
    Executar `dart pub get` com uma restrição mínima do SDK de pelo menos `2.12.0`
    define a versão padrão da linguagem de
@@ -429,14 +429,14 @@ para mais ajuda sobre migrar código manualmente.
 Atualize seus pacotes
 (usando `dart pub get` no seu IDE ou na linha de comando).
 Então use seu IDE ou a linha de comando
-para realizar [análise estática][] no seu código:
+para realizar [análise estática][static analysis] no seu código:
 
 ```console
 $ dart pub get
 $ dart analyze     # or `flutter analyze`
 ```
 
-[análise estática]: /tools/analysis
+[static analysis]: /tools/analysis
 
 
 ## 4. Teste {:#step4-test}
@@ -494,7 +494,7 @@ recomendamos fortemente seguir estas regras de pubspec:
 
 ### Atualize exemplos e docs
 
-Se você ainda não fez, atualize todos os [exemplos][] e amostras
+Se você ainda não fez, atualize todos os [exemplos][examples] e amostras
 do seu pacote para usar uma versão migrada do seu pacote
 e para optar pelo null safety.
 
@@ -502,7 +502,7 @@ Se você publicou qualquer documentação ou tutoriais separados
 para o seu pacote, certifique-se também de que estão atualizados para
 a versão null-safe.
 
-[exemplos]: /tools/pub/package-layout#examples
+[examples]: /tools/pub/package-layout#examples
 
 ## Bem-vindo ao null safety
 
