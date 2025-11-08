@@ -1,28 +1,29 @@
 ---
+ia-translate: true
 title: referenced_before_declaration
 description: >-
-  Details about the referenced_before_declaration
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico referenced_before_declaration
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Local variable '{0}' can't be referenced before it is declared._
+_A variável local '{0}' não pode ser referenciada antes de ser declarada._
 
 ## Description
 
-The analyzer produces this diagnostic when a variable is referenced before
-it's declared. In Dart, variables are visible everywhere in the block in
-which they are declared, but can only be referenced after they are
-declared.
+O analisador produz este diagnóstico quando uma variável é referenciada antes
+de ser declarada. Em Dart, as variáveis são visíveis em todos os lugares do bloco em
+que são declaradas, mas só podem ser referenciadas após serem
+declaradas.
 
-The analyzer also produces a context message that indicates where the
-declaration is located.
+O analisador também produz uma mensagem de contexto que indica onde a
+declaração está localizada.
 
 ## Example
 
-The following code produces this diagnostic because `i` is used before it
-is declared:
+O código a seguir produz este diagnóstico porque `i` é usado antes de ser
+declarado:
 
 ```dart
 void f() {
@@ -33,8 +34,8 @@ void f() {
 
 ## Common fixes
 
-If you intended to reference the local variable, move the declaration
-before the first reference:
+Se você pretendia referenciar a variável local, mova a declaração
+antes da primeira referência:
 
 ```dart
 void f() {
@@ -43,9 +44,9 @@ void f() {
 }
 ```
 
-If you intended to reference a name from an outer scope, such as a
-parameter, instance field or top-level variable, then rename the local
-declaration so that it doesn't hide the outer variable.
+Se você pretendia referenciar um nome de um escopo externo, como um
+parâmetro, campo de instância ou variável de nível superior, então renomeie a
+declaração local para que ela não oculte a variável externa.
 
 ```dart
 void f(int i) {

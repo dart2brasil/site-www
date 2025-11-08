@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: definitely_unassigned_late_local_variable
 description: >-
-  Details about the definitely_unassigned_late_local_variable
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico definitely_unassigned_late_local_variable
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The late local variable '{0}' is definitely unassigned at this point._
+_A variável local late '{0}' está definitivamente não atribuída neste ponto._
 
 ## Description
 
-The analyzer produces this diagnostic when [definite assignment][] analysis
-shows that a local variable that's marked as `late` is read before being
-assigned.
+O analisador produz este diagnóstico quando a análise de [definite assignment][]
+mostra que uma variável local que está marcada como `late` é lida antes de ser
+atribuída.
 
 ## Example
 
-The following code produces this diagnostic because `x` wasn't assigned a
-value before being read:
+O código a seguir produz este diagnóstico porque `x` não foi atribuído um
+valor antes de ser lido:
 
 ```dart
 void f(bool b) {
@@ -29,7 +30,7 @@ void f(bool b) {
 
 ## Common fixes
 
-Assign a value to the variable before reading from it:
+Atribua um valor à variável antes de ler dela:
 
 ```dart
 void f(bool b) {

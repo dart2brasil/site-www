@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: creation_with_non_type
 description: >-
-  Details about the creation_with_non_type
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico creation_with_non_type
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The name '{0}' isn't a class._
+_O nome '{0}' não é uma classe._
 
 ## Description
 
-The analyzer produces this diagnostic when an instance creation using
-either `new` or `const` specifies a name that isn't defined as a class.
+O analisador produz este diagnóstico quando uma criação de instância usando
+`new` ou `const` especifica um nome que não está definido como uma classe.
 
 ## Example
 
-The following code produces this diagnostic because `f` is a function
-rather than a class:
+O código a seguir produz este diagnóstico porque `f` é uma função
+em vez de uma classe:
 
 ```dart
 int f() => 0;
@@ -29,8 +30,8 @@ void g() {
 
 ## Common fixes
 
-If a class should be created, then replace the invalid name with the name
-of a valid class:
+Se uma classe deve ser criada, então substitua o nome inválido pelo nome
+de uma classe válida:
 
 ```dart
 int f() => 0;
@@ -40,8 +41,8 @@ void g() {
 }
 ```
 
-If the name is the name of a function and you want that function to be
-invoked, then remove the `new` or `const` keyword:
+Se o nome é o nome de uma função e você quer que essa função seja
+invocada, então remova a keyword `new` ou `const`:
 
 ```dart
 int f() => 0;
