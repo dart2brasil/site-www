@@ -139,17 +139,17 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ---
 
-## Section 10: Diagnostic Errors - Await & Body & Break (A-B)
-**Files:** ~35 files | **Priority:** MEDIUM
+## Section 10: Diagnostic Errors - Await & Body & Break (A-B) ✅
+**Files:** 9 files (COMPLETED) | **Priority:** MEDIUM
 
 ### Pattern:
-- `tools/diagnostics/await_*.md`
-- `tools/diagnostics/body_*.md`
-- `tools/diagnostics/break_*.md`
-- `tools/diagnostics/built_in_*.md`
+- `tools/diagnostics/await_*.md` (3 files)
+- `tools/diagnostics/body_*.md` (3 files)
+- `tools/diagnostics/break_*.md` (1 file)
+- `tools/diagnostics/built_in_*.md` (2 files)
 
 **Focus:** Async/await errors, function body issues, break statements
-**Estimated time:** 2-3 hours
+**Status:** ✅ COMPLETE - 9 files translated
 
 ---
 
@@ -375,12 +375,13 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 10:** Diagnostic Errors - await/body/break/built_in (9/9 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 2-9, 11-20 pending
 
 ---
 

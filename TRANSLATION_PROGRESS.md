@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 104 files (with ia-translate: true metadata)
+- **Remaining:** ~841 files
+- **Progress:** 11.0%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 49 (46 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 104 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,22 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 6: Diagnostic Errors (await, body, break, built_in) - 9 files
+41. ✅ `src/content/tools/diagnostics/await_in_late_local_variable_initializer.md`
+42. ✅ `src/content/tools/diagnostics/await_of_incompatible_type.md`
+43. ✅ `src/content/tools/diagnostics/await_only_futures.md`
+44. ✅ `src/content/tools/diagnostics/body_might_complete_normally.md`
+45. ✅ `src/content/tools/diagnostics/body_might_complete_normally_catch_error.md`
+46. ✅ `src/content/tools/diagnostics/body_might_complete_normally_nullable.md`
+47. ✅ `src/content/tools/diagnostics/break_label_on_switch_member.md`
+48. ✅ `src/content/tools/diagnostics/built_in_identifier_as_type.md`
+49. ✅ `src/content/tools/diagnostics/built_in_identifier_in_declaration.md`
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 24/~776 files (3%)
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,8 +111,8 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (49 files this session including merge)
+Progress: 11.0% complete (104/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
