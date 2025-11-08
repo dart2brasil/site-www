@@ -1,18 +1,18 @@
 ---
-title: "dartdevc: The Dart development compiler"
+ia-translate: true
+title: "dartdevc: O compilador de desenvolvimento Dart"
 shortTitle: dartdevc
-description: A development compiler for fast, modular compilation of Dart code to JavaScript.
+description: Um compilador de desenvolvimento para compilação rápida e modular de código Dart para JavaScript.
 ---
 
-The Dart development compiler (_dartdevc_)
-compiles Dart as JavaScript AMD modules. These modules
-work for web app development in modern browsers.
+O compilador de desenvolvimento Dart (_dartdevc_)
+compila Dart como módulos JavaScript AMD. Esses módulos
+funcionam para desenvolvimento de aplicações web em navegadores modernos.
 
 :::note
-Dart 2.18 removes the `dartdevc` command-line tool from the Dart
-package, but retains the dartdevc compiler.
+Dart 2.18 remove a ferramenta de linha de comando `dartdevc` do pacote Dart,
+mas mantém o compilador dartdevc.
 
-Use [`webdev serve`](/tools/webdev#serve) to compile Dart code
-to modular JavaScript. This makes compilation faster and debugging easier.
+Use [`webdev serve`](/tools/webdev#serve) para compilar código Dart
+para JavaScript modular. Isso torna a compilação mais rápida e a depuração mais fácil.
 :::
-

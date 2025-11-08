@@ -1,21 +1,22 @@
 ---
+ia-translate: true
 title: dart run
-description: Command-line tool for running a Dart program.
+description: Ferramenta de linha de comando para executar um programa Dart.
 ---
 
-The `dart run` command supports running 
-a Dart program—located in a file, in the current package, 
-or in one of the dependencies of the current package—from the command line.
-This command provides functionality that was previously in `pub run`
-and the Dart VM tool.
-To run a program from an arbitrary location,
-use the [pub global](/tools/pub/cmd/pub-global) command.
+O comando `dart run` suporta executar
+um programa Dart—localizado em um arquivo, no pacote atual,
+ou em uma das dependências do pacote atual—a partir da linha de comando.
+Este comando fornece funcionalidade que estava anteriormente no `pub run`
+e na ferramenta Dart VM.
+Para executar um programa de um local arbitrário,
+use o comando [pub global](/tools/pub/cmd/pub-global).
 
 ```plaintext
 dart run [options] [<DART_FILE> | <PACKAGE_TARGET>] [args]
 ```
 
-Here's an example of creating a new app and running it:
+Aqui está um exemplo de criação de uma nova aplicação e sua execução:
 
 ```console
 $ dart create myapp
@@ -25,100 +26,100 @@ $ dart run
 
 {% render 'tools/dart-tool-note.md' %}
 
-## Running a Dart file
+## Executando um arquivo Dart
 
-You can run a Dart file by passing its relative path:
+Você pode executar um arquivo Dart passando seu caminho relativo:
 
 ```console
 $ dart run tool/debug.dart
 ```
 
-## Running a program that's in a package
+## Executando um programa que está em um pacote
 
-The instructions in this section assume that
-you're executing the `dart run` command
-from the directory that's at the top of a Dart package
-(the _current package_).
-For information on the directory structure of Dart packages, see
-[package layout conventions](/tools/pub/create-packages).
+As instruções nesta seção assumem que
+você está executando o comando `dart run`
+do diretório que está no topo de um pacote Dart
+(o _pacote atual_).
+Para informações sobre a estrutura de diretórios de pacotes Dart, consulte
+[convenções de layout de pacote](/tools/pub/create-packages).
 
-### In a depended-on package
+### Em um pacote dependente
 
-You can run programs that are
-distributed in the `bin` directory of any package
-that the current package depends on.
-To run such a program,
-specify the depended-on package name and the program name.
-You can omit the program name if it's the same as the package name.
+Você pode executar programas que são
+distribuídos no diretório `bin` de qualquer pacote
+do qual o pacote atual depende.
+Para executar tal programa,
+especifique o nome do pacote dependente e o nome do programa.
+Você pode omitir o nome do programa se ele for o mesmo que o nome do pacote.
 
-For example, say you're in the top directory of a package
-that depends on the `bar` package.
-To run the main program that's in the `bar` package (`bin/bar.dart`),
-you can use this command:
+Por exemplo, digamos que você esteja no diretório superior de um pacote
+que depende do pacote `bar`.
+Para executar o programa principal que está no pacote `bar` (`bin/bar.dart`),
+você pode usar este comando:
 
 ```console
 $ dart run bar
 ```
 
-If the program name doesn't match the package name,
-use the form `<package name>:<program name>`. For example,
-to run the program `bin/baz.dart` that's in the `bar` package,
-use this command:
+Se o nome do programa não corresponder ao nome do pacote,
+use a forma `<package name>:<program name>`. Por exemplo,
+para executar o programa `bin/baz.dart` que está no pacote `bar`,
+use este comando:
 
 ```console
 $ dart run bar:baz
 ```
 
-The `bin` directory is the only place with visible programs.
-All other directories in the depended-on package are private.
+O diretório `bin` é o único lugar com programas visíveis.
+Todos os outros diretórios no pacote dependente são privados.
 
-### In the current package
+### No pacote atual
 
-When the current directory matches the package name
-(that is, you're in the directory that matches
-the `name` property in the pubspec),
-then you can omit the package name.
-If the program name matches the package name
-(that is, it's the main program),
-then you can also omit the program name.
+Quando o diretório atual corresponde ao nome do pacote
+(ou seja, você está no diretório que corresponde
+à propriedade `name` no pubspec),
+então você pode omitir o nome do pacote.
+Se o nome do programa corresponder ao nome do pacote
+(ou seja, é o programa principal),
+então você também pode omitir o nome do programa.
 
-Here's the shortest form of `dart run`,
-which runs the main program for the current package.
-For example, if you're in the top directory of the `foo` package,
-this command runs `bin/foo.dart`:
+Aqui está a forma mais curta de `dart run`,
+que executa o programa principal para o pacote atual.
+Por exemplo, se você estiver no diretório superior do pacote `foo`,
+este comando executa `bin/foo.dart`:
 
 ```console
 $ dart run
 ```
 
-If the program name doesn't match the package name,
-then add a colon and the program name.
-For example, this command runs `bin/baz.dart` in the current package:
+Se o nome do programa não corresponder ao nome do pacote,
+então adicione dois-pontos e o nome do programa.
+Por exemplo, este comando executa `bin/baz.dart` no pacote atual:
 
 ```console
 $ dart run :baz
 ```
 
-To run a program that's in the current package but not in the `bin` directory,
-pass a relative path (as shown before):
+Para executar um programa que está no pacote atual mas não no diretório `bin`,
+passe um caminho relativo (como mostrado antes):
 
 ```console
 $ dart run tool/debug.dart
 ```
 
-## Supplying arguments to main()
+## Fornecendo argumentos para main()
 
-To supply [arguments to the `main()` function][args],
-put them at the end of the command:
+Para fornecer [argumentos para a função `main()`][args],
+coloque-os no final do comando:
 
 ```console
 $ dart run tool/debug.dart arg1 arg2
 ```
 
-When you're running the main program for the current package,
-add the package name.
-Here's an example of running `bin/foo.dart` with arguments
-while you're in the top directory of the `foo` package:
+Quando você está executando o programa principal para o pacote atual,
+adicione o nome do pacote.
+Aqui está um exemplo de execução de `bin/foo.dart` com argumentos
+enquanto você está no diretório superior do pacote `foo`:
 
 ```console
 $ dart run foo arg1 arg2
@@ -126,36 +127,36 @@ $ dart run foo arg1 arg2
 
 [args]: /language/functions#the-main-function
 
-## Debugging
+## Depuração
 
-To enable debugging, 
-add one or more of these common debugging options
-to your `dart run` command:
+Para habilitar depuração,
+adicione uma ou mais dessas opções comuns de depuração
+ao seu comando `dart run`:
 
-- To enable [`assert` statements][assert],
-  add the `--enable-asserts` flag:
+- Para habilitar [declarações `assert`][assert],
+  adicione a flag `--enable-asserts`:
 
   ```console
   $ dart run --enable-asserts tool/debug.dart
   ```
 
-- To enable debugging and performance analysis
-  through [Dart DevTools](/tools/dart-devtools),
-  add the `--observe` flag:
+- Para habilitar depuração e análise de desempenho
+  através do [Dart DevTools](/tools/dart-devtools),
+  adicione a flag `--observe`:
 
   ```console
   $ dart run --observe tool/debug.dart
   ```
-  
-  To learn more about debugging with Dart DevTools,
-  see [Using DevTools with a command-line app][].
 
-To learn more about other debugging options, run `dart run --help`.
+  Para saber mais sobre depuração com Dart DevTools,
+  consulte [Usando DevTools com uma aplicação de linha de comando][Using DevTools with a command-line app].
+
+Para saber mais sobre outras opções de depuração, execute `dart run --help`.
 
 [assert]: /language/error-handling#assert
-[Using DevTools with a command-line app]: /tools/dart-devtools#using-devtools-with-a-command-line-app
+[Using DevTools with a command-line app]: /tools/dart-devtools#usando-devtools-com-uma-aplicao-de-linha-de-comando
 
-## Enabling experimental features
+## Habilitando recursos experimentais
 
-To enable new features and enhancements that are currently in development,
+Para habilitar novos recursos e melhorias que estão atualmente em desenvolvimento,
 use [experiment flags](/tools/experiment-flags).

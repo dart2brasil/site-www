@@ -1,34 +1,35 @@
 ---
+ia-translate: true
 title: dart info
-description: Command-line tool for outputting Dart tooling diagnostic information.
+description: Ferramenta de linha de comando para gerar informações de diagnóstico das ferramentas Dart.
 showToc: false
 ---
 
-The `dart info` command
-outputs diagnostic information about installed `dart` tooling,
-running Dart processes,
-and project information if in a directory with a `pubspec.yaml`.
-The output information can be used for debugging tooling issues
-or reporting a bug.
+O comando `dart info`
+gera informações de diagnóstico sobre as ferramentas `dart` instaladas,
+processos Dart em execução,
+e informações do projeto se estiver em um diretório com um `pubspec.yaml`.
+As informações de saída podem ser usadas para depurar problemas de ferramentas
+ou relatar um bug.
 
 {% render 'tools/dart-tool-note.md' %}
 
 :::warning
-If you are including the `dart info` output in a bug report,
-please review the output to ensure it only
-contains details you're comfortable posting publicly.
+Se você estiver incluindo a saída do `dart info` em um relatório de bug,
+por favor revise a saída para garantir que ela contenha apenas
+detalhes que você se sente confortável em postar publicamente.
 :::
 
-To output general information related to your system
-and your Dart installation, including running Dart processes,
-run `dart info` from any directory:
+Para gerar informações gerais relacionadas ao seu sistema
+e sua instalação do Dart, incluindo processos Dart em execução,
+execute `dart info` de qualquer diretório:
 
 ```console
 $ dart info
 ```
 
-For example, on macOS, 
-the output looks similar to the following:
+Por exemplo, no macOS,
+a saída se parece com o seguinte:
 
 ```markdown
 #### General info
@@ -42,12 +43,12 @@ the output looks similar to the following:
 | Memory |   CPU | Elapsed time | Command line                      |
 | -----: | ----: | -----------: | ----------------------------------|
 | 253 MB | 49.7% |        00:00 | analysis_server.dart.snapshot ... |
-|  69 MB | 18.7% |        00:00 | dart analyze                      |   
+|  69 MB | 18.7% |        00:00 | dart analyze                      |
 ```
 
-To include project information in the output,
-run `dart info` in a directory with a `pubspec.yaml` file.
-The resulting output includes an additional **Project info** section:
+Para incluir informações do projeto na saída,
+execute `dart info` em um diretório com um arquivo `pubspec.yaml`.
+A saída resultante inclui uma seção adicional **Project info**:
 
 ```plaintext
 #### Project info
@@ -57,9 +58,9 @@ The resulting output includes an additional **Project info** section:
 - dev_dependencies: lints, test
 ```
 
-To include file paths and path dependencies in
-the displayed project and process info,
-add the `--no-remove-file-paths` option:
+Para incluir caminhos de arquivos e dependências de caminho nas
+informações de projeto e processo exibidas,
+adicione a opção `--no-remove-file-paths`:
 
 ```console
 $ dart info --no-remove-file-paths
