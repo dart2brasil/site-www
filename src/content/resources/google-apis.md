@@ -1,49 +1,50 @@
 ---
-title: Using Google APIs
-shortTitle: Google APIs
-description: Your Dart apps can use Firebase and Google client APIs.
+title: Usando APIs do Google
+shortTitle: APIs do Google
+description: Seus aplicativos Dart podem usar Firebase e APIs de cliente do Google.
 lastVerified: 2021-05-13
+ia-translate: true
 ---
 
-This page points to resources to help you use
-[Firebase][] and [Google client APIs][] from a Dart app.
+Esta página aponta para recursos para ajudá-lo a usar
+[Firebase][] e [APIs de cliente do Google][Google client APIs] a partir de um aplicativo Dart.
 
 
 ## Firebase
 
-The Dart API that you use with Firebase depends
-on whether you're writing code for a Flutter app or another kind of Dart app.
+A API Dart que você usa com Firebase depende
+se você está escrevendo código para um aplicativo Flutter ou outro tipo de aplicativo Dart.
 
-Flutter apps can choose from many officially supported plugins for
-popular Firebase products such as Analytics, Cloud Firestore,
-Cloud Functions, and Crashlytics.
-For a full list of these plugins, see [FlutterFire][].
+Aplicativos Flutter podem escolher entre muitos plugins oficialmente suportados para
+produtos populares do Firebase, como Analytics, Cloud Firestore,
+Cloud Functions e Crashlytics.
+Para uma lista completa desses plugins, consulte [FlutterFire][].
 
-Other kinds of Dart apps can use
-the community-supported [`firebase` package][].
+Outros tipos de aplicativos Dart podem usar
+o [`firebase` package][] com suporte da comunidade.
 
-## Google client APIs
+## APIs de cliente do Google
 
-The [`googleapis` package][] contains generated APIs for
-over 180 Google client APIs,
-such as the Google Docs API, YouTube Data API,
-Cloud Translation API, and Cloud Storage API.
+O [`googleapis` package][] contém APIs geradas para
+mais de 180 APIs de cliente do Google,
+como a API do Google Docs, API de Dados do YouTube,
+API Cloud Translation e API Cloud Storage.
 
-If you're building a Flutter application, see the
-[Flutter guide for Google APIs][flutter-google-apis].
+Se você está construindo um aplicativo Flutter, consulte o
+[guia Flutter para APIs do Google][flutter-google-apis].
 
-If you'd like to use Google APIs as part of a server application, see the
-[google_apis server sample][server-sample].
+Se você deseja usar APIs do Google como parte de um aplicativo servidor, consulte o
+[exemplo de servidor google_apis][server-sample].
 
-Some packages provide idiomatic Dart wrappers for
-the APIs provided by `googleapis`.
-For example, if you want to use the Google Sheets API,
-consider the [`gsheets` package][],
-which provides an [alternative API][gsheets-api-docs] to the
-[automatically generated API][gsheets-api-docs-gapi].
+Alguns pacotes fornecem wrappers Dart idiomáticos para
+as APIs fornecidas por `googleapis`.
+Por exemplo, se você deseja usar a API do Google Sheets,
+considere o [`gsheets` package][],
+que fornece uma [API alternativa][gsheets-api-docs] à
+[API gerada automaticamente][gsheets-api-docs-gapi].
 
-To find wrapper packages for Google client APIs, search for
-[packages that depend on `googleapis`][gapi-packages].
+Para encontrar pacotes wrapper para APIs de cliente do Google, pesquise por
+[pacotes que dependem de `googleapis`][gapi-packages].
 
 
 [Firebase]: https://firebase.google.com/use-cases
