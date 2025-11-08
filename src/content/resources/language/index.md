@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Dart language resources
 breadcrumb: Language
 description: >-
