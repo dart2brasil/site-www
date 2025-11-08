@@ -27,7 +27,7 @@ Se isso não funcionar, você pode precisar
 Para executar um script Dart dentro de um pacote, ou de um
 pacote do qual seu pacote depende, consulte [dart run](/tools/dart-run).
 
-## Ativar um pacote
+## Ativar um pacote {:#activating-a-package}
 
 ```plaintext
 dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [version-constraint]
@@ -113,13 +113,13 @@ $ dart pub global activate --source path ~/dart/stopwatch
 Depois que um pacote foi ativado, você pode atualizá-lo ativando o
 pacote novamente.
 
-## Executar um script
+## Executar um script {:#running-a-script}
 
 Você pode executar diretamente um script de um pacote ativado a partir da
 linha de comando. Se você não conseguir executar o script diretamente,
 você também pode usar `dart pub global run`.
 
-### Executar um script a partir do seu PATH
+### Executar um script a partir do seu PATH {:#running-a-script-from-your-path}
 
 Para executar um script diretamente a partir da linha de comando, adicione o `bin`
 do [cache do sistema][system cache] ao sua variável de ambiente `PATH`.
@@ -165,7 +165,7 @@ Se o script ainda falhar ao ser executado a partir da linha de comando, o
 pacote pode não estar [configurado](#configurar-executáveis-de-pacote) para
 este recurso. Você ainda pode executar o script usando `dart pub global run`.
 
-### Executar um script usando `dart pub global run`
+### Executar um script usando `dart pub global run` {:#running-a-script-using-dart-pub-global-run}
 
 ```plaintext
 $ dart pub global run <package>:<executable> [args...]
@@ -227,7 +227,7 @@ $ dart pub global list
 
 Use `list` para listar todos os pacotes atualmente ativos.
 
-## Opções
+## Opções {:#options}
 
 Para opções que se aplicam a todos os comandos pub, consulte
 [Opções globais](/tools/pub/cmd#global-options).
