@@ -8,22 +8,22 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O construtor sem nome da superclasse '{0}' (chamado pelo construtor padrão de '{1}') deve ser um construtor generativo, mas factory foi encontrado._
+_O construtor sem nome da superclasse '{0}' (chamado pelo construtor padrão de '{1}') deve ser um construtor generativo, mas um factory foi encontrado._
 
-## Description
+## Descrição
 
 O analisador produz este diagnóstico quando uma classe tem um
-construtor generativo implícito e a superclasse tem um construtor factory sem nome explícito.
-O construtor implícito na subclasse invoca implicitamente
+construtor generativo implícito e a superclasse tem um construtor factory
+sem nome explícito. O construtor implícito na subclasse implicitamente invoca
 o construtor sem nome na superclasse, mas construtores generativos podem
 apenas invocar outro construtor generativo, não um construtor factory.
 
-## Example
+## Exemplo
 
-O código a seguir produz este diagnóstico porque o construtor
-implícito em `B` invoca o construtor sem nome em `A`, mas o
+O código a seguir produz este diagnóstico porque o construtor implícito
+em `B` invoca o construtor sem nome em `A`, mas o
 construtor em `A` é um construtor factory, quando um construtor generativo
-é necessário:
+é obrigatório:
 
 ```dart
 class A {
@@ -34,9 +34,9 @@ class A {
 class [!B!] extends A {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Se o construtor sem nome na superclasse pode ser um construtor generativo,
+Se o construtor sem nome na superclasse puder ser um construtor generativo,
 então altere-o para ser um construtor generativo:
 
 ```dart
@@ -48,9 +48,9 @@ class A {
 class B extends A { }
 ```
 
-Se o construtor sem nome não pode ser um construtor generativo e há
-outros construtores generativos na superclasse, então invoque explicitamente
-um deles:
+Se o construtor sem nome não puder ser um construtor generativo e houver
+outros construtores generativos na superclasse, então invoque
+explicitamente um deles:
 
 ```dart
 class A {
@@ -63,7 +63,7 @@ class B extends A {
 }
 ```
 
-Se não há construtores generativos que podem ser usados e nenhum pode ser
+Se não houver construtores generativos que possam ser usados e nenhum pode ser
 adicionado, então implemente a superclasse em vez de estendê-la:
 
 ```dart

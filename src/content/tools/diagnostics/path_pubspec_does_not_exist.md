@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: path_pubspec_does_not_exist
 description: >-
-  Details about the path_pubspec_does_not_exist
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico path_pubspec_does_not_exist
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The directory '{0}' doesn't contain a pubspec._
+_O diretório '{0}' não contém um pubspec._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a dependency has a `path` key
-that references a directory that doesn't contain a `pubspec.yaml` file.
+O analisador produz este diagnóstico quando uma dependência tem uma chave `path`
+que referencia um diretório que não contém um arquivo `pubspec.yaml`.
 
-## Example
+## Exemplo
 
-Assuming that the directory `local_package` doesn't contain a file
-`pubspec.yaml`, the following code produces this diagnostic because it's
-listed as the path of a package:
+Assumindo que o diretório `local_package` não contém um arquivo
+`pubspec.yaml`, o código a seguir produz este diagnóstico porque está
+listado como o caminho de um pacote:
 
 ```yaml
 name: example
@@ -27,13 +28,13 @@ dependencies:
     path: [!local_package!]
 ```
 
-## Common fixes
+## Correções comuns
 
-If the path is intended to be the root of a package, then add a
-`pubspec.yaml` file in the directory:
+Se o caminho é destinado a ser a raiz de um pacote, então adicione um
+arquivo `pubspec.yaml` no diretório:
 
 ```yaml
 name: local_package
 ```
 
-If the path is wrong, then replace it with the correct path.
+Se o caminho estiver errado, então substitua-o pelo caminho correto.

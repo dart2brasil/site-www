@@ -1,28 +1,29 @@
 ---
+ia-translate: true
 title: instance_member_access_from_factory
 description: >-
-  Details about the instance_member_access_from_factory
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico instance_member_access_from_factory
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Instance members can't be accessed from a factory constructor._
+_Membros de instância não podem ser acessados de um construtor factory._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a factory constructor contains
-an unqualified reference to an instance member. In a generative
-constructor, the instance of the class is created and initialized before
-the body of the constructor is executed, so the instance can be bound to
-`this` and accessed just like it would be in an instance method. But, in a
-factory constructor, the instance isn't created before executing the body,
-so `this` can't be used to reference it.
+O analisador produz este diagnóstico quando um construtor factory contém
+uma referência não qualificada a um membro de instância. Em um
+construtor generativo, a instância da classe é criada e inicializada antes
+do corpo do construtor ser executado, então a instância pode ser vinculada a
+`this` e acessada da mesma forma que seria em um método de instância. Mas, em um
+construtor factory, a instância não é criada antes de executar o corpo,
+então `this` não pode ser usado para referenciá-la.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` isn't in scope in
-the factory constructor:
+O código a seguir produz este diagnóstico porque `x` não está no escopo no
+construtor factory:
 
 ```dart
 class C {
@@ -34,9 +35,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Rewrite the code so that it doesn't reference the instance member:
+Reescreva o código para que ele não referencie o membro de instância:
 
 ```dart
 class C {

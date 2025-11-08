@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: implicit_this_reference_in_initializer
 description: >-
-  Details about the implicit_this_reference_in_initializer
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico implicit_this_reference_in_initializer
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The instance member '{0}' can't be accessed in an initializer._
+_O membro de instância '{0}' não pode ser acessado em um inicializador._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it finds a reference to an
-instance member in a constructor's initializer list.
+O analisador produz este diagnóstico quando encontra uma referência a um
+membro de instância na lista de inicializadores de um construtor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `defaultX` is an
-instance member:
+O código a seguir produz este diagnóstico porque `defaultX` é um
+membro de instância:
 
 ```dart
 class C {
@@ -29,9 +30,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the member can be made static, then do so:
+Se o membro puder ser tornado static, então faça isso:
 
 ```dart
 class C {
@@ -43,8 +44,8 @@ class C {
 }
 ```
 
-If not, then replace the reference in the initializer with a different
-expression that doesn't use an instance member:
+Se não, então substitua a referência no inicializador por uma
+expressão diferente que não use um membro de instância:
 
 ```dart
 class C {

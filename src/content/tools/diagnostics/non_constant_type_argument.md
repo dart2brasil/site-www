@@ -8,17 +8,17 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Os argumentos de tipo para '{0}' devem ser conhecidos em tempo de compilação, então eles não podem ser parâmetros de tipo._
+_Os argumentos de tipo para '{0}' devem ser conhecidos em tempo de compilação, então não podem ser parâmetros de tipo._
 
-## Description
+## Descrição
 
 O analisador produz este diagnóstico quando os argumentos de tipo para um método
-são obrigados a serem conhecidos em tempo de compilação, mas um parâmetro de tipo, cujo
+são obrigatórios para serem conhecidos em tempo de compilação, mas um parâmetro de tipo, cujo
 valor não pode ser conhecido em tempo de compilação, é usado como argumento de tipo.
 
-Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
+Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
 
-## Example
+## Exemplo
 
 O código a seguir produz este diagnóstico porque o argumento de tipo para
 `Pointer.asFunction` deve ser conhecido em tempo de compilação, mas o parâmetro de tipo
@@ -37,9 +37,9 @@ class C<R extends T> {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remova qualquer uso de parâmetros de tipo:
+Remova todos os usos de parâmetros de tipo:
 
 ```dart
 import 'dart:ffi';

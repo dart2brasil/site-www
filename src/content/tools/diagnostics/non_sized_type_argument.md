@@ -8,18 +8,18 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo '{0}' não é um argumento de tipo válido para '{1}'. O argumento de tipo deve ser um inteiro nativo, 'Float', 'Double', 'Pointer', ou subtipo de 'Struct', 'Union', ou 'AbiSpecificInteger'._
+_O tipo '{0}' não é um argumento de tipo válido para '{1}'. O argumento de tipo deve ser um inteiro nativo, 'Float', 'Double', 'Pointer' ou subtipo de 'Struct', 'Union' ou 'AbiSpecificInteger'._
 
-## Description
+## Descrição
 
 O analisador produz este diagnóstico quando o argumento de tipo para a classe
-`Array` não é um dos tipos válidos: seja um inteiro nativo, `Float`,
-`Double`, `Pointer`, ou subtipo de `Struct`, `Union`, ou
+`Array` não é um dos tipos válidos: um inteiro nativo, `Float`,
+`Double`, `Pointer` ou subtipo de `Struct`, `Union` ou
 `AbiSpecificInteger`.
 
-Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
+Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
 
-## Example
+## Exemplo
 
 O código a seguir produz este diagnóstico porque o argumento de tipo para
 `Array` é `Void`, e `Void` não é um dos tipos válidos:
@@ -33,7 +33,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Altere o argumento de tipo para um dos tipos válidos:
 

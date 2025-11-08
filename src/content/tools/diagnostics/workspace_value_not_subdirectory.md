@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: workspace_value_not_subdirectory
 description: >-
-  Details about the workspace_value_not_subdirectory
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico workspace_value_not_subdirectory
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Workspace values must be a relative path of a subdirectory of '{0}'._
+_Valores de workspace devem ser um caminho relativo de um subdiretório de '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `workspace` list contains a
-value that is not a subdirectory of the directory containing the `pubspec.yaml`` file.
+O analisador produz este diagnóstico quando uma lista `workspace` contém um
+valor que não é um subdiretório do diretório que contém o arquivo `pubspec.yaml`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value in the `workspace` list is not a
-relative path of a subdirectory of the directory containing the 'pubspec.yaml' file:
+O código a seguir produz este diagnóstico porque o valor na lista `workspace` não é um
+caminho relativo de um subdiretório do diretório que contém o arquivo 'pubspec.yaml':
 
 ```yaml
 name: example
@@ -25,9 +26,9 @@ workspace:
     - /home/my_package
 ```
 
-## Common fixes
+## Correções comuns
 
-Change the `workspace` list so that it only contains only subdirectory paths.
+Altere a lista `workspace` para que ela contenha apenas caminhos de subdiretórios.
 
 ```yaml
 name: example
