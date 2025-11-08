@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: hash_and_equals
-description: >-
-  Details about the hash_and_equals
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico hash_and_equals produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,23 +17,23 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Missing a corresponding override of '{0}'._
+_Falta um override correspondente de '{0}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a class or mixin either
-overrides the definition of `==` but doesn't override the definition of
-`hashCode`, or conversely overrides the definition of `hashCode` but
-doesn't override the definition of `==`.
+O analisador produz este diagnóstico quando uma classe ou mixin
+faz override da definição de `==` mas não faz override da definição de
+`hashCode`, ou, inversamente, faz override da definição de `hashCode` mas
+não faz override da definição de `==`.
 
-Both the `==` operator and the `hashCode` property of objects must be
-consistent for a common hash map implementation to function properly. As a
-result, when overriding either method, both should be overridden.
+Tanto o operador `==` quanto a propriedade `hashCode` dos objetos devem ser
+consistentes para que uma implementação comum de hash map funcione corretamente. Como
+resultado, ao fazer override de um dos métodos, ambos devem ter override.
 
 ## Example
 
-The following code produces this diagnostic because the class `C`
-overrides the `==` operator but doesn't override the getter `hashCode`:
+O código a seguir produz este diagnóstico porque a classe `C`
+faz override do operador `==` mas não faz override do getter `hashCode`:
 
 ```dart
 class C {
@@ -52,8 +51,8 @@ class C {
 
 ## Common fixes
 
-If you need to override one of the members, then add an override of the
-other:
+Se você precisa fazer override de um dos membros, então adicione um override do
+outro:
 
 ```dart
 class C {
@@ -72,8 +71,8 @@ class C {
 }
 ```
 
-If you don't need to override either of the members, then remove the
-unnecessary override:
+Se você não precisa fazer override de nenhum dos membros, então remova o
+override desnecessário:
 
 ```dart
 class C {

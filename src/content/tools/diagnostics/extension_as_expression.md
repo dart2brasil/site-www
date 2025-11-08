@@ -1,26 +1,25 @@
 ---
+ia-translate: true
 title: extension_as_expression
-description: >-
-  Details about the extension_as_expression
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico extension_as_expression produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extension '{0}' can't be used as an expression._
+_Extension '{0}' não pode ser usada como uma expressão._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of an extension is used
-in an expression other than in an extension override or to qualify an
-access to a static member of the extension. Because classes define a type,
-the name of a class can be used to refer to the instance of `Type`
-representing the type of the class. Extensions, on the other hand, don't
-define a type and can't be used as a type literal.
+O analisador produz este diagnóstico quando o nome de uma extension é usado
+em uma expressão diferente de um override de extension ou para qualificar um
+acesso a um membro static da extension. Como classes definem um tipo,
+o nome de uma classe pode ser usado para referenciar a instância de `Type`
+representando o tipo da classe. Extensions, por outro lado, não
+definem um tipo e não podem ser usadas como um literal de tipo.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `E` is an extension:
+O código a seguir produz este diagnóstico porque `E` é uma extension:
 
 ```dart
 extension E on int {
@@ -30,10 +29,10 @@ extension E on int {
 var x = [!E!];
 ```
 
-## Common fixes
+## Correções comuns
 
-Replace the name of the extension with a name that can be referenced, such
-as a static member defined on the extension:
+Substitua o nome da extension por um nome que possa ser referenciado, como
+um membro static definido na extension:
 
 ```dart
 extension E on int {

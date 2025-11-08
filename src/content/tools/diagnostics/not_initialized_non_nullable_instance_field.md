@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: not_initialized_non_nullable_instance_field
-description: >-
-  Details about the not_initialized_non_nullable_instance_field
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico not_initialized_non_nullable_instance_field produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,16 +10,16 @@ _Non-nullable instance field '{0}' must be initialized._
 
 ## Description
 
-The analyzer produces this diagnostic when a field is declared and has all
-these characteristics:
-- Has a type that's [potentially non-nullable][]
-- Doesn't have an initializer
-- Isn't marked as `late`
+O analisador produz este diagnóstico quando um campo é declarado e possui todas
+estas características:
+- Possui um tipo que é [potentially non-nullable][]
+- Não possui um inicializador
+- Não está marcado como `late`
 
 ## Examples
 
-The following code produces this diagnostic because `x` is implicitly
-initialized to `null` when it isn't allowed to be `null`:
+O código a seguir produz este diagnóstico porque `x` é implicitamente
+inicializado para `null` quando não é permitido ser `null`:
 
 ```dart
 class C {
@@ -28,10 +27,10 @@ class C {
 }
 ```
 
-Similarly, the following code produces this diagnostic because `x` is
-implicitly initialized to `null`, when it isn't allowed to be `null`, by
-one of the constructors, even though it's initialized by other
-constructors:
+Similarmente, o código a seguir produz este diagnóstico porque `x` é
+implicitamente inicializado para `null`, quando não é permitido ser `null`, por
+um dos construtores, embora seja inicializado por outros
+construtores:
 
 ```dart
 class C {
@@ -45,8 +44,8 @@ class C {
 
 ## Common fixes
 
-If there's a reasonable default value for the field that's the same for all
-instances, then add an initializer expression:
+Se há um valor default razoável para o campo que é o mesmo para todas
+as instâncias, então adicione uma expressão inicializadora:
 
 ```dart
 class C {
@@ -54,9 +53,9 @@ class C {
 }
 ```
 
-If the value of the field should be provided when an instance is created,
-then add a constructor that sets the value of the field or update an
-existing constructor:
+Se o valor do campo deve ser fornecido quando uma instância é criada,
+então adicione um construtor que define o valor do campo ou atualize um
+construtor existente:
 
 ```dart
 class C {
@@ -66,10 +65,10 @@ class C {
 }
 ```
 
-You can also mark the field as `late`, which removes the diagnostic, but if
-the field isn't assigned a value before it's accessed, then it results in
-an exception being thrown at runtime. This approach should only be used if
-you're sure that the field will always be assigned before it's referenced.
+Você também pode marcar o campo como `late`, o que remove o diagnóstico, mas se
+o campo não for atribuído com um valor antes de ser acessado, então isso resulta
+em uma exceção sendo lançada em tempo de execução. Esta abordagem só deve ser usada se
+você tiver certeza de que o campo sempre será atribuído antes de ser referenciado.
 
 ```dart
 class C {

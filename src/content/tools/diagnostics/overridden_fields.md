@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: overridden_fields
-description: >-
-  Details about the overridden_fields
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico overridden_fields produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,23 +17,23 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Field overrides a field inherited from '{0}'._
+_Campo sobrescreve um campo herdado de '{0}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a class defines a field that
-overrides a field from a superclass.
+O analisador produz este diagnóstico quando uma classe define um campo que
+sobrescreve um campo de uma superclasse.
 
-Overriding a field with another field causes the object to have two
-distinct fields, but because the fields have the same name only one of the
-fields can be referenced in a given scope. That can lead to confusion
-where a reference to one of the fields can be mistaken for a reference to
-the other.
+Sobrescrever um campo com outro campo faz com que o objeto tenha dois
+campos distintos, mas como os campos têm o mesmo nome apenas um dos
+campos pode ser referenciado em um determinado escopo. Isso pode levar a confusão
+onde uma referência a um dos campos pode ser confundida com uma referência ao
+outro.
 
 ## Example
 
-The following code produces this diagnostic because the field `f` in `B`
-shadows the field `f` in `A`:
+O código a seguir produz este diagnóstico porque o campo `f` em `B`
+oculta o campo `f` em `A`:
 
 ```dart
 class A {
@@ -49,8 +48,8 @@ class B extends A {
 
 ## Common fixes
 
-If the two fields are representing the same property, then remove the
-field from the subclass:
+Se os dois campos estão representando a mesma propriedade, então remova o
+campo da subclasse:
 
 ```dart
 class A {
@@ -60,7 +59,7 @@ class A {
 class B extends A {}
 ```
 
-If the two fields should be distinct, then rename one of the fields:
+Se os dois campos devem ser distintos, então renomeie um dos campos:
 
 ```dart
 class A {
@@ -72,5 +71,5 @@ class B extends A {
 }
 ```
 
-If the two fields are related in some way, but can't be the same, then
-find a different way to implement the semantics you need.
+Se os dois campos estão relacionados de alguma forma, mas não podem ser os mesmos, então
+encontre uma maneira diferente de implementar a semântica que você precisa.

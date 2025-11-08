@@ -1,23 +1,22 @@
 ---
 title: mixin_inherits_from_not_object
-description: >-
-  Details about the mixin_inherits_from_not_object
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico mixin_inherits_from_not_object produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The class '{0}' can't be used as a mixin because it extends a class other than 'Object'._
+_A classe '{0}' não pode ser usada como um mixin porque estende uma classe diferente de 'Object'._
 
 ## Description
 
-The analyzer produces this diagnostic when a class that extends a class
-other than `Object` is used as a mixin.
+O analisador produz este diagnóstico quando uma classe que estende uma classe
+diferente de `Object` é usada como um mixin.
 
 ## Example
 
-The following code produces this diagnostic because the class `B`, which
-extends `A`, is being used as a mixin by `C`:
+O código a seguir produz este diagnóstico porque a classe `B`, que
+estende `A`, está sendo usada como um mixin por `C`:
 
 ```dart
 //@dart=2.19
@@ -30,8 +29,8 @@ class C with [!B!] {}
 
 ## Common fixes
 
-If the class being used as a mixin can be changed to extend `Object`, then
-change it:
+Se a classe sendo usada como um mixin pode ser alterada para estender `Object`, então
+altere-a:
 
 ```dart
 //@dart=2.19
@@ -42,8 +41,8 @@ class B {}
 class C with B {}
 ```
 
-If the class being used as a mixin can't be changed and the class that's
-using it extends `Object`, then extend the class being used as a mixin:
+Se a classe sendo usada como um mixin não pode ser alterada e a classe que está
+usando-a estende `Object`, então estenda a classe sendo usada como um mixin:
 
 ```dart
 class A {}
@@ -53,8 +52,8 @@ class B extends A {}
 class C extends B {}
 ```
 
-If the class doesn't extend `Object` or if you want to be able to mix in
-the behavior from `B` in other places, then create a real mixin:
+Se a classe não estende `Object` ou se você quer poder misturar
+o comportamento de `B` em outros lugares, então crie um mixin real:
 
 ```dart
 class A {}

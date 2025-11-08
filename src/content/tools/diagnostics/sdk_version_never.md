@@ -1,50 +1,48 @@
 ---
+ia-translate: true
 title: sdk_version_never
-description: >-
-  Details about the sdk_version_never
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico sdk_version_never produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type 'Never' wasn't supported until version 2.12.0, but this code is required to be able to run on earlier versions._
+_O tipo 'Never' não era suportado até a versão 2.12.0, mas este código é obrigado a ser capaz de rodar em versões anteriores._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a reference to the class `Never`
-is found in code that has an SDK constraint whose lower bound is less than
-2.12.0. This class wasn't defined in earlier versions, so this code won't
-be able to run against earlier versions of the SDK.
+O analisador produz este diagnóstico quando uma referência à classe `Never`
+é encontrada em código que tem uma restrição de SDK cuja limite inferior é menor que
+2.12.0. Esta classe não era definida em versões anteriores, então este código não será
+capaz de rodar em versões anteriores do SDK.
 
-## Example
+## Exemplo
 
-Here's an example of a pubspec that defines an SDK constraint with a lower
-bound of less than 2.12.0:
+Aqui está um exemplo de um pubspec que define uma restrição de SDK com um
+limite inferior menor que 2.12.0:
 
 ```yaml
 environment:
   sdk: '>=2.5.0 <2.6.0'
 ```
 
-In the package that has that pubspec, code like the following produces this
-diagnostic:
+No pacote que tem esse pubspec, código como o seguinte produz este diagnóstico:
 
 ```dart
 [!Never!] n;
 ```
 
-## Common fixes
+## Correções comuns
 
-If you don't need to support older versions of the SDK, then you can
-increase the SDK constraint to allow the type to be used:
+Se você não precisa suportar versões antigas do SDK, então você pode aumentar
+a restrição de SDK para permitir que o tipo seja usado:
 
 ```yaml
 environment:
   sdk: '>=2.12.0 <2.13.0'
 ```
 
-If you need to support older versions of the SDK, then rewrite the code to
-not reference this class:
+Se você precisa suportar versões antigas do SDK, então reescreva o código para
+não referenciar esta classe:
 
 ```dart
 dynamic x;

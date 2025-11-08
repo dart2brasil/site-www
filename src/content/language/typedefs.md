@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Typedefs
 description: Learn about type aliases in Dart.
 showToc: false
@@ -7,15 +8,15 @@ prevpage:
   title: Generics
 nextpage:
   url: /language/type-system
-  title: Type system
+  title: Sistema de tipos
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-A type alias—often called a _typedef_ because
-it's declared with the keyword `typedef`—is
-a concise way to refer to a type.
-Here's an example of declaring and using a type alias named `IntList`:
+Um alias de tipo—frequentemente chamado de _typedef_ (definição de tipo) porque
+é declarado com a palavra-chave `typedef`—é
+uma forma concisa de se referir a um tipo.
+Aqui está um exemplo de declaração e uso de um alias de tipo chamado `IntList`:
 
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (int-list)"?>
 ```dart
@@ -23,7 +24,7 @@ typedef IntList = List<int>;
 IntList il = [1, 2, 3];
 ```
 
-A type alias can have type parameters:
+Um alias de tipo pode ter parâmetros de tipo:
 
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (list-mapper)"?>
 ```dart
@@ -33,13 +34,13 @@ ListMapper<String> m2 = {}; // Same thing but shorter and clearer.
 ```
 
 :::version-note
-Before 2.13, typedefs were restricted to function types.
-Using the new typedefs requires a [language version][] of at least 2.13.
+Antes da versão 2.13, typedefs (definições de tipo) eram restritos a tipos de função.
+Usar os novos typedefs (definições de tipo) requer uma [versão da linguagem][language version] de pelo menos 2.13.
 :::
 
-We recommend using [inline function types][] instead of typedefs for functions,
-in most situations.
-However, function typedefs can still be useful:
+Recomendamos usar [tipos de função inline][inline function types] em vez de typedefs (definições de tipo) para funções,
+na maioria das situações.
+No entanto, typedefs (definições de tipo) de função ainda podem ser úteis:
 
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 ```dart

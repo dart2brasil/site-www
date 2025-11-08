@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: extension_type_constructor_with_super_invocation
-description: >-
-  Details about the extension_type_constructor_with_super_invocation
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico extension_type_constructor_with_super_invocation produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extension type constructors can't include super initializers._
+_Construtores de extension type não podem incluir inicializadores super._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor in an extension
-type includes an invocation of a super constructor in the initializer
-list. Because extension types don't have a superclass, there's no
-constructor to invoke.
+O analisador produz este diagnóstico quando um construtor em um extension
+type inclui uma invocação de um construtor super na lista de inicializadores.
+Como extension types não têm uma superclasse, não há
+construtor para invocar.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor `E.n`
-invokes a super constructor in its initializer list:
+O código a seguir produz este diagnóstico porque o construtor `E.n`
+invoca um construtor super em sua lista de inicializadores:
 
 ```dart
 extension type E(int i) {
@@ -27,9 +26,9 @@ extension type E(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the invocation of the super constructor:
+Remova a invocação do construtor super:
 
 ```dart
 extension type E(int i) {

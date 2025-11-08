@@ -1,25 +1,24 @@
 ---
 title: body_might_complete_normally
-description: >-
-  Details about the body_might_complete_normally
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico body_might_complete_normally produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The body might complete normally, causing 'null' to be returned, but the return type, '{0}', is a potentially non-nullable type._
+_O body pode completar normalmente, fazendo com que 'null' seja retornado, mas o tipo de retorno, '{0}', é um tipo potencialmente não-anulável._
 
 ## Description
 
-The analyzer produces this diagnostic when a method or function has a
-return type that's [potentially non-nullable][] but would implicitly return
-`null` if control reached the end of the function.
+O analisador produz este diagnóstico quando um método ou função tem um
+tipo de retorno que é [potencialmente não-anulável][potentially non-nullable] mas retornaria implicitamente
+`null` se o controle atingisse o final da função.
 
 ## Examples
 
-The following code produces this diagnostic because the method `m` has an
-implicit return of `null` inserted at the end of the method, but the method
-is declared to not return `null`:
+O código a seguir produz este diagnóstico porque o método `m` tem um
+retorno implícito de `null` inserido no final do método, mas o método
+está declarado para não retornar `null`:
 
 ```dart
 class C {
@@ -29,10 +28,10 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the method `m` has an
-implicit return of `null` inserted at the end of the method, but because
-the class `C` can be instantiated with a non-nullable type argument, the
-method is effectively declared to not return `null`:
+O código a seguir produz este diagnóstico porque o método `m` tem um
+retorno implícito de `null` inserido no final do método, mas como
+a classe `C` pode ser instanciada com um argumento de tipo não-anulável, o
+método está efetivamente declarado para não retornar `null`:
 
 ```dart
 class C<T> {
@@ -44,8 +43,8 @@ class C<T> {
 
 ## Common fixes
 
-If there's a reasonable value that can be returned, then add a `return`
-statement at the end of the method:
+Se houver um valor razoável que possa ser retornado, então adicione uma instrução `return`
+no final do método:
 
 ```dart
 class C<T> {
@@ -56,8 +55,8 @@ class C<T> {
 }
 ```
 
-If the method won't reach the implicit return, then add a `throw` at the
-end of the method:
+Se o método não alcançará o retorno implícito, então adicione um `throw` no
+final do método:
 
 ```dart
 class C<T> {
@@ -68,9 +67,9 @@ class C<T> {
 }
 ```
 
-If the method intentionally returns `null` at the end, then add an
-explicit return of `null` at the end of the method and change the
-return type so that it's valid to return `null`:
+Se o método intencionalmente retorna `null` no final, então adicione um
+retorno explícito de `null` no final do método e altere o
+tipo de retorno para que seja válido retornar `null`:
 
 ```dart
 class C<T> {

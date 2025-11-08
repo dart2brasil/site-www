@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: assignment_to_final
-description: >-
-  Details about the assignment_to_final
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico assignment_to_final produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' can't be used as a setter because it's final._
+_'{0}' não pode ser usado como setter porque é final._
 
 ## Description
 
-The analyzer produces this diagnostic when it finds an invocation of a
-setter, but there's no setter because the field with the same name was
-declared to be `final` or `const`.
+O analisador produz este diagnóstico quando encontra uma invocação de um
+setter, mas não há setter porque o campo com o mesmo nome foi
+declarado como `final` ou `const`.
 
 ## Example
 
-The following code produces this diagnostic because `v` is final:
+O código a seguir produz este diagnóstico porque `v` é final:
 
 ```dart
 class C {
@@ -31,8 +30,8 @@ f(C c) {
 
 ## Common fixes
 
-If you need to be able to set the value of the field, then remove the
-modifier `final` from the field:
+Se você precisa ser capaz de definir o valor do campo, então remova o
+modificador `final` do campo:
 
 ```dart
 class C {

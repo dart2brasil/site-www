@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: duplicate_named_argument
-description: >-
-  Details about the duplicate_named_argument
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico duplicate_named_argument produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The argument for the named parameter '{0}' was already specified._
+_O argumento para o parâmetro nomeado '{0}' já foi especificado._
 
 ## Description
 
-The analyzer produces this diagnostic when an invocation has two or more
-named arguments that have the same name.
+O analisador produz este diagnóstico quando uma invocação tem dois ou mais
+argumentos nomeados que têm o mesmo nome.
 
 ## Example
 
-The following code produces this diagnostic because there are two arguments
-with the name `a`:
+O código a seguir produz este diagnóstico porque há dois argumentos
+com o nome `a`:
 
 ```dart
 void f(C c) {
@@ -31,7 +30,7 @@ class C {
 
 ## Common fixes
 
-If one of the arguments should have a different name, then change the name:
+Se um dos argumentos deve ter um nome diferente, então mude o nome:
 
 ```dart
 void f(C c) {
@@ -43,7 +42,7 @@ class C {
 }
 ```
 
-If one of the arguments is wrong, then remove it:
+Se um dos argumentos está errado, então remova-o:
 
 ```dart
 void f(C c) {

@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_final_in_for_each
-description: >-
-  Details about the prefer_final_in_for_each
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_final_in_for_each produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,19 +17,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The pattern should be final._
+_O padrão deve ser final._
 
-_The variable '{0}' should be final._
+_A variável '{0}' deve ser final._
 
 ## Description
 
-The analyzer produces this diagnostic when the loop variable in a for-each
-statement isn't marked as being `final`.
+O analisador produz este diagnóstico quando a variável de loop em uma instrução for-each
+não está marcada como `final`.
 
 ## Example
 
-The following code produces this diagnostic because the loop variable `e`
-isn't marked as being `final`:
+O código a seguir produz este diagnóstico porque a variável de loop `e`
+não está marcada como `final`:
 
 ```dart
 void f(List<int> l) {
@@ -42,8 +41,8 @@ void f(List<int> l) {
 
 ## Common fixes
 
-Add the modifier `final` to the loop variable, removing the `var` if there
-is one:
+Adicione o modificador `final` à variável de loop, removendo o `var` se houver
+um:
 
 ```dart
 void f(List<int> l) {

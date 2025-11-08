@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: avoid_init_to_null
-description: >-
-  Details about the avoid_init_to_null
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico avoid_init_to_null produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,22 +17,22 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Redundant initialization to 'null'._
+_Inicialização redundante para 'null'._
 
 ## Description
 
-The analyzer produces this diagnostic when a nullable variable is
-explicitly initialized to `null`. The variable can be a local variable,
-field, or top-level variable.
+O analisador produz este diagnóstico quando uma variável nullable é
+explicitamente inicializada para `null`. A variável pode ser uma variável local,
+campo ou variável de nível superior.
 
-A variable or field that isn't explicitly initialized automatically gets
-initialized to `null`. There's no concept of "uninitialized memory" in
+Uma variável ou campo que não é explicitamente inicializado automaticamente é
+inicializado para `null`. Não há conceito de "memória não inicializada" em
 Dart.
 
 ## Example
 
-The following code produces this diagnostic because the variable `f` is
-explicitly initialized to `null`:
+O código a seguir produz este diagnóstico porque a variável `f` é
+explicitamente inicializada para `null`:
 
 ```dart
 class C {
@@ -49,7 +48,7 @@ class C {
 
 ## Common fixes
 
-Remove the unnecessary initialization:
+Remova a inicialização desnecessária:
 
 ```dart
 class C {

@@ -1,30 +1,28 @@
 ---
+ia-translate: true
 title: unnecessary_set_literal
-description: >-
-  Details about the unnecessary_set_literal
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unnecessary_set_literal produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Braces unnecessarily wrap this expression in a set literal._
+_Chaves desnecessariamente envolvem esta expressão em um literal de set._
 
 ## Description
 
-The analyzer produces this diagnostic when a function that has a return
-type of `void`, `Future<void>`, or `FutureOr<void>` uses an expression
-function body (`=>`) and the returned value is a literal set containing a
-single element.
+O analisador produz este diagnóstico quando uma função que tem um tipo de retorno
+de `void`, `Future<void>`, ou `FutureOr<void>` usa um corpo de função de expressão (`=>`) e o valor retornado é um literal de set contendo um
+único elemento.
 
-Although the language allows it, returning a value from a `void` function
-isn't useful because it can't be used at the call site. In this particular
-case the return is often due to a misunderstanding about the syntax. The
-braces aren't necessary and can be removed.
+Embora a linguagem permita, retornar um valor de uma função `void`
+não é útil porque não pode ser usado no local da chamada. Neste caso particular,
+o retorno é frequentemente devido a um mal-entendido sobre a sintaxe. As
+chaves não são necessárias e podem ser removidas.
 
 ## Example
 
-The following code produces this diagnostic because the closure being
-passed to `g` has a return type of `void`, but is returning a set:
+O código a seguir produz este diagnóstico porque a closure sendo
+passada para `g` tem um tipo de retorno de `void`, mas está retornando um set:
 
 ```dart
 void f() {
@@ -36,7 +34,7 @@ void g(void Function() p) {}
 
 ## Common fixes
 
-Remove the braces from around the value:
+Remova as chaves de ao redor do valor:
 
 ```dart
 void f() {

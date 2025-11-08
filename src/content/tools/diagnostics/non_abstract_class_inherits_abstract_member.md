@@ -1,32 +1,31 @@
 ---
+ia-translate: true
 title: non_abstract_class_inherits_abstract_member
-description: >-
-  Details about the non_abstract_class_inherits_abstract_member
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico non_abstract_class_inherits_abstract_member produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Missing concrete implementation of '{0}'._
+_Faltando implementação concreta de '{0}'._
 
-_Missing concrete implementations of '{0}' and '{1}'._
+_Faltando implementações concretas de '{0}' e '{1}'._
 
-_Missing concrete implementations of '{0}', '{1}', '{2}', '{3}', and {4} more._
+_Faltando implementações concretas de '{0}', '{1}', '{2}', '{3}' e mais {4}._
 
-_Missing concrete implementations of '{0}', '{1}', '{2}', and '{3}'._
+_Faltando implementações concretas de '{0}', '{1}', '{2}' e '{3}'._
 
-_Missing concrete implementations of '{0}', '{1}', and '{2}'._
+_Faltando implementações concretas de '{0}', '{1}' e '{2}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a concrete class inherits one or
-more abstract members, and doesn't provide or inherit an implementation for
-at least one of those abstract members.
+O analisador produz este diagnóstico quando uma classe concreta herda um ou
+mais membros abstract, e não fornece ou herda uma implementação para
+pelo menos um desses membros abstract.
 
 ## Example
 
-The following code produces this diagnostic because the class `B` doesn't
-have a concrete implementation of `m`:
+O código a seguir produz este diagnóstico porque a classe `B` não
+tem uma implementação concreta de `m`:
 
 ```dart
 abstract class A {
@@ -38,8 +37,8 @@ class [!B!] extends A {}
 
 ## Common fixes
 
-If the subclass can provide a concrete implementation for some or all of
-the abstract inherited members, then add the concrete implementations:
+Se a subclasse pode fornecer uma implementação concreta para alguns ou todos os
+membros abstract herdados, então adicione as implementações concretas:
 
 ```dart
 abstract class A {
@@ -51,8 +50,8 @@ class B extends A {
 }
 ```
 
-If there is a mixin that provides an implementation of the inherited
-methods, then apply the mixin to the subclass:
+Se há um mixin que fornece uma implementação dos métodos
+herdados, então aplique o mixin à subclasse:
 
 ```dart
 abstract class A {
@@ -66,8 +65,8 @@ mixin M {
 }
 ```
 
-If the subclass can't provide a concrete implementation for all of the
-abstract inherited members, then mark the subclass as being abstract:
+Se a subclasse não pode fornecer uma implementação concreta para todos os
+membros abstract herdados, então marque a subclasse como sendo abstract:
 
 ```dart
 abstract class A {

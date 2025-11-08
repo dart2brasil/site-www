@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: undefined_extension_getter
-description: >-
-  Details about the undefined_extension_getter
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico undefined_extension_getter produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The getter '{0}' isn't defined for the extension '{1}'._
+_O getter '{0}' não está definido para a extension '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override is used to
-invoke a getter, but the getter isn't defined by the specified extension.
-The analyzer also produces this diagnostic when a static getter is
-referenced but isn't defined by the specified extension.
+O analisador produz este diagnóstico quando uma sobrescrita de extension é usada para
+invocar um getter, mas o getter não está definido pela extension especificada.
+O analisador também produz este diagnóstico quando um getter estático é
+referenciado mas não está definido pela extension especificada.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the extension `E`
-doesn't declare an instance getter named `b`:
+O código a seguir produz este diagnóstico porque a extension `E`
+não declara um getter de instância chamado `b`:
 
 ```dart
 extension E on String {
@@ -35,8 +34,8 @@ void f() {
 }
 ```
 
-The following code produces this diagnostic because the extension `E`
-doesn't declare a static getter named `a`:
+O código a seguir produz este diagnóstico porque a extension `E`
+não declara um getter estático chamado `a`:
 
 ```dart
 extension E on String {}
@@ -44,10 +43,10 @@ extension E on String {}
 var x = E.[!a!];
 ```
 
-## Common fixes
+## Correções comuns
 
-If the name of the getter is incorrect, then change it to the name of an
-existing getter:
+Se o nome do getter está incorreto, então mude-o para o nome de um
+getter existente:
 
 ```dart
 extension E on String {
@@ -63,8 +62,8 @@ void f() {
 }
 ```
 
-If the name of the getter is correct but the name of the extension is
-wrong, then change the name of the extension to the correct name:
+Se o nome do getter está correto mas o nome da extension está
+errado, então mude o nome da extension para o nome correto:
 
 ```dart
 extension E on String {
@@ -80,8 +79,8 @@ void f() {
 }
 ```
 
-If the name of the getter and extension are both correct, but the getter
-isn't defined, then define the getter:
+Se o nome do getter e da extension estão ambos corretos, mas o getter
+não está definido, então defina o getter:
 
 ```dart
 extension E on String {

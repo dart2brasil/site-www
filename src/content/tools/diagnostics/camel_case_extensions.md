@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: camel_case_extensions
-description: >-
-  Details about the camel_case_extensions
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico camel_case_extensions produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The extension name '{0}' isn't an UpperCamelCase identifier._
+_O nome da extension '{0}' não é um identificador UpperCamelCase._
 
 ## Description
 
-The analyzer produces this diagnostic when the name of an extension
-doesn't use the 'UpperCamelCase' naming convention.
+O analisador produz este diagnóstico quando o nome de uma extension
+não usa a convenção de nomenclatura 'UpperCamelCase'.
 
 ## Example
 
-The following code produces this diagnostic because the name of the
-extension doesn't start with an uppercase letter:
+O código a seguir produz este diagnóstico porque o nome da
+extension não começa com uma letra maiúscula:
 
 ```dart
 extension [!stringExtension!] on String {}
@@ -36,14 +35,14 @@ extension [!stringExtension!] on String {}
 
 ## Common fixes
 
-If the extension needs to have a name (needs to be visible outside this
-library), then rename the extension so that it has a valid name:
+Se a extension precisa ter um nome (precisa estar visível fora desta
+biblioteca), então renomeie a extension para que ela tenha um nome válido:
 
 ```dart
 extension StringExtension on String {}
 ```
 
-If the extension doesn't need to have a name, then remove the name of the
+Se a extension não precisa ter um nome, então remova o nome da
 extension:
 
 ```dart

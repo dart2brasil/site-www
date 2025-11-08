@@ -1,26 +1,27 @@
 ---
-title: Collections
-description: Summary of the different types of collections in Dart.
+ia-translate: true
+title: "Coleções"
+description: "Resumo dos diferentes tipos de coleções em Dart."
 prevpage:
   url: /language/records
-  title: Records
+  title: Registros
 nextpage:
   url: /language/generics
-  title: Generics
+  title: "Genéricos"
 ---
 
-Dart has built-in support for list, set, and map [collections][].
-To learn more about configuring the types collections contain,
-check out [Generics][].
+Dart possui suporte interno para [coleções][collections] do tipo lista, set e map.
+Para saber mais sobre como configurar os tipos que as coleções contêm,
+confira [Generics][generics].
 
 [generics]: /language/generics
 [collections]: /libraries/dart-core#collections
 
 ## Lists
 
-Perhaps the most common collection in nearly every programming language
-is the *array*, or ordered group of objects. In Dart, arrays are
-[`List`][] objects, so most people just call them *lists*.
+Talvez a coleção mais comum em quase todas as linguagens de programação
+seja o *array* (matriz), ou grupo ordenado de objetos. Em Dart, arrays são
+objetos [`List`][`List`] , então a maioria das pessoas apenas os chama de *listas*.
 
 Dart list literals are denoted by a comma-separated list of
 elements enclosed in square brackets (`[]`). Each element
@@ -32,15 +33,15 @@ var list = [1, 2, 3];
 ```
 
 :::note
-Dart infers that `list` has type `List<int>`. If you try to add non-integer
-objects to this list, the analyzer or runtime raises an error. For more
-information, read about [type inference][].
+Dart infere que `list` tem o tipo `List<int>`. Se você tentar adicionar
+objetos não inteiros a esta lista, o analisador ou o tempo de execução gera um erro. Para mais
+informações, leia sobre [inferência de tipo][type inference].
 :::
 
 <a id="trailing-comma"></a>
-You can add a comma after the last item in a Dart collection literal.
-This _trailing comma_ doesn't affect the collection,
-but it can help prevent copy-paste errors.
+Você pode adicionar uma vírgula após o último item em um literal de coleção Dart.
+Essa _vírgula à direita_ não afeta a coleção,
+mas pode ajudar a evitar erros de copiar e colar.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
 ```dart
@@ -62,8 +63,8 @@ list[1] = 1;
 assert(list[1] == 1);
 ```
 
-To create a list that's a compile-time constant,
-add `const` before the list literal:
+Para criar uma lista que seja uma constante em tempo de compilação,
+adicione `const` antes do literal da lista:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-list)"?>
 ```dart
@@ -71,8 +72,8 @@ var constantList = const [1, 2, 3];
 // constantList[1] = 1; // This line will cause an error.
 ```
 
-For more information about lists, refer to the Lists section of the
-[`dart:core` documentation](/libraries/dart-core#lists).
+Para mais informações sobre listas, consulte a seção Listas da
+documentação [`dart:core`](/libraries/dart-core#lists).
 
 [`List`]: {{site.dart-api}}/dart-core/List-class.html
 [type inference]: /language/type-system#type-inference
@@ -83,7 +84,7 @@ A set in Dart is an unordered collection of unique elements.
 Dart support for sets is provided by set literals and the
 [`Set`][] type.
 
-Here is a simple Dart set, created using a set literal:
+Aqui está um set simples do Dart, criado usando um literal de set:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-literal)"?>
 ```dart
@@ -97,8 +98,8 @@ more information, read about
 [type inference.](/language/type-system#type-inference)
 :::
 
-To create an empty set, use `{}` preceded by a type argument,
-or assign `{}` to a variable of type `Set`:
+Para criar um set vazio, use `{}` precedido por um argumento de tipo,
+ou atribua `{}` a uma variável do tipo `Set`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
 ```dart
@@ -107,14 +108,14 @@ var names = <String>{};
 // var names = {}; // Creates a map, not a set.
 ```
 
-:::note Set or map?
-The syntax for map literals is similar to that for set
-literals. Because map literals came first, `{}` defaults to the `Map` type. If
-you forget the type annotation on `{}` or the variable it's assigned to, then
-Dart creates an object of type `Map<dynamic, dynamic>`.
+:::note Set ou map?
+A sintaxe para literais de map é semelhante à de
+literais de set. Como os literais de map vieram primeiro, `{}` assume o tipo `Map` por padrão. Se
+você esquecer a anotação de tipo em `{}` ou a variável à qual ela está atribuída, então
+Dart cria um objeto do tipo `Map<dynamic, dynamic>`.
 :::
 
-Add items to an existing set using the `add()` or `addAll()` methods:
+Adicione itens a um set existente usando os métodos `add()` ou `addAll()`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-add-items)"?>
 ```dart
@@ -123,7 +124,7 @@ elements.add('fluorine');
 elements.addAll(halogens);
 ```
 
-Use `.length` to get the number of items in the set:
+Use `.length` para obter o número de itens no set:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (set-length)"?>
 ```dart
@@ -133,8 +134,8 @@ elements.addAll(halogens);
 assert(elements.length == 5);
 ```
 
-To create a set that's a compile-time constant,
-add `const` before the set literal:
+Para criar um set que seja uma constante em tempo de compilação,
+adicione `const` antes do literal do set:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-set)"?>
 ```dart
@@ -148,8 +149,8 @@ final constantSet = const {
 // constantSet.add('helium'); // This line will cause an error.
 ```
 
-For more information about sets, refer to the Sets section of the
-[`dart:core` documentation](/libraries/dart-core#sets).
+Para mais informações sobre sets, consulte a seção Sets da
+documentação [`dart:core`](/libraries/dart-core#sets).
 
 [`Set`]: {{site.dart-api}}/dart-core/Set-class.html
 
@@ -162,7 +163,7 @@ although the same value can be associated with multiple
 different keys. Dart support for maps is provided by
 map literals and the [`Map`][] type.
 
-Here are a couple of simple Dart maps, created using map literals:
+Aqui estão alguns maps simples do Dart, criados usando literais de map:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-literal)"?>
 ```dart
@@ -177,13 +178,13 @@ var nobleGases = {2: 'helium', 10: 'neon', 18: 'argon'};
 ```
 
 :::note
-Dart infers that `gifts` has the type `Map<String, String>` and `nobleGases`
-has the type `Map<int, String>`. If you try to add the wrong type of value to
-either map, the analyzer or runtime raises an error. For more information,
-read about [type inference][].
+Dart infere que `gifts` tem o tipo `Map<String, String>` e `nobleGases`
+tem o tipo `Map<int, String>`. Se você tentar adicionar o tipo errado de valor a
+qualquer um dos maps, o analisador ou o tempo de execução gera um erro. Para mais informações,
+leia sobre [inferência de tipo][type inference].
 :::
 
-You can create the same objects using a Map constructor:
+Você pode criar os mesmos objetos usando um construtor `Map`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-constructor)"?>
 ```dart
@@ -199,13 +200,13 @@ nobleGases[18] = 'argon';
 ```
 
 :::note
-If you come from a language like C# or Java, you might expect to see `new Map()` 
-instead of just `Map()`. In Dart, the `new` keyword is optional.
-For details, see [Using constructors][].
+Se você vem de uma linguagem como C# ou Java, pode esperar ver `new Map()`
+em vez de apenas `Map()`. Em Dart, a palavra-chave `new` é opcional.
+Para detalhes, veja [Usando construtores][Usando construtores].
 :::
 
-Add a new key-value pair to an existing map
-using the subscript assignment operator (`[]=`):
+Adicione um novo par chave-valor a um map existente
+usando o operador de atribuição de subscrito (`[]=`):
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-add-item)"?>
 ```dart
@@ -213,7 +214,7 @@ var gifts = {'first': 'partridge'};
 gifts['fourth'] = 'calling birds'; // Add a key-value pair
 ```
 
-Retrieve a value from a map using the subscript operator (`[]`):
+Recupere um valor de um map usando o operador de subscrito (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-retrieve-item)"?>
 ```dart
@@ -221,7 +222,7 @@ var gifts = {'first': 'partridge'};
 assert(gifts['first'] == 'partridge');
 ```
 
-If you look for a key that isn't in a map, you get `null` in return:
+Se você procurar por uma chave que não está em um map, você recebe `null` em retorno:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-missing-key)"?>
 ```dart
@@ -229,7 +230,7 @@ var gifts = {'first': 'partridge'};
 assert(gifts['fifth'] == null);
 ```
 
-Use `.length` to get the number of key-value pairs in the map:
+Use `.length` para obter o número de pares chave-valor no map:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-length)"?>
 ```dart
@@ -238,8 +239,8 @@ gifts['fourth'] = 'calling birds';
 assert(gifts.length == 2);
 ```
 
-To create a map that's a compile-time constant,
-add `const` before the map literal:
+Para criar um map que seja uma constante em tempo de compilação,
+adicione `const` antes do literal do map:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-map)"?>
 ```dart
@@ -248,8 +249,8 @@ final constantMap = const {2: 'helium', 10: 'neon', 18: 'argon'};
 // constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
-For more information about maps, refer to the Maps section of the
-[`dart:core` documentation](/libraries/dart-core#maps).
+Para mais informações sobre maps, consulte a seção Maps da
+documentação [`dart:core`](/libraries/dart-core#maps).
 
 [Using constructors]: /language/classes#using-constructors
 [`Map`]: {{site.dart-api}}/dart-core/Map-class.html

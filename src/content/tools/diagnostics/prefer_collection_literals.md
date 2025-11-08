@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_collection_literals
-description: >-
-  Details about the prefer_collection_literals
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_collection_literals produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary constructor invocation._
+_Invocação desnecessária de construtor._
 
 ## Description
 
-The analyzer produces this diagnostic when a constructor is used to create
-a list, map, or set, but a literal would produce the same result.
+O analisador produz este diagnóstico quando um construtor é usado para criar
+uma lista, mapa ou conjunto, mas um literal produziria o mesmo resultado.
 
 ## Example
 
-The following code produces this diagnostic because the constructor for
-`Map` is being used to create a map that could also be created using a
+O código a seguir produz este diagnóstico porque o construtor de
+`Map` está sendo usado para criar um mapa que também poderia ser criado usando um
 literal:
 
 ```dart
@@ -37,7 +36,7 @@ var m = [!Map<String, String>()!];
 
 ## Common fixes
 
-Use the literal representation:
+Use a representação literal:
 
 ```dart
 var m = <String, String>{};

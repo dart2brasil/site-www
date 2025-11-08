@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: extension_override_access_to_static_member
-description: >-
-  Details about the extension_override_access_to_static_member
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico extension_override_access_to_static_member produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_An extension override can't be used to access a static member from an extension._
+_Um override de extension não pode ser usado para acessar um membro static de uma extension._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override is the
-receiver of the invocation of a static member. Similar to static members in
-classes, the static members of an extension should be accessed using the
-name of the extension, not an extension override.
+O analisador produz este diagnóstico quando um override de extension é o
+receptor da invocação de um membro static. Similar aos membros static em
+classes, os membros static de uma extension devem ser acessados usando o
+nome da extension, não um override de extension.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` is static:
+O código a seguir produz este diagnóstico porque `m` é static:
 
 ```dart
 extension E on String {
@@ -30,9 +29,9 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Replace the extension override with the name of the extension:
+Substitua o override de extension pelo nome da extension:
 
 ```dart
 extension E on String {

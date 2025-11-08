@@ -1,28 +1,27 @@
 ---
+ia-translate: true
 title: inconsistent_pattern_variable_logical_or
-description: >-
-  Details about the inconsistent_pattern_variable_logical_or
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico inconsistent_pattern_variable_logical_or produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The variable '{0}' has a different type and/or finality in this branch of the logical-or pattern._
+_A variável '{0}' tem um tipo e/ou finalidade diferente neste ramo do padrão logical-or._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a pattern variable that is
-declared on all branches of a logical-or pattern doesn't have the same
-type on every branch. It is also produced when the variable has a
-different finality on different branches. A pattern variable declared on
-multiple branches of a logical-or pattern is required to have the same
-type and finality in each branch, so that the type and finality of the
-variable can be known in code that's guarded by the logical-or pattern.
+O analisador produz este diagnóstico quando uma variável de padrão que é
+declarada em todos os ramos de um padrão logical-or não tem o mesmo
+tipo em cada ramo. Ele também é produzido quando a variável tem uma
+finalidade diferente em ramos diferentes. Uma variável de padrão declarada em
+múltiplos ramos de um padrão logical-or deve ter o mesmo
+tipo e finalidade em cada ramo, para que o tipo e a finalidade da
+variável possam ser conhecidos no código que é protegido pelo padrão logical-or.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the variable `a` is
-defined to be an `int` on one branch and a `double` on the other:
+O código a seguir produz este diagnóstico porque a variável `a` é
+definida como `int` em um ramo e `double` no outro:
 
 ```dart
 void f(Object? x) {
@@ -32,8 +31,8 @@ void f(Object? x) {
 }
 ```
 
-The following code produces this diagnostic because the variable `a` is
-`final` in the first branch and isn't `final` in the second branch:
+O código a seguir produz este diagnóstico porque a variável `a` é
+`final` no primeiro ramo e não é `final` no segundo ramo:
 
 ```dart
 void f(Object? x) {
@@ -43,10 +42,10 @@ void f(Object? x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the finality of the variable is different, decide whether it should be
-`final` or not `final` and make the cases consistent:
+Se a finalidade da variável for diferente, decida se ela deve ser
+`final` ou não `final` e torne os casos consistentes:
 
 ```dart
 void f(Object? x) {
@@ -56,9 +55,9 @@ void f(Object? x) {
 }
 ```
 
-If the type of the variable is different and the type isn't critical to
-the condition being matched, then ensure that the variable has the same
-type on both branches:
+Se o tipo da variável for diferente e o tipo não for crítico para
+a condição sendo correspondida, então garanta que a variável tenha o mesmo
+tipo em ambos os ramos:
 
 ```dart
 void f(Object? x) {
@@ -68,9 +67,9 @@ void f(Object? x) {
 }
 ```
 
-If the type of the variable is different and the type is critical to the
-condition being matched, then consider breaking the condition into
-multiple `if` statements or `case` clauses:
+Se o tipo da variável for diferente e o tipo for crítico para a
+condição sendo correspondida, então considere quebrar a condição em
+múltiplas instruções `if` ou cláusulas `case`:
 
 ```dart
 void f(Object? x) {

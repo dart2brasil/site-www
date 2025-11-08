@@ -1,33 +1,32 @@
 ---
+ia-translate: true
 title: type_alias_cannot_reference_itself
-description: >-
-  Details about the type_alias_cannot_reference_itself
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico type_alias_cannot_reference_itself produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Typedefs can't reference themselves directly or recursively via another typedef._
+_Typedefs não podem referenciar a si mesmos diretamente ou recursivamente por meio de outro typedef._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a typedef refers to itself,
-either directly or indirectly.
+O analisador produz este diagnóstico quando um typedef se refere a si mesmo,
+seja direta ou indiretamente.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `F` depends on itself
-indirectly through `G`:
+O código a seguir produz este diagnóstico porque `F` depende de si mesmo
+indiretamente através de `G`:
 
 ```dart
 typedef [!F!] = void Function(G);
 typedef G = void Function(F);
 ```
 
-## Common fixes
+## Correções comuns
 
-Change one or more of the typedefs in the cycle so that none of them refer
-to themselves:
+Altere um ou mais dos typedefs no ciclo para que nenhum deles se refira
+a si mesmo:
 
 ```dart
 typedef F = void Function(G);

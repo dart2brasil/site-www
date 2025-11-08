@@ -1,24 +1,23 @@
 ---
 title: body_might_complete_normally_nullable
-description: >-
-  Details about the body_might_complete_normally_nullable
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico body_might_complete_normally_nullable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_This function has a nullable return type of '{0}', but ends without returning a value._
+_Esta função tem um tipo de retorno anulável de '{0}', mas termina sem retornar um valor._
 
 ## Description
 
-The analyzer produces this diagnostic when a method or function can
-implicitly return `null` by falling off the end. While this is valid Dart
-code, it's better for the return of `null` to be explicit.
+O analisador produz este diagnóstico quando um método ou função pode
+retornar implicitamente `null` ao chegar ao final. Embora este seja código Dart
+válido, é melhor que o retorno de `null` seja explícito.
 
 ## Example
 
-The following code produces this diagnostic because the function `f`
-implicitly returns `null`:
+O código a seguir produz este diagnóstico porque a função `f`
+retorna implicitamente `null`:
 
 ```dart
 String? [!f!]() {}
@@ -26,7 +25,7 @@ String? [!f!]() {}
 
 ## Common fixes
 
-If the return of `null` is intentional, then make it explicit:
+Se o retorno de `null` é intencional, então torne-o explícito:
 
 ```dart
 String? f() {
@@ -34,8 +33,8 @@ String? f() {
 }
 ```
 
-If the function should return a non-null value along that path, then add
-the missing return statement:
+Se a função deve retornar um valor não-nulo nesse caminho, então adicione
+a instrução return que está faltando:
 
 ```dart
 String? f() {

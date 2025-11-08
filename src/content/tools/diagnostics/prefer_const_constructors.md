@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_const_constructors
-description: >-
-  Details about the prefer_const_constructors
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_const_constructors produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'const' with the constructor to improve performance._
+_Use 'const' com o construtor para melhorar o desempenho._
 
 ## Description
 
-The analyzer produces this diagnostic when an invocation of a const
-constructor isn't either preceded by `const` or in a [constant context][].
+O analisador produz este diagnóstico quando uma invocação de um construtor const
+não é precedida por `const` nem está em um [constant context][].
 
 ## Example
 
-The following code produces this diagnostic because the invocation of the
-`const` constructor is neither prefixed by `const` nor in a
+O código a seguir produz este diagnóstico porque a invocação do
+construtor `const` não está prefixada por `const` nem em um
 [constant context][]:
 
 ```dart
@@ -41,7 +40,7 @@ C c = [!C()!];
 
 ## Common fixes
 
-If the context can be made a [constant context][], then do so:
+Se o contexto pode ser tornado um [constant context][], faça isso:
 
 ```dart
 class C {
@@ -51,8 +50,8 @@ class C {
 const C c = C();
 ```
 
-If the context can't be made a [constant context][], then add `const`
-before the constructor invocation:
+Se o contexto não pode ser tornado um [constant context][], adicione `const`
+antes da invocação do construtor:
 
 ```dart
 class C {

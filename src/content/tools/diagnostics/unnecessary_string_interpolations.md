@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: unnecessary_string_interpolations
-description: >-
-  Details about the unnecessary_string_interpolations
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico unnecessary_string_interpolations produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,19 +17,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary use of string interpolation._
+_Uso desnecessário de interpolação de string._
 
 ## Description
 
-The analyzer produces this diagnostic when a string literal contains a
-single interpolation of a `String`-valued variable and no other
-characters.
+O analisador produz este diagnóstico quando um literal de string contém uma
+única interpolação de uma variável com valor `String` e nenhum outro
+caractere.
 
 ## Example
 
-The following code produces this diagnostic because the string literal
-contains a single interpolation and doesn't contain any character outside
-the interpolation:
+O código a seguir produz este diagnóstico porque o literal de string
+contém uma única interpolação e não contém nenhum caractere fora
+da interpolação:
 
 ```dart
 String f(String s) => [!'$s'!];
@@ -38,7 +37,7 @@ String f(String s) => [!'$s'!];
 
 ## Common fixes
 
-Replace the string literal with the content of the interpolation:
+Substitua o literal de string pelo conteúdo da interpolação:
 
 ```dart
 String f(String s) => s;

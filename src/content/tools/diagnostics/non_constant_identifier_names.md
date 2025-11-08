@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: non_constant_identifier_names
-description: >-
-  Details about the non_constant_identifier_names
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico non_constant_identifier_names produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -22,15 +21,15 @@ _The variable name '{0}' isn't a lowerCamelCase identifier._
 
 ## Description
 
-The analyzer produces this diagnostic when the name of a class member,
-top-level declaration, variable, parameter, named parameter, or named
-constructor that isn't declared to be `const`, doesn't use the
-lowerCamelCase convention.
+O analisador produz este diagnóstico quando o nome de um membro de classe,
+declaração top-level, variável, parâmetro, parâmetro nomeado, ou
+construtor nomeado que não é declarado como `const`, não usa a
+convenção lowerCamelCase.
 
 ## Example
 
-The following code produces this diagnostic because the top-level variable
-`Count` doesn't start with a lowercase letter:
+O código a seguir produz este diagnóstico porque a variável top-level
+`Count` não começa com uma letra minúscula:
 
 ```dart
 var [!Count!] = 0;
@@ -38,8 +37,8 @@ var [!Count!] = 0;
 
 ## Common fixes
 
-Change the name in the declaration to follow the lowerCamelCase
-convention:
+Mude o nome na declaração para seguir a convenção
+lowerCamelCase:
 
 ```dart
 var count = 0;

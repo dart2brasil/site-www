@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: ffi_native_unexpected_number_of_parameters_with_receiver
-description: >-
-  Details about the ffi_native_unexpected_number_of_parameters_with_receiver
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico ffi_native_unexpected_number_of_parameters_with_receiver produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Unexpected number of Native annotation parameters. Expected {0} but has {1}. Native instance method annotation must have receiver as first argument._
+_Número inesperado de parâmetros de anotação Native. Esperado {0}, mas tem {1}. A anotação do método de instância nativa deve ter o receptor como primeiro argumento._
 
 ## Description
 
-The analyzer produces this diagnostic when the type argument used on the
-`@Native` annotation of a native method doesn't include a type for the
-receiver of the method.
+O analisador produz este diagnóstico quando o argumento de tipo usado na
+anotação `@Native` de um método nativo não inclui um tipo para o
+receptor do método.
 
 ## Example
 
-The following code produces this diagnostic because the type argument on
-the `@Native` annotation (`Void Function(Double)`) doesn't include a type
-for the receiver of the method:
+O código a seguir produz este diagnóstico porque o argumento de tipo na
+anotação `@Native` (`Void Function(Double)`) não inclui um tipo
+para o receptor do método:
 
 ```dart
 import 'dart:ffi';
@@ -32,8 +31,8 @@ class C {
 
 ## Common fixes
 
-Add an initial parameter whose type is the same as the class in which the
-native method is being declared:
+Adicione um parâmetro inicial cujo tipo é igual ao da classe em que o
+método nativo está sendo declarado:
 
 ```dart
 import 'dart:ffi';

@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_function_declarations_over_variables
-description: >-
-  Details about the prefer_function_declarations_over_variables
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_function_declarations_over_variables produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a function declaration rather than a variable assignment to bind a function to a name._
+_Use uma declaração de função em vez de uma atribuição de variável para vincular uma função a um nome._
 
 ## Description
 
-The analyzer produces this diagnostic when a closure is assigned to a
-local variable and the local variable is not re-assigned anywhere.
+O analisador produz este diagnóstico quando um closure é atribuído a uma
+variável local e a variável local não é reatribuída em nenhum lugar.
 
 ## Example
 
-The following code produces this diagnostic because the local variable `f`
-is initialized to be a closure and isn't assigned any other value:
+O código a seguir produz este diagnóstico porque a variável local `f`
+é inicializada como um closure e não é atribuída nenhum outro valor:
 
 ```dart
 void g() {
@@ -39,7 +38,7 @@ void g() {
 
 ## Common fixes
 
-Replace the local variable with a local function:
+Substitua a variável local por uma função local:
 
 ```dart
 void g() {

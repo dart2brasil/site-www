@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: extension_override_without_access
-description: >-
-  Details about the extension_override_without_access
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico extension_override_without_access produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_An extension override can only be used to access instance members._
+_Um override de extension só pode ser usado para acessar membros de instância._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override is found
-that isn't being used to access one of the members of the extension. The
-extension override syntax doesn't have any runtime semantics; it only
-controls which member is selected at compile time.
+O analisador produz este diagnóstico quando um override de extension é encontrado
+que não está sendo usado para acessar um dos membros da extension. A
+sintaxe de override de extension não tem semântica em tempo de execução; ela apenas
+controla qual membro é selecionado em tempo de compilação.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `E(i)` isn't an
-expression:
+O código a seguir produz este diagnóstico porque `E(i)` não é uma
+expressão:
 
 ```dart
 extension E on int {
@@ -31,10 +30,10 @@ void f(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If you want to invoke one of the members of the extension, then add the
-invocation:
+Se você deseja invocar um dos membros da extension, então adicione a
+invocação:
 
 ```dart
 extension E on int {
@@ -46,7 +45,7 @@ void f(int i) {
 }
 ```
 
-If you don't want to invoke a member, then unwrap the argument:
+Se você não deseja invocar um membro, então desembrulhe o argumento:
 
 ```dart
 extension E on int {

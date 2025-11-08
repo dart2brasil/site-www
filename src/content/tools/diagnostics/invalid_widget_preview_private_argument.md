@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: invalid_widget_preview_private_argument
-description: >-
-  Details about the invalid_widget_preview_private_argument
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico invalid_widget_preview_private_argument produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'@Preview(...)' can only accept arguments that consist of literals and public symbols._
+_'@Preview(...)' só pode aceitar argumentos que consistem de literais e símbolos públicos._
 
 ## Description
 
-The analyzer produces this diagnostic when the `Preview` constructor is
-invoked with arguments that contain references to private symbols.
+O analisador produz este diagnóstico quando o construtor `Preview` é
+invocado com argumentos que contêm referências a símbolos privados.
 
 ## Example
 
-The following code produces this diagnostic because the constant variable
-`_name` is private to the current library:
+O código a seguir produz este diagnóstico porque a variável constante
+`_name` é privada para a biblioteca atual:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -31,7 +30,7 @@ Widget myPreview() => Text('Foo');
 
 ## Common fixes
 
-If appropriate, the private symbol should be made public:
+Se apropriado, o símbolo privado deve ser tornado público:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -43,7 +42,7 @@ const String name = 'My Foo Preview';
 Widget myPreview() => Text('Foo');
 ```
 
-Otherwise, a different public constant symbol should be used:
+Caso contrário, um símbolo constante público diferente deve ser usado:
 
 ```dart
 import 'package:flutter/widgets.dart';

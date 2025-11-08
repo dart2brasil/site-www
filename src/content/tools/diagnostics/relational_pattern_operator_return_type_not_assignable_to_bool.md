@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: relational_pattern_operator_return_type_not_assignable_to_bool
-description: >-
-  Details about the relational_pattern_operator_return_type_not_assignable_to_bool
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico relational_pattern_operator_return_type_not_assignable_to_bool produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The return type of operators used in relational patterns must be assignable to 'bool'._
+_O tipo de retorno dos operadores usados em relational patterns deve ser atribuível a 'bool'._
 
 ## Description
 
-The analyzer produces this diagnostic when a relational pattern references
-an operator that doesn't produce a value of type `bool`.
+O analisador produz este diagnóstico quando um relational pattern referencia
+um operador que não produz um valor do tipo `bool`.
 
 ## Example
 
-The following code produces this diagnostic because the operator `>`, used
-in the relational pattern `> c2`, returns a value of type `int` rather
-than a `bool`:
+O código a seguir produz este diagnóstico porque o operador `>`, usado
+no relational pattern `> c2`, retorna um valor do tipo `int` em vez de
+um `bool`:
 
 ```dart
 class C {
@@ -38,8 +37,8 @@ void f(C c1) {
 
 ## Common fixes
 
-If there's a different operator that should be used, then change the
-operator:
+Se existe um operador diferente que deveria ser usado, então altere o
+operador:
 
 ```dart
 class C {
@@ -57,8 +56,8 @@ void f(C c1) {
 }
 ```
 
-If the operator is expected to return `bool`, then update the declaration
-of the operator:
+Se espera-se que o operador retorne `bool`, então atualize a declaração
+do operador:
 
 ```dart
 class C {

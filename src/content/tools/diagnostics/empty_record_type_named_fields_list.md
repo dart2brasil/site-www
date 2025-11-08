@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: empty_record_type_named_fields_list
-description: >-
-  Details about the empty_record_type_named_fields_list
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico empty_record_type_named_fields_list produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The list of named fields in a record type can't be empty._
+_A lista de campos nomeados em um tipo record não pode estar empty._
 
 ## Description
 
-The analyzer produces this diagnostic when a record type has an empty list
-of named fields.
+O analisador produz este diagnóstico quando um tipo record tem uma lista empty
+de campos nomeados.
 
 ## Example
 
-The following code produces this diagnostic because the record type has an
-empty list of named fields:
+O código a seguir produz este diagnóstico porque o tipo record tem uma
+lista empty de campos nomeados:
 
 ```dart
 void f((int, int, {[!}!]) r) {}
@@ -25,15 +24,14 @@ void f((int, int, {[!}!]) r) {}
 
 ## Common fixes
 
-If the record is intended to have named fields, then add the types and
-names of the fields:
+Se o record deve ter campos nomeados, então adicione os tipos e
+nomes dos campos:
 
 ```dart
 void f((int, int, {int z}) r) {}
 ```
 
-If the record isn't intended to have named fields, then remove the curly
-braces:
+Se o record não deve ter campos nomeados, então remova as chaves:
 
 ```dart
 void f((int, int) r) {}

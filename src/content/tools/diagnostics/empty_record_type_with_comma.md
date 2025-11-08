@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: empty_record_type_with_comma
-description: >-
-  Details about the empty_record_type_with_comma
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico empty_record_type_with_comma produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A record type without fields can't have a trailing comma._
+_Um tipo record sem campos não pode ter uma vírgula final._
 
 ## Description
 
-The analyzer produces this diagnostic when a record type that has no
-fields has a trailing comma. Empty record types can't contain a comma.
+O analisador produz este diagnóstico quando um tipo record que não tem
+campos possui uma vírgula final. Tipos de record empty não podem conter uma vírgula.
 
 ## Example
 
-The following code produces this diagnostic because the empty record type
-has a trailing comma:
+O código a seguir produz este diagnóstico porque o tipo record empty
+tem uma vírgula final:
 
 ```dart
 void f(([!,!]) r) {}
@@ -25,14 +24,14 @@ void f(([!,!]) r) {}
 
 ## Common fixes
 
-If the record type is intended to be empty, then remove the comma:
+Se o tipo record deve ser empty, então remova a vírgula:
 
 ```dart
 void f(() r) {}
 ```
 
-If the record type is intended to have one or more fields, then add the
-types of those fields:
+Se o tipo record deve ter um ou mais campos, então adicione os
+tipos desses campos:
 
 ```dart
 void f((int, int) r) {}

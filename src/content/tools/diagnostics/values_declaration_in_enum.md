@@ -1,28 +1,27 @@
 ---
+ia-translate: true
 title: values_declaration_in_enum
-description: >-
-  Details about the values_declaration_in_enum
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico values_declaration_in_enum produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A member named 'values' can't be declared in an enum._
+_Um membro chamado 'values' não pode ser declarado em um enum._
 
 ## Description
 
-The analyzer produces this diagnostic when an enum declaration defines a
-member named `values`, whether the member is an enum value, an instance
-member, or a static member.
+O analisador produz este diagnóstico quando uma declaração enum define um
+membro chamado `values`, seja o membro um valor enum, um membro de
+instância ou um membro estático.
 
-Any such member conflicts with the implicit declaration of the static
-getter named `values` that returns a list containing all the enum
-constants.
+Qualquer membro desse tipo entra em conflito com a declaração implícita do
+getter estático chamado `values` que retorna uma lista contendo todas as
+constantes enum.
 
 ## Example
 
-The following code produces this diagnostic because the enum `E` defines
-an instance member named `values`:
+O código a seguir produz este diagnóstico porque o enum `E` define
+um membro de instância chamado `values`:
 
 ```dart
 enum E {
@@ -33,7 +32,7 @@ enum E {
 
 ## Common fixes
 
-Change the name of the conflicting member:
+Altere o nome do membro em conflito:
 
 ```dart
 enum E {

@@ -1,26 +1,25 @@
 ---
 title: missing_enum_constant_in_switch
-description: >-
-  Details about the missing_enum_constant_in_switch
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico missing_enum_constant_in_switch produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_Missing case clause for '{0}'._
+_Cláusula case missing para '{0}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a `switch` statement for an enum
-doesn't include an option for one of the values in the enum.
+O analisador produz este diagnóstico quando uma instrução `switch` para um enum
+não inclui uma opção para um dos valores do enum.
 
-Note that `null` is always a possible value for an enum and therefore also
-must be handled.
+Note que `null` é sempre um valor possível para um enum e, portanto, também
+deve ser tratado.
 
 ## Example
 
-The following code produces this diagnostic because the enum value `e2`
-isn't handled:
+O código a seguir produz este diagnóstico porque o valor do enum `e2`
+não é tratado:
 
 ```dart
 enum E { e1, e2 }
@@ -35,8 +34,8 @@ void f(E e) {
 
 ## Common fixes
 
-If there's special handling for the missing values, then add a `case`
-clause for each of the missing values:
+Se há tratamento especial para os valores missing, então adicione uma cláusula `case`
+para cada um dos valores missing:
 
 ```dart
 enum E { e1, e2 }
@@ -51,8 +50,7 @@ void f(E e) {
 }
 ```
 
-If the missing values should be handled the same way, then add a `default`
-clause:
+Se os valores missing devem ser tratados da mesma forma, então adicione uma cláusula `default`:
 
 ```dart
 enum E { e1, e2 }

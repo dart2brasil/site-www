@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: asset_path_not_string
-description: >-
-  Details about the asset_path_not_string
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico asset_path_not_string produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,13 +10,13 @@ _Asset paths are required to be file paths (strings)._
 
 ## Description
 
-The analyzer produces this diagnostic when an asset map contains a
-`path` value that isn't a string.
+O analisador produz este diagnóstico quando um mapa de asset contém um
+valor `path` que não é uma string.
 
 ## Example
 
-The following code produces this diagnostic because the asset map
-contains a `path` value which is a list:
+O código a seguir produz este diagnóstico porque o mapa de asset
+contém um valor `path` que é uma lista:
 
 ```yaml
 name: example
@@ -30,8 +29,8 @@ flutter:
 
 ## Common fixes
 
-Change the `asset` map so that it contains a `path` value which is a
-string (a valid POSIX-style file path):
+Altere o mapa de `asset` para que ele contenha um valor `path` que seja uma
+string (um caminho de arquivo válido no estilo POSIX):
 
 ```yaml
 name: example

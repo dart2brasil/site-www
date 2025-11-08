@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: deprecated_instantiate
-description: >-
-  Details about the deprecated_instantiate
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico deprecated_instantiate produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Instantiating '{0}' is deprecated._
+_Instanciar '{0}' está deprecated._
 
 ## Description
 
-The analyzer produces this diagnostic when a class annotated with
-`@Deprecated.instantiate` is instantiated. This annotation indicates that
-instantiating the class is deprecated and will soon be removed. This
-change will likely be enforced by marking the class as `abstract` or
+O analisador produz este diagnóstico quando uma classe anotada com
+`@Deprecated.instantiate` é instanciada. Esta anotação indica que
+instanciar a classe está deprecated e será removido em breve. Esta
+mudança provavelmente será aplicada marcando a classe como `abstract` ou
 `sealed`.
 
 ## Example
 
-If the library `p` defines a class annotated with
+Se a biblioteca `p` define uma classe anotada com
 `@Deprecated.instantiate`:
 
 ```dart
@@ -27,8 +26,8 @@ If the library `p` defines a class annotated with
 class C {}
 ```
 
-Then, in any library other than `p`, the following code produces this
-diagnostic:
+Então, em qualquer biblioteca diferente de `p`, o código a seguir produz este
+diagnóstico:
 
 ```dart
 import 'package:p/p.dart';
@@ -38,4 +37,4 @@ var c = [!C!]();
 
 ## Common fixes
 
-Follow any directions found in the `Deprecation.instantiate` annotation.
+Siga quaisquer direções encontradas na anotação `Deprecation.instantiate`.

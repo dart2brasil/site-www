@@ -1,54 +1,54 @@
 ---
+ia-translate: true
 title: "Effective Dart: Design"
 breadcrumb: Design
 description: Design consistent, usable libraries.
 prevpage:
   url: /effective-dart/usage
-  title: Usage
+  title: Uso
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt plaster="none"?>
 <?code-excerpt path-base="misc/lib/effective_dart"?>
 
-Here are some guidelines for writing consistent, usable APIs for libraries.
+Aqui estão algumas diretrizes para escrever APIs consistentes e utilizáveis para bibliotecas.
 
-## Names
+## Nomes {:#names}
 
-Naming is an important part of writing readable, maintainable code.
-The following best practices can help you achieve that goal.
+A nomeação é uma parte importante da escrita de código legível e fácil de manter. As seguintes melhores práticas podem ajudar você a atingir esse objetivo.
 
-### DO use terms consistently
+### USE termos de forma consistente {:#do-use-terms-consistently}
 
-Use the same name for the same thing, throughout your code. If a precedent
-already exists outside your API that users are likely to know, follow that
-precedent.
+Use o mesmo nome para a mesma coisa em todo o seu código. Se já existe um precedente
+fora de sua API que os usuários provavelmente conhecem, siga esse
+precedente.
 
 ```dart tag=good
-pageCount         // A field.
-updatePageCount() // Consistent with pageCount.
-toSomething()     // Consistent with Iterable's toList().
-asSomething()     // Consistent with List's asMap().
-Point             // A familiar concept.
+pageCount         // Um campo.
+updatePageCount() // Consistente com pageCount.
+toSomething()     // Consistente com toList() de Iterable.
+asSomething()     // Consistente com asMap() de List.
+Point             // Um conceito familiar.
 ```
 
 ```dart tag=bad
-renumberPages()      // Confusingly different from pageCount.
-convertToSomething() // Inconsistent with toX() precedent.
-wrappedAsSomething() // Inconsistent with asX() precedent.
-Cartesian            // Unfamiliar to most users.
+renumberPages()      // Confusamente diferente de pageCount.
+convertToSomething() // Inconsistente com o precedente toX().
+wrappedAsSomething() // Inconsistente com o precedente asX().
+Cartesian            // Desconhecido para a maioria dos usuários.
 ```
 
-The goal is to take advantage of what the user already knows. This includes
-their knowledge of the problem domain itself, the conventions of the core
-libraries, and other parts of your own API. By building on top of those, you
-reduce the amount of new knowledge they have to acquire before they can be
-productive.
+O objetivo é aproveitar o que o usuário já sabe. Isso inclui
+o conhecimento do domínio do problema em si, as convenções das bibliotecas
+centrais e outras partes de sua própria API. Ao construir em cima disso, você
+reduz a quantidade de novo conhecimento que eles têm que adquirir antes que possam ser
+produtivos.
 
 
-### AVOID abbreviations
+### EVITE abreviações {:#avoid-abbreviations}
 
-Unless the abbreviation is more common than the unabbreviated term, don't
-abbreviate. If you do abbreviate, [capitalize it correctly][caps].
+A menos que a abreviação seja mais comum que o termo não abreviado, não
+abrevie. Se você abreviar, [capitalize corretamente][caps].
 
 [caps]: /effective-dart/style#identifiers
 
@@ -60,36 +60,36 @@ HttpRequest
 ```
 
 ```dart tag=bad
-numPages    // "Num" is an abbreviation of "number (of)".
+numPages    // "Num" é uma abreviação de "number (of)".
 buildRects
 InputOutputStream
 HypertextTransferProtocolRequest
 ```
 
 
-### PREFER putting the most descriptive noun last
+### PREFIRA colocar o substantivo mais descritivo por último {:#prefer-putting-the-most-descriptive-noun-last}
 
-The last word should be the most descriptive of what the thing is. You can
-prefix it with other words, such as adjectives, to further describe the thing.
+A última palavra deve ser a mais descritiva do que a coisa é. Você pode
+prefixá-la com outras palavras, como adjetivos, para descrever ainda mais a coisa.
 
 ```dart tag=good
-pageCount             // A count (of pages).
-ConversionSink        // A sink for doing conversions.
-ChunkedConversionSink // A ConversionSink that's chunked.
-CssFontFaceRule       // A rule for font faces in CSS.
+pageCount             // Uma contagem (de páginas).
+ConversionSink        // Um coletor (sink) para fazer conversões.
+ChunkedConversionSink // Um ConversionSink que é agrupado.
+CssFontFaceRule       // Uma regra para fontes (font faces) em CSS.
 ```
 
 ```dart tag=bad
-numPages                  // Not a collection of pages.
-CanvasRenderingContext2D  // Not a "2D".
-RuleFontFaceCss           // Not a CSS.
+numPages                  // Não é uma coleção de páginas.
+CanvasRenderingContext2D  // Não é um "2D".
+RuleFontFaceCss           // Não é um CSS.
 ```
 
 
-### CONSIDER making the code read like a sentence
+### CONSIDERE fazer o código ser lido como uma sentença {:#consider-making-the-code-read-like-a-sentence}
 
-When in doubt about naming, write some code that uses your API, and try to read
-it like a sentence.
+Em caso de dúvida sobre a nomeação, escreva um código que use sua API e tente lê-lo
+como uma sentença.
 
 <?code-excerpt "design_good.dart (code-like-prose)"?>
 ```dart tag=good
@@ -119,9 +119,9 @@ subscription.toggle();
 monsters.filter((monster) => monster.hasClaws);
 ```
 
-It's helpful to try out your API and see how it "reads" when used in code, but
-you can go too far. It's not helpful to add articles and other parts of speech
-to force your names to *literally* read like a grammatically correct sentence.
+É útil experimentar sua API e ver como ela "lê" quando usada no código, mas
+você pode ir longe demais. Não é útil adicionar artigos e outras partes do discurso
+para forçar seus nomes a *literalmente* serem lidos como uma frase gramaticalmente correta.
 
 <?code-excerpt "design_bad.dart (code-like-prose-overdone)"?>
 ```dart tag=bad
@@ -133,11 +133,11 @@ monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
 ```
 
 
-### PREFER a noun phrase for a non-boolean property or variable
+### PREFIRA uma frase substantiva para uma propriedade ou variável não booleana {:#prefer-a-noun-phrase-for-a-non-boolean-property-or-variable}
 
-The reader's focus is on *what* the property is. If the user cares more about
-*how* a property is determined, then it should probably be a method with a
-verb phrase name.
+O foco do leitor está no *que* a propriedade é. Se o usuário se preocupa mais com
+*como* uma propriedade é determinada, então ela provavelmente deve ser um método com um
+nome de frase verbal.
 
 ```dart tag=good
 list.length
@@ -150,38 +150,38 @@ list.deleteItems
 ```
 
 
-### PREFER a non-imperative verb phrase for a boolean property or variable
+### PREFIRA uma frase verbal não imperativa para uma propriedade ou variável booleana {:#prefer-a-non-imperative-verb-phrase-for-a-boolean-property-or-variable}
 
-Boolean names are often used as conditions in control flow, so you want a name
-that reads well there. Compare:
+Nomes booleanos são frequentemente usados como condições no fluxo de controle, então você quer um nome
+que seja lido bem ali. Compare:
 
 ```dart
-if (window.closeable) ...  // Adjective.
-if (window.canClose) ...   // Verb.
+if (window.closeable) ...  // Adjetivo.
+if (window.canClose) ...   // Verbo.
 ```
 
-Good names tend to start with one of a few kinds of verbs:
+Bons nomes tendem a começar com um de alguns tipos de verbos:
 
-*   a form of "to be": `isEnabled`, `wasShown`, `willFire`. These are, by far,
-    the most common.
+*   uma forma de "ser": `isEnabled` (está habilitado), `wasShown` (foi mostrado), `willFire` (irá disparar). Estes são, de longe,
+    os mais comuns.
 
-*   an [auxiliary verb][]: `hasElements`, `canClose`,
-    `shouldConsume`, `mustSave`.
+*   um [verbo auxiliar][auxiliary verb]: `hasElements` (possui elementos), `canClose` (pode fechar),
+    `shouldConsume` (deve consumir), `mustSave` (deve salvar).
 
-*   an active verb: `ignoresInput`, `wroteFile`. These are rare because they are
-    usually ambiguous. `loggedResult` is a bad name because it could mean
-    "whether or not a result was logged" or "the result that was logged".
-    Likewise, `closingConnection` could be "whether the connection is closing"
-    or "the connection that is closing". Active verbs are allowed when the name
-    can *only* be read as a predicate.
+*   um verbo ativo: `ignoresInput` (ignora entrada), `wroteFile` (escreveu arquivo). Estes são raros porque são
+    geralmente ambíguos. `loggedResult` (resultado registrado) é um nome ruim porque poderia significar
+    "se um resultado foi registrado ou não" ou "o resultado que foi registrado".
+    Da mesma forma, `closingConnection` (fechando conexão) poderia ser "se a conexão está fechando"
+    ou "a conexão que está fechando". Verbos ativos são permitidos quando o nome
+    pode *apenas* ser lido como um predicado.
 
 [auxiliary verb]: https://en.wikipedia.org/wiki/Auxiliary_verb
 
-What separates all these verb phrases from method names is that they are not
-*imperative*. A boolean name should never sound like a command to tell the
-object to do something, because accessing a property doesn't change the object.
-(If the property *does* modify the object in a meaningful way, it should be a
-method.)
+O que separa todas essas frases verbais de nomes de métodos é que elas não são
+*imperativas*. Um nome booleano nunca deve soar como um comando para dizer ao
+objeto para fazer algo, porque acessar uma propriedade não muda o objeto.
+(Se a propriedade *modificar* o objeto de forma significativa, ela deve ser um
+método.)
 
 ```dart tag=good
 isEmpty
@@ -193,20 +193,20 @@ hasShownPopup
 ```
 
 ```dart tag=bad
-empty         // Adjective or verb?
-withElements  // Sounds like it might hold elements.
-closeable     // Sounds like an interface.
-              // "canClose" reads better as a sentence.
-closingWindow // Returns a bool or a window?
-showPopup     // Sounds like it shows the popup.
+empty         // Adjetivo ou verbo?
+withElements  // Soa como se pudesse conter elementos.
+closeable     // Soa como uma interface.
+              // "canClose" lê melhor como uma sentença.
+closingWindow // Retorna um bool ou uma janela?
+showPopup     // Soa como se mostra o popup.
 ```
 
 
-### CONSIDER omitting the verb for a named boolean *parameter*
+### CONSIDERE omitir o verbo para um *parâmetro* booleano nomeado {:#consider-omitting-the-verb-for-a-named-boolean-parameter}
 
-This refines the previous rule. For named parameters that are boolean, the name
-is often just as clear without the verb, and the code reads better at the call
-site.
+Isso refina a regra anterior. Para parâmetros nomeados que são booleanos, o nome
+é frequentemente tão claro sem o verbo, e o código lê melhor no
+local de chamada.
 
 <?code-excerpt "design_good.dart (omit-verb-for-bool-param)"?>
 ```dart tag=good
@@ -216,20 +216,20 @@ var regExp = RegExp(pattern, caseSensitive: false);
 ```
 
 
-### PREFER the "positive" name for a boolean property or variable
+### PREFIRA o nome "positivo" para uma propriedade ou variável booleana {:#prefer-the-positive-name-for-a-boolean-property-or-variable}
 
-Most boolean names have conceptually "positive" and "negative" forms where the
-former feels like the fundamental concept and the latter is its
-negation—"open" and "closed", "enabled" and "disabled", etc. Often the
-latter name literally has a prefix that negates the former: "visible" and
-"*in*-visible", "connected" and "*dis*-connected", "zero" and "*non*-zero".
+A maioria dos nomes booleanos tem formas conceitualmente "positivas" e "negativas" onde
+a primeira parece ser o conceito fundamental e a última é sua
+negação — "aberto" e "fechado", "habilitado" e "desabilitado", etc. Muitas vezes, a
+última nome literalmente tem um prefixo que nega a primeira: "visível" e
+"*in*-visível", "conectado" e "*des*-conectado", "zero" e "*não*-zero".
 
-When choosing which of the two cases that `true` represents—and thus
-which case the property is named for—prefer the positive or more
-fundamental one. Boolean members are often nested inside logical expressions,
-including negation operators. If your property itself reads like a negation,
-it's harder for the reader to mentally perform the double negation and
-understand what the code means.
+Ao escolher qual dos dois casos que `true` representa — e, portanto,
+para qual caso a propriedade é nomeada — prefira o positivo ou mais
+fundamental. Membros booleanos são frequentemente aninhados dentro de expressões lógicas,
+incluindo operadores de negação. Se sua própria propriedade é lida como uma negação,
+é mais difícil para o leitor realizar mentalmente a dupla negação e
+entender o que o código significa.
 
 <?code-excerpt "design_good.dart (positive)"?>
 ```dart tag=good
@@ -245,26 +245,26 @@ if (!socket.isDisconnected && !database.isEmpty) {
 }
 ```
 
-For some properties, there is no obvious positive form. Is a document that has
-been flushed to disk "saved" or "*un*-changed"? Is a document that *hasn't* been
-flushed "*un*-saved" or "changed"? In ambiguous cases, lean towards the choice
-that is less likely to be negated by users or has the shorter name.
+Para algumas propriedades, não há forma positiva óbvia. Um documento que foi
+descarregado para o disco é "salvo" ou "*não*-alterado"? Um documento que *não* foi
+descarregado é "*não*-salvo" ou "alterado"? Em casos ambíguos, incline-se para a escolha
+que tem menos probabilidade de ser negada pelos usuários ou que tem o nome mais curto.
 
-**Exception:** With some properties, the negative form is what users
-overwhelmingly need to use. Choosing the positive case would force them to
-negate the property with `!` everywhere. Instead, it may be better to use the
-negative case for that property.
+**Exceção:** Com algumas propriedades, a forma negativa é o que os usuários
+precisam usar esmagadoramente. Escolher o caso positivo os forçaria a
+negar a propriedade com `!` em todos os lugares. Em vez disso, pode ser melhor usar o
+caso negativo para essa propriedade.
 
 
-### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect
+### PREFIRA uma frase verbal imperativa para uma função ou método cujo principal objetivo seja um efeito colateral {:#prefer-an-imperative-verb-phrase-for-a-function-or-method-whose-main-purpose-is-a-side-effect}
 
-Callable members can return a result to the caller and perform other work or
-side effects. In an imperative language like Dart, members are often called
-mainly for their side effect: they may change an object's internal state,
-produce some output, or talk to the outside world.
+Membros invocáveis podem retornar um resultado para o chamador e executar outros trabalhos ou
+efeitos colaterais. Em uma linguagem imperativa como Dart, os membros são frequentemente chamados
+principalmente por seu efeito colateral: eles podem alterar o estado interno de um objeto,
+produzir alguma saída ou se comunicar com o mundo exterior.
 
-Those kinds of members should be named using an imperative verb phrase that
-clarifies the work the member performs.
+Esses tipos de membros devem ser nomeados usando uma frase verbal imperativa que
+esclarece o trabalho que o membro executa.
 
 <?code-excerpt "design_good.dart (verb-for-func-with-side-effect)"?>
 ```dart tag=good
@@ -273,20 +273,20 @@ queue.removeFirst();
 window.refresh();
 ```
 
-This way, an invocation reads like a command to do that work.
+Dessa forma, uma invocação é lida como um comando para fazer esse trabalho.
 
 
-### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose
+### PREFIRA uma frase substantiva ou frase verbal não imperativa para uma função ou método se retornar um valor for seu objetivo principal {:#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose}
 
-Other callable members have few side effects but return a useful result to the
-caller. If the member needs no parameters to do that, it should generally be a
-getter. But sometimes a logical "property" needs some parameters. For example,
-`elementAt()` returns a piece of data from a collection, but it needs a
-parameter to know *which* piece of data to return.
+Outros membros invocáveis têm poucos efeitos colaterais, mas retornam um resultado útil para o
+chamador. Se o membro não precisa de parâmetros para fazer isso, geralmente deve ser um
+getter (acessador). Mas às vezes uma "propriedade" lógica precisa de alguns parâmetros. Por exemplo,
+`elementAt()` retorna um pedaço de dados de uma coleção, mas precisa de um
+parâmetro para saber *qual* pedaço de dados retornar.
 
-This means the member is *syntactically* a method, but *conceptually* it is a
-property, and should be named as such using a phrase that describes *what* the
-member returns.
+Isso significa que o membro é *sintaticamente* um método, mas *conceitualmente* é uma
+propriedade, e deve ser nomeado como tal usando uma frase que descreva *o que* o
+membro retorna.
 
 <?code-excerpt "design_good.dart (noun-for-func-returning-value)"?>
 ```dart tag=good
@@ -295,20 +295,20 @@ var first = list.firstWhere(test);
 var char = string.codeUnitAt(4);
 ```
 
-This guideline is deliberately softer than the previous one. Sometimes a method
-has no side effects but is still simpler to name with a verb phrase like
-`list.take()` or `string.split()`.
+Esta diretriz é deliberadamente mais suave do que a anterior. Às vezes, um método
+não tem efeitos colaterais, mas ainda é mais simples de nomear com uma frase verbal como
+`list.take()` ou `string.split()`.
 
 
-### CONSIDER an imperative verb phrase for a function or method if you want to draw attention to the work it performs
+### CONSIDERE uma frase verbal imperativa para uma função ou método se você quiser chamar a atenção para o trabalho que ele realiza {:#consider-an-imperative-verb-phrase-for-a-function-or-method-if-you-want-to-draw-attention-to-the-work-it-performs}
 
-When a member produces a result without any side effects, it should usually be a
-getter or a method with a noun phrase name describing the result it returns.
-However, sometimes the work required to produce that result is important. It may
-be prone to runtime failures, or use heavyweight resources like networking or
-file I/O. In cases like this, where you want the caller to think about the work
-the member is doing, give the member a verb phrase name that describes that
-work.
+Quando um membro produz um resultado sem quaisquer efeitos colaterais, geralmente deve ser um
+getter (acessador) ou um método com um nome de frase substantiva descrevendo o resultado que ele retorna.
+No entanto, às vezes o trabalho necessário para produzir esse resultado é importante. Pode
+ser propenso a falhas de tempo de execução ou usar recursos pesados, como rede ou
+E/S de arquivo. Em casos como este, onde você quer que o chamador pense sobre o trabalho
+o membro está fazendo, dê ao membro um nome de frase verbal que descreva esse
+trabalho.
 
 <?code-excerpt "design_good.dart (verb-for-func-with-work)"?>
 ```dart tag=good
@@ -316,45 +316,45 @@ var table = database.downloadData();
 var packageVersions = packageGraph.solveConstraints();
 ```
 
-Note, though, that this guideline is softer than the previous two. The work an
-operation performs is often an implementation detail that isn't relevant to the
-caller, and performance and robustness boundaries change over time. Most of the
-time, name your members based on *what* they do for the caller, not *how* they
-do it.
+Observe, no entanto, que esta diretriz é mais suave do que as duas anteriores. O trabalho que uma
+operação realiza é muitas vezes um detalhe de implementação que não é relevante para o
+chamador, e os limites de desempenho e robustez mudam com o tempo. Na maioria das
+vezes, nomeie seus membros com base em *o que* eles fazem para o chamador, não em *como*
+eles fazem isso.
 
 
-### AVOID starting a method name with `get`
+### EVITE começar o nome de um método com `get` {:#avoid-starting-a-method-name-with-get}
 
-In most cases, the method should be a getter with `get` removed from the name.
-For example, instead of a method named `getBreakfastOrder()`, define a getter
-named `breakfastOrder`.
+Na maioria dos casos, o método deve ser um getter (acessador) com `get` removido do nome.
+Por exemplo, em vez de um método chamado `getBreakfastOrder()`, defina um getter (acessador)
+chamado `breakfastOrder`.
 
-Even if the member does need to be a method because it takes arguments or
-otherwise isn't a good fit for a getter, you should still avoid `get`. Like the
-previous guidelines state, either:
+Mesmo que o membro precise ser um método porque recebe argumentos ou
+de outra forma não é adequado para um getter (acessador), você ainda deve evitar `get`. Como
+as diretrizes anteriores afirmam, ou:
 
-* Simply drop `get` and [use a noun phrase name][noun] like `breakfastOrder()`
-  if the caller mostly cares about the value the method returns.
+* Simplesmente descarte `get` e [use um nome de frase substantiva][noun] como `breakfastOrder()`
+se o chamador se importar principalmente com o valor que o método retorna.
 
-* [Use a verb phrase name][verb] if the caller cares about the work being done,
-  but pick a verb that more precisely describes the work than `get`, like
-  `create`, `download`, `fetch`, `calculate`, `request`, `aggregate`, etc.
+* [Use um nome de frase verbal][verb] se o chamador se importar com o trabalho que está sendo feito,
+mas escolha um verbo que descreva o trabalho com mais precisão do que `get`, como
+`create`, `download`, `fetch`, `calculate`, `request`, `aggregate`, etc.
 
 [noun]: #prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
 
 [verb]: #consider-an-imperative-verb-phrase-for-a-function-or-method-if-you-want-to-draw-attention-to-the-work-it-performs
 
 
-### PREFER naming a method `to___()` if it copies the object's state to a new object
+### PREFIRA nomear um método `to___()` se ele copiar o estado do objeto para um novo objeto {:#prefer-naming-a-method-to___-if-it-copies-the-objects-state-to-a-new-object}
 
 {% render 'linter-rule-mention.md', rules:'use_to_and_as_if_applicable' %}
 
-A *conversion* method is one that returns a new object containing a copy of
-almost all of the state of the receiver but usually in some different form or
-representation. The core libraries have a convention that these methods are
-named starting with `to` followed by the kind of result.
+Um método de *conversão* é aquele que retorna um novo objeto contendo uma cópia de
+quase todo o estado do receptor, mas geralmente de alguma forma ou representação diferente.
+As bibliotecas principais têm uma convenção de que esses métodos são
+nomeados começando com `to`, seguido pelo tipo de resultado.
 
-If you define a conversion method, it's helpful to follow that convention.
+Se você definir um método de conversão, é útil seguir essa convenção.
 
 <?code-excerpt "design_good.dart (to-misc)"?>
 ```dart tag=good
@@ -363,16 +363,16 @@ stackTrace.toString();
 dateTime.toLocal();
 ```
 
-### PREFER naming a method `as___()` if it returns a different representation backed by the original object
+### PREFIRA nomear um método `as___()` se ele retornar uma representação diferente com suporte do objeto original {:#prefer-naming-a-method-as___-if-it-returns-a-different-representation-backed-by-the-original-object}
 
 {% render 'linter-rule-mention.md', rules:'use_to_and_as_if_applicable' %}
 
-Conversion methods are "snapshots". The resulting object has its own copy of the
-original object's state. There are other conversion-like methods that return
-*views*—they provide a new object, but that object refers back to the
-original. Later changes to the original object are reflected in the view.
+Métodos de conversão são "instantâneos". O objeto resultante tem sua própria cópia do
+estado do objeto original. Existem outros métodos semelhantes a conversão que retornam
+*visualizações* — eles fornecem um novo objeto, mas esse objeto se refere de volta ao
+original. Alterações posteriores no objeto original são refletidas na visualização.
 
-The core library convention for you to follow is `as___()`.
+A convenção da biblioteca principal para você seguir é `as___()`.
 
 <?code-excerpt "design_good.dart (as-misc)"?>
 ```dart tag=good
@@ -382,10 +382,10 @@ var future = subscription.asFuture();
 ```
 
 
-### AVOID describing the parameters in the function's or method's name
+### EVITE descrever os parâmetros no nome da função ou do método {:#avoid-describing-the-parameters-in-the-functions-or-methods-name}
 
-The user will see the argument at the call site, so it usually doesn't help
-readability to also refer to it in the name itself.
+O usuário verá o argumento no local da chamada, portanto, geralmente não ajuda a
+legibilidade também se referir a ele no próprio nome.
 
 <?code-excerpt "design_good.dart (avoid-desc-param-in-func)"?>
 ```dart tag=good
@@ -398,8 +398,8 @@ list.addElement(element)
 map.removeKey(key)
 ```
 
-However, it can be useful to mention a parameter to disambiguate it from other
-similarly-named methods that take different types:
+No entanto, pode ser útil mencionar um parâmetro para desambiguá-lo de outros
+métodos com nomes semelhantes que recebem tipos diferentes:
 
 <?code-excerpt "design_good.dart (desc-param-in-func-ok)"?>
 ```dart tag=good
@@ -408,13 +408,13 @@ map.containsValue(value);
 ```
 
 
-### DO follow existing mnemonic conventions when naming type parameters
+### SIGA as convenções mnemônicas existentes ao nomear parâmetros de tipo {:#do-follow-existing-mnemonic-conventions-when-naming-type-parameters}
 
-Single letter names aren't exactly illuminating, but almost all generic types
-use them. Fortunately, they mostly use them in a consistent, mnemonic way.
-The conventions are:
+Nomes de uma única letra não são exatamente esclarecedores, mas quase todos os tipos genéricos
+os usam. Felizmente, eles os usam principalmente de forma consistente e mnemônica.
+As convenções são:
 
-*   `E` for the **element** type in a collection:
+*   `E` para o tipo de **elemento** em uma coleção:
 
     <?code-excerpt "design_good.dart (type-parameter-e)" replace="/\n\n/\n/g"?>
     ```dart tag=good
@@ -424,8 +424,8 @@ The conventions are:
     class RedBlackTree<E> {}
     ```
 
-*   `K` and `V` for the **key** and **value** types in an associative
-    collection:
+*   `K` e `V` para os tipos de **chave** e **valor** em uma associação
+    coleção:
 
     <?code-excerpt "design_good.dart (type-parameter-k-v)" replace="/\n\n/\n/g"?>
     ```dart tag=good
@@ -434,9 +434,9 @@ The conventions are:
     class MapEntry<K, V> {}
     ```
 
-*   `R` for a type used as the **return** type of a function or a class's
-    methods. This isn't common, but appears in typedefs sometimes and in classes
-    that implement the visitor pattern:
+*   `R` para um tipo usado como o tipo de **retorno** de uma função ou um
+    métodos da classe. Isso não é comum, mas aparece às vezes em typedefs e em classes
+    que implementam o padrão visitor:
 
     <?code-excerpt "design_good.dart (type-parameter-r)"?>
     ```dart tag=good
@@ -447,10 +447,10 @@ The conventions are:
     }
     ```
 
-*   Otherwise, use `T`, `S`, and `U` for generics that have a single type
-    parameter and where the surrounding type makes its meaning obvious. There
-    are multiple letters here to allow nesting without shadowing a surrounding
-    name. For example:
+*   Caso contrário, use `T`, `S` e `U` para genéricos que têm um único tipo
+    parâmetro e onde o tipo circundante torna seu significado óbvio. Lá
+    são várias letras aqui para permitir o aninhamento sem sombrear um nome circundante.
+    Por exemplo:
 
     <?code-excerpt "design_good.dart (type-parameter-t)"?>
     ```dart tag=good
@@ -459,11 +459,11 @@ The conventions are:
     }
     ```
 
-    Here, the generic method `then<S>()` uses `S` to avoid shadowing the `T`
-    on `Future<T>`.
+    Aqui, o método genérico `then<S>()` usa `S` para evitar sombrear o `T`
+    em `Future<T>`.
 
-If none of the above cases are a good fit, then either another single-letter
-mnemonic name or a descriptive name is fine:
+Se nenhum dos casos acima for adequado, então outro nome mnemônico de uma única letra
+ou um nome descritivo está bom:
 
 <?code-excerpt "design_good.dart (type-parameter-graph)"?>
 ```dart tag=good
@@ -478,62 +478,62 @@ class Graph<Node, Edge> {
 }
 ```
 
-In practice, the existing conventions cover most type parameters.
+Na prática, as convenções existentes cobrem a maioria dos parâmetros de tipo.
 
-## Libraries
+## Bibliotecas {:#libraries}
 
-A leading underscore character ( `_` ) indicates that a member is private to its
-library. This is not mere convention, but is built into the language itself.
+Um caractere de sublinhado inicial ( `_` ) indica que um membro é privado para sua
+biblioteca. Esta não é uma mera convenção, mas está integrada na própria linguagem.
 
-### PREFER making declarations private
+### PREFIRA tornar as declarações privadas {:#prefer-making-declarations-private}
 
-A public declaration in a library—either top level or in a class—is
-a signal that other libraries can and should access that member. It is also a
-commitment on your library's part to support that and behave properly when it
-happens.
+Uma declaração pública em uma biblioteca — seja de nível superior ou em uma classe — é
+um sinal de que outras bibliotecas podem e devem acessar esse membro. É também um
+compromisso por parte de sua biblioteca de suportar isso e se comportar adequadamente quando
+isso acontece.
 
-If that's not what you intend, add the little `_` and be happy. Narrow public
-interfaces are easier for you to maintain and easier for users to learn. As a
-nice bonus, the analyzer will tell you about unused private declarations so you
-can delete dead code. It can't do that if the member is public because it
-doesn't know if any code outside of its view is using it.
-
-
-### CONSIDER declaring multiple classes in the same library
-
-Some languages, such as Java, tie the organization of files to the organization of
-classes—each file may only define a single top level class. Dart does not
-have that limitation. Libraries are distinct entities separate from classes.
-It's perfectly fine for a single library to contain multiple classes, top level
-variables, and functions if they all logically belong together.
-
-Placing multiple classes together in one library can enable some useful
-patterns. Since privacy in Dart works at the library level, not the class level,
-this is a way to define "friend" classes like you might in C++. Every class
-declared in the same library can access each other's private members, but code
-outside of that library cannot.
-
-Of course, this guideline doesn't mean you *should* put all of your classes into
-a huge monolithic library, just that you are allowed to place more than one
-class in a single library.
+Se não é isso que você pretende, adicione o pequeno `_` e seja feliz. Interfaces
+públicas restritas são mais fáceis para você manter e mais fáceis para os usuários aprenderem.
+Como um bônus agradável, o analisador informará sobre declarações privadas não utilizadas para que você
+possa excluir código morto. Ele não pode fazer isso se o membro for público porque
+não sabe se algum código fora de sua visualização está usando-o.
 
 
-## Classes and mixins
+### CONSIDERE declarar várias classes na mesma biblioteca {:#consider-declaring-multiple-classes-in-the-same-library}
 
-Dart is a "pure" object-oriented language in that all objects are instances of
-classes. But Dart does not require all code to be defined inside a
-class—you can define top-level variables, constants, and functions like
-you can in a procedural or functional language.
+Algumas linguagens, como Java, vinculam a organização de arquivos à organização de
+classes — cada arquivo pode definir apenas uma única classe de nível superior. Dart não
+tem essa limitação. Bibliotecas são entidades distintas separadas das classes.
+É perfeitamente bom que uma única biblioteca contenha várias classes, nível superior
+variáveis e funções se todas elas logicamente pertencem juntas.
 
-### AVOID defining a one-member abstract class when a simple function will do
+Colocar várias classes juntas em uma biblioteca pode ativar alguns padrões úteis.
+Como a privacidade em Dart funciona no nível da biblioteca, não no nível da classe,
+esta é uma maneira de definir classes "amigas" como você pode em C++. Cada classe
+declarada na mesma biblioteca pode acessar os membros privados um do outro, mas código
+fora dessa biblioteca não pode.
+
+Claro, esta diretriz não significa que você *deve* colocar todas as suas classes em
+uma enorme biblioteca monolítica, apenas que você tem permissão para colocar mais de uma
+classe em uma única biblioteca.
+
+
+## Classes e mixins {:#classes-and-mixins}
+
+Dart é uma linguagem orientada a objetos "pura" no sentido de que todos os objetos são instâncias de
+classes. Mas Dart não exige que todo o código seja definido dentro de uma
+classe — você pode definir variáveis, constantes e funções de nível superior como
+você pode em uma linguagem procedural ou funcional.
+
+### EVITE definir uma classe abstrata de um membro quando uma função simples for suficiente {:#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do}
 
 {% render 'linter-rule-mention.md', rules:'one_member_abstracts' %}
 
-Unlike Java, Dart has first-class functions, closures, and a nice light syntax
-for using them. If all you need is something like a callback, just use a
-function. If you're defining a class and it only has a single abstract member
-with a meaningless name like `call` or `invoke`, there is a good chance you
-just want a function.
+Ao contrário de Java, Dart tem funções de primeira classe, closures (fechamentos) e uma sintaxe leve e agradável
+para usá-los. Se tudo o que você precisa é algo como um callback (retorno de chamada), apenas use um
+função. Se você está definindo uma classe e ela tem apenas um único membro abstrato
+com um nome sem sentido como `call` ou `invoke`, há uma boa chance de que você
+apenas quer uma função.
 
 <?code-excerpt "design_good.dart (one-member-abstract-class)"?>
 ```dart tag=good
@@ -548,24 +548,24 @@ abstract class Predicate<E> {
 ```
 
 
-### AVOID defining a class that contains only static members
+### EVITE definir uma classe que contenha apenas membros estáticos {:#avoid-defining-a-class-that-contains-only-static-members}
 
 {% render 'linter-rule-mention.md', rules:'avoid_classes_with_only_static_members' %}
 
-In Java and C#, every definition *must* be inside a class, so it's common to see
-"classes" that exist only as a place to stuff static members. Other classes are
-used as namespaces—a way to give a shared prefix to a bunch of members to
-relate them to each other or avoid a name collision.
+Em Java e C#, toda definição *deve* estar dentro de uma classe, por isso é comum ver
+"classes" que existem apenas como um lugar para armazenar membros estáticos. Outras classes são
+usadas como namespaces — uma maneira de dar um prefixo compartilhado a um monte de membros para
+relacioná-los uns aos outros ou evitar uma colisão de nomes.
 
-Dart has top-level functions, variables, and constants, so you don't *need* a
-class just to define something. If what you want is a namespace, a library is a
-better fit. Libraries support import prefixes and show/hide combinators. Those
-are powerful tools that let the consumer of your code handle name collisions in
-the way that works best for *them*.
+Dart tem funções, variáveis e constantes de nível superior, então você não *precisa* de uma
+classe apenas para definir algo. Se o que você quer é um namespace, uma biblioteca é uma
+melhor opção. As bibliotecas suportam prefixos de importação e combinadores mostrar/ocultar. Esses
+são ferramentas poderosas que permitem que o consumidor de seu código lide com colisões de nomes em
+a maneira que funciona melhor para *eles*.
 
-If a function or variable isn't logically tied to a class, put it at the top
-level. If you're worried about name collisions, give it a more precise name or
-move it to a separate library that can be imported with a prefix.
+Se uma função ou variável não está logicamente ligada a uma classe, coloque-a na parte superior
+nível. Se você está preocupado com colisões de nomes, dê a ele um nome mais preciso ou
+mova-o para uma biblioteca separada que pode ser importada com um prefixo.
 
 <?code-excerpt "design_good.dart (class-only-static)"?>
 ```dart tag=good
@@ -589,11 +589,11 @@ class _Favorites {
 }
 ```
 
-In idiomatic Dart, classes define *kinds of objects*. A type that is never
-instantiated is a code smell.
+Em Dart idiomático, classes definem *tipos de objetos*. Um tipo que nunca é
+instanciado é um cheiro de código.
 
-However, this isn't a hard rule. For example, with constants and enum-like types,
-it may be natural to group them in a class.
+No entanto, esta não é uma regra rígida. Por exemplo, com constantes e tipos semelhantes a enum,
+pode ser natural agrupá-los em uma classe.
 
 <?code-excerpt "design_bad.dart (class-only-static-exception)"?>
 ```dart tag=good
@@ -607,19 +607,19 @@ class Color {
 ```
 
 
-### AVOID extending a class that isn't intended to be subclassed
+### EVITE estender uma classe que não se destina a ser subclassificada {:#avoid-extending-a-class-that-isnt-intended-to-be-subclassed}
 
-If a constructor is changed from a generative constructor to a factory
-constructor, any subclass constructor calling that constructor will break.
-Also, if a class changes which of its own methods it invokes on `this`, that
-may break subclasses that override those methods and expect them to be called
-at certain points.
+Se um construtor for alterado de um construtor gerador para um factory (fábrica)
+construtor, qualquer construtor de subclasse que chame esse construtor será interrompido.
+Além disso, se uma classe mudar quais de seus próprios métodos ela invoca em `this`, isso
+pode quebrar subclasses que substituem esses métodos e esperam que eles sejam chamados
+em certos pontos.
 
-Both of these mean that a class needs to be deliberate about whether or not it
-wants to allow subclassing. This can be communicated in a doc comment, or by
-giving the class an obvious name like `IterableBase`. If the author of the class
-doesn't do that, it's best to assume you should *not* extend the class.
-Otherwise, later changes to it may break your code.
+Ambos significam que uma classe precisa ser deliberada sobre se ela
+quer ou não permitir subclassificação. Isso pode ser comunicado em um comentário doc, ou por
+dando à classe um nome óbvio como `IterableBase`. Se o autor da classe
+não fizer isso, é melhor assumir que você *não* deve estender a classe.
+Caso contrário, alterações posteriores podem quebrar seu código.
 
 <a id="do-document-if-your-class-supports-being-extended" aria-hidden="true"></a>
 
@@ -631,29 +631,29 @@ For example, use `final class A {}` or `interface class B {}` to prevent
 extension outside the current library.
 Use these modifiers to communicate your intent, rather than relying on documentation.
 
-### AVOID implementing a class that isn't intended to be an interface
+### EVITE implementar uma classe que não se destina a ser uma interface {:#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface}
 
-Implicit interfaces are a powerful tool in Dart to avoid having to repeat the
-contract of a class when it can be trivially inferred from the signatures of an
-implementation of that contract.
+Interfaces implícitas são uma ferramenta poderosa em Dart para evitar ter que repetir o
+contrato de uma classe quando ele pode ser trivialmente inferido das assinaturas de um
+implementação desse contrato.
 
-But implementing a class's interface is a very tight coupling to that class. It
-means virtually *any* change to the class whose interface you are implementing
-will break your implementation. For example, adding a new member to a class is
-usually a safe, non-breaking change. But if you are implementing that class's
-interface, now your class has a static error because it lacks an implementation
-of that new method.
+Mas implementar a interface de uma classe é um acoplamento muito forte com essa classe. Isto
+significa que virtualmente *qualquer* mudança na classe cuja interface você está implementando
+irá quebrar sua implementação. Por exemplo, adicionar um novo membro a uma classe é
+geralmente uma mudança segura e não interruptiva. Mas se você está implementando a classe
+interface, agora sua classe tem um erro estático porque não possui uma implementação
+desse novo método.
 
-Library maintainers need the ability to evolve existing classes without breaking
-users. If you treat every class like it exposes an interface that users are free
-to implement, then changing those classes becomes very difficult. That
-difficulty in turn means the libraries you rely on are slower to grow and adapt
-to new needs.
+Mantenedores de biblioteca precisam da capacidade de evoluir classes existentes sem quebrar
+usuários. Se você trata cada classe como se ela expusesse uma interface que os usuários são livres
+para implementar, então mudar essas classes se torna muito difícil. Aquilo
+dificuldade, por sua vez, significa que as bibliotecas nas quais você confia são mais lentas para crescer e se adaptar
+às novas necessidades.
 
-To give the authors of the classes you use more leeway, avoid implementing
-implicit interfaces except for classes that are clearly intended to be
-implemented. Otherwise, you may introduce a coupling that the author doesn't
-intend, and they may break your code without realizing it.
+Para dar aos autores das classes que você usa mais liberdade, evite implementar
+interfaces implícitas, exceto para classes que são claramente destinadas a serem
+implementadas. Caso contrário, você pode introduzir um acoplamento que o autor não
+pretende, e eles podem quebrar seu código sem perceber.
 
 <a id="do-document-if-your-class-supports-being-used-as-an-interface" aria-hidden="true"></a>
 
@@ -673,158 +673,158 @@ unintended implementation issues.
 
 {% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
 
-Dart previously (language version [2.12](/resources/language/evolution#dart-2-12)
-to [2.19](/resources/language/evolution#dart-2-19)) allowed any class that
-met certain restrictions (no non-default constructor, no superclass, etc.)
-to be mixed into other classes.
-This was confusing because the author of the class
-might not have intended it to be mixed in.
+Dart anteriormente (versão da linguagem [2.12](/resources/language/evolution#dart-2-12)
+a [2.19](/resources/language/evolution#dart-2-19)) permitia qualquer classe que
+atendesse a certas restrições (sem construtor não padrão, sem superclasse, etc.)
+a serem misturadas em outras classes.
+Isso era confuso porque o autor da classe
+pode não ter pretendido que fosse misturado.
 
-Dart 3.0.0 now requires that any type intended to be mixed into other classes,
-as well as treated as a normal class, must be explicitly declared as such with
-the `mixin class` declaration.
+Dart 3.0.0 agora exige que qualquer tipo destinado a ser misturado em outras classes,
+bem como tratado como uma classe normal, deve ser explicitamente declarado como tal com
+a declaração `mixin class`.
 
-Types that need to be both a mixin and a class should be a rare case, however.
-The `mixin class` declaration is mostly meant to help migrate pre-3.0.0 classes
-being used as mixins to a more explicit declaration. New code should clearly
-define the behavior and intention of its declarations by using only pure `mixin`
-or pure `class` declarations, and avoid the ambiguity of mixin classes.
+Tipos que precisam ser um mixin e uma classe devem ser um caso raro, no entanto.
+A declaração `mixin class` destina-se principalmente a ajudar a migrar classes pre-3.0.0
+sendo usado como mixins para uma declaração mais explícita. Novo código deve claramente
+definir o comportamento e a intenção de suas declarações usando apenas `mixin` puro
+ou declarações `class` puras e evite a ambiguidade de classes mixin.
 
-Read [Migrating classes as mixins](/language/class-modifiers-for-apis#migrating-classes-as-mixins)
-for more guidance on `mixin` and `mixin class` declarations.
+Leia [Migrating classes as mixins](/language/class-modifiers-for-apis#migrating-classes-as-mixins)
+para mais orientação sobre as declarações `mixin` e `mixin class`.
 
-## Constructors
+## Construtores {:#constructors}
 
-Dart constructors are created by declaring a function with the same name as the
-class and, optionally, an additional identifier. The latter are called *named
-constructors*.
-
-
-### CONSIDER making your constructor `const` if the class supports it
-
-If you have a class where all the fields are final, and the constructor does
-nothing but initialize them, you can make that constructor `const`. That lets
-users create instances of your class in places where constants are
-required—inside other larger constants, switch cases, default parameter
-values, etc.
-
-If you don't explicitly make it `const`, they aren't able to do that.
-
-Note, however, that a `const` constructor is a commitment in your public API. If
-you later change the constructor to non-`const`, it will break users that are
-calling it in constant expressions. If you don't want to commit to that, don't
-make it `const`. In practice, `const` constructors are most useful for simple,
-immutable value-like types.
+Os construtores Dart são criados declarando uma função com o mesmo nome da
+classe e, opcionalmente, um identificador adicional. Os últimos são chamados de *construtores
+nomeados*.
 
 
-## Members
+### CONSIDERE tornar seu construtor `const` se a classe o suportar {:#consider-making-your-constructor-const-if-the-class-supports-it}
 
-A member belongs to an object and can be either methods or instance variables.
+Se você tem uma classe onde todos os campos são finais e o construtor não
+faz nada além de inicializá-los, você pode tornar esse construtor `const`. Isso permite
+que os usuários criem instâncias de sua classe em lugares onde as constantes são
+necessárias — dentro de outras constantes maiores, casos switch, valores de parâmetros
+padrão, etc.
 
-### PREFER making fields and top-level variables `final`
+Se você não o torna explicitamente `const`, eles não podem fazer isso.
+
+Observe, no entanto, que um construtor `const` é um compromisso em sua API pública. Se
+você alterar posteriormente o construtor para não-`const`, ele irá quebrar os usuários que
+o chamam em expressões constantes. Se você não quer se comprometer com isso, não
+o torne `const`. Na prática, construtores `const` são mais úteis para tipos simples,
+imutáveis ​​semelhantes a valores.
+
+
+## Membros {:#members}
+
+Um membro pertence a um objeto e pode ser métodos ou variáveis ​​de instância.
+
+### PREFIRA tornar os campos e as variáveis ​​de nível superior `final` {:#prefer-making-fields-and-top-level-variables-final}
 
 {% render 'linter-rule-mention.md', rules:'prefer_final_fields' %}
 
-State that is not *mutable*—that does not change over time—is
-easier for programmers to reason about. Classes and libraries that minimize the
-amount of mutable state they work with tend to be easier to maintain.
-Of course, it is often useful to have mutable data. But, if you don't need it,
-your default should be to make fields and top-level variables `final` when you
-can.
+O estado que não é *mutável* — que não muda com o tempo — é
+mais fácil para os programadores raciocinarem sobre. Classes e bibliotecas que minimizam a
+quantidade de estado mutável com o qual eles trabalham tendem a ser mais fáceis de manter.
+Claro, muitas vezes é útil ter dados mutáveis. Mas, se você não precisa,
+seu padrão deve ser tornar os campos e as variáveis de nível superior `final` quando você
+pode.
 
-Sometimes an instance field doesn't change after it has been initialized, but
-can't be initialized until after the instance is constructed. For example, it
-may need to reference `this` or some other field on the instance. In cases like
-that, consider making the field `late final`. When you do, you may also be able
-to [initialize the field at its declaration][init at decl].
+Às vezes, um campo de instância não muda depois de ser inicializado, mas
+não pode ser inicializado até depois que a instância é construída. Por exemplo,
+pode ser necessário referenciar `this` ou algum outro campo na instância. Em casos
+como esse, considere tornar o campo `late final` (tardio final). Quando você
+faz isso, também pode ser capaz de [inicializar o campo em sua declaração][init at decl].
 
 [init at decl]: /effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible
 
-### DO use getters for operations that conceptually access properties
+### FAÇA usar getters para operações que conceitualmente acessam propriedades {:#do-use-getters-for-operations-that-conceptually-access-properties}
 
-Deciding when a member should be a getter versus a method is a subtle but
-important part of good API design, hence this very long guideline.
-Some other language's cultures shy away from getters. They only use them when
-the operation is almost exactly like a field—it does a minuscule amount of
-calculation on state that lives entirely on the object. Anything more complex or
-heavyweight than that gets `()` after the name to signal "computation goin' on
-here!" because a bare name after a `.` means "field".
+Decidir quando um membro deve ser um getter (acessador) versus um método é uma
+parte sutil, porém importante, de um bom design de API, portanto, esta diretriz
+muito longa. A cultura de algumas outras linguagens evita os getters. Eles só os
+usam quando a operação é quase exatamente como um campo — faz uma pequena
+quantidade de cálculo no estado que reside inteiramente no objeto. Qualquer
+coisa mais complexa ou pesada do que isso recebe `()` após o nome para sinalizar
+"cálculo acontecendo aqui!" porque um nome sem nada depois de um `.` significa "campo".
 
-Dart is *not* like that. In Dart, *all* dotted names are member invocations that
-may do computation. Fields are special—they're getters whose
-implementation is provided by the language. In other words, getters are not
-"particularly slow fields" in Dart; fields are "particularly fast getters".
+Dart *não* é assim. Em Dart, *todos* os nomes com ponto são invocações de membros
+que podem fazer cálculos. Campos são especiais — são getters cuja implementação é
+fornecida pela linguagem. Em outras palavras, getters não são "campos
+particularmente lentos" em Dart; campos são "getters particularmente rápidos".
 
-Even so, choosing a getter over a method sends an important signal to the
-caller. The signal, roughly, is that the operation is "field-like". The
-operation, at least in principle, *could* be implemented using a field, as far
-as the caller knows. That implies:
+Mesmo assim, escolher um getter em vez de um método envia um sinal importante
+para o chamador. O sinal, em resumo, é que a operação é "como um campo". A
+operação, pelo menos em princípio, *poderia* ser implementada usando um campo,
+tanto quanto o chamador sabe. Isso implica:
 
-*   **The operation does not take any arguments and returns a result.**
+*   **A operação não recebe nenhum argumento e retorna um resultado.**
 
-*   **The caller cares mostly about the result.** If you want the caller to
-    worry about *how* the operation produces its result more than they do the
-    result being produced, then give the operation a verb name that describes
-    the work and make it a method.
+*   **O chamador se importa principalmente com o resultado.** Se você quer que o
+    chamador se preocupe com *como* a operação produz seu resultado mais do que
+    com o resultado sendo produzido, então dê à operação um nome de verbo que
+    descreva o trabalho e faça dela um método.
 
-    This does *not* mean the operation has to be particularly fast in order to
-    be a getter. `IterableBase.length` is `O(n)`, and that's OK. It's fine for a
-    getter to do significant calculation. But if it does a *surprising* amount
-    of work, you may want to draw their attention to that by making it a method
-    whose name is a verb describing what it does.
-
-    ```dart tag=bad
-    connection.nextIncomingMessage; // Does network I/O.
-    expression.normalForm; // Could be exponential to calculate.
-    ```
-
-*   **The operation does not have user-visible side effects.** Accessing a real
-    field does not alter the object or any other state in the program. It
-    doesn't produce output, write files, etc. A getter shouldn't do those things
-    either.
-
-    The "user-visible" part is important. It's fine for getters to modify hidden
-    state or produce out of band side effects. Getters can lazily calculate and
-    store their result, write to a cache, log stuff, etc. As long as the caller
-    doesn't *care* about the side effect, it's probably fine.
+    Isso *não* significa que a operação tenha que ser particularmente rápida
+    para ser um getter. `IterableBase.length` é `O(n)`, e isso está OK. Não há
+    problema que um getter faça um cálculo significativo. Mas se ele fizer uma
+    quantidade *surpreendente* de trabalho, você pode querer chamar a atenção
+    para isso, transformando-o em um método cujo nome seja um verbo que descreva o que ele faz.
 
     ```dart tag=bad
-    stdout.newline; // Produces output.
-    list.clear; // Modifies object.
+    connection.nextIncomingMessage; // Faz E/S de rede.
+    expression.normalForm; // Pode ser exponencial para calcular.
     ```
 
-*   **The operation is *idempotent*.** "Idempotent" is an odd word that, in this
-    context, basically means that calling the operation multiple times produces
-    the same result each time, unless some state is explicitly modified between
-    those calls. (Obviously, `list.length` produces different results if you add
-    an element to the list between calls.)
+*   **A operação não tem efeitos colaterais visíveis para o usuário.** Acessar
+    um campo real não altera o objeto nem qualquer outro estado no programa. Ele
+    não produz saída, não grava arquivos, etc. Um getter também não deve fazer
+    essas coisas.
 
-    "Same result" here does not mean a getter must literally produce an
-    identical object on successive calls. Requiring that would force many
-    getters to have brittle caching, which negates the whole point of using a
-    getter. It's common, and perfectly fine, for a getter to return a new future
-    or list each time you call it. The important part is that the future
-    completes to the same value, and the list contains the same elements.
-
-    In other words, the result value should be the same *in the aspects that the
-    caller cares about.*
+    A parte "visível para o usuário" é importante. Não há problema em getters
+    modificarem o estado oculto ou produzirem efeitos colaterais fora da banda.
+    Getters podem calcular e armazenar seu resultado preguiçosamente (lazy),
+    escrever em um cache, registrar coisas, etc. Contanto que o chamador não se *importe* com o efeito colateral, provavelmente está tudo bem.
 
     ```dart tag=bad
-    DateTime.now; // New result each time.
+    stdout.newline; // Produz saída.
+    list.clear; // Modifica o objeto.
     ```
 
-*   **The resulting object doesn't expose all of the original object's state.**
-    A field exposes only a piece of an object. If your operation returns a
-    result that exposes the original object's entire state, it's likely better
-    off as a [`to___()`][to] or [`as___()`][as] method.
+*   **A operação é *idempotente*.** "Idempotente" é uma palavra estranha que,
+    neste contexto, basicamente significa que chamar a operação várias vezes
+    produz o mesmo resultado a cada vez, a menos que algum estado seja
+    explicitamente modificado entre essas chamadas. (Obviamente,
+    `list.length` produz resultados diferentes se você adicionar um elemento à lista entre as chamadas.)
+
+    "Mesmo resultado" aqui não significa que um getter deve literalmente
+    produzir um objeto idêntico em chamadas sucessivas. Exigir isso forçaria
+    muitos getters a terem caching frágil, o que anula todo o propósito de usar
+    um getter. É comum, e perfeitamente aceitável, que um getter retorne um novo
+    future ou lista cada vez que você o chama. A parte importante é que o
+    future seja concluído com o mesmo valor e que a lista contenha os mesmos elementos.
+
+    Em outras palavras, o valor do resultado deve ser o mesmo *nos aspectos
+    com os quais o chamador se importa*.
+
+    ```dart tag=bad
+    DateTime.now; // Novo resultado a cada vez.
+    ```
+
+*   **O objeto resultante não expõe todo o estado do objeto original.** Um campo
+    expõe apenas uma parte de um objeto. Se sua operação retornar um resultado
+    que expõe todo o estado do objeto original, é provável que seja melhor como
+    um método [`to___()`][to] ou [`as___()`][as].
 
 [to]: #prefer-naming-a-method-to___-if-it-copies-the-objects-state-to-a-new-object
 [as]: #prefer-naming-a-method-as___-if-it-returns-a-different-representation-backed-by-the-original-object
 
-If all of the above describe your operation, it should be a getter. It seems
-like few members would survive that gauntlet, but surprisingly many do. Many
-operations just do some computation on some state and most of those can and
-should be getters.
+Se tudo acima descreve sua operação, deve ser um getter. Parece que poucos
+membros sobreviveriam a esse desafio, mas surpreendentemente muitos sobrevivem.
+Muitas operações apenas fazem algum cálculo em algum estado e a maioria delas
+pode e deve ser getters.
 
 ```dart tag=good
 rectangle.area;
@@ -834,25 +834,25 @@ dataSet.minimumValue;
 ```
 
 
-### DO use setters for operations that conceptually change properties
+### USE setters para operações que conceitualmente alteram propriedades {:#do-use-setters-for-operations-that-conceptually-change-properties}
 
 {% render 'linter-rule-mention.md', rules:'use_setters_to_change_properties' %}
 
-Deciding between a setter versus a method is similar to deciding between a
-getter versus a method. In both cases, the operation should be "field-like".
+Decidir entre um setter (modificador) versus um método é semelhante a decidir
+entre um getter versus um método. Em ambos os casos, a operação deve ser "como um campo".
 
-For a setter, "field-like" means:
+Para um setter, "como um campo" significa:
 
-*   **The operation takes a single argument and does not produce a result
-    value.**
+*   **A operação recebe um único argumento e não produz um valor de
+    resultado.**
 
-*   **The operation changes some state in the object.**
+*   **A operação altera algum estado no objeto.**
 
-*   **The operation is idempotent.** Calling the same setter twice with the same
-    value should do nothing the second time as far as the caller is concerned.
-    Internally, maybe you've got some cache invalidation or logging going on.
-    That's fine. But from the caller's perspective, it appears that the second
-    call does nothing.
+*   **A operação é idempotente.** Chamar o mesmo setter duas vezes com o mesmo
+    valor não deve fazer nada na segunda vez no que diz respeito ao chamador.
+    Internamente, talvez você tenha alguma invalidação de cache ou registro
+    acontecendo. Tudo bem. Mas, da perspectiva do chamador, parece que a segunda
+    chamada não faz nada.
 
 ```dart tag=good
 rectangle.width = 3;
@@ -860,89 +860,89 @@ button.visible = false;
 ```
 
 
-### DON'T define a setter without a corresponding getter
+### NÃO defina um setter sem um getter correspondente {:#dont-define-a-setter-without-a-corresponding-getter}
 
 {% render 'linter-rule-mention.md', rules:'avoid_setters_without_getters' %}
 
-Users think of getters and setters as visible properties of an object. A
-"dropbox" property that can be written to but not seen is confusing and
-confounds their intuition about how properties work. For example, a setter
-without a getter means you can use `=` to modify it, but not `+=`.
+Os usuários pensam em getters e setters como propriedades visíveis de um
+objeto. Uma propriedade "dropbox" que pode ser escrita, mas não vista, é
+confusa e confunde sua intuição sobre como as propriedades funcionam. Por
+exemplo, um setter sem um getter significa que você pode usar `=` para modificá-lo, mas não `+=`.
 
-This guideline does *not* mean you should add a getter just to permit the setter
-you want to add. Objects shouldn't generally expose more state than they need
-to. If you have some piece of an object's state that can be modified but not
-exposed in the same way, use a method instead.
-
-
-### AVOID using runtime type tests to fake overloading
-
-It's common for an API to support similar operations
-on different types of parameters.
-To emphasize the similarity, some languages support *overloading*,
-which lets you define multiple methods
-that have the same name but different parameter lists.
-At compile time, the compiler looks at the actual argument types to determine
-which method to call.
-
-Dart doesn't have overloading.
-You can define an API that looks like overloading
-by defining a single method and then using `is` type tests
-inside the body to look at the runtime types of the arguments and perform the
-appropriate behavior.
-However, faking overloading this way turns a *compile time* method selection
-into a choice that happens at *runtime*.
-
-If callers usually know which type they have
-and which specific operation they want,
-it's better to define separate methods with different names
-to let callers select the right operation.
-This gives better static type checking and faster performance
-since it avoids any runtime type tests.
-
-However, if users might have an object of an unknown type
-and *want* the API to internally use `is` to pick the right operation,
-then a single method where the parameter is a supertype
-of all of the supported types might be reasonable.
+Esta diretriz *não* significa que você deve adicionar um getter apenas para
+permitir o setter que deseja adicionar. Os objetos geralmente não devem expor
+mais estado do que o necessário. Se você tem alguma parte do estado de um
+objeto que pode ser modificada, mas não exposta da mesma forma, use um método em vez disso.
 
 
-### AVOID public `late final` fields without initializers
+### EVITE usar testes de tipo em tempo de execução para simular sobrecarga {:#avoid-using-runtime-type-tests-to-fake-overloading}
 
-Unlike other `final` fields, a `late final` field without an initializer *does*
-define a setter. If that field is public, then the setter is public. This is
-rarely what you want. Fields are usually marked `late` so that they can be
-initialized *internally* at some point in the instance's lifetime, often inside
-the constructor body.
+É comum que uma API suporte operações semelhantes em diferentes tipos de
+parâmetros. Para enfatizar a semelhança, algumas linguagens oferecem suporte à
+*sobrecarga*, que permite definir vários métodos
+que têm o mesmo nome, mas listas
+de parâmetros diferentes. Em tempo de compilação,
+o compilador analisa os tipos
+de argumento reais para determinar qual método chamar.
 
-Unless you *do* want users to call the setter, it's better to pick one of the
-following solutions:
+Dart não tem sobrecarga. Você pode definir uma API que se parece com sobrecarga
+definindo um único método e, em seguida, usando testes de tipo `is` dentro do
+corpo para analisar os tipos em tempo de execução dos argumentos e realizar o
+comportamento apropriado. No entanto,
+simular sobrecarga dessa forma transforma
+uma seleção de método em *tempo de compilação* em uma escolha que acontece em
+*tempo de execução*.
 
-* Don't use `late`.
-* Use a factory constructor to compute the `final` field values.
-* Use `late`, but initialize the `late` field at its declaration.
-* Use `late`, but make the `late` field private and define a public getter for it.
+Se os chamadores geralmente sabem qual tipo eles têm e qual operação
+específica desejam, é melhor definir métodos separados com nomes diferentes para
+permitir que os chamadores selecionem a operação correta.
+Isso oferece melhor
+verificação estática de tipos e desempenho mais rápido, pois evita quaisquer
+testes de tipo em tempo de execução.
 
-
-### AVOID returning nullable `Future`, `Stream`, and collection types
-
-When an API returns a container type, it has two ways to indicate the absence of
-data: It can return an empty container or it can return `null`. Users generally
-assume and prefer that you use an empty container to indicate "no data". That
-way, they have a real object that they can call methods on like `isEmpty`.
-
-To indicate that your API has no data to provide, prefer returning an empty
-collection, a non-nullable future of a nullable type, or a stream that doesn't
-emit any values.
-
-**Exception:** If returning `null` *means something different* from yielding an
-empty container, it might make sense to use a nullable type.
+No entanto, se os usuários podem ter um objeto de um tipo desconhecido e *querem*
+que a API use internamente `is` para escolher a operação correta, então um único
+método onde o parâmetro é um supertipo de todos os tipos suportados pode ser
+razoável.
 
 
-### AVOID returning `this` from methods just to enable a fluent interface
+### EVITE campos públicos `late final` sem inicializadores {:#avoid-public-late-final-fields-without-initializers}
+
+Ao contrário de outros campos `final`, um campo `late final` sem um
+inicializador *define* um setter. Se esse campo for público, o setter é
+público. Isso raramente é o que você quer. Os campos são geralmente marcados
+como `late` para que possam ser inicializados *internamente* em algum momento da
+vida útil da instância, geralmente dentro do corpo do construtor.
+
+A menos que você *queira* que os usuários chamem o setter, é melhor escolher uma
+das seguintes soluções:
+
+*   Não use `late`.
+*   Use um construtor de fábrica para calcular os valores do campo `final`.
+*   Use `late`, mas inicialize o campo `late` em sua declaração.
+*   Use `late`, mas torne o campo `late` privado e defina um getter público para ele.
+
+
+### EVITE retornar `Future` (Futuro), `Stream` (Fluxo) e tipos de coleção anuláveis {:#avoid-returning-nullable-future-stream-and-collection-types}
+
+Quando uma API retorna um tipo de container, ela tem duas maneiras de indicar a
+ausência de dados: pode retornar um container vazio ou pode retornar `null`.
+Os usuários geralmente presumem e preferem que você use um container vazio para
+indicar "sem dados". Dessa forma, eles têm um objeto real no qual podem chamar métodos como `isEmpty`.
+
+Para indicar que sua API não tem dados para fornecer, prefira retornar uma
+coleção vazia, um futuro não anulável de um tipo anulável ou um fluxo que não
+emita nenhum valor.
+
+**Exceção:** Se retornar `null` *significa algo diferente* de produzir um
+container vazio, pode fazer sentido usar um tipo anulável.
+
+
+### EVITE retornar `this` de métodos apenas para habilitar uma interface fluente {:#avoid-returning-this-from-methods-just-to-enable-a-fluent-interface}
 
 {% render 'linter-rule-mention.md', rules:'avoid_returning_this' %}
 
-Method cascades are a better solution for chaining method calls.
+Cascades de método são uma solução melhor para encadear chamadas de método.
 
 <?code-excerpt "design_good.dart (cascades)"?>
 ```dart tag=good
@@ -963,17 +963,17 @@ var buffer =
 ```
 
 
-## Types
+## Tipos {:#types}
 
-When you write down a type in your program, you constrain the kinds of values
-that flow into different parts of your code. Types can appear in two kinds of
-places: *type annotations* on declarations and type arguments to *generic
-invocations*.
+Quando você escreve um tipo em seu programa, você restringe os tipos de valores
+que fluem para diferentes partes do seu código. Os tipos podem aparecer em dois
+tipos de lugares: *anotações de tipo* em declarações e argumentos de tipo para
+*invocações genéricas*.
 
-Type annotations are what you normally think of when you think of "static
-types". You can type annotate a variable, parameter, field, or return type. In
-the following example, `bool` and `String` are type annotations. They hang off
-the static declarative structure of the code and aren't "executed" at runtime.
+Anotações de tipo são o que você normalmente pensa quando pensa em "tipos
+estáticos". Você pode anotar o tipo de uma variável, parâmetro, campo ou tipo de
+retorno. No exemplo a seguir, `bool` e `String` são anotações de tipo. Elas se
+ligam à estrutura declarativa estática do código e não são "executadas" em tempo de execução.
 
 <?code-excerpt "design_good.dart (annotate-declaration)"?>
 ```dart
@@ -983,11 +983,11 @@ bool isEmpty(String parameter) {
 }
 ```
 
-A generic invocation is a collection literal, a call to a generic class's
-constructor, or an invocation of a generic method. In the next example, `num`
-and `int` are type arguments on generic invocations. Even though they are types,
-they are first-class entities that get reified and passed to the invocation at
-runtime.
+Uma invocação genérica é um literal de coleção, uma chamada para o construtor
+de uma classe genérica ou uma invocação de um método genérico. No próximo
+exemplo, `num` e `int` são argumentos de tipo em invocações genéricas. Mesmo que
+sejam tipos, são entidades de primeira classe que são concretizadas e passadas
+para a invocação em tempo de execução.
 
 <?code-excerpt "design_good.dart (annotate-invocation)"?>
 ```dart
@@ -996,81 +996,81 @@ lists.addAll(List<num>.filled(3, 4));
 lists.cast<int>();
 ```
 
-We stress the "generic invocation" part here, because type arguments can *also*
-appear in type annotations:
+Enfatizamos a parte "invocação genérica" aqui, porque argumentos de tipo
+*também* podem aparecer em anotações de tipo:
 
 <?code-excerpt "design_good.dart (annotate-type-arg)"?>
 ```dart
 List<int> ints = [1, 2];
 ```
 
-Here, `int` is a type argument, but it appears inside a type annotation, not a
-generic invocation. You usually don't need to worry about this distinction, but
-in a couple of places, we have different guidance for when a type is used in a
-generic invocation as opposed to a type annotation.
+Aqui, `int` é um argumento de tipo, mas aparece dentro de uma anotação de
+tipo, não de uma invocação genérica. Normalmente, você não precisa se preocupar
+com essa distinção, mas em alguns lugares, temos orientações diferentes para
+quando um tipo é usado em uma invocação genérica em oposição a uma anotação de tipo.
 
-#### Type inference
+#### Inferência de tipo {:#type-inference}
 
-Type annotations are optional in Dart.
-If you omit one, Dart tries to infer a type
-based on the nearby context. Sometimes it doesn't have enough information to
-infer a complete type. When that happens, Dart sometimes reports an error, but
-usually silently fills in any missing parts with `dynamic`. The implicit
-`dynamic` leads to code that *looks* inferred and safe, but actually disables
-type checking completely. The rules below avoid that by requiring types when
-inference fails.
+Anotações de tipo são opcionais em Dart. Se você omitir uma, o Dart tentará
+inferir um tipo com base no contexto próximo. Às vezes, ele não tem
+informações suficientes para inferir um tipo completo. Quando isso acontece, o
+Dart às vezes relata um erro, mas geralmente preenche silenciosamente todas as
+partes ausentes com `dynamic`. O `dynamic` implícito leva a um código que
+*parece* inferido e seguro, mas na verdade desativa a verificação de tipo
+completamente. As regras abaixo evitam isso exigindo tipos quando a inferência
+falha.
 
-The fact that Dart has both type inference and a `dynamic` type leads to some
-confusion about what it means to say code is "untyped". Does that mean the code
-is dynamically typed, or that you didn't *write* the type? To avoid that
-confusion, we avoid saying "untyped" and instead use the following terminology:
+O fato de que Dart tem inferência de tipo e um tipo `dynamic` leva a alguma
+confusão sobre o que significa dizer que o código é "sem tipo". Isso significa
+que o código é digitado dinamicamente ou que você não *escreveu* o tipo? Para
+evitar essa confusão, evitamos dizer "sem tipo" e, em vez disso, usamos a seguinte terminologia:
 
-*   If the code is *type annotated*, the type was explicitly written in the
-    code.
+*   Se o código for *anotado com tipo*, o tipo foi explicitamente escrito no
+    código.
 
-*   If the code is *inferred*, no type annotation was written, and Dart
-    successfully figured out the type on its own. Inference can fail, in which
-    case the guidelines don't consider that inferred.
+*   Se o código for *inferido*, nenhuma anotação de tipo foi escrita e o Dart
+    descobriu com sucesso o tipo por conta própria. A inferência pode falhar,
+    caso em que as diretrizes não consideram isso inferido.
 
-*   If the code is *dynamic*, then its static type is the special `dynamic`
-    type. Code can be explicitly annotated `dynamic` or it can be inferred.
+*   Se o código for *dinâmico*, seu tipo estático é o tipo especial `dynamic`.
+    O código pode ser explicitamente anotado como `dynamic` ou pode ser inferido.
 
-In other words, whether some code is annotated or inferred is orthogonal to
-whether it is `dynamic` or some other type.
+Em outras palavras, se algum código é anotado ou inferido é ortogonal a se ele
+é `dynamic` ou algum outro tipo.
 
-Inference is a powerful tool to spare you the effort of writing and reading
-types that are obvious or uninteresting. It keeps the reader's attention focused
-on the behavior of the code itself. Explicit types are also a key part of
-robust, maintainable code. They define the static shape of an API and create
-boundaries to document and enforce what kinds of values are allowed to reach
-different parts of the program.
+A inferência é uma ferramenta poderosa para poupar o esforço de escrever e ler
+tipos que são óbvios ou desinteressantes. Ela mantém a atenção do leitor focada
+no comportamento do próprio código. Tipos explícitos também são uma parte
+fundamental de um código robusto e sustentável. Eles definem a forma estática de
+uma API e criam limites para documentar e aplicar quais tipos de valores podem
+atingir diferentes partes do programa.
 
-Of course, inference isn't magic. Sometimes inference succeeds and selects a
-type, but it's not the type you want. The common case is inferring an overly
-precise type from a variable's initializer when you intend to assign values of
-other types to the variable later. In those cases, you have to write the type
-explicitly.
+Claro, a inferência não é mágica. Às vezes, a inferência é bem-sucedida e
+seleciona um tipo, mas não é o tipo que você deseja. O caso comum é inferir um
+tipo excessivamente preciso do inicializador de uma variável quando você pretende
+atribuir valores de outros tipos à variável mais tarde. Nesses casos, você deve
+escrever o tipo explicitamente.
 
-The guidelines here strike the best balance we've found between brevity and
-control, flexibility and safety. There are specific guidelines to cover all the
-various cases, but the rough summary is:
+As diretrizes aqui atingem o melhor equilíbrio que encontramos entre brevidade e
+controle, flexibilidade e segurança. Existem diretrizes específicas para cobrir
+todos os vários casos, mas o resumo geral é:
 
-*   Do annotate when inference doesn't have enough context, even when `dynamic`
-    is the type you want.
+*   Anote quando a inferência não tiver contexto suficiente, mesmo quando
+    `dynamic` for o tipo que você deseja.
 
-*   Don't annotate locals and generic invocations unless you need to.
+*   Não anote locais e invocações genéricas, a menos que seja necessário.
 
-*   Prefer annotating top-level variables and fields unless the initializer
-    makes the type obvious.
+*   Prefira anotar variáveis e campos de nível superior, a menos que o
+    inicializador deixe o tipo óbvio.
 
 
-### DO type annotate variables without initializers
+### USE anotação de tipo em variáveis sem inicializadores {:#do-type-annotate-variables-without-initializers}
 
 {% render 'linter-rule-mention.md', rules:'prefer_typing_uninitialized_variables' %}
 
-The type of a variable—top-level, local, static field, or instance
-field—can often be inferred from its initializer. However, if there is no
-initializer, inference fails.
+O tipo de uma variável — de nível superior, local, campo estático ou campo de
+instância — pode geralmente ser inferido de seu inicializador. No entanto, se
+não houver inicializador, a inferência falha.
 
 <?code-excerpt "design_good.dart (uninitialized-local)"?>
 ```dart tag=good
@@ -1093,65 +1093,65 @@ if (node is Constructor) {
 ```
 
 
-### DO type annotate fields and top-level variables if the type isn't obvious
+### USE anotação de tipo em campos e variáveis de nível superior se o tipo não for óbvio {:#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious}
 
 {% render 'linter-rule-mention.md', rules:'type_annotate_public_apis' %}
 
-Type annotations are important documentation for how a library should be used.
-They form boundaries between regions of a program to isolate the source of a
-type error. Consider:
+Anotações de tipo são documentação importante de como uma biblioteca deve ser
+usada. Elas formam limites entre regiões de um programa para isolar a origem de
+um erro de tipo. Considere:
 
 <?code-excerpt "design_bad.dart (type_annotate_public_apis)"?>
 ```dart tag=bad
 install(id, destination) => ...
 ```
 
-Here, it's unclear what `id` is. A string? And what is `destination`? A string
-or a `File` object? Is this method synchronous or asynchronous? This is clearer:
+Aqui, não está claro o que é `id`. Uma string? E o que é `destination`? Uma
+string ou um objeto `File`? Este método é síncrono ou assíncrono? Isto é mais claro:
 
 <?code-excerpt "design_good.dart (type_annotate_public_apis)"?>
 ```dart tag=good
 Future<bool> install(PackageId id, String destination) => ...
 ```
 
-In some cases, though, the type is so obvious that writing it is pointless:
+Em alguns casos, porém, o tipo é tão óbvio que escrevê-lo é inútil:
 
 <?code-excerpt "design_good.dart (inferred)"?>
 ```dart tag=good
 const screenWidth = 640; // Inferred as int.
 ```
 
-"Obvious" isn't precisely defined, but these are all good candidates:
+"Óbvio" não é definido precisamente, mas todos esses são bons candidatos:
 
-* Literals.
-* Constructor invocations.
-* References to other constants that are explicitly typed.
-* Simple expressions on numbers and strings.
-* Factory methods like `int.parse()`, `Future.wait()`, etc. that readers are
-  expected to be familiar with.
+*   Literais.
+*   Invocações de construtor.
+*   Referências a outras constantes que são explicitamente tipadas.
+*   Expressões simples em números e strings.
+*   Métodos de fábrica como `int.parse()`, `Future.wait()`, etc., com os quais
+    se espera que os leitores estejam familiarizados.
 
-If you think the initializer expression—whatever it is—is
-sufficiently clear, then you may omit the annotation. But if you think
-annotating helps make the code clearer, then add one.
+Se você acha que a expressão inicializadora — seja ela qual for — é
+suficientemente clara, você pode omitir a anotação. Mas se você acha que anotar
+ajuda a tornar o código mais claro, adicione uma.
 
-When in doubt, add a type annotation. Even when a type is obvious, you may still
-wish to explicitly annotate. If the inferred type relies on values or
-declarations from other libraries, you may want to type annotate *your*
-declaration so that a change to that other library doesn't silently change the
-type of your own API without you realizing.
+Em caso de dúvida, adicione uma anotação de tipo. Mesmo quando um tipo é óbvio,
+você ainda pode querer anotar explicitamente. Se o tipo inferido depende de
+valores ou declarações de outras bibliotecas, você pode querer anotar o tipo de
+*sua* declaração para que uma alteração nessa outra biblioteca não altere
+silenciosamente o tipo de sua própria API sem que você perceba.
 
-This rule applies to both public and private declarations. Just as type
-annotations on APIs help *users* of your code, types on private members help
-*maintainers*.
+Esta regra se aplica a declarações públicas e privadas. Assim como as
+anotações de tipo em APIs ajudam os *usuários* do seu código, os tipos em
+membros privados ajudam os *mantenedores*.
 
 
-### DON'T redundantly type annotate initialized local variables
+### NÃO anote tipos de variáveis locais inicializadas de forma redundante {:#dont-redundantly-type-annotate-initialized-local-variables}
 
 {% render 'linter-rule-mention.md', rules:'omit_local_variable_types' %}
 
-Local variables, especially in modern code where functions tend to be small,
-have very little scope. Omitting the type focuses the reader's attention on the
-more important *name* of the variable and its initialized value.
+Variáveis locais, especialmente no código moderno, onde as funções tendem a ser
+pequenas, têm muito pouco escopo. Omitir o tipo concentra a atenção do leitor no
+*nome* mais importante da variável e em seu valor inicializado.
 
 <?code-excerpt "design_good.dart (omit-types-on-locals)"?>
 ```dart tag=good
@@ -1181,9 +1181,9 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 }
 ```
 
-Sometimes the inferred type is not the type you want the variable to have. For
-example, you may intend to assign values of other types later. In that case,
-annotate the variable with the type you want.
+Às vezes, o tipo inferido não é o tipo que você deseja que a variável tenha. Por
+exemplo, você pode pretender atribuir valores de outros tipos mais tarde. Nesse
+caso, anote a variável com o tipo desejado.
 
 <?code-excerpt "design_good.dart (upcast-local)" replace="/Widget result/[!Widget!] result/g"?>
 ```dart tag=good
@@ -1197,11 +1197,11 @@ Widget build(BuildContext context) {
 ```
 
 
-### DO annotate return types on function declarations
+### USE anotação de tipos de retorno em declarações de função {:#do-annotate-return-types-on-function-declarations}
 
-Dart doesn't generally infer the return type of a function declaration from its body,
-unlike some other languages. That means you should write a type annotation for
-the return type yourself.
+Dart geralmente não infere o tipo de retorno de uma declaração de função de seu
+corpo, ao contrário de algumas outras linguagens. Isso significa que você deve
+escrever uma anotação de tipo para o tipo de retorno você mesmo.
 
 <?code-excerpt "design_good.dart (annotate-return-types)"?>
 ```dart tag=good
@@ -1217,18 +1217,18 @@ makeGreeting(String who) {
 }
 ```
 
-Note that this guideline only applies to *non-local* function declarations:
-top-level, static, and instance methods and getters. Local functions and
-anonymous function expressions infer a return type from their body. In fact, the
-anonymous function syntax doesn't even allow a return type annotation.
+Observe que esta diretriz se aplica apenas a declarações de função *não
+locais*: métodos e getters de nível superior, estáticos e de instância. Funções
+locais e expressões de função anônimas inferem um tipo de retorno de seu corpo.
+Na verdade, a sintaxe de função anônima nem mesmo permite uma anotação de tipo de retorno.
 
 
-### DO annotate parameter types on function declarations
+### USE anotação de tipos de parâmetro em declarações de função {:#do-annotate-parameter-types-on-function-declarations}
 
-A function's parameter list determines its boundary to the outside world.
-Annotating parameter types makes that boundary well defined.
-Note that even though default parameter values look like variable initializers,
-Dart doesn't infer an optional parameter's type from its default value.
+A lista de parâmetros de uma função determina seu limite para o mundo exterior.
+Anotar os tipos de parâmetro torna esse limite bem definido. Observe que, embora
+os valores de parâmetro padrão pareçam inicializadores de variável, o Dart não
+infere o tipo de um parâmetro opcional de seu valor padrão.
 
 <?code-excerpt "design_good.dart (annotate-parameters)"?>
 ```dart tag=good
@@ -1248,21 +1248,21 @@ void sayRepeatedly(message, {count = 2}) {
 }
 ```
 
-**Exception:** Function expressions and initializing formals have
-different type annotation conventions, as described in the next two guidelines.
+**Exceção:** Expressões de função e parâmetros formais de inicialização têm
+convenções de anotação de tipo diferentes, conforme descrito nas duas diretrizes a seguir.
 
 
-### DON'T annotate inferred parameter types on function expressions
+### NÃO anote tipos de parâmetro inferidos em expressões de função {:#dont-annotate-inferred-parameter-types-on-function-expressions}
 
 {% render 'linter-rule-mention.md', rules:'avoid_types_on_closure_parameters' %}
 
-Anonymous functions are almost always immediately passed to a method taking a
-callback of some type.
-When a function expression is created in a typed context,
-Dart tries to infer the function's parameter types based on the expected type.
-For example, when you pass a function expression to `Iterable.map()`, your
-function's parameter type is inferred based on the type of callback that `map()`
-expects:
+Funções anônimas são quase sempre passadas imediatamente para um método que
+recebe um *callback* (retorno de chamada) de algum tipo. Quando uma expressão de
+função é criada em um contexto tipado, o Dart tenta inferir os tipos de
+parâmetro da função com base no tipo esperado. Por exemplo, quando você passa
+uma expressão de função para `Iterable.map()`, o tipo de parâmetro de sua função
+é inferido com base no tipo de retorno de chamada que `map()`
+espera:
 
 <?code-excerpt "design_good.dart (func-expr-no-param-type)"?>
 ```dart tag=good
@@ -1274,24 +1274,24 @@ var names = people.map((person) => person.name);
 var names = people.map((Person person) => person.name);
 ```
 
-If the language is able to infer the type you want for a parameter in a function
-expression, then don't annotate. In rare cases, the surrounding
-context isn't precise enough to provide a type for one or more of the
-function's parameters. In those cases, you may need to annotate.
-(If the function isn't used immediately, it's usually better to
-[make it a named declaration][named local].)
+Se a linguagem conseguir inferir o tipo que você deseja para um parâmetro em uma
+expressão de função, não anote. Em casos raros, o contexto circundante não é
+preciso o suficiente para fornecer um tipo para um ou mais parâmetros da função.
+Nesses casos, pode ser necessário anotar. (Se a função não for usada
+imediatamente, geralmente é melhor
+[transformá-la em uma declaração nomeada][named local]).
 
 [named local]: usage#do-use-a-function-declaration-to-bind-a-function-to-a-name
 
-### DON'T type annotate initializing formals
+### NÃO anote tipos de parâmetros formais de inicialização {:#dont-type-annotate-initializing-formals}
 
 {% render 'linter-rule-mention.md', rules:'type_init_formals' %}
 
-If a constructor parameter is using `this.` to initialize a field, 
-or `super.` to forward a super parameter, 
-then the type of the parameter
-is inferred to have the same type as 
-the field or super-constructor parameter respectively.
+Se um parâmetro de construtor estiver usando `this.` para inicializar um campo,
+ou `super.` para encaminhar um super parâmetro,
+o tipo do parâmetro é inferido
+para ter o mesmo tipo que o campo
+ou parâmetro super-construtor, respectivamente.
 
 <?code-excerpt "design_good.dart (dont-type-init-formals)"?>
 ```dart tag=good
@@ -1318,13 +1318,13 @@ class MyWidget extends StatelessWidget {
 ```
 
 
-### DO write type arguments on generic invocations that aren't inferred
+### USE escrever argumentos de tipo em invocações genéricas que não são inferidas {:#do-write-type-arguments-on-generic-invocations-that-arent-inferred}
 
-Dart is pretty smart about inferring type arguments in generic invocations. It
-looks at the expected type where the expression occurs and the types of
-values being passed to the invocation. However, sometimes those aren't enough to
-fully determine a type argument. In that case, write the entire type argument
-list explicitly.
+O Dart é bastante inteligente em inferir argumentos de tipo em invocações
+genéricas. Ele analisa o tipo esperado onde a expressão ocorre e os tipos de
+valores sendo passados para a invocação. No entanto, às vezes isso não é
+suficiente para determinar totalmente um argumento de tipo. Nesse caso, escreva
+toda a lista de argumentos de tipo explicitamente.
 
 <?code-excerpt "design_good.dart (non-inferred-type-args)"?>
 ```dart tag=good
@@ -1338,9 +1338,9 @@ var playerScores = {};
 final events = StreamController();
 ```
 
-Sometimes the invocation occurs as the initializer to a variable declaration. If
-the variable is *not* local, then instead of writing the type argument list on the
-invocation itself, you may put a type annotation on the declaration:
+Às vezes, a invocação ocorre como inicializador de uma declaração de variável.
+Se a variável *não* for local, então, em vez de escrever a lista de argumentos
+de tipo na própria invocação, você pode colocar uma anotação de tipo na declaração:
 
 <?code-excerpt "design_good.dart (inferred-type-args)"?>
 ```dart tag=good
@@ -1356,15 +1356,15 @@ class Downloader {
 }
 ```
 
-Annotating the variable also addresses this guideline because now the type
-arguments *are* inferred.
+Anotar a variável também aborda esta diretriz porque agora os argumentos de tipo
+*são* inferidos.
 
 
-### DON'T write type arguments on generic invocations that are inferred
+### NÃO escreva argumentos de tipo em invocações genéricas que são inferidas {:#dont-write-type-arguments-on-generic-invocations-that-are-inferred}
 
-This is the converse of the previous rule. If an invocation's type argument list
-*is* correctly inferred with the types you want, then omit the types and let
-Dart do the work for you.
+Este é o inverso da regra anterior. Se a lista de argumentos de tipo de uma
+invocação *é* inferida corretamente com os tipos que você deseja, omita os
+tipos e deixe o Dart fazer o trabalho para você.
 
 <?code-excerpt "design_good.dart (redundant)"?>
 ```dart tag=good
@@ -1380,8 +1380,8 @@ class Downloader {
 }
 ```
 
-Here, the type annotation on the field provides a surrounding context to infer
-the type argument of constructor call in the initializer.
+Aqui, a anotação de tipo no campo fornece um contexto circundante para inferir
+o argumento de tipo da chamada do construtor no inicializador.
 
 <?code-excerpt "design_good.dart (explicit)"?>
 ```dart tag=good
@@ -1393,16 +1393,16 @@ var items = Future.value([1, 2, 3]);
 var items = Future<List<int>>.value(<int>[1, 2, 3]);
 ```
 
-Here, the types of the collection and instance can be inferred bottom-up from
-their elements and arguments.
+Aqui, os tipos da coleção e da instância podem ser inferidos de baixo para cima
+de seus elementos e argumentos.
 
 
-### AVOID writing incomplete generic types
+### EVITE escrever tipos genéricos incompletos {:#avoid-writing-incomplete-generic-types}
 
-The goal of writing a type annotation or type argument is to pin down a complete
-type. However, if you write the name of a generic type but omit its type
-arguments, you haven't fully specified the type. In Java, these are called "raw
-types". For example:
+O objetivo de escrever uma anotação de tipo ou argumento de tipo é definir um
+tipo completo. No entanto, se você escrever o nome de um tipo genérico, mas
+omitir seus argumentos de tipo, você não especificou totalmente o tipo. Em Java,
+eles são chamados de "tipos raw" (brutos). Por exemplo:
 
 <?code-excerpt "design_bad.dart (incomplete-generic)" replace="/List|Map/[!$&!]/g"?>
 ```dart tag=bad
@@ -1410,15 +1410,15 @@ types". For example:
 var completer = Completer<[!Map!]>();
 ```
 
-Here, `numbers` has a type annotation, but the annotation doesn't provide a type
-argument to the generic `List`. Likewise, the `Map` type argument to `Completer`
-isn't fully specified. In cases like this, Dart will *not* try to "fill in" the
-rest of the type for you using the surrounding context. Instead, it silently
-fills in any missing type arguments with `dynamic` (or the bound if the
-class has one). That's rarely what you want.
+Aqui, `numbers` tem uma anotação de tipo, mas a anotação não fornece um
+argumento de tipo para a `List` genérica. Da mesma forma, o argumento de tipo
+`Map` para `Completer` não está totalmente especificado. Em casos como este, o
+Dart *não* tentará "preencher" o resto do tipo para você usando o contexto
+circundante. Em vez disso, ele preenche silenciosamente todos os argumentos de
+tipo ausentes com `dynamic` (ou o limite, se a classe tiver um). Raramente é isso que você quer.
 
-Instead, if you're writing a generic type either in a type annotation or as a type
-argument inside some invocation, make sure to write a complete type:
+Em vez disso, se você estiver escrevendo um tipo genérico em uma anotação de
+tipo ou como um argumento de tipo dentro de alguma invocação, certifique-se de escrever um tipo completo:
 
 <?code-excerpt "design_good.dart (incomplete-generic)"?>
 ```dart tag=good
@@ -1427,17 +1427,17 @@ var completer = Completer<Map<String, int>>();
 ```
 
 
-### DO annotate with `dynamic` instead of letting inference fail
+### USE anotar com `dynamic` em vez de deixar a inferência falhar {:#do-annotate-with-dynamic-instead-of-letting-inference-fail}
 
-When inference doesn't fill in a type, it usually defaults to `dynamic`. If
-`dynamic` is the type you want, this is technically the most terse way to get
-it. However, it's not the most *clear* way. A casual reader of your code who
-sees that an annotation is missing has no way of knowing if you intended it to be
-`dynamic`, expected inference to fill in some other type, or simply forgot to
-write the annotation.
+Quando a inferência não preenche um tipo, ela geralmente assume como padrão
+`dynamic`. Se `dynamic` é o tipo que você quer, esta é tecnicamente a maneira
+mais concisa de obtê-lo. No entanto, não é a maneira mais *clara*. Um leitor
+casual de seu código que vê que uma anotação está faltando não tem como saber se
+você pretendia que fosse `dynamic`, esperava que a inferência preenchesse algum
+outro tipo ou simplesmente se esqueceu de escrever a anotação.
 
-When `dynamic` is the type you want, write that explicitly to make your intent
-clear and highlight that this code has less static safety.
+Quando `dynamic` é o tipo que você deseja, escreva isso explicitamente para
+deixar sua intenção clara e destacar que este código tem menos segurança estática.
 
 <?code-excerpt "design_good.dart (prefer-dynamic)"?>
 ```dart tag=good
@@ -1449,7 +1449,7 @@ dynamic mergeJson(dynamic original, dynamic changes) => ...
 mergeJson(original, changes) => ...
 ```
 
-Note that it's OK to omit the type when Dart *successfully* infers `dynamic`.
+Observe que não há problema em omitir o tipo quando o Dart infere *com sucesso* `dynamic`.
 
 <?code-excerpt "design_good.dart (infer-dynamic)"?>
 ```dart tag=good
@@ -1462,31 +1462,31 @@ void printUsers() {
 }
 ```
 
-Here, Dart infers `Map<String, dynamic>` for `json` and then from that infers
-`dynamic` for `users`. It's fine to leave `users` without a type annotation. The
-distinction is a little subtle. It's OK to allow inference to *propagate*
-`dynamic` through your code from a `dynamic` type annotation somewhere else, but
-you don't want it to inject a `dynamic` type annotation in a place where your
-code did not specify one.
+Aqui, Dart infere `Map<String, dynamic>` para `json` e, a partir disso, infere
+`dynamic` para `users`. Não há problema em deixar `users` sem uma anotação de
+tipo. A distinção é um pouco sutil. Não há problema em permitir que a inferência
+*propague* `dynamic` por meio de seu código a partir de uma anotação de tipo
+`dynamic` em outro lugar, mas você não quer que ele injete uma anotação de tipo
+`dynamic` em um lugar onde seu código não especificou uma.
 
 :::note
-With Dart's strong type system and type inference, 
-users expect Dart to behave like an inferred statically-typed language. 
-With that mental model, 
-it is an unpleasant surprise to discover that
-a region of code has silently lost all of the
-safety and performance of static types.
+Com o forte sistema de tipos e inferência de tipos do Dart, os usuários esperam
+que o Dart se comporte como uma linguagem estaticamente tipada inferida. Com
+esse modelo mental,
+é uma surpresa desagradável descobrir que uma região de
+código perdeu silenciosamente toda a segurança
+e o desempenho dos tipos estáticos.
 :::
 
-**Exception**: Type annotations on unused parameters (`_`) can be omitted.
+**Exceção**: Anotações de tipo em parâmetros não utilizados (`_`) podem ser
+omitidas.
+### PREFIRA assinaturas em anotações de tipo de função {:#prefer-signatures-in-function-type-annotations}
 
-### PREFER signatures in function type annotations
-
-The identifier `Function` by itself without any return type or parameter
-signature refers to the special [Function][] type. This type is only
-marginally more useful than using `dynamic`. If you're going to annotate, prefer
-a full function type that includes the parameters and return type of the
-function.
+O identificador `Function` sozinho, sem nenhum tipo de retorno ou assinatura de
+parâmetro, refere-se ao tipo especial [Function][Function]. Este tipo é apenas
+marginalmente mais útil do que usar `dynamic`. Se você for usar anotações,
+prefira um tipo de função completo que inclua os parâmetros e o tipo de retorno
+da função.
 
 [Function]: {{site.dart-api}}/dart-core/Function-class.html
 
@@ -1502,11 +1502,11 @@ bool isValid(String value, [!Function!] test) => ...
 
 [fn syntax]: #prefer-inline-function-types-over-typedefs
 
-**Exception:** Sometimes, you want a type that represents the union of multiple
-different function types. For example, you may accept a function that takes one
-parameter or a function that takes two. Since we don't have union types, there's
-no way to precisely type that and you'd normally have to use `dynamic`.
-`Function` is at least a little more helpful than that:
+**Exceção:** Às vezes, você quer um tipo que represente a união de múltiplos
+tipos de função diferentes. Por exemplo, você pode aceitar uma função que recebe
+um parâmetro ou uma função que recebe dois. Como não temos tipos de união, não
+há como tipar isso precisamente e você normalmente teria que usar `dynamic`.
+`Function` é pelo menos um pouco mais útil do que isso:
 
 <?code-excerpt "design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
 ```dart tag=good
@@ -1526,11 +1526,11 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
 ```
 
 
-### DON'T specify a return type for a setter
+### NÃO especifique um tipo de retorno para um setter {:#dont-specify-a-return-type-for-a-setter}
 
 {% render 'linter-rule-mention.md', rules:'avoid_return_types_on_setters' %}
 
-Setters always return `void` in Dart. Writing the word is pointless.
+Setters sempre retornam `void` em Dart. Escrever a palavra é inútil.
 
 <?code-excerpt "design_bad.dart (avoid_return_types_on_setters)"?>
 ```dart tag=bad
@@ -1547,72 +1547,72 @@ set foo(Foo value) {
 ```
 
 
-### DON'T use the legacy typedef syntax
+### NÃO use a sintaxe legada de `typedef` {:#dont-use-the-legacy-typedef-syntax}
 
 {% render 'linter-rule-mention.md', rules:'prefer_generic_function_type_aliases' %}
 
-Dart has two notations for defining a named typedef for a function type. The
-original syntax looks like:
+Dart tem duas notações para definir um `typedef` nomeado para um tipo de função.
+A sintaxe original parece com:
 
 <?code-excerpt "design_bad.dart (old-typedef)"?>
 ```dart tag=bad
 typedef int Comparison<T>(T a, T b);
 ```
 
-That syntax has a couple of problems:
+Essa sintaxe tem alguns problemas:
 
-*   There is no way to assign a name to a *generic* function type. In the above
-    example, the typedef itself is generic. If you reference `Comparison` in
-    your code, without a type argument, you implicitly get the function type
-    `int Function(dynamic, dynamic)`, *not* `int Function<T>(T, T)`. This
-    doesn't come up in practice often, but it matters in certain corner cases.
+* Não há como atribuir um nome a um tipo de função *genérico*. No exemplo
+  acima, o próprio `typedef` é genérico. Se você referenciar `Comparison` em
+  seu código, sem um argumento de tipo, você implicitamente obterá o tipo de
+  função `int Function(dynamic, dynamic)`, *não* `int Function<T>(T, T)`.
+  Isso não acontece na prática com frequência, mas importa em certos casos específicos.
 
-*   A single identifier in a parameter is interpreted as the parameter's *name*,
-    not its *type*. Given:
+* Um único identificador em um parâmetro é interpretado como o *nome* do
+  parâmetro, não seu *tipo*. Dado:
 
     <?code-excerpt "design_bad.dart (typedef-param)"?>
     ```dart tag=bad
     typedef bool TestNumber(num);
     ```
 
-    Most users expect this to be a function type that takes a `num` and returns
-    `bool`. It is actually a function type that takes *any* object (`dynamic`)
-    and returns `bool`. The parameter's *name* (which isn't used for anything
-    except documentation in the typedef) is "num". This has been a
-    long-standing source of errors in Dart.
+    A maioria dos usuários espera que isso seja um tipo de função que recebe um
+    `num` e retorna `bool`. Na verdade, é um tipo de função que recebe *qualquer*
+    objeto (`dynamic`) e retorna `bool`. O *nome* do parâmetro (que não é usado
+    para nada, exceto documentação no `typedef`) é "num". Essa tem sido uma
+    fonte de erros de longa data em Dart.
 
-The new syntax looks like this:
+A nova sintaxe se parece com isso:
 
 <?code-excerpt "design_good.dart (new-typedef)"?>
 ```dart tag=good
 typedef Comparison<T> = int Function(T, T);
 ```
 
-If you want to include a parameter's name, you can do that too:
+Se você quiser incluir o nome de um parâmetro, você também pode fazer isso:
 
 <?code-excerpt "design_good.dart (new-typedef-param-name)"?>
 ```dart tag=good
 typedef Comparison<T> = int Function(T a, T b);
 ```
 
-The new syntax can express anything the old syntax could express and more, and
-lacks the error-prone misfeature where a single identifier is treated as the
-parameter's name instead of its type. The same function type syntax after the
-`=` in the typedef is also allowed anywhere a type annotation may appear, giving
-us a single consistent way to write function types anywhere in a program.
+A nova sintaxe pode expressar qualquer coisa que a sintaxe antiga poderia
+expressar e mais, e não tem a falha propensa a erros onde um único identificador
+é tratado como o nome do parâmetro em vez de seu tipo. A mesma sintaxe de tipo
+de função após o `=` no `typedef` também é permitida em qualquer lugar onde uma
+anotação de tipo pode aparecer, nos dando uma única forma consistente de escrever tipos de função em qualquer lugar em um programa.
 
-The old typedef syntax is still supported to avoid breaking existing code, but
-it's deprecated.
+A sintaxe antiga de `typedef` ainda é suportada para evitar quebrar o código
+existente, mas está obsoleta.
 
 
-### PREFER inline function types over typedefs
+### PREFIRA tipos de função inline em vez de typedefs {:#prefer-inline-function-types-over-typedefs}
 
 {% render 'linter-rule-mention.md', rules:'avoid_private_typedef_functions' %}
 
-In Dart, if you want to use a function type for a field, variable, or
-generic type argument, you can define a typedef for the function type.
-However, Dart supports an inline function type syntax that
-can be used anywhere a type annotation is allowed:
+Em Dart, se você quiser usar um tipo de função para um campo, variável ou
+argumento de tipo genérico, você pode definir um `typedef` para o tipo de
+função. No entanto, Dart suporta uma sintaxe de tipo de função inline que
+pode ser usada em qualquer lugar onde uma anotação de tipo é permitida:
 
 <?code-excerpt "design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
 ```dart tag=good
@@ -1636,57 +1636,57 @@ class FilteredObservable {
 }
 ```
 
-It may still be worth defining a typedef if the function type is particularly
-long or frequently used. But in most cases, users want to see what the function
-type actually is right where it's used, and the function type syntax gives them
-that clarity.
+Ainda pode valer a pena definir um `typedef` se o tipo de função for
+particularmente longo ou usado com frequência. Mas, na maioria dos casos, os
+usuários querem ver qual é o tipo de função realmente onde ele é usado, e a
+sintaxe do tipo de função oferece essa clareza.
 
 
-### PREFER using function type syntax for parameters
+### PREFIRA usar a sintaxe de tipo de função para parâmetros {:#prefer-using-function-type-syntax-for-parameters}
 
 {% render 'linter-rule-mention.md', rules:'use_function_type_syntax_for_parameters' %}
 
-Dart has a special syntax when defining a parameter whose type is a function.
-Sort of like in C, you surround the parameter's name with the function's return
-type and parameter signature:
+Dart tem uma sintaxe especial ao definir um parâmetro cujo tipo é uma função.
+Parecido com C, você envolve o nome do parâmetro com o tipo de retorno da função
+e a assinatura do parâmetro:
 
 <?code-excerpt "design_bad.dart (function-type-param)"?>
 ```dart
 Iterable<T> where(bool predicate(T element)) => ...
 ```
 
-Before Dart added function type syntax, this was the only way to give a
-parameter a function type without defining a typedef. Now that Dart has a
-general notation for function types, you can use it for function-typed
-parameters as well:
+Antes de Dart adicionar a sintaxe de tipo de função, esta era a única maneira de
+dar a um parâmetro um tipo de função sem definir um `typedef`. Agora que Dart tem
+uma notação geral para tipos de função, você também pode usá-la para parâmetros
+com tipo de função:
 
 <?code-excerpt "design_good.dart (function-type-param)"?>
 ```dart tag=good
 Iterable<T> where(bool Function(T) predicate) => ...
 ```
 
-The new syntax is a little more verbose, but is consistent with other locations
-where you must use the new syntax.
+A nova sintaxe é um pouco mais verbosa, mas é consistente com outros locais
+onde você deve usar a nova sintaxe.
 
 
-### AVOID using `dynamic` unless you want to disable static checking
+### EVITE usar `dynamic` a menos que você queira desativar a verificação estática {:#avoid-using-dynamic-unless-you-want-to-disable-static-checking}
 
-Some operations work with any possible object. For example, a `log()` method
-could take any object and call `toString()` on it. Two types in Dart permit all
-values: `Object?` and `dynamic`. However, they convey different things. If you
-simply want to state that you allow all objects, use `Object?`. If you want to
-allow all objects *except* `null`, then use `Object`.
+Algumas operações funcionam com qualquer objeto possível. Por exemplo, um método
+`log()` poderia receber qualquer objeto e chamar `toString()` nele. Dois tipos
+em Dart permitem todos os valores: `Object?` e `dynamic`. No entanto, eles
+transmitem coisas diferentes. Se você simplesmente quer declarar que permite
+todos os objetos, use `Object?`. Se você quiser permitir todos os objetos *exceto* `null`, então use `Object`.
 
-The type `dynamic` not only accepts all objects, but it also permits all
-*operations*. Any member access on a value of type `dynamic` is allowed at
-compile time, but may fail and throw an exception at runtime. If you want
-exactly that risky but flexible dynamic dispatch, then `dynamic` is the right
-type to use.
+O tipo `dynamic` não apenas aceita todos os objetos, mas também permite todas as
+*operações*. Qualquer acesso a um membro em um valor do tipo `dynamic` é
+permitido em tempo de compilação, mas pode falhar e lançar uma exceção em tempo
+de execução. Se você quer exatamente esse dispatch dinâmico arriscado, mas
+flexível, então `dynamic` é o tipo certo para usar.
 
-Otherwise, prefer using `Object?` or `Object`. Rely on `is` checks and type
-promotion to
-ensure that the value's runtime type supports the member you want to access
-before you access it.
+Caso contrário, prefira usar `Object?` ou `Object`.
+Confie nas verificações
+`is` e na promoção de tipo para garantir que o tipo de tempo de execução do
+valor suporte o membro que você deseja acessar antes de acessá-lo.
 
 <?code-excerpt "design_good.dart (object-vs-dynamic)"?>
 ```dart tag=good
@@ -1699,45 +1699,45 @@ bool convertToBool(Object arg) {
 }
 ```
 
-The main exception to this rule is when working with existing APIs that use
-`dynamic`, especially inside a generic type. For example, JSON objects have type
-`Map<String, dynamic>` and your code will need to accept that same type. Even
-so, when using a value from one of these APIs, it's often a good idea to cast it
-to a more precise type before accessing members.
+A principal exceção a esta regra é ao trabalhar com APIs existentes que usam
+`dynamic`, especialmente dentro de um tipo genérico. Por exemplo, objetos JSON
+têm o tipo `Map<String, dynamic>` e seu código precisará aceitar esse mesmo
+tipo. Mesmo assim, ao usar um valor de uma dessas APIs, geralmente é uma boa
+ideia convertê-lo para um tipo mais preciso antes de acessar os membros.
 
 
-### DO use `Future<void>` as the return type of asynchronous members that do not produce values
+### USE `Future<void>` como o tipo de retorno de membros assíncronos que não produzem valores {:#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values}
 
-When you have a synchronous function that doesn't return a value, you use `void`
-as the return type. The asynchronous equivalent for a method that doesn't
-produce a value, but that the caller might need to await, is `Future<void>`.
+Quando você tem uma função síncrona que não retorna um valor, você usa `void`
+como o tipo de retorno. O equivalente assíncrono para um método que não produz
+um valor, mas que o chamador pode precisar esperar (await), é `Future<void>`.
 
-You may see code that uses `Future` or `Future<Null>` instead because older
-versions of Dart didn't allow `void` as a type argument. Now that it does, you
-should use it. Doing so more directly matches how you'd type a similar
-synchronous function, and gives you better error-checking for callers and in the
-body of the function.
+Você pode ver um código que usa `Future` ou `Future<Null>` em vez disso porque
+versões mais antigas de Dart não permitiam `void` como um argumento de tipo.
+Agora que permite, você deve usá-lo. Fazer isso corresponde mais diretamente a
+como você tiparia uma função síncrona semelhante e oferece melhor verificação
+de erros para chamadores e no corpo da função.
 
-For asynchronous functions that do not return a useful value and where no
-callers need to await the asynchronous work or handle an asynchronous failure,
-use a return type of `void`.
+Para funções assíncronas que não retornam um valor útil e onde nenhum chamador
+precisa aguardar o trabalho assíncrono ou lidar com uma falha assíncrona, use um
+tipo de retorno de `void`.
 
 
-### AVOID using `FutureOr<T>` as a return type
+### EVITE usar `FutureOr<T>` como um tipo de retorno {:#avoid-using-futureort-as-a-return-type}
 
-If a method accepts a `FutureOr<int>`, it is [generous in what it
-accepts][postel]. Users can call the method with either an `int` or a
-`Future<int>`, so they don't need to wrap an `int` in `Future` that you are
-going to unwrap anyway.
+Se um método aceita um `FutureOr<int>`, ele é [generoso no que ele
+aceita][postel]. Os usuários podem chamar o método com um `int` ou um
+`Future<int>`, então eles não precisam embrulhar um `int` em `Future` que você
+vai desembrulhar de qualquer maneira.
 
 [postel]: https://en.wikipedia.org/wiki/Robustness_principle
 
-If you *return* a `FutureOr<int>`, users need to check whether get back an `int`
-or a `Future<int>` before they can do anything useful. (Or they'll just `await`
-the value, effectively always treating it as a `Future`.) Just return a
-`Future<int>`, it's cleaner. It's easier for users to understand that a function
-is either always asynchronous or always synchronous, but a function that can be
-either is hard to use correctly.
+Se você *retornar* um `FutureOr<int>`, os usuários precisam verificar se eles
+recebem um `int` ou um `Future<int>` antes que eles possam fazer qualquer coisa
+útil. (Ou eles simplesmente usarão `await` no valor, efetivamente sempre
+tratando-o como um `Future`.) Apenas retorne um `Future<int>`, é mais limpo. É
+mais fácil para os usuários entenderem que uma função é sempre assíncrona ou
+sempre síncrona, mas uma função que pode ser qualquer uma é difícil de usar corretamente.
 
 <?code-excerpt "design_good.dart (future-or)"?>
 ```dart tag=good
@@ -1752,12 +1752,12 @@ FutureOr<int> triple(FutureOr<int> value) {
 }
 ```
 
-The more precise formulation of this guideline is to *only use `FutureOr<T>` in
-[contravariant][] positions.* Parameters are contravariant and return types are
-covariant. In nested function types, this gets flipped—if you have a
-parameter whose type is itself a function, then the callback's return type is
-now in contravariant position and the callback's parameters are covariant. This
-means it's OK for a *callback's* type to return `FutureOr<T>`:
+A formulação mais precisa desta diretriz é *usar `FutureOr<T>` apenas em
+posições [contravariantes][contravariant].* Os parâmetros são contravariantes e os tipos de
+retorno são covariantes. Em tipos de função aninhados, isso é invertido — se
+você tem um parâmetro cujo tipo é ele mesmo uma função, então o tipo de retorno
+do callback agora está em posição contravariante e os parâmetros do callback
+são covariantes. Isso significa que está tudo bem para o tipo de *callback* retornar `FutureOr<T>`:
 
 [contravariant]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)
 
@@ -1774,19 +1774,19 @@ Stream<S> asyncMap<T, S>(
 ```
 
 
-## Parameters
+## Parâmetros {:#parameters}
 
-In Dart, optional parameters can be either positional or named, but not both.
+Em Dart, parâmetros opcionais podem ser posicionais ou nomeados, mas não ambos.
 
 
-### AVOID positional boolean parameters
+### EVITE parâmetros booleanos posicionais {:#avoid-positional-boolean-parameters}
 
 {% render 'linter-rule-mention.md', rules:'avoid_positional_boolean_parameters' %}
 
-Unlike other types, booleans are usually used in literal form. Values like
-numbers are usually wrapped in named constants, but we typically pass around
-`true` and `false` directly. That can make call sites unreadable if it isn't
-clear what the boolean represents:
+Ao contrário de outros tipos, os booleanos geralmente são usados em forma literal.
+Valores como números geralmente são envolvidos em constantes nomeadas, mas
+normalmente passamos `true` e `false` diretamente. Isso pode tornar os locais de
+chamada ilegíveis se não estiver claro o que o booleano representa:
 
 ```dart tag=bad
 new Task(true);
@@ -1795,8 +1795,8 @@ new ListBox(false, true, true);
 new Button(false);
 ```
 
-Instead, prefer using named arguments, named constructors, or named constants
-to clarify what the call is doing.
+Em vez disso, prefira usar argumentos nomeados, construtores nomeados ou
+constantes nomeadas para esclarecer o que a chamada está fazendo.
 
 <?code-excerpt "design_good.dart (avoid-positional-bool-param)"?>
 ```dart tag=good
@@ -1806,8 +1806,8 @@ ListBox(scroll: true, showScrollbars: true);
 Button(ButtonState.enabled);
 ```
 
-Note that this doesn't apply to setters, where the name makes it clear what the
-value represents:
+Note que isso não se aplica a setters, onde o nome deixa claro o que o valor
+representa:
 
 ```dart tag=good
 listBox.canScroll = true;
@@ -1815,12 +1815,12 @@ button.isEnabled = false;
 ```
 
 
-### AVOID optional positional parameters if the user may want to omit earlier parameters
+### EVITE parâmetros posicionais opcionais se o usuário quiser omitir parâmetros anteriores {:#avoid-optional-positional-parameters-if-the-user-may-want-to-omit-earlier-parameters}
 
-Optional positional parameters should have a logical progression such that
-earlier parameters are passed more often than later ones. Users should almost
-never need to explicitly pass a "hole" to omit an earlier positional argument to
-pass later one. You're better off using named arguments for that.
+Os parâmetros posicionais opcionais devem ter uma progressão lógica de forma que
+os parâmetros anteriores sejam passados com mais frequência do que os posteriores.
+Os usuários quase nunca devem precisar passar explicitamente um "buraco" para
+omitir um argumento posicional anterior para passar um posterior. É melhor usar argumentos nomeados para isso.
 
 <?code-excerpt "design_good.dart (omit-optional-positional)"?>
 ```dart tag=good
@@ -1848,15 +1848,15 @@ Duration({
 ```
 
 
-### AVOID mandatory parameters that accept a special "no argument" value
+### EVITE parâmetros obrigatórios que aceitam um valor especial "sem argumento" {:#avoid-mandatory-parameters-that-accept-a-special-no-argument-value}
 
-If the user is logically omitting a parameter, prefer letting them actually omit
-it by making the parameter optional instead of forcing them to pass `null`, an
-empty string, or some other special value that means "did not pass".
+Se o usuário está logicamente omitindo um parâmetro, prefira deixá-lo realmente
+omitir, tornando o parâmetro opcional em vez de forçá-lo a passar `null`, uma
+string vazia ou algum outro valor especial que significa "não passou".
 
-Omitting the parameter is more terse and helps prevent bugs where a sentinel
-value like `null` is accidentally passed when the user thought they were
-providing a real value.
+Omitir o parâmetro é mais conciso e ajuda a evitar bugs onde um valor sentinela
+como `null` é passado acidentalmente quando o usuário pensou que estava
+fornecendo um valor real.
 
 <?code-excerpt "design_good.dart (avoid-mandatory-param)"?>
 ```dart tag=good
@@ -1869,14 +1869,14 @@ var rest = string.substring(start, null);
 ```
 
 
-### DO use inclusive start and exclusive end parameters to accept a range
+### USE parâmetros de início inclusivo e fim exclusivo para aceitar um intervalo {:#do-use-inclusive-start-and-exclusive-end-parameters-to-accept-a-range}
 
-If you are defining a method or function that lets a user select a range of
-elements or items from some integer-indexed sequence, take a start index, which
-refers to the first item and a (likely optional) end index which is one greater
-than the index of the last item.
+Se você está definindo um método ou função que permite que um usuário selecione
+um intervalo de elementos ou itens de alguma sequência indexada por inteiro, use
+um índice inicial, que se refere ao primeiro item e um índice final (provavelmente
+opcional) que é um maior que o índice do último item.
 
-This is consistent with core libraries that do the same thing.
+Isso é consistente com as bibliotecas principais que fazem a mesma coisa.
 
 <?code-excerpt "../../test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
 ```dart tag=good
@@ -1884,64 +1884,64 @@ This is consistent with core libraries that do the same thing.
 'abcd'.substring(1, 3) // 'bc'
 ```
 
-It's particularly important to be consistent here because these parameters are
-usually unnamed. If your API takes a length instead of an end point, the
-difference won't be visible at all at the call site.
+É particularmente importante ser consistente aqui porque esses parâmetros
+geralmente não são nomeados. Se sua API usa um comprimento em vez de um ponto
+final, a diferença não será visível no local da chamada.
 
 
-## Equality
+## Igualdade {:#equality}
 
-Implementing custom equality behavior for a class can be tricky. Users have deep
-intuition about how equality works that your objects need to match, and
-collection types like hash tables have subtle contracts that they expect
-elements to follow.
+Implementar um comportamento de igualdade personalizado para uma classe pode ser
+complicado. Os usuários têm uma intuição profunda sobre como a igualdade
+funciona que seus objetos precisam corresponder, e os tipos de coleção como
+tabelas hash têm contratos sutis que esperam que os elementos sigam.
 
-### DO override `hashCode` if you override `==`
+### SOBRESCREVA `hashCode` se você sobrescrever `==` {:#do-override-hashcode-if-you-override}
 
 {% render 'linter-rule-mention.md', rules:'hash_and_equals' %}
 
-The default hash code implementation provides an *identity* hash—two
-objects generally only have the same hash code if they are the exact same
-object. Likewise, the default behavior for `==` is identity.
+A implementação de código hash padrão fornece um hash de *identidade*—dois
+objetos geralmente só têm o mesmo código hash se forem exatamente o mesmo
+objeto. Da mesma forma, o comportamento padrão para `==` é identidade.
 
-If you are overriding `==`, it implies you may have different objects that are
-considered "equal" by your class. **Any two objects that are equal must have the
-same hash code.** Otherwise, maps and other hash-based collections will fail to
-recognize that the two objects are equivalent.
+Se você está sobrescrevendo `==`, isso implica que você pode ter objetos
+diferentes que são considerados "iguais" pela sua classe. **Quaisquer dois
+objetos que são iguais devem ter o mesmo código hash.** Caso contrário, mapas e
+outras coleções baseadas em hash não reconhecerão que os dois objetos são equivalentes.
 
-### DO make your `==` operator obey the mathematical rules of equality
+### FAÇA com que seu operador `==` obedeça às regras matemáticas de igualdade {:#do-make-your-operator-obey-the-mathematical-rules-of-equality}
 
-An equivalence relation should be:
+Uma relação de equivalência deve ser:
 
-* **Reflexive**: `a == a` should always return `true`.
+* **Reflexiva**: `a == a` deve sempre retornar `true`.
 
-* **Symmetric**: `a == b` should return the same thing as `b == a`.
+* **Simétrica**: `a == b` deve retornar a mesma coisa que `b == a`.
 
-* **Transitive**: If `a == b` and `b == c` both return `true`, then `a == c`
-  should too.
+* **Transitiva**: Se `a == b` e `b == c` retornarem `true`, então `a == c`
+  também deve retornar.
 
-Users and code that uses `==` expect all of these laws to be followed. If your
-class can't obey these rules, then `==` isn't the right name for the operation
-you're trying to express.
+Usuários e códigos que usam `==` esperam que todas essas leis sejam seguidas. Se
+sua classe não puder obedecer a essas regras, então `==` não é o nome certo para
+a operação que você está tentando expressar.
 
-### AVOID defining custom equality for mutable classes
+### EVITE definir igualdade personalizada para classes mutáveis {:#avoid-defining-custom-equality-for-mutable-classes}
 
 {% render 'linter-rule-mention.md', rules:'avoid_equals_and_hash_code_on_mutable_classes' %}
 
-When you define `==`, you also have to define `hashCode`. Both of those should
-take into account the object's fields. If those fields *change* then that
-implies the object's hash code can change.
+Quando você define `==`, você também tem que definir `hashCode`. Ambos devem
+levar em consideração os campos do objeto. Se esses campos *mudam*, isso
+implica que o código hash do objeto pode mudar.
 
-Most hash-based collections don't anticipate that—they assume an object's
-hash code will be the same forever and may behave unpredictably if that isn't
-true.
+A maioria das coleções baseadas em hash não antecipa isso — elas assumem que o
+código hash de um objeto será o mesmo para sempre e podem se comportar de forma
+imprevisível se isso não for verdade.
 
-### DON'T make the parameter to `==` nullable
+### NÃO torne o parâmetro para `==` anulável {:#dont-make-the-parameter-to-nullable}
 
 {% render 'linter-rule-mention.md', rules:'avoid_null_checks_in_equality_operators' %}
 
-The language specifies that `null` is equal only to itself, and that the `==`
-method is called only if the right-hand side is not `null`.
+A linguagem especifica que `null` é igual apenas a si mesmo e que o método `==`
+é chamado apenas se o lado direito não for `null`.
 
 <?code-excerpt "design_good.dart (eq-dont-check-for-null)" plaster="// ···"?>
 ```dart tag=good
@@ -1965,4 +1965,3 @@ class Person {
       other != null && other is Person && name == other.name;
 }
 ```
-

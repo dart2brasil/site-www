@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: ffi_native_must_be_external
-description: >-
-  Details about the ffi_native_must_be_external
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico ffi_native_must_be_external produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Native functions must be declared external._
+_Funções nativas devem ser declaradas como external._
 
 ## Description
 
-The analyzer produces this diagnostic when a function annotated as being
-`@Native` isn't marked as `external`.
+O analisador produz este diagnóstico quando uma função anotada como
+`@Native` não está marcada como `external`.
 
 ## Example
 
-The following code produces this diagnostic because the function `free` is
-annotated as being `@Native`, but the function isn't marked as `external`:
+O código a seguir produz este diagnóstico porque a função `free` é
+anotada como sendo `@Native`, mas a função não está marcada como `external`:
 
 ```dart
 import 'dart:ffi';
@@ -28,8 +27,8 @@ void [!free!](Pointer<Void> ptr) {}
 
 ## Common fixes
 
-If the function is a native function, then add the modifier `external`
-before the return type:
+Se a função é uma função nativa, adicione o modificador `external`
+antes do tipo de retorno:
 
 ```dart
 import 'dart:ffi';

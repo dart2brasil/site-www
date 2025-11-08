@@ -1,26 +1,25 @@
 ---
 title: missing_required_param
-description: >-
-  Details about the missing_required_param
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico missing_required_param produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The parameter '{0}' is required._
+_O parameter '{0}' é required._
 
-_The parameter '{0}' is required. {1}._
+_O parameter '{0}' é required. {1}._
 
 ## Description
 
-The analyzer produces this diagnostic when a method or function with a
-named parameter that is annotated as being required is invoked without
-providing a value for the parameter.
+O analisador produz este diagnóstico quando um method ou função com um
+named parameter que está anotado como sendo required é invocado sem
+fornecer um valor para o parameter.
 
 ## Example
 
-The following code produces this diagnostic because the named parameter `x`
-is required:
+O código a seguir produz este diagnóstico porque o named parameter `x`
+é required:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -34,7 +33,7 @@ void g() {
 
 ## Common fixes
 
-Provide the required value:
+Forneça o valor required:
 
 ```dart
 import 'package:meta/meta.dart';

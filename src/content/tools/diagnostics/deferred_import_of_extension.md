@@ -1,27 +1,26 @@
 ---
+ia-translate: true
 title: deferred_import_of_extension
-description: >-
-  Details about the deferred_import_of_extension
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico deferred_import_of_extension produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Imports of deferred libraries must hide all extensions._
+_Imports de bibliotecas deferred devem ocultar todas as extensions._
 
 ## Description
 
-The analyzer produces this diagnostic when a library that is imported using
-a deferred import declares an extension that is visible in the importing
-library. Extension methods are resolved at compile time, and extensions
-from deferred libraries aren't available at compile time.
+O analisador produz este diagnóstico quando uma biblioteca que é importada usando
+um deferred import declara uma extension que está visível na biblioteca
+importadora. Extension methods são resolvidos em tempo de compilação, e extensions
+de bibliotecas deferred não estão disponíveis em tempo de compilação.
 
-For more information, check out
-[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
+Para mais informações, consulte
+[Carregando uma biblioteca de forma lazy](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 ## Example
 
-Given a file `a.dart` that defines a named extension:
+Dado um arquivo `a.dart` que define uma extension nomeada:
 
 ```dart
 class C {}
@@ -31,8 +30,8 @@ extension E on String {
 }
 ```
 
-The following code produces this diagnostic because the named extension is
-visible to the library:
+O código a seguir produz este diagnóstico porque a extension nomeada está
+visível para a biblioteca:
 
 ```dart
 import [!'a.dart'!] deferred as a;
@@ -44,9 +43,9 @@ void f() {
 
 ## Common fixes
 
-If the library must be imported as `deferred`, then either add a `show`
-clause listing the names being referenced or add a `hide` clause listing
-all of the named extensions. Adding a `show` clause would look like this:
+Se a biblioteca deve ser importada como `deferred`, então adicione uma cláusula `show`
+listando os nomes sendo referenciados ou adicione uma cláusula `hide` listando
+todas as extensions nomeadas. Adicionar uma cláusula `show` ficaria assim:
 
 ```dart
 import 'a.dart' deferred as a show C;
@@ -56,7 +55,7 @@ void f() {
 }
 ```
 
-Adding a `hide` clause would look like this:
+Adicionar uma cláusula `hide` ficaria assim:
 
 ```dart
 import 'a.dart' deferred as a hide E;
@@ -66,12 +65,12 @@ void f() {
 }
 ```
 
-With the first fix, the benefit is that if new extensions are added to the
-imported library, then the extensions won't cause a diagnostic to be
-generated.
+Com a primeira correção, o benefício é que se novas extensions forem adicionadas à
+biblioteca importada, então as extensions não causarão um diagnóstico a ser
+gerado.
 
-If the library doesn't need to be imported as `deferred`, or if you need to
-make use of the extension method declared in it, then remove the keyword
+Se a biblioteca não precisa ser importada como `deferred`, ou se você precisa
+fazer uso do extension method declarado nela, então remova a keyword
 `deferred`:
 
 ```dart

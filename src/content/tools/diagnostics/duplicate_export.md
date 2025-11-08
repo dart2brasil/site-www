@@ -1,24 +1,23 @@
 ---
+ia-translate: true
 title: duplicate_export
-description: >-
-  Details about the duplicate_export
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico duplicate_export produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Duplicate export._
+_Export duplicate._
 
 ## Description
 
-The analyzer produces this diagnostic when an export directive is found
-that is the same as an export before it in the file. The second export
-doesn't add value and should be removed.
+O analisador produz este diagnóstico quando uma diretiva export é encontrada
+que é a mesma que um export anterior no arquivo. O segundo export
+não adiciona valor e deve ser removido.
 
 ## Example
 
-The following code produces this diagnostic because the same library is
-being exported twice:
+O código a seguir produz este diagnóstico porque a mesma biblioteca está
+sendo exportada duas vezes:
 
 ```dart
 export 'package:meta/meta.dart';
@@ -27,7 +26,7 @@ export [!'package:meta/meta.dart'!];
 
 ## Common fixes
 
-Remove the unnecessary export:
+Remova o export desnecessário:
 
 ```dart
 export 'package:meta/meta.dart';

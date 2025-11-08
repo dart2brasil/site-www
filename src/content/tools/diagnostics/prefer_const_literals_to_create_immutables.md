@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_const_literals_to_create_immutables
-description: >-
-  Details about the prefer_const_literals_to_create_immutables
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_const_literals_to_create_immutables produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,19 +17,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'const' literals as arguments to constructors of '@immutable' classes._
+_Use literais 'const' como argumentos para construtores de classes '@immutable'._
 
 ## Description
 
-The analyzer produces this diagnostic when a non-const list, map, or set
-literal is passed as an argument to a constructor declared in a class
-annotated with `@immutable`.
+O analisador produz este diagnóstico quando um literal de lista, mapa ou conjunto não-const
+é passado como argumento para um construtor declarado em uma classe
+anotada com `@immutable`.
 
 ## Example
 
-The following code produces this diagnostic because the list literal
-(`[1]`) is being passed to a constructor in an immutable class but isn't
-a constant list:
+O código a seguir produz este diagnóstico porque o literal de lista
+(`[1]`) está sendo passado para um construtor em uma classe imutável mas não é
+uma lista constante:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -47,7 +46,7 @@ C c = C([![1]!]);
 
 ## Common fixes
 
-If the context can be made a [constant context][], then do so:
+Se o contexto pode ser tornado um [constant context][], faça isso:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -62,9 +61,9 @@ class C {
 const C c = C([1]);
 ```
 
-If the context can't be made a [constant context][] but the constructor
-can be invoked using `const`, then add `const` before the constructor
-invocation:
+Se o contexto não pode ser tornado um [constant context][] mas o construtor
+pode ser invocado usando `const`, adicione `const` antes da invocação
+do construtor:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -79,9 +78,9 @@ class C {
 C c = const C([1]);
 ```
 
-If the context can't be made a [constant context][] and the constructor
-can't be invoked using `const`, then add the keyword `const` before the
-collection literal:
+Se o contexto não pode ser tornado um [constant context][] e o construtor
+não pode ser invocado usando `const`, adicione a keyword `const` antes do
+literal de coleção:
 
 ```dart
 import 'package:meta/meta.dart';

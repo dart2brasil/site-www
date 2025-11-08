@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: illegal_async_return_type
-description: >-
-  Details about the illegal_async_return_type
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico illegal_async_return_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Functions marked 'async' must have a return type which is a supertype of 'Future'._
+_Funções marcadas com 'async' devem ter um tipo de retorno que seja um supertipo de 'Future'._
 
 ## Description
 
-The analyzer produces this diagnostic when the body of a function has the
-`async` modifier even though the return type of the function isn't
-assignable to `Future`.
+O analisador produz este diagnóstico quando o corpo de uma função tem o
+modificador `async` mesmo que o tipo de retorno da função não seja
+atribuível a `Future`.
 
 ## Example
 
-The following code produces this diagnostic because the body of the
-function `f` has the `async` modifier even though the return type isn't
-assignable to `Future`:
+O código a seguir produz este diagnóstico porque o corpo da
+função `f` tem o modificador `async` mesmo que o tipo de retorno não seja
+atribuível a `Future`:
 
 ```dart
 [!int!] f() async {
@@ -29,8 +28,8 @@ assignable to `Future`:
 
 ## Common fixes
 
-If the function should be asynchronous, then change the return type to be
-assignable to `Future`:
+Se a função deve ser assíncrona, então altere o tipo de retorno para ser
+atribuível a `Future`:
 
 ```dart
 Future<int> f() async {
@@ -38,7 +37,7 @@ Future<int> f() async {
 }
 ```
 
-If the function should be synchronous, then remove the `async` modifier:
+Se a função deve ser síncrona, então remova o modificador `async`:
 
 ```dart
 int f() => 0;

@@ -1,10 +1,9 @@
 ---
 title: missing_whitespace_between_adjacent_strings
-description: >-
-  Details about the missing_whitespace_between_adjacent_strings
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico missing_whitespace_between_adjacent_strings produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -18,19 +17,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Missing whitespace between adjacent strings._
+_Espaço em branco missing entre strings adjacentes._
 
 ## Description
 
-The analyzer produces this diagnostic for a pair of adjacent string
-literals unless either the left-hand string ends in whitespace or the
-right-hand string begins with whitespace.
+O analisador produz este diagnóstico para um par de literais de string
+adjacentes a menos que a string da esquerda termine em espaço em branco ou a
+string da direita comece com espaço em branco.
 
 ## Example
 
-The following code produces this diagnostic because neither the left nor
-the right string literal includes a space to separate the words that will
-be joined:
+O código a seguir produz este diagnóstico porque nem a string da esquerda nem
+a string da direita inclui um espaço para separar as palavras que serão
+unidas:
 
 ```dart
 var s =
@@ -40,8 +39,8 @@ var s =
 
 ## Common fixes
 
-Add whitespace at the end of the left-hand literal or at the beginning of
-the right-hand literal:
+Adicione espaço em branco no final do literal da esquerda ou no início do
+literal da direita:
 
 ```dart
 var s =

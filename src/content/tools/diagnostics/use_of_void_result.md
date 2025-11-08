@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: use_of_void_result
-description: >-
-  Details about the use_of_void_result
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico use_of_void_result produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_This expression has a type of 'void' so its value can't be used._
+_Esta expressão tem um tipo 'void', então seu valor não pode ser usado._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it finds an expression whose
-type is `void`, and the expression is used in a place where a value is
-expected, such as before a member access or on the right-hand side of an
-assignment.
+O analisador produz este diagnóstico quando encontra uma expressão cujo
+tipo é `void`, e a expressão é usada em um lugar onde um valor é
+esperado, como antes de um acesso a membro ou no lado direito de uma
+atribuição.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` doesn't produce an
-object on which `toString` can be invoked:
+O código a seguir produz este diagnóstico porque `f` não produz um
+objeto no qual `toString` pode ser invocado:
 
 ```dart
 void f() {}
@@ -29,7 +28,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Either rewrite the code so that the expression has a value or rewrite the
-code so that it doesn't depend on the value.
+Reescreva o código para que a expressão tenha um valor ou reescreva o
+código para que não dependa do valor.

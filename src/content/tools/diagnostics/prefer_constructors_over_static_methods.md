@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: prefer_constructors_over_static_methods
-description: >-
-  Details about the prefer_constructors_over_static_methods
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico prefer_constructors_over_static_methods produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +17,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Static method should be a constructor._
+_Método static deve ser um construtor._
 
 ## Description
 
-The analyzer produces this diagnostic when a static method returns a newly
-created instance of the class and could, therefore, be a constructor.
+O analisador produz este diagnóstico quando um método static retorna uma
+instância recém-criada da classe e poderia, portanto, ser um construtor.
 
 ## Example
 
-The following code produces this diagnostic because the static method
-`all` could be a constructor:
+O código a seguir produz este diagnóstico porque o método static
+`all` poderia ser um construtor:
 
 ```dart
 class C {
@@ -40,7 +39,7 @@ class C {
 
 ## Common fixes
 
-Convert the static method to a named constructor:
+Converta o método static para um construtor nomeado:
 
 ```dart
 class C {

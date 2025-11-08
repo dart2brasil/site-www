@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: non_bool_condition
-description: >-
-  Details about the non_bool_condition
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico non_bool_condition produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,12 +10,12 @@ _Conditions must have a static type of 'bool'._
 
 ## Description
 
-The analyzer produces this diagnostic when a condition, such as an `if` or
-`while` loop, doesn't have the static type `bool`.
+O analisador produz este diagnóstico quando uma condição, como em um `if` ou
+loop `while`, não possui o tipo estático `bool`.
 
 ## Example
 
-The following code produces this diagnostic because `x` has the static type
+O código a seguir produz este diagnóstico porque `x` possui o tipo estático
 `int`:
 
 ```dart
@@ -29,7 +28,7 @@ void f(int x) {
 
 ## Common fixes
 
-Change the condition so that it produces a Boolean value:
+Mude a condição para que ela produza um valor Boolean:
 
 ```dart
 void f(int x) {

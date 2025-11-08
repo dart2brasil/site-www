@@ -1,23 +1,22 @@
 ---
 title: main_has_required_named_parameters
-description: >-
-  Details about the main_has_required_named_parameters
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico main_has_required_named_parameters produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The function 'main' can't have any required named parameters._
+_A função 'main' não pode ter nenhum named parameter required._
 
 ## Description
 
-The analyzer produces this diagnostic when a function named `main` has one
-or more required named parameters.
+O analisador produz este diagnóstico quando uma função chamada `main` tem um
+ou mais named parameters required.
 
 ## Example
 
-The following code produces this diagnostic because the function named
-`main` has a required named parameter (`x`):
+O código a seguir produz este diagnóstico porque a função chamada
+`main` tem um named parameter required (`x`):
 
 ```dart
 void [!main!]({required int x}) {}
@@ -25,13 +24,13 @@ void [!main!]({required int x}) {}
 
 ## Common fixes
 
-If the function is an entry point, then remove the `required` keyword:
+Se a função é um ponto de entrada, então remova a palavra-chave `required`:
 
 ```dart
 void main({int? x}) {}
 ```
 
-If the function isn't an entry point, then change the name of the function:
+Se a função não é um ponto de entrada, então altere o nome da função:
 
 ```dart
 void f({required int x}) {}

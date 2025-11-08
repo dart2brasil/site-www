@@ -1,34 +1,33 @@
 ---
+ia-translate: true
 title: doc_import_cannot_have_configurations
-description: >-
-  Details about the doc_import_cannot_have_configurations
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico doc_import_cannot_have_configurations produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Doc imports can't have configurations._
+_Imports de documentação não podem ter configurações._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a documentation import has one
-or more `if` clauses.
+O analisador produz este diagnóstico quando um import de documentação tem uma
+ou mais cláusulas `if`.
 
-Documentation imports aren't configurable.
+Imports de documentação não são configuráveis.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the documentation
-import has an `if` clause:
+O código a seguir produz este diagnóstico porque o import de documentação
+tem uma cláusula `if`:
 
 ```dart
 /// @docImport 'package:meta/meta.dart' [!if (dart.library.io) 'dart:io'!];
 library;
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the `if` clauses:
+Remova as cláusulas `if`:
 
 ```dart
 /// @docImport 'package:meta/meta.dart';

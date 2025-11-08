@@ -1,25 +1,24 @@
 ---
+ia-translate: true
 title: constant_pattern_never_matches_value_type
-description: >-
-  Details about the constant_pattern_never_matches_value_type
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico constant_pattern_never_matches_value_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The matched value type '{0}' can never be equal to this constant of type '{1}'._
+_O tipo '{0}' do valor correspondente nunca pode ser igual a esta constante do tipo '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constant pattern can never
-match the value it's being tested against because the type of the constant
-is known to never match the type of the value.
+O analisador produz este diagnóstico quando um padrão constante nunca pode
+corresponder ao valor contra o qual está sendo testado porque o tipo da constante
+é conhecido por nunca corresponder ao tipo do valor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type of the
-constant pattern `(true)` is `bool`, and the type of the value being
-matched (`x`) is `int`, and a Boolean can never match an integer:
+O código a seguir produz este diagnóstico porque o tipo do
+padrão constante `(true)` é `bool`, e o tipo do valor sendo
+correspondido (`x`) é `int`, e um Boolean nunca pode corresponder a um inteiro:
 
 ```dart
 void f(int x) {
@@ -27,10 +26,10 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the type of the value is correct, then rewrite the pattern to be
-compatible:
+Se o tipo do valor estiver correto, então reescreva o padrão para ser
+compatível:
 
 ```dart
 void f(int x) {
@@ -38,8 +37,8 @@ void f(int x) {
 }
 ```
 
-If the type of the constant is correct, then rewrite the value to be
-compatible:
+Se o tipo da constante estiver correto, então reescreva o valor para ser
+compatível:
 
 ```dart
 void f(bool x) {

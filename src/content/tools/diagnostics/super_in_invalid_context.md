@@ -1,23 +1,22 @@
 ---
+ia-translate: true
 title: super_in_invalid_context
-description: >-
-  Details about the super_in_invalid_context
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico super_in_invalid_context produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Invalid context for 'super' invocation._
+_Contexto inválido para invocação de 'super'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the keyword `super` is used
-outside of an instance method.
+O analisador produz este diagnóstico quando a keyword `super` é usada
+fora de um método de instância.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `super` is used in a
-top-level function:
+O código a seguir produz este diagnóstico porque `super` é usado em uma
+função de nível superior:
 
 ```dart
 void f() {
@@ -25,6 +24,6 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Rewrite the code to not use `super`.
+Reescreva o código para não usar `super`.

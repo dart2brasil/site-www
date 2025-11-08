@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: no_adjacent_strings_in_list
-description: >-
-  Details about the no_adjacent_strings_in_list
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico no_adjacent_strings_in_list produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -22,15 +21,15 @@ _Don't use adjacent strings in a list literal._
 
 ## Description
 
-The analyzer produces this diagnostic when two string literals are
-adjacent in a list literal. Adjacent strings in Dart are concatenated
-together to form a single string, but the intent might be for each string
-to be a separate element in the list.
+O analisador produz este diagnóstico quando duas strings literais estão
+adjacentes em um literal de lista. Strings adjacentes em Dart são concatenadas
+para formar uma única string, mas a intenção pode ser que cada string
+seja um elemento separado na lista.
 
 ## Example
 
-The following code produces this diagnostic because the strings `'a'` and
-`'b'` are adjacent:
+O código a seguir produz este diagnóstico porque as strings `'a'` e
+`'b'` estão adjacentes:
 
 ```dart
 List<String> list = [[!'a' 'b'!], 'c'];
@@ -38,21 +37,21 @@ List<String> list = [[!'a' 'b'!], 'c'];
 
 ## Common fixes
 
-If the two strings are intended to be separate elements of the list, then
-add a comma between them:
+Se as duas strings são destinadas a ser elementos separados da lista, então
+adicione uma vírgula entre elas:
 
 ```dart
 List<String> list = ['a', 'b', 'c'];
 ```
 
-If the two strings are intended to be a single concatenated string, then
-either manually merge the strings:
+Se as duas strings são destinadas a ser uma única string concatenada, então
+mescle manualmente as strings:
 
 ```dart
 List<String> list = ['ab', 'c'];
 ```
 
-Or use the `+` operator to concatenate the strings:
+Ou use o operador `+` para concatenar as strings:
 
 ```dart
 List<String> list = ['a' + 'b', 'c'];

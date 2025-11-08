@@ -1,8 +1,6 @@
 ---
-title: Multi-platform apps
-description: >-
-  Use the Flutter framework to build beautiful native apps for many platforms
-  and operating systems from a single codebase.
+title: Aplicativos multiplataforma
+description: Use the Flutter framework to build beautiful native apps for many platforms and operating systems from a single codebase.
 showToc: false
 showBreadcrumbs: false
 ---
@@ -10,8 +8,8 @@ showBreadcrumbs: false
 <div class="side-by-side">
 <div class="centered-rows">
 
-We recommend the [Flutter framework][] for developing multi-platform native apps
-for mobile (iOS & Android), desktop (Windows, Linux, and macOS), and the web.
+Nós recomendamos o [Flutter framework][] para desenvolver aplicativos nativos
+multiplataforma para mobile (iOS & Android), desktop (Windows, Linux, e macOS), e para a web.
 
 Flutter is powered by the [Dart platform][].
 The [Dart runtimes](/overview#platform) provide an instant _hot reload_ developer cycle.
@@ -21,8 +19,8 @@ fast production code for any platform.
 
 [Flutter framework]: {{site.flutter}}
 [Dart platform]: /overview#platform
-[ahead-of-time (AOT) compiler]: /overview#native-platform
-[Dart-to-JavaScript compiler]: /overview#web-platform
+[compilador ahead-of-time (AOT)]: /overview#native-platform
+[compilador Dart-para-JavaScript]: /overview#web-platform
 
 <p style="margin-block-end: 2rem;">
   <a href="{{site.flutter-docs}}/get-started" class="outlined-button large-button" title="Get started with Flutter" aria-label="Get started with Flutter">

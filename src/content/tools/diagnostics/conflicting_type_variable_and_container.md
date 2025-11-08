@@ -1,40 +1,39 @@
 ---
+ia-translate: true
 title: conflicting_type_variable_and_container
-description: >-
-  Details about the conflicting_type_variable_and_container
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico conflicting_type_variable_and_container produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' can't be used to name both a type parameter and the class in which the type parameter is defined._
+_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto a classe na qual o parâmetro de tipo é definido._
 
-_'{0}' can't be used to name both a type parameter and the enum in which the type parameter is defined._
+_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto o enum no qual o parâmetro de tipo é definido._
 
-_'{0}' can't be used to name both a type parameter and the extension in which the type parameter is defined._
+_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto a extension na qual o parâmetro de tipo é definido._
 
-_'{0}' can't be used to name both a type parameter and the extension type in which the type parameter is defined._
+_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto o extension type no qual o parâmetro de tipo é definido._
 
-_'{0}' can't be used to name both a type parameter and the mixin in which the type parameter is defined._
+_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto o mixin no qual o parâmetro de tipo é definido._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class, mixin, or extension
-declaration declares a type parameter with the same name as the class,
-mixin, or extension that declares it.
+O analisador produz este diagnóstico quando uma declaração de classe, mixin ou extension
+declara um parâmetro de tipo com o mesmo nome da classe,
+mixin ou extension que o declara.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type parameter `C`
-has the same name as the class `C` of which it's a part:
+O código a seguir produz este diagnóstico porque o parâmetro de tipo `C`
+tem o mesmo nome da classe `C` da qual faz parte:
 
 ```dart
 class C<[!C!]> {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Rename either the type parameter, or the class, mixin, or extension:
+Renomeie o parâmetro de tipo ou a classe, mixin ou extension:
 
 ```dart
 class C<T> {}

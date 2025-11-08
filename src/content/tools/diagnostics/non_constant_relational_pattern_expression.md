@@ -1,8 +1,7 @@
 ---
+ia-translate: true
 title: non_constant_relational_pattern_expression
-description: >-
-  Details about the non_constant_relational_pattern_expression
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico non_constant_relational_pattern_expression produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,13 +10,13 @@ _The relational pattern expression must be a constant._
 
 ## Description
 
-The analyzer produces this diagnostic when the value in a relational
-pattern expression isn't a constant expression.
+O analisador produz este diagnóstico quando o valor em uma expressão de
+pattern relacional não é uma expressão constante.
 
 ## Example
 
-The following code produces this diagnostic because the operand of the `>`
-operator, `a`, isn't a constant:
+O código a seguir produz este diagnóstico porque o operando do operador `>`,
+`a`, não é uma constante:
 
 ```dart
 final a = 0;
@@ -29,7 +28,7 @@ void f(int x) {
 
 ## Common fixes
 
-Replace the value with a constant expression:
+Substitua o valor por uma expressão constante:
 
 ```dart
 const a = 0;

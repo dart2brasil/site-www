@@ -1,61 +1,61 @@
 ---
-title: Class modifiers reference
-description: >-
-  The allowed and disallowed combinations of class modifiers.
+ia-translate: true
+title: "Referência de Modificadores de Classe"
+description: "As combinações permitidas e não permitidas de modificadores de classe."
 prevpage:
   url: /language/class-modifiers
-  title: Class modifiers
+  title: Modificadores de classe
 nextpage:
   url: /language/concurrency
-  title: Concurrency in Dart
+  title: "Concorrência em Dart"
 ---
 
-This page contains reference information for
-[class modifiers](/language/class-modifiers).
+Esta página contém informações de referência para
+[modificadores de classe](/language/class-modifiers).
 
-## Valid combinations
+## Combinações válidas {:#valid-combinations}
 
-The valid combinations of class modifiers and their resulting capabilities are:
+As combinações válidas de modificadores de classe e suas capacidades resultantes são:
 
-| Declaration                 | [Construct][]? | [Extend][]? | [Implement][]? | [Mix in][]? | [Exhaustive][]? |
+| Declaração                  | [Construir][]? | [Estender][]? | [Implementar][]? | [Mix in][]? | [Exaustivo][]? |
 |-----------------------------|----------------|-------------|----------------|-------------|-----------------|
-| `class`                     | **Yes**        | **Yes**     | **Yes**        | No          | No              |
-| `base class`                | **Yes**        | **Yes**     | No             | No          | No              |
-| `interface class`           | **Yes**        | No          | **Yes**        | No          | No              |
-| `final class`               | **Yes**        | No          | No             | No          | No              |
-| `sealed class`              | No             | No          | No             | No          | **Yes**         |
-| `abstract class`            | No             | **Yes**     | **Yes**        | No          | No              |
-| `abstract base class`       | No             | **Yes**     | No             | No          | No              |
-| `abstract interface class`  | No             | No          | **Yes**        | No          | No              |
-| `abstract final class`      | No             | No          | No             | No          | No              |
-| `mixin class`               | **Yes**        | **Yes**     | **Yes**        | **Yes**     | No              |
-| `base mixin class`          | **Yes**        | **Yes**     | No             | **Yes**     | No              |
-| `abstract mixin class`      | No             | **Yes**     | **Yes**        | **Yes**     | No              |
-| `abstract base mixin class` | No             | **Yes**     | No             | **Yes**     | No              |
-| `mixin`                     | No             | No          | **Yes**        | **Yes**     | No              |
-| `base mixin`                | No             | No          | No             | **Yes**     | No              |
+| `class`                     | **Sim**        | **Sim**     | **Sim**        | Não         | Não             |
+| `base class`                | **Sim**        | **Sim**     | Não            | Não         | Não             |
+| `interface class`           | **Sim**        | Não         | **Sim**        | Não         | Não             |
+| `final class`               | **Sim**        | Não         | Não            | Não         | Não             |
+| `sealed class`              | Não            | Não         | Não            | Não         | **Sim**         |
+| `abstract class`            | Não            | **Sim**     | **Sim**        | Não         | Não             |
+| `abstract base class`       | Não            | **Sim**     | Não            | Não         | Não             |
+| `abstract interface class`  | Não            | Não         | **Sim**        | Não         | Não             |
+| `abstract final class`      | Não            | Não         | Não            | Não         | Não             |
+| `mixin class`               | **Sim**        | **Sim**     | **Sim**        | **Sim**     | Não             |
+| `base mixin class`          | **Sim**        | **Sim**     | Não            | **Sim**     | Não             |
+| `abstract mixin class`      | Não            | **Sim**     | **Sim**        | **Sim**     | Não             |
+| `abstract base mixin class` | Não            | **Sim**     | Não            | **Sim**     | Não             |
+| `mixin`                     | Não            | Não         | **Sim**        | **Sim**     | Não             |
+| `base mixin`                | Não            | Não         | Não            | **Sim**     | Não             |
 
 {: .table .table-striped .nowrap}
 
-[Construct]: /language/classes#using-constructors
-[Extend]: /language/extend
-[Implement]: /language/classes#implicit-interfaces
+[Construir]: /language/classes#using-constructors
+[Estender]: /language/extend
+[Implementar]: /language/classes#implicit-interfaces
 [Mix in]: /language/mixins
-[Exhaustive]: /language/branches#exhaustiveness-checking
+[Exaustivo]: /language/branches#exhaustiveness-checking
 
-## Invalid combinations
+## Combinações inválidas {:#invalid-combinations}
 
 Certain [combinations][] of modifiers aren't allowed:
 
-| Combination                                   | Reasoning                                                                                                                                       |
-|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| `base`, `interface`, and `final`              | All control the same two capabilities (`extend` and `implement`), so are mutually exclusive.                                                    |
-| `sealed` and `abstract`                       | Neither can be constructed, so are redundant together.                                                                                          |
-| `sealed` with `base`, `interface`, or `final` | `sealed` types already cannot be mixed in, extended or implemented from another library, so are redundant to combine with the listed modifiers. |
-| `mixin` and `abstract`                        | Neither can be constructed, so are redundant together.                                                                                          |
-| `mixin` and `interface`, `final`, or `sealed` | A `mixin` or `mixin class` declaration is intended to be mixed in, which the listed modifiers prevent.                                          |
-| `enum` and any modifiers                      | `enum` declarations can't be extended, implemented, mixed in, and can always be instantiated, so no modifiers apply to `enum` declarations.     |
-| `extension type` and any modifiers            | `extension type` declarations can't be extended or mixed in, and can only be implemented by other `extension type` declarations.                |
+| Combinação                                   | Raciocínio                                                                                                                               |
+|-----------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `base`, `interface` e `final`              | Todos controlam as mesmas duas capacidades (`extend` e `implement`), portanto, são mutuamente exclusivas.                                 |
+| `sealed` e `abstract`                       | Nenhum pode ser construído, portanto, são redundantes juntos.                                                                              |
+| `sealed` com `base`, `interface` ou `final` | Tipos `sealed` já não podem ter mixins (misturados), estendidos ou implementados de outra biblioteca, portanto, é redundante combiná-los com os modificadores listados. |
+| `mixin` e `abstract`                        | Nenhum pode ser construído, portanto, são redundantes juntos.                                                                              |
+| `mixin` e `interface`, `final` ou `sealed` | Uma declaração `mixin` ou `mixin class` destina-se a ser mixado (misturado), o que os modificadores listados impedem.                     |
+| `enum` e quaisquer modificadores             | As declarações `enum` não podem ser estendidas, implementadas, mixadas (misturadas) e sempre podem ser instanciadas, portanto, nenhum modificador se aplica a declarações `enum`.   |
+| `extension type` e quaisquer modificadores    | Declarações `extension type` não podem ser estendidas ou mixadas (misturadas) e só podem ser implementadas por outras declarações `extension type`.                 |
 
 {: .table .table-striped .nowrap}
 

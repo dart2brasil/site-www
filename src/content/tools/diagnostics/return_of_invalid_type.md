@@ -1,27 +1,26 @@
 ---
+ia-translate: true
 title: return_of_invalid_type
-description: >-
-  Details about the return_of_invalid_type
-  diagnostic produced by the Dart analyzer.
+description: "Detalhes sobre o diagnóstico return_of_invalid_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A value of type '{0}' can't be returned from the constructor '{1}' because it has a return type of '{2}'._
+_Um valor do tipo '{0}' não pode ser retornado do construtor '{1}' porque ele tem um tipo de retorno '{2}'._
 
-_A value of type '{0}' can't be returned from the function '{1}' because it has a return type of '{2}'._
+_Um valor do tipo '{0}' não pode ser retornado da função '{1}' porque ela tem um tipo de retorno '{2}'._
 
-_A value of type '{0}' can't be returned from the method '{1}' because it has a return type of '{2}'._
+_Um valor do tipo '{0}' não pode ser retornado do método '{1}' porque ele tem um tipo de retorno '{2}'._
 
 ## Description
 
-The analyzer produces this diagnostic when a method or function returns a
-value whose type isn't assignable to the declared return type.
+O analisador produz este diagnóstico quando um método ou função retorna um
+valor cujo tipo não é atribuível ao tipo de retorno declarado.
 
 ## Example
 
-The following code produces this diagnostic because `f` has a return type
-of `String` but is returning an `int`:
+O código a seguir produz este diagnóstico porque `f` tem um tipo de retorno
+de `String` mas está retornando um `int`:
 
 ```dart
 String f() => [!3!];
@@ -29,14 +28,14 @@ String f() => [!3!];
 
 ## Common fixes
 
-If the return type is correct, then replace the value being returned with a
-value of the correct type, possibly by converting the existing value:
+Se o tipo de retorno está correto, substitua o valor sendo retornado por um
+valor do tipo correto, possivelmente convertendo o valor existente:
 
 ```dart
 String f() => 3.toString();
 ```
 
-If the value is correct, then change the return type to match:
+Se o valor está correto, altere o tipo de retorno para corresponder:
 
 ```dart
 int f() => 3;
