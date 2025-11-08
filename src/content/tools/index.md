@@ -1,49 +1,51 @@
 ---
-title: Tools
-description: The tools that support the Dart language.
+ia-translate: true
+title: Ferramentas
+description: As ferramentas que suportam a linguagem Dart.
 ---
 
-When you're ready to create an app, get the SDK and tools for your app
-type. If you aren't sure which tools you need, **get the Flutter SDK.**
+Quando você estiver pronto para criar um aplicativo, obtenha o SDK e ferramentas para seu tipo
+de aplicativo. Se você não tem certeza de quais ferramentas você precisa, **obtenha o Flutter SDK.**
 
-| App type                  | Get started instructions                                     | Tool information                                           |
-|---------------------------|--------------------------------------------------------------|------------------------------------------------------------|
-| Flutter (mobile and more) | [Install Flutter]({{site.flutter-docs}}/get-started/install) | [Flutter tools]({{site.flutter-docs}}/using-ide)           |
-| Web app (non-Flutter)     | [Install the Dart SDK](/tools/sdk)                           | [General-purpose tools][] and [web tools](#web)            |
-| Server or command line    | [Install the Dart SDK](/tools/sdk)                           | [General-purpose tools][] and [specialized tools](#server) |
+| Tipo de aplicativo            | Instruções de início                                         | Informações sobre ferramentas                              |
+|---------------------------|--------------------------------------------------------------|-----------------------------------------------------------|
+| Flutter (mobile e mais) | [Instalar Flutter]({{site.flutter-docs}}/get-started/install) | [Ferramentas Flutter]({{site.flutter-docs}}/using-ide)           |
+| Aplicativo web (não-Flutter)     | [Instalar o Dart SDK](/tools/sdk)                           | [Ferramentas de propósito geral][] e [ferramentas web](#web)            |
+| Servidor ou linha de comando    | [Instalar o Dart SDK](/tools/sdk)                           | [Ferramentas de propósito geral][] e [ferramentas especializadas](#server) |
 
 {:.table .table-striped}
 
 [General-purpose tools]: #general-purpose-tools
+[Ferramentas de propósito geral]: #general-purpose-tools
 
 :::note
-  The Flutter SDK includes the full Dart SDK.
+  O Flutter SDK inclui o Dart SDK completo.
 :::
 
-## General-purpose tools
+## Ferramentas de propósito geral
 
-The following tools support the Dart language on all platforms.
+As seguintes ferramentas suportam a linguagem Dart em todas as plataformas.
 
 * [DartPad](#dartpad)
-* [IDEs and editors](#editors)
-* [Command-line tools](#cli)
+* [IDEs e editores](#editors)
+* [Ferramentas de linha de comando](#cli)
 
 
 ### DartPad
 
 <img src="/assets/img/dartpad-hello.png" alt="DartPad Hello World" width="200px" align="right" />
 
-[DartPad](/tools/dartpad) is
-a great, no-download-required way to learn Dart syntax
-and to experiment with Dart language features.
-It supports Dart's core libraries,
-except for VM libraries such as `dart:io`.
+[DartPad](/tools/dartpad) é
+uma ótima maneira, sem necessidade de download, de aprender a sintaxe Dart
+e experimentar recursos da linguagem Dart.
+Ele suporta as bibliotecas principais do Dart,
+exceto bibliotecas de VM como `dart:io`.
 
 
 <a id="ides-and-editors"></a>
-### IDEs and editors {:#editors}
+### IDEs e editores {:#editors}
 
-Dart plugins exist for these commonly used IDEs.
+Plugins Dart existem para essas IDEs comumente usadas.
 
 <ul class="cols2">
 <li>
@@ -53,7 +55,7 @@ Dart plugins exist for these commonly used IDEs.
 <li>
 <img src="/assets/img/tools/intellij-idea.svg" class="list-image" alt="IntelliJ logo">
 <a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
-(and other JetBrains IDEs)</b></a>
+(e outras IDEs JetBrains)</b></a>
 </li>
 <li>
 <img src="/assets/img/tools/vscode.svg" class="list-image" alt="Visual Studio Code logo">
@@ -61,8 +63,8 @@ Dart plugins exist for these commonly used IDEs.
 </li>
 </ul>
 
-The following Dart plugins are also available,
-thanks to the Dart community.
+Os seguintes plugins Dart também estão disponíveis,
+graças à comunidade Dart.
 
 <ul class="cols2">
 <li>
@@ -79,43 +81,43 @@ thanks to the Dart community.
 </li>
 </ul>
 
-A [Language Server Protocol implementation][LSP] is also available for
-[LSP-capable editors][] that don't have specific Dart extensions.
+Uma [implementação do Language Server Protocol][LSP] também está disponível para
+[editores compatíveis com LSP][LSP-capable editors] que não têm extensões específicas do Dart.
 
 [LSP]: {{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
-### Command-line tools {:#cli}
+### Ferramentas de linha de comando {:#cli}
 
-The Dart SDK includes the following general-purpose `dart` tool:
+O Dart SDK inclui a seguinte ferramenta `dart` de propósito geral:
 
 [`dart`](/tools/dart-tool)
-: A command-line interface (CLI) for creating, formatting, analyzing,
-  testing, documenting, compiling, and running Dart code,
-  as well as working with the [pub package manager](/tools/pub/packages).
+: Uma interface de linha de comando (CLI) para criar, formatar, analisar,
+  testar, documentar, compilar e executar código Dart,
+  bem como trabalhar com o [gerenciador de pacotes pub](/tools/pub/packages).
 
 
-### Debugging
+### Depuração
 
 [Dart DevTools](/tools/dart-devtools)
-: A suite of debugging and performance tools.
+: Um conjunto de ferramentas de depuração e desempenho.
 
 
-## Tool for developing web apps {:#web}
+## Ferramenta para desenvolver aplicativos web {:#web}
 
-The following tool supports developing web apps:
+A seguinte ferramenta suporta o desenvolvimento de aplicativos web:
 
 [`webdev`](/tools/webdev)
-: A CLI to build and serve Dart web apps.
+: Uma CLI para construir e servir aplicativos web Dart.
 
-## Tools for developing command-line apps and servers {:#server}
+## Ferramentas para desenvolver aplicativos de linha de comando e servidores {:#server}
 
-The following tools support developing or running
-command-line apps and servers:
+As seguintes ferramentas suportam o desenvolvimento ou execução de
+aplicativos de linha de comando e servidores:
 
 [`dart run`](/tools/dart-run)
-: Use the `dart run` command to run uncompiled Dart command-line apps
-  and some kinds of snapshots.
+: Use o comando `dart run` para executar aplicativos Dart de linha de comando não compilados
+  e alguns tipos de snapshots.
 
 [`dartaotruntime`](/tools/dartaotruntime)
-: Use this Dart runtime to run AOT snapshots.
+: Use este runtime Dart para executar snapshots AOT.
