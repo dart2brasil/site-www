@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 106 files (with ia-translate: true metadata)
+- **Remaining:** ~839 files
+- **Progress:** 11.2%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 51 (48 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 106 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,25 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 1: Complete Pub Documentation (11 files - NEW!)
+41. ✅ `src/content/tools/pub/index.md` - Added ia-translate + PT-BR frontmatter
+42. ✅ `src/content/tools/pub/packages.md` - Added ia-translate + completed English sections
+43. ✅ `src/content/tools/pub/dependencies.md` - Added ia-translate + completed English sections
+44. ✅ `src/content/tools/pub/pubspec.md` - Added ia-translate + PT-BR frontmatter
+45. ✅ `src/content/tools/pub/package-layout.md` - Added ia-translate + PT-BR frontmatter
+46. ✅ `src/content/tools/pub/versioning.md` - Added ia-translate + PT-BR frontmatter
+47. ✅ `src/content/tools/pub/publishing.md` - Added ia-translate + PT-BR frontmatter
+48. ✅ `src/content/tools/pub/workspaces.md` - Added ia-translate + PT-BR frontmatter
+49. ✅ `src/content/tools/pub/custom-package-repositories.md` - Added ia-translate + PT-BR frontmatter
+50. ✅ `src/content/tools/pub/environment-variables.md` - Added ia-translate + PT-BR frontmatter
+51. ✅ `src/content/tools/pub/automated-publishing.md` - Added ia-translate + PT-BR frontmatter
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ✅ **Pub Documentation:** 23/23 core files done (100%) 🎉
+- ⏳ **Tools:** 26/~776 files (3.4%)
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,12 +114,13 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (51 files this session including merge)
+Progress: 11.2% complete (106/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
 - ✅ Libraries section 100% COMPLETE! 🎉
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
+- ✅ Pub Documentation section 100% COMPLETE! 🎉 (23 core + command files)
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)
