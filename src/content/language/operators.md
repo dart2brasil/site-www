@@ -63,7 +63,7 @@ c ? a : b
 a is T
 ```
 
-## Exemplo de precedência de operadores
+## Exemplo de precedência de operadores {:#operator-precedence-example}
 
 Na [tabela de operadores](#operators),
 cada operador tem precedência maior que os operadores nas linhas
