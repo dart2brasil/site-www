@@ -200,7 +200,7 @@ então a função cara `readThermometer()` nunca é chamada:
 ```
 
 
-## Final e const
+## Final e const {:#final-and-const}
 
 Se você nunca pretende mudar uma variável, use `final` ou `const`, ou
 em vez de `var` ou além de um tipo. Uma variável final pode ser definida
