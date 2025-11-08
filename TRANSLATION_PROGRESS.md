@@ -2,23 +2,23 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 106 files (with ia-translate: true metadata)
-- **Remaining:** ~839 files
-- **Progress:** 11.2%
+- **Translated:** 113 files (with ia-translate: true metadata)
+- **Remaining:** ~832 files
+- **Progress:** 12.0%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 53 (50 new + 3 from merged PR)
+- **Files translated this session:** 60 (37 base + 3 from merged PR + 11 pub + 13 Section 2 diagnostics + 7 Section 3 diagnostics)
 - **Starting count:** 55 files
-- **Current count:** 108 files
+- **Current count:** 113 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
 - ✅ Merged upstream `dart-lang/site-www` main branch
 - ✅ Created `TRANSLATION_PROGRESS.md` tracker
 
-### Documentation Files Translated (This Session - 40 files)
+### Documentation Files Translated (This Session - 60 files)
 
 #### Initial Session (23 files)
 1. ✅ `src/content/interop/js-interop/mock.md`
@@ -66,7 +66,7 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
-#### Section 1: Complete Pub Documentation (11 files - NEW!)
+#### Section 1: Complete Pub Documentation (11 files)
 41. ✅ `src/content/tools/pub/index.md` - Added ia-translate + PT-BR frontmatter
 42. ✅ `src/content/tools/pub/packages.md` - Added ia-translate + completed English sections
 43. ✅ `src/content/tools/pub/dependencies.md` - Added ia-translate + completed English sections
@@ -78,29 +78,39 @@
 49. ✅ `src/content/tools/pub/custom-package-repositories.md` - Added ia-translate + PT-BR frontmatter
 50. ✅ `src/content/tools/pub/environment-variables.md` - Added ia-translate + PT-BR frontmatter
 51. ✅ `src/content/tools/pub/automated-publishing.md` - Added ia-translate + PT-BR frontmatter
+
 #### Section 2: Diagnostic Errors - abi/abstract/address/always (13 files)
-41. ✅ `src/content/tools/diagnostics/abi_specific_integer_invalid.md` - ABI validation errors
-42. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_extra.md` - Multiple ABI mapping
-43. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_missing.md` - Missing ABI mapping
-44. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_unsupported.md` - Unsupported ABI types
-45. ✅ `src/content/tools/diagnostics/abstract_field_initializer.md` - Abstract field init
-46. ✅ `src/content/tools/diagnostics/abstract_sealed_class.md` - Abstract/sealed conflicts
-47. ✅ `src/content/tools/diagnostics/abstract_super_member_reference.md` - Abstract member invocation
-48. ✅ `src/content/tools/diagnostics/address_position.md` - Address expression usage
-49. ✅ `src/content/tools/diagnostics/address_receiver.md` - Address receiver validation
-50. ✅ `src/content/tools/diagnostics/always_declare_return_types.md` - Return type lint rule
-51. ✅ `src/content/tools/diagnostics/always_put_control_body_on_new_line.md` - Control flow lint
-52. ✅ `src/content/tools/diagnostics/always_put_required_named_parameters_first.md` - Parameter ordering
-53. ✅ `src/content/tools/diagnostics/always_use_package_imports.md` - Package import lint
+52. ✅ `src/content/tools/diagnostics/abi_specific_integer_invalid.md` - ABI validation errors
+53. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_extra.md` - Multiple ABI mapping
+54. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_missing.md` - Missing ABI mapping
+55. ✅ `src/content/tools/diagnostics/abi_specific_integer_mapping_unsupported.md` - Unsupported ABI types
+56. ✅ `src/content/tools/diagnostics/abstract_field_initializer.md` - Abstract field init
+57. ✅ `src/content/tools/diagnostics/abstract_sealed_class.md` - Abstract/sealed conflicts
+58. ✅ `src/content/tools/diagnostics/abstract_super_member_reference.md` - Abstract member invocation
+59. ✅ `src/content/tools/diagnostics/address_position.md` - Address expression usage
+60. ✅ `src/content/tools/diagnostics/address_receiver.md` - Address receiver validation
+61. ✅ `src/content/tools/diagnostics/always_declare_return_types.md` - Return type lint rule
+62. ✅ `src/content/tools/diagnostics/always_put_control_body_on_new_line.md` - Control flow lint
+63. ✅ `src/content/tools/diagnostics/always_put_required_named_parameters_first.md` - Parameter ordering
+64. ✅ `src/content/tools/diagnostics/always_use_package_imports.md` - Package import lint
+
+#### Section 3: Diagnostic Errors - ambiguous/annotate/annotation (7 files)
+65. ✅ `src/content/tools/diagnostics/ambiguous_export.md`
+66. ✅ `src/content/tools/diagnostics/ambiguous_extension_member_access.md`
+67. ✅ `src/content/tools/diagnostics/ambiguous_import.md`
+68. ✅ `src/content/tools/diagnostics/ambiguous_set_or_map_literal_both.md`
+69. ✅ `src/content/tools/diagnostics/ambiguous_set_or_map_literal_either.md`
+70. ✅ `src/content/tools/diagnostics/annotate_overrides.md`
+71. ✅ `src/content/tools/diagnostics/annotation_on_pointer_field.md`
 
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
 - ✅ **Pub Documentation:** 23/23 core files done (100%) 🎉
-- ⏳ **Tools:** 26/~776 files (3.4%)
-- ⏳ **Tools:** 28/~776 files (3.6%)
-  - ✅ Section 2 (Diagnostic Errors): 13 files complete
+- ⏳ **Tools:** 35/~776 files (4.5%)
+  - ✅ **Section 2 (Diagnostic Errors - abi/abstract/address/always):** 13/13 files (100%) 🎉
+  - ✅ **Section 3 (Diagnostic Errors - ambiguous/annotate/annotation):** 7/7 files (100%) 🎉
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -109,11 +119,13 @@ Major tools documentation files completed:
 - ✅ IDE support: vs-code.md, jetbrains-plugin.md (already done)
 - ✅ DartPad: troubleshoot.md, privacy.md
 - ✅ Configuration: analysis.md, experiment-flags.md
+- ✅ Pub documentation: Complete (11 core files)
+- ✅ Diagnostic errors: Sections 2 & 3 complete (20 files)
 
 ## Files Still Needing Translation
 
 ### Large Sections
-- **Tools documentation:** ~761 files remaining (mostly diagnostic error codes)
+- **Tools documentation:** ~741 files remaining (mostly diagnostic error codes)
 - **Web, server, interop:** ~200+ files
 - **Resources & guides:** ~50+ files
 - **Effective Dart:** ~30+ files
@@ -127,11 +139,11 @@ Following `.claude/agents/dart-docs-translator.md`:
 - ✅ Commit files individually with clear messages
 
 ## Branch
-`claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
+`claude/section-prompts-prompt-1-011CUuWKpTo7cMRWsw3p5Zdh` (merged with main)
 
 ## Last Updated
-Session: 2025-11-08 (53 files this session including merge)
-Progress: 11.4% complete (108/945 files)
+Session: 2025-11-08 (60 files this session including merge)
+Progress: 12.0% complete (113/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
@@ -140,3 +152,5 @@ Progress: 11.4% complete (108/945 files)
 - ✅ Pub Documentation section 100% COMPLETE! 🎉 (23 core + command files)
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)
+- ✅ Section 2 (Diagnostic Errors - abi/abstract/address/always) 100% COMPLETE! 🎉 (13 files)
+- ✅ Section 3 (Diagnostic Errors - ambiguous/annotate/annotation) 100% COMPLETE! 🎉 (7 files)
