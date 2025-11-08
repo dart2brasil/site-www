@@ -1,6 +1,7 @@
 ---
-title: Package layout conventions
-breadcrumb: Package layout
+ia-translate: true
+title: Convenções de layout de pacotes
+breadcrumb: Layout de pacotes
 description: >-
   Aprenda mais sobre a estrutura de diretórios usada
   pela ferramenta de gerenciamento de pacotes do Dart, pub.
