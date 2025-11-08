@@ -1,8 +1,9 @@
 ---
-title: Customizing static analysis
-shortTitle: Static analysis
+ia-translate: true
+title: Personalizando análise estática
+shortTitle: Análise estática
 description: >-
-  Use an analysis options file and code comments to customize static analysis.
+  Use um arquivo de opções de análise e comentários de código para personalizar a análise estática.
 bodyClass: highlight-diagnostics
 ---
 
