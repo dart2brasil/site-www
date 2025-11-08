@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Termos de uso
-description: Os termos de uso para dartbrasil.dev.
-toc: false
+title: Terms of use
+description: The terms of use for dart.dev.
+showToc: false
+showBreadcrumbs: false
 skipFreshness: true
 ---
 

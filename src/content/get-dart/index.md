@@ -1,18 +1,21 @@
 ---
-ia-translate: true
-title: Obtenha o SDK do Dart
+title: Get the Dart SDK
+shortTitle: Get Dart
 description: >-
-  Obtenha as bibliotecas e as ferramentas de linha de comando necessárias para desenvolver
-  aplicativos Dart para web, linha de comando e servidor.
-channel-list: [Estável, Beta, Desenvolvimento]
-js: [{url: '/assets/js/get-dart/install.js', defer: true}]
+  Get the libraries and command-line tools that you need to develop
+  Dart web, command-line, and server apps.
+channelList: [Stable, Beta, Dev]
 ---
 
 Esta página descreve como baixar o SDK do Dart.
 O SDK do Dart inclui as bibliotecas e as ferramentas de linha de comando que
 você precisa para desenvolver aplicativos Dart para linha de comando, servidor e web.
 
-Para saber mais sobre o SDK do Dart, consulte a [Visão geral do SDK do Dart](/tools/sdk).
+The Dart team supports only the latest stable release of the SDK.
+For full details on the SDK release lifecycle and supported versions,
+check out the [SDK support policy](/tools/sdk#support-policy).
+
+To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 
 :::tip
 Se você instalou ou planeja [instalar o SDK do Flutter][install-flutter], ele
@@ -24,27 +27,17 @@ inclui o SDK completo do Dart. Você não precisa instalar o Dart separadamente 
 O Dart suporta as seguintes arquiteturas de hardware e versões de plataforma
 para desenvolver e executar código Dart.
 
-{% assign yes = '<span class="material-symbols system-support" style="color: #158477" aria-label="Suportado" title="Suportado">verified</span>' %}
-{% assign no = '<span class="material-symbols system-support" style="color: #D43324" aria-label="Não suportado" title="Não suportado">dangerous</span>' %}
-{% assign dep = '<span class="material-symbols system-support" style="color: #EF6C00" aria-label="Descontinuado" title="Descontinuado">error</span>' %}
-{% assign rem = '<span class="material-symbols system-support" style="color: #E25012" aria-label="Descontinuação final" title="Descontinuação final">report</span>' %}
-{% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Não existe" title="Não existe">do_not_disturb_on</span>' %}
-{% assign macversions = 'Três versões mais recentes do macOS:<br>' %}
-{% for version in macos limit:3 %}
-{%- if version.eol == false -%}
-{% capture maclinkversion -%}
-[{{version.codename}}]({{version.link}}) ({{version.cycle}})
-{%- endcapture -%}
-{% assign macversions = macversions | append: maclinkversion %}
-{%- unless forloop.last -%}{% assign macversions = macversions | append: ', ' %}{% endunless -%}
-{%- endif %}
-{% endfor %}
+{% assign yes = '<span class="material-symbols system-support" style="color: #158477" aria-label="Supported" title="Supported">verified</span>' %}
+{% assign no = '<span class="material-symbols system-support" style="color: #D43324" aria-label="Not supported" title="Not supported">dangerous</span>' %}
+{% assign dep = '<span class="material-symbols system-support" style="color: #EF6C00" aria-label="Deprecated" title="Deprecated">error</span>' %}
+{% assign rem = '<span class="material-symbols system-support" style="color: #E25012" aria-label="Final deprecation" title="Final deprecation">report</span>' %}
+{% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Does not exist" title="Does not exist">do_not_disturb_on</span>' %}
 
-| Plataforma | x64 | IA32 (x86) | Arm32 | Arm64 | RISC-V (RV64GC) | Versões do SO |
-|---|:---:|:---:|:---:|:---:|:---:|---|
-| Windows | {{yes}} | {{rem}} | {{no}} | {{yes}} | {{na}} | [10], [11][] |
-| Linux | {{yes}} | {{rem}} | {{yes}} | {{yes}} | {{yes}} | [Debian stable][],<br>[Ubuntu LTS][] com suporte padrão |
-| macOS | {{yes}} | {{no}} | {{na}} | {{yes}} | {{na}} | {{macversions}} |
+| Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                                                                                                                                                                  |
+|----------|:-------:|:----------:|:-------:|:-------:|:---------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Windows  | {{yes}} |   {{no}}   | {{no}}  | {{yes}} |     {{na}}      | [Windows 11][], [Windows 10][]                                                                                                                                                                               |
+| Linux    | {{yes}} |   {{no}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support                                                                                                                                                  |
+| macOS    | {{yes}} |   {{no}}   | {{na}}  | {{yes}} |     {{na}}      | Latest three versions of macOS:<br>{% for version in supportedMacosVersions limit:3 %}[{{version.codename}}]({{version.link}}) ({{version.cycle}}){%- unless forloop.last -%}, {% endunless -%} {% endfor %} |
 
 {:.table .table-striped}
 
@@ -54,7 +47,12 @@ para desenvolver e executar código Dart.
 {{no}} Não suportado em todos os canais.<br>
 {{na}} Não suportado pelo sistema operacional.<br>
 
-## Escolha uma opção de instalação {:#choose-an-installation-option}
+[Windows 10]: https://www.microsoft.com/en-us/software-download/windows10
+[Windows 11]: https://www.microsoft.com/en-us/software-download/windows11
+[Debian stable]: https://www.debian.org/releases
+[Ubuntu LTS]: https://wiki.ubuntu.com/Releases
+
+## Choose an installation option
 
 Para instalar e atualizar o SDK do Dart a partir do canal estável,
 escolha uma das seguintes opções:
@@ -72,8 +70,8 @@ escolha uma das seguintes opções:
 
 1. [Compile o SDK a partir do código-fonte][build-source].
 
-:::warning Aviso
-{% include './archive/_sdk-terms.md' %}
+:::warning Notice
+{% render 'install/sdk-terms.md' %}
 :::
 
 {% comment %}
@@ -89,32 +87,27 @@ use o gerenciador de pacotes apropriado para sua plataforma de desenvolvimento.
 Para atualizar o SDK do Dart,
 execute o mesmo comando para instalar o SDK do Dart do seu gerenciador de pacotes.
 
-<ul class="tabs__top-bar">
-  <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
-  <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
-  <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
-</ul>
-<div id="tab-sdk-install-windows" class="tabs__content current">
+<Tabs key="dev-os" wrapped="true">
+  <Tab name="Windows">
 
-{% include 'install/windows.md' %}
+  {% render 'install/windows.md', site: site %}
 
-</div>
+  </Tab>
+  <Tab name="Linux">
 
-<div id="tab-sdk-install-linux" class="tabs__content">
+  {% render 'install/linux.md', site: site %}
 
-{% include 'install/linux.md' %}
+  </Tab>
+  <Tab name="macOS">
 
-</div>
+  {% render 'install/macos.md', site: site %}
 
-<div id="tab-sdk-install-mac" class="tabs__content">
-
-{% include 'install/macos.md' %}
-
-</div>
+  </Tab>
+</Tabs>
 
 ## Referência de canais de lançamento {:#release-channels}
 
-{% for channel in channel-list %}
+{% for channel in page.channelList %}
 {% assign chnl = channel | downcase -%}
 {% assign current="`[calculando]`{:.build-rev-" | append: chnl | append: "}" %}
 {% case chnl %}
@@ -169,7 +162,3 @@ siga as [instruções nesta página](#install).
 [dart-docker]: https://hub.docker.com/_/dart
 [dl-sdk]: /get-dart/archive
 [install-flutter]: {{site.flutter-docs}}/get-started/install
-[10]: https://www.microsoft.com/en-us/software-download/windows10%20
-[11]: https://www.microsoft.com/en-us/software-download/windows11
-[Debian stable]: https://www.debian.org/releases
-[Ubuntu LTS]: https://wiki.ubuntu.com/Releases

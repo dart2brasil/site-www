@@ -1,7 +1,9 @@
 ---
-ia-translate: true
-title: 'Interop com Java usando package:jnigen'
-description: 'Para usar Java em seu programa Dart, use o package:jnigen.'
+title: 'Java interop using package:jnigen'
+shortTitle: Java interop
+breadcrumb: Java
+description: >-
+  To use Java in your Dart program, use package:jnigen.
 example: 'https://github.com/HosseinYousefi/jnigen_example/tree/main'
 ---
 
@@ -31,15 +33,12 @@ gere ligações para Kotlin também.
 
 ## Exemplo simples em Java {:#simple-java-example}
 
-Este guia o guiará através de [um exemplo]({{example}})
-que usa `package:jnigen` para gerar ligações para uma classe simples.
+This guide walks you through [an example]({{page.example}})
+that uses `package:jnigen` to generate bindings for a simple class.
 
 ### Pré-requisitos {:#prerequisites}
 
 - JDK
-- [Maven][Maven]
-
-[Maven]: https://maven.apache.org/
 
 ### Configurando `jnigen` {:#configure-jnigen}
 
@@ -93,9 +92,9 @@ especifique o arquivo de configuração usando a opção `--config`:
 $ dart run jnigen --config jnigen.yaml
 ```
 
-Neste exemplo, isso gera
-[lib/example.dart]({{example}}/lib/example.dart), exatamente
-como você especificou em `jnigen.yaml`.
+In this example, this generates
+[`lib/example.dart`]({{page.example}}/lib/example.dart), just
+as you specified in `jnigen.yaml`.
 
 Este arquivo contém uma classe chamada `Example`,
 que possui um método estático chamado `sum`,
@@ -103,10 +102,10 @@ assim como o arquivo Java.
 
 ### Usando as ligações {:#use-the-bindings}
 
-Agora você está pronto para carregar e interagir com a biblioteca gerada.
-O aplicativo de exemplo, [bin/sum.dart]({{example}}/bin/sum.dart), recebe
-dois números como argumentos e imprime sua soma.
-Usar o método `Example.sum` é idêntico ao Java.
+Now you're ready to load and interact with the generated library.
+The example app, [`bin/sum.dart`]({{page.example}}/bin/sum.dart), gets 
+two numbers as arguments and prints their sum. 
+Using the `Example.sum` method is identical to Java.
 
 ```dart
 // a e b são argumentos inteiros

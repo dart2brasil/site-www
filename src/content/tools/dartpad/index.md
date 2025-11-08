@@ -20,9 +20,7 @@ Se você tiver problemas ao usar o DartPad, consulte as
 
 Veja como o DartPad se parece quando configurado para executar Dart:
 
-<img
-   src="/assets/img/dartpad-hello.png"
-   alt="Mostra como um aplicativo Hello World se parece no DartPad">
+<img src="/assets/img/dartpad-hello.png" alt="Showcases what a Hello World app looks like in DartPad"/>
 
 
 ## Suporte à biblioteca {:#library-support}

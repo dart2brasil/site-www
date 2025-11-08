@@ -1,8 +1,8 @@
 ---
 ia-translate: true
 title: dart test
-description: Ferramenta de linha de comando para testar projetos Dart.
-toc: false
+description: Command-line tool for testing Dart projects.
+showToc: false
 ---
 
 O comando `dart test` executa testes que

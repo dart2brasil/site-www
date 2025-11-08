@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Folha de dicas do Dart
-description: Aprenda interativamente (ou reaprenda) algumas das funcionalidades únicas do Dart.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+title: Dart cheatsheet
+breadcrumb: Cheatsheet
+description: Interactively learn (or relearn) some of Dart's unique features.
+maxTocDepth: 2
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
@@ -12,11 +12,10 @@ mas tem algumas funcionalidades únicas.
 Este tutorial guia você pelas
 funcionalidades mais importantes desta linguagem.
 
-Os editores incorporados neste tutorial têm trechos de código parcialmente
-concluídos.
-Você pode usar esses editores para testar seu conhecimento, completando o código e
-clicando no botão **Executar**. Os editores também contêm código de teste completo;
-**não edite o código de teste**, mas sinta-se à vontade para estudá-lo para aprender sobre testes.
+The embedded editors in this tutorial have partially completed code snippets.
+You can use these editors to test your knowledge by completing the code and
+clicking the **Run** button. The editors also contain thorough test code;
+**don't edit the test code**, but feel free to study it to learn about testing.
 
 Se precisar de ajuda, expanda o menu suspenso **Solução para...** abaixo de cada DartPad
 para uma explicação e a resposta.
@@ -39,19 +38,19 @@ Aqui estão alguns exemplos de uso da interpolação de strings:
 | `'${"palavra".toUpperCase()}'` | `'PALAVRA'`                           |
 | `'$meuObjeto'`               | O valor de `meuObjeto.toString()` |
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 A função a seguir recebe dois inteiros como parâmetros.
 Faça com que ela retorne uma string contendo ambos os inteiros separados por um espaço.
 Por exemplo, `stringify(2, 3)` deve retornar `'2 3'`.
 
-```dartpad
+```dartpad theme="dark"
 String stringify(int x, int y) {
   TODO('Retorne uma string formatada aqui');
 }
 
 
-// Testa sua solução (Não edite!):
+// Tests your solution (Don't edit!):
 void main() {
   assert(stringify(2, 3) == '2 3',
       "Seu método stringify retornou '${stringify(2, 3)}' em vez de '2 3'");
@@ -111,7 +110,7 @@ int? a; // The initial value of a is null.
 Para saber mais sobre segurança nula no Dart,
 leia o [guia de segurança nula](/null-safety).
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Declare duas variáveis neste DartPad:
 
@@ -120,15 +119,15 @@ Declare duas variáveis neste DartPad:
 
 Ignore todos os erros iniciais no DartPad.
 
-```dartpad
-// TODO: Declare as duas variáveis aqui
+```dartpad theme="dark"
+// TODO: Declare the two variables here
 
 
-// Testa sua solução (Não edite!):
+// Tests your solution (Don't edit!):
 void main() {
   try {
     if (name == 'Jane' && address == null) {
-      // verifica se "name" é anulável
+      // Verify that "name" is nullable.
       name = null;
       print('Sucesso!');
     } else {
@@ -181,15 +180,15 @@ print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Tente substituir os operadores `??=` e `??`
 para implementar o comportamento descrito no seguinte trecho.
 
 Ignore todos os erros iniciais no DartPad.
 
-```dartpad
-String? foo = 'uma string';
+```dartpad theme="dark"
+String? foo = 'a string';
 String? bar; // = null
 
 // Substitua um operador que faz com que 'uma string' seja atribuída a baz.
@@ -205,20 +204,19 @@ void updateSomeVars() {
 void main() {
   try {
     updateSomeVars();
-    
-    if (foo != 'uma string') {
-      print('Parece que foo acabou com o valor errado de alguma forma.');
-    } else if (bar != 'uma string') {
-      print('Parece que bar acabou com o valor errado.');
-    } else if (baz != 'uma string') {
-      print('Parece que baz acabou com o valor errado.');
+
+    if (foo != 'a string') {
+      print('Looks like foo somehow ended up with the wrong value.');
+    } else if (bar != 'a string') {
+      print('Looks like bar ended up with the wrong value.');
+    } else if (baz != 'a string') {
+      print('Looks like baz ended up with the wrong value.');
     } else {
       print('Sucesso!');
     }
   } catch (e) {
     print('Exceção: ${e.runtimeType}.');
   }
-  
 }
 ```
 
@@ -233,7 +231,7 @@ void main() {
   ```dart
   // Substitua um operador que faz com que 'uma string' seja atribuída a baz.
   String? baz = foo ?? bar;
-  
+
   void updateSomeVars() {
     // Substitua um operador que faz com que 'uma string' seja atribuída a bar.
     bar ??= 'uma string';
@@ -267,18 +265,17 @@ Você pode encadear vários usos de `?.` em uma única expressão:
 myObject?.someProperty?.someMethod()
 ```
 
-O código anterior retorna nulo (e nunca chama `algumMetodo()`) se
-`meuObjeto` ou `meuObjeto.algumaPropriedade` for
-nulo.
+The preceding code returns null (and never calls `someMethod()`) if either
+`myObject` or `myObject.someProperty` is null.
 
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
-A função a seguir recebe uma string anulável como parâmetro.
-Tente usar o acesso condicional de propriedade para fazer com que ela
-retorne a versão em maiúsculas de `str`, ou `null` se `str` for `null`.
+The following function takes a nullable string as a parameter.
+Try using conditional property access to make it
+return the uppercase version of `str`, or `null` if `str` is `null`.
 
-```dartpad
+```dartpad theme="dark"
 String? upperCaseIt(String? str) {
   // TODO: Tente acessar condicionalmente o método `toUpperCase` aqui.
 }
@@ -296,7 +293,7 @@ void main() {
   } catch (e) {
     print('Tentei chamar upperCaseIt(null) e obtive uma exceção: \n ${e.runtimeType}.');
   }
-  
+
   try {
     String? two = upperCaseIt('uma string');
     if (two == null) {
@@ -336,11 +333,7 @@ Você pode criá-los usando literais:
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
-final aMapOfStringsToInts = {
-  'one': 1,
-  'two': 2,
-  'three': 3,
-};
+final aMapOfStringsToInts = {'one': 1, 'two': 2, 'three': 3};
 ```
 
 A inferência de tipo do Dart pode atribuir tipos a essas variáveis para você.
@@ -364,13 +357,13 @@ mas ainda quer que a lista seja `List<TipoBase>`:
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Tente definir as seguintes variáveis para os valores indicados. Substitua os valores nulos existentes.
 
-```dartpad
-// Atribua a esta uma lista contendo 'a', 'b' e 'c' nessa ordem:
-final umaListaDeStrings = null;
+```dartpad theme="dark"
+// Assign this a list containing 'a', 'b', and 'c' in that order:
+final aListOfStrings = null;
 
 // Atribua a este um set contendo 3, 4 e 5:
 final umSetDeInts = null;
@@ -391,13 +384,13 @@ final umMapVazioDeDoublesParaInts = null;
 // Testa sua solução (Não edite!):
 void main() {
   final errs = <String>[];
-  
-  if (umaListaDeStrings is! List<String>) {
-    errs.add('umaListaDeStrings deve ter o tipo List<String>.');
-  } else if (umaListaDeStrings.length != 3) {
-    errs.add('umaListaDeStrings tem ${umaListaDeStrings.length} itens, \n em vez dos 3 esperados.');
-  } else if (umaListaDeStrings[0] != 'a' || umaListaDeStrings[1] != 'b' || umaListaDeStrings[2] != 'c') {
-    errs.add('umaListaDeStrings não contém os valores corretos (\'a\', \'b\', \'c\').');
+
+  if (aListOfStrings is! List<String>) {
+    errs.add('aListOfStrings should have the type List<String>.');
+  } else if (aListOfStrings.length != 3) {
+    errs.add('aListOfStrings has ${aListOfStrings.length} items in it, \n rather than the expected 3.');
+  } else if (aListOfStrings[0] != 'a' || aListOfStrings[1] != 'b' || aListOfStrings[2] != 'c') {
+    errs.add('aListOfStrings doesn\'t contain the correct values (\'a\', \'b\', \'c\').');
   }
 
   if (umSetDeInts is! Set<int>) {
@@ -445,9 +438,9 @@ void main() {
 <details>
   <summary>Solução para o exemplo de literais de coleção</summary>
 
-  Adicione um literal de lista, *set* ou *map* após cada sinal de igual.
-  Lembre-se de especificar os tipos para as declarações vazias,
-  já que eles não podem ser inferidos.
+  Add a list, set, or map literal after each equal sign (`=`).
+  Remember to specify the types for the empty declarations,
+  since they can't be inferred.
 
   ```dart
   // Atribua a esta uma lista contendo 'a', 'b' e 'c' nessa ordem:
@@ -494,25 +487,25 @@ Aqui está uma maneira mais simples de escrever esse código:
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Tente terminar as declarações a seguir, que usam a sintaxe de seta.
 
-```dartpad
-class MinhaClasse {
-  int valor1 = 2;
-  int valor2 = 3;
-  int valor3 = 5;
-  
-  // Retorna o produto dos valores acima:
-  int get produto => TODO();
-  
-  // Adiciona 1 ao valor1:
-  void incrementaValor1() => TODO();
-  
-  // Retorna uma string contendo cada item na
-  // lista, separados por vírgulas (por exemplo, 'a,b,c'):
-  String uneComVirgulas(List<String> strings) => TODO();
+```dartpad theme="dark"
+class MyClass {
+  int value1 = 2;
+  int value2 = 3;
+  int value3 = 5;
+
+  // Returns the product of the above values:
+  int get product => TODO();
+
+  // Adds 1 to value1:
+  void incrementValue1() => TODO();
+
+  // Returns a string containing each item in the
+  // list, separated by commas (e.g. 'a,b,c'):
+  String joinWithCommas(List<String> strings) => TODO();
 }
 
 
@@ -520,12 +513,12 @@ class MinhaClasse {
 void main() {
   final obj = MinhaClasse();
   final errs = <String>[];
-  
+
   try {
-    final produto = obj.produto;
-    
-    if (produto != 30) {
-      errs.add('A propriedade produto retornou $produto \n em vez do valor esperado (30).');
+    final product = obj.product;
+
+    if (product != 30) {
+      errs.add('The product property returned $product \n instead of the expected value (30).');
     }
   } catch (e) {
     print('Tentei usar MinhaClasse.produto, mas encontrei uma exceção: \n ${e.runtimeType}.');
@@ -533,10 +526,10 @@ void main() {
   }
 
   try {
-    obj.incrementaValor1();
-    
-    if (obj.valor1 != 3) {
-      errs.add('Após chamar incrementaValor, valor1 era ${obj.valor1} \n em vez do valor esperado (3).');
+    obj.incrementValue1();
+
+    if (obj.value1 != 3) {
+      errs.add('After calling incrementValue, value1 was ${obj.value1} \n instead of the expected value (3).');
     }
   } catch (e) {
     print('Tentei usar MinhaClasse.incrementaValor1, mas encontrei uma exceção: \n ${e.runtimeType}.');
@@ -544,10 +537,10 @@ void main() {
   }
 
   try {
-    final unidos = obj.uneComVirgulas(['um', 'dois', 'três']);
-    
-    if (unidos != 'um,dois,três') {
-      errs.add('Tentei chamar uneComVirgulas([\'um\', \'dois\', \'três\']) \n e recebi $unidos em vez do valor esperado (\'um,dois,três\').');
+    final joined = obj.joinWithCommas(['one', 'two', 'three']);
+
+    if (joined != 'one,two,three') {
+      errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) \n and received $joined instead of the expected value (\'one,two,three\').');
     }
   } catch (e) {
     print('Tentei usar MinhaClasse.uneComVirgulas, mas encontrei uma exceção: \n ${e.runtimeType}.');
@@ -575,15 +568,15 @@ void main() {
     int valor2 = 3;
     int valor3 = 5;
 
-    // Retorna o produto dos valores acima:
-    int get produto => valor1 * valor2 * valor3;
-    
-    // Adiciona 1 ao valor1:
-    void incrementaValor1() => valor1++;
-    
-    // Retorna uma string contendo cada item na
-    // lista, separados por vírgulas (por exemplo, 'a,b,c'):
-    String uneComVirgulas(List<String> strings) => strings.join(',');
+    // Returns the product of the above values:
+    int get product => value1 * value2 * value3;
+
+    // Adds 1 to value1:
+    void incrementValue1() => value1++;
+
+    // Returns a string containing each item in the
+    // list, separated by commas (e.g. 'a,b,c'):
+    String joinWithCommas(List<String> strings) => strings.join(',');
   }
   ```
 </details>
@@ -620,45 +613,45 @@ para ler as propriedades de `botao` se ele não for `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
-var button = querySelector('#confirm');
-button?.text = 'Confirm';
-button?.classes.add('important');
-button?.onClick.listen((e) => window.alert('Confirmed!'));
+final button = web.document.querySelector('#confirm');
+button?.textContent = 'Confirm';
+button?.classList.add('important');
+button?.onClick.listen((e) => web.window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
 
-Para usar *cascades*,
-você pode começar com o *cascade* de _curto-circuito nulo_ (`?..`),
-que garante que nenhuma das operações de *cascade*
-seja tentada em um objeto `null`.
-Usar *cascades* encurta o código
-e torna a variável `botao` desnecessária:
+To instead use cascades,
+you can start with the _null-shorting_ cascade (`?..`),
+which guarantees that none of the cascade operations
+are attempted on a `null` object.
+Using cascades shortens the code
+and makes the `button` variable unnecessary:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
-querySelector('#confirm')
-  ?..text = 'Confirm'
-  ..classes.add('important')
-  ..onClick.listen((e) => window.alert('Confirmed!'))
+web.document.querySelector('#confirm')
+  ?..textContent = 'Confirm'
+  ..classList.add('important')
+  ..onClick.listen((e) => web.window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Use *cascades* para criar uma única declaração que
 define as propriedades `umInt`, `umaString` e `umaLista` de um `ObjetoGrande`
 para `1`, `'String!'` e `[3.0]` (respectivamente)
 e então chama `tudoFeito()`.
 
-```dartpad
-class ObjetoGrande {
-  int umInt = 0;
-  String umaString = '';
-  List<double> umaLista = [];
-  bool _feito = false;
-  
-  void tudoFeito() {
-    _feito = true;
+```dartpad theme="dark"
+class BigObject {
+  int anInt = 0;
+  String aString = '';
+  List<double> aList = [];
+  bool _done = false;
+
+  void allDone() {
+    _done = true;
   }
 }
 
@@ -700,9 +693,9 @@ void main() {
           'O valor encontrado em umaLista era ${obj.umaLista[0]} \n em vez do esperado (3.0).');
     }
   }
-  
-  if (!obj._feito) {
-    errs.add('Parece que tudoFeito() não foi chamado.');
+
+  if (!obj._done) {
+    errs.add('It looks like allDone() wasn\'t called.');
   }
 
   if (errs.isEmpty) {
@@ -774,11 +767,11 @@ class MyClass {
 }
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
-Imagine que você tem uma classe de carrinho de compras que mantém uma `List<double>` privada
-de preços.
-Adicione o seguinte:
+Imagine you have a shopping cart class that keeps a
+private `List<double>` of prices.
+Add the following:
 
 * Um *getter* chamado `total` que retorna a soma dos preços
 * Um *setter* que substitui a lista por uma nova,
@@ -787,13 +780,13 @@ Adicione o seguinte:
 
 Ignore todos os erros iniciais no DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class InvalidPriceException {}
 
-class CarrinhoDeCompras {
-  List<double> _precos = [];
-  
-  // TODO: Adicione um *getter* "total" aqui:
+class ShoppingCart {
+  List<double> _prices = [];
+
+  // TODO: Add a "total" getter here:
 
   // TODO: Adicione um *setter* "precos" aqui:
 }
@@ -801,8 +794,8 @@ class CarrinhoDeCompras {
 
 // Testa sua solução (Não edite!):
 void main() {
-  var encontrouExcecao = false;
-  
+  var foundException = false;
+
   try {
     final carrinho = CarrinhoDeCompras();
     carrinho.precos = [12.0, 12.0, -23.0];
@@ -812,23 +805,23 @@ void main() {
     print('Tentei definir um preço negativo e recebi um ${e.runtimeType} \n em vez de um InvalidPriceException.');
     return;
   }
-  
-  if (!encontrouExcecao) {
-    print('Tentei definir um preço negativo \n e não obtive um InvalidPriceException.');
+
+  if (!foundException) {
+    print('Tried setting a negative price \n and didn\'t get an InvalidPriceException.');
     return;
   }
-  
-  final segundoCarrinho = CarrinhoDeCompras();
-  
+
+  final secondCart = ShoppingCart();
+
   try {
     segundoCarrinho.precos = [1.0, 2.0, 3.0];
   } catch(e) {
     print('Tentei definir os preços com uma lista válida, \n mas recebi uma exceção: ${e.runtimeType}.');
     return;
   }
-  
-  if (segundoCarrinho._precos.length != 3) {
-    print('Tentei definir os preços com uma lista de três valores, \n mas _precos acabou tendo comprimento ${segundoCarrinho._precos.length}.');
+
+  if (secondCart._prices.length != 3) {
+    print('Tried setting prices with a list of three values, \n but _prices ended up having length ${secondCart._prices.length}.');
     return;
   }
 
@@ -837,46 +830,46 @@ void main() {
     print('Tentei definir os preços com uma lista de três valores (1, 2, 3), \n mas valores incorretos acabaram na lista de preços ($vals) .');
     return;
   }
-  
-  var soma = 0.0;
-  
+
+  var sum = 0.0;
+
   try {
     soma = segundoCarrinho.total;
   } catch (e) {
     print('Tentei obter o total, mas recebi uma exceção: ${e.runtimeType}.');
     return;
   }
-  
-  if (soma != 6.0) {
-    print('Depois de definir os preços para (1, 2, 3), total retornou $soma em vez de 6.');
+
+  if (sum != 6.0) {
+    print('After setting prices to (1, 2, 3), total returned $sum instead of 6.');
     return;
   }
-  
-  print('Sucesso!');
+
+  print('Success!');
 }
 ```
 
 <details>
   <summary>Solução para o exemplo de *getters* e *setters*</summary>
 
-  Duas funções são úteis para este exercício.
-  Uma é `fold`, que pode reduzir uma lista a um único valor
-  (use-o para calcular o total).
-  A outra é `any`, que pode verificar cada item em uma lista
-  com uma função que você fornece
-  (use-o para verificar se há preços negativos no *setter* de preços).
+  Two functions are handy for this exercise.
+  One is `fold`, which can reduce a list to a single value
+  (use it to calculate the total).
+  The other is `any`, which can check each item in a list
+  with a function you give it
+  (use it to check if there are any negative prices in the `prices` setter).
 
   ```dart
-  // Adicione um *getter* "total" aqui:
-  double get total => _precos.fold(0, (e, t) => e + t);
+  /// The total price of the shopping cart.
+  double get total => _prices.fold(0, (e, t) => e + t);
 
-  // Adicione um *setter* "precos" aqui:
-  set precos(List<double> value) {
+  /// Set [prices] to the [value] list of item prices.
+  set prices(List<double> value) {
     if (value.any((p) => p < 0)) {
       throw InvalidPriceException();
     }
-    
-    _precos = value;
+
+    _prices = value;
   }
   ```
 
@@ -885,8 +878,8 @@ void main() {
 
 ## Parâmetros posicionais opcionais {:#optional-positional-parameters}
 
-O Dart tem dois tipos de parâmetros de função: posicionais e nomeados. Os
-parâmetros posicionais são o tipo com o qual você provavelmente está familiarizado:
+Dart has two kinds of function parameters: positional and named.
+Positional parameters are the kind you're likely familiar with:
 
 <?code-excerpt "misc/lib/cheatsheet/optional_positional_args.dart (optional-positional-args)"?>
 ```dart
@@ -930,7 +923,7 @@ void main() {
 }
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Implemente uma função chamada `joinWithCommas()` que aceite de um a
 cinco inteiros e, em seguida, retorne uma string desses números separados por vírgulas.
@@ -944,7 +937,7 @@ Aqui estão alguns exemplos de chamadas de função e valores retornados:
 
 <br>
 
-```dartpad
+```dartpad theme="dark"
 String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
   return TODO();
 }
@@ -953,13 +946,13 @@ String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
 // Testa sua solução (Não edite!):
 void main() {
   final errs = <String>[];
-  
+
   try {
     final value = joinWithCommas(1);
-    
+
     if (value != '1') {
-      errs.add('Tentou chamar joinWithCommas(1) \n e obteve $value em vez do esperado (\'1\').');
-    } 
+      errs.add('Tried calling joinWithCommas(1) \n and got $value instead of the expected (\'1\').');
+    }
   } on UnimplementedError {
     print('Tentou chamar joinWithCommas, mas falhou. \n Você implementou o método?');
     return;
@@ -970,10 +963,10 @@ void main() {
 
   try {
     final value = joinWithCommas(1, 2, 3);
-    
+
     if (value != '1,2,3') {
-      errs.add('Tentou chamar joinWithCommas(1, 2, 3) \n e obteve $value em vez do esperado (\'1,2,3\').');
-    } 
+      errs.add('Tried calling joinWithCommas(1, 2, 3) \n and got $value instead of the expected (\'1,2,3\').');
+    }
   } on UnimplementedError {
     print('Tentou chamar joinWithCommas, mas falhou. \n Você implementou o método?');
     return;
@@ -984,10 +977,10 @@ void main() {
 
   try {
     final value = joinWithCommas(1, 2, 3, 4, 5);
-    
+
     if (value != '1,2,3,4,5') {
-      errs.add('Tentou chamar joinWithCommas(1, 2, 3, 4, 5) \n e obteve $value em vez do esperado (\'1,2,3,4,5\').');
-    } 
+      errs.add('Tried calling joinWithCommas(1, 2, 3, 4, 5) \n and got $value instead of the expected (\'1,2,3,4,5\').');
+    }
   } on UnimplementedError {
     print('Tentou chamar joinWithCommas, mas falhou. \n Você implementou o método?');
     return;
@@ -1042,7 +1035,7 @@ void printName(String firstName, String lastName, {String? middleName}) {
 void main() {
   printName('Dash', 'Dartisan');
   printName('John', 'Smith', middleName: 'Who');
-  // Named arguments can be placed anywhere in the argument list
+  // Named arguments can be placed anywhere in the argument list.
   printName('John', middleName: 'Who', 'Smith');
 }
 ```
@@ -1068,7 +1061,7 @@ void printName(String firstName, String lastName, {String middleName[! = ''!]}) 
 Uma função não pode ter parâmetros posicionais e nomeados opcionais.
 
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Adicione um método de instância `copyWith()` à classe `MyDataObject`.
 Ele deve receber três parâmetros nomeados e anuláveis:
@@ -1086,7 +1079,7 @@ copie seu valor para `anInt`.
 
 Ignore todos os erros iniciais no DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class MyDataObject {
   final int anInt;
   final String aString;
@@ -1106,43 +1099,66 @@ class MyDataObject {
 void main() {
   final source = MyDataObject();
   final errs = <String>[];
-  
+
   try {
     final copy = source.copyWith(newInt: 12, newString: 'New!', newDouble: 3.0);
-    
+
     if (copy.anInt != 12) {
       errs.add('Chamou copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n e o anInt do novo objeto foi ${copy.anInt} em vez do valor esperado (12).');
     }
-    
+
     if (copy.aString != 'New!') {
       errs.add('Chamou copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n e o aString do novo objeto foi ${copy.aString} em vez do valor esperado (\'New!\').');
     }
-    
+
     if (copy.aDouble != 3) {
       errs.add('Chamou copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n e o aDouble do novo objeto foi ${copy.aDouble} em vez do valor esperado (3).');
     }
   } catch (e) {
     print('Chamou copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) \n e obteve uma exceção: ${e.runtimeType}');
   }
-  
+
   try {
     final copy = source.copyWith();
-    
+
     if (copy.anInt != 1) {
       errs.add('Chamou copyWith(), e o anInt do novo objeto foi ${copy.anInt} \n em vez do valor esperado (1).');
     }
-    
+
     if (copy.aString != 'Old!') {
       errs.add('Chamou copyWith(), e o aString do novo objeto foi ${copy.aString} \n em vez do valor esperado (\'Old!\').');
     }
-    
+
     if (copy.aDouble != 2) {
       errs.add('Chamou copyWith(), e o aDouble do novo objeto foi ${copy.aDouble} \n em vez do valor esperado (2).');
     }
   } catch (e) {
     print('Chamou copyWith() e obteve uma exceção: ${e.runtimeType}');
   }
-  
+
+  try {
+    final sourceWithoutDefaults = MyDataObject(
+      anInt: 520,
+      aString: 'Custom!',
+      aDouble: 20.25,
+    );
+    final copy = sourceWithoutDefaults.copyWith();
+
+    if (copy.anInt == 1) {
+      errs.add('Called `copyWith()` on an object with a non-default `anInt` value (${sourceWithoutDefaults.anInt}), but the new object\'s `anInt` was the default value of ${copy.anInt}.');
+    }
+
+    if (copy.aString == 'Old!') {
+      errs.add('Called `copyWith()` on an object with a non-default `aString` value (\'${sourceWithoutDefaults.aString}\'), but the new object\'s `aString` was the default value of \'${copy.aString}\'.');
+    }
+
+    if (copy.aDouble == 2.0) {
+      errs.add('Called copyWith() on an object with a non-default `aDouble` value (${sourceWithoutDefaults.aDouble}), but the new object\'s `aDouble` was the default value of ${copy.aDouble}.');
+    }
+  } catch (e) {
+    print('Called copyWith() and got an exception: ${e.runtimeType}');
+  }
+
   if (errs.isEmpty) {
     print('Sucesso!');
   } else {
@@ -1163,13 +1179,13 @@ void main() {
   Esta é uma chance de praticar mais com o operador `??`!
 
   ```dart
-    MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
-      return MyDataObject(
-        anInt: newInt ?? this.anInt,
-        aString: newString ?? this.aString,
-        aDouble: newDouble ?? this.aDouble,
-      );
-    }
+  MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
+    return MyDataObject(
+      anInt: newInt ?? this.anInt,
+      aString: newString ?? this.aString,
+      aDouble: newDouble ?? this.aDouble,
+    );
+  }
   ```
 </details>
 
@@ -1240,7 +1256,7 @@ try {
 }
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Implemente `tryFunction()` abaixo. Ele deve executar um método não confiável e
 depois fazer o seguinte:
@@ -1255,7 +1271,7 @@ depois fazer o seguinte:
 * Depois que tudo for capturado e tratado, chame `logger.doneLogging`
   (tente usar `finally`).
 
-```dartpad
+```dartpad theme="dark"
 typedef VoidFunction = void Function();
 
 class ExceptionWithMessage {
@@ -1280,57 +1296,57 @@ class MyLogger extends Logger {
   Type? lastType;
   String lastMessage = '';
   bool done = false;
-  
+
   void logException(Type t, [String? message]) {
     lastType = t;
     lastMessage = message ?? lastMessage;
   }
-  
-  void doneLogging() => done = true;  
+
+  void doneLogging() => done = true;
 }
 
 void main() {
   final errs = <String>[];
   var logger = MyLogger();
-  
+
   try {
     tryFunction(() => throw Exception(), logger);
-  
+
     if ('${logger.lastType}' != 'Exception' && '${logger.lastType}' != '_Exception') {
       errs.add('Untrustworthy lançou uma Exception, mas um tipo diferente foi registrado: \n ${logger.lastType}.');
     }
-    
+
     if (logger.lastMessage != '') {
       errs.add('Untrustworthy lançou uma Exception sem mensagem, mas uma mensagem \n foi registrada mesmo assim: \'${logger.lastMessage}\'.');
     }
-    
+
     if (!logger.done) {
       errs.add('Untrustworthy lançou uma Exception, \n e doneLogging() não foi chamado depois.');
     }
   } catch (e) {
     print('Untrustworthy lançou uma exceção, e uma exceção do tipo \n ${e.runtimeType} não foi tratada por tryFunction.');
   }
-  
+
   logger = MyLogger();
-  
+
   try {
     tryFunction(() => throw ExceptionWithMessage('Hey!'), logger);
-  
+
     if (logger.lastType != ExceptionWithMessage) {
       errs.add('Untrustworthy lançou uma ExceptionWithMessage(\'Hey!\'), mas um \n tipo diferente foi registrado: ${logger.lastType}.');
     }
-    
+
     if (logger.lastMessage != 'Hey!') {
       errs.add('Untrustworthy lançou uma ExceptionWithMessage(\'Hey!\'), mas uma \n mensagem diferente foi registrada: \'${logger.lastMessage}\'.');
     }
-    
+
     if (!logger.done) {
       errs.add('Untrustworthy lançou uma ExceptionWithMessage(\'Hey!\'), \n e doneLogging() não foi chamado depois.');
     }
   } catch (e) {
     print('Untrustworthy lançou uma ExceptionWithMessage(\'Hey!\'), \n e uma exceção do tipo ${e.runtimeType} não foi tratada por tryFunction.');
   }
-  
+
   logger = MyLogger();
   bool caughtStringException = false;
 
@@ -1343,27 +1359,27 @@ void main() {
   if (!caughtStringException) {
     errs.add('Untrustworthy lançou uma string, e foi tratada incorretamente dentro de tryFunction().');
   }
-  
+
   logger = MyLogger();
-  
+
   try {
     tryFunction(() {}, logger);
-  
+
     if (logger.lastType != null) {
       errs.add('Untrustworthy não lançou uma Exception, \n mas uma foi registrada mesmo assim: ${logger.lastType}.');
     }
-    
+
     if (logger.lastMessage != '') {
       errs.add('Untrustworthy não lançou uma Exception sem mensagem, \n mas uma mensagem foi registrada mesmo assim: \'${logger.lastMessage}\'.');
     }
-    
+
     if (!logger.done) {
       errs.add('Untrustworthy não lançou uma Exception, \n mas doneLogging() não foi chamado depois.');
     }
   } catch (e) {
     print('Untrustworthy não lançou uma exceção, \n mas uma exceção do tipo ${e.runtimeType} não foi tratada por tryFunction mesmo assim.');
   }
-  
+
   if (errs.isEmpty) {
     print('Sucesso!');
   } else {
@@ -1419,10 +1435,10 @@ final color = MyColor(80, 80, 128);
 Essa técnica também funciona para parâmetros nomeados.
 Os nomes das propriedades se tornam os nomes dos parâmetros:
 
-<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-named)" replace="/int.*;/.../g; /olorRN/olor/g;"?>
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-named)" replace="/int.*;/\/\/ .../g; /olorRN/olor/g;"?>
 ```dart
 class MyColor {
-  ...
+  // ...
 
   MyColor({required this.red, required this.green, required this.blue});
 }
@@ -1441,7 +1457,7 @@ MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Adicione um construtor de uma linha para `MyClass` que use
 a sintaxe `this.` para receber e atribuir valores para
@@ -1449,23 +1465,23 @@ todas as três propriedades da classe.
 
 Ignore todos os erros iniciais no DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class MyClass {
   final int anInt;
   final String aString;
   final double aDouble;
-  
-  // TODO: Crie o construtor aqui.
+
+  // TODO: Create the constructor here.
 }
 
 
 // Testa sua solução (Não edite!):
 void main() {
   final errs = <String>[];
-  
+
   try {
     final obj = MyClass(1, 'two', 3);
-    
+
     if (obj.anInt != 1) {
       errs.add('Chamou MyClass(1, \'two\', 3) e obteve um objeto com anInt de ${obj.anInt} \n em vez do valor esperado (1).');
     }
@@ -1480,7 +1496,7 @@ void main() {
   } catch (e) {
     print('Chamou MyClass(1, \'two\', 3) e obteve uma exceção \n do tipo ${e.runtimeType}.');
   }
-  
+
   if (errs.isEmpty) {
     print('Sucesso!');
   } else {
@@ -1497,21 +1513,13 @@ void main() {
   `this.anInt`, `this.aString` e `this.aDouble`
   como seus parâmetros nessa ordem.
 
-  ```dart    
+  ```dart
   MyClass(this.anInt, this.aString, this.aDouble);
   ```
 
 </details>
 
-{% comment %}
-Este parece super fácil em comparação com os anteriores.
-Já vimos no exemplo de Exceções,
-e eu já o havia usado em um exemplo anterior.
-Mova-o para cima? Ou torne-o mais desafiador, de alguma forma?
-Talvez exija parâmetros posicionais e opcionais nomeados (com valores padrão)?
-{% endcomment %}
-
-## Listas de inicializadores {:#initializer-lists}
+## Initializer lists
 
 Às vezes, quando você implementa um construtor,
 você precisa fazer alguma configuração antes que o corpo do construtor seja executado.
@@ -1522,9 +1530,7 @@ que fica entre a assinatura do construtor e seu corpo:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-no-comment)"?>
 ```dart
-Point.fromJson(Map<String, double> json)
-    : x = json['x']!,
-      y = json['y']! {
+Point.fromJson(Map<String, double> json) : x = json['x']!, y = json['y']! {
   print('In Point.fromJson(): ($x, $y)');
 }
 ```
@@ -1534,14 +1540,12 @@ que são executadas apenas durante o desenvolvimento:
 
 <?code-excerpt "misc/lib/cheatsheet/initializer_lists.dart (assert)"?>
 ```dart
-NonNegativePoint(this.x, this.y)
-    : assert(x >= 0),
-      assert(y >= 0) {
+NonNegativePoint(this.x, this.y) : assert(x >= 0), assert(y >= 0) {
   print('I just made a NonNegativePoint: ($x, $y)');
 }
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Conclua o construtor `FirstTwoLetters` abaixo.
 Use uma lista de inicializadores para atribuir os dois primeiros caracteres em `word` às
@@ -1550,21 +1554,7 @@ Para um desafio extra, adicione um `assert` para capturar palavras com menos de 
 
 Ignore todos os erros iniciais no DartPad.
 
-{% comment %}
-O assert é mesmo executado? Não consigo ver nenhum efeito no teste,
-o que me faz pensar que os asserts são ignorados.
-Além disso, o teste apenas verifica a presença de qualquer exceção, não por
-um AssertionError.
-
-Além disso, meu print() não estava visível na Saída até que corrigi meu código e/ou
-o teste. Isso foi inesperado.
-Seria legal se a Saída aparecesse apenas se você quisesse, como a Solução.
-
-FINALMENTE: Sugira usar https://pub.dev/packages/characters
-se esta for uma string inserida pelo usuário.
-{% endcomment %}
-
-```dartpad
+```dartpad theme="dark"
 class FirstTwoLetters {
   final String letterOne;
   final String letterTwo;
@@ -1581,7 +1571,7 @@ void main() {
 
   try {
     final result = FirstTwoLetters('My String');
-    
+
     if (result.letterOne != 'M') {
       errs.add('Chamou FirstTwoLetters(\'My String\') e obteve um objeto com \n letterOne igual a \'${result.letterOne}\' em vez do valor esperado (\'M\').');
     }
@@ -1594,17 +1584,17 @@ void main() {
   }
 
   bool caughtException = false;
-  
+
   try {
     FirstTwoLetters('');
   } catch (e) {
     caughtException = true;
   }
-  
+
   if (!caughtException) {
     errs.add('Chamou FirstTwoLetters(\'\') e não obteve uma exceção \n da asserção com falha.');
   }
-  
+
   if (errs.isEmpty) {
     print('Sucesso!');
   } else {
@@ -1620,7 +1610,7 @@ void main() {
   `letterOne` deve receber `word[0]`,
   e `letterTwo` deve receber `word[1]`.
 
-  ```dart    
+  ```dart
     FirstTwoLetters(String word)
         : assert(word.length >= 2),
           letterOne = word[0],
@@ -1630,14 +1620,8 @@ void main() {
 
 ## Construtores nomeados {:#named-constructors}
 
-{% comment %}
-Assim como o JavaScript, o Dart não oferece suporte a sobrecargas de métodos
-(dois métodos com o mesmo nome, mas assinaturas diferentes).
-[PROBLEMA: métodos e construtores não são a mesma coisa,
-então eu excluí isso. Podemos adicioná-lo novamente se pudermos expressá-lo melhor.]
-{% endcomment %}
-Para permitir que as classes tenham vários construtores,
-Dart oferece suporte a construtores nomeados:
+To allow classes to have multiple constructors,
+Dart supports named constructors:
 
 <?code-excerpt "misc/lib/cheatsheet/named_constructor.dart (point-class)"?>
 ```dart
@@ -1646,9 +1630,7 @@ class Point {
 
   Point(this.x, this.y);
 
-  Point.origin()
-      : x = 0,
-        y = 0;
+  Point.origin() : x = 0, y = 0;
 }
 ```
 
@@ -1659,23 +1641,22 @@ Para usar um construtor nomeado, invoque-o usando seu nome completo:
 final myPoint = Point.origin();
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Dê à classe `Color` um construtor chamado `Color.black`
 que define todas as três propriedades como zero.
 
 Ignore todos os erros iniciais no DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class Color {
   int red;
   int green;
   int blue;
-  
+
   Color(this.red, this.green, this.blue);
 
-  // TODO: Crie um construtor nomeado chamado "Color.black" aqui:
-
+  // TODO: Create a named constructor called "Color.black" here:
 }
 
 
@@ -1685,7 +1666,7 @@ void main() {
 
   try {
     final result = Color.black();
-    
+
     if (result.red != 0) {
       errs.add('Chamou Color.black() e obteve uma cor com red igual a \n ${result.red} em vez do valor esperado (0).');
     }
@@ -1713,14 +1694,12 @@ void main() {
 <details>
   <summary>Solução para o exemplo de construtores nomeados</summary>
 
-  A declaração do seu construtor deve começar com `Color.black(): `.
-  Na lista de inicializadores (após os dois pontos), defina `red`, `green` e `blue` como `0`.
+  The declaration for your constructor should begin with `Color.black():`.
+  In the initializer list (after the colon),
+  set `red`, `green`, and `blue` to `0`.
 
-  ```dart    
-    Color.black()
-        : red = 0,
-          green = 0,
-          blue = 0;
+  ```dart
+  Color.black() : red = 0, green = 0, blue = 0;
   ```
 
 </details>
@@ -1749,7 +1728,7 @@ class Shape {
 }
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Substitua a linha `TODO();` no construtor factory
 chamado `IntegerHolder.fromList` para retornar o seguinte:
@@ -1764,11 +1743,11 @@ chamado `IntegerHolder.fromList` para retornar o seguinte:
 
 Se você for bem-sucedido, o console deverá exibir `Sucesso!`.
 
-```dartpad
+```dartpad theme="dark"
 class IntegerHolder {
   IntegerHolder();
-  
-  // Implemente este construtor factory.
+
+  // Implement this factory constructor.
   factory IntegerHolder.fromList(List<int> list) {
     TODO();
   }
@@ -1799,16 +1778,16 @@ class IntegerTriple extends IntegerHolder {
 void main() {
   final errs = <String>[];
 
-  // Execute 5 testes para ver quais valores possuem detentores de inteiros válidos
+  // Run 5 tests to see which values have valid integer holders.
   for (var tests = 0; tests < 5; tests++) {
     if (!testNumberOfArgs(errs, tests)) return;
   }
 
-  // O objetivo é não ter erros com os valores de 1 a 3,
-  // mas ter erros com os valores 0 e 4.
-  // O método testNumberOfArgs adiciona ao array errs se
-  // os valores de 1 a 3 tiverem um erro e
-  // os valores 0 e 4 não tiverem um erro
+  // The goal is no errors with values 1 to 3,
+  // but have errors with values 0 and 4.
+  // The testNumberOfArgs method adds to the errs array if
+  // the values 1 to 3 have an error and
+  // the values 0 and 4 don't have an error.
   if (errs.isEmpty) {
     print('Sucesso!');
   } else {
@@ -1868,7 +1847,6 @@ void testValues(List<String> errs, List<int> expectedValues, IntegerHolder obj,
     }
   }
 }
-
 ```
 
 <details>
@@ -1920,7 +1898,7 @@ class Automobile {
 }
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Lembre-se da classe `Color` acima? Crie um construtor nomeado chamado `black`,
 mas em vez de atribuir manualmente as propriedades, redirecione-o para o
@@ -1928,12 +1906,12 @@ construtor padrão com zeros como argumentos.
 
 Ignore todos os erros iniciais no DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class Color {
   int red;
   int green;
   int blue;
-  
+
   Color(this.red, this.green, this.blue);
 
   // TODO: Crie um construtor nomeado chamado "black" aqui
@@ -1947,7 +1925,7 @@ void main() {
 
   try {
     final result = Color.black();
-    
+
     if (result.red != 0) {
       errs.add('Chamou Color.black() e obteve um Color com vermelho igual a \n ${result.red} em vez do valor esperado (0).');
     }
@@ -1978,16 +1956,17 @@ void main() {
   Seu construtor deve redirecionar para `this(0, 0, 0)`.
 
   ```dart
-    Color.black() : this(0, 0, 0);
+  Color.black() : this(0, 0, 0);
   ```
 
 </details>
 
 ## Construtores Constantes {:#const-constructors}
 
-Se sua classe produz objetos que nunca mudam, você pode tornar esses objetos constantes em tempo de compilação. Para
-fazer isso, defina um construtor `const` e certifique-se de que todas as variáveis de instância
-sejam final (imutáveis).
+If your class produces objects that never change,
+you can make these objects compile-time constants.
+To do this, define a `const` constructor and
+make sure that all instance variables are final.
 
 <?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (const-constructors)"?>
 ```dart
@@ -2001,7 +1980,7 @@ class ImmutablePoint {
 }
 ```
 
-### Exemplo de código {:.no_toc}
+### Exercise
 
 Modifique a classe `Recipe` para que suas instâncias possam ser constantes,
 e crie um construtor constante que faça o seguinte:
@@ -2015,13 +1994,13 @@ e crie um construtor constante que faça o seguinte:
 
 Ignore todos os erros iniciais no DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class Recipe {
   List<String> ingredients;
   int calories;
   double milligramsOfSodium;
 
-  // TODO: Crie um construtor const aqui"
+  // TODO: Create a const constructor here.
 
 }
 
@@ -2031,18 +2010,26 @@ void main() {
   final errs = <String>[];
 
   try {
-    const obj = Recipe(['1 ovo', 'Um pouco de manteiga', 'Pitada de sal'], 120, 200);
-    
+    const obj = Recipe(['1 egg', 'Pat of butter', 'Pinch salt'], 120, 200);
+
     if (obj.ingredients.length != 3) {
       errs.add('Chamou Recipe([\'1 ovo\', \'Um pouco de manteiga\', \'Pitada de sal\'], 120, 200) \n e obteve um objeto com lista de ingredientes de tamanho ${obj.ingredients.length} em vez do tamanho esperado (3).');
     }
-    
+
     if (obj.calories != 120) {
       errs.add('Chamou Recipe([\'1 ovo\', \'Um pouco de manteiga\', \'Pitada de sal\'], 120, 200) \n e obteve um objeto com um valor de caloria de ${obj.calories} em vez do valor esperado (120).');
     }
-    
+
     if (obj.milligramsOfSodium != 200) {
       errs.add('Chamou Recipe([\'1 ovo\', \'Um pouco de manteiga\', \'Pitada de sal\'], 120, 200) \n e obteve um objeto com um valor de miligramas de sódio de ${obj.milligramsOfSodium} em vez do valor esperado (200).');
+    }
+
+    try {
+      obj.ingredients.add('Sugar to taste');
+      errs.add('Tried adding an item to the \'ingredients\' list of a const Recipe and didn\'t get an error due to it being unmodifiable.');
+    } on UnsupportedError catch (_) {
+      // We expect an `UnsupportedError` due to
+      // `ingredients` being a const, unmodifiable list.
     }
   } catch (e) {
     print('Tentou chamar Recipe([\'1 ovo\', \'Um pouco de manteiga\', \'Pitada de sal\'], 120, 200) \n e recebeu um nulo.');

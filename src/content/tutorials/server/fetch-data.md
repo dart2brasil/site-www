@@ -1,8 +1,7 @@
 ---
 ia-translate: true
-title: Obter dados da internet
-description: Obtenha dados pela internet usando o pacote http.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+title: Buscar dados da internet
+description: Buscar dados pela internet usando o pacote http.
 prevpage:
   url: /tutorials/server/cmdline
   title: Escrever aplicativos de linha de comando
@@ -149,10 +148,8 @@ para fazer requisições HTTP que podem ser compostas,
 com controle opcional e refinado.
 
 :::note
-Você deve evitar usar diretamente `dart:io` ou `dart:html`
-para fazer requisições HTTP.
-Essas bibliotecas dependem da plataforma
-e estão vinculadas a uma única implementação.
+Evite usar diretamente `dart:io` ou `dart:html` para fazer requisições HTTP.
+Essas bibliotecas são dependentes de plataforma e vinculadas a uma única implementação.
 :::
 
 Para adicionar uma dependência em `package:http`,
@@ -296,8 +293,10 @@ dos pares chave-valor como o parâmetro nomeado opcional `headers`:
 
 <?code-excerpt "lib/fetch_data.dart (http-headers)"?>
 ```dart
-await http.get(Uri.https('dart.dev', '/f/packages/http.json'),
-    headers: {'User-Agent': '<product name>/<product-version>'});
+await http.get(
+  Uri.https('dart.dev', '/f/packages/http.json'),
+  headers: {'User-Agent': '<product name>/<product-version>'},
+);
 ```
 
 [http-read]: {{site.pub-api}}/http/latest/http/read.html
@@ -626,6 +625,7 @@ class PackageRetrievalException implements Exception {
     buf.write('!');
     return buf.toString();
   }
+
 }
 ```
 

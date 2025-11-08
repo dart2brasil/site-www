@@ -62,9 +62,11 @@ esperando que cada uma termine antes de executar a próxima.
 ```dart
 void runUsingFuture() {
   // ...
-  findEntryPoint().then((entryPoint) {
-    return runExecutable(entryPoint, args);
-  }).then(flushThenExit);
+  findEntryPoint()
+      .then((entryPoint) {
+        return runExecutable(entryPoint, args);
+      })
+      .then(flushThenExit);
 }
 ```
 
@@ -124,11 +126,14 @@ possa lançar.
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (catch-error)"?>
 ```dart
-httpClient.read(url).then((String result) {
-  print(result);
-}).catchError((e) {
-  // Handle or ignore the error.
-});
+httpClient
+    .read(url)
+    .then((String result) {
+      print(result);
+    })
+    .catchError((e) {
+      // Handle or ignore the error.
+    });
 ```
 
 O padrão `then().catchError()` é a versão assíncrona de
@@ -161,8 +166,8 @@ result
     .then((_) => lengthyComputation())
     .then((_) => print('Done!'))
     .catchError((exception) {
-  /* Handle exception... */
-});
+      /* Handle exception... */
+    });
 ```
 
 No exemplo anterior, os métodos são executados na seguinte ordem:
@@ -212,41 +217,41 @@ ou com um erro se algum dos futures fornecidos falhar.
 
 ### Tratando erros para múltiplos futures {:#handling-errors-for-multiple-futures}
 
-Você também pode esperar por operações paralelas em um [iterável]({{site.dart-api}}/dart-async/FutureIterable/wait.html)
-ou [registro]({{site.dart-api}}/dart-async/FutureRecord2/wait.html)
-de futures.
+You can also wait for parallel operations on:
 
-Essas extensões retornam um future com os valores resultantes de todos os futures fornecidos.
-Ao contrário de `Future.wait`, eles também permitem que você trate erros.
+* An [iterable][iterable-futures] of futures
+* A [record][record-futures] with futures as positional fields
 
-Se qualquer future na coleção for concluído com um erro, `wait` é concluído com um
-[`ParallelWaitError`][`ParallelWaitError`]. Isso permite que o chamador trate erros individuais e
-descarte os resultados bem-sucedidos, se necessário.
+These extensions return a `Future` with the
+resulting values of all provided futures.
+Unlike `Future.wait`, they also let you handle errors.
 
-Quando você _não_ precisa dos valores de resultado de cada future individual,
-use `wait` em um _iterável_ de futures:
+If any future in the collection completes with an error,
+`wait` completes with a [`ParallelWaitError`][].
+This allows the caller to handle individual errors and
+dispose of successful results if necessary.
+
+When you _don't_ need the result values from each future,
+use `wait` on an _iterable_ of futures:
 
 ```dart
+Future<int> delete() async => ...;
+Future<String> copy() async => ...;
+Future<bool> errorResult() async => ...;
+
 void main() async {
-  Future<void> delete() async =>  ...
-  Future<void> copy() async =>  ...
-  Future<void> errorResult() async =>  ...
-  
   try {
     // Espera por cada future em uma lista, retorna uma lista de futures:
     var results = await [delete(), copy(), errorResult()].wait;
-
-    } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {
-
-    print(e.values[0]);    // Imprime future bem-sucedido
-    print(e.values[1]);    // Imprime future bem-sucedido
-    print(e.values[2]);    // Imprime nulo quando o resultado é um erro
+  } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {
+    print(e.values[0]);    // Prints successful future
+    print(e.values[1]);    // Prints successful future
+    print(e.values[2]);    // Prints null when the result is an error
 
     print(e.errors[0]);    // Imprime nulo quando o resultado é bem-sucedido
     print(e.errors[1]);    // Imprime nulo quando o resultado é bem-sucedido
     print(e.errors[2]);    // Imprime erro
   }
-
 }
 ```
 
@@ -255,28 +260,31 @@ use `wait` em um _registro_ de futures.
 Isso fornece o benefício adicional de que os futures podem ser de tipos diferentes:
 
 ```dart
+Future<int> delete() async => ...;
+Future<String> copy() async => ...;
+Future<bool> errorResult() async => ...;
+
 void main() async {
-  Future<int> delete() async =>  ...
-  Future<String> copy() async =>  ...
-  Future<bool> errorResult() async =>  ...
-
   try {
-    // Espera por cada future em um registro, retorna um registro de futures:
-    (int, String, bool) result = await (delete(), copy(), errorResult()).wait;
-  
-  } on ParallelWaitError<(int?, String?, bool?),
-      (AsyncError?, AsyncError?, AsyncError?)> catch (e) {
-    // ...
-    }
+    // Wait for each future in a record.
+    // Returns a record of futures that you can destructure.
+    final (deleteInt, copyString, errorBool) =
+        await (delete(), copy(), errorResult()).wait;
 
-  // Faça algo com os resultados:
-  var deleteInt  = result.$1;
-  var copyString = result.$2;
-  var errorBool  = result.$3;
+    // Do something with the results...
+  } on ParallelWaitError<
+    (int?, String?, bool?),
+    (AsyncError?, AsyncError?, AsyncError?)
+  > catch (e) {
+    // ...
+  }
 }
 ```
 
-## Stream {:#stream}
+[iterable-futures]: {{site.dart-api}}/dart-async/FutureIterable/wait.html
+[record-futures]: {{site.dart-api}}/dart-async/FutureRecord2/wait.html
+
+## Stream
 
 Objetos Stream aparecem em todas as APIs Dart, representando sequências de
 dados. Por exemplo, eventos HTML, como cliques de botão, são entregues usando
@@ -385,8 +393,9 @@ tipo diferente de dados:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (transform)"?>
 ```dart
-var lines =
-    inputStream.transform(utf8.decoder).transform(const LineSplitter());
+var lines = inputStream
+    .transform(utf8.decoder)
+    .transform(const LineSplitter());
 ```
 
 Este exemplo usa dois transformadores. Primeiro, ele usa utf8.decoder para
@@ -416,8 +425,9 @@ Future<void> readFileAwaitFor() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
-  var lines =
-      inputStream.transform(utf8.decoder).transform(const LineSplitter());
+  var lines = inputStream
+      .transform(utf8.decoder)
+      .transform(const LineSplitter());
   [!try!] {
     await for (final line in lines) {
       print('Got ${line.length} characters from stream');
@@ -439,14 +449,20 @@ um *listener* `onDone`.
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
-inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
-    (String line) {
-  print('Got ${line.length} characters from stream');
-}, [!onDone!]: () {
-  print('file is now closed');
-}, [!onError!]: (e) {
-  print(e);
-});
+inputStream
+    .transform(utf8.decoder)
+    .transform(const LineSplitter())
+    .listen(
+      (String line) {
+        print('Got ${line.length} characters from stream');
+      },
+      [!onDone!]: () {
+        print('file is now closed');
+      },
+      [!onError!]: (e) {
+        print(e);
+      },
+    );
 ```
 
 

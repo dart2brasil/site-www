@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Como usar packages
-short-title: Packages
-description: Saiba mais sobre o pub, ferramenta do Dart para gerenciamento de packages.
+title: How to use packages
+shortTitle: Packages
+breadcrumb: Overview
+description: Learn more about pub, Dart's tool for managing packages.
 ---
 
 O ecossistema Dart usa _packages_ (pacotes) para gerenciar software compartilhado,
@@ -51,7 +51,7 @@ dois packages (`intl` e `path`) que estão hospedados no site pub.dev:
 name: my_app
 
 dependencies:
-  intl: ^0.20.0
+  intl: ^0.20.2
   path: ^1.9.1
 ```
 
@@ -83,16 +83,16 @@ $ dart pub get
 
 Este processo é chamado de _obtenção das dependências_.
 
-O comando `dart pub get`
-determina de quais packages seu aplicativo depende,
-e os coloca em um [cache do sistema](/tools/pub/glossary#system-cache) central.
-Se seu aplicativo depende de um package publicado, o pub baixa esse package do
-[site pub.dev.]({{site.pub}})
-Para uma [dependência Git](/tools/pub/dependencies#git-packages),
-o pub clona o repositório Git.
-Dependências transitivas também são incluídas.
-Por exemplo, se o package `js` depende do package `test`, o `pub`
-pega tanto o package `js` quanto o package `test`.
+The `dart pub get` command
+determines which packages your app depends on,
+and puts them in a central [system cache](/resources/glossary#pub-system-cache).
+If your app depends on a published package, pub downloads that package from the
+[pub.dev site.]({{site.pub}})
+For a [Git dependency](/tools/pub/dependencies#git-packages),
+pub clones the Git repository.
+Transitive dependencies are included, too.
+For example, if the `js` package depends on the `test` package, `pub`
+grabs both the `js` package and the `test` package.
 
 O Pub cria um arquivo
 `package_config.json` (no diretório `.dart_tool/`)
@@ -146,13 +146,13 @@ e armazena próximo ao seu pubspec.
 Ele lista as versões específicas de cada dependência (imediata e transitiva)
 que seu package usa.
 
-Se o seu package é um [package de aplicativo](/tools/pub/glossary#application-package)
-você deve fazer o check-in deste arquivo no
-[controle de código fonte](/tools/pub/private-files).
-Dessa forma, todos que trabalham em seu aplicativo usam as mesmas versões
-de todas as suas dependências.
-Fazer o check-in do lockfile também garante que seu aplicativo implantado
-use as mesmas versões de código.
+If your package is an [application package](/resources/glossary#application-package)
+you should check this file into
+[source control](/tools/pub/private-files).
+That way, everyone working on your app uses the same versions
+of all of its dependencies.
+Checking in the lockfile also ensures that your deployed app
+uses the same versions of code.
 
 Quando você estiver pronto para atualizar suas dependências para as versões mais recentes,
 use o comando [`dart pub upgrade`][upgrade]:
@@ -260,7 +260,7 @@ Unable to satisfy `pubspec.yaml` using `pubspec.lock`.
 To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 ```
 
-[hash de conteúdo]: /tools/pub/glossary#content-hashes
+[content hash]: /resources/glossary#pub-content-hash
 
 ## Mais informações {:#more-information}
 
@@ -276,12 +276,12 @@ o gerenciador de packages pub.
 
 ### Referência {:#reference}
 
-* [Dependências Pub](/tools/pub/dependencies)
-* [Variáveis de ambiente Pub](/tools/pub/environment-variables)
-* [Glossário Pub](/tools/pub/glossary)
-* [Convenções de layout de packages Pub](/tools/pub/package-layout)
-* [Filosofia de versionamento Pub](/tools/pub/versioning)
-* [Formato Pubspec](/tools/pub/pubspec)
+* [Pub dependencies](/tools/pub/dependencies)
+* [Pub environment variables](/tools/pub/environment-variables)
+* [Pub package layout conventions](/tools/pub/package-layout)
+* [Pub versioning philosophy](/tools/pub/versioning)
+* [Pubspec format](/tools/pub/pubspec)
+* [Glossary with pub terms](/resources/glossary)
 
 ### Subcomandos Pub {:#pub-subcommands}
 

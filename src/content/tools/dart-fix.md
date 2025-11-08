@@ -1,7 +1,8 @@
 ---
 ia-translate: true
 title: dart fix
-description: Ferramenta de linha de comando para aplicar correções de análise e migrar usos de API.
+description: >-
+  Command-line tool for applying analysis fixes and migrating API usages.
 ---
 
 O comando `dart fix`
@@ -18,7 +19,7 @@ encontra e corrige dois tipos de problemas:
 Para aprender sobre `dart fix` em formato de vídeo,
 confira este [mergulho profundo][] em **Decoding Flutter**:
 
-{% ytEmbed "OBIuSrg_Quo", "Using Dart analyze & Dart fix" %}
+<YouTubeEmbed id="OBIuSrg_Quo" title="Using Dart analyze & Dart fix"></YouTubeEmbed>
 :::
 
 [mergulho profundo]: {{site.yt.watch}}/OBIuSrg_Quo

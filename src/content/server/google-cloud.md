@@ -1,8 +1,9 @@
 ---
-ia-translate: true
-title: Usando o Google Cloud
-short-title: Google Cloud
-description: "Seu aplicativo Dart pode usar muitos serviços do Google Cloud: Firebase, Google Cloud Platform e mais."
+title: Using Google Cloud
+shortTitle: Google Cloud
+description: >-
+  Your Dart app can use many Google Cloud services:
+  Firebase, Google Cloud Platform, and more.
 ---
 
 Servidores Dart podem usar muitos
@@ -82,7 +83,7 @@ Se você _quiser_ usar o App Engine, considere usar o pacote [`appengine`][`appe
 [`appengine` package]: {{site.pub-pkg}}/appengine
 [ce]: https://cloud.google.com/compute/docs/containers
 [cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
-[server examples]: {{site.repo.dart.org}}/samples/tree/main/server
+[server examples]: {{site.repo.dart.samples}}/tree/main/server
 [GKE overview]: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
 [Dart Functions Framework]: {{site.pub-pkg}}/functions_framework
 [CloudEvents]: https://cloudevents.io/

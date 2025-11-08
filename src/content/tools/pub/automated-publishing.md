@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Publicação automatizada de pacotes no pub.dev
-description: Publique pacotes Dart no pub.dev diretamente do GitHub Actions.
+title: Automated publishing of packages to pub.dev
+shortTitle: Automated publishing
+description: Publish Dart packages to pub.dev directly from GitHub Actions.
 ---
 
 Você pode automatizar a publicação a partir de:

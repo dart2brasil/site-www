@@ -1,7 +1,8 @@
 ---
 ia-translate: true
 title: Usando JSON
-description: Soluções Dart para leitura e escrita de JSON.
+description: Soluções Dart para ler e escrever JSON.
+showBreadcrumbs: false
 ---
 
 A maioria dos aplicativos mobile e web usa JSON para tarefas como

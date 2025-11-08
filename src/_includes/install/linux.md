@@ -33,7 +33,10 @@ Você precisa dos passos 1 a 3 apenas para a primeira instalação.
      | sudo tee /etc/apt/sources.list.d/dart_stable.list
    ```
 
-4. Use os seguintes comandos `sudo apt-get`.
+   Substitute `amd64` with `armhf`, `arm64`, or `riscv64` as
+   needed for your system.
+
+1. Use the following `sudo apt-get` commands.
 
    ```console
    $ sudo apt-get update && sudo apt-get install dart

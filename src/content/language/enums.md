@@ -2,13 +2,13 @@
 ia-translate: true
 title: Tipos enumerados
 description: Aprenda sobre o tipo enum em Dart.
-short-title: Enums
+shortTitle: Enums
 prevpage:
   url: /language/mixins
   title: Mixins
 nextpage:
-  url: /language/extension-methods
-  title: Métodos de extensão
+  url: /language/dot-shorthands
+  title: Dot shorthands
 ---
 
 Tipos enumerados, frequentemente chamados de _enumerações_ ou _enums_,

@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Extensões nativas para a VM Dart autônoma
-description: A forma original para aplicativos Dart de linha de comando chamarem funções C/C++.
-toc: false
+title: Native extensions for the standalone Dart VM
+description: The original way for command-line Dart apps to call C/C++ functions.
+showToc: false
+sitemap: false
 ---
 
 :::note

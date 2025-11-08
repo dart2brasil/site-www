@@ -3,8 +3,8 @@ ia-translate: true
 title: Métodos de Extensão
 description: Aprenda como adicionar a APIs existentes.
 prevpage:
-  url: /language/enums
-  title: Enums
+  url: /language/dot-shorthands
+  title: Dot shorthands
 nextpage:
   url: /language/extension-types
   title: Tipos de Extensão
@@ -18,7 +18,7 @@ ele sugere métodos de extensão junto com métodos regulares.
 Se assistir a vídeos ajuda você a aprender,
 confira esta visão geral de métodos de extensão.
 
-{% ytEmbed "D3j0OSfT9ZI", "Dart extension methods" %}
+<YouTubeEmbed id="D3j0OSfT9ZI" title="Dart extension methods"></YouTubeEmbed>
 
 ## Visão geral {:#overview}
 
@@ -43,11 +43,13 @@ ter essa funcionalidade em `String` em vez disso:
 Para habilitar esse código,
 você pode importar uma biblioteca que contém uma extensão da classe `String`:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (basic)" replace="/  print/print/g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (basic)" plaster="none"?>
 ```dart
 import 'string_apis.dart';
-// ···
-print('42'.parseInt()); // Use an extension method.
+
+void main() {
+  print('42'.parseInt()); // Use an extension method.
+}
 ```
 
 Extensões podem definir não apenas métodos,
@@ -56,13 +58,12 @@ Além disso, extensões podem ter nomes, o que pode ser útil se surgir um confl
 Veja como você pode implementar o método de extensão `parseInt()`,
 usando uma extensão (nomeada `NumberParsing`) que opera em strings:
 
-<?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart (parseInt)"?>
+<?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart (parseInt)" plaster="none"?>
 ```dart title="lib/string_apis.dart"
 extension NumberParsing on String {
   int parseInt() {
     return int.parse(this);
   }
-  // ···
 }
 ```
 
@@ -76,13 +77,15 @@ Como todo código Dart, os métodos de extensão estão em bibliotecas.
 Você já viu como usar um método de extensão—basta
 importar a biblioteca em que ele está e usá-lo como um método comum:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (import-and-use)" replace="/  print/print/g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (import-and-use)" plaster="none"?>
 ```dart
 // Import a library that contains an extension on String.
 import 'string_apis.dart';
-// ···
-print('42'.padLeft(5)); // Use a String method.
-print('42'.parseInt()); // Use an extension method.
+
+void main() {
+  print('42'.padLeft(5)); // Use a String method.
+  print('42'.parseInt()); // Use an extension method.
+}
 ```
 
 Isso é tudo que você geralmente precisa saber para usar métodos de extensão.
@@ -128,7 +131,7 @@ você tem algumas opções.
 Uma opção é alterar como você importa a extensão conflitante,
 usando `show` ou `hide` para limitar a API exposta:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_import.dart (hide-conflicts)" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_import.dart (hide-conflicts)" plaster="none"?>
 ```dart
 // Defines the String extension method parseInt().
 import 'string_apis.dart';
@@ -137,31 +140,33 @@ import 'string_apis.dart';
 // hides that extension method.
 import 'string_apis_2.dart' hide NumberParsing2;
 
-// ···
-// Uses the parseInt() defined in 'string_apis.dart'.
-print('42'.parseInt());
+void main() {
+  // Uses the parseInt() defined in 'string_apis.dart'.
+  print('42'.parseInt());
+}
 ```
 
 Outra opção é aplicar a extensão explicitamente,
 o que resulta em código que parece que a extensão é uma classe wrapper (empacotadora):
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_explicit.dart (conflicts-explicit)" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_explicit.dart (conflicts-explicit)" plaster="none"?>
 ```dart
 // Both libraries define extensions on String that contain parseInt(),
 // and the extensions have different names.
 import 'string_apis.dart'; // Contains NumberParsing extension.
 import 'string_apis_2.dart'; // Contains NumberParsing2 extension.
 
-// ···
-// print('42'.parseInt()); // Doesn't work.
-print(NumberParsing('42').parseInt());
-print(NumberParsing2('42').parseInt());
+void main() {
+  // print('42'.parseInt()); // Doesn't work.
+  print(NumberParsing('42').parseInt());
+  print(NumberParsing2('42').parseInt());
+}
 ```
 
 Se ambas as extensões tiverem o mesmo nome,
 então você pode precisar importar usando um prefixo:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_prefix.dart (conflicts-prefix)" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_prefix.dart"?>
 ```dart
 // Both libraries define extensions named NumberParsing
 // that contain the extension method parseInt(). One NumberParsing
@@ -169,17 +174,18 @@ então você pode precisar importar usando um prefixo:
 import 'string_apis.dart';
 import 'string_apis_3.dart' as rad;
 
-// ···
-// print('42'.parseInt()); // Doesn't work.
+void main() {
+  // print('42'.parseInt()); // Doesn't work.
 
-// Use the ParseNumbers extension from string_apis.dart.
-print(NumberParsing('42').parseInt());
+  // Use the ParseNumbers extension from string_apis.dart.
+  print(NumberParsing('42').parseInt());
 
-// Use the ParseNumbers extension from string_apis_3.dart.
-print(rad.NumberParsing('42').parseInt());
+  // Use the ParseNumbers extension from string_apis_3.dart.
+  print(rad.NumberParsing('42').parseInt());
 
-// Only string_apis_3.dart has parseNum().
-print('42'.parseNum());
+  // Only string_apis_3.dart has parseNum().
+  print('42'.parseNum());
+}
 ```
 
 Como o exemplo mostra,
@@ -210,6 +216,7 @@ extension NumberParsing on String {
   double parseDouble() {
     return double.parse(this);
   }
+
 }
 ```
 
@@ -277,5 +284,5 @@ Para mais informações sobre métodos de extensão, veja o seguinte:
 * [Exemplo de métodos de extensão][sample]
 
 [specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
-[article]: https://medium.com/dartlang/extension-methods-2d466cd8b308
-[sample]: {{site.repo.dart.org}}/samples/tree/main/extension_methods
+[article]: https://blog.dart.dev/extension-methods-2d466cd8b308
+[sample]: {{site.repo.dart.samples}}/tree/main/extension_methods

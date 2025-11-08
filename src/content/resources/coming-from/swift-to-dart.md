@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Aprendendo Dart como um desenvolvedor Swift
-description: Aproveite seu conhecimento em Swift ao aprender Dart.
-body_class: highlight-languages
+title: Learning Dart as a Swift developer
+description: Leverage your Swift knowledge when learning Dart.
+bodyClass: highlight-languages
+showBreadcrumbs: false
 lastVerified: 2022-12-13
 ---
 

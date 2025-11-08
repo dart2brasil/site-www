@@ -1,14 +1,20 @@
 ---
-ia-translate: true
-title: Visão geral do Dart
-description: Uma breve introdução ao Dart.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+title: Dart overview
+description: A short introduction to Dart.
+showBreadcrumbs: false
 ---
 
 <img
-  style="padding: 30px; float: right; width: 300px"
-  src="/assets/img/logo_lockup_dart_horizontal.png"
+  class="light-mode-visible"
+  style="padding: 30px; float: right; width: 300px" 
+  src="/assets/img/logo_lockup_dart_horizontal.png" 
   alt="Dart product logo">
+<img
+  class="dark-mode-visible"
+  style="padding: 30px; float: right; width: 300px"
+  src="/assets/img/logo/logo-white-text.svg"
+  alt="Dart product logo">
+
 
 Dart é uma linguagem otimizada para cliente (client-optimized)
 para desenvolver aplicativos rápidos em qualquer plataforma.
@@ -83,8 +89,10 @@ Stream<double> computePi({int batch = 100000}) async* {
     final ratio = count / total;
 
     // Area of a circle is A = π⋅r², therefore π = A/r².
-    // So, when given random points with x ∈ <0,1>,
-    // y ∈ <0,1>, the ratio of those inside a unit circle
+    // We consider only non-negative x and y (that is, the
+    // first quadrant), which doesn't change the ratio.
+    // So, when given random points with x ∈ [0, 1],
+    // y ∈ [0, 1], the ratio of those inside the unit circle
     // should approach π / 4. Therefore, the value of π
     // should be:
     yield ratio * 4;
@@ -232,13 +240,13 @@ Alternativamente, o código Dart pode ser compilado para WebAssembly.
 
 O Dart web contém três modos de compilação:
 
-* Um compilador de desenvolvimento JavaScript incremental que permite um ciclo
-  de desenvolvimento rápido.
-* Um compilador de produção JavaScript otimizado que compila o código Dart para JavaScript rápido,
-  compacto e implantável. Essas eficiências vêm de técnicas como
-  eliminação de código morto.
-* Um compilador de produção WebAssembly (WasmGC) otimizado que compila o Dart
-  código para código WebAssembly GC super-rápido e implantável.
+* An incremental JavaScript development compiler enabling a fast developer 
+  cycle with incremental recompilation (enabling hot reload).
+* An optimizing JavaScript production compiler which compiles Dart code to fast,
+  compact, deployable JavaScript. These efficiencies come from techniques such
+  as dead-code elimination.
+* An optimizing WebAssembly (WasmGC) production compiler which compiles Dart
+  code to super-fast, deployable WebAssembly GC code.
 
 Mais Informações:
 

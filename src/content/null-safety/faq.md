@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: "Null safety: Perguntas frequentes"
-description: "FAQs para ajudar você a migrar seu código Dart para null safety"
-short-title: "FAQ (null safety)"
+title: "Null safety: Frequently asked questions"
+description: FAQs to help you migrate your Dart code to null safety
+shortTitle: FAQ (null safety)
 ---
 
 Esta página reúne algumas perguntas comuns que ouvimos sobre [null safety](/null-safety) (segurança nula)
@@ -217,8 +216,8 @@ O
 em Map (`[]`) por padrão retorna um tipo anulável. Não há como sinalizar para
 a linguagem que o valor tem garantia de estar lá.
 
-Nesse caso, você deve usar o operador bang (`!`) para converter o valor de volta para
-V:
+In this case, you should use the not-null assertion operator (`!`) to
+cast the value back to `V`:
 
 ```dart
 return blockTypes[key]!;
@@ -340,14 +339,15 @@ do que seus alvos nativos.
 
 Algumas notas que vale a pena destacar:
 
-* O compilador JavaScript de produção gera asserções nulas `!`. Você pode
-  não percebê-las ao comparar a saída do compilador antes e
-  depois de adicionar asserções nulas. Isso ocorre porque o compilador já
-  gerava verificações nulas em programas que não eram null safe.
+* The production JavaScript compiler generates `!` not-null assertions.
+  You might not notice them when comparing the output of the compiler
+  before and after adding not-null assertions.
+  That's because the compiler already
+  generated null checks in programs that weren't null safe.
 
-* O compilador gera essas asserções nulas, independentemente do
-  solidez do null safety ou nível de otimização. Na verdade, o compilador
-  não remove `!` ao usar `-O3` ou `--omit-implicit-checks`.
+* The compiler generates these not-null assertions regardless of the
+  soundness of null safety or optimization level. In fact, the compiler
+  doesn't remove `!` when using `-O3` or `--omit-implicit-checks`.
 
 * O compilador JavaScript de produção pode remover verificações nulas desnecessárias.
   Isso acontece porque as otimizações que o compilador web de produção

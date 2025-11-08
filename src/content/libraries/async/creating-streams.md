@@ -1,7 +1,8 @@
 ---
 ia-translate: true
 title: Criando streams em Dart
-description: Um stream (fluxo) é uma sequência de resultados; aprenda como criar o seu próprio.
+shortTitle: Criando streams
+description: Um stream é uma sequência de resultados; aprenda como criar o seu próprio.
 original-date: 2013-04-08
 date: 2021-05-16
 ---
@@ -83,8 +84,10 @@ Veja como ele pode ser implementado:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic-usage)"?>
 ```dart
-var counterStream =
-    Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
+var counterStream = Stream<int>.periodic(
+  const Duration(seconds: 1),
+  (x) => x,
+).take(15);
 ```
 
 Para ver rapidamente os eventos, você pode usar um código como este:
@@ -395,10 +398,11 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   }
 
   controller = StreamController<int>(
-      onListen: startTimer,
-      onPause: stopTimer,
-      onResume: startTimer,
-      onCancel: stopTimer);
+    onListen: startTimer,
+    onPause: stopTimer,
+    onResume: startTimer,
+    onCancel: stopTimer,
+  );
 
   return controller.stream;
 }

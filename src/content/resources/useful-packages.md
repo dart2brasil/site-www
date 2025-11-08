@@ -1,6 +1,6 @@
 ---
-ia-translate: true
-title: Pacotes de uso comum
+title: Commonly used packages
+shortTitle: Common packages
 description: >-
   Alguns dos pacotes mais úteis e populares, e onde você pode aprender mais.
 ---
@@ -25,21 +25,20 @@ Use estes pacotes para uma ampla gama de projetos.
 
 | Pacote | Descrição | APIs comumente usadas |
 |----|----|----|
-| [archive][] | Codifica e decodifica vários formatos de arquivo e compressão. | Archive, ArchiveFile, TarEncoder, TarDecoder, ZipEncoder, ZipDecoder |
-| [characters][] | Manipula strings para caracteres percebidos pelo usuário (clusters de grafemas Unicode). | String.characters, Characters, CharacterRange |
-| [cronet_http][] | Fornece acesso ao cliente HTTP [Cronet][] do Android usando a mesma interface do `package:http`. | |
-| [cupertino_http][] | Fornece acesso ao [Sistema de Carregamento de URL da Foundation][furl] da Apple usando a mesma interface do `package:http`. | |
-| [http][] | Fornece um conjunto de funções e classes de alto nível para simplificar o consumo de recursos HTTP. | delete(), get(), post(), read() |
-| [intl][] | Recursos de internacionalização e localização, com suporte para plurais e gêneros, formatação e análise de data e número e texto bidirecional. | Bidi, DateFormat, MicroMoney, TextDirection |
-| [json_serializable][] | Gera código de manipulação JSON. Para saber mais, consulte [Suporte a JSON](/libraries/serialization/json). | @JsonSerializable |
-| [logging][] | Adiciona registro de mensagens ao seu aplicativo. | LoggerHandler, Level, LogRecord |
-| [mockito][] | Simula objetos em testes. Ajuda quando você escreve testes para injeção de dependência. Use com o pacote [test][]. | Answering, Expectation, Verification |
-| [path][] | Manipula diferentes tipos de caminhos. Para saber mais, consulte [Desempacotando Packages: path.]({{site.news}}/2016/06/unboxing-packages-path.html) | absolute(), basename(), extension(), join(), normalize(), relative(), split() |
-| [quiver][] | Simplifica o uso de bibliotecas Dart principais. Algumas das bibliotecas onde Quiver oferece suporte adicional incluem async, cache, collection, core, iterables, patterns e testing. | CountdownTimer (quiver.async); MapCache (quiver.cache); MultiMap, TreeSet (quiver.collection); EnumerateIterable (quiver.iterables); center(), compareIgnoreCase(), isWhiteSpace() (quiver.strings) |
-| [shelf][] | Fornece middleware de servidor web para Dart. Shelf facilita a criação e composição de servidores web e partes de servidores web. | Cascade, Pipeline, Request, Response, Server |
-| [stack_trace][] | Analisa, inspeciona e manipula stack traces que o Dart produz. Também transforma stack traces em um formato mais legível do que a implementação nativa StackTrace. Para saber mais, consulte [Desempacotando Packages: stack_trace.]({{site.news}}/2016/01/unboxing-packages-stacktrace.html) | Trace.current(), Trace.format(), Trace.from() |
-| [test][] | Padroniza a escrita e execução de testes em Dart. | expect(), group(), test() |
-| [yaml][] | Analisa a marcação YAML. | loadYaml(), loadYamlStream() |
+| [archive][] | Encodes and decodes various archive and compression formats. | Archive, ArchiveFile, TarEncoder, TarDecoder, ZipEncoder, ZipDecoder |
+| [characters][] | Manipulates strings for user-perceived characters (Unicode grapheme clusters). | String.characters, Characters, CharacterRange |
+| [cronet_http][] | Provides access to the Android [Cronet][cronet] HTTP client using the same interface as `package:http`. | |
+| [cupertino_http][] | Provides access to Apple's [Foundation URL Loading System][furl] using the same interface as `package:http`. | |
+| [http][] | Provides set of high-level functions and classes to simplify consuming HTTP resources. | delete(), get(), post(), read() |
+| [intl][] | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
+| [json_serializable][] | Generates JSON manipulation code. To learn more, consult [JSON Support](/libraries/serialization/json). | @JsonSerializable |
+| [logging][] | Adds message logging to your application. | LoggerHandler, Level, LogRecord |
+| [mockito][] | Mocks objects in tests. Helps when you write tests for dependency injection. Use with the [test][] package. | Answering, Expectation, Verification |
+| [path][] | Manipulates different types of paths. To learn more, consult [Unboxing Packages: path.]({{site.news}}/2016/06/unboxing-packages-path.html) | absolute(), basename(), extension(), join(), normalize(), relative(), split() |
+| [shelf][] | Provides web server middleware for Dart. Shelf makes it easy to create and compose web servers, and parts of web servers. | Cascade, Pipeline, Request, Response, Server |
+| [stack_trace][] | Parses, inspects, and manipulates stack traces that Dart produces. Also transforms stack traces into a more readable format than the native StackTrace implementation. To learn more, consult [Unboxing Packages: stack_trace.]({{site.news}}/2016/01/unboxing-packages-stacktrace.html) | Trace.current(), Trace.format(), Trace.from() |
+| [test][] | Standardizes writing and running tests in Dart. | expect(), group(), test() |
+| [yaml][] | Parses YAML markup. | loadYaml(), loadYamlStream() |
 
 {:.table .table-striped .nowrap}
 
@@ -53,7 +52,6 @@ Use estes pacotes para uma ampla gama de projetos.
 [logging]: {{pubpkg}}/logging
 [mockito]: {{pubpkg}}/mockito
 [path]: {{pubpkg}}/path
-[quiver]: {{pubpkg}}/quiver
 [shelf]: {{pubpkg}}/shelf
 [stack_trace]: {{pubpkg}}/stack_trace
 [test]: {{pubpkg}}/test

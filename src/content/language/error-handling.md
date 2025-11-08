@@ -6,8 +6,8 @@ prevpage:
   url: /language/branches
   title: Desvios
 nextpage:
-  url: /language/classes
-  title: Classes
+  url: /language/functions
+  title: Functions
 ---
 
 ## Exceções {:#exceptions}
@@ -192,8 +192,10 @@ adicione uma string como o segundo argumento para `assert`
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert-with-message)"?>
 ```dart
-assert(urlString.startsWith('https'),
-    'URL ($urlString) should start with "https".');
+assert(
+  urlString.startsWith('https'),
+  'URL ($urlString) should start with "https".',
+);
 ```
 
 O primeiro argumento para `assert` pode ser qualquer expressão que

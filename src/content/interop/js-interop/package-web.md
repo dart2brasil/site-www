@@ -204,8 +204,8 @@ Um valor do tipo '...' não pode ser atribuído a uma variável do tipo 'JSFunct
 
 ### Importações condicionais {:#importacoes-condicionais}
 
-É comum que o código use uma importação condicional com base em se `dart:html`
-é suportado para diferenciar entre nativo e web:
+It's common for code to use a conditional import based on whether `dart:html`
+is supported to differentiate between native and web:
 
 ```dart
 export 'src/hw_none.dart'
@@ -213,14 +213,15 @@ export 'src/hw_none.dart'
     if (dart.library.html) 'src/hw_html.dart';
 ```
 
-No entanto, como `dart:html` não é suportado ao compilar para Wasm, a alternativa correta
-agora é usar `dart.library.js_interop` para diferenciar entre
-nativo e web:
+However, since `dart:html` is deprecated and not supported when
+compiling to Wasm, the correct alternative now is to
+use `dart.library.js_interop` to differentiate between native and web:
 
+<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
 ```dart
-export 'src/hw_none.dart'
-    if (dart.library.io) 'src/hw_io.dart'
-    if (dart.library.js_interop) 'src/hw_web.dart';
+export 'src/hw_none.dart' // Stub implementation
+    if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
+    if (dart.library.js_interop) 'src/hw_web.dart'; // package:web implementation
 ```
 
 ### Despacho virtual e simulação {:#despacho-virtual-e-simulacao}
@@ -259,25 +260,25 @@ fazer isso automaticamente.
 
 ## Auxiliares {:#auxiliares}
 
-O núcleo do `package:web` contém membros de interoperabilidade `external`,
-mas não fornece outras funcionalidades que `dart:html` fornecia por padrão.
-Para mitigar essas diferenças, `package:web` contém [`auxiliares`][helpers]
-para suporte adicional no tratamento de vários casos de uso
-que não estão diretamente disponíveis por meio da interoperabilidade principal.
-A biblioteca auxiliar contém vários membros para expor alguns recursos herdados de
-as bibliotecas web Dart.
+The core of `package:web` contains `external` interop members,
+but doesn't provide other functionality that `dart:html` provided by default.
+To mitigate these differences, `package:web` contains [`helpers`][helpers]
+for additional support in handling a number of use cases
+that aren't directly available through the core interop.
+The helper library contains various members to expose some legacy features from
+the Dart web libraries.
 
 Por exemplo, o núcleo `package:web` só tem suporte para adicionar e remover
 ouvintes de eventos. Em vez disso, você pode usar [auxiliares de stream][] que facilitam
 a assinatura de eventos com `Streams` Dart sem escrever esse código você mesmo.
 
 ```dart
-// versão dart:html
-InputElement htmlInput = InputElement();
+// Original dart:html version:
+final htmlInput = InputElement();
 await htmlInput.onBlur.first;
 
-// versão package:web
-HTMLInputElement webInput = document.createElement('input') as HTMLInputElement;
+// Migrated package:web version:
+final webInput = HTMLInputElement();
 await webInput.onBlur.first;
 ```
 

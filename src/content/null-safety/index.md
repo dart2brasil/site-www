@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Segurança contra nulos (Sound null safety)
-description: Informações sobre o recurso de segurança contra nulos do Dart
+title: Sound null safety
+breadcrumb: Null safety
+description: Information about Dart's null safety feature.
 ---
 
 A linguagem Dart impõe a segurança contra nulos (sound null safety).
@@ -79,10 +79,31 @@ O Dart oferece suporte à segurança contra nulos usando os dois princípios de 
 O Dart 3 possui segurança contra nulos (sound null safety) integrada.
 O Dart 3 impede a execução de código sem ela.
 
-Para saber como migrar para o Dart 3,
-confira o [guia de migração do Dart 3](/resources/dart-3-migration).
-Pacotes desenvolvidos sem suporte à segurança contra nulos causam problemas
-ao resolver dependências:
+**Non-nullable by default**
+: Unless you explicitly tell Dart that a variable can be null,
+  it's considered non-nullable.
+  This default was chosen after research found that
+  non-null was by far the most common choice in APIs.
+
+**Fully sound**
+: Dart's null safety is sound.
+  If the type system determines that
+  a variable or expression has a non-nullable type,
+  it's guaranteed that it can never evaluate to `null` at runtime.
+
+Program-wide sound null safety lets Dart
+leverage these principles for
+fewer bugs, smaller binaries, and faster execution.
+
+## Dart 3 and null safety
+
+Dart 3 has built-in sound null safety.
+Dart 3 prevents code without it from running.
+
+To learn how to migrate to Dart 3, 
+check out the [Dart 3 migration guide](/resources/dart-3-migration).
+Packages developed without null safety support cause issues
+when resolving dependencies:
 
 ```console
 $ dart pub get
@@ -136,8 +157,8 @@ listados pelo analisador.
 
 ## Dart 2.x e segurança contra nulos {:#enable-null-safety}
 
-Do Dart 2.12 ao 2.19, você precisa habilitar a segurança contra nulos.
-Você não pode usar a segurança contra nulos em versões do SDK anteriores ao Dart 2.12.
+From Dart 2.12 to 2.19, you need to enable null safety.
+You can't use null safety in SDK versions earlier than Dart 2.12.
 
 <a id="constraints"></a>
 Para habilitar a segurança contra nulos, defina o
@@ -184,7 +205,7 @@ Para saber mais sobre a segurança contra nulos, consulte os seguintes recursos:
 * [FAQ sobre segurança contra nulos][FAQ sobre segurança contra nulos]
 * [Código de exemplo de segurança contra nulos][calculate_lix]
 
-[calculate_lix]: {{site.repo.dart.org}}/samples/tree/main/null_safety/calculate_lix
+[calculate_lix]: {{site.repo.dart.samples}}/tree/main/null_safety/calculate_lix
 [migration guide]: /null-safety/migration-guide
 [FAQ sobre segurança contra nulos]: /null-safety/faq
 [Entendendo a segurança contra nulos]: /null-safety/understanding-null-safety

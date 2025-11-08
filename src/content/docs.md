@@ -2,7 +2,8 @@
 ia-translate: true
 title: Documentação Dart
 description: Aprenda a usar a linguagem e as bibliotecas Dart.
-toc: false
+showToc: false
+showBreadcrumbs: false
 ---
 
 Bem-vindo à documentação Dart!
@@ -18,8 +19,10 @@ Para atualizar esses cards, edite src/_data/docs_cards.yml.
 
 <div class="card-grid">
 {% for card in docs_cards -%}
-  {% card card.name, card.url %}
-    {{card.description}}
-  {% endcard %}
+  <Card title="{{card.name}}" link="{{card.url}}">
+
+  {{card.description}}
+
+  </Card>
 {% endfor -%}
 </div>

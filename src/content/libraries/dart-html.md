@@ -89,9 +89,7 @@ Element classElement = querySelector('.a-class')!;
 List<Element> divElements = querySelectorAll('div');
 
 // Find all text inputs.
-List<Element> textInputElements = querySelectorAll(
-  'input[type="text"]',
-);
+List<Element> textInputElements = querySelectorAll('input[type="text"]');
 
 // Find all elements with the CSS class 'class'
 // inside of a <p> that is inside an element with
@@ -191,9 +189,7 @@ também são analisados e criados.
 
 <?code-excerpt "html/lib/html.dart (creating-from-html)"?>
 ```dart
-var elem2 = Element.html(
-  '<p>Creating <em>is</em> easy!</p>',
-);
+var elem2 = Element.html('<p>Creating <em>is</em> easy!</p>');
 ```
 
 Observe que `elem2` é um `ParagraphElement` no exemplo anterior.
@@ -410,8 +406,10 @@ void initWebSocket([int retrySeconds = 1]) {
 
   void scheduleReconnect() {
     if (!reconnectScheduled) {
-      Timer(Duration(seconds: retrySeconds),
-          () => initWebSocket(retrySeconds * 2));
+      Timer(
+        Duration(seconds: retrySeconds),
+        () => initWebSocket(retrySeconds * 2),
+      );
     }
     reconnectScheduled = true;
   }

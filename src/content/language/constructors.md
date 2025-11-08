@@ -1,8 +1,7 @@
 ---
 ia-translate: true
 title: Construtores
-description: Tudo sobre o uso de construtores em Dart.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+description: Tudo sobre como usar construtores em Dart.
 prevpage:
   url: /language/classes
   title: Classes
@@ -17,20 +16,26 @@ Dart implementa muitos tipos de construtores.
 Exceto pelos construtores padrão,
 essas funções usam o mesmo nome de sua classe.
 
-* [Construtores generativos][generative]: Cria novas instâncias e
-      inicializa variáveis de instância.
-* [Construtores padrão][default]: Usado para criar uma nova instância quando um
-      construtor não foi especificado. Ele não recebe argumentos e
-      não é nomeado.
-* [Construtores nomeados][named]: Clarifica o propósito de
-      um construtor ou permite a criação de múltiplos construtores para
-      a mesma classe.
-* [Construtores constantes][constant]: Cria instâncias como constantes
-      de tempo de compilação.
-* [Construtores de fábrica][factory]: Ou cria uma nova instância de um
-      subtipo ou retorna uma instância existente do cache.
-* [Construtor de redirecionamento][redirecting]: Encaminha chamadas para outro
-      construtor na mesma classe.
+[Generative constructors][generative]
+: Creates new instances and initializes instance variables.
+
+[Default constructors][default]
+: Used to create a new instance when a constructor hasn't been specified.
+  It doesn't take arguments and isn't named.
+
+[Named constructors][named]
+: Clarifies the purpose of a constructor or
+  allows the creation of multiple constructors for the same class.
+
+[Constant constructors][constant]
+: Creates instances as compile-time constants.
+
+[Factory constructors][factory]
+: Either creates a new instance of a subtype or
+  returns an existing instance from cache.
+
+[Redirecting constructor][redirecting]
+: Forwards calls to another constructor in the same class.
 
 [default]: #default-constructors
 [generative]: #generative-constructors
@@ -85,9 +90,7 @@ class Point {
   Point(this.x, this.y);
 
   // Named constructor
-  [!Point.origin()!]
-      : x = xOrigin,
-        y = yOrigin;
+  [!Point.origin()!] : x = xOrigin, y = yOrigin;
 }
 ```
 
@@ -97,10 +100,10 @@ implemente esse construtor na subclasse.
 
 ### Construtores constantes {:#constant-constructors}
 
-Se sua classe produz objetos imutáveis, faça desses
-objetos constantes de tempo de compilação.
-Para fazer objetos constantes de tempo de compilação, defina um construtor `const`
-com todas as variáveis de instância definidas como `final`.
+If your class produces unchanging objects, make these
+objects compile-time constants.
+To make objects compile-time constants, define a `const` constructor
+with all instance variables set as `final`.
 
 <?code-excerpt "immutable_point.dart"?>
 ```dart
@@ -119,9 +122,9 @@ Para saber mais, consulte a seção sobre [usando construtores][using constructo
 
 ### Construtores de redirecionamento {:#redirecting-constructors}
 
-Um construtor pode redirecionar para outro construtor na mesma classe.
-Um construtor de redirecionamento tem um corpo vazio.
-O construtor usa `this` em vez do nome da classe após dois pontos (:).
+A constructor might redirect to another constructor in the same class.
+A redirecting constructor has an empty body.
+The constructor uses `this` instead of the class name after a colon (`:`).
 
 <?code-excerpt "point_redirecting.dart"?>
 ```dart
@@ -141,16 +144,16 @@ class Point {
 Ao encontrar um dos dois casos seguintes de implementação de um construtor,
 use a palavra-chave `factory`:
 
-* O construtor nem sempre cria uma nova instância de sua classe.
-  Embora um construtor de fábrica não possa retornar `null`,
-  ele pode retornar:
-  
-  * uma instância existente de um cache em vez de criar uma nova
-  * uma nova instância de um subtipo
+* The constructor doesn't always create a new instance of its class.
+  Although a factory constructor can't return `null`,
+  it might return:
 
-* Você precisa executar um trabalho não trivial antes de construir uma instância.
-  Isso pode incluir a verificação de argumentos ou qualquer outro processamento
-  que não pode ser tratado na lista de inicializadores.
+  * an existing instance from a cache instead of creating a new one
+  * a new instance of a subtype
+
+* You need to perform non-trivial work prior to constructing an instance.
+  This could include checking arguments or doing any other processing
+  that can't be handled in the initializer list.
 
 :::tip
 Você também pode lidar com a inicialização tardia de uma variável final
@@ -229,20 +232,21 @@ Dart permite que você forneça um construtor como um parâmetro sem chamá-lo.
 Chamado de _tear-off_ (já que você _arranca_ os parênteses)
 serve como um *closure* (fechamento) que invoca o construtor com os mesmos parâmetros.
 
-Se o tear-off for um construtor com a mesma assinatura e tipo de retorno
-que o método aceita, você pode usar o tear-off como um parâmetro ou variável.
+If the tear-off is a constructor with the same
+signature and return type as the method accepts,
+you can use the tear-off as a parameter or variable.
 
-Tear-offs diferem de *lambdas* ou funções anônimas.
-Lambdas servem como um *wrapper* (envolvedor) para o construtor, enquanto um tear-off
-é o construtor.
+Tear-offs differ from lambdas or anonymous functions.
+Lambdas serve as a wrapper for the constructor,
+whereas a tear-off is the constructor.
 
 **Use Tear-Offs**
 
 ```dart tag=good
-// Use um tear-off para um construtor nomeado:
+// Use a tear-off for a named constructor:
 var strings = charCodes.map(String.fromCharCode);
 
-// Use um tear-off para um construtor não nomeado:
+// Use a tear-off for an unnamed constructor:
 var buffers = charCodes.map(StringBuffer.new);
 ```
 
@@ -258,9 +262,9 @@ var buffers = charCodes.map((code) => StringBuffer(code));
 
 Para mais discussão, assista a este vídeo Decoding Flutter sobre tear-offs.
 
-{% ytEmbed "OmCaloD7sis", "Dart Tear-offs | Decoding Flutter" %}
+<YouTubeEmbed id="OmCaloD7sis" title="Dart Tear-offs | Decoding Flutter"></YouTubeEmbed>
 
-## Inicialização de Variáveis de Instância {:#instance-variable-initialization}
+## Instance variable initialization
 
 Dart pode inicializar variáveis de três maneiras.
 
@@ -399,9 +403,7 @@ Separe os inicializadores com vírgulas.
 ```dart
 // Initializer list sets instance variables before
 // the constructor body runs.
-Point.fromJson(Map<String, double> json)
-    : x = json['x']!,
-      y = json['y']! {
+Point.fromJson(Map<String, double> json) : x = json['x']!, y = json['y']! {
   print('In Point.fromJson(): ($x, $y)');
 }
 ```
@@ -435,9 +437,9 @@ class Point {
   final double distanceFromOrigin;
 
   Point(double x, double y)
-      : x = x,
-        y = y,
-        distanceFromOrigin = sqrt(x * x + y * y);
+    : x = x,
+      y = y,
+      distanceFromOrigin = sqrt(x * x + y * y);
 }
 
 void main() {

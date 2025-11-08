@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: Usando APIs do Google
-short-title: APIs do Google
-description: Seus aplicativos Dart podem usar o Firebase e APIs de cliente do Google.
+title: Using Google APIs
+shortTitle: Google APIs
+description: Your Dart apps can use Firebase and Google client APIs.
 lastVerified: 2021-05-13
 ---
 
@@ -57,4 +56,4 @@ Para encontrar pacotes wrapper para APIs de cliente do Google, procure por
 [gsheets-api-docs]: {{site.pub-api}}/gsheets/latest/gsheets/gsheets-library.html
 [gsheets-api-docs-gapi]: {{site.pub-api}}/googleapis/latest/sheets_v4/sheets_v4-library.html
 [flutter-google-apis]: {{site.flutter-docs}}/development/data-and-backend/google-apis
-[server-sample]: {{site.repo.dart.org}}/samples/tree/main/server/google_apis
+[server-sample]: {{site.repo.dart.samples}}/tree/main/server/google_apis

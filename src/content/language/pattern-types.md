@@ -6,8 +6,8 @@ prevpage:
   url: /language/patterns
   title: Padrões
 nextpage:
-  url: /language/functions
-  title: Funções
+  url: /language/loops
+  title: Loops
 ---
 
 Esta página é uma referência para os diferentes tipos de padrões.
@@ -47,7 +47,7 @@ o resto não é avaliado.
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
-  _ => false
+  _ => false,
 };
 ```
 
@@ -55,7 +55,7 @@ Subpadrões em um padrão lógico-ou podem vincular variáveis, mas os ramos dev
 definir o mesmo conjunto de variáveis, porque apenas um ramo será avaliado quando
 o padrão corresponder.
 
-## Lógico-e {:#logical-and}
+## Logical-and
 
 `subpadrão1 && subpadrão2`
 
@@ -101,7 +101,7 @@ String asciiCharType(int char) {
     == space => 'space',
     > space && < zero => 'punctuation',
     >= zero && <= nine => 'digit',
-    _ => ''
+    _ => '',
   };
 }
 ```
@@ -123,7 +123,7 @@ Padrões de cast vão [lançar (throw)][lançar (throw)] se o valor não tiver o
 Como o [padrão null-assert](#null-assert), isso permite que você afirme a força o
 tipo esperado de algum valor desestruturado.
 
-## Null-check {:#null-check}
+## Null-check
 
 `subpadrão?`
 
@@ -145,7 +145,7 @@ switch (maybeString) {
 
 Para corresponder quando o valor _é_ nulo, use o [padrão constante](#constant) `null`.
 
-## Null-assert {:#null-assert}
+## Null-assert
 
 `subpadrão!`
 
@@ -177,7 +177,7 @@ var (x!, y!) = position;
 
 Para corresponder quando o valor _é_ nulo, use o [padrão constante](#constant) `null`.
 
-## Constante {:#constant}
+## Constant
 
 `123, null, 'string', math.pi, SomeClass.constant, const Thing(1, 2), const (1 + 2)`
 
@@ -245,7 +245,7 @@ switch ((1, 2)) {
 
 Você pode usar um [padrão curinga](#wildcard) como um padrão de variável.
 
-## Identificador {:#identifier}
+## Identifier
 
 `foo, _`
 

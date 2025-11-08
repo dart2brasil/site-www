@@ -11,11 +11,11 @@ _Get_ (obter) é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 $ dart pub get [opções]
 ```
 
-Este comando obtém todas as dependências listadas no arquivo
-[`pubspec.yaml`](/tools/pub/pubspec) no diretório de trabalho atual,
-bem como suas
-[dependências transitivas](/tools/pub/glossary#transitive-dependency).
-Por exemplo:
+This command gets all the dependencies listed in the
+[`pubspec.yaml`](/tools/pub/pubspec) file in the current working
+directory, as well as their
+[transitive dependencies](/resources/glossary#transitive-dependency).
+For example:
 
 ```console
 $ dart pub get
@@ -23,13 +23,13 @@ Resolvendo dependências...
 Obteve as dependências!
 ```
 
-Se o [cache do sistema](/tools/pub/glossary#system-cache)
-já não contém as dependências, `dart pub get`
-atualiza o cache,
-baixando as dependências se necessário.
-Para mapear os pacotes de volta ao cache do sistema,
-este comando cria um arquivo `package_config.json`
-no diretório `.dart_tool/`.
+If the [system cache](/resources/glossary#pub-system-cache)
+doesn't already contain the dependencies, `dart pub get`
+updates the cache,
+downloading dependencies if necessary.
+To map packages back to the system cache,
+this command creates a `package_config.json` file
+in the `.dart_tool/` directory.
 
 Uma vez que as dependências são adquiridas, elas podem ser referenciadas no código Dart.
 Por exemplo, se um pacote depende de `test`:
@@ -38,24 +38,24 @@ Por exemplo, se um pacote depende de `test`:
 import 'package:test/test.dart';
 ```
 
-Quando `dart pub get` obtém novas dependências, ele grava um
-[lockfile (arquivo de bloqueio)](/tools/pub/glossary#lockfile) para garantir que futuras
-obtenções usem as mesmas versões dessas dependências.
-[Pacotes de aplicação][] devem verificar o lockfile no controle de código fonte;
-isso garante que a aplicação usará as mesmas versões exatas
-de todas as dependências para todos os desenvolvedores e quando implantada em produção.
-Pacotes regulares não devem verificar o lockfile, no entanto, já que eles
-devem funcionar com uma variedade de versões de dependência.
+When `dart pub get` gets new dependencies, it writes a
+[lockfile](/resources/glossary#lockfile) to ensure that future
+gets will use the same versions of those dependencies.
+[Application packages][] should check in the lockfile to source control;
+this ensures the application will use the exact same versions
+of all dependencies for all developers and when deployed to production.
+Regular packages should not check in the lockfile, though, since they're
+expected to work with a range of dependency versions.
 
-Se um lockfile já existe, `dart pub get` usa as versões das dependências
-bloqueadas nele, se possível. Se uma dependência não está bloqueada, o pub obtém a
-versão mais recente dessa dependência que satisfaz todas as [restrições
-de versão](/tools/pub/glossary#version-constraint).
-Esta é a principal diferença entre `dart pub get` e
-[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), que sempre tenta
-obter as versões mais recentes de todas as dependências.
+If a lockfile already exists, `dart pub get` uses the versions of dependencies
+locked in it if possible. If a dependency isn't locked, pub gets the
+latest version of that dependency that satisfies all the [version
+constraints](/resources/glossary#version-constraint).
+This is the primary difference between `dart pub get` and
+[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
+get the latest versions of all dependencies.
 
-[Pacotes de aplicação]: /tools/pub/glossary#application-package
+[Application packages]: /resources/glossary#application-package
 
 ## Resolução de Pacotes {:#package-resolution}
 
@@ -90,12 +90,12 @@ dependências já adquiridas.
 
 ## O cache de pacotes do sistema {:#the-system-package-cache}
 
-Dependências baixadas pela internet, como as do Git e do
-[site pub.dev]({{site.pub}}), são armazenadas em um
-[cache em todo o sistema](/tools/pub/glossary#system-cache).
-Isso significa que se vários pacotes usam a mesma versão da
-mesma dependência, ela só precisa ser
-baixada e armazenada localmente uma vez.
+Dependencies downloaded over the internet, such as those from Git and the
+[pub.dev site]({{site.pub}}), are stored in a
+[system-wide cache](/resources/glossary#pub-system-cache).
+This means that if multiple packages use the same version of the
+same dependency, it only needs to be
+downloaded and stored locally once.
 
 Por padrão, o cache de pacotes do sistema está localizado no subdiretório `.pub-cache`
 do seu diretório home (no macOS e Linux),

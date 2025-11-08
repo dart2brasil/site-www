@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: Código de Conduta
-description: Seja excelente com os outros.
-toc: false
+title: Code of conduct
+description: Be excellent to each other.
+showToc: false
 skipFreshness: true
 ---
 

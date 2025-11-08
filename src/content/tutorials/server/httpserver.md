@@ -1,8 +1,8 @@
 ---
 ia-translate: true
 title: "Escrever servidores HTTP"
-description: Comunicar-se pela internet
-toc: false
+description: Comunicar pela internet
+showToc: false
 prevpage:
   url: /tutorials/server/fetch-data
   title: Buscar dados da internet
@@ -29,12 +29,12 @@ Recursos Dart para escrever servidores HTTP incluem:
     [`shelf_router`][].
   * É implantável no Cloud Run.
 
-[cloud-sample]: {{site.repo.dart.org}}/samples/tree/main/server/google_apis
+[cloud-sample]: {{site.repo.dart.samples}}/tree/main/server/google_apis
 [`googleapis`]: {{site.pub-pkg}}/googleapis
 [`googleapis_auth`]: {{site.pub-pkg}}/googleapis_auth
 [`shelf`]: {{site.pub-pkg}}/shelf
 [`shelf_router`]: {{site.pub-pkg}}/shelf_router
 [`shelf_static`]: {{site.pub-pkg}}/shelf_static
-[simple-sample]: {{site.repo.dart.org}}/samples/tree/main/server/simple
-[Usando APIs Google]: /resources/google-apis
-[Usando o Google Cloud]: /server/google-cloud
+[simple-sample]: {{site.repo.dart.samples}}/tree/main/server/simple
+[Using Google APIs]: /resources/google-apis
+[Using Google Cloud]: /server/google-cloud

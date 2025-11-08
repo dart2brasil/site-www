@@ -1,15 +1,15 @@
 ---
-ia-translate: true
-title: O arquivo pubspec
-description: Guia de referência para os campos em pubspec.yaml.
+title: The pubspec file
+shortTitle: Pubspec file
+description: Reference guide for the fields in pubspec.yaml.
 ---
 
-Todo [pacote pub](/tools/pub/packages) precisa de alguns metadados para que
-possa especificar suas [dependências](/tools/pub/glossary#dependency).
-Pacotes Pub que são compartilhados com outros também precisam fornecer
-algumas outras informações para que os usuários possam descobri-los.
-Todos esses metadados vão no _pubspec_ do pacote: um arquivo chamado
-`pubspec.yaml` que é escrito na linguagem [YAML](https://yaml.org/).
+Every [pub package](/tools/pub/packages) needs some metadata so it can specify its
+[dependencies](/resources/glossary#dependency). Pub packages that are shared with
+others also need to provide some other information so users can discover them.
+All of this metadata goes in the package's _pubspec:_
+a file named `pubspec.yaml` that's written in the
+[YAML](https://yaml.org/) language.
 
 {% comment %}
 PENDENTE: reconhecer a existência de arquivos pubspec.lock.
@@ -225,8 +225,8 @@ URL; o pub mostra um link para esta documentação na página do seu pacote.
 
 ### Dependencies {:#dependencies}
 
-[Dependências](/tools/pub/glossary#dependency) são a *razão de ser* do pubspec.
-Nesta seção, você lista cada pacote que seu pacote precisa para funcionar.
+[Dependencies](/resources/glossary#dependency) are the pubspec's *raison d'être*.
+In this section you list each package that your package needs in order to work.
 
 As dependências se enquadram em um de dois tipos. _Dependências regulares_ são
 listadas em `dependencies:` — esses são pacotes que qualquer pessoa que usar seu
@@ -550,7 +550,7 @@ O Pub suporta a especificação de restrições de SDK Flutter no campo
 ```yaml
 environment:
   sdk: ^3.2.0
-  flutter: '>= 3.22.0'
+  flutter: '>=3.22.0'
 ```
 
 Uma restrição de SDK Flutter é satisfeita somente se o pub estiver

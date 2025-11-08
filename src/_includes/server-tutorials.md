@@ -3,18 +3,17 @@ Os tutoriais a seguir mostram como desenvolver scripts, aplicativos
 de linha de comando e aplicativos de servidor que podem ser executados na Dart VM (Máquina Virtual Dart) autônoma.
 
 <div class="card-grid">
-  {% card "Começar", "/tutorials/server/get-started" %}
-    Obtenha o Dart. Crie um aplicativo simples e independente, execute-o na
-    Dart VM e compile-o AOT (ahead-of-time) para código de máquina nativo.
-  {% endcard %}
-  {% card "Escreva aplicativos de linha de comando", "/tutorials/server/cmdline" %}
-    Aprenda sobre os recursos que aplicativos de linha de comando precisam.
-  {% endcard %}
-  {% card "Busque dados da internet", "/tutorials/server/fetch-data" %}
-    Busque dados da internet usando o pacote http.
-  {% endcard %}
-  {% card "Escreva servidores HTTP", "/tutorials/server/httpserver" %}
-    Implemente um servidor web escrito em Dart.
-  {% endcard %}
-
+  <Card title="Get started" link="/tutorials/server/get-started">
+    Get Dart. Create a simple standalone app, run it in the Dart VM,
+    and AOT-compile it to native machine code.
+  </Card>
+  <Card title="Write command-line apps" link="/tutorials/server/cmdline">
+    Learn about features that command-line apps need.
+  </Card>
+  <Card title="Fetch data from the internet" link="/tutorials/server/fetch-data">
+    Fetch data from the internet using the http package.
+  </Card>
+  <Card title="Write HTTP servers" link="/tutorials/server/httpserver">
+    Implement a web server written in Dart.
+  </Card>
 </div>

@@ -96,7 +96,7 @@ var uniqueNames = <String>{'Seth', 'Kathy', 'Lars'};
 var pages = <String, String>{
   'index.html': 'Homepage',
   'robots.txt': 'Hints for web robots',
-  'humans.txt': 'We are people, not machines'
+  'humans.txt': 'We are people, not machines',
 };
 ```
 
@@ -108,15 +108,15 @@ colchetes angulares (`<...>`) logo após o nome da classe. Por exemplo:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-1)"?>
 ```dart
-var nameSet = Set<String>.from(names);
+var nameSet = Set<String>.of(names);
 ```
 
-O código a seguir cria um mapa que tem chaves inteiras e valores do
-tipo View:
+The following code creates a `SplayTreeMap` that has
+integer keys and values of type `View`:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-2)"?>
 ```dart
-var views = Map<int, View>();
+var views = SplayTreeMap<int, View>();
 ```
 
 
@@ -142,10 +142,11 @@ um objeto é uma Lista, mas não pode testar se é uma `List<String>`.
 
 ## Restringindo o tipo parametrizado {:#restricting-the-parameterized-type}
 
-Ao implementar um tipo genérico,
-você pode querer limitar os tipos que podem ser fornecidos como argumentos,
-de modo que o argumento precise ser um subtipo de um tipo específico.
-Você pode fazer isso usando `extends`.
+When implementing a generic type,
+you might want to limit the types that can be provided as arguments,
+so that the argument must be a subtype of a particular type.
+This restriction is called a bound.
+You can do this using `extends`.
 
 Um caso de uso comum é garantir que um tipo não seja anulável,
 tornando-o um subtipo de `Object`
@@ -169,7 +170,9 @@ class Foo<T [!extends SomeBaseClass!]> {
   String toString() => "Instance of 'Foo<$T>'";
 }
 
-class Extender extends SomeBaseClass {...}
+class Extender extends SomeBaseClass {
+  ...
+}
 ```
 
 É aceitável usar `SomeBaseClass` ou qualquer um de seus subtipos como argumento genérico:
@@ -194,6 +197,31 @@ Especificar qualquer tipo não `SomeBaseClass` resulta em um erro:
 var foo = [!Foo<Object>!]();
 ```
 
+### Self-referential type parameter restrictions (F-bounds) {:#f-bounds}
+
+When using bounds to restrict parameter types, you can refer the bound
+back to the type parameter itself. This creates a self-referential constraint,
+or F-bound. For example:
+
+<?code-excerpt "misc/test/language_tour/generics_test.dart (f-bound)"?>
+```dart
+abstract interface class Comparable<T> {
+  int compareTo(T o);
+}
+
+int compareAndOffset<T extends Comparable<T>>(T t1, T t2) =>
+    t1.compareTo(t2) + 1;
+
+class A implements Comparable<A> {
+  @override
+  int compareTo(A other) => /*...implementation...*/ 0;
+}
+
+int useIt = compareAndOffset(A(), A());
+```
+
+The F-bound `T extends Comparable<T>` means `T` must be comparable to itself.
+So, `A` can only be compared to other instances of the same type.
 
 ## Usando métodos genéricos {:#using-generic-methods}
 

@@ -4,6 +4,7 @@ title: Diretrizes de marca Dart
 description: >-
   As diretrizes que regem o uso das marcas e ativos Dart.
 skipFreshness: true
+showBreadcrumbs: false
 ---
 
 Os nomes e logotipos "Dart" são marcas comerciais de propriedade do Google.
@@ -12,7 +13,9 @@ Essas diretrizes garantirão que as marcas comerciais Dart sejam usadas de manei
 
 O uso das marcas comerciais Dart que não seja expressamente permitido por estas diretrizes é proibido, salvo permissão por escrito do Google.
 
-Os logotipos oficiais do Dart podem ser encontrados no arquivo de [ativos de logotipo Dart e Flutter](https://services.google.com/fh/files/misc/dart_brand_guidelines_assets.zip).
+The official Dart logos can be found in the
+[Dart logo assets](https://services.google.com/fh/files/misc/dart_brand_guidelines_assets.zip)
+archive.
 
 ## Regras gerais que regem o uso das marcas comerciais Dart {:#general-rules-that-govern-the-use-of-the-dart-trademarks}
 

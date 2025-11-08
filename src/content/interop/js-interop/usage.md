@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Uso
-description: Como declarar e usar membros de interoperação JS.
+title: JS interop usage
+breadcrumb: Usage
+description: How to declare and use JS interop members.
 prevpage:
   url: /interop/js-interop/
   title: Interoperação JS

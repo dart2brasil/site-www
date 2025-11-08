@@ -1,8 +1,7 @@
 ---
-ia-translate: true
-title: Perguntas Frequentes sobre Dart
-short-title: FAQ
-description: Você tem perguntas sobre Dart, nós temos respostas.
+title: Dart FAQ
+shortTitle: FAQ
+description: You have questions about Dart, we have answers.
 ---
 
 {% assign pdf = '<i style="vertical-align: text-top" class="material-symbols">picture_as_pdf</i>' %}
@@ -17,7 +16,7 @@ Esta página reúne algumas das principais perguntas da comunidade.
 
 ### P. Existe uma especificação para Dart? {:#q-is-there-a-specification-for-dart}
 
-Sim. [EMCA-408][emca408] cobre a Especificação da Linguagem de Programação Dart.
+Yes. [ECMA-408][ecma408] covers the Dart Programming Language Specification.
 
 Cinco versões foram publicadas.
 A versão mais recente em andamento cobre até o Dart 2.13-dev.
@@ -46,13 +45,13 @@ tornando as mudanças visíveis.
 O projeto recebeu muitos patches externos e
 recebe committers (desenvolvedores que enviam alterações) distribuídos.
 
-[emca408]: https://ecma-international.org/publications-and-standards/standards/ecma-408/
+[ecma408]: https://ecma-international.org/publications-and-standards/standards/ecma-408/
 [1st-ed]: {{ecma-pdf}}/ECMA-408_1st_edition_june_2014.pdf
 [2nd-ed]: {{ecma-pdf}}/ECMA-408_2nd_edition_december_2014.pdf
 [3rd-ed]: {{ecma-pdf}}/ECMA-408_3rd_edition_june_2015.pdf
 [4th-ed]: {{ecma-pdf}}/ECMA-408_4th_edition_december_2015.pdf
 [5th-ed]: /resources/language/spec/versions/DartLangSpec-v2.10.pdf
-[6th-ed]: https://spec.dartbrasil.dev/DartLangSpecDraft.pdf
+[6th-ed]: {{site.url}}/to/spec-draft
 
 ---
 
@@ -104,7 +103,7 @@ Dart escolhe _familiaridade_ em vez de _excitação_.
 **Aplicativos web ou Flutter**
 : Não, Dart não suporta gravação para [aplicativos web ou Flutter][Flutter no mirrors].
 
-### P. Dart pode adicionar tuplas, avaliação parcial, ...? {:#q-can-dart-add-tuples-partial-evaluation}
+### Q. Can Dart add a language feature that I want?
 
 Futuros lançamentos podem incluir um recurso que você deseja.
 Alguns recursos não se encaixam na natureza da linguagem.

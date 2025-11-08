@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Aprendendo Dart como um desenvolvedor JavaScript
-description: Aproveite seu conhecimento de JavaScript ao aprender Dart.
-body_class: highlight-languages
+title: Learning Dart as a JavaScript developer
+description: Leverage your JavaScript knowledge when learning Dart.
+bodyClass: highlight-languages
+showBreadcrumbs: false
 lastVerified: 2022-11-21
 ---
 

@@ -793,13 +793,13 @@ O código-fonte do pacote stack_trace
   Você pode encontrar o código-fonte do stack_trace no
   [projeto stack_trace no GitHub]({{site.repo.dart.org}}/stack_trace).
 
-O código-fonte para dart:html e dart:async
-: Essas duas bibliotecas SDK implementam APIs com callbacks assíncronos,
-  e, portanto, lidam com zonas.
-  Você pode navegar ou baixar seu código-fonte em
-  [diretório sdk/lib]({{site.repo.dart.sdk}}/tree/main/sdk/lib)
-  do
-  [projeto Dart no GitHub]({{site.repo.dart.sdk}}).
+The source code for dart:async
+: These two SDK libraries implement APIs featuring asynchronous callbacks,
+  and thus they deal with zones.
+  You can browse or download their source code under the
+  [sdk/lib directory]({{site.repo.dart.sdk}}/tree/main/sdk/lib)
+  of the
+  [Dart GitHub project]({{site.repo.dart.sdk}}).
 
 
 _Obrigado a Anders Johnsen e Lasse Reichstein Nielsen

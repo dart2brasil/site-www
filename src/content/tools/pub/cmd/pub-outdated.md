@@ -55,7 +55,7 @@ Como o exemplo a seguir mostra,
 `dart pub outdated` coloriza a saída por padrão
 quando você o executa na linha de comando.
 
-{% include './_pub-outdated-output.html' %}
+{% render 'tools/pub-outdated-output.html' %}
 
 A coluna **Resolvable** mostra para quais versões você pode atualizar
 para cada dependência desatualizada.
@@ -161,7 +161,7 @@ Aqui está a parte da saída do [exemplo](#example)
 que mostra as quatro colunas de versão:
 Atual, Atualizável, Resolvível e Mais Recente.
 
-{% include './_pub-outdated-output-columns.html' %}
+{% render 'tools/pub-outdated-output-columns.html' %}
 
 Atual
 : A versão usada no seu pacote, conforme registrado em `pubspec.lock`.
@@ -200,9 +200,9 @@ Para as opções que se aplicam a todos os comandos pub, consulte
 
 ### `--[no-]dependency-overrides` {:#no-dependency-overrides}
 
-Por padrão, leva em consideração [`dependency_overrides`][`dependency_overrides`]
-ao resolver restrições de pacote (`--dependency-overrides`).
-Para não considerar overrides (substituições), use `--no-dependency-overrides`.
+By default, accounts for [`dependency_overrides`][]
+when resolving package constraints (`--dependency-overrides`).
+To not consider overrides, use `--no-dependency-overrides`.
 
 ### `--[no-]dev-dependencies` {:#no-dev-dependencies}
 
@@ -248,4 +248,4 @@ todas as dependências
 [package dependencies]: /tools/pub/dependencies
 [`http`]: {{site.pub-pkg}}/http
 [`dart pub deps`]: /tools/pub/cmd/pub-deps
-[transitive dependencies]: /tools/pub/glossary#transitive-dependency
+[transitive dependencies]: /resources/glossary#transitive-dependency

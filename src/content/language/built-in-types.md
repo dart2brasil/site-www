@@ -3,8 +3,8 @@ ia-translate: true
 title: Tipos Embutidos
 description: Informações sobre os tipos que o Dart suporta.
 prevpage:
-  url: /language/keywords
-  title: Palavras-chave
+  url: /language/comments
+  title: Comments
 nextpage:
   url: /language/records
   title: Records
@@ -35,18 +35,18 @@ usar o construtor `Map()` para criar um mapa.
 
 Alguns outros tipos também têm funções especiais na linguagem Dart:
 
-* `Object`: A superclasse de todas as classes Dart, exceto `Null`.
-* `Enum`: A superclasse de todos os enums (enumerações).
-* `Future` e `Stream`: Usado em [suporte a assincronia][suporte a assincronia].
-* `Iterable`: Usado em [loops for-in][iteration] e
-  em [funções geradoras][funções geradoras] síncronas.
-* `Never`: Indica que uma expressão nunca pode
-  terminar de avaliar com sucesso.
-  Mais frequentemente usado para funções que sempre lançam uma exceção.
-* `dynamic`: Indica que você deseja desabilitar a verificação estática.
-  Geralmente, você deve usar `Object` ou `Object?` em vez disso.
-* `void`: Indica que um valor nunca é usado.
-  Frequentemente usado como um tipo de retorno.
+* `Object`: The superclass of all Dart classes except `Null`.
+* `Enum`: The superclass of all enums.
+* `Future` and `Stream`: Used in [asynchronous programming][].
+* `Iterable`: Used in [for-in loops][iteration] and
+  in synchronous [generator functions][].
+* `Never`: Indicates that an expression can never
+  successfully finish evaluating.
+  Most often used for functions that always throw an exception.
+* `dynamic`: Indicates that you want to disable static checking.
+  Usually you should use `Object` or `Object?` instead.
+* `void`: Indicates that a value is never used.
+  Often used as a return type.
 
 As classes `Object`, `Object?`, `Null` e `Never`
 têm funções especiais na hierarquia de classes.
@@ -180,21 +180,17 @@ Você pode usar um ou mais underscores (`_`) como separadores de dígitos
 para tornar literais numéricos longos mais legíveis.
 Múltiplos separadores de dígitos permitem agrupamento de nível superior.
 
-{% comment %}
-Anexar trecho de código misc/lib/language_tour/built_in_types.dart (digit-separators)
-quando o recurso estiver estável:
-{% endcomment %}
-
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (digit-separators)"?>
 ```dart
 var n1 = 1_000_000;
 var n2 = 0.000_000_000_01;
-var n3 = 0x00_14_22_01_23_45;  // Endereço MAC
-var n4 = 555_123_4567;  // Número de telefone dos EUA
-var n5 = 100__000_000__000_000;  // cem milhões de milhões!
+var n3 = 0x00_14_22_01_23_45; // MAC address
+var n4 = 555_123_4567; // US Phone number
+var n5 = 100__000_000__000_000; // one hundred million million!
 ```
 
 :::version-note
-O uso de separadores de dígitos requer uma [versão de linguagem][versão de linguagem] de pelo menos 3.6.0.
+Using digit separators requires a [language version][] of at least 3.6.
 :::
 
 ## Strings {:#strings}
@@ -221,13 +217,17 @@ método `toString()` do objeto.
 ```dart
 var s = 'string interpolation';
 
-assert('Dart has $s, which is very handy.' ==
-    'Dart has string interpolation, '
-        'which is very handy.');
-assert('That deserves all caps. '
-        '${s.toUpperCase()} is very handy!' ==
-    'That deserves all caps. '
-        'STRING INTERPOLATION is very handy!');
+assert(
+  'Dart has $s, which is very handy.' ==
+      'Dart has string interpolation, '
+          'which is very handy.',
+);
+assert(
+  'That deserves all caps. '
+          '${s.toUpperCase()} is very handy!' ==
+      'That deserves all caps. '
+          'STRING INTERPOLATION is very handy!',
+);
 ```
 
 :::note
@@ -240,12 +240,15 @@ Você pode concatenar strings usando literais de string adjacentes ou o operador
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (adjacent-string-literals)"?>
 ```dart
-var s1 = 'String '
+var s1 =
+    'String '
     'concatenation'
     " works even over line breaks.";
-assert(s1 ==
-    'String concatenation works even over '
-        'line breaks.');
+assert(
+  s1 ==
+      'String concatenation works even over '
+          'line breaks.',
+);
 
 var s2 = 'The + operator ' + 'works, as well.';
 assert(s2 == 'The + operator works, as well.');
@@ -419,7 +422,7 @@ Literais de símbolos são constantes em tempo de compilação.
 [Listas]: /language/collections#lists
 [Sets]: /language/collections#sets
 [Maps]: /language/collections#maps
-[suporte a assincronia]: /language/async
+[asynchronous programming]: /language/async
 [iteration]: /libraries/dart-core#iteration
 [funções geradoras]: /language/functions#generators
 [Entendendo a segurança nula]: /null-safety/understanding-null-safety#top-and-bottom
@@ -436,4 +439,4 @@ Literais de símbolos são constantes em tempo de compilação.
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [`Symbol`]: {{site.dart-api}}/dart-core/Symbol-class.html
-[versão de linguagem]: /resources/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning

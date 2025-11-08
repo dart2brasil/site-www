@@ -1,29 +1,28 @@
 ---
-ia-translate: true
-title: Recursos
-description: Página de destino para recursos da linguagem Dart.
-toc: false
+title: Resources
+description: Landing page for Dart language resources.
+showToc: false
 ---
 
 Confira os seguintes recursos da linguagem Dart:
 
 <div class="card-grid">
-  {% card "Glossário", "/resources/breaking-changes" %}
-    Terminologia usada pela documentação e desenvolvedores Dart.
-  {% endcard %}
-  {% card "Mudanças de quebra", "/resources/breaking-changes" %}
-    Mudanças de quebra por lançamento do Dart.
-  {% endcard %}
-  {% card "Livros", "/resources/books" %}
-    Uma coleção de livros sobre Dart.
-  {% endcard %}
-  {% card "Vídeos", "/resources/videos" %}
-    Vídeos voltados para desenvolvedores Dart.
-  {% endcard %}
-  {% card "FAQ", "/resources/faq" %}
-    Perguntas frequentes sobre Dart.
-  {% endcard %}
-  {% card "Código de conduta", "/community/code-of-conduct" %}
-    Mantendo espaços da comunidade seguros e respeitosos.
-  {% endcard %}
+  <Card title="Glossary" link="/resources/glossary">
+    Terminology used by Dart documentation and developers.
+  </Card>
+  <Card title="Breaking changes" link="/resources/breaking-changes">
+    Breaking changes by Dart release.
+  </Card>
+  <Card title="Books" link="/resources/books">
+    A collection of books about Dart.
+  </Card>
+  <Card title="Videos" link="/resources/videos">
+    Videos aimed at Dart developers.
+  </Card>
+  <Card title="FAQ" link="/resources/faq">
+    Frequently asked questions about Dart.
+  </Card>
+  <Card title="Code of conduct" link="/community/code-of-conduct">
+    Keeping community spaces safe and respectful.
+  </Card>
 </div>

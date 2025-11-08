@@ -1,8 +1,8 @@
 ---
 ia-translate: true
-title: Suporte a Assincronia
+title: Programação assíncrona
 description: Informações sobre como escrever código assíncrono em Dart.
-short-title: Assíncrono
+shortTitle: Programação async
 prevpage:
   url: /language/concurrency
   title: Concorrência

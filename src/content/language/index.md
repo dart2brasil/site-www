@@ -1,8 +1,9 @@
 ---
 ia-translate: true
 title: Introdução ao Dart
+shortTitle: Básico do Dart
+breadcrumb: Language
 description: Uma breve introdução aos programas Dart e conceitos importantes.
-short-title: Básico de Dart
 nextpage:
   url: /language/variables
   title: Variáveis
@@ -54,7 +55,7 @@ var antennaDiameter = 3.7;
 var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 var image = {
   'tags': ['saturn'],
-  'url': '//path/to/saturn.jpg'
+  'url': '//path/to/saturn.jpg',
 };
 ```
 
@@ -254,8 +255,11 @@ enum Planet {
   neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
 
   /// A constant generating constructor
-  const Planet(
-      {required this.planetType, required this.moons, required this.hasRings});
+  const Planet({
+    required this.planetType,
+    required this.moons,
+    required this.hasRings,
+  });
 
   /// All instance variables are final
   final PlanetType planetType;
@@ -279,9 +283,34 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
+Quando o compilador pode inferir o tipo enum do contexto,
+você pode usar a sintaxe dot-shorthand (abreviação com ponto) mais concisa para acessar valores enum.
+Em vez de escrever o `EnumName.value` completo,
+você pode simplesmente escrever `.value`. Isso pode tornar seu código mais limpo
+e fácil de ler.
+
+
+Por exemplo, ao declarar uma variável com um tipo explícito de `Planet`,
+você pode omitir o nome do enum porque
+o tipo de `Planet` já está estabelecido:
+
+
+```dart
+// Instead of the full, explicit syntax:
+Planet myPlanet = Planet.venus;
+
+// You can use a dot shorthand:
+Planet myPlanet = .venus;
+```
+
+Dot shorthands não se limitam a declarações de variáveis.
+Eles também podem ser usados em contextos como argumentos de função
+e casos de switch onde o tipo enum é claro para o compilador.
+
 [Leia mais](/language/enums) sobre enums em Dart,
-incluindo requisitos de enum aprimorados, propriedades introduzidas automaticamente,
-acessando nomes de valores enumerados, suporte a declaração switch e muito mais.
+incluindo requisitos de enum aprimorado, propriedades introduzidas automaticamente,
+acessando nomes de valores enumerados, suporte a comando switch e muito mais.
+[Leia mais](/language/dot-shorthands) sobre a sintaxe dot shorthand. 
 
 
 ## Herança {:#inheritance}
@@ -408,7 +437,8 @@ Future<void> createDescriptions(Iterable<String> objects) async {
       if (await file.exists()) {
         var modified = await file.lastModified();
         print(
-            'File for $object already exists. It was modified on $modified.');
+          'File for $object already exists. It was modified on $modified.',
+        );
         continue;
       }
       await file.create();
@@ -467,7 +497,7 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
 ```
 
 Observe que o código acima é assíncrono;
-`try` funciona tanto para código síncrono quanto para código em uma função `async`.
+`try` funciona tanto para código síncrono quanto assíncrono em uma função `async`.
 
 [Leia mais](/language/error-handling#exceptions) sobre exceções,
 incluindo stack traces (rastreamento de pilha), `rethrow`,

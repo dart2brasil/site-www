@@ -1,8 +1,8 @@
 ---
 ia-translate: true
 title: dart analyze
-description: Ferramenta de linha de comando para análise estática
-toc: false
+description: Command-line tool for static analysis
+showToc: false
 ---
 
 O comando `dart analyze`

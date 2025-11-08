@@ -2,8 +2,8 @@
 ia-translate: true
 title: Coleções Iteráveis
 description: >-
-  Um guia interativo para usar objetos `Iterable`, como listas e conjuntos.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+  An interactive guide to using Iterable objects such as lists and sets.
+showBreadcrumbs: false
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
@@ -105,9 +105,9 @@ o compilador informa que o operador `'[]'`
 não está definido para a classe `Iterable`,
 o que significa que você não pode usar `[index]` neste caso.
 
-Em vez disso, você pode ler elementos com `elementAt()`,
-que percorre os elementos do iterável até
-atingir essa posição.
+You can instead read elements with `elementAt()`,
+which can step through the items of the iterable until
+it reaches the item at that position.
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
 ```dart
@@ -115,8 +115,24 @@ Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
 ```
 
-Continue para a próxima seção para saber mais sobre
-como acessar elementos de um `Iterable`.
+Depending on the iterable implementation and number of items,
+`elementAt` can have a linear complexity and be expensive.
+If you plan to access specific items repeatedly, then consider
+calling `.toList()` on the iterable to convert it to a list once,
+then use the `[]` operator.
+
+<?code-excerpt "iterables/test/iterables_test.dart (iterable-to-list)"?>
+```dart
+final items = veryLargeIterable().toList();
+
+final tenthItem = items[9];
+final hundredthItem = items[99];
+final thousandthItem = items[999];
+final lastItem = items.last;
+```
+
+Continue to the next section to learn more about
+how to access elements of an `Iterable`.
 
 ## Lendo elementos {:#reading-elements}
 
@@ -730,8 +746,9 @@ atingir o primeiro número negativo.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
 ```dart
-var numbersUntilNegative =
-    numbers.takeWhile((number) => !number.isNegative);
+var numbersUntilNegative = numbers.takeWhile(
+  (number) => !number.isNegative,
+);
 ```
 
 Observe que a condição `number.isNegative` é negada com `!`.

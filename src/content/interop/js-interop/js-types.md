@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Tipos JS
-description: Informações de uso sobre os tipos principais na interoperabilidade JS.
+title: JS types
+breadcrumb: Types
+description: Usage information about the core types in JS interop.
 prevpage:
   url: /interop/js-interop/usage
   title: Usage
@@ -27,11 +27,9 @@ interoperabilidade [`external`] ou [conversões](#conversions).
 
 Os tipos JS formam uma hierarquia de tipos natural:
 
-- Tipo superior: `JSAny` (qualquer valor JS não nulo),
-  - Primitivos: `JSNumber`, `JSBoolean`, `JSString`
-  - `JSSymbol`
-  - `JSBigInt`
-  - `JSObject` (qualquer objeto JS)
+- Top type: `JSAny`, which is any non-nullish JS value
+  - Primitives: `JSNumber`, `JSBoolean`, `JSString`, `JSSymbol`, `JSBigInt`
+  - `JSObject`, which is any JS object
     - `JSFunction`
       - `JSExportedDartFunction` (representa um callback Dart que foi convertido para
       uma função JS)

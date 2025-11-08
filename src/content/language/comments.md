@@ -6,8 +6,8 @@ prevpage:
   url: /language/operators
   title: Operadores
 nextpage:
-  url: /language/metadata
-  title: Metadados
+  url: /language/built-in-types
+  title: Built-in types
 ---
 
 O Dart suporta comentários de uma linha, comentários de várias linhas e

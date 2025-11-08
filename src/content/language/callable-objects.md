@@ -1,9 +1,8 @@
 ---
 ia-translate: true
-title: Objetos Chamáveis
+title: Objetos chamáveis
 description: Aprenda como criar e usar objetos chamáveis em Dart.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
-toc: false
+showToc: false
 prevpage:
   url: /language/extension-types
   title: Tipos de extensão

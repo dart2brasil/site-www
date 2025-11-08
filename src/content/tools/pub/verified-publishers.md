@@ -40,7 +40,15 @@ o pub.dev verifica se o usuário que está criando o editor verificado tem
 acesso de administrador à ["Propriedade do Domínio"][domain-prop] associada,
 com base na lógica existente no [Google Search Console.][search-console]
 
-## Criando uma conta de editor verificado {:#creating-a-verified-publisher-account}
+:::note
+Domain name ownership is verified only once when a publisher is created. After that:
+
+- Losing control of a domain does not cause the original publisher owner to lose access to the publisher.
+- Acquiring a domain does not grant the new owner any rights to a publisher that was previously associated with it.
+- Publisher ownership must be explicitly transferred by the current publisher owner.
+:::
+
+## Creating a verified publisher account
 
 Se você publica pacotes e deseja criar um novo editor verificado,
 consulte as instruções na [página de publicação][publishing page].

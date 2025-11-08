@@ -1,26 +1,20 @@
 ---
 ia-translate: true
 title: Isolates
-description: Informações sobre como escrever isolates em Dart.
-short-title: Isolates
+description: Information on writing isolates in Dart.
+shortTitle: Isolates
 lastVerified: 2024-01-04
 prevpage:
   url: /language/async
   title: Suporte assíncrono
 nextpage:
   url: /null-safety
-  title: Segurança Nula Robusta
+  title: Sound null safety
 ---
 
 <?code-excerpt path-base="concurrency"?>
 
-<style>
-  article img {
-    padding: 15px 0;
-  }
-</style>
-
-Esta página discute alguns exemplos que usam a API `Isolate` para implementar
+This page discusses some examples that use the `Isolate` API to implement 
 isolates.
 
 Você deve usar isolates sempre que seu aplicativo estiver lidando com computações
@@ -119,9 +113,9 @@ isolate principal, porque ele está sendo executado simultaneamente de qualquer 
 
 Para o programa completo, consulte o exemplo [send_and_receive.dart][send_and_receive.dart].
 
-[send_and_receive.dart]: {{site.repo.dart.org}}/samples/blob/main/isolates/bin/send_and_receive.dart
-[worker em background]: /language/concurrency#background-workers
-[isolate principal]: /language/concurrency#the-main-isolate
+[send_and_receive.dart]: {{site.repo.dart.samples}}/blob/main/isolates/bin/send_and_receive.dart
+[background worker]: /language/concurrency#background-workers
+[main isolate]: /language/concurrency#the-main-isolate
 
 ### Enviando closures com isolates {:#sending-closures-with-isolates}
 
@@ -234,13 +228,13 @@ O isolate principal recebe este `SendPort` e
 agora ambos os lados têm um canal aberto para enviar e receber mensagens.
 
 :::note
-Os diagramas nesta seção são de alto nível e pretendem transmitir o
-_conceito_ de usar ports para isolates. A implementação real requer
-um pouco mais de código, que você encontrará
-[mais adiante nesta página](#basic-ports-example).
+The diagrams in this section are high-level and intended to convey the 
+_concept_ of using ports for isolates. Actual implementation requires 
+a bit more code, which you will find 
+[later on this page](#basic-ports-example).
 :::
 
-![Uma figura mostrando eventos sendo alimentados, um por um, no loop de eventos](/assets/img/language/concurrency/ports-setup.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png){:.diagram-wrap}
 
 1. Crie um `ReceivePort` no isolate principal. O `SendPort` é criado
    automaticamente como uma propriedade no `ReceivePort`.
@@ -255,7 +249,7 @@ Juntamente com a criação dos ports e configuração da comunicação, você ta
 dizer aos ports o que fazer quando receberem mensagens. Isso é feito usando
 o método `listen` em cada `ReceivePort` respectivo.
 
-![Uma figura mostrando eventos sendo alimentados, um por um, no loop de eventos](/assets/img/language/concurrency/ports-passing-messages.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-passing-messages.png){:.diagram-wrap}
 
 1. Envie uma mensagem através da referência do isolate principal para o isolate de trabalho
    `SendPort`.
@@ -507,6 +501,7 @@ Future<void> parseJson(String message) async {
       await _isolateReady.future;
       _sendPort.send(message);
     }
+  
   }
   ```
 
@@ -615,7 +610,7 @@ No método `Worker.spawn`:
   `ReceivePort.fromRawReceivePort` e
   passe o `initPort`.
 
-<?code-excerpt "lib/robust_ports_example/spawn_1.dart (worker-spawn)"?>
+<?code-excerpt "lib/robust_ports_example/spawn_1.dart (worker-spawn)" plaster="none"?>
 ```dart
 class Worker {
   final SendPort _commands;
@@ -632,8 +627,8 @@ class Worker {
         commandPort,
       ));
     };
-// ···
   }
+}
 ```
 
 Ao criar primeiro um `RawReceivePort` e depois um `ReceivePort`,
@@ -664,14 +659,14 @@ o `initPort` será fechado e o objeto `Worker` não será criado.
 - Finalmente, retorne uma instância de `Worker` chamando seu construtor privado
   e passando as portas desse _completer_.
 
-<?code-excerpt "lib/robust_ports_example/spawn_2.dart (worker-spawn)"?>
+<?code-excerpt "lib/robust_ports_example/spawn_2.dart (worker-spawn)" plaster="none"?>
 ```dart
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add its initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -694,6 +689,7 @@ class Worker {
 
     return Worker._(receivePort, sendPort);
   }
+}
 ```
 
 Observe que, neste exemplo (em comparação com o [exemplo anterior][previous example]),
@@ -716,15 +712,16 @@ No corpo do construtor, adicione um _listener_ à porta de recebimento usada
 pelo _isolate_ principal e passe um método ainda não definido para esse
 _listener_ chamado `_handleResponsesFromIsolate`.
 
-<?code-excerpt "lib/robust_ports_example/step_4.dart (constructor)"?>
+<?code-excerpt "lib/robust_ports_example/step_4.dart (constructor)" plaster="none"?>
 ```dart
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
-// ···
+
   Worker._(this._responses, this._commands) {
     _responses.listen(_handleResponsesFromIsolate);
   }
+}
 ```
 
 Em seguida, adicione o código a `_startRemoteIsolate` que é responsável por
@@ -760,7 +757,9 @@ de trabalho e enviar o JSON decodificado de volta como resposta.
 <?code-excerpt "lib/robust_ports_example/step_4.dart (handle-commands)"?>
 ```dart
 static void _handleCommandsToIsolate(
-    ReceivePort receivePort, SendPort sendPort) {
+  ReceivePort receivePort,
+  SendPort sendPort,
+) {
   receivePort.listen((message) {
     try {
       final jsonData = jsonDecode(message as String);
@@ -825,6 +824,8 @@ class Worker {
   final ReceivePort _responses;
   final Map<int, Completer<Object?>> _activeRequests = {};
   int _idCounter = 0;
+  // ···
+}
 ```
 
 O mapa `_activeRequests` associa uma mensagem enviada ao _isolate_ de trabalho
@@ -869,7 +870,9 @@ para passar o ID e o JSON decodificado de volta para o _isolate_ principal, nova
 <?code-excerpt "lib/robust_ports_example/step_5_add_completers.dart (handle-commands)"?>
 ```dart
 static void _handleCommandsToIsolate(
-    ReceivePort receivePort, SendPort sendPort) {
+  ReceivePort receivePort,
+  SendPort sendPort,
+) {
   receivePort.listen((message) {
     final (int id, String jsonText) = message as (int, String); // New
     try {
@@ -924,7 +927,7 @@ fechar as portas no _isolate_ principal e no _isolate_ de trabalho.
 ```dart
 class Worker {
   bool _closed = false;
-// ···
+  // ···
   void close() {
     if (!_closed) {
       _closed = true;
@@ -933,6 +936,7 @@ class Worker {
       print('--- port closed --- ');
     }
   }
+}
 ```
 
 - Em seguida, você precisa lidar com a mensagem "shutdown" no _isolate_ de
@@ -995,7 +999,8 @@ void main() async {
   print(await worker.parseJson('"banana"'));
   print(await worker.parseJson('[true, false, null, 1, "string"]'));
   print(
-      await Future.wait([worker.parseJson('"yes"'), worker.parseJson('"no"')]));
+    await Future.wait([worker.parseJson('"yes"'), worker.parseJson('"no"')]),
+  );
   worker.close();
 }
 
@@ -1016,7 +1021,7 @@ class Worker {
   }
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add its initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {

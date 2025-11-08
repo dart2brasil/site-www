@@ -1,7 +1,7 @@
 ---
-ia-translate: true
-title: Migrando para null safety
-description: Como mover seu código Dart existente para o mundo do null safety
+title: Migrating to null safety
+breadcrumb: Migrating
+description: How to move your existing Dart code to the world of null safety.
 ---
 
 :::version-note
@@ -40,18 +40,18 @@ certifique-se de que todas as suas dependências estejam prontas.
 Para ter uma visão informal da experiência de usar a ferramenta de migração,
 assista a este vídeo:
 
-{% ytEmbed "eBr5tlumwlg", "Como migrar pacotes Dart para null safety" %}
+<YouTubeEmbed id="eBr5tlumwlg" title="How to migrate Dart packages to null safety"></YouTubeEmbed>
 
 [null safety]: /null-safety
-[Migração gradual para null safety em grandes projetos Dart]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
+[Gradual null safety migration for large Dart projects]: https://blog.dart.dev/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
 
 
 ## 1. Aguarde para migrar {:#step1-wait}
 
-Recomendamos fortemente migrar o código em ordem,
-com as folhas do grafo de dependência sendo migradas primeiro.
-Por exemplo, se o pacote C depende do pacote B, que depende do pacote A,
-então A deve ser migrado para null safety primeiro, depois B e depois C.
+We strongly recommend migrating code in order,
+with the leaves of the dependency graph being migrated first.
+For example, if package C depends on package B, which depends on package A,
+then A should be migrated to null safety first, then B, then C.
 
 ![Ilustração da sentença C/B/A](/assets/img/null-safety/null-safety-migration-order.png){:width="454px"}<br>
 
@@ -81,8 +81,8 @@ para que você possa desfazer facilmente quaisquer alterações.
 <a id="switch-to-the-latest-stable-dart-release"></a>
 ### Alterne para a versão Dart 2.19.6 {:#switch-to-the-dart-2-19-6-release}
 
-Alterne para a **versão 2.19.6** do SDK Dart.
-Isso está incluído no SDK Flutter 3.7.12.
+Switch to the **2.19.6 release** of the Dart SDK.
+This is included in the Flutter 3.7.12 SDK.
 
 Verifique se você tem Dart 2.19.6:
 
@@ -143,13 +143,13 @@ atualize suas dependências para versões null-safe:
 
 ## 2. Migrar {:#step2-migrate}
 
-A maioria das mudanças que seu código precisa para ser null safe
-são facilmente previsíveis.
-Por exemplo, se uma variável pode ser `null`,
-[seu tipo precisa de um sufixo `?`][tipo anulável].
-Se um parâmetro nomeado não deve ser anulável,
-marque-o como [`required`][required]
-ou dê a ele um [valor padrão][valor padrão].
+Most of the changes that your code needs to be null safe
+are easily predictable.
+For example, if a variable can be `null`,
+[its type needs a `?` suffix][nullable type].
+If a named parameter shouldn't be nullable,
+mark it [`required`][required]
+or give it a [default value][].
 
 Você tem duas opções para migrar:
 
@@ -180,12 +180,12 @@ Você pode orientar a conversão da ferramenta adicionando
 
 Antes de iniciar a ferramenta, certifique-se de que está pronto:
 
-* Use a versão 2.19.6 do SDK Dart.
-* Use `dart pub outdated --mode=null-safety` para garantir que
-  todas as dependências sejam null safe e estejam atualizadas.
+* Use the 2.19.6 release of the Dart SDK.
+* Use `dart pub outdated --mode=null-safety` to make sure that
+  all dependencies are null safe and up-to-date.
 
-Inicie a ferramenta de migração executando o comando `dart migrate`
-no diretório que contém o arquivo `pubspec.yaml` do pacote:
+Start the migration tool by running the `dart migrate` command
+in the directory that contains the package's `pubspec.yaml` file:
 
 ```console
 $ dart migrate
@@ -344,8 +344,8 @@ exceto por um [comentário de versão][comentário de versão] 2.9.
 Para obter mais informações sobre migração incremental, consulte
 [Null safety *unsound*][Null safety unsound].
 
-Observe que apenas aplicativos e pacotes totalmente migrados
-são compatíveis com Dart 3.
+Note that only fully migrated apps and packages
+are compatible with Dart 3.
 
 [comentário de versão]: /resources/language/evolution#per-library-language-version-selection
 
@@ -370,11 +370,11 @@ Então, se você publicou seu código no pub.dev,
 Se você preferir não usar a ferramenta de migração,
 você pode migrar manualmente.
 
-Recomendamos que você **primeiro migre as bibliotecas folha**—bibliotecas
-que não importam outros arquivos do pacote.
-Em seguida, migre as bibliotecas que dependem diretamente das bibliotecas folha.
-Termine migrando as bibliotecas que têm mais
-dependências intra-pacote.
+We recommend that you **first migrate leaf libraries**—libraries
+that don't import other files from the package.
+Then migrate libraries that directly depend on the leaf libraries.
+End by migrating the libraries that have the most
+intra-package dependencies.
 
 Por exemplo, digamos que você tenha um arquivo `lib/src/util.dart`
 que importa outros pacotes (null-safe) e bibliotecas principais,
@@ -455,14 +455,15 @@ Se for o caso, reverta as alterações de código antes de usar a ferramenta de 
 
 ## 5. Publicar {:#step5-publish}
 
-Nós encorajamos você a publicar pacotes—possivelmente como pré-lançamentos—assim
-que você migrar:
+We encourage you to publish packages—possibly as prereleases—as
+soon as you migrate:
 
-* [Defina a versão do pacote para indicar uma mudança drástica.](#package-version)
-* [Atualize as restrições do SDK e as dependências do pacote.](#check-your-pubspec)
-* [Publique o pacote](/tools/pub/publishing).
-  Se você não considerar esta versão como um lançamento estável,
-  então [publique o pacote como um pré-lançamento][publique o pacote como um pré-lançamento].
+* [Set the package version to indicate a breaking change.](#package-version)
+* [Update the SDK constraints and package dependencies.](#check-your-pubspec)
+* [Publish the package](/tools/pub/publishing).
+  If you don't consider this version to be a stable release,
+  then [publish the package as a prerelease][].
+* [Update examples and documentation](#update-examples-and-docs)
 
 [publique o pacote como um pré-lançamento]: /tools/pub/publishing#publishing-prereleases
 
@@ -483,14 +484,26 @@ para indicar uma mudança drástica:
 
 ### Verifique seu pubspec {:#check-your-pubspec}
 
-Antes de publicar uma versão null safety estável de um pacote,
-nós recomendamos seguir estas regras do pubspec:
+Before you publish a stable null safety version of a package,
+we strongly recommend following these pubspec rules:
 
 * Defina a restrição inferior do SDK do Dart para a versão estável mais baixa
   que você testou (pelo menos `2.12.0`).
 * Use versões estáveis de todas as dependências diretas.
 
-## Bem-vindo ao null safety {:#welcome-to-null-safety}
+### Update examples and docs
+
+If you haven't yet, update all [examples][] and samples
+of your package to use a migrated version of your package
+and to opt in to null safety.
+
+If you've published any separate documentation or tutorials
+for your package, also make sure that they're up to date for
+the null-safe release.
+
+[examples]: /tools/pub/package-layout#examples
+
+## Welcome to null safety
 
 Se você chegou até aqui,
 você deve ter um pacote Dart totalmente migrado e null-safe.

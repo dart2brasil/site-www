@@ -37,6 +37,7 @@ class Point {
     var dy = y - other.y;
     return sqrt(dx * dx + dy * dy);
   }
+
 }
 ```
 
@@ -108,7 +109,9 @@ propriedades adicionais implementando getters (acessadores) e setters (modificad
 palavras-chave `get` e `set`:
 
 <?code-excerpt "misc/lib/language_tour/classes/rectangle.dart"?>
-```dart
+```dart highlightLines=8-12
+/// A rectangle in a screen coordinate system,
+/// where the origin `(0, 0)` is in the top-left corner.
 class Rectangle {
   double left, top, width, height;
 
@@ -133,10 +136,10 @@ Com getters (acessadores) e setters (modificadores), você pode começar com var
 envolvê-las com métodos, tudo sem alterar o código do cliente.
 
 :::note
-Operadores como incremento (++) funcionam da maneira esperada, quer um
-getter (acessador) seja explicitamente definido ou não. Para evitar quaisquer efeitos colaterais
-inesperados, o operador chama o getter (acessador) exatamente uma vez, salvando seu valor
-em uma variável temporária.
+Operators such as increment (`++`) work in the expected way, whether or
+not a getter is explicitly defined. To avoid any unexpected side
+effects, the operator calls the getter exactly once, saving its value
+in a temporary variable.
 :::
 
 ## Métodos abstratos {:#abstract-methods}

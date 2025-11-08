@@ -37,16 +37,24 @@ Apenas o modificador `base` pode aparecer antes de uma declaração de mixin.
 Os modificadores não se aplicam a outras declarações como
 `enum`, `typedef`, `extension` (extensão) ou `extension type` (tipo de extensão).
 
-Ao decidir se deve usar modificadores de classe, considere os usos pretendidos da
-classe e quais comportamentos a classe precisa poder utilizar.
+When deciding whether to use class modifiers,
+consider the intended uses of the class and
+what behaviors the class needs to be able to rely on.
 
-:::note
-Se você mantém uma biblioteca, leia a página
-[Modificadores de classe para mantenedores de API](/language/class-modifiers-for-apis)
-para obter orientação sobre como navegar nessas mudanças para suas bibliotecas.
+:::tip
+If you're already familiar with Dart's class modifiers and just want
+an outline or refresher of their behavior when combined,
+check out the [Class modifier reference][].
+
+If you maintain a library,
+read the [Class modifiers for API maintainers][] page for
+guidance on how to navigate these changes for your libraries.
 :::
 
-## Nenhum modificador {:#no-modifier}
+[Class modifier reference]: /language/modifier-reference
+[Class modifiers for API maintainers]: /language/class-modifiers-for-apis
+
+## No modifier
 
 Para permitir permissão irrestrita para construir ou subtipar de qualquer biblioteca,
 use uma declaração `class` ou `mixin` sem um modificador. Por padrão, você pode:
@@ -75,7 +83,8 @@ abstract class Vehicle {
 ```dart title="b.dart"
 import 'a.dart';
 
-// Error: Can't be constructed.
+// Error: `Vehicle` can't be instantiated because
+// it is marked as `abstract`.
 Vehicle myVehicle = Vehicle();
 
 // Can be extended.
@@ -115,9 +124,9 @@ Isso garante:
   - Isso é verdade, a menos que o subtipo já declare um membro com
     o mesmo nome e uma assinatura incompatível.
 
-Você deve marcar qualquer classe que implementa ou estende uma classe base como
-`base`, `final` ou `sealed`. Isso impede que bibliotecas externas
-quebrem as garantias da classe base.
+You must mark any class that implements or extends a base class as
+`base`, `final`, or `sealed`. This prevents outside libraries from
+breaking the base class guarantees.
 
 <?code-excerpt "language/lib/class_modifiers/ex2/a.dart"?>
 ```dart title="a.dart"
@@ -141,7 +150,8 @@ base class Car extends Vehicle {
   // ...
 }
 
-// ERROR: Can't be implemented.
+// ERROR: `Vehicle` can't be implemented in a different library because
+// it is marked with `base`.
 base class MockVehicle implements Vehicle {
   @override
   void moveForward() {
@@ -180,7 +190,8 @@ import 'a.dart';
 // Can be constructed.
 Vehicle myVehicle = Vehicle();
 
-// ERROR: Can't be inherited.
+// ERROR: `Vehicle` can't be extended in a different library because
+// it is marked with `interface`.
 class Car extends Vehicle {
   int passengers = 4;
   // ...
@@ -236,14 +247,16 @@ import 'a.dart';
 // Can be constructed.
 Vehicle myVehicle = Vehicle();
 
-// ERROR: Can't be inherited.
+// ERROR: `Vehicle` can't be extended in a different library
+// because it is marked `final`.
 class Car extends Vehicle {
   int passengers = 4;
   // ...
 }
 
+// ERROR: `Vehicle` can't be implemented in a different library because
+// it is marked `final`.
 class MockVehicle implements Vehicle {
-  // ERROR: Can't be implemented.
   @override
   void moveForward(int meters) {
     // ...
@@ -282,18 +295,24 @@ class Truck implements Vehicle {}
 
 class Bicycle extends Vehicle {}
 
-// ERROR: Can't be instantiated.
+// ERROR: `Vehicle` can't be instantiated because
+// it is marked `sealed` and therefore, implicitly abstract.
 Vehicle myVehicle = Vehicle();
 
-// Subclasses can be instantiated.
+// Subclasses of a sealed class can be instantiated unless also restricted.
 Vehicle myCar = Car();
 
-String getVehicleSound(Vehicle vehicle) {
-  // ERROR: The switch is missing the Bicycle subtype or a default case.
-  return switch (vehicle) {
-    Car() => 'vroom',
-    Truck() => 'VROOOOMM',
-  };
+extension VehicleSounds on Vehicle {
+  String get sound {
+    // ERROR: The switch does not exhaustively account for
+    // all possible objects of type `Vehicle`.
+    // In this example, a `Vehicle` with a run-time type of `Bicycle`
+    // would not match any of the cases.
+    return switch (this) {
+      Car() => 'vroom',
+      Truck() => 'VROOOOMM',
+    };
+  }
 }
 ```
 

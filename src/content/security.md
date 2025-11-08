@@ -2,7 +2,8 @@
 ia-translate: true
 title: Segurança
 description: >-
-  Uma visão geral da filosofia e dos processos da equipe Dart para segurança.
+  An overview of the Dart team's philosophy and processes for security.
+showBreadcrumbs: false
 skipFreshness: true
 ---
 
