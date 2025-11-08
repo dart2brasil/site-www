@@ -19,7 +19,7 @@ ocular systems.  If we use a consistent style across the entire Dart ecosystem,
 it makes it easier for all of us to learn from and contribute to each others'
 code.
 
-## Identifiers
+## Identifiers {#identifiers}
 
 Identifiers come in three flavors in Dart.
 
@@ -461,7 +461,7 @@ import 'foo.dart';
 ```
 
 
-## Formatting
+## Formatting {#formatting}
 
 Like many languages, Dart ignores whitespace. However, *humans* don't. Having a
 consistent whitespace style helps ensure that human readers see code the same

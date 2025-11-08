@@ -61,7 +61,7 @@ void greet(String name) {
 You can use a block comment (`/* ... */`) to temporarily comment out a section
 of code, but all other comments should use `//`.
 
-## Doc comments
+## Doc comments {#doc-comments}
 
 Doc comments are especially handy because [`dart doc`][] parses them 
 and generates [beautiful doc pages][docs] from them. 

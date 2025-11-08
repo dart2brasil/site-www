@@ -137,6 +137,6 @@ Dart constructs.
   level, instance or static), setter (same), or field (instance or static).
   Roughly any "field-like" named construct.
 
-## Summary of all rules
+## Summary of all rules {#summary-of-all-rules}
 
 {% render 'effective-dart-toc.md' %}

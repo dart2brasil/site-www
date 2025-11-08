@@ -1909,7 +1909,7 @@ considered "equal" by your class. **Any two objects that are equal must have the
 same hash code.** Otherwise, maps and other hash-based collections will fail to
 recognize that the two objects are equivalent.
 
-### DO make your `==` operator obey the mathematical rules of equality
+### DO make your `==` operator obey the mathematical rules of equality {#do-make-your-operator-obey-the-mathematical-rules-of-equality}
 
 An equivalence relation should be:
 
