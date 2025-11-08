@@ -71,7 +71,7 @@ Elas são distintas da interface de seu tipo subjacente por padrão.
 
 ## Sintaxe
 
-### Declaração
+### Declaração {:#declaration}
 
 Defina um novo extension type com a declaração `extension type` e um nome,
 seguido pela *declaração do tipo de representação* entre parênteses:
@@ -167,7 +167,7 @@ ou [construtores factory][factory]
 [constructors]: /language/constructors
 [factory]: /language/constructors#factory-constructors
 
-### Membros
+### Membros {:#members}
 
 Declare membros no corpo de um extension type para definir sua interface
 da mesma forma que você faria com membros de classe.
@@ -426,7 +426,7 @@ Este caso de uso é o mais próximo que você pode chegar do encapsulamento comp
 de uma classe wrapper (mas é realisticamente apenas uma
 abstração [*um tanto* protegida](#type-considerations)).
 
-## Considerações de tipo
+## Considerações de tipo {:#type-considerations}
 
 Extension types são uma construção de wrapping em tempo de compilação.
 Em tempo de execução, não há absolutamente nenhum traço do extension type.
