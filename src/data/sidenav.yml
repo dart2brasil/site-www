@@ -164,7 +164,7 @@
     - title: Workspaces (suporte a monorepo)
       permalink: /tools/pub/workspaces
     - title: Hooks
-      permalink: /tools/pub/hooks
+      permalink: /tools/hooks
     - title: Referência de pacotes
       expanded: false
       children:
