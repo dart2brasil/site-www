@@ -84,7 +84,7 @@ mas fornecerão acesso às extensões não privadas nessa biblioteca.
 
 [wildcard]: /language/variables#wildcard-variables
 
-### Importando apenas parte de uma biblioteca
+### Importando apenas parte de uma biblioteca {:#importing-only-part-of-a-library}
 
 Se você deseja usar apenas parte de uma biblioteca, você pode importar seletivamente
 a biblioteca. Por exemplo:
