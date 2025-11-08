@@ -1,197 +1,198 @@
 ---
-title: Fetch data from the internet
-description: Fetch data over the internet using the http package.
+ia-translate: true
+title: Buscar dados da internet
+description: Busque dados pela internet usando o pacote http.
 prevpage:
   url: /tutorials/server/cmdline
-  title: Write command-line apps
+  title: Escrever aplicações de linha de comando
 nextpage:
   url: /tutorials/server/httpserver
-  title: Write HTTP servers
+  title: Escrever servidores HTTP
 ---
 
 <?code-excerpt path-base="fetch_data"?>
 
 :::secondary What you'll learn
-* The basics of what HTTP requests and URIs are and what they are used for.
-* Making HTTP requests using `package:http`.
-* Decoding JSON strings into Dart objects with `dart:convert`.
-* Converting JSON objects into class-based structures.
+* O básico sobre o que são requisições HTTP e URIs e para que são usados.
+* Fazendo requisições HTTP usando `package:http`.
+* Decodificando strings JSON em objetos Dart com `dart:convert`.
+* Convertendo objetos JSON em estruturas baseadas em classes.
 :::
 
-Most applications require some form of communication or
-data retrieval from the internet.
-Many apps do so through HTTP requests,
-which are sent from a client to a server
-to perform a specific action for a resource
-identified through a [URI][] (Uniform Resource Identifier).
+A maioria das aplicações requer alguma forma de comunicação ou
+recuperação de dados da internet.
+Muitas aplicações fazem isso através de requisições HTTP,
+que são enviadas de um cliente para um servidor
+para realizar uma ação específica para um recurso
+identificado através de uma [URI][] (Uniform Resource Identifier).
 
-Data communicated over HTTP can technically be in any form,
-but using [JSON][] (JavaScript Object Notation)
-is a popular choice due to its human-readability
-and language independent nature.
-The Dart SDK and ecosystem also have extensive support for JSON
-with multiple options to best meet your app's requirements.
+Dados comunicados via HTTP podem tecnicamente estar em qualquer formato,
+mas usar [JSON][] (JavaScript Object Notation)
+é uma escolha popular devido à sua legibilidade humana
+e natureza independente de linguagem.
+O Dart SDK e ecossistema também têm suporte extensivo para JSON
+com múltiplas opções para melhor atender aos requisitos da sua aplicação.
 
-In this tutorial,
-you will learn more about HTTP requests, URIs, and JSON.
-Then you will learn how to use [`package:http`][http-pub]
-as well as Dart's JSON support in the [`dart:convert`][convert-docs] library
-to fetch, decode, then use JSON-formatted data
-retrieved from an HTTP server.
+Neste tutorial,
+você vai aprender mais sobre requisições HTTP, URIs e JSON.
+Então você vai aprender como usar [`package:http`][http-pub]
+bem como o suporte JSON do Dart na biblioteca [`dart:convert`][convert-docs]
+para buscar, decodificar e então usar dados formatados em JSON
+recuperados de um servidor HTTP.
 
 [JSON]: https://www.json.org/
 
-## Background concepts
+## Conceitos de fundo
 
-The following sections provide some extra background and information
-around the technologies and concepts used in the tutorial
-to facilitate fetching data from the server.
-To skip directly to the tutorial content,
-see [Retrieve the necessary dependencies][].
+As seções a seguir fornecem algum fundo extra e informações
+sobre as tecnologias e conceitos usados no tutorial
+para facilitar a busca de dados do servidor.
+Para pular diretamente para o conteúdo do tutorial,
+veja [Recuperar as dependências necessárias][Retrieve the necessary dependencies].
 
-[Retrieve the necessary dependencies]: #retrieve-the-necessary-dependencies
+[Retrieve the necessary dependencies]: #recuperar-as-dependências-necessárias
 
 ### JSON
 
-JSON (JavaScript Object Notation) is a data-interchange format
-that has become ubiquitous across
-application development and client-server communication.
-It is lightweight but also easy for
-humans to read and write due to being text based.
-With JSON, various data types and simple data structures
-such as lists and maps can be serialized and represented by strings.
+JSON (JavaScript Object Notation) é um formato de intercâmbio de dados
+que se tornou onipresente em
+desenvolvimento de aplicações e comunicação cliente-servidor.
+É leve mas também fácil para
+humanos lerem e escreverem devido a ser baseado em texto.
+Com JSON, vários tipos de dados e estruturas de dados simples
+como listas e maps podem ser serializados e representados por strings.
 
-Most languages have many implementations and
-parsers have become extremely fast,
-so you don't need to worry about interoperability or performance.
-For more information about the JSON format, see [Introducing JSON][].
-To learn more about working with JSON in Dart,
-see the [Using JSON][] guide.
+A maioria das linguagens tem muitas implementações e
+parsers tornaram-se extremamente rápidos,
+então você não precisa se preocupar com interoperabilidade ou performance.
+Para mais informações sobre o formato JSON, veja [Introducing JSON][].
+Para aprender mais sobre trabalhar com JSON em Dart,
+veja o guia [Using JSON][].
 
 :::secondary
-Two other packages exist with platform-specific implementations for mobile.
+Dois outros pacotes existem com implementações específicas de plataforma para mobile.
 
 * [cronet_http]({{site.pub-pkg}}/cronet_http)
-  provides access to the Android [Cronet][] HTTP client.
+  fornece acesso ao cliente HTTP [Cronet][] do Android.
 * [cupertino_http]({{site.pub-pkg}}/cupertino_http)
-  provides access to Apple's [Foundation URL Loading System][furl].
+  fornece acesso ao [Foundation URL Loading System][furl] da Apple.
 
-To learn more about their capabilities,
-consult the package documentation.
+Para aprender mais sobre suas capacidades,
+consulte a documentação do pacote.
 :::
 
 [Cronet]: {{site.android-dev}}/develop/connectivity/cronet
 [furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system
 [Introducing JSON]: https://www.json.org/
 
-### HTTP requests
+### Requisições HTTP
 
-HTTP (Hypertext Transfer Protocol) is a stateless protocol
-designed for transmitting documents,
-originally between web clients and web servers.
-You interacted with the protocol to load this page,
-as your browser uses an HTTP `GET` request
-to retrieve the contents of a page from a web server.
-Since its introduction, use of the HTTP protocol and its various versions
-have expanded to applications outside the web as well,
-essentially wherever communication from a client to a server is needed.
+HTTP (Hypertext Transfer Protocol) é um protocolo stateless
+projetado para transmitir documentos,
+originalmente entre clientes web e servidores web.
+Você interagiu com o protocolo para carregar esta página,
+já que seu navegador usa uma requisição HTTP `GET`
+para recuperar o conteúdo de uma página de um servidor web.
+Desde sua introdução, o uso do protocolo HTTP e suas várias versões
+se expandiu para aplicações fora da web também,
+essencialmente onde quer que comunicação de um cliente para um servidor seja necessária.
 
-HTTP requests sent from the client to communicate with the server
-are composed of multiple components.
-HTTP libraries, such as `package:http`, allow you
-to specify the following kinds of communication:
+Requisições HTTP enviadas do cliente para se comunicar com o servidor
+são compostas de múltiplos componentes.
+Bibliotecas HTTP, como `package:http`, permitem que você
+especifique os seguintes tipos de comunicação:
 
-* An HTTP method defining the desired action,
-  such as `GET` to retrieve data or `POST` to submit new data.
-* The location of the resource through a URI.
-* The version of HTTP being used.
-* Headers that provide extra information to the server.
-* An optional body, so the request can send data to the server,
-  not just retrieve it.
+* Um método HTTP definindo a ação desejada,
+  como `GET` para recuperar dados ou `POST` para submeter novos dados.
+* A localização do recurso através de uma URI.
+* A versão do HTTP sendo usada.
+* Headers que fornecem informações extras ao servidor.
+* Um body opcional, para que a requisição possa enviar dados ao servidor,
+  não apenas recuperá-los.
 
-To learn more about the HTTP protocol,
-check out [An overview of HTTP][] on the mdn web docs.
+Para aprender mais sobre o protocolo HTTP,
+confira [An overview of HTTP][] no mdn web docs.
 
 [An overview of HTTP]: https://developer.mozilla.org/docs/Web/HTTP/Overview
 
-### URIs and URLs
+### URIs e URLs
 
-To make an HTTP request,
-you need to provide a [URI][] (Uniform Resource Identifier) to the resource.
-A URI is a character string that uniquely identifies a resource.
-A URL (Uniform Resource Locator) is a specific kind of URI
-that also provides the location of the resource.
-URLs for resources on the web contain three pieces of information.
-For this current page, the URL is composed of:
+Para fazer uma requisição HTTP,
+você precisa fornecer uma [URI][] (Uniform Resource Identifier) para o recurso.
+Uma URI é uma string de caracteres que identifica unicamente um recurso.
+Uma URL (Uniform Resource Locator) é um tipo específico de URI
+que também fornece a localização do recurso.
+URLs para recursos na web contêm três peças de informação.
+Para esta página atual, a URL é composta de:
 
-* The scheme used for determining the protocol used: `https`
-* The authority or hostname of the server: `dart.dev`
-* The path to the resource: `/tutorials/server/fetch-data.html`
+* O scheme usado para determinar o protocolo usado: `https`
+* A autoridade ou hostname do servidor: `dart.dev`
+* O path para o recurso: `/tutorials/server/fetch-data.html`
 
-There are other optional parameters as well
-that aren't used by the current page:
+Existem outros parâmetros opcionais também
+que não são usados pela página atual:
 
-* Parameters to customize extra behavior: `?key1=value1&key2=value2`
-* An anchor, that isn't sent to the server,
-  which points to a specific location in the resource: `#uris`
+* Parâmetros para personalizar comportamento extra: `?key1=value1&key2=value2`
+* Uma âncora, que não é enviada ao servidor,
+  que aponta para uma localização específica no recurso: `#uris`
 
-To learn more about URLs,
-see [What is a URL?][] on the mdn web docs.
+Para aprender mais sobre URLs,
+veja [What is a URL?][] no mdn web docs.
 
 [What is a URL?]: https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL
 
-## Retrieve the necessary dependencies
+## Recuperar as dependências necessárias
 
-The `package:http` library provides a cross-platform solution
-for making composable HTTP requests,
-with optional fine-grained control.
+A biblioteca `package:http` fornece uma solução multiplataforma
+para fazer requisições HTTP componíveis,
+com controle fino-granulado opcional.
 
 :::note
-Avoid directly using `dart:io` or `dart:html` to make HTTP requests.
-Those libraries are platform-dependent and tied to a single implementation.
+Evite usar diretamente `dart:io` ou `dart:html` para fazer requisições HTTP.
+Essas bibliotecas são dependentes de plataforma e vinculadas a uma única implementação.
 :::
 
-To add a dependency on `package:http`,
-run the following [`dart pub add`][] command
-from the top of your repo:
+Para adicionar uma dependência em `package:http`,
+execute o seguinte comando [`dart pub add`][]
+do topo do seu repositório:
 
 ```console
 $ dart pub add http
 ```
 
-To use `package:http` in your code,
-import it and optionally [specify a library prefix][]:
+Para usar `package:http` no seu código,
+importe-o e opcionalmente [especifique um prefixo de biblioteca][specify a library prefix]:
 
 <?code-excerpt "lib/fetch_data.dart (http-import)"?>
 ```dart
 import 'package:http/http.dart' as http;
 ```
 
-To learn more specifics about `package:http`,
-see its [page on the pub.dev site][http-pub]
-and its [API documentation][http-docs].
+Para aprender mais especificidades sobre `package:http`,
+veja sua [página no site pub.dev][http-pub]
+e sua [documentação da API][http-docs].
 
 [`dart pub add`]: /tools/pub/cmd/pub-add
 [specify a library prefix]: /language/libraries#specifying-a-library-prefix
 
-## Build a URL
+## Construir uma URL
 
-As previously mentioned,
-to make an HTTP request,
-you first need a URL that identifies
-the resource being requested
-or endpoint being accessed.
+Como mencionado anteriormente,
+para fazer uma requisição HTTP,
+você primeiro precisa de uma URL que identifique
+o recurso sendo solicitado
+ou endpoint sendo acessado.
 
-In Dart, URLs are represented through [`Uri`][] objects.
-There are many ways to build an `Uri`,
-but due to its flexibility,
-parsing a string with `Uri.parse` to
-create one is a common solution.
+Em Dart, URLs são representadas através de objetos [`Uri`][].
+Existem muitas maneiras de construir um `Uri`,
+mas devido à sua flexibilidade,
+analisar uma string com `Uri.parse` para
+criar uma é uma solução comum.
 
-The following snippet shows two ways
-to create a `Uri` object
-pointing to mock JSON-formatted information
-about `package:http` hosted on this site:
+O snippet a seguir mostra duas maneiras
+de criar um objeto `Uri`
+apontando para informações mock formatadas em JSON
+sobre `package:http` hospedado neste site:
 
 <?code-excerpt "lib/fetch_data.dart (build-uris)"?>
 ```dart
@@ -202,32 +203,32 @@ Uri.parse('https://dart.dev/f/packages/http.json');
 Uri.https('dart.dev', '/f/packages/http.json');
 ```
 
-To learn about other ways of building and interacting with URIs,
-see the [`URI` documentation][].
+Para aprender sobre outras maneiras de construir e interagir com URIs,
+veja a [documentação do `URI`][`URI` documentation].
 
 [`Uri`]: {{site.dart-api}}/dart-core/Uri-class.html
 [`URI` documentation]: /libraries/dart-core#uris
 
-## Make a network request
+## Fazer uma requisição de rede
 
-If you just need to quickly fetch a string representation
-of a requested resource,
-you can use the top-level [`read`][http-read]
-function found in `package:http`
-that returns a `Future<String>` or throws
-a [`ClientException`][http-client-exc] if the request wasn't successful.
-The following example uses `read` to
-retrieve the mock JSON-formatted information
-about `package:http` as a string,
-then prints it out:
+Se você apenas precisa rapidamente buscar uma representação string
+de um recurso solicitado,
+você pode usar a função de nível superior [`read`][http-read]
+encontrada em `package:http`
+que retorna um `Future<String>` ou lança
+uma [`ClientException`][http-client-exc] se a requisição não foi bem-sucedida.
+O exemplo a seguir usa `read` para
+recuperar as informações mock formatadas em JSON
+sobre `package:http` como uma string,
+então as imprime:
 
 :::note
-Many functions in `package:http`, including `read`,
-access the network and perform potentially time-consuming operations,
-therefore they do so asynchronously and return a [`Future`][].
-If you haven't encountered futures yet,
-you can learn about them—as well as the `async` and `await` keywords—in the
-[asynchronous programming tutorial](/libraries/async/async-await).
+Muitas funções em `package:http`, incluindo `read`,
+acessam a rede e realizam operações potencialmente demoradas,
+portanto fazem isso assincronamente e retornam um [`Future`][].
+Se você ainda não encontrou futures,
+você pode aprender sobre eles—bem como as keywords `async` e `await`—no
+[tutorial de programação assíncrona](/libraries/async/async-await).
 :::
 
 <?code-excerpt "lib/fetch_data.dart (http-read)" replace="/readMain/main/g; /(http\.read)/[!$1!]/g"?>
@@ -239,8 +240,8 @@ void main() async {
 }
 ```
 
-This results in the following JSON-formatted output,
-which can also be seen in your browser at
+Isso resulta na seguinte saída formatada em JSON,
+que também pode ser vista no seu navegador em
 [`/f/packages/http.json`][mock-http-json].
 
 ```json
@@ -251,20 +252,20 @@ which can also be seen in your browser at
   "publisher": "dart.dev",
   "repository": "https://github.com/dart-lang/http"
 }
-```  
+```
 
-Note the structure of the data
-(in this case a map),
-as you will need it when decoding the JSON later on.
+Note a estrutura dos dados
+(neste caso um map),
+já que você vai precisar dela ao decodificar o JSON mais tarde.
 
-If you need other information from the response,
-such as the [status code][] or the [headers][],
-you can instead use the top-level [`get`][http-get] function
-that returns a `Future` with a [`Response`][http-response].
+Se você precisar de outras informações da resposta,
+como o [código de status][status code] ou os [headers][],
+você pode em vez disso usar a função de nível superior [`get`][http-get]
+que retorna um `Future` com um [`Response`][http-response].
 
-The following snippet uses `get` to get the whole response
-in order to exit early if the request was not successful,
-which is indicated with a status code of **200**:
+O snippet a seguir usa `get` para obter a resposta completa
+para sair mais cedo se a requisição não foi bem-sucedida,
+o que é indicado com um código de status de **200**:
 
 <?code-excerpt "lib/fetch_data.dart (http-get)" replace="/getMain/main/g"?>
 ```dart
@@ -279,16 +280,16 @@ void main() async {
 }
 ```
 
-There are many other status codes besides **200**
-and your app might want to handle them differently.
-To learn more about what different status codes mean,
-see [HTTP response status codes][] on the mdn web docs.
+Existem muitos outros códigos de status além de **200**
+e sua aplicação pode querer lidar com eles de forma diferente.
+Para aprender mais sobre o que diferentes códigos de status significam,
+veja [HTTP response status codes][] no mdn web docs.
 
-Some server requests require more information,
-such as authentication or user-agent information;
-in this case you might need to include [HTTP headers][headers].
-You can specify headers by passing in a `Map<String, String>`
-of the key-value pairs as the `headers` optional named parameter:
+Algumas requisições ao servidor requerem mais informações,
+como autenticação ou informações de user-agent;
+neste caso você pode precisar incluir [HTTP headers][headers].
+Você pode especificar headers passando um `Map<String, String>`
+dos pares chave-valor como o parâmetro nomeado opcional `headers`:
 
 <?code-excerpt "lib/fetch_data.dart (http-headers)"?>
 ```dart
@@ -308,14 +309,14 @@ await http.get(
 [http-response]: {{site.pub-api}}/http/latest/http/Response-class.html
 [HTTP response status codes]: https://developer.mozilla.org/docs/Web/HTTP/Status
 
-### Make multiple requests
+### Fazer múltiplas requisições
 
-If you're making multiple requests to the same server,
-you can instead keep a persistent connection
-through a [`Client`][http-client],
-which has similar methods to the top-level ones.
-Just make sure to clean up with
-the [`close`][http-close] method when done:
+Se você está fazendo múltiplas requisições ao mesmo servidor,
+você pode em vez disso manter uma conexão persistente
+através de um [`Client`][http-client],
+que tem métodos similares aos de nível superior.
+Apenas certifique-se de limpar com
+o método [`close`][http-close] quando terminar:
 
 <?code-excerpt "lib/fetch_data.dart (http-client)" replace="/clientMain/main/g; /(http\.Cl.*?\))/[!$1!]/g; /(client\.c.*?\))/[!$1!]/g"?>
 ```dart
@@ -331,9 +332,9 @@ void main() async {
 }
 ```
 
-To enable the client to retry failed requests,
-import `package:http/retry.dart` and
-wrap your created `Client` in a [`RetryClient`][http-retry-client]:
+Para habilitar o cliente a retentar requisições falhadas,
+importe `package:http/retry.dart` e
+envolva seu `Client` criado em um [`RetryClient`][http-retry-client]:
 
 <?code-excerpt "lib/fetch_data.dart (http-retry)" plaster="none" replace="/retryMain/main/g; /(i.*?retry.*)/[!$1!]/g; /(Retry.*?\)\))/[!$1!]/g"?>
 ```dart
@@ -352,15 +353,15 @@ void main() async {
 }
 ```
 
-The `RetryClient` has a default behavior for how many
-times to retry and how long to wait between each request,
-but its behavior can be modified through parameters
-to the [`RetryClient()`][http-retry-client-cons]
-or [`RetryClient.withDelays()`][http-retry-client-delay] constructors.
+O `RetryClient` tem um comportamento padrão para quantas
+vezes retentar e quanto tempo esperar entre cada requisição,
+mas seu comportamento pode ser modificado através de parâmetros
+para os construtores [`RetryClient()`][http-retry-client-cons]
+ou [`RetryClient.withDelays()`][http-retry-client-delay].
 
-`package:http` has much more functionality and customization,
-so make sure to check out its [page on the pub.dev site][http-pub]
-and its [API documentation][http-docs].
+`package:http` tem muito mais funcionalidade e customização,
+então certifique-se de conferir sua [página no site pub.dev][http-pub]
+e sua [documentação da API][http-docs].
 
 [http-client]: {{site.pub-api}}/http/latest/http/Client-class.html
 [http-close]: {{site.pub-api}}/http/latest/http/Client/close.html
@@ -368,21 +369,21 @@ and its [API documentation][http-docs].
 [http-retry-client-cons]: {{site.pub-api}}/http/latest/retry/RetryClient/RetryClient.html
 [http-retry-client-delay]: {{site.pub-api}}/http/latest/retry/RetryClient/RetryClient.withDelays.html
 
-## Decode the retrieved data
+## Decodificar os dados recuperados
 
-While you now have made a network request
-and retrieved the returned data as string,
-accessing specific portions of information
-from a string can be a challenge.
+Enquanto você agora fez uma requisição de rede
+e recuperou os dados retornados como string,
+acessar porções específicas de informação
+de uma string pode ser um desafio.
 
-Since the data is already in a JSON format,
-you can use Dart's built-in [`json.decode`][decode-docs] function
-in the `dart:convert` library
-to convert the raw string into
-a JSON representation using Dart objects.
-In this case, the JSON data is represented in a map structure
-and, in JSON, map keys are always strings,
-so you can cast the result of `json.decode` to a `Map<String, dynamic>`:
+Já que os dados já estão em um formato JSON,
+você pode usar a função built-in [`json.decode`][decode-docs] do Dart
+na biblioteca `dart:convert`
+para converter a string bruta em
+uma representação JSON usando objetos Dart.
+Neste caso, os dados JSON são representados em uma estrutura map
+e, em JSON, chaves de map são sempre strings,
+então você pode fazer cast do resultado de `json.decode` para um `Map<String, dynamic>`:
 
 <?code-excerpt "lib/fetch_data.dart (json-decode)" plaster="none" replace="/decodeMain/main/g; /(import 'd.*?;)/[!$1!]/g; /(json\.de.*?)\;/[!$1!];/g"?>
 ```dart
@@ -400,19 +401,19 @@ void main() async {
 
 [decode-docs]: {{site.dart-api}}/dart-convert/JsonCodec/decode.html
 
-### Create a structured class to store the data
+### Criar uma classe estruturada para armazenar os dados
 
-To provide the decoded JSON with more structure,
-making it easier to work with,
-create a class that can store the
-retrieved data using specific types depending
-on the schema of your data.
+Para fornecer ao JSON decodificado mais estrutura,
+tornando mais fácil trabalhar com ele,
+crie uma classe que possa armazenar os
+dados recuperados usando tipos específicos dependendo
+do schema dos seus dados.
 
-The following snippet shows a class-based representation
-that can store the package information returned
-from the mock JSON file you requested.
-This structure assumes all fields except the `repository`
-are required and provided every time.
+O snippet a seguir mostra uma representação baseada em classe
+que pode armazenar as informações do pacote retornadas
+do arquivo JSON mock que você solicitou.
+Esta estrutura assume que todos os campos exceto o `repository`
+são obrigatórios e fornecidos toda vez.
 
 <?code-excerpt "bin/fetch_http_package.dart (package-info)" plaster="none"?>
 ```dart
@@ -433,17 +434,17 @@ class PackageInfo {
 }
 ```
 
-### Encode the data into your class
+### Codificar os dados na sua classe
 
-Now that you have a class to store your data in,
-you need to add a mechanism to convert
-the decoded JSON into a `PackageInfo` object.
+Agora que você tem uma classe para armazenar seus dados,
+você precisa adicionar um mecanismo para converter
+o JSON decodificado em um objeto `PackageInfo`.
 
-Convert the decoded JSON
-by manually writing a `fromJson` method
-matching the earlier JSON format,
-casting types as necessary
-and handling the optional `repository` field:
+Converta o JSON decodificado
+escrevendo manualmente um método `fromJson`
+correspondendo ao formato JSON anterior,
+fazendo cast de tipos conforme necessário
+e lidando com o campo opcional `repository`:
 
 <?code-excerpt "bin/fetch_http_package.dart (from-json)"?>
 ```dart
@@ -464,29 +465,29 @@ class PackageInfo {
 }
 ```
 
-A handwritten method, such as in the previous example,
-is often sufficient for relatively simple JSON structures,
-but there are more flexible options as well.
-To learn more about JSON serialization and deserialization,
-including automatic generation of the conversion logic,
-see the [Using JSON][] guide.
+Um método escrito à mão, como no exemplo anterior,
+é frequentemente suficiente para estruturas JSON relativamente simples,
+mas existem opções mais flexíveis também.
+Para aprender mais sobre serialização e desserialização JSON,
+incluindo geração automática da lógica de conversão,
+veja o guia [Using JSON][].
 
-### Convert the response to an object of your structured class
+### Converter a resposta para um objeto da sua classe estruturada
 
-Now you have a class to store your data
-and a way to convert the decoded JSON object
-into an object of that type.
-Next, you can write a function that
-pulls everything together:
+Agora você tem uma classe para armazenar seus dados
+e uma maneira de converter o objeto JSON decodificado
+em um objeto desse tipo.
+Em seguida, você pode escrever uma função que
+junta tudo:
 
-1. Create your `URI` based off a passed-in package name.
-2. Use `http.get` to retrieve the data for that package.
-3. If the request didn't succeed, throw an `Exception`
-   or preferably your own custom `Exception` subclass.
-4. If the request succeeded, use `json.decode` to
-   decode the response body into a JSON string.
-5. Converted the decoded JSON string into a `PackageInfo` object
-   using the `PackageInfo.fromJson` factory constructor you created.
+1. Criar seu `URI` baseado em um nome de pacote passado.
+2. Usar `http.get` para recuperar os dados para esse pacote.
+3. Se a requisição não teve sucesso, lançar uma `Exception`
+   ou preferencialmente sua própria subclasse de `Exception` personalizada.
+4. Se a requisição teve sucesso, usar `json.decode` para
+   decodificar o body da resposta em uma string JSON.
+5. Converter a string JSON decodificada em um objeto `PackageInfo`
+   usando o construtor factory `PackageInfo.fromJson` que você criou.
 
 <?code-excerpt "bin/fetch_http_package.dart (get-package)" plaster="none"?>
 ```dart
@@ -515,18 +516,18 @@ class PackageRetrievalException implements Exception {
 }
 ```
 
-## Utilize the converted data
+## Utilizar os dados convertidos
 
-Now that you've retrieved data and
-converted it to a more easily accessible format,
-you can use it however you'd like.
-Some possibilities include
-outputting information to a CLI, or
-displaying it in a [web][] or [Flutter][] app.
+Agora que você recuperou dados e
+os converteu para um formato mais facilmente acessível,
+você pode usá-los como quiser.
+Algumas possibilidades incluem
+exibir informações para um CLI, ou
+mostrá-las em uma aplicação [web][] ou [Flutter][].
 
-Here is complete, runnable example
-that requests, decodes, then displays
-the mock information about the `http` and `path` packages:
+Aqui está um exemplo completo e executável
+que solicita, decodifica e então exibe
+as informações mock sobre os pacotes `http` e `path`:
 
 <?code-excerpt "bin/fetch_http_package.dart"?>
 ```dartpad
@@ -629,23 +630,23 @@ class PackageRetrievalException implements Exception {
 ```
 
 :::flutter-note
-For another example that covers fetching then displaying data in Flutter,
-see the [Fetching data from the internet][] Flutter recipe.
+Para outro exemplo que cobre buscar e então exibir dados no Flutter,
+veja a receita Flutter [Fetching data from the internet][].
 :::
 
 [web]: /web
 [Flutter]: {{site.flutter}}
 [Fetching data from the internet]: {{site.flutter-docs}}/cookbook/networking/fetch-data
 
-## What next?
+## E agora?
 
-Now that you have retrieved, parsed, and used
-data from the internet,
-consider learning more about [Concurrency in Dart][].
-If your data is large and complex,
-you can move retrieval and decoding
-to another [isolate][] as a background worker
-to prevent your interface from becoming unresponsive.
+Agora que você recuperou, analisou e usou
+dados da internet,
+considere aprender mais sobre [Concorrência em Dart][Concurrency in Dart].
+Se seus dados são grandes e complexos,
+você pode mover a recuperação e decodificação
+para outro [isolate][] como um trabalhador em segundo plano
+para evitar que sua interface fique sem resposta.
 
 [Concurrency in Dart]: /language/concurrency
 [isolate]: /language/concurrency#isolates
