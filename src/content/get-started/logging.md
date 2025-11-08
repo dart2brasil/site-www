@@ -1,9 +1,10 @@
 ---
+ia-translate: true
 title: Logging
 short-title: Logging
 description: >-
-  Learn how to add logging to your Dart application to help with debugging and
-  monitoring.
+  Aprenda como adicionar logging à sua aplicação Dart para ajudar com depuração e
+  monitoramento.
 sitemap: false
 noindex: true
 layout: learn
@@ -17,43 +18,43 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-In this chapter, you'll learn how to add logging to your Dart application.
-Logging is a critical tool for debugging, monitoring, and understanding the
-behavior of your application in different environments.
+Neste capítulo, você aprenderá como adicionar logging à sua aplicação Dart.
+Logging é uma ferramenta crítica para depuração, monitoramento e compreensão do
+comportamento da sua aplicação em diferentes ambientes.
 
-:::secondary What you'll learn
+:::secondary O que você aprenderá
 
-*  Add the `logging` package to your project.
-*  Understand different log levels and how to use them.
-*  Create a `Logger` instance and configure it to write to a file.
-*  Log errors and warnings to a file for later inspection.
+*  Adicionar o pacote `logging` ao seu projeto.
+*  Entender diferentes níveis de log e como usá-los.
+*  Criar uma instância de `Logger` e configurá-la para escrever em um arquivo.
+*  Registrar erros e avisos em um arquivo para inspeção posterior.
 
 :::
 
-## Prerequisites
+## Pré-requisitos
 
-Before you begin this chapter, ensure you:
+Antes de começar este capítulo, certifique-se de:
 
-*  Have completed Chapter 11 and have a working Dart development environment
-   with the `dartpedia` project.
-*  Understand the basics of debugging and why it's important to track errors and
-   events in your application.
+*  Ter completado o Capítulo 11 e ter um ambiente de desenvolvimento Dart funcionando
+   com o projeto `dartpedia`.
+*  Entender os fundamentos de depuração e por que é importante rastrear erros e
+   eventos em sua aplicação.
 
-## Tasks
+## Tarefas
 
-In this chapter, you'll add logging to the `dartpedia` CLI application to help
-track errors and monitor its behavior. This will involve adding the `logging`
-package, creating a `Logger` instance, and writing log messages to a file.
+Neste capítulo, você adicionará logging à aplicação CLI `dartpedia` para ajudar
+a rastrear erros e monitorar seu comportamento. Isso envolverá adicionar o pacote `logging`,
+criar uma instância de `Logger` e escrever mensagens de log em um arquivo.
 
-### Task 1: Add the `logging` package
+### Tarefa 1: Adicionar o pacote `logging`
 
-First, add the `logging` package to your project's dependencies.
+Primeiro, adicione o pacote `logging` às dependências do seu projeto.
 
-1.  Open the `cli/pubspec.yaml` file.
+1.  Abra o arquivo `cli/pubspec.yaml`.
 
-2.  Locate the `dependencies` section.
+2.  Localize a seção `dependencies`.
 
-3.  Add the `logging` package to your dependencies:
+3.  Adicione o pacote `logging` às suas dependências:
 
     ```yaml
     dependencies:
@@ -66,75 +67,75 @@ First, add the `logging` package to your project's dependencies.
       logging: ^1.2.0
     ```
 
-4.  Run `dart pub get` in the `cli` directory to fetch the new dependency.
+4.  Execute `dart pub get` no diretório `cli` para buscar a nova dependência.
 
-### Task 2: Create a logger
+### Tarefa 2: Criar um logger
 
-Next, create a `Logger` instance and configure it to write log messages
-to a file. This involves creating a new file for the logger and setting up
-the necessary imports.
+A seguir, crie uma instância de `Logger` e configure-a para escrever mensagens de log
+em um arquivo. Isso envolve criar um novo arquivo para o logger e configurar
+os imports necessários.
 
-1.  Create a new file called `cli/lib/src/logger.dart`.
+1.  Crie um novo arquivo chamado `cli/lib/src/logger.dart`.
 
-1.  Add the necessary imports and define the `initFileLogger` function.
+1.  Adicione os imports necessários e defina a função `initFileLogger`.
 
     ```dart title="cli/lib/src/logger.dart"
     import 'dart:io';
     import 'package:logging/logging.dart';
-  
+
     Logger initFileLogger(String name) {
       // Enables logging from child loggers.
       hierarchicalLoggingEnabled = true;
-  
+
       // Create a logger instance with the provided name.
       final logger = Logger(name);
       final now = DateTime.now();
-  
+
       // The rest of the function will be added below.
       // ...
-  
+
       return logger;
     }
     ```
 
-1.  Add the code to find the project's root directory, create a `logs`
-    directory if one doesn't exist, and create a unique log file.
-   
+1.  Adicione o código para encontrar o diretório raiz do projeto, criar um diretório `logs`
+    se ele não existir e criar um arquivo de log único.
+
     ```dart
     Logger initFileLogger(String name) {
       hierarchicalLoggingEnabled = true;
       final logger = Logger(name);
       final now = DateTime.now();
-  
+
       // Get the path to the project directory from the current script.
       final segments = Platform.script.path.split('/');
       final projectDir = segments.sublist(0, segments.length - 2).join('/');
-  
+
       // Create a 'logs' directory if it doesn't exist.
       final dir = Directory('$projectDir/logs');
       if (!dir.existsSync()) dir.createSync();
-  
+
       // Create a log file with a unique name based on the current date and logger name.
       final logFile = File(
         '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
       );
-  
+
       // The rest of the function will be added below.
       // ...
-  
+
       return logger;
     }
     ```
 
-1.  Configure the logger's level and set up a listener to write log messages
-    to the file.
+1.  Configure o nível do logger e configure um listener para escrever mensagens de log
+    no arquivo.
 
     ```dart
     Logger initFileLogger(String name) {
       hierarchicalLoggingEnabled = true;
       final logger = Logger(name);
       final now = DateTime.now();
-    
+
       final segments = Platform.script.path.split('/');
       final projectDir = segments.sublist(0, segments.length - 2).join('/');
       final dir = Directory('$projectDir/logs');
@@ -142,38 +143,38 @@ the necessary imports.
       final logFile = File(
         '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
       );
-    
+
       // Set the logger level to ALL, so it logs all messages regardless of severity.
       // Level.ALL is useful for development and debugging, but you'll likely want to
       // use a more restrictive level like Level.INFO or Level.WARNING in production.
       logger.level = Level.ALL;
-    
+
       // Listen for log records and write each one to the log file.
       logger.onRecord.listen((record) {
         final msg =
             '[${record.time} - ${record.loggerName}] ${record.level.name}: ${record.message}';
         logFile.writeAsStringSync('$msg \n', mode: FileMode.append);
       });
-    
+
       return logger;
     }
     ```
 
-    This code does the following:
+    Este código faz o seguinte:
 
-    *  It enables hierarchical logging using `hierarchicalLoggingEnabled = true`.
-    *  It creates a `Logger` instance with the given name.
-    *  It gets the project directory from the `Platform.script.path`.
-    *  It creates a `logs` directory if it doesn't exist.
-    *  It creates a log file with the current date and the logger name.
-    *  It sets the logger level to `Level.ALL`, meaning it will log all messages.
-       This is useful for development and debugging, but you'll likely want to use
-       a more restrictive level like `Level.INFO` or `Level.WARNING` in
-       production.
-    *  It listens for log records and writes them to the log file.
+    *  Ele habilita logging hierárquico usando `hierarchicalLoggingEnabled = true`.
+    *  Ele cria uma instância de `Logger` com o nome fornecido.
+    *  Ele obtém o diretório do projeto do `Platform.script.path`.
+    *  Ele cria um diretório `logs` se ele não existir.
+    *  Ele cria um arquivo de log com a data atual e o nome do logger.
+    *  Ele define o nível do logger como `Level.ALL`, significando que ele registrará todas as mensagens.
+       Isso é útil para desenvolvimento e depuração, mas você provavelmente vai querer usar
+       um nível mais restritivo como `Level.INFO` ou `Level.WARNING` em
+       produção.
+    *  Ele escuta registros de log e os escreve no arquivo de log.
 
-1. Create a new file called `cli/lib/cli.dart` and export `logger.dart`.
-   This makes the `initFileLogger` available to other parts of your app.
+1. Crie um novo arquivo chamado `cli/lib/cli.dart` e exporte `logger.dart`.
+   Isso torna o `initFileLogger` disponível para outras partes da sua aplicação.
 
    ```dart title="cli/lib/cli.dart"
     export 'src/commands/get_article.dart';
@@ -181,27 +182,27 @@ the necessary imports.
     export 'src/logger.dart';
    ```
 
-### Task 3: Use the logger in `cli.dart`
+### Tarefa 3: Usar o logger em `cli.dart`
 
-Now, use the `initFileLogger` function in `cli/bin/cli.dart` to create a
-logger instance and log messages to a file.
+Agora, use a função `initFileLogger` em `cli/bin/cli.dart` para criar uma
+instância de logger e registrar mensagens em um arquivo.
 
-1.  Open the `cli/bin/cli.dart` file.
+1.  Abra o arquivo `cli/bin/cli.dart`.
 
-2.  Add the import for the logger:
+2.  Adicione o import para o logger:
 
     ```dart title="cli/bin/cli.dart"
     import 'package:cli/cli.dart';
     import 'package:command_runner/command_runner.dart';
     ```
 
-3.  Modify the `main` function to initialize the logger and pass it to the
-    commands:
+3.  Modifique a função `main` para inicializar o logger e passá-lo para os
+    comandos:
 
     ```dart title="cli/bin/cli.dart"
     import 'package:cli/cli.dart';
     import 'package:command_runner/command_runner.dart';
-    
+
     void main(List<String> arguments) async {
       final errorLogger = initFileLogger('errors');
       final app =
@@ -224,30 +225,30 @@ logger instance and log messages to a file.
             ..addCommand(HelpCommand())
             ..addCommand(SearchCommand(logger: errorLogger))
             ..addCommand(GetArticleCommand(logger: errorLogger));
-    
+
       app.run(arguments);
     }
     ```
 
-    This code does the following:
+    Este código faz o seguinte:
 
-    *  It initializes a `Logger` instance using `initFileLogger('errors')`.
-    *  It passes the `logger` instance to `CommandRunner` and
-       individual commands.
+    *  Ele inicializa uma instância de `Logger` usando `initFileLogger('errors')`.
+    *  Ele passa a instância de `logger` para `CommandRunner` e
+       comandos individuais.
 
-### Task 4: Create the SearchCommand command
+### Tarefa 4: Criar o comando SearchCommand
 
-The core functionality of the CLI lives in its commands. Create the
-`SearchCommand` and `GetArticleCommand` files and add the necessary code,
-including the logging and error handling.
+A funcionalidade principal da CLI vive em seus comandos. Crie os
+arquivos `SearchCommand` e `GetArticleCommand` e adicione o código necessário,
+incluindo logging e tratamento de erros.
 
-1.  Create a new file named `/cli/lib/src/commands/search.dart`.
+1.  Crie um novo arquivo chamado `/cli/lib/src/commands/search.dart`.
 
-1.  Add the imports and a basic class structure. This `SearchCommand`
-    class extends `Command<String>`, and its constructor accepts a `Logger`
-    instance. Accepting the logger in the constructor is a common pattern called
-    dependency injection, which allows the command to log events without needing
-    to create its own logger.
+1.  Adicione os imports e uma estrutura básica de classe. Esta classe `SearchCommand`
+    estende `Command<String>`, e seu construtor aceita uma instância de `Logger`.
+    Aceitar o logger no construtor é um padrão comum chamado
+    injeção de dependência, que permite que o comando registre eventos sem precisar
+    criar seu próprio logger.
 
     ```dart
     import 'dart:async';
@@ -282,10 +283,10 @@ including the logging and error handling.
       }
     }
     ```
-  
-1.  Now, add the core logic to the `run` method. This code checks for a
-    valid argument, calls the `search()` function from the `wikipedia` package,
-    formats the results, and returns the results as a string.
+
+1.  Agora, adicione a lógica principal ao método `run`. Este código verifica por um
+    argumento válido, chama a função `search()` do pacote `wikipedia`,
+    formata os resultados e retorna os resultados como uma string.
 
     ```dart
     import 'dart:async';
@@ -331,9 +332,9 @@ including the logging and error handling.
     }
     ```
 
-1.  Next, add the "I'm feeling lucky" feature by adding a flag to the
-    constructor. Then, in the `run` method, add the logic to check if the flag
-    is set and, if so, get the summary of the top search result.
+1.  A seguir, adicione o recurso "Estou com sorte" adicionando uma flag ao
+    construtor. Então, no método `run`, adicione a lógica para verificar se a flag
+    está definida e, se sim, obter o resumo do resultado de busca principal.
 
     ```dart
     import 'dart:async';
@@ -398,10 +399,10 @@ including the logging and error handling.
     }
     ```
 
-1.  Finally, wrap the main logic in a `try/catch` block. This allows you to
-    handle potential exceptions that could arise from network issues or data
-    formatting problems. You'll use the injected `logger` to record these errors
-    to the log file.
+1.  Finalmente, envolva a lógica principal em um bloco `try/catch`. Isso permite que você
+    lide com potenciais exceptions que podem surgir de problemas de rede ou
+    formatação de dados. Você usará o `logger` injetado para registrar esses erros
+    no arquivo de log.
 
     ```dart
     import 'dart:async';
@@ -480,15 +481,15 @@ including the logging and error handling.
     }
     ```
 
-### Task 5: Create the GetArticleCommand command
+### Tarefa 5: Criar o comando GetArticleCommand
 
-Now, create the `GetArticleCommand` file and add the necessary code. The code is
-similar to the previous `SearchCommand`, as it also uses a `try/catch` block to handle
-potential network or data errors.
+Agora, crie o arquivo `GetArticleCommand` e adicione o código necessário. O código é
+similar ao `SearchCommand` anterior, pois também usa um bloco `try/catch` para lidar com
+potenciais erros de rede ou dados.
 
-1.  Create a new file named cli/lib/src/commands/get_article.dart.
+1.  Crie um novo arquivo chamado cli/lib/src/commands/get_article.dart.
 
-2.  Add the following code to `get_article.dart`.
+2.  Adicione o seguinte código ao `get_article.dart`.
 
     ```dart
     import 'dart:async';
@@ -545,79 +546,79 @@ potential network or data errors.
     }
     ```
 
-    Review the code you've just added. The `SearchCommand` and
-    `GetArticleCommand` now:
+    Revise o código que você acabou de adicionar. O `SearchCommand` e
+    `GetArticleCommand` agora:
 
-    * Import the necessary packages like `command_runner`, `logging`, and
-      `wikipedia` to use their classes and functions.
-    * Accept a `Logger` instance through their constructor. This is a common
-      pattern called dependency injection, which allows the command to log
-      events without needing to create its own logger.
-    * Implement a `run` method that defines the command's logic. This method
-      calls the appropriate wikipedia API and formats the output.
-    * Include `try/catch` blocks to gracefully handle network errors
-      (`HttpException`) and data parsing errors (`FormatException`), logging
-      them for debugging.
+    * Importam os pacotes necessários como `command_runner`, `logging` e
+      `wikipedia` para usar suas classes e funções.
+    * Aceitam uma instância de `Logger` através do seu construtor. Este é um
+      padrão comum chamado injeção de dependência, que permite que o comando registre
+      eventos sem precisar criar seu próprio logger.
+    * Implementam um método `run` que define a lógica do comando. Este método
+      chama a API da wikipedia apropriada e formata a saída.
+    * Incluem blocos `try/catch` para lidar elegantemente com erros de rede
+      (`HttpException`) e erros de análise de dados (`FormatException`), registrando-os
+      para depuração.
 
 
-### Task 6: Run the application and check the logs
+### Tarefa 6: Executar a aplicação e verificar os logs
 
-Now that you've added logging to your application, run it and check the log
-file to see the results.
+Agora que você adicionou logging à sua aplicação, execute-a e verifique o arquivo de
+log para ver os resultados.
 
-1.  Run the application with a command that might produce an error. For example,
-    try searching for an article that doesn't exist or that causes a
+1.  Execute a aplicação com um comando que pode produzir um erro. Por exemplo,
+    tente buscar um artigo que não existe ou que causa uma
     `FormatException`.
 
     ```bash
     dart run bin/cli.dart search blahblahblahblah
     ```
 
-2.  Check the `logs` directory in your project. You should see a file with the
-    current date and the name `errors.txt`.
+2.  Verifique o diretório `logs` no seu projeto. Você deve ver um arquivo com a
+    data atual e o nome `errors.txt`.
 
-3.  Open the log file and verify that the error message is logged.
+3.  Abra o arquivo de log e verifique se a mensagem de erro está registrada.
 
     ```text
     [2025-02-20 16:23:45.678 - errors] WARNING: HttpException: HttpException: , uri = https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=blahblahblahblah
     [2025-02-20 16:23:45.678 - errors] INFO: Usage: dart bin/cli.dart <command> [commandArg?] [...options?]
     ```
 
-## Review
+## Revisão
 
-In this lesson, you learned:
+Nesta lição, você aprendeu:
 
-*  How to add the `logging` package to your project.
-*  How to create a `Logger` instance and configure it to write to a file.
-*  How to log errors and warnings to a file for later inspection.
-*  The importance of logging for debugging and monitoring your application.
+*  Como adicionar o pacote `logging` ao seu projeto.
+*  Como criar uma instância de `Logger` e configurá-la para escrever em um arquivo.
+*  Como registrar erros e avisos em um arquivo para inspeção posterior.
+*  A importância do logging para depuração e monitoramento da sua aplicação.
 
 ## Quiz
 
-**Question 1:** What is the purpose of the `logging` package in Dart?
+**Questão 1:** Qual é o propósito do pacote `logging` em Dart?
 
-*  A) To handle HTTP requests.
-*  B) To manage dependencies in your project.
-*  C) To provide a way to record events and errors in your application.
-*  D) To create a command-line interface.
+*  A) Lidar com requisições HTTP.
+*  B) Gerenciar dependências no seu projeto.
+*  C) Fornecer uma forma de registrar eventos e erros em sua aplicação.
+*  D) Criar uma interface de linha de comando.
 
-**Question 2:** What does the `hierarchicalLoggingEnabled = true;` line do?
+**Questão 2:** O que a linha `hierarchicalLoggingEnabled = true;` faz?
 
-*  A) It enables logging to a hierarchical file system.
-*  B) It enables a logger to capture events from child loggers.
-*  C) It disables logging to the console.
-*  D) It enables logging of HTTP requests.
+*  A) Ela habilita logging em um sistema de arquivos hierárquico.
+*  B) Ela habilita um logger para capturar eventos de loggers filhos.
+*  C) Ela desabilita logging no console.
+*  D) Ela habilita logging de requisições HTTP.
 
-**Question 3:** What are some benefits of logging?
+**Questão 3:** Quais são alguns benefícios do logging?
 
-*  A) Helps prevent run-time crashes
-*  B) Helps with debugging, monitoring, and understanding the behavior of your
-      application.
-*  C) Improves performance
-*  D) Reduces the number of dependencies.
+*  A) Ajuda a prevenir falhas em tempo de execução
+*  B) Ajuda com depuração, monitoramento e compreensão do comportamento da sua
+      aplicação.
+*  C) Melhora o desempenho
+*  D) Reduz o número de dependências.
 
-## Next lesson
+## Próxima lição
 
-Congratulations! You've now completed all the core chapters of the Dart Getting
-Started tutorial. As a bonus, you can learn how to make your application into a
-server using `package:shelf` in the next chapter.
+Parabéns! Você agora completou todos os capítulos principais do tutorial de Introdução ao
+Dart. Como bônus, você pode aprender como transformar sua aplicação em um
+servidor usando `package:shelf` no próximo capítulo.
