@@ -162,7 +162,7 @@ mas você precisará ajustar as instruções para corresponder à sua aplicaçã
 1. Clique no botão **Logging** para ver stdout, stderr, e logs do sistema.
 
 
-## Obtendo pacotes de ferramentas de linha de comando
+## Obtendo pacotes de ferramentas de linha de comando {:#getting-command-line-tool-packages}
 
 Se você está usando a linha de comando em vez de uma IDE ou editor habilitado para Dart,
 então você precisa da [ferramenta webdev][webdev].

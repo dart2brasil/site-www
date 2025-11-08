@@ -27,7 +27,7 @@ o resultado como `build/web/main.dart.js`. Você pode usar [qualquer opção
 disponível para `dart compile js`](/tools/dart-compile#prod-compile-options)
 com `webdev build`.
 
-### Torne seu aplicativo menor, mais rápido e mais confiável
+### Torne seu aplicativo menor, mais rápido e mais confiável {:#make-your-app-smaller-faster-and-more-reliable}
 
 Os passos a seguir são opcionais. Eles podem ajudar a tornar seu aplicativo mais
 confiável e responsivo.
@@ -36,14 +36,14 @@ confiável e responsivo.
 * [Siga as melhores práticas para aplicativos web](#follow-best-practices-for-web-apps)
 * [Remova arquivos de build desnecessários](#remove-unneeded-build-files)
 
-#### Use deferred loading para reduzir o tamanho inicial do seu aplicativo
+#### Use deferred loading para reduzir o tamanho inicial do seu aplicativo {:#use-deferred-loading-to-reduce-your-apps-initial-size}
 
 Você pode usar o suporte do Dart para deferred loading para
 reduzir o tamanho inicial de download do seu aplicativo.
 Para detalhes, veja a cobertura do tour da linguagem sobre
 [deferred loading](/language/libraries#lazily-loading-a-library).
 
-#### Siga as melhores práticas para aplicativos web
+#### Siga as melhores práticas para aplicativos web {:#follow-best-practices-for-web-apps}
 
 Os conselhos usuais para aplicativos web se aplicam a aplicativos web Dart.
 Aqui estão alguns recursos:
@@ -54,7 +54,7 @@ Aqui estão alguns recursos:
 * [Progressive Web Apps](https://web.dev/progressive-web-apps/)
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
-#### Remova arquivos de build desnecessários
+#### Remova arquivos de build desnecessários {:#remove-unneeded-build-files}
 
 Compiladores web podem produzir arquivos que são úteis durante o desenvolvimento,
 como arquivos de mapa Dart-para-JavaScript, mas desnecessários em produção.
