@@ -1,38 +1,39 @@
 ---
+ia-translate: true
 title: build_runner
-description: A tool for building, testing, and running Dart code.
+description: Uma ferramenta para construir, testar e executar código Dart.
 ---
 
-The [build_runner][] package provides general-purpose commands for
-generating files, including testing the generated files
-or serving both source and generated files.
-This page explains how to use `build_runner`.
-To learn how to use build_runner with a specific package,
-see the documentation for that package.
+O pacote [build_runner][] fornece comandos de propósito geral para
+gerar arquivos, incluindo testar os arquivos gerados
+ou servir tanto arquivos fonte quanto gerados.
+Esta página explica como usar o `build_runner`.
+Para aprender como usar build_runner com um pacote específico,
+consulte a documentação desse pacote.
 
 :::note
-If you're a web developer, use the [`webdev` tool][webdev] to
-build and serve web apps.
+Se você é um desenvolvedor web, use a [ferramenta `webdev`][webdev] para
+construir e servir aplicativos web.
 :::
 
-The build_runner commands work with _builders_—packages
-that use the [Dart build system][build]
-to generate output files from input files.
-For example, the [json_serializable][] and [built_value_generator][]
-packages define builders that generate Dart code.
+Os comandos do build_runner funcionam com _builders_—pacotes
+que usam o [sistema de build do Dart][build]
+para gerar arquivos de saída a partir de arquivos de entrada.
+Por exemplo, os pacotes [json_serializable][] e [built_value_generator][]
+definem builders que geram código Dart.
 
-Although the Dart build system is a good alternative to
-reflection (which has performance issues) and
-macros (which Dart's compilers don't support),
-it can do more than just read and write Dart code.
-For example, the [sass_builder][] package implements a builder that
-generates `.css` files from `.scss` and `.sass` files.
+Embora o sistema de build do Dart seja uma boa alternativa à
+reflexão (que tem problemas de desempenho) e
+macros (que os compiladores do Dart não suportam),
+ele pode fazer mais do que apenas ler e escrever código Dart.
+Por exemplo, o pacote [sass_builder][] implementa um builder que
+gera arquivos `.css` a partir de arquivos `.scss` e `.sass`.
 
 
-## Setting up build_runner
+## Configurando build_runner
 
-To use build_runner, add a [dev dependency][] on **build_runner**
-to your app's pubspec:
+Para usar build_runner, adicione uma [dependência de desenvolvimento][dev dependency] em **build_runner**
+ao pubspec do seu aplicativo:
 
 <?code-excerpt "build_runner_usage/pubspec.yaml" from="dev_dependencies" to="build_test" replace="/args.*/# ···/g"?>
 ```yaml
@@ -42,48 +43,48 @@ dev_dependencies:
   build_test: ^3.4.0
 ```
 
-Depending on **build_test** is optional; do it if you'll be testing your code.
+Depender de **build_test** é opcional; faça isso se você for testar seu código.
 
-As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
+Como de costume após alterações no `pubspec.yaml`, execute `dart pub get` ou `dart pub upgrade`:
 
 ```console
 $ dart pub get
 ```
 
-## Using built-in commands
+## Usando comandos integrados
 
-The following is an example of using the build_runner **build** command:
+O seguinte é um exemplo de uso do comando **build** do build_runner:
 
 ```console
-$ # From a directory that contains a pubspec.yaml file:
+$ # De um diretório que contém um arquivo pubspec.yaml:
 $ dart run build_runner build
 ```
 
-The build_runner package includes the following commands:
+O pacote build_runner inclui os seguintes comandos:
 
 build
-: Performs a one-time build.
+: Executa uma compilação única.
 
 serve
-: Runs a development server.
-  Instead of directly using this command,
-  you can use [`webdev serve`,][webdev serve]
-  which has convenient default behavior.
+: Executa um servidor de desenvolvimento.
+  Em vez de usar diretamente este comando,
+  você pode usar [`webdev serve`,][webdev serve]
+  que tem comportamento padrão conveniente.
 
 test
-: Runs [tests.][tests]
+: Executa [testes.][tests]
 
 watch
-: Launches a build server that watches for edits to input files.
-  Responds to changes by performing incremental rebuilds.
+: Inicia um servidor de build que observa edições em arquivos de entrada.
+  Responde a mudanças executando reconstruções incrementais.
 
 
-## More information
+## Mais informações
 
-* [webdev][] guide (use if you're working on web-specific code)
-* [build_runner][] guide
-* [packages with the `build_runner` dependency][]
-* [packages with the `build` dependency][]
+* Guia [webdev][] (use se você estiver trabalhando em código específico para web)
+* Guia [build_runner][]
+* [pacotes com dependência em `build_runner`][]
+* [pacotes com dependência em `build`][]
 
 [build]: {{site.repo.dart.org}}/build
 [build_runner]: {{site.pub-pkg}}/build_runner
