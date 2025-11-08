@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaspr/jaspr.dart';
+import 'package:universal_web/web.dart' as web;
 
 /// The site-wide footer.
 final class DashFooter extends StatelessComponent {
@@ -98,6 +99,44 @@ final class DashFooter extends StatelessComponent {
                 ]),
               ],
             ),
+          ]),
+        ]),
+        div(classes: 'footer-section footer-translation-feedback', [
+          p([
+            text('Achou erro de tradução? Achou algo faltando? '),
+            a(
+              id: 'translation-issue-link',
+              href: '#',
+              target: Target.blank,
+              attributes: {
+                'rel': 'noopener',
+                'title': 'Abrir issue no GitHub',
+              },
+              events: {
+                'click': (event) {
+                  event.preventDefault();
+                  // Get current page URL
+                  final currentUrl = web.window.location.href;
+
+                  // Create issue title and body
+                  final title = Uri.encodeComponent('Problema de tradução');
+                  final body = Uri.encodeComponent(
+                    'Página: $currentUrl\n\n'
+                    '## Descrição do problema\n'
+                    '<!-- Descreva o problema encontrado -->\n\n'
+                    '## Sugestão de correção\n'
+                    '<!-- Se possível, sugira uma correção -->\n',
+                  );
+
+                  // Open GitHub issue with pre-filled content
+                  final issueUrl =
+                      'https://github.com/dart2brasil/site-www/issues/new?title=$title&body=$body';
+                  web.window.open(issueUrl, '_blank');
+                },
+              },
+              [text('Abra um issue')],
+            ),
+            text(' e nos ajude a manter o mais atualizado possível.'),
           ]),
         ]),
         div(classes: 'footer-section footer-tray', [
