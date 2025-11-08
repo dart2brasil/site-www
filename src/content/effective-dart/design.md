@@ -18,7 +18,7 @@ Aqui estão algumas diretrizes para escrever APIs consistentes e utilizáveis pa
 Nomenclatura é uma parte importante de escrever código legível e fácil de manter.
 As seguintes melhores práticas podem ajudá-lo a alcançar esse objetivo.
 
-### FAÇA use termos consistentemente
+### FAÇA use termos consistentemente {:#do-use-terms-consistently}
 
 Use o mesmo nome para a mesma coisa, em todo o seu código. Se um precedente
 já existe fora da sua API que os usuários provavelmente conhecem, siga esse
@@ -46,7 +46,7 @@ reduz a quantidade de novo conhecimento que eles precisam adquirir antes que pos
 produtivos.
 
 
-### EVITE abreviações
+### EVITE abreviações {:#avoid-abbreviations}
 
 A menos que a abreviação seja mais comum do que o termo completo, não
 abrevie. Se você abreviar, [capitalize corretamente][caps].
@@ -68,7 +68,7 @@ HypertextTransferProtocolRequest
 ```
 
 
-### PREFIRA colocar o substantivo mais descritivo por último
+### PREFIRA colocar o substantivo mais descritivo por último {:#prefer-putting-the-most-descriptive-noun-last}
 
 A última palavra deve ser a mais descritiva do que a coisa é. Você pode
 prefixá-la com outras palavras, como adjetivos, para descrever ainda mais a coisa.
@@ -87,7 +87,7 @@ RuleFontFaceCss           // Not a CSS.
 ```
 
 
-### CONSIDERE fazer o código ler como uma sentença
+### CONSIDERE fazer o código ler como uma sentença {:#consider-making-the-code-read-like-a-sentence}
 
 Quando em dúvida sobre nomenclatura, escreva algum código que use sua API, e tente ler
 como uma sentença.
@@ -134,7 +134,7 @@ monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
 ```
 
 
-### PREFIRA uma frase substantiva para uma propriedade ou variável não-booleana
+### PREFIRA uma frase substantiva para uma propriedade ou variável não-booleana {:#prefer-a-noun-phrase-for-a-non-boolean-property-or-variable}
 
 O foco do leitor está em *o que* a propriedade é. Se o usuário se importa mais sobre
 *como* uma propriedade é determinada, então provavelmente deveria ser um método com um
@@ -151,7 +151,7 @@ list.deleteItems
 ```
 
 
-### PREFIRA uma frase verbal não-imperativa para uma propriedade ou variável booleana
+### PREFIRA uma frase verbal não-imperativa para uma propriedade ou variável booleana {:#prefer-a-non-imperative-verb-phrase-for-a-boolean-property-or-variable}
 
 Nomes booleanos são frequentemente usados como condições em fluxo de controle, então você quer um nome
 que leia bem lá. Compare:
@@ -203,7 +203,7 @@ showPopup     // Sounds like it shows the popup.
 ```
 
 
-### CONSIDERE omitir o verbo para um *parâmetro* booleano nomeado
+### CONSIDERE omitir o verbo para um *parâmetro* booleano nomeado {:#consider-omitting-the-verb-for-a-named-boolean-parameter}
 
 Isso refina a regra anterior. Para parâmetros nomeados que são booleanos, o nome
 é frequentemente tão claro sem o verbo, e o código lê melhor no local da
@@ -217,7 +217,7 @@ var regExp = RegExp(pattern, caseSensitive: false);
 ```
 
 
-### PREFIRA o nome "positivo" para uma propriedade ou variável booleana
+### PREFIRA o nome "positivo" para uma propriedade ou variável booleana {:#prefer-the-positive-name-for-a-boolean-property-or-variable}
 
 A maioria dos nomes booleanos tem formas conceitualmente "positivas" e "negativas" onde a
 primeira parece o conceito fundamental e a última é sua
@@ -257,7 +257,7 @@ negar a propriedade com `!` em todos os lugares. Em vez disso, pode ser melhor u
 caso negativo para essa propriedade.
 
 
-### PREFIRA uma frase verbal imperativa para uma função ou método cujo principal propósito é um efeito colateral
+### PREFIRA uma frase verbal imperativa para uma função ou método cujo principal propósito é um efeito colateral {:#prefer-an-imperative-verb-phrase-for-a-function-or-method-whose-main-purpose-is-a-side-effect}
 
 Membros chamáveis podem retornar um resultado ao chamador e realizar outro trabalho ou
 efeitos colaterais. Em uma linguagem imperativa como Dart, membros são frequentemente chamados
@@ -277,7 +277,7 @@ window.refresh();
 Dessa forma, uma invocação lê como um comando para fazer esse trabalho.
 
 
-### PREFIRA uma frase substantiva ou frase verbal não-imperativa para uma função ou método se retornar um valor é seu propósito principal
+### PREFIRA uma frase substantiva ou frase verbal não-imperativa para uma função ou método se retornar um valor é seu propósito principal {:#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose}
 
 Outros membros chamáveis têm poucos efeitos colaterais mas retornam um resultado útil ao
 chamador. Se o membro não precisa de parâmetros para fazer isso, geralmente deveria ser um
@@ -301,7 +301,7 @@ não tem efeitos colaterais mas ainda é mais simples nomear com uma frase verba
 `list.take()` ou `string.split()`.
 
 
-### CONSIDERE uma frase verbal imperativa para uma função ou método se você quer chamar atenção para o trabalho que realiza
+### CONSIDERE uma frase verbal imperativa para uma função ou método se você quer chamar atenção para o trabalho que realiza {:#consider-an-imperative-verb-phrase-for-a-function-or-method-if-you-want-to-draw-attention-to-the-work-it-performs}
 
 Quando um membro produz um resultado sem quaisquer efeitos colaterais, geralmente deveria ser um
 getter ou um método com um nome de frase substantiva descrevendo o resultado que retorna.
@@ -324,7 +324,7 @@ vezes, nomeie seus membros baseado em *o que* eles fazem para o chamador, não *
 fazem.
 
 
-### EVITE iniciar um nome de método com `get`
+### EVITE iniciar um nome de método com `get` {:#avoid-starting-a-method-name-with-get}
 
 Na maioria dos casos, o método deveria ser um getter com `get` removido do nome.
 Por exemplo, em vez de um método chamado `getBreakfastOrder()`, defina um getter
@@ -346,7 +346,7 @@ diretrizes anteriores afirmam, ou:
 [verb]: #consider-an-imperative-verb-phrase-for-a-function-or-method-if-you-want-to-draw-attention-to-the-work-it-performs
 
 
-### PREFIRA nomear um método `to___()` se ele copia o estado do objeto para um novo objeto
+### PREFIRA nomear um método `to___()` se ele copia o estado do objeto para um novo objeto {:#prefer-naming-a-method-to___-if-it-copies-the-objects-state-to-a-new-object}
 
 {% render 'linter-rule-mention.md', rules:'use_to_and_as_if_applicable' %}
 
@@ -364,7 +364,7 @@ stackTrace.toString();
 dateTime.toLocal();
 ```
 
-### PREFIRA nomear um método `as___()` se ele retorna uma representação diferente apoiada pelo objeto original
+### PREFIRA nomear um método `as___()` se ele retorna uma representação diferente apoiada pelo objeto original {:#prefer-naming-a-method-as___-if-it-returns-a-different-representation-backed-by-the-original-object}
 
 {% render 'linter-rule-mention.md', rules:'use_to_and_as_if_applicable' %}
 
@@ -383,7 +383,7 @@ var future = subscription.asFuture();
 ```
 
 
-### EVITE descrever os parâmetros no nome da função ou método
+### EVITE descrever os parâmetros no nome da função ou método {:#avoid-describing-the-parameters-in-the-function-or-method-name}
 
 O usuário verá o argumento no local da chamada, então geralmente não ajuda
 a legibilidade também se referir a ele no próprio nome.
@@ -409,7 +409,7 @@ map.containsValue(value);
 ```
 
 
-### FAÇA siga as convenções mnemônicas existentes ao nomear parâmetros de tipo
+### FAÇA siga as convenções mnemônicas existentes ao nomear parâmetros de tipo {:#do-follow-existing-mnemonic-conventions-when-naming-type-parameters}
 
 Nomes de uma única letra não são exatamente esclarecedores, mas quase todos os tipos genéricos
 os usam. Felizmente, eles os usam principalmente de uma forma consistente e mnemônica.
@@ -486,7 +486,7 @@ Na prática, as convenções existentes cobrem a maioria dos parâmetros de tipo
 Um caractere de sublinhado inicial ( `_` ) indica que um membro é privado à sua
 biblioteca. Isso não é mera convenção, mas está embutido na própria linguagem.
 
-### PREFIRA tornar declarações privadas
+### PREFIRA tornar declarações privadas {:#prefer-making-declarations-private}
 
 Uma declaração pública em uma biblioteca—seja de nível superior ou em uma classe—é
 um sinal de que outras bibliotecas podem e devem acessar esse membro. Também é um
@@ -500,7 +500,7 @@ possa deletar código morto. Ele não pode fazer isso se o membro é público po
 sabe se algum código fora de sua visão está usando.
 
 
-### CONSIDERE declarar múltiplas classes na mesma biblioteca
+### CONSIDERE declarar múltiplas classes na mesma biblioteca {:#consider-declaring-multiple-classes-in-the-same-library}
 
 Algumas linguagens, como Java, amarram a organização de arquivos à organização de
 classes—cada arquivo pode definir apenas uma única classe de nível superior. Dart não
@@ -526,7 +526,7 @@ classes. Mas Dart não requer que todo código seja definido dentro de uma
 classe—você pode definir variáveis de nível superior, constantes, e funções como
 você pode em uma linguagem procedural ou funcional.
 
-### EVITE definir uma classe abstrata de um membro quando uma função simples serve
+### EVITE definir uma classe abstrata de um membro quando uma função simples serve {:#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do}
 
 {% render 'linter-rule-mention.md', rules:'one_member_abstracts' %}
 
@@ -549,7 +549,7 @@ abstract class Predicate<E> {
 ```
 
 
-### EVITE definir uma classe que contém apenas membros estáticos
+### EVITE definir uma classe que contém apenas membros estáticos {:#avoid-defining-a-class-that-contains-only-static-members}
 
 {% render 'linter-rule-mention.md', rules:'avoid_classes_with_only_static_members' %}
 
@@ -608,7 +608,7 @@ class Color {
 ```
 
 
-### EVITE estender uma classe que não é destinada a ser subclasse
+### EVITE estender uma classe que não é destinada a ser subclasse {:#avoid-extending-a-class-that-wasnt-designed-to-be-subclassed}
 
 Se um construtor é mudado de um construtor gerativo para um construtor de fábrica,
 qualquer construtor de subclasse chamando esse construtor vai quebrar.
@@ -624,7 +624,7 @@ Caso contrário, mudanças posteriores podem quebrar seu código.
 
 <a id="do-document-if-your-class-supports-being-extended" aria-hidden="true"></a>
 
-### FAÇA use modificadores de classe para controlar se sua classe pode ser estendida
+### FAÇA use modificadores de classe para controlar se sua classe pode ser estendida {:#do-use-class-modifiers-to-control-whether-your-class-can-be-extended}
 
 Modificadores de classe como `final`, `interface`, ou `sealed`
 restringem como uma classe pode ser estendida.
@@ -632,7 +632,7 @@ Por exemplo, use `final class A {}` ou `interface class B {}` para prevenir
 extensão fora da biblioteca atual.
 Use esses modificadores para comunicar sua intenção, em vez de depender de documentação.
 
-### EVITE implementar uma classe que não é destinada a ser uma interface
+### EVITE implementar uma classe que não é destinada a ser uma interface {:#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface}
 
 Interfaces implícitas são uma ferramenta poderosa em Dart para evitar ter que repetir o
 contrato de uma classe quando ele pode ser trivialmente inferido das assinaturas de uma
@@ -658,7 +658,7 @@ pretende, e eles podem quebrar seu código sem perceber.
 
 <a id="do-document-if-your-class-supports-being-used-as-an-interface" aria-hidden="true"></a>
 
-### FAÇA use modificadores de classe para controlar se sua classe pode ser uma interface
+### FAÇA use modificadores de classe para controlar se sua classe pode ser uma interface {:#do-use-class-modifiers-to-control-whether-your-class-can-be-an-interface}
 
 Ao projetar uma biblioteca, use modificadores de classe como `final`, `base`, ou `sealed` para impor o uso
 pretendido. Por exemplo, use `final class C {}` ou `base class D {}` para prevenir
@@ -670,7 +670,7 @@ problemas de implementação não intencionais.
 <a id="do-use-mixin-to-define-a-mixin-type" aria-hidden="true"></a>
 <a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin" aria-hidden="true"></a>
 
-### PREFIRA definir um `mixin` puro ou `class` pura a um `mixin class`
+### PREFIRA definir um `mixin` puro ou `class` pura a um `mixin class` {:#prefer-defining-a-pure-mixin-or-pure-class-to-a-mixin-class}
 
 {% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
 
@@ -701,7 +701,7 @@ classe e, opcionalmente, um identificador adicional. Os últimos são chamados *
 nomeados*.
 
 
-### CONSIDERE tornar seu construtor `const` se a classe suporta isso
+### CONSIDERE tornar seu construtor `const` se a classe suporta isso {:#consider-making-your-constructor-const-if-the-class-supports-it}
 
 Se você tem uma classe onde todos os campos são final, e o construtor não faz
 nada além de inicializá-los, você pode tornar esse construtor `const`. Isso permite que
@@ -722,7 +722,7 @@ simples, imutáveis e similares a valores.
 
 Um membro pertence a um objeto e pode ser métodos ou variáveis de instância.
 
-### PREFIRA tornar campos e variáveis de nível superior `final`
+### PREFIRA tornar campos e variáveis de nível superior `final` {:#prefer-making-fields-and-top-level-variables-final}
 
 {% render 'linter-rule-mention.md', rules:'prefer_final_fields' %}
 
@@ -741,7 +741,7 @@ de [inicializar o campo em sua declaração][init at decl].
 
 [init at decl]: /effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible
 
-### FAÇA use getters para operações que conceitualmente acessam propriedades
+### FAÇA use getters para operações que conceitualmente acessam propriedades {:#do-use-getters-for-operations-that-conceptually-access-properties}
 
 Decidir quando um membro deveria ser um getter versus um método é uma parte sutil mas
 importante do bom design de API, daí esta diretriz muito longa.
@@ -835,7 +835,7 @@ dataSet.minimumValue;
 ```
 
 
-### FAÇA use setters para operações que conceitualmente mudam propriedades
+### FAÇA use setters para operações que conceitualmente mudam propriedades {:#do-use-setters-for-operations-that-conceptually-change-properties}
 
 {% render 'linter-rule-mention.md', rules:'use_setters_to_change_properties' %}
 
@@ -861,7 +861,7 @@ button.visible = false;
 ```
 
 
-### NÃO defina um setter sem um getter correspondente
+### NÃO defina um setter sem um getter correspondente {:#dont-define-a-setter-without-a-corresponding-getter}
 
 {% render 'linter-rule-mention.md', rules:'avoid_setters_without_getters' %}
 
@@ -876,7 +876,7 @@ Se você tem algum pedaço do estado de um objeto que pode ser modificado mas n�
 exposto da mesma forma, use um método em vez disso.
 
 
-### EVITE usar testes de tipo em tempo de execução para falsificar sobrecarga
+### EVITE usar testes de tipo em tempo de execução para falsificar sobrecarga {:#avoid-using-runtime-type-tests-to-fake-overloading}
 
 É comum para uma API suportar operações similares
 em diferentes tipos de parâmetros.
@@ -907,7 +907,7 @@ então um único método onde o parâmetro é um supertipo
 de todos os tipos suportados pode ser razoável.
 
 
-### EVITE campos `late final` públicos sem inicializadores
+### EVITE campos `late final` públicos sem inicializadores {:#avoid-public-late-final-fields-without-initializers}
 
 Diferente de outros campos `final`, um campo `late final` sem inicializador *realmente*
 define um setter. Se esse campo é público, então o setter é público. Isso é
@@ -924,7 +924,7 @@ seguintes soluções:
 * Use `late`, mas torne o campo `late` privado e defina um getter público para ele.
 
 
-### EVITE retornar tipos `Future`, `Stream`, e coleção anuláveis
+### EVITE retornar tipos `Future`, `Stream`, e coleção anuláveis {:#avoid-returning-nullable-future-stream-and-collection-types}
 
 Quando uma API retorna um tipo contêiner, ela tem duas formas de indicar a ausência de
 dados: Pode retornar um contêiner vazio ou pode retornar `null`. Usuários geralmente
@@ -939,7 +939,7 @@ emite quaisquer valores.
 contêiner vazio, pode fazer sentido usar um tipo anulável.
 
 
-### EVITE retornar `this` de métodos apenas para habilitar uma interface fluente
+### EVITE retornar `this` de métodos apenas para habilitar uma interface fluente {:#avoid-returning-this-from-methods-just-to-enable-a-fluent-interface}
 
 {% render 'linter-rule-mention.md', rules:'avoid_returning_this' %}
 
@@ -1065,7 +1065,7 @@ vários casos, mas o resumo aproximado é:
     torne o tipo óbvio.
 
 
-### FAÇA anote o tipo de variáveis sem inicializadores
+### FAÇA anote o tipo de variáveis sem inicializadores {:#do-type-annotate-variables-without-initializers}
 
 {% render 'linter-rule-mention.md', rules:'prefer_typing_uninitialized_variables' %}
 
@@ -1094,7 +1094,7 @@ if (node is Constructor) {
 ```
 
 
-### FAÇA anote o tipo de campos e variáveis de nível superior se o tipo não é óbvio
+### FAÇA anote o tipo de campos e variáveis de nível superior se o tipo não é óbvio {:#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious}
 
 {% render 'linter-rule-mention.md', rules:'type_annotate_public_apis' %}
 
@@ -1146,7 +1146,7 @@ em APIs ajudam *usuários* do seu código, tipos em membros privados ajudam
 *mantenedores*.
 
 
-### NÃO anote redundantemente o tipo de variáveis locais inicializadas
+### NÃO anote redundantemente o tipo de variáveis locais inicializadas {:#dont-redundantly-type-annotate-initialized-local-variables}
 
 {% render 'linter-rule-mention.md', rules:'omit_local_variable_types' %}
 
@@ -1198,7 +1198,7 @@ Widget build(BuildContext context) {
 ```
 
 
-### FAÇA anote tipos de retorno em declarações de função
+### FAÇA anote tipos de retorno em declarações de função {:#do-annotate-return-types-on-function-declarations}
 
 Dart geralmente não infere o tipo de retorno de uma declaração de função do seu corpo,
 diferente de algumas outras linguagens. Isso significa que você deve escrever uma anotação de tipo para
@@ -1224,7 +1224,7 @@ expressões de função anônimas inferem um tipo de retorno do seu corpo. De fa
 sintaxe de função anônima nem mesmo permite uma anotação de tipo de retorno.
 
 
-### FAÇA anote tipos de parâmetros em declarações de função
+### FAÇA anote tipos de parâmetros em declarações de função {:#do-annotate-parameter-types-on-function-declarations}
 
 A lista de parâmetros de uma função determina seu limite para o mundo exterior.
 Anotar tipos de parâmetros torna esse limite bem definido.
@@ -1253,7 +1253,7 @@ void sayRepeatedly(message, {count = 2}) {
 convenções de anotação de tipo diferentes, como descrito nas próximas duas diretrizes.
 
 
-### NÃO anote tipos de parâmetros inferidos em expressões de função
+### NÃO anote tipos de parâmetros inferidos em expressões de função {:#dont-annotate-inferred-parameter-types-on-function-expressions}
 
 {% render 'linter-rule-mention.md', rules:'avoid_types_on_closure_parameters' %}
 
@@ -1284,7 +1284,7 @@ parâmetros da função. Nesses casos, você pode precisar anotar.
 
 [named local]: usage#do-use-a-function-declaration-to-bind-a-function-to-a-name
 
-### NÃO anote o tipo de formals inicializadores
+### NÃO anote o tipo de formals inicializadores {:#dont-type-annotate-initializing-formals}
 
 {% render 'linter-rule-mention.md', rules:'type_init_formals' %}
 
@@ -1319,7 +1319,7 @@ class MyWidget extends StatelessWidget {
 ```
 
 
-### FAÇA escreva argumentos de tipo em invocações genéricas que não são inferidas
+### FAÇA escreva argumentos de tipo em invocações genéricas que não são inferidas {:#do-write-type-arguments-on-generic-invocations-that-arent-inferred}
 
 Dart é bem inteligente sobre inferir argumentos de tipo em invocações genéricas. Ele
 olha o tipo esperado onde a expressão ocorre e os tipos de
@@ -1361,7 +1361,7 @@ Anotar a variável também atende a esta diretriz porque agora os argumentos de 
 *são* inferidos.
 
 
-### NÃO escreva argumentos de tipo em invocações genéricas que são inferidas
+### NÃO escreva argumentos de tipo em invocações genéricas que são inferidas {:#dont-write-type-arguments-on-generic-invocations-that-are-inferred}
 
 Esta é a inversa da regra anterior. Se a lista de argumentos de tipo de uma invocação
 *é* corretamente inferida com os tipos que você quer, então omita os tipos e deixe
@@ -1398,7 +1398,7 @@ Aqui, os tipos da coleção e instância podem ser inferidos de baixo para cima 
 seus elementos e argumentos.
 
 
-### EVITE escrever tipos genéricos incompletos
+### EVITE escrever tipos genéricos incompletos {:#avoid-writing-incomplete-generic-types}
 
 O objetivo de escrever uma anotação de tipo ou argumento de tipo é fixar um tipo
 completo. No entanto, se você escreve o nome de um tipo genérico mas omite seus argumentos de tipo,
@@ -1428,7 +1428,7 @@ var completer = Completer<Map<String, int>>();
 ```
 
 
-### FAÇA anote com `dynamic` em vez de deixar a inferência falhar
+### FAÇA anote com `dynamic` em vez de deixar a inferência falhar {:#do-annotate-with-dynamic-instead-of-letting-inference-fail}
 
 Quando a inferência não preenche um tipo, geralmente padrão para `dynamic`. Se
 `dynamic` é o tipo que você quer, essa é tecnicamente a forma mais tersa de obter.
@@ -1481,7 +1481,7 @@ segurança e desempenho de tipos estáticos.
 
 **Exceção**: Anotações de tipo em parâmetros não usados (`_`) podem ser omitidas.
 
-### PREFIRA assinaturas em anotações de tipo de função
+### PREFIRA assinaturas em anotações de tipo de função {:#prefer-signatures-in-function-type-annotations}
 
 O identificador `Function` por si só sem qualquer tipo de retorno ou assinatura de
 parâmetro refere-se ao tipo especial [Function][]. Este tipo é apenas
@@ -1527,7 +1527,7 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
 ```
 
 
-### NÃO especifique um tipo de retorno para um setter
+### NÃO especifique um tipo de retorno para um setter {:#dont-specify-a-return-type-for-a-setter}
 
 {% render 'linter-rule-mention.md', rules:'avoid_return_types_on_setters' %}
 
@@ -1548,7 +1548,7 @@ set foo(Foo value) {
 ```
 
 
-### NÃO use a sintaxe typedef legada
+### NÃO use a sintaxe typedef legada {:#dont-use-the-legacy-typedef-syntax}
 
 {% render 'linter-rule-mention.md', rules:'prefer_generic_function_type_aliases' %}
 
@@ -1606,7 +1606,7 @@ A sintaxe typedef antiga ainda é suportada para evitar quebrar código existent
 está obsoleta.
 
 
-### PREFIRA tipos de função inline a typedefs
+### PREFIRA tipos de função inline a typedefs {:#prefer-inline-function-types-over-typedefs}
 
 {% render 'linter-rule-mention.md', rules:'avoid_private_typedef_functions' %}
 
@@ -1643,7 +1643,7 @@ realmente é exatamente onde é usado, e a sintaxe de tipo de função lhes dá
 essa clareza.
 
 
-### PREFIRA usar sintaxe de tipo de função para parâmetros
+### PREFIRA usar sintaxe de tipo de função para parâmetros {:#prefer-using-function-type-syntax-for-parameters}
 
 {% render 'linter-rule-mention.md', rules:'use_function_type_syntax_for_parameters' %}
 
@@ -1670,7 +1670,7 @@ A nova sintaxe é um pouco mais verbosa, mas é consistente com outros locais
 onde você deve usar a nova sintaxe.
 
 
-### EVITE usar `dynamic` a menos que você queira desabilitar verificação estática
+### EVITE usar `dynamic` a menos que você queira desabilitar verificação estática {:#avoid-using-dynamic-unless-you-want-to-disable-static-checking}
 
 Algumas operações funcionam com qualquer objeto possível. Por exemplo, um método `log()`
 poderia aceitar qualquer objeto e chamar `toString()` nele. Dois tipos em Dart permitem todos
@@ -1706,7 +1706,7 @@ assim, ao usar um valor de uma dessas APIs, frequentemente é uma boa ideia conv
 para um tipo mais preciso antes de acessar membros.
 
 
-### FAÇA use `Future<void>` como tipo de retorno de membros assíncronos que não produzem valores
+### FAÇA use `Future<void>` como tipo de retorno de membros assíncronos que não produzem valores {:#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values}
 
 Quando você tem uma função síncrona que não retorna um valor, você usa `void`
 como tipo de retorno. O equivalente assíncrono para um método que não
@@ -1723,7 +1723,7 @@ chamador precisa aguardar o trabalho assíncrono ou lidar com uma falha assíncr
 use um tipo de retorno de `void`.
 
 
-### EVITE usar `FutureOr<T>` como tipo de retorno
+### EVITE usar `FutureOr<T>` como tipo de retorno {:#avoid-using-futureort-as-a-return-type}
 
 Se um método aceita um `FutureOr<int>`, ele é [generoso no que
 aceita][postel]. Usuários podem chamar o método com um `int` ou um
@@ -1779,7 +1779,7 @@ Stream<S> asyncMap<T, S>(
 Em Dart, parâmetros opcionais podem ser posicionais ou nomeados, mas não ambos.
 
 
-### EVITE parâmetros booleanos posicionais
+### EVITE parâmetros booleanos posicionais {:#avoid-positional-boolean-parameters}
 
 {% render 'linter-rule-mention.md', rules:'avoid_positional_boolean_parameters' %}
 
@@ -1815,7 +1815,7 @@ button.isEnabled = false;
 ```
 
 
-### EVITE parâmetros posicionais opcionais se o usuário pode querer omitir parâmetros anteriores
+### EVITE parâmetros posicionais opcionais se o usuário pode querer omitir parâmetros anteriores {:#avoid-optional-positional-parameters-if-the-user-may-want-to-omit-earlier-parameters}
 
 Parâmetros posicionais opcionais devem ter uma progressão lógica de tal forma que
 parâmetros anteriores sejam passados mais frequentemente do que os posteriores. Usuários quase nunca
@@ -1848,7 +1848,7 @@ Duration({
 ```
 
 
-### EVITE parâmetros obrigatórios que aceitam um valor especial de "sem argumento"
+### EVITE parâmetros obrigatórios que aceitam um valor especial de "sem argumento" {:#avoid-mandatory-parameters-that-accept-a-special-no-argument-value}
 
 Se o usuário está logicamente omitindo um parâmetro, prefira deixá-los realmente omiti-lo
 tornando o parâmetro opcional em vez de forçá-los a passar `null`, uma
@@ -1869,7 +1869,7 @@ var rest = string.substring(start, null);
 ```
 
 
-### FAÇA use parâmetros de início inclusivo e fim exclusivo para aceitar um intervalo
+### FAÇA use parâmetros de início inclusivo e fim exclusivo para aceitar um intervalo {:#do-use-inclusive-start-and-exclusive-end-parameters-to-accept-a-range}
 
 Se você está definindo um método ou função que permite ao usuário selecionar um intervalo de
 elementos ou itens de alguma sequência indexada por inteiros, aceite um índice de início, que
@@ -1896,7 +1896,7 @@ sobre como igualdade funciona que seus objetos precisam corresponder, e
 tipos de coleção como tabelas hash têm contratos sutis que eles esperam que
 elementos sigam.
 
-### FAÇA sobrescreva `hashCode` se você sobrescrever `==`
+### FAÇA sobrescreva `hashCode` se você sobrescrever `==` {:#do-override-hashcode-if-you-override-}
 
 {% render 'linter-rule-mention.md', rules:'hash_and_equals' %}
 
@@ -1909,7 +1909,7 @@ considerados "iguais" pela sua classe. **Quaisquer dois objetos que são iguais 
 mesmo código hash.** Caso contrário, mapas e outras coleções baseadas em hash vão falhar em
 reconhecer que os dois objetos são equivalentes.
 
-### FAÇA faça seu operador `==` obedecer as regras matemáticas de igualdade
+### FAÇA faça seu operador `==` obedecer as regras matemáticas de igualdade {:#do-make-your--operator-obey-the-mathematical-rules-of-equality}
 
 Uma relação de equivalência deveria ser:
 
@@ -1924,7 +1924,7 @@ Usuários e código que usa `==` esperam que todas essas leis sejam seguidas. Se
 classe não pode obedecer essas regras, então `==` não é o nome certo para a operação
 que você está tentando expressar.
 
-### EVITE definir igualdade personalizada para classes mutáveis
+### EVITE definir igualdade personalizada para classes mutáveis {:#avoid-defining-custom-equality-for-mutable-classes}
 
 {% render 'linter-rule-mention.md', rules:'avoid_equals_and_hash_code_on_mutable_classes' %}
 
@@ -1936,7 +1936,7 @@ A maioria das coleções baseadas em hash não antecipa isso—elas assumem que 
 será o mesmo para sempre e podem se comportar imprevisivelmente se isso não for
 verdade.
 
-### NÃO torne o parâmetro para `==` anulável
+### NÃO torne o parâmetro para `==` anulável {:#dont-make-the-parameter-to--nullable}
 
 {% render 'linter-rule-mention.md', rules:'avoid_null_checks_in_equality_operators' %}
 
