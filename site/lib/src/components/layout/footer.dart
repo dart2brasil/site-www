@@ -125,11 +125,12 @@ final class DashFooter extends StatelessComponent {
                     '## Descrição do problema\n'
                     '<!-- Descreva o problema encontrado -->\n\n'
                     '## Sugestão de correção\n'
-                    '<!-- Se possível, sugira uma correção -->\n'
+                    '<!-- Se possível, sugira uma correção -->\n',
                   );
 
                   // Open GitHub issue with pre-filled content
-                  final issueUrl = 'https://github.com/dart2brasil/site-www/issues/new?title=$title&body=$body';
+                  final issueUrl =
+                      'https://github.com/dart2brasil/site-www/issues/new?title=$title&body=$body';
                   web.window.open(issueUrl, '_blank');
                 },
               },
