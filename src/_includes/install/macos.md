@@ -1,52 +1,55 @@
+---
+ia-translate: true
+---
 
-### Install using Homebrew {:.no_toc}
+### Instalar usando o Homebrew {:.no_toc}
 
-To install the Dart SDK, use [Homebrew][].
+Para instalar o Dart SDK, use o [Homebrew][].
 
-1. Install Homebrew if needed.
+1. Instale o Homebrew se necessário.
 
-1. Add the [official tap][tap].
+1. Adicione o [tap oficial][tap].
 
    ```console
    $ brew tap dart-lang/dart
    ```
 
-1. Install the Dart SDK.
+1. Instale o Dart SDK.
 
    ```console
    $ brew install dart
    ```
 
-### Verify PATH includes Homebrew {:.no_toc}
+### Verificar se o PATH inclui o Homebrew {:.no_toc}
 
-Verify that your `PATH` includes the **Homebrew `bin` directory**.
-Setting up the correct path simplifies using Dart SDK commands
-such as `dart run` and `dart format`.
+Verifique se o seu `PATH` inclui o **diretório `bin` do Homebrew**.
+Configurar o caminho correto simplifica o uso de comandos do Dart SDK
+como `dart run` e `dart format`.
 
-To get help configuring your `PATH`, consult the [Homebrew FAQ][].
+Para obter ajuda configurando o seu `PATH`, consulte o [FAQ do Homebrew][Homebrew FAQ].
 
-### Upgrade using Homebrew {:.no_toc}
+### Atualizar usando o Homebrew {:.no_toc}
 
-To upgrade when a new release of Dart is available:
+Para atualizar quando uma nova versão do Dart estiver disponível:
 
 ```console
 $ brew upgrade dart
 ```
 
-### Switch Dart versions {:.no_toc}
+### Alternar versões do Dart {:.no_toc}
 
-To switch between locally installed Dart releases:
+Para alternar entre versões do Dart instaladas localmente:
 
-1. Install the version to which you want to switch.
+1. Instale a versão para a qual você deseja alternar.
 
-   For example, to install Dart 3.1:
+   Por exemplo, para instalar o Dart 3.1:
 
    ```console
    $ brew install dart@3.1
    ```
 
-1. To switch between versions,
-   unlink the current version and link the desired version.
+1. Para alternar entre versões,
+   desvincule a versão atual e vincule a versão desejada.
 
    ```console
    $ brew unlink dart@<old> \
@@ -54,25 +57,25 @@ To switch between locally installed Dart releases:
      && brew link dart@<new>
    ```
 
-### List installed Dart versions {:.no_toc}
+### Listar versões do Dart instaladas {:.no_toc}
 
-To see which versions of Dart you've installed:
+Para ver quais versões do Dart você instalou:
 
 ```console
 $ brew info dart
 ```
 
-### Uninstall using Homebrew {:.no_toc}
+### Desinstalar usando o Homebrew {:.no_toc}
 
-To uninstall the Dart SDK, use [Homebrew][].
+Para desinstalar o Dart SDK, use o [Homebrew][].
 
-1. Uninstall the Dart SDK.
+1. Desinstale o Dart SDK.
 
    ```console
    $ brew uninstall dart
    ```
 
-1. Remove the Dart configuration files from your home directory.
+1. Remova os arquivos de configuração do Dart do seu diretório home.
 
    ```dart
    rm -rf  ~/.dart*
