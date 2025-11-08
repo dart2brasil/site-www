@@ -86,17 +86,17 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ---
 
-## Section 6: Diagnostic Errors - Abstract & Always (A)
-**Files:** ~35 files | **Priority:** MEDIUM
+## Section 6: Diagnostic Errors - Abstract & Always (A) ✅ COMPLETE
+**Files:** 13 files (actual) | **Priority:** MEDIUM | **Status:** ✅ COMPLETE
 
 ### Pattern:
-- `tools/diagnostics/abi_*.md`
-- `tools/diagnostics/abstract_*.md`
-- `tools/diagnostics/address_*.md`
-- `tools/diagnostics/always_*.md`
+- `tools/diagnostics/abi_*.md` (4 files)
+- `tools/diagnostics/abstract_*.md` (3 files)
+- `tools/diagnostics/address_*.md` (2 files)
+- `tools/diagnostics/always_*.md` (4 files)
 
 **Focus:** ABI errors, abstract class errors, address errors, always-style lint rules
-**Estimated time:** 2-3 hours
+**Completion time:** Completed 2025-11-08
 
 ---
 
@@ -375,12 +375,13 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 6:** Diagnostic Errors - abi/abstract/address/always (13/13 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 1-5, 7-20 pending
 
 ---
 

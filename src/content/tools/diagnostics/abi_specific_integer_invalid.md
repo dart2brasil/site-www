@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: abi_specific_integer_invalid
 description: >-
-  Details about the abi_specific_integer_invalid
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico abi_specific_integer_invalid
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,17 +12,17 @@ _Classes extending 'AbiSpecificInteger' must have exactly one const constructor,
 
 ## Description
 
-The analyzer produces this diagnostic when a class that extends
-`AbiSpecificInteger` doesn't meet all of the following requirements:
-- there must be exactly one constructor
-- the constructor must be marked `const`
-- there must not be any members of other than the one constructor
-- there must not be any type parameters
+O analisador produz este diagnóstico quando uma classe que estende
+`AbiSpecificInteger` não atende a todos os seguintes requisitos:
+- deve haver exatamente um construtor
+- o construtor deve ser marcado como `const`
+- não deve haver nenhum membro além do único construtor
+- não deve haver nenhum type parameter
 
 ## Examples
 
-The following code produces this diagnostic because the class `C` doesn't
-define a const constructor:
+O código a seguir produz este diagnóstico porque a classe `C` não
+define um construtor const:
 
 ```dart
 import 'dart:ffi';
@@ -31,8 +32,8 @@ final class [!C!] extends AbiSpecificInteger {
 }
 ```
 
-The following code produces this diagnostic because the constructor isn't
-a `const` constructor:
+O código a seguir produz este diagnóstico porque o construtor não é
+um construtor `const`:
 
 ```dart
 import 'dart:ffi';
@@ -43,8 +44,8 @@ final class [!C!] extends AbiSpecificInteger {
 }
 ```
 
-The following code produces this diagnostic because the class `C` defines
-multiple constructors:
+O código a seguir produz este diagnóstico porque a classe `C` define
+múltiplos construtores:
 
 ```dart
 import 'dart:ffi';
@@ -56,8 +57,8 @@ final class [!C!] extends AbiSpecificInteger {
 }
 ```
 
-The following code produces this diagnostic because the class `C` defines
-a field:
+O código a seguir produz este diagnóstico porque a classe `C` define
+um campo:
 
 ```dart
 import 'dart:ffi';
@@ -70,7 +71,7 @@ final class [!C!] extends AbiSpecificInteger {
 }
 ```
 
-The following code produces this diagnostic because the class `C` has a
+O código a seguir produz este diagnóstico porque a classe `C` tem um
 type parameter:
 
 ```dart
@@ -84,8 +85,8 @@ final class [!C!]<T> extends AbiSpecificInteger { // type parameters
 
 ## Common fixes
 
-Change the class so that it meets the requirements of having no type
-parameters and a single member that is a `const` constructor:
+Altere a classe para que ela atenda aos requisitos de não ter type
+parameters e ter um único membro que seja um construtor `const`:
 
 ```dart
 import 'dart:ffi';
