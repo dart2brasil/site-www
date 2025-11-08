@@ -295,7 +295,7 @@ O Dart 3.0 também introduziu algumas mudanças incompatíveis na linguagem:
 
 :::note
 A versão 3.0 do Dart SDK eliminou o suporte para
-[versões de linguagem][] anteriores à 2.12.
+[versões de linguagem][language versions] anteriores à 2.12.
 :::
 
 [Patterns]: /language/patterns
