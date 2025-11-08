@@ -4,14 +4,14 @@
   publisher: Kodeco
   cover: dart-apprentice-fundamentals.webp
   link: "https://www.kodeco.com/books/dart-apprentice-fundamentals"
-  desc: "Dart Apprentice: Fundamentals is the first of a two-book series that will teach you all the basic concepts you need to master this powerful and versatile language."
+  desc: "Dart Apprentice: Fundamentals é o primeiro de uma série de dois livros que ensinará todos os conceitos básicos que você precisa dominar nesta linguagem poderosa e versátil."
 - title: 'Dart Apprentice: Beyond the Basics'
   authors:
     - Jonathan Sande
   publisher: Kodeco
   cover: dart-apprentice-beyond-the-basics.webp
   link: "https://www.kodeco.com/books/dart-apprentice-beyond-the-basics"
-  desc: "Dart Apprentice: Beyond the Basics is the second of a two-book series that will teach you all the important concepts you need to master this powerful and versatile language."
+  desc: "Dart Apprentice: Beyond the Basics é o segundo de uma série de dois livros que ensinará todos os conceitos importantes que você precisa dominar nesta linguagem poderosa e versátil."
 - title: "Data Structures & Algorithms in Dart"
   authors:
     - Jonathan Sande
@@ -20,14 +20,14 @@
   publisher: raywenderlich
   cover: data-structures-algorithms-dart.webp
   link: "https://www.raywenderlich.com/books/data-structures-algorithms-in-dart"
-  desc: "Take your programming skills to the next level. Learn to build stacks, queues, trees, graphs, and efficient sorting and searching algorithms from scratch."
+  desc: "Leve suas habilidades de programação para o próximo nível. Aprenda a construir pilhas, filas, árvores, grafos e algoritmos eficientes de ordenação e busca do zero."
 - title: "The Art of Dart: Master the Dart Programming Language"
   authors:
    - Kenneth Choi
   publisher: Kenneth Choi
   cover: art-of-dart.webp
   link: "https://www.amazon.com/Art-Dart-Master-Programming-Language/dp/B0CRGKQX6W"
-  desc: "The Art of Dart is a comprehensive guide to mastering the Dart programming language! It caters to all skill levels, making it perfect for beginners and experienced coders. Inside, you'll find elegant coding practices, explore both foundational and complex programming concepts, and gain confidence in solving coding challenges. With a clear and concise approach, The Art of Dart transforms coding into a creative endeavor."
+  desc: "The Art of Dart é um guia abrangente para dominar a linguagem de programação Dart! Atende todos os níveis de habilidade, tornando-o perfeito para iniciantes e programadores experientes. Dentro, você encontrará práticas de codificação elegantes, explorará conceitos de programação fundamentais e complexos, e ganhará confiança na resolução de desafios de codificação. Com uma abordagem clara e concisa, The Art of Dart transforma a codificação em um esforço criativo."
 - title: "O guia de Dart"
   authors:
     - Julio Bitencourt
