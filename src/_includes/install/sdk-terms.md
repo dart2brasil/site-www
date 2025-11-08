@@ -1,11 +1,14 @@
-Dart tools might send usage metrics and crash reports to Google.
-If you download the Dart SDK, you agree to the
-[Google Terms of Service.](https://policies.google.com/terms)
-To learn how Dart handles this data,
-consult the [Google Privacy Policy](https://policies.google.com/privacy).
+---
+ia-translate: true
+---
+As ferramentas Dart podem enviar métricas de uso e relatórios de falhas para o Google.
+Se você baixar o Dart SDK, você concorda com os
+[Termos de Serviço do Google.](https://policies.google.com/terms)
+Para saber como o Dart lida com esses dados,
+consulte a [Política de Privacidade do Google](https://policies.google.com/privacy).
 
-To toggle data collection, use the following options on the
-[`dart` tool](/tools/dart-tool):
+Para alternar a coleta de dados, use as seguintes opções na
+[ferramenta `dart`](/tools/dart-tool):
 
-* To enable anonymous analytics, run `dart --enable-analytics`.
-* To disable anonymous analytics, run `dart --disable-analytics`.
+* Para habilitar análises anônimas, execute `dart --enable-analytics`.
+* Para desabilitar análises anônimas, execute `dart --disable-analytics`.
