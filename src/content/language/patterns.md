@@ -74,7 +74,7 @@ switch (obj) {
 }
 ```
 
-Para ignorar partes de um valor correspondido, você pode usar um [pattern wildcard][]
+Para ignorar partes de um valor correspondido, você pode usar um [wildcard pattern][]
 como um espaço reservado. No caso de patterns list, você pode usar um [elemento rest][rest element].
 
 ### Desestruturação {:#destructuring}
