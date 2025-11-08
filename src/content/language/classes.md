@@ -155,7 +155,7 @@ Até aqui, você viu como _usar_ classes.
 O restante desta seção mostra como _implementar_ classes.
 
 
-## Variáveis de instância
+## Variáveis de instância {:#instance-variables}
 
 Aqui está como você declara variáveis de instância:
 
