@@ -1,85 +1,86 @@
 ---
+ia-translate: true
 title: dart create
-description: Command-line tool for creating Dart projects.
+description: Ferramenta de linha de comando para criar projetos Dart.
 showToc: false
 ---
 
-This guide describes how to use the `dart create` command to
-create a Dart project.
+Este guia descreve como usar o comando `dart create` para
+criar um projeto Dart.
 
-## Overview
+## Visão geral
 
-The `dart create` command creates a Dart project,
-using one of several supported templates.
-The same functionality is available in IDEs.
+O comando `dart create` cria um projeto Dart,
+usando um dos vários templates suportados.
+A mesma funcionalidade está disponível em IDEs.
 
 {% render 'tools/dart-tool-note.md' %}
 
-When you run `dart create`, it first creates a directory with the
-project files. Then it gets package dependencies
-(unless you specify the `--no-pub` flag).
+Quando você executa `dart create`, ele primeiro cria um diretório com os
+arquivos do projeto. Em seguida, obtém as dependências do pacote
+(a menos que você especifique a flag `--no-pub`).
 
-## Create a basic Dart project
+## Criar um projeto Dart básico
 
-To create a basic Dart project, follow the `dart create` command
-with the name of your project. In the following example,
-a directory named `my_cli` that contains a
-simple console app (the default template) is created:
+Para criar um projeto Dart básico, siga o comando `dart create`
+com o nome do seu projeto. No exemplo a seguir,
+um diretório chamado `my_cli` que contém um
+aplicativo de console simples (o template padrão) é criado:
 
 ```console
 $ dart create my_cli
 ```
 
-## Specify a template
+## Especificar um template
 
-To use a different template, use the `-t` (or `--template`)
-flag followed by the template name:
+Para usar um template diferente, use a flag `-t` (ou `--template`)
+seguida do nome do template:
 
 ```console
 $ dart create -t web my_web_app
 ```
 
-The `-t` flag allows you to specify which type of Dart project
-you want to create. If you don't specify a template, `dart create`
-uses the `console` template by default.
+A flag `-t` permite que você especifique qual tipo de projeto Dart
+você deseja criar. Se você não especificar um template, `dart create`
+usa o template `console` por padrão.
 
-## Available templates
+## Templates disponíveis
 
-The following table shows the templates you can use with the
-`-t` flag:
+A tabela a seguir mostra os templates que você pode usar com a
+flag `-t`:
 
-| Template       | Description                                                                                           |
-|----------------|-------------------------------------------------------------------------------------------------------|
-| `cli`          | A command-line application with basic argument parsing using [`package:args`]({{site.pub-pkg}}/args). |
-| `console`      | A command-line application (default template).                                                       |
-| `package`      | A package containing shared Dart libraries.                                                           |
-| `server-shelf` | A server built using [shelf][].                                                                       |
-| `web`          | A web app built using core Dart libraries.                                                            |
+| Template       | Descrição                                                                                           |
+|----------------|-----------------------------------------------------------------------------------------------------|
+| `cli`          | Uma aplicação de linha de comando com análise básica de argumentos usando [`package:args`]({{site.pub-pkg}}/args). |
+| `console`      | Uma aplicação de linha de comando (template padrão).                                                       |
+| `package`      | Um pacote contendo bibliotecas Dart compartilhadas.                                                           |
+| `server-shelf` | Um servidor construído usando [shelf][].                                                                       |
+| `web`          | Um aplicativo web construído usando bibliotecas principais do Dart.                                                            |
 
 {:.table .table-striped .nowrap}
 
 [shelf]: {{site.pub-pkg}}/shelf
 
-These templates result in a file structure that follows
-[package layout conventions](/tools/pub/package-layout).
+Esses templates resultam em uma estrutura de arquivos que segue
+[convenções de layout de pacote](/tools/pub/package-layout).
 
-## Additional options
+## Opções adicionais
 
-Additionally, you can perform the following actions with
-the `dart create` command.
+Adicionalmente, você pode realizar as seguintes ações com
+o comando `dart create`.
 
-### Force project creation
+### Forçar criação de projeto
 
-If the specified directory already exists, `dart create` fails. 
-You can force project generation with the `--force` flag:
+Se o diretório especificado já existir, `dart create` falha.
+Você pode forçar a geração do projeto com a flag `--force`:
 
 ```console
 $ dart create --force <DIRECTORY>
 ```
 
-### Get help
+### Obter ajuda
 
-For further information on command-line options, use the `--help` flag:
+Para mais informações sobre opções de linha de comando, use a flag `--help`:
 
 ```console
 $ dart create --help
