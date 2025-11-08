@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _An expression whose value is always 'null' can't be dereferenced._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an expression whose value will
+O analisador produz este diagnóstico quando an expression whose value will
 always be `null` is dereferenced.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `x` will always be
+O código a seguir produz este diagnóstico porque `x` will always be
 `null`:
 
 ```dart
@@ -25,7 +26,7 @@ int f(Null x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the value is allowed to be something other than `null`, then change the
 type of the expression:

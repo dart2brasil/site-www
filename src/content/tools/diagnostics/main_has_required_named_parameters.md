@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The function 'main' can't have any required named parameters._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a function named `main` has one
+O analisador produz este diagnóstico quando a function named `main` has one
 or more required named parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function named
+O código a seguir produz este diagnóstico porque the function named
 `main` has a required named parameter (`x`):
 
 ```dart
 void [!main!]({required int x}) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function is an entry point, then remove the `required` keyword:
 

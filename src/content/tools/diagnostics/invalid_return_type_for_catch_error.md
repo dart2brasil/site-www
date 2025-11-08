@@ -5,23 +5,24 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A value of type '{0}' can't be returned by the 'onError' handler because it must be assignable to '{1}'._
 
 _The return type '{0}' isn't assignable to '{1}', as required by 'Future.catchError'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an invocation of
+O analisador produz este diagnóstico quando an invocation of
 `Future.catchError` has an argument whose return type isn't compatible with
 the type returned by the instance of `Future`. At runtime, the method
 `catchError` attempts to return the value from the callback as the result
 of the future, which results in another exception being thrown.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `future` is declared to
+O código a seguir produz este diagnóstico porque `future` is declared to
 return an `int` while `callback` is declared to return a `String`, and
 `String` isn't a subtype of `int`:
 
@@ -31,7 +32,7 @@ void f(Future<int> future, String Function(dynamic, StackTrace) callback) {
 }
 ```
 
-The following code produces this diagnostic because the closure being
+O código a seguir produz este diagnóstico porque the closure being
 passed to `catchError` returns an `int` while `future` is declared to
 return a `String`:
 
@@ -41,7 +42,7 @@ void f(Future<String> future) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the instance of `Future` is declared correctly, then change the callback
 to match:

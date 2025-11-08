@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The annotation '@nonVirtual' can only be applied to a concrete instance member._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `nonVirtual` annotation is
+O analisador produz este diagnóstico quando the `nonVirtual` annotation is
 found on a declaration other than a member of a class, mixin, or enum, or
 if the member isn't a concrete instance member.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the annotation is on a
+O código a seguir produz este diagnóstico porque the annotation is on a
 class declaration rather than a member inside the class:
 
 ```dart
@@ -27,7 +28,7 @@ import 'package:meta/meta.dart';
 class C {}
 ```
 
-The following code produces this diagnostic because the method `m` is an
+O código a seguir produz este diagnóstico porque the method `m` is an
 abstract method:
 
 ```dart
@@ -39,7 +40,7 @@ abstract class C {
 }
 ```
 
-The following code produces this diagnostic because the method `m` is a
+O código a seguir produz este diagnóstico porque the method `m` is a
 static method:
 
 ```dart
@@ -51,7 +52,7 @@ abstract class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the declaration isn't a member of a class, mixin, or enum, then remove
 the annotation:

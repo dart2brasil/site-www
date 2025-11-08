@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' can't be extended outside of its library because it's a final class._
@@ -21,16 +22,16 @@ _The class '{0}' can't be used as a mixin superclass constraint outside of its l
 
 _The mixin '{0}' can't be implemented outside of its library because it's a base mixin._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an `extends`, `implements`,
+O analisador produz este diagnóstico quando an `extends`, `implements`,
 `with`, or `on` clause uses a class or mixin in a way that isn't allowed
 given the modifiers on that class or mixin's declaration.
 
 The message specifies how the declaration is being used and why it isn't
 allowed.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that defines a base class `A`:
 
@@ -38,7 +39,7 @@ Given a file `a.dart` that defines a base class `A`:
 base class A {}
 ```
 
-The following code produces this diagnostic because the class `B`
+O código a seguir produz este diagnóstico porque a classe `B`
 implements the class `A`, but the `base` modifier prevents `A` from being
 implemented outside of the library where it's defined:
 
@@ -48,7 +49,7 @@ import 'a.dart';
 final class B implements [!A!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Use of this type is restricted outside of its declaring library. If a
 different, unrestricted type is available that can provide similar

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Constructors can have only one 'this' redirection, at most._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor redirects to more
+O analisador produz este diagnóstico quando a constructor redirects to more
 than one other constructor in the same class (using `this`).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the unnamed
+O código a seguir produz este diagnóstico porque the unnamed
 constructor in `C` is redirecting to both `this.a` and `this.b`:
 
 ```dart
@@ -27,7 +28,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all but one of the redirections:
 

@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The element type '{0}' can't be assigned to the list type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type of an element in a list
+O analisador produz este diagnóstico quando the type of an element in a list
 literal isn't assignable to the element type of the list.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `2.5` is a double, and
+O código a seguir produz este diagnóstico porque `2.5` is a double, and
 the list can hold only integers:
 
 ```dart
 List<int> x = [1, [!2.5!], 3];
 ```
 
-## Common fixes
+## Correções comuns
 
 If you intended to add a different object to the list, then replace the
 element with an expression that computes the intended object:

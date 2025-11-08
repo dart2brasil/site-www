@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The member '{0}' is declared non-virtual in '{1}' and can't be overridden in subclasses._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member of a class, mixin, or
+O analisador produz este diagnóstico quando a member of a class, mixin, or
 enum overrides a member that has the `@nonVirtual` annotation on it.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `m` in `B`
+O código a seguir produz este diagnóstico porque the method `m` in `B`
 overrides the method `m` in `A`, and the method `m` in `A` is annotated
 with the `@nonVirtual` annotation:
 
@@ -34,7 +35,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the annotation on the method in the superclass is correct (the method
 in the superclass is not intended to be overridden), then remove or rename

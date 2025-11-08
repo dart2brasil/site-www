@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Required library '{0}' is missing._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when either the Dart or Flutter SDK
+O analisador produz este diagnóstico quando either the Dart or Flutter SDK
 isn't installed correctly, and, as a result, one of the `dart:` libraries
 can't be found.
 
-## Common fixes
+## Correções comuns
 
 Reinstall the Dart or Flutter SDK.

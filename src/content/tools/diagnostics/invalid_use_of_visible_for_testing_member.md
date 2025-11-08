@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The member '{0}' can only be used within '{1}' or a test._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member annotated with
+O analisador produz este diagnóstico quando a member annotated with
 `@visibleForTesting` is referenced anywhere other than the library in
 which it is declared or in a library in the `test` directory.
 
-## Example
+## Exemplo
 
 Given a file `c.dart` that contains the following:
 
@@ -29,7 +30,7 @@ class C {
 ```
 
 The following code, when not inside the `test` directory, produces this
-diagnostic because the method `m` is marked as being visible only for
+diagnostic because the method `m` está marcado como being visible only for
 tests:
 
 ```dart
@@ -40,7 +41,7 @@ void f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the annotated member should not be referenced outside of tests, then
 remove the reference:

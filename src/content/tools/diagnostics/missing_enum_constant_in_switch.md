@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Missing case clause for '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `switch` statement for an enum
+O analisador produz este diagnóstico quando a `switch` statement for an enum
 doesn't include an option for one of the values in the enum.
 
 Note that `null` is always a possible value for an enum and therefore also
 must be handled.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the enum value `e2`
+O código a seguir produz este diagnóstico porque the enum value `e2`
 isn't handled:
 
 ```dart
@@ -33,7 +34,7 @@ void f(E e) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there's special handling for the missing values, then add a `case`
 clause for each of the missing values:

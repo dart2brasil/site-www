@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The Dart language version override comment can't be followed by any non-whitespace characters._
@@ -25,16 +26,16 @@ _The language version override can't specify a version greater than the latest k
 
 _The language version override must be specified before any declaration or directive._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a comment that appears to be an
+O analisador produz este diagnóstico quando a comment that appears to be an
 attempt to specify a language version override doesn't conform to the
 requirements for such a comment. For more information, see
 [Per-library language version selection](https://dart.dev/resources/language/evolution#per-library-language-version-selection).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the word `dart` must
+O código a seguir produz este diagnóstico porque the word `dart` must
 be lowercase in such a comment and because there's no equal sign between
 the word `dart` and the version number:
 
@@ -42,7 +43,7 @@ the word `dart` and the version number:
 [!// @Dart 2.13!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If the comment is intended to be a language version override, then change
 the comment to follow the correct format:

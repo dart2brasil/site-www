@@ -5,15 +5,16 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._
 
 _The setter '{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member of a class is found
+O analisador produz este diagnóstico quando a member of a class is found
 that overrides a member from a supertype and the override isn't valid. An
 override is valid if all of these are true:
 - It allows all of the arguments allowed by the overridden member.
@@ -24,9 +25,9 @@ override is valid if all of these are true:
 - The return type of the override is assignable to the return type of the
   overridden member.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type of the
+O código a seguir produz este diagnóstico porque the type of the
 parameter `s` (`String`) isn't assignable to the type of the parameter `i`
 (`int`):
 
@@ -40,7 +41,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the invalid method is intended to override the method from the
 superclass, then change it to conform:

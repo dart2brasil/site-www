@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' can't be used as a mixin because it declares a constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class is used as a mixin and
+O analisador produz este diagnóstico quando a class is used as a mixin and
 the mixed-in class defines a constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `A`, which
+O código a seguir produz este diagnóstico porque a classe `A`, which
 defines a constructor, is being used as a mixin:
 
 ```dart
@@ -28,7 +29,7 @@ class A {
 class B with [!A!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If it's possible to convert the class to a mixin, then do so:
 

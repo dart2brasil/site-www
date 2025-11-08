@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The annotation '@sealed' can only be applied to classes._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a declaration other than a
+O analisador produz este diagnóstico quando a declaration other than a
 class declaration has the `@sealed` annotation on it.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `@sealed`
+O código a seguir produz este diagnóstico porque the `@sealed`
 annotation is on a method declaration:
 
 ```dart
@@ -28,7 +29,7 @@ class A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the annotation:
 

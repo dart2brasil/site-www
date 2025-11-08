@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Map entries can only be used in a map literal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a map entry (a key/value pair)
+O analisador produz este diagnóstico quando a map entry (a key/value pair)
 is found in a set literal.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the literal has a map
+O código a seguir produz este diagnóstico porque the literal has a map
 entry even though it's a set literal:
 
 ```dart
 var collection = <String>{[!'a' : 'b'!]};
 ```
 
-## Common fixes
+## Correções comuns
 
 If you intended for the collection to be a map, then change the code so
 that it is a map. In the previous example, you could do this by adding

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _This annotation should be attached to a library directive._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an annotation that applies to
+O analisador produz este diagnóstico quando an annotation that applies to
 a whole library isn't associated with a `library` directive.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `TestOn`
+O código a seguir produz este diagnóstico porque the `TestOn`
 annotation, which applies to the whole library, is associated with an
 `import` directive rather than a `library` directive:
 
@@ -39,7 +40,7 @@ import 'package:test/test.dart';
 void main() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Associate the annotation with a `library` directive, adding one if
 necessary:

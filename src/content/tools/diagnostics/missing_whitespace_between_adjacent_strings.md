@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Missing whitespace between adjacent strings._
 
-## Description
+## Descrição
 
 The analyzer produces this diagnostic for a pair of adjacent string
 literals unless either the left-hand string ends in whitespace or the
 right-hand string begins with whitespace.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because neither the left nor
+O código a seguir produz este diagnóstico porque neither the left nor
 the right string literal includes a space to separate the words that will
 be joined:
 
@@ -38,7 +39,7 @@ var s =
   'do eiusmod tempor incididunt ut labore et dolore magna';
 ```
 
-## Common fixes
+## Correções comuns
 
 Add whitespace at the end of the left-hand literal or at the beginning of
 the right-hand literal:

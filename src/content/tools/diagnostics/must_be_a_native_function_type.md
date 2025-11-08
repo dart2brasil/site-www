@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type '{0}' given to '{1}' must be a valid 'dart:ffi' native function type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an invocation of either
+O analisador produz este diagnóstico quando an invocation of either
 `Pointer.fromFunction`, `DynamicLibrary.lookupFunction`,
 or a `NativeCallable` constructor, has a type
 argument(whether explicit or inferred) that isn't a native function type.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type `T` can be
+O código a seguir produz este diagnóstico porque the type `T` can be
 any subclass of `Function` but the type argument for `fromFunction` is
 required to be a native function type:
 
@@ -36,7 +37,7 @@ class C<T extends Function> {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a native function type as the type argument to the invocation:
 

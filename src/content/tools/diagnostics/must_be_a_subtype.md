@@ -5,11 +5,12 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type '{0}' must be a subtype of '{1}' for '{2}'._
 
-## Description
+## Descrição
 
 The analyzer produces this diagnostic in two cases:
 - In an invocation of `Pointer.fromFunction`, or a
@@ -21,9 +22,9 @@ The analyzer produces this diagnostic in two cases:
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type of the
+O código a seguir produz este diagnóstico porque the type of the
 function `f` (`String Function(int)`) isn't a subtype of the type
 argument `T` (`Int8 Function(Int8)`):
 
@@ -39,7 +40,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function is correct, then change the type argument to match:
 

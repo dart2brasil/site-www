@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Can't have a late final field in a class with a generative const constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class that has at least one
+O analisador produz este diagnóstico quando a class that has at least one
 `const` constructor also has a field marked both `late` and `final`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `A` has a
-`const` constructor and the `final` field `f` is marked as `late`:
+O código a seguir produz este diagnóstico porque a classe `A` has a
+`const` constructor and the `final` field `f` está marcado como `late`:
 
 ```dart
 class A {
@@ -27,7 +28,7 @@ class A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the field doesn't need to be marked `late`, then remove the `late`
 modifier from the field:
@@ -41,7 +42,7 @@ class A {
 ```
 
 If the field must be marked `late`, then remove the `const` modifier from
-the constructors:
+the construtores:
 
 ```dart
 class A {

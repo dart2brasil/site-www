@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The return type of the function passed to 'NativeCallable.listener' must be 'void' rather than '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when you pass a function
+O analisador produz este diagnóstico quando you pass a function
 that doesn't return `void` to the `NativeCallable.listener` constructor.
 
 `NativeCallable.listener` creates a native callable that can be invoked
@@ -21,9 +22,9 @@ response. So it isn't possible to return a result from the callable.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function
+O código a seguir produz este diagnóstico porque the function
 `f` returns `int` rather than `void`.
 
 ```dart
@@ -36,7 +37,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the return type of the function to `void`.
 

@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The late final local variable is already assigned._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the analyzer can prove that a
+O analisador produz este diagnóstico quando the analyzer can prove that a
 local variable marked as both `late` and `final` was already assigned a
 value at the point where another assignment occurs.
 
 Because `final` variables can only be assigned once, subsequent assignments
 are guaranteed to fail, so they're flagged.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `final` variable
+O código a seguir produz este diagnóstico porque the `final` variable
 `v` is assigned a value in two places:
 
 ```dart
@@ -32,7 +33,7 @@ int f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to be able to reassign the variable, then remove the `final`
 keyword:

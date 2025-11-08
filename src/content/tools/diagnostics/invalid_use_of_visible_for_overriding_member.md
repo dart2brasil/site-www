@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The member '{0}' can only be used for overriding._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance member that is
+O analisador produz este diagnóstico quando an instance member that is
 annotated with [`visibleForOverriding`][meta-visibleForOverriding] is
 referenced outside the library in which it's declared for any reason other
 than to override it.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` containing the following declaration:
 
@@ -29,7 +30,7 @@ class A {
 }
 ```
 
-The following code produces this diagnostic because the method `m` is being
+O código a seguir produz este diagnóstico porque the method `m` is being
 invoked even though the only reason it's public is to allow it to be
 overridden:
 
@@ -43,7 +44,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the invalid use of the member.
 

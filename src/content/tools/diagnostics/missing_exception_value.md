@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The method {0} must have an exceptional return value (the second argument) when the return type of the function is neither 'void', 'Handle', nor 'Pointer'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an invocation of the method
+O analisador produz este diagnóstico quando an invocation of the method
 `Pointer.fromFunction` or `NativeCallable.isolateLocal`
 doesn't have a second argument (the exceptional
 return value) when the type to be returned from the invocation is neither
@@ -19,9 +20,9 @@ return value) when the type to be returned from the invocation is neither
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type returned by
+O código a seguir produz este diagnóstico porque the type returned by
 `f` is expected to be an 8-bit integer but the call to `fromFunction`
 doesn't include an exceptional return argument:
 
@@ -35,9 +36,9 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an exceptional return type:
+Adicione uma exceptional return type:
 
 ```dart
 import 'dart:ffi';

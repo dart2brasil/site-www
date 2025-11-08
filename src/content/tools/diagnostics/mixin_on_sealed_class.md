@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' shouldn't be used as a mixin constraint because it is sealed, and any class mixing in this mixin must have '{0}' as a superclass._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the superclass constraint of a
+O analisador produz este diagnóstico quando the superclass constraint of a
 mixin is a class from a different package that was marked as
 [`sealed`][meta-sealed]. Classes that are sealed can't be extended,
 implemented, mixed in, or used as a superclass constraint.
 
-## Example
+## Exemplo
 
 If the package `p` defines a sealed class:
 
@@ -36,7 +37,7 @@ import 'package:p/p.dart';
 [!mixin M on C {}!]
 ```
 
-## Common fixes
+## Correções comuns
 
 If the classes that use the mixin don't need to be subclasses of the sealed
 class, then consider adding a field and delegating to the wrapped instance

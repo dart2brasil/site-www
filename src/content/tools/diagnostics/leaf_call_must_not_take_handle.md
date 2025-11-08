@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _FFI leaf call can't take arguments of type 'Handle'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value of the `isLeaf`
+O analisador produz este diagnóstico quando the value of the `isLeaf`
 argument in an invocation of either `Pointer.asFunction` or
 `DynamicLibrary.lookupFunction` is `true` and the function that would be
 returned would have a parameter of type `Handle`.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `p` has a
+O código a seguir produz este diagnóstico porque the function `p` has a
 parameter of type `Handle`, but the `isLeaf` argument is `true`:
 
 ```dart
@@ -31,7 +32,7 @@ void f(Pointer<NativeFunction<Void Function(Handle)>> p) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function has at least one parameter of type `Handle`, then remove
 the `isLeaf` argument:

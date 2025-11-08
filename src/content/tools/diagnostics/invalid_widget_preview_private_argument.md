@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'@Preview(...)' can only accept arguments that consist of literals and public symbols._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `Preview` constructor is
+O analisador produz este diagnóstico quando the `Preview` constructor is
 invoked with arguments that contain references to private symbols.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constant variable
+O código a seguir produz este diagnóstico porque the constant variable
 `_name` is private to the current library:
 
 ```dart
@@ -29,7 +30,7 @@ const String _name = 'My Foo Preview';
 Widget myPreview() => Text('Foo');
 ```
 
-## Common fixes
+## Correções comuns
 
 If appropriate, the private symbol should be made public:
 

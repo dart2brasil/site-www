@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Only classes and mixins can be used as superclass constraints._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type following the `on`
+O analisador produz este diagnóstico quando a type following the `on`
 keyword in a mixin declaration is neither a class nor a mixin.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `F` is neither a class
+O código a seguir produz este diagnóstico porque `F` is neither a class
 nor a mixin:
 
 ```dart
@@ -25,7 +26,7 @@ typedef F = void Function();
 mixin M on [!F!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type was intended to be a class but was mistyped, then replace the
 name.

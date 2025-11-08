@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The annotation doesn't match the declared type of the field._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the annotation on a field in a
+O analisador produz este diagnóstico quando the annotation on a field in a
 subclass of `Struct` or `Union` doesn't match the Dart type of the field.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the annotation
+O código a seguir produz este diagnóstico porque the annotation
 `Double` doesn't match the Dart type `int`:
 
 ```dart
@@ -30,7 +31,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type of the field is correct, then change the annotation to match:
 

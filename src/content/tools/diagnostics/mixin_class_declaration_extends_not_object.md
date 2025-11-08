@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' can't be declared a mixin because it extends a class other than 'Object'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class that is marked with
+O analisador produz este diagnóstico quando a class that is marked with
 the `mixin` modifier extends a class other than `Object`. A mixin class
 can't have a superclass other than `Object`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `B`, which
+O código a seguir produz este diagnóstico porque a classe `B`, which
 has the modifier `mixin`, extends `A`:
 
 ```dart
@@ -26,7 +27,7 @@ class A {}
 mixin class B extends [!A!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If you want the class to be used as a mixin, then change the superclass to
 `Object`, either explicitly or by removing the extends clause:
@@ -38,7 +39,7 @@ mixin class B {}
 ```
 
 If the class needs to have a superclass other than `Object`, then remove
-the `mixin` modifier:
+the `mixin` modificador:
 
 ```dart
 class A {}

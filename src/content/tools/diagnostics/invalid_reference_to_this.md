@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Invalid reference to 'this' expression._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when `this` is used outside of an
+O analisador produz este diagnóstico quando `this` is used outside of an
 instance method or a generative constructor. The reserved word `this` is
 only defined in the context of an instance method, a generative
 constructor, or the initializer of a late instance field declaration.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `v` is a top-level
+O código a seguir produz este diagnóstico porque `v` is a top-level
 variable:
 
 ```dart
@@ -27,7 +28,7 @@ C f() => [!this!];
 class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a variable of the appropriate type in place of `this`, declaring it if
 necessary:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -32,16 +33,16 @@ _Runtime check between '{0}' and '{1}' involves a non-trivial runtime check betw
 
 _Runtime check between '{0}' and '{1}' involves a runtime check between a JS interop value and an unrelated JS interop type that will always be true and won't check the underlying type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an `is` test has either:
+O analisador produz este diagnóstico quando an `is` test has either:
 - a JS interop type on the right-hand side, whether directly or as a type
   argument to another type, or
 - a JS interop value on the left-hand side.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the JS interop type
+O código a seguir produz este diagnóstico porque the JS interop type
 `JSBoolean` is on the right-hand side of an `is` test:
 
 ```dart
@@ -50,7 +51,7 @@ import 'dart:js_interop';
 bool f(Object b) => [!b is JSBoolean!];
 ```
 
-The following code produces this diagnostic because the JS interop type
+O código a seguir produz este diagnóstico porque the JS interop type
 `JSString` is used as a type argument on the right-hand side of an `is`
 test:
 
@@ -60,7 +61,7 @@ import 'dart:js_interop';
 bool f(List<Object> l) => [!l is List<JSString>!];
 ```
 
-The following code produces this diagnostic because the JS interop value
+O código a seguir produz este diagnóstico porque the JS interop value
 `a` is on the left-hand side of an `is` test:
 
 ```dart
@@ -69,7 +70,7 @@ import 'dart:js_interop';
 bool f(JSAny a) => [!a is String!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a JS interop helper, such as `isA`, to check the underlying type of
 JS interop values:

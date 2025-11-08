@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Fields of type 'Array' must have exactly one 'Array' annotation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field in a subclass of either
+O analisador produz este diagnóstico quando a field in a subclass of either
 `Struct` or `Union` has a type of `Array` but doesn't have a single
 `Array` annotation indicating the dimensions of the array.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `a0` doesn't
+O código a seguir produz este diagnóstico porque the field `a0` doesn't
 have an `Array` annotation:
 
 ```dart
@@ -30,7 +31,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Ensure that there's exactly one `Array` annotation on the field:
 

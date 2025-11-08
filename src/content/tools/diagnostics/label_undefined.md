@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Can't reference an undefined label '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it finds a reference to a label
+O analisador produz este diagnóstico quando it finds a reference to a label
 that isn't defined in the scope of the `break` or `continue` statement that
 is referencing it.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the label `loop` isn't
+O código a seguir produz este diagnóstico porque the label `loop` isn't
 defined anywhere:
 
 ```dart
@@ -32,7 +33,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the label should be on the innermost enclosing `do`, `for`, `switch`, or
 `while` statement, then remove the label:

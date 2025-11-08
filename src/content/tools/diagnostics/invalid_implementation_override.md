@@ -5,15 +5,16 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}.{1}' ('{2}') isn't a valid concrete implementation of '{3}.{1}' ('{4}')._
 
 _The setter '{0}.{1}' ('{2}') isn't a valid concrete implementation of '{3}.{1}' ('{4}')._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when all of the following are true:
+O analisador produz este diagnóstico quando all of the following are true:
 
 - A class defines an abstract member.
 - There is a concrete implementation of that member in a superclass.
@@ -24,9 +25,9 @@ The concrete implementation can be invalid because of incompatibilities in
 either the return type, the types of the method's parameters, or the type
 parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `A.add` has
+O código a seguir produz este diagnóstico porque the method `A.add` has
 a parameter of type `int`, and the overriding method `B.add` has a
 corresponding parameter of type `num`:
 
@@ -52,7 +53,7 @@ the method `A.add` is executed (because it's the only concrete
 implementation of `add`), a runtime exception will be thrown because a
 `double` can't be assigned to a parameter of type `int`.
 
-## Common fixes
+## Correções comuns
 
 If the method in the subclass can conform to the implementation in the
 superclass, then change the declaration in the subclass (or remove it if

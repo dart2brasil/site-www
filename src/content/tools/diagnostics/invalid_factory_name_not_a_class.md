@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name of a factory constructor must be the same as the name of the immediately enclosing class._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a factory
+O analisador produz este diagnóstico quando the name of a factory
 constructor isn't the same as the name of the surrounding class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name of the factory
+O código a seguir produz este diagnóstico porque the name of the factory
 constructor (`A`) isn't the same as the surrounding class (`C`):
 
 ```dart
@@ -27,7 +28,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the factory returns an instance of the surrounding class, and you
 intend it to be an unnamed factory constructor, then rename the factory:

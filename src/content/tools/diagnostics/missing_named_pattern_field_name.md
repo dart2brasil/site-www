@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The getter name is not specified explicitly, and the pattern is not a variable._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when, within an object pattern, the
+O analisador produz este diagnóstico quando, within an object pattern, the
 specification of a property and the pattern used to match the property's
 value doesn't have either:
 
 - a getter name before the colon
 - a variable pattern from which the getter name can be inferred
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is no getter
+O código a seguir produz este diagnóstico porque there is no getter
 name before the colon and no variable pattern after the colon in the
 object pattern (`C(:0)`):
 
@@ -37,7 +38,7 @@ void f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to use the actual value of the property within the pattern's
 scope, then add a variable pattern where the name of the variable is the

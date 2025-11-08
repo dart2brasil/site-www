@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The member '{0}' can only be used within its package._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a reference to a declaration
+O analisador produz este diagnóstico quando a reference to a declaration
 that is annotated with the [`internal`][meta-internal] annotation is found
 outside the package containing the declaration.
 
-## Example
+## Exemplo
 
 Given a package `p` that defines a library containing a declaration marked
 with the [`internal`][meta-internal] annotation:
@@ -27,7 +28,7 @@ import 'package:meta/meta.dart';
 class C {}
 ```
 
-The following code produces this diagnostic because it's referencing the
+O código a seguir produz este diagnóstico porque it's referencing the
 class `C`, which isn't intended to be used outside the package `p`:
 
 ```dart
@@ -36,7 +37,7 @@ import 'package:p/src/p.dart';
 void f([!C!] c) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the reference to the internal declaration.
 

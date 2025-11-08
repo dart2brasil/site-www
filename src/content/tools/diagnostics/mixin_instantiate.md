@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Mixins can't be instantiated._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a mixin is instantiated.
+O analisador produz este diagnóstico quando a mixin is instantiated.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the mixin `M` is being
+O código a seguir produz este diagnóstico porque the mixin `M` is being
 instantiated:
 
 ```dart
@@ -24,7 +25,7 @@ mixin M {}
 var m = [!M!]();
 ```
 
-## Common fixes
+## Correções comuns
 
 If you intend to use an instance of a class, then use the name of that
 class in place of the name of the mixin.

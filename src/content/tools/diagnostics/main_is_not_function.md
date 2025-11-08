@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The declaration named 'main' must be a function._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library contains a declaration
+O analisador produz este diagnóstico quando a library contains a declaration
 of the name `main` that isn't the declaration of a top-level function.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name `main` is
+O código a seguir produz este diagnóstico porque the name `main` is
 being used to declare a top-level variable:
 
 ```dart
 var [!main!] = 3;
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a different name for the declaration:
 

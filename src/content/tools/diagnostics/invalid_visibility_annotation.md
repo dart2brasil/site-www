@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The member '{0}' is annotated with '{1}', but this annotation is only meaningful on declarations of public members._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when either the `visibleForTemplate`
+O analisador produz este diagnóstico quando either the `visibleForTemplate`
 or [`visibleForTesting`][meta-visibleForTesting] annotation is applied to
 a non-public declaration.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic:
 
@@ -28,7 +29,7 @@ void _someFunction() {}
 void f() => _someFunction();
 ```
 
-## Common fixes
+## Correções comuns
 
 If the declaration doesn't need to be used by test code, then remove the
 annotation:

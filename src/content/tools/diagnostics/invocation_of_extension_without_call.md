@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The extension '{0}' doesn't define a 'call' method so the override can't be used in an invocation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override is used to
+O analisador produz este diagnóstico quando an extension override is used to
 invoke a function but the extension doesn't declare a `call` method.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension `E`
+O código a seguir produz este diagnóstico porque the extension `E`
 doesn't define a `call` method:
 
 ```dart
@@ -27,7 +28,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the extension is intended to define a `call` method, then declare it:
 

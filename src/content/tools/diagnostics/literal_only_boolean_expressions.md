@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,16 +21,16 @@ bodyClass: highlight-diagnostics
 
 _The Boolean expression has a constant value._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value of the condition in
+O analisador produz este diagnóstico quando the value of the condition in
 an `if` or loop statement is known to be either always `true` or always
 `false`. An exception is made for a `while` loop whose condition is the
 Boolean literal `true`.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the condition will
+O código a seguir produz este diagnóstico porque the condition will
 always evaluate to `true`:
 
 ```dart
@@ -52,7 +53,7 @@ void g(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the condition is wrong, then correct the condition so that it's value
 can't be known at compile time:

@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Uses of '{0}' should not be submitted to source control._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member that is annotated with
+O analisador produz este diagnóstico quando a member that is annotated with
 [`@doNotSubmit`][meta-doNotSubmit] is referenced outside of a member
 declaration that is also annotated with `@doNotSubmit`.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` containing the following declaration:
 
@@ -26,7 +27,7 @@ import 'package:meta/meta.dart';
 void emulateCrash() { /* ... */ }
 ```
 
-The following code produces this diagnostic because the declaration is
+O código a seguir produz este diagnóstico porque the declaration is
 being referenced outside of a member that is also annotated with
 `@doNotSubmit`:
 
@@ -38,7 +39,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Most commonly, when complete with local testing, the reference to the
 member should be removed.
