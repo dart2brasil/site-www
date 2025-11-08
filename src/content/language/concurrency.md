@@ -418,7 +418,7 @@ então estão sujeitos às mesmas limitações.
 [`Pointer`]: {{site.dart-api}}/dart-ffi/Pointer-class.html
 [`UserTag`]: {{site.dart-api}}/dart-developer/UserTag-class.html
 
-#### Comunicação síncrona bloqueante entre isolates
+#### Comunicação síncrona bloqueante entre isolates {:#synchronous-blocking-communication-between-isolates}
 
 Há um limite para o número de isolates que podem executar em paralelo.
 Este limite não afeta a comunicação *assíncrona* padrão entre isolates
@@ -445,7 +445,7 @@ Leia sobre [`Dart_EnterIsolate`] e [`Dart_ExitIsolate`] para saber mais.
 [`Dart_ExitIsolate`]: {{site.repo.dart.sdk}}/blob/c9a8bbd8d6024e419b5e5f26b5131285eb19cc93/runtime/include/dart_api.h#L1455
 
 <a id="web"></a>
-## Concorrência na web
+## Concorrência na web {:#concurrency-on-the-web}
 
 Todos os aplicativos Dart podem usar `async-await`, `Future` e `Stream`
 para computações não bloqueantes e intercaladas. A [plataforma Dart web][Dart web platform], no entanto,
