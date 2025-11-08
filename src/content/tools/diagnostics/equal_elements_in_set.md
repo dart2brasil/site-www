@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: equal_elements_in_set
 description: >-
-  Details about the equal_elements_in_set
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico equal_elements_in_set
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Two elements in a set literal shouldn't be equal._
+_Dois elementos em um literal de set não devem ser equal._
 
 ## Description
 
-The analyzer produces this diagnostic when an element in a non-constant set
-is the same as a previous element in the same set. If two elements are the
-same, then the second value is ignored, which makes having both elements
-pointless and likely signals a bug.
+O analisador produz este diagnóstico quando um elemento em um set não constant é
+o mesmo que um elemento anterior no mesmo set. Se dois elementos são
+iguais, então o segundo valor é ignorado, o que torna ter ambos os elementos
+inútil e provavelmente sinaliza um bug.
 
 ## Example
 
-The following code produces this diagnostic because the element `1` appears
-twice:
+O código a seguir produz este diagnóstico porque o elemento `1` aparece
+duas vezes:
 
 ```dart
 const a = 1;
@@ -29,8 +30,8 @@ var s = <int>{a, [!b!]};
 
 ## Common fixes
 
-If both elements should be included in the set, then change one of the
-elements:
+Se ambos os elementos devem ser incluídos no set, então altere um dos
+elementos:
 
 ```dart
 const a = 1;
@@ -38,14 +39,14 @@ const b = 2;
 var s = <int>{a, b};
 ```
 
-If only one of the elements is needed, then remove the one that isn't
-needed:
+Se apenas um dos elementos é necessário, então remova aquele que não é
+necessário:
 
 ```dart
 const a = 1;
 var s = <int>{a};
 ```
 
-Note that literal sets preserve the order of their elements, so the choice
-of which element to remove might affect the order in which elements are
-returned by an iterator.
+Note que literais de set preservam a ordem de seus elementos, então a escolha
+de qual elemento remover pode afetar a ordem em que os elementos são
+retornados por um iterador.

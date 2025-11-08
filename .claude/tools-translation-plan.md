@@ -375,12 +375,14 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 11 (from 20-section-prompts.md):** Diagnostic Errors - empty/equal/expression/export (17/17 files) - 100% COMPLETE!
+  - Note: This corresponds to parts of Section 13 (empty_*, equal_*) and Section 14 (expression_*, export_*) in this plan
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+All sections 1-20 pending (except completed diagnostic patterns above)
 
 ---
 

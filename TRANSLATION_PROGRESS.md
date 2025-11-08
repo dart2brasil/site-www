@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 112 files (with ia-translate: true metadata)
+- **Remaining:** ~833 files
+- **Progress:** 11.9%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 57 (54 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 112 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,31 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 11: Diagnostic Errors - empty/equal/expression/export (17 files)
+41. ✅ `src/content/tools/diagnostics/empty_catches.md`
+42. ✅ `src/content/tools/diagnostics/empty_constructor_bodies.md`
+43. ✅ `src/content/tools/diagnostics/empty_map_pattern.md`
+44. ✅ `src/content/tools/diagnostics/empty_record_literal_with_comma.md`
+45. ✅ `src/content/tools/diagnostics/empty_record_type_named_fields_list.md`
+46. ✅ `src/content/tools/diagnostics/empty_record_type_with_comma.md`
+47. ✅ `src/content/tools/diagnostics/empty_statements.md`
+48. ✅ `src/content/tools/diagnostics/empty_struct.md`
+49. ✅ `src/content/tools/diagnostics/equal_elements_in_const_set.md`
+50. ✅ `src/content/tools/diagnostics/equal_elements_in_set.md`
+51. ✅ `src/content/tools/diagnostics/equal_keys_in_const_map.md`
+52. ✅ `src/content/tools/diagnostics/equal_keys_in_map.md`
+53. ✅ `src/content/tools/diagnostics/equal_keys_in_map_pattern.md`
+54. ✅ `src/content/tools/diagnostics/export_internal_library.md`
+55. ✅ `src/content/tools/diagnostics/export_legacy_symbol.md`
+56. ✅ `src/content/tools/diagnostics/export_of_non_library.md`
+57. ✅ `src/content/tools/diagnostics/expression_in_map.md`
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 32/~776 files (4%)
+- ⏳ **Tools/Diagnostics Section 11:** 17/17 files (100%) ✅
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,8 +120,8 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (57 files this session including merge)
+Progress: 11.9% complete (112/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
