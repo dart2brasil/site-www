@@ -1,81 +1,84 @@
-#### Options {:#prod-compile-options}
+---
+ia-translate: true
+---
+#### Opções {:#prod-compile-options}
 
-The `dart compile js` command has multiple options
-to customize javascript code compilation.
+O comando `dart compile js` possui múltiplas opções
+para personalizar a compilação de código JavaScript.
 
-* [Basic options](#basic-options)
-* [Path and environment options](#path-and-environment-options)
-* [Display options](#display-options)
-* [Analysis options](#analysis-options)
+* [Opções básicas](#basic-options)
+* [Opções de caminho e ambiente](#path-and-environment-options)
+* [Opções de exibição](#display-options)
+* [Opções de análise](#analysis-options)
 
-###### Basic options
+###### Opções básicas
 
-Common options include:
+Opções comuns incluem:
 
-`-o <file>` or `--output=<file>`
-: Generates the output into `<file>`. 
-  If not specified, the output goes in a file named `out.js`.
+`-o <file>` ou `--output=<file>`
+: Gera a saída em `<file>`.
+  Se não especificado, a saída vai para um arquivo chamado `out.js`.
 
 `--enable-asserts`
-: Enables assertion checking.
+: Habilita a verificação de assertions.
 
 `-O{0|1|2|3|4}`
-: Controls optimizations to reduce file size and
-  improve code performance.
-  To learn more about these optimizations, 
-  run `dart compile js -hv`.
+: Controla otimizações para reduzir o tamanho do arquivo e
+  melhorar o desempenho do código.
+  Para saber mais sobre essas otimizações,
+  execute `dart compile js -hv`.
 
-  * `-O0`: Disables many optimizations.
-  * `-O1`: Enables default optimizations.
-  * `-O2`: Enables `-O1` optimizations, plus additional ones
-    (such as minification) that respect the language semantics and
-    are safe for all programs.
+  * `-O0`: Desabilita muitas otimizações.
+  * `-O1`: Habilita otimizações padrão.
+  * `-O2`: Habilita otimizações `-O1`, além de outras adicionais
+    (como minificação) que respeitam a semântica da linguagem e
+    são seguras para todos os programas.
 
     :::note
-    With `-O2`, string representations of types are no longer the same as
-    those in the Dart VM when compiled with the development JavaScript compiler.
+    Com `-O2`, representações de string de tipos não são mais as mesmas que
+    as da Dart VM quando compiladas com o compilador JavaScript de desenvolvimento.
     :::
-  * `-O3`: Enables `-O2` optimizations, plus omits implicit type checks.
-    
+  * `-O3`: Habilita otimizações `-O2`, além de omitir verificações implícitas de tipo.
+
     :::warning
-    Omitting type checks can cause your app to crash due to type errors.
-    Before using `-O3`, **test using `-O2`** to ensure that your app
-    **never** throws a subtype of `Error` (such as `TypeError`).
+    Omitir verificações de tipo pode causar falha na sua aplicação devido a erros de tipo.
+    Antes de usar `-O3`, **teste usando `-O2`** para garantir que sua aplicação
+    **nunca** lance um subtipo de `Error` (como `TypeError`).
     :::
-  * `-O4`: Enables more aggressive optimizations than `-O3`,
-    but with the same assumptions.
-    
+  * `-O4`: Habilita otimizações mais agressivas que `-O3`,
+    mas com as mesmas suposições.
+
     :::warning
-    The `-O4` optimizations are susceptible to variations in input data.
-    Before relying on `-O4`, **test for edge cases in user input**.
+    As otimizações `-O4` são suscetíveis a variações nos dados de entrada.
+    Antes de confiar em `-O4`, **teste casos extremos na entrada do usuário**.
     :::
 
 `--no-source-maps`
-: Do not generate a source map file.
+: Não gera um arquivo source map.
 
-`-h` or `--help`
-: Displays help. To get information about all options, use `-hv`.
+`-h` ou `--help`
+: Exibe ajuda. Para obter informações sobre todas as opções, use `-hv`.
 
 
-###### Path and environment options
+###### Opções de caminho e ambiente
 
-Some other handy options include:
+Algumas outras opções úteis incluem:
 
 `--packages=<path>`
-: Specifies the path to the package resolution configuration file.
-  For more information, check out the
-  [Dart package configuration file][] specification.
+: Especifica o caminho para o arquivo de configuração de resolução de pacotes.
+  Para mais informações, confira a
+  especificação do [arquivo de configuração de pacotes do Dart][Dart package configuration file].
 
 `-D<flag>=<value>`
-: Defines an environment declaration and value pair
-  which can be accessed with 
-  [`String.fromEnvironment`][], [`int.fromEnvironment`][], 
-  [`bool.fromEnvironment`][], or [`bool.hasEnvironment`][].
-  To learn more about environment declarations,
-  see [Configuring apps with compilation environment declarations][].
+: Define um par de declaração de ambiente e valor
+  que pode ser acessado com
+  [`String.fromEnvironment`][], [`int.fromEnvironment`][],
+  [`bool.fromEnvironment`][] ou [`bool.hasEnvironment`][].
+  Para saber mais sobre declarações de ambiente,
+  veja [Configurando aplicações com declarações de ambiente de compilação][Configuring apps with compilation environment declarations].
 
 `--version`
-: Displays version information for `dart`.
+: Exibe informações de versão do `dart`.
 
 [Dart package configuration file]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
 [`String.fromEnvironment`]: {{site.dart-api}}/dart-core/String/String.fromEnvironment.html
@@ -84,44 +87,44 @@ Some other handy options include:
 [`bool.hasEnvironment`]: {{site.dart-api}}/dart-core/bool/bool.hasEnvironment.html
 [Configuring apps with compilation environment declarations]: /libraries/core/environment-declarations
 
-###### Display options
+###### Opções de exibição
 
-The following options help you control the compiler output.
+As seguintes opções ajudam você a controlar a saída do compilador.
 
 `--suppress-warnings`
-: Doesn't display warnings.
+: Não exibe avisos.
 
 `--suppress-hints`
-: Doesn't display hints.
+: Não exibe dicas.
 
 `--terse`
-: Emits diagnostics, 
-  without suggesting how to get rid of the diagnosed problems.
+: Emite diagnósticos,
+  sem sugerir como se livrar dos problemas diagnosticados.
 
-`-v` or `--verbose`
-: Displays lots of information.
+`-v` ou `--verbose`
+: Exibe muitas informações.
 
 
-###### Analysis options
+###### Opções de análise
 
-The following options control the analysis performed on Dart code.
+As seguintes opções controlam a análise realizada no código Dart.
 
 `--fatal-warnings`
-: Treat warnings as compilation errors.
+: Trata avisos como erros de compilação.
 
 `--enable-diagnostic-colors`
-: Adds colors to diagnostic messages.
+: Adiciona cores às mensagens de diagnóstico.
 
 `--show-package-warnings`
-: Shows warnings and hints generated from packages.
+: Mostra avisos e dicas gerados de pacotes.
 
 `--csp`
-: Disables dynamic generation of code in the generated output.
-  This is necessary to satisfy CSP restrictions
-  (see [W3C Content Security Policy.](https://www.w3.org/TR/CSP/))
+: Desabilita a geração dinâmica de código na saída gerada.
+  Isso é necessário para satisfazer restrições CSP
+  (veja [W3C Content Security Policy.](https://www.w3.org/TR/CSP/))
 
 `--dump-info`
-: Generates a file (with the suffix `.info.json`)
-  that contains information about the generated code.
-  You can inspect the generated file with tools in
+: Gera um arquivo (com o sufixo `.info.json`)
+  que contém informações sobre o código gerado.
+  Você pode inspecionar o arquivo gerado com ferramentas em
   [dart2js_info](/go/dart2js-info).
