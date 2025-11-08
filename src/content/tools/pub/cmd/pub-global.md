@@ -39,7 +39,7 @@ Você pode ativar pacotes que residem no
 [site pub.dev]({{site.pub}}), um repositório Git,
 ou sua máquina local.
 Depois de ter ativado um pacote, consulte [Executar um
-script](#executar-um-script) para executar scripts do
+script](#running-a-script) para executar scripts do
 diretório `bin` do pacote.
 
 Quando você ativa um pacote, pode especificar uma restrição de versão opcional.
