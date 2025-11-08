@@ -4,10 +4,10 @@ title: Operadores
 description: Aprenda sobre os operadores que o Dart suporta.
 prevpage:
   url: /language/variables
-  title: Variáveis
+  title: "Variáveis"
 nextpage:
   url: /language/comments
-  title: Comentários
+  title: "Comentários"
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>

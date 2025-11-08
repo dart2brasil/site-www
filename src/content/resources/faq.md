@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Dart FAQ
 shortTitle: FAQ
 description: You have questions about Dart, we have answers.

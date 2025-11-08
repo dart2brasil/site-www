@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: packed_annotation
 description: >-
-  Details about the packed_annotation
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico packed_annotation
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Structs must have at most one 'Packed' annotation._
+_Structs devem ter no máximo uma anotação 'Packed'._
 
 ## Description
 
-The analyzer produces this diagnostic when a subclass of `Struct` has more
-than one `Packed` annotation.
+O analisador produz este diagnóstico quando uma subclasse de `Struct` tem mais
+de uma anotação `Packed`.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because the class `C`, which
-is a subclass of `Struct`, has two `Packed` annotations:
+O código a seguir produz este diagnóstico porque a classe `C`, que
+é uma subclasse de `Struct`, tem duas anotações `Packed`:
 
 ```dart
 import 'dart:ffi';
@@ -33,7 +34,7 @@ final class C extends Struct {
 
 ## Common fixes
 
-Remove all but one of the annotations:
+Remova todas, exceto uma das anotações:
 
 ```dart
 import 'dart:ffi';

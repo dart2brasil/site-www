@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart pub token
-description: Gerenciar tokens de autenticação para repositórios de pacotes.
+description: "Gerenciar tokens de autenticação para repositórios de pacotes."
 ---
 
 O subcomando `dart pub token` gerencia um armazenamento de tokens.

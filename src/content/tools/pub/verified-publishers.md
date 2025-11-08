@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Editores verificados
-description: Saiba o que são editores verificados e como eles são verificados.
+description: "Saiba o que são editores verificados e como eles são verificados."
 ---
 
 O selo de editor verificado do pub.dev <img src="/assets/img/verified-publisher.svg" class="text-icon" alt="logotipo de editor verificado do pub.dev">

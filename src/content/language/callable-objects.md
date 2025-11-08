@@ -1,11 +1,11 @@
 ---
 ia-translate: true
-title: Objetos chamáveis
-description: Aprenda como criar e usar objetos chamáveis em Dart.
+title: "Objetos chamáveis"
+description: "Aprenda como criar e usar objetos chamáveis em Dart."
 showToc: false
 prevpage:
   url: /language/extension-types
-  title: Tipos de extensão
+  title: "Tipos de extensão"
 nextpage:
   url: /language/class-modifiers
   title: Modificadores de classe

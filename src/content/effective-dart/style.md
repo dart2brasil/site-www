@@ -2,13 +2,13 @@
 ia-translate: true
 title: "Effective Dart: Estilo"
 breadcrumb: Estilo
-description: Regras de formatação e nomenclatura para código consistente e legível.
+description: "Regras de formatação e nomenclatura para código consistente e legível."
 nextpage:
   url: /effective-dart/documentation
-  title: Documentação
+  title: "Documentação"
 prevpage:
   url: /effective-dart
-  title: Visão geral
+  title: "Visão geral"
 ---
 <?code-excerpt plaster="none"?>
 <?code-excerpt path-base="misc/lib/effective_dart"?>

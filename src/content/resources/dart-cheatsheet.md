@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Dart cheatsheet
 breadcrumb: Cheatsheet
 description: Interactively learn (or relearn) some of Dart's unique features.
@@ -12,10 +13,10 @@ mas tem algumas funcionalidades únicas.
 Este tutorial guia você pelas
 funcionalidades mais importantes desta linguagem.
 
-The embedded editors in this tutorial have partially completed code snippets.
-You can use these editors to test your knowledge by completing the code and
-clicking the **Run** button. The editors also contain thorough test code;
-**don't edit the test code**, but feel free to study it to learn about testing.
+Os editores incorporados neste tutorial têm trechos de código parcialmente completos.
+Você pode usar esses editores para testar seu conhecimento completando o código e
+clicando no botão **Run**. Os editores também contêm código de teste completo;
+**não edite o código de teste**, mas sinta-se livre para estudá-lo para aprender sobre testes.
 
 Se precisar de ajuda, expanda o menu suspenso **Solução para...** abaixo de cada DartPad
 para uma explicação e a resposta.

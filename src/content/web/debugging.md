@@ -1,8 +1,9 @@
 ---
-title: Debugging Dart web apps
-shortTitle: Debugging web apps
-breadcrumb: Debugging
-description: Learn how to debug your Dart web app.
+ia-translate: true
+title: "Depurando aplicações web Dart"
+shortTitle: Depurando aplicações web
+breadcrumb: Depuração
+description: "Aprenda como depurar sua aplicação web Dart."
 ---
 
 Você pode usar uma [IDE Dart][IDE], [Dart DevTools][Dart DevTools], e ferramentas do

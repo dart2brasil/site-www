@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: Solução de problemas do pub
-description: Problemas comuns que você pode encontrar ao usar o pub.
+title: "Solução de problemas do pub"
+description: "Problemas comuns que você pode encontrar ao usar o pub."
 ---
 
 ## Recebendo um erro "403" ao publicar um pacote {:#pub-publish-403}

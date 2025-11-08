@@ -1,38 +1,39 @@
 ---
+ia-translate: true
 title: undefined_identifier
 description: >-
-  Details about the undefined_identifier
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico undefined_identifier
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Undefined name '{0}'._
+_Nome indefinido '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it encounters an identifier that
-either isn't defined or isn't visible in the scope in which it's being
-referenced.
+O analisador produz este diagnóstico quando encontra um identificador que
+não está definido ou não está visível no escopo em que está sendo
+referenciado.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name `rihgt` isn't
-defined:
+O código a seguir produz este diagnóstico porque o nome `rihgt` não está
+definido:
 
 ```dart
 int min(int left, int right) => left <= [!rihgt!] ? left : right;
 ```
 
-## Common fixes
+## Correções comuns
 
-If the identifier isn't defined, then either define it or replace it with
-an identifier that is defined. The example above can be corrected by
-fixing the spelling of the variable:
+Se o identificador não está definido, então defina-o ou substitua-o por
+um identificador que esteja definido. O exemplo acima pode ser corrigido
+corrigindo a ortografia da variável:
 
 ```dart
 int min(int left, int right) => left <= right ? left : right;
 ```
 
-If the identifier is defined but isn't visible, then you probably need to
-add an import or re-arrange your code to make the identifier visible.
+Se o identificador está definido mas não está visível, então você provavelmente precisa
+adicionar um import ou reorganizar seu código para tornar o identificador visível.

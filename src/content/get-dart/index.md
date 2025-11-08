@@ -1,9 +1,10 @@
 ---
-title: Get the Dart SDK
-shortTitle: Get Dart
+ia-translate: true
+title: Obtenha o SDK do Dart
+shortTitle: Obtenha o Dart
 description: >-
-  Get the libraries and command-line tools that you need to develop
-  Dart web, command-line, and server apps.
+  Obtenha as bibliotecas e ferramentas de linha de comando necessárias para desenvolver
+  aplicativos Dart para web, linha de comando e servidor.
 channelList: [Stable, Beta, Dev]
 ---
 
@@ -11,11 +12,11 @@ Esta página descreve como baixar o SDK do Dart.
 O SDK do Dart inclui as bibliotecas e as ferramentas de linha de comando que
 você precisa para desenvolver aplicativos Dart para linha de comando, servidor e web.
 
-The Dart team supports only the latest stable release of the SDK.
-For full details on the SDK release lifecycle and supported versions,
-check out the [SDK support policy](/tools/sdk#support-policy).
+A equipe Dart suporta apenas o lançamento estável mais recente do SDK.
+Para detalhes completos sobre o ciclo de vida do lançamento do SDK e versões suportadas,
+consulte a [política de suporte do SDK](/tools/sdk#support-policy).
 
-To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
+Para saber mais sobre o SDK do Dart, consulte a [visão geral do SDK do Dart](/tools/sdk).
 
 :::tip
 Se você instalou ou planeja [instalar o SDK do Flutter][install-flutter], ele
@@ -52,7 +53,7 @@ para desenvolver e executar código Dart.
 [Debian stable]: https://www.debian.org/releases
 [Ubuntu LTS]: https://wiki.ubuntu.com/Releases
 
-## Choose an installation option
+## Escolha uma opção de instalação
 
 Para instalar e atualizar o SDK do Dart a partir do canal estável,
 escolha uma das seguintes opções:

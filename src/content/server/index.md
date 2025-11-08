@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Command-line and server apps
 shortTitle: CLI & server apps
 description: All things relating to command-line and server apps.

@@ -1,12 +1,12 @@
 ---
 ia-translate: true
-title: Introdução ao Dart
+title: "Introdução ao Dart"
 shortTitle: Básico do Dart
 breadcrumb: Language
-description: Uma breve introdução aos programas Dart e conceitos importantes.
+description: "Uma breve introdução aos programas Dart e conceitos importantes."
 nextpage:
   url: /language/variables
-  title: Variáveis
+  title: "Variáveis"
 ---
 
 Esta página fornece uma breve introdução à linguagem Dart

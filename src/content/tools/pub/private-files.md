@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: O que não commitar
+title: "O que não commitar"
 description: >-
   Suas ferramentas de desenvolvimento geram um monte de arquivos.
   Nem todos eles devem ser commitados.

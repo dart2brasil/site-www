@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: packed_annotation_alignment
 description: >-
-  Details about the packed_annotation_alignment
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico packed_annotation_alignment
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Only packing to 1, 2, 4, 8, and 16 bytes is supported._
+_Apenas packing para 1, 2, 4, 8, e 16 bytes é suportado._
 
 ## Description
 
-The analyzer produces this diagnostic when the argument to the `Packed`
-annotation isn't one of the allowed values: 1, 2, 4, 8, or 16.
+O analisador produz este diagnóstico quando o argumento para a anotação `Packed`
+não é um dos valores permitidos: 1, 2, 4, 8, ou 16.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because the argument to the
-`Packed` annotation (`3`) isn't one of the allowed values:
+O código a seguir produz este diagnóstico porque o argumento para a
+anotação `Packed` (`3`) não é um dos valores permitidos:
 
 ```dart
 import 'dart:ffi';
@@ -32,7 +33,7 @@ final class C extends Struct {
 
 ## Common fixes
 
-Change the alignment to be one of the allowed values:
+Altere o alinhamento para ser um dos valores permitidos:
 
 ```dart
 import 'dart:ffi';

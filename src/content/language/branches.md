@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Branches
-description: Aprenda como usar branches (ramificações) para controlar o fluxo do seu código Dart.
+description: "Aprenda como usar branches (ramificações) para controlar o fluxo do seu código Dart."
 prevpage:
   url: /language/loops
   title: Loops

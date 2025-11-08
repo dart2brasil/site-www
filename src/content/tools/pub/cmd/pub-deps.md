@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart pub deps
-description: Use dart pub deps para imprimir um gráfico de dependência para um pacote.
+description: "Use dart pub deps para imprimir um gráfico de dependência para um pacote."
 ---
 
 _Deps_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).

@@ -2,7 +2,7 @@
 ia-translate: true
 title: "Programação assíncrona: Streams"
 breadcrumb: Using streams
-description: Aprenda como consumir streams de inscrição única e de transmissão (broadcast).
+description: "Aprenda como consumir streams de inscrição única e de transmissão (broadcast)."
 ---
 
 :::secondary Qual é o objetivo?

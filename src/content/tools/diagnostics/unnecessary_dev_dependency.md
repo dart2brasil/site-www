@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: unnecessary_dev_dependency
 description: >-
-  Details about the unnecessary_dev_dependency
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico unnecessary_dev_dependency
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The dev dependency on {0} is unnecessary because there is also a normal dependency on that package._
+_A dependência dev em {0} é desnecessária porque também existe uma dependência normal nesse pacote._
 
 ## Description
 
-The analyzer produces this diagnostic when there's an entry under
-`dev_dependencies` for a package that is also listed under `dependencies`.
-The packages under `dependencies` are available to all of the code in the
-package, so there's no need to also list them under `dev_dependencies`.
+O analisador produz este diagnóstico quando há uma entrada em
+`dev_dependencies` para um pacote que também está listado em `dependencies`.
+Os pacotes em `dependencies` estão disponíveis para todo o código no
+pacote, então não há necessidade de também listá-los em `dev_dependencies`.
 
 ## Example
 
-The following code produces this diagnostic because the package `meta` is
-listed under both `dependencies` and `dev_dependencies`:
+O código a seguir produz este diagnóstico porque o pacote `meta` está
+listado tanto em `dependencies` quanto em `dev_dependencies`:
 
 ```yaml
 name: example
@@ -31,8 +32,8 @@ dev_dependencies:
 
 ## Common fixes
 
-Remove the entry under `dev_dependencies` (and the `dev_dependencies` key
-if that's the only package listed there):
+Remova a entrada em `dev_dependencies` (e a chave `dev_dependencies`
+se esse for o único pacote listado lá):
 
 ```yaml
 name: example

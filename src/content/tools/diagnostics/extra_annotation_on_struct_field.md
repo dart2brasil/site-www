@@ -1,26 +1,27 @@
 ---
+ia-translate: true
 title: extra_annotation_on_struct_field
 description: >-
-  Details about the extra_annotation_on_struct_field
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico extra_annotation_on_struct_field
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Fields in a struct class must have exactly one annotation indicating the native type._
+_Campos em uma classe struct devem ter exatamente uma anotação indicando o tipo nativo._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field in a subclass of
-`Struct` has more than one annotation describing the native type of the
-field.
+O analisador produz este diagnóstico quando um campo em uma subclasse de
+`Struct` tem mais de uma anotação descrevendo o tipo nativo do
+campo.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `x` has two
-annotations describing the native type of the field:
+O código a seguir produz este diagnóstico porque o campo `x` tem duas
+anotações descrevendo o tipo nativo do campo:
 
 ```dart
 import 'dart:ffi';
@@ -32,9 +33,9 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove all but one of the annotations:
+Remova todas as anotações exceto uma:
 
 ```dart
 import 'dart:ffi';

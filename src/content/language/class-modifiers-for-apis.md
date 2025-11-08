@@ -2,14 +2,14 @@
 ia-translate: true
 title: Modificadores de classe para mantenedores de API
 description: >-
- Como usar os modificadores de classe adicionados no Dart 3.0
- para tornar a API do seu pacote mais robusta e sustentável.
+  Como usar os modificadores de classe adicionados no Dart 3.0
+  para tornar a API do seu pacote mais robusta e sustentável.
 prevpage:
   url: /language/class-modifiers
   title: Modificadores de classe
 nextpage:
   url: /language/modifier-reference
-  title: Referência de modificadores de classe
+  title: "Referência de modificadores de classe"
 ---
 
 O Dart 3.0 adiciona alguns [novos modificadores][class modifiers]

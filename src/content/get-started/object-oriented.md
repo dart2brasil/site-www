@@ -1,10 +1,11 @@
 ---
-title: Object-oriented Dart programming
-shortTitle: Object oriented Dart
+ia-translate: true
+title: "Programação orientada a objetos em Dart"
+shortTitle: Dart orientado a objetos
 description: >-
-  Learn about object-oriented programming in Dart, including
-  abstract classes, inheritance, overrides, and enums.
-  Build a framework for well-architected CLI apps.
+  Aprenda sobre programação orientada a objetos em Dart, incluindo
+  classes abstract, herança, overrides e enums.
+  Construa um framework para aplicativos CLI bem arquitetados.
 sitemap: false
 noindex: true
 layout: learn
@@ -18,117 +19,117 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-In this chapter, you'll explore the power of object-oriented programming (OOP)
-in Dart. You'll learn how to create classes and define relationships between
-them, including **inheritance** and **abstract classes**. You'll also build a
-foundation for creating well-structured CLI applications.
+Neste capítulo, você explorará o poder da programação orientada a objetos (OOP)
+em Dart. Você aprenderá como criar classes e definir relacionamentos entre
+elas, incluindo **herança** e **classes abstract**. Você também construirá uma
+base para criar aplicativos CLI bem estruturados.
 
-:::secondary What you'll learn
+:::secondary O que você aprenderá
 
-* Understand `abstract` classes and their use cases.
-* Implement inheritance using the `extends` keyword and override methods.
-* Use `FutureOr` for functions that can return a value synchronously or
-  asynchronously.
-* Define and use `enum` types to represent a fixed set of values.
+* Entender classes `abstract` e seus casos de uso.
+* Implementar herança usando a keyword `extends` e fazer override de métodos.
+* Usar `FutureOr` para funções que podem retornar um valor de forma síncrona ou
+  assíncrona.
+* Definir e usar tipos `enum` para representar um conjunto fixo de valores.
 
 :::
 
-## Prerequisites
+## Pré-requisitos
 
-Before you begin this chapter, ensure you:
+Antes de começar este capítulo, certifique-se de:
 
-* Have completed Chapter 4 and have a working Dart development environment with
-  the `dartpedia` project.
-* Are familiar with basic programming concepts like
-  variables, functions, and control flow.
-* Understand the concepts of packages and libraries in Dart.
+* Ter completado o Capítulo 4 e ter um ambiente de desenvolvimento Dart funcional com
+  o projeto `dartpedia`.
+* Estar familiarizado com conceitos básicos de programação como
+  variáveis, funções e fluxo de controle.
+* Entender os conceitos de packages e libraries em Dart.
 
-## Tasks
+## Tarefas
 
-A command-line interface (CLI) is defined by the commands, options, and
-arguments a user can type into their terminal.
+Uma interface de linha de comando (CLI) é definida pelos comandos, opções e
+argumentos que um usuário pode digitar em seu terminal.
 
-By the end of this lesson, you will have built a framework that can
-understand a command like this:
+Ao final desta lição, você terá construído um framework que pode
+entender um comando como este:
 
 ```bash
 $ dartpedia help --verbose --command=search
 ```
 
-Here is a breakdown of each part:
+Aqui está um detalhamento de cada parte:
 
-* `dartpedia`: This is the **executable**, the name of your application.
-* `help`: This is a **command**, an action you want the application to perform.
-* `--verbose`: This is a **flag** (a type of option that doesn't take a value),
-  which modifies the command's behavior.
-* `--command=search`: This is an **option** that takes a value. Here, the
-  `option` is named `command`, and its value is `search`.
+* `dartpedia`: Este é o **executável**, o nome do seu aplicativo.
+* `help`: Este é um **comando**, uma ação que você deseja que o aplicativo execute.
+* `--verbose`: Este é uma **flag** (um tipo de opção que não recebe um valor),
+  que modifica o comportamento do comando.
+* `--command=search`: Esta é uma **opção** que recebe um valor. Aqui, a
+  `option` é chamada `command`, e seu valor é `search`.
 
-The classes and logic you build in the following tasks create the foundation for
-parsing and executing commands just like this one.
+As classes e a lógica que você construir nas tarefas a seguir criam a base para
+analisar e executar comandos exatamente como este.
 
-### Task 1: Define the argument hierarchy
+### Tarefa 1: Definir a hierarquia de argumentos
 
-First, you'll define an `Argument` class, an `Option` class, and a `Command`
-class, establishing an inheritance relationship.
+Primeiro, você definirá uma classe `Argument`, uma classe `Option` e uma
+classe `Command`, estabelecendo uma relação de herança.
 
-1.  Create the file `command_runner/lib/src/arguments.dart`. This file will
-    contain the definitions for your `Argument`, `Option`, `Command`, and
-    `ArgResults` classes.
+1.  Crie o arquivo `command_runner/lib/src/arguments.dart`. Este arquivo conterá
+    as definições para suas classes `Argument`, `Option`, `Command` e
+    `ArgResults`.
 
-2.  Define an `enum` called `OptionType`.
+2.  Defina um `enum` chamado `OptionType`.
 
     ```dart title="command_runner/lib/src/arguments.dart"
     enum OptionType { flag, option }
     ```
 
-    This `enum` represents the type of option, which can be either a **`flag`**
-    (a boolean option) or a regular **`option`** (an option that takes a value).
-    Enums are useful for representing a fixed set of possible values.
+    Este `enum` representa o tipo de opção, que pode ser uma **`flag`**
+    (uma opção booleana) ou uma **`option`** regular (uma opção que recebe um valor).
+    Enums são úteis para representar um conjunto fixo de valores possíveis.
 
-3.  Define an `abstract class` called `Argument`.
+3.  Defina uma `abstract class` chamada `Argument`.
 
-    Start by defining the basic structure of your `Argument` class. You'll
-    declare it as `abstract`, which means it serves as a blueprint that other
-    classes can extend, but it cannot be instantiated on its own.
+    Comece definindo a estrutura básica da sua classe `Argument`. Você a
+    declarará como `abstract`, o que significa que ela serve como um modelo que outras
+    classes podem estender, mas não pode ser instanciada sozinha.
 
-    Below the `enum` you just added, paste in the following code:
+    Abaixo do `enum` que você acabou de adicionar, cole o seguinte código:
 
     ```dart title="command_runner/lib/src/arguments.dart"
     // Paste this new class below the enum you added
     abstract class Argument {
       String get name;
       String? get help;
-    
+
       // In the case of flags, the default value is a bool
       // In other options and commands, the default value is String
       // NB: flags are just Option objects that don't take arguments
       Object? get defaultValue;
       String? get valueHelp;
-    
+
       String get usage;
     }
     ```
 
-    * **`name`** is a `String` that uniquely identifies the argument.
-    * **`help`** is an optional `String` that provides a description.
-    * **`defaultValue`** is of type `Object?` because it can be a `bool` (for
-      flags) or a `String`.
-    * **`valueHelp`** is an optional `String` to give a hint about the expected
-      value.
-    * The **`usage`** getter will provide a string showing how to use the
-      argument.
+    * **`name`** é uma `String` que identifica exclusivamente o argumento.
+    * **`help`** é uma `String` opcional que fornece uma descrição.
+    * **`defaultValue`** é do tipo `Object?` porque pode ser um `bool` (para
+      flags) ou uma `String`.
+    * **`valueHelp`** é uma `String` opcional para dar uma dica sobre o valor
+      esperado.
+    * O getter **`usage`** fornecerá uma string mostrando como usar o
+      argumento.
 
-    With the `Argument` class fully defined, you have a common interface for all
-    types of command-line arguments. Next, you'll build upon this by defining
-    `Option`, a specific type of argument that extends `Argument`.
+    Com a classe `Argument` totalmente definida, você tem uma interface comum para todos os
+    tipos de argumentos de linha de comando. Em seguida, você construirá sobre isso definindo
+    `Option`, um tipo específico de argumento que estende `Argument`.
 
-4.  Define a class called `Option` that `extends` `Argument`.
+4.  Defina uma classe chamada `Option` que `extends` `Argument`.
 
-    The `Option` class will represent command-line options like `--verbose` or
-    `--output=file.txt`. It will inherit from your `Argument` class.
+    A classe `Option` representará opções de linha de comando como `--verbose` ou
+    `--output=file.txt`. Ela herdará da sua classe `Argument`.
 
-    Add the following `Option` class to the bottom of your file:
+    Adicione a seguinte classe `Option` ao final do seu arquivo:
 
     ```dart title="command_runner/lib/src/arguments.dart"
     class Option extends Argument {
@@ -140,48 +141,48 @@ class, establishing an inheritance relationship.
         this.defaultValue,
         this.valueHelp,
       });
-    
+
       @override
       final String name;
-    
+
       final OptionType type;
-    
+
       @override
       final String? help;
-    
+
       final String? abbr;
-    
+
       @override
       final Object? defaultValue;
-    
+
       @override
       final String? valueHelp;
-    
+
       @override
       String get usage {
         if (abbr != null) {
           return '-$abbr,--$name: $help';
         }
-    
+
         return '--$name: $help';
       }
     }
     ```
 
-    The **`extends`** keyword establishes the inheritance relationship. The
-    constructor uses `@override` to provide concrete implementations for the
-    properties defined in `Argument`. It also adds `type` (using the
-    `OptionType` enum) and an optional `abbr` for a short-form of the option.
-    The `usage` getter is implemented to provide clear instructions to the user.
+    A keyword **`extends`** estabelece a relação de herança. O
+    construtor usa `@override` para fornecer implementações concretas para as
+    propriedades definidas em `Argument`. Ele também adiciona `type` (usando o
+    `enum` `OptionType`) e um `abbr` opcional para uma forma abreviada da opção.
+    O getter `usage` é implementado para fornecer instruções claras ao usuário.
 
-    With `Option` complete, you have a specialized type of argument. Next,
-    you'll define the `Command` class, another type of argument that will
-    represent the main actions a user can perform in your CLI application.
+    Com `Option` completa, você tem um tipo especializado de argumento. Em seguida,
+    você definirá a classe `Command`, outro tipo de argumento que
+    representará as ações principais que um usuário pode executar em seu aplicativo CLI.
 
-5.  Define an `abstract class` called `Command` that also `extends` `Argument`.
+5.  Defina uma `abstract class` chamada `Command` que também `extends` `Argument`.
 
-    The `Command` class will represent an executable action. Since it provides a
-    template for other commands to follow, you'll declare it as **`abstract`**.
+    A classe `Command` representará uma ação executável. Como ela fornece um
+    modelo para outros comandos seguirem, você a declarará como **`abstract`**.
 
     ```dart title="command_runner/lib/src/arguments.dart"
     // Add this class below the Option class
@@ -190,57 +191,57 @@ class, establishing an inheritance relationship.
     }
     ```
 
-    The **`abstract`** keyword means that `Command` cannot be instantiated
-    directly. It serves as a blueprint for other classes.
+    A keyword **`abstract`** significa que `Command` não pode ser instanciada
+    diretamente. Ela serve como um modelo para outras classes.
 
-    Now, add the core properties. A command needs a `name` and
-    `description`. It also needs a reference back to the `CommandRunner` that
-    executes it.
+    Agora, adicione as propriedades principais. Um comando precisa de um `name` e
+    `description`. Ele também precisa de uma referência de volta ao `CommandRunner` que
+    o executa.
 
     ```dart title="command_runner/lib/src/arguments.dart"
     abstract class Command extends Argument {
       @override
       String get name;
-    
+
       String get description;
-    
+
       bool get requiresArgument => false;
-    
+
       late CommandRunner runner;
-    
+
       @override
       String? help;
-    
+
       @override
       String? defaultValue;
-    
+
       @override
       String? valueHelp;
     }
     ```
 
-    The `runner` property is of type `CommandRunner`, which you will define
-    later in `command_runner_base.dart`. To make Dart aware of this class,
-    you must import its defining file. Add the following import to the top of
+    A propriedade `runner` é do tipo `CommandRunner`, que você definirá
+    posteriormente em `command_runner_base.dart`. Para tornar o Dart ciente desta classe,
+    você deve importar seu arquivo de definição. Adicione a seguinte importação ao topo de
     `command_runner/lib/src/arguments.dart`:
 
     ```dart
     import '../command_runner.dart';
     ```
 
-    Next, to give commands their own set of options, you'll use a private list
-    and expose a read-only, **unmodifiable view** of it. This uses the
-    `UnmodifiableSetView` class, which is part of Dart's core collection
-    library. To use it, you must import that library.
+    Em seguida, para dar aos comandos seu próprio conjunto de opções, você usará uma lista privada
+    e exporá uma visualização **não modificável** somente leitura dela. Isso usa a
+    classe `UnmodifiableSetView`, que faz parte da biblioteca de coleção principal
+    do Dart. Para usá-la, você deve importar essa biblioteca.
 
-    Update the imports at the top of your file to include `dart:collection`:
+    Atualize as importações no topo do seu arquivo para incluir `dart:collection`:
 
     ```dart
     import 'dart:collection'; // New import
     import '../command_runner.dart';
     ```
 
-    Now, add the `options` list and getter to your `Command` class:
+    Agora, adicione a lista `options` e o getter à sua classe `Command`:
 
     ```dart
     abstract class Command extends Argument {
@@ -253,14 +254,14 @@ class, establishing an inheritance relationship.
       // Add the following lines to the bottom of your Command class:
 
       final List<Option> _options = [];
-    
+
       UnmodifiableSetView<Option> get options =>
           UnmodifiableSetView(_options.toSet());
     }
     ```
 
-    To make adding options easier, we'll provide two helper methods, `addFlag`
-    and `addOption`.
+    Para facilitar a adição de opções, forneceremos dois métodos auxiliares, `addFlag`
+    e `addOption`.
 
     ```dart
     abstract class Command extends Argument {
@@ -268,7 +269,7 @@ class, establishing an inheritance relationship.
 
       UnmodifiableSetView<Option> get options =>
           UnmodifiableSetView(_options.toSet());
-    
+
 
       // Add the following lines to the bottom of your Command class:
 
@@ -285,7 +286,7 @@ class, establishing an inheritance relationship.
           ),
         );
       }
-    
+
       // An option is an [Option] that takes a value.
       void addOption(
         String name, {
@@ -308,14 +309,14 @@ class, establishing an inheritance relationship.
     }
     ```
 
-    Finally, every command must have logic to execute. The `run` method should
-    be flexible, allowing it to return a value either immediately
-    (synchronously) or after a delay (asynchronously). The `FutureOr<Object?>`
-    type from Dart's `async` library serves this purpose. This means the method
-    must return a value (of any type or `null`) either synchronously or
-    asynchronously. This is your final required import.
+    Finalmente, cada comando deve ter lógica para executar. O método `run` deve
+    ser flexível, permitindo retornar um valor imediatamente
+    (de forma síncrona) ou após um atraso (de forma assíncrona). O tipo `FutureOr<Object?>`
+    da biblioteca `async` do Dart atende a esse propósito. Isso significa que o método
+    deve retornar um valor (de qualquer tipo ou `null`) de forma síncrona ou
+    assíncrona. Esta é sua importação final necessária.
 
-    Update the imports at the top of your file to include `dart:async`:
+    Atualize as importações no topo do seu arquivo para incluir `dart:async`:
 
     ```dart
     import 'dart:async'; // New import
@@ -323,8 +324,8 @@ class, establishing an inheritance relationship.
     import '../command_runner.dart';
     ```
 
-    Now you can add the abstract `run` method and provide the `usage`
-    implementation to complete the `Command` class.
+    Agora você pode adicionar o método `run` abstrato e fornecer a implementação de `usage`
+    para completar a classe `Command`.
 
     ```dart
     abstract class Command extends Argument {
@@ -352,7 +353,7 @@ class, establishing an inheritance relationship.
 
       // Add the following lines to the bottom of your Command class:
       FutureOr<Object?> run(ArgResults args);
-    
+
       @override
       String get usage {
         return '$name:  $description';
@@ -360,16 +361,16 @@ class, establishing an inheritance relationship.
     }
     ```
 
-    * **`run(ArgResults args)`**: This abstract method is where a
-      command's logic resides. Concrete subclasses *must* implement it.
-    * **`usage`**: This getter provides a simple usage string,
-      combining the command's `name` and `description`.
+    * **`run(ArgResults args)`**: Este método abstrato é onde a
+      lógica de um comando reside. Subclasses concretas *devem* implementá-lo.
+    * **`usage`**: Este getter fornece uma string de uso simples,
+      combinando o `name` e `description` do comando.
 
-    The `Command` class now provides a robust foundation for all commands in
-    your CLI app. With the class hierarchy in place, you're ready to define
-    `ArgResults` to hold the parsed input.
+    A classe `Command` agora fornece uma base robusta para todos os comandos em
+    seu aplicativo CLI. Com a hierarquia de classes estabelecida, você está pronto para definir
+    `ArgResults` para conter a entrada analisada.
 
-6.  Define a class called `ArgResults`.
+6.  Defina uma classe chamada `ArgResults`.
 
     ```dart title="command_runner/lib/src/arguments.dart"
     // Add this class to the end of the file
@@ -377,7 +378,7 @@ class, establishing an inheritance relationship.
       Command? command;
       String? commandArg;
       Map<Option, Object?> options = {};
-    
+
       // Returns true if the flag exists.
       bool flag(String name) {
         // Only check flags, because we're sure that flags are booleans.
@@ -390,48 +391,48 @@ class, establishing an inheritance relationship.
         }
         return false;
       }
-    
+
       bool hasOption(String name) {
         return options.keys.any((option) => option.name == name);
       }
-    
+
       ({Option option, Object? input}) getOption(String name) {
         var mapEntry = options.entries.firstWhere(
           (entry) => entry.key.name == name || entry.key.abbr == name,
         );
-    
+
         return (option: mapEntry.key, input: mapEntry.value);
       }
     }
     ```
 
-    This class represents the results of parsing command-line arguments. It
-    holds the detected command, any argument to that command, and a map of
-    options. It also provides convenient helper methods like `flag`,
-    `hasOption`, and `getOption`.
+    Esta classe representa os resultados da análise de argumentos de linha de comando. Ela
+    contém o comando detectado, qualquer argumento para esse comando e um mapa de
+    opções. Ela também fornece métodos auxiliares convenientes como `flag`,
+    `hasOption` e `getOption`.
 
-    Now you have defined the basic structure for handling commands, arguments,
-    and options in your command-line application.
+    Agora você definiu a estrutura básica para lidar com comandos, argumentos e
+    opções em seu aplicativo de linha de comando.
 
-### Task 2: Update the CommandRunner class
+### Tarefa 2: Atualizar a classe CommandRunner
 
-Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
+Em seguida, atualize a classe `CommandRunner` para usar a nova hierarquia `Argument`.
 
-1.  Open the `command_runner/lib/src/command_runner_base.dart` file.
+1.  Abra o arquivo `command_runner/lib/src/command_runner_base.dart`.
 
-2.  Replace the existing `CommandRunner` class with the following:
+2.  Substitua a classe `CommandRunner` existente pelo seguinte:
 
     ```dart title="command_runner/lib/src/command_runner_base.dart"
     import 'dart:collection';
     import 'dart:io';
     import 'arguments.dart';
-    
+
     class CommandRunner {
       final Map<String, Command> _commands = <String, Command>{};
-    
+
       UnmodifiableSetView<Command> get commands =>
           UnmodifiableSetView<Command>(<Command>{..._commands.values});
-    
+
       Future<void> run(List<String> input) async {
         final ArgResults results = parse(input);
         if (results.command != null) {
@@ -439,19 +440,19 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
           print(output.toString());
         }
       }
-    
+
       void addCommand(Command command) {
         // TODO: handle error (Command's can't have names that conflict)
         _commands[command.name] = command;
         command.runner = this;
       }
-    
+
       ArgResults parse(List<String> input) {
         var results = ArgResults();
         results.command = _commands[input.first];
         return results;
       }
-    
+
       // Returns usage for the executable only.
       // Should be overridden if you aren't using [HelpCommand]
       // or another means of printing usage.
@@ -463,11 +464,11 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
     }
     ```
 
-    This updated `CommandRunner` class now uses the `Command` class from the
-    `Argument` hierarchy. It includes methods for adding commands, parsing
-    arguments, and running the appropriate command based on user input.
+    Esta classe `CommandRunner` atualizada agora usa a classe `Command` da
+    hierarquia `Argument`. Ela inclui métodos para adicionar comandos, analisar
+    argumentos e executar o comando apropriado com base na entrada do usuário.
 
-3.  Open `command_runner/lib/command_runner.dart`, and add the following
+3.  Abra `command_runner/lib/command_runner.dart`, e adicione os seguintes
     exports:
 
     ```dart title="command_runner/lib/command_runner.dart"
@@ -475,26 +476,25 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
     ///
     /// More dartdocs go here.
     library;
-    
+
     export 'src/arguments.dart';
     export 'src/command_runner_base.dart';
     export 'src/help_command.dart';
-    
+
     // TODO: Export any libraries intended for clients of this package.
     ```
 
-    This makes the `arguments.dart`, `command_runner_base.dart`, and
-    `help_command.dart` files available to other packages that depend on
+    Isso torna os arquivos `arguments.dart`, `command_runner_base.dart` e
+    `help_command.dart` disponíveis para outros packages que dependem do
     `command_runner`.
 
-### Task 3: Create a HelpCommand
+### Tarefa 3: Criar um HelpCommand
 
-Create a `HelpCommand` that extends the `Command` class and prints usage
-information.
+Crie um `HelpCommand` que estende a classe `Command` e imprime informações de uso.
 
-1.  Create the file `command_runner/lib/src/help_command.dart`.
+1.  Crie o arquivo `command_runner/lib/src/help_command.dart`.
 
-2.  Add the following code to `command_runner/lib/src/help_command.dart`:
+2.  Adicione o seguinte código a `command_runner/lib/src/help_command.dart`:
 
     ```dart title="command_runner/lib/src/help_command.dart"
     import 'dart:async';
@@ -527,107 +527,107 @@ information.
       }
       @override
       String get name => 'help';
-    
+
       @override
       String get description => 'Prints usage information to the command line.';
-    
+
       @override
       String? get help => 'Prints this usage information';
-    
+
       @override
       FutureOr<Object?> run(ArgResults args) async {
         var usage = runner.usage;
         for (var command in runner.commands) {
           usage += '\n ${command.usage}';
         }
-    
+
         return usage;
       }
     }
     ```
 
-    This `HelpCommand` class extends `Command` and implements the `run` method
-    to print usage information. It also uses the `addFlag` and `addOption`
-    methods to define its own options for controlling the output.
+    Esta classe `HelpCommand` estende `Command` e implementa o método `run`
+    para imprimir informações de uso. Ela também usa os métodos `addFlag` e `addOption`
+    para definir suas próprias opções para controlar a saída.
 
-### Task 4: Update cli.dart to use the new CommandRunner
+### Tarefa 4: Atualizar cli.dart para usar o novo CommandRunner
 
-Modify `cli/bin/cli.dart` to use the new `CommandRunner` and `HelpCommand`.
+Modifique `cli/bin/cli.dart` para usar o novo `CommandRunner` e `HelpCommand`.
 
-1.  Open the `cli/bin/cli.dart` file.
+1.  Abra o arquivo `cli/bin/cli.dart`.
 
-2.  Replace the existing code with the following:
+2.  Substitua o código existente pelo seguinte:
 
     ```dart title="cli/bin/cli.dart"
     import 'package:command_runner/command_runner.dart';
-    
+
     const version = '0.0.1';
-    
+
     void main(List<String> arguments) {
       var commandRunner = CommandRunner()..addCommand(HelpCommand());
       commandRunner.run(arguments);
     }
     ```
 
-    This code creates a `CommandRunner` instance, adds the `HelpCommand` to it
-    using method cascading (`..addCommand`), and then runs the command runner
-    with the command-line arguments.
+    Este código cria uma instância `CommandRunner`, adiciona o `HelpCommand` a ela
+    usando cascata de métodos (`..addCommand`), e então executa o command runner
+    com os argumentos de linha de comando.
 
-### Task 5: Run the application
+### Tarefa 5: Executar o aplicativo
 
-Test the new `CommandRunner` and `HelpCommand`.
+Teste o novo `CommandRunner` e `HelpCommand`.
 
-1.  Open your terminal and navigate to the `cli` directory.
+1.  Abra seu terminal e navegue até o diretório `cli`.
 
-2.  Run the command `dart run bin/cli.dart help`.
+2.  Execute o comando `dart run bin/cli.dart help`.
 
-    You should see the usage information printed to the console:
+    Você deve ver as informações de uso impressas no console:
 
     ```bash
     Usage: dart bin/cli.dart <command> [commandArg?] [...options?]
      help:  Prints usage information to the command line.
     ```
 
-    This confirms that the `CommandRunner` and `HelpCommand` are working
-    correctly.
+    Isso confirma que o `CommandRunner` e `HelpCommand` estão funcionando
+    corretamente.
 
-## Review
+## Revisão
 
-In this lesson, you learned about:
+Nesta lição, você aprendeu sobre:
 
-* Defining **`abstract`** classes to create a type hierarchy.
-* Implementing inheritance using the **`extends`** keyword.
-* Defining and using **`enum`** types to represent a fixed set of values.
-* Building a basic command-line argument parsing framework using OOP principles.
+* Definir classes **`abstract`** para criar uma hierarquia de tipos.
+* Implementar herança usando a keyword **`extends`**.
+* Definir e usar tipos **`enum`** para representar um conjunto fixo de valores.
+* Construir um framework básico de análise de argumentos de linha de comando usando princípios de OOP.
 
 ## Quiz
 
-**Question 1:** In the `Option` class, what is the purpose of the `@override`
-  notation?
+**Pergunta 1:** Na classe `Option`, qual é o propósito da
+  notação `@override`?
 
-* A) To create a new method that doesn't exist in the parent class.
-* B) To indicate that a method is optional.
-* C) To provide a specific implementation for a method or property defined in a
-  parent class.
-* D) To make a property private.
+* A) Para criar um novo método que não existe na classe pai.
+* B) Para indicar que um método é opcional.
+* C) Para fornecer uma implementação específica para um método ou propriedade definida em uma
+  classe pai.
+* D) Para tornar uma propriedade privada.
 
-**Question 2:** What is the difference between an `abstract` class and a regular
-class in Dart?
+**Pergunta 2:** Qual é a diferença entre uma classe `abstract` e uma classe
+regular em Dart?
 
-* A) An `abstract` class cannot have any methods.
-* B) An `abstract` class cannot be instantiated directly.
-* C) An `abstract` class can only have private methods.
-* D) There is no difference between an `abstract` class and a regular class.
+* A) Uma classe `abstract` não pode ter nenhum método.
+* B) Uma classe `abstract` não pode ser instanciada diretamente.
+* C) Uma classe `abstract` só pode ter métodos privados.
+* D) Não há diferença entre uma classe `abstract` e uma classe regular.
 
-**Question 3:** In the guide, what was the `enum OptionType` used for?
+**Pergunta 3:** No guia, para que foi usado o `enum OptionType`?
 
-* A) To define the different types of commands.
-* B) To represent a fixed set of option types: `flag` and `option`.
-* C) To store the default values for options.
-* D) To control the color of the command-line output.
+* A) Para definir os diferentes tipos de comandos.
+* B) Para representar um conjunto fixo de tipos de opção: `flag` e `option`.
+* C) Para armazenar os valores padrão para opções.
+* D) Para controlar a cor da saída da linha de comando.
 
-## Next lesson
+## Próxima lição
 
-In the next lesson, you'll learn how to handle errors and exceptions in your
-Dart code. You'll create a custom exception class and add error handling to your
-`CommandRunner` to make your application more robust.
+Na próxima lição, você aprenderá como lidar com erros e exceções em seu
+código Dart. Você criará uma classe de exceção personalizada e adicionará tratamento de erros ao seu
+`CommandRunner` para tornar seu aplicativo mais robusto.

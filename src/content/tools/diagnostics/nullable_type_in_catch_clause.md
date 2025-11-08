@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: nullable_type_in_catch_clause
 description: >-
-  Details about the nullable_type_in_catch_clause
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico nullable_type_in_catch_clause
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A potentially nullable type can't be used in an 'on' clause because it isn't valid to throw a nullable expression._
+_Um tipo potencialmente nulo não pode ser usado em uma cláusula 'on' porque não é válido lançar uma expressão nula._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type following `on` in a
-`catch` clause is a nullable type. It isn't valid to specify a nullable
-type because it isn't possible to catch `null` (because it's a runtime
-error to throw `null`).
+O analisador produz este diagnóstico quando o tipo seguindo `on` em uma
+cláusula `catch` é um tipo nulo. Não é válido especificar um tipo nulo
+porque não é possível capturar `null` (porque é um erro em tempo de execução
+lançar `null`).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the exception type is
-specified to allow `null` when `null` can't be thrown:
+O código a seguir produz este diagnóstico porque o tipo de exceção é
+especificado para permitir `null` quando `null` não pode ser lançado:
 
 ```dart
 void f() {
@@ -30,9 +31,9 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the question mark from the type:
+Remova o ponto de interrogação do tipo:
 
 ```dart
 void f() {

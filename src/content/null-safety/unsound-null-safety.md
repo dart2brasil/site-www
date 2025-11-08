@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Unsound null safety
 description: >-
   Mixing language versions lets you migrate to null safety at your own pace,

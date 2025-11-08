@@ -7,7 +7,7 @@ prevpage:
   title: Tipos built-in (embutidos)
 nextpage:
   url: /language/collections
-  title: Collections (Coleções)
+  title: "Collections (Coleções)"
 ---
 
 :::version-note

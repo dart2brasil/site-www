@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: non_generative_constructor
 description: >-
-  Details about the non_generative_constructor
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_generative_constructor
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The generative constructor '{0}' is expected, but a factory was found._
+_O construtor generativo '{0}' é esperado, mas um factory foi encontrado._
 
 ## Description
 
-The analyzer produces this diagnostic when the initializer list of a
-constructor invokes a constructor from the superclass, and the invoked
-constructor is a factory constructor. Only a generative constructor can be
-invoked in the initializer list.
+O analisador produz este diagnóstico quando a lista de inicializadores de um
+construtor invoca um construtor da superclasse, e o construtor invocado
+é um construtor factory. Apenas um construtor generativo pode ser
+invocado na lista de inicializadores.
 
 ## Example
 
-The following code produces this diagnostic because the invocation of the
-constructor `super.one()` is invoking a factory constructor:
+O código a seguir produz este diagnóstico porque a invocação do
+construtor `super.one()` está invocando um construtor factory:
 
 ```dart
 class A {
@@ -34,7 +35,7 @@ class B extends A {
 
 ## Common fixes
 
-Change the super invocation to invoke a generative constructor:
+Altere a invocação super para invocar um construtor generativo:
 
 ```dart
 class A {
@@ -47,5 +48,5 @@ class B extends A {
 }
 ```
 
-If the generative constructor is the unnamed constructor, and if there are
-no arguments being passed to it, then you can remove the super invocation.
+Se o construtor generativo é o construtor sem nome, e se não há
+argumentos sendo passados para ele, então você pode remover a invocação super.

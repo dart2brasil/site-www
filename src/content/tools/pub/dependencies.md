@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: Dependências de pacotes
+title: "Dependências de pacotes"
 breadcrumb: Dependências
 description: >-
   Adicione outros pacotes ao seu aplicativo.

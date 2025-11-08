@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: prefix_shadowed_by_local_declaration
 description: >-
-  Details about the prefix_shadowed_by_local_declaration
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico prefix_shadowed_by_local_declaration
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The prefix '{0}' can't be used here because it's shadowed by a local declaration._
+_O prefixo '{0}' não pode ser usado aqui porque está sombreado por uma declaração local._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an import prefix is used in a
-context where it isn't visible because it was shadowed by a local
-declaration.
+O analisador produz este diagnóstico quando um prefixo de import é usado em um
+contexto onde não está visível porque foi sombreado por uma
+declaração local.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the prefix `a` is
-being used to access the class `Future`, but isn't visible because it's
-shadowed by the parameter `a`:
+O código a seguir produz este diagnóstico porque o prefixo `a` está
+sendo usado para acessar a classe `Future`, mas não está visível porque está
+sombreado pelo parâmetro `a`:
 
 ```dart
 import 'dart:async' as a;
@@ -30,9 +31,9 @@ a.Future? f(int a) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Rename either the prefix:
+Renomeie o prefixo:
 
 ```dart
 import 'dart:async' as p;
@@ -43,7 +44,7 @@ p.Future? f(int a) {
 }
 ```
 
-Or rename the local variable:
+Ou renomeie a variável local:
 
 ```dart
 import 'dart:async' as a;

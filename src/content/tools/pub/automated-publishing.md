@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: Publicação automatizada de pacotes no pub.dev
+title: "Publicação automatizada de pacotes no pub.dev"
 shortTitle: Publicação automatizada
 description: Publique pacotes Dart no pub.dev diretamente do GitHub Actions.
 ---

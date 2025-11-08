@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart pub add
-description: Use dart pub add para adicionar uma dependência.
+description: "Use dart pub add para adicionar uma dependência."
 ---
 
 _Add_ (Adicionar) é um dos comandos da [ferramenta pub](/tools/pub/cmd).

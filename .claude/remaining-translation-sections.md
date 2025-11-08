@@ -211,10 +211,10 @@ PRIORITY: LOW
 
 ---
 
-## **SECTION 4: Diagnostics - Medium Volume Prefixes (~75 files)**
+## **SECTION 4: Diagnostics - Medium Volume Prefixes (✅ COMPLETED - 61 files)**
 
 ```
-Translate Section 4: Diagnostic Errors - Medium Volume Prefixes to PT-BR
+✅ COMPLETED - Translate Section 4: Diagnostic Errors - Medium Volume Prefixes to PT-BR
 
 AGENT LOCATION: `.claude/agents/dart-docs-translator.md`
 
@@ -322,14 +322,14 @@ PRIORITY: LOW (but final!)
 
 ## Summary Table
 
-| Section | Description | Est. Files | Priority |
-|---------|-------------|------------|----------|
-| 1 | Core Docs, Get Started, Resources, Tools, Null Safety, Server | ~61 | CRITICAL |
-| 2 | Interop & Web | ~14 | MEDIUM |
-| 3 | Diagnostics - High Volume Prefixes | ~100 | LOW |
-| 4 | Diagnostics - Medium Volume Prefixes | ~75 | LOW |
-| 5 | Diagnostics - All Remaining | ~61 | LOW |
-| **TOTAL** | **All Files** | **~311** | **Mixed** |
+| Section | Description | Est. Files | Priority | Status |
+|---------|-------------|------------|----------|--------|
+| 1 | Core Docs, Get Started, Resources, Tools, Null Safety, Server | ~61 | CRITICAL | ⬜ |
+| 2 | Interop & Web | ~14 | MEDIUM | ⬜ |
+| 3 | Diagnostics - High Volume Prefixes | ~100 | LOW | ⬜ |
+| 4 | Diagnostics - Medium Volume Prefixes | 61 | LOW | ✅ DONE |
+| 5 | Diagnostics - All Remaining | ~61 | LOW | ⬜ |
+| **TOTAL** | **All Files** | **~311** | **Mixed** | **1/5** |
 
 ---
 

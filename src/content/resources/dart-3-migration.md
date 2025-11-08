@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: Guia de migração do Dart 3
-description: Como migrar código Dart existente para ser compatível com o Dart 3.
+title: "Guia de migração do Dart 3"
+description: "Como migrar código Dart existente para ser compatível com o Dart 3."
 ---
 
 Dart 3 é um lançamento principal que introduz novos recursos essenciais ao Dart:

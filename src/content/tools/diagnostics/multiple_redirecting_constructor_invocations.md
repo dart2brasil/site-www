@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: multiple_redirecting_constructor_invocations
 description: >-
-  Details about the multiple_redirecting_constructor_invocations
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico multiple_redirecting_constructor_invocations
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Constructors can have only one 'this' redirection, at most._
+_Construtores podem ter apenas um redirecionamento 'this', no máximo._
 
 ## Description
 
-The analyzer produces this diagnostic when a constructor redirects to more
-than one other constructor in the same class (using `this`).
+O analisador produz este diagnóstico quando um construtor redireciona para mais
+de um outro construtor na mesma classe (usando `this`).
 
 ## Example
 
-The following code produces this diagnostic because the unnamed
-constructor in `C` is redirecting to both `this.a` and `this.b`:
+O código a seguir produz este diagnóstico porque o construtor
+sem nome em `C` está redirecionando para `this.a` e `this.b`:
 
 ```dart
 class C {
@@ -29,7 +30,7 @@ class C {
 
 ## Common fixes
 
-Remove all but one of the redirections:
+Remova todos, exceto um dos redirecionamentos:
 
 ```dart
 class C {

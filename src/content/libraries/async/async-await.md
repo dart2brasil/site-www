@@ -2,7 +2,7 @@
 ia-translate: true
 title: "Programação assíncrona: futures, async, await"
 shortTitle: Futures, async e await
-description: Aprenda e pratique escrever código assíncrono no DartPad!
+description: "Aprenda e pratique escrever código assíncrono no DartPad!"
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>

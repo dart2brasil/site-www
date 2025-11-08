@@ -1,9 +1,10 @@
 ---
-title: 'Java interop using package:jnigen'
+ia-translate: true
+title: 'Interoperabilidade com Java usando package:jnigen'
 shortTitle: Java interop
 breadcrumb: Java
 description: >-
-  To use Java in your Dart program, use package:jnigen.
+  Para usar Java em seu programa Dart, use package:jnigen.
 example: 'https://github.com/HosseinYousefi/jnigen_example/tree/main'
 ---
 
@@ -33,8 +34,8 @@ gere ligações para Kotlin também.
 
 ## Exemplo simples em Java {:#simple-java-example}
 
-This guide walks you through [an example]({{page.example}})
-that uses `package:jnigen` to generate bindings for a simple class.
+Este guia orienta você através de [um exemplo]({{page.example}})
+que usa `package:jnigen` para gerar bindings para uma classe simples.
 
 ### Pré-requisitos {:#prerequisites}
 
@@ -92,9 +93,9 @@ especifique o arquivo de configuração usando a opção `--config`:
 $ dart run jnigen --config jnigen.yaml
 ```
 
-In this example, this generates
-[`lib/example.dart`]({{page.example}}/lib/example.dart), just
-as you specified in `jnigen.yaml`.
+Neste exemplo, isso gera
+[`lib/example.dart`]({{page.example}}/lib/example.dart), exatamente
+como você especificou em `jnigen.yaml`.
 
 Este arquivo contém uma classe chamada `Example`,
 que possui um método estático chamado `sum`,
@@ -102,10 +103,10 @@ assim como o arquivo Java.
 
 ### Usando as ligações {:#use-the-bindings}
 
-Now you're ready to load and interact with the generated library.
-The example app, [`bin/sum.dart`]({{page.example}}/bin/sum.dart), gets 
-two numbers as arguments and prints their sum. 
-Using the `Example.sum` method is identical to Java.
+Agora você está pronto para carregar e interagir com a biblioteca gerada.
+O aplicativo de exemplo, [`bin/sum.dart`]({{page.example}}/bin/sum.dart), recebe
+dois números como argumentos e imprime sua soma.
+Usar o método `Example.sum` é idêntico ao Java.
 
 ```dart
 // a e b são argumentos inteiros

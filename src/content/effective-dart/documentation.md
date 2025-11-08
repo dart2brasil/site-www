@@ -2,7 +2,7 @@
 ia-translate: true
 title: "Effective Dart: Documentação"
 breadcrumb: Documentação
-description: Comentários e documentação claros e úteis.
+description: "Comentários e documentação claros e úteis."
 nextpage:
   url: /effective-dart/usage
   title: Uso

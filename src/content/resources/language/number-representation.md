@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Numbers in Dart
 breadcrumb: Numbers
 description: >-

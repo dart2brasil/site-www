@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: tighten_type_of_initializing_formals
 description: >-
-  Details about the tighten_type_of_initializing_formals
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico tighten_type_of_initializing_formals
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,18 +19,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a type annotation rather than 'assert' to enforce non-nullability._
+_Use uma anotação de tipo em vez de 'assert' para garantir non-nullability._
 
 ## Description
 
-The analyzer produces this diagnostic when an `assert` is being used in
-the initializer list of a constructor to ensure that only a non-`null`
-value is being used to initialize a field.
+O analisador produz este diagnóstico quando um `assert` está sendo usado na
+lista de inicialização de um construtor para garantir que apenas um valor
+não-`null` está sendo usado para inicializar um campo.
 
 ## Example
 
-The following code produces this diagnostic because an `assert` is being
-used to catch an error that could be caught by the type system:
+O código a seguir produz este diagnóstico porque um `assert` está sendo
+usado para capturar um erro que poderia ser capturado pelo sistema de tipos:
 
 ```dart
 class C {
@@ -41,8 +42,8 @@ class C {
 
 ## Common fixes
 
-Remove the `assert` and add the non-nullable type before the initializing
-formal:
+Remova o `assert` e adicione o tipo non-nullable antes do parâmetro de
+inicialização formal:
 
 ```dart
 class C {

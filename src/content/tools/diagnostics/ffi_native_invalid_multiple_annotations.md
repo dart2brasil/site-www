@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: ffi_native_invalid_multiple_annotations
 description: >-
-  Details about the ffi_native_invalid_multiple_annotations
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico ffi_native_invalid_multiple_annotations
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Native functions and fields must have exactly one `@Native` annotation._
+_Funções e campos nativos devem ter exatamente uma anotação `@Native`._
 
 ## Description
 
-The analyzer produces this diagnostic when there is more than one `Native`
-annotation on a single declaration.
+O analisador produz este diagnóstico quando há mais de uma anotação `Native`
+em uma única declaração.
 
 ## Example
 
-The following code produces this diagnostic because the function `f` has
-two `Native` annotations associated with it:
+O código a seguir produz este diagnóstico porque a função `f` tem
+duas anotações `Native` associadas a ela:
 
 ```dart
 import 'dart:ffi';
@@ -29,7 +30,7 @@ external int f(int v);
 
 ## Common fixes
 
-Remove all but one of the annotations:
+Remova todas as anotações, exceto uma:
 
 ```dart
 import 'dart:ffi';

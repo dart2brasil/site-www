@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: non_void_return_for_operator
 description: >-
-  Details about the non_void_return_for_operator
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_void_return_for_operator
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The return type of the operator []= must be 'void'._
+_O tipo de retorno do operador []= deve ser 'void'._
 
 ## Description
 
-The analyzer produces this diagnostic when a declaration of the operator
-`[]=` has a return type other than `void`.
+O analisador produz este diagnóstico quando uma declaração do operador
+`[]=` tem um tipo de retorno diferente de `void`.
 
 ## Example
 
-The following code produces this diagnostic because the declaration of the
-operator `[]=` has a return type of `int`:
+O código a seguir produz este diagnóstico porque a declaração do
+operador `[]=` tem um tipo de retorno de `int`:
 
 ```dart
 class C {
@@ -27,7 +28,7 @@ class C {
 
 ## Common fixes
 
-Change the return type to `void`:
+Altere o tipo de retorno para `void`:
 
 ```dart
 class C {

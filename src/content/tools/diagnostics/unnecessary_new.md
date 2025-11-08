@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: unnecessary_new
 description: >-
-  Details about the unnecessary_new
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico unnecessary_new
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary 'new' keyword._
+_Keyword 'new' desnecessária._
 
 ## Description
 
-The analyzer produces this diagnostic when the keyword `new` is used to
-invoke a constructor.
+O analisador produz este diagnóstico quando a keyword `new` é usada para
+invocar um construtor.
 
 ## Example
 
-The following code produces this diagnostic because the keyword `new` is
-used to invoke the unnamed constructor from `Object`:
+O código a seguir produz este diagnóstico porque a keyword `new` é
+usada para invocar o construtor sem nome de `Object`:
 
 ```dart
 var o = [!new!] Object();
@@ -36,7 +37,7 @@ var o = [!new!] Object();
 
 ## Common fixes
 
-Remove the keyword `new`:
+Remova a keyword `new`:
 
 ```dart
 var o = Object();

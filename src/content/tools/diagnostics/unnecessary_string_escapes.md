@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: unnecessary_string_escapes
 description: >-
-  Details about the unnecessary_string_escapes
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico unnecessary_string_escapes
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary escape in string literal._
+_Escape desnecessário em literal de string._
 
 ## Description
 
-The analyzer produces this diagnostic when characters in a string are
-escaped when escaping them is unnecessary.
+O analisador produz este diagnóstico quando caracteres em uma string são
+escapados quando escapá-los é desnecessário.
 
 ## Example
 
-The following code produces this diagnostic because single quotes don't
-need to be escaped inside strings delimited by double quotes:
+O código a seguir produz este diagnóstico porque aspas simples não
+precisam ser escapadas dentro de strings delimitadas por aspas duplas:
 
 ```dart
 var s = "Don[!\!]'t use a backslash here.";
@@ -36,7 +37,7 @@ var s = "Don[!\!]'t use a backslash here.";
 
 ## Common fixes
 
-Remove the unnecessary backslashes:
+Remova as barras invertidas desnecessárias:
 
 ```dart
 var s = "Don't use a backslash here.";

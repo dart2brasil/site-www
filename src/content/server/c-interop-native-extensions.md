@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Native extensions for the standalone Dart VM
 description: The original way for command-line Dart apps to call C/C++ functions.
 showToc: false

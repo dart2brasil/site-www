@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: duplicate_variable_pattern
 description: >-
-  Details about the duplicate_variable_pattern
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico duplicate_variable_pattern
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The variable '{0}' is already defined in this pattern._
+_A variável '{0}' já está definida neste pattern._
 
 ## Description
 
-The analyzer produces this diagnostic when a branch of a logical-and
-pattern declares a variable that is already declared in an earlier branch
-of the same pattern.
+O analisador produz este diagnóstico quando um branch de um logical-and
+pattern declara uma variável que já está declarada em um branch anterior
+do mesmo pattern.
 
 ## Example
 
-The following code produces this diagnostic because the variable `a` is
-declared in both branches of the logical-and pattern:
+O código a seguir produz este diagnóstico porque a variável `a` está
+declarada em ambos os branches do logical-and pattern:
 
 ```dart
 void f((int, int) r) {
@@ -30,8 +31,8 @@ void f((int, int) r) {
 
 ## Common fixes
 
-If you need to capture the matched value in multiple branches, then change
-the names of the variables so that they are unique:
+Se você precisa capturar o valor correspondente em múltiplos branches, então altere
+os nomes das variáveis para que sejam únicos:
 
 ```dart
 void f((int, int) r) {
@@ -41,8 +42,8 @@ void f((int, int) r) {
 }
 ```
 
-If you only need to capture the matched value on one branch, then remove
-the variable pattern from all but one branch:
+Se você só precisa capturar o valor correspondente em um branch, então remova
+o variable pattern de todos menos um branch:
 
 ```dart
 void f((int, int) r) {

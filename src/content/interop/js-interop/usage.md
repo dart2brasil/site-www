@@ -1,10 +1,11 @@
 ---
-title: JS interop usage
-breadcrumb: Usage
-description: How to declare and use JS interop members.
+ia-translate: true
+title: "Uso de interoperação JS"
+breadcrumb: Uso
+description: "Como declarar e usar membros de interoperação JS."
 prevpage:
   url: /interop/js-interop/
-  title: Interoperação JS
+  title: "Interoperação JS"
 nextpage:
   url: /interop/js-interop/js-types
   title: Tipos JS

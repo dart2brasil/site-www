@@ -6,7 +6,7 @@ shortTitle: Isolates
 lastVerified: 2024-01-04
 prevpage:
   url: /language/async
-  title: Suporte assíncrono
+  title: "Suporte assíncrono"
 nextpage:
   url: /null-safety
   title: Sound null safety

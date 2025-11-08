@@ -2,13 +2,13 @@
 ia-translate: true
 title: O sistema de tipos do Dart
 shortTitle: Sistema de tipos
-description: Por que e como escrever código Dart com tipagem sólida.
+description: "Por que e como escrever código Dart com tipagem sólida."
 prevpage:
   url: /language/typedefs
   title: Typedefs
 nextpage:
   url: /language/patterns
-  title: Padrões
+  title: "Padrões"
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt path-base="type_system"?>

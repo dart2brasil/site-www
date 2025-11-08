@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: Métodos
-description: Aprenda sobre métodos em Dart.
+title: "Métodos"
+description: "Aprenda sobre métodos em Dart."
 prevpage:
   url: /language/constructors
   title: Construtores

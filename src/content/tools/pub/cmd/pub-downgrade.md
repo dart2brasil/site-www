@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart pub downgrade
-description: Use dart pub downgrade para obter as versões mais baixas de todas as dependências usadas pela sua aplicação Dart.
+description: "Use dart pub downgrade para obter as versões mais baixas de todas as dependências usadas pela sua aplicação Dart."
 ---
 
 _Downgrade_ (rebaixar) é um dos comandos da [ferramenta pub](/tools/pub/cmd).

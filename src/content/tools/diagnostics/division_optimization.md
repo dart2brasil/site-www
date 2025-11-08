@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: division_optimization
 description: >-
-  Details about the division_optimization
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico division_optimization
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The operator x ~/ y is more efficient than (x / y).toInt()._
+_O operador x ~/ y é mais eficiente que (x / y).toInt()._
 
 ## Description
 
-The analyzer produces this diagnostic when the result of dividing two
-numbers is converted to an integer using `toInt`. Dart has a built-in
-integer division operator that is both more efficient and more concise.
+O analisador produz este diagnóstico quando o resultado de dividir dois
+números é convertido para um inteiro usando `toInt`. Dart tem um operador
+de divisão inteira embutido que é mais eficiente e mais conciso.
 
 ## Example
 
-The following code produces this diagnostic because the result of dividing
-`x` and `y` is converted to an integer using `toInt`:
+O código a seguir produz este diagnóstico porque o resultado de dividir
+`x` e `y` é convertido para um inteiro usando `toInt`:
 
 ```dart
 int divide(int x, int y) => [!(x / y).toInt()!];
@@ -26,7 +27,7 @@ int divide(int x, int y) => [!(x / y).toInt()!];
 
 ## Common fixes
 
-Use the integer division operator (`~/`):
+Use o operador de divisão inteira (`~/`):
 
 ```dart
 int divide(int x, int y) => x ~/ y;

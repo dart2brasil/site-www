@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart pub bump
-description: Use dart pub bump para aumentar o número da versão do pacote atual.
+description: "Use dart pub bump para aumentar o número da versão do pacote atual."
 ---
 
 _Bump_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).

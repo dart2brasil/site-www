@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Migrar para `package:web`
-description: Como migrar código de interoperabilidade web de dart:html para package:web.
+description: "Como migrar código de interoperabilidade web de dart:html para package:web."
 prevpage:
   url: /interop/js-interop/past-js-interop
   title: Past JS interop

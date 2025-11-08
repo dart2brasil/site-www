@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart compile
-description: Ferramenta de linha de comando para compilar código-fonte Dart.
+description: "Ferramenta de linha de comando para compilar código-fonte Dart."
 ---
 
 Este guia descreve como usar o comando `dart compile`

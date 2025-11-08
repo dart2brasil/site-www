@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Classes
-description: Resumo de classes, instâncias de classes e seus membros.
+description: "Resumo de classes, instâncias de classes e seus membros."
 prevpage:
   url: /language/error-handling
   title: Tratamento de erros

@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: Documentação Dart
+title: "Documentação Dart"
 description: Aprenda a usar a linguagem e as bibliotecas Dart.
 showToc: false
 showBreadcrumbs: false

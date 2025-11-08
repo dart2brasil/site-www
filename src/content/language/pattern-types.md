@@ -1,10 +1,10 @@
 ---
 ia-translate: true
-title: Tipos de padrões
-description: Referência de tipos de padrões em Dart.
+title: "Tipos de padrões"
+description: "Referência de tipos de padrões em Dart."
 prevpage:
   url: /language/patterns
-  title: Padrões
+  title: "Padrões"
 nextpage:
   url: /language/loops
   title: Loops

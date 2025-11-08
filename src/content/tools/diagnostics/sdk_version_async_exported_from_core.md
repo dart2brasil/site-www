@@ -1,51 +1,51 @@
 ---
+ia-translate: true
 title: sdk_version_async_exported_from_core
 description: >-
-  Details about the sdk_version_async_exported_from_core
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico sdk_version_async_exported_from_core
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' wasn't exported from 'dart:core' until version 2.1, but this code is required to be able to run on earlier versions._
+_A classe '{0}' não era exportada de 'dart:core' até a versão 2.1, mas este código é obrigado a ser capaz de rodar em versões anteriores._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when either the class `Future` or
-`Stream` is referenced in a library that doesn't import `dart:async` in
-code that has an SDK constraint whose lower bound is less than 2.1.0. In
-earlier versions, these classes weren't defined in `dart:core`, so the
-import was necessary.
+O analisador produz este diagnóstico quando a classe `Future` ou
+`Stream` é referenciada em uma biblioteca que não importa `dart:async` em
+código que tem uma restrição de SDK cuja limite inferior é menor que 2.1.0. Em
+versões anteriores, estas classes não eram definidas em `dart:core`, então a
+importação era necessária.
 
-## Example
+## Exemplo
 
-Here's an example of a pubspec that defines an SDK constraint with a lower
-bound of less than 2.1.0:
+Aqui está um exemplo de um pubspec que define uma restrição de SDK com um
+limite inferior menor que 2.1.0:
 
 ```yaml
 environment:
   sdk: '>=2.0.0 <2.4.0'
 ```
 
-In the package that has that pubspec, code like the following produces this
-diagnostic:
+No pacote que tem esse pubspec, código como o seguinte produz este diagnóstico:
 
 ```dart
 void f([!Future!] f) {}
 ```
 
-## Common fixes
+## Correções comuns
 
-If you don't need to support older versions of the SDK, then you can
-increase the SDK constraint to allow the classes to be referenced:
+Se você não precisa suportar versões antigas do SDK, então você pode aumentar
+a restrição de SDK para permitir que as classes sejam referenciadas:
 
 ```yaml
 environment:
   sdk: '>=2.1.0 <2.4.0'
 ```
 
-If you need to support older versions of the SDK, then import the
-`dart:async` library.
+Se você precisa suportar versões antigas do SDK, então importe a
+biblioteca `dart:async`.
 
 ```dart
 import 'dart:async';

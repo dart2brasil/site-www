@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: build_runner
-description: Uma ferramenta para construir, testar e executar código Dart.
+description: "Uma ferramenta para construir, testar e executar código Dart."
 ---
 
 O pacote [build_runner][] fornece comandos de propósito geral para

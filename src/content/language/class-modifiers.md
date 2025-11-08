@@ -5,7 +5,7 @@ description: >-
   Palavras-chave modificadoras para declarações de classe para controlar o acesso externo à biblioteca.
 prevpage:
   url: /language/callable-objects
-  title: Objetos invocáveis
+  title: "Objetos invocáveis"
 nextpage:
   url: /language/class-modifiers-for-apis
   title: Modificadores de classe para mantenedores de API
