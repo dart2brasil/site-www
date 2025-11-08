@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: set_element_type_not_assignable
-description: "Detalhes sobre o diagnóstico set_element_type_not_assignable produzido pelo analisador do Dart."
+description: >-
+  Details about the set_element_type_not_assignable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo do elemento '{0}' não pode ser atribuído ao tipo do set '{1}'._
+_The element type '{0}' can't be assigned to the set type '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um elemento em um set literal tem
-um tipo que não é atribuível ao tipo do elemento do set.
+The analyzer produces this diagnostic when an element in a set literal has
+a type that isn't assignable to the element type of the set.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o tipo do string
-literal `'0'` é `String`, que não é atribuível a `int`, o tipo do elemento
-do set:
+The following code produces this diagnostic because the type of the string
+literal `'0'` is `String`, which isn't assignable to `int`, the element
+type of the set:
 
 ```dart
 var s = <int>{[!'0'!]};
@@ -25,14 +26,14 @@ var s = <int>{[!'0'!]};
 
 ## Common fixes
 
-Se o tipo do elemento do set literal está errado, então altere o tipo do elemento
-do set:
+If the element type of the set literal is wrong, then change the element
+type of the set:
 
 ```dart
 var s = <String>{'0'};
 ```
 
-Se o tipo do elemento está errado, então altere o elemento:
+If the type of the element is wrong, then change the element:
 
 ```dart
 var s = <int>{'0'.length};

@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_raw_strings
-description: "Detalhes sobre o diagnóstico unnecessary_raw_strings produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_raw_strings
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário de uma string raw._
+_Unnecessary use of a raw string._
 
 ## Description
 
-O analisador produz este diagnóstico quando um literal de string é marcado como
-sendo raw (é prefixado com um `r`), mas tornar a string raw não
-altera o valor da string.
+The analyzer produces this diagnostic when a string literal is marked as
+being raw (is prefixed with an `r`), but making the string raw doesn't
+change the value of the string.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o literal de string
-terá o mesmo valor sem o `r` como tem com o `r`:
+The following code produces this diagnostic because the string literal
+will have the same value without the `r` as it does with the `r`:
 
 ```dart
 var s = [!r'abc'!];
@@ -36,7 +37,7 @@ var s = [!r'abc'!];
 
 ## Common fixes
 
-Remova o `r` na frente do literal de string:
+Remove the `r` in front of the string literal:
 
 ```dart
 var s = 'abc';

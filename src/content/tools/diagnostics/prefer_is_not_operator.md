@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_is_not_operator
-description: "Detalhes sobre o diagnóstico prefer_is_not_operator produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_is_not_operator
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use o operador 'is!' em vez de negar o valor do operador 'is'._
+_Use the 'is!' operator rather than negating the value of the 'is' operator._
 
 ## Description
 
-O analisador produz este diagnóstico quando o operador prefixo `!` é usado
-para negar o resultado de um teste `is`.
+The analyzer produces this diagnostic when the prefix `!` operator is used
+to negate the result of an `is` test.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o resultado de testar
-se `o` é uma `String` é negado usando o operador prefixo `!`:
+The following code produces this diagnostic because the result of testing
+to see whether `o` is a `String` is negated using the prefix `!` operator:
 
 ```dart
 String f(Object o) {
@@ -40,7 +41,7 @@ String f(Object o) {
 
 ## Common fixes
 
-Use o operador `is!` em vez disso:
+Use the `is!` operator instead:
 
 ```dart
 String f(Object o) {

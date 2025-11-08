@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: redirect_to_missing_constructor
-description: "Detalhes sobre o diagnóstico redirect_to_missing_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the redirect_to_missing_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O construtor '{0}' não pôde ser encontrado em '{1}'._
+_The constructor '{0}' couldn't be found in '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor redireciona para um
-construtor que não existe.
+The analyzer produces this diagnostic when a constructor redirects to a
+constructor that doesn't exist.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o factory
-constructor em `A` redireciona para um construtor em `B` que não existe:
+The following code produces this diagnostic because the factory
+constructor in `A` redirects to a constructor in `B` that doesn't exist:
 
 ```dart
 class A {
@@ -28,10 +29,10 @@ class B implements A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o construtor sendo redirecionado está correto, defina o
-construtor:
+If the constructor being redirected to is correct, then define the
+constructor:
 
 ```dart
 class A {
@@ -44,7 +45,7 @@ class B implements A {
 }
 ```
 
-Se um construtor diferente deveria ser invocado, atualize o redirecionamento:
+If a different constructor should be invoked, then update the redirect:
 
 ```dart
 class A {

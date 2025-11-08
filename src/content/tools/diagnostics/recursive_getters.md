@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: recursive_getters
-description: "Detalhes sobre o diagnóstico recursive_getters produzido pelo analisador Dart."
+description: >-
+  Details about the recursive_getters
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O getter '{0}' retorna recursivamente a si mesmo._
+_The getter '{0}' recursively returns itself._
 
 ## Description
 
-O analisador produz este diagnóstico quando um getter invoca a si mesmo,
-resultando em um loop infinito.
+The analyzer produces this diagnostic when a getter invokes itself,
+resulting in an infinite loop.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o getter `count`
-invoca a si mesmo:
+The following code produces this diagnostic because the getter `count`
+invokes itself:
 
 ```dart
 class C {
@@ -39,7 +40,7 @@ class C {
 
 ## Common fixes
 
-Altere o getter para não invocar a si mesmo:
+Change the getter to not invoke itself:
 
 ```dart
 class C {

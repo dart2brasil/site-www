@@ -1,22 +1,23 @@
 ---
 title: main_first_positional_parameter_type
-description: "Detalhes sobre o diagnóstico main_first_positional_parameter_type produzido pelo analisador Dart."
+description: >-
+  Details about the main_first_positional_parameter_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_O tipo do primeiro parameter positional da função 'main' deve ser um supertipo de 'List<String>'._
+_The type of the first positional parameter of the 'main' function must be a supertype of 'List<String>'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o primeiro parameter positional
-de uma função chamada `main` não é um supertipo de `List<String>`.
+The analyzer produces this diagnostic when the first positional parameter
+of a function named `main` isn't a supertype of `List<String>`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `List<int>` não é um
-supertipo de `List<String>`:
+The following code produces this diagnostic because `List<int>` isn't a
+supertype of `List<String>`:
 
 ```dart
 void main([!List<int>!] args) {}
@@ -24,14 +25,14 @@ void main([!List<int>!] args) {}
 
 ## Common fixes
 
-Se a função é um ponto de entrada, então altere o tipo do primeiro
-parameter positional para ser um supertipo de `List<String>`:
+If the function is an entry point, then change the type of the first
+positional parameter to be a supertype of `List<String>`:
 
 ```dart
 void main(List<String> args) {}
 ```
 
-Se a função não é um ponto de entrada, então altere o nome da função:
+If the function isn't an entry point, then change the name of the function:
 
 ```dart
 void f(List<int> args) {}

@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: extension_type_constructor_with_super_formal_parameter
-description: "Detalhes sobre o diagnóstico extension_type_constructor_with_super_formal_parameter produzido pelo analisador Dart."
+description: >-
+  Details about the extension_type_constructor_with_super_formal_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Construtores de extension type não podem declarar parâmetros formais super._
+_Extension type constructors can't declare super formal parameters._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor em um extension
-type tem um parâmetro super. Parâmetros super não são válidos porque
-extension types não têm uma superclasse.
+The analyzer produces this diagnostic when a constructor in an extension
+type has a super parameter. Super parameters aren't valid because
+extension types don't have a superclass.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o construtor nomeado
-`n` contém um parâmetro super:
+The following code produces this diagnostic because the named constructor
+`n` contains a super parameter:
 
 ```dart
 extension type E(int i) {
@@ -25,10 +26,10 @@ extension type E(int i) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você precisa do parâmetro, substitua o parâmetro super por um parâmetro
-normal:
+If you need the parameter, replace the super parameter with a normal
+parameter:
 
 ```dart
 extension type E(int i) {
@@ -36,7 +37,7 @@ extension type E(int i) {
 }
 ```
 
-Se você não precisa do parâmetro, remova o parâmetro super:
+If you don't need the parameter, remove the super parameter:
 
 ```dart
 extension type E(int i) {

@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unrelated_type_equality_checks
-description: "Detalhes sobre o diagnóstico unrelated_type_equality_checks produzido pelo analisador do Dart."
+description: >-
+  Details about the unrelated_type_equality_checks
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,33 +18,33 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O tipo do operando ('{0}') não é um subtipo ou um supertipo do valor sendo comparado ('{1}')._
+_The type of the operand ('{0}') isn't a subtype or a supertype of the value being matched ('{1}')._
 
-_O tipo do operando direito ('{0}') não é um subtipo ou um supertipo do operando esquerdo ('{1}')._
+_The type of the right operand ('{0}') isn't a subtype or a supertype of the left operand ('{1}')._
 
 ## Description
 
-O analisador produz este diagnóstico quando dois objetos estão sendo comparados
-e nenhum dos tipos estáticos dos dois objetos é um subtipo do
-outro.
+The analyzer produces this diagnostic when two objects are being compared
+and neither of the static types of the two objects is a subtype of the
+other.
 
-Tal comparação geralmente retornará `false` e pode não refletir a
-intenção do programador.
+Such a comparison will usually return `false` and might not reflect the
+programmer's intent.
 
-Pode haver falsos positivos. Por exemplo, uma classe chamada `Point` pode
-ter subclasses chamadas `CartesianPoint` e `PolarPoint`, nenhuma das quais
-é um subtipo da outra, mas ainda pode ser apropriado testar a
-igualdade das instâncias.
+There can be false positives. For example, a class named `Point` might
+have subclasses named `CartesianPoint` and `PolarPoint`, neither of which
+is a subtype of the other, but it might still be appropriate to test the
+equality of instances.
 
-Como um caso concreto, as classes `Int64` e `Int32` de `package:fixnum`
-permitem comparar instâncias a um `int` desde que o `int` esteja no
-lado direito. Este caso é especificamente permitido pelo diagnóstico, mas
-outros casos semelhantes não são.
+As a concrete case, the classes `Int64` and `Int32` from `package:fixnum`
+allow comparing instances to an `int` provided the `int` is on the
+right-hand side. This case is specifically allowed by the diagnostic, but
+other such cases are not.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o string `s` está
-sendo comparado ao inteiro `1`:
+The following code produces this diagnostic because the string `s` is
+being compared to the integer `1`:
 
 ```dart
 bool f(String s) {
@@ -53,8 +54,8 @@ bool f(String s) {
 
 ## Common fixes
 
-Substitua um dos operandos por algo compatível com o outro
-operando:
+Replace one of the operands with something compatible with the other
+operand:
 
 ```dart
 bool f(String s) {

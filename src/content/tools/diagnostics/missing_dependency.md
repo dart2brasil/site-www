@@ -1,24 +1,25 @@
 ---
 title: missing_dependency
-description: "Detalhes sobre o diagnóstico missing_dependency produzido pelo analisador Dart."
+description: >-
+  Details about the missing_dependency
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_Falta uma dependência no pacote importado '{0}'._
+_Missing a dependency on imported package '{0}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando há um pacote que foi
-importado no código-fonte mas não está listado como uma dependência do
-pacote que está importando.
+The analyzer produces this diagnostic when there's a package that has been
+imported in the source but is not listed as a dependency of the
+importing package.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o pacote `path` não
-está listado como uma dependência, enquanto há uma declaração de importação
-com o pacote `path` no código-fonte do pacote `example`:
+The following code produces this diagnostic because the package `path` is
+not listed as a dependency, while there is an import statement
+with package `path` in the source code of package `example`:
 
 ```yaml
 name: example
@@ -28,7 +29,7 @@ dependencies:
 
 ## Common fixes
 
-Adicione o pacote missing `path` ao campo `dependencies`:
+Add the missing package `path` to the `dependencies` field:
 
 ```yaml
 name: example

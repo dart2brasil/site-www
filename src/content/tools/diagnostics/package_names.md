@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: package_names
-description: "Detalhes sobre o diagnóstico package_names produzido pelo analisador do Dart."
+description: >-
+  Details about the package_names
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O nome do pacote '{0}' não é um identificador lower\_case\_with\_underscores._
+_The package name '{0}' isn't a lower\_case\_with\_underscores identifier._
 
 ## Description
 
-O analisador produz este diagnóstico quando o nome de um pacote não
-usa a convenção de nomenclatura lower_case_with_underscores.
+The analyzer produces this diagnostic when the name of a package doesn't
+use the lower_case_with_underscores naming convention.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o nome do
-pacote usa a convenção de nomenclatura lowerCamelCase:
+The following code produces this diagnostic because the name of the
+package uses the lowerCamelCase naming convention:
 
 ```yaml
 name: [!somePackage!]
@@ -35,8 +36,8 @@ name: [!somePackage!]
 
 ## Common fixes
 
-Reescreva o nome do pacote usando a convenção de nomenclatura
-lower_case_with_underscores:
+Rewrite the name of the package using the lower_case_with_underscores
+naming convention:
 
 ```yaml
 name: some_package

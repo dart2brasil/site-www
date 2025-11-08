@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: compound_implements_finalizable
-description: "Detalhes sobre o diagnóstico compound_implements_finalizable produzido pelo analisador do Dart."
+description: >-
+  Details about the compound_implements_finalizable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A classe '{0}' não pode implementar Finalizable._
+_The class '{0}' can't implement Finalizable._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma subclasse de `Struct`
-ou `Union` implementa `Finalizable`.
+The analyzer produces this diagnostic when a subclass of either `Struct`
+or `Union` implements `Finalizable`.
 
-Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a classe `S`
-implementa `Finalizable`:
+The following code produces this diagnostic because the class `S`
+implements `Finalizable`:
 
 ```dart
 import 'dart:ffi';
@@ -30,7 +31,7 @@ final class [!S!] extends Struct implements Finalizable {
 
 ## Common fixes
 
-Tente remover a cláusula implements da classe:
+Try removing the implements clause from the class:
 
 ```dart
 import 'dart:ffi';

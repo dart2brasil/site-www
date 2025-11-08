@@ -1,22 +1,23 @@
 ---
 title: break_label_on_switch_member
-description: "Detalhes sobre o diagnóstico break_label_on_switch_member produzido pelo analisador Dart."
+description: >-
+  Details about the break_label_on_switch_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_Um rótulo de break resolve para a instrução 'case' ou 'default'._
+_A break label resolves to the 'case' or 'default' statement._
 
 ## Description
 
-O analisador produz este diagnóstico quando um break em uma cláusula case dentro
-de uma instrução switch tem um rótulo que está associado a outra cláusula case.
+The analyzer produces this diagnostic when a break in a case clause inside
+a switch statement has a label that is associated with another case clause.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o rótulo `l` está
-associado à cláusula case para `0`:
+The following code produces this diagnostic because the label `l` is
+associated with the case clause for `0`:
 
 ```dart
 void f(int i) {
@@ -31,8 +32,8 @@ void f(int i) {
 
 ## Common fixes
 
-Se a intenção é transferir o controle para a instrução após o switch,
-então remova o rótulo da instrução break:
+If the intent is to transfer control to the statement after the switch,
+then remove the label from the break statement:
 
 ```dart
 void f(int i) {
@@ -45,8 +46,8 @@ void f(int i) {
 }
 ```
 
-Se a intenção é transferir o controle para um bloco case diferente, então use
-`continue` ao invés de `break`:
+If the intent is to transfer control to a different case block, then use
+`continue` rather than `break`:
 
 ```dart
 void f(int i) {

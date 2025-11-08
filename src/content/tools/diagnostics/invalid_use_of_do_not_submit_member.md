@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: invalid_use_of_do_not_submit_member
-description: "Detalhes sobre o diagnóstico invalid_use_of_do_not_submit_member produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_use_of_do_not_submit_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Usos de '{0}' não devem ser submetidos ao controle de versão._
+_Uses of '{0}' should not be submitted to source control._
 
 ## Description
 
-O analisador produz este diagnóstico quando um membro que está anotado com
-[`@doNotSubmit`][meta-doNotSubmit] é referenciado fora de uma declaração de membro
-que também está anotada com `@doNotSubmit`.
+The analyzer produces this diagnostic when a member that is annotated with
+[`@doNotSubmit`][meta-doNotSubmit] is referenced outside of a member
+declaration that is also annotated with `@doNotSubmit`.
 
 ## Example
 
-Dado um arquivo `a.dart` contendo a seguinte declaração:
+Given a file `a.dart` containing the following declaration:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -25,8 +26,8 @@ import 'package:meta/meta.dart';
 void emulateCrash() { /* ... */ }
 ```
 
-O código a seguir produz este diagnóstico porque a declaração está
-sendo referenciada fora de um membro que também está anotado com
+The following code produces this diagnostic because the declaration is
+being referenced outside of a member that is also annotated with
 `@doNotSubmit`:
 
 ```dart
@@ -39,11 +40,11 @@ void f() {
 
 ## Common fixes
 
-Mais comumente, quando completo os testes locais, a referência ao
-membro deve ser removida.
+Most commonly, when complete with local testing, the reference to the
+member should be removed.
 
-Se estiver construindo funcionalidade adicional sobre o membro, anote o
-membro recém-adicionado com `@doNotSubmit` também:
+If building additional functionality on top of the member, annotate the
+newly added member with `@doNotSubmit` as well:
 
 ```dart
 import 'package:meta/meta.dart';

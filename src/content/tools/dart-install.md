@@ -1,71 +1,70 @@
 ---
-ia-translate: true
 title: dart install
-description: Instale ferramentas CLI do Dart para uso global.
+description: Install Dart CLI tools for global use.
 ---
 
 :::version-note
-O suporte para `dart install` foi introduzido no Dart 3.10.
+Support for `dart install` was introduced in Dart 3.10.
 :::
 
-O comando `dart install` instala ferramentas CLI do Dart para uso global.
-É uma alternativa mais recente ao `dart pub global activate`.
+The `dart install` command installs Dart CLI tools for global use.
+It is a newer alternative to `dart pub global activate`.
 
-## Instalar um pacote
+## Install a package
 
-Existem algumas maneiras de instalar um pacote. Para saber mais,
-consulte as seções a seguir.
+There are a few ways to install a package. To learn more,
+see the following sections.
 
-### Instalar um pacote geral
+### Install a general package
 
-O comando a seguir instala todos os executables especificados na
-seção [executables][] do `pubspec.yaml` de um pacote no
+The following command installs all executables specified in
+a package's `pubspec.yaml` [executables][] section on the
 PATH.
 
 ```console
 $ dart install [arguments] <package> [version-constraint]
 ```
 
-Por exemplo:
+For example:
 
 ```console
 $ dart install markdown
 ```
 
-### Instalar um pacote do pub.dev
+### Install a pub.dev package
 
-O comando a seguir especifica um pacote no site pub.dev
-para instalar.
+The following command specifies a package on the pub.dev
+site to install.
 
 ```console
 $ dart install <pub.dev package>
 ```
 
-Por exemplo:
+For example:
 
 ```console
 $ dart install markdown
 ```
 
-### Instalar um pacote Git
+### Install a Git package
 
-Os comandos a seguir podem ser usados para instalar um pacote
-em um repositório Git.
+The following commands can both be used to install a package
+in a Git repository.
 
 ```console
 $ dart install <Git URL>
 ```
 
-O exemplo a seguir instala o pacote `async_await` do
+The following example installs the `async_await` package from
 [GitHub][]:
 
 ```console
 $ dart install https://github.com/dart-lang/async_await.git
 ```
 
-Pub espera encontrar o pacote na raiz do repositório Git.
-Para especificar um local diferente, use a opção `--git-path` com
-um caminho relativo à raiz do repositório:
+Pub expects to find the package in the root of the Git repository.
+To specify a different location, use the `--git-path` option with
+a path relative to the repository root:
 
 ```console
 $ dart install \
@@ -73,8 +72,8 @@ $ dart install \
   --git-path pkgs/http/
 ```
 
-Pub usa a branch padrão do repositório Git. Para especificar uma
-branch ou commit diferente, use a opção `--git-ref`:
+Pub uses the default branch of the Git repository. To specify a
+different branch or commit, use the `--git-ref` option:
 
 ```console
 $ dart install \
@@ -82,29 +81,29 @@ $ dart install \
   --git-ref 36f98e900347335af2338a0e087538009b7de2f9
 ```
 
-## Referência de comandos
+## Command reference
 
-Os comandos a seguir são úteis para instalar,
-desinstalar e verificar o estado de instalação de uma
-ferramenta CLI do Dart.
+The following commands are useful for installing,
+uninstalling, and checking the install state of a
+Dart CLI tool.
 
 ### dart install
 
-Instala um pacote para o Dart.
+Installs a package for Dart.
 
 ```console
 $ dart install [arguments] <package> [version-constraint]
 ```
 
-| Arguments              | Description                                                                                                           |
-| :--------------------- | :-------------------------------------------------------------------------------------------------------------------- |
-| **`--git-path`**       | Caminho do pacote git dentro do repositório. Isso se aplica apenas ao usar uma URL git para `<package>`.             |
-| **`--git-ref`**        | A branch ou commit git específico a ser recuperado. Isso se aplica apenas ao usar uma URL git para `<package>`.      |
-| **`--overwrite`**      | Permite sobrescrever executables de outros pacotes que tenham o mesmo nome.                                           |
-| **`-u, --hosted-url`** | Uma URL de servidor pub personalizada para o pacote. Isso se aplica apenas ao usar um nome de pacote para `<package>`.|
+| Arguments              | Description                                                                                            |
+| :--------------------- | :----------------------------------------------------------------------------------------------------- |
+| **`--git-path`**       | Path of the git package within the repository. This only applies when using a git URL for `<package>`. |
+| **`--git-ref`**        | The specific git branch or commit to retrieve. This only applies when using a git URL for `<package>`. |
+| **`--overwrite`**      | Allows overwriting executables from other packages that have the same name.                            |
+| **`-u, --hosted-url`** | A custom pub server URL for the package. This only applies when using a package name for `<package>`.  |
 
-No exemplo a seguir, o pacote markdown é instalado
-sem argumentos ou restrições de versão:
+In the following example, the markdown package is installed
+with no arguments or version constraints:
 
 ```console
 $ dart install markdown
@@ -112,13 +111,13 @@ $ dart install markdown
 
 ### dart uninstall
 
-Desinstala um pacote para o Dart.
+Uninstall a package for Dart.
 
 ```console
 $ dart uninstall <package>
 ```
 
-Por exemplo:
+For example:
 
 ```console
 $ dart uninstall markdown
@@ -126,23 +125,23 @@ $ dart uninstall markdown
 
 ### dart installed
 
-Verifica quais pacotes estão instalados
+Check which packages are installed
 
 ```console
 $ dart installed
 ```
 
-## Opções para o comando dart install
+## Options for the dart install command
 
-Essas opções podem ser usadas para o comando `dart install`.
-Para opções que se aplicam a todos os comandos pub, consulte
+These options can be use for the `dart install` command.
+For options that apply to all pub commands, see
 [Global options][].
 
 ### -h, --help
 
-Use a opção `-h` ou `--help` para obter ajuda para um comando específico.
-Por exemplo, os comandos a seguir produzem uma visão geral e lista
-de argumentos disponíveis para `dart install`:
+Use the `-h` or `--help` option to get help for a specific command.
+For example, the following commands produce an overview and list
+of arguments available to `dart install`:
 
 ```console
 $ dart install --help
@@ -154,14 +153,14 @@ $ dart install -h
 
 ### --git-path
 
-Use a opção `--git-path` para especificar o caminho do
-pacote no repositório Git.
+Use the `--git-path` option to specify the path of the
+package in the Git repository.
 
 ```console
 $ dart install --git-path <path>
 ```
 
-Por exemplo:
+For example:
 
 ```console
 $ dart install --git-path https://github.com/dart-lang/async_await.git
@@ -169,14 +168,14 @@ $ dart install --git-path https://github.com/dart-lang/async_await.git
 
 ### --git-ref
 
-Use a opção `--git-ref` para especificar a branch ou commit Git
-a ser recuperado.
+Use the `--git-ref` option to specify the Git branch or commit
+to be retrieved.
 
 ```console
 $ dart install --git-ref <ref>
 ```
 
-Por exemplo:
+For example:
 
 ```console
 $ dart install --git-ref tmpfixes
@@ -184,15 +183,15 @@ $ dart install --git-ref tmpfixes
 
 ### --overwrite
 
-Use a opção `--overwrite` para sobrescrever quaisquer
-executables globais previamente instalados com o mesmo nome. Se você não especificar
-esta flag, o executable pré-existente não será substituído.
+Use the `--overwrite` option to overwrite any previously
+installed global executables with the same name. If you don't specify
+this flag, the preexisting executable will not be replaced.
 
 ```console
 $ dart install <package> --overwrite
 ```
 
-Por exemplo:
+For example:
 
 ```console
 $ dart install markdown --overwrite
@@ -200,15 +199,15 @@ $ dart install markdown --overwrite
 
 ### --hosted-url
 
-Use a opção `--hosted-url` para especificar uma URL de servidor pub
-personalizada para o pacote. Isso se aplica apenas ao usar um nome de pacote
-para `<package>`.
+Use the `--hosted-url` option to specify a custom pub server
+URL for the package. This only applies when using a package name
+for `<package>`.
 
 ```console
 $ dart install --hosted-url <url>
 ```
 
-Por exemplo:
+For example:
 
 ```console
 $ dart install --hosted-url https://dart-packages.example.com/
@@ -216,22 +215,22 @@ $ dart install --hosted-url https://dart-packages.example.com/
 
 ### [version-constraint]
 
-Use a opção `version-constraint` para especificar uma versão específica
-do pacote.
+Use the `version-constraint` option to specify a specific version
+of the package.
 
 ```console
 $ dart install <package> [version-constraint]
 ```
 
-Por exemplo, o comando a seguir
-obtém a versão 0.6.0 do pacote `markdown`:
+For example, the following command
+pulls the 0.6.0 version of the `markdown` package:
 
 ```console
 $ dart install markdown 0.6.0
 ```
 
-Se você especificar um intervalo, pub escolhe a melhor versão que atende a essa
-restrição. Por exemplo:
+If you specify a range, pub picks the best version that meets that
+constraint. For example:
 
 ```console
 $ dart install foo <3.0.0

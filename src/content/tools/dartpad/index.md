@@ -1,115 +1,114 @@
 ---
-ia-translate: true
 title: DartPad
-description: A ferramenta que permite interagir interativamente com Dart em um navegador.
+description: The tool that lets you interactively play with Dart in a browser.
 ---
 
-DartPad é uma [ferramenta de código aberto]({{site.repo.dart.org}}/dart-pad)
-que permite que você interaja com a linguagem Dart em qualquer navegador moderno.
-Muitas páginas neste site—especialmente [tutoriais](/tutorials), têm
-[DartPads embutidos](#embedding).
-Para abrir o DartPad como uma página da web independente, visite
-o [site do DartPad (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
+DartPad is an [open source tool]({{site.repo.dart.org}}/dart-pad)
+that lets you play with the Dart language in any modern browser.
+Many pages in this site—especially [tutorials](/tutorials), have
+[embedded DartPads](#embedding).
+To open DartPad as a standalone web page, visit 
+the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
 :::tip
-Se você estiver na China, tente [dartpad.cn](https://dartpad.cn).
+If you're in China, try [dartpad.cn.](https://dartpad.cn)
 
-Se você tiver problemas ao usar o DartPad, consulte as
-[dicas de solução de problemas do DartPad](/tools/dartpad/troubleshoot).
+If you have issues using DartPad, check out the
+[DartPad troubleshooting tips](/tools/dartpad/troubleshoot).
 :::
 
-Veja como o DartPad se parece quando configurado para executar Dart:
+Here's what DartPad looks like when configured to run Dart:
 
 <img src="/assets/img/dartpad-hello.png" alt="Showcases what a Hello World app looks like in DartPad"/>
 
 
-## Suporte à biblioteca {:#library-support}
+## Library support
 
-O DartPad suporta as `dart:*` [bibliotecas principais](/libraries) marcadas
-como [multiplataforma][multi-platform].
-Ao escrever aplicativos Flutter, o DartPad também suporta
-as bibliotecas `package:flutter` e `dart:ui`.
+DartPad supports the `dart:*` [core libraries](/libraries) marked
+as [multi-platform][].
+When writing Flutter apps, DartPad also supports
+the `package:flutter` and `dart:ui` libraries.
 
-O DartPad não suporta [carregamento adiado][deferred loading]
-ou usar pacotes do repositório de pacotes [pub.dev]({{site.pub}})
-além dos [pacotes atualmente suportados][currently supported packages].
+DartPad doesn't support [deferred loading][] 
+or using packages from the [pub.dev]({{site.pub}}) package repository
+besides the [currently supported packages][].
 
 [multi-platform]: /libraries#multi-platform-libraries
 [currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
-## Começando {:#getting-started}
+## Getting started
 
-Para se familiarizar com o DartPad,
-tente executar alguns exemplos e criar um aplicativo simples de linha de comando.
-
-
-### Abrir o DartPad e executar um exemplo {:#step-1-open-and-run}
-
-1. Vá para [DartPad][DartPad]{:target="_blank" rel="noopener"}.
-
-   O código Dart aparece à esquerda, e
-   um local para a saída aparece à direita.
-
-2. Escolha um exemplo do Flutter como **Sunflower**,
-   usando o botão **Samples** no menu superior.
-
-   A saída renderizada aparece à direita.
+To get familiar with DartPad,
+try running some samples and creating a simple command-line app.
 
 
-### Criar um aplicativo de linha de comando {:#step-2-server}
+### Open DartPad and run a sample {:#step-1-open-and-run}
 
-Para criar um aplicativo simples de linha de comando,
-comece criando um novo snippet (trecho):
+1. Go to [DartPad][]{:target="_blank" rel="noopener"}.  
+   
+   Dart code appears on the left, and 
+   a place for the output appears on the right.
 
-1. Clique no botão **New** (Novo),
-   e confirme que você deseja descartar as alterações no pad (bloco) atual.
+2. Choose a Flutter sample such as **Sunflower**, 
+   using the **Samples** button in the top menu. 
+   
+   The rendered output appears to the right.
 
-2. Clique na entrada com o logo do Dart.
 
-3. Altere o código. Por exemplo, altere a função `main()`
-   para conter este código:
+### Create a command-line app {:#step-2-server}
+
+To create a simple command-line app,
+start by creating a new snippet:
+
+1. Click the **New** button,
+   and confirm that you want to discard changes to the current pad.
+
+2. Click the entry with the Dart logo.
+
+3. Change the code. For example, change the `main()` function
+   to contain this code:  
 
    ```dart
    for (final char in 'hello'.split('')) {
      print(char);
    }
-   ```
+   ``` 
+   
+   As you type, DartPad shows hints, documentation,
+   and autocomplete suggestions.
 
-   Enquanto você digita, o DartPad mostra dicas, documentação,
-   e sugestões de preenchimento automático.
+4. Click the **Format** button.  
+   
+   DartPad uses the [Dart formatter](/tools/dart-format)
+   to ensure that your code has proper indentation, white space,
+   and line wrapping.
 
-4. Clique no botão **Format** (Formatar).
+5. Run your app.
 
-   O DartPad usa o [formatador Dart](/tools/dart-format)
-   para garantir que seu código tenha indentação adequada, espaço em branco,
-   e quebra de linha.
+6. If you didn't happen to have any bugs while you were entering the code,
+   try introducing a bug.  
 
-5. Execute seu aplicativo.
-
-6. Se você não teve nenhum bug (erro) enquanto inseria o código,
-   tente introduzir um bug.
-
-   Por exemplo, se você mudar `split` para `spit`,
-   você obterá avisos na parte inferior direita da janela.
-   Se você executar o aplicativo, um erro de compilação aparecerá no console.
+   For example, if you change `split` to `spit`,
+   you get warnings at the bottom right of the window.
+   If you run the app, a compilation error appears in the console.
 
 
-## Verificando informações da versão do Dart {:#checking-dart-version-info}
+## Checking Dart version info
 
-Os recursos da linguagem e as APIs que o DartPad suporta dependem da
-versão do **Dart SDK** que o DartPad está usando no momento.
-Você pode encontrar esta versão do SDK na parte inferior direita do DartPad.
+The language features and APIs that DartPad supports depend on the
+**Dart SDK** version that DartPad is currently using.
+You can find this SDK version at the bottom right of DartPad.
 
-## Incorporando o DartPad em páginas da web {:#embedding}
+## Embedding DartPad in web pages {:#embedding}
 
-Você pode incorporar o DartPad dentro de páginas da web,
-personalizando-o para adequar ao seu caso de uso.
-Por exemplo, o [tutorial de futures][futures tutorial]
-contém vários DartPads incorporados
-rotulados como _examples_ (exemplos) e _exercises_ (exercícios).
+You can embed DartPad inside of web pages,
+customizing it to suit your use case.
+For example, the [futures tutorial][]
+contains multiple embedded DartPads
+labeled as _examples_ and _exercises_.
 
-Para detalhes técnicos sobre como incorporar DartPads, consulte o
-[guia de incorporação do DartPad.][DartPad embedding guide.]
+For technical details on embedding DartPads, see the
+[DartPad embedding guide.][]
 
 [DartPad]: {{site.dartpad}}
 [DartPad embedding guide.]: {{site.repo.dart.org}}/dart-pad/wiki/Embedding-Guide

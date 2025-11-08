@@ -1,21 +1,22 @@
 ---
-ia-translate: true
 title: import_of_legacy_library_into_null_safe
-description: "Detalhes sobre o diagnóstico import_of_legacy_library_into_null_safe produzido pelo analisador do Dart."
+description: >-
+  Details about the import_of_legacy_library_into_null_safe
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A biblioteca '{0}' é legada e não deve ser importada em uma biblioteca null safe._
+_The library '{0}' is legacy, and shouldn't be imported into a null safe library._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma biblioteca que é null safe
-importa uma biblioteca que não é null safe.
+The analyzer produces this diagnostic when a library that is null safe
+imports a library that isn't null safe.
 
 ## Example
 
-Dado um arquivo `a.dart` que contém o seguinte:
+Given a file `a.dart` that contains the following:
 
 ```dart
 // @dart = 2.9
@@ -23,8 +24,8 @@ Dado um arquivo `a.dart` que contém o seguinte:
 class A {}
 ```
 
-O código a seguir produz este diagnóstico porque uma biblioteca que é null
-safe está importando uma biblioteca que não é null safe:
+The following code produces this diagnostic because a library that null
+safe is importing a library that isn't null safe:
 
 ```dart
 import [!'a.dart'!];
@@ -34,9 +35,9 @@ A? f() => null;
 
 ## Common fixes
 
-Se você pode migrar a biblioteca importada para ser null safe, migre-a e
-atualize ou remova a versão da linguagem da biblioteca migrada.
+If you can migrate the imported library to be null safe, then migrate it
+and update or remove the migrated library's language version.
 
-Se você não pode migrar a biblioteca importada, então a biblioteca que está
-importando precisa ter uma versão da linguagem anterior à 2.12, quando null
-safety foi habilitado por padrão.
+If you can't migrate the imported library, then the importing library
+needs to have a language version that is before 2.12, when null safety was
+enabled by default.

@@ -1,50 +1,81 @@
 ---
-ia-translate: true
-title: "Configurando aplicativos com declarações de ambiente de compilação"
-description: Learn about using compilation environment declarations to customize application behavior.
+title: Configuring apps with compilation environment declarations
+description: >-
+  Learn about using compilation environment declarations 
+  to customize application behavior.
 showBreadcrumbs: false
 lastVerified: 2023-02-23
 ---
 
-Você pode especificar declarações de ambiente de compilação (compilation environment declarations) ao criar ou executar um aplicativo Dart.  As declarações de ambiente de compilação especificam opções de configuração como pares chave-valor que são acessados e avaliados em tempo de compilação.
+You can specify compilation environment declarations
+when building or running a Dart application.
+Compilation environment declarations specify
+configuration options as key-value pairs
+that are accessed and evaluated at compile time.
 
 :::note
-Esta página usa "ambiente" para se referir ao ambiente de compilação Dart. O uso comum do termo, em vez disso, refere-se ao ambiente do sistema operacional.
+This page uses "environment" to refer
+to the Dart compilation environment. 
+The common use of the term instead refers
+to the operating system environment.
 :::
 
-Seu aplicativo pode usar os valores das declarações de ambiente para alterar sua funcionalidade ou comportamento. Os compiladores Dart podem eliminar o código que se torna inacessível devido ao fluxo de controle usando os valores das declarações de ambiente.
+Your app can use the values of environment declarations
+to change its functionality or behavior.
+Dart compilers can eliminate the code made unreachable
+due to control flow using the environment declaration values.
 
-Você pode definir e usar declarações de ambiente para:
+You might define and use environment declarations to:
 
-* Adicionar funcionalidades durante a depuração, como habilitar logs.
-* Criar versões separadas (flavors) do seu aplicativo.
-* Configurar o comportamento do aplicativo, como a porta de um servidor HTTP.
-* Ativar um modo experimental do seu aplicativo para testes.
-* Alternar entre backends de teste e produção.
+* Add functionality during debugging, such as enabling logging.
+* Create separate flavors of your application.
+* Configure application behavior, such as the port of an HTTP server.
+* Enable an experimental mode of your application for testing.
+* Switch between testing and production backends.
 
-Para especificar uma declaração de ambiente ao executar ou compilar um aplicativo Dart, use a opção `--define` ou sua abreviação, `-D`. Especifique o par chave-valor da declaração usando o formato `<NAME>=<VALUE>`:
+To specify an environment declaration
+when running or compiling a Dart application,
+use the `--define` option or its abbreviation, `-D`.
+Specify the declaration key-value pair
+using a `<NAME>=<VALUE>` format:
 
 ```console
 $ dart run --define=DEBUG=true -DFLAVOR=free
 ```
 
-Para aprender como definir essas declarações com outras ferramentas, consulte a seção [especificando declarações de ambiente][] neste guia. Essa seção explica a sintaxe da declaração e como especificá-las na linha de comando e em IDEs e editores.
+To learn how to set these declarations with other tools, 
+check out the [specifying environment declarations][] section in this guide.
+That section explains the declaration syntax and
+how to specify them on the command line and in IDEs and editors.
 
 [`dart run`]: /tools/dart-run
 [`dart compile`]: /tools/dart-compile
-[especificando declarações de ambiente]: #especificando-declaracoes-de-ambiente
+[specifying environment declarations]: #specifying-environment-declarations
 
-## Acessando declarações de ambiente {:#acessando-declaracoes-de-ambiente}
+## Accessing environment declarations
 
-Para acessar os valores das declarações de ambiente especificadas, use um dos construtores `fromEnvironment` com `const` ou dentro de um contexto constante. Use [`bool.fromEnvironment`][bool-from] para valores `true` ou `false`, [`int.fromEnvironment`][int-from] para valores inteiros e [`String.fromEnvironment`][string-from] para qualquer outro valor.
+To access specified environment declaration values,
+use one of the `fromEnvironment` constructors
+with `const` or within a constant context.
+Use [`bool.fromEnvironment`][bool-from] for `true` or `false` values,
+[`int.fromEnvironment`][int-from] for integer values,
+and [`String.fromEnvironment`][string-from] for anything else.
 
 :::note
-Os construtores de declaração de ambiente só são garantidos para funcionar quando invocados como `const`. A maioria dos compiladores precisa ser capaz de avaliar seu valor em tempo de compilação.
+The environment declaration constructors are only guaranteed
+to work when invoked as `const`.
+Most compilers must be able to evaluate their value at compile time.
 :::
 
-Cada um dos construtores `fromEnvironment` exige o nome ou a chave da declaração de ambiente. Eles também aceitam um argumento nomeado `defaultValue` opcional para substituir o valor de retorno padrão. O valor padrão é usado quando uma declaração não é definida ou o valor especificado não pode ser analisado como o tipo esperado.
+Each of the `fromEnvironment` constructors require the
+name or key of the environment declaration.
+They also accept an optional `defaultValue` named argument
+to override the default fallback value.
+The default fallback value is used when a declaration isn't defined
+or the specified value cannot be parsed as the expected type.
 
-Por exemplo, se você quiser imprimir mensagens de log apenas quando a declaração de ambiente `DEBUG` estiver definida como `true`:
+For example, if you want to print log messages
+only when the environment declaration `DEBUG` is set to `true`:
 
 <?code-excerpt "misc/lib/development/environment_declarations.dart (debug-log)"?>
 ```dart
@@ -57,9 +88,16 @@ void log(String message) {
 }
 ```
 
-Neste trecho, se `DEBUG` estiver definido como `false` durante a compilação ou não especificado, os compiladores de produção podem remover completamente a condição e seu corpo.
+In this snippet, if `DEBUG` is set to `false`
+during compilation, or not specified at all,
+production compilers can completely remove the condition and its body.
 
-Os construtores `fromEnvironment` retornam um valor padrão quando a declaração não é especificada ou o valor especificado não pode ser analisado. Portanto, para verificar especificamente se uma declaração de ambiente foi especificada, use o construtor [`bool.hasEnvironment`][bool-has]:
+The `fromEnvironment` constructors fallback to 
+a default value when the declaration isn't specified or
+the specified value cannot be parsed.
+Therefore, to specifically check whether
+an environment declaration has been specified,
+use the [`bool.hasEnvironment`][bool-has] constructor:
 
 <?code-excerpt "misc/lib/development/environment_declarations.dart (has-debug)"?>
 ```dart
@@ -73,17 +111,23 @@ if (const bool.hasEnvironment('DEBUG')) {
 [bool-from]: {{site.dart-api}}/dart-core/bool/bool.fromEnvironment.html
 [bool-has]: {{site.dart-api}}/dart-core/bool/bool.hasEnvironment.html
 
-## Especificando declarações de ambiente {:#especificando-declaracoes-de-ambiente}
+## Specifying environment declarations
 
 :::warning
-As ferramentas e compiladores Dart atualmente não manipulam consistentemente declarações de ambiente com valores separados por vírgula. Para acompanhar a padronização desse tratamento, consulte a [issue 44995 do SDK][].
+Dart tools and compilers currently do not
+consistently handle environment declarations
+with comma-separated values.
+To track standardization of this handling,
+reference [SDK issue 44995][].
 :::
 
-[issue 44995 do SDK]: {{site.repo.dart.sdk}}/issues/44995
+[SDK issue 44995]: {{site.repo.dart.sdk}}/issues/44995
 
-### Dart CLI {:#dart-cli}
+### Dart CLI
 
-Tanto `dart run` quanto os subcomandos `dart compile` aceitam qualquer número de opções `-D` ou `--define` para especificar valores de declaração de ambiente.
+Both `dart run` and the `dart compile` subcommands accept
+any number of the `-D` or `--define` options
+to specify environment declaration values.
 
 ```console
 $ dart run --define=DEBUG=true -DFLAVOR=free main.dart
@@ -94,16 +138,18 @@ $ dart compile jit-snapshot --define=DEBUG=true -DFLAVOR=free main.dart
 $ dart compile kernel --define=DEBUG=true -DFLAVOR=free main.dart
 ```
 
-#### `webdev` {:#webdev}
+#### `webdev`
 
-Para saber mais sobre como configurar o `webdev` para passar declarações de ambiente para os compiladores web de desenvolvimento e produção, consulte a [documentação de configuração do `webdev`][webdev-config].
+To learn about configuring `webdev` to pass environment declarations
+to both the development and production web compilers,
+check out [the `webdev` configuration documentation][webdev-config].
 
 [webdev-config]: {{site.pub-pkg}}/build_web_compilers#configuring--d-environment-variables
 
-### Visual Studio Code {:#visual-studio-code}
+### Visual Studio Code
 
-Na sua configuração de inicialização (`launch.json`) em `configurations`,
-adicione uma nova chave `toolArgs` contendo as declarações de ambiente desejadas:
+In your launch configuration (`launch.json`) under `configurations`,
+add a new `toolArgs` key containing your desired environment declarations:
 
 ```json
 "configurations": [
@@ -118,23 +164,27 @@ adicione uma nova chave `toolArgs` contendo as declarações de ambiente desejad
 ]
 ```
 
-Para saber mais, consulte a documentação sobre [configurações de inicialização do VS Code.][VSC instructions]
+To learn more, check out the documentation for
+[VS Code launch configurations.][VSC instructions]
 
 [VSC instructions]: https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
 
-### IDEs JetBrains {:#jetbrains-ides}
+### JetBrains IDEs
 
-Nas **Configurações de Execução/Depuração** do seu projeto, adicione as declarações de ambiente desejadas às **Opções de VM**:
+In the **Run/Debug Configurations** for your project,
+add your desired environment declarations to **VM options**:
 
-![Adicionando a opção define ao IDE Jetbrains](/assets/img/env-decl-jetbrains.png){:width="500"}
+![Adding define option to Jetbrains IDE](/assets/img/env-decl-jetbrains.png){:width="500"}
 
-Para saber mais, consulte a documentação da JetBrains sobre [Configurações de Execução/Depuração do Dart][jetbrains-run-debug].
+To learn more, check out JetBrains' documentation for
+[Dart Run/Debug Configurations][jetbrains-run-debug].
 
 [jetbrains-run-debug]: https://www.jetbrains.com/help/webstorm/run-debug-configuration-dart-command-line-application.html
 
-### Flutter {:#flutter}
+### Flutter
 
-Para especificar declarações de ambiente para a ferramenta Flutter, use a opção `--dart-define`:
+To specify environment declarations to the Flutter tool,
+use the `--dart-define` option instead:
 
 ```console
 $ flutter run --dart-define=DEBUG=true
@@ -142,6 +192,5 @@ $ flutter run --dart-define=DEBUG=true
 
 {%- comment %}
   TODO: Once Flutter adds `--dart-define` documentation:
-  Para saber mais, consulte a documentação do Flutter sobre `--dart-define`.
+  To learn more, check out Flutter's documentation on `--dart-define`.
 {% endcomment -%}
-

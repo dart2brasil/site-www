@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: collection_methods_unrelated_type
-description: "Detalhes sobre o diagnóstico collection_methods_unrelated_type produzido pelo analisador do Dart."
+description: >-
+  Details about the collection_methods_unrelated_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,31 +18,31 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O tipo do argumento '{0}' não está relacionado a '{1}'._
+_The argument type '{0}' isn't related to '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando qualquer um dos vários métodos nas
-bibliotecas principais são invocados com argumentos de um tipo inadequado.
-Esses métodos são aqueles que não fornecem um tipo específico o suficiente para o
-parâmetro para permitir que a verificação de tipo normal detecte o erro.
+The analyzer produces this diagnostic when any one of several methods in
+the core libraries are invoked with arguments of an inappropriate type.
+These methods are ones that don't provide a specific enough type for the
+parameter to allow the normal type checking to catch the error.
 
-Os argumentos que são verificados são:
-- um argumento para `Iterable<E>.contains` deve estar relacionado a `E`
-- um argumento para `List<E>.remove` deve estar relacionado a `E`
-- um argumento para `Map<K, V>.containsKey` deve estar relacionado a `K`
-- um argumento para `Map<K, V>.containsValue` deve estar relacionado a `V`
-- um argumento para `Map<K, V>.remove` deve estar relacionado a `K`
-- um argumento para `Map<K, V>.[]` deve estar relacionado a `K`
-- um argumento para `Queue<E>.remove` deve estar relacionado a `E`
-- um argumento para `Set<E>.lookup` deve estar relacionado a `E`
-- um argumento para `Set<E>.remove` deve estar relacionado a `E`
+The arguments that are checked are:
+- an argument to `Iterable<E>.contains` should be related to `E`
+- an argument to `List<E>.remove` should be related to `E`
+- an argument to `Map<K, V>.containsKey` should be related to `K`
+- an argument to `Map<K, V>.containsValue` should be related to `V`
+- an argument to `Map<K, V>.remove` should be related to `K`
+- an argument to `Map<K, V>.[]` should be related to `K`
+- an argument to `Queue<E>.remove` should be related to `E`
+- an argument to `Set<E>.lookup` should be related to `E`
+- an argument to `Set<E>.remove` should be related to `E`
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o argumento para
-`contains` é uma `String`, que não é atribuível a `int`, o tipo de elemento
-da list `l`:
+The following code produces this diagnostic because the argument to
+`contains` is a `String`, which isn't assignable to `int`, the element
+type of the list `l`:
 
 ```dart
 bool f(List<int> l)  => l.contains([!'1'!]);
@@ -49,14 +50,14 @@ bool f(List<int> l)  => l.contains([!'1'!]);
 
 ## Common fixes
 
-Se o tipo do elemento está correto, então altere o argumento para ter o mesmo
-tipo:
+If the element type is correct, then change the argument to have the same
+type:
 
 ```dart
 bool f(List<int> l)  => l.contains(1);
 ```
 
-Se o tipo do argumento está correto, então altere o tipo do elemento:
+If the argument type is correct, then change the element type:
 
 ```dart
 bool f(List<String> l)  => l.contains('1');

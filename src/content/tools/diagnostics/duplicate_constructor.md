@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: duplicate_constructor
-description: "Detalhes sobre o diagnóstico duplicate_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the duplicate_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O construtor com nome '{0}' já está definido._
+_The constructor with name '{0}' is already defined._
 
-_O construtor sem nome já está definido._
+_The unnamed constructor is already defined._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma classe declara mais de um
-construtor sem nome ou quando declara mais de um construtor com o
-mesmo nome.
+The analyzer produces this diagnostic when a class declares more than one
+unnamed constructor or when it declares more than one constructor with the
+same name.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque há duas
-declarações para o construtor sem nome:
+The following code produces this diagnostic because there are two
+declarations for the unnamed constructor:
 
 ```dart
 class C {
@@ -29,8 +30,8 @@ class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque há duas
-declarações para o construtor nomeado `m`:
+The following code produces this diagnostic because there are two
+declarations for the constructor named `m`:
 
 ```dart
 class C {
@@ -42,8 +43,8 @@ class C {
 
 ## Common fixes
 
-Se há múltiplos construtores sem nome e todos os construtores são
-necessários, então dê a todos eles, ou a todos exceto um deles, um nome:
+If there are multiple unnamed constructors and all of the constructors are
+needed, then give all of them, or all except one of them, a name:
 
 ```dart
 class C {
@@ -53,8 +54,8 @@ class C {
 }
 ```
 
-Se há múltiplos construtores sem nome e todos exceto um deles são
-desnecessários, então remova os construtores que não são necessários:
+If there are multiple unnamed constructors and all except one of them are
+unneeded, then remove the constructors that aren't needed:
 
 ```dart
 class C {
@@ -62,8 +63,8 @@ class C {
 }
 ```
 
-Se há múltiplos construtores nomeados e todos os construtores são
-necessários, então renomeie todos exceto um deles:
+If there are multiple named constructors and all of the constructors are
+needed, then rename all except one of them:
 
 ```dart
 class C {
@@ -73,8 +74,8 @@ class C {
 }
 ```
 
-Se há múltiplos construtores nomeados e todos exceto um deles são
-desnecessários, então remova os construtores que não são necessários:
+If there are multiple named constructors and all except one of them are
+unneeded, then remove the constructors that aren't needed:
 
 ```dart
 class C {

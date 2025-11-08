@@ -1,23 +1,23 @@
 ---
-ia-translate: true
 title: mixin_of_non_class
-description: "Detalhes sobre o diagnóstico mixin_of_non_class produzido pelo analisador Dart."
+description: >-
+  Details about the mixin_of_non_class
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_Classes só podem misturar mixins e classes._
+_Classes can only mix in mixins and classes._
 
 ## Description
 
-O analisador produz este diagnóstico quando um nome em uma cláusula `with` é
-definido como algo diferente de um mixin ou uma classe.
+The analyzer produces this diagnostic when a name in a `with` clause is
+defined to be something other than a mixin or a class.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `F` é definido como um
-tipo de função:
+The following code produces this diagnostic because `F` is defined to be a
+function type:
 
 ```dart
 typedef F = int Function(String);
@@ -27,8 +27,8 @@ class C with [!F!] {}
 
 ## Common fixes
 
-Remova o nome inválido da lista, possivelmente substituindo-o pelo nome
-do mixin ou classe pretendido:
+Remove the invalid name from the list, possibly replacing it with the name
+of the intended mixin or class:
 
 ```dart
 typedef F = int Function(String);

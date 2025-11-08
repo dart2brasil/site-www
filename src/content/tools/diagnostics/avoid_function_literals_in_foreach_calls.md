@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: avoid_function_literals_in_foreach_calls
-description: "Detalhes sobre o diagnóstico avoid_function_literals_in_foreach_calls produzido pelo analisador do Dart."
+description: >-
+  Details about the avoid_function_literals_in_foreach_calls
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Literais de função não devem ser passados para 'forEach'._
+_Function literals shouldn't be passed to 'forEach'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o argumento para
-`Iterable.forEach` é uma closure.
+The analyzer produces this diagnostic when the argument to
+`Iterable.forEach` is a closure.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o argumento para a
-invocação de `forEach` é uma closure:
+The following code produces this diagnostic because the argument to the
+invocation of `forEach` is a closure:
 
 ```dart
 void f(Iterable<String> s) {
@@ -37,7 +38,7 @@ void f(Iterable<String> s) {
 
 ## Common fixes
 
-Se a closure pode ser substituída por um tear-off, então substitua a closure:
+If the closure can be replaced by a tear-off, then replace the closure:
 
 ```dart
 void f(Iterable<String> s) {
@@ -45,8 +46,8 @@ void f(Iterable<String> s) {
 }
 ```
 
-Se a closure não pode ser substituída por um tear-off, então use um loop `for` para
-iterar sobre os elementos:
+If the closure can't be replaced by a tear-off, then use a `for` loop to
+iterate over the elements:
 
 ```dart
 void f(Iterable<String> s) {

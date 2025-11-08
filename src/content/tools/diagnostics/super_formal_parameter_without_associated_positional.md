@@ -1,30 +1,31 @@
 ---
-ia-translate: true
 title: super_formal_parameter_without_associated_positional
-description: "Detalhes sobre o diagnóstico super_formal_parameter_without_associated_positional produzido pelo analisador Dart."
+description: >-
+  Details about the super_formal_parameter_without_associated_positional
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Nenhum parâmetro posicional do construtor super associado._
+_No associated positional super constructor parameter._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando há um parâmetro super
-posicional em um construtor e o construtor super invocado implícita ou explicitamente
-não possui um parâmetro posicional no índice
-correspondente.
+The analyzer produces this diagnostic when there's a positional super
+parameter in a constructor and the implicitly or explicitly invoked super
+constructor doesn't have a positional parameter at the corresponding
+index.
 
-Parâmetros super posicionais são associados com parâmetros posicionais no
-construtor super por seu índice. Ou seja, o primeiro parâmetro super
-é associado ao primeiro parâmetro posicional no construtor
-super, o segundo com o segundo, e assim por diante.
+Positional super parameters are associated with positional parameters in
+the super constructor by their index. That is, the first super parameter
+is associated with the first positional parameter in the super
+constructor, the second with the second, and so on.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque o construtor em `B`
-possui um parâmetro super posicional, mas não há parâmetro posicional no
-construtor super em `A`:
+The following code produces this diagnostic because the constructor in `B`
+has a positional super parameter, but there's no positional parameter in
+the super constructor in `A`:
 
 ```dart
 class A {
@@ -36,10 +37,10 @@ class B extends A {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o construtor em `B`
-possui dois parâmetros super posicionais, mas há apenas um parâmetro
-posicional no construtor super em `A`, o que significa que não há
-parâmetro correspondente para `y`:
+The following code produces this diagnostic because the constructor in `B`
+has two positional super parameters, but there's only one positional
+parameter in the super constructor in `A`, which means that there's no
+corresponding parameter for `y`:
 
 ```dart
 class A {
@@ -51,10 +52,10 @@ class B extends A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o construtor super deve ter um parâmetro posicional correspondente
-ao parâmetro super, então atualize o construtor super adequadamente:
+If the super constructor should have a positional parameter corresponding
+to the super parameter, then update the super constructor appropriately:
 
 ```dart
 class A {
@@ -66,8 +67,8 @@ class B extends A {
 }
 ```
 
-Se o construtor super está correto, ou não pode ser alterado, então converta o
-parâmetro super em um parâmetro normal:
+If the super constructor is correct, or can't be changed, then convert the
+super parameter into a normal parameter:
 
 ```dart
 class A {

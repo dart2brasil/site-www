@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_is_not_empty
-description: "Detalhes sobre o diagnóstico prefer_is_not_empty produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_is_not_empty
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'isNotEmpty' em vez de negar o resultado de 'isEmpty'._
+_Use 'isNotEmpty' rather than negating the result of 'isEmpty'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o resultado de invocar
-`Iterable.isEmpty` ou `Map.isEmpty` é negado.
+The analyzer produces this diagnostic when the result of invoking
+`Iterable.isEmpty` or `Map.isEmpty` is negated.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o resultado de invocar
-`Iterable.isEmpty` é negado:
+The following code produces this diagnostic because the result of invoking
+`Iterable.isEmpty` is negated:
 
 ```dart
 void f(Iterable<int> p) => [!!p.isEmpty!] ? p.first : 0;
@@ -35,7 +36,7 @@ void f(Iterable<int> p) => [!!p.isEmpty!] ? p.first : 0;
 
 ## Common fixes
 
-Reescreva o código para usar `isNotEmpty`:
+Rewrite the code to use `isNotEmpty`:
 
 ```dart
 void f(Iterable<int> p) => p.isNotEmpty ? p.first : 0;

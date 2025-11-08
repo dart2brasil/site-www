@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: not_enough_positional_arguments
-description: "Detalhes sobre o diagnóstico not_enough_positional_arguments produzido pelo analisador do Dart."
+description: >-
+  Details about the not_enough_positional_arguments
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -16,14 +17,14 @@ _{0} positional arguments expected, but {1} found._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma invocação de método ou função
-possui menos argumentos posicionais do que o número de parâmetros posicionais
-obrigatórios.
+The analyzer produces this diagnostic when a method or function invocation
+has fewer positional arguments than the number of required positional
+parameters.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `f` declara dois
-parâmetros obrigatórios, mas apenas um argumento é fornecido:
+The following code produces this diagnostic because `f` declares two
+required parameters, but only one argument is provided:
 
 ```dart
 void f(int a, int b) {}
@@ -34,7 +35,7 @@ void g() {
 
 ## Common fixes
 
-Adicione argumentos correspondentes aos parâmetros restantes:
+Add arguments corresponding to the remaining parameters:
 
 ```dart
 void f(int a, int b) {}

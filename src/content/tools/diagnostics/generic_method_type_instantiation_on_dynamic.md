@@ -1,25 +1,27 @@
 ---
-ia-translate: true
 title: generic_method_type_instantiation_on_dynamic
-description: "Detalhes sobre o diagnóstico generic_method_type_instantiation_on_dynamic produzido pelo analisador do Dart."
+description: >-
+  Details about the generic_method_type_instantiation_on_dynamic
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um método tear-off em um receptor cujo tipo é 'dynamic' não pode ter argumentos de tipo._
+_A method tear-off on a receiver whose type is 'dynamic' can't have type arguments._
 
 ## Description
 
-O analisador produz este diagnóstico quando um método de instância está sendo separado (torn off)
-de um receptor cujo tipo é `dynamic`, e o tear-off inclui argumentos de tipo.
-Como o analisador não pode saber quantos parâmetros de tipo o método possui, ou se ele
-possui algum parâmetro de tipo, não há como validar se os argumentos de tipo estão
-corretos. Como resultado, os argumentos de tipo não são permitidos.
+The analyzer produces this diagnostic when an instance method is being torn
+off from a receiver whose type is `dynamic`, and the tear-off includes type
+arguments. Because the analyzer can't know how many type parameters the
+method has, or whether it has any type parameters, there's no way it can
+validate that the type arguments are correct. As a result, the type
+arguments aren't allowed.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o tipo de `p` é
-`dynamic` e o tear-off de `m` tem argumentos de tipo:
+The following code produces this diagnostic because the type of `p` is
+`dynamic` and the tear-off of `m` has type arguments:
 
 ```dart
 void f(dynamic list) {
@@ -29,8 +31,8 @@ void f(dynamic list) {
 
 ## Common fixes
 
-Se você puder usar um tipo mais específico do que `dynamic`, então altere o tipo do
-receptor:
+If you can use a more specific type than `dynamic`, then change the type of
+the receiver:
 
 ```dart
 void f(List<Object> list) {
@@ -38,7 +40,7 @@ void f(List<Object> list) {
 }
 ```
 
-Se você não puder usar um tipo mais específico, então remova os argumentos de tipo:
+If you can't use a more specific type, then remove the type arguments:
 
 ```dart
 void f(dynamic list) {

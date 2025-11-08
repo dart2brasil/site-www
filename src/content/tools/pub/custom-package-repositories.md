@@ -1,81 +1,80 @@
 ---
-ia-translate: true
-title: "Repositórios de pacotes personalizados"
-description: "Como a ferramenta de gerenciamento de pacotes do Dart, pub, funciona com repositórios de pacotes personalizados."
+title: Custom package repositories
+description: >-
+  How Dart's package management tool, pub,
+  works with custom package repositories.
 ---
 
-A ferramenta `dart pub` suporta repositórios de pacotes de terceiros.
-Um repositório de pacotes é um servidor que hospeda pacotes Dart
-para consumo pela ferramenta `dart pub`.
-O repositório de pacotes padrão usado, [pub.dev]({{site.pub}}),
-é operado pela equipe do Dart para
-facilitar a publicação de pacotes Dart para uso público.
-Um repositório de pacotes é identificado por um
-_hosted-url_ (URL hospedada), como `https://dart-packages.example.com/`.
+The `dart pub` tool supports third-party package repositories.
+A package repository is a server that hosts Dart packages
+for consumption by the `dart pub` tool.
+The default package repository used, [pub.dev]({{site.pub}}), 
+is operated by the Dart team to 
+facilitate publication of Dart packages for public use.
+A package repository is identified by a
+_hosted-url_, such as `https://dart-packages.example.com/`.
 
-Às vezes, um repositório de pacotes personalizado pode ser útil
-para hospedar pacotes privados,
-inclusive em alguns dos seguintes cenários:
+Sometimes a custom package repository might be useful
+for hosting private packages,
+including in some of the following scenarios:
 
-1. Compartilhamento de pacotes proprietários internos dentro de uma organização.
-2. Controle rigoroso de dependências em ambientes corporativos.
-3. Ambientes seguros sem acesso público à internet.
+1. Sharing internal proprietary packages within an organization.
+2. Tight control of dependencies in enterprise environments.
+3. Secure environments without public internet access.
 
-Também é comum usar [git-dependencies]( /tools/pub/dependencies#git-packages)
-para hospedar pacotes privados, no entanto,
-a ferramenta `dart pub` não suporta a resolução de versões em relação a um repositório git;
-ela apenas busca uma revisão específica do repositório git.
-Portanto, quando muitas pessoas estão colaborando,
-geralmente é preferível usar um repositório de pacotes privado.
+It's also common to use [git-dependencies](/tools/pub/dependencies#git-packages) 
+for hosting private packages, however, 
+the `dart pub` tool doesn't support resolving versions against a git repository; 
+it just fetches a specific revision of the git repository.
+Therefore, when many people are collaborating
+it's often preferable to use a private package repository.
 
-## Autenticação com um repositório de pacotes personalizado {:#token-authentication}
+## Authenticating with a custom package repository {:#token-authentication}
 
-A maioria dos repositórios de pacotes personalizados são
-repositórios de pacotes privados que exigem autenticação.
-Para autenticar em repositórios de pacotes personalizados,
-a ferramenta `dart pub` anexa um token secreto às solicitações.
+Most custom package repositories are
+private package repositories that require authentication.
+To authenticate against custom package repositories,
+the `dart pub` tool attaches a secret token to the requests.
 
-Você pode obter o token secreto do seu repositório de pacotes personalizado
-e especificá-lo manualmente ou através de uma variável de ambiente.
-Para especificar manualmente o token secreto,
-use o comando `dart pub token add`
-que solicita o token:
+You can obtain the secret token from your custom package repository
+and either specify it manually or through an environment variable.
+To manually specify the secret token,
+use the `dart pub token add` command
+which prompts for the token:
 
 ```console
 $ dart pub token add https://dart-packages.example.com
-Enter secret token: [insira o token secreto]
+Enter secret token: [enter secret token]
 Requests to "https://dart-packages.example.com" will now be authenticated using the secret token.
-(Solicitações para "https://dart-packages.example.com" agora serão autenticadas usando o token secreto.)
 ```
 
-Você também pode instruir o `dart pub` a ler o token de uma variável de ambiente,
-inclusive em um ambiente CI (Integração Contínua), com a flag `--env-var`:
+You can also tell `dart pub` to read the token from an environment variable,
+including in a CI environment, with the `--env-var` flag:
 
 ```console
 $ dart pub token add https://dart-packages.example.com --env-var MY_SECRET_TOKEN
 Requests to "https://dart-packages.example.com" will now be authenticated using the secret token stored in the environment variable "MY_SECRET_TOKEN".
-(Solicitações para "https://dart-packages.example.com" agora serão autenticadas usando o token secreto armazenado na variável de ambiente "MY_SECRET_TOKEN".)
 ```
 
-Isso garante que o `dart pub` não armazene de fato
-o token secreto em sua configuração,
-em vez disso, ele apenas armazena o fato de que
-deve ler o segredo da variável de ambiente `$MY_SECRET_TOKEN`.
-Isso reduz o risco de que segredos sejam acidentalmente vazados
-se o ambiente de execução for compartilhado entre trabalhos de CI.
+This ensures that `dart pub` doesn't actually 
+store the secret token in its configuration, 
+instead it merely stores the fact that it
+should read the secret from the environment variable `$MY_SECRET_TOKEN`. 
+This reduces the risk that secrets are accidentally leaked
+if the execution environment is shared between CI jobs.
 
 :::note
-Quando a ferramenta `dart pub` não tem um token para uma determinada URL de repositório,
-ela tenta fazer solicitações sem autenticação.
+When the `dart pub` tool doesn't have a token for a given repository URL,
+it attempts to make requests without authentication.
 :::
 
 
-## Recuperando dependências de um repositório de pacotes personalizado {:#retrieving-dependencies-from-a-custom-package-repository}
+## Retrieving dependencies from a custom package repository
 
-Para buscar um pacote de um repositório de pacotes personalizado,
-você deve especificar o _hosted-url_ para o pacote em `pubspec.yaml`,
-usando a sintaxe para [pacotes hospedados]( /tools/pub/dependencies#hosted-packages).
-Por exemplo:
+To fetch a package from custom package repository,
+you must specify the _hosted-url_ for the package in `pubspec.yaml`, 
+using the syntax for [hosted packages](/tools/pub/dependencies#hosted-packages).
+For example:
 
 ```yaml
 dependencies:
@@ -84,90 +83,89 @@ dependencies:
     version: ^1.4.0
 ```
 
-No exemplo anterior, `package:example_package`
-é buscado de `https://dart-packages.example.com`.
-Se a autenticação for exigida por este repositório de pacotes,
-consulte [Autenticação com um repositório de pacotes personalizado](#token-authentication)
-para obter mais informações sobre como autenticar suas solicitações.
+In the previous example, `package:example_package` 
+is fetched from `https://dart-packages.example.com`. 
+If authentication is required by this package repository, 
+see [Authenticating with a custom package repository](#token-authentication)
+for more information on how to authenticate your requests.
 
-Você também pode usar o comando `dart pub add`
-com a flag `--hosted` para adicionar uma dependência de um repositório de pacotes personalizado:
+You can also use the `dart pub add` command
+with the `--hosted` flag to add a dependency from a custom package repository:
 
 ```console
 $ dart pub add example_package --hosted https://dart-packages.example.com
 ```
 
-### Usando vários repositórios de pacotes {:#using-multiple-package-repositories}
+### Using multiple package repositories
 
-Você também pode buscar diferentes dependências
-de diferentes repositórios de pacotes,
-já que o _hosted-url_ pode ser especificado para cada dependência:
+You can also fetch different dependencies
+from different package repositories, 
+as the _hosted-url_ can be specified for each dependency:
 
 ```yaml
 dependencies:
-  # o pacote retry é buscado de pub.dev (o repositório de pacotes padrão)
+  # package retry is fetched from pub.dev (the default package repository)
   retry: ^3.0.0
-  # o pacote example_package é buscado de https://dart-packages.example.com
+  # package example_package is fetched from https://dart-packages.example.com
   example_package:
     hosted: https://dart-packages.example.com
     version: ^1.4.0
 ```
 
-Isso permite que você mantenha pacotes privados em um repositório de pacotes privado
-enquanto usa os pacotes públicos mais atualizados como dependências.
+This enables you to keep private packages on a private package repository
+while using the most up-to-date public packages as dependencies. 
 
-No entanto, conflitos podem surgir facilmente se suas dependências exigirem
-um pacote com o mesmo nome de repositórios diferentes.
-Por exemplo, se o pacote `retry` exige `meta` de pub.dev,
-e `example_package` exige `meta` de `https://dart-packages.example.com`.
-Portanto, se espelhar quaisquer pacotes em um repositório de pacotes privado,
-muitas vezes é necessário espelhar todas as dependências
-e atualizar a seção `dependencies` de cada pacote,
-ou [substituir o repositório de pacotes padrão](#default-override).
+However, conflicts can easily arise if your dependencies require
+a package with the same name from different repositories.
+For example, if package `retry` requires `meta` from pub.dev, 
+and `example_package` requires `meta` from `https://dart-packages.example.com`.
+Therefore, if mirroring any packages into a private package repository 
+it's often necessary to mirror all dependencies
+and either update the `dependencies` section of each package, 
+or [override the default package repository](#default-override).
 
 :::note
-Para garantir que os pacotes públicos sejam utilizáveis por todos,
-o repositório de pacotes oficial, [pub.dev]({{site.pub}}),
-não permite a publicação de pacotes
-com git-dependencies ou hosted-dependencies de repositórios de pacotes personalizados.
+To ensure that public packages are usable to everyone, 
+the official package repository, [pub.dev]({{site.pub}}),
+doesn't allow publication of packages
+with git-dependencies or hosted-dependencies from custom package repositories.
 
-No entanto, tais pacotes podem ser publicados em um repositório de pacotes personalizado.
+However, such packages can be published to a custom package repository.
 :::
 
 
-## Publicando em um repositório de pacotes personalizado {:#publishing-to-a-custom-package-repository}
+## Publishing to a custom package repository
 
-Para publicar um pacote em um repositório de pacotes personalizado
-em vez de [pub.dev]({{site.pub}}),
-especifique a propriedade
-[`publish_to`](/tools/pub/pubspec#publish-to) em `pubspec.yaml`.
-Se a autenticação estiver habilitada,
-a publicação usa a mesma [autenticação por token](#token-authentication)
-que a recuperação de pacotes.
+To publish a package to a custom package repository
+instead of [pub.dev]({{site.pub}}),
+specify the 
+[`publish_to`](/tools/pub/pubspec#publish_to) property in `pubspec.yaml`.
+If authentication is enabled,
+publishing uses the same [token authentication](#token-authentication)
+as retrieving packages.
 
 :::note
-Para evitar a publicação acidental em [pub.dev]({{site.pub}})
-ao trabalhar em um pacote privado,
-é uma boa ideia especificar isso no início do desenvolvimento.
+To prevent accidental publication to [pub.dev]({{site.pub}})
+when working on a private package, 
+it's a good idea to specify this early in the development.
 :::
 
-Para preparar um pacote para publicação em `https://dart-packages.example.com`,
-seu `pubspec.yaml` deve ter no mínimo a seguinte aparência:
+To prepare a package for publishing to `https://dart-packages.example.com`,
+your `pubspec.yaml` should look minimally like the following:
 
 ```yaml
 name: example_package
 version: 1.0.0
-# Garante que o pacote seja publicado em https://dart-packages.example.com {:#ensures-the-package-is-published-to-https-dart-packages-example-com}
+# Ensures the package is published to https://dart-packages.example.com
 publish_to: https://dart-packages.example.com
 ```
 
-Para então publicar uma nova versão do pacote,
+To then publish a new version of the package,
 use `dart pub publish`:
 
 ```console
 $ dart pub publish
 Publishing example_package 1.0.0 to https://dart-packages.example.com
-(Publicando example_package 1.0.0 em https://dart-packages.example.com)
 |-- CHANGELOG.md
 |-- LICENSE
 |-- README.md
@@ -178,38 +176,38 @@ Publishing example_package 1.0.0 to https://dart-packages.example.com
 ```
 
 :::note
-Mesmo que você não esteja usando um repositório privado,
-você pode especificar `publish_to: none`
-que impede qualquer publicação acidental.
+Even if you aren't using a private repository, 
+you can specify `publish_to: none` 
+which stops any accidental publication.
 :::
 
 
-### Substituindo o repositório de pacotes padrão {:#default-override}
+### Overriding the default package repository {:#default-override}
 
-Por padrão, o `dart pub` recupera dependências e publica pacotes
-no [site pub.dev]({{site.pub}})
-a menos que a sintaxe de hosted-dependency
-seja usada para especificar um repositório de pacotes personalizado.
-No entanto, você pode substituir o repositório de pacotes padrão usando a
-variável de ambiente [`PUB_HOSTED_URL`](/tools/pub/environment-variables).
+By default, `dart pub` retrieves dependencies from and publishes packages
+to the [pub.dev site]({{site.pub}})
+unless the hosted-dependency syntax
+is used to specify a custom package repository.
+However, you can override the default package repository using the
+[`PUB_HOSTED_URL`](/tools/pub/environment-variables) environment variable.
 
-Essa abordagem é particularmente útil ao espelhar todos os pacotes
-em um repositório de pacotes privado ou um subconjunto de pub.dev
-ao trabalhar em um ambiente de rede restrito.
+This approach is particularly useful when mirroring all packages
+in a private package repository or a subset of pub.dev
+when working in a restricted network environment.
 
 
-## Configurando um repositório de pacotes personalizado {:#setting-up-a-custom-package-repository}
+## Setting up a custom package repository
 
-Você pode escrever um repositório de pacotes personalizado implementando
-a API REST descrita na
-[Especificação de Repositório Pub Hospedado Versão 2][repository-spec-v2.md].
+You can write a custom package repository by implementing
+the REST API outlined in the
+[Hosted Pub Repository Specification Version 2][repository-spec-v2.md].
 
-### Repositórios de pacotes Dart como serviço {:#dart-package-repositories-as-a-service}
+### Dart package repositories as a service
 
-Repositórios de pacotes personalizados também são oferecidos como um serviço
-com suporte para autenticação por token por vários fornecedores,
-aliviando você da sobrecarga de hospedar e manter
-seu próprio repositório de pacotes personalizado:
+Custom package repositories are also offered as a service
+with support for token authentication by multiple vendors,
+alleviating you from the overhead of hosting and maintaining
+your own custom package repository:
 
 <ul class="logo-link-grids">
 <li>

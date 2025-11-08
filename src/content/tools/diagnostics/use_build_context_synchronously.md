@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_build_context_synchronously
-description: "Detalhes sobre o diagnóstico use_build_context_synchronously produzido pelo analisador Dart."
+description: >-
+  Details about the use_build_context_synchronously
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,24 +18,24 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Não use 'BuildContext's através de gaps assíncronos, protegido por uma verificação 'mounted' não relacionada._
+_Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check._
 
-_Não use 'BuildContext's através de gaps assíncronos._
+_Don't use 'BuildContext's across async gaps._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um `BuildContext` é referenciado
-por um `StatefulWidget` após um gap assíncrono sem primeiro verificar a
-propriedade `mounted`.
+The analyzer produces this diagnostic when a `BuildContext` is referenced
+by a `StatefulWidget` after an asynchronous gap without first checking the
+`mounted` property.
 
-Armazenar um `BuildContext` para uso posterior pode levar a falhas difíceis de diagnosticar.
-Gaps assíncronos implicitamente armazenam um `BuildContext`, tornando-os
-fáceis de ignorar para diagnóstico.
+Storing a `BuildContext` for later use can lead to difficult-to-diagnose
+crashes. Asynchronous gaps implicitly store a `BuildContext`, making them
+easy to overlook for diagnosis.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o `context` é
-passado para um construtor após o `await`:
+The following code produces this diagnostic because the `context` is
+passed to a constructor after the `await`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -47,9 +48,9 @@ class MyWidget extends Widget {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você pode remover o gap assíncrono, faça isso:
+If you can remove the asynchronous gap, do so:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -61,8 +62,8 @@ class MyWidget extends Widget {
 }
 ```
 
-Se você não pode remover o gap assíncrono, então use `mounted` para proteger o
-uso do `context`:
+If you can't remove the asynchronous gap, then use `mounted` to guard the
+use of the `context`:
 
 ```dart
 import 'package:flutter/material.dart';

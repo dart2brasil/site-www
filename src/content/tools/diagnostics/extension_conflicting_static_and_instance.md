@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: extension_conflicting_static_and_instance
-description: "Detalhes sobre o diagnóstico extension_conflicting_static_and_instance produzido pelo analisador Dart."
+description: >-
+  Details about the extension_conflicting_static_and_instance
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Uma extension não pode definir um membro static '{0}' e um membro de instância com o mesmo nome._
+_An extension can't define static member '{0}' and an instance member with the same name._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração de extension
-contém tanto um membro de instância quanto um membro static que têm o mesmo
-nome. O membro de instância e o membro static não podem ter o mesmo nome
-porque fica ambíguo qual membro está sendo referenciado por um uso não qualificado
-do nome dentro do corpo da extension.
+The analyzer produces this diagnostic when an extension declaration
+contains both an instance member and a static member that have the same
+name. The instance member and the static member can't have the same name
+because it's unclear which member is being referenced by an unqualified use
+of the name within the body of the extension.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o nome `a` está sendo
-usado para dois membros diferentes:
+The following code produces this diagnostic because the name `a` is being
+used for two different members:
 
 ```dart
 extension E on Object {
@@ -28,9 +29,9 @@ extension E on Object {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Renomeie ou remova um dos membros:
+Rename or remove one of the members:
 
 ```dart
 extension E on Object {

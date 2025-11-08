@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_named_constants
-description: "Detalhes sobre o diagnóstico use_named_constants produzido pelo analisador Dart."
+description: >-
+  Details about the use_named_constants
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,27 +18,27 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a constante '{0}' em vez de um construtor retornando o mesmo objeto._
+_Use the constant '{0}' rather than a constructor returning the same object._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma constante é criada com o
-mesmo valor que uma variável `const` conhecida.
+The analyzer produces this diagnostic when a constant is created with the
+same value as a known `const` variable.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque existe um
-campo `const` conhecido (`Duration.zero`) cujo valor é o mesmo que o
-que a invocação do construtor avaliará:
+The following code produces this diagnostic because there is a known
+`const` field (`Duration.zero`) whose value is the same as what the
+constructor invocation will evaluate to:
 
 ```dart
 Duration d = [!const Duration(seconds: 0)!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Substitua a invocação do construtor por uma referência à variável `const`
-conhecida:
+Replace the constructor invocation with a reference to the known `const`
+variable:
 
 ```dart
 Duration d = Duration.zero;

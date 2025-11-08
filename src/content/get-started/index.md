@@ -1,9 +1,9 @@
 ---
-ia-translate: true
-title: Aprenda Dart
-shortTitle: Aprenda
+title: Learn Dart
+shortTitle: Learn
 breadcrumb: Tutorial
-description: "Inicie sua jornada de aprendizado de Dart construindo uma aplicação CLI interativa."
+description: >-
+  Begin your Dart learning journey by building an interactive CLI app.
 sitemap: false
 noindex: true
 layout: learn
@@ -14,26 +14,26 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-## Configurar Dart {: #set-up }
+## Set up Dart {: #set-up }
 
-Estas lições pressupõem que você está usando a versão estável mais recente do Dart.
+These lessons assume you're using the latest, stable version of Dart.
 
-Para aprender como instalar ou atualizar o Dart,
-siga as instruções sobre como [obter o Dart SDK][Get the Dart SDK].
+To learn how to install or update Dart,
+follow the instructions on how to [Get the Dart SDK][].
 
 [Get the Dart SDK]: /get-dart
 
-## Lições em andamento {: #lessons }
+## In progress lessons {: #lessons }
 
-1. [Construa seu primeiro app](/get-started/hello-world)
-2. [Adicione interatividade ao seu app](/get-started/add-commands)
-3. [Introdução a async e HTTP](/get-started/async)
-4. [Pacotes e bibliotecas](/get-started/packages-libs)
-5. [Programação orientada a objetos em Dart](/get-started/oop-dart)
-6. [Tratamento de erros](/get-started/error-handling)
-7. [OOP avançado](/get-started/advanced-oop)
-8. [Refinando o command_runner](/get-started/command-runner-polish)
-9. [Dados e JSON](/get-started/data-and-json)
-10. [Testes](/get-started/testing)
-11. [HTTP](/get-started/http)
+1. [Build your first app](/get-started/hello-world)
+2. [Add interactivity to your app](/get-started/add-commands)
+3. [Intro to async and HTTP](/get-started/async)
+4. [Packages and libraries](/get-started/packages-libs)
+5. [Object-oriented programming in Dart](/get-started/oop-dart)
+6. [Error handling](/get-started/error-handling)
+7. [Advanced OOP](/get-started/advanced-oop)
+8. [Command_runner polish](/get-started/command-runner-polish)
+9. [Data and JSON](/get-started/data-and-json)
+10. [Testing](/get-started/testing)
+11. [Http](/get-started/http)
 12. [Logging](/get-started/logging)

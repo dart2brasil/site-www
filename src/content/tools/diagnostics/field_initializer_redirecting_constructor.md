@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: field_initializer_redirecting_constructor
-description: "Detalhes sobre o diagnóstico field_initializer_redirecting_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the field_initializer_redirecting_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O construtor de redirecionamento não pode ter um inicializador de campo._
+_The redirecting constructor can't have a field initializer._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor de redirecionamento
-inicializa um campo no objeto. Isso não é permitido porque a instância
-que possui o campo não foi criada no ponto em que deveria ser
-inicializada.
+The analyzer produces this diagnostic when a redirecting constructor
+initializes a field in the object. This isn't allowed because the instance
+that has the field hasn't been created at the point at which it should be
+initialized.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque o construtor
-`C.zero`, que redireciona para o construtor `C`, possui um parâmetro formal
-inicializador que inicializa o campo `f`:
+The following code produces this diagnostic because the constructor
+`C.zero`, which redirects to the constructor `C`, has an initializing
+formal parameter that initializes the field `f`:
 
 ```dart
 class C {
@@ -31,9 +32,9 @@ class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o construtor
-`C.zero`, que redireciona para o construtor `C`, possui um inicializador que
-inicializa o campo `f`:
+The following code produces this diagnostic because the constructor
+`C.zero`, which redirects to the constructor `C`, has an initializer that
+initializes the field `f`:
 
 ```dart
 class C {
@@ -45,10 +46,10 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se a inicialização for feita por um parâmetro formal inicializador, então
-use um parâmetro normal:
+If the initialization is done by an initializing formal parameter, then
+use a normal parameter:
 
 ```dart
 class C {
@@ -60,8 +61,8 @@ class C {
 }
 ```
 
-Se a inicialização for feita em um inicializador, então remova o
-inicializador:
+If the initialization is done in an initializer, then remove the
+initializer:
 
 ```dart
 class C {

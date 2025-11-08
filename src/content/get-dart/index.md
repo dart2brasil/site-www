@@ -1,30 +1,31 @@
 ---
-ia-translate: true
-title: Obtenha o SDK do Dart
-shortTitle: Obtenha o Dart
-description: "Obtenha as bibliotecas e ferramentas de linha de comando necessárias para desenvolver aplicativos Dart para web, linha de comando e servidor."
+title: Get the Dart SDK
+shortTitle: Get Dart
+description: >-
+  Get the libraries and command-line tools that you need to develop
+  Dart web, command-line, and server apps.
 channelList: [Stable, Beta, Dev]
 ---
 
-Esta página descreve como baixar o SDK do Dart.
-O SDK do Dart inclui as bibliotecas e as ferramentas de linha de comando que
-você precisa para desenvolver aplicativos Dart para linha de comando, servidor e web.
+This page describes how to download the Dart SDK.
+The Dart SDK includes the libraries and command-line tools that
+you need to develop Dart command-line, server, and web apps.
 
-A equipe Dart suporta apenas o lançamento estável mais recente do SDK.
-Para detalhes completos sobre o ciclo de vida do lançamento do SDK e versões suportadas,
-consulte a [política de suporte do SDK](/tools/sdk#support-policy).
+The Dart team supports only the latest stable release of the SDK.
+For full details on the SDK release lifecycle and supported versions,
+check out the [SDK support policy](/tools/sdk#support-policy).
 
-Para saber mais sobre o SDK do Dart, consulte a [visão geral do SDK do Dart](/tools/sdk).
+To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 
 :::tip
-Se você instalou ou planeja [instalar o SDK do Flutter][install-flutter], ele
-inclui o SDK completo do Dart. Você não precisa instalar o Dart separadamente e pode pular este guia.
+If you've installed or plan to [install the Flutter SDK][install-flutter], it
+includes the full Dart SDK. You don't need to install Dart separately and can skip this guide.
 :::
 
-## Requisitos do sistema {:#system-requirements}
+## System requirements
 
-O Dart suporta as seguintes arquiteturas de hardware e versões de plataforma
-para desenvolver e executar código Dart.
+Dart supports the following hardware architectures and platform versions
+to develop and run Dart code.
 
 {% assign yes = '<span class="material-symbols system-support" style="color: #158477" aria-label="Supported" title="Supported">verified</span>' %}
 {% assign no = '<span class="material-symbols system-support" style="color: #D43324" aria-label="Not supported" title="Not supported">dangerous</span>' %}
@@ -40,51 +41,51 @@ para desenvolver e executar código Dart.
 
 {:.table .table-striped}
 
-{{yes}} Suportado em todos os canais.<br>
-{{dep}} O suporte está descontinuado e pode ser removido em uma versão futura do Dart.<br>
-{{rem}} O suporte está descontinuado e provavelmente será removido na próxima versão estável.<br>
-{{no}} Não suportado em todos os canais.<br>
-{{na}} Não suportado pelo sistema operacional.<br>
+{{yes}} Supported on all channels.<br>
+{{dep}} Support is deprecated and might be dropped in a future Dart release.<br>
+{{rem}} Support is deprecated and will likely be removed in the next stable release.<br>
+{{no}} Unsupported on all channels.<br>
+{{na}} Unsupported by the operating system.<br>
 
 [Windows 10]: https://www.microsoft.com/en-us/software-download/windows10
 [Windows 11]: https://www.microsoft.com/en-us/software-download/windows11
 [Debian stable]: https://www.debian.org/releases
 [Ubuntu LTS]: https://wiki.ubuntu.com/Releases
 
-## Escolha uma opção de instalação
+## Choose an installation option
 
-Para instalar e atualizar o SDK do Dart a partir do canal estável,
-escolha uma das seguintes opções:
+To install and update the Dart SDK from the stable channel,
+choose one of the following options:
 
-1. [Use um gerenciador de pacotes](#install) (Recomendado).
+1. [Use a package manager](#install) (Recommended).
 
-1. Use uma [imagem Docker do Dart][dart-docker].
+1. Use a [Dart Docker image][dart-docker].
 
-1. [Instale o Flutter][install-flutter]. 
-   Se você instalou ou planeja [instalar o SDK do Flutter][install-flutter],
-   ele inclui o SDK completo do Dart. O SDK do Flutter inclui a
-   ferramenta CLI [`dart`](/tools/dart-tool) na pasta `bin` do Flutter.
+1. [Install Flutter][install-flutter].  
+   If you've installed or plan to [install the Flutter SDK][install-flutter],
+   it includes the full Dart SDK. The Flutter SDK includes the
+   [`dart`](/tools/dart-tool) CLI tool in Flutter's `bin` folder.
 
-1. Baixe um arquivo ZIP do [Arquivo do SDK](/get-dart/archive).
+1. Download a ZIP archive from the [SDK Archive](/get-dart/archive).
 
-1. [Compile o SDK a partir do código-fonte][build-source].
+1. [Build the SDK from source][build-source].
 
 :::warning Notice
 {% render 'install/sdk-terms.md' %}
 :::
 
 {% comment %}
-NOTA para os editores: Mantenha o link do arquivo zip como a última coisa no parágrafo,
-para que seja fácil de encontrar (mas não mais tentador do que os gerenciadores de pacotes).
+NOTE to editors: Keep the zip file link as the last thing in the paragraph,
+so it's easy to find (but not more tempting than package managers).
 {% endcomment %}
 
-## Instale o SDK do Dart {:#install}
+## Install the Dart SDK {:#install}
 
-Para instalar o SDK do Dart,
-use o gerenciador de pacotes apropriado para sua plataforma de desenvolvimento.
+To install the Dart SDK,
+use the appropriate package manager for your development platform.
 
-Para atualizar o SDK do Dart,
-execute o mesmo comando para instalar o SDK do Dart do seu gerenciador de pacotes.
+To upgrade the Dart SDK,
+run the same command to install the Dart SDK from your package manager.
 
 <Tabs key="dev-os" wrapped="true">
   <Tab name="Windows">
@@ -104,55 +105,55 @@ execute o mesmo comando para instalar o SDK do Dart do seu gerenciador de pacote
   </Tab>
 </Tabs>
 
-## Referência de canais de lançamento {:#release-channels}
+## Release channel reference {:#release-channels}
 
 {% for channel in page.channelList %}
 {% assign chnl = channel | downcase -%}
-{% assign current="`[calculando]`{:.build-rev-" | append: chnl | append: "}" %}
+{% assign current="`[calculating]`{:.build-rev-" | append: chnl | append: "}" %}
 {% case chnl %}
 {% when 'stable' %}
 {% assign verstring = "`x.y.z`" %}
-{% assign examples = "`1.24.3` e `2.1.0`" %}
-{% assign schedule = "a cada três meses" %}
-{% assign version-use = "construir e implantar aplicativos de produção" %}
+{% assign examples = "`1.24.3` and `2.1.0`" %}
+{% assign schedule = "every three months" %}
+{% assign version-use = "building and deploying production apps" %}
 {% when 'beta' %}
 {% assign verstring = "`x.y.z-a.b.beta`" %}
-{% assign examples = "`2.8.0-20.11.beta` e `3.3.0-205.1.beta`" %}
-{% assign verdesc = "pré-lançamento" %}
-{% assign schedule = "uma vez por mês" %}
-{% assign version-use = "testar a compatibilidade do seu aplicativo com as futuras versões estáveis" %}
+{% assign examples = "`2.8.0-20.11.beta` and `3.3.0-205.1.beta`" %}
+{% assign verdesc = "pre-release" %}
+{% assign schedule = "once a month" %}
+{% assign version-use = "testing your app's compatibility with future stable versions" %}
 {% when 'dev' %}
 {% assign verstring = "`x.y.z-a.b.dev`" %}
-{% assign examples = "`2.8.0-20.11.dev` e `3.2.12-15.33.dev`" %}
-{% assign verdesc = "desenvolvimento" %}
-{% assign schedule = "duas vezes por semana" %}
-{% assign version-use = "testar correções recentes e recursos experimentais" %}
+{% assign examples = "`2.8.0-20.11.dev` and `3.2.12-15.33.dev`" %}
+{% assign verdesc = "development" %}
+{% assign schedule = "twice a week" %}
+{% assign version-use = "testing recent fixes and experimental features" %}
 {% endcase %}
 
-### Canal {{channel}}
+### {{channel}} channel
 
-O Dart publica uma nova versão no canal *{{chnl}}* aproximadamente {{schedule}}.
-A versão atual do canal {{chnl}} é {{current}}.
+Dart publishes a new release to the *{{chnl}}* channel about {{schedule}}.
+The current {{chnl}} version is {{current}}.
 
-Use as versões do canal **{{chnl}}** para {{version-use}}.
+Use **{{chnl}}** channel releases for {{version-use}}.
 
-As strings de versão de lançamento do canal **{{channel}}** seguem um formato {{verstring}}:
+**{{channel}}** channel release version strings follow a {{verstring}} format:
 
-* `x` : versão principal
-* `y` : versão secundária
-* `z` : versão de correção
+* `x` : major version
+* `y` : minor version
+* `z` : patch version
 {%- if chnl != 'stable' %}
-* `a` : versão de {{verdesc}}
-* `b` : versão de correção de {{verdesc}}
+* `a` : {{verdesc}} version
+* `b` : {{verdesc}} patch version
 {% endif %}
 
-Exemplos de strings de versão do canal {{chnl}} incluem {{examples}}.
+Examples of {{chnl}} channel version strings include {{examples}}.
 
-Para instalar uma versão do canal {{chnl}},
+To install a {{chnl}} channel release,
 {%- if chnl != 'stable' %}
-baixe o [SDK como um arquivo zip][dl-sdk].
+download the [SDK as a zip file][dl-sdk].
 {%- else %}
-siga as [instruções nesta página](#install).
+follow the [instructions on this page](#install).
 {% endif %}
 
 {% endfor -%}

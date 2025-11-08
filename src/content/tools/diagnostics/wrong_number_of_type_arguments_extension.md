@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: wrong_number_of_type_arguments_extension
-description: "Detalhes sobre o diagnóstico wrong_number_of_type_arguments_extension produzido pelo analisador Dart."
+description: >-
+  Details about the wrong_number_of_type_arguments_extension
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A extension '{0}' é declarada com {1} parâmetros de tipo, mas {2} argumentos de tipo foram fornecidos._
+_The extension '{0}' is declared with {1} type parameters, but {2} type arguments were given._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma extension que tem parâmetros de
-tipo é usada e argumentos de tipo são fornecidos, mas o número de argumentos de
-tipo não é o mesmo que o número de parâmetros de tipo.
+The analyzer produces this diagnostic when an extension that has type
+parameters is used and type arguments are provided, but the number of type
+arguments isn't the same as the number of type parameters.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a extension `E` é
-declarada com um único parâmetro de tipo (`T`), mas a sobrescrita da extension
-tem dois argumentos de tipo:
+The following code produces this diagnostic because the extension `E` is
+declared to have a single type parameter (`T`), but the extension override
+has two type arguments:
 
 ```dart
 extension E<T> on List<T> {
@@ -30,10 +31,10 @@ void f(List<int> p) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Mude os argumentos de tipo para que haja o mesmo número de argumentos de
-tipo que há parâmetros de tipo:
+Change the type arguments so that there are the same number of type
+arguments as there are type parameters:
 
 ```dart
 extension E<T> on List<T> {

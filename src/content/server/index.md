@@ -1,75 +1,75 @@
 ---
 title: Command-line and server apps
-shortTitle: "CLI & server apps"
+shortTitle: CLI & server apps
 description: All things relating to command-line and server apps.
 showToc: false
 ---
 
-Esta página aponta para ferramentas e documentação
-que podem te ajudar a desenvolver aplicativos de linha de comando e servidor.
+This page points to tools and documentation
+that can help you develop command-line and server apps.
 
 <p class="centered-rows">
   <a href="/tutorials/server/get-started" class="filled-button large-button">Get started</a>
 </p>
 
 
-## Ferramentas {:#tools}
+## Tools
 
 [DartPad](/tools/dartpad)
-: Útil tanto para iniciantes quanto para especialistas,
-  o DartPad permite que você experimente recursos da linguagem e APIs dart:*.
+: Handy for both beginners and experts,
+  DartPad lets you try out language features and dart:* APIs.
 
   :::note
-  O DartPad **não** oferece suporte ao uso de bibliotecas VM, como `dart:io`,
-  ou importação de bibliotecas de pacotes
-  além dos [pacotes atualmente suportados][].
+  DartPad does **not** support using VM libraries, such as `dart:io`,
+  or importing libraries from packages
+  besides the [currently supported packages][].
   :::
 
-[pacotes atualmente suportados]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
+[currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 [Dart SDK](/tools/sdk)
-: [Instale o Dart SDK](/get-dart) para obter as bibliotecas
-  principais do Dart e [ferramentas](/tools).
+: [Install the Dart SDK](/get-dart) to get the core Dart
+  libraries and [tools](/tools).
 
-## Frameworks {:#frameworks}
+## Frameworks
 
-Frameworks do lado do servidor escritos em Dart incluem:
+Server-side frameworks written in Dart include:
 
 [Serverpod](https://serverpod.dev)
-: Um servidor de aplicativos escalável que suporta geração de código,
-  autenticação, comunicação em tempo real, bancos de dados e caching (armazenamento em cache).
+: A scalable app server that supports code generation,
+  authentication, real-time communication, databases, and caching.
 
 [Dart Frog](https://dart-frog.dev/)
 : A fast, minimalistic backend framework for Dart.
 
-Mais ferramentas
-: A página [Ferramentas](/tools) tem links para ferramentas geralmente úteis,
-  como plugins Dart para seu IDE ou editor favorito.
+More tools
+: The [Tools](/tools) page links to generally useful tools,
+  such as Dart plugins for your favorite IDE or editor.
 
-Para opções adicionais, veja [#pacotes de servidor no pub.dev]({{site.pub-pkg}}?q=topic%3Aserver).
+For additional options, see [#server packages on pub.dev]({{site.pub-pkg}}?q=topic%3Aserver).
 
-## Tutoriais {:#tutorials}
+## Tutorials
 
-Você pode achar os seguintes tutoriais úteis.
+You might find the following tutorials helpful.
 
-[Começar](/tutorials/server/get-started)
-: Aprenda como usar o Dart SDK para desenvolver aplicativos de linha de comando e servidor.
+[Get started](/tutorials/server/get-started)
+: Learn how to use the Dart SDK to develop command-line and server apps.
 
 [gRPC Quickstart](https://grpc.io/docs/languages/dart/quickstart/)
-: Guia você na execução e modificação de um exemplo cliente-servidor que usa o framework gRPC.
+: Walks you through running and modifying a client-server example that uses the gRPC framework.
 
-[Escreva aplicativos de linha de comando](/tutorials/server/cmdline)
-: Apresenta dart:io e o pacote args.
+[Write command-line apps](/tutorials/server/cmdline)
+: Introduces dart:io and the args package.
 
-[Escreva servidores HTTP](/tutorials/server/httpserver)
-: Apresenta o pacote shelf.
+[Write HTTP servers](/tutorials/server/httpserver)
+: Features the shelf package.
 
-## Mais recursos {:#more-resources}
+## More resources
 
 [Dart API]({{site.dart-api}})
-: Referência da API para bibliotecas dart:*.
+: API reference for dart:* libraries.
 
-[documentação dart:io](/libraries/dart-io)
-: Mostra como usar os principais recursos da biblioteca dart:io.
-  Você pode usar a biblioteca dart:io em scripts de linha de comando, servidores e
-  aplicativos [Flutter.]({{site.flutter}}) não-web
+[dart:io documentation](/libraries/dart-io)
+: Shows how to use the major features of the dart:io library.
+  You can use the dart:io library in command-line scripts, servers, and
+  non-web [Flutter apps.]({{site.flutter}})

@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: duplicate_hidden_name
-description: "Detalhes sobre o diagnóstico duplicate_hidden_name produzido pelo analisador Dart."
+description: >-
+  Details about the duplicate_hidden_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Nome ocultado duplicate._
+_Duplicate hidden name._
 
 ## Description
 
-O analisador produz este diagnóstico quando um nome ocorre múltiplas vezes em
-uma cláusula `hide`. Repetir o nome é desnecessário.
+The analyzer produces this diagnostic when a name occurs multiple times in
+a `hide` clause. Repeating the name is unnecessary.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o nome `min` está
-oculto mais de uma vez:
+The following code produces this diagnostic because the name `min` is
+hidden more than once:
 
 ```dart
 import 'dart:math' hide min, [!min!];
@@ -26,8 +27,8 @@ var x = pi;
 
 ## Common fixes
 
-Se o nome foi digitado incorretamente em um ou mais lugares, então corrija os nomes
-digitados incorretamente:
+If the name was mistyped in one or more places, then correct the mistyped
+names:
 
 ```dart
 import 'dart:math' hide max, min;
@@ -35,8 +36,8 @@ import 'dart:math' hide max, min;
 var x = pi;
 ```
 
-Se o nome não foi digitado incorretamente, então remova o nome desnecessário da
-lista:
+If the name wasn't mistyped, then remove the unnecessary name from the
+list:
 
 ```dart
 import 'dart:math' hide min;

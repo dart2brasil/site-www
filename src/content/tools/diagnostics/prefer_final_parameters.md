@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_final_parameters
-description: "Detalhes sobre o diagnóstico prefer_final_parameters produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_final_parameters
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O parâmetro '{0}' deve ser final._
+_The parameter '{0}' should be final._
 
 ## Description
 
-O analisador produz este diagnóstico quando um parâmetro de um construtor,
-método, função ou closure não está marcado como `final`.
+The analyzer produces this diagnostic when a parameter of a constructor,
+method, function, or closure isn't marked as being `final`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o parâmetro `s`
-não é um parâmetro `final`:
+The following code produces this diagnostic because the parameter `s`
+isn't a `final` parameter:
 
 ```dart
 String f([!String s!]) => s;
@@ -35,7 +36,7 @@ String f([!String s!]) => s;
 
 ## Common fixes
 
-Adicione o modificador `final` ao parâmetro:
+Add the modifier `final` to the parameter:
 
 ```dart
 String f(final String s) => s;

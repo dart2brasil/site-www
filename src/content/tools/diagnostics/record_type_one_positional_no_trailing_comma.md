@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: record_type_one_positional_no_trailing_comma
-description: "Detalhes sobre o diagnóstico record_type_one_positional_no_trailing_comma produzido pelo analisador Dart."
+description: >-
+  Details about the record_type_one_positional_no_trailing_comma
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um tipo record com exatamente um campo posicional requer uma vírgula final._
+_A record type with exactly one positional field requires a trailing comma._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma anotação de tipo record com um
-único campo posicional não tem uma vírgula final após o campo.
+The analyzer produces this diagnostic when a record type annotation with a
+single positional field doesn't have a trailing comma after the field.
 
-Em alguns locais, um tipo record com um único campo posicional também pode
-ser uma expressão entre parênteses. Uma vírgula final é necessária para
-desambiguar essas duas interpretações válidas.
+In some locations a record type with a single positional field could also
+be a parenthesized expression. A trailing comma is required to
+disambiguate these two valid interpretations.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o tipo record tem
-um campo posicional, mas não tem uma vírgula final:
+The following code produces this diagnostic because the record type has
+one positional field, but doesn't have a trailing comma:
 
 ```dart
 void f((int[!)!] r) {}
@@ -28,7 +29,7 @@ void f((int[!)!] r) {}
 
 ## Common fixes
 
-Adicione uma vírgula final:
+Add a trailing comma:
 
 ```dart
 void f((int,) r) {}

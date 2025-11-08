@@ -1,47 +1,46 @@
 ---
-ia-translate: true
-title: "Métodos de Extensão"
-description: Aprenda como adicionar a APIs existentes.
+title: Extension methods
+description: Learn how to add to existing APIs.
 prevpage:
   url: /language/dot-shorthands
   title: Dot shorthands
 nextpage:
   url: /language/extension-types
-  title: "Tipos de Extensão"
+  title: Extension types
 ---
 
-Métodos de extensão adicionam funcionalidade a bibliotecas existentes.
-Você pode usar métodos de extensão sem nem mesmo saber disso.
-Por exemplo, quando você usa o preenchimento automático de código em uma IDE,
-ele sugere métodos de extensão junto com métodos regulares.
+Extension methods add functionality to existing libraries.
+You might use extension methods without even knowing it.
+For example, when you use code completion in an IDE,
+it suggests extension methods alongside regular methods.
 
-Se assistir a vídeos ajuda você a aprender,
-confira esta visão geral de métodos de extensão.
+If watching videos helps you learn,
+check out this overview of extension methods.
 
 <YouTubeEmbed id="D3j0OSfT9ZI" title="Dart extension methods"></YouTubeEmbed>
 
-## Visão geral {:#overview}
+## Overview
 
-Quando você está usando a API de outra pessoa ou
-quando você implementa uma biblioteca que é amplamente usada,
-geralmente é impraticável ou impossível mudar a API.
-Mas você ainda pode querer adicionar alguma funcionalidade.
+When you're using someone else's API or
+when you implement a library that's widely used,
+it's often impractical or impossible to change the API.
+But you might still want to add some functionality.
 
-Por exemplo, considere o código a seguir que analisa uma string em um inteiro:
+For example, consider the following code that parses a string into an integer:
 
 ```dart
 int.parse('42')
 ```
 
-Poderia ser interessante—mais curto e mais fácil de usar com ferramentas—
-ter essa funcionalidade em `String` em vez disso:
+It might be nice—shorter and easier to use with tools—to
+have that functionality be on `String` instead:
 
 ```dart
 '42'.parseInt()
 ```
 
-Para habilitar esse código,
-você pode importar uma biblioteca que contém uma extensão da classe `String`:
+To enable that code,
+you can import a library that contains an extension of the `String` class:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (basic)" plaster="none"?>
 ```dart
@@ -52,11 +51,11 @@ void main() {
 }
 ```
 
-Extensões podem definir não apenas métodos,
-mas também outros membros como getters, setters e operadores.
-Além disso, extensões podem ter nomes, o que pode ser útil se surgir um conflito de API.
-Veja como você pode implementar o método de extensão `parseInt()`,
-usando uma extensão (nomeada `NumberParsing`) que opera em strings:
+Extensions can define not just methods,
+but also other members such as getter, setters, and operators.
+Also, extensions can have names, which can be helpful if an API conflict arises.
+Here's how you might implement the extension method `parseInt()`,
+using an extension (named `NumberParsing`) that operates on strings:
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart (parseInt)" plaster="none"?>
 ```dart title="lib/string_apis.dart"
@@ -67,15 +66,15 @@ extension NumberParsing on String {
 }
 ```
 
-A próxima seção descreve como _usar_ métodos de extensão.
-Depois disso, há seções sobre _implementar_ métodos de extensão.
+The next section describes how to _use_ extension methods.
+After that are sections about _implementing_ extension methods.
 
 
-## Usando métodos de extensão {:#using-extension-methods}
+## Using extension methods
 
-Como todo código Dart, os métodos de extensão estão em bibliotecas.
-Você já viu como usar um método de extensão—basta
-importar a biblioteca em que ele está e usá-lo como um método comum:
+Like all Dart code, extension methods are in libraries.
+You've already seen how to use an extension method—just 
+import the library it's in, and use it like an ordinary method:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (import-and-use)" plaster="none"?>
 ```dart
@@ -88,15 +87,15 @@ void main() {
 }
 ```
 
-Isso é tudo que você geralmente precisa saber para usar métodos de extensão.
-Ao escrever seu código, você também pode precisar saber
-como os métodos de extensão dependem de tipos estáticos (em vez de `dynamic`) e
-como resolver [conflitos de API](#api-conflicts).
+That's all you usually need to know to use extension methods.
+As you write your code, you might also need to know
+how extension methods depend on static types (as opposed to `dynamic`) and
+how to resolve [API conflicts](#api-conflicts).
 
-### Tipos estáticos e dynamic {:#static-types-and-dynamic}
+### Static types and dynamic
 
-Você não pode invocar métodos de extensão em variáveis do tipo `dynamic`.
-Por exemplo, o código a seguir resulta em uma exceção em tempo de execução:
+You can't invoke extension methods on variables of type `dynamic`.
+For example, the following code results in a runtime exception:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (dynamic)" plaster="none" replace="/  \/\/ print/print/g"?>
 ```dart
@@ -104,9 +103,9 @@ dynamic d = '2';
 print(d.parseInt()); // Runtime exception: NoSuchMethodError
 ```
 
-Métodos de extensão _funcionam_ com a inferência de tipo do Dart.
-O código a seguir está correto porque
-a variável `v` tem o tipo `String` inferido:
+Extension methods _do_ work with Dart's type inference.
+The following code is fine because
+the variable `v` is inferred to have type `String`:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (var)"?>
 ```dart
@@ -114,22 +113,22 @@ var v = '2';
 print(v.parseInt()); // Output: 2
 ```
 
-A razão pela qual `dynamic` não funciona é que
-métodos de extensão são resolvidos em relação ao tipo estático do receptor.
-Como os métodos de extensão são resolvidos estaticamente,
-eles são tão rápidos quanto chamar uma função estática.
+The reason that `dynamic` doesn't work is that
+extension methods are resolved against the static type of the receiver.
+Because extension methods are resolved statically,
+they're as fast as calling a static function.
 
-Para mais informações sobre tipos estáticos e `dynamic`, veja
-[O sistema de tipos do Dart](/language/type-system).
+For more information about static types and `dynamic`, see
+[The Dart type system](/language/type-system).
 
-### Conflitos de API {:#api-conflicts}
+### API conflicts
 
-Se um membro de extensão entra em conflito com
-uma interface ou com outro membro de extensão,
-você tem algumas opções.
+If an extension member conflicts with
+an interface or with another extension member,
+then you have a few options.
 
-Uma opção é alterar como você importa a extensão conflitante,
-usando `show` ou `hide` para limitar a API exposta:
+One option is changing how you import the conflicting extension,
+using `show` or `hide` to limit the exposed API:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_import.dart (hide-conflicts)" plaster="none"?>
 ```dart
@@ -146,8 +145,8 @@ void main() {
 }
 ```
 
-Outra opção é aplicar a extensão explicitamente,
-o que resulta em código que parece que a extensão é uma classe wrapper (empacotadora):
+Another option is applying the extension explicitly,
+which results in code that looks as if the extension is a wrapper class:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_explicit.dart (conflicts-explicit)" plaster="none"?>
 ```dart
@@ -163,8 +162,8 @@ void main() {
 }
 ```
 
-Se ambas as extensões tiverem o mesmo nome,
-então você pode precisar importar usando um prefixo:
+If both extensions have the same name,
+then you might need to import using a prefix:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_prefix.dart"?>
 ```dart
@@ -188,23 +187,23 @@ void main() {
 }
 ```
 
-Como o exemplo mostra,
-você pode invocar métodos de extensão implicitamente mesmo se importar usando um prefixo.
-A única vez que você precisa usar o prefixo é
-para evitar um conflito de nome ao invocar uma extensão explicitamente.
+As the example shows,
+you can invoke extension methods implicitly even if you import using a prefix.
+The only time you need to use the prefix is
+to avoid a name conflict when invoking an extension explicitly.
 
 
-## Implementando métodos de extensão {:#implementing-extension-methods}
+## Implementing extension methods
 
-Use a seguinte sintaxe para criar uma extensão:
+Use the following syntax to create an extension:
 
 ```plaintext
-extension <nome da extensão>? on <tipo> { // <nome-da-extensão> é opcional
-  (<definição de membro>)* // Pode fornecer uma ou mais <definição de membro>.
+extension <extension name>? on <type> { // <extension-name> is optional
+  (<member definition>)* // Can provide one or more <member definition>.
 }
 ```
 
-Por exemplo, veja como você pode implementar uma extensão na classe `String`:
+For example, here's how you might implement an extension on the `String` class:
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart"?>
 ```dart title="lib/string_apis.dart"
@@ -220,21 +219,21 @@ extension NumberParsing on String {
 }
 ```
 
-Os membros de uma extensão podem ser métodos, getters, setters ou operadores.
-Extensões também podem ter campos estáticos e métodos auxiliares estáticos.
-Para acessar membros estáticos fora da declaração de extensão,
-invoque-os através do nome da declaração como [variáveis e métodos de classe][class variables and methods].
+The members of an extension can be methods, getters, setters, or operators.
+Extensions can also have static fields and static helper methods.
+To access static members outside the extension declaration, 
+invoke them through the declaration name like [class variables and methods][]. 
 
 [class variables and methods]: /language/classes#class-variables-and-methods
 
-### Extensões não nomeadas {:#unnamed-extensions}
+### Unnamed extensions
 
-Ao declarar uma extensão, você pode omitir o nome.
-Extensões não nomeadas são visíveis apenas
-na biblioteca onde são declaradas.
-Como elas não têm nome,
-elas não podem ser aplicadas explicitamente
-para resolver [conflitos de API](#api-conflicts).
+When declaring an extension, you can omit the name.
+Unnamed extensions are visible only
+in the library where they're declared.
+Since they don't have a name,
+they can't be explicitly applied
+to resolve [API conflicts](#api-conflicts).
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis_unnamed.dart (unnamed)"?>
 ```dart
@@ -244,15 +243,15 @@ extension on String {
 ```
 
 :::note
-Você pode invocar os membros estáticos de uma extensão não nomeada
-apenas dentro da declaração da extensão.
+You can invoke an unnamed extension's static members
+only within the extension declaration.
 :::
 
-## Implementando extensões genéricas {:#implementing-generic-extensions}
+## Implementing generic extensions
 
-Extensões podem ter parâmetros de tipo genérico.
-Por exemplo, aqui está algum código que estende o tipo `List<T>` integrado
-com um getter, um operador e um método:
+Extensions can have generic type parameters.
+For example, here's some code that extends the built-in `List<T>` type
+with a getter, an operator, and a method:
 
 <?code-excerpt "extension_methods/lib/fancylist.dart (generic)"?>
 ```dart
@@ -263,25 +262,25 @@ extension MyFancyList<T> on List<T> {
 }
 ```
 
-O tipo `T` é vinculado com base no tipo estático da lista em que
-os métodos são chamados.
+The type `T` is bound based on the static type of the list that
+the methods are called on.
 {% comment %}
 TODO (https://github.com/dart-lang/site-www/issues/2171):
-Adicione mais informações sobre extensões genéricas.
-Por exemplo, no código a seguir, `T` é `PENDING` porque PENDENTE:
+Add more info about generic extensions. 
+For example, in the following code, `T` is `PENDING` because PENDING:
 
-[PENDENTE: exemplo]
+[PENDING: example]
 
-[PENDENTE: Explique por que isso importa no uso normal.]
+[PENDING: Explain why it matters in normal usage.]
 {% endcomment %}
 
-## Recursos {:#resources}
+## Resources
 
-Para mais informações sobre métodos de extensão, veja o seguinte:
+For more information about extension methods, see the following:
 
-* [Artigo: Fundamentos de Métodos de Extensão do Dart][article]
-* [Especificação da funcionalidade][specification]
-* [Exemplo de métodos de extensão][sample]
+* [Article: Dart Extension Methods Fundamentals][article]
+* [Feature specification][specification]
+* [Extension methods sample][sample]
 
 [specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
 [article]: https://blog.dart.dev/extension-methods-2d466cd8b308

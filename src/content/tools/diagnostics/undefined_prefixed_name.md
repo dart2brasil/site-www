@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: undefined_prefixed_name
-description: "Detalhes sobre o diagnóstico undefined_prefixed_name produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_prefixed_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome '{0}' está sendo referenciado através do prefixo '{1}', mas não está definido em nenhuma das bibliotecas importadas usando esse prefixo._
+_The name '{0}' is being referenced through the prefix '{1}', but it isn't defined in any of the libraries imported using that prefix._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um identificador prefixado é encontrado
-onde o prefixo é válido, mas o identificador não está declarado em nenhuma das
-bibliotecas importadas usando esse prefixo.
+The analyzer produces this diagnostic when a prefixed identifier is found
+where the prefix is valid, but the identifier isn't declared in any of the
+libraries imported using that prefix.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `dart:core` não
-define nada chamado `a`:
+The following code produces this diagnostic because `dart:core` doesn't
+define anything named `a`:
 
 ```dart
 import 'dart:core' as p;
@@ -27,10 +28,10 @@ void f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se a biblioteca na qual o nome está declarado ainda não foi importada, adicione um
-import para a biblioteca.
+If the library in which the name is declared isn't imported yet, add an
+import for the library.
 
-Se o nome está errado, então mude-o para um dos nomes que estão declarados nas
-bibliotecas importadas.
+If the name is wrong, then change it to one of the names that's declared in
+the imported libraries.

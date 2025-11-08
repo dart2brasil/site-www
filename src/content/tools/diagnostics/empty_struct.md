@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: empty_struct
-description: "Detalhes sobre o diagnóstico empty_struct produzido pelo analisador Dart."
+description: >-
+  Details about the empty_struct
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A classe '{0}' não pode estar empty porque é uma subclasse de '{1}'._
+_The class '{0}' can't be empty because it's a subclass of '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma subclasse de `Struct` ou
-`Union` não tem nenhum campo. Ter um `Struct` ou `Union` empty
-não é suportado.
+The analyzer produces this diagnostic when a subclass of `Struct` or
+`Union` doesn't have any fields. Having an empty `Struct` or `Union`
+isn't supported.
 
-Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a classe `C`, que
-estende `Struct`, não declara nenhum campo:
+The following code produces this diagnostic because the class `C`, which
+extends `Struct`, doesn't declare any fields:
 
 ```dart
 import 'dart:ffi';
@@ -29,7 +30,7 @@ final class [!C!] extends Struct {}
 
 ## Common fixes
 
-Se a classe deve ser um struct, então declare um ou mais campos:
+If the class is intended to be a struct, then declare one or more fields:
 
 ```dart
 import 'dart:ffi';
@@ -40,8 +41,8 @@ final class C extends Struct {
 }
 ```
 
-Se a classe deve ser usada como um argumento de tipo para `Pointer`, então
-torne-a uma subclasse de `Opaque`:
+If the class is intended to be used as a type argument to `Pointer`, then
+make it a subclass of `Opaque`:
 
 ```dart
 import 'dart:ffi';
@@ -49,8 +50,8 @@ import 'dart:ffi';
 final class C extends Opaque {}
 ```
 
-Se a classe não deve ser um struct, então remova ou altere a
-cláusula extends:
+If the class isn't intended to be a struct, then remove or change the
+extends clause:
 
 ```dart
 class C {}

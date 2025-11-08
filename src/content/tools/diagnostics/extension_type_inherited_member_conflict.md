@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: extension_type_inherited_member_conflict
-description: "Detalhes sobre o diagnóstico extension_type_inherited_member_conflict produzido pelo analisador Dart."
+description: >-
+  Details about the extension_type_inherited_member_conflict
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O extension type '{0}' tem mais de um membro distinto chamado '{1}' de tipos implementados._
+_The extension type '{0}' has more than one distinct member named '{1}' from implemented types._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um extension type implementa
-dois ou mais outros tipos, e pelo menos dois desses tipos declaram um membro
-com o mesmo nome.
+The analyzer produces this diagnostic when an extension type implements
+two or more other types, and at least two of those types declare a member
+with the same name.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o extension type `C`
-implementa tanto `A` quanto `B`, e ambos declaram um membro chamado `m`:
+The following code produces this diagnostic because the extension type `C`
+implements both `A` and `B`, and both declare a member named `m`:
 
 ```dart
 class A {
@@ -31,10 +32,10 @@ extension type B(A a) {
 extension type [!C!](A a) implements A, B {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o extension type não precisa implementar todos os tipos listados,
-então remova todos exceto um dos tipos que introduzem os membros conflitantes:
+If the extension type doesn't need to implement all of the listed types,
+then remove all but one of the types introducing the conflicting members:
 
 ```dart
 class A {
@@ -48,9 +49,9 @@ extension type B(A a) {
 extension type C(A a) implements A {}
 ```
 
-Se o extension type precisa implementar todos os tipos listados mas você
-pode renomear os membros nesses tipos, então dê aos membros conflitantes
-nomes únicos:
+If the extension type needs to implement all of the listed types but you
+can rename the members in those types, then give the conflicting members
+unique names:
 
 ```dart
 class A {

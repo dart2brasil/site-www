@@ -1,9 +1,10 @@
 ---
 title: library_names
-description: "Detalhes sobre o diagnóstico library_names produzido pelo analisador Dart."
+description: >-
+  Details about the library_names
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
 <div class="tags">
@@ -17,32 +18,32 @@ ia-translate: true
   </a>
 </div>
 
-_O nome da library '{0}' não é um identificador lower\_case\_with\_underscores._
+_The library name '{0}' isn't a lower\_case\_with\_underscores identifier._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o nome de uma library não
-usa a convenção de nomenclatura lower_case_with_underscores.
+The analyzer produces this diagnostic when the name of a library doesn't
+use the lower_case_with_underscores naming convention.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o nome da library
-`libraryName` não é um identificador lower_case_with_underscores:
+The following code produces this diagnostic because the library name
+`libraryName` isn't a lower_case_with_underscores identifier:
 
 ```dart
 library [!libraryName!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o nome da library não é necessário, então remova o nome da library:
+If the library name is not required, then remove the library name:
 
 ```dart
 library;
 ```
 
-Se o nome da library é necessário, então converta-o para usar a
-convenção de nomenclatura lower_case_with_underscores:
+If the library name is required, then convert it to use the
+lower_case_with_underscores naming convention:
 
 ```dart
 library library_name;

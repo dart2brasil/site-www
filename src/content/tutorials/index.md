@@ -1,22 +1,21 @@
 ---
-ia-translate: true
-title: Tutoriais
-description: Tutoriais para escrever aplicativos Dart.
+title: Tutorials
+description: Tutorials for writing Dart apps.
 ---
 
-Estes tutoriais ensinam como usar a linguagem, ferramentas e APIs
-Dart para construir aplicativos.
+These tutorials teach you how to use the Dart
+language, tools, and APIs to build applications.
 
-## Aprenda o básico {:#basics}
+## Learn the basics {:#basics}
 
-Os guias a seguir pressupõem uma familiaridade básica com a linguagem
-Dart, que você pode obter consultando o [guia da linguagem](/language).
-Em seguida, para aprender sobre _futures_, experimente o
-[tutorial de programação assíncrona](/libraries/async/async-await).
+The following tours assume a basic familiarity with the Dart language,
+which you can get from skimming the [language tour](/language).
+Next, to learn about futures, try the
+[asynchronous programming tutorial](/libraries/async/async-await).
 
-Depois de se familiarizar com a linguagem e _futures_, aprenda sobre
-_iterables_ (iteráveis), _streams_ (fluxos) e _packages_ (pacotes),
-que são fundamentais para a maioria dos programas Dart.
+Once you're familiar with the language and futures,
+learn about _iterables_, _streams_, and _packages_,
+which are fundamental to most Dart programs.
 
 <div class="card-grid no_toc_section">
   <Card title="Asynchronous programming: streams" link="/libraries/async/using-streams">
@@ -29,14 +28,15 @@ que são fundamentais para a maioria dos programas Dart.
 
 
 <a id="server-side-dart-tutorials" aria-hidden="true"></a>
-## Crie aplicativos do lado do servidor {:#server}
+## Build server-side apps {:#server}
 
 {% render 'server-tutorials.md' %}
 
 <a id="more-tutorials" aria-hidden="true"></a>
-## Continue aprendendo {:#keep-learning}
+## Keep learning
 
-Para ter mais experiência no desenvolvimento com Dart, experimente mais tutoriais disponíveis!
+To get more experience developing with Dart,
+try more of the available tutorials!
 
 <div class="card-grid no_toc_section">
   <Card title="Dart cheatsheet" link="/resources/dart-cheatsheet">

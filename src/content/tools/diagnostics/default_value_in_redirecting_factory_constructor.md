@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: default_value_in_redirecting_factory_constructor
-description: "Detalhes sobre o diagnóstico default_value_in_redirecting_factory_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the default_value_in_redirecting_factory_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Valores default não são permitidos em construtores factory que redirecionam para outro construtor._
+_Default values aren't allowed in factory constructors that redirect to another constructor._
 
 ## Description
 
-O analisador produz este diagnóstico quando um construtor factory que
-redireciona para outro construtor especifica um valor default para um
-parâmetro opcional.
+The analyzer produces this diagnostic when a factory constructor that
+redirects to another constructor specifies a default value for an optional
+parameter.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o construtor factory
-em `A` tem um valor default para o parâmetro opcional `x`:
+The following code produces this diagnostic because the factory constructor
+in `A` has a default value for the optional parameter `x`:
 
 ```dart
 class A {
@@ -31,7 +32,7 @@ class B implements A {
 
 ## Common fixes
 
-Remova o valor default do construtor factory:
+Remove the default value from the factory constructor:
 
 ```dart
 class A {
@@ -43,9 +44,9 @@ class B implements A {
 }
 ```
 
-Note que esta correção pode mudar o valor usado quando o parâmetro opcional
-é omitido. Se isso acontecer, e se essa mudança é um problema, então considere
-tornar o parâmetro opcional um parâmetro obrigatório no método factory:
+Note that this fix might change the value used when the optional parameter
+is omitted. If that happens, and if that change is a problem, then consider
+making the optional parameter a required parameter in the factory method:
 
 ```dart
 class A {

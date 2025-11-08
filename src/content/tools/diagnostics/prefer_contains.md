@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_contains
-description: "Detalhes sobre o diagnóstico prefer_contains produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_contains
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,22 +18,22 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Sempre 'false' porque 'indexOf' é sempre maior ou igual a -1._
+_Always 'false' because 'indexOf' is always greater than or equal to -1._
 
-_Sempre 'true' porque 'indexOf' é sempre maior ou igual a -1._
+_Always 'true' because 'indexOf' is always greater than or equal to -1._
 
-_Uso desnecessário de 'indexOf' para testar contenção._
+_Unnecessary use of 'indexOf' to test for containment._
 
 ## Description
 
-O analisador produz este diagnóstico quando o método `indexOf` é usado e
-o resultado é apenas comparado com `-1` ou `0` de uma forma onde a semântica
-é equivalente a usar `contains`.
+The analyzer produces this diagnostic when the method `indexOf` is used and
+the result is only compared with `-1` or `0` in a way where the semantics
+are equivalent to using `contains`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a condição na
-instrução `if` está verificando se a lista contém a string:
+The following code produces this diagnostic because the condition in the
+`if` statement is checking to see whether the list contains the string:
 
 ```dart
 void f(List<String> l, String s) {
@@ -44,7 +45,7 @@ void f(List<String> l, String s) {
 
 ## Common fixes
 
-Use `contains` em vez disso, negando a condição quando necessário:
+Use `contains` instead, negating the condition when necessary:
 
 ```dart
 void f(List<String> l, String s) {

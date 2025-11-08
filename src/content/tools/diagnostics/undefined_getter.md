@@ -1,35 +1,36 @@
 ---
-ia-translate: true
 title: undefined_getter
-description: "Detalhes sobre o diagnóstico undefined_getter produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_getter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O getter '{0}' não está definido para o tipo de função '{1}'._
+_The getter '{0}' isn't defined for the '{1}' function type._
 
-_O getter '{0}' não está definido para o tipo '{1}'._
+_The getter '{0}' isn't defined for the type '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando encontra um identificador que
-parece ser o nome de um getter, mas não está definido ou não está
-visível no escopo em que está sendo referenciado.
+The analyzer produces this diagnostic when it encounters an identifier that
+appears to be the name of a getter but either isn't defined or isn't
+visible in the scope in which it's being referenced.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `String` não possui membro
-chamado `len`:
+The following code produces this diagnostic because `String` has no member
+named `len`:
 
 ```dart
 int f(String s) => s.[!len!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o identificador não está definido, então defina-o ou substitua-o pelo
-nome de um getter que está definido. O exemplo acima pode ser corrigido
-corrigindo a ortografia do getter:
+If the identifier isn't defined, then either define it or replace it with
+the name of a getter that is defined. The example above can be corrected by
+fixing the spelling of the getter:
 
 ```dart
 int f(String s) => s.length;

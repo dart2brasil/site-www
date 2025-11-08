@@ -1,38 +1,37 @@
 ---
-ia-translate: true
-title: "Variáveis"
-description: "Aprenda sobre variáveis em Dart."
+title: Variables
+description: Learn about variables in Dart.
 prevpage:
   url: /language
   title: Introduction
 nextpage:
   url: /language/operators
-  title: Operadores
+  title: Operators
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-Aqui está um exemplo de criação de uma variável e sua inicialização:
+Here's an example of creating a variable and initializing it:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
 ```dart
 var name = 'Bob';
 ```
 
-Variáveis armazenam referências. A variável chamada `name` contém uma
-referência a um objeto `String` com o valor "Bob".
+Variables store references. The variable called `name` contains a
+reference to a `String` object with a value of "Bob".
 
-O tipo da variável `name` é inferido como `String`,
-mas você pode alterar esse tipo especificando-o.
-Se um objeto não é restrito a um único tipo,
-especifique o tipo `Object` (ou `dynamic` se necessário).
+The type of the `name` variable is inferred to be `String`,
+but you can change that type by specifying it.
+If an object isn't restricted to a single type,
+specify the `Object` type (or `dynamic` if necessary).
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (type-decl)"?>
 ```dart
 Object name = 'Bob';
 ```
 
-Outra opção é declarar explicitamente o tipo que seria inferido:
+Another option is to explicitly declare the type that would be inferred:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (static-types)"?>
 ```dart
@@ -40,68 +39,68 @@ String name = 'Bob';
 ```
 
 :::note
-Esta página segue a
-[recomendação do guia de estilo](/effective-dart/design#types)
-de usar `var`, em vez de anotações de tipo, para variáveis locais.
+This page follows the
+[style guide recommendation](/effective-dart/design#types)
+of using `var`, rather than type annotations, for local variables.
 :::
 
-## Segurança nula {:#null-safety}
+## Null safety
 
-A linguagem Dart impõe segurança nula (null safety) _sound_.
+The Dart language enforces sound null safety.
 
-A segurança nula previne um erro que resulta do acesso não intencional
-de variáveis definidas como `null`. O erro é chamado de erro de dereferência nula.
-Um erro de dereferência nula ocorre quando você acessa uma propriedade ou chama um método
-em uma expressão que resulta em `null`.
-Uma exceção a esta regra é quando `null` suporta a propriedade ou método,
-como `toString()` ou `hashCode`. Com segurança nula, o compilador Dart
-detecta esses erros potenciais em tempo de compilação.
+Null safety prevents an error that results from unintentional access
+of variables set to `null`. The error is called a null dereference error.
+A null dereference error occurs when you access a property or call a method
+on an expression that evaluates to `null`.
+An exception to this rule is when `null` supports the property or method,
+like `toString()` or `hashCode`. With null safety, the Dart compiler
+detects these potential errors at compile time.
 
-Por exemplo, digamos que você queira encontrar o valor absoluto de uma variável `int` `i`.
-Se `i` for `null`, chamar `i.abs()` causa um erro de dereferência nula.
-Em outras linguagens, tentar isso pode levar a um erro de tempo de execução,
-mas o compilador do Dart proíbe essas ações.
-Portanto, aplicativos Dart não podem causar erros de tempo de execução.
+For example, say you want to find the absolute value of an `int` variable `i`.
+If `i` is `null`, calling `i.abs()` causes a null dereference error.
+In other languages, trying this could lead to a runtime error,
+but Dart's compiler prohibits these actions.
+Therefore, Dart apps can't cause runtime errors.
 
-A segurança nula introduz três mudanças principais:
+Null safety introduces three key changes:
 
-1.  Quando você especifica um tipo para uma variável, parâmetro ou outro
-    componente relevante, você pode controlar se o tipo permite `null`.
-    Para habilitar a nulabilidade, você adiciona um `?` ao final da declaração de tipo.
+1.  When you specify a type for a variable, parameter, or another
+    relevant component, you can control whether the type allows `null`.
+    To enable nullability, you add a `?` to the end of the type declaration.
 
     ```dart
-    String? name  // Tipo anulável. Pode ser `null` ou string.
+    String? name  // Nullable type. Can be `null` or string.
 
-    String name   // Tipo não anulável. Não pode ser `null`, mas pode ser string.
+    String name   // Non-nullable type. Cannot be `null` but can be string.
     ```
 
-2.  Você deve inicializar as variáveis antes de usá-las.
-    Variáveis anuláveis são padronizadas como `null`, então elas são inicializadas por padrão.
-    Dart não define valores iniciais para tipos não anuláveis.
-    Ele força você a definir um valor inicial.
-    Dart não permite que você observe uma variável não inicializada.
-    Isso impede que você acesse propriedades ou chame métodos
-    onde o tipo do receptor pode ser `null`
-    mas `null` não suporta o método ou propriedade usado.
+2.  You must initialize variables before using them.
+    Nullable variables default to `null`, so they are initialized by default.
+    Dart doesn't set initial values to non-nullable types.
+    It forces you to set an initial value.
+    Dart doesn't allow you to observe an uninitialized variable.
+    This prevents you from accessing properties or calling methods
+    where the receiver's type can be `null`
+    but `null` doesn't support the method or property used.
 
-3.  Você não pode acessar propriedades ou chamar métodos em uma expressão com um
-    tipo anulável. A mesma exceção se aplica onde é uma propriedade ou método que `null` suporta como `hashCode` ou `toString()`.
+3.  You can't access properties or call methods on an expression with a
+    nullable type. The same exception applies where it's a property or method that `null` supports like `hashCode` or `toString()`.
 
-A segurança nula _sound_ transforma potenciais **erros de tempo de execução**
-em erros de análise de **tempo de edição**.
-A segurança nula sinaliza uma variável não nula quando ela foi:
+Sound null safety changes potential **runtime errors**
+into **edit-time** analysis errors.
+Null safety flags a non-null variable when it has been either:
 
-* Não inicializada com um valor não nulo.
-* Atribuído um valor `null`.
+* Not initialized with a non-null value.
+* Assigned a `null` value.
 
-Essa verificação permite que você corrija esses erros _antes_ de implantar seu aplicativo.
+This check allows you to fix these errors _before_ deploying your app.
 
-## Valor padrão {:#default-value}
+## Default value
 
-Variáveis não inicializadas que têm um tipo anulável
-têm um valor inicial de `null`.
-Mesmo variáveis com tipos numéricos são inicialmente nulas,
-porque números - como tudo mais em Dart - são objetos.
+Uninitialized variables that have a nullable type
+have an initial value of `null`.
+Even variables with numeric types are initially null,
+because numbers—like everything else in Dart—are objects.
 
 <?code-excerpt "misc/test/language_tour/variables_test.dart (var-null-init)"?>
 ```dart
@@ -110,24 +109,24 @@ assert(lineCount == null);
 ```
 
 :::note
-O código de produção ignora a chamada `assert()`. Durante o desenvolvimento, por outro
-lado, <code>assert(<em>condição</em>)</code> lança uma exceção se
-_condição_ for falsa. Para detalhes, confira [Assert][].
+Production code ignores the `assert()` call. During development, on the other
+hand, <code>assert(<em>condition</em>)</code> throws an exception if
+_condition_ is false. For details, check out [Assert][].
 :::
 
-Com segurança nula, você deve inicializar os valores
-de variáveis não anuláveis antes de usá-las:
+With null safety, you must initialize the values
+of non-nullable variables before you use them:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-init)"?>
 ```dart
 int lineCount = 0;
 ```
 
-Você não precisa inicializar uma variável local onde ela é declarada,
-mas você precisa atribuir um valor a ela antes que ela seja usada.
-Por exemplo, o seguinte código é válido porque
-Dart pode detectar que `lineCount` não é nula no momento
-em que é passada para `print()`:
+You don't have to initialize a local variable where it's declared,
+but you do need to assign it a value before it's used.
+For example, the following code is valid because
+Dart can detect that `lineCount` is non-null by the time
+it's passed to `print()`:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-flow)"?>
 ```dart
@@ -142,28 +141,28 @@ if (weLikeToCount) {
 print(lineCount);
 ```
 
-Variáveis de nível superior e de classe são inicializadas preguiçosamente (lazy);
-o código de inicialização é executado
-na primeira vez que a variável é usada.
+Top-level and class variables are lazily initialized;
+the initialization code runs
+the first time the variable is used.
 
 
-## Variáveis `late` {:#late-variables}
+## Late variables
 
-O modificador `late` tem dois casos de uso:
+The `late` modifier has two use cases:
 
-* Declarar uma variável não anulável que é inicializada após sua declaração.
-* Inicializar uma variável preguiçosamente.
+* Declaring a non-nullable variable that's initialized after its declaration.
+* Lazily initializing a variable.
 
-Muitas vezes, a análise de fluxo de controle do Dart pode detectar quando uma variável não anulável
-é definida com um valor não nulo antes de ser usada,
-mas às vezes a análise falha.
-Dois casos comuns são variáveis de nível superior e variáveis de instância:
-Dart muitas vezes não pode determinar se elas estão definidas,
-então ele não tenta.
+Often Dart's control flow analysis can detect when a non-nullable variable
+is set to a non-null value before it's used,
+but sometimes analysis fails.
+Two common cases are top-level variables and instance variables:
+Dart often can't determine whether they're set,
+so it doesn't try.
 
-Se você tem certeza de que uma variável é definida antes de ser usada,
-mas o Dart discorda,
-você pode corrigir o erro marcando a variável como `late`:
+If you're sure that a variable is set before it's used,
+but Dart disagrees,
+you can fix the error by marking the variable as `late`:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-top-level)" replace="/late/[!$&!]/g"?>
 ```dart
@@ -175,23 +174,23 @@ void main() {
 }
 ```
 
-:::warning Aviso
-Se você não inicializar uma variável `late`,
-um erro de tempo de execução ocorrerá quando a variável for usada.
+:::warning Notice
+If you fail to initialize a `late` variable,
+a runtime error occurs when the variable is used.
 :::
 
-Quando você marca uma variável como `late`, mas a inicializa em sua declaração,
-então o inicializador é executado na primeira vez que a variável é usada.
-Essa inicialização preguiçosa é útil em alguns casos:
+When you mark a variable as `late` but initialize it at its declaration,
+then the initializer runs the first time the variable is used.
+This lazy initialization is handy in a couple of cases:
 
-* A variável pode não ser necessária,
-  e inicializá-la é caro.
-* Você está inicializando uma variável de instância,
-  e seu inicializador precisa acessar `this`.
+* The variable might not be needed,
+  and initializing it is costly.
+* You're initializing an instance variable,
+  and its initializer needs access to `this`.
 
-No exemplo a seguir,
-se a variável `temperature` nunca for usada,
-então a função cara `readThermometer()` nunca é chamada:
+In the following example,
+if the `temperature` variable is never used,
+then the expensive `readThermometer()` function is never called:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
@@ -200,18 +199,18 @@ então a função cara `readThermometer()` nunca é chamada:
 ```
 
 
-## `Final` e `const` {:#final-and-const}
+## Final and const
 
-Se você nunca pretende alterar uma variável, use `final` ou `const`, seja
-em vez de `var` ou em adição a um tipo. Uma variável `final` pode ser definida
-apenas uma vez; uma variável `const` é uma constante de tempo de compilação. (Variáveis `const`
-são implicitamente `final`.)
+If you never intend to change a variable, use `final` or `const`, either
+instead of `var` or in addition to a type. A final variable can be set
+only once; a const variable is a compile-time constant. (Const variables
+are implicitly final.)
 
 :::note
-[Variáveis de instância][] podem ser `final`, mas não `const`.
+[Instance variables][] can be `final` but not `const`.
 :::
 
-Aqui está um exemplo de criação e definição de uma variável `final`:
+Here's an example of creating and setting a `final` variable:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (final)"?>
 ```dart
@@ -219,18 +218,18 @@ final name = 'Bob'; // Without a type annotation
 final String nickname = 'Bobby';
 ```
 
-Você não pode alterar o valor de uma variável `final`:
+You can't change the value of a `final` variable:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-final)"?>
 ```dart tag=fails-sa
 name = 'Alice'; // Error: a final variable can only be set once.
 ```
 
-Use `const` para variáveis que você deseja que sejam **constantes de tempo de compilação**. Se
-a variável `const` estiver no nível da classe, marque-a como `static const`.
-Onde você declara a variável, defina o valor para uma constante de tempo de compilação
-como um número ou literal de string, uma variável `const` ou o resultado
-de uma operação aritmética em números constantes:
+Use `const` for variables that you want to be **compile-time constants**. If
+the const variable is at the class level, mark it `static const`.
+Where you declare the variable, set the value to a compile-time constant
+such as a number or string literal, a const
+variable, or the result of an arithmetic operation on constant numbers:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const)"?>
 ```dart
@@ -238,10 +237,10 @@ const bar = 1000000; // Unit of pressure (dynes/cm2)
 const double atm = 1.01325 * bar; // Standard atmosphere
 ```
 
-A palavra-chave `const` não é apenas para declarar variáveis constantes.
-Você também pode usá-la para criar _valores_ constantes,
-bem como para declarar construtores que _criam_ valores constantes.
-Qualquer variável pode ter um valor constante.
+The `const` keyword isn't just for declaring constant variables.
+You can also use it to create constant _values_,
+as well as to declare constructors that _create_ constant values.
+Any variable can have a constant value.
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-vs-final)"?>
 ```dart
@@ -250,8 +249,8 @@ final bar = const [];
 const baz = []; // Equivalent to `const []`
 ```
 
-Você pode omitir `const` da expressão de inicialização de uma declaração `const`,
-como para `baz` acima. Para detalhes, veja [NÃO use const redundantemente][].
+You can omit `const` from the initializing expression of a `const` declaration,
+like for `baz` above. For details, see [DON'T use const redundantly][].
 
 You can change the reference of a non-final, non-const variable,
 even if it used to have a `const` value:
@@ -261,17 +260,17 @@ even if it used to have a `const` value:
 foo = [1, 2, 3]; // Was const []
 ```
 
-Você não pode alterar o valor de uma variável `const`:
+You can't change the value of a `const` variable:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
 ```dart tag=fails-sa
 baz = [42]; // Error: Constant variables can't be assigned a value.
 ```
 
-Você pode definir constantes que usam
-[verificações de tipo e casts][] (`is` e `as`),
+You can define constants that use
+[type checks and casts][] (`is` and `as`),
 [collection `if`][],
-e [operadores spread][] (`...` e `...?`):
+and [spread operators][] (`...` and `...?`):
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
@@ -282,33 +281,34 @@ const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
 
 :::note
-Embora um objeto `final` não possa ser modificado,
-seus campos podem ser alterados.
-Em comparação, um objeto `const` e seus campos
-não podem ser alterados: eles são _imutáveis_.
+Although a `final` object cannot be modified,
+its fields can be changed. 
+In comparison, a `const` object and its fields
+cannot be changed: they're _immutable_.
 :::
 
-Para mais informações sobre como usar `const` para criar valores constantes, veja
-[Listas][], [Mapas][] e [Classes][].
+For more information on using `const` to create constant values, see
+[Lists][], [Maps][], and [Classes][].
 
-## Variáveis curinga (Wildcard variables)
+
+## Wildcard variables
 
 :::version-note
-Variáveis curinga requerem uma
-[versão de linguagem][language version] de pelo menos 3.7.
+Wildcard variables require
+a [language version][] of at least 3.7.
 :::
 
-Uma variável curinga com o nome `_` declara uma variável local ou parâmetro
-que não é vinculativo; essencialmente, um espaço reservado.
-O inicializador, se houver um, ainda é executado, mas o valor não é acessível.
-Múltiplas declarações nomeadas `_` podem existir no mesmo namespace sem um erro de colisão.
+A wildcard variable with the name `_` declares a local variable or parameter
+that is non-binding; essentially, a placeholder.
+The initializer, if there is one, is still executed, but the value isn't accessible.
+Multiple declarations named `_` can exist in the same namespace without a collision error.
 
-Declarações de nível superior ou membros onde a privacidade da biblioteca pode ser afetada
-não são usos válidos para variáveis curinga.
-Declarações locais a um escopo de bloco, como nos exemplos a seguir,
-podem declarar um curinga:
+Top-level declarations or members where library privacy might be affected are
+not valid uses for wildcard variables.
+Declarations local to a block scope, such as the following examples,
+can declare a wildcard:
 
-* Declaração de variável local.
+* Local variable declaration.
   ```dart
   main() {
     var _ = 1;
@@ -321,7 +321,7 @@ podem declarar um curinga:
   for (var _ in list) {}
   ```
 
-* Parâmetros de cláusula `catch`.
+* Catch clause parameters.
   ```dart
   try {
     throw '!';
@@ -330,7 +330,7 @@ podem declarar um curinga:
   }
   ```
 
-* Parâmetros de tipo genérico e tipo de função.
+* Generic type and function type parameters.
   ```dart
   class T<_> {}
   void genericFunction<_>() {}
@@ -338,7 +338,7 @@ podem declarar um curinga:
   takeGenericCallback(<_>() => true);
   ```
 
-* Parâmetros de função.
+* Function parameters.
   ```dart
   Foo(_, this._, super._, void _()) {}
 
@@ -350,19 +350,19 @@ podem declarar um curinga:
   ```
 
 :::tip
-Habilite o lint [`unnecessary_underscores`][] para identificar onde uma única
-variável curinga não vinculativa `_` pode substituir a convenção anterior de usar
-múltiplos underscores vinculativos (`__`,`___`, etc.) para evitar colisões de nome.
+Enable the lint [`unnecessary_underscores`][] to identify where a single
+non-binding wildcard variable `_` can replace the previous convention of using
+multiple binding underscores (`__`,`___`, etc.) to avoid name collisions.
 :::
 
 [Assert]: /language/error-handling#assert
-[Variáveis de instância]: /language/classes#instance-variables
-[NÃO use const redundantemente]: /effective-dart/usage#dont-use-const-redundantly
-[verificações de tipo e casts]: /language/operators#type-test-operators
+[Instance variables]: /language/classes#instance-variables
+[DON'T use const redundantly]: /effective-dart/usage#dont-use-const-redundantly
+[type checks and casts]: /language/operators#type-test-operators
 [collection `if`]: /language/collections#control-flow-operators
-[operadores spread]: /language/collections#spread-operators
-[Listas]: /language/collections#lists
-[Mapas]: /language/collections#maps
+[spread operators]: /language/collections#spread-operators
+[Lists]: /language/collections#lists
+[Maps]: /language/collections#maps
 [Classes]: /language/classes
 [language version]: /resources/language/evolution#language-versioning
 [`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores

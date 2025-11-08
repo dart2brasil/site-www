@@ -1,23 +1,22 @@
 ---
-ia-translate: true
-title: "Comentários"
-description: "Os diferentes tipos de comentários em Dart."
+title: Comments
+description: The different comment types in Dart.
 prevpage:
   url: /language/operators
-  title: Operadores
+  title: Operators
 nextpage:
   url: /language/built-in-types
   title: Built-in types
 ---
 
-O Dart suporta comentários de uma linha, comentários de várias linhas e
-comentários de documentação.
+Dart supports single-line comments, multi-line comments, and
+documentation comments.
 
 
-## Comentários de uma linha {:#single-line-comments}
+## Single-line comments
 
-Um comentário de uma linha começa com `//`. Tudo entre `//` e o
-final da linha é ignorado pelo compilador Dart.
+A single-line comment begins with `//`. Everything between `//` and the
+end of line is ignored by the Dart compiler.
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (single-line-comments)"?>
 ```dart
@@ -27,12 +26,12 @@ void main() {
 }
 ```
 
-## Comentários de várias linhas {:#multi-line-comments}
+## Multi-line comments
 
-Um comentário de várias linhas começa com `/*` e termina com `*/`. Tudo
-entre `/*` e `*/` é ignorado pelo compilador Dart (a menos que o
-comentário seja um comentário de documentação; veja a próxima seção). Comentários de
-várias linhas podem ser aninhados.
+A multi-line comment begins with `/*` and ends with `*/`. Everything
+between `/*` and `*/` is ignored by the Dart compiler (unless the
+comment is a documentation comment; see the next section). Multi-line
+comments can nest.
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (multi-line-comments)"?>
 ```dart
@@ -48,20 +47,20 @@ void main() {
 }
 ```
 
-## Comentários de documentação {:#documentation-comments}
+## Documentation comments
 
-Comentários de documentação são comentários de várias linhas ou de uma linha que começam
-com `///` ou `/**`. Usar `///` em linhas consecutivas tem o mesmo
-efeito que um comentário de documentação de várias linhas.
+Documentation comments are multi-line or single-line comments that begin
+with `///` or `/**`. Using `///` on consecutive lines has the same
+effect as a multi-line doc comment.
 
-Dentro de um comentário de documentação, o analisador ignora todo o texto,
-a menos que esteja entre colchetes. Usando colchetes, você pode se referir a
-classes, métodos, campos, variáveis de nível superior (top-level), funções e
-parâmetros. Os nomes entre colchetes são resolvidos no escopo léxico do
-elemento do programa documentado.
+Inside a documentation comment, the analyzer ignores all text
+unless it is enclosed in brackets. Using brackets, you can refer to
+classes, methods, fields, top-level variables, functions, and
+parameters. The names in brackets are resolved in the lexical scope of
+the documented program element.
 
-Aqui está um exemplo de comentários de documentação com referências a outras
-classes e argumentos:
+Here is an example of documentation comments with references to other
+classes and arguments:
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (doc-comments)"?>
 ```dart
@@ -90,13 +89,13 @@ class Llama {
 }
 ```
 
-Na documentação gerada da classe, `[feed]` torna-se um link
-para a documentação do método `feed`,
-e `[Food]` torna-se um link para a documentação da classe `Food`.
+In the class's generated documentation, `[feed]` becomes a link
+to the docs for the `feed` method,
+and `[Food]` becomes a link to the docs for the `Food` class.
 
-Para analisar o código Dart e gerar documentação HTML, você pode usar a ferramenta
-de geração de documentação do Dart, [`dart doc`](/tools/dart-doc).
-Para um exemplo de documentação gerada, consulte a
-[documentação da API Dart]({{site.dart-api}}).
-Para obter conselhos sobre como estruturar seus comentários, consulte
-[Effective Dart: Documentação](/effective-dart/documentation).
+To parse Dart code and generate HTML documentation, you can use Dart's
+documentation generation tool, [`dart doc`](/tools/dart-doc).
+For an example of generated documentation, see the 
+[Dart API documentation.]({{site.dart-api}}) 
+For advice on how to structure your comments, see
+[Effective Dart: Documentation.](/effective-dart/documentation)

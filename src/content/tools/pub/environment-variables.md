@@ -1,43 +1,42 @@
 ---
-ia-translate: true
-title: "Configurando variáveis de ambiente do pub"
-shortTitle: "Variáveis de ambiente do Pub"
+title: Configuring pub environment variables
+shortTitle: Pub environment variables
 description: >-
-  Como configurar seu ambiente para a ferramenta de gerenciamento de pacotes do Dart, pub.
+  How to configure your environment for Dart's package management tool, pub.
 showToc: false
 ---
 
-Variáveis de ambiente permitem que você personalize o pub para atender às suas necessidades.
+Environment variables allow you to customize pub to suit your needs.
 
 `PUB_CACHE`
-: Algumas dependências do pub são baixadas para o cache do pub.
-  Por padrão, este diretório está localizado em
-  `$HOME/.pub-cache` (no macOS e Linux),
-  ou em `%LOCALAPPDATA%\Pub\Cache` (no Windows). (A localização precisa do
-  cache pode variar dependendo da versão do Windows.)
-  Você pode usar a variável de ambiente `PUB_CACHE`
-  para especificar outro local. Para mais informações, veja
-  [O cache de pacotes do sistema](/tools/pub/cmd/pub-get#the-system-package-cache).
+: Some of pub's dependencies are downloaded to the pub cache.
+  By default, this directory is located under
+  `$HOME/.pub-cache` (on macOS and Linux),
+  or in `%LOCALAPPDATA%\Pub\Cache` (on Windows). (The precise location of the
+  cache may vary depending on the Windows version.)
+  You can use the `PUB_CACHE` environment
+  variable to specify another location. For more information, see
+  [The system package cache](/tools/pub/cmd/pub-get#the-system-package-cache).
 
 `PUB_HOSTED_URL`
-: O Pub baixa dependências do [site pub.dev.]({{site.pub}})
-  Para especificar a localização de um servidor espelho em particular,
-  use a variável de ambiente `PUB_HOSTED_URL`. Por exemplo:
+: Pub downloads dependencies from the [pub.dev site.]({{site.pub}})
+  To specify the location of a particular mirror server,
+  use the `PUB_HOSTED_URL` environment variable. For example:
 
 ```bash
 PUB_HOSTED_URL = https://pub.example.com
 ```
 
-Para mais informações sobre como usar um repositório de pacotes privado,
-veja [Substituindo o repositório de pacotes padrão][].
+For more information about using a private package repository,
+see [Overriding the default package repository][].
 
 :::note
-Se você está tentando usar `pub get` por trás de um firewall corporativo
-e ele falha,
-por favor veja [`pub get` falha por trás de um firewall corporativo][]
-para informações sobre como configurar as variáveis de ambiente de proxy
-para sua plataforma.
+If you are attempting to use `pub get` behind a corporate firewall
+and it fails, 
+please see [`pub get` fails from behind a corporate firewall][]
+for information on how to set up the proxy environment variables
+for your platform.
 :::
 
-[`pub get` falha por trás de um firewall corporativo]: /tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall
-[Substituindo o repositório de pacotes padrão]: /tools/pub/custom-package-repositories#default-override
+[`pub get` fails from behind a corporate firewall]: /tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall
+[Overriding the default package repository]: /tools/pub/custom-package-repositories#default-override

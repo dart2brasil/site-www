@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: super_invocation_not_last
-description: "Detalhes sobre o diagnóstico super_invocation_not_last produzido pelo analisador do Dart."
+description: >-
+  Details about the super_invocation_not_last
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 canonical: https://dart.dev/tools/diagnostics/super_invocation_not_last
 redirectTo: /tools/diagnostics/super_invocation_not_last
@@ -10,20 +11,20 @@ noindex: true
 bodyClass: highlight-diagnostics
 ---
 
-_(Anteriormente conhecido como `invalid_super_invocation`)_
+_(Previously known as `invalid_super_invocation`)_
 
-_A chamada do superconstrutor deve ser a última em uma lista de inicializadores: '{0}'._
+_The superconstructor call must be last in an initializer list: '{0}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando a lista de inicializadores de um
-construtor contém uma invocação de um construtor na superclasse, mas
-a invocação não é o último item na lista de inicializadores.
+The analyzer produces this diagnostic when the initializer list of a
+constructor contains an invocation of a constructor in the superclass, but
+the invocation isn't the last item in the initializer list.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a invocação do
-construtor da superclasse não é o último item na lista de inicializadores:
+The following code produces this diagnostic because the invocation of the
+superclass' constructor isn't the last item in the initializer list:
 
 ```dart
 class A {
@@ -37,8 +38,8 @@ class B extends A {
 
 ## Common fixes
 
-Mova a invocação do construtor da superclasse para o final da
-lista de inicializadores:
+Move the invocation of the superclass' constructor to the end of the
+initializer list:
 
 ```dart
 class A {

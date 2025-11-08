@@ -1,30 +1,31 @@
 ---
-ia-translate: true
 title: unnecessary_null_comparison
-description: "Detalhes sobre o diagnóstico unnecessary_null_comparison produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_null_comparison
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O operando não pode ser 'null', então a condição é sempre 'false'._
+_The operand can't be 'null', so the condition is always 'false'._
 
-_O operando não pode ser 'null', então a condição é sempre 'true'._
+_The operand can't be 'null', so the condition is always 'true'._
 
-_O operando deve ser 'null', então a condição é sempre 'false'._
+_The operand must be 'null', so the condition is always 'false'._
 
-_O operando deve ser 'null', então a condição é sempre 'true'._
+_The operand must be 'null', so the condition is always 'true'._
 
 ## Description
 
-O analisador produz este diagnóstico quando encontra uma comparação de igualdade
-(seja `==` ou `!=`) com um operando `null` e o outro operando
-não pode ser `null`. Tais comparações são sempre `true` ou `false`, então
-não servem a nenhum propósito.
+The analyzer produces this diagnostic when it finds an equality comparison
+(either `==` or `!=`) with one operand of `null` and the other operand
+can't be `null`. Such comparisons are always either `true` or `false`, so
+they serve no purpose.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque `x` nunca pode ser
-`null`, então a comparação sempre avalia para `true`:
+The following code produces this diagnostic because `x` can never be
+`null`, so the comparison always evaluates to `true`:
 
 ```dart
 void f(int x) {
@@ -34,8 +35,8 @@ void f(int x) {
 }
 ```
 
-O código a seguir produz este diagnóstico porque `x` nunca pode ser
-`null`, então a comparação sempre avalia para `false`:
+The following code produces this diagnostic because `x` can never be
+`null`, so the comparison always evaluates to `false`:
 
 ```dart
 void f(int x) {
@@ -47,8 +48,8 @@ void f(int x) {
 
 ## Common fixes
 
-Se o outro operando deve poder ser `null`, então altere o tipo do
-operando:
+If the other operand should be able to be `null`, then change the type of
+the operand:
 
 ```dart
 void f(int? x) {
@@ -58,7 +59,7 @@ void f(int? x) {
 }
 ```
 
-Se o outro operando realmente não pode ser `null`, então remova a condição:
+If the other operand really can't be `null`, then remove the condition:
 
 ```dart
 void f(int x) {

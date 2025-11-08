@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: recursive_constructor_redirect
-description: "Detalhes sobre o diagnóstico recursive_constructor_redirect produzido pelo analisador Dart."
+description: >-
+  Details about the recursive_constructor_redirect
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Construtores não podem redirecionar para si mesmos direta ou indiretamente._
+_Constructors can't redirect to themselves either directly or indirectly._
 
 ## Description
 
-O analisador produz este diagnóstico quando um construtor redireciona para
-si mesmo, direta ou indiretamente, criando um loop infinito.
+The analyzer produces this diagnostic when a constructor redirects to
+itself, either directly or indirectly, creating an infinite loop.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque os construtores
-generativos `C.a` e `C.b` redirecionam um para o outro:
+The following code produces this diagnostic because the generative
+constructors `C.a` and `C.b` each redirect to the other:
 
 ```dart
 class C {
@@ -25,8 +26,8 @@ class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque os construtores
-factory `A` e `B` redirecionam um para o outro:
+The following code produces this diagnostic because the factory
+constructors `A` and `B` each redirect to the other:
 
 ```dart
 abstract class A {
@@ -40,8 +41,8 @@ class B implements A {
 
 ## Common fixes
 
-No caso de construtores generativos, quebre o ciclo definindo
-pelo menos um dos construtores para não redirecionar para outro construtor:
+In the case of generative constructors, break the cycle by finding defining
+at least one of the constructors to not redirect to another constructor:
 
 ```dart
 class C {
@@ -50,10 +51,10 @@ class C {
 }
 ```
 
-No caso de construtores factory, quebre o ciclo definindo pelo menos
-um dos construtores factory para fazer uma das seguintes ações:
+In the case of factory constructors, break the cycle by defining at least
+one of the factory constructors to do one of the following:
 
-- Redirecionar para um construtor generativo:
+- Redirect to a generative constructor:
 
 ```dart
 abstract class A {
@@ -65,7 +66,7 @@ class B implements A {
 }
 ```
 
-- Não redirecionar para outro construtor:
+- Not redirect to another constructor:
 
 ```dart
 abstract class A {
@@ -80,7 +81,7 @@ class B implements A {
 }
 ```
 
-- Não ser um construtor factory:
+- Not be a factory constructor:
 
 ```dart
 abstract class A {

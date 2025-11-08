@@ -1,41 +1,40 @@
 ---
-ia-translate: true
-title: Tratamento de erros
-description: "Aprenda sobre como lidar com erros e exceções em Dart."
+title: Error handling
+description: Learn about handling errors and exceptions in Dart.
 prevpage:
   url: /language/branches
-  title: Desvios
+  title: Branches
 nextpage:
   url: /language/functions
   title: Functions
 ---
 
-## Exceções {:#exceptions}
+## Exceptions
 
-Seu código Dart pode lançar e capturar exceções. Exceções são erros
-indicando que algo inesperado aconteceu. Se a exceção não for
-capturada, o [isolado][isolate] que lançou a exceção é suspenso,
-e tipicamente o isolado e seu programa são encerrados.
+Your Dart code can throw and catch exceptions. Exceptions are errors
+indicating that something unexpected happened. If the exception isn't
+caught, the [isolate][] that raised the exception is suspended,
+and typically the isolate and its program are terminated.
 
-Em contraste com Java, todas as exceções de Dart são exceções não verificadas.
-Métodos não declaram quais exceções eles podem lançar, e você não é
-obrigado a capturar nenhuma exceção.
+In contrast to Java, all of Dart's exceptions are unchecked exceptions.
+Methods don't declare which exceptions they might throw, and you aren't
+required to catch any exceptions.
 
-Dart fornece os tipos [`Exception`][`Exception`] e [`Error`][`Error`],
-assim como inúmeros subtipos predefinidos. Você pode, claro,
-definir suas próprias exceções. No entanto, programas Dart podem lançar qualquer
-objeto não nulo — não apenas objetos Exception e Error — como uma exceção.
+Dart provides [`Exception`][] and [`Error`][]
+types, as well as numerous predefined subtypes. You can, of course,
+define your own exceptions. However, Dart programs can throw any
+non-null object—not just Exception and Error objects—as an exception.
 
-### Lançar {:#throw}
+### Throw
 
-Aqui está um exemplo de lançar, ou *levantar*, uma exceção:
+Here's an example of throwing, or *raising*, an exception:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (throw-FormatException)"?>
 ```dart
 throw FormatException('Expected at least 1 section');
 ```
 
-Você também pode lançar objetos arbitrários:
+You can also throw arbitrary objects:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (out-of-llamas)"?>
 ```dart
@@ -43,23 +42,24 @@ throw 'Out of llamas!';
 ```
 
 :::note
-Código de qualidade de produção geralmente lança tipos que
-implementam [`Error`][`Error`] ou [`Exception`][`Exception`].
+Production-quality code usually throws types that
+implement [`Error`][] or [`Exception`][].
 :::
 
-Como lançar uma exceção é uma expressão, você pode lançar exceções
-em declarações =\>, assim como em qualquer outro lugar que permita expressões:
+Because throwing an exception is an expression, you can throw exceptions
+in =\> statements, as well as anywhere else that allows expressions:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (throw-is-an-expression)"?>
 ```dart
 void distanceTo(Point other) => throw UnimplementedError();
 ```
 
-### Capturar {:#catch}
 
-Capturar, ou pegar, uma exceção impede que a exceção se
-propague (a menos que você relance a exceção).
-Capturar uma exceção lhe dá a chance de lidar com ela:
+### Catch
+
+Catching, or capturing, an exception stops the exception from
+propagating (unless you rethrow the exception).
+Catching an exception gives you a chance to handle it:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try)"?>
 ```dart
@@ -70,10 +70,10 @@ try {
 }
 ```
 
-Para lidar com código que pode lançar mais de um tipo de exceção, você pode
-especificar múltiplas cláusulas catch. A primeira cláusula catch que corresponde ao
-tipo do objeto lançado lida com a exceção. Se a cláusula catch não
-especificar um tipo, essa cláusula pode lidar com qualquer tipo de objeto lançado:
+To handle code that can throw more than one type of exception, you can
+specify multiple catch clauses. The first catch clause that matches the
+thrown object's type handles the exception. If the catch clause does not
+specify a type, that clause can handle any type of thrown object:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch)"?>
 ```dart
@@ -91,13 +91,13 @@ try {
 }
 ```
 
-Como o código anterior mostra, você pode usar `on` ou `catch` ou ambos.
-Use `on` quando você precisar especificar o tipo da exceção. Use `catch` quando
-seu manipulador de exceção precisar do objeto exceção.
+As the preceding code shows, you can use either `on` or `catch` or both.
+Use `on` when you need to specify the exception type. Use `catch` when
+your exception handler needs the exception object.
 
-Você pode especificar um ou dois parâmetros para `catch()`.
-O primeiro é a exceção que foi lançada,
-e o segundo é o stack trace (uma objeto [`StackTrace`][`StackTrace`]).
+You can specify one or two parameters to `catch()`.
+The first is the exception that was thrown,
+and the second is the stack trace (a [`StackTrace`][] object).
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
 ```dart
@@ -111,9 +111,9 @@ try {
 }
 ```
 
-Para lidar parcialmente com uma exceção,
-enquanto permite que ela se propague,
-use a palavra-chave `rethrow` (relançar).
+To partially handle an exception,
+while allowing it to propagate,
+use the `rethrow` keyword.
 
 <?code-excerpt "misc/test/language_tour/exceptions_test.dart (rethrow)" replace="/rethrow;/[!$&!]/g"?>
 ```dart
@@ -136,11 +136,12 @@ void main() {
 }
 ```
 
-### Finally {:#finally}
 
-Para garantir que algum código seja executado, seja ou não uma exceção lançada, use
-uma cláusula `finally`. Se nenhuma cláusula `catch` corresponder à exceção, a
-exceção é propagada depois que a cláusula `finally` é executada:
+### Finally
+
+To ensure that some code runs whether or not an exception is thrown, use
+a `finally` clause. If no `catch` clause matches the exception, the
+exception is propagated after the `finally` clause runs:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (finally)"?>
 ```dart
@@ -152,7 +153,7 @@ try {
 }
 ```
 
-A cláusula `finally` é executada após quaisquer cláusulas `catch` correspondentes:
+The `finally` clause runs after any matching `catch` clauses:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-finally)"?>
 ```dart
@@ -165,14 +166,14 @@ try {
 }
 ```
 
-Para saber mais, confira a
-[documentação da biblioteca principal sobre exceções](/libraries/dart-core#exceptions).
+To learn more, check out the
+[core library exception docs](/libraries/dart-core#exceptions).
 
-## Assert {:#assert}
+## Assert
 
-Durante o desenvolvimento, use uma declaração assert
-— `assert(<condição>, <mensagemOpcional>);` — para
-interromper a execução normal se uma condição booleana for falsa.
+During development, use an assert 
+statement— `assert(<condition>, <optionalMessage>);` —to
+disrupt normal execution if a boolean condition is false. 
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert)"?>
 ```dart
@@ -186,9 +187,9 @@ assert(number < 100);
 assert(urlString.startsWith('https'));
 ```
 
-Para anexar uma mensagem a uma declaração,
-adicione uma string como o segundo argumento para `assert`
-(opcionalmente com uma [vírgula à direita][vírgula à direita]):
+To attach a message to an assertion,
+add a string as the second argument to `assert`
+(optionally with a [trailing comma][]):
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert-with-message)"?>
 ```dart
@@ -198,25 +199,25 @@ assert(
 );
 ```
 
-O primeiro argumento para `assert` pode ser qualquer expressão que
-se resolve para um valor booleano. Se o valor da expressão
-for verdadeiro, a declaração tem sucesso e a execução
-continua. Se for falso, a declaração falha e uma exceção (um
-[`AssertionError`][`AssertionError`]) é lançada.
+The first argument to `assert` can be any expression that
+resolves to a boolean value. If the expression's value
+is true, the assertion succeeds and execution
+continues. If it's false, the assertion fails and an exception (an
+[`AssertionError`][]) is thrown.
 
-Quando exatamente as declarações funcionam?
-Isso depende das ferramentas e do framework que você está usando:
+When exactly do assertions work?
+That depends on the tools and framework you're using:
 
-* Flutter habilita declarações no [modo de depuração.][Flutter debug mode]
-* Ferramentas apenas para desenvolvimento, como [`webdev serve`][`webdev serve`],
-  normalmente habilitam declarações por padrão.
-* Algumas ferramentas, como [`dart run`][`dart run`] e [`dart compile js`][`dart compile js`],
-  suportam declarações por meio de um flag de linha de comando: `--enable-asserts`.
+* Flutter enables assertions in [debug mode.][Flutter debug mode]
+* Development-only tools such as [`webdev serve`][]
+  typically enable assertions by default.
+* Some tools, such as [`dart run`][] and [`dart compile js`][]
+  support assertions through a command-line flag: `--enable-asserts`.
 
-Em código de produção, as declarações são ignoradas, e
-os argumentos para `assert` não são avaliados.
+In production code, assertions are ignored, and
+the arguments to `assert` aren't evaluated.
 
-[vírgula à direita]: /language/collections#trailing-comma
+[trailing comma]: /language/collections#trailing-comma
 [`AssertionError`]: {{site.dart-api}}/dart-core/AssertionError-class.html
 [Flutter debug mode]: {{site.flutter-docs}}/testing/debugging#debug-mode-assertions
 [`webdev serve`]: /tools/webdev#serve

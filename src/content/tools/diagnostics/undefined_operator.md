@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: undefined_operator
-description: "Detalhes sobre o diagnóstico undefined_operator produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_operator
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O operador '{0}' não está definido para o tipo '{1}'._
+_The operator '{0}' isn't defined for the type '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um operador definível pelo usuário é
-invocado em um objeto para o qual o operador não está definido.
+The analyzer produces this diagnostic when a user-definable operator is
+invoked on an object for which the operator isn't defined.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a classe `C` não
-define o operador `+`:
+The following code produces this diagnostic because the class `C` doesn't
+define the operator `+`:
 
 ```dart
 class C {}
@@ -24,9 +25,9 @@ class C {}
 C f(C c) => c [!+!] 2;
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o operador deve ser definido para a classe, então defina-o:
+If the operator should be defined for the class, then define it:
 
 ```dart
 class C {

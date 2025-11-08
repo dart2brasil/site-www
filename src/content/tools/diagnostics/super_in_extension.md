@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: super_in_extension
-description: "Detalhes sobre o diagnóstico super_in_extension produzido pelo analisador Dart."
+description: >-
+  Details about the super_in_extension
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A keyword 'super' não pode ser usada em uma extension porque uma extension não possui uma superclasse._
+_The 'super' keyword can't be used in an extension because an extension doesn't have a superclass._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um membro declarado dentro de uma
-extension usa a keyword `super`. Extensions não são classes e não
-possuem superclasses, então a keyword `super` não tem propósito.
+The analyzer produces this diagnostic when a member declared inside an
+extension uses the `super` keyword . Extensions aren't classes and don't
+have superclasses, so the `super` keyword serves no purpose.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `super` não pode ser usado
-em uma extension:
+The following code produces this diagnostic because `super` can't be used
+in an extension:
 
 ```dart
 extension E on Object {
@@ -25,9 +26,9 @@ extension E on Object {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova a keyword `super`:
+Remove the `super` keyword :
 
 ```dart
 extension E on Object {

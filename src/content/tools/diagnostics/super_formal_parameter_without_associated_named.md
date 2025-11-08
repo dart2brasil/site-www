@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: super_formal_parameter_without_associated_named
-description: "Detalhes sobre o diagnóstico super_formal_parameter_without_associated_named produzido pelo analisador Dart."
+description: >-
+  Details about the super_formal_parameter_without_associated_named
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Nenhum parâmetro nomeado do construtor super associado._
+_No associated named super constructor parameter._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando há um parâmetro super nomeado
-em um construtor e o construtor super invocado implícita ou explicitamente
-não possui um parâmetro nomeado com o mesmo nome.
+The analyzer produces this diagnostic when there's a named super parameter
+in a constructor and the implicitly or explicitly invoked super
+constructor doesn't have a named parameter with the same name.
 
-Parâmetros super nomeados são associados por nome com parâmetros nomeados no
-construtor super.
+Named super parameters are associated by name with named parameters in the
+super constructor.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o construtor em `A`
-não possui um parâmetro chamado `y`:
+The following code produces this diagnostic because the constructor in `A`
+doesn't have a parameter named `y`:
 
 ```dart
 class A {
@@ -32,11 +33,11 @@ class B extends A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o parâmetro super deve ser associado a um parâmetro existente
-do construtor super, então altere o nome para corresponder ao nome do
-parâmetro correspondente:
+If the super parameter should be associated with an existing parameter
+from the super constructor, then change the name to match the name of the
+corresponding parameter:
 
 ```dart
 class A {
@@ -48,8 +49,8 @@ class B extends A {
 }
 ```
 
-Se o parâmetro super deve ser associado a um parâmetro que ainda não
-foi adicionado ao construtor super, então adicione-o:
+If the super parameter should be associated with a parameter that hasn't
+yet been added to the super constructor, then add it:
 
 ```dart
 class A {
@@ -61,8 +62,8 @@ class B extends A {
 }
 ```
 
-Se o parâmetro super não corresponde a um parâmetro nomeado do
-construtor super, então altere-o para ser um parâmetro normal:
+If the super parameter doesn't correspond to a named parameter from the
+super constructor, then change it to be a normal parameter:
 
 ```dart
 class A {

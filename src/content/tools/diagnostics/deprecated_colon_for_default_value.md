@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: deprecated_colon_for_default_value
-description: "Detalhes sobre o diagnóstico deprecated_colon_for_default_value produzido pelo analisador Dart."
+description: >-
+  Details about the deprecated_colon_for_default_value
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Usar dois-pontos como separador antes de um valor default está deprecated e não será suportado na versão da linguagem 3.0 e posteriores._
+_Using a colon as the separator before a default value is deprecated and will not be supported in language version 3.0 and later._
 
 ## Description
 
-O analisador produz este diagnóstico quando dois-pontos (`:`) é usado como
-separador antes do valor default de um parâmetro nomeado opcional.
-Embora esta sintaxe seja permitida, ela está deprecated em favor de
-usar um sinal de igual (`=`).
+The analyzer produces this diagnostic when a colon (`:`) is used as the
+separator before the default value of an optional named parameter.
+While this syntax is allowed, it is deprecated in favor of
+using an equal sign (`=`).
 
 ## Example
 
-O código a seguir produz este diagnóstico porque dois-pontos está sendo usado
-antes do valor default do parâmetro opcional `i`:
+The following code produces this diagnostic because a colon is being used
+before the default value of the optional parameter `i`:
 
 ```dart
 void f({int i [!:!] 0}) {}
@@ -26,7 +27,7 @@ void f({int i [!:!] 0}) {}
 
 ## Common fixes
 
-Substitua os dois-pontos por um sinal de igual.
+Replace the colon with an equal sign.
 
 ```dart
 void f({int i = 0}) {}

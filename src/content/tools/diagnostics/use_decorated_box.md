@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_decorated_box
-description: "Detalhes sobre o diagnóstico use_decorated_box produzido pelo analisador Dart."
+description: >-
+  Details about the use_decorated_box
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'DecoratedBox' em vez de um 'Container' com apenas uma 'Decoration'._
+_Use 'DecoratedBox' rather than a 'Container' with only a 'Decoration'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um `Container` é criado que
-apenas define a decoração.
+The analyzer produces this diagnostic when a `Container` is created that
+only sets the decoration.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o único atributo do
-container que é definido é a `decoration`:
+The following code produces this diagnostic because the only attribute of
+the container that is set is the `decoration`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -45,9 +46,9 @@ Widget buildArea() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Substitua o `Container` por um `DecoratedBox`:
+Replace the `Container` with a `DecoratedBox`:
 
 ```dart
 import 'package:flutter/material.dart';

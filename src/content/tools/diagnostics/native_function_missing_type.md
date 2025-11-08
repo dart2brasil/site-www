@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: native_function_missing_type
-description: "Detalhes sobre o diagnóstico native_function_missing_type produzido pelo analisador do Dart."
+description: >-
+  Details about the native_function_missing_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,21 +11,21 @@ _The native type of this function couldn't be inferred so it must be specified i
 
 ## Description
 
-O analisador produz este diagnóstico quando uma função anotada com `@Native`
-requer uma dica de tipo na annotation para inferir o tipo da função native.
+The analyzer produces this diagnostic when a `@Native`-annotated function
+requires a type hint on the annotation to infer the native function type.
 
-Tipos Dart como `int` e `double` possuem múltiplas representações native
-possíveis. Como o tipo native precisa ser conhecido em tempo de compilação
-para gerar bindings e instruções de chamada corretas para a função, um
-tipo explícito deve ser fornecido.
+Dart types like `int` and `double` have multiple possible native
+representations. Since the native type needs to be known at compile time
+to generate correct bindings and call instructions for the function, an
+explicit type must be given.
 
-Para mais informações sobre FFI, veja [C interop using dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a função `f()` possui
-o tipo de retorno `int`, mas não possui um parâmetro de tipo explícito na
-annotation `Native`:
+The following code produces this diagnostic because the function `f()` has
+the return type `int`, but doesn't have an explicit type parameter on the
+`Native` annotation:
 
 ```dart
 import 'dart:ffi';
@@ -35,9 +36,9 @@ external int [!f!]();
 
 ## Common fixes
 
-Adicione o tipo correspondente à annotation. Por exemplo, se `f()` foi
-declarada para retornar um `int32_t` em C, a função Dart deve ser declarada
-como:
+Add the corresponding type to the annotation. For instance, if `f()` was
+declared to return an `int32_t` in C, the Dart function should be declared
+as:
 
 ```dart
 import 'dart:ffi';

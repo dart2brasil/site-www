@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: annotation_on_pointer_field
-description: "Detalhes sobre o diagnóstico annotation_on_pointer_field produzido pelo analisador Dart."
+description: >-
+  Details about the annotation_on_pointer_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Campos em uma classe struct cujo tipo é 'Pointer' não devem ter nenhuma anotação._
+_Fields in a struct class whose type is 'Pointer' shouldn't have any annotations._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um campo que está declarado em uma
-subclasse de `Struct` e tem o tipo `Pointer` também tem uma anotação
-associada a ele.
+The analyzer produces this diagnostic when a field that's declared in a
+subclass of `Struct` and has the type `Pointer` also has an annotation
+associated with it.
 
-Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o campo `p`, que
-tem o tipo `Pointer` e está declarado em uma subclasse de `Struct`, tem a
-anotação `@Double()`:
+The following code produces this diagnostic because the field `p`, which
+has the type `Pointer` and is declared in a subclass of `Struct`, has the
+annotation `@Double()`:
 
 ```dart
 import 'dart:ffi';
@@ -31,9 +32,9 @@ final class C extends Struct {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova as anotações do campo:
+Remove the annotations from the field:
 
 ```dart
 import 'dart:ffi';

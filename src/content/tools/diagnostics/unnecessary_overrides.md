@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_overrides
-description: "Detalhes sobre o diagnóstico unnecessary_overrides produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_overrides
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Override desnecessário._
+_Unnecessary override._
 
 ## Description
 
-O analisador produz este diagnóstico quando um membro de instância sobrescreve um
-membro herdado mas apenas invoca o membro sobrescrito com exatamente os
-mesmos argumentos.
+The analyzer produces this diagnostic when an instance member overrides an
+inherited member but only invokes the overridden member with exactly the
+same arguments.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o método `D.m`
-não faz nada além de invocar o método sobrescrito:
+The following code produces this diagnostic because the method `D.m`
+doesn't do anything other than invoke the overridden method:
 
 ```dart
 class C {
@@ -43,8 +44,8 @@ class D extends C {
 
 ## Common fixes
 
-Se o método deve fazer algo mais do que o método sobrescrito
-faz, então implemente a funcionalidade ausente:
+If the method should do something more than what the overridden method
+does, then implement the missing functionality:
 
 ```dart
 class C {
@@ -57,10 +58,10 @@ class D extends C {
 }
 ```
 
-Se o método sobrescrito deve ser modificado alterando o tipo de retorno ou
-um ou mais dos tipos de parâmetro, tornando um dos parâmetros
-`covariant`, tendo um comentário de documentação, ou tendo anotações
-adicionais, então atualize o código:
+If the overridden method should be modified by changing the return type or
+one or more of the parameter types, making one of the parameters
+`covariant`, having a documentation comment, or by having additional
+annotations, then update the code:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -76,8 +77,8 @@ class D extends C {
 }
 ```
 
-Se o método que sobrescreve não altera ou aprimora a semântica do
-código, então remova-o:
+If the overriding method doesn't change or enhance the semantics of the
+code, then remove it:
 
 ```dart
 class C {

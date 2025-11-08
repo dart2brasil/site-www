@@ -1,30 +1,31 @@
 ---
-ia-translate: true
 title: expected_one_set_type_arguments
-description: "Detalhes sobre o diagnóstico expected_one_set_type_arguments produzido pelo analisador Dart."
+description: >-
+  Details about the expected_one_set_type_arguments
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Literais de conjunto exigem um argumento de tipo ou nenhum, mas {0} foram encontrados._
+_Set literals require one type argument or none, but {0} were found._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um literal de conjunto tem mais de um
-argumento de tipo.
+The analyzer produces this diagnostic when a set literal has more than one
+type argument.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o literal de conjunto tem
-três argumentos de tipo quando pode ter no máximo um:
+The following code produces this diagnostic because the set literal has
+three type arguments when it can have at most one:
 
 ```dart
 var s = [!<int, String, int>!]{0, 'a', 1};
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova todos exceto um dos argumentos de tipo:
+Remove all except one of the type arguments:
 
 ```dart
 var s = <int>{0, 1};

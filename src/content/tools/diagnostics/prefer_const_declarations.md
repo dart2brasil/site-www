@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_const_declarations
-description: "Detalhes sobre o diagnóstico prefer_const_declarations produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_const_declarations
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,25 +18,25 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'const' para variáveis final inicializadas com um valor constante._
+_Use 'const' for final variables initialized to a constant value._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma variável de nível superior, campo static
-ou variável local é marcada como `final` e é inicializada com um
-valor constante.
+The analyzer produces this diagnostic when a top-level variable, static
+field, or local variable is marked as `final` and is initialized to a
+constant value.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque a variável de nível superior
-`v` é tanto `final` quanto inicializada com um valor constante:
+The following code produces this diagnostic because the top-level variable
+`v` is both `final` and initialized to a constant value:
 
 ```dart
 [!final v = const <int>[]!];
 ```
 
-O código a seguir produz este diagnóstico porque o campo static `f`
-é tanto `final` quanto inicializado com um valor constante:
+The following code produces this diagnostic because the static field `f`
+is both `final` and initialized to a constant value:
 
 ```dart
 class C {
@@ -43,8 +44,8 @@ class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque a variável local `v`
-é tanto `final` quanto inicializada com um valor constante:
+The following code produces this diagnostic because the local variable `v`
+is both `final` and initialized to a constant value:
 
 ```dart
 void f() {
@@ -55,8 +56,8 @@ void f() {
 
 ## Common fixes
 
-Substitua a keyword `final` por `const` e remova `const` do
-inicializador:
+Replace the keyword `final` with `const` and remove `const` from the
+initializer:
 
 ```dart
 class C {

@@ -1,7 +1,6 @@
 ---
-ia-translate: true
-title: Tipos Embutidos
-description: "Informações sobre os tipos que o Dart suporta."
+title: Built-in types
+description: Information on the types Dart supports.
 prevpage:
   url: /language/comments
   title: Comments
@@ -10,30 +9,30 @@ nextpage:
   title: Records
 ---
 
-A linguagem Dart tem suporte especial para o seguinte:
+The Dart language has special support for the following:
 
-- [Números](#numbers) (`int`, `double`)
+- [Numbers](#numbers) (`int`, `double`)
 - [Strings](#strings) (`String`)
-- [Booleanos](#booleans) (`bool`)
-- [Records][Records] (`(valor1, valor2)`)
-- [Funções][Funções] (`Function`)
-- [Listas][Listas] (`List`, também conhecidas como *arrays*)
-- [Sets][Sets] (`Set`)
-- [Maps][Maps] (`Map`)
-- [Runes](#runes-and-grapheme-clusters) (`Runes`; frequentemente substituído pela API `characters`)
+- [Booleans](#booleans) (`bool`)
+- [Records][] (`(value1, value2)`)
+- [Functions][] (`Function`)
+- [Lists][] (`List`, also known as *arrays*)
+- [Sets][] (`Set`)
+- [Maps][] (`Map`)
+- [Runes](#runes-and-grapheme-clusters) (`Runes`; often replaced by the `characters` API)
 - [Symbols](#symbols) (`Symbol`)
-- O valor `null` (`Null`)
+- The value `null` (`Null`)
 
-Este suporte inclui a capacidade de criar objetos usando literais.
-Por exemplo, `'isto é uma string'` é um literal de string,
-e `true` é um literal booleano.
+This support includes the ability to create objects using literals.
+For example, `'this is a string'` is a string literal,
+and `true` is a boolean literal.
 
-Como cada variável em Dart se refere a um objeto—uma instância de uma
-*classe*—você pode geralmente usar *construtores* para inicializar variáveis. Alguns
-dos tipos embutidos têm seus próprios construtores. Por exemplo, você pode
-usar o construtor `Map()` para criar um mapa.
+Because every variable in Dart refers to an object—an instance of a
+*class*—you can usually use *constructors* to initialize variables. Some
+of the built-in types have their own constructors. For example, you can
+use the `Map()` constructor to create a map.
 
-Alguns outros tipos também têm funções especiais na linguagem Dart:
+Some other types also have special roles in the Dart language:
 
 * `Object`: The superclass of all Dart classes except `Null`.
 * `Enum`: The superclass of all enums.
@@ -48,50 +47,50 @@ Alguns outros tipos também têm funções especiais na linguagem Dart:
 * `void`: Indicates that a value is never used.
   Often used as a return type.
 
-As classes `Object`, `Object?`, `Null` e `Never`
-têm funções especiais na hierarquia de classes.
-Saiba mais sobre essas funções em [Entendendo a segurança nula][Entendendo a segurança nula].
+The `Object`, `Object?`, `Null`, and `Never` classes
+have special roles in the class hierarchy.
+Learn about these roles in [Understanding null safety][].
 
 {% comment %}
-Se decidirmos cobrir `dynamic` mais,
-aqui está um bom exemplo que ilustra o que dynamic faz:
+If we decide to cover `dynamic` more,
+here's a nice example that illustrates what dynamic does:
   dynamic a = 2;
-  String b = a; // Sem problema! Até o tempo de execução, quando você recebe um erro não tratado.
+  String b = a; // No problem! Until runtime, when you get an uncaught error.
 
   Object c = 2;
-  String d = c;  // Problema!
+  String d = c;  // Problem!
 {% endcomment %}
 
 
-## Números {:#numbers}
+## Numbers
 
-Os números em Dart vêm em dois tipos:
+Dart numbers come in two flavors:
 
-[`int`][`int`]
+[`int`][]
 
-:   Valores inteiros não maiores que 64 bits,
-    [dependendo da plataforma][dart-numbers].
-    Em plataformas nativas, os valores podem ser de
-    -2<sup>63</sup> a 2<sup>63</sup> - 1.
-    Na web, os valores inteiros são representados como números JavaScript
-    (valores de ponto flutuante de 64 bits sem parte fracionária)
-    e podem ser de -2<sup>53</sup> a 2<sup>53</sup> - 1.
+:   Integer values no larger than 64 bits,
+    [depending on the platform][dart-numbers].
+    On native platforms, values can be from
+    -2<sup>63</sup> to 2<sup>63</sup> - 1.
+    On the web, integer values are represented as JavaScript numbers
+    (64-bit floating-point values with no fractional part)
+    and can be from -2<sup>53</sup> to 2<sup>53</sup> - 1.
 
-[`double`][`double`]
+[`double`][]
 
-:   Números de ponto flutuante de 64 bits (precisão dupla), conforme especificado pelo
-    padrão IEEE 754.
+:   64-bit (double-precision) floating-point numbers, as specified by
+    the IEEE 754 standard.
 
-Tanto `int` quanto `double` são subtipos de [`num`][`num`].
-O tipo num inclui operadores básicos como +, -, / e \*,
-e é também onde você encontrará `abs()`, `ceil()`
-e `floor()`, entre outros métodos.
-(Operadores bit a bit, como \>\>, são definidos na classe `int`.)
-Se `num` e seus subtipos não têm o que você procura, a
-biblioteca [`dart:math`][`dart:math`] pode ter.
+Both `int` and `double` are subtypes of [`num`][].
+The num type includes basic operators such as +, -, /, and \*,
+and is also where you'll find `abs()`,` ceil()`,
+and `floor()`, among other methods.
+(Bitwise operators, such as \>\>, are defined in the `int` class.)
+If num and its subtypes don't have what you're looking for, the
+[`dart:math`][] library might.
 
-Inteiros são números sem ponto decimal. Aqui estão alguns exemplos de
-definição de literais inteiros:
+Integers are numbers without a decimal point. Here are some examples of
+defining integer literals:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (integer-literals)"?>
 ```dart
@@ -99,8 +98,8 @@ var x = 1;
 var hex = 0xDEADBEEF;
 ```
 
-Se um número inclui um decimal, é um double. Aqui estão alguns exemplos
-de definição de literais double:
+If a number includes a decimal, it is a double. Here are some examples
+of defining double literals:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (double-literals)"?>
 ```dart
@@ -108,8 +107,8 @@ var y = 1.1;
 var exponents = 1.42e5;
 ```
 
-Você também pode declarar uma variável como `num`. Se você fizer isso, a variável
-pode ter valores inteiros e double.
+You can also declare a variable as a num. If you do this, the variable
+can have both integer and double values.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (declare-num)"?>
 ```dart
@@ -117,14 +116,14 @@ num x = 1; // x can have both int and double values
 x += 2.5;
 ```
 
-Literais inteiros são automaticamente convertidos em doubles quando necessário:
+Integer literals are automatically converted to doubles when necessary:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
 ```dart
 double z = 1; // Equivalent to double z = 1.0.
 ```
 
-Veja como transformar uma string em um número ou vice-versa:
+Here's how you turn a string into a number, or vice versa:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (number-conversion)"?>
 ```dart
@@ -145,10 +144,10 @@ String piAsString = 3.14159.toStringAsFixed(2);
 assert(piAsString == '3.14');
 ```
 
-O tipo `int` especifica o deslocamento bit a bit tradicional (`<<`, `>>`, `>>>`),
-complemento (`~`), E (`&`), OU (`|`) e operadores XOR (`^`),
-que são úteis para manipular e mascarar flags em campos de bits.
-Por exemplo:
+The `int` type specifies the traditional bitwise shift (`<<`, `>>`, `>>>`),
+complement (`~`), AND (`&`), OR (`|`), and XOR (`^`) operators,
+which are useful for manipulating and masking flags in bit fields.
+For example:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (bit-shifting)"?>
 ```dart
@@ -157,13 +156,13 @@ assert((3 | 4) == 7); // 0011 | 0100 == 0111
 assert((3 & 4) == 0); // 0011 & 0100 == 0000
 ```
 
-Para mais exemplos, veja a
-seção de [operadores bit a bit e de deslocamento][operadores bit a bit e de deslocamento].
+For more examples, see the
+[bitwise and shift operator][] section.
 
-Literais numéricos são constantes em tempo de compilação.
-Muitas expressões aritméticas também são constantes em tempo de compilação,
-desde que seus operandos sejam
-constantes em tempo de compilação que avaliam para números.
+Number literals are compile-time constants.
+Many arithmetic expressions are also compile-time constants,
+as long as their operands are
+compile-time constants that evaluate to numbers.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-num)"?>
 ```dart
@@ -172,13 +171,13 @@ const secondsUntilRetry = 5;
 const msUntilRetry = secondsUntilRetry * msPerSecond;
 ```
 
-Para mais informações, veja [Números em Dart][dart-numbers].
+For more information, see [Numbers in Dart][dart-numbers].
 
 <a id="digit-separators"></a>
 
-Você pode usar um ou mais underscores (`_`) como separadores de dígitos
-para tornar literais numéricos longos mais legíveis.
-Múltiplos separadores de dígitos permitem agrupamento de nível superior.
+You can use one or more underscores (`_`) as digit separators
+to make long number literals more readable.
+Multiple digit separators allow for higher level grouping.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (digit-separators)"?>
 ```dart
@@ -193,10 +192,11 @@ var n5 = 100__000_000__000_000; // one hundred million million!
 Using digit separators requires a [language version][] of at least 3.6.
 :::
 
-## Strings {:#strings}
+## Strings
 
-Uma string Dart (objeto `String`) contém uma sequência de unidades de código UTF-16.
-Você pode usar aspas simples ou duplas para criar uma string:
+A Dart string (`String` object) holds a sequence of UTF-16 code units.
+You can use either
+single or double quotes to create a string:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (quoting)"?>
 ```dart
@@ -208,10 +208,10 @@ var s4 = "It's even easier to use the other delimiter.";
 
 <a id="string-interpolation"></a>
 
-Você pode colocar o valor de uma expressão dentro de uma string usando
-`${`*`expressão`*`}`. Se a expressão for um identificador, você pode omitir
-as `{}`. Para obter a string correspondente a um objeto, Dart chama o
-método `toString()` do objeto.
+You can put the value of an expression inside a string by using
+`${`*`expression`*`}`. If the expression is an identifier, you can skip
+the `{}`. To get the string corresponding to an object, Dart calls the
+object's `toString()` method.
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (string-interpolation)"?>
 ```dart
@@ -231,12 +231,13 @@ assert(
 ```
 
 :::note
-O operador `==` testa se dois objetos são equivalentes.
-Duas strings são equivalentes se contiverem a
-mesma sequência de unidades de código.
+The `==` operator tests whether two objects are equivalent.
+Two strings are equivalent if they contain the
+same sequence of code units.
 :::
 
-Você pode concatenar strings usando literais de string adjacentes ou o operador `+`:
+You can concatenate strings using adjacent string literals or the `+`
+operator:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (adjacent-string-literals)"?>
 ```dart
@@ -254,8 +255,8 @@ var s2 = 'The + operator ' + 'works, as well.';
 assert(s2 == 'The + operator works, as well.');
 ```
 
-Para criar uma string multi-linha, use aspas triplas com
-aspas simples ou duplas:
+To create a multi-line string, use a triple quote with
+either single or double quotation marks:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (triple-quotes)"?>
 ```dart
@@ -268,19 +269,19 @@ var s2 = """This is also a
 multi-line string.""";
 ```
 
-Você pode criar uma string "crua" prefixando-a com `r`:
+You can create a "raw" string by prefixing it with `r`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (raw-strings)"?>
 ```dart
 var s = r'In a raw string, not even \n gets special treatment.';
 ```
 
-Veja [Runes e clusters de grafemas](#runes-and-grapheme-clusters) para detalhes sobre como
-expressar caracteres Unicode em uma string.
+See [Runes and grapheme clusters](#runes-and-grapheme-clusters) for details on how
+to express Unicode characters in a string.
 
-Literais de string são constantes em tempo de compilação,
-desde que qualquer expressão interpolada seja uma constante em tempo de compilação
-que avalie para null ou um valor numérico, string ou booleano.
+String literals are compile-time constants,
+as long as any interpolated expression is a compile-time constant
+that evaluates to null or a numeric, string, or boolean value.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (string-literals)"?>
 ```dart
@@ -299,20 +300,20 @@ const validConstString = '$aConstNum $aConstBool $aConstString';
 // const invalidConstString = '$aNum $aBool $aString $aConstList';
 ```
 
-Para mais informações sobre o uso de strings, confira
-[Strings e expressões regulares](/libraries/dart-core#strings-and-regular-expressions).
+For more information on using strings, check out
+[Strings and regular expressions](/libraries/dart-core#strings-and-regular-expressions).
 
 
-## Booleanos {:#booleans}
+## Booleans
 
-Para representar valores booleanos, Dart tem um tipo chamado `bool`. Apenas dois
-objetos têm o tipo bool: os literais booleanos `true` e `false`,
-que são ambos constantes em tempo de compilação.
+To represent boolean values, Dart has a type named `bool`. Only two
+objects have type bool: the boolean literals `true` and `false`,
+which are both compile-time constants.
 
-A segurança de tipo do Dart significa que você não pode usar código como
-<code>if (<em>valorNaoBooleano</em>)</code> ou
-<code>assert (<em>valorNaoBooleano</em>)</code>.
-Em vez disso, verifique explicitamente os valores, como isto:
+Dart's type safety means that you can't use code like
+<code>if (<em>nonbooleanValue</em>)</code> or
+<code>assert (<em>nonbooleanValue</em>)</code>.
+Instead, explicitly check for values, like this:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (no-truthy)"?>
 ```dart
@@ -333,32 +334,32 @@ var iMeantToDoThis = 0 / 0;
 assert(iMeantToDoThis.isNaN);
 ```
 
-## Runes e clusters de grafemas {:#runes-and-grapheme-clusters}
+## Runes and grapheme clusters
 
-Em Dart, [runes][runes] expõem os pontos de código Unicode de uma string.
-Você pode usar o [pacote characters][pacote characters]
-para visualizar ou manipular caracteres percebidos pelo usuário,
-também conhecidos como
-[clusters de grafemas (estendidos) Unicode][grapheme clusters].
+In Dart, [runes][] expose the Unicode code points of a string.
+You can use the [characters package][]
+to view or manipulate user-perceived characters,
+also known as
+[Unicode (extended) grapheme clusters.][grapheme clusters]
 
-Unicode define um valor numérico único para cada letra, dígito
-e símbolo usado em todos os sistemas de escrita do mundo.
-Como uma string Dart é uma sequência de unidades de código UTF-16,
-expressar pontos de código Unicode dentro de uma string requer
-sintaxe especial.
-A maneira usual de expressar um ponto de código Unicode é
-`\uXXXX`, onde XXXX é um valor hexadecimal de 4 dígitos.
-Por exemplo, o caractere de coração (♥) é `\u2665`.
-Para especificar mais ou menos de 4 dígitos hexadecimais,
-coloque o valor entre chaves.
-Por exemplo, o emoji de risada (😆) é `\u{1f606}`.
+Unicode defines a unique numeric value for each letter, digit,
+and symbol used in all of the world's writing systems.
+Because a Dart string is a sequence of UTF-16 code units,
+expressing Unicode code points within a string requires
+special syntax.
+The usual way to express a Unicode code point is
+`\uXXXX`, where XXXX is a 4-digit hexadecimal value.
+For example, the heart character (♥) is `\u2665`.
+To specify more or less than 4 hex digits,
+place the value in curly brackets.
+For example, the laughing emoji (😆) is `\u{1f606}`.
 
-Se você precisar ler ou escrever caracteres Unicode individuais,
-use o getter `characters` definido em String
-pelo pacote characters.
-O objeto [`Characters`][`Characters`] retornado é a string como
-uma sequência de clusters de grafemas.
-Aqui está um exemplo de como usar a API characters:
+If you need to read or write individual Unicode characters,
+use the `characters` getter defined on String
+by the characters package.
+The returned [`Characters`][] object is the string as
+a sequence of grapheme clusters.
+Here's an example of using the characters API:
 
 <?code-excerpt "misc/lib/language_tour/characters.dart"?>
 ```dart
@@ -372,29 +373,29 @@ void main() {
 }
 ```
 
-A saída, dependendo do seu ambiente, se parece com algo assim:
+The output, depending on your environment, looks something like this:
 
 ```console
 $ dart run bin/main.dart
-Olá 🇩🇰
-O final da string: �
-O último caractere: 🇩🇰
+Hi 🇩🇰
+The end of the string: ???
+The last character: 🇩🇰
 ```
 
-Para obter detalhes sobre o uso do pacote characters para manipular strings,
-veja o [exemplo][characters example] e a [referência da API][characters API]
-para o pacote characters.
+For details on using the characters package to manipulate strings,
+see the [example][characters example] and [API reference][characters API]
+for the characters package.
 
-## Symbols {:#symbols}
+## Symbols
 
-Um objeto [`Symbol`][`Symbol`]
-representa um operador ou identificador declarado em um programa Dart. Você
-pode nunca precisar usar symbols (símbolos), mas eles são inestimáveis para APIs que
-se referem a identificadores por nome, porque a minificação altera os nomes
-dos identificadores, mas não os símbolos dos identificadores.
+A [`Symbol`][] object
+represents an operator or identifier declared in a Dart program. You
+might never need to use symbols, but they're invaluable for APIs that
+refer to identifiers by name, because minification changes identifier
+names but not identifier symbols.
 
-Para obter o símbolo de um identificador, use um literal de símbolo, que é apenas
-`#` seguido pelo identificador:
+To get the symbol for an identifier, use a symbol literal, which is just
+`#` followed by the identifier:
 
 ```plaintext
 #radix
@@ -402,7 +403,7 @@ Para obter o símbolo de um identificador, use um literal de símbolo, que é ap
 ```
 
 {% comment %}
-O código do trecho a seguir não é realmente o que está sendo mostrado na página
+The code from the following excerpt isn't actually what is being shown in the page
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (symbols)"?>
 ```dart
@@ -413,27 +414,27 @@ void main() {
 ```
 {% endcomment %}
 
-Literais de símbolos são constantes em tempo de compilação.
+Symbol literals are compile-time constants.
 
 
 
 [Records]: /language/records
-[Funções]: /language/functions#function-types
-[Listas]: /language/collections#lists
+[Functions]: /language/functions#function-types
+[Lists]: /language/collections#lists
 [Sets]: /language/collections#sets
 [Maps]: /language/collections#maps
 [asynchronous programming]: /language/async
 [iteration]: /libraries/dart-core#iteration
-[funções geradoras]: /language/functions#generators
-[Entendendo a segurança nula]: /null-safety/understanding-null-safety#top-and-bottom
+[generator functions]: /language/functions#generators
+[Understanding null safety]: /null-safety/understanding-null-safety#top-and-bottom
 [`int`]: {{site.dart-api}}/dart-core/int-class.html
 [`double`]: {{site.dart-api}}/dart-core/double-class.html
 [`num`]: {{site.dart-api}}/dart-core/num-class.html
 [`dart:math`]: {{site.dart-api}}/dart-math/dart-math-library.html
-[operadores bit a bit e de deslocamento]: /language/operators#bitwise-and-shift-operators
+[bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
 [dart-numbers]: /resources/language/number-representation
 [runes]: {{site.dart-api}}/dart-core/Runes-class.html
-[pacote characters]: {{site.pub-pkg}}/characters
+[characters package]: {{site.pub-pkg}}/characters
 [grapheme clusters]: https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
 [`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
 [characters API]: {{site.pub-api}}/characters

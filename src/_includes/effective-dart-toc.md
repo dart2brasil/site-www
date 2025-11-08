@@ -1,3 +1,6 @@
+---
+ia-translate: true
+---
 {% comment %}
 This file is generated from the other files in this directory.
 To re-generate it, please run the following command from root of
@@ -10,10 +13,10 @@ dart run dash_site effective-dart
 
 <div class="side-by-side"><div>
 
-### Style
+### Estilo
 
 
-**Identifiers**
+**Identificadores**
 
 * <a href='/effective-dart/style#do-name-types-using-uppercamelcase'>DO name types using <code>UpperCamelCase</code>.</a>
 * <a href='/effective-dart/style#do-name-extensions-using-uppercamelcase'>DO name extensions using <code>UpperCamelCase</code>.</a>
@@ -27,14 +30,14 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/style#dont-use-prefix-letters'>DON'T use prefix letters.</a>
 * <a href='/effective-dart/style#dont-explicitly-name-libraries'>DON'T explicitly name libraries.</a>
 
-**Ordering**
+**Ordenação**
 
 * <a href='/effective-dart/style#do-place-dart-imports-before-other-imports'>DO place <code>dart:</code> imports before other imports.</a>
 * <a href='/effective-dart/style#do-place-package-imports-before-relative-imports'>DO place <code>package:</code> imports before relative imports.</a>
 * <a href='/effective-dart/style#do-specify-exports-in-a-separate-section-after-all-imports'>DO specify exports in a separate section after all imports.</a>
 * <a href='/effective-dart/style#do-sort-sections-alphabetically'>DO sort sections alphabetically.</a>
 
-**Formatting**
+**Formatação**
 
 * <a href='/effective-dart/style#do-format-your-code-using-dart-format'>DO format your code using <code>dart format</code>.</a>
 * <a href='/effective-dart/style#consider-changing-your-code-to-make-it-more-formatter-friendly'>CONSIDER changing your code to make it more formatter-friendly.</a>
@@ -45,15 +48,15 @@ dart run dash_site effective-dart
 <div>
 
 
-### Documentation
+### Documentação
 
 
-**Comments**
+**Comentários**
 
 * <a href='/effective-dart/documentation#do-format-comments-like-sentences'>DO format comments like sentences.</a>
 * <a href='/effective-dart/documentation#dont-use-block-comments-for-documentation'>DON'T use block comments for documentation.</a>
 
-**Doc comments**
+**Comentários de documentação**
 
 * <a href='/effective-dart/documentation#do-use-doc-comments-to-document-members-and-types'>DO use <code>///</code> doc comments to document members and types.</a>
 * <a href='/effective-dart/documentation#prefer-writing-doc-comments-for-public-apis'>PREFER writing doc comments for public APIs.</a>
@@ -79,7 +82,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/documentation#avoid-using-html-for-formatting'>AVOID using HTML for formatting.</a>
 * <a href='/effective-dart/documentation#prefer-backtick-fences-for-code-blocks'>PREFER backtick fences for code blocks.</a>
 
-**Writing**
+**Escrita**
 
 * <a href='/effective-dart/documentation#prefer-brevity'>PREFER brevity.</a>
 * <a href='/effective-dart/documentation#avoid-abbreviations-and-acronyms-unless-they-are-obvious'>AVOID abbreviations and acronyms unless they are obvious.</a>
@@ -89,10 +92,10 @@ dart run dash_site effective-dart
 <div>
 
 
-### Usage
+### Uso
 
 
-**Libraries**
+**Bibliotecas**
 
 * <a href='/effective-dart/usage#do-use-strings-in-part-of-directives'>DO use strings in <code>part of</code> directives.</a>
 * <a href='/effective-dart/usage#dont-import-libraries-that-are-inside-the-src-directory-of-another-package'>DON'T import libraries that are inside the <code>src</code> directory of another package.</a>
@@ -113,7 +116,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/usage#prefer-using-interpolation-to-compose-strings-and-values'>PREFER using interpolation to compose strings and values.</a>
 * <a href='/effective-dart/usage#avoid-using-curly-braces-in-interpolation-when-not-needed'>AVOID using curly braces in interpolation when not needed.</a>
 
-**Collections**
+**Coleções**
 
 * <a href='/effective-dart/usage#do-use-collection-literals-when-possible'>DO use collection literals when possible.</a>
 * <a href='/effective-dart/usage#dont-use-length-to-see-if-a-collection-is-empty'>DON'T use <code>.length</code> to see if a collection is empty.</a>
@@ -123,17 +126,17 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/usage#dont-use-cast-when-a-nearby-operation-will-do'>DON'T use <code>cast()</code> when a nearby operation will do.</a>
 * <a href='/effective-dart/usage#avoid-using-cast'>AVOID using <code>cast()</code>.</a>
 
-**Functions**
+**Funções**
 
 * <a href='/effective-dart/usage#do-use-a-function-declaration-to-bind-a-function-to-a-name'>DO use a function declaration to bind a function to a name.</a>
 * <a href='/effective-dart/usage#dont-create-a-lambda-when-a-tear-off-will-do'>DON'T create a lambda when a tear-off will do.</a>
 
-**Variables**
+**Variáveis**
 
 * <a href='/effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables'>DO follow a consistent rule for <code>var</code> and <code>final</code> on local variables.</a>
 * <a href='/effective-dart/usage#avoid-storing-what-you-can-calculate'>AVOID storing what you can calculate.</a>
 
-**Members**
+**Membros**
 
 * <a href='/effective-dart/usage#dont-wrap-a-field-in-a-getter-and-setter-unnecessarily'>DON'T wrap a field in a getter and setter unnecessarily.</a>
 * <a href='/effective-dart/usage#prefer-using-a-final-field-to-make-a-read-only-property'>PREFER using a <code>final</code> field to make a read-only property.</a>
@@ -141,7 +144,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/usage#dont-use-this-when-not-needed-to-avoid-shadowing'>DON'T use <code>this.</code> except to redirect to a named constructor or to avoid shadowing.</a>
 * <a href='/effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible'>DO initialize fields at their declaration when possible.</a>
 
-**Constructors**
+**Construtores**
 
 * <a href='/effective-dart/usage#do-use-initializing-formals-when-possible'>DO use initializing formals when possible.</a>
 * <a href='/effective-dart/usage#dont-use-late-when-a-constructor-initializer-list-will-do'>DON'T use <code>late</code> when a constructor initializer list will do.</a>
@@ -149,7 +152,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/usage#dont-use-new'>DON'T use <code>new</code>.</a>
 * <a href='/effective-dart/usage#dont-use-const-redundantly'>DON'T use <code>const</code> redundantly.</a>
 
-**Error handling**
+**Tratamento de erros**
 
 * <a href='/effective-dart/usage#avoid-catches-without-on-clauses'>AVOID catches without <code>on</code> clauses.</a>
 * <a href='/effective-dart/usage#dont-discard-errors-from-catches-without-on-clauses'>DON'T discard errors from catches without <code>on</code> clauses.</a>
@@ -157,7 +160,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/usage#dont-explicitly-catch-error-or-types-that-implement-it'>DON'T explicitly catch <code>Error</code> or types that implement it.</a>
 * <a href='/effective-dart/usage#do-use-rethrow-to-rethrow-a-caught-exception'>DO use <code>rethrow</code> to rethrow a caught exception.</a>
 
-**Asynchrony**
+**Assincronia**
 
 * <a href='/effective-dart/usage#prefer-asyncawait-over-using-raw-futures'>PREFER async/await over using raw futures.</a>
 * <a href='/effective-dart/usage#dont-use-async-when-it-has-no-useful-effect'>DON'T use <code>async</code> when it has no useful effect.</a>
@@ -172,7 +175,7 @@ dart run dash_site effective-dart
 ### Design
 
 
-**Names**
+**Nomes**
 
 * <a href='/effective-dart/design#do-use-terms-consistently'>DO use terms consistently.</a>
 * <a href='/effective-dart/design#avoid-abbreviations'>AVOID abbreviations.</a>
@@ -191,12 +194,12 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/design#avoid-describing-the-parameters-in-the-functions-or-methods-name'>AVOID describing the parameters in the function's or method's name.</a>
 * <a href='/effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters'>DO follow existing mnemonic conventions when naming type parameters.</a>
 
-**Libraries**
+**Bibliotecas**
 
 * <a href='/effective-dart/design#prefer-making-declarations-private'>PREFER making declarations private.</a>
 * <a href='/effective-dart/design#consider-declaring-multiple-classes-in-the-same-library'>CONSIDER declaring multiple classes in the same library.</a>
 
-**Classes and mixins**
+**Classes e mixins**
 
 * <a href='/effective-dart/design#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do'>AVOID defining a one-member abstract class when a simple function will do.</a>
 * <a href='/effective-dart/design#avoid-defining-a-class-that-contains-only-static-members'>AVOID defining a class that contains only static members.</a>
@@ -206,11 +209,11 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/design#do-use-class-modifiers-to-control-if-your-class-can-be-an-interface'>DO use class modifiers to control if your class can be an interface.</a>
 * <a href='/effective-dart/design#prefer-defining-a-pure-mixin-or-pure-class-to-a-mixin-class'>PREFER defining a pure <code>mixin</code> or pure <code>class</code> to a <code>mixin class</code>.</a>
 
-**Constructors**
+**Construtores**
 
 * <a href='/effective-dart/design#consider-making-your-constructor-const-if-the-class-supports-it'>CONSIDER making your constructor <code>const</code> if the class supports it.</a>
 
-**Members**
+**Membros**
 
 * <a href='/effective-dart/design#prefer-making-fields-and-top-level-variables-final'>PREFER making fields and top-level variables <code>final</code>.</a>
 * <a href='/effective-dart/design#do-use-getters-for-operations-that-conceptually-access-properties'>DO use getters for operations that conceptually access properties.</a>
@@ -221,7 +224,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/design#avoid-returning-nullable-future-stream-and-collection-types'>AVOID returning nullable <code>Future</code>, <code>Stream</code>, and collection types.</a>
 * <a href='/effective-dart/design#avoid-returning-this-from-methods-just-to-enable-a-fluent-interface'>AVOID returning <code>this</code> from methods just to enable a fluent interface.</a>
 
-**Types**
+**Tipos**
 
 * <a href='/effective-dart/design#do-type-annotate-variables-without-initializers'>DO type annotate variables without initializers.</a>
 * <a href='/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious'>DO type annotate fields and top-level variables if the type isn't obvious.</a>
@@ -243,14 +246,14 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/design#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values'>DO use <code>Future&lt;void&gt;</code> as the return type of asynchronous members that do not produce values.</a>
 * <a href='/effective-dart/design#avoid-using-futureort-as-a-return-type'>AVOID using <code>FutureOr&lt;T&gt;</code> as a return type.</a>
 
-**Parameters**
+**Parâmetros**
 
 * <a href='/effective-dart/design#avoid-positional-boolean-parameters'>AVOID positional boolean parameters.</a>
 * <a href='/effective-dart/design#avoid-optional-positional-parameters-if-the-user-may-want-to-omit-earlier-parameters'>AVOID optional positional parameters if the user may want to omit earlier parameters.</a>
 * <a href='/effective-dart/design#avoid-mandatory-parameters-that-accept-a-special-no-argument-value'>AVOID mandatory parameters that accept a special &quot;no argument&quot; value.</a>
 * <a href='/effective-dart/design#do-use-inclusive-start-and-exclusive-end-parameters-to-accept-a-range'>DO use inclusive start and exclusive end parameters to accept a range.</a>
 
-**Equality**
+**Igualdade**
 
 * <a href='/effective-dart/design#do-override-hashcode-if-you-override'>DO override <code>hashCode</code> if you override <code>==</code>.</a>
 * <a href='/effective-dart/design#do-make-your-operator-obey-the-mathematical-rules-of-equality'>DO make your <code>==</code> operator obey the mathematical rules of equality.</a>

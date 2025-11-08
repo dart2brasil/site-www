@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_null_aware_elements
-description: "Detalhes sobre o diagnóstico use_null_aware_elements produzido pelo analisador Dart."
+description: >-
+  Details about the use_null_aware_elements
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,26 +18,26 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use o marcador null-aware '?' em vez de uma verificação de null via um 'if'._
+_Use the null-aware marker '?' rather than a null check via an 'if'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma verificação de null é usada em vez
-de um marcador null-aware dentro de um literal de coleção.
+The analyzer produces this diagnostic when a null check is used instead
+of a null-aware marker inside of a collection literal.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque uma verificação de null é usada
-para decidir se `x` deve ser inserido na lista, enquanto o
-marcador null-aware '?' seria menos frágil e menos verboso.
+The following code produces this diagnostic because a null check is used
+to decide whether `x` should be inserted into the list, while the
+null-aware marker '?' would be less brittle and less verbose.
 
 ```dart
 f(int? x) => [[!if!] (x != null) x];
 ```
 
-## Correções comuns
+## Common fixes
 
-Substitua a verificação de null pelo marcador null-aware '?':
+Replace the null-check with the null-aware marker '?':
 
 ```dart
 f(int? x) => [?x];

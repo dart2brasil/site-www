@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: extension_declares_instance_field
-description: "Detalhes sobre o diagnóstico extension_declares_instance_field produzido pelo analisador Dart."
+description: >-
+  Details about the extension_declares_instance_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extensions não podem declarar campos de instância._
+_Extensions can't declare instance fields._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração de campo de instância é
-encontrada em uma extension. Não é válido definir um campo de instância porque
-extensions podem apenas adicionar comportamento, não estado.
+The analyzer produces this diagnostic when an instance field declaration is
+found in an extension. It isn't valid to define an instance field because
+extensions can only add behavior, not state.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `s` é um campo de
-instância:
+The following code produces this diagnostic because `s` is an instance
+field:
 
 ```dart
 extension E on String {
@@ -25,10 +26,10 @@ extension E on String {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o valor pode ser computado sem armazená-lo em um campo, então tente
-usar um getter ou um método:
+If the value can be computed without storing it in a field, then try
+using a getter or a method:
 
 ```dart
 extension E on String {
@@ -38,8 +39,8 @@ extension E on String {
 }
 ```
 
-Se o valor precisa ser armazenado, mas é o mesmo para todas as instâncias,
-tente usar um campo static:
+If the value must be stored, but is the same for every instance,
+try using a static field:
 
 ```dart
 extension E on String {
@@ -47,8 +48,8 @@ extension E on String {
 }
 ```
 
-Se cada instância precisa ter seu próprio valor armazenado, então tente
-usar um par de getter e setter apoiado por um `Expando` static:
+If each instance needs to have its own value stored, then try
+using a getter and setter pair backed by a static `Expando`:
 
 ```dart
 extension E on SomeType {

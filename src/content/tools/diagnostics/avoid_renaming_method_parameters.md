@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: avoid_renaming_method_parameters
-description: "Detalhes sobre o diagnóstico avoid_renaming_method_parameters produzido pelo analisador do Dart."
+description: >-
+  Details about the avoid_renaming_method_parameters
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O nome do parâmetro '{0}' não corresponde ao nome '{1}' no método sobrescrito._
+_The parameter name '{0}' doesn't match the name '{1}' in the overridden method._
 
 ## Description
 
-O analisador produz este diagnóstico quando um método que sobrescreve um
-método de uma superclasse altera os nomes dos parâmetros.
+The analyzer produces this diagnostic when a method that overrides a
+method from a superclass changes the names of the parameters.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o parâmetro do
-método `m` em `B` é nomeado `b`, que é diferente do nome do
-parâmetro do método sobrescrito em `A`:
+The following code produces this diagnostic because the parameter of the
+method `m` in `B` is named `b`, which is different from the name of the
+overridden method's parameter in `A`:
 
 ```dart
 class A {
@@ -43,7 +44,7 @@ class B extends A {
 
 ## Common fixes
 
-Renomeie um dos parâmetros para que sejam os mesmos:
+Rename one of the parameters so that they are the same:
 
 ```dart
 class A {

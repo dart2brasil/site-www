@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: invalid_super_formal_parameter_location
-description: "Detalhes sobre o diagnóstico invalid_super_formal_parameter_location produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_super_formal_parameter_location
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Parâmetros super só podem ser usados em construtores generativos que não redirecionam._
+_Super parameters can only be used in non-redirecting generative constructors._
 
 ## Description
 
-O analisador produz este diagnóstico quando um parâmetro super é usado
-em qualquer lugar que não seja um construtor generativo que não redireciona.
+The analyzer produces this diagnostic when a super parameter is used
+anywhere other than a non-redirecting generative constructor.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque o parâmetro super
-`x` está em um construtor generativo que redireciona:
+The following code produces this diagnostic because the super parameter
+`x` is in a redirecting generative constructor:
 
 ```dart
 class A {
@@ -29,8 +30,8 @@ class B extends A {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o parâmetro super
-`x` não está em um construtor generativo:
+The following code produces this diagnostic because the super parameter
+`x` isn't in a generative constructor:
 
 ```dart
 class A {
@@ -43,8 +44,8 @@ class C extends A {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o parâmetro super
-`x` está em um método:
+The following code produces this diagnostic because the super parameter
+`x` is in a method:
 
 ```dart
 class A {
@@ -60,8 +61,8 @@ class D extends A {
 
 ## Common fixes
 
-Se a função que contém o parâmetro super pode ser alterada para ser um
-construtor generativo que não redireciona, então faça isso:
+If the function containing the super parameter can be changed to be a
+non-redirecting generative constructor, then do so:
 
 ```dart
 class A {
@@ -73,8 +74,8 @@ class B extends A {
 }
 ```
 
-Se a função que contém o parâmetro super não pode ser alterada para ser um
-construtor generativo que não redireciona, então remova o `super`:
+If the function containing the super parameter can't be changed to be a
+non-redirecting generative constructor, then remove the `super`:
 
 ```dart
 class A {

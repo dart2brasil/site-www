@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: no_leading_underscores_for_local_identifiers
-description: "Detalhes sobre o diagnóstico no_leading_underscores_for_local_identifiers produzido pelo analisador do Dart."
+description: >-
+  Details about the no_leading_underscores_for_local_identifiers
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -21,16 +22,16 @@ _The local variable '{0}' starts with an underscore._
 
 ## Description
 
-O analisador produz este diagnóstico quando o nome de uma variável local
-começa com um underscore.
+The analyzer produces this diagnostic when the name of a local variable
+starts with an underscore.
 
-Variáveis locais são inerentemente não visíveis fora da biblioteca declarante,
-então um underscore inicial indicando privado não adiciona valor.
+Local variables are inherently not visible outside the declaring library,
+so a leading underscore indicating private adds no value.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o parâmetro `_s`
-começa com um underscore:
+The following code produces this diagnostic because the parameter `_s`
+starts with an underscore:
 
 ```dart
 int f(String [!_s!]) => _s.length;
@@ -38,7 +39,7 @@ int f(String [!_s!]) => _s.length;
 
 ## Common fixes
 
-Remova o underscore:
+Remove the underscore:
 
 ```dart
 int f(String s) => s.length;

@@ -1,22 +1,23 @@
 ---
 title: missing_required_argument
-description: "Detalhes sobre o diagnóstico missing_required_argument produzido pelo analisador Dart."
+description: >-
+  Details about the missing_required_argument
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_O named parameter '{0}' é required, mas não há argumento correspondente._
+_The named parameter '{0}' is required, but there's no corresponding argument._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma invocação de uma função está
-com um named parameter required missing.
+The analyzer produces this diagnostic when an invocation of a function is
+missing a required named parameter.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a invocação de `f`
-não inclui um valor para o named parameter required `end`:
+The following code produces this diagnostic because the invocation of `f`
+doesn't include a value for the required named parameter `end`:
 
 ```dart
 void f(int start, {required int end}) {}
@@ -27,7 +28,7 @@ void g() {
 
 ## Common fixes
 
-Adicione um argumento named correspondente ao parameter required missing:
+Add a named argument corresponding to the missing required parameter:
 
 ```dart
 void f(int start, {required int end}) {}

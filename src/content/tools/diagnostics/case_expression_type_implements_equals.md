@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: case_expression_type_implements_equals
-description: "Detalhes sobre o diagnóstico case_expression_type_implements_equals produzido pelo analisador do Dart."
+description: >-
+  Details about the case_expression_type_implements_equals
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo '{0}' da expressão do case do switch não pode sobrescrever o operador '=='._
+_The switch case expression type '{0}' can't override the '==' operator._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o tipo da expressão
-que segue a keyword `case` tem uma implementação do operador `==`
-diferente daquela em `Object`.
+The analyzer produces this diagnostic when the type of the expression
+following the keyword `case` has an implementation of the `==` operator
+other than the one in `Object`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a expressão
-que segue a keyword `case` (`C(0)`) tem o tipo `C`, e a classe `C`
-sobrescreve o operador `==`:
+The following code produces this diagnostic because the expression
+following the keyword `case` (`C(0)`) has the type `C`, and the class `C`
+overrides the `==` operator:
 
 ```dart
 class C {
@@ -39,10 +40,10 @@ void f(C c) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se não houver uma razão forte para não fazer isso, reescreva o código para usar
-uma estrutura if-else:
+If there isn't a strong reason not to do so, then rewrite the code to use
+an if-else structure:
 
 ```dart
 class C {
@@ -62,8 +63,8 @@ void f(C c) {
 }
 ```
 
-Se você não puder reescrever a instrução switch e a implementação de `==`
-não for necessária, então remova-a:
+If you can't rewrite the switch statement and the implementation of `==`
+isn't necessary, then remove it:
 
 ```dart
 class C {
@@ -80,9 +81,9 @@ void f(C c) {
 }
 ```
 
-Se você não puder reescrever a instrução switch e não puder remover a
-definição de `==`, então encontre algum outro valor que possa ser usado para controlar
-o switch:
+If you can't rewrite the switch statement and you can't remove the
+definition of `==`, then find some other value that can be used to control
+the switch:
 
 ```dart
 class C {

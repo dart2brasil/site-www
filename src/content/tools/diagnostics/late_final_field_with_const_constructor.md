@@ -1,22 +1,23 @@
 ---
 title: late_final_field_with_const_constructor
-description: "Detalhes sobre o diagnóstico late_final_field_with_const_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the late_final_field_with_const_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_Não é possível ter um campo late final em uma classe com um construtor const generativo._
+_Can't have a late final field in a class with a generative const constructor._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma classe que tem pelo menos um
-construtor `const` também tem um campo marcado como `late` e `final`.
+The analyzer produces this diagnostic when a class that has at least one
+`const` constructor also has a field marked both `late` and `final`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a classe `A` tem um
-construtor `const` e o campo `final` `f` está marcado como `late`:
+The following code produces this diagnostic because the class `A` has a
+`const` constructor and the `final` field `f` is marked as `late`:
 
 ```dart
 class A {
@@ -26,10 +27,10 @@ class A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o campo não precisa ser marcado como `late`, então remova o modificador `late`
-do campo:
+If the field doesn't need to be marked `late`, then remove the `late`
+modifier from the field:
 
 ```dart
 class A {
@@ -39,8 +40,8 @@ class A {
 }
 ```
 
-Se o campo deve ser marcado como `late`, então remova o modificador `const` dos
-construtores:
+If the field must be marked `late`, then remove the `const` modifier from
+the constructors:
 
 ```dart
 class A {

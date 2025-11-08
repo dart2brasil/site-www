@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: dead_code
-description: "Detalhes sobre o diagnóstico dead_code produzido pelo analisador Dart."
+description: >-
+  Details about the dead_code
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _Dead code._
 
-_Dead code: A variável wildcard atribuída está marcada como late e nunca pode ser referenciada, então este inicializador nunca será avaliado._
+_Dead code: The assigned-to wildcard variable is marked late and can never be referenced so this initializer will never be evaluated._
 
 ## Description
 
-O analisador produz este diagnóstico quando é encontrado código que não será
-executado porque a execução nunca alcançará o código.
+The analyzer produces this diagnostic when code is found that won't be
+executed because execution will never reach the code.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a invocação de
-`print` ocorre após a função ter retornado:
+The following code produces this diagnostic because the invocation of
+`print` occurs after the function has returned:
 
 ```dart
 void f() {
@@ -29,7 +30,7 @@ void f() {
 
 ## Common fixes
 
-Se o código não é necessário, então remova-o:
+If the code isn't needed, then remove it:
 
 ```dart
 void f() {
@@ -37,8 +38,8 @@ void f() {
 }
 ```
 
-Se o código precisa ser executado, então mova o código para um lugar
-onde ele será executado:
+If the code needs to be executed, then either move the code to a place
+where it will be executed:
 
 ```dart
 void f() {
@@ -47,7 +48,7 @@ void f() {
 }
 ```
 
-Ou reescreva o código antes dele, para que possa ser alcançado:
+Or, rewrite the code before it, so that it can be reached:
 
 ```dart
 void f({bool skipPrinting = true}) {

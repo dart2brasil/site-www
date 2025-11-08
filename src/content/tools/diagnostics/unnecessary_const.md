@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_const
-description: "Detalhes sobre o diagnóstico unnecessary_const produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_const
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,28 +18,28 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Keyword 'const' desnecessária._
+_Unnecessary 'const' keyword._
 
 ## Description
 
-O analisador produz este diagnóstico quando a keyword `const` é usada em
-um [contexto constante][constant context]. A keyword não é necessária porque está implícita.
+The analyzer produces this diagnostic when the keyword `const` is used in
+a [constant context][]. The keyword isn't required because it's implied.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a keyword `const` no
-literal de lista não é necessária:
+The following code produces this diagnostic because the keyword `const` in
+the list literal isn't needed:
 
 ```dart
 const l = [!const!] <int>[];
 ```
 
-A lista é implicitamente `const` por causa da keyword `const` na
-declaração da variável.
+The list is implicitly `const` because of the keyword `const` on the
+variable declaration.
 
 ## Common fixes
 
-Remova a keyword desnecessária:
+Remove the unnecessary keyword:
 
 ```dart
 const l = <int>[];

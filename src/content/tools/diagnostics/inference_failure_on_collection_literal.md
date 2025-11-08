@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: inference_failure_on_collection_literal
-description: "Detalhes sobre o diagnóstico inference_failure_on_collection_literal produzido pelo analisador Dart."
+description: >-
+  Details about the inference_failure_on_collection_literal
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Os argumentos de tipo de '{0}' não podem ser inferidos._
+_The type argument(s) of '{0}' can't be inferred._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando:
-- a opção de linguagem `strict-inference` está habilitada no arquivo de opções de análise,
-- um literal de lista, mapa ou conjunto não possui argumentos de tipo, e
-- os valores dos argumentos de tipo não podem ser inferidos dos elementos.
+The analyzer produces this diagnostic when:
+- the language option `strict-inference` is enabled in the analysis options file,
+- a list, map, or set literal has no type arguments, and
+- the values for the type arguments can't be inferred from the elements.
 
-## Exemplo
+## Example
 
-Dado um arquivo de opções de análise contendo o seguinte:
+Given an analysis options file containing the following:
 
 ```yaml
 analyzer:
@@ -25,8 +26,8 @@ analyzer:
     strict-inference: true
 ```
 
-O código a seguir produz este diagnóstico porque o tipo dos elementos
-do literal de lista não pode ser inferido:
+The following code produces this diagnostic because the type of the list
+literal's elements can't be inferred:
 
 ```dart
 void f() {
@@ -35,9 +36,9 @@ void f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Forneça argumentos de tipo explícitos para o literal:
+Provide explicit type arguments for the literal:
 
 ```dart
 void f() {

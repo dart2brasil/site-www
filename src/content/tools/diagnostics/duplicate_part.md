@@ -1,28 +1,29 @@
 ---
-ia-translate: true
 title: duplicate_part
-description: "Detalhes sobre o diagnóstico duplicate_part produzido pelo analisador Dart."
+description: >-
+  Details about the duplicate_part
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A biblioteca já contém uma part com a URI '{0}'._
+_The library already contains a part with the URI '{0}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um único arquivo é referenciado em
-múltiplas diretivas part.
+The analyzer produces this diagnostic when a single file is referenced in
+multiple part directives.
 
 ## Example
 
-Dado um arquivo `part.dart` contendo
+Given a file `part.dart` containing
 
 ```dart
 part of 'test.dart';
 ```
 
-O código a seguir produz este diagnóstico porque o arquivo `part.dart` é
-incluído múltiplas vezes:
+The following code produces this diagnostic because the file `part.dart` is
+included multiple times:
 
 ```dart
 part 'part.dart';
@@ -31,7 +32,7 @@ part [!'part.dart'!];
 
 ## Common fixes
 
-Remova todas exceto a primeira das diretivas part duplicadas:
+Remove all except the first of the duplicated part directives:
 
 ```dart
 part 'part.dart';

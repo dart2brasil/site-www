@@ -1,28 +1,29 @@
 ---
-ia-translate: true
 title: part_of_non_part
-description: "Detalhes sobre o diagnóstico part_of_non_part produzido pelo analisador do Dart."
+description: >-
+  Details about the part_of_non_part
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A parte incluída '{0}' deve ter uma diretiva part-of._
+_The included part '{0}' must have a part-of directive._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma diretiva part é encontrada e
-o arquivo referenciado não possui uma diretiva part-of.
+The analyzer produces this diagnostic when a part directive is found and
+the referenced file doesn't have a part-of directive.
 
 ## Example
 
-Dado um arquivo `a.dart` contendo:
+Given a file `a.dart` containing:
 
 ```dart
 class A {}
 ```
 
-O código a seguir produz este diagnóstico porque `a.dart` não
-contém uma diretiva part-of:
+The following code produces this diagnostic because `a.dart` doesn't
+contain a part-of directive:
 
 ```dart
 part [!'a.dart'!];
@@ -30,8 +31,8 @@ part [!'a.dart'!];
 
 ## Common fixes
 
-Se o arquivo referenciado deve ser parte de outra biblioteca, então
-adicione uma diretiva part-of ao arquivo:
+If the referenced file is intended to be a part of another library, then
+add a part-of directive to the file:
 
 ```dart
 part of 'test.dart';
@@ -39,8 +40,8 @@ part of 'test.dart';
 class A {}
 ```
 
-Se o arquivo referenciado deve ser uma biblioteca, então substitua a diretiva part
-por uma diretiva import:
+If the referenced file is intended to be a library, then replace the part
+directive with an import directive:
 
 ```dart
 import 'a.dart';

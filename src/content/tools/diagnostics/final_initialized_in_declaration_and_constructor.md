@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: final_initialized_in_declaration_and_constructor
-description: "Detalhes sobre o diagnóstico final_initialized_in_declaration_and_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the final_initialized_in_declaration_and_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' é final e recebeu um valor quando foi declarado, então não pode receber um novo valor._
+_'{0}' is final and was given a value when it was declared, so it can't be set to a new value._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um campo final é inicializado
-duas vezes: uma vez onde foi declarado e uma vez por um parâmetro do construtor.
+The analyzer produces this diagnostic when a final field is initialized
+twice: once where it's declared and once by a constructor's parameter.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o campo `f` é
-inicializado duas vezes:
+The following code produces this diagnostic because the field `f` is
+initialized twice:
 
 ```dart
 class C {
@@ -26,10 +27,10 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o campo deve ter o mesmo valor para todas as instâncias, então remova a
-inicialização na lista de parâmetros:
+If the field should have the same value for all instances, then remove the
+initialization in the parameter list:
 
 ```dart
 class C {
@@ -39,8 +40,8 @@ class C {
 }
 ```
 
-Se o campo pode ter valores diferentes em diferentes instâncias, então remova
-a inicialização na declaração:
+If the field can have different values in different instances, then remove
+the initialization in the declaration:
 
 ```dart
 class C {

@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: empty_statements
-description: "Detalhes sobre o diagnóstico empty_statements produzido pelo analisador Dart."
+description: >-
+  Details about the empty_statements
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,16 +18,16 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Statement empty desnecessário._
+_Unnecessary empty statement._
 
 ## Description
 
-O analisador produz este diagnóstico quando um statement empty é encontrado.
+The analyzer produces this diagnostic when an empty statement is found.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o statement
-controlado pelo loop `while` é um statement empty:
+The following code produces this diagnostic because the statement
+controlled by the `while` loop is an empty statement:
 
 ```dart
 void f(bool condition) {
@@ -39,10 +40,10 @@ void g() {}
 
 ## Common fixes
 
-Se não há statements que precisam ser controlados, então remova tanto
-o statement empty quanto a estrutura de controle da qual ele faz parte (tomando cuidado
-para que qualquer outro código sendo removido não tenha um efeito colateral que precise ser
-preservado):
+If there are no statements that need to be controlled, then remove both
+the empty statement and the control structure it's part of (being careful
+that any other code being removed doesn't have a side-effect that needs to
+be preserved):
 
 ```dart
 void f(bool condition) {
@@ -52,9 +53,9 @@ void f(bool condition) {
 void g() {}
 ```
 
-Se não há statements que precisam ser controlados mas a estrutura
-de controle ainda é necessária por outros motivos, então substitua o statement
-empty por um bloco para tornar a estrutura do código mais óbvia:
+If there are no statements that need to be controlled but the control
+structure is still required for other reasons, then replace the empty
+statement with a block to make the structure of the code more obvious:
 
 ```dart
 void f(bool condition) {
@@ -65,9 +66,9 @@ void f(bool condition) {
 void g() {}
 ```
 
-Se há statements que precisam ser controlados, remova o statement
-empty e ajuste o código para que os statements apropriados estejam sendo
-controlados, possivelmente adicionando um bloco:
+If there are statements that need to be controlled, remove the empty
+statement and adjust the code so that the appropriate statements are being
+controlled, possibly adding a block:
 
 ```dart
 void f(bool condition) {

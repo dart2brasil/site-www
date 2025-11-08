@@ -1,21 +1,22 @@
 ---
-ia-translate: true
 title: expression_in_map
-description: "Detalhes sobre o diagnóstico expression_in_map produzido pelo analisador Dart."
+description: >-
+  Details about the expression_in_map
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Expressions não podem ser usadas em um literal de map._
+_Expressions can't be used in a map literal._
 
 ## Description
 
-O analisador produz este diagnóstico quando o analisador encontra uma
-expression, ao invés de uma entrada de map, no que parece ser um literal de map.
+The analyzer produces this diagnostic when the analyzer finds an
+expression, rather than a map entry, in what appears to be a map literal.
 
 ## Example
 
-O código a seguir produz este diagnóstico:
+The following code produces this diagnostic:
 
 ```dart
 var map = <String, int>{'a': 0, 'b': 1, [!'c'!]};
@@ -23,9 +24,9 @@ var map = <String, int>{'a': 0, 'b': 1, [!'c'!]};
 
 ## Common fixes
 
-Se a expression deve calcular uma chave ou um valor em uma
-entrada, corrija o problema substituindo a expression pela chave ou pelo valor.
-Por exemplo:
+If the expression is intended to compute either a key or a value in an
+entry, fix the issue by replacing the expression with the key or the value.
+For example:
 
 ```dart
 var map = <String, int>{'a': 0, 'b': 1, 'c': 2};

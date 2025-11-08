@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_late_for_private_fields_and_variables
-description: "Detalhes sobre o diagnóstico use_late_for_private_fields_and_variables produzido pelo analisador Dart."
+description: >-
+  Details about the use_late_for_private_fields_and_variables
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'late' para membros privados com um tipo não-nullable._
+_Use 'late' for private members with a non-nullable type._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um campo ou variável privado é
-marcado como sendo nullable, mas toda referência assume que a variável nunca
-é `null`.
+The analyzer produces this diagnostic when a private field or variable is
+marked as being nullable, but every reference assumes that the variable is
+never `null`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a variável privada de nível superior
-`_i` é nullable, mas toda referência assume que não será
+The following code produces this diagnostic because the private top-level
+variable `_i` is nullable, but every reference assumes that it will not be
 `null`:
 
 ```dart
@@ -39,10 +40,10 @@ void f() {
 int? [!_i!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Marque a variável ou campo como sendo tanto não-nullable quanto `late` para
-indicar que sempre terá um valor não-null atribuído:
+Mark the variable or field as being both non-nullable and `late` to
+indicate that it will always be assigned a non-null:
 
 ```dart
 void f() {

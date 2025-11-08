@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: export_internal_library
-description: "Detalhes sobre o diagnóstico export_internal_library produzido pelo analisador Dart."
+description: >-
+  Details about the export_internal_library
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A library '{0}' é interna e não pode ser exportada._
+_The library '{0}' is internal and can't be exported._
 
 ## Description
 
-O analisador produz este diagnóstico quando encontra um export cujo URI `dart:`
-referencia uma library interna.
+The analyzer produces this diagnostic when it finds an export whose `dart:`
+URI references an internal library.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `_interceptors` é uma
-library interna:
+The following code produces this diagnostic because `_interceptors` is an
+internal library:
 
 ```dart
 export [!'dart:_interceptors'!];
@@ -24,4 +25,4 @@ export [!'dart:_interceptors'!];
 
 ## Common fixes
 
-Remova a diretiva export.
+Remove the export directive.

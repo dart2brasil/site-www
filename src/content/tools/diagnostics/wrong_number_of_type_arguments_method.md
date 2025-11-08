@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: wrong_number_of_type_arguments_method
-description: "Detalhes sobre o diagnóstico wrong_number_of_type_arguments_method produzido pelo analisador Dart."
+description: >-
+  Details about the wrong_number_of_type_arguments_method
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O método '{0}' é declarado com {1} parâmetros de tipo, mas {2} argumentos de tipo são fornecidos._
+_The method '{0}' is declared with {1} type parameters, but {2} type arguments are given._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um método ou função é invocado
-com um número diferente de argumentos de tipo do que o número de parâmetros de
-tipo especificados em sua declaração. Deve haver ou nenhum argumento de
-tipo ou o número de argumentos deve corresponder ao número de parâmetros.
+The analyzer produces this diagnostic when a method or function is invoked
+with a different number of type arguments than the number of type
+parameters specified in its declaration. There must either be no type
+arguments or the number of arguments must match the number of parameters.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a invocação do
-método `m` tem dois argumentos de tipo, mas a declaração de `m` tem apenas um
-parâmetro de tipo:
+The following code produces this diagnostic because the invocation of the
+method `m` has two type arguments, but the declaration of `m` only has one
+type parameter:
 
 ```dart
 class C {
@@ -29,10 +30,10 @@ class C {
 int f(C c) => c.m[!<int, int>!](2);
 ```
 
-## Correções comuns
+## Common fixes
 
-Se os argumentos de tipo são necessários, então faça-os corresponder ao número de
-parâmetros de tipo adicionando ou removendo argumentos de tipo:
+If the type arguments are necessary, then make them match the number of
+type parameters by either adding or removing type arguments:
 
 ```dart
 class C {
@@ -42,7 +43,7 @@ class C {
 int f(C c) => c.m<int>(2);
 ```
 
-Se os argumentos de tipo não são necessários, então remova-os:
+If the type arguments aren't necessary, then remove them:
 
 ```dart
 class C {

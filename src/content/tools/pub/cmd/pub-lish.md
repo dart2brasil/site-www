@@ -1,54 +1,54 @@
 ---
 title: dart pub publish
-description: Use dart pub publish para publicar seu pacote Dart no site pub.dev.
+description: Use dart pub publish to publish your Dart package to the pub.dev site.
 ---
 
-_Publish_ (publicar) é um dos comandos da [ferramenta pub](/tools/pub/cmd).
+_Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```plaintext
-$ dart pub publish [opções]
+$ dart pub publish [options]
 ```
 
-Este comando publica seu pacote no
-[site pub.dev]({{site.pub}}) para qualquer pessoa baixar e usar como dependência.
-Para obter informações sobre como preparar seu pacote para publicação e
-quais arquivos você deve incluir ou excluir,
-consulte [Publicando pacotes](/tools/pub/publishing).
+This command publishes your package on the
+[pub.dev site]({{site.pub}}) for anyone to download and depend
+on. For information on how to prepare your package for publishing,
+and what files you should include or exclude,
+see [Publishing packages](/tools/pub/publishing).
 
-## Opções {:#options}
+## Options
 
-Para opções que se aplicam a todos os comandos pub, consulte
-[Opções globais](/tools/pub/cmd#global-options).
+For options that apply to all pub commands, see
+[Global options](/tools/pub/cmd#global-options).
 
-### `--dry-run` ou `-n` {:#dry-run-or-n}
+### `--dry-run` or `-n`
 
-Com isso, o pub passa pelo processo de validação, mas não faz o upload
-do pacote. Isso é útil se você quiser verificar se o seu pacote atende a todos os
-requisitos de publicação antes de realmente torná-lo público.
+With this, pub goes through the validation process but does not actually upload
+the package. This is useful if you want to see if your package meets all of the
+publishing requirements before you're ready to actually go public.
 
-### `--force` ou `-f` {:#force-or-f}
+### `--force` or `-f`
 
-Com isso, o pub não pede confirmação antes de publicar. Normalmente, ele
-mostra o conteúdo do pacote e pede para você confirmar o upload.
+With this, pub does not ask for confirmation before publishing. Normally, it
+shows you the package contents and asks for you to confirm the upload.
 
-Se o seu pacote tiver erros, o pub não faz o upload e sai com um erro.
-No caso de avisos, seu pacote *é* enviado.
-Para garantir que seu pacote não tenha avisos antes de enviar,
-não use `--force` ou use `--dry-run` primeiro.
+If your package has errors, pub doesn't upload it and exits with an error.
+In the event of warnings, your package *is* uploaded.
+To ensure that your package has no warnings before uploading,
+either don't use `--force`, or use `--dry-run` first.
 
-### `--skip-validation` {:#skip-validation}
+### `--skip-validation`
 
-Publica sem passar pelo processo de validação do lado do cliente ou resolver dependências.
-Isso é útil para usuários avançados que sabem por que a validação falha e desejam contornar um problema específico.
+Publishes without going through the client-side validation process or resolving dependencies.
+This is useful for advanced users who know why the validation fails and wish to side step a particular issues.
 
-**Exemplo:** Ao publicar no pub.dev, pode levar alguns minutos para que um pacote recém-publicado fique disponível.
-Portanto, se você estiver publicando dois pacotes dependentes, onde o segundo depende do primeiro.
-Você pode esperar alguns minutos entre a publicação do primeiro e do segundo, ou usar `--skip-validation`
-para publicar o segundo pacote imediatamente, ignorando a validação do lado do cliente.
+**Example:** When publishing to pub.dev it may take a few minutes for a newly published package to become available.
+Hence, if you are publishing two dependent packages, where the second depends on the first.
+You can either wait a few minutes in between publishing the first and the second, or use `--skip-validation`
+to publish the second package immediately, by side-stepping client-side validation.
 
 {% render 'pub-problems.md' %}
 
-## Em um workspace (espaço de trabalho) {:#in-a-workspace}
+## In a workspace
 
-Em um [workspace Pub](/tools/pub/workspaces), `dart pub publish` publica
-o pacote no diretório atual.
+In a [Pub workspace](/tools/pub/workspaces) `dart pub publish` publishes
+the package in the current directory.

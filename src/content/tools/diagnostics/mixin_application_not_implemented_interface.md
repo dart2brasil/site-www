@@ -1,24 +1,25 @@
 ---
 title: mixin_application_not_implemented_interface
-description: "Detalhes sobre o diagnóstico mixin_application_not_implemented_interface produzido pelo analisador Dart."
+description: >-
+  Details about the mixin_application_not_implemented_interface
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_'{0}' não pode ser misturado em '{1}' porque '{1}' não implementa '{2}'._
+_'{0}' can't be mixed onto '{1}' because '{1}' doesn't implement '{2}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um mixin que tem um constraint de
-superclasse é usado em uma [application de mixin][mixin application] com uma superclasse que
-não implementa o constraint required.
+The analyzer produces this diagnostic when a mixin that has a superclass
+constraint is used in a [mixin application][] with a superclass that
+doesn't implement the required constraint.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o mixin `M` requer
-que a classe à qual é aplicado seja uma subclasse de `A`, mas `Object`
-não é uma subclasse de `A`:
+The following code produces this diagnostic because the mixin `M` requires
+that the class to which it's applied be a subclass of `A`, but `Object`
+isn't a subclass of `A`:
 
 ```dart
 class A {}
@@ -30,8 +31,8 @@ class X = Object with [!M!];
 
 ## Common fixes
 
-Se você precisa usar o mixin, então altere a superclasse para ser a
-mesma ou uma subclasse do constraint de superclasse:
+If you need to use the mixin, then change the superclass to be either the
+same as or a subclass of the superclass constraint:
 
 ```dart
 class A {}

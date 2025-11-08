@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: invalid_use_of_protected_member
-description: "Detalhes sobre o diagnóstico invalid_use_of_protected_member produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_use_of_protected_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O membro '{0}' só pode ser usado dentro de membros de instância de subclasses de '{1}'._
+_The member '{0}' can only be used within instance members of subclasses of '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um getter, setter, campo ou
-método que foi anotado com `@protected` é referenciado em qualquer lugar
-que não seja na biblioteca em que foi declarado ou em uma subclasse da
-classe em que foi declarado.
+The analyzer produces this diagnostic when a getter, setter, field, or
+method that has been annotated with `@protected` is referenced anywhere
+other than in the library in which it is declared or in a subclass of the
+class in which it is declared.
 
 ## Example
 
-Dado um arquivo `a.dart` que contém o seguinte:
+Given a file `a.dart` that contains the following:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -28,8 +29,8 @@ class A {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o método `a` está
-sendo invocado em código que não está em uma subclasse de `A`:
+The following code produces this diagnostic because the method `a` is
+being invoked in code that isn't in a subclass of `A`:
 
 ```dart
 import 'a.dart';
@@ -41,9 +42,9 @@ void b(A a) {
 
 ## Common fixes
 
-Se é razoável que o membro seja marcado como `@protected`, então
-remova a referência ao membro protegido, substituindo-o por algum
-código equivalente.
+If it's reasonable for the member to be marked as `@protected`, then
+remove the reference to the protected member, replacing it with some
+equivalent code.
 
-Se não é razoável que o membro seja marcado como `@protected`, e
-você tem a habilidade de fazê-lo, remova a anotação.
+If it isn't reasonable for the member to be marked as `@protected`, and
+you have the ability to do so, remove the annotation.

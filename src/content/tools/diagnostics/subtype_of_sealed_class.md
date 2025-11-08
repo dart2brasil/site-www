@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: subtype_of_sealed_class
-description: "Detalhes sobre o diagnóstico subtype_of_sealed_class produzido pelo analisador Dart."
+description: >-
+  Details about the subtype_of_sealed_class
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A classe '{0}' não deve ser estendida, misturada ou implementada porque é sealed._
+_The class '{0}' shouldn't be extended, mixed in, or implemented because it's sealed._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma classe sealed (uma que
-tem a anotação [`sealed`][meta-sealed] ou herda ou mistura uma
-classe sealed) é referenciada em uma cláusula `extends`, `implements`, ou
-`with` de uma declaração de classe ou mixin se a declaração não está no
-mesmo pacote que a classe sealed.
+The analyzer produces this diagnostic when a sealed class (one that either
+has the [`sealed`][meta-sealed] annotation or inherits or mixes in a
+sealed class) is referenced in either the `extends`, `implements`, or
+`with` clause of a class or mixin declaration if the declaration isn't in
+the same package as the sealed class.
 
 ## Example
 
-Dada uma biblioteca em um pacote diferente do pacote sendo analisado que
-contém o seguinte:
+Given a library in a package other than the package being analyzed that
+contains the following:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -30,8 +31,8 @@ class A {}
 class B {}
 ```
 
-O código a seguir produz este diagnóstico porque `C`, que não está no
-mesmo pacote que `B`, está estendendo a classe sealed `B`:
+The following code produces this diagnostic because `C`, which isn't in the
+same package as `B`, is extending the sealed class `B`:
 
 ```dart
 import 'package:a/a.dart';
@@ -41,8 +42,8 @@ import 'package:a/a.dart';
 
 ## Common fixes
 
-Se a classe não precisa ser um subtipo da classe sealed, então mude
-a declaração para que não seja:
+If the class doesn't need to be a subtype of the sealed class, then change
+the declaration so that it isn't:
 
 ```dart
 import 'package:a/a.dart';
@@ -50,8 +51,8 @@ import 'package:a/a.dart';
 class B extends A {}
 ```
 
-Se a classe precisa ser um subtipo da classe sealed, então mude
-a classe sealed para que não seja mais sealed ou mova a subclasse para
-o mesmo pacote que a classe sealed.
+If the class needs to be a subtype of the sealed class, then either change
+the sealed class so that it's no longer sealed or move the subclass into
+the same package as the sealed class.
 
 [meta-sealed]: https://pub.dev/documentation/meta/latest/meta/sealed-constant.html

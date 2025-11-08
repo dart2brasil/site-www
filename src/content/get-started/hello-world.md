@@ -1,8 +1,8 @@
 ---
-ia-translate: true
-title: Seu primeiro programa Dart
-shortTitle: Seu primeiro app
-description: "Crie, execute e faça sua primeira alteração em um programa Dart de linha de comando."
+title: Your first Dart program
+shortTitle: Your first app
+description: >-
+  Create, run, and make your first change to a Dart command-line program.
 sitemap: false
 noindex: true
 layout: learn
@@ -16,78 +16,78 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-Bem-vindo ao Dart!
-Neste capítulo, você garantirá que sua configuração está completa e
-então trabalhará na criação do seu primeiro programa Dart.
-Este capítulo começa simples, mas avança rapidamente!
+Welcome to Dart!
+In this chapter, you'll ensure your setup is complete, and
+then work through creating your first Dart program.
+This chapter starts simple but moves fast!
 
-:::secondary O que você aprenderá
+:::secondary What you'll learn
 
-* Confirmar sua instalação do Dart SDK.
-* Usar `dart create` para gerar um novo projeto de interface de linha de comando (CLI).
-* Executar seu programa Dart do terminal usando `dart run`.
-* Identificar a função `main` como o ponto de entrada do programa.
-* Fazer sua primeira alteração de código e ver a saída atualizada.
+* Confirm your Dart SDK installation.
+* Use `dart create` to generate a new command-line interface (CLI) project.
+* Run your Dart program from the terminal using `dart run`.
+* Identify the `main` function as the program's entry point.
+* Make your first code change and see the updated output.
 
 :::
 
-## Pré-requisitos
+## Prerequisites
 
-Antes de começar este capítulo, certifique-se de:
+Before you begin this chapter, ensure you:
 
-* [Instalar o Dart SDK](/get-dart).
-* Revisar a [visão geral do Dart](/overview) (se você é novo no Dart).
+* [Installed the Dart SDK](/get-dart).
+* Reviewed the [Dart overview](/overview) (if you're new to Dart).
 
-## Tarefas
+## Tasks
 
-Crie o clássico Hello World em Dart para começar seu projeto.
+Create the classic Hello World in Dart to get your project started.
 
-### Tarefa 1: Confirmar sua configuração do Dart
+### Task 1: Confirm your Dart setup
 
-Primeiro, certifique-se de que o Dart está pronto no seu sistema seguindo estes passos.
+First, make sure Dart is ready to go on your system by following these steps.
 
-1.  Abra um terminal (ou prompt de comando).
+1.  Open a terminal (or command prompt).
 
-2.  Execute o seguinte comando para verificar a versão do seu Dart SDK:
+2.  Run the following command to check your Dart SDK version:
 
     ```bash
     dart --version
     ```
 
-3.  Certifique-se de ver uma saída similar a esta
-    (os números de versão podem ser diferentes):
+3.  Make sure that you see output similar to this
+    (the version numbers might be different):
 
     ```bash
     Dart SDK version: 3.9.2 (stable) (Wed Aug 27 03:49:40 2025 -0700) on "linux_x64"
     ```
 
-    Se você vir um erro como "command not found", consulte o
-    [guia de instalação do Dart](/get-dart) para configurar seu ambiente.
+    If you see an error like "command not found," refer to the
+    [Dart installation guide](/get-dart) to set up your environment.
 
-### Tarefa 2: Criar um novo projeto Dart
+### Task 2: Create a new Dart project
 
-Agora, crie sua primeira aplicação Dart de linha de comando.
+Now, create your first Dart command-line application.
 
-1.  No mesmo terminal,
-    crie um novo diretório chamado `dartpedia` para armazenar seu projeto.
-    Então mude para esse diretório.
+1.  In the same terminal,
+    create a new directory called `dartpedia` to hold your project.
+    Then switch into that directory.
 
     ```bash
     mkdir dartpedia
     cd dartpedia
     ```
 
-1.  Execute o seguinte comando:
+1.  Run the following command:
 
     ```bash
     dart create cli
     ```
 
-    O comando `dart create` gera um projeto Dart básico chamado
-    "cli" (para Command Line Interface).
-    Ele configura os arquivos e diretórios essenciais que você precisa.
+    The `dart create` command generates a basic Dart project named
+    "cli" (for Command Line Interface).
+    It sets up the essential files and directories you need.
 
-1.  Você deverá ver uma saída similar a esta, confirmando a criação do projeto:
+1.  You should see output similar to this, confirming the project creation:
 
     ```bash
     Creating cli using template console...
@@ -113,30 +113,30 @@ Agora, crie sua primeira aplicação Dart de linha de comando.
     ```
 
     :::note
-    O comando `dart create` criou vários arquivos.
-    Não se preocupe com eles agora.
-    Seus detalhes serão cobertos em capítulos futuros.
+    The `dart create` command created a number of files.
+    Don't worry about these now.
+    Their specifics will be covered in future chapters.
     :::
 
-### Tarefa 3: Executar seu primeiro programa Dart
+### Task 3: Run your first Dart program
 
-Em seguida, execute seu programa para testá-lo.
+Next, run your program to test it out.
 
-1.  No terminal, navegue até o diretório do seu novo projeto:
+1.  In the terminal, navigate into your new project directory:
 
     ```bash
     cd cli
     ```
 
-1.  Execute a aplicação padrão:
+1.  Run the default application:
 
     ```bash
     dart run
     ```
 
-    Este comando instrui o Dart a executar seu programa.
+    This command tells Dart to execute your program.
 
-1.  Você deverá ver a seguinte saída:
+1.  You should see the following output:
 
     ```bash
     Building package executable...
@@ -144,21 +144,21 @@ Em seguida, execute seu programa para testá-lo.
     Hello world: 42!
     ```
 
-    Parabéns! Você executou com sucesso seu primeiro programa Dart!
+    Congratulations! You've successfully run your first Dart program!
 
-### Tarefa 4: Fazer sua primeira alteração de código
+### Task 4: Make your first code change
 
-Em seguida, modifique o código que gerou `Hello world: 42!`.
+Next, modify the code that generated `Hello world: 42!`.
 
-1.  Em um editor de código, abra o arquivo `bin/cli.dart`.
+1.  In a code editor, open the `bin/cli.dart` file.
 
-    O diretório `bin/` é onde seu código executável fica.
-    `cli.dart` é o ponto de entrada da sua aplicação.
+    The `bin/` directory is where your executable code lives.
+    `cli.dart` is the entry point of your application.
 
-    Dentro, você verá a função `main`.
-    Todo programa Dart [começa a executar a partir de sua função `main`](/language#hello-world).
+    Inside, you'll see the `main` function.
+    Every Dart program [starts executing from its `main` function](/language#hello-world).
 
-1.  Verifique para ter certeza de que seu `bin/cli.dart` se parece com isto:
+1.  Check to make sure that your `bin/cli.dart` looks like this:
 
     ```dart title="bin/cli.dart"
     import 'package:cli/cli.dart' as cli;
@@ -168,9 +168,9 @@ Em seguida, modifique o código que gerou `Hello world: 42!`.
     }
     ```
 
-1.  Simplifique a saída por enquanto.
-    Delete a primeira linha (você não precisa desta instrução import), e altere a
-    instrução `print` para exibir uma saudação simples: 
+1.  Simplify the output for now.
+    Delete the first line (you don't need this import statement), and change the
+    `print` statement to display a simple greeting: 
 
     ```dart title="bin/cli.dart" highlightLines=1,4
     import 'package:cli/cli.dart' as cli; // Delete this entire line
@@ -180,13 +180,13 @@ Em seguida, modifique o código que gerou `Hello world: 42!`.
     }
     ```
 
-2.  Salve seu arquivo. Então no terminal, execute seu programa novamente:
+2.  Save your file. Then in the terminal, run your program again:
 
     ```bash
     dart run
     ```
 
-3.  Verifique para ter certeza de que você vê o seguinte:
+3.  Check to make sure that you see the following:
 
     ```bash
     Building package executable...
@@ -194,37 +194,37 @@ Em seguida, modifique o código que gerou `Hello world: 42!`.
     Hello, Dart!
     ```
 
-    Você modificou e executou novamente com sucesso seu primeiro programa Dart!
+    You've successfully modified and re-run your first Dart program!
 
-## Revisão
+## Review
 
-Nesta lição, você:
+In this lesson, you:
 
-* Verificou sua instalação do Dart SDK.
-* Usou `dart create` para gerar um novo projeto CLI.
-* Executou seu programa Dart do terminal usando `dart run`.
-* Identificou a função `main` como o
-  ponto de entrada do programa dentro de `bin/cli.dart`.
-* Fez sua primeira alteração de código e viu a saída atualizada.
+* Verified your Dart SDK installation.
+* Used `dart create` to generate a new CLI project.
+* Ran your Dart program from the terminal using `dart run`.
+* Identified the `main` function as the
+  program's entry point within `bin/cli.dart`.
+* Made your first code change and saw the updated output.
 
 ## Quiz
 
-Aqui está um quiz rápido para solidificar seu aprendizado.
+Here's a quick quiz to solidify your learning.
 
 :::note
-Você verá estes quizzes ao longo deste tutorial.
-Sinta-se livre para pulá-los se quiser.
+You'll see these quizzes throughout this tutorial.
+Feel free to skip them if you want.
 :::
 
-Qual comando é usado para criar um novo projeto Dart a partir de um template?
+Which command is used to create a new Dart project from a template?
 
 * A) `dart new`
 * B) `dart build`
 * C) `dart create`
 * D) `dart init`
 
-## Próxima lição
+## Next lesson
 
-Na próxima lição, você aprenderá como
-fazer seu programa responder a comandos específicos
-introduzindo argumentos de linha de comando e a keyword `const`.
+In the next lesson, you'll learn how to
+make your program respond to specific commands by
+introducing command-line arguments and the `const` keyword.

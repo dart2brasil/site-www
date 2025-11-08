@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: undefined_enum_constructor
-description: "Detalhes sobre o diagnóstico undefined_enum_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_enum_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O enum não possui um construtor chamado '{0}'._
+_The enum doesn't have a constructor named '{0}'._
 
-_O enum não possui um construtor sem nome._
+_The enum doesn't have an unnamed constructor._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o construtor invocado para
-inicializar um valor enum não existe.
+The analyzer produces this diagnostic when the constructor invoked to
+initialize an enum value doesn't exist.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque o valor enum `c`
-está sendo inicializado pelo construtor sem nome, mas não há nenhum
-construtor sem nome definido em `E`:
+The following code produces this diagnostic because the enum value `c`
+is being initialized by the unnamed constructor, but there's no unnamed
+constructor defined in `E`:
 
 ```dart
 enum E {
@@ -29,9 +30,9 @@ enum E {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o valor enum `c` está
-sendo inicializado pelo construtor chamado `x`, mas não há nenhum construtor
-chamado `x` definido em `E`:
+The following code produces this diagnostic because the enum value `c` is
+being initialized by the constructor named `x`, but there's no constructor
+named `x` defined in `E`:
 
 ```dart
 enum E {
@@ -41,11 +42,11 @@ enum E {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o valor enum está sendo inicializado pelo construtor sem nome e um
-dos construtores nomeados deveria ter sido usado, então adicione o nome do
-construtor:
+If the enum value is being initialized by the unnamed constructor and one
+of the named constructors should have been used, then add the name of the
+constructor:
 
 ```dart
 enum E {
@@ -55,9 +56,9 @@ enum E {
 }
 ```
 
-Se o valor enum está sendo inicializado pelo construtor sem nome e nenhum
-dos construtores nomeados é apropriado, então defina o construtor
-sem nome:
+If the enum value is being initialized by the unnamed constructor and none
+of the named constructors are appropriate, then define the unnamed
+constructor:
 
 ```dart
 enum E {
@@ -67,10 +68,10 @@ enum E {
 }
 ```
 
-Se o valor enum está sendo inicializado por um construtor nomeado e um dos
-construtores existentes deveria ter sido usado, então altere o nome do
-construtor sendo invocado (ou remova-o se o construtor sem nome
-deveria ser usado):
+If the enum value is being initialized by a named constructor and one of
+the existing constructors should have been used, then change the name of
+the constructor being invoked (or remove it if the unnamed constructor
+should be used):
 
 ```dart
 enum E {
@@ -81,9 +82,9 @@ enum E {
 }
 ```
 
-Se o valor enum está sendo inicializado por um construtor nomeado e nenhum dos
-construtores existentes deveria ter sido usado, então defina um construtor
-com o nome que foi usado:
+If the enum value is being initialized by a named constructor and none of
+the existing constructors should have been used, then define a constructor
+with the name that was used:
 
 ```dart
 enum E {

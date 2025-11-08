@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: size_annotation_dimensions
-description: "Detalhes sobre o diagnóstico size_annotation_dimensions produzido pelo analisador do Dart."
+description: >-
+  Details about the size_annotation_dimensions
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'Array's devem ter uma anotação 'Array' que corresponda às dimensões._
+_'Array's must have an 'Array' annotation that matches the dimensions._
 
 ## Description
 
-O analisador produz este diagnóstico quando o número de dimensões
-especificado em uma anotação `Array` não corresponde ao número de
-arrays aninhados especificados pelo tipo de um campo.
+The analyzer produces this diagnostic when the number of dimensions
+specified in an `Array` annotation doesn't match the number of nested
+arrays specified by the type of a field.
 
-Para mais informações sobre FFI, veja [C interop using dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o campo `a0` tem um
-tipo com três arrays aninhados, mas apenas duas dimensões são fornecidas na
-anotação `Array`:
+The following code produces this diagnostic because the field `a0` has a
+type with three nested arrays, but only two dimensions are given in the
+`Array` annotation:
 
 ```dart
 import 'dart:ffi';
@@ -33,8 +34,8 @@ final class C extends Struct {
 
 ## Common fixes
 
-Se o tipo do campo está correto, então corrija a anotação para ter o
-número necessário de dimensões:
+If the type of the field is correct, then fix the annotation to have the
+required number of dimensions:
 
 ```dart
 import 'dart:ffi';
@@ -45,7 +46,7 @@ final class C extends Struct {
 }
 ```
 
-Se o tipo do campo está errado, então corrija o tipo do campo:
+If the type of the field is wrong, then fix the type of the field:
 
 ```dart
 import 'dart:ffi';

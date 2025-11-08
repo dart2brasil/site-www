@@ -1,41 +1,42 @@
 ---
-ia-translate: true
 title: text_direction_code_point_in_comment
-description: "Detalhes sobre o diagnóstico text_direction_code_point_in_comment produzido pelo analisador do Dart."
+description: >-
+  Details about the text_direction_code_point_in_comment
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O ponto de código Unicode 'U+{0}' altera a aparência do texto de como ele é interpretado pelo compilador._
+_The Unicode code point 'U+{0}' changes the appearance of text from how it's interpreted by the compiler._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando encontra código fonte que
-contém pontos de código Unicode de direção de texto. Esses pontos de código fazem com que
-o código fonte em uma string literal ou um comentário seja interpretado
-e compilado de forma diferente de como aparece nos editores, levando a
-possíveis vulnerabilidades de segurança.
+The analyzer produces this diagnostic when it encounters source that
+contains text direction Unicode code points. These code points cause
+source code in either a string literal or a comment to be interpreted
+and compiled differently than how it appears in editors, leading to
+possible security vulnerabilities.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico duas vezes porque há
-caracteres ocultos no início e no final da string label:
+The following code produces this diagnostic twice because there are
+hidden characters at the start and end of the label string:
 
 ```dart
 var label = '[!I!]nteractive text[!'!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Se os pontos de código forem destinados a serem incluídos na string literal,
-então escape-os:
+If the code points are intended to be included in the string literal,
+then escape them:
 
 ```dart
 var label = '\u202AInteractive text\u202C';
 ```
 
-Se os pontos de código não forem destinados a serem incluídos na string literal,
-então remova-os:
+If the code points aren't intended to be included in the string literal,
+then remove them:
 
 ```dart
 var label = 'Interactive text';

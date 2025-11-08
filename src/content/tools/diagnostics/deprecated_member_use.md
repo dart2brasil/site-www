@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: deprecated_member_use
-description: "Detalhes sobre o diagnóstico deprecated_member_use produzido pelo analisador Dart."
+description: >-
+  Details about the deprecated_member_use
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' está deprecated e não deve ser usado._
+_'{0}' is deprecated and shouldn't be used._
 
-_'{0}' está deprecated e não deve ser usado. {1}_
+_'{0}' is deprecated and shouldn't be used. {1}_
 
 ## Description
 
-O analisador produz este diagnóstico quando um membro de biblioteca ou classe
-deprecated é usado em um pacote diferente.
+The analyzer produces this diagnostic when a deprecated library or class
+member is used in a different package.
 
 ## Example
 
-Se o método `m` na classe `C` é anotado com `@deprecated`, então
-o código a seguir produz este diagnóstico:
+If the method `m` in the class `C` is annotated with `@deprecated`, then
+the following code produces this diagnostic:
 
 ```dart
 void f(C c) {
@@ -28,5 +29,5 @@ void f(C c) {
 
 ## Common fixes
 
-A documentação para declarações anotadas com `@deprecated`
-deve indicar qual código usar no lugar do código deprecated.
+The documentation for declarations that are annotated with `@deprecated`
+should indicate what code to use in place of the deprecated code.

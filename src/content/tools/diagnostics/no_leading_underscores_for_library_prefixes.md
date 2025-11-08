@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: no_leading_underscores_for_library_prefixes
-description: "Detalhes sobre o diagnóstico no_leading_underscores_for_library_prefixes produzido pelo analisador do Dart."
+description: >-
+  Details about the no_leading_underscores_for_library_prefixes
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -21,16 +22,16 @@ _The library prefix '{0}' starts with an underscore._
 
 ## Description
 
-O analisador produz este diagnóstico quando o nome de um prefixo declarado
-em um import começa com um underscore.
+The analyzer produces this diagnostic when the name of a prefix declared
+on an import starts with an underscore.
 
-Prefixos de biblioteca são inerentemente não visíveis fora da biblioteca declarante,
-então um underscore inicial indicando privado não adiciona valor.
+Library prefixes are inherently not visible outside the declaring library,
+so a leading underscore indicating private adds no value.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o prefixo `_core`
-começa com um underscore:
+The following code produces this diagnostic because the prefix `_core`
+starts with an underscore:
 
 ```dart
 import 'dart:core' as [!_core!];
@@ -38,7 +39,7 @@ import 'dart:core' as [!_core!];
 
 ## Common fixes
 
-Remova o underscore:
+Remove the underscore:
 
 ```dart
 import 'dart:core' as core;

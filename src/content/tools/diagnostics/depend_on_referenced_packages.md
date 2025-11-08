@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: depend_on_referenced_packages
-description: "Detalhes sobre o diagnóstico depend_on_referenced_packages produzido pelo analisador do Dart."
+description: >-
+  Details about the depend_on_referenced_packages
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,28 +18,28 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_O pacote importado '{0}' não é uma dependência do pacote importador._
+_The imported package '{0}' isn't a dependency of the importing package._
 
 ## Description
 
-O analisador produz este diagnóstico quando um import de pacote se refere a um
-pacote que não está especificado no arquivo `pubspec.yaml`.
+The analyzer produces this diagnostic when a package import refers to a
+package that is not specified in the `pubspec.yaml` file.
 
-Depender explicitamente de pacotes que você referencia garante que eles sempre
-existam e permite que você coloque uma restrição de dependência neles para
-se proteger contra mudanças incompatíveis.
+Depending explicitly on packages that you reference ensures they will
+always exist and allows you to put a dependency constraint on them to
+guard against breaking changes.
 
 ## Example
 
-Dado um arquivo `pubspec.yaml` contendo o seguinte:
+Given a `pubspec.yaml` file containing the following:
 
 ```yaml
 dependencies:
   meta: ^3.0.0
 ```
 
-O código a seguir produz este diagnóstico porque não há dependência
-no pacote `a`:
+The following code produces this diagnostic because there is no dependency
+on the package `a`:
 
 ```dart
 import 'package:a/a.dart';
@@ -46,14 +47,14 @@ import 'package:a/a.dart';
 
 ## Common fixes
 
-Se a dependência deve ser uma dependência regular ou dev dependency
-depende se o pacote é referenciado de uma biblioteca pública (uma
-sob `lib` ou `bin`), ou apenas bibliotecas privadas, (como uma
-sob `test`).
+Whether the dependency should be a regular dependency or dev dependency
+depends on whether the package is referenced from a public library (one
+under either `lib` or `bin`), or only private libraries, (such as one
+under `test`).
 
-Se o pacote é referenciado de pelo menos uma biblioteca pública, então adicione uma
-dependência regular no pacote ao arquivo `pubspec.yaml` sob o
-campo `dependencies`:
+If the package is referenced from at least one public library, then add a
+regular dependency on the package to the `pubspec.yaml` file under the
+`dependencies` field:
 
 ```yaml
 dependencies:
@@ -61,9 +62,9 @@ dependencies:
   meta: ^3.0.0
 ```
 
-Se o pacote é referenciado apenas de bibliotecas privadas, então adicione uma
-dev dependency no pacote ao arquivo `pubspec.yaml` sob o
-campo `dev_dependencies`:
+If the package is referenced only from private libraries, then add a
+dev dependency on the package to the `pubspec.yaml` file under the
+`dev_dependencies` field:
 
 ```yaml
 dependencies:

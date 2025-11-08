@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: illegal_async_generator_return_type
-description: "Detalhes sobre o diagnóstico illegal_async_generator_return_type produzido pelo analisador do Dart."
+description: >-
+  Details about the illegal_async_generator_return_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Funções marcadas com 'async*' devem ter um tipo de retorno que seja um supertipo de 'Stream<T>' para algum tipo 'T'._
+_Functions marked 'async*' must have a return type that is a supertype of 'Stream<T>' for some type 'T'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o corpo de uma função tem o
-modificador `async*` mesmo que o tipo de retorno da função não seja
-`Stream` ou um supertipo de `Stream`.
+The analyzer produces this diagnostic when the body of a function has the
+`async*` modifier even though the return type of the function isn't either
+`Stream` or a supertype of `Stream`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o corpo da
-função `f` tem o modificador 'async*' mesmo que o tipo de retorno `int`
-não seja um supertipo de `Stream`:
+The following code produces this diagnostic because the body of the
+function `f` has the 'async*' modifier even though the return type `int`
+isn't a supertype of `Stream`:
 
 ```dart
 [!int!] f() async* {}
@@ -26,14 +27,14 @@ não seja um supertipo de `Stream`:
 
 ## Common fixes
 
-Se a função deve ser assíncrona, então altere o tipo de retorno para ser
-`Stream` ou um supertipo de `Stream`:
+If the function should be asynchronous, then change the return type to be
+either `Stream` or a supertype of `Stream`:
 
 ```dart
 Stream<int> f() async* {}
 ```
 
-Se a função deve ser síncrona, então remova o modificador `async*`:
+If the function should be synchronous, then remove the `async*` modifier:
 
 ```dart
 int f() => 0;

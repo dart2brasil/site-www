@@ -1,29 +1,30 @@
 ---
-ia-translate: true
 title: subtype_of_struct_class
-description: "Detalhes sobre o diagnóstico subtype_of_struct_class produzido pelo analisador Dart."
+description: >-
+  Details about the subtype_of_struct_class
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A classe '{0}' não pode estender '{1}' porque '{1}' é um subtipo de 'Struct', 'Union' ou 'AbiSpecificInteger'._
+_The class '{0}' can't extend '{1}' because '{1}' is a subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
 
-_A classe '{0}' não pode implementar '{1}' porque '{1}' é um subtipo de 'Struct', 'Union' ou 'AbiSpecificInteger'._
+_The class '{0}' can't implement '{1}' because '{1}' is a subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
 
-_A classe '{0}' não pode misturar '{1}' porque '{1}' é um subtipo de 'Struct', 'Union' ou 'AbiSpecificInteger'._
+_The class '{0}' can't mix in '{1}' because '{1}' is a subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma classe estende, implementa ou
-mistura uma classe que estende `Struct` ou `Union`. Classes só podem
-estender `Struct` ou `Union` diretamente.
+The analyzer produces this diagnostic when a class extends, implements, or
+mixes in a class that extends either `Struct` or `Union`. Classes can only
+extend either `Struct` or `Union` directly.
 
-Para mais informações sobre FFI, veja [C interop using dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a classe `C` estende
-`S`, e `S` estende `Struct`:
+The following code produces this diagnostic because the class `C` extends
+`S`, and `S` extends `Struct`:
 
 ```dart
 import 'dart:ffi';
@@ -39,9 +40,9 @@ final class C extends [!S!] {
 
 ## Common fixes
 
-Se você está tentando definir um struct ou union que compartilha alguns campos
-declarados por um struct ou union diferente, então estenda `Struct` ou `Union`
-diretamente e copie os campos compartilhados:
+If you're trying to define a struct or union that shares some fields
+declared by a different struct or union, then extend `Struct` or `Union`
+directly and copy the shared fields:
 
 ```dart
 import 'dart:ffi';

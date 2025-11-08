@@ -1,48 +1,50 @@
 ---
-ia-translate: true
 title: sdk_version_set_literal
-description: "Detalhes sobre o diagnóstico sdk_version_set_literal produzido pelo analisador Dart."
+description: >-
+  Details about the sdk_version_set_literal
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Literais de conjunto não eram suportados até a versão 2.2, mas este código é obrigado a ser capaz de rodar em versões anteriores._
+_Set literals weren't supported until version 2.2, but this code is required to be able to run on earlier versions._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um literal de conjunto é encontrado em código
-que tem uma restrição de SDK cuja limite inferior é menor que 2.2.0. Literais
-de conjunto não eram suportados em versões anteriores, então este código não será capaz
-de rodar em versões anteriores do SDK.
+The analyzer produces this diagnostic when a set literal is found in code
+that has an SDK constraint whose lower bound is less than 2.2.0. Set
+literals weren't supported in earlier versions, so this code won't be able
+to run against earlier versions of the SDK.
 
-## Exemplo
+## Example
 
-Aqui está um exemplo de um pubspec que define uma restrição de SDK com um
-limite inferior menor que 2.2.0:
+Here's an example of a pubspec that defines an SDK constraint with a lower
+bound of less than 2.2.0:
 
 ```yaml
 environment:
   sdk: '>=2.1.0 <2.4.0'
 ```
 
-No pacote que tem esse pubspec, código como o seguinte produz este diagnóstico:
+In the package that has that pubspec, code like the following produces this
+diagnostic:
 
 ```dart
 var s = [!<int>{}!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você não precisa suportar versões antigas do SDK, então você pode aumentar
-a restrição de SDK para permitir que a sintaxe seja usada:
+If you don't need to support older versions of the SDK, then you can
+increase the SDK constraint to allow the syntax to be used:
 
 ```yaml
 environment:
   sdk: '>=2.2.0 <2.4.0'
 ```
 
-Se você realmente precisa suportar versões antigas do SDK, então substitua o literal
-de conjunto por código que cria o conjunto sem o uso de um literal:
+If you do need to support older versions of the SDK, then replace the set
+literal with code that creates the set without the use of a literal:
 
 ```dart
 var s = new Set<int>();

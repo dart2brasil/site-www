@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: diagnostic_describe_all_properties
-description: "Detalhes sobre o diagnóstico diagnostic_describe_all_properties produzido pelo analisador do Dart."
+description: >-
+  Details about the diagnostic_describe_all_properties
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_A propriedade pública não é descrita por 'debugFillProperties' ou 'debugDescribeChildren'._
+_The public property isn't described by either 'debugFillProperties' or 'debugDescribeChildren'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma classe que implementa
-`Diagnosticable` tem uma propriedade pública que não é adicionada como uma propriedade em
-um método `debugFillProperties` ou `debugDescribeChildren`.
+The analyzer produces this diagnostic when a class that implements
+`Diagnosticable` has a public property that isn't added as a property in
+either a `debugFillProperties` or `debugDescribeChildren` method.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a propriedade `p2`
-não é adicionada no método `debugFillProperties`:
+The following code produces this diagnostic because the property `p2`
+isn't added in the `debugFillProperties` method:
 
 ```dart
 import 'package:flutter/foundation.dart';
@@ -49,11 +50,11 @@ class C extends Widget {
 
 ## Common fixes
 
-Se não há um override de `debugFillProperties` ou
-`debugDescribeChildren`, então adicione um.
+If there isn't on override of either the `debugFillProperties` or
+`debugDescribeChildren` method, then add one.
 
-Adicione uma descrição da propriedade no método `debugFillProperties` ou
-`debugDescribeChildren`:
+Add a description of the property in the `debugFillProperties` or
+`debugDescribeChildren` method:
 
 ```dart
 import 'package:flutter/foundation.dart';

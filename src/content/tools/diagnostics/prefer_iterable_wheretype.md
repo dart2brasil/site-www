@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_iterable_wheretype
-description: "Detalhes sobre o diagnóstico prefer_iterable_wheretype produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_iterable_wheretype
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'whereType' para selecionar elementos de um determinado tipo._
+_Use 'whereType' to select elements of a given type._
 
 ## Description
 
-O analisador produz este diagnóstico quando o método `Iterable.where` está
-sendo usado para filtrar elementos com base em seu tipo.
+The analyzer produces this diagnostic when the method `Iterable.where` is
+being used to filter elements based on their type.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o método `where` está
-sendo usado para acessar apenas as strings dentro do iterável:
+The following code produces this diagnostic because the method `where` is
+being used to access only the strings within the iterable:
 
 ```dart
 Iterable<Object> f(Iterable<Object> p) => p.[!where!]((e) => e is String);
@@ -35,11 +36,11 @@ Iterable<Object> f(Iterable<Object> p) => p.[!where!]((e) => e is String);
 
 ## Common fixes
 
-Reescreva o código para usar `whereType`:
+Rewrite the code to use `whereType`:
 
 ```dart
 Iterable<String> f(Iterable<Object> p) => p.whereType<String>();
 ```
 
-Isso também pode permitir que você reforce os tipos em seu código ou remova
-outras verificações de tipo.
+This might also allow you to tighten the types in your code or remove
+other type checks.

@@ -1,22 +1,24 @@
 ---
-ia-translate: true
 title: invalid_extension_argument_count
-description: "Detalhes sobre o diagnóstico invalid_extension_argument_count produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_extension_argument_count
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extension overrides devem ter exatamente um argumento: o valor de 'this' no método extension._
+_Extension overrides must have exactly one argument: the value of 'this' in the extension method._
 
 ## Description
 
-O analisador produz este diagnóstico quando um extension override não tem
-exatamente um argumento. O argumento é a expressão usada para calcular o
-valor de `this` dentro do método extension, então deve haver um argumento.
+The analyzer produces this diagnostic when an extension override doesn't
+have exactly one argument. The argument is the expression used to compute
+the value of `this` within the extension method, so there must be one
+argument.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque não há argumentos:
+The following code produces this diagnostic because there are no arguments:
 
 ```dart
 extension E on String {
@@ -28,7 +30,8 @@ void f() {
 }
 ```
 
-E o código a seguir produz este diagnóstico porque há mais de um argumento:
+And, the following code produces this diagnostic because there's more than
+one argument:
 
 ```dart
 extension E on String {
@@ -42,7 +45,7 @@ void f() {
 
 ## Common fixes
 
-Forneça um argumento para o extension override:
+Provide one argument for the extension override:
 
 ```dart
 extension E on String {

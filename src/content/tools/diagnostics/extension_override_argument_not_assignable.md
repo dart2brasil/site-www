@@ -1,21 +1,22 @@
 ---
-ia-translate: true
 title: extension_override_argument_not_assignable
-description: "Detalhes sobre o diagnóstico extension_override_argument_not_assignable produzido pelo analisador Dart."
+description: >-
+  Details about the extension_override_argument_not_assignable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo do argumento para o override de extension '{0}' não é atribuível ao tipo estendido '{1}'._
+_The type of the argument to the extension override '{0}' isn't assignable to the extended type '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o argumento para um override de
-extension não é atribuível ao tipo sendo estendido pela extension.
+The analyzer produces this diagnostic when the argument to an extension
+override isn't assignable to the type being extended by the extension.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `3` não é um `String`:
+The following code produces this diagnostic because `3` isn't a `String`:
 
 ```dart
 extension E on String {
@@ -27,10 +28,10 @@ void f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você está usando a extension correta, então atualize o argumento para ter o
-tipo correto:
+If you're using the correct extension, then update the argument to have the
+correct type:
 
 ```dart
 extension E on String {
@@ -42,6 +43,6 @@ void f() {
 }
 ```
 
-Se há uma extension diferente que é válida para o tipo do argumento,
-então substitua o nome da extension ou desembrulhe o argumento para que
-a extension correta seja encontrada.
+If there's a different extension that's valid for the type of the argument,
+then either replace the name of the extension or unwrap the argument so
+that the correct extension is found.

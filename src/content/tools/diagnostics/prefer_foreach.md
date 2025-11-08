@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_foreach
-description: "Detalhes sobre o diagnóstico prefer_foreach produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_foreach
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'forEach' e um tear-off em vez de um loop 'for' para aplicar uma função a cada elemento._
+_Use 'forEach' and a tear-off rather than a 'for' loop to apply a function to every element._
 
 ## Description
 
-O analisador produz este diagnóstico quando um loop `for` é usado para operar
-em cada membro de uma coleção e o método `forEach` poderia ser usado
-em vez disso.
+The analyzer produces this diagnostic when a `for` loop is used to operate
+on every member of a collection and the method `forEach` could be used
+instead.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque um loop `for` está sendo
-usado para invocar uma única função para cada chave em `m`:
+The following code produces this diagnostic because a `for` loop is being
+used to invoke a single function for each key in `m`:
 
 ```dart
 void f(Map<String, int> m) {
@@ -40,7 +41,7 @@ void f(Map<String, int> m) {
 
 ## Common fixes
 
-Substitua o loop for por uma invocação de `forEach`:
+Replace the for loop with an invocation of `forEach`:
 
 ```dart
 void f(Map<String, int> m) {

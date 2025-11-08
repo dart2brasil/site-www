@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: field_must_be_external_in_struct
-description: "Detalhes sobre o diagnóstico field_must_be_external_in_struct produzido pelo analisador Dart."
+description: >-
+  Details about the field_must_be_external_in_struct
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Campos de subclasses de 'Struct' e 'Union' devem ser marcados como external._
+_Fields of 'Struct' and 'Union' subclasses must be marked external._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um campo em uma subclasse de
-`Struct` ou `Union` não é marcado como `external`.
+The analyzer produces this diagnostic when a field in a subclass of either
+`Struct` or `Union` isn't marked as being `external`.
 
-Para mais informações sobre FFI, veja [C interop usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o campo `a` não é
-marcado como `external`:
+The following code produces this diagnostic because the field `a` isn't
+marked as being `external`:
 
 ```dart
 import 'dart:ffi';
@@ -29,9 +30,9 @@ final class C extends Struct {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione o modificador `external` obrigatório:
+Add the required `external` modifier:
 
 ```dart
 import 'dart:ffi';

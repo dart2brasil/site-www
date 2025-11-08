@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: provide_deprecation_message
-description: "Detalhes sobre o diagnóstico provide_deprecation_message produzido pelo analisador do Dart."
+description: >-
+  Details about the provide_deprecation_message
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Faltando uma mensagem de depreciação._
+_Missing a deprecation message._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma anotação `deprecated` é
-usada em vez da anotação `Deprecated`.
+The analyzer produces this diagnostic when a `deprecated` annotation is
+used instead of the `Deprecated` annotation.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a função `f` é
-anotada com `deprecated`:
+The following code produces this diagnostic because the function `f` is
+annotated with `deprecated`:
 
 ```dart
 [!@deprecated!]
@@ -36,7 +37,7 @@ void f() {}
 
 ## Common fixes
 
-Converta o código para usar a forma mais longa:
+Convert the code to use the longer form:
 
 ```dart
 @Deprecated('Use g instead. Will be removed in 4.0.0.')

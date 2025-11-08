@@ -1,3 +1,6 @@
-:::note Problems?
-Check out the [Troubleshooting pub](/tools/pub/troubleshoot) guidelines.
+---
+ia-translate: true
+---
+:::note Problemas?
+Confira as diretrizes de [Solução de problemas do pub](/tools/pub/troubleshoot).
 :::

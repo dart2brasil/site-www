@@ -1,29 +1,28 @@
 ---
-ia-translate: true
 title: Dart videos
 shortTitle: Videos
 description: Learn by watching! Here's a collection of videos about Dart.
 ---
 
-Aqui estão alguns vídeos sobre a linguagem Dart e as bibliotecas principais.
-Para mais vídeos, veja a [página de vídeos do Flutter.]({{site.flutter-docs}}/resources/videos)
-Se você gostaria que outros vídeos fossem listados nesta página,
-[nos avise.]({{site.repo.this}}/issues)
+Here are some videos about the Dart language and core libraries.
+For more videos, see the [Flutter video page.]({{site.flutter-docs}}/resources/videos)
+If you'd like other videos to be listed on this page,
+[let us know.]({{site.repo.this}}/issues)
 
 {% comment %}
-TODO: Se a lista de vídeos crescer, considere automatizar isso como book.md.
+TODO: If the list of videos grows, consider automating this like book.md.
 {% endcomment %}
 
-## Vídeos de Dart da Google {:#dart-videos-from-google}
+## Dart videos from Google
 
-Uma playlist de vídeos produzidos pelo Google sobre as capacidades do Dart.
-Estes variam de palestras de 5 minutos sobre o suporte a assincronia do Dart
-até a sessão de Dart da Google I/O 2019.
+A playlist of Google-produced videos on Dart's capabilities.
+These range from 5-minute talks on Dart asynchrony support
+to the Dart session from Google I/O 2019.
 
 <YouTubeEmbed id="TF-TBsgIErY" title="Dart videos from Google" playlistId="PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J"></YouTubeEmbed>
 
-## Curso de treinamento de Dart em português do Brasil {:#dart-training-course-in-brazilian-portuguese}
+## Dart training course in Brazilian Portuguese
 
-Nesta série de vídeos, estudaremos juntos a linguagem Dart.
+Nesta série de vídeos estudaremos juntos a linguagem Dart.
 
 <YouTubeEmbed id="Vz11rFFewkM" title="Dart Curso Completo" playlistId="PLK5FPzMuRKlyiWZUUqea2Hmszhy9vUixJ"></YouTubeEmbed>

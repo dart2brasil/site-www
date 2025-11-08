@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: avoid_unnecessary_containers
-description: "Detalhes sobre o diagnóstico avoid_unnecessary_containers produzido pelo analisador do Dart."
+description: >-
+  Details about the avoid_unnecessary_containers
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Instância desnecessária de 'Container'._
+_Unnecessary instance of 'Container'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma árvore de widgets contém uma
-instância de `Container` e o único argumento para o construtor é
+The analyzer produces this diagnostic when a widget tree contains an
+instance of `Container` and the only argument to the constructor is
 `child:`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a invocação do
-construtor `Container` só tem um argumento `child:`:
+The following code produces this diagnostic because the invocation of the
+`Container` constructor only has a `child:` argument:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -47,7 +48,8 @@ Widget buildRow() {
 
 ## Common fixes
 
-Se você pretendia fornecer outros argumentos para o construtor, então adicione-os:
+If you intended to provide other arguments to the constructor, then add
+them:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -65,7 +67,7 @@ Widget buildRow() {
 }
 ```
 
-Se não há outros argumentos necessários, então desembrulhe o widget filho:
+If no other arguments are needed, then unwrap the child widget:
 
 ```dart
 import 'package:flutter/material.dart';

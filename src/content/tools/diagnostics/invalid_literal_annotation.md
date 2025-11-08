@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: invalid_literal_annotation
-description: "Detalhes sobre o diagnóstico invalid_literal_annotation produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_literal_annotation
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Apenas construtores const podem ter a annotation `@literal`._
+_Only const constructors can have the `@literal` annotation._
 
 ## Description
 
-O analisador produz este diagnóstico quando a annotation [`literal`][meta-literal]
-é aplicada a algo diferente de um construtor const.
+The analyzer produces this diagnostic when the [`literal`][meta-literal]
+annotation is applied to anything other than a const constructor.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque o construtor não é um
-construtor `const`:
+The following code produces this diagnostic because the constructor isn't
+a `const` constructor:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -27,7 +28,8 @@ class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque `x` não é um construtor:
+The following code produces this diagnostic because `x` isn't a
+constructor:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -38,8 +40,9 @@ var x;
 
 ## Common fixes
 
-Se a annotation está em um construtor e o construtor deve sempre ser invocado
-com `const`, quando possível, marque o construtor com a keyword `const`:
+If the annotation is on a constructor and the constructor should always be
+invoked with `const`, when possible, then mark the constructor with the
+`const` keyword:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -50,9 +53,10 @@ class C {
 }
 ```
 
-Se o construtor não pode ser marcado como `const`, remova a annotation.
+If the constructor can't be marked as `const`, then remove the annotation.
 
-Se a annotation está em algo diferente de um construtor, remova a annotation:
+If the annotation is on anything other than a constructor, then remove the
+annotation:
 
 ```dart
 var x;

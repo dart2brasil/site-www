@@ -4,62 +4,62 @@ description: FAQs to help you migrate your Dart code to null safety
 shortTitle: FAQ (null safety)
 ---
 
-Esta página reúne algumas perguntas comuns que ouvimos sobre [null safety](/null-safety) (segurança nula)
-com base na experiência de migração do código interno do Google.
+This page collects some common questions we've heard about [null safety](/null-safety)
+based on the experience of migrating Google internal code.
 
-## Quais mudanças de tempo de execução (runtime) devo estar ciente para usuários de código migrado? {:#what-runtime-changes-should-i-be-aware-of-for-users-of-migrated-code}
+## What runtime changes should I be aware of for users of migrated code?
 
-A maioria dos efeitos da migração não afeta imediatamente os usuários do código
-migrado:
+Most of the effects of migration do not immediately affect users of migrated
+code:
 
--   As verificações estáticas de null safety para usuários se aplicam primeiro quando eles migram seu
-    código.
--   As verificações completas de null safety acontecem quando todo o código é migrado e o modo
-    sound (sólido) é ativado.
+-   Static null safety checks for users first apply when they migrate their
+    code.
+-   Full null safety checks happen when all the code is migrated and sound mode
+    is turned on.
 
-Duas exceções a serem observadas são:
+Two exceptions to be aware of are:
 
--   O operador `!` é uma verificação de nulo em tempo de execução (runtime) em todos os modos,
-    para todos os usuários. Portanto, ao migrar, certifique-se de adicionar `!` apenas onde for um erro para um
-    `null` fluir para esse local, mesmo que o código de chamada ainda não
-    tenha migrado.
--   Verificações de tempo de execução (runtime) associadas à palavra-chave `late` aplicam-se em todos os modos, para
-    todos os usuários. Marque um campo como `late` apenas se tiver certeza de que ele sempre será inicializado
-    antes de ser usado.
+-   The `!` operator is a runtime null check in all modes, for all users. So,
+    when migrating, ensure that you only add `!` where it's an error for a
+    `null` to flow to that location, even if the calling code has not migrated
+    yet.
+-   Runtime checks associated with the `late` keyword apply in all modes, for
+    all users. Only mark a field `late` if you are sure it is always initialized
+    before it is used.
 
-## E se um valor for `null` apenas nos testes? {:#what-if-a-value-is-only-null-in-tests}
+## What if a value is only `null` in tests?
 
-Se um valor for `null` apenas nos testes, o código poderá ser aprimorado marcando-o
-como não anulável e fazendo com que os testes passem valores não nulos.
+If a value is only ever `null` in tests, the code can be improved by marking it
+non-nullable and making the tests pass non-null values.
 
-## Como `@required` se compara à nova palavra-chave `required`? {:#how-does-required-compare-to-the-new-required-keyword}
+## How does `@required` compare to the new `required` keyword?
 
-A anotação `@required` marca argumentos nomeados que devem ser passados; caso contrário,
-o analisador relata uma dica.
+The `@required` annotation marks named arguments that must be passed; if not,
+the analyzer reports a hint.
 
-Com null safety, um argumento nomeado com um tipo não anulável deve ter um
-valor padrão ou ser marcado com a nova palavra-chave `required` (requerido). Caso contrário, não faria
-sentido que fosse não anulável, porque ele teria como padrão `null` quando
-não fosse passado.
+With null safety, a named argument with a non-nullable type must either have a
+default or be marked with the new `required` keyword. Otherwise, it wouldn't
+make sense for it to be non-nullable, because it would default to `null` when
+not passed.
 
-Quando o código null safe é chamado de código legado, a palavra-chave `required` é tratada
-exatamente como a anotação `@required`: a falha ao fornecer o argumento causará
-uma dica do analisador.
+When null safe code is called from legacy code the `required` keyword is treated
+exactly like the `@required` annotation: failure to supply the argument will
+cause an analyzer hint.
 
-Quando o código null safe é chamado a partir de código null safe, a falha ao fornecer um
-argumento `required` é um erro.
+When null safe code is called from null safe code, failing to supply a
+`required` argument is an error.
 
-O que isso significa para a migração? Tenha cuidado ao adicionar `required` onde não
-havia `@required` antes. Quaisquer chamadores que não passarem o argumento recém-requerido
-não serão mais compilados. Em vez disso, você pode adicionar um valor padrão ou tornar o argumento
-o tipo anulável.
+What does this mean for migration? Be careful if adding `required` where there
+was no `@required` before. Any callers not passing the newly-required argument
+will no longer compile. Instead, you could add a default or make the argument
+type nullable.
 
-## Como devo migrar campos não anuláveis que deveriam ser `final`, mas não são? {:#how-should-i-migrate-non-nullable-fields-that-should-be-final-but-arent}
+## How should I migrate non-nullable fields that should be `final`, but aren't?
 
-Alguns cálculos podem ser movidos para o inicializador estático. Em vez de:
+Some computations can be moved to the static initializer. Instead of:
 
 ```dart tag=bad
-// Inicializado sem valores
+// Initialized without values
 ListQueue _context;
 Float32List _buffer;
 dynamic _readObject;
@@ -71,10 +71,10 @@ Vec2D(Map<String, dynamic> object) {
 }
 ```
 
-você pode fazer:
+you can do:
 
 ```dart tag=good
-// Inicializado com valores
+// Initialized with values
 final ListQueue _context = ListQueue<dynamic>();
 final Float32List _buffer = Float32List.fromList([0.0, 0.0]);
 final dynamic _readObject;
@@ -82,45 +82,45 @@ final dynamic _readObject;
 Vec2D(Map<String, dynamic> object) : _readObject = object['container'];
 ```
 
-No entanto, se um campo for inicializado por meio de cálculo no construtor, então
-ele não pode ser `final`. Com null safety, você descobrirá que isso também torna mais difícil
-que ele seja não anulável; se for inicializado muito tarde, ele será `null` até que seja
-inicializado e deve ser anulável. Felizmente, você tem opções:
+However, if a field is initialized by doing computation in the constructor, then
+it can't be `final`. With null safety, you'll find this also makes it harder for
+it to be non-nullable; if it's initialized too late, then it's `null` until it's
+initialized, and must be nullable. Fortunately, you have options:
 
--   Transforme o construtor em uma factory (fábrica), depois faça com que ele delegue a um construtor real
-    que inicializa todos os campos diretamente. Um nome comum para esse
-    construtor privado é apenas um sublinhado: `_`. Então, o campo pode ser
-    `final` e não anulável. Essa refatoração pode ser feita *antes* da
-    migração para null safety.
--   Ou, marque o campo como `late final`. Isso garante que ele seja inicializado exatamente
-    uma vez. Ele deve ser inicializado antes que possa ser lido.
+-   Turn the constructor into a factory, then make it delegate to an actual
+    constructor that initializes all the fields directly. A common name for such
+    a private constructor is just an underscore: `_`. Then, the field can be
+    `final` and non-nullable. This refactoring can be done *before* the
+    migration to null safety.
+-   Or, mark the field `late final`. This enforces that it's initialized exactly
+    once. It must be initialized before it can be read.
 
-## Como devo migrar uma classe `built_value`? {:#how-should-i-migrate-a-built-value-class}
+## How should I migrate a `built_value` class?
 
-Getters que foram anotados com `@nullable` devem, em vez disso, ter tipos anuláveis; então
-remova todas as anotações `@nullable`. Por exemplo:
+Getters that were annotated `@nullable` should instead have nullable types; then
+remove all `@nullable` annotations. For example:
 
 ```dart
 @nullable
 int get count;
 ```
 
-torna-se
+becomes
 
 ```dart
-int? get count; //  Variável inicializada com ?
+int? get count; //  Variable initialized with ?
 ```
 
-Getters que *não* foram marcados com `@nullable` *não* devem ter tipos anuláveis,
-mesmo que a ferramenta de migração os sugira. Adicione as dicas `!` conforme necessário e execute novamente o
-a análise.
+Getters that were *not* marked `@nullable` should *not* have nullable types,
+even if the migration tool suggests them. Add `!` hints as needed then rerun the
+analysis.
 
-## Como devo migrar uma factory que pode retornar `null`? {:#how-should-i-migrate-a-factory-that-can-return-null}
+## How should I migrate a factory that can return `null`?
 
-_Prefira factories que não retornem nulo._ Vimos código que pretendia
-lançar uma exceção devido a entrada inválida, mas acabou retornando nulo.
+_Prefer factories that do not return null._ We have seen code that meant to
+throw an exception due to invalid input but instead ended up returning null.
 
-Em vez de:
+Instead of:
 
 ```dart tag=bad
   factory StreamReader(dynamic data) {
@@ -134,87 +134,87 @@ Em vez de:
   }
 ```
 
-Faça:
+Do:
 
 ```dart tag=good
   factory StreamReader(dynamic data) {
     if (data is ByteData) {
-      // Move o readIndex para frente para o leitor binário.
+      // Move the readIndex forward for the binary reader.
       return BlockReader(data);
     } else if (data is Map) {
       return JSONBlockReader(data);
     } else {
-      throw ArgumentError('Tipo inesperado para data');
+      throw ArgumentError('Unexpected type for data');
     }
   }
 ```
 
 
-Se a intenção da factory era realmente retornar nulo, você pode transformá-la
-em um método estático para que seja permitido retornar `null`.
+If the intent of the factory was indeed to return null, then you can turn it
+into a static method so it is allowed to return `null`.
 
-## Como devo migrar um `assert(x != null)` que agora aparece como desnecessário? {:#how-should-i-migrate-an-assert-x-null-that-now-shows-as-unnecessary}
+## How should I migrate an `assert(x != null)` that now shows as unnecessary?
 
-O assert será desnecessário quando tudo estiver totalmente migrado, mas por enquanto
-*é* necessário se você realmente quiser manter a verificação. Opções:
+The assert will be unnecessary when everything is fully migrated, but for now it
+*is* needed if you actually want to keep the check. Options:
 
--   Decida que o assert não é realmente necessário e remova-o. Esta é uma
-    mudança no comportamento quando os asserts estão habilitados.
--   Decida que o assert pode ser verificado sempre e transforme-o em
-    `ArgumentError.checkNotNull`. Esta é uma mudança no comportamento quando os asserts não são
-    habilitados.
--   Mantenha o comportamento exatamente como está: adicione `// ignore:
-    unnecessary_null_comparison` para ignorar o aviso.
+-   Decide that the assert is not really necessary, and remove it. This is a
+    change in behavior when asserts are enabled.
+-   Decide that the assert can be checked always, and turn it into
+    `ArgumentError.checkNotNull`. This is a change in behavior when asserts are
+    not enabled.
+-   Keep the behavior exactly as is: add `// ignore:
+    unnecessary_null_comparison` to bypass the warning.
 
-## Como devo migrar uma verificação de nulo em tempo de execução (runtime) que agora aparece como desnecessária? {:#how-should-i-migrate-a-runtime-null-check-that-now-shows-as-unnecessary}
+## How should I migrate a runtime null check that now shows as unnecessary?
 
-O compilador sinaliza uma verificação de nulo explícita em tempo de execução (runtime) como uma
-comparação desnecessária se você tornar `arg` não anulável.
+The compiler flags an explicit runtime null check as an unnecessary
+comparison if you make `arg` non-nullable.
 
 ```dart
 if (arg == null) throw ArgumentError(...)`
 ```
 
-Você deve incluir esta verificação se o programa for de versão mista.
-Até que tudo esteja totalmente migrado e o código mude para ser executado
-com sound null safety (segurança nula sólida), `arg` pode ser definido como `null`.
+You must include this check if the program is a mixed-version one.
+Until everything is fully migrated and the code switches to running
+with sound null safety, `arg` might be set to `null`.
 
-A maneira mais simples de preservar o comportamento é alterar a verificação para
+The simplest way to preserve behavior is change the check into
 [`ArgumentError.checkNotNull`]({{site.dart-api}}/dart-core/ArgumentError/checkNotNull.html).
 
-O mesmo se aplica a algumas verificações de tipo de tempo de execução (runtime). Se `arg`
-tiver o tipo estático `String`, então `if (arg is! String)` está realmente verificando
-se `arg` é `null`. Pode parecer que a migração para null safety significa que `arg`
-nunca pode ser `null`, mas poderia ser `null` em unsound null safety (segurança nula não sólida). Portanto, para preservar
-o comportamento, a verificação nula deve permanecer.
+The same applies to some runtime type checks. If `arg`
+has static type `String`, then `if (arg is! String)` is actually checking
+whether `arg` is `null`. It might look like migrating to null safety means `arg`
+can never be `null`, but it could be `null` in unsound null safety. So, to preserve
+behavior, the null check should remain.
 
-## O método `Iterable.firstWhere` não aceita mais `orElse: () => null`. {:#the-iterable-firstwhere-method-no-longer-accepts-orelse-null}
+## The `Iterable.firstWhere` method no longer accepts `orElse: () => null`.
 
-Importe `package:collection` e use o método de extensão `firstWhereOrNull`
-em vez de `firstWhere`.
+Import `package:collection` and use the extension method `firstWhereOrNull`
+instead of `firstWhere`.
 
-## Como lido com atributos que possuem setters? {:#how-do-i-deal-with-attributes-that-have-setters}
+## How do I deal with attributes that have setters?
 
-Ao contrário da sugestão `late final` acima, esses atributos não podem ser marcados como
-final. Frequentemente, atributos que podem ser definidos também não têm valores iniciais, pois eles
-devem ser definidos em algum momento posterior.
+Unlike the `late final` suggestion above, these attributes cannot be marked as
+final. Often, settable attributes also do not have initial values since they are
+expected to be set sometime later.
 
-Nesses casos, você tem duas opções:
+In such cases, you have two options:
 
--   Defina-o como um valor inicial. Muitas vezes, a omissão de um valor inicial é
-    por engano, em vez de deliberada.
--   Se você tem *certeza* de que o atributo precisa ser definido antes de ser acessado, marque
-    como `late`.
+-   Set it to an initial value. Often times, the omission of an initial value is
+    by mistake rather than deliberate.
+-   If you are _sure_ that the attribute needs to be set before accessed, mark
+    it as `late`.
 
-    AVISO: A palavra-chave `late` adiciona uma verificação de tempo de execução (runtime). Se algum usuário chamar `get`
-    antes de `set`, ele receberá um erro em tempo de execução (runtime).
+    WARNING: The `late` keyword adds a runtime check. If any user calls `get`
+    before `set` they'll get an error at runtime.
 
-## Como sinalizo que o valor de retorno de um Map é não anulável? {:#how-do-i-signal-that-the-return-value-from-a-map-is-non-nullable}
+## How do I signal that the return value from a Map is non-nullable?
 
-O
-[operador de pesquisa]({{site.dart-api}}/dart-core/Map/operator_get.html)
-em Map (`[]`) por padrão retorna um tipo anulável. Não há como sinalizar para
-a linguagem que o valor tem garantia de estar lá.
+The
+[lookup operator]({{site.dart-api}}/dart-core/Map/operator_get.html)
+on Map (`[]`) by default returns a nullable type. There's no way to signal to
+the language that the value is guaranteed to be there.
 
 In this case, you should use the not-null assertion operator (`!`) to
 cast the value back to `V`:
@@ -223,62 +223,62 @@ cast the value back to `V`:
 return blockTypes[key]!;
 ```
 
-O que lançará um erro se o mapa retornar nulo. Se você quiser um tratamento explícito para esse caso:
+Which will throw if the map returns null. If you want explicit handling for that case:
 
 ```dart
 var result = blockTypes[key];
 if (result != null) return result;
-// Lidar com o caso nulo aqui, por exemplo, lançar com explicação.
+// Handle the null case here, e.g. throw with explanation.
 ```
 
-## Por que o tipo genérico na minha List/Map é anulável? {:#why-is-the-generic-type-on-my-list-map-nullable}
+## Why is the generic type on my List/Map nullable?
 
-Normalmente, é um código com cheiro ruim acabar com código anulável como este:
+It is typically a code smell to end up with nullable code like this:
 
 ```dart tag=bad
-List<Foo?> fooList; // fooList pode conter valores nulos
+List<Foo?> fooList; // fooList can contain null values
 ```
 
-Isso implica que `fooList` pode conter valores nulos. Isso pode acontecer se você estiver
-inicializando a lista com um tamanho e preenchendo-a por meio de um loop.
+This implies `fooList` might contain null values. This might happen if you are
+initializing the list with length and filling it in via a loop.
 
-Se você estiver simplesmente inicializando a lista com o mesmo valor,
-você deve,
-em vez disso, use o construtor
-[`filled`]({{site.dart-api}}/dart-core/List/List.filled.html).
+If you are simply initializing the list with the same value, you should instead
+use the 
+[`filled`]({{site.dart-api}}/dart-core/List/List.filled.html) 
+constructor.
 
 ```dart tag=bad
 _jellyCounts = List<int?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
-  _jellyCounts[i] = 0; // Lista inicializada com o mesmo valor
+  _jellyCounts[i] = 0; // List initialized with the same value
 }
 ```
 
 ```dart tag=good
-_jellyCounts = List<int>.filled(jellyMax + 1, 0); // Lista inicializada com o construtor filled
+_jellyCounts = List<int>.filled(jellyMax + 1, 0); // List initialized with filled constructor
 ```
 
-Se você estiver definindo os elementos da lista por meio de um índice, ou se estiver preenchendo
-cada elemento da lista com um valor distinto, você deve, em vez disso, usar
-a sintaxe literal da lista para construir a lista.
+If you are setting the elements of the list via an index, or you are populating
+each element of the list with a distinct value, you should instead use the
+list literal syntax to build the list.
 
 ```dart tag=bad
 _jellyPoints = List<Vec2D?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
-  _jellyPoints[i] = Vec2D(); // Cada elemento da lista é um Vec2D distinto
+  _jellyPoints[i] = Vec2D(); // Each list element is a distinct Vec2D
 }
 ```
 
 ```dart tag=good
 _jellyPoints = [
   for (var i = 0; i <= jellyMax; i++)
-    Vec2D() // Cada elemento da lista é um Vec2D distinto
+    Vec2D() // Each list element is a distinct Vec2D
 ];
 ```
 
-Para gerar uma lista de tamanho fixo,
-use o construtor [`List.generate`][] com o parâmetro `growable`
-definido como `false`:
+To generate a fixed-length list,
+use the [`List.generate`][] constructor
+with the `growable` parameter set to `false`:
 
 ```dart
 _jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
@@ -287,57 +287,57 @@ _jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
 [`List.generate`]: {{site.dart-api}}/dart-core/List/List.generate.html
 
 {% comment %}
-  Preferivelmente, sugiro uma sintaxe de linguagem aqui,
-  que está sendo sugerida em https://github.com/dart-lang/language/issues/2477.
+  Would preferably suggest a language syntax here,
+  which is being suggested in https://github.com/dart-lang/language/issues/2477.
 {% endcomment %}
+ 
+## What happened to the default List constructor?
 
-## O que aconteceu com o construtor List padrão? {:#what-happened-to-the-default-list-constructor}
-
-Você pode encontrar este erro:
+You may encounter this error:
 
 ```plaintext
-O construtor 'List' padrão não está disponível quando o null safety está habilitado. #default_list_constructor
+The default 'List' constructor isn't available when null safety is enabled. #default_list_constructor
 ```
 
-O construtor de lista padrão preenche a lista com `null`, o que é um problema.
+The default list constructor fills the list with `null`, which is a problem.
 
-Altere-o para `List.filled(length, default)` em vez disso.
+Change it to `List.filled(length, default)` instead.
 
-## Estou usando `package:ffi` e obtenho uma falha com `Dart_CObject_kUnsupported` quando migro. O que aconteceu? {:#i-m-using-package-ffi-and-get-a-failure-with-dart-cobject-kunsupported-when-i-migrate-what-happened}
+## I'm using `package:ffi` and get a failure with `Dart_CObject_kUnsupported` when I migrate. What happened?
 
-Listas enviadas via ffi só podem ser `List<dynamic>`, não `List<Object>` ou
-`List<Object?>`. Se você não alterou um tipo de lista explicitamente na sua migração,
-um tipo ainda pode ter mudado devido a alterações na inferência de tipo que ocorrem
-quando você habilita o null safety.
+Lists sent via ffi can only be `List<dynamic>`, not `List<Object>` or
+`List<Object?>`. If you didn't change a list type explicitly in your migration,
+a type might still have changed because of changes to type inference that happen
+when you enable null safety.
 
-A correção é criar explicitamente essas listas como `List<dynamic>`.
+The fix is to explicitly create such lists as `List<dynamic>`.
 
-## Por que a ferramenta de migração adiciona comentários ao meu código? {:#migration-comments}
+## Why does the migration tool add comments to my code? {:#migration-comments}
 
-A ferramenta de migração adiciona comentários `/* == false */` ou `/* == true */` quando ela
-vê condições que sempre serão falsas ou verdadeiras durante a execução no modo sound.
-Comentários como esses podem indicar que a migração automática está incorreta e
-precisa de intervenção humana. Por exemplo:
+The migration tool adds `/* == false */` or `/* == true */` comments when it
+sees conditions that will always be false or true while running in sound mode.
+Comments like these might indicate that the automatic migration is incorrect and
+needs human intervention. For example:
 
 ```dart
 if (registry.viewFactory(viewDescriptor.id) == null /* == false */)
 ```
 
-Nesses casos, a ferramenta de migração não consegue distinguir situações de codificação defensiva
-e situações onde um valor nulo é realmente esperado. Então, a ferramenta diz a você o que
-ela sabe ("parece que essa condição sempre será falsa!") e permite que você
-decida o que fazer.
+In these cases, the migration tool can't distinguish defensive-coding situations
+and situations where a null value is really expected. So the tool tells you what
+it knows ("it looks like this condition will always be false!") and lets you
+decide what to do.
 
-## O que devo saber sobre a compilação para JavaScript e null safety? {:#what-should-i-know-about-compiling-to-javascript-and-null-safety}
+## What should I know about compiling to JavaScript and null safety?
 
-O null safety traz muitos benefícios, como tamanho de código reduzido e desempenho de aplicativo aprimorado.
-Esses benefícios aparecem mais quando compilados para alvos nativos como Flutter e AOT.
-O trabalho anterior no compilador web de produção havia introduzido otimizações semelhantes
-ao que o null safety introduziu posteriormente. Isso pode fazer com que os ganhos resultantes
-para aplicativos web de produção pareçam menores
-do que seus alvos nativos.
+Null safety brings many benefits like reduced code size and improved
+app performance. Such benefits surface more when compiled to native
+targets like Flutter and AOT. Previous work on the production web
+compiler had introduced optimizations similar to what null safety
+later introduced. This may make resulting gains to production web apps
+seem less than their native targets.
 
-Algumas notas que vale a pena destacar:
+A few notes that are worth highlighting:
 
 * The production JavaScript compiler generates `!` not-null assertions.
   You might not notice them when comparing the output of the compiler
@@ -349,67 +349,67 @@ Algumas notas que vale a pena destacar:
   soundness of null safety or optimization level. In fact, the compiler
   doesn't remove `!` when using `-O3` or `--omit-implicit-checks`.
 
-* O compilador JavaScript de produção pode remover verificações nulas desnecessárias.
-  Isso acontece porque as otimizações que o compilador web de produção
-  fez antes do null safety removeu essas verificações quando ele
-  sabia que o valor não era nulo.
+* The production JavaScript compiler might remove unnecessary null checks.
+  This happens because the optimizations that the production web
+  compiler made prior to null safety removed those checks when it
+  knew the value was not null.
 
-* Por padrão, o compilador geraria verificações de subtipo de parâmetro.
-  Essas verificações em tempo de execução (runtime) garantem que as chamadas virtuais covariantes tenham
-  argumentos apropriados. O compilador ignora essas verificações com a
-  opção `--omit-implicit-checks`. Usar esta opção pode gerar aplicativos
-  com comportamento inesperado se o código incluir tipos inválidos.
-  Para evitar surpresas, continue fornecendo uma forte cobertura de teste
-  para seu código. Em particular, o compilador otimiza o código com base
-  no fato de que as entradas devem estar em conformidade com a declaração de tipo. Se
-  o código fornecer argumentos de um tipo inválido, essas otimizações
-  estariam incorretas e o programa poderia se comportar mal. Isso era verdade para
-  tipos inconsistentes antes, e é verdade com inconsistências
-  nulabilidades agora com sound null-safety.
+* By default, the compiler would generate parameter subtype checks.
+  These runtime checks ensure covariant virtual calls have appropriate
+  arguments. The compiler skips these checks with the
+  `--omit-implicit-checks` option. Using this option can generate apps
+  with unexpected behavior if the code includes invalid types.
+  To avoid any surprises, continue provide strong test coverage for
+  your code. In particular, the compiler optimizes code based
+  on the fact that inputs should comply with the type declaration. If
+  the code provides arguments of an invalid type, those optimizations
+  would be wrong and the program could misbehave. This was true for
+  inconsistent types before, and is true with inconsistent 
+  nullabilities now with sound null-safety.
 
-* Você pode notar que o compilador JavaScript de desenvolvimento e a Dart
-  VM têm mensagens de erro especiais para verificações nulas, mas para manter
-  aplicativos pequenos, o compilador JavaScript de produção não.
+* You may notice that the development JavaScript compiler and the Dart 
+  VM have special error messages for null checks, but to keep 
+  applications small, the production JavaScript compiler does not.
 
-* Você pode ver erros indicando que `.toString` não foi encontrado em `null`.
-  Isso não é um bug. O compilador sempre codificou algumas verificações nulas
-  dessa forma. Ou seja, o compilador representa algumas verificações nulas
-  de forma compacta, fazendo um acesso não protegido de uma propriedade do
-  receptor. Portanto, em vez de `if (a == null) throw`, ele gera
-  `a.toString`. O método `toString` é definido em JavaScript Object
-  e é uma maneira rápida de verificar se um objeto não é nulo.
+* You may see errors indicating that `.toString` is not found on `null`.
+  This is not a bug. The compiler has always encoded some null checks
+  in this way. That is, the compiler represents some null checks
+  compactly by making an unguarded access of a property of the
+  receiver. So instead of `if (a == null) throw`, it generates
+  `a.toString`. The `toString` method is defined in JavaScript Object
+  and is a fast way to verify that an object is not null.
 
-  Se a primeira ação após uma verificação nula for uma ação que falha
-  quando o valor é nulo, o compilador pode remover a verificação nula e
-  deixar a ação causar o erro.
+  If the very first action after a null check is an action that crashes
+  when the value is null, the compiler can remove the null check and
+  let the action cause the error.
 
-  Por exemplo, uma expressão Dart `print(a!.foo());` pode se transformar diretamente
-  em:
+  For example, a Dart expression `print(a!.foo());` could turn directly
+  into:
 
   ```js
     P.print(a.foo$0());
   ```
 
-  Isso ocorre porque a chamada `a.foo$()` falhará se `a` for nulo.
-  Se o compilador embutir `foo`, ele preservará a verificação nula.
-  Então, por exemplo, se `foo` fosse `int foo() => 1;` o compilador poderia
-  gerar:
+  This is because the call `a.foo$()` will crash if `a` is null.
+  If the compiler inlines `foo`, it will preserve the null check.
+  So for example, if `foo` was `int foo() => 1;`  the compiler might 
+  generate:
 
   ```js
     a.toString;
     P.print(1);
   ```
 
-  Se o método embutido acessasse primeiro um campo no receptor, como
-  `int foo() => this.x + 1;`, então o compilador de produção pode remover
-  a verificação nula `a.toString` redundante, como chamadas não embutidas, e
-  gerar:
+  If the inlined method first accessed a field on the receiver, like
+  `int foo() => this.x + 1;`, then the production compiler can remove
+  the redundant `a.toString` null check, as non-inlined calls, and
+  generate:
 
   ```js
     P.print(a.x + 1);
   ```
+    
+## Resources
 
-## Recursos {:#resources}
-
-*   [DartPad com Null Safety]({{site.dartpad}})
-*   [Sound null safety](/null-safety) (Segurança nula sólida)
+*   [DartPad with Null Safety]({{site.dartpad}})
+*   [Sound null safety](/null-safety)

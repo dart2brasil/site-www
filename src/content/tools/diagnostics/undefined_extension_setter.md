@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: undefined_extension_setter
-description: "Detalhes sobre o diagnóstico undefined_extension_setter produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_extension_setter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O setter '{0}' não está definido para a extension '{1}'._
+_The setter '{0}' isn't defined for the extension '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma sobrescrita de extension é usada para
-invocar um setter, mas o setter não está definido pela extension especificada.
-O analisador também produz este diagnóstico quando um setter estático é
-referenciado mas não está definido pela extension especificada.
+The analyzer produces this diagnostic when an extension override is used to
+invoke a setter, but the setter isn't defined by the specified extension.
+The analyzer also produces this diagnostic when a static setter is
+referenced but isn't defined by the specified extension.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque a extension `E`
-não declara um setter de instância chamado `b`:
+The following code produces this diagnostic because the extension `E`
+doesn't declare an instance setter named `b`:
 
 ```dart
 extension E on String {
@@ -34,8 +35,8 @@ void f() {
 }
 ```
 
-O código a seguir produz este diagnóstico porque a extension `E`
-não declara um setter estático chamado `a`:
+The following code produces this diagnostic because the extension `E`
+doesn't declare a static setter named `a`:
 
 ```dart
 extension E on String {}
@@ -45,10 +46,10 @@ void f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o nome do setter está incorreto, então mude-o para o nome de um
-setter existente:
+If the name of the setter is incorrect, then change it to the name of an
+existing setter:
 
 ```dart
 extension E on String {
@@ -64,8 +65,8 @@ void f() {
 }
 ```
 
-Se o nome do setter está correto, mas o nome da extension está
-errado, então mude o nome da extension para o nome correto:
+If the name of the setter is correct, but the name of the extension is
+wrong, then change the name of the extension to the correct name:
 
 ```dart
 extension E on String {
@@ -81,8 +82,8 @@ void f() {
 }
 ```
 
-Se o nome do setter e da extension estão ambos corretos, mas o setter
-não está definido, então defina o setter:
+If the name of the setter and extension are both correct, but the setter
+isn't defined, then define the setter:
 
 ```dart
 extension E on String {

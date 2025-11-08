@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_getters_setters
-description: "Detalhes sobre o diagnóstico unnecessary_getters_setters produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_getters_setters
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário de getter e setter para envolver um campo._
+_Unnecessary use of getter and setter to wrap a field._
 
 ## Description
 
-O analisador produz este diagnóstico quando um par de getter e setter
-retorna e define o valor de um campo sem qualquer processamento adicional.
+The analyzer produces this diagnostic when a getter and setter pair
+returns and sets the value of a field without any additional processing.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o par getter/setter
-chamado `c` apenas expõe o campo chamado `_c`:
+The following code produces this diagnostic because the getter/setter pair
+named `c` only expose the field named `_c`:
 
 ```dart
 class C {
@@ -41,7 +42,7 @@ class C {
 
 ## Common fixes
 
-Torne o campo público e remova o getter e setter:
+Make the field public and remove the getter and setter:
 
 ```dart
 class C {

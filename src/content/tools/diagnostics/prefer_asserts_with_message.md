@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_asserts_with_message
-description: "Detalhes sobre o diagnóstico prefer_asserts_with_message produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_asserts_with_message
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Falta uma mensagem em um assert._
+_Missing a message in an assert._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma instrução assert não
-tem uma mensagem.
+The analyzer produces this diagnostic when an assert statement doesn't
+have a message.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque não há mensagem
-na instrução assert:
+The following code produces this diagnostic because there's no message
+in the assert statement:
 
 ```dart
 void f(String s) {
@@ -37,7 +38,7 @@ void f(String s) {
 
 ## Common fixes
 
-Adicione uma mensagem à instrução assert:
+Add a message to the assert statement:
 
 ```dart
 void f(String s) {

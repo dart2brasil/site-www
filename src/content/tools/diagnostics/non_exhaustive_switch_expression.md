@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: non_exhaustive_switch_expression
-description: "Detalhes sobre o diagnóstico non_exhaustive_switch_expression produzido pelo analisador do Dart."
+description: >-
+  Details about the non_exhaustive_switch_expression
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo '{0}' não é exaustivamente correspondido pelos casos do switch, pois não corresponde ao padrão '{1}'._
+_The type '{0}' isn't exhaustively matched by the switch cases since it doesn't match the pattern '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma expressão `switch` está
-faltando um caso para um ou mais dos possíveis valores que poderiam fluir
-através dela.
+The analyzer produces this diagnostic when a `switch` expression is
+missing a case for one or more of the possible values that could flow
+through it.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a expressão switch
-não tem um caso para o valor `E.three`:
+The following code produces this diagnostic because the switch expression
+doesn't have a case for the value `E.three`:
 
 ```dart
 enum E { one, two, three }
@@ -30,8 +31,8 @@ String f(E e) => [!switch!] (e) {
 
 ## Common fixes
 
-Se os valores faltantes são distintamente significativos para a expressão switch,
-então adicione um caso para cada um dos valores que faltam correspondência:
+If the missing values are distinctly meaningful to the switch expression,
+then add a case for each of the values missing a match:
 
 ```dart
 enum E { one, two, three }
@@ -43,8 +44,8 @@ String f(E e) => switch (e) {
   };
 ```
 
-Se os valores faltantes não precisam ser correspondidos, então adicione um
-padrão wildcard que retorna um padrão simples:
+If the missing values don't need to be matched, then add a wildcard
+pattern that returns a simple default:
 
 ```dart
 enum E { one, two, three }
@@ -56,6 +57,6 @@ String f(E e) => switch (e) {
   };
 ```
 
-Esteja ciente de que um padrão wildcard lidará com quaisquer valores adicionados ao tipo
-no futuro. Você perderá a capacidade de ter o compilador avisando se
-o `switch` precisa ser atualizado para levar em conta os tipos recém-adicionados.
+Be aware that a wildcard pattern will handle any values added to the type
+in the future. You will lose the ability to have the compiler warn you if
+the `switch` needs to be updated to account for newly added types.

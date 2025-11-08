@@ -1,30 +1,29 @@
 ---
-ia-translate: true
-title: Loops
-description: "Aprenda como usar loops para controlar o fluxo do seu código Dart."
+title: Loops 
+description: Learn how to use loops to control the flow of your Dart code.
 prevpage:
   url: /language/pattern-types
   title: Pattern types
 nextpage:
   url: /language/branches
-  title: "Ramificações"
+  title: Branches
 ---
 
-Esta página mostra como você pode controlar o fluxo do seu código Dart usando loops e
-instruções de suporte:
+This page shows how you can control the flow of your Dart code using loops and
+supporting statements:
 
--   loops `for`
--   loops `while` e `do while`
--   `break` e `continue`
+-   `for` loops
+-   `while` and `do while` loops
+-   `break` and `continue`
 
-Você também pode manipular o fluxo de controle em Dart usando:
+You can also manipulate control flow in Dart using:
 
-- [Ramificações][branching], como `if` e `switch`
-- [Exceções][exceptions], como `try`, `catch` e `throw`
+- [Branching][], like `if` and `switch`
+- [Exceptions][], like `try`, `catch`, and `throw`
 
-## Loops For {:#for-loops}
+## For loops
 
-Você pode iterar com o loop `for` padrão. Por exemplo:
+You can iterate with the standard `for` loop. For example:
 
 <?code-excerpt "language/test/control_flow/loops_test.dart (for)"?>
 ```dart
@@ -34,8 +33,8 @@ for (var i = 0; i < 5; i++) {
 }
 ```
 
-Closures (fechamentos) dentro dos loops `for` do Dart capturam o _valor_ do índice.
-Isso evita uma armadilha comum encontrada em JavaScript. Por exemplo, considere:
+Closures inside of Dart's `for` loops capture the _value_ of the index.
+This avoids a common pitfall found in JavaScript. For example, consider:
 
 <?code-excerpt "language/test/control_flow/loops_test.dart (for-and-closures)"?>
 ```dart
@@ -49,12 +48,12 @@ for (final c in callbacks) {
 }
 ```
 
-A saída é `0` e depois `1`, como esperado. Em contraste, o exemplo
-imprimiria `2` e depois `2` em JavaScript.
+The output is `0` and then `1`, as expected. In contrast, the example
+would print `2` and then `2` in JavaScript.
 
-Às vezes, você pode não precisar saber o contador de iteração atual
-ao iterar sobre um tipo [`Iterable`][`Iterable`], como `List` ou `Set`.
-Nesse caso, use o loop `for-in` para um código mais limpo:
+Sometimes you might not need to know the current iteration counter
+when iterating over an [`Iterable`][] type, like `List` or `Set`.
+In that case, use the `for-in` loop for cleaner code:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (collection)"?>
 ```dart
@@ -82,11 +81,11 @@ for (final Candidate(:name, :yearsExperience) in candidates) {
 ```
 
 :::tip
-Para praticar o uso de `for-in`, siga o
-[tutorial de coleções Iterable](/libraries/collections/iterables).
+To practice using `for-in`, follow the
+[Iterable collections tutorial](/libraries/collections/iterables).
 :::
 
-Classes Iterable também possuem um método [forEach()][forEach()] como outra opção:
+Iterable classes also have a [forEach()][] method as another option:
 
 <?code-excerpt "language/test/control_flow/loops_test.dart (for-each)"?>
 ```dart
@@ -96,7 +95,9 @@ collection.forEach(print); // 1 2 3
 
 [variable]: /language/variables
 
-Um loop `while` avalia a condição antes do loop:
+## While and do-while
+
+A `while` loop evaluates the condition before the loop:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (while)"?>
 ```dart
@@ -105,7 +106,7 @@ while (!isDone()) {
 }
 ```
 
-Um loop `do`-`while` avalia a condição *após* o loop:
+A `do`-`while` loop evaluates the condition *after* the loop:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (do-while)"?>
 ```dart
@@ -114,9 +115,10 @@ do {
 } while (!atEndOfPage());
 ```
 
-## Break e continue {:#break-and-continue}
 
-Use `break` para interromper o loop:
+## Break and continue
+
+Use `break` to stop looping:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (while-break)"?>
 ```dart
@@ -126,7 +128,7 @@ while (true) {
 }
 ```
 
-Use `continue` para pular para a próxima iteração do loop:
+Use `continue` to skip to the next loop iteration:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (for-continue)"?>
 ```dart
@@ -139,8 +141,8 @@ for (int i = 0; i < candidates.length; i++) {
 }
 ```
 
-Se você estiver usando um [`Iterable`][`Iterable`] como uma lista ou conjunto,
-a forma como você escreve o exemplo anterior pode ser diferente:
+If you're using an [`Iterable`][] such as a list or set,
+how you write the previous example might differ:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (where)"?>
 ```dart

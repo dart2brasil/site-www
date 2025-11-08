@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: redirect_to_type_alias_expands_to_type_parameter
-description: "Detalhes sobre o diagnóstico redirect_to_type_alias_expands_to_type_parameter produzido pelo analisador Dart."
+description: >-
+  Details about the redirect_to_type_alias_expands_to_type_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um construtor redirecionador não pode redirecionar para um alias de tipo que expande para um parâmetro de tipo._
+_A redirecting constructor can't redirect to a type alias that expands to a type parameter._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um factory constructor
-redirecionador redireciona para um alias de tipo, e o alias de tipo expande para um dos
-parâmetros de tipo do alias de tipo. Isso não é permitido porque o valor
-do parâmetro de tipo é um tipo e não uma classe.
+The analyzer produces this diagnostic when a redirecting factory
+constructor redirects to a type alias, and the type alias expands to one of
+the type parameters of the type alias. This isn't allowed because the value
+of the type parameter is a type rather than a class.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o redirecionamento para `B<A>`
-é para um alias de tipo cujo valor é `T`, mesmo que pareça que o valor
-deveria ser `A`:
+The following code produces this diagnostic because the redirect to `B<A>`
+is to a type alias whose value is `T`, even though it looks like the value
+should be `A`:
 
 ```dart
 class A implements C {}
@@ -31,10 +32,10 @@ abstract class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Use um nome de classe ou um alias de tipo que seja definido como uma classe
-em vez de um alias de tipo definido como um parâmetro de tipo:
+Use either a class name or a type alias that is defined to be a class
+rather than a type alias defined to be a type parameter:
 
 ```dart
 class A implements C {}

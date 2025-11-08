@@ -1,31 +1,32 @@
 ---
-ia-translate: true
 title: conflicting_type_variable_and_member
-description: "Detalhes sobre o diagnóstico conflicting_type_variable_and_member produzido pelo analisador do Dart."
+description: >-
+  Details about the conflicting_type_variable_and_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto um membro nesta classe._
+_'{0}' can't be used to name both a type parameter and a member in this class._
 
-_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto um membro neste enum._
+_'{0}' can't be used to name both a type parameter and a member in this enum._
 
-_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto um membro neste extension type._
+_'{0}' can't be used to name both a type parameter and a member in this extension type._
 
-_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto um membro nesta extension._
+_'{0}' can't be used to name both a type parameter and a member in this extension._
 
-_'{0}' não pode ser usado para nomear tanto um parâmetro de tipo quanto um membro neste mixin._
+_'{0}' can't be used to name both a type parameter and a member in this mixin._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração de classe, mixin ou extension
-declara um parâmetro de tipo com o mesmo nome de um dos
-membros da classe, mixin ou extension que o declara.
+The analyzer produces this diagnostic when a class, mixin, or extension
+declaration declares a type parameter with the same name as one of the
+members of the class, mixin, or extension that declares it.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o parâmetro de tipo `T`
-tem o mesmo nome do campo `T`:
+The following code produces this diagnostic because the type parameter `T`
+has the same name as the field `T`:
 
 ```dart
 class C<[!T!]> {
@@ -33,9 +34,9 @@ class C<[!T!]> {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Renomeie o parâmetro de tipo ou o membro com o qual ele conflita:
+Rename either the type parameter or the member with which it conflicts:
 
 ```dart
 class C<T> {

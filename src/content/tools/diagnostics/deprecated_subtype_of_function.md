@@ -1,28 +1,29 @@
 ---
-ia-translate: true
 title: deprecated_subtype_of_function
-description: "Detalhes sobre o diagnóstico deprecated_subtype_of_function produzido pelo analisador Dart."
+description: >-
+  Details about the deprecated_subtype_of_function
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Estender 'Function' está deprecated._
+_Extending 'Function' is deprecated._
 
-_Implementar 'Function' não tem efeito._
+_Implementing 'Function' has no effect._
 
-_Misturar 'Function' está deprecated._
+_Mixing in 'Function' is deprecated._
 
 ## Description
 
-O analisador produz este diagnóstico quando a classe `Function` é usada em
-uma das cláusulas `extends`, `implements` ou `with` de uma classe ou mixin.
-Usar a classe `Function` desta forma não tem valor semântico, então é
-efetivamente dead code.
+The analyzer produces this diagnostic when the class `Function` is used in
+either the `extends`, `implements`, or `with` clause of a class or mixin.
+Using the class `Function` in this way has no semantic value, so it's
+effectively dead code.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `Function` é usada como
-a superclasse de `F`:
+The following code produces this diagnostic because `Function` is used as
+the superclass of `F`:
 
 ```dart
 class F extends [!Function!] {}
@@ -30,8 +31,8 @@ class F extends [!Function!] {}
 
 ## Common fixes
 
-Remova a classe `Function` de qualquer cláusula em que esteja, e remova a
-cláusula inteira se `Function` for o único tipo na cláusula:
+Remove the class `Function` from whichever clause it's in, and remove the
+whole clause if `Function` is the only type in the clause:
 
 ```dart
 class F {}

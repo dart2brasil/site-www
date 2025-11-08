@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: asset_does_not_exist
-description: "Detalhes sobre o diagnóstico asset_does_not_exist produzido pelo analisador Dart."
+description: >-
+  Details about the asset_does_not_exist
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,13 +11,13 @@ _The asset file '{0}' doesn't exist._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma lista de assets contém um valor
-referenciando um arquivo que não existe.
+The analyzer produces this diagnostic when an asset list contains a value
+referencing a file that doesn't exist.
 
 ## Example
 
-Assumindo que o arquivo `doesNotExist.gif` não existe, o código a seguir
-produz este diagnóstico porque ele está listado como um asset:
+Assuming that the file `doesNotExist.gif` doesn't exist, the following code
+produces this diagnostic because it's listed as an asset:
 
 ```yaml
 name: example
@@ -27,7 +28,7 @@ flutter:
 
 ## Common fixes
 
-Se o caminho está correto, então crie um arquivo nesse caminho.
+If the path is correct, then create a file at that path.
 
-Se o caminho não está correto, então altere o caminho para corresponder ao caminho do
-arquivo contendo o asset.
+If the path isn't correct, then change the path to match the path of the
+file containing the asset.

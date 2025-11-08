@@ -1,194 +1,198 @@
 ---
-ia-translate: true
 title: Sound null safety
 breadcrumb: Null safety
 description: Information about Dart's null safety feature.
 ---
 
-A linguagem Dart impõe a segurança contra nulos (sound null safety).
+The Dart language enforces sound null safety.
 
-A segurança contra nulos impede erros que resultam do acesso não intencional
-de variáveis definidas como `null`.
+Null safety prevents errors that result from unintentional access
+of variables set to `null`.
 
-Por exemplo, se um método espera um inteiro, mas recebe `null`,
-seu aplicativo causa um erro de tempo de execução.
-Este tipo de erro, um erro de desreferência nula, pode ser difícil de depurar.
+For example, if a method expects an integer but receives `null`,
+your app causes a runtime error.
+This type of error, a null dereference error, can be difficult to debug.
 
-Com a segurança contra nulos, todas as variáveis exigem um valor.
-Isso significa que o Dart considera todas as variáveis _não anuláveis_ (non-nullable).
-Você pode atribuir valores apenas do tipo declarado, como `int i=42`.
-Você nunca pode atribuir um valor `null` aos tipos de variáveis padrão.
-Para especificar que um tipo de variável pode ter um valor `null`, adicione `?` após
-a anotação de tipo: `int? i`.
-Esses tipos específicos podem conter um `null` _ou_
-um valor do tipo definido.
+With sound null safety, all variables require a value.
+This means Dart considers all variables _non-nullable_.
+You can assign values of the declared type only, like `int i=42`.
+You can never assign a value of `null` to default variable types.
+To specify that a variable type can have a `null` value, add a `?` after
+the type annotation: `int? i`.
+These specific types can contain either a `null` _or_
+a value of the defined type.
 
-A segurança contra nulos transforma potenciais **erros de tempo de execução**
-em erros de análise de **tempo de edição**.
-Com a segurança contra nulos, o analisador e os compiladores do Dart
-sinalizam se uma variável não anulável (non-nullable) tem:
+Sound null safety changes potential **runtime errors**
+into **edit-time** analysis errors.
+With null safety, the Dart analyzer and compilers
+flag if a non-nullable variable has either:
 
-* Não foi inicializada com um valor não nulo (non-null)
-* Foi atribuído um valor `null`.
+* Not been initialized with a non-null value
+* Been assigned a `null` value.
 
-Essas verificações permitem que você corrija esses erros _antes_ de implantar seu aplicativo.
+These checks allow you to fix these errors _before_ deploying your app.
 
-## Introdução através de exemplos {:#introduction-through-examples}
+## Introduction through examples
 
-Com a segurança contra nulos, nenhuma das variáveis no código a seguir pode ser `null`:
+With null safety, none of the variables in the following code can be `null`:
 
 ```dart
-// Com a segurança contra nulos, nenhuma delas pode ser nula.
-var i = 42; // Inferido para ser um int.
+// With null safety, none of these can ever be null.
+var i = 42; // Inferred to be an int.
 String name = getFileName();
 final b = Foo();
 ```
 
 <a id="creating-variables"></a>
-Para indicar que uma variável pode ter o valor `null`,
-basta adicionar `?` à sua declaração de tipo:
+To indicate that a variable might have the value `null`,
+just add `?` to its type declaration:
 
 ```dart
 int? aNullableInt = null;
 ```
 
-- Para experimentar alguns exemplos interativos,
-  experimente alguns dos exemplos orientados à segurança contra nulos na
-  [folha de dicas do Dart](/resources/dart-cheatsheet).
-- Para saber mais sobre a segurança contra nulos, confira
-  [Entendendo a segurança contra nulos](/null-safety/understanding-null-safety).
-  
-
-## Princípios da segurança contra nulos {:#null-safety-principles}
-
-O Dart oferece suporte à segurança contra nulos usando os dois princípios de design principais a seguir:
-
-* **Não anulável por padrão**. A menos que você diga explicitamente ao Dart que uma variável
-   pode ser nula, ela é considerada não anulável (non-nullable). Este padrão foi escolhido
-   após pesquisas constatarem que não nulo (non-null) era de longe a escolha mais comum em APIs.
-
-* **Totalmente (sound)**. A segurança contra nulos do Dart é total (sound), o que permite otimizações do compilador.
-  Se o sistema de tipos determinar que algo não é nulo, então essa coisa _nunca_ poderá ser
-  nula. Depois de migrar todo o seu projeto
-  e suas dependências para a segurança contra nulos,
-  você colhe todos os benefícios da totalidade (soundness) — não apenas
-  menos bugs, mas binários menores e execução mais rápida.
+- To try some interactive examples,
+  try out some of the null-safety orientated examples in the
+  [Dart cheatsheet](/resources/dart-cheatsheet).
+- To learn more about null safety, check out
+  [Understanding null safety](/null-safety/understanding-null-safety).
 
 
-## Dart 3 e segurança contra nulos {:#dart-3-and-null-safety}
+## Null safety principles
 
-O Dart 3 possui segurança contra nulos (sound null safety) integrada.
-O Dart 3 impede a execução de código sem ela.
+Dart supports null safety using the following two core design principles:
 
-Para aprender como migrar para o Dart 3,
-confira o [guia de migração do Dart 3](/resources/dart-3-migration).
-Pacotes desenvolvidos sem suporte à segurança contra nulos causam problemas
-ao resolver dependências:
+**Non-nullable by default**
+: Unless you explicitly tell Dart that a variable can be null,
+  it's considered non-nullable.
+  This default was chosen after research found that
+  non-null was by far the most common choice in APIs.
+
+**Fully sound**
+: Dart's null safety is sound.
+  If the type system determines that
+  a variable or expression has a non-nullable type,
+  it's guaranteed that it can never evaluate to `null` at runtime.
+
+Program-wide sound null safety lets Dart
+leverage these principles for
+fewer bugs, smaller binaries, and faster execution.
+
+## Dart 3 and null safety
+
+Dart 3 has built-in sound null safety.
+Dart 3 prevents code without it from running.
+
+To learn how to migrate to Dart 3, 
+check out the [Dart 3 migration guide](/resources/dart-3-migration).
+Packages developed without null safety support cause issues
+when resolving dependencies:
 
 ```console
 $ dart pub get
 
-Porque pkg1 não suporta segurança contra nulos, a resolução de versão falhou.
-O limite inferior de "sdk: '>=2.9.0 <3.0.0'" deve ser 2.12.0 ou superior para habilitar a segurança contra nulos.
+Because pkg1 doesn't support null safety, version solving failed.
+The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
 ```
 
-Bibliotecas incompatíveis com Dart 3 causam erros de análise ou compilação.
+Libraries incompatible with Dart 3 cause analysis or compilation errors.
 
 
 ```console
 $ dart analyze .
-Analisando ....                         0.6s
+Analyzing ....                         0.6s
 
-  error • lib/pkg1.dart:1:1 • A versão da linguagem deve ser >=2.12.0.
-  Tente remover a substituição da versão da linguagem e migrar o código.
+  error • lib/pkg1.dart:1:1 • The language version must be >=2.12.0. 
+  Try removing the language version override and migrating the code.
   • illegal_language_version_override
 ```
 
 ```console
 $ dart run bin/my_app.dart
-../pkg1/lib/pkg1.dart:1:1: Error: Biblioteca não suporta segurança contra nulos.
+../pkg1/lib/pkg1.dart:1:1: Error: Library doesn't support null safety.
 // @dart=2.9
 ^^^^^^^^^^^^
 ```
 
-Para resolver esses problemas:
+To resolve these issues:
 
-1. Verifique se há [versões com segurança contra nulos](/null-safety/migration-guide#check-dependency-status)
-   de todos os pacotes que você instalou do pub.dev
-2. [migre](#migrate) todo o seu código-fonte para usar a segurança contra nulos.
+1. Check for [null safe versions](/null-safety/migration-guide#check-dependency-status)
+   of any packages you installed from pub.dev
+2. [migrate](#migrate) all of your source code to use sound null safety.
 
-O Dart 3 pode ser encontrado nos canais estáveis para Dart e Flutter.
-Para saber mais, consulte [a página de download][a página de download] para obter detalhes.
-Para testar seu código quanto à compatibilidade com Dart 3, use Dart 3 ou posterior.
+Dart 3 can be found in the stable channels for Dart and Flutter.
+To learn more, check out [the download page][] for details.
+To test your code for Dart 3 compatibility, use Dart 3 or later.
 
 ```console
-$ dart --version                     # verifique se isso relata 3.0.0-417.1.beta ou superior
-$ dart pub get / flutter pub get     # isso deve resolver sem problemas
-$ dart analyze / flutter analyze     # isso deve passar sem erros
+$ dart --version                     # make sure this reports 3.0.0-417.1.beta or higher
+$ dart pub get / flutter pub get     # this should resolve without issues
+$ dart analyze / flutter analyze     # this should pass without errors
 ```
 
-Se a etapa `pub get` falhar, verifique o [status das dependências][status das dependências].
+If the `pub get` step fails, check the [status of the dependencies][].
 
-Se a etapa `analyze` falhar, atualize seu código para resolver os problemas
-listados pelo analisador.
+If the `analyze` step fails, update your code to resolve the issues
+listed by the analyzer.
 
-[a página de download]: /get-dart/archive
-[status das dependências]: /null-safety/migration-guide#check-dependency-status
+[the download page]: /get-dart/archive
+[status of the dependencies]: /null-safety/migration-guide#check-dependency-status
 
-## Dart 2.x e segurança contra nulos {:#enable-null-safety}
+## Dart 2.x and null safety {:#enable-null-safety}
 
 From Dart 2.12 to 2.19, you need to enable null safety.
 You can't use null safety in SDK versions earlier than Dart 2.12.
 
 <a id="constraints"></a>
-Para habilitar a segurança contra nulos, defina o
-[limite inferior da restrição do SDK](/tools/pub/pubspec#sdk-constraints)
-para uma [versão de linguagem][versão de linguagem] de 2.12 ou posterior.
-Por exemplo, seu arquivo `pubspec.yaml` pode ter as seguintes restrições:
+To enable sound null safety, set the
+[SDK constraint lower-bound](/tools/pub/pubspec#sdk-constraints)
+to a [language version][] of 2.12 or later.
+For example, your `pubspec.yaml` file might have the following constraints:
 
 ```yaml
 environment:
   sdk: '>=2.12.0 <3.0.0'
 ```
 
-[versão de linguagem]: /resources/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 
-## Migrando código existente {:#migrate}
+## Migrating existing code {:#migrate}
 
 :::warning
-O Dart 3 remove a ferramenta `dart migrate`.
-Se você precisar de ajuda para migrar seu código,
-execute a ferramenta com o SDK 2.19 e, em seguida, atualize para o Dart 3.
+Dart 3 removes the `dart migrate` tool.
+If you need help migrating your code,
+run the tool with the 2.19 SDK, then upgrade to Dart 3.
 
-Você pode migrar sem a ferramenta, mas envolve
-edição manual de código.
+You can migrate without the tool, but it involves
+hand editing code.
 :::
 
-O código Dart escrito sem suporte à segurança contra nulos pode ser migrado para usar a segurança contra nulos.
-Recomendamos usar a ferramenta `dart migrate`, incluída no SDK do Dart
-versões 2.12 a 2.19.
+Dart code written without null safety support can be migrated to use null
+safety. We recommend using the `dart migrate` tool, included in the Dart SDK
+versions 2.12 to 2.19.
 
 ```console
 $ cd my_app
 $ dart migrate
 ```
 
-Para saber como migrar seu código para a segurança contra nulos,
-confira o [guia de migração][migration guide].
+To learn how to migrate your code to null safety,
+check out the [migration guide][].
 
-## Onde aprender mais {:#where-to-learn-more}
+## Where to learn more
 
-Para saber mais sobre a segurança contra nulos, consulte os seguintes recursos:
+To learn more about null safety, check out the following resources:
 
-* [Entendendo a segurança contra nulos][Entendendo a segurança contra nulos]
-* [Guia de migração para código existente][migration guide]
-* [FAQ sobre segurança contra nulos][FAQ sobre segurança contra nulos]
-* [Código de exemplo de segurança contra nulos][calculate_lix]
+* [Understanding null safety][]
+* [Migration guide for existing code][migration guide]
+* [Null safety FAQ][]
+* [Null safety sample code][calculate_lix]
 
 [calculate_lix]: {{site.repo.dart.samples}}/tree/main/null_safety/calculate_lix
 [migration guide]: /null-safety/migration-guide
-[FAQ sobre segurança contra nulos]: /null-safety/faq
-[Entendendo a segurança contra nulos]: /null-safety/understanding-null-safety
+[Null safety FAQ]: /null-safety/faq
+[Understanding null safety]: /null-safety/understanding-null-safety
 [#34233]: {{site.repo.dart.sdk}}/issues/34233
 [#49529]: {{site.repo.dart.sdk}}/issues/49529
 [#2357]: {{site.repo.dart.lang}}/issues/2357
+
