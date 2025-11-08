@@ -102,7 +102,7 @@ leia [Outras causas e soluções alternativas](#other-causes-and-workarounds)
 
 [upgrade]: /get-dart
 
-## Outras causas e soluções alternativas
+## Outras causas e soluções alternativas {:#other-causes-and-workarounds}
 
 Os exemplos restantes nesta página documentam razões para falhas de promoção
 não relacionadas a inconsistências de versão,
@@ -486,7 +486,7 @@ void testParity(Example x) {
 }
 ```
 
-#### Nota sobre classes não relacionadas
+#### Nota sobre classes não relacionadas {:#note-about-unrelated-classes}
 
 Note que no exemplo acima está claro
 por que não é seguro promover o campo `_overridden`:

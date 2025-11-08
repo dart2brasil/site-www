@@ -8,9 +8,9 @@ _Global_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 
 A opção `global` do Pub permite que você execute scripts Dart a partir da
 linha de comando quando você não está dentro de um pacote.
-Depois de [ativar um pacote](#ativar-um-pacote), você pode
-[executar scripts](#executar-um-script) do diretório `bin` desse pacote.
-[Desativar um pacote](#desativar-um-pacote) o remove da
+Depois de [ativar um pacote](#activating-a-package), você pode
+[executar scripts](#running-a-script) do diretório `bin` desse pacote.
+[Desativar um pacote](#deactivating-a-package) o remove da
 sua lista de pacotes disponíveis globalmente.
 
 Por exemplo, digamos que você queira usar [webdev][] para servir
@@ -22,7 +22,7 @@ $ webdev serve
 ```
 
 Se isso não funcionar, você pode precisar
-[configurar seu caminho](#executar-um-script-a-partir-do-seu-path).
+[configurar seu caminho](#running-a-script-from-your-path).
 
 Para executar um script Dart dentro de um pacote, ou de um
 pacote do qual seu pacote depende, consulte [dart run](/tools/dart-run).
@@ -162,7 +162,7 @@ $ [!webdev serve!]
 ```
 
 Se o script ainda falhar ao ser executado a partir da linha de comando, o
-pacote pode não estar [configurado](#configurar-executáveis-de-pacote) para
+pacote pode não estar [configurado](#configuring-package-executables) para
 este recurso. Você ainda pode executar o script usando `dart pub global run`.
 
 ### Executar um script usando `dart pub global run` {:#running-a-script-using-dart-pub-global-run}

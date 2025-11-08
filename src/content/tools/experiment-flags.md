@@ -14,7 +14,7 @@ sem aviso prévio.
 :::
 
 
-## Usando experiment flags com ferramentas de linha de comando
+## Usando experiment flags com ferramentas de linha de comando {:#using-experiment-flags-with-command-line-tools}
 
 Para usar um experimento com [ferramentas de linha de comando](/tools/sdk) do Dart SDK,
 passe a flag correspondente para a ferramenta.
@@ -33,7 +33,7 @@ Ou ao comando `flutter`:
 $ flutter run --enable-experiment=super-mixins,no-slow-checks
 ```
 
-## Usando experiment flags com o analisador Dart (linha de comando e IDE)
+## Usando experiment flags com o analisador Dart (linha de comando e IDE) {:#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide}
 
 Para habilitar experimentos que afetam a análise,
 use a chave `enable-experiment` no [arquivo de opções de análise][analysis options file].
@@ -55,7 +55,7 @@ analyzer:
 Para habilitar experimentos relacionados à execução ou depuração de aplicativos em IDEs,
 edite a configuração de lançamento.
 
-### Visual Studio Code
+### Visual Studio Code {:#visual-studio-code}
 
 Em `launch.json` sob `configurations`,
 adicione uma nova chave `toolArgs` contendo as flags desejadas.
@@ -81,7 +81,7 @@ Para mais informações, consulte a documentação sobre
 [VSC instructions]: https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
 
 
-### Android Studio
+### Android Studio {:#android-studio}
 
 Em `VMOptions`, adicione as flags desejadas.
 Exemplo:
@@ -102,7 +102,7 @@ Para mais informações, consulte as instruções para
 [AS instructions]: {{site.android-dev}}/studio/run/rundebugconfig
 
 
-## Mais informações
+## Mais informações {:#more-information}
 
 * Para uma lista completa de experimentos,
   veja o arquivo [`experimental_features.yaml`.][] do Dart SDK

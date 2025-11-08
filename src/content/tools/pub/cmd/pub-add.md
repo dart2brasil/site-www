@@ -65,7 +65,7 @@ $ dart pub add --dev foo
 
 Para especificar uma [sobreposição de dependência][], adicione o prefixo `override:` e
 inclua uma [restrição de versão](#restrição-de-versão) ou
-[descritor de fonte](#descritor-de-fonte).
+[descritor de fonte](#source-descriptor).
 
 [sobreposição de dependência]: /tools/pub/dependencies#dependency-overrides
 
