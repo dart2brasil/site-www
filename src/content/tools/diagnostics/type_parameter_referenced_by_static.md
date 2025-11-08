@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: type_parameter_referenced_by_static
 description: >-
-  Details about the type_parameter_referenced_by_static
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico type_parameter_referenced_by_static
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Static members can't reference type parameters of the class._
+_Membros static não podem referenciar parâmetros de tipo da classe._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a static member references a
-type parameter that is declared for the class. Type parameters only have
-meaning for instances of the class.
+O analisador produz este diagnóstico quando um membro static referencia um
+parâmetro de tipo que é declarado para a classe. Parâmetros de tipo só têm
+significado para instâncias da classe.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the static method
-`hasType` has a reference to the type parameter `T`:
+O código a seguir produz este diagnóstico porque o método static
+`hasType` possui uma referência ao parâmetro de tipo `T`:
 
 ```dart
 class C<T> {
@@ -26,9 +27,9 @@ class C<T> {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the member can be an instance member, then remove the keyword `static`:
+Se o membro puder ser um membro de instância, então remova a keyword `static`:
 
 ```dart
 class C<T> {
@@ -36,7 +37,7 @@ class C<T> {
 }
 ```
 
-If the member must be a static member, then make the member be generic:
+Se o membro deve ser um membro static, então torne o membro genérico:
 
 ```dart
 class C<T> {
@@ -44,5 +45,5 @@ class C<T> {
 }
 ```
 
-Note, however, that there isn't a relationship between `T` and `S`, so this
-second option changes the semantics from what was likely to be intended.
+Observe, no entanto, que não há uma relação entre `T` e `S`, então esta
+segunda opção altera a semântica do que provavelmente foi o pretendido.

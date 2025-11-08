@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: unused_catch_clause
 description: >-
-  Details about the unused_catch_clause
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico unused_catch_clause
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The exception variable '{0}' isn't used, so the 'catch' clause can be removed._
+_A variável de exceção '{0}' não é usada, então a cláusula 'catch' pode ser removida._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `catch` clause is found, and
-neither the exception parameter nor the optional stack trace parameter are
-used in the `catch` block.
+O analisador produz este diagnóstico quando uma cláusula `catch` é encontrada, e
+nem o parâmetro de exceção nem o parâmetro opcional de stack trace são
+usados no bloco `catch`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `e` isn't referenced:
+O código a seguir produz este diagnóstico porque `e` não é referenciado:
 
 ```dart
 void f() {
@@ -29,9 +30,9 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the unused `catch` clause:
+Remova a cláusula `catch` não utilizada:
 
 ```dart
 void f() {

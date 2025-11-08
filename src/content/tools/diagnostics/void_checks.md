@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: void_checks
 description: >-
-  Details about the void_checks
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico void_checks
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,20 +19,20 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Assignment to a variable of type 'void'._
+_Atribuição a uma variável de tipo 'void'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a value is assigned to a
-variable of type `void`.
+O analisador produz este diagnóstico quando um valor é atribuído a uma
+variável de tipo `void`.
 
-It isn't possible to access the value of such a variable, so the
-assignment has no value.
+Não é possível acessar o valor de tal variável, então a
+atribuição não tem valor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `value` has
-the type `void`, but a value is being assigned to it:
+O código a seguir produz este diagnóstico porque o campo `value` tem
+o tipo `void`, mas um valor está sendo atribuído a ele:
 
 ```dart
 class A<T> {
@@ -43,9 +44,9 @@ void f(A<void> a) {
 }
 ```
 
-The following code produces this diagnostic because the type of the
-parameter `p` in the method `m` is `void`, but a value is being assigned
-to it in the invocation:
+O código a seguir produz este diagnóstico porque o tipo do
+parâmetro `p` no método `m` é `void`, mas um valor está sendo atribuído
+a ele na invocação:
 
 ```dart
 class A<T> {
@@ -57,10 +58,10 @@ void f(A<void> a) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the type of the variable is incorrect, then change the type of the
-variable:
+Se o tipo da variável está incorreto, então mude o tipo da
+variável:
 
 ```dart
 class A<T> {
@@ -72,7 +73,7 @@ void f(A<int> a) {
 }
 ```
 
-If the type of the variable is correct, then remove the assignment:
+Se o tipo da variável está correto, então remova a atribuição:
 
 ```dart
 class A<T> {

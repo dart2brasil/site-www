@@ -1,36 +1,37 @@
 ---
+ia-translate: true
 title: undefined_method
 description: >-
-  Details about the undefined_method
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico undefined_method
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The method '{0}' isn't defined for the '{1}' function type._
+_O método '{0}' não está definido para o tipo de função '{1}'._
 
-_The method '{0}' isn't defined for the type '{1}'._
+_O método '{0}' não está definido para o tipo '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it encounters an identifier that
-appears to be the name of a method but either isn't defined or isn't
-visible in the scope in which it's being referenced.
+O analisador produz este diagnóstico quando encontra um identificador que
+parece ser o nome de um método, mas não está definido ou não está
+visível no escopo em que está sendo referenciado.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the identifier
-`removeMiddle` isn't defined:
+O código a seguir produz este diagnóstico porque o identificador
+`removeMiddle` não está definido:
 
 ```dart
 int f(List<int> l) => l.[!removeMiddle!]();
 ```
 
-## Common fixes
+## Correções comuns
 
-If the identifier isn't defined, then either define it or replace it with
-the name of a method that is defined. The example above can be corrected by
-fixing the spelling of the method:
+Se o identificador não está definido, então defina-o ou substitua-o pelo
+nome de um método que está definido. O exemplo acima pode ser corrigido
+corrigindo a ortografia do método:
 
 ```dart
 int f(List<int> l) => l.removeLast();

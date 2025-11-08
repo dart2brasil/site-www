@@ -1,26 +1,27 @@
 ---
+ia-translate: true
 title: yield_in_non_generator
 description: >-
-  Details about the yield_in_non_generator
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico yield_in_non_generator
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Yield statements must be in a generator function (one marked with either 'async*' or 'sync*')._
+_Declarações yield devem estar em uma função geradora (uma marcada com 'async*' ou 'sync*')._
 
-_Yield-each statements must be in a generator function (one marked with either 'async*' or 'sync*')._
+_Declarações yield-each devem estar em uma função geradora (uma marcada com 'async*' ou 'sync*')._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `yield` or `yield*` statement
-appears in a function whose body isn't marked with one of the `async*` or
-`sync*` modifiers.
+O analisador produz este diagnóstico quando uma declaração `yield` ou `yield*`
+aparece em uma função cujo corpo não está marcado com um dos modificadores `async*` ou
+`sync*`.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `yield` is being used
-in a function whose body doesn't have a modifier:
+O código a seguir produz este diagnóstico porque `yield` está sendo usado
+em uma função cujo corpo não tem um modificador:
 
 ```dart
 Iterable<int> get digits {
@@ -28,9 +29,8 @@ Iterable<int> get digits {
 }
 ```
 
-The following code produces this diagnostic because `yield*` is being used
-in a function whose body has the `async` modifier rather than the `async*`
-modifier:
+O código a seguir produz este diagnóstico porque `yield*` está sendo usado
+em uma função cujo corpo tem o modificador `async` em vez do modificador `async*`:
 
 ```dart
 Stream<int> get digits async {
@@ -38,9 +38,9 @@ Stream<int> get digits async {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add a modifier, or change the existing modifier to be either `async*` or
+Adicione um modificador, ou mude o modificador existente para ser `async*` ou
 `sync*`:
 
 ```dart
