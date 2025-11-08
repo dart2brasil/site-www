@@ -147,7 +147,7 @@ o código de inicialização é executado
 na primeira vez que a variável é usada.
 
 
-## Variáveis late
+## Variáveis late {:#late-variables}
 
 O modificador `late` tem dois casos de uso:
 
@@ -292,7 +292,7 @@ Para mais informações sobre usar `const` para criar valores constantes, veja
 [Lists][], [Maps][] e [Classes][].
 
 
-## Variáveis wildcard
+## Variáveis wildcard {:#wildcard-variables}
 
 :::version-note
 Variáveis wildcard requerem
