@@ -1,27 +1,28 @@
 ---
+ia-translate: true
 title: record_literal_one_positional_no_trailing_comma
 description: >-
-  Details about the record_literal_one_positional_no_trailing_comma
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico record_literal_one_positional_no_trailing_comma
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A record literal with exactly one positional field requires a trailing comma._
+_Um literal record com exatamente um campo posicional requer uma vírgula final._
 
 ## Description
 
-The analyzer produces this diagnostic when a record literal with a single
-positional field doesn't have a trailing comma after the field.
+O analisador produz este diagnóstico quando um literal record com um único
+campo posicional não tem uma vírgula final após o campo.
 
-In some locations a record literal with a single positional field could
-also be a parenthesized expression. A trailing comma is required to
-disambiguate these two valid interpretations.
+Em alguns locais, um literal record com um único campo posicional também pode
+ser uma expressão entre parênteses. Uma vírgula final é necessária para
+desambiguar essas duas interpretações válidas.
 
 ## Example
 
-The following code produces this diagnostic because the record literal has
-one positional field but doesn't have a trailing comma:
+O código a seguir produz este diagnóstico porque o literal record tem
+um campo posicional mas não tem uma vírgula final:
 
 ```dart
 var r = const (1[!)!];
@@ -29,7 +30,7 @@ var r = const (1[!)!];
 
 ## Common fixes
 
-Add a trailing comma:
+Adicione uma vírgula final:
 
 ```dart
 var r = const (1,);

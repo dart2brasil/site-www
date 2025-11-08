@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: prefer_final_fields
 description: >-
-  Details about the prefer_final_fields
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico prefer_final_fields
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,18 +19,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The private field {0} could be 'final'._
+_O campo private {0} poderia ser 'final'._
 
 ## Description
 
-The analyzer produces this diagnostic when a private field is only
-assigned one time. The field can be initialized in multiple constructors
-and still be flagged because only one of those constructors can ever run.
+O analisador produz este diagnóstico quando um campo private é apenas
+atribuído uma vez. O campo pode ser inicializado em múltiplos construtores
+e ainda ser sinalizado porque apenas um desses construtores pode ser executado.
 
 ## Example
 
-The following code produces this diagnostic because the field `_f` is only
-assigned one time, in the field's initializer:
+O código a seguir produz este diagnóstico porque o campo `_f` é apenas
+atribuído uma vez, no inicializador do campo:
 
 ```dart
 class C {
@@ -41,7 +42,7 @@ class C {
 
 ## Common fixes
 
-Mark the field `final`:
+Marque o campo como `final`:
 
 ```dart
 class C {

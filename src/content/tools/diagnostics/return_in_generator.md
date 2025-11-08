@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: return_in_generator
 description: >-
-  Details about the return_in_generator
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico return_in_generator
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Can't return a value from a generator function that uses the 'async*' or 'sync*' modifier._
+_Não é possível retornar um valor de uma função geradora que usa o modificador 'async*' ou 'sync*'._
 
 ## Description
 
-The analyzer produces this diagnostic when a generator function (one whose
-body is marked with either `async*` or `sync*`) uses either a `return`
-statement to return a value or implicitly returns a value because of using
-`=>`. In any of these cases, they should use `yield` instead of `return`.
+O analisador produz este diagnóstico quando uma função geradora (uma cujo
+corpo é marcado com `async*` ou `sync*`) usa uma instrução `return`
+para retornar um valor ou retorna implicitamente um valor devido ao uso de
+`=>`. Em qualquer desses casos, deve-se usar `yield` em vez de `return`.
 
 ## Examples
 
-The following code produces this diagnostic because the method `f` is a
-generator and is using `return` to return a value:
+O código a seguir produz este diagnóstico porque o método `f` é um
+gerador e está usando `return` para retornar um valor:
 
 ```dart
 Iterable<int> f() sync* {
@@ -27,8 +28,8 @@ Iterable<int> f() sync* {
 }
 ```
 
-The following code produces this diagnostic because the function `f` is a
-generator and is implicitly returning a value:
+O código a seguir produz este diagnóstico porque a função `f` é um
+gerador e está retornando implicitamente um valor:
 
 ```dart
 Stream<int> f() async* [!=>!] 3;
@@ -36,8 +37,8 @@ Stream<int> f() async* [!=>!] 3;
 
 ## Common fixes
 
-If the function is using `=>` for the body of the function, then convert it
-to a block function body, and use `yield` to return a value:
+Se a função está usando `=>` para o corpo da função, converta-a
+para um corpo de função em bloco e use `yield` para retornar um valor:
 
 ```dart
 Stream<int> f() async* {
@@ -45,8 +46,8 @@ Stream<int> f() async* {
 }
 ```
 
-If the method is intended to be a generator, then use `yield` to return a
-value:
+Se o método é destinado a ser um gerador, use `yield` para retornar um
+valor:
 
 ```dart
 Iterable<int> f() sync* {
@@ -54,8 +55,8 @@ Iterable<int> f() sync* {
 }
 ```
 
-If the method isn't intended to be a generator, then remove the modifier
-from the body (or use `async` if you're returning a future):
+Se o método não é destinado a ser um gerador, remova o modificador
+do corpo (ou use `async` se você está retornando um future):
 
 ```dart
 int f() {

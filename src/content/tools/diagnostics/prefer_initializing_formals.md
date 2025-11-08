@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: prefer_initializing_formals
 description: >-
-  Details about the prefer_initializing_formals
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico prefer_initializing_formals
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use an initializing formal to assign a parameter to a field._
+_Use um parâmetro formal inicializador para atribuir um parâmetro a um campo._
 
 ## Description
 
-The analyzer produces this diagnostic when a constructor parameter is used
-to initialize a field without modification.
+O analisador produz este diagnóstico quando um parâmetro de construtor é usado
+para inicializar um campo sem modificação.
 
 ## Example
 
-The following code produces this diagnostic because the parameter `c` is
-only used to set the field `c`:
+O código a seguir produz este diagnóstico porque o parâmetro `c` é
+usado apenas para definir o campo `c`:
 
 ```dart
 class C {
@@ -40,7 +41,7 @@ class C {
 
 ## Common fixes
 
-Use an initializing formal parameter to initialize the field:
+Use um parâmetro formal inicializador para inicializar o campo:
 
 ```dart
 class C {
