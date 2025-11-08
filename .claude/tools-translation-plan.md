@@ -375,12 +375,13 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 16:** Diagnostic Errors - main/map/member/method/mixin/missing (34/34 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 1-15, 17-20 pending
 
 ---
 

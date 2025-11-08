@@ -2,9 +2,9 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 129 files (with ia-translate: true metadata)
+- **Remaining:** ~816 files
+- **Progress:** 13.7%
 
 ## Recently Completed (This Session)
 
@@ -70,7 +70,7 @@
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 49/~776 files (6.3%)
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -79,6 +79,14 @@ Major tools documentation files completed:
 - ✅ IDE support: vs-code.md, jetbrains-plugin.md (already done)
 - ✅ DartPad: troubleshoot.md, privacy.md
 - ✅ Configuration: analysis.md, experiment-flags.md
+
+### Section 16: Diagnostic Errors Completed (34 files)
+- ✅ main-related errors (4 files)
+- ✅ map-related errors (3 files)
+- ✅ member-related errors (0 files - no files matching this pattern)
+- ✅ method-related errors (0 files - no files matching this pattern)
+- ✅ mixin-related errors (11 files)
+- ✅ missing-related errors (16 files)
 
 ## Files Still Needing Translation
 
