@@ -16,18 +16,18 @@ sem aviso prévio.
 
 ## Usando flags de experimento com ferramentas de linha de comando {:#using-experiment-flags-with-command-line-tools}
 
-To use an experiment with Dart SDK [command line tools](/tools/sdk),
-pass the corresponding flag to the tool.
+Para usar um experimento com as [ferramentas de linha de comando](/tools/sdk) do Dart SDK,
+passe a flag correspondente para a ferramenta.
 
-For example, to enable the experiments
-`super-mixins` and `no-slow-checks`,
-add those flags to the `dart` command:
+Por exemplo, para habilitar os experimentos
+`super-mixins` e `no-slow-checks`,
+adicione essas flags ao comando `dart`:
 
 ```console
 $ dart run --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 
-Or to the `flutter` command:
+Ou ao comando `flutter`:
 
 ```console
 $ flutter run --enable-experiment=super-mixins,no-slow-checks
