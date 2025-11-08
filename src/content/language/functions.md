@@ -301,7 +301,7 @@ o que pode ser útil para clareza e reutilização.
 
 [`typedef`]: /language/typedefs
 
-## Funções anônimas
+## Funções anônimas {:#anonymous-functions}
 
 Embora você nomeie a maioria das funções, como `main()` ou `printElement()`,
 você também pode criar funções sem nomes.
