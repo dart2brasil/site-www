@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Sound null safety
 breadcrumb: Null safety
 description: Information about Dart's null safety feature.
@@ -79,31 +80,10 @@ O Dart oferece suporte à segurança contra nulos usando os dois princípios de 
 O Dart 3 possui segurança contra nulos (sound null safety) integrada.
 O Dart 3 impede a execução de código sem ela.
 
-**Non-nullable by default**
-: Unless you explicitly tell Dart that a variable can be null,
-  it's considered non-nullable.
-  This default was chosen after research found that
-  non-null was by far the most common choice in APIs.
-
-**Fully sound**
-: Dart's null safety is sound.
-  If the type system determines that
-  a variable or expression has a non-nullable type,
-  it's guaranteed that it can never evaluate to `null` at runtime.
-
-Program-wide sound null safety lets Dart
-leverage these principles for
-fewer bugs, smaller binaries, and faster execution.
-
-## Dart 3 and null safety
-
-Dart 3 has built-in sound null safety.
-Dart 3 prevents code without it from running.
-
-To learn how to migrate to Dart 3, 
-check out the [Dart 3 migration guide](/resources/dart-3-migration).
-Packages developed without null safety support cause issues
-when resolving dependencies:
+Para aprender como migrar para o Dart 3,
+confira o [guia de migração do Dart 3](/resources/dart-3-migration).
+Pacotes desenvolvidos sem suporte à segurança contra nulos causam problemas
+ao resolver dependências:
 
 ```console
 $ dart pub get
