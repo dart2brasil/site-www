@@ -1,83 +1,84 @@
 ---
-title: JS types
-breadcrumb: Types
-description: Usage information about the core types in JS interop.
+title: Tipos JS
+breadcrumb: Tipos
+description: Informações de uso sobre os tipos principais em JS interop.
+ia-translate: true
 prevpage:
   url: /interop/js-interop/usage
-  title: Usage
+  title: Uso
 nextpage:
   url: /interop/js-interop/tutorials
-  title: JS interop tutorials
+  title: Tutoriais de JS interop
 ---
 
-Dart values and JS values belong to separate language domains. When compiling to
-[Wasm][], they execute in separate *runtimes* as well. As such, you should treat JS
-values as foreign types. To provide Dart types for JS values,
-[`dart:js_interop`] exposes a set of types prefixed with `JS` called "JS types".
-These types are used to distinguish between Dart values and JS values at
-compile-time.
+Valores Dart e valores JS pertencem a domínios de linguagem separados. Ao compilar para
+[Wasm][], eles executam em *runtimes* separados também. Dessa forma, você deve tratar valores JS
+como tipos estrangeiros. Para fornecer tipos Dart para valores JS,
+[`dart:js_interop`] expõe um conjunto de tipos prefixados com `JS` chamados "tipos JS".
+Esses tipos são usados para distinguir entre valores Dart e valores JS em
+tempo de compilação.
 
-Importantly, these types are reified differently based on whether you compile to
-Wasm or JS. This means that their runtime type will differ, and therefore you
-[can't use `is` checks and `as` casts](#compatibility-type-checks-and-casts).
-In order to interact with and examine these JS values, you should use
-[`external`] interop members or [conversions](#conversions).
+Importante notar que esses tipos são reificados de forma diferente dependendo se você compila para
+Wasm ou JS. Isso significa que seu tipo em runtime será diferente e, portanto, você
+[não pode usar verificações `is` e conversões `as`](#compatibility-type-checks-and-casts).
+Para interagir e examinar esses valores JS, você deve usar
+membros interop [`external`] ou [conversões](#conversions).
 
-## Type hierarchy
+## Hierarquia de tipos
 
-JS types form a natural type hierarchy:
+Os tipos JS formam uma hierarquia de tipos natural:
 
-- Top type: `JSAny`, which is any non-nullish JS value
-  - Primitives: `JSNumber`, `JSBoolean`, `JSString`, `JSSymbol`, `JSBigInt`
-  - `JSObject`, which is any JS object
+- Tipo superior: `JSAny`, que é qualquer valor JS não-nulo
+  - Primitivos: `JSNumber`, `JSBoolean`, `JSString`, `JSSymbol`, `JSBigInt`
+  - `JSObject`, que é qualquer objeto JS
     - `JSFunction`
-      - `JSExportedDartFunction`, which represents a Dart callback that was
-      converted to a JS function
+      - `JSExportedDartFunction`, que representa um callback Dart que foi
+      convertido para uma função JS
     - `JSArray`
     - `JSPromise`
     - `JSDataView`
     - `JSTypedArray`
-      - JS typed arrays like `JSUint8Array`
-    - `JSBoxedDartObject`, which allows users to box and pass Dart values
-      opaquely within the same Dart runtime
-      - From Dart 3.4 onwards, the type `ExternalDartReference` in
-      `dart:js_interop` also allows users to pass Dart values opaquely, but is
-      *not* a JS type. Learn more about the tradeoffs between each option
-      [here](#jsboxeddartobject-vs-externaldartreference).
+      - Typed arrays JS como `JSUint8Array`
+    - `JSBoxedDartObject`, que permite aos usuários empacotar e passar valores Dart
+      de forma opaca dentro do mesmo runtime Dart
+      - A partir do Dart 3.4, o tipo `ExternalDartReference` em
+      `dart:js_interop` também permite aos usuários passar valores Dart de forma opaca, mas
+      *não* é um tipo JS. Saiba mais sobre as compensações entre cada opção
+      [aqui](#jsboxeddartobject-vs-externaldartreference).
 
-You can find the definition of each type in the [`dart:js_interop` API docs].
+Você pode encontrar a definição de cada tipo na [documentação da API `dart:js_interop`][`dart:js_interop` API docs].
 
 {% comment %}
 TODO (srujzs): Should we add a tree diagram instead for JS types?
 {% endcomment %}
 
-## Conversions
+## Conversões
 
-To use a value from one domain to another, you will likely want to *convert* the
-value to the corresponding type of the other domain. For example, you may want
-to convert a Dart `List<JSString>` into a JS array of strings, which is
-represented by the JS type `JSArray<JSString>`, so that you can pass the array
-to a JS interop API.
+Para usar um valor de um domínio para outro, você provavelmente vai querer *converter* o
+valor para o tipo correspondente do outro domínio. Por exemplo, você pode querer
+converter uma `List<JSString>` Dart em um array JS de strings, que é
+representado pelo tipo JS `JSArray<JSString>`, para que você possa passar o array
+para uma API de interop JS.
 
-Dart supplies a number of conversion members on various Dart types and JS types
-to convert the values between the domains for you.
+Dart fornece vários membros de conversão em vários tipos Dart e tipos JS
+para converter os valores entre os domínios para você.
 
-Members that convert values from Dart to JS usually start with `toJS`:
+Membros que convertem valores de Dart para JS geralmente começam com `toJS`:
 
 ```dart
 String str = 'hello world';
 JSString jsStr = str.toJS;
 ```
 
-Members that convert values from JS to Dart usually start with `toDart`:
+Membros que convertem valores de JS para Dart geralmente começam com `toDart`:
 
 ```dart
 JSNumber jsNum = ...;
 int integer = jsNum.toDartInt;
 ```
 
-Not all JS types have a conversion, and not all Dart types have a conversion.
-Generally, the conversion table looks like the following:
+Nem todos os tipos JS têm uma conversão, e nem todos os tipos Dart têm uma conversão.
+Geralmente, a tabela de conversão se parece com o seguinte:
 
 | `dart:js_interop` type              | Dart type                                |
 | ----------------------------------- | ---------------------------------------- |
@@ -92,26 +93,26 @@ Generally, the conversion table looks like the following:
 {:.table .table-striped}
 
 :::warning
-Compiling to JavaScript vs [Wasm][] can introduce inconsistencies in both
-performance and semantics for conversions. Conversions may have different costs
-depending on the compiler, so prefer to only convert values if you need to.
+Compilar para JavaScript vs [Wasm][] pode introduzir inconsistências tanto em
+desempenho quanto em semântica para conversões. Conversões podem ter custos diferentes
+dependendo do compilador, então prefira converter valores somente se você precisar.
 
-Conversions also may or may not produce a new value. This doesn’t matter for
-immutable values like numbers, but does matter for types like `List`. Depending
-on the implementation, a conversion to `JSArray` may return a reference, a
-proxy, or a clone of the original list. To avoid this, do not rely on any
-relation between the `List` and `JSArray` and only rely on their contents being
-the same. Typed array conversions have a similar limitation. Look up the
-specific conversion function for more details.
+Conversões também podem ou não produzir um novo valor. Isso não importa para
+valores imutáveis como números, mas importa para tipos como `List`. Dependendo
+da implementação, uma conversão para `JSArray` pode retornar uma referência, um
+proxy ou um clone da lista original. Para evitar isso, não confie em nenhuma
+relação entre a `List` e `JSArray` e confie apenas em seus conteúdos sendo
+os mesmos. Conversões de typed array têm uma limitação similar. Consulte a
+função de conversão específica para mais detalhes.
 :::
 
-## Requirements on `external` declarations and `Function.toJS`
+## Requisitos em declarações `external` e `Function.toJS`
 
-In order to ensure type safety and consistency, the compiler places requirements
-on what types can flow into and out of JS. Passing arbitrary Dart values into JS
-is not allowed. Instead, the compiler requires users to use a compatible interop
-type, `ExternalDartReference`, or a primitive, which would then be implicitly
-converted by the compiler. For example, these would be allowed:
+Para garantir segurança de tipos e consistência, o compilador estabelece requisitos
+sobre quais tipos podem fluir para dentro e para fora de JS. Passar valores Dart arbitrários para JS
+não é permitido. Em vez disso, o compilador exige que os usuários usem um tipo interop
+compatível, `ExternalDartReference` ou um primitivo, que então seria implicitamente
+convertido pelo compilador. Por exemplo, estes seriam permitidos:
 
 ```dart tag=good
 @JS()
@@ -135,7 +136,7 @@ external InteropType get interopType;
 external void externalDartReference(ExternalDartReference _);
 ```
 
-Whereas these would return an error:
+Enquanto estes retornariam um erro:
 
 ```dart tag=bad
 @JS()
@@ -147,21 +148,21 @@ external Function get function;
 external set list(List _);
 ```
 
-These same requirements exist when you use [`Function.toJS`] to make a Dart
-function callable in JS. The values that flow into and out of this callback must
-be a compatible interop type or a primitive.
+Esses mesmos requisitos existem quando você usa [`Function.toJS`] para tornar uma função Dart
+chamável em JS. Os valores que fluem para dentro e para fora desse callback devem
+ser um tipo interop compatível ou um primitivo.
 
-If you use a Dart primitive like `String`, an implicit conversion happens in the
-compiler to convert that value from a JS value to a Dart value. If performance
-is critical and you don’t need to examine the contents of the string, then using
-`JSString` instead to avoid the conversion cost may make sense like in the
-second example.
+Se você usar um primitivo Dart como `String`, uma conversão implícita acontece no
+compilador para converter esse valor de um valor JS para um valor Dart. Se o desempenho
+é crítico e você não precisa examinar o conteúdo da string, então usar
+`JSString` em vez disso para evitar o custo de conversão pode fazer sentido como no
+segundo exemplo.
 
-## Compatibility, type checks, and casts
+## Compatibilidade, verificações de tipo e conversões
 
-The runtime type of JS types may differ based on the compiler. This affects
-runtime type-checking and casts. Therefore, almost always avoid `is` checks
-where the value is an interop type or where the target type is an interop type:
+O tipo em runtime dos tipos JS pode diferir com base no compilador. Isso afeta
+verificação de tipo em runtime e conversões. Portanto, quase sempre evite verificações `is`
+onde o valor é um tipo interop ou onde o tipo alvo é um tipo interop:
 
 ```dart tag=bad
 void f(JSAny a) {
@@ -175,7 +176,7 @@ void f(JSAny a) {
 }
 ```
 
-Also, avoid casts between Dart types and interop types:
+Além disso, evite conversões entre tipos Dart e tipos interop:
 
 ```dart tag=bad
 void f(JSString s) {
@@ -183,8 +184,8 @@ void f(JSString s) {
 }
 ```
 
-To type-check a JS value, use an interop member like [`typeofEquals`] or
-[`instanceOfString`] that examines the JS value itself:
+Para verificar o tipo de um valor JS, use um membro interop como [`typeofEquals`] ou
+[`instanceOfString`] que examina o próprio valor JS:
 
 ```dart tag=good
 void f(JSAny a) {
@@ -195,8 +196,8 @@ void f(JSAny a) {
 }
 ```
 
-From Dart 3.4 onwards, you can use the [`isA`] helper function to check whether
-a value is any interop type:
+A partir do Dart 3.4, você pode usar a função auxiliar [`isA`] para verificar se
+um valor é de qualquer tipo interop:
 
 ```dart tag=good
 void f(JSAny a) {
@@ -206,67 +207,66 @@ void f(JSAny a) {
 }
 ```
 
-Depending on the type parameter, it'll transform the call into the appropriate
-type-check for that type.
+Dependendo do parâmetro de tipo, ele transformará a chamada na
+verificação de tipo apropriada para esse tipo.
 
 {% comment %}
 TODO: Add a link to and an example using `isA` once it's in a dev release. Users
 should prefer that method if it's available.
 {% endcomment %}
 
-Dart may add lints to make runtime checks with JS interop types easier to avoid.
-See issue [#4841] for more details.
+Dart pode adicionar lints para tornar verificações em runtime com tipos interop JS mais fáceis de evitar.
+Veja a issue [#4841] para mais detalhes.
 
 ## `null` vs `undefined`
 
-JS has both a `null` and an `undefined` value. This is in contrast with Dart,
-which only has `null`. In order to make JS values more ergonomic to use, if an
-interop member were to return either JS `null` or `undefined`, the compiler maps
-these values to Dart `null`. Therefore a member like `value` in the following
-example can be interpreted as returning a JS object, JS `null`, or `undefined`:
+JS tem tanto um valor `null` quanto um `undefined`. Isso contrasta com Dart,
+que tem apenas `null`. Para tornar valores JS mais ergonômicos de usar, se um
+membro interop retornar `null` ou `undefined` JS, o compilador mapeia
+esses valores para `null` Dart. Portanto, um membro como `value` no seguinte
+exemplo pode ser interpretado como retornando um objeto JS, `null` JS ou `undefined`:
 
 ```dart
 @JS()
 external JSObject? get value;
 ```
 
-If the return type was not declared as nullable, then the program will throw an
-error if the value returned was JS `null` or `undefined` to ensure soundness.
+Se o tipo de retorno não foi declarado como nullable, então o programa lançará um
+erro se o valor retornado for `null` ou `undefined` JS para garantir soundness.
 
 :::warning
-There is a subtle inconsistency with regards to `undefined` between compiling to
-JS and [Wasm][]. While compiling to JS *treats* `undefined` values as if they were
-Dart `null`, it doesn't actually *change* the value itself. If an interop member
-returns `undefined` and you pass that value back into JS, JS will see
-`undefined`, *not* `null`, when compiling to JS.
+Há uma inconsistência sutil com relação a `undefined` entre compilar para
+JS e [Wasm][]. Enquanto compilar para JS *trata* valores `undefined` como se fossem
+`null` Dart, ele não *altera* o valor em si. Se um membro interop
+retorna `undefined` e você passa esse valor de volta para JS, JS verá
+`undefined`, *não* `null`, ao compilar para JS.
 
-However, when compiling to Wasm, this is not the case,
-and the value will be `null` in JS. This is because
-the compiler implicitly *converts* the value to Dart `null` when compiling to
-Wasm, thereby losing information on whether the original value was JS `null` or
-`undefined`. Avoid writing code where this distinction matters by explicitly
-passing Dart `null` instead to an interop member.
+No entanto, ao compilar para Wasm, este não é o caso,
+e o valor será `null` em JS. Isso ocorre porque
+o compilador implicitamente *converte* o valor para `null` Dart ao compilar para
+Wasm, perdendo assim informação sobre se o valor original era `null` ou
+`undefined` JS. Evite escrever código onde essa distinção importa passando explicitamente
+`null` Dart em vez disso para um membro interop.
 
-Currently, there's no platform-consistent way to provide `undefined`
-to interop members or distinguish between JS `null` and `undefined` values,
-but this will likely change in the future. See [#54025] for more details.
+Atualmente, não há uma maneira consistente entre plataformas para fornecer `undefined`
+para membros interop ou distinguir entre valores `null` e `undefined` JS,
+mas isso provavelmente mudará no futuro. Veja [#54025] para mais detalhes.
 :::
 
 ## `JSBoxedDartObject` vs `ExternalDartReference`
 
-From Dart 3.4 onwards, both [`JSBoxedDartObject`] and [`ExternalDartReference`]
-can be used to pass opaque references to Dart `Object`s through JavaScript.
-However, `JSBoxedDartObject` wraps the opaque reference in a JavaScript object,
-while `ExternalDartReference` is the reference itself and therefore is not a JS
-type.
+A partir do Dart 3.4, tanto [`JSBoxedDartObject`] quanto [`ExternalDartReference`]
+podem ser usados para passar referências opacas para `Object`s Dart através de JavaScript.
+No entanto, `JSBoxedDartObject` envolve a referência opaca em um objeto JavaScript,
+enquanto `ExternalDartReference` é a própria referência e, portanto, não é um tipo JS.
 
-Use `JSBoxedDartObject` if you need a JS type or if you need extra checks to
-make sure Dart values don't get passed to another Dart runtime. For example, if
-the Dart object needs to be placed in a `JSArray` or passed to an API that
-accepts a `JSAny`, use `JSBoxedDartObject`. Use `ExternalDartReference`
-otherwise as it will be faster.
+Use `JSBoxedDartObject` se você precisar de um tipo JS ou se precisar de verificações extras para
+garantir que valores Dart não sejam passados para outro runtime Dart. Por exemplo, se
+o objeto Dart precisa ser colocado em um `JSArray` ou passado para uma API que
+aceita um `JSAny`, use `JSBoxedDartObject`. Use `ExternalDartReference`
+caso contrário, pois será mais rápido.
 
-See [`toExternalReference`] and [`toDartObject`] to convert to and from an
+Veja [`toExternalReference`] e [`toDartObject`] para converter de e para um
 `ExternalDartReference`.
 
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
