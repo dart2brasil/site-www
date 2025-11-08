@@ -1,10 +1,11 @@
 ---
 title: literal_only_boolean_expressions
 description: >-
-  Details about the literal_only_boolean_expressions
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico literal_only_boolean_expressions
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -18,19 +19,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The Boolean expression has a constant value._
+_A expressão booleana tem um valor constante._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value of the condition in
-an `if` or loop statement is known to be either always `true` or always
-`false`. An exception is made for a `while` loop whose condition is the
-Boolean literal `true`.
+O analisador produz este diagnóstico quando o valor da condição em
+uma instrução `if` ou loop é conhecido por ser sempre `true` ou sempre
+`false`. Uma exceção é feita para um loop `while` cuja condição é o
+literal booleano `true`.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the condition will
-always evaluate to `true`:
+O código a seguir produz este diagnóstico porque a condição sempre
+será avaliada como `true`:
 
 ```dart
 void f() {
@@ -40,9 +41,9 @@ void f() {
 }
 ```
 
-The lint will evaluate a subset of expressions that are composed of
-constants, so the following code will also produce this diagnostic because
-the condition will always evaluate to `false`:
+O lint avaliará um subconjunto de expressões que são compostas de
+constantes, então o código a seguir também produzirá este diagnóstico porque
+a condição sempre será avaliada como `false`:
 
 ```dart
 void g(int i) {
@@ -52,10 +53,10 @@ void g(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the condition is wrong, then correct the condition so that it's value
-can't be known at compile time:
+Se a condição está errada, então corrija a condição para que seu valor
+não possa ser conhecido em tempo de compilação:
 
 ```dart
 void g(int i) {
@@ -65,8 +66,8 @@ void g(int i) {
 }
 ```
 
-If the condition is correct, then simplify the code to not evaluate the
-condition:
+Se a condição está correta, então simplifique o código para não avaliar a
+condição:
 
 ```dart
 void f() {

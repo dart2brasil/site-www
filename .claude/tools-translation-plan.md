@@ -375,12 +375,17 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 15 (New Plan):** Diagnostic Errors - late/library/list/literal (8/8 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+All sections 1-20 pending (old plan)
+
+### Note:
+A new 20-section plan has been created in `.claude/20-section-prompts.md` with revised groupings.
+Section 15 from the new plan (late/library/list/literal diagnostics) is now complete.
 
 ---
 

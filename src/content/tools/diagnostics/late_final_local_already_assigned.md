@@ -1,27 +1,28 @@
 ---
 title: late_final_local_already_assigned
 description: >-
-  Details about the late_final_local_already_assigned
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico late_final_local_already_assigned
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
-_The late final local variable is already assigned._
+_A variável local late final já foi atribuída._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the analyzer can prove that a
-local variable marked as both `late` and `final` was already assigned a
-value at the point where another assignment occurs.
+O analisador produz este diagnóstico quando o analisador pode provar que uma
+variável local marcada como `late` e `final` já foi atribuída com um
+valor no ponto onde outra atribuição ocorre.
 
-Because `final` variables can only be assigned once, subsequent assignments
-are guaranteed to fail, so they're flagged.
+Como variáveis `final` só podem ser atribuídas uma vez, atribuições subsequentes
+têm garantia de falhar, então elas são sinalizadas.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `final` variable
-`v` is assigned a value in two places:
+O código a seguir produz este diagnóstico porque a variável `final`
+`v` é atribuída com um valor em dois lugares:
 
 ```dart
 int f() {
@@ -32,10 +33,9 @@ int f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If you need to be able to reassign the variable, then remove the `final`
-keyword:
+Se você precisa ser capaz de reatribuir a variável, então remova a palavra-chave `final`:
 
 ```dart
 int f() {
@@ -46,8 +46,8 @@ int f() {
 }
 ```
 
-If you don't need to reassign the variable, then remove all except the
-first of the assignments:
+Se você não precisa reatribuir a variável, então remova todas as atribuições exceto a
+primeira:
 
 ```dart
 int f() {
