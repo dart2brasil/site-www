@@ -44,7 +44,7 @@ A flag `-t` permite que você especifique qual tipo de projeto Dart
 deseja criar. Se você não especificar um template, `dart create`
 usa o template `console` por padrão.
 
-## Templates disponíveis
+## Templates disponíveis {:#available-templates}
 
 A tabela a seguir mostra os templates que você pode usar com a
 flag `-t`:

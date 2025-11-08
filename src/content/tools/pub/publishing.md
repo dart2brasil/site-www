@@ -140,7 +140,7 @@ editor quando você não estiver disponível.
 Use o comando [`dart pub publish`][] para publicar seu pacote
 pela primeira vez ou para atualizá-lo para uma nova versão.
 
-### Quais arquivos são publicados?
+### Quais arquivos são publicados? {:#what-files-are-published}
 
 O pacote publicado inclui **todos os arquivos** no diretório raiz do pacote,
 com as seguintes exceções:
@@ -207,7 +207,7 @@ Publishing transmogrify 1.0.0
 Package has 0 warnings.
 ```
 
-### Publicar no pub.dev
+### Publicar no pub.dev {:#publish-to-pub-dev}
 
 Para publicar seu pacote quando estiver pronto, remova o argumento `--dry-run`:
 
@@ -441,7 +441,7 @@ Para depender de uma versão específica que já foi retraída,
 o pacote dependente deve fixar a versão na
 seção `dependency_overrides` do arquivo `pubspec.yaml`.
 
-#### Como migrar de uma versão de pacote retraída
+#### Como migrar de uma versão de pacote retraída {:#how-to-migrate-away-from-a-retracted-package-version}
 
 Quando um pacote depende de uma versão de pacote retraída,
 você tem opções sobre como migrar dessa versão dependendo
