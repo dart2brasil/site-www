@@ -20,19 +20,19 @@ jobs:
     name: Wait for required checks
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for build to succeed
+      - name: Wait for build workflow to succeed
         uses: lewagon/wait-on-check-action@v1.3.3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          check-name: 'build'
+          running-workflow-name: 'build'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
-      - name: Wait for tests to succeed
+      - name: Wait for test workflow to succeed
         uses: lewagon/wait-on-check-action@v1.3.3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          check-name: 'test'
+          running-workflow-name: 'test'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
