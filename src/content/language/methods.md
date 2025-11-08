@@ -14,7 +14,7 @@ nextpage:
 
 Métodos são funções que fornecem comportamento para um objeto.
 
-## Métodos de instância
+## Métodos de instância {:#instance-methods}
 
 Métodos de instância em objetos podem acessar variáveis de instância e `this`.
 O método `distanceTo()` no exemplo a seguir é um exemplo de um
