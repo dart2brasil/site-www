@@ -8,7 +8,7 @@ showToc: false
 Este guia descreve como usar o comando `dart create` para
 criar um projeto Dart.
 
-## Visão geral
+## Visão geral {:#overview}
 
 O comando `dart create` cria um projeto Dart,
 usando um dos vários templates suportados.
@@ -20,7 +20,7 @@ Quando você executa `dart create`, ele primeiro cria um diretório com os
 arquivos do projeto. Depois, ele obtém as dependências do pacote
 (a menos que você especifique a flag `--no-pub`).
 
-## Criar um projeto Dart básico
+## Criar um projeto Dart básico {:#creating-a-simple-project}
 
 Para criar um projeto Dart básico, siga o comando `dart create`
 com o nome do seu projeto. No exemplo a seguir,
@@ -31,7 +31,7 @@ aplicativo de console simples (o template padrão) é criado:
 $ dart create my_cli
 ```
 
-## Especificar um template
+## Especificar um template {:#specifying-a-template}
 
 Para usar um template diferente, use a flag `-t` (ou `--template`)
 seguida do nome do template:
@@ -64,12 +64,12 @@ flag `-t`:
 Estes templates resultam em uma estrutura de arquivos que segue
 as [convenções de layout de pacotes](/tools/pub/package-layout).
 
-## Opções adicionais
+## Opções adicionais {:#additional-options}
 
 Além disso, você pode realizar as seguintes ações com
 o comando `dart create`.
 
-### Forçar criação de projeto
+### Forçar criação de projeto {:#forcing-project-creation}
 
 Se o diretório especificado já existir, `dart create` falha.
 Você pode forçar a geração do projeto com a flag `--force`:
@@ -78,7 +78,7 @@ Você pode forçar a geração do projeto com a flag `--force`:
 $ dart create --force <DIRECTORY>
 ```
 
-### Obter ajuda
+### Obter ajuda {:#getting-help}
 
 Para mais informações sobre opções de linha de comando, use a flag `--help`:
 

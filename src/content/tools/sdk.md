@@ -27,7 +27,7 @@ a versão `{{site.sdkVersion}}` do **Dart SDK**.
   More info: https://github.com/dart-lang/site-www/wiki/Updating-to-new-SDK-releases
 {% endcomment %}
 
-## O que está no Dart SDK
+## O que está no Dart SDK {:#whats-in-the-sdk}
 
 O Dart SDK inclui dois diretórios:
 
@@ -71,7 +71,7 @@ TODO(parlough): Add a section discussing the breaking change policy
 and link out to the breaking change index.
 {% endcomment %}
 
-## Reportando bugs e solicitações de recursos
+## Reportando bugs e solicitações de recursos {:#filing-bugs-and-feature-requests}
 
 Para ver problemas existentes ou criar um novo,
 acesse [o rastreador de problemas do SDK][sdk-issues].
