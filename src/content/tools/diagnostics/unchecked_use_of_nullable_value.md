@@ -1,38 +1,39 @@
 ---
+ia-translate: true
 title: unchecked_use_of_nullable_value
 description: >-
-  Details about the unchecked_use_of_nullable_value
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico unchecked_use_of_nullable_value
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A nullable expression can't be used as a condition._
+_Uma expressão nullable não pode ser usada como condição._
 
-_A nullable expression can't be used as an iterator in a for-in loop._
+_Uma expressão nullable não pode ser usada como iterador em um loop for-in._
 
-_A nullable expression can't be used in a spread._
+_Uma expressão nullable não pode ser usada em um spread._
 
-_A nullable expression can't be used in a yield-each statement._
+_Uma expressão nullable não pode ser usada em uma declaração yield-each._
 
-_The function can't be unconditionally invoked because it can be 'null'._
+_A função não pode ser invocada incondicionalmente porque pode ser 'null'._
 
-_The method '{0}' can't be unconditionally invoked because the receiver can be 'null'._
+_O método '{0}' não pode ser invocado incondicionalmente porque o receptor pode ser 'null'._
 
-_The operator '{0}' can't be unconditionally invoked because the receiver can be 'null'._
+_O operador '{0}' não pode ser invocado incondicionalmente porque o receptor pode ser 'null'._
 
-_The property '{0}' can't be unconditionally accessed because the receiver can be 'null'._
+_A propriedade '{0}' não pode ser acessada incondicionalmente porque o receptor pode ser 'null'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an expression whose type is
-[potentially non-nullable][] is dereferenced without first verifying that
-the value isn't `null`.
+O analisador produz este diagnóstico quando uma expressão cujo tipo é
+[potentially non-nullable][] é desreferenciada sem primeiro verificar que
+o valor não é `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `s` can be `null` at
-the point where it's referenced:
+O código a seguir produz este diagnóstico porque `s` pode ser `null` no
+ponto onde é referenciado:
 
 ```dart
 void f(String? s) {
@@ -42,10 +43,10 @@ void f(String? s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the value really can be `null`, then add a test to ensure that members
-are only accessed when the value isn't `null`:
+Se o valor realmente pode ser `null`, então adicione um teste para garantir que membros
+sejam acessados apenas quando o valor não for `null`:
 
 ```dart
 void f(String? s) {
@@ -55,8 +56,8 @@ void f(String? s) {
 }
 ```
 
-If the expression is a variable and the value should never be `null`, then
-change the type of the variable to be non-nullable:
+Se a expressão for uma variável e o valor nunca deve ser `null`, então
+altere o tipo da variável para ser não-nullable:
 
 ```dart
 void f(String s) {
@@ -66,10 +67,10 @@ void f(String s) {
 }
 ```
 
-If you believe that the value of the expression should never be `null`, but
-you can't change the type of the variable, and you're willing to risk
-having an exception thrown at runtime if you're wrong, then you can assert
-that the value isn't null:
+Se você acredita que o valor da expressão nunca deve ser `null`, mas
+não pode alterar o tipo da variável, e está disposto a arriscar
+ter uma exceção lançada em tempo de execução se estiver errado, então você pode afirmar
+que o valor não é null:
 
 ```dart
 void f(String? s) {

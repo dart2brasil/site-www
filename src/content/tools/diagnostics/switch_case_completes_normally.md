@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: switch_case_completes_normally
 description: >-
-  Details about the switch_case_completes_normally
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico switch_case_completes_normally
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The 'case' shouldn't complete normally._
+_O 'case' não deve completar normalmente._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the statements following a
-`case` label in a `switch` statement could fall through to the next `case`
-or `default` label.
+O analisador produz este diagnóstico quando as declarações após um
+label `case` em uma instrução `switch` podem cair no próximo `case`
+ou label `default`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `case` label with
- a value of zero (`0`) falls through to the `default` statements:
+O código a seguir produz este diagnóstico porque o label `case` com
+um valor de zero (`0`) cai nas declarações `default`:
 
 ```dart
 void f(int a) {
@@ -31,13 +32,13 @@ void f(int a) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Change the flow of control so that the `case` won't fall through. There
-are several ways that this can be done, including adding one of the
-following at the end of the current list of statements:
-- a `return` statement,
-- a `throw` expression,
-- a `break` statement,
-- a `continue`, or
-- an invocation of a function or method whose return type is `Never`.
+Altere o fluxo de controle para que o `case` não caia. Existem
+várias maneiras de fazer isso, incluindo adicionar um dos
+seguintes no final da lista atual de declarações:
+- uma declaração `return`,
+- uma expressão `throw`,
+- uma declaração `break`,
+- um `continue`, ou
+- uma invocação de uma função ou método cujo tipo de retorno é `Never`.

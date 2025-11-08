@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: use_colored_box
 description: >-
-  Details about the use_colored_box
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico use_colored_box
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a 'ColoredBox' rather than a 'Container' with only a 'Color'._
+_Use um 'ColoredBox' em vez de um 'Container' com apenas uma 'Color'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `Container` is created that
-only sets the color.
+O analisador produz este diagnóstico quando um `Container` é criado que
+apenas define a cor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the only attribute of
-the container that is set is the `color`:
+O código a seguir produz este diagnóstico porque o único atributo do
+container que é definido é a `color`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -41,9 +42,9 @@ Widget build() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Replace the `Container` with a `ColoredBox`:
+Substitua o `Container` por um `ColoredBox`:
 
 ```dart
 import 'package:flutter/material.dart';

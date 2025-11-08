@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: undefined_enum_constant
 description: >-
-  Details about the undefined_enum_constant
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico undefined_enum_constant
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_There's no constant named '{0}' in '{1}'._
+_Não há constante chamada '{0}' em '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when it encounters an identifier
-that appears to be the name of an enum value, and the name either isn't
-defined or isn't visible in the scope in which it's being referenced.
+O analisador produz este diagnóstico quando encontra um identificador
+que parece ser o nome de um valor enum, e o nome não está
+definido ou não está visível no escopo em que está sendo referenciado.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `E` doesn't define a
-constant named `c`:
+O código a seguir produz este diagnóstico porque `E` não define uma
+constante chamada `c`:
 
 ```dart
 enum E {a, b}
@@ -26,9 +27,9 @@ enum E {a, b}
 var e = E.[!c!];
 ```
 
-## Common fixes
+## Correções comuns
 
-If the constant should be defined, then add it to the declaration of the
+Se a constante deve ser definida, então adicione-a à declaração do
 enum:
 
 ```dart
@@ -37,8 +38,8 @@ enum E {a, b, c}
 var e = E.c;
 ```
 
-If the constant shouldn't be defined, then change the name to the name of
-an existing constant:
+Se a constante não deve ser definida, então altere o nome para o nome de
+uma constante existente:
 
 ```dart
 enum E {a, b}

@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: use_function_type_syntax_for_parameters
 description: >-
-  Details about the use_function_type_syntax_for_parameters
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico use_function_type_syntax_for_parameters
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,25 +19,25 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use the generic function type syntax to declare the parameter '{0}'._
+_Use a sintaxe de tipo de função genérica para declarar o parâmetro '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the older style function-valued
-parameter syntax is used.
+O analisador produz este diagnóstico quando a sintaxe de parâmetro com valor de função
+no estilo antigo é usada.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function-valued
-parameter `f` is declared using an older style syntax:
+O código a seguir produz este diagnóstico porque o parâmetro com valor de função
+`f` é declarado usando uma sintaxe no estilo antigo:
 
 ```dart
 void g([!bool f(String s)!]) {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Use the generic function type syntax to declare the parameter:
+Use a sintaxe de tipo de função genérica para declarar o parâmetro:
 
 ```dart
 void g(bool Function(String) f) {}

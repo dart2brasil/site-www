@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: type_init_formals
 description: >-
-  Details about the type_init_formals
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico type_init_formals
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,24 +19,24 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Don't needlessly type annotate initializing formals._
+_Não anote desnecessariamente os tipos de parâmetros formais de inicialização._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an initializing formal
-parameter (`this.x`) or a super parameter (`super.x`) has an explicit type
-annotation that is the same as the field or overridden parameter.
+O analisador produz este diagnóstico quando um parâmetro formal
+de inicialização (`this.x`) ou um parâmetro super (`super.x`) possui uma anotação de tipo
+explícita que é a mesma do campo ou parâmetro sobrescrito.
 
-If a constructor parameter is using `this.x` to initialize a field, then
-the type of the parameter is implicitly the same type as the field. If a
-constructor parameter is using `super.x` to forward to a super
-constructor, then the type of the parameter is implicitly the same as the
-super constructor parameter.
+Se um parâmetro de construtor está usando `this.x` para inicializar um campo, então
+o tipo do parâmetro é implicitamente o mesmo tipo do campo. Se um
+parâmetro de construtor está usando `super.x` para encaminhar para um construtor
+super, então o tipo do parâmetro é implicitamente o mesmo do
+parâmetro do construtor super.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameter `this.c`
-has an explicit type that is the same as the field `c`:
+O código a seguir produz este diagnóstico porque o parâmetro `this.c`
+possui um tipo explícito que é o mesmo do campo `c`:
 
 ```dart
 class C {
@@ -45,9 +46,9 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the parameter
-`super.a` has an explicit type that is the same as the parameter `a` from
-the superclass:
+O código a seguir produz este diagnóstico porque o parâmetro
+`super.a` possui um tipo explícito que é o mesmo do parâmetro `a` da
+superclasse:
 
 ```dart
 class A {
@@ -59,9 +60,9 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the type annotation from the parameter:
+Remova a anotação de tipo do parâmetro:
 
 ```dart
 class C {

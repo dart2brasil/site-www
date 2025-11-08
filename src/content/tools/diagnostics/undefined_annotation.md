@@ -1,33 +1,34 @@
 ---
+ia-translate: true
 title: undefined_annotation
 description: >-
-  Details about the undefined_annotation
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico undefined_annotation
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Undefined name '{0}' used as an annotation._
+_Nome indefinido '{0}' usado como anotação._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a name that isn't defined is
-used as an annotation.
+O analisador produz este diagnóstico quando um nome que não está definido é
+usado como anotação.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name `undefined`
-isn't defined:
+O código a seguir produz este diagnóstico porque o nome `undefined`
+não está definido:
 
 ```dart
 [!@undefined!]
 void f() {}
 ```
 
-## Common fixes
+## Correções comuns
 
-If the name is correct, but it isn't declared yet, then declare the name as
-a constant value:
+Se o nome está correto, mas ainda não foi declarado, então declare o nome como
+um valor constante:
 
 ```dart
 const undefined = 'undefined';
@@ -36,11 +37,11 @@ const undefined = 'undefined';
 void f() {}
 ```
 
-If the name is wrong, replace the name with the name of a valid constant:
+Se o nome está errado, substitua o nome pelo nome de uma constante válida:
 
 ```dart
 @deprecated
 void f() {}
 ```
 
-Otherwise, remove the annotation.
+Caso contrário, remova a anotação.
