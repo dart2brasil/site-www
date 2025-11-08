@@ -1,6 +1,7 @@
 ---
-title: Collections
-description: Summary of the different types of collections in Dart.
+ia-translate: true
+title: Coleções
+description: Resumo dos diferentes tipos de coleções em Dart.
 prevpage:
   url: /language/records
   title: Records
@@ -9,22 +10,22 @@ nextpage:
   title: Generics
 ---
 
-Dart has built-in support for list, set, and map [collections][].
-To learn more about configuring the types collections contain,
-check out [Generics][].
+O Dart tem suporte integrado para [coleções][collections] de list, set e map.
+Para saber mais sobre como configurar os tipos que as coleções contêm,
+confira [Generics][generics].
 
 [generics]: /language/generics
 [collections]: /libraries/dart-core#collections
 
 ## Lists
 
-Perhaps the most common collection in nearly every programming language
-is the *array*, or ordered group of objects. In Dart, arrays are
-[`List`][] objects, so most people just call them *lists*.
+Talvez a coleção mais comum em quase todas as linguagens de programação
+seja o *array*, ou grupo ordenado de objetos. No Dart, arrays são
+objetos [`List`][], então a maioria das pessoas os chama apenas de *lists*.
 
-Dart list literals are denoted by a comma-separated list of
-elements enclosed in square brackets (`[]`). Each element
-is usually an expression. Here's a simple Dart list:
+Literais de list em Dart são denotados por uma lista separada por vírgulas de
+elementos entre colchetes (`[]`). Cada elemento
+geralmente é uma expressão. Aqui está uma list simples em Dart:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
 ```dart
@@ -32,25 +33,25 @@ var list = [1, 2, 3];
 ```
 
 :::note
-Dart infers that `list` has type `List<int>`. If you try to add non-integer
-objects to this list, the analyzer or runtime raises an error. For more
-information, read about [type inference][].
+O Dart infere que `list` tem o tipo `List<int>`. Se você tentar adicionar objetos não inteiros
+a esta list, o analisador ou runtime gera um erro. Para mais
+informações, leia sobre [inferência de tipos][type inference].
 :::
 
 <a id="trailing-comma"></a>
-You can add a comma after the last item in a Dart collection literal.
-This _trailing comma_ doesn't affect the collection,
-but it can help prevent copy-paste errors.
+Você pode adicionar uma vírgula após o último item em um literal de coleção Dart.
+Esta _vírgula final_ não afeta a coleção,
+mas pode ajudar a prevenir erros de copiar-colar.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
 ```dart
 var list = ['Car', 'Boat', 'Plane'];
 ```
 
-Lists use zero-based indexing, where 0 is the index of the first element
-and `list.length - 1` is the index of the last element.
-You can get a list's length using the `.length` property
-and access a list's elements using the subscript operator (`[]`):
+Lists usam indexação baseada em zero, onde 0 é o índice do primeiro elemento
+e `list.length - 1` é o índice do último elemento.
+Você pode obter o comprimento de uma list usando a propriedade `.length`
+e acessar os elementos de uma list usando o operador de subscrito (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
 ```dart
@@ -62,8 +63,8 @@ list[1] = 1;
 assert(list[1] == 1);
 ```
 
-To create a list that's a compile-time constant,
-add `const` before the list literal:
+Para criar uma list que seja uma constante de tempo de compilação,
+adicione `const` antes do literal de list:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-list)"?>
 ```dart
@@ -71,19 +72,19 @@ var constantList = const [1, 2, 3];
 // constantList[1] = 1; // This line will cause an error.
 ```
 
-For more information about lists, refer to the Lists section of the
-[`dart:core` documentation](/libraries/dart-core#lists).
+Para mais informações sobre lists, consulte a seção Lists da
+[documentação do `dart:core`](/libraries/dart-core#lists).
 
 [`List`]: {{site.dart-api}}/dart-core/List-class.html
 [type inference]: /language/type-system#type-inference
 
 ## Sets
 
-A set in Dart is an unordered collection of unique elements.
-Dart support for sets is provided by set literals and the
-[`Set`][] type.
+Um set em Dart é uma coleção não ordenada de elementos únicos.
+O suporte do Dart para sets é fornecido por literais de set e o
+tipo [`Set`][].
 
-Here is a simple Dart set, created using a set literal:
+Aqui está um set simples em Dart, criado usando um literal de set:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-literal)"?>
 ```dart
@@ -91,14 +92,14 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 ```
 
 :::note
-Dart infers that `halogens` has the type `Set<String>`. If you try to add the
-wrong type of element to the set, the analyzer or runtime raises an error. For
-more information, read about
-[type inference.](/language/type-system#type-inference)
+O Dart infere que `halogens` tem o tipo `Set<String>`. Se você tentar adicionar o
+tipo errado de elemento ao set, o analisador ou runtime gera um erro. Para
+mais informações, leia sobre
+[inferência de tipos.](/language/type-system#type-inference)
 :::
 
-To create an empty set, use `{}` preceded by a type argument,
-or assign `{}` to a variable of type `Set`:
+Para criar um set vazio, use `{}` precedido por um argumento de tipo,
+ou atribua `{}` a uma variável do tipo `Set`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
 ```dart
@@ -107,14 +108,14 @@ var names = <String>{};
 // var names = {}; // Creates a map, not a set.
 ```
 
-:::note Set or map?
-The syntax for map literals is similar to that for set
-literals. Because map literals came first, `{}` defaults to the `Map` type. If
-you forget the type annotation on `{}` or the variable it's assigned to, then
-Dart creates an object of type `Map<dynamic, dynamic>`.
+:::note Set ou map?
+A sintaxe para literais de map é semelhante à de literais de
+set. Como os literais de map vieram primeiro, `{}` é padrão para o tipo `Map`. Se
+você esquecer a anotação de tipo em `{}` ou a variável à qual ele é atribuído, então
+o Dart cria um objeto do tipo `Map<dynamic, dynamic>`.
 :::
 
-Add items to an existing set using the `add()` or `addAll()` methods:
+Adicione itens a um set existente usando os métodos `add()` ou `addAll()`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-add-items)"?>
 ```dart
@@ -123,7 +124,7 @@ elements.add('fluorine');
 elements.addAll(halogens);
 ```
 
-Use `.length` to get the number of items in the set:
+Use `.length` para obter o número de itens no set:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (set-length)"?>
 ```dart
@@ -133,8 +134,8 @@ elements.addAll(halogens);
 assert(elements.length == 5);
 ```
 
-To create a set that's a compile-time constant,
-add `const` before the set literal:
+Para criar um set que seja uma constante de tempo de compilação,
+adicione `const` antes do literal de set:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-set)"?>
 ```dart
@@ -148,21 +149,21 @@ final constantSet = const {
 // constantSet.add('helium'); // This line will cause an error.
 ```
 
-For more information about sets, refer to the Sets section of the
-[`dart:core` documentation](/libraries/dart-core#sets).
+Para mais informações sobre sets, consulte a seção Sets da
+[documentação do `dart:core`](/libraries/dart-core#sets).
 
 [`Set`]: {{site.dart-api}}/dart-core/Set-class.html
 
 ## Maps
 
-In a map, each element is a key-value pair. Each key within
-a pair is associated with a value, and both keys and values
-can be any type of object. Each key can occur only once,
-although the same value can be associated with multiple
-different keys. Dart support for maps is provided by
-map literals and the [`Map`][] type.
+Em um map, cada elemento é um par chave-valor. Cada chave dentro
+de um par está associada a um valor, e tanto as chaves quanto os valores
+podem ser qualquer tipo de objeto. Cada chave pode ocorrer apenas uma vez,
+embora o mesmo valor possa ser associado a múltiplas
+chaves diferentes. O suporte do Dart para maps é fornecido por
+literais de map e o tipo [`Map`][].
 
-Here are a couple of simple Dart maps, created using map literals:
+Aqui estão alguns maps simples em Dart, criados usando literais de map:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-literal)"?>
 ```dart
@@ -177,13 +178,13 @@ var nobleGases = {2: 'helium', 10: 'neon', 18: 'argon'};
 ```
 
 :::note
-Dart infers that `gifts` has the type `Map<String, String>` and `nobleGases`
-has the type `Map<int, String>`. If you try to add the wrong type of value to
-either map, the analyzer or runtime raises an error. For more information,
-read about [type inference][].
+O Dart infere que `gifts` tem o tipo `Map<String, String>` e `nobleGases`
+tem o tipo `Map<int, String>`. Se você tentar adicionar o tipo errado de valor a
+qualquer um dos maps, o analisador ou runtime gera um erro. Para mais informações,
+leia sobre [inferência de tipos][type inference].
 :::
 
-You can create the same objects using a Map constructor:
+Você pode criar os mesmos objetos usando um construtor Map:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-constructor)"?>
 ```dart
@@ -199,13 +200,13 @@ nobleGases[18] = 'argon';
 ```
 
 :::note
-If you come from a language like C# or Java, you might expect to see `new Map()` 
-instead of just `Map()`. In Dart, the `new` keyword is optional.
-For details, see [Using constructors][].
+Se você vem de uma linguagem como C# ou Java, você pode esperar ver `new Map()`
+em vez de apenas `Map()`. Em Dart, a palavra-chave `new` é opcional.
+Para detalhes, veja [Usando construtores][Using constructors].
 :::
 
-Add a new key-value pair to an existing map
-using the subscript assignment operator (`[]=`):
+Adicione um novo par chave-valor a um map existente
+usando o operador de atribuição de subscrito (`[]=`):
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-add-item)"?>
 ```dart
@@ -213,7 +214,7 @@ var gifts = {'first': 'partridge'};
 gifts['fourth'] = 'calling birds'; // Add a key-value pair
 ```
 
-Retrieve a value from a map using the subscript operator (`[]`):
+Recupere um valor de um map usando o operador de subscrito (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-retrieve-item)"?>
 ```dart
@@ -221,7 +222,7 @@ var gifts = {'first': 'partridge'};
 assert(gifts['first'] == 'partridge');
 ```
 
-If you look for a key that isn't in a map, you get `null` in return:
+Se você procurar uma chave que não está em um map, você recebe `null` de volta:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-missing-key)"?>
 ```dart
@@ -229,7 +230,7 @@ var gifts = {'first': 'partridge'};
 assert(gifts['fifth'] == null);
 ```
 
-Use `.length` to get the number of key-value pairs in the map:
+Use `.length` para obter o número de pares chave-valor no map:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-length)"?>
 ```dart
@@ -238,8 +239,8 @@ gifts['fourth'] = 'calling birds';
 assert(gifts.length == 2);
 ```
 
-To create a map that's a compile-time constant,
-add `const` before the map literal:
+Para criar um map que seja uma constante de tempo de compilação,
+adicione `const` antes do literal de map:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-map)"?>
 ```dart
@@ -248,110 +249,110 @@ final constantMap = const {2: 'helium', 10: 'neon', 18: 'argon'};
 // constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
-For more information about maps, refer to the Maps section of the
-[`dart:core` documentation](/libraries/dart-core#maps).
+Para mais informações sobre maps, consulte a seção Maps da
+[documentação do `dart:core`](/libraries/dart-core#maps).
 
 [Using constructors]: /language/classes#using-constructors
 [`Map`]: {{site.dart-api}}/dart-core/Map-class.html
 [type inference]: /language/type-system#type-inference
 
-## Collection elements {: #collection-elements }
+## Elementos de coleção {: #collection-elements }
 
-A collection literal contains a series of elements. During
-runtime, each element is evaluated, producing zero or more
-values that are then inserted into the resulting collection.
-These elements fall into two main categories: leaf elements
-and control flow elements.
+Um literal de coleção contém uma série de elementos. Durante
+o runtime, cada elemento é avaliado, produzindo zero ou mais
+valores que são então inseridos na coleção resultante.
+Esses elementos se dividem em duas categorias principais: elementos folha
+e elementos de fluxo de controle.
 
-*   Leaf element: Inserts an individual item into a
-    collection literal.
-    
-    *   Expression element: Evaluates a single
-        expression and inserts the resulting value
-        into the collection.
+*   Elemento folha: Insere um item individual em um
+    literal de coleção.
 
-    *   Map entry element: Evaluates a pair of key and value
-        expressions and inserts the resulting entry into the
-        collection. 
+    *   Elemento de expressão: Avalia uma única
+        expressão e insere o valor resultante
+        na coleção.
 
-*   Control flow element: Conditionally or iteratively adds
-    zero or more values to the surrounding collection.
+    *   Elemento de entrada de map: Avalia um par de expressões de chave e valor
+        e insere a entrada resultante na
+        coleção.
 
-    *   Null-aware element: Evaluates an expression and if
-        the result is not `null`, inserts the value into the
-        surrounding collection.
+*   Elemento de fluxo de controle: Adiciona condicionalmente ou iterativamente
+    zero ou mais valores à coleção circundante.
 
-    *   Spread element: Iterates over a given sequence
-        (collection expression) and inserts all of the
-        resulting values into the surrounding collection.
-    
-    *   Null-aware spread element: Similar to the
-        spread element, but allows the collection to be
-        `null` and inserts nothing if it is.
+    *   Elemento null-aware: Avalia uma expressão e se
+        o resultado não for `null`, insere o valor na
+        coleção circundante.
 
-    *   If element: Conditionally evaluates an inner element
-        based on given a condition expression, and
-        optionally evaluates another `else` element if the
-        condition is false.
+    *   Elemento spread: Itera sobre uma sequência dada
+        (expressão de coleção) e insere todos os
+        valores resultantes na coleção circundante.
 
-    *   For element: Iterates and repeatedly evaluates a
-        given inner element, inserting zero or more
-        resulting values.
+    *   Elemento spread null-aware: Semelhante ao
+        elemento spread, mas permite que a coleção seja
+        `null` e não insere nada se ela for.
 
-To learn more about collection elements, see the following
-sections.
+    *   Elemento if: Avalia condicionalmente um elemento interno
+        com base em uma expressão de condição dada, e
+        opcionalmente avalia outro elemento `else` se a
+        condição for false.
+
+    *   Elemento for: Itera e avalia repetidamente um
+        elemento interno dado, inserindo zero ou mais
+        valores resultantes.
+
+Para saber mais sobre elementos de coleção, consulte as seguintes
+seções.
 
 <a id="control-flow-operators" aria-hidden="true"></a>
 <a id="spread-operators" aria-hidden="true"></a>
 <a id="collection-operators" aria-hidden="true"></a>
 
-### Expression elements {: #expression-element }
+### Elementos de expressão {: #expression-element }
 
-An expression element evaluates a single expression
-and inserts the resulting value into a collection. This
-expression can encompass various constructs like
-literals, variables, operators, function calls, and
-constructor calls.
+Um elemento de expressão avalia uma única expressão
+e insere o valor resultante em uma coleção. Esta
+expressão pode abranger várias construções como
+literais, variáveis, operadores, chamadas de função e
+chamadas de construtor.
 
-An expression element has this syntax in a collection:
+Um elemento de expressão tem esta sintaxe em uma coleção:
 
 ```dart
 <expression>
 ```
 
-### Map entry elements {: #map-entry-element }
+### Elementos de entrada de map {: #map-entry-element }
 
-A map entry element evaluates a pair of key and value
-expressions and inserts the resulting entry into a
-collection. Both the key and the value within this pair can
-be expressions.
+Um elemento de entrada de map avalia um par de expressões de chave e valor
+e insere a entrada resultante em uma
+coleção. Tanto a chave quanto o valor dentro deste par podem
+ser expressões.
 
-A map entry element has this syntax in a collection:
+Um elemento de entrada de map tem esta sintaxe em uma coleção:
 
 ```dart
 <key_expression>: <value_expression>
 ```
 
-### Null-aware elements {: #null-aware-element }
+### Elementos null-aware {: #null-aware-element }
 
-A null-aware element evaluates an expression and if the
-result is not `null`, inserts the value into the surrounding
-collection.
+Um elemento null-aware avalia uma expressão e se o
+resultado não for `null`, insere o valor na coleção
+circundante.
 
 :::version-note
-Null-aware collection elements require
-a [language version][] of at least 3.8.
+Elementos de coleção null-aware requerem
+uma [versão da linguagem][language version] de pelo menos 3.8.
 :::
 
-A null-aware element has the following syntax in an
-expression element:
+Um elemento null-aware tem a seguinte sintaxe em um
+elemento de expressão:
 
 ```dart
 ?<expression>
 ```
 
-A null-aware element has the following syntax in a
-map entry element:
+Um elemento null-aware tem a seguinte sintaxe em um
+elemento de entrada de map:
 
 ```dart
 // key is a null-aware element
@@ -368,9 +369,9 @@ map entry element:
 ?<key_expression>: ?<value_expression>
 ```
 
-In the following example, the result for the
-null-aware element `?a` is not added to a list called
-`items` because `a` is `null`:
+No exemplo a seguir, o resultado para o
+elemento null-aware `?a` não é adicionado a uma list chamada
+`items` porque `a` é `null`:
 
 <?code-excerpt "misc/test/language_tour/collections/null_aware_element_a.dart (code-sample)"?>
 ```dart
@@ -385,9 +386,9 @@ var items = [
 ]; // [1, 3, null, 5]
 ```
 
-The following example illustrates various ways that
-you can use null-aware elements inside of
-map entry elements:
+O exemplo a seguir ilustra várias maneiras de
+usar elementos null-aware dentro de
+elementos de entrada de map:
 
 <?code-excerpt "misc/test/language_tour/collections/null_aware_element_b.dart (code-sample)"?>
 ```dart
@@ -409,22 +410,22 @@ var itemsF = {?absentKey: ?absentValue}; // {}
 
 [language version]: /resources/language/evolution#language-versioning
 
-### Spread elements {: #spread-element }
+### Elementos spread {: #spread-element }
 
-The spread element iterates over a given sequence and
-inserts all of the resulting values into the surrounding
-collection.
+O elemento spread itera sobre uma sequência dada e
+insere todos os valores resultantes na coleção
+circundante.
 
-A spread element has the following syntax in a collection.
-The sequence expression can represent any expression that
-evaluates to an object that implements `Iterable`:
+Um elemento spread tem a seguinte sintaxe em uma coleção.
+A expressão de sequência pode representar qualquer expressão que
+seja avaliada como um objeto que implementa `Iterable`:
 
 ```dart
 ...<sequence_expression>
 ```
 
-In the following example, the elements in a list called `a`
-are added to a list called `items`.
+No exemplo a seguir, os elementos em uma list chamada `a`
+são adicionados a uma list chamada `items`.
 
 <?code-excerpt "misc/test/language_tour/collections/spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
@@ -432,34 +433,34 @@ var a = [1, 2, null, 4];
 var items = [0, ...a, 5]; // [0, 1, 2, null, 4, 5]
 ```
 
-If you are spreading an expression that might evaluate to
-`null` and you want to ignore the `null` (and insert no
-elements), use a [null-aware spread element][].
+Se você estiver espalhando uma expressão que pode ser avaliada como
+`null` e quiser ignorar o `null` (e não inserir
+elementos), use um [elemento spread null-aware][null-aware spread element].
 
-To learn more about the spread operator, see
-[Spread operator][].
+Para saber mais sobre o operador spread, veja
+[Operador spread][Spread operator].
 
 [Spread operator]: /language/operators/#spread-operators
 [null-aware spread element]: #null-spread-element
 
-### Null-aware spread elements {: #null-spread-element }
+### Elementos spread null-aware {: #null-spread-element }
 
-The null-aware spread element is similar to the
-spread element, but allows the collection to be `null` and
-inserts nothing if it is.
+O elemento spread null-aware é semelhante ao
+elemento spread, mas permite que a coleção seja `null` e
+não insere nada se ela for.
 
-A null-aware spread element has this syntax in a
-collection:
+Um elemento spread null-aware tem esta sintaxe em uma
+coleção:
 
 ```dart
 ...?<sequence_expression>
 ```
 
-In the following example, a list called `a` is ignored
-because it's null, but the elements in a list called `b`
-are added to a list called `items`. Notice that if a
-collection itself is not `null`, but it contains elements that
-are, those `null` elements are still added to the result.
+No exemplo a seguir, uma list chamada `a` é ignorada
+porque é null, mas os elementos em uma list chamada `b`
+são adicionados a uma list chamada `items`. Observe que se uma
+coleção em si não for `null`, mas contiver elementos que
+são, esses elementos `null` ainda são adicionados ao resultado.
 
 ```dart
 List<int>? a = null;
@@ -467,11 +468,11 @@ var b = [1, null, 3];
 var items = [0, ...?a, ...?b, 4]; // [0, 1, null, 3, 4]
 ```
 
-Because of null safety, you can't perform a
-spread operation (`...`) on a value that might be null. The
-following example produces a compile-time error because the 
-`extraOptions` parameter is nullable and the
-spread operator used on `extraOptions` is not null-aware.
+Devido ao null safety, você não pode realizar uma
+operação spread (`...`) em um valor que possa ser null. O
+exemplo a seguir produz um erro de tempo de compilação porque o
+parâmetro `extraOptions` é nullable e o
+operador spread usado em `extraOptions` não é null-aware.
 
 <?code-excerpt "misc/test/language_tour/collections/null_spread_operator_in_collection_b.dart (code_sample)"?>
 ```dart tag=fails-sa
@@ -493,9 +494,9 @@ List<String> buildCommandLine(
 //   Compile-time error
 ```
 
-If you want to spread a nullable collection, use a
-null-aware spread element. The following example is valid
-because the null-aware spread operator is used on `extraOptions`.
+Se você quiser espalhar uma coleção nullable, use um
+elemento spread null-aware. O exemplo a seguir é válido
+porque o operador spread null-aware é usado em `extraOptions`.
 
 <?code-excerpt "misc/test/language_tour/collections/null_spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
@@ -517,18 +518,18 @@ List<String> buildCommandLine(
 //   [dart, run, my_script.dart]
 ```
 
-To learn more about the null-aware spread operator, see
-[Spread operator][].
+Para saber mais sobre o operador spread null-aware, veja
+[Operador spread][Spread operator].
 
 [Spread operator]: /language/operators/#spread-operators
 
-### If elements {: #if-element }
+### Elementos if {: #if-element }
 
-An `if` element conditionally evaluates an inner element
-based on given a condition expression, and optionally
-evaluates another `else` element if the condition is false.
+Um elemento `if` avalia condicionalmente um elemento interno
+com base em uma expressão de condição dada, e opcionalmente
+avalia outro elemento `else` se a condição for false.
 
-The `if` element has a few syntax variations:
+O elemento `if` tem algumas variações de sintaxe:
 
 ```dart
 // If the bool expression is true, include the result.
@@ -552,9 +553,9 @@ if (<bool_expression>) <result> else <result>
 if (<expression> case <pattern>) <result> else <result>
 ```
 
-The following examples illustrate various ways that
-you can use an `if` element inside of a collection with
-a boolean expression:
+Os exemplos a seguir ilustram várias maneiras de
+usar um elemento `if` dentro de uma coleção com
+uma expressão booleana:
 
 <?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_e.dart (code_sample)"?>
 ```dart
@@ -585,9 +586,9 @@ var items = [
 ]; // [0, 2, 3]
 ```
 
-The following examples illustrate various ways that
-you can use an `if` element with a `case` part inside of a
-collection:
+Os exemplos a seguir ilustram várias maneiras de
+usar um elemento `if` com uma parte `case` dentro de uma
+coleção:
 
 <?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_a.dart (code_sample)"?>
 ```dart
@@ -623,8 +624,8 @@ var summary = [
 ]; // [Product: Apples, Quantity: 12, Delivery: Not Started]
 ```
 
-You can mix different `if` operations with an `else if`
-part. For example:
+Você pode misturar diferentes operações `if` com uma parte `else if`.
+Por exemplo:
 
 <?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_c.dart (code_sample)"?>
 ```dart
@@ -640,19 +641,19 @@ var items = [
 ]; // [0, 1, 30, 4]
 ```
 
-To learn more about the `if` conditional, see
-[`if` statement][]. To learn more about the `if-case`
-conditional, see [`if-case` statement][].
+Para saber mais sobre o condicional `if`, veja
+[instrução `if`][`if` statement]. Para saber mais sobre o condicional `if-case`,
+veja [instrução `if-case`][`if-case` statement].
 
 [`if` statement]: /language/branches#if
 [`if-case` statement]: /language/branches#if-case
 
-### For elements {: #for-element }
+### Elementos for {: #for-element }
 
-A `for` element iterates and repeatedly evaluates a given
-inner element, inserting zero or more resulting values.
+Um elemento `for` itera e avalia repetidamente um
+elemento interno dado, inserindo zero ou mais valores resultantes.
 
-A `for` element has this syntax in a collection:
+Um elemento `for` tem esta sintaxe em uma coleção:
 
 ```dart
 for (<expression> in <collection>) <result>
@@ -662,8 +663,8 @@ for (<expression> in <collection>) <result>
 for (<initialization_clause>; <condition_clause>; <increment_clause>) <result>
 ```
 
-The following examples illustrate various ways that
-you can use a `for` element inside of a collection:
+Os exemplos a seguir ilustram várias maneiras de
+usar um elemento `for` dentro de uma coleção:
 
 <?code-excerpt "misc/test/language_tour/collections/for_loop_in_collection_a.dart (code_sample)"?>
 ```dart
@@ -681,19 +682,19 @@ var items = [1, for (var x = 5; x > 2; x--) x, 7]; // [1, 5, 4, 3, 7]
 var items = [1, for (var x = 2; x < 4; x++) x, 7]; // [1, 2, 3, 7]
 ```
 
-To learn more about the `for` loop, see
-[`for` loops][].
+Para saber mais sobre o loop `for`, veja
+[loops `for`][`for` loops].
 
 [`for` loops]: /language/loops/#for-loops
 
-### Nest control flow elements {: #nesting-elements }
+### Aninhar elementos de fluxo de controle {: #nesting-elements }
 
-You can nest control flow elements within each other. This
-is a powerful alternative to list comprehensions in other
-languages.
+Você pode aninhar elementos de fluxo de controle uns dentro dos outros. Esta
+é uma alternativa poderosa às list comprehensions em outras
+linguagens.
 
-In the following example, only the even numbers in
-`numbers` are included in `items`.
+No exemplo a seguir, apenas os números pares em
+`numbers` são incluídos em `items`.
 
 <?code-excerpt "misc/test/language_tour/collections/nesting_in_collection_a.dart (code_sample)"?>
 ```dart
@@ -706,9 +707,9 @@ var items = [
 ]; // [0, 2, 4, 6, 8]
 ```
 
-It's common and idiomatic to use a spread on a collection
-literal immediately inside of an `if` or `for` element. For
-example:
+É comum e idiomático usar um spread em um literal de coleção
+imediatamente dentro de um elemento `if` ou `for`. Por
+exemplo:
 
 <?code-excerpt "misc/test/language_tour/collections/nesting_in_collection_c.dart (code_sample)"?>
 ```dart
@@ -718,9 +719,9 @@ var items = [
 ]; // [oneThing, [multiple_a, multiple_b], things]
 ```
 
-You can nest all kinds of elements arbitrarily deep.
-In the following example, `if`, `for` and spread elements
-are nested within each other in a collection:
+Você pode aninhar todos os tipos de elementos arbitrariamente profundamente.
+No exemplo a seguir, elementos `if`, `for` e spread
+são aninhados uns dentro dos outros em uma coleção:
 
 <?code-excerpt "misc/test/language_tour/collections/nesting_in_collection_b.dart (code_sample)"?>
 ```dart
