@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Yield statements must be in a generator function (one marked with either 'async*' or 'sync*')._
 
 _Yield-each statements must be in a generator function (one marked with either 'async*' or 'sync*')._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `yield` or `yield*` statement
+O analisador produz este diagnóstico quando a `yield` or `yield*` statement
 appears in a function whose body isn't marked with one of the `async*` or
 `sync*` modifiers.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `yield` is being used
-in a function whose body doesn't have a modifier:
+O código a seguir produz este diagnóstico porque `yield` is being used
+in a function whose body doesn't have a modificador:
 
 ```dart
 Iterable<int> get digits {
@@ -28,9 +29,9 @@ Iterable<int> get digits {
 }
 ```
 
-The following code produces this diagnostic because `yield*` is being used
+O código a seguir produz este diagnóstico porque `yield*` is being used
 in a function whose body has the `async` modifier rather than the `async*`
-modifier:
+modificador:
 
 ```dart
 Stream<int> get digits async {
@@ -38,7 +39,7 @@ Stream<int> get digits async {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add a modifier, or change the existing modifier to be either `async*` or
 `sync*`:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use a string buffer rather than '+' to compose strings._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when values are concatenated to a
+O analisador produz este diagnóstico quando values are concatenated to a
 string inside a loop without using a `StringBuffer` to do the
 concatenation.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string `result` is
+O código a seguir produz este diagnóstico porque the string `result` is
 computed by repeated concatenation within the `for` loop:
 
 ```dart
@@ -41,7 +42,7 @@ String f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a `StringBuffer` to compute the result:
 

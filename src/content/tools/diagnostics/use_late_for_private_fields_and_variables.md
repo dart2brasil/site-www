@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use 'late' for private members with a non-nullable type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a private field or variable is
+O analisador produz este diagnóstico quando a private field or variable is
 marked as being nullable, but every reference assumes that the variable is
 never `null`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the private top-level
+O código a seguir produz este diagnóstico porque the private top-level
 variable `_i` is nullable, but every reference assumes that it will not be
 `null`:
 
@@ -40,7 +41,7 @@ void f() {
 int? [!_i!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Mark the variable or field as being both non-nullable and `late` to
 indicate that it will always be assigned a non-null:

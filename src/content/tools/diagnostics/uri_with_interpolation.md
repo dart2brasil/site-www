@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _URIs can't use string interpolation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the string literal in an
+O analisador produz este diagnóstico quando the string literal in an
 `import`, `export`, or `part` directive contains an interpolation. The
 resolution of the URIs in directives must happen before the declarations
 are compiled, so expressions can't be  evaluated  while determining the
 values of the URIs.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string in the
+O código a seguir produz este diagnóstico porque the string in the
 `import` directive contains an interpolation:
 
 ```dart
@@ -28,7 +29,7 @@ import [!'dart:$m'!];
 const m = 'math';
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the interpolation from the URI:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,17 +21,17 @@ bodyClass: highlight-diagnostics
 
 _Assignment to a variable of type 'void'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a value is assigned to a
+O analisador produz este diagnóstico quando a value is assigned to a
 variable of type `void`.
 
 It isn't possible to access the value of such a variable, so the
 assignment has no value.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `value` has
+O código a seguir produz este diagnóstico porque the field `value` has
 the type `void`, but a value is being assigned to it:
 
 ```dart
@@ -43,7 +44,7 @@ void f(A<void> a) {
 }
 ```
 
-The following code produces this diagnostic because the type of the
+O código a seguir produz este diagnóstico porque the type of the
 parameter `p` in the method `m` is `void`, but a value is being assigned
 to it in the invocation:
 
@@ -57,7 +58,7 @@ void f(A<void> a) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type of the variable is incorrect, then change the type of the
 variable:

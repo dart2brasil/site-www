@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The value of the local variable '{0}' isn't used._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a local variable is declared but
+O analisador produz este diagnóstico quando a local variable is declared but
 never read, even if it's written in one or more places.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of `count` is
+O código a seguir produz este diagnóstico porque the value of `count` is
 never read:
 
 ```dart
@@ -25,7 +26,7 @@ void main() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the variable isn't needed, then remove it.
 

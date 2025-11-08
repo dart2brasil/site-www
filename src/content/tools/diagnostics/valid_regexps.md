@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,25 +21,25 @@ bodyClass: highlight-diagnostics
 
 _Invalid regular expression syntax._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the string passed to the
+O analisador produz este diagnóstico quando the string passed to the
 default constructor of the class `RegExp` doesn't contain a valid regular
 expression.
 
 A regular expression created with invalid syntax will throw a
 `FormatException` at runtime.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the regular expression
+O código a seguir produz este diagnóstico porque the regular expression
 isn't valid:
 
 ```dart
 var r = RegExp([!r'('!]);
 ```
 
-## Common fixes
+## Correções comuns
 
 Fix the regular expression:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Workspace values must be a relative path of a subdirectory of '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `workspace` list contains a
+O analisador produz este diagnóstico quando a `workspace` list contains a
 value that is not a subdirectory of the directory containing the `pubspec.yaml`` file.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value in the `workspace` list is not a
+O código a seguir produz este diagnóstico porque the value in the `workspace` list is not a
 relative path of a subdirectory of the directory containing the 'pubspec.yaml' file:
 
 ```yaml
@@ -25,7 +26,7 @@ workspace:
     - /home/my_package
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the `workspace` list so that it only contains only subdirectory paths.
 

@@ -5,23 +5,24 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' should be used. {1}._
 
 _The value of '{0}' should be used._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a function annotated with
+O analisador produz este diagnóstico quando a function annotated with
 [`useResult`][meta-useResult] is invoked, and the value returned by that
 function isn't used. The value is considered to be used if a member of the
 value is invoked, if the value is passed to another function, or if the
 value is assigned to a variable or field.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the invocation of
+O código a seguir produz este diagnóstico porque the invocation of
 `c.a()` isn't used, even though the method `a` is annotated with
 [`useResult`][meta-useResult]:
 
@@ -40,7 +41,7 @@ void f(C c) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you intended to invoke the annotated function, then use the value that
 was returned:

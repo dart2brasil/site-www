@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use the constant '{0}' rather than a constructor returning the same object._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constant is created with the
+O analisador produz este diagnóstico quando a constant is created with the
 same value as a known `const` variable.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is a known
+O código a seguir produz este diagnóstico porque there is a known
 `const` field (`Duration.zero`) whose value is the same as what the
 constructor invocation will evaluate to:
 
@@ -35,7 +36,7 @@ constructor invocation will evaluate to:
 Duration d = [!const Duration(seconds: 0)!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the constructor invocation with a reference to the known `const`
 variable:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use a raw string to avoid using escapes._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a string literal containing
+O analisador produz este diagnóstico quando a string literal containing
 escapes, and no interpolations, could be marked as being raw in order to
 avoid the need for the escapes.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string contains
+O código a seguir produz este diagnóstico porque the string contains
 escaped characters that wouldn't need to be escaped if the string is
 made a raw string:
 
@@ -36,7 +37,7 @@ made a raw string:
 var s = [!'A string with only \\ and \$'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Mark the string as being raw and remove the unnecessary backslashes:
 

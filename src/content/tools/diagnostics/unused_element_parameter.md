@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A value for optional parameter '{0}' isn't ever given._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a value is never passed for an
+O analisador produz este diagnóstico quando a value is never passed for an
 optional parameter declared within a private declaration.
 
-## Example
+## Exemplo
 
 Assuming that no code in the library passes a value for `y` in any
 invocation of `_m`, the following code produces this diagnostic:
@@ -27,7 +28,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the declaration isn't needed, then remove it:
 

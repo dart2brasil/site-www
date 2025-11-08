@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The label '{0}' isn't used._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a label that isn't used is
+O analisador produz este diagnóstico quando a label that isn't used is
 found.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the label `loop` isn't
+O código a seguir produz este diagnóstico porque the label `loop` isn't
 referenced anywhere in the method:
 
 ```dart
@@ -27,7 +28,7 @@ void f(int limit) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the label isn't needed, then remove it:
 

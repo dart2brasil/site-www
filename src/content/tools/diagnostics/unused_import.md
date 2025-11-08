@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Unused import: '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an import isn't needed because
+O analisador produz este diagnóstico quando an import isn't needed because
 none of the names that are imported are referenced within the importing
 library.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because nothing defined in
+O código a seguir produz este diagnóstico porque nothing defined in
 `dart:async` is referenced in the library:
 
 ```dart
@@ -26,7 +27,7 @@ import [!'dart:async'!];
 void main() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the import isn't needed, then remove it.
 

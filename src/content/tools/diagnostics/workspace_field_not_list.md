@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The value of the 'workspace' field is required to be a list of relative file paths._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the value of the `workspace` key
+O analisador produz este diagnóstico quando the value of the `workspace` key
 isn't a list.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value of the
+O código a seguir produz este diagnóstico porque the value of the
 `workspace` key is a string when a list is expected:
 
 ```yaml
@@ -24,7 +25,7 @@ name: example
 workspace: [!notPaths!]
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the value of the workspace field so that it's a list:
 

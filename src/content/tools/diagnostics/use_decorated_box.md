@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use 'DecoratedBox' rather than a 'Container' with only a 'Decoration'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `Container` is created that
+O analisador produz este diagnóstico quando a `Container` is created that
 only sets the decoration.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the only attribute of
+O código a seguir produz este diagnóstico porque the only attribute of
 the container that is set is the `decoration`:
 
 ```dart
@@ -46,7 +47,7 @@ Widget buildArea() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the `Container` with a `DecoratedBox`:
 

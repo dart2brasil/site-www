@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The method '{0}' is declared with {1} type parameters, but {2} type arguments are given._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function is invoked
+O analisador produz este diagnóstico quando a method or function is invoked
 with a different number of type arguments than the number of type
 parameters specified in its declaration. There must either be no type
 arguments or the number of arguments must match the number of parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the invocation of the
+O código a seguir produz este diagnóstico porque the invocation of the
 method `m` has two type arguments, but the declaration of `m` only has one
 type parameter:
 
@@ -30,7 +31,7 @@ class C {
 int f(C c) => c.m[!<int, int>!](2);
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type arguments are necessary, then make them match the number of
 type parameters by either adding or removing type arguments:

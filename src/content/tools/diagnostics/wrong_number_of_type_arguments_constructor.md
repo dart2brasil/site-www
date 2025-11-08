@@ -5,23 +5,24 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The constructor '{0}.{1}' doesn't have type parameters._
 
 _The constructor '{0}.{1}` doesn't have type parameters._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when type arguments are provided
+O analisador produz este diagnóstico quando type arguments are provided
 after the name of a named constructor. Constructors can't declare type
 parameters, so invocations can only provide the type arguments associated
 with the class, and those type arguments are required to follow the name of
 the class rather than the name of the constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type parameters
+O código a seguir produz este diagnóstico porque the type parameters
 (`<String>`) follow the name of the constructor rather than the name of the
 class:
 
@@ -32,7 +33,7 @@ class C<T> {
 C f() => C.named[!<String>!]();
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type arguments are for the class' type parameters, then move the
 type arguments to follow the class name:

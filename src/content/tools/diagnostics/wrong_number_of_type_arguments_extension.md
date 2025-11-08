@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The extension '{0}' is declared with {1} type parameters, but {2} type arguments were given._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension that has type
+O analisador produz este diagnóstico quando an extension that has type
 parameters is used and type arguments are provided, but the number of type
 arguments isn't the same as the number of type parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension `E` is
+O código a seguir produz este diagnóstico porque the extension `E` is
 declared to have a single type parameter (`T`), but the extension override
 has two type arguments:
 
@@ -31,7 +32,7 @@ void f(List<int> p) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the type arguments so that there are the same number of type
 arguments as there are type parameters:

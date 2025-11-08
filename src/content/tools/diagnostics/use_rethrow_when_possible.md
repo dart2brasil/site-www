@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use 'rethrow' to rethrow a caught exception._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a caught exception is thrown
+O analisador produz este diagnóstico quando a caught exception is thrown
 using a `throw` expression rather than a `rethrow` statement.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the caught exception
+O código a seguir produz este diagnóstico porque the caught exception
 `e` is thrown using a `throw` expression:
 
 ```dart
@@ -40,7 +41,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use `rethrow` instead of `throw`:
 

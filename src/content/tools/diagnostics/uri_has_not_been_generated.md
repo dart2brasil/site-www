@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Target of URI hasn't been generated: '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an import, export, or part
+O analisador produz este diagnóstico quando an import, export, or part
 directive is found where the URI refers to a file that doesn't exist and
 the name of the file ends with a pattern that's commonly produced by code
 generators, such as one of the following:
@@ -22,7 +23,7 @@ generators, such as one of the following:
 - `.pbjson.dart`
 - `.template.dart`
 
-## Example
+## Exemplo
 
 If the file `lib.g.dart` doesn't exist, the following code produces this
 diagnostic:
@@ -31,7 +32,7 @@ diagnostic:
 import [!'lib.g.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the file is a generated file, then run the generator that generates the
 file.

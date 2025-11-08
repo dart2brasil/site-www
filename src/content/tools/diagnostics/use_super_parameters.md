@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,16 +23,16 @@ _Parameter '{0}' could be a super parameter._
 
 _Parameters '{0}' could be super parameters._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a parameter to a constructor is
+O analisador produz este diagnóstico quando a parameter to a constructor is
 passed to a super constructor without being referenced or modified and a
 `super` parameter isn't used.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameters of the
-constructor for `B` are only used as arguments to the super constructor:
+O código a seguir produz este diagnóstico porque the parameters of the
+constructor for `B` are only used as arguments to the super construtor:
 
 ```dart
 class A {
@@ -42,7 +43,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a `super` parameter to pass the arguments:
 

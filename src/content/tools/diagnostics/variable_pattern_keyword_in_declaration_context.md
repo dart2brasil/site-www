@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Variable patterns in declaration context can't specify 'var' or 'final' keyword._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a variable pattern is used
+O analisador produz este diagnóstico quando a variable pattern is used
 within a declaration context.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variable patterns
+O código a seguir produz este diagnóstico porque the variable patterns
 in the record pattern are in a declaration context:
 
 ```dart
@@ -26,7 +27,7 @@ void f((int, int) r) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the `var` or `final` keyword(s) within the variable pattern:
 

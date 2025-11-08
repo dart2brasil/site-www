@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,12 +21,12 @@ bodyClass: highlight-diagnostics
 
 _The part-of directive uses a library name._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `part of` directive uses a
+O analisador produz este diagnóstico quando a `part of` directive uses a
 library name to refer to the library that the part is a part of.
 
-## Example
+## Exemplo
 
 Given a file named `lib.dart` that contains the following:
 
@@ -35,7 +36,7 @@ library lib;
 part 'test.dart';
 ```
 
-The following code produces this diagnostic because the `part of`
+O código a seguir produz este diagnóstico porque the `part of`
 directive uses the name of the library rather than the URI of the library
 it's part of:
 
@@ -43,7 +44,7 @@ it's part of:
 [!part of lib;!]
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a URI to reference the library:
 

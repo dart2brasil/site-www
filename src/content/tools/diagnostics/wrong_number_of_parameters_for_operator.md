@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Operator '-' should declare 0 or 1 parameter, but {0} found._
 
 _Operator '{0}' should declare exactly {1} parameters, but {2} found._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a declaration of an operator has
+O analisador produz este diagnóstico quando a declaration of an operator has
 the wrong number of parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the operator `+` must
+O código a seguir produz este diagnóstico porque the operator `+` must
 have a single parameter corresponding to the right operand:
 
 ```dart
@@ -27,7 +28,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add or remove parameters to match the required number:
 
