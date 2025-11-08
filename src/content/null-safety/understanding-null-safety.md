@@ -49,7 +49,7 @@ sistema de tipos estático e um conjunto de outras modificações e novos recurs
 para permitir que você não apenas escreva código null-safe, mas esperançosamente *aproveite* fazê-lo.
 
 Este documento é longo. Se você quer algo mais curto que cubra apenas o que você
-precisa saber para começar, comece com a [visão geral][]. Quando você estiver
+precisa saber para começar, comece com a [visão geral][overview]. Quando você estiver
 pronto para um entendimento mais profundo e tiver tempo, volte aqui para que você possa
 entender *como* a linguagem lida com `null`, *por que* projetamos dessa maneira, e
 como escrever código Dart null-safe idiomático e moderno. (Alerta de spoiler: acaba sendo
