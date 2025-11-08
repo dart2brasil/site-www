@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: read_potentially_unassigned_final
-description: "Detalhes sobre o diagnóstico read_potentially_unassigned_final produzido pelo analisador do Dart."
+description: >-
+  Details about the read_potentially_unassigned_final
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A variável final '{0}' não pode ser lida porque está potencialmente não atribuída neste ponto._
+_The final variable '{0}' can't be read because it's potentially unassigned at this point._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma variável local final que
-não é inicializada no local da declaração é lida em um ponto onde o
-compilador não consegue provar que a variável é sempre inicializada antes de ser
-referenciada.
+The analyzer produces this diagnostic when a final local variable that
+isn't initialized at the declaration site is read at a point where the
+compiler can't prove that the variable is always initialized before it's
+referenced.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a variável local
-final `x` é lida (na linha 3) quando é possível que ela ainda não tenha
-sido inicializada:
+The following code produces this diagnostic because the final local
+variable `x` is read (on line 3) when it's possible that it hasn't yet
+been initialized:
 
 ```dart
 int f() {
@@ -30,7 +31,7 @@ int f() {
 
 ## Common fixes
 
-Garanta que a variável tenha sido inicializada antes de ser lida:
+Ensure that the variable has been initialized before it's read:
 
 ```dart
 int f(bool b) {

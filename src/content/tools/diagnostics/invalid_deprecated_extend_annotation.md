@@ -1,24 +1,26 @@
 ---
-ia-translate: true
 title: invalid_deprecated_extend_annotation
-description: "Detalhes sobre o diagnóstico invalid_deprecated_extend_annotation produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_deprecated_extend_annotation
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A annotation '@Deprecated.extend' só pode ser aplicada a classes extensíveis._
+_The annotation '@Deprecated.extend' can only be applied to extendable classes._
 
 ## Description
 
-O analisador produz este diagnóstico quando a annotation `@Deprecated.extend`
-é aplicada a uma declaração que não é uma classe extensível. Uma classe
-extensível é aquela que não é declarada com as keywords `interface`,
-`final` ou `sealed` e tem pelo menos um construtor público e generativo.
+The analyzer produces this diagnostic when the `@Deprecated.extend`
+annotation is applied to a declaration that isn't an extendable class. An
+extendable class is one that isn't declared with the `interface`,
+`final`, or `sealed` keywords and has at least one public, generative
+constructor.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a annotation está em uma
-classe sealed:
+The following code produces this diagnostic because the annotation is on a
+sealed class:
 
 ```dart
 @[!Deprecated.extend!]()
@@ -27,7 +29,7 @@ sealed class C {}
 
 ## Common fixes
 
-Remova a annotation:
+Remove the annotation:
 
 ```dart
 sealed class C {}

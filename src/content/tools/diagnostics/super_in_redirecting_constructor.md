@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: super_in_redirecting_constructor
-description: "Detalhes sobre o diagnóstico super_in_redirecting_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the super_in_redirecting_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O construtor de redirecionamento não pode ter um inicializador 'super'._
+_The redirecting constructor can't have a 'super' initializer._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor que redireciona para
-outro construtor também tenta invocar um construtor da
-superclasse. O construtor da superclasse será invocado quando o construtor
-para o qual o construtor de redirecionamento redireciona for invocado.
+The analyzer produces this diagnostic when a constructor that redirects to
+another constructor also attempts to invoke a constructor from the
+superclass. The superclass constructor will be invoked when the constructor
+that the redirecting constructor is redirected to is invoked.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o construtor `C.a`
-tanto redireciona para `C.b` quanto invoca um construtor da superclasse:
+The following code produces this diagnostic because the constructor `C.a`
+both redirects to `C.b` and invokes a constructor from the superclass:
 
 ```dart
 class C {
@@ -27,9 +28,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova a invocação do construtor `super`:
+Remove the invocation of the `super` constructor:
 
 ```dart
 class C {

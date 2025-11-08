@@ -1,28 +1,29 @@
 ---
-ia-translate: true
 title: use_of_native_extension
-description: "Detalhes sobre o diagnóstico use_of_native_extension produzido pelo analisador Dart."
+description: >-
+  Details about the use_of_native_extension
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extensões nativas do Dart estão descontinuadas e não estão disponíveis no Dart 2.15._
+_Dart native extensions are deprecated and aren't available in Dart 2.15._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma biblioteca é importada usando o
-esquema `dart-ext`.
+The analyzer produces this diagnostic when a library is imported using the
+`dart-ext` scheme.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a biblioteca nativa `x`
-está sendo importada usando um esquema `dart-ext`:
+The following code produces this diagnostic because the native library `x`
+is being imported using a scheme of `dart-ext`:
 
 ```dart
 import [!'dart-ext:x'!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Reescreva o código para usar `dart:ffi` como forma de invocar o conteúdo da
-biblioteca nativa.
+Rewrite the code to use `dart:ffi` as a way of invoking the contents of the
+native library.

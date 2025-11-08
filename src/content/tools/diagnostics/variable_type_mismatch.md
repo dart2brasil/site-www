@@ -1,40 +1,41 @@
 ---
-ia-translate: true
 title: variable_type_mismatch
-description: "Detalhes sobre o diagnóstico variable_type_mismatch produzido pelo analisador Dart."
+description: >-
+  Details about the variable_type_mismatch
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um valor de tipo '{0}' não pode ser atribuído a uma variável const de tipo '{1}'._
+_A value of type '{0}' can't be assigned to a const variable of type '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando a avaliação de uma expressão
-constante resultaria em uma `CastException`.
+The analyzer produces this diagnostic when the evaluation of a constant
+expression would result in a `CastException`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o valor de `x` é um
-`int`, que não pode ser atribuído a `y` porque um `int` não é uma `String`:
+The following code produces this diagnostic because the value of `x` is an
+`int`, which can't be assigned to `y` because an `int` isn't a `String`:
 
 ```dart
 const dynamic x = 0;
 const String y = [!x!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Se a declaração da constante está correta, então mude o valor sendo
-atribuído para ser do tipo correto:
+If the declaration of the constant is correct, then change the value being
+assigned to be of the correct type:
 
 ```dart
 const dynamic x = 0;
 const String y = '$x';
 ```
 
-Se o valor atribuído está correto, então mude a declaração para ter o
-tipo correto:
+If the assigned value is correct, then change the declaration to have the
+correct type:
 
 ```dart
 const int x = 0;

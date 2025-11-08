@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: field_initialized_by_multiple_initializers
-description: "Detalhes sobre o diagnóstico field_initialized_by_multiple_initializers produzido pelo analisador Dart."
+description: >-
+  Details about the field_initialized_by_multiple_initializers
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O campo '{0}' não pode ser inicializado duas vezes no mesmo construtor._
+_The field '{0}' can't be initialized twice in the same constructor._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando a lista de inicializadores de um
-construtor inicializa um campo mais de uma vez. Não há valor que permita
-ambos os inicializadores porque apenas o último valor é preservado.
+The analyzer produces this diagnostic when the initializer list of a
+constructor initializes a field more than once. There is no value to allow
+both initializers because only the last value is preserved.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o campo `f` está sendo
-inicializado duas vezes:
+The following code produces this diagnostic because the field `f` is being
+initialized twice:
 
 ```dart
 class C {
@@ -27,9 +28,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova um dos inicializadores:
+Remove one of the initializers:
 
 ```dart
 class C {

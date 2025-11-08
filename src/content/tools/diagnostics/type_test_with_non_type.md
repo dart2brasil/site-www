@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: type_test_with_non_type
-description: "Detalhes sobre o diagnóstico type_test_with_non_type produzido pelo analisador Dart."
+description: >-
+  Details about the type_test_with_non_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome '{0}' não é um type e não pode ser usado em uma expressão 'is'._
+_The name '{0}' isn't a type and can't be used in an 'is' expression._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o lado direito de um teste `is`
-ou `is!` não é um tipo.
+The analyzer produces this diagnostic when the right-hand side of an `is`
+or `is!` test isn't a type.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o lado direito é
-um parâmetro, não um tipo:
+The following code produces this diagnostic because the right-hand side is
+a parameter, not a type:
 
 ```dart
 typedef B = int Function(int);
@@ -28,10 +29,10 @@ void f(Object a, B b) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você pretendia usar um teste de tipo, então substitua o lado direito por um
-tipo:
+If you intended to use a type test, then replace the right-hand side with a
+type:
 
 ```dart
 typedef B = int Function(int);
@@ -43,7 +44,7 @@ void f(Object a, B b) {
 }
 ```
 
-Se você pretendia usar um tipo diferente de teste, então altere o teste:
+If you intended to use a different kind of test, then change the test:
 
 ```dart
 typedef B = int Function(int);

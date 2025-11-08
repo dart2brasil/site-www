@@ -1,31 +1,32 @@
 ---
-ia-translate: true
 title: extension_type_representation_depends_on_itself
-description: "Detalhes sobre o diagnóstico extension_type_representation_depends_on_itself produzido pelo analisador Dart."
+description: >-
+  Details about the extension_type_representation_depends_on_itself
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A representação de extension type não pode depender de si mesma._
+_The extension type representation can't depend on itself._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um extension type tem um
-tipo de representação que depende do próprio extension type, seja
-diretamente ou indiretamente.
+The analyzer produces this diagnostic when an extension type has a
+representation type that depends on the extension type itself, either
+directly or indirectly.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o tipo de representação
-do extension type `A` depende de `A` diretamente:
+The following code produces this diagnostic because the representation
+type of the extension type `A` depends on `A` directly:
 
 ```dart
 extension type [!A!](A a) {}
 ```
 
-Os dois exemplos de código a seguir produzem este diagnóstico porque o
-tipo de representação do extension type `A` depende de `A`
-indiretamente através do extension type `B`:
+The following two code examples produce this diagnostic because the
+representation type of the extension type `A` depends on `A`
+indirectly through the extension type `B`:
 
 ```dart
 extension type [!A!](B b) {}
@@ -39,10 +40,10 @@ extension type [!A!](List<B> b) {}
 extension type [!B!](List<A> a) {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova a dependência escolhendo um tipo de representação diferente para pelo
-menos um dos tipos no ciclo:
+Remove the dependency by choosing a different representation type for at
+least one of the types in the cycle:
 
 ```dart
 extension type A(String s) {}

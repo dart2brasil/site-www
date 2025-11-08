@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: public_member_api_docs
-description: "Detalhes sobre o diagnóstico public_member_api_docs produzido pelo analisador do Dart."
+description: >-
+  Details about the public_member_api_docs
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Documentação ausente para um membro público._
+_Missing documentation for a public member._
 
 ## Description
 
-O analisador produz este diagnóstico quando a declaração de parte da
-API pública de um pacote não possui um comentário de documentação.
+The analyzer produces this diagnostic when the declaration of part of the
+public API of a package doesn't have a documentation comment.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a classe `C` não
-possui um comentário de documentação:
+The following code produces this diagnostic because the class `C` doesn't
+have a documentation comment:
 
 ```dart
 class [!C!] {}
@@ -35,7 +36,7 @@ class [!C!] {}
 
 ## Common fixes
 
-Adicione um comentário de documentação.
+Add a documentation comment.
 
 ```dart
 /// Documentation comment.

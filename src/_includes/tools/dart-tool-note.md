@@ -1,5 +1,4 @@
-<!-- ia-translate: true -->
 :::tip
-Para aprender mais sobre este e outros comandos `dart`,
-confira a página da [ferramenta de linha de comando Dart](/tools/dart-tool).
+To learn more information about this and other `dart` commands,
+check out the [Dart command-line tool page](/tools/dart-tool).
 :::

@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_truncating_division
-description: "Detalhes sobre o diagnóstico use_truncating_division produzido pelo analisador Dart."
+description: >-
+  Details about the use_truncating_division
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,28 +18,28 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use divisão truncada._
+_Use truncating division._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o resultado de dividir dois
-números é convertido para um inteiro usando `toInt`.
+The analyzer produces this diagnostic when the result of dividing two
+numbers is converted to an integer using `toInt`.
 
-Dart tem um operador de divisão inteira embutido que é tanto mais eficiente
-quanto mais conciso.
+Dart has a built-in integer division operator that is both more efficient
+and more concise.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o resultado de dividir
-`x` e `y` é convertido para um inteiro usando `toInt`:
+The following code produces this diagnostic because the result of dividing
+`x` and `y` is converted to an integer using `toInt`:
 
 ```dart
 int divide(int x, int y) => [!(x / y).toInt()!];
 ```
 
-## Correções comuns
+## Common fixes
 
-Use o operador de divisão inteira (`~/`):
+Use the integer division operator (`~/`):
 
 ```dart
 int divide(int x, int y) => x ~/ y;

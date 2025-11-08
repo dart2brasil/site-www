@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: initializing_formal_for_non_existent_field
-description: "Detalhes sobre o diagnóstico initializing_formal_for_non_existent_field produzido pelo analisador do Dart."
+description: >-
+  Details about the initializing_formal_for_non_existent_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' não é um campo na classe envolvente._
+_'{0}' isn't a field in the enclosing class._
 
 ## Description
 
-O analisador produz este diagnóstico quando um parâmetro formal
-inicializador é encontrado em um construtor em uma classe que não declara o
-campo sendo inicializado. Construtores não podem inicializar campos que não estão
-declarados e campos que são herdados de superclasses.
+The analyzer produces this diagnostic when an initializing formal
+parameter is found in a constructor in a class that doesn't declare the
+field being initialized. Constructors can't initialize fields that aren't
+declared and fields that are inherited from superclasses.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o campo `x` não está
-definido:
+The following code produces this diagnostic because the field `x` isn't
+defined:
 
 ```dart
 class C {
@@ -30,8 +31,8 @@ class C {
 
 ## Common fixes
 
-Se o nome do campo estava errado, então altere-o para o nome de um campo
-existente:
+If the field name was wrong, then change it to the name of an existing
+field:
 
 ```dart
 class C {
@@ -41,8 +42,8 @@ class C {
 }
 ```
 
-Se o nome do campo está correto mas ainda não foi definido, então declare o
-campo:
+If the field name is correct but hasn't yet been defined, then declare the
+field:
 
 ```dart
 class C {
@@ -53,8 +54,8 @@ class C {
 }
 ```
 
-Se o parâmetro é necessário mas não deve inicializar um campo, então converta-o
-para um parâmetro normal e use-o:
+If the parameter is needed but shouldn't initialize a field, then convert
+it to a normal parameter and use it:
 
 ```dart
 class C {
@@ -64,7 +65,7 @@ class C {
 }
 ```
 
-Se o parâmetro não é necessário, então remova-o:
+If the parameter isn't needed, then remove it:
 
 ```dart
 class C {

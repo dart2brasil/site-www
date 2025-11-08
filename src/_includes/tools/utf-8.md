@@ -1,4 +1,3 @@
-<!-- ia-translate: true -->
-A linguagem Dart espera que o código Dart seja codificado usando [UTF-8][utf8].
+The Dart language expects Dart code to be encoded using [UTF-8][utf8].
 
 [utf8]: https://www.utf8.com/

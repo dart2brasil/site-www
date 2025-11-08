@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: case_block_not_terminated
-description: "Detalhes sobre o diagnóstico case_block_not_terminated produzido pelo analisador do Dart."
+description: >-
+  Details about the case_block_not_terminated
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A última instrução do 'case' deve ser 'break', 'continue', 'rethrow', 'return' ou 'throw'._
+_The last statement of the 'case' should be 'break', 'continue', 'rethrow', 'return', or 'throw'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando a última instrução em um bloco
-`case` não é um dos terminadores obrigatórios: `break`, `continue`,
-`rethrow`, `return` ou `throw`.
+The analyzer produces this diagnostic when the last statement in a `case`
+block isn't one of the required terminators: `break`, `continue`,
+`rethrow`, `return`, or `throw`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o bloco `case` termina
-com uma atribuição:
+The following code produces this diagnostic because the `case` block ends
+with an assignment:
 
 ```dart
 void f(int x) {
@@ -30,9 +31,9 @@ void f(int x) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Adicione um dos terminadores obrigatórios:
+Add one of the required terminators:
 
 ```dart
 void f(int x) {

@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: deprecated_new_in_comment_reference
-description: "Detalhes sobre o diagnóstico deprecated_new_in_comment_reference produzido pelo analisador Dart."
+description: >-
+  Details about the deprecated_new_in_comment_reference
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Usar a keyword 'new' em uma referência de comentário está deprecated._
+_Using the 'new' keyword in a comment reference is deprecated._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma referência de comentário (o nome
-de uma declaração entre colchetes em um comentário de documentação)
-usa a keyword `new` para referenciar um construtor. Esta forma está deprecated.
+The analyzer produces this diagnostic when a comment reference (the name
+of a declaration enclosed in square brackets in a documentation comment)
+uses the keyword `new` to refer to a constructor. This form is deprecated.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque o construtor sem nome
-está sendo referenciado usando `new C`:
+The following code produces this diagnostic because the unnamed
+constructor is being referenced using `new C`:
 
 ```dart
 /// See [[!new!] C].
@@ -26,8 +27,8 @@ class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o construtor nomeado
-`c` está sendo referenciado usando `new C.c`:
+The following code produces this diagnostic because the constructor named
+`c` is being referenced using `new C.c`:
 
 ```dart
 /// See [[!new!] C.c].
@@ -38,7 +39,7 @@ class C {
 
 ## Common fixes
 
-Se você está referenciando um construtor nomeado, então remova a keyword `new`:
+If you're referencing a named constructor, then remove the keyword `new`:
 
 ```dart
 /// See [C.c].
@@ -47,8 +48,8 @@ class C {
 }
 ```
 
-Se você está referenciando o construtor sem nome, então remova a keyword
-`new` e adicione `.new` após o nome da classe:
+If you're referencing the unnamed constructor, then remove the keyword
+`new` and append `.new` after the class name:
 
 ```dart
 /// See [C.new].

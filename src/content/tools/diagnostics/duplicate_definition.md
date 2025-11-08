@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: duplicate_definition
-description: "Detalhes sobre o diagnóstico duplicate_definition produzido pelo analisador Dart."
+description: >-
+  Details about the duplicate_definition
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome '{0}' já está definido._
+_The name '{0}' is already defined._
 
 ## Description
 
-O analisador produz este diagnóstico quando um nome é declarado, e há
-uma declaração anterior com o mesmo nome no mesmo escopo.
+The analyzer produces this diagnostic when a name is declared, and there is
+a previous declaration with the same name in the same scope.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o nome `x` é
-declarado duas vezes:
+The following code produces this diagnostic because the name `x` is
+declared twice:
 
 ```dart
 int x = 0;
@@ -25,7 +26,7 @@ int [!x!] = 1;
 
 ## Common fixes
 
-Escolha um nome diferente para uma das declarações.
+Choose a different name for one of the declarations.
 
 ```dart
 int x = 0;

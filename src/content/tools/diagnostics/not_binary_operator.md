@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: not_binary_operator
-description: "Detalhes sobre o diagnóstico not_binary_operator produzido pelo analisador do Dart."
+description: >-
+  Details about the not_binary_operator
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,13 +11,13 @@ _'{0}' isn't a binary operator._
 
 ## Description
 
-O analisador produz este diagnóstico quando um operador que só pode ser
-usado como operador unário é usado como operador binário.
+The analyzer produces this diagnostic when an operator that can only be
+used as a unary operator is used as a binary operator.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o operador `~` só pode
-ser usado como operador unário:
+The following code produces this diagnostic because the operator `~` can
+only be used as a unary operator:
 
 ```dart
 var a = 5 [!~!] 3;
@@ -24,7 +25,7 @@ var a = 5 [!~!] 3;
 
 ## Common fixes
 
-Substitua o operador pelo operador binário correto:
+Replace the operator with the correct binary operator:
 
 ```dart
 var a = 5 - 3;

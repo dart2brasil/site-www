@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: undefined_extension_method
-description: "Detalhes sobre o diagnóstico undefined_extension_method produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_extension_method
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O método '{0}' não está definido para a extension '{1}'._
+_The method '{0}' isn't defined for the extension '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma sobrescrita de extension é usada para
-invocar um método, mas o método não está definido pela extension especificada.
-O analisador também produz este diagnóstico quando um método estático é
-referenciado mas não está definido pela extension especificada.
+The analyzer produces this diagnostic when an extension override is used to
+invoke a method, but the method isn't defined by the specified extension.
+The analyzer also produces this diagnostic when a static method is
+referenced but isn't defined by the specified extension.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque a extension `E`
-não declara um método de instância chamado `b`:
+The following code produces this diagnostic because the extension `E`
+doesn't declare an instance method named `b`:
 
 ```dart
 extension E on String {
@@ -34,8 +35,8 @@ void f() {
 }
 ```
 
-O código a seguir produz este diagnóstico porque a extension `E`
-não declara um método estático chamado `a`:
+The following code produces this diagnostic because the extension `E`
+doesn't declare a static method named `a`:
 
 ```dart
 extension E on String {}
@@ -43,10 +44,10 @@ extension E on String {}
 var x = E.[!a!]();
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o nome do método está incorreto, então mude-o para o nome de um
-método existente:
+If the name of the method is incorrect, then change it to the name of an
+existing method:
 
 ```dart
 extension E on String {
@@ -62,8 +63,8 @@ void f() {
 }
 ```
 
-Se o nome do método está correto, mas o nome da extension está
-errado, então mude o nome da extension para o nome correto:
+If the name of the method is correct, but the name of the extension is
+wrong, then change the name of the extension to the correct name:
 
 ```dart
 extension E on String {
@@ -79,8 +80,8 @@ void f() {
 }
 ```
 
-Se o nome do método e da extension estão ambos corretos, mas o método
-não está definido, então defina o método:
+If the name of the method and extension are both correct, but the method
+isn't defined, then define the method:
 
 ```dart
 extension E on String {

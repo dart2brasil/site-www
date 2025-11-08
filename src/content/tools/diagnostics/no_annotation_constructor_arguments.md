@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: no_annotation_constructor_arguments
-description: "Detalhes sobre o diagnóstico no_annotation_constructor_arguments produzido pelo analisador do Dart."
+description: >-
+  Details about the no_annotation_constructor_arguments
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,16 +11,16 @@ _Annotation creation must have arguments._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma annotation consiste em um
-único identificador, mas esse identificador é o nome de uma classe em vez de uma
-variável. Para criar uma instância da classe, o identificador deve ser
-seguido por uma lista de argumentos.
+The analyzer produces this diagnostic when an annotation consists of a
+single identifier, but that identifier is the name of a class rather than a
+variable. To create an instance of the class, the identifier must be
+followed by an argument list.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `C` é uma classe, e uma
-classe não pode ser usada como annotation sem invocar um construtor `const`
-da classe:
+The following code produces this diagnostic because `C` is a class, and a
+class can't be used as an annotation without invoking a `const` constructor
+from the class:
 
 ```dart
 class C {
@@ -32,7 +33,7 @@ var x;
 
 ## Common fixes
 
-Adicione a lista de argumentos faltante:
+Add the missing argument list:
 
 ```dart
 class C {

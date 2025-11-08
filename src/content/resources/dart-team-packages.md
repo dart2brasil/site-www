@@ -1,22 +1,24 @@
 ---
 title: Dart team packages
-description: "The Dart team publishes packages under the verified publishers: dart.dev, tools.dart.dev, and labs.dart.dev."
+description: >-
+  The Dart team publishes packages under the verified publishers:
+  dart.dev, tools.dart.dev, and labs.dart.dev.
 showToc: false
 ---
 
-O time Dart publica pacotes em [pub.dev]({{site.pub}}) sob três
-[publishers verificados](/tools/pub/verified-publishers).
-A tabela a seguir mostra esses publishers verificados, para que são usados,
-e os níveis de qualidade e suporte para pacotes sob cada publisher.
+The Dart team publishes packages on [pub.dev]({{site.pub}}) under three
+[verified publishers](/tools/pub/verified-publishers).
+The following table shows these verified publishers, what they're used for,
+and the quality and support levels for packages under each publisher.
 
-| Publisher          | Conteúdo&nbsp;do&nbsp;pacote | Qualidade e completude | Engajamento&nbsp;da&nbsp;comunidade (issues, PRs) |
-|--------------------|--------------------------|--------------------------|------------------------------------------------|
-| [dartbrasil.dev][]       | **Pacotes principais.** Pacotes fundamentais que complementam as [bibliotecas principais](/libraries). | Alta | **Alta.** Triagem feita regularmente. |
-| [tools.dartbrasil.dev][] | **Pacotes de ferramentas.** Usado pelo time Dart para construir várias ferramentas Dart. Pode ser usado para construir outras ferramentas, mas o compromisso de suporte é menor do que para pacotes principais. | Média | **Médio-baixo.** Triagem ocasional; incapaz de responder a todas as issues (problemas). |
-| [labs.dartbrasil.dev][]  | **Pacotes experimentais.** Compartilhado para feedback antecipado. Alguns provavelmente serão descontinuados. | Baixa/incompleta | **Variável.** Sem promessas; mantido com base no melhor esforço. |
+| Publisher          | Package&nbsp;contents | Quality and completeness | Community&nbsp;engagement (issues, PRs) |
+|--------------------|------------------|--------------------------|------------------------------------|
+| [dart.dev][]       | **Core packages.** Foundational packages that complement the [core libraries](/libraries). | High | **High.** Triaged on a regular basis. |
+| [tools.dart.dev][] | **Tooling packages.** Used by the Dart team to build various Dart tools. Can be used for building other tools, but the support commitment is lower than for core packages. | Medium | **Medium-low.** Triaged occasionally; unable to respond to all issues. |
+| [labs.dart.dev][]  | **Experimental packages.** Shared for early feedback. Some will likely be discontinued. | Low/incomplete | **Varying.** No promises; maintained on a best-effort basis. |
 
 {:.table .table-striped .nowrap}
 
-[dartbrasil.dev]: {{site.pub}}/publishers/dartbrasil.dev/packages
-[tools.dartbrasil.dev]: {{site.pub}}/publishers/tools.dartbrasil.dev/packages
-[labs.dartbrasil.dev]: {{site.pub}}/publishers/labs.dartbrasil.dev/packages
+[dart.dev]: {{site.pub}}/publishers/dart.dev/packages
+[tools.dart.dev]: {{site.pub}}/publishers/tools.dart.dev/packages
+[labs.dart.dev]: {{site.pub}}/publishers/labs.dart.dev/packages

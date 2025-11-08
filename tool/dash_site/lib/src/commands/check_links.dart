@@ -83,10 +83,10 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
 
   try {
     // Check to see if the emulator is running.
-    // if (!(await _isPortInUse(_emulatorPort))) {
-    //   stderr.writeln('Error: The Firebase hosting emulator did not start!');
-    //   return 1;
-    // }
+    if (!(await _isPortInUse(_emulatorPort))) {
+      stderr.writeln('Error: The Firebase hosting emulator did not start!');
+      return 1;
+    }
 
     try {
       final result = await linkcheck.run([

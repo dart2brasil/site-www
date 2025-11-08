@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_interpolation_to_compose_strings
-description: "Detalhes sobre o diagnóstico prefer_interpolation_to_compose_strings produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_interpolation_to_compose_strings
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use interpolação para compor strings e valores._
+_Use interpolation to compose strings and values._
 
 ## Description
 
-O analisador produz este diagnóstico quando literais de string e strings
-computadas estão sendo concatenadas usando o operador `+`, mas interpolação
-de string alcançaria o mesmo resultado.
+The analyzer produces this diagnostic when string literals and computed
+strings are being concatenated using the `+` operator, but string
+interpolation would achieve the same result.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a String `s` é
-concatenada com outras strings usando o operador `+`:
+The following code produces this diagnostic because the String `s` is
+concatenated with other strings using the `+` operator:
 
 ```dart
 String f(String s) {
@@ -38,7 +39,7 @@ String f(String s) {
 
 ## Common fixes
 
-Use interpolação de string:
+Use string interpolation:
 
 ```dart
 String f(List<String> l) {

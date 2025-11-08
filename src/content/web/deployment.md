@@ -1,107 +1,106 @@
 ---
-ia-translate: true
-title: "Implantação na Web"
-description: "Aprenda como construir seu aplicativo web Dart para implantação em produção."
+title: Web deployment
+description: Learn how to build your Dart web app for production deployment.
 ---
 
-A implantação de um aplicativo web Dart funciona como a implantação de qualquer outro aplicativo web.
-Esta página descreve como compilar seu aplicativo, dicas para torná-lo menor
-e mais rápido, e aponta para recursos para servir o aplicativo.
+Deploying a Dart web app works like deploying any other web app.
+This page describes how to compile your app, tips for making it smaller
+and faster, and points you to resources for serving the app.
 
-## Construindo seu aplicativo {:#compiling-to-javascript}
+## Building your app {:#compiling-to-javascript}
 
-Use a ferramenta `webdev` para construir seu aplicativo. Ele compila Dart para JavaScript
-e gera todos os assets (recursos) que você precisa para a implantação.
-Quando você constrói usando o modo de produção do compilador,
-você obtém um arquivo JavaScript que é razoavelmente pequeno,
-graças ao suporte do compilador para *tree shaking* (eliminação de código morto).
+Use the `webdev` tool to build your app. It compiles Dart to JavaScript
+and generates all the assets you need for deployment.
+When you build using the production mode of the compiler,
+you get a JavaScript file that's reasonably small,
+thanks to the compiler support for tree shaking.
 
-Com um pouco de trabalho extra, você pode tornar seu aplicativo implantável
-[menor, mais rápido e mais confiável](#make-your-app-smaller-faster-and-more-reliable).
+With a little extra work, you can make your deployable app
+[smaller, faster, and more reliable](#make-your-app-smaller-faster-and-more-reliable).
 
-### Compilar usando webdev {:#compile-using-webdev}
+### Compile using webdev
 
-[Use o comando `webdev build`][build] para criar uma versão implantável
-do seu aplicativo. Este comando converte seu código para JavaScript e salva
-o resultado como `build/web/main.dart.js`. Você pode usar [qualquer opção
-disponível para `dart compile js`](/tools/dart-compile#prod-compile-options)
-com `webdev build`.
+[Use the `webdev build` command][build] to create a deployable version
+of your app. This command converts your code to JavaScript and saves
+the result as `build/web/main.dart.js`. You can use [any option
+available to `dart compile js`](/tools/dart-compile#prod-compile-options)
+with `webdev build`.
 
-### Deixe seu aplicativo menor, mais rápido e mais confiável {:#make-your-app-smaller-faster-and-more-reliable}
+### Make your app smaller, faster, and more reliable
 
-Os seguintes passos são opcionais. Eles podem ajudar a tornar seu aplicativo mais
-confiável e responsivo.
+The following steps are optional. They can help make your app more
+reliable and responsive.
 
-* [Use *deferred loading* (carregamento adiado) para reduzir o tamanho inicial do seu aplicativo](#use-deferred-loading-to-reduce-your-apps-initial-size)
-* [Siga as melhores práticas para aplicativos web](#follow-best-practices-for-web-apps)
-* [Remova arquivos de *build* desnecessários](#remove-unneeded-build-files)
+* [Use deferred loading to reduce your app's initial size](#use-deferred-loading-to-reduce-your-apps-initial-size)
+* [Follow best practices for web apps](#follow-best-practices-for-web-apps)
+* [Remove unneeded build files](#remove-unneeded-build-files)
 
-#### Use *deferred loading* (carregamento adiado) para reduzir o tamanho inicial do seu aplicativo {:#use-deferred-loading-to-reduce-your-apps-initial-size}
+#### Use deferred loading to reduce your app's initial size
 
-Você pode usar o suporte do Dart para *deferred loading* para
-reduzir o tamanho inicial de download do seu aplicativo.
-Para mais detalhes, veja a cobertura do tour da linguagem sobre
-[*deferred loading*](/language/libraries#lazily-loading-a-library).
+You can use Dart's support for deferred loading to
+reduce your app's initial download size.
+For details, see the language tour's coverage of
+[deferred loading](/language/libraries#lazily-loading-a-library).
 
-#### Siga as melhores práticas para aplicativos web {:#follow-best-practices-for-web-apps}
+#### Follow best practices for web apps
 
-Os conselhos usuais para aplicativos web se aplicam aos aplicativos web Dart.
-Aqui estão alguns recursos:
+The usual advice for web apps applies to Dart web apps.
+Here are a few resources:
 
-* [Tempos de carregamento rápidos](https://web.dev/fast/)
-* [Fundamentos da Web](https://developers.google.com/web/fundamentals/)
-  (especialmente [Otimizando a Eficiência do Conteúdo](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/))
-* [Aplicativos Web Progressivos](https://web.dev/progressive-web-apps/)
+* [Fast load times](https://web.dev/fast/)
+* [Web Fundamentals](https://developers.google.com/web/fundamentals/)
+  (especially [Optimizing Content Efficiency](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/))
+* [Progressive Web Apps](https://web.dev/progressive-web-apps/)
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
-#### Remova arquivos de *build* desnecessários {:#remove-unneeded-build-files}
+#### Remove unneeded build files
 
-Os compiladores da web podem produzir arquivos que são úteis durante o desenvolvimento,
-como arquivos de mapeamento de Dart para JavaScript, mas desnecessários em produção.
+Web compilers can produce files that are useful during development,
+such as Dart-to-JavaScript map files, but unnecessary in production.
 
-Para remover esses arquivos, você pode executar um comando como o seguinte:
+To remove these files, you can run a command like the following:
 
 {% comment %}
-Revise o seguinte assim que https://github.com/dart-lang/angular/issues/1123 for resolvido:
+Revise the following once https://github.com/dart-lang/angular/issues/1123 is resolved:
 {% endcomment %}
 
 ```console
-# Do diretório raiz do seu aplicativo: {:#from-the-root-directory-of-your-app}
+# From the root directory of your app:
 $ find build -type f -name "*.js.map" -exec rm {} +
 ```
 
-## Servindo seu aplicativo {:#serving-your-app}
+## Serving your app
 
-Você pode servir seu aplicativo web Dart da mesma forma que você serviria qualquer outro aplicativo web.
-Esta seção aponta para dicas para servir aplicativos web Dart,
-bem como recursos específicos do Dart para ajudá-lo a usar o GitHub Pages ou o Firebase
-para servir seu aplicativo.
+You can serve your Dart Web app just like you'd serve any other web app.
+This section points to tips for serving Dart Web apps,
+as well as Dart-specific resources to help you use GitHub Pages or Firebase
+to serve your app.
 
-### GitHub Pages {:#github-pages}
+### GitHub Pages
 
-Se seu aplicativo não usa roteamento ou requer suporte do lado do servidor,
-você pode servir o aplicativo usando [GitHub Pages](https://pages.github.com/).
-O pacote [peanut][] é
-uma maneira fácil de produzir automaticamente um branch gh-pages para qualquer aplicativo web Dart.
+If your app doesn't use routing or require server-side support,
+you can serve the app using [GitHub Pages](https://pages.github.com/).
+The [peanut][] package is
+an easy way to automatically produce a gh-pages branch for any Dart web app.
 
-O [exemplo startup_namer](https://filiph.github.io/startup_namer/)
-é hospedado usando o GitHub Pages.
-Seus arquivos estão no branch **gh-pages** do
-[repositório filiph/startup_namer](https://github.com/filiph/startup_namer)
-e foram construídos usando [peanut.][peanut]
+The [startup_namer example](https://filiph.github.io/startup_namer/)
+is hosted using GitHub Pages.
+Its files are in the **gh-pages** branch of the
+[filiph/startup_namer repo](https://github.com/filiph/startup_namer)
+and were built using [peanut.][peanut]
 
-### Firebase {:#firebase}
+### Firebase
 {% comment %}
-TODO: Dê um exemplo de como implantar com o Firebase, que originalmente foi mostrado em https://dart.academy/build-a-real-time-chat-web-app-with-dart-angular-2-and-firebase-3/
+TODO: Give an example of how to deploy with Firebase, which originally was shown on https://dart.academy/build-a-real-time-chat-web-app-with-dart-angular-2-and-firebase-3/
 {% endcomment %}
 
-Para saber mais sobre a implantação com o Firebase, consulte os seguintes recursos:
+To learn more about deploying with Firebase, see the following resources:
 
-* A [documentação do Firebase Hosting](https://firebase.google.com/docs/hosting/)
-  descreve como implantar aplicativos web com o Firebase.
-* Na documentação do Firebase Hosting,
-  [Configure o Comportamento de Hospedagem](https://firebase.google.com/docs/hosting/full-config)
-  cobre redirecionamentos, reescritas e muito mais.
+* The [Firebase Hosting documentation](https://firebase.google.com/docs/hosting/)
+  describes how to deploy web apps with Firebase.
+* In the Firebase Hosting documentation,
+  [Configure Hosting Behavior](https://firebase.google.com/docs/hosting/full-config)
+  covers redirects, rewrites, and more.
 
 [build]: /tools/webdev#build
 [build_runner]: /tools/build_runner

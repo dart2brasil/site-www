@@ -1,31 +1,32 @@
 ---
-ia-translate: true
 title: undefined_super_member
-description: "Detalhes sobre o diagnóstico undefined_super_member produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_super_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_(Anteriormente conhecido como `undefined_super_method`)_
+_(Previously known as `undefined_super_method`)_
 
-_O getter '{0}' não está definido em uma superclasse de '{1}'._
+_The getter '{0}' isn't defined in a superclass of '{1}'._
 
-_O método '{0}' não está definido em uma superclasse de '{1}'._
+_The method '{0}' isn't defined in a superclass of '{1}'._
 
-_O operador '{0}' não está definido em uma superclasse de '{1}'._
+_The operator '{0}' isn't defined in a superclass of '{1}'._
 
-_O setter '{0}' não está definido em uma superclasse de '{1}'._
+_The setter '{0}' isn't defined in a superclass of '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um membro herdado (método,
-getter, setter ou operador) é referenciado usando `super`, mas não há
-membro com esse nome na cadeia de superclasses.
+The analyzer produces this diagnostic when an inherited member (method,
+getter, setter, or operator) is referenced using `super`, but there's no
+member with that name in the superclass chain.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque `Object` não define
-um método chamado `n`:
+The following code produces this diagnostic because `Object` doesn't define
+a method named `n`:
 
 ```dart
 class C {
@@ -35,8 +36,8 @@ class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque `Object` não define
-um getter chamado `g`:
+The following code produces this diagnostic because `Object` doesn't define
+a getter named `g`:
 
 ```dart
 class C {
@@ -46,13 +47,13 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o membro herdado que você pretende invocar tem um nome diferente, então
-faça o nome do membro invocado corresponder ao membro herdado.
+If the inherited member you intend to invoke has a different name, then
+make the name of the invoked member match the inherited member.
 
-Se o membro que você pretende invocar está definido na mesma classe, então
-remova o `super.`.
+If the member you intend to invoke is defined in the same class, then
+remove the `super.`.
 
-Se o membro não está definido, então adicione o membro a uma das
-superclasses ou remova a invocação.
+If the member isn't defined, then either add the member to one of the
+superclasses or remove the invocation.

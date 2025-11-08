@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: asset_not_string_or_map
-description: "Detalhes sobre o diagnóstico asset_not_string_or_map produzido pelo analisador Dart."
+description: >-
+  Details about the asset_not_string_or_map
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,13 +11,13 @@ _An asset value is required to be a file path (string) or map._
 
 ## Description
 
-O analisador produz este diagnóstico quando um valor de asset não é uma string
-ou um mapa.
+The analyzer produces this diagnostic when an asset value isn't a string
+or a map.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o valor do asset
-é uma lista:
+The following code produces this diagnostic because the asset value
+is a list:
 
 ```yaml
 name: example
@@ -27,8 +28,8 @@ flutter:
 
 ## Common fixes
 
-Se você precisa especificar mais do que apenas o caminho para o asset, então substitua
-o valor por um mapa com uma chave `path` (um caminho de arquivo válido no estilo POSIX):
+If you need to specify more than just the path to the asset, then replace
+the value with a map with a `path` key (a valid POSIX-style file path):
 
 ```yaml
 name: example
@@ -39,8 +40,8 @@ flutter:
       - premium
 ```
 
-Se você precisa apenas especificar o caminho, então substitua o valor pelo caminho
-para o asset (um caminho de arquivo válido no estilo POSIX):
+If you only need to specify the path, then replace the value with the path
+to the asset (a valid POSIX-style file path):
 
 ```yaml
 name: example

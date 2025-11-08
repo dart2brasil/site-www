@@ -1,27 +1,28 @@
 ---
 title: missing_override_of_must_be_overridden
-description: "Detalhes sobre o diagnóstico missing_override_of_must_be_overridden produzido pelo analisador Dart."
+description: >-
+  Details about the missing_override_of_must_be_overridden
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_Implementação concreta missing de '{0}'._
+_Missing concrete implementation of '{0}'._
 
-_Implementações concretas missing de '{0}' e '{1}'._
+_Missing concrete implementations of '{0}' and '{1}'._
 
-_Implementações concretas missing de '{0}', '{1}' e {2} mais._
+_Missing concrete implementations of '{0}', '{1}', and {2} more._
 
 ## Description
 
-O analisador produz este diagnóstico quando um member de instância que tem a
-anotação `@mustBeOverridden` não é sobrescrito em uma subclasse.
+The analyzer produces this diagnostic when an instance member that has the
+`@mustBeOverridden` annotation isn't overridden in a subclass.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a classe `B` não tem
-um override do method herdado `A.m` quando `A.m` está anotado
-com `@mustBeOverridden`:
+The following code produces this diagnostic because the class `B` doesn't
+have an override of the inherited method `A.m` when `A.m` is annotated
+with `@mustBeOverridden`:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -36,8 +37,8 @@ class [!B!] extends A {}
 
 ## Common fixes
 
-Se a anotação é apropriada para o member, então sobrescreva o member
-na subclasse:
+If the annotation is appropriate for the member, then override the member
+in the subclass:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -53,8 +54,8 @@ class B extends A {
 }
 ```
 
-Se a anotação não é apropriada para o member, então remova a
-anotação:
+If the annotation isn't appropriate for the member, then remove the
+annotation:
 
 ```dart
 class A {

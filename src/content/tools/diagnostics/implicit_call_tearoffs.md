@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: implicit_call_tearoffs
-description: "Detalhes sobre o diagnóstico implicit_call_tearoffs produzido pelo analisador do Dart."
+description: >-
+  Details about the implicit_call_tearoffs
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Tear-off implícito do método 'call'._
+_Implicit tear-off of the 'call' method._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um objeto com um método `call`
-é atribuído a uma variável do tipo função, fazendo um tear-off implícito do
-método `call`.
+The analyzer produces this diagnostic when an object with a `call` method
+is assigned to a function-typed variable, implicitly tearing off the
+`call` method.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque uma instância de
-`Callable` é passada para uma função esperando uma `Function`:
+The following code produces this diagnostic because an instance of
+`Callable` is passed to a function expecting a `Function`:
 
 ```dart
 class Callable {
@@ -44,9 +45,9 @@ void f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Faça o tear-off explicitamente do método `call`:
+Explicitly tear off the `call` method:
 
 ```dart
 class Callable {

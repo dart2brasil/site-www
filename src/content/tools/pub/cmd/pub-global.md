@@ -1,48 +1,48 @@
 ---
 title: dart pub global
-description: Use dart pub global para executar scripts Dart hospedados no site pub.dev a partir da linha de comando.
+description: Use dart pub global to run Dart scripts hosted on the pub.dev site from the command line.
 ---
 
-_Global_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
+_Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-A opção `global` do Pub permite executar scripts Dart a partir da
-linha de comando quando você não está atualmente dentro de um pacote.
-Após [ativar um pacote](#activating-a-package), você pode
-[executar scripts](#running-a-script) do diretório `bin` desse pacote.
-[Desativar um pacote](#desativando-um-pacote) remove-o da
-sua lista de pacotes disponíveis globalmente.
+Pub's `global` option allows you to run Dart scripts from the
+command line when you are not currently inside a package.
+After [activating a package](#activating-a-package), you can
+[run scripts](#running-a-script) from that package's `bin` directory.
+[Deactivating a package](#deactivating-a-package) removes it from
+your list of globally available packages.
 
-Por exemplo, digamos que você queira usar o [webdev][] para servir
-seu aplicativo web Dart a partir da linha de comando.
+For example, say you want to use [webdev][] to serve
+your Dart web application from the command line.
 
 ```console
 $ dart pub global activate webdev
 $ webdev serve
 ```
 
-Se isso não funcionar, pode ser necessário
-[configurar seu path](#running-a-script-from-your-path).
+If this doesn't work, you might need to
+[set up your path](#running-a-script-from-your-path).
 
-Para executar um script Dart de dentro de um pacote, ou de um
-pacote do qual seu pacote depende, veja [dart run](/tools/dart-run).
+To run a Dart script from within a package, or from a
+package that your package depends on, see [dart run](/tools/dart-run).
 
-## Ativando um pacote {:#activating-a-package}
+## Activating a package
 
 ```plaintext
-dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <pacote> [constraint-de-versão]
+dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [version-constraint]
 ```
 
-Ative um pacote quando você quiser poder executar
-um ou mais de seus arquivos executáveis a partir da linha de comando.
-Você pode ativar pacotes que residem no
-[site pub.dev]({{site.pub}}), um repositório Git,
-ou sua máquina local.
-Depois de ativar um pacote, veja [Executando um
-script](#running-a-script) para executar scripts
-do diretório `bin` do pacote.
+Activate a package when you want to be able to run
+one or more of its executable files from the command line.
+You can activate packages that live on the
+[pub.dev site]({{site.pub}}), a Git repository,
+or your local machine.
+Once you've activated a package, see [Running a
+script](#running-a-script) to run scripts from the package's
+`bin` directory.
 
-Quando você ativa um pacote, pode especificar uma versão opcional
-_constraint_ (restrição). Veja a flag [constraint](#options) para exemplos de uso.
+When you activate a package you can specify an optional version
+constraint.  See the [constraint](#options) flag for usage examples.
 
 :::note
 [`dart install`][] is a newer alternative to `dart pub global activate`.
@@ -51,145 +51,145 @@ _constraint_ (restrição). Veja a flag [constraint](#options) para exemplos de 
 ### Activating a package on the pub.dev site
 
 ```console
-$ dart pub global activate <pacote pub.dev>
+$ dart pub global activate <pub.dev package>
 ```
 
-Especifique um pacote no site pub.dev para ativá-lo. Por exemplo:
+Specify a package on the pub.dev site to activate it. For example:
 
 ```console
 $ dart pub global activate markdown
 ```
 
-### Ativando um pacote com Git {:#ativando-um-pacote-com-git}
+### Activating a package with Git
 
 ```console
-$ dart pub global activate --source git <URL Git>
-$ dart pub global activate -sgit <URL Git>
+$ dart pub global activate --source git <Git URL>
+$ dart pub global activate -sgit <Git URL>
 ```
 
-Use `--source git` (ou `-sgit`, para abreviar) para ativar
-um pacote em um repositório Git. Os exemplos a seguir,
-que ativam o pacote `async_await` no
-[GitHub](https://github.com/), são equivalentes:
+Use `--source git` (or `-sgit`, for short) to activate
+a package in a Git repository. The following examples,
+which activate the `async_await` package on
+[GitHub](https://github.com/), are equivalent:
 
 ```console
 $ dart pub global activate --source git https://github.com/dart-lang/async_await.git
 $ dart pub global activate -sgit https://github.com/dart-lang/async_await.git
 ```
 
-O Pub espera encontrar o pacote na raiz do repositório Git.
-Para especificar um local diferente,
-use a opção `--git-path` com
-um caminho relativo à raiz do repositório:
+Pub expects to find the package in the root of the Git repository.
+To specify a different location,
+use the `--git-path` option with
+a path relative to the repository root:
 
 ```console
 $ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-path pkgs/http/
 ```
 
-O Pub usa a branch (ramo) padrão do repositório Git. Para especificar um
-ramo ou commit diferente, use a opção `--git-ref`:
+Pub uses the default branch of the Git repository. To specify a
+different branch or commit, use the `--git-ref` option:
 
 ```console
 $ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-ref 36f98e900347335af2338a0e087538009b7de2f9
 ```
 
-### Ativando um pacote em sua máquina local {:#ativando-um-pacote-em-sua-maquina-local}
+### Activating a package on your local machine
 
 ```console
-$ dart pub global activate --source path <caminho>
+$ dart pub global activate --source path <path>
 ```
 
-Use `activate --source path <caminho>` para ativar um pacote na sua máquina local.
-O exemplo a seguir ativa o pacote `stopwatch` do
-diretório `~/dart`:
+Use `activate --source path <path>` to activate a package on your local machine.
+The following example activates the `stopwatch` package from the
+`~/dart` directory:
 
 ```console
 $ dart pub global activate --source path ~/dart/stopwatch
 ```
 
-### Atualizando um pacote ativado {:#atualizando-um-pacote-ativado}
+### Updating an activated package
 
-Uma vez que um pacote foi ativado, você pode atualizá-lo ativando o
-pacote novamente.
+Once a package has been activated, you can upgrade it by activating the
+package again.
 
-## Executando um script {:#running-a-script}
+## Running a script
 
-Você pode executar diretamente um script de um pacote ativado a partir da
-linha de comando. Se você não conseguir executar o script diretamente,
-você também pode usar `dart pub global run`.
+You can directly run a script from an activated package from the
+command line. If you are unable to run the script directly,
+you can also use `dart pub global run`.
 
-### Executando um script a partir do seu PATH {:#running-a-script-from-your-path}
+### Running a script from your PATH
 
-Para executar um script diretamente a partir da linha de comando, adicione o diretório `bin` do [cache do sistema][]
-à sua variável de ambiente `PATH`.
+To run a script directly from the command line, add the [system cache][] `bin`
+directory to your `PATH` environment variable.
 
-Por exemplo, digamos que você ativou o pacote webdev,
-mas você ainda não consegue executar o comando:
+For example, say you've activated the webdev package,
+but you still can't run the command:
 
 ```console
 $ dart pub global activate webdev
 $ webdev serve
--bash: webdev: comando não encontrado
+-bash: webdev: command not found
 ```
 
-Verifique se o diretório `bin` para o cache do sistema está no seu path.
-A seguinte variável `PATH`, no macOS, inclui o cache do sistema:
+Verify that the `bin` directory for the system cache is in your path.
+The following `PATH` variable, on macOS, includes the system cache:
 
 ```console
 $ echo $PATH
 /Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin:[!/Users/<user>/.pub-cache/bin!]
 ```
 
-Se esse diretório estiver faltando no seu `PATH`,
-localize o arquivo para sua plataforma e adicione-o.
+If this directory is missing from your `PATH`,
+locate the file for your platform and add it.
 
-| Plataforma                             | Localização do cache              |
-|--------------------------------------|---------------------------------|
-| macOS ou Linux                       | `$HOME/.pub-cache/bin`          |
+| Platform                             | Cache location                 |
+|--------------------------------------|--------------------------------|
+| macOS or Linux                       | `$HOME/.pub-cache/bin`         |
 | Windows<sup><strong>*</strong></sup> | `%LOCALAPPDATA%\Pub\Cache\bin` |
 
 {:.table .table-striped}
 
-<sup><strong>*</strong></sup> A localização exata do cache do sistema
-pode variar para diferentes versões do Windows.
+<sup><strong>*</strong></sup> The exact location of the system cache
+may vary for different versions of Windows.
 
-Agora você pode invocar o comando diretamente:
+You can now directly invoke the command:
 
 ```console
 $ cd web_project
 $ [!webdev serve!]
 ```
 
-Se o script ainda falhar ao executar a partir da linha de comando, o
-pacote pode não estar [configurado](#configurando-executaveis-de-pacotes) para
-este recurso. Você ainda pode executar o script usando `dart pub global run`.
+If the script still fails to run from the command line, the
+package may not be [configured](#configuring-package-executables) for
+this feature. You can still run the script using `dart pub global run`.
 
-### Executando um script usando `dart pub global run` {:#running-a-script-using-dart-pub-global-run}
+### Running a script using `dart pub global run`
 
 ```plaintext
-$ dart pub global run <pacote>:<executável> [args...]
+$ dart pub global run <package>:<executable> [args...]
 ```
 
-Mesmo que um script não esteja configurado para ser executado a partir da linha de comando,
-você ainda pode usar `dart pub global run`.
-O comando a seguir executa o script `bin/bar.dart` do
-pacote `foo`, passando dois argumentos.
+Even if a script is not configured to be run from the command line,
+you can still use `dart pub global run`.
+The following command runs the `bin/bar.dart` script from the
+`foo` package, passing in two arguments.
 
 ```console
 $ dart pub global run foo:bar arg1 arg2
 ```
 
-### Configurando executáveis de pacotes {:#configurando-executaveis-de-pacotes}
+### Configuring package executables
 
-Se você não é um desenvolvedor de pacotes, pode pular esta seção.
+If you are not a package developer, you can skip this section.
 
-Um pacote pode expor alguns de seus scripts como executáveis
-que podem ser executados diretamente a partir da linha de comando. O script ou scripts
-devem ser listados na entrada
+A package can expose some of its scripts as executables
+that can be run directly from the command line. The script or scripts
+must be listed in the
 [`executables`](/tools/pub/pubspec#executables)
-do arquivo pubspec. Por exemplo, o arquivo pubspec a seguir
-identifica `bin/helloworld.dart` como um executável para o helloworld
-pacote:
+entry of the pubspec file.  For example, the following pubspec file
+identifies `bin/helloworld.dart` as an executable for the helloworld
+package:
 
 ```yaml
 name: helloworld
@@ -198,84 +198,84 @@ executables:
   helloworld:
 ```
 
-Não listar um script sob a tag `executables` reduz a
-usabilidade do script: scripts não listados podem ser executados usando `dart pub global run`, mas não
-diretamente da linha de comando.
+Failing to list a script under the `executables` tag reduces the script's
+usability: unlisted scripts can be executed using `dart pub global run`, but not
+directly from the command line.
 
-## Desativando um pacote {:#desativando-um-pacote}
+## Deactivating a package
 
 ```console
-$ dart pub global deactivate <pacote>
+$ dart pub global deactivate <package>
 ```
 
-Use `deactivate` para remover um pacote da lista de
-pacotes globais disponíveis. Por exemplo:
+Use `deactivate` to remove a package from the list of available
+global packages. For example:
 
 ```console
 $ dart pub global deactivate markdown
 ```
 
-Você não pode mais invocar os scripts do pacote usando `dart pub global run`,
-ou na linha de comando.
+You can no longer invoke the package's scripts using `dart pub global run`,
+or at the command line.
 
-## Listando pacotes ativos {:#listando-pacotes-ativos}
+## Listing active packages
 
 ```console
 $ dart pub global list
 ```
 
-Use `list` para listar todos os pacotes atualmente ativos.
+Use `list` to list all currently active packages.
 
-## Opções {:#options}
+## Options
 
-Para opções que se aplicam a todos os comandos pub, veja
-[Opções globais](/tools/pub/cmd#global-options).
+For options that apply to all pub commands, see
+[Global options](/tools/pub/cmd#global-options).
 
-### `[constraint-de-versão]` {:#constraint-de-versao}
+### `[version-constraint]`
 
-Use `dart pub global activate <pacote> [constraint-de-versão]`
-para especificar uma versão específica do pacote.
-Por exemplo, o seguinte comando busca
-a versão 0.6.0 do pacote `markdown`:
+Use `dart pub global activate <package> [version-constraint]`
+to specify a specific version of the package.
+For example, the following command pulls
+the 0.6.0 version of the `markdown` package:
 
 ```console
 $ dart pub global activate markdown 0.6.0
 ```
 
-Se você especificar um intervalo, o pub escolherá a melhor versão que atenda a essa
-_constraint_ (restrição). Por exemplo:
+If you specify a range, pub picks the best version that meets that
+constraint. For example:
 
 ```console
 $ dart pub global activate foo <3.0.0
 ```
 
-### `--no-executables` {:#no-executables}
+### `--no-executables`
 
-Use `dart pub global activate <pacote> --no-executables`
-para ativar globalmente o pacote especificado,
-mas não colocar nenhum executável em `bin`.
-Você tem que usar `dart pub global run` para executar quaisquer executáveis.
+Use `dart pub global activate <package> --no-executables`
+to globally activate the specified package,
+but not put any executables in `bin`.
+You have to use `dart pub global run` to run any executables.
 
-### `--executable=<name>` ou `-x <name>` {:#executable-name-ou-x-name}
+### `--executable=<name>` or `-x <name>`
 
-Use com `dart pub global activate`
-para adicionar o executável especificado ao seu PATH.
-Você pode passar mais de uma dessas flags.
+Use with `dart pub global activate`
+to add the specified executable to your PATH.
+You can pass more than one of these flags.
 
-Por exemplo, o comando a seguir adiciona `bar` e `baz`,
-(mas não quaisquer outros executáveis que `foo` possa definir)
-ao seu PATH.
+For example, the following command adds `bar` and `baz`,
+(but not any other executables that `foo` might define)
+to your PATH.
 
 ```console
 $ dart pub global activate foo -x bar -x baz
 ```
 
-### `--overwrite` {:#overwrite}
+### `--overwrite`
 
-Use `dart pub global activate <pacote> --overwrite`
-para sobrescrever quaisquer executáveis globais ativados anteriormente
-com o mesmo nome. Se você não especificar esta flag,
-o executável preexistente não será substituído.
+Use `dart pub global activate <package> --overwrite`
+to overwrite any previously activated global executables
+with the same name. If you don't specify this flag,
+the preexisting executable will not be replaced.
 
 
 {% render 'pub-problems.md' %}

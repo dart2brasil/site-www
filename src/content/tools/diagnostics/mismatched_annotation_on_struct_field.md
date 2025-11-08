@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: mismatched_annotation_on_struct_field
-description: "Detalhes sobre o diagnóstico mismatched_annotation_on_struct_field produzido pelo analisador do Dart."
+description: >-
+  Details about the mismatched_annotation_on_struct_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A anotação não corresponde ao tipo declarado do campo._
+_The annotation doesn't match the declared type of the field._
 
 ## Description
 
-O analisador produz este diagnóstico quando a anotação em um campo em uma
-subclasse de `Struct` ou `Union` não corresponde ao tipo Dart do campo.
+The analyzer produces this diagnostic when the annotation on a field in a
+subclass of `Struct` or `Union` doesn't match the Dart type of the field.
 
-Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a anotação
-`Double` não corresponde ao tipo Dart `int`:
+The following code produces this diagnostic because the annotation
+`Double` doesn't match the Dart type `int`:
 
 ```dart
 import 'dart:ffi';
@@ -31,7 +32,7 @@ final class C extends Struct {
 
 ## Common fixes
 
-Se o tipo do campo está correto, então altere a anotação para corresponder:
+If the type of the field is correct, then change the annotation to match:
 
 ```dart
 import 'dart:ffi';
@@ -42,7 +43,7 @@ final class C extends Struct {
 }
 ```
 
-Se a anotação está correta, então altere o tipo do campo para corresponder:
+If the annotation is correct, then change the type of the field to match:
 
 ```dart
 import 'dart:ffi';

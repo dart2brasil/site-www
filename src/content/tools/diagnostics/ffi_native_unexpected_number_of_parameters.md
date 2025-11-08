@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: ffi_native_unexpected_number_of_parameters
-description: "Detalhes sobre o diagnóstico ffi_native_unexpected_number_of_parameters produzido pelo analisador Dart."
+description: >-
+  Details about the ffi_native_unexpected_number_of_parameters
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Número inesperado de parâmetros de anotação Native. Esperado {0}, mas tem {1}._
+_Unexpected number of Native annotation parameters. Expected {0} but has {1}._
 
 ## Description
 
-O analisador produz este diagnóstico quando o número de parâmetros no
-tipo de função usado como argumento de tipo para a anotação `@Native` não
-corresponde ao número de parâmetros na função sendo anotada.
+The analyzer produces this diagnostic when the number of parameters in the
+function type used as a type argument for the `@Native` annotation doesn't
+match the number of parameters in the function being annotated.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o tipo de função usado
-como argumento de tipo para a anotação `@Native` (`Void Function(Double)`)
-tem um argumento e o tipo da função anotada
-(`void f(double, double)`) tem dois argumentos:
+The following code produces this diagnostic because the function type used
+as a type argument for the `@Native` annotation (`Void Function(Double)`)
+has one argument and the type of the annotated function
+(`void f(double, double)`) has two arguments:
 
 ```dart
 import 'dart:ffi';
@@ -30,8 +31,8 @@ external void [!f!](double x, double y);
 
 ## Common fixes
 
-Se a função anotada está correta, então atualize o tipo de função na
-anotação `@Native` para corresponder:
+If the annotated function is correct, then update the function type in the
+`@Native` annotation to match:
 
 ```dart
 import 'dart:ffi';
@@ -40,8 +41,8 @@ import 'dart:ffi';
 external void f(double x, double y);
 ```
 
-Se o tipo de função na anotação `@Native` está correto, então atualize
-a função anotada para corresponder:
+If the function type in the `@Native` annotation is correct, then update
+the annotated function to match:
 
 ```dart
 import 'dart:ffi';

@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: invocation_of_non_function_expression
-description: "Detalhes sobre o diagnóstico invocation_of_non_function_expression produzido pelo analisador do Dart."
+description: >-
+  Details about the invocation_of_non_function_expression
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A expressão não avalia para uma função, então não pode ser invocada._
+_The expression doesn't evaluate to a function, so it can't be invoked._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma invocação de função é encontrada,
-mas o nome sendo referenciado não é o nome de uma função, ou quando a
-expressão que computa a função não computa uma função.
+The analyzer produces this diagnostic when a function invocation is found,
+but the name being referenced isn't the name of a function, or when the
+expression computing the function doesn't compute a function.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque `x` não é uma função:
+The following code produces this diagnostic because `x` isn't a function:
 
 ```dart
 int x = 0;
@@ -26,8 +27,8 @@ int f() => x;
 var y = [!x!]();
 ```
 
-O código a seguir produz este diagnóstico porque `f()` não retorna uma
-função:
+The following code produces this diagnostic because `f()` doesn't return a
+function:
 
 ```dart
 int x = 0;
@@ -37,11 +38,11 @@ int f() => x;
 var y = [!f()!]();
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você precisa invocar uma função, então substitua o código antes da lista de argumentos
-pelo nome de uma função ou por uma expressão que compute uma
-função:
+If you need to invoke a function, then replace the code before the argument
+list with the name of a function or with an expression that computes a
+function:
 
 ```dart
 int x = 0;

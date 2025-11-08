@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_conditional_assignment
-description: "Detalhes sobre o diagnóstico prefer_conditional_assignment produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_conditional_assignment
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,19 +18,19 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_A instrução 'if' poderia ser substituída por uma atribuição null-aware._
+_The 'if' statement could be replaced by a null-aware assignment._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma atribuição a uma variável é
-condicional com base em se a variável tem o valor `null` e o
-operador `??=` poderia ser usado em vez disso.
+The analyzer produces this diagnostic when an assignment to a variable is
+conditional based on whether the variable has the value `null` and the
+`??=` operator could be used instead.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o parâmetro `s` está
-sendo comparado a `null` para determinar se deve atribuir um
-valor diferente:
+The following code produces this diagnostic because the parameter `s` is
+being compared to `null` in order to determine whether to assign a
+different value:
 
 ```dart
 int f(String? s) {
@@ -42,7 +43,7 @@ int f(String? s) {
 
 ## Common fixes
 
-Use o operador `??=` em vez de uma instrução `if` explícita:
+Use the `??=` operator instead of an explicit `if` statement:
 
 ```dart
 int f(String? s) {

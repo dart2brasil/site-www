@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: undefined_extension_operator
-description: "Detalhes sobre o diagnóstico undefined_extension_operator produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_extension_operator
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O operador '{0}' não está definido para a extension '{1}'._
+_The operator '{0}' isn't defined for the extension '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um operador é invocado em uma
-extension específica quando essa extension não implementa o operador.
+The analyzer produces this diagnostic when an operator is invoked on a
+specific extension when that extension doesn't implement the operator.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a extension `E`
-não define o operador `*`:
+The following code produces this diagnostic because the extension `E`
+doesn't define the operator `*`:
 
 ```dart
 var x = E('') [!*!] 4;
@@ -24,10 +25,10 @@ var x = E('') [!*!] 4;
 extension E on String {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Se a extension deve implementar o operador, então adicione uma
-implementação do operador à extension:
+If the extension is expected to implement the operator, then add an
+implementation of the operator to the extension:
 
 ```dart
 var x = E('') * 4;
@@ -37,11 +38,11 @@ extension E on String {
 }
 ```
 
-Se o operador é definido por uma extension diferente, então altere o nome
-da extension para o nome da que define o operador.
+If the operator is defined by a different extension, then change the name
+of the extension to the name of the one that defines the operator.
 
-Se o operador é definido no argumento da sobrescrita da extension, então
-remova a sobrescrita da extension:
+If the operator is defined on the argument of the extension override, then
+remove the extension override:
 
 ```dart
 var x = '' * 4;

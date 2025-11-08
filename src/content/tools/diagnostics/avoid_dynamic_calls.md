@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: avoid_dynamic_calls
-description: "Detalhes sobre o diagnóstico avoid_dynamic_calls produzido pelo analisador do Dart."
+description: >-
+  Details about the avoid_dynamic_calls
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Invocação de método ou acesso a propriedade em um alvo 'dynamic'._
+_Method invocation or property access on a 'dynamic' target._
 
 ## Description
 
-O analisador produz este diagnóstico quando um membro de uma classe é acessado
-em uma expressão cujo tipo é `dynamic`.
+The analyzer produces this diagnostic when a member of a class is accessed
+on an expression whose type is `dynamic`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o getter `length` está
-sendo invocado em `s`, que possui o tipo `dynamic`:
+The following code produces this diagnostic because the getter `length` is
+being invoked on `s`, which has the type `dynamic`:
 
 ```dart
 void f(dynamic s) {
@@ -37,7 +38,7 @@ void f(dynamic s) {
 
 ## Common fixes
 
-Forneça informação de tipo suficiente para que a expressão tenha um tipo diferente de
+Provide enough type information that the expression has a type other than
 `dynamic`:
 
 ```dart

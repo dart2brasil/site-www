@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: extension_declares_member_of_object
-description: "Detalhes sobre o diagnóstico extension_declares_member_of_object produzido pelo analisador Dart."
+description: >-
+  Details about the extension_declares_member_of_object
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extensions não podem declarar membros com o mesmo nome de um membro declarado por 'Object'._
+_Extensions can't declare members with the same name as a member declared by 'Object'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração de extension
-declara um membro com o mesmo nome de um membro declarado na classe
-`Object`. Tal membro nunca pode ser usado porque o membro em `Object` é
-sempre encontrado primeiro.
+The analyzer produces this diagnostic when an extension declaration
+declares a member with the same name as a member declared in the class
+`Object`. Such a member can never be used because the member in `Object` is
+always found first.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `toString` é definido
-por `Object`:
+The following code produces this diagnostic because `toString` is defined
+by `Object`:
 
 ```dart
 extension E on String {
@@ -26,10 +27,10 @@ extension E on String {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova o membro ou renomeie-o para que o nome não entre em conflito com o
-membro em `Object`:
+Remove the member or rename it so that the name doesn't conflict with the
+member in `Object`:
 
 ```dart
 extension E on String {

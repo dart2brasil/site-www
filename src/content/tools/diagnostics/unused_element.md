@@ -1,41 +1,42 @@
 ---
-ia-translate: true
 title: unused_element
-description: "Detalhes sobre o diagnóstico unused_element produzido pelo analisador Dart."
+description: >-
+  Details about the unused_element
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A declaração '{0}' não é referenciada._
+_The declaration '{0}' isn't referenced._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma declaração privada não é
-referenciada na biblioteca que contém a declaração. Os seguintes
-tipos de declarações são analisados:
-- Declarações privadas de nível superior e todos os seus membros
-- Membros privados de declarações públicas
+The analyzer produces this diagnostic when a private declaration isn't
+referenced in the library that contains the declaration. The following
+kinds of declarations are analyzed:
+- Private top-level declarations and all of their members
+- Private members of public declarations
 
-Nem todas as referências a um elemento irão marcá-lo como "usado":
-- Atribuir um valor a uma variável de nível superior (com uma atribuição `=`
-  padrão, ou uma atribuição null-aware `??=`) não conta como usar
-  ela.
-- Referenciar um elemento em uma referência de comentário de documentação não conta como
-  usá-lo.
-- Referenciar uma classe, mixin ou enum no lado direito de uma expressão `is`
-  não conta como usá-lo.
+Not all references to an element will mark it as "used":
+- Assigning a value to a top-level variable (with a standard `=`
+  assignment, or a null-aware `??=` assignment) does not count as using
+  it.
+- Referring to an element in a doc comment reference does not count as
+  using it.
+- Referring to a class, mixin, or enum on the right side of an `is`
+  expression does not count as using it.
 
-## Exemplo
+## Example
 
-Assumindo que nenhum código na biblioteca referencia `_C`, o código a seguir
-produz este diagnóstico:
+Assuming that no code in the library references `_C`, the following code
+produces this diagnostic:
 
 ```dart
 class [!_C!] {}
 ```
 
-## Correções comuns
+## Common fixes
 
-Se a declaração não é necessária, então remova-a.
+If the declaration isn't needed, then remove it.
 
-Se a declaração pretende ser usada, então adicione o código para usá-la.
+If the declaration is intended to be used, then add the code to use it.

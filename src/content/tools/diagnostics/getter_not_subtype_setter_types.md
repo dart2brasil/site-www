@@ -1,26 +1,28 @@
 ---
-ia-translate: true
 title: getter_not_subtype_setter_types
-description: "Detalhes sobre o diagnóstico getter_not_subtype_setter_types produzido pelo analisador do Dart."
+description: >-
+  Details about the getter_not_subtype_setter_types
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O tipo de retorno do getter '{0}' é '{1}', que não é um subtipo do tipo '{2}' de seu setter '{3}'._
+_The return type of getter '{0}' is '{1}' which isn't a subtype of the type '{2}' of its setter '{3}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o tipo de retorno de um getter
-não é um subtipo do tipo do parâmetro de um setter com o mesmo nome.
+The analyzer produces this diagnostic when the return type of a getter
+isn't a subtype of the type of the parameter of a setter with the same
+name.
 
-A relação de subtipo é um requisito independentemente de o getter e o setter estarem
-na mesma classe ou se um deles está em uma superclasse do outro.
+The subtype relationship is a requirement whether the getter and setter are
+in the same class or whether one of them is in a superclass of the other.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o tipo de retorno do
-getter `x` é `num`, o tipo do parâmetro do setter `x` é `int`, e
-`num` não é um subtipo de `int`:
+The following code produces this diagnostic because the return type of the
+getter `x` is `num`, the parameter type of the setter `x` is `int`, and
+`num` isn't a subtype of `int`:
 
 ```dart
 class C {
@@ -32,7 +34,7 @@ class C {
 
 ## Common fixes
 
-Se o tipo do getter estiver correto, então altere o tipo do setter:
+If the type of the getter is correct, then change the type of the setter:
 
 ```dart
 class C {
@@ -42,7 +44,7 @@ class C {
 }
 ```
 
-Se o tipo do setter estiver correto, então altere o tipo do getter:
+If the type of the setter is correct, then change the type of the getter:
 
 ```dart
 class C {

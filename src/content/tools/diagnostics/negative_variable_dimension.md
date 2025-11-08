@@ -1,31 +1,33 @@
 ---
-ia-translate: true
 title: negative_variable_dimension
-description: "Detalhes sobre o diagnóstico negative_variable_dimension produzido pelo analisador do Dart."
+description: >-
+  Details about the negative_variable_dimension
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A dimensão variável de um array de comprimento variável deve ser não-negativa._
+_The variable dimension of a variable-length array must be non-negative._
 
 ## Description
 
-O analisador produz este diagnóstico em dois casos.
+The analyzer produces this diagnostic in two cases.
 
-O primeiro é quando a dimensão variável fornecida em uma
-anotação `Array.variableWithVariableDimension` é negativa. A dimensão
-variável é o primeiro argumento na anotação.
+The first is when the variable dimension given in an
+`Array.variableWithVariableDimension` annotation is negative. The variable
+dimension is the first argument in the annotation.
 
-O segundo é quando a dimensão variável fornecida em uma
-anotação `Array.variableMulti` é negativa. A dimensão variável é
-especificada no argumento `variableDimension` da anotação.
+The second is when the variable dimension given in an
+`Array.variableMulti` annotation is negative. The variable dimension is
+specified in the `variableDimension` argument of the annotation.
 
-Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
+For more information about FFI, see [C interop using dart:ffi][ffi].
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque uma dimensão variável
-de `-1` foi fornecida na anotação `Array.variableWithVariableDimension`:
+The following code produces this diagnostic because a variable dimension
+of `-1` was provided in the `Array.variableWithVariableDimension`
+annotation:
 
 ```dart
 import 'dart:ffi';
@@ -36,8 +38,8 @@ final class MyStruct extends Struct {
 }
 ```
 
-O código a seguir produz este diagnóstico porque uma dimensão variável
-de `-1` foi fornecida na anotação `Array.variableMulti`:
+The following code produces this diagnostic because a variable dimension
+of `-1` was provided in the `Array.variableMulti` annotation:
 
 ```dart
 import 'dart:ffi';
@@ -50,7 +52,7 @@ final class MyStruct2 extends Struct {
 
 ## Common fixes
 
-Altere a dimensão variável para zero (`0`) ou um número positivo:
+Change the variable dimension with zero (`0`) or a positive number:
 
 ```dart
 import 'dart:ffi';
@@ -61,7 +63,7 @@ final class MyStruct extends Struct {
 }
 ```
 
-Altere a dimensão variável para zero (`0`) ou um número positivo:
+Change the variable dimension with zero (`0`) or a positive number:
 
 ```dart
 import 'dart:ffi';

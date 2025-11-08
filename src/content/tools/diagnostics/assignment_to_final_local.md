@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: assignment_to_final_local
-description: "Detalhes sobre o diagnóstico assignment_to_final_local produzido pelo analisador do Dart."
+description: >-
+  Details about the assignment_to_final_local
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A variável final '{0}' só pode ser definida uma vez._
+_The final variable '{0}' can only be set once._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma variável local que foi
-declarada como final é atribuída após ter sido inicializada.
+The analyzer produces this diagnostic when a local variable that was
+declared to be final is assigned after it was initialized.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `x` é final, então
-não pode ter um valor atribuído a ela após ter sido inicializada:
+The following code produces this diagnostic because `x` is final, so it
+can't have a value assigned to it after it was initialized:
 
 ```dart
 void f() {
@@ -28,7 +29,8 @@ void f() {
 
 ## Common fixes
 
-Remova a keyword `final` e substitua por `var` se não houver anotação de tipo:
+Remove the keyword `final`, and replace it with `var` if there's no type
+annotation:
 
 ```dart
 void f() {

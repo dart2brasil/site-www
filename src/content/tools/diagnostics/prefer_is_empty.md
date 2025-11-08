@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_is_empty
-description: "Detalhes sobre o diagnóstico prefer_is_empty produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_is_empty
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,24 +18,24 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_A comparação é sempre 'false' porque o comprimento é sempre maior ou igual a 0._
+_The comparison is always 'false' because the length is always greater than or equal to 0._
 
-_A comparação é sempre 'true' porque o comprimento é sempre maior ou igual a 0._
+_The comparison is always 'true' because the length is always greater than or equal to 0._
 
-_Use 'isEmpty' em vez de 'length' para testar se a coleção está vazia._
+_Use 'isEmpty' instead of 'length' to test whether the collection is empty._
 
-_Use 'isNotEmpty' em vez de 'length' para testar se a coleção está vazia._
+_Use 'isNotEmpty' instead of 'length' to test whether the collection is empty._
 
 ## Description
 
-O analisador produz este diagnóstico quando o resultado de invocar
-`Iterable.length` ou `Map.length` é comparado para igualdade com zero
+The analyzer produces this diagnostic when the result of invoking either
+`Iterable.length` or `Map.length` is compared for equality with zero
 (`0`).
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o resultado de invocar
-`length` é verificado para igualdade com zero:
+The following code produces this diagnostic because the result of invoking
+`length` is checked for equality with zero:
 
 ```dart
 int f(Iterable<int> p) => [!p.length == 0!] ? 0 : p.first;
@@ -42,7 +43,7 @@ int f(Iterable<int> p) => [!p.length == 0!] ? 0 : p.first;
 
 ## Common fixes
 
-Substitua o uso de `length` por um uso de `isEmpty` ou
+Replace the use of `length` with a use of either `isEmpty` or
 `isNotEmpty`:
 
 ```dart

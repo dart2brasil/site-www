@@ -1,28 +1,29 @@
 ---
-ia-translate: true
 title: import_of_non_library
-description: "Detalhes sobre o diagnóstico import_of_non_library produzido pelo analisador do Dart."
+description: >-
+  Details about the import_of_non_library
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A biblioteca importada '{0}' não pode ter uma diretiva part-of._
+_The imported library '{0}' can't have a part-of directive._
 
 ## Description
 
-O analisador produz este diagnóstico quando um [part file][] é importado
-em uma biblioteca.
+The analyzer produces this diagnostic when a [part file][] is imported
+into a library.
 
 ## Example
 
-Dado um [part file][] chamado `part.dart` contendo o seguinte:
+Given a [part file][] named `part.dart` containing the following:
 
 ```dart
 part of lib;
 ```
 
-O código a seguir produz este diagnóstico porque arquivos importados não
-podem ter uma diretiva part-of:
+The following code produces this diagnostic because imported files can't
+have a part-of directive:
 
 ```dart
 library lib;
@@ -32,7 +33,7 @@ import [!'part.dart'!];
 
 ## Common fixes
 
-Importe a biblioteca que contém o [part file][] em vez do próprio
-[part file][].
+Import the library that contains the [part file][] rather than the
+[part file][] itself.
 
 [part file]: /resources/glossary#part-file

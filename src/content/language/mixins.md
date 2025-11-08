@@ -1,10 +1,9 @@
 ---
-ia-translate: true
 title: Mixins
-description: Aprenda como adicionar funcionalidades a uma classe em Dart.
+description: Learn how to add to features to a class in Dart.
 prevpage:
   url: /language/extend
-  title: Estender uma classe
+  title: Extend a class
 nextpage:
   url: /language/enums
   title: Enums
@@ -12,11 +11,11 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-Mixins são uma forma de definir código que pode ser reutilizado em múltiplas hierarquias de classes.
-Eles são projetados para fornecer implementações de membros em massa.
+Mixins are a way of defining code that can be reused in multiple class hierarchies.
+They are intended to provide member implementations en masse. 
 
-Para usar um mixin, use a palavra-chave `with` seguida por um ou mais nomes de
-mixin. O exemplo a seguir mostra duas classes que usam (ou são subclasses de)
+To use a mixin, use the `with` keyword followed by one or more mixin
+names. The following example shows two classes that use (or, are subclasses of)
 mixins:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (musician-and-maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
@@ -33,14 +32,14 @@ class Maestro extends Person [!with Musical, Aggressive, Demented!] {
 }
 ```
 
-Para definir um mixin, use a declaração `mixin`.
-No caso raro em que você precise definir um mixin _e_ uma classe, você pode usar
-a declaração [`mixin class`](#class-mixin-or-mixin-class).
+To define a mixin, use the `mixin` declaration. 
+In the rare case where you need to define both a mixin _and_ a class, you can use
+the [`mixin class` declaration](#class-mixin-or-mixin-class).
 
-Mixins e mixin classes não podem ter uma cláusula `extends` e não devem
-declarar nenhum construtor gerador.
+Mixins and mixin classes cannot have an `extends` clause,
+and must not declare any generative constructors.
 
-Por exemplo:
+For example:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (musical)"?>
 ```dart
@@ -61,23 +60,23 @@ mixin Musical {
 }
 ```
 
-## Especifique membros que um mixin pode chamar em si mesmo {:#specify-members-a-mixin-can-call-on-itself}
+## Specify members a mixin can call on itself
 
-Às vezes, um mixin depende de ser capaz de invocar um método ou acessar campos,
-mas não pode definir esses membros por si mesmo (porque mixins não podem usar
-parâmetros de construtor para instanciar seus próprios campos).
+Sometimes a mixin depends on being able to invoke a method or access fields,
+but can't define those members itself (because mixins can't use constructor
+parameters to instantiate their own fields).
 
-As seções a seguir cobrem diferentes estratégias para garantir que qualquer subclasse
-de um mixin defina quaisquer membros dos quais o comportamento do mixin dependa.
+The following sections cover different strategies for ensuring any subclass
+of a mixin defines any members the mixin's behavior depends on. 
 
-### Defina membros abstratos no mixin {:#define-abstract-members-in-the-mixin}
+### Define abstract members in the mixin
 
-Declarar um método abstrato em um mixin força qualquer tipo que usa
-o mixin a definir o método abstrato do qual seu comportamento depende.
+Declaring an abstract method in a mixin forces any type that uses
+the mixin to define the abstract method upon which its behavior depends. 
 
 ```dart
 mixin Musician {
-  void playInstrument(String instrumentName); // Método abstrato.
+  void playInstrument(String instrumentName); // Abstract method.
 
   void playPiano() {
     playInstrument('Piano');
@@ -87,23 +86,23 @@ mixin Musician {
   }
 }
 
-class Virtuoso with Musician {
+class Virtuoso with Musician { 
 
   @override
-  void playInstrument(String instrumentName) { // Subclasse deve definir.
+  void playInstrument(String instrumentName) { // Subclass must define.
     print('Plays the $instrumentName beautifully');
-  }
-}
+  }  
+} 
 ```
 
-#### Acesse o estado na subclasse do mixin {:#access-state-in-the-mixin-s-subclass}
+#### Access state in the mixin's subclass
 
-Declarar membros abstratos também permite acessar o estado na subclasse
-de um mixin, chamando getters que são definidos como abstratos no mixin:
+Declaring abstract members also allows you to access state on the subclass
+of a mixin, by calling getters which are defined as abstract on the mixin:
 
 ```dart
-/// Pode ser aplicado a qualquer tipo com uma propriedade [name] e fornece uma
-/// implementação de [hashCode] e operador `==` em termos dela.
+/// Can be applied to any type with a [name] property and provides an
+/// implementation of [hashCode] and operator `==` in terms of it.
 mixin NameIdentity {
   String get name;
 
@@ -121,11 +120,11 @@ class Person with NameIdentity {
 }
 ```
 
-### Implemente uma interface {:#implement-an-interface}
+### Implement an interface
 
-Semelhante a declarar o mixin abstrato, colocar uma cláusula `implements` no
-mixin, sem realmente implementar a interface, também garantirá que quaisquer dependências
-de membro sejam definidas para o mixin.
+Similar to declaring the mixin abstract, putting an `implements` clause on the
+mixin while not actually implementing the interface will also ensure any member
+dependencies are defined for the mixin.
 
 ```dart
 abstract interface class Tuner {
@@ -136,7 +135,7 @@ mixin Guitarist implements Tuner {
   void playSong() {
     tuneInstrument();
 
-    print('Toca violão majestosamente.');
+    print('Strums guitar majestically.');
   }
 }
 
@@ -144,31 +143,31 @@ class PunkRocker with Guitarist {
 
   @override
   void tuneInstrument() {
-    print("Não se preocupe, estar fora de sintonia é punk rock.");
+    print("Don't bother, being out of tune is punk rock.");
   }
 }
 ```
 
-### Use a cláusula `on` para declarar uma superclasse {:#use-the-on-clause-to-declare-a-superclass}
+### Use the `on` clause to declare a superclass
 
-A cláusula `on` existe para definir o tipo contra o qual as chamadas `super` são resolvidas.
-Portanto, você só deve usá-la se precisar ter uma chamada `super` dentro de um mixin.
+The `on` clause exists to define the type that `super` calls are resolved against.
+So, you should only use it if you need to have a `super` call inside a mixin. 
 
-A cláusula `on` força qualquer classe que usa um mixin a também ser uma subclasse
-do tipo na cláusula `on`.
-Se o mixin depende de membros na superclasse,
-isso garante que esses membros estejam disponíveis onde o mixin é usado:
+The `on` clause forces any class that uses a mixin to also be a subclass
+of the type in the `on` clause.
+If the mixin depends on members in the superclass,
+this ensures those members are available where the mixin is used:
 
 ```dart
 class Musician {
   musicianMethod() {
-    print('Tocando música!');
+    print('Playing music!');
   }
 }
 
 mixin MusicalPerformer [!on Musician!] {
   performerMethod() {
-    print('Performando música!');
+    print('Performing music!');
     super.musicianMethod();
   }
 }
@@ -180,38 +179,38 @@ main() {
 }
 ```
 
-Neste exemplo, apenas as classes que estendem ou implementam a classe `Musician`
-podem usar o mixin `MusicalPerformer`. Como `SingerDancer` estende `Musician`,
-`SingerDancer` pode incluir `MusicalPerformer`.
+In this example, only classes that extend or implement the `Musician` class
+can use the mixin `MusicalPerformer`. Because `SingerDancer` extends `Musician`,
+`SingerDancer` can mix in `MusicalPerformer`.
 
-## `class`, `mixin` ou `mixin class`? {:#class-mixin-or-mixin-class}
+## `class`, `mixin`, or `mixin class`?
 
 :::version-note
-A declaração `mixin class` requer uma [versão de linguagem][language version] de pelo menos 3.0.
+The `mixin class` declaration requires a [language version][] of at least 3.0.
 :::
 
-Uma declaração `mixin` define um mixin. Uma declaração `class` define uma [classe][class].
-Uma declaração `mixin class` define uma classe que pode ser usada tanto como uma classe regular
-quanto como um mixin, com o mesmo nome e o mesmo tipo.
+A `mixin` declaration defines a mixin. A `class` declaration defines a [class][].
+A `mixin class` declaration defines a class that is usable as both a regular class
+and a mixin, with the same name and the same type.
 
 ```dart
 mixin class Musician {
   // ...
 }
 
-class Novice with Musician { // Usa Musician como um mixin
+class Novice with Musician { // Use Musician as a mixin
   // ...
 }
 
-class Novice extends Musician { // Usa Musician como uma classe
+class Novice extends Musician { // Use Musician as a class
   // ...
 }
 ```
 
-Quaisquer restrições que se aplicam a classes ou mixins também se aplicam a mixin classes:
+Any restrictions that apply to classes or mixins also apply to mixin classes:
 
-- Mixins não podem ter cláusulas `extends` ou `with`, portanto, nem uma `mixin class`.
-- Classes não podem ter uma cláusula `on`, portanto, nem uma `mixin class`.
+- Mixins can't have `extends` or `with` clauses, so neither can a `mixin class`.
+- Classes can't have an `on` clause, so neither can a `mixin class`.
 
 [language version]: /resources/language/evolution#language-versioning
 [class]: /language/classes

@@ -1,7 +1,6 @@
 ---
-ia-translate: true
-title: Tipos enumerados
-description: Aprenda sobre o tipo enum em Dart.
+title: Enumerated types
+description: Learn about the enum type in Dart.
 shortTitle: Enums
 prevpage:
   url: /language/mixins
@@ -11,26 +10,26 @@ nextpage:
   title: Dot shorthands
 ---
 
-Tipos enumerados, frequentemente chamados de _enumerações_ ou _enums_,
-são um tipo especial de classe usada para representar
-um número fixo de valores constantes.
+Enumerated types, often called _enumerations_ or _enums_,
+are a special kind of class used to represent
+a fixed number of constant values.
 
 :::note
-Todos os enums automaticamente estendem a classe [`Enum`][].
-Eles também são sealed (selados),
-o que significa que não podem ser subclassificados, implementados, misturados,
-ou instanciados explicitamente de outra forma.
+All enums automatically extend the [`Enum`][] class.
+They are also sealed,
+meaning they cannot be subclassed, implemented, mixed in,
+or otherwise explicitly instantiated.
 
-Classes abstratas e mixins podem explicitamente implementar ou estender `Enum`,
-mas a menos que sejam então implementados ou misturados em uma declaração enum,
-nenhum objeto pode realmente implementar o tipo dessa classe ou mixin.
+Abstract classes and mixins can explicitly implement or extend `Enum`,
+but unless they are then implemented by or mixed into an enum declaration,
+no objects can actually implement the type of that class or mixin.
 :::
 
-## Declarando enums simples {:#declaring-simple-enums}
+## Declaring simple enums
 
-Para declarar um tipo enumerado simples,
-use a palavra-chave `enum` e
-liste os valores que você quer que sejam enumerados:
+To declare a simple enumerated type,
+use the `enum` keyword and
+list the values you want to be enumerated:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enum)"?>
 ```dart
@@ -38,39 +37,39 @@ enum Color { red, green, blue }
 ```
 
 :::tip
-Você também pode usar [vírgulas à direita][] ao declarar um tipo enumerado
-para ajudar a prevenir erros de copiar e colar.
+You can also use [trailing commas][] when declaring an enumerated type
+to help prevent copy-paste errors.
 :::
 
-## Declarando enums aprimorados {:#declaring-enhanced-enums}
+## Declaring enhanced enums
 
-Dart também permite que declarações enum declarem classes
-com campos, métodos e construtores const
-que são limitados a um número fixo de instâncias constantes conhecidas.
+Dart also allows enum declarations to declare classes
+with fields, methods, and const constructors
+which are limited to a fixed number of known constant instances.
 
-Para declarar um enum aprimorado,
-siga uma sintaxe similar a [classes][] normais,
-mas com alguns requisitos extras:
+To declare an enhanced enum,
+follow a syntax similar to normal [classes][],
+but with a few extra requirements:
 
-* Variáveis de instância devem ser `final`,
-  incluindo aquelas adicionadas por [mixins][].
-* Todos os [construtores geradores][] devem ser constantes.
-* [Construtores factory][] só podem retornar
-  uma das instâncias enum fixas e conhecidas.
-* Nenhuma outra classe pode ser estendida já que [`Enum`] é estendida automaticamente.
-* Não pode haver sobrescritas para `index`, `hashCode`, o operador de igualdade `==`.
-* Um membro chamado `values` não pode ser declarado em um enum,
-  já que entraria em conflito com o getter estático `values` gerado automaticamente.
-* Todas as instâncias do enum devem ser declaradas
-  no início da declaração,
-  e deve haver pelo menos uma instância declarada.
+* Instance variables must be `final`,
+  including those added by [mixins][].
+* All [generative constructors][] must be constant.
+* [Factory constructors][] can only return
+  one of the fixed, known enum instances.
+* No other class can be extended as [`Enum`] is automatically extended.
+* There cannot be overrides for `index`, `hashCode`, the equality operator `==`.
+* A member named `values` cannot be declared in an enum,
+  as it would conflict with the automatically generated static `values` getter.
+* All instances of the enum must be declared
+  in the beginning of the declaration,
+  and there must be at least one instance declared.
 
-Métodos de instância em um enum aprimorado podem usar `this` para
-referenciar o valor enum atual.
+Instance methods in an enhanced enum can use `this` to
+reference the current enum value.
 
-Aqui está um exemplo que declara um enum aprimorado
-com múltiplas instâncias, variáveis de instância,
-getters e uma interface implementada:
+Here is an example that declares an enhanced enum
+with multiple instances, instance variables,
+getters, and an implemented interface:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enhanced)"?>
 ```dart
@@ -99,13 +98,13 @@ enum Vehicle implements Comparable<Vehicle> {
 ```
 
 :::version-note
-Enums aprimorados requerem uma [versão de linguagem][] de pelo menos 2.17.
+Enhanced enums require a [language version][] of at least 2.17.
 :::
 
-## Usando enums {:#using-enums}
+## Using enums
 
-Acesse os valores enumerados como
-qualquer outra [variável estática][]:
+Access the enumerated values like
+any other [static variable][]:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (access)"?>
 ```dart
@@ -115,10 +114,10 @@ if (favoriteColor == Color.blue) {
 }
 ```
 
-Cada valor em um enum tem um getter `index`,
-que retorna a posição baseada em zero do valor na declaração enum.
-Por exemplo, o primeiro valor tem índice 0,
-e o segundo valor tem índice 1.
+Each value in an enum has an `index` getter,
+which returns the zero-based position of the value in the enum declaration.
+For example, the first value has index 0,
+and the second value has index 1.
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (index)"?>
 ```dart
@@ -127,8 +126,8 @@ assert(Color.green.index == 1);
 assert(Color.blue.index == 2);
 ```
 
-Para obter uma lista de todos os valores enumerados,
-use a constante `values` do enum.
+To get a list of all the enumerated values,
+use the enum's `values` constant.
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (values)"?>
 ```dart
@@ -136,8 +135,8 @@ List<Color> colors = Color.values;
 assert(colors[2] == Color.blue);
 ```
 
-Você pode usar enums em [comandos switch][], e
-você receberá um aviso se não lidar com todos os valores do enum:
+You can use enums in [switch statements][], and
+you'll get a warning if you don't handle all of the enum's values:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (switch)"?>
 ```dart
@@ -153,17 +152,17 @@ switch (aColor) {
 }
 ```
 
-Se você precisa acessar o nome de um valor enumerado,
-como `'blue'` de `Color.blue`,
-use a propriedade `.name`:
+If you need to access the name of an enumerated value,
+such as `'blue'` from `Color.blue`,
+use the `.name` property:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
 ```dart
 print(Color.blue.name); // 'blue'
 ```
 
-Você pode acessar um membro de um valor enum
-como faria em um objeto normal:
+You can access a member of an enum value
+like you would on a normal object:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (method-call)"?>
 ```dart
@@ -171,11 +170,11 @@ print(Vehicle.car.carbonFootprint);
 ```
 
 [`Enum`]: {{site.dart-api}}/dart-core/Enum-class.html
-[vírgulas à direita]: /language/collections#lists
+[trailing commas]: /language/collections#lists
 [classes]: /language/classes
 [mixins]: /language/mixins
-[construtores geradores]: /language/constructors#constant-constructors
-[Construtores factory]: /language/constructors#factory-constructors
-[versão de linguagem]: /resources/language/evolution#language-versioning
-[variável estática]: /language/classes#class-variables-and-methods
-[comandos switch]: /language/branches#switch
+[generative constructors]: /language/constructors#constant-constructors
+[Factory constructors]: /language/constructors#factory-constructors
+[language version]: /resources/language/evolution#language-versioning
+[static variable]: /language/classes#class-variables-and-methods
+[switch statements]: /language/branches#switch

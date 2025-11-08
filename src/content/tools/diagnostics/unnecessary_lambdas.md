@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_lambdas
-description: "Detalhes sobre o diagnóstico unnecessary_lambdas produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_lambdas
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Closure deveria ser um tearoff._
+_Closure should be a tearoff._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma closure (lambda) poderia ser
-substituída por um tear-off.
+The analyzer produces this diagnostic when a closure (lambda) could be
+replaced by a tear-off.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a closure passada para
-`forEach` contém apenas uma invocação da função `print` com o
-parâmetro da closure:
+The following code produces this diagnostic because the closure passed to
+`forEach` contains only an invocation of the function `print` with the
+parameter of the closure:
 
 ```dart
 void f(List<String> strings) {
@@ -40,8 +41,8 @@ void f(List<String> strings) {
 
 ## Common fixes
 
-Substitua a closure por um tear-off da função ou método sendo
-invocado com a closure:
+Replace the closure with a tear-off of the function or method being
+invoked with the closure:
 
 ```dart
 void f(List<String> strings) {

@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: invalid_override_of_non_virtual_member
-description: "Detalhes sobre o diagnóstico invalid_override_of_non_virtual_member produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_override_of_non_virtual_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O membro '{0}' é declarado como non-virtual em '{1}' e não pode sofrer override em subclasses._
+_The member '{0}' is declared non-virtual in '{1}' and can't be overridden in subclasses._
 
 ## Description
 
-O analisador produz este diagnóstico quando um membro de uma classe, mixin ou
-enum faz override de um membro que possui a anotação `@nonVirtual`.
+The analyzer produces this diagnostic when a member of a class, mixin, or
+enum overrides a member that has the `@nonVirtual` annotation on it.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o método `m` em `B`
-faz override do método `m` em `A`, e o método `m` em `A` está anotado
-com a anotação `@nonVirtual`:
+The following code produces this diagnostic because the method `m` in `B`
+overrides the method `m` in `A`, and the method `m` in `A` is annotated
+with the `@nonVirtual` annotation:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -35,9 +36,9 @@ class B extends A {
 
 ## Common fixes
 
-Se a anotação no método da superclasse está correta (o método
-na superclasse não deve sofrer override), então remova ou renomeie
-o método que faz override:
+If the annotation on the method in the superclass is correct (the method
+in the superclass is not intended to be overridden), then remove or rename
+the overriding method:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -50,8 +51,8 @@ class A {
 class B extends A {}
 ```
 
-Se o método na superclasse deve permitir override, então remova
-a anotação `@nonVirtual`:
+If the method in the superclass is intended to be overridden, then remove
+the `@nonVirtual` annotation:
 
 ```dart
 class A {

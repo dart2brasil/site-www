@@ -6,171 +6,171 @@ showBreadcrumbs: false
 lastVerified: 2022-12-13
 ---
 
-Este guia tem como objetivo aproveitar seu conhecimento
-de programação em Swift ao aprender Dart. Ele mostra as principais
-similaridades e diferenças em ambas as
-linguagens, e introduz conceitos de Dart que não estão
-presentes em Swift. Como um desenvolvedor Swift, Dart
-pode parecer familiar, já que ambas as linguagens compartilham muitos conceitos.
+This guide aims to leverage your Swift programming
+knowledge when learning Dart. It showcases key
+similarities and differences in both languages,
+and introduces Dart concepts that aren't present in Swift.
+As a Swift developer, Dart might feel familiar,
+as both languages share many concepts. 
 
-Tanto Swift quanto Dart suportam _null safety_ (segurança nula)
-sólida. Nenhuma das linguagens permite que variáveis sejam nulas por padrão.
+Both Swift and Dart support sound null safety. 
+Neither language allows variables to be null by default.
+ 
+Like Swift, Dart has similar support for
+[collections](#collections), [generics](#generics),
+[concurrency](#concurrency) (using async/await),
+and [extensions](#extension-methods).
 
-Assim como Swift, Dart tem suporte semelhante para
-[coleções](#collections), [genéricos](#generics),
-[concorrência](#concurrency) (usando async/await),
-e [extensões](#extension-methods).
-
-[Mixins](#mixins) são outro conceito em Dart que pode
-ser novo para desenvolvedores Swift. Assim como Swift,
-Dart oferece compilação AOT (_ahead-of-time_).
-No entanto, Dart também suporta um modo de compilação JIT
-(_just-in-time_) para auxiliar em vários aspectos
-do desenvolvimento, como recompilação incremental
-ou depuração. Para mais informações, consulte a [visão geral do Dart][Dart overview].
+[Mixins](#mixins) are another concept in Dart
+that might be new for Swift developers.
+Like Swift, Dart offers AOT (ahead-of-time) compilation.
+However, Dart also supports a JIT (just-in-time)
+compilation mode to aid with various development aspects,
+such as incremental recompilation or debugging.
+For more information, check out the [Dart overview][].
 
 [Dart overview]: /overview#native-platform
 
 :::note
-O Flutter usa a linguagem Dart, então se você está
-programando em Flutter, pode achar [Flutter para
-desenvolvedores iOS][Flutter for iOS developers] útil.
+Flutter uses the Dart language,
+so if you are coding Flutter, you might find
+[Flutter for iOS developers][] to be useful.
 :::
 
 [Flutter for iOS developers]: {{site.flutter-docs}}/get-started/flutter-for/ios-devs
 
-## Convenções e _linting_ {:#conventions-and-linting}
+## Conventions and linting
 
-Swift e Dart possuem ferramentas de _linting_
-(análise estática de código) para aplicar convenções
-padrão. No entanto, enquanto Swift tem `SwiftLint`
-como uma ferramenta independente, Dart tem convenções
-de layout oficiais e inclui um _linter_ (analisador de
-código) para tornar a conformidade fácil. Para
-personalizar as regras de _lint_ para seu projeto, siga as instruções de
-[Personalizando a análise estática][Customizing static analysis]. (Observe que os _plugins_ IDE para Dart
-e Flutter também fornecem essa funcionalidade.)
+Swift and Dart both have linting tools to enforce
+standard conventions. However, while Swift has
+`SwiftLint` as a standalone tool,
+Dart has official layout conventions and includes a
+linter to make compliance effortless.
+To customize the lint rules for your project,
+follow the [Customizing static analysis][] instructions.
+(Note that the IDE plugins for Dart and Flutter also
+provide this functionality.)
 
 [Customizing static analysis]: /tools/analysis
 
 :::tip
-Dart fornece [`dart fix`][`dart fix`], que encontra e corrige
-erros encontrados pelo analisador.
+Dart provides [`dart fix`][],
+which finds and fixes errors found by the analyzer.
 :::
 
 [`dart fix`]: /tools/dart-fix
 
-Dart também fornece um formatador de código, que pode
-formatar automaticamente qualquer projeto Dart ao executar
-`dart format` a partir da linha de comando ou
-através do IDE.
+Dart also provides a code formatter,
+which can automatically format any Dart project when
+running `dart format` from the command line
+or through the IDE.
 
 :::tip
-Dart suporta vírgulas opcionais no final para quaisquer
-valores separados por vírgula, como parâmetros de função
-ou itens de lista. Isso força o formatador a colocar
-cada item em sua própria linha,
-o que ajuda na legibilidade,
-especialmente quando você tem muito código aninhado
-(como pode acontecer no código de layout do Flutter).
+Dart supports optional trailing
+commas for any comma-separated values,
+such as function parameters or list items.
+This forces the formatter to place each item
+onto its own line, which helps with readability,
+especially when you have a lot of nested code
+(as can happen in Flutter layout code).
 
-Para mais informações sobre como usar vírgulas para tornar
-seu código mais legível, consulte
-[Usando vírgulas finais][Using trailing commas] em docs.flutter.dev.
+For more information on using commas to make
+your code more readable, check out
+[Using trailing commas][] on docs.flutter.dev.
 :::
 
 [Using trailing commas]: {{site.flutter-docs}}/development/tools/formatting#using-trailing-commas
 
-Para mais informações sobre as convenções Dart e _linting_,
-consulte [Effective Dart][Effective Dart] e [Regras do Linter][Linter rules].
+For more information about Dart conventions and linting,
+check out [Effective Dart][] and [Linter rules][]. 
 
 [Effective Dart]: /effective-dart
 [Linter rules]: /tools/linter-rules
 
-## Variáveis {:#variables}
+## Variables
 
-Declarar e inicializar variáveis em Dart é um pouco
-diferente quando comparado com Swift. Uma declaração
-de variável sempre começa com o tipo da variável, a
-palavra-chave `var` ou a palavra-chave `final`. Como
-em Swift, Dart suporta a inferência de tipo onde o
-compilador infere o tipo com base no valor
-atribuído à variável:
+Declaring and initializing variables in Dart
+is a bit different when compared to Swift.
+A variable declaration always begins with the
+variable's type, the `var` keyword, or the `final` keyword.
+As in Swift, Dart supports type inference where the
+compiler infers the type based on the value assigned
+to the variable:
 
 ```dart
-// Variável do tipo String.
+// String-typed variable.
 String name = 'Bob';
 
-// Variável do tipo String imutável.
+// Immutable String-typed variable.
 final String name = 'Bob';
 
-// Isso é o mesmo que `String name = 'Bob';`
-// já que o Dart infere que o tipo é String.
+// This is the same as `String name = 'Bob';`
+// since Dart infers the type to be String.
 var name = 'Bob';
 
-// E isso é o mesmo que `final String name = 'Bob';`.
+// And this is the same as `final String name = 'Bob';`.
 final name = 'Bob';
 ```
 
-Cada declaração em Dart termina com um ponto e vírgula
-para indicar o final da declaração. Você pode substituir
-`var` em Dart por um tipo explícito. No entanto, por
-convenção, [`var` é recomendado quando o analisador pode
-inferir o tipo implicitamente][inference].
+Each Dart statement ends with a semicolon to
+indicate the end of the statement.
+You can replace `var` in Dart with an explicit type.
+However, by convention, [`var` is recommended
+when the analyzer can implicitly infer the type][inference].
 
 [inference]: /effective-dart/design#types
 
 ```dart
-// Declara uma variável primeiro:
-String name;
-// Inicializa a variável mais tarde:
+// Declare a variable first:
+String name; 
+// Initialize the variable later:
 name = 'bob';
-// Declara e inicializa uma variável de uma vez com inferência:
+// Declare and initialize a variable at once with inference:
 var name = 'bob';
 ```
 
-O equivalente em Swift do código Dart acima seria
-semelhante ao seguinte:
+The Swift equivalent of the above Dart code
+would look as follows:
 
 ```swift
-// Declara uma variável primeiro:
+// Declare a variable first: 
 var name: String
-// Inicializa a variável mais tarde
+// Initialize the variable later
 name = "bob"
 
-// Declara e inicializa uma variável de uma vez com inferência:
+// Declare and initialize a variable at once with inference:
 var name = "bob"
 ```
 
-Em Dart, quando uma variável sem um tipo explícito
-é inicializada após sua declaração, seu tipo é
-inferido como o tipo genérico `dynamic`. Da mesma
-forma, quando um tipo não pode ser inferido
-automaticamente, ele assume o tipo `dynamic` por
-padrão, **o que remove toda a segurança de tipo**.
-Portanto, o _linter_ (analisador de código) Dart
-desencoraja isso, gerando um aviso. Se você _pretende_
-permitir que uma variável tenha qualquer tipo, é
-preferível atribuí-la a `Object?` em vez de `dynamic`.
+In Dart, when a variable without an explicit type
+is initialized after its declaration,
+its type is inferred as the catch-all `dynamic` type.
+Likewise, when a type cannot be automatically inferred,
+it defaults to the `dynamic` type,
+**which removes all type-safety**.
+Therefore, the Dart linter discourages this by
+generating a warning. If you _intend_ to allow a
+variable to have any type, it's preferred to
+assign it to `Object?` rather than `dynamic`.
 
-Para mais informações, consulte a seção
-[Variáveis][Variables section] no tour da linguagem Dart.
+For more information, check out the
+[Variables section][] in the Dart language tour.
 
 [Variables section]: /language/variables
 
-### Final {:#final}
+### Final
 
-A palavra-chave `final` em Dart indica que uma
-variável pode ser definida apenas uma vez. Isso é
-semelhante à palavra-chave `let` em Swift.
+The `final` keyword in Dart indicates that a
+variable can be set only once. This is similar
+to the `let` keyword in Swift. 
 
-Tanto em Dart quanto em Swift, você só pode inicializar
-uma variável `final` uma vez, seja na declaração
-ou na lista de inicializadores. Qualquer tentativa de
-atribuir um valor pela segunda vez resulta em um erro
-em tempo de compilação. Ambos os seguintes trechos
-de código são válidos, mas definir `name`
-posteriormente resulta em erros de compilação.
+In both Dart and Swift, you can only initialize a
+`final` variable once, either in the declaration
+statement or in the initializer list.
+Any attempt to assign a value a second time results
+in a compile-time error. Both of the following code
+snippets are valid, but subsequently setting `name`
+results in compilation errors.
 
 ```dart
 final String name;
@@ -190,117 +190,116 @@ if (b1) {
 }
 ```
 
-### Const {:#const}
+### Const
 
-Além de `final`, Dart também tem a palavra-chave
-`const`. Um benefício de `const` é que ela é
-totalmente avaliada em tempo de compilação e não
-pode ser modificada durante a vida útil do aplicativo.
+Besides `final`, Dart also has the `const` keyword.
+One benefit of `const` is that it's fully evaluated
+at compile-time and can't be modified during the
+lifetime of the application.
 
 ```dart
-const bar = 1000000; // Unidade de pressão (dynes/cm2)
-const double atm = 1.01325 * bar; // Atmosfera padrão
+const bar = 1000000; // Unit of pressure (dynes/cm2)
+const double atm = 1.01325 * bar; // Standard atmosphere
 ```
 
-Uma variável `const` definida no nível de classe
-precisa ser marcada como `static const`.
+A `const` variable defined at a class level
+needs to be marked as `static const`.
 
 ```dart
 class StandardAtmosphere {
-  static const bar = 1000000; // Unidade de pressão (dynes/cm2)
-  static const double atm = 1.01325 * bar; // Atmosfera padrão
+  static const bar = 1000000; // Unit of pressure (dynes/cm2)
+  static const double atm = 1.01325 * bar; // Standard atmosphere
 }
 ```
 
-A palavra-chave `const` não é apenas para declarar
-variáveis constantes; ela também pode ser usada
-para criar valores constantes:
+The `const` keyword isn't just for declaring
+constant variables; it can also be used to create
+constant values:
 
 ```dart
 var foo = const ['one', 'two', 'three'];
-foo.add('four'); // Erro: foo contém um valor constante.
-foo = ['apple', 'pear']; // Isso é permitido, pois foo em si não é constante.
-foo.add('orange'); // Permitido, pois foo não contém mais um valor constante.
+foo.add('four'); // Error: foo contains a constant value.
+foo = ['apple', 'pear']; // This is allowed as foo itself isn't constant.
+foo.add('orange'); // Allowed as foo no longer contains a constant value.
 ```
 
-No exemplo acima, você não pode alterar o valor
-`const` (adicionar, atualizar ou remover os elementos
-na lista fornecida), mas você pode atribuir um novo
-valor a `foo`. Depois que `foo` recebe uma nova
-lista (não constante), você _pode_ adicionar, atualizar ou remover o conteúdo da lista.
+In the above example, you can't change the `const` value
+(add, update, or remove the elements in the given list),
+but you can assign a new value to `foo`.
+After `foo` is assigned a new (non-constant) list,
+you _can_ add, update, or remove the contents of the list. 
 
-Você também pode atribuir um valor constante a um
-campo `final`. Você não pode usar o campo `final` em
-um contexto constante, mas pode usar a constante. Por exemplo:
+You can also assign a constant value to a `final` field.
+You can't use the `final` field in a constant context,
+but you can use the constant. For example:
 
 ```dart
 final foo1 = const [1, 2, 3];
-const foo2 = [1, 2, 3]; // Equivalente a `const [1, 2, 3]`
+const foo2 = [1, 2, 3]; // Equivalent to `const [1, 2, 3]`
 const bar2 = foo2; // OK
-const bar1 = foo1; // Erro em tempo de compilação, `foo1` não é constante
+const bar1 = foo1; // Compile-time error, `foo1` isn't constant
 ```
 
-Você também pode definir construtores `const`,
-tornando essas classes imutáveis (inalteráveis) e
-possibilitando a criação de instâncias dessas classes
-como constantes em tempo de compilação.
-Para mais informações, consulte
-[construtores const](#const-constructors).
+You can also define `const` constructors,
+making those classes immutable (unchanging)
+and making it possible to create instances of
+those classes as compile-time constants.
+For more information, check out
+[const constructors](#const-constructors).
 
-## Tipos _built-in_ {:#built-in-types}
-Dart inclui vários tipos nas bibliotecas da
-plataforma, como:
+## Built-in types
+Dart includes a number of types in the platform
+libraries, such as:
 
-* Tipos de valores básicos como
-  * Números (`num`, `int`, `double`)
+* Basic value types like
+  * Numbers (`num`, `int`, `double`)
   * Strings (`String`)
-  * Booleanos (`bool`)
-  * O valor nulo (`Null`)
-* Coleções
-  * Listas/arrays (`List`)
+  * Booleans (`bool`)
+  * The value null (`Null`)
+* Collections
+  * Lists/arrays (`List`)
   * Sets (`Set`)
-  * Maps/dicionários (`Map`)
+  * Maps/dictionaries (`Map`)
 
-Para mais informações, consulte [Tipos _built-in_][Built-in types]
-no tour da linguagem Dart.
+For more information, check out [Built-in types][]
+in the Dart language tour.
 
 [Built-in types]: /language/built-in-types
 
-### Números {:#numbers}
+### Numbers
 
-Dart define três tipos numéricos para armazenar números:
+Dart defines three numeric types for holding numbers:
 
 `num`
-: Um tipo de número genérico de 64 bits.
+: A generic 64-bit number type.
 
 `int`
-: Um número inteiro dependente da plataforma. Em código
-  nativo, é um inteiro de complemento de dois de 64 bits.
-  Na web, é um número de ponto flutuante de 64 bits
-  não fracionário.
+: A platform-dependent integer number.
+  In native code, it's a 64-bit two's complement integer.
+  On the web, it's a non-fractional 64-bit,
+  floating-point number.
 
 `double`
-: Um número de ponto flutuante de 64 bits.
+: A 64-bit floating point number.
 
-Ao contrário de Swift, não há tipos específicos para
-inteiros não sinalizados.
+Unlike Swift, there are no specific types for
+unsigned integers.
 
-Todos esses tipos também são classes na API Dart.
-Tanto os tipos `int` quanto `double` compartilham `num`
-como sua classe pai:
+All these types are also classes in the Dart API.
+Both the `int` and `double` types share `num`
+as their parent class:
 
 <img
   src="/assets/img/number-class-hierarchy.svg"
-  alt="Object é o pai de num, que é o pai de int e double">
+  alt="Object is the parent of num, which is the parent of int and double">
 
-Como os valores numéricos são tecnicamente instâncias
-de classe, eles têm a conveniência de expor suas
-próprias funções de utilidade. Por causa disso, um
-`int` pode, por exemplo, ser transformado em um `double`
-da seguinte forma:
+As number values are technically class instances,
+they have the convenience of exposing their own
+utility functions. Because of this, a `int` can,
+for example, be turned into a `double` as follows:
 
 {% comment %}
-TODO: Usar um exemplo diferente aqui, como arredondamento
+TODO: Use a different example here, such as rounding
 {% endcomment %}
 
 ```dart
@@ -308,25 +307,26 @@ int intVariable = 3;
 double doubleVariable = intVariable.toDouble();
 ```
 
-O mesmo é realizado em Swift usando o
-inicializador especializado:
+The same is accomplished in Swift using the
+specialized initializer:
 
 ```swift
 var intVariable: Int = 3
 var doubleVariable: Double = Double(intVariable)
 ```
 
-No caso de valores literais, Dart converte
-automaticamente o literal inteiro em um valor `double`.
-O código a seguir está perfeitamente correto:
+In the case of literal values,
+Dart automatically converts the integer literal
+into a `double` value. The following code
+is perfectly fine:
 
 ```dart
 double doubleValue = 3;
 ```
 
-Ao contrário de Swift, em Dart você pode comparar um
-valor inteiro com um double usando o operador de
-igualdade (`==`), conforme mostrado abaixo:
+Unlike Swift, in Dart you can compare an integer
+value to a double using the equality (`==`) operator,
+as shown below:
 
 ```dart
 int intVariable = 3;
@@ -334,204 +334,203 @@ double doubleVariable = 3.0;
 print(intVariable == doubleVariable); // true
 ```
  
-Este código imprime `true`. No entanto, em Dart a
-implementação subjacente dos números é diferente entre
-a web e as plataformas nativas. A página [Números em
-Dart][Numbers in Dart] detalha essas diferenças e mostra como escrever
-código para que as diferenças não importem.
+This code prints `true`. However, in Dart the
+underlying implementation numbers is different between
+the web and native platforms. The [Numbers in Dart][]
+page details these differences and shows how to
+write code so the differences don't matter.
 
 [Numbers in Dart]: /resources/language/number-representation
 
-### Strings {:#strings}
+### Strings
 
-Assim como no Swift, Dart representa uma série de
-caracteres usando o tipo `String`, embora Dart não
-suporte um tipo `Character` representando um caractere.
-Uma `String` pode ser definida com aspas simples ou
-duplas, no entanto, _aspas simples são preferidas_.
+As with Swift, Dart represents a series of characters
+using the `String` type, though Dart doesn't support
+a `Character` type representing one character.
+A `String` can be defined with either single or
+double quotes, however, _single quotes are preferred_.
 
 ```dart
-String c = 'a'; // Não existe um tipo "Character" especializado
-String s1 = 'Esta é uma String';
-String s2 = "Esta também é uma String";
+String c = 'a'; // There isn't a specialized "Character" type
+String s1 = 'This is a String';
+String s2 = "This is also a String";
 ```
 
 ```swift
 let c: Character = "a"
-let s1: String = "Esta é uma String"
-let s2: String = "Esta também é uma String"
+let s1: String = "This is a String"
+let s2: String = "This is also a String"
 ```
 
-#### Escapando caracteres especiais {:#escaping-special-characters}
+#### Escaping special characters
 
-Escapar caracteres especiais em Dart é semelhante a
-Swift (e à maioria das outras linguagens). Para incluir
-caracteres especiais, escape-os usando o caractere
-barra invertida.
+Escaping special characters in Dart is similar
+to Swift (and most other languages).
+To include special characters escape them
+using the backslash character.
 
-O código a seguir mostra alguns exemplos:
+The following code shows some examples:
 
 ```dart
-final singleQuotes = 'Eu estou aprendendo Dart'; // Eu estou aprendendo Dart
-final doubleQuotes = "Escapando o caractere \""; // Escapando o caractere "
-final unicode = '\u{1F60E}'; // 😎,  Escalar Unicode U+1F60E
+final singleQuotes = 'I\'m learning Dart'; // I'm learning Dart
+final doubleQuotes = "Escaping the \" character"; // Escaping the " character
+final unicode = '\u{1F60E}'; // 😎,  Unicode scalar U+1F60E
 ```
 
-Observe que valores hexadecimais de 4 dígitos também
-podem ser usados diretamente (por exemplo, `\u2665`),
-no entanto, chaves também funcionam. Para mais
-informações sobre como trabalhar com caracteres
-unicode, consulte
-[Runes e _grapheme clusters_][Runes e _grapheme clusters_]
-no tour da linguagem Dart.
+Note that 4-digit hexadecimal values can also
+be used directly (for example, `\u2665`),
+however, curly braces also work.
+For more information on working with
+unicode characters, check out
+[Runes and grapheme clusters][]
+in the Dart language tour.
 
-[Runes e _grapheme clusters_]: /language/built-in-types#runes-and-grapheme-clusters
+[Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
 
-#### Concatenação de Strings e declaração multi-linha {:#string-concatenation-and-multiline-declaration}
+#### String concatenation and multiline declaration
 
-Tanto em Dart quanto em Swift, você pode escapar
-das quebras de linha em uma string multi-linha, o
-que permite que você mantenha seu código-fonte mais
-fácil de ler, mas ainda assim gere a `String` em
-uma única linha. Dart tem várias maneiras de definir strings multi-linha:
+In both Dart and Swift,
+you can escape the line breaks in a multiline string,
+which allows you to keep your source code easier
+to read but still output the `String` in a single line.
+Dart has several ways to define multiline strings:
 
-1. Usando concatenação implícita de string:
-   Quaisquer literais de string vizinhos são
-   automaticamente concatenados, mesmo quando
-   espalhados por várias linhas:
+1. Using implicit string concatenation:
+   Any neighboring string literals are automatically
+   concatenated, even when spread over multiple lines:
+
 
    ```dart
    final s1 = 'String '
-     'concatenação'
-     " funciona até em quebras de linha.";
+     'concatenation'
+     " even works over line breaks.";
    ```
  
-2. Usando um literal de string multi-linha:
-   Ao usar três aspas
-   (simples ou duplas) em
-   ambos os lados da string, o literal pode
-   abrange várias linhas:
+2. Using a multiline string literal:
+   When using three quotation marks
+   (either single or double) on either
+   side of the string,
+   the literal is allowed to span multiple lines:
 
 
    ```dart
-   final s2 = '''Você pode criar
-   strings multi-linha como esta.''';
+   final s2 = '''You can create
+   multiline strings like this one.''';
 
-   final s3 = """Esta também é uma
-   string multi-linha.""";
+   final s3 = """This is also a
+   multiline string.""";
    ```
 
-3. Dart também suporta a concatenação de strings
-   usando o operador `+`. Isso funciona tanto com
-   literais de string quanto com variáveis de string:
+3. Dart also supports concatenating strings using
+   the `+` operator. This works with both string
+   literals and string variables:
 
 
    ```dart
    final name = 'John';
-   final greeting = 'Olá ' + name + '!';
+   final greeting = 'Hello ' + name + '!';
    ```
 
-#### Interpolação de string {:#string-interpolation}
+#### String interpolation
 
-Insira expressões no literal de string usando a
-sintaxe `${<expressão>}`. Dart expande isso
-permitindo que as chaves sejam omitidas quando a
-expressão é um único identificador:
+Insert expressions into the string literal using the
+`${<expression>}` syntax. Dart expands on this by
+allowing the curly braces to be omitted when the
+expression is a single identifier:
 
 ```dart
-var food = 'pão';
-var str = 'Eu como $food'; // Eu como pão
-var str = 'Eu como ${bakery.bestSeller}'; // Eu como pão
+var food = 'bread';
+var str = 'I eat $food'; // I eat bread
+var str = 'I eat ${bakery.bestSeller}'; // I eat bread
 ```
 
-Em Swift, você pode obter o mesmo resultado
-cercando a variável ou expressão com parênteses
-e prefixando com uma barra invertida:
+In Swift, you can achieve the same result by
+surrounding the variable or expression with
+parentheses and prefixing with a backslash: 
 
 ```swift
-let s = "interpolação de string"
-let c = "Swift tem \(s), o que é muito útil."
+let s = "string interpolation"
+let c = "Swift has \(s), which is very handy."
 ```
 
-#### Strings brutas {:#raw-strings}
+#### Raw strings
 
-Assim como em Swift, você pode definir strings brutas
-em Dart. Uma string bruta ignora o caractere de escape
-e inclui quaisquer caracteres especiais presentes na
-string. Você pode fazer isso em Dart prefixando o
-literal de string com a letra `r`, conforme mostrado
-no exemplo a seguir.
+As in Swift, you can define raw strings in Dart.
+A raw string ignores the escape character and
+includes any special characters present in the string.
+You can do this in Dart by prefixing the string literal
+with the letter `r`, as shown in the following example.
 
 ```dart
-// Inclui os caracteres \n.
-final s1 = r'Inclui os caracteres \n.';
-// Também inclui os caracteres \n.
-final s2 = r"Também inclui os caracteres \n.";
+// Include the \n characters.
+final s1 = r'Includes the \n characters.';
+// Also includes the \n characters.
+final s2 = r"Also includes the \n characters.";
 
 final s3 = r'''
-  Os caracteres \n também são incluídos
-  ao usar strings multi-linha brutas.
+  The \n characters are also included
+  when using raw multiline strings.
   ''';
 final s4 = r"""
-  Os caracteres \n também são incluídos
-  ao usar strings multi-linha brutas.
+  The \n characters are also included
+  when using raw multiline strings.
   """;
 ```
 
 ```swift
-let s1 = #"Inclui os caracteres \n."#
+let s1 = #"Includes the \n characters."#
 let s2 = #"""
-  Os caracteres \n também são incluídos
-  ao usar strings multi-linha brutas.
+  The \n characters are also included
+  when using raw multiline strings.
   """#
 ```
 
-#### Igualdade {:#equality}
+#### Equality
 
-Assim como em Swift, o operador de igualdade de Dart
-(`==`) compara se duas strings são iguais. Duas
-strings são iguais se contiverem a mesma sequência
-de unidades de código.
+As in Swift, Dart's equality operator (`==`)
+compares whether two strings are equal.
+Two strings are equal if they contain the same
+sequence of code units.
 
 ```dart
 final s1 = 'String '
-  'concatenação'
-  " funciona até em quebras de linha.";
+  'concatenation'
+  " works even over line breaks.";
 assert(s1 ==
-  'String concatenação funciona até em '
-  'quebras de linha.');
+  'String concatenation works even over '
+  'line breaks.');
 ```
 
-#### API comumente usada {:#commonly-used-api}
+#### Commonly used API
 
-Dart oferece várias APIs comuns para strings. Por
-exemplo, tanto Dart quanto Swift permitem que você
-verifique se uma string está vazia com `isEmpty`.
-Existem outros métodos de conveniência, como
-`toUpperCase` e `toLowerCase`. Para mais informações,
-consulte [Strings][Strings] no tour da linguagem Dart.
+Dart offers several common API for strings.
+For example, both Dart and Swift allow you
+to check if a string is empty with `isEmpty`.
+There are other convenience methods,
+such as `toUpperCase` and `toLowerCase`.
+For more information,
+check out [Strings][] in the Dart language tour. 
 
 [Strings]: /language/built-in-types#strings
 
-### Booleanos {:#booleans}
+### Booleans
 
-Booleanos representam um valor binário tanto em Dart
-(`bool`) quanto em Swift (`Bool`).
+Booleans represent a binary value in both Dart
+(`bool`) and Swift (`Bool`).
 
-### _Null safety_ (segurança nula) {:#null-safety}
+### Null safety
 
-Dart impõe uma _null safety_ (segurança nula) sólida.
-Por padrão, os tipos não permitem um valor nulo a
-menos que sejam marcados como anuláveis. Dart indica
-isso com um ponto de interrogação (`?`) no final do tipo.
-Isso funciona como os _optionals_ do Swift.
+Dart enforces sound null safety.
+By default, types don't allow a null value unless marked as nullable.
+Dart indicates this with a question mark (`?`) at the end of the type.
+This works like Swift's _optionals_.
 
-### Operadores _null-aware_ {:#null-aware-operators}
+### Null-aware operators
 
-Dart suporta vários operadores para lidar com a
-anulabilidade. O operador de coalescência nula (`??`),
-e o operador de encadeamento opcional (`?.`) estão
-disponíveis em Dart e operam da mesma forma que em Swift:
+Dart supports several operators to deal with nullability.
+The null coalescing operator (`??`),
+and optional chaining operator (`?.`)
+are available in Dart and operate the same as in Swift:
 
 ```dart
 a = a ?? b;
@@ -542,76 +541,77 @@ let str: String? = nil
 let count = str?.count ?? 0
 ```
 
-Além disso, Dart oferece uma versão _null safe_
-(segura contra nulos) do operador _cascade_ (`?..`).
-Este operador ignora quaisquer operações quando a
-expressão de destino é resolvida como `null`. Dart
-também oferece o operador de atribuição nula (`??=`),
-que Swift não tem. Se uma variável com um tipo
-anulável tem um valor atual de `null`, este operador
-atribui um valor a essa variável. Expressa como
-`a ??= b;`, serve como abreviação para o seguinte:
+In addition, Dart offers a
+null safe version of the cascade operator (`?..`).
+This operator ignores any operations when
+the target expression resolves to `null`.
+Dart also offers the null assignment operator (`??=`),
+which Swift doesn't.
+If a variable with a nullable type has a current value of `null`,
+this operator assigns a value to that variable.
+Expressed as `a ??= b;`, it serves as shorthand for the following:
 
 ```dart
 a = a ?? b;
 
-// Atribui b a a se a for nulo; caso contrário, a permanece o mesmo
-a ??= b;
+// Assign b to a if a is null; otherwise, a stays the same
+a ??= b; 
 ```
 
 ```swift
 a = a ?? b
 ```
 
-#### Operador ! (também chamado de "desembrulho forçado") {:#operator-also-called-force-unwrap}
+#### ! Operator (also called "force unwrap")
 
-Nos casos em que é seguro presumir que uma variável
-ou expressão anulável é, de fato, não nula, é
-possível dizer ao compilador para reprimir quaisquer
-erros em tempo de compilação.
-Isso é feito usando
-o operador sufixo `!`, colocando-o como um sufixo
-na expressão. (Não confunda isso com o operador "não"
-de Dart, que usa o mesmo símbolo):
+In cases where it's safe to assume that a
+nullable variable or expression is, in fact, non-null,
+it's possible to tell the compiler to repress
+any compile-time errors.
+This is done using the suffix `!` operator,
+by placing it as a suffix to the expression.
+(Don't confuse this with Dart's "not" operator,
+which uses the same symbol):
 
 ```dart
 int? a = 5;
 
-int b = a; // Não permitido.
-int b = a!; // Permitido.
+int b = a; // Not allowed.
+int b = a!; // Allowed.
 ```
 
-Em tempo de execução, se `a` for nulo, ocorre um
-erro de tempo de execução.
+At runtime, if `a` turns out to be null,
+a runtime error occurs.
 
-Assim como o operador `?.`, use o operador `!` ao
-acessar propriedades ou métodos em um objeto:
+Like the `?.` operator,
+use the `!` operator when accessing properties
+or methods on an object:
 
 ```dart
 myObject!.someProperty;
 myObject!.someMethod();
 ```
 
-Se `myObject` for `null` em tempo de execução,
-ocorre um erro de tempo de execução.
+If `myObject` is `null` at runtime,
+a runtime error occurs.
 
-### Campos _late_ {:#late-fields}
+### Late fields 
 
-A palavra-chave `late` pode ser atribuída a campos
-de classe para indicar que eles são inicializados em
-um ponto posterior, permanecendo não anuláveis. Isso
-é semelhante aos "optionals implicitamente
-desembrulhados" do Swift. Isso é útil para casos
-em que uma variável nunca é observada antes de ser
-inicializada, permitindo que seja inicializada mais
-tarde. Um campo `late` não anulável não pode ter
-null atribuído em um ponto posterior. Além disso,
-um campo `late` não anulável lança um erro de
-tempo de execução quando observado antes de ser
-inicializado, um cenário que você deseja evitar em um aplicativo bem comportado.
+The `late` keyword can be assigned to class fields
+to indicate they are initialized at a later point,
+while remaining non-nullable. This is similar to Swift's
+"implicitly unwrapped optionals."
+This is useful for cases where a variable is
+never observed before being initialized,
+allowing it to be initialized later.
+A non-nullable `late` field can't have null
+assigned at a later point. Also,
+a non-nullable `late` field throws a runtime error
+when observed before being initialized,
+a scenario you want to avoid in a well-behaved app.
 
 ```dart
-// Usando null safety:
+// Using null safety:
 class Coffee {
   late String _temperature;
 
@@ -622,14 +622,14 @@ class Coffee {
 }
 ```
 
-Nesse caso, `_temperature` só é inicializada
-após chamar `heat()` ou `chill()`. Se `serve()`
-for chamado antes dos outros, ocorre uma exceção
-em tempo de execução. Observe que `_temperature`
-nunca pode ser `null`.
+In this case, `_temperature` is only initialized
+after calling `heat()` or `chill(`).
+If `serve(`) is called before the others,
+a runtime exception occurs.
+Note that `_temperature` can't ever be `null`.
 
-Você também pode usar a palavra-chave `late` para
-tornar a inicialização preguiçosa ao combiná-la com um inicializador:
+You can also use the `late` keyword to make
+initialization lazy when combining it with an initializer:
 
 ```dart
 class Weather {
@@ -637,117 +637,117 @@ class Weather {
 }
 ```
 
-Nesse caso, `_readThermometer()` só é executado
-quando o campo é acessado pela primeira vez,
-e não na inicialização.
+In this case, `_readThermometer()` is only run
+when the field is first accessed,
+rather than on initialization. 
 
-Outra vantagem em Dart é usar a palavra-chave
-`late` para atrasar a inicialização de variáveis
-`final`. Embora você não precise inicializar
-imediatamente a variável `final` ao marcá-la
-como `late`, ela ainda pode ser inicializada
-apenas uma vez. Uma segunda atribuição resulta em um erro de tempo de execução.
+Another advantage in Dart is using the `late`
+keyword to delay initialization of `final` variables.
+While you don't have to immediately initialize
+the `final` variable when marking it as `late`,
+it can still be initialized only once.
+A second assignment results in a runtime error.
 
 ```dart
 late final int a;
 a = 1;
-a = 2; // Lança uma exceção de tempo de execução porque
-       // "a" já está inicializado.
+a = 2; // Throws a runtime exception because
+       // "a" is already initialized.
 ```
 
-## Funções {:#functions}
+## Functions
 
-Swift usa o arquivo `main.swift` como ponto de
-entrada de um aplicativo. Dart usa a função `main`
-como ponto de entrada de um aplicativo. Todo
-programa deve ter uma função `main` para ser executável. Por exemplo:
+Swift uses the `main.swift` file as an app's
+entry point. Dart uses the `main` function
+as an app's entry point. Every program must
+have a `main` function to be executable. For example:
 
 ```dart
 void main() {
-  // a função main é o ponto de entrada
-  print("olá mundo");
+  // main function is the entry point
+  print("hello world");
 }
 ```
 
 ```swift
-// o arquivo main.swift é o ponto de entrada
-print("olá mundo")
+// main.swift file is the entry point
+print("hello world")
 ```
 
-Dart não suporta `Tuples` (embora existam
-[vários pacotes de tupla][several tuple packages] disponíveis em
-pub.dev). No caso de uma função precisar retornar
-vários valores, você pode envolvê-los em uma
-coleção, como uma lista, set ou map, ou pode escrever
-uma classe _wrapper_ (envoltório) onde uma instância
-pode ser retornada que contém esses valores. Mais
-sobre isso pode ser encontrado nas seções sobre
-[coleções](#collections) e [classes](#classes).
+Dart doesn't support `Tuples` (though there are
+[several tuple packages][] available on pub.dev).
+In the case that a function needs to return
+multiple values, you can wrap them in a collection,
+like a list, set, or map,
+or you can write a wrapper class where an instance
+can be returned that contains these values.
+More on this can be found in the sections on
+[collections](#collections) and [classes](#classes).
 
 [several tuple packages]: {{site.pub-pkg}}?q=tuples
 
-### Tratamento de exceções e erros {:#exception-and-error-handling}
+### Exception and error handling
 
-Assim como em Swift, as funções e métodos de Dart
-suportam o tratamento de [exceções][exceptions] e [erros][errors].
-Os _erros_ Dart geralmente representam erros do
-programador ou falhas do sistema, como estouro de
-pilha. Não se espera que erros Dart sejam capturados.
-Por outro lado, as _exceções_ Dart representam uma
-falha recuperável e devem ser capturadas. Por
-exemplo, em tempo de execução, o código pode tentar
-acessar um feed de _streaming_, mas, em vez disso,
-recebe uma exceção que, se não for capturada, resulta
-no encerramento do aplicativo. Você pode gerenciar
-exceções em Dart envolvendo a chamada de função em um bloco `try-catch`.
+As in Swift, Dart's functions and methods support
+handling both [exceptions][] and [errors][].
+Dart _errors_ typically represent programmer mistakes
+or system failures like stack overflow.
+Dart errors aren't supposed to be caught.
+On the other hand, Dart _exceptions_ represent
+a recoverable failure, and are intended to be caught.
+For example, at runtime the code might try to access
+a streaming feed, but instead receives an exception which,
+if not caught, results in termination of the app.
+You can manage exceptions in Dart by wrapping the
+function call in a `try-catch` block.
 
 [errors]: {{site.dart-api}}/dart-core/Error-class.html
 [exceptions]: {{site.dart-api}}/dart-core/Exception-class.html
 
 ```dart
 try {
-  // Cria o objeto reprodutor de áudio
+  // Create audio player object
   audioPlayer = AVAudioPlayer(soundUrl);
             
-  // Toca o som
+  // Play the sound
   audioPlayer.play();
 }
 catch {
-  // Não foi possível criar o objeto reprodutor de áudio, registra a exceção
-  print("Não foi possível criar o reprodutor de áudio para o arquivo $soundFilename");
+  // Couldn't create audio player object, log the exception
+  print("Couldn't create the audio player for file $soundFilename");
 }
 ```
 
-Da mesma forma, Swift usa um bloco `do-try-catch`.
-Por exemplo:
+Similarly, Swift uses a `do-try-catch` block.
+For example:
 
 ```swift
 do {
-  // Cria o objeto reprodutor de áudio
+  // Create audio player object
   audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             
-  // Toca o som
+  // Play the sound
   audioPlayer?.play()
 }
 catch {
-  // Não foi possível criar o objeto reprodutor de áudio, registra o erro
-  print("Não foi possível criar o reprodutor de áudio para o arquivo \(soundFilename)")
+  // Couldn't create audio player object, log the error
+  print("Couldn't create the audio player for file \(soundFilename)")
 }
 ```
 
-Você pode usar o bloco `try-catch` tanto em código
-Dart síncrono quanto assíncrono. Para mais
-informações, consulte os documentos para as
-classes [`Error`][errors] e
-[`Exception`][exceptions].
+You can use the `try-catch` block in both
+synchronous and asynchronous Dart code.
+For more information,
+see the docs for the [`Error`][errors] and
+[`Exception`][exceptions] classes.
 
-### Parâmetros {:#parameters}
+### Parameters
 
-Semelhante ao Swift, Dart suporta parâmetros nomeados
-em suas funções. No entanto, ao contrário do Swift,
-esses não são o padrão em Dart.
-O tipo de parâmetro
-padrão em Dart é um parâmetro posicional.
+Similar to Swift, Dart supports named parameters
+in its functions. However, unlike Swift,
+these aren't the default in Dart.
+The default parameter type in Dart is a
+positional parameter.
 
 ```dart
 int multiply(int a, int b) {
@@ -755,9 +755,9 @@ int multiply(int a, int b) {
 }
 ```
 
-O equivalente em Swift precede um parâmetro com um
-sublinhado para remover a necessidade de um rótulo
-de argumento.
+The equivalent in Swift prefaces a parameter
+with an underscore to remove the need
+for an argument label.
 
 ```swift
 func multiply(_ a: Int, _ b: Int) -> Int {
@@ -765,16 +765,16 @@ func multiply(_ a: Int, _ b: Int) -> Int {
 }
 ```
 
-Ao criar parâmetros nomeados em Dart, defina-os
-em um bloco separado de chaves, após os parâmetros
-posicionais:
+When creating named parameters in Dart,
+define them in a separate block of curly braces,
+after positional parameters:
 
 ```dart
 int multiply(int a, int b, {int c = 1, int d = 1}) {
   return a * b * c * d;
 }
 
-// Chamando uma função com parâmetros obrigatórios e nomeados
+// Calling a function with both required and named parameters
 multiply(3, 5); // 15
 multiply(3, 5, c: 2); // 30
 multiply(3, 5, d: 3); // 45
@@ -782,151 +782,151 @@ multiply(3, 5, c: 2, d: 3); // 90
 ```
 
 ```swift
-// O equivalente em Swift
+// The Swift equivalent
 func multiply(_ a: Int, _ b: Int, c: Int = 1, d: Int = 1) -> Int {
   return a * b * c * d
 }
 ```
 
-Os parâmetros nomeados devem incluir um dos seguintes:
+Named parameters must include one of the following:
 
-* Um valor padrão
-* Um `?` no final do tipo para definir o tipo como anulável
-* A palavra-chave `required` antes do tipo da variável
+* A default value
+* A `?` at the end of the type to set the type as nullable
+* The keyword `required` before the variable type
 
-Para saber mais sobre tipos anuláveis, consulte [segurança nula](#null-safety).
+To learn more about nullable types, check out [null safety](#null-safety).
 
-Para marcar um parâmetro nomeado como obrigatório em
-Dart, você deve prefixá-lo com a palavra-chave `required`:
+To mark a named parameter as required in Dart,
+you must prefix it with the `required` keyword:
 
 ```dart
 int multiply(int a, int b, { required int c }) {
   return a * b * c;
 }
-// Ao chamar a função, c precisa ser fornecido
+// When calling the function, c has to be provided
 multiply(3, 5, c: 2);
 ```
 
-Um terceiro tipo de parâmetro é o _parâmetro
-posicional opcional_. Como o nome sugere, eles são
-semelhantes aos parâmetros posicionais padrão,
-mas podem ser omitidos ao chamar a função. Eles
-devem ser listados após quaisquer parâmetros
-posicionais obrigatórios e não podem ser usados em
-conjunto com parâmetros nomeados.
+A third parameter type is the _optional
+positional parameter_. As the name suggests,
+these are similar to the default positional parameters,
+but they can be omitted when calling the function.
+They must be listed after any required positional
+parameters and can't be used in conjunction
+with named parameters.
 
 ```dart
 int multiply(int a, int b, [int c = 1, int d = 1]) {
   return a * b * c * d;
 }
-// Chamando uma função com parâmetros posicionados obrigatórios e opcionais.
+// Calling a function with both required and optional positioned parameters.
 multiply(3, 5); // 15
 multiply(3, 5, 2); // 30
 multiply(3, 5, 2, 3); // 90
 ```
 
 ```swift
-// O equivalente em Swift
+// The Swift equivalent
 func multiply(_ a: Int, _ b: Int, _ c: Int = 1, _ d: Int = 1) -> Int {
   return a * b * c * d
 }
 ```
 
-Como os parâmetros nomeados, os parâmetros
-posicionais opcionais devem ter um valor padrão ou um tipo anulável.
+Like named parameters, optional positional parameters
+must have either a default value or a nullable type.
 
-### Funções de primeira classe {:#first-class-functions}
+### First-class functions
 
-Assim como no Swift, as funções Dart também são
-[cidadãos de primeira classe][first class citizens], o que significa
-que são tratadas como qualquer outro objeto.
-Por exemplo, o código a seguir mostra como retornar
-uma função de uma função:
+As in Swift, Dart functions are also
+[first class citizens][],
+which means they're treated as any other object.
+For example, the following code shows how to
+return a function from a function:
 
 [first class citizens]: https://en.wikipedia.org/wiki/First-class_citizen
 
 ```dart
 typedef int MultiplierFunction(int value);
-// Define uma função que retorna outra função
+// Define a function that returns another function
 MultiplierFunction multiplyBy(int multiplier) {
   return (int value) {
     return value * multiplier;
   };
 }
-// Chama a função que retorna uma nova função
+// Call function that returns new function
 MultiplierFunction multiplyByTwo = multiplyBy(2);
-// Chama a nova função
+// Call the new function
 print(multiplyByTwo(3)); // 6
 ```
 
 ```swift
-// O equivalente em Swift da função Dart abaixo
-// Define uma função que retorna um closure
+// The Swift equivalent of the Dart function below
+// Define a function that returns a closure
 typealias MultiplierFunction = (Int) -> (Int)
 
 func multiplyBy(_ multiplier: Int) -> MultiplierFunction {
-  return { $0 * multiplier} // Retorna um closure
+  return { $0 * multiplier} // Returns a closure
 }
 
-// Chama a função que retorna uma função
+// Call function that returns a function
 let multiplyByTwo = multiplyBy(2)
-// Chama a nova função
+// Call the new function
 print(multiplyByTwo(3)) // 6
 ```
 
-### Funções anônimas {:#anonymous-functions}
+### Anonymous functions
 
-[_Funções anônimas_][_Anonymous functions_] em Dart funcionam quase
-identicamente aos _closures_ (fechamentos) em Swift,
-salvo uma diferença na sintaxe. Assim como as funções
-nomeadas, você pode passar funções anônimas como
-qualquer outro valor. Por exemplo, você pode
-armazenar funções anônimas em uma variável, passá-las
-como um argumento para outra função ou retorná-las de outra função.
+[_Anonymous functions_][] in Dart work almost
+identically to closures in Swift,
+save for a difference in syntax. As with named functions,
+you can pass anonymous functions like any other value.
+For example, you can store anonymous functions in a variable,
+pass them as an argument to another function,
+or return them from another function.
 
 [_Anonymous functions_]: https://en.wikipedia.org/wiki/Anonymous_function
 
-Dart tem duas maneiras de declarar funções anônimas.
-A primeira, com chaves, funciona como qualquer outra
-função. Ela permite que você use várias linhas e
-precisa de uma instrução de retorno para que
-qualquer valor seja retornado.
+Dart has two ways to declare anonymous functions.
+The first, with curly braces,
+works like any other function.
+It allows you to use multiple lines, and it
+needs a return statement for any value to be returned.
 
 ```dart
-// Função anônima multi-linha
-[1,2,3].map((element) {
-  return element * 2;
+// Multi line anonymous function
+[1,2,3].map((element) { 
+  return element * 2; 
 }).toList(); // [2, 4, 6]
 ```
 
 :::note
-Como a função map usada no exemplo retorna um
-`Iterable<T>` em vez de um `List<T>`, a função
-`toList` precisa ser chamada no `Iterator` retornado
-para transformá-lo de volta em um `List`.
+As the map function used in the example returns
+an `Iterable<T`> rather than a `List<T>`,
+the `toList` function needs to be called on
+the returned `Iterator` to turn it back into a `List`. 
 :::
 
 ```swift
-  // Função anônima equivalente em Swift
+  // Swift equivalent anonymous function
   [1, 2, 3].map { $0 * 2 }
 ```
 
-O outro método usa uma _arrow function_ (função
-seta), nomeada após o símbolo semelhante a uma
-seta usado em sua sintaxe. Você pode usar esta
-sintaxe abreviada quando o corpo da sua função
-contém apenas uma única expressão e onde o valor
-é retornado. Isso omite a necessidade de quaisquer
-chaves ou uma instrução de retorno, pois estas são implícitas.
+The other method uses an arrow function,
+named after the arrow-like symbol used in its syntax.
+You can use this shorthand syntax when your
+function body contains only a single expression
+and where the value is returned.
+This omits the need for any braces or
+a return statement, as these are implied.
 
 ```dart
-// Função anônima de linha única
+// Single-line anonymous function
 [1,2,3].map((element) => element * 2).toList(); // [2, 4, 6]
 ```
 
-A escolha entre a sintaxe de seta ou chaves está
-disponível para qualquer função, não apenas para funções
-anônimas.
+The choice between the arrow syntax or
+curly braces is available for any function,
+not just anonymous functions.
 
 ```dart
 multiply(int a, int b) => a * b;
@@ -936,18 +936,18 @@ multiply(int a, int b) {
 }
 ```
 
-### Funções geradoras {:#generator-functions}
+### Generator functions
 
-Dart suporta [_funções geradoras_][_generator functions_] que retornam uma
-coleção iterável de itens que são construídos de
-forma preguiçosa. Adicione itens à iterável final
-usando a palavra-chave `yield`, ou adicione coleções
-inteiras de itens usando `yield*`.
+Dart supports [_generator functions_][]
+that return an iterable collection of
+items that are built lazily. Add items
+to the final iterable using the `yield` keyword,
+or add whole collections of items using `yield*`.
 
 [_generator functions_]: /language/functions#generators
 
-O exemplo a seguir mostra como escrever uma função
-geradora básica:
+The following example shows how to write a basic
+generator function:
 
 ```dart
 Iterable<int> listNumbers(int n) sync* {
@@ -955,50 +955,50 @@ Iterable<int> listNumbers(int n) sync* {
   while (k < n) yield k++;
 }
 
-// Retorna um `Iterable<int>` que itera
-// através de 0, 1, 2, 3 e 4.
+// Returns an `Iterable<int>` that iterates
+// through 0, 1, 2, 3, and 4.
 print(listNumbers(5));
 
 Iterable<int> doubleNumbersTo(int n) sync* {
   int k = 0;
-  while (k < n) {
-    yield* [k, k];
+  while (k < n) { 
+    yield* [k, k]; 
     k++;
   }
 }
 
-print(doubleNumbersTo(3)); // Retorna um iterável com [0, 0], [1, 1] e [2, 2].
+print(doubleNumbersTo(3)); // Returns an iterable with [0, 0], [1, 1], and [2, 2].
 ```
 
-Este é um exemplo de uma função geradora
-**síncrona**. Você também pode definir funções
-geradoras **assíncronas**, que retornam _streams_
-(fluxos) em vez de iteráveis. Saiba mais na seção [Concorrência](#concurrency).
+This is an example of a **synchronous** generator function.
+You can also define **asynchronous** generator functions,
+which return streams instead of iterables.
+Learn more in the [Concurrency](#concurrency) section.
 
-## Declarações {:#statements}
+## Statements 
 
-Esta seção aborda as semelhanças e diferenças nas
-declarações entre Dart e Swift.
+This section covers the similarities and
+differences in statements between Dart and Swift.
 
-### Fluxo de controle (if/else, for, while, switch) {:#control-flow-if-else-for-while-switch}
+### Control flow (if/else, for, while, switch)
 
-Todas as instruções de fluxo de controle em Dart funcionam
-de forma semelhante às suas contrapartes em Swift,
-exceto por algumas diferenças na sintaxe.
+All control flow statements in Dart work
+similarly to their Swift counterparts,
+save for a few differences in syntax.
 
-#### if {:#if}
+#### if
 
-Ao contrário do Swift, a instrução `if` em Dart
-requer parênteses ao redor da condição.
-Embora o guia de estilo do Dart recomende o uso de
-chaves em torno de instruções de controle de fluxo
-(como mostrado abaixo), quando você tem uma instrução `if`
-sem cláusula else e toda a instrução if
-cabe em uma linha, você pode omitir as chaves se preferir.
+Unlike Swift, the `if` statement in Dart
+requires parentheses around the condition.
+While the Dart style guide recommends using
+curly braces around flow control statements
+(as shown below), when you have an `if` statement
+with no else clause and the whole if statement
+fits on one line, you can omit the braces if you prefer.
 
 ```dart
 var a = 1;
-// Parênteses para condições são obrigatórios em Dart.
+// Parentheses for conditions are required in Dart.
 if (a == 1) {
   print('a == 1');
 } else if (a == 2) {
@@ -1007,7 +1007,7 @@ if (a == 1) {
   print('a != 1 && a != 2');
 }
 
-// Chaves são opcionais para instruções `if` de uma única linha.
+// Curly braces are optional for single line `if` statements.
 if (a == 1) print('a == 1');
 ```
 
@@ -1022,18 +1022,18 @@ if a == 1 {
 }
 ```
 
-#### for(-in) {:#for-in}
+#### for(-in)
 
-Em Swift, o loop `for` é usado apenas para percorrer
-coleções. Para percorrer um pedaço de código
-várias vezes, o Swift permite que você percorra um intervalo.
-O Dart não suporta sintaxe para definir intervalos,
-mas inclui um loop for padrão,
-além do `for-in` que percorre coleções.
+In Swift, the `for` loop is only used to loop
+over collections. To loop over a chunk of code
+multiple times, Swift allows you to loop over a range.
+Dart doesn't support syntax for defining ranges,
+but includes a standard for loop,
+in addition to `for-in` that loops over collections.
 
-O loop `for-in` do Dart funciona como sua contraparte do Swift,
-e pode percorrer qualquer valor que seja um `Iterable`,
-como no exemplo de `List` abaixo:
+Dart's `for-in` loop works like its Swift counterpart,
+and it can loop over any value that is an `Iterable`,
+as in the `List` example below:
 
 ```dart
 var list = [0, 1, 2, 3, 4];
@@ -1049,12 +1049,12 @@ for i in array {
 }
 ```
 
-O Dart não possui nenhuma sintaxe especial com
-loops `for-in` que permitam percorrer mapas,
-como o Swift tem para dicionários.
-Para obter um efeito semelhante, você pode
-extrair as entradas do mapa como um tipo `Iterable`.
-Alternativamente, você pode usar `Map.forEach`:
+Dart doesn't have any special syntax with
+`for-in` loops that allow you to loop over maps,
+like Swift has for dictionaries.
+To achieve a similar effect, you can
+extract the map's entries as an `Iterable` type.
+Alternatively, you can use `Map.forEach`:
 
 ```dart
 Map<String, int> dict = {
@@ -1079,12 +1079,12 @@ for (key, value) in dict {
 }
 ```
 
-### Operadores {:#operators}
+### Operators
 
-Ao contrário do Swift, o Dart não permite a adição
-de novos operadores, mas permite que você sobrecarregue
-operadores existentes com a palavra-chave `operator`.
-Por exemplo:
+Unlike Swift, Dart doesn't allow the addition
+of new operators, but it does allow you to overload
+existing operators with the operator keyword.
+For example:
 
 ```dart
 class Vector {
@@ -1112,24 +1112,24 @@ func +(lhs: Vector, rhs: Vector) -> Vector {
 ...
 ```
 
-### Operadores aritméticos {:#arithmetic-operators}
+### Arithmetic operators
 
-Na maior parte, os operadores aritméticos se comportam
-da mesma forma no Swift e no Dart, com a notável
-exceção do operador de divisão (`/`).
-No Swift (e em muitas outras linguagens de programação),
-o resultado de `let x = 5/2` é `2` (um inteiro).
-No Dart, `int x = 5/2,` resulta em um valor de
-`2.5` (um valor de ponto flutuante). Para obter um resultado inteiro,
-use o operador de divisão truncada do Dart (`~/`).
+For the most part, arithmetic operators behave
+the same in Swift and Dart, with the notable
+exception of the divide operator (`/`).
+In Swift (and many other programming languages),
+the result of `let x = 5/2` is `2` (an integer).
+In Dart, `int x = 5/2,` results in a value of
+`2.5` (a floating point value). To get an integer result,
+use Dart's truncating division operator (`~/`). 
 
 
-:::secondary Diferença entre web e VM
-Na web, um `integer` também é um `double`
-(porque todos os números são),
-mas na VM é um puro `int` truncado `2`.
-(Truncado significa que o resultado é truncado
-e não arredondado.) Por exemplo:
+:::secondary Difference between web and VM
+On the web, an `integer` is also a `double`
+(because all numbers are),
+but on the VM it's a pure floored `int 2`.
+(_Floored_ meaning that the result is truncated
+and not rounded.) For example:
 
 ```dart
 assert(25 == 50.4 ~/ 2);
@@ -1138,76 +1138,76 @@ assert(25 == 51.6 ~/ 2);
 ```
 :::
 
-Embora os operadores `++` e `--` existissem em
-versões anteriores do Swift, eles foram
-[removidos no Swift 3.0][removidos no Swift 3.0].
-Os equivalentes do Dart operam da mesma forma.
-Por exemplo:
+While the `++` and `–` operators existed in
+earlier versions of Swift, they've been
+[removed in Swift 3.0][].
+The Dart equivalents operate the same way.
+For example:
 
-[removidos no Swift 3.0]: https://www.appsloveworld.com/swift/100/9/-is-deprecated-it-will-be-removed-in-swift-3
+[removed in Swift 3.0]: https://www.appsloveworld.com/swift/100/9/-is-deprecated-it-will-be-removed-in-swift-3
 
 ```dart
 assert(2 + 3 == 5);
 assert(2 - 3 == -1);
 assert(2 * 3 == 6);
-assert(5 / 2 == 2.5); // O resultado é um double
-assert(5 ~/ 2 == 2); // O resultado é um int
-assert(5 % 2 == 1); // Resto
+assert(5 / 2 == 2.5); // Result is a double
+assert(5 ~/ 2 == 2); // Result is an int
+assert(5 % 2 == 1); // Remainder
 
 a = 0;
-b = ++a; // Incrementa a antes que b receba seu valor.
+b = ++a; // Increment a before b gets its value.
 assert(a == b); // 1 == 1
 
 a = 0;
-b = a++; // Incrementa a DEPOIS que b recebe seu valor.
+b = a++; // Increment a AFTER b gets its value.
 assert(a != b); // 1 != 0
 ```
 
-### Operadores de teste de tipo {:#type-test-operators}
+### Type test operators
 
-A implementação dos operadores de teste é um pouco
-diferente entre as duas linguagens.
+The implementation of test operators is a bit
+different between the two languages. 
 
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
 
-| **Significado**                                  | **Operador Dart** | **Equivalente Swift**        |
-| ------------------------------------------------ | ----------------- | ---------------------------- |
-| Typecast (descrição abaixo)                      | expr as T         | expr as! T<br>expr as? T      |
-| Verdadeiro se o objeto tiver o tipo especificado | expr is T         | expr is T                    |
-| Verdadeiro se o objeto não tiver o tipo especificado | expr is! T        | !(expr is T)                 |
+| **Meaning**                                        | **Dart operator** | **Swift equivalent**     |
+|----------------------------------------------------|-------------------|--------------------------|
+| Typecast (description below)                       | expr as T         | expr as! T<br>expr as? T |
+| True if the object has the specified type          | expr is T         | expr is T                |
+| True if the object doesn't have the specified type | expr is! T        | !(expr is T)             |
 
 {:.table .table-striped .nowrap}
 
-O resultado de `obj is T` é `true` se `obj`
-for um subtipo do tipo especificado por `T`.
-Por exemplo, `obj is Object?` é sempre verdadeiro.
+The result of `obj is T` is `true` if `obj`
+is a subtype of the type specified by `T`.
+For example, `obj is Object?` is always true.
 
-Use o operador de typecast para converter um objeto
-para um tipo específico &mdash; se e somente se &mdash; você tiver
-certeza de que o objeto é desse tipo. Por exemplo:
+Use the typecast operator to cast an object
+to a particular type&mdash;if and only if&mdash;you're
+sure that the object is of that type. For example:
 
 ```dart
 (person as Employee).employeeNumber = 4204583;
 ```
 
-O Dart tem apenas o operador de conversão de tipo único,
-que age como o operador `as!` do Swift.
-Não há equivalente para o operador `as?` do Swift.
+Dart has only the single-type casting operator,
+which acts like Swift's `as!` operator.
+There's no equivalent for Swift's `as?` operator.
 
 ```swift
 (person as! Employee).employeeNumber = 4204583;
 ```
 
-Se você não tem certeza de que o objeto é do tipo `T`,
-então use `is T` para verificar antes de usar o objeto.
+If you aren't sure that the object is of type `T`,
+then use `is T` to check before using the object. 
 
-No Dart, a promoção de tipo atualiza os tipos de
-variáveis locais dentro do escopo da instrução `if`.
-Isso também acontece para verificações de nulos.
-A promoção se aplica apenas a variáveis _locais_,
-não a variáveis de instância.
+In Dart, type promotion updates the types of
+local variables within the scope of the `if` statement.
+This also happens for null checks.
+Promotion only applies to _local_ variables,
+not to instance variables.
 
 ```dart
 if (person is Employee) {
@@ -1216,43 +1216,43 @@ if (person is Employee) {
 ```
 
 ```swift
-// O Swift requer que a variável seja convertida.
+// Swift requires the variable to be cast.
 if let person = person as? Employee {
   print(person.employeeNumber) 
 }
 ```
 
-#### Operadores lógicos {:#logical-operators}
+#### Logical operators
 
-Os operadores lógicos (como AND (`&&`),
-OR (`||`) e NOT (`!`)) são idênticos
-em ambas as linguagens. Por exemplo:
+The logical operators (such as AND (`&&`),
+OR (`||`) and NOT (`!`)) are identical
+in both languages. For example:
 
 ```dart
 if (!done && (col == 0 || col == 3)) {
-  // ...Faça alguma coisa...
+  // ...Do something...
 }
 ```
 
-#### Operadores bit a bit e de deslocamento {:#bitwise-and-shift-operators}
+#### Bitwise and shift operators
 
-:::secondary Números na web
-Na web,
-o Dart usa operações bit a bit do JavaScript
-para melhor desempenho, mas isso pode causar
-comportamento diferente entre nativo e web
-aplicações. Para mais informações,
-consulte [Operações bit a bit][Operações bit a bit] na
-página [Números no Dart][Números no Dart].
+:::secondary Numbers on the web
+On the web,
+Dart uses JavaScript bitwise operations
+for better performance, but this can cause
+different behavior between native and web
+applications. For more information,
+see [Bitwise operations][] in the
+[Numbers in Dart][] page.
 :::
 
-[Operações bit a bit]: /resources/language/number-representation#bitwise-operations
-[Números no Dart]: /resources/language/number-representation
+[Bitwise operations]: /resources/language/number-representation#bitwise-operations
+[Numbers in Dart]: /resources/language/number-representation
 
-Os operadores bit a bit são praticamente idênticos
-em ambas as linguagens.
+The bitwise operators are mostly identical
+in both languages.
 
-Por exemplo:
+For example: 
 
 ```dart
 final value = 0x22;
@@ -1262,16 +1262,16 @@ assert((value & bitmask) == 0x02); // AND
 assert((value & ~bitmask) == 0x20); // AND NOT
 assert((value | bitmask) == 0x2f); // OR
 assert((value ^ bitmask) == 0x2d); // XOR
-assert((value << 4) == 0x220); // Deslocamento para a esquerda
-assert((value >> 4) == 0x02); // Deslocamento para a direita
-assert((-value >> 4) == -0x03); // Deslocamento para a direita // O resultado pode diferir na web
+assert((value << 4) == 0x220); // Shift left
+assert((value >> 4) == 0x02); // Shift right
+assert((-value >> 4) == -0x03); // Shift right // Result may differ on the web
 ```
 
-#### Operador condicional {:#conditional-operator}
+#### Conditional operator
 
-Tanto o Dart quanto o Swift contêm um operador condicional
-(`?:`) para avaliar expressões que, de outra forma,
-poderiam exigir instruções `if-else`:
+Both Dart and Swift contain a conditional operator
+(`?:`) for evaluating expressions that might otherwise
+require `if-else` statements:
 
 ```dart
 final displayLabel = canAfford ? 'Please pay below' : 'Insufficient funds';
@@ -1281,17 +1281,17 @@ final displayLabel = canAfford ? 'Please pay below' : 'Insufficient funds';
 let displayLabel = canAfford ?  "Please pay below" : "Insufficient funds"
 ```
 
-#### Cascades (.. operador) {:#cascades-operator}
+#### Cascades (.. operator) 
 
-Ao contrário do Swift, o Dart suporta cascata com
-o operador de cascata. Isso permite que você
-encadeie várias chamadas de método ou
-atribuições de propriedade em um único objeto.
+Unlike Swift, Dart supports cascading with
+the cascading operator. This allows you to
+chain multiple method calls or property
+assignments on a single object.
 
-O exemplo a seguir mostra a configuração do
-valor de várias propriedades e, em seguida, a chamada de
-vários métodos em um objeto recém-construído,
-tudo dentro de uma única cadeia usando o operador de cascata:
+The following example shows setting the
+value of multiple properties, then calling
+multiple methods on a newly constructed object,
+all within a single chain using the cascade operator:
 
 ```dart
 Animal animal = Animal()
@@ -1315,44 +1315,44 @@ print(animal.name)
 print(animal.age)
 ```
 
-## Coleções {:#collections}
+## Collections
 
-Esta seção aborda alguns tipos de coleção em
-Swift e como eles se comparam aos seus equivalentes em Dart.
+This section covers some collection types in
+Swift and how they compare to their equivalents in Dart.
 
-### Listas {:#lists}
+### Lists
 
-Literais de `List` são definidos da mesma forma em Dart como
-arrays são em Swift, usando colchetes e
-separados por vírgulas. A sintaxe entre as duas
-linguagens é muito semelhante, no entanto, existem algumas
-diferenças sutis, mostradas no exemplo a seguir:
+`List` literals are defined the same way in Dart as
+arrays are in Swift, using square brackets and
+separated by commas. The syntax between the two
+languages is very similar, however there are some
+subtle differences, shown in the following example:
 
 ```dart
-final List<String> list1 = <String>['one', 'two', 'three']; // Inicializa a lista e especifica o tipo completo
-final list2 = <String>['one', 'two', 'three']; // Inicializa a lista usando o tipo abreviado
-final list3 = ['one', 'two', 'three']; // O Dart também pode inferir o tipo
+final List<String> list1 = <String>['one', 'two', 'three']; // Initialize list and specify full type
+final list2 = <String>['one', 'two', 'three']; // Initialize list using shorthand type
+final list3 = ['one', 'two', 'three']; // Dart can also infer the type
 ```
 
 ```swift
-var list1: Array<String> = ["one", "two", "three"] // Inicializa o array e especifica o tipo completo
-var list2: [String] = ["one", "two", "three"] // Inicializa o array usando o tipo abreviado
-var list3 = ["one", "two", "three"] // O Swift também pode inferir o tipo
+var list1: Array<String> = ["one", "two", "three"] // Initialize array and specify the full type
+var list2: [String] = ["one", "two", "three"] // Initialize array using shorthand type
+var list3 = ["one", "two", "three"] // Swift can also infer the type
 ```
 
-Os seguintes exemplos de código fornecem uma visão geral das
-ações básicas que você pode realizar em uma `List` do Dart.
-O primeiro exemplo mostra como recuperar um valor
-de uma lista usando o operador `index`:
+The following code samples give an overview of the
+basic actions that you can perform on a Dart `List`.
+The first example shows how to retrieve a value
+from a list using the `index` operator:
 
 ```dart
 final fruits = ['apple', 'orange', 'pear'];
 final fruit = fruits[1];
 ```
 
-Para adicionar um valor ao final da lista,
-use o método `add`. Para adicionar outra `List`,
-use o método `addAll`:
+To add a value to the back of the list,
+use the `add` method. To add another `List`
+use the `addAll` method:
 
 ```dart
 final fruits = ['apple', 'orange', 'pear'];
@@ -1360,38 +1360,38 @@ fruits.add('peach');
 fruits.addAll(['kiwi', 'mango']);
 ```
 
-Para a API completa da List,
-consulte a documentação da [`List` class].
+For the complete List API,
+refer to the [`List` class] documentation.
 
 [`List` class]: {{site.dart-api}}/dart-core/List-class.html
 
-#### Imutável
+#### Unmodifiable
 
-Atribuir um array a uma constante (`let` no Swift)
-torna o array imutável, o que significa que seu tamanho e
-conteúdo não podem ser alterados. Você também não pode atribuir
-um novo array a uma constante.
+Assigning an array to a constant (`let` in Swift)
+makes the array immutable, meaning its size and
+content can't be changed. You also can't assign
+a new array to a constant.
 
-No Dart, isso funciona de forma um pouco diferente e,
-dependendo de suas necessidades,
-você tem várias opções para escolher:
+In Dart, this works a little differently and,
+depending on your needs,
+you have several options to choose from:
 
-*   Se a lista for uma constante de tempo de compilação e não deve
-    ser modificada, use a palavra-chave `const`:<br>
-    `const fruits = ['apple', 'orange', 'pear'];`
-*   Atribua a lista a um campo `final`.
-    Isso significa que a lista em si não
-    precisa ser uma constante de tempo de compilação e
-    garante que o campo não possa ser substituído
-    por outra lista. No entanto,
-    ainda permite que o tamanho ou o conteúdo
-    da lista seja modificado:<br>
-    `final fruits = ['apple', 'orange', 'pear'];`
-*   Crie uma `final List` usando o construtor imutável
-    (mostrado no exemplo a seguir).
-    Isso cria uma `List` que não pode alterar seu tamanho
-    ou conteúdo, fazendo com que ela se comporte como um `Array`
-    constante no Swift.
+* If the list is a compile-time constant and shouldn't
+  be modified, use the `const` keyword:<br>
+  `const fruits = ['apple', 'orange', 'pear'];`
+* Assign the list to a `final` field.
+  This means that the list itself doesn't
+  have to be a compile-time constant and
+  ensures that the field can't be overridden
+  with another list. However,
+  it still allows the size or the contents
+  of the list to be modified:<br>
+  `final fruits = ['apple', 'orange', 'pear'];`
+* Create a `final List` using the unmodifiable
+  constructor (shown in the following example).
+  This creates a `List` that can't change its size
+  or content, making it behave just like a constant
+  `Array` in Swift.
 
 ```dart
 final fruits = List<String>.unmodifiable(['apple', 'orange', 'pear']);
@@ -1401,16 +1401,16 @@ final fruits = List<String>.unmodifiable(['apple', 'orange', 'pear']);
 let fruits = ["apple", "orange", "pear"]
 ```
 
-#### Operadores de propagação (spread operators) {:#spread-operators}
+#### Spread operators
 
-Outro recurso útil no Dart é o **operador de propagação**
-(`...`) e o **operador de propagação com reconhecimento de nulo** (`...?`),
-que fornecem uma maneira concisa de inserir vários valores
-em uma coleção.
+Another useful feature in Dart is the **spread operator**
+(`...`) and the **null-aware spread operator** (`...?`),
+which provide a concise way to insert multiple values
+into a collection.
 
-Por exemplo, você pode usar o operador de propagação
-(`...`) para inserir todos os valores de uma lista
-em outra lista, como mostrado abaixo:
+For example, you can use the spread operator
+(`...`) to insert all the values of a list
+into another list, as shown below:
 
 ```dart
 final list = [1, 2, 3];
@@ -1418,17 +1418,17 @@ final list2 = [0, ...list]; // [ 0, 1, 2, 3 ]
 assert(list2.length == 4);
 ```
 
-Embora o Swift não tenha operador de propagação,
-o equivalente à linha 2 acima seria
-o seguinte:
+Though Swift has no spread operator,
+the equivalent to line 2 above would
+be the following:
 
 ```swift
 let list2 = [0] + list
 ```
 
-Se a expressão à direita do operador de propagação
-puder ser `null`, você pode evitar exceções usando
-um operador de propagação com reconhecimento de nulo (`...?`):
+If the expression to the right of the spread operator
+might be `null`, you can avoid exceptions by using
+a null-aware spread operator (`...?`):
 
 ```dart
 List<int>? list;
@@ -1440,30 +1440,30 @@ assert(list2.length == 1);
 let list2 = [0] + list ?? []
 ```
 
-### Conjuntos (Sets) {:#sets}
+### Sets
 
-Tanto o Dart quanto o Swift suportam a definição de `Set`s com literais.
-Os conjuntos são definidos da mesma forma que as listas,
-mas usando chaves em vez de colchetes.
-Os conjuntos são coleções não ordenadas que contêm apenas itens exclusivos.
-A exclusividade desses itens é implementada usando
-códigos de hash, o que significa que os objetos precisam de valores de hash
-para serem armazenados em um `Set`. Cada objeto Dart contém
-um código de hash, enquanto no Swift você precisa aplicar explicitamente
-o protocolo `Hashable` antes que o objeto
-possa ser armazenado em um `Set`.
+Both Dart and Swift support defining `Set`s with literals.
+Sets are defined in the same way as lists,
+but using curly braces instead of square brackets.
+Sets are unordered collections that only contain unique items.
+The uniqueness of these items is implemented using
+hash codes, meaning that objects need hash values
+to be stored in a `Set`. Every Dart object contains
+a hash code, while in Swift you need to explicitly
+apply the `Hashable` protocol before the object
+can be stored in a `Set`.
 
 :::note
-No Dart, o `hashCode` herdado da
-classe `Object` é baseado apenas na identidade do objeto.
-Se o operador `==` puder tornar objetos não idênticos iguais,
-o getter `hashCode` precisará ser substituído para corresponder
-à igualdade. Para mais informações,
-consulte a página da API para a [`hashCode` property][`hashCode` property].
+In Dart, the `hashCode` inherited from the
+`Object` class is only based on the object's identity.
+If the `==` operator can make non-identical objects equal,
+the `hashCode` getter needs to be overridden to match
+the equality. For more information,
+check out the API page for the [`hashCode` property][].
 :::
 
-Os seguintes trechos de código mostram as diferenças
-entre inicializar um `Set` em Dart e Swift:
+The following code snippets show the differences
+between initializing a `Set` in Dart and Swift:
 
 ```dart
 final abc = {'a', 'b', 'c'};
@@ -1473,23 +1473,23 @@ final abc = {'a', 'b', 'c'};
 var abc: Set<String> = ["a", "b", "c"]
 ```
 
-Você não cria um conjunto vazio em Dart
-especificando chaves vazias (`{}`);
-isso resulta na criação de um `Map` vazio.
-Para criar um `Set` vazio,
-preceda a declaração `{}` com um argumento de tipo
-ou atribua `{}` a uma variável do tipo `Set`:
+You don't create an empty set in Dart
+by specifying empty curly braces (`{}`);
+this results in creating an empty `Map`.
+To create an empty `Set`,
+precede the `{}` declaration with a type argument
+or assign `{}` to a variable of type `Set`:
 
 ```dart
 final names = <String>{};
-Set<String> alsoNames = {}; // Isso também funciona.
-// final names = {}; // Cria um mapa vazio, não um conjunto.
+Set<String> alsoNames = {}; // This works, too.
+// final names = {}; // Creates an empty map, not a set.
 ```
 
-#### Imutável
+#### Unmodifiable
 
-Semelhante a `List`, `Set` também tem uma versão imutável.
-Por exemplo:
+Similar to `List`, `Set` also has an unmodifiable version.
+For example: 
 
 ```dart
 final abc = Set<String>.unmodifiable(['a', 'b', 'c']);
@@ -1499,33 +1499,33 @@ final abc = Set<String>.unmodifiable(['a', 'b', 'c']);
 let abc: Set<String> = ["a", "b", "c"]
 ```
 
-### Mapas {:#maps}
+### Maps
 
-O tipo `Map` em Dart pode ser comparado com o
-tipo `Dictionary` em Swift. Ambos os tipos associam
-chaves e valores. Essas chaves e valores podem ser qualquer
-tipo de objeto. Cada chave ocorre apenas uma vez,
-mas você pode usar o mesmo valor várias vezes.
+The `Map` type in Dart can be compared with the
+`Dictionary` type in Swift. Both types associate
+keys and values. These keys and values can be any
+type of object. Each key occurs only once,
+but you can use the same value multiple times. 
 
-Em ambas as linguagens, o dicionário é baseado em uma tabela de hash,
-o que significa que as chaves precisam ser hasheáveis.
-No Dart, cada objeto contém um hash enquanto no Swift
-você precisa aplicar explicitamente o protocolo `Hashable`
-antes que o objeto possa ser armazenado em um `Dictionary`.
+In both languages, the dictionary is based on a hash table,
+which means that keys need to be hashable.
+In Dart, every object contains a hash while in Swift
+you need to explicitly apply the `Hashable` protocol
+before the object can be stored in a `Dictionary`.
 
 :::note
-No Dart, o `hashCode` herdado da classe `Object`
-é baseado apenas na identidade do objeto.
-Se o operador `==` puder tornar objetos não idênticos iguais,
-o getter `hashCode` precisará ser substituído para corresponder
-à igualdade. Para mais informações,
-consulte a página da API para a [`hashCode` property][`hashCode` property].
+In Dart, the `hashCode` inherited from the `Object`
+class is only based on the object's identity.
+If the `==` operator can make non-identical objects equal,
+the `hashCode` getter needs to be overridden
+to match the equality. For more information,
+check out the API page for the [`hashCode` property][].
 :::
 
 [`hashCode` property]: {{site.dart-api}}/dart-core/Object/hashCode.html
 
-Aqui estão alguns exemplos simples de `Map` e `Dictionary`,
-criados usando literais:
+Here are a couple of simple `Map` and `Dictionary` examples,
+created using literals:
 
 ```dart
 final gifts = {
@@ -1555,38 +1555,38 @@ let nobleGases = [
 ]
 ```
 
-Os seguintes exemplos de código fornecem uma visão geral
-das ações básicas que você pode realizar em um
-`Map` do Dart. O primeiro exemplo mostra como
-recuperar um valor de um `Map` usando o operador `key`:
+The following code samples provide an overview
+of the basic actions that you can perform on a
+Dart `Map`. The first example shows how to
+retrieve a value from a `Map` using the `key` operator:
 
 ```dart
 final gifts = {'first': 'partridge'};
 final gift = gifts['first']; // 'partridge'
 ```
 
-Use o método `containsKey` para verificar se uma
-chave já está presente no `Map`:
+Use the `containsKey` method to check whether a
+key is already present in the `Map`:
 
 ```dart
 final gifts = {'first': 'partridge'};
 assert(gifts.containsKey('fifth')); // false
 ```
 
-Use o operador de atribuição de índice (`[]=`) para adicionar
-ou atualizar uma entrada no `Map`. Se o `Map`
-ainda não contiver a chave, a entrada será adicionada.
-Se a chave estiver presente, o valor da entrada será atualizado:
+Use the index assignment operator (`[]=`) to add
+or update an entry in the `Map`. If the `Map`
+doesn't contain the key yet, the entry is added.
+If the key is present, the entry's value is updated:
 
 ```dart
 final gifts = {'first': 'partridge'};
-gifts['second'] = 'turtle'; // É adicionado
-gifts['second'] = 'turtle doves'; // É atualizado
+gifts['second'] = 'turtle'; // Gets added
+gifts['second'] = 'turtle doves'; // Gets updated
 ```
 
-Para remover uma entrada do `Map` use o método `remove`,
-e para remover todas as entradas que satisfaçam um determinado teste
-use o método `removeWhere`:
+To remove an entry from the `Map` use the `remove` method,
+and to remove all entries that satisfy a given test
+use the `removeWhere` method:
 
 ```dart
 final gifts = {'first': 'partridge'};
@@ -1594,52 +1594,52 @@ gifts.remove('first');
 gifts.removeWhere((key, value) => value == 'partridge');
 ```
 
-## Classes {:#classes}
+## Classes 
 
-O Dart não define um tipo de interface &mdash; _qualquer_
-classe pode ser usada como uma interface.
-Se você quiser introduzir apenas uma interface,
-crie uma classe abstrata sem membros concretos.
-Para obter uma compreensão mais detalhada dessas categorias,
-consulte a documentação nas seções
-[classes abstratas](#abstract-classes),
-[interfaces implícitas](#implicit-interfaces)
-e [estendendo uma classe](#extending-a-class).
+Dart doesn't define an interface type&mdash;_any_
+class can be used as an interface.
+If you want to introduce just an interface,
+create an abstract class with no concrete members.
+To get a more detailed understanding of these categories,
+check out the documentation in the
+[abstract classes](#abstract-classes),
+[implicit interfaces](#implicit-interfaces),
+and [extending a class](#extending-a-class) sections.
 
-O Dart não oferece suporte para tipos de valor.
-Conforme mencionado na seção [Tipos integrados](#built-in-types),
-todos os tipos em Dart são tipos de referência (mesmo primitivos),
-o que significa que o Dart não fornece uma palavra-chave `struct`.
+Dart doesn't provide support for value types.
+As mentioned in the [Built-in types](#built-in-types) section,
+all types in Dart are reference types (even primitives),
+meaning that Dart doesn't provide a `struct` keyword.
 
-### Enums {:#enums}
+### Enums
 
-Tipos enumerados, geralmente chamados de enumerações ou enums,
-são um tipo especial de classe usado para representar
-um número fixo de valores constantes. Os enums fazem
-parte da linguagem Dart há muito tempo,
-mas o Dart 2.17 adicionou suporte aprimorado a enums para membros.
-Isso significa que você pode adicionar campos que mantêm o estado,
-construtores que definem esse estado,
-métodos com funcionalidade,
-e até mesmo substituir membros existentes.
-Para mais informações, consulte
-[Declarando enums aprimorados][Declarando enums aprimorados] no tour da linguagem Dart.
+Enumerated types, often called enumerations or enums,
+are a special kind of class used to represent
+a fixed number of constant values. Enums have been
+part of the Dart language for a long time,
+but Dart 2.17 added enhanced enums support for members.
+That means you can add fields holding state,
+constructors that set that state,
+methods with functionality,
+and even override existing members.
+For more information, check out
+[Declaring enhanced enums][] in the Dart language tour.
 
-[Declarando enums aprimorados]: /language/enums#declaring-enhanced-enums
+[Declaring enhanced enums]: /language/enums#declaring-enhanced-enums
 
-### Construtores {:#constructors}
+### Constructors 
 
-Os construtores de classe do Dart funcionam de forma semelhante aos
-inicializadores de classe no Swift. No entanto, no Dart,
-eles oferecem mais funcionalidade para definir propriedades de classe.
+Dart's class constructors work similarly to class
+initializers in Swift. However, in Dart,
+they offer more functionality for setting class properties.
 
-#### Construtor padrão {:#standard-constructor}
+#### Standard constructor
 
-Um construtor de classe padrão parece muito semelhante
-a um inicializador do Swift, tanto na declaração quanto na chamada.
-Em vez da palavra-chave `init`, o Dart usa o nome completo da classe.
-A palavra-chave `new`, antes obrigatória para criar novas
-instâncias de classe, agora é opcional e não é mais recomendada.
+A standard class constructor looks very similar
+to a Swift initializer, both in declaring it and calling it.
+Rather than the `init` keyword, Dart uses the full class name.
+The `new` keyword, once required for creating new
+class instances, is now optional and no longer recommended. 
 
 ```dart
 class Point {
@@ -1647,47 +1647,47 @@ class Point {
   double y = 0;
 
   Point(double x, double y) {
-    // Há uma maneira melhor de fazer isso no Dart, fique ligado.
+    // There's a better way to do this in Dart, stay tuned.
     this.x = x;
     this.y = y;
   }
 }
 
-// Cria uma nova instância da classe Point
+// Create a new instance of the Point class
 Point p = Point(3, 5);
 ```
 
-#### Parâmetros do construtor {:#constructor-parameters}
+#### Constructor parameters
 
-Como escrever código para atribuir todos os campos da classe
-no construtor costuma ser bastante redundante,
-o Dart tem um pouco de açúcar sintático para tornar isso mais fácil:
+Since writing code to assign all class fields
+in the constructor is often quite redundant,
+Dart has some syntactic sugar to make this easier:
 
 ```dart
 class Point {
   double x;
   double y;
 
-  // Açúcar sintático para definir x e y
-  // antes que o corpo do construtor seja executado.
+  // Syntactic sugar for setting x and y
+  // before the constructor body runs.
   Point(this.x, this.y);
 }
 
-// Cria uma nova instância da classe Point
+// Create a new instance of the Point class
 Point p = Point(3, 5);
 ```
 
-Semelhante às funções, os construtores também podem receber
-parâmetros posicionais ou nomeados opcionais:
+Similar to functions, constructors can also take
+optional positional or named parameters:
 
 ```dart
 class Point {
   ...
-  // Com um parâmetro posicionado opcional
+  // With an optional positioned parameter
   Point(this.x, [this.y = 0]);
-  // Com parâmetros nomeados
+  // With named parameters
   Point({required this.y, this.x = 0});
-  // Com parâmetros posicionais e nomeados
+  // With both positional and named parameters
   Point(int x, int y, {int scale = 1}) {
     ...
   }
@@ -1695,12 +1695,12 @@ class Point {
 }
 ```
 
-#### Listas de inicializadores {:#initializer-lists}
+#### Initializer lists
 
-Você também pode usar listas de inicializadores,
-que são executadas após quaisquer campos que sejam definidos diretamente
-usando `this` nos parâmetros do construtor,
-mas ainda antes do corpo do construtor:
+You can also use initializer lists,
+which run after any fields that are directly set
+using `this` in the constructor parameters,
+but still before the constructor body:
 
 ```dart
 class Point {
@@ -1714,15 +1714,15 @@ class Point {
 }
 ```
 
-Uma lista de inicializadores é um bom lugar para usar um assert.
+An initializer list is a good place to use an assert.
 
-#### Construtores nomeados {:#named-constructors}
+#### Named constructors
 
-Ao contrário do Swift, o Dart permite que as classes tenham vários
-construtores, permitindo que você os nomeie.
-Você tem a opção de usar um construtor sem nome,
-mas quaisquer construtores adicionais devem ser nomeados.
-Uma classe também pode ter apenas construtores nomeados.
+Unlike Swift, Dart allows classes to have multiple
+constructors by allowing you to name them.
+You have the option of using one unnamed constructor,
+but any additional constructors must be named.
+A class can also have only named constructors.
 
 ```dart
 class Point {
@@ -1731,23 +1731,23 @@ class Point {
 
   Point(this.x, this.y);
 
-  // Construtor nomeado
+  // Named constructor
   Point.fromJson(Map<String, double> json)
       : x = json['x']!,
         y = json['y']!;
 }
 ```
 
-#### Construtores Const {:#const-constructors}
+#### Const constructors
 
-Quando as instâncias de sua classe são sempre imutáveis
-(imutáveis), você pode impor isso adicionando um
-construtor `const`. Remover um construtor `const`
-é uma mudança de quebra para aqueles que usam sua classe,
-então empregue esse recurso criteriosamente.
-Definir um construtor como `const` torna a classe
-imutável: todos os campos não estáticos na classe
-devem ser sinalizados como `final`.
+When your class instances are always immutable
+(unchanging), you can enforce this by adding a
+`const` constructor. Removing a `const` constructor
+is a breaking change for those who use your class,
+so employ this feature judiciously.
+Defining a constructor as `const` makes the class
+unmodifiable: all non-static fields in the class
+must be flagged as `final`. 
 
 ```dart
 class ImmutablePoint {
@@ -1757,36 +1757,36 @@ class ImmutablePoint {
 }
 ```
 
-Isso também significa que você pode usar essa classe como um valor constante,
-tornando o objeto uma constante de tempo de compilação:
+This also means you can use that class as a constant value,
+making the object a compile-time constant:
 
 ```dart
 const ImmutablePoint origin = ImmutablePoint(0, 0);
 ```
 
-#### Redirecionamento de construtor {:#constructor-redirection}
+#### Constructor redirection
 
-Você pode chamar construtores de outros construtores,
-por exemplo, para evitar duplicação de código ou para
-adicionar padrões adicionais para parâmetros:
+You can call constructors from other constructors,
+for example, to prevent code duplication or to
+add additional defaults for parameters:
 
 ```dart
 class Point {
   double x, y;
 
-  // O construtor principal para esta classe.
+  // The main constructor for this class.
   Point(this.x, this.y);
 
-  // Delega ao construtor principal.
+  // Delegates to the main constructor.
   Point.alongXAxis(double x) : this(x, 0);
 }
 ```
 
-#### Construtores de fábrica {:#factory-constructors}
+#### Factory constructors
 
-Você pode usar construtores de fábrica quando não
-precisar criar uma nova instância de classe.
-Um exemplo é se uma instância em cache puder ser retornada em vez disso:
+You can use factory constructors when you don't
+need to create a new class instance.
+One example is if a cached instance could be returned instead:
 
 ```dart
 class Logger {
@@ -1795,53 +1795,53 @@ class Logger {
   
   final String name;
   
-  // Construtor de fábrica que retorna uma cópia em cache,
-  // ou cria uma nova se ainda não estiver disponível.
+  // Factory constructor that returns a cached copy,
+  // or creates a new one if it's not yet available.
   factory Logger(String name)=> _cache[name] ??= Logger._internal(name);
-  // Construtor privado usado apenas nesta biblioteca
+  // Private constructor used only in this library
   Logger._internal(this.name);
 }
 ```
 
-### Métodos {:#methods}
+### Methods
 
-Tanto no Dart quanto no Swift, os métodos são funções
-que fornecem comportamento para um objeto.
+In both Dart and Swift, methods are functions
+that provide behavior for an object. 
 
 ```dart
-void doSomething() { // Isso é uma função
- // Implementação..
+void doSomething() { // This is a function
+ // Implementation..
 }
 
 class Example {
- void doSomething() { // Isso é um método
-   // Implementação..
+ void doSomething() { // This is a method
+   // Implementation..
  }
 }
 ```
 
 ```swift
-func doSomething() { // Isso é uma função
-  // Implementação..
+func doSomething() { // This is a function
+  // Implementation..
 }
 
 class Example {
-  func doSomething() { // Isso é um método
-    // Implementação..
+  func doSomething() { // This is a method
+    // Implementation..
   }
 }
 ```
 
-### Getters e setters {:#getters-and-setters}
+### Getters and setters
 
-Você pode definir getters e setters prefixando um nome de campo
-com uma palavra-chave `get` ou `set`. Você deve se lembrar
-que cada campo de instância tem um getter implícito,
-mais um setter, se apropriado. No Swift,
-a sintaxe é um pouco diferente,
-pois as palavras-chave `get` e `set` precisam ser definidas
-dentro de uma declaração de propriedade e só podem ser definidas
-como uma declaração, não como uma expressão:
+You can define getters and setters by prefixing a field name
+with a `get` or `set` keyword. You might recall
+that each instance field has an implicit getter,
+plus a setter if appropriate. In Swift,
+the syntax is a little different,
+as the `get` and `set` keywords need to be defined
+inside of a property statement and can only be defined
+as a statement, not as an expression:
 
 ```dart
 class Rectangle {
@@ -1849,7 +1849,7 @@ class Rectangle {
 
   Rectangle(this.left, this.top, this.width, this.height);
 
-  // Define duas propriedades calculadas: right e bottom.
+  // Define two calculated properties: right and bottom.
   double get right => left + width;
   set right(double value) => width = value - left;
 
@@ -1869,7 +1869,7 @@ class Rectangle {
    self.height = height
  }
 
- // Define duas propriedades calculadas: right e bottom.
+ // Define two calculated properties: right and bottom.
  var right: Double {
    get {
      return left + width
@@ -1886,57 +1886,57 @@ class Rectangle {
 }
 ```
 
-### Classes abstratas {:#abstract-classes}
+### Abstract classes
 
-O Dart tem o conceito de classes _abstratas_,
-algo que não é suportado pelo Swift.
-Classes abstratas não podem ser instanciadas diretamente e
-só podem ser subclasses. Isso torna as classes abstratas
-úteis para definir interfaces (comparável a um protocolo no Swift).
+Dart has the concept of _abstract_ classes,
+something that isn't supported by Swift.
+Abstract classes can't be instantiated directly and
+can only be subclassed. This makes abstract classes
+useful to define interfaces (comparable to a protocol in Swift).
+ 
+Abstract classes often contain _abstract_ methods,
+which are method declarations that don't have an
+implementation. Non-abstract subclasses are forced
+to override these methods and provide an appropriate
+implementation. An abstract class can also contain methods
+with a default implementation.
+Subclasses inherit this implementation
+if they don't override these methods when
+extending the abstract class.
 
-Classes abstratas geralmente contêm métodos _abstratos_,
-que são declarações de métodos que não possuem uma
-implementação. Subclasses não abstratas são forçadas
-a sobrescrever esses métodos e fornecer uma
-implementação apropriada. Uma classe abstrata também pode conter métodos
-com uma implementação padrão.
-As subclasses herdam essa implementação
-se não sobrescreverem esses métodos ao
-estender a classe abstrata.
-
-Para definir uma classe abstrata, use o modificador `abstract`.
-O exemplo a seguir declara uma classe abstrata
-que possui um método abstrato e um método
-contendo uma implementação padrão:
+To define an abstract class, use the `abstract` modifier.
+The following example declares an abstract class
+that has an abstract method and a method
+containing a default implementation:
 
 ```dart
-// Esta classe é declarada abstrata e, portanto, não pode ser instanciada.
+// This class is declared abstract and thus can't be instantiated.
 abstract class AbstractContainer {
-  void updateChildren(); // Método abstrato.
+  void updateChildren(); // Abstract method.
 
-  // Método com implementação padrão.
+  // Method with default implementation.
   String toString() => "AbstractContainer";
 }
 ```
 
-### Interfaces implícitas {:#implicit-interfaces}
+### Implicit interfaces
 
-Na linguagem Dart, cada classe define implicitamente
-uma interface contendo todos os
-membros da instância da classe e de qualquer
-interface que ela implemente. Se você quiser criar
-uma classe `A` que suporte a API da classe `B`
-sem herdar a implementação de `B`,
-a classe `A` deve implementar a interface `B`.
+In the Dart language, every class implicitly
+defines an interface containing all the
+instance members of the class and of any
+interface it implements. If you want to create
+a class `A` that supports class `B`'s API
+without inheriting `B`'s implementation,
+class `A` should implement the `B` interface. 
 
-Ao contrário do Dart, as classes Swift não definem implicitamente
-uma interface. A interface precisa ser explicitamente
-definida como um protocolo e implementada pelo desenvolvedor.
+Unlike Dart, Swift classes don't implicitly
+define an interface. The interface needs to be explicitly
+defined as a protocol and implemented by the developer.
 
-Uma classe pode implementar uma ou mais interfaces
-e então fornecer as APIs exigidas pelas interfaces.
-Tanto o Dart quanto o Swift têm maneiras diferentes de
-implementar interfaces. Por exemplo:
+A class can implement one or more interfaces
+and then provide the APIs required by the interfaces.
+Both Dart and Swift have a different ways of
+implementing interfaces. For example:
 
 ```dart
 abstract class Animal {
@@ -1970,11 +1970,11 @@ class Dog: Animal {
 }
 ```
 
-### Estendendo uma classe {:#extending-a-class}
+### Extending a class
 
-A herança de classe em Dart é muito semelhante ao Swift.
-No Dart, você pode usar `extends` para criar uma subclasse,
-e `super` para se referir à superclasse:
+Class inheritance in Dart is very similar to Swift.
+In Dart, you can use `extends` to create a subclass,
+and `super` to refer to the superclass:
 
 ```dart
 abstract class Animal {
@@ -1996,69 +1996,69 @@ class Dog: Animal {
 }
 ```
 
-### Mixins {:#mixins}
+### Mixins 
 
-Mixins permitem que seu código compartilhe funcionalidades entre classes.
-Você pode usar os campos e métodos do mixin em uma classe,
-utilizando sua funcionalidade como se fosse parte da classe.
-Uma classe pode usar múltiplos mixins&mdash;o que é útil
-quando várias classes compartilham a mesma funcionalidade&mdash;sem
-necessidade de herdar umas das outras ou compartilhar um ancestral comum.
+Mixins allow your code to share functionality between classes.
+You can use the mixin's fields and methods in a class,
+using their functionality as if it were part of the class.
+A class can use multiple mixins&mdash;which is useful
+when multiple classes share the same functionality&mdash;without
+needing to inherit from each other or share a common ancestor.
 
-Enquanto Swift não suporta mixins, ele pode aproximar
-essa funcionalidade se você escrever um protocolo junto
-com uma extensão que fornece implementações padrão
-para os métodos especificados no protocolo.
-O principal problema com essa abordagem é que,
-diferentemente do Dart,
-essas extensões de protocolo não mantêm seu próprio estado.
+While Swift doesn't support mixins, it can approximate
+this functionality if you write a protocol together
+with an extension that provides default implementations
+for the methods specified in the protocol.
+The main issue with this approach is that,
+unlike in Dart,
+these protocol extensions don't maintain their own state. 
 
-Você pode declarar um mixin assim como uma classe regular,
-contanto que ele não estenda nenhuma classe além de `Object`
-e não tenha construtores. Use a palavra-chave `with` para adicionar
-um ou mais mixins separados por vírgula a uma classe.
+You can declare a mixin just like a regular class,
+as long as it doesn't extend any class other than `Object`
+and has no constructors. Use the `with` keyword to add
+one or more comma-separated mixins to a class. 
 
-O exemplo a seguir mostra como esse comportamento é
-alcançado em Dart, e como um comportamento similar é
-replicado em Swift:
+The following example shows how this behavior is
+achieved in Dart, and how similar behavior is
+replicated in Swift:
 
 ```dart
 abstract class Animal {}
 
-// Definindo os mixins
+// Defining the mixins
 mixin Flyer {
-  fly() => print('Bate as asas');
+  fly() => print('Flaps wings');
 }
 mixin Walker {
-  walk() => print('Anda com as pernas');
+  walk() => print('Walks legs');
 }
   
 class Bat extends Animal with Flyer {}
 class Goose extends Animal with Flyer, Walker {}
 class Dog extends Animal with Walker {}
 
-// Chamadas corretas
+// Correct calls
 Bat().fly();
 Goose().fly();
-Goose().walk();
+Goose().walk(); 
 Dog().walk();
 
-// Chamadas incorretas
-Bat().walk(); // Não está usando o mixin Walker
-Dog().fly(); // Não está usando o mixin Flyer
+// Incorrect calls
+Bat().walk(); // Not using the Walker mixin
+Dog().fly(); // Not using the Flyer mixin
 class Animal {
 }
 ```
 
 ```swift
-// Definindo os "mixins"
+// Defining the "mixins"
 protocol Flyer {
   func fly()
 }
 
 extension Flyer {
   func fly() {
-    print("Bate as asas")
+    print("Flaps wings")
   }
 }
 
@@ -2068,7 +2068,7 @@ protocol Walker {
 
 extension Walker {
   func walk() {
-    print("Anda com as pernas")
+    print("Walks legs")
   }
 }
 
@@ -2076,83 +2076,83 @@ class Bat: Animal, Flyer {}
 class Goose: Animal, Flyer, Walker {}
 class Dog: Animal, Walker {}
 
-// Chamadas corretas
+// Correct calls
 Bat().fly();
 Goose().fly();
 Goose().walk();
 Dog().walk();
 
-// Chamadas incorretas
-Bat().walk(); // `bat` não tem o método `walk`
-Dog().fly(); // "dog" não tem o método `fly`
+// Incorrect calls
+Bat().walk(); // `bat` doesn't have the `walk` method
+Dog().fly(); // "dog" doesn't have the `fly` method
 ```
 
-Substituir a palavra-chave `class` por `mixin`
-impede que o mixin seja usado como uma classe regular.
+Replacing the `class` keyword with `mixin`
+prevents the mixin from being used as a regular class.
 
 ```dart
 mixin Walker {
-  walk() => print('Anda com as pernas');
+  walk() => print('Walks legs');
 }
 
-// Impossível, pois Walker não é mais uma classe.
+// Impossible, as Walker is no longer a class.
 class Bat extends Walker {}
 ```
 
 :::note
-A palavra-chave `extends` é abordada mais adiante em
-[Estendendo uma classe][Estendendo uma classe] no guia da linguagem Dart.
+The `extends` keyword is covered further in
+[Extending a class][] in the Dart language tour.
 :::
 
-[Estendendo uma classe]: /language/generics#restricting-the-parameterized-type
+[Extending a class]: /language/generics#restricting-the-parameterized-type
 
-Já que você pode usar múltiplos mixins,
-seus métodos ou campos podem se sobrepor uns aos outros
-quando usados na mesma classe.
-Eles podem até se sobrepor com a classe que os usa,
-ou com a superclasse dessa classe. Para contornar isso,
-Dart os empilha um sobre o outro,
-então a ordem em que eles são adicionados a uma classe importa.
+Since you can use multiple mixins,
+their methods or fields can overlap with
+each other when used on the same class.
+They can even overlap with the class that uses them,
+or that class's superclass. To work around this,
+Dart stacks them on top of each other,
+so the order in which they are added to a class matters. 
 
-Para dar um exemplo:
+To give an example:
 
 ```dart
 class Bird extends Animal with Consumer, Flyer {
 ```
 
-Quando um método é chamado em uma instância de `Bird`,
-Dart começa na base da pilha com sua própria classe,
-`Bird`, que tem precedência sobre outras implementações.
-Se `Bird` não tiver implementação,
-então Dart continua subindo na pilha,
-com `Flyer` em seguida, seguido por `Consumer`,
-até que uma implementação seja encontrada.
-Se nenhuma implementação for encontrada,
-a classe pai, `Animal`, é verificada por último.
+When a method is called on an instance of `Bird`,
+Dart starts at the bottom of the stack with its own class,
+`Bird`, which takes precedence over other implementations.
+If `Bird` has no implementation,
+then Dart keeps moving up the stack,
+with `Flyer` next, followed by `Consumer`,
+until an implementation is found.
+If no implementation is found,
+the parent class, `Animal`, is checked last. 
 
-### Métodos de extensão {:#extension-methods}
+### Extension methods 
 
-Assim como Swift, Dart oferece métodos de extensão que permitem que você
-adicione funcionalidade&mdash;especificamente, métodos,
-getters, setters e operadores&mdash;a tipos existentes.
-A sintaxe tanto em Dart quanto em Swift para criar uma
-extensão parece muito similar:
+Like Swift, Dart offers extension methods that allow you
+to add functionality&mdash;specifically, methods,
+getters, setters, and operators&mdash;to existing types. 
+The syntax in both Dart and Swift for creating an
+extension looks very similar:
 
 ```dart
-extension <nome> on <tipo> {
-  (<definição de membro>)*
+extension <name> on <type> {
+  (<member definition>)*
 }
 ```
 
 ```swift
-extension <tipo> {
-  (<definição de membro>)*
+extension <type> {
+  (<member definition>)*
 }
 ```
 
-Como exemplo, a extensão a seguir na classe
-`String` do SDK do Dart
-permite analisar inteiros:
+As an example, the following extension on
+the `String` class from the Dart SDK
+allows parsing of integers:
 
 ```dart
 extension NumberParsing on String {
@@ -2174,51 +2174,51 @@ extension String {
 print("21".parseInt() * 2) // 42
 ```
 
-Embora as extensões sejam similares em Dart e Swift,
-há algumas diferenças importantes. As seções seguintes
-cobrem as diferenças mais importantes,
-mas confira [Métodos de extensão][Métodos de extensão] para uma
-visão geral completa.
+Although extensions are similar in Dart and Swift,
+there are some key differences. The following sections
+cover the most important differences,
+but check out [Extension methods][] for a complete
+overview.
 
-[Métodos de extensão]: /language/extension-methods
+[Extension methods]: /language/extension-methods
 
 :::note
-Dart não oferece suporte a estender um tipo existente
-para fazê-lo adotar um ou mais protocolos.
+Dart doesn't support extending an existing type
+to make it adopt one or more protocols.
 :::
 
-#### Extensões nomeadas {:#named-extensions}
+#### Named extensions
 
-Embora não seja obrigatório, você pode nomear uma extensão em Dart.
-Nomear uma extensão permite que você controle seu
-escopo&mdash;significando que é possível tanto
-ocultar ou mostrar a extensão caso ela entre em conflito
-com outra biblioteca. Se o nome começar com um sublinhado,
-a extensão só estará disponível dentro da biblioteca
-na qual ela foi definida.
+Although not mandatory, you can name an extension in Dart.
+Naming an extension allows you to control its
+scope&mdash;meaning it's possible to either
+hide or show the extension in case it conflicts
+with another library. If the name begins with an underscore,
+the extension is only available within the library
+in which it's defined.
 
 ```dart
-// Oculta "MyExtension" ao importar tipos de
+// Hide "MyExtension" when importing types from
 // "path/to/file.dart".
-import 'path/to/file.dart' hide MyExtension;
-// Mostra apenas "MyExtension" ao importar tipos
-// de "path/to/file.dart".
+import 'path/to/file.dart' hide MyExtension; 
+// Only show "MyExtension" when importing types
+// from "path/to/file.dart".
 import 'path/to/file.dart' show MyExtension;
 
-// O método `shout()` está disponível apenas dentro desta biblioteca.
+// The `shout()` method is only available within this library.
 extension _Private on String {
   String shout() => this.toUpperCase();
 }
 ```
 
-#### Inicializadores {:#initializers}
+#### Initializers
 
-Em Swift, você pode usar extensões para adicionar novos
-inicializadores de conveniência a um tipo. Em Dart,
-você não pode usar extensões para adicionar construtores
-adicionais a uma classe, mas você pode adicionar um
-método de extensão estático que cria uma instância
-do tipo. Considere o seguinte exemplo:
+In Swift, you can use extensions to add new
+convenience initializers to a type. In Dart,
+you can't use extensions to add additional
+constructors to a class, but you can add a
+static extension method that creates an instance
+of the type. Consider the following example: 
 
 ```dart
 class Person {
@@ -2233,447 +2233,447 @@ extension ExtendedPerson on Person {
   }
 }
 
-// Para usar o método factory, use o nome da
-// extensão, não o tipo.
+// To use the factory method, use the name of
+// the extension, not the type.
 final person = ExtendedPerson.create('John', 'Doe');
 ```
 
-### Sobrescrevendo membros {:#overriding-members}
+### Overriding members
 
-Sobrescrever métodos de instância (incluindo operadores,
-getters e setters) também é muito similar entre
-as duas linguagens. Em Dart, você pode usar a
-anotação `@override` para indicar que você está
-intencionalmente sobrescrevendo um membro:
+Overriding instance methods (including operators,
+getters, and setters), is also very similar between
+the two languages. In Dart, you can use the
+`@override` annotation to indicate that you are
+intentionally overriding a member:
 
 ```dart
 class Animal {
-  void makeNoise => print('Barulho');
+  void makeNoise => print('Noise');
 }
 
 class Dog implements Animal {
   @override
-  void makeNoise() => print('Au au');
+  void makeNoise() => print('Woof woof');
 }
 ```
 
-Em Swift, você adiciona a palavra-chave `override`
-à definição do método:
+In Swift, you add the `override` keyword
+to the method definition:
 
 ```swift
 class Animal {
   func makeNoise() {
-    print("Barulho")
+    print("Noise")
   }
 }
 
 class Dog: Animal {
   override func makeNoise() {
-    print("Au au");
+    print("Woof woof"); 
   }
 }
 ```
 
-## Genéricos {:#generics}
+## Generics 
 
-Como em Swift, Dart oferece suporte ao uso de genéricos
-para melhorar a segurança de tipos ou reduzir a duplicação de código.
+As in Swift, Dart supports the use of generics
+to improve type safety or reduce code duplication. 
 
-### Métodos genéricos {:#generic-methods}
+### Generic methods 
 
-Você pode aplicar genéricos a métodos.
-Para definir um tipo genérico, coloque-o entre
-símbolos `< >` após o nome do método.
-Esse tipo pode então ser usado dentro do método
-(como o tipo de retorno), ou nos parâmetros do método:
+You can apply generics to methods.
+To define a generic type, place it between
+`< >` symbols after the method name.
+This type can then be used within the method
+(as the return type), or in the method's parameters:
 
 ```dart
-// Definindo um método que usa genéricos.
+// Defining a method that uses generics.
 T transform<T>(T param) {
-  // Por exemplo, fazendo alguma transformação em `param`...
+  // For example,  doing some transformation on `param`...
   return param;
 }
 
-// Chamando o método. A variável "str" será
-// do tipo String.
-var str = transform('valor string');
+// Calling the method. Variable "str" will be
+// of type String.
+var str = transform('string value'); 
 ```
 
-Nesse caso, passar `String` para o método `transform`
-garante que ele retorne uma `String`.
-Da mesma forma, se um `int` for fornecido,
-o valor de retorno é um `int`.
+In this case, passing `String` to the `transform`
+method ensures that it returns a `String`.
+Likewise, if an `int` is provided,
+the return value is an `int`.
 
-Defina múltiplos genéricos separando-os
-com uma vírgula:
+Define multiple generics by separating them
+with a comma:
 
 ```dart
-// Definindo um método com múltiplos genéricos.
+// Defining a method with multiple generics.
 T transform<T, Q>(T param1, Q param2) {
   // ...
 }
-// Chamando o método com tipos definidos explicitamente.
-transform<int, String>(5, 'valor string');
-// Os tipos são opcionais quando podem ser inferidos.
-transform(5, 'valor string');
+// Calling the method with explicitly-defined types.
+transform<int, String>(5, 'string value');
+// Types are optional when they can be inferred.
+transform(5, 'string value');
 ```
 
-### Classes genéricas {:#generic-classes}
+### Generic classes
 
-Genéricos também podem ser aplicados a classes.
-Você pode especificar o tipo ao chamar um construtor,
-o que permite que você personalize classes reutilizáveis para tipos específicos.
+Generics can also be applied to classes.
+You can specify the type when calling a constructor,
+which allows you to tailor reusable classes to specific types.
 
-No exemplo a seguir,
-a classe `Cache` é para armazenar em cache tipos específicos:
+In the following example,
+the `Cache` class is for caching specific types:
 
 ```dart
 class Cache<T> {
   T getByKey(String key) {}
   void setByKey(String key, T value) {}
 }
-// Criando um cache para strings.
-// stringCache tem o tipo Cache<String>
+// Creating a cache for strings.
+// stringCache has type Cache<String>
 var stringCache = Cache<String>();
-// Válido, definindo um valor string.
+// Valid, setting a string value.
 stringCache.setByKey('Foo', 'Bar')
-// Inválido, o tipo int não corresponde ao genérico.
+// Invalid, int type doesn't match generic.
 stringCache.setByKey('Baz', 5)
 ```
 
-Se a declaração de tipo for omitida,
-o tipo em tempo de execução é `Cache<dynamic>`
-e ambas as chamadas para `setByKey` são válidas.
+If the type declaration is omitted,
+the runtime type is `Cache<dynamic>`
+and both calls to `setByKey` are valid.
 
-### Restringindo genéricos {:#restricting-generics}
-Você pode usar genéricos para restringir seu código a uma
-família de tipos usando `extends`. Isso garante
-que sua classe seja instanciada com um tipo genérico
-que estenda um tipo específico (e é similar ao Swift):
+### Restricting generics
+You can use generics to restrict your code to a
+family of types using `extends`. This ensures
+that your class is instantiated with a generic type
+that extends a specific type (and is similar to Swift):
 
 ```dart
 class NumberManager<T extends num> {
   // ...
 }
-// Válido
-var manager = NumberManager<int>();
-var manager = NumberManager<double>();
-// Inválido, nem String nem suas classes pai estendem num.
-var manager = NumberManager<String>();
+// Valid
+var manager = NumberManager<int>(); 
+var manager = NumberManager<double>(); 
+// Invalid, neither String nor its parent classes extend num.
+var manager = NumberManager<String>(); 
 ```
 
-### Genéricos em literais {:#generics-in-literals}
+### Generics in literals
 
-Literais `Map-`, `Set-` e `List-` podem declarar
-tipos genéricos explicitamente, o que é útil quando o
-tipo não é inferido ou é inferido incorretamente.
+`Map-`, `Set-`, and `List-` literals can explicitly
+declare generic types, which is useful when the
+type isn't inferred or is incorrectly inferred. 
 
-Por exemplo, a classe `List` tem uma definição genérica:
-`class List<E>`. O tipo genérico `E` se refere ao tipo
-do conteúdo da lista. Normalmente,
-esse tipo é inferido automaticamente,
-o que é usado em alguns tipos de membros da classe `List`.
-(Por exemplo, seu primeiro getter retorna um valor do tipo `E`).
-Ao definir um literal `List`,
-você pode definir explicitamente o tipo genérico da seguinte forma:
+For example, the `List` class has a generic definition:
+`class List<E>`. Generic type `E` refers to the type
+of the list's contents. Normally,
+this type is automatically inferred,
+which is used in some membery types of the `List` class's.
+(For example, its first getter returns a value of type `E`).
+When defining a `List` literal,
+you can explicitly define the generic type as follows:
 
 ```dart
-var objList = [5, 2.0]; // Tipo: List<num> // Inferência automática de tipo
-var objList = <Object>[5, 2.0]; // Tipo: List<Object> // Definição explícita de tipo
-var objSet = <Object>{5, 2.0}; // Sets funcionam de forma idêntica
+var objList = [5, 2.0]; // Type: List<num> // Automatic type inference
+var objList = <Object>[5, 2.0]; // Type: List<Object> // Explicit type definition
+var objSet = <Object>{5, 2.0}; // Sets work identically
 ```
 
-Isso também é verdade para um `Map`,
-que também define seus tipos de `chave` e `valor`
-usando genéricos (`class Map<K, V>)`:
+This is also true for a `Map`,
+which also define its `key` and `value` types
+using generics (`class Map<K, V>)`:
 
 ```dart
-// Inferência automática de tipo
+// Automatic type inference
 var map = {
   'foo': 'bar'
-}; // Tipo: Map<String, String>
-// Definição explícita de tipo:
+}; // Type: Map<String, String>
+// Explicit type definition:
 var map = <String, Object>{
   'foo': 'bar'
-}; // Tipo: Map<String, Object>
+}; // Type: Map<String, Object>
 ```
 
-## Concorrência {:#concurrency}
+## Concurrency
 
-Swift suporta multithreading e Dart suporta isolates,
-que são similares a threads leves
-e não serão abordados aqui.
-Cada isolate tem seu próprio loop de eventos.
-Para mais informações, veja [Como isolates funcionam][Como isolates funcionam].
+Swift supports multithreading and Dart supports isolates, 
+which are similar to lightweight threads
+and won't be covered here.
+Each isolate has its own event loop.
+For more information, see [How isolates work][].
 
-[Como isolates funcionam]: /language/concurrency#isolates
+[How isolates work]: /language/concurrency#isolates
 
-### Futures {:#futures}
+### Futures
 
-Swift vanilla não tem uma contraparte para `Future` do Dart.
-No entanto, você pode conhecer esse objeto se estiver familiarizado
-com o framework Combine da Apple, ou bibliotecas de terceiros
-como RxSwift ou PromiseKit.
+Vanilla Swift doesn't have a counterpart to Dart's `Future`.
+However, you might still know this object if you are familiar
+with Apple's Combine framework, or third party libraries
+like RxSwift or PromiseKit.
 
-Em poucas palavras, um future representa o resultado
-de uma operação assíncrona, que se torna disponível
-em um momento posterior. Se você tem uma função que retorna
-um `Future` de uma `String` (`Future<String>`)
-em vez de apenas uma `String`,
-você está basicamente recebendo um valor que pode existir
-algum tempo depois&mdash;no futuro.
+In a nutshell, a future represents the result
+of an asynchronous operation, which becomes available
+at a later time. If you have a function that returns
+a `Future` of a `String` (`Future<String>`)
+rather than just a `String`,
+you are basically receiving a value that might exist
+some time later&mdash;in the future. 
 
-Quando a operação assíncrona de um future é concluída,
-o valor se torna disponível. Você deve ter em mente,
-no entanto, que um future também pode ser concluído com um erro
-em vez de um valor.
+When a future's asynchronous operation completes,
+the value becomes available. You should keep in mind,
+however, that a future can also complete with an error
+instead of a value.
 
-Um exemplo disso seria se você fizesse uma requisição HTTP,
-e imediatamente recebesse um future como a resposta.
-Assim que o resultado chegar, o future é concluído
-com esse valor. No entanto, se a requisição HTTP falhar,
-digamos porque a conexão com a internet foi interrompida,
-o future é concluído com um erro.
+An example of this would be if you made an HTTP request,
+and immediately received a future as the response.
+Once the result comes in, the future completes
+with that value. However, if the HTTP request fails,
+say because the internet connection was interrupted,
+the future completes with an error instead. 
 
-Futures também podem ser criados manualmente.
-A maneira mais fácil de criar um future é
-definindo e chamando uma função `async`,
-que é discutida na próxima seção.
-Quando você tem um valor que precisa ser um `Future`,
-você pode facilmente transformá-lo em um usando a classe `Future`:
+Futures can be created manually, too.
+The easiest way to create a future is by
+defining and calling an `async` function,
+which is discussed in the next section.
+When you have a value that needs to be a `Future`,
+you can easily turn it into one using the `Future` class: 
 
 ```dart
-String str = 'Valor String';
+String str = 'String Value';
 Future<String> strFuture = Future<String>.value(str);
 ```
 
-#### Async/await {:#async-await}
+#### Async/await
 
-Enquanto futures não fazem parte do Swift vanilla,
-a sintaxe `async/await` em Dart tem uma contraparte em Swift,
-e funciona de forma similar, embora sem objetos `Future`.
+While futures aren't part of vanilla Swift,
+the `async/await` syntax in Dart has a Swift counterpart,
+and works in a similar way, though without `Future` objects. 
 
-Como em Swift, funções podem ser marcadas como `async`.
-A diferença em Dart é que qualquer função `async`
-sempre retorna implicitamente um `Future`.
-Por exemplo, se sua função retorna uma `String`,
-a contraparte async dessa função retorna um
+As in Swift, functions can be marked as `async`.
+The difference in Dart is that any `async` function
+always implicitly returns a `Future`.
+For example, if your function returns a `String`,
+the async counterpart to this function returns a
 `Future<String>`.
 
-A palavra-chave `throws` que é colocada após a
-palavra-chave `async` em Swift
-(mas apenas se a função for lançável),
-não existe na sintaxe do Dart porque
-exceções e erros do Dart não são verificados pelo compilador.
-Em vez disso, se uma exceção ocorrer em uma função async,
-o `Future` retornado falha com a exceção,
-que pode então ser tratada apropriadamente.
+The `throws` keyword that's placed after the
+`async` keyword in Swift
+(but only if the function is throwable),
+doesn't exist in Dart's syntax because Dart
+exceptions and errors aren't checked by the compiler.
+Rather, if an exception occurs in an async function,
+the returned `Future` fails with the exception,
+which can then be appropriately handled. 
 
 ```dart
-// Retorna um future de uma string, pois o método é async
+// Returns a future of a string, as the method is async
 Future<String> fetchString() async {
-  // Tipicamente, algumas outras operações async seriam feitas aqui.
+  // Typically some other async operations would be done here.
   
   Response response = await makeNetworkRequest();
   if (!response.success) {
     throw BadNetwork();
   }
 
-  return 'Valor String';
+  return 'String Value';
 }
 ```
 
-Essa função async pode então ser chamada da seguinte forma:
+This async function can then be called as follows:
 
 ```dart
 String stringFuture = await fetchString();
-print(str); // "Valor String"
+print(str); // "String Value"
 ```
 
-A função async equivalente em Swift:
+The equivalent async function in Swift:
 
 ```swift
 func fetchString() async throws -> String {
-  // Tipicamente, algumas outras operações async seriam feitas aqui.
+  // Typically some other async operations would be done here.
   let response = makeNetworkRequest()
   if !response.success {
     throw BadNetwork()
   }
   
-  return "Valor String"
+  return "String Value"
 }
 ```
 
-Similarmente, qualquer exceção que ocorra na função
-`async` pode ser tratada da mesma forma que o tratamento
-de um `Future` falho, usando o método `catchError`.
+Similarly, any exception that occurs in the `async`
+function can be handled in the same way as handling
+a failed `Future`, using the `catchError` method.
 
-Em Swift, uma função async não pode ser invocada de
-um contexto não-async. Em Dart, você tem permissão para fazer isso,
-mas você deve tratar o `Future` resultante adequadamente.
-É considerado uma má prática chamar uma função async
-de um contexto não-async desnecessariamente.
+In Swift, an async function can't be invoked from
+a non-async context. In Dart, you are allowed to do so,
+but you must handle the resulting `Future` properly.
+It's considered bad practice to call an async function
+from a non-async context unnecessarily.
 
-Como Swift, Dart também tem a palavra-chave `await`.
-Em Swift, `await` só é utilizável ao chamar
-funções `async`, mas o `await` do Dart funciona com
-a classe `Future`. Como resultado, `await` também
-funciona com funções `async` porque todas as funções `async`
-retornam futures em Dart.
+Like Swift, Dart also has the `await` keyword.
+In Swift, `await` is only usable when calling
+`async` functions, but Dart's `await` works with
+the `Future` class. As a result, `await` also
+works with `async` functions because all `async`
+functions return futures in Dart. 
 
-Aguardar um future suspende a execução da função atual
-e retorna o controle para o loop de eventos,
-que pode trabalhar em outra coisa até que o future
-se complete com um valor ou um erro.
-Algum tempo depois disso, a expressão `await`
-é avaliada para esse valor ou lança esse erro.
+Awaiting a future suspends execution of the current
+function and returns control to the event loop,
+which can work on something else until the future
+completes either with a value or an error.
+At some time after that, the `await` expression
+evaluates to that value or throws that error.
 
-Quando ele se completa, o valor do future é retornado.
-Você só pode usar `await` em um contexto `async`, como em Swift.
+When it completes, the future's value is returned.
+You can only `await` in an `async` context, as in Swift.
 
 ```dart
-// Nós só podemos aguardar futures dentro de um contexto async.
+// We can only await futures within an async context.
 asyncFunction() async {
   String returnedString = await fetchString();
-  print(returnedString); // 'Valor String'
+  print(returnedString); // 'String Value'
 }
 ```
 
-Quando o future aguardado falha, um objeto de erro
-é lançado na linha com a palavra-chave `await`.
-Você pode tratar isso usando um bloco `try-catch` regular:
+When the awaited future fails, an error object
+is thrown on the line with the `await` keyword.
+You can handle this using a regular `try-catch` block:
 
 ```dart
-// Nós só podemos aguardar futures dentro de um contexto async.
+// We can only await futures within an async context.
 Future<void> asyncFunction() async {
   String? returnedString;
   try {
     returnedString = await fetchString();
   } catch (error) {
-    print('Future encontrou um erro antes de resolver.');
+    print('Future encountered an error before resolving.');
     return;
   }
   print(returnedString);
 }
 ```
 
-Para mais informações e prática interativa,
-confira o tutorial de [Programação assíncrona][Programação assíncrona].
+For more information and interactive practice,
+check out the [Asynchronous programming][] tutorial.
 
-[Programação assíncrona]: /libraries/async/async-await
+[Asynchronous programming]: /libraries/async/async-await
 
-### Streams {:#streams}
+### Streams
 
-Outra ferramenta na caixa de ferramentas async do Dart é a classe `Stream`.
-Enquanto Swift tem seu próprio conceito de streams,
-aqueles em Dart são similares a `AsyncSequence` em Swift.
-Similarmente, se você conhece `Observables` (em RxSwift) ou
-`Publishers` (no framework Combine da Apple),
-streams do Dart devem parecer familiares.
+Another tool in Dart's async toolbox is the `Stream` class.
+While Swift has its own concept of streams,
+those in Dart are similar to `AsyncSequence` in Swift.
+Similarly, if you know `Observables` (in RxSwift) or
+`Publishers` (in Apple's Combine framework),
+Dart's streams should feel familiar. 
 
-Para aqueles não familiarizados com `Streams`,
-`AsyncSequence`, `Publishers` ou `Observables`,
-o conceito é o seguinte: um `Stream`
-essencialmente age como um `Future`,
-mas com múltiplos valores distribuídos ao longo do tempo,
-como um barramento de eventos. Streams podem ser ouvidos,
-para receber eventos de valor ou erro,
-e eles podem ser fechados quando não houver mais eventos a serem enviados.
+For those not familiar with `Streams`,
+`AsyncSequence`, `Publishers`, or `Observables`,
+the concept is as follows: a `Stream`
+essentially acts like a `Future`,
+but with multiple values spread out over time,
+like an event bus. Streams can be listened to,
+to receive value or error events,
+and they can be closed when no further events will be sent.
 
-#### Ouvindo {:#listening}
+#### Listening
 
-Para ouvir um stream, você pode combinar um stream
-com um loop `for-in` em um contexto `async`.
-O loop `for` invoca o método de callback
-para cada item emitido e termina quando o stream
-se completa ou gera um erro:
+To listen to a stream, you can combine a stream
+with a `for-in` loop in an `async` context.
+The `for` loop invokes the callback method
+for each item emitted, and ends when the stream
+completes or errors out:
 
 ```dart
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
-  try {
+  try { 
     await for (final value in stream) {
       sum += value;
     }
   } catch (error) {
-    print('Stream encontrou um erro! $err');
+    print('Stream encountered an error! $err');
   }
   return sum;
 }
 ```
 
-Se um erro ocorrer ao ouvir um stream,
-o erro é lançado na linha que contém a
-palavra-chave `await`, que você pode tratar com uma
-declaração `try-catch`:
+If an error occurs when listening to a stream,
+the error is thrown at the line containing the
+`await` keyword, which you can handle with a
+`try-catch` statement:
 
 ```dart
 try {
   await for (final value in stream) { ... }
 } catch (err) {
-  print('Stream encontrou um erro! $err');
+  print('Stream encountered an error! $err');
 }
 ```
 
-Essa não é a única forma de ouvir um stream:
-você também pode chamar seu método `listen` e
-fornecer um callback, que é chamado sempre que
-o stream emite um valor:
+This isn't the only way to listen to a stream:
+you can also call its `listen` method and
+provide a callback, which is called whenever
+the stream emits a value:
 
 ```dart
 Stream<int> stream = ...
 stream.listen((int value) {
-  print('Um valor foi emitido: $value');
+  print('A value has been emitted: $value');
 });
 ```
 
-O método `listen` tem alguns callbacks opcionais
-para tratamento de erros, ou para quando o stream é concluído:
+The `listen` method has some optional callbacks
+for error handling, or for when the stream completes:
 
 ```dart
 stream.listen(
   (int value) { ... },
   onError: (err) {
-    print('Stream encontrou um erro! $err');
+    print('Stream encountered an error! $err');
   },
   onDone: () {
-    print('Stream completou!');
+    print('Stream completed!');
   },
 );
 ```
 
-O método `listen` retorna uma instância de um
-`StreamSubscription`, que você pode usar para
-parar de ouvir o stream:
+The `listen` method returns an instance of a
+`StreamSubscription`, which you can use to
+stop listening to the stream:
 
 ```dart
 StreamSubscription subscription = stream.listen(...);
 subscription.cancel();
 ```
 
-#### Criando streams {:#creating-streams}
+#### Creating streams
 
-Assim como com futures, você tem várias maneiras diferentes
-de criar um stream. As duas maneiras mais comuns
-usam um gerador async ou um `SteamController`.
+As with futures, you have several different
+ways to create a stream. The two most common ways
+use an async generator or a `SteamController`. 
 
-##### Geradores Async {:#async-generators}
+##### Async generators
 
-Uma função geradora async tem a mesma sintaxe
-de uma função geradora síncrona,
-mas usa a palavra-chave `async*` em vez de `sync*`,
-e retorna um `Stream` em vez de um `Iterable`.
-Essa abordagem é similar à struct `AsyncStream`
-em Swift.
+An async generator function has the same syntax
+as a synchronous generator function,
+but uses the `async*` keyword instead of `sync*`,
+and returns a `Stream` instead of an `Iterable`.
+This approach is similar to the `AsyncStream`
+struct in Swift.
 
-Em uma função geradora async, a palavra-chave `yield`
-emite o valor dado para o stream.
-A palavra-chave `yield*`, no entanto,
-funciona com streams em vez de outros iteráveis.
-Isso permite que eventos de outros streams sejam
-emitidos para esse stream. No exemplo a seguir,
-a função só continua quando o stream recém-gerado
-for concluído:
+In an async generator function, the `yield` keyword
+emits the given value to the stream.
+The `yield*` keyword, however,
+works with streams instead of other iterables.
+This allows events from other streams to be
+emitted to this stream. In the following example,
+the function only continues once the newly yielded
+stream has completed:
 
 ```dart
 Stream<int> asynchronousNaturalsTo(int n) async* {
@@ -2681,111 +2681,111 @@ Stream<int> asynchronousNaturalsTo(int n) async* {
   while (k < n) yield k++;
 }
 
-Stream<int> stream = asynchronousNaturalsTo(5);
+Stream<int> stream = asynchronousNaturalsTo(5); 
 ```
 
-Você também pode criar um stream usando a
-API `StreamController`. Para mais informações,
-veja [Usando um StreamController][Usando um StreamController].
+You can also create a stream using the
+`StreamController` API. For more information,
+see [Using a StreamController][].
 
-[Usando um StreamController]: /libraries/async/creating-streams#using-a-streamcontroller
+[Using a StreamController]: /libraries/async/creating-streams#using-a-streamcontroller
 
-## Comentários de documentação {:#doc-comments}
+## Doc comments
 
-Comentários regulares funcionam da mesma forma em Dart e em Swift.
-Usar uma barra dupla (`//`) comenta tudo
-após a barra dupla pelo resto da linha,
-e blocos `/* ... */` comentam várias linhas.
+Regular comments work the same in Dart as they do in Swift.
+Using a double backslash (`//`) comments out everything
+beyond the double slash for the rest of the line,
+and `/* ... */` blocks comments spanning multiple lines.
 
-Além de comentários regulares,
-Dart também tem [comentários de documentação][comentários de documentação] que funcionam em conjunto
-com [`dart doc`][`dart doc`]: uma ferramenta própria que gera
-documentação HTML para pacotes Dart.
-É considerada uma boa prática colocar comentários de documentação
-acima de todas as declarações de membros públicos.
-Você pode notar que esse processo é similar a como
-você adiciona comentários para várias ferramentas de geração de documentação
-em Swift.
+In addition to regular comments,
+Dart also has [doc comments][] that work in tandem
+with [`dart doc`][]: a first-party tool that generates
+HTML documentation for Dart packages.
+It's considered best practice to place doc comments
+above all declarations for public members.
+You might notice that this process is similar to how
+you add comments for various documentation generation
+tools in Swift.
 
-[comentários de documentação]: /effective-dart/documentation
+[doc comments]: /effective-dart/documentation
 [`dart doc`]: /tools/dart-doc
 
-Como em Swift, você define um comentário de documentação
-usando três barras em vez de duas (`///`):
+As in Swift, you define a doc comment by
+using three forward slashes instead of two (`///`):
 
 ```dart
-/// O número de caracteres neste trecho quando não dividido.
+/// The number of characters in this chunk when unsplit.
 int get length => ...
 ```
 
-Cerque tipos, parâmetros e nomes de métodos
-com colchetes dentro de comentários de documentação.
+Surround types, parameter-, and method names
+with square brackets within doc comments. 
 
 ```dart
-/// Retorna o resultado da multiplicação [int] de [a] * [b].
+/// Returns the [int] multiplication result of [a] * [b].
 multiply(int a, int b) => a * b;
 ```
 
-Embora haja suporte para comentários de documentação no estilo JavaDoc,
-você deve evitá-los e usar a sintaxe `///`.
+While there is support for JavaDoc-style doc comments,
+you should avoid them and use the `///` syntax. 
 
 ```dart
-/**
- * O número de caracteres neste trecho quando não dividido.
- * (EVITE USAR ESTA SINTAXE, USE /// EM VEZ DISSO.)
+/** 
+ * The number of characters in this chunk when unsplit. 
+ * (AVOID USING THIS SYNTAX, USE /// INSTEAD.)
  */
 int get length => ...
 ```
 
-## Bibliotecas e visibilidade {:#libraries-and-visibility}
+## Libraries and visibility
 
-A semântica de visibilidade do Dart é similar à do Swift,
-com bibliotecas Dart sendo aproximadamente equivalentes a
-módulos Swift.
+Dart's visibility semantics are similar to Swift's,
+with Dart libraries being roughly equivalent to
+Swift modules.
 
-Dart oferece dois níveis de controle de acesso:
-público e privado. Métodos e variáveis
-são públicos por padrão. Variáveis privadas
-são prefixadas com o caractere de sublinhado (`_`),
-e são impostas pelo compilador Dart.
+Dart offers two levels of access control:
+public and private. Methods and variables
+are public by default. Private variables
+are prefixed with the underline character (`_`),
+and are enforced by the Dart compiler.
 
 ```dart
-final foo = 'esta é uma propriedade pública';
-final _foo = 'esta é uma propriedade privada';
+final foo = 'this is a public property';
+final _foo = 'this is a private property';
 
 String bar() {
-  return 'este é um método público';
+  return 'this is a public method';
 }
 String _bar() {
-  return 'este é um método privado';
+  return 'this is a private method';
 }
 
-// Classe pública
+// Public class
 class Foo {
 }
 
-// Classe privada
+// Private class
 class _Foo {
 },
 ```
 
-Métodos e variáveis privados têm escopo
-para sua biblioteca em Dart, e para um módulo em Swift.
-Em Dart, você pode definir uma biblioteca em um arquivo,
-enquanto em Swift você deve criar um novo alvo de build
-para seu módulo. Isso significa que em um único projeto Dart
-você pode definir `n` bibliotecas,
-mas em Swift você deve criar `n` módulos.
+Private methods and variables are scoped
+to their library in Dart, and to a module in Swift.
+In Dart, you can define a library in a file,
+while in Swift you must create a new build target
+for your module. This means that in a single Dart
+project you can define `n` libraries,
+but in Swift you must create `n` modules. 
 
-Todos os arquivos que fazem parte de uma biblioteca podem ter acesso
-a todos os objetos privados nessa biblioteca.
-Mas por razões de segurança, um arquivo ainda precisa
-permitir que arquivos específicos tenham acesso aos seus
-objetos privados, caso contrário, qualquer arquivo&mdash;mesmo de
-fora do seu projeto&mdash;poderia se registrar em sua
-biblioteca e obter acesso a dados possivelmente sensíveis.
-Em outras palavras,
-objetos privados não são compartilhados entre bibliotecas.
+All files that are part of a library can gain access
+to all private objects in that library.
+But for security reasons, a file still needs
+to allow specific files to gain access to its
+private objects, otherwise any file&mdash;even from
+outside of your project&mdash;could register itself to your
+library and gain access to possibly sensitive data.
+In other words,
+private objects aren't shared across libraries.
 
 ```dart title="animal.dart"
 library animals;
@@ -2805,29 +2805,30 @@ part of animals;
 class Parrot extends _Animal {
   Parrot(String name) : super(name);
 
-  // Tem acesso a _name de _Animal
+  // Has access to _name of _Animal
   String introduction() {
-    return 'Olá meu nome é $_name';
+    return 'Hello my name is $_name';
   }
 }
 ```
 
-Para mais informações, confira
-[criando pacotes][criando pacotes].
+For more information, check out
+[creating packages][].
 
-[criando pacotes]: /tools/pub/create-packages#organizing-a-package
+[creating packages]: /tools/pub/create-packages#organizing-a-package
 
-## Próximos passos {:#next-steps}
+## Next steps
 
-Este guia apresentou a você as principais diferenças
-entre Dart e Swift. Neste ponto,
-você pode considerar passar para a documentação geral
-para [Dart][Dart] ou [Flutter][Flutter]
-(um framework de código aberto que usa Dart para
-construir aplicativos multiplataforma, compilados nativamente,
-bonitos a partir de uma única base de código),
-onde você encontrará informações detalhadas sobre a
-linguagem e formas práticas de começar.
+This guide has introduced you to the major differences
+between Dart and Swift. At this point,
+you might consider moving to the general documentation
+for [Dart][] or [Flutter][]
+(an open-source framework that uses Dart for
+building beautiful, natively compiled,
+multiplatform applications from a single codebase),
+where you'll find in-depth information about the
+language and practical ways of getting started. 
 
 [Dart]: /docs
 [Flutter]: {{site.flutter-docs}}
+

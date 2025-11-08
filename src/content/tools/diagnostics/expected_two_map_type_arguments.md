@@ -1,30 +1,31 @@
 ---
-ia-translate: true
 title: expected_two_map_type_arguments
-description: "Detalhes sobre o diagnóstico expected_two_map_type_arguments produzido pelo analisador Dart."
+description: >-
+  Details about the expected_two_map_type_arguments
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Literais de mapa exigem dois argumentos de tipo ou nenhum, mas {0} foi encontrado._
+_Map literals require two type arguments or none, but {0} found._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um literal de mapa tem um ou
-mais de dois argumentos de tipo.
+The analyzer produces this diagnostic when a map literal has either one or
+more than two type arguments.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o literal de mapa tem
-três argumentos de tipo quando pode ter dois ou nenhum:
+The following code produces this diagnostic because the map literal has
+three type arguments when it can have either two or zero:
 
 ```dart
 var m = [!<int, String, int>!]{};
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova todos exceto dois dos argumentos de tipo:
+Remove all except two of the type arguments:
 
 ```dart
 var m = <int, String>{};

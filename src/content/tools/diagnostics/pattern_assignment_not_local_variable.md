@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: pattern_assignment_not_local_variable
-description: "Detalhes sobre o diagnóstico pattern_assignment_not_local_variable produzido pelo analisador do Dart."
+description: >-
+  Details about the pattern_assignment_not_local_variable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Apenas variáveis locais podem ser atribuídas em atribuições de padrões._
+_Only local variables can be assigned in pattern assignments._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma atribuição de padrão atribui um
-valor a algo diferente de uma variável local. Padrões não podem atribuir a
-campos ou variáveis de nível superior.
+The analyzer produces this diagnostic when a pattern assignment assigns a
+value to anything other than a local variable. Patterns can't assign to
+fields or top-level variables.
 
 ## Example
 
-Se o código for mais limpo ao desestruturar com um padrão, então reescreva o
-código para atribuir o valor a uma variável local em uma declaração de padrão,
-atribuindo a variável não-local separadamente:
+If the code is cleaner when destructuring with a pattern, then rewrite the
+code to assign the value to a local variable in a pattern declaration,
+assigning the non-local variable separately:
 
 ```dart
 class C {
@@ -32,9 +33,9 @@ class C {
 
 ## Common fixes
 
-Se o código for mais limpo ao usar uma atribuição de padrão, então reescreva o
-código para atribuir o valor a uma variável local, atribuindo a variável
-não-local separadamente:
+If the code is cleaner when using a pattern assignment, then rewrite the
+code to assign the value to a local variable, assigning the non-local
+variable separately:
 
 ```dart
 class C {
@@ -47,8 +48,8 @@ class C {
 }
 ```
 
-Se o código for mais limpo sem usar uma atribuição de padrão, então reescreva
-o código para não usar uma atribuição de padrão:
+If the code is cleaner without using a pattern assignment, then rewrite
+the code to not use a pattern assignment:
 
 ```dart
 class C {

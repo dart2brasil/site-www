@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_void_to_null
-description: "Detalhes sobre o diagnóstico prefer_void_to_null produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_void_to_null
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário do tipo 'Null'._
+_Unnecessary use of the type 'Null'._
 
 ## Description
 
-O analisador produz este diagnóstico quando `Null` é usado em um local
-onde `void` seria uma escolha válida.
+The analyzer produces this diagnostic when `Null` is used in a location
+where `void` would be a valid choice.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a função `f` é
-declarada para retornar `null` (em algum momento futuro):
+The following code produces this diagnostic because the function `f` is
+declared to return `null` (at some future time):
 
 ```dart
 Future<[!Null!]> f() async {}
@@ -35,7 +36,7 @@ Future<[!Null!]> f() async {}
 
 ## Common fixes
 
-Substitua o uso de `Null` por um uso de `void`:
+Replace the use of `Null` with a use of `void`:
 
 ```dart
 Future<void> f() async {}

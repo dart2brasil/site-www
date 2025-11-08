@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: return_without_value
-description: "Detalhes sobre o diagnóstico return_without_value produzido pelo analisador Dart."
+description: >-
+  Details about the return_without_value
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O valor de retorno está faltando após 'return'._
+_The return value is missing after 'return'._
 
 ## Description
 
-O analisador produz este diagnóstico quando encontra uma instrução `return`
-sem uma expressão em uma função que declara um tipo de retorno.
+The analyzer produces this diagnostic when it finds a `return` statement
+without an expression in a function that declares a return type.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a função `f` é
-esperada para retornar um `int`, mas nenhum valor está sendo retornado:
+The following code produces this diagnostic because the function `f` is
+expected to return an `int`, but no value is being returned:
 
 ```dart
 int f() {
@@ -26,7 +27,7 @@ int f() {
 
 ## Common fixes
 
-Adicione uma expressão que compute o valor a ser retornado:
+Add an expression that computes the value to be returned:
 
 ```dart
 int f() {

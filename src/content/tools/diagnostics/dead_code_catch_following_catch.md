@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: dead_code_catch_following_catch
-description: "Detalhes sobre o diagnóstico dead_code_catch_following_catch produzido pelo analisador Dart."
+description: >-
+  Details about the dead_code_catch_following_catch
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Dead code: Cláusulas catch após um 'catch (e)' ou um 'on Object catch (e)' nunca são alcançadas._
+_Dead code: Catch clauses after a 'catch (e)' or an 'on Object catch (e)' are never reached._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma cláusula `catch` é encontrada que
-não pode ser executada porque está após uma cláusula `catch` da forma
-`catch (e)` ou `on Object catch (e)`. A primeira cláusula `catch` que corresponde
-ao objeto lançado é selecionada, e ambas as formas corresponderão a qualquer
-objeto, então nenhuma cláusula `catch` que as segue será selecionada.
+The analyzer produces this diagnostic when a `catch` clause is found that
+can't be executed because it's after a `catch` clause of the form
+`catch (e)` or `on Object catch (e)`. The first `catch` clause that matches
+the thrown object is selected, and both of those forms will match any
+object, so no `catch` clauses that follow them will be selected.
 
 ## Example
 
-O código a seguir produz este diagnóstico:
+The following code produces this diagnostic:
 
 ```dart
 void f() {
@@ -31,8 +32,8 @@ void f() {
 
 ## Common fixes
 
-Se a cláusula deve ser selecionável, então mova a cláusula antes da cláusula
-geral:
+If the clause should be selectable, then move the clause before the general
+clause:
 
 ```dart
 void f() {
@@ -43,7 +44,7 @@ void f() {
 }
 ```
 
-Se a cláusula não precisa ser selecionável, então remova-a:
+If the clause doesn't need to be selectable, then remove it:
 
 ```dart
 void f() {

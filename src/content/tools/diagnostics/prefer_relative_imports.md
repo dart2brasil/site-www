@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_relative_imports
-description: "Detalhes sobre o diagnóstico prefer_relative_imports produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_relative_imports
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use imports relativos para arquivos no diretório 'lib'._
+_Use relative imports for files in the 'lib' directory._
 
 ## Description
 
-O analisador produz este diagnóstico quando um `import` em uma biblioteca dentro
-do diretório `lib` usa um URI `package:` para se referir a outra biblioteca no
-mesmo pacote.
+The analyzer produces this diagnostic when an `import` in a library inside
+the `lib` directory uses a `package:` URI to refer to another library in
+the same package.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque usa um URI `package:`
-quando um URI relativo poderia ter sido usado:
+The following code produces this diagnostic because it uses a `package:`
+URI when a relative URI could have been used:
 
 ```dart
 import 'package:my_package/bar.dart';
@@ -36,7 +37,7 @@ import 'package:my_package/bar.dart';
 
 ## Common fixes
 
-Use um URI relativo para importar a biblioteca:
+Use a relative URI to import the library:
 
 ```dart
 import 'bar.dart';

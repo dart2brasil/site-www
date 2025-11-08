@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: sized_box_shrink_expand
-description: "Detalhes sobre o diagnóstico sized_box_shrink_expand produzido pelo analisador do Dart."
+description: >-
+  Details about the sized_box_shrink_expand
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'SizedBox.{0}' para evitar ter que especificar 'height' e 'width'._
+_Use 'SizedBox.{0}' to avoid needing to specify the 'height' and 'width'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma invocação do construtor `SizedBox`
-especifica os valores de `height` e `width` como
-`0.0` ou `double.infinity`.
+The analyzer produces this diagnostic when a `SizedBox` constructor
+invocation specifies the values of both `height` and `width` as either
+`0.0` or `double.infinity`.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque tanto `height` quanto
-`width` são `0.0`:
+The following code produces this diagnostic because both the `height` and
+`width` are `0.0`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -42,8 +43,8 @@ Widget build() {
 }
 ```
 
-O código a seguir produz este diagnóstico porque tanto `height` quanto
-`width` são `double.infinity`:
+The following code produces this diagnostic because both the `height` and
+`width` are `double.infinity`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -57,9 +58,9 @@ Widget build() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se ambos forem `0.0`, então use `SizedBox.shrink`:
+If both are `0.0`, then use `SizedBox.shrink`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -71,7 +72,7 @@ Widget build() {
 }
 ```
 
-Se ambos forem `double.infinity`, então use `SizedBox.expand`:
+If both are `double.infinity`, then use `SizedBox.expand`:
 
 ```dart
 import 'package:flutter/material.dart';

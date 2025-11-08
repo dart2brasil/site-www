@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: always_put_required_named_parameters_first
-description: "Detalhes sobre o diagnóstico always_put_required_named_parameters_first produzido pelo analisador do Dart."
+description: >-
+  Details about the always_put_required_named_parameters_first
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -21,13 +22,13 @@ _Required named parameters should be before optional named parameters._
 
 ## Description
 
-O analisador produz este diagnóstico quando parâmetros nomeados required ocorrem
-após parâmetros nomeados opcionais.
+The analyzer produces this diagnostic when required named parameters occur
+after optional named parameters.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o parâmetro required
-`x` está após o parâmetro opcional `y`:
+The following code produces this diagnostic because the required parameter
+`x` is after the optional parameter `y`:
 
 ```dart
 void f({int? y, required int [!x!]}) {}
@@ -35,8 +36,8 @@ void f({int? y, required int [!x!]}) {}
 
 ## Common fixes
 
-Reordene os parâmetros para que todos os parâmetros nomeados required estejam antes
-de quaisquer parâmetros nomeados opcionais:
+Reorder the parameters so that all required named parameters are before
+any optional named parameters:
 
 ```dart
 void f({required int x, int? y}) {}

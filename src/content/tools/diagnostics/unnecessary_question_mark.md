@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: unnecessary_question_mark
-description: "Detalhes sobre o diagnóstico unnecessary_question_mark produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_question_mark
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O '?' é desnecessário porque '{0}' é nullable sem ele._
+_The '?' is unnecessary because '{0}' is nullable without it._
 
 ## Description
 
-O analisador produz este diagnóstico quando o tipo `dynamic` ou o
-tipo `Null` é seguido por um ponto de interrogação. Ambos esses tipos são
-inerentemente nullable, então o ponto de interrogação não altera a semântica.
+The analyzer produces this diagnostic when either the type `dynamic` or the
+type `Null` is followed by a question mark. Both of these types are
+inherently nullable so the question mark doesn't change the semantics.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o ponto de interrogação
-seguindo `dynamic` não é necessário:
+The following code produces this diagnostic because the question mark
+following `dynamic` isn't necessary:
 
 ```dart
 dynamic[!?!] x;
@@ -25,7 +26,7 @@ dynamic[!?!] x;
 
 ## Common fixes
 
-Remova o ponto de interrogação desnecessário:
+Remove the unneeded question mark:
 
 ```dart
 dynamic x;

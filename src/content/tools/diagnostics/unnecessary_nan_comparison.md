@@ -1,33 +1,34 @@
 ---
-ia-translate: true
 title: unnecessary_nan_comparison
-description: "Detalhes sobre o diagnóstico unnecessary_nan_comparison produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_nan_comparison
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um double não pode ser igual a 'double.nan', então a condição é sempre 'false'._
+_A double can't equal 'double.nan', so the condition is always 'false'._
 
-_Um double não pode ser igual a 'double.nan', então a condição é sempre 'true'._
+_A double can't equal 'double.nan', so the condition is always 'true'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um valor é comparado a
-`double.nan` usando `==` ou `!=`.
+The analyzer produces this diagnostic when a value is compared to
+`double.nan` using either `==` or `!=`.
 
-Dart segue o padrão de ponto flutuante [IEEE 754] para a semântica de
-operações de ponto flutuante, que afirma que, para qualquer valor de ponto flutuante
-`x` (incluindo NaN, infinito positivo e infinito negativo),
-- `NaN == x` é sempre false
-- `NaN != x` é sempre true
+Dart follows the [IEEE 754] floating-point standard for the semantics of
+floating point operations, which states that, for any floating point value
+`x` (including NaN, positive infinity, and negative infinity),
+- `NaN == x` is always false
+- `NaN != x` is always true
 
-Como resultado, comparar qualquer valor a NaN é inútil porque o resultado já é
-conhecido (com base no operador de comparação sendo usado).
+As a result, comparing any value to NaN is pointless because the result is
+already known (based on the comparison operator being used).
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `d` está sendo comparado
-a `double.nan`:
+The following code produces this diagnostic because `d` is being compared
+to `double.nan`:
 
 ```dart
 bool isNaN(double d) => d [!== double.nan!];
@@ -35,7 +36,7 @@ bool isNaN(double d) => d [!== double.nan!];
 
 ## Common fixes
 
-Use o getter `double.isNaN` em vez disso:
+Use the getter `double.isNaN` instead:
 
 ```dart
 bool isNaN(double d) => d.isNaN;

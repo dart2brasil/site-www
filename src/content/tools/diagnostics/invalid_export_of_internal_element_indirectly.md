@@ -1,22 +1,24 @@
 ---
-ia-translate: true
 title: invalid_export_of_internal_element_indirectly
-description: "Detalhes sobre o diagnóstico invalid_export_of_internal_element_indirectly produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_export_of_internal_element_indirectly
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O membro '{0}' não pode ser exportado como parte da API pública de um pacote, mas é exportado indiretamente como parte da assinatura de '{1}'._
+_The member '{0}' can't be exported as a part of a package's public API, but is indirectly exported as part of the signature of '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma [public library][] exporta
-uma função de nível superior com um tipo de retorno ou pelo menos um tipo
-de parâmetro que é marcado com a annotation [`internal`][meta-internal].
+The analyzer produces this diagnostic when a [public library][] exports a
+top-level function  with a return type or at least one parameter type that
+is marked with the [`internal`][meta-internal] annotation.
 
 ## Example
 
-Dado um arquivo `a.dart` no diretório `src` que contém o seguinte:
+Given a file `a.dart` in the `src` directory that contains the
+following:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -27,9 +29,9 @@ typedef IntFunction = int Function();
 int f(IntFunction g) => g();
 ```
 
-O código a seguir produz este diagnóstico porque a função `f` tem um
-parâmetro do tipo `IntFunction`, e `IntFunction` é destinado apenas para
-uso interno:
+The following code produces this diagnostic because the function `f` has a
+parameter of type `IntFunction`, and `IntFunction` is only intended to be
+used internally:
 
 ```dart
 [!export 'src/a.dart' show f;!]
@@ -37,11 +39,12 @@ uso interno:
 
 ## Common fixes
 
-Se a função deve ser pública, torne todos os tipos na assinatura da função
-tipos públicos.
+If the function must be public, then make all the types in the function's
+signature public types.
 
-Se a função não precisa ser exportada, pare de exportá-la, removendo-a da
-cláusula `show`, adicionando-a à cláusula `hide`, ou removendo o export.
+If the function doesn't need to be exported, then stop exporting it,
+either by removing it from the `show` clause, adding it to the `hide`
+clause, or by removing the export.
 
 [meta-internal]: https://pub.dev/documentation/meta/latest/meta/internal-constant.html
 [public library]: /resources/glossary#public-library

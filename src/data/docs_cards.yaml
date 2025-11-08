@@ -1,18 +1,17 @@
-# <!-- ia-translate: true -->
-- name: Tour da linguagem
-  description: Uma breve introdução à linguagem Dart baseada em exemplos.
+- name: Language tour
+  description: A brief, example-based introduction to the Dart language.
   url: /language
-- name: Dart Eficaz
-  description: Melhores práticas para construir código Dart consistente, eficiente e de fácil manutenção.
+- name: Effective Dart
+  description: Best practices for building consistent, maintainable, efficient Dart code.
   url: /effective-dart
-- name: Documentação da biblioteca
-  description: Uma introdução baseada em exemplos aos principais recursos nas bibliotecas principais do SDK Dart.
+- name: Library documentation
+  description: An example-based introduction to the major features in the Dart SDK's core libraries.
   url: /libraries
 - name: Dart SDK
-  description: O que há no SDK e como instalá-lo.
+  description: What's in the SDK, and how to install it.
   url: /tools/sdk
 - name: Futures, async, await
-  description: Como escrever código Dart assíncrono que usa futures e as palavras-chave async e await.
+  description: How to write asynchronous Dart code that uses futures and the async and await keywords.
   url: /libraries/async/async-await
 - name: Packages
   description: Everything you need to know about the package ecosystem.

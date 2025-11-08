@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: field_initialized_in_parameter_and_initializer
-description: "Detalhes sobre o diagnóstico field_initialized_in_parameter_and_initializer produzido pelo analisador Dart."
+description: >-
+  Details about the field_initialized_in_parameter_and_initializer
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Campos não podem ser inicializados tanto na lista de parâmetros quanto nos inicializadores._
+_Fields can't be initialized in both the parameter list and the initializers._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um campo é inicializado tanto
-na lista de parâmetros quanto na lista de inicializadores de um construtor.
+The analyzer produces this diagnostic when a field is initialized in both
+the parameter list and in the initializer list of a constructor.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o campo `f` é
-inicializado tanto por um parâmetro formal inicializador quanto na
-lista de inicializadores:
+The following code produces this diagnostic because the field `f` is
+initialized both by an initializing formal parameter and in the
+initializer list:
 
 ```dart
 class C {
@@ -27,10 +28,10 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o campo deve ser inicializado pelo parâmetro, remova a
-inicialização na lista de inicializadores:
+If the field should be initialized by the parameter, then remove the
+initialization in the initializer list:
 
 ```dart
 class C {
@@ -40,8 +41,8 @@ class C {
 }
 ```
 
-Se o campo deve ser inicializado na lista de inicializadores e o
-parâmetro não é necessário, remova o parâmetro:
+If the field should be initialized in the initializer list and the
+parameter isn't needed, then remove the parameter:
 
 ```dart
 class C {
@@ -51,8 +52,8 @@ class C {
 }
 ```
 
-Se o campo deve ser inicializado na lista de inicializadores e o
-parâmetro é necessário, torne-o um parâmetro normal:
+If the field should be initialized in the initializer list and the
+parameter is needed, then make it a normal parameter:
 
 ```dart
 class C {

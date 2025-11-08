@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: implementation_imports
-description: "Detalhes sobre o diagnóstico implementation_imports produzido pelo analisador do Dart."
+description: >-
+  Details about the implementation_imports
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,19 +18,20 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Import de uma biblioteca no diretório 'lib/src' de outro pacote._
+_Import of a library in the 'lib/src' directory of another package._
 
 ## Description
 
-O analisador produz este diagnóstico quando um import referencia uma biblioteca
-que está dentro do diretório `lib/src` de um pacote diferente, o que
-viola [a convenção para pacotes pub](https://dart.dev/tools/pub/package-layout#implementation-files).
+The analyzer produces this diagnostic when an import references a library
+that's inside the `lib/src` directory of a different package, which
+violates [the convention for pub
+packages](https://dart.dev/tools/pub/package-layout#implementation-files).
 
 ## Example
 
-O código a seguir, assumindo que não faz parte do pacote `ffi`,
-produz este diagnóstico porque a biblioteca sendo importada está dentro do
-diretório `src` de nível superior:
+The following code, assuming that it isn't part of the `ffi` package,
+produces this diagnostic because the library being imported is inside the
+top-level `src` directory:
 
 ```dart
 import [!'package:ffi/src/allocation.dart'!];
@@ -37,14 +39,14 @@ import [!'package:ffi/src/allocation.dart'!];
 
 ## Common fixes
 
-Se a biblioteca sendo importada contém código que faz parte da API pública,
-então importe a biblioteca pública que exporta a API pública:
+If the library being imported contains code that's part of the public API,
+then import the public library that exports the public API:
 
 ```dart
 import 'package:ffi/ffi.dart';
 ```
 
-Se a biblioteca sendo importada não faz parte da API pública do pacote,
-então encontre uma maneira diferente de atingir seu objetivo, assumindo que
-é possível, ou abra uma issue pedindo aos autores do pacote para torná-la parte
-da API pública.
+If the library being imported isn't part of the public API of the package,
+then either find a different way to accomplish your goal, assuming that
+it's possible, or open an issue asking the package authors to make it part
+of the public API.

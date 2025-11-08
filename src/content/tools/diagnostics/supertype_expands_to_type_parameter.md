@@ -1,29 +1,31 @@
 ---
-ia-translate: true
 title: supertype_expands_to_type_parameter
-description: "Detalhes sobre o diagnóstico supertype_expands_to_type_parameter produzido pelo analisador do Dart."
+description: >-
+  Details about the supertype_expands_to_type_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um type alias que se expande para um type parameter não pode ser implementado._
+_A type alias that expands to a type parameter can't be implemented._
 
-_Um type alias que se expande para um type parameter não pode ser usado com mixin._
+_A type alias that expands to a type parameter can't be mixed in._
 
-_Um type alias que se expande para um type parameter não pode ser usado como uma restrição de superclasse._
+_A type alias that expands to a type parameter can't be used as a superclass constraint._
 
-_Um type alias que se expande para um type parameter não pode ser usado como uma superclasse._
+_A type alias that expands to a type parameter can't be used as a superclass._
 
 ## Description
 
-O analisador produz este diagnóstico quando um type alias que se expande para um
-type parameter é usado em uma cláusula `extends`, `implements`, `with` ou `on`.
+The analyzer produces this diagnostic when a type alias that expands to a
+type parameter is used in an `extends`, `implements`, `with`, or `on`
+clause.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o type alias `T`,
-que se expande para o type parameter `S`, é usado na cláusula `extends` da
-classe `C`:
+The following code produces this diagnostic because the type alias `T`,
+which expands to the type parameter `S`, is used in the `extends` clause of
+the class `C`:
 
 ```dart
 typedef T<S> = S;
@@ -33,7 +35,7 @@ class C extends [!T!]<Object> {}
 
 ## Common fixes
 
-Use o valor do type argument diretamente:
+Use the value of the type argument directly:
 
 ```dart
 typedef T<S> = S;

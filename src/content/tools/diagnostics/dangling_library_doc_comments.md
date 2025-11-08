@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: dangling_library_doc_comments
-description: "Detalhes sobre o diagnóstico dangling_library_doc_comments produzido pelo analisador do Dart."
+description: >-
+  Details about the dangling_library_doc_comments
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,30 +18,30 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Comentário de documentação de biblioteca solto._
+_Dangling library doc comment._
 
 ## Description
 
-O analisador produz este diagnóstico quando um comentário de documentação que
-parece ser documentação de biblioteca não é seguido por uma diretiva
-`library`. Mais especificamente, ele é produzido quando um comentário de documentação
-aparece antes da primeira diretiva na biblioteca, assumindo que não é
-uma diretiva `library`, ou antes da primeira declaração de nível superior e está
-separado da declaração por uma ou mais linhas em branco.
+The analyzer produces this diagnostic when a documentation comment that
+appears to be library documentation isn't followed by a `library`
+directive. More specifically, it is produced when a documentation comment
+appears before the first directive in the library, assuming that it isn't
+a `library` directive, or before the first top-level declaration and is
+separated from the declaration by one or more blank lines.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque há um
-comentário de documentação antes da primeira diretiva `import`:
+The following code produces this diagnostic because there's a
+documentation comment before the first `import` directive:
 
 ```dart
 [!/// This is a great library.!]
 import 'dart:core';
 ```
 
-O código a seguir produz este diagnóstico porque há um
-comentário de documentação antes da primeira declaração de classe, mas há uma
-linha em branco entre o comentário e a declaração.
+The following code produces this diagnostic because there's a
+documentation comment before the first class declaration, but there's a
+blank line between the comment and the declaration.
 
 ```dart
 [!/// This is a great library.!]
@@ -50,8 +51,8 @@ class C {}
 
 ## Common fixes
 
-Se o comentário é documentação de biblioteca, então adicione uma diretiva `library`
-sem um nome:
+If the comment is library documentation, then add a `library` directive
+without a name:
 
 ```dart
 /// This is a great library.
@@ -60,8 +61,8 @@ library;
 import 'dart:core';
 ```
 
-Se o comentário é documentação para a declaração seguinte, então remova
-a linha em branco:
+If the comment is documentation for the following declaration, then remove
+the blank line:
 
 ```dart
 /// This is a great library.

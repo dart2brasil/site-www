@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_super_parameters
-description: "Detalhes sobre o diagnóstico use_super_parameters produzido pelo analisador Dart."
+description: >-
+  Details about the use_super_parameters
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,20 +18,20 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Parâmetro '{0}' poderia ser um super parâmetro._
+_Parameter '{0}' could be a super parameter._
 
-_Parâmetros '{0}' poderiam ser super parâmetros._
+_Parameters '{0}' could be super parameters._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um parâmetro de um construtor é
-passado para um super construtor sem ser referenciado ou modificado e um
-parâmetro `super` não é usado.
+The analyzer produces this diagnostic when a parameter to a constructor is
+passed to a super constructor without being referenced or modified and a
+`super` parameter isn't used.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque os parâmetros do
-construtor para `B` são usados apenas como argumentos para o super construtor:
+The following code produces this diagnostic because the parameters of the
+constructor for `B` are only used as arguments to the super constructor:
 
 ```dart
 class A {
@@ -41,9 +42,9 @@ class B extends A {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Use um parâmetro `super` para passar os argumentos:
+Use a `super` parameter to pass the arguments:
 
 ```dart
 class A {

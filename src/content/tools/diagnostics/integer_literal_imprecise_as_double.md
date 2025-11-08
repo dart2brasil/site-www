@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: integer_literal_imprecise_as_double
-description: "Detalhes sobre o diagnóstico integer_literal_imprecise_as_double produzido pelo analisador do Dart."
+description: >-
+  Details about the integer_literal_imprecise_as_double
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O literal de inteiro está sendo usado como um double, mas não pode ser representado como um double de 64 bits sem overflow ou perda de precisão: '{0}'._
+_The integer literal is being used as a double, but can't be represented as a 64-bit double without overflow or loss of precision: '{0}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando um literal de inteiro está sendo
-convertido implicitamente para um double, mas não pode ser representado como um double de 64 bits
-sem overflow ou perda de precisão. Literais de inteiro são
-convertidos implicitamente para um double se o contexto requer o tipo `double`.
+The analyzer produces this diagnostic when an integer literal is being
+implicitly converted to a double, but can't be represented as a 64-bit
+double without overflow or loss of precision. Integer literals are
+implicitly converted to a double if the context requires the type `double`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o valor inteiro
-`9223372036854775807` não pode ser representado exatamente como um double:
+The following code produces this diagnostic because the integer value
+`9223372036854775807` can't be represented exactly as a double:
 
 ```dart
 double x = [!9223372036854775807!];
@@ -26,15 +27,15 @@ double x = [!9223372036854775807!];
 
 ## Common fixes
 
-Se você precisa usar o valor exato, então use a classe `BigInt` para
-representar o valor:
+If you need to use the exact value, then use the class `BigInt` to
+represent the value:
 
 ```dart
 var x = BigInt.parse('9223372036854775807');
 ```
 
-Se você precisa usar um double, então altere o valor para um que possa ser
-representado exatamente:
+If you need to use a double, then change the value to one that can be
+represented exactly:
 
 ```dart
 double x = 9223372036854775808;

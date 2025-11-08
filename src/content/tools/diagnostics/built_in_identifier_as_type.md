@@ -1,22 +1,23 @@
 ---
 title: built_in_identifier_as_type
-description: "Detalhes sobre o diagnóstico built_in_identifier_as_type produzido pelo analisador Dart."
+description: >-
+  Details about the built_in_identifier_as_type
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_O built-in identifier '{0}' não pode ser usado como um type._
+_The built-in identifier '{0}' can't be used as a type._
 
 ## Description
 
-O analisador produz este diagnóstico quando um built-in identifier é usado
-onde um nome de type é esperado.
+The analyzer produces this diagnostic when a built-in identifier is used
+where a type name is expected.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `import` não pode ser usado
-como um type porque é um built-in identifier:
+The following code produces this diagnostic because `import` can't be used
+as a type because it's a built-in identifier:
 
 ```dart
 [!import!]<int> x;
@@ -24,7 +25,7 @@ como um type porque é um built-in identifier:
 
 ## Common fixes
 
-Substitua o built-in identifier pelo nome de um type válido:
+Replace the built-in identifier with the name of a valid type:
 
 ```dart
 List<int> x;

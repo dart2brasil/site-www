@@ -1,26 +1,27 @@
 ---
-ia-translate: true
 title: type_check_with_null
-description: "Detalhes sobre o diagnóstico type_check_with_null produzido pelo analisador Dart."
+description: >-
+  Details about the type_check_with_null
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Testes para não-null devem ser feitos com '!= null'._
+_Tests for non-null should be done with '!= null'._
 
-_Testes para null devem ser feitos com '== null'._
+_Tests for null should be done with '== null'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando há uma verificação de tipo (usando o
-operador `as`) onde o tipo é `Null`. Há apenas um valor cujo tipo
-é `Null`, então o código é mais legível e mais performático quando ele
-testa `null` explicitamente.
+The analyzer produces this diagnostic when there's a type check (using the
+`as` operator) where the type is `Null`. There's only one value whose type
+is `Null`, so the code is both more readable and more performant when it
+tests for `null` explicitly.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque o código está testando para
-ver se o valor de `s` é `null` usando uma verificação de tipo:
+The following code produces this diagnostic because the code is testing to
+see whether the value of `s` is `null` by using a type check:
 
 ```dart
 void f(String? s) {
@@ -31,9 +32,9 @@ void f(String? s) {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o código está testando para
-ver se o valor de `s` é algo diferente de `null` usando uma verificação
-de tipo:
+The following code produces this diagnostic because the code is testing to
+see whether the value of `s` is something other than `null` by using a type
+check:
 
 ```dart
 void f(String? s) {
@@ -43,9 +44,9 @@ void f(String? s) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Substitua a verificação de tipo pela comparação equivalente com `null`:
+Replace the type check with the equivalent comparison with `null`:
 
 ```dart
 void f(String? s) {

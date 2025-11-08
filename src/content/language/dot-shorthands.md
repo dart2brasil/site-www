@@ -1,7 +1,6 @@
 ---
-ia-translate: true
-title: "Abreviações com ponto (Dot shorthands)"
-description: "Aprenda sobre a sintaxe de abreviação com ponto em Dart."
+title: Dot shorthands
+description: Learn about the dot shorthand syntax in Dart.
 prevpage:
   url: /language/enums
   title: Enums
@@ -13,30 +12,30 @@ nextpage:
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
 :::version-note
-Dot shorthands requerem uma [versão de linguagem][] de pelo menos 3.10.
+Dot shorthands require a [language version][] of at least 3.10.
 :::
 
-[versão de linguagem]: /resources/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 
-## Visão geral
+## Overview
 
-A sintaxe de abreviação com ponto `.foo` permite que você escreva código Dart
-mais conciso omitindo o tipo quando o compilador pode inferi-lo
-do contexto. Isso fornece uma alternativa limpa para escrever
-o `ContextType.foo` completo ao acessar valores enum,
-membros estáticos ou construtores.
+Dot shorthand syntax `.foo` lets you write more concise Dart 
+code by omitting the type when the compiler can infer it 
+from context. This provides a clean alternative to writing 
+the full `ContextType.foo` when accessing enum values, 
+static members, or constructors.
 
-Em essência, dot shorthands permitem que uma expressão
-comece com uma das seguintes opções e, em seguida, opcionalmente encadeie
-outras operações:
+In essence, dot shorthands allow an expression 
+to start with one of the following and then optionally chain 
+other operations onto it:
 
-* Identificador `.myValue`
+* Identifier `.myValue`
 
-* Construtor `.new()`
+* Constructor `.new()`
 
-* Criação de constante `const .myValue()`
+* Constant creation `const .myValue()`
 
-Aqui está uma visão rápida de como isso simplifica uma atribuição de enum:
+Here's a quick look at how it simplifies an enum assignment:
 
 <?code-excerpt "language/lib/shorthands/intro.dart"?>
 ```dart
@@ -58,30 +57,30 @@ class Point {
 Point origin = .origin(); // Instead of Point.origin()
 ```
 
-## O papel do tipo de contexto
+## The role of context type 
 
-Dot shorthands usam o [tipo de contexto][] para determinar o membro
-que o compilador resolve. O tipo de contexto é o tipo que Dart
-espera que uma expressão tenha com base em sua localização.
-Por exemplo, em `Status currentStatus = .running`,
-o compilador sabe que um `Status` é esperado, então ele infere
-`.running` para significar `Status.running`.
+Dot shorthands use the [context type][] to determine the member 
+the complier resolves to. The context type is the type that Dart 
+expects an expression to have based on its location. 
+For example, in `Status currentStatus = .running`, 
+the compiler knows a `Status` is expected, so it infers 
+`.running` to mean `Status.running`.
 
-[tipo de contexto]: /resources/glossary#context-type
+[context type]: /resources/glossary#context-type
 
-## Estrutura léxica e sintaxe
+## Lexical structure and syntax
 
-Uma _abreviação de membro estático_ é uma expressão que
-começa com um ponto inicial (`.`).
-Quando o tipo é conhecido pelo contexto ao redor,
-essa sintaxe fornece uma maneira concisa de acessar
-membros estáticos, construtores e valores enum.
+A _static member shorthand_ is an expression that
+begins with a leading dot (`.`).
+When the type is known from the surrounding context,
+this syntax provides a concise way to access
+static members, constructors, and enum values.
 
 ### Enums
 
-Um caso de uso primário e altamente recomendado para dot shorthands
-é com enums, especialmente em atribuições e instruções switch,
-onde o tipo enum é muito óbvio.
+A primary and highly recommended use case for dot shorthands 
+is with enums, especially in assignments and switch statements, 
+where the enum type is very obvious.
 
 <?code-excerpt "language/lib/shorthands/enums.dart"?>
 ```dart
@@ -102,11 +101,11 @@ String colorCode(LogLevel level) {
 String warnColor = colorCode(.warning); // Returns 'orange'
 ```
 
-### Construtores nomeados
+### Named constructors
 
-Dot shorthands são úteis para invocar construtores nomeados
-ou construtores de fábrica. Essa sintaxe também funciona ao fornecer
-argumentos de tipo a um construtor de classe genérica.
+Dot shorthands are useful for invoking named constructors 
+or factory constructors. This syntax also works when providing 
+type arguments to a generic class's constructor.
 
 <?code-excerpt "language/lib/shorthands/constructors.dart"?>
 ```dart
@@ -129,23 +128,23 @@ Point p1 = .fromList([1.0, 2.0]); // Instead of Point.fromList([1.0, 2.0])
 
 // Use dot shorthand syntax on a generic class constructor:
 List<int> intList = .filled(5, 0); // Instead of List.filled(5, 0)
-```
+``` 
 
-### Construtores sem nome
+### Unnamed constructors
 
-A abreviação `.new` fornece uma maneira concisa de chamar um
-construtor sem nome de uma classe. Isso é útil
-para atribuir campos ou variáveis onde o tipo já está
-explicitamente declarado.
+The `.new` dot shorthand provides a concise way to call an
+unnamed constructor of a class. This is useful 
+for assigning fields or variables where the type is 
+already explicitly declared.
 
-Essa sintaxe é particularmente eficaz para limpar
-inicializadores de campos de classe repetitivos.
-Conforme mostrado no exemplo "depois" a seguir usando dot shorthands,
-ele pode ser usado para construtores com e sem argumentos.
-Ele também infere quaisquer argumentos de tipo genérico
-do contexto.
+This syntax is particularly effective for cleaning up 
+repetitive class field initializers.
+As shown in the following "after" example using dot shorthands,
+it can be used for constructors both with and without arguments.
+tt also infers any generic type arguments 
+from the context. 
 
-**Sem dot shorthands:**
+**Without dot shorthands:**
 
 <?code-excerpt "language/lib/shorthands/unnamed_constructors.dart (unnamed-before)"?>
 ```dart
@@ -163,7 +162,7 @@ class _PageState extends State<Page> {
 }
 ```
 
-**Usando dot shorthands:**
+**Using dot shorthands:**
 
 <?code-excerpt "language/lib/shorthands/unnamed_constructors.dart (unnamed-after)" replace="/_PageStateAfter/_PageState/g;"?>
 ```dart
@@ -177,11 +176,11 @@ class _PageState extends State<Page> {
 }
 ```
 
-### Membros estáticos
+### Static members
 
-Você pode usar a sintaxe dot shorthand para chamar métodos estáticos ou
-acessar campos/getters estáticos. O compilador infere a
-classe de destino do tipo de contexto da expressão.
+You can use dot shorthand syntax to call static methods or 
+access static fields/getters. The compiler infers the 
+target class from the context type of the expression.
 
 <?code-excerpt "language/lib/shorthands/static_members.dart"?>
 ```dart
@@ -192,11 +191,11 @@ int httpPort = .parse('80'); // Instead of int.parse('80')
 BigInt bigIntZero = .zero; // Instead of BigInt.zero
 ```
 
-### Expressões constantes
+### Constant expressions 
 
-Você pode usar dot shorthands dentro de um contexto constante
-se o membro que está sendo acessado for uma constante de tempo de compilação.
-Isso é comum para valores enum e invocação de construtores `const`.
+You can use dot shorthands within a constant context
+if the member being accessed is a compile-time constant. 
+This is common for enum values and invoking `const` constructors.
 
 <?code-excerpt "language/lib/shorthands/consts.dart"?>
 ```dart
@@ -219,21 +218,21 @@ const List<Point> keyPoints = [.origin(), .new(1.0, 1.0)];
 // Instead of [Point.origin(), Point(1.0, 1.0)]
 ```
 
-## Regras e limitações
+## Rules and limitations
 
-Dot shorthands dependem de um tipo de contexto claro, o que leva a
-algumas regras e limitações específicas que você deve conhecer.
+Dot shorthands rely on a clear context type, which leads to 
+a few specific rules and limitations you should know about.
 
-### Tipo de contexto claro necessário em cadeias
+### Clear context type required in chains
 
-Embora você possa encadear operações como chamadas de método ou
-acessos de propriedade em um dot shorthand, a expressão inteira
-é validada contra o tipo de contexto.
+While you can chain operations like method calls or 
+property accesses onto a dot shorthand, the entire expression 
+is validated against the context type.
 
-O compilador primeiro usa o contexto para determinar o que o
-dot shorthand resolve. Quaisquer operações subsequentes na
-cadeia devem retornar um valor que corresponda a esse mesmo
-tipo de contexto inicial.
+The compiler first uses the context to determine what the 
+dot shorthand resolves to. Any subsequent operations in the 
+chain must return a value that matches that same initial 
+context type.
 
 <?code-excerpt "language/lib/shorthands/chain.dart (chain)"?>
 ```dart
@@ -245,16 +244,16 @@ String lowerH = .fromCharCode(72).toLowerCase();
 print(lowerH); // Output: h
 ```
 
-### Verificações de igualdade assimétricas
+### Asymmetric equality checks
 
-Os operadores `==` e `!=` têm uma regra especial para dot shorthands.
-Quando a sintaxe dot shorthand é usada diretamente no lado direito
-de uma verificação de igualdade, Dart usa o tipo estático do
-lado esquerdo para determinar a classe ou enum para o shorthand.
+The `==` and `!=` operators have a special rule for dot shorthands. 
+When dot shorthand syntax is used directly on the right-hand side
+of an equality check, Dart uses the static type of the 
+left-hand side to determine the class or enum for the shorthand.
 
-Por exemplo, em uma expressão como `myColor == .green`,
-o tipo da variável `myColor` é usado como contexto.
-Isso significa que o compilador interpreta `.green` como `Color.green`.
+For instance, in an expression like `myColor == .green`, 
+the type of the variable `myColor` is used as the context. 
+This means the compiler interprets `.green` as `Color.green`.
 
 <?code-excerpt "language/lib/shorthands/equality.dart"?>
 ```dart
@@ -282,9 +281,9 @@ void allowedExamples() {
 }
 ```
 
-O dot shorthand deve estar no lado direito do operador `==`
-ou `!=`. Comparar com uma expressão mais complexa,
-como uma expressão condicional, também não é permitido.
+The dot shorthand must be on the right-hand side of the `==` 
+or `!=` operator. Comparing against a more complex expression, 
+like a conditional expression, is also not allowed.
 
 <?code-excerpt "language/lib/shorthands/equality_with_errors.dart"?>
 ```dart tag=fails-sa
@@ -314,11 +313,11 @@ void notAllowedExamples() {
 }
 ```
 
-### Instruções de expressão não podem começar com `.`
+### Expression statements can't start with `.`
 
-Para evitar ambiguidades de análise potenciais no futuro, uma
-instrução de expressão não pode começar com um
-token `.`.
+To avoid potential parsing ambiguities in the future, an
+expression statement is not allowed to begin with a
+`.` token.
 
 <?code-excerpt "language/lib/shorthands/expression_with_errors.dart"?>
 ```dart tag=fails-sa
@@ -336,14 +335,14 @@ void main() {
 }
 ```
 
-### Manipulação limitada de tipos de união
+### Limited handling of union types
 
-Embora haja tratamento especial para tipos anuláveis (`T?`) e
-`FutureOr<T>`, o suporte é limitado.
+While there is special handling for nullable types (`T?`) and
+`FutureOr<T>`, support is limited.
 
-*  Para um tipo anulável (T?), você pode acessar membros estáticos
-   de `T`, mas não de `Null`.
+*  For a nullable type (T?), you can access static members
+   of `T`, but not of `Null`.
 
-*  Para `FutureOr<T>`, você pode acessar membros estáticos de `T`
-  (principalmente para suportar retornos de função `async`), mas você
-  não pode acessar membros estáticos da própria classe `Future`.
+*  For `FutureOr<T>`, you can access static members of `T`
+  (primarily to support `async` function returns), but you
+  can't access static members of the `Future` class itself.

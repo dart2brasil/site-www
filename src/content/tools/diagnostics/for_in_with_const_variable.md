@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: for_in_with_const_variable
-description: "Detalhes sobre o diagnóstico for_in_with_const_variable produzido pelo analisador Dart."
+description: >-
+  Details about the for_in_with_const_variable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Uma variável de loop for-in não pode ser 'const'._
+_A for-in loop variable can't be a 'const'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando a variável de loop declarada em um
-loop for-in é declarada como `const`. A variável não pode ser `const`
-porque o valor não pode ser computado em tempo de compilação.
+The analyzer produces this diagnostic when the loop variable declared in a
+for-in loop is declared to be a `const`. The variable can't be a `const`
+because the value can't be computed at compile time.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a variável de loop `x`
-é declarada como `const`:
+The following code produces this diagnostic because the loop variable `x`
+is declared to be a `const`:
 
 ```dart
 void f() {
@@ -27,13 +28,13 @@ void f() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se houver uma anotação de tipo, então remova o modificador `const` da
-declaração.
+If there's a type annotation, then remove the `const` modifier from the
+declaration.
 
-Se não houver tipo, então substitua o modificador `const` por `final`, `var`,
-ou uma anotação de tipo:
+If there's no type, then replace the `const` modifier with `final`, `var`,
+or a type annotation:
 
 ```dart
 void f() {

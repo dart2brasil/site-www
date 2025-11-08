@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: invalid_factory_name_not_a_class
-description: "Detalhes sobre o diagnóstico invalid_factory_name_not_a_class produzido pelo analisador Dart."
+description: >-
+  Details about the invalid_factory_name_not_a_class
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome de um factory constructor deve ser o mesmo que o nome da classe imediatamente envolvente._
+_The name of a factory constructor must be the same as the name of the immediately enclosing class._
 
 ## Description
 
-O analisador produz este diagnóstico quando o nome de um factory
-constructor não é o mesmo que o nome da classe envolvente.
+The analyzer produces this diagnostic when the name of a factory
+constructor isn't the same as the name of the surrounding class.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o nome do factory
-constructor (`A`) não é o mesmo que a classe envolvente (`C`):
+The following code produces this diagnostic because the name of the factory
+constructor (`A`) isn't the same as the surrounding class (`C`):
 
 ```dart
 class A {}
@@ -28,8 +29,8 @@ class C {
 
 ## Common fixes
 
-Se o factory retorna uma instância da classe envolvente, e você
-pretende que seja um factory constructor sem nome, então renomeie o factory:
+If the factory returns an instance of the surrounding class, and you
+intend it to be an unnamed factory constructor, then rename the factory:
 
 ```dart
 class A {}
@@ -39,9 +40,9 @@ class C {
 }
 ```
 
-Se o factory retorna uma instância da classe envolvente, e você
-pretende que seja um factory constructor nomeado, então prefixe o nome do
-factory constructor com o nome da classe envolvente:
+If the factory returns an instance of the surrounding class, and you
+intend it to be a named factory constructor, then prefix the name of the
+factory constructor with the name of the surrounding class:
 
 ```dart
 class A {}
@@ -51,8 +52,8 @@ class C {
 }
 ```
 
-Se o factory retorna uma instância de uma classe diferente, então mova o
-factory para essa classe:
+If the factory returns an instance of a different class, then move the
+factory to that class:
 
 ```dart
 class A {
@@ -62,9 +63,9 @@ class A {
 class C {}
 ```
 
-Se o factory retorna uma instância de uma classe diferente, mas você não pode
-modificar essa classe ou não quer mover o factory, então converta-o para ser
-um método static:
+If the factory returns an instance of a different class, but you can't
+modify that class or don't want to move the factory, then convert it to be
+a static method:
 
 ```dart
 class A {}

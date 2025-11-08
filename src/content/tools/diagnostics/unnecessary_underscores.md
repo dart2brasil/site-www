@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_underscores
-description: "Detalhes sobre o diagnóstico unnecessary_underscores produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_underscores
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário de múltiplos underscores._
+_Unnecessary use of multiple underscores._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma variável não usada é nomeada
-com múltiplos underscores (por exemplo `__`). Uma única variável wildcard `_`
-pode ser usada em vez disso.
+The analyzer produces this diagnostic when an unused variable is named
+with multiple underscores (for example `__`). A single `_` wildcard variable
+can be used instead.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o parâmetro `__` não é usado:
+The following code produces this diagnostic because the `__` parameter is unused:
 
 ```dart
 void function(int [!__!]) { }
@@ -35,7 +36,7 @@ void function(int [!__!]) { }
 
 ## Common fixes
 
-Substitua o nome por um único underscore:
+Replace the name with a single underscore:
 
 ```dart
 void function(int _) { }

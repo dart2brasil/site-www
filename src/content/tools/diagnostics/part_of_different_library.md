@@ -1,30 +1,31 @@
 ---
-ia-translate: true
 title: part_of_different_library
-description: "Detalhes sobre o diagnóstico part_of_different_library produzido pelo analisador do Dart."
+description: >-
+  Details about the part_of_different_library
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Esperava-se que esta biblioteca fosse parte de '{0}', não '{1}'._
+_Expected this library to be part of '{0}', not '{1}'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma biblioteca tenta incluir um
-arquivo como parte de si mesma quando o outro arquivo é parte de uma
-biblioteca diferente.
+The analyzer produces this diagnostic when a library attempts to include a
+file as a part of itself when the other file is a part of a different
+library.
 
 ## Example
 
-Dado um arquivo `part.dart` contendo
+Given a file `part.dart` containing
 
 ```dart
 part of 'library.dart';
 ```
 
-O código a seguir, em qualquer arquivo diferente de `library.dart`, produz este
-diagnóstico porque tenta incluir `part.dart` como parte de si mesmo
-quando `part.dart` é parte de uma biblioteca diferente:
+The following code, in any file other than `library.dart`, produces this
+diagnostic because it attempts to include `part.dart` as a part of itself
+when `part.dart` is a part of a different library:
 
 ```dart
 part [!'package:a/part.dart'!];
@@ -32,11 +33,11 @@ part [!'package:a/part.dart'!];
 
 ## Common fixes
 
-Se a biblioteca deveria estar usando um arquivo diferente como parte, então altere a
-URI na diretiva part para ser a URI do outro arquivo.
+If the library should be using a different file as a part, then change the
+URI in the part directive to be the URI of the other file.
 
-Se o [part file][] deveria ser parte desta biblioteca, então atualize a URI
-(ou nome da biblioteca) na diretiva part-of para ser a URI (ou nome) da
-biblioteca correta.
+If the [part file][] should be a part of this library, then update the URI
+(or library name) in the part-of directive to be the URI (or name) of the
+correct library.
 
 [part file]: /resources/glossary#part-file

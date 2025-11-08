@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: assert_in_redirecting_constructor
-description: "Detalhes sobre o diagnóstico assert_in_redirecting_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the assert_in_redirecting_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,15 +11,15 @@ _A redirecting constructor can't have an 'assert' initializer._
 
 ## Description
 
-O analisador produz este diagnóstico quando um construtor de redirecionamento (um
-construtor que redireciona para outro construtor na mesma classe) tem um
-assert na lista de inicializadores.
+The analyzer produces this diagnostic when a redirecting constructor (a
+constructor that redirects to another constructor in the same class) has an
+assert in the initializer list.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o construtor sem nome
-é um construtor de redirecionamento e também tem um assert na lista de
-inicializadores:
+The following code produces this diagnostic because the unnamed constructor
+is a redirecting constructor and also has an assert in the initializer
+list:
 
 ```dart
 class C {
@@ -29,7 +30,7 @@ class C {
 
 ## Common fixes
 
-Se o assert não é necessário, então remova-o:
+If the assert isn't needed, then remove it:
 
 ```dart
 class C {
@@ -38,8 +39,8 @@ class C {
 }
 ```
 
-Se o assert é necessário, então converta o construtor em um construtor
-factory:
+If the assert is needed, then convert the constructor into a factory
+constructor:
 
 ```dart
 class C {

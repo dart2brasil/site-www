@@ -23,7 +23,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "From the [style guide for the flutter repo](https://flutter.dev/style-guide/):\n\n**DO** separate the control structure expression from its statement.\n\nDon't put the statement part of an `if`, `for`, `while`, `do` on the same line\nas the expression, even if it is short.  Doing so makes it unclear that there\nis relevant code there.  This is especially important for early returns.\n\n**BAD:**\n```dart\nif (notReady) return;\n\nif (notReady)\n  return;\nelse print('ok')\n\nwhile (condition) i += 1;\n```\n\n**GOOD:**\n```dart\nif (notReady)\n  return;\n\nif (notReady)\n  return;\nelse\n  print('ok')\n\nwhile (condition)\n  i += 1;\n```\n\nNote that this rule can conflict with the\n[Dart formatter](https://dartbrasil.dev/tools/dart-format), and should not be enabled\nwhen the Dart formatter is used.",
+    "details": "From the [style guide for the flutter repo](https://flutter.dev/style-guide/):\n\n**DO** separate the control structure expression from its statement.\n\nDon't put the statement part of an `if`, `for`, `while`, `do` on the same line\nas the expression, even if it is short.  Doing so makes it unclear that there\nis relevant code there.  This is especially important for early returns.\n\n**BAD:**\n```dart\nif (notReady) return;\n\nif (notReady)\n  return;\nelse print('ok')\n\nwhile (condition) i += 1;\n```\n\n**GOOD:**\n```dart\nif (notReady)\n  return;\n\nif (notReady)\n  return;\nelse\n  print('ok')\n\nwhile (condition)\n  i += 1;\n```\n\nNote that this rule can conflict with the\n[Dart formatter](https://dart.dev/tools/dart-format), and should not be enabled\nwhen the Dart formatter is used.",
     "sinceDartSdk": "2.0"
   },
   {
@@ -161,7 +161,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/usage#avoid-catches-without-on-clauses):\n\n**AVOID** catches without on clauses.\n\nUsing catch clauses without on clauses make your code prone to encountering\nunexpected errors that won't be thrown (and thus will go unnoticed).\n\n**BAD:**\n```dart\ntry {\n somethingRisky()\n} catch(e) {\n  doSomething(e);\n}\n```\n\n**GOOD:**\n```dart\ntry {\n somethingRisky()\n} on Exception catch(e) {\n  doSomething(e);\n}\n```\n\nA few exceptional cases are allowed:\n\n* If the body of the catch rethrows the exception.\n* If the caught exception is \"directly used\" in an argument to `Future.error`,\n  `Completer.completeError`, or `FlutterError.reportError`, or any function with\n  a return type of `Never`.\n* If the caught exception is \"directly used\" in a new throw-expression.\n\nIn these cases, \"directly used\" means that the exception is referenced within\nthe relevant code (like within an argument). If the exception variable is\nreferenced _before_ the relevant code, for example to instantiate a wrapper\nexception, the variable is not \"directly used.\"",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#avoid-catches-without-on-clauses):\n\n**AVOID** catches without on clauses.\n\nUsing catch clauses without on clauses make your code prone to encountering\nunexpected errors that won't be thrown (and thus will go unnoticed).\n\n**BAD:**\n```dart\ntry {\n somethingRisky()\n} catch(e) {\n  doSomething(e);\n}\n```\n\n**GOOD:**\n```dart\ntry {\n somethingRisky()\n} on Exception catch(e) {\n  doSomething(e);\n}\n```\n\nA few exceptional cases are allowed:\n\n* If the body of the catch rethrows the exception.\n* If the caught exception is \"directly used\" in an argument to `Future.error`,\n  `Completer.completeError`, or `FlutterError.reportError`, or any function with\n  a return type of `Never`.\n* If the caught exception is \"directly used\" in a new throw-expression.\n\nIn these cases, \"directly used\" means that the exception is referenced within\nthe relevant code (like within an argument). If the exception variable is\nreferenced _before_ the relevant code, for example to instantiate a wrapper\nexception, the variable is not \"directly used.\"",
     "sinceDartSdk": "2.0"
   },
   {
@@ -189,7 +189,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/design#avoid-defining-a-class-that-contains-only-static-members):\n\n**AVOID** defining a class that contains only static members.\n\nCreating classes with the sole purpose of providing utility or otherwise static\nmethods is discouraged.  Dart allows functions to exist outside of classes for\nthis very reason.\n\n**BAD:**\n```dart\nclass DateUtils {\n  static DateTime mostRecent(List<DateTime> dates) {\n    return dates.reduce((a, b) => a.isAfter(b) ? a : b);\n  }\n}\n\nclass _Favorites {\n  static const mammal = 'weasel';\n}\n```\n\n**GOOD:**\n```dart\nDateTime mostRecent(List<DateTime> dates) {\n  return dates.reduce((a, b) => a.isAfter(b) ? a : b);\n}\n\nconst _favoriteMammal = 'weasel';\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/design#avoid-defining-a-class-that-contains-only-static-members):\n\n**AVOID** defining a class that contains only static members.\n\nCreating classes with the sole purpose of providing utility or otherwise static\nmethods is discouraged.  Dart allows functions to exist outside of classes for\nthis very reason.\n\n**BAD:**\n```dart\nclass DateUtils {\n  static DateTime mostRecent(List<DateTime> dates) {\n    return dates.reduce((a, b) => a.isAfter(b) ? a : b);\n  }\n}\n\nclass _Favorites {\n  static const mammal = 'weasel';\n}\n```\n\n**GOOD:**\n```dart\nDateTime mostRecent(List<DateTime> dates) {\n  return dates.reduce((a, b) => a.isAfter(b) ? a : b);\n}\n\nconst _favoriteMammal = 'weasel';\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -249,7 +249,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/design#avoid-defining-custom-equality-for-mutable-classes):\n\n**AVOID** overloading operator == and hashCode on classes not marked `@immutable`.\n\nIf a class is not immutable, overloading `operator ==` and `hashCode` can\nlead to unpredictable and undesirable behavior when used in collections.\n\n**BAD:**\n```dart\nclass B {\n  String key;\n  const B(this.key);\n  @override\n  operator ==(other) => other is B && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\n**GOOD:**\n```dart\n@immutable\nclass A {\n  final String key;\n  const A(this.key);\n  @override\n  operator ==(other) => other is A && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\nNOTE: The lint checks the use of the `@immutable` annotation, and will trigger\neven if the class is otherwise not mutable. Thus:\n\n**BAD:**\n```dart\nclass C {\n  final String key;\n  const C(this.key);\n  @override\n  operator ==(other) => other is C && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/design#avoid-defining-custom-equality-for-mutable-classes):\n\n**AVOID** overloading operator == and hashCode on classes not marked `@immutable`.\n\nIf a class is not immutable, overloading `operator ==` and `hashCode` can\nlead to unpredictable and undesirable behavior when used in collections.\n\n**BAD:**\n```dart\nclass B {\n  String key;\n  const B(this.key);\n  @override\n  operator ==(other) => other is B && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\n**GOOD:**\n```dart\n@immutable\nclass A {\n  final String key;\n  const A(this.key);\n  @override\n  operator ==(other) => other is A && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\nNOTE: The lint checks the use of the `@immutable` annotation, and will trigger\neven if the class is otherwise not mutable. Thus:\n\n**BAD:**\n```dart\nclass C {\n  final String key;\n  const C(this.key);\n  @override\n  operator ==(other) => other is C && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```",
     "sinceDartSdk": "2.6"
   },
   {
@@ -351,7 +351,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/usage#dont-explicitly-initialize-variables-to-null):\n\n**DON'T** explicitly initialize variables to `null`.\n\nIf a variable has a non-nullable type or is `final`,\nDart reports a compile error if you try to use it\nbefore it has been definitely initialized.\nIf the variable is nullable and not `const` or `final`,\nthen it is implicitly initialized to `null` for you.\nThere's no concept of \"uninitialized memory\" in Dart\nand no need to explicitly initialize a variable to `null` to be \"safe\".\nAdding `= null` is redundant and unneeded.\n\n**BAD:**\n```dart\nItem? bestDeal(List<Item> cart) {\n  Item? bestItem = null;\n\n  for (final item in cart) {\n    if (bestItem == null || item.price < bestItem.price) {\n      bestItem = item;\n    }\n  }\n\n  return bestItem;\n}\n```\n\n**GOOD:**\n```dart\nItem? bestDeal(List<Item> cart) {\n  Item? bestItem;\n\n  for (final item in cart) {\n    if (bestItem == null || item.price < bestItem.price) {\n      bestItem = item;\n    }\n  }\n\n  return bestItem;\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#dont-explicitly-initialize-variables-to-null):\n\n**DON'T** explicitly initialize variables to `null`.\n\nIf a variable has a non-nullable type or is `final`,\nDart reports a compile error if you try to use it\nbefore it has been definitely initialized.\nIf the variable is nullable and not `const` or `final`,\nthen it is implicitly initialized to `null` for you.\nThere's no concept of \"uninitialized memory\" in Dart\nand no need to explicitly initialize a variable to `null` to be \"safe\".\nAdding `= null` is redundant and unneeded.\n\n**BAD:**\n```dart\nItem? bestDeal(List<Item> cart) {\n  Item? bestItem = null;\n\n  for (final item in cart) {\n    if (bestItem == null || item.price < bestItem.price) {\n      bestItem = item;\n    }\n  }\n\n  return bestItem;\n}\n```\n\n**GOOD:**\n```dart\nItem? bestDeal(List<Item> cart) {\n  Item? bestItem;\n\n  for (final item in cart) {\n    if (bestItem == null || item.price < bestItem.price) {\n      bestItem = item;\n    }\n  }\n\n  return bestItem;\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -405,7 +405,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/design#avoid-positional-boolean-parameters):\n\n**AVOID** positional boolean parameters.\n\nPositional boolean parameters are a bad practice because they are very\nambiguous.  Using named boolean parameters is much more readable because it\ninherently describes what the boolean value represents.\n\n**BAD:**\n```dart\nTask(true);\nTask(false);\nListBox(false, true, true);\nButton(false);\n```\n\n**GOOD:**\n```dart\nTask.oneShot();\nTask.repeating();\nListBox(scroll: true, showScrollbars: true);\nButton(ButtonState.enabled);\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/design#avoid-positional-boolean-parameters):\n\n**AVOID** positional boolean parameters.\n\nPositional boolean parameters are a bad practice because they are very\nambiguous.  Using named boolean parameters is much more readable because it\ninherently describes what the boolean value represents.\n\n**BAD:**\n```dart\nTask(true);\nTask(false);\nListBox(false, true, true);\nButton(false);\n```\n\n**GOOD:**\n```dart\nTask.oneShot();\nTask.repeating();\nListBox(scroll: true, showScrollbars: true);\nButton(ButtonState.enabled);\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -549,7 +549,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/design#avoid-returning-this-from-methods-just-to-enable-a-fluent-interface):\n\n**AVOID** returning this from methods just to enable a fluent interface.\n\nReturning `this` from a method is redundant; Dart has a cascade operator which\nallows method chaining universally.\n\nReturning `this` is allowed for:\n\n- operators\n- methods with a return type different of the current class\n- methods defined in parent classes / mixins or interfaces\n- methods defined in extensions\n\n**BAD:**\n```dart\nvar buffer = StringBuffer()\n  .write('one')\n  .write('two')\n  .write('three');\n```\n\n**GOOD:**\n```dart\nvar buffer = StringBuffer()\n  ..write('one')\n  ..write('two')\n  ..write('three');\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/design#avoid-returning-this-from-methods-just-to-enable-a-fluent-interface):\n\n**AVOID** returning this from methods just to enable a fluent interface.\n\nReturning `this` from a method is redundant; Dart has a cascade operator which\nallows method chaining universally.\n\nReturning `this` is allowed for:\n\n- operators\n- methods with a return type different of the current class\n- methods defined in parent classes / mixins or interfaces\n- methods defined in extensions\n\n**BAD:**\n```dart\nvar buffer = StringBuffer()\n  .write('one')\n  .write('two')\n  .write('three');\n```\n\n**GOOD:**\n```dart\nvar buffer = StringBuffer()\n  ..write('one')\n  ..write('two')\n  ..write('three');\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -759,7 +759,7 @@
       "flutter"
     ],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/style#do-name-extensions-using-uppercamelcase):\n\n**DO** name extensions using `UpperCamelCase`.\n\nExtensions should capitalize the first letter of each word (including\nthe first word), and use no separators.\n\n**GOOD:**\n```dart\nextension MyFancyList<T> on List<T> {\n  // ...\n}\n\nextension SmartIterable<T> on Iterable<T> {\n  // ...\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/style#do-name-extensions-using-uppercamelcase):\n\n**DO** name extensions using `UpperCamelCase`.\n\nExtensions should capitalize the first letter of each word (including\nthe first word), and use no separators.\n\n**GOOD:**\n```dart\nextension MyFancyList<T> on List<T> {\n  // ...\n}\n\nextension SmartIterable<T> on Iterable<T> {\n  // ...\n}\n```",
     "sinceDartSdk": "2.6"
   },
   {
@@ -777,7 +777,7 @@
       "flutter"
     ],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/style#do-name-types-using-uppercamelcase):\n\n**DO** name types using UpperCamelCase.\n\nClasses and typedefs should capitalize the first letter of each word (including\nthe first word), and use no separators.\n\n**GOOD:**\n```dart\nclass SliderMenu {\n  // ...\n}\n\nclass HttpRequest {\n  // ...\n}\n\ntypedef num Adder(num x, num y);\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/style#do-name-types-using-uppercamelcase):\n\n**DO** name types using UpperCamelCase.\n\nClasses and typedefs should capitalize the first letter of each word (including\nthe first word), and use no separators.\n\n**GOOD:**\n```dart\nclass SliderMenu {\n  // ...\n}\n\nclass HttpRequest {\n  // ...\n}\n\ntypedef num Adder(num x, num y);\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -1025,7 +1025,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** follow the directive ordering conventions in\n[Effective Dart](https://dartbrasil.dev/effective-dart/style#ordering):\n\n**DO** place `dart:` imports before other imports.\n\n**BAD:**\n```dart\nimport 'package:bar/bar.dart';\nimport 'package:foo/foo.dart';\n\nimport 'dart:async';  // LINT\nimport 'dart:html';  // LINT\n```\n\n**BAD:**\n```dart\nimport 'dart:html';  // OK\nimport 'package:bar/bar.dart';\n\nimport 'dart:async';  // LINT\nimport 'package:foo/foo.dart';\n```\n\n**GOOD:**\n```dart\nimport 'dart:async';  // OK\nimport 'dart:html';  // OK\n\nimport 'package:bar/bar.dart';\nimport 'package:foo/foo.dart';\n```\n\n**DO** place `package:` imports before relative imports.\n\n**BAD:**\n```dart\nimport 'a.dart';\nimport 'b.dart';\n\nimport 'package:bar/bar.dart';  // LINT\nimport 'package:foo/foo.dart';  // LINT\n```\n\n**BAD:**\n```dart\nimport 'package:bar/bar.dart';  // OK\nimport 'a.dart';\n\nimport 'package:foo/foo.dart';  // LINT\nimport 'b.dart';\n```\n\n**GOOD:**\n```dart\nimport 'package:bar/bar.dart';  // OK\nimport 'package:foo/foo.dart';  // OK\n\nimport 'a.dart';\nimport 'b.dart';\n```\n\n**DO** specify exports in a separate section after all imports.\n\n**BAD:**\n```dart\nimport 'src/error.dart';\nexport 'src/error.dart'; // LINT\nimport 'src/string_source.dart';\n```\n\n**GOOD:**\n```dart\nimport 'src/error.dart';\nimport 'src/string_source.dart';\n\nexport 'src/error.dart'; // OK\n```\n\n**DO** sort sections alphabetically.\n\n**BAD:**\n```dart\nimport 'package:foo/bar.dart'; // OK\nimport 'package:bar/bar.dart'; // LINT\n\nimport 'a/b.dart'; // OK\nimport 'a.dart'; // LINT\n```\n\n**GOOD:**\n```dart\nimport 'package:bar/bar.dart'; // OK\nimport 'package:foo/bar.dart'; // OK\n\nimport 'a.dart'; // OK\nimport 'a/b.dart'; // OK\n```",
+    "details": "**DO** follow the directive ordering conventions in\n[Effective Dart](https://dart.dev/effective-dart/style#ordering):\n\n**DO** place `dart:` imports before other imports.\n\n**BAD:**\n```dart\nimport 'package:bar/bar.dart';\nimport 'package:foo/foo.dart';\n\nimport 'dart:async';  // LINT\nimport 'dart:html';  // LINT\n```\n\n**BAD:**\n```dart\nimport 'dart:html';  // OK\nimport 'package:bar/bar.dart';\n\nimport 'dart:async';  // LINT\nimport 'package:foo/foo.dart';\n```\n\n**GOOD:**\n```dart\nimport 'dart:async';  // OK\nimport 'dart:html';  // OK\n\nimport 'package:bar/bar.dart';\nimport 'package:foo/foo.dart';\n```\n\n**DO** place `package:` imports before relative imports.\n\n**BAD:**\n```dart\nimport 'a.dart';\nimport 'b.dart';\n\nimport 'package:bar/bar.dart';  // LINT\nimport 'package:foo/foo.dart';  // LINT\n```\n\n**BAD:**\n```dart\nimport 'package:bar/bar.dart';  // OK\nimport 'a.dart';\n\nimport 'package:foo/foo.dart';  // LINT\nimport 'b.dart';\n```\n\n**GOOD:**\n```dart\nimport 'package:bar/bar.dart';  // OK\nimport 'package:foo/foo.dart';  // OK\n\nimport 'a.dart';\nimport 'b.dart';\n```\n\n**DO** specify exports in a separate section after all imports.\n\n**BAD:**\n```dart\nimport 'src/error.dart';\nexport 'src/error.dart'; // LINT\nimport 'src/string_source.dart';\n```\n\n**GOOD:**\n```dart\nimport 'src/error.dart';\nimport 'src/string_source.dart';\n\nexport 'src/error.dart'; // OK\n```\n\n**DO** sort sections alphabetically.\n\n**BAD:**\n```dart\nimport 'package:foo/bar.dart'; // OK\nimport 'package:bar/bar.dart'; // LINT\n\nimport 'a/b.dart'; // OK\nimport 'a.dart'; // LINT\n```\n\n**GOOD:**\n```dart\nimport 'package:bar/bar.dart'; // OK\nimport 'package:foo/bar.dart'; // OK\n\nimport 'a.dart'; // OK\nimport 'a/b.dart'; // OK\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -1099,7 +1099,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/usage#do-use--instead-of--for-empty-constructor-bodies):\n\n**DO** use `;` instead of `{}` for empty constructor bodies.\n\nIn Dart, a constructor with an empty body can be terminated with just a\nsemicolon.  This is required for const constructors.  For consistency and\nbrevity, other constructors should also do this.\n\n**BAD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y) {}\n}\n```\n\n**GOOD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y);\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#do-use--instead-of--for-empty-constructor-bodies):\n\n**DO** use `;` instead of `{}` for empty constructor bodies.\n\nIn Dart, a constructor with an empty body can be terminated with just a\nsemicolon.  This is required for const constructors.  For consistency and\nbrevity, other constructors should also do this.\n\n**BAD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y) {}\n}\n```\n\n**GOOD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y);\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -1452,7 +1452,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "needsEvaluation",
-    "details": "**DO** specify the language used in the code block of a doc comment.\n\nTo enable proper syntax highlighting of Markdown code blocks,\n[`dart doc`](https://dartbrasil.dev/tools/dart-doc) strongly recommends code blocks to\nspecify the language used after the initial code fence.\n\nSee [highlight.js](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md)\nfor the list of languages supported by `dart doc`.\nTo disable syntax highlighting or if no language is suitable,\nyou can specify `none` as the language.\n\n**BAD:**\n```dart\n/// ```\n/// void main() {}\n/// ```\nclass A {}\n```\n\n**GOOD:**\n```dart\n/// ```dart\n/// void main() {}\n/// ```\nclass A {}\n```",
+    "details": "**DO** specify the language used in the code block of a doc comment.\n\nTo enable proper syntax highlighting of Markdown code blocks,\n[`dart doc`](https://dart.dev/tools/dart-doc) strongly recommends code blocks to\nspecify the language used after the initial code fence.\n\nSee [highlight.js](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md)\nfor the list of languages supported by `dart doc`.\nTo disable syntax highlighting or if no language is suitable,\nyou can specify `none` as the language.\n\n**BAD:**\n```dart\n/// ```\n/// void main() {}\n/// ```\nclass A {}\n```\n\n**GOOD:**\n```dart\n/// ```dart\n/// void main() {}\n/// ```\nclass A {}\n```",
     "sinceDartSdk": "3.4"
   },
   {
@@ -1554,7 +1554,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/usage#dont-use-true-or-false-in-equality-operations):\n\n**DON'T** use `true` or `false` in equality operations.\n\nThis lint applies only if the expression is of a non-nullable `bool` type.\n\n**BAD:**\n```dart\nif (someBool == true) {\n  print('true!');\n}\nwhile (someBool == false) {\n  print('still false!');\n}\n```\n\n**GOOD:**\n```dart\nif (someBool) {\n  print('true!');\n}\nwhile (!someBool) {\n  print('still false!');\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#dont-use-true-or-false-in-equality-operations):\n\n**DON'T** use `true` or `false` in equality operations.\n\nThis lint applies only if the expression is of a non-nullable `bool` type.\n\n**BAD:**\n```dart\nif (someBool == true) {\n  print('true!');\n}\nwhile (someBool == false) {\n  print('still false!');\n}\n```\n\n**GOOD:**\n```dart\nif (someBool) {\n  print('true!');\n}\nwhile (!someBool) {\n  print('still false!');\n}\n```",
     "sinceDartSdk": "3.0"
   },
   {
@@ -1739,7 +1739,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/design#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do):\n\n**AVOID** defining a one-member abstract class when a simple function will do.\n\nUnlike Java, Dart has first-class functions, closures, and a nice light syntax\nfor using them.  If all you need is something like a callback, just use a\nfunction.  If you're defining a class and it only has a single abstract member\nwith a meaningless name like `call` or `invoke`, there is a good chance\nyou just want a function.\n\n**BAD:**\n```dart\nabstract class Predicate {\n  bool test(item);\n}\n```\n\n**GOOD:**\n```dart\ntypedef Predicate = bool Function(item);\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/design#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do):\n\n**AVOID** defining a one-member abstract class when a simple function will do.\n\nUnlike Java, Dart has first-class functions, closures, and a nice light syntax\nfor using them.  If all you need is something like a callback, just use a\nfunction.  If you're defining a class and it only has a single abstract member\nwith a meaningless name like `call` or `invoke`, there is a good chance\nyou just want a function.\n\n**BAD:**\n```dart\nabstract class Predicate {\n  bool test(item);\n}\n```\n\n**GOOD:**\n```dart\ntypedef Predicate = bool Function(item);\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -1798,7 +1798,7 @@
       "flutter"
     ],
     "fixStatus": "noFix",
-    "details": "From the [Pubspec format description](https://dartbrasil.dev/tools/pub/pubspec):\n\n**DO** use `lowercase_with_underscores` for package names.\n\nPackage names should be all lowercase, with underscores to separate words,\n`just_like_this`.  Use only basic Latin letters and Arabic digits: \\[a-z0-9\\_\\].\nAlso, make sure the name is a valid Dart identifier -- that it doesn't start\nwith digits and isn't a reserved word.",
+    "details": "From the [Pubspec format description](https://dart.dev/tools/pub/pubspec):\n\n**DO** use `lowercase_with_underscores` for package names.\n\nPackage names should be all lowercase, with underscores to separate words,\n`just_like_this`.  Use only basic Latin letters and Arabic digits: \\[a-z0-9\\_\\].\nAlso, make sure the name is a valid Dart identifier -- that it doesn't start\nwith digits and isn't a reserved word.",
     "sinceDartSdk": "2.0"
   },
   {
@@ -2051,7 +2051,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/design#prefer-making-fields-and-top-level-variables-final):\n\n**DO** prefer declaring private fields as `final` if they are not reassigned\nlater in the library.\n\nDeclaring fields as `final` when possible is a good practice because it helps\navoid accidental reassignments and allows the compiler to do optimizations.\n\n**BAD:**\n```dart\nclass BadImmutable {\n  var _label = 'hola mundo! BadImmutable'; // LINT\n  var label = 'hola mundo! BadImmutable'; // OK\n}\n```\n\n**BAD:**\n```dart\nclass MultipleMutable {\n  var _label = 'hola mundo! GoodMutable', _offender = 'mumble mumble!'; // LINT\n  var _someOther; // LINT\n\n  MultipleMutable() : _someOther = 5;\n\n  MultipleMutable(this._someOther);\n\n  void changeLabel() {\n    _label= 'hello world! GoodMutable';\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass GoodImmutable {\n  final label = 'hola mundo! BadImmutable', bla = 5; // OK\n  final _label = 'hola mundo! BadImmutable', _bla = 5; // OK\n}\n```\n\n**GOOD:**\n```dart\nclass GoodMutable {\n  var _label = 'hola mundo! GoodMutable';\n\n  void changeLabel() {\n    _label = 'hello world! GoodMutable';\n  }\n}\n```\n\n**BAD:**\n```dart\nclass AssignedInAllConstructors {\n  var _label; // LINT\n  AssignedInAllConstructors(this._label);\n  AssignedInAllConstructors.withDefault() : _label = 'Hello';\n}\n```\n\n**GOOD:**\n```dart\nclass NotAssignedInAllConstructors {\n  var _label; // OK\n  NotAssignedInAllConstructors();\n  NotAssignedInAllConstructors.withDefault() : _label = 'Hello';\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/design#prefer-making-fields-and-top-level-variables-final):\n\n**DO** prefer declaring private fields as `final` if they are not reassigned\nlater in the library.\n\nDeclaring fields as `final` when possible is a good practice because it helps\navoid accidental reassignments and allows the compiler to do optimizations.\n\n**BAD:**\n```dart\nclass BadImmutable {\n  var _label = 'hola mundo! BadImmutable'; // LINT\n  var label = 'hola mundo! BadImmutable'; // OK\n}\n```\n\n**BAD:**\n```dart\nclass MultipleMutable {\n  var _label = 'hola mundo! GoodMutable', _offender = 'mumble mumble!'; // LINT\n  var _someOther; // LINT\n\n  MultipleMutable() : _someOther = 5;\n\n  MultipleMutable(this._someOther);\n\n  void changeLabel() {\n    _label= 'hello world! GoodMutable';\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass GoodImmutable {\n  final label = 'hola mundo! BadImmutable', bla = 5; // OK\n  final _label = 'hola mundo! BadImmutable', _bla = 5; // OK\n}\n```\n\n**GOOD:**\n```dart\nclass GoodMutable {\n  var _label = 'hola mundo! GoodMutable';\n\n  void changeLabel() {\n    _label = 'hello world! GoodMutable';\n  }\n}\n```\n\n**BAD:**\n```dart\nclass AssignedInAllConstructors {\n  var _label; // LINT\n  AssignedInAllConstructors(this._label);\n  AssignedInAllConstructors.withDefault() : _label = 'Hello';\n}\n```\n\n**GOOD:**\n```dart\nclass NotAssignedInAllConstructors {\n  var _label; // OK\n  NotAssignedInAllConstructors();\n  NotAssignedInAllConstructors.withDefault() : _label = 'Hello';\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -2144,7 +2144,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/usage#do-use-a-function-declaration-to-bind-a-function-to-a-name):\n\n**DO** use a function declaration to bind a function to a name.\n\nAs Dart allows local function declarations, it is a good practice to use them in\nthe place of function literals.\n\n**BAD:**\n```dart\nvoid main() {\n  var localFunction = () {\n    ...\n  };\n}\n```\n\n**GOOD:**\n```dart\nvoid main() {\n  localFunction() {\n    ...\n  }\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#do-use-a-function-declaration-to-bind-a-function-to-a-name):\n\n**DO** use a function declaration to bind a function to a name.\n\nAs Dart allows local function declarations, it is a good practice to use them in\nthe place of function literals.\n\n**BAD:**\n```dart\nvoid main() {\n  var localFunction = () {\n    ...\n  };\n}\n```\n\n**GOOD:**\n```dart\nvoid main() {\n  localFunction() {\n    ...\n  }\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -2584,7 +2584,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/documentation#do-use--doc-comments-to-document-members-and-types):\n\n**DO** use `///` for documentation comments.\n\nAlthough Dart supports two syntaxes of doc comments (`///` and `/**`), we\nprefer using `///` for doc comments.\n\n**GOOD:**\n```dart\n/// Parses a set of option strings. For each option:\n///\n/// * If it is `null`, then it is ignored.\n/// * If it is a string, then [validate] is called on it.\n/// * If it is any other type, it is *not* validated.\nvoid parse(List options) {\n  // ...\n}\n```\n\nWithin a doc comment, you can use markdown for formatting.",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/documentation#do-use--doc-comments-to-document-members-and-types):\n\n**DO** use `///` for documentation comments.\n\nAlthough Dart supports two syntaxes of doc comments (`///` and `/**`), we\nprefer using `///` for doc comments.\n\n**GOOD:**\n```dart\n/// Parses a set of option strings. For each option:\n///\n/// * If it is `null`, then it is ignored.\n/// * If it is a string, then [validate] is called on it.\n/// * If it is any other type, it is *not* validated.\nvoid parse(List options) {\n  // ...\n}\n```\n\nWithin a doc comment, you can use markdown for formatting.",
     "sinceDartSdk": "2.0"
   },
   {
@@ -2766,7 +2766,7 @@
     ],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious):\n\n**PREFER** type annotating public APIs.\n\nType annotations are important documentation for how a library should be used.\nAnnotating the parameter and return types of public methods and functions helps\nusers understand what the API expects and what it provides.\n\nNote that if a public API accepts a range of values that Dart's type system\ncannot express, then it is acceptable to leave that untyped.  In that case, the\nimplicit `dynamic` is the correct type for the API.\n\nFor code internal to a library (either private, or things like nested functions)\nannotate where you feel it helps, but don't feel that you *must* provide them.\n\n**BAD:**\n```dart\ninstall(id, destination) {\n  // ...\n}\n```\n\nHere, it's unclear what `id` is.  A string? And what is `destination`? A string\nor a `File` object? Is this method synchronous or asynchronous?\n\n**GOOD:**\n```dart\nFuture<bool> install(PackageId id, String destination) {\n  // ...\n}\n```\n\nWith types, all of this is clarified.",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious):\n\n**PREFER** type annotating public APIs.\n\nType annotations are important documentation for how a library should be used.\nAnnotating the parameter and return types of public methods and functions helps\nusers understand what the API expects and what it provides.\n\nNote that if a public API accepts a range of values that Dart's type system\ncannot express, then it is acceptable to leave that untyped.  In that case, the\nimplicit `dynamic` is the correct type for the API.\n\nFor code internal to a library (either private, or things like nested functions)\nannotate where you feel it helps, but don't feel that you *must* provide them.\n\n**BAD:**\n```dart\ninstall(id, destination) {\n  // ...\n}\n```\n\nHere, it's unclear what `id` is.  A string? And what is `destination`? A string\nor a `File` object? Is this method synchronous or asynchronous?\n\n**GOOD:**\n```dart\nFuture<bool> install(PackageId id, String destination) {\n  // ...\n}\n```\n\nWith types, all of this is clarified.",
     "sinceDartSdk": "2.0"
   },
   {
@@ -2783,7 +2783,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/design#dont-type-annotate-initializing-formals):\n\n**DON'T** type annotate initializing formals.\n\nIf a constructor parameter is using `this.x` to initialize a field, then the\ntype of the parameter is understood to be the same type as the field. If a\na constructor parameter is using `super.x` to forward to a super constructor,\nthen the type of the parameter is understood to be the same as the super\nconstructor parameter.\n\nType annotating an initializing formal with a different type than that of the\nfield is OK.\n\n**BAD:**\n```dart\nclass Point {\n  int x, y;\n  Point(int this.x, int this.y);\n}\n```\n\n**GOOD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y);\n}\n```\n\n**BAD:**\n```dart\nclass A {\n  int a;\n  A(this.a);\n}\n\nclass B extends A {\n  B(int super.a);\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  int a;\n  A(this.a);\n}\n\nclass B extends A {\n  B(super.a);\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/design#dont-type-annotate-initializing-formals):\n\n**DON'T** type annotate initializing formals.\n\nIf a constructor parameter is using `this.x` to initialize a field, then the\ntype of the parameter is understood to be the same type as the field. If a\na constructor parameter is using `super.x` to forward to a super constructor,\nthen the type of the parameter is understood to be the same as the super\nconstructor parameter.\n\nType annotating an initializing formal with a different type than that of the\nfield is OK.\n\n**BAD:**\n```dart\nclass Point {\n  int x, y;\n  Point(int this.x, int this.y);\n}\n```\n\n**GOOD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y);\n}\n```\n\n**BAD:**\n```dart\nclass A {\n  int a;\n  A(this.a);\n}\n\nclass B extends A {\n  B(int super.a);\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  int a;\n  A(this.a);\n}\n\nclass B extends A {\n  B(super.a);\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -2887,7 +2887,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "Only use a `break` in a non-empty switch case statement if you need to break\nbefore the end of the case body.  Dart does not support fallthrough execution\nfor non-empty cases, so `break`s at the end of non-empty switch case statements\nare unnecessary.\n\n**BAD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n    break;\n  case 2:\n    print(\"two\");\n    break;\n}\n```\n\n**GOOD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n  case 2:\n    print(\"two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n  case 2:\n    print(\"one or two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n    break;\n  case 2:\n    print(\"just two\");\n}\n```\n\nNOTE: This lint only reports unnecessary breaks in libraries with a\n[language version](https://dartbrasil.dev/resources/language/evolution#language-versioning)\nof 3.0 or greater. Explicit breaks are still required in Dart 2.19 and below.",
+    "details": "Only use a `break` in a non-empty switch case statement if you need to break\nbefore the end of the case body.  Dart does not support fallthrough execution\nfor non-empty cases, so `break`s at the end of non-empty switch case statements\nare unnecessary.\n\n**BAD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n    break;\n  case 2:\n    print(\"two\");\n    break;\n}\n```\n\n**GOOD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n  case 2:\n    print(\"two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n  case 2:\n    print(\"one or two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n    break;\n  case 2:\n    print(\"just two\");\n}\n```\n\nNOTE: This lint only reports unnecessary breaks in libraries with a\n[language version](https://dart.dev/resources/language/evolution#language-versioning)\nof 3.0 or greater. Explicit breaks are still required in Dart 2.19 and below.",
     "sinceDartSdk": "3.0"
   },
   {
@@ -2939,7 +2939,7 @@
     ],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "Use `var`, not `final`, when declaring local variables.\n\nPer [Effective Dart](https://dartbrasil.dev/effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables),\nthere are two styles in wide use. This rule enforces the `var` style.\nFor the alternative style that prefers `final`, enable `prefer_final_locals`\nand `prefer_final_in_for_each` instead.\n\nFor fields, `final` is always recommended; see the rule `prefer_final_fields`.\n\n**BAD:**\n```dart\nvoid badMethod() {\n  final label = 'Final or var?';\n  for (final char in ['v', 'a', 'r']) {\n    print(char);\n  }\n}\n```\n\n**GOOD:**\n```dart\nvoid goodMethod() {\n  var label = 'Final or var?';\n  for (var char in ['v', 'a', 'r']) {\n    print(char);\n  }\n}\n```",
+    "details": "Use `var`, not `final`, when declaring local variables.\n\nPer [Effective Dart](https://dart.dev/effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables),\nthere are two styles in wide use. This rule enforces the `var` style.\nFor the alternative style that prefers `final`, enable `prefer_final_locals`\nand `prefer_final_in_for_each` instead.\n\nFor fields, `final` is always recommended; see the rule `prefer_final_fields`.\n\n**BAD:**\n```dart\nvoid badMethod() {\n  final label = 'Final or var?';\n  for (final char in ['v', 'a', 'r']) {\n    print(char);\n  }\n}\n```\n\n**GOOD:**\n```dart\nvoid goodMethod() {\n  var label = 'Final or var?';\n  for (var char in ['v', 'a', 'r']) {\n    print(char);\n  }\n}\n```",
     "sinceDartSdk": "2.7"
   },
   {
@@ -2956,7 +2956,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/usage#dont-wrap-a-field-in-a-getter-and-setter-unnecessarily):\n\n**AVOID** wrapping fields in getters and setters just to be \"safe\".\n\nIn Java and C#, it's common to hide all fields behind getters and setters (or\nproperties in C#), even if the implementation just forwards to the field.  That\nway, if you ever need to do more work in those members, you can do it without needing\nto touch the callsites.  This is because calling a getter method is different\nthan accessing a field in Java, and accessing a property isn't binary-compatible\nwith accessing a raw field in C#.\n\nDart doesn't have this limitation.  Fields and getters/setters are completely\nindistinguishable.  You can expose a field in a class and later wrap it in a\ngetter and setter without having to touch any code that uses that field.\n\n**BAD:**\n```dart\nclass Box {\n  var _contents;\n  get contents => _contents;\n  set contents(value) {\n    _contents = value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var contents;\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#dont-wrap-a-field-in-a-getter-and-setter-unnecessarily):\n\n**AVOID** wrapping fields in getters and setters just to be \"safe\".\n\nIn Java and C#, it's common to hide all fields behind getters and setters (or\nproperties in C#), even if the implementation just forwards to the field.  That\nway, if you ever need to do more work in those members, you can do it without needing\nto touch the callsites.  This is because calling a getter method is different\nthan accessing a field in Java, and accessing a property isn't binary-compatible\nwith accessing a raw field in C#.\n\nDart doesn't have this limitation.  Fields and getters/setters are completely\nindistinguishable.  You can expose a field in a class and later wrap it in a\ngetter and setter without having to touch any code that uses that field.\n\n**BAD:**\n```dart\nclass Box {\n  var _contents;\n  get contents => _contents;\n  set contents(value) {\n    _contents = value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var contents;\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -3235,7 +3235,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/usage#dont-use-this-when-not-needed-to-avoid-shadowing):\n\n**DON'T** use `this` when not needed to avoid shadowing.\n\n**BAD:**\n```dart\nclass Box {\n  int value;\n  void update(int newValue) {\n    this.value = newValue;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  int value;\n  void update(int newValue) {\n    value = newValue;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  int value;\n  void update(int value) {\n    this.value = value;\n  }\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#dont-use-this-when-not-needed-to-avoid-shadowing):\n\n**DON'T** use `this` when not needed to avoid shadowing.\n\n**BAD:**\n```dart\nclass Box {\n  int value;\n  void update(int newValue) {\n    this.value = newValue;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  int value;\n  void update(int newValue) {\n    value = newValue;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  int value;\n  void update(int value) {\n    this.value = value;\n  }\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -3396,7 +3396,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "Classes that look like enumerations should be declared as `enum`s.\n\n**DO** use enums where appropriate.\n\nCandidates for enums are classes that:\n\n  * are concrete,\n  * are private or have only private generative constructors,\n  * have two or more static const fields with the same type as the class,\n  * have generative constructors that are only invoked at the top-level of the\n    initialization expression of these static fields,\n  * do not define `hashCode`, `==`, `values` or `index`,\n  * do not extend any class other than `Object`, and\n  * have no subclasses declared in the defining library.\n\nTo learn more about creating and using these enums, check out\n[Declaring enhanced enums](https://dartbrasil.dev/language/enums#declaring-enhanced-enums).\n\n**BAD:**\n```dart\nclass LogPriority {\n  static const error = LogPriority._(1, 'Error');\n  static const warning = LogPriority._(2, 'Warning');\n  static const log = LogPriority._unknown('Log');\n\n  final String prefix;\n  final int priority;\n  const LogPriority._(this.priority, this.prefix);\n  const LogPriority._unknown(String prefix) : this._(-1, prefix);\n}\n```\n\n**GOOD:**\n```dart\nenum LogPriority {\n  error(1, 'Error'),\n  warning(2, 'Warning'),\n  log.unknown('Log');\n\n  final String prefix;\n  final int priority;\n  const LogPriority(this.priority, this.prefix);\n  const LogPriority.unknown(String prefix) : this(-1, prefix);\n}\n```",
+    "details": "Classes that look like enumerations should be declared as `enum`s.\n\n**DO** use enums where appropriate.\n\nCandidates for enums are classes that:\n\n  * are concrete,\n  * are private or have only private generative constructors,\n  * have two or more static const fields with the same type as the class,\n  * have generative constructors that are only invoked at the top-level of the\n    initialization expression of these static fields,\n  * do not define `hashCode`, `==`, `values` or `index`,\n  * do not extend any class other than `Object`, and\n  * have no subclasses declared in the defining library.\n\nTo learn more about creating and using these enums, check out\n[Declaring enhanced enums](https://dart.dev/language/enums#declaring-enhanced-enums).\n\n**BAD:**\n```dart\nclass LogPriority {\n  static const error = LogPriority._(1, 'Error');\n  static const warning = LogPriority._(2, 'Warning');\n  static const log = LogPriority._unknown('Log');\n\n  final String prefix;\n  final int priority;\n  const LogPriority._(this.priority, this.prefix);\n  const LogPriority._unknown(String prefix) : this._(-1, prefix);\n}\n```\n\n**GOOD:**\n```dart\nenum LogPriority {\n  error(1, 'Error'),\n  warning(2, 'Warning'),\n  log.unknown('Log');\n\n  final String prefix;\n  final int priority;\n  const LogPriority(this.priority, this.prefix);\n  const LogPriority.unknown(String prefix) : this(-1, prefix);\n}\n```",
     "sinceDartSdk": "2.17"
   },
   {
@@ -3541,7 +3541,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/usage#do-use-rethrow-to-rethrow-a-caught-exception):\n\n**DO** use rethrow to rethrow a caught exception.\n\nAs Dart provides rethrow as a feature, it should be used to improve terseness\nand readability.\n\n**BAD:**\n```dart\ntry {\n  somethingRisky();\n} catch(e) {\n  if (!canHandle(e)) throw e;\n  handle(e);\n}\n```\n\n**GOOD:**\n```dart\ntry {\n  somethingRisky();\n} catch(e) {\n  if (!canHandle(e)) rethrow;\n  handle(e);\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#do-use-rethrow-to-rethrow-a-caught-exception):\n\n**DO** use rethrow to rethrow a caught exception.\n\nAs Dart provides rethrow as a feature, it should be used to improve terseness\nand readability.\n\n**BAD:**\n```dart\ntry {\n  somethingRisky();\n} catch(e) {\n  if (!canHandle(e)) throw e;\n  handle(e);\n}\n```\n\n**GOOD:**\n```dart\ntry {\n  somethingRisky();\n} catch(e) {\n  if (!canHandle(e)) rethrow;\n  handle(e);\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -3585,7 +3585,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/usage#do-use-strings-in-part-of-directives):\n\n**DO** use strings in `part of` directives.\n\n**BAD:**\n\n```dart\npart of my_library;\n```\n\n**GOOD:**\n\n```dart\npart of '../../my_library.dart';\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#do-use-strings-in-part-of-directives):\n\n**DO** use strings in `part of` directives.\n\n**BAD:**\n\n```dart\npart of my_library;\n```\n\n**GOOD:**\n\n```dart\npart of '../../my_library.dart';\n```",
     "sinceDartSdk": "2.19"
   },
   {
@@ -3628,7 +3628,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dartbrasil.dev/effective-dart/design#prefer-naming-a-method-to___-if-it-copies-the-objects-state-to-a-new-object):\n\n**PREFER** naming a method `to___()` if it copies the object's state to a new\nobject.\n\n**PREFER** naming a method `as___()` if it returns a different representation\nbacked by the original object.\n\n**BAD:**\n```dart\nclass Bar {\n  Foo myMethod() {\n    return Foo.from(this);\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Bar {\n  Foo toFoo() {\n    return Foo.from(this);\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Bar {\n  Foo asFoo() {\n    return Foo.from(this);\n  }\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/design#prefer-naming-a-method-to___-if-it-copies-the-objects-state-to-a-new-object):\n\n**PREFER** naming a method `to___()` if it copies the object's state to a new\nobject.\n\n**PREFER** naming a method `as___()` if it returns a different representation\nbacked by the original object.\n\n**BAD:**\n```dart\nclass Bar {\n  Foo myMethod() {\n    return Foo.from(this);\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Bar {\n  Foo toFoo() {\n    return Foo.from(this);\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Bar {\n  Foo asFoo() {\n    return Foo.from(this);\n  }\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {

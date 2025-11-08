@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: invalid_deprecated_mixin_annotation
-description: "Detalhes sobre o diagnóstico invalid_deprecated_mixin_annotation produzido pelo analisador do Dart."
+description: >-
+  Details about the invalid_deprecated_mixin_annotation
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A annotation '@Deprecated.mixin' só pode ser aplicada a classes._
+_The annotation '@Deprecated.mixin' can only be applied to classes._
 
 ## Description
 
-O analisador produz este diagnóstico quando a annotation `@Deprecated.mixin`
-é aplicada a uma declaração que não é uma classe mixin.
+The analyzer produces this diagnostic when the `@Deprecated.mixin`
+annotation is applied to a declaration that isn't a mixin class.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a annotation está em uma
-classe que não é mixin:
+The following code produces this diagnostic because the annotation is on a
+non-mixin class:
 
 ```dart
 @[!Deprecated.mixin!]()
@@ -25,7 +26,7 @@ class C {}
 
 ## Common fixes
 
-Remova a annotation:
+Remove the annotation:
 
 ```dart
 class C {}

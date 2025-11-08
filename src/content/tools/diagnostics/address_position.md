@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: address_position
-description: "Detalhes sobre o diagnóstico address_position produzido pelo analisador do Dart."
+description: >-
+  Details about the address_position
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,14 +11,14 @@ _The '.address' expression can only be used as argument to a leaf native externa
 
 ## Description
 
-O analisador produz este diagnóstico quando o getter `.address` é usado
-em um contexto que não seja como argumento para uma chamada externa nativa que é
-marcada como uma chamada leaf (`isLeaf: true`).
+The analyzer produces this diagnostic when the `.address` getter is used
+in a context other than as an argument to a native external call that is
+marked as a leaf call (`isLeaf: true`).
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `.address` é usado
-incorretamente:
+The following code produces this diagnostic because `.address` is used
+incorrectly:
 
 ```dart
 import 'dart:ffi';
@@ -36,9 +37,9 @@ void main() {
 
 ## Common fixes
 
-Certifique-se de que a expressão `.address` seja usada diretamente como argumento para uma
-chamada externa nativa que está anotada com `@Native(...)` e tem
-`isLeaf: true` definido em sua anotação.
+Ensure that the `.address` expression is used directly as an argument to a
+native external call that is annotated with `@Native(...)` and has
+`isLeaf: true` set in its annotation.
 
 ```dart
 import 'dart:ffi';

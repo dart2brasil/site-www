@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: prefer_single_quotes
-description: "Detalhes sobre o diagnóstico prefer_single_quotes produzido pelo analisador Dart."
+description: >-
+  Details about the prefer_single_quotes
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário de aspas duplas._
+_Unnecessary use of double quotes._
 
 ## Description
 
-O analisador produz este diagnóstico quando um literal de string usa aspas
-duplas (`"`) quando poderia usar aspas simples (`'`) sem precisar de escapes
-extras e sem prejudicar a legibilidade.
+The analyzer produces this diagnostic when a string literal uses double
+quotes (`"`) when it could use single quotes (`'`) without needing extra
+escapes and without hurting readability.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o literal de string
-usa aspas duplas mas não precisa:
+The following code produces this diagnostic because the string literal
+uses double quotes but doesn't need to:
 
 ```dart
 void f(String name) {
@@ -38,7 +39,7 @@ void f(String name) {
 
 ## Common fixes
 
-Use aspas simples no lugar de aspas duplas:
+Use single quotes in place of double quotes:
 
 ```dart
 void f(String name) {

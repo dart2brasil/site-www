@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: extension_type_declares_instance_field
-description: "Detalhes sobre o diagnóstico extension_type_declares_instance_field produzido pelo analisador Dart."
+description: >-
+  Details about the extension_type_declares_instance_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extension types não podem declarar campos de instância._
+_Extension types can't declare instance fields._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando há uma declaração de campo no
-corpo de uma declaração de extension type.
+The analyzer produces this diagnostic when there's a field declaration in
+the body of an extension type declaration.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o extension type `E`
-declara um campo chamado `f`:
+The following code produces this diagnostic because the extension type `E`
+declares a field named `f`:
 
 ```dart
 extension type E(int i) {
@@ -24,10 +25,10 @@ extension type E(int i) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você não precisa do campo, então remova-o ou substitua-o por um getter
-e/ou setter:
+If you don't need the field, then remove it or replace it with a getter
+and/or setter:
 
 ```dart
 extension type E(int i) {
@@ -35,7 +36,7 @@ extension type E(int i) {
 }
 ```
 
-Se você precisa do campo, então converta o extension type em uma classe:
+If you need the field, then convert the extension type into a class:
 
 ```dart
 class E {

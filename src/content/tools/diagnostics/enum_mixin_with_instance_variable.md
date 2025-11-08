@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: enum_mixin_with_instance_variable
-description: "Detalhes sobre o diagnóstico enum_mixin_with_instance_variable produzido pelo analisador do Dart."
+description: >-
+  Details about the enum_mixin_with_instance_variable
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Mixins aplicados a enums não podem ter variáveis de instância._
+_Mixins applied to enums can't have instance variables._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um mixin que é aplicado a um
-enum declara uma ou mais variáveis de instância. Isso não é permitido porque
-os valores do enum são constantes, e não há nenhuma maneira para o construtor
-no enum inicializar nenhum dos campos do mixin.
+The analyzer produces this diagnostic when a mixin that's applied to an
+enum declares one or more instance variables. This isn't allowed because
+the enum values are constant, and there isn't any way for the constructor
+in the enum to initialize any of the mixin's fields.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o mixin `M` define
-o campo de instância `x`:
+The following code produces this diagnostic because the mixin `M` defines
+the instance field `x`:
 
 ```dart
 mixin M {
@@ -30,10 +31,10 @@ enum E with [!M!] {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se você precisa aplicar o mixin, então transforme todos os campos de instância em
-pares de getter e setter e implemente-os no enum se necessário:
+If you need to apply the mixin, then change all instance fields into
+getter and setter pairs and implement them in the enum if necessary:
 
 ```dart
 mixin M {
@@ -45,7 +46,7 @@ enum E with M {
 }
 ```
 
-Se você não precisa aplicar o mixin, então remova-o:
+If you don't need to apply the mixin, then remove it:
 
 ```dart
 enum E {

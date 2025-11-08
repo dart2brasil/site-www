@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: always_use_package_imports
-description: "Detalhes sobre o diagnóstico always_use_package_imports produzido pelo analisador do Dart."
+description: >-
+  Details about the always_use_package_imports
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -21,15 +22,15 @@ _Use 'package:' imports for files in the 'lib' directory._
 
 ## Description
 
-O analisador produz este diagnóstico quando um `import` em uma biblioteca dentro
-do diretório `lib` usa um caminho relativo para importar outra biblioteca dentro
-do diretório `lib` do mesmo pacote.
+The analyzer produces this diagnostic when an `import` in a library inside
+the `lib` directory uses a relative path to import another library inside
+the `lib` directory of the same package.
 
 ## Example
 
-Dado que um arquivo chamado `a.dart` e o código abaixo estão ambos dentro do
-diretório `lib` do mesmo pacote, o código a seguir produz este
-diagnóstico porque uma URI relativa é usada para importar `a.dart`:
+Given that a file named `a.dart` and the code below are both inside the
+`lib` directory of the same package, the following code produces this
+diagnostic because a relative URI is used to import `a.dart`:
 
 ```dart
 import [!'a.dart'!];
@@ -37,7 +38,7 @@ import [!'a.dart'!];
 
 ## Common fixes
 
-Use um import de pacote:
+Use a package import:
 
 ```dart
 import 'package:p/a.dart';

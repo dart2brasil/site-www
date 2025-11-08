@@ -1,33 +1,34 @@
 ---
-ia-translate: true
 title: doc_import_cannot_have_prefix
-description: "Detalhes sobre o diagnóstico doc_import_cannot_have_prefix produzido pelo analisador do Dart."
+description: >-
+  Details about the doc_import_cannot_have_prefix
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Imports de documentação não podem ter prefixos._
+_Doc imports can't have prefixes._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um import de documentação tem um
-prefixo.
+The analyzer produces this diagnostic when a documentation import has a
+prefix.
 
-Usar prefixos não é suportado para imports de documentação.
+Using prefixes isn't supported for documentation imports.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o import de documentação
-declara um prefixo:
+The following code produces this diagnostic because the documentation
+import declares a prefix:
 
 ```dart
 /// @docImport 'package:meta/meta.dart' as [!a!];
 library;
 ```
 
-## Correções comuns
+## Common fixes
 
-Remova o prefixo:
+Remove the prefix:
 
 ```dart
 /// @docImport 'package:meta/meta.dart';

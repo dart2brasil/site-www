@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: undefined_hidden_name
-description: "Detalhes sobre o diagnóstico undefined_hidden_name produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_hidden_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A biblioteca '{0}' não exporta um membro com o nome oculto '{1}'._
+_The library '{0}' doesn't export a member with the hidden name '{1}'._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um combinador hide inclui um
-nome que não está definido pela biblioteca sendo importada.
+The analyzer produces this diagnostic when a hide combinator includes a
+name that isn't defined by the library being imported.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `dart:math` não
-define o nome `String`:
+The following code produces this diagnostic because `dart:math` doesn't
+define the name `String`:
 
 ```dart
 import 'dart:math' hide [!String!], max;
@@ -24,10 +25,10 @@ import 'dart:math' hide [!String!], max;
 var x = min(0, 1);
 ```
 
-## Correções comuns
+## Common fixes
 
-Se um nome diferente deve ser ocultado, então corrija o nome. Caso contrário,
-remova o nome da lista:
+If a different name should be hidden, then correct the name. Otherwise,
+remove the name from the list:
 
 ```dart
 import 'dart:math' hide max;

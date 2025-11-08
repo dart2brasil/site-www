@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: redirect_to_non_const_constructor
-description: "Detalhes sobre o diagnóstico redirect_to_non_const_constructor produzido pelo analisador Dart."
+description: >-
+  Details about the redirect_to_non_const_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Um construtor redirecionador constante não pode redirecionar para um construtor não-constante._
+_A constant redirecting constructor can't redirect to a non-constant constructor._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor marcado como `const`
-redireciona para um construtor que não é marcado como `const`.
+The analyzer produces this diagnostic when a constructor marked as `const`
+redirects to a constructor that isn't marked as `const`.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o construtor `C.a`
-é marcado como `const` mas redireciona para o construtor `C.b`, que não é:
+The following code produces this diagnostic because the constructor `C.a`
+is marked as `const` but redirects to the constructor `C.b`, which isn't:
 
 ```dart
 class C {
@@ -25,9 +26,9 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o construtor não-constante pode ser marcado como `const`, então marque-o como
+If the non-constant constructor can be marked as `const`, then mark it as
 `const`:
 
 ```dart
@@ -37,8 +38,8 @@ class C {
 }
 ```
 
-Se o construtor não-constante não pode ser marcado como `const`, então
-remova o redirecionamento ou remova `const` do construtor redirecionador:
+If the non-constant constructor can't be marked as `const`, then either
+remove the redirect or remove `const` from the redirecting constructor:
 
 ```dart
 class C {

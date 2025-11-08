@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: private_named_non_field_parameter
-description: "Detalhes sobre o diagnóstico private_named_non_field_parameter produzido pelo analisador Dart."
+description: >-
+  Details about the private_named_non_field_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Parâmetros nomeados que não se referem a variáveis de instância não podem começar com underscore._
+_Named parameters that don't refer to instance variables can't start with underscore._
 
 ## Description
 
-O analisador produz este diagnóstico quando um parâmetro nomeado começa com
-um underscore, a menos que seja um parâmetro formal inicializador ou parâmetro de campo.
+The analyzer produces this diagnostic when a named parameter starts with
+an underscore, unless it's an initializing formal or field parameter.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o parâmetro nomeado
-`_x` começa com um underscore:
+The following code produces this diagnostic because the named parameter
+`_x` starts with an underscore:
 
 ```dart
 class C {
@@ -26,8 +27,8 @@ class C {
 
 ## Common fixes
 
-Se o parâmetro é destinado a se referir a um campo, adicione o campo
-faltante:
+If the parameter is intended to refer to a field, then add the missing
+field:
 
 ```dart
 class C {
@@ -37,7 +38,7 @@ class C {
 }
 ```
 
-Se o parâmetro não é destinado a se referir a um campo, remova o
+If the parameter isn't intended to refer to a field, then remove the
 underscore:
 
 ```dart

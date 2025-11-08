@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: platform_value_disallowed
-description: "Detalhes sobre o diagnóstico platform_value_disallowed produzido pelo analisador do Dart."
+description: >-
+  Details about the platform_value_disallowed
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Chaves no campo `platforms` não podem ter valores._
+_Keys in the `platforms` field can't have values._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma chave no map `platforms`
-tem um valor.
-Para saber mais sobre especificar as plataformas suportadas do seu pacote,
-confira a [documentação sobre declarações de plataforma](https://dart.dev/tools/pub/pubspec#platforms).
+The analyzer produces this diagnostic when a key in the `platforms` map
+has a value.
+To learn more about specifying your package's supported platforms,
+check out the [documentation on platform declarations](https://dart.dev/tools/pub/pubspec#platforms).
 
 ## Example
 
-O seguinte `pubspec.yaml` produz este diagnóstico porque a chave
-`web` tem um valor.
+The following `pubspec.yaml` produces this diagnostic because the key
+`web` has a value.
 
 ```yaml
 name: example
@@ -28,7 +29,7 @@ platforms:
 
 ## Common fixes
 
-Omita o valor e deixe a chave sem um valor:
+Omit the value and leave the key without a value:
 
 ```yaml
 name: example
@@ -36,5 +37,5 @@ platforms:
   web:
 ```
 
-Valores para chaves no campo `platforms` estão atualmente reservados para
-comportamento futuro potencial.
+Values for keys in the `platforms` field are currently reserved for
+potential future behavior.

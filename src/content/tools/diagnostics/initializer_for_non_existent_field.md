@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: initializer_for_non_existent_field
-description: "Detalhes sobre o diagnóstico initializer_for_non_existent_field produzido pelo analisador do Dart."
+description: >-
+  Details about the initializer_for_non_existent_field
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' não é um campo na classe envolvente._
+_'{0}' isn't a field in the enclosing class._
 
 ## Description
 
-O analisador produz este diagnóstico quando um construtor inicializa um
-campo que não está declarado na classe que contém o construtor.
-Construtores não podem inicializar campos que não estão declarados e campos que
-são herdados de superclasses.
+The analyzer produces this diagnostic when a constructor initializes a
+field that isn't declared in the class containing the constructor.
+Constructors can't initialize fields that aren't declared and fields that
+are inherited from superclasses.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o inicializador está
-inicializando `x`, mas `x` não é um campo na classe:
+The following code produces this diagnostic because the initializer is
+initializing `x`, but `x` isn't a field in the class:
 
 ```dart
 class C {
@@ -30,8 +31,8 @@ class C {
 
 ## Common fixes
 
-Se um campo diferente deve ser inicializado, então altere o nome para o
-nome do campo:
+If a different field should be initialized, then change the name to the
+name of the field:
 
 ```dart
 class C {
@@ -41,7 +42,7 @@ class C {
 }
 ```
 
-Se o campo deve ser declarado, então adicione uma declaração:
+If the field must be declared, then add a declaration:
 
 ```dart
 class C {

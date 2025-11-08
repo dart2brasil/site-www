@@ -1,25 +1,26 @@
 ---
-ia-translate: true
 title: implements_super_class
-description: "Detalhes sobre o diagnóstico implements_super_class produzido pelo analisador Dart."
+description: >-
+  Details about the implements_super_class
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' não pode ser usada tanto na cláusula 'extends' quanto na 'implements'._
+_'{0}' can't be used in both the 'extends' and 'implements' clauses._
 
-_'{0}' não pode ser usada tanto na cláusula 'extends' quanto na 'with'._
+_'{0}' can't be used in both the 'extends' and 'with' clauses._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma classe é listada na
-cláusula `extends` de uma declaração de classe e também na
-cláusula `implements` ou `with` da mesma declaração.
+The analyzer produces this diagnostic when a class is listed in the
+`extends` clause of a class declaration and also in either the
+`implements` or `with` clause of the same declaration.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a classe `A` é usada
-tanto na cláusula `extends` quanto na `implements` para a classe `B`:
+The following code produces this diagnostic because the class `A` is used
+in both the `extends` and `implements` clauses for the class `B`:
 
 ```dart
 class A {}
@@ -27,8 +28,8 @@ class A {}
 class B extends A implements [!A!] {}
 ```
 
-O código a seguir produz este diagnóstico porque a classe `A` é usada
-tanto na cláusula `extends` quanto na `with` para a classe `B`:
+The following code produces this diagnostic because the class `A` is used
+in both the `extends` and `with` clauses for the class `B`:
 
 ```dart
 mixin class A {}
@@ -38,8 +39,8 @@ class B extends A with [!A!] {}
 
 ## Common fixes
 
-Se você quer herdar a implementação da classe, então remova a
-classe da cláusula `implements`:
+If you want to inherit the implementation from the class, then remove the
+class from the `implements` clause:
 
 ```dart
 class A {}
@@ -47,8 +48,8 @@ class A {}
 class B extends A {}
 ```
 
-Se você não quer herdar a implementação da classe, então remova
-a cláusula `extends`:
+If you don't want to inherit the implementation from the class, then remove
+the `extends` clause:
 
 ```dart
 class A {}

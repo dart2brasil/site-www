@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: undefined_named_parameter
-description: "Detalhes sobre o diagnóstico undefined_named_parameter produzido pelo analisador Dart."
+description: >-
+  Details about the undefined_named_parameter
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O parâmetro nomeado '{0}' não está definido._
+_The named parameter '{0}' isn't defined._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma invocação de método ou função
-tem um argumento nomeado, mas o método ou função sendo invocado não
-define um parâmetro com o mesmo nome.
+The analyzer produces this diagnostic when a method or function invocation
+has a named argument, but the method or function being invoked doesn't
+define a parameter with the same name.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `m` não declara um
-parâmetro nomeado chamado `a`:
+The following code produces this diagnostic because `m` doesn't declare a
+named parameter named `a`:
 
 ```dart
 class C {
@@ -29,10 +30,10 @@ void f(C c) {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se o nome do argumento está digitado incorretamente, então substitua-o pelo
-nome correto. O exemplo acima pode ser corrigido mudando `a` para `b`:
+If the argument name is mistyped, then replace it with the correct name.
+The example above can be fixed by changing `a` to `b`:
 
 ```dart
 class C {
@@ -44,8 +45,8 @@ void f(C c) {
 }
 ```
 
-Se uma subclasse adiciona um parâmetro com o nome em questão, então lance
-o receptor para a subclasse:
+If a subclass adds a parameter with the name in question, then cast the
+receiver to the subclass:
 
 ```dart
 class C {
@@ -61,7 +62,7 @@ void f(C c) {
 }
 ```
 
-Se o parâmetro deveria ser adicionado à função, então adicione-o:
+If the parameter should be added to the function, then add it:
 
 ```dart
 class C {

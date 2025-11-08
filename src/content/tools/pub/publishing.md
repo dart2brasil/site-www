@@ -1,198 +1,197 @@
 ---
-ia-translate: true
-title: Publicando pacotes
-breadcrumb: Publicação
-description: Aprenda como publicar um pacote Dart no pub.dev.
+title: Publishing packages
+breadcrumb: Publishing
+description: Learn how to publish a Dart package to pub.dev.
 ---
 
-O [gerenciador de pacotes pub][pub] não serve apenas para usar pacotes de outras pessoas.
-Ele também permite que você compartilhe seus pacotes com o mundo. Se você tem um projeto
-útil e quer que outros possam usá-lo, use o
-comando `dart pub publish`.
+[The pub package manager][pub] isn't just for using other people's packages.
+It also allows you to share your packages with the world. If you have a useful
+project and you want others to be able to use it, use the `dart pub publish`
+command.
 
 :::note
-Para publicar em um local diferente do pub.dev,
-ou para impedir a publicação em qualquer lugar, use o campo `publish_to`,
-conforme definido no [pubspec][pubspec].
+To publish to a location other than pub.dev,
+or to prevent publication anywhere, use the `publish_to` field,
+as defined in the [pubspec][].
 :::
 
-Assista ao vídeo a seguir para uma visão geral da construção e publicação de pacotes.
+Watch the following video for an overview of building and publishing packages.
 
 <YouTubeEmbed id="8V_TLiWszK0" title="How to build a package in Dart"></YouTubeEmbed>
 
-## Lembre-se: Publicar é para sempre {:#remember-publishing-is-forever}
+## Remember: Publishing is forever
 
-Tenha em mente que um pacote publicado dura para sempre.
-Assim que você publica seu pacote, os usuários podem depender dele.
-Uma vez que eles começam a depender dele, remover o pacote quebraria os deles.
-Para evitar isso, a [política do pub.dev][policy]
-não permite a não publicação de pacotes, exceto em casos muito raros.
+Keep in mind that a published package lasts forever.
+As soon as you publish your package, users can depend on it.
+Once they start depending on it, removing the package would break theirs.
+To avoid that, the [pub.dev policy][policy]
+disallows unpublishing packages except for very few cases.
 
-Você sempre pode fazer upload de novas versões do seu pacote,
-mas as antigas permanecem disponíveis para os usuários que ainda não podem atualizar.
+You can always upload new versions of your package,
+but old ones remain available for users that can't upgrade yet.
 
-Para pacotes publicados que perderam a relevância ou carecem de manutenção,
-[marque-os como descontinuados](#discontinue).
+For published packages that have lost relevance or lack maintenance,
+[mark them as discontinued](#discontinue).
 
-## Prepare seu pacote para publicação {:#prepare-your-package-for-publication}
+## Prepare your package for publication
 
-Ao publicar um pacote, siga as convenções encontradas no
-[formato pubspec][pubspec] e na estrutura de [layout do pacote][pkg-layout].
-Para simplificar o uso do seu pacote, o Dart exige essas convenções.
-Essas convenções contêm algumas exceções observadas nos guias vinculados.
-Quando invocado, o `pub` aponta quais mudanças você pode fazer para que seu pacote
-funcione melhor dentro do ecossistema Dart.
+When publishing a package, follow the conventions found in the
+[pubspec format][pubspec] and [package layout][pkg-layout] structure.
+To simplify using your package, Dart requires these conventions.
+These conventions contain some exceptions noted on the linked guides.
+When invoked, `pub` points out what changes you can make so your package
+works better within the Dart ecosystem.
 
-Além dessas convenções, você deve seguir estes requisitos:
+Beyond these conventions, you must follow these requirements:
 
-* Inclua um arquivo `LICENSE` em seu pacote.
-  Recomendamos a [licença BSD de 3 cláusulas][BSD 3-clause license],
-  que as equipes Dart e Flutter normalmente usam.
-  No entanto, você pode usar qualquer licença apropriada para o seu pacote.
+* Include a `LICENSE` file in your package.
+  We recommend the [BSD 3-clause license][],
+  which the Dart and Flutter teams typically use.
+  However, you can use any license appropriate for your package.
 
-* Verifique se você tem o direito legal de redistribuir qualquer coisa que
-  você envie como parte do seu pacote.
+* Verify that you have the legal right to redistribute anything that
+  you upload as part of your package.
 
-* Mantenha o tamanho do pacote menor que 100 MB após a compressão gzip.
-  Se for muito grande, considere dividi-lo em vários pacotes,
-  usando um arquivo `.pubignore` para remover conteúdo desnecessário,
-  ou reduzindo o número de recursos ou exemplos incluídos.
+* Keep package size to less than 100 MB after gzip compression.
+  If it's too large, consider splitting it into multiple packages,
+  using a `.pubignore` file to remove unnecessary content,
+  or cutting down on the number of included resources or examples.
 
-* Faça com que seu pacote dependa apenas de dependências hospedadas
-  do servidor de pacotes pub padrão e dependências do SDK
+* Have your package depend only on hosted dependencies
+  from the default pub package server and SDK dependencies
   (`sdk: flutter`).
-  Essas restrições garantem que as dependências de seus pacotes
-  possam ser encontradas e acessadas no futuro.
+  These restrictions ensure that dependencies of your packages
+  can be found and accessed in the future.
 
-* Possua uma [Conta do Google][Google Account]. O Pub usa uma conta do Google
-  para gerenciar permissões de envio de pacotes.
-  Sua Conta do Google pode ser associada a um endereço do Gmail ou qualquer outro endereço de e-mail.
+* Own a [Google Account][]. Pub uses a Google account to manage package
+  upload permissions. Your Google Account can be associated with
+  a Gmail address or any other email address.
 
-### Preencha sua página web do pub.dev {:#populate-your-pub-dev-web-page}
+### Populate your pub.dev web page
 
-O Pub usa o conteúdo de alguns arquivos para criar uma página para o seu
-pacote em `pub.dev/packages/<seu_pacote>`.
-Os seguintes arquivos afetam o conteúdo da página da web do seu pacote.
+Pub uses the contents of a few files to create a page for your
+package at `pub.dev/packages/<your_package>`.
+The following files affect the contents of your package's web page.
 
 **`README.md`**
-  : Este arquivo contém o conteúdo principal apresentado na
-  página da web do seu pacote.
-  O conteúdo do arquivo deve ser marcado usando [Markdown][Markdown].
-  Para aprender como escrever um ótimo README (leia-me), consulte
-  [Escrevendo páginas de pacotes](/tools/pub/writing-package-pages).
+  : This file contains the main content featured in
+  your package's web page.
+  The file's contents should be marked up using [Markdown][].
+  To learn how to write a great README, see
+  [Writing package pages](/tools/pub/writing-package-pages).
 
 **`CHANGELOG.md`**
-  : Se encontrado, este arquivo preenche sua própria aba na página da web do seu pacote.
-  Os desenvolvedores podem ler suas mudanças diretamente do pub.dev.
-  O conteúdo do arquivo deve ser marcado usando [Markdown][Markdown].
+  : If found, this file populates its own tab on your package's web page.
+  Developers can read your changes right from pub.dev.
+  The file's contents should be marked up using [Markdown][].
 
 **`pubspec.yaml`**
-  : Este arquivo preenche detalhes sobre seu pacote
-  no lado direito da página da web do seu pacote.
-  O conteúdo do arquivo deve seguir as convenções YAML.
-  Esses detalhes incluem descrição, página inicial e similares.
+  : This file populates details about your package
+  on the right side of your package's web page.
+  The file's contents should follow YAML conventions.
+  These details include description, homepage, and the like.
 
-### Vantagens de usar um editor verificado {:#verified-publisher}
+### Advantages of using a verified publisher {:#verified-publisher}
 
-Você pode publicar pacotes usando um editor verificado (recomendado)
-ou uma Conta do Google independente.
-Usar um editor verificado tem as seguintes vantagens:
+You can publish packages using either a verified publisher (recommended)
+or an independent Google Account.
+Using a verified publisher has the following advantages:
 
-* Os consumidores do seu pacote sabem que o domínio do editor foi verificado.
-* Você pode evitar que o pub.dev exiba seu endereço de e-mail pessoal.
-  Em vez disso, o pub.dev exibe o domínio do editor e o endereço de contato.
-* O site pub.dev exibe um selo de editor verificado
-  <img src="/assets/img/verified-publisher.svg" class="text-icon" alt="logotipo de editor verificado do pub.dev">
-  ao lado do nome do seu pacote nas páginas de pesquisa e nas páginas de pacotes individuais.
+* The consumers of your package know that the publisher domain has been verified.
+* You can avoid having pub.dev display your personal email address.
+  Instead, pub.dev displays the publisher domain and contact address.
+* The pub.dev site displays a verified publisher badge
+  <img src="/assets/img/verified-publisher.svg" class="text-icon" alt="pub.dev verified publisher logo">
+  next to your package name on search pages and individual package pages.
 
-### Crie um editor verificado {:#create-verified-publisher}
+### Create a verified publisher {:#create-verified-publisher}
 
-Para criar um [editor verificado][create-verified-publisher], siga estas etapas:
+To create a [verified publisher][create-verified-publisher], follow these steps:
 
-1. Vá para [pub.dev]({{site.pub}}).
+1. Go to [pub.dev]({{site.pub}}).
 
-1. Faça login no pub.dev usando uma Conta do Google.
+1. Log in to pub.dev using a Google Account.
 
-1. No menu do usuário no canto superior direito, selecione **Criar Editor**.
+1. From the user menu in the top-right corner, select **Create Publisher**.
 
-1. Digite o nome de domínio que você deseja associar ao seu editor
-   (por exemplo, `dartbrasil.dev`).
+1. Enter the domain name that you want to associate with your publisher
+   (for example, `dart.dev`).
 
-1. Clique em **Criar Editor**.
+1. Click **Create Publisher**.
 
-1. Na caixa de diálogo de confirmação, selecione **OK**.
+1. In the confirmation dialog, select **OK**.
 
-1. Se solicitado, conclua o fluxo de verificação.
-   Isso abre o [Google Search Console][google-search].
+1. If prompted, complete the verification flow.
+   This opens the [Google Search Console][google-search].
 
-   * Ao adicionar registros DNS,
-     algumas horas podem se passar antes que o Search Console reflita as mudanças.
-   * Quando o fluxo de verificação estiver concluído, volte para a etapa 4.
+   * When adding DNS records,
+     a few hours might pass before the Search Console reflects the changes.
+   * When the verification flow is complete, return to step 4.
 
 :::tip
-Recomendamos fortemente que você convide outros membros da sua
-organização para serem membros do editor verificado.
-Isso ajuda a garantir que sua organização retenha o acesso ao
-editor quando você não estiver disponível.
+We strongly recommend you invite other members of your
+organization to be members of the verified publisher.
+This helps ensure that your organization retains access to
+the publisher when you are not available.
 :::
 
-## Publique seu pacote {:#publish-your-package}
+## Publish your package
 
-Use o comando [`dart pub publish`][`dart pub publish`] para publicar seu pacote
-pela primeira vez ou para atualizá-lo para uma nova versão.
+Use the [`dart pub publish`][] command to publish your package
+for the first time or to update it to a new version.
 
-### Quais arquivos são publicados? {:#what-files-are-published}
+### What files are published?
 
-O pacote publicado inclui **todos os arquivos** no diretório raiz do pacote,
-com as seguintes exceções:
+The published package includes **all files** under the package root directory,
+with the following exceptions:
 
-* Quaisquer arquivos ou diretórios _ocultos_.
-  Estes têm nomes que começam com ponto (`.`).
-* Arquivos e diretórios listados para serem ignorados em um
-  arquivo `.pubignore` ou `.gitignore`
+* Any _hidden_ files or directories.
+  These have names that begin with dot (`.`).
+* Files and directories listed to be ignored in a
+  `.pubignore` or `.gitignore` file
 
-Para usar regras de ignorar diferentes para `git` e `dart pub publish`,
-crie um arquivo `.pubignore` para substituir o
-arquivo `.gitignore` em um determinado diretório.
-Se um diretório contiver um arquivo `.pubignore` e um arquivo `.gitignore`,
-então `dart pub publish` _ignora_ o arquivo `.gitignore` desse diretório.
-Os arquivos `.pubignore` seguem o mesmo formato que o
-[arquivo `.gitignore`][git-ignore-format].
+To use different ignore rules for `git` and `dart pub publish`,
+create a `.pubignore` file to overrule the
+`.gitignore` file in a given directory.
+If a directory contains both a `.pubignore` file and a `.gitignore` file,
+then  `dart pub publish` _ignores_ that directory's `.gitignore` file.
+The `.pubignore` files follow the same format as the
+[`.gitignore` file][git-ignore-format].
 
-Para evitar a publicação de arquivos indesejados, siga estas práticas:
+To avoid publishing unwanted files, follow these practices:
 
-* Exclua todos os arquivos que você não deseja incluir ou adicione-os
-  a um arquivo `.pubignore` ou `.gitignore`.
-* Ao fazer o upload do seu pacote,
-  examine a lista de arquivos que
-  `dart pub publish --dry-run` mostra que irá publicar.
-  Cancele o upload se algum arquivo indesejado aparecer nessa lista.
+* Delete any files that you don't want to include or add them
+  to a `.pubignore`  or `.gitignore` file.
+* When uploading your package,
+  examine the list of files that
+  `dart pub publish --dry-run` shows it will publish.
+  Cancel the upload if any undesired files appear in that list.
 
 :::note
-A maioria dos pacotes não precisa de um arquivo `.pubignore`.
-Para saber mais sobre cenários úteis para isso,
-consulte esta [resposta do StackOverflow][pubignore-when].
+Most packages don't need a  `.pubignore` file.
+To learn more about useful scenarios for this,
+consult this [StackOverflow answer][pubignore-when].
 :::
 
-### Teste a publicação do seu pacote {:#test-publishing-your-package}
+### Test publishing your package
 
-Para testar como o `dart pub publish` irá funcionar, você pode executar uma simulação:
+To test how `dart pub publish` will work, you can perform a dry run:
 
 ```console
 $ dart pub publish --dry-run
 ```
 
-Com este comando, o `dart pub` executa as seguintes tarefas:
+With this command, `dart pub` performs the following tasks:
 
-1. Verifica se o seu pacote segue o [formato pubspec][pubspec] e as
-   [convenções de layout do pacote][pkg-layout].
+1. Verifies that your package follows the [pubspec format][pubspec] and
+   [package layout conventions][pkg-layout].
 
-1. Mostra todos os arquivos que ele pretende publicar.
+1. Shows all of the files it intends to publish.
 
-O exemplo a seguir mostra o teste de publicação de um pacote chamado `transmogrify`:
+The following example shows test publishing a package named `transmogrify`:
 
 ```plaintext
-Publicando transmogrify 1.0.0
+Publishing transmogrify 1.0.0
     .gitignore
     CHANGELOG.md
     README.md
@@ -205,116 +204,116 @@ Publicando transmogrify 1.0.0
     test
         transmogrify_test.dart
 
-Pacote tem 0 avisos.
+Package has 0 warnings.
 ```
 
-### Publique no pub.dev {:#publish-to-pub-dev}
+### Publish to pub.dev
 
-Para publicar seu pacote quando ele estiver pronto, remova o argumento `--dry-run`:
+To publish your package when it's ready, remove the `--dry-run` argument:
 
 ```console
 $ dart pub publish
 ```
 
-Com este comando, o `dart pub` executa as seguintes tarefas:
+With this command, `dart pub` performs the following tasks:
 
-1. Verifica se o seu pacote segue o [formato pubspec][pubspec] e as
-   [convenções de layout do pacote][pkg-layout].
+1. Verifies that your package follows the [pubspec format][pubspec] and
+   [package layout conventions][pkg-layout].
 
-1. Valida que `git status` está limpo. Alerta se
-   arquivos que são rastreados no git têm mudanças não confirmadas.
+1. Validates that `git status` is clean. Warns if
+   files that are tracked in git have uncommitted changes.
 
-1. Mostra todos os arquivos que ele pretende publicar.
+1. Shows all of the files it intends to publish.
 
-1. Envia seu pacote para [pub.dev]({{site.pub}}).
+1. Uploads your package to [pub.dev]({{site.pub}}).
 
 :::note
-O comando pub não suporta a publicação direta de um novo pacote em um
-editor verificado. Como uma solução alternativa temporária, publique novos pacotes em uma Conta do Google,
-e então [transfira o pacote para um editor](#transferring-a-package-to-a-verified-publisher).
+The pub command doesn't support direct publishing a new package to a
+verified publisher. As a temporary workaround, publish new packages to a Google Account,
+and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
-Depois que um pacote for transferido para um editor,
-você pode atualizar o pacote usando `dart pub publish`.
+Once a package has been transferred to a publisher,
+you can update the package using `dart pub publish`.
 :::
 
-Depois que seu pacote for enviado com sucesso para o pub.dev, qualquer usuário do pub poderá
-baixá-lo ou depender dele em seus projetos.
+After your package succeeds in uploading to pub.dev, any pub user can
+download it or depend on it in their projects.
 
-Por exemplo, se você acabou de publicar a versão 1.0.0 do seu pacote `transmogrify`,
-então outro desenvolvedor Dart pode adicioná-lo como uma dependência em seu `pubspec.yaml`:
+For example, if you just published version 1.0.0 of your `transmogrify` package,
+then another Dart developer can add it as a dependency in their `pubspec.yaml`:
 
 ```yaml
 dependencies:
   transmogrify: ^1.0.0
 ```
 
-### Detectar plataformas suportadas {:#detect-supported-platforms}
+### Detect supported platforms
 
-O [site pub.dev]({{site.pub}}) detecta quais plataformas um pacote suporta,
-exibindo essas plataformas na página do pacote.
-Os usuários do pub.dev podem filtrar as pesquisas por plataforma.
+The [pub.dev site]({{site.pub}}) detects which platforms a package supports,
+displaying these platforms on the package page.
+Users of pub.dev can filter searches by platform.
 
-Para alterar a lista gerada de plataformas suportadas,
-[especifique as plataformas suportadas][especifique as plataformas suportadas] no arquivo `pubspec.yaml`.
+To change the generated list of supported platforms,
+[specify supported platforms][] in the `pubspec.yaml` file.
 
-[especifique as plataformas suportadas]: /tools/pub/pubspec#platforms
+[specify supported platforms]: /tools/pub/pubspec#platforms
 
-### Automatize a publicação {:#automate-publishing}
+### Automate publishing
 
-Depois de publicar a primeira versão de um pacote,
-você pode configurar a publicação automatizada
-por meio do GitHub Actions ou de contas de serviço do Google Cloud.
-Para saber mais sobre publicação automatizada, consulte
-[Publicação automatizada de pacotes no pub.dev](/tools/pub/automated-publishing).
+Once you have published the first version of a package,
+you can configure automated publishing
+through GitHub Actions or Google Cloud service accounts.
+To learn more about automated publishing, consult
+[Automated publishing of packages to pub.dev](/tools/pub/automated-publishing).
 
-### Publique versões de pré-lançamento {:#publishing-prereleases}
+### Publish prerelease versions {:#publishing-prereleases}
 
-Enquanto você trabalha em um pacote, considere publicá-lo como um pré-lançamento.
-Pré-lançamentos podem ser úteis quando:
+As you work on a package, consider publishing it as a prerelease.
+Prereleases can be useful when:
 
-* Você está desenvolvendo ativamente a próxima versão principal do pacote.
-* Você quer beta testers para o próximo release candidate do pacote.
-* O pacote depende de uma versão instável do Dart ou Flutter SDK.
+* You're actively developing the next major version of the package.
+* You want beta testers for the next release candidate of the package.
+* The package depends on an unstable version of the Dart or Flutter SDK.
 
-Conforme descrito em [versionamento semântico][semver],
-para fazer um pré-lançamento de uma versão, acrescente um sufixo à versão.
-Por exemplo, para fazer um pré-lançamento da versão `2.0.0`,
-você pode usar a versão `2.0.0-dev.1`.
-Mais tarde, quando você lançar a versão `2.0.0`, ela terá precedência sobre todos os
-pré-lançamentos `2.0.0-XXX`.
+As described in [semantic versioning][semver],
+to make a prerelease of a version, append a suffix to the version.
+For example, to make a prerelease of version `2.0.0`,
+you might use the version `2.0.0-dev.1`.
+Later, when you release version `2.0.0`, it takes precedence over all
+`2.0.0-XXX` prereleases.
 
-Como o pub prefere lançamentos estáveis quando disponíveis, os usuários de um pacote de pré-lançamento
-podem precisar alterar suas restrições de dependência.
-Por exemplo, se um usuário quiser testar pré-lançamentos da versão `2.1.0`, então
-em vez de `^2.0.0` ou `^2.1.0`, eles podem especificar `^2.1.0-dev.1`.
+As pub prefers stable releases when available, users of a prerelease package
+might need to change their dependency constraints.
+For example, if a user wants to test prereleases of version `2.1.0`, then
+instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
 :::note
-Embora o `pub` prefira lançamentos estáveis da mesma forma que prefere versões mais recentes,
-o solucionador de versão não tenta todas as soluções e pode escolher um pré-lançamento,
-mesmo quando existe uma resolução que não usa pré-lançamentos.
-Embora isso raramente aconteça na prática.
+While `pub` prefers stable releases the same way it prefers newer versions,
+the version solver does not attempt all solutions and may pick a prerelease,
+even when a resolution that doesn't use prereleases exists.
+Though this rarely happens in practice.
 :::
 
-Quando você publica um pré-lançamento no pub.dev,
-a página do pacote exibe links para o pré-lançamento e o lançamento estável.
-O pré-lançamento não afeta a pontuação da análise, não aparece nos resultados da pesquisa,
-ou substitui o `README.md` e a documentação do pacote.
+When you publish a prerelease to pub.dev,
+the package page displays links to both the prerelease and the stable release.
+The prerelease doesn't affect the analysis score, show up in search results,
+or replace the package `README.md` and documentation.
 
-### Publique versões de visualização {:#publish-preview-versions}
+### Publish preview versions
 
-As visualizações podem ser úteis quando _todas_ as seguintes condições forem verdadeiras:
+Previews can be useful when _all_ of the following are true:
 
-* A próxima versão estável do pacote está completa.
-* Essa versão do pacote depende de uma API ou recurso no Dart SDK que
-  ainda não foi lançado em uma versão estável do Dart SDK.
-* Você sabe que a API ou recurso do qual o pacote depende é
-  API-estável e não mudará antes de atingir o SDK estável.
+* The next stable version of the package is complete.
+* That package version depends on an API or feature in the Dart SDK that
+  hasn't yet been released in a stable version of the Dart SDK.
+* You know that the API or feature that the package depends on is
+  API-stable and won't change before it reaches the stable SDK.
 
-Como exemplo, considere uma nova versão do `package:args` que tem
-uma versão finalizada `2.0.0`.
-Ela depende de um recurso no Dart `3.0.0-417.1.beta`.
-No entanto, a versão estável do Dart SDK `3.0.0` ainda não foi lançada.
-O arquivo `pubspec.yaml` pode ser assim:
+As an example, consider a new version of `package:args` that has
+a finished version `2.0.0`.
+It depends on a feature in Dart `3.0.0-417.1.beta`.
+However, the stable version of Dart SDK `3.0.0` hasn't been released.
+The `pubspec.yaml` file might look like this:
 
 ```yaml title="pubspec.yaml"
 name: args
@@ -324,207 +323,207 @@ environment:
   sdk: '^3.0.0-417.1.beta'
 ```
 
-Quando você publica este pacote no pub.dev, ele é marcado como uma versão de visualização (preview).
-A captura de tela a seguir ilustra isso.
-Ela lista a versão estável como `1.6.0` e a versão de visualização como `2.0.0`.
+When you publish this package to pub.dev, it's tagged as a preview version.
+The following screenshot illustrates this.
+It lists the stable version as `1.6.0` and the preview version as `2.0.0`.
 
 ![Illustration of a preview version](/assets/img/tools/pub/preview-version.png){:width="600px"}
 
-Quando o Dart lança a versão estável `3.0.0`,
-o pub.dev atualiza a listagem do pacote para exibir
-`2.0.0` como a versão mais recente (estável) do pacote.
+When Dart releases the stable version of `3.0.0`,
+pub.dev updates the package listing to display
+`2.0.0` as the latest (stable) version of the package.
 
-Se todas as condições no início desta seção forem verdadeiras,
-ignore o seguinte aviso de `dart pub publish`:
+If all of the conditions at the beginning of this section are true,
+ignore the following warning from `dart pub publish`:
 
-   _"Pacotes com uma restrição de SDK em um pré-lançamento do Dart SDK devem
-   eles mesmos serem publicados como uma versão de pré-lançamento. Se este pacote precisar do Dart
-   versão 3.0.0-0, considere publicar o pacote como um pré-lançamento
-   em vez disso."_
+   _"Packages with an SDK constraint on a pre-release of the Dart SDK should
+   themselves be published as a pre-release version. If this package needs Dart
+   version 3.0.0-0, consider publishing the package as a pre-release
+   instead."_
 
-## Gerenciar permissões de publicação {:#manage-publishing-permissions}
+## Manage publishing permissions
 
-### Localize o editor do pacote {:#locate-the-package-publisher}
+### Locate the package publisher
 
-Se um pacote tiver um editor verificado,
-a página pub.dev desse pacote exibirá o domínio do editor.
+If a package has a verified publisher,
+the pub.dev page for that package displays the publisher domain.
 
-Para pacotes publicados sem um editor,
-o pub.dev não divulga o editor por motivos de privacidade.
-O campo **Editor** exibe "uploader não verificado".
+For packages published without a publisher,
+pub.dev doesn't disclose the publisher for privacy reasons.
+The **Publisher** field displays "unverified uploader".
 
-### Gerenciar uploaders de pacote {:#uploaders}
+### Manage package uploaders {:#uploaders}
 
-Quem publica a primeira versão de um pacote torna-se
-a primeira e _única_ pessoa autorizada a enviar versões adicionais
-desse pacote.
+Whoever publishes the first version of a package becomes
+the first and _only_ person authorized to upload additional
+versions of that package.
 
-Para permitir ou não que outras pessoas enviem versões, você pode:
+To allow or disallow other people to upload versions, either:
 
-* Gerenciar uploaders autorizados na página de administração do pacote:
-  `https://pub.dev/packages/<pacote>/admin`.
-* Transferir o pacote para um [editor verificado][verified publisher];
-  todos os membros de um editor estão autorizados a fazer upload.
+* Manage authorized uploaders on the admin page for the package:
+  `https://pub.dev/packages/<package>/admin`.
+* Transfer the package to a [verified publisher][];
+  all members of a publisher are authorized to upload.
 
 :::tip
-Convide outros membros da sua equipe para se tornarem uploaders do pacote.
-Isso garante que sua equipe possa acessar o pacote quando você não estiver disponível.
+Invite other members of your team to become uploaders of the package.
+This ensures that your team can access to the package when you aren't available.
 :::
 
-### Transferir um pacote para um editor verificado {:#transferring-a-package-to-a-verified-publisher}
+### Transfer a package to a verified publisher {:#transferring-a-package-to-a-verified-publisher}
 
-Para transferir um pacote para um editor verificado,
-você deve ser um [uploader](#uploaders) do pacote
-e um administrador do editor verificado.
+To transfer a package to a verified publisher,
+you must be an [uploader](#uploaders) for the package
+and an admin for the verified publisher.
 
 :::important
-_Você não pode reverter este processo._ Depois de transferir um pacote para um editor,
-você não pode transferi-lo de volta para uma conta individual.
+_You can't reverse this process._ Once you transfer a package to a publisher,
+you can't transfer it back to an individual account.
 :::
 
-Para transferir um pacote para um editor verificado:
+To transfer a package to a verified publisher:
 
-1. Faça login no [pub.dev]({{site.pub}}) com uma Conta do Google que esteja listada como
-   um uploader do pacote.
+1. Log in to [pub.dev]({{site.pub}}) with a Google Account that's listed as
+   an uploader of the package.
 
-1. Vá para a página de detalhes do pacote (por exemplo,
+1. Go to the package details page (for example,
    `{{site.pub-pkg}}/http`).
 
-1. Selecione a aba **Admin**.
+1. Select the **Admin** tab.
 
-1. Digite o nome do editor e clique em **Transferir para o Editor**.
+1. Enter the name of the publisher, and click **Transfer to Publisher**.
 
-## Gerencie seu pacote {:#manage-your-package}
+## Manage your package
 
-### Retratar uma versão do pacote {:#retract}
+### Retract a package version {:#retract}
 
-Para impedir que novos consumidores de pacotes adotem uma versão publicada
-do seu pacote em um período de sete dias,
-você pode retirar essa versão do pacote em até sete dias após a publicação.
-A versão retirada pode ser restaurada novamente em até sete dias após a retirada.
+To prevent new package consumers from adopting a published version
+of your package within a seven-day window,
+you can retract that package version within seven days of publication.
+The retracted version can be restored again within seven days of retraction.
 
-_Retração não é exclusão._
-Uma versão de pacote retirada aparece na listagem de versões
-do pacote no pub.dev na seção **Versões Retiradas**.
-A visualização detalhada dessa versão do pacote exibe um selo **RETIRADO**.
+_Retraction isn't deletion._
+A retracted package version appears in the version listing
+of the package on pub.dev in the **Retracted versions** section.
+The detailed view of that package version displays a **RETRACTED** badge.
 
-Antes de retirar um pacote, considere publicar uma nova versão.
-Retirar um pacote pode ter um impacto negativo nos usuários do pacote.
+Before retracting a package, consider publishing a new version instead.
+Retracting a package can have a negative impact on package users.
 
-Se você publicar uma nova versão com
-uma _restrição de dependência faltando_
-ou uma _restrição de dependência relaxada_,
-então retirar a versão do pacote pode ser a única solução.
-Publicar uma versão mais recente do seu pacote não impedirá a versão
-solver de escolher a versão antiga.
-Essa versão pode ser a única versão que o pub pode escolher.
-Retirar uma versão de pacote com restrições de dependência incorretas
-força os usuários a atualizar outras dependências ou obter um conflito de dependência.
+If you publish a new version with either
+a _missing dependency constraint_
+or a _lax dependency constraint_,
+then retracting the package version might be the only solution.
+Publishing a newer version of your package won't stop the version
+solver from picking the old version.
+That version might be the only version pub can choose.
+Retracting a package version with incorrect dependency constraints
+forces users to either upgrade other dependencies or get a dependency conflict.
 
-No entanto, se seu pacote contiver um pequeno bug,
-você pode não precisar retirar a versão.
-Publique uma versão mais recente com o bug corrigido e uma
-descrição do bug corrigido em `CHANGELOG.md`.
-Isso ajuda os usuários a entender o que aconteceu.
-Publicar uma versão mais recente é menos prejudicial para os usuários do pacote.
+However, if your package contains a minor bug,
+you might not need to retract the version.
+Publish a newer version with the bug fixed and a
+description of the fixed bug in `CHANGELOG.md`.
+This helps users to understand what happened.
+Publishing a newer version is less disruptive to package users.
 
 :::version-note
-A retração de pacotes foi introduzida no Dart 2.15.
-Em SDKs pré-2.15, o solucionador de versão do pub ignora o status retirado.
+Package retraction was introduced in Dart 2.15.
+In pre-2.15 SDKs, the pub version solver ignores the retracted status.
 :::
 
-#### Como usar uma versão retirada de um pacote {:#how-to-use-a-retracted-version-of-a-package}
+#### How to use a retracted version of a package
 
-Se um pacote depender de uma versão de pacote que mais tarde for retirada,
-ele ainda pode usar essa versão, desde que essa versão esteja no
-arquivo `pubspec.lock` do pacote dependente.
-Para depender de uma versão específica que já foi retirada,
-o pacote dependente deve fixar a versão na
-seção `dependency_overrides` do arquivo `pubspec.yaml`.
+If a package depends on a package version that later is retracted,
+it can still use that version as long as that version is in
+the dependent package's `pubspec.lock` file.
+To depend on a specific version that's already retracted,
+the dependent package must pin the version in the
+`dependency_overrides` section of the `pubspec.yaml` file.
 
-#### Como migrar de uma versão de pacote retirada {:#how-to-migrate-away-from-a-retracted-package-version}
+#### How to migrate away from a retracted package version
 
-Quando um pacote depende de uma versão de pacote retirada,
-você tem opções de como migrar dessa versão, dependendo
-de outras versões disponíveis.
+When a package depends on a retracted package version,
+you have choices in how you migrate away from this version depending
+on other available versions.
 
-#### Atualizar para uma versão mais recente {:#upgrade-to-a-newer-version}
+#### Upgrade to a newer version
 
-Na maioria dos casos, uma versão mais recente foi publicada para
-substituir a versão retirada.
-Nesse caso, execute `dart pub upgrade <pacote>`.
+In most cases a newer version has been published to
+replace the retracted version.
+In this case run `dart pub upgrade <package>`.
 
-#### Fazer downgrade para a versão não retirada mais recente {:#downgrade-to-the-newest-non-retracted-version}
+#### Downgrade to the newest non-retracted version
 
-Se nenhuma versão mais recente estiver disponível, considere fazer downgrade
-para a versão não retirada mais recente.
-Você pode fazer isso de uma das duas maneiras.
+If no newer version is available, consider downgrading
+to the newest non-retracted version.
+You can do this in one of two ways.
 
-1. Use os comandos da [ferramenta pub](/tools/pub/cmd):
+1. Use [pub tool](/tools/pub/cmd) commands:
 
-   1. Execute `dart pub downgrade <pacote>` para
-      obter a versão mais baixa do pacote especificado que
-      corresponde às restrições no arquivo `pubspec.yaml`.
+   1. Run `dart pub downgrade <package>` to
+      get the lowest version  of the specified package that
+      matches the constraints in the `pubspec.yaml` file.
 
-   1. Execute `dart pub upgrade <pacote>` para obter a
-      versão mais recente compatível e não retirada disponível.
+   1. Run `dart pub upgrade <package>` to get the
+      newest compatible and non-retracted version available.
 
-1. Edite o arquivo `pubspec.lock` em seu IDE preferido:
+1. Edit the `pubspec.lock` file in your preferred IDE:
 
-   1. Exclua a entrada inteira do pacote para o pacote
-      com a versão retirada.
+   1. Delete the entire package entry for the package
+      with the retracted version.
 
-   1. Execute `dart pub get` para obter a
-      versão mais recente compatível e não retirada disponível.
+   1. Run `dart pub get` to get the
+      newest compatible and non-retracted version available.
 
-Embora você possa excluir o arquivo `pubspec.lock` e executar `dart pub get`,
-isso não é recomendado.
-Pode resultar em alterações de versão para outras dependências.
+Though you could delete the `pubspec.lock` file and run `dart pub get`,
+this is not recommended.
+It might result in version changes for other dependencies.
 
-#### Atualizar ou fazer downgrade para uma versão fora da restrição de versão especificada {:#upgrade-or-downgrade-to-a-version-outside-the-specified-version-constraint}
+#### Upgrade or downgrade to a version outside the specified version constraint
 
-Se não houver uma versão alternativa disponível que satisfaça o
-restrição de versão atual, edite a restrição de versão
-no arquivo `pubspec.yaml` e execute `dart pub upgrade`.
+If there is no alternative version available that satisfies the
+current version constraint, edit the version constraint
+in the `pubspec.yaml` file and run `dart pub upgrade`.
 
-#### Como retirar ou restaurar uma versão de pacote {:#how-to-retract-or-restore-a-package-version}
+#### How to retract or restore a package version
 
-Para retirar ou restaurar uma versão de pacote,
-primeiro faça login no pub.dev usando uma Conta do Google
-que seja um uploader ou um administrador de [editor verificado][verified publisher] para o pacote.
-Em seguida, vá para a aba **Admin** do pacote,
-onde você pode retirar ou restaurar versões de pacotes recentes.
+To retract or restore a package version,
+first sign in to pub.dev using a Google Account
+that's either an uploader or a [verified publisher][] admin for the package.
+Then go to the package's **Admin** tab,
+where you can retract or restore recent package versions.
 
-### Descontinuar um pacote {:#discontinue}
+### Discontinue a package {:#discontinue}
 
-Embora os pacotes permaneçam publicados, você pode sinalizar para
-desenvolvedores que um pacote não recebe manutenção ativa.
-Isso exige que você marque o pacote como **descontinuado**.
+Although packages remain published, you can signal to
+developers that a package receives no active maintenance.
+This requires you to mark the package as **discontinued**.
 
-Depois de descontinuar um pacote, o pacote:
+Once you discontinue a package, the package will:
 
-* Permanecerá publicado no pub.dev.
-* Permanecerá visível no pub.dev.
-* Exibirá um selo **DESCONTINUADO** claro.
-* Não aparecerá nos resultados de pesquisa do pub.dev.
+* Remain published on pub.dev.
+* Remain viewable on pub.dev.
+* Display a clear **DISCONTINUED** badge.
+* Not appear in pub.dev search results.
 
-Para marcar um pacote como descontinuado:
+To mark a package as discontinued:
 
-1. Faça login no pub.dev usando uma Conta do Google com uploader ou
-   permissões de [editor verificado][verified publisher] para o pacote.
+1. Sign in to pub.dev using a Google Account with uploader or
+   [verified publisher][] permissions for the package.
 
-1. Navegue até a aba **Admin** do pacote.
+1. Navigate to the package's **Admin** tab.
 
-1. Para descontinuar um pacote, selecione **Marcar como "descontinuado"**.
+1. To discontinue a package, select **Mark "discontinued"**.
 
-Você também pode recomendar um pacote de substituição.
+You can also recommend a replacement package.
 
-1. No campo em **Substituição sugerida**,
-   digite o nome de outro pacote.
+1. In the field under **Suggested replacement**,
+   type the name of another package.
 
-1. Clique em **Atualizar "Substituição Sugerida"**.
+1. Click **Update "Suggested Replacement"**.
 
-Se você mudar de ideia, você pode remover a marca de descontinuado a qualquer momento.
+If you change your mind, you can remove the discontinued mark at any time.
 
 [create-verified-publisher]: {{site.pub}}/create-publisher
 [BSD 3-clause license]: https://opensource.org/licenses/BSD-3-Clause

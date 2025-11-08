@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: non_const_generative_enum_constructor
-description: "Detalhes sobre o diagnóstico non_const_generative_enum_constructor produzido pelo analisador do Dart."
+description: >-
+  Details about the non_const_generative_enum_constructor
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,13 +11,13 @@ _Generative enum constructors must be 'const'._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma declaração enum contém um
-construtor generativo que não está marcado como `const`.
+The analyzer produces this diagnostic when an enum declaration contains a
+generative constructor that isn't marked as `const`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o construtor em `E`
-não está marcado como `const`:
+The following code produces this diagnostic because the constructor in `E`
+isn't marked as being `const`:
 
 ```dart
 enum E {
@@ -28,7 +29,7 @@ enum E {
 
 ## Common fixes
 
-Adicione a keyword `const` antes do construtor:
+Add the `const` keyword before the constructor:
 
 ```dart
 enum E {

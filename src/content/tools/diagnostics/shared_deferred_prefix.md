@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: shared_deferred_prefix
-description: "Detalhes sobre o diagnóstico shared_deferred_prefix produzido pelo analisador do Dart."
+description: >-
+  Details about the shared_deferred_prefix
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O prefixo de um import deferred não pode ser usado em outras diretivas import._
+_The prefix of a deferred import can't be used in other import directives._
 
 ## Description
 
-O analisador produz este diagnóstico quando um prefixo em um import deferred também
-é usado como prefixo em outros imports (sejam deferred ou não). O
-prefixo em um import deferred não pode ser compartilhado com outros imports porque o
-prefixo é usado para carregar a biblioteca importada.
+The analyzer produces this diagnostic when a prefix in a deferred import is
+also used as a prefix in other imports (whether deferred or not). The
+prefix in a deferred import can't be shared with other imports because the
+prefix is used to load the imported library.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque o prefixo `x` é usado
-como prefixo para um import deferred e também é usado para outro import:
+The following code produces this diagnostic because the prefix `x` is used
+as the prefix for a deferred import and is also used for one other import:
 
 ```dart
 import 'dart:math' [!deferred!] as x;
@@ -29,7 +30,7 @@ var y = x.json.encode(x.min(0, 1));
 
 ## Common fixes
 
-Se você pode usar um nome diferente para o import deferred, então faça isso:
+If you can use a different name for the deferred import, then do so:
 
 ```dart
 import 'dart:math' deferred as math;
@@ -38,7 +39,7 @@ import 'dart:convert' as x;
 var y = x.json.encode(math.min(0, 1));
 ```
 
-Se você pode usar um nome diferente para os outros imports, então faça isso:
+If you can use a different name for the other imports, then do so:
 
 ```dart
 import 'dart:math' deferred as x;

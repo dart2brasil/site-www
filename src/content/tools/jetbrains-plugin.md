@@ -1,42 +1,41 @@
 ---
-ia-translate: true
-title: "IntelliJ & Android Studio"
-description: Use Dart com uma variedade de IDEs e editores da JetBrains.
+title: IntelliJ & Android Studio
+description: Use Dart with a variety of IDEs and editors from JetBrains.
 ---
 
-O [plugin Dart][Dart plugin] adiciona suporte a Dart
-para IDEs baseados na plataforma IntelliJ desenvolvidos pela JetBrains.
-Essas IDEs fornecem recursos exclusivos para tecnologias de desenvolvimento
-específicas. As IDEs recomendadas para desenvolvimento Dart e Flutter incluem:
+The [Dart plugin][] adds Dart support
+to IntelliJ Platform-based IDEs developed by JetBrains.
+These IDEs provide features unique to specific development technologies.
+The IDEs recommended for Dart and Flutter development include:
 
-- [IntelliJ IDEA][IntelliJ IDEA] que se especializa em desenvolvimento de linguagem baseado em JVM.
-- [WebStorm][WebStorm] que se especializa em desenvolvimento de aplicativos web.
-- [Android Studio][Android Studio] que se especializa em desenvolvimento para Android e Flutter.
+- [IntelliJ IDEA][] which specializes in JVM-based language development.
+- [WebStorm][] which specializes in web app development.
+- [Android Studio][] which specializes in Android and Flutter development.
 
-Qualquer que seja a IDE da JetBrains que você escolher para o desenvolvimento
-Dart, esta página tem recursos para ajudá-lo a começar rapidamente
-e encontrar mais informações quando precisar.
+Whichever JetBrains IDE you choose for Dart development,
+this page has resources to help you get started quickly
+and find more information when you need it.
 
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/
 [WebStorm]: https://www.jetbrains.com/webstorm/
 [Android Studio]: {{site.android-dev}}/studio
 
-## Começando {:#getting-started}
+## Getting started
 
-Se você ainda não tem a IDE e o SDK do Dart, obtenha-os.
-Em seguida, instale o plugin Dart e diga a ele onde encontrar o SDK do Dart.
+If you don't already have the IDE and the Dart SDK, get them.
+Then install the Dart plugin and tell it where to find the Dart SDK.
 
 
-### Baixando a IDE {:#downloading-the-ide}
+### Downloading the IDE
 
-Instale uma IDE da JetBrains se você ainda não tiver uma. Escolha uma:
+Install a JetBrains IDE if you don't already have one. Choose one:
 
 * [IntelliJ IDEA][IDEA-Install]{:target="_blank" rel="noopener"}
 * [IntelliJ IDEA EAP][IDEA-EAP-Install]{:target="_blank" rel="noopener"}
-  (para acesso antecipado aos recursos mais recentes da linguagem Dart e à funcionalidade do IntelliJ)
+  (for early access to the latest Dart language features and IntelliJ functionality)
 * [WebStorm][WS-Install]{:target="_blank" rel="noopener"}
 * [Android Studio][AS-Install]{:target="_blank" rel="noopener"}
-* [Outro produto JetBrains][Other]{:target="_blank" rel="noopener"}
+* [Another JetBrains product][Other]{:target="_blank" rel="noopener"}
 
 [IDEA-Install]: https://www.jetbrains.com/idea/download/
 [IDEA-EAP-Install]: https://www.jetbrains.com/idea/nextversion/
@@ -45,117 +44,117 @@ Instale uma IDE da JetBrains se você ainda não tiver uma. Escolha uma:
 [Other]: https://www.jetbrains.com/products.html
 
 :::note
-A Community Edition do IntelliJ IDEA tem funcionalidade limitada.
-Por exemplo, ela não oferece suporte direto à depuração de aplicativos da web.
-Ela também tem muito pouco suporte para JavaScript, HTML, CSS e YAML.
+The Community Edition of IntelliJ IDEA has limited functionality.
+For example, it doesn't directly support debugging web apps.
+It also has very little support for JavaScript, HTML, CSS, and YAML.
 :::
 
 
-### Baixando o SDK do Dart {:#downloading-the-dart-sdk}
+### Downloading the Dart SDK
 
-Se você ainda não tem o SDK do Dart,
-instale-o.
-Você pode obtê-lo sozinho ou baixando o SDK do Flutter,
-que inclui o SDK do Dart completo.
+If you don't already have the Dart SDK,
+install it.
+You can get it either by itself or by downloading the Flutter SDK,
+which includes the full Dart SDK.
 
-Escolha um:
+Choose one:
 
-* [Baixe o SDK do Dart](/get-dart)
-* [Baixe o SDK do Flutter]({{site.flutter-docs}}/get-started/install)
+* [Download the Dart SDK](/get-dart)
+* [Download the Flutter SDK]({{site.flutter-docs}}/get-started/install)
 
 
-### Configurando o suporte a Dart {:#configuring-dart-support}
+### Configuring Dart support
 
-Aqui está uma maneira de configurar o suporte ao Dart:
+Here's one way to configure Dart support:
 
 <ol>
 <li>
   <p>
-    Inicie a IDE e instale o plugin <b>Dart</b>.
+    Start the IDE, and install the <b>Dart</b> plugin.
   </p>
 
   <ol type="a">
-    <li>Na tela de boas-vindas, escolha <b>Plugins</b>.</li>
-    <li>Pesquise por <b>Dart</b>.</li>
-    <li>Depois de instalar o plugin Dart, reinicie a IDE.</li>
+    <li>From the Welcome screen, choose <b>Plugins</b>.</li>
+    <li>Search for <b>Dart</b>.</li>
+    <li>Once you've installed the Dart plugin, restart the IDE.</li>
   </ol>
 </li>
 <br>
 
 <li>
   <p>
-    Crie um novo projeto Dart:
+    Create a new Dart project:
   </p>
 
   <ol type="a">
-    <li>Na tela de boas-vindas, clique em <b>Novo Projeto</b>.</li>
-    <li>Na próxima caixa de diálogo, clique em <b>Dart</b>.</li>
+    <li>From the Welcome screen, click <b>New Project</b>.</li>
+    <li>In the next dialog, click <b>Dart</b>.</li>
   </ol>
 </li>
 <br>
 
 <li>
   <p>
-    Se você não vir um valor para o caminho do <b>SDK do Dart</b>,
-    insira ou selecione-o.
+    If you don't see a value for the <b>Dart SDK</b> path,
+    enter or select it.
   </p>
 
   <p>
-    Por exemplo, o caminho do SDK pode ser
-    <code><em>&lt;diretório de instalação do dart></em>/dart/dart-sdk</code>.
+    For example, the SDK path might be
+    <code><em>&lt;dart installation directory></em>/dart/dart-sdk</code>.
   </p>
 
   :::note
-  O **SDK do Dart** especifica o diretório que
-  contém os diretórios `bin` e `lib` do SDK;
-  o diretório `bin` contém ferramentas como `dart` e `dartaotruntime`.
-  A IDE garante que o caminho seja válido.
+  The **Dart SDK** specifies the directory that
+  contains the SDK's `bin` and `lib` directories;
+  the `bin` directory contains tools such as `dart` and `dartaotruntime`.
+  The IDE ensures that the path is valid.
   :::
 </li>
 
 <li>
   <p>
-    Escolha um modelo inicial.
+    Choose a starting template.
   </p>
 
   <ol type="a">
-    <li>Para ativar os modelos iniciais, clique em <b>Gerar conteúdo de amostra</b>.</li>
-    <li>Escolha o modelo desejado.</li>
+    <li>To enable starting templates, click <b>Generate sample content</b>.</li>
+    <li>Pick your desired template.</li>
   </ol>
 
   :::note
-  Os modelos fornecidos são fornecidos e criados
-  por [`dart create`](/tools/dart-create).
+  The provided templates are supplied and created
+  by [`dart create`](/tools/dart-create).
   :::
 </li>
 
 <li>
-  <p>Clique em <b>Próximo</b> e continue a configuração do projeto.</p>
+  <p>Click <b>Next</b> and continue project setup.</p>
 </li>
 </ol>
 
-Uma alternativa à Etapa 2 é abrir um projeto Dart existente e,
-em seguida, abrir seu arquivo `pubspec.yaml` ou qualquer um de seus arquivos Dart.
+An alternative to Step 2 is to open an existing Dart project,
+and then open its `pubspec.yaml` file or any of its Dart files.
 
 
-## Relatando problemas {:#reporting-issues}
+## Reporting issues
 
-Por favor, relate problemas e feedback através do oficial
-[rastreador de problemas da JetBrains para Dart.][Rastreador de problemas da JetBrains para Dart.]
+Please report issues and feedback via the official
+[JetBrains issue tracker for Dart.][]
 
-Inclua detalhes do comportamento esperado, o comportamento real
-e capturas de tela, se apropriado.
+Include details of the expected behavior, the actual behavior,
+and screenshots if appropriate.
 
-[Rastreador de problemas da JetBrains para Dart.]: https://youtrack.jetbrains.com/issues?q=Subsystem:%20%7BLang.%20Dart%7D%20
+[JetBrains issue tracker for Dart.]: https://youtrack.jetbrains.com/issues?q=Subsystem:%20%7BLang.%20Dart%7D%20
 
-## Mais informações {:#more-information}
+## More information
 
-Consulte o site da JetBrains para obter mais informações.
+See the JetBrains website for more information.
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-  * [Ajuda do Dart WebStorm](https://www.jetbrains.com/help/webstorm/dart.html)
-  * [Recursos](https://www.jetbrains.com/idea/features/)
-  * [Início rápido](https://www.jetbrains.com/help/idea/getting-started.html)
-* [Plugin Dart da JetBrains][Dart plugin]
+  * [Dart WebStorm Help](https://www.jetbrains.com/help/webstorm/dart.html)
+  * [Features](https://www.jetbrains.com/idea/features/)
+  * [Quick start](https://www.jetbrains.com/help/idea/getting-started.html)
+* [Dart Plugin by JetBrains][Dart plugin]
 
 [Dart plugin]: https://plugins.jetbrains.com/plugin/6351-dart/

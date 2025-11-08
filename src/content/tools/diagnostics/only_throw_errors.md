@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: only_throw_errors
-description: "Detalhes sobre o diagnóstico only_throw_errors produzido pelo analisador do Dart."
+description: >-
+  Details about the only_throw_errors
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Não lance instâncias de classes que não estendem 'Exception' ou 'Error'._
+_Don't throw instances of classes that don't extend either 'Exception' or 'Error'._
 
 ## Description
 
-O analisador produz este diagnóstico quando o valor sendo lançado não é uma
-subclasse de `Exception` ou `Error`.
+The analyzer produces this diagnostic when the value being thrown isn't a
+subclass of either `Exception` or `Error`.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a string `'f'` está
-sendo lançada:
+The following code produces this diagnostic because the string `'f'` is
+being thrown:
 
 ```dart
 void f() => throw [!'f'!];
@@ -35,7 +36,7 @@ void f() => throw [!'f'!];
 
 ## Common fixes
 
-Substitua o valor por uma instância de uma subclasse de `Exception` ou
+Replace the value with an instance of a subclass of either `Exception` or
 `Error`:
 
 ```dart

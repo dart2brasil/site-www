@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: unused_shown_name
-description: "Detalhes sobre o diagnóstico unused_shown_name produzido pelo analisador Dart."
+description: >-
+  Details about the unused_shown_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O nome {0} é mostrado, mas não é usado._
+_The name {0} is shown, but isn't used._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um combinador show inclui um
-nome que não é usado dentro da biblioteca. Como não é referenciado, o
-nome pode ser removido.
+The analyzer produces this diagnostic when a show combinator includes a
+name that isn't used within the library. Because it isn't referenced, the
+name can be removed.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque a função `max`
-não é usada:
+The following code produces this diagnostic because the function `max`
+isn't used:
 
 ```dart
 import 'dart:math' show min, [!max!];
@@ -25,9 +26,9 @@ import 'dart:math' show min, [!max!];
 var x = min(0, 1);
 ```
 
-## Correções comuns
+## Common fixes
 
-Use o nome ou remova-o:
+Either use the name or remove it:
 
 ```dart
 import 'dart:math' show min;

@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_parenthesis
-description: "Detalhes sobre o diagnóstico unnecessary_parenthesis produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_parenthesis
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Uso desnecessário de parênteses._
+_Unnecessary use of parentheses._
 
 ## Description
 
-O analisador produz este diagnóstico quando parênteses são usados onde eles
-não afetam a semântica do código.
+The analyzer produces this diagnostic when parentheses are used where they
+do not affect the semantics of the code.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque os parênteses em torno
-da expressão binária não são necessários:
+The following code produces this diagnostic because the parentheses around
+the binary expression are not necessary:
 
 ```dart
 int f(int a, int b) => [!(a + b)!];
@@ -35,7 +36,7 @@ int f(int a, int b) => [!(a + b)!];
 
 ## Common fixes
 
-Remova os parênteses desnecessários:
+Remove the unnecessary parentheses:
 
 ```dart
 int f(int a, int b) => a + b;

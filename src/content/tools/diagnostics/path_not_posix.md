@@ -1,22 +1,23 @@
 ---
-ia-translate: true
 title: path_not_posix
-description: "Detalhes sobre o diagnóstico path_not_posix produzido pelo analisador do Dart."
+description: >-
+  Details about the path_not_posix
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O caminho '{0}' não é um caminho no estilo POSIX._
+_The path '{0}' isn't a POSIX-style path._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma dependência tem uma chave `path`
-cujo valor é uma string, mas não é um caminho no estilo POSIX.
+The analyzer produces this diagnostic when a dependency has a `path` key
+whose value is a string, but isn't a POSIX-style path.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o caminho que segue a
-chave `path` é um caminho Windows:
+The following code produces this diagnostic because the path following the
+`path` key is a Windows path:
 
 ```yaml
 name: example
@@ -25,6 +26,6 @@ dependencies:
     path: [!E:\local_package!]
 ```
 
-## Correções comuns
+## Common fixes
 
-Converta o caminho para um caminho POSIX.
+Convert the path to a POSIX path.

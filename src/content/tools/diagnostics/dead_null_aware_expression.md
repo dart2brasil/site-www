@@ -1,30 +1,31 @@
 ---
-ia-translate: true
 title: dead_null_aware_expression
-description: "Detalhes sobre o diagnóstico dead_null_aware_expression produzido pelo analisador Dart."
+description: >-
+  Details about the dead_null_aware_expression
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_O operando esquerdo não pode ser null, então o operando direito nunca é executado._
+_The left operand can't be null, so the right operand is never executed._
 
 ## Description
 
-O analisador produz este diagnóstico em dois casos.
+The analyzer produces this diagnostic in two cases.
 
-O primeiro é quando o operando esquerdo de um operador `??` não pode ser `null`.
-O operando direito é avaliado apenas se o operando esquerdo tem o valor
-`null`, e como o operando esquerdo não pode ser `null`, o operando direito
-nunca é avaliado.
+The first is when the left operand of an `??` operator can't be `null`.
+The right operand is only evaluated if the left operand has the value
+`null`, and because the left operand can't be `null`, the right operand is
+never evaluated.
 
-O segundo é quando o lado esquerdo de uma atribuição usando o operador `??=`
-não pode ser `null`. O lado direito é avaliado apenas se o lado esquerdo tem o
-valor `null`, e como o lado esquerdo não pode ser `null`, o lado direito nunca
-é avaliado.
+The second is when the left-hand side of an assignment using the `??=`
+operator can't be `null`. The right-hand side is only evaluated if the
+left-hand side has the value `null`, and because the left-hand side can't
+be `null`, the right-hand side is never evaluated.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque `x` não pode ser `null`:
+The following code produces this diagnostic because `x` can't be `null`:
 
 ```dart
 int f(int x) {
@@ -32,7 +33,7 @@ int f(int x) {
 }
 ```
 
-O código a seguir produz este diagnóstico porque `f` não pode ser `null`:
+The following code produces this diagnostic because `f` can't be `null`:
 
 ```dart
 class C {
@@ -46,8 +47,8 @@ class C {
 
 ## Common fixes
 
-Se o diagnóstico é reportado para um operador `??`, então remova o operador `??`
-e o operando direito:
+If the diagnostic is reported for an `??` operator, then remove the `??`
+operator and the right operand:
 
 ```dart
 int f(int x) {
@@ -55,8 +56,8 @@ int f(int x) {
 }
 ```
 
-Se o diagnóstico é reportado para uma atribuição, e a atribuição não é
-necessária, então remova a atribuição:
+If the diagnostic is reported for an assignment, and the assignment isn't
+needed, then remove the assignment:
 
 ```dart
 class C {
@@ -67,8 +68,8 @@ class C {
 }
 ```
 
-Se a atribuição é necessária, mas deve ser baseada em uma condição diferente,
-então reescreva o código para usar `=` e a condição diferente:
+If the assignment is needed, but should be based on a different condition,
+then rewrite the code to use `=` and the different condition:
 
 ```dart
 class C {

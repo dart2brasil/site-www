@@ -1,19 +1,20 @@
 ---
 title: missing_dart_library
-description: "Detalhes sobre o diagnóstico missing_dart_library produzido pelo analisador Dart."
+description: >-
+  Details about the missing_dart_library
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
-ia-translate: true
 ---
 
-_A biblioteca required '{0}' está missing._
+_Required library '{0}' is missing._
 
 ## Description
 
-O analisador produz este diagnóstico quando o SDK Dart ou Flutter
-não está instalado corretamente e, como resultado, uma das bibliotecas `dart:`
-não pode ser encontrada.
+The analyzer produces this diagnostic when either the Dart or Flutter SDK
+isn't installed correctly, and, as a result, one of the `dart:` libraries
+can't be found.
 
 ## Common fixes
 
-Reinstale o SDK Dart ou Flutter.
+Reinstall the Dart or Flutter SDK.

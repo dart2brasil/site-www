@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_constructor_name
-description: "Detalhes sobre o diagnóstico unnecessary_constructor_name produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_constructor_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Nome de construtor '.new' desnecessário._
+_Unnecessary '.new' constructor name._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma referência a um
-construtor sem nome usa `.new`. O único lugar onde `.new` é necessário é em um
-tear-off de construtor.
+The analyzer produces this diagnostic when a reference to an unnamed
+constructor uses `.new`. The only place where `.new` is required is in a
+constructor tear-off.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque `.new` está sendo usado
-para se referir ao construtor sem nome onde não é necessário:
+The following code produces this diagnostic because `.new` is being used
+to refer to the unnamed constructor where it isn't required:
 
 ```dart
 var o = Object.[!new!]();
@@ -36,7 +37,7 @@ var o = Object.[!new!]();
 
 ## Common fixes
 
-Remova o `.new` desnecessário:
+Remove the unnecessary `.new`:
 
 ```dart
 var o = Object();

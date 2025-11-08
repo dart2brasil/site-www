@@ -1,30 +1,31 @@
 ---
-ia-translate: true
 title: conflicting_constructor_and_static_member
-description: "Detalhes sobre o diagnóstico conflicting_constructor_and_static_member produzido pelo analisador do Dart."
+description: >-
+  Details about the conflicting_constructor_and_static_member
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' não pode ser usado para nomear tanto um construtor quanto um campo static nesta classe._
+_'{0}' can't be used to name both a constructor and a static field in this class._
 
-_'{0}' não pode ser usado para nomear tanto um construtor quanto um getter static nesta classe._
+_'{0}' can't be used to name both a constructor and a static getter in this class._
 
-_'{0}' não pode ser usado para nomear tanto um construtor quanto um método static nesta classe._
+_'{0}' can't be used to name both a constructor and a static method in this class._
 
-_'{0}' não pode ser usado para nomear tanto um construtor quanto um setter static nesta classe._
+_'{0}' can't be used to name both a constructor and a static setter in this class._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando um construtor nomeado e um
-método static ou campo static têm o mesmo nome. Ambos são acessados usando
-o nome da classe, então ter o mesmo nome torna a referência
-ambígua.
+The analyzer produces this diagnostic when a named constructor and either a
+static method or static field have the same name. Both are accessed using
+the name of the class, so having the same name makes the reference
+ambiguous.
 
-## Exemplos
+## Examples
 
-O código a seguir produz este diagnóstico porque o campo static `foo`
-e o construtor nomeado `foo` têm o mesmo nome:
+The following code produces this diagnostic because the static field `foo`
+and the named constructor `foo` have the same name:
 
 ```dart
 class C {
@@ -33,8 +34,8 @@ class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque o método static `foo`
-e o construtor nomeado `foo` têm o mesmo nome:
+The following code produces this diagnostic because the static method `foo`
+and the named constructor `foo` have the same name:
 
 ```dart
 class C {
@@ -43,6 +44,6 @@ class C {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Renomeie o membro ou o construtor.
+Rename either the member or the constructor.

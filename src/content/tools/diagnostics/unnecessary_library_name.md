@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: unnecessary_library_name
-description: "Detalhes sobre o diagnóstico unnecessary_library_name produzido pelo analisador Dart."
+description: >-
+  Details about the unnecessary_library_name
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,17 +18,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Nomes de biblioteca não são necessários._
+_Library names are not necessary._
 
 ## Description
 
-O analisador produz este diagnóstico quando uma diretiva `library` especifica
-um nome.
+The analyzer produces this diagnostic when a `library` directive specifies
+a name.
 
 ## Example
 
-O código a seguir produz este diagnóstico porque a diretiva `library`
-inclui um nome:
+The following code produces this diagnostic because the `library`
+directive includes a name:
 
 ```dart
 library [!some.name!];
@@ -37,7 +38,7 @@ class C {}
 
 ## Common fixes
 
-Remova o nome da diretiva `library`:
+Remove the name from the `library` directive:
 
 ```dart
 library;
@@ -45,5 +46,5 @@ library;
 class C {}
 ```
 
-Se a biblioteca tiver alguma parte, então qualquer declaração `part of` que use
-o nome da biblioteca deve ser atualizada para usar a URI da biblioteca.
+If the library has any parts, then any `part of` declarations that use
+the library name should be updated to use the URI of the library instead.

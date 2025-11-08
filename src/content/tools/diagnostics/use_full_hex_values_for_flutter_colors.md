@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: use_full_hex_values_for_flutter_colors
-description: "Detalhes sobre o diagnóstico use_full_hex_values_for_flutter_colors produzido pelo analisador Dart."
+description: >-
+  Details about the use_full_hex_values_for_flutter_colors
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -17,18 +18,18 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Instâncias de 'Color' devem ser criadas usando um inteiro hexadecimal de 8 dígitos (como '0xFFFFFFFF')._
+_Instances of 'Color' should be created using an 8-digit hexadecimal integer (such as '0xFFFFFFFF')._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando o argumento para o construtor
-da classe `Color` é um inteiro literal que não está representado como um
-inteiro hexadecimal de 8 dígitos.
+The analyzer produces this diagnostic when the argument to the constructor
+of the `Color` class is a literal integer that isn't represented as an
+8-digit hexadecimal integer.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque o argumento (`1`)
-não está representado como um inteiro hexadecimal de 8 dígitos:
+The following code produces this diagnostic because the argument (`1`)
+isn't represented as an 8-digit hexadecimal integer:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -36,9 +37,9 @@ import 'package:flutter/material.dart';
 Color c = Color([!1!]);
 ```
 
-## Correções comuns
+## Common fixes
 
-Converta a representação para ser um inteiro hexadecimal de 8 dígitos:
+Convert the representation to be an 8-digit hexadecimal integer:
 
 ```dart
 import 'package:flutter/material.dart';

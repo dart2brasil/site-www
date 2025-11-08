@@ -1,6 +1,5 @@
-<!-- ia-translate: true -->
-Os tutoriais a seguir mostram como desenvolver scripts, aplicativos
-de linha de comando e aplicativos de servidor que podem ser executados na Dart VM (Máquina Virtual Dart) autônoma.
+The following tutorials show how to develop scripts, command-line apps,
+and server apps that can run in the standalone Dart VM.
 
 <div class="card-grid">
   <Card title="Get started" link="/tutorials/server/get-started">

@@ -1,23 +1,24 @@
 ---
-ia-translate: true
 title: recursive_compile_time_constant
-description: "Detalhes sobre o diagnóstico recursive_compile_time_constant produzido pelo analisador Dart."
+description: >-
+  Details about the recursive_compile_time_constant
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A expressão constante em tempo de compilação depende de si mesma._
+_The compile-time constant expression depends on itself._
 
 ## Description
 
-O analisador produz este diagnóstico quando o valor de uma constante
-em tempo de compilação é definido em termos de si mesma, direta ou indiretamente,
-criando um loop infinito.
+The analyzer produces this diagnostic when the value of a compile-time
+constant is defined in terms of itself, either directly or indirectly,
+creating an infinite loop.
 
 ## Example
 
-O código a seguir produz este diagnóstico duas vezes porque ambas as
-constantes são definidas em termos uma da outra:
+The following code produces this diagnostic twice because both of the
+constants are defined in terms of the other:
 
 ```dart
 const [!secondsPerHour!] = minutesPerHour * 60;
@@ -26,8 +27,8 @@ const [!minutesPerHour!] = secondsPerHour / 60;
 
 ## Common fixes
 
-Quebre o ciclo encontrando uma maneira alternativa de definir pelo menos uma das
-constantes:
+Break the cycle by finding an alternative way of defining at least one of
+the constants:
 
 ```dart
 const secondsPerHour = minutesPerHour * 60;

@@ -1,28 +1,27 @@
 ---
-ia-translate: true
-title: "Objetos chamáveis"
-description: "Aprenda como criar e usar objetos chamáveis em Dart."
+title: Callable objects
+description: Learn how to create and use callable objects in Dart.
 showToc: false
 prevpage:
   url: /language/extension-types
-  title: "Tipos de extensão"
+  title: Extension types
 nextpage:
   url: /language/class-modifiers
-  title: Modificadores de classe
+  title: Class modifiers
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
-Para permitir que uma instância de sua classe Dart seja chamada como uma função,
-implemente o método `call()`.
+To allow an instance of your Dart class to be called like a function,
+implement the `call()` method.
 
-O método `call()` permite que uma instância de qualquer classe que o defina emule uma função.
-Este método oferece a mesma funcionalidade que [funções][functions] normais,
-como parâmetros e tipos de retorno.
+The `call()` method allows an instance of any class that defines it to emulate a function.
+This method supports the same functionality as normal [functions][]
+such as parameters and return types.
 
-No exemplo a seguir, a classe `WannabeFunction` define uma função `call()`
-que recebe três strings e as concatena, separando cada uma com um espaço,
-e adicionando uma exclamação. Clique em **Executar** para executar o código.
+In the following example, the `WannabeFunction` class defines a `call()` function
+that takes three strings and concatenates them, separating each with a space,
+and appending an exclamation. Click **Run** to execute the code.
 
 <?code-excerpt "misc/lib/language_tour/callable_objects.dart"?>
 ```dartpad

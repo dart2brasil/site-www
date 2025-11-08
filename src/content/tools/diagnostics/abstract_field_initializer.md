@@ -1,7 +1,8 @@
 ---
-ia-translate: true
 title: abstract_field_initializer
-description: "Detalhes sobre o diagnóstico abstract_field_initializer produzido pelo analisador do Dart."
+description: >-
+  Details about the abstract_field_initializer
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -10,13 +11,13 @@ _Abstract fields can't have initializers._
 
 ## Description
 
-O analisador produz este diagnóstico quando um campo que tem o modificador `abstract`
-também possui um inicializador.
+The analyzer produces this diagnostic when a field that has the `abstract`
+modifier also has an initializer.
 
 ## Examples
 
-O código a seguir produz este diagnóstico porque `f` está marcado como
-`abstract` e tem um inicializador:
+The following code produces this diagnostic because `f` is marked as
+`abstract` and has an initializer:
 
 ```dart
 abstract class C {
@@ -24,8 +25,8 @@ abstract class C {
 }
 ```
 
-O código a seguir produz este diagnóstico porque `f` está marcado como
-`abstract` e há um inicializador no construtor:
+The following code produces this diagnostic because `f` is marked as
+`abstract` and there's an initializer in the constructor:
 
 ```dart
 abstract class C {
@@ -37,7 +38,7 @@ abstract class C {
 
 ## Common fixes
 
-Se o campo deve ser abstract, então remova o inicializador:
+If the field must be abstract, then remove the initializer:
 
 ```dart
 abstract class C {
@@ -45,7 +46,7 @@ abstract class C {
 }
 ```
 
-Se o campo não precisa ser abstract, então remova a keyword:
+If the field isn't required to be abstract, then remove the keyword:
 
 ```dart
 abstract class C {

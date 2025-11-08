@@ -1,24 +1,25 @@
 ---
-ia-translate: true
 title: extra_positional_arguments_could_be_named
-description: "Detalhes sobre o diagnóstico extra_positional_arguments_could_be_named produzido pelo analisador do Dart."
+description: >-
+  Details about the extra_positional_arguments_could_be_named
+  diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Muitos argumentos posicionais: {0} esperados, mas {1} encontrados._
+_Too many positional arguments: {0} expected, but {1} found._
 
-## Descrição
+## Description
 
-O analisador produz este diagnóstico quando uma invocação de método ou função
-tem mais argumentos posicionais do que o método ou função permite, mas o
-método ou função define parâmetros nomeados.
+The analyzer produces this diagnostic when a method or function invocation
+has more positional arguments than the method or function allows, but the
+method or function defines named parameters.
 
-## Exemplo
+## Example
 
-O código a seguir produz este diagnóstico porque `f` define 2
-parâmetros posicionais mas tem um parâmetro nomeado que poderia ser usado para o
-terceiro argumento:
+The following code produces this diagnostic because `f` defines 2
+positional parameters but has a named parameter that could be used for the
+third argument:
 
 ```dart
 void f(int a, int b, {int? c}) {}
@@ -27,10 +28,10 @@ void g() {
 }
 ```
 
-## Correções comuns
+## Common fixes
 
-Se alguns dos argumentos devem ser valores para parâmetros nomeados, então adicione
-os nomes antes dos argumentos:
+If some of the arguments should be values for named parameters, then add
+the names before the arguments:
 
 ```dart
 void f(int a, int b, {int? c}) {}
@@ -39,8 +40,8 @@ void g() {
 }
 ```
 
-Caso contrário, remova os argumentos que não correspondem a parâmetros
-posicionais:
+Otherwise, remove the arguments that don't correspond to positional
+parameters:
 
 ```dart
 void f(int a, int b, {int? c}) {}
