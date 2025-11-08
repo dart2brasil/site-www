@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 129 files (with ia-translate: true metadata)
+- **Remaining:** ~816 files
+- **Progress:** 13.7%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 74 (71 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 129 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,48 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 8: Diagnostic Errors - class/close/combinators (34 files)
+41. ✅ `src/content/tools/diagnostics/abstract_sealed_class.md`
+42. ✅ `src/content/tools/diagnostics/class_used_as_mixin.md`
+43. ✅ `src/content/tools/diagnostics/close_sinks.md`
+44. ✅ `src/content/tools/diagnostics/concrete_class_has_enum_superinterface.md`
+45. ✅ `src/content/tools/diagnostics/concrete_class_with_abstract_member.md`
+46. ✅ `src/content/tools/diagnostics/const_deferred_class.md`
+47. ✅ `src/content/tools/diagnostics/deprecated_subclass.md`
+48. ✅ `src/content/tools/diagnostics/doc_import_cannot_have_combinators.md`
+49. ✅ `src/content/tools/diagnostics/extends_non_class.md`
+50. ✅ `src/content/tools/diagnostics/ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer.md`
+51. ✅ `src/content/tools/diagnostics/generic_struct_subclass.md`
+52. ✅ `src/content/tools/diagnostics/implements_non_class.md`
+53. ✅ `src/content/tools/diagnostics/implements_super_class.md`
+54. ✅ `src/content/tools/diagnostics/instantiate_abstract_class.md`
+55. ✅ `src/content/tools/diagnostics/invalid_deprecated_subclass_annotation.md`
+56. ✅ `src/content/tools/diagnostics/invalid_factory_name_not_a_class.md`
+57. ✅ `src/content/tools/diagnostics/mixin_class_declaration_extends_not_object.md`
+58. ✅ `src/content/tools/diagnostics/mixin_class_declares_constructor.md`
+59. ✅ `src/content/tools/diagnostics/mixin_of_non_class.md`
+60. ✅ `src/content/tools/diagnostics/mixin_on_sealed_class.md`
+61. ✅ `src/content/tools/diagnostics/mixin_super_class_constraint_deferred_class.md`
+62. ✅ `src/content/tools/diagnostics/mixin_super_class_constraint_non_interface.md`
+63. ✅ `src/content/tools/diagnostics/multiple_combinators.md`
+64. ✅ `src/content/tools/diagnostics/no_generative_constructors_in_superclass.md`
+65. ✅ `src/content/tools/diagnostics/non_abstract_class_inherits_abstract_member.md`
+66. ✅ `src/content/tools/diagnostics/redirect_to_abstract_class_constructor.md`
+67. ✅ `src/content/tools/diagnostics/redirect_to_non_class.md`
+68. ✅ `src/content/tools/diagnostics/subtype_of_deferred_class.md`
+69. ✅ `src/content/tools/diagnostics/subtype_of_ffi_class.md`
+70. ✅ `src/content/tools/diagnostics/subtype_of_sealed_class.md`
+71. ✅ `src/content/tools/diagnostics/subtype_of_struct_class.md`
+72. ✅ `src/content/tools/diagnostics/tearoff_of_generative_constructor_of_abstract_class.md`
+73. ✅ `src/content/tools/diagnostics/type_annotation_deferred_class.md`
+74. ✅ `src/content/tools/diagnostics/undefined_class.md`
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 49/~776 files (6.3%)
+  - ✅ Section 8: Diagnostic Errors (class/close/combinators) - 34 files COMPLETE!
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,12 +137,13 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (74 files this session including merge)
+Progress: 13.7% complete (129/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
 - ✅ Libraries section 100% COMPLETE! 🎉
 - ✅ Tutorials/Server section 100% COMPLETE! 🎉
+- ✅ Section 8: Diagnostic Errors (class/close/combinators) 100% COMPLETE! 🎉
 - ✅ Core Tools documentation started (15 essential files translated)
 - ✅ Effective Dart documentation started (3 files from merged PR)

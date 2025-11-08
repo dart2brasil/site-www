@@ -2,10 +2,11 @@
 
 ## Overview
 - **Total estimated files:** ~945 markdown files
-- **Already completed:** 92 files (9.7%)
-- **Remaining:** ~853 files
-- **Target for Tools section:** ~700 files remaining
+- **Already completed:** 129 files (13.7%)
+- **Remaining:** ~816 files
+- **Target for Tools section:** ~666 files remaining
 - **Strategy:** 20 focused sections (~35-40 files each), prioritizing high-value documentation
+- **Recent:** Section 8 (PROMPT 8) - class/close/combinators diagnostic errors COMPLETE! (34 files)
 
 ---
 
@@ -375,12 +376,14 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **PROMPT 8 (20-section-prompts.md):** Diagnostic Errors - class/close/combinators (34/34 files) - 100% COMPLETE!
+  - Includes files from Section 11 (class_*.md, close_*.md) and Section 12 (combinators_*.md)
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 1-20 pending (except class/close/combinators diagnostics completed)
 
 ---
 
