@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Dead code: This on-catch block won't be executed because '{0}' is a subtype of '{1}' and hence will have been caught already._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `catch` clause is found that
+O analisador produz este diagnóstico quando a `catch` clause is found that
 can't be executed because it is after a `catch` clause that catches either
 the same type or a supertype of the clause's type. The first `catch` clause
 that matches the thrown object is selected, and the earlier clause always
 matches anything matchable by the highlighted clause, so the highlighted
 clause will never be selected.
 
-## Example
+## Exemplo
 
 The following code produces this diagnostic:
 
@@ -31,7 +32,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the clause should be selectable, then move the clause before the general
 clause:

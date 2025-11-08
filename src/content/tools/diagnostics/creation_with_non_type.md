@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' isn't a class._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an instance creation using
+O analisador produz este diagnóstico quando an instance creation using
 either `new` or `const` specifies a name that isn't defined as a class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` is a function
+O código a seguir produz este diagnóstico porque `f` is a function
 rather than a class:
 
 ```dart
@@ -27,7 +28,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If a class should be created, then replace the invalid name with the name
 of a valid class:

@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Using the 'new' keyword in a comment reference is deprecated._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a comment reference (the name
+O analisador produz este diagnóstico quando a comment reference (the name
 of a declaration enclosed in square brackets in a documentation comment)
 uses the keyword `new` to refer to a constructor. This form is deprecated.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the unnamed
+O código a seguir produz este diagnóstico porque the unnamed
 constructor is being referenced using `new C`:
 
 ```dart
@@ -27,7 +28,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the constructor named
+O código a seguir produz este diagnóstico porque the constructor named
 `c` is being referenced using `new C.c`:
 
 ```dart
@@ -37,7 +38,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you're referencing a named constructor, then remove the keyword `new`:
 

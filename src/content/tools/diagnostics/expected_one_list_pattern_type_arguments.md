@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _List patterns require one type argument or none, but {0} found._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a list pattern has more than
+O analisador produz este diagnóstico quando a list pattern has more than
 one type argument. List patterns can have either zero type arguments or
 one type argument, but can't have more than one.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the list pattern
+O código a seguir produz este diagnóstico porque the list pattern
 (`[0]`) has two type arguments:
 
 ```dart
@@ -26,7 +27,7 @@ void f(Object x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all but one of the type arguments:
 

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The expression of a constant pattern must be a valid constant._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constant pattern has an
+O analisador produz este diagnóstico quando a constant pattern has an
 expression that isn't a valid constant.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constant pattern
+O código a seguir produz este diagnóstico porque the constant pattern
 `i` isn't a constant:
 
 ```dart
@@ -28,7 +29,7 @@ void f(int e, int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the value that should be matched is known, then replace the expression
 with a constant:

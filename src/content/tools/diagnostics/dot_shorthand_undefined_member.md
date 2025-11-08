@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The static getter '{0}' isn't defined for the context type '{1}'._
 
 _The static method or constructor '{0}' isn't defined for the context type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a dot shorthand is used to
+O analisador produz este diagnóstico quando a dot shorthand is used to
 reference a member, but that member doesn't exist.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the enum `E` doesn't
+O código a seguir produz este diagnóstico porque the enum `E` doesn't
 define a static member named `c`:
 
 ```dart
@@ -30,7 +31,7 @@ void f() {
 enum E {a, b}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the name is correct, then define a member with that name in the context
 type, which in this case is the enum `E`:

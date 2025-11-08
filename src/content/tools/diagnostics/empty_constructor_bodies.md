@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Empty constructor bodies should be written using a ';' rather than '{}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor has an empty
+O analisador produz este diagnóstico quando a constructor has an empty
 block body.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor for
+O código a seguir produz este diagnóstico porque the constructor for
 `C` has a block body that is empty:
 
 ```dart
@@ -36,7 +37,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the block with a semicolon:
 

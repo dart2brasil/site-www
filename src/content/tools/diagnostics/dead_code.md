@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Dead code._
 
 _Dead code: The assigned-to wildcard variable is marked late and can never be referenced so this initializer will never be evaluated._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when code is found that won't be
+O analisador produz este diagnóstico quando code is found that won't be
 executed because execution will never reach the code.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the invocation of
+O código a seguir produz este diagnóstico porque the invocation of
 `print` occurs after the function has returned:
 
 ```dart
@@ -28,7 +29,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the code isn't needed, then remove it:
 

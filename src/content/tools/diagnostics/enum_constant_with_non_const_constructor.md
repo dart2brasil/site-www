@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The invoked constructor isn't a 'const' constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an enum value is being created
+O analisador produz este diagnóstico quando an enum value is being created
 using either a factory constructor or a generative constructor that isn't
 marked as being `const`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the enum value `e` is
-being initialized by a factory constructor:
+O código a seguir produz este diagnóstico porque the enum value `e` is
+being initialized by a factory construtor:
 
 ```dart
 enum E {
@@ -28,7 +29,7 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a generative constructor marked as `const`:
 

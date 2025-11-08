@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _An extension can't define static member '{0}' and an instance member with the same name._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension declaration
+O analisador produz este diagnóstico quando an extension declaration
 contains both an instance member and a static member that have the same
 name. The instance member and the static member can't have the same name
 because it's unclear which member is being referenced by an unqualified use
 of the name within the body of the extension.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the name `a` is being
+O código a seguir produz este diagnóstico porque the name `a` is being
 used for two different members:
 
 ```dart
@@ -29,7 +30,7 @@ extension E on Object {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rename or remove one of the members:
 

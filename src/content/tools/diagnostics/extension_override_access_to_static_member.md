@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _An extension override can't be used to access a static member from an extension._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension override is the
+O analisador produz este diagnóstico quando an extension override is the
 receiver of the invocation of a static member. Similar to static members in
 classes, the static members of an extension should be accessed using the
 name of the extension, not an extension override.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` is static:
+O código a seguir produz este diagnóstico porque `m` is static:
 
 ```dart
 extension E on String {
@@ -30,7 +31,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the extension override with the name of the extension:
 

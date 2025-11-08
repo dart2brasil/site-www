@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name of the enum value can't be the same as the enum's name._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an enum value has the same name
+O analisador produz este diagnóstico quando an enum value has the same name
 as the enum in which it's declared.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the enum value `E` has
+O código a seguir produz este diagnóstico porque the enum value `E` has
 the same name as the enclosing enum `E`:
 
 ```dart
@@ -25,7 +26,7 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the name of the enum is correct, then rename the constant:
 

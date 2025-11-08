@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' must have a method body because '{1}' is an enum._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member of an enum is found
+O analisador produz este diagnóstico quando a member of an enum is found
 that doesn't have a concrete implementation. Enums aren't allowed to
 contain abstract members.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` is an abstract
+O código a seguir produz este diagnóstico porque `m` is an abstract
 method and `E` is an enum:
 
 ```dart
@@ -28,7 +29,7 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Provide an implementation for the member:
 

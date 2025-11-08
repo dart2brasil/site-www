@@ -5,27 +5,28 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Two keys in a constant map literal can't be equal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a key in a constant map is the
+O analisador produz este diagnóstico quando a key in a constant map is the
 same as a previous key in the same map. If two keys are the same, then the
 second value would overwrite the first value, which makes having both pairs
 pointless.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the key `1` is used
+O código a seguir produz este diagnóstico porque the key `1` is used
 twice:
 
 ```dart
 const map = <int, String>{1: 'a', 2: 'b', [!1!]: 'c', 4: 'd'};
 ```
 
-## Common fixes
+## Correções comuns
 
 If both entries should be included in the map, then change one of the keys
 to be different:

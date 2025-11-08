@@ -5,11 +5,12 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The left operand can't be null, so the right operand is never executed._
 
-## Description
+## Descrição
 
 The analyzer produces this diagnostic in two cases.
 
@@ -23,9 +24,9 @@ operator can't be `null`. The right-hand side is only evaluated if the
 left-hand side has the value `null`, and because the left-hand side can't
 be `null`, the right-hand side is never evaluated.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because `x` can't be `null`:
+O código a seguir produz este diagnóstico porque `x` can't be `null`:
 
 ```dart
 int f(int x) {
@@ -33,7 +34,7 @@ int f(int x) {
 }
 ```
 
-The following code produces this diagnostic because `f` can't be `null`:
+O código a seguir produz este diagnóstico porque `f` can't be `null`:
 
 ```dart
 class C {
@@ -45,7 +46,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the diagnostic is reported for an `??` operator, then remove the `??`
 operator and the right operand:

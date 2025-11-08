@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A dot shorthand can't be used where there is no context type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a dot shorthand is used where
+O analisador produz este diagnóstico quando a dot shorthand is used where
 there is no context type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is no context
+O código a seguir produz este diagnóstico porque there is no context
 type for the expression `.a`:
 
 ```dart
@@ -28,7 +29,7 @@ void f() {
 enum E {a, b}
 ```
 
-## Common fixes
+## Correções comuns
 
 If you want to use a dot shorthand, then add a context type, which in this
 example means adding the explicit type `E` to the local variable:

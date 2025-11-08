@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Extensions can't declare constructors._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor declaration is
+O analisador produz este diagnóstico quando a constructor declaration is
 found in an extension. It isn't valid to define a constructor because
 extensions aren't classes, and it isn't possible to create an instance of
 an extension.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there is a constructor
+O código a seguir produz este diagnóstico porque there is a constructor
 declaration in `E`:
 
 ```dart
@@ -27,6 +28,6 @@ extension E on String {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the constructor or replace it with a static method.

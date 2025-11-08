@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The matched value type '{0}' can never be equal to this constant of type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constant pattern can never
+O analisador produz este diagnóstico quando a constant pattern can never
 match the value it's being tested against because the type of the constant
 is known to never match the type of the value.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type of the
+O código a seguir produz este diagnóstico porque the type of the
 constant pattern `(true)` is `bool`, and the type of the value being
 matched (`x`) is `int`, and a Boolean can never match an integer:
 
@@ -27,7 +28,7 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type of the value is correct, then rewrite the pattern to be
 compatible:

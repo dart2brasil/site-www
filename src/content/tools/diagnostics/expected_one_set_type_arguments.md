@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Set literals require one type argument or none, but {0} were found._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a set literal has more than one
+O analisador produz este diagnóstico quando a set literal tem mais de uma
 type argument.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the set literal has
+O código a seguir produz este diagnóstico porque the set literal has
 three type arguments when it can have at most one:
 
 ```dart
 var s = [!<int, String, int>!]{0, 'a', 1};
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all except one of the type arguments:
 

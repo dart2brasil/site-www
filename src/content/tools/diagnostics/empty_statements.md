@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,13 +21,13 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary empty statement._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an empty statement is found.
+O analisador produz este diagnóstico quando an empty statement is found.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the statement
+O código a seguir produz este diagnóstico porque the statement
 controlled by the `while` loop is an empty statement:
 
 ```dart
@@ -38,7 +39,7 @@ void f(bool condition) {
 void g() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If there are no statements that need to be controlled, then remove both
 the empty statement and the control structure it's part of (being careful

@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Subclasses of 'Struct' and 'Union' are backed by native memory, and can't be instantiated by a generative constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a subclass of either `Struct`
+O analisador produz este diagnóstico quando a subclass of either `Struct`
 or `Union` is instantiated using a generative constructor.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `C` is being
-instantiated using a generative constructor:
+O código a seguir produz este diagnóstico porque a classe `C` is being
+instantiated using a generative construtor:
 
 ```dart
 import 'dart:ffi';
@@ -34,7 +35,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to allocate the structure described by the class, then use the
 `ffi` package to do so:

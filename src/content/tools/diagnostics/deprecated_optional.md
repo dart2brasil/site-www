@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Omitting an argument for the '{0}' parameter is deprecated._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an argument is omitted for an
+O analisador produz este diagnóstico quando an argument is omitted for an
 optional parameter annotated with `@Deprecated.optional`. This annotation
 indicates that omitting an argument for the parameter is deprecated, and
 the parameter will soon become required.
 
-## Example
+## Exemplo
 
 Given a library `p` that defines a function with an optional parameter
 annotated with `@Deprecated.optional`:
@@ -36,7 +37,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Follow any specific instructions provided in the `@Deprecated.optional`
 annotation.

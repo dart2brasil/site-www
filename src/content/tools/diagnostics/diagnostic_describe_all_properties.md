@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _The public property isn't described by either 'debugFillProperties' or 'debugDescribeChildren'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class that implements
+O analisador produz este diagnóstico quando uma classe que implementa
 `Diagnosticable` has a public property that isn't added as a property in
 either a `debugFillProperties` or `debugDescribeChildren` method.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the property `p2`
+O código a seguir produz este diagnóstico porque the property `p2`
 isn't added in the `debugFillProperties` method:
 
 ```dart
@@ -48,7 +49,7 @@ class C extends Widget {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If there isn't on override of either the `debugFillProperties` or
 `debugDescribeChildren` method, then add one.

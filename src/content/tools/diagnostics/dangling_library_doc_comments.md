@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,18 +21,18 @@ bodyClass: highlight-diagnostics
 
 _Dangling library doc comment._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a documentation comment that
+O analisador produz este diagnóstico quando a documentation comment that
 appears to be library documentation isn't followed by a `library`
 directive. More specifically, it is produced when a documentation comment
 appears before the first directive in the library, assuming that it isn't
 a `library` directive, or before the first top-level declaration and is
 separated from the declaration by one or more blank lines.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there's a
+O código a seguir produz este diagnóstico porque there's a
 documentation comment before the first `import` directive:
 
 ```dart
@@ -39,7 +40,7 @@ documentation comment before the first `import` directive:
 import 'dart:core';
 ```
 
-The following code produces this diagnostic because there's a
+O código a seguir produz este diagnóstico porque there's a
 documentation comment before the first class declaration, but there's a
 blank line between the comment and the declaration.
 
@@ -49,7 +50,7 @@ blank line between the comment and the declaration.
 class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the comment is library documentation, then add a `library` directive
 without a name:

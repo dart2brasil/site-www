@@ -5,25 +5,26 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A record literal without fields can't have a trailing comma._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a record literal that has no
+O analisador produz este diagnóstico quando a record literal that has no
 fields has a trailing comma. Empty record literals can't contain a comma.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the empty record
+O código a seguir produz este diagnóstico porque the empty record
 literal has a trailing comma:
 
 ```dart
 var r = ([!,!]);
 ```
 
-## Common fixes
+## Correções comuns
 
 If the record is intended to be empty, then remove the comma:
 

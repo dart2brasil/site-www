@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Two keys in a map literal shouldn't be equal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a key in a non-constant map is
+O analisador produz este diagnóstico quando a key in a non-constant map is
 the same as a previous key in the same map. If two keys are the same, then
 the second value overwrites the first value, which makes having both pairs
 pointless and likely signals a bug.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the keys `a` and `b`
+O código a seguir produz este diagnóstico porque the keys `a` and `b`
 have the same value:
 
 ```dart
@@ -27,7 +28,7 @@ const b = 1;
 var m = <int, String>{a: 'a', [!b!]: 'b'};
 ```
 
-## Common fixes
+## Correções comuns
 
 If both entries should be included in the map, then change one of the keys:
 

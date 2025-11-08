@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Two elements in a set literal shouldn't be equal._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an element in a non-constant set
+O analisador produz este diagnóstico quando an element in a non-constant set
 is the same as a previous element in the same set. If two elements are the
 same, then the second value is ignored, which makes having both elements
 pointless and likely signals a bug.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the element `1` appears
+O código a seguir produz este diagnóstico porque the element `1` appears
 twice:
 
 ```dart
@@ -27,7 +28,7 @@ const b = 1;
 var s = <int>{a, [!b!]};
 ```
 
-## Common fixes
+## Correções comuns
 
 If both elements should be included in the set, then change one of the
 elements:

@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The field '{0}' is already matched in this pattern._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a record pattern matches the
+O analisador produz este diagnóstico quando a record pattern matches the
 same field more than once, or when an object pattern matches the same
 getter more than once.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the record field `a`
+O código a seguir produz este diagnóstico porque the record field `a`
 is matched twice in the same record pattern:
 
 ```dart
@@ -29,7 +30,7 @@ void f(({int a, int b}) r) {
 }
 ```
 
-The following code produces this diagnostic because the getter `f` is
+O código a seguir produz este diagnóstico porque the getter `f` is
 matched twice in the same object pattern:
 
 ```dart
@@ -44,7 +45,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the pattern should match for more than one value of the duplicated
 field, then use a logical-or pattern:

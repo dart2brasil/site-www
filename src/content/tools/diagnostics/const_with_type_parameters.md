@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A constant constructor tearoff can't use a type parameter as a type argument._
@@ -13,16 +14,16 @@ _A constant creation can't use a type parameter as a type argument._
 
 _A constant function tearoff can't use a type parameter as a type argument._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a type parameter is used as a
+O analisador produz este diagnóstico quando a type parameter is used as a
 type argument in a `const` invocation of a constructor. This isn't allowed
 because the value of the type parameter (the actual type that will be used
 at runtime) can't be known at compile time.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type parameter `T`
+O código a seguir produz este diagnóstico porque the type parameter `T`
 is being used as a type argument when creating a constant:
 
 ```dart
@@ -33,7 +34,7 @@ class C<T> {
 C<T> newC<T>() => const C<[!T!]>();
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type that will be used for the type parameter can be known at
 compile time, then remove the use of the type parameter:

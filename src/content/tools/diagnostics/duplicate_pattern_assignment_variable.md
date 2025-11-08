@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The variable '{0}' is already assigned in this pattern._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a single pattern variable is
+O analisador produz este diagnóstico quando a single pattern variable is
 assigned a value more than once in the same pattern assignment.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variable `a` is
+O código a seguir produz este diagnóstico porque the variable `a` is
 assigned twice in the pattern `(a, a)`:
 
 ```dart
@@ -27,7 +28,7 @@ int f((int, int) r) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to capture all of the values, then use a unique variable for
 each of the subpatterns being matched:
