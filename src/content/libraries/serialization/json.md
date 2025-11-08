@@ -1,53 +1,54 @@
 ---
-title: Using JSON
-description: Dart solutions for reading and writing JSON.
+ia-translate: true
+title: Usando JSON
+description: Soluções Dart para ler e escrever JSON.
 showBreadcrumbs: false
 ---
 
-Most mobile and web apps use JSON for tasks such as
-exchanging data with a web server.
-This page discusses Dart support for JSON _serialization_ and _deserialization_:
-converting Dart objects to and from JSON.
+A maioria das aplicações móveis e web usam JSON para tarefas como
+trocar dados com um servidor web.
+Esta página discute o suporte do Dart para _serialização_ e _desserialização_ de JSON:
+converter objetos Dart de e para JSON.
 
 
-## Libraries
+## Bibliotecas
 
-The following libraries and packages are useful across Dart platforms:
+As seguintes bibliotecas e pacotes são úteis em todas as plataformas Dart:
 
 * [dart:convert](/libraries/dart-convert)<br>
-  Converters for both JSON and UTF-8
-  (the character encoding that JSON requires).
+  Converters tanto para JSON quanto para UTF-8
+  (a codificação de caracteres que JSON requer).
 
 * [package:json_serializable]({{site.pub-pkg}}/json_serializable)<br>
-  An easy-to-use code generation package.
-  When you add some metadata annotations
-  and use the builder provided by this package,
-  the Dart build system generates serialization and deserialization code for you.
+  Um pacote de geração de código fácil de usar.
+  Quando você adiciona algumas anotações de metadados
+  e usa o builder fornecido por este pacote,
+  o sistema de build do Dart gera código de serialização e desserialização para você.
 
 * [package:built_value]({{site.pub-pkg}}/built_value)<br>
-  A powerful, opinionated alternative to json_serializable.
+  Uma alternativa poderosa e opinativa ao json_serializable.
 
 
-## Flutter resources
+## Recursos Flutter
 
 [JSON and serialization]({{site.flutter-docs}}/development/data-and-backend/json)
-: Shows how Flutter apps can serialize and deserialize both
-  with dart:convert and with json_serializable.
+: Mostra como aplicações Flutter podem serializar e desserializar tanto
+  com dart:convert quanto com json_serializable.
 
 
-## Web app resources
+## Recursos de aplicações web
 
 [Fetch data from the internet](/tutorials/server/fetch-data)
-: Demonstrates how to use `package:http` to retrieve data with a web server.
+: Demonstra como usar `package:http` para recuperar dados de um servidor web.
 
 
 
 {% comment %}
-## VM resources
+## Recursos de VM
 
 [Write HTTP servers](/tutorials/server/httpserver)
-: Walks through how to implement command-line clients and servers
-  that exchange JSON data.
+: Percorre como implementar clientes e servidores de linha de comando
+  que trocam dados JSON.
 
-## Other tools and resources
+## Outras ferramentas e recursos
 {% endcomment %}
