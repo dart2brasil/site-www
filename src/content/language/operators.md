@@ -93,7 +93,7 @@ um objeto `Point`, então `aVector + aPoint` usa adição (`+`) de `Vector`.
 :::
 
 
-## Operadores aritméticos
+## Operadores aritméticos {:#arithmetic-operators}
 
 Dart suporta os operadores aritméticos usuais, conforme mostrado na tabela a seguir.
 
@@ -306,7 +306,7 @@ if (!done && (col == 0 || col == 3)) {
 ```
 
 
-## Operadores bit a bit e de deslocamento
+## Operadores bit a bit e de deslocamento {:#bitwise-and-shift-operators}
 
 Você pode manipular os bits individuais de números em Dart. Normalmente,
 você usaria esses operadores bit a bit e de deslocamento com inteiros.
@@ -360,7 +360,7 @@ requer uma [versão de linguagem][language version] de pelo menos 2.14.
 
 [Bitwise operations platform differences]: /resources/language/number-representation#bitwise-operations
 
-## Expressões condicionais
+## Expressões condicionais {:#conditional-expressions}
 
 Dart tem dois operadores que permitem avaliar concisamente expressões
 que de outra forma poderiam exigir instruções [if-else][]:
@@ -503,7 +503,7 @@ Estritamente falando, a notação "ponto duplo" para cascatas não é um operado
 É apenas parte da sintaxe Dart.
 :::
 
-## Operadores spread
+## Operadores spread {:#spread-operators}
 
 Operadores spread avaliam uma expressão que produz uma coleção,
 desempacotam os valores resultantes e os inserem em outra coleção.
@@ -522,7 +522,7 @@ qualquer tipo de expressão é válido como alvo spread, como:
 [...a + b]
 ```
 
-## Outros operadores
+## Outros operadores {:#other-operators}
 
 Você viu a maioria dos operadores restantes em outros exemplos:
 
