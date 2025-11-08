@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _External fields can't have initializers._
 
 _External variables can't have initializers._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field or variable marked with
+O analisador produz este diagnóstico quando a field or variable marked with
 the keyword `external` has an initializer, or when an external field is
 initialized in a constructor.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the external field `x`
+O código a seguir produz este diagnóstico porque the external field `x`
 is assigned a value in an initializer:
 
 ```dart
@@ -29,7 +30,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the external field `x`
+O código a seguir produz este diagnóstico porque the external field `x`
 has an initializer:
 
 ```dart
@@ -38,14 +39,14 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the external top level
+O código a seguir produz este diagnóstico porque the external top level
 variable `x` has an initializer:
 
 ```dart
 external final int [!x!] = 0;
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the initializer:
 

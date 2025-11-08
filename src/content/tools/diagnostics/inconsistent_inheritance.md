@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Superinterfaces don't have a valid override for '{0}': {1}._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class inherits two or more
+O analisador produz este diagnóstico quando a class inherits two or more
 conflicting signatures for a member and doesn't provide an implementation
 that satisfies all the inherited signatures.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `C` is inheriting the
+O código a seguir produz este diagnóstico porque `C` is inheriting the
 declaration of `m` from `A`, and that implementation isn't consistent with
 the signature of `m` that's inherited from `B`:
 
@@ -34,9 +35,9 @@ class [!C!] extends A implements B {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an implementation of the method that satisfies all the inherited
+Adicione uma implementation of the method that satisfies all the inherited
 signatures:
 
 ```dart

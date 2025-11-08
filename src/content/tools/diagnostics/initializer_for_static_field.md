@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' is a static field in the enclosing class. Fields initialized in a constructor can't be static._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a static field is initialized
+O analisador produz este diagnóstico quando a static field is initialized
 in a constructor using either an initializing formal parameter or an
 assignment in the initializer list.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the static field `a`
+O código a seguir produz este diagnóstico porque the static field `a`
 is being initialized by the initializing formal parameter `this.a`:
 
 ```dart
@@ -27,7 +28,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the field should be an instance field, then remove the keyword `static`:
 

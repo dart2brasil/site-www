@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The parameter type '{0}' is incompatible with the field type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type of an initializing
+O analisador produz este diagnóstico quando the type of an initializing
 formal parameter isn't assignable to the type of the field being
 initialized.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the initializing
+O código a seguir produz este diagnóstico porque the initializing
 formal parameter has the type `String`, but the type of the field is
 `int`. The parameter must have a type that is a subtype of the field's
 type.
@@ -30,7 +31,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type of the field is incorrect, then change the type of the field to
 match the type of the parameter, and consider removing the type from the

@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The annotation '@Deprecated.mixin' can only be applied to classes._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `@Deprecated.mixin`
+O analisador produz este diagnóstico quando the `@Deprecated.mixin`
 annotation is applied to a declaration that isn't a mixin class.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the annotation is on a
+O código a seguir produz este diagnóstico porque the annotation is on a
 non-mixin class:
 
 ```dart
@@ -24,7 +25,7 @@ non-mixin class:
 class C {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the annotation:
 

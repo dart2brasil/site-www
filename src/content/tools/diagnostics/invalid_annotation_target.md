@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The annotation '{0}' can only be used on {1}._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an annotation is applied to a
+O analisador produz este diagnóstico quando an annotation is applied to a
 kind of declaration that it doesn't support.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `optionalTypeArgs`
+O código a seguir produz este diagnóstico porque the `optionalTypeArgs`
 annotation isn't defined to be valid for top-level variables:
 
 ```dart
@@ -26,6 +27,6 @@ import 'package:meta/meta.dart';
 int x = 0;
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the annotation from the declaration.

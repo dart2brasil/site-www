@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Enums can't be instantiated._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an enum is instantiated. It's
+O analisador produz este diagnóstico quando an enum is instantiated. It's
 invalid to create an instance of an enum by invoking a constructor; only
 the instances named in the declaration of the enum can exist.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the enum `E` is being
+O código a seguir produz este diagnóstico porque the enum `E` is being
 instantiated:
 
 ```dart
@@ -27,7 +28,7 @@ enum E {a}
 var e = [!E!]();
 ```
 
-## Common fixes
+## Correções comuns
 
 If you intend to use an instance of the enum, then reference one of the
 constants defined in the enum:

@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Unexpected number of Native annotation parameters. Expected {0} but has {1}. Native instance method annotation must have receiver as first argument._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type argument used on the
+O analisador produz este diagnóstico quando the type argument used on the
 `@Native` annotation of a native method doesn't include a type for the
 receiver of the method.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type argument on
+O código a seguir produz este diagnóstico porque the type argument on
 the `@Native` annotation (`Void Function(Double)`) doesn't include a type
 for the receiver of the method:
 
@@ -30,9 +31,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an initial parameter whose type is the same as the class in which the
+Adicione uma initial parameter whose type is the same as the class in which the
 native method is being declared:
 
 ```dart

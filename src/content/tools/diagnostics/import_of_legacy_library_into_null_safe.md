@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The library '{0}' is legacy, and shouldn't be imported into a null safe library._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a library that is null safe
+O analisador produz este diagnóstico quando a library that is null safe
 imports a library that isn't null safe.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that contains the following:
 
@@ -24,7 +25,7 @@ Given a file `a.dart` that contains the following:
 class A {}
 ```
 
-The following code produces this diagnostic because a library that null
+O código a seguir produz este diagnóstico porque a library that null
 safe is importing a library that isn't null safe:
 
 ```dart
@@ -33,7 +34,7 @@ import [!'a.dart'!];
 A? f() => null;
 ```
 
-## Common fixes
+## Correções comuns
 
 If you can migrate the imported library to be null safe, then migrate it
 and update or remove the migrated library's language version.

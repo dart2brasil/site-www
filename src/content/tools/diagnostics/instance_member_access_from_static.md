@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Instance members can't be accessed from a static method._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a static method contains an
+O analisador produz este diagnóstico quando a static method contains an
 unqualified reference to an instance member.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the instance field `x`
+O código a seguir produz este diagnóstico porque the instance field `x`
 is being referenced in a static method:
 
 ```dart
@@ -29,7 +30,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the method must reference the instance member, then it can't be static,
 so remove the keyword:

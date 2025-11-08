@@ -5,22 +5,23 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Publishable packages can't have '{0}' dependencies._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a publishable package
+O analisador produz este diagnóstico quando a publishable package
 includes a package in the `dependencies` list of its `pubspec.yaml` file
 that isn't a pub-hosted dependency.
 
 To learn more about the different types of dependency sources,
 check out [Package dependencies](https://dart.dev/tools/pub/dependencies).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the dependency on
+O código a seguir produz este diagnóstico porque the dependency on
 the package `transmogrify` isn't a pub-hosted dependency.
 
 ```yaml
@@ -30,7 +31,7 @@ dependencies:
     [!path!]: ../transmogrify
 ```
 
-## Common fixes
+## Correções comuns
 
 If you want to publish the package to `pub.dev`, then change
 the dependency to a hosted package that is published on `pub.dev`.

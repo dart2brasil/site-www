@@ -5,13 +5,14 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type of {0} can't be inferred; a type must be explicitly provided._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when:
+O analisador produz este diagnóstico quando:
 - the language option `strict-inference` is enabled in the analysis options file,
 - the declaration of a formal parameter has no type, and
 - the type of the parameter can't be inferred.
@@ -19,7 +20,7 @@ The analyzer produces this diagnostic when:
 The type of a method's parameter can be inferred if it overrides an
 inherited method.
 
-## Example
+## Exemplo
 
 Given an analysis options file containing the following:
 
@@ -29,16 +30,16 @@ analyzer:
     strict-inference: true
 ```
 
-The following code produces this diagnostic because the formal parameter
-`p` doesn't have an explicit type and the type can't be inferred:
+O código a seguir produz este diagnóstico porque the formal parameter
+`p` não tem uma explicit type and the type can't be inferred:
 
 ```dart
 void f([!p!]) => print(p);
 ```
 
-## Common fixes
+## Correções comuns
 
-Add an explicit type:
+Adicione uma explicit type:
 
 ```dart
 void f(int p) => print(p);

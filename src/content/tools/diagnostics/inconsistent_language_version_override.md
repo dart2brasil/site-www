@@ -5,17 +5,18 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Parts must have exactly the same language version override as the library._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a [part file][] has a language
+O analisador produz este diagnóstico quando a [part file][] has a language
 version override comment that specifies a different language version than
 the one being used for the library to which the part belongs.
 
-## Example
+## Exemplo
 
 Given a [part file][] named `part.dart` that contains the following:
 
@@ -24,7 +25,7 @@ Given a [part file][] named `part.dart` that contains the following:
 part of 'test.dart';
 ```
 
-The following code produces this diagnostic because the parts of a library
+O código a seguir produz este diagnóstico porque the parts of a library
 must have the same language version as the defining compilation unit:
 
 ```dart
@@ -32,7 +33,7 @@ must have the same language version as the defining compilation unit:
 part [!'part.dart'!];
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the language version override from the [part file][], so that it
 implicitly uses the same version as the defining compilation unit:

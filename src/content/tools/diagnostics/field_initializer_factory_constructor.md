@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Initializing formal parameters can't be used in factory constructors._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a factory constructor has an
+O analisador produz este diagnóstico quando a factory constructor has an
 initializing formal parameter. Factory constructors can't assign values to
 fields because no instance is created; hence, there is no field to assign.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the factory constructor
+O código a seguir produz este diagnóstico porque the factory constructor
 uses an initializing formal parameter:
 
 ```dart
@@ -28,7 +29,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the initializing formal parameter with a normal parameter:
 

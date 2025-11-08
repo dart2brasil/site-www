@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The redirecting constructor can't have a field initializer._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a redirecting constructor
+O analisador produz este diagnóstico quando a redirecting constructor
 initializes a field in the object. This isn't allowed because the instance
 that has the field hasn't been created at the point at which it should be
 initialized.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because the constructor
+O código a seguir produz este diagnóstico porque the constructor
 `C.zero`, which redirects to the constructor `C`, has an initializing
 formal parameter that initializes the field `f`:
 
@@ -32,7 +33,7 @@ class C {
 }
 ```
 
-The following code produces this diagnostic because the constructor
+O código a seguir produz este diagnóstico porque the constructor
 `C.zero`, which redirects to the constructor `C`, has an initializer that
 initializes the field `f`:
 
@@ -46,7 +47,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the initialization is done by an initializing formal parameter, then
 use a normal parameter:

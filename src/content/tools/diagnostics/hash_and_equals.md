@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,9 +21,9 @@ bodyClass: highlight-diagnostics
 
 _Missing a corresponding override of '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class or mixin either
+O analisador produz este diagnóstico quando a class or mixin either
 overrides the definition of `==` but doesn't override the definition of
 `hashCode`, or conversely overrides the definition of `hashCode` but
 doesn't override the definition of `==`.
@@ -31,9 +32,9 @@ Both the `==` operator and the `hashCode` property of objects must be
 consistent for a common hash map implementation to function properly. As a
 result, when overriding either method, both should be overridden.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `C`
+O código a seguir produz este diagnóstico porque a classe `C`
 overrides the `==` operator but doesn't override the getter `hashCode`:
 
 ```dart
@@ -50,7 +51,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need to override one of the members, then add an override of the
 other:

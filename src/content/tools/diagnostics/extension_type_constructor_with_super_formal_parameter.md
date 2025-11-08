@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Extension type constructors can't declare super formal parameters._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor in an extension
+O analisador produz este diagnóstico quando a constructor in an extension
 type has a super parameter. Super parameters aren't valid because
 extension types don't have a superclass.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the named constructor
+O código a seguir produz este diagnóstico porque the named constructor
 `n` contains a super parameter:
 
 ```dart
@@ -26,7 +27,7 @@ extension type E(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you need the parameter, replace the super parameter with a normal
 parameter:

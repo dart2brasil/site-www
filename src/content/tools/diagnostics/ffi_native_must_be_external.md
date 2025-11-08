@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Native functions must be declared external._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a function annotated as being
+O analisador produz este diagnóstico quando a function annotated as being
 `@Native` isn't marked as `external`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `free` is
+O código a seguir produz este diagnóstico porque the function `free` is
 annotated as being `@Native`, but the function isn't marked as `external`:
 
 ```dart
@@ -26,7 +27,7 @@ import 'dart:ffi';
 void [!free!](Pointer<Void> ptr) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the function is a native function, then add the modifier `external`
 before the return type:

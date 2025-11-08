@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,17 +21,17 @@ bodyClass: highlight-diagnostics
 
 _The file name '{0}' isn't a lower\_case\_with\_underscores identifier._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the name of a `.dart` file
+O analisador produz este diagnóstico quando the name of a `.dart` file
 doesn't use lower_case_with_underscores.
 
-## Example
+## Exemplo
 
 A file named `SliderMenu.dart` produces this diagnostic because the file
 name uses the UpperCamelCase convention.
 
-## Common fixes
+## Correções comuns
 
 Rename the file to use the lower_case_with_underscores convention, such as
 `slider_menu.dart`.

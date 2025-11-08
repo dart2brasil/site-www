@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The extension type representation can't depend on itself._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension type has a
+O analisador produz este diagnóstico quando an extension type has a
 representation type that depends on the extension type itself, either
 directly or indirectly.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the representation
+O código a seguir produz este diagnóstico porque the representation
 type of the extension type `A` depends on `A` directly:
 
 ```dart
@@ -40,7 +41,7 @@ extension type [!A!](List<B> b) {}
 extension type [!B!](List<A> a) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the dependency by choosing a different representation type for at
 least one of the types in the cycle:

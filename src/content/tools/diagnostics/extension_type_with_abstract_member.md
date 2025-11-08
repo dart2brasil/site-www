@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' must have a method body because '{1}' is an extension type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension type declares an
+O analisador produz este diagnóstico quando an extension type declares an
 abstract member. Because extension type member references are resolved
 statically, an abstract member in an extension type could never be
 executed.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `m` in the
+O código a seguir produz este diagnóstico porque the method `m` in the
 extension type `E` is abstract:
 
 ```dart
@@ -27,7 +28,7 @@ extension type E(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the member is intended to be executable, then provide an implementation
 of the member:

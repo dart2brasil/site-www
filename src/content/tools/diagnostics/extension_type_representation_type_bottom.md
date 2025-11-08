@@ -5,27 +5,28 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The representation type can't be a bottom type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the representation type of an
+O analisador produz este diagnóstico quando the representation type of an
 extension type is the [bottom type][] `Never`. The type `Never` can't be
 the representation type of an extension type because there are no values
 that can be extended.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the representation
+O código a seguir produz este diagnóstico porque the representation
 type of the extension type `E` is `Never`:
 
 ```dart
 extension type E([!Never!] n) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the extension type with a different type:
 

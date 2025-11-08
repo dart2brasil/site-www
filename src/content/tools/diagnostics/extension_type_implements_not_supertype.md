@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' is not a supertype of '{1}', the representation type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension type implements a
+O analisador produz este diagnóstico quando an extension type implements a
 type that isn't a supertype of the representation type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension type `A`
+O código a seguir produz este diagnóstico porque the extension type `A`
 implements `String`, but `String` isn't a supertype of the representation
 type `int`:
 
@@ -24,7 +25,7 @@ type `int`:
 extension type A(int i) implements [!String!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If the representation type is correct, then remove or replace the type in
 the implements clause:

@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' can't extend 'Struct' or 'Union' because '{0}' is generic._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a subclass of either `Struct`
+O analisador produz este diagnóstico quando a subclass of either `Struct`
 or `Union` has a type parameter.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `S` defines
+O código a seguir produz este diagnóstico porque a classe `S` defines
 the type parameter `T`:
 
 ```dart
@@ -29,7 +30,7 @@ final class [!S!]<T> extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the type parameters from the class:
 

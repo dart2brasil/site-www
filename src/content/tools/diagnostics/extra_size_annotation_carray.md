@@ -5,21 +5,22 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'Array's must have exactly one 'Array' annotation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a field in a subclass of
-`Struct` has more than one annotation describing the size of the native
+O analisador produz este diagnóstico quando a field in a subclass of
+`Struct` tem mais de uma annotation describing the size of the native
 array.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `a0` has two
+O código a seguir produz este diagnóstico porque the field `a0` has two
 annotations that specify the size of the native array:
 
 ```dart
@@ -32,7 +33,7 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove all but one of the annotations:
 

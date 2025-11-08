@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Too many positional arguments: {0} expected, but {1} found._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function invocation
+O analisador produz este diagnóstico quando a method or function invocation
 has more positional arguments than the method or function allows, but the
 method or function defines named parameters.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` defines 2
+O código a seguir produz este diagnóstico porque `f` defines 2
 positional parameters but has a named parameter that could be used for the
 third argument:
 
@@ -28,7 +29,7 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If some of the arguments should be values for named parameters, then add
 the names before the arguments:

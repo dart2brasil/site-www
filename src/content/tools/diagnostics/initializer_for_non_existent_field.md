@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' isn't a field in the enclosing class._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor initializes a
+O analisador produz este diagnóstico quando a constructor initializes a
 field that isn't declared in the class containing the constructor.
 Constructors can't initialize fields that aren't declared and fields that
 are inherited from superclasses.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the initializer is
+O código a seguir produz este diagnóstico porque the initializer is
 initializing `x`, but `x` isn't a field in the class:
 
 ```dart
@@ -29,7 +30,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If a different field should be initialized, then change the name to the
 name of the field:

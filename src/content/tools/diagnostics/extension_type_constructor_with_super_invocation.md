@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Extension type constructors can't include super initializers._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor in an extension
+O analisador produz este diagnóstico quando a constructor in an extension
 type includes an invocation of a super constructor in the initializer
 list. Because extension types don't have a superclass, there's no
 constructor to invoke.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor `E.n`
+O código a seguir produz este diagnóstico porque the constructor `E.n`
 invokes a super constructor in its initializer list:
 
 ```dart
@@ -27,9 +28,9 @@ extension type E(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the invocation of the super constructor:
+Remove the invocation of the super construtor:
 
 ```dart
 extension type E(int i) {
