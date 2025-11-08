@@ -306,23 +306,28 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ---
 
-## Section 20: Diagnostic Errors - U-Z (Unused, Variable, Void, Yield)
-**Files:** ~40 files | **Priority:** LOW
+## Section 20: Diagnostic Errors - U-Z (Unused, Variable, Void, Yield) ✅ COMPLETE
+**Files:** 90 files (97 total, 7 already done) | **Priority:** LOW | **Status:** ✅ COMPLETE
 
 ### Pattern:
-- `tools/diagnostics/unchecked_*.md`
-- `tools/diagnostics/undefined_*.md`
-- `tools/diagnostics/unrelated_*.md`
-- `tools/diagnostics/unused_*.md`
-- `tools/diagnostics/uri_*.md`
-- `tools/diagnostics/use_*.md`
-- `tools/diagnostics/variable_*.md`
-- `tools/diagnostics/void_*.md`
-- `tools/diagnostics/wrong_*.md`
-- `tools/diagnostics/yield_*.md`
+- `tools/diagnostics/static_*.md` (1 file)
+- `tools/diagnostics/super_*.md` (10 files)
+- `tools/diagnostics/switch_*.md` (3 files)
+- `tools/diagnostics/throw_*.md` (2 files)
+- `tools/diagnostics/type_*.md` (10 files)
+- `tools/diagnostics/unchecked_*.md` (1 file)
+- `tools/diagnostics/undefined_*.md` (20 files)
+- `tools/diagnostics/unused_*.md` (10 files)
+- `tools/diagnostics/uri_*.md` (4 files)
+- `tools/diagnostics/use_*.md` (22 files)
+- `tools/diagnostics/variable_*.md` (3 files)
+- `tools/diagnostics/void_*.md` (1 file)
+- `tools/diagnostics/wrong_*.md` (8 files)
+- `tools/diagnostics/yield_*.md` (2 files)
 
 **Focus:** Unused code, variables, final errors
 **Estimated time:** 2-3 hours
+**✅ COMPLETED:** 2025-11-08 (90 newly translated files)
 
 ---
 
@@ -375,12 +380,13 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 20:** Diagnostic Errors - sealed through yield (90/90 files) - 100% COMPLETE! 🎉
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 1-19 pending
 
 ---
 
