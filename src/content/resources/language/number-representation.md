@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Numbers in Dart
 breadcrumb: Numbers
 description: >-
@@ -6,49 +7,51 @@ description: >-
   when that might matter, and how you might adjust your code.
 ---
 
-Dart apps often target multiple platforms.
-For example, a Flutter app might target iOS, Android, and the web.
-The code can be the same,
-as long as the app doesn't rely on platform-specific libraries
-or use numbers in a way that's platform dependent.
+<!-- ia-translate: true -->
 
-This page has details about the differences
-between native and web number implementations,
-and how to write code so that those differences don't matter.
+Aplicações Dart frequentemente têm como alvo múltiplas plataformas.
+Por exemplo, uma aplicação Flutter pode ter como alvo iOS, Android e a web.
+O código pode ser o mesmo,
+desde que a aplicação não dependa de bibliotecas específicas da plataforma
+ou use números de uma forma que é dependente da plataforma.
+
+Esta página tem detalhes sobre as diferenças
+entre implementações de números nativas e web,
+e como escrever código para que essas diferenças não importem.
 
 :::secondary Number implementations in Dart and other languages
-Dart has always allowed platform-specific representations
-and semantics for numbers, for reasons of 
-performance, code size, and platform interoperability.
+Dart sempre permitiu representações específicas da plataforma
+e semântica para números, por razões de
+performance, tamanho de código e interoperabilidade com a plataforma.
 
-Similarly, in C/C++ the commonly used `int` type for integer values is
-platform-specific to best map to the native machine architecture
-(16-, 32-, or 64-bit).
-In Java, the `float` and `double` types for fractional values
-were originally designed to strictly follow IEEE 754 on all platforms,
-but this constraint was loosened almost immediately for efficiency reasons
-(`strictfp` is required for exact coherence).
+De forma similar, em C/C++ o tipo `int` comumente usado para valores inteiros é
+específico da plataforma para melhor mapear para a arquitetura de máquina nativa
+(16-, 32- ou 64-bit).
+Em Java, os tipos `float` e `double` para valores fracionários
+foram originalmente projetados para seguir estritamente o IEEE 754 em todas as plataformas,
+mas essa restrição foi afrouxada quase imediatamente por razões de eficiência
+(`strictfp` é necessário para coerência exata).
 :::
 
 
 ## Dart number representation
 
-In Dart, all numbers are part of the common `Object` type hierarchy,
-and there are two concrete, user-visible numeric types:
-`int`, representing integer values, and `double`, representing fractional values.
+No Dart, todos os números são parte da hierarquia de tipo comum `Object`,
+e existem dois tipos numéricos concretos e visíveis ao usuário:
+`int`, representando valores inteiros, e `double`, representando valores fracionários.
 
-<img 
-  src="/assets/img/number-class-hierarchy.svg" 
+<img
+  src="/assets/img/number-class-hierarchy.svg"
   alt="Object is the parent of num, which is the parent of int and double">
 
-Depending on the platform,
-those numeric types have different, hidden implementations.
-In particular, Dart has two very different types of targets it compiles to:
+Dependendo da plataforma,
+esses tipos numéricos têm implementações diferentes e ocultas.
+Em particular, Dart tem dois tipos muito diferentes de alvos para os quais compila:
 
-* **Native:** Most often, a 64-bit mobile or desktop processor.
-* **Web:** JavaScript as the primary execution engine.
+* **Native:** Na maioria das vezes, um processador móvel ou desktop de 64 bits.
+* **Web:** JavaScript como o motor de execução principal.
 
-The following table shows how Dart numbers are usually implemented:
+A tabela a seguir mostra como os números Dart são geralmente implementados:
 
 <div class="table-wrapper">
   <table class="table table-striped nowrap">
@@ -80,85 +83,85 @@ The following table shows how Dart numbers are usually implemented:
   </table>
 </div>
 
-For native targets, you can assume that
-`int` maps to a signed 64-bit integer representation and
-`double` maps to a 64-bit IEEE floating-point representation
-that matches the underlying processor.
+Para alvos nativos, você pode assumir que
+`int` mapeia para uma representação inteira com sinal de 64 bits e
+`double` mapeia para uma representação de ponto flutuante IEEE de 64 bits
+que corresponde ao processador subjacente.
 
-But on the web, where Dart compiles to and interoperates with JavaScript,
-there is a single numeric representation:
-a 64-bit double-precision floating-point value.
-For efficiency, Dart maps both `int` and `double` to this single representation.
-The visible type hierarchy remains the same,
-but the underlying hidden implementation types are
-different and intertwined.
+Mas na web, onde Dart compila para e interopera com JavaScript,
+existe uma única representação numérica:
+um valor de ponto flutuante de precisão dupla de 64 bits.
+Por eficiência, Dart mapeia tanto `int` quanto `double` para essa representação única.
+A hierarquia de tipo visível permanece a mesma,
+mas os tipos de implementação ocultos subjacentes são
+diferentes e entrelaçados.
 
-The following figure illustrates the platform-specific types (in blue)
-for native and web targets.
-As the figure shows,
-the concrete type for `int` on native implements only the `int` interface.
-However, the concrete type for `int` on the web implements
-both `int` and `double`.
+A figura a seguir ilustra os tipos específicos da plataforma (em azul)
+para alvos nativos e web.
+Como a figura mostra,
+o tipo concreto para `int` em nativo implementa apenas a interface `int`.
+No entanto, o tipo concreto para `int` na web implementa
+tanto `int` quanto `double`.
 
-<img 
-  src="/assets/img/number-platform-specific.svg" 
+<img
+  src="/assets/img/number-platform-specific.svg"
   alt="Implementation classes vary by platform; for JavaScript, the class that implements int also implements double">
 
 
 :::note
-Dart represents `int` and `double` in
-a few different ways for efficiency,
-but these implementation classes (in blue, above) are hidden.
-In general, you can ignore the platform-specific types,
-and think of `int` and `double` as concrete types. 
+Dart representa `int` e `double` de
+algumas maneiras diferentes por eficiência,
+mas essas classes de implementação (em azul, acima) estão ocultas.
+Em geral, você pode ignorar os tipos específicos da plataforma,
+e pensar em `int` e `double` como tipos concretos.
 :::
 
-An `int` on the web is represented as
-a double-precision floating-point value with no fractional part.
-In practice, this works pretty well:
-double-precision floating point provides 53 bits of integer precision.
-However, `int` values are always also `double` values,
-which can lead to some surprises.
+Um `int` na web é representado como
+um valor de ponto flutuante de precisão dupla sem parte fracionária.
+Na prática, isso funciona muito bem:
+ponto flutuante de precisão dupla fornece 53 bits de precisão inteira.
+No entanto, valores `int` são sempre também valores `double`,
+o que pode levar a algumas surpresas.
 
 
 ## Differences in behavior
 
-Most integer and double arithmetic
-has essentially the same behavior.
-There are, however, important differences—particularly 
-when your code has strict expectations about
-precision, string formatting, or underlying runtime types.
+A maioria dos cálculos aritméticos de inteiros e doubles
+tem essencialmente o mesmo comportamento.
+No entanto, há diferenças importantes—particularmente
+quando seu código tem expectativas rígidas sobre
+precisão, formatação de strings ou tipos de tempo de execução subjacentes.
 
-When arithmetic results differ, as described in this section,
-the behavior is **platform specific**
-and **subject to change**.
+Quando os resultados aritméticos diferem, como descrito nesta seção,
+o comportamento é **específico da plataforma**
+e **sujeito a mudanças**.
 
 :::note
-Any platform-specific behavior that this page describes might change to be
-less surprising, more consistent, or more performant.
+Qualquer comportamento específico da plataforma que esta página descreve pode mudar para ser
+menos surpreendente, mais consistente ou mais performático.
 :::
 
 
 ### Precision
 
-The following table demonstrates how some numerical expressions
-differ due to precision.
-Here, `math` represents the `dart:math` library,
-and `math.pow(2, 53)` is 2<sup>53</sup>.
+A tabela a seguir demonstra como algumas expressões numéricas
+diferem devido à precisão.
+Aqui, `math` representa a biblioteca `dart:math`,
+e `math.pow(2, 53)` é 2<sup>53</sup>.
 
-On the web, integers lose precision past 53 bits.
-In particular, 2<sup>53</sup> and 2<sup>53</sup>+1
-map to the same value due to truncation.
-On native, these values can still be differentiated
-because native numbers have 64 bits—63 bits for the value and 1 for the sign.
+Na web, inteiros perdem precisão após 53 bits.
+Em particular, 2<sup>53</sup> e 2<sup>53</sup>+1
+mapeiam para o mesmo valor devido ao truncamento.
+Em nativo, esses valores ainda podem ser diferenciados
+porque números nativos têm 64 bits—63 bits para o valor e 1 para o sinal.
 
-The effect of overflow is visible
-when comparing 2<sup>63</sup>-1 to 2<sup>63</sup>.
-On native, the latter overflows to -2<sup>63</sup>,
-as expected for two's-complement arithmetic.
-On the web, these values do not overflow
-because they are represented differently;
-they're approximations due to the loss of precision.
+O efeito do overflow é visível
+ao comparar 2<sup>63</sup>-1 a 2<sup>63</sup>.
+Em nativo, o último causa overflow para -2<sup>63</sup>,
+como esperado para aritmética de complemento de dois.
+Na web, esses valores não causam overflow
+porque são representados de forma diferente;
+são aproximações devido à perda de precisão.
 
 <div class="table-wrapper">
   <table class="table table-striped nowrap">
@@ -207,16 +210,16 @@ they're approximations due to the loss of precision.
 
 ### Identity
 
-On native platforms, `double` and `int` are distinct types:
-no value can be both a `double` and an `int` at the same time.
-On the web, that isn't true.
-Because of this difference,
-identity can differ between platforms,
-although equality (`==`) doesn't.
+Em plataformas nativas, `double` e `int` são tipos distintos:
+nenhum valor pode ser tanto um `double` quanto um `int` ao mesmo tempo.
+Na web, isso não é verdade.
+Devido a essa diferença,
+identidade pode diferir entre plataformas,
+embora igualdade (`==`) não.
 
-The following table shows some expressions that use equality and identity.
-The equality expressions are the same on native and web;
-the identity expressions are usually different.
+A tabela a seguir mostra algumas expressões que usam igualdade e identidade.
+As expressões de igualdade são as mesmas em nativo e web;
+as expressões de identidade geralmente são diferentes.
 
 <div class="table-wrapper">
   <table class="table table-striped nowrap">
@@ -270,21 +273,21 @@ the identity expressions are usually different.
 
 ### Types and type checking
 
-On the web, the underlying `int` type is like a subtype of `double`:
-it's a double-precision value without a fractional part.
-In fact, a type check on the web of the form `x is int`
-returns true if `x` is a number (`double`) with
-a zero-valued fractional part.
+Na web, o tipo `int` subjacente é como um subtipo de `double`:
+é um valor de precisão dupla sem uma parte fracionária.
+De fato, uma verificação de tipo na web do tipo `x is int`
+retorna true se `x` for um número (`double`) com
+uma parte fracionária de valor zero.
 
-As a result, the following are true on the web:
+Como resultado, o seguinte é verdadeiro na web:
 
-* All Dart numbers (values of type `num`) are `double`.
-* A Dart number can be both a `double` and an `int` at the same time.
+* Todos os números Dart (valores do tipo `num`) são `double`.
+* Um número Dart pode ser tanto um `double` quanto um `int` ao mesmo tempo.
 
-These facts affect `is` checks and `runtimeType` properties.
-A side effect is that `double.infinity` is interpreted as an `int`.
-Because this is a platform-specific behavior,
-it might change in the future.
+Esses fatos afetam verificações `is` e propriedades `runtimeType`.
+Um efeito colateral é que `double.infinity` é interpretado como um `int`.
+Como este é um comportamento específico da plataforma,
+pode mudar no futuro.
 
 <div class="table-wrapper">
   <table class="table table-striped nowrap">
@@ -363,18 +366,18 @@ it might change in the future.
 
 ### Bitwise operations
 
-For performance reasons on the web,
-bitwise (`&`, `|`, `^`, `~`) and shift (`<<`,`>>`, `>>>`) operators on `int`
-use the native JavaScript equivalents.
-In JavaScript, the operands are truncated to 32-bit integers
-that are treated as unsigned.
-This treatment can lead to surprising results on larger numbers.
-In particular, if operands are negative or don't fit into 32 bits,
-they're likely to produce different results between native and web.
+Por razões de performance na web,
+operadores bitwise (`&`, `|`, `^`, `~`) e de deslocamento (`<<`,`>>`, `>>>`) em `int`
+usam os equivalentes nativos do JavaScript.
+No JavaScript, os operandos são truncados para inteiros de 32 bits
+que são tratados como não assinados.
+Esse tratamento pode levar a resultados surpreendentes em números maiores.
+Em particular, se os operandos são negativos ou não cabem em 32 bits,
+é provável que produzam resultados diferentes entre nativo e web.
 
-The following table shows how native and web platforms
-treat bitwise and shift operators when the operands
-are either negative or close to 32 bits:
+A tabela a seguir mostra como plataformas nativas e web
+tratam operadores bitwise e de deslocamento quando os operandos
+são negativos ou próximos de 32 bits:
 
 <div class="table-wrapper">
   <table class="table table-striped nowrap">
@@ -413,10 +416,10 @@ are either negative or close to 32 bits:
 
 ### String representation
 
-On the web, Dart generally defers to JavaScript to convert a number to a string
-(for example, for a `print`).
-The following table demonstrates how
-converting the expressions in the first column can lead to different results.
+Na web, Dart geralmente delega ao JavaScript para converter um número em uma string
+(por exemplo, para um `print`).
+A tabela a seguir demonstra como
+converter as expressões na primeira coluna pode levar a resultados diferentes.
 
 <div class="table-wrapper">
   <table class="table table-striped nowrap">
@@ -465,16 +468,16 @@ converting the expressions in the first column can lead to different results.
 
 ## What should you do?
 
-Usually, you don't need to change your numeric code.
-Dart code has been running on both native and web platforms for years,
-and number implementation differences are rarely a problem.
-Common, typical code—such as iterating through a range of small integers 
-and indexing a list—behaves the same.
+Geralmente, você não precisa mudar seu código numérico.
+Código Dart tem sido executado em plataformas nativas e web por anos,
+e diferenças na implementação de números raramente são um problema.
+Código comum e típico—como iterar através de um intervalo de pequenos inteiros
+e indexar uma lista—se comporta da mesma forma.
 
-If you have tests or assertions that compare string results,
-write them in a platform-resilient manner.
-For example, suppose you're testing the value of string expressions
-that have embedded numbers:
+Se você tem testes ou asserções que comparam resultados de strings,
+escreva-os de uma maneira resiliente à plataforma.
+Por exemplo, suponha que você está testando o valor de expressões de string
+que têm números embutidos:
 
 ```dart
 void main() {
@@ -484,28 +487,28 @@ void main() {
 }
 ```
 
-The preceding code succeeds on native platforms but throws on the web
-because `message` is `"20 cows"` (no decimal) on the web.
-As an alternative, you might write the condition as follows,
-so it passes on both native and web platforms:
+O código anterior tem sucesso em plataformas nativas mas falha na web
+porque `message` é `"20 cows"` (sem decimal) na web.
+Como alternativa, você pode escrever a condição da seguinte forma,
+para que passe tanto em plataformas nativas quanto web:
 
 ```dart
-if (message != "${20.0} cows") throw ... 
+if (message != "${20.0} cows") throw ...
 ```
 
-For bit manipulation, consider explicitly operating on 32-bit chunks,
-which are consistent on all platforms.
-To force a signed interpretation of a 32-bit chunk,
+Para manipulação de bits, considere operar explicitamente em pedaços de 32 bits,
+que são consistentes em todas as plataformas.
+Para forçar uma interpretação assinada de um pedaço de 32 bits,
 use `int.toSigned(32)`.
 
-For other cases where precision matters,
-consider other numeric types.
-The [`BigInt`][] type
-provides arbitrary-precision integers on both native and web.
-The [`fixnum`][] package
-provides strict 64-bit signed numbers, even on the web.
-Use these types with care, though:
-they often result in significantly bigger and slower code.
+Para outros casos onde a precisão importa,
+considere outros tipos numéricos.
+O tipo [`BigInt`][]
+fornece inteiros de precisão arbitrária tanto em nativo quanto em web.
+O pacote [`fixnum`][]
+fornece números assinados estritos de 64 bits, mesmo na web.
+Use esses tipos com cuidado:
+eles geralmente resultam em código significativamente maior e mais lento.
 
 [`BigInt`]: {{site.dart-api}}/dart-core/BigInt-class.html
 [`fixnum`]: {{site.pub-pkg}}/fixnum

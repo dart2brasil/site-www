@@ -194,7 +194,7 @@
   link: /language/built-in-types
   type: reserved
 - term: 'when'
-  link: /language/branches#when
+  link: /language/branches#guard-clause
   type: unrestricted
 - term: 'with'
   link: /language/mixins

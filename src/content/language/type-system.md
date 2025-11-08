@@ -1,7 +1,8 @@
 ---
-title: The Dart type system
-shortTitle: Type system
-description: Why and how to write sound Dart code.
+ia-translate: true
+title: O sistema de tipos do Dart
+shortTitle: Sistema de tipos
+description: Por que e como escrever código Dart sound.
 prevpage:
   url: /language/typedefs
   title: Typedefs
@@ -12,22 +13,22 @@ nextpage:
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt path-base="type_system"?>
 
-The Dart language is type safe: it uses a combination of static type checking
-and [runtime checks](#runtime-checks) to
-ensure that a variable's value always matches the variable's static type,
-sometimes referred to as sound typing.
-Although _types_ are mandatory, type _annotations_ are optional
-because of [type inference](#type-inference).
+A linguagem Dart é type safe: ela usa uma combinação de verificação estática de tipos
+e [verificações em tempo de execução](#runtime-checks) para
+garantir que o valor de uma variável sempre corresponda ao tipo estático da variável,
+às vezes chamado de tipagem sound.
+Embora _tipos_ sejam obrigatórios, _anotações_ de tipo são opcionais
+por causa da [inferência de tipos](#type-inference).
 
-One benefit of static type checking is the ability to find bugs
-at compile time using Dart's [static analyzer.][analysis]
+Um benefício da verificação estática de tipos é a capacidade de encontrar bugs
+em tempo de compilação usando o [analisador estático][analysis] do Dart.
 
-You can fix most static analysis errors by adding type annotations to generic
-classes. The most common generic classes are the collection types
-`List<T>` and `Map<K,V>`.
+Você pode corrigir a maioria dos erros de análise estática adicionando anotações de tipo a classes
+genéricas. As classes genéricas mais comuns são os tipos de coleção
+`List<T>` e `Map<K,V>`.
 
-For example, in the following code the `printInts()` function prints an integer list,
-and `main()` creates a list and passes it to `printInts()`.
+Por exemplo, no código a seguir, a função `printInts()` imprime uma lista de inteiros,
+e `main()` cria uma lista e a passa para `printInts()`.
 
 <?code-excerpt "lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
 ```dart tag=fails-sa
@@ -41,26 +42,26 @@ void main() {
 }
 ```
 
-The preceding code results in a type error on `list` (highlighted
-above) at the call of `printInts(list)`:
+O código anterior resulta em um erro de tipo em `list` (destacado
+acima) na chamada de `printInts(list)`:
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/strong_analysis.*List.*argument_type_not_assignable/" replace="/-(.*?):(.*?):(.*?)-/-/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```plaintext
 error - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
 ```
 
-The error highlights an unsound implicit cast from `List<dynamic>` to `List<int>`.
-The `list` variable has static type `List<dynamic>`. This is because the
-initializing declaration `var list = []` doesn't provide the analyzer with
-enough information for it to infer a type argument more specific than `dynamic`.
-The `printInts()` function expects a parameter of type `List<int>`,
-causing a mismatch of types.
+O erro destaca um cast implícito não sound de `List<dynamic>` para `List<int>`.
+A variável `list` tem tipo estático `List<dynamic>`. Isso ocorre porque a
+declaração de inicialização `var list = []` não fornece ao analisador
+informações suficientes para inferir um argumento de tipo mais específico que `dynamic`.
+A função `printInts()` espera um parâmetro do tipo `List<int>`,
+causando uma incompatibilidade de tipos.
 
-When adding a type annotation (`<int>`) on creation of the list
-(highlighted below) the analyzer complains that
-a string argument can't be assigned to an `int` parameter. 
-Removing the quotes in `list.add('2')` results in code
-that passes static analysis and runs with no errors or warnings.
+Ao adicionar uma anotação de tipo (`<int>`) na criação da lista
+(destacado abaixo), o analisador reclama que
+um argumento string não pode ser atribuído a um parâmetro `int`.
+Remover as aspas em `list.add('2')` resulta em código
+que passa na análise estática e executa sem erros ou avisos.
 
 <?code-excerpt "test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
 ```dart tag=passes-sa
@@ -74,67 +75,67 @@ void main() {
 }
 ```
 
-[Try it in DartPad]({{site.dartpad}}/?id=25074a51a00c71b4b000f33b688dedd0).
+[Experimente no DartPad]({{site.dartpad}}/?id=25074a51a00c71b4b000f33b688dedd0).
 
-## What is soundness?
+## O que é soundness? {:#what-is-soundness}
 
-*Soundness* is about ensuring your program can't get into certain
-invalid states. A sound *type system* means you can never get into
-a state where an expression evaluates to a value that doesn't match
-the expression's static type. For example, if an expression's static
-type is `String`, at runtime you are guaranteed to only get a string
-when you evaluate it.
+*Soundness* é garantir que seu programa não possa entrar em certos
+estados inválidos. Um *sistema de tipos* sound significa que você nunca pode entrar em
+um estado onde uma expressão avalia para um valor que não corresponde
+ao tipo estático da expressão. Por exemplo, se o tipo estático de uma expressão
+é `String`, em tempo de execução você tem garantia de obter apenas uma string
+quando avaliá-la.
 
-Dart's type system, like the type systems in Java and C#, is sound. It
-enforces that soundness using a combination of static checking
-(compile-time errors) and runtime checks. For example, assigning a `String`
-to `int` is a compile-time error. Casting an object to a `String` using
-`as String` fails with a runtime error if the object isn't a `String`.
-
-
-## The benefits of soundness
-
-A sound type system has several benefits:
-
-* Revealing type-related bugs at compile time.<br>
-  A sound type system forces code to be unambiguous about its types,
-  so type-related bugs that might be tricky to find at runtime are
-  revealed at compile time.
-
-* More readable code.<br>
-  Code is easier to read because you can rely on a value actually having
-  the specified type. In sound Dart, types can't lie.
-
-* More maintainable code.<br>
-  With a sound type system, when you change one piece of code, the
-  type system can warn you about the other pieces
-  of code that just broke.
-
-* Better ahead of time (AOT) compilation.<br>
-  While AOT compilation is possible without types, the generated
-  code is much less efficient.
+O sistema de tipos do Dart, como os sistemas de tipos em Java e C#, é sound. Ele
+impõe essa soundness usando uma combinação de verificação estática
+(erros em tempo de compilação) e verificações em tempo de execução. Por exemplo, atribuir uma `String`
+a `int` é um erro em tempo de compilação. Converter um objeto para uma `String` usando
+`as String` falha com um erro em tempo de execução se o objeto não for uma `String`.
 
 
-## Tips for passing static analysis
+## Os benefícios da soundness {:#the-benefits-of-soundness}
 
-Most of the rules for static types are easy to understand.
-Here are some of the less obvious rules:
+Um sistema de tipos sound tem vários benefícios:
 
-* Use sound return types when overriding methods.
-* Use sound parameter types when overriding methods.
-* Don't use a dynamic list as a typed list.
+* Revelar bugs relacionados a tipos em tempo de compilação.<br>
+  Um sistema de tipos sound força o código a ser inequívoco sobre seus tipos,
+  então bugs relacionados a tipos que podem ser difíceis de encontrar em tempo de execução são
+  revelados em tempo de compilação.
 
-Let's see these rules in detail, with examples that use the following
-type hierarchy:
+* Código mais legível.<br>
+  O código é mais fácil de ler porque você pode confiar que um valor realmente tem
+  o tipo especificado. Em Dart sound, tipos não podem mentir.
 
-<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
+* Código mais manutenível.<br>
+  Com um sistema de tipos sound, quando você muda uma parte do código, o
+  sistema de tipos pode avisar sobre as outras partes
+  do código que acabaram de quebrar.
+
+* Melhor compilação ahead of time (AOT).<br>
+  Embora a compilação AOT seja possível sem tipos, o código gerado
+  é muito menos eficiente.
+
+
+## Dicas para passar na análise estática {:#tips-for-passing-static-analysis}
+
+A maioria das regras para tipos estáticos é fácil de entender.
+Aqui estão algumas das regras menos óbvias:
+
+* Use tipos de retorno sound ao sobrescrever métodos.
+* Use tipos de parâmetro sound ao sobrescrever métodos.
+* Não use uma lista dynamic como uma lista tipada.
+
+Vejamos essas regras em detalhes, com exemplos que usam a seguinte
+hierarquia de tipos:
+
+<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="uma hierarquia de animais onde o supertipo é Animal e os subtipos são Alligator, Cat e HoneyBadger. Cat tem os subtipos Lion e MaineCoon">
 
 <a name="use-proper-return-types"></a>
-### Use sound return types when overriding methods
+### Use tipos de retorno sound ao sobrescrever métodos {:#use-sound-return-types-when-overriding-methods}
 
-The return type of a method in a subclass must be the same type or a
-subtype of the return type of the method in the superclass. 
-Consider the getter method in the `Animal` class:
+O tipo de retorno de um método em uma subclasse deve ser o mesmo tipo ou um
+subtipo do tipo de retorno do método na superclasse.
+Considere o método getter na classe `Animal`:
 
 <?code-excerpt "lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
 ```dart
@@ -146,9 +147,9 @@ class Animal {
 }
 ```
 
-The `parent` getter method returns an `Animal`. In the `HoneyBadger` subclass,
-you can replace the getter's return type with `HoneyBadger` 
-(or any other subtype of `Animal`), but an unrelated type is not allowed.
+O método getter `parent` retorna um `Animal`. Na subclasse `HoneyBadger`,
+você pode substituir o tipo de retorno do getter por `HoneyBadger`
+(ou qualquer outro subtipo de `Animal`), mas um tipo não relacionado não é permitido.
 
 <?code-excerpt "lib/animal.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
 ```dart tag=passes-sa
@@ -177,19 +178,19 @@ class HoneyBadger extends Animal {
 ```
 
 <a name="use-proper-param-types"></a>
-### Use sound parameter types when overriding methods
+### Use tipos de parâmetro sound ao sobrescrever métodos {:#use-sound-parameter-types-when-overriding-methods}
 
-The parameter of an overridden method must have either the same type
-or a supertype of the corresponding parameter in the superclass.
-Don't "tighten" the parameter type by replacing the type with a
-subtype of the original parameter.
+O parâmetro de um método sobrescrito deve ter o mesmo tipo
+ou um supertipo do parâmetro correspondente na superclasse.
+Não "aperte" o tipo do parâmetro substituindo o tipo por um
+subtipo do parâmetro original.
 
 :::note
-If you have a valid reason to use a subtype, you can use the
-[`covariant` keyword](/language/type-system#covariant-keyword).
+Se você tem uma razão válida para usar um subtipo, pode usar a
+[palavra-chave `covariant`](/language/type-system#covariant-keyword).
 :::
 
-Consider the `chase(Animal)` method for the `Animal` class:
+Considere o método `chase(Animal)` para a classe `Animal`:
 
 <?code-excerpt "lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
 ```dart
@@ -201,8 +202,8 @@ class Animal {
 }
 ```
 
-The `chase()` method takes an `Animal`. A `HoneyBadger` chases anything.
-It's OK to override the `chase()` method to take anything (`Object`).
+O método `chase()` recebe um `Animal`. Um `HoneyBadger` persegue qualquer coisa.
+É OK sobrescrever o método `chase()` para receber qualquer coisa (`Object`).
 
 <?code-excerpt "lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
 ```dart tag=passes-sa
@@ -217,8 +218,8 @@ class HoneyBadger extends Animal {
 }
 ```
 
-The following code tightens the parameter on the `chase()` method
-from `Animal` to `Mouse`, a subclass of `Animal`.
+O código a seguir aperta o parâmetro no método `chase()`
+de `Animal` para `Mouse`, um subtipo de `Animal`.
 
 <?code-excerpt "lib/incorrect_animal.dart (chase-mouse)" replace="/Mouse/[!$&!]/g"?>
 ```dart tag=fails-sa
@@ -234,8 +235,8 @@ class Cat extends Animal {
 }
 ```
 
-This code is not type safe because it would then be possible to define
-a cat and send it after an alligator:
+Este código não é type safe porque seria possível definir
+um gato e enviá-lo atrás de um jacaré:
 
 <?code-excerpt "lib/incorrect_animal.dart (would-not-be-type-safe)" replace="/Alligator/[!$&!]/g"?>
 ```dart
@@ -243,16 +244,16 @@ Animal a = Cat();
 a.chase([!Alligator!]()); // Not type safe or feline safe.
 ```
 
-### Don't use a dynamic list as a typed list
+### Não use uma lista dynamic como uma lista tipada {:#dont-use-a-dynamic-list-as-a-typed-list}
 
-A `dynamic` list is good when you want to have a list with
-different kinds of things in it. However, you can't use a
-`dynamic` list as a typed list.
+Uma lista `dynamic` é boa quando você quer ter uma lista com
+diferentes tipos de coisas nela. No entanto, você não pode usar uma
+lista `dynamic` como uma lista tipada.
 
-This rule also applies to instances of generic types.
+Esta regra também se aplica a instâncias de tipos genéricos.
 
-The following code creates a `dynamic` list of `Dog`, and assigns it to
-a list of type `Cat`, which generates an error during static analysis.
+O código a seguir cria uma lista `dynamic` de `Dog`, e a atribui a
+uma lista do tipo `Cat`, o que gera um erro durante a análise estática.
 
 <?code-excerpt "lib/incorrect_animal.dart (invalid-dynamic-list)" replace="/(<dynamic\x3E)(.*?)Error/[!$1!]$2Error/g"?>
 ```dart tag=fails-sa
@@ -262,13 +263,13 @@ void main() {
 }
 ```
 
-## Runtime checks
+## Verificações em tempo de execução {:#runtime-checks}
 
-Runtime checks deal with type safety issues
-that can't be detected at compile time.
+Verificações em tempo de execução lidam com problemas de segurança de tipo
+que não podem ser detectados em tempo de compilação.
 
-For example, the following code throws an exception at runtime
-because it's an error to cast a list of dogs to a list of cats:
+Por exemplo, o código a seguir lança uma exceção em tempo de execução
+porque é um erro converter uma lista de cachorros em uma lista de gatos:
 
 <?code-excerpt "test/strong_test.dart (runtime-checks)" replace="/animals as[^;]*/[!$&!]/g"?>
 ```dart tag=runtime-fail
@@ -278,12 +279,12 @@ void main() {
 }
 ```
 
-### Implicit downcasts from `dynamic`
+### Downcasts implícitos de `dynamic` {:#implicit-downcasts-from-dynamic}
 
-Expressions with a static type of `dynamic` can be
-implicitly cast to a more specific type.
-If the actual type doesn't match, the cast throws an error at run time.
-Consider the following `assumeString` method:
+Expressões com tipo estático de `dynamic` podem ser
+implicitamente convertidas para um tipo mais específico.
+Se o tipo real não corresponder, a conversão lança um erro em tempo de execução.
+Considere o seguinte método `assumeString`:
 
 <?code-excerpt "lib/strong_analysis.dart (downcast-check)" replace="/string = object/[!$&!]/g"?>
 ```dart tag=passes-sa
@@ -293,9 +294,9 @@ int assumeString(dynamic object) {
 }
 ```
 
-In this example, if `object` is a `String`, the cast succeeds.
-If it's not a subtype of `String`, such as `int`,
-a `TypeError` is thrown:
+Neste exemplo, se `object` for uma `String`, a conversão tem sucesso.
+Se não for um subtipo de `String`, como `int`,
+um `TypeError` é lançado:
 
 <?code-excerpt "lib/strong_analysis.dart (fail-downcast-check)" replace="/1/[!$&!]/g"?>
 ```dart tag=runtime-fail
@@ -303,8 +304,8 @@ final length = assumeString([!1!]);
 ```
 
 :::tip
-To prevent implicit downcasts from `dynamic` and avoid this issue,
-consider enabling the analyzer's _strict casts_ mode.
+Para evitar downcasts implícitos de `dynamic` e evitar esse problema,
+considere habilitar o modo _strict casts_ do analisador.
 
 ```yaml title="analysis_options.yaml" highlightLines=3
 analyzer:
@@ -312,65 +313,65 @@ analyzer:
     strict-casts: true
 ```
 
-To learn more about customizing the analyzer's behavior,
-check out [Customizing static analysis](/tools/analysis).
+Para saber mais sobre personalizar o comportamento do analisador,
+confira [Personalizando análise estática](/tools/analysis).
 :::
 
-## Type inference
+## Inferência de tipos {:#type-inference}
 
-The analyzer can infer types for fields, methods, local variables,
-and most generic type arguments.
-When the analyzer doesn't have enough information to infer
-a specific type, it uses the `dynamic` type.
+O analisador pode inferir tipos para campos, métodos, variáveis locais,
+e a maioria dos argumentos de tipo genérico.
+Quando o analisador não tem informações suficientes para inferir
+um tipo específico, ele usa o tipo `dynamic`.
 
-Here's an example of how type inference works with generics.
-In this example, a variable named `arguments` holds a map that
-pairs string keys with values of various types.
+Aqui está um exemplo de como a inferência de tipos funciona com genéricos.
+Neste exemplo, uma variável chamada `arguments` contém um map que
+emparelha chaves string com valores de vários tipos.
 
-If you explicitly type the variable, you might write this:
+Se você tipar explicitamente a variável, pode escrever isso:
 
 <?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, Object\?\x3E/[!$&!]/g"?>
 ```dart
 [!Map<String, Object?>!] arguments = {'argA': 'hello', 'argB': 42};
 ```
 
-Alternatively, you can use `var` or `final` and let Dart infer the type:
+Alternativamente, você pode usar `var` ou `final` e deixar Dart inferir o tipo:
 
 <?code-excerpt "lib/strong_analysis.dart (type-inference-1)" replace="/var/[!$&!]/g"?>
 ```dart
 [!var!] arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
 ```
 
-The map literal infers its type from its entries,
-and then the variable infers its type from the map literal's type.
-In this map, the keys are both strings, but the values have different
-types (`String` and `int`, which have the upper bound `Object`).
-So the map literal has the type `Map<String, Object>`,
-and so does the `arguments` variable.
+O literal de map infere seu tipo de suas entradas,
+e então a variável infere seu tipo do tipo do literal de map.
+Neste map, as chaves são ambas strings, mas os valores têm diferentes
+tipos (`String` e `int`, que têm o limite superior `Object`).
+Então o literal de map tem o tipo `Map<String, Object>`,
+e assim tem a variável `arguments`.
 
 
-### Field and method inference
+### Inferência de campo e método {:#field-and-method-inference}
 
-A field or method that has no specified type and that overrides
-a field or method from the superclass, inherits the type of the
-superclass method or field.
+Um campo ou método que não tem tipo especificado e que sobrescreve
+um campo ou método da superclasse, herda o tipo do
+método ou campo da superclasse.
 
-A field that does not have a declared or inherited type but that is declared
-with an initial value, gets an inferred type based on the initial value.
+Um campo que não tem um tipo declarado ou herdado mas que é declarado
+com um valor inicial, obtém um tipo inferido baseado no valor inicial.
 
-### Static field inference
+### Inferência de campo estático {:#static-field-inference}
 
-Static fields and variables get their types inferred from their
-initializer. Note that inference fails if it encounters a cycle
-(that is, inferring a type for the variable depends on knowing the
-type of that variable).
+Campos estáticos e variáveis obtêm seus tipos inferidos de seu
+inicializador. Note que a inferência falha se encontrar um ciclo
+(ou seja, inferir um tipo para a variável depende de conhecer o
+tipo dessa variável).
 
-### Local variable inference
+### Inferência de variável local {:#local-variable-inference}
 
-Local variable types are inferred from their initializer, if any.
-Subsequent assignments are not taken into account.
-This may mean that too precise a type may be inferred.
-If so, you can add a type annotation.
+Tipos de variáveis locais são inferidos de seu inicializador, se houver.
+Atribuições subsequentes não são levadas em conta.
+Isso pode significar que um tipo muito preciso pode ser inferido.
+Se for o caso, você pode adicionar uma anotação de tipo.
 
 <?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-error)"?>
 ```dart tag=fails-sa
@@ -384,14 +385,14 @@ num y = 3; // A num can be double or int.
 y = 4.0;
 ```
 
-### Type argument inference
+### Inferência de argumento de tipo {:#type-argument-inference}
 
-Type arguments to constructor calls and
-[generic method](/language/generics#using-generic-methods) invocations
-are inferred based on a combination of downward information from the context
-of occurrence, and upward information from the arguments to the constructor
-or generic method. If inference is not doing what you want or expect,
-you can always explicitly specify the type arguments.
+Argumentos de tipo para chamadas de construtor e
+invocações de [método genérico](/language/generics#using-generic-methods)
+são inferidos baseados em uma combinação de informação descendente do contexto
+de ocorrência, e informação ascendente dos argumentos para o construtor
+ou método genérico. Se a inferência não estiver fazendo o que você quer ou espera,
+você sempre pode especificar explicitamente os argumentos de tipo.
 
 <?code-excerpt "lib/strong_analysis.dart (type-arg-inference)"?>
 ```dart tag=passes-sa
@@ -405,26 +406,26 @@ var listOfDouble = [3.0];
 var ints = listOfDouble.map((x) => x.toInt());
 ```
 
-In the last example, `x` is inferred as `double` using downward information.
-The return type of the closure is inferred as `int` using upward information.
-Dart uses this return type as upward information when inferring the `map()`
-method's type argument: `<int>`.
+No último exemplo, `x` é inferido como `double` usando informação descendente.
+O tipo de retorno do closure é inferido como `int` usando informação ascendente.
+Dart usa esse tipo de retorno como informação ascendente ao inferir o argumento de tipo
+do método `map()`: `<int>`.
 
-#### Inference using bounds
+#### Inferência usando limites {:#inference-using-bounds}
 
 :::version-note
-Inference using bounds requires a [language version][] of at least 3.7.0.
+Inferência usando limites requer uma [language version][] de pelo menos 3.7.0.
 :::
 
-With the inference using bounds feature,
-Dart's type inference algorithm generates constraints by
-combining existing constraints with the declared type bounds,
-not just best-effort approximations.
+Com o recurso de inferência usando limites,
+o algoritmo de inferência de tipos do Dart gera restrições combinando
+restrições existentes com os limites de tipo declarados,
+não apenas aproximações de melhor esforço.
 
-This is especially important for [F-bounded][] types,
-where inference using bounds correctly infers that, in the example below,
-`X` can be bound to `B`.
-Without the feature, the type argument must be specified explicitly: `f<B>(C())`:
+Isso é especialmente importante para tipos [F-bounded][],
+onde a inferência usando limites infere corretamente que, no exemplo abaixo,
+`X` pode ser vinculado a `B`.
+Sem o recurso, o argumento de tipo deve ser especificado explicitamente: `f<B>(C())`:
 
 <?code-excerpt "lib/strong_analysis.dart (inference-using-bounds)"?>
 ```dart
@@ -447,7 +448,7 @@ void main() {
 }
 ```
 
-Here's a more realistic example using everyday types in Dart like `int` or `num`:
+Aqui está um exemplo mais realista usando tipos do dia a dia em Dart como `int` ou `num`:
 
 <?code-excerpt "lib/bounded/instantiate_to_bound.dart (inference-using-bounds-2)"?>
 ```dart
@@ -459,12 +460,12 @@ void main() {
 }
 ```
 
-With inference using bounds, Dart can *deconstruct* type arguments,
-extracting type information from a generic type parameter's bound.
-This allows functions like `f` in the following example to preserve both the
-specific iterable type (`List` or `Set`) *and* the element type.
-Before inference using bounds, this wasn't possible 
-without losing type safety or specific type information.
+Com inferência usando limites, Dart pode *desconstruir* argumentos de tipo,
+extraindo informações de tipo do limite de um parâmetro de tipo genérico.
+Isso permite que funções como `f` no exemplo a seguir preservem tanto o
+tipo específico de iterável (`List` ou `Set`) *quanto* o tipo de elemento.
+Antes da inferência usando limites, isso não era possível
+sem perder segurança de tipo ou informações de tipo específicas.
 
 ```dart
 (X, Y) f<X extends Iterable<Y>, Y>(X x) => (x, x.first);
@@ -478,96 +479,96 @@ void main() {
 }
 ```
 
-Without inference using bounds, `myInt` would have the type `dynamic`.
-The previous inference algorithm wouldn't catch the incorrect expression
-`myInt.whatever` at compile time, and would instead throw at run time.
-Conversely, `mySet.union({})` would be a compile-time error
-without inference using bounds, because the previous algorithm couldn't
-preserve the information that `mySet` is a `Set`.
+Sem inferência usando limites, `myInt` teria o tipo `dynamic`.
+O algoritmo de inferência anterior não detectaria a expressão incorreta
+`myInt.whatever` em tempo de compilação, e lançaria em tempo de execução.
+Por outro lado, `mySet.union({})` seria um erro em tempo de compilação
+sem inferência usando limites, porque o algoritmo anterior não conseguia
+preservar a informação de que `mySet` é um `Set`.
 
-For more information on the inference using bounds algorithm,
-read the [design document][]. 
+Para mais informações sobre o algoritmo de inferência usando limites,
+leia o [documento de design][].
 
 
 [F-bounded]: /language/generics/#f-bounds
-[design document]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/3009-inference-using-bounds/design-document.md#motivating-example
+[documento de design]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/3009-inference-using-bounds/design-document.md#motivating-example
 
-## Substituting types
+## Substituindo tipos {:#substituting-types}
 
-When you override a method, you are replacing something of one type (in the
-old method) with something that might have a new type (in the new method).
-Similarly, when you pass an argument to a function,
-you are replacing something that has one type (a parameter
-with a declared type) with something that has another type
-(the actual argument). When can you replace something that
-has one type with something that has a subtype or a supertype?
+Quando você sobrescreve um método, está substituindo algo de um tipo (no
+método antigo) com algo que pode ter um novo tipo (no novo método).
+Da mesma forma, quando você passa um argumento para uma função,
+está substituindo algo que tem um tipo (um parâmetro
+com um tipo declarado) com algo que tem outro tipo
+(o argumento real). Quando você pode substituir algo que
+tem um tipo com algo que tem um subtipo ou um supertipo?
 
-When substituting types, it helps to think in terms of _consumers_
-and _producers_. A consumer absorbs a type and a producer generates a type.
+Ao substituir tipos, ajuda pensar em termos de _consumidores_
+e _produtores_. Um consumidor absorve um tipo e um produtor gera um tipo.
 
-**You can replace a consumer's type with a supertype and a producer's
-type with a subtype.**
+**Você pode substituir o tipo de um consumidor por um supertipo e o tipo de um produtor
+por um subtipo.**
 
-Let's look at examples of simple type assignment and assignment with
-generic types.
+Vejamos exemplos de atribuição de tipo simples e atribuição com
+tipos genéricos.
 
-### Simple type assignment
+### Atribuição de tipo simples {:#simple-type-assignment}
 
-When assigning objects to objects, when can you replace a type with a
-different type? The answer depends on whether the object is a consumer
-or a producer.
+Ao atribuir objetos a objetos, quando você pode substituir um tipo por um
+tipo diferente? A resposta depende se o objeto é um consumidor
+ou um produtor.
 
-Consider the following type hierarchy:
+Considere a seguinte hierarquia de tipos:
 
-<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
+<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="uma hierarquia de animais onde o supertipo é Animal e os subtipos são Alligator, Cat e HoneyBadger. Cat tem os subtipos Lion e MaineCoon">
 
-Consider the following simple assignment where `Cat c` is a _consumer_
-and `Cat()` is a _producer_:
+Considere a seguinte atribuição simples onde `Cat c` é um _consumidor_
+e `Cat()` é um _produtor_:
 
 <?code-excerpt "lib/strong_analysis.dart (Cat-Cat-ok)"?>
 ```dart
 Cat c = Cat();
 ```
 
-In a consuming position, it's safe to replace something that consumes a
-specific type (`Cat`) with something that consumes anything (`Animal`),
-so replacing `Cat c` with `Animal c` is allowed, because `Animal` is
-a supertype of `Cat`.
+Em uma posição de consumo, é seguro substituir algo que consome um
+tipo específico (`Cat`) com algo que consome qualquer coisa (`Animal`),
+então substituir `Cat c` por `Animal c` é permitido, porque `Animal` é
+um supertipo de `Cat`.
 
 <?code-excerpt "lib/strong_analysis.dart (Animal-Cat-ok)"?>
 ```dart tag=passes-sa
 Animal c = Cat();
 ```
 
-But replacing `Cat c` with `MaineCoon c` breaks type safety, because the
-superclass may provide a type of Cat with different behaviors, such
-as `Lion`:
+Mas substituir `Cat c` por `MaineCoon c` quebra a segurança de tipo, porque a
+superclasse pode fornecer um tipo de Cat com comportamentos diferentes, como
+`Lion`:
 
 <?code-excerpt "lib/strong_analysis.dart (MaineCoon-Cat-err)"?>
 ```dart tag=fails-sa
 MaineCoon c = Cat();
 ```
 
-In a producing position, it's safe to replace something that produces a
-type (`Cat`) with a more specific type (`MaineCoon`). So, the following
-is allowed:
+Em uma posição de produção, é seguro substituir algo que produz um
+tipo (`Cat`) com um tipo mais específico (`MaineCoon`). Então, o seguinte
+é permitido:
 
 <?code-excerpt "lib/strong_analysis.dart (Cat-MaineCoon-ok)"?>
 ```dart tag=passes-sa
 Cat c = MaineCoon();
 ```
 
-### Generic type assignment
+### Atribuição de tipo genérico {:#generic-type-assignment}
 
-Are the rules the same for generic types? Yes. Consider the hierarchy
-of lists of animals—a `List` of `Cat` is a subtype of a `List` of
-`Animal`, and a supertype of a `List` of `MaineCoon`:
+As regras são as mesmas para tipos genéricos? Sim. Considere a hierarquia
+de listas de animais—uma `List` de `Cat` é um subtipo de uma `List` de
+`Animal`, e um supertipo de uma `List` de `MaineCoon`:
 
 <img src="/assets/img/language/type-hierarchy-generics.png" class="diagram-wrap" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
 
-In the following example, 
-you can assign a `MaineCoon` list to `myCats`
-because `List<MaineCoon>` is a subtype of `List<Cat>`:
+No exemplo a seguir,
+você pode atribuir uma lista de `MaineCoon` a `myCats`
+porque `List<MaineCoon>` é um subtipo de `List<Cat>`:
 
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/<MaineCoon/<[!MaineCoon!]/g"?>
 ```dart tag=passes-sa
@@ -575,8 +576,8 @@ List<[!MaineCoon!]> myMaineCoons = ...
 List<Cat> myCats = myMaineCoons;
 ```
 
-What about going in the other direction? 
-Can you assign an `Animal` list to a `List<Cat>`?
+E quanto a ir na outra direção?
+Você pode atribuir uma lista de `Animal` a uma `List<Cat>`?
 
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/<Animal/<[!Animal!]/g"?>
 ```dart tag=fails-sa
@@ -584,12 +585,12 @@ List<[!Animal!]> myAnimals = ...
 List<Cat> myCats = myAnimals;
 ```
 
-This assignment doesn't pass static analysis 
-because it creates an implicit downcast, 
-which is disallowed from non-`dynamic` types such as `Animal`.
+Esta atribuição não passa na análise estática
+porque cria um downcast implícito,
+que não é permitido de tipos não-`dynamic` como `Animal`.
 
-To make this type of code pass static analysis, 
-you can use an explicit cast. 
+Para fazer este tipo de código passar na análise estática,
+você pode usar uma conversão explícita.
 
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 ```dart
@@ -597,36 +598,36 @@ List<Animal> myAnimals = ...
 List<Cat> myCats = myAnimals [!as List<Cat>!];
 ```
 
-An explicit cast might still fail at runtime, though,
-depending on the actual type of the list being cast (`myAnimals`).
+Uma conversão explícita ainda pode falhar em tempo de execução, no entanto,
+dependendo do tipo real da lista sendo convertida (`myAnimals`).
 
-### Methods
+### Métodos {:#methods}
 
-When overriding a method, the producer and consumer rules still apply.
-For example:
+Ao sobrescrever um método, as regras de produtor e consumidor ainda se aplicam.
+Por exemplo:
 
-<img src="/assets/img/language/consumer-producer-methods.png" class="diagram-wrap" alt="Animal class showing the chase method as the consumer and the parent getter as the producer">
+<img src="/assets/img/language/consumer-producer-methods.png" class="diagram-wrap" alt="Classe Animal mostrando o método chase como consumidor e o getter parent como produtor">
 
-For a consumer (such as the `chase(Animal)` method), you can replace
-the parameter type with a supertype. For a producer (such as
-the `parent` getter method), you can replace the return type with
-a subtype.
+Para um consumidor (como o método `chase(Animal)`), você pode substituir
+o tipo de parâmetro por um supertipo. Para um produtor (como
+o método getter `parent`), você pode substituir o tipo de retorno por
+um subtipo.
 
-For more information, see
-[Use sound return types when overriding methods](#use-proper-return-types)
-and [Use sound parameter types when overriding methods](#use-proper-param-types).
+Para mais informações, veja
+[Use tipos de retorno sound ao sobrescrever métodos](#use-proper-return-types)
+e [Use tipos de parâmetro sound ao sobrescrever métodos](#use-proper-param-types).
 
 <a id="covariant-keyword" aria-hidden="true"></a>
-#### Covariant parameters
+#### Parâmetros covariantes {:#covariant-parameters}
 
-Some (rarely used) coding patterns rely on tightening a type
-by overriding a parameter's type with a subtype, which is invalid.
-In this case, you can use the `covariant` keyword to
-tell the analyzer that you're doing this intentionally.
-This removes the static error and instead checks for an invalid
-argument type at runtime.
+Alguns padrões de código (raramente usados) dependem de apertar um tipo
+sobrescrevendo o tipo de um parâmetro com um subtipo, o que é inválido.
+Neste caso, você pode usar a palavra-chave `covariant` para
+informar ao analisador que você está fazendo isso intencionalmente.
+Isso remove o erro estático e, em vez disso, verifica se há um
+tipo de argumento inválido em tempo de execução.
 
-The following shows how you might use `covariant`:
+O seguinte mostra como você pode usar `covariant`:
 
 <?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
 ```dart tag=passes-sa
@@ -648,24 +649,24 @@ class Cat extends Animal {
 }
 ```
 
-Although this example shows using `covariant` in the subtype,
-the `covariant` keyword can be placed in either the superclass
-or the subclass method.
-Usually the superclass method is the best place to put it.
-The `covariant` keyword applies to a single parameter and is
-also supported on setters and fields.
+Embora este exemplo mostre usando `covariant` no subtipo,
+a palavra-chave `covariant` pode ser colocada no método da superclasse
+ou no método da subclasse.
+Geralmente o método da superclasse é o melhor lugar para colocá-la.
+A palavra-chave `covariant` se aplica a um único parâmetro e também é
+suportada em setters e campos.
 
-## Other resources
+## Outros recursos {:#other-resources}
 
-The following resources have further information on sound Dart:
+Os seguintes recursos têm mais informações sobre Dart sound:
 
-* [Fixing type promotion failures](/tools/non-promotion-reasons) -
-  Understand and learn how to fix type promotion errors.
+* [Corrigindo falhas de promoção de tipo](/tools/non-promotion-reasons) -
+  Entenda e aprenda como corrigir erros de promoção de tipo.
 * [Sound null safety](/null-safety) -
-  Learn about writing code with sound null safety.
-* [Customizing static analysis][analysis] -
-  How to set up and customize the analyzer and linter
-  using an analysis options file.
+  Aprenda sobre escrever código com sound null safety.
+* [Personalizando análise estática][analysis] -
+  Como configurar e personalizar o analisador e linter
+  usando um arquivo de opções de análise.
 
 
 [analysis]: /tools/analysis
