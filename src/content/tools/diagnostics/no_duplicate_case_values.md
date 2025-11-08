@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: no_duplicate_case_values
 description: >-
-  Details about the no_duplicate_case_values
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico no_duplicate_case_values
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -22,19 +23,19 @@ _The value of the case clause ('{0}') is equal to the value of an earlier case c
 
 ## Description
 
-The analyzer produces this diagnostic when two or more `case` clauses in
-the same `switch` statement have the same value.
+O analisador produz este diagnóstico quando duas ou mais cláusulas `case` no
+mesmo comando `switch` possuem o mesmo valor.
 
-Any `case` clauses after the first can't be executed, so having duplicate
-`case` clauses is misleading.
+Quaisquer cláusulas `case` após a primeira não podem ser executadas, então ter cláusulas
+`case` duplicadas é enganoso.
 
-This diagnostic is often the result of either a typo or a change to the
-value of a constant.
+Este diagnóstico frequentemente é o resultado de um erro de digitação ou de uma mudança no
+valor de uma constante.
 
 ## Example
 
-The following code produces this diagnostic because two case clauses have
-the same value (1):
+O código a seguir produz este diagnóstico porque duas cláusulas case possuem
+o mesmo valor (1):
 
 ```dart
 // @dart = 2.14
@@ -50,8 +51,8 @@ void f(int v) {
 
 ## Common fixes
 
-If one of the clauses should have a different value, then change the value
-of the clause:
+Se uma das cláusulas deveria ter um valor diferente, então mude o valor
+da cláusula:
 
 ```dart
 void f(int v) {
@@ -64,7 +65,7 @@ void f(int v) {
 }
 ```
 
-If the value is correct, then merge the statements into a single clause:
+Se o valor está correto, então mescle os comandos em uma única cláusula:
 
 ```dart
 void f(int v) {

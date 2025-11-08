@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: null_check_always_fails
 description: >-
-  Details about the null_check_always_fails
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico null_check_always_fails
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -11,16 +12,16 @@ _This null-check will always throw an exception because the expression will alwa
 
 ## Description
 
-The analyzer produces this diagnostic when the null check operator (`!`)
-is used on an expression whose value can only be `null`. In such a case
-the operator always throws an exception, which likely isn't the intended
-behavior.
+O analisador produz este diagnóstico quando o operador de verificação null (`!`)
+é usado em uma expressão cujo valor só pode ser `null`. Nesse caso
+o operador sempre lança uma exceção, o que provavelmente não é o comportamento
+pretendido.
 
 ## Example
 
-The following code produces this diagnostic because the function `g` will
-always return `null`, which means that the null check in `f` will always
-throw:
+O código a seguir produz este diagnóstico porque a função `g` sempre
+retornará `null`, o que significa que a verificação null em `f` sempre
+lançará uma exceção:
 
 ```dart
 void f() {
@@ -32,8 +33,8 @@ Null g() => null;
 
 ## Common fixes
 
-If you intend to always throw an exception, then replace the null check
-with an explicit `throw` expression to make the intent more clear:
+Se você pretende sempre lançar uma exceção, então substitua a verificação null
+por uma expressão `throw` explícita para tornar a intenção mais clara:
 
 ```dart
 void f() {
