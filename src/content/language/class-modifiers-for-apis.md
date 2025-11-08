@@ -60,7 +60,7 @@ você pode não ver nenhum erro.
 Mas você pode inadvertidamente quebrar usuários do seu pacote
 se eles estavam usando suas classes como mixins.
 
-### Migrando classes como mixins
+### Migrando classes como mixins {:#migrating-classes-as-mixins}
 
 Se a classe tem um construtor não-factory, uma cláusula `extends`
 ou uma cláusula `with`, então ela já não pode ser usada como mixin.
