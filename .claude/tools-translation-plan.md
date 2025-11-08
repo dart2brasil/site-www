@@ -376,11 +376,14 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
 
+### 20-Section-Prompts Progress (New Plan):
+- ✅ **PROMPT 13:** Diagnostic Errors (generic, getter, hash, if, illegal) - 9/9 files - 100% COMPLETE! 🎉
+
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+All sections 1-20 pending (original plan)
 
 ---
 

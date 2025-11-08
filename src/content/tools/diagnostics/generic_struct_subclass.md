@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: generic_struct_subclass
 description: >-
-  Details about the generic_struct_subclass
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico generic_struct_subclass
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't extend 'Struct' or 'Union' because '{0}' is generic._
+_A classe '{0}' não pode estender 'Struct' ou 'Union' porque '{0}' é generic._
 
 ## Description
 
-The analyzer produces this diagnostic when a subclass of either `Struct`
-or `Union` has a type parameter.
+O analisador produz este diagnóstico quando uma subclasse de `Struct`
+ou `Union` possui um parâmetro de tipo.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because the class `S` defines
-the type parameter `T`:
+O código a seguir produz este diagnóstico porque a classe `S` define
+o parâmetro de tipo `T`:
 
 ```dart
 import 'dart:ffi';
@@ -31,7 +32,7 @@ final class [!S!]<T> extends Struct {
 
 ## Common fixes
 
-Remove the type parameters from the class:
+Remova os parâmetros de tipo da classe:
 
 ```dart
 import 'dart:ffi';
