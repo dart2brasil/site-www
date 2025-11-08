@@ -1,36 +1,37 @@
 ---
+ia-translate: true
 title: ambiguous_import
 description: >-
-  Details about the ambiguous_import
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico ambiguous_import
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The name '{0}' is defined in the libraries {1}._
+_O nome '{0}' está definido nas bibliotecas {1}._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a name is referenced that is
-declared in two or more imported libraries.
+O analisador produz este diagnóstico quando um nome é referenciado que está
+declarado em duas ou mais bibliotecas importadas.
 
-## Example
+## Exemplo
 
-Given a library (`a.dart`) that defines a class (`C` in this example):
+Dada uma biblioteca (`a.dart`) que define uma classe (`C` neste exemplo):
 
 ```dart
 class A {}
 class C {}
 ```
 
-And a library (`b.dart`) that defines a different class with the same name:
+E uma biblioteca (`b.dart`) que define uma classe diferente com o mesmo nome:
 
 ```dart
 class B {}
 class C {}
 ```
 
-The following code produces this diagnostic:
+O código a seguir produz este diagnóstico:
 
 ```dart
 import 'a.dart';
@@ -39,10 +40,10 @@ import 'b.dart';
 void f([!C!] c1, [!C!] c2) {}
 ```
 
-## Common fixes
+## Correções comuns
 
-If any of the libraries aren't needed, then remove the import directives
-for them:
+Se alguma das bibliotecas não é necessária, então remova as diretivas import
+para elas:
 
 ```dart
 import 'a.dart';
@@ -50,8 +51,8 @@ import 'a.dart';
 void f(C c1, C c2) {}
 ```
 
-If the name is still defined by more than one library, then add a `hide`
-clause to the import directives for all except one library:
+Se o nome ainda está definido por mais de uma biblioteca, então adicione uma cláusula `hide`
+às diretivas import para todas exceto uma biblioteca:
 
 ```dart
 import 'a.dart' hide C;
@@ -60,9 +61,9 @@ import 'b.dart';
 void f(C c1, C c2) {}
 ```
 
-If you must be able to reference more than one of these types, then add a
-prefix to each of the import directives, and qualify the references with
-the appropriate prefix:
+Se você deve ser capaz de referenciar mais de um desses tipos, então adicione um
+prefixo a cada uma das diretivas import, e qualifique as referências com
+o prefixo apropriado:
 
 ```dart
 import 'a.dart' as a;
