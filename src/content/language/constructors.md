@@ -98,7 +98,7 @@ Uma subclasse não herda o construtor nomeado de uma superclasse.
 Para criar uma subclasse com um construtor nomeado definido na superclasse,
 implemente esse construtor na subclasse.
 
-### Construtores constantes
+### Construtores constantes {:#constant-constructors}
 
 Se sua classe produz objetos imutáveis, torne esses
 objetos constantes de tempo de compilação.
@@ -139,7 +139,7 @@ class Point {
 }
 ```
 
-### Construtores factory
+### Construtores factory {:#factory-constructors}
 
 Ao encontrar um dos seguintes dois casos de implementação de um construtor,
 use a keyword `factory`:
