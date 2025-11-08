@@ -375,12 +375,13 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 7 (20-section-prompts):** Diagnostic Errors - camel_case/cancel/cast (6/6 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+All other sections pending
 
 ---
 

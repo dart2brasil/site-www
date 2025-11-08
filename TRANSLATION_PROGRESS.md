@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 101 files (with ia-translate: true metadata)
+- **Remaining:** ~844 files
+- **Progress:** 10.7%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 46 (43 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 101 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -66,11 +66,20 @@
 39. ✅ `src/content/effective-dart/style.md` - From merged PR
 40. ✅ `src/content/effective-dart/usage.md` - From merged PR
 
+#### Section 7: Diagnostic Errors - camel_case/cancel/cast (6 files)
+41. ✅ `src/content/tools/diagnostics/camel_case_extensions.md` - Section 7
+42. ✅ `src/content/tools/diagnostics/camel_case_types.md` - Section 7
+43. ✅ `src/content/tools/diagnostics/cancel_subscriptions.md` - Section 7
+44. ✅ `src/content/tools/diagnostics/cast_from_null_always_fails.md` - Section 7
+45. ✅ `src/content/tools/diagnostics/cast_from_nullable_always_fails.md` - Section 7
+46. ✅ `src/content/tools/diagnostics/cast_to_non_type.md` - Section 7
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ⏳ **Tools:** 21/~776 files (2.7%)
+  - ✅ Section 7: Diagnostic Errors (camel_case/cancel/cast) - 6 files complete!
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -100,8 +109,8 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (46 files this session including merge)
+Progress: 10.7% complete (101/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉
