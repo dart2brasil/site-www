@@ -1,8 +1,8 @@
 ---
 ia-translate: true
-title: Começando com interoperabilidade JavaScript
+title: "Começando com interoperabilidade JavaScript"
 breadcrumb: Primeiros passos
-description: Um exemplo básico de uso de APIs do navegador e uma biblioteca JS empacotada.
+description: "Um exemplo básico de uso de APIs do navegador e uma biblioteca JS empacotada."
 ---
 
 Este tutorial ensina os conceitos básicos de interação com JavaScript

@@ -2,7 +2,7 @@
 ia-translate: true
 title: Interoperabilidade com JavaScript
 shortTitle: JS interop
-description: Integre código JavaScript em sua aplicação web Dart.
+description: "Integre código JavaScript em sua aplicação web Dart."
 nextpage:
   url: /interop/js-interop/usage
   title: Usage

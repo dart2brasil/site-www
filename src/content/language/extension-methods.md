@@ -1,13 +1,13 @@
 ---
 ia-translate: true
-title: Métodos de Extensão
+title: "Métodos de Extensão"
 description: Aprenda como adicionar a APIs existentes.
 prevpage:
   url: /language/dot-shorthands
   title: Dot shorthands
 nextpage:
   url: /language/extension-types
-  title: Tipos de Extensão
+  title: "Tipos de Extensão"
 ---
 
 Métodos de extensão adicionam funcionalidade a bibliotecas existentes.

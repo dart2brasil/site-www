@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart pub upgrade
-description: Use `dart pub upgrade` para obter as versões mais recentes de todas as dependências usadas pelo seu aplicativo Dart.
+description: "Use `dart pub upgrade` para obter as versões mais recentes de todas as dependências usadas pelo seu aplicativo Dart."
 ---
 
 _Upgrade_ (atualizar) é um dos comandos da [ferramenta pub](/tools/pub/cmd).

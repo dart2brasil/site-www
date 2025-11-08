@@ -1,11 +1,11 @@
 ---
 ia-translate: true
-title: Interoperação JS anterior
+title: "Interoperação JS anterior"
 breadcrumb: Contexto
-description: Arquivo do suporte anterior de interoperação JS do Dart.
+description: "Arquivo do suporte anterior de interoperação JS do Dart."
 prevpage:
   url: /interop/js-interop/tutorials
-  title: Tutoriais de interoperação JS
+  title: "Tutoriais de interoperação JS"
 nextpage:
   url: /interop/js-interop/package-web/
   title: Migrar para package:web

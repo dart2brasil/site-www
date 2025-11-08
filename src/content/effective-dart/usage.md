@@ -2,13 +2,13 @@
 ia-translate: true
 title: "Dart Efetivo: Uso"
 breadcrumb: Uso
-description: Diretrizes para usar recursos da linguagem para escrever código de fácil manutenção.
+description: "Diretrizes para usar recursos da linguagem para escrever código de fácil manutenção."
 nextpage:
   url: /effective-dart/design
   title: Design
 prevpage:
   url: /effective-dart/documentation
-  title: Documentação
+  title: "Documentação"
 ---
 <?code-excerpt plaster="none"?>
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>

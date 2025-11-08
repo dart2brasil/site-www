@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: Abreviações com ponto (Dot shorthands)
-description: Aprenda sobre a sintaxe de abreviação com ponto em Dart.
+title: "Abreviações com ponto (Dot shorthands)"
+description: "Aprenda sobre a sintaxe de abreviação com ponto em Dart."
 prevpage:
   url: /language/enums
   title: Enums

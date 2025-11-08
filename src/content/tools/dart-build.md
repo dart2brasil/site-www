@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart build
-description: Ferramenta de linha de comando para compilar aplicações Dart.
+description: "Ferramenta de linha de comando para compilar aplicações Dart."
 ---
 
 :::version-note

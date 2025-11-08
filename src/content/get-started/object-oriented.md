@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: Programação orientada a objetos em Dart
+title: "Programação orientada a objetos em Dart"
 shortTitle: Dart orientado a objetos
 description: >-
   Aprenda sobre programação orientada a objetos em Dart, incluindo

@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: Tutoriais de interoperação JS
+title: "Tutoriais de interoperação JS"
 breadcrumb: Tutoriais
 description: Tutoriais para casos de uso comuns de interoperabilidade JavaScript em Dart.
 prevpage:
@@ -8,7 +8,7 @@ prevpage:
   title: Tipos JS
 nextpage:
   url: /interop/js-interop/past-js-interop
-  title: Interoperação JS anterior
+  title: "Interoperação JS anterior"
 ---
 
 ## Tutoriais {:#tutorials}

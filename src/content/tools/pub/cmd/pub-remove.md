@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart pub remove
-description: Use dart pub remove para remover uma dependência.
+description: "Use dart pub remove para remover uma dependência."
 ---
 
 _Remove_ (remover) é um dos comandos da [ferramenta pub](/tools/pub/cmd).

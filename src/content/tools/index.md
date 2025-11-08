@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Ferramentas
-description: As ferramentas que dão suporte à linguagem Dart.
+description: "As ferramentas que dão suporte à linguagem Dart."
 ---
 
 Quando estiver pronto para criar um aplicativo, obtenha o SDK e as

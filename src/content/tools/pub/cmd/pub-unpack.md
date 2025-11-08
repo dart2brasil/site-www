@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart pub unpack
-description: Baixa um pacote e descompacta seu conteúdo localmente.
+description: "Baixa um pacote e descompacta seu conteúdo localmente."
 ---
 
 :::version-note

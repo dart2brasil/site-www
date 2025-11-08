@@ -2,7 +2,7 @@
 ia-translate: true
 title: Comunidade e suporte
 shortTitle: Comunidade
-description: Comunidades, listas de discussão e bancos de dados de bugs para o projeto Dart.
+description: "Comunidades, listas de discussão e bancos de dados de bugs para o projeto Dart."
 group: https://groups.google.com/a/dartlang.org
 showBreadcrumbs: false
 ---

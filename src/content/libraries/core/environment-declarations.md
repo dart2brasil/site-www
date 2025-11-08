@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: Configurando aplicativos com declarações de ambiente de compilação
+title: "Configurando aplicativos com declarações de ambiente de compilação"
 description: >-
   Learn about using compilation environment declarations 
   to customize application behavior.

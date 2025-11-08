@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: Variáveis
-description: Aprenda sobre variáveis em Dart.
+title: "Variáveis"
+description: "Aprenda sobre variáveis em Dart."
 prevpage:
   url: /language
   title: Introduction

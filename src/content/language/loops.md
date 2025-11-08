@@ -1,13 +1,13 @@
 ---
 ia-translate: true
 title: Loops
-description: Aprenda como usar loops para controlar o fluxo do seu código Dart.
+description: "Aprenda como usar loops para controlar o fluxo do seu código Dart."
 prevpage:
   url: /language/pattern-types
   title: Pattern types
 nextpage:
   url: /language/branches
-  title: Ramificações
+  title: "Ramificações"
 ---
 
 Esta página mostra como você pode controlar o fluxo do seu código Dart usando loops e

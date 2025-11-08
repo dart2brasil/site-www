@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Tipos Embutidos
-description: Informações sobre os tipos que o Dart suporta.
+description: "Informações sobre os tipos que o Dart suporta."
 prevpage:
   url: /language/comments
   title: Comments

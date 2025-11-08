@@ -7,7 +7,7 @@ prevpage:
   title: Classes
 nextpage:
   url: /language/methods
-  title: Métodos
+  title: "Métodos"
 ---
 
 Construtores são funções especiais que criam instâncias de classes.

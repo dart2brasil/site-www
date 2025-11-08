@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart pub outdated
-description: Use dart pub outdated para ajudar você a atualizar as dependências do seu pacote.
+description: "Use dart pub outdated para ajudar você a atualizar as dependências do seu pacote."
 ---
 
 _Outdated_ (Desatualizado) é um dos comandos da [ferramenta pub](/tools/pub/cmd).

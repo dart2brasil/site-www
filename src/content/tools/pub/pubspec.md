@@ -2,7 +2,7 @@
 ia-translate: true
 title: O arquivo pubspec
 shortTitle: Arquivo Pubspec
-description: Guia de referência para os campos em pubspec.yaml.
+description: "Guia de referência para os campos em pubspec.yaml."
 ---
 
 Todo [pacote pub](/tools/pub/packages) precisa de alguns metadados para que possa especificar suas

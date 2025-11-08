@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: Referência de Modificadores de Classe
+title: "Referência de Modificadores de Classe"
 description: >-
   As combinações permitidas e não permitidas de modificadores de classe.
 prevpage:
@@ -8,7 +8,7 @@ prevpage:
   title: Modificadores de classe
 nextpage:
   url: /language/concurrency
-  title: Concorrência em Dart
+  title: "Concorrência em Dart"
 ---
 
 Esta página contém informações de referência para

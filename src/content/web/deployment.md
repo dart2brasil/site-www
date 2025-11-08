@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: Implantação na Web
-description: Aprenda como construir seu aplicativo web Dart para implantação em produção.
+title: "Implantação na Web"
+description: "Aprenda como construir seu aplicativo web Dart para implantação em produção."
 ---
 
 A implantação de um aplicativo web Dart funciona como a implantação de qualquer outro aplicativo web.

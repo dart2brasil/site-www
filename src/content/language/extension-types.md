@@ -1,13 +1,13 @@
 ---
 ia-translate: true
-title: Tipos de extensão
-description: Aprenda como escrever uma interface estática para um tipo existente.
+title: "Tipos de extensão"
+description: "Aprenda como escrever uma interface estática para um tipo existente."
 prevpage:
   url: /language/extension-methods
-  title: Métodos de extensão
+  title: "Métodos de extensão"
 nextpage:
   url: /language/callable-objects
-  title: Objetos invocáveis
+  title: "Objetos invocáveis"
 ---
 
 An extension type is a compile-time abstraction that "wraps"

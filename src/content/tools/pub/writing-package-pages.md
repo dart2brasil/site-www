@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: Escrevendo páginas de pacotes
-description: Aprenda como escrever uma boa página de pacote.
+title: "Escrevendo páginas de pacotes"
+description: "Aprenda como escrever uma boa página de pacote."
 ---
 
 <style>

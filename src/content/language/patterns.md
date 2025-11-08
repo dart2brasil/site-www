@@ -1,13 +1,13 @@
 ---
 ia-translate: true
-title: Padrões
-description: Resumo de padrões em Dart.
+title: "Padrões"
+description: "Resumo de padrões em Dart."
 prevpage:
   url: /language/type-system
   title: Sistema de tipos
 nextpage:
   url: /language/pattern-types
-  title: Tipos de padrões
+  title: "Tipos de padrões"
 ---
 
 :::version-note

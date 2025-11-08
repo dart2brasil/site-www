@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart info
-description: Ferramenta de linha de comando para exibir informações de diagnóstico do tooling do Dart.
+description: "Ferramenta de linha de comando para exibir informações de diagnóstico do tooling do Dart."
 showToc: false
 ---
 

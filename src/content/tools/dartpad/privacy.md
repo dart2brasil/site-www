@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Aviso de Privacidade do DartPad
-description: Como o Google usa o código fonte que você insere no DartPad.
+description: "Como o Google usa o código fonte que você insere no DartPad."
 showToc: false
 ---
 

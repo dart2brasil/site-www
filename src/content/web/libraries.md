@@ -2,7 +2,7 @@
 ia-translate: true
 title: Bibliotecas e pacotes web
 shortTitle: Bibliotecas web
-description: Bibliotecas e pacotes que podem ajudá-lo a escrever aplicações web Dart.
+description: "Bibliotecas e pacotes que podem ajudá-lo a escrever aplicações web Dart."
 ---
 
 Dart fornece diversos pacotes e bibliotecas para suportar o desenvolvimento de

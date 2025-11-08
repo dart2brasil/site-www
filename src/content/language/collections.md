@@ -1,13 +1,13 @@
 ---
 ia-translate: true
-title: Coleções
-description: Resumo dos diferentes tipos de coleções em Dart.
+title: "Coleções"
+description: "Resumo dos diferentes tipos de coleções em Dart."
 prevpage:
   url: /language/records
   title: Registros
 nextpage:
   url: /language/generics
-  title: Genéricos
+  title: "Genéricos"
 ---
 
 Dart possui suporte interno para [coleções][collections] do tipo lista, set e map.

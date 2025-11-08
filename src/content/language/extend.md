@@ -4,7 +4,7 @@ title: Estender uma classe
 description: Aprenda como criar subclasses a partir de uma superclasse.
 prevpage:
   url: /language/methods
-  title: Métodos
+  title: "Métodos"
 nextpage:
   url: /language/mixins
   title: Mixins

@@ -2,7 +2,7 @@
 ia-translate: true
 title: Plataforma web
 shortTitle: Web
-description: Recursos para desenvolver aplicações web Dart.
+description: "Recursos para desenvolver aplicações web Dart."
 showToc: false
 ---
 

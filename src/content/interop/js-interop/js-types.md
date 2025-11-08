@@ -2,13 +2,13 @@
 ia-translate: true
 title: Tipos JS
 breadcrumb: Tipos
-description: Informações de uso sobre os tipos principais em interoperação JS.
+description: "Informações de uso sobre os tipos principais em interoperação JS."
 prevpage:
   url: /interop/js-interop/usage
   title: Uso
 nextpage:
   url: /interop/js-interop/tutorials
-  title: Tutoriais de interoperação JS
+  title: "Tutoriais de interoperação JS"
 ---
 
 Valores Dart e valores JS pertencem a domínios de linguagem separados. Ao compilar para

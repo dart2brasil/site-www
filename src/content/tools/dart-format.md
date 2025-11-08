@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: dart format
-description: Ferramenta de linha de comando para formatar código-fonte Dart.
+description: "Ferramenta de linha de comando para formatar código-fonte Dart."
 ---
 
 Para atualizar seu código para seguir as

@@ -2,7 +2,7 @@
 ia-translate: true
 title: Criando streams em Dart
 shortTitle: Criando streams
-description: Um stream é uma sequência de resultados; aprenda como criar o seu próprio.
+description: "Um stream é uma sequência de resultados; aprenda como criar o seu próprio."
 original-date: 2013-04-08
 date: 2021-05-16
 ---

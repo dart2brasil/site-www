@@ -1,10 +1,10 @@
 ---
 ia-translate: true
-title: Genéricos (Generics)
-description: Aprenda sobre tipos genéricos em Dart.
+title: "Genéricos (Generics)"
+description: "Aprenda sobre tipos genéricos em Dart."
 prevpage:
   url: /language/collections
-  title: Coleções
+  title: "Coleções"
 nextpage:
   url: /language/typedefs
   title: Typedefs

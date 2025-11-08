@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Metadados
-description: Metadados e anotações em Dart.
+description: "Metadados e anotações em Dart."
 prevpage:
   url: /language/functions
   title: Functions

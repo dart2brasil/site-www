@@ -9,7 +9,7 @@ prevpage:
   title: Modificadores de classe
 nextpage:
   url: /language/modifier-reference
-  title: Referência de modificadores de classe
+  title: "Referência de modificadores de classe"
 ---
 
 O Dart 3.0 adiciona alguns [novos modificadores][class modifiers]

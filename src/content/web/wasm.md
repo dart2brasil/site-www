@@ -1,6 +1,6 @@
 ---
 ia-translate: true
-title: Compilação WebAssembly (Wasm)
+title: "Compilação WebAssembly (Wasm)"
 description: Aprenda como compilar seu aplicativo web Dart para WebAssembly.
 ---
 
