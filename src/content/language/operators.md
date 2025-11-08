@@ -1,6 +1,7 @@
 ---
-title: Operators
-description: Learn about the operators Dart supports.
+title: Operadores
+description: Aprenda sobre os operadores que Dart suporta.
+ia-translate: true
 prevpage:
   url: /language/variables
   title: Variables
@@ -13,44 +14,44 @@ nextpage:
 
 <a name="operators"></a>
 
-Dart supports the operators shown in the following table.
-The table shows Dart's operator associativity 
-and [operator precedence](#operator-precedence-example) from highest to lowest,
-which are an **approximation** of Dart's operator relationships.
-You can implement many of these [operators as class members][].
+Dart suporta os operadores mostrados na tabela a seguir.
+A tabela mostra a associatividade de operadores do Dart
+e [precedência de operadores](#operator-precedence-example) do mais alto ao mais baixo,
+que são uma **aproximação** das relações de operadores do Dart.
+Você pode implementar muitos desses [operadores como membros de classe][].
 
-| Description                             | Operator                                                                                           | Associativity |
-|-----------------------------------------|----------------------------------------------------------------------------------------------------|---------------|
-| unary postfix                           | *`expr`*`++`    *`expr`*`--`    `()`    `[]`    `?[]`    `.`    `?.`    `!`                        | None          |
-| unary prefix                            | `-`*`expr`*    `!`*`expr`*    `~`*`expr`*    `++`*`expr`*    `--`*`expr`*      `await` *`expr`*    | None          |
-| multiplicative                          | `*`    `/`    `%`    `~/`                                                                          | Left          |
-| additive                                | `+`    `-`                                                                                         | Left          |
-| shift                                   | `<<`    `>>`    `>>>`                                                                              | Left          |
-| bitwise AND                             | `&`                                                                                                | Left          |
-| bitwise XOR                             | `^`                                                                                                | Left          |
-| bitwise OR                              | <code>&#124;</code>                                                                                | Left          |
-| relational and type test                | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                | None          |
-| equality                                | `==`    `!=`                                                                                       | None          |
-| logical AND                             | `&&`                                                                                               | Left          |
-| logical OR                              | <code>&#124;&#124;</code>                                                                          | Left          |
-| if-null                                 | `??`                                                                                               | Left          |
-| conditional                             | *`expr1`*    `?`    *`expr2`*    `:`    *`expr3`*                                                  | Right         |
-| cascade                                 | `..`    `?..`                                                                                      | Left          |
-| assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    *etc.*                                      | Right         |
-| spread  ([See note](#spread-operators)) | `...`    `...?`                                                                                    | None          |
+| Descrição                               | Operador                                                                                           | Associatividade |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------|-----------------|
+| unário pós-fixado                       | *`expr`*`++`    *`expr`*`--`    `()`    `[]`    `?[]`    `.`    `?.`    `!`                        | Nenhuma         |
+| unário prefixado                        | `-`*`expr`*    `!`*`expr`*    `~`*`expr`*    `++`*`expr`*    `--`*`expr`*      `await` *`expr`*    | Nenhuma         |
+| multiplicativo                          | `*`    `/`    `%`    `~/`                                                                          | Esquerda        |
+| aditivo                                 | `+`    `-`                                                                                         | Esquerda        |
+| deslocamento                            | `<<`    `>>`    `>>>`                                                                              | Esquerda        |
+| AND bit a bit                           | `&`                                                                                                | Esquerda        |
+| XOR bit a bit                           | `^`                                                                                                | Esquerda        |
+| OR bit a bit                            | <code>&#124;</code>                                                                                | Esquerda        |
+| relacional e teste de tipo             | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                | Nenhuma         |
+| igualdade                               | `==`    `!=`                                                                                       | Nenhuma         |
+| AND lógico                              | `&&`                                                                                               | Esquerda        |
+| OR lógico                               | <code>&#124;&#124;</code>                                                                          | Esquerda        |
+| se-nulo                                 | `??`                                                                                               | Esquerda        |
+| condicional                             | *`expr1`*    `?`    *`expr2`*    `:`    *`expr3`*                                                  | Direita         |
+| cascata                                 | `..`    `?..`                                                                                      | Esquerda        |
+| atribuição                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    *etc.*                                      | Direita         |
+| spread  ([Veja nota](#spread-operators)) | `...`    `...?`                                                                                    | Nenhuma         |
 
 {:.table .table-striped}
 
 :::warning
-The previous table should only be used as a helpful guide.
-The notion of operator precedence and associativity
-is an approximation of the truth found in the language grammar.
-You can find the authoritative behavior of Dart's operator relationships
-in the grammar defined in the [Dart language specification][].
+A tabela anterior deve ser usada apenas como um guia útil.
+A noção de precedência e associatividade de operadores
+é uma aproximação da verdade encontrada na gramática da linguagem.
+Você pode encontrar o comportamento autoritativo das relações de operadores do Dart
+na gramática definida na [especificação da linguagem Dart][].
 :::
 
-When you use operators, you create expressions. Here are some examples
-of operator expressions:
+Quando você usa operadores, você cria expressões. Aqui estão alguns exemplos
+de expressões de operadores:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (expressions)" replace="/,//g"?>
 ```dart
@@ -62,15 +63,15 @@ c ? a : b
 a is T
 ```
 
-## Operator precedence example
+## Exemplo de precedência de operadores
 
-In the [operator table](#operators),
-each operator has higher precedence than the operators in the rows
-that follow it. For example, the multiplicative operator `%` has higher
-precedence than (and thus executes before) the equality operator `==`,
-which has higher precedence than the logical AND operator `&&`. That
-precedence means that the following two lines of code execute the same
-way:
+Na [tabela de operadores](#operators),
+cada operador tem precedência maior que os operadores nas linhas
+que o seguem. Por exemplo, o operador multiplicativo `%` tem precedência maior
+que (e portanto executa antes) o operador de igualdade `==`,
+que tem precedência maior que o operador AND lógico `&&`. Essa
+precedência significa que as duas linhas de código a seguir executam da mesma
+forma:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 ```dart
@@ -86,29 +87,29 @@ if (n % i == 0 && d % i == 0) {
 ```
 
 :::warning
-For operators that take two operands, the leftmost operand determines which
-method is used. For example, if you have a `Vector` object and
-a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
+Para operadores que recebem dois operandos, o operando mais à esquerda determina qual
+método é usado. Por exemplo, se você tiver um objeto `Vector` e
+um objeto `Point`, então `aVector + aPoint` usa adição (`+`) de `Vector`.
 :::
 
 
-## Arithmetic operators
+## Operadores aritméticos
 
-Dart supports the usual arithmetic operators, as shown in the following table.
+Dart suporta os operadores aritméticos usuais, conforme mostrado na tabela a seguir.
 
-| Operator    | Meaning                                                                  |
-|-------------|--------------------------------------------------------------------------|
-| `+`         | Add                                                                      |
-| `-`         | Subtract                                                                 |
-| `-`*`expr`* | Unary minus, also known as negation (reverse the sign of the expression) |
-| `*`         | Multiply                                                                 |
-| `/`         | Divide                                                                   |
-| `~/`        | Divide, returning an integer result                                      |
-| `%`         | Get the remainder of an integer division (modulo)                        |
+| Operador    | Significado                                                                |
+|-------------|---------------------------------------------------------------------------|
+| `+`         | Adicionar                                                                 |
+| `-`         | Subtrair                                                                  |
+| `-`*`expr`* | Menos unário, também conhecido como negação (inverter o sinal da expressão) |
+| `*`         | Multiplicar                                                               |
+| `/`         | Dividir                                                                   |
+| `~/`        | Dividir, retornando um resultado inteiro                                  |
+| `%`         | Obter o resto de uma divisão inteira (módulo)                             |
 
 {:.table .table-striped}
 
-Example:
+Exemplo:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (arithmetic)"?>
 ```dart
@@ -122,19 +123,18 @@ assert(5 % 2 == 1); // Remainder
 assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
 ```
 
-Dart also supports both prefix and postfix increment and decrement
-operators.
+Dart também suporta operadores de incremento e decremento tanto prefixados quanto pós-fixados.
 
-| Operator                    | Meaning                                            |
-|-----------------------------|----------------------------------------------------|
-| `++`*`var`* | *`var`*  `=`  *`var `*  `+ 1` (expression value is *`var`* ` + 1`) |
-| *`var`*`++` | *`var`*  `=`  *`var `*  `+ 1` (expression value is *`var`*)        |
-| `--`*`var`* | *`var`*  `=`  *`var `*  `- 1` (expression value is *`var`* ` - 1`) |
-| *`var`*`--` | *`var`*  `=`  *`var `*  `- 1` (expression value is *`var`*)       |
+| Operador                    | Significado                                            |
+|-----------------------------|--------------------------------------------------------|
+| `++`*`var`* | *`var`*  `=`  *`var `*  `+ 1` (valor da expressão é *`var`* ` + 1`) |
+| *`var`*`++` | *`var`*  `=`  *`var `*  `+ 1` (valor da expressão é *`var`*)        |
+| `--`*`var`* | *`var`*  `=`  *`var `*  `- 1` (valor da expressão é *`var`* ` - 1`) |
+| *`var`*`--` | *`var`*  `=`  *`var `*  `- 1` (valor da expressão é *`var`*)       |
 
 {:.table .table-striped}
 
-Example:
+Exemplo:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (increment-decrement)"?>
 ```dart
@@ -159,36 +159,35 @@ assert(a != b); // -1 != 0
 ```
 
 
-## Equality and relational operators
+## Operadores de igualdade e relacionais
 
-The following table lists the meanings of equality and relational operators.
+A tabela a seguir lista os significados dos operadores de igualdade e relacionais.
 
-| Operator  | Meaning                                   |
+| Operador  | Significado                               |
 |-----------|-------------------------------------------|
-| `==`      | Equal; see discussion below               |
-| `!=`      | Not equal                                 |
-| `>`       | Greater than                              |
-| `<`       | Less than                                 |
-| `>=`      | Greater than or equal to                  |
-| `<=`      | Less than or equal to                     |
+| `==`      | Igual; veja discussão abaixo              |
+| `!=`      | Não igual                                 |
+| `>`       | Maior que                                 |
+| `<`       | Menor que                                 |
+| `>=`      | Maior ou igual a                          |
+| `<=`      | Menor ou igual a                          |
 
 {:.table .table-striped}
 
-To test whether two objects x and y represent the same thing, use the
-`==` operator. (In the rare case where you need to know whether two
-objects are the exact same object, use the [identical()][]
-function instead.) Here's how the `==` operator works:
+Para testar se dois objetos x e y representam a mesma coisa, use o
+operador `==`. (No caso raro onde você precisa saber se dois
+objetos são exatamente o mesmo objeto, use a função [identical()][]
+em vez disso.) Aqui está como o operador `==` funciona:
 
-1.  If *x* or *y* is null, return true if both are null, and false if only
-    one is null.
+1.  Se *x* ou *y* for null, retorne true se ambos forem null, e false se apenas
+    um for null.
 
-2.  Return the result of invoking the `==` method on *x* with the argument *y*.
-    (That's right, operators such as `==` are methods that
-    are invoked on their first operand.
-    For details, see [Operators][].)
+2.  Retorne o resultado de invocar o método `==` em *x* com o argumento *y*.
+    (Isso mesmo, operadores como `==` são métodos que
+    são invocados em seu primeiro operando.
+    Para detalhes, veja [Operadores][Operators].)
 
-Here's an example of using each of the equality and relational
-operators:
+Aqui está um exemplo de uso de cada um dos operadores de igualdade e relacionais:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (relational)"?>
 ```dart
@@ -201,32 +200,32 @@ assert(2 <= 3);
 ```
 
 
-## Type test operators
+## Operadores de teste de tipo
 
-The `as`, `is`, and `is!` operators are handy for checking types at
-runtime.
+Os operadores `as`, `is` e `is!` são úteis para verificar tipos em
+tempo de execução.
 
-| Operator  | Meaning                                              |
-|-----------|------------------------------------------------------|
-| `as`      | Typecast (also used to specify [library prefixes][]) |
-| `is`      | True if the object has the specified type            |
-| `is!`     | True if the object doesn't have the specified type   |
+| Operador  | Significado                                                 |
+|-----------|-------------------------------------------------------------|
+| `as`      | Typecast (também usado para especificar [prefixos de biblioteca][library prefixes]) |
+| `is`      | True se o objeto tem o tipo especificado                   |
+| `is!`     | True se o objeto não tem o tipo especificado               |
 
 {:.table .table-striped}
 
-The result of `obj is T` is true if `obj` implements the interface
-specified by `T`. For example, `obj is Object?` is always true.
+O resultado de `obj is T` é true se `obj` implementa a interface
+especificada por `T`. Por exemplo, `obj is Object?` é sempre true.
 
-Use the `as` operator to cast an object to a particular type if and only if
-you are sure that the object is of that type. Example:
+Use o operador `as` para converter um objeto para um tipo específico se e somente se
+você tiver certeza de que o objeto é desse tipo. Exemplo:
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp-as-person)"?>
 ```dart
 (employee as Person).firstName = 'Bob';
 ```
 
-If you aren't sure that the object is of type `T`, then use `is T` to check the
-type before using the object.
+Se você não tiver certeza de que o objeto é do tipo `T`, então use `is T` para verificar o
+tipo antes de usar o objeto.
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp-is-person)"?>
 ```dart
 if (employee is Person) {
@@ -236,15 +235,15 @@ if (employee is Person) {
 ```
 
 :::note
-The code isn't equivalent. If `employee` is null or not a `Person`, the
-first example throws an exception; the second does nothing.
+O código não é equivalente. Se `employee` for null ou não for uma `Person`, o
+primeiro exemplo lança uma exceção; o segundo não faz nada.
 :::
 
-## Assignment operators
+## Operadores de atribuição
 
-As you've already seen, you can assign values using the `=` operator.
-To assign only if the assigned-to variable is null,
-use the `??=` operator.
+Como você já viu, você pode atribuir valores usando o operador `=`.
+Para atribuir apenas se a variável atribuída for null,
+use o operador `??=`.
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (assignment)"?>
 ```dart
@@ -254,8 +253,8 @@ a = value;
 b ??= value;
 ```
 
-Compound assignment operators such as `+=` combine
-an operation with an assignment.
+Operadores de atribuição composta como `+=` combinam
+uma operação com uma atribuição.
 
 |      |       |       |        |                      |
 |------|-------|-------|--------|----------------------|
@@ -265,17 +264,16 @@ an operation with an assignment.
 
 {:.table}
 
-Here's how compound assignment operators work:
+Aqui está como os operadores de atribuição composta funcionam:
 
-|                           | Compound assignment | Equivalent expression |
+|                           | Atribuição composta | Expressão equivalente |
 |---------------------------|---------------------|-----------------------|
-| **For an operator *op*:** | `a `  *`op`*`= b`   | `a = a ` *`op `* `b`  |
-| **Example:**              | `a += b`            | `a = a + b`           |
+| **Para um operador *op*:** | `a `  *`op`*`= b`   | `a = a ` *`op `* `b`  |
+| **Exemplo:**              | `a += b`            | `a = a + b`           |
 
 {:.table}
 
-The following example uses assignment and compound assignment
-operators:
+O exemplo a seguir usa operadores de atribuição e atribuição composta:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (op-assign)"?>
 ```dart
@@ -285,20 +283,20 @@ assert(a == 6);
 ```
 
 
-## Logical operators
+## Operadores lógicos
 
-You can invert or combine boolean expressions using the logical
-operators.
+Você pode inverter ou combinar expressões booleanas usando os operadores
+lógicos.
 
-| Operator                   | Meaning                                                                  |
-|----------------------------|--------------------------------------------------------------------------|
-| `!`*`expr`*                | inverts the following expression (changes false to true, and vice versa) |
-| <code>&#124;&#124;</code>  | logical OR                                                               |
-| `&&`                       | logical AND                                                              |
+| Operador                   | Significado                                                                  |
+|----------------------------|------------------------------------------------------------------------------|
+| `!`*`expr`*                | inverte a expressão seguinte (muda false para true, e vice-versa)           |
+| <code>&#124;&#124;</code>  | OR lógico                                                                    |
+| `&&`                       | AND lógico                                                                   |
 
 {:.table .table-striped}
 
-Here's an example of using the logical operators:
+Aqui está um exemplo de uso dos operadores lógicos:
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (op-logical)"?>
 ```dart
@@ -308,31 +306,31 @@ if (!done && (col == 0 || col == 3)) {
 ```
 
 
-## Bitwise and shift operators
+## Operadores bit a bit e de deslocamento
 
-You can manipulate the individual bits of numbers in Dart. Usually,
-you'd use these bitwise and shift operators with integers.
+Você pode manipular os bits individuais de números em Dart. Normalmente,
+você usaria esses operadores bit a bit e de deslocamento com inteiros.
 
-| Operator            | Meaning                                               |
-|---------------------|-------------------------------------------------------|
-| `&`                 | AND                                                   |
-| <code>&#124;</code> | OR                                                    |
-| `^`                 | XOR                                                   |
-| `~`*`expr`*         | Unary bitwise complement (0s become 1s; 1s become 0s) |
-| `<<`                | Shift left                                            |
-| `>>`                | Shift right                                           |
-| `>>>`               | Unsigned shift right                                  |
+| Operador            | Significado                                               |
+|---------------------|-----------------------------------------------------------|
+| `&`                 | AND                                                       |
+| <code>&#124;</code> | OR                                                        |
+| `^`                 | XOR                                                       |
+| `~`*`expr`*         | Complemento bit a bit unário (0s se tornam 1s; 1s se tornam 0s) |
+| `<<`                | Deslocar à esquerda                                       |
+| `>>`                | Deslocar à direita                                        |
+| `>>>`               | Deslocamento à direita sem sinal                          |
 
 {:.table .table-striped}
 
 :::note
-The behavior of bitwise operations with large or negative operands
-might differ between platforms.
-To learn more, check out
-[Bitwise operations platform differences][].
+O comportamento de operações bit a bit com operandos grandes ou negativos
+pode diferir entre plataformas.
+Para saber mais, confira
+[Diferenças de plataforma em operações bit a bit][Bitwise operations platform differences].
 :::
 
-Here's an example of using bitwise and shift operators:
+Aqui está um exemplo de uso de operadores bit a bit e de deslocamento:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (op-bitwise)"?>
 ```dart
@@ -356,45 +354,45 @@ assert((-value >>> 4) > 0); // Unsigned shift right
 ```
 
 :::version-note
-The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
-requires a [language version][] of at least 2.14.
+O operador `>>>` (conhecido como _triple-shift_ ou _unsigned shift_)
+requer uma [versão de linguagem][language version] de pelo menos 2.14.
 :::
 
 [Bitwise operations platform differences]: /resources/language/number-representation#bitwise-operations
 
-## Conditional expressions
+## Expressões condicionais
 
-Dart has two operators that let you concisely evaluate expressions
-that might otherwise require [if-else][] statements:
+Dart tem dois operadores que permitem avaliar concisamente expressões
+que de outra forma poderiam exigir instruções [if-else][]:
 
 _`condition`_ `?` _`expr1`_ `:` _`expr2`_
-: If _condition_ is true, evaluates _expr1_ (and returns its value);
-  otherwise, evaluates and returns the value of _expr2_.
+: Se _condition_ for true, avalia _expr1_ (e retorna seu valor);
+  caso contrário, avalia e retorna o valor de _expr2_.
 
 _`expr1`_ `??` _`expr2`_
-: If _expr1_ is non-null, returns its value;
-  otherwise, evaluates and returns the value of _expr2_.
+: Se _expr1_ for não-null, retorna seu valor;
+  caso contrário, avalia e retorna o valor de _expr2_.
 
-When you need to assign a value
-based on a boolean expression,
-consider using the conditional operator `?` and `:`.
+Quando você precisa atribuir um valor
+baseado em uma expressão booleana,
+considere usar o operador condicional `?` e `:`.
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (if-then-else-operator)"?>
 ```dart
 var visibility = isPublic ? 'public' : 'private';
 ```
 
-If the boolean expression tests for null,
-consider using the if-null operator `??`
-(also known as the null-coalescing operator).
+Se a expressão booleana testa para null,
+considere usar o operador se-nulo `??`
+(também conhecido como operador de coalescência nula).
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (if-null)"?>
 ```dart
 String playerName(String? name) => name ?? 'Guest';
 ```
 
-The previous example could have been written at least two other ways,
-but not as succinctly:
+O exemplo anterior poderia ter sido escrito de pelo menos duas outras formas,
+mas não tão concisamente:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (if-null-alt)"?>
 ```dart
@@ -411,15 +409,15 @@ String playerName(String? name) {
 }
 ```
 
-## Cascade notation
+## Notação de cascata
 
-Cascades (`..`, `?..`) allow you to make a sequence of operations
-on the same object. In addition to accessing instance members,
-you can also call instance methods on that same object.
-This often saves you the step of creating a temporary variable and
-allows you to write more fluid code.
+Cascatas (`..`, `?..`) permitem que você faça uma sequência de operações
+no mesmo objeto. Além de acessar membros de instância,
+você também pode chamar métodos de instância nesse mesmo objeto.
+Isso frequentemente economiza a etapa de criar uma variável temporária e
+permite que você escreva código mais fluido.
 
-Consider the following code:
+Considere o código a seguir:
 
 <?code-excerpt "misc/lib/language_tour/cascades.dart (cascade)"?>
 ```dart
@@ -429,13 +427,13 @@ var paint = Paint()
   ..strokeWidth = 5.0;
 ```
 
-The constructor, `Paint()`,
-returns a `Paint` object.
-The code that follows the cascade notation operates
-on this object, ignoring any values that
-might be returned.
+O construtor, `Paint()`,
+retorna um objeto `Paint`.
+O código que segue a notação de cascata opera
+neste objeto, ignorando quaisquer valores que
+possam ser retornados.
 
-The previous example is equivalent to this code:
+O exemplo anterior é equivalente a este código:
 
 <?code-excerpt "misc/lib/language_tour/cascades.dart (cascade-expanded)"?>
 ```dart
@@ -445,10 +443,10 @@ paint.strokeCap = StrokeCap.round;
 paint.strokeWidth = 5.0;
 ```
 
-If the object that the cascade operates on can be null,
-then use a _null-shorting_ cascade (`?..`) for the first operation.
-Starting with `?..` guarantees that none of the cascade operations
-are attempted on that null object.
+Se o objeto no qual a cascata opera pode ser null,
+então use uma cascata _null-shorting_ (`?..`) para a primeira operação.
+Começar com `?..` garante que nenhuma das operações de cascata
+seja tentada naquele objeto null.
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
@@ -460,7 +458,7 @@ document.querySelector('#confirm') // Get an object.
   ..scrollIntoView();
 ```
 
-The previous code is equivalent to the following:
+O código anterior é equivalente ao seguinte:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
 ```dart
@@ -471,7 +469,7 @@ button?.onClick.listen((e) => window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
 
-You can also nest cascades. For example:
+Você também pode aninhar cascatas. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (nested-cascades)"?>
 ```dart
@@ -487,8 +485,8 @@ final addressBook =
         .build();
 ```
 
-Be careful to construct your cascade on a function that returns
-an actual object. For example, the following code fails:
+Tenha cuidado para construir sua cascata em uma função que retorna
+um objeto real. Por exemplo, o código a seguir falha:
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (cannot-cascade-on-void)" plaster="none"?>
 ```dart
@@ -497,54 +495,54 @@ sb.write('foo')
   ..write('bar'); // Error: method 'write' isn't defined for 'void'.
 ```
 
-The `sb.write()` call returns void,
-and you can't construct a cascade on `void`.
+A chamada `sb.write()` retorna void,
+e você não pode construir uma cascata em `void`.
 
 :::note
-Strictly speaking, the "double dot" notation for cascades isn't an operator.
-It's just part of the Dart syntax.
+Estritamente falando, a notação "ponto duplo" para cascatas não é um operador.
+É apenas parte da sintaxe Dart.
 :::
 
-## Spread operators
+## Operadores spread
 
-Spread operators evaluate an expression that yields a collection,
-unpacks the resulting values, and inserts them into another collection.
+Operadores spread avaliam uma expressão que produz uma coleção,
+desempacotam os valores resultantes e os inserem em outra coleção.
 
-**The spread operator isn't actually an operator expression**.
-The `...`/`...?` syntax is part of the collection literal itself.
-So, you can learn more about spread operators on the
-[Collections](/language/collections#spread-operators) page.
+**O operador spread não é realmente uma expressão de operador**.
+A sintaxe `...`/`...?` faz parte do próprio literal de coleção.
+Então, você pode aprender mais sobre operadores spread na
+página [Coleções](/language/collections#spread-operators).
 
-Because it isn't an operator, the syntax doesn't
-have any "[operator precedence](#operators)".
-Effectively, it has the lowest "precedence" &mdash;
-any kind of expression is valid as the spread target, such as:
+Porque não é um operador, a sintaxe não
+tem nenhuma "[precedência de operadores](#operators)".
+Efetivamente, ela tem a "precedência" mais baixa &mdash;
+qualquer tipo de expressão é válido como alvo spread, como:
 
 ```dart
 [...a + b]
 ```
 
-## Other operators
+## Outros operadores
 
-You've seen most of the remaining operators in other examples:
+Você viu a maioria dos operadores restantes em outros exemplos:
 
-| Operator | Name                         | Meaning                                                                                                                                                                                                                                                 |
-|----------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `()`     | Function application         | Represents a function call                                                                                                                                                                                                                              |
-| `[]`     | Subscript access             | Represents a call to the overridable `[]` operator; example: `fooList[1]` passes the int `1` to `fooList` to access the element at index `1`                                                                                                            |
-| `?[]`    | Conditional subscript access | Like `[]`, but the leftmost operand can be null; example: `fooList?[1]` passes the int `1` to `fooList` to access the element at index `1` unless `fooList` is null (in which case the expression evaluates to null)                                    |
-| `.`      | Member access                | Refers to a property of an expression; example: `foo.bar` selects property `bar` from expression `foo`                                                                                                                                                  |
-| `?.`     | Conditional member access    | Like `.`, but the leftmost operand can be null; example: `foo?.bar` selects property `bar` from expression `foo` unless `foo` is null (in which case the value of `foo?.bar` is null)                                                                   |
-| `!`      | Not-null assertion operator  | Casts an expression to its underlying non-nullable type, throwing a runtime exception if the cast fails; example: `foo!.bar` asserts `foo` is non-null and selects the property `bar`, unless `foo` is null (in which case a runtime exception is thrown) |
+| Operador | Nome                         | Significado                                                                                                                                                                                                                                            |
+|----------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `()`     | Aplicação de função          | Representa uma chamada de função                                                                                                                                                                                                                       |
+| `[]`     | Acesso de subscrito          | Representa uma chamada ao operador `[]` sobrescrevível; exemplo: `fooList[1]` passa o int `1` para `fooList` para acessar o elemento no índice `1`                                                                                                     |
+| `?[]`    | Acesso de subscrito condicional | Como `[]`, mas o operando mais à esquerda pode ser null; exemplo: `fooList?[1]` passa o int `1` para `fooList` para acessar o elemento no índice `1` a menos que `fooList` seja null (caso em que a expressão avalia para null)                      |
+| `.`      | Acesso de membro             | Refere-se a uma propriedade de uma expressão; exemplo: `foo.bar` seleciona a propriedade `bar` da expressão `foo`                                                                                                                                     |
+| `?.`     | Acesso de membro condicional | Como `.`, mas o operando mais à esquerda pode ser null; exemplo: `foo?.bar` seleciona a propriedade `bar` da expressão `foo` a menos que `foo` seja null (caso em que o valor de `foo?.bar` é null)                                                  |
+| `!`      | Operador de asserção não-nulo| Converte uma expressão para seu tipo não-nulo subjacente, lançando uma exceção em tempo de execução se a conversão falhar; exemplo: `foo!.bar` afirma que `foo` é não-null e seleciona a propriedade `bar`, a menos que `foo` seja null (caso em que uma exceção em tempo de execução é lançada) |
 
 {:.table .table-striped}
 
-For more information about the `.`, `?.`, and `..` operators, see
+Para mais informações sobre os operadores `.`, `?.` e `..`, veja
 [Classes][].
 
 
-[operators as class members]: /language/methods#operators
-[Dart language specification]: /resources/language/spec
+[operadores como membros de classe]: /language/methods#operators
+[especificação da linguagem Dart]: /resources/language/spec
 [identical()]: {{site.dart-api}}/dart-core/identical.html
 [Operators]: /language/methods#operators
 [library prefixes]: /language/libraries#specifying-a-library-prefix

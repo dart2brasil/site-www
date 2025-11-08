@@ -1,6 +1,7 @@
 ---
-title: Loops 
-description: Learn how to use loops to control the flow of your Dart code.
+ia-translate: true
+title: Loops
+description: Aprenda como usar loops para controlar o fluxo do seu código Dart.
 prevpage:
   url: /language/pattern-types
   title: Pattern types
@@ -9,21 +10,21 @@ nextpage:
   title: Branches
 ---
 
-This page shows how you can control the flow of your Dart code using loops and
-supporting statements:
+Esta página mostra como você pode controlar o fluxo do seu código Dart usando loops e
+instruções de suporte:
 
--   `for` loops
--   `while` and `do while` loops
--   `break` and `continue`
+-   Loops `for`
+-   Loops `while` e `do while`
+-   `break` e `continue`
 
-You can also manipulate control flow in Dart using:
+Você também pode manipular o fluxo de controle em Dart usando:
 
-- [Branching][], like `if` and `switch`
-- [Exceptions][], like `try`, `catch`, and `throw`
+- [Branching][], como `if` e `switch`
+- [Exceptions][], como `try`, `catch` e `throw`
 
-## For loops
+## Loops for
 
-You can iterate with the standard `for` loop. For example:
+Você pode iterar com o loop `for` padrão. Por exemplo:
 
 <?code-excerpt "language/test/control_flow/loops_test.dart (for)"?>
 ```dart
@@ -33,8 +34,8 @@ for (var i = 0; i < 5; i++) {
 }
 ```
 
-Closures inside of Dart's `for` loops capture the _value_ of the index.
-This avoids a common pitfall found in JavaScript. For example, consider:
+Closures dentro dos loops `for` do Dart capturam o _valor_ do índice.
+Isso evita uma armadilha comum encontrada em JavaScript. Por exemplo, considere:
 
 <?code-excerpt "language/test/control_flow/loops_test.dart (for-and-closures)"?>
 ```dart
@@ -48,12 +49,12 @@ for (final c in callbacks) {
 }
 ```
 
-The output is `0` and then `1`, as expected. In contrast, the example
-would print `2` and then `2` in JavaScript.
+A saída é `0` e então `1`, como esperado. Em contraste, o exemplo
+imprimiria `2` e então `2` em JavaScript.
 
-Sometimes you might not need to know the current iteration counter
-when iterating over an [`Iterable`][] type, like `List` or `Set`.
-In that case, use the `for-in` loop for cleaner code:
+Às vezes você pode não precisar saber o contador de iteração atual
+ao iterar sobre um tipo [`Iterable`][], como `List` ou `Set`.
+Nesse caso, use o loop `for-in` para um código mais limpo:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (collection)"?>
 ```dart
@@ -62,16 +63,16 @@ for (var candidate in candidates) {
 }
 ```
 
-In the previous example loop, `candidate` is
-defined within the loop body and
-set to reference one value from `candidates` at a time.
-`candidate` is a local [variable][].
-Reassigning `candidate` inside the loop body only
-changes the local variable for that iteration and
-doesn't modify the original `candidates` iterable.
+No exemplo de loop anterior, `candidate` é
+definido dentro do corpo do loop e
+configurado para referenciar um valor de `candidates` por vez.
+`candidate` é uma [variável][variable] local.
+Reatribuir `candidate` dentro do corpo do loop apenas
+muda a variável local para aquela iteração e
+não modifica o iterável original `candidates`.
 
-To process the values obtained from the iterable, 
-you can also use a [pattern][] in a `for-in` loop:
+Para processar os valores obtidos do iterável,
+você também pode usar um [pattern][] em um loop `for-in`:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (collection-for-pattern)"?>
 ```dart
@@ -81,11 +82,11 @@ for (final Candidate(:name, :yearsExperience) in candidates) {
 ```
 
 :::tip
-To practice using `for-in`, follow the
-[Iterable collections tutorial](/libraries/collections/iterables).
+Para praticar o uso de `for-in`, siga o
+[tutorial de coleções Iterable](/libraries/collections/iterables).
 :::
 
-Iterable classes also have a [forEach()][] method as another option:
+Classes Iterable também têm um método [forEach()][] como outra opção:
 
 <?code-excerpt "language/test/control_flow/loops_test.dart (for-each)"?>
 ```dart
@@ -95,9 +96,9 @@ collection.forEach(print); // 1 2 3
 
 [variable]: /language/variables
 
-## While and do-while
+## While e do-while
 
-A `while` loop evaluates the condition before the loop:
+Um loop `while` avalia a condição antes do loop:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (while)"?>
 ```dart
@@ -106,7 +107,7 @@ while (!isDone()) {
 }
 ```
 
-A `do`-`while` loop evaluates the condition *after* the loop:
+Um loop `do`-`while` avalia a condição *depois* do loop:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (do-while)"?>
 ```dart
@@ -116,9 +117,9 @@ do {
 ```
 
 
-## Break and continue
+## Break e continue
 
-Use `break` to stop looping:
+Use `break` para parar o loop:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (while-break)"?>
 ```dart
@@ -128,7 +129,7 @@ while (true) {
 }
 ```
 
-Use `continue` to skip to the next loop iteration:
+Use `continue` para pular para a próxima iteração do loop:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (for-continue)"?>
 ```dart
@@ -141,8 +142,8 @@ for (int i = 0; i < candidates.length; i++) {
 }
 ```
 
-If you're using an [`Iterable`][] such as a list or set,
-how you write the previous example might differ:
+Se você está usando um [`Iterable`][] como uma lista ou set,
+como você escreve o exemplo anterior pode diferir:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (where)"?>
 ```dart
@@ -153,30 +154,30 @@ candidates
 
 ## Labels
 
-A label is an identifier followed by a colon (`labelName:`)
-that you can place before a statement to create a
-_labeled statement_. Loops and switch cases are often used as
-labeled statements. A labeled statement can be referenced later
-in a `break` or `continue` statement as follows:
+Um label é um identificador seguido por dois pontos (`labelName:`)
+que você pode colocar antes de uma instrução para criar uma
+_instrução rotulada_. Loops e cases switch são frequentemente usados como
+instruções rotuladas. Uma instrução rotulada pode ser referenciada posteriormente
+em uma instrução `break` ou `continue` da seguinte forma:
 
 * `break labelName;`
-  Terminates the execution of the labeled statement.
-  This is useful for breaking out of a specific outer loop when you're
-  within a nested loop.
+  Termina a execução da instrução rotulada.
+  Isso é útil para sair de um loop externo específico quando você está
+  dentro de um loop aninhado.
 
 * `continue labelName;`
-  Skips the rest of the current iteration of the
-  labeled statement loop and continues with the next iteration.
+  Pula o restante da iteração atual do
+  loop da instrução rotulada e continua com a próxima iteração.
 
-Labels are used to manage control flow. They are often used with
-loops and switch cases and allow you to specify which statement to
-break out of or continue, rather than affecting the innermost
-loop by default.
+Labels são usados para gerenciar o fluxo de controle. Eles são frequentemente usados com
+loops e cases switch e permitem que você especifique qual instrução
+sair ou continuar, em vez de afetar o loop mais interno
+por padrão.
 
-### Labels in for loop using `break` {:.no_toc}
+### Labels em loop for usando `break` {:.no_toc}
 
-The following code demonstrates the usage of a label called `outerLoop`
-in a  `for` loop with a `break` statement:
+O código a seguir demonstra o uso de um label chamado `outerLoop`
+em um loop `for` com uma instrução `break`:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-break)"?>
 ```dart
@@ -192,8 +193,8 @@ for (var i = 1; i <= 3; i++) {
 print('outerLoop exited');
 ```
 
-In the previous example, when `i == 2` and `j == 2`, the `break outerLoop;`
-statement stops both inner and outer loops. As a result, the output is:
+No exemplo anterior, quando `i == 2` e `j == 2`, a instrução `break outerLoop;`
+para os loops interno e externo. Como resultado, a saída é:
 
 ```plaintext
 i = 1, j = 1
@@ -204,10 +205,10 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-### Labels in for loop using `continue` {:.no_toc}
+### Labels em loop for usando `continue` {:.no_toc}
 
-The following code demonstrates the use of a label called `outerLoop`
-in a  `for` loop with a `continue` statement:
+O código a seguir demonstra o uso de um label chamado `outerLoop`
+em um loop `for` com uma instrução `continue`:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-continue)"?>
 ```dart
@@ -222,8 +223,8 @@ for (var i = 1; i <= 3; i++) {
 }
 ```
 
-In the previous example, when `i == 2` and `j == 2`, `continue outerLoop;` skips the
-rest of the iterations for `i = 2` and moves to `i = 3`. As a result, the output is:
+No exemplo anterior, quando `i == 2` e `j == 2`, `continue outerLoop;` pula o
+restante das iterações para `i = 2` e se move para `i = 3`. Como resultado, a saída é:
 
 ```plaintext
 i = 1, j = 1
@@ -235,10 +236,10 @@ i = 3, j = 2
 i = 3, j = 3
 ```
 
-### Labels in while loop using `break` {:.no_toc}
+### Labels em loop while usando `break` {:.no_toc}
 
-The following code demonstrates the use of a label called `outerLoop` in
-a `while` loop with a `break` statement:
+O código a seguir demonstra o uso de um label chamado `outerLoop` em
+um loop `while` com uma instrução `break`:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-break)"?>
 ```dart
@@ -259,8 +260,8 @@ while (i <= 3) {
 print('outerLoop exited');
 ```
 
-In the previous example, the program breaks out of both inner and outer `while` loops
-when `i == 2` and `j == 2`. As a result, the output is:
+No exemplo anterior, o programa sai dos loops `while` interno e externo
+quando `i == 2` e `j == 2`. Como resultado, a saída é:
 
 ```plaintext
 i = 1, j = 1
@@ -271,10 +272,10 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-### Labels in while loop using `continue` {:.no_toc}
+### Labels em loop while usando `continue` {:.no_toc}
 
-The following code demonstrates the use of a label called `outerLoop` in
-a `while` loop with a `continue` statement:
+O código a seguir demonstra o uso de um label chamado `outerLoop` em
+um loop `while` com uma instrução `continue`:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-continue)"?>
 ```dart
@@ -295,8 +296,8 @@ while (i <= 3) {
 }
 ```
 
-In the previous example, the iteration for `i = 2` and `j = 2` is skipped and the loop moves
-directly to `i = 3`. As a result, the output is:
+No exemplo anterior, a iteração para `i = 2` e `j = 2` é pulada e o loop se move
+diretamente para `i = 3`. Como resultado, a saída é:
 
 ```plaintext
 i = 1, j = 1
@@ -308,10 +309,10 @@ i = 3, j = 2
 i = 3, j = 3
 ```
 
-### Labels in do-while loop using `break` {:.no_toc}
+### Labels em loop do-while usando `break` {:.no_toc}
 
-The following code demonstrates the use of a label called `outerLoop` in
-a `do while` loop with a `break` statement:
+O código a seguir demonstra o uso de um label chamado `outerLoop` em
+um loop `do while` com uma instrução `break`:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-break)"?>
 ```dart
@@ -333,8 +334,8 @@ do {
 print('outerLoop exited');
 ```
 
-In the previous example, the program breaks out of both inner and outer loops when `i == 2` and
-`j == 2`. As a result, the output is:
+No exemplo anterior, o programa sai dos loops interno e externo quando `i == 2` e
+`j == 2`. Como resultado, a saída é:
 
 ```plaintext
 i = 1, j = 1
@@ -345,10 +346,10 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-### Labels in do-while loop using `continue` {:.no_toc}
+### Labels em loop do-while usando `continue` {:.no_toc}
 
-The following code demonstrates the use of a label called `outerLoop` in
-a `do while` loop with a `continue` statement:
+O código a seguir demonstra o uso de um label chamado `outerLoop` em
+um loop `do while` com uma instrução `continue`:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-continue)"?>
 ```dart
@@ -369,8 +370,8 @@ do {
 } while (i <= 3);
 ```
 
-In the previous example, the loop skips `i = 2` and `j = 2` and moves directly to `i = 3`.
-As a result, the output is:
+No exemplo anterior, o loop pula `i = 2` e `j = 2` e se move diretamente para `i = 3`.
+Como resultado, a saída é:
 
 ```plaintext
 i = 1, j = 1

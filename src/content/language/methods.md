@@ -1,6 +1,7 @@
 ---
-title: Methods
-description: Learn about methods in Dart.
+ia-translate: true
+title: Métodos
+description: Aprenda sobre métodos em Dart.
 prevpage:
   url: /language/constructors
   title: Constructors
@@ -11,13 +12,13 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
-Methods are functions that provide behavior for an object.
+Métodos são funções que fornecem comportamento para um objeto.
 
-## Instance methods
+## Métodos de instância
 
-Instance methods on objects can access instance variables and `this`.
-The `distanceTo()` method in the following sample is an example of an
-instance method:
+Métodos de instância em objetos podem acessar variáveis de instância e `this`.
+O método `distanceTo()` no exemplo a seguir é um exemplo de um
+método de instância:
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (class-with-distance-to)" plaster="none"?>
 ```dart
@@ -40,10 +41,10 @@ class Point {
 }
 ```
 
-## Operators
+## Operadores
 
-Most operators are instance methods with special names.
-Dart allows you to define operators with the following names:
+A maioria dos operadores são métodos de instância com nomes especiais.
+Dart permite que você defina operadores com os seguintes nomes:
 
 |       |      |      |      |       |      |
 |-------|------|------|------|-------|------|
@@ -55,9 +56,9 @@ Dart allows you to define operators with the following names:
 {:.table}
 
 :::note
-You may have noticed that some [operators][], like `!=`, aren't in
-the list of names. These operators aren't instance methods.
-Their behavior is built in to Dart.
+Você pode ter notado que alguns [operadores][operators], como `!=`, não estão na
+lista de nomes. Esses operadores não são métodos de instância.
+Seu comportamento é incorporado ao Dart.
 :::
 
 {%- comment %}
@@ -66,10 +67,10 @@ Their behavior is built in to Dart.
   - `!` is probably excluded for historical reasons
 {% endcomment %}
 
-To declare an operator, use the built-in identifier
-`operator` then the operator you are defining.
-The following example defines vector addition (`+`), subtraction (`-`),
-and equality (`==`):
+Para declarar um operador, use o identificador built-in
+`operator` seguido pelo operador que você está definindo.
+O exemplo a seguir define adição de vetor (`+`), subtração (`-`)
+e igualdade (`==`):
 
 <?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
 ```dart
@@ -99,13 +100,13 @@ void main() {
 ```
 
 
-## Getters and setters
+## Getters e setters
 
-Getters and setters are special methods that provide read and write
-access to an object's properties. Recall that each instance variable has
-an implicit getter, plus a setter if appropriate. You can create
-additional properties by implementing getters and setters, using the
-`get` and `set` keywords:
+Getters e setters são métodos especiais que fornecem acesso de leitura e escrita
+às propriedades de um objeto. Lembre-se de que cada variável de instância tem
+um getter implícito, mais um setter se apropriado. Você pode criar
+propriedades adicionais implementando getters e setters, usando as
+keywords `get` e `set`:
 
 <?code-excerpt "misc/lib/language_tour/classes/rectangle.dart"?>
 ```dart highlightLines=8-12
@@ -131,23 +132,23 @@ void main() {
 }
 ```
 
-With getters and setters, you can start with instance variables, later
-wrapping them with methods, all without changing client code.
+Com getters e setters, você pode começar com variáveis de instância, depois
+envolvê-las com métodos, tudo sem mudar o código do cliente.
 
 :::note
-Operators such as increment (`++`) work in the expected way, whether or
-not a getter is explicitly defined. To avoid any unexpected side
-effects, the operator calls the getter exactly once, saving its value
-in a temporary variable.
+Operadores como incremento (`++`) funcionam da maneira esperada, quer
+um getter seja explicitamente definido ou não. Para evitar qualquer efeito
+colateral inesperado, o operador chama o getter exatamente uma vez, salvando seu valor
+em uma variável temporária.
 :::
 
-## Abstract methods
+## Métodos abstract
 
-Instance, getter, and setter methods can be abstract, defining an
-interface but leaving its implementation up to other classes.
-Abstract methods can only exist in [abstract classes][] or [mixins][].
+Métodos de instância, getter e setter podem ser abstract, definindo uma
+interface mas deixando sua implementação para outras classes.
+Métodos abstract só podem existir em [classes abstract][abstract classes] ou [mixins][].
 
-To make a method abstract, use a semicolon (`;`) instead of a method body:
+Para tornar um método abstract, use um ponto e vírgula (`;`) em vez de um corpo de método:
 
 <?code-excerpt "misc/lib/language_tour/classes/doer.dart"?>
 ```dart
