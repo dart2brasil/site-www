@@ -1,102 +1,103 @@
 ---
-title: Troubleshooting DartPad
+ia-translate: true
+title: Solução de Problemas do DartPad
 breadcrumb: Troubleshooting
-description: Common problems with using DartPad
+description: Problemas comuns ao usar o DartPad
 ---
 
-This page describes solutions to problems that might occur when
-you're trying to use DartPad, whether at [dartpad.dev]({{site.dartpad}})
-or in a page that has embedded DartPads.
-For an overview of DartPad, see the
-[DartPad page](/tools/dartpad).
+Esta página descreve soluções para problemas que podem ocorrer quando
+você está tentando usar o DartPad, seja em [dartpad.dev]({{site.dartpad}})
+ou em uma página que tem DartPads incorporados.
+Para uma visão geral do DartPad, veja a
+[página do DartPad](/tools/dartpad).
 
 
-## Embedded DartPads don't appear
+## DartPads incorporados não aparecem
 
-The dart.dev homepage and many tutorials have embedded DartPads.
-If these DartPads don't appear at all,
-then try the following:
+A página inicial do dart.dev e muitos tutoriais têm DartPads incorporados.
+Se esses DartPads não aparecerem,
+tente o seguinte:
 
-* Make sure you're using one of the latest two versions of Chrome,
-  Edge, Firefox, or Safari.
-  DartPad might not work in other browsers, and is known not to work in
-  the default configuration of the Brave browser.
+* Certifique-se de que você está usando uma das duas versões mais recentes do Chrome,
+  Edge, Firefox, ou Safari.
+  O DartPad pode não funcionar em outros navegadores, e é conhecido por não funcionar na
+  configuração padrão do navegador Brave.
 
-* If you're using an ad blocker, disable it.
+* Se você está usando um bloqueador de anúncios, desabilite-o.
 
-* Check whether you've disabled third-party
-  tracking cookies ([Chrome instructions][chrome-cookies]).
-  If you've disabled cookies, change your settings to
-  **allow cookies for dartpad.dev**.
-  If you're using embedded DartPads,
-  such as in the [Dart cheatsheet](/resources/dart-cheatsheet) or the
-  [implicit animations codelab]({{site.flutter-docs}}/codelabs/implicit-animations),
-  you might need to allow cookies for the embedding site domain, as well
-  (in these cases, **dart.dev** and **docs.flutter.dev**, respectively).
+* Verifique se você desabilitou cookies de rastreamento de terceiros
+  ([instruções do Chrome][chrome-cookies]).
+  Se você desabilitou os cookies, altere suas configurações para
+  **permitir cookies para dartpad.dev**.
+  Se você está usando DartPads incorporados,
+  como no [Dart cheatsheet](/resources/dart-cheatsheet) ou no
+  [codelab de animações implícitas]({{site.flutter-docs}}/codelabs/implicit-animations),
+  você também pode precisar permitir cookies para o domínio do site que está incorporando
+  (nestes casos, **dart.dev** e **docs.flutter.dev**, respectivamente).
 
-* If you repeatedly reload a page that contains embedded DartPads, 
-  then you might run into [GitHub rate limiting.][]
-  Within 60 minutes, you should be able to reload the page and 
-  see code in the embedded DartPads.
+* Se você recarregar repetidamente uma página que contém DartPads incorporados,
+  você pode encontrar [limitação de taxa do GitHub][GitHub rate limiting.].
+  Em até 60 minutos, você deve conseguir recarregar a página e
+  ver o código nos DartPads incorporados.
 
-Although DartPad doesn't use cookies, it does rely on local storage,
-which browsers usually disable when cookies are disabled.
+Embora o DartPad não use cookies, ele depende de armazenamento local,
+que os navegadores geralmente desabilitam quando os cookies estão desabilitados.
 
 
-## Code doesn't work outside DartPad
+## O código não funciona fora do DartPad
 
-If you copy code from DartPad into another environment,
-the code might not run successfully.
-Here are some possible causes and fixes:
+Se você copiar código do DartPad para outro ambiente,
+o código pode não ser executado com sucesso.
+Aqui estão algumas possíveis causas e correções:
 
-* If Dart can't find an imported library,
-  make sure you've added all necessary package dependencies.
-  DartPad includes many built-in packages by default,
-  but your own project must explicitly list the packages that it depends on.
-  To see the packages that DartPad includes, 
-  go to [dartpad.dev]({{site.dartpad}}) 
-  and click the **i** icon at the bottom right of the window.
-  To learn more about adding package dependencies to your own project,
-  see the documentation for [`dart pub add`](/tools/pub/cmd/pub-add).
+* Se o Dart não conseguir encontrar uma biblioteca importada,
+  certifique-se de ter adicionado todas as dependências de pacotes necessárias.
+  O DartPad inclui muitos pacotes integrados por padrão,
+  mas seu próprio projeto deve listar explicitamente os pacotes dos quais depende.
+  Para ver os pacotes que o DartPad inclui,
+  vá para [dartpad.dev]({{site.dartpad}})
+  e clique no ícone **i** no canto inferior direito da janela.
+  Para saber mais sobre como adicionar dependências de pacotes ao seu próprio projeto,
+  veja a documentação para [`dart pub add`](/tools/pub/cmd/pub-add).
 
-* If Dart can't find certain methods or properties,
-  check the code included provided alongside the exercise.
+* Se o Dart não conseguir encontrar certos métodos ou propriedades,
+  verifique o código fornecido junto com o exercício.
 
-* If the code has other compilation errors,
-  make sure you're using the latest stable version of the Dart SDK.
-  DartPad and embedded samples 
-  generally use the latest stable release of the SDK,
-  and older versions might be missing necessary language or library features.
-  To learn how to update the Dart SDK,
-  see [Get the Dart SDK](/get-dart).
+* Se o código tiver outros erros de compilação,
+  certifique-se de que você está usando a versão estável mais recente do Dart SDK.
+  O DartPad e exemplos incorporados
+  geralmente usam a versão estável mais recente do SDK,
+  e versões mais antigas podem estar faltando funcionalidades de linguagem ou biblioteca necessárias.
+  Para aprender como atualizar o Dart SDK,
+  veja [Obter o Dart SDK](/get-dart).
 
-* If you're creating a web app,
-  make sure you have the proper project setup.
-  DartPad doesn't show all the necessary markup to run Dart code.
-  To get started creating web apps with Dart,
-  check out [Build a web app with Dart](/web/get-started).
+* Se você está criando um aplicativo web,
+  certifique-se de ter a configuração adequada do projeto.
+  O DartPad não mostra toda a marcação necessária para executar código Dart.
+  Para começar a criar aplicativos web com Dart,
+  confira [Construir um aplicativo web com Dart](/web/get-started).
 
-## Previously working code now has errors
+## Código que funcionava anteriormente agora tem erros
 
-If the code is using language or library features no longer supported
-in the latest stable release of Dart,
-the code may no longer analyze or run without errors.
+Se o código está usando funcionalidades de linguagem ou biblioteca que não são mais suportadas
+na versão estável mais recente do Dart,
+o código pode não analisar ou executar sem erros.
 
-* If possible, update the code to work with the latest Dart release,
-  as DartPad only supports the **stable** and **beta** channels.
-* If the code worked in an earlier Dart release,
-  you can use that version of Dart locally.
-  To learn how to install a specific version of Dart,
-  check out [Get the Dart SDK](/get-dart).
+* Se possível, atualize o código para funcionar com a versão mais recente do Dart,
+  pois o DartPad suporta apenas os canais **stable** e **beta**.
+* Se o código funcionou em uma versão anterior do Dart,
+  você pode usar essa versão do Dart localmente.
+  Para aprender como instalar uma versão específica do Dart,
+  confira [Obter o Dart SDK](/get-dart).
 
-## DartPad doesn't work in China
-  
-Try [dartpad.cn.](https://dartpad.cn)
+## DartPad não funciona na China
 
-## Other issues
+Tente [dartpad.cn.](https://dartpad.cn)
 
-If you have any other problems when using DartPad,
-[create an issue on GitHub.][new-issue]
+## Outros problemas
+
+Se você tiver outros problemas ao usar o DartPad,
+[crie um issue no GitHub][new-issue].
 
 [GitHub rate limiting.]: https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
 [browser]: /resources/faq#q-what-browsers-do-you-support-as-javascript-compilation-targets

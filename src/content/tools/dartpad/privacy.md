@@ -1,23 +1,24 @@
 ---
-title: DartPad Privacy Notice
-description: How Google uses the source code that you enter into DartPad.
+ia-translate: true
+title: Aviso de Privacidade do DartPad
+description: Como o Google usa o código-fonte que você insere no DartPad.
 showToc: false
 ---
 
-DartPad is a free, open source service to help developers learn about the Dart
-language and libraries. Source code entered into DartPad may be sent to servers
-running in Google Cloud to be analyzed for errors/warnings, compiled to
-JavaScript, and returned to the browser.
+O DartPad é um serviço gratuito e open source para ajudar desenvolvedores a aprender sobre a
+linguagem e bibliotecas Dart. O código-fonte inserido no DartPad pode ser enviado para servidores
+executando no Google Cloud para ser analisado em busca de erros/avisos, compilado para
+JavaScript, e retornado ao navegador.
 
-Source code, or prompts used to generate source code
-entered into DartPad may be stored, processed, and aggregated in
-order to improve the user experience of DartPad and other Dart tools. For
-example, we may use the source code to help offer better code completion
-suggestions. The raw source code is deleted after no more than 60 days.
+O código-fonte, ou prompts usados para gerar código-fonte
+inseridos no DartPad podem ser armazenados, processados e agregados para
+melhorar a experiência do usuário do DartPad e outras ferramentas Dart. Por
+exemplo, podemos usar o código-fonte para ajudar a oferecer melhores sugestões
+de autocompletar de código. O código-fonte bruto é excluído após no máximo 60 dias.
 
-DartPad uses Google Analytics to report feature usage statistics.
-This data is used to help improve Dart and Flutter tools over time.
+O DartPad usa o Google Analytics para reportar estatísticas de uso de recursos.
+Estes dados são usados para ajudar a melhorar as ferramentas Dart e Flutter ao longo do tempo.
 
-Learn more about Google's [privacy policy](https://policies.google.com/privacy).
-If you have any questions about this Privacy Policy, you can
-[contact us](https://support.google.com/policies?p=privpol_privts).
+Saiba mais sobre a [política de privacidade](https://policies.google.com/privacy) do Google.
+Se você tiver alguma dúvida sobre esta Política de Privacidade, você pode
+[entrar em contato conosco](https://support.google.com/policies?p=privpol_privts).
