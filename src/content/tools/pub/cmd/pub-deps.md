@@ -1,25 +1,26 @@
 ---
 title: dart pub deps
 description: Use dart pub deps to print a dependency graph for a package.
+ia-translate: true
 ---
 
-_Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
+_Deps_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 
 ```plaintext
 $ dart pub deps [--style=<style>] [--[no-]dev] [--executables]
 ```
 
-This command prints the dependency graph for a package.
-The graph includes both the
-[immediate dependencies](/resources/glossary#immediate-dependency)
-that the package uses (as specified in the pubspec), as well as the
-[transitive dependencies](/resources/glossary#transitive-dependency)
-pulled in by the immediate dependencies.
+Este comando imprime o grafo de dependências para um pacote.
+O grafo inclui tanto as
+[dependências imediatas](/resources/glossary#immediate-dependency)
+que o pacote usa (conforme especificado no pubspec), quanto as
+[dependências transitivas](/resources/glossary#transitive-dependency)
+trazidas pelas dependências imediatas.
 
-The dependency information is printed as a tree by default.
+As informações de dependência são impressas como uma árvore por padrão.
 
-For example, the pubspec for the markdown_converter example specifies
-the following dependencies:
+Por exemplo, o pubspec do exemplo markdown_converter especifica
+as seguintes dependências:
 
 ```yaml
 dependencies:
@@ -27,7 +28,7 @@ dependencies:
   markdown: ^0.7.2
 ```
 
-Here's an example of the `dart pub deps` output for markdown_converter:
+Aqui está um exemplo da saída de `dart pub deps` para markdown_converter:
 
 ```console
 $ dart pub deps
@@ -44,43 +45,43 @@ markdown_converter 0.0.0
 '-- markdown 0.7.2
 ```
 
-## Options
+## Opções
 
-For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd#global-options).
+Para opções que se aplicam a todos os comandos pub, veja
+[Opções globais](/tools/pub/cmd#global-options).
 
-### `--style=<style>` or `-s <style>`
+### `--style=<style>` ou `-s <style>`
 
-The specified style determines the output format:
+O estilo especificado determina o formato de saída:
 
 `tree`
-: Prints dependency information as a tree. This is the 
-  default format.
+: Imprime informações de dependência como uma árvore. Este é o
+  formato padrão.
 
 `list`
-: Prints dependency information as a list.
+: Imprime informações de dependência como uma lista.
 
 `compact`
-: Prints dependency information as a compact list.
+: Imprime informações de dependência como uma lista compacta.
 
 ### `--[no-]dev`
 
-By default, prints all dependencies, 
-including dev dependencies (`--dev`).
-To remove dev dependencies, use `--no-dev`.
+Por padrão, imprime todas as dependências,
+incluindo dependências de desenvolvimento (`--dev`).
+Para remover dependências de desenvolvimento, use `--no-dev`.
 
 ### `--executables`
 
-Prints all available executables.
+Imprime todos os executáveis disponíveis.
 
 ### `--json`
 
-Generates output in JSON format.
+Gera saída no formato JSON.
 
 
 {% render 'pub-problems.md' %}
 
-## In a workspace
+## Em um workspace
 
-In a [Pub workspace](/tools/pub/workspaces) `dart pub deps` will list
-dependencies for all packages in the workspace, one workspace package at a time.
+Em um [Pub workspace](/tools/pub/workspaces) `dart pub deps` listará
+dependências para todos os pacotes no workspace, um pacote de workspace por vez.

@@ -1,9 +1,10 @@
 ---
 title: dart pub cache
 description: Use dart pub cache to manage your system cache.
+ia-translate: true
 ---
 
-_Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).
+_Cache_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 
 ```plaintext
 $ dart pub cache add <package> [--version <constraint>] [--all]
@@ -11,70 +12,70 @@ $ dart pub cache repair
 $ dart pub cache clean
 ```
 
-The `dart pub cache` command works with the
-[system cache](/resources/glossary#pub-system-cache).
+O comando `dart pub cache` trabalha com o
+[cache do sistema](/resources/glossary#pub-system-cache).
 
-## Adding a package to the system cache
+## Adicionando um pacote ao cache do sistema
 
-You can manually add a package to your system cache:
+Você pode adicionar manualmente um pacote ao seu cache do sistema:
 
 ```console
 $ dart pub cache add <package>
 ```
 
-## Reinstalling all packages in the system cache
+## Reinstalando todos os pacotes no cache do sistema
 
-You can perform a clean reinstallation of all packages in your system cache:
+Você pode realizar uma reinstalação limpa de todos os pacotes no seu cache do sistema:
 
 ```console
 $ dart pub cache repair
 ```
 
-This command can be useful when packages in your system cache
-are somehow changed or broken.
+Este comando pode ser útil quando os pacotes no seu cache do sistema
+foram alterados ou corrompidos de alguma forma.
 
-For example, some editors make it easy to find implementation files
-for packages in the system cache,
-and you might accidentally edit one of those files.
+Por exemplo, alguns editores facilitam a localização de arquivos de implementação
+para pacotes no cache do sistema,
+e você pode acidentalmente editar um desses arquivos.
 
-## Clearing the global system cache
+## Limpando o cache global do sistema
 
-You can empty the entire system cache
-to reclaim extra disk space or remove problematic packages:
+Você pode esvaziar todo o cache do sistema
+para recuperar espaço em disco extra ou remover pacotes problemáticos:
 
 ```console
 $ dart pub cache clean
 ```
 
 :::version-note
-The `clean` subcommand was introduced in Dart 2.14.
-To clear your system cache with an older SDK,
-you can manually delete the [`PUB_CACHE`][] folder.
+O subcomando `clean` foi introduzido no Dart 2.14.
+Para limpar seu cache do sistema com um SDK mais antigo,
+você pode excluir manualmente a pasta [`PUB_CACHE`][].
 :::
 
 [`PUB_CACHE`]: /tools/pub/environment-variables
 
-## Options
+## Opções
 
-For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd#global-options).
+Para opções que se aplicam a todos os comandos pub, veja
+[Opções globais](/tools/pub/cmd#global-options).
 
 ### `--all`
 
-Use `dart pub cache add --all` 
-to install all matching versions of a library.
+Use `dart pub cache add --all`
+para instalar todas as versões correspondentes de uma biblioteca.
 
 ### `--version `_`<constraint>`_
 
-Use with `dart pub cache add`
-to install the version best matching the specified constraint. 
-For example:
+Use com `dart pub cache add`
+para instalar a versão que melhor corresponde à restrição especificada.
+Por exemplo:
 
 ```console
 $ dart pub cache add http --version "0.12.2"
 ```
 
-If `--version` is omitted, pub installs the best of all known versions.
+Se `--version` for omitido, o pub instala a melhor de todas as versões conhecidas.
 
 
 {% render 'pub-problems.md' %}

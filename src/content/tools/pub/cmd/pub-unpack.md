@@ -1,76 +1,77 @@
 ---
 title: dart pub unpack
-description: Downloads a package and unpacks its contents in place.
+description: Baixa um pacote e desempacota seu conteúdo no local.
+ia-translate: true
 ---
 
 :::version-note
-The `unpack` subcommand was introduced in Dart 3.4.
-To download the archive of a package with an earlier SDK,
-visit the **Versions** tab of a package on the [pub.dev site]({{site.pub}}).
+O subcomando `unpack` foi introduzido no Dart 3.4.
+Para baixar o arquivo de um pacote com um SDK anterior,
+visite a guia **Versions** de um pacote no [site pub.dev]({{site.pub}}).
 :::
 
-_Unpack_ is one of the commands of the [pub tool](/tools/pub/cmd).
+_Unpack_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 
 ```plaintext
 $ dart pub unpack <package>[:descriptor] [--[no-]resolve] [--output=<output directory>] [--[no-]force] [other options]
 ```
 
-This command downloads the specified `<package>` and
-extracts its contents to a `<package>-<version>` directory.
+Este comando baixa o `<package>` especificado e
+extrai seu conteúdo para um diretório `<package>-<version>`.
 
-For example, the following command downloads and extracts the
-latest stable version of `package:http` from the [pub.dev site]({{site.pub}}),
-to the current directory:
+Por exemplo, o seguinte comando baixa e extrai a
+versão estável mais recente de `package:http` do [site pub.dev]({{site.pub}}),
+para o diretório atual:
 
 ```console
 $ dart pub unpack http
 ```
 
-To change the source or version of the downloaded package,
-add a source descriptor after the package name and a colon.
-For example, the following command downloads the `1.2.0` release
-of `package:http` from the pub.dev site:
+Para alterar a origem ou versão do pacote baixado,
+adicione um descritor de fonte após o nome do pacote e um dois-pontos.
+Por exemplo, o seguinte comando baixa a versão `1.2.0`
+de `package:http` do site pub.dev:
 
 ```console
 $ dart pub unpack http:1.2.0
 ```
 
-The source descriptor supports more configuration
-with the same syntax as `dart pub add`.
-To learn more about source descriptors and their syntax, check out
-the [source descriptor][] documentation for `dart pub add`.
+O descritor de fonte oferece mais configuração
+com a mesma sintaxe de `dart pub add`.
+Para saber mais sobre descritores de fonte e sua sintaxe, consulte
+a documentação de [descritor de fonte][] para `dart pub add`.
 
-[source descriptor]: /tools/pub/cmd/pub-add#source-descriptor
+[descritor de fonte]: /tools/pub/cmd/pub-add#source-descriptor
 
-## Options
+## Opções
 
-For options that apply to all pub commands, check out
-[Global options](/tools/pub/cmd#global-options).
+Para opções que se aplicam a todos os comandos pub, consulte
+[Opções globais](/tools/pub/cmd#global-options).
 
-### `--force` or `-f` {:#force-option}
+### `--force` ou `-f` {:#force-option}
 
-Overwrite existing folders that conflict
-with the package folder or its contents during extraction.
+Sobrescreva pastas existentes que conflitem
+com a pasta do pacote ou seu conteúdo durante a extração.
 
 ### `--[no-]resolve` {:#resolve-option}
 
-By default, `dart pub get` runs automatically to complete
-package resolution after downloading and unpacking a package.
-To disable automatic resolution,
-specify the `--no-resolve` flag:
+Por padrão, `dart pub get` é executado automaticamente para completar
+a resolução do pacote após baixar e desempacotar um pacote.
+Para desabilitar a resolução automática,
+especifique o sinalizador `--no-resolve`:
 
 ```console
 $ dart pub unpack http --no-resolve
 ```
 
-### `--output=<dir>` or `-o <dir>` {:#output-option}
+### `--output=<dir>` ou `-o <dir>` {:#output-option}
 
-By default, extract the package to the current directory (`.`).
-To change the directory the package is extracted to,
-specify the desired output directory with the `--output` option.
+Por padrão, extraia o pacote para o diretório atual (`.`).
+Para alterar o diretório para o qual o pacote é extraído,
+especifique o diretório de saída desejado com a opção `--output`.
 
-For example, the following commands unpacks the
-`1.2.0` release of `package:http` to the `local_http_copies` directory.
+Por exemplo, os seguintes comandos desempacotam a
+versão `1.2.0` de `package:http` para o diretório `local_http_copies`.
 
 ```console
 $ dart pub unpack http:1.2.0 -o local_http_copies

@@ -1,171 +1,172 @@
 ---
 title: dart pub upgrade
-description: Use dart pub upgrade to get the latest versions of all dependencies used by your Dart app.
+description: Use dart pub upgrade para obter as versões mais recentes de todas as dependências usadas pelo seu aplicativo Dart.
+ia-translate: true
 ---
 
-_Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
+_Upgrade_ é um dos comandos da [ferramenta pub](/tools/pub/cmd).
 
 ```plaintext
 $ dart pub upgrade [options] [dependencies]
 ```
 
-Like [`dart pub get`](/tools/pub/cmd/pub-get),
-`dart pub upgrade` gets dependencies.
-The difference is that `dart pub upgrade` ignores any existing
-[lockfile](/resources/glossary#lockfile),
-so that pub can get the latest versions of all dependencies.
-A related command is [`dart pub outdated`](/tools/pub/cmd/pub-outdated),
-which you can run to find out-of-date dependencies.
+Como [`dart pub get`](/tools/pub/cmd/pub-get),
+`dart pub upgrade` obtém dependências.
+A diferença é que `dart pub upgrade` ignora qualquer
+[arquivo de bloqueio](/resources/glossary#lockfile) existente,
+para que pub possa obter as versões mais recentes de todas as dependências.
+Um comando relacionado é [`dart pub outdated`](/tools/pub/cmd/pub-outdated),
+que você pode executar para encontrar dependências desatualizadas.
 
-Without any additional arguments, `dart pub upgrade` gets the latest
-versions of all the dependencies listed in the
-[`pubspec.yaml`](/tools/pub/pubspec) file in the current working
-directory, as well as their [transitive
-dependencies](/resources/glossary#transitive-dependency).
-For example:
+Sem argumentos adicionais, `dart pub upgrade` obtém as versões mais recentes
+de todas as dependências listadas no
+arquivo [`pubspec.yaml`](/tools/pub/pubspec) no diretório
+de trabalho atual, bem como suas [dependências
+transitivas](/resources/glossary#transitive-dependency).
+Por exemplo:
 
 ```console
 $ dart pub upgrade
 Dependencies upgraded!
 ```
 
-When `dart pub upgrade` upgrades dependency versions, it writes a lockfile to ensure that
-[`dart pub get`](/tools/pub/cmd/pub-get) will use the same versions of those
-dependencies. For [application packages][], check in the lockfile to
-source control; this ensures the application has the exact same
-versions of all dependencies for all developers and when deployed to
-production. For regular packages, don't check in the lockfile,
-because packages are expected to work with a range of dependency versions.
+Quando `dart pub upgrade` atualiza versões de dependências, ele escreve um arquivo de bloqueio para garantir que
+[`dart pub get`](/tools/pub/cmd/pub-get) usará as mesmas versões dessas
+dependências. Para [pacotes de aplicação][], faça check-in do arquivo de bloqueio no
+controle de origem; isso garante que o aplicativo tenha as mesmas
+versões de todas as dependências para todos os desenvolvedores e quando implantado em
+produção. Para pacotes normais, não faça check-in do arquivo de bloqueio,
+porque espera-se que os pacotes funcionem com uma variedade de versões de dependência.
 
-If a lockfile already exists, `dart pub upgrade` ignores it and generates a new
-one from scratch, using the latest versions of all dependencies.
+Se um arquivo de bloqueio já existir, `dart pub upgrade` o ignora e gera um novo
+do zero, usando as versões mais recentes de todas as dependências.
 
-See the [`dart pub get` documentation](/tools/pub/cmd/pub-get) for more information
-on package resolution and the system package cache.
+Consulte a [documentação de `dart pub get`](/tools/pub/cmd/pub-get) para mais informações
+sobre resolução de pacotes e o cache do pacote do sistema.
 
-[application packages]: /resources/glossary#application-package
+[pacotes de aplicação]: /resources/glossary#application-package
 
-## Upgrading specific dependencies
+## Fazer upgrade de dependências específicas
 
-You can tell `dart pub upgrade` to upgrade specific dependencies to the
-latest version while leaving the rest of the dependencies alone as much as
-possible. For example:
+Você pode dizer ao `dart pub upgrade` para fazer upgrade de dependências específicas para a
+versão mais recente, deixando o resto das dependências sem alteração o máximo
+possível. Por exemplo:
 
 ```console
 $ dart pub upgrade test args
 Dependencies upgraded!
 ```
 
-Usually, no other dependencies are upgraded; they stay at the
-versions that are locked in the lockfile. However, if the requested upgrades
-cause incompatibilities with these locked versions, they are selectively
-unlocked until a compatible set of versions is found.
+Geralmente, nenhuma outra dependência é atualizada; elas permanecem nas
+versões que estão bloqueadas no arquivo de bloqueio. No entanto, se os upgrades solicitados
+causarem incompatibilidades com essas versões bloqueadas, elas serão seletivamente
+desbloqueadas até que um conjunto compatível de versões seja encontrado.
 
-This means that upgrading a specific dependency does not by default upgrade its
-transitive dependencies.
+Isso significa que fazer upgrade de uma dependência específica não faz upgrade de suas
+dependências transitivas por padrão.
 
-To upgrade a specific dependency and all its transitive dependencies to their
-latest versions use the `--unlock-transitive` flag.
+Para fazer upgrade de uma dependência específica e de todas as suas dependências transitivas para suas
+versões mais recentes, use o sinalizador `--unlock-transitive`.
 
 ```console
 $ dart pub upgrade --unlock-transitive test args
 ```
 
 
-## Getting a new dependency
+## Obter uma nova dependência
 
-If a dependency is added to the pubspec before `dart pub upgrade` is run,
-it gets the new dependency and any of its transitive dependencies.
-This shares the same behavior as `dart pub get`.
+Se uma dependência for adicionada ao pubspec antes de `dart pub upgrade` ser executado,
+ela obtém a nova dependência e qualquer uma de suas dependências transitivas.
+Isso compartilha o mesmo comportamento de `dart pub get`.
 
 
-## Removing a dependency
+## Remover uma dependência
 
-If a dependency is removed from the pubspec before `dart pub upgrade` is run,
-the dependency is no longer available for importing.
-Any transitive dependencies of the removed dependency are also removed,
-as long as no remaining immediate dependencies also depend on them.
-This is the same behavior as `dart pub get`.
+Se uma dependência for removida do pubspec antes de `dart pub upgrade` ser executado,
+a dependência não estará mais disponível para importação.
+Qualquer dependência transitiva da dependência removida também será removida,
+desde que nenhuma dependência imediata restante também dependa delas.
+Este é o mesmo comportamento de `dart pub get`.
 
-## Upgrading while offline
+## Fazer upgrade enquanto offline
 
-If you don't have network access, you can still run `dart pub upgrade`.
-Because pub downloads packages to a central cache shared by all packages
-on your system, it can often find previously downloaded packages
-without needing to use the network.
+Se você não tiver acesso à rede, ainda poderá executar `dart pub upgrade`.
+Como pub baixa pacotes para um cache central compartilhado por todos os pacotes
+em seu sistema, muitas vezes pode encontrar pacotes baixados anteriormente
+sem precisar usar a rede.
 
-However, by default, `dart pub upgrade` tries to go online if you
-have any hosted dependencies,
-so that pub can detect newer versions of dependencies.
-If you don't want pub to do that, pass it the `--offline` flag.
-In offline mode, pub looks only in your local package cache,
-trying to find a set of versions that work with your package from what's already
-available.
+No entanto, por padrão, `dart pub upgrade` tenta ficar online se você
+tiver qualquer dependência hospedada,
+para que pub possa detectar versões mais recentes de dependências.
+Se você não quiser que pub faça isso, passe o sinalizador `--offline`.
+No modo offline, pub procura apenas em seu cache de pacotes local,
+tentando encontrar um conjunto de versões que funcione com seu pacote a partir do que já está
+disponível.
 
-Keep in mind that pub generates a lockfile. If the
-only version of some dependency in your cache happens to be old,
-offline `dart pub upgrade` locks your app to that old version.
-The next time you are online, you will likely want to
-run `dart pub upgrade` again to upgrade to a later version.
+Tenha em mente que pub gera um arquivo de bloqueio. Se a
+única versão de alguma dependência em seu cache for antiga,
+`dart pub upgrade` offline bloqueia seu aplicativo nessa versão antiga.
+Na próxima vez que você estiver online, você provavelmente desejará
+executar `dart pub upgrade` novamente para atualizar para uma versão mais recente.
 
-## Options
+## Opções
 
-The `dart pub upgrade` command supports the
-[`dart pub get` options](/tools/pub/cmd/pub-get#options), and more.
-For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd#global-options).
+O comando `dart pub upgrade` oferece suporte às
+[opções de `dart pub get`](/tools/pub/cmd/pub-get#options), e mais.
+Para opções que se aplicam a todos os comandos pub, consulte
+[Opções globais](/tools/pub/cmd#global-options).
 
 ### `--[no-]offline`
 
 {% render 'tools/pub-option-no-offline.md' %}
 
-### `--dry-run` or `-n`
+### `--dry-run` ou `-n`
 
-Reports the dependencies that would be changed,
-but doesn't make the changes. This is useful if you
-want to analyze updates before making them.
+Relata as dependências que seriam alteradas,
+mas não faz as alterações. Isso é útil se você
+deseja analisar atualizações antes de fazê-las.
 
 ### `--[no-]precompile`
 
-By default, pub precompiles executables
-in immediate dependencies (`--precompile`).
-To prevent precompilation, use `--no-precompile`.
+Por padrão, pub pré-compila executáveis
+em dependências imediatas (`--precompile`).
+Para evitar pré-compilação, use `--no-precompile`.
 
 ### `--major-versions`
 
-Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
-ignoring any upper-bound constraint in the `pubspec.yaml` file.
-Also updates `pubspec.yaml` with the new constraints.
+Obtém os pacotes que [`dart pub outdated`][] lista como _resolvíveis_,
+ignorando qualquer restrição de limite superior no arquivo `pubspec.yaml`.
+Também atualiza `pubspec.yaml` com as novas restrições.
 
 [`dart pub outdated`]: /tools/pub/cmd/pub-outdated
 
 :::tip
-Commit the `pubspec.yaml` file before running this command,
-so that you can undo the changes if necessary.
+Faça commit do arquivo `pubspec.yaml` antes de executar este comando,
+para que você possa desfazer as alterações, se necessário.
 :::
 
-To check which dependencies will be upgraded,
-you can use `dart pub upgrade --major-versions --dry-run`.
+Para verificar quais dependências serão atualizadas,
+você pode usar `dart pub upgrade --major-versions --dry-run`.
 
 ### `--tighten`
 
-Updates the lower bounds of dependencies in `pubspec.yaml` to match the
-resolved versions, and returns a list of the changed constraints. 
-Can be applied to [specific dependencies](#upgrading-specific-dependencies).  
+Atualiza os limites inferiores das dependências em `pubspec.yaml` para corresponder às
+versões resolvidas e retorna uma lista das restrições alteradas.
+Pode ser aplicado a [dependências específicas](#fazer-upgrade-de-dependências-específicas).
 
 ### `--unlock-transitive`
 
-When used with a list of packages to unlock, first the transitive closure of
-those packages' dependencies (in the current resolution) is computed,
-and then all those packages are unlocked.
+Quando usado com uma lista de pacotes para desbloquear, primeiro o fechamento transitivo de
+dependências desses pacotes (na resolução atual) é computado,
+e então todos esses pacotes são desbloqueados.
 
-## In a workspace
+## Em um workspace
 
-In a [Pub workspace](/tools/pub/workspaces) `dart pub upgrade` will
-upgrade all dependencies in the shared resolution from across all workspace
-packages.
+Em um [Pub workspace](/tools/pub/workspaces), `dart pub upgrade` fará
+upgrade de todas as dependências na resolução compartilhada em todos os
+pacotes do workspace.
 
-`dart pub upgrade --major-versions` and `dart pub upgrade --tighten` will update
-constraints in all workspace `pubspec.yaml` files.
+`dart pub upgrade --major-versions` e `dart pub upgrade --tighten` atualizarão
+restrições em todos os arquivos `pubspec.yaml` do workspace.
 
 {% render 'pub-problems.md' %}
