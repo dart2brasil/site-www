@@ -76,7 +76,7 @@ principal da aplicação de linha de comando.
 
 Este deve ser um arquivo Dart no diretório `bin/`.
 Se a opção for omitida e houver um único
-arquivo Dart em `bin/`, então esse será usado.
+arquivo Dart em `bin/`, então esse é usado em vez disso.
 
 ```console
 $ dart build cli --target=<path>

@@ -1,9 +1,9 @@
 ---
 ia-translate: true
-title: Customizing static analysis
-shortTitle: Static analysis
+title: Personalizando análise estática
+shortTitle: Análise estática
 description: >-
-  Use an analysis options file and code comments to customize static analysis.
+  Use um arquivo de opções de análise e comentários de código para personalizar a análise estática.
 bodyClass: highlight-diagnostics
 ---
 
@@ -310,8 +310,8 @@ ou [desabilitar regras individuais][desabilitar regras individuais].
 :::
 
 :::note
-Para mais informações sobre inclusão de arquivos de opções,
-consulte a seção [Incluindo opções compartilhadas](#including-shared-options).
+For more information about including options files, 
+check out the [Including shared options](#including-shared-options) section.
 :::
 
 [lints package]: {{site.pub-pkg}}/lints
@@ -372,18 +372,18 @@ Devido às restrições do YAML,
 Você pode usar a outra sintaxe para regras em um arquivo incluído.
 :::
 
-## Incluindo opções compartilhadas {:#including-shared-options}
+## Including shared options
 
-Um arquivo de opções de análise pode incluir opções que são especificadas em
-outro arquivo de opções, ou até mesmo uma lista de outros arquivos de opções.
-Você pode especificar esses arquivos usando o campo de nível superior `include:`:
+An analysis options file can include options which are specified in
+another options file, or even a list of other options files.
+You can specify such files using the top-level `include:` field:
 
 ```yaml title="analysis_options.yaml"
 include: package:flutter_lints/recommended.yaml
 ```
 
-Um arquivo de opções incluído pode ser especificado com um caminho `package:`, ou um caminho relativo.
-Vários arquivos de opções de análise podem ser especificados em uma lista:
+An included options file can be specified with a `package:` path, or a relative
+path. Multiple analysis options files can be specified in a list:
 
 ```yaml title="analysis_options.yaml"
 include:
@@ -391,21 +391,21 @@ include:
   - ../team_options.yaml
 ```
 
-As opções em um arquivo incluído podem ser sobrescritas no arquivo que o inclui,
-bem como por arquivos incluídos subsequentes.
-Em outras palavras, as opções especificadas por um arquivo de opções de análise são
-calculadas aplicando primeiro as opções especificadas em cada um dos arquivos incluídos
-(aplicando recursivamente este algoritmo), na ordem em que aparecem na lista,
-e então sobrescrevendo-as com quaisquer opções definidas localmente.
+Options in an included file can be overridden in the including file,
+as well as by subsequent included files. 
+In other words, the options specified by an analysis options file are
+computed by first applying the options specified in each of the included files
+(by recursively applying this algorithm), in the order they appear in the list,
+and then overriding them with any locally defined options.
 
-Por exemplo, dados os seguintes arquivos de opções:
+For example, given the following options files:
 
 ```yaml title="three.yaml"
 include: two.yaml
 # ...
 ```
 
-E um arquivo de opções final que os inclui:
+And a final options file that includes these:
 
 ```yaml title="analysis_options.yaml"
 include:
@@ -414,8 +414,8 @@ include:
 # ...
 ```
 
-Então, as opções de análise combinadas são calculadas aplicando as opções encontradas
-em `one.yaml`, depois `two.yaml`, depois `three.yaml`, e finalmente
+Then the combined analysis options are computed by applying the options found
+in `one.yaml`, then `two.yaml`, then `three.yaml`, and finally
 `analysis_options.yaml`.
 
 
@@ -634,13 +634,13 @@ analyzer:
     dead_code: info
 ```
 
-## Configurando `dart format` {:#configuring-dart-format}
+## Configuring `dart format`
 
-Você pode configurar o comportamento de [`dart format`][] adicionando uma
-seção `formatter` ao arquivo de opções de análise
-especificando seu `page_width` preferido.
+You can configure the behavior of [`dart format`][] by adding a
+`formatter` section to the analysis options file
+specifying your preferred `page_width`.
 
-Para mais informações, leia [Configurando a largura de página do formatter][Configuring formatter page width].
+For more information, read [Configuring formatter page width][].
 
 ## Recursos {:#resources}
 

@@ -4,23 +4,23 @@ title: dart compile
 description: Ferramenta de linha de comando para compilar código-fonte Dart.
 ---
 
-This guide describes how to use the `dart compile` command
-to compile a Dart program to a target platform.
+Este guia descreve como usar o comando `dart compile`
+para compilar um programa Dart para uma plataforma de destino.
 
 ## Overview
 
 :::note
-If your package or any of its dependencies has [build hooks](/tools/hooks),
-you must use the [`dart build`](/tools/dart-build) command.
-The `dart compile exe` and `dart compile aot-snapshot` commands don't
-run build hooks, and will fail if hooks are present.
+Se o seu pacote ou qualquer uma de suas dependências tiver [build hooks](/tools/hooks),
+você deve usar o comando [`dart build`](/tools/dart-build).
+Os comandos `dart compile exe` e `dart compile aot-snapshot` não
+executam build hooks e falharão se hooks estiverem presentes.
 :::
 
-Use the `dart compile` command to compile
-a Dart program to a [target platform](/overview#platform).
-The output—which you specify using a subcommand—can 
-either include a [Dart runtime][] or be a _module_
-(also known as a _snapshot_).
+Use o comando `dart compile` para compilar
+um programa Dart para uma [plataforma de destino](/overview#platform).
+A saída—que você especifica usando um subcomando—pode
+incluir um [Dart runtime][] ou ser um _módulo_
+(também conhecido como _snapshot_).
 
 {% render 'tools/dart-tool-note.md' %}
 
@@ -179,13 +179,13 @@ $ ./tmp/myapp
 #### Cross-compilation {: #cross-compilation-exe }
 
 :::version-note
-Support for Linux ARM64 and x64 cross-compilation was introduced in Dart 3.8.
+O suporte para cross-compilation Linux ARM64 e x64 foi introduzido no Dart 3.8.
 
-Support for Linux ARM and RISCV64 was introduced in Dart 3.9.
+O suporte para Linux ARM e RISCV64 foi introduzido no Dart 3.9.
 :::
 
-The following table shows which 64-bit host operating systems support
-cross-compilation to which targets:
+A tabela a seguir mostra quais sistemas operacionais host de 64 bits suportam
+cross-compilation para quais destinos:
 
 {% assign y = '<span class="material-symbols system-support" title="Supported" aria-label="Supported">done</span>' %}
 
@@ -197,23 +197,23 @@ cross-compilation to which targets:
 
 {:.table .table-striped .nowrap}
 
-To use cross-compilation, include the following flags:
+Para usar cross-compilation, inclua as seguintes flags:
 
 `--target-os=linux`
-: The target operating system for the compiled executable.
-  Only the Linux operating system is supported at this time.
+: O sistema operacional de destino para o executável compilado.
+  Apenas o sistema operacional Linux é suportado no momento.
 
 `--target-arch=value`
-: The target architecture for the compiled executable.
-  The value for this flag can be:
+: A arquitetura de destino para o executável compilado.
+  O valor para esta flag pode ser:
 
-  - `arm`: 32-bit ARM processor
-  - `arm64`: 64-bit ARM processor
-  - `riscv64`: 64-bit RISC-V (RV64GC) processor
-  - `x64`: x86-64 processor
+  - `arm`: processador ARM de 32 bits
+  - `arm64`: processador ARM de 64 bits
+  - `riscv64`: processador RISC-V de 64 bits (RV64GC)
+  - `x64`: processador x86-64
 
-The following command demonstrates how to cross-compile a
-standalone executable for a 64-bit Linux system:
+O comando a seguir demonstra como fazer cross-compile de um
+executável independente para um sistema Linux de 64 bits:
 
 ```console
 dart compile exe \
@@ -222,11 +222,11 @@ dart compile exe \
   hello.dart
 ```
 
-Internally, this command downloads additional Dart SDK binaries and
-caches them in the `~/.dart` directory.
+Internamente, este comando baixa binários adicionais do Dart SDK e
+os armazena em cache no diretório `~/.dart`.
 
-Here's a sample output with the `--verbose` flag specified with
-the command:
+Aqui está uma saída de exemplo com a flag `--verbose` especificada
+no comando:
 
 ```console
 Downloading https://storage.googleapis.com/dart-archive/channels/dev/signed/hash/...4864.../sdk/gen_snapshot_macos_arm64_linux_x64...
@@ -254,16 +254,16 @@ consulte a documentação da plataforma para esses sistemas operacionais:
 [`SignTool.exe` documentation]: https://docs.microsoft.com/dotnet/framework/tools/signtool-exe
 [Apple Code Signing guide]: {{site.apple-dev}}/support/code-signing/
 
-#### Known limitations {: #known-limitations }
+#### Limitações conhecidas {: #known-limitations }
 
-The `exe` subcommand has the following known limitations:
+O subcomando `exe` tem as seguintes limitações conhecidas:
 
-* No support for `dart:mirrors` and `dart:developer`.
-  For a complete list of the core libraries you can use,
-  reference the [Multi-platform][] and [Native platform][] library tables.
+* Sem suporte para `dart:mirrors` e `dart:developer`.
+  Para uma lista completa das bibliotecas principais que você pode usar,
+  consulte as tabelas de bibliotecas [Multi-platform][] e [Native platform][].
 
-* Cross-compilation is supported, but the target OS is limited to Linux.
-  To learn more, check out [Cross-compilation][].
+* Cross-compilation é suportada, mas o sistema operacional de destino é limitado ao Linux.
+  Para saber mais, confira [Cross-compilation][].
 
 [Multi-platform]: /libraries#multi-platform-libraries
 [Native platform]: /libraries#native-platform-libraries
@@ -280,26 +280,26 @@ Por exemplo, se você usar o macOS para criar um arquivo `.aot`,
 esse arquivo poderá ser executado somente no macOS.
 O Dart oferece suporte a módulos AOT no Windows, macOS e Linux.
 
-Compile your app and set the output file:
+Compile seu aplicativo e defina o arquivo de saída:
 
 ```console
 $ dart compile aot-snapshot bin/myapp.dart
 ```
 
-When successful, this command outputs the following:
+Quando bem-sucedido, este comando gera o seguinte:
 
 ```console
 Generated: /Users/me/myapp/bin/myapp.aot
 ```
 
-Run your compiled app from the `/bin` directory:
+Execute seu aplicativo compilado a partir do diretório `/bin`:
 
 ```console
 $ dartaotruntime bin/myapp.aot
 ```
 
-To learn more, see the
-[`dartaotruntime` documentation](/tools/dartaotruntime).
+Para saber mais, veja a
+[documentação do `dartaotruntime`](/tools/dartaotruntime).
 
 {% comment %}
   TODO: Get info from https://github.com/dart-lang/sdk/wiki/Snapshots
@@ -307,18 +307,18 @@ To learn more, see the
 
 #### Cross-compilation {: #cross-compilation-aot }
 
-Cross-compilation support for the `aot-snapshot` subcommand
-is the same as what's available for the `exe` subcommand.
-For more information, see
-[Self-contained executables (exe)][cross-compile-exe].
+O suporte de cross-compilation para o subcomando `aot-snapshot`
+é o mesmo disponível para o subcomando `exe`.
+Para mais informações, consulte
+[Executáveis autocontidos (exe)][cross-compile-exe].
 
 [cross-compile-exe]: #cross-compilation-exe
 
-#### Known limitations {: #known-limitations-aot }
+#### Limitações conhecidas {: #known-limitations-aot }
 
-The `aot-snapshot` subcommand has the same limitations
-as the `exe` subcommand. For more information, see
-[Self-contained executables (exe)][known-limitations-exe]
+O subcomando `aot-snapshot` tem as mesmas limitações
+do subcomando `exe`. Para mais informações, consulte
+[Executáveis autocontidos (exe)][known-limitations-exe]
 
 [known-limitations-exe]: #known-limitations
 
@@ -405,11 +405,11 @@ melhorar o desempenho do JavaScript:
   que você passa para cada função ou método.
 
 :::tip
-Don't worry about the size of your app's included libraries.
-The production compiler performs tree shaking to omit
-unused classes, functions, methods, and so on.
-Import the libraries you think you'll need,
-and let the compiler get rid of what it doesn't need.
+Não se preocupe com o tamanho das bibliotecas incluídas no seu aplicativo.
+O compilador de produção realiza tree shaking para omitir
+classes, funções, métodos não utilizados, e assim por diante.
+Importe as bibliotecas que você acha que precisará,
+e deixe o compilador se livrar do que não for necessário.
 :::
 
 Para saber mais sobre como criar e implantar aplicativos JavaScript,

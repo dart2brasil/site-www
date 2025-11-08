@@ -1,7 +1,8 @@
 ---
-title: Dart testing
+ia-translate: true
+title: Testes em Dart
 shortTitle: Testing
-description: How to test Flutter, web, and VM applications.
+description: Como testar aplicativos Flutter, web e VM.
 ---
 
 Testes de software, uma parte importante do desenvolvimento de aplicativos,
@@ -127,10 +128,10 @@ Dois serviços CI para GitHub são
 
 Saiba mais sobre o GitHub Actions:
 
-* Many packages provided by the Dart team use GitHub Actions.
-  For an example, see
-  [`markdown.yaml`][markdown-ci] in the markdown package's repo.
-  To see how that repo migrated from Travis CI to GitHub Actions,
-  look at [PR #353]({{site.repo.dart.org}}/markdown/pull/353).
+* Muitos pacotes fornecidos pela equipe Dart usam GitHub Actions.
+  Para um exemplo, veja
+  [`markdown.yaml`][markdown-ci] no repositório do pacote markdown.
+  Para ver como esse repositório migrou do Travis CI para GitHub Actions,
+  veja [PR #353]({{site.repo.dart.org}}/markdown/pull/353).
 
 [markdown-ci]: {{site.repo.dart.org}}/tools/blob/main/.github/workflows/markdown.yaml
