@@ -31,7 +31,7 @@ e melhora tree shaking (eliminação de código morto).
 [biblioteca]: /resources/glossary#library
 [acesso dinâmico]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 
-## Usando bibliotecas
+## Usando bibliotecas {:#using-libraries}
 
 Use `import` para especificar como um namespace de uma biblioteca é usado no
 escopo de outra biblioteca.
@@ -61,7 +61,7 @@ import 'package:test/test.dart';
 *URLs* (localizadores de recursos uniformes) são um tipo comum de URI.
 :::
 
-### Especificando um prefixo de biblioteca
+### Especificando um prefixo de biblioteca {:#specifying-a-library-prefix}
 
 Se você importar duas bibliotecas que têm identificadores conflitantes, então você
 pode especificar um prefixo para uma ou ambas as bibliotecas. Por exemplo, se library1
