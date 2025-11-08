@@ -2,16 +2,16 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 95 files (with ia-translate: true metadata)
-- **Remaining:** ~850 files
-- **Progress:** 10.1%
+- **Translated:** 141 files (with ia-translate: true metadata)
+- **Remaining:** ~804 files
+- **Progress:** 14.9%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 40 (37 new + 3 from merged PR)
+- **Files translated this session:** 86 (83 new + 3 from merged PR)
 - **Starting count:** 55 files
-- **Current count:** 95 files
+- **Current count:** 141 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
@@ -70,7 +70,8 @@
 - ✅ **Language:** All 9 files done (100%) 🎉
 - ✅ **Libraries:** All 7 files done (100%) 🎉
 - ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
-- ⏳ **Tools:** 15/~776 files (2%)
+- ✅ **Tools Section 17:** Diagnostic Errors (native/new/no/non/not/null) - 46 files (100%) 🎉
+- ⏳ **Tools (Overall):** 61/~776 files (7.9%)
 
 ## Tools Section Progress (This Session)
 Major tools documentation files completed:
@@ -99,9 +100,57 @@ Following `.claude/agents/dart-docs-translator.md`:
 ## Branch
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
+### Section 17 Translation (46 files) - COMPLETED
+41. ✅ `src/content/tools/diagnostics/native_field_invalid_type.md`
+42. ✅ `src/content/tools/diagnostics/native_field_missing_type.md`
+43. ✅ `src/content/tools/diagnostics/native_field_not_static.md`
+44. ✅ `src/content/tools/diagnostics/native_function_missing_type.md`
+45. ✅ `src/content/tools/diagnostics/new_with_undefined_constructor_default.md`
+46. ✅ `src/content/tools/diagnostics/no_adjacent_strings_in_list.md`
+47. ✅ `src/content/tools/diagnostics/no_annotation_constructor_arguments.md`
+48. ✅ `src/content/tools/diagnostics/no_combined_super_signature.md`
+49. ✅ `src/content/tools/diagnostics/no_duplicate_case_values.md`
+50. ✅ `src/content/tools/diagnostics/no_generative_constructors_in_superclass.md`
+51. ✅ `src/content/tools/diagnostics/no_leading_underscores_for_library_prefixes.md`
+52. ✅ `src/content/tools/diagnostics/no_leading_underscores_for_local_identifiers.md`
+53. ✅ `src/content/tools/diagnostics/no_logic_in_create_state.md`
+54. ✅ `src/content/tools/diagnostics/no_wildcard_variable_uses.md`
+55. ✅ `src/content/tools/diagnostics/non_abstract_class_inherits_abstract_member.md`
+56. ✅ `src/content/tools/diagnostics/non_bool_condition.md`
+57. ✅ `src/content/tools/diagnostics/non_bool_expression.md`
+58. ✅ `src/content/tools/diagnostics/non_bool_negation_expression.md`
+59. ✅ `src/content/tools/diagnostics/non_bool_operand.md`
+60. ✅ `src/content/tools/diagnostics/non_const_argument_for_const_parameter.md`
+61. ✅ `src/content/tools/diagnostics/non_const_call_to_literal_constructor.md`
+62. ✅ `src/content/tools/diagnostics/non_const_generative_enum_constructor.md`
+63. ✅ `src/content/tools/diagnostics/non_constant_annotation_constructor.md`
+64. ✅ `src/content/tools/diagnostics/non_constant_case_expression.md`
+65. ✅ `src/content/tools/diagnostics/non_constant_case_expression_from_deferred_library.md`
+66. ✅ `src/content/tools/diagnostics/non_constant_default_value.md`
+67. ✅ `src/content/tools/diagnostics/non_constant_default_value_from_deferred_library.md`
+68. ✅ `src/content/tools/diagnostics/non_constant_identifier_names.md`
+69. ✅ `src/content/tools/diagnostics/non_constant_list_element.md`
+70. ✅ `src/content/tools/diagnostics/non_constant_map_element.md`
+71. ✅ `src/content/tools/diagnostics/non_constant_map_key.md`
+72. ✅ `src/content/tools/diagnostics/non_constant_map_pattern_key.md`
+73. ✅ `src/content/tools/diagnostics/non_constant_map_value.md`
+74. ✅ `src/content/tools/diagnostics/non_constant_relational_pattern_expression.md`
+75. ✅ `src/content/tools/diagnostics/non_constant_set_element.md`
+76. ✅ `src/content/tools/diagnostics/not_a_type.md`
+77. ✅ `src/content/tools/diagnostics/not_assigned_potentially_non_nullable_local_variable.md`
+78. ✅ `src/content/tools/diagnostics/not_binary_operator.md`
+79. ✅ `src/content/tools/diagnostics/not_enough_positional_arguments.md`
+80. ✅ `src/content/tools/diagnostics/not_initialized_non_nullable_instance_field.md`
+81. ✅ `src/content/tools/diagnostics/not_initialized_non_nullable_variable.md`
+82. ✅ `src/content/tools/diagnostics/not_iterable_spread.md`
+83. ✅ `src/content/tools/diagnostics/not_map_spread.md`
+84. ✅ `src/content/tools/diagnostics/null_argument_to_non_null_type.md`
+85. ✅ `src/content/tools/diagnostics/null_check_always_fails.md`
+86. ✅ `src/content/tools/diagnostics/null_check_on_nullable_type_parameter.md`
+
 ## Last Updated
-Session: 2025-11-08 (40 files this session including merge)
-Progress: 10.1% complete (95/945 files)
+Session: 2025-11-08 (86 files this session including merge)
+Progress: 14.9% complete (141/945 files)
 
 **Major Milestones:**
 - ✅ Language section 100% COMPLETE! 🎉

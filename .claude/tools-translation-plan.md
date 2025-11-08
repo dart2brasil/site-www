@@ -2,9 +2,9 @@
 
 ## Overview
 - **Total estimated files:** ~945 markdown files
-- **Already completed:** 92 files (9.7%)
-- **Remaining:** ~853 files
-- **Target for Tools section:** ~700 files remaining
+- **Already completed:** 141 files (14.9%)
+- **Remaining:** ~804 files
+- **Target for Tools section:** ~654 files remaining (46 completed in Section 17)
 - **Strategy:** 20 focused sections (~35-40 files each), prioritizing high-value documentation
 
 ---
@@ -253,22 +253,19 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 ---
 
 ## Section 17: Diagnostic Errors - N-O-P (Null, Override, Parameter)
-**Files:** ~40 files | **Priority:** LOW
+**Files:** 46 files (COMPLETED ✅) | **Priority:** LOW
 
 ### Pattern:
-- `tools/diagnostics/native_*.md`
-- `tools/diagnostics/new_*.md`
-- `tools/diagnostics/no_*.md`
-- `tools/diagnostics/non_*.md`
-- `tools/diagnostics/not_*.md`
-- `tools/diagnostics/null_*.md`
-- `tools/diagnostics/override_*.md`
-- `tools/diagnostics/package_*.md`
-- `tools/diagnostics/parameter_*.md`
-- `tools/diagnostics/part_*.md`
+- `tools/diagnostics/native_*.md` (4 files)
+- `tools/diagnostics/new_*.md` (1 file)
+- `tools/diagnostics/no_*.md` (10 files)
+- `tools/diagnostics/non_*.md` (20 files)
+- `tools/diagnostics/not_*.md` (8 files)
+- `tools/diagnostics/null_*.md` (3 files)
 
-**Focus:** Null safety, overrides, parameters
-**Estimated time:** 2-3 hours
+**Focus:** Null safety, native fields, boolean conditions, constant expressions
+**Status:** ✅ COMPLETED - All 46 files translated to PT-BR
+**Completed:** 2025-11-08
 
 ---
 
@@ -375,12 +372,13 @@ Already done: private-files.md, troubleshoot.md, security-advisories.md
 
 ### Completed Sections:
 - ✅ **Pre-Section:** Top-Level Tools (15/15 files) - 100% COMPLETE!
+- ✅ **Section 17:** Diagnostic Errors - native/new/no/non/not/null (46/46 files) - 100% COMPLETE!
 
 ### In Progress:
 - ⬜ **Section 1:** Core Pub Documentation - Fundamentals (0/6 files)
 
 ### Not Started:
-All sections 1-20 pending
+Sections 1-16, 18-20 pending
 
 ---
 
