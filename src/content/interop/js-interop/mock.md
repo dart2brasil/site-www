@@ -1,7 +1,8 @@
 ---
-title: How to mock JavaScript interop objects
-shortTitle: Mock JS interop objects
-description: Learn how to mock JS interop objects in Dart for testing.
+ia-translate: true
+title: Como simular objetos de interoperação JavaScript
+shortTitle: Simular objetos de interoperação JS
+description: Aprenda como simular objetos de interoperação JS em Dart para testes.
 ---
 
 Neste tutorial, você aprenderá como simular objetos JS para que possa testar

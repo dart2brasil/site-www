@@ -1,24 +1,25 @@
 ---
-title: Past JS interop
-breadcrumb: Background
-description: Archive of Dart's previous JS interop support.
+ia-translate: true
+title: Interoperação JS anterior
+breadcrumb: Contexto
+description: Arquivo do suporte anterior de interoperação JS do Dart.
 prevpage:
   url: /interop/js-interop/tutorials
-  title: JS interop tutorials
+  title: Tutoriais de interoperação JS
 nextpage:
   url: /interop/js-interop/package-web/
-  title: Migrate to package:web
+  title: Migrar para package:web
 ---
 
 :::warning
 Nenhuma dessas bibliotecas legacy de interop é suportada ao compilar para [Wasm][].
 :::
 
-This page addresses previous iterations of JS interop for Dart that
-have been considered legacy and are deprecated as of Dart 3.7 (Feb 2025).
-Therefore, prefer using [`dart:js_interop`][] going forwards and
-migrate usages of old interop libraries when possible.
-Support for browser APIs, such as [`dart:html`][], are now supported by
+Esta página aborda iterações anteriores de interoperação JS para Dart que
+foram consideradas legacy e estão obsoletas a partir do Dart 3.7 (fevereiro de 2025).
+Portanto, prefira usar [`dart:js_interop`][] daqui para frente e
+migre usos de bibliotecas de interop antigas quando possível.
+O suporte para APIs do navegador, como [`dart:html`][], agora é suportado pelo
 [`package:web`][].
 
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/
