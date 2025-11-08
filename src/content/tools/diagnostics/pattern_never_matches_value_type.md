@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: pattern_never_matches_value_type
 description: >-
-  Details about the pattern_never_matches_value_type
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico pattern_never_matches_value_type
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The matched value type '{0}' can never match the required type '{1}'._
+_O tipo do valor correspondente '{0}' nunca pode corresponder ao tipo requerido '{1}'._
 
 ## Description
 
-The analyzer produces this diagnostic when the object's type can't be
-matched by the pattern.
+O analisador produz este diagnóstico quando o tipo do objeto não pode ser
+correspondido pelo padrão.
 
 ## Example
 
-The following code produces this diagnostic because a `double` is matched
-by an `int` pattern, which can never succeed:
+O código a seguir produz este diagnóstico porque um `double` é correspondido
+por um padrão `int`, o que nunca pode ter sucesso:
 
 ```dart
 void f(String? s) {
@@ -27,8 +28,8 @@ void f(String? s) {
 
 ## Common fixes
 
-If one of the types is wrong, then change one or both so the pattern match
-can succeed:
+Se um dos tipos está errado, então altere um ou ambos para que a correspondência de padrão
+possa ter sucesso:
 
 ```dart
 void f(String? s) {
@@ -36,7 +37,7 @@ void f(String? s) {
 }
 ```
 
-If the types are correct, then remove the pattern match:
+Se os tipos estão corretos, então remova a correspondência de padrão:
 
 ```dart
 void f(double x) {}

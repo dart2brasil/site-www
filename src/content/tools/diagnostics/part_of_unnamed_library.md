@@ -1,33 +1,34 @@
 ---
+ia-translate: true
 title: part_of_unnamed_library
 description: >-
-  Details about the part_of_unnamed_library
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico part_of_unnamed_library
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The library is unnamed. A URI is expected, not a library name '{0}', in the part-of directive._
+_A biblioteca não tem nome. Uma URI é esperada, não um nome de biblioteca '{0}', na diretiva part-of._
 
 ## Description
 
-The analyzer produces this diagnostic when a library that doesn't have a
-`library` directive (and hence has no name) contains a `part` directive
-and the `part of` directive in the [part file][] uses a name to specify
-the library that it's a part of.
+O analisador produz este diagnóstico quando uma biblioteca que não possui uma
+diretiva `library` (e portanto não tem nome) contém uma diretiva `part`
+e a diretiva `part of` no [part file][] usa um nome para especificar
+a biblioteca da qual faz parte.
 
 ## Example
 
-Given a [part file][] named `part_file.dart` containing the following
-code:
+Dado um [part file][] chamado `part_file.dart` contendo o seguinte
+código:
 
 ```dart
 part of lib;
 ```
 
-The following code produces this diagnostic because the library including
-the [part file][] doesn't have a name even though the [part file][] uses a
-name to specify which library it's a part of:
+O código a seguir produz este diagnóstico porque a biblioteca incluindo
+o [part file][] não tem um nome mesmo que o [part file][] use um
+nome para especificar de qual biblioteca faz parte:
 
 ```dart
 part [!'part_file.dart'!];
@@ -35,8 +36,8 @@ part [!'part_file.dart'!];
 
 ## Common fixes
 
-Change the `part of` directive in the [part file][] to specify its library
-by URI:
+Altere a diretiva `part of` no [part file][] para especificar sua biblioteca
+por URI:
 
 ```dart
 part of 'test.dart';
