@@ -117,7 +117,7 @@ do {
 ```
 
 
-## Break e continue
+## Break e continue {:#break-and-continue}
 
 Use `break` para parar o loop:
 
