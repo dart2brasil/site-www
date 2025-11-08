@@ -1,6 +1,4 @@
----
-ia-translate: true
----
+<!-- ia-translate: true -->
 
 # <img src="https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/dart/logo/64.png" alt="Dart" width="28" height="28"/> O site da linguagem Dart (dartbrasil.dev)
 

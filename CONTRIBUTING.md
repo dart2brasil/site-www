@@ -1,6 +1,4 @@
----
-ia-translate: true
----
+<!-- ia-translate: true -->
 
 # Contribuindo :heart:
 
