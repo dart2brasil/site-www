@@ -142,7 +142,7 @@ colateral inesperado, o operador chama o getter exatamente uma vez, salvando seu
 em uma variável temporária.
 :::
 
-## Métodos abstract
+## Métodos abstract {:#abstract-methods}
 
 Métodos de instância, getter e setter podem ser abstract, definindo uma
 interface mas deixando sua implementação para outras classes.
