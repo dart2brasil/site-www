@@ -31,14 +31,25 @@ description: Descrição em português
   Then keep definition: [Dart documentation]: /docs/...
   ```
 
+- **Header anchors:** Keep custom anchors in English, translate only the header text
+  ```markdown
+  English: ### Main channel URL scheme {:#main-channel-url-scheme}
+  ✅ RIGHT: ### Esquema de URL do canal main {:#main-channel-url-scheme}
+  ❌ WRONG: ### Esquema de URL do canal main {:#esquema-de-url-do-canal-main}
+
+  Note: The anchor {:#...} must remain in English to preserve links!
+  ```
+
 - **Never translate:**
   - Link URLs or paths: `/guides/language`, `/tutorials`
   - Template variables: `{{site.dart-api}}`, `{{site.pub-pkg}}`, `{{site.repo.dart.sdk}}`
   - Reference keys: `[Dart SDK]`, `[pub.dev]`
   - External URLs: `https://...`
+  - Header anchors: `{:#anchor-name}` - keep in English
 
 - **Always translate:**
   - Link display text in brackets: `[texto visível]`
+  - Header text before the anchor: `### Texto traduzido {:#english-anchor}`
 
 ### 3. **Technical Terms - Keep in English**
 
@@ -321,6 +332,21 @@ Veja a documentação da [classe `String`][String].
 [String]: {{site.dart-api}}/dart-core/String-class.html
 ```
 
+### Pattern 6: Headers with Custom Anchors
+```markdown
+English:
+## Getting started {:#getting-started}
+### Main channel URL scheme {:#main-channel-url-scheme}
+#### Configuration options {:#config-options}
+
+PT-BR:
+## Começando {:#getting-started}
+### Esquema de URL do canal main {:#main-channel-url-scheme}
+#### Opções de configuração {:#config-options}
+
+Note: Translate the header text, but keep the anchor {:#...} exactly as is!
+```
+
 ## Error Prevention
 
 ### ❌ Common Mistakes to Avoid:
@@ -359,6 +385,14 @@ Veja a documentação da [classe `String`][String].
    ```markdown
    ❌ Use a palavra-chave `final` para...
    ✅ Use a keyword `final` para...
+   ```
+
+7. **Translating header anchors**
+   ```markdown
+   ❌ ### Começando {:#comecando}
+   ✅ ### Começando {:#getting-started}
+
+   Note: Anchors must stay in English to preserve cross-references!
    ```
 
 ## Examples from Dart Documentation
