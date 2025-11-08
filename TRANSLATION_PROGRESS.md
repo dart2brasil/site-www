@@ -2,23 +2,25 @@
 
 ## Summary
 - **Total files:** ~945 markdown files
-- **Translated:** 78 files (with ia-translate: true metadata)
-- **Remaining:** ~867 files
-- **Progress:** 8.3%
+- **Translated:** 92 files (with ia-translate: true metadata)
+- **Remaining:** ~853 files
+- **Progress:** 9.7%
 
 ## Recently Completed (This Session)
 
 ### Session Stats
-- **Files translated this session:** 23
+- **Files translated this session:** 37
 - **Starting count:** 55 files
-- **Current count:** 78 files
+- **Current count:** 92 files
 
 ### Agent & Setup
 - ✅ Created `.claude/agents/dart-docs-translator.md` - Specialized Dart translator agent
 - ✅ Merged upstream `dart-lang/site-www` main branch
 - ✅ Created `TRANSLATION_PROGRESS.md` tracker
 
-### Documentation Files Translated (This Session - 23 files)
+### Documentation Files Translated (This Session - 37 files)
+
+#### Initial Session (23 files)
 1. ✅ `src/content/interop/js-interop/mock.md`
 2. ✅ `src/content/tutorials/server/httpserver.md`
 3. ✅ `src/content/tutorials/server/get-started.md`
@@ -43,16 +45,40 @@
 22. ✅ `src/content/language/constructors.md`
 23. ✅ `src/content/language/type-system.md`
 
+#### Tools Section Focus (14 files)
+24. ✅ `src/content/tools/analysis.md` - Added metadata + translated frontmatter
+25. ✅ `src/content/tools/dart-build.md` - Full translation
+26. ✅ `src/content/tools/dart-create.md` - Completed translation
+27. ✅ `src/content/tools/dart-compile.md` - Completed translation
+28. ✅ `src/content/tools/dart-format.md` - Completed translation
+29. ✅ `src/content/tools/dart-info.md` - Full translation
+30. ✅ `src/content/tools/dart-install.md` - Full translation
+31. ✅ `src/content/tools/dart-tool.md` - Completed translation
+32. ✅ `src/content/tools/dartpad/troubleshoot.md` - Completed translation
+33. ✅ `src/content/tools/dartpad/privacy.md` - Completed translation
+34. ✅ `src/content/tools/hooks.md` - Full translation
+35. ✅ `src/content/tools/testing.md` - Completed translation
+36. ✅ `src/content/tools/vs-code.md` - Completed translation
+37. ✅ `src/content/tools/experiment-flags.md` - Completed translation
+
 ## Sections Completed
 - ✅ **Language:** All 9 files done (100%) 🎉
-- ✅ **Libraries:** All 7 files done (100%)
-- ✅ **Tutorials/Server:** All 5 files done (100%)
-- ⏳ **Tools:** 1/776 files (<1%)
+- ✅ **Libraries:** All 7 files done (100%) 🎉
+- ✅ **Tutorials/Server:** All 5 files done (100%) 🎉
+- ⏳ **Tools:** 15/~776 files (2%)
+
+## Tools Section Progress (This Session)
+Major tools documentation files completed:
+- ✅ Core CLI tools: dart-build, dart-compile, dart-create, dart-format, dart-info, dart-install, dart-tool
+- ✅ Testing & development: testing.md, hooks.md
+- ✅ IDE support: vs-code.md, jetbrains-plugin.md (already done)
+- ✅ DartPad: troubleshoot.md, privacy.md
+- ✅ Configuration: analysis.md, experiment-flags.md
 
 ## Files Still Needing Translation
 
 ### Large Sections
-- **Tools documentation:** ~775 files remaining
+- **Tools documentation:** ~761 files remaining (mostly diagnostic error codes)
 - **Web, server, interop:** ~200+ files
 - **Resources & guides:** ~50+ files
 - **Effective Dart:** ~30+ files
@@ -69,7 +95,11 @@ Following `.claude/agents/dart-docs-translator.md`:
 `claude/dart-docs-translator-agent-011CUuNdDUSDSU4UyCppyFpE`
 
 ## Last Updated
-Session: 2025-11-07 (23 files this session)
-Progress: 8.3% complete (78/945 files)
+Session: 2025-11-08 (37 files this session)
+Progress: 9.7% complete (92/945 files)
 
-**Major Milestone:** Language section 100% COMPLETE! 🎉
+**Major Milestones:**
+- ✅ Language section 100% COMPLETE! 🎉
+- ✅ Libraries section 100% COMPLETE! 🎉
+- ✅ Tutorials/Server section 100% COMPLETE! 🎉
+- ✅ Core Tools documentation started (15 essential files translated)
