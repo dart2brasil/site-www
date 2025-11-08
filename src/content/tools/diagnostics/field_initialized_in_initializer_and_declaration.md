@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: field_initialized_in_initializer_and_declaration
 description: >-
-  Details about the field_initialized_in_initializer_and_declaration
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico field_initialized_in_initializer_and_declaration
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Fields can't be initialized in the constructor if they are final and were already initialized at their declaration._
+_Campos não podem ser inicializados no construtor se forem final e já foram inicializados em sua declaração._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a final field is initialized in
-both the declaration of the field and in an initializer in a constructor.
-Final fields can only be assigned once, so it can't be initialized in both
-places.
+O analisador produz este diagnóstico quando um campo final é inicializado
+tanto na declaração do campo quanto em um inicializador em um construtor.
+Campos final podem ser atribuídos apenas uma vez, então não pode ser inicializado
+em ambos os lugares.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` is :
+O código a seguir produz este diagnóstico porque `f` é:
 
 ```dart
 class C {
@@ -27,11 +28,11 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the initialization doesn't depend on any values passed to the
-constructor, and if all of the constructors need to initialize the field to
-the same value, then remove the initializer from the constructor:
+Se a inicialização não depende de nenhum valor passado para o
+construtor, e se todos os construtores precisam inicializar o campo com o
+mesmo valor, remova o inicializador do construtor:
 
 ```dart
 class C {
@@ -40,9 +41,9 @@ class C {
 }
 ```
 
-If the initialization depends on a value passed to the constructor, or if
-different constructors need to initialize the field differently, then
-remove the initializer in the field's declaration:
+Se a inicialização depende de um valor passado para o construtor, ou se
+construtores diferentes precisam inicializar o campo de forma diferente,
+remova o inicializador na declaração do campo:
 
 ```dart
 class C {

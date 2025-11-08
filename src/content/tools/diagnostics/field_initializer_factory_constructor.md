@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: field_initializer_factory_constructor
 description: >-
-  Details about the field_initializer_factory_constructor
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico field_initializer_factory_constructor
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Initializing formal parameters can't be used in factory constructors._
+_Parâmetros formais inicializadores não podem ser usados em construtores factory._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a factory constructor has an
-initializing formal parameter. Factory constructors can't assign values to
-fields because no instance is created; hence, there is no field to assign.
+O analisador produz este diagnóstico quando um construtor factory possui um
+parâmetro formal inicializador. Construtores factory não podem atribuir valores a
+campos porque nenhuma instância é criada; portanto, não há campo para atribuir.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the factory constructor
-uses an initializing formal parameter:
+O código a seguir produz este diagnóstico porque o construtor factory
+usa um parâmetro formal inicializador:
 
 ```dart
 class C {
@@ -28,9 +29,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Replace the initializing formal parameter with a normal parameter:
+Substitua o parâmetro formal inicializador por um parâmetro normal:
 
 ```dart
 class C {

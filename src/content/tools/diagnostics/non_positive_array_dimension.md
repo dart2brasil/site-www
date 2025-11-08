@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: non_positive_array_dimension
 description: >-
-  Details about the non_positive_array_dimension
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_positive_array_dimension
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Array dimensions must be positive numbers._
+_As dimensões do array devem ser números positivos._
 
 ## Description
 
-The analyzer produces this diagnostic when a dimension given in an `Array`
-annotation is less than or equal to zero (`0`).
+O analisador produz este diagnóstico quando uma dimensão fornecida em uma anotação `Array`
+é menor ou igual a zero (`0`).
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because an array dimension of
-`-8` was provided:
+O código a seguir produz este diagnóstico porque uma dimensão de array de
+`-8` foi fornecida:
 
 ```dart
 import 'dart:ffi';
@@ -32,7 +33,7 @@ final class MyStruct extends Struct {
 
 ## Common fixes
 
-Change the dimension to be a positive integer:
+Altere a dimensão para ser um inteiro positivo:
 
 ```dart
 import 'dart:ffi';
@@ -43,7 +44,7 @@ final class MyStruct extends Struct {
 }
 ```
 
-If this is a variable length inline array, change the annotation to
+Se este é um array inline de comprimento variável, altere a anotação para
 `Array.variable()`:
 
 ```dart

@@ -1,28 +1,29 @@
 ---
+ia-translate: true
 title: must_be_a_native_function_type
 description: >-
-  Details about the must_be_a_native_function_type
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico must_be_a_native_function_type
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _The type '{0}' given to '{1}' must be a valid 'dart:ffi' native function type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an invocation of either
+O analisador produz este diagnóstico quando uma invocação de
 `Pointer.fromFunction`, `DynamicLibrary.lookupFunction`,
-or a `NativeCallable` constructor, has a type
-argument(whether explicit or inferred) that isn't a native function type.
+ou um construtor `NativeCallable`, tem um argumento de tipo
+(explícito ou inferido) que não é um tipo de função nativa.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, veja [C interop usando dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type `T` can be
-any subclass of `Function` but the type argument for `fromFunction` is
-required to be a native function type:
+O código a seguir produz este diagnóstico porque o tipo `T` pode ser
+qualquer subclasse de `Function`, mas o argumento de tipo para `fromFunction`
+é necessário que seja um tipo de função nativa:
 
 ```dart
 import 'dart:ffi';
@@ -36,9 +37,9 @@ class C<T extends Function> {
 }
 ```
 
-## Common fixes
+## Soluções comuns
 
-Use a native function type as the type argument to the invocation:
+Use um tipo de função nativa como o argumento de tipo para a invocação:
 
 ```dart
 import 'dart:ffi';

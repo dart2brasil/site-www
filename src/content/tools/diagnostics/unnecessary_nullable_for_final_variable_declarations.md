@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: unnecessary_nullable_for_final_variable_declarations
 description: >-
-  Details about the unnecessary_nullable_for_final_variable_declarations
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico unnecessary_nullable_for_final_variable_declarations
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Type could be non-nullable._
+_O tipo poderia ser não-nullable._
 
 ## Description
 
-The analyzer produces this diagnostic when a final field or variable has a
-nullable type but is initialized to a non-nullable value.
+O analisador produz este diagnóstico quando um campo ou variável final tem um
+tipo nullable mas é inicializado com um valor não-nullable.
 
 ## Example
 
-The following code produces this diagnostic because the final variable `i`
-has a nullable type (`int?`), but can never be `null`:
+O código a seguir produz este diagnóstico porque a variável final `i`
+tem um tipo nullable (`int?`), mas nunca pode ser `null`:
 
 ```dart
 final int? [!i!] = 1;
@@ -36,7 +37,7 @@ final int? [!i!] = 1;
 
 ## Common fixes
 
-Make the type non-nullable:
+Torne o tipo não-nullable:
 
 ```dart
 final int i = 1;

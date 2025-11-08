@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: enum_with_name_values
 description: >-
-  Details about the enum_with_name_values
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico enum_with_name_values
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The name 'values' is not a valid name for an enum._
+_O nome 'values' não é um nome válido para um enum._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an enum is declared to have the
-name `values`. This isn't allowed because the enum has an implicit static
-field named `values`, and the two would collide.
+O analisador produz este diagnóstico quando um enum é declarado com o
+nome `values`. Isso não é permitido porque o enum tem um campo estático
+implícito chamado `values`, e os dois entrariam em conflito.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because there's an enum
-declaration that has the name `values`:
+O código a seguir produz este diagnóstico porque há uma declaração de enum
+que tem o nome `values`:
 
 ```dart
 enum [!values!] {
@@ -26,6 +27,6 @@ enum [!values!] {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Rename the enum to something other than `values`.
+Renomeie o enum para algo diferente de `values`.

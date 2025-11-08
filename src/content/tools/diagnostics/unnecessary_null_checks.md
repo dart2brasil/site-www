@@ -1,8 +1,9 @@
 ---
+ia-translate: true
 title: unnecessary_null_checks
 description: >-
-  Details about the unnecessary_null_checks
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico unnecessary_null_checks
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
@@ -18,17 +19,17 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary use of a null check ('!')._
+_Uso desnecessário de uma verificação null ('!')._
 
 ## Description
 
-The analyzer produces this diagnostic when a null check operator (`!`) is
-used in a context where a nullable value is acceptable.
+O analisador produz este diagnóstico quando um operador de verificação null (`!`) é
+usado em um contexto onde um valor nullable é aceitável.
 
 ## Example
 
-The following code produces this diagnostic because a null check is being
-used even though `null` is a valid value to return:
+O código a seguir produz este diagnóstico porque uma verificação null está sendo
+usada mesmo que `null` seja um valor válido para retornar:
 
 ```dart
 int? f(int? i) {
@@ -38,7 +39,7 @@ int? f(int? i) {
 
 ## Common fixes
 
-Remove the null check operator:
+Remova o operador de verificação null:
 
 ```dart
 int? f(int? i) {

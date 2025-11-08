@@ -1,28 +1,29 @@
 ---
+ia-translate: true
 title: non_generative_implicit_constructor
 description: >-
-  Details about the non_generative_implicit_constructor
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_generative_implicit_constructor
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The unnamed constructor of superclass '{0}' (called by the default constructor of '{1}') must be a generative constructor, but factory found._
+_O construtor sem nome da superclasse '{0}' (chamado pelo construtor padrão de '{1}') deve ser um construtor generativo, mas factory foi encontrado._
 
 ## Description
 
-The analyzer produces this diagnostic when a class has an implicit
-generative constructor and the superclass has an explicit unnamed factory
-constructor. The implicit constructor in the subclass implicitly invokes
-the unnamed constructor in the superclass, but generative constructors can
-only invoke another generative constructor, not a factory constructor.
+O analisador produz este diagnóstico quando uma classe tem um
+construtor generativo implícito e a superclasse tem um construtor factory sem nome explícito.
+O construtor implícito na subclasse invoca implicitamente
+o construtor sem nome na superclasse, mas construtores generativos podem
+apenas invocar outro construtor generativo, não um construtor factory.
 
 ## Example
 
-The following code produces this diagnostic because the implicit
-constructor in `B` invokes the unnamed constructor in `A`, but the
-constructor in `A` is a factory constructor, when a generative constructor
-is required:
+O código a seguir produz este diagnóstico porque o construtor
+implícito em `B` invoca o construtor sem nome em `A`, mas o
+construtor em `A` é um construtor factory, quando um construtor generativo
+é necessário:
 
 ```dart
 class A {
@@ -35,8 +36,8 @@ class [!B!] extends A {}
 
 ## Common fixes
 
-If the unnamed constructor in the superclass can be a generative
-constructor, then change it to be a generative constructor:
+Se o construtor sem nome na superclasse pode ser um construtor generativo,
+então altere-o para ser um construtor generativo:
 
 ```dart
 class A {
@@ -47,9 +48,9 @@ class A {
 class B extends A { }
 ```
 
-If the unnamed constructor can't be a generative constructor and there are
-other generative constructors in the superclass, then explicitly invoke
-one of them:
+Se o construtor sem nome não pode ser um construtor generativo e há
+outros construtores generativos na superclasse, então invoque explicitamente
+um deles:
 
 ```dart
 class A {
@@ -62,8 +63,8 @@ class B extends A {
 }
 ```
 
-If there are no generative constructors that can be used and none can be
-added, then implement the superclass rather than extending it:
+Se não há construtores generativos que podem ser usados e nenhum pode ser
+adicionado, então implemente a superclasse em vez de estendê-la:
 
 ```dart
 class A {

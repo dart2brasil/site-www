@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: enum_constant_same_name_as_enclosing
 description: >-
-  Details about the enum_constant_same_name_as_enclosing
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico enum_constant_same_name_as_enclosing
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The name of the enum value can't be the same as the enum's name._
+_O nome do valor enum não pode ser o mesmo que o nome do enum._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an enum value has the same name
-as the enum in which it's declared.
+O analisador produz este diagnóstico quando um valor enum tem o mesmo nome
+que o enum no qual é declarado.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the enum value `E` has
-the same name as the enclosing enum `E`:
+O código a seguir produz este diagnóstico porque o valor enum `E` tem
+o mesmo nome que o enum envolvente `E`:
 
 ```dart
 enum E {
@@ -25,9 +26,9 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the name of the enum is correct, then rename the constant:
+Se o nome do enum estiver correto, então renomeie a constante:
 
 ```dart
 enum E {
@@ -35,7 +36,7 @@ enum E {
 }
 ```
 
-If the name of the constant is correct, then rename the enum:
+Se o nome da constante estiver correto, então renomeie o enum:
 
 ```dart
 enum F {

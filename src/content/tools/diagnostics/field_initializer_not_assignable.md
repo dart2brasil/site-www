@@ -1,26 +1,27 @@
 ---
+ia-translate: true
 title: field_initializer_not_assignable
 description: >-
-  Details about the field_initializer_not_assignable
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico field_initializer_not_assignable
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The initializer type '{0}' can't be assigned to the field type '{1}' in a const constructor._
+_O tipo de inicializador '{0}' não pode ser atribuído ao tipo de campo '{1}' em um construtor const._
 
-_The initializer type '{0}' can't be assigned to the field type '{1}'._
+_O tipo de inicializador '{0}' não pode ser atribuído ao tipo de campo '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the initializer list of a
-constructor initializes a field to a value that isn't assignable to the
-field.
+O analisador produz este diagnóstico quando a lista de inicializadores de um
+construtor inicializa um campo com um valor que não é atribuível ao
+campo.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `0` has the type `int`,
-and an `int` can't be assigned to a field of type `String`:
+O código a seguir produz este diagnóstico porque `0` tem o tipo `int`,
+e um `int` não pode ser atribuído a um campo de tipo `String`:
 
 ```dart
 class C {
@@ -30,10 +31,10 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the type of the field is correct, then change the value assigned to it
-so that the value has a valid type:
+Se o tipo do campo estiver correto, altere o valor atribuído a ele
+para que o valor tenha um tipo válido:
 
 ```dart
 class C {
@@ -43,8 +44,8 @@ class C {
 }
 ```
 
-If the type of the value is correct, then change the type of the field to
-allow the assignment:
+Se o tipo do valor estiver correto, altere o tipo do campo para
+permitir a atribuição:
 
 ```dart
 class C {

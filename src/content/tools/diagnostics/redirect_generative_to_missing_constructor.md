@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: redirect_generative_to_missing_constructor
 description: >-
-  Details about the redirect_generative_to_missing_constructor
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico redirect_generative_to_missing_constructor
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The constructor '{0}' couldn't be found in '{1}'._
+_O construtor '{0}' não pôde ser encontrado em '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a generative constructor
-redirects to a constructor that isn't defined.
+O analisador produz este diagnóstico quando um construtor generativo
+redireciona para um construtor que não está definido.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor `C.a`
-redirects to the constructor `C.b`, but `C.b` isn't defined:
+O código a seguir produz este diagnóstico porque o construtor `C.a`
+redireciona para o construtor `C.b`, mas `C.b` não está definido:
 
 ```dart
 class C {
@@ -25,9 +26,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the missing constructor must be called, then define it:
+Se o construtor ausente deve ser chamado, defina-o:
 
 ```dart
 class C {
@@ -36,8 +37,8 @@ class C {
 }
 ```
 
-If the missing constructor doesn't need to be called, then remove the
-redirect:
+Se o construtor ausente não precisa ser chamado, remova o
+redirecionamento:
 
 ```dart
 class C {
