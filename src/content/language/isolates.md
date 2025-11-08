@@ -319,7 +319,7 @@ class Worker {
 }
 ```
 
-#### Passo 2: Gerar um worker isolate
+#### Passo 2: Gerar um worker isolate {:#step-2-spawn-a-worker-isolate}
 
 O método `Worker.spawn` é onde você agrupará o código para criar o
 worker isolate e garantir que ele possa receber e enviar mensagens.
@@ -349,7 +349,7 @@ callback (`_startRemoteIsolate`) como um argumento quando for chamado no
 worker isolate. Este é o primeiro passo para garantir que o worker isolate tenha uma
 maneira de enviar mensagens de volta ao isolate principal.
 
-#### Passo 3: Executar código no worker isolate
+#### Passo 3: Executar código no worker isolate {:#step-3-execute-code-on-the-worker-isolate}
 
 Neste passo, você define o método `_startRemoteIsolate` que é enviado ao
 worker isolate para ser executado quando ele é gerado. Este método é como o método "main"
@@ -383,7 +383,7 @@ Este listener é o ponto de entrada para mensagens enviadas do isolate principal
 worker isolate. **Esta é a única chance que você tem de dizer ao worker isolate que código
 executar no futuro.**
 
-#### Passo 4: Manipular mensagens no isolate principal
+#### Passo 4: Manipular mensagens no isolate principal {:#step-4-handle-messages-on-the-main-isolate}
 
 Finalmente, você precisa dizer ao isolate principal como manipular mensagens enviadas do
 worker isolate de volta ao isolate principal. Para fazer isso, você precisa preencher
@@ -506,7 +506,7 @@ Future<void> parseJson(String message) async {
 
 </details>
 
-### Exemplo de ports robustos
+### Exemplo de ports robustos {:#robust-ports-example}
 
 O [exemplo anterior][] explicou os blocos de construção básicos necessários para configurar um
 isolate de longa duração com comunicação bidirecional. Como mencionado, esse exemplo carece
