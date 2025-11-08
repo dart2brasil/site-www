@@ -57,7 +57,7 @@ obter as versões mais recentes de todas as dependências.
 
 [Pacotes de aplicação]: /resources/glossary#application-package
 
-## Resolução de pacotes
+## Resolução de pacotes {:#package-resolution}
 
 Por padrão, pub cria um arquivo `package_config.json`
 no diretório `.dart_tool/` que mapeia nomes de pacotes para URIs de localização.
@@ -70,7 +70,7 @@ consulte [O que não fazer commit](/tools/pub/private-files).
 :::
 
 
-## Obter uma nova dependência
+## Obter uma nova dependência {:#getting-a-new-dependency}
 
 Se uma dependência for adicionada ao pubspec e depois `dart pub get` for executado,
 ela obtém a nova dependência e qualquer uma de suas dependências transitivas.
@@ -78,7 +78,7 @@ No entanto, pub não alterará as versões de nenhuma dependência já adquirida
 a menos que seja necessário para obter a nova dependência.
 
 
-## Remover uma dependência
+## Remover uma dependência {:#removing-a-dependency}
 
 Se uma dependência for removida do pubspec e depois `dart pub get` for executado,
 a dependência não estará mais disponível para importação.
