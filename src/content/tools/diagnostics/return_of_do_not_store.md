@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _'{0}' is annotated with 'doNotStore' and shouldn't be returned unless '{1}' is also annotated._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a value that is annotated with
+O analisador produz este diagnóstico quando a value that is annotated with
 the [`doNotStore`][meta-doNotStore] annotation is returned from a method,
 getter, or function that doesn't have the same annotation.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the result of invoking
+O código a seguir produz este diagnóstico porque the result of invoking
 `f` shouldn't be stored, but the function `g` isn't annotated to preserve
 that semantic:
 
@@ -30,7 +31,7 @@ int f() => 0;
 int g() => [!f()!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If the value that shouldn't be stored is the correct value to return, then
 mark the function with the [`doNotStore`][meta-doNotStore] annotation:

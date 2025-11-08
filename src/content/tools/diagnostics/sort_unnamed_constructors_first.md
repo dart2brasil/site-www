@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Invalid location for the unnamed constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an unnamed constructor appears
+O analisador produz este diagnóstico quando an unnamed constructor appears
 after a named constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the unnamed
-constructor is after the named constructor:
+O código a seguir produz este diagnóstico porque the unnamed
+constructor is after the named construtor:
 
 ```dart
 class C {
@@ -38,9 +39,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Move the unnamed constructor before any other constructors:
+Move the unnamed constructor before any other construtores:
 
 ```dart
 class C {

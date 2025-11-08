@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' is already used as an import prefix and can't be used to name a top-level element._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a name is used as both an import
+O analisador produz este diagnóstico quando a name is used as both an import
 prefix and the name of a top-level declaration in the same library.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` is used as both an
+O código a seguir produz este diagnóstico porque `f` is used as both an
 import prefix and the name of a function:
 
 ```dart
@@ -25,7 +26,7 @@ import 'dart:math' as f;
 int [!f!]() => f.min(0, 1);
 ```
 
-## Common fixes
+## Correções comuns
 
 If you want to use the name for the import prefix, then rename the
 top-level declaration:

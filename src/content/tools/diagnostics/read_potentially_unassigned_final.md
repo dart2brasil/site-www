@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The final variable '{0}' can't be read because it's potentially unassigned at this point._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a final local variable that
+O analisador produz este diagnóstico quando a final local variable that
 isn't initialized at the declaration site is read at a point where the
 compiler can't prove that the variable is always initialized before it's
 referenced.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the final local
+O código a seguir produz este diagnóstico porque the final local
 variable `x` is read (on line 3) when it's possible that it hasn't yet
 been initialized:
 
@@ -29,7 +30,7 @@ int f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Ensure that the variable has been initialized before it's read:
 

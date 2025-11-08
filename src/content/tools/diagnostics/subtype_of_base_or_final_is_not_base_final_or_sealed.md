@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The mixin '{0}' must be 'base' because the supertype '{1}' is 'base'._
@@ -15,15 +16,15 @@ _The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}' 
 
 _The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}' is 'final'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class or mixin has a direct
+O analisador produz este diagnóstico quando a class or mixin has a direct
 or indirect supertype that is either `base` or `final`, but the class or
 mixin itself isn't marked either `base`, `final`, or `sealed`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the class `B` is a
+O código a seguir produz este diagnóstico porque a classe `B` is a
 subtype of `A`, and `A` is a `base` class, but `B` is neither `base`,
 `final` or `sealed`:
 
@@ -32,9 +33,9 @@ base class A {}
 class [!B!] extends A {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Add either `base`, `final` or `sealed` to the class or mixin declaration:
+Add either `base`, `final` or `sealed` à classe or mixin declaration:
 
 ```dart
 base class A {}

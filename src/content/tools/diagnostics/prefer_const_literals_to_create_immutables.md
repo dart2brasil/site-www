@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use 'const' literals as arguments to constructors of '@immutable' classes._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a non-const list, map, or set
+O analisador produz este diagnóstico quando a non-const list, map, or set
 literal is passed as an argument to a constructor declared in a class
 annotated with `@immutable`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the list literal
+O código a seguir produz este diagnóstico porque the list literal
 (`[1]`) is being passed to a constructor in an immutable class but isn't
 a constant list:
 
@@ -45,7 +46,7 @@ class C {
 C c = C([![1]!]);
 ```
 
-## Common fixes
+## Correções comuns
 
 If the context can be made a [constant context][], then do so:
 

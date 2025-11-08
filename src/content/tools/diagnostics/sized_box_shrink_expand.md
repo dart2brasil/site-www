@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use 'SizedBox.{0}' to avoid needing to specify the 'height' and 'width'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `SizedBox` constructor
+O analisador produz este diagnóstico quando a `SizedBox` constructor
 invocation specifies the values of both `height` and `width` as either
 `0.0` or `double.infinity`.
 
-## Examples
+## Exemplos
 
-The following code produces this diagnostic because both the `height` and
+O código a seguir produz este diagnóstico porque both the `height` and
 `width` are `0.0`:
 
 ```dart
@@ -43,7 +44,7 @@ Widget build() {
 }
 ```
 
-The following code produces this diagnostic because both the `height` and
+O código a seguir produz este diagnóstico porque both the `height` and
 `width` are `double.infinity`:
 
 ```dart
@@ -58,7 +59,7 @@ Widget build() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If both are `0.0`, then use `SizedBox.shrink`:
 

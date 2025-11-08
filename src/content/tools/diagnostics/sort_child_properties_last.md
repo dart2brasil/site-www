@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,17 +21,17 @@ bodyClass: highlight-diagnostics
 
 _The '{0}' argument should be last in widget constructor invocations._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the `child` or `children`
+O analisador produz este diagnóstico quando the `child` or `children`
 argument isn't the last argument in an invocation of a widget class'
 constructor. An exception is made if all of the arguments after the
 `child` or `children` argument are function expressions.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `child` argument
-isn't the last argument in the invocation of the `Center` constructor:
+O código a seguir produz este diagnóstico porque the `child` argument
+isn't the last argument in the invocation of the `Center` construtor:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ Widget createWidget() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Move the `child` or `children` argument to be last:
 

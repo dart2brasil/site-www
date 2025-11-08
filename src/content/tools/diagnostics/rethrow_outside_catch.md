@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A rethrow must be inside of a catch clause._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `rethrow` statement is outside
+O analisador produz este diagnóstico quando a `rethrow` statement is outside
 a `catch` clause. The `rethrow` statement is used to throw a caught
 exception again, but there's no caught exception outside of a `catch`
 clause.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the`rethrow` statement
+O código a seguir produz este diagnóstico porque the`rethrow` statement
 is outside of a `catch` clause:
 
 ```dart
@@ -27,7 +28,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you're trying to rethrow an exception, then wrap the `rethrow` statement
 in a `catch` clause:

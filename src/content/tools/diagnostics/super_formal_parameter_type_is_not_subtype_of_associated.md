@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The type '{0}' of this parameter isn't a subtype of the type '{1}' of the associated super constructor parameter._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type of a super parameter
+O analisador produz este diagnóstico quando the type of a super parameter
 isn't a subtype of the corresponding parameter from the super constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type of the super
-parameter `x` in the constructor for `B` isn't a subtype of the parameter
-`x` in the constructor for `A`:
+O código a seguir produz este diagnóstico porque the type of the super
+parameter `x` no construtor for `B` isn't a subtype of the parameter
+`x` no construtor for `A`:
 
 ```dart
 class A {
@@ -30,7 +31,7 @@ class B extends A {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the type of the super parameter can be the same as the parameter from
 the super constructor, then remove the type annotation from the super

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Local variables should be final._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a local variable isn't marked
+O analisador produz este diagnóstico quando a local variable isn't marked
 as being `final`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variable `s` isn't
+O código a seguir produz este diagnóstico porque the variable `s` isn't
 marked as being `final`:
 
 ```dart
@@ -37,7 +38,7 @@ int f(int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Add the modifier `final` to the variable, removing the `var` if there is
 one:

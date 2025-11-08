@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The class '{0}' wasn't exported from 'dart:core' until version 2.1, but this code is required to be able to run on earlier versions._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when either the class `Future` or
+O analisador produz este diagnóstico quando either the class `Future` or
 `Stream` is referenced in a library that doesn't import `dart:async` in
 code that has an SDK constraint whose lower bound is less than 2.1.0. In
 earlier versions, these classes weren't defined in `dart:core`, so the
 import was necessary.
 
-## Example
+## Exemplo
 
 Here's an example of a pubspec that defines an SDK constraint with a lower
 bound of less than 2.1.0:
@@ -34,7 +35,7 @@ diagnostic:
 void f([!Future!] f) {}
 ```
 
-## Common fixes
+## Correções comuns
 
 If you don't need to support older versions of the SDK, then you can
 increase the SDK constraint to allow the classes to be referenced:

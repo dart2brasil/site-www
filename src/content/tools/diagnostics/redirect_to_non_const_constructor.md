@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _A constant redirecting constructor can't redirect to a non-constant constructor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor marked as `const`
+O analisador produz este diagnóstico quando a constructor marked as `const`
 redirects to a constructor that isn't marked as `const`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor `C.a`
-is marked as `const` but redirects to the constructor `C.b`, which isn't:
+O código a seguir produz este diagnóstico porque the constructor `C.a`
+está marcado como `const` but redirects to the constructor `C.b`, which isn't:
 
 ```dart
 class C {
@@ -26,7 +27,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the non-constant constructor can be marked as `const`, then mark it as
 `const`:
@@ -39,7 +40,7 @@ class C {
 ```
 
 If the non-constant constructor can't be marked as `const`, then either
-remove the redirect or remove `const` from the redirecting constructor:
+remove the redirect or remove `const` from the redirecting construtor:
 
 ```dart
 class C {

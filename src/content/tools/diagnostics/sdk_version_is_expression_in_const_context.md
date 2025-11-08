@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The use of an is expression in a constant context wasn't supported until version 2.3.2, but this code is required to be able to run on earlier versions._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an `is` expression inside a
+O analisador produz este diagnóstico quando an `is` expression inside a
 [constant context][] is found in code that has an SDK constraint whose
 lower bound is less than 2.3.2. Using an `is` expression in a
 [constant context][] wasn't supported in earlier versions, so this code
 won't be able to run against earlier versions of the SDK.
 
-## Example
+## Exemplo
 
 Here's an example of a pubspec that defines an SDK constraint with a lower
 bound of less than 2.3.2:
@@ -35,7 +36,7 @@ const Object x = 4;
 const y = [!x is int!] ? 0 : 1;
 ```
 
-## Common fixes
+## Correções comuns
 
 If you don't need to support older versions of the SDK, then you can
 increase the SDK constraint to allow the expression to be used:

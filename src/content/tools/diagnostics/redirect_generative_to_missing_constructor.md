@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The constructor '{0}' couldn't be found in '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a generative constructor
+O analisador produz este diagnóstico quando a generative constructor
 redirects to a constructor that isn't defined.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor `C.a`
+O código a seguir produz este diagnóstico porque the constructor `C.a`
 redirects to the constructor `C.b`, but `C.b` isn't defined:
 
 ```dart
@@ -25,7 +26,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the missing constructor must be called, then define it:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _The '{0}' protocol shouldn't be used because it isn't secure._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a URL in a `pubspec.yaml` file is
+O analisador produz este diagnóstico quando a URL in a `pubspec.yaml` file is
 using a non-secure scheme, such as `http`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `pubspec.yaml` file
+O código a seguir produz este diagnóstico porque the `pubspec.yaml` file
 contains an `http` URL:
 
 ```yaml
@@ -36,7 +37,7 @@ dependencies:
     repository: [!http://github.com/dart-lang/example!]
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the scheme of the URL to use a secure scheme, such as `https`:
 

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use 'for' elements when building maps from iterables._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when `Map.fromIterable` is used to
+O analisador produz este diagnóstico quando `Map.fromIterable` is used to
 build a map that could be built using the `for` element.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `fromIterable` is
+O código a seguir produz este diagnóstico porque `fromIterable` is
 being used to build a map that could be built using a `for` element:
 
 ```dart
@@ -40,7 +41,7 @@ void f(Iterable<String> data) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a `for` element to build the map:
 

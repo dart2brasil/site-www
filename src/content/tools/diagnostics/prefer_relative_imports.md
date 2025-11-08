@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,22 +21,22 @@ bodyClass: highlight-diagnostics
 
 _Use relative imports for files in the 'lib' directory._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an `import` in a library inside
+O analisador produz este diagnóstico quando an `import` in a library inside
 the `lib` directory uses a `package:` URI to refer to another library in
 the same package.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because it uses a `package:`
+O código a seguir produz este diagnóstico porque it uses a `package:`
 URI when a relative URI could have been used:
 
 ```dart
 import 'package:my_package/bar.dart';
 ```
 
-## Common fixes
+## Correções comuns
 
 Use a relative URI to import the library:
 

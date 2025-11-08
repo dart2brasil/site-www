@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _Tearing off a constructor requires the 'constructor-tearoffs' language feature._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor tear-off is found
+O analisador produz este diagnóstico quando a constructor tear-off is found
 in code that has an SDK constraint whose lower bound is less than 2.15.
 Constructor tear-offs weren't supported in earlier versions, so this code
 won't be able to run against earlier versions of the SDK.
 
-## Example
+## Exemplo
 
 Here's an example of a pubspec that defines an SDK constraint with a lower
 bound of less than 2.15:
@@ -33,7 +34,7 @@ diagnostic:
 var setConstructor = [!Set.identity!];
 ```
 
-## Common fixes
+## Correções comuns
 
 If you don't need to support older versions of the SDK, then you can
 increase the SDK constraint to allow the operator to be used:

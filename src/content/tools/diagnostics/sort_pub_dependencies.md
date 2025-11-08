@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,16 +21,16 @@ bodyClass: highlight-diagnostics
 
 _Dependencies not sorted alphabetically._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the keys in a dependency map in
+O analisador produz este diagnóstico quando the keys in a dependency map in
 the `pubspec.yaml` file aren't sorted alphabetically. The dependency maps
 that are checked are the `dependencies`, `dev_dependencies`, and
 `dependency_overrides` maps.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the entries in the
+O código a seguir produz este diagnóstico porque the entries in the
 `dependencies` map are not sorted:
 
 ```yaml
@@ -38,7 +39,7 @@ dependencies:
   collection: any
 ```
 
-## Common fixes
+## Correções comuns
 
 Sort the entries:
 

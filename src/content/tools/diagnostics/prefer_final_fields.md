@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _The private field {0} could be 'final'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a private field is only
+O analisador produz este diagnóstico quando a private field is only
 assigned one time. The field can be initialized in multiple constructors
 and still be flagged because only one of those constructors can ever run.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `_f` is only
+O código a seguir produz este diagnóstico porque the field `_f` is only
 assigned one time, in the field's initializer:
 
 ```dart
@@ -39,7 +40,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Mark the field `final`:
 

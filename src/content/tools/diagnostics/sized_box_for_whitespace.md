@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use a 'SizedBox' to add whitespace to a layout._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `Container` is created using
+O analisador produz este diagnóstico quando a `Container` is created using
 only the `height` and/or `width` arguments.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the `Container` has
+O código a seguir produz este diagnóstico porque the `Container` has
 only the `width` argument:
 
 ```dart
@@ -49,7 +50,7 @@ Widget buildRow() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the `Container` with a `SizedBox` of the same dimensions:
 

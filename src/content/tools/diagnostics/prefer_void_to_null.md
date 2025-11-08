@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of the type 'Null'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when `Null` is used in a location
+O analisador produz este diagnóstico quando `Null` is used in a location
 where `void` would be a valid choice.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f` is
+O código a seguir produz este diagnóstico porque the function `f` is
 declared to return `null` (at some future time):
 
 ```dart
 Future<[!Null!]> f() async {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the use of `Null` with a use of `void`:
 

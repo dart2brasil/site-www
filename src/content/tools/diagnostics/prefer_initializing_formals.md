@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Use an initializing formal to assign a parameter to a field._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constructor parameter is used
+O analisador produz este diagnóstico quando a constructor parameter is used
 to initialize a field without modification.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the parameter `c` is
+O código a seguir produz este diagnóstico porque the parameter `c` is
 only used to set the field `c`:
 
 ```dart
@@ -38,7 +39,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use an initializing formal parameter to initialize the field:
 

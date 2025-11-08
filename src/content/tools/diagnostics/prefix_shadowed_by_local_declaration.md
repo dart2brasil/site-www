@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The prefix '{0}' can't be used here because it's shadowed by a local declaration._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an import prefix is used in a
+O analisador produz este diagnóstico quando an import prefix is used in a
 context where it isn't visible because it was shadowed by a local
 declaration.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the prefix `a` is
+O código a seguir produz este diagnóstico porque the prefix `a` is
 being used to access the class `Future`, but isn't visible because it's
 shadowed by the parameter `a`:
 
@@ -30,7 +31,7 @@ a.Future? f(int a) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Rename either the prefix:
 

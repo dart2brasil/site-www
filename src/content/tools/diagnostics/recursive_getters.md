@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _The getter '{0}' recursively returns itself._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a getter invokes itself,
+O analisador produz este diagnóstico quando a getter invokes itself,
 resulting in an infinite loop.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the getter `count`
+O código a seguir produz este diagnóstico porque the getter `count`
 invokes itself:
 
 ```dart
@@ -38,7 +39,7 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Change the getter to not invoke itself:
 

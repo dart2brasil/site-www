@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,21 +21,21 @@ bodyClass: highlight-diagnostics
 
 _Use 'whereType' to select elements of a given type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the method `Iterable.where` is
+O analisador produz este diagnóstico quando the method `Iterable.where` is
 being used to filter elements based on their type.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `where` is
+O código a seguir produz este diagnóstico porque the method `where` is
 being used to access only the strings within the iterable:
 
 ```dart
 Iterable<Object> f(Iterable<Object> p) => p.[!where!]((e) => e is String);
 ```
 
-## Common fixes
+## Correções comuns
 
 Rewrite the code to use `whereType`:
 

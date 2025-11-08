@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -26,22 +27,22 @@ _Use 'isEmpty' instead of 'length' to test whether the collection is empty._
 
 _Use 'isNotEmpty' instead of 'length' to test whether the collection is empty._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the result of invoking either
+O analisador produz este diagnóstico quando the result of invoking either
 `Iterable.length` or `Map.length` is compared for equality with zero
 (`0`).
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the result of invoking
+O código a seguir produz este diagnóstico porque the result of invoking
 `length` is checked for equality with zero:
 
 ```dart
 int f(Iterable<int> p) => [!p.length == 0!] ? 0 : p.first;
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the use of `length` with a use of either `isEmpty` or
 `isNotEmpty`:

@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Unnecessary use of single quotes._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a string literal uses single
+O analisador produz este diagnóstico quando a string literal uses single
 quotes (`'`) when it could use double quotes (`"`) without needing extra
 escapes and without hurting readability.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the string literal
+O código a seguir produz este diagnóstico porque the string literal
 uses single quotes but doesn't need to:
 
 ```dart
@@ -37,7 +38,7 @@ void f(String name) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Use double quotes in place of single quotes:
 

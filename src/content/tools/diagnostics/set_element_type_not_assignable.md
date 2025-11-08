@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The element type '{0}' can't be assigned to the set type '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an element in a set literal has
+O analisador produz este diagnóstico quando an element in a set literal has
 a type that isn't assignable to the element type of the set.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type of the string
+O código a seguir produz este diagnóstico porque the type of the string
 literal `'0'` is `String`, which isn't assignable to `int`, the element
 type of the set:
 
@@ -24,7 +25,7 @@ type of the set:
 var s = <int>{[!'0'!]};
 ```
 
-## Common fixes
+## Correções comuns
 
 If the element type of the set literal is wrong, then change the element
 type of the set:

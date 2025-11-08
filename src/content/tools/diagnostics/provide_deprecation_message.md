@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,14 +21,14 @@ bodyClass: highlight-diagnostics
 
 _Missing a deprecation message._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `deprecated` annotation is
+O analisador produz este diagnóstico quando a `deprecated` annotation is
 used instead of the `Deprecated` annotation.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the function `f` is
+O código a seguir produz este diagnóstico porque the function `f` is
 annotated with `deprecated`:
 
 ```dart
@@ -35,7 +36,7 @@ annotated with `deprecated`:
 void f() {}
 ```
 
-## Common fixes
+## Correções comuns
 
 Convert the code to use the longer form:
 

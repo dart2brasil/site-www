@@ -5,19 +5,20 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The {0} doesn't redeclare a {0} declared in a superinterface._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a member of an extension type
+O analisador produz este diagnóstico quando a member of an extension type
 is annotated with `@redeclare`, but none of the implemented interfaces
 has a member with the same name.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the member `n`
+O código a seguir produz este diagnóstico porque the member `n`
 declared by the extension type `E` is annotated with `@redeclare`, but `C`
 doesn't have a member named `n`:
 
@@ -34,7 +35,7 @@ extension type E(C c) implements C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the annotated member has the right name, then remove the annotation:
 

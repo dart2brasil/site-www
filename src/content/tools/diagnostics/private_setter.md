@@ -5,16 +5,17 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The setter '{0}' is private and can't be accessed outside the library that declares it._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a private setter is used in a
+O analisador produz este diagnóstico quando a private setter is used in a
 library where it isn't visible.
 
-## Example
+## Exemplo
 
 Given a file `a.dart` that contains the following:
 
@@ -24,7 +25,7 @@ class A {
 }
 ```
 
-The following code produces this diagnostic because it references the
+O código a seguir produz este diagnóstico porque it references the
 private setter `_f` even though the setter isn't visible:
 
 ```dart
@@ -35,7 +36,7 @@ void f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If you're able to make the setter public, then do so:
 

@@ -5,20 +5,21 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The name '{0}' isn't a type and can't be used in a redirected constructor._
 
-## Description
+## Descrição
 
 One way to implement a factory constructor is to redirect to another
 constructor by referencing the name of the constructor. The analyzer
 produces this diagnostic when the redirect is to something other than a
 constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` is a function:
+O código a seguir produz este diagnóstico porque `f` is a function:
 
 ```dart
 C f() => throw 0;
@@ -28,9 +29,9 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the constructor isn't defined, then either define it or replace it with
+If o construtor não é defined, then either define it or replace it with
 a constructor that is defined.
 
 If the constructor is defined but the class that defines it isn't visible,

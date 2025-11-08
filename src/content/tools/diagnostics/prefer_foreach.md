@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -20,15 +21,15 @@ bodyClass: highlight-diagnostics
 
 _Use 'forEach' and a tear-off rather than a 'for' loop to apply a function to every element._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `for` loop is used to operate
+O analisador produz este diagnóstico quando a `for` loop is used to operate
 on every member of a collection and the method `forEach` could be used
 instead.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because a `for` loop is being
+O código a seguir produz este diagnóstico porque a `for` loop is being
 used to invoke a single function for each key in `m`:
 
 ```dart
@@ -39,7 +40,7 @@ void f(Map<String, int> m) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Replace the for loop with an invocation of `forEach`:
 

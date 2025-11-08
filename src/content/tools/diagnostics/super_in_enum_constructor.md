@@ -5,18 +5,19 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 _The enum constructor can't have a 'super' initializer._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the initializer list in a
+O analisador produz este diagnóstico quando the initializer list in a
 constructor in an enum contains an invocation of a super constructor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constructor in
+O código a seguir produz este diagnóstico porque the constructor in
 the enum `E` has a super constructor invocation in the initializer list:
 
 ```dart
@@ -27,7 +28,7 @@ enum E {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 Remove the super constructor invocation:
 

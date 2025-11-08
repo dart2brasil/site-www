@@ -5,6 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
+ia-translate: true
 ---
 
 <div class="tags">
@@ -22,18 +23,18 @@ _An uninitialized field should have an explicit type annotation._
 
 _An uninitialized variable should have an explicit type annotation._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a variable without an
-initializer doesn't have an explicit type annotation.
+O analisador produz este diagnóstico quando a variable without an
+initializer não tem uma explicit type annotation.
 
 Without either a type annotation or an initializer, a variable has the
 type `dynamic`, which allows any value to be assigned to the variable,
 often causing hard to identify bugs.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the variable `r`
+O código a seguir produz este diagnóstico porque the variable `r`
 doesn't have either a type annotation or an initializer:
 
 ```dart
@@ -44,7 +45,7 @@ Object f() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
 If the variable can be initialized, then add an initializer:
 
