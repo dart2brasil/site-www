@@ -1,6 +1,7 @@
 ---
-title: Functions
-description: Everything about functions in Dart.
+ia-translate: true
+title: Funções
+description: Tudo sobre funções em Dart.
 prevpage:
   url: /language/error-handling
   title: Error handling
@@ -9,13 +10,13 @@ nextpage:
   title: Metadata
 ---
 
-Dart is a true object-oriented language, so even functions are objects
-and have a type, [Function.][Function API reference]
-This means that functions can be assigned to variables or passed as arguments
-to other functions. You can also call an instance of a Dart class as if
-it were a function. For details, see [Callable objects][].
+Dart é uma linguagem verdadeiramente orientada a objetos, portanto até as funções são objetos
+e têm um tipo, [Function.][Function API reference]
+Isso significa que funções podem ser atribuídas a variáveis ou passadas como argumentos
+para outras funções. Você também pode chamar uma instância de uma classe Dart como se
+fosse uma função. Para detalhes, veja [Objetos chamáveis][Callable objects].
 
-Here's an example of implementing a function:
+Aqui está um exemplo de implementação de uma função:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function)"?>
 ```dart
@@ -24,9 +25,9 @@ bool isNoble(int atomicNumber) {
 }
 ```
 
-Although Effective Dart recommends
-[type annotations for public APIs][],
-the function still works if you omit the types:
+Embora o Effective Dart recomende
+[annotations de tipo para APIs públicas][type annotations for public APIs],
+a função ainda funciona se você omitir os tipos:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-omitting-types)"?>
 ```dart
@@ -35,57 +36,57 @@ isNoble(atomicNumber) {
 }
 ```
 
-For functions that contain just one expression, you can use a shorthand
-syntax:
+Para funções que contêm apenas uma expressão, você pode usar uma sintaxe
+abreviada:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-shorthand)"?>
 ```dart
 bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 ```
 
-The <code>=> <em>expr</em></code> syntax is a shorthand for
-<code>{ return <em>expr</em>; }</code>. The `=>` notation
-is sometimes referred to as _arrow_ syntax.
+A sintaxe <code>=> <em>expr</em></code> é uma abreviação para
+<code>{ return <em>expr</em>; }</code>. A notação `=>`
+às vezes é chamada de sintaxe _arrow_.
 
 :::note
-Only _expressions_ can appear between the arrow (`=>`) and the semicolon (`;`).
-Expressions evaluate to values.
-This means that you can't write a statement where Dart expects a value.
-For example,
-you could use a [conditional expression][] but not an [if statement][].
-In the previous example,
-`_nobleGases[atomicNumber] != null;` returns a boolean value.
-The function then returns a boolean value
-that indicates whether the `atomicNumber` falls into the noble gas range.
+Apenas _expressões_ podem aparecer entre a seta (`=>`) e o ponto e vírgula (`;`).
+Expressões avaliam para valores.
+Isso significa que você não pode escrever uma instrução onde Dart espera um valor.
+Por exemplo,
+você pode usar uma [expressão condicional][conditional expression] mas não uma [instrução if][if statement].
+No exemplo anterior,
+`_nobleGases[atomicNumber] != null;` retorna um valor booleano.
+A função então retorna um valor booleano
+que indica se o `atomicNumber` está na faixa de gases nobres.
 :::
 
-## Parameters
+## Parâmetros
 
-A function can have any number of _required positional_ parameters. These can be
-followed either by _named_ parameters or by _optional positional_ parameters
-(but not both).
+Uma função pode ter qualquer número de parâmetros _posicionais obrigatórios_. Estes podem ser
+seguidos por parâmetros _nomeados_ ou por parâmetros _posicionais opcionais_
+(mas não ambos).
 
 :::note
-Some APIs—notably [Flutter][] widget constructors—use only named
-parameters, even for parameters that are mandatory. See the next section for
-details.
+Algumas APIs—notavelmente construtores de widget [Flutter][]—usam apenas parâmetros
+nomeados, mesmo para parâmetros que são obrigatórios. Veja a próxima seção para
+detalhes.
 :::
 
-You can use [trailing commas][] when you pass arguments to a function
-or when you define function parameters.
+Você pode usar [vírgulas finais][trailing commas] quando passar argumentos para uma função
+ou quando definir parâmetros de função.
 
-### Named parameters
+### Parâmetros nomeados
 
-Named parameters are optional
-unless they're explicitly marked as `required`.
+Parâmetros nomeados são opcionais
+a menos que estejam explicitamente marcados como `required`.
 
-When defining a function, use
+Ao definir uma função, use
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
-to specify named parameters.
-If you don't provide a default value
-or mark a named parameter as `required`,
-their types must be nullable
-as their default value will be `null`:
+para especificar parâmetros nomeados.
+Se você não fornecer um valor padrão
+ou marcar um parâmetro nomeado como `required`,
+seus tipos devem ser nullable
+pois seu valor padrão será `null`:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
 ```dart
@@ -95,10 +96,10 @@ void enableFlags({bool? bold, bool? hidden}) {
 }
 ```
 
-When calling a function,
-you can specify named arguments using
+Ao chamar uma função,
+você pode especificar argumentos nomeados usando
 <code><em>paramName</em>: <em>value</em></code>.
-For example:
+Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
 ```dart
@@ -106,10 +107,10 @@ enableFlags(bold: true, hidden: false);
 ```
 
 <a id="default-parameters"></a>
-To define a default value for a named parameter besides `null`,
-use `=` to specify a default value.
-The specified value must be a compile-time constant.
-For example:
+Para definir um valor padrão para um parâmetro nomeado além de `null`,
+use `=` para especificar um valor padrão.
+O valor especificado deve ser uma constante em tempo de compilação.
+Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
 ```dart
@@ -122,21 +123,21 @@ void enableFlags({bool bold = false, bool hidden = false}) {
 enableFlags(bold: true);
 ```
 
-If you instead want a named parameter to be mandatory,
-requiring callers to provide a value for the parameter,
-annotate them with `required`:
+Se você preferir que um parâmetro nomeado seja obrigatório,
+exigindo que os chamadores forneçam um valor para o parâmetro,
+anote-os com `required`:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
 ```dart
 const Scrollbar({super.key, [!required!] Widget child});
 ```
 
-If someone tries to create a `Scrollbar`
-without specifying the `child` argument,
-then the analyzer reports an issue.
+Se alguém tentar criar um `Scrollbar`
+sem especificar o argumento `child`,
+então o analisador reporta um problema.
 
 :::note
-A parameter marked as `required` can still be nullable:
+Um parâmetro marcado como `required` ainda pode ser nullable:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters-nullable)" replace="/Widget\?/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
 ```dart
@@ -145,10 +146,10 @@ const Scrollbar({super.key, required [!Widget?!] child});
 
 :::
 
-You might want to place positional arguments first,
-but Dart doesn't require it.
-Dart allows named arguments to be placed anywhere in the
-argument list when it suits your API:
+Você pode querer colocar argumentos posicionais primeiro,
+mas Dart não exige isso.
+Dart permite que argumentos nomeados sejam colocados em qualquer lugar na
+lista de argumentos quando isso se adequa à sua API:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-arguments-anywhere)"?>
 ```dart
@@ -157,13 +158,13 @@ repeat(times: 2, () {
 });
 ```
 
-### Optional positional parameters
+### Parâmetros posicionais opcionais
 
-Wrapping a set of function parameters in `[]`
-marks them as optional positional parameters.
-If you don't provide a default value,
-their types must be nullable
-as their default value will be `null`:
+Envolver um conjunto de parâmetros de função em `[]`
+marca-os como parâmetros posicionais opcionais.
+Se você não fornecer um valor padrão,
+seus tipos devem ser nullable
+pois seu valor padrão será `null`:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-parameters)"?>
 ```dart
@@ -176,15 +177,15 @@ String say(String from, String msg, [String? device]) {
 }
 ```
 
-Here's an example of calling this function
-without the optional parameter:
+Aqui está um exemplo de chamar esta função
+sem o parâmetro opcional:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-without-optional-param)"?>
 ```dart
 assert(say('Bob', 'Howdy') == 'Bob says Howdy');
 ```
 
-And here's an example of calling this function with the third parameter:
+E aqui está um exemplo de chamar esta função com o terceiro parâmetro:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-with-optional-param)"?>
 ```dart
@@ -194,10 +195,10 @@ assert(
 );
 ```
 
-To define a default value for an optional positional parameter besides `null`,
-use `=` to specify a default value.
-The specified value must be a compile-time constant.
-For example:
+Para definir um valor padrão para um parâmetro posicional opcional além de `null`,
+use `=` para especificar um valor padrão.
+O valor especificado deve ser uma constante em tempo de compilação.
+Por exemplo:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
@@ -211,13 +212,13 @@ assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 
 <a id="the-main-function" aria-hidden="true"></a>
 
-## The main() function {:#main}
+## A função main() {:#main}
 
-Every app must have a top-level `main()` function, which serves as the
-entrypoint to the app. The `main()` function returns `void` and has an
-optional `List<String>` parameter for arguments.
+Toda aplicação deve ter uma função `main()` de nível superior, que serve como o
+ponto de entrada para a aplicação. A função `main()` retorna `void` e tem um
+parâmetro opcional `List<String>` para argumentos.
 
-Here's a simple `main()` function:
+Aqui está uma função `main()` simples:
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart
@@ -226,8 +227,8 @@ void main() {
 }
 ```
 
-Here's an example of the `main()` function for a command-line app that
-takes arguments:
+Aqui está um exemplo da função `main()` para uma aplicação de linha de comando que
+recebe argumentos:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (main-args)"?>
 ```dart title="args.dart"
@@ -241,12 +242,12 @@ void main(List<String> arguments) {
 }
 ```
 
-You can use the [args library]({{site.pub-pkg}}/args) to
-define and parse command-line arguments.
+Você pode usar a [biblioteca args]({{site.pub-pkg}}/args) para
+definir e analisar argumentos de linha de comando.
 
-## Functions as first-class objects
+## Funções como objetos de primeira classe
 
-You can pass a function as a parameter to another function. For example:
+Você pode passar uma função como parâmetro para outra função. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-as-param)"?>
 ```dart
@@ -260,7 +261,7 @@ var list = [1, 2, 3];
 list.forEach(printElement);
 ```
 
-You can also assign a function to a variable, such as:
+Você também pode atribuir uma função a uma variável, como:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (function-as-var)"?>
 ```dart
@@ -268,16 +269,16 @@ var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
 assert(loudify('hello') == '!!! HELLO !!!');
 ```
 
-This example uses an anonymous function.
-More about those in the next section.
+Este exemplo usa uma função anônima.
+Mais sobre isso na próxima seção.
 
-## Function types
+## Tipos de função
 
-You can specify the type of a function, which is known as a _function type_.
-A function type is obtained from a function declaration header by
-replacing the function name by the keyword `Function`.
-Moreover, you are allowed to omit the names of positional parameters, but
-the names of named parameters can't be omitted. For example:
+Você pode especificar o tipo de uma função, que é conhecido como _tipo de função_.
+Um tipo de função é obtido de um cabeçalho de declaração de função
+substituindo o nome da função pela keyword `Function`.
+Além disso, você pode omitir os nomes dos parâmetros posicionais, mas
+os nomes dos parâmetros nomeados não podem ser omitidos. Por exemplo:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-type)"?>
 ```dart
@@ -290,28 +291,28 @@ g('Dash', greeting: 'Howdy');
 ```
 
 :::note
-In Dart, functions are first-class objects,
-meaning they can be assigned to variables,
-passed as arguments, and returned from other functions.
+Em Dart, funções são objetos de primeira classe,
+o que significa que podem ser atribuídas a variáveis,
+passadas como argumentos e retornadas de outras funções.
 
-You can use a [`typedef`][] declaration to explicitly name function types,
-which can be useful for clarity and reusability.
+Você pode usar uma declaração [`typedef`][] para nomear explicitamente tipos de função,
+o que pode ser útil para clareza e reutilização.
 :::
 
 [`typedef`]: /language/typedefs
 
-## Anonymous functions
+## Funções anônimas
 
-Though you name most functions, such as `main()` or `printElement()`,
-you can also create functions without names.
-These functions are called _anonymous functions_, _lambdas_, or _closures_.
+Embora você nomeie a maioria das funções, como `main()` ou `printElement()`,
+você também pode criar funções sem nomes.
+Essas funções são chamadas de _funções anônimas_, _lambdas_ ou _closures_.
 
-An anonymous function resembles a named function as it has:
+Uma função anônima se assemelha a uma função nomeada pois tem:
 
-- Zero or more parameters, comma-separated
-- Optional type annotations between parentheses.
+- Zero ou mais parâmetros, separados por vírgula
+- Annotations de tipo opcionais entre parênteses.
 
-The following code block contains the function's body:
+O seguinte bloco de código contém o corpo da função:
 
 ```dart
 ([[Type] param1[, ...]]) {
@@ -319,13 +320,13 @@ The following code block contains the function's body:
 }
 ```
 
-The following example defines an anonymous function
-with an untyped parameter, `item`.
-The anonymous function passes it to the `map` function.
-The `map` function, invoked for each item in the list,
-converts each string to uppercase.
-Then, the anonymous function passed to `forEach`,
-prints each converted string with its length.
+O exemplo a seguir define uma função anônima
+com um parâmetro sem tipo, `item`.
+A função anônima a passa para a função `map`.
+A função `map`, invocada para cada item na lista,
+converte cada string para maiúsculas.
+Então, a função anônima passada para `forEach`,
+imprime cada string convertida com seu comprimento.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
@@ -341,7 +342,7 @@ for (var item in uppercaseList) {
 }
 ```
 
-Click **Run** to execute the code.
+Clique em **Run** para executar o código.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
 ```dartpad
@@ -359,10 +360,10 @@ void main() {
 }
 ```
 
-If the function contains only a single expression or return statement,
-you can shorten it using arrow notation.
-Paste the following line into DartPad and click **Run**
-to verify that it is functionally equivalent.
+Se a função contém apenas uma única expressão ou instrução return,
+você pode encurtá-la usando notação arrow.
+Cole a seguinte linha no DartPad e clique em **Run**
+para verificar que é funcionalmente equivalente.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
@@ -370,13 +371,13 @@ var uppercaseList = list.map((item) => item.toUpperCase()).toList();
 uppercaseList.forEach((item) => print('$item: ${item.length}'));
 ```
 
-## Lexical scope
+## Escopo léxico
 
-Dart determines the scope of variables based on the layout of its code.
-A programming language with this feature is termed a lexically scoped language.
-You can "follow the curly braces outwards" to see if a variable is in scope.
+Dart determina o escopo das variáveis com base no layout de seu código.
+Uma linguagem de programação com esse recurso é chamada de linguagem com escopo léxico.
+Você pode "seguir as chaves para fora" para ver se uma variável está no escopo.
 
-**Example:** A series of nested functions with variables at each scope level:
+**Exemplo:** Uma série de funções aninhadas com variáveis em cada nível de escopo:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (nested-functions)"?>
 ```dart
@@ -400,17 +401,17 @@ void main() {
 }
 ```
 
-The `nestedFunction()` method can use variables from every level,
-all the way up to the top level.
+O método `nestedFunction()` pode usar variáveis de todos os níveis,
+até o nível superior.
 
-## Lexical closures
+## Closures léxicos
 
-A function object that can access variables in its lexical scope
-when the function sits outside that scope is called a _closure_.
+Um objeto de função que pode acessar variáveis em seu escopo léxico
+quando a função está fora desse escopo é chamado de _closure_.
 
-Functions can close over variables defined in surrounding scopes. In the
-following example, `makeAdder()` captures the variable `addBy`. Wherever the
-returned function goes, it remembers `addBy`.
+Funções podem fechar sobre variáveis definidas em escopos circundantes. No
+seguinte exemplo, `makeAdder()` captura a variável `addBy`. Onde quer que a
+função retornada vá, ela se lembra de `addBy`.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (function-closure)"?>
 ```dart
@@ -434,12 +435,12 @@ void main() {
 
 ## Tear-offs
 
-When you refer to a function, method, or named constructor without parentheses,
-Dart creates a _tear-off_. This is a closure that takes the same
-parameters as the function and invokes the underlying function when you call it.
-If your code needs a closure that invokes a named function with the same
-parameters as the closure accepts, don't wrap the call in a lambda.
-Use a tear-off.
+Quando você se refere a uma função, método ou construtor nomeado sem parênteses,
+Dart cria um _tear-off_. Este é um closure que recebe os mesmos
+parâmetros que a função e invoca a função subjacente quando você a chama.
+Se seu código precisa de um closure que invoca uma função nomeada com os mesmos
+parâmetros que o closure aceita, não envolva a chamada em um lambda.
+Use um tear-off.
 
 <?code-excerpt "misc/lib/language_tour/tear_offs.dart (variables)" ?>
 ```dart
@@ -469,10 +470,10 @@ charCodes.forEach((code) {
 });
 ```
 
-## Testing functions for equality
+## Testando funções para igualdade
 
-Here's an example of testing top-level functions, static methods, and
-instance methods for equality:
+Aqui está um exemplo de testar funções de nível superior, métodos estáticos e
+métodos de instância para igualdade:
 
 <?code-excerpt "misc/lib/language_tour/function_equality.dart"?>
 ```dart
@@ -510,10 +511,10 @@ void main() {
 }
 ```
 
-## Return values
+## Valores de retorno
 
-All functions return a value. If no return value is specified, the
-statement `return null;` is implicitly appended to the function body.
+Todas as funções retornam um valor. Se nenhum valor de retorno for especificado, a
+instrução `return null;` é implicitamente anexada ao corpo da função.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (implicit-return-null)"?>
 ```dart
@@ -522,7 +523,7 @@ foo() {}
 assert(foo() == null);
 ```
 
-To return multiple values in a function, aggregate the values in a [record][].
+Para retornar múltiplos valores em uma função, agregue os valores em um [record][].
 
 ```dart
 (String, int) foo() {
@@ -532,35 +533,35 @@ To return multiple values in a function, aggregate the values in a [record][].
 
 [record]: /language/records#multiple-returns
 
-## Getters and setters
+## Getters e setters
 
-Every property access (top-level, static, or instance) is an invocation
-of a getter or a setter. A variable implicitly creates a getter
-and, if it's mutable, a setter. This is why when you access a property,
-you're actually calling a small function in the background. Reading a
-property calls a getter function, and writing one calls a setter function,
-even in cases where the property is declared a variable.
+Todo acesso a propriedade (de nível superior, estático ou de instância) é uma invocação
+de um getter ou um setter. Uma variável implicitamente cria um getter
+e, se for mutável, um setter. É por isso que quando você acessa uma propriedade,
+você está realmente chamando uma pequena função em segundo plano. Ler uma
+propriedade chama uma função getter, e escrever uma chama uma função setter,
+mesmo em casos onde a propriedade é declarada como variável.
 
-However, you can also declare getters and setters explicitly with
-the `get` and `set` keywords respectively.
-This allows a property's value to be computed when it's read or written.
+No entanto, você também pode declarar getters e setters explicitamente com
+as keywords `get` e `set` respectivamente.
+Isso permite que o valor de uma propriedade seja computado quando é lido ou escrito.
 
-The purpose of using getters and setters is to create a clear
-separation between the client (the code that uses the property) and
-the provider (the class or library that defines it). The client asks for or
-sets a value without needing to know if that value is stored in a
-simple variable or calculated on the spot. This gives the provider
-the freedom to change how the property works.
+O propósito de usar getters e setters é criar uma separação clara
+entre o cliente (o código que usa a propriedade) e
+o provedor (a classe ou biblioteca que a define). O cliente pede ou
+define um valor sem precisar saber se esse valor está armazenado em uma
+variável simples ou calculado no momento. Isso dá ao provedor
+a liberdade de mudar como a propriedade funciona.
 
-For example, because the value of the property might not be stored anywhere,
-it could be computed each time the getter is called. Another example
-is that when a value is stored in a private variable, and public access
-is only allowed by calling a getter or a setter.
+Por exemplo, como o valor da propriedade pode não estar armazenado em lugar algum,
+ele poderia ser computado cada vez que o getter é chamado. Outro exemplo
+é que quando um valor é armazenado em uma variável privada, e o acesso público
+é permitido apenas chamando um getter ou um setter.
 
-The following example showcases this,
-with the `secret` getter and setter providing
-indirect access to the private variable `_secret` with
-its own manipulations on the assigned and retrieved values.
+O exemplo a seguir demonstra isso,
+com o getter e setter `secret` fornecendo
+acesso indireto à variável privada `_secret` com
+suas próprias manipulações nos valores atribuídos e recuperados.
 
 <?code-excerpt "language/lib/functions/getters_setters.dart"?>
 ```dart highlightLines=3,7-10,14-20,24,33
@@ -610,18 +611,18 @@ void main() {
 }
 ```
 
-## Generators
+## Geradores
 
-When you need to lazily produce a sequence of values,
-consider using a _generator function_.
-Dart has built-in support for two kinds of generator functions:
+Quando você precisa produzir preguiçosamente uma sequência de valores,
+considere usar uma _função geradora_.
+Dart tem suporte embutido para dois tipos de funções geradoras:
 
-- **Synchronous** generator: Returns an [`Iterable`] object.
-- **Asynchronous** generator: Returns a [`Stream`] object.
+- Gerador **Síncrono**: Retorna um objeto [`Iterable`].
+- Gerador **Assíncrono**: Retorna um objeto [`Stream`].
 
-To implement a **synchronous** generator function,
-mark the function body as `sync*`,
-and use `yield` statements to deliver values:
+Para implementar uma função geradora **síncrona**,
+marque o corpo da função como `sync*`,
+e use instruções `yield` para entregar valores:
 
 <?code-excerpt "misc/test/language_tour/async_test.dart (sync-generator)"?>
 ```dart
@@ -631,9 +632,9 @@ Iterable<int> naturalsTo(int n) sync* {
 }
 ```
 
-To implement an **asynchronous** generator function,
-mark the function body as `async*`,
-and use `yield` statements to deliver values:
+Para implementar uma função geradora **assíncrona**,
+marque o corpo da função como `async*`,
+e use instruções `yield` para entregar valores:
 
 <?code-excerpt "misc/test/language_tour/async_test.dart (async-generator)"?>
 ```dart
@@ -643,8 +644,8 @@ Stream<int> asynchronousNaturalsTo(int n) async* {
 }
 ```
 
-If your generator is recursive,
-you can improve its performance by using `yield*`:
+Se seu gerador é recursivo,
+você pode melhorar seu desempenho usando `yield*`:
 
 <?code-excerpt "misc/test/language_tour/async_test.dart (recursive-generator)"?>
 ```dart
@@ -659,27 +660,27 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 [`Iterable`]: {{site.dart-api}}/dart-core/Iterable-class.html
 [`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 
-## External functions {:#external}
+## Funções externas {:#external}
 
-An external function is a function whose body is implemented separately from its
-declaration. Include the `external` keyword before a function declaration, like so:
+Uma função externa é uma função cujo corpo é implementado separadamente de sua
+declaração. Inclua a keyword `external` antes de uma declaração de função, assim:
 
 ```dart
 external void someFunc(int i);
 ```
 
-An external function's implementation can come from another Dart library,
-or, more commonly, from another language. In interop contexts, `external`
-introduces type information for foreign functions or values,
-making them usable in Dart. Implementation and usage is
-heavily platform specific, so check out the interop docs on, for example,
-[C][] or [JavaScript][] to learn more.
+A implementação de uma função externa pode vir de outra biblioteca Dart,
+ou, mais comumente, de outra linguagem. Em contextos de interoperabilidade, `external`
+introduz informações de tipo para funções ou valores estrangeiros,
+tornando-os utilizáveis em Dart. A implementação e uso são
+altamente específicos da plataforma, então confira a documentação de interoperabilidade sobre, por exemplo,
+[C][] ou [JavaScript][] para saber mais.
 
-External functions can be top-level functions, [instance methods][],
-getters or setters, or [non-redirecting constructors][].
-An [instance variable][] can be `external` too,
-which is equivalent to an external getter and (if the variable
-is not `final`) an external setter.
+Funções externas podem ser funções de nível superior, [métodos de instância][instance methods],
+getters ou setters, ou [construtores não-redirecting][non-redirecting constructors].
+Uma [variável de instância][instance variable] também pode ser `external`,
+o que é equivalente a um getter externo e (se a variável
+não for `final`) um setter externo.
 
 [instance methods]: /language/methods#instance-methods
 [non-redirecting constructors]: /language/constructors#redirecting-constructors
@@ -693,5 +694,3 @@ is not `final`) an external setter.
 [conditional expression]: /language/operators#conditional-expressions
 [Flutter]: {{site.flutter}}
 [trailing commas]: /language/collections#lists
-
-
