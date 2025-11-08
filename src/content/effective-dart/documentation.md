@@ -1,7 +1,8 @@
 ---
-title: "Effective Dart: Documentation"
+ia-translate: true
+title: "Dart Efetivo: Documentação"
 breadcrumb: Documentation
-description: Clear, helpful comments and documentation.
+description: Comentários e documentação claros e úteis.
 nextpage:
   url: /effective-dart/usage
   title: Usage
@@ -12,21 +13,20 @@ prevpage:
 
 <?code-excerpt path-base="misc/lib/effective_dart"?>
 
-It's easy to think your code is obvious today without realizing how much you
-rely on context already in your head. People new to your code, and
-even your forgetful future self won't have that context. A concise, accurate
-comment only takes a few seconds to write but can save one of those people
-hours of time.
+É fácil pensar que seu código é óbvio hoje sem perceber o quanto você
+depende do contexto já em sua cabeça. Pessoas novas em seu código, e
+até mesmo seu eu futuro esquecido não terão esse contexto. Um comentário conciso e preciso
+leva apenas alguns segundos para escrever, mas pode economizar horas de tempo para uma dessas pessoas.
 
-We all know code should be self-documenting and not all comments are helpful.
-But the reality is that most of us don't write as many comments as we should.
-It's like exercise: you technically *can* do too much, but it's a lot more
-likely that you're doing too little. Try to step it up.
+Todos sabemos que o código deve ser autodocumentado e nem todos os comentários são úteis.
+Mas a realidade é que a maioria de nós não escreve tantos comentários quanto deveria.
+É como exercício: você tecnicamente *pode* fazer demais, mas é muito mais
+provável que você esteja fazendo de menos. Tente aumentar.
 
-## Comments
+## Comentários
 
-The following tips apply to comments that you don't want included in the
-generated documentation.
+As dicas a seguir se aplicam a comentários que você não deseja incluir na
+documentação gerada.
 
 ### DO format comments like sentences
 
@@ -36,9 +36,9 @@ generated documentation.
 if (_chunks.isNotEmpty) return false;
 ```
 
-Capitalize the first word unless it's a case-sensitive identifier. End it with a
-period (or "!" or "?", I suppose). This is true for all comments: doc comments,
-inline stuff, even TODOs. Even if it's a sentence fragment.
+Capitalize a primeira palavra, a menos que seja um identificador sensível a maiúsculas. Termine com um
+ponto final (ou "!" ou "?", suponho). Isso é verdade para todos os comentários: comentários de documentação,
+coisas inline, até mesmo TODOs. Mesmo que seja um fragmento de frase.
 
 ### DON'T use block comments for documentation
 
@@ -58,15 +58,15 @@ void greet(String name) {
 }
 ```
 
-You can use a block comment (`/* ... */`) to temporarily comment out a section
-of code, but all other comments should use `//`.
+Você pode usar um comentário de bloco (`/* ... */`) para comentar temporariamente uma seção
+de código, mas todos os outros comentários devem usar `//`.
 
-## Doc comments
+## Comentários de documentação
 
-Doc comments are especially handy because [`dart doc`][] parses them 
-and generates [beautiful doc pages][docs] from them. 
-A doc comment is any comment that appears before a declaration 
-and uses the special `///` syntax that `dart doc` looks for.
+Os comentários de documentação são especialmente úteis porque o [`dart doc`][] os analisa
+e gera [belas páginas de documentação][docs] a partir deles.
+Um comentário de documentação é qualquer comentário que aparece antes de uma declaração
+e usa a sintaxe especial `///` que o `dart doc` procura.
 
 [`dart doc`]: /tools/dart-doc
 [docs]: {{site.dart-api}}
@@ -75,9 +75,9 @@ and uses the special `///` syntax that `dart doc` looks for.
 
 {% render 'linter-rule-mention.md', rules:'slash_for_doc_comments' %}
 
-Using a doc comment instead of a regular comment enables 
-[`dart doc`][] to find it
-and generate documentation for it.
+Usar um comentário de documentação em vez de um comentário regular permite
+que o [`dart doc`][] o encontre
+e gere documentação para ele.
 
 <?code-excerpt "docs_good.dart (use-doc-comments)"?>
 ```dart tag=good
@@ -91,39 +91,38 @@ int get length => ...
 int get length => ...
 ```
 
-For historical reasons, `dart doc` supports two syntaxes of doc comments: `///`
-("C# style") and `/** ... */` ("JavaDoc style"). We prefer `///` because it's
-more compact. `/**` and `*/` add two content-free lines to a multiline doc
-comment. The `///` syntax is also easier to read in some situations, such as
-when a doc comment contains a bulleted list that uses `*` to mark list items.
+Por razões históricas, o `dart doc` suporta duas sintaxes de comentários de documentação: `///`
+("estilo C#") e `/** ... */` ("estilo JavaDoc"). Preferimos `///` porque é
+mais compacto. `/**` e `*/` adicionam duas linhas sem conteúdo a um comentário de documentação
+multilinha. A sintaxe `///` também é mais fácil de ler em algumas situações, como
+quando um comentário de documentação contém uma lista com marcadores que usa `*` para marcar itens da lista.
 
-If you stumble onto code that still uses the JavaDoc style, consider cleaning it
-up.
+Se você encontrar código que ainda usa o estilo JavaDoc, considere limpá-lo.
 
 ### PREFER writing doc comments for public APIs
 
 {% render 'linter-rule-mention.md', rules:'public_member_api_docs' %}
 
-You don't have to document every single library, top-level variable, type, and
-member, but you should document most of them.
+Você não precisa documentar cada biblioteca, variável de nível superior, tipo e
+membro, mas deveria documentar a maioria deles.
 
 ### CONSIDER writing a library-level doc comment
 
-Unlike languages like Java where the class is the only unit of program
-organization, in Dart, a library is itself an entity that users work with
-directly, import, and think about. That makes the `library` directive a great
-place for documentation that introduces the reader to the main concepts and
-functionality provided within. Consider including:
+Ao contrário de linguagens como Java, onde a classe é a única unidade de organização
+de programa, no Dart, uma biblioteca é em si uma entidade com a qual os usuários trabalham
+diretamente, importam e pensam a respeito. Isso faz da diretiva `library` um ótimo
+lugar para documentação que apresenta ao leitor os principais conceitos e
+funcionalidades fornecidas. Considere incluir:
 
-* A single-sentence summary of what the library is for.
-* Explanations of terminology used throughout the library.
-* A couple of complete code samples that walk through using the API.
-* Links to the most important or most commonly used classes and functions.
-* Links to external references on the domain the library is concerned with.
+* Um resumo de uma frase sobre para que serve a biblioteca.
+* Explicações da terminologia usada em toda a biblioteca.
+* Alguns exemplos de código completos que mostram como usar a API.
+* Links para as classes e funções mais importantes ou mais usadas.
+* Links para referências externas sobre o domínio com o qual a biblioteca está preocupada.
 
-To document a library, place a doc comment before
-the `library` directive and any annotations that might be attached
-at the start of the file.
+Para documentar uma biblioteca, coloque um comentário de documentação antes
+da diretiva `library` e quaisquer anotações que possam estar anexadas
+no início do arquivo.
 
 <?code-excerpt "docs_good.dart (library-doc)"?>
 ```dart tag=good
@@ -134,16 +133,16 @@ library;
 
 ### CONSIDER writing doc comments for private APIs
 
-Doc comments aren't just for external consumers of your library's public API.
-They can also be helpful for understanding private members that are called from
-other parts of the library.
+Os comentários de documentação não são apenas para consumidores externos da API pública de sua biblioteca.
+Eles também podem ser úteis para entender membros privados que são chamados de
+outras partes da biblioteca.
 
 ### DO start doc comments with a single-sentence summary
 
-Start your doc comment with a brief, user-centric description ending with a
-period. A sentence fragment is often sufficient. Provide just enough context for
-the reader to orient themselves and decide if they should keep reading or look
-elsewhere for the solution to their problem.
+Comece seu comentário de documentação com uma breve descrição centrada no usuário terminando com um
+ponto final. Um fragmento de frase geralmente é suficiente. Forneça apenas contexto suficiente para
+o leitor se orientar e decidir se deve continuar lendo ou procurar
+em outro lugar a solução para o problema.
 
 <?code-excerpt "docs_good.dart (first-sentence)"?>
 ```dart tag=good
@@ -166,13 +165,13 @@ void delete(String path) {
 
 ### DO separate the first sentence of a doc comment into its own paragraph
 
-Add a blank line after the first sentence to split it out into its own
-paragraph. If more than a single sentence of explanation is useful, put the
-rest in later paragraphs.
+Adicione uma linha em branco após a primeira frase para separá-la em seu próprio
+parágrafo. Se mais de uma única frase de explicação for útil, coloque o
+resto em parágrafos posteriores.
 
-This helps you write a tight first sentence that summarizes the documentation.
-Also, tools like `dart doc` use the first paragraph as a short summary in places
-like lists of classes and members.
+Isso ajuda você a escrever uma primeira frase concisa que resume a documentação.
+Além disso, ferramentas como o `dart doc` usam o primeiro parágrafo como um resumo curto em lugares
+como listas de classes e membros.
 
 <?code-excerpt "docs_good.dart (first-sentence-a-paragraph)"?>
 ```dart tag=good
@@ -197,11 +196,11 @@ void delete(String path) {
 
 ### AVOID redundancy with the surrounding context
 
-The reader of a class's doc comment can clearly see the name of the class, what
-interfaces it implements, etc. When reading docs for a member, the signature is
-right there, and the enclosing class is obvious. None of that needs to be
-spelled out in the doc comment. Instead, focus on explaining what the reader
-*doesn't* already know.
+O leitor do comentário de documentação de uma classe pode ver claramente o nome da classe, quais
+interfaces ela implementa, etc. Ao ler documentos para um membro, a assinatura está
+bem ali, e a classe envolvente é óbvia. Nada disso precisa ser
+explicado no comentário de documentação. Em vez disso, concentre-se em explicar o que o leitor
+*não* já sabe.
 
 <?code-excerpt "docs_good.dart (redundant)"?>
 ```dart tag=good
@@ -226,17 +225,17 @@ class RadioButtonWidget extends Widget {
 }
 ```
 
-If you really don't have anything interesting to say
-that can't be inferred from the declaration itself,
-then omit the doc comment.
-It's better to say nothing
-than waste a reader's time telling them something they already know.
+Se você realmente não tem nada interessante a dizer
+que não possa ser inferido da própria declaração,
+então omita o comentário de documentação.
+É melhor não dizer nada
+do que desperdiçar o tempo do leitor dizendo algo que ele já sabe.
 
 <a id="prefer-starting-function-or-method-comments-with-third-person-verbs" aria-hidden="true"></a>
 
 ### PREFER starting comments of a function or method with third-person verbs if its main purpose is a side effect
 
-The doc comment should focus on what the code *does*.
+O comentário de documentação deve focar no que o código *faz*.
 
 <?code-excerpt "docs_good.dart (third-person)"?>
 ```dart tag=good
@@ -249,9 +248,9 @@ void start() => ...
 
 ### PREFER starting a non-boolean variable or property comment with a noun phrase
 
-The doc comment should stress what the property *is*. This is true even for
-getters which may do calculation or other work. What the caller cares about is
-the *result* of that work, not the work itself.
+O comentário de documentação deve enfatizar o que a propriedade *é*. Isso é verdade mesmo para
+getters que podem fazer cálculos ou outro trabalho. O que o chamador se importa é com
+o *resultado* desse trabalho, não com o trabalho em si.
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-non-boolean-var-etc)"?>
 ```dart tag=good
@@ -264,9 +263,9 @@ int get checkedCount => ...
 
 ### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase
 
-The doc comment should clarify the states this variable represents.
-This is true even for getters which may do calculation or other work.
-What the caller cares about is the *result* of that work, not the work itself.
+O comentário de documentação deve esclarecer os estados que esta variável representa.
+Isso é verdade mesmo para getters que podem fazer cálculos ou outro trabalho.
+O que o chamador se importa é com o *resultado* desse trabalho, não com o trabalho em si.
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
 ```dart tag=good
@@ -281,19 +280,19 @@ bool get canResize => ...
 ```
 
 :::note
-This guideline intentionally doesn't include using "Whether or not". In many
-cases, usage of "or not" with "whether" is superfluous and can be omitted,
-especially when used in this context.
+Esta diretriz intencionalmente não inclui usar "Whether or not". Em muitos
+casos, o uso de "or not" com "whether" é supérfluo e pode ser omitido,
+especialmente quando usado neste contexto.
 :::
 
 ### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose
 
-If a method is *syntactically* a method, but *conceptually* it is a property,
-and is therefore [named with a noun phrase or non-imperative verb phrase][parameterized_property_name],
-it should also be documented as such.
-Use a noun-phrase for such non-boolean functions, and
-a phrase starting with "Whether" for such boolean functions,
-just as for a syntactic property or variable.
+Se um método é *sintaticamente* um método, mas *conceitualmente* é uma propriedade,
+e portanto é [nomeado com uma frase substantiva ou frase verbal não-imperativa][parameterized_property_name],
+ele também deve ser documentado como tal.
+Use uma frase substantiva para tais funções não-booleanas, e
+uma frase começando com "Whether" para tais funções booleanas,
+assim como para uma propriedade ou variável sintática.
 
 <?code-excerpt "docs_good.dart (noun-for-func-returning-value)"?>
 ```dart tag=good
@@ -305,25 +304,25 @@ bool contains(Object? element);
 ```
 
 :::note
-This guideline should be applied based on whether the declaration is
-conceptually seen as a property.
+Esta diretriz deve ser aplicada com base em se a declaração é
+conceitualmente vista como uma propriedade.
 
-Sometimes a method has no side effects, and might
-conceptually be seen as a property, but is still
-simpler to name with a verb phrase like `list.take()`.
-Then a noun phrase should still be used to document it.
-_For example `Iterable.take` can be described as
-"The first \[count\] elements of ..."._
+Às vezes, um método não tem efeitos colaterais e pode
+conceitualmente ser visto como uma propriedade, mas ainda é
+mais simples nomeá-lo com uma frase verbal como `list.take()`.
+Então uma frase substantiva ainda deve ser usada para documentá-lo.
+_Por exemplo, `Iterable.take` pode ser descrito como
+"Os primeiros \[count\] elementos de ..."._
 :::
 
 [parameterized_property_name]: design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
 
 ### DON'T write documentation for both the getter and setter of a property
 
-If a property has both a getter and a setter, then create a doc comment for
-only one of them. `dart doc` treats the getter and setter like a single field,
-and if both the getter and the setter have doc comments, then
-`dart doc` discards the setter's doc comment.
+Se uma propriedade tem tanto um getter quanto um setter, então crie um comentário de documentação para
+apenas um deles. O `dart doc` trata o getter e o setter como um único field,
+e se tanto o getter quanto o setter tiverem comentários de documentação, então
+o `dart doc` descarta o comentário de documentação do setter.
 
 <?code-excerpt "docs_good.dart (getter-and-setter)"?>
 ```dart tag=good
@@ -345,12 +344,12 @@ set waterDepth(int meters) => ...
 
 ### PREFER starting library or type comments with noun phrases
 
-Doc comments for classes are often the most important documentation in your
-program. They describe the type's invariants, establish the terminology it uses,
-and provide context to the other doc comments for the class's members. A little
-extra effort here can make all of the other members simpler to document.
+Os comentários de documentação para classes são frequentemente a documentação mais importante em seu
+programa. Eles descrevem as invariantes do tipo, estabelecem a terminologia que ele usa,
+e fornecem contexto para os outros comentários de documentação dos membros da classe. Um pouco de
+esforço extra aqui pode tornar todos os outros membros mais simples de documentar.
 
-The documentation should describe an *instance* of the type.
+A documentação deve descrever uma *instância* do tipo.
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-type-or-lib)"?>
 ```dart tag=good
@@ -374,19 +373,19 @@ class Chunk {
 num min(num a, num b) => ...
 ````
 
-Humans are great at generalizing from examples, so even a single code sample
-makes an API easier to learn.
+Os humanos são ótimos em generalizar a partir de exemplos, então mesmo uma única amostra de código
+torna uma API mais fácil de aprender.
 
 ### DO use square brackets in doc comments to refer to in-scope identifiers
 
 {% render 'linter-rule-mention.md', rules:'comment_references' %}
 
-If you surround things like variable, method, or type names in square brackets,
-then `dart doc` looks up the name and links to the relevant API docs.
-Parentheses are optional but can
-clarify you're referring to a function or constructor.
-The following partial doc comments illustrate a few cases
-where these comment references can be helpful:
+Se você cercar coisas como nomes de variáveis, métodos ou tipos em colchetes,
+então o `dart doc` procura o nome e vincula à documentação da API relevante.
+Parênteses são opcionais, mas podem
+esclarecer que você está se referindo a uma função ou construtor.
+Os seguintes comentários de documentação parciais ilustram alguns casos
+onde essas referências de comentários podem ser úteis:
 
 <?code-excerpt "docs_good.dart (identifiers)"?>
 ```dart tag=good
@@ -395,32 +394,32 @@ where these comment references can be helpful:
 /// Similar to [anotherMethod()], but ...
 ```
 
-To link to a member of a specific class, use the class name and member name,
-separated by a dot:
+Para vincular a um membro de uma classe específica, use o nome da classe e o nome do membro,
+separados por um ponto:
 
 <?code-excerpt "docs_good.dart (member)"?>
 ```dart tag=good
 /// Similar to [Duration.inDays], but handles fractional days.
 ```
 
-The dot syntax can also be used to refer to named constructors. For the unnamed
-constructor, use `.new` after the class name:
+A sintaxe de ponto também pode ser usada para se referir a construtores nomeados. Para o construtor
+sem nome, use `.new` após o nome da classe:
 
 <?code-excerpt "docs_good.dart (ctor)"?>
 ```dart tag=good
 /// To create a point, call [Point.new] or use [Point.polar] to ...
 ```
 
-To learn more about the references that
-the analyzer and `dart doc` support in doc comments,
-check out [Documentation comment references][].
+Para saber mais sobre as referências que
+o analisador e o `dart doc` suportam em comentários de documentação,
+confira [Referências de comentários de documentação][Documentation comment references].
 
 [Documentation comment references]: /tools/doc-comments/references
 
 ### DO use prose to explain parameters, return values, and exceptions
 
-Other languages use verbose tags and sections to describe what the parameters
-and returns of a method are.
+Outras linguagens usam tags e seções verbosas para descrever quais são os parâmetros
+e retornos de um método.
 
 <?code-excerpt "docs_bad.dart (no-annotations)"?>
 ```dart tag=bad
@@ -434,14 +433,14 @@ and returns of a method are.
 Flag addFlag(String name, String abbreviation) => ...
 ```
 
-The convention in Dart is to integrate that into the description of the method
-and highlight parameters using square brackets.
+A convenção no Dart é integrar isso na descrição do método
+e destacar parâmetros usando colchetes.
 
-Consider having sections starting with "The \[parameter\]" to describe
-parameters, with "Returns" for the returned value and "Throws" for exceptions.
-Errors can be documented the same way as exceptions,
-or just as requirements that must be satisfied, without documenting the
-precise error which will be thrown.
+Considere ter seções começando com "The \[parameter\]" para descrever
+parâmetros, com "Returns" para o valor retornado e "Throws" para exceções.
+Erros podem ser documentados da mesma forma que exceções,
+ou apenas como requisitos que devem ser satisfeitos, sem documentar o
+erro preciso que será lançado.
 
 <?code-excerpt "docs_good.dart (no-annotations)"?>
 ```dart tag=good
@@ -474,15 +473,15 @@ class ToggleComponent {}
 
 ## Markdown
 
-You are allowed to use most [markdown][] formatting in your doc comments and
-`dart doc` will process it accordingly using the [markdown package.][]
+Você pode usar a maioria das formatações [markdown][] em seus comentários de documentação e
+o `dart doc` as processará de acordo usando o [pacote markdown.][markdown package.]
 
 [markdown]: https://daringfireball.net/projects/markdown/
 [markdown package.]: {{site.pub-pkg}}/markdown
 
-There are tons of guides out there already to introduce you to Markdown. Its
-universal popularity is why we chose it. Here's just a quick example to give you
-a flavor of what's supported:
+Existem toneladas de guias por aí para apresentá-lo ao Markdown. Sua
+popularidade universal é a razão pela qual o escolhemos. Aqui está apenas um exemplo rápido para dar
+uma ideia do que é suportado:
 
 <?code-excerpt "docs_good.dart (markdown)"?>
 ````dart
@@ -540,25 +539,25 @@ a flavor of what's supported:
 
 ### AVOID using markdown excessively
 
-When in doubt, format less. Formatting exists to illuminate your content, not
-replace it. Words are what matter.
+Quando em dúvida, formate menos. A formatação existe para iluminar seu conteúdo, não
+substituí-lo. Palavras são o que importa.
 
 ### AVOID using HTML for formatting
 
-It *may* be useful to use it in rare cases for things like tables, but in almost
-all cases, if it's too complex to express in Markdown, you're better off not
-expressing it.
+*Pode* ser útil usá-lo em casos raros para coisas como tabelas, mas em quase
+todos os casos, se for muito complexo para expressar em Markdown, é melhor não
+expressá-lo.
 
 ### PREFER backtick fences for code blocks
 
-Markdown has two ways to indicate a block of code: indenting the code four
-spaces on each line, or surrounding it in a pair of triple-backtick "fence"
-lines. The former syntax is brittle when used inside things like Markdown lists
-where indentation is already meaningful or when the code block itself contains
-indented code.
+Markdown tem duas maneiras de indicar um bloco de código: indentar o código quatro
+espaços em cada linha, ou cercá-lo em um par de linhas de "cerca" de triplo-backtick.
+A sintaxe anterior é frágil quando usada dentro de coisas como listas Markdown
+onde a indentação já é significativa ou quando o próprio bloco de código contém
+código indentado.
 
-The backtick syntax avoids those indentation woes, lets you indicate the code's
-language, and is consistent with using backticks for inline code.
+A sintaxe de backtick evita esses problemas de indentação, permite que você indique a
+linguagem do código e é consistente com o uso de backticks para código inline.
 
 ```dart tag=good
 /// You can use [CodeBlockExample] like this:
@@ -576,32 +575,32 @@ language, and is consistent with using backticks for inline code.
 ///     print(example.isItGreat); // "Yes."
 ```
 
-## Writing
+## Escrita
 
-We think of ourselves as programmers, but most of the characters in a source
-file are intended primarily for humans to read. English is the language we code
-in to modify the brains of our coworkers. As for any programming language, it's
-worth putting effort into improving your proficiency.
+Nós nos consideramos programadores, mas a maioria dos caracteres em um arquivo fonte
+são destinados principalmente para humanos lerem. Inglês é a linguagem que codificamos
+para modificar os cérebros de nossos colegas de trabalho. Como para qualquer linguagem de programação,
+vale a pena colocar esforço em melhorar sua proficiência.
 
-This section lists a few guidelines for our docs. You can learn more about
-best practices for technical writing, in general, from articles such as
-[Technical writing style](https://en.wikiversity.org/wiki/Technical_writing_style).
+Esta seção lista algumas diretrizes para nossos documentos. Você pode aprender mais sobre
+melhores práticas para escrita técnica, em geral, em artigos como
+[Estilo de escrita técnica](https://en.wikiversity.org/wiki/Technical_writing_style).
 
 ### PREFER brevity
 
-Be clear and precise, but also terse.
+Seja claro e preciso, mas também conciso.
 
 ### AVOID abbreviations and acronyms unless they are obvious
 
-Many people don't know what "i.e.", "e.g." and "et al." mean. That acronym
-that you're sure everyone in your field knows may not be as widely known as you
-think.
+Muitas pessoas não sabem o que "i.e.", "e.g." e "et al." significam. Esse acrônimo
+que você tem certeza de que todos em seu campo conhecem pode não ser tão amplamente conhecido quanto você
+pensa.
 
 ### PREFER using "this" instead of "the" to refer to a member's instance
 
-When documenting a member for a class, you often need to refer back to the
-object the member is being called on. Using "the" can be ambiguous.
-Prefer having some qualifier after "this", a sole "this" can be ambiguous too.
+Ao documentar um membro de uma classe, você frequentemente precisa se referir ao
+objeto no qual o membro está sendo chamado. Usar "the" pode ser ambíguo.
+Prefira ter algum qualificador depois de "this", um "this" sozinho também pode ser ambíguo.
 
 <?code-excerpt "docs_good.dart (this)"?>
 ```dart
