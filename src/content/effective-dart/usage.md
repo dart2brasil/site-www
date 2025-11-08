@@ -24,7 +24,7 @@ Estas diretrizes ajudam você a compor seu programa a partir de múltiplos arqui
 maneira consistente e sustentável. Para manter estas diretrizes breves, elas usam "import"
 para cobrir as diretivas `import` e `export`. As diretrizes se aplicam igualmente a ambas. 
 
-### FAÇA uso de strings em diretivas `part of`
+### FAÇA uso de strings em diretivas `part of` {:#do-use-strings-in-part-of-directives}
 
 {% render 'linter-rule-mention.md', rules:'use_string_in_part_of_directives' %}
 
