@@ -50,7 +50,7 @@ para facilitar a busca de dados do servidor.
 Para pular diretamente para o conteúdo do tutorial,
 veja [Recuperar as dependências necessárias][Retrieve the necessary dependencies].
 
-[Retrieve the necessary dependencies]: #retrieve-the-necessary-dependencies
+[Retrieve the necessary dependencies]: #recuperar-as-dependências-necessárias
 
 ### JSON
 
