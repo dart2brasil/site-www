@@ -34,7 +34,7 @@ sobre seu código quando cada biblioteca é um único arquivo. Se você optar po
 arquivo, por sua vez, indique de qual biblioteca ele faz parte.
 
 O Dart permite que a diretiva `part of` use o *nome* de uma biblioteca.
-Nomear bibliotecas é um recurso legado que agora é [desencorajado][].
+Nomear bibliotecas é um recurso legado que agora é [desencorajado][discouraged].
 Nomes de bibliotecas podem introduzir ambiguidade
 ao determinar a qual biblioteca uma parte pertence.
 
