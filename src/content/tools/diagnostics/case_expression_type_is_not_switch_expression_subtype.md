@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: case_expression_type_is_not_switch_expression_subtype
 description: >-
-  Details about the case_expression_type_is_not_switch_expression_subtype
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico case_expression_type_is_not_switch_expression_subtype
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The switch case expression type '{0}' must be a subtype of the switch expression type '{1}'._
+_O tipo '{0}' da expressão do case do switch deve ser um subtipo do tipo '{1}' da expressão do switch._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the expression following `case`
-in a `switch` statement has a static type that isn't a subtype of the
-static type of the expression following `switch`.
+O analisador produz este diagnóstico quando a expressão que segue `case`
+em uma instrução `switch` tem um tipo estático que não é um subtipo do
+tipo estático da expressão que segue `switch`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `1` is an `int`, which
-isn't a subtype of `String` (the type of `s`):
+O código a seguir produz este diagnóstico porque `1` é um `int`, que
+não é um subtipo de `String` (o tipo de `s`):
 
 ```dart
 void f(String s) {
@@ -29,10 +30,10 @@ void f(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the value of the `case` expression is wrong, then change the `case`
-expression so that it has the required type:
+Se o valor da expressão `case` estiver errado, então altere a expressão
+`case` para que ela tenha o tipo necessário:
 
 ```dart
 void f(String s) {
@@ -43,8 +44,8 @@ void f(String s) {
 }
 ```
 
-If the value of the `case` expression is correct, then change the `switch`
-expression to have the required type:
+Se o valor da expressão `case` estiver correto, então altere a expressão
+`switch` para ter o tipo necessário:
 
 ```dart
 void f(int s) {

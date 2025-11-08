@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: extra_positional_arguments
 description: >-
-  Details about the extra_positional_arguments
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico extra_positional_arguments
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Too many positional arguments: {0} expected, but {1} found._
+_Muitos argumentos posicionais: {0} esperados, mas {1} encontrados._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a method or function invocation
-has more positional arguments than the method or function allows.
+O analisador produz este diagnóstico quando uma invocação de método ou função
+tem mais argumentos posicionais do que o método ou função permite.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `f` defines 2
-parameters but is invoked with 3 arguments:
+O código a seguir produz este diagnóstico porque `f` define 2
+parâmetros mas é invocada com 3 argumentos:
 
 ```dart
 void f(int a, int b) {}
@@ -26,9 +27,9 @@ void g() {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the arguments that don't correspond to parameters:
+Remova os argumentos que não correspondem a parâmetros:
 
 ```dart
 void f(int a, int b) {}

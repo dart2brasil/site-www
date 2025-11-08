@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: unreachable_switch_case
 description: >-
-  Details about the unreachable_switch_case
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico unreachable_switch_case
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_This case is covered by the previous cases._
+_Este case é coberto pelos cases anteriores._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a `case` clause in a `switch`
-statement doesn't match anything because all of the matchable values are
-matched by an earlier `case` clause.
+O analisador produz este diagnóstico quando uma cláusula `case` em uma instrução `switch`
+não corresponde a nada porque todos os valores correspondentes são
+correspondidos por uma cláusula `case` anterior.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the value `1` was
-matched in the preceding case:
+O código a seguir produz este diagnóstico porque o valor `1` foi
+correspondido no case anterior:
 
 ```dart
 void f(int x) {
@@ -31,9 +32,9 @@ void f(int x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Change one or both of the conflicting cases to match different values:
+Altere um ou ambos os cases conflitantes para corresponder valores diferentes:
 
 ```dart
 void f(int x) {

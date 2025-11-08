@@ -1,27 +1,28 @@
 ---
+ia-translate: true
 title: non_sized_type_argument
 description: >-
-  Details about the non_sized_type_argument
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_sized_type_argument
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' isn't a valid type argument for '{1}'. The type argument must be a native integer, 'Float', 'Double', 'Pointer', or subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
+_O tipo '{0}' não é um argumento de tipo válido para '{1}'. O argumento de tipo deve ser um inteiro nativo, 'Float', 'Double', 'Pointer' ou subtipo de 'Struct', 'Union' ou 'AbiSpecificInteger'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the type argument for the class
-`Array` isn't one of the valid types: either a native integer, `Float`,
-`Double`, `Pointer`, or subtype of `Struct`, `Union`, or
+O analisador produz este diagnóstico quando o argumento de tipo para a classe
+`Array` não é um dos tipos válidos: um inteiro nativo, `Float`,
+`Double`, `Pointer` ou subtipo de `Struct`, `Union` ou
 `AbiSpecificInteger`.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, veja [Interoperabilidade C usando dart:ffi][ffi].
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the type argument to
-`Array` is `Void`, and `Void` isn't one of the valid types:
+O código a seguir produz este diagnóstico porque o argumento de tipo para
+`Array` é `Void`, e `Void` não é um dos tipos válidos:
 
 ```dart
 import 'dart:ffi';
@@ -32,9 +33,9 @@ final class C extends Struct {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Change the type argument to one of the valid types:
+Altere o argumento de tipo para um dos tipos válidos:
 
 ```dart
 import 'dart:ffi';

@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: path_does_not_exist
 description: >-
-  Details about the path_does_not_exist
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico path_does_not_exist
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The path '{0}' doesn't exist._
+_O caminho '{0}' não existe._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a dependency has a `path` key
-referencing a directory that doesn't exist.
+O analisador produz este diagnóstico quando uma dependência tem uma chave `path`
+referenciando um diretório que não existe.
 
-## Example
+## Exemplo
 
-Assuming that the directory `doesNotExist` doesn't exist, the following
-code produces this diagnostic because it's listed as the path of a package:
+Assumindo que o diretório `doesNotExist` não existe, o seguinte
+código produz este diagnóstico porque está listado como o caminho de um pacote:
 
 ```yaml
 name: example
@@ -26,9 +27,9 @@ dependencies:
     path: [!doesNotExist!]
 ```
 
-## Common fixes
+## Correções comuns
 
-If the path is correct, then create a directory at that path.
+Se o caminho estiver correto, então crie um diretório nesse caminho.
 
-If the path isn't correct, then change the path to match the path to the
-root of the package.
+Se o caminho não estiver correto, então altere o caminho para corresponder ao caminho para a
+raiz do pacote.

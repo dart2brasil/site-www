@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: constant_pattern_with_non_constant_expression
 description: >-
-  Details about the constant_pattern_with_non_constant_expression
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico constant_pattern_with_non_constant_expression
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The expression of a constant pattern must be a valid constant._
+_A expressão de um padrão constante deve ser uma constante válida._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a constant pattern has an
-expression that isn't a valid constant.
+O analisador produz este diagnóstico quando um padrão constante tem uma
+expressão que não é uma constante válida.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the constant pattern
-`i` isn't a constant:
+O código a seguir produz este diagnóstico porque o padrão constante
+`i` não é uma constante:
 
 ```dart
 void f(int e, int i) {
@@ -28,10 +29,10 @@ void f(int e, int i) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the value that should be matched is known, then replace the expression
-with a constant:
+Se o valor que deve ser correspondido for conhecido, então substitua a expressão
+por uma constante:
 
 ```dart
 void f(int e, int i) {
@@ -42,8 +43,8 @@ void f(int e, int i) {
 }
 ```
 
-If the value that should be matched isn't known, then rewrite the code to
-not use a pattern:
+Se o valor que deve ser correspondido não for conhecido, então reescreva o código para
+não usar um padrão:
 
 ```dart
 void f(int e, int i) {

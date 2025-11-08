@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: unqualified_reference_to_static_member_of_extended_type
 description: >-
-  Details about the unqualified_reference_to_static_member_of_extended_type
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico unqualified_reference_to_static_member_of_extended_type
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Static members from the extended type or one of its superclasses must be qualified by the name of the defining type._
+_Membros static do tipo estendido ou de uma de suas superclasses devem ser qualificados pelo nome do tipo definidor._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an undefined name is found, and
-the name is the same as a static member of the extended type or one of its
+O analisador produz este diagnóstico quando um nome indefinido é encontrado, e
+o nome é o mesmo de um membro static do tipo estendido ou de uma de suas
 superclasses.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` is a static member
-of the extended type `C`:
+O código a seguir produz este diagnóstico porque `m` é um membro static
+do tipo estendido `C`:
 
 ```dart
 class C {
@@ -32,11 +33,11 @@ extension E on C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If you're trying to reference a static member that's declared outside the
-extension, then add the name of the class or extension before the reference
-to the member:
+Se você está tentando referenciar um membro static declarado fora da
+extension, então adicione o nome da classe ou extension antes da referência
+ao membro:
 
 ```dart
 class C {
@@ -50,7 +51,7 @@ extension E on C {
 }
 ```
 
-If you're referencing a member that isn't declared yet, add a declaration:
+Se você está referenciando um membro que ainda não foi declarado, adicione uma declaração:
 
 ```dart
 class C {
