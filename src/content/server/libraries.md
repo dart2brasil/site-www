@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Command-line and server libraries and packages
 shortTitle: CLI & server libraries
 description: >-

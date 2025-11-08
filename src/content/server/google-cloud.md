@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Using Google Cloud
 shortTitle: Google Cloud
 description: >-
