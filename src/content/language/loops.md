@@ -22,7 +22,7 @@ Você também pode manipular o fluxo de controle em Dart usando:
 - [Branching][], como `if` e `switch`
 - [Exceptions][], como `try`, `catch` e `throw`
 
-## Loops for
+## Loops for {:#for-loops}
 
 Você pode iterar com o loop `for` padrão. Por exemplo:
 
@@ -96,7 +96,7 @@ collection.forEach(print); // 1 2 3
 
 [variable]: /language/variables
 
-## While e do-while
+## While e do-while {:#while-and-do-while}
 
 Um loop `while` avalia a condição antes do loop:
 
