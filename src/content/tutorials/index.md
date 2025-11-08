@@ -1,54 +1,55 @@
 ---
-title: Tutorials
-description: Tutorials for writing Dart apps.
+ia-translate: true
+title: Tutoriais
+description: Tutoriais para escrever aplicações Dart.
 ---
 
-These tutorials teach you how to use the Dart
-language, tools, and APIs to build applications.
+Estes tutoriais ensinam como usar a linguagem Dart,
+ferramentas e APIs para construir aplicações.
 
-## Learn the basics {:#basics}
+## Aprenda o básico {:#basics}
 
-The following tours assume a basic familiarity with the Dart language,
-which you can get from skimming the [language tour](/language).
-Next, to learn about futures, try the
-[asynchronous programming tutorial](/libraries/async/async-await).
+Os tutoriais a seguir assumem familiaridade básica com a linguagem Dart,
+que você pode obter dando uma olhada no [tour da linguagem](/language).
+Em seguida, para aprender sobre futures, experimente o
+[tutorial de programação assíncrona](/libraries/async/async-await).
 
-Once you're familiar with the language and futures,
-learn about _iterables_, _streams_, and _packages_,
-which are fundamental to most Dart programs.
+Uma vez que você esteja familiarizado com a linguagem e futures,
+aprenda sobre _iterables_, _streams_ e _packages_,
+que são fundamentais para a maioria dos programas Dart.
 
 <div class="card-grid no_toc_section">
-  <Card title="Asynchronous programming: streams" link="/libraries/async/using-streams">
-    Use streams to manage sequences of data.
+  <Card title="Programação assíncrona: streams" link="/libraries/async/using-streams">
+    Use streams para gerenciar sequências de dados.
   </Card>
-  <Card title="How to use packages" link="/tools/pub/packages">
-    Organize and share code on the pub.dev site.
+  <Card title="Como usar pacotes" link="/tools/pub/packages">
+    Organize e compartilhe código no site pub.dev.
   </Card>
 </div>
 
 
 <a id="server-side-dart-tutorials" aria-hidden="true"></a>
-## Build server-side apps {:#server}
+## Construa aplicações server-side {:#server}
 
 {% render 'server-tutorials.md' %}
 
 <a id="more-tutorials" aria-hidden="true"></a>
-## Keep learning
+## Continue aprendendo
 
-To get more experience developing with Dart,
-try more of the available tutorials!
+Para obter mais experiência desenvolvendo com Dart,
+experimente mais tutoriais disponíveis!
 
 <div class="card-grid no_toc_section">
   <Card title="Dart cheatsheet" link="/resources/dart-cheatsheet">
-    Quickly try out some of Dart's unique language features.
+    Experimente rapidamente alguns dos recursos únicos da linguagem Dart.
   </Card>
-  <Card title="Records and patterns" link="https://codelabs.developers.google.com/codelabs/dart-patterns-records">
-    Discover Dart's support for records and patterns.
+  <Card title="Records e patterns" link="https://codelabs.developers.google.com/codelabs/dart-patterns-records">
+    Descubra o suporte do Dart para records e patterns.
   </Card>
-  <Card title="Iterable collections" link="/libraries/collections/iterables">
-    Learn to analyze and manipulate data stored in collections.
+  <Card title="Coleções iteráveis" link="/libraries/collections/iterables">
+    Aprenda a analisar e manipular dados armazenados em coleções.
   </Card>
-  <Card title="Flutter codelabs and tutorials" link="https://docs.flutter.dev/codelabs">
-    Expand your Dart skills by building Flutter apps.
+  <Card title="Codelabs e tutoriais Flutter" link="https://docs.flutter.dev/codelabs">
+    Expanda suas habilidades Dart construindo aplicações Flutter.
   </Card>
 </div>
