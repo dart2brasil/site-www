@@ -1,7 +1,8 @@
 ---
-title: Dart FAQ
+ia-translate: true
+title: Perguntas frequentes sobre Dart
 shortTitle: FAQ
-description: You have questions about Dart, we have answers.
+description: Você tem perguntas sobre Dart, nós temos respostas.
 ---
 
 {% assign pdf = '<i style="vertical-align: text-top" class="material-symbols">picture_as_pdf</i>' %}
@@ -10,40 +11,40 @@ description: You have questions about Dart, we have answers.
 {% assign lang-repo = site.repo.dart.lang %}
 {% assign ecma-pdf = 'https://ecma-international.org/wp-content/uploads' %}
 
-This page collects some of the top questions from the community.
+Esta página reúne algumas das principais perguntas da comunidade.
 
-## General
+## Geral
 
-### Q. Is there a specification for Dart?
+### P. Existe uma especificação para Dart?
 
-Yes. [ECMA-408][ecma408] covers the Dart Programming Language Specification.
+Sim. [ECMA-408][ecma408] cobre a Especificação da Linguagem de Programação Dart.
 
-Five versions have been published.
-The latest in-progress version covers to Dart 2.13-dev.
+Cinco versões foram publicadas.
+A versão em andamento mais recente cobre até Dart 2.13-dev.
 
-| Edition               | Published         | Approved      | Covers to version |
-|-----------------------|-------------------|---------------|-------------------|
-| [6th][6th-ed] {{pdf}} | January 24, 2024  |               | 2.13-dev          |
-| [5th][5th-ed] {{pdf}} | April 9, 2021     |               | 2.10              |
-| [4th][4th-ed] {{pdf}} | August 19, 2015   | December 2015 | 1.11              |
-| [3rd][3rd-ed] {{pdf}} | April 15, 2015    | June 2015     | 1.9               |
-| [2nd][2nd-ed] {{pdf}} | November 21, 2014 | December 2014 | 1.6               |
-| [1st][1st-ed] {{pdf}} | March 27, 2014    | June 2014     | 1.3               |
+| Edição                | Publicada         | Aprovada      | Cobre até versão |
+|-----------------------|-------------------|---------------|------------------|
+| [6ª][6th-ed] {{pdf}}  | 24 de janeiro de 2024  |          | 2.13-dev         |
+| [5ª][5th-ed] {{pdf}}  | 9 de abril de 2021     |          | 2.10             |
+| [4ª][4th-ed] {{pdf}}  | 19 de agosto de 2015   | Dezembro 2015 | 1.11            |
+| [3ª][3rd-ed] {{pdf}}  | 15 de abril de 2015    | Junho 2015    | 1.9             |
+| [2ª][2nd-ed] {{pdf}}  | 21 de novembro de 2014 | Dezembro 2014 | 1.6             |
+| [1ª][1st-ed] {{pdf}}  | 27 de março de 2014    | Junho 2014    | 1.3             |
 
 {:.table .table-striped}
 
-To learn more about the specification, review
-the [Dart language specification](/resources/language/spec) page.
+Para saber mais sobre a especificação, revise
+a página [especificação da linguagem Dart](/resources/language/spec).
 
-### Q. How are you taking input on changes to Dart?
+### P. Como vocês recebem feedback sobre mudanças no Dart?
 
-The team listens to feedback, reads [issues][SDK issues],
-and reviews patches from contributors.
-A contributor with a good track record can be granted
-write permission to the repository.
-Google engineers also work in the public repository, making visible changes.
-The project has received many external patches
-and welcomes distributed committers.
+A equipe ouve feedback, lê [issues][SDK issues]
+e revisa patches de contribuidores.
+Um contribuidor com um bom histórico pode receber
+permissão de escrita no repositório.
+Engenheiros do Google também trabalham no repositório público, fazendo mudanças visíveis.
+O projeto recebeu muitos patches externos
+e recebe bem committers distribuídos.
 
 [ecma408]: https://ecma-international.org/publications-and-standards/standards/ecma-408/
 [1st-ed]: {{ecma-pdf}}/ECMA-408_1st_edition_june_2014.pdf
@@ -55,156 +56,156 @@ and welcomes distributed committers.
 
 ---
 
-## Language
+## Linguagem
 
-### Q. Isn't Dart a lot like Java?
+### P. Dart não é muito parecido com Java?
 
-Dart has some similarities with Java.
-To review brief examples with familiar syntax,
-reviewed the code samples in the [Introduction to Dart](/language).
+Dart tem algumas semelhanças com Java.
+Para revisar exemplos breves com sintaxe familiar,
+revise os exemplos de código na [Introduction to Dart](/language).
 
-### Q. How does Dart relate to Go?
+### P. Como Dart se relaciona com Go?
 
-Google started the Dart and Go language projects.
-These independent projects have different goals.
-As a result, they make different choices.
-The languages have very different natures,
-but team members learn from each others' work.
+O Google iniciou os projetos de linguagem Dart e Go.
+Esses projetos independentes têm objetivos diferentes.
+Como resultado, eles fazem escolhas diferentes.
+As linguagens têm naturezas muito diferentes,
+mas os membros das equipes aprendem com o trabalho uns dos outros.
 
-### Q. Why isn't Dart more like Haskell / Smalltalk / Python / Scala / other language?
+### P. Por que Dart não é mais parecido com Haskell / Smalltalk / Python / Scala / outra linguagem?
 
-Various reasons that depend on the comparison language.
+Várias razões que dependem da linguagem de comparação.
 
-**Languages differ from JavaScript**
-: Dart must compile to efficient JavaScript.
-Source languages that differ too much from JavaScript can generate complex
-output code to emulate the source language's behavior.
-This can cause performance to vary in non-obvious ways to the programmer.
+**Linguagens que diferem de JavaScript**
+: Dart deve compilar para JavaScript eficiente.
+Linguagens fonte que diferem muito de JavaScript podem gerar código
+de saída complexo para emular o comportamento da linguagem fonte.
+Isso pode fazer com que o desempenho varie de maneiras não óbvias para o programador.
 
-**Languages that compile to native code**
-: Dart prioritizes efficient compilation to machine code.
-  Therefore, it shares some aspects with other compiled languages.
+**Linguagens que compilam para código nativo**
+: Dart prioriza compilação eficiente para código de máquina.
+  Portanto, compartilha alguns aspectos com outras linguagens compiladas.
 
-**Languages that are considered "more dynamic" than Dart**
-: Dart chooses to trade off some of this arbitrary runtime modification
-  to achieve better performance and more productive tools.
+**Linguagens consideradas "mais dinâmicas" que Dart**
+: Dart escolhe trocar parte dessa modificação arbitrária em tempo de execução
+  para alcançar melhor desempenho e ferramentas mais produtivas.
 
-### Q. Why isn't Dart syntax more exciting?
+### P. Por que a sintaxe do Dart não é mais empolgante?
 
-Some nice syntactic features exist, like the `this.` constructor args and `=>`
-for one-line functions.
-Dart chooses _familiarity_ over _excitement_.
+Alguns recursos sintáticos agradáveis existem, como os argumentos de construtor `this.` e `=>`
+para funções de uma linha.
+Dart escolhe _familiaridade_ em vez de _empolgação_.
 
-### Q. Does Dart have reflection capabilities?
+### P. Dart tem capacidades de reflection?
 
-**Servers and command-line scripts**
-: Yes, Dart supports reflection from the [mirrors API][dart-mirror].
+**Servidores e scripts de linha de comando**
+: Sim, Dart suporta reflection através da [API mirrors][dart-mirror].
 
-**Web or Flutter apps**
-: No, Dart doesn't support write to [web or Flutter apps][Flutter no mirrors].
+**Apps web ou Flutter**
+: Não, Dart não suporta escrita em [apps web ou Flutter][Flutter no mirrors].
 
-### Q. Can Dart add a language feature that I want?
+### P. Dart pode adicionar um recurso de linguagem que eu quero?
 
-Future releases might include a feature you want.
-Some features don't fit the nature of the language.
-Some don't play well with other features.
-Simplicity is the most important gift to give to future programmers.
+Versões futuras podem incluir um recurso que você deseja.
+Alguns recursos não se encaixam na natureza da linguagem.
+Alguns não funcionam bem com outros recursos.
+Simplicidade é o presente mais importante a dar aos programadores futuros.
 
-To check if someone has filed your request,
-review the [language funnel][lang-funnel] and
-[language issues list][lang-issues].
+Para verificar se alguém já solicitou seu pedido,
+revise o [language funnel][lang-funnel] e a
+[lista de issues de linguagem][lang-issues].
 
-* If an issue exists, add your thumbs up.
-* If an issue doesn't exist, request a [new issue][new-issue].
+* Se um issue existir, adicione seu joinha.
+* Se um issue não existir, solicite um [novo issue][new-issue].
 
-  Make a thoughtful argument for your feature.
-  Add evidence to your argument. Include sample code with and without your
-  feature or a sizeable codebase.
+  Faça um argumento ponderado para seu recurso.
+  Adicione evidências ao seu argumento. Inclua código de exemplo com e sem seu
+  recurso ou uma base de código considerável.
 
-To learn more, consult the [language evolution process][lang-process].
+Para saber mais, consulte o [processo de evolução da linguagem][lang-process].
 
-Don't be surprised if the Dart language team turns down your request.
-Removing a language feature inflicts more pain than adding one.
-The Dart language team adds the most obvious features first,
-and revisits the next tier later.
+Não se surpreenda se a equipe da linguagem Dart recusar seu pedido.
+Remover um recurso de linguagem inflige mais dor do que adicionar um.
+A equipe da linguagem Dart adiciona os recursos mais óbvios primeiro,
+e revisita o próximo nível depois.
 
-The community will request more features than any single language
-can meet without making a total hash of it.
-The Dart language team does appreciate suggestions and evidence.
-This appreciation should become apparent through careful design choices
-and fair communication about them.
-
----
-
-## Typing
-
-### Q. Does Dart use static typing?
-
-Yes, Dart uses static typing. To learn more, consult [Dart's type system][].
-
-Combining static and runtime checks, Dart has a sound type system.
-This guarantees that an expression of one type cannot produce a value
-of another type.
-
-if you need the flexibility of a dynamic typing,
-you can annotate any variable with `dynamic`.
-This `dynamic` type is static, but can contain any type at _runtime_.
-That removes many benefits of a type-safe language from that variable.
-
-### Q. Why are generics covariant?
-
-Covariant generics fit a common intuition that programmers have, and very often
-this intuition is correct, such as in the common "read-only" use of a generic.
-Although this intuition isn't always correct, Dart is erring on the side of
-convenience by having covariant generics.
-
-The only other reasonable default variance would be invariance. While having
-only invariant generics would definitely prevent more errors, it would also
-prevent a lot of valid programs or require conversion every time you have a list
-of "apples", and someone just wants "fruits".
-
-We are familiar with a variety of ways that languages try to mark or infer
-variance. We feel that variance inference systems add too much complexity for
-their benefit in Dart.
-
-Again, we're trying to be pragmatic, and we think the outcome is reasonable.
+A comunidade solicitará mais recursos do que qualquer linguagem única
+pode atender sem fazer uma bagunça total.
+A equipe da linguagem Dart aprecia sugestões e evidências.
+Essa apreciação deve se tornar aparente através de escolhas de design cuidadosas
+e comunicação justa sobre elas.
 
 ---
 
-## Usage and tools
+## Tipagem
 
-### Q. Does Dart support JSON?
+### P. Dart usa tipagem estática?
 
-Yes. To learn more, consult the [JSON] converters in the [dart:convert][] library.
+Sim, Dart usa tipagem estática. Para saber mais, consulte o [sistema de tipos do Dart][].
 
-### Q. Can Dart run on the server?
+Combinando verificações estáticas e em tempo de execução, Dart tem um sistema de tipos sound.
+Isso garante que uma expressão de um tipo não possa produzir um valor
+de outro tipo.
 
-Yes. To learn more, consult [Dart on the Server].
+Se você precisar da flexibilidade de uma tipagem dinâmica,
+pode anotar qualquer variável com `dynamic`.
+Este tipo `dynamic` é estático, mas pode conter qualquer tipo em _tempo de execução_.
+Isso remove muitos benefícios de uma linguagem type-safe dessa variável.
 
-### Q. How do I use third party code, or share code?
+### P. Por que os generics são covariantes?
 
-Search for packages on the [pub.dev site][pub],
-the package-hosting service for Dart and Flutter.
-Use the [`pub` command][pub-cmd] to package your code and upload to the site.
+Generics covariantes se encaixam em uma intuição comum que os programadores têm, e muito frequentemente
+essa intuição está correta, como no uso comum "somente leitura" de um generic.
+Embora essa intuição nem sempre esteja correta, Dart erra no lado da
+conveniência ao ter generics covariantes.
 
-### Q. Do I need to use a particular editor or IDE to write Dart code?
+A única outra variância padrão razoável seria invariância. Embora ter
+apenas generics invariantes definitivamente preveniria mais erros, também
+impediria muitos programas válidos ou exigiria conversão toda vez que você tivesse uma lista
+de "maçãs", e alguém apenas quisesse "frutas".
 
-No. You can try out Dart code with [DartPad,][DartPad] and then use your favorite
-editor or IDE for development. Some full-featured IDEs such as IntelliJ IDEA,
-WebStorm, and Visual Studio Code have Dart plugins. Open source Dart plugins
-also exist for a number of editors. For more information, see the [Dart tools][].
+Estamos familiarizados com uma variedade de maneiras que as linguagens tentam marcar ou inferir
+variância. Sentimos que sistemas de inferência de variância adicionam muita complexidade
+para seu benefício no Dart.
 
-### Q. Can I build an Android app with Dart?
+Novamente, estamos tentando ser pragmáticos, e achamos que o resultado é razoável.
 
-Yes! You can build an Android app using the [Flutter][Flutter] framework
-and the Dart language.
-Any Flutter app you write will also work on iOS, the web, and desktop platforms.
+---
 
-### Q. What are some real-world production deployments of Dart?
+## Uso e ferramentas
 
-Google Ads, AdSense, AdMob, and the Google Assistant use Dart.
-A significant portion of Google's revenue flows through these apps.
-Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
+### P. Dart suporta JSON?
+
+Sim. Para saber mais, consulte os conversores [JSON] na biblioteca [dart:convert][].
+
+### P. Dart pode rodar no servidor?
+
+Sim. Para saber mais, consulte [Dart on the Server].
+
+### P. Como eu uso código de terceiros, ou compartilho código?
+
+Procure por pacotes no [site pub.dev][pub],
+o serviço de hospedagem de pacotes para Dart e Flutter.
+Use o [comando `pub`][pub-cmd] para empacotar seu código e fazer upload para o site.
+
+### P. Preciso usar um editor ou IDE específico para escrever código Dart?
+
+Não. Você pode experimentar código Dart com [DartPad,][DartPad] e depois usar seu
+editor ou IDE favorito para desenvolvimento. Algumas IDEs completas como IntelliJ IDEA,
+WebStorm e Visual Studio Code têm plugins Dart. Plugins Dart de código aberto
+também existem para vários editores. Para mais informações, veja as [ferramentas Dart][].
+
+### P. Posso criar um app Android com Dart?
+
+Sim! Você pode criar um app Android usando o framework [Flutter][Flutter]
+e a linguagem Dart.
+Qualquer app Flutter que você escrever também funcionará em iOS, web e plataformas desktop.
+
+### P. Quais são alguns deployments de produção do mundo real do Dart?
+
+Google Ads, AdSense, AdMob e o Google Assistant usam Dart.
+Uma porção significativa da receita do Google flui através desses apps.
+Dentro ou fora do Google, [cada app Flutter][FlutterShowcase] usa Dart.
 
 [dart:convert]: {{site.dart-api}}/stable/dart-convert/dart-convert-library.html
 [SDK issues]: {{sdk-repo}}/issues
@@ -227,123 +228,123 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 
 ---
 
-## Native execution
+## Execução nativa
 
-### Q. Is Dart single-threaded?
+### P. Dart é single-threaded?
 
-No. On native targets,
-[Dart's isolate API][isolate] can start multiple execution threads when needed.
-The Dart VM uses multiple CPU cores to run those threads at the same time.
+Não. Em alvos nativos,
+a [API isolate do Dart][isolate] pode iniciar múltiplas threads de execução quando necessário.
+A Dart VM usa múltiplos núcleos de CPU para executar essas threads ao mesmo tempo.
 
-[Dart's concurrency architecture](/language/concurrency) abstracts the complex,
-error-prone code of typical shared-memory threading.
-This might explain the misconception that Dart is single-threaded.
+A [arquitetura de concorrência do Dart](/language/concurrency) abstrai o código complexo
+e propenso a erros do threading típico de memória compartilhada.
+Isso pode explicar a concepção errada de que Dart é single-threaded.
 
-Concurrency works differently in Dart web apps.
-To learn more, consult
-[Is Dart single-threaded on the web?](#q-is-dart-single-threaded-on-the-web)
+A concorrência funciona de forma diferente em apps web Dart.
+Para saber mais, consulte
+[Dart é single-threaded na web?](#q-is-dart-single-threaded-on-the-web)
 
-### Q. Can I compile Dart code to native code?
+### P. Posso compilar código Dart para código nativo?
 
-Yes. When compiling apps that target devices like desktops or mobile,
+Sim. Ao compilar apps que visam dispositivos como desktops ou móveis,
 [Dart Native](/overview#native-platform)
-includes both a Dart VM with a just-in-time (JIT) compiler and an
-ahead-of-time (AOT) compiler to produce native code.
+inclui tanto uma Dart VM com um compilador just-in-time (JIT) quanto um
+compilador ahead-of-time (AOT) para produzir código nativo.
 
-The [Flutter][] framework uses Dart's native compilation capability to produce
-fast native apps.
+O framework [Flutter][] usa a capacidade de compilação nativa do Dart para produzir
+apps nativos rápidos.
 
-### Q. Can I compile a Dart program for running in a terminal?
+### P. Posso compilar um programa Dart para rodar em um terminal?
 
-Yes. Dart programs can be compiled to native code for running in a
-macOS Terminal, Windows command prompt, or a Linux shell.
+Sim. Programas Dart podem ser compilados para código nativo para rodar em um
+Terminal macOS, prompt de comando Windows ou um shell Linux.
 
-Consult the [dart compile][] documentation.
+Consulte a documentação do [dart compile][].
 
-### Q. Which is faster: AOT- or JIT-compiled code?
+### P. Qual é mais rápido: código compilado AOT ou JIT?
 
-It depends.
-How Dart compiles code produces apps with different performance characteristics.
+Depende.
+Como Dart compila código produz apps com diferentes características de desempenho.
 
-* AOT-compiled code starts fast with consistent runtime performance,
-  with no latency during early runs.
+* Código compilado AOT inicia rápido com desempenho de execução consistente,
+  sem latência durante as primeiras execuções.
 
-* JIT-compiled code starts slower, but reaches peak performance after it runs
-  long enough to apply runtime optimizations.
+* Código compilado JIT inicia mais lentamente, mas atinge desempenho máximo depois que roda
+  tempo suficiente para aplicar otimizações de tempo de execução.
 
 ---
 
-## Web execution
+## Execução web
 
-### Q. What browsers do you support as JavaScript compilation targets?
+### P. Quais navegadores vocês suportam como alvos de compilação JavaScript?
 
-The _production_ web compiler supports the last two major releases of
-the following browsers:
+O compilador web de _produção_ suporta as duas últimas versões principais dos
+seguintes navegadores:
 
 * Google Chrome
 * Microsoft Edge
 * Firefox
 * Apple Safari
 
-The [_development_ JavaScript compiler](/tools/webdev#serve) only
-supports Chrome for debugging.
+O [compilador JavaScript de _desenvolvimento_](/tools/webdev#serve) apenas
+suporta Chrome para depuração.
 
-### Q. Is Dart single-threaded on the web?
+### P. Dart é single-threaded na web?
 
-Somewhat.
-Dart web apps can't use isolates.
-To achieve code concurrency, web apps use [web workers][].
-Web workers lack the ease and efficiency of isolates,
-and have different capabilities and restrictions.
-To learn more, consult
+De certa forma.
+Apps web Dart não podem usar isolates.
+Para alcançar concorrência de código, apps web usam [web workers][].
+Web workers não têm a facilidade e eficiência de isolates,
+e têm diferentes capacidades e restrições.
+Para saber mais, consulte
 [Concurrency on the web](/language/concurrency#concurrency-on-the-web).
 
 [web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
 
-### Q. Will any valid Dart code compile to JavaScript?
+### P. Qualquer código Dart válido será compilado para JavaScript?
 
-Any valid Dart code should compile to JavaScript.
-Some libraries run only on the server or in Flutter.
-Consider the `dart:io` library.
-It provides access to operating system files
-and directories with APIs not available to the browser.
+Qualquer código Dart válido deve compilar para JavaScript.
+Algumas bibliotecas rodam apenas no servidor ou no Flutter.
+Considere a biblioteca `dart:io`.
+Ela fornece acesso a arquivos e
+diretórios do sistema operacional com APIs não disponíveis para o navegador.
 
-### Q. Why does Dart have two ways to compile to JavaScript?
+### P. Por que Dart tem duas formas de compilar para JavaScript?
 
-Both ways use the `webdev` command.
-The `webdev build` command produces minified JavaScript optimized for
-production.
-The `webdev serve` command produces modularized JavaScript optimized for
-debugging.
+Ambas as formas usam o comando `webdev`.
+O comando `webdev build` produz JavaScript minificado otimizado para
+produção.
+O comando `webdev serve` produz JavaScript modularizado otimizado para
+depuração.
 
-To learn more,
-consult the [Dart JavaScript compiler reference](/tools/dart-compile#js)
+Para saber mais,
+consulte a [referência do compilador JavaScript Dart](/tools/dart-compile#js)
 
-### Q. How are floating point numbers handled when compiled to JavaScript?
+### P. Como números de ponto flutuante são tratados quando compilados para JavaScript?
 
-JavaScript has only one number representation: an IEEE-754 double-precision
-floating-point number. This means that any number—integer or floating
-point—is represented as a double. JavaScript has typed data arrays,
-and the mapping from native Dart typed lists to JavaScript typed arrays is trivial.
+JavaScript tem apenas uma representação de número: um número de ponto flutuante
+de dupla precisão IEEE-754. Isso significa que qualquer número—inteiro ou de ponto
+flutuante—é representado como um double. JavaScript tem arrays de dados tipados,
+e o mapeamento de listas tipadas nativas do Dart para arrays tipados JavaScript é trivial.
 
-### Q. How does Dart handle integers when compiling to JavaScript?
+### P. Como Dart lida com inteiros ao compilar para JavaScript?
 
-JavaScript stores all [numbers as doubles][number-js].
-This limits integers to 53-bit precision
-with values ranging from -2<sup>53</sup> to 2<sup>53</sup>
-JavaScript can store integers in this range without loss of accuracy.
-As JavaScript VMs manipulates the internal representation of numbers,
-stay within the small integer (SMI) range.
-In JavaScript, that range falls between -2<sup>31</sup> to 2<sup>31</sup>
-(-2,147,483,647 to 2,147,483,648 including 0).
+JavaScript armazena todos os [números como doubles][number-js].
+Isso limita inteiros a precisão de 53 bits
+com valores variando de -2<sup>53</sup> a 2<sup>53</sup>
+JavaScript pode armazenar inteiros neste intervalo sem perda de precisão.
+Como VMs JavaScript manipulam a representação interna de números,
+permaneça dentro do intervalo small integer (SMI).
+Em JavaScript, esse intervalo fica entre -2<sup>31</sup> a 2<sup>31</sup>
+(-2.147.483.647 a 2.147.483.648 incluindo 0).
 
-### Q. How are typed lists handled when compiled to JavaScript?
+### P. Como listas tipadas são tratadas quando compiladas para JavaScript?
 
-JavaScript offers 32-bit typed arrays compatible with Dart's typed lists.
-This maps as `Float32List` becoming a `Float32Array`.
-The production JavaScript compiler doesn't support 64-bit integers:
-`Int64List` or `Uint64List`. Compiling Dart code with
-either of those lists results in a runtime exception.
+JavaScript oferece arrays tipados de 32 bits compatíveis com listas tipadas do Dart.
+Isso mapeia como `Float32List` se tornando um `Float32Array`.
+O compilador JavaScript de produção não suporta inteiros de 64 bits:
+`Int64List` ou `Uint64List`. Compilar código Dart com
+qualquer uma dessas listas resulta em uma exceção de tempo de execução.
 
 [number-js]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#number_type
 [ppwsize]: https://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
