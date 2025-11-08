@@ -299,7 +299,7 @@ que oculta um membro de superinterface e *não* está anotado com `@redeclare`.
 [`@redeclare`]: {{site.pub-api}}/meta/latest/meta/redeclare-constant.html
 [`annotate_redeclares`]: /tools/linter-rules/annotate_redeclares
 
-## Uso
+## Uso {:#usage}
 
 Para usar um extension type, crie uma instância da mesma forma que você faria com uma classe:
 chamando um construtor:
