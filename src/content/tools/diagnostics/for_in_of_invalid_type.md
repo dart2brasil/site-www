@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: for_in_of_invalid_type
 description: >-
-  Details about the for_in_of_invalid_type
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico for_in_of_invalid_type
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' used in the 'for' loop must implement '{1}'._
+_O tipo '{0}' usado no loop 'for' deve implementar '{1}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when the expression following `in` in
-a for-in loop has a type that isn't a subclass of `Iterable`.
+O analisador produz este diagnóstico quando a expressão seguindo `in` em
+um loop for-in tem um tipo que não é uma subclasse de `Iterable`.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because `m` is a `Map`, and
-`Map` isn't a subclass of `Iterable`:
+O código a seguir produz este diagnóstico porque `m` é um `Map`, e
+`Map` não é uma subclasse de `Iterable`:
 
 ```dart
 void f(Map<String, String> m) {
@@ -27,9 +28,9 @@ void f(Map<String, String> m) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Replace the expression with one that produces an iterable value:
+Substitua a expressão por uma que produza um valor iterável:
 
 ```dart
 void f(Map<String, String> m) {

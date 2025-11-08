@@ -1,31 +1,32 @@
 ---
+ia-translate: true
 title: extension_type_implements_disallowed_type
 description: >-
-  Details about the extension_type_implements_disallowed_type
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico extension_type_implements_disallowed_type
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extension types can't implement '{0}'._
+_Extension types não podem implementar '{0}'._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension type implements a
-type that it isn't allowed to implement.
+O analisador produz este diagnóstico quando um extension type implementa um
+tipo que não é permitido implementar.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because extension types can't
-implement the type `dynamic`:
+O código a seguir produz este diagnóstico porque extension types não podem
+implementar o tipo `dynamic`:
 
 ```dart
 extension type A(int i) implements [!dynamic!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove the disallowed type from the implements clause:
+Remova o tipo não permitido da cláusula implements:
 
 ```dart
 extension type A(int i) {}

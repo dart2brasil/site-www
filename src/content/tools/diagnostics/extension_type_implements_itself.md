@@ -1,30 +1,31 @@
 ---
+ia-translate: true
 title: extension_type_implements_itself
 description: >-
-  Details about the extension_type_implements_itself
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico extension_type_implements_itself
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The extension type can't implement itself._
+_O extension type não pode implementar a si mesmo._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension type implements
-itself, either directly or indirectly.
+O analisador produz este diagnóstico quando um extension type implementa
+a si mesmo, seja diretamente ou indiretamente.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension type `A`
-directly implements itself:
+O código a seguir produz este diagnóstico porque o extension type `A`
+implementa a si mesmo diretamente:
 
 ```dart
 extension type [!A!](int i) implements A {}
 ```
 
-The following code produces this diagnostic because the extension type `A`
-indirectly implements itself (through `B`):
+O código a seguir produz este diagnóstico porque o extension type `A`
+implementa a si mesmo indiretamente (através de `B`):
 
 ```dart
 extension type [!A!](int i) implements B {}
@@ -32,10 +33,10 @@ extension type [!A!](int i) implements B {}
 extension type [!B!](int i) implements A {}
 ```
 
-## Common fixes
+## Correções comuns
 
-Break the cycle by removing a type from the implements clause of at least
-one of the types involved in the cycle:
+Quebre o ciclo removendo um tipo da cláusula implements de pelo menos
+um dos tipos envolvidos no ciclo:
 
 ```dart
 extension type A(int i) implements B {}

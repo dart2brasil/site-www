@@ -1,40 +1,41 @@
 ---
+ia-translate: true
 title: extension_type_implements_not_supertype
 description: >-
-  Details about the extension_type_implements_not_supertype
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico extension_type_implements_not_supertype
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is not a supertype of '{1}', the representation type._
+_'{0}' não é um supertipo de '{1}', o tipo de representação._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension type implements a
-type that isn't a supertype of the representation type.
+O analisador produz este diagnóstico quando um extension type implementa um
+tipo que não é um supertipo do tipo de representação.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the extension type `A`
-implements `String`, but `String` isn't a supertype of the representation
-type `int`:
+O código a seguir produz este diagnóstico porque o extension type `A`
+implementa `String`, mas `String` não é um supertipo do tipo de representação
+`int`:
 
 ```dart
 extension type A(int i) implements [!String!] {}
 ```
 
-## Common fixes
+## Correções comuns
 
-If the representation type is correct, then remove or replace the type in
-the implements clause:
+Se o tipo de representação está correto, então remova ou substitua o tipo na
+cláusula implements:
 
 ```dart
 extension type A(int i) {}
 ```
 
-If the representation type isn't correct, then replace it with the correct
-type:
+Se o tipo de representação não está correto, então substitua-o pelo tipo
+correto:
 
 ```dart
 extension type A(String s) implements String {}

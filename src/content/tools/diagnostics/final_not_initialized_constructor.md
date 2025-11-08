@@ -1,29 +1,30 @@
 ---
+ia-translate: true
 title: final_not_initialized_constructor
 description: >-
-  Details about the final_not_initialized_constructor
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico final_not_initialized_constructor
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_All final variables must be initialized, but '{0}' and '{1}' aren't._
+_Todas as variáveis final devem ser inicializadas, mas '{0}' e '{1}' não estão._
 
-_All final variables must be initialized, but '{0}' isn't._
+_Todas as variáveis final devem ser inicializadas, mas '{0}' não está._
 
-_All final variables must be initialized, but '{0}', '{1}', and {2} others aren't._
+_Todas as variáveis final devem ser inicializadas, mas '{0}', '{1}' e {2} outras não estão._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a class defines one or more
-final instance fields without initializers and has at least one constructor
-that doesn't initialize those fields. All final instance fields must be
-initialized when the instance is created, either by the field's initializer
-or by the constructor.
+O analisador produz este diagnóstico quando uma classe define um ou mais
+campos de instância final sem inicializadores e tem pelo menos um construtor
+que não inicializa esses campos. Todos os campos de instância final devem ser
+inicializados quando a instância é criada, seja pelo inicializador do campo
+ou pelo construtor.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic:
+O código a seguir produz este diagnóstico:
 
 ```dart
 class C {
@@ -33,10 +34,10 @@ class C {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the value should be passed in to the constructor directly, then use an
-initializing formal parameter to initialize the field `value`:
+Se o valor deve ser passado diretamente ao construtor, então use um
+parâmetro formal inicializador para inicializar o campo `value`:
 
 ```dart
 class C {
@@ -46,8 +47,8 @@ class C {
 }
 ```
 
-If the value should be computed indirectly from a value provided by the
-caller, then add a parameter and include an initializer:
+Se o valor deve ser computado indiretamente a partir de um valor fornecido pelo
+chamador, então adicione um parâmetro e inclua um inicializador:
 
 ```dart
 class C {
@@ -57,9 +58,9 @@ class C {
 }
 ```
 
-If the value of the field doesn't depend on values that can be passed to
-the constructor, then add an initializer for the field as part of the field
-declaration:
+Se o valor do campo não depende de valores que podem ser passados ao
+construtor, então adicione um inicializador para o campo como parte da declaração
+do campo:
 
 ```dart
 class C {
@@ -69,10 +70,10 @@ class C {
 }
 ```
 
-If the value of the field doesn't depend on values that can be passed to
-the constructor but different constructors need to initialize it to
-different values, then add an initializer for the field in the initializer
-list:
+Se o valor do campo não depende de valores que podem ser passados ao
+construtor mas construtores diferentes precisam inicializá-lo com
+valores diferentes, então adicione um inicializador para o campo na lista de
+inicializadores:
 
 ```dart
 class C {
@@ -84,8 +85,8 @@ class C {
 }
 ```
 
-However, if the value is the same for all instances, then consider using a
-static field instead of an instance field:
+No entanto, se o valor é o mesmo para todas as instâncias, então considere usar um
+campo static ao invés de um campo de instância:
 
 ```dart
 class C {

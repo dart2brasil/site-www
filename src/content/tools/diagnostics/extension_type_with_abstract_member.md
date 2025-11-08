@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: extension_type_with_abstract_member
 description: >-
-  Details about the extension_type_with_abstract_member
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico extension_type_with_abstract_member
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' must have a method body because '{1}' is an extension type._
+_'{0}' deve ter um corpo de método porque '{1}' é um extension type._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an extension type declares an
-abstract member. Because extension type member references are resolved
-statically, an abstract member in an extension type could never be
-executed.
+O analisador produz este diagnóstico quando um extension type declara um
+membro abstrato. Como referências a membros de extension type são resolvidas
+estaticamente, um membro abstrato em um extension type nunca poderia ser
+executado.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the method `m` in the
-extension type `E` is abstract:
+O código a seguir produz este diagnóstico porque o método `m` no
+extension type `E` é abstrato:
 
 ```dart
 extension type E(String s) {
@@ -27,10 +28,10 @@ extension type E(String s) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-If the member is intended to be executable, then provide an implementation
-of the member:
+Se o membro deve ser executável, então forneça uma implementação
+do membro:
 
 ```dart
 extension type E(String s) {
@@ -38,7 +39,7 @@ extension type E(String s) {
 }
 ```
 
-If the member isn't intended to be executable, then remove it:
+Se o membro não deve ser executável, então remova-o:
 
 ```dart
 extension type E(String s) {}
