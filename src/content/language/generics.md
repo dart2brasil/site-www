@@ -221,7 +221,7 @@ int useIt = compareAndOffset(A(), A());
 O F-bound `T extends Comparable<T>` significa que `T` deve ser comparável a si mesmo.
 Então, `A` só pode ser comparado a outras instâncias do mesmo tipo.
 
-## Usando métodos genéricos
+## Usando métodos genéricos {:#using-generic-methods}
 
 Métodos e funções também permitem argumentos de tipo:
 
