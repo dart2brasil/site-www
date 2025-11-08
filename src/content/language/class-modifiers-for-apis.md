@@ -1,8 +1,9 @@
 ---
-title: Class modifiers for API maintainers
+ia-translate: true
+title: Modificadores de classe para mantenedores de API
 description: >-
- How to use the class modifiers added in Dart 3.0
- to make your package's API more robust and maintainable.
+ Como usar os modificadores de classe adicionados no Dart 3.0
+ para tornar a API do seu pacote mais robusta e fácil de manter.
 prevpage:
   url: /language/class-modifiers
   title: Class modifiers
@@ -11,41 +12,41 @@ nextpage:
   title: Class modifiers reference
 ---
 
-Dart 3.0 adds a few [new modifiers][class modifiers]
-that you can place on class and [mixin declarations][mixin].
-If you are the author of a library package,
-these modifiers give you more control over what users are allowed to do
-with the types that your package exports.
-This can make it easier to evolve your package,
-and easier to know if a change to your code may break users.
+O Dart 3.0 adiciona alguns [novos modificadores][class modifiers]
+que você pode colocar em declarações de classe e [mixin][mixin].
+Se você é o autor de um pacote de biblioteca,
+esses modificadores fornecem mais controle sobre o que os usuários podem fazer
+com os tipos que seu pacote exporta.
+Isso pode facilitar a evolução do seu pacote
+e facilitar saber se uma mudança no seu código pode quebrar os usuários.
 
 [class modifiers]: /language/class-modifiers
 [mixin]: /language/mixins
 
-Dart 3.0 also includes a [breaking change](/resources/dart-3-migration#mixin)
-around using classes as mixins.
-This change might not break *your* class,
-but it could break *users* of your class.
+O Dart 3.0 também inclui uma [breaking change](/resources/dart-3-migration#mixin)
+em relação ao uso de classes como mixins.
+Essa mudança pode não quebrar *sua* classe,
+mas pode quebrar *usuários* da sua classe.
 
-This guide walks you through these changes
-so you know how to use the new modifiers,
-and how they affect users of your libraries.
+Este guia aborda essas mudanças
+para que você saiba como usar os novos modificadores
+e como eles afetam os usuários de suas bibliotecas.
 
-## The `mixin` modifier on classes
+## O modificador `mixin` em classes
 
-The most important modifier to be aware of is `mixin`.
-Language versions prior to Dart 3.0 allow any class to be used as a mixin
-in another class's `with` clause, _UNLESS_ the class:
+O modificador mais importante a ser observado é `mixin`.
+Versões da linguagem anteriores ao Dart 3.0 permitem que qualquer classe seja usada como mixin
+em uma cláusula `with` de outra classe, _A MENOS QUE_ a classe:
 
-*   Declares any non-factory constructors.
-*   Extends any class other than `Object`.
+*   Declare qualquer construtor não-factory.
+*   Estenda qualquer classe diferente de `Object`.
 
-This makes it easy to accidentally break someone else's code,
-by adding a constructor or `extends` clause to a class
-without realizing that others are using it in a `with` clause.
+Isso facilita quebrar acidentalmente o código de outra pessoa,
+ao adicionar um construtor ou cláusula `extends` a uma classe
+sem perceber que outros a estão usando em uma cláusula `with`.
 
-Dart 3.0 no longer allows classes to be used as mixins by default.
-Instead, you must explicitly opt-in to that behavior by declaring a `mixin class`:
+O Dart 3.0 não permite mais que classes sejam usadas como mixins por padrão.
+Em vez disso, você deve explicitamente optar por esse comportamento declarando uma `mixin class`:
 
 ```dart
 mixin class Both {}
@@ -54,111 +55,111 @@ class UseAsMixin with Both {}
 class UseAsSuperclass extends Both {}
 ```
 
-If you update your package to Dart 3.0 and don't change any of your code,
-you may not see any errors.
-But you may inadvertently break users of your package
-if they were using your classes as mixins.
+Se você atualizar seu pacote para o Dart 3.0 e não mudar nada no seu código,
+você pode não ver nenhum erro.
+Mas você pode inadvertidamente quebrar usuários do seu pacote
+se eles estavam usando suas classes como mixins.
 
-### Migrating classes as mixins
+### Migrando classes como mixins
 
-If the class has a non-factory constructor, an `extends` clause,
-or a `with` clause, then it already can't be used as a mixin.
-Behavior won't change with Dart 3.0; 
-there's nothing to worry about and nothing you need to do.
+Se a classe tem um construtor não-factory, uma cláusula `extends`
+ou uma cláusula `with`, então ela já não pode ser usada como mixin.
+O comportamento não mudará com o Dart 3.0;
+não há nada com que se preocupar e nada que você precise fazer.
 
-In practice, this describes about 90% of existing classes.
-For the remaining classes that can be used as mixins,
-you have to decide what you want to support.
+Na prática, isso descreve cerca de 90% das classes existentes.
+Para as classes restantes que podem ser usadas como mixins,
+você precisa decidir o que deseja suportar.
 
-Here are a few questions to help decide. The first is pragmatic:
+Aqui estão algumas perguntas para ajudar a decidir. A primeira é pragmática:
 
-*   **Do you want to risk breaking any users?** If the answer is a hard "no",
-    then place `mixin` before any and all classes that
-    [could be used as a mixin](#the-mixin-modifier-on-classes).
-    This exactly preserves the existing behavior of your API.
+*   **Você quer arriscar quebrar algum usuário?** Se a resposta for um "não" firme,
+    então coloque `mixin` antes de qualquer e todas as classes que
+    [poderiam ser usadas como mixin](#o-modificador-mixin-em-classes).
+    Isso preserva exatamente o comportamento existente da sua API.
 
-On the other hand, if you want to take this opportunity to rethink the
-affordances your API offers, then you may want to *not* turn it into a `mixin
-class`. Consider these two design questions:
+Por outro lado, se você quiser aproveitar essa oportunidade para repensar as
+affordances que sua API oferece, então você pode querer *não* transformá-la em uma `mixin
+class`. Considere estas duas questões de design:
 
-*   **Do you want users to be able to construct instances of it directly?**
-    In other words, is the class deliberately not abstract?
+*   **Você quer que os usuários possam construir instâncias dela diretamente?**
+    Em outras palavras, a classe é deliberadamente não abstract?
 
-*   **Do you *want* people to be able to use the declaration as a mixin?**
-    In other words, do you want them to be able to use it in `with` clauses?
+*   **Você *quer* que as pessoas possam usar a declaração como mixin?**
+    Em outras palavras, você quer que elas possam usá-la em cláusulas `with`?
 
-If the answer to both is "yes", then make it a mixin class. If the answer to
-the second is "no", then just leave it as a class. If the answer to the first
-is "no" and the second is "yes", then change it from a class to a mixin
-declaration.
+Se a resposta para ambas for "sim", então faça dela uma mixin class. Se a resposta para
+a segunda for "não", então apenas deixe-a como uma classe. Se a resposta para a primeira
+for "não" e a segunda for "sim", então mude-a de uma classe para uma declaração
+mixin.
 
-The last two options, leaving it a class or turning it into a pure mixin,
-are breaking API changes. You'll want to bump the major version of your package
-if you do this.
+As últimas duas opções, deixá-la como classe ou transformá-la em um mixin puro,
+são breaking changes na API. Você precisará incrementar a versão principal do seu pacote
+se fizer isso.
 
-## Other opt-in modifiers
+## Outros modificadores opt-in
 
-Handling classes as mixins is the only critical change in Dart 3.0
-that affects the API of your package. Once you've gotten this far,
-you can stop if you don't want to make other changes
-to what your package allows users to do.
+Lidar com classes como mixins é a única mudança crítica no Dart 3.0
+que afeta a API do seu pacote. Depois de chegar até aqui,
+você pode parar se não quiser fazer outras mudanças
+no que seu pacote permite que os usuários façam.
 
-Note that if you do continue and use any of the modifiers described below,
-it is potentially a breaking change to your package's API which necessitates
-a major version increment.
+Observe que se você continuar e usar qualquer um dos modificadores descritos abaixo,
+isso é potencialmente uma breaking change na API do seu pacote, o que requer
+um incremento de versão principal.
 
-## The `interface` modifier
+## O modificador `interface`
 
-Dart doesn't have a separate syntax for declaring pure interfaces.
-Instead, you declare an abstract class that happens to contain only
-abstract methods.
-When a user sees that class in your package's API,
-they may not know if it contains code they can reuse by extending the class,
-or whether it is instead meant to be used as an interface.
+O Dart não tem uma sintaxe separada para declarar interfaces puras.
+Em vez disso, você declara uma classe abstract que contém apenas
+métodos abstract.
+Quando um usuário vê essa classe na API do seu pacote,
+ele pode não saber se ela contém código que pode reutilizar estendendo a classe,
+ou se é destinada a ser usada como uma interface.
 
-You can clarify that by putting the [`interface`](/language/class-modifiers#interface)
-modifier on the class.
-That allows the class to be used in an `implements` clause,
-but prevents it from being used in `extends`.
+Você pode esclarecer isso colocando o modificador [`interface`](/language/class-modifiers#interface)
+na classe.
+Isso permite que a classe seja usada em uma cláusula `implements`,
+mas impede que seja usada em `extends`.
 
-Even when the class *does* have non-abstract methods, you may want to prevent
-users from extending it.
-Inheritance is one of the most powerful kinds of coupling in software,
-because it enables code reuse.
-But that coupling is also [dangerous and fragile][].
-When inheritance crosses package boundaries,
-it can be hard to evolve the superclass without breaking subclasses.
+Mesmo quando a classe *tem* métodos não-abstract, você pode querer impedir que
+usuários a estendam.
+Herança é um dos tipos mais poderosos de acoplamento em software,
+porque permite a reutilização de código.
+Mas esse acoplamento também é [perigoso e frágil][dangerous and fragile].
+Quando a herança atravessa limites de pacotes,
+pode ser difícil evoluir a superclasse sem quebrar as subclasses.
 
 [dangerous and fragile]: https://en.wikipedia.org/wiki/Fragile_base_class
 
-Marking the class `interface` lets users construct it (unless it's [also marked
-`abstract`](/language/class-modifiers#abstract-interface))
-and implement the class's interface,
-but prevents them from reusing any of its code.
+Marcar a classe como `interface` permite que os usuários a construam (a menos que ela [também seja marcada
+como `abstract`](/language/class-modifiers#abstract-interface))
+e implementem a interface da classe,
+mas impede que reutilizem qualquer código dela.
 
-When a class is marked `interface`, the restriction can be ignored within
-the library where the class is declared.
-Inside the library, you're free to extend it since it's all your code
-and presumably you know what you're doing.
-The restriction applies to other packages,
-and even other libraries within your own package.
+Quando uma classe é marcada como `interface`, a restrição pode ser ignorada dentro
+da biblioteca onde a classe é declarada.
+Dentro da biblioteca, você é livre para estendê-la, pois é todo o seu código
+e presumivelmente você sabe o que está fazendo.
+A restrição se aplica a outros pacotes
+e até a outras bibliotecas dentro do seu próprio pacote.
 
-## The `base` modifier
+## O modificador `base`
 
-The [`base`](/language/class-modifiers#base)
-modifier is somewhat the opposite of `interface`.
-It allows you to use the class in an `extends` clause,
-or use a mixin or mixin class in a `with` clause.
-But, it disallows code outside of the class's library
-from using the class or mixin in an `implements` clause.
+O modificador [`base`](/language/class-modifiers#base)
+é de certa forma o oposto de `interface`.
+Ele permite que você use a classe em uma cláusula `extends`,
+ou use um mixin ou mixin class em uma cláusula `with`.
+Mas impede que código fora da biblioteca da classe
+use a classe ou mixin em uma cláusula `implements`.
 
-This ensures that every object that is an instance
-of your class or mixin's interface inherits your actual implementation.
-In particular, this means that every instance will include
-all of the private members your class or mixin declares.
-This can help prevent runtime errors that might otherwise occur.
+Isso garante que cada objeto que seja uma instância
+da interface da sua classe ou mixin herde sua implementação real.
+Em particular, isso significa que cada instância incluirá
+todos os membros privados que sua classe ou mixin declara.
+Isso pode ajudar a prevenir erros de runtime que poderiam ocorrer de outra forma.
 
-Consider this library:
+Considere esta biblioteca:
 
 ```dart title="a.dart"
 class A {
@@ -172,8 +173,8 @@ void callPrivateMethod(A a) {
 }
 ```
 
-This code seems fine on its own,
-but there's nothing preventing a user from creating another library like this:
+Este código parece bom por si só,
+mas não há nada impedindo um usuário de criar outra biblioteca como esta:
 
 ```dart title="b.dart"
 import 'a.dart';
@@ -187,56 +188,56 @@ main() {
 }
 ```
 
-Adding the `base` modifier to the class can help prevent these runtime errors.
-As with `interface`, you can ignore this restriction
-in the same library where the `base` class or mixin is declared.
-Then subclasses in the same library
-will be reminded to implement the private methods.
-But note that the next section *does* apply:
+Adicionar o modificador `base` à classe pode ajudar a prevenir esses erros de runtime.
+Assim como com `interface`, você pode ignorar essa restrição
+na mesma biblioteca onde a classe ou mixin `base` é declarado.
+Então as subclasses na mesma biblioteca
+serão lembradas de implementar os métodos privados.
+Mas observe que a próxima seção *se aplica*:
 
-### Base transitivity
+### Transitividade do base
 
-The goal of marking a class `base` is to ensure that
-every instance of that type concretely inherits from it.
-To maintain this, the base restriction is "contagious".
-Every subtype of a type marked `base` -- *direct or indirect* --
-must also prevent being implemented.
-That means it must be marked `base`
-(or `final` or `sealed`, which we'll get to next).
+O objetivo de marcar uma classe como `base` é garantir que
+cada instância desse tipo concretamente herde dela.
+Para manter isso, a restrição base é "contagiosa".
+Cada subtipo de um tipo marcado como `base` -- *direto ou indireto* --
+também deve impedir ser implementado.
+Isso significa que deve ser marcado como `base`
+(ou `final` ou `sealed`, que veremos a seguir).
 
-Applying `base` to a type requires some care, then.
-It affects not just what users can do with your class or mixin,
-but also the affordances *their* subclasses can offer.
-Once you've put `base` on a type, the whole hierarchy under it
-is prohibited from being implemented.
+Aplicar `base` a um tipo requer algum cuidado, então.
+Isso afeta não apenas o que os usuários podem fazer com sua classe ou mixin,
+mas também as affordances que *suas* subclasses podem oferecer.
+Uma vez que você coloque `base` em um tipo, toda a hierarquia abaixo dele
+é proibida de ser implementada.
 
-That sounds intense, but it's how most other programming languages
-have always worked.
-Most don't have implicit interfaces at all,
-so when you declare a class in Java, C#, or other languages,
-you effectively have the same constraint.
+Isso parece intenso, mas é como a maioria das outras linguagens de programação
+sempre funcionou.
+A maioria não tem interfaces implícitas,
+então quando você declara uma classe em Java, C# ou outras linguagens,
+você efetivamente tem a mesma restrição.
 
-## The `final` modifier
+## O modificador `final`
 
-If you want all of the restrictions of both `interface` and `base`,
-you can mark a class or mixin class [`final`](/language/class-modifiers#final).
-This prevents anyone outside of your library from creating
-any kind of subtype of it:
-no using it in `implements`, `extends`, `with`, or `on` clauses.
+Se você quiser todas as restrições de `interface` e `base`,
+você pode marcar uma classe ou mixin class como [`final`](/language/class-modifiers#final).
+Isso impede que qualquer pessoa fora da sua biblioteca crie
+qualquer tipo de subtipo dela:
+não é permitido usá-la em cláusulas `implements`, `extends`, `with` ou `on`.
 
-This is the most restrictive for users of the class.
-All they can do is construct it (unless it's marked `abstract`).
-In return, you have the fewest restrictions as the class maintainer.
-You can add new methods, turn constructors into factory constructors, etc.
-without worrying about breaking any downstream users.
+Essa é a opção mais restritiva para os usuários da classe.
+Tudo o que eles podem fazer é construí-la (a menos que seja marcada como `abstract`).
+Em troca, você tem as menores restrições como mantenedor da classe.
+Você pode adicionar novos métodos, transformar construtores em factory constructors, etc.
+sem se preocupar em quebrar usuários downstream.
 
 <a id="the-sealed-modifer"></a>
-## The `sealed` modifier
+## O modificador `sealed`
 
-The last modifier, [`sealed`](/language/class-modifiers#sealed), is special.
-It exists primarily to enable [exhaustiveness checking][] in pattern matching.
-If a switch has cases for every direct subtype of a type marked `sealed`,
-then the compiler knows the switch is exhaustive.
+O último modificador, [`sealed`](/language/class-modifiers#sealed), é especial.
+Ele existe principalmente para habilitar a [verificação de exaustividade][exhaustiveness checking] na correspondência de padrões.
+Se um switch tem cases para cada subtipo direto de um tipo marcado como `sealed`,
+então o compilador sabe que o switch é exaustivo.
 
 [exhaustiveness checking]: /language/branches#exhaustiveness-checking
 
@@ -257,27 +258,27 @@ String lastName(Amigo amigo) => switch (amigo) {
 };
 ```
 
-This switch has a case for each of the subtypes of `Amigo`.
-The compiler knows that every instance of `Amigo` must be an instance of one
-of those subtypes, so it knows the switch is safely exhaustive and doesn't
-require any final default case.
+Este switch tem um case para cada um dos subtipos de `Amigo`.
+O compilador sabe que cada instância de `Amigo` deve ser uma instância de um
+desses subtipos, então ele sabe que o switch é seguramente exaustivo e não
+requer nenhum case default final.
 
-For this to be sound, the compiler enforces two restrictions:
+Para que isso seja sólido, o compilador impõe duas restrições:
 
-1.  The sealed class can't itself be directly constructible.
-    Otherwise, you could have an instance of `Amigo` that isn't
-    an instance of *any* of the subtypes.
-    So every `sealed` class is implicitly `abstract` too.
+1.  A classe sealed não pode ser diretamente construível.
+    Caso contrário, você poderia ter uma instância de `Amigo` que não é
+    uma instância de *nenhum* dos subtipos.
+    Então toda classe `sealed` é implicitamente `abstract` também.
 
-2.  Every direct subtype of the sealed type must be in the same library
-    where the sealed type is declared.
-    This way, the compiler can find them all. It knows that there aren't
-    other hidden subtypes floating around that would not match any of the cases.
+2.  Cada subtipo direto do tipo sealed deve estar na mesma biblioteca
+    onde o tipo sealed é declarado.
+    Dessa forma, o compilador pode encontrar todos eles. Ele sabe que não há
+    outros subtipos ocultos flutuando por aí que não corresponderiam a nenhum dos cases.
 
-The second restriction is similar to `final`.
-Like `final`, it means that a class marked `sealed` can't be directly
-extended, implemented, or mixed in outside of the library where it's declared.
-But, unlike `base` and `final`, there is no *transitive* restriction:
+A segunda restrição é semelhante a `final`.
+Como `final`, isso significa que uma classe marcada como `sealed` não pode ser diretamente
+estendida, implementada ou misturada fora da biblioteca onde é declarada.
+Mas, ao contrário de `base` e `final`, não há restrição *transitiva*:
 
 ```dart title="amigo.dart"
 sealed class Amigo {}
@@ -295,78 +296,78 @@ class OtherLucky extends Lucky {}
 class OtherDusty implements Dusty {}
 ```
 
-Of course, if you *want* the subtypes of your sealed type
-to be restricted as well, you can get that by marking them
-using `interface`, `base`, `final`, or `sealed`.
+É claro que, se você *quiser* que os subtipos do seu tipo sealed
+sejam restritos também, você pode conseguir isso marcando-os
+usando `interface`, `base`, `final` ou `sealed`.
 
 ### `sealed` versus `final`
 
-If you have a class that you don't want users to be able to directly subtype,
-when should you use `sealed` versus `final`?
-A couple of simple rules:
+Se você tem uma classe que não quer que os usuários possam subtipificar diretamente,
+quando você deve usar `sealed` versus `final`?
+Algumas regras simples:
 
-*   If you want users to be able to directly construct instances of the class,
-    then it *can't* use `sealed` since sealed types are implicitly abstract.
+*   Se você quiser que os usuários possam construir instâncias da classe diretamente,
+    então ela *não pode* usar `sealed`, pois tipos sealed são implicitamente abstract.
 
-*   If the class has no subtypes in your library, then there's no point in using
-    `sealed` since you get no exhaustiveness checking benefits.
+*   Se a classe não tem subtipos na sua biblioteca, então não há sentido em usar
+    `sealed`, pois você não obtém benefícios de verificação de exaustividade.
 
-Otherwise, if the class does have some subtypes that you define,
-then `sealed` is likely what you want.
-If users see that the class has a few subtypes, it's handy to be able
-to handle each of them separately as switch cases
-and have the compiler know that the entire type is covered.
+Caso contrário, se a classe tiver alguns subtipos que você define,
+então `sealed` é provavelmente o que você quer.
+Se os usuários virem que a classe tem alguns subtipos, é útil poder
+lidar com cada um deles separadamente como cases de switch
+e ter o compilador sabendo que o tipo inteiro está coberto.
 
-Using `sealed` does mean that if you later add another subtype to the library,
-it's a breaking API change.
-When a new subtype appears,
-all of those existing switches become non-exhaustive
-since they don't handle the new type.
-It's exactly like adding a new value to an enum.
+Usar `sealed` significa que se você adicionar outro subtipo à biblioteca posteriormente,
+será uma breaking API change.
+Quando um novo subtipo aparece,
+todos aqueles switches existentes tornam-se não exaustivos
+já que não lidam com o novo tipo.
+É exatamente como adicionar um novo valor a um enum.
 
-Those non-exhaustive switch compile errors are *useful* to users
-because they draw the user's attention to places in their code
-where they'll need to handle the new type.
+Esses erros de compilação de switch não exaustivo são *úteis* aos usuários
+porque chamam a atenção do usuário para lugares no código
+onde eles precisarão lidar com o novo tipo.
 
-But it does mean that whenever you add a new subtype, it's a breaking change.
-If you want the freedom to add new subtypes in a non-breaking way,
-then it's better to mark the supertype using `final` instead of `sealed`.
-That means that when a user switches on a value of that supertype,
-even if they have cases for all of the subtypes,
-the compiler will force them to add another default case.
-That default case will then be what is executed if you add more subtypes later.
+Mas isso significa que sempre que você adicionar um novo subtipo, é uma breaking change.
+Se você quiser a liberdade de adicionar novos subtipos de forma não destrutiva,
+então é melhor marcar o supertipo usando `final` em vez de `sealed`.
+Isso significa que quando um usuário faz switch em um valor desse supertipo,
+mesmo que ele tenha cases para todos os subtipos,
+o compilador os forçará a adicionar outro case default.
+Esse case default será então executado se você adicionar mais subtipos posteriormente.
 
-## Summary
+## Resumo
 
-As an API designer,
-these new modifiers give you control over how users work with your code,
-and conversely how you are able to evolve your code without breaking theirs.
+Como designer de API,
+esses novos modificadores fornecem controle sobre como os usuários trabalham com seu código
+e, inversamente, como você é capaz de evoluir seu código sem quebrar o deles.
 
-But these options carry complexity with them:
-you now have more choices to make as an API designer.
-Also, since these features are new,
-we still don't know what the best practices will be.
-Every language's ecosystem is different and has different needs.
+Mas essas opções trazem complexidade consigo:
+você agora tem mais escolhas a fazer como designer de API.
+Além disso, como esses recursos são novos,
+ainda não sabemos quais serão as melhores práticas.
+O ecossistema de cada linguagem é diferente e tem necessidades diferentes.
 
-Fortunately, you don't need to figure it out all at once.
-We chose the defaults deliberately so that even if you do nothing,
-your classes mostly have the same affordances they had before 3.0.
-If you just want to keep your API the way it was,
-put `mixin` on the classes that already supported that, and you're done.
+Felizmente, você não precisa descobrir tudo de uma vez.
+Escolhemos os padrões deliberadamente para que, mesmo se você não fizer nada,
+suas classes tenham em grande parte as mesmas affordances que tinham antes da 3.0.
+Se você apenas quiser manter sua API como era,
+coloque `mixin` nas classes que já suportavam isso e pronto.
 
-Over time, as you get a sense of where you want finer control,
-you can consider applying some of the other modifiers:
+Com o tempo, conforme você percebe onde quer um controle mais fino,
+você pode considerar aplicar alguns dos outros modificadores:
 
-*   Use `interface` to prevent users from reusing your class's code
-    while allowing them to re-implement its interface.
+*   Use `interface` para impedir que os usuários reutilizem o código da sua classe
+    enquanto permitem que reimplementem sua interface.
 
-*   Use `base` to require users to reuse your class's code
-    and ensure every instance of your class's type is an instance
-    of that actual class or a subclass.
+*   Use `base` para exigir que os usuários reutilizem o código da sua classe
+    e garantir que cada instância do tipo da sua classe seja uma instância
+    dessa classe real ou de uma subclasse.
 
-*   Use `final` to completely prevent a class from being extended.
+*   Use `final` para impedir completamente que uma classe seja estendida.
 
-*   Use `sealed` to opt in to exhaustiveness checking on a family of subtypes.
+*   Use `sealed` para optar pela verificação de exaustividade em uma família de subtipos.
 
-When you do, increment the major version when publishing your package,
-since these modifiers all imply restrictions that are breaking changes.
+Quando você fizer isso, incremente a versão principal ao publicar seu pacote,
+já que esses modificadores implicam restrições que são breaking changes.
