@@ -60,7 +60,6 @@ List<MemoryPage> get _lintMemoryPages {
         ),
         initialData: {
           'page': <String, Object?>{
-            'ia-translate': false,
             'title': lint.name,
             'underscore_breaker_titles': true,
             'description': 'Learn about the ${lint.name} linter rule.',
@@ -221,7 +220,6 @@ MemoryPage get _allLinterRulesPage {
     path: 'tools/linter-rules/all.md',
     initialData: const {
       'page': <String, Object?>{
-        'ia-translate': false,
         'title': 'All linter rules',
         'description':
             'Auto-generated configuration enabling all linter rules.',
