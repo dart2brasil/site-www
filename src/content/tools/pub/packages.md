@@ -35,7 +35,7 @@ Para usar um pacote, faça o seguinte:
 * Use [`dart pub get`][get] para recuperar as dependências do seu pacote.
 * Se o seu código Dart depende de uma biblioteca no pacote, importe a biblioteca.
 
-## Criando um pubspec
+## Criando um pubspec {:#creating-a-pubspec}
 
 O pubspec é um arquivo chamado `pubspec.yaml`
 que fica no diretório principal da sua aplicação.
@@ -135,7 +135,7 @@ import 'package:transmogrify/parser.dart';
 ```
 
 
-## Atualizando uma dependência
+## Atualizando uma dependência {:#upgrading-a-dependency}
 
 Na primeira vez que você obtém uma nova dependência para o seu pacote,
 o pub baixa a versão mais recente que seja compatível com
@@ -180,7 +180,7 @@ devido a restrições de versão conflitantes no pubspec.
 Para identificar pacotes desatualizados que requerem edição do pubspec,
 use [`dart pub outdated`][outdated].
 
-## Obter dependências para produção
+## Obter dependências para produção {:#get-dependencies-for-production}
 
 Em algumas situações, `dart pub get` não recupera
 as versões exatas de pacotes travadas no arquivo `pubspec.lock`:
