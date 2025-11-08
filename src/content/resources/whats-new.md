@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: What's new
 description: A list of what's new on dart.dev and related sites.
 lastVerified: 2025-08-08

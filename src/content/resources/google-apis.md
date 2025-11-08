@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Using Google APIs
 shortTitle: Google APIs
 description: Your Dart apps can use Firebase and Google client APIs.
