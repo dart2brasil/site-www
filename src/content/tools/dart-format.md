@@ -19,9 +19,9 @@ forneça uma lista de caminhos para os arquivos ou diretórios desejados.
 
 ### Especificar um caminho {:#specify-one-path}
 
-Provide the path to one file or directory.
-If you pass a directory path,
-`dart format` recurses into its subdirectories as well.
+Forneça o caminho para um arquivo ou diretório.
+Se você passar o caminho de um diretório,
+o `dart format` percorre recursivamente seus subdiretórios também.
 
 **Exemplo:** Para formatar todos os arquivos Dart no diretório atual ou abaixo dele:
 
@@ -67,49 +67,49 @@ para que eles possam acionar outra ação em resposta ao código de saída.
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
-## What changes?
+## Quais alterações são feitas? {:#what-changes}
 
-`dart format` makes the following formatting changes:
+O `dart format` faz as seguintes alterações de formatação:
 
-* Removes whitespace.
-* Wraps every line to 80 characters long or shorter.
-* Adds trailing commas to any argument or parameter list
-that splits across multiple lines, and removes them from ones that don't.
-* Might move comments before or after a comma.
+* Remove whitespace.
+* Quebra cada linha em 80 caracteres ou menos.
+* Adiciona trailing commas a qualquer lista de argumentos ou parâmetros
+que se divide em várias linhas, e os remove daquelas que não se dividem.
+* Pode mover comentários antes ou depois de uma vírgula.
 
-To learn more about best practices for writing and styling Dart code,
-check out the [Dart style guide][].
+Para saber mais sobre as melhores práticas para escrever e estilizar código Dart,
+confira o [guia de estilo Dart][Dart style guide].
 
-### Configuring formatter page width
+### Configurando a largura de página do formatter {:#configuring-formatter-page-width}
 
-When you run `dart format`, the formatter defaults to
-80 character line length or shorter. 
-If you'd like to configure the line length for your project,
-you can add a top-level `formatter` section to the
-[`analysis_options.yaml`][] file, like so:
+Quando você executa o `dart format`, o formatter usa por padrão
+o comprimento de linha de 80 caracteres ou menos.
+Se você quiser configurar o comprimento de linha para seu projeto,
+pode adicionar uma seção `formatter` no nível superior do
+arquivo [`analysis_options.yaml`][], assim:
 
 ```yaml title="analysis_options.yaml"
 formatter:
   page_width: 123
 ```
 
-With the analysis options file typically at the root,
-the configured line length will apply to everything in the package.
+Com o arquivo de opções de análise normalmente na raiz,
+o comprimento de linha configurado se aplicará a tudo no pacote.
 
-You can also configure individual files' line length,
-overriding the analysis options file,
-with a marker comment at the top of the file before any other code:
+Você também pode configurar o comprimento de linha de arquivos individuais,
+sobrescrevendo o arquivo de opções de análise,
+com um comentário marcador no topo do arquivo antes de qualquer outro código:
 
 ```dart
 // dart format width=123
 ```
 
 :::version-note
-Configurable page width requires
-a [language version][] of at least 3.7.
+A largura de página configurável requer
+uma [versão da linguagem][language version] de pelo menos 3.7.
 :::
 
-## Learn more
+## Saiba mais {:#learn-more}
 
 Para saber mais sobre opções adicionais de linha de comando,
 use o comando `dart help` ou consulte a documentação do
@@ -119,7 +119,7 @@ use o comando `dart help` ou consulte a documentação do
 $ dart help format
 ```
 
-Check out the [formatter FAQ][] for more context behind formatting decisions.
+Confira o [FAQ do formatter][formatter FAQ] para mais contexto sobre as decisões de formatação.
 
 [Dart style guide]: /effective-dart/style
 [dart_style]: {{site.pub-pkg}}/dart_style
