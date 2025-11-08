@@ -1,8 +1,7 @@
 ---
 ia-translate: true
 title: "Referência de Modificadores de Classe"
-description: >-
-  As combinações permitidas e não permitidas de modificadores de classe.
+description: "As combinações permitidas e não permitidas de modificadores de classe."
 prevpage:
   url: /language/class-modifiers
   title: Modificadores de classe

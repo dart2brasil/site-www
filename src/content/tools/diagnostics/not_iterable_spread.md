@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: not_iterable_spread
-description: >-
-  Detalhes sobre o diagnóstico not_iterable_spread
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico not_iterable_spread produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: ambiguous_set_or_map_literal_either
-description: >-
-  Detalhes sobre o diagnóstico ambiguous_set_or_map_literal_either
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico ambiguous_set_or_map_literal_either produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

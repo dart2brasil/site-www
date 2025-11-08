@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unqualified_reference_to_static_member_of_extended_type
-description: >-
-  Detalhes sobre o diagnóstico unqualified_reference_to_static_member_of_extended_type
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico unqualified_reference_to_static_member_of_extended_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

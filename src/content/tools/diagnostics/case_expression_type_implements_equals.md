@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: case_expression_type_implements_equals
-description: >-
-  Detalhes sobre o diagnóstico case_expression_type_implements_equals
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico case_expression_type_implements_equals produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

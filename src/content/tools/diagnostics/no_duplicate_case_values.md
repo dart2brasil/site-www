@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: no_duplicate_case_values
-description: >-
-  Detalhes sobre o diagnóstico no_duplicate_case_values
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico no_duplicate_case_values produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

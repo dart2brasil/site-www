@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: redeclare_on_non_redeclaring_member
-description: >-
-  Detalhes sobre o diagnóstico redeclare_on_non_redeclaring_member
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico redeclare_on_non_redeclaring_member produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

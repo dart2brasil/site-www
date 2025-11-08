@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: duplicate_named_argument
-description: >-
-  Detalhes sobre o diagnóstico duplicate_named_argument
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico duplicate_named_argument produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

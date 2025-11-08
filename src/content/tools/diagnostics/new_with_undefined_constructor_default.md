@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: new_with_undefined_constructor_default
-description: >-
-  Detalhes sobre o diagnóstico new_with_undefined_constructor_default
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico new_with_undefined_constructor_default produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

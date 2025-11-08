@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: integer_literal_out_of_range
-description: >-
-  Detalhes sobre o diagnóstico integer_literal_out_of_range
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico integer_literal_out_of_range produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

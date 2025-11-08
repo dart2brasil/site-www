@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: nullable_type_in_with_clause
-description: >-
-  Detalhes sobre o diagnóstico nullable_type_in_with_clause
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico nullable_type_in_with_clause produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

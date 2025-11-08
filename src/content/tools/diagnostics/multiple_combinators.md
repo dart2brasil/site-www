@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: multiple_combinators
-description: >-
-  Detalhes sobre o diagnóstico multiple_combinators
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico multiple_combinators produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

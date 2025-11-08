@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: asset_not_string_or_map
-description: >-
-  Detalhes sobre o diagnóstico asset_not_string_or_map
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico asset_not_string_or_map produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

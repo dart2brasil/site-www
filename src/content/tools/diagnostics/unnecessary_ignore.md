@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_ignore
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_ignore
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_ignore produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

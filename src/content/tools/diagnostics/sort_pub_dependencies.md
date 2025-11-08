@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: sort_pub_dependencies
-description: >-
-  Detalhes sobre o diagnóstico sort_pub_dependencies
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico sort_pub_dependencies produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

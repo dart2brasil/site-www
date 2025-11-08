@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: refutable_pattern_in_irrefutable_context
-description: >-
-  Detalhes sobre o diagnóstico refutable_pattern_in_irrefutable_context
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico refutable_pattern_in_irrefutable_context produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

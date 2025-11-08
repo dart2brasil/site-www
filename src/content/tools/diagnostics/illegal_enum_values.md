@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: illegal_enum_values
-description: >-
-  Detalhes sobre o diagnóstico illegal_enum_values
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico illegal_enum_values produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unused_result
-description: >-
-  Detalhes sobre o diagnóstico unused_result
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unused_result produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

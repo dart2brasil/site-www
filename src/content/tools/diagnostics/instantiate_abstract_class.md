@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: instantiate_abstract_class
-description: >-
-  Detalhes sobre o diagnóstico instantiate_abstract_class
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico instantiate_abstract_class produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

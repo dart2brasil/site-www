@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: inference_failure_on_collection_literal
-description: >-
-  Detalhes sobre o diagnóstico inference_failure_on_collection_literal
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico inference_failure_on_collection_literal produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

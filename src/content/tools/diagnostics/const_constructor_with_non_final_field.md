@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: const_constructor_with_non_final_field
-description: >-
-  Detalhes sobre o diagnóstico const_constructor_with_non_final_field
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico const_constructor_with_non_final_field produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

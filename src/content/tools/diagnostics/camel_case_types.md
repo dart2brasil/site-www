@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: camel_case_types
-description: >-
-  Detalhes sobre o diagnóstico camel_case_types
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico camel_case_types produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,8 +1,6 @@
 ---
 title: missing_override_of_must_be_overridden
-description: >-
-  Detalhes sobre o diagnóstico missing_override_of_must_be_overridden
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico missing_override_of_must_be_overridden produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

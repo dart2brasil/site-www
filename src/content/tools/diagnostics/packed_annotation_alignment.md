@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: packed_annotation_alignment
-description: >-
-  Detalhes sobre o diagnóstico packed_annotation_alignment
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico packed_annotation_alignment produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

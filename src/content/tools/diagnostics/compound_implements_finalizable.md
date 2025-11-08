@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: compound_implements_finalizable
-description: >-
-  Detalhes sobre o diagnóstico compound_implements_finalizable
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico compound_implements_finalizable produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

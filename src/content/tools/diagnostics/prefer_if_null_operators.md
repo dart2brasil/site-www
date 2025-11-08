@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_if_null_operators
-description: >-
-  Detalhes sobre o diagnóstico prefer_if_null_operators
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_if_null_operators produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

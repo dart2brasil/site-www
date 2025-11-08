@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: mixin_class_declares_constructor
-description: >-
-  Detalhes sobre o diagnóstico mixin_class_declares_constructor
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico mixin_class_declares_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

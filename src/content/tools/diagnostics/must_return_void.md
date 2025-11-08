@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: must_return_void
-description: >-
-  Detalhes sobre o diagnóstico must_return_void
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico must_return_void produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

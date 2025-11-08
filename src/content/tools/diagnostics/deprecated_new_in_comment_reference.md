@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: deprecated_new_in_comment_reference
-description: >-
-  Detalhes sobre o diagnóstico deprecated_new_in_comment_reference
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico deprecated_new_in_comment_reference produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

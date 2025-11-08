@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unknown_platform
-description: >-
-  Detalhes sobre o diagnóstico unknown_platform
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico unknown_platform produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

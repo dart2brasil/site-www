@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_factory_name_not_a_class
-description: >-
-  Detalhes sobre o diagnóstico invalid_factory_name_not_a_class
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico invalid_factory_name_not_a_class produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

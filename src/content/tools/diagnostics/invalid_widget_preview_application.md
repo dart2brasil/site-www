@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_widget_preview_application
-description: >-
-  Detalhes sobre o diagnóstico invalid_widget_preview_application
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_widget_preview_application produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

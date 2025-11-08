@@ -1,8 +1,7 @@
 ---
 ia-translate: true
 title: "Entendendo a segurança nula"
-description: >-
-    Um mergulho profundo na linguagem Dart e nas mudanças de biblioteca relacionadas à segurança nula.
+description: "Um mergulho profundo na linguagem Dart e nas mudanças de biblioteca relacionadas à segurança nula."
 ---
 
 _Escrito por Bob Nystrom<br>

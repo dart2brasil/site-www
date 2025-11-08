@@ -2,8 +2,7 @@
 ia-translate: true
 title: "Mensagens de diagnóstico"
 shortTitle: Diagnostics
-description: >-
-  Um índice dos diagnósticos produzidos pelo analisador do Dart.
+description: "Um índice dos diagnósticos produzidos pelo analisador do Dart."
 skipFreshness: true
 bodyClass: diagnostics
 ---

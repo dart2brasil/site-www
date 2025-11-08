@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unawaited_futures
-description: >-
-  Detalhes sobre o diagnóstico unawaited_futures
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico unawaited_futures produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

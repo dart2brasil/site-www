@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: argument_must_be_a_constant
-description: >-
-  Detalhes sobre o diagnóstico argument_must_be_a_constant
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico argument_must_be_a_constant produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_uri
-description: >-
-  Detalhes sobre o diagnóstico invalid_uri
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_uri produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

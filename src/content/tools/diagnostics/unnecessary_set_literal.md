@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_set_literal
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_set_literal
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_set_literal produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

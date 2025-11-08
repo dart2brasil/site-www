@@ -1,8 +1,6 @@
 ---
 title: missing_whitespace_between_adjacent_strings
-description: >-
-  Detalhes sobre o diagnóstico missing_whitespace_between_adjacent_strings
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico missing_whitespace_between_adjacent_strings produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

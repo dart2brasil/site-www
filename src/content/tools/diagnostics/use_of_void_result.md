@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_of_void_result
-description: >-
-  Detalhes sobre o diagnóstico use_of_void_result
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_of_void_result produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

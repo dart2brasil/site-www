@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: not_assigned_potentially_non_nullable_local_variable
-description: >-
-  Detalhes sobre o diagnóstico not_assigned_potentially_non_nullable_local_variable
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico not_assigned_potentially_non_nullable_local_variable produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

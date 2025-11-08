@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extension_type_declares_instance_field
-description: >-
-  Detalhes sobre o diagnóstico extension_type_declares_instance_field
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico extension_type_declares_instance_field produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

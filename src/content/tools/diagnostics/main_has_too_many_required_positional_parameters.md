@@ -1,8 +1,6 @@
 ---
 title: main_has_too_many_required_positional_parameters
-description: >-
-  Detalhes sobre o diagnóstico main_has_too_many_required_positional_parameters
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico main_has_too_many_required_positional_parameters produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

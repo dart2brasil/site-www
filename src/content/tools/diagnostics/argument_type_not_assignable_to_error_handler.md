@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: argument_type_not_assignable_to_error_handler
-description: >-
-  Detalhes sobre o diagnóstico argument_type_not_assignable_to_error_handler
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico argument_type_not_assignable_to_error_handler produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

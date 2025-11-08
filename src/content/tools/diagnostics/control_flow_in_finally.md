@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: control_flow_in_finally
-description: >-
-  Detalhes sobre o diagnóstico control_flow_in_finally
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico control_flow_in_finally produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

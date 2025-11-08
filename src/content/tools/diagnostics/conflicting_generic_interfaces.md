@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: conflicting_generic_interfaces
-description: >-
-  Detalhes sobre o diagnóstico conflicting_generic_interfaces
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico conflicting_generic_interfaces produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

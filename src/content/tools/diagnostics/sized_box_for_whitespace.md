@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: sized_box_for_whitespace
-description: >-
-  Detalhes sobre o diagnóstico sized_box_for_whitespace
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico sized_box_for_whitespace produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

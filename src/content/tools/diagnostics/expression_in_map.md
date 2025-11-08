@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: expression_in_map
-description: >-
-  Detalhes sobre o diagnóstico expression_in_map
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico expression_in_map produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

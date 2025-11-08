@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_brace_in_string_interps
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_brace_in_string_interps
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_brace_in_string_interps produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

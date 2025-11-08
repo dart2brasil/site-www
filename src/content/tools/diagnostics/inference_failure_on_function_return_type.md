@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: inference_failure_on_function_return_type
-description: >-
-  Detalhes sobre o diagnóstico inference_failure_on_function_return_type
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico inference_failure_on_function_return_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

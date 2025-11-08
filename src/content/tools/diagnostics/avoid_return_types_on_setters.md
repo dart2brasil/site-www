@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: avoid_return_types_on_setters
-description: >-
-  Detalhes sobre o diagnóstico avoid_return_types_on_setters
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico avoid_return_types_on_setters produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

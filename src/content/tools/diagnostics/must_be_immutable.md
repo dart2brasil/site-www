@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: must_be_immutable
-description: >-
-  Detalhes sobre o diagnóstico must_be_immutable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico must_be_immutable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

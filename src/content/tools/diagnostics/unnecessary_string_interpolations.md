@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_string_interpolations
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_string_interpolations
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_string_interpolations produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

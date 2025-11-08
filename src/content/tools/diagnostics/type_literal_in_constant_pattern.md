@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_literal_in_constant_pattern
-description: >-
-  Detalhes sobre o diagnóstico type_literal_in_constant_pattern
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_literal_in_constant_pattern produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

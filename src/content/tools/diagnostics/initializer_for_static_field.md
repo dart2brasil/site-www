@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: initializer_for_static_field
-description: >-
-  Detalhes sobre o diagnóstico initializer_for_static_field
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico initializer_for_static_field produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

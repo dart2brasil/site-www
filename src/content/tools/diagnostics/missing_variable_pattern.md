@@ -1,8 +1,6 @@
 ---
 title: missing_variable_pattern
-description: >-
-  Detalhes sobre o diagnóstico missing_variable_pattern
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico missing_variable_pattern produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

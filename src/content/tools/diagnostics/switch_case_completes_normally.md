@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: switch_case_completes_normally
-description: >-
-  Detalhes sobre o diagnóstico switch_case_completes_normally
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico switch_case_completes_normally produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

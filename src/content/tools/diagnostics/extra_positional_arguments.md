@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extra_positional_arguments
-description: >-
-  Detalhes sobre o diagnóstico extra_positional_arguments
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico extra_positional_arguments produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

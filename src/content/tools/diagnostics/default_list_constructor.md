@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: default_list_constructor
-description: >-
-  Detalhes sobre o diagnóstico default_list_constructor
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico default_list_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

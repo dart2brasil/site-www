@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: top_level_cycle
-description: >-
-  Detalhes sobre o diagnóstico top_level_cycle
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico top_level_cycle produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

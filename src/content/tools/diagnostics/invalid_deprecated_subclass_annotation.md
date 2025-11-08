@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_deprecated_subclass_annotation
-description: >-
-  Detalhes sobre o diagnóstico invalid_deprecated_subclass_annotation
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico invalid_deprecated_subclass_annotation produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

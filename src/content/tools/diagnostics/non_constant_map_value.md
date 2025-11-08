@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: non_constant_map_value
-description: >-
-  Detalhes sobre o diagnóstico non_constant_map_value
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico non_constant_map_value produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

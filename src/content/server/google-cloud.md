@@ -2,9 +2,7 @@
 ia-translate: true
 title: Using Google Cloud
 shortTitle: Google Cloud
-description: >-
-  Your Dart app can use many Google Cloud services:
-  Firebase, Google Cloud Platform, and more.
+description: "Your Dart app can use many Google Cloud services: Firebase, Google Cloud Platform, and more."
 ---
 
 Servidores Dart podem usar muitos

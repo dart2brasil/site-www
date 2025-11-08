@@ -3,8 +3,7 @@ ia-translate: true
 title: 'Interoperabilidade com Java usando package:jnigen'
 shortTitle: Java interop
 breadcrumb: Java
-description: >-
-  Para usar Java em seu programa Dart, use package:jnigen.
+description: Para usar Java em seu programa Dart, use package:jnigen.
 example: 'https://github.com/HosseinYousefi/jnigen_example/tree/main'
 ---
 

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extra_positional_arguments_could_be_named
-description: >-
-  Detalhes sobre o diagnóstico extra_positional_arguments_could_be_named
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico extra_positional_arguments_could_be_named produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

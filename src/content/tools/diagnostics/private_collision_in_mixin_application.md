@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: private_collision_in_mixin_application
-description: >-
-  Detalhes sobre o diagnóstico private_collision_in_mixin_application
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico private_collision_in_mixin_application produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

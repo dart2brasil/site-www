@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: dangling_library_doc_comments
-description: >-
-  Detalhes sobre o diagnóstico dangling_library_doc_comments
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico dangling_library_doc_comments produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

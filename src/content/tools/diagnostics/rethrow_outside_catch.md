@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: rethrow_outside_catch
-description: >-
-  Detalhes sobre o diagnóstico rethrow_outside_catch
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico rethrow_outside_catch produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

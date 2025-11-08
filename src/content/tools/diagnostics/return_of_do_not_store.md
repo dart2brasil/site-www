@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: return_of_do_not_store
-description: >-
-  Detalhes sobre o diagnóstico return_of_do_not_store
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico return_of_do_not_store produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

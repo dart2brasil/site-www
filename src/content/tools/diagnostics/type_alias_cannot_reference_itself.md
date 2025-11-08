@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_alias_cannot_reference_itself
-description: >-
-  Detalhes sobre o diagnóstico type_alias_cannot_reference_itself
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_alias_cannot_reference_itself produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: no_leading_underscores_for_local_identifiers
-description: >-
-  Detalhes sobre o diagnóstico no_leading_underscores_for_local_identifiers
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico no_leading_underscores_for_local_identifiers produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

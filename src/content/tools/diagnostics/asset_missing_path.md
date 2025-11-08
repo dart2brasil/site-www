@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: asset_missing_path
-description: >-
-  Detalhes sobre o diagnóstico asset_missing_path
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico asset_missing_path produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

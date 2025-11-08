@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_runtime_check_with_js_interop_types
-description: >-
-  Detalhes sobre o diagnóstico invalid_runtime_check_with_js_interop_types
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_runtime_check_with_js_interop_types produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

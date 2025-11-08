@@ -1,8 +1,6 @@
 ---
 title: body_might_complete_normally_nullable
-description: >-
-  Detalhes sobre o diagnóstico body_might_complete_normally_nullable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico body_might_complete_normally_nullable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

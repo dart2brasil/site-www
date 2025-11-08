@@ -2,8 +2,7 @@
 ia-translate: true
 title: Seu primeiro programa Dart
 shortTitle: Seu primeiro app
-description: >-
-  Crie, execute e faça sua primeira alteração em um programa Dart de linha de comando.
+description: "Crie, execute e faça sua primeira alteração em um programa Dart de linha de comando."
 sitemap: false
 noindex: true
 layout: learn

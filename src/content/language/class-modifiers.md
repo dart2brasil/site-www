@@ -1,8 +1,7 @@
 ---
 ia-translate: true
 title: Modificadores de classe
-description: >-
-  Palavras-chave modificadoras para declarações de classe para controlar o acesso externo à biblioteca.
+description: "Palavras-chave modificadoras para declarações de classe para controlar o acesso externo à biblioteca."
 prevpage:
   url: /language/callable-objects
   title: "Objetos invocáveis"

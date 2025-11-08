@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: field_in_struct_with_initializer
-description: >-
-  Detalhes sobre o diagnóstico field_in_struct_with_initializer
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico field_in_struct_with_initializer produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

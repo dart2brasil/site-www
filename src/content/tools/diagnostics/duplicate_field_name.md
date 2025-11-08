@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: duplicate_field_name
-description: >-
-  Detalhes sobre o diagnóstico duplicate_field_name
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico duplicate_field_name produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: multiple_super_initializers
-description: >-
-  Detalhes sobre o diagnóstico multiple_super_initializers
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico multiple_super_initializers produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

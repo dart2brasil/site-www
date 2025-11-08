@@ -1,10 +1,7 @@
 ---
 ia-translate: true
 title: Dados e JSON
-description: >-
-  Aprenda sobre desserialização de JSON em Dart, incluindo como
-  usar `dart:convert`, `jsonDecode` e pattern matching para trabalhar com
-  dados JSON da API do Wikipedia.
+description: "Aprenda sobre desserialização de JSON em Dart, incluindo como usar `dart:convert`, `jsonDecode` e pattern matching para trabalhar com dados JSON da API do Wikipedia."
 sitemap: false
 noindex: true
 layout: learn

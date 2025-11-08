@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: annotation_on_pointer_field
-description: >-
-  Detalhes sobre o diagnóstico annotation_on_pointer_field
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico annotation_on_pointer_field produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

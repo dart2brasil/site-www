@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: undefined_enum_constant
-description: >-
-  Detalhes sobre o diagnóstico undefined_enum_constant
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico undefined_enum_constant produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

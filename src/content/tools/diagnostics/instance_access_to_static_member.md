@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: instance_access_to_static_member
-description: >-
-  Detalhes sobre o diagnóstico instance_access_to_static_member
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico instance_access_to_static_member produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

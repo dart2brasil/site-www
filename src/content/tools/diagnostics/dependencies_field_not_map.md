@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: dependencies_field_not_map
-description: >-
-  Detalhes sobre o diagnóstico dependencies_field_not_map
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico dependencies_field_not_map produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

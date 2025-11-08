@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: definitely_unassigned_late_local_variable
-description: >-
-  Detalhes sobre o diagnóstico definitely_unassigned_late_local_variable
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico definitely_unassigned_late_local_variable produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

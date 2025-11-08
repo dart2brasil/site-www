@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: undefined_super_member
-description: >-
-  Detalhes sobre o diagnóstico undefined_super_member
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico undefined_super_member produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: no_logic_in_create_state
-description: >-
-  Detalhes sobre o diagnóstico no_logic_in_create_state
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico no_logic_in_create_state produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

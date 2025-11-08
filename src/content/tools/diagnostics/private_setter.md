@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: private_setter
-description: >-
-  Detalhes sobre o diagnóstico private_setter
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico private_setter produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: not_enough_positional_arguments
-description: >-
-  Detalhes sobre o diagnóstico not_enough_positional_arguments
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico not_enough_positional_arguments produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

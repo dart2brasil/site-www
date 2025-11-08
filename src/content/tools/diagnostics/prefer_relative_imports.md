@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_relative_imports
-description: >-
-  Detalhes sobre o diagnóstico prefer_relative_imports
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_relative_imports produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

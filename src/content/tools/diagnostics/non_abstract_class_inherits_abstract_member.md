@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: non_abstract_class_inherits_abstract_member
-description: >-
-  Detalhes sobre o diagnóstico non_abstract_class_inherits_abstract_member
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico non_abstract_class_inherits_abstract_member produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

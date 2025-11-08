@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: mixin_super_class_constraint_deferred_class
-description: >-
-  Detalhes sobre o diagnóstico mixin_super_class_constraint_deferred_class
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico mixin_super_class_constraint_deferred_class produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

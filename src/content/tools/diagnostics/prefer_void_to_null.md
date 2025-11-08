@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_void_to_null
-description: >-
-  Detalhes sobre o diagnóstico prefer_void_to_null
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_void_to_null produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

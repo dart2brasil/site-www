@@ -1,8 +1,6 @@
 ---
 title: missing_default_value_for_parameter
-description: >-
-  Detalhes sobre o diagnóstico missing_default_value_for_parameter
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico missing_default_value_for_parameter produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: non_void_return_for_operator
-description: >-
-  Detalhes sobre o diagnóstico non_void_return_for_operator
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico non_void_return_for_operator produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

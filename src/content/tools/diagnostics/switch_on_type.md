@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: switch_on_type
-description: >-
-  Detalhes sobre o diagnóstico switch_on_type
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico switch_on_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

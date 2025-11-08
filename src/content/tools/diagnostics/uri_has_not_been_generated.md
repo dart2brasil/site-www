@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: uri_has_not_been_generated
-description: >-
-  Detalhes sobre o diagnóstico uri_has_not_been_generated
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico uri_has_not_been_generated produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

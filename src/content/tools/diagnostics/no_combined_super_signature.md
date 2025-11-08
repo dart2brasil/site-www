@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: no_combined_super_signature
-description: >-
-  Detalhes sobre o diagnóstico no_combined_super_signature
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico no_combined_super_signature produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

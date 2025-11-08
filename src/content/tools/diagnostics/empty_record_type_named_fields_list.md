@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: empty_record_type_named_fields_list
-description: >-
-  Detalhes sobre o diagnóstico empty_record_type_named_fields_list
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico empty_record_type_named_fields_list produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

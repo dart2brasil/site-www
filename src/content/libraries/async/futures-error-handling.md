@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: Futures e tratamento de erros
-description: >-
-  Tudo o que você queria saber sobre como lidar com erros e exceções ao
-  escrever código assíncrono. E um pouco mais.
+description: "Tudo o que você queria saber sobre como lidar com erros e exceções ao escrever código assíncrono. E um pouco mais."
 ---
 
 A linguagem Dart possui

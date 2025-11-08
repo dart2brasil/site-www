@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: asset_field_not_list
-description: >-
-  Detalhes sobre o diagnóstico asset_field_not_list
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico asset_field_not_list produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

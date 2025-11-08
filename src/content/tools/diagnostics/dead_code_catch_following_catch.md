@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: dead_code_catch_following_catch
-description: >-
-  Detalhes sobre o diagnóstico dead_code_catch_following_catch
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico dead_code_catch_following_catch produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

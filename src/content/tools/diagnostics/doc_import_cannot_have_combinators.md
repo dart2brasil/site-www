@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: doc_import_cannot_have_combinators
-description: >-
-  Detalhes sobre o diagnóstico doc_import_cannot_have_combinators
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico doc_import_cannot_have_combinators produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: redirect_to_abstract_class_constructor
-description: >-
-  Detalhes sobre o diagnóstico redirect_to_abstract_class_constructor
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico redirect_to_abstract_class_constructor produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: name_not_string
-description: >-
-  Detalhes sobre o diagnóstico name_not_string
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico name_not_string produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

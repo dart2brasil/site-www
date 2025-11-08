@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: generic_struct_subclass
-description: >-
-  Detalhes sobre o diagnóstico generic_struct_subclass
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico generic_struct_subclass produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

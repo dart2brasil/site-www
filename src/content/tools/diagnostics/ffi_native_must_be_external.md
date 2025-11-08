@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: ffi_native_must_be_external
-description: >-
-  Detalhes sobre o diagnóstico ffi_native_must_be_external
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico ffi_native_must_be_external produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

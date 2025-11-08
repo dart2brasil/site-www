@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: const_set_element_not_primitive_equality
-description: >-
-  Detalhes sobre o diagnóstico const_set_element_not_primitive_equality
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico const_set_element_not_primitive_equality produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 canonical: https://dart.dev/tools/diagnostics/const_set_element_not_primitive_equality
 redirectTo: /tools/diagnostics/const_set_element_not_primitive_equality

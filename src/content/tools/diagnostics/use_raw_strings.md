@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_raw_strings
-description: >-
-  Detalhes sobre o diagnóstico use_raw_strings
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_raw_strings produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

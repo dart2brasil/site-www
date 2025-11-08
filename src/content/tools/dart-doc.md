@@ -1,8 +1,7 @@
 ---
 ia-translate: true
 title: dart doc
-description: >-
-  Aprenda como gerar documentação de referência HTML para bibliotecas Dart públicas.
+description: "Aprenda como gerar documentação de referência HTML para bibliotecas Dart públicas."
 ---
 
 O comando `dart doc` gera documentação de referência HTML

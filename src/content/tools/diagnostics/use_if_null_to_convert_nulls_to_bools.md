@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_if_null_to_convert_nulls_to_bools
-description: >-
-  Detalhes sobre o diagnóstico use_if_null_to_convert_nulls_to_bools
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_if_null_to_convert_nulls_to_bools produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

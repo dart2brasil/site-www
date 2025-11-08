@@ -2,8 +2,7 @@
 ia-translate: true
 title: Interoperabilidade nativa com Dart
 shortTitle: Interop
-description: >-
-  Aprenda a interagir com código nativo e outras linguagens de programação a partir do Dart.
+description: "Aprenda a interagir com código nativo e outras linguagens de programação a partir do Dart."
 toc: false
 sitemap: false
 noindex: true

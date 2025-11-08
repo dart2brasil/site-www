@@ -1,8 +1,6 @@
 ---
 title: mixin_application_concrete_super_invoked_member_type
-description: >-
-  Detalhes sobre o diagnóstico mixin_application_concrete_super_invoked_member_type
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico mixin_application_concrete_super_invoked_member_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

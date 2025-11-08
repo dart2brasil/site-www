@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: Dart Eficaz
-description: >-
-  Melhores práticas para construir bibliotecas Dart consistentes,
-  mantíveis e eficientes.
+description: "Melhores práticas para construir bibliotecas Dart consistentes, mantíveis e eficientes."
 nextpage:
   url: /effective-dart/style
   title: Estilo

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: values_declaration_in_enum
-description: >-
-  Detalhes sobre o diagnóstico values_declaration_in_enum
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico values_declaration_in_enum produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

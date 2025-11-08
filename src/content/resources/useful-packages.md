@@ -2,8 +2,7 @@
 ia-translate: true
 title: Commonly used packages
 shortTitle: Common packages
-description: >-
-  Alguns dos pacotes mais úteis e populares, e onde você pode aprender mais.
+description: "Alguns dos pacotes mais úteis e populares, e onde você pode aprender mais."
 ---
 
 {% assign pub = site.pub %}

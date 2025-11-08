@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_collection_literals
-description: >-
-  Detalhes sobre o diagnóstico prefer_collection_literals
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_collection_literals produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

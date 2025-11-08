@@ -1,8 +1,6 @@
 ---
 title: await_of_incompatible_type
-description: >-
-  Detalhes sobre o diagnóstico await_of_incompatible_type
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico await_of_incompatible_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

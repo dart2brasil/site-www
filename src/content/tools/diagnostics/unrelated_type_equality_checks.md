@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unrelated_type_equality_checks
-description: >-
-  Detalhes sobre o diagnóstico unrelated_type_equality_checks
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico unrelated_type_equality_checks produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

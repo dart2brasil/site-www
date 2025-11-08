@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_type_argument_in_const_literal
-description: >-
-  Detalhes sobre o diagnóstico invalid_type_argument_in_const_literal
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_type_argument_in_const_literal produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

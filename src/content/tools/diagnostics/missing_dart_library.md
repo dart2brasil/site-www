@@ -1,8 +1,6 @@
 ---
 title: missing_dart_library
-description: >-
-  Detalhes sobre o diagnóstico missing_dart_library
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico missing_dart_library produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

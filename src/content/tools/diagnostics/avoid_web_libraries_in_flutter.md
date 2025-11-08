@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: avoid_web_libraries_in_flutter
-description: >-
-  Detalhes sobre o diagnóstico avoid_web_libraries_in_flutter
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico avoid_web_libraries_in_flutter produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

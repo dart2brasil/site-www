@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unused_local_variable
-description: >-
-  Detalhes sobre o diagnóstico unused_local_variable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unused_local_variable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

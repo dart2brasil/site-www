@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: const_with_type_parameters
-description: >-
-  Detalhes sobre o diagnóstico const_with_type_parameters
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico const_with_type_parameters produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

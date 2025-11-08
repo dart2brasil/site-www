@@ -2,8 +2,7 @@
 ia-translate: true
 title: "Interoperabilidade com C usando dart:ffi"
 shortTitle: C interop
-description: >-
-  Para usar código C em seu programa Dart, use a biblioteca dart:ffi.
+description: "Para usar código C em seu programa Dart, use a biblioteca dart:ffi."
 ---
 
 Aplicativos Dart mobile, de linha de comando e servidor

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: implements_repeated
-description: >-
-  Detalhes sobre o diagnóstico implements_repeated
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico implements_repeated produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

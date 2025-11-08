@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: null_argument_to_non_null_type
-description: >-
-  Detalhes sobre o diagnóstico null_argument_to_non_null_type
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico null_argument_to_non_null_type produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

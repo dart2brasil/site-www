@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: instantiate_type_alias_expands_to_type_parameter
-description: >-
-  Detalhes sobre o diagnóstico instantiate_type_alias_expands_to_type_parameter
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico instantiate_type_alias_expands_to_type_parameter produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

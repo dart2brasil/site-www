@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_parameter_supertype_of_its_bound
-description: >-
-  Detalhes sobre o diagnóstico type_parameter_supertype_of_its_bound
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_parameter_supertype_of_its_bound produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

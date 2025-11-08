@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: field_initialized_in_parameter_and_initializer
-description: >-
-  Detalhes sobre o diagnóstico field_initialized_in_parameter_and_initializer
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico field_initialized_in_parameter_and_initializer produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

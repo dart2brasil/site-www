@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: avoid_single_cascade_in_expression_statements
-description: >-
-  Detalhes sobre o diagnóstico avoid_single_cascade_in_expression_statements
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico avoid_single_cascade_in_expression_statements produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

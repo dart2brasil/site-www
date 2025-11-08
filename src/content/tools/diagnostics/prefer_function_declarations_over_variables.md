@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_function_declarations_over_variables
-description: >-
-  Detalhes sobre o diagnóstico prefer_function_declarations_over_variables
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_function_declarations_over_variables produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

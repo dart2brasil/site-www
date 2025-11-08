@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: sdk_version_as_expression_in_const_context
-description: >-
-  Detalhes sobre o diagnóstico sdk_version_as_expression_in_const_context
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico sdk_version_as_expression_in_const_context produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

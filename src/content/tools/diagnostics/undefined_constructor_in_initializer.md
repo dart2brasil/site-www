@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: undefined_constructor_in_initializer
-description: >-
-  Detalhes sobre o diagnóstico undefined_constructor_in_initializer
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico undefined_constructor_in_initializer produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

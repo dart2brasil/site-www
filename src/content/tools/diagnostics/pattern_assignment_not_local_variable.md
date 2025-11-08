@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: pattern_assignment_not_local_variable
-description: >-
-  Detalhes sobre o diagnóstico pattern_assignment_not_local_variable
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico pattern_assignment_not_local_variable produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

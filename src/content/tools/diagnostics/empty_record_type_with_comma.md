@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: empty_record_type_with_comma
-description: >-
-  Detalhes sobre o diagnóstico empty_record_type_with_comma
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico empty_record_type_with_comma produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

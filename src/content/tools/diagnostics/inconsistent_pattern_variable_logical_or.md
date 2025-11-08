@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: inconsistent_pattern_variable_logical_or
-description: >-
-  Detalhes sobre o diagnóstico inconsistent_pattern_variable_logical_or
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico inconsistent_pattern_variable_logical_or produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

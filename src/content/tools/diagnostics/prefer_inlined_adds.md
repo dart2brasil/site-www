@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_inlined_adds
-description: >-
-  Detalhes sobre o diagnóstico prefer_inlined_adds
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_inlined_adds produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

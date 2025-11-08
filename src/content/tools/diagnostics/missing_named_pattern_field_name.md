@@ -1,8 +1,6 @@
 ---
 title: missing_named_pattern_field_name
-description: >-
-  Detalhes sobre o diagnóstico missing_named_pattern_field_name
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico missing_named_pattern_field_name produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

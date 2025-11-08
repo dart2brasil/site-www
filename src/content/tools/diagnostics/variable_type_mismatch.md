@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: variable_type_mismatch
-description: >-
-  Detalhes sobre o diagnóstico variable_type_mismatch
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico variable_type_mismatch produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

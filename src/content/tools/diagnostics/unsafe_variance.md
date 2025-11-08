@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unsafe_variance
-description: >-
-  Detalhes sobre o diagnóstico unsafe_variance
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico unsafe_variance produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

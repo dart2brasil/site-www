@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: conflicting_type_variable_and_container
-description: >-
-  Detalhes sobre o diagnóstico conflicting_type_variable_and_container
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico conflicting_type_variable_and_container produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

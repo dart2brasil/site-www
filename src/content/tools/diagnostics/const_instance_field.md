@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: const_instance_field
-description: >-
-  Detalhes sobre o diagnóstico const_instance_field
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico const_instance_field produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

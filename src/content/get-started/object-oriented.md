@@ -2,10 +2,7 @@
 ia-translate: true
 title: "Programação orientada a objetos em Dart"
 shortTitle: Dart orientado a objetos
-description: >-
-  Aprenda sobre programação orientada a objetos em Dart, incluindo
-  classes abstract, herança, overrides e enums.
-  Construa um framework para aplicativos CLI bem arquitetados.
+description: "Aprenda sobre programação orientada a objetos em Dart, incluindo classes abstract, herança, overrides e enums. Construa um framework para aplicativos CLI bem arquitetados."
 sitemap: false
 noindex: true
 layout: learn

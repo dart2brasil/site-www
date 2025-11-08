@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: record_type_one_positional_no_trailing_comma
-description: >-
-  Detalhes sobre o diagnóstico record_type_one_positional_no_trailing_comma
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico record_type_one_positional_no_trailing_comma produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

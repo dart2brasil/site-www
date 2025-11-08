@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: super_in_invalid_context
-description: >-
-  Detalhes sobre o diagnóstico super_in_invalid_context
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico super_in_invalid_context produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

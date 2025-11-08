@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: assignment_of_do_not_store
-description: >-
-  Detalhes sobre o diagnóstico assignment_of_do_not_store
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico assignment_of_do_not_store produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

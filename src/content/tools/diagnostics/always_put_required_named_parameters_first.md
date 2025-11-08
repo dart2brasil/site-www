@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: always_put_required_named_parameters_first
-description: >-
-  Detalhes sobre o diagnóstico always_put_required_named_parameters_first
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico always_put_required_named_parameters_first produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

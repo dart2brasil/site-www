@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: enum_with_name_values
-description: >-
-  Detalhes sobre o diagnóstico enum_with_name_values
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico enum_with_name_values produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: for_in_of_invalid_type
-description: >-
-  Detalhes sobre o diagnóstico for_in_of_invalid_type
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico for_in_of_invalid_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

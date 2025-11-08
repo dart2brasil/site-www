@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: Dart team packages
-description: >-
-  The Dart team publishes packages under the verified publishers:
-  dart.dev, tools.dart.dev, and labs.dart.dev.
+description: "The Dart team publishes packages under the verified publishers: dart.dev, tools.dart.dev, and labs.dart.dev."
 showToc: false
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: await_only_futures
-description: >-
-  Detalhes sobre o diagnóstico await_only_futures
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico await_only_futures produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

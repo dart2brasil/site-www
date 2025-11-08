@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: Zonas
-description: >-
-  Gerencie seu código assíncrono: lide com erros não capturados,
-  substitua o comportamento (como impressão e agendamento de tarefas) e muito mais.
+description: "Gerencie seu código assíncrono: lide com erros não capturados, substitua o comportamento (como impressão e agendamento de tarefas) e muito mais."
 date: 2014-03-03
 obsolete: true
 ---

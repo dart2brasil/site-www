@@ -1,8 +1,6 @@
 ---
 title: main_is_not_function
-description: >-
-  Detalhes sobre o diagnóstico main_is_not_function
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico main_is_not_function produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: subtype_of_sealed_class
-description: >-
-  Detalhes sobre o diagnóstico subtype_of_sealed_class
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico subtype_of_sealed_class produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

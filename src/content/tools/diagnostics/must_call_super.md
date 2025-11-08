@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: must_call_super
-description: >-
-  Detalhes sobre o diagnóstico must_call_super
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico must_call_super produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

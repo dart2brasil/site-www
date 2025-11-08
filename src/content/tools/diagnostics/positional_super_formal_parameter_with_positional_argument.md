@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: positional_super_formal_parameter_with_positional_argument
-description: >-
-  Detalhes sobre o diagnóstico positional_super_formal_parameter_with_positional_argument
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico positional_super_formal_parameter_with_positional_argument produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

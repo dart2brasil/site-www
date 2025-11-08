@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_const_literals_to_create_immutables
-description: >-
-  Detalhes sobre o diagnóstico prefer_const_literals_to_create_immutables
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_const_literals_to_create_immutables produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

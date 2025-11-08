@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_constructors_over_static_methods
-description: >-
-  Detalhes sobre o diagnóstico prefer_constructors_over_static_methods
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_constructors_over_static_methods produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

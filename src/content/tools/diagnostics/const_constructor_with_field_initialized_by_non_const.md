@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: const_constructor_with_field_initialized_by_non_const
-description: >-
-  Detalhes sobre o diagnóstico const_constructor_with_field_initialized_by_non_const
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico const_constructor_with_field_initialized_by_non_const produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

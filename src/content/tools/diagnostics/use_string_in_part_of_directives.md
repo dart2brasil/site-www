@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_string_in_part_of_directives
-description: >-
-  Detalhes sobre o diagnóstico use_string_in_part_of_directives
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_string_in_part_of_directives produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

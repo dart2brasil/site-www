@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: initializer_for_non_existent_field
-description: >-
-  Detalhes sobre o diagnóstico initializer_for_non_existent_field
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico initializer_for_non_existent_field produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

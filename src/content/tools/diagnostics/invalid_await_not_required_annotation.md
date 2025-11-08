@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: invalid_await_not_required_annotation
-description: >-
-  Detalhes sobre o diagnóstico invalid_await_not_required_annotation
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico invalid_await_not_required_annotation produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

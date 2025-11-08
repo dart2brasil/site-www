@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: enum_constant_same_name_as_enclosing
-description: >-
-  Detalhes sobre o diagnóstico enum_constant_same_name_as_enclosing
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico enum_constant_same_name_as_enclosing produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: not_initialized_non_nullable_variable
-description: >-
-  Detalhes sobre o diagnóstico not_initialized_non_nullable_variable
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico not_initialized_non_nullable_variable produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

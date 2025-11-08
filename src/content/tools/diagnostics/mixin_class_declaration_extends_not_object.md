@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: mixin_class_declaration_extends_not_object
-description: >-
-  Detalhes sobre o diagnóstico mixin_class_declaration_extends_not_object
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico mixin_class_declaration_extends_not_object produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: multiple_redirecting_constructor_invocations
-description: >-
-  Detalhes sobre o diagnóstico multiple_redirecting_constructor_invocations
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico multiple_redirecting_constructor_invocations produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

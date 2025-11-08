@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: test_types_in_equals
-description: >-
-  Detalhes sobre o diagnóstico test_types_in_equals
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico test_types_in_equals produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

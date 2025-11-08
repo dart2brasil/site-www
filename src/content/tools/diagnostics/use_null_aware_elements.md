@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_null_aware_elements
-description: >-
-  Detalhes sobre o diagnóstico use_null_aware_elements
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_null_aware_elements produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

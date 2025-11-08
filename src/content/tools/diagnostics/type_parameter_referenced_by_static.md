@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_parameter_referenced_by_static
-description: >-
-  Detalhes sobre o diagnóstico type_parameter_referenced_by_static
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_parameter_referenced_by_static produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

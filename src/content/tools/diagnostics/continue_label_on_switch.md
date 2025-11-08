@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: continue_label_invalid
-description: >-
-  Detalhes sobre o diagnóstico continue_label_invalid
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico continue_label_invalid produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 canonical: https://dart.dev/tools/diagnostics/continue_label_invalid
 redirectTo: /tools/diagnostics/continue_label_invalid

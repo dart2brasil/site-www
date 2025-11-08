@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: export_legacy_symbol
-description: >-
-  Detalhes sobre o diagnóstico export_legacy_symbol
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico export_legacy_symbol produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

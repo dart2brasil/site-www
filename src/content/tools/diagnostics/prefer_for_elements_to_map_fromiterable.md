@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_for_elements_to_map_fromiterable
-description: >-
-  Detalhes sobre o diagnóstico prefer_for_elements_to_map_fromiterable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_for_elements_to_map_fromiterable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

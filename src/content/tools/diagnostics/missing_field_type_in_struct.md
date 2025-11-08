@@ -1,8 +1,6 @@
 ---
 title: missing_field_type_in_struct
-description: >-
-  Detalhes sobre o diagnóstico missing_field_type_in_struct
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico missing_field_type_in_struct produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

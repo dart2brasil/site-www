@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extension_type_implements_itself
-description: >-
-  Detalhes sobre o diagnóstico extension_type_implements_itself
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico extension_type_implements_itself produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

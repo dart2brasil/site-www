@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extension_type_constructor_with_super_invocation
-description: >-
-  Detalhes sobre o diagnóstico extension_type_constructor_with_super_invocation
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico extension_type_constructor_with_super_invocation produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

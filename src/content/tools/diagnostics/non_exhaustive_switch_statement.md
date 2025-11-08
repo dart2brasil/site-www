@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: non_exhaustive_switch_statement
-description: >-
-  Detalhes sobre o diagnóstico non_exhaustive_switch_statement
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico non_exhaustive_switch_statement produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

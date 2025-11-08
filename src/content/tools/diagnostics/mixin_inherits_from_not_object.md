@@ -1,8 +1,6 @@
 ---
 title: mixin_inherits_from_not_object
-description: >-
-  Detalhes sobre o diagnóstico mixin_inherits_from_not_object
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico mixin_inherits_from_not_object produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ia-translate: true

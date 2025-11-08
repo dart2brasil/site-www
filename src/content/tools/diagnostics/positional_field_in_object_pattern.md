@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: positional_field_in_object_pattern
-description: >-
-  Detalhes sobre o diagnóstico positional_field_in_object_pattern
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico positional_field_in_object_pattern produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

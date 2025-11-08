@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: unnecessary_null_aware_operator_on_extension_on_nullable
-description: >-
-  Detalhes sobre o diagnóstico unnecessary_null_aware_operator_on_extension_on_nullable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico unnecessary_null_aware_operator_on_extension_on_nullable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

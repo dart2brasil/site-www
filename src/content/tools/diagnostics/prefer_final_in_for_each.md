@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefer_final_in_for_each
-description: >-
-  Detalhes sobre o diagnóstico prefer_final_in_for_each
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico prefer_final_in_for_each produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: extension_override_argument_not_assignable
-description: >-
-  Detalhes sobre o diagnóstico extension_override_argument_not_assignable
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico extension_override_argument_not_assignable produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_build_context_synchronously
-description: >-
-  Detalhes sobre o diagnóstico use_build_context_synchronously
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_build_context_synchronously produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

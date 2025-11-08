@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: deferred_import_of_extension
-description: >-
-  Detalhes sobre o diagnóstico deferred_import_of_extension
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico deferred_import_of_extension produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: sdk_version_ui_as_code
-description: >-
-  Detalhes sobre o diagnóstico sdk_version_ui_as_code
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico sdk_version_ui_as_code produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: deprecated_instantiate
-description: >-
-  Detalhes sobre o diagnóstico deprecated_instantiate
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico deprecated_instantiate produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_truncating_division
-description: >-
-  Detalhes sobre o diagnóstico use_truncating_division
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_truncating_division produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

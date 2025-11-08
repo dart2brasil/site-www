@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: prefix_shadowed_by_local_declaration
-description: >-
-  Detalhes sobre o diagnóstico prefix_shadowed_by_local_declaration
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico prefix_shadowed_by_local_declaration produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

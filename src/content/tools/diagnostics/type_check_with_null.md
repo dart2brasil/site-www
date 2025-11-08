@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_check_with_null
-description: >-
-  Detalhes sobre o diagnóstico type_check_with_null
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_check_with_null produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: use_string_buffers
-description: >-
-  Detalhes sobre o diagnóstico use_string_buffers
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico use_string_buffers produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

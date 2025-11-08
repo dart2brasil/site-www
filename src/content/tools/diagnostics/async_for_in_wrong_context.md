@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: async_for_in_wrong_context
-description: >-
-  Detalhes sobre o diagnóstico async_for_in_wrong_context
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico async_for_in_wrong_context produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

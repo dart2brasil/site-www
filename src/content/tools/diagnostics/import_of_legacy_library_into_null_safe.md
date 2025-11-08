@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: import_of_legacy_library_into_null_safe
-description: >-
-  Detalhes sobre o diagnóstico import_of_legacy_library_into_null_safe
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico import_of_legacy_library_into_null_safe produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

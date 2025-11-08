@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: type_test_with_non_type
-description: >-
-  Detalhes sobre o diagnóstico type_test_with_non_type
-  produzido pelo analisador Dart.
+description: "Detalhes sobre o diagnóstico type_test_with_non_type produzido pelo analisador Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---

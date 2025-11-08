@@ -1,9 +1,7 @@
 ---
 ia-translate: true
 title: non_bool_operand
-description: >-
-  Detalhes sobre o diagnóstico non_bool_operand
-  produzido pelo analisador do Dart.
+description: "Detalhes sobre o diagnóstico non_bool_operand produzido pelo analisador do Dart."
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
