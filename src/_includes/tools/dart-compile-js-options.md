@@ -6,10 +6,10 @@ ia-translate: true
 O comando `dart compile js` possui múltiplas opções
 para personalizar a compilação de código JavaScript.
 
-* [Opções básicas](#basic-options)
-* [Opções de caminho e ambiente](#path-and-environment-options)
-* [Opções de exibição](#display-options)
-* [Opções de análise](#analysis-options)
+* [Opções básicas](#opções-básicas)
+* [Opções de caminho e ambiente](#opções-de-caminho-e-ambiente)
+* [Opções de exibição](#opções-de-exibição)
+* [Opções de análise](#opções-de-análise)
 
 ###### Opções básicas
 
