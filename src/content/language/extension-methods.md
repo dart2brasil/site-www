@@ -194,7 +194,7 @@ A única vez que você precisa usar o prefixo é
 para evitar um conflito de nome ao invocar um extension explicitamente.
 
 
-## Implementando extension methods
+## Implementando extension methods {:#implementing-extension-methods}
 
 Use a seguinte sintaxe para criar um extension:
 
@@ -227,7 +227,7 @@ invoque-os através do nome da declaração como [variáveis e métodos de class
 
 [class variables and methods]: /language/classes#class-variables-and-methods
 
-### Extensions sem nome
+### Extensions sem nome {:#unnamed-extensions}
 
 Ao declarar um extension, você pode omitir o nome.
 Extensions sem nome são visíveis apenas
