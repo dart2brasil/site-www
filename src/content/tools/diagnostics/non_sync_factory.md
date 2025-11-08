@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: non_sync_factory
 description: >-
-  Details about the non_sync_factory
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_sync_factory
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Factory bodies can't use 'async', 'async*', or 'sync*'._
+_Corpos de factory não podem usar 'async', 'async*', ou 'sync*'._
 
 ## Description
 
-The analyzer produces this diagnostic when the body of a factory
-constructor is marked with `async`, `async*`, or `sync*`. All constructors,
-including factory constructors, are required to return an instance of the
-class in which they're declared, not a `Future`, `Stream`, or `Iterator`.
+O analisador produz este diagnóstico quando o corpo de um construtor
+factory é marcado com `async`, `async*`, ou `sync*`. Todos os construtores,
+incluindo construtores factory, são obrigados a retornar uma instância da
+classe na qual são declarados, não um `Future`, `Stream`, ou `Iterator`.
 
 ## Example
 
-The following code produces this diagnostic because the body of the factory
-constructor is marked with `async`:
+O código a seguir produz este diagnóstico porque o corpo do construtor
+factory é marcado com `async`:
 
 ```dart
 class C {
@@ -32,8 +33,8 @@ class C {
 
 ## Common fixes
 
-If the member must be declared as a factory constructor, then remove the
-keyword appearing before the body:
+Se o membro deve ser declarado como um construtor factory, então remova a
+palavra-chave que aparece antes do corpo:
 
 ```dart
 class C {
@@ -44,8 +45,8 @@ class C {
 }
 ```
 
-If the member must return something other than an instance of the enclosing
-class, then make the member a static method:
+Se o membro deve retornar algo diferente de uma instância da classe envolvente,
+então torne o membro um método estático:
 
 ```dart
 class C {

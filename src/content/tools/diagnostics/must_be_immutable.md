@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: must_be_immutable
 description: >-
-  Details about the must_be_immutable
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico must_be_immutable
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
 _This class (or a class that this class inherits from) is marked as '@immutable', but one or more of its instance fields aren't final: {0}_
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when an immutable class defines one
-or more instance fields that aren't final. A class is immutable if it's
-marked as being immutable using the annotation
-[`immutable`][meta-immutable] or if it's a subclass of an immutable class.
+O analisador produz este diagnóstico quando uma classe imutável define um ou
+mais campos de instância que não são final. Uma classe é imutável se for
+marcada como imutável usando a anotação
+[`immutable`][meta-immutable] ou se for uma subclasse de uma classe imutável.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the field `x` isn't
+O código a seguir produz este diagnóstico porque o campo `x` não é
 final:
 
 ```dart
@@ -32,10 +33,10 @@ class [!C!] {
 }
 ```
 
-## Common fixes
+## Soluções comuns
 
-If instances of the class should be immutable, then add the keyword `final`
-to all non-final field declarations:
+Se as instâncias da classe devem ser imutáveis, então adicione a palavra-chave `final`
+a todas as declarações de campo não-final:
 
 ```dart
 import 'package:meta/meta.dart';
@@ -48,9 +49,9 @@ class C {
 }
 ```
 
-If the instances of the class should be mutable, then remove the
-annotation, or choose a different superclass if the annotation is
-inherited:
+Se as instâncias da classe devem ser mutáveis, então remova a
+anotação ou escolha uma superclasse diferente se a anotação for
+herdada:
 
 ```dart
 class C {

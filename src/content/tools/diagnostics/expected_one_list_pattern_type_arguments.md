@@ -1,24 +1,25 @@
 ---
+ia-translate: true
 title: expected_one_list_pattern_type_arguments
 description: >-
-  Details about the expected_one_list_pattern_type_arguments
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico expected_one_list_pattern_type_arguments
+  produzido pelo analisador Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_List patterns require one type argument or none, but {0} found._
+_Padrões de lista exigem um argumento de tipo ou nenhum, mas {0} foi encontrado._
 
-## Description
+## Descrição
 
-The analyzer produces this diagnostic when a list pattern has more than
-one type argument. List patterns can have either zero type arguments or
-one type argument, but can't have more than one.
+O analisador produz este diagnóstico quando um padrão de lista tem mais de
+um argumento de tipo. Padrões de lista podem ter zero argumentos de tipo ou
+um argumento de tipo, mas não podem ter mais de um.
 
-## Example
+## Exemplo
 
-The following code produces this diagnostic because the list pattern
-(`[0]`) has two type arguments:
+O código a seguir produz este diagnóstico porque o padrão de lista
+(`[0]`) tem dois argumentos de tipo:
 
 ```dart
 void f(Object x) {
@@ -26,9 +27,9 @@ void f(Object x) {
 }
 ```
 
-## Common fixes
+## Correções comuns
 
-Remove all but one of the type arguments:
+Remova todos menos um dos argumentos de tipo:
 
 ```dart
 void f(Object x) {

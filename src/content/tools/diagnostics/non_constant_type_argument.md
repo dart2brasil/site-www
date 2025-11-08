@@ -1,28 +1,29 @@
 ---
+ia-translate: true
 title: non_constant_type_argument
 description: >-
-  Details about the non_constant_type_argument
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_constant_type_argument
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type arguments to '{0}' must be known at compile time, so they can't be type parameters._
+_Os argumentos de tipo para '{0}' devem ser conhecidos em tempo de compilação, então eles não podem ser parâmetros de tipo._
 
 ## Description
 
-The analyzer produces this diagnostic when the type arguments to a method
-are required to be known at compile time, but a type parameter, whose
-value can't be known at compile time, is used as a type argument.
+O analisador produz este diagnóstico quando os argumentos de tipo para um método
+são obrigados a serem conhecidos em tempo de compilação, mas um parâmetro de tipo, cujo
+valor não pode ser conhecido em tempo de compilação, é usado como argumento de tipo.
 
-For more information about FFI, see [C interop using dart:ffi][ffi].
+Para mais informações sobre FFI, consulte [Interoperabilidade C usando dart:ffi][ffi].
 
 ## Example
 
-The following code produces this diagnostic because the type argument to
-`Pointer.asFunction` must be known at compile time, but the type parameter
-`R`, which isn't known at compile time, is being used as the type
-argument:
+O código a seguir produz este diagnóstico porque o argumento de tipo para
+`Pointer.asFunction` deve ser conhecido em tempo de compilação, mas o parâmetro de tipo
+`R`, que não é conhecido em tempo de compilação, está sendo usado como argumento de
+tipo:
 
 ```dart
 import 'dart:ffi';
@@ -38,7 +39,7 @@ class C<R extends T> {
 
 ## Common fixes
 
-Remove any uses of type parameters:
+Remova qualquer uso de parâmetros de tipo:
 
 ```dart
 import 'dart:ffi';

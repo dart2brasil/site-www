@@ -1,25 +1,26 @@
 ---
+ia-translate: true
 title: non_nullable_equals_parameter
 description: >-
-  Details about the non_nullable_equals_parameter
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_nullable_equals_parameter
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The parameter type of '==' operators should be non-nullable._
+_O tipo de parâmetro dos operadores '==' deve ser non-nullable._
 
 ## Description
 
-The analyzer produces this diagnostic when an override of the operator
-`==` has a parameter whose type is nullable. The language spec makes it
-impossible for the argument of the method to be `null`, and the
-parameter's type should reflect that.
+O analisador produz este diagnóstico quando uma sobrescrita do operador
+`==` tem um parâmetro cujo tipo é nullable. A especificação da linguagem torna
+impossível que o argumento do método seja `null`, e o
+tipo do parâmetro deve refletir isso.
 
 ## Example
 
-The following code produces this diagnostic because the implementation of
-the operator `==` in `C` :
+O código a seguir produz este diagnóstico porque a implementação do
+operador `==` em `C` :
 
 ```dart
 class C {
@@ -30,7 +31,7 @@ class C {
 
 ## Common fixes
 
-Make the parameter type be non-nullable:
+Torne o tipo do parâmetro non-nullable:
 
 ```dart
 class C {

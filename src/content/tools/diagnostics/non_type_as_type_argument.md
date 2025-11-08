@@ -1,23 +1,24 @@
 ---
+ia-translate: true
 title: non_type_as_type_argument
 description: >-
-  Details about the non_type_as_type_argument
-  diagnostic produced by the Dart analyzer.
+  Detalhes sobre o diagnóstico non_type_as_type_argument
+  produzido pelo analisador do Dart.
 underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The name '{0}' isn't a type, so it can't be used as a type argument._
+_O nome '{0}' não é um tipo, então não pode ser usado como argumento de tipo._
 
 ## Description
 
-The analyzer produces this diagnostic when an identifier that isn't a type
-is used as a type argument.
+O analisador produz este diagnóstico quando um identificador que não é um tipo
+é usado como argumento de tipo.
 
 ## Example
 
-The following code produces this diagnostic because `x` is a variable, not
-a type:
+O código a seguir produz este diagnóstico porque `x` é uma variável, não
+um tipo:
 
 ```dart
 var x = 0;
@@ -26,7 +27,7 @@ List<[!x!]> xList = [];
 
 ## Common fixes
 
-Change the type argument to be a type:
+Altere o argumento de tipo para ser um tipo:
 
 ```dart
 var x = 0;
