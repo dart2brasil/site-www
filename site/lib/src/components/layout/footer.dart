@@ -122,11 +122,15 @@ final class DashFooter extends StatelessComponent {
                   // Create issue title and body
                   final title = Uri.encodeComponent('Problema de tradução');
                   final body = Uri.encodeComponent(
-                    'Página: $currentUrl\n\n'
-                    '## Descrição do problema\n'
-                    '<!-- Descreva o problema encontrado -->\n\n'
-                    '## Sugestão de correção\n'
-                    '<!-- Se possível, sugira uma correção -->\n',
+                    '**URL da página:** $currentUrl\n\n'
+                    '**Problema encontrado:**\n'
+                    '<!-- Descreva o problema de tradução que você encontrou -->\n\n'
+                    '- [ ] Página não traduzida\n'
+                    '- [ ] Tradução incorreta ou incompleta\n'
+                    '- [ ] Erro de português\n'
+                    '- [ ] Outro (descrever abaixo)\n\n'
+                    '**Descrição:**\n'
+                    '<!-- Explique em detalhes o problema encontrado -->\n',
                   );
 
                   // Open GitHub issue with pre-filled content
