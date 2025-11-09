@@ -103,15 +103,14 @@ final class DashFooter extends StatelessComponent {
         ]),
         div(classes: 'footer-section footer-translation-feedback', [
           p([
-            text('Achou erro de tradução? Achou algo faltando? '),
+            text(
+              'Encontrou essa página sem tradução ou que precisa de correção? ',
+            ),
             a(
               id: 'translation-issue-link',
               href: '#',
               target: Target.blank,
-              attributes: {
-                'rel': 'noopener',
-                'title': 'Abrir issue no GitHub',
-              },
+              attributes: {'rel': 'noopener', 'title': 'Abrir issue no GitHub'},
               events: {
                 'click': (event) {
                   event.preventDefault();
@@ -121,11 +120,15 @@ final class DashFooter extends StatelessComponent {
                   // Create issue title and body
                   final title = Uri.encodeComponent('Problema de tradução');
                   final body = Uri.encodeComponent(
-                    'Página: $currentUrl\n\n'
-                    '## Descrição do problema\n'
-                    '<!-- Descreva o problema encontrado -->\n\n'
-                    '## Sugestão de correção\n'
-                    '<!-- Se possível, sugira uma correção -->\n',
+                    '**URL da página:** $currentUrl\n\n'
+                    '**Problema encontrado:**\n'
+                    '<!-- Descreva o problema de tradução que você encontrou -->\n\n'
+                    '- [ ] Página não traduzida\n'
+                    '- [ ] Tradução incorreta ou incompleta\n'
+                    '- [ ] Erro de português\n'
+                    '- [ ] Outro (descrever abaixo)\n\n'
+                    '**Descrição:**\n'
+                    '<!-- Explique em detalhes o problema encontrado -->\n',
                   );
 
                   // Open GitHub issue with pre-filled content
@@ -134,9 +137,11 @@ final class DashFooter extends StatelessComponent {
                   web.window.open(issueUrl, '_blank');
                 },
               },
-              [text('Abra um issue')],
+              [text('Abra uma issue')],
             ),
-            text(' e nos ajude a manter o mais atualizado possível.'),
+            text(
+              ' e nos ajude a manter esse site em PT-Br para ajduar pessoas como você.',
+            ),
           ]),
         ]),
         div(classes: 'footer-section footer-tray', [
