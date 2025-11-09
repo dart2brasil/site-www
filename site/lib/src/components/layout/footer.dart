@@ -103,7 +103,7 @@ final class DashFooter extends StatelessComponent {
         ]),
         div(classes: 'footer-section footer-translation-feedback', [
           p([
-            text('Achou erro de tradução? Achou algo faltando? '),
+            text('Encontrou essa página sem tradução ou que precisa de correção? '),
             a(
               id: 'translation-issue-link',
               href: '#',
@@ -134,9 +134,9 @@ final class DashFooter extends StatelessComponent {
                   web.window.open(issueUrl, '_blank');
                 },
               },
-              [text('Abra um issue')],
+              [text('Abra uma issue')],
             ),
-            text(' e nos ajude a manter o mais atualizado possível.'),
+            text(' e nos ajude a manter esse site em PT-Br para ajduar pessoas como você.'),
           ]),
         ]),
         div(classes: 'footer-section footer-tray', [
