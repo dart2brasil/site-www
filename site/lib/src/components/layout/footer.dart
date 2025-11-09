@@ -156,8 +156,6 @@ final class DashFooter extends StatelessComponent {
             a(href: 'https://opensource.org/licenses/BSD-3-Clause', [
               text('Licença BSD de 3 Cláusulas.'),
             ]),
-          ]),
-          div(classes: 'footer-site-info', [
             p([
               text(
                 'Este é o site em Português Brasileiro (dartbrasil.dev). O site original em inglês está em ',
