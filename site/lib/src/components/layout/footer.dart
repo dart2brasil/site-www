@@ -104,21 +104,6 @@ final class DashFooter extends StatelessComponent {
         div(classes: 'footer-section footer-translation-feedback', [
           p([
             text(
-              'Este é o site em Português Brasileiro (dartbrasil.dev). O site original em inglês está em ',
-            ),
-            a(
-              href: 'https://dart.dev',
-              target: Target.blank,
-              attributes: {
-                'rel': 'noopener',
-                'title': 'Site original em inglês',
-              },
-              [text('dart.dev')],
-            ),
-            text('.'),
-          ]),
-          p([
-            text(
               'Encontrou essa página sem tradução ou que precisa de correção? ',
             ),
             a(
@@ -157,6 +142,21 @@ final class DashFooter extends StatelessComponent {
             text(
               ' e nos ajude a manter esse site em PT-BR para ajudar pessoas como você.',
             ),
+          ]),
+          p([
+            text(
+              'Este é o site em Português Brasileiro (dartbrasil.dev). O site original em inglês está em ',
+            ),
+            a(
+              href: 'https://dart.dev',
+              target: Target.blank,
+              attributes: {
+                'rel': 'noopener',
+                'title': 'Site original em inglês',
+              },
+              [text('dart.dev')],
+            ),
+            text('.'),
           ]),
         ]),
         div(classes: 'footer-section footer-tray', [
