@@ -143,21 +143,6 @@ final class DashFooter extends StatelessComponent {
               ' e nos ajude a manter esse site em PT-BR para ajudar pessoas como você.',
             ),
           ]),
-          p([
-            text(
-              'Este é o site em Português Brasileiro (dartbrasil.dev). O site original em inglês está em ',
-            ),
-            a(
-              href: 'https://dart.dev',
-              target: Target.blank,
-              attributes: {
-                'rel': 'noopener',
-                'title': 'Site original em inglês',
-              },
-              [text('dart.dev')],
-            ),
-            text('.'),
-          ]),
         ]),
         div(classes: 'footer-section footer-tray', [
           div(classes: 'footer-licenses', [
@@ -170,6 +155,23 @@ final class DashFooter extends StatelessComponent {
             text(' e os exemplos de código estão licenciados sob a '),
             a(href: 'https://opensource.org/licenses/BSD-3-Clause', [
               text('Licença BSD de 3 Cláusulas.'),
+            ]),
+          ]),
+          div(classes: 'footer-site-info', [
+            p([
+              text(
+                'Este é o site em Português Brasileiro (dartbrasil.dev). O site original em inglês está em ',
+              ),
+              a(
+                href: 'https://dart.dev',
+                target: Target.blank,
+                attributes: {
+                  'rel': 'noopener',
+                  'title': 'Site original em inglês',
+                },
+                [text('dart.dev')],
+              ),
+              text('.'),
             ]),
           ]),
           div(classes: 'footer-utility-links', [
