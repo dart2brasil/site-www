@@ -58,30 +58,30 @@ class TrailingContent extends StatelessComponent {
         p(id: 'page-github-links', [
           span([
             text(
-              'Unless stated otherwise, the documentation on '
-              'this site reflects Dart $currentSdkVersion. ',
+              'Exceto quando indicado de outra forma, a documentação neste site '
+              'reflete Dart $currentSdkVersion. ',
             ),
             if (pageDate != null)
               text(
-                'Page last updated on $pageDate. ',
+                'Página atualizada em $pageDate. ',
               ),
           ]),
           if (pageSource != null) ...[
             a(
               href: pageSource,
               attributes: {'target': '_blank', 'rel': 'noopener'},
-              [text('View source')],
+              [text('Ver código-fonte')],
             ),
-            span([text(' or ')]),
+            span([text(' ou ')]),
           ],
           a(
             href: issueUrl,
             attributes: {
-              'title': 'Report an issue with this page',
+              'title': 'Reportar um problema nesta página',
               'target': '_blank',
               'rel': 'noopener',
             },
-            [text(pageSource == null ? 'Report an issue' : 'report an issue')],
+            [text(pageSource == null ? 'Reportar um problema' : 'reportar um problema')],
           ),
           text('.'),
         ]),
