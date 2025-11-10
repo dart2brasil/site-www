@@ -1,0 +1,66 @@
+name: Problema na página
+description: Ajude a melhorar o conteúdo ou qualidade de uma página do dart.dev.
+labels: [from.page-issue]
+body:
+  - type: markdown
+    attributes:
+      value: |
+          Encontrou um erro de digitação? Você pode corrigir você mesmo!
+
+          1. Role até o final da página com o erro.
+          1. Use o link "Ver código-fonte" localizado após o conteúdo para navegue até o código-fonte da página no GitHub.
+          1. Corrija o erro.
+          1. Clique em **Confirmar alterações...**.
+          1. Atualize o título, adicione uma mensagem de commit e uma descrição.
+          1. Clique em **Propor alterações**.
+
+          Se você quer que outro contribuidor corrija este problema, preencha este formulário.
+  - type: input
+    id: page-url
+    attributes:
+      label: URL da página
+      placeholder: "Adicione o endereço desta página. Um exemplo seria https://dart.dev/language"
+    validations:
+      required: true
+  - type: input
+    id: page-source
+    attributes:
+      label: Código-fonte da página
+      placeholder: O link do problema fornece essa informação.
+    validations:
+      required: false
+  - type: textarea
+    id: problem
+    attributes:
+      label: Descreva o problema
+      placeholder: Forneça uma descrição clara e concisa do que você acredita estar em erro.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Correção esperada
+      placeholder: Forneça uma descrição clara e concisa de como você acha que esse problema deve ser corrigido.
+    validations:
+      required: false
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Contexto adicional
+      placeholder: |
+        Forneça qualquer outra coisa que deva ser conhecida sobre o problema.
+        Isso pode incluir:
+
+        * quando em seu fluxo de trabalho isso ocorreu
+        * qual plataforma e navegador você está usando
+        * outras configurações ou informações circunstanciais que você acha que poderiam impactar a correção do seu problema
+    validations:
+      required: false
+  - type: checkboxes
+    id: volunteer
+    attributes:
+      label: Gostaria de corrigir este problema.
+      description: Nos deixe saber se você quer tentar corrigir isso sozinho.
+      options:
+        - label: Vou tentar e corrigir este problema no dart.dev.
+          required: false

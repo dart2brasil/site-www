@@ -41,11 +41,11 @@ class TrailingContent extends StatelessComponent {
     if (inputPath != null) {
       pageSource = '$repoUrl/blob/$branch/${inputPath.replaceAll('./', '')}';
       issueUrl =
-          '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl&page-source=$pageSource';
+          '$repoUrl/issues/new?template=1_page_issue_pt_br.yml&page-url=$fullPageUrl&page-source=$pageSource';
     } else {
       pageSource = null;
       issueUrl =
-          '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl';
+          '$repoUrl/issues/new?template=1_page_issue_pt_br.yml&page-url=$fullPageUrl';
     }
 
     return div(
