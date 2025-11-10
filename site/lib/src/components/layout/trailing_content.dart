@@ -36,6 +36,7 @@ class TrailingContent extends StatelessComponent {
 
     final fullPageUrl = '$siteUrl$pageUrl';
     final String issueUrl;
+    final String translationIssueUrl;
     final String? pageSource;
 
     if (inputPath != null) {
@@ -47,6 +48,9 @@ class TrailingContent extends StatelessComponent {
       issueUrl =
           '$repoUrl/issues/new?template=1_page_issue_pt_br.yml&page-url=$fullPageUrl';
     }
+
+    translationIssueUrl =
+        '$repoUrl/issues/new?template=2_translation_issue.yml&page-url=$fullPageUrl';
 
     return div(
       id: 'trailing-content',
@@ -88,6 +92,26 @@ class TrailingContent extends StatelessComponent {
             ],
           ),
           text('.'),
+        ]),
+
+        div(classes: 'trailing-translation-feedback', [
+          p([
+            text(
+              'Encontrou essa página sem tradução ou que precisa de correção? ',
+            ),
+            a(
+              href: translationIssueUrl,
+              attributes: {
+                'title': 'Abrir issue no GitHub',
+                'target': '_blank',
+                'rel': 'noopener',
+              },
+              [text('Abra uma issue')],
+            ),
+            text(
+              ' e nos ajude a manter esse site em PT-BR para ajudar pessoas como você.',
+            ),
+          ]),
         ]),
       ],
     );
