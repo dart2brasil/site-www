@@ -101,23 +101,9 @@ class TrailingContent extends StatelessComponent {
                   // Get current page URL
                   final currentUrl = web.window.location.href;
 
-                  // Create issue title and body
-                  final title = Uri.encodeComponent('Problema de tradução');
-                  final body = Uri.encodeComponent(
-                    '**URL da página:** $currentUrl\n\n'
-                    '**Problema encontrado:**\n'
-                    '<!-- Descreva o problema de tradução que você encontrou -->\n\n'
-                    '- [ ] Página não traduzida\n'
-                    '- [ ] Tradução incorreta ou incompleta\n'
-                    '- [ ] Erro de português\n'
-                    '- [ ] Outro (descrever abaixo)\n\n'
-                    '**Descrição:**\n'
-                    '<!-- Explique em detalhes o problema encontrado -->\n',
-                  );
-
-                  // Open GitHub issue with pre-filled content
+                  // Open GitHub issue with pre-filled content using template
                   final issueUrl =
-                      'https://github.com/dart2brasil/site-www/issues/new?title=$title&body=$body';
+                      '$repoUrl/issues/new?template=2_translation_issue.yml&page-url=$currentUrl';
                   web.window.open(issueUrl, '_blank');
                 },
               },

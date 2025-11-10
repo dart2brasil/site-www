@@ -1,0 +1,63 @@
+name: Problema de tradução
+description: Ajude-nos a manter o site em Português Brasileiro
+labels: [from.translation-issue]
+body:
+  - type: markdown
+    attributes:
+      value: |
+          Encontrou um problema na tradução? Você pode nos ajudar!
+
+          Descreva o problema de tradução que encontrou abaixo para que possamos corrigir.
+  - type: input
+    id: page-url
+    attributes:
+      label: URL da página
+      placeholder: "Adicione o endereço da página com o problema. Exemplo: https://dartbrasil.dev/language"
+    validations:
+      required: true
+  - type: checkboxes
+    id: problem-type
+    attributes:
+      label: Tipo de problema
+      description: Qual tipo de problema de tradução você encontrou?
+      options:
+        - label: Página não traduzida
+        - label: Tradução faltando (incompleta)
+        - label: Tradução incorreta ou com erros de português
+        - label: Outro
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do problema
+      placeholder: Descreva em detalhes o problema de tradução que encontrou. Se possível, indique qual texto está incorreto.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Sugestão de correção (opcional)
+      placeholder: Se tiver uma sugestão de como corrigir, compartilhe aqui.
+    validations:
+      required: false
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Contexto adicional (opcional)
+      placeholder: |
+        Compartilhe qualquer informação adicional que possa ser útil:
+
+        * quando você encontrou esse problema
+        * qual navegador e plataforma você está usando
+        * qualquer outra informação que possa ajudar na correção
+    validations:
+      required: false
+  - type: checkboxes
+    id: volunteer
+    attributes:
+      label: Gostaria de corrigir este problema
+      description: Nos informe se você gostaria de tentar corrigir você mesmo.
+      options:
+        - label: Vou tentar corrigir este problema no dartbrasil.dev
+          required: false
