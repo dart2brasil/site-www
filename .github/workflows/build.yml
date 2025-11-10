@@ -71,6 +71,7 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           channelId: pr-${{ github.event.number }}
           projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          siteName: dart2brasil
 
   firebase-deploy-production:
     name: Deploy to Firebase Hosting
@@ -95,3 +96,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          siteName: dart2brasil
