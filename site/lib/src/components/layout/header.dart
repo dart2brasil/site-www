@@ -54,7 +54,7 @@ class DashHeader extends StatelessComponent {
                 'nav-link',
                 if (activeEntry == ActiveNavEntry.overview) 'active',
               ].toClasses,
-              [text('Overview')],
+              [text('Visão Geral')],
             ),
           ]),
           li([
@@ -65,7 +65,7 @@ class DashHeader extends StatelessComponent {
                 if (activeEntry == ActiveNavEntry.docs) 'active',
               ].toClasses,
               [
-                span([text('Docs')]),
+                span([text('Documentação')]),
               ],
             ),
           ]),
@@ -85,17 +85,17 @@ class DashHeader extends StatelessComponent {
                 'nav-link',
                 if (activeEntry == ActiveNavEntry.community) 'active',
               ].toClasses,
-              [text('Community')],
+              [text('Comunidade')],
             ),
           ]),
           li([
             if (activeEntry == ActiveNavEntry.learn)
               a(href: '/get-started', classes: 'nav-link active', [
-                text('Learn'),
+                text('Aprenda'),
               ])
             else
               a(href: '/#try-dart', classes: 'nav-link', [
-                text('Try Dart'),
+                text('Experimente Dart'),
               ]),
           ]),
           li([
@@ -105,7 +105,7 @@ class DashHeader extends StatelessComponent {
                 'nav-link',
                 if (activeEntry == ActiveNavEntry.getDart) 'active',
               ].toClasses,
-              [text('Get Dart')],
+              [text('Obter Dart')],
             ),
           ]),
         ]),
