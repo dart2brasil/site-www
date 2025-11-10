@@ -84,7 +84,13 @@ class TrailingContent extends StatelessComponent {
               'target': '_blank',
               'rel': 'noopener',
             },
-            [text(pageSource == null ? 'Reportar um problema' : 'reportar um problema')],
+            [
+              text(
+                pageSource == null
+                    ? 'Reportar um problema'
+                    : 'reportar um problema',
+              ),
+            ],
           ),
           text('.'),
         ]),
