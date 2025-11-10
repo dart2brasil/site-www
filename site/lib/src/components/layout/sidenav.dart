@@ -46,13 +46,13 @@ final class DashSideNav extends StatelessComponent {
         const _SideNavDivider(),
         _TopNavItem(
           href: '/overview',
-          label: 'Overview',
+          label: 'Visão Geral',
           iconId: 'asterisk',
           active: activeEntry == ActiveNavEntry.overview,
         ),
         _TopNavItem(
           href: '/docs',
-          label: 'Docs',
+          label: 'Documentação',
           iconId: 'docs',
           active: activeEntry == ActiveNavEntry.docs,
         ),
@@ -63,18 +63,18 @@ final class DashSideNav extends StatelessComponent {
         ),
         _TopNavItem(
           href: '/community',
-          label: 'Community',
+          label: 'Comunidade',
           iconId: 'public',
           active: activeEntry == ActiveNavEntry.community,
         ),
         const _TopNavItem(
           href: 'https://dart.dev',
-          label: 'Try Dart',
+          label: 'Experimente Dart',
           iconId: 'code_blocks',
         ),
         _TopNavItem(
           href: '/get-dart',
-          label: 'Get Dart',
+          label: 'Obter Dart',
           iconId: 'download',
           active: activeEntry == ActiveNavEntry.getDart,
         ),
