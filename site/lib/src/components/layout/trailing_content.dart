@@ -42,11 +42,11 @@ class TrailingContent extends StatelessComponent {
     if (inputPath != null) {
       pageSource = '$repoUrl/blob/$branch/${inputPath.replaceAll('./', '')}';
       issueUrl =
-          '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl&page-source=$pageSource';
+          '$repoUrl/issues/new?template=1_page_issue_pt_br.yml&page-url=$fullPageUrl&page-source=$pageSource';
     } else {
       pageSource = null;
       issueUrl =
-          '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl';
+          '$repoUrl/issues/new?template=1_page_issue_pt_br.yml&page-url=$fullPageUrl';
     }
 
     translationIssueUrl =
@@ -61,12 +61,11 @@ class TrailingContent extends StatelessComponent {
         p(id: 'page-github-links', [
           span([
             text(
-              'Exceto quando indicado de outra forma, a documentação neste site '
-              'reflete Dart $currentSdkVersion. ',
+              'Salvo indicação em contrário, a documentação neste site reflete Dart $currentSdkVersion. ',
             ),
             if (pageDate != null)
               text(
-                'Página atualizada em $pageDate. ',
+                'Página atualizada pela última vez em $pageDate. ',
               ),
           ]),
           if (pageSource != null) ...[
@@ -80,15 +79,15 @@ class TrailingContent extends StatelessComponent {
           a(
             href: issueUrl,
             attributes: {
-              'title': 'Reportar um problema nesta página',
+              'title': 'Relatar um problema com esta página',
               'target': '_blank',
               'rel': 'noopener',
             },
             [
               text(
                 pageSource == null
-                    ? 'Reportar um problema'
-                    : 'reportar um problema',
+                    ? 'Relatar um problema'
+                    : 'relatar um problema',
               ),
             ],
           ),
