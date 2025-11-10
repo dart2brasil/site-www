@@ -4,6 +4,7 @@
 
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
+import 'package:universal_web/web.dart' as web;
 
 import '../common/client/feedback.dart';
 
@@ -83,6 +84,50 @@ class TrailingContent extends StatelessComponent {
             [text(pageSource == null ? 'Report an issue' : 'report an issue')],
           ),
           text('.'),
+        ]),
+
+        div(classes: 'trailing-translation-feedback', [
+          p([
+            text(
+              'Encontrou essa página sem tradução ou que precisa de correção? ',
+            ),
+            a(
+              id: 'translation-issue-link',
+              href: '#',
+              target: Target.blank,
+              attributes: {'rel': 'noopener', 'title': 'Abrir issue no GitHub'},
+              events: {
+                'click': (event) {
+                  event.preventDefault();
+                  // Get current page URL
+                  final currentUrl = web.window.location.href;
+
+                  // Create issue title and body
+                  final title = Uri.encodeComponent('Problema de tradução');
+                  final body = Uri.encodeComponent(
+                    '**URL da página:** $currentUrl\n\n'
+                    '**Problema encontrado:**\n'
+                    '<!-- Descreva o problema de tradução que você encontrou -->\n\n'
+                    '- [ ] Página não traduzida\n'
+                    '- [ ] Tradução incorreta ou incompleta\n'
+                    '- [ ] Erro de português\n'
+                    '- [ ] Outro (descrever abaixo)\n\n'
+                    '**Descrição:**\n'
+                    '<!-- Explique em detalhes o problema encontrado -->\n',
+                  );
+
+                  // Open GitHub issue with pre-filled content
+                  final issueUrl =
+                      'https://github.com/dart2brasil/site-www/issues/new?title=$title&body=$body';
+                  web.window.open(issueUrl, '_blank');
+                },
+              },
+              [text('Abra uma issue')],
+            ),
+            text(
+              ' e nos ajude a manter esse site em PT-BR para ajudar pessoas como você.',
+            ),
+          ]),
         ]),
       ],
     );
