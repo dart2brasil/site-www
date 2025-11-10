@@ -4,7 +4,6 @@
 
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
-import 'package:universal_web/web.dart' as web;
 
 import '../common/client/feedback.dart';
 
@@ -37,6 +36,7 @@ class TrailingContent extends StatelessComponent {
 
     final fullPageUrl = '$siteUrl$pageUrl';
     final String issueUrl;
+    final String translationIssueUrl;
     final String? pageSource;
 
     if (inputPath != null) {
@@ -48,6 +48,9 @@ class TrailingContent extends StatelessComponent {
       issueUrl =
           '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl';
     }
+
+    translationIssueUrl =
+        '$repoUrl/issues/new?template=2_translation_issue.yml&page-url=$fullPageUrl';
 
     return div(
       id: 'trailing-content',
@@ -92,20 +95,11 @@ class TrailingContent extends StatelessComponent {
               'Encontrou essa página sem tradução ou que precisa de correção? ',
             ),
             a(
-              id: 'translation-issue-link',
-              href: 'javascript:void(0)',
-              attributes: {'title': 'Abrir issue no GitHub'},
-              events: {
-                'click': (event) {
-                  event.preventDefault();
-                  // Get current page URL
-                  final currentUrl = web.window.location.href;
-
-                  // Open GitHub issue with pre-filled content using template
-                  final issueUrl =
-                      '$repoUrl/issues/new?template=2_translation_issue.yml&page-url=$currentUrl';
-                  web.window.open(issueUrl, '_blank');
-                },
+              href: translationIssueUrl,
+              attributes: {
+                'title': 'Abrir issue no GitHub',
+                'target': '_blank',
+                'rel': 'noopener',
               },
               [text('Abra uma issue')],
             ),
