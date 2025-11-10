@@ -36,6 +36,7 @@ class TrailingContent extends StatelessComponent {
 
     final fullPageUrl = '$siteUrl$pageUrl';
     final String issueUrl;
+    final String translationIssueUrl;
     final String? pageSource;
 
     if (inputPath != null) {
@@ -48,6 +49,9 @@ class TrailingContent extends StatelessComponent {
           '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl';
     }
 
+    translationIssueUrl =
+        '$repoUrl/issues/new?template=2_translation_issue.yml&page-url=$fullPageUrl';
+
     return div(
       id: 'trailing-content',
       attributes: {'data-nosnippet': 'true'},
@@ -57,32 +61,52 @@ class TrailingContent extends StatelessComponent {
         p(id: 'page-github-links', [
           span([
             text(
-              'Unless stated otherwise, the documentation on '
-              'this site reflects Dart $currentSdkVersion. ',
+              'Exceto quando indicado de outra forma, a documentação neste site '
+              'reflete Dart $currentSdkVersion. ',
             ),
             if (pageDate != null)
               text(
-                'Page last updated on $pageDate. ',
+                'Página atualizada em $pageDate. ',
               ),
           ]),
           if (pageSource != null) ...[
             a(
               href: pageSource,
               attributes: {'target': '_blank', 'rel': 'noopener'},
-              [text('View source')],
+              [text('Ver código-fonte')],
             ),
-            span([text(' or ')]),
+            span([text(' ou ')]),
           ],
           a(
             href: issueUrl,
             attributes: {
-              'title': 'Report an issue with this page',
+              'title': 'Reportar um problema nesta página',
               'target': '_blank',
               'rel': 'noopener',
             },
-            [text(pageSource == null ? 'Report an issue' : 'report an issue')],
+            [text(pageSource == null ? 'Reportar um problema' : 'reportar um problema')],
           ),
           text('.'),
+        ]),
+
+        div(classes: 'trailing-translation-feedback', [
+          p([
+            text(
+              'Encontrou essa página sem tradução ou que precisa de correção? ',
+            ),
+            a(
+              href: translationIssueUrl,
+              attributes: {
+                'title': 'Abrir issue no GitHub',
+                'target': '_blank',
+                'rel': 'noopener',
+              },
+              [text('Abra uma issue')],
+            ),
+            text(
+              ' e nos ajude a manter esse site em PT-BR para ajudar pessoas como você.',
+            ),
+          ]),
         ]),
       ],
     );
