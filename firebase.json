@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "dart2brasil",
+    "site": "dart2brasil",
     "public": "_site",
     "cleanUrls": true,
     "trailingSlash": false,
