@@ -91,11 +91,13 @@ class TrailingContent extends StatelessComponent {
             text(
               'Encontrou essa página sem tradução ou que precisa de correção? ',
             ),
-            button(
+            a(
               id: 'translation-issue-link',
+              href: 'javascript:void(0)',
               attributes: {'title': 'Abrir issue no GitHub'},
               events: {
                 'click': (event) {
+                  event.preventDefault();
                   // Get current page URL
                   final currentUrl = web.window.location.href;
 
