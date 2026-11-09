@@ -47,7 +47,14 @@ jobs:
           sudo chmod +rx /usr/local/bin/firebase
           firebase --version
       - name: Build site
-        run: dart run dash_site build
+        # Só o push na main vira produção: com --release o robots.txt libera
+        # os buscadores. Nos previews de PR ele continua bloqueando tudo.
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            dart run dash_site build --release
+          else
+            dart run dash_site build
+          fi
       - name: Check for broken Markdown links
         run: dart run dash_site check-link-references
       - name: Check internal site links are functional

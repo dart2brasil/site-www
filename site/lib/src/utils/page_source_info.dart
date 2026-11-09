@@ -35,7 +35,7 @@ extension PageSourceInfoExtension on Page {
     final repoUrl =
         repoLinks['this'] as String? ?? 'https://github.com/dart-lang/site-www';
     final inputPath = pageData['inputPath'] as String?;
-    final siteUrl = siteData['url'] as String? ?? 'https://dart.dev';
+    final siteUrl = siteData['url'] as String? ?? 'https://dartbrasil.dev';
 
     final fullPageUrl = '$siteUrl$pageUrl';
     final String issueUrl;

@@ -32,7 +32,7 @@ final class RobotsTxtOutput implements SecondaryOutput {
 User-agent: *
 Disallow:
 
-Sitemap: https://dart.dev/sitemap.xml
+Sitemap: https://dartbrasil.dev/sitemap.xml
 ''';
         } else {
           // If this isn't a production build, such as for staging on Firebase,
