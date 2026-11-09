@@ -81,9 +81,9 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TRANSLITERADU }}'
           channelId: pr-${{ github.event.number }}
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          projectId: transliteradu
 
   firebase-deploy-production:
     name: Deploy to Firebase Hosting
@@ -106,6 +106,6 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TRANSLITERADU }}'
+          projectId: transliteradu
           channelId: live
