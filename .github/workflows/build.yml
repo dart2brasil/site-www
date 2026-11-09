@@ -31,7 +31,7 @@ jobs:
           persist-credentials: false
       - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
         with:
-          sdk: beta
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Install firebase-tools
@@ -81,9 +81,9 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TRANSLITERADU }}'
           channelId: pr-${{ github.event.number }}
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          projectId: transliteradu
 
   firebase-deploy-production:
     name: Deploy to Firebase Hosting
@@ -106,6 +106,6 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TRANSLITERADU }}'
+          projectId: transliteradu
           channelId: live
