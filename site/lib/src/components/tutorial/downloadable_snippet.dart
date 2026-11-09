@@ -65,7 +65,7 @@ class DownloadableSnippet extends CustomComponentBase {
               name: name,
             ),
             const CopyButton(
-              title: 'Copy to clipboard',
+              title: 'Copiar para a área de transferência',
             ),
           ],
         );

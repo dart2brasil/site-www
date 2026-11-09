@@ -169,8 +169,8 @@ final class GlossaryIndex extends StatelessComponent {
       [
         const p([
           .text(
-            'The following are definitions of terms used '
-            'across the Dart documentation.',
+            'A seguir estão as definições de termos usados '
+            'em toda a documentação do Dart.',
           ),
         ]),
         const GlossarySearchSection(),
@@ -219,20 +219,20 @@ final class GlossaryCard extends StatelessComponent {
             icon: 'tag',
             style: ButtonStyle.text,
             classes: const ['share-button'],
-            title: 'Link to card',
+            title: 'Link para o card',
             attributes: {
-              'aria-label': 'Link to ${entry.term} card',
+              'aria-label': 'Link para o card ${entry.term}',
             },
           ),
           Button(
             icon: 'keyboard_arrow_up',
             style: ButtonStyle.text,
             classes: const ['expand-button'],
-            title: 'Expand or collapse card',
+            title: 'Expandir ou recolher o card',
             attributes: {
               'aria-expanded': 'true',
               'aria-controls': contentId,
-              'aria-label': 'Expand or collapse ${entry.term} card',
+              'aria-label': 'Expandir ou recolher o card ${entry.term}',
             },
           ),
         ]),
@@ -248,7 +248,7 @@ final class GlossaryCard extends StatelessComponent {
         if (entry.relatedLinks.isNotEmpty)
           div([
             const h3(classes: 'no_toc details-header', [
-              .text('Related docs and resources'),
+              .text('Documentos e recursos relacionados'),
             ]),
             ul(classes: 'resources-list', [
               for (final resource in entry.relatedLinks)

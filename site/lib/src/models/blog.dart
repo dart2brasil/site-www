@@ -2,7 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:intl/intl.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
@@ -23,7 +22,12 @@ extension type Post(Map<String, Object?> data) {
   String get publishDate => data['publishDate'] as String;
 
   DateTime get dateObject => DateTime.parse(publishDate);
-  String get formattedDate => DateFormat.yMMMd().format(dateObject);
+  /// Data no formato do intl `pt_BR` `yMMMd`, por exemplo "12 de nov. de 2025".
+  /// Montada à mão para não depender dos dados de locale do intl.
+  String get formattedDate {
+    final date = dateObject;
+    return '${date.day} de ${_ptBrShortMonths[date.month - 1]} de ${date.year}';
+  }
 
   List<String> get authorIds => switch (data['author']) {
     final String authorId => [authorId],
@@ -33,7 +37,8 @@ extension type Post(Map<String, Object?> data) {
     ),
   };
 
-  String get readingTime => data['readingTime'] as String? ?? '5 min read';
+  String get readingTime =>
+      data['readingTime'] as String? ?? '5 min de leitura';
   String? get category => data['category'] as String?;
 }
 
@@ -94,3 +99,18 @@ bool _isValidAuthorProperty(Object? author) {
     _ => false,
   };
 }
+
+const List<String> _ptBrShortMonths = [
+  'jan.',
+  'fev.',
+  'mar.',
+  'abr.',
+  'mai.',
+  'jun.',
+  'jul.',
+  'ago.',
+  'set.',
+  'out.',
+  'nov.',
+  'dez.',
+];

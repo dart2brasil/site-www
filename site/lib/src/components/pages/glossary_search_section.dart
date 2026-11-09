@@ -65,8 +65,8 @@ class _GlossarySearchSectionState extends State<GlossarySearchSection> {
   Component build(BuildContext context) {
     return section(id: 'filter-and-search', [
       SearchBar(
-        placeholder: 'Search terms...',
-        label: 'Search terms by name...',
+        placeholder: 'Pesquisar termos...',
+        label: 'Pesquise termos pelo nome...',
         value: searchQuery,
         onInput: (value) {
           setState(() {

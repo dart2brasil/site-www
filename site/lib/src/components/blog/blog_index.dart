@@ -48,7 +48,7 @@ class BlogIndex extends StatelessComponent {
           },
           [
             MaterialIcon('rss_feed'),
-            span(classes: 'blog-feed-link-label', [.text('Subscribe')]),
+            span(classes: 'blog-feed-link-label', [.text('Assinar')]),
           ],
         ),
       ]),

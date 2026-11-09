@@ -77,7 +77,7 @@ final class _PageHeaderOptionsState extends State<PageHeaderOptions> {
     id: 'page-header-options',
     children: [
       const DropdownToggle(
-        Button(icon: 'more_vert', title: 'View page options.'),
+        Button(icon: 'more_vert', title: 'Ver opções da página.'),
       ),
       DropdownContent(
         nav(
@@ -93,7 +93,7 @@ final class _PageHeaderOptionsState extends State<PageHeaderOptions> {
                     if (_isShareSupported)
                       Button(
                         icon: 'share',
-                        content: 'Share page',
+                        content: 'Compartilhar página',
                         onClick: () {
                           web.window.navigator
                               .share(_shareData)
@@ -104,7 +104,7 @@ final class _PageHeaderOptionsState extends State<PageHeaderOptions> {
                     else
                       Button(
                         icon: _copied ? 'check' : 'content_copy',
-                        content: _copied ? 'Link copied!' : 'Copy link',
+                        content: _copied ? 'Link copiado!' : 'Copiar link',
                         onClick: _copyLink,
                       ),
                   ],
@@ -114,7 +114,7 @@ final class _PageHeaderOptionsState extends State<PageHeaderOptions> {
                     [
                       Button(
                         icon: 'docs',
-                        content: 'View source',
+                        content: 'Ver código-fonte',
                         href: sourceUrl,
                         attributes: const {
                           'target': '_blank',
@@ -128,7 +128,7 @@ final class _PageHeaderOptionsState extends State<PageHeaderOptions> {
                     [
                       Button(
                         icon: 'bug_report',
-                        content: 'Report issue',
+                        content: 'Relatar problema',
                         href: issueUrl,
                         attributes: const {
                           'target': '_blank',

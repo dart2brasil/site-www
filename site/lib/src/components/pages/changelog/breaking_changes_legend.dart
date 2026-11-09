@@ -29,50 +29,52 @@ class BreakingChangesLegend extends StatelessComponent {
     return Dialog(
       visible: visible,
       onClose: onClose,
-      title: 'Types of changes',
+      title: 'Tipos de mudança',
       children: const [
         dl([
-          dt([.text('New '), _TagLabel(ChangelogTag.newTag)]),
-          dd([.text('Introduces a new feature or API.')]),
-          dt([.text('Fixed '), _TagLabel(ChangelogTag.fixed)]),
-          dd([.text('Fixes a bug or defect.')]),
-          dt([.text('Changed '), _TagLabel(ChangelogTag.changed)]),
-          dd([.text('Modifies existing behavior or APIs.')]),
+          dt([.text('Novo '), _TagLabel(ChangelogTag.newTag)]),
+          dd([.text('Introduz um novo recurso ou API.')]),
+          dt([.text('Corrigido '), _TagLabel(ChangelogTag.fixed)]),
+          dd([.text('Corrige um bug ou defeito.')]),
+          dt([.text('Alterado '), _TagLabel(ChangelogTag.changed)]),
+          dd([.text('Modifica comportamento ou APIs existentes.')]),
           dt([.text('Breaking '), _TagLabel(ChangelogTag.breaking)]),
-          dd([.text('Incompatible change that may require code migration.')]),
-          dt([.text('Unversioned')]),
+          dd([
+            .text('Mudança incompatível que pode exigir migração de código.'),
+          ]),
+          dt([.text('Não versionado')]),
           dd([
             .text(
-              "The Dart SDK doesn't maintain backward compatibility, "
-              'and code might break as soon as you upgrade your SDK version '
-              'if it relies on the previous behavior. '
-              'These are the majority of changes and '
-              "aren't specially marked.",
+              'O Dart SDK não mantém compatibilidade retroativa, '
+              'e o código pode quebrar assim que você atualizar '
+              'a versão do SDK se depender do comportamento anterior. '
+              'Essa é a maioria das mudanças, e elas '
+              'não recebem marcação especial.',
             ),
           ]),
           dt([
-            .text('Language versioned '),
+            .text('Versionado por linguagem '),
             _TagLabel(ChangelogTag.languageVersioned),
           ]),
           dd([
             .text(
-              'The Dart SDK maintains backward compatibility for '
-              'existing code, and the behavior change only takes effect when '
-              'you upgrade the language version of your code.',
+              'O Dart SDK mantém compatibilidade retroativa para '
+              'código existente, e a mudança de comportamento só vale quando '
+              'você atualiza a versão de linguagem do seu código.',
             ),
           ]),
           dt([
-            .text('Deprecations '),
+            .text('Descontinuações '),
             _TagLabel(ChangelogTag.deprecated),
             .text(' / '),
             _TagLabel(ChangelogTag.removed),
           ]),
           dd([
             .text(
-              'The Dart SDK maintains compatibility for deprecated code, '
-              'with a warning. Deprecations are then completely removed in '
-              'a later release, breaking any code that '
-              'relies on the previous behavior.',
+              'O Dart SDK mantém compatibilidade para código descontinuado, '
+              'com um aviso. Depois, as descontinuações são removidas '
+              'de vez em uma versão posterior, quebrando qualquer código que '
+              'dependa do comportamento anterior.',
             ),
           ]),
           dt([
@@ -81,8 +83,8 @@ class BreakingChangesLegend extends StatelessComponent {
           ]),
           dd([
             .text(
-              'Part of the release but not yet treated as stable in '
-              'the SDK and can break from one version to another.',
+              'Faz parte da versão, mas ainda não é tratado como estável no '
+              'SDK e pode quebrar de uma versão para outra.',
             ),
           ]),
         ]),

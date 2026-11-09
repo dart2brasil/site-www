@@ -12,7 +12,7 @@ import '../common/search.dart';
 
 enum RuleSetOption {
   inFlutter('Flutter'),
-  inRecommended('Recommended'),
+  inRecommended('Recomendado'),
   inCore('Core'),
   ;
 
@@ -193,8 +193,8 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
       [
         div(classes: 'search-row', [
           SearchBar(
-            placeholder: 'Search rules...',
-            label: 'Search linter rules by name or description.',
+            placeholder: 'Pesquisar regras...',
+            label: 'Pesquise regras de lint por nome ou descrição.',
             value: searchQuery,
             onInput: (value) {
               updateFilters(() {
@@ -206,7 +206,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
         ChipSet(
           [
             SelectChip<RuleSetOption>(
-              label: selectedRuleSet?.label ?? 'Rule set',
+              label: selectedRuleSet?.label ?? 'Conjunto de regras',
               menuId: 'rule-set-menu',
               menuItems: [
                 SelectMenuItem(
@@ -233,8 +233,8 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
               },
             ),
             FilterChip(
-              label: 'Fix available',
-              ariaLabel: 'Show only lints with a fix available',
+              label: 'Correção disponível',
+              ariaLabel: 'Mostrar só lints com correção disponível',
               selected: onlyFixable,
               onTap: () {
                 updateFilters(() {
@@ -243,8 +243,8 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
               },
             ),
             FilterChip(
-              label: 'Stable only',
-              ariaLabel: 'Show only released, stable rules',
+              label: 'Só estáveis',
+              ariaLabel: 'Mostrar só regras lançadas e estáveis',
               selected: onlyStable,
               onTap: () {
                 updateFilters(() {

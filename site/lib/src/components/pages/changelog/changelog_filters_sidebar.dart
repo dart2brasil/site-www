@@ -63,16 +63,16 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
               attributes: {'for': 'open-filter-toggle', 'aria-hidden': 'true'},
               classes: 'close-icon',
               [
-                MaterialIcon('close', title: 'Close filters'),
+                MaterialIcon('close', title: 'Fechar filtros'),
               ],
             ),
           ]),
           div(classes: 'table-title', [
-            const .text('Filter by'),
+            const .text('Filtrar por'),
             Button(
               icon: 'info',
               classes: ['info-icon'],
-              title: 'About changelog',
+              title: 'Sobre o changelog',
               onClick: () {
                 setState(() => _showLegend = true);
               },
@@ -100,7 +100,7 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
 
               return div(classes: 'table-content', [
                 CheckboxFilterGroup<ChangelogTag>(
-                  title: 'Type',
+                  title: 'Tipo',
                   items: ChangelogTag.values
                       .where((tag) => tag != ChangelogTag.none)
                       .toList(),
@@ -113,7 +113,7 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                       ChangelogFiltersSidebar.filters.tagCounts[tag] ?? 0,
                 ),
                 CheckboxFilterGroup<String>(
-                  title: 'Area',
+                  title: 'Área',
                   items: ChangelogFiltersSidebar.filters.availableAreas
                       .where((area) => area != 'Docs')
                       .sorted(ChangelogFiltersSidebar.filters.compareAreas),
@@ -126,7 +126,7 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                       ChangelogFiltersSidebar.filters.areaCounts[area] ?? 0,
                 ),
                 div([
-                  const h4([.text('Version')]),
+                  const h4([.text('Versão')]),
                   for (final major in sortedMajors)
                     CollapsibleFilterGroup<Object>(
                       key: Key('$major'),

@@ -94,7 +94,7 @@ class _CopyButtonState extends State<CopyButton> {
         if (content == null) 'hidden',
         ...component.classes,
       ],
-      title: component.title ?? 'Copy $content to your clipboard.',
+      title: component.title ?? 'Copiar $content para a área de transferência.',
       content: _copied ? 'Copied!' : component.buttonText,
       icon: iconButton ? 'content_copy' : null,
       onClick: _copy,

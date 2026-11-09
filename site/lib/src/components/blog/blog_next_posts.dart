@@ -34,7 +34,7 @@ class BlogNextPosts extends StatelessComponent {
     if (nextPosts.isEmpty) return const .fragment([]);
 
     return section(classes: 'more-from-dart', [
-      const h2([.text('More from Dart')]),
+      const h2([.text('Mais do Dart')]),
       div(classes: 'blog-posts-grid', [
         for (final post in nextPosts)
           BlogCard(

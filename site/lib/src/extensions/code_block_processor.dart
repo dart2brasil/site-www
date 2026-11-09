@@ -55,7 +55,7 @@ final class CodeBlockProcessor implements PageExtension {
             return ComponentNode(
               DartPadWrapper(
                 content: lines.join('\n'),
-                title: title ?? 'Runnable Dart example',
+                title: title ?? 'Exemplo de Dart executável',
                 theme: metadata['theme'],
                 height: metadata['height'],
                 runAutomatically: metadata['run'] == 'true',

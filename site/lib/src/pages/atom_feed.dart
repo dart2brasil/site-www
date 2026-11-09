@@ -17,7 +17,7 @@ const String blogAtomFeedPath = '/blog/feed.xml';
 const String blogAtomMimeType = 'application/atom+xml';
 
 /// The title used for links pointing readers at the blog Atom feed.
-const String blogAtomSubscribeTitle = 'Subscribe to the Dart Blog Atom feed';
+const String blogAtomSubscribeTitle = 'Assine o feed Atom do Blog do Dart';
 
 const String _feedAuthor = 'Dart Team';
 const String _atomNamespace = 'http://www.w3.org/2005/Atom';

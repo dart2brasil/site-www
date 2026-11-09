@@ -25,7 +25,7 @@ class ChipSet extends StatelessComponent {
         id: 'reset-filters',
         classes: 'text-button',
         events: {'click': (_) => onReset()},
-        [const .text('Clear filters')],
+        [const .text('Limpar filtros')],
       ),
   ]);
 }

@@ -62,7 +62,7 @@ class Stepper extends CustomComponent {
             summary([
               span(
                 classes: 'step-number',
-                attributes: {'aria-label': 'Step ${index + 1}'},
+                attributes: {'aria-label': 'Passo ${index + 1}'},
                 [.text('${index + 1}')],
               ),
               div(classes: 'step-title', [

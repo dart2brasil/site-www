@@ -39,8 +39,8 @@ class _PrevNextCard extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     final classes = isPrevious ? 'prev' : 'next';
-    final subtitle = isPrevious ? 'Previous' : 'Next';
-    final ariaLabel = isPrevious ? 'Previous page: ' : 'Next page: ';
+    final subtitle = isPrevious ? 'Anterior' : 'Próxima';
+    final ariaLabel = isPrevious ? 'Página anterior: ' : 'Próxima página: ';
 
     return a(classes: classes, href: page.url, [
       if (isPrevious) const MaterialIcon('chevron_left'),
