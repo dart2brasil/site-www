@@ -117,15 +117,15 @@ Fizemos várias melhorias em pacotes e bibliotecas core do Dart, incluindo:
 
 O Dart 2.14 também traz várias mudanças incompatíveis menores, [anunciadas anteriormente](https://github.com/dart-lang/sdk/blob/master/docs/process/breaking-changes.md). Espera-se que essas mudanças afetem apenas alguns casos de uso especializados.
 
-### [#46545](https://github.com/dart-lang/sdk/issues/46545): Remoção do suporte ao ECMAScript5 {:#46545-removal-of-support-for-ecmascript5}
+### [#46545](https://github.com/dart-lang/sdk/issues/46545): Remoção do suporte ao ECMAScript5 {:#46545https-github-comdart-langsdkissues46545-removal-of-support-for-ecmascript5}
 
 [Todos os navegadores modernos](https://caniuse.com/es6) suportam as versões recentes do ECMAScript, então, dois anos atrás, [anunciamos](https://groups.google.com/a/dartlang.org/g/announce/c/x7eDinVT6fM/m/ZSFl2a9tEAAJ?pli=1) um plano para depreciar o suporte ao ECMAScript 5 (ES5). Isso nos permite aproveitar as melhorias do ECMAScript mais recente e gerar saídas menores. No Dart 2.14, esse trabalho está concluído, e os compiladores Dart para web não suportam mais o ES5. Como resultado, navegadores mais antigos, como o IE11, não são mais suportados.
 
-### [#46100](https://github.com/dart-lang/sdk/issues/46100): Depreciação do stagehand, dartfmt e dart2native {:#46100-deprecation-of-stagehand-dartfmt-and-dart2native}
+### [#46100](https://github.com/dart-lang/sdk/issues/46100): Depreciação do stagehand, dartfmt e dart2native {:#46100https-github-comdart-langsdkissues46100-deprecation-of-stagehand-dartfmt-and-dart2native}
 
 No [post do Dart 2.10](/blog/announcing-dart-2-10), de outubro de 2020, anunciamos o nosso trabalho para combinar todas as ferramentas de linha de comando do Dart em uma única ferramenta `dart` combinada (semelhante à ferramenta `flutter`). Como parte dessa evolução, o Dart 2.14 depreciou os comandos `dartfmt` e `dart2native` e descontinuou o `stagehand`. Todas essas ferramentas têm substitutos equivalentes na [ferramenta `dart` unificada](https://dart.dev/tools/dart-tool).
 
-### [#45451](https://github.com/dart-lang/sdk/issues/45451): Depreciação das Native Extensions da VM {:#45451-deprecation-of-vm-native-extensions}
+### [#45451](https://github.com/dart-lang/sdk/issues/45451): Depreciação das Native Extensions da VM {:#45451https-github-comdart-langsdkissues45451-deprecation-of-vm-native-extensions}
 
 Depreciamos as Native Extensions da VM do Dart, nosso mecanismo mais antigo para chamar código nativo a partir do código Dart. O [FFI](https://dart.dev/guides/libraries/c-interop) (foreign function interface) do Dart é o nosso mecanismo atual para esse caso de uso, e estamos [evoluindo](/blog/announcing-dart-2-13) ativamente para torná-lo ainda mais poderoso e fácil de usar.
 

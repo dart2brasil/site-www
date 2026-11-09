@@ -64,7 +64,7 @@ Veja a flag [constraint](#options) para exemplos de uso.
 [`dart install`][] é uma alternativa mais recente ao `dart pub global activate`.
 :::
 
-### Ativar um pacote no site pub.dev {:#activating-a-package-on-the-pubdev-site}
+### Ativar um pacote no site pub.dev {:#activating-a-package-on-the-pub-dev-site}
 
 ```console
 $ dart pub global activate <pub.dev package>
@@ -272,7 +272,7 @@ para ativar globalmente o pacote especificado,
 mas sem colocar nenhum executável em `bin`.
 Você precisa usar `dart pub global run` para executar qualquer executável.
 
-### `--executable=<name>` ou `-x <name>`
+### `--executable=<name>` ou `-x <name>` {:#executablename-or-x-name}
 
 Use com `dart pub global activate`
 para adicionar o executável especificado ao seu PATH.

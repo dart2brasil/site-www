@@ -31,7 +31,7 @@ Use o mesmo comando para atualizar o `webdev`.
 Atualize o `webdev` quando atualizar seu Dart SDK,
 ou quando os comandos do `webdev` falharem de um jeito que você não consiga explicar.
 
-### Dependendo dos pacotes build_* {:#depending-on-build-packages}
+### Dependendo dos pacotes build_* {:#depending-on-build_-packages}
 
 Para usar o `webdev`, você precisa estar no diretório raiz de um pacote que
 depende dos pacotes **build_runner** e **build_web_compilers**.

@@ -158,7 +158,7 @@ repeat(times: 2, () {
 });
 ```
 
-### Parâmetros posicionais opcionais
+### Parâmetros posicionais opcionais {:#optional-positional-parameters}
 
 Envolver um conjunto de parâmetros de função em `[]`
 marca esses parâmetros como posicionais opcionais.

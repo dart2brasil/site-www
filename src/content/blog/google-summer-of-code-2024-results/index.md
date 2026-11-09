@@ -59,7 +59,7 @@ dart run dartdoc_test
 
 Para saber mais, confira o [`dartdoc_test`](https://pub.dev/packages/dartdoc_test) no pub.dev.
 
-## Gerando bindings dart:ffi na web usando WASM com o FFIgenPad {:#generate-dartffi-bindings-on-the-web-using-wasm-with-ffigenpad}
+## Gerando bindings dart:ffi na web usando WASM com o FFIgenPad {:#generate-dart-ffi-bindings-on-the-web-using-wasm-with-ffigenpad}
 
 *Por TheComputerM*
 

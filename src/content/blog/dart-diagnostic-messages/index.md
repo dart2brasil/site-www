@@ -82,7 +82,7 @@ O analisador de linha de comando `dart analyze` pode exibir as mesmas informaç�
 <DashImage src="images/1GtSPY3IoZDeGkfkolrXO7A.webp" alt="Captura de tela do terminal demonstrando as mensagens de diagnóstico detalhadas fornecidas pelo comando dart analyze --verbose." />
 
 
-### Resumo
+### Resumo {:#summary}
 
 Espero que este artigo ajude você a encontrar mais facilmente as informações de que precisa para entender os diagnósticos do analisador.
 

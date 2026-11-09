@@ -47,7 +47,7 @@ $ dart fix --apply
 
 As opções a seguir podem ser usadas com o comando `dart fix`.
 
-### `-h`, `--help` {:#h--help}
+### `-h`, `--help` {:#h-help}
 
 Exibe as informações de uso do `dart fix`.
 
@@ -55,7 +55,7 @@ Exibe as informações de uso do `dart fix`.
 $ dart fix --help
 ```
 
-### `-n`, `--dry-run` {:#n--dry-run}
+### `-n`, `--dry-run` {:#n-dry-run}
 
 Visualiza as alterações propostas sem modificar nenhum arquivo.
 

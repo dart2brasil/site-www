@@ -59,7 +59,7 @@ passe o caminho do diretório de cada pacote para o comando.
 
 As opções a seguir estão disponíveis para o comando `dart migrate`.
 
-### `-h`, `--help` {:#h--help}
+### `-h`, `--help` {:#h-help}
 
 Exibe as informações de uso do comando `dart migrate`.
 
@@ -67,7 +67,7 @@ Exibe as informações de uso do comando `dart migrate`.
 $ dart migrate --help
 ```
 
-### `-n`, `--dry-run` {:#n--dry-run}
+### `-n`, `--dry-run` {:#n-dry-run}
 
 Visualiza as alterações de migração propostas sem modificar nenhum arquivo.
 

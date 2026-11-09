@@ -23,7 +23,7 @@ Mas a realidade é que a maioria de nós não escreve tantos comentários quanto
 É como exercício: tecnicamente você *pode* fazer demais, mas é muito mais
 provável que esteja fazendo de menos. Tente se esforçar mais.
 
-## Comentários
+## Comentários {:#comments}
 
 As dicas a seguir se aplicam a comentários que você não quer incluir na
 documentação gerada.
@@ -230,7 +230,7 @@ que não são imediatamente óbvios pelo contexto ao redor.
 
 <a id="prefer-starting-function-or-method-comments-with-third-person-verbs" aria-hidden="true"></a>
 
-### PREFIRA começar comentários de funções ou métodos com verbos na terceira pessoa se o propósito principal for um efeito colateral {:#prefer-starting-function-or-method-comments-with-third-person-verbs-if-its-main-purpose-is-a-side-effect}
+### PREFIRA começar comentários de funções ou métodos com verbos na terceira pessoa se o propósito principal for um efeito colateral {:#prefer-starting-comments-of-a-function-or-method-with-third-person-verbs-if-its-main-purpose-is-a-side-effect}
 
 O comentário de documentação deve focar no que o código *faz*.
 

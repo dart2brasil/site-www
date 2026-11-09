@@ -30,7 +30,7 @@ Por exemplo, o pacote [sass_builder][] implementa um builder que
 gera arquivos `.css` a partir de arquivos `.scss` e `.sass`.
 
 
-## Configurando o build_runner {:#setting-up-build-runner}
+## Configurando o build_runner {:#setting-up-build_runner}
 
 Para usar o build_runner, adicione uma [dev dependency][] em **build_runner**
 no pubspec da sua aplicação:

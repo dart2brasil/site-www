@@ -341,7 +341,7 @@ lançar sua nova `ArgumentException` quando o usuário fornecer uma entrada inv�
         Ele aplica a regra de que comandos
         podem ter apenas um argumento posicional.
 
-### Tarefa 3: Atualize o cli.dart para usar o novo tratamento de erros {:#task-3-update-clidart-to-use-the-new-error-handling}
+### Tarefa 3: Atualize o cli.dart para usar o novo tratamento de erros {:#task-3-update-cli-dart-to-use-the-new-error-handling}
 
 Modifique `cli/bin/cli.dart` para usar o novo tratamento de erros no `CommandRunner`.
 

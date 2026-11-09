@@ -11,14 +11,14 @@ nextpage:
   title: Interop JS anterior
 ---
 
-## Tutoriais
+## Tutoriais {:#tutorials}
 
-### [Começando com interop JavaScript][Get started with JavaScript interop]
+### [Começando com interop JavaScript][Get started with JavaScript interop] {:#get-started-with-javascript-interop}
 
 Neste tutorial, você vai aprender o básico de interagir com JavaScript
 em Dart, usando várias APIs de JavaScript e do navegador.
 
-### [Como fazer mock de interop JavaScript em Dart][How to mock JavaScript interop in Dart]
+### [Como fazer mock de interop JavaScript em Dart][How to mock JavaScript interop in Dart] {:#how-to-mock-javascript-interop-in-dart}
 
 Este tutorial mostra como usar classes Dart para fazer mock dos
 membros de instância `external` de um tipo de interop.

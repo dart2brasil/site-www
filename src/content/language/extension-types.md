@@ -111,7 +111,7 @@ extension type E<T>(List<T> elements) {
 
 [generics]: /language/generics
 
-### Construtores
+### Construtores {:#constructors}
 
 Você pode, opcionalmente, declarar [construtores][constructors] no corpo de um extension type.
 A própria declaração de representação é um construtor implícito,

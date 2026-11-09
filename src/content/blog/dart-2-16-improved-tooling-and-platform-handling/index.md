@@ -12,7 +12,7 @@ layout: blog
 
 Hoje está disponível o Dart SDK versão 2.16. Ele não traz novos recursos de linguagem, mas traz um monte de correções de bugs (incluindo a correção de uma vulnerabilidade de segurança), suporte melhorado para declarar as plataformas que os pacotes Dart suportam e uma experiência de busca totalmente nova para o [pub.dev](https://pub.dev/).
 
-## Dart 2.16 {:#dart-216}
+## Dart 2.16 {:#dart-2-16}
 
 O SDK do Dart 2.16, que é lançado hoje junto com o [Flutter 2.10]({{site.flutter-blog}}/whats-new-in-flutter-2-10), continua a transição das antigas ferramentas de linha de comando do Dart (`dartfmt`, `dartdoc`, etc.) para a nova ferramenta de desenvolvedor combinada [`dart`](https://dart.dev/tools/dart-tool). As ferramentas recém-descontinuadas são `dartdoc` (use `dart doc`) e `dartanalyzer` (use `dart analyze`). No Dart 2.17, planejamos remover por completo os comandos `dartdoc`, `dartanalyzer` e `pub` (descontinuados no Dart 2.15; use `dart pub` ou `flutter pub`). Para detalhes, veja a [issue #46100](https://github.com/dart-lang/sdk/issues/46100).
 
@@ -26,7 +26,7 @@ A versão 2.16 também inclui a correção de uma vulnerabilidade de segurança 
 
 Para encontrar mais detalhes sobre as mudanças no Dart 2.16, veja o [changelog](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#2160).
 
-## Novo suporte para declarar plataformas suportadas por pacotes do pub.dev {:#new-support-for-declaring-platform-support-for-pubdev-packages}
+## Novo suporte para declarar plataformas suportadas por pacotes do pub.dev {:#new-support-for-declaring-platform-support-for-pub-dev-packages}
 
 O Dart foi projetado para portabilidade, e nos esforçamos para permitir código que roda na maior variedade possível de plataformas. No entanto, às vezes você pode criar e compartilhar pacotes no pub.dev que foram feitos para apenas uma ou algumas plataformas. Pode ser que seu pacote dependa de uma API disponível apenas em um sistema operacional específico, ou que use uma biblioteca como `dart:ffi`, que só tem suporte em plataformas nativas e não na web.
 
@@ -46,7 +46,7 @@ dependencies:
 
 A nova tag `platforms` é destinada a casos em que você está desenvolvendo um pacote Dart e quer declarar suporte a um conjunto de plataformas diferente do que o pub.dev detecta automaticamente. Se você está desenvolvendo e compartilhando um plugin do Flutter que contém código específico de cada host (por exemplo, Kotlin ou Swift), a [tag de plugin do Flutter](https://docs.flutter.dev/development/packages-and-plugins/developing-packages#plugin-platforms) normalmente especifica as plataformas suportadas.
 
-## Nova interface de busca do pub.dev {:#new-pubdev-search-ui}
+## Nova interface de busca do pub.dev {:#new-pub-dev-search-ui}
 
 Atendendo a pedidos dos desenvolvedores, criamos um suporte melhor para buscar pacotes no pub.dev. O principal objetivo das mudanças lançadas hoje é ajudar você a identificar e buscar o conjunto de plataformas suportadas. Veja como fica a nova experiência de busca:
 

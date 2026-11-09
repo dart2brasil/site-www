@@ -39,7 +39,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/style#do-format-your-code-using-dart-format'>FAÇA formatar seu código usando <code>dart format</code>.</a>
 * <a href='/effective-dart/style#consider-changing-your-code-to-make-it-more-formatter-friendly'>CONSIDERE mudar seu código para torná-lo mais amigável ao formatador.</a>
 * <a href='/effective-dart/style#prefer-lines-80-characters-or-fewer'>PREFIRA linhas com 80 caracteres ou menos.</a>
-* <a href='/effective-dart/style#do-use-curly-braces-for-all-flow-control-structures'>FAÇA usar chaves em todas as estruturas de controle de fluxo.</a>
+* <a href='/effective-dart/style#do-use-curly-braces-for-all-flow-control-statements'>FAÇA usar chaves em todas as estruturas de controle de fluxo.</a>
 
 </div>
 <div>
@@ -48,7 +48,7 @@ dart run dash_site effective-dart
 ### Documentation
 
 
-**Comentários**
+**Comentários {:#comments}**
 
 * <a href='/effective-dart/documentation#do-format-comments-like-sentences'>FAÇA formatar comentários como frases.</a>
 * <a href='/effective-dart/documentation#dont-use-block-comments-for-documentation'>NÃO usar comentários de bloco para documentação.</a>
@@ -62,7 +62,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/documentation#do-start-doc-comments-with-a-single-sentence-summary'>FAÇA começar comentários de documentação com um resumo de uma frase.</a>
 * <a href='/effective-dart/documentation#do-separate-the-first-sentence-of-a-doc-comment-into-its-own-paragraph'>FAÇA separar a primeira frase de um comentário de documentação em seu próprio parágrafo.</a>
 * <a href='/effective-dart/documentation#avoid-redundancy-with-the-surrounding-context'>EVITE redundância com o contexto ao redor.</a>
-* <a href='/effective-dart/documentation#prefer-starting-function-or-method-comments-with-third-person-verbs-if-its-main-purpose-is-a-side-effect'>PREFIRA começar comentários de funções ou métodos com verbos na terceira pessoa se o propósito principal for um efeito colateral.</a>
+* <a href='/effective-dart/documentation#prefer-starting-comments-of-a-function-or-method-with-third-person-verbs-if-its-main-purpose-is-a-side-effect'>PREFIRA começar comentários de funções ou métodos com verbos na terceira pessoa se o propósito principal for um efeito colateral.</a>
 * <a href='/effective-dart/documentation#prefer-starting-a-non-boolean-variable-or-property-comment-with-a-noun-phrase'>PREFIRA começar o comentário de uma variável ou propriedade não booleana com um sintagma nominal.</a>
 * <a href='/effective-dart/documentation#prefer-starting-a-boolean-variable-or-property-comment-with-whether-followed-by-a-noun-or-gerund-phrase'>PREFIRA começar o comentário de uma variável ou propriedade booleana com &quot;Whether&quot; seguido de um sintagma nominal ou gerundial.</a>
 * <a href='/effective-dart/documentation#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose'>PREFIRA um sintagma nominal ou verbal não imperativo para uma função ou método se retornar um valor for seu propósito principal.</a>
@@ -117,8 +117,8 @@ dart run dash_site effective-dart
 
 * <a href='/effective-dart/usage#do-use-collection-literals-when-possible'>FAÇA usar literais de coleção sempre que possível.</a>
 * <a href='/effective-dart/usage#dont-use-length-to-see-if-a-collection-is-empty'>NÃO use <code>.length</code> para verificar se uma coleção está vazia.</a>
-* <a href='/effective-dart/usage#avoid-using-iterableforeach-with-a-function-literal'>EVITE usar <code>Iterable.forEach()</code> com um literal de função.</a>
-* <a href='/effective-dart/usage#dont-use-listfrom-unless-you-intend-to-change-the-type-of-the-result'>NÃO use <code>List.from()</code> a menos que você pretenda mudar o tipo do resultado.</a>
+* <a href='/effective-dart/usage#avoid-using-iterable-foreach-with-a-function-literal'>EVITE usar <code>Iterable.forEach()</code> com um literal de função.</a>
+* <a href='/effective-dart/usage#dont-use-list-from-unless-you-intend-to-change-the-type-of-the-result'>NÃO use <code>List.from()</code> a menos que você pretenda mudar o tipo do resultado.</a>
 * <a href='/effective-dart/usage#do-use-wheretype-to-filter-a-collection-by-type'>FAÇA usar <code>whereType()</code> para filtrar uma coleção por tipo.</a>
 * <a href='/effective-dart/usage#dont-use-cast-when-a-nearby-operation-will-do'>NÃO use <code>cast()</code> quando uma operação próxima resolver.</a>
 * <a href='/effective-dart/usage#avoid-using-cast'>EVITE usar <code>cast()</code>.</a>
@@ -186,7 +186,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/design#prefer-an-imperative-verb-phrase-for-a-function-or-method-whose-main-purpose-is-a-side-effect'>PREFIRA uma frase verbal imperativa para uma função ou método cujo principal propósito é um efeito colateral.</a>
 * <a href='/effective-dart/design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose'>PREFIRA uma frase substantiva ou frase verbal não-imperativa para uma função ou método se retornar um valor é seu propósito principal.</a>
 * <a href='/effective-dart/design#consider-an-imperative-verb-phrase-for-a-function-or-method-if-you-want-to-draw-attention-to-the-work-it-performs'>CONSIDERE uma frase verbal imperativa para uma função ou método se você quer chamar atenção para o trabalho que realiza.</a>
-* <a href='/effective-dart/design#avoid-starting-a-method-name-with-get'>EVITE iniciar um nome de método com <code>get</code>.</a>
+* <a href='/effective-dart/design#avoid-starting-a-function-or-method-name-with-get'>EVITE iniciar um nome de método com <code>get</code>.</a>
 * <a href='/effective-dart/design#prefer-naming-a-method-to___-if-it-copies-the-objects-state-to-a-new-object'>PREFIRA nomear um método <code>to___()</code> se ele copia o estado do objeto para um novo objeto.</a>
 * <a href='/effective-dart/design#prefer-naming-a-method-as___-if-it-returns-a-different-representation-backed-by-the-original-object'>PREFIRA nomear um método <code>as___()</code> se ele retorna uma representação diferente apoiada pelo objeto original.</a>
 * <a href='/effective-dart/design#avoid-describing-the-parameters-in-the-functions-or-methods-name'>EVITE descrever os parâmetros no nome da função ou método.</a>

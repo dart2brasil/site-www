@@ -19,7 +19,7 @@ layout: blog
 <DashImage src="images/0byFoNx1wnEaO0S6N.webp" alt="Banner de lançamento do Dart 2.18 destacando a interoperabilidade com Objective-C e Swift, HTTP específico de plataforma e o roteiro." />
 
 
-## Apresentando a interoperabilidade do Dart com Objective-C e Swift {:#introducing-dart-to-objective-c--swift-interop}
+## Apresentando a interoperabilidade do Dart com Objective-C e Swift {:#introducing-dart-to-objective-c-swift-interop}
 
 Demos uma prévia da foreign function interface (FFI) do Dart para chamar APIs nativas em C em 2020, e a lançamos no Dart 2.12, em março de 2021. Desde esse lançamento, um grande conjunto de pacotes aproveitou esse recurso para se integrar a APIs nativas em C já existentes. Alguns exemplos são [`file_picker`](https://pub.dev/packages/file_picker), [`printing`](https://pub.dev/packages/printing), [`win32`](https://pub.dev/packages/win32), [`objectbox`](https://pub.dev/packages/objectbox), [`realm`](https://pub.dev/packages/realm), [`isar`](https://pub.dev/packages/isar), [`tflite_flutter`](https://pub.dev/packages/tflite_flutter) e [`dbus`](https://pub.dev/packages/dbus).
 
@@ -205,7 +205,7 @@ Esta versão do Dart melhora a forma como a VM do Dart aplica o método `async` 
 
 Essas mudanças incluem pequenas alterações de comportamento; para saber mais, veja [o changelog](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#dart-vm).
 
-## Melhorias no pub.dev {:#pubdev-improvements}
+## Melhorias no pub.dev {:#pub-dev-improvements}
 
 Junto com o lançamento do 2.18, fizemos duas mudanças no repositório de pacotes `pub.dev`.
 

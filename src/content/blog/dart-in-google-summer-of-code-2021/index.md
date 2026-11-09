@@ -17,7 +17,7 @@ O Google Summer of Code (GSoC) é um programa global que traz estudantes de dese
 
 Estamos animados para anunciar que o Dart será uma organização mentora no [Google Summer of Code 2021](https://summerofcode.withgoogle.com/). Esta será a segunda vez que o Dart participa do Google Summer of Code. Em 2020, a organização Dart orientou [5 estudantes bem-sucedidos](/blog/google-summer-of-code-2020-results).
 
-## Você está interessado?
+## Você está interessado? {:#are-you-interested}
 
 Comece agora lendo [a lista de ideias de projetos](https://github.com/dart-lang/sdk/wiki/Dart-GSoC-2021-Project-Ideas) para encontrar algo que combine com suas habilidades e interesses. Embora as inscrições formais [abram em 29 de março](https://summerofcode.withgoogle.com/how-it-works/), você pode discutir e adaptar ideias de projetos com possíveis mentores já hoje.
 > A equipe do Dart espera ter mentores suficientes para aceitar apenas um punhado de inscrições, então confira também as [outras organizações mentoras](https://summerofcode.withgoogle.com/organizations/).

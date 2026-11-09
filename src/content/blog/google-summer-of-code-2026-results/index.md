@@ -179,7 +179,7 @@ os plugins não dependem mais de uma biblioteca WebSocket externa desatualizada.
 
 Mais informações sobre este projeto podem ser encontradas no meu [resumo do projeto (gist)](https://gist.github.com/JavadAsadi/10b0935ae19405a43ecc311e9bdd7921).
 
-## Backend JCA para Android no package:webcrypto {:#android-jca-backend-for-packagewebcrypto}
+## Backend JCA para Android no package:webcrypto {:#android-jca-backend-for-package-webcrypto}
 
 *Por M. Fazri Nizar*
 

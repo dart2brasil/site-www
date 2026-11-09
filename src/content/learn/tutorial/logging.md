@@ -429,7 +429,7 @@ usa um bloco `try/catch` para tratar possíveis erros de rede ou de dados.
       erros de rede (`HttpException`) e
       erros de análise de dados (`FormatException`), registrando-os para depuração.
 
-### Tarefa 5: Exporte os comandos e conecte tudo no `cli.dart` {:#task-5-export-commands-and-wire-up-clidart}
+### Tarefa 5: Exporte os comandos e conecte tudo no `cli.dart` {:#task-5-export-commands-and-wire-up-cli-dart}
 
 Agora, exporte o logger e os comandos da biblioteca `cli`
 e, em seguida, conecte-os em `cli/bin/cli.dart` para

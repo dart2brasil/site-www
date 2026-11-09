@@ -110,7 +110,7 @@ var z = typeOf<List<int>>(); // Pre-2.15 workaround.
 ```
 
 
-## Enums melhorados na biblioteca dart:core {:#improved-enums-in-the-dartcore-library}
+## Enums melhorados na biblioteca dart:core {:#improved-enums-in-the-dart-core-library}
 
 Fizemos várias adições de conveniência às APIs de enum na biblioteca dart:core (issue da linguagem [#1511](https://github.com/dart-lang/language/issues/1511)). Agora você pode obter o valor `String` de cada valor de enum usando `.name`:
 
@@ -192,7 +192,7 @@ Got dependencies!
 ```
 
 
-## Análise de segurança para detectar caracteres Unicode bidirecionais (CVE-2021–22567) {:#security-analysis-for-detecting-bidirectional-unicode-characters-cve-2021-22567}
+## Análise de segurança para detectar caracteres Unicode bidirecionais (CVE-2021–22567) {:#security-analysis-for-detecting-bidirectional-unicode-characters-cve-202122567}
 
 Recentemente, foi descoberta uma vulnerabilidade geral em linguagens de programação envolvendo caracteres Unicode bidirecionais ([CVE-2021–42574](https://nvd.nist.gov/vuln/detail/CVE-2021-42574)). Essa vulnerabilidade afeta a maioria das linguagens de programação modernas que suportam Unicode. O código-fonte Dart a seguir ilustra o problema:
 
@@ -234,7 +234,7 @@ Recomendamos substituir esses caracteres por sequências de escape Unicode, para
 ```
 
 
-## Vulnerabilidade de credenciais do pub.dev ao usar servidores de pacotes de terceiros (CVE-2021–22568) {:#pubdev-credentials-vulnerability-when-using-third-party-pub-servers-cve-2021-22568}
+## Vulnerabilidade de credenciais do pub.dev ao usar servidores de pacotes de terceiros (CVE-2021–22568) {:#pub-dev-credentials-vulnerability-when-using-third-party-pub-servers-cve-202122568}
 
 Também estamos publicando um segundo advisory de segurança do Dart relacionado ao pub.dev: [CVE-2021–22568](https://github.com/dart-lang/sdk/security/advisories/GHSA-r32f-vhjp-qhj7). Este advisory é direcionado a publicadores de pacotes que possam ter publicado pacotes em servidores de pacotes de terceiros, como servidores privados ou internos de empresas. Desenvolvedores que publicam apenas no repositório público pub.dev (a configuração padrão) **não são afetados** por essa vulnerabilidade.
 

@@ -21,13 +21,13 @@ veja [Publicando pacotes](/tools/pub/publishing).
 Para opções que se aplicam a todos os comandos do pub, veja
 [Opções globais](/tools/pub/cmd#global-options).
 
-### `--dry-run` ou `-n`
+### `--dry-run` ou `-n` {:#dry-run-or-n}
 
 Com essa opção, o pub passa pelo processo de validação, mas não faz o upload do
 pacote. Isso é útil se você quiser verificar se o seu pacote atende a todos os
 requisitos de publicação antes de estar pronto para torná-lo público de fato.
 
-### `--force` ou `-f`
+### `--force` ou `-f` {:#force-or-f}
 
 Com essa opção, o pub não pede confirmação antes de publicar. Normalmente, ele
 mostra o conteúdo do pacote e pede que você confirme o upload.

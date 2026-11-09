@@ -42,7 +42,7 @@ O ML Complete é lançado hoje em preview. Ele é incorporado diretamente ao ana
 
 Como o recurso ainda está em preview, a versão atual dos SDKs stable do Flutter e do Dart não inclui o trabalho de desempenho e acabamento que esperamos ter nas builds posteriores. Por isso, recomendamos que você use temporariamente o [canal dev](https://github.com/flutter/flutter/wiki/Flutter-build-release-channels) do Flutter ou um [canal dev](https://dart.dev/tools/sdk/archive#dev-channel) do Dart ao testar este recurso.
 
-## Preview: interface de função estrangeira `dart:ffi` para interoperabilidade entre Dart e C {:#preview-dartffi-foreign-function-interface-for-dart-c-interop}
+## Preview: interface de função estrangeira `dart:ffi` para interoperabilidade entre Dart e C {:#preview-dart-ffi-foreign-function-interface-for-dart-c-interop}
 
 Muitos desenvolvedores nos pediram um suporte melhor para chamar código C a partir do Dart. Um sinal bem claro disso está no issue tracker do Flutter, onde a interoperabilidade com C é a [solicitação de recurso aberta mais bem avaliada](https://github.com/flutter/flutter/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc), com mais de 600 votos 👍. Há muitos casos de uso interessantes por trás desses pedidos, que vão desde chamar APIs de plataforma de baixo nível, como [stdlib.h](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/stdlib.h.html) ou [Win32](https://en.wikipedia.org/wiki/Windows_API), até aproveitar bibliotecas e utilitários multiplataforma existentes escritos em C, como TensorFlow, Realm e SQLite.
 
@@ -120,7 +120,7 @@ Também esperamos que a capacidade de chamar bibliotecas baseadas em C seja muit
 
 Como você deve ter notado, há um pouco de trabalho de programação para descrever as funções e buscar seus símbolos. Grande parte desse código repetitivo poderia ser gerada a partir dos arquivos de cabeçalho C. Atualmente, estamos focados em fornecer as primitivas subjacentes, mas adoraríamos colaborar com quem tiver interesse em trabalhar em um gerador.
 
-## Como experimentar o dart:ffi {:#how-to-try-dartffi}
+## Como experimentar o dart:ffi {:#how-to-try-dart-ffi}
 
 A biblioteca `dart:ffi` é lançada hoje em preview. Como ela ainda está em preview, recomendamos que você use o [canal master](https://github.com/flutter/flutter/wiki/Flutter-build-release-channels) do Flutter ou um [canal dev](https://dart.dev/tools/sdk/archive#dev-channel) do Dart para ter acesso rápido às nossas mudanças e melhorias à medida que forem feitas. Observe que a API provavelmente terá mudanças incompatíveis até a sua conclusão, enquanto adicionamos acabamento e ampliamos o suporte a padrões comuns. Você pode ver em detalhes [o que já planejamos](https://github.com/dart-lang/sdk/projects/13) para a nossa primeira versão. Aqui estão algumas limitações que você deve conhecer:
 

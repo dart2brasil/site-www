@@ -22,7 +22,7 @@ Para uma lista completa desses plugins, consulte [FlutterFire][].
 Outros tipos de aplicativos Dart podem usar
 o [`firebase` package][], com suporte da comunidade.
 
-## APIs de cliente do Google
+## APIs de cliente do Google {:#google-client-apis}
 
 O [`googleapis` package][] contém APIs geradas para
 mais de 180 APIs de cliente do Google,

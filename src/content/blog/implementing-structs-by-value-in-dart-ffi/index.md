@@ -342,7 +342,7 @@ P(r0 uint32) Compound(size: 16)
 
 Errar qualquer um desses detalhes provavelmente levará a falhas de segmentação em tempo de execução. Por isso, é fundamental acertar todos os casos extremos da ABI em cada combinação de hardware e sistema operacional.
 
-### Explorando pelo godbolt.org {:#explore-through-godboltorg}
+### Explorando pelo godbolt.org {:#explore-through-godbolt-org}
 
 Como a documentação é muito sucinta, descobrimos vários casos extremos com o [godbolt.org](https://godbolt.org), um explorador de compiladores. Ele mostra código C e o assembly compilado [lado a lado](https://godbolt.org/z/17jzjv):
 

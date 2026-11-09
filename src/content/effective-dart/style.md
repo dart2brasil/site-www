@@ -529,7 +529,7 @@ menores pode alterar o programa.
 [configure]: /tools/dart-format#page-width
 
 <a id="do-use-curly-braces-for-all-flow-control-structures"></a>
-### FAÇA usar chaves em todas as estruturas de controle de fluxo {:#do-use-curly-braces-for-all-flow-control-structures}
+### FAÇA usar chaves em todas as estruturas de controle de fluxo {:#do-use-curly-braces-for-all-flow-control-statements}
 
 {% render 'linter-rule-mention.md', rules:'curly_braces_in_flow_control_structures' %}
 

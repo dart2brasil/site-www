@@ -187,7 +187,7 @@ o Dart 3.9:
 
     Por exemplo, um arquivo `pubspec.yaml` com as seguintes restrições:
 
-```yaml
+    ```yaml
     name: my_app
     environment:
       sdk: ^3.9.0
@@ -317,7 +317,7 @@ O Dart 3.3 trouxe algumas melhorias à linguagem:
   um tipo existente com custo zero. Eles são parecidos com classes wrapper e
   métodos de extensão, mas com diferenças de implementação e trade-offs diferentes.
 
-```dart
+  ```dart
   extension type Meters(int value) {
     String get label => '${value}m';
     Meters operator +(Meters other) => Meters(value + other.value);
@@ -347,7 +347,7 @@ O Dart 3.2 trouxe melhorias na análise de fluxo, incluindo:
   tipos não anuláveis por meio de verificações de null e testes `is`. Por exemplo,
   o código a seguir agora é seguro:
 
-```dart
+  ```dart
   class Example {
     final int? _privateField;
   

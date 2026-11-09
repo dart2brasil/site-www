@@ -17,7 +17,7 @@ O programa Google Summer of Code (GSoC) traz estudantes de desenvolvimento de to
 
 Estamos animados para anunciar que o projeto Dart será mentor de contribuidores (pela quinta vez!) no Google Summer of Code 2024.
 
-### **Você está interessado?**
+### **Você está interessado?** {:#are-you-interested}
 
 Para começar agora, leia [a lista de ideias de projetos](https://github.com/dart-lang/sdk/wiki/Dart-GSoC-2024-Project-Ideas) para encontrar algo que combine com suas habilidades e interesses. As inscrições formais devem ser enviadas até 2 de abril. Incentivamos os possíveis candidatos a enviar rascunhos iniciais e pedir feedback.
 > *A equipe do Dart espera ter mentores suficientes para aceitar apenas um punhado de inscrições, então confira também [as outras organizações mentoras](https://summerofcode.withgoogle.com/programs/2024/organizations).*

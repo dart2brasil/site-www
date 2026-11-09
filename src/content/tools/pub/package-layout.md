@@ -127,7 +127,7 @@ Recomendamos usar uma [licença aprovada pela OSI](https://opensource.org/licens
 como a [BSD-3-Clause,](https://opensource.org/licenses/BSD-3-Clause)
 para que outras pessoas possam reutilizar o seu trabalho.
 
-## README.md {:#readmemd}
+## README.md {:#readme-md}
 
 <FileTree>
 

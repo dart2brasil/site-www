@@ -233,7 +233,7 @@ Embora muitos desenvolvedores certamente queiram usar o null safety assim que es
 
 Vamos falar mais sobre null safety nos próximos meses, incluindo conselhos mais detalhados sobre como se preparar para a transição.
 
-## Curtindo 👍 pacotes no pub.dev {:#liking-packages-on-pubdev}
+## Curtindo 👍 pacotes no pub.dev {:#liking-packages-on-pub-dev}
 
 Também estreando hoje no pub.dev está o novo **recurso *Like*** para pacotes. Ele introduz um novo "sinal humano" para indicar quais pacotes você gosta. Para curtir um pacote, basta clicar no ícone de joinha ao lado das informações de detalhe do pacote:
 

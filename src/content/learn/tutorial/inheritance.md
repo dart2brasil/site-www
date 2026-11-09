@@ -446,7 +446,7 @@ Crie um `HelpCommand` que estende `Command` e imprime as informações de uso.
     O método `run` lê `runner.usage` e percorre `runner.commands`
     para montar e retornar dinamicamente a mensagem completa de uso da CLI.
 
-### Tarefa 5: Atualize o cli.dart para usar o CommandRunner {:#task-5-update-clidart-to-use-commandrunner}
+### Tarefa 5: Atualize o cli.dart para usar o CommandRunner {:#task-5-update-cli-dart-to-use-commandrunner}
 
 Conecte o `CommandRunner` e o `HelpCommand` no ponto de entrada executável.
 

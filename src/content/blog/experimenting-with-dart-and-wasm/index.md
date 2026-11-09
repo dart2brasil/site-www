@@ -41,7 +41,7 @@ Felizmente, um esforço em andamento na comunidade WebAssembly, conhecido como [
 
 É cedo demais para prever aonde isso pode nos levar, mas nosso protótipo inicial está mostrando resultados muito positivos, com benchmarks iniciais mostrando tanto um tempo mais rápido até o primeiro frame quanto um tempo médio de frame / throughput melhor. Se você tem interesse em saber mais sobre o projeto, dê uma olhada no código-fonte do [wasm_prototype](https://github.com/askeksa-google/sdk/blob/wasm_prototype/dart2wasm.md).
 
-## Interoperabilidade com código Wasm (package:wasm) {:#interoperability-with-wasm-code-packagewasm}
+## Interoperabilidade com código Wasm (package:wasm) {:#interoperability-with-wasm-code-package-wasm}
 
 Além de compilar para Wasm, também temos interesse em investigar se o Wasm pode ser usado para integrar com código existente de forma mais multiplataforma. Várias linguagens oferecem suporte a compilar para módulos que seguem a convenção de chamada do C, e com o [Dart FFI](https://dart.dev/guides/libraries/c-interop) você tem interoperabilidade com esses módulos. O Dart FFI pode ser uma ótima forma de aproveitar código-fonte e bibliotecas existentes, em vez de precisar reimplementar o código em Dart.
 
@@ -188,7 +188,7 @@ Decompression succeeded :)
 ```
 
 
-## Testando o package:wasm {:#trying-packagewasm}
+## Testando o package:wasm {:#trying-package-wasm}
 
 Se você tem interesse em testar a interop com Wasm, confira o [README](https://pub.dev/packages/wasm) do `package:wasm` para ver as instruções.
 
