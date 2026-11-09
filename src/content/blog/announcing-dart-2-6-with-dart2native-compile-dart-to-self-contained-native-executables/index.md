@@ -67,7 +67,7 @@ Já vimos alguns desenvolvedores Dart experimentando o `dart2native` para ferram
 
 * Filip, da equipe de DevRel do Dart, recompilou a ferramenta [linkchecker](https://github.com/filiph/linkcheck/) com o dart2native e viu uma [aceleração de 27x](https://github.com/filiph/linkcheck/issues/7#issuecomment-496308288) ao verificar sites pequenos.
 
-## Interoperabilidade com código C via dart:ffi {:#interoperability-with-c-code-via-dartffi}
+## Interoperabilidade com código C via dart:ffi {:#interoperability-with-c-code-via-dart-ffi}
 
 Aplicações nativas frequentemente precisam acessar funcionalidades nativas do sistema operacional ao redor. Essas APIs de sistema normalmente são expostas em bibliotecas nativas baseadas em C, e o Dart oferece suporte à interoperabilidade com essas bibliotecas por meio do `dart:ffi`, nosso novo mecanismo para [interoperabilidade com C](https://dart.dev/guides/libraries/c-interop), que lançamos em preview no [Dart 2.5](/blog/announcing-dart-2-5-super-charged-development). O compilador `dart2native` é compatível com o `dart:ffi`, então você pode criar e compilar aplicações Dart nativas que o utilizam.
 

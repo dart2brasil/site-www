@@ -10,7 +10,7 @@ layout: blog
 ---
 
 
-### O suporte ao Wasm acaba de chegar ao Flutter beta atual, graças a um marco empolgante de interop com JavaScript alcançado no Dart 3.3. Para celebrar, vamos olhar para trás e revisitar a jornada de uma década de interoperabilidade entre Dart e JS. {:#support-for-wasm-just-landed-in-the-current-flutter-beta-thanks-to-an-exciting-javascript-interop-milestone-reached-in-dart-33-to-celebrate-were-taking-a-look-back-at-the-decade-long-journey-of-dart-and-js-interoperability}
+### O suporte ao Wasm acaba de chegar ao Flutter beta atual, graças a um marco empolgante de interop com JavaScript alcançado no Dart 3.3. Para celebrar, vamos olhar para trás e revisitar a jornada de uma década de interoperabilidade entre Dart e JS. {:#support-for-wasm-just-landed-in-the-current-flutter-beta-thanks-to-an-exciting-javascript-interop-milestone-reached-in-dart-3-3-to-celebrate-were-taking-a-look-back-at-the-decade-long-journey-of-dart-and-js-interoperability}
 
 <DashImage src="images/1dhBQqKXU46sGKjx36LNf0w.webp" alt="Dash, o mascote do Dart e do Flutter, caminhando por uma porta aberta com termos relacionados à interop com JavaScript." caption="Imagem gerada por IA com o Gemini" />
 

@@ -52,7 +52,7 @@ Essa limitação se devia a vários casos complexos em que a análise de fluxo n
 
 No Dart 3.2, melhoramos nosso mecanismo de análise de fluxo e agora conseguimos promover **campos privados final**. Assim, o trecho de código acima passa sem erros. Isso se baseia na compreensão de que, para um campo privado e final, o valor nunca muda após a atribuição inicial, então verificá-lo uma única vez é considerado seguro. A promoção de campos privados final está disponível a partir do Dart 3.2 e será aplicada a projetos cujo [limite inferior](https://dart.dev/language/versioning) do SDK do Dart seja 3.2 ou superior.
 
-## Novas opções de análise de código no package:lints 3.0 {:#new-code-analysis-options-in-packagelints-30}
+## Novas opções de análise de código no package:lints 3.0 {:#new-code-analysis-options-in-package-lints-3-0}
 
 Já que falamos de análise de código, também fizemos várias melhorias nas nossas regras padrão de análise de código no [package:lints](https://pub.dev/packages/lints). Esse pacote contém o conjunto padrão e recomendado de regras de análise estática que vem com todo projeto novo criado com `dart create` ou `flutter create` (via [package:flutter_lints](https://pub.dev/packages/flutter_lints), uma extensão do package:lints).
 

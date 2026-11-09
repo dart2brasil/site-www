@@ -85,7 +85,7 @@ main() {
 
 Quer saber mais? [Leia o tour da linguagem Dart sobre final e const](https://www.dartlang.org/guides/language/language-tour#final-and-const).
 
-## Mais verificação estática com package:meta {:#further-static-checking-with-packagemeta}
+## Mais verificação estática com package:meta {:#further-static-checking-with-package-meta}
 
 Claro que *const* é um pouco restritivo, pois você precisa conseguir criar a classe em tempo de compilação. Não daria, por exemplo, para ler um banco de dados e criar objetos *const* em tempo de execução. Recentemente introduzimos a anotação "immutable" com o [package:meta](https://pub.dartlang.org/packages/meta):
 

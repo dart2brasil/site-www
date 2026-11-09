@@ -339,7 +339,7 @@ Há duas maneiras de trabalhar com isolates em Dart, dependendo do caso de uso:
 Na maioria dos casos, `Isolate.run` é a API recomendada
 para executar processos em background.
 
-#### `Isolate.run()` {:#isolaterun}
+#### `Isolate.run()` {:#isolate-run}
 
 O método estático `Isolate.run()` requer um argumento: um callback que será
 executado no isolate recém-criado.

@@ -87,7 +87,7 @@ don't include the section header.
 
 ## 3.13.0
 
-### Linguagem
+### Linguagem {:#language}
 
 - {{versioned}}
   Você não pode mais usar `final` ou `var` em parâmetros que não são declarações.
@@ -102,7 +102,7 @@ don't include the section header.
 [primary constructors]: /language/primary-constructors#field-declarations-in-parameters
 [`parameter_assignments`]: /tools/linter-rules/parameter_assignments
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:io`
 
@@ -128,9 +128,9 @@ don't include the section header.
 
 [54557]: {{site.repo.dart.sdk}}/issues/54557
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-### Analisador
+### Analisador {:#analyzer}
 
 - {{deprecated}}
   A regra de lint [`avoid_private_typedef_functions`][] está descontinuada
@@ -143,7 +143,7 @@ don't include the section header.
 [`avoid_private_typedef_functions`]: /tools/linter-rules/avoid_private_typedef_functions
 [`one_member_abstracts`]: /tools/linter-rules/one_member_abstracts
 
-#### Formatador (`dart format`)
+#### Formatador (`dart format`) {:#formatter-dart-format}
 
 - Deixou de adicionar uma linha em branco antes de um comentário no
   fim de uma unidade de compilação ou de um corpo com chaves.
@@ -177,14 +177,14 @@ don't include the section header.
   use as opções `--root-certs-file` ou `--root-certs-cache` para
   fornecer certificados de fallback à VM standalone do Dart.
 
-#### API do Embedder
+#### API do Embedder {:#embedder-api}
 
 - `Dart_FileModifiedCallback` em `runtime/include/dart_tools_api.h` agora
   passa `int64_t since` como microssegundos desde a época, em vez de milissegundos.
 
 ## 3.12.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:js_interop`
 
@@ -201,7 +201,7 @@ don't include the section header.
 
 [56905]: {{site.repo.dart.sdk}}/issues/56905
 
-### Ferramentas
+### Ferramentas {:#tools}
 
 #### Pub
 
@@ -210,7 +210,7 @@ don't include the section header.
   Para reparar todos os pacotes do cache do pub, como nas versões anteriores,
   passe a nova flag `--all`.
 
-#### Compilador Wasm (dart2wasm)
+#### Compilador Wasm (dart2wasm) {:#wasm-compiler-dart2wasm}
 
 - A API de carregamento de módulos com carregamento deferido foi atualizada para permitir
   o download em lote de módulos deferidos.
@@ -220,7 +220,7 @@ don't include the section header.
   Todas as funções de carregamento de módulos também devem aceitar agora um callback `instantiator`
   ao qual devem passar os resultados carregados.
 
-#### Compilador JavaScript de produção (dart2js)
+#### Compilador JavaScript de produção (dart2js) {:#production-javascript-compiler-dart2js}
 
 - `JSExportedDartFunction.toDart` agora lança exceção se a função JS wrapper
   não for resultado de `Function.toJS` ou `Function.toJSCaptureThis`,
@@ -231,9 +231,9 @@ don't include the section header.
 
 ## 3.11.0
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Analisador
+#### Analisador {:#analyzer}
 
 - {{deprecated}}
   A regra de lint [`avoid_null_checks_in_equality_operators`][] está descontinuada
@@ -251,7 +251,7 @@ don't include the section header.
 [`prefer_final_parameters`]: /tools/linter-rules/prefer_final_parameters
 [`use_if_null_to_convert_nulls_to_bools`]: /tools/linter-rules/use_if_null_to_convert_nulls_to_bools
 
-#### Compilação Wasm (`dart compile wasm`)
+#### Compilação Wasm (`dart compile wasm`) {:#wasm-compilation-dart-compile-wasm}
 
 - {{removed}}
   Código que importa `dart:js_util` ou `package:js` agora
@@ -264,14 +264,14 @@ don't include the section header.
 
 ## 3.10.0
 
-### Linguagem
+### Linguagem {:#language}
 
 - Funções geradoras `sync*` e `async*` sem um retorno especificado agora
   inferem corretamente os tipos de retorno como non-nullable quando nenhum valor `null` é produzido.
   Isso pode disparar novos diagnósticos relacionados a elementos de código desnecessários,
   como um operador de acesso com null-aware desnecessário (`?.`).
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:core`
 
@@ -305,7 +305,7 @@ don't include the section header.
   tiver tipos não suportados na assinatura, incluir parâmetros de tipo
   ou tiver quaisquer parâmetros nomeados, a chamada resultará em erro de compilação.
 
-### Ferramentas
+### Ferramentas {:#tools}
 
 #### SDK
 
@@ -325,7 +325,7 @@ don't include the section header.
 [`dart run`]: /tools/dart-run
 [sdk report]: {{site.repo.dart.sdk}}/issues/new/choose
 
-#### Analisador
+#### Analisador {:#analyzer}
 
 - Usar membros marcados como `@experimental` fora
   do pacote em que são declarados
@@ -339,7 +339,7 @@ don't include the section header.
   `package:meta` não é mais suportada.
   Para marcar um parâmetro como obrigatório, use a palavra-chave `required`.
 
-#### Compilação Wasm (`dart compile wasm`)
+#### Compilação Wasm (`dart compile wasm`) {:#wasm-compilation-dart-compile-wasm}
 
 - `dart:js_util` e `package:js` [não são mais suportados][61550] ao
   compilar para WebAssembly.
@@ -355,7 +355,7 @@ don't include the section header.
 
 ## 3.9.0
 
-### Linguagem
+### Linguagem {:#language}
 
 - {{versioned}}
   Null safety agora é assumido ao calcular
@@ -364,7 +364,7 @@ don't include the section header.
   fazer com que novos diagnósticos do analisador sejam disparados em
   código existente que antes passava na análise.
 
-### Ferramentas
+### Ferramentas {:#tools}
 
 - Alguns subcomandos da ferramenta `dart`, como `dart analyze` e `dart fix`,
   agora executam snapshots compilados com AOT das ferramentas subjacentes.
@@ -381,7 +381,7 @@ don't include the section header.
   Se o seu SDK atual não atender ao limite especificado,
   `dart pub get` e outras ações que recuperam dependências falharão.
 
-#### Build do Dart
+#### Build do Dart {:#dart-build}
 
 - {{experimental}}
   Gerar um bundle de aplicação CLI com suporte experimental a native assets agora
@@ -390,7 +390,7 @@ don't include the section header.
 
 ## 3.8.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:html`
 
@@ -401,9 +401,9 @@ don't include the section header.
 
 [53264]: {{site.repo.dart.sdk}}/issues/53264
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Analisador
+#### Analisador {:#analyzer}
 
 - {{deprecated}}
   A regra de lint [`avoid_null_checks_in_equality_operators`][] está descontinuada
@@ -411,7 +411,7 @@ don't include the section header.
 
 [`avoid_null_checks_in_equality_operators`]: /tools/linter-rules/avoid_null_checks_in_equality_operators
 
-#### Compilador JavaScript de desenvolvimento (DDC)
+#### Compilador JavaScript de desenvolvimento (DDC) {:#development-javascript-compiler-ddc}
 
 - Agora lança um erro de runtime quando um
   construtor factory de redirecionamento é [destacado][tear-offs] e
@@ -420,12 +420,12 @@ don't include the section header.
 
 [tear-offs]: /language/functions#tear-offs
 
-#### Compilador JavaScript de produção (dart2js)
+#### Compilador JavaScript de produção (dart2js) {:#production-javascript-compiler-dart2js}
 
 - {{experimental}} {{removed}}
   As flags `--experiment-new-rti` e `--use-old-rti` não são mais suportadas.
 
-#### Formatador (`dart format`)
+#### Formatador (`dart format`) {:#formatter-dart-format}
 
 - {{versioned}}
   O formatador fez mudanças e correções que resultam em nova saída ao
@@ -435,7 +435,7 @@ don't include the section header.
 
 ## 3.7.0
 
-### Linguagem
+### Linguagem {:#language}
 
 - {{versioned}} [Variáveis locais e parâmetros nomeados `_`][wildcards] agora
   não são mais de vinculação e não podem mais ser usados ou acessados.
@@ -448,7 +448,7 @@ don't include the section header.
 [wildcards]: /language/variables#wildcard-variables
 [56893]: {{site.repo.dart.sdk}}/issues/56893
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audio`, `dart:web_gl`, `dart:js`
 
@@ -469,9 +469,9 @@ don't include the section header.
 
 [JS interop usage]: /interop/js-interop/usage
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Analisador
+#### Analisador {:#analyzer}
 
 - {{removed}} As regras de lint [`package_api_docs`][] e [`unsafe_html`][]
   foram removidas e devem ser retiradas dos arquivos `analysis_options.yaml`.
@@ -479,7 +479,7 @@ don't include the section header.
 [`package_api_docs`]: /tools/linter-rules/package_api_docs
 [`unsafe_html`]: /tools/linter-rules/unsafe_html
 
-#### Formatador (`dart format`)
+#### Formatador (`dart format`) {:#formatter-dart-format}
 
 - {{versioned}} O formatador implementa um [novo estilo][new style] que resulta em
   nova saída ao formatar código com uma [versão da linguagem][language version] 3.7 ou superior.
@@ -497,7 +497,7 @@ don't include the section header.
 
 ## 3.6.0
 
-### Linguagem
+### Linguagem {:#language}
 
 - [O contexto usado pelo Dart para realizar a inferência de tipo sobre
   o operando de uma expressão throw foi alterado de
@@ -508,7 +508,7 @@ don't include the section header.
 
 [56065]: {{site.repo.dart.sdk}}/issues/56065
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:io`
 
@@ -520,9 +520,9 @@ don't include the section header.
 [52444]: {{site.repo.dart.sdk}}/issues/52444
 [53618]: {{site.repo.dart.sdk}}/issues/53618
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Analisador
+#### Analisador {:#analyzer}
 
 - {{deprecated}} As regras de lint [`package_api_docs`][] e [`unsafe_html`][]
   foram descontinuadas e estão marcadas para remoção no Dart 3.7.
@@ -530,7 +530,7 @@ don't include the section header.
 [`package_api_docs`]: /tools/linter-rules/package_api_docs
 [`unsafe_html`]: /tools/linter-rules/unsafe_html
 
-#### Front end do compilador (cfe)
+#### Front end do compilador (cfe) {:#compiler-front-end-cfe}
 
 - O compilador do Dart agora [calcula os closures superior e inferior dos schemas de tipo
   logo antes de serem passados para o procedimento de teste de subtipo][56466].
@@ -541,13 +541,13 @@ don't include the section header.
 
 [56466]: {{site.repo.dart.sdk}}/issues/56466
 
-#### Compilador Wasm (dart2wasm)
+#### Compilador Wasm (dart2wasm) {:#wasm-compiler-dart2wasm}
 
 - A condição `dart.library.js` agora é `false` em imports condicionais
   ao compilar para WebAssembly.
   Deve-se usar a condição `dart.library.js_interop` em vez dela.
 
-#### Formatador (`dart format`)
+#### Formatador (`dart format`) {:#formatter-dart-format}
 
 As seguintes mudanças podem resultar em pequenas alterações de formatação
 ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
@@ -563,7 +563,7 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
 
 ## 3.5.0
 
-### Linguagem
+### Linguagem {:#language}
 
 - [O contexto usado pelo compilador para realizar a inferência de tipo sobre
   o operando de uma expressão `await` foi alterado para
@@ -576,7 +576,7 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
 [55418]: {{site.repo.dart.sdk}}/issues/55418
 [55436]: {{site.repo.dart.sdk}}/issues/55436
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:core`
 
@@ -623,7 +623,7 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
 
 ## 3.4.0
 
-### Linguagem
+### Linguagem {:#language}
 
 - [O schema de contexto de tipo de padrão para padrões de cast
   agora é `_` (o tipo desconhecido) em vez de `Object?`][54640].
@@ -635,7 +635,7 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
 [54640]: {{site.repo.dart.sdk}}/issues/54640
 [54828]: {{site.repo.dart.sdk}}/issues/54828
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:cli`
 
@@ -692,15 +692,15 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
 
 [53128]: {{site.repo.dart.sdk}}/issues/53218
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Compilador JavaScript de produção (dart2js)
+#### Compilador JavaScript de produção (dart2js) {:#production-javascript-compiler-dart2js}
 
 - {{experimental}} {{deprecated}} Agora você deve especificar um formato para
   a opção de CLI `--dump-info` como `binary` ou `json`.
   O formato `json` está descontinuado e pode ser removido em uma versão futura do Dart.
 
-#### Compilador Wasm (dart2wasm)
+#### Compilador Wasm (dart2wasm) {:#wasm-compiler-dart2wasm}
 
 - {{experimental}} Vários argumentos de CLI de `dart compile wasm` foram
   atualizados, removidos ou substituídos.
@@ -727,14 +727,14 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
   * `class-modifiers`
   * `sealed-class`
 
-### Linguagem
+### Linguagem {:#language}
 
 * [Um getter abstrato agora é considerado promovível se
   não houver declarações conflitantes][54056].
 
 [54056]: {{site.repo.dart.sdk}}/issues/54056
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:cli`
 
@@ -799,23 +799,23 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
 
 [51896]: {{site.repo.dart.sdk}}/issues/51896
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Compilador JavaScript de produção (dart2js)
+#### Compilador JavaScript de produção (dart2js) {:#production-javascript-compiler-dart2js}
 
 * [O `Invocation` que é passado para `noSuchMethod` não tem mais
   um `memberName` minificado][54201], mesmo quando compilado com `--minify`.
 
 [54201]: {{site.repo.dart.sdk}}/issues/54201
 
-#### Compilador Wasm (dart2wasm)
+#### Compilador Wasm (dart2wasm) {:#wasm-compiler-dart2wasm}
 
 * {{experimental}} [Proíbe importar bibliotecas legadas de interop com JS][54004].
   Prefira usar `dart:js_interop` e `dart:js_interop_unsafe`.
 
 [54004]: {{site.repo.dart.sdk}}/issues/54004
 
-#### Analisador
+#### Analisador {:#analyzer}
 
 * {{experimental}} Diretivas inválidas em comentários `dart doc` agora são
   reportadas pelo analisador.
@@ -846,13 +846,13 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
 
 ## 3.2.0
 
-### Linguagem
+### Linguagem {:#language}
 
 * {{versioned}} [Mudou o ponto de divisão para padrões refutáveis][53167]
   para o padrão de nível superior, de modo que a promoção de tipo em instruções if-case seja consistente
   independentemente de o valor avaliado poder lançar uma exceção.
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:cli`
 
@@ -893,19 +893,19 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
   e não estendidos, por tipos `@staticInterop` definidos pelo usuário.
 * {{experimental}} `JSArray.withLength` foi alterado para receber `int` em vez de `JSNumber`.
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Compilador JavaScript de desenvolvimento (DDC)
-
-* [Foram adicionados interceptors para os tipos JavaScript `Symbol` e `BigInt`][53106];
-  eles não devem mais ser usados com classes `package:js`.
-
-#### Compilador JavaScript de produção (dart2js)
+#### Compilador JavaScript de desenvolvimento (DDC) {:#development-javascript-compiler-ddc}
 
 * [Foram adicionados interceptors para os tipos JavaScript `Symbol` e `BigInt`][53106];
   eles não devem mais ser usados com classes `package:js`.
 
-#### Analisador
+#### Compilador JavaScript de produção (dart2js) {:#production-javascript-compiler-dart2js}
+
+* [Foram adicionados interceptors para os tipos JavaScript `Symbol` e `BigInt`][53106];
+  eles não devem mais ser usados com classes `package:js`.
+
+#### Analisador {:#analyzer}
 
 * {{versioned}} [A promoção de campos privados final][2020] pode fazer com que os seguintes
   avisos do analisador sejam disparados em código existente que antes passava na análise:
@@ -942,7 +942,7 @@ ao executar `dart format` com um SDK do Dart 3.6 ou posterior:
 
 ## 3.1.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:async`
 
@@ -979,7 +979,7 @@ O [guia de migração para o Dart 3.0][dart3] cobre todos os detalhes
 sobre todas as mudanças desta seção.
 :::
 
-### Linguagem
+### Linguagem {:#language}
 
 * {{versioned}} A interpretação de [casos de switch][switch cases] foi alterada de
   expressões constantes para padrões.
@@ -991,7 +991,7 @@ sobre todas as mudanças desta seção.
   [label] que não é um loop (instruções `for`, `do` e `while`) nem um membro
   de `switch`.
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 * As seguintes classes existentes foram transformadas em classes mixin:
   `Iterable`, `IterableMixin`, `IterableBase`, `ListMixin`, `SetMixin`, `MapMixin`,
@@ -1058,14 +1058,14 @@ sobre todas as mudanças desta seção.
 
 ## 2.19.0
 
-### Linguagem
+### Linguagem {:#language}
 
 * [Marcado código adicional como inalcançável][49635] devido aos tipos `Null` e `Never`.
 * [Não delega nomes privados inacessíveis para `noSuchMethod`][49687].
 * [Reporta um erro de compilação][50383] para todas as dependências cíclicas durante a
   inferência de tipo de nível superior.
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:convert`
 
@@ -1135,11 +1135,11 @@ sobre todas as mudanças desta seção.
 
 ## 2.18.0
 
-### Linguagem
+### Linguagem {:#language}
 
 * [Removido o suporte a mixin de classes que não estendem `Object`][48167].
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:io`
 
@@ -1149,11 +1149,11 @@ sobre todas as mudanças desta seção.
 * [A VM do Dart não restaura mais automaticamente as configurações iniciais do terminal][45630]
   ao sair.
 
-### Ferramentas
+### Ferramentas {:#tools}
 
 * [Descontinuado por completo o arquivo `.packages`][48272].
 
-#### Linha de comando do Dart
+#### Linha de comando do Dart {:#dart-command-line}
 
 * [Removidas as ferramentas standalone `dart2js` e `dartdevc`][46100].
 * [Removida a ferramenta standalone `dartanalyzer`][46100].
@@ -1167,7 +1167,7 @@ sobre todas as mudanças desta seção.
 
 ## 2.17.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:io`
 
@@ -1178,9 +1178,9 @@ sobre todas as mudanças desta seção.
 * [Adicionada nova propriedade `allowLegacyUnsafeRenegotiation` a `SecurityContext`][48513],
   que permite renegociação TLS para sockets seguros de cliente.
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Linha de comando do Dart
+#### Linha de comando do Dart {:#dart-command-line}
 
 * {{deprecated}} [Descontinuada a ferramenta standalone `dart2js`][46100].
 * {{deprecated}} [Descontinuada a ferramenta standalone `dartdevc`][46100].
@@ -1194,7 +1194,7 @@ sobre todas as mudanças desta seção.
 
 ## 2.16.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:io`
 
@@ -1206,9 +1206,9 @@ sobre todas as mudanças desta seção.
 
 * {{removed}} [Removida a API `Isolate.packageRoot`][47769].
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Linha de comando do Dart
+#### Linha de comando do Dart {:#dart-command-line}
 
 * {{deprecated}} [Descontinuada a ferramenta standalone `dartanalyzer`][46100].
 * {{deprecated}} [Descontinuada a ferramenta standalone `dartdoc`][46100].
@@ -1220,7 +1220,7 @@ sobre todas as mudanças desta seção.
 
 ## 2.15.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:io`
 
@@ -1235,14 +1235,14 @@ sobre todas as mudanças desta seção.
 
 * [Removido `window.openDatabase`][46316] (relacionado à exclusão de `dart:web_sql` acima).
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### Linha de comando do Dart
+#### Linha de comando do Dart {:#dart-command-line}
 
 * [Removida a ferramenta standalone `dart2native`][46100].
 * Removida a ferramenta standalone `dartfmt`.
 
-#### VM do Dart
+#### VM do Dart {:#dart-vm}
 
 * [Removido o suporte a native extensions no estilo `dart-ext:`][45451]
 * [Isolates criados pela API `Isolate.spawn()` agrupados][46754] para operar no
@@ -1255,7 +1255,7 @@ sobre todas as mudanças desta seção.
 
 ## 2.14.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:io`
 
@@ -1267,14 +1267,14 @@ sobre todas as mudanças desta seção.
 * A maioria dos tipos expostos por esta biblioteca [não pode mais ser estendida, implementada ou
   usada como mixin][45115].
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### VM do Dart
+#### VM do Dart {:#dart-vm}
 
 * Expandos e os parâmetros `object` de `Dart_NewWeakPersistentHandle` e
   `Dart_NewFinalizableHandle` [não aceitam mais `Pointer` e subtipos de `Struct`][45071]
 
-#### Linha de comando do Dart
+#### Linha de comando do Dart {:#dart-command-line}
 
 * [Descontinuada a ferramenta standalone `dart2native`][46100]
 * Descontinuada a ferramenta standalone `dartfmt`.
@@ -1297,7 +1297,7 @@ sobre todas as mudanças desta seção.
 
 ## 2.13.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `package:js`
 
@@ -1308,14 +1308,14 @@ sobre todas as mudanças desta seção.
 
 ## 2.12.0
 
-### Linguagem
+### Linguagem {:#language}
 
 * [O null safety][Null safety] agora é habilitado por padrão em todo código
   que não optou por sair.
 * [Corrigido um bug de implementação][44660] em que `this` às vezes passava por promoção de tipo
   em extensões.
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:ffi`
 
@@ -1326,9 +1326,9 @@ sobre todas as mudanças desta seção.
   capaz de invocar `sizeOf<T>` de forma genérica.
 * [Descontinuados subtipos de `Struct` sem nenhum membro nativo][44622].
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### VM do Dart
+#### VM do Dart {:#dart-vm}
 
 * [`Dart_WeakPersistentHandle` não se auto-exclui mais][42312] quando o
   objeto referenciado é coletado pelo garbage collector, para evitar race conditions.
@@ -1348,9 +1348,9 @@ sobre todas as mudanças desta seção.
 
 ## 2.10.0
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### VM do Dart
+#### VM do Dart {:#dart-vm}
 
 * [Renomeado `dart_api_dl.cc` para `dart_api_dl.c`][42982] e alterado para um arquivo C puro.
 
@@ -1358,7 +1358,7 @@ sobre todas as mudanças desta seção.
 
 ## 2.9.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:convert`
 
@@ -1379,9 +1379,9 @@ sobre todas as mudanças desta seção.
 * [Os compiladores web (dart2js e DDC) agora produzem um erro de compilação][42714] se
   `dart:mirrors` for importado.
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### VM do Dart
+#### VM do Dart {:#dart-vm}
 
 * Ao imprimir uma string usando a função `print`, [a implementação padrão
   imprime quaisquer surrogates não pareados da string como caracteres de substituição][41100]
@@ -1396,7 +1396,7 @@ sobre todas as mudanças desta seção.
 
 ## 2.8.1
 
-### Linguagem
+### Linguagem {:#language}
 
 * [Corrigido um bug de implementação][40675] em que a inferência de variáveis locais
   usava incorretamente o tipo promovido de uma variável de tipo.
@@ -1404,7 +1404,7 @@ sobre todas as mudanças desta seção.
   `implements Function`, `extends Function` ou `with Function`, que não tinham
   mais efeito desde o Dart 2.0.0.
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:async`
 
@@ -1445,7 +1445,7 @@ sobre todas as mudanças desta seção.
   `changed` e `modified`.
 * [A classe `HeaderValue` agora faz o parsing de forma mais estrita][40709] em dois casos de borda inválidos.
 
-### Ferramentas
+### Ferramentas {:#tools}
 
 #### Dart Dev Compiler (DDC)
 
@@ -1492,11 +1492,11 @@ outro.
 
 ## 2.7.0
 
-### Linguagem
+### Linguagem {:#language}
 
 * [Membros de extensão estáticos são acessíveis quando importados com um prefixo][671].
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:io`
 
@@ -1505,13 +1505,13 @@ outro.
 
 ## 2.6.0
 
-### Linguagem
+### Linguagem {:#language}
 
 * [Alterada a inferência ao usar valores `Null` em um contexto `FutureOr`][37985].
   Ou seja, restrições de formas semelhantes a `Null` <: `FutureOr<T>` agora produzem
   `Null` como solução para `T`.
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:ffi`
 
@@ -1524,7 +1524,7 @@ outro.
 
 ## 2.5.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 * Vários métodos e propriedades de várias bibliotecas principais, que
   declaravam um tipo de retorno `List<int>`, foram [atualizados para declarar um tipo de retorno
@@ -1537,7 +1537,7 @@ outro.
 * [Os setters `name` e `value` da classe `Cookie` agora validam][37192]
   que as strings são formadas pelo conjunto de caracteres permitido e não são null.
 
-### Ferramentas
+### Ferramentas {:#tools}
 
 #### Pub
 
@@ -1550,11 +1550,11 @@ outro.
 
 ## 2.4.0
 
-### Linguagem
+### Linguagem {:#language}
 
 * [A covariância de variáveis de tipo usadas em super-interfaces agora é imposta][35097].
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:isolate`
 
@@ -1571,7 +1571,7 @@ outro.
 
 ## 2.2.0
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `package:kernel`
 
@@ -1584,7 +1584,7 @@ outro.
 
 ## 2.1.1
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 #### `dart:io`
 
@@ -1592,9 +1592,9 @@ outro.
 
 [29554]: {{site.repo.dart.sdk}}/issues/29554
 
-### Ferramentas
+### Ferramentas {:#tools}
 
-#### VM do Dart
+#### VM do Dart {:#dart-vm}
 
 * [Corrigida uma brecha de soundness ao usar `dart:mirrors`][35611] para invocar
   refletivamente um método de forma incorreta, violando seus tipos estáticos.
@@ -1604,7 +1604,7 @@ outro.
 
 ## 2.1.0
 
-### Linguagem
+### Linguagem {:#language}
 
 * Vários erros estáticos que deveriam ter sido detectados
   e reportados não eram suportados no 2.0.0. Eles agora são reportados, o que significa que
@@ -1619,7 +1619,7 @@ outro.
   * [Construtores constantes não podem redirecionar para construtores não constantes][34161].
   * [Setters com o mesmo nome da classe envolvente não são permitidos][34225].
 
-### Ferramentas
+### Ferramentas {:#tools}
 
 #### `dart2js`
 
@@ -1637,14 +1637,14 @@ outro.
 
 ## 2.0.0
 
-### Linguagem
+### Linguagem {:#language}
 
 * Substituído o sistema de tipos estático opcional e unsound por um sistema de tipos
   sound que usa inferência de tipos e verificações em runtime, anteriormente chamado de [strong mode].
 * [Funções marcadas como `async` agora executam de forma síncrona][30345] até a primeira
   instrução `await`.
 
-### Bibliotecas
+### Bibliotecas {:#libraries}
 
 * Constantes nas bibliotecas principais renomeadas de `SCREAMING_CAPS` para `lowerCamelCase`.
 * Adicionados muitos novos métodos às classes das bibliotecas principais que precisarão ser implementados
@@ -1652,7 +1652,7 @@ outro.
 * `dart:isolate` e `dart:mirrors` não são mais suportados ao
   usar o Dart para web.
 
-### Ferramentas
+### Ferramentas {:#tools}
 
 #### Pub
 

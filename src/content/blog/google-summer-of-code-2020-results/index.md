@@ -17,7 +17,7 @@ layout: blog
 
 Em [fevereiro, ficamos muito felizes em anunciar](/blog/students-join-a-dart-project-for-google-summer-of-code-2020) que a equipe do Dart seria uma organização mentora no GSoC 2020. Acabamos [orientando 5 projetos](https://summerofcode.withgoogle.com/organizations/6544944065413120/), escolhidos entre mais de 170 inscrições de estudantes de todo o mundo. Hoje estamos animados para compartilhar os resultados, conforme descritos pelos próprios estudantes que trabalharam nos projetos.
 
-### Gerando bindings dart:ffi para interoperabilidade Dart-C com package:ffigen {:#generating-dartffi-bindings-for-dart-c-interop-with-packageffigen}
+### Gerando bindings dart:ffi para interoperabilidade Dart-C com package:ffigen {:#generating-dart-ffi-bindings-for-dart-c-interop-with-package-ffigen}
 
 *Por Prerak Mann*
 
@@ -65,7 +65,7 @@ Depois de pesquisar sobre platform channels (a API do Flutter para enviar mensag
 
 Se você é um desenvolvedor que quer criar um plugin ou apenas acessar uma API de plataforma, esses exemplos são um ótimo ponto de partida. Para mais informações sobre esse projeto, veja o artigo [Exemplos de platform channel]({{site.flutter-blog}}/platform-channel-examples).
 
-### Escrevendo o package:yaml_edit para habilitar `pub add &lt;package&gt;` {:#writing-packageyaml_edit-to-enable-pub-add-ltpackagegt}
+### Escrevendo o package:yaml_edit para habilitar `pub add &lt;package&gt;` {:#writing-package-yaml_edit-to-enable-pub-add-ltpackagegt}
 
 *Por Garett Tok Ern Liang*
 

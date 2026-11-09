@@ -27,7 +27,7 @@ e outras são feitas para aplicativos Flutter.
 :::
 
 <a id="predefined-rule-sets"></a>
-## Conjuntos
+## Conjuntos {:#sets}
 
 Para evitar a necessidade de selecionar individualmente regras compatíveis do linter,
 considere começar com um conjunto de regras do linter,

@@ -30,7 +30,7 @@ como a solução de interop web do Dart a longo prazo.
 Leia a seção **`package:web` vs `dart:html`** para mais informações.
 :::
 
-## `package:web` vs `dart:html` {:#packageweb-vs-darthtml}
+## `package:web` vs `dart:html` {:#package-web-vs-dart-html}
 
 O objetivo do `package:web` é reformular a forma como o Dart expõe as APIs web,
 resolvendo várias questões das bibliotecas web atuais do Dart:
@@ -74,7 +74,7 @@ são tratadas nas seções de migração a seguir. Embora nos refiramos apenas a
 `dart:html` por brevidade, os mesmos padrões de migração se aplicam a qualquer outra
 biblioteca web central do Dart, como `dart:svg`.
 
-## Migrando de `dart:html` {:#migrating-from-darthtml}
+## Migrando de `dart:html` {:#migrating-from-dart-html}
 
 Remova o import de `dart:html` e substitua-o por `package:web/web.dart`:
 

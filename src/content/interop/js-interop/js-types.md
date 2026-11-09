@@ -134,7 +134,7 @@ pode retornar uma referência, um proxy ou uma cópia.
 Não dependa de mutações em um lado afetarem o outro.
 :::
 
-## Requisitos para declarações `external` e `Function.toJS` {:#requirements-on-external-declarations-and-functiontojs}
+## Requisitos para declarações `external` e `Function.toJS` {:#requirements-on-external-declarations-and-function-tojs}
 
 Para garantir a segurança de tipos, o compilador restringe
 quais tipos podem entrar e sair do JS.

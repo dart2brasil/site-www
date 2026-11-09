@@ -37,7 +37,7 @@ Para mais detalhes, acesse [GSoC ’21: criando um exemplo de desktop para Flutt
 <DashImage src="images/1QswESHAF6CO9UNYCcRVKXA.webp" alt="A ferramenta de linting para Flutter mostra várias regras de lint e suas descrições." caption="Ferramenta de linting para Flutter" />
 
 
-## Detecção de licenças para o pub.dev {:#license-detection-for-pubdev}
+## Detecção de licenças para o pub.dev {:#license-detection-for-pub-dev}
 
 *Por Bharat Biradar*
 

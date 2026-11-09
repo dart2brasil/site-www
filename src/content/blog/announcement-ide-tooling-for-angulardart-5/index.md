@@ -114,7 +114,7 @@ Você também pode experimentar no nosso [projeto de demonstração do plugin do
 
 Se você usa o IntelliJ, isso deve ser tudo. Outros editores podem não rodar nosso plugin em HTML sem um trabalho extra; o VSCode, por exemplo, exige [uma flag](https://github.com/Dart-Code/Dart-Code/issues/396#issuecomment-366058798).
 
-## Feedback e mais {:#feedback--more}
+## Feedback e mais {:#feedback-more}
 
 O código-fonte dos nossos plugins fica [no Github](https://github.com/dart-lang/angular_analyzer_plugin), onde há mais informações sobre o que é suportado e onde você pode abrir issues se tiver dúvidas ou encontrar algum bug.
 

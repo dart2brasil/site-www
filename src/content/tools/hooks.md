@@ -103,7 +103,7 @@ o asset por completo para não empacotá-lo com o aplicativo.
 [`LinkOutputBuilder`]: {{site.pub-api}}/hooks/latest/hooks/LinkOutputBuilder-class.html
 [`metadata`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput/metadata.html
 
-### Variáveis de ambiente {:.no_toc}
+### Variáveis de ambiente {:.no_toc} {:#environment-variables}
 
 Os hooks são executados em um ambiente semi-hermético.
 Isso significa que `Platform.environment` não
@@ -148,7 +148,7 @@ em tempo de execução pelo código Dart. Atualmente, o Dart SDK pode
 usar o tipo `CodeAsset`, mas outros tipos de assets estão planejados.
 Para saber mais, veja o seguinte.
 
-### Tipo CodeAsset {:.no_toc}
+### Tipo CodeAsset {:.no_toc} {:#codeasset-type}
 
 Um [`CodeAsset`][] representa um code asset. Um code asset é uma biblioteca dinâmica
 compilada a partir de uma linguagem diferente de Dart, como C, C++, Rust ou Go.

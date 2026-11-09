@@ -36,7 +36,7 @@ Antes de começar este capítulo, certifique-se de:
 
 Crie o clássico Hello World em Dart para começar seu projeto.
 
-### Tarefa 1: Confirme sua configuração do Dart
+### Tarefa 1: Confirme sua configuração do Dart {:#task-1-confirm-your-dart-setup}
 
 Primeiro, certifique-se de que o Dart está pronto para uso no seu sistema seguindo estes passos.
 
@@ -60,7 +60,7 @@ Primeiro, certifique-se de que o Dart está pronto para uso no seu sistema segui
 
 [Dart installation guide]: /get-dart
 
-### Tarefa 2: Crie um novo projeto Dart
+### Tarefa 2: Crie um novo projeto Dart {:#task-2-create-a-new-dart-project}
 
 Agora, crie seu primeiro aplicativo de linha de comando em Dart.
 
@@ -114,7 +114,7 @@ Agora, crie seu primeiro aplicativo de linha de comando em Dart.
     Seus detalhes serão abordados em capítulos futuros.
     :::
 
-### Tarefa 3: Execute seu primeiro programa Dart
+### Tarefa 3: Execute seu primeiro programa Dart {:#task-3-run-your-first-dart-program}
 
 Agora, execute seu programa para testá-lo.
 
@@ -142,7 +142,7 @@ Agora, execute seu programa para testá-lo.
 
     Parabéns! Você executou com sucesso seu primeiro programa Dart!
 
-### Tarefa 4: Faça sua primeira alteração de código
+### Tarefa 4: Faça sua primeira alteração de código {:#task-4-make-your-first-code-change}
 
 Agora, modifique o código que gera `Hello world: 42!`.
 

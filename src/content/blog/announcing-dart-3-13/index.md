@@ -307,7 +307,7 @@ pacotes grandes com mais de 100 mil arquivos gerados.
 
 ## Interoperabilidade nativa {:#native-interop-updates}
 
-### Tree-shaking de bibliotecas nativas com `@RecordUse` e `package:record_use` {:#tree-shaking-native-libraries-with-recorduse-and-packagerecorduse}
+### Tree-shaking de bibliotecas nativas com `@RecordUse` e `package:record_use` {:#tree-shaking-native-libraries-with-recorduse-and-package-record_use}
 
 Nosso compromisso com a eficiência chega até os binários compilados dos seus aplicativos.
 Ao construir apps Dart e Flutter que interoperam com código nativo em C, C++ ou Rust usando

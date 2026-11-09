@@ -51,7 +51,7 @@ Isso garante que novas versões não possam ser publicadas por eventos que nunca
 deveriam acionar uma publicação.
 :::
 
-### Configurando a publicação automatizada a partir do GitHub Actions no pub.dev {:#configuring-automated-publishing-from-github-actions-on-pubdev}
+### Configurando a publicação automatizada a partir do GitHub Actions no pub.dev {:#configuring-automated-publishing-from-github-actions-on-pub-dev}
 
 Para habilitar a publicação automatizada do GitHub Actions para o `pub.dev`, você precisa ser:
 
@@ -89,7 +89,7 @@ _tag-pattern_ separado. Considere usar um _tag-pattern_ como
 `my_package_name-v{% raw %}{{version}}{% endraw %}` para um pacote
 chamado `my_package_name`.
 
-### Configurando um workflow do GitHub Action para publicar no pub.dev {:#configuring-a-github-action-workflow-for-publishing-to-pubdev}
+### Configurando um workflow do GitHub Action para publicar no pub.dev {:#configuring-a-github-action-workflow-for-publishing-to-pub-dev}
 
 Quando a publicação automatizada a partir do GitHub Actions está habilitada no pub.dev,
 você pode criar um workflow do GitHub Actions para publicação. Isso é feito

@@ -65,7 +65,7 @@ Ao criar ferramentas que invocam outros comandos de desenvolvedor
 esteja atento à diferença de ambiente de execução
 entre snapshots JIT e binários AOT.
 
-### Comportamento de Platform.resolvedExecutable em AOT {:#platformresolvedexecutable-behavior-in-aot}
+### Comportamento de Platform.resolvedExecutable em AOT {:#platform-resolvedexecutable-behavior-in-aot}
 
 No modelo legado `dart pub global activate`
 (que rodava dentro da Dart JIT VM),
@@ -92,7 +92,7 @@ Se sua ferramenta depender de `Platform.resolvedExecutable` ou `Platform.executa
    invocar qualquer uma dessas propriedades executa o binário da sua ferramenta novamente
    em vez do executável `dart`.
 
-### Solução recomendada: package:cli_util {:#recommended-solution-packagecli_util}
+### Solução recomendada: package:cli_util {:#recommended-solution-package-cli_util}
 
 Para descobrir com segurança o Dart SDK do host e localizar o binário `dart`
 tanto na compilação JIT quanto na AOT,

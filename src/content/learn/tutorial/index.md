@@ -19,7 +19,7 @@ Ao final, você terá construído um app que demonstra os recursos
 essenciais do desenvolvimento em Dart: variáveis, funções, classes,
 programação assíncrona, testes e muito mais!
 
-### Antes de começar {:.no_toc}
+### Antes de começar {:.no_toc} {:#before-you-begin}
 
 :::tip
 **Parte da trilha de aprendizado de Flutter**

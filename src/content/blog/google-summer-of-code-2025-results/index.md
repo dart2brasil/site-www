@@ -55,7 +55,7 @@ Para dar uma noção visual do que o Pixel Prompt pode fazer, há abaixo captura
 
 Embora o Pixel Prompt já permita construir aplicações de terminal essenciais, ainda há mais por vir: o suporte a componentes complexos como `TextArea` e `Tables`, um sistema de layout no estilo flex, uma API de animação dedicada e um depurador visual estão previstos para contribuições futuras. Desenvolvedores interessados podem explorar as issues abertas e contribuir no repositório do [pixel_prompt](https://github.com/primequantuM4/pixel_prompt).
 
-## TestGen: ferramenta de geração de testes com LLM {:#testgen--llm-based-test-generation-tool}
+## TestGen: ferramenta de geração de testes com LLM {:#testgen-llm-based-test-generation-tool}
 
 *Por Amr Ahmed*
 

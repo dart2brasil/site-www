@@ -43,7 +43,7 @@ Adicione um arquivo chamado `fix_data.yaml` no diretório `lib/` do seu pacote:
 Se você tiver muitas correções,
 pode dividi-las em vários arquivos dentro do diretório `lib/fix_data/`.
 
-### 2. Defina transformações de API {:#define-api-transforms}
+### 2. Defina transformações de API {:#2-define-api-transforms}
 
 No `fix_data.yaml`, especifique a versão do formato (`version: 1`)
 e uma lista `transforms`.
@@ -132,7 +132,7 @@ Se a saída corresponder ao seu arquivo `.expect`, o comando termina com o códi
 Se houver diferença, ele exibe um diff e termina com um código diferente de zero,
 o que o torna ideal para suítes de testes de CI.
 
-## Saiba mais
+## Saiba mais {:#learn-more}
 
 Para saber mais sobre todos os tipos de mudança suportados
 (como modificações de parâmetros e declarações substituídas),

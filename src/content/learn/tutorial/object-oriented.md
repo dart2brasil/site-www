@@ -252,7 +252,7 @@ para que outros pacotes possam importar `Option` e `ArgResults`.
     acessíveis a qualquer pacote que importe
     `package:command_runner/command_runner.dart`.
 
-### Tarefa 5: Teste as classes em cli.dart {:#task-5-test-the-classes-in-clidart}
+### Tarefa 5: Teste as classes em cli.dart {:#task-5-test-the-classes-in-cli-dart}
 
 Verifique se `Option` é instanciada e calcula corretamente a string `usage`.
 

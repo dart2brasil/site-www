@@ -59,7 +59,7 @@ ou para visualizar informações gerais de log e diagnóstico
 de uma aplicação de linha de comando em execução.
 
 
-### 1. Inicie a aplicação de destino {:#start-the-target-app}
+### 1. Inicie a aplicação de destino {:#1-start-the-target-app}
 
 Use o comando `dart run --observe` para executar o arquivo principal
 da aplicação Dart de linha de comando que você quer depurar ou observar.
@@ -84,7 +84,7 @@ Se você parar a aplicação e executá-la novamente,
 precisará se conectar ao DevTools com a nova URL.
 :::
 
-### 2. Abra o DevTools e conecte-se à aplicação de destino {:#open-devtools-and-connect-to-the-target-app}
+### 2. Abra o DevTools e conecte-se à aplicação de destino {:#2-open-devtools-and-connect-to-the-target-app}
 
 Copie a URL do **Dart DevTools debugger and profiler**
 e cole-a na barra de endereços de uma janela do Chrome.
@@ -111,7 +111,7 @@ A tabela a seguir mostra exemplos de configurações de depuração do VS Code p
 
 {:.table .table-striped}
 
-### Exemplo de launch.json {:#example-launchjson}
+### Exemplo de launch.json {:#example-launch-json}
 
 Para habilitar os eventos de timeline, adicione esta configuração ao seu `.vscode/launch.json`:
 

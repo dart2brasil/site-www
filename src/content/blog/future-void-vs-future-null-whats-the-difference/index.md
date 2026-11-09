@@ -27,7 +27,7 @@ Também recomendo que você ative, agora mesmo, duas [regras de lint](https://ww
 
 O resto deste artigo não é leitura leve. É uma combinação de história, casos de borda e teoria de tipos. O que estou prestes a escrever é como tentar explicar uma [Monad](https://en.wikipedia.org/wiki/Monad_(functional_programming)), mas vou fazer o meu melhor, e espero que você acompanhe a viagem.
 
-## Curiosidades rápidas sobre Future&lt;Null&gt; {:#quick-futurelt-nullgt-trivia}
+## Curiosidades rápidas sobre Future&lt;Null&gt; {:#quick-futureltnullgt-trivia}
 
 Para demonstrar o valor que você pode tirar da leitura deste post, proponho uma pergunta de curiosidade.
 

@@ -15,7 +15,7 @@ agentes de codificação com IA, como Cursor, Gemini, Claude Code, Cline e Copil
 usam essas skills para escrever código preciso
 e idiomático, adaptado às suas dependências.
 
-## Executando o package:skills {:#running-packageskills}
+## Executando o package:skills {:#running-package-skills}
 
 Você executa o `package:skills` com a sintaxe `dart run skills@ <command>`:
 

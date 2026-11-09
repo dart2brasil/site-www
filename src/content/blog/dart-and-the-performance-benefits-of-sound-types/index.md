@@ -101,7 +101,7 @@ Com o Dart 2, introduzimos a solidez, que nos permitiu compilar código com segu
 
 Esse código ainda faz a verificação de null (em vermelho) e chama um método auxiliar se encontrar um null.
 
-## Dart 2.12: sound null safety {:#dart-212-sound-null-safety}
+## Dart 2.12: sound null safety {:#dart-2-12-sound-null-safety}
 
 Com o sound null safety, o sistema de tipos fica mais rico, e nosso compilador pode aproveitar isso. O compilador pode confiar com segurança no tipo (agora) não anulável e eliminar o código em vermelho acima. Na versão beta do Dart 2.12, geramos 3 instruções a menos:
 

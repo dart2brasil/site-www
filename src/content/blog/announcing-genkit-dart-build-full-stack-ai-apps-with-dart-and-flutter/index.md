@@ -17,7 +17,7 @@ Estamos muito animados em anunciar o lançamento em prévia do [**Genkit Dart**]
 <DashImage src="images/1haDapHjWrIlyQsYO-zLlLQ.webp" alt="Arte do anúncio da prévia do Genkit Dart." caption="Anunciando o Genkit Dart (prévia)" />
 
 
-## Por que escolher o Genkit Dart?
+## Por que escolher o Genkit Dart? {:#why-choose-genkit-dart}
 
 O Genkit Dart oferece as seguintes capacidades:
 

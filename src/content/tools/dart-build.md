@@ -36,7 +36,7 @@ O bundle da aplicação resultante é estruturado da seguinte forma:
 
 As opções a seguir podem ser usadas com o comando `dart build cli`.
 
-### `-h`, `--help` {:#h--help}
+### `-h`, `--help` {:#h-help}
 
 Use a opção `-h` ou `--help` para obter ajuda para o subcomando `cli`.
 
@@ -49,7 +49,7 @@ $ dart build cli -h
 ```
 
 
-### `-o`, `--output` {:#o--output}
+### `-o`, `--output` {:#o-output}
 
 Use `-o` ou `--output` para especificar onde o `dart build` salva
 os arquivos gerados. A saída é colocada em um diretório `bundle/`
@@ -71,7 +71,7 @@ $ dart build cli --output=./my_custom_output
 ```
 
 
-### `-t`, `--target` {:#t--target}
+### `-t`, `--target` {:#t-target}
 
 Use a opção `-t` ou `--target` para especificar o arquivo de entry-point
 principal da aplicação de linha de comando.

@@ -223,7 +223,7 @@ Você não precisa pensar muito em tratamento de erros. A função `run` combina
 
 O `Isolate.run()` possibilita um código muito mais limpo e ergonômico. A função `compute` do Flutter até mudou para usar `run` em vez de `spawn`!
 
-### Por dentro do Isolate.run() {:#inside-isolaterun}
+### Por dentro do Isolate.run() {:#inside-isolate-run}
 
 Dê uma olhada na [implementação de `run`](https://api.dart.dev/dev/3.0.0-125.0.dev/dart-isolate/Isolate/run.html#implementation:~:text=isolate%20for%20debugging.-,Implementation,-%40Since(%222.19) em si. Ela explora todas as APIs de isolates de baixo nível (que antes seriam sua responsabilidade implementar) para construir uma configuração de isolate “perfeita” e abrangente. Ela recebe o método a ser executado, `computation`, e configura todas as portas e seus retornos para garantir a troca eficiente de mensagens entre isolates.
 

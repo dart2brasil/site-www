@@ -41,7 +41,7 @@ mas aqui estão algumas situações adicionais onde eles podem ser úteis:
 
 [Flutter]: {{site.flutter-docs}}/perf/isolates
 
-## Implementando um worker isolate simples
+## Implementando um worker isolate simples {:#implementing-a-simple-worker-isolate}
 
 Estes exemplos implementam um isolate principal
 que gera um worker isolate simples.
@@ -64,7 +64,7 @@ em vez de `Isolate.run()`.
 
 [Flutter's `compute` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
-### Executando um método existente em um novo isolate
+### Executando um método existente em um novo isolate {:#running-an-existing-method-in-a-new-isolate}
 
 1. Chame `run()` para gerar um novo isolate (um [background worker][]),
    diretamente no [main isolate][] enquanto `main()` aguarda o resultado:
@@ -122,7 +122,7 @@ Para o programa completo, confira a amostra [send_and_receive.dart][].
 [background worker]: /language/concurrency#background-workers
 [main isolate]: /language/concurrency#the-main-isolate
 
-### Enviando closures com isolates
+### Enviando closures com isolates {:#sending-closures-with-isolates}
 
 Você também pode criar um worker isolate simples com `run()` usando um
 literal de função, ou closure, diretamente no isolate principal.
@@ -156,7 +156,7 @@ operador de fluxo de controle para "executar em paralelo".
 
 [closure]: /language/functions#anonymous-functions
 
-## Enviando múltiplas mensagens entre isolates com ports
+## Enviando múltiplas mensagens entre isolates com ports {:#sending-multiple-messages-between-isolates-with-ports}
 
 Isolates de curta duração são convenientes de usar,
 mas exigem sobrecarga de desempenho para gerar novos isolates
@@ -188,7 +188,7 @@ gradualmente adiciona funcionalidade mais prática e do mundo real ao primeiro.
 [main isolate]: /language/concurrency#isolates
 
 
-### `ReceivePort` e `SendPort`
+### `ReceivePort` e `SendPort` {:#receiveport-and-sendport}
 
 Configurar comunicação de longa duração entre isolates requer
 duas classes (além de `Isolate`): `ReceivePort` e `SendPort`.
@@ -214,7 +214,7 @@ com o [método `SendPort.send()`][`SendPort.send()` method], e essas mensagens s
 neste caso o `ReceivePort`. O `ReceivePort` então manipula as mensagens que
 recebe passando-as como argumentos para um callback que você fornece.
 
-#### Configurando ports
+#### Configurando ports {:#setting-up-ports}
 
 Um isolate recém-gerado só tem as informações que recebe através da
 chamada `Isolate.spawn`. Se você precisa que o isolate principal continue a comunicar-se
@@ -286,7 +286,7 @@ discute alguns dos problemas que podem surgir sem ela.
 
 [robust ports example]: #robust-ports-example
 
-#### Passo 1: Definir a classe worker
+#### Passo 1: Definir a classe worker {:#step-1-define-the-worker-class}
 
 Primeiro, crie uma classe para seu worker isolate em segundo plano.
 Esta classe contém toda a funcionalidade que você precisa para:
@@ -428,7 +428,7 @@ void _handleResponsesFromIsolate(dynamic message) {
 }
 ```
 
-#### Passo 5: Adicionar um completer para garantir que seu isolate esteja configurado
+#### Passo 5: Adicionar um completer para garantir que seu isolate esteja configurado {:#step-5-add-a-completer-to-ensure-your-isolate-is-set-up}
 
 Para completar a classe, defina um método público chamado `parseJson`, que é
 responsável por enviar mensagens ao worker isolate. Ele também precisa garantir
@@ -453,7 +453,7 @@ Future<void> parseJson(String message) async {
 }
 ```
 
-#### Exemplo completo
+#### Exemplo completo {:#complete-example}
 
 <details>
   <summary>Expanda para ver o exemplo completo</summary>
@@ -530,7 +530,7 @@ estabelecer comunicação entre isolates com `Isolate.spawn` e ports,
 que foi coberto no [exemplo anterior][previous example].
 :::
 
-#### Passo 1: Definir a classe worker
+#### Passo 1: Definir a classe worker {:#step-1-define-the-worker-class}
 
 Primeiro, crie uma classe para seu worker isolate em segundo plano. Esta classe contém
 toda a funcionalidade que você precisa para:
@@ -587,7 +587,7 @@ ao worker isolate são chamadas de _commands_, e as mensagens enviadas de volta 
 isolate principal são chamadas de _responses_.
 :::
 
-#### Passo 2: Criar um `RawReceivePort` no método `Worker.spawn`
+#### Passo 2: Criar um `RawReceivePort` no método `Worker.spawn` {:#step-2-create-a-rawreceiveport-in-the-worker-spawn-method}
 
 Antes de gerar um isolate, você precisa criar um [`RawReceivePort`][], que é
 um `ReceivePort` de nível mais baixo. Usar `RawReceivePort` é um padrão preferido
@@ -700,7 +700,7 @@ atua como um construtor estático assíncrono para esta classe e é a única man
 criar uma instância de `Worker`. Isso simplifica a API, tornando o código que
 cria uma instância de `Worker` mais limpo.
 
-#### Passo 4: Completar o processo de configuração do isolate
+#### Passo 4: Completar o processo de configuração do isolate {:#step-4-complete-the-isolate-setup-process}
 
 Neste passo, você completará o processo básico de configuração do isolate. Isso se correlaciona
 quase inteiramente ao [exemplo anterior][previous example], e não há novos conceitos.
@@ -804,7 +804,7 @@ Future<Object?> parseJson(String message) async {
 
 Você atualizará este método no próximo passo.
 
-#### Passo 5: Manipular múltiplas mensagens ao mesmo tempo
+#### Passo 5: Manipular múltiplas mensagens ao mesmo tempo {:#step-5-handle-multiple-messages-at-the-same-time}
 
 Atualmente, se você enviar mensagens rapidamente ao worker isolate, o isolate
 enviará a resposta json decodificada _na ordem em que elas completam_, em vez de
@@ -911,7 +911,7 @@ void _handleResponsesFromIsolate(dynamic message) {
 }
 ```
 
-#### Passo 6: Adicionar funcionalidade para fechar os ports
+#### Passo 6: Adicionar funcionalidade para fechar os ports {:#step-6-add-functionality-to-close-the-ports}
 
 Quando o isolate não estiver mais sendo usado pelo seu código, você deve fechar os
 ports no isolate principal e no worker isolate.
@@ -985,7 +985,7 @@ Future<Object?> parseJson(String message) async {
 }
 ```
 
-#### Exemplo completo
+#### Exemplo completo {:#complete-example}
 
 <details>
   <summary>Expanda aqui para ver o exemplo completo</summary>

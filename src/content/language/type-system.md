@@ -131,7 +131,7 @@ seguinte hierarquia de tipos:
 <img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 <a name="use-proper-return-types"></a>
-### Use tipos de retorno sound ao sobrescrever métodos {:#use-proper-return-types}
+### Use tipos de retorno sound ao sobrescrever métodos {:#use-sound-return-types-when-overriding-methods}
 
 O tipo de retorno de um método em uma subclasse deve ser o mesmo tipo ou um
 subtipo do tipo de retorno do método na superclasse.
@@ -178,7 +178,7 @@ class HoneyBadger extends Animal {
 ```
 
 <a name="use-proper-param-types"></a>
-### Use tipos de parâmetro sound ao sobrescrever métodos {:#use-proper-param-types}
+### Use tipos de parâmetro sound ao sobrescrever métodos {:#use-sound-parameter-types-when-overriding-methods}
 
 O parâmetro de um método sobrescrito deve ter o mesmo tipo
 ou um supertipo do parâmetro correspondente na superclasse.

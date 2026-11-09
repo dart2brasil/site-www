@@ -31,7 +31,7 @@ O gerenciador de pacotes pub e o site [pub.dev](https://pub.dev) alimentam um ec
 
 Hoje anunciamos um desempenho muito mais rápido ao buscar pacotes no repositório [pub.dev](https://pub.dev), e uma nova ferramenta para ajudar você a manter todas as dependências dos seus pacotes atualizadas. Com a complexidade dos apps modernos, seu app provavelmente depende de dezenas de pacotes. Mas como você mantém todos eles na versão mais recente, para garantir que está usando as dependências mais recentes, com todas as correções de bugs e melhorias de desempenho disponíveis? A partir do Dart 2.8, você pode usar `pub outdated`, uma nova ferramenta que determina automaticamente quais dependências precisam ser atualizadas para as versões mais recentes e melhores.
 
-## Melhorias de desempenho da ferramenta pub no Dart 2.8 {:#dart-28-pub-tool-performance-improvements}
+## Melhorias de desempenho da ferramenta pub no Dart 2.8 {:#dart-2-8-pub-tool-performance-improvements}
 
 Otimizamos o desempenho da ferramenta pub adicionando suporte a busca paralela de pacotes ao rodar `pub get`, e adiando a pré-compilação do `pub run`.
 

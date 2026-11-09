@@ -326,7 +326,7 @@ fazem.
 
 <a id="avoid-starting-a-method-name-with-get" aria-hidden="true"></a>
 
-### EVITE iniciar um nome de método com `get` {:#avoid-starting-a-method-name-with-get}
+### EVITE iniciar um nome de método com `get` {:#avoid-starting-a-function-or-method-name-with-get}
 
 Na maioria dos casos, o método deveria ser um getter com `get` removido do nome.
 Por exemplo, em vez de um método chamado `getBreakfastOrder()`, defina um getter

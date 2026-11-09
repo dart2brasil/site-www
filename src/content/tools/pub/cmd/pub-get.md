@@ -137,7 +137,7 @@ Para opções que se aplicam a todos os comandos do pub, veja
 
 {% render 'tools/pub-option-no-offline.md' %}
 
-### `--dry-run` ou `-n`
+### `--dry-run` ou `-n` {:#dry-run-or-n}
 
 Informa as dependências que seriam alteradas,
 mas não faz as alterações. Isso é útil se você

@@ -299,7 +299,7 @@ verifique se as suas skills podem ser encontradas e instaladas corretamente:
 
 [path dependency]: /tools/pub/dependencies#path-packages
 
-## Publique no pub.dev {:#publish-on-pubdev}
+## Publique no pub.dev {:#publish-on-pub-dev}
 
 Quando você publica o seu pacote com `dart pub publish`,
 o diretório `skills/` é incluído automaticamente no arquivo do pacote.

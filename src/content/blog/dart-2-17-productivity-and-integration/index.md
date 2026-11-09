@@ -120,7 +120,7 @@ Nosso suporte à compilação de Dart para código nativo é um facilitador cent
 
 Também continuamos ampliando o conjunto de plataformas suportadas, mantendo-nos na vanguarda das novas plataformas emergentes. [RISC-V](https://riscv.org/about/) é um novo conjunto de instruções inovador para processadores. A RISC-V International, uma organização global sem fins lucrativos, é dona da especificação RISC-V, tornando o conjunto de instruções livre e aberto. Esta ainda é uma plataforma emergente, mas estamos animados com o potencial dela, então nossa versão Linux `2.17.0–266.1.beta` (ou posterior, do nosso [canal beta](https://dart.dev/get-dart/archive#beta-channel)) inclui suporte experimental a ela. Adoraríamos ouvir seu feedback, então, por favor, [abra uma issue](https://github.com/dart-lang/sdk/issues) ou [poste](https://groups.google.com/a/dartlang.org/g/misc) sobre a sua experiência!
 
-## Comece com o Dart 2.17! {:#get-started-with-dart-217}
+## Comece com o Dart 2.17! {:#get-started-with-dart-2-17}
 
 Esperamos que o lançamento de hoje do Dart 2.17 empolgue você, aumente sua produtividade e permita ainda mais integração de plataforma para os seus apps. Para começar, você pode baixar diretamente a versão [Dart 2.17](https://dart.dev/get-dart), ou obtê-la incorporada ao SDK do [Flutter 3](https://docs.flutter.dev/get-started/install) lançado hoje.
 

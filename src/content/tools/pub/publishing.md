@@ -300,7 +300,7 @@ a página do pacote exibe links para a prerelease e para a release estável.
 A prerelease não afeta a pontuação de análise, não aparece nos resultados de busca
 nem substitui o `README.md` e a documentação do pacote.
 
-### Publique versões de preview
+### Publique versões de preview {:#publish-preview-versions}
 
 Previews podem ser úteis quando _todas_ as condições a seguir são verdadeiras:
 
