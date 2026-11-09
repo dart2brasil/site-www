@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// The site-wide footer.
@@ -10,7 +11,7 @@ final class DashFooter extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return footer(
+    return const footer(
       id: 'page-footer',
       attributes: {'data-nosnippet': 'true'},
       [
@@ -29,33 +30,15 @@ final class DashFooter extends StatelessComponent {
           ),
           div(classes: 'footer-social-links', [
             a(
-              href: 'https://blog.dart.dev',
-              target: Target.blank,
-              attributes: {
-                'rel': 'noopener',
-                'title': 'Dart\'s Medium publication',
-              },
-              [
-                svg([
-                  const Component.element(
-                    tag: 'use',
-                    attributes: {
-                      'href': '/assets/img/social/medium.svg#medium',
-                    },
-                  ),
-                ]),
-              ],
-            ),
-            a(
               href: 'https://github.com/dart-lang',
               target: Target.blank,
               attributes: {
                 'rel': 'noopener',
-                'title': 'Dart\'s GitHub organization',
+                'title': 'Organização do Dart no GitHub',
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/github.svg#github',
@@ -69,11 +52,11 @@ final class DashFooter extends StatelessComponent {
               target: Target.blank,
               attributes: {
                 'rel': 'noopener',
-                'title': 'Dart\'s Bluesky (Twitter) profile',
+                'title': 'Perfil do Dart no Bluesky',
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/bluesky.svg#bluesky',
@@ -87,11 +70,11 @@ final class DashFooter extends StatelessComponent {
               target: Target.blank,
               attributes: {
                 'rel': 'noopener',
-                'title': 'Dart\'s X (Twitter) profile',
+                'title': 'Perfil do Dart no X (Twitter)',
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {'href': '/assets/img/social/x.svg#x'},
                   ),
@@ -102,19 +85,21 @@ final class DashFooter extends StatelessComponent {
         ]),
         div(classes: 'footer-section footer-tray', [
           div(classes: 'footer-licenses', [
-            text(
-              'Exceto quando indicado de outra forma, este site está licenciado sob uma ',
+            .text(
+              'Exceto quando indicado de outra forma, este site está '
+              'licenciado sob uma ',
             ),
             a(href: 'https://creativecommons.org/licenses/by/4.0/', [
-              text('Licença Creative Commons Attribution 4.0 International,'),
+              .text('Licença Creative Commons Attribution 4.0 International,'),
             ]),
-            text(' e os exemplos de código estão licenciados sob a '),
+            .text(' e os exemplos de código estão licenciados sob a '),
             a(href: 'https://opensource.org/licenses/BSD-3-Clause', [
-              text('Licença BSD de 3 Cláusulas.'),
+              .text('Licença BSD de 3 Cláusulas.'),
             ]),
             p([
-              text(
-                'Este é o site em Português Brasileiro (dartbrasil.dev). O site original em inglês está em ',
+              .text(
+                'Este é o site em Português Brasileiro (dartbrasil.dev). '
+                'O site original em inglês está em ',
               ),
               a(
                 href: 'https://dart.dev',
@@ -123,9 +108,9 @@ final class DashFooter extends StatelessComponent {
                   'rel': 'noopener',
                   'title': 'Site original em inglês',
                 },
-                [text('dart.dev')],
+                [.text('dart.dev')],
               ),
-              text('.'),
+              .text('.'),
             ]),
           ]),
           div(classes: 'footer-utility-links', [
@@ -134,7 +119,7 @@ final class DashFooter extends StatelessComponent {
                 a(
                   href: '/terms',
                   attributes: {'title': 'Termos de uso'},
-                  [text('Termos')],
+                  [.text('Termos')],
                 ),
               ]),
               li([
@@ -145,14 +130,14 @@ final class DashFooter extends StatelessComponent {
                     'rel': 'noopener',
                     'title': 'Política de privacidade',
                   },
-                  [text('Privacidade')],
+                  [.text('Privacidade')],
                 ),
               ]),
               li([
                 a(
                   href: '/security',
                   attributes: {'title': 'Filosofia e práticas de segurança'},
-                  [text('Segurança')],
+                  [.text('Segurança')],
                 ),
               ]),
             ]),
@@ -164,12 +149,12 @@ final class DashFooter extends StatelessComponent {
                 attributes: {
                   'rel': 'noopener',
                   'title':
-                      'This site is built with the '
-                      'Jaspr web framework for Dart.',
+                      'Este site é construído com o '
+                      'framework web Jaspr para Dart.',
                 },
                 [
-                  span([const JasprBadge.light()]),
-                  span([const JasprBadge.lightTwoTone()]),
+                  span([JasprBadge.light()]),
+                  span([JasprBadge.lightTwoTone()]),
                 ],
               ),
             ]),

@@ -1,9 +1,9 @@
 ---
+ia-translate: true
 title: Folha de referência do Dart
-breadcrumb: Folha de referência
+breadcrumb: Cheatsheet
 description: Aprenda (ou reaprenda) interativamente alguns dos recursos únicos do Dart.
 maxTocDepth: 2
-ia-translate: true
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
@@ -69,7 +69,7 @@ void main() {
   Tudo que você precisa fazer é usar o operador `$` para
   referenciá-los dentro de aspas simples, com um espaço entre eles:
 
-  ```dart
+```dart
   String stringify(int x, int y) {
     return '$x $y';
   }
@@ -148,7 +148,7 @@ void main() {
   Em seguida, atribua `'Jane'` a `name`
   e deixe `address` não inicializado:
 
-  ```dart
+```dart
   String? name = 'Jane';
   String? address;
   ```
@@ -230,12 +230,12 @@ void main() {
   Leia o texto acima para ter certeza de que entende ambos,
   e então tente:
 
-  ```dart
-  // Substitua por um operador que faz 'a string' ser atribuída a baz.
+```dart
+  // Substitute an operator that makes 'a string' be assigned to baz.
   String? baz = foo ?? bar;
 
   void updateSomeVars() {
-    // Substitua por um operador que faz 'a string' ser atribuída a bar.
+    // Substitute an operator that makes 'a string' be assigned to bar.
     bar ??= 'a string';
   }
   ```
@@ -318,7 +318,7 @@ void main() {
   você poderia fazer assim: `str?.toLowerCase()`. Use o método equivalente
   para colocar uma string em maiúsculas!
 
-  ```dart
+```dart
   String? upperCaseIt(String? str) {
     return str?.toUpperCase();
   }
@@ -444,23 +444,23 @@ void main() {
   Lembre-se de especificar os tipos para as declarações vazias,
   pois eles não podem ser inferidos.
 
-  ```dart
-  // Atribua a isso uma lista contendo 'a', 'b' e 'c' nessa ordem:
+```dart
+  // Assign this a list containing 'a', 'b', and 'c' in that order:
   final aListOfStrings = ['a', 'b', 'c'];
 
-  // Atribua a isso um set contendo 3, 4 e 5:
+  // Assign this a set containing 3, 4, and 5:
   final aSetOfInts = {3, 4, 5};
 
-  // Atribua a isso um map de String para int de forma que aMapOfStringsToInts['myKey'] retorne 12:
+  // Assign this a map of String to int so that aMapOfStringsToInts['myKey'] returns 12:
   final aMapOfStringsToInts = {'myKey': 12};
 
-  // Atribua a isso uma List<double> vazia:
+  // Assign this an empty List<double>:
   final anEmptyListOfDouble = <double>[];
 
-  // Atribua a isso um Set<String> vazio:
+  // Assign this an empty Set<String>:
   final anEmptySetOfString = <String>{};
 
-  // Atribua a isso um Map vazio de double para int:
+  // Assign this an empty Map of double to int:
   final anEmptyMapOfDoublesToInts = <double, int>{};
   ```
 
@@ -563,20 +563,20 @@ void main() {
   Para `incrementValue1`, você pode usar o operador de incremento (`++`).
   Para `joinWithCommas`, use o método `join` encontrado na classe `List`.
 
-  ```dart
+```dart
   class MyClass {
     int value1 = 2;
     int value2 = 3;
     int value3 = 5;
 
-    // Retorna o produto dos valores acima:
+    // Returns the product of the above values:
     int get product => value1 * value2 * value3;
 
-    // Adiciona 1 a value1:
+    // Adds 1 to value1:
     void incrementValue1() => value1++;
 
-    // Retorna uma string contendo cada item na
-    // lista, separados por vírgulas (ex: 'a,b,c'):
+    // Returns a string containing each item in the
+    // list, separated by commas (e.g. 'a,b,c'):
     String joinWithCommas(List<String> strings) => strings.join(',');
   }
   ```
@@ -715,7 +715,7 @@ void main() {
   Comece com `return obj..anInt = 1`,
   depois adicione outra cascata (`..`) e inicie a próxima atribuição.
 
-  ```dart
+```dart
   BigObject fillBigObject(BigObject obj) {
     return obj
       ..anInt = 1
@@ -860,11 +860,11 @@ void main() {
   com uma função que você fornece
   (use-a para verificar se há preços negativos no setter `prices`).
 
-  ```dart
-  /// O preço total do carrinho de compras.
+```dart
+  /// The total price of the shopping cart.
   double get total => _prices.fold(0, (e, t) => e + t);
 
-  /// Define [prices] para a lista [value] de preços de itens.
+  /// Set [prices] to the [value] list of item prices.
   set prices(List<double> value) {
     if (value.any((p) => p < 0)) {
       throw InvalidPriceException();
@@ -1005,7 +1005,7 @@ void main() {
   chamador. A coisa importante, então, é verificar se esses argumentos são `null`
   antes de adicioná-los à string final.
 
-  ```dart
+```dart
   String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
     var total = '$a';
     if (b != null) total = '$total,$b';
@@ -1179,7 +1179,7 @@ void main() {
   (ou os dados da instância atual se os parâmetros forem null).
   Esta é uma chance de praticar mais com o operador `??`!
 
-  ```dart
+```dart
   MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
     return MyDataObject(
       anInt: newInt ?? this.anInt,
@@ -1397,7 +1397,7 @@ void main() {
   então use `on`, `catch` e `finally` para capturar exceções e
   chamar métodos no logger.
 
-  ```dart
+```dart
   void tryFunction(VoidFunction untrustworthy, Logger logger) {
     try {
       untrustworthy();
@@ -1514,7 +1514,7 @@ void main() {
   `this.anInt`, `this.aString` e `this.aDouble`
   como seus parâmetros nessa ordem.
 
-  ```dart
+```dart
   MyClass(this.anInt, this.aString, this.aDouble);
   ```
 
@@ -1611,7 +1611,7 @@ void main() {
   `letterOne` deve receber `word[0]`,
   e `letterTwo` deve receber `word[1]`.
 
-  ```dart
+```dart
     FirstTwoLetters(String word)
         : assert(word.length >= 2),
           letterOne = word[0],
@@ -1699,7 +1699,7 @@ void main() {
   Na lista de inicialização (após os dois pontos),
   defina `red`, `green` e `blue` como `0`.
 
-  ```dart
+```dart
   Color.black() : red = 0, green = 0, blue = 0;
   ```
 
@@ -1859,7 +1859,7 @@ void testValues(List<String> errs, List<int> expectedValues, IntegerHolder obj,
 
   Substitua `TODO();` pelo seguinte bloco de código.
 
-  ```dart
+```dart
     switch (list.length) {
       case 1:
         return IntegerSingle(list[0]);
@@ -1956,7 +1956,7 @@ void main() {
 
   Seu construtor deve redirecionar para `this(0, 0, 0)`.
 
-  ```dart
+```dart
   Color.black() : this(0, 0, 0);
   ```
 
@@ -2049,7 +2049,7 @@ void main() {
 
   Para tornar o construtor const, você precisará tornar todas as propriedades final.
 
-  ```dart
+```dart
   class Recipe {
     final List<String> ingredients;
     final int calories;
@@ -2068,7 +2068,6 @@ alguns dos recursos mais interessantes da linguagem Dart.
 
 O que você pode tentar a seguir inclui:
 
-* Experimente [outros tutoriais do Dart](/tutorials).
 * Leia o [tour da linguagem Dart](/language).
 * Brinque com o [DartPad.]({{site.dartpad}})
 * [Obtenha o SDK do Dart](/get-dart).

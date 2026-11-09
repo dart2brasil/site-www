@@ -1,0 +1,94 @@
+- question: >-
+    Qual é a finalidade da instrução `export` em uma biblioteca Dart?
+  options:
+    - text: >-
+        Tornar declarações de outros arquivos disponíveis
+        pela API pública da sua biblioteca.
+      correct: true
+      explanation: >-
+        `export` permite reexpor declarações.
+        Por exemplo, `export 'src/command.dart';` torna `Command` acessível
+        para qualquer pessoa que importe o seu pacote.
+    - text: >-
+        Ocultar detalhes de implementação de outras bibliotecas.
+      correct: false
+      explanation: >-
+        A instrução `export` faz o oposto de ocultar.
+        Para ocultar membros usados apenas na implementação,
+        não os inclua em nenhuma instrução export.
+    - text: >-
+        Importar várias bibliotecas com uma única instrução.
+      correct: false
+      explanation: >-
+        `import` e `export` têm finalidades diferentes.
+        `import` disponibiliza código para a sua biblioteca, enquanto
+        `export` faz algo para quem consome a sua biblioteca.
+    - text: >-
+        Especificar quais versões do SDK do Dart o seu pacote suporta.
+      correct: false
+      explanation: >-
+        Restrições de SDK ficam no `pubspec.yaml`, e não no código Dart.
+        `export` é um recurso da linguagem Dart, não uma opção de configuração.
+- question: >-
+    Como você adiciona um pacote local (um que está no seu sistema de arquivos) como dependência?
+  options:
+    - text: >-
+        Use uma dependência de path, como `command_runner: {path: ../command_runner}`.
+      correct: true
+      explanation: >-
+        Dependências de path apontam para um diretório local.
+        Isso é ideal para projetos com vários pacotes
+        ou para desenvolver pacotes antes de publicá-los.
+    - text: >-
+        Use uma restrição de versão, como `command_runner: ^1.0.0`.
+      correct: false
+      explanation: >-
+        Restrições de versão são para pacotes publicados no pub.dev.
+        Pacotes locais exigem outro tipo de especificação de dependência.
+    - text: >-
+        Copie a pasta do pacote para o diretório `lib/` do seu projeto.
+      correct: false
+      explanation: >-
+        Copiar cria duplicação e problemas de versionamento.
+        O Dart oferece uma forma de referenciar pacotes pela localização
+        sem copiá-los.
+    - text: >-
+        Execute `dart pub add command_runner --local`
+      correct: false
+      explanation: >-
+        Não existe a flag `--local` para `dart pub add`.
+        Você precisa especificar a localização de outra forma no `pubspec.yaml`
+        ou passando um descritor de pacote para `dart pub add`.
+- question: >-
+    Um pacote tem código em `lib/src/parser.dart`.
+    Por que você pode criar `lib/parser.dart`
+    que contém apenas `export 'src/parser.dart';`?
+  options:
+    - text: >-
+        Para permitir que os usuários importem por um caminho limpo
+        enquanto os arquivos de implementação ficam organizados em `src/`.
+      correct: true
+      explanation: >-
+        Os usuários podem escrever `import 'package:mylib/parser.dart';`
+        em vez de acessar `src/` diretamente.
+        Isso separa a sua API pública da organização interna.
+    - text: >-
+        Para o código rodar mais rápido, reduzindo a profundidade dos imports.
+      correct: false
+      explanation: >-
+        `export` não afeta o desempenho em tempo de execução.
+        O número de diretórios em um caminho de import
+        não tem impacto na velocidade de execução do código.
+    - text: >-
+        Porque o Dart exige que todos os arquivos públicos fiquem
+        na raiz de `lib/`.
+      correct: false
+      explanation: >-
+        O Dart não exige essa estrutura.
+        É uma convenção, e não um requisito da linguagem.
+    - text: >-
+        Para impedir que outros pacotes importem os arquivos de `src/` diretamente.
+      correct: false
+      explanation: >-
+        Arquivos em `src/` ainda podem, tecnicamente, ser importados diretamente.
+        As boas práticas do Dart desencorajam isso, mas não impedem.

@@ -3,8 +3,9 @@
 body {
   font-family: var(--site-body-fontFamily);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: var(--site-fontWeight-normal);
   line-height: 1.5;
+  font-optical-sizing: auto;
   background-color: var(--site-base-bgColor);
   color: var(--site-base-fgColor);
 
@@ -23,32 +24,17 @@ section {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--site-ui-fontFamily);
-  font-weight: 400;
+  font-weight: var(--site-fontWeight-normal);
   line-height: 1.2;
   color: var(--site-base-fgColor);
 }
 
 h1, .h1 {
   font-family: var(--site-ui-fontFamily);
-  font-size: 3rem;
+  font-size: 2.75rem;
+  font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.material-symbols {
-  font-family: var(--site-icon-fontFamily);
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
 }
 
 h2, .h2 {
@@ -69,6 +55,23 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 0.9375rem;
+}
+
+.material-symbols {
+  font-family: var(--site-icon-fontFamily);
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
 }
 
 dd {

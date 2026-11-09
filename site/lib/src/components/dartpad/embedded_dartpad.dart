@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
@@ -26,12 +27,12 @@ final class EmbeddedDartPad extends StatefulComponent {
   final String code;
 
   /// Creates an embedded DartPad instance with
-  /// the specified [iframeId] and [iframeUrl].
+  /// the specified [iframeId] and [_iframeUrl].
   EmbeddedDartPad._({
     required this.iframeId,
-    required String iframeUrl,
+    required this._iframeUrl,
     required this.code,
-  }) : _iframeUrl = iframeUrl;
+  });
 
   /// Creates a new embedded DartPad element with the specified configuration.
   ///

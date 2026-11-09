@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
@@ -22,30 +23,56 @@ class DashHeader extends StatelessComponent {
     final layout = context.page.data.page['layout'];
     final activeEntry = activeNavEntry(pageUrlPath);
 
-    return header(id: 'site-header', classes: 'always-dark-mode', [
-      nav(classes: 'navbar', [
-        a(
-          id: 'site-primary-logo',
-          classes: 'site-wordmark',
-          href: '/',
-          attributes: {
-            'aria-label': 'Go to the Dart homepage',
-            'title': 'Go to the Dart homepage',
-          },
-          [
-            img(
-              src: '/assets/img/logo/dart-192.svg',
-              alt: 'Dart logo',
-              attributes: {'width': '192'},
-            ),
-            span(
-              classes: 'name',
-              attributes: {'translate': 'no'},
-              [text('Dart')],
-            ),
-          ],
-        ),
+    final isBlog = activeEntry == ActiveNavEntry.blog;
+    final classes = [
+      if (!isBlog) 'always-dark-mode',
+      if (isBlog) 'variant-gray',
+    ].toClasses;
 
+    return header(id: 'site-header', classes: classes, [
+      nav(classes: 'navbar', [
+        span(id: 'site-primary-logo', classes: 'site-wordmark', [
+          const a(
+            href: '/',
+            attributes: {
+              'aria-label': 'Ir para a página inicial do Dart',
+              'title': 'Ir para a página inicial do Dart',
+            },
+            [
+              img(
+                src: '/assets/img/logo/dart-192.svg',
+                alt: 'Dart logo',
+                attributes: {'width': '192'},
+              ),
+              span(
+                classes: 'name',
+                attributes: {'translate': 'no'},
+                [.text('Dart')],
+              ),
+            ],
+          ),
+          ?switch (activeEntry) {
+            ActiveNavEntry.docs => const a(
+              href: '/docs',
+              classes: 'subtype',
+              attributes: {'translate': 'no'},
+              [.text('Documentação')],
+            ),
+            ActiveNavEntry.blog => const a(
+              href: '/blog',
+              classes: 'subtype',
+              attributes: {'translate': 'no'},
+              [.text('Blog')],
+            ),
+            ActiveNavEntry.learn => const a(
+              href: '/learn',
+              classes: 'subtype',
+              attributes: {'translate': 'no'},
+              [.text('Aprenda')],
+            ),
+            _ => null,
+          },
+        ]),
         ul(classes: 'nav-items', [
           li([
             a(
@@ -54,7 +81,7 @@ class DashHeader extends StatelessComponent {
                 'nav-link',
                 if (activeEntry == ActiveNavEntry.overview) 'active',
               ].toClasses,
-              [text('Visão Geral')],
+              [const .text('Visão Geral')],
             ),
           ]),
           li([
@@ -65,17 +92,20 @@ class DashHeader extends StatelessComponent {
                 if (activeEntry == ActiveNavEntry.docs) 'active',
               ].toClasses,
               [
-                span([text('Documentação')]),
+                const span([.text('Documentação')]),
               ],
             ),
           ]),
           li([
             a(
-              href: 'https://blog.dart.dev',
+              href: '/blog',
               classes: [
                 'nav-link',
+                if (activeEntry == ActiveNavEntry.blog) 'active',
               ].toClasses,
-              [text('Blog')],
+              [
+                const span([.text('Blog')]),
+              ],
             ),
           ]),
           li([
@@ -85,18 +115,27 @@ class DashHeader extends StatelessComponent {
                 'nav-link',
                 if (activeEntry == ActiveNavEntry.community) 'active',
               ].toClasses,
-              [text('Comunidade')],
+              [const .text('Comunidade')],
             ),
           ]),
           li([
-            if (activeEntry == ActiveNavEntry.learn)
-              a(href: '/get-started', classes: 'nav-link active', [
-                text('Aprenda'),
-              ])
-            else
-              a(href: '/#try-dart', classes: 'nav-link', [
-                text('Experimente Dart'),
-              ]),
+            a(
+              href: '/learn',
+              classes: [
+                'nav-link',
+                if (activeEntry == ActiveNavEntry.learn) 'active',
+              ].toClasses,
+              [const .text('Aprenda')],
+            ),
+          ]),
+          const li([
+            a(
+              href: '/#try-dart',
+              classes: 'nav-link',
+              [
+                .text('Experimente Dart'),
+              ],
+            ),
           ]),
           li([
             a(
@@ -105,7 +144,7 @@ class DashHeader extends StatelessComponent {
                 'nav-link',
                 if (activeEntry == ActiveNavEntry.getDart) 'active',
               ].toClasses,
-              [text('Obter Dart')],
+              [const .text('Obter Dart')],
             ),
           ]),
         ]),
@@ -113,7 +152,7 @@ class DashHeader extends StatelessComponent {
         div(
           classes: 'navbar-contents',
           [
-            form(
+            const form(
               action: '/search/',
               id: 'header-search',
               [
@@ -124,24 +163,25 @@ class DashHeader extends StatelessComponent {
                   id: 'q',
                   attributes: {
                     'autocomplete': 'off',
-                    'placeholder': 'Search',
-                    'aria-label': 'Search',
+                    'placeholder': 'Pesquisar',
+                    'aria-label': 'Pesquisar',
                   },
                 ),
               ],
             ),
-            a(
+            const a(
               id: 'fallback-search-button',
               classes: 'icon-button',
               href: '/search',
               attributes: {
-                'aria-label': 'Navigate to the dart.dev search page.',
-                'title': 'Navigate to the dart.dev search page.',
+                'aria-label': 'Ir para a página de pesquisa do site.',
+                'title': 'Ir para a página de pesquisa do site.',
               },
-              const [
+              [
                 MaterialIcon('search'),
               ],
             ),
+
             if (layout != 'homepage') const ThemeSwitcher(),
             const SiteSwitcher(),
             const MenuToggle(),

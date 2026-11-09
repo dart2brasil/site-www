@@ -1,21 +1,24 @@
 ---
-title: Fixing type promotion failures
-description: >-
-  Solutions for cases where you know more about a
-  field's type than Dart can determine.
 ia-translate: true
+title: Como corrigir falhas de promoção de tipo
+description: >-
+  Soluções para os casos em que você sabe mais sobre o tipo de um
+  campo do que o Dart consegue determinar.
 ---
 
-[Type promotion][] ocorre quando a análise de fluxo pode confirmar de forma sólida
-que uma variável com um [tipo nullable][nullable type] *não é null*, e
-que ela não mudará a partir desse ponto.
+A [promoção de tipo][Type promotion] ocorre quando a análise de fluxo pode confirmar,
+de forma consistente, que uma variável do tipo `T` na verdade se refere a um objeto de um subtipo
+`S` de `T`. A variável é então promovida a `S`.
+Como caso especial, a variável pode ter um [tipo nullable][nullable type], e a
+análise de fluxo pode confirmar que ela é *not null*. Nesse caso, a variável é
+promovida ao tipo non-nullable correspondente.
 Muitas circunstâncias podem enfraquecer a solidez de um tipo,
-causando falha na promoção de tipo.
+fazendo com que a promoção de tipo falhe.
 
-Esta página lista as razões pelas quais falhas de promoção de tipo ocorrem,
-com dicas sobre como corrigi-las.
+Esta página lista os motivos pelos quais as falhas de promoção de tipo ocorrem,
+com dicas de como corrigi-las.
 Para saber mais sobre análise de fluxo e promoção de tipo,
-confira a página [Understanding null safety][].
+confira a página [Entendendo null safety][Understanding null safety].
 
 [Type promotion]: /null-safety/understanding-null-safety#type-promotion-on-null-checks
 [nullable type]: /null-safety/understanding-null-safety#non-nullable-and-nullable-types
@@ -24,17 +27,17 @@ confira a página [Understanding null safety][].
 ## Versão de linguagem não suportada para promoção de campo {:#language-version}
 
 **A causa:**
-Você está tentando promover um campo, mas a promoção de campo é versionada por linguagem,
-e seu código está definido para uma versão de linguagem anterior à 3.2.
+Você está tentando promover um campo, mas a promoção de campo depende da versão da linguagem,
+e seu código está configurado para uma versão da linguagem anterior à 3.2.
 
-Se você já está usando uma versão do SDK >= Dart 3.2,
-seu código ainda pode estar explicitamente direcionado para uma [versão de linguagem][language version] anterior.
+Se você já estiver usando um SDK na versão >= Dart 3.2,
+seu código ainda pode estar explicitamente direcionado a uma [versão da linguagem][language version] anterior.
 Isso pode acontecer porque:
 
-* Seu [`pubspec.yaml`][] declara uma constraint SDK com um
-  limite inferior abaixo de 3.2, ou
+* O seu [`pubspec.yaml`][] declara uma restrição de SDK cujo limite
+  inferior está abaixo de 3.2, ou
 * Você tem um comentário `// @dart=version` no topo do arquivo,
-  onde `version` é inferior a 3.2.
+  em que `version` é inferior a 3.2.
 
 **Exemplo:**
 
@@ -61,18 +64,18 @@ class C {
 
 **Solução:**
 
-Certifique-se de que sua biblioteca não está usando uma [versão de linguagem][language version] anterior à 3.2.
-Verifique o topo do seu arquivo em busca de um comentário `// @dart=version` desatualizado,
-ou seu `pubspec.yaml` em busca de um [limite inferior de constraint SDK][SDK constraint lower-bound] desatualizado.
+Garanta que sua biblioteca não está usando uma [versão da linguagem][language version] anterior à 3.2.
+Verifique no topo do arquivo se há um comentário `// @dart=version` desatualizado,
+ou no seu `pubspec.yaml` se há um [limite inferior de restrição de SDK][SDK constraint lower-bound] desatualizado.
 
 [`pubspec.yaml`]: /tools/pub/pubspec
 [SDK constraint lower-bound]: /tools/pub/pubspec#sdk-constraints
 
-## Apenas variáveis locais podem ser promovidas (antes do Dart 3.2) {:#property}
+## Somente variáveis locais podem ser promovidas (antes do Dart 3.2) {:#property}
 
 **A causa:**
 Você está tentando promover uma propriedade,
-mas apenas variáveis locais podem ser promovidas em versões Dart anteriores à 3.2,
+mas somente variáveis locais podem ser promovidas nas versões do Dart anteriores à 3.2,
 e você está usando uma versão anterior à 3.2.
 
 **Exemplo:**
@@ -95,31 +98,31 @@ class C {
 
 **Solução:**
 
-Se você está usando Dart 3.1 ou anterior, [atualize para 3.2 ou posterior][upgrade].
+Se você estiver usando o Dart 3.1 ou anterior, [atualize para a versão 3.2 ou posterior][upgrade].
 
-Se você precisa continuar usando uma versão mais antiga,
-leia [Outras causas e soluções alternativas](#other-causes-and-workarounds)
+Se você precisar continuar usando uma versão mais antiga,
+leia [Outras causas e soluções alternativas](#other-causes-and-workarounds).
 
 [upgrade]: /get-dart
 
 ## Outras causas e soluções alternativas {:#other-causes-and-workarounds}
 
-Os exemplos restantes nesta página documentam razões para falhas de promoção
-não relacionadas a inconsistências de versão,
-tanto para falhas de campo quanto de variável local, com exemplos e soluções alternativas.
+Os demais exemplos desta página documentam motivos de falhas de promoção
+não relacionados a inconsistências de versão,
+tanto para falhas em campos quanto em variáveis locais, com exemplos e soluções alternativas.
 
-Em geral, as correções usuais para falhas de promoção
+Em geral, as correções habituais para falhas de promoção
 são uma ou mais das seguintes:
 
-* Atribuir o valor da propriedade a uma variável local com
-  o tipo não-nullable que você precisa.
-* Adicionar uma verificação explícita de null (por exemplo, `i == null`).
-* Usar `!` ou `as` como uma [verificação redundante](#redundant-check)
-  se você tem certeza de que uma expressão não pode ser `null`.
+* Atribua o valor da propriedade a uma variável local com
+  o tipo non-nullable de que você precisa.
+* Adicione uma verificação explícita de null (por exemplo, `i == null`).
+* Use `!` ou `as` como uma [verificação redundante](#redundant-check)
+  se você tiver certeza de que uma expressão não pode ser `null`.
 
 Aqui está um exemplo de criação de uma variável local
-(que pode ser nomeada `i`)
-que contém o valor de `i`:
+(que pode se chamar `i`)
+que guarda o valor de `i`:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (property-copy)" replace="/final.*/[!$&!]/g"?>
 ```dart tag=good
@@ -133,18 +136,18 @@ class C {
 }
 ```
 
-Este exemplo apresenta um campo de instância,
-mas poderia usar em vez disso um getter de instância, um campo ou getter estático,
+Este exemplo usa um campo de instância,
+mas poderia usar, em vez disso, um getter de instância, um campo ou getter estático,
 uma variável ou getter de nível superior, ou [`this`](#this).
 
 :::tip
-Ao criar uma variável local para conter o valor de um campo,
+Ao criar uma variável local para guardar o valor de um campo,
 **torne a variável `final`**.
-Dessa forma, você não pode acidentalmente atualizar a variável local
+Assim, você não consegue atualizar a variável local por engano
 quando pretende atualizar o campo.
 :::
 
-E aqui está um exemplo de uso de `i!`:
+E aqui está um exemplo usando `i!`:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (property-bang)" replace="/!/[!!!]/g"?>
 ```dart tag=good
@@ -155,21 +158,21 @@ print(i[!!!].isEven);
 <a id="redundant-check" aria-hidden="true"></a>
 
 :::note
-Você pode contornar todos esses exemplos de não-promoção adicionando
-uma _verificação redundante_—código que confirma uma
+Você pode contornar todos esses exemplos de não promoção adicionando
+uma _verificação redundante_: código que confirma uma
 condição que já foi verificada.
 Se a promoção que está falhando é uma verificação de null, use `!`;
 se é uma verificação de tipo, você pode usar `as`.
 
 Verificações redundantes são uma solução fácil, mas propensa a erros,
 para falhas de promoção de tipo.
-Como elas sobrepõem o compilador,
-podem levar a erros de uma forma que outras soluções não levam.
+Como elas anulam o compilador,
+podem levar a erros de um jeito que outras soluções não levam.
 
-Cabe a você decidir se faz o trabalho extra para fazer os tipos promoverem
-(dando-lhe confiança de que o código está correto)
-ou fazer uma verificação redundante
-(que pode introduzir um bug se seu raciocínio estiver errado).
+Cabe a você decidir se faz o trabalho extra para que os tipos sejam promovidos
+(o que dá confiança de que o código está correto)
+ou se faz uma verificação redundante
+(que pode introduzir um bug se o seu raciocínio estiver errado).
 :::
 
 
@@ -179,9 +182,9 @@ ou fazer uma verificação redundante
 Você está tentando promover `this`,
 mas a promoção de tipo para `this` ainda não é suportada.
 
-Um cenário comum de promoção de `this` é ao escrever [métodos de extensão][extension methods].
-Se o [tipo `on`][`on` type] do método de extensão é um tipo nullable,
-você gostaria de fazer uma verificação de null para ver se `this` é `null`:
+Um cenário comum de promoção de `this` acontece ao escrever [métodos de extensão][extension methods].
+Se o [tipo `on`][`on` type] do método de extensão for um tipo nullable,
+você vai querer fazer uma verificação de null para saber se `this` é `null`:
 
 **Exemplo:**
 
@@ -196,13 +199,13 @@ extension on int? {
 **Mensagem:**
 
 ```plaintext
-`this` can't be promoted.
+`this` can't be promoted. 
 ```
 
 **Solução:**
 
-Crie uma variável local para conter o valor de `this`,
-então execute a verificação de null.
+Crie uma variável local para guardar o valor de `this`,
+e então faça a verificação de null.
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (this)" replace="/final.*/[!$&!]/g"?>
 ```dart tag=good
@@ -217,15 +220,15 @@ extension on int? {
 [extension methods]: /language/extension-methods
 [`on` type]: /language/extension-methods#implementing-extension-methods
 
-### Apenas campos privados podem ser promovidos {:#private}
+### Somente campos privados podem ser promovidos {:#private}
 
 **A causa:**
 Você está tentando promover um campo, mas o campo não é privado.
 
-É possível que outras bibliotecas em seu programa
+É possível que outras bibliotecas do seu programa
 sobrescrevam campos públicos com um getter. Como
 [getters podem não retornar um valor estável](#not-field),
-e o compilador não pode saber o que outras bibliotecas estão fazendo,
+e o compilador não pode saber o que as outras bibliotecas estão fazendo,
 campos não privados não podem ser promovidos.
 
 **Exemplo:**
@@ -252,7 +255,7 @@ void test(Example x) {
 **Solução:**
 
 Tornar o campo privado permite que o compilador tenha certeza de que nenhuma biblioteca externa
-poderia possivelmente sobrescrever seu valor, então é seguro promover.
+poderia sobrescrever seu valor, então é seguro promovê-lo.
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (private)" replace="/_val/_value/g; /_value;/[!_value!];/g; /PrivateFieldExample/Example/g;"?>
 ```dart tag=good
@@ -268,16 +271,16 @@ void test(Example x) {
 }
 ```
 
-### Apenas campos final podem ser promovidos {:#final}
+### Somente campos final podem ser promovidos {:#final}
 
 **A causa:**
 Você está tentando promover um campo, mas o campo não é final.
 
-Para o compilador, campos não-final poderiam, em princípio,
-ser modificados a qualquer momento entre o momento
-em que são testados e o momento em que são usados.
-Então não é seguro para o compilador promover um tipo nullable não-final
-para um tipo não-nullable.
+Para o compilador, campos não final podem, em princípio,
+ser modificados a qualquer momento entre o momento em que
+são testados e o momento em que são usados.
+Por isso, não é seguro para o compilador promover um tipo nullable não final
+a um tipo non-nullable.
 
 **Exemplo:**
 
@@ -321,11 +324,11 @@ class Example {
 ### Getters não podem ser promovidos {:#not-field}
 
 **A causa:** Você está tentando promover um getter,
-mas apenas *campos* de instância podem ser promovidos, não getters de instância.
+mas somente *campos* de instância podem ser promovidos, e não getters de instância.
 
 O compilador não tem como garantir que
-um getter retorne o mesmo resultado toda vez.
-Como sua estabilidade não pode ser confirmada,
+um getter retorne sempre o mesmo resultado.
+Como a estabilidade dele não pode ser confirmada,
 getters não são seguros para promover.
 
 **Exemplo:**
@@ -372,7 +375,7 @@ void f(Example x) {
 
 :::note
 A análise de fluxo considera getters `abstract` estáveis o suficiente para
-permitir promoção de tipo, desde que não haja declarações conflitantes.
+permitir a promoção de tipo, desde que não haja declarações conflitantes.
 :::
 
 ### Campos external não podem ser promovidos {:#external}
@@ -380,10 +383,10 @@ permitir promoção de tipo, desde que não haja declarações conflitantes.
 **A causa:**
 Você está tentando promover um campo, mas o campo está marcado como `external`.
 
-Campos external não promovem porque são essencialmente getters externos;
-sua implementação é código de fora do Dart,
-então não há garantia para o compilador de que um campo external
-retornará o mesmo valor cada vez que for chamado.
+Campos external não são promovidos porque, na prática, são getters externos;
+a implementação deles é código de fora do Dart,
+então o compilador não tem garantia de que um campo external
+vai retornar o mesmo valor toda vez que for chamado.
 
 **Exemplo:**
 
@@ -455,12 +458,12 @@ void testParity(Example x) {
 **Mensagem:**
 
 ```plaintext
-'_overriden' couldn't be promoted because there is a conflicting getter in class 'Override'.
+'_overridden' couldn't be promoted because there is a conflicting getter in class 'Override'.
 ```
 
 **Solução**:
 
-Se o getter e o campo estão relacionados e precisam compartilhar seu nome
+Se o getter e o campo estiverem relacionados e precisarem compartilhar o nome
 (como quando um deles sobrescreve o outro, como no exemplo acima),
 então você pode habilitar a promoção de tipo atribuindo o valor a uma variável local:
 
@@ -488,11 +491,11 @@ void testParity(Example x) {
 
 #### Nota sobre classes não relacionadas {:#note-about-unrelated-classes}
 
-Note que no exemplo acima está claro
-por que não é seguro promover o campo `_overridden`:
-porque há uma relação de sobrescrita entre o campo e o getter.
-No entanto, um getter conflitante impedirá a promoção de campo
-mesmo se as classes não estiverem relacionadas. Por exemplo:
+Observe que, no exemplo acima, é claro
+por que é inseguro promover o campo `_overridden`:
+existe uma relação de sobrescrita entre o campo e o getter.
+No entanto, um getter conflitante impedirá a promoção do campo
+mesmo que as classes não estejam relacionadas. Por exemplo:
 
 ```dart tag=bad
 import 'dart:math';
@@ -514,9 +517,9 @@ void f(Example x) {
 ```
 
 Outra biblioteca pode conter uma classe que combina as duas classes não relacionadas
-juntas na mesma hierarquia de classes,
-o que faria com que a referência na função `f` a `x._i` seja
-despachada para `Unrelated._i`. Por exemplo:
+na mesma hierarquia de classes,
+o que faria com que a referência em `x._i`, dentro da função `f`, fosse despachada para
+`Unrelated._i`. Por exemplo:
 
 ```dart tag=bad
 class Surprise extends Unrelated implements Example {}
@@ -528,8 +531,8 @@ void main() {
 
 **Solução:**
 
-Se o campo e a entidade conflitante são verdadeiramente não relacionados,
-você pode contornar o problema dando-lhes nomes diferentes:
+Se o campo e a entidade conflitante realmente não estiverem relacionados,
+você pode contornar o problema dando nomes diferentes a eles:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (unrelated)" replace="/get _j/[!$&!]/g; /UnrelatedExample/Example/g; /f2/f/g;"?>
 ```dart tag=good
@@ -549,12 +552,12 @@ void f(Example x) {
 }
 ```
 
-### Conflito com campo não promotável em outro lugar da biblioteca {:#field-name}
+### Conflito com campo não promovível em outro lugar da biblioteca {:#field-name}
 
 **A causa:**
 Você está tentando promover um campo, mas outra classe na mesma biblioteca
-contém um campo com o mesmo nome que não é promotável
-(por qualquer uma das outras razões listadas nesta página).
+contém um campo com o mesmo nome que não é promovível
+(por qualquer um dos outros motivos listados nesta página).
 
 **Exemplo:**
 
@@ -576,7 +579,7 @@ void f(Example x) {
 }
 ```
 
-Este exemplo falha porque em tempo de execução, `x` pode realmente ser uma
+Este exemplo falha porque, em tempo de execução, `x` pode ser de fato uma
 instância de `Override`, então a promoção não seria sólida.
 
 **Mensagem:**
@@ -587,7 +590,7 @@ instância de `Override`, então a promoção não seria sólida.
 
 **Solução:**
 
-Se os campos estão realmente relacionados e precisam compartilhar um nome, então
+Se os campos realmente estiverem relacionados e precisarem compartilhar um nome, então
 você pode habilitar a promoção de tipo atribuindo o valor a uma
 variável local final para promover:
 
@@ -611,21 +614,21 @@ void f(Example x) {
 }
 ```
 
-Se os campos não estão relacionados, então renomeie um dos campos, para que
-eles não entrem em conflito.
-Leia a [Nota sobre classes não relacionadas](#note-about-unrelated-classes). 
+Se os campos não estiverem relacionados,
+então renomeie um dos campos para que eles não entrem em conflito.
+Leia a [Nota sobre classes não relacionadas](#note-about-unrelated-classes).
 
 
-### Conflito com forwarder `noSuchMethod` implícito {:#nosuchmethod}
+### Conflito com um encaminhador implícito de `noSuchMethod` {:#nosuchmethod}
 
 **A causa:**
-Você está tentando promover um campo que é privado e final,
+Você está tentando promover um campo privado e final,
 mas outra classe na mesma biblioteca contém um
-[forwarder `noSuchMethod` implícito][nosuchmethod]
+[encaminhador implícito de `noSuchMethod`][nosuchmethod]
 com o mesmo nome do campo.
 
-Isso não é sólido porque não há garantia de que `noSuchMethod`
-retornará um valor estável de uma invocação para a próxima.
+Isso não é sólido, porque não há garantia de que `noSuchMethod`
+retorne um valor estável de uma invocação para a seguinte.
 
 **Exemplo:**
 
@@ -646,18 +649,18 @@ void f(Example x) {
 }
 ```
 
-Neste exemplo, `_i` não pode ser promovido porque pode
-resolver para o forwarder `noSuchMethod` implícito não sólido (também chamado `_i`) que
+Neste exemplo, `_i` não pode ser promovido porque ele poderia
+resolver para o encaminhador implícito e não sólido de `noSuchMethod` (também chamado `_i`) que
 o compilador gera dentro de `MockExample`.
 
-O compilador cria esta implementação implícita de `_i` porque
-`MockExample` promete suportar um getter para `_i` quando implementa
+O compilador cria essa implementação implícita de `_i` porque
+`MockExample` promete oferecer suporte a um getter para `_i` ao implementar
 `Example` em sua declaração, mas não cumpre essa promessa.
-Então, a implementação indefinida do getter é tratada pela
-[definição `noSuchMethod` de `Mock`][`Mock`'s `noSuchMethod` definition], que
-cria um forwarder `noSuchMethod` implícito com o mesmo nome.
+Assim, a implementação do getter não definido é tratada pela
+[definição de `noSuchMethod` de `Mock`][`Mock`'s `noSuchMethod` definition], que
+cria um encaminhador implícito `noSuchMethod` com o mesmo nome.
 
-A falha também pode ocorrer entre campos em
+A falha também pode ocorrer entre campos de
 [classes não relacionadas](#note-about-unrelated-classes).
 
 **Mensagem:**
@@ -668,10 +671,10 @@ A falha também pode ocorrer entre campos em
 
 **Solução:**
 
-Defina o getter em questão para que `noSuchMethod` não precise
-tratar implicitamente sua implementação:
+Defina o getter em questão de forma que `noSuchMethod` não precise
+tratar implicitamente a implementação dele:
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (mock)" plaster="" replace="/late.*/[!$&!]/g; /MockingExample/Example/g; /f4/f/g;"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (mock)" plaster="none" replace="/late.*/[!$&!]/g; /MockingExample/Example/g; /f4/f/g;"?>
 ```dart tag=good
 import 'package:mockito/mockito.dart';
 
@@ -692,20 +695,20 @@ void f(Example x) {
 }
 ```
 
-O getter é declarado `late` para ser consistente com
-como mocks são geralmente usados; não é necessário
-declarar o getter `late` para resolver esta falha de promoção de tipo em
+O getter é declarado como `late` para ser consistente com
+a forma como os mocks costumam ser usados; não é necessário
+declarar o getter como `late` para resolver essa falha de promoção de tipo em
 cenários que não envolvem mocks.
 
 :::note
 O exemplo acima usa [mocks]({{site.pub-pkg}}/mockito) simplesmente porque
-`Mock` já contém uma definição `noSuchMethod`,
+`Mock` já contém uma definição de `noSuchMethod`,
 então não precisamos definir uma arbitrária
 e podemos manter o código de exemplo curto.
 
-Não esperamos que problemas como este surjam com muita frequência na prática com mocks,
-porque geralmente mocks são declarados
-em uma biblioteca diferente da classe que estão mockando.
+Não esperamos que problemas como este apareçam com frequência na prática com mocks,
+porque normalmente os mocks são declarados
+em uma biblioteca diferente da classe que eles simulam.
 Quando as classes em questão são declaradas em bibliotecas diferentes,
 nomes privados não são encaminhados para `noSuchMethod`
 (porque isso violaria as expectativas de privacidade),
@@ -715,7 +718,7 @@ então ainda é seguro promover o campo.
 [nosuchmethod]: /language/extend#nosuchmethod
 [`Mock`'s `noSuchMethod` definition]: {{site.pub-api}}/mockito/latest/mockito/Mock/noSuchMethod.html
 
-### Possivelmente escrito após promoção {:#write}
+### Possivelmente escrito após a promoção {:#write}
 
 **A causa:**
 Você está tentando promover uma variável que pode ter sido
@@ -737,15 +740,15 @@ void f(bool b, int? i, int? j) {
 
 **Solução**:
 
-Neste exemplo, quando a análise de fluxo atinge (1),
-ela rebaixa `i` de `int` não-nullable de volta para `int?` nullable.
-Um humano pode dizer que o acesso em (2) é seguro
-porque não há caminho de código que inclua ambos (1) e (2), mas
-a análise de fluxo não é inteligente o suficiente para ver isso,
-porque ela não rastreia correlações entre
-condições em instruções `if` separadas.
+Neste exemplo, quando a análise de fluxo chega em (1),
+ela rebaixa `i` de `int` non-nullable de volta para `int?` nullable.
+Uma pessoa consegue perceber que o acesso em (2) é seguro
+porque não existe caminho de código que inclua tanto (1) quanto (2), mas a
+análise de fluxo não é inteligente o bastante para ver isso,
+porque ela não acompanha correlações entre
+condições em `if` separados.
 
-Você pode corrigir o problema combinando as duas instruções `if`:
+Você pode resolver o problema combinando os dois `if`:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (write-combine-ifs)" replace="/else/[!$&!]/g"?>
 ```dart tag=good
@@ -759,10 +762,10 @@ void f(bool b, int? i, int? j) {
 }
 ```
 
-Em casos de fluxo de controle em linha reta como estes (sem loops),
-a análise de fluxo leva em conta o lado direito da atribuição
+Em casos de fluxo de controle linear como estes (sem loops),
+a análise de fluxo considera o lado direito da atribuição
 ao decidir se deve rebaixar.
-Como resultado, outra maneira de corrigir este código é
+Como resultado, outra forma de corrigir este código é
 mudar o tipo de `j` para `int`.
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (write-change-type)" replace="/int j/[!$&!]/g"?>
@@ -778,12 +781,12 @@ void f(bool b, int? i, [!int j!]) {
 }
 ```
 
-### Possivelmente escrito em uma iteração de loop anterior {:#loop-or-switch}
+### Possivelmente escrito em uma iteração anterior do loop {:#loop-or-switch}
 
 **A causa:**
 Você está tentando promover algo que
 pode ter sido escrito em uma iteração anterior de um loop,
-e então a promoção foi invalidada.
+e por isso a promoção foi invalidada.
 
 **Exemplo:**
 
@@ -799,16 +802,16 @@ void f(Link? p) {
 }
 ```
 
-Quando a análise de fluxo atinge (1),
+Quando a análise de fluxo chega em (1),
 ela olha adiante e vê a escrita em `p` em (3).
-Mas porque está olhando adiante,
+Mas, como está olhando adiante,
 ainda não descobriu o tipo do lado direito da atribuição,
-então não sabe se é seguro reter a promoção.
-Para ser segura, ela invalida a promoção.
+então não sabe se é seguro manter a promoção.
+Por segurança, ela invalida a promoção.
 
 **Solução**:
 
-Você pode corrigir este problema movendo a verificação de null para o topo do loop:
+Você pode resolver este problema movendo a verificação de null para o início do loop:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (loop)" replace="/p != null/[!$&!]/g"?>
 ```dart tag=good
@@ -820,7 +823,7 @@ void f(Link? p) {
 }
 ```
 
-Esta situação também pode surgir em instruções `switch` se
+Essa situação também pode surgir em instruções `switch` se
 um bloco `case` tiver um rótulo,
 porque você pode usar instruções `switch` rotuladas para construir loops:
 
@@ -837,7 +840,7 @@ void f(int i, int? j, int? k) {
 }
 ```
 
-Novamente, você pode corrigir o problema movendo a verificação de null para o topo do loop:
+Novamente, você pode resolver o problema movendo a verificação de null para o início do loop:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (switch-loop)" replace="/if .*/[!$&!]/g"?>
 ```dart tag=good
@@ -853,7 +856,7 @@ void f(int i, int? j, int? k) {
 }
 ```
 
-### Em catch após possível escrita em try {:#catch}
+### No catch, após uma possível escrita no try {:#catch}
 
 **A causa:**
 A variável pode ter sido escrita em um bloco `try`,
@@ -875,25 +878,25 @@ void f(int? i, int? j) {
 }
 ```
 
-Neste caso, a análise de fluxo não considera `i.isEven` (3) seguro,
-porque ela não tem como saber quando no bloco `try`
+Nesse caso, a análise de fluxo não considera `i.isEven` (3) seguro,
+porque não tem como saber em qual ponto do bloco `try`
 a exceção pode ter ocorrido,
-então ela assume conservadoramente que pode ter acontecido entre (1) e (2),
-quando `i` era potencialmente `null`.
+então ela presume de forma conservadora que isso pode ter acontecido entre (1) e (2),
+quando `i` potencialmente era `null`.
 
 Situações semelhantes podem ocorrer entre blocos `try` e `finally`, e
 entre blocos `catch` e `finally`.
-Por causa de um artefato histórico de como a implementação foi feita,
-essas situações `try`/`catch`/`finally` não levam em conta
+Por um artefato histórico de como a implementação foi feita,
+essas situações de `try`/`catch`/`finally` não levam em conta
 o lado direito da atribuição,
-semelhante ao que acontece em loops.
+de forma semelhante ao que acontece em loops.
 
 **Solução**:
 
-Para corrigir o problema, certifique-se de que o bloco `catch` não
+Para corrigir o problema, garanta que o bloco `catch` não
 dependa de suposições sobre o estado de variáveis que são
 alteradas dentro do bloco `try`.
-Lembre-se, a exceção pode ocorrer a qualquer momento durante o bloco `try`,
+Lembre-se: a exceção pode ocorrer a qualquer momento durante o bloco `try`,
 possivelmente quando `i` é `null`.
 
 A solução mais segura é adicionar uma verificação de null dentro do bloco `catch`:
@@ -911,8 +914,8 @@ try {
 }
 ```
 
-Ou, se você tem certeza de que uma exceção não pode ocorrer enquanto `i` é `null`,
-apenas use o operador `!`:
+Ou, se você tiver certeza de que uma exceção não pode ocorrer enquanto `i` é `null`,
+basta usar o operador `!`:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (catch-bang)" replace="/i!/i[!!!]/g"?>
 ```dart
@@ -923,12 +926,12 @@ try {
 }
 ```
 
-### Incompatibilidade de subtipo
+### Incompatibilidade de subtipo {:#subtype-mismatch}
 
 **A causa:**
-Você está tentando promover para um tipo que não é um subtipo do
+Você está tentando promover para um tipo que não é subtipo do
 tipo promovido atual da variável
-(ou não era um subtipo no momento da tentativa de promoção).
+(ou que não era subtipo no momento da tentativa de promoção).
 
 **Exemplo:**
 
@@ -942,21 +945,21 @@ void f(Object o) {
 }
 ```
 
-Neste exemplo, `o` é promovido para `Comparable` em (1), mas
-não é promovido para `Pattern` em (2),
-porque `Pattern` não é um subtipo de `Comparable`.
-(A justificativa é que se promovesse,
-então você não seria capaz de usar métodos em `Comparable`.)
-Note que só porque `Pattern` não é um subtipo de `Comparable`
-não significa que o código em (3) está morto;
-`o` pode ter um tipo—como `String`—que
+Neste exemplo, `o` é promovido a `Comparable` em (1), mas
+não é promovido a `Pattern` em (2),
+porque `Pattern` não é subtipo de `Comparable`.
+(A justificativa é que, se ele fosse promovido,
+você não conseguiria usar os métodos de `Comparable`.)
+Note que o fato de `Pattern` não ser subtipo de `Comparable`
+não significa que o código em (3) é inalcançável;
+`o` pode ter um tipo, como `String`, que
 implementa tanto `Comparable` quanto `Pattern`.
 
 **Solução**:
 
-Uma solução possível é criar uma nova variável local para que
-a variável original seja promovida para `Comparable`, e
-a nova variável seja promovida para `Pattern`:
+Uma possível solução é criar uma nova variável local, de modo que a
+variável original seja promovida a `Comparable`, e a
+nova variável seja promovida a `Pattern`:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-variable)" replace="/Object o2.*/[!$&!]/g;/(o2)(\.| is)/[!$1!]$2/g"?>
 ```dart
@@ -972,10 +975,10 @@ void f(Object o) {
 }
 ```
 
-No entanto, alguém que editar o código mais tarde pode ser tentado a
-mudar `Object o2` para `var o2`.
-Essa mudança dá a `o2` um tipo de `Comparable`,
-o que traz de volta o problema do objeto não ser promotável para `Pattern`.
+No entanto, quem editar o código depois pode ser tentado a
+trocar `Object o2` por `var o2`.
+Essa mudança dá a `o2` o tipo `Comparable`,
+o que traz de volta o problema de o objeto não poder ser promovido a `Pattern`.
 
 Uma verificação de tipo redundante pode ser uma solução melhor:
 
@@ -991,9 +994,9 @@ void f(Object o) {
 ```
 
 Outra solução que às vezes funciona é quando você pode usar um tipo mais preciso.
-Se a linha 3 se preocupa apenas com strings,
-então você pode usar `String` em sua verificação de tipo.
-Como `String` é um subtipo de `Comparable`, a promoção funciona:
+Se a linha 3 só se importa com strings,
+então você pode usar `String` na sua verificação de tipo.
+Como `String` é subtipo de `Comparable`, a promoção funciona:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-string)" replace="/is String/is [!String!]/g"?>
 ```dart tag=good
@@ -1020,23 +1023,23 @@ void f(int? i, int? j) {
   var foo = () {
     i = j;
   };
-  // ... Use foo ...
+  // ... Use foo ... 
   if (i == null) return; // (1)
   // ... Additional code ...
   print(i.isEven);       // (2) ERROR
 }
 ```
 
-A análise de fluxo raciocina que assim que a definição de `foo` é alcançada,
+A análise de fluxo conclui que, assim que a definição de `foo` é alcançada,
 ela pode ser chamada a qualquer momento,
 portanto não é mais seguro promover `i` de forma alguma.
-Assim como com loops, esta despromoção acontece independentemente do
+Assim como nos loops, esse rebaixamento acontece independentemente do
 tipo do lado direito da atribuição.
 
 **Solução**:
 
 Às vezes é possível reestruturar a lógica para que
-a promoção esteja antes da captura de escrita:
+a promoção venha antes da captura para escrita:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (local-write-capture-reorder)" replace="/(  )((var foo|  i = j|\}\;|\/\/ ... Use foo).*)/$1[!$2!]/g"?>
 ```dart tag=good
@@ -1051,7 +1054,7 @@ void f(int? i, int? j) {
 }
 ```
 
-Outra opção é criar uma variável local, para que não seja capturada para escrita:
+Outra opção é criar uma variável local, para que ela não seja capturada para escrita:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (local-write-capture-copy)" replace="/var i2.*/[!$&!]/g;/(i2)( ==|\.)/[!$1!]$2/g"?>
 ```dart tag=good
@@ -1083,12 +1086,12 @@ void f(int? i, int? j) {
 ```
 
 
-### Escrita fora do closure ou expressão de função atual {:#write-outer}
+### Escrita fora da closure ou expressão de função atual {:#write-outer}
 
 **A causa:**
-A variável é escrita fora de um closure ou expressão de função,
-e o local de promoção de tipo está
-dentro do closure ou expressão de função.
+A variável é escrita fora de uma closure ou expressão de função,
+e o ponto de promoção de tipo está
+dentro da closure ou expressão de função.
 
 **Exemplo:**
 
@@ -1102,11 +1105,11 @@ void f(int? i, int? j) {
 }
 ```
 
-A análise de fluxo raciocina que não há como determinar
-quando `foo` pode ser chamado,
-então pode ser chamado após a atribuição em (2),
-e assim a promoção pode não ser mais válida.
-Assim como com loops, esta despromoção acontece independentemente do tipo do
+A análise de fluxo conclui que não há como determinar
+quando `foo` pode ser chamada,
+então ela pode ser chamada depois da atribuição em (2),
+e assim a promoção pode deixar de ser válida.
+Assim como nos loops, esse rebaixamento acontece independentemente do tipo do
 lado direito da atribuição.
 
 **Solução**:
@@ -1127,7 +1130,7 @@ void f(int? i, int? j) {
 
 **Exemplo:**
 
-Um caso particularmente desagradável se parece com isto:
+Um caso particularmente complicado é este:
 
 ```dart tag=bad
 void f(int? i) {
@@ -1138,16 +1141,16 @@ void f(int? i) {
 }
 ```
 
-Neste caso, um humano pode ver que a promoção é segura porque
-a única escrita em `i` usa um valor não-null e
-acontece antes de `foo` ser criado.
-Mas [a análise de fluxo não é tão inteligente][1536].
+Neste caso, uma pessoa consegue ver que a promoção é segura porque
+a única escrita em `i` usa um valor não nulo e
+acontece antes de `foo` ser criada.
+Mas a [análise de fluxo não é tão inteligente assim][1536].
 
 [1536]: {{site.repo.dart.lang}}/issues/1536
 
 **Solução**:
 
-Novamente, uma solução é criar uma variável local:
+De novo, uma solução é criar uma variável local:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (closure-new-var2)" replace="/var j.*/[!$&!]/g;/j\./[!j!]./g"?>
 ```dart tag=good
@@ -1159,20 +1162,20 @@ void f(int? i) {
 }
 ```
 
-Esta solução funciona porque `j` é inferido como tendo um tipo não-nullable (`int`)
-devido ao seu valor inicial (`i ?? 0`).
-Como `j` tem um tipo não-nullable,
-seja ou não atribuído posteriormente,
-`j` nunca pode ter um valor não-null.
+Essa solução funciona porque `j` é inferido como tendo um tipo non-nullable (`int`)
+por causa do seu valor inicial (`i ?? 0`).
+Como `j` tem um tipo non-nullable,
+independentemente de ser atribuído depois ou não,
+`j` nunca pode ter um valor não nulo.
 
 
-### Escrita capturada fora do closure ou expressão de função atual {:#captured-outer}
+### Escrita capturada fora da closure ou expressão de função atual {:#captured-outer}
 
 **A causa:**
-A variável que você está tentando promover está capturada para escrita
-fora de um closure ou expressão de função,
-mas este uso da variável está dentro do closure ou expressão de função
-que está tentando promovê-la.
+A variável que você está tentando promover é capturada para escrita
+fora de uma closure ou expressão de função,
+mas este uso da variável está dentro da closure ou expressão de função
+que tenta promovê-la.
 
 **Exemplo:**
 
@@ -1188,15 +1191,15 @@ void f(int? i, int? j) {
 }
 ```
 
-A análise de fluxo raciocina que não há como saber
-em que ordem `foo` e `bar` podem ser executados;
-na verdade, `bar` pode até ser executado no meio da execução de `foo`
-(devido a `foo` chamar algo que chama `bar`).
+A análise de fluxo conclui que não há como saber
+em que ordem `foo` e `bar` podem ser executadas;
+na prática, `bar` pode até ser executada no meio da execução de `foo`
+(por exemplo, se `foo` chamar algo que chama `bar`).
 Então não é seguro promover `i` de forma alguma dentro de `foo`.
 
 **Solução**:
 
-A melhor solução é provavelmente criar uma variável local:
+A melhor solução provavelmente é criar uma variável local:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (closure-write-capture)" replace="/var i2.*/[!$&!]/g;/(i2)( ==|\.)/[!i2!]$2/g"?>
 ```dart tag=good
@@ -1212,4 +1215,116 @@ void f(int? i, int? j) {
 }
 ```
 
-[language version]: /resources/language/evolution#language-versioning
+### Promoção perdida ao cruzar um `await` ou `yield` {:#suspension}
+
+**A causa:**
+A análise de fluxo descarta a promoção de tipo quando a execução é suspensa
+ao cruzar uma expressão `await` ou uma instrução `yield`.
+
+Para que essa falha de promoção ocorra,
+as seguintes condições devem ser atendidas:
+
+1. Uma função ou método contém uma escrita em uma variável local ou parâmetro.
+1. Essa função contém uma função interna ou closure
+   que promove a variável.
+1. A função interna se suspende usando `await` ou `yield`,
+   permitindo que a função externa continue a execução.
+1. A função interna tenta usar a variável local novamente
+   depois da suspensão.
+
+Em versões anteriores do SDK, usar a variável local depois da suspensão
+mantinha o tipo promovido.
+No entanto, esse comportamento não era sólido:
+enquanto a função interna está suspensa,
+a função externa pode continuar executando e modificar o valor da variável.
+A partir do Dart 3.13, para garantir a solidez,
+a análise de fluxo descarta a promoção quando a função interna é suspensa.
+
+**Exemplo:**
+
+O compilador descarta uma promoção nos pontos de suspensão,
+mesmo que seja claro que manter a promoção é seguro.
+
+```dart tag=bad
+import 'dart:async';
+
+Future<void> example(String? extraInfo) async {
+  extraInfo ??= 'No extra info'; // (1)
+  unawaited(() async {
+    log('Doing some asynchronous task...');
+    log(extraInfo!);
+    await longTask(); // (2)
+    log('Done!');
+    log(extraInfo); // (3) ERROR
+  }());
+}
+
+Future<void> longTask() async {
+  await Future<void>.delayed(const Duration(seconds: 10));
+}
+
+void log(String s) {
+  print(s);
+}
+```
+
+Neste exemplo, atribuir um valor a `extraInfo` em `(1)`
+faz com que ela não seja *effectively final*.
+A análise de fluxo presume de forma conservadora que
+qualquer variável modificada e capturada por uma closure
+pode mudar enquanto a closure está suspensa em `(2)`,
+mesmo que a atribuição em `(1)` sempre aconteça antes de a closure ser executada.
+Para garantir a solidez, a análise de fluxo descarta a promoção.
+Como resultado, em `(3)`, `extraInfo` volta a ser `String?`,
+que não é compatível com `log(String s)` e produz um erro de compilação.
+
+**Mensagem:**
+
+Quando essa situação ocorre, o compilador ou o analyzer emite
+um erro e uma mensagem de contexto:
+
+```plaintext
+example.dart:10:9: Error: The argument type 'String?' can't be assigned to the parameter type 'String'.
+    log(extraInfo);
+        ^
+example.dart:8:5: Context: Variable 'extraInfo' could not be promoted due to an 'await' or 'yield'.
+Try checking the type of the variable after the 'await' or 'yield'.  See http://dart.dev/go/non-promo-suspension
+    await longTask();
+    ^
+```
+
+**Solução:**
+
+Para corrigir esse erro de compilação,
+verifique novamente o tipo non-nullable da variável, adicione uma verificação explícita de null,
+ou use uma asserção de não nulo (`!`) depois do ponto de suspensão:
+
+<?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" plaster="" replace="/(Done!'\);\n +log\()extraInfo!/$1[!extraInfo!!]/g"?>
+```dart tag=good
+import 'dart:async';
+
+Future<void> example(String? extraInfo) async {
+  extraInfo ??= 'No extra info';
+  unawaited(() async {
+    log('Doing some asynchronous task...');
+    log(extraInfo!);
+    await longTask();
+    log('Done!');
+    log([!extraInfo!!]);
+  }());
+}
+
+Future<void> longTask() async {
+  await Future<void>.delayed(const Duration(seconds: 10));
+}
+
+void log(String s) {
+  print(s);
+}
+```
+
+Alternativamente, atribua a variável a uma variável local `final`
+antes da suspensão,
+ou verifique novamente `extraInfo != null` depois da expressão `await`.
+
+[language version]: /language/versioning

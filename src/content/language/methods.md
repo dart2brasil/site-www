@@ -3,11 +3,11 @@ ia-translate: true
 title: Métodos
 description: Aprenda sobre métodos em Dart.
 prevpage:
-  url: /language/constructors
-  title: Constructors
+  url: /language/primary-constructors
+  title: Construtores primários
 nextpage:
   url: /language/extend
-  title: Extend a class
+  title: Estender uma classe
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>

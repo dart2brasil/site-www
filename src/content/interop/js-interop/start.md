@@ -1,17 +1,17 @@
 ---
 ia-translate: true
-title: Começando com interoperabilidade JavaScript
-breadcrumb: Get started
-description: Um exemplo básico de uso de APIs do navegador e uma biblioteca JS empacotada.
+title: Começando com interop JavaScript
+breadcrumb: Começando
+description: Um exemplo básico de uso de APIs do navegador e de uma biblioteca JS empacotada.
 ---
 
-Este tutorial ensina os conceitos básicos de interagir com JavaScript
-em código Dart usando várias APIs de navegador e JavaScript. 
+Este tutorial ensina o básico de interagir com JavaScript
+em código Dart usando várias APIs do navegador e do JavaScript.
 
-## Acessar e definir um objeto JavaScript
+## Acessar e definir um objeto JavaScript {:#access-and-define-a-javascript-object}
 
-Para acessar um objeto JavaScript global, como o objeto
-`document` do navegador, declare um getter de nível superior external
+Para acessar um objeto global do JavaScript, como o objeto
+`document` do navegador, declare um getter external de nível superior
 anotado com `@JS`. Isso retorna o valor como um `JSObject` opaco.
 
 ```dart
@@ -22,11 +22,11 @@ import 'dart:js_interop';
 external JSObject get document;
 ```
 
-Um `JSObject` é opaco e não fornece segurança de tipo ou auto-completar.
-Para adicionar membros type-safe, defina um tipo de interop usando um extension type.
-Isso age como uma interface, permitindo que você declare mais APIs de interop como
+Um `JSObject` é opaco e não oferece segurança de tipos nem auto-completar.
+Para adicionar membros com tipagem segura, defina um tipo de interop usando um extension type.
+Ele funciona como uma interface, permitindo que você declare mais APIs de interop como
 membros external. Você pode definir um tipo de interop usando
-[extension types][] para visualizá-lo de forma diferente:
+[extension types][] para visualizá-lo de outra forma:
 
 ```dart
 @JS()
@@ -35,7 +35,7 @@ external Document get document;
 extension type Document._(JSObject _) implements JSObject {}
 ```
 
-Agora, você pode adicionar métodos external à sua interface `Document`. Por exemplo,
+Agora você pode adicionar métodos external à sua interface `Document`. Por exemplo,
 adicione o método de instância `createElement()`:
 
 ```dart
@@ -45,40 +45,38 @@ extension type Document._(JSObject _) implements JSObject {
 ```
 
 Com o método `createElement` definido, você pode chamá-lo no
-objeto `document`. Note que você deve converter `'button'` de
+objeto `document`. Observe que você precisa converter `'button'` de
 uma `String` para uma `JSString` usando o método de extensão `.toJS`.
 
 ```dart
 var button = document.createElement('button'.toJS);
 ```
 
-Valores passados para e de APIs de interop devem ser ou um
-tipo de interop (como `JSObject` ou `JSString`) ou uma primitiva
-Dart permitida.
+Os valores passados para APIs de interop e recebidos delas precisam ser
+um tipo de interop (como `JSObject` ou `JSString`) ou um
+primitivo Dart permitido.
 
-## Usar conversões automáticas de tipo
+## Usar conversões automáticas de tipo {:#use-automatic-type-conversions}
 
-O compilador converte automaticamente a maioria dos tipos primitivos Dart
-(como `String`, `num`, `bool` e `null`), então você pode frequentemente
-usá-los diretamente em assinaturas de interop para simplificar seu código.
+O compilador converte automaticamente a maioria dos tipos primitivos do Dart
+(como `String`, `num`, `bool` e `null`), então você pode usá-los
+diretamente nas assinaturas de interop para simplificar o código.
 
 Por exemplo, você pode reescrever a declaração `createElement`
-da seção anterior para aceitar uma `String` Dart diretamente.
-Por exemplo:
+da seção anterior para aceitar uma `String` do Dart diretamente:
 
 ```dart
 external JSObject createElement(String tag);
 ```
 
-Agora, você pode chamá-lo sem a conversão explícita `.toJS`.
-Por exemplo:
+Agora você pode chamá-lo sem a conversão explícita `.toJS`:
 
 ```dart
 var button = document.createElement('button');
 ```
 
 Para adicionar o botão recém-criado ao corpo do documento, primeiro
-defina tipos de interop para o `body` e seu método `appendChild()`:
+defina tipos de interop para o `body` e para o seu método `appendChild()`:
 
 ```dart
 extension type Document._(JSObject _) implements JSObject {
@@ -99,12 +97,12 @@ var button = document.createElement('button');
 document.body.appendChild(button);
 ```
 
-## Lidar com eventos e callbacks
+## Lidar com eventos e callbacks {:#handle-events-and-callbacks}
 
-Para lidar com interações do usuário, como um clique em botão,
+Para tratar interações do usuário, como um clique em um botão,
 você pode registrar um event listener usando `addEventListener()`.
 
-Primeiro, crie uma interface para um elemento button. Então, chame
+Primeiro, crie uma interface para um elemento button. Depois, chame
 `addEventListener` com o nome do evento e uma função de callback.
 
 ```dart
@@ -122,20 +120,51 @@ button.addEventListener('click', (JSObject event) {
 ```
 
 Callbacks convertidos para JS com `.toJS` têm as mesmas
-limitações de tipo que outras APIs de interop, em que seus parâmetros
-e valores de retorno devem ser tipos de interop ou primitivas compatíveis.
+limitações de tipo que as outras APIs de interop: seus parâmetros
+e valores de retorno devem ser tipos de interop ou primitivos compatíveis.
 
-## Trabalhar com Promises e Arrays
+## Criar um objeto literal do JavaScript {:#create-a-javascript-object-literal}
 
-A interop JavaScript fornece helpers para outros tipos comuns, como
-converter JavaScript Promises de e para `Futures` Dart, e
+Muitas APIs do JavaScript aceitam objetos literais simples (`{ key: 'value' }`)
+como opções de configuração.
+Para criar um objeto literal do JavaScript em Dart,
+declare um construtor `external` com parâmetros nomeados em um extension type,
+em que o nome de cada parâmetro corresponde ao nome de uma propriedade do JavaScript:
+
+```dart
+extension type RequestOptions._(JSObject _) implements JSObject {
+  external RequestOptions({String method, bool cache});
+}
+```
+
+Chamar esse construtor cria um objeto JavaScript contendo
+apenas os argumentos que você passou,
+que podem ser enviados diretamente para qualquer API de interop:
+
+```dart
+@JS()
+external JSPromise<JSObject> fetch(String resource, [RequestOptions options]);
+
+void main() {
+  // Creates the JS object `{method: 'POST'}` and passes it to `fetch()`.
+  var options = RequestOptions(method: 'POST');
+  fetch('data.json', options);
+}
+```
+
+Para saber mais, consulte [Construtores de objeto literal][Object literal constructors] no guia de uso.
+
+## Trabalhar com Promises e Arrays {:#work-with-promises-and-arrays}
+
+A interop com JavaScript oferece helpers para outros tipos comuns, como
+converter Promises do JavaScript de e para `Futures` do Dart, e
 `Arrays` de e para `Lists`.
 
-### Promises e futures
+### Promises e futures {:#promises-and-futures}
 
 Este exemplo usa a API `fetch`, que retorna uma `Promise`.
-A extensão `.toDart` converte a `Promise` para uma `Future`,
-então você pode fazer `await` do seu resultado em Dart:
+A extensão `.toDart` converte a `Promise` em uma `Future`,
+então você pode usar `await` no resultado em Dart:
 
 ```dart
 import 'dart:js_interop';
@@ -145,7 +174,7 @@ extension type Response._(JSObject _) implements JSObject {
 }
 
 @JS()
-external Response fetch(String resource);
+external JSPromise<Response> fetch(String resource);
 
 void main() async {
   var response = await fetch('image.png').toDart;
@@ -153,11 +182,11 @@ void main() async {
 }
 ```
 
-### Arrays e Lists
+### Arrays e Lists {:#arrays-and-lists}
 
-Este exemplo chama o método static JavaScript `Array.of`
+Este exemplo chama o método estático `Array.of` do JavaScript
 para criar um `JSArray`. Em seguida, converte o array para uma
-`List` Dart, itera sobre ela e imprime cada elemento.
+`List` do Dart, percorre a lista e imprime cada elemento.
 
 ```dart
 import 'dart:js_interop';
@@ -174,32 +203,37 @@ void main() {
 }
 ```
 
-Ao converter um tipo genérico como uma `List`, seus elementos
-já devem ser tipos de interop JS. Por exemplo, para converter
-uma `List<String>`, você deve primeiro converter cada `String`
-em uma `JSString`.
+Você pode converter uma `List` de primitivos (`num`, `int`, `double`, `bool` ou
+`String`) diretamente para uma instância de `JSArray` usando o getter `toJS`,
+e converter de volta para uma lista do Dart usando os getters `toDartStringList`
+(ou `toDartIntList`, `toDartDoubleList` ou `toDartBoolList`).
+Para listas de outros tipos, os elementos precisam ser
+tipos de interop do JS antes de você converter a lista:
 
 ```dart
-// Option 1: Create the list with JS types initially.
-List<JSString> list = ['hello'.toJS, 'world'.toJS];
-JSArray jsArray1 = list.toJS;
-
-// Option 2: Map a Dart list to a list of JS types.
+// Primitive lists convert directly to and from JSArray.
 List<String> dartList = ['hello', 'world'];
-JSArray jsArray2 = dartList.map((e) => e.toJS).toList().toJS;
+JSArray<JSString> jsArray1 = dartList.toJS;
+List<String> roundTrip = jsArray1.toDartStringList;
+
+// Non-primitive lists require elements to be JS interop types.
+List<JSObject> jsObjects = [document, document.body];
+JSArray<JSObject> jsArray2 = jsObjects.toJS;
 ```
 
-## Saiba mais
+## Saiba mais {:#learn-more}
 
-* Para mais informações sobre conversões de tipo, confira [Conversões][Conversions].
-* Para mais informações sobre como escrever APIs de interop, veja o [Guia de uso][Usage guide].
-* Para acessar funções utilitárias comuns, veja:
+* Para mais informações sobre conversões de tipos, confira [Conversões][Conversions].
+* Para mais informações sobre como escrever APIs de interop, consulte o
+  [Guia de uso][Usage guide].
+* Para acessar funções utilitárias comuns, consulte:
   * A biblioteca [`dart:js_interop`][], e
   * A biblioteca [`dart:js_interop_unsafe`][].
 * O [`package:web`][] expõe muitas das APIs do navegador
-  (incluindo aquelas usadas nos exemplos acima) através de declarações de interop.
+  (incluindo as usadas nos exemplos acima) por meio de declarações de interop.
 
 [extension types]: /language/extension-types
+[Object literal constructors]: /interop/js-interop/usage#object-literal-constructors
 [Conversions]: /interop/js-interop/js-types#conversions
 [Usage guide]: /interop/js-interop/usage
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/

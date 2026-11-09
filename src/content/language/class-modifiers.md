@@ -54,7 +54,7 @@ orientação sobre como navegar por essas mudanças em suas bibliotecas.
 [Class modifier reference]: /language/modifier-reference
 [Class modifiers for API maintainers]: /language/class-modifiers-for-apis
 
-## Sem modificador
+## Sem modificador {:#no-modifier}
 
 Para permitir permissão irrestrita para construir ou subtipificar de qualquer biblioteca,
 use uma declaração `class` ou `mixin` sem um modificador. Por padrão, você pode:
@@ -64,7 +64,7 @@ use uma declaração `class` ou `mixin` sem um modificador. Por padrão, você p
 - [Implementar][implement] a interface de uma classe ou mixin.
 - [Misturar][mixin] um mixin ou mixin class.
 
-## `abstract`
+## `abstract` {:#abstract}
 
 Para definir uma classe que não requer uma implementação completa e concreta de
 toda a sua interface, use o modificador `abstract`.
@@ -109,7 +109,7 @@ class MockVehicle implements Vehicle {
 Se você quiser que sua classe abstract pareça ser instanciável,
 defina um [factory constructor][factory constructor].
 
-## `base`
+## `base` {:#base}
 
 Para forçar a herança da implementação de uma classe ou mixin,
 use o modificador `base`.
@@ -160,7 +160,7 @@ base class MockVehicle implements Vehicle {
 }
 ```
 
-## `interface`
+## `interface` {:#interface}
 
 Para definir uma interface, use o modificador `interface`.
 Bibliotecas fora da própria biblioteca que define a interface podem
@@ -206,7 +206,7 @@ class MockVehicle implements Vehicle {
 }
 ```
 
-### `abstract interface`
+### `abstract interface` {:#abstract-interface}
 
 O uso mais comum para o modificador `interface` é definir uma interface pura.
 [Combine](#combining-modifiers) os modificadores `interface` e [`abstract`](#abstract)
@@ -216,7 +216,42 @@ Como uma classe `interface`, outras bibliotecas podem
 implementar, mas não podem herdar, uma interface pura.
 Como uma classe `abstract`, uma interface pura pode ter membros abstract.
 
-## `final`
+<?code-excerpt "language/lib/class_modifiers/ex6/a.dart"?>
+```dart title="a.dart"
+abstract interface class Vehicle {
+  void moveForward(int meters);
+}
+```
+
+<?code-excerpt "language/lib/class_modifiers/ex6/b.dart"?>
+```dart title="b.dart"
+import 'a.dart';
+
+// ERROR: `Vehicle` can't be instantiated because
+// it is marked as `abstract`.
+Vehicle myVehicle = Vehicle();
+
+// ERROR: `Vehicle` can't be extended in a different library because
+// it is marked with `interface`.
+class Car extends Vehicle {
+  int passengers = 4;
+
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
+}
+
+// Can be implemented.
+class MockVehicle implements Vehicle {
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
+}
+```
+
+## `final` {:#final}
 
 Para fechar a hierarquia de tipos, use o modificador `final`.
 Isso impede a subtipificação de uma classe fora da biblioteca atual.
@@ -264,7 +299,7 @@ class MockVehicle implements Vehicle {
 }
 ```
 
-## `sealed`
+## `sealed` {:#sealed}
 
 Para criar um conjunto conhecido e enumerável de subtipos, use o modificador `sealed`.
 Isso permite que você crie um switch sobre esses subtipos que
@@ -347,7 +382,7 @@ confira a [Referência de modificadores de classe][Class modifiers reference].
 [Class modifiers reference]: /language/modifier-reference
 
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [class, mixin, or mixin class]: /language/mixins#class-mixin-or-mixin-class
 [mixin]: /language/mixins
 [fragile base class problem]: https://en.wikipedia.org/wiki/Fragile_base_class

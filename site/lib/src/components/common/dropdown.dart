@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import 'package:universal_web/web.dart' as web;
@@ -19,10 +20,10 @@ final class Dropdown extends StatefulComponent {
   final List<Component> children;
 
   @override
-  State<Dropdown> createState() => _DropdownState();
+  State<Dropdown> createState() => DropdownState();
 }
 
-final class _DropdownState extends State<Dropdown> {
+final class DropdownState extends State<Dropdown> {
   bool _expanded = false;
 
   void toggle({bool? to}) {

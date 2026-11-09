@@ -1,51 +1,51 @@
 ---
 ia-translate: true
 title: Deploy na web
-description: Aprenda como compilar seu aplicativo web Dart para deploy em produção.
+description: Aprenda a compilar sua aplicação web Dart para deploy em produção.
 ---
 
-O deploy de um aplicativo web Dart funciona como o deploy de qualquer outro aplicativo web.
-Esta página descreve como compilar seu aplicativo, dicas para torná-lo menor
-e mais rápido, e aponta recursos para servir o aplicativo.
+O deploy de uma aplicação web Dart funciona como o deploy de qualquer outra aplicação web.
+Esta página descreve como compilar sua aplicação, dicas para deixá-la menor
+e mais rápida, e aponta recursos para servir a aplicação.
 
-## Compilando seu aplicativo {:#compiling-to-javascript}
+## Compilando sua aplicação {:#compiling-to-javascript}
 
-Use a ferramenta `webdev` para compilar seu aplicativo. Ela compila Dart para JavaScript
-e gera todos os recursos necessários para o deploy.
+Use a ferramenta `webdev` para compilar sua aplicação. Ela compila Dart para JavaScript
+e gera todos os recursos de que você precisa para o deploy.
 Quando você compila usando o modo de produção do compilador,
-você obtém um arquivo JavaScript razoavelmente pequeno,
-graças ao suporte do compilador para tree shaking.
+obtém um arquivo JavaScript razoavelmente pequeno,
+graças ao suporte do compilador a tree shaking.
 
-Com um pouco de trabalho extra, você pode tornar seu aplicativo implantável
-[menor, mais rápido e mais confiável](#make-your-app-smaller-faster-and-more-reliable).
+Com um pouco de trabalho extra, você pode tornar sua aplicação implantável
+[menor, mais rápida e mais confiável](#make-your-app-smaller-faster-and-more-reliable).
 
-### Compile usando webdev
+### Compile usando o webdev {:#compile-using-webdev}
 
 [Use o comando `webdev build`][build] para criar uma versão implantável
-do seu aplicativo. Este comando converte seu código para JavaScript e salva
-o resultado como `build/web/main.dart.js`. Você pode usar [qualquer opção
+da sua aplicação. Esse comando converte seu código para JavaScript e salva
+o resultado em `build/web/main.dart.js`. Você pode usar [qualquer opção
 disponível para `dart compile js`](/tools/dart-compile#prod-compile-options)
-com `webdev build`.
+com o `webdev build`.
 
-### Torne seu aplicativo menor, mais rápido e mais confiável {:#make-your-app-smaller-faster-and-more-reliable}
+### Torne sua aplicação menor, mais rápida e mais confiável {:#make-your-app-smaller-faster-and-more-reliable}
 
-Os passos a seguir são opcionais. Eles podem ajudar a tornar seu aplicativo mais
-confiável e responsivo.
+Os passos a seguir são opcionais. Eles podem ajudar a tornar sua aplicação mais
+confiável e responsiva.
 
-* [Use deferred loading para reduzir o tamanho inicial do seu aplicativo](#use-deferred-loading-to-reduce-your-apps-initial-size)
-* [Siga as melhores práticas para aplicativos web](#follow-best-practices-for-web-apps)
-* [Remova arquivos de build desnecessários](#remove-unneeded-build-files)
+* [Use deferred loading para reduzir o tamanho inicial da sua aplicação](#use-deferred-loading-to-reduce-your-apps-initial-size)
+* [Siga as melhores práticas para aplicações web](#follow-best-practices-for-web-apps)
+* [Gerencie source maps e arquivos de build desnecessários](#manage-source-maps-and-unneeded-build-files)
 
-#### Use deferred loading para reduzir o tamanho inicial do seu aplicativo {:#use-deferred-loading-to-reduce-your-apps-initial-size}
+#### Use deferred loading para reduzir o tamanho inicial da sua aplicação {:#use-deferred-loading-to-reduce-your-apps-initial-size}
 
-Você pode usar o suporte do Dart para deferred loading para
-reduzir o tamanho inicial de download do seu aplicativo.
-Para detalhes, veja a cobertura do tour da linguagem sobre
+Você pode usar o suporte do Dart a deferred loading para
+reduzir o tamanho inicial do download da sua aplicação.
+Para mais detalhes, veja a parte do tour da linguagem sobre
 [deferred loading](/language/libraries#lazily-loading-a-library).
 
-#### Siga as melhores práticas para aplicativos web {:#follow-best-practices-for-web-apps}
+#### Siga as melhores práticas para aplicações web {:#follow-best-practices-for-web-apps}
 
-Os conselhos usuais para aplicativos web se aplicam a aplicativos web Dart.
+Os conselhos habituais para aplicações web valem para aplicações web Dart.
 Aqui estão alguns recursos:
 
 * [Fast load times](https://web.dev/fast/)
@@ -54,43 +54,71 @@ Aqui estão alguns recursos:
 * [Progressive Web Apps](https://web.dev/progressive-web-apps/)
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
-#### Remova arquivos de build desnecessários {:#remove-unneeded-build-files}
+#### Gerencie source maps e arquivos de build desnecessários {:#manage-source-maps-and-unneeded-build-files}
 
-Compiladores web podem produzir arquivos que são úteis durante o desenvolvimento,
-como arquivos de mapa Dart-para-JavaScript, mas desnecessários em produção.
+Por padrão, os compiladores web do Dart (`dart compile js` e `dart compile wasm`)
+geram arquivos de source map (`.js.map` e `.wasm.map`)
+junto com a saída compilada.
+Embora os source maps sejam úteis para depuração,
+servi-los em servidores web públicos pode expor informações sensíveis:
 
-Para remover esses arquivos, você pode executar um comando como o seguinte:
+* **Símbolos e estrutura não minificados**:
+  os source maps permitem que o DevTools do navegador reconstrua nomes originais de classes,
+  nomes de funções e a lógica do código-fonte.
+* **Caminhos de arquivos do desenvolvedor**:
+  os source maps costumam incluir URIs absolutas do sistema de arquivos
+  (como `file:///Users/...`) da máquina de build.
 
-{% comment %}
-Revise the following once https://github.com/dart-lang/angular/issues/1123 is resolved:
-{% endcomment %}
+:::warning
+Para manter privados os nomes dos seus símbolos, a estrutura do código e os caminhos locais de build,
+não faça deploy de arquivos de source map em hosts web públicos.
+:::
 
-```console
-# From the root directory of your app:
-$ find build -type f -name "*.js.map" -exec rm {} +
-```
+Dependendo da sua estratégia de deploy,
+você pode tratar os source maps de duas formas:
 
-## Servindo seu aplicativo
+* **Desabilite os source maps no momento do build**:
+  se você não precisa de source maps para depuração em produção ou para relatório de erros,
+  passe a flag `--no-source-maps` para o compilador:
 
-Você pode servir seu aplicativo web Dart assim como você serviria qualquer outro aplicativo web.
-Esta seção aponta dicas para servir aplicativos web Dart,
-bem como recursos específicos do Dart para ajudá-lo a usar GitHub Pages ou Firebase
-para servir seu aplicativo.
+  ```console
+  $ dart compile js --no-source-maps -O2 -o build/main.js web/main.dart
+  $ dart compile wasm --no-source-maps -o build/main.wasm web/main.dart
+  ```
 
-### GitHub Pages
+* **Exclua ou remova os arquivos de map da hospedagem pública**:
+  se você usa source maps em serviços privados de monitoramento de erros
+  (como Sentry ou Bugsnag),
+  mantenha os arquivos `.map` durante a compilação
+  e envie-os diretamente para o seu serviço de monitoramento.
+  Depois, exclua-os ou remova-os do seu servidor web público ou do diretório do CDN:
 
-Se seu aplicativo não usa roteamento ou requer suporte do lado do servidor,
-você pode servir o aplicativo usando [GitHub Pages](https://pages.github.com/).
+  ```console
+  # From the root directory of your app:
+  $ find build -type f \( -name "*.js.map" -o -name "*.wasm.map" \) -exec rm {} +
+  ```
+
+## Servindo sua aplicação {:#serving-your-app}
+
+Você pode servir sua aplicação web Dart da mesma forma que serviria qualquer outra aplicação web.
+Esta seção reúne dicas para servir aplicações web Dart,
+além de recursos específicos do Dart para ajudar você a usar o GitHub Pages ou o Firebase
+para servir sua aplicação.
+
+### GitHub Pages {:#github-pages}
+
+Se sua aplicação não usa roteamento nem precisa de suporte do lado do servidor,
+você pode servi-la usando o [GitHub Pages](https://pages.github.com/).
 O pacote [peanut][] é
-uma maneira fácil de produzir automaticamente uma branch gh-pages para qualquer aplicativo web Dart.
+uma forma fácil de gerar automaticamente uma branch gh-pages para qualquer aplicação web Dart.
 
 O [exemplo startup_namer](https://filiph.github.io/startup_namer/)
-é hospedado usando GitHub Pages.
+é hospedado com GitHub Pages.
 Seus arquivos estão na branch **gh-pages** do
 [repositório filiph/startup_namer](https://github.com/filiph/startup_namer)
-e foram construídos usando [peanut.][peanut]
+e foram gerados com o [peanut.][peanut]
 
-### Firebase
+### Firebase {:#firebase}
 {% comment %}
 TODO: Give an example of how to deploy with Firebase, which originally was shown on https://dart.academy/build-a-real-time-chat-web-app-with-dart-angular-2-and-firebase-3/
 {% endcomment %}
@@ -98,10 +126,10 @@ TODO: Give an example of how to deploy with Firebase, which originally was shown
 Para saber mais sobre deploy com Firebase, veja os seguintes recursos:
 
 * A [documentação do Firebase Hosting](https://firebase.google.com/docs/hosting/)
-  descreve como fazer deploy de aplicativos web com Firebase.
+  descreve como fazer deploy de aplicações web com Firebase.
 * Na documentação do Firebase Hosting,
   [Configure Hosting Behavior](https://firebase.google.com/docs/hosting/full-config)
-  cobre redirecionamentos, reescritas e mais.
+  aborda redirecionamentos, reescritas e mais.
 
 [build]: /tools/webdev#build
 [build_runner]: /tools/build_runner

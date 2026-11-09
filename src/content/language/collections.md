@@ -17,7 +17,7 @@ confira [Generics][generics].
 [generics]: /language/generics
 [collections]: /libraries/dart-core#collections
 
-## Lists
+## Lists {:#lists}
 
 Talvez a coleção mais comum em quase todas as linguagens de programação
 seja o *array*, ou grupo ordenado de objetos. No Dart, arrays são
@@ -45,7 +45,7 @@ mas pode ajudar a prevenir erros de copiar-colar.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
 ```dart
-var list = ['Car', 'Boat', 'Plane'];
+var list = ['Car', 'Boat', 'Plane',];
 ```
 
 Lists usam indexação baseada em zero, onde 0 é o índice do primeiro elemento
@@ -78,7 +78,7 @@ Para mais informações sobre lists, consulte a seção Lists da
 [`List`]: {{site.dart-api}}/dart-core/List-class.html
 [type inference]: /language/type-system#type-inference
 
-## Sets
+## Sets {:#sets}
 
 Um set em Dart é uma coleção não ordenada de elementos únicos.
 O suporte do Dart para sets é fornecido por literais de set e o
@@ -154,7 +154,7 @@ Para mais informações sobre sets, consulte a seção Sets da
 
 [`Set`]: {{site.dart-api}}/dart-core/Set-class.html
 
-## Maps
+## Maps {:#maps}
 
 Em um map, cada elemento é um par chave-valor. Cada chave dentro
 de um par está associada a um valor, e tanto as chaves quanto os valores
@@ -370,8 +370,8 @@ elemento de entrada de map:
 ```
 
 No exemplo a seguir, o resultado para o
-elemento null-aware `?a` não é adicionado a uma list chamada
-`items` porque `a` é `null`:
+elemento null-aware `?absentValue` não é adicionado a uma list chamada
+`items` porque `absentValue` é `null`:
 
 <?code-excerpt "misc/test/language_tour/collections/null_aware_element_a.dart (code-sample)"?>
 ```dart
@@ -408,7 +408,7 @@ var itemsE = {absentKey: absentValue}; // {null: null}
 var itemsF = {?absentKey: ?absentValue}; // {}
 ```
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 
 ### Elementos spread {: #spread-element }
 
@@ -598,7 +598,7 @@ var typeInfo = [
   if (data case String s) 'Data is a string: $s',
   if (data case bool b) 'Data is a boolean: $b',
   if (data case double d) 'Data is a double: $d',
-]; // [Data is an integer: 123, Data is a double: 123]
+]; // [Data is an integer: 123]
 ```
 
 <?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_d.dart (code_sample)"?>

@@ -3,215 +3,213 @@ ia-translate: true
 title: Depurando aplicações web Dart
 shortTitle: Depurando aplicações web
 breadcrumb: Depuração
-description: Aprenda como depurar sua aplicação web Dart.
+description: Aprenda a depurar sua aplicação web Dart.
 ---
 
-Você pode usar uma [IDE Dart][IDE], [Dart DevTools][], e ferramentas de navegador
-como [Chrome DevTools][] para depurar suas aplicações web Dart.
+Você pode depurar aplicações web Dart usando sua [IDE Dart][IDE], o [Dart DevTools][],
+e ferramentas do navegador, como o [Chrome DevTools][].
 
-* Para depurar a lógica da sua aplicação,
-  use sua IDE, Dart DevTools, ou ferramentas de navegador.
-  Dart DevTools tem melhor suporte do que ferramentas de navegador
-  para inspecionar e recarregar automaticamente código Dart.
-* Para depurar a aparência da sua aplicação (HTML/CSS) e performance,
-  use sua IDE ou ferramentas de navegador como Chrome DevTools.
+* **Lógica e estado da aplicação:** use o depurador embutido da sua IDE ou o Dart DevTools
+  para definir breakpoints em arquivos `.dart`, inspecionar variáveis e avaliar
+  expressões Dart.
+* **DOM, CSS e atividade de rede:** use as ferramentas de desenvolvedor do navegador,
+  como o [Chrome DevTools][].
 
+## Depurar em uma IDE {:#debug-in-an-ide}
 
-## Visão geral
+A forma mais rápida de depurar uma aplicação web Dart durante o desenvolvimento é
+usar uma [IDE com suporte a Dart][IDE], como VS Code ou IntelliJ IDEA.
+Abra seu projeto, defina breakpoints na margem do editor e inicie uma
+sessão de depuração.
+O editor compila sua aplicação com `dartdevc`, abre o Chrome e conecta
+o depurador automaticamente.
 
-Para servir sua aplicação, use `webdev serve`
-(na linha de comando ou através da sua IDE)
-para iniciar o compilador de desenvolvimento Dart.
-Para habilitar o Dart DevTools, adicione a opção `--debug` ou `--debug-extension`
-(na linha de comando ou através da sua IDE):
+Para inspecionar os arquivos Dart com source map diretamente no Chrome DevTools
+a qualquer momento, pressione <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
+(<kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> no macOS).
+O Chrome usa [source maps][] para exibir seus arquivos `.dart` originais
+em vez do JavaScript ou WebAssembly compilado.
 
-```console
-$ webdev serve --debug
-```
+## Depurar pela linha de comando com o Dart DevTools {:#using-dart-devtools}
 
-Ao executar sua aplicação usando a flag `--debug` do `webdev`,
-você pode abrir o Dart DevTools pressionando
-<kbd>Alt</kbd>+<kbd>D</kbd>
-(ou <kbd>Option</kbd>+<kbd>D</kbd> no macOS).
-
-Para abrir o Chrome DevTools, pressione <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
-(ou <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> no macOS).
-Se você quiser depurar sua aplicação usando Chrome DevTools,
-você pode usar [source maps][] para exibir seus arquivos fonte Dart
-em vez do JavaScript que o compilador produz.
-Para mais informações sobre o uso do Chrome DevTools,
-veja a [documentação do Chrome DevTools.][Chrome DevTools]
-
-[source maps]: https://developer.chrome.com/docs/devtools/javascript/source-maps/
-
-Para usar o Dart DevTools ou Chrome DevTools
-para depurar uma aplicação web Dart, você precisa do seguinte software:
-
-* [Google Chrome.][Google Chrome]
-* [Dart SDK][], versão 2.0.0 ou superior.
-* Um dos seguintes ambientes de desenvolvimento:
-  * Linha de comando: [pacotes de ferramentas de linha de comando Dart][cl-tools]
-    como webdev (necessário tanto para Dart quanto para Chrome DevTools) e
-    devtools (necessário para Dart DevTools).
-    <br>_ou_
-  * Uma [IDE ou editor Dart][IDE] que suporte desenvolvimento web.
-* Uma [aplicação web Dart][Dart web app] para depurar.
-
-[cl-tools]: #getting-command-line-tool-packages
-
-## Começando com Dart DevTools {:#using-dart-devtools}
-
-<img src="/assets/img/dart-devtools-screenshot.png" alt="DevTools">
-
-Esta seção guia você pelos conceitos básicos de
-usar o Dart DevTools para depurar uma aplicação web.
-Se você já tem uma aplicação pronta para depurar,
-você pode pular a criação da aplicação de teste (passo 1),
-mas você precisará ajustar as instruções para corresponder à sua aplicação.
-
-1. _Opcional:_ Clone o [repositório webdev][webdev repo,] para que você possa usar sua aplicação de exemplo
-   para experimentar o Dart DevTools.
-
-1. _Opcional:_ Instale a [Dart Debug Extension][]
-   para que você possa executar sua aplicação e abrir o Dart DevTools
-   em uma instância do Chrome já em execução.
-
-1. No diretório principal da sua aplicação, execute `dart pub get` para obter suas dependências.
-
-   ```console
-   $ cd example
-   $ dart pub get
-   ```
-
-1. Compile e sirva a aplicação em modo debug,
-   usando sua IDE ou `webdev` na linha de comando.
-
-   :::note
-   A primeira compilação leva mais tempo,
-   porque toda a aplicação deve ser compilada.
-   Depois disso, as atualizações são muito mais rápidas.
-   :::
-
-   Se você estiver usando webdev na linha de comando,
-   o comando a usar depende se você quer (ou precisa)
-   executar a aplicação e o depurador em uma instância do Chrome já em execução.
-
-   * Se você tem a [Dart Debug Extension][] instalada e quer usar
-     uma instância existente do Chrome para depurar:
-
-     ```console
-     $ webdev serve --debug-extension
-     ```
-
-   * Caso contrário, use o seguinte comando,
-     que inicia uma nova instância do Chrome
-     e executa a aplicação:
-
-     ```console
-     $ webdev serve --debug
-     ```
-
-1. Se sua aplicação ainda não estiver em execução, abra-a em uma janela do navegador Chrome.
-   <br>
-   Por exemplo, se você usar `webdev serve --debug-extension` sem argumentos,
-   abra [http://127.0.0.1:8080](http://http://127.0.0.1:8080).
-
-1. Abra o Dart DevTools para depurar a aplicação que está em execução na janela atual.
-
-   * Se a Dart Debug Extension estiver instalada e
-     você usou a flag `--debug-extension` com `webdev`,
-     clique no logo do Dart
-     <img src="/assets/img/logo/dart-64.png" alt="Dart logo" class="align-baseline text-icon">
-     no canto superior direito da janela do navegador.
-
-   * Se você usou a flag `--debug` com `webdev`,
-     pressione <kbd>Alt</kbd>+<kbd>D</kbd>
-     (ou <kbd>Option</kbd>+<kbd>D</kbd> no macOS).
-
-   A janela do Dart DevTools abre
-   e exibe o código fonte do arquivo principal da sua aplicação.
-
-1. Defina um breakpoint dentro de um timer ou manipulador de evento
-   clicando à esquerda de uma das linhas de código.
-   <br>
-   Por exemplo, clique no número da linha para a primeira linha dentro
-   de um manipulador de evento ou callback de timer.
-
-1. Acione o evento que causa a chamada da função.
-   A execução para no breakpoint.
-
-1. No painel **Variables**, inspecione os valores das variáveis.
-
-1. Retome a execução do script, e acione o evento novamente ou pressione **Pause**.
-   A execução pausa novamente.
-
-1. Tente percorrer o código linha por linha usando os
-   botões **Step In**, **Step Over**, e **Step Out**.
-
-   :::note
-   O Dart DevTools não entra no código do SDK.
-   Por exemplo, se você pressionar **Step In** em uma chamada para `print()`,
-   você vai para a próxima linha, não para o código do SDK que implementa `print()`.
-   :::
-
-1. Altere seu código fonte e recarregue a janela do Chrome que está executando a aplicação.
-   A aplicação recompila e recarrega rapidamente.
-   Até que a [issue 1925][] seja corrigida,
-   você perde seus breakpoints ao recarregar a aplicação.
-
-1. Clique no botão **Logging** para ver stdout, stderr, e logs do sistema.
-
-
-## Obtendo pacotes de ferramentas de linha de comando {:#getting-command-line-tool-packages}
-
-Se você está usando a linha de comando em vez de uma IDE ou editor habilitado para Dart,
-então você precisa da [ferramenta webdev][webdev].
-O Dart DevTools é fornecido pelo SDK.
+Para depurar pela linha de comando usando o [Dart SDK][] mais recente e o
+[Google Chrome][Google Chrome], ative globalmente a ferramenta de linha de comando
+[`webdev`][webdev] com [`dart pub global`][dart pub global]:
 
 ```console
 $ dart pub global activate webdev
 ```
 
-Se sua variável de ambiente PATH estiver configurada corretamente,
-você pode agora usar essas ferramentas na linha de comando:
+:::note
+Sempre que você atualizar o Dart SDK, execute `dart pub global activate webdev` de novo
+para que o `webdev` fique alinhado com a versão do SDK ativa.
+:::
+
+![Depurador do Dart DevTools mostrando código-fonte e breakpoints](/assets/img/dart-devtools-screenshot.png)
+
+1. No diretório raiz da sua [aplicação web Dart][Dart web app], busque as dependências do pacote:
+
+   ```console
+   $ dart pub get
+   ```
+
+1. Inicie o servidor de desenvolvimento em modo de depuração (opcionalmente passe
+   `--auto restart` para fazer hot restart quando os arquivos mudarem):
+
+   * **Abra uma nova instância de depuração do Chrome:**
+
+     ```console
+     $ webdev serve --debug --auto restart
+     ```
+
+   * **Use uma janela do Chrome já aberta** (requer a
+     [Dart Debug Extension][]):
+
+     ```console
+     $ webdev serve --debug-extension --auto restart
+     ```
+
+1. Abra `http://localhost:8080` no Chrome, caso ainda não esteja aberto.
+
+1. Abra o **Dart DevTools**:
+
+   * Com `--debug`, pressione <kbd>Alt</kbd>+<kbd>D</kbd>
+     (<kbd>Option</kbd>+<kbd>D</kbd> no macOS).
+   * Com `--debug-extension`, clique no ícone do Dart
+     <img src="/assets/img/logo/dart-64.png" alt="Logo do Dart" class="align-baseline text-icon">
+     na barra de ferramentas do Chrome.
+
+1. Na aba **Debugger**, clique no número de uma linha do seu arquivo `.dart` para definir
+   um breakpoint e, em seguida, acione esse trecho de código na aplicação.
+   Quando a execução pausar, inspecione as variáveis no painel **Variables** e avance
+   pelo código com **Step In**, **Step Over** e **Step Out**.
+
+   :::note
+   O Dart DevTools não entra no código de implementação do SDK por padrão
+   (por exemplo, ao usar Step In em `print()`, a execução avança para a próxima linha da sua aplicação).
+   :::
+
+1. Abra a visualização **Logging** para inspecionar `stdout`, `stderr` e eventos do sistema.
+
+## Executar testes web e coletar cobertura {:#running-web-tests-and-collecting-coverage}
+
+Para executar testes unitários no navegador, passe `-p` (`--platform`) para
+o [`dart test`][dart test]:
 
 ```console
-$ webdev --help
-A tool to develop Dart web projects.
-...
+$ dart test -p chrome
 ```
 
-Para informações sobre configurar PATH, veja a
-[documentação do `dart pub global`.][dart pub global documentation]
+Você também pode usar o Firefox (`-p firefox`) ou o Safari (`-p safari`).
 
-Sempre que você atualizar o Dart SDK,
-atualize as ferramentas ativando-as novamente:
+Para pausar a execução depois do carregamento, de modo que você possa abrir o DevTools
+do navegador e definir breakpoints antes de os testes rodarem, passe `--pause-after-load`:
 
 ```console
-$ dart pub global activate webdev     # update webdev
+$ dart test -p chrome --pause-after-load
 ```
 
-{% render 'tools/debug-prod-js-code.md', site: site %}
+Para coletar cobertura de código dos testes web em JavaScript (`dart2js`) no Chrome, passe
+`-p chrome` para o `test_with_coverage` (requer o [`package:coverage`][coverage-pkg]
+1.16.0 ou superior):
 
-## Recursos
+```console
+$ dart run coverage:test_with_coverage -p chrome
+```
 
-Para saber mais, veja o seguinte:
+:::note
+A cobertura no Chrome usa a cobertura de JavaScript do V8 e não oferece suporte a testes
+em WebAssembly (`--compiler dart2wasm`).
+:::
 
-* Documentação para [sua IDE][IDE]
+## Depurar código de produção {:#debugging}
+
+Chrome, Edge, Firefox e Safari oferecem suporte a source maps tanto para builds de produção em
+JavaScript (`.js.map`) quanto em WebAssembly (`.wasm.map`).
+
+:::tip
+Sempre que possível, depure builds de desenvolvimento (`webdev serve --debug`) em vez do código de
+produção, pois as otimizações fazem inline de funções e minificam os símbolos.
+:::
+
+Ao compilar para WebAssembly com [`dart compile wasm`][dart compile wasm],
+o compilador gera um source map `<nome>.wasm.map` junto com `<nome>.wasm` e remove
+os nomes estáticos de símbolos do binário `.wasm` por padrão (e minifica os nomes de tipos
+em tempo de execução a partir de `-O2`).
+Passe `--no-strip-wasm` para manter os nomes de símbolos estáticos legíveis nos stack traces
+e flamecharts do DevTools do navegador:
+
+```console
+$ dart compile wasm -O2 --no-strip-wasm web/main.dart -o build/main.wasm
+```
+
+Garanta que seu servidor web sirva o arquivo `.js.map` ou `.wasm.map` gerado junto com
+a saída compilada, para que o navegador consiga localizar os arquivos Dart.
+
+Seja qual for o navegador, ative pausa pelo menos em exceções não tratadas.
+Para frameworks como `dart:async` que envolvem código do usuário em blocos `try`-`catch`,
+ative a pausa em todas as exceções para revelar erros capturados.
+
+### Chrome {:#dart2js-debugging-chrome}
+
+1. Abra o [Chrome DevTools][].
+1. Confirme que os source maps estão habilitados (ativados por padrão), conforme descrito em
+   [Mapear código pré-processado para código-fonte][source maps].
+1. Ative a pausa em todas as exceções ou em exceções não tratadas, conforme descrito em
+   [Pausar seu código com breakpoints][chrome-breakpoints].
+1. Recarregue sua aplicação.
+
+### Edge {:#dart2js-debugging-ie}
+
+1. Abra o [DevTools do Microsoft Edge][edge-devtools] (<kbd>F12</kbd>).
+1. Na ferramenta **Sources**, abra o painel **Breakpoints** e habilite
+   **Pause on uncaught exceptions** (ou **Pause on caught exceptions**), conforme descrito em
+   [Pausar seu código com breakpoints][edge-breakpoints].
+1. Recarregue sua aplicação para inspecionar os arquivos `.dart` com source map na ferramenta **Sources**.
+
+### Firefox {:#dart2js-debugging-firefox}
+
+1. Abra as [**Ferramentas de Desenvolvedor do Firefox**][firefox-devtools].
+1. Habilite **Pause on exceptions**:
+
+   ![Habilitar Pause on exceptions no depurador do Firefox](/assets/img/ff-debug.png)
+
+1. Recarregue sua aplicação para ver os arquivos com source map na aba **Debugger**.
+
+### Safari {:#dart2js-debugging-safari}
+
+1. Ative o menu **Develop**, conforme descrito em
+   [Habilitando o Web Inspector][safari-web-inspector].
+1. Habilite breakpoints em todas as exceções ou em exceções não tratadas, veja
+   [Adicionar um breakpoint JavaScript][safari-breakpoints] em
+   [Safari Developer Help][safari-dev-help].
+1. Recarregue sua aplicação.
+
+## Recursos {:#resources}
+
+* [IDEs e editores Dart][IDE]
 * [Documentação do Dart DevTools][Dart DevTools]
-* [Documentação da ferramenta webdev][webdev]
-* [Documentação do pacote webdev][webdev-pkg]
+* [Documentação da ferramenta `webdev`][webdev]
+* [Pacote `webdev` no pub.dev][webdev-pkg]
 
 [Chrome DevTools]: https://developer.chrome.com/docs/devtools/
-[Dart Debug Extension]: https://chrome.google.com/webstore/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
+[chrome-breakpoints]: https://developer.chrome.com/docs/devtools/javascript/breakpoints/
+[coverage-pkg]: {{site.pub-pkg}}/coverage
+[dart compile wasm]: /tools/dart-compile#wasm
+[Dart Debug Extension]: https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
 [Dart DevTools]: /tools/dart-devtools
-[IDE]: /tools#editors
+[dart pub global]: /tools/pub/cmd/pub-global
 [Dart SDK]: /get-dart
+[dart test]: /tools/dart-test
 [Dart web app]: /web
+[edge-breakpoints]: https://learn.microsoft.com/en-us/microsoft-edge/devtools/javascript/breakpoints#exception-breakpoints
+[edge-devtools]: https://learn.microsoft.com/en-us/microsoft-edge/devtools/landing/
+[firefox-devtools]: https://firefox-source-docs.mozilla.org/devtools-user/index.html
 [Google Chrome]: https://www.google.com/chrome
-[issue 1925]: https://github.com/flutter/devtools/issues/1925
-[JavaScript debugging reference]: https://developer.chrome.com/docs/devtools/javascript/reference/
-[dart pub global documentation]: /tools/pub/cmd/pub-global
+[IDE]: /tools#editors
+[safari-breakpoints]: https://support.apple.com/guide/safari-developer/add-a-javascript-breakpoint-dev5e4caf347/mac
+[safari-dev-help]: https://support.apple.com/guide/safari-developer/welcome/mac
+[safari-web-inspector]: https://webkit.org/web-inspector/enabling-web-inspector/
+[source maps]: https://developer.chrome.com/docs/devtools/javascript/source-maps/
 [webdev]: /tools/webdev
-[webdev repo,]: {{site.repo.dart.org}}/webdev
 [webdev-pkg]: {{site.pub-pkg}}/webdev

@@ -1,13 +1,12 @@
 ---
 ia-translate: true
 title: DartPad
-description: A ferramenta que permite você brincar interativamente com Dart em um navegador.
+description: A ferramenta que permite brincar interativamente com Dart em um navegador.
 ---
 
 DartPad é uma [ferramenta open source]({{site.repo.dart.org}}/dart-pad)
-que permite você brincar com a linguagem Dart em qualquer navegador moderno.
-Muitas páginas neste site—especialmente [tutoriais](/tutorials), têm
-[DartPads embutidos](#embedding).
+que permite brincar com a linguagem Dart em qualquer navegador moderno.
+Muitas páginas deste site têm [DartPads incorporados](#embedding).
 Para abrir o DartPad como uma página web independente, visite
 o [site do DartPad (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
@@ -31,13 +30,13 @@ Ao escrever aplicativos Flutter, o DartPad também suporta
 as bibliotecas `package:flutter` e `dart:ui`.
 
 O DartPad não suporta [deferred loading][]
-ou usar pacotes do repositório de pacotes [pub.dev]({{site.pub}})
+nem o uso de pacotes do repositório [pub.dev]({{site.pub}})
 além dos [pacotes atualmente suportados][currently supported packages].
 
 [multi-platform]: /libraries#multi-platform-libraries
 [currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
-## Primeiros passos
+## Primeiros passos {:#getting-started}
 
 Para se familiarizar com o DartPad,
 tente executar alguns exemplos e criar um aplicativo de linha de comando simples.
@@ -45,12 +44,12 @@ tente executar alguns exemplos e criar um aplicativo de linha de comando simples
 
 ### Abra o DartPad e execute um exemplo {:#step-1-open-and-run}
 
-1. Vá para [DartPad][]{:target="_blank" rel="noopener"}.
+1. Acesse o [DartPad][]{:target="_blank" rel="noopener"}.
 
    O código Dart aparece à esquerda, e
-   um local para a saída aparece à direita.
+   a área de saída aparece à direita.
 
-2. Escolha um exemplo Flutter como **Sunflower**,
+2. Escolha um exemplo Flutter, como **Sunflower**,
    usando o botão **Samples** no menu superior.
 
    A saída renderizada aparece à direita.
@@ -61,8 +60,8 @@ tente executar alguns exemplos e criar um aplicativo de linha de comando simples
 Para criar um aplicativo de linha de comando simples,
 comece criando um novo snippet:
 
-1. Clique no botão **New**,
-   e confirme que você deseja descartar as alterações no pad atual.
+1. Clique no botão **New**
+   e confirme que você deseja descartar as alterações do pad atual.
 
 2. Clique na entrada com o logo do Dart.
 
@@ -75,41 +74,41 @@ comece criando um novo snippet:
    }
    ```
 
-   Conforme você digita, o DartPad mostra dicas, documentação,
-   e sugestões de autocompletar.
+   Conforme você digita, o DartPad mostra dicas, documentação
+   e sugestões de preenchimento automático.
 
 4. Clique no botão **Format**.
 
    O DartPad usa o [formatador Dart](/tools/dart-format)
-   para garantir que seu código tenha indentação adequada, espaço em branco,
-   e quebra de linha.
+   para garantir que seu código tenha indentação, espaçamento
+   e quebras de linha adequados.
 
 5. Execute seu aplicativo.
 
-6. Se você não teve bugs ao digitar o código,
+6. Se você não cometeu nenhum erro ao digitar o código,
    tente introduzir um bug.
 
-   Por exemplo, se você alterar `split` para `spit`,
-   você receberá avisos no canto inferior direito da janela.
-   Se você executar o aplicativo, um erro de compilação aparece no console.
+   Por exemplo, se você trocar `split` por `spit`,
+   verá avisos no canto inferior direito da janela.
+   Se executar o aplicativo, um erro de compilação aparece no console.
 
 
-## Verificando informações da versão do Dart
+## Verificando as informações da versão do Dart {:#checking-dart-version-info}
 
-As funcionalidades da linguagem e APIs que o DartPad suporta dependem da
-versão do **Dart SDK** que o DartPad está usando atualmente.
-Você pode encontrar esta versão do SDK no canto inferior direito do DartPad.
+As funcionalidades da linguagem e as APIs que o DartPad suporta dependem da
+versão do **Dart SDK** que o DartPad está usando.
+Você pode encontrar essa versão do SDK no canto inferior direito do DartPad.
 
-## Incorporando DartPad em páginas web {:#embedding}
+## Incorporando o DartPad em páginas web {:#embedding}
 
-Você pode incorporar o DartPad dentro de páginas web,
-personalizando-o para atender ao seu caso de uso.
+Você pode incorporar o DartPad em páginas web,
+personalizando-o para o seu caso de uso.
 Por exemplo, o [tutorial de futures][futures tutorial]
-contém múltiplos DartPads incorporados
+contém vários DartPads incorporados
 rotulados como _examples_ e _exercises_.
 
-Para detalhes técnicos sobre incorporar DartPads, veja o
-[guia de incorporação do DartPad][DartPad embedding guide.].
+Para detalhes técnicos sobre como incorporar DartPads, veja o
+[guia de incorporação do DartPad][DartPad embedding guide.]
 
 [DartPad]: {{site.dartpad}}
 [DartPad embedding guide.]: {{site.repo.dart.org}}/dart-pad/wiki/Embedding-Guide

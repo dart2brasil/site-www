@@ -4,10 +4,10 @@ title: Metadata
 description: Metadata e annotations em Dart.
 prevpage:
   url: /language/functions
-  title: Functions
+  title: Funções
 nextpage:
   url: /language/libraries
-  title: Libraries & imports
+  title: Bibliotecas e imports
 ---
 
 
@@ -28,6 +28,38 @@ As seguintes annotations estão disponíveis para todo código Dart:
   indicando que ela deve ser migrada,
   com uma mensagem explicando a substituição e data de remoção potencial.
 
+  Além da annotation geral `@Deprecated`, você pode usar annotations
+  específicas para descontinuar certos usos de uma declaração:
+
+  * [`@Deprecated.extend()`][]: Estender a classe está descontinuado.
+  * [`@Deprecated.implement()`][]: Implementar a classe ou
+    mixin está descontinuado.
+  * [`@Deprecated.subclass()`][]: Criar subclasse (estender ou
+    implementar) a classe ou mixin está descontinuado.
+  * [`@Deprecated.mixin()`][]: Usar a classe como mixin está descontinuado.
+  * [`@Deprecated.instantiate()`][]: Instanciar a classe está descontinuado.
+  * [`@Deprecated.optional()`][]: Omitir um argumento para
+    o parâmetro está descontinuado.
+
+  Aqui está um exemplo de uso da annotation `@Deprecated`:
+
+  <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)"?>
+  ```dart highlightLines=3
+  class Television {
+    /// Use [turnOn] to turn the power on instead.
+    @Deprecated('Use turnOn instead')
+    void activate() {
+      turnOn();
+    }
+  
+    /// Turns the TV's power on.
+    void turnOn() {
+      // ···
+    }
+    // ···
+  }
+  ```
+
 [`@deprecated`][]
 : Marca uma declaração como descontinuada até uma futura versão não especificada.
   Prefira usar `@Deprecated` e [fornecer uma mensagem de descontinuação][providing a deprecation message].
@@ -41,25 +73,6 @@ As seguintes annotations estão disponíveis para todo código Dart:
 : Fornece instruções ou dicas específicas sobre uma declaração para
   ferramentas Dart, como o compilador ou analisador.
 
-Aqui está um exemplo de uso da annotation `@Deprecated`:
-
-<?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)"?>
-```dart highlightLines=3
-class Television {
-  /// Use [turnOn] to turn the power on instead.
-  @Deprecated('Use turnOn instead')
-  void activate() {
-    turnOn();
-  }
-
-  /// Turns the TV's power on.
-  void turnOn() {
-    // ···
-  }
-  // ···
-}
-```
-
 O [analisador Dart][Dart analyzer] fornece feedback como diagnósticos se
 a annotation `@override` for necessária e ao usar
 membros anotados com `@deprecated` ou `@Deprecated`.
@@ -71,8 +84,14 @@ membros anotados com `@deprecated` ou `@Deprecated`.
 [providing a deprecation message]: /tools/linter-rules/provide_deprecation_message
 [Extend a class]: /language/extend
 [Dart analyzer]: /tools/analysis
+[`@Deprecated.extend()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.extend.html
+[`@Deprecated.implement()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.implement.html
+[`@Deprecated.subclass()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.subclass.html
+[`@Deprecated.mixin()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.mixin.html
+[`@Deprecated.instantiate()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.instantiate.html
+[`@Deprecated.optional()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.optional.html
 
-## Annotations suportadas pelo analisador
+## Annotations suportadas pelo analisador {:#analyzer-supported-annotations}
 
 Além de fornecer suporte e análise para as [annotations built-in][built-in annotations],
 o [analisador Dart][Dart analyzer] fornece suporte adicional e diagnósticos para
@@ -103,7 +122,7 @@ confira a [documentação da API `package:meta/meta.dart`][meta-api].
 [`unawaited_futures`]: /tools/linter-rules/unawaited_futures
 [meta-api]: {{site.pub-api}}/meta/latest/meta/meta-library.html
 
-## Annotations personalizadas
+## Annotations personalizadas {:#custom-annotations}
 
 Você pode definir suas próprias annotations de metadata. Aqui está um exemplo de
 definição de uma annotation `@Todo` que recebe dois argumentos:
@@ -128,7 +147,7 @@ void doSomething() {
 }
 ```
 
-### Especificando alvos suportados {:.no_toc}
+### Especificando alvos suportados {:#specifying-supported-targets .no_toc}
 
 Para indicar o tipo de construções de linguagem que
 devem ser anotadas com sua annotation,

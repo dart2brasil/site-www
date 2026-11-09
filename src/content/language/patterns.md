@@ -4,10 +4,10 @@ title: Patterns
 description: Resumo de patterns em Dart.
 prevpage:
   url: /language/type-system
-  title: Type system
+  title: Sistema de tipos
 nextpage:
   url: /language/pattern-types
-  title: Pattern types
+  title: Tipos de pattern
 ---
 
 :::version-note
@@ -275,7 +275,7 @@ em um map. Esta seção descreve ainda mais casos de uso, respondendo:
 
 ### Desestruturando múltiplos retornos {:#destructuring-multiple-returns}
 
-Records permitem agregar e [retornar múltiplos valores][] de uma única
+Records permitem agregar e [retornar múltiplos valores][returning multiple values] de uma única
 chamada de função. Patterns adicionam a habilidade de desestruturar os campos de um record
 diretamente em variáveis locais, em linha com a chamada de função.
 
@@ -362,7 +362,7 @@ Patterns [map][] e [list][] funcionam bem para desestruturar pares chave-valor e
 dados desserializados, como dados analisados de JSON:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-1)"?>
-```dart
+```dart 
 var data = {
   'user': ['Lily', 13],
 };
@@ -378,11 +378,9 @@ Sem patterns, validação é verbosa:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-2)"?>
 ```dart
-if (data is Map<String, Object?> &&
-    data.length == 1 &&
-    data.containsKey('user')) {
+if (data is Map<String, Object?> && data.containsKey('user')) {
   var user = data['user'];
-  if (user is List<Object> &&
+  if (user is List<Object?> &&
       user.length == 2 &&
       user[0] is String &&
       user[1] is int) {
@@ -408,15 +406,15 @@ if (data case {'user': [String name, int age]}) {
 
 Este case pattern valida simultaneamente que:
 
-- `json` é um map, porque ele deve primeiro corresponder ao [pattern map][map] externo para prosseguir.
-  - E, como é um map, também confirma que `json` não é null.
-- `json` contém uma chave `user`.
+- `data` é um map, porque ele deve primeiro corresponder ao [pattern map][map] externo para prosseguir.
+  - E, como é um map, também confirma que `data` não é null.
+- `data` contém uma chave `user`.
 - A chave `user` é pareada com uma lista de dois valores.
 - Os tipos dos valores da lista são `String` e `int`.
 - As novas variáveis locais para armazenar os valores são `name` e `age`.
 
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [types]: /language/pattern-types
 [collection-type]: /language/collections
 [wildcard pattern]: /language/pattern-types#wildcard
@@ -429,7 +427,7 @@ Este case pattern valida simultaneamente que:
 [collection literals]: /language/collections#control-flow-operators
 [null-assert pattern]: /language/pattern-types#null-assert
 [record]: /language/pattern-types#record
-[retornar múltiplos valores]: /language/records#multiple-returns
+[returning multiple values]: /language/records#multiple-returns
 [refutable]: /resources/glossary#refutable-pattern
 [constant]: /language/pattern-types#constant
 [list]: /language/pattern-types#list

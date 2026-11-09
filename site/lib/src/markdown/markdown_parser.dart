@@ -10,7 +10,6 @@ import 'package:jaspr_content/jaspr_content.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:markdown_description_list/markdown_description_list.dart';
 
-import '../extensions/registry.dart';
 import 'alert_syntax.dart';
 import 'attribute_syntax.dart';
 import 'fenced_code_block_syntax.dart';
@@ -57,9 +56,12 @@ class DashMarkdown extends AsyncStatelessComponent {
   @override
   Future<Component> build(BuildContext context) async {
     final currentPage = context.page;
-    final markdownNodes = _defaultMarkdownDocument.parse(content);
+    final markdownNodes = inline
+        ? _defaultMarkdownDocument.parseInline(content)
+        : _defaultMarkdownDocument.parse(content);
+
     var nodes = DashMarkdownParser.buildNodes(markdownNodes);
-    for (final extension in allNodeProcessingExtensions) {
+    for (final extension in currentPage.config.extensions) {
       nodes = await extension.apply(currentPage, nodes);
     }
 
@@ -86,7 +88,9 @@ String parseMarkdownToHtml(String markdownString, {bool inline = false}) {
   return renderer.render(nodes);
 }
 
-final RegExp _markdownFilePattern = RegExp(r'.*\.md$');
+final RegExp _markdownFilePattern = RegExp(
+  r'(.*\.md$)|(^blog$)|(^blog/index$)',
+);
 
 class DashMarkdownParser implements PageParser {
   const DashMarkdownParser();
@@ -174,7 +178,9 @@ class DashMarkdownParser implements PageParser {
               'id': ?node.generatedId,
               ...node.attributes,
             },
-            nodeChildren != null ? buildNodes(nodeChildren) : null,
+            nodeChildren != null
+                ? buildNodes(nodeChildren)
+                : [if (node.textContent.isNotEmpty) TextNode(node.textContent)],
           ),
         );
       }

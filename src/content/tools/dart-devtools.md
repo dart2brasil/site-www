@@ -8,7 +8,7 @@ description: Um conjunto de ferramentas de depuração e desempenho.
 Dart DevTools é um conjunto de ferramentas de depuração e desempenho
 para Dart e Flutter.
 Essas ferramentas são distribuídas como parte da ferramenta `dart`
-e interagem com ferramentas como IDEs, `dart run`, e `webdev`.
+e interagem com ferramentas como IDEs, `dart run` e `webdev`.
 
 <img src="/assets/img/tools/devtools.png" width="800" alt="Screenshot of DevTools' Memory page">
 
@@ -23,7 +23,7 @@ você pode usar com tipos comuns de aplicações Dart.
   assign b = '<span class="material-symbols" title="use browser tools instead">web</span>'
 {% endcomment %}
 
-| Ferramenta            | [Flutter mobile ou desktop][Flutter devtools] | [Flutter web][Flutter devtools] | [Outras web][] | [Linha de comando][] |
+| Ferramenta            | [Flutter mobile ou desktop][Flutter devtools] | [Flutter web][Flutter devtools] | [Outras web][Other web] | [Linha de comando][Command-line] |
 |-----------------------|:---------------------------------------------:|:-------------------------------:|:-------------:|:----------------:|
 | [Debugger][]          |                     {{y}}                     |              {{y}}              |     {{y}}     |      {{y}}       |
 | [Logging view]        |                     {{y}}                     |              {{y}}              |     {{y}}     |      {{y}}       |
@@ -44,24 +44,25 @@ Para detalhes sobre ferramentas individuais
 clique no nome da ferramenta na coluna da esquerda.
 
 Como a tabela mostra, o debugger e a logging view
-são as únicas partes do Dart DevTools que estão disponíveis para todos os tipos de aplicações.
+são as únicas partes do Dart DevTools disponíveis para todos os tipos de aplicação.
 Aplicações web não podem usar as views de timeline, memory e performance;
-em vez disso, elas podem usar ferramentas de navegador como o [Chrome DevTools.][]
+em vez disso, elas podem usar ferramentas do navegador, como o [Chrome DevTools.][]
 O Flutter inspector funciona apenas para aplicações Flutter;
-outras aplicações web devem usar ferramentas de navegador como o Chrome DevTools.
+outras aplicações web devem usar ferramentas do navegador, como o Chrome DevTools.
 
+<a id="using-devtools-with-a-command-line-apps" aria-hidden="true"></a>
 
-## Usando DevTools com uma aplicação de linha de comando {:#using-devtools-with-a-command-line-app}
+## Aplicações de linha de comando {:#command-line-apps}
 
-Você pode usar DevTools para realizar depuração em nível de código-fonte
+Você pode usar o DevTools para realizar depuração em nível de código-fonte
 ou para visualizar informações gerais de log e diagnóstico
-para uma aplicação de linha de comando em execução.
+de uma aplicação de linha de comando em execução.
 
 
-### 1. Iniciar a aplicação de destino
+### 1. Inicie a aplicação de destino {:#start-the-target-app}
 
 Use o comando `dart run --observe` para executar o arquivo principal
-da aplicação Dart de linha de comando que você deseja depurar ou observar.
+da aplicação Dart de linha de comando que você quer depurar ou observar.
 Opcionalmente, adicione `--pause-isolates-on-start`,
 que interrompe automaticamente a execução no início do script.
 
@@ -74,47 +75,102 @@ The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/a
 ```
 
 Anote a URL do **Dart DevTools debugger and profiler**.
-Você precisará dela no próximo passo.
+Você vai precisar dela no próximo passo.
 
 :::important
 Esta URL contém um token de segurança e
-é diferente para cada execução da sua aplicação.
-Se você parar sua aplicação e executá-la novamente,
-então você precisa se conectar ao DevTools com a nova URL.
+é diferente a cada execução da sua aplicação.
+Se você parar a aplicação e executá-la novamente,
+precisará se conectar ao DevTools com a nova URL.
 :::
 
-### 2. Abrir o DevTools e conectar à aplicação de destino
+### 2. Abra o DevTools e conecte-se à aplicação de destino {:#open-devtools-and-connect-to-the-target-app}
 
-Copie a URL do **Dart DevTools debugger and profiler**,
-e cole-a na barra de endereços de uma janela do navegador Chrome.
+Copie a URL do **Dart DevTools debugger and profiler**
+e cole-a na barra de endereços de uma janela do Chrome.
 
-Quando você visitar essa URL no Chrome,
-a UI do Dart DevTools aparece,
+Quando você acessar essa URL no Chrome,
+a interface do Dart DevTools aparece,
 exibindo informações sobre a aplicação de destino.
 Clique em **Debugger** para começar a depurar a aplicação.
 
+<a id="command-line-apps" aria-hidden="true"></a>
 
-## Usando DevTools com uma aplicação Flutter
+## Configurações de depuração no VS Code {:#vs-code-debug-configurations}
 
-Para detalhes sobre como usar DevTools com uma aplicação Flutter para qualquer plataforma
+Configure o VS Code para iniciar aplicações Dart de linha de comando com o DevTools habilitado, para acessar recursos como a view de Timeline.
+
+### Configurações de depuração no VS Code {:#debug-configurations-in-vs-code}
+
+A tabela a seguir mostra exemplos de configurações de depuração do VS Code para aplicações Dart:
+
+| Configuração | `vmAdditionalArgs` | Descrição |
+|---------------|---------------------|-------------|
+| Depuração padrão do VS Code | `[]` | Depuração padrão. Inclui debugger e logging; exclui dados de timeline. |
+| Com streams de timeline | `["--timeline_streams=VM,Isolate,GC"]` | Habilita streams de timeline para o perfil de timeline, memória e performance. |
+
+{:.table .table-striped}
+
+### Exemplo de launch.json {:#example-launchjson}
+
+Para habilitar os eventos de timeline, adicione esta configuração ao seu `.vscode/launch.json`:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dart with DevTools Timeline",
+      "type": "dart",
+      "request": "launch",
+      "vmAdditionalArgs": [
+        "--timeline_streams=VM,Isolate,GC"
+      ],
+      "program": "main.dart"
+    }
+  ]
+}
+```
+
+Substitua `"main.dart"` pelo caminho do arquivo principal da sua aplicação.
+
+### Conecte o DevTools {:#connect-devtools}
+
+1. Inicie a depuração no VS Code usando a configuração de launch configurada.
+
+2. No Debug Console ou na saída do terminal do VS Code, procure uma linha semelhante a:
+   ```
+   The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/aBcDeFg123=/devtools/#/?uri=...
+   ```
+
+3. Copie a URL do DevTools e cole-a em uma janela do Chrome.
+
+4. No DevTools, visualize a timeline, a memória e a performance da sua aplicação em execução.
+
+<a id="using-devtools-with-a-flutter-app" aria-hidden="true"></a>
+
+## Aplicações Flutter {:#flutter-apps}
+
+Para detalhes sobre como usar o DevTools com uma aplicação Flutter em qualquer plataforma
 (incluindo web), consulte a
 [documentação do DevTools no flutter.dev.][Flutter devtools]
 
+<a id="using-devtools-with-a-non-flutter-web-app" aria-hidden="true"></a>
 
-## Usando DevTools com uma aplicação web não-Flutter {:#using-devtools-with-a-non-flutter-web-app}
+## Outras aplicações web {:#other-web-apps}
 
-Para iniciar uma aplicação web para que você possa usar o Dart DevTools,
+Para iniciar uma aplicação web de modo que você possa usar o Dart DevTools,
 use o comando `webdev serve` com a flag `--debug` ou `--debug-extension`:
 
 ```console
 $ webdev serve --debug
 ```
 
-Para mais informações, consulte [Debugging Dart web apps][].
+Para mais informações, consulte [Depurando aplicações web em Dart][Debugging Dart web apps].
 
 [App size tool]: {{site.flutter-docs}}/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
-[Linha de comando]: #using-devtools-with-a-command-line-app
+[Command-line]: #command-line-apps
 [CPU profiler]: {{site.flutter-docs}}/tools/devtools/cpu-profiler
 [Debugger]: {{site.flutter-docs}}/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
@@ -123,6 +179,6 @@ Para mais informações, consulte [Debugging Dart web apps][].
 [Logging view]: {{site.flutter-docs}}/tools/devtools/logging
 [Memory view]: {{site.flutter-docs}}/tools/devtools/memory
 [Network view]: {{site.flutter-docs}}/tools/devtools/network
-[Outras web]: #using-devtools-with-a-non-flutter-web-app
+[Other web]: #other-web-apps
 [Performance view]: {{site.flutter-docs}}/tools/devtools/performance
 [Timeline view]: {{site.flutter-docs}}/tools/devtools/timeline

@@ -1,0 +1,82 @@
+- question: >-
+    Qual palavra-chave é usada para declarar uma variável constante em Dart
+    cujo valor é conhecido em tempo de compilação?
+  options:
+    - text: >-
+        `const`
+      correct: true
+      explanation: >-
+        `const` declara uma constante de tempo de compilação.
+        O valor precisa ser conhecido em tempo de compilação e nunca pode mudar.
+    - text: >-
+        `var`
+      correct: false
+      explanation: >-
+        Variáveis declaradas com `var` podem ser reatribuídas
+        e não precisam ter o valor conhecido em tempo de compilação.
+    - text: >-
+        `final`
+      correct: false
+      explanation: >-
+        `final` cria uma variável que só pode ser inicializada uma vez,
+        mas o valor é definido em tempo de execução, e não de compilação.
+    - text: >-
+        `static`
+      correct: false
+      explanation: >-
+        `static` é usado para membros de nível de classe, e não para declarar constantes.
+        No entanto, constantes de nível de classe também precisam ser `static`.
+- question: >-
+    Qual é a finalidade principal de `stdin.readLineSync()` em um aplicativo CLI?
+  options:
+    - text: >-
+        Ler uma única linha de texto digitada pelo usuário.
+      correct: true
+      explanation: >-
+        `stdin.readLineSync()` lê uma única linha de texto
+        da entrada padrão, permitindo que o programa receba dados do usuário.
+    - text: >-
+        Imprimir saída no console.
+      correct: false
+      explanation: >-
+        A saída é impressa com `print()`, `stdout.write()`
+        e outros métodos semelhantes.
+    - text: >-
+        Executar um comando.
+      correct: false
+      explanation: >-
+        A execução de comandos é feita com `Process.run()` ou métodos semelhantes.
+    - text: >-
+        Verificar se um arquivo existe.
+      correct: false
+      explanation: >-
+        A existência de arquivos é verificada com `File.existsSync()` ou métodos semelhantes.
+- question: >-
+    O que `arguments.sublist(1)` retorna
+    quando `arguments` é `['search', 'Dart', 'Programming']`?
+  options:
+    - text: >-
+        `['Dart', 'Programming']`
+      correct: true
+      explanation: >-
+        `sublist(1)` cria uma nova lista com todos os elementos
+        a partir do índice 1, pulando o primeiro elemento.
+    - text: >-
+        `['search']`
+      correct: false
+      explanation: >-
+        `sublist(1)` retorna os elementos a partir do
+        índice 1 (o segundo elemento), e não apenas o primeiro.
+    - text: >-
+        `['search', 'Dart']`
+      correct: false
+      explanation: >-
+        Esta resposta inclui `'search'`, mas `sublist(1)` começa
+        no índice 1, o que exclui o elemento do índice 0.
+    - text: >-
+        `['Programming']`
+      correct: false
+      explanation: >-
+        Isso é apenas o último elemento.
+        O argumento `1` especifica o índice inicial,
+        e não quantos elementos pular a partir do final.

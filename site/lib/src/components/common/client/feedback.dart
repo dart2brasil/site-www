@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../../analytics/analytics.dart';
@@ -65,7 +66,7 @@ final class _FeedbackComponentState extends State<FeedbackComponent> {
             Button(
               content: 'Fornecer detalhes',
               icon: 'bug_report',
-              title: 'Forneça feedback ou relatar um problema.',
+              title: 'Envie feedback ou relate um problema.',
               href: component.issueUrl,
               attributes: {'target': '_blank', 'rel': 'noopener'},
             ),
@@ -81,8 +82,9 @@ enum _FeedbackState {
   helpful('Obrigado pelo seu feedback!'),
   unhelpful(
     'Obrigado pelo seu feedback! '
-    'Por favor, nos informe como podemos melhorar.',
-  );
+    'Conte para nós o que podemos melhorar.',
+  ),
+  ;
 
   const _FeedbackState(this.introduction);
 

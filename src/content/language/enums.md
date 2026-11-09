@@ -8,7 +8,7 @@ prevpage:
   title: Mixins
 nextpage:
   url: /language/dot-shorthands
-  title: Dot shorthands
+  title: Atalhos de ponto
 ---
 
 Tipos enumerados, frequentemente chamados de _enumerações_ ou _enums_,
@@ -17,16 +17,16 @@ um número fixo de valores constantes.
 
 :::note
 Todos os enums estendem automaticamente a classe [`Enum`][].
-Eles também são sealed,
-o que significa que não podem ser estendidos como subclasse, implementados, misturados,
+Eles também são `sealed`,
+o que significa que não podem ser estendidos como subclasse, implementados, misturados
 ou instanciados explicitamente de outra forma.
 
-Classes abstract e mixins podem explicitamente implementar ou estender `Enum`,
-mas a menos que sejam então implementados ou misturados em uma declaração enum,
+Classes abstratas e mixins podem implementar ou estender explicitamente `Enum`,
+mas, a menos que sejam implementados ou misturados por uma declaração de enum,
 nenhum objeto pode realmente implementar o tipo dessa classe ou mixin.
 :::
 
-## Declarando enums simples
+## Declarando enums simples {:#declaring-simple-enums}
 
 Para declarar um tipo enumerado simples,
 use a keyword `enum` e
@@ -44,29 +44,33 @@ para ajudar a evitar erros de copiar e colar.
 
 ## Declarando enums aprimorados {:#declaring-enhanced-enums}
 
-Dart também permite que declarações enum declarem classes
-com campos, métodos e construtores const
+:::version-note
+Enums aprimorados requerem uma [versão da linguagem][language version] de pelo menos 2.17.
+:::
+
+Dart também permite que declarações de enum declarem classes
+com campos, métodos e construtores `const`
 que são limitados a um número fixo de instâncias constantes conhecidas.
 
 Para declarar um enum aprimorado,
-siga uma sintaxe similar às [classes][classes] normais,
+siga uma sintaxe semelhante à das [classes][classes] normais,
 mas com alguns requisitos extras:
 
 * Variáveis de instância devem ser `final`,
-  incluindo aquelas adicionadas por [mixins][mixins].
-* Todos os [construtores generativos][generative constructors] devem ser constant.
+  incluindo as adicionadas por [mixins][mixins].
+* Todos os [construtores generativos][generative constructors] devem ser `const`.
 * [Construtores factory][Factory constructors] só podem retornar
-  uma das instâncias enum fixas e conhecidas.
-* Nenhuma outra classe pode ser estendida pois [`Enum`] é automaticamente estendida.
-* Não pode haver sobrescritas para `index`, `hashCode`, o operador de igualdade `==`.
+  uma das instâncias fixas e conhecidas do enum.
+* Nenhuma outra classe pode ser estendida, pois [`Enum`] é estendida automaticamente.
+* Não pode haver sobrescritas de `index`, `hashCode` ou do operador de igualdade `==`.
 * Um membro chamado `values` não pode ser declarado em um enum,
-  pois isso entraria em conflito com o getter estático `values` gerado automaticamente.
+  pois entraria em conflito com o getter estático `values` gerado automaticamente.
 * Todas as instâncias do enum devem ser declaradas
   no início da declaração,
   e deve haver pelo menos uma instância declarada.
 
 Métodos de instância em um enum aprimorado podem usar `this` para
-referenciar o valor enum atual.
+referenciar o valor atual do enum.
 
 Aqui está um exemplo que declara um enum aprimorado
 com múltiplas instâncias, variáveis de instância,
@@ -98,11 +102,36 @@ enum Vehicle implements Comparable<Vehicle> {
 }
 ```
 
-:::version-note
-Enums aprimorados requerem uma [versão da linguagem][language version] de pelo menos 2.17.
+:::tip
+No Dart 3.13 e versões posteriores,
+você pode declarar enums aprimorados ainda de forma mais concisa usando
+[construtores primários][primary constructors]:
+
+<?code-excerpt "language/lib/primary_constructors/enum.dart (enhanced-primary)"?>
+```dart
+enum Vehicle(
+  final int tires,
+  final int passengers,
+  final int carbonPerKilometer,
+) implements Comparable<Vehicle> {
+  car(4, 5, 400),
+  bus(6, 50, 800),
+  bicycle(2, 1, 0);
+
+  int get carbonFootprint => (carbonPerKilometer / passengers).round();
+
+  bool get isTwoWheeled => this == Vehicle.bicycle;
+
+  @override
+  int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
+}
+```
 :::
 
-## Usando enums
+[language version]: /language/versioning
+[primary constructors]: /language/primary-constructors
+
+## Usando enums {:#using-enums}
 
 Acesse os valores enumerados como
 qualquer outra [variável estática][static variable]:
@@ -116,7 +145,7 @@ if (favoriteColor == Color.blue) {
 ```
 
 Cada valor em um enum tem um getter `index`,
-que retorna a posição baseada em zero do valor na declaração do enum.
+que retorna a posição, começando em zero, do valor na declaração do enum.
 Por exemplo, o primeiro valor tem índice 0,
 e o segundo valor tem índice 1.
 
@@ -127,7 +156,7 @@ assert(Color.green.index == 1);
 assert(Color.blue.index == 2);
 ```
 
-Para obter uma lista de todos os valores enumerados,
+Para obter uma lista com todos os valores enumerados,
 use a constante `values` do enum.
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (values)"?>
@@ -137,7 +166,7 @@ assert(colors[2] == Color.blue);
 ```
 
 Você pode usar enums em [instruções switch][switch statements], e
-você receberá um aviso se não lidar com todos os valores do enum:
+receberá um aviso se não tratar todos os valores do enum:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (switch)"?>
 ```dart
@@ -154,7 +183,7 @@ switch (aColor) {
 ```
 
 Se você precisar acessar o nome de um valor enumerado,
-como `'blue'` de `Color.blue`,
+como `'blue'` a partir de `Color.blue`,
 use a propriedade `.name`:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
@@ -163,7 +192,7 @@ print(Color.blue.name); // 'blue'
 ```
 
 Você pode acessar um membro de um valor enum
-como você faria em um objeto normal:
+da mesma forma que faria com um objeto normal:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (method-call)"?>
 ```dart
@@ -176,6 +205,5 @@ print(Vehicle.car.carbonFootprint);
 [mixins]: /language/mixins
 [generative constructors]: /language/constructors#constant-constructors
 [Factory constructors]: /language/constructors#factory-constructors
-[language version]: /resources/language/evolution#language-versioning
 [static variable]: /language/classes#class-variables-and-methods
 [switch statements]: /language/branches#switch

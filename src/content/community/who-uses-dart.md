@@ -2,34 +2,34 @@
 ia-translate: true
 title: Quem usa Dart
 description: >-
-  Aplicações mobile e web são dois dos
-  usos mais comuns para a linguagem Dart.
-  Aprenda sobre e experimente alguns exemplos
-  de onde Dart é usado.
+  Aplicativos mobile e web são dois dos
+  usos mais comuns da linguagem Dart.
+  Conheça e experimente alguns exemplos
+  de onde o Dart é usado.
 showToc: false
 ---
 
-## Flutter
+## Flutter {:#flutter}
 
 O popular [Flutter toolkit][] é alimentado pela
 linguagem Dart, runtimes, ferramentas e bibliotecas.
-Mais de _um milhão_ de aplicações Flutter para Android,
-iOS, web e outros alvos, são todas baseadas em Dart.
+Mais de _um milhão_ de apps Flutter para Android,
+iOS, web e outras plataformas são todos baseados em Dart.
 
-O [Flutter showcase][] apresenta aplicações Flutter populares, incluindo:
+O [Flutter showcase][] reúne apps Flutter populares, incluindo:
 
 * [BMW][]
-    > "O BMW Group está se estabelecendo como um desenvolvedor e provedor líder de aplicações automotivas
+    > "O BMW Group está se consolidando como um desenvolvedor e provedor líder de apps automotivos
     com uma arquitetura Flutter desenvolvida 100% internamente."
 * [Sonos][]:
-    > "...Se a configuração é a "grande entrada" para o ecossistema Sonos, Flutter forma
+    > "...Se a configuração é a “grande entrada” para o ecossistema Sonos, o Flutter forma
     sua fachada elegante..."
 * [Alibaba][]:
-    > "Quando a equipe Xianyu foi desafiada a melhorar sua experiência do usuário
-    desenvolvendo uma aplicação consistente entre plataformas, com gráficos bonitos
+    > "Quando a equipe do Xianyu foi desafiada a melhorar a experiência do usuário
+    desenvolvendo um app consistente entre plataformas, com gráficos bonitos
     e que ainda carregasse rápido, eles recorreram ao Flutter."
 * [PUBG][]:
-    > "Quando a equipe PUBG MOBILE quis adicionar um módulo de comunidade para permitir que jogadores
+    > "Quando a equipe do PUBG MOBILE quis adicionar um módulo de comunidade para permitir que jogadores
     de todo o mundo compartilhassem clipes de gameplay e mais, eles recorreram ao Flutter."
 
 [Flutter toolkit]: {{site.flutter}}
@@ -39,20 +39,20 @@ O [Flutter showcase][] apresenta aplicações Flutter populares, incluindo:
 [Alibaba]: {{site.flutter}}/showcase/alibaba-group
 [PUBG]: {{site.flutter}}/showcase/pubg-mobile
 
-## Google
+## Google {:#google}
 
-Dart é usado em quase todos os grupos de produtos do Google:
+O Dart é usado em quase todos os grupos de produtos do Google:
 
-* O [Google Play Console][] permite que publicadores de aplicações comercializem aplicações Android, e
-  é escrito completamente em Dart.
+* O [Google Play Console][] permite que publicadores de apps divulguem apps Android e
+  é escrito inteiramente em Dart.
 * A equipe do [Google Ads][] continua crescendo, com
   centenas de SWEs escrevendo principalmente código Dart.
 * A equipe do [Google Assistant][] usa Flutter e Dart para
-  conduzir a UI geral do sistema de seus Smart Displays.
-* Tanto a UI quanto grande parte do código de back-end para os
+  controlar a UI geral do sistema dos seus Smart Displays.
+* Tanto a UI quanto grande parte do código de back-end dos
   dispositivos [Google Nest Hub][] e Hub Max são escritos em Dart.
-* A lista continua, com muitas outras aplicações Google
-  feitas usando Dart e Flutter:
+* A lista continua, com muitos outros apps do Google
+  feitos com Dart e Flutter:
 
   * [Google Pay][]
   * [Google One][]
@@ -62,7 +62,7 @@ Dart é usado em quase todos os grupos de produtos do Google:
   * [Cloud Search][]
   * [Family Link][]
 
-Várias outras equipes do Google estão atualmente reescrevendo seus projetos em Flutter.
+Várias outras equipes do Google estão reescrevendo seus projetos em Flutter.
 No total, o Google tem milhares de desenvolvedores
 escrevendo milhões de linhas de código em Dart.
 
@@ -78,23 +78,21 @@ escrevendo milhões de linhas de código em Dart.
 [Google One]: https://one.google.com/about
 [Cloud Search]: https://workspace.google.com/intl/en_in/products/cloud-search
 
-## Comunidade
+## Comunidade {:#community}
 
-Além do Google e Flutter, muitas empresas usam Dart
-para construir suas aplicações:
+Além do Google e do Flutter, muitas empresas usam Dart
+para construir seus apps:
 
-* As aplicações cliente de próxima geração da [Workiva's][] para
-  sua suíte de produtividade são construídas com Dart.
-* [Wrike][] usa o framework [AngularDart][] para
-  desenvolver ferramentas de gerenciamento de projetos.
-* [Blossom][] é uma ferramenta de gerenciamento de projetos ágil construída com Dart.
-* E muitas mais!
+* Os apps cliente de próxima geração da [Workiva's][] para
+  a sua suíte de produtividade são construídos com Dart.
+* [Wrike][] usa Dart para desenvolver ferramentas de gerenciamento de projetos.
+* [Blossom][] é uma ferramenta ágil de gerenciamento de projetos construída com Dart.
+* E muitas outras!
 
-Se você constrói software em produção com Dart e quer ser incluído nesta lista,
-por favor visite [o GitHub do nosso site][our site's GitHub] para abrir uma issue ou pull request, obrigado!
+Se você desenvolve software em produção com Dart e quer ser incluído nesta lista,
+visite [o GitHub do nosso site][our site's GitHub] para abrir uma issue ou pull request. Obrigado!
 
 [Workiva's]: https://www.workiva.com/en-in
 [Wrike]: https://www.wrike.com
-[AngularDart]: https://angulardart.xyz/guide/setup
 [Blossom]: https://blossom.co
 [our site's GitHub]: {{site.repo.this}}

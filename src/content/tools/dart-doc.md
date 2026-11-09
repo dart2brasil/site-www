@@ -2,18 +2,18 @@
 ia-translate: true
 title: dart doc
 description: >-
-   Aprenda como gerar documentação de referência HTML para bibliotecas Dart públicas.
+   Aprenda a gerar documentação de referência em HTML para bibliotecas Dart públicas.
 ---
 
-O comando `dart doc` gera documentação de referência HTML
+O comando `dart doc` gera documentação de referência em HTML
 para código-fonte Dart.
 
 ## Escrever documentação {:#write}
 
 Para adicionar texto de referência e exemplos à documentação gerada,
-use [documentation comments][] com formatação [Markdown][].
+use [comentários de documentação][documentation comments] com formatação [Markdown][].
 Para orientação sobre como escrever comentários de documentação,
-confira o guia [Effective Dart: Documentation][].
+consulte o guia [Effective Dart: Documentation][].
 
 [documentation comments]: /language/comments#documentation-comments
 [Markdown]: {{site.pub-pkg}}/markdown
@@ -22,16 +22,16 @@ confira o guia [Effective Dart: Documentation][].
 ## Gerar documentos de API {:#generate}
 
 :::note
-Para gerar documentação,
-você deve primeiro executar [`dart pub get`](/tools/pub/cmd/pub-get)
-e seu pacote deve passar pelo [`dart analyze`](/tools/dart-analyze)
+Para gerar a documentação,
+você precisa primeiro executar [`dart pub get`](/tools/pub/cmd/pub-get),
+e seu pacote precisa passar pelo [`dart analyze`](/tools/dart-analyze)
 sem erros.
 :::
 
-Para gerar a documentação para seu pacote,
-execute `dart doc .` do diretório raiz do pacote.
-Por exemplo, gerar os documentos de API para um pacote `my_package`
-pode se parecer com o seguinte:
+Para gerar a documentação do seu pacote,
+execute `dart doc .` a partir do diretório raiz do pacote.
+Por exemplo, gerar os documentos de API de um pacote `my_package`
+pode ser parecido com o seguinte:
 
 ```console
 $ cd my_package
@@ -43,7 +43,7 @@ Success! Docs generated into /Users/me/projects/my_package/doc/api
 ```
 
 Por padrão, `dart doc` coloca a documentação gerada
-e arquivos de suporte no diretório `doc/api`.
+e os arquivos de suporte no diretório `doc/api`.
 Para alterar o diretório de saída, especifique
 um caminho com a flag `--output`:
 
@@ -51,22 +51,22 @@ um caminho com a flag `--output`:
 $ dart doc --output=api_docs .
 ```
 
-Se houver algum problema com a configuração do seu pacote ou comentários de documentação,
-`dart doc` os gera como erros ou avisos.
-Se você só quer testar problemas sem salvar a documentação gerada,
+Se houver algum problema na configuração do pacote ou nos comentários de documentação,
+o `dart doc` os reporta como erros ou avisos.
+Se você quiser apenas testar a existência de problemas sem salvar a documentação gerada,
 adicione a flag `--dry-run`:
 
 ```console
 $ dart doc --dry-run .
 ```
 
-### Configurar geração {:#configure}
+### Configure a geração {:#configure}
 
-Para configurar como `dart doc` gera documentação, crie um
+Para configurar como o `dart doc` gera a documentação, crie um
 arquivo chamado `dartdoc_options.yaml` no diretório raiz do seu pacote.
 
-Para saber mais sobre o formato do arquivo e opções de configuração suportadas,
-confira [dart.dev/go/dartdoc-options-file][dartdoc-options].
+Para saber mais sobre o formato do arquivo e as opções de configuração suportadas,
+consulte [dart.dev/go/dartdoc-options-file][dartdoc-options].
 
 {% comment %}
 TODO: Document the long-term supported options here.
@@ -74,60 +74,58 @@ TODO: Document the long-term supported options here.
 
 [dartdoc-options]: {{site.redirect.go}}/dartdoc-options-file
 
-## Visualizar documentos gerados {:#view}
+## Visualizar a documentação gerada {:#view}
 
-Você pode visualizar documentos gerados com `dart doc` de várias maneiras.
+Você pode visualizar a documentação gerada com `dart doc` de várias maneiras.
 
-### Visualizar documentos locais {:#view-local}
+### Visualizar a documentação local {:#view-local}
 
-Para visualizar documentos de API que você gerou com `dart doc` ou baixou online,
-você deve carregá-los com um servidor HTTP.
+Para visualizar os documentos de API que você gerou com `dart doc` ou baixou da internet,
+você precisa carregá-los com um servidor HTTP.
 
 Para servir os arquivos, use qualquer servidor HTTP.
-Considere usar [`package:dhttpd`][] do pub.dev.
+Considere usar o [`package:dhttpd`][] do pub.dev.
 
-Para usar `package:dhttpd`, ative-o globalmente, depois execute-o
-e especifique o caminho dos seus documentos gerados.
-Os seguintes comandos ativam o pacote,
-depois o executam para servir os documentos de API localizados em `doc/api`:
+Para servir a documentação gerada, execute o `package:dhttpd` diretamente do pub.dev
+e especifique o caminho da documentação gerada.
+O comando a seguir serve os documentos de API localizados em `doc/api`:
 
 ```console
-$ dart pub global activate dhttpd
-$ dart pub global run dhttpd --path doc/api
+$ dart run dhttpd@ --path doc/api
 ```
 
-Para então ler os documentos gerados no seu navegador,
-abra o link que `dhttpd` gera, geralmente `http://localhost:8080`.
+Para ler a documentação gerada no navegador,
+abra o link que o `dhttpd` exibe, geralmente `http://localhost:8080`.
 
 [`package:dhttpd`]: {{site.pub-pkg}}/dhttpd
 
-### Visualizar documentos hospedados {:#view-hosted}
+### Visualizar a documentação hospedada {:#view-hosted}
 
-Você também pode hospedar seus documentos de API gerados online
+Você também pode hospedar online os documentos de API gerados,
 usando qualquer serviço de hospedagem que suporte conteúdo web estático.
-Duas opções comuns são [Firebase hosting][] e [GitHub pages][].
+Duas opções comuns são o [Firebase hosting][] e o [GitHub pages][].
 
 [Firebase hosting]: https://firebase.google.com/docs/hosting
 [GitHub pages]: https://pages.github.com/
 
-### Visualizar documentos de pacotes {:#view-pub}
+### Visualizar a documentação de pacotes {:#view-pub}
 
 O [site pub.dev]({{site.pub}}) gera e hospeda
-documentação para as bibliotecas públicas de um pacote enviado.
+a documentação das bibliotecas públicas de um pacote publicado.
 
-Para visualizar os documentos gerados de um pacote,
-navegue até sua página e abra o link **API reference**
-na caixa de informações no lado direito da página.
-Por exemplo, você pode encontrar os documentos de API para `package:http`
+Para visualizar a documentação gerada de um pacote,
+acesse a página dele e abra o link **API reference**
+na caixa de informações do lado direito da página.
+Por exemplo, você pode encontrar os documentos de API do `package:http`
 em [pub.dev/documentation/http]({{site.pub-api}}/http).
 
-### Visualizar documentos de bibliotecas principais {:#view-sdk}
+### Visualizar a documentação das bibliotecas principais {:#view-sdk}
 
-`dart doc` também é usado para gerar a documentação de referência de API para
-as bibliotecas principais do Dart.
+O `dart doc` também é usado para gerar a documentação de referência da API das
+bibliotecas principais do Dart.
 
-Para visualizar os documentos de referência do Dart SDK, visite o link api.dart.dev
-que corresponde ao canal de lançamento do Dart com o qual você está desenvolvendo:
+Para visualizar a documentação de referência do Dart SDK, acesse o link do api.dart.dev
+correspondente ao canal de lançamento do Dart que você está usando:
 
 | Branch   | Documentos gerados                          |
 |----------|---------------------------------------------|
@@ -138,66 +136,66 @@ que corresponde ao canal de lançamento do Dart com o qual você está desenvolv
 
 {:.table .table-striped}
 
-## Solucionar problemas
+## Solução de problemas {:#troubleshoot}
 
-Para identificar e resolver problemas comuns com documentos gerados com `dart doc`,
-consulte a seguinte seção de referência.
+Para identificar e resolver problemas comuns com a documentação gerada pelo `dart doc`,
+consulte a seção de referência a seguir.
 
-### Barra de pesquisa falhou ao carregar {:#troubleshoot-search}
+### A barra de pesquisa não carregou {:#troubleshoot-search}
 
-Se as barras de pesquisa da documentação gerada não estiverem funcionais ou
-incluam texto similar a "Failed to initialize search",
-um dos seguintes cenários é possível:
+Se as barras de pesquisa da documentação gerada não funcionarem ou
+exibirem um texto semelhante a "Failed to initialize search",
+é possível que ocorra um dos seguintes cenários:
 
-1. Você está acessando os documentos do seu próprio sistema de arquivos,
-   mas eles não estão sendo servidos e carregados com um servidor HTTP.
-   Para aprender como servir documentos de API locais,
-   confira [como visualizar documentos gerados localmente](#view-local).
-2. O arquivo `index.json` gerado por `dart doc` está ausente ou inacessível
-   do diretório de documentação ou do seu servidor web hospedado.
-   Tente regenerar os documentos e validar sua configuração de hospedagem.
+1. Você está acessando a documentação a partir do seu sistema de arquivos,
+   mas ela não está sendo servida e carregada por um servidor HTTP.
+   Para aprender a servir a documentação de API localmente,
+   consulte [como visualizar a documentação gerada localmente](#view-local).
+2. O arquivo `index.json` gerado pelo `dart doc` está ausente ou inacessível
+   no diretório da documentação ou no seu servidor web de hospedagem.
+   Tente gerar a documentação novamente e validar a configuração da hospedagem.
 
-### Barra lateral falhou ao carregar {:#troubleshoot-sidebar}
+### A barra lateral não carregou {:#troubleshoot-sidebar}
 
 Se as barras laterais da documentação gerada estiverem ausentes ou
-incluam texto similar a "Failed to load sidebar",
-um dos seguintes cenários é possível:
+exibirem um texto semelhante a "Failed to load sidebar",
+é possível que ocorra um dos seguintes cenários:
 
-1. Você está acessando os documentos do seu próprio sistema de arquivos,
-   mas os documentos não estão sendo servidos e carregados com um servidor HTTP.
-   Para aprender como servir documentos de API locais,
-   confira [como visualizar documentos locais](#view-local).
-2. O comportamento base-href dos documentos gerados está configurado.
-   Esta opção de configuração está obsoleta e não deve mais ser usada.
+1. Você está acessando a documentação a partir do seu sistema de arquivos,
+   mas ela não está sendo servida e carregada por um servidor HTTP.
+   Para aprender a servir a documentação de API localmente,
+   consulte [como visualizar a documentação local](#view-local).
+2. O comportamento de base-href da documentação gerada está configurado.
+   Essa opção de configuração está obsoleta e não deve mais ser usada.
    Tente remover a opção e usar o comportamento padrão do `dart doc`.
-   Se o comportamento padrão quebrar links nos seus documentos gerados,
-   por favor [registre um problema][file an issue].
+   Se o comportamento padrão quebrar os links da sua documentação gerada,
+   por favor, [abra uma issue][file an issue].
 
 [file an issue]: {{site.repo.dart.org}}/dartdoc/issues
 
 ### Documentação de API ausente {:#troubleshoot-missing}
 
-Se você não consegue encontrar ou acessar a documentação gerada
-para uma API que você espera ter documentos,
-um dos seguintes cenários é possível:
+Se você não conseguir encontrar ou acessar a documentação gerada
+de uma API que deveria ter documentos,
+é possível que ocorra um dos seguintes cenários:
 
-1. O pacote não expõe a API que você está procurando como uma API pública.
-   `dart doc` apenas gera documentação para bibliotecas e membros públicos
-   que são expostos para outros pacotes importarem e usarem.
-   Para saber mais sobre configurar as bibliotecas públicas de um pacote,
-   confira o guia de layout de pacote sobre [public libraries][].
-2. A URL que você está tentando acessar tem capitalização incorreta.
-   Por padrão, `dart doc` gera nomes de arquivo que são case-sensitive,
-   correspondem às suas declarações de origem correspondentes, e têm uma extensão `.html`.
-   Tente verificar se a URL corresponde a essas expectativas.
+1. O pacote não expõe a API que você procura como uma API pública.
+   O `dart doc` gera documentação apenas para bibliotecas e membros públicos
+   que são expostos para que outros pacotes possam importá-los e usá-los.
+   Para saber mais sobre a configuração das bibliotecas públicas de um pacote,
+   consulte o guia de layout de pacotes sobre [bibliotecas públicas][public libraries].
+2. A URL que você está tentando acessar tem letras maiúsculas e minúsculas incorretas.
+   Por padrão, o `dart doc` gera nomes de arquivo que diferenciam maiúsculas de minúsculas,
+   correspondem às declarações de origem e têm a extensão `.html`.
+   Verifique se a URL corresponde a essas regras.
 
 [public libraries]: /tools/pub/package-layout#public-libraries
 
-### Texto onde ícones deveriam estar {:#troubleshoot-icons}
+### Texto no lugar dos ícones {:#troubleshoot-icons}
 
-Se você vê texto em vez de ícones como os botões de menu e tema,
-seu navegador provavelmente não conseguiu carregar a fonte Material Symbols.
+Se você vir texto em vez de ícones, como os botões de menu e de tema,
+é provável que o seu navegador não tenha conseguido carregar a fonte Material Symbols.
 Algumas opções para resolver isso incluem:
 
-1. Tente usar um proxy que permita acesso aos servidores do Google Fonts.
-2. Atualize as páginas geradas para usar uma versão local da fonte.
+1. Tentar usar um proxy que permita o acesso aos servidores do Google Fonts.
+2. Atualizar as páginas geradas para usar uma versão local da fonte.

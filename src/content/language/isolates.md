@@ -1,15 +1,15 @@
 ---
+ia-translate: true
 title: Isolates
 description: Informações sobre como escrever isolates em Dart.
 shortTitle: Isolates
-ia-translate: true
 lastVerified: 2024-01-04
 prevpage:
   url: /language/async
-  title: Asynchronous support
+  title: Suporte assíncrono
 nextpage:
   url: /null-safety
-  title: Sound null safety
+  title: Null safety sólido
 ---
 
 <?code-excerpt path-base="concurrency"?>
@@ -22,6 +22,11 @@ são grandes o suficiente para bloquear temporariamente outras computações.
 O exemplo mais comum é em aplicações [Flutter][], quando você
 precisa realizar grandes computações que de outra forma poderiam causar
 que a UI se torne não responsiva.
+
+:::flutter-note
+Múltiplos Isolates não são suportados pelo Flutter web.
+Veja também: [Concorrência na web](https://dart.dev/language/concurrency#concurrency-on-the-web)
+:::
 
 Não há regras sobre quando você _deve_ usar isolates,
 mas aqui estão algumas situações adicionais onde eles podem ser úteis:
@@ -53,11 +58,11 @@ configuração e gerenciamento de worker isolates:
 [`Isolate.run()`]: {{site.dart-api}}/dart-isolate/Isolate/run.html
 
 :::flutter-note
-Se você está usando Flutter, você pode usar a [função `compute` do Flutter][]
+Se você está usando Flutter, você pode usar a [função `compute` do Flutter][Flutter's `compute` function]
 em vez de `Isolate.run()`.
 :::
 
-[função `compute` do Flutter]: {{site.flutter-api}}/flutter/foundation/compute.html
+[Flutter's `compute` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
 ### Executando um método existente em um novo isolate
 
@@ -165,7 +170,7 @@ Para fazer isso, você pode usar algumas das APIs de isolate de baixo nível que
 
 * [`Isolate.spawn()`][] e [`Isolate.exit()`][]
 * [`ReceivePort`][] e [`SendPort`][]
-* [Método `SendPort.send()`][]
+* [Método `SendPort.send()`][`SendPort.send()` method]
 
 
 Esta seção revisa os passos necessários para estabelecer
@@ -179,7 +184,7 @@ gradualmente adiciona funcionalidade mais prática e do mundo real ao primeiro.
 [`Isolate.spawn()`]: {{site.dart-api}}/dart-isolate/Isolate/spawn.html
 [`ReceivePort`]: {{site.dart-api}}/dart-isolate/ReceivePort-class.html
 [`SendPort`]: {{site.dart-api}}/dart-isolate/SendPort-class.html
-[Método `SendPort.send()`]: {{site.dart-api}}/dart-isolate/SendPort/send.html
+[`SendPort.send()` method]: {{site.dart-api}}/dart-isolate/SendPort/send.html
 [main isolate]: /language/concurrency#isolates
 
 
@@ -205,7 +210,7 @@ Ports se comportam de forma similar a objetos [`Stream`][]
 Você pode pensar em um `SendPort` e `ReceivePort` como
 o `StreamController` e listeners de Stream, respectivamente.
 Um `SendPort` é como um `StreamController` porque você "adiciona" mensagens a eles
-com o [método `SendPort.send()`][], e essas mensagens são manipuladas por um listener,
+com o [método `SendPort.send()`][`SendPort.send()` method], e essas mensagens são manipuladas por um listener,
 neste caso o `ReceivePort`. O `ReceivePort` então manipula as mensagens que
 recebe passando-as como argumentos para um callback que você fornece.
 
@@ -275,11 +280,11 @@ Ele não cobre pedaços importantes de funcionalidade que são esperados
 em software de produção, como tratamento de erros, encerramento de ports,
 e sequenciamento de mensagens.
 
-O [exemplo de Ports robustos][] na próxima seção cobre esta funcionalidade e
+O [exemplo de Ports robustos][robust ports example] na próxima seção cobre esta funcionalidade e
 discute alguns dos problemas que podem surgir sem ela.
 :::
 
-[exemplo de Ports robustos]: #robust-ports-example
+[robust ports example]: #robust-ports-example
 
 #### Passo 1: Definir a classe worker
 
@@ -508,7 +513,7 @@ Future<void> parseJson(String message) async {
 
 ### Exemplo de ports robustos {:#robust-ports-example}
 
-O [exemplo anterior][] explicou os blocos de construção básicos necessários para configurar um
+O [exemplo anterior][previous example] explicou os blocos de construção básicos necessários para configurar um
 isolate de longa duração com comunicação bidirecional. Como mencionado, esse exemplo carece
 de alguns recursos importantes, como tratamento de erros, a capacidade de fechar os
 ports quando eles não estão mais em uso, e inconsistências em torno da ordenação de mensagens
@@ -522,7 +527,7 @@ exemplo, não é uma extensão desse exemplo.
 :::note
 Este exemplo assume que você já está familiarizado com
 estabelecer comunicação entre isolates com `Isolate.spawn` e ports,
-que foi coberto no [exemplo anterior][].
+que foi coberto no [exemplo anterior][previous example].
 :::
 
 #### Passo 1: Definir a classe worker
@@ -645,7 +650,7 @@ métodos crescer.
 Este passo continua a preencher o método `Worker.spawn`. Você adicionará o código
 necessário para gerar um isolate e retornar uma instância de `Worker` desta classe.
 Neste exemplo, a chamada a `Isolate.spawn` é envolvida em
-um [bloco `try`/`catch`][], que garante que, se o isolate falhar ao iniciar,
+um [bloco `try`/`catch`][`try`/`catch` block], que garante que, se o isolate falhar ao iniciar,
 o `initPort` será fechado, e o objeto `Worker` não será criado.
 
 - Primeiro, tente gerar um worker isolate em um bloco `try`/`catch`. Se gerar
@@ -690,7 +695,7 @@ class Worker {
 }
 ```
 
-Note que neste exemplo (comparado ao [exemplo anterior][]), `Worker.spawn`
+Note que neste exemplo (comparado ao [exemplo anterior][previous example]), `Worker.spawn`
 atua como um construtor estático assíncrono para esta classe e é a única maneira de
 criar uma instância de `Worker`. Isso simplifica a API, tornando o código que
 cria uma instância de `Worker` mais limpo.
@@ -698,7 +703,7 @@ cria uma instância de `Worker` mais limpo.
 #### Passo 4: Completar o processo de configuração do isolate
 
 Neste passo, você completará o processo básico de configuração do isolate. Isso se correlaciona
-quase inteiramente ao [exemplo anterior][], e não há novos conceitos.
+quase inteiramente ao [exemplo anterior][previous example], e não há novos conceitos.
 Há uma pequena mudança em que o código é dividido em mais métodos, que
 é uma prática de design que
 o prepara para adicionar mais funcionalidade através do restante deste exemplo.
@@ -748,7 +753,7 @@ e enviar o json decodificado de volta como uma resposta.
 
 - Primeiro, declare um listener no `ReceivePort` do worker isolate.
 - Dentro do callback adicionado ao listener, tente decodificar o JSON passado
-  do isolate principal dentro de um [bloco `try`/`catch`][]. Se a decodificação for
+  do isolate principal dentro de um [bloco `try`/`catch`][`try`/`catch` block]. Se a decodificação for
   bem-sucedida, envie o JSON decodificado de volta ao isolate principal.
 - Se houver um erro, envie de volta um [`RemoteError`][].
 
@@ -1103,13 +1108,13 @@ class Worker {
 [`Isolate.spawn()`]: {{site.dart-api}}/dart-isolate/Isolate/spawn.html
 [`ReceivePort`]: {{site.dart-api}}/dart-isolate/ReceivePort-class.html
 [`SendPort`]: {{site.dart-api}}/dart-isolate/SendPort-class.html
-[Método `SendPort.send()`]: {{site.dart-api}}/dart-isolate/SendPort/send.html
+[`SendPort.send()` method]: {{site.dart-api}}/dart-isolate/SendPort/send.html
 [main isolate]: /language/concurrency#isolates
 [`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 [`BroadcastStream`]: {{site.dart-api}}/dart-async/BroadcastStream-class.html
 [`Completer`]: {{site.dart-api}}/dart-async/Completer-class.html
 [`RawReceivePort`]: {{site.dart-api}}/dart-isolate/RawReceivePort-class.html
 [record]: /language/records
-[exemplo anterior]: #basic-ports-example
-[bloco `try`/`catch`]: /language/error-handling#catch
+[previous example]: #basic-ports-example
+[`try`/`catch` block]: /language/error-handling#catch
 [`RemoteError`]: {{site.dart-api}}/dart-isolate/RemoteError-class.html

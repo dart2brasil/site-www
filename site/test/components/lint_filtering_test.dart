@@ -1,10 +1,14 @@
+// Copyright (c) 2025, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 @TestOn('browser')
 library;
 
 import 'package:dart_dev_site/src/components/common/chip.dart';
 import 'package:dart_dev_site/src/models/lints.dart';
 import 'package:dart_dev_site/src/pages/lint_index.dart';
-import 'package:jaspr_test/browser_test.dart';
+import 'package:jaspr_test/client_test.dart';
 import 'package:universal_web/web.dart' as web;
 
 final testLinterRules = <LintDetails>[
@@ -30,7 +34,7 @@ final testLinterRules = <LintDetails>[
   }),
   LintDetails({
     'name': 'core_lint',
-    'description': '',
+    'description': 'Adhere to Effective Dart Guide conventions.',
     'categories': [],
     'state': 'stable',
     'incompatible': [],
@@ -43,6 +47,17 @@ final testLinterRules = <LintDetails>[
     'description': '',
     'categories': [],
     'state': 'experimental',
+    'incompatible': [],
+    'sets': [],
+    'fixStatus': 'hasFix',
+    'sinceDartSdk': '2.0',
+  }),
+  LintDetails({
+    'name': 'directives_ordering',
+    'description':
+        'Adhere to Effective Dart Guide directives sorting conventions.',
+    'categories': [],
+    'state': 'stable',
     'incompatible': [],
     'sets': [],
     'fixStatus': 'hasFix',
@@ -71,45 +86,45 @@ void main() {
       );
     }
 
-    testBrowser('shows all lints by default', (tester) async {
+    testClient('shows all lints by default', (tester) {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       final cards = web.document
           .getElementById('lint-cards')
           ?.querySelectorAll('.card');
 
-      expect(cards?.length, equals(4));
-      expectVisibleLength(4);
+      expect(cards?.length, equals(5));
+      expectVisibleLength(5);
     });
 
-    testBrowser('filters fixable lints', (tester) async {
+    testClient('filters fixable lints', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
-      expectVisibleLength(4);
+      expectVisibleLength(5);
 
       await tester.click(find.componentWithText(FilterChip, 'Fix available'));
 
-      expectVisibleLength(3);
+      expectVisibleLength(4);
       expectCardVisible('fixable_lint', true);
       expectCardVisible('non_fixable_lint', false);
     });
 
-    testBrowser('filters stable lints', (tester) async {
+    testClient('filters stable lints', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
-      expectVisibleLength(4);
+      expectVisibleLength(5);
 
       await tester.click(find.componentWithText(FilterChip, 'Stable only'));
 
-      expectVisibleLength(3);
+      expectVisibleLength(4);
       expectCardVisible('core_lint', true);
       expectCardVisible('experimental_lint', false);
     });
 
-    testBrowser('filters core lints', (tester) async {
+    testClient('filters core lints', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
-      expectVisibleLength(4);
+      expectVisibleLength(5);
 
       // Opens the menu
       await tester.click(
@@ -125,10 +140,10 @@ void main() {
       expectCardVisible('fixable_lint', false);
     });
 
-    testBrowser('filters lints by search query', (tester) async {
+    testClient('filters lints by search query', (tester) {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
-      expectVisibleLength(4);
+      expectVisibleLength(5);
 
       final searchInput = tester.findNode<web.HTMLInputElement>(
         find.tag('input'),
@@ -140,6 +155,39 @@ void main() {
       expectCardVisible('fixable_lint', true);
       expectCardVisible('non_fixable_lint', true);
       expectCardVisible('core_lint', false);
+    });
+
+    testClient('treats spaces as underscores in search query', (tester) {
+      tester.pumpComponent(LintRuleIndex(testLinterRules));
+
+      expectVisibleLength(5);
+
+      final searchInput = tester.findNode<web.HTMLInputElement>(
+        find.tag('input'),
+      )!;
+      searchInput.value = 'directives or';
+      searchInput.dispatchEvent(web.InputEvent('input'));
+
+      expectVisibleLength(1);
+      expectCardVisible('directives_ordering', true);
+      expectCardVisible('fixable_lint', false);
+    });
+
+    testClient('filters lints by description text', (tester) {
+      tester.pumpComponent(LintRuleIndex(testLinterRules));
+
+      expectVisibleLength(5);
+
+      final searchInput = tester.findNode<web.HTMLInputElement>(
+        find.tag('input'),
+      )!;
+      searchInput.value = 'Effective Dart';
+      searchInput.dispatchEvent(web.InputEvent('input'));
+
+      expectVisibleLength(2);
+      expectCardVisible('core_lint', true);
+      expectCardVisible('directives_ordering', true);
+      expectCardVisible('fixable_lint', false);
     });
   });
 }

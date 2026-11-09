@@ -1,11 +1,10 @@
 #page-footer {
   position: relative;
-  z-index: 1000;
   background-color: var(--site-chrome-bgColor);
   padding: 2rem;
 
   color: var(--site-chrome-fgColor);
-  font-weight: 400;
+  font-weight: var(--site-fontWeight-normal);
   font-family: var(--site-ui-fontFamily);
   font-size: 0.875rem;
 

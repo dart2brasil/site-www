@@ -17,23 +17,27 @@
 @use 'components/banner';
 @use 'components/breadcrumbs';
 @use 'components/buttons';
+@use 'components/blog';
 @use 'components/card';
 @use 'components/code';
+@use 'components/github-embed';
 @use 'components/content';
+@use 'components/cookie-notice';
 @use 'components/diagnostics';
 @use 'components/dropdown';
 @use 'components/filter-search';
-@use 'components/cookie-notice';
 @use 'components/footer';
 @use 'components/form';
 @use 'components/glossary';
 @use 'components/header';
 @use 'components/misc';
 @use 'components/next-prev-nav';
+@use 'components/quiz';
 @use 'components/search';
 @use 'components/side-menu';
 @use 'components/sidenav';
 @use 'components/site-switcher';
+@use 'components/summary-card';
 @use 'components/tabs';
 @use 'components/tags';
 @use 'components/theming';
@@ -41,6 +45,7 @@
 @use 'components/tooltip';
 @use 'components/trailing';
 
+@use 'pages/changelog-index';
 @use 'pages/dash';
 @use 'pages/error';
 @use 'pages/tutorial';

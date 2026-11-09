@@ -1,57 +1,37 @@
 ---
-title: IntelliJ & Android Studio
-description: Use Dart with a variety of IDEs and editors from JetBrains.
 ia-translate: true
+title: IntelliJ e Android Studio
+description: Use o plugin Dart com várias IDEs baseadas na IntelliJ Platform.
 ---
 
-O [plugin Dart][Dart plugin] adiciona suporte a Dart
-para IDEs baseadas na plataforma IntelliJ desenvolvidas pela JetBrains.
-Essas IDEs fornecem recursos únicos para tecnologias de desenvolvimento específicas.
-As IDEs recomendadas para desenvolvimento Dart e Flutter incluem:
-
-- [IntelliJ IDEA][] que se especializa em desenvolvimento de linguagens baseadas em JVM.
-- [WebStorm][] que se especializa em desenvolvimento de aplicativos web.
-- [Android Studio][] que se especializa em desenvolvimento Android e Flutter.
-
-Qualquer que seja a IDE JetBrains que você escolher para desenvolvimento Dart,
+O plugin Dart adiciona suporte a Dart às IDEs baseadas na IntelliJ Platform.
+Essas IDEs oferecem recursos exclusivos de tecnologias de desenvolvimento específicas.
+Qualquer que seja a IDE JetBrains que você escolher para desenvolver em Dart,
 esta página tem recursos para ajudá-lo a começar rapidamente
-e encontrar mais informações quando precisar.
+e a encontrar mais informações quando precisar.
 
-[IntelliJ IDEA]: https://www.jetbrains.com/idea/
-[WebStorm]: https://www.jetbrains.com/webstorm/
-[Android Studio]: {{site.android-dev}}/studio
-
-## Começando
+## Começando {:#get-started}
 
 Se você ainda não tem a IDE e o Dart SDK, obtenha-os.
-Em seguida, instale o plugin Dart e informe onde encontrar o Dart SDK.
+Depois, instale o plugin Dart e informe onde encontrar o Dart SDK.
 
 
-### Baixando a IDE
+### Baixe a IDE {:#download-the-ide}
 
 Instale uma IDE JetBrains se você ainda não tiver uma. Escolha uma:
 
-* [IntelliJ IDEA][IDEA-Install]{:target="_blank" rel="noopener"}
-* [IntelliJ IDEA EAP][IDEA-EAP-Install]{:target="_blank" rel="noopener"}
-  (para acesso antecipado aos recursos mais recentes da linguagem Dart e funcionalidade IntelliJ)
-* [WebStorm][WS-Install]{:target="_blank" rel="noopener"}
 * [Android Studio][AS-Install]{:target="_blank" rel="noopener"}
-* [Outro produto JetBrains][Other]{:target="_blank" rel="noopener"}
+* [IntelliJ IDEA Ultimate][IDEA-Install]{:target="_blank" rel="noopener"}
+* [GoLand][GoLand-Install]{:target="_blank" rel="noopener"}
+* [WebStorm][WS-Install]{:target="_blank" rel="noopener"}
 
-[IDEA-Install]: https://www.jetbrains.com/idea/download/
-[IDEA-EAP-Install]: https://www.jetbrains.com/idea/nextversion/
-[WS-Install]: https://www.jetbrains.com/webstorm/download/
 [AS-Install]: {{site.android-dev}}/studio/install
-[Other]: https://www.jetbrains.com/products.html
-
-:::note
-A Community Edition do IntelliJ IDEA tem funcionalidade limitada.
-Por exemplo, ela não oferece suporte direto para depuração de aplicativos web.
-Ela também tem muito pouco suporte para JavaScript, HTML, CSS e YAML.
-:::
+[IDEA-Install]: https://www.jetbrains.com/idea/download/
+[GoLand-Install]: https://www.jetbrains.com/help/go/getting-started.html
+[WS-Install]: https://www.jetbrains.com/webstorm/download/
 
 
-### Baixando o Dart SDK
+### Baixe o Dart SDK {:#download-the-dart-sdk}
 
 Se você ainda não tem o Dart SDK,
 instale-o.
@@ -60,102 +40,104 @@ que inclui o Dart SDK completo.
 
 Escolha um:
 
-* [Baixar o Dart SDK](/get-dart)
-* [Baixar o Flutter SDK]({{site.flutter-docs}}/get-started/install)
+* [Baixe o Dart SDK](/get-dart)
+* [Baixe o Flutter SDK]({{site.flutter-docs}}/get-started/install)
 
 
-### Configurando o suporte a Dart
+### Instale o plugin Dart {:#install-the-dart-plugin}
 
-Aqui está uma maneira de configurar o suporte a Dart:
+Para configurar o suporte a Dart, comece instalando o plugin:
 
-<ol>
-<li>
-  <p>
-    Inicie a IDE e instale o plugin <b>Dart</b>.
-  </p>
-
-  <ol type="a">
-    <li>Na tela de boas-vindas, escolha <b>Plugins</b>.</li>
-    <li>Pesquise por <b>Dart</b>.</li>
-    <li>Depois de instalar o plugin Dart, reinicie a IDE.</li>
-  </ol>
-</li>
-<br>
-
-<li>
-  <p>
-    Crie um novo projeto Dart:
-  </p>
-
-  <ol type="a">
-    <li>Na tela de boas-vindas, clique em <b>New Project</b>.</li>
-    <li>No próximo diálogo, clique em <b>Dart</b>.</li>
-  </ol>
-</li>
-<br>
-
-<li>
-  <p>
-    Se você não ver um valor para o caminho do <b>Dart SDK</b>,
-    insira ou selecione-o.
-  </p>
-
-  <p>
-    Por exemplo, o caminho do SDK pode ser
-    <code><em>&lt;diretório de instalação do dart></em>/dart/dart-sdk</code>.
-  </p>
-
-  :::note
-  O **Dart SDK** especifica o diretório que
-  contém os diretórios `bin` e `lib` do SDK;
-  o diretório `bin` contém ferramentas como `dart` e `dartaotruntime`.
-  A IDE garante que o caminho seja válido.
-  :::
-</li>
-
-<li>
-  <p>
-    Escolha um template inicial.
-  </p>
-
-  <ol type="a">
-    <li>Para habilitar templates iniciais, clique em <b>Generate sample content</b>.</li>
-    <li>Escolha o template desejado.</li>
-  </ol>
-
-  :::note
-  Os templates fornecidos são criados
-  por [`dart create`](/tools/dart-create).
-  :::
-</li>
-
-<li>
-  <p>Clique em <b>Next</b> e continue a configuração do projeto.</p>
-</li>
-</ol>
-
-Uma alternativa ao Passo 2 é abrir um projeto Dart existente,
-e então abrir seu arquivo `pubspec.yaml` ou qualquer um de seus arquivos Dart.
+1. Inicie a IDE.
+2. Na tela de boas-vindas, escolha **Plugins**.
+3. Pesquise por **Dart**.
+4. Instale o plugin e reinicie a IDE.
 
 
-## Reportando problemas
+### Crie um novo projeto Dart {:#create-a-new-dart-project}
 
-Por favor, reporte problemas e feedback através do
-[rastreador de problemas JetBrains oficial para Dart.][JetBrains issue tracker for Dart.]
+Para criar um novo projeto:
 
-Inclua detalhes do comportamento esperado, do comportamento real
-e capturas de tela, se apropriado.
+1. Na tela de boas-vindas, clique em **New Project**.
+2. No diálogo seguinte, clique em **Dart**.
+3. Se você não vir um valor para o caminho do **Dart SDK**,
+   informe-o ou selecione-o.
 
-[JetBrains issue tracker for Dart.]: https://youtrack.jetbrains.com/issues?q=Subsystem:%20%7BLang.%20Dart%7D%20
+   Por exemplo, o caminho do SDK pode ser
+   `<dart installation directory>/dart/dart-sdk`.
 
-## Mais informações
+   :::note
+   O caminho do **Dart SDK** é o diretório que contém
+   os diretórios `bin` e `lib`.
+   O diretório `bin` contém ferramentas como `dart` e `dartaotruntime`.
+   A IDE valida se o caminho selecionado está correto.
+   :::
 
-Consulte o site da JetBrains para obter mais informações.
+4. Escolha um template inicial.
+   1. Para habilitar os templates iniciais, clique em **Generate sample content**.
+   2. Escolha o template desejado.
+
+5. Clique em **Next** e continue a configuração do projeto.
+
+
+### Abra um projeto Dart existente {:#open-an-existing-dart-project}
+
+Para trabalhar em um aplicativo Dart existente, abra o projeto na IDE e habilite o suporte a Dart.
+
+#### Abra o projeto {:#open-the-project}
+
+1. Na tela de boas-vindas, clique em **Open** ou **Import**.
+   Como alternativa, selecione **File | Open** no menu principal.
+2. Selecione a pasta que contém seu projeto Dart.
+
+#### Habilite o suporte a Dart {:#enable-dart-support}
+
+1. Abra **Settings** (<kbd>Cmd</kbd> + <kbd>,</kbd>) e
+   escolha **Dart** em **Languages and Frameworks**.
+   Isso abrirá a página do Dart.
+2. Marque **Enable Dart support for the project &lt;project name&gt;**.
+3. Verifique o **Dart SDK Path**.
+   A IDE normalmente detecta isso automaticamente.
+   Se não detectar, selecione manualmente o diretório que contém o Dart SDK.
+4. Em **Enable Dart support for the following modules**,
+   selecione os módulos que precisam de funcionalidades do Dart.
+
+
+### Trabalhe com vários projetos Dart (pacotes) {:#work-with-multiple-dart-projects-packages}
+
+Para trabalhar com vários projetos Dart (pacotes) em um único projeto do IntelliJ IDEA,
+adicione a pasta raiz do projeto adicional como uma content root ou como um novo módulo.
+
+1. Acesse a [página de Modules](https://www.jetbrains.com/help/idea/modules-page.html)
+    (**File | Project Structure | Modules**) e adicione uma content root conforme descrito em
+    [Adding a content root](https://www.jetbrains.com/help/idea/content-roots.html#adding_content_root).
+
+2.  Selecione **File | New | Module from Existing Sources**
+    e escolha o módulo relevante no diálogo que se abre.
+
+### Configure o destaque de sintaxe {:#configure-syntax-highlighting}
+
+Você pode personalizar o destaque de sintaxe do Dart para combinar com suas preferências.
+
+1. Abra **Settings** (<kbd>Cmd</kbd> + <kbd>,</kbd>) e
+   acesse **Editor | Color Scheme | Dart**.
+2. Selecione um esquema de cores ou personalize as configurações padrão, conforme descrito em
+   [Colors and fonts](https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html).
+
+## Reporte problemas {:#report-issues}
+
+Por favor, reporte problemas e feedback pelo
+[rastreador de issues do IntelliJ][IntelliJ issue tracker]. Inclua detalhes do
+comportamento esperado, do comportamento real e capturas de tela, se apropriado.
+
+[IntelliJ issue tracker]: https://github.com/flutter/flutter-intellij/issues
+
+## Mais informações {:#more-information}
+
+Consulte o site da JetBrains para mais informações.
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-  * [Ajuda do Dart WebStorm](https://www.jetbrains.com/help/webstorm/dart.html)
+  * [Ajuda do Dart no WebStorm](https://www.jetbrains.com/help/webstorm/dart.html)
   * [Recursos](https://www.jetbrains.com/idea/features/)
   * [Início rápido](https://www.jetbrains.com/help/idea/getting-started.html)
-* [Plugin Dart por JetBrains][Dart plugin]
-
-[Dart plugin]: https://plugins.jetbrains.com/plugin/6351-dart/
+* [Plugin Flutter para IntelliJ](https://github.com/flutter/flutter-intellij)

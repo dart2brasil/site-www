@@ -1,0 +1,50 @@
+- header: Primeiros passos
+
+- title: Visão geral do Dart
+  permalink: /overview
+- title: Configurar o Dart
+  permalink: /get-dart
+  hiddenChildren: true
+  children:
+    - title: Instalar o Dart
+      permalink: /get-dart
+    - title: Arquivo do SDK
+      permalink: /get-dart/archive
+- title: Aprender Dart
+  permalink: /learn
+- title: Obter suporte
+  permalink: /community
+
+- divider
+- header: Tutorial de Dart
+
+- title: Comece a aprender
+  permalink: /learn/tutorial
+- title: Crie seu primeiro aplicativo
+  permalink: /learn/tutorial/first-app
+- title: Adicione interatividade ao seu aplicativo
+  permalink: /learn/tutorial/interactivity
+- title: Escreva código assíncrono
+  permalink: /learn/tutorial/async
+- title: Organize o código com pacotes e bibliotecas
+  permalink: /learn/tutorial/packages-libs
+- title: Defina classes e objetos
+  permalink: /learn/tutorial/object-oriented
+- title: Estruture aplicativos com herança
+  permalink: /learn/tutorial/inheritance
+- title: Trate erros com elegância
+  permalink: /learn/tutorial/error-handling
+- title: Estenda seu aplicativo com enums e extensions
+  permalink: /learn/tutorial/advanced-oop
+- title: Refine seu aplicativo de linha de comando
+  permalink: /learn/tutorial/cli-polish
+- title: Trabalhe com dados JSON
+  permalink: /learn/tutorial/data-and-json
+- title: Teste seu aplicativo e código
+  permalink: /learn/tutorial/testing
+- title: Busque dados da internet
+  permalink: /learn/tutorial/fetch-data
+- title: Adicione logging para depuração e monitoramento
+  permalink: /learn/tutorial/logging
+
+- divider

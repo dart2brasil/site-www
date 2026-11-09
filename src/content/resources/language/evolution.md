@@ -1,29 +1,34 @@
 ---
+ia-translate: true
 title: Evolução da linguagem Dart
 shortTitle: Evolução da linguagem
-breadcrumb: Evolução
+breadcrumb: Legacy
 description: Mudanças e adições notáveis à linguagem de programação Dart.
-lastVerified: 2024-08-04
-ia-translate: true
+lastVerified: 2026-08-12
 ---
 
-<!-- Traduzido do commit em inglês: 5acb9e1cfe3d9a5d7a9d0a0d8a1b5b4b5b4b5b4b -->
+:::warning
+**Esta página foi descontinuada.**
+Consulte o [Changelog](/changelog) para ver as mudanças na linguagem e no SDK,
+e o [Versionamento da linguagem](/language/versioning) para entender como o versionamento é usado
+com o Dart e com o SDK.
+:::
 
 Esta página lista mudanças e adições notáveis à
 linguagem de programação Dart.
 
 * Para aprender detalhes específicos sobre a versão mais recente da linguagem suportada,
-  consulte a [documentação da linguagem][] ou a [especificação da linguagem][].
-* Para um histórico completo de mudanças no Dart SDK, veja o [changelog do SDK][].
+  consulte a [documentação da linguagem][language documentation] ou a [especificação da linguagem][language specification].
+* Para um histórico completo de mudanças no Dart SDK, veja o [changelog do SDK][SDK changelog].
 * Para um histórico completo de mudanças incompatíveis,
-  incluindo mudanças [versionadas da linguagem][language versioned],
-  consulte a página [Mudanças incompatíveis][Breaking changes].
+  incluindo as mudanças [versionadas por linguagem][language versioned],
+  consulte a página [Breaking changes][].
 
-Para usar um recurso de linguagem introduzido após a versão 2.0,
-defina uma [restrição de SDK][] não inferior à
-versão em que o Dart começou a suportar esse recurso.
+Para usar um recurso da linguagem introduzido após a versão 2.0,
+defina uma [restrição de SDK][SDK constraint] não inferior à
+versão em que o Dart passou a suportar esse recurso.
 
-**Por exemplo:** Para usar null safety, introduzido na [2.12][],
+**Por exemplo:** para usar null safety, introduzido na [2.12][],
 defina `2.12.0` como a restrição inferior no arquivo `pubspec.yaml`.
 
 ```yaml
@@ -33,50 +38,166 @@ environment:
 
 [2.12]: #dart-2-12
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
-[language versioned]: #language-versioning
+[language versioned]: /language/versioning
 [Breaking changes]: /resources/breaking-changes
 
 :::tip
-Para revisar os recursos sendo discutidos, investigados e
+Para acompanhar os recursos em discussão, em investigação e
 adicionados à linguagem Dart,
-confira o [rastreador de funil de linguagem][]
+confira o [rastreador de language funnel][language funnel]
 no repositório do GitHub da linguagem Dart.
 :::
 
 
-## Mudanças em cada versão
+## Mudanças em cada versão {:#changes-in-each-release}
+
+### Dart 3.13
+_Lançado em 12 de agosto de 2026_
+| [Anúncio do Dart 3.13](/blog/announcing-dart-3-13)
+
+O Dart 3.13 introduz [primary constructors][],
+uma sintaxe concisa para declarar um construtor e
+suas variáveis de instância diretamente no cabeçalho da declaração:
+
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (empty-bodies)" replace="/EmptyBodyPoint/Point/g"?>
+```dart
+class Point(var int x, var int y);
+```
+
+Primary constructors reduzem o trabalho repetitivo de declarar campos,
+receber parâmetros e atribuí-los no corpo do construtor.
+Eles mudam como você escreve a declaração, não como ela se comporta em tempo de execução.
+
+O Dart 3.13 também adiciona uma [sintaxe concisa de construtor][concise constructor syntax]
+para construtores declarados no corpo da classe:
+você pode escrever `new` ou `factory` em vez de repetir o nome da classe.
+
+A versão também inclui as seguintes mudanças versionadas por linguagem na
+saída do [`dart format`][]:
+
+* Adiciona vírgulas finais para dividir cláusulas de representação de extension types.
+* Melhora a divisão antecipada para evitar quebras de linha subótimas.
+* Prefere dividir cadeias de chamadas com alvos de elemento único.
+* Permite que listas de parâmetros usem formatação em bloco.
+* Permite que expressões `as`, `is` e `is!` usem formatação em bloco.
+* Separa os imports em seções distintas.
+* Divide uma guarda `if-case` quando seu pattern usa formatação em bloco.
+* Quando nenhuma solução de formatação cabe na largura da página,
+  prefere linhas que transbordam e terminam em literais de string ou comentários.
+* Adiciona linhas em branco ao redor de declarações `mixin` e `extension type`
+  que não têm corpo com `;`.
+
+Para mais informações sobre essas e outras mudanças,
+consulte o [changelog do Dart 3.13][Dart 3.13 changelog].
+
+[primary constructors]: /language/primary-constructors
+[concise constructor syntax]: /language/constructors#concise-constructor-syntax
+[`dart format`]: /tools/dart-format
+[Dart 3.13 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3130
+
+### Dart 3.12
+_Lançado em 18 de maio de 2026_
+| [Anúncio do Dart 3.12](/blog/announcing-dart-3-12)
+
+O Dart 3.12 introduz [private named parameters][], que permitem
+inicializar campos privados diretamente por meio de [initializing formal parameters][].
+Antes, inicializar um campo privado por um parâmetro nomeado
+exigia atribuição manual na lista de inicializadores do construtor.
+
+Agora, quando um initializing formal parameter se refere a um campo privado,
+o Dart remove o underscore inicial (`_`) para derivar o nome público do parâmetro,
+então quem chama usa o nome sem prefixo na chamada:
+
+```dart
+class Point {
+  final int _x;
+  final int _y;
+
+  Point({required this._x, required this._y});
+}
+
+void main() {
+  // Callers use the public, unprefixed names of the parameters.
+  final point = Point(x: 1, y: 2);
+}
+```
+
+[initializing formal parameters]: /language/constructors#use-initializing-formal-parameters
+[private named parameters]: /language/constructors#private-named-parameters
+
+### Dart 3.11
+_Lançado em 9 de fevereiro de 2026_
+| [Anúncio do Dart 3.11](/blog/announcing-dart-3-11)
+
+Embora o Dart 3.11 não introduza novos recursos de linguagem,
+a versão traz várias melhorias no suporte do analisador e do editor à
+sintaxe [dot shorthand][], introduzida no Dart 3.10.
+
+[dot shorthand]: /language/dot-shorthands
+
+### Dart 3.10
+_Lançado em 12 de novembro de 2025_
+| [Anúncio do Dart 3.10](/blog/announcing-dart-3-10)
+
+O Dart 3.10 introduz [dot shorthands][], uma sintaxe concisa
+que permite omitir nomes explícitos de tipo ao acessar valores de enum,
+membros estáticos ou construtores. Se o compilador conseguir inferir
+o tipo pelo contexto, você pode simplesmente usar `.foo`
+em vez de `ContextType.foo`.
+
+<?code-excerpt "language/lib/shorthands/intro.dart"?>
+```dart
+// Use dot shorthand syntax on enums:
+enum Status { none, running, stopped, paused }
+
+Status currentStatus = .running; // Instead of Status.running
+
+// Use dot shorthand syntax on a static method:
+int port = .parse('8080'); // Instead of int.parse('8080')
+
+// Uses dot shorthand syntax on a constructor:
+class Point {
+  final int x, y;
+  Point(this.x, this.y);
+  Point.origin() : x = 0, y = 0;
+}
+
+Point origin = .origin(); // Instead of Point.origin()
+```
+
+[dot shorthands]: /language/dot-shorthands
 
 ### Dart 3.9
 _Lançado em 13 de agosto de 2025_
-| [Anúncio do Dart 3.9](https://blog.dart.dev/announcing-dart-3-9-ba49e8f38298)
+| [Anúncio do Dart 3.9](/blog/announcing-dart-3-9)
 
 
 Os seguintes recursos de suporte foram atualizados para
-Dart 3.9:
+o Dart 3.9:
 
-*   Null safety: O Dart agora assume null safety ao
-    calcular promoção de tipo, acessibilidade e atribuição definitiva.
+*   Null safety: o Dart agora assume null safety ao
+    calcular promoção de tipo, alcançabilidade e atribuição definitiva.
     Como resultado dessa mudança, mais avisos de `dead_code`
     podem ser produzidos.
 
 
-*   O limite superior da versão do Flutter agora é respeitado: A partir da
-    versão de linguagem 3.9, o limite superior da [restrição do SDK do flutter][]
-    agora é respeitado em seu pacote raiz.
+*   O limite superior da versão do Flutter agora é respeitado: a partir da
+    versão 3.9 da linguagem, o limite superior da [restrição de SDK do flutter][flutter SDK constraint]
+    passa a ser respeitado no seu pacote raiz.
 
     Por exemplo, um arquivo `pubspec.yaml` com as seguintes restrições:
 
-    ```yaml
+```yaml
     name: my_app
     environment:
       sdk: ^3.9.0
       flutter: 3.33.0
     ```
 
-    Resulta em `dart pub get` falhando se invocado com uma versão do
+    Faz com que `dart pub get` falhe se for executado com uma versão do
     Flutter SDK diferente de `3.33.0`.
-    O limite superior da restrição `flutter` ainda é
-    ignorado em pacotes usados como dependências.
+    O limite superior da restrição `flutter` ainda é ignorado em pacotes
+    usados como dependências.
     Para mais contexto sobre essa mudança, veja [flutter/flutter#95472][].
 
 Para mais informações sobre essas e outras mudanças, veja
@@ -88,24 +209,23 @@ o [changelog do Dart 3.9][Dart 3.9 changelog].
 
 ### Dart 3.8
 _Lançado em 20 de maio de 2025_
-| [Anúncio do Dart 3.8](https://blog.dart.dev/announcing-dart-3-8-724eaaec9f47)
+| [Anúncio do Dart 3.8](/blog/announcing-dart-3-8)
 
 Os seguintes recursos de linguagem foram adicionados ao Dart 3.8:
 
-*   [Elementos null-aware][]: Um elemento null-aware avalia
+*   [Null-aware elements][]: um null-aware element avalia
     uma expressão em um literal de coleção e, se o resultado
-    não for `null`, insere o valor na coleção
-    circundante.
+    não for `null`, insere o valor na coleção que o envolve.
 
 Os seguintes recursos de suporte foram atualizados:
 
-*   [Dart format][]: O formatador do Dart 3.8 se baseia na
+*   [Dart format][]: o formatador do Dart 3.8 se baseia na
     reescrita da versão anterior, incorporando feedback,
-    correções de bugs e melhorias adicionais. Ele agora
-    automatiza inteligentemente o posicionamento de vírgulas finais,
-    decidindo se deve dividir construções em vez de forçá-las.
-    A atualização também inclui mudanças de estilo para apertar
-    e melhorar a saída do código.
+    correções de bugs e outras melhorias. Agora ele decide
+    automaticamente onde colocar vírgulas finais,
+    escolhendo se divide ou não as construções em vez de forçá-las.
+    A atualização também inclui mudanças de estilo para deixar
+    a saída do código mais enxuta e melhor.
 
 Para mais informações sobre essas e outras mudanças, veja
 o [changelog do Dart 3.8][Dart 3.8 changelog].
@@ -116,24 +236,24 @@ o [changelog do Dart 3.8][Dart 3.8 changelog].
 
 ### Dart 3.7
 _Lançado em 12 de fevereiro de 2025_
-| [Anúncio do Dart 3.7](https://blog.dart.dev/announcing-dart-3-7-bf864a1b195c)
+| [Anúncio do Dart 3.7](/blog/announcing-dart-3-7)
 
-O Dart 3.7 adicionou suporte para [variáveis wildcard][] à linguagem.
-Uma variável wildcard é uma variável local ou parâmetro chamado `_`.
-Variáveis wildcard não são vinculantes,
-então podem ser declaradas várias vezes sem conflitos.
+O Dart 3.7 adicionou suporte a [wildcard variables][] na linguagem.
+Uma wildcard variable é uma variável local ou parâmetro chamado `_`.
+Wildcard variables não vinculam nada,
+então podem ser declaradas várias vezes sem colisões.
 Por exemplo:
 
 ```dart
 Foo(_, this._, super._, void _()) {}
 ```
 
-O comando `dart format` também está agora vinculado à versão da linguagem a partir da versão 3.7.
+O comando `dart format` também passou a depender da versão da linguagem a partir da 3.7.
 Se a versão da linguagem de um arquivo de entrada for 3.7 ou posterior, o código é formatado
-com o novo estilo alto.
+com o novo estilo tall. 
 
-O novo estilo parece semelhante ao estilo que você obtém quando adiciona vírgulas finais
-às listas de argumentos, exceto que agora o formatador adicionará e removerá essas
+O novo estilo parece com o que você obtém ao adicionar vírgulas finais
+às listas de argumentos, exceto que agora o formatador adiciona e remove essas
 vírgulas para você. Quando uma lista de argumentos ou parâmetros é dividida, ela é formatada
 assim:
 
@@ -144,16 +264,16 @@ longFunction(
 );
 ```
 
-Você pode encontrar mais detalhes no [changelog][dart-format].
+Você encontra mais detalhes no [changelog][dart-format].
 
 [wildcard variables]: /language/variables#wildcard-variables
 [dart-format]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#dart-format
 
 ### Dart 3.6
 _Lançado em 11 de dezembro de 2024_
-| [Anúncio do Dart 3.6](https://blog.dart.dev/announcing-dart-3-6-778dd7a80983)
+| [Anúncio do Dart 3.6](/blog/announcing-dart-3-6)
 
-O Dart 3.6 adicionou suporte para underscores [separadores de dígitos][] (`_`) à linguagem.
+O Dart 3.6 adicionou suporte a underscores como [separadores de dígitos][digit separator] (`_`) na linguagem.
 Separadores de dígitos melhoram a legibilidade de literais numéricos longos.
 
 ```dart
@@ -164,138 +284,138 @@ var m = 1__000_000__000_000__000_000;
 
 ### Dart 3.5
 _Lançado em 6 de agosto de 2024_
-| [Anúncio do Dart 3.5](https://blog.dart.dev/dart-3-5-6ca36259fa2f)
+| [Anúncio do Dart 3.5](/blog/announcing-dart-3-5-and-an-update-on-the-dart-roadmap)
 
-O Dart 3.5 não adicionou novos recursos de linguagem, mas fez pequenas mudanças no
+O Dart 3.5 não adicionou recursos novos à linguagem, mas fez pequenas mudanças no
 contexto considerado durante a inferência de tipos.
-Estas incluem as seguintes mudanças não versionadas da linguagem:
+Elas incluem as seguintes mudanças, não versionadas por linguagem:
 
-* Quando o contexto para uma expressão `await` é `dynamic`,
-  o contexto para o operando da expressão agora é `FutureOr<_>`.
-* Quando o contexto para uma expressão if-null inteira (`e1 ?? e2`) é `dynamic`,
-  o contexto para `e2` agora é o tipo estático de `e1`.
+* Quando o contexto de uma expressão `await` é `dynamic`,
+  o contexto do operando da expressão agora é `FutureOr<_>`.
+* Quando o contexto de uma expressão if-null inteira (`e1 ?? e2`) é `dynamic`,
+  o contexto de `e2` agora é o tipo estático de `e1`.
 
 ### Dart 3.4
 _Lançado em 14 de maio de 2024_
-| [Anúncio do Dart 3.4](https://blog.dart.dev/dart-3-4-bd8d23b4462a)
+| [Anúncio do Dart 3.4](/blog/announcing-dart-3-4)
 
-O Dart 3.4 fez várias melhorias relacionadas à análise de tipos. Estas incluem:
+O Dart 3.4 trouxe várias melhorias relacionadas à análise de tipos. Entre elas:
 
 * Melhorias na análise de tipos de expressões condicionais,
-  expressões e atribuições if-null, e expressões switch.
-* Alinhamento do esquema de tipo de contexto de padrão para padrões de cast com a especificação.
-* Tornando o esquema de tipo para o operador de spread null-aware (`...?`)
-  nullable para literais de mapas e conjuntos, para corresponder ao comportamento de literais de lista.
+  expressões if-null, atribuições e switch expressions.
+* Alinhamento do tipo de contexto de pattern para cast patterns com a especificação.
+* Torna o tipo do operador spread com null-aware (`...?`) anulável para literais de map e set,
+  para igualar o comportamento dos literais de lista.
 
 ### Dart 3.3
 _Lançado em 15 de fevereiro de 2024_
-| [Anúncio do Dart 3.3](https://blog.dart.dev/dart-3-3-325bf2bf6c13)
+| [Anúncio do Dart 3.3](/blog/new-in-dart-3-3-extension-types-javascript-interop-and-more)
 
-O Dart 3.3 adicionou algumas melhorias à linguagem:
+O Dart 3.3 trouxe algumas melhorias à linguagem:
 
-* [Tipos de extensão][] são um novo recurso no Dart que permite o encapsulamento
-  de custo zero de um tipo existente. Eles são semelhantes a classes wrapper e métodos de extensão,
-  mas com diferenças de implementação e trade-offs diferentes.
+* [Extension types][] são um novo recurso do Dart que permite envolver
+  um tipo existente com custo zero. Eles são parecidos com classes wrapper e
+  métodos de extensão, mas com diferenças de implementação e trade-offs diferentes.
 
-  ```dart
+```dart
   extension type Meters(int value) {
     String get label => '${value}m';
     Meters operator +(Meters other) => Meters(value + other.value);
   }
 
   void main() {
-    var m = Meters(42); // Tem tipo `Meters`.
-    var m2 = m + m; // OK, tipo `Meters`.
-    // int i = m; // Erro de compilação, tipo errado.
-    // m.isEven; // Erro de compilação, nenhum membro desse tipo.
-    assert(identical(m, m.value)); // Sucesso.
+    var m = Meters(42); // Has type `Meters`.
+    var m2 = m + m; // OK, type `Meters`.
+    // int i = m; // Compile-time error, wrong type.
+    // m.isEven; // Compile-time error, no such member.
+    assert(identical(m, m.value)); // Succeeds.
   }
   ```
 
-* Getters abstratos agora são promovíveis sob as regras de
-  [promoção de campo final privado][], se não houver declarações conflitantes.
+* Getters abstratos agora podem ser promovidos pelas regras de
+  [private final field promotion][], desde que não haja declarações conflitantes.
 
 ### Dart 3.2
 _Lançado em 15 de novembro de 2023_
-| [Anúncio do Dart 3.2](https://blog.dart.dev/dart-3-2-c8de8fe1b91f)
+| [Anúncio do Dart 3.2](/blog/announcing-dart-3-2)
 
-O Dart 3.2 adicionou melhorias à análise de fluxo, incluindo:
+O Dart 3.2 trouxe melhorias na análise de fluxo, incluindo:
 
-* Expansão da [promoção de tipo](/null-safety/understanding-null-safety#type-promotion-on-null-checks)
-  para funcionar em campos finais privados. Anteriormente disponível apenas para
-  variáveis locais e parâmetros, agora campos finais privados podem ser promovidos para
-  tipos não-nullable através de verificações null e testes `is`. Por exemplo,
-  o seguinte código agora é válido:
+* [Promoção de tipo](/null-safety/understanding-null-safety#type-promotion-on-null-checks) expandida
+  para funcionar com campos privados final. Antes, isso valia apenas para
+  variáveis locais e parâmetros; agora campos privados final podem ser promovidos a
+  tipos não anuláveis por meio de verificações de null e testes `is`. Por exemplo,
+  o código a seguir agora é seguro:
 
-  ```dart
+```dart
   class Example {
     final int? _privateField;
-
+  
     Example(this._privateField);
-
+  
     void f() {
       if (_privateField != null) {
-        // _privateField foi agora promovido; você pode usá-lo sem
-        // verificar null.
+        // _privateField has now been promoted; you can use it without
+        // null checking it.
         int i = _privateField; // OK
       }
     }
   }
-
-  // Promoções de campo privado também funcionam de fora da classe:
+  
+  // Private field promotions also work from outside of the class:
   void f(Example x) {
     if (x._privateField != null) {
       int i = x._privateField; // OK
     }
   }
   ```
-
-  Para mais informações sobre quando campos finais privados podem e não podem ser promovidos, consulte
+  
+  Para mais informações sobre quando campos privados final podem ou não ser promovidos, confira
   [Corrigindo falhas de promoção de tipo](/tools/non-promotion-reasons).
 
-* Corrigidas inconsistências no comportamento de promoção de tipo de
-  instruções [if-case](/language/branches#if-case)
-  onde o valor sendo comparado lança uma exceção.
+* Inconsistências corrigidas no comportamento de promoção de tipo de
+  instruções [if-case](/language/branches#if-case) em que o valor
+  comparado lança uma exceção.
 
 
 ### Dart 3.1
 _Lançado em 16 de agosto de 2023_
-| [Anúncio do Dart 3.1](https://blog.dart.dev/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3-a1f4b3a7cdda)
+| [Anúncio do Dart 3.1](/blog/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3)
 
-O Dart 3.1 não adicionou novos recursos e não fez mudanças na linguagem.
+O Dart 3.1 não adicionou novos recursos nem fez mudanças na linguagem.
 
 ### Dart 3.0
 _Lançado em 10 de maio de 2023_
-| [Anúncio do Dart 3.0](https://blog.dart.dev/announcing-dart-3-53f065a10635)
+| [Anúncio do Dart 3.0](/blog/announcing-dart-3)
 
-O Dart 3.0 introduziu vários novos recursos principais de linguagem:
+O Dart 3.0 introduziu vários recursos novos e importantes na linguagem:
 
-* [Padrões][], uma nova categoria de gramática que permite
-  combinar e desestruturar valores.
+* [Patterns][], uma nova categoria de gramática que permite
+  comparar e desestruturar valores.
 * [Records][], um novo tipo que permite agregar
-  múltiplos valores de diferentes tipos em um único retorno de função.
-* [Modificadores de classe][], um novo conjunto de palavras-chave que permite
-  controlar como uma classe ou mixin pode ser usado.
-* [Expressões switch][], uma nova forma de ramificação múltipla
-  permitida onde expressões são esperadas.
-* [Cláusulas if-case][], uma nova construção condicional que combina um valor
-  contra um padrão e executa o ramo then ou else, dependendo
-  se o padrão corresponde.
+  vários valores de tipos diferentes em um único retorno de função.
+* [Class modifiers][], um novo conjunto de palavras-chave que permite
+  controlar como uma classe ou mixin pode ser usada.
+* [Switch expressions][], uma nova forma de desvio com múltiplas
+  ramificações, permitida onde se espera uma expressão.
+* [If-case clauses][], uma nova construção condicional que compara um valor
+  com um pattern e executa o ramo then ou else, dependendo
+  de o pattern corresponder ou não.
 
 O Dart 3.0 também introduziu algumas mudanças incompatíveis na linguagem:
 
-* Declarações de classe sem o modificador de classe [`mixin`][]
-  não podem mais ser aplicadas como mixins.
-* Agora é um erro de tempo de compilação se dois pontos (`:`) forem usados como separador
+* Declarações de classe sem o modificador de classe [`mixin`][] não podem mais
+  ser usadas como mixins.
+* Agora é um erro de tempo de compilação usar dois-pontos (`:`) como separador
   antes do valor padrão de um parâmetro nomeado opcional.
-  Use um sinal de igual (`=`) em vez disso.
-* Agora é um erro de tempo de compilação se uma instrução `continue` tiver como alvo um
-  rótulo que não esteja anexado a uma
-  instrução de loop (`for`, `do` e `while`) ou a um membro `switch`.
+  Use o sinal de igual (`=`) no lugar.
+* Agora é um erro de tempo de compilação se uma instrução `continue` aponta para um
+  label que não está associado a uma instrução de loop (`for`, `do` e `while`)
+  nem a um membro `switch`.
 
 :::note
-A versão 3.0 do Dart SDK eliminou o suporte para
-[versões de linguagem][language versions] anteriores à 2.12.
+A versão 3.0 do SDK do Dart deixou de suportar
+[versões da linguagem][language versions] anteriores à 2.12.
 :::
 
 [Patterns]: /language/patterns
@@ -304,24 +424,24 @@ A versão 3.0 do Dart SDK eliminou o suporte para
 [Switch expressions]: /language/branches#switch-expressions
 [If-case clauses]: /language/branches#if-case
 [`mixin`]: /language/mixins#class-mixin-or-mixin-class
-[language versions]: #language-versioning
+[language versions]: /language/versioning
 
 ### Dart 2.19
 _Lançado em 25 de janeiro de 2023_
 
 O Dart 2.19 introduziu algumas precauções em torno da inferência de tipos.
-Estas incluem:
+Entre elas:
 
-* Mais sinalizadores de análise de fluxo para casos de código inacessível.
-* Não delegar mais nomes privados inacessíveis para `noSuchMethod`.
-* Inferência de tipo de nível superior lança em dependências cíclicas.
+* Mais flags de análise de fluxo para casos de código inalcançável.
+* Nomes privados inacessíveis não são mais delegados a `noSuchMethod`.
+* A inferência de tipos no nível superior lança erro em dependências cíclicas.
 
-O Dart 2.19 também introduziu suporte para bibliotecas sem nome.
+O Dart 2.19 também introduziu suporte a bibliotecas sem nome.
 Diretivas de biblioteca, usadas para anexar comentários de documentação e
-anotações no nível da biblioteca, agora podem e [devem][] ser escritas sem um nome:
+anotações no nível da biblioteca, agora podem e [devem][should] ser escritas sem nome:
 
 ```dart
-/// Uma biblioteca de teste realmente ótima.
+/// A really great test library.
 @TestOn('browser')
 library;
 ```
@@ -330,60 +450,59 @@ library;
 
 ### Dart 2.18
 _Lançado em 30 de agosto de 2022_
-| [Anúncio do Dart 2.18](https://blog.dart.dev/dart-2-18-f4b3101f146c)
+| [Anúncio do Dart 2.18](/blog/dart-2-18-objective-c-swift-interop)
 
-O Dart 2.18 melhorou a inferência de tipos.
-Esta mudança permite o fluxo de informações entre argumentos em chamadas de função genérica.
+O Dart 2.18 aprimorou a inferência de tipos.
+Essa mudança permite o fluxo de informações entre argumentos em chamadas de funções genéricas.
 Antes da 2.18, se você não especificasse o tipo de um argumento em alguns métodos,
 o Dart reportava erros.
-Esses erros de tipo citavam possíveis ocorrências de null.
-Com a 2.18, o compilador infere o tipo de argumento
-de outros valores em uma invocação.
-Você não precisa especificar o tipo de argumento inline.
+Esses erros de tipo apontavam possíveis ocorrências de null.
+Com a 2.18, o compilador infere o tipo do argumento
+a partir de outros valores na invocação.
+Você não precisa especificar o tipo do argumento na linha.
 
-O Dart 2.18 também descontinuou o suporte para classes mixin que não estendem
+O Dart 2.18 também descontinuou o suporte a mixin classes que não estendem
 `Object`.
 
-Para aprender mais sobre esses recursos, consulte:
+Para saber mais sobre esses recursos, confira:
 
-* [Inferência de argumento de tipo][]
-* [Adicionando recursos a uma classe: mixins][]
+* [Inferência de argumentos de tipo][Type argument inference]
+* [Adicionando recursos a uma classe: mixins][Adding features to a class: mixins]
 
 [Type argument inference]: /language/type-system#type-argument-inference
 [Adding features to a class: mixins]: /language/mixins
 
 ### Dart 2.17
 _Lançado em 11 de maio de 2022_
-| [Anúncio do Dart 2.17](https://blog.dart.dev/dart-2-17-b216bfc80c5d)
+| [Anúncio do Dart 2.17](/blog/dart-2-17-productivity-and-integration)
 
-O Dart 2.17 expandiu a funcionalidade de enum com enums aprimorados.
-Enums aprimorados permitem que declarações de enum definam membros
+O Dart 2.17 expandiu a funcionalidade de enums com os enhanced enums.
+Enhanced enums permitem que declarações de enum definam membros,
 incluindo campos, construtores, métodos, getters, etc.
 
-O Dart 2.17 adicionou suporte para parâmetros super-inicializadores em
-construtores.
-Parâmetros super permitem que você evite ter que passar manualmente cada
-parâmetro para a invocação super de um construtor não-redirecionador.
-Você pode usar parâmetros super para encaminhar parâmetros para um
-construtor de superclasse.
+O Dart 2.17 adicionou suporte a super-initializer parameters em
+construtores. Super parameters permitem que você evite passar manualmente cada
+parâmetro na invocação super de um construtor não redirecionador.
+Em vez disso, você pode usar super parameters para repassar parâmetros para
+um construtor da superclasse.
 
 O Dart 2.17 removeu algumas restrições sobre argumentos nomeados.
-Argumentos nomeados agora podem ser livremente intercalados com argumentos posicionais.
+Argumentos nomeados agora podem ser intercalados livremente com argumentos posicionais.
 A partir do Dart 2.17, você pode escrever o seguinte código:
 
 ```dart
 void main() {
   test(skip: true, 'A test description', () {
-    // Corpo de função muito longo aqui...
+    // Very long function body here...
   });
 }
 ```
 
-Para aprender mais sobre esses recursos, consulte:
+Para saber mais sobre esses recursos, confira:
 
-* [Enums aprimorados][]
-* [Parâmetros super][]
-* [Parâmetros nomeados][]
+* [Enhanced enums][]
+* [Super parameters][]
+* [Named parameters][]
 
 [Enhanced enums]: /language/enums#declaring-enhanced-enums
 [Super parameters]: /language/constructors#super-parameters
@@ -391,33 +510,33 @@ Para aprender mais sobre esses recursos, consulte:
 
 ### Dart 2.16
 _Lançado em 3 de fevereiro de 2022_
-| [Anúncio do Dart 2.16](https://blog.dart.dev/dart-2-15-7e7a598e508a)
+| [Anúncio do Dart 2.16](/blog/announcing-dart-2-15)
 
 O Dart 2.16 não adicionou novos recursos à linguagem Dart.
-Ele expandiu as ferramentas do Dart.
+Ele, porém, expandiu as ferramentas do Dart.
 
 ### Dart 2.15
 _Lançado em 8 de dezembro de 2021_
-| [Anúncio do Dart 2.15](https://blog.dart.dev/dart-2-15-7e7a598e508a)
+| [Anúncio do Dart 2.15](/blog/announcing-dart-2-15)
 
-O Dart 2.15 melhorou o suporte para ponteiros de função, conhecidos como _tear-offs._
-Em particular, tear-offs de construtor agora são suportados.
+O Dart 2.15 melhorou o suporte a ponteiros de função, conhecidos como _tear-offs._
+Em especial, agora há suporte a tear-offs de construtores.
 
 ### Dart 2.14
 _Lançado em 8 de setembro de 2021_
-| [Anúncio do Dart 2.14](https://blog.dart.dev/announcing-dart-2-14-b48b9bb2fb67)
+| [Anúncio do Dart 2.14](/blog/announcing-dart-2-14)
 
-O Dart 2.14 adicionou o operador de deslocamento não assinado (ou _deslocamento triplo_) (`>>>`).
-Este novo operador funciona como `>>`,
+O Dart 2.14 adicionou o operador de shift sem sinal (ou _triple-shift_) (`>>>`).
+Esse novo operador funciona como `>>`,
 exceto que sempre preenche os bits mais significativos com zeros.
 
-Para aprender mais sobre esses operadores, consulte [operadores bitwise e de deslocamento][].
+Para saber mais sobre esses operadores, confira [bitwise and shift operators][].
 
 [bitwise and shift operators]: /language/operators#bitwise-and-shift-operators
 
-O Dart 2.14 removeu algumas restrições sobre argumentos de tipo.
+O Dart 2.14 também removeu algumas restrições sobre argumentos de tipo.
 Você pode passar argumentos de tipo para anotações e usar um tipo de função genérica
-como um argumento de tipo.
+como argumento de tipo.
 A partir do Dart 2.14, você pode escrever o seguinte código:
 
 ```dart
@@ -429,32 +548,32 @@ late S Function<S extends T Function<T>(T)>(S) f;
 
 ### Dart 2.13
 _Lançado em 19 de maio de 2021_
-| [Anúncio do Dart 2.13](https://blog.dart.dev/announcing-dart-2-13-c6d547b57067)
+| [Anúncio do Dart 2.13](/blog/announcing-dart-2-13)
 
-O Dart 2.13 expandiu o suporte para **[aliases de tipo][]** (`typedef`).
-Aliases de tipo costumavam funcionar apenas para tipos de função
+O Dart 2.13 ampliou o suporte a **[type aliases][]** (`typedef`).
+Type aliases antes funcionavam apenas para tipos de função,
 mas agora funcionam para qualquer tipo.
-Você pode usar o novo nome criado com um alias de tipo
+Você pode usar o novo nome criado com um type alias
 em qualquer lugar onde o tipo original poderia ser usado.
 
-O Dart 2.13 melhorou o suporte de struct no **[Dart FFI][]**,
-adicionando suporte para arrays inline e structs compactas.
+O Dart 2.13 melhorou o suporte a structs no **[Dart FFI][]**,
+adicionando suporte a arrays inline e structs compactadas (packed).
 
 ### Dart 2.12
 _Lançado em 3 de março de 2021_
-| [Anúncio do Dart 2.12](https://blog.dart.dev/announcing-dart-2-12-499a6e689c87)
+| [Anúncio do Dart 2.12](/blog/announcing-dart-2-12)
 
-O Dart 2.12 adicionou suporte para **[sound null safety][]**.
-Quando você opta por null safety, os tipos em seu código são não-nullable por padrão,
+O Dart 2.12 adicionou suporte a **[sound null safety][]**.
+Quando você ativa o null safety, os tipos do seu código são não anuláveis por padrão,
 o que significa que variáveis não podem conter null, a menos que você diga que podem.
-Com null safety, seus erros de desreferenciação null em tempo de execução
-se transformam em erros de análise em tempo de edição.
+Com null safety, os erros de desreferência de null em tempo de execução
+viram erros de análise durante a edição.
 
-No Dart 2.12, **[Dart FFI][]** graduou-se de beta para o canal estável.
+No Dart 2.12, o **[Dart FFI][]** saiu da versão beta e passou para o canal estável.
 
 ### Dart 2.10
 _Lançado em 1 de outubro de 2020_
-| [Anúncio do Dart 2.10](https://blog.dart.dev/announcing-dart-2-10-350823952bd5)
+| [Anúncio do Dart 2.10](/blog/announcing-dart-2-10)
 
 O Dart 2.10 não adicionou novos recursos à linguagem Dart.
 
@@ -465,20 +584,20 @@ O Dart 2.9 não adicionou novos recursos à linguagem Dart.
 
 ### Dart 2.8
 _Lançado em 6 de maio de 2020_
-| [Anúncio do Dart 2.8](https://blog.dart.dev/announcing-dart-2-8-7750918db0a)
+| [Anúncio do Dart 2.8](/blog/announcing-dart-2-8)
 
-O Dart 2.8 não adicionou recursos à linguagem Dart. Ele continha
-várias [mudanças incompatíveis][2.8 breaking changes] preparatórias
-para melhorar a usabilidade e o desempenho relacionados à nulidade para [null safety][].
+O Dart 2.8 não adicionou recursos à linguagem Dart. Ele trouxe várias
+[mudanças incompatíveis][2.8 breaking changes] preparatórias para
+melhorar a usabilidade e o desempenho relacionados à anulabilidade, para o [null safety][].
 
 ### Dart 2.7
 _Lançado em 11 de dezembro de 2019_
-| [Anúncio do Dart 2.7](https://blog.dart.dev/dart-2-7-a3710ec54e97)
+| [Anúncio do Dart 2.7](/blog/announcing-dart-2-7-a-safer-more-expressive-dart)
 
-O Dart 2.7 adicionou suporte para **[métodos de extensão][]**,
-permitindo que você adicione funcionalidade a qualquer tipo
+O Dart 2.7 adicionou suporte a **[métodos de extensão][extension methods]**,
+permitindo adicionar funcionalidade a qualquer tipo
 —-mesmo tipos que você não controla—-
-com a brevidade e experiência de auto-completar de chamadas de método regulares.
+com a concisão e a experiência de autocompletar de chamadas de método comuns.
 
 O exemplo a seguir estende a classe `String` de
 `dart:core` com um novo método `parseInt()`:
@@ -498,16 +617,16 @@ void main() {
 
 ### Dart 2.6
 _Lançado em 5 de novembro de 2019_
-| [Anúncio do Dart 2.6](https://blog.dart.dev/dart2native-a76c815e6baf)
+| [Anúncio do Dart 2.6](/blog/announcing-dart-2-6-with-dart2native-compile-dart-to-self-contained-native-executables)
 
 O Dart 2.6 introduziu uma
 [mudança incompatível (dart-lang/sdk#37985)]({{site.repo.dart.sdk}}/issues/37985).
-Restrições onde `Null` serve como um subtipo de `FutureOr<T>`
-agora produzem `Null` como a solução para `T`.
+Restrições em que `Null` atua como subtipo de `FutureOr<T>`
+agora resultam em `Null` como solução para `T`.
 
-Por exemplo: O código a seguir agora imprime `Null`.
-Antes do Dart 2.6, imprimia `dynamic`.
-A closure anônima `() {}` retorna o tipo `Null`.
+Por exemplo: o código a seguir agora imprime `Null`.
+Antes do Dart 2.6, ele imprimia `dynamic`.
+O closure anônimo `() {}` retorna o tipo `Null`.
 
 ```dart
 import 'dart:async';
@@ -519,11 +638,11 @@ main() { foo(() {}); }
 
 ### Dart 2.5
 _Lançado em 10 de setembro de 2019_
-| [Anúncio do Dart 2.5](https://blog.dart.dev/announcing-dart-2-5-super-charged-development-328822024970)
+| [Anúncio do Dart 2.5](/blog/announcing-dart-2-5-super-charged-development)
 
 O Dart 2.5 não adicionou recursos à linguagem Dart, mas adicionou
-suporte para [chamar código C nativo][] de código Dart
-usando uma nova **biblioteca central, `dart:ffi`.**
+suporte a [chamada de código C nativo][calling native C code] a partir do código Dart
+usando uma nova **biblioteca core, `dart:ffi`.**
 
 ### Dart 2.4
 _Lançado em 27 de junho de 2019_
@@ -532,29 +651,29 @@ _Lançado em 27 de junho de 2019_
 O Dart 2.4 introduz uma mudança incompatível
 [dart-lang/sdk#35097]({{site.repo.dart.sdk}}/issues/35097).
 
-O Dart agora impõe a covariância de variáveis de tipo usadas em super-interfaces.
-Por exemplo: Antes desta versão, o Dart aceitava, mas agora rejeita,
-o seguinte código:
+Agora o Dart impõe covariância de variáveis de tipo usadas em super-interfaces.
+Por exemplo: antes desta versão o Dart aceitava, mas agora rejeita,
+o código a seguir:
 
 ```dart
 class A<X> {};
 class B<X> extends A<void Function(X)> {};
 ```
 
-Agora você pode usar `async` como um identificador em
+Agora você pode usar `async` como identificador em
 funções assíncronas e geradoras.
 
 ### Dart 2.3
 _Lançado em 8 de maio de 2019_
-| [Anúncio do Dart 2.3](https://blog.dart.dev/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff)
+| [Anúncio do Dart 2.3](/blog/announcing-dart-2-3-optimized-for-building-user-interfaces)
 
-O Dart 2.3 adicionou três operadores projetados para melhorar código que realiza
-manipulação de lista, como código de UI declarativa.
+O Dart 2.3 adicionou três operadores pensados para melhorar código que manipula
+listas, como código declarativo de UI.
 
-O **[operador spread][]**
+O **[operador spread][spread operator]**
 permite desempacotar os elementos de uma lista em outra.
 No exemplo a seguir, a lista retornada por `buildMainElements()`
-é desempacotada na lista sendo passada para o argumento `children`:
+é desempacotada na lista passada ao argumento `children`:
 
 ```dart
 Widget build(BuildContext context) {
@@ -566,9 +685,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-O **[operador collection if][]** permite adicionar elementos condicionalmente.
+O operador **[collection if][collection if]** permite adicionar elementos condicionalmente.
 O exemplo a seguir adiciona um elemento `FlatButton` a menos que
-o aplicativo exiba a última página:
+o app esteja exibindo a última página:
 
 ```dart
 Widget build(BuildContext context) {
@@ -580,7 +699,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-O **[operador collection for][]** permite construir elementos repetidos.
+O operador **[collection for][collection for]** permite construir elementos repetidos.
 O exemplo a seguir adiciona um elemento `HeadingAction` para
 cada seção em `sections`:
 
@@ -597,9 +716,9 @@ Widget build(BuildContext context) {
 
 ### Dart 2.2
 _Lançado em 26 de fevereiro de 2019_
-| [Anúncio do Dart 2.2](https://blog.dart.dev/announcing-dart-2-2-faster-native-code-support-for-set-literals-7e2ab19cc86d)
+| [Anúncio do Dart 2.2](/blog/announcing-dart-2-2-faster-native-code-support-for-set-literals)
 
-O Dart 2.2 adicionou suporte para **[literais de conjunto][]**:
+O Dart 2.2 adicionou suporte a **[set literals][]**:
 
 ```dart
 const Set<String> currencies = {'EUR', 'USD', 'JPY'};
@@ -607,15 +726,14 @@ const Set<String> currencies = {'EUR', 'USD', 'JPY'};
 
 ### Dart 2.1
 _Lançado em 15 de novembro de 2018_
-| [Anúncio do Dart 2.1](https://blog.dart.dev/announcing-dart-2-1-improved-performance-usability-9f55fca6f31a)
+| [Anúncio do Dart 2.1](/blog/announcing-dart-2-1-improved-performance-usability)
 
-O Dart 2.1 adicionou suporte para **conversão int-para-double**,
+O Dart 2.1 adicionou suporte a **conversão de int para double**,
 permitindo que desenvolvedores definam valores `double` usando literais inteiros.
-Este recurso removeu a inconveniência de ser forçado a usar um
-literal `double` (por exemplo, `4.0`)
-quando o valor era um inteiro no conceito.
+Esse recurso eliminou o incômodo de ser obrigado a usar um literal `double`
+(por exemplo, `4.0`) quando o valor era, conceitualmente, um inteiro.
 
-No seguinte código Flutter, `horizontal` e `vertical` têm tipo `double`:
+No código Flutter a seguir, `horizontal` e `vertical` têm tipo `double`:
 
 ```dart
 padding: const EdgeInsets.symmetric(
@@ -626,111 +744,22 @@ padding: const EdgeInsets.symmetric(
 
 ### Dart 2.0
 _Lançado em 22 de fevereiro de 2018_
-| [Anúncio do Dart 2.0](https://blog.dart.dev/announcing-dart-2-80ba01f43b6)
+| [Anúncio do Dart 2.0](/blog/announcing-dart-2-optimized-for-client-side-development)
 
-O Dart 2.0 implementou um novo **[sistema de tipos sólido][]**.
+O Dart 2.0 implementou um novo **[sound type system][]**.
 Antes do Dart 2.0, os tipos não eram totalmente sólidos, e
-o Dart dependia fortemente de verificação de tipo em tempo de execução.
-O código Dart 1.x teve que ser migrado para Dart 2.
+o Dart dependia muito da verificação de tipos em tempo de execução.
+Código do Dart 1.x precisava ser migrado para o Dart 2.
 
-## Versionamento de linguagem {:#language-versioning}
+<a id="language-version-numbers" aria-hidden="true"></a>
+<a id="per-library-language-version-selection" aria-hidden="true"></a>
 
-Um único Dart SDK pode simultaneamente suportar
-múltiplas versões da linguagem Dart.
-O compilador determina qual versão o código está mirando,
-e interpreta o código de acordo com essa versão.
+## Versionamento da linguagem {:#language-versioning}
 
-O versionamento de linguagem se torna importante nas raras ocasiões em que o Dart
-introduz um recurso incompatível como [null safety][].
-Quando o Dart introduz uma mudança incompatível, código que
-compilava pode não compilar mais.
-O versionamento de linguagem permite que você defina a versão de linguagem de cada biblioteca
-para manter a compatibilidade.
-
-No caso de null safety, Dart SDKs 2.12 a 2.19 permitiram que você
-_escolhesse_ atualizar seu código para usar null safety.
-O Dart usa versionamento de linguagem para permitir que código não-null-safe execute
-ao lado de código null-safe.
-Esta decisão possibilitou a migração de código não-null-safe para código null-safe.
-Para revisar um exemplo de como um aplicativo ou pacote pode migrar para uma nova
-versão de linguagem com um recurso incompatível, consulte
-[Migrando para null safety](/null-safety/migration-guide).
-
-Cada pacote tem uma versão de linguagem padrão igual ao **limite inferior**
-da restrição de SDK no arquivo `pubspec.yaml`.
-
-**Por exemplo:** A seguinte entrada em um arquivo `pubspec.yaml`
-indica que este pacote padroniza para a versão de linguagem Dart 2.18.
-
-```yaml
-environment:
-  sdk: '>=2.18.0 <3.0.0'
-```
-
-### Números de versão de linguagem {:#language-version-numbers}
-
-O Dart formata suas versões de linguagem como dois números separados por um ponto.
-Lê-se como um número de versão principal e um número de versão secundária.
-Números de versão secundária podem introduzir mudanças incompatíveis.
-
-As versões do Dart podem anexar um número de patch a uma versão de linguagem.
-Patches não devem alterar a linguagem exceto para correções de bugs.
-Para ilustrar: Dart 2.18.3 serve como a versão mais recente do
-versão de linguagem do Dart 2.18 SDK.
-
-Cada Dart SDK suporta todas as versões de linguagem dentro
-de seu número de versão principal.
-Isso significa que o Dart SDK 2.18.3 suporta versões de linguagem
-2.0 a 2.18 inclusive, mas não Dart 1.x.
-
-Derivar a versão de linguagem da versão do SDK implica o seguinte:
-
-* Sempre que uma versão secundária do SDK é lançada, uma nova versão de linguagem aparece.
-  Na prática, muitas dessas versões de linguagem funcionam de maneira muito semelhante
-  a versões anteriores e têm compatibilidade total entre elas.
-  Por exemplo: A linguagem Dart 2.9 funciona muito como a linguagem Dart 2.8.
-
-* Quando uma versão de patch do SDK é lançada,
-  ela não pode introduzir novos recursos de linguagem.
-  Por exemplo: A versão 2.18.3 _permanece_ versão de linguagem 2.18.
-  Ela deve permanecer compatível com 2.18.2, 2.18.1 e 2.18.0.
-
-### Seleção de versão de linguagem por biblioteca {:#per-library-language-version-selection}
-
-Por padrão, cada arquivo Dart em um pacote usa a mesma versão de linguagem.
-O Dart identifica a versão de linguagem padrão como o
-limite-inferior da restrição de SDK especificada no arquivo `pubspec.yaml`.
-Às vezes, um arquivo Dart pode precisar usar uma versão de linguagem mais antiga.
-Por exemplo, você pode não conseguir migrar todos os arquivos em um pacote
-para null safety ao mesmo tempo.
-
-O Dart suporta seleção de versão de linguagem por biblioteca.
-Para optar por ter uma versão de linguagem diferente da
-do resto de um pacote, uma [biblioteca Dart][] deve
-incluir um comentário no seguinte formato:
-
-```dart
-// @dart = <major>.<minor>
-```
-
-Por exemplo:
-
-```dart
-// Descrição do que está neste arquivo.
-// @dart = 2.17
-import 'dart:math';
-...
-```
-
-A string `@dart` deve estar em um comentário `//` (não `///` ou `/*`),
-e deve aparecer antes de qualquer código Dart no arquivo.
-Espaço em branco (tabs e espaços) não importa,
-exceto dentro das strings `@dart` e de versão.
-Como o exemplo anterior mostra,
-outros comentários podem aparecer antes do comentário `@dart`.
-
-Para aprender como e por que a equipe Dart desenvolveu este método de versionamento,
-consulte a [especificação de versionamento de linguagem][].
+:::warning Documentação movida
+Este conteúdo foi movido para uma
+página dedicada sobre o [versionamento da linguagem Dart](/language/versioning).
+:::
 
 [2.8 breaking changes]: {{site.repo.dart.sdk}}/issues/40686
 [calling native C code]: /interop/c-interop
@@ -743,7 +772,6 @@ consulte a [especificação de versionamento de linguagem][].
 [language funnel]: {{site.repo.dart.lang}}/projects/1
 [language specification]: /resources/language/spec
 [language documentation]: /language
-[language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [null safety]: /null-safety
 [private final field promotion]: /tools/non-promotion-reasons
 [SDK changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
@@ -752,38 +780,3 @@ consulte a [especificação de versionamento de linguagem][].
 [sound type system]: /language/type-system
 [spread operator]: /language/collections#spread-operators
 [type aliases]: /language/typedefs
-[versionadas da linguagem]: #language-versioning
-[restrição de SDK]: /tools/pub/pubspec#sdk-constraints
-[rastreador de funil de linguagem]: {{site.repo.dart.lang}}/projects/1
-[documentação da linguagem]: /language
-[especificação da linguagem]: /resources/language/spec
-[changelog do SDK]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
-[Mudanças incompatíveis]: /resources/breaking-changes
-[restrição do SDK do flutter]: /tools/pub/pubspec#flutter-sdk-constraints
-[variáveis wildcard]: /language/variables#wildcard-variables
-[separadores de dígitos]: /language/built-in-types#digit-separators
-[Tipos de extensão]: /language/extension-types
-[promoção de campo final privado]: /tools/non-promotion-reasons
-[Padrões]: /language/patterns
-[Modificadores de classe]: /language/class-modifiers
-[Expressões switch]: /language/branches#switch-expressions
-[Cláusulas if-case]: /language/branches#if-case
-[devem]: /effective-dart/style#dont-explicitly-name-libraries
-[Inferência de argumento de tipo]: /language/type-system#type-argument-inference
-[Adicionando recursos a uma classe: mixins]: /language/mixins
-[Enums aprimorados]: /language/enums#declaring-enhanced-enums
-[Parâmetros super]: /language/constructors#super-parameters
-[Parâmetros nomeados]: /language/functions#named-parameters
-[operadores bitwise e de deslocamento]: /language/operators#bitwise-and-shift-operators
-[aliases de tipo]: /language/typedefs
-[sound null safety]: /null-safety
-[métodos de extensão]: /language/extension-methods
-[chamar código C nativo]: /interop/c-interop
-[operador spread]: /language/collections#spread-operators
-[operador collection if]: /language/collections#control-flow-operators
-[operador collection for]: /language/collections#control-flow-operators
-[literais de conjunto]: /language/collections#sets
-[sistema de tipos sólido]: /language/type-system
-[biblioteca Dart]: /tools/pub/create-packages#organizing-a-package
-[especificação de versionamento de linguagem]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
-[Elementos null-aware]: /language/collections#null-aware-element

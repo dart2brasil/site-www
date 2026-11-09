@@ -14,7 +14,7 @@ nextpage:
   Records requerem uma [language version][] de pelo menos 3.0.
 :::
 
-Records são um tipo agregado anônimo, imutável. Como outros [tipos de coleção][collection types],
+Records são um tipo agregado anônimo e imutável. Como outros [tipos de coleção][collection types],
 eles permitem agrupar múltiplos objetos em um único objeto. Ao contrário de outros tipos de
 coleção, records têm tamanho fixo, são heterogêneos e tipados.
 
@@ -45,7 +45,7 @@ Por exemplo, os seguintes statements `(int, int)` são anotações de tipo recor
 ```
 
 Campos em expressões record e anotações de tipo espelham
-como [parâmetros e argumentos][] funcionam em funções.
+como [parâmetros e argumentos][parameters and arguments] funcionam em funções.
 Campos posicionais vão diretamente dentro dos parênteses:
 
 <?code-excerpt "language/test/records_test.dart (record-type-declaration)"?>
@@ -59,7 +59,7 @@ record = ('A string', 123);
 
 Em uma anotação de tipo record, campos nomeados vão dentro de uma seção delimitada por chaves
 de pares tipo-e-nome, após todos os campos posicionais. Em uma expressão
-record, os nomes vão antes de cada valor de campo com dois-pontos depois:
+record, os nomes vão antes de cada valor de campo, seguidos de dois-pontos:
 
 <?code-excerpt "language/test/records_test.dart (record-type-named-declaration)"?>
 ```dart
@@ -70,7 +70,7 @@ record, os nomes vão antes de cada valor de campo com dois-pontos depois:
 record = (a: 123, b: true);
 ```
 
-Os nomes de campos nomeados em um tipo record são parte da
+Os nomes de campos nomeados em um tipo record fazem parte da
 [definição de tipo do record](#record-types), ou sua _forma_.
 Dois records com campos nomeados com
 nomes diferentes têm tipos diferentes:
@@ -85,7 +85,8 @@ nomes diferentes têm tipos diferentes:
 ```
 
 Em uma anotação de tipo record, você também pode nomear os campos *posicionais*, mas
-esses nomes são puramente para documentação e não afetam o tipo do record:
+esses nomes servem apenas para documentação e não
+afetam o tipo do record:
 
 <?code-excerpt "language/test/records_test.dart (record-type-matched-names)"?>
 ```dart
@@ -120,7 +121,7 @@ print(record.b); // Prints true
 print(record.$2); // Prints 'last'
 ```
 
-Para simplificar ainda mais o acesso a campos de record,
+Para simplificar ainda mais o acesso aos campos de record,
 confira a página sobre [Patterns][pattern].
 
 ## Tipos de record {:#record-types}
@@ -128,11 +129,11 @@ confira a página sobre [Patterns][pattern].
 Não há declaração de tipo para tipos de record individuais.
 Records são tipados estruturalmente com base nos tipos de seus campos.
 A _forma_ de um record (o conjunto de seus campos, os tipos dos campos
-e seus nomes, se houver) determina exclusivamente o tipo de um record.
+e seus nomes, se houver) determina exclusivamente o tipo do record.
 
 Cada campo em um record tem seu próprio tipo. Os tipos de campo podem diferir dentro do mesmo
-record. O sistema de tipos está ciente do tipo de cada campo onde quer que seja acessado
-do record:
+record. O sistema de tipos conhece o tipo de cada campo sempre que ele é acessado
+a partir do record:
 
 <?code-excerpt "language/test/records_test.dart (record-getters-two)"?>
 ```dart
@@ -157,8 +158,8 @@ confira [Records e typedefs](#records-and-typedefs).
 
 Dois records são iguais se tiverem a mesma _forma_ (conjunto de campos),
 e seus campos correspondentes tiverem os mesmos valores.
-Como a _ordem_ de campos nomeados não é parte da forma de um record, a ordem de campos
-nomeados não afeta a igualdade.
+Como a _ordem_ dos campos nomeados não faz parte da forma de um record, ela
+não afeta a igualdade.
 
 Por exemplo:
 
@@ -178,14 +179,14 @@ print(point == color); // Prints 'true'.
 print(point == color); // Prints 'false'. Lint: Equals on unrelated types.
 ```
 
-Records definem automaticamente os métodos `hashCode` e `==` baseados na estrutura
+Records definem automaticamente os métodos `hashCode` e `==` com base na estrutura
 de seus campos.
 
 ## Múltiplos retornos {:#multiple-returns}
 
 Records permitem que funções retornem múltiplos valores agrupados.
-Para recuperar valores de record de um retorno,
-[desestruture][destructure] os valores em variáveis locais usando [correspondência de pattern][pattern].
+Para recuperar os valores de um record retornado,
+[desestruture][destructure] os valores em variáveis locais usando [pattern matching][pattern].
 
 <?code-excerpt "language/test/records_test.dart (record-multiple-returns)"?>
 ```dart
@@ -207,8 +208,8 @@ var (name, age) = userInfo(json);
 ```
 
 Você também pode desestruturar um record usando seus [campos nomeados](#record-fields),
-usando a sintaxe de dois-pontos `:`, sobre a qual você pode ler mais na
-página de [Tipos de pattern][Pattern types]:
+com a sintaxe de dois-pontos `:`, sobre a qual você pode ler mais na
+página de [Pattern types][Pattern types]:
 
 <?code-excerpt "language/test/records_test.dart (record-name-destructure)"?>
 ```dart
@@ -219,22 +220,22 @@ final (:name, :age) = userInfo(json);
 ```
 
 Você pode retornar múltiplos valores de uma função sem records,
-mas outros métodos vêm com desvantagens.
+mas outros métodos têm desvantagens.
 Por exemplo, criar uma classe é muito mais verboso, e usar outros tipos de
 coleção como `List` ou `Map` perde segurança de tipo.
 
 :::note
-A característica de múltiplos retornos e tipos heterogêneos dos records habilita
-paralelização de futures de diferentes tipos, sobre o que você pode ler na
-[documentação `dart:async`][`dart:async` documentation].
+A característica de múltiplos retornos e de tipos heterogêneos dos records permite
+paralelizar futures de tipos diferentes, sobre o que você pode ler na
+[documentação de `dart:async`][`dart:async` documentation].
 :::
 
 ## Records como estruturas de dados simples {:#records-as-simple-data-structures}
 
 Records apenas armazenam dados. Quando isso é tudo que você precisa,
-eles estão imediatamente disponíveis e fáceis de usar
+eles estão imediatamente disponíveis e são fáceis de usar
 sem precisar declarar novas classes.
-Para uma lista simples de tuplas de dados que todas têm a mesma forma,
+Para uma lista simples de tuplas de dados que têm todas a mesma forma,
 uma *lista de records* é a representação mais direta.
 
 Considere esta lista de "definições de botões", por exemplo:
@@ -254,14 +255,14 @@ final buttons = [
 ];
 ```
 
-Este código pode ser escrito diretamente sem precisar de declarações adicionais.
+Esse código pode ser escrito diretamente, sem nenhuma declaração adicional.
 
 ### Records e typedefs {:#records-and-typedefs}
 
-Você pode optar por usar [typedefs][] para dar ao próprio tipo record um nome,
-e usar isso em vez de escrever o tipo record completo.
-Este método permite declarar que alguns campos podem ser null (`?`),
-mesmo que nenhuma das entradas atuais na lista tenha um valor null.
+Você pode optar por usar [typedefs][] para dar um nome ao próprio tipo record,
+e usar esse nome em vez de escrever o tipo record completo.
+Esse método permite declarar que alguns campos podem ser null (`?`),
+mesmo que nenhuma das entradas atuais da lista tenha valor null.
 
 ```dart
 typedef ButtonItem = ({String label, Icon icon, void Function()? onPressed});
@@ -271,11 +272,11 @@ final List<ButtonItem> buttons = [
 ```
 
 Como tipos record são tipos estruturais, dar um nome como `ButtonItem`
-apenas introduz um alias que facilita se referir ao tipo estrutural:
+apenas introduz um alias que facilita referir-se ao tipo estrutural:
 `({String label, Icon icon, void Function()? onPressed})`.
 
-Fazer com que todo o seu código se refira a um tipo record por seu alias torna mais fácil
-posteriormente mudar a implementação do record sem precisar atualizar cada referência.
+Fazer com que todo o seu código se refira a um tipo record pelo seu alias facilita
+mudar depois a implementação do record sem precisar atualizar cada referência.
 
 O código pode trabalhar com as definições de botões fornecidas da mesma forma que faria
 com instâncias de classe simples:
@@ -294,7 +295,7 @@ List<Container> widget = [
 ];
 ```
 
-Você pode até decidir posteriormente mudar o tipo record para um tipo de classe para adicionar métodos:
+Você pode até decidir mais tarde mudar o tipo record para um tipo de classe, para adicionar métodos:
 
 ```dart
 class ButtonItem {
@@ -302,7 +303,7 @@ class ButtonItem {
   final Icon icon;
   final void Function()? onPressed;
   ButtonItem({required this.label, required this.icon, this.onPressed});
-  bool get hasOnpressed => onPressed != null;
+  bool get hasOnPressed => onPressed != null;
 }
 ```
 
@@ -315,7 +316,7 @@ extension type ButtonItem._(({String label, Icon icon, void Function()? onPresse
   void Function()? get onPressed => _.onPressed;
   ButtonItem({required String label, required Icon icon, void Function()? onPressed})
       : this._((label: label, icon: icon, onPressed: onPressed));
-  bool get hasOnpressed => _.onPressed != null;
+  bool get hasOnPressed => _.onPressed != null;
 }
 ```
 
@@ -338,17 +339,17 @@ final List<ButtonItem> buttons =  [
 
 Novamente, tudo isso sem precisar mudar o código que usa essa lista.
 
-Mudar qualquer tipo requer que o código que o usa seja muito cuidadoso sobre
+Mudar qualquer tipo exige que o código que o utiliza tenha muito cuidado para
 não fazer suposições. Um alias de tipo não oferece nenhuma proteção ou garantia,
-para o código que o usa como referência, de que o valor sendo aliasado é um record.
-Tipos de extensão, também, oferecem pouca proteção.
-Apenas uma classe pode fornecer abstração e encapsulamento completos.
+para o código que o usa como referência, de que o valor aliasado é um record.
+Tipos de extensão também oferecem pouca proteção.
+Somente uma classe pode fornecer abstração e encapsulamento completos.
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
 [`dart:async` documentation]: /libraries/dart-async#handling-errors-for-multiple-futures
-[parâmetros e argumentos]: /language/functions#parameters
+[parameters and arguments]: /language/functions#parameters
 [function-type]: /language/functions#function-types
 [destructure]: /language/patterns#destructuring
 [Pattern types]: /language/pattern-types#record

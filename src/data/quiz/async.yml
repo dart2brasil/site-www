@@ -1,0 +1,112 @@
+- question: >-
+    Qual palavra-chave é usada para marcar uma função como assíncrona em Dart?
+  options:
+    - text: >-
+        `async`
+      correct: true
+      explanation: >-
+        A palavra-chave `async` marca uma função como assíncrona,
+        permitindo que ela use `await` para esperar operações assíncronas.
+    - text: >-
+        `await`
+      correct: false
+      explanation: >-
+        `await` é usado dentro de funções assíncronas para pausar até o resultado.
+        Ele não marca a função como assíncrona por si só.
+    - text: >-
+        `future`
+      correct: false
+      explanation: >-
+        `Future` é um tipo que representa um valor que chegará depois,
+        não uma palavra-chave para marcar funções.
+    - text: >-
+        `asynchronous`
+      correct: false
+      explanation: >-
+        Embora seja descritivo, `asynchronous` não é uma palavra-chave do Dart.
+        O Dart usa uma palavra-chave mais curta para marcar funções assíncronas.
+- question: >-
+    O que um `Future<String>` representa em Dart?
+  options:
+    - text: >-
+        Um valor string que estará disponível em algum momento no futuro.
+      correct: true
+      explanation: >-
+        Um `Future` é como uma promise.
+        Ele representa um valor que ainda não está disponível, mas estará
+        assim que uma operação assíncrona (como uma requisição de rede) terminar.
+    - text: >-
+        Uma string que pode ser `null`.
+      correct: false
+      explanation: >-
+        Strings que podem ser nulas têm o tipo `String?`.
+        Um `Future<String>` representa um valor string que
+        estará disponível depois, quando a operação assíncrona terminar.
+    - text: >-
+        Uma lista de strings que pode crescer com o tempo.
+      correct: false
+      explanation: >-
+        Uma lista de strings que pode crescer seria `List<String>`.
+        `Future<T>` encapsula um único valor do tipo `T`, não uma coleção.
+    - text: >-
+        Uma string armazenada em uma área separada da memória.
+      correct: false
+      explanation: >-
+        O tipo `Future` não tem relação com localização de memória ou armazenamento.
+        Pense no que "future" significa na linguagem do dia a dia.
+- question: >-
+    O que o `await` faz quando é colocado antes de um `Future`?
+  options:
+    - text: >-
+        Pausa a função até o `Future` completar e depois retorna o valor já desencapsulado.
+      correct: true
+      explanation: >-
+        O `await` pausa a execução da função
+        até que o `Future` seja concluído.
+    - text: >-
+        Cancela o `Future` se ele demorar demais.
+      correct: false
+      explanation: >-
+        O `await` não cancela nada nem define timeouts.
+        Ele apenas espera, independentemente de quanto a operação demorar.
+    - text: >-
+        Executa o `Future` em uma thread separada para melhorar o desempenho.
+      correct: false
+      explanation: >-
+        O Dart não usa threads automaticamente dessa forma.
+        O `await` funciona dentro do modelo de event loop de thread única do Dart.
+    - text: >-
+        Converte o `Future` em uma operação síncrona.
+      correct: false
+      explanation: >-
+        A operação continua sendo assíncrona.
+        O `await` muda a forma como você escreve o código, não como ele é executado.
+- question: >-
+    Enquanto seu código espera uma resposta HTTP com `await`,
+    o que acontece com as outras partes do seu aplicativo?
+  options:
+    - text: >-
+        Outras operações assíncronas e handlers de eventos podem continuar rodando.
+      correct: true
+      explanation: >-
+        Esse é o principal benefício da programação assíncrona.
+        Enquanto espera uma operação, o event loop do Dart pode tratar
+        outras tarefas, mantendo seu app responsivo.
+    - text: >-
+        Tudo trava até a resposta chegar.
+      correct: false
+      explanation: >-
+        Se tudo travasse, a programação assíncrona não traria nenhum benefício.
+        Pense em por que a programação assíncrona existe.
+    - text: >-
+        O Dart inicia automaticamente uma nova thread para cuidar da espera.
+      correct: false
+      explanation: >-
+        O Dart usa um modelo de event loop de thread única.
+        O `await` funciona dentro desse modelo, sem criar novas threads.
+    - text: >-
+        O programa é encerrado se a resposta demorar demais.
+      correct: false
+      explanation: >-
+        Programas não são encerrados por esperar operações assíncronas.
+        Não existe um timeout embutido que cause esse encerramento.

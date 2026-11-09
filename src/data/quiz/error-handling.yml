@@ -1,0 +1,122 @@
+- question: >-
+    Você está escrevendo uma função que interpreta a entrada do usuário.
+    Se a entrada for inválida,
+    qual é a melhor forma de sinalizar isso para o código que chamou a função?
+  options:
+    - text: >-
+        Lançar uma exceção descrevendo o que deu errado.
+      correct: true
+      explanation: >-
+        Lançar uma exceção interrompe de imediato o caminho inválido,
+        fornece uma mensagem de erro clara
+        e obriga quem chamou a função a tratar o erro explicitamente.
+    - text: >-
+        Retornar `null` e deixar quem chamou verificar.
+      correct: false
+      explanation: >-
+        Retornar `null` obriga quem chama a lembrar de verificar.
+        Se esquecer, os bugs podem acontecer silenciosamente.
+        Existe uma forma mais explícita de sinalizar problemas.
+    - text: >-
+        Imprimir uma mensagem de erro e continuar a execução.
+      correct: false
+      explanation: >-
+        Imprimir não impede que dados inválidos sejam usados.
+        A função ainda precisaria retornar algo,
+        o que pode causar bugs mais adiante.
+    - text: >-
+        Definir uma flag global de erro que outro código possa consultar.
+      correct: false
+      explanation: >-
+        Estado global é propenso a erros e fácil de esquecer.
+        Essa abordagem não obriga quem chama a tratar o erro.
+- question: >-
+    Qual é a diferença entre `throw` e `rethrow` em um bloco catch?
+  options:
+    - text: >-
+        `throw` sempre cria um novo stack trace;
+        `rethrow` preserva o stack trace original.
+      correct: true
+      explanation: >-
+        Use `rethrow` quando quiser registrar ou tratar parcialmente uma exceção,
+        mas ainda deixá-la se propagar
+        com o stack trace original intacto para depuração.
+    - text: >-
+        `throw` cria uma nova exceção; `rethrow` apenas imprime a atual.
+      correct: false
+      explanation: >-
+        Nenhum dos dois imprime nada.
+        `rethrow` propaga a exceção, não apenas a exibe.
+    - text: >-
+        `throw` funciona dentro de blocos catch, enquanto
+        `rethrow` só funciona fora deles.
+      correct: false
+      explanation: >-
+        É quase o contrário. `rethrow` só funciona dentro de blocos catch.
+        `throw` funciona em qualquer lugar.
+    - text: >-
+        `throw` serve para erros; `rethrow` serve para exceções.
+      correct: false
+      explanation: >-
+        Os dois funcionam com qualquer objeto lançável.
+        A diferença não está no tipo do objeto lançado.
+- question: >-
+    Considere este código:
+    `try { riskyOperation(); } on FormatException catch (e) { print(e); }`.
+    O que acontece se `riskyOperation()` lançar um `HttpException`?
+  options:
+    - text: >-
+        O `HttpException` se propaga, sem ser capturado por este try/catch.
+      correct: true
+      explanation: >-
+        A cláusula `on` filtra pelo tipo da exceção.
+        Como `HttpException` não é um `FormatException`,
+        ela ignora este bloco catch por completo.
+    - text: >-
+        O `HttpException` é capturado e impresso.
+      correct: false
+      explanation: >-
+        A cláusula `on FormatException` captura apenas `FormatException`
+        e seus subtipos. `HttpException` é outro tipo.
+    - text: >-
+        O programa falha porque não é possível usar `on` com `catch`.
+      correct: false
+      explanation: >-
+        `on Type catch (e)` é uma sintaxe válida que
+        filtra quais exceções capturar.
+        O problema é a incompatibilidade de tipo, não a sintaxe.
+    - text: >-
+        A exceção é ignorada silenciosamente e a execução continua.
+      correct: false
+      explanation: >-
+        No Dart, exceções nunca são ignoradas silenciosamente.
+        Se nenhum bloco catch corresponder, a exceção não simplesmente desaparece.
+- question: >-
+    No Dart, qual é a diferença principal entre um `Error` e uma `Exception`?
+  options:
+    - text: >-
+        Um `Error` indica um bug de programação que não deveria ser capturado,
+        enquanto uma `Exception` representa uma condição esperada da qual o código pode se recuperar.
+      correct: true
+      explanation: >-
+        Subtipos de `Error` (como `RangeError` ou `TypeError`) indicam bugs
+        no código que você deve corrigir. Subtipos de `Exception`
+        (como `FormatException` ou `HttpException`) representam situações
+        que o seu código pode prever e tratar com elegância.
+    - text: >-
+        `Error` é lançado pelo runtime do Dart, enquanto `Exception` só pode ser lançada pelo código do usuário.
+      correct: false
+      explanation: >-
+        Tanto o runtime do Dart quanto o código do usuário podem lançar exceções e erros.
+    - text: >-
+        `Exception` exige um bloco `try/catch`, mas `Error` é ignorado se não for capturado.
+      correct: false
+      explanation: >-
+        Erros e exceções não capturados encerram a execução.
+        Nenhum dos dois é ignorado silenciosamente.
+    - text: >-
+        `Error` e `Exception` são idênticos no Dart e podem ser usados um no lugar do outro.
+      correct: false
+      explanation: >-
+        O Dart distingue os dois por design:
+        erros indicam bugs, enquanto exceções representam falhas recuperáveis.

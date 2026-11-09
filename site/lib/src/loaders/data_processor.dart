@@ -20,11 +20,15 @@ final class DataProcessor implements DataLoader {
       final sourcePath = path.canonicalize(
         path.join(pageLoader.directory, page.path),
       );
-
       final inputPath = path.relative(sourcePath, from: '..');
+
+      final wordCount = RegExp(r'\w+').allMatches(page.content).length;
+      final readingTime = (wordCount / 250).ceil();
+
       page.apply(
         data: {
           'page': {
+            'readingTime': '$readingTime min read',
             'date': ?_lastModifiedDateForPath(inputPath),
             'inputPath': inputPath,
             if (page.data.page['sitemap'] == null)
@@ -88,5 +92,10 @@ final Map<String, DateTime> _lastModifiedPerPath = () {
 }();
 
 extension on DateTime {
-  String get formatted => '$year-$month-$day';
+  String get formatted {
+    final year = this.year.toString().padLeft(4, '0');
+    final month = this.month.toString().padLeft(2, '0');
+    final day = this.day.toString().padLeft(2, '0');
+    return '$year-$month-$day';
+  }
 }

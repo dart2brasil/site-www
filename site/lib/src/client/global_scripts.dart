@@ -5,7 +5,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:jaspr/jaspr.dart';
+import 'package:meta/meta.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -13,40 +13,68 @@ import 'package:universal_web/web.dart' as web;
 ///
 /// These are temporary until they can be integrated with their
 /// relevant Jaspr components.
-@client
-final class GlobalScripts extends StatefulComponent {
-  @override
-  State<StatefulComponent> createState() => _GlobalScriptsState();
-}
-
-final class _GlobalScriptsState extends State<GlobalScripts> {
-  @override
-  void initState() {
-    if (kIsWeb) {
-      // Run setup if DOM is loaded, otherwise do it after it has loaded.
-      if (web.document.readyState == 'loading') {
-        web.document.addEventListener('DOMContentLoaded', _setUpSite.toJS);
-      } else {
-        _setUpSite();
-      }
-    }
-
-    super.initState();
-  }
-
-  @override
-  Component build(BuildContext context) => const Component.empty();
-}
-
-void _setUpSite() {
+void setUpSite() {
+  _setUpHeadingLinkCopy();
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpTabs();
   _setUpGallery();
   _setUpExpandableCards();
+  _setUpPlatformKeys();
   _setUpTableOfContents();
   _setUpReleaseTags();
   _setUpTooltips();
+  _setUpSteppers();
+}
+
+void _setUpHeadingLinkCopy() {
+  final anchors = web.document.querySelectorAll(
+    'a.heading-link[href]',
+  );
+
+  for (var i = 0; i < anchors.length; i++) {
+    final anchor = anchors.item(i) as web.HTMLAnchorElement;
+
+    // Store the original text before any click handlers modify it.
+    final originalText = anchor.textContent;
+
+    @awaitNotRequired
+    Future<void> copyAnchorToClipboard(String url) async {
+      try {
+        await web.window.navigator.clipboard.writeText(url).toDart;
+        // TODO: Replace this with a tooltip of some sort.
+        anchor.textContent = 'Link copied!';
+
+        Future<void>.delayed(const Duration(milliseconds: 1200), () {
+          anchor.textContent = originalText;
+        });
+      } catch (_) {
+        anchor.textContent = 'Failed to copy';
+      }
+    }
+
+    anchor.addEventListener(
+      'click',
+      ((web.Event event) {
+        event.preventDefault();
+
+        final fragment = anchor.hash;
+        if (!fragment.startsWith('#')) return;
+
+        final headingId = fragment.substring(1);
+        if (headingId.isEmpty) return;
+
+        final url = Uri.parse(
+          web.window.location.href,
+        ).replace(fragment: headingId).toString();
+
+        // Update the URL hash without triggering a scroll jump.
+        web.window.history.replaceState(null, '', '#$headingId');
+
+        copyAnchorToClipboard(url);
+      }).toJS,
+    );
+  }
 }
 
 void _setUpSidenav() {
@@ -286,6 +314,18 @@ enum _ClientOperatingSystem {
     }
 
     return fallback;
+  }
+}
+
+void _setUpPlatformKeys() {
+  final specialKey = switch (_ClientOperatingSystem.fromUserAgent()) {
+    .macos => 'Command',
+    _ => 'Control',
+  };
+  final keys = web.document.querySelectorAll('kbd.special-key');
+  for (var i = 0; i < keys.length; i += 1) {
+    final element = keys.item(i) as web.Element;
+    element.textContent = specialKey;
   }
 }
 
@@ -641,4 +681,66 @@ void _ensureVisible(web.HTMLElement tooltip) {
     tooltip.style.left = '50%';
     tooltip.dataset['adjusted'] = '0';
   }
+}
+
+void _setUpSteppers() {
+  final steppers = web.document.querySelectorAll('.stepper');
+
+  for (var i = 0; i < steppers.length; i++) {
+    final stepper = steppers.item(i) as web.HTMLElement;
+    final steps = stepper.querySelectorAll('details');
+
+    for (var j = 0; j < steps.length; j++) {
+      final step = steps.item(j) as web.HTMLDetailsElement;
+
+      step.addEventListener(
+        'toggle',
+        ((web.Event e) {
+          // Close all other steps when one is opened.
+          if (step.open) {
+            for (var k = 0; k < steps.length; k++) {
+              final otherStep = steps.item(k) as web.HTMLDetailsElement;
+              if (otherStep != step) {
+                otherStep.open = false;
+              }
+            }
+          }
+        }).toJS,
+      );
+
+      final nextButton = step.querySelector('.next-step-button');
+      if (nextButton != null) {
+        nextButton.addEventListener(
+          'click',
+          ((web.Event e) {
+            e.preventDefault();
+            step.open = false;
+            _scrollTo(step, smooth: false);
+            if (j + 1 < steps.length) {
+              final nextStep = steps.item(j + 1) as web.HTMLDetailsElement;
+              nextStep.open = true;
+              _scrollTo(nextStep, smooth: true);
+            }
+          }).toJS,
+        );
+      }
+    }
+  }
+}
+
+void _scrollTo(web.Element element, {required bool smooth}) {
+  // Scroll the next step into view, accounting for the fixed header and toc.
+  final headerOffset =
+      web.document.getElementById('site-header')?.clientHeight ?? 0;
+  final tocOffset = web.document.getElementById('toc-top')?.clientHeight ?? 0;
+  final elementPosition = element.getBoundingClientRect().top;
+  final offsetPosition =
+      elementPosition + web.window.scrollY - headerOffset - tocOffset;
+
+  web.window.scrollTo(
+    web.ScrollToOptions(
+      top: offsetPosition,
+      behavior: smooth ? 'smooth' : 'auto',
+    ),
+  );
 }

@@ -1,13 +1,13 @@
 ---
+ia-translate: true
 title: Operadores
 description: Aprenda sobre os operadores que Dart suporta.
-ia-translate: true
 prevpage:
   url: /language/variables
-  title: Variables
+  title: Variáveis
 nextpage:
   url: /language/comments
-  title: Comments
+  title: Comentários
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
@@ -18,7 +18,7 @@ Dart suporta os operadores mostrados na tabela a seguir.
 A tabela mostra a associatividade de operadores do Dart
 e [precedência de operadores](#operator-precedence-example) do mais alto ao mais baixo,
 que são uma **aproximação** das relações de operadores do Dart.
-Você pode implementar muitos desses [operadores como membros de classe][].
+Você pode implementar muitos desses [operadores como membros de classe][operators as class members].
 
 | Descrição                               | Operador                                                                                           | Associatividade |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------|-----------------|
@@ -47,7 +47,7 @@ A tabela anterior deve ser usada apenas como um guia útil.
 A noção de precedência e associatividade de operadores
 é uma aproximação da verdade encontrada na gramática da linguagem.
 Você pode encontrar o comportamento autoritativo das relações de operadores do Dart
-na gramática definida na [especificação da linguagem Dart][].
+na gramática definida na [especificação da linguagem Dart][Dart language specification].
 :::
 
 Quando você usa operadores, você cria expressões. Aqui estão alguns exemplos
@@ -159,7 +159,7 @@ assert(a != b); // -1 != 0
 ```
 
 
-## Operadores de igualdade e relacionais
+## Operadores de igualdade e relacionais {:#equality-and-relational-operators}
 
 A tabela a seguir lista os significados dos operadores de igualdade e relacionais.
 
@@ -239,7 +239,7 @@ O código não é equivalente. Se `employee` for null ou não for uma `Person`, 
 primeiro exemplo lança uma exceção; o segundo não faz nada.
 :::
 
-## Operadores de atribuição
+## Operadores de atribuição {:#assignment-operators}
 
 Como você já viu, você pode atribuir valores usando o operador `=`.
 Para atribuir apenas se a variável atribuída for null,
@@ -283,7 +283,7 @@ assert(a == 6);
 ```
 
 
-## Operadores lógicos
+## Operadores lógicos {:#logical-operators}
 
 Você pode inverter ou combinar expressões booleanas usando os operadores
 lógicos.
@@ -409,7 +409,7 @@ String playerName(String? name) {
 }
 ```
 
-## Notação de cascata
+## Notação de cascata {:#cascade-notation}
 
 Cascatas (`..`, `?..`) permitem que você faça uma sequência de operações
 no mesmo objeto. Além de acessar membros de instância,
@@ -541,11 +541,11 @@ Para mais informações sobre os operadores `.`, `?.` e `..`, veja
 [Classes][].
 
 
-[operadores como membros de classe]: /language/methods#operators
-[especificação da linguagem Dart]: /resources/language/spec
+[operators as class members]: /language/methods#operators
+[Dart language specification]: /resources/language/spec
 [identical()]: {{site.dart-api}}/dart-core/identical.html
 [Operators]: /language/methods#operators
 [library prefixes]: /language/libraries#specifying-a-library-prefix
 [if-else]: /language/branches#if
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [Classes]: /language/classes

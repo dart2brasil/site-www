@@ -331,7 +331,7 @@ class Team {
 
       var players = await team.roster;
       return players.where((player) => player.isActive).length;
-    } on DownloadException catch (e, _) {
+    } on DownloadException catch (e) {
       log.error(e);
       return 0;
     }
@@ -580,3 +580,16 @@ Widget build(BuildContext context) {
 }
 
 // #enddocregion no-new
+
+// #docregion abbreviated-constructor-syntax
+class Logger {
+  final String name;
+
+  factory(String name) => _cache[name] ??= Logger._internal(name);
+
+  new _internal(this.name);
+  new fromJson(Map<String, Object?> json) : name = json['name'] as String;
+
+  static final Map<String, Logger> _cache = {};
+}
+// #enddocregion abbreviated-constructor-syntax

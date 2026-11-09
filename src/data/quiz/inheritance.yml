@@ -1,0 +1,86 @@
+- question: >-
+    Na classe `Option`,
+    qual é a finalidade da anotação `@override`?
+  options:
+    - text: >-
+        Fornecer uma implementação específica para um método ou propriedade
+        definido em uma classe pai.
+      correct: true
+      explanation: >-
+        `@override` indica que você está fornecendo
+        uma implementação concreta para um membro abstrato
+        ou substituindo uma implementação herdada.
+    - text: >-
+        Criar um novo método que não existe na classe pai.
+      correct: false
+      explanation: >-
+        `@override` não cria novos métodos.
+        Novos métodos são criados simplesmente ao defini-los na classe.
+    - text: >-
+        Indicar que um método é opcional.
+      correct: false
+      explanation: >-
+        `@override` não afeta se um método é opcional.
+        Parâmetros opcionais usam uma sintaxe totalmente diferente.
+    - text: >-
+        Tornar uma propriedade privada.
+      correct: false
+      explanation: >-
+        A privacidade é indicada por um underscore no início (`_`), e não por anotações.
+        `@override` tem outra finalidade, relacionada à herança.
+- question: >-
+    Qual é a diferença entre uma classe `abstract`
+    e uma classe comum em Dart?
+  options:
+    - text: >-
+        Uma classe `abstract` não pode ser instanciada diretamente.
+      correct: true
+      explanation: >-
+        Classes abstratas servem como modelos que outras classes estendem.
+        Você não pode criar instâncias de uma classe abstrata diretamente.
+    - text: >-
+        Uma classe `abstract` não pode ter nenhum método.
+      correct: false
+      explanation: >-
+        Classes abstratas podem ter tanto métodos abstratos (sem implementação)
+        quanto métodos concretos (com implementação).
+    - text: >-
+        Uma classe `abstract` só pode ter métodos privados.
+      correct: false
+      explanation: >-
+        Classes abstratas podem ter métodos com qualquer nível de visibilidade.
+        A palavra-chave `abstract` não restringe a visibilidade.
+    - text: >-
+        Não há diferença entre uma classe `abstract` e uma classe comum.
+      correct: false
+      explanation: >-
+        Há uma diferença significativa.
+        Tente escrever `var x = MinhaClasseAbstrata();` e veja o que acontece.
+- question: >-
+    Por que a classe `Command` expõe `options` por meio de um
+    `UnmodifiableSetView` em vez de permitir o acesso direto a `_options`?
+  options:
+    - text: >-
+        Para impedir que código externo modifique diretamente a lista interna de opções do comando.
+      correct: true
+      explanation: >-
+        Encapsular a lista e expor uma visão não modificável impede que quem chama
+        adicione, remova ou reordene opções sem usar os métodos auxiliares
+        do comando.
+    - text: >-
+        Porque o Dart não permite que classes contenham listas mutáveis.
+      correct: false
+      explanation: >-
+        Classes Dart podem conter listas mutáveis. A visão não modificável é uma
+        escolha de design intencional para encapsulamento.
+    - text: >-
+        Para tornar as opções acessíveis de fora da biblioteca.
+      correct: false
+      explanation: >-
+        Getters públicos já tornam os dados acessíveis; o wrapper não modificável
+        protege especificamente a coleção contra mutações externas.
+    - text: >-
+        Para ordenar as opções automaticamente em ordem alfabética.
+      correct: false
+      explanation: >-
+        `UnmodifiableSetView` não ordena coleções; ele apenas impede mutações.

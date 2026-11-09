@@ -6,8 +6,8 @@ prevpage:
   url: /language/classes
   title: Classes
 nextpage:
-  url: /language/methods
-  title: Methods
+  url: /language/primary-constructors
+  title: Construtores primários
 ---
 
 Construtores são funções especiais que criam instâncias de classes.
@@ -48,7 +48,7 @@ essas funções usam o mesmo nome de sua classe.
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-## Tipos de construtores
+## Tipos de construtores {:#types-of-constructors}
 
 ### Construtores generativos {:#generative-constructors}
 
@@ -207,7 +207,7 @@ var logMap = {'name': 'UI'};
 var loggerJson = Logger.fromJson(logMap);
 ```
 
-### Construtores factory de redirecionamento
+### Construtores factory de redirecionamento {:#redirecting-factory-constructors}
 
 Um construtor factory de redirecionamento especifica uma chamada para um construtor de outra
 classe para usar sempre que alguém fizer uma chamada para o construtor de redirecionamento.
@@ -216,10 +216,10 @@ classe para usar sempre que alguém fizer uma chamada para o construtor de redir
 factory Listenable.merge(List<Listenable> listenables) = _MergingListenable
 ```
 
-Pode parecer que construtores factory comuns
-poderiam criar e retornar instâncias de outras classes.
-Isso tornaria os factories de redirecionamento desnecessários.
-Construtores factory de redirecionamento têm várias vantagens:
+Como construtores factory comuns também podem criar
+e retornar instâncias de outras classes,
+os factories de redirecionamento parecem desnecessários.
+No entanto, construtores factory de redirecionamento têm várias vantagens:
 
 * Uma classe abstract pode fornecer um construtor constante
   que usa o construtor constante de outra classe.
@@ -264,11 +264,73 @@ Para mais discussão, assista a este vídeo Decoding Flutter sobre tear-offs.
 
 <YouTubeEmbed id="OmCaloD7sis" title="Dart Tear-offs | Decoding Flutter"></YouTubeEmbed>
 
-## Inicialização de variáveis de instância
+## Sintaxe concisa de construtores {:#concise-constructor-syntax}
 
-O Dart pode inicializar variáveis de três maneiras.
+A partir do Dart 3.13, você pode omitir o nome da classe
+ao declarar um construtor generativo ou factory dentro do corpo da classe,
+usando diretamente o modificador `new` ou `factory`:
 
-### Inicializar variáveis de instância na declaração
+-   `new` ou `new nomeado`
+-   `factory` ou `factory nomeado`
+
+Diferentemente dos construtores nomeados tradicionais (como `Point.origin()`),
+construtores nomeados concisos não usam ponto
+entre a palavra-chave (modificador) e o nome.
+
+<?code-excerpt "concise_syntax.dart (concise-syntax)"?>
+```dart
+class Point {
+  double x, y;
+
+  // Concise unnamed generative constructor.
+  new(this.x, this.y);
+
+  // Concise named generative constructor.
+  new origin() : x = 0, y = 0;
+
+  // Equivalent to `factory Point.clone(Point other)`.
+  factory clone(Point other) => Point(other.x, other.y);
+}
+```
+
+Essa sintaxe reduz a verbosidade e facilita a refatoração de nomes de classes.
+
+:::note
+Com essa sintaxe, um método chamado `factory` sem tipo de retorno
+(como `factory () {}`) é interpretado como um construtor factory sem nome.
+:::
+
+A tabela a seguir mostra como mapear a sintaxe tradicional de construtores
+para a sintaxe concisa de construtores (para uma classe chamada `LongClassName`):
+
+| Original Dart syntax                      | Abbreviated syntax      |
+| ----------------------------------------- | --------------------------- |
+| `LongClassName() {}`                      | `new() {}`                  |
+| `LongClassName.name() {}`                 | `new name() {}`             |
+| `const LongClassName();`                  | `const new();`              |
+| `const LongClassName.name();`             | `const new name();`         |
+| `LongClassName(): this.other();`          | `new(): this.other();`      |
+| `LongClassName.name(): this();`           | `new name(): this();`       |
+| `const LongClassName(): this.other();`    | `const new(): this.other();` |
+| `const LongClassName.name(): this();`     | `const new name(): this();` |
+| `factory LongClassName() { ... }`         | `factory() { ... }`         |
+| `factory LongClassName.name() { ... }`    | `factory name() { ... }`    |
+| `factory LongClassName() = D;`            | `factory() = D;`            |
+| `factory LongClassName.name() = D;`       | `factory name() = D;`       |
+| `const factory LongClassName() = D;`      | `const factory() = D;`      |
+| `const factory LongClassName.name() = D;` | `const factory name() = D;`  |
+
+Para uma sintaxe ainda mais concisa, em que você define campos e construtores em uma única linha,
+veja [Construtores primários](/language/primary-constructors).
+
+## Inicialização de variáveis de instância {:#instance-variable-initialization}
+
+O Dart oferece várias maneiras de inicializar variáveis de instância.
+Você pode atribuir valores na declaração,
+usar parâmetros formais de inicialização
+ou usar uma lista de inicializadores.
+
+### Inicializar variáveis de instância na declaração {:#initialize-instance-variables-in-the-declaration}
 
 Inicialize as variáveis de instância quando você declarar as variáveis.
 
@@ -327,25 +389,6 @@ class PointB {
 }
 ```
 
-Campos privados não podem ser usados como parâmetros formais de inicialização nomeados.
-
-{% comment %}
-Don't attach the following example to a code excerpt.
-It doesn't work on purpose and will cause errors in CI.
-{% endcomment %}
-
-```dart
-class PointB {
-// ...
-
-  PointB.namedPrivate({required double x, required double y})
-      : _x = x,
-        _y = y;
-
-// ...
-}
-```
-
 Isso também funciona com variáveis nomeadas.
 
 <?code-excerpt "point_alt.dart (initialize-named)" plaster="none"?>
@@ -376,7 +419,7 @@ crie um [construtor factory](#factory-constructors)
 ou [método static][static method] com essa lógica.
 Você pode então passar os valores computados para um construtor normal.
 
-Os parâmetros do construtor podem ser definidos como nullable e não ser inicializados.
+Você pode definir parâmetros do construtor como nullable para evitar inicializá-los.
 
 <?code-excerpt "point_alt.dart (initialize-null)" plaster="none"?>
 ```dart
@@ -393,6 +436,124 @@ class PointD {
   }
 }
 ```
+
+### Parâmetros nomeados privados {:#private-named-parameters}
+
+:::version-note
+Usar parâmetros nomeados privados como parâmetros formais de inicialização
+requer uma [versão da linguagem][language version] de pelo menos 3.12.
+:::
+
+Em Dart, campos que começam com sublinhado são privados à sua biblioteca.
+Para inicializar um campo privado usando um parâmetro nomeado,
+você pode escrever a atribuição manual na lista de inicializadores:
+
+<?code-excerpt "point_private_old.dart (initialize-private-named-before)" plaster="none"?>
+```dart
+class Point {
+  final double _x;
+  Point({required double x}) : _x = x;
+}
+```
+
+Você também pode inicializar campos privados diretamente
+na lista de parâmetros do construtor.
+Quando você prefixa o parâmetro nomeado com `this._`,
+o compilador remove automaticamente o sublinhado para quem chama,
+permitindo que use um nome público limpo:
+
+<?code-excerpt "point_private_new.dart (initialize-private-named-after)" plaster="none"?>
+```dart
+class Point {
+  final double _x;
+  Point({required this._x});
+}
+```
+
+Nos dois casos,
+quem chama usa o nome público `x` na chamada:
+
+<?code-excerpt "point_private_new.dart (initialize-private-named-usage)" plaster="none"?>
+```dart
+var p = Point(x: 1.0);
+```
+
+Assim como os [parâmetros nomeados](/language/functions#named-parameters) comuns, você pode
+tornar os parâmetros nomeados privados opcionais ou obrigatórios.
+Você também pode fornecer valores padrão explícitos.
+
+No exemplo a seguir, o parâmetro `_x` é opcional e o padrão é `null`.
+O parâmetro `_y` também é opcional, mas tem o valor padrão explícito `0.0`:
+
+<?code-excerpt "point_alt.dart (initialize-private-named)" plaster="none"?>
+```dart
+class PointPrivate {
+  final double? _x; // Nullable field
+  final double _y; // Non-nullable field
+
+  PointPrivate({this._x, this._y = 0.0});
+
+  @override
+  String toString() => 'PointPrivate($_x, $_y)';
+}
+
+void testPrivate() {
+  var p = PointPrivate(x: 1.0, y: 2.0);
+  print(p);
+}
+```
+
+#### Restrições {:#constraints}
+
+* **Sem conflitos:** nem o nome privado nem o nome público gerado
+  podem coincidir com outro nome de parâmetro no mesmo construtor.
+* **Somente parâmetros formais de inicialização:** parâmetros nomeados em Dart, em geral,
+  não podem ser privados. Essa capacidade é uma exceção que se aplica apenas
+  a parâmetros nomeados que são parâmetros formais de inicialização (`this._campo`).
+  Você não pode usar identificadores privados para parâmetros nomeados comuns.
+* **Nome público válido:** o nome privado precisa mapear para um identificador público válido.
+  Por exemplo, `this._` ou `this._2x` são inválidos
+  porque não têm equivalentes públicos válidos.
+
+#### Uso na lista de inicializadores {:#usage-in-initializer-lists}
+
+Dentro da lista de inicializadores do construtor,
+referencie o parâmetro usando seu nome privado:
+
+<?code-excerpt "point_alt.dart (initialize-private-named-assert)" plaster="none"?>
+```dart
+class PointPrivateAssert {
+  final double _x;
+
+  PointPrivateAssert({required this._x}) : assert(_x >= 0);
+}
+```
+
+#### Interação com super parâmetros {:#interaction-with-super-parameters}
+
+Ao estender uma classe que usa parâmetros nomeados privados,
+as subclasses usam o nome público para [super parâmetros][super parameters].
+
+No exemplo a seguir, a classe `Tool` define o campo privado `_price`.
+Mesmo o campo sendo privado,
+seu parâmetro nomeado correspondente é público (`price`, não `_price`).
+Para repassar o valor,
+a subclasse `Hammer` usa o identificador público `price`:
+
+<?code-excerpt "point_alt.dart (initialize-private-named-super)" plaster="none"?>
+```dart
+class Tool {
+  final int _price;
+  Tool({required this._price});
+}
+
+class Hammer extends Tool {
+  // Forwards to the public 'price' argument
+  Hammer({required super.price});
+}
+```
+
+[super parameters]: /resources/glossary#super-parameter
 
 ### Usar uma lista de inicializadores {:#use-an-initializer-list}
 
@@ -448,7 +609,7 @@ void main() {
 }
 ```
 
-## Herança de construtor
+## Herança de construtor {:#constructor-inheritance}
 
 _Subclasses_, ou classes filhas, não herdam *construtores*
 de sua _superclasse_, ou classe pai imediata.
@@ -464,7 +625,7 @@ Cada subclasse pode chamar o construtor de sua superclasse para inicializar uma 
 como uma subclasse pode chamar um método static de uma superclasse.
 Este processo não "herda" corpos ou assinaturas de construtores.
 
-### Construtores de superclasse não padrão
+### Construtores de superclasse não padrão {:#non-default-superclass-constructors}
 
 O Dart executa construtores na seguinte ordem:
 
@@ -601,7 +762,7 @@ class Vector3d extends Vector2d {
 }
 ```
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [using constructors]: /language/classes#using-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
 [static method]: /language/classes#static-methods
