@@ -119,7 +119,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
                   'Detalhes sobre o diagnóstico \'$previousDiagnosticName\' '
                   'produzido pelo analisador do Dart.',
               'canonical':
-                  'https://dart.dev/tools/diagnostics/${diagnostic.id}',
+                  'https://dartbrasil.dev/tools/diagnostics/${diagnostic.id}',
               'redirectTo': '/tools/diagnostics/${diagnostic.id}',
               'noindex': true,
               'sitemap': false,
@@ -160,7 +160,7 @@ List<MemoryPage> get _lintMemoryPages {
               // If this lint has a version not fully lower case,
               // specify that version as the canonical destination.
               if (lintId != lint.id)
-                'canonical': 'https://dart.dev/tools/linter-rules/${lint.id}',
+                'canonical': 'https://dartbrasil.dev/tools/linter-rules/${lint.id}',
               if (lint.state == 'removed') ...const {
                 'noindex': true,
                 'sitemap': false,
