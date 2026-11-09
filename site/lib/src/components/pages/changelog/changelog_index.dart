@@ -132,7 +132,7 @@ final class ChangelogIndex extends StatelessComponent {
                   href: '#v${version.shortVersion.replaceAll('.', '-')}',
                   attributes: {
                     'aria-label':
-                        "Link to 'Dart ${version.shortVersion}' section",
+                        "Link para a seção 'Dart ${version.shortVersion}'",
                   },
                   [const .text('#')],
                 ),
@@ -140,7 +140,7 @@ final class ChangelogIndex extends StatelessComponent {
                     case final groupDate?)
                   span(
                     classes: 'version-release-date',
-                    [.text('Released $groupDate')],
+                    [.text('Lançado em $groupDate')],
                   ),
               ]),
               div(classes: 'version-items', [
@@ -195,7 +195,7 @@ class _ChangelogEntryCard extends StatelessComponent {
                 'aria-label':
                     "Link to '${entry.version} ${entry.subArea ?? entry.area}' "
                     'changelog entry',
-                'title': 'Copy link to this changelog entry',
+                'title': 'Copiar link para esta entrada do changelog',
               },
               [const .text('#')],
             ),
@@ -212,14 +212,14 @@ class _ChangelogEntryCard extends StatelessComponent {
         div(classes: 'card-content', [
           if (entry.version.patch != 0 && entry.releaseDate != null)
             p(classes: 'release-date', [
-              em([.text('Released: ${entry.releaseDate}')]),
+              em([.text('Lançado em: ${entry.releaseDate}')]),
             ]),
           DashMarkdown(content: entry.description),
           if (entry.link case final entryLink?)
             div(classes: 'read-more', [
               Button(
                 href: entryLink,
-                content: 'Read more',
+                content: 'Leia mais',
                 trailingIcon: 'open_in_new',
                 attributes: {'target': '_blank'},
               ),

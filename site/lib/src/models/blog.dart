@@ -33,7 +33,8 @@ extension type Post(Map<String, Object?> data) {
     ),
   };
 
-  String get readingTime => data['readingTime'] as String? ?? '5 min read';
+  String get readingTime =>
+      data['readingTime'] as String? ?? '5 min de leitura';
   String? get category => data['category'] as String?;
 }
 

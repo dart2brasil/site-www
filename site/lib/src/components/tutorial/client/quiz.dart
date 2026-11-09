@@ -117,9 +117,12 @@ class _InteractiveQuizState extends State<InteractiveQuiz> {
                       ]),
                       div(classes: 'solution', [
                         if (option.correct)
-                          const p(classes: 'correct', [.text('That\'s right!')])
+                          const p(classes: 'correct', [.text('Isso mesmo!')])
                         else
-                          const p(classes: 'incorrect', [.text('Not quite.')]),
+                          const p(
+                            classes: 'incorrect',
+                            [.text('Não exatamente.')],
+                          ),
                         p([RawText(option.explanation)]),
                       ]),
                     ]),
@@ -131,8 +134,8 @@ class _InteractiveQuizState extends State<InteractiveQuiz> {
 
       if (currentQuestion == null)
         const div(classes: 'quiz-complete', [
-          strong([.text('Great job!')]),
-          p([.text('You completed the quiz.')]),
+          strong([.text('Mandou bem!')]),
+          p([.text('Você completou o quiz.')]),
         ]),
       div(classes: 'quiz-actions', [
         Button(
@@ -144,7 +147,7 @@ class _InteractiveQuizState extends State<InteractiveQuiz> {
               currentQuestionIndex--;
             });
           },
-          content: 'Previous question',
+          content: 'Pergunta anterior',
         ),
         Button(
           key: nextButtonKey,
@@ -177,10 +180,10 @@ class _InteractiveQuizState extends State<InteractiveQuiz> {
             selectedOption?.correct,
           )) {
             // (isComplete, isLast, isCorrect)
-            (true, _, _) => 'Restart',
-            (false, _, false) => 'Try again',
-            (false, false, _) => 'Next question',
-            (false, true, _) => 'Finish quiz',
+            (true, _, _) => 'Recomeçar',
+            (false, _, false) => 'Tentar de novo',
+            (false, false, _) => 'Próxima pergunta',
+            (false, true, _) => 'Finalizar quiz',
           },
         ),
       ]),

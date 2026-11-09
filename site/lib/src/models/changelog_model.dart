@@ -124,18 +124,18 @@ extension ChangelogVersionExtension on Version {
 }
 
 enum ChangelogTag {
-  newTag('new', 'New', 'New feature or capability'),
-  breaking('breaking', 'Breaking', 'Change that might break existing code'),
-  fixed('fixed', 'Fixed', 'Bug fix or error resolution'),
-  changed('changed', 'Changed', 'Modification to existing behavior'),
-  experimental('experimental', 'Experimental', 'Feature not yet stable'),
+  newTag('new', 'Novo', 'Novo recurso ou funcionalidade'),
+  breaking('breaking', 'Breaking', 'Mudança que pode quebrar código existente'),
+  fixed('fixed', 'Corrigido', 'Correção de bug ou erro'),
+  changed('changed', 'Alterado', 'Modificação de comportamento existente'),
+  experimental('experimental', 'Experimental', 'Recurso ainda não estável'),
   languageVersioned(
     'versioned',
-    'Language versioned',
-    'Change tied to a specific language version',
+    'Versionado por linguagem',
+    'Mudança ligada a uma versão específica da linguagem',
   ),
-  deprecated('deprecated', 'Deprecated', 'Feature scheduled for removal'),
-  removed('removed', 'Removed', 'Feature no longer available'),
+  deprecated('deprecated', 'Descontinuado', 'Recurso com remoção programada'),
+  removed('removed', 'Removido', 'Recurso não está mais disponível'),
   none('none', 'None', '');
 
   const ChangelogTag(this.id, this.label, this.description);

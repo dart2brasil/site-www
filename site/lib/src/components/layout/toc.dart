@@ -38,18 +38,18 @@ final class NarrowTableOfContents extends StatelessComponent {
       button(
         classes: 'dropdown-button',
         attributes: {
-          'title': 'Toggle the table of contents dropdown',
+          'title': 'Abrir ou fechar o sumário',
           'aria-expanded': 'false',
           'aria-controls': 'toc-dropdown',
-          'aria-label': 'Toggle the table of contents dropdown',
+          'aria-label': 'Abrir ou fechar o sumário',
         },
         [
           const span(classes: 'toc-intro', [
             MaterialIcon('list'),
             span(
-              attributes: {'aria-label': 'On this page'},
+              attributes: {'aria-label': 'Nesta página'},
               [
-                .text('On this page'),
+                .text('Nesta página'),
               ],
             ),
           ]),

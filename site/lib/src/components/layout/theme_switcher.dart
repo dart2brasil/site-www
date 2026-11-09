@@ -19,9 +19,9 @@ final class ThemeSwitcher extends StatefulComponent {
 }
 
 enum _Theme {
-  light('Light', 'Switch to the light theme.', 'light_mode'),
-  dark('Dark', 'Switch to the dark theme.', 'dark_mode'),
-  auto('Automatic', 'Match theme to device theme.', 'night_sight_auto'),
+  light('Claro', 'Mudar para o tema claro.', 'light_mode'),
+  dark('Escuro', 'Mudar para o tema escuro.', 'dark_mode'),
+  auto('Automático', 'Usar o tema do dispositivo.', 'night_sight_auto'),
   ;
 
   final String label;
@@ -85,7 +85,7 @@ final class _ThemeSwitcherState extends State<ThemeSwitcher> {
   Component build(BuildContext _) => Dropdown(
     id: 'theme-switcher',
     children: [
-      const DropdownToggle(Button(icon: 'routine', title: 'Select a theme.')),
+      const DropdownToggle(Button(icon: 'routine', title: 'Escolha um tema.')),
       DropdownContent(
         div(
           classes: 'dropdown-menu',

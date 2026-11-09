@@ -386,12 +386,12 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
       div(classes: 'range-selectors', [
         const label(
           attributes: {'for': 'changelog-from-version'},
-          [.text('From')],
+          [.text('De')],
         ),
         div(classes: 'select-wrapper', [
           select(
             id: 'changelog-from-version',
-            attributes: {'aria-label': 'From Dart version'},
+            attributes: {'aria-label': 'Da versão do Dart'},
             value: fromValue,
             events: {
               'change': (event) {
@@ -406,7 +406,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
               option(
                 value: '',
                 selected: fromValue.isEmpty,
-                [const .text('All versions')],
+                [const .text('Todas as versões')],
               ),
               for (final v in sortedVersions)
                 option(
@@ -419,12 +419,12 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
         ]),
         const label(
           attributes: {'for': 'changelog-to-version'},
-          [.text('To')],
+          [.text('Até')],
         ),
         div(classes: 'select-wrapper', [
           select(
             id: 'changelog-to-version',
-            attributes: {'aria-label': 'To Dart version'},
+            attributes: {'aria-label': 'Até a versão do Dart'},
             value: toValue,
             events: {
               'change': (event) {
@@ -439,7 +439,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
               option(
                 value: '',
                 selected: toValue.isEmpty,
-                [const .text('Latest')],
+                [const .text('Mais recente')],
               ),
               for (final v in sortedVersions)
                 option(
@@ -492,7 +492,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
                 ..setVersionRange(from: breakingSince);
             }
           },
-          [.text('Breaking changes since ${breakingSince.shortVersion}')],
+          [.text('Breaking changes desde ${breakingSince.shortVersion}')],
         ),
       ]),
     ]);
@@ -508,8 +508,8 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
     return FilterToolbar(
       id: 'changelog-search-group',
       searchBar: SearchBar(
-        placeholder: 'Search changelog...',
-        label: 'Search changelog',
+        placeholder: 'Pesquisar no changelog...',
+        label: 'Pesquisar no changelog',
         value: searchQuery,
         onInput: (value) {
           setState(() {
@@ -529,7 +529,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
       resultCount: label(
         attributes: {'for': 'changelog-search'},
         [
-          const .text('Showing '),
+          const .text('Mostrando '),
           span([.text('$filteredEntriesCount')]),
           const .text(' / '),
           span([.text('${entries.length}')]),
@@ -540,11 +540,11 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
           icon: 'filter_list',
           content: activeFilterCount > 0 ? '$activeFilterCount' : null,
           classes: ['show-filters-button'],
-          title: 'Show filters',
+          title: 'Mostrar filtros',
           attributes: {
             'aria-label': activeFilterCount > 0
-                ? 'Show filters ($activeFilterCount active)'
-                : 'Show filters',
+                ? 'Mostrar filtros ($activeFilterCount ativos)'
+                : 'Mostrar filtros',
             'aria-controls': 'changelog-filter-group-wrapper',
           },
           onClick: () {
@@ -560,7 +560,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
       trailingActions: [
         Button(
           icon: 'close_small',
-          content: 'Clear filters',
+          content: 'Limpar filtros',
           disabled:
               searchQuery.isEmpty &&
               filters.selectedTags.isEmpty &&

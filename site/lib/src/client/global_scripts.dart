@@ -43,13 +43,13 @@ void _setUpHeadingLinkCopy() {
       try {
         await web.window.navigator.clipboard.writeText(url).toDart;
         // TODO: Replace this with a tooltip of some sort.
-        anchor.textContent = 'Link copied!';
+        anchor.textContent = 'Link copiado!';
 
         Future<void>.delayed(const Duration(milliseconds: 1200), () {
           anchor.textContent = originalText;
         });
       } catch (_) {
-        anchor.textContent = 'Failed to copy';
+        anchor.textContent = 'Falha ao copiar';
       }
     }
 

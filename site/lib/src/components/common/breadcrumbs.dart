@@ -32,7 +32,7 @@ class PageBreadcrumbs extends StatelessComponent {
 
     return nav(
       classes: 'breadcrumbs',
-      attributes: {'aria-label': 'breadcrumb'},
+      attributes: {'aria-label': 'Trilha de navegação'},
       [
         ol(
           classes: 'breadcrumb-list',

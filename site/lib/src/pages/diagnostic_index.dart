@@ -62,7 +62,7 @@ class _DiagnosticCard extends StatelessComponent {
           if (diagnostic.fromLint)
             const MaterialIcon(
               'toggle_on',
-              title: 'Diagnostic is from a lint rule.',
+              title: 'O diagnóstico vem de uma regra de lint.',
             ),
         ],
         trailing: [
@@ -70,10 +70,10 @@ class _DiagnosticCard extends StatelessComponent {
             Button(
               href: '/tools/diagnostics/$diagnosticId',
               style: ButtonStyle.outlined,
-              title: 'Learn more about this diagnostic and how to resolve it.',
-              content: 'Learn more',
+              title: 'Saiba mais sobre este diagnóstico e como resolvê-lo.',
+              content: 'Saiba mais',
             ),
-          CopyButton(toCopy: diagnosticId, buttonText: 'Copy name'),
+          CopyButton(toCopy: diagnosticId, buttonText: 'Copiar nome'),
         ],
       ),
     );

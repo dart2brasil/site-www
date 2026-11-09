@@ -92,10 +92,10 @@ class _LintRuleCard extends StatelessComponent {
           Button(
             href: '/tools/linter-rules/${lint.name}',
             style: ButtonStyle.outlined,
-            title: 'Learn more about this lint and when to enable it.',
-            content: 'Learn more',
+            title: 'Saiba mais sobre este lint e quando ativá-lo.',
+            content: 'Saiba mais',
           ),
-          CopyButton(toCopy: lint.name, buttonText: 'Copy name'),
+          CopyButton(toCopy: lint.name, buttonText: 'Copiar nome'),
         ],
       ),
     );
@@ -105,22 +105,22 @@ class _LintRuleCard extends StatelessComponent {
     ?switch (lint.state) {
       'removed' => const MaterialIcon(
         'error',
-        title: 'Lint has been removed.',
+        title: 'Lint removido.',
         classes: ['removed-lints'],
       ),
       'deprecated' => const MaterialIcon(
         'report',
-        title: 'Lint is deprecated.',
+        title: 'Lint descontinuado.',
         classes: ['deprecated-lints'],
       ),
       'experimental' => const MaterialIcon(
         'science',
-        title: 'Lint is experimental.',
+        title: 'Lint experimental.',
         classes: ['experimental-lints'],
       ),
       _ when lint.sinceDartSdk.contains('wip') => const MaterialIcon(
         'pending',
-        title: 'Lint is unreleased.',
+        title: 'Lint ainda não lançado.',
         classes: ['wip-lints'],
       ),
       _ => null,
@@ -129,26 +129,26 @@ class _LintRuleCard extends StatelessComponent {
     if (lint.fixStatus == 'hasFix')
       const MaterialIcon(
         'build',
-        title: 'Lint has a quick fix.',
+        title: 'Lint tem uma correção rápida (quick fix).',
         classes: ['has-fix'],
       ),
 
     if (lint.lintSets.contains('core'))
       const MaterialIcon(
         'circles',
-        title: 'Lint is included in the core lint set.',
+        title: 'Lint incluído no conjunto core de regras.',
       ),
 
     if (lint.lintSets.contains('recommended'))
       const MaterialIcon(
         'thumb_up',
-        title: 'Lint is included in the recommended lint set.',
+        title: 'Lint incluído no conjunto recommended de regras.',
       ),
 
     if (lint.lintSets.contains('flutter'))
       const MaterialIcon(
         'flutter',
-        title: 'Lint is included in the Flutter lint set.',
+        title: 'Lint incluído no conjunto de regras do Flutter.',
       ),
   ];
 }

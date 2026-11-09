@@ -18,7 +18,7 @@ import 'dash_layout.dart';
 /// The Jaspr Content layout to use for blog pages,
 /// adding elements such as breadcrumbs.
 class BlogLayout extends DashLayout {
-  static const String _blogTitle = 'The Dart Blog';
+  static const String _blogTitle = 'O Blog do Dart';
 
   const BlogLayout();
 

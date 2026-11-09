@@ -17,7 +17,7 @@ final class SiteSwitcher extends StatelessComponent {
   Component build(BuildContext _) => const Dropdown(
     id: 'site-switcher',
     children: [
-      DropdownToggle(Button(icon: 'apps', title: 'Visit related sites.')),
+      DropdownToggle(Button(icon: 'apps', title: 'Visite sites relacionados.')),
       DropdownContent(
         nav(
           classes: 'dropdown-menu',
@@ -78,13 +78,13 @@ class _SiteWordMarkListEntry extends StatelessComponent {
           classes: ['site-wordmark', if (current) 'current-site'].toClasses,
           attributes: {
             'role': 'menuitem',
-            'title': 'Navigate to the $_combinedName website.',
-            'aria-label': 'Navigate to the $_combinedName website.',
+            'title': 'Ir para o site $_combinedName.',
+            'aria-label': 'Ir para o site $_combinedName.',
           },
           [
             const img(
               src: '/assets/img/logo/dart-192.svg',
-              alt: 'Dart logo',
+              alt: 'Logo do Dart',
               width: 20,
               height: 20,
             ),

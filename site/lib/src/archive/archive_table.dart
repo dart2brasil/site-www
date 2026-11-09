@@ -65,7 +65,7 @@ final class ArchiveTable extends StatelessComponent {
               form(classes: 'form-inline', [
                 div(classes: 'form-group select', [
                   label(htmlFor: '$channel-versions', [
-                    const .text('Version:'),
+                    const .text('Versão:'),
                   ]),
                   select(
                     id: '$channel-versions',
@@ -88,7 +88,7 @@ final class ArchiveTable extends StatelessComponent {
                   ),
                 ]),
                 div(classes: 'form-group select', [
-                  label(htmlFor: '$channel-os', [const .text('OS:')]),
+                  label(htmlFor: '$channel-os', [const .text('SO:')]),
                   select(
                     id: '$channel-os',
                     value: selector.selectedOs,
@@ -100,7 +100,7 @@ final class ArchiveTable extends StatelessComponent {
                         value: 'all',
                         selected: selector.selectedOs == 'all',
                         [
-                          const .text('All'),
+                          const .text('Todos'),
                         ],
                       ),
                       option(
@@ -133,10 +133,10 @@ final class ArchiveTable extends StatelessComponent {
                 table(id: channel, classes: 'table', [
                   const thead([
                     tr([
-                      th([.text('Version')]),
-                      th([.text('OS')]),
-                      th([.text('Architecture')]),
-                      th([.text('Release date')]),
+                      th([.text('Versão')]),
+                      th([.text('SO')]),
+                      th([.text('Arquitetura')]),
+                      th([.text('Data de lançamento')]),
                       th([.text('Downloads')]),
                     ]),
                   ]),

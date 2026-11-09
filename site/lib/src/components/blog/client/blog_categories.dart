@@ -18,10 +18,10 @@ enum BlogCategory {
   final String slug;
 
   String get displayName => switch (this) {
-    BlogCategory.releases => 'Releases',
-    BlogCategory.announcements => 'Announcements',
-    BlogCategory.deepDive => 'Deep Dive',
-    BlogCategory.other => 'Other',
+    BlogCategory.releases => 'Lançamentos',
+    BlogCategory.announcements => 'Anúncios',
+    BlogCategory.deepDive => 'Aprofundamento',
+    BlogCategory.other => 'Outros',
   };
 
   static BlogCategory fromSlug(String? slug) {
@@ -130,7 +130,7 @@ class _BlogCategoriesState extends State<BlogCategories> {
         [
           button(
             onClick: () => _selectCategory(null),
-            [const .text('All')],
+            [const .text('Todos')],
           ),
         ],
       ),

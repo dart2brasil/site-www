@@ -282,7 +282,7 @@ if (storedTheme === 'auto-mode') {
           classes: 'filled-button',
           href: '#site-content-title',
           attributes: {'tabindex': '1'},
-          [.text('Skip to main content')],
+          [.text('Pular para o conteúdo principal')],
         ),
         const DashHeader(),
         div(id: 'site-below-header', [
@@ -301,7 +301,10 @@ if (storedTheme === 'auto-mode') {
             if (obsolete)
               const div(id: 'obsolete-banner', [
                 div(classes: 'text-center', [
-                  .text('Some content on this page might be out of date.'),
+                  .text(
+                    'Parte do conteúdo desta página '
+                    'pode estar desatualizada.',
+                  ),
                 ]),
               ]),
           ]),

@@ -31,7 +31,7 @@ class ShareButton extends StatelessComponent {
         const DropdownToggle(
           Button(
             icon: 'share',
-            title: 'Share this post',
+            title: 'Compartilhar este post',
           ),
         ),
         DropdownContent(
@@ -49,7 +49,7 @@ class ShareButton extends StatelessComponent {
                       },
                       [
                         const MaterialIcon('content_copy'),
-                        const .text('Copy link'),
+                        const .text('Copiar link'),
                       ],
                     );
                   },
@@ -73,7 +73,7 @@ class ShareButton extends StatelessComponent {
                           },
                         ),
                       ]),
-                      const .text('Share on X'),
+                      const .text('Compartilhar no X'),
                     ],
                   ),
                 ),
@@ -93,7 +93,7 @@ class ShareButton extends StatelessComponent {
                           },
                         ),
                       ]),
-                      const .text('Share on Bluesky'),
+                      const .text('Compartilhar no Bluesky'),
                     ],
                   ),
                 ),
@@ -113,7 +113,7 @@ class ShareButton extends StatelessComponent {
                           },
                         ),
                       ]),
-                      const .text('Share on LinkedIn'),
+                      const .text('Compartilhar no LinkedIn'),
                     ],
                   ),
                 ),

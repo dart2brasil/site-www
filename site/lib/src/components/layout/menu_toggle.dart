@@ -40,8 +40,8 @@ final class _MenuToggleState extends State<MenuToggle> {
     type: ButtonType.button,
     attributes: {
       'aria-controls': 'sidenav',
-      'aria-label': 'Toggle navigation menu.',
-      'title': 'Toggle navigation menu.',
+      'aria-label': 'Abrir ou fechar o menu de navegação.',
+      'title': 'Abrir ou fechar o menu de navegação.',
     },
     events: {
       'click': (_) {

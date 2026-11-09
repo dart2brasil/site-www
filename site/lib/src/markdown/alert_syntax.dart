@@ -118,42 +118,42 @@ enum _AlertType {
   note(
     cssClass: 'alert-info',
     iconId: 'info',
-    defaultTitle: 'Note',
+    defaultTitle: 'Observação',
   ),
   flutterNote(
     cssClass: 'alert-info',
     iconId: 'flutter',
-    defaultTitle: 'Flutter note',
+    defaultTitle: 'Observação sobre Flutter',
   ),
   versionNote(
     cssClass: 'alert-info',
     iconId: 'merge_type',
-    defaultTitle: 'Version note',
+    defaultTitle: 'Observação de versão',
   ),
   tip(
     cssClass: 'alert-success',
     iconId: 'lightbulb',
-    defaultTitle: 'Tip',
+    defaultTitle: 'Dica',
   ),
   recommend(
     cssClass: 'alert-success',
     iconId: 'bolt',
-    defaultTitle: 'Recommended',
+    defaultTitle: 'Recomendado',
   ),
   important(
     cssClass: 'alert-important',
     iconId: 'feedback',
-    defaultTitle: 'Important',
+    defaultTitle: 'Importante',
   ),
   warning(
     cssClass: 'alert-warning',
     iconId: 'warning',
-    defaultTitle: 'Warning',
+    defaultTitle: 'Aviso',
   ),
   caution(
     cssClass: 'alert-error',
     iconId: 'error',
-    defaultTitle: 'Caution',
+    defaultTitle: 'Cuidado',
   ),
   secondary(
     cssClass: 'alert-secondary',

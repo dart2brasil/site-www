@@ -64,7 +64,7 @@ class YoutubeEmbed with CustomComponentBase {
           target: Target.blank,
           attributes: {'rel': 'noopener'},
           [
-            .text('Watch on YouTube in a new tab: "$videoTitle"'),
+            .text('Assistir no YouTube em uma nova aba: "$videoTitle"'),
           ],
         ),
       ],

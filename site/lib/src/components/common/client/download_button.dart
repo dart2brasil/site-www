@@ -88,8 +88,8 @@ class _DownloadButtonState extends State<DownloadButton> {
       onClick: saveAsFile,
       style: ButtonStyle.filled,
       icon: 'download',
-      title: 'Download file',
-      content: 'Download file',
+      title: 'Baixar arquivo',
+      content: 'Baixar arquivo',
     );
   }
 }
