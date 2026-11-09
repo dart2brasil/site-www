@@ -22,6 +22,7 @@ Campos traduzidos:
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -72,6 +73,36 @@ def from_md(kind, text):
     return {'description': desc, 'details': body[:-1] if body.endswith('\n') else body}
 
 
+def _slug(text):
+    """Mesmo algoritmo de slugify() em site/lib/src/util.dart."""
+    s = re.sub(r'[:.]', '-', text.lower().strip())
+    s = re.sub(r'[^\w\s:._-]', '', s)
+    return re.sub(r'[\s-]+', '-', s).strip('-')
+
+
+def _heading_lines(md):
+    inside, out = False, []
+    for i, line in enumerate(md.split('\n')):
+        if line.lstrip().startswith('```'):
+            inside = not inside
+        elif not inside and re.match(r'^#{1,6} ', line):
+            out.append(i)
+    return out
+
+
+def add_english_anchors(translated, original):
+    """Põe {:#id-em-inglês} nos títulos traduzidos, para os links com âncora
+    do dart.dev (ex.: #common-fixes) continuarem funcionando."""
+    pt, en = translated.split('\n'), original.split('\n')
+    hp, he = _heading_lines(translated), _heading_lines(original)
+    if len(hp) != len(he):
+        return translated
+    for a, b in zip(hp, he):
+        if '{:' not in pt[a]:
+            pt[a] = pt[a].rstrip() + ' {:#' + _slug(re.sub(r'^#+ ', '', en[b])) + '}'
+    return '\n'.join(pt)
+
+
 def untranslated(ref):
     """Yields (kind, id, entry) for entries identical to the upstream ref."""
     up_d = {x['id']: x for x in load_ref(DIAG, ref)}
@@ -82,7 +113,9 @@ def untranslated(ref):
     up_l = {x['name']: x for x in load_ref(LINT, ref)}
     for x in load(LINT):
         u = up_l.get(x['name'])
-        if u and (x['details'] == u['details'] or x['description'] == u['description']):
+        # Só o details decide: descrições curtas ("Use `ColoredBox`.") podem ser
+        # iguais nas duas línguas.
+        if u and x['details'] == u['details']:
             yield 'lint', x['name'], x
 
 
@@ -111,6 +144,9 @@ def cmd_export(args):
 def cmd_import(args):
     pt = os.path.join(args.dir, 'pt')
     diag, lint = load(DIAG), load(LINT)
+    # O texto em inglês de cada entrada, antes da importação, para as âncoras.
+    original = {('diag', x['id']): x.get('documentation') or '' for x in diag}
+    original.update({('lint', x['name']): x['details'] for x in lint})
     by = {'diag': {x['id']: x for x in diag}, 'lint': {x['name']: x for x in lint}}
     n, errs = 0, []
     for root, _, files in os.walk(pt):
@@ -124,7 +160,10 @@ def cmd_import(args):
                 continue
             try:
                 with open(os.path.join(root, name), encoding='utf-8') as f:
-                    entry.update(from_md(kind, f.read()))
+                    new = from_md(kind, f.read())
+                field = 'documentation' if kind == 'diag' else 'details'
+                new[field] = add_english_anchors(new[field], original[(kind, id_)])
+                entry.update(new)
                 n += 1
             except Exception as e:  # noqa: BLE001
                 errs.append(f'{name}: {e}')

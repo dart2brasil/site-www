@@ -173,7 +173,9 @@ List<MemoryPage> get _lintMemoryPages {
           builder: (context) {
             final incompatibleLintsText = StringBuffer();
             if (lint.incompatibleLints.isNotEmpty) {
-              incompatibleLintsText.writeln('## Regras incompatíveis\n');
+              incompatibleLintsText.writeln(
+                '## Regras incompatíveis {:#incompatible-rules}\n',
+              );
               incompatibleLintsText.writeln(
                 'O lint `${lint.id}` é incompatível com '
                 'as seguintes regras:',
@@ -277,7 +279,7 @@ List<MemoryPage> get _lintMemoryPages {
                       '''
 ${lint.description}
 
-## Detalhes
+## Detalhes {:#details}
 
 ${lint.docs}
 
@@ -288,7 +290,7 @@ $incompatibleLintsText
                   content:
                       '''
 <a id="usage" aria-hidden="true"></a>
-## Ativar
+## Ativar {:#enable}
 
 Para ativar a regra `${lint.id}`, adicione `${lint.id}` em
 **linter > rules** no seu arquivo [`analysis_options.yaml`](/tools/analysis):

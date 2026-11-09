@@ -23,7 +23,7 @@ class ShareButton extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final fullUrl = 'https://dart.dev$url';
+    final fullUrl = 'https://dartbrasil.dev$url';
 
     return Dropdown(
       id: 'share-menu-${url.hashCode}',
