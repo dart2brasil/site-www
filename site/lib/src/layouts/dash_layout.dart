@@ -4,17 +4,17 @@
 
 import 'dart:convert';
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../client/global_scripts.dart';
-import '../components/common/client/cookie_notice.dart';
+import '../components/layout/banner.dart';
 import '../components/layout/footer.dart';
 import '../components/layout/header.dart';
 import '../components/layout/sidenav.dart';
 import '../models/sidenav_model.dart';
-import '../style_hash.dart';
 import '../util.dart';
+import '../utils/cache_busted_build_asset_url.dart';
 
 /// The base Jaspr Content layout for wrapping site content.
 abstract class DashLayout extends PageLayoutBase {
@@ -25,102 +25,164 @@ abstract class DashLayout extends PageLayoutBase {
 
   List<String> get defaultBodyClasses => [];
 
+  String get defaultSidenav => 'default';
+
+  /// Returns page-specific URLs to eagerly speculate on, in addition to
+  /// the document-level rules that match all internal links.
+  ///
+  /// Override in subclasses to provide page-specific URLs for
+  /// eager prerendering and prefetching.
+  ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) =>
+      const (prerender: {}, prefetch: {});
+
   @override
   @mustCallSuper
+  // ignore: must_call_super
   Iterable<Component> buildHead(Page page) {
     final pageData = page.data.page;
     final siteData = page.data.site;
+    final siteUrl = siteData['url'];
+    if (siteUrl is! String) {
+      throw Exception('Site URL not configured in site data.');
+    }
+    final siteBaseUrl = Uri.parse(siteUrl);
+
     final pageTitle = (pageData['title'] ?? siteData['title']) as String;
+    final pageDescription = pageData['description'] as String?;
+    final pageImage = pageData['image'] as String?;
+    final socialImage = pageData['socialImage'] as String? ?? pageImage;
+
+    final titleBase = pageData['titleBase'] ?? siteData['titleBase'];
+    final windowTitle = titleBase != null
+        ? '$pageTitle | $titleBase'
+        : pageTitle;
+
+    final canonicalUrl = pageData['canonical'] as String?;
+    final socialPageUrl = _absoluteUrl(siteBaseUrl, canonicalUrl ?? page.url);
+    final socialImageUrl = _absoluteUrl(
+      siteBaseUrl,
+      socialImage ?? '/assets/img/logo/dart-logo-for-shares.png',
+    );
 
     return [
-      ...super.buildHead(page),
+      Component.element(tag: 'title', children: [Component.text(windowTitle)]),
+      meta(name: 'description', content: pageDescription),
+
       if (pageData['noindex'] case final noIndex?
           when noIndex == true || noIndex == 'true')
-        meta(name: 'robots', content: 'noindex'),
-      if (pageData['canonical'] case final String canonicalUrl
-          when canonicalUrl.isNotEmpty)
+        const meta(name: 'robots', content: 'noindex'),
+      if (canonicalUrl case final canonicalUrl?)
         link(rel: 'canonical', href: canonicalUrl),
       if (pageData['redirectTo'] case final String redirectTo
           when redirectTo.isNotEmpty)
-        raw('<script>window.location.replace("$redirectTo");</script>'),
-      link(
+        RawText('<script>window.location.replace("$redirectTo");</script>'),
+      const link(
         rel: 'icon',
         href: '/assets/img/logo/dart-64.png',
         attributes: {'sizes': '64x64'},
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-iphone.png',
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-ipad.png',
         attributes: {'sizes': '152x152'},
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-iphone-retina.png',
         attributes: {'sizes': '180x180'},
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-ipad-retina.png',
         attributes: {'sizes': '167x167'},
       ),
-      meta(name: 'twitter:card', content: 'summary'),
-      meta(name: 'twitter:site', content: '@dart_lang'),
-      meta(name: 'twitter:title', content: pageTitle),
+
       meta(
-        name: 'twitter:description',
-        content: '${pageData['description']}',
+        name: 'twitter:card',
+        content: socialImage != null ? 'summary_large_image' : 'summary',
       ),
+      const meta(name: 'twitter:site', content: '@dart_lang'),
+      meta(name: 'twitter:title', content: pageTitle),
+      if (pageDescription case final String desc)
+        meta(name: 'twitter:description', content: desc),
+      if (socialImage != null)
+        meta(name: 'twitter:image', content: socialImageUrl),
 
       meta(attributes: {'property': 'og:title', 'content': pageTitle}),
+      if (pageDescription case final String desc)
+        meta(attributes: {'property': 'og:description', 'content': desc}),
       meta(
         attributes: {
-          'property': 'og:description',
-          'content': '${pageData['description']}',
+          'property': 'og:url',
+          'content': socialPageUrl,
         },
       ),
-      meta(attributes: {'property': 'og:url', 'content': page.path}),
       meta(
         attributes: {
           'property': 'og:image',
-          'content': '/assets/img/logo/dart-logo-for-shares.png',
+          'content': socialImageUrl,
         },
       ),
 
-      link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),
-      link(
+      // Preload font and other script sources.
+      const link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),
+      const link(
         rel: 'preconnect',
         href: 'https://fonts.gstatic.com',
         attributes: {'crossorigin': ''},
       ),
-      link(
+
+      // Set up site fonts and icons.
+      const link(
         rel: 'stylesheet',
         href:
-            'https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap',
+            'https://fonts.googleapis.com/css2?'
+            'family=Google+Sans+Flex:opsz,wght@6..72,400..700'
+            '&family=Google+Sans+Code:ital,wght@0,400..700;1,400..700'
+            '&display=swap',
+      ),
+      const link(
+        rel: 'stylesheet',
+        href:
+            'https://fonts.googleapis.com/css2?'
+            'family=Roboto+Serif:ital,opsz,wght@'
+            '0,8..72,400..700;1,8..72,400..700'
+            '&display=swap',
+      ),
+      const link(
+        rel: 'stylesheet',
+        href:
+            'https://fonts.googleapis.com/css2?'
+            'family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@'
+            '24,400,0..1,0',
+      ),
+
+      // Load the managed cookie banner styles before our theme overrides.
+      const link(
+        rel: 'stylesheet',
+        href:
+            'https://www.gstatic.com/glue/cookienotificationbar/'
+            'cookienotificationbar.min.css',
       ),
       link(
         rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap',
+        href: cacheBustedBuildAssetUrl('/assets/css/main.css'),
       ),
-      link(
-        rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&display=swap',
-      ),
-      link(
-        rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
-      ),
-      link(
-        rel: 'stylesheet',
-        href:
-            '/assets/css/main.css?'
-            'hash=${htmlEscape.convert(generatedStylesHash)}',
+      // The upstream cookie script manages
+      // regional visibility and dismissal persistence.
+      const script(
+        src:
+            'https://www.gstatic.com/glue/cookienotificationbar/'
+            'cookienotificationbar.min.js',
+        attributes: {
+          'defer': '',
+          'data-glue-cookie-notification-bar-category': '2B',
+          'data-glue-cookie-notification-bar-site-id': 'dart.dev',
+        },
       ),
 
       if (pageData['js'] case final List<Object?> jsList)
@@ -130,9 +192,8 @@ abstract class DashLayout extends PageLayoutBase {
               src: jsUrl,
               attributes: {if (defer == 'true' || defer == true) 'defer': ''},
             ),
-      script(
-        src:
-            'https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.8.2/lite-youtube.js',
+      const script(
+        src: 'https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.8.2/lite-youtube.js',
         attributes: {
           'type': 'module',
           'integrity': 'sha256-Jy0j0fUMJ2T3WxSEs2WjHLrS+3DlO7S9DItQtP55FII=',
@@ -142,7 +203,7 @@ abstract class DashLayout extends PageLayoutBase {
       ),
 
       // Set up tag manager and analytics.
-      raw('''
+      const RawText('''
 <script>
   window.dataLayer = window.dataLayer || [];
 </script>
@@ -152,7 +213,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5VSZM5J');</script>
 '''),
-      raw('''
+      const RawText('''
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -163,6 +224,9 @@ ga('create', 'UA-26406144-4', 'auto');
 ga('send', 'pageview');
 </script>
 '''),
+      // Add speculation rules and prefetch fallback links for
+      // URLs provided by subclass overrides of speculationUrls.
+      ..._buildSpeculationRulesHead(page),
     ];
   }
 
@@ -171,10 +235,13 @@ ga('send', 'pageview');
     final pageData = page.data.page;
     final bodyClass = pageData['bodyClass'] as String?;
     final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
-    final sideNavEntries = switch (page.data['sidenav']) {
-      final List<Object?> sidenavData => navEntriesFromData(sidenavData),
-      _ => null,
-    };
+
+    final sidenav = page.data['sidenav'] as Map<String, Object?>?;
+    final pageSidenavKey = pageData['sidenav'] as String? ?? defaultSidenav;
+    final sideNavEntries = navEntriesFromData(
+      sidenav?[pageSidenavKey] as List<Object?>?,
+    );
+
     final obsolete = pageData['obsolete'] == true;
 
     return Component.fragment(
@@ -190,44 +257,9 @@ ga('send', 'pageview');
             'class': [?bodyClass, ...defaultBodyClasses].toClasses,
           },
         ),
-        raw('''
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-'''),
-        a(
-          id: 'skip-to-main',
-          classes: 'filled-button',
-          href: '#site-content-title',
-          attributes: {'tabindex': '1'},
-          [text('Skip to main content')],
-        ),
-        const CookieNotice(),
-        const DashHeader(),
-        div(id: 'site-below-header', [
-          div(id: 'site-main-row', [
-            if (sideNavEntries != null)
-              DashSideNav(
-                navEntries: sideNavEntries,
-                currentPageUrl: pageUrl,
-              ),
-            main_(
-              id: 'page-content',
-              classes: [
-                if (pageData['focusedLayout'] == true) 'focused',
-              ].toClasses,
-              [child],
-            ),
-            if (obsolete)
-              div(id: 'obsolete-banner', [
-                div(classes: 'text-center', [
-                  text('Some content on this page might be out of date.'),
-                ]),
-              ]),
-          ]),
-          const DashFooter(),
-        ]),
         // The theme setting logic should remain before other scripts to
         // avoid a flash of the initial theme on load.
-        raw('''
+        const RawText('''
 <script>
 const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -242,8 +274,122 @@ if (storedTheme === 'auto-mode') {
 }
 </script>
       '''),
-        GlobalScripts(),
+        const RawText('''
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+'''),
+        const a(
+          id: 'skip-to-main',
+          classes: 'filled-button',
+          href: '#site-content-title',
+          attributes: {'tabindex': '1'},
+          [.text('Skip to main content')],
+        ),
+        const DashHeader(),
+        div(id: 'site-below-header', [
+          div(id: 'site-main-row', [
+            DashSideNav(
+              navEntries: sideNavEntries,
+              currentPageUrl: pageUrl,
+            ),
+            main_(
+              id: 'page-content',
+              classes: [
+                if (pageData['focusedLayout'] == true) 'focused',
+              ].toClasses,
+              [child],
+            ),
+            if (obsolete)
+              const div(id: 'obsolete-banner', [
+                div(classes: 'text-center', [
+                  .text('Some content on this page might be out of date.'),
+                ]),
+              ]),
+          ]),
+          const DashFooter(),
+        ]),
       ],
     );
   }
+
+  Component? buildBanner(Page page) {
+    final showBanner =
+        (page.data.page['showBanner'] as bool?) ??
+        (page.data.site['showBanner'] as bool?) ??
+        false;
+    if (showBanner) {
+      if (page.data['banner'] case final Map<String, Object?> bannerData) {
+        return DashBanner(BannerContent.fromMap(bannerData));
+      }
+    }
+
+    return null;
+  }
+
+  /// Builds the speculation rules `<script>` and `<link rel="prefetch">`
+  /// fallback tags for the given [page].
+  ///
+  /// Includes page-specific list rules from [speculationUrls] and
+  /// document rules that prefetch internal links on hover (`moderate`)
+  /// and prerender them on click (`conservative`).
+  ///
+  /// Add the `no-prerender` class to a link to
+  /// exclude it from document-level prerendering.
+  List<Component> _buildSpeculationRulesHead(Page page) {
+    final (:prerender, :prefetch) = speculationUrls(page);
+
+    // Exclude prerendered URLs from the prefetch list since
+    // prerendering is a superset of prefetching.
+    final prefetchOnly = prefetch.difference(prerender);
+
+    // Document rules to match same-origin links across the page.
+    const internalLink = {'href_matches': '/*'};
+    const notNoPrerender = {
+      'not': {'selector_matches': '.no-prerender'},
+    };
+
+    final rules = jsonEncode({
+      'prefetch': [
+        // Prefetch internal links on hover.
+        {
+          'where': internalLink,
+          'eagerness': 'moderate',
+        },
+        // Prefetch specific URLs from the page eagerly.
+        if (prefetchOnly.isNotEmpty)
+          {
+            'urls': [...prefetchOnly],
+          },
+      ],
+      'prerender': [
+        // Prerender internal links on click,
+        // unless the link has the 'no-prerender' class.
+        {
+          'where': {
+            'and': [internalLink, notNoPrerender],
+          },
+          'eagerness': 'conservative',
+        },
+        // Prerender specific URLs from the page eagerly.
+        if (prerender.isNotEmpty)
+          {
+            'urls': [...prerender],
+            'eagerness': 'eager',
+          },
+      ],
+    });
+
+    return [
+      RawText('<script type="speculationrules">$rules</script>'),
+      // Fall back to prefetch link tags for browsers without
+      // Speculation Rules API support.
+      for (final url in {...prerender, ...prefetch})
+        link(rel: 'prefetch', href: url),
+    ];
+  }
 }
+
+/// Resolves [url] against [siteBaseUrl] to produce an absolute URL.
+///
+/// If [url] already has a scheme, it's returned unchanged.
+String _absoluteUrl(Uri siteBaseUrl, String url) =>
+    Uri.parse(url).hasScheme ? url : siteBaseUrl.resolve(url).toString();

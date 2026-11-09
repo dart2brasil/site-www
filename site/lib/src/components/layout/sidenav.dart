@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
@@ -28,20 +29,24 @@ final class DashSideNav extends StatelessComponent {
   Component build(BuildContext context) {
     final activeEntry = activeNavEntry(context.page.url);
 
-    return div(id: 'sidenav', [
-      form(action: '/search/', classes: 'site-header-search form-inline', [
-        input(
-          classes: 'site-header-searchfield search-field',
-          type: InputType.search,
-          name: 'q',
-          id: 'search-side',
-          attributes: {
-            'autocomplete': 'off',
-            'placeholder': 'Search',
-            'aria-label': 'Search',
-          },
-        ),
-      ]),
+    return div(id: 'sidenav', classes: navEntries.isEmpty ? 'empty' : '', [
+      const form(
+        action: '/search/',
+        classes: 'site-header-search form-inline',
+        [
+          input(
+            classes: 'site-header-searchfield search-field',
+            type: InputType.search,
+            name: 'q',
+            id: 'search-side',
+            attributes: {
+              'autocomplete': 'off',
+              'placeholder': 'Pesquisar',
+              'aria-label': 'Pesquisar',
+            },
+          ),
+        ],
+      ),
       ul(classes: 'navbar-nav', [
         const _SideNavDivider(),
         _TopNavItem(
@@ -56,10 +61,11 @@ final class DashSideNav extends StatelessComponent {
           iconId: 'docs',
           active: activeEntry == ActiveNavEntry.docs,
         ),
-        const _TopNavItem(
-          href: 'https://blog.dart.dev',
+        _TopNavItem(
+          href: '/blog',
           label: 'Blog',
           iconId: 'newsmode',
+          active: activeEntry == ActiveNavEntry.blog,
         ),
         _TopNavItem(
           href: '/community',
@@ -67,10 +73,11 @@ final class DashSideNav extends StatelessComponent {
           iconId: 'public',
           active: activeEntry == ActiveNavEntry.community,
         ),
-        const _TopNavItem(
-          href: 'https://dart.dev',
-          label: 'Experimente Dart',
-          iconId: 'code_blocks',
+        _TopNavItem(
+          href: '/learn',
+          label: 'Aprenda Dart',
+          iconId: 'play_lesson',
+          active: activeEntry == ActiveNavEntry.learn,
         ),
         _TopNavItem(
           href: '/get-dart',
@@ -85,6 +92,7 @@ final class DashSideNav extends StatelessComponent {
         parentId: 'docs',
         currentLevel: 0,
         possiblyActive: true,
+        currentPageUrl: currentPageUrl,
         activePath: _ActiveNavigationPath.findActive(
           entries: navEntries,
           currentPageUrl: currentPageUrl,
@@ -115,7 +123,7 @@ class _TopNavItem extends StatelessComponent {
       classes: ['nav-button', if (active) 'active'].toClasses,
       [
         MaterialIcon(iconId),
-        text(label),
+        .text(label),
       ],
     ),
   ]);
@@ -127,6 +135,7 @@ class _SideNavLevel extends StatelessComponent {
     required this.parentId,
     required this.currentLevel,
     required this.possiblyActive,
+    required this.currentPageUrl,
     required this.activePath,
     this.classes,
     this.id,
@@ -136,6 +145,7 @@ class _SideNavLevel extends StatelessComponent {
   final String parentId;
   final int currentLevel;
   final bool possiblyActive;
+  final String currentPageUrl;
   final _ActiveNavigationPath activePath;
   final String? classes;
   final String? id;
@@ -167,6 +177,7 @@ class _SideNavLevel extends StatelessComponent {
         id: _generateChildId(entryIndex),
         isInActivePath: isInActivePath,
         currentLevel: currentLevel,
+        currentPageUrl: currentPageUrl,
         activePath: activePath,
       ),
       NavLink() => _SideNavLink(
@@ -183,7 +194,7 @@ class _SideNavDivider extends StatelessComponent {
   const _SideNavDivider();
 
   @override
-  Component build(BuildContext _) => li(
+  Component build(BuildContext _) => const li(
     attributes: {'aria-hidden': 'true'},
     [div(classes: 'sidenav-divider', [])],
   );
@@ -195,7 +206,7 @@ class _SideNavHeader extends StatelessComponent {
   final String title;
 
   @override
-  Component build(BuildContext _) => li(classes: 'nav-header', [text(title)]);
+  Component build(BuildContext _) => li(classes: 'nav-header', [.text(title)]);
 }
 
 class _SideNavCollapsibleSection extends StatelessComponent {
@@ -204,6 +215,7 @@ class _SideNavCollapsibleSection extends StatelessComponent {
     required this.id,
     required this.isInActivePath,
     required this.currentLevel,
+    required this.currentPageUrl,
     required this.activePath,
   });
 
@@ -211,10 +223,27 @@ class _SideNavCollapsibleSection extends StatelessComponent {
   final String id;
   final bool isInActivePath;
   final int currentLevel;
+  final String currentPageUrl;
   final _ActiveNavigationPath activePath;
 
   @override
   Component build(BuildContext _) {
+    // Determine if children should be shown based on hiddenChildren setting.
+    final shouldShowChildren = _shouldShowChildren();
+
+    if (!shouldShowChildren) {
+      // When hiddenChildren is true and path doesn't match,
+      // render as a sidenav link if a permalink exists, otherwise as text.
+      return section.permalink != null
+          ? _SideNavLink(
+              NavLink(section.title, section.permalink!),
+              isActive: isInActivePath,
+            )
+          : li(classes: 'nav-item', [
+              span(classes: 'nav-link', [.text(section.title)]),
+            ]);
+    }
+
     final expanded = isInActivePath || section.expanded;
     return li(classes: 'nav-item', [
       button(
@@ -232,7 +261,7 @@ class _SideNavCollapsibleSection extends StatelessComponent {
           'aria-controls': id,
         },
         [
-          span([text(section.title)]),
+          span([.text(section.title)]),
           const MaterialIcon('expand_more', classes: ['expander']),
         ],
       ),
@@ -241,6 +270,7 @@ class _SideNavCollapsibleSection extends StatelessComponent {
         parentId: id,
         currentLevel: currentLevel + 1,
         possiblyActive: isInActivePath,
+        currentPageUrl: currentPageUrl,
         activePath: activePath,
         classes: [
           'nav',
@@ -250,6 +280,29 @@ class _SideNavCollapsibleSection extends StatelessComponent {
         id: id,
       ),
     ]);
+  }
+
+  /// Determines whether children should be shown for this section.
+  ///
+  /// If [NavSection.hiddenChildren] is true, children are only shown
+  /// when the current page URL matches or is under the section's permalink.
+  bool _shouldShowChildren() {
+    if (!section.hiddenChildren) {
+      return true;
+    }
+
+    final permalink = section.permalink;
+    if (permalink == null) {
+      // No permalink to match against, show children.
+      return true;
+    }
+
+    // Normalize the permalink to ensure it starts with '/'.
+    final normalizedPermalink = _normalizePermalink(permalink);
+
+    // Show children if the current URL matches or is under this section.
+    return currentPageUrl == normalizedPermalink ||
+        currentPageUrl.startsWith('$normalizedPermalink/');
   }
 }
 
@@ -270,7 +323,7 @@ class _SideNavLink extends StatelessComponent {
         attributes: isExternal ? {'rel': 'noopener'} : null,
         [
           div([
-            span([text(link.title)]),
+            span([.text(link.title)]),
             if (isExternal) const MaterialIcon('open_in_new'),
           ]),
         ],
@@ -324,9 +377,11 @@ final class _ActiveNavigationPath {
       final entry = entries[entryIndex];
       final newPath = [...currentPath, entryIndex];
 
-      if (entry case NavLink(
-        :final permalink,
-      ) when !_isExternalLink(permalink)) {
+      if (entry
+          case NavLink(
+            :final permalink,
+          )
+          when !_isExternalLink(permalink)) {
         final normalizedPermalink = _normalizePermalink(permalink);
         results[normalizedPermalink] = newPath;
       } else if (entry case NavSection(:final children)) {
@@ -365,10 +420,10 @@ final class _ActiveNavigationPath {
   static bool _urlMatchesPermalink(String url, String permalink) =>
       url == permalink || url.startsWith('$permalink/');
 
-  /// Normalizes a permalink to ensure it starts with '/'.
-  static String _normalizePermalink(String permalink) =>
-      permalink.startsWith('/') ? permalink : '/$permalink';
-
   /// Returns whether the specified [permalink] is an external link.
   static bool _isExternalLink(String permalink) => permalink.contains('://');
 }
+
+/// Normalizes a permalink to ensure it starts with '/'.
+String _normalizePermalink(String permalink) =>
+    permalink.startsWith('/') ? permalink : '/$permalink';

@@ -6,41 +6,41 @@ description: Uma ferramenta para construir, testar e executar código Dart.
 
 O pacote [build_runner][] fornece comandos de propósito geral para
 gerar arquivos, incluindo testar os arquivos gerados
-ou servir tanto arquivos de origem quanto gerados.
+ou servir tanto arquivos de origem quanto arquivos gerados.
 Esta página explica como usar o `build_runner`.
-Para aprender como usar o build_runner com um pacote específico,
+Para aprender a usar o build_runner com um pacote específico,
 consulte a documentação desse pacote.
 
 :::note
-Se você é um desenvolvedor web, use a [ferramenta `webdev`][webdev] para
+Se você é desenvolvedor web, use a [ferramenta `webdev`][webdev] para
 construir e servir aplicações web.
 :::
 
-Os comandos do build_runner funcionam com _builders_—pacotes
+Os comandos do build_runner funcionam com _builders_, pacotes
 que usam o [sistema de build do Dart][build]
 para gerar arquivos de saída a partir de arquivos de entrada.
 Por exemplo, os pacotes [json_serializable][] e [built_value_generator][]
 definem builders que geram código Dart.
 
-Embora o sistema de build do Dart seja uma boa alternativa para
-reflection (que tem problemas de desempenho) e
+Embora o sistema de build do Dart seja uma boa alternativa à
+reflection (que tem problemas de desempenho) e às
 macros (que os compiladores do Dart não suportam),
 ele pode fazer mais do que apenas ler e escrever código Dart.
 Por exemplo, o pacote [sass_builder][] implementa um builder que
 gera arquivos `.css` a partir de arquivos `.scss` e `.sass`.
 
 
-## Configurando o build_runner
+## Configurando o build_runner {:#setting-up-build_runner}
 
 Para usar o build_runner, adicione uma [dev dependency][] em **build_runner**
-ao pubspec da sua aplicação:
+no pubspec da sua aplicação:
 
 <?code-excerpt "build_runner_usage/pubspec.yaml" from="dev_dependencies" to="build_test" replace="/args.*/# ···/g"?>
 ```yaml
 dev_dependencies:
   # ···
-  build_runner: ^2.8.0
-  build_test: ^3.4.0
+  build_runner: ^2.15.1
+  build_test: ^3.5.16
 ```
 
 Depender de **build_test** é opcional; faça isso se você for testar seu código.
@@ -51,12 +51,12 @@ Como de costume após alterações no `pubspec.yaml`, execute `dart pub get` ou 
 $ dart pub get
 ```
 
-## Usando comandos integrados
+## Usando comandos integrados {:#using-built-in-commands}
 
-O seguinte é um exemplo de uso do comando **build** do build_runner:
+A seguir, um exemplo de uso do comando **build** do build_runner:
 
 ```console
-$ # De um diretório que contém um arquivo pubspec.yaml:
+$ # From a directory that contains a pubspec.yaml file:
 $ dart run build_runner build
 ```
 
@@ -75,13 +75,13 @@ test
 : Executa [testes.][tests]
 
 watch
-: Inicia um servidor de build que observa edições em arquivos de entrada.
+: Inicia um servidor de build que observa edições nos arquivos de entrada.
   Responde a mudanças executando rebuilds incrementais.
 
 
-## Mais informações
+## Mais informações {:#more-information}
 
-* Guia do [webdev][] (use se você estiver trabalhando em código específico para web)
+* Guia do [webdev][] (use se você estiver trabalhando com código específico para web)
 * Guia do [build_runner][]
 * [pacotes com a dependência `build_runner`][packages with the `build_runner` dependency]
 * [pacotes com a dependência `build`][packages with the `build` dependency]

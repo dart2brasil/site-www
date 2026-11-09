@@ -2,16 +2,17 @@
 ia-translate: true
 ---
 
-### Instalar usando o Homebrew {:.no_toc}
+### Instalar usando o Homebrew {:.no_toc #install-using-homebrew}
 
 Para instalar o Dart SDK, use o [Homebrew][].
 
-1. Instale o Homebrew se necessário.
+1. Instale o Homebrew, se necessário.
 
-1. Adicione o [tap oficial][tap].
+1. Adicione e confie no [tap oficial][tap].
 
    ```console
    $ brew tap dart-lang/dart
+   $ brew trust dart-lang/dart
    ```
 
 1. Instale o Dart SDK.
@@ -20,15 +21,15 @@ Para instalar o Dart SDK, use o [Homebrew][].
    $ brew install dart
    ```
 
-### Verificar se o PATH inclui o Homebrew {:.no_toc}
+### Verificar se o PATH inclui o Homebrew {:.no_toc #verify-path-includes-homebrew}
 
 Verifique se o seu `PATH` inclui o **diretório `bin` do Homebrew**.
-Configurar o caminho correto simplifica o uso de comandos do Dart SDK
+Configurar o caminho correto simplifica o uso de comandos do Dart SDK,
 como `dart run` e `dart format`.
 
-Para obter ajuda configurando o seu `PATH`, consulte o [FAQ do Homebrew][Homebrew FAQ].
+Para obter ajuda na configuração do seu `PATH`, consulte o [FAQ do Homebrew][Homebrew FAQ].
 
-### Atualizar usando o Homebrew {:.no_toc}
+### Atualizar usando o Homebrew {:.no_toc #upgrade-using-homebrew}
 
 Para atualizar quando uma nova versão do Dart estiver disponível:
 
@@ -36,11 +37,11 @@ Para atualizar quando uma nova versão do Dart estiver disponível:
 $ brew upgrade dart
 ```
 
-### Alternar versões do Dart {:.no_toc}
+### Alternar versões do Dart {:.no_toc #switch-dart-versions}
 
 Para alternar entre versões do Dart instaladas localmente:
 
-1. Instale a versão para a qual você deseja alternar.
+1. Instale a versão para a qual você quer alternar.
 
    Por exemplo, para instalar o Dart 3.1:
 
@@ -57,7 +58,7 @@ Para alternar entre versões do Dart instaladas localmente:
      && brew link dart@<new>
    ```
 
-### Listar versões do Dart instaladas {:.no_toc}
+### Listar versões do Dart instaladas {:.no_toc #list-installed-dart-versions}
 
 Para ver quais versões do Dart você instalou:
 
@@ -65,7 +66,7 @@ Para ver quais versões do Dart você instalou:
 $ brew info dart
 ```
 
-### Desinstalar usando o Homebrew {:.no_toc}
+### Desinstalar usando o Homebrew {:.no_toc #uninstall-using-homebrew}
 
 Para desinstalar o Dart SDK, use o [Homebrew][].
 

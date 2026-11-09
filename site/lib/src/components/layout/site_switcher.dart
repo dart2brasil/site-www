@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../util.dart';
@@ -13,10 +14,10 @@ final class SiteSwitcher extends StatelessComponent {
   const SiteSwitcher();
 
   @override
-  Component build(BuildContext _) => Dropdown(
+  Component build(BuildContext _) => const Dropdown(
     id: 'site-switcher',
     children: [
-      const DropdownToggle(Button(icon: 'apps', title: 'Visit related sites.')),
+      DropdownToggle(Button(icon: 'apps', title: 'Visit related sites.')),
       DropdownContent(
         nav(
           classes: 'dropdown-menu',
@@ -25,7 +26,7 @@ final class SiteSwitcher extends StatelessComponent {
           },
           [
             ul(
-              const [
+              [
                 _SiteWordMarkListEntry(
                   name: 'Dart',
                   href: '/',
@@ -35,16 +36,6 @@ final class SiteSwitcher extends StatelessComponent {
                   name: 'Dart',
                   subtype: 'API',
                   href: 'https://api.dart.dev',
-                ),
-                _SiteWordMarkListEntry(
-                  name: 'Dart',
-                  subtype: 'Blog',
-                  href: 'https://blog.dart.dev',
-                ),
-                Component.element(
-                  tag: 'li',
-                  classes: 'dropdown-divider',
-                  attributes: {'aria-hidden': 'true', 'role': 'separator'},
                 ),
                 _SiteWordMarkListEntry(
                   name: 'DartPad',
@@ -81,7 +72,6 @@ class _SiteWordMarkListEntry extends StatelessComponent {
   @override
   Component build(BuildContext _) {
     return li(
-      attributes: {'role': 'presentation'},
       [
         a(
           href: href,
@@ -92,23 +82,23 @@ class _SiteWordMarkListEntry extends StatelessComponent {
             'aria-label': 'Navigate to the $_combinedName website.',
           },
           [
-            img(
+            const img(
               src: '/assets/img/logo/dart-192.svg',
               alt: 'Dart logo',
-              width: 28,
-              height: 28,
+              width: 20,
+              height: 20,
             ),
             span(
               classes: 'name',
               attributes: {
                 'translate': 'no',
               },
-              [text(name)],
+              [.text(name)],
             ),
             if (subtype case final subtype?)
               span(
                 classes: 'subtype',
-                [text(subtype)],
+                [.text(subtype)],
               ),
           ],
         ),

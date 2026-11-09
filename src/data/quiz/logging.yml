@@ -1,0 +1,88 @@
+- question: >-
+    Qual é a finalidade do pacote `logging` em Dart?
+  options:
+    - text: >-
+        Oferecer uma forma de registrar eventos e erros na sua aplicação.
+      correct: true
+      explanation: >-
+        O pacote `logging` oferece um sistema flexível
+        para registrar eventos, avisos, erros
+        e outras mensagens durante a execução da aplicação.
+    - text: >-
+        Tratar requisições HTTP.
+      correct: false
+      explanation: >-
+        Requisições HTTP são tratadas pelo `package:http`.
+        O pacote `logging` tem outra finalidade.
+    - text: >-
+        Gerenciar dependências do projeto.
+      correct: false
+      explanation: >-
+        As dependências são gerenciadas no `pubspec.yaml`.
+        O pacote `logging` trata do comportamento em tempo de execução, e não da configuração do projeto.
+    - text: >-
+        Criar uma interface de linha de comando.
+      correct: false
+      explanation: >-
+        A criação de CLIs usa pacotes como `args` ou código próprio.
+        O pacote `logging` ajuda em outro aspecto das aplicações.
+- question: >-
+    O que a linha `hierarchicalLoggingEnabled = true;` faz?
+  options:
+    - text: >-
+        Habilita um logger para capturar eventos de loggers filhos.
+      correct: true
+      explanation: >-
+        Com o logging hierárquico habilitado,
+        loggers pais podem receber e processar eventos dos seus loggers filhos.
+    - text: >-
+        Habilita o logging em um sistema de arquivos hierárquico.
+      correct: false
+      explanation: >-
+        Essa configuração não afeta sistemas de arquivos nem onde os logs são armazenados.
+        "Hierárquico" se refere a outra coisa.
+    - text: >-
+        Desabilita o logging no console.
+      correct: false
+      explanation: >-
+        A saída no console é controlada por listeners, e não por essa configuração.
+        Essa configuração afeta como os loggers interagem entre si.
+    - text: >-
+        Habilita o logging de requisições HTTP.
+      correct: false
+      explanation: >-
+        O logging de HTTP exige configuração específica no seu código HTTP.
+        Essa configuração afeta a estrutura interna do sistema de logging.
+- question: >-
+    Esta lição usa `logger.severe()`, `logger.warning()` e `logger.info()`.
+    Por que usar níveis de log diferentes em vez de apenas `print()`?
+  options:
+    - text: >-
+        Você pode filtrar os logs por severidade,
+        mostrando só avisos e erros em produção
+        enquanto vê tudo durante o desenvolvimento.
+      correct: true
+      explanation: >-
+        Os níveis de log permitem definir um limite.
+        Em produção, você pode registrar apenas avisos e níveis superiores,
+        enquanto no desenvolvimento também vê mensagens de info e debug.
+    - text: >-
+        Níveis diferentes usam cores diferentes no console.
+      correct: false
+      explanation: >-
+        Cores são uma escolha de apresentação, e não o motivo principal.
+        O benefício real é mais fundamental do que a aparência.
+    - text: >-
+        Cada nível grava automaticamente em um arquivo diferente.
+      correct: false
+      explanation: >-
+        Os destinos de arquivo precisam ser configurados separadamente.
+        Os níveis não determinam automaticamente onde os logs são armazenados.
+    - text: >-
+        O uso de níveis é obrigatório no Dart.
+        O `print()` não funciona em produção.
+      correct: false
+      explanation: >-
+        O `print()` funciona em qualquer lugar no Dart.
+        Os níveis são opcionais, mas oferecem vantagens importantes
+        que o `print()` não consegue oferecer.

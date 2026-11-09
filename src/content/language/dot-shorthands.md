@@ -4,10 +4,10 @@ title: Atalhos de ponto
 description: Aprenda sobre a sintaxe de atalho de ponto em Dart.
 prevpage:
   url: /language/enums
-  title: Enums
+  title: Tipos enumerados
 nextpage:
   url: /language/extension-methods
-  title: Extension methods
+  title: Métodos de extensão
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
@@ -16,18 +16,18 @@ nextpage:
 Atalhos de ponto requerem uma [language version][] de pelo menos 3.10.
 :::
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 
-## Visão geral
+## Visão geral {:#overview}
 
-A sintaxe de atalho de ponto `.foo` permite que você escreva código Dart mais conciso
-ao omitir o tipo quando o compilador pode inferi-lo
-do contexto. Isso fornece uma alternativa limpa para escrever
-o `ContextType.foo` completo ao acessar valores enum,
+A sintaxe de atalho de ponto `.foo` permite que você escreva código Dart
+mais conciso ao omitir o tipo quando o compilador consegue inferi-lo
+a partir do contexto. Isso oferece uma alternativa limpa para escrever
+o `ContextType.foo` completo ao acessar valores de enum,
 membros estáticos ou construtores.
 
-Essencialmente, os atalhos de ponto permitem que uma expressão
-comece com um dos seguintes e, opcionalmente, encadeie
+Em essência, os atalhos de ponto permitem que uma expressão
+comece com um dos seguintes itens e, opcionalmente, encadeie
 outras operações a ela:
 
 * Identificador `.myValue`
@@ -36,7 +36,7 @@ outras operações a ela:
 
 * Criação de constante `const .myValue()`
 
-Aqui está uma visão rápida de como isso simplifica uma atribuição de enum:
+Veja uma rápida amostra de como isso simplifica a atribuição de um enum:
 
 <?code-excerpt "language/lib/shorthands/intro.dart"?>
 ```dart
@@ -58,30 +58,30 @@ class Point {
 Point origin = .origin(); // Instead of Point.origin()
 ```
 
-## O papel do tipo de contexto
+## O papel do tipo de contexto {:#the-role-of-context-type}
 
-Os atalhos de ponto usam o [tipo de contexto][context type] para determinar o membro
-para o qual o compilador resolve. O tipo de contexto é o tipo que Dart
-espera que uma expressão tenha com base em sua localização.
+Os atalhos de ponto usam o [tipo de contexto][context type] para determinar
+a qual membro o compilador resolve a expressão. O tipo de contexto é o tipo
+que o Dart espera que uma expressão tenha, com base na posição dela no código.
 Por exemplo, em `Status currentStatus = .running`,
-o compilador sabe que um `Status` é esperado, então ele infere
-`.running` como `Status.running`.
+o compilador sabe que é esperado um `Status`, então ele infere
+que `.running` significa `Status.running`.
 
 [context type]: /resources/glossary#context-type
 
-## Estrutura léxica e sintaxe
+## Estrutura léxica e sintaxe {:#lexical-structure-and-syntax}
 
 Um _atalho de membro estático_ é uma expressão que
-começa com um ponto inicial (`.`).
-Quando o tipo é conhecido do contexto circundante,
-essa sintaxe fornece uma maneira concisa de acessar
-membros estáticos, construtores e valores enum.
+começa com um ponto (`.`).
+Quando o tipo é conhecido pelo contexto ao redor,
+essa sintaxe oferece uma forma concisa de acessar
+membros estáticos, construtores e valores de enum.
 
-### Enums
+### Enums {:#enums}
 
-Um caso de uso principal e altamente recomendado para atalhos de ponto
-é com enums, especialmente em atribuições e instruções switch,
-onde o tipo enum é muito óbvio.
+Um caso de uso principal e altamente recomendado para os atalhos de ponto
+são os enums, especialmente em atribuições e instruções `switch`,
+em que o tipo do enum é bem óbvio.
 
 <?code-excerpt "language/lib/shorthands/enums.dart"?>
 ```dart
@@ -102,10 +102,10 @@ String colorCode(LogLevel level) {
 String warnColor = colorCode(.warning); // Returns 'orange'
 ```
 
-### Construtores nomeados
+### Construtores nomeados {:#named-constructors}
 
 Os atalhos de ponto são úteis para invocar construtores nomeados
-ou construtores factory. Esta sintaxe também funciona ao fornecer
+ou construtores factory. Essa sintaxe também funciona ao fornecer
 argumentos de tipo para o construtor de uma classe genérica.
 
 <?code-excerpt "language/lib/shorthands/constructors.dart"?>
@@ -131,19 +131,19 @@ Point p1 = .fromList([1.0, 2.0]); // Instead of Point.fromList([1.0, 2.0])
 List<int> intList = .filled(5, 0); // Instead of List.filled(5, 0)
 ```
 
-### Construtores sem nome
+### Construtores sem nome {:#unnamed-constructors}
 
-O atalho de ponto `.new` fornece uma maneira concisa de chamar um
+O atalho de ponto `.new` oferece uma forma concisa de chamar o
 construtor sem nome de uma classe. Isso é útil
-para atribuir campos ou variáveis onde o tipo já está
-explicitamente declarado.
+para atribuir campos ou variáveis cujo tipo já está
+declarado explicitamente.
 
-Esta sintaxe é particularmente eficaz para limpar
+Essa sintaxe é especialmente eficaz para limpar
 inicializadores de campos de classe repetitivos.
-Como mostrado no exemplo "depois" a seguir usando atalhos de ponto,
-ele pode ser usado para construtores com e sem argumentos.
-Ele também infere quaisquer argumentos de tipo genérico
-do contexto.
+Como mostrado no exemplo "depois" a seguir, que usa atalhos de ponto,
+ela pode ser usada tanto para construtores com argumentos quanto sem.
+Ela também infere os argumentos de tipo genérico
+a partir do contexto.
 
 **Sem atalhos de ponto:**
 
@@ -177,11 +177,11 @@ class _PageState extends State<Page> {
 }
 ```
 
-### Membros estáticos
+### Membros estáticos {:#static-members}
 
 Você pode usar a sintaxe de atalho de ponto para chamar métodos estáticos ou
-acessar campos/getters estáticos. O compilador infere a
-classe alvo do tipo de contexto da expressão.
+acessar campos e getters estáticos. O compilador infere a
+classe alvo a partir do tipo de contexto da expressão.
 
 <?code-excerpt "language/lib/shorthands/static_members.dart"?>
 ```dart
@@ -192,11 +192,11 @@ int httpPort = .parse('80'); // Instead of int.parse('80')
 BigInt bigIntZero = .zero; // Instead of BigInt.zero
 ```
 
-### Expressões constantes
+### Expressões constantes {:#constant-expressions}
 
 Você pode usar atalhos de ponto dentro de um contexto constante
-se o membro sendo acessado for uma constante em tempo de compilação.
-Isso é comum para valores enum e invocação de construtores `const`.
+se o membro acessado for uma constante de tempo de compilação.
+Isso é comum para valores de enum e para invocação de construtores `const`.
 
 <?code-excerpt "language/lib/shorthands/consts.dart"?>
 ```dart
@@ -219,21 +219,21 @@ const List<Point> keyPoints = [.origin(), .new(1.0, 1.0)];
 // Instead of [Point.origin(), Point(1.0, 1.0)]
 ```
 
-## Regras e limitações
+## Regras e limitações {:#rules-and-limitations}
 
 Os atalhos de ponto dependem de um tipo de contexto claro, o que leva a
-algumas regras e limitações específicas que você deve saber.
+algumas regras e limitações específicas que você deve conhecer.
 
-### Tipo de contexto claro necessário em cadeias
+### Tipo de contexto claro necessário em cadeias {:#clear-context-type-required-in-chains}
 
 Embora você possa encadear operações como chamadas de método ou
-acessos a propriedades em um atalho de ponto, toda a expressão
+acessos a propriedades em um atalho de ponto, a expressão inteira
 é validada contra o tipo de contexto.
 
-O compilador primeiro usa o contexto para determinar para o que o
+O compilador primeiro usa o contexto para determinar a que o
 atalho de ponto resolve. Quaisquer operações subsequentes na
-cadeia devem retornar um valor que corresponda a esse mesmo tipo
-de contexto inicial.
+cadeia precisam retornar um valor que corresponda a esse mesmo
+tipo de contexto inicial.
 
 <?code-excerpt "language/lib/shorthands/chain.dart (chain)"?>
 ```dart
@@ -245,12 +245,12 @@ String lowerH = .fromCharCode(72).toLowerCase();
 print(lowerH); // Output: h
 ```
 
-### Verificações de igualdade assimétricas
+### Verificações de igualdade assimétricas {:#asymmetric-equality-checks}
 
 Os operadores `==` e `!=` têm uma regra especial para atalhos de ponto.
 Quando a sintaxe de atalho de ponto é usada diretamente no lado direito
-de uma verificação de igualdade, Dart usa o tipo estático do
-lado esquerdo para determinar a classe ou enum para o atalho.
+de uma verificação de igualdade, o Dart usa o tipo estático do
+lado esquerdo para determinar a classe ou o enum do atalho.
 
 Por exemplo, em uma expressão como `myColor == .green`,
 o tipo da variável `myColor` é usado como contexto.
@@ -283,7 +283,7 @@ void allowedExamples() {
 ```
 
 O atalho de ponto deve estar no lado direito do operador `==`
-ou `!=`. Comparar contra uma expressão mais complexa,
+ou `!=`. Comparar com uma expressão mais complexa,
 como uma expressão condicional, também não é permitido.
 
 <?code-excerpt "language/lib/shorthands/equality_with_errors.dart"?>
@@ -314,9 +314,9 @@ void notAllowedExamples() {
 }
 ```
 
-### Instruções de expressão não podem começar com `.`
+### Instruções de expressão não podem começar com `.` {:#expression-statements-cant-start-with}
 
-Para evitar potenciais ambiguidades de análise no futuro, uma
+Para evitar possíveis ambiguidades de análise no futuro, uma
 instrução de expressão não pode começar com um
 token `.`.
 
@@ -336,14 +336,14 @@ void main() {
 }
 ```
 
-### Tratamento limitado de tipos union
+### Tratamento limitado de tipos union {:#limited-handling-of-union-types}
 
-Embora haja tratamento especial para tipos nullable (`T?`) e
+Embora haja tratamento especial para tipos anuláveis (`T?`) e
 `FutureOr<T>`, o suporte é limitado.
 
-*  Para um tipo nullable (T?), você pode acessar membros estáticos
+*  Para um tipo anulável (`T?`), você pode acessar membros estáticos
    de `T`, mas não de `Null`.
 
 *  Para `FutureOr<T>`, você pode acessar membros estáticos de `T`
-  (principalmente para suportar retornos de funções `async`), mas você
-  não pode acessar membros estáticos da classe `Future` em si.
+   (principalmente para dar suporte a retornos de funções `async`), mas não
+   pode acessar membros estáticos da própria classe `Future`.

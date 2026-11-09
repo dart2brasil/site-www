@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/server.dart';
 
@@ -77,8 +78,13 @@ class _LintRuleCard extends StatelessComponent {
         ),
       ],
       content: [
+        // DashMarkdown can only render on the server, but this page is
+        // built on the client in tests, so fall back to the raw text there.
         if (lint.description.isNotEmpty)
-          DashMarkdown(content: lint.description, inline: true),
+          if (kIsWeb)
+            .text(lint.description)
+          else
+            DashMarkdown(content: lint.description),
       ],
       actions: CardActions(
         leading: _statusIcons,

@@ -32,7 +32,7 @@ ele tem sua própria memória isolada e seu próprio event loop.
 O event loop é o que torna a programação assíncrona e
 concorrente possível em Dart.
 
-## Event Loop
+## Event Loop {:#event-loop}
 
 O modelo de runtime do Dart é baseado em um event loop.
 O event loop é responsável por executar o código do seu programa,
@@ -69,7 +69,7 @@ Por exemplo, considere fazer uma requisição de rede:
 http.get('https://example.com').then((response) {
   if (response.statusCode == 200) {
     print('Success!');
-  }
+  }  
 }
 ```
 
@@ -94,7 +94,7 @@ então você pode pular para a [seção de isolates][isolates section].
 
 [isolates section]: #isolates
 
-### Futures
+### Futures {:#futures}
 
 Um `Future` representa o resultado de uma operação assíncrona que eventualmente
 será concluída com um valor ou um erro.
@@ -115,7 +115,7 @@ Future<String> _readFileAsync(String filename) {
 }
 ```
 
-### A sintaxe async-await
+### A sintaxe async-await {:#the-async-await-syntax}
 
 As keywords `async` e `await` fornecem uma maneira declarativa de definir
 funções assíncronas e usar seus resultados.
@@ -182,7 +182,7 @@ Uma vez que `readAsString()` retorna um valor, a execução do código Dart é r
 
 ![Flowchart-like figure showing app code executing from start to exit, waiting for native I/O in between](/assets/img/language/concurrency/basics-await.png){:.diagram-wrap}
 
-### Streams
+### Streams {:#streams}
 
 O Dart também suporta código assíncrono na forma de streams. Streams
 fornecem valores no futuro e repetidamente ao longo do tempo. Uma promessa de fornecer uma
@@ -196,7 +196,7 @@ emite repetidamente um novo valor `int` a cada segundo.
 Stream<int> stream = Stream.periodic(const Duration(seconds: 1), (i) => i * i);
 ```
 
-#### await-for e yield
+#### await-for e yield {:#await-for-and-yield}
 
 Await-for é um tipo de loop for que executa cada iteração subsequente do
 loop conforme novos valores são fornecidos. Em outras palavras, é usado para "iterar sobre"
@@ -220,7 +220,7 @@ Se você quiser aprender mais sobre como usar `async`, `await`, `Stream`s e
 
 [asynchronous programming tutorial]: /libraries/async/async-await
 
-## Isolates
+## Isolates {:#isolates}
 
 O Dart suporta concorrência via isolates, além de [APIs assíncronas](#asynchronous-programming).
 A maioria dos dispositivos modernos tem CPUs
@@ -269,7 +269,7 @@ operações assíncronas conforme necessário.
 
 [async-await]: /libraries/async/async-await
 
-### O ciclo de vida do isolate
+### O ciclo de vida do isolate {:#the-isolate-life-cycle}
 
 Como mostra a figura a seguir,
 cada isolate começa executando algum código Dart,
@@ -282,7 +282,7 @@ Depois de lidar com os eventos, o isolate sai.
 
 ![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/assets/img/language/concurrency/basics-isolate.png){:.diagram-wrap}
 
-### Manipulação de eventos
+### Manipulação de eventos {:#event-handling}
 
 Em um aplicativo cliente, a fila de eventos do isolate main pode conter requisições de repintura
 e notificações de toques e outros eventos de UI. Por exemplo, a figura a seguir
@@ -309,7 +309,7 @@ sem resposta.
 
 [jank]: {{site.flutter-docs}}/perf/rendering-performance
 
-### Background workers
+### Workers em segundo plano {:#background-workers}
 
 Se a UI do seu aplicativo ficar sem resposta devido a uma computação
 demorada—[analisar um arquivo JSON grande][json], por exemplo—considere descarregar
@@ -327,7 +327,7 @@ Um worker isolate pode executar I/O
 memória e não compartilha nenhum estado com o isolate main. O worker isolate pode
 bloquear sem afetar outros isolates.
 
-### Usando isolates
+### Usando isolates {:#using-isolates}
 
 Há duas maneiras de trabalhar com isolates em Dart, dependendo do caso de uso:
 
@@ -339,7 +339,7 @@ Há duas maneiras de trabalhar com isolates em Dart, dependendo do caso de uso:
 Na maioria dos casos, `Isolate.run` é a API recomendada
 para executar processos em background.
 
-#### `Isolate.run()`
+#### `Isolate.run()` {:#isolate-run}
 
 O método estático `Isolate.run()` requer um argumento: um callback que será
 executado no isolate recém-criado.
@@ -371,9 +371,9 @@ mensagem é mais lenta quando isolates estão em grupos diferentes.
 
 [`Isolate.spawnUri()`]: {{site.dart-api}}/dart-isolate/Isolate/spawnUri.html
 
-### Limitações de isolates
+### Limitações de isolates {:#limitations-of-isolates}
 
-#### Isolates não são threads
+#### Isolates não são threads {:#isolates-arent-threads}
 
 Se você está vindo para o Dart de uma linguagem com multithreading, seria razoável
 esperar que isolates se comportem como threads, mas esse não é o caso. Cada isolate
@@ -388,7 +388,7 @@ criado, ela permanecerá intocada no isolate main. É assim que isolates devem
 funcionar, e é importante ter isso em mente quando você está considerando
 usar isolates.
 
-#### Tipos de mensagem
+#### Tipos de mensagem {:#message-types}
 
 Mensagens enviadas via [`SendPort`][]
 podem ser quase qualquer tipo de objeto Dart, mas há algumas exceções:
@@ -471,7 +471,7 @@ que o isolate criador. Web workers não têm uma API equivalente.
 [web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
 
 
-## Recursos adicionais
+## Recursos adicionais {:#additional-resources}
 
 - Se você estiver usando muitos isolates, considere
   o [`IsolateNameServer`][]

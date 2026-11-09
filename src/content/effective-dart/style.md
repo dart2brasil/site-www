@@ -1,43 +1,44 @@
 ---
 ia-translate: true
-title: "Dart Efetivo: Estilo"
+title: "Effective Dart: Estilo"
 breadcrumb: Style
-description: Regras de formatação e nomenclatura para código consistente e legível.
+description: Regras de formatação e nomenclatura para um código consistente e legível.
 nextpage:
   url: /effective-dart/documentation
-  title: Documentation
+  title: Documentação
 prevpage:
   url: /effective-dart
-  title: Overview
+  title: Visão geral
 ---
 <?code-excerpt plaster="none"?>
 <?code-excerpt path-base="misc/lib/effective_dart"?>
 
-Uma parte surpreendentemente importante de um bom código é um bom estilo. Nomenclatura,
-ordenação e formatação consistentes ajudam o código que *é* o mesmo a *parecer* o mesmo. Aproveita
-a poderosa capacidade de reconhecimento de padrões que a maioria de nós tem em nossos
-sistemas oculares. Se usarmos um estilo consistente em todo o ecossistema Dart,
-isso facilita para todos nós aprendermos e contribuirmos com o código uns dos outros.
+Uma parte surpreendentemente importante de um bom código é um bom estilo. Nomes,
+ordenação e formatação consistentes fazem com que códigos que *são* iguais também
+*pareçam* iguais. Isso aproveita o poderoso hardware de reconhecimento de padrões
+que a maioria de nós tem em seus sistemas visuais.  Se usarmos um estilo consistente
+em todo o ecossistema Dart, fica mais fácil para todos nós aprender com o código
+dos outros e contribuir para ele.
 
 ## Identificadores {:#identifiers}
 
-Os identificadores vêm em três variações no Dart.
+Identificadores vêm em três variações no Dart.
 
-* Nomes `UpperCamelCase` capitalizam a primeira letra de cada palavra, incluindo
-  a primeira.
+* Nomes `UpperCamelCase` colocam em maiúscula a primeira letra de cada palavra,
+  incluindo a primeira.
 
-* Nomes `lowerCamelCase` capitalizam a primeira letra de cada palavra, *exceto*
-  a primeira, que é sempre minúscula, mesmo que seja um acrônimo.
+* Nomes `lowerCamelCase` colocam em maiúscula a primeira letra de cada palavra, *exceto*
+  a primeira, que é sempre minúscula, mesmo que seja uma sigla.
 
 * Nomes `lowercase_with_underscores` usam apenas letras minúsculas,
-  mesmo para acrônimos, e separam palavras com `_`.
+  mesmo para siglas, e separam as palavras com `_`.
 
-### DO name types using `UpperCamelCase`
+### FAÇA nomear tipos usando `UpperCamelCase` {:#do-name-types-using-uppercamelcase}
 
 {% render 'linter-rule-mention.md', rules:'camel_case_types' %}
 
-Classes, tipos enum, typedefs e parâmetros de tipo devem capitalizar a primeira
-letra de cada palavra (incluindo a primeira palavra) e não usar separadores.
+Classes, tipos enum, typedefs e parâmetros de tipo devem colocar em maiúscula a primeira
+letra de cada palavra (incluindo a primeira palavra), e não usar separadores.
 
 <?code-excerpt "style_good.dart (type-names)"?>
 ```dart tag=good
@@ -52,7 +53,7 @@ class HttpRequest {
 typedef Predicate<T> = bool Function(T value);
 ```
 
-Isso inclui até mesmo classes destinadas a serem usadas em anotações de metadados.
+Isso inclui até classes pensadas para serem usadas em anotações de metadados.
 
 <?code-excerpt "style_good.dart (annotation-type-names)"?>
 ```dart tag=good
@@ -71,7 +72,7 @@ class B {
 }
 ```
 
-Se o construtor da classe de anotação não aceita parâmetros, você pode querer
+Se o construtor da classe de anotação não recebe parâmetros, você pode querer
 criar uma constante `lowerCamelCase` separada para ela.
 
 <?code-excerpt "style_good.dart (annotation-const)"?>
@@ -84,12 +85,12 @@ class C {
 }
 ```
 
-### DO name extensions using `UpperCamelCase`
+### FAÇA nomear extensões usando `UpperCamelCase` {:#do-name-extensions-using-uppercamelcase}
 
 {% render 'linter-rule-mention.md', rules:'camel_case_extensions' %}
 
-Como os tipos, [extensions][] devem capitalizar a primeira letra de cada palavra
-(incluindo a primeira palavra)
+Assim como os tipos, [extensões][extensions] devem colocar em maiúscula a primeira
+letra de cada palavra (incluindo a primeira palavra),
 e não usar separadores.
 
 <?code-excerpt "style_good.dart (extension-names)"?>
@@ -106,15 +107,14 @@ extension SmartIterable<T> on Iterable<T> {
 [extensions]: /language/extension-methods
 
 <a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
-### DO name packages, directories, and source files using `lowercase_with_underscores` {:#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
+### FAÇA nomear pacotes, diretórios e arquivos-fonte usando `lowercase_with_underscores` {:#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
 {% render 'linter-rule-mention.md', rules:'file_names, package_names' %}
 
-Alguns sistemas de arquivos não diferenciam maiúsculas de minúsculas, então muitos projetos exigem que os nomes de arquivo sejam
-todos em minúsculas. Usar um caractere de separação permite que os nomes ainda sejam legíveis
-nessa forma. Usar underscores como separador garante que o nome ainda seja
-um identificador Dart válido, o que pode ser útil se a linguagem futuramente suportar
-imports simbólicos.
+Alguns sistemas de arquivos não diferenciam maiúsculas de minúsculas, então muitos projetos exigem
+que os nomes de arquivo sejam todos em minúsculas. Usar um caractere separador permite que os nomes
+continuem legíveis nessa forma. Usar underscores como separador garante que o nome continue sendo
+um identificador Dart válido, o que pode ser útil caso a linguagem venha a suportar imports simbólicos.
 
 ```plaintext tag=good
 my_package
@@ -131,31 +131,33 @@ mypackage
 ```
 
 
-### DO name import prefixes using `lowercase_with_underscores`
+### FAÇA nomear prefixos de import usando `lowercase_with_underscores` {:#do-name-import-prefixes-using-lowercase_with_underscores}
 
 {% render 'linter-rule-mention.md', rules:'library_prefixes' %}
 
-<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g"?>
+<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:web\/web.dart/g; /as js/as web/g"?>
 ```dart tag=good
 import 'dart:math' as math;
+
 import 'package:angular_components/angular_components.dart' as angular_components;
-import 'package:js/js.dart' as js;
+import 'package:web/web.dart' as web;
 ```
 
-<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /as angular_components/as angularComponents/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g; / math/ Math/g;/as js/as JS/g"?>
+<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /as angular_components/as angularComponents/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:web\/web.dart/g; / math/ Math/g;/as js/as Web/g"?>
 ```dart tag=bad
 import 'dart:math' as Math;
+
 import 'package:angular_components/angular_components.dart' as angularComponents;
-import 'package:js/js.dart' as JS;
+import 'package:web/web.dart' as Web;
 ```
 
 
-### DO name other identifiers using `lowerCamelCase`
+### FAÇA nomear os demais identificadores usando `lowerCamelCase` {:#do-name-other-identifiers-using-lowercamelcase}
 
 {% render 'linter-rule-mention.md', rules:'non_constant_identifier_names' %}
 
-Membros de classe, definições de nível superior, variáveis, parâmetros e parâmetros
-nomeados devem capitalizar a primeira letra de cada palavra *exceto* a primeira
+Membros de classe, definições de nível superior, variáveis, parâmetros e parâmetros nomeados
+devem colocar em maiúscula a primeira letra de cada palavra *exceto* a primeira
 palavra, e não usar separadores.
 
 <?code-excerpt "style_good.dart (misc-names)"?>
@@ -170,11 +172,11 @@ void align(bool clearItems) {
 ```
 
 
-### PREFER using `lowerCamelCase` for constant names
+### PREFIRA usar `lowerCamelCase` para nomes de constantes {:#prefer-using-lowercamelcase-for-constant-names}
 
 {% render 'linter-rule-mention.md', rules:'constant_identifier_names' %}
 
-Em código novo, use `lowerCamelCase` para nomes de constantes, incluindo valores enum.
+Em código novo, use `lowerCamelCase` para variáveis constantes, incluindo valores de enum.
 
 <?code-excerpt "style_good.dart (const-names)"?>
 ```dart tag=good
@@ -198,58 +200,58 @@ class Dice {
 }
 ```
 
-Você pode usar `SCREAMING_CAPS` para consistência com código existente,
+Você pode usar `SCREAMING_CAPS` por consistência com o código existente,
 como nos seguintes casos:
 
 * Ao adicionar código a um arquivo ou biblioteca que já usa `SCREAMING_CAPS`.
-* Ao gerar código Dart que seja paralelo ao código Java—por exemplo,
+* Ao gerar código Dart que é paralelo a código Java, por exemplo,
   em tipos enumerados gerados a partir de [protobufs.][]
 
 :::note
-Inicialmente, usamos o estilo `SCREAMING_CAPS` do Java para constantes. Nós
-mudamos por algumas razões:
+Inicialmente usamos o estilo `SCREAMING_CAPS` do Java para constantes. Mudamos
+por alguns motivos:
 
-* `SCREAMING_CAPS` parece ruim para muitos casos,
-  particularmente valores enum para coisas como cores CSS.
-* Constantes são frequentemente alteradas para variáveis final não-const,
+* `SCREAMING_CAPS` fica ruim em muitos casos,
+  principalmente em valores de enum para coisas como cores CSS.
+* Constantes frequentemente são trocadas por variáveis `final` não const,
   o que exigiria uma mudança de nome.
-* A propriedade `values` definida em um tipo enum é const e minúscula.
+* A propriedade `values` definida em um tipo enum é const e em minúsculas.
 
 :::
 
 [protobufs.]: {{site.pub-pkg}}/protobuf
 
 
-### DO capitalize acronyms and abbreviations longer than two letters like words
+### FAÇA escrever com maiúscula siglas e abreviações com mais de duas letras, como palavras {:#do-capitalize-acronyms-and-abbreviations-longer-than-two-letters-like-words}
 
-Acrônimos capitalizados podem ser difíceis de ler,
-e múltiplos acrônimos adjacentes podem levar a nomes ambíguos.
-Por exemplo, dado um identificador `HTTPSFTP`,
-o leitor não pode dizer se ele se refere a `HTTPS` `FTP` ou `HTTP` `SFTP`.
+Siglas em maiúsculas podem ser difíceis de ler,
+e várias siglas adjacentes podem gerar nomes ambíguos.
+Por exemplo, dado o identificador `HTTPSFTP`,
+o leitor não consegue saber se ele se refere a `HTTPS` `FTP` ou a `HTTP` `SFTP`.
 Para evitar isso,
-capitalize a maioria dos acrônimos e abreviações como palavras regulares.
-Este identificador seria `HttpsFtp` se referindo-se ao primeiro
-ou `HttpSftp` para o último.
+escreva a maioria das siglas e abreviações com maiúscula inicial, como palavras comuns.
+Esse identificador seria `HttpsFtp` se se referisse ao primeiro caso,
+ou `HttpSftp` para o segundo.
 
-Abreviações e acrônimos de duas letras são a exceção.
-Se ambas as letras forem capitalizadas em inglês,
-então ambas devem permanecer capitalizadas quando usadas em um identificador.
-Caso contrário, capitalize como uma palavra.
+Siglas e abreviações de duas letras são a exceção.
+Se as duas letras são maiúsculas em inglês,
+elas devem continuar maiúsculas quando usadas em um identificador.
+Caso contrário, escreva como uma palavra.
 
 ```dart tag=good
-// Mais de duas letras, então sempre como uma palavra:
+// Longer than two letters, so always like a word:
 Http // "hypertext transfer protocol"
 Nasa // "national aeronautics and space administration"
 Uri // "uniform resource identifier"
 Esq // "esquire"
 Ave // "avenue"
 
-// Duas letras, capitalizadas em inglês, então capitalizadas em um identificador:
+// Two letters, capitalized in English, so capitalized in an identifier:
 ID // "identifier"
 TV // "television"
 UI // "user interface"
 
-// Duas letras, não capitalizadas em inglês, então como uma palavra em um identificador:
+// Two letters, not capitalized in English, so like a word in an identifier:
 Mr // "mister"
 St // "street"
 Rd // "road"
@@ -271,8 +273,8 @@ ST // "street"
 RD // "road"
 ```
 
-Quando qualquer forma de abreviação vem no início
-de um identificador `lowerCamelCase`, a abreviação deve estar toda em minúsculas:
+Quando qualquer forma de abreviação vem no início de um identificador `lowerCamelCase`,
+a abreviação deve ficar toda em minúsculas:
 
 ```dart
 var httpConnection = connect();
@@ -282,12 +284,12 @@ var mrRogers = 'hello, neighbor';
 
 <a id="prefer-using-_-__-etc-for-unused-callback-parameters" aria-hidden="true"></a>
 
-### PREFER using wildcards for unused callback parameters
+### PREFIRA usar curingas para parâmetros de callback não usados {:#prefer-using-wildcards-for-unused-callback-parameters}
 
-Às vezes, a assinatura de tipo de uma função callback requer um parâmetro,
-mas a implementação do callback não _usa_ o parâmetro.
-Neste caso, é idiomático nomear o parâmetro não utilizado como `_`,
-o que declara uma [variável wildcard][wildcards] que é non-binding.
+Às vezes a assinatura de tipo de uma função de callback exige um parâmetro,
+mas a implementação do callback não *usa* esse parâmetro.
+Nesse caso, é idiomático nomear o parâmetro não usado como `_`,
+o que declara uma [variável curinga][wildcards] que não faz vínculo.
 
 <?code-excerpt "style_good.dart (unused-callback-param)"?>
 ```dart tag=good
@@ -296,8 +298,8 @@ futureOfVoid.then((_) {
 });
 ```
 
-Como as variáveis wildcard são non-binding,
-você pode nomear múltiplos parâmetros não utilizados como `_`.
+Como variáveis curinga não fazem vínculo,
+você pode nomear vários parâmetros não usados como `_`.
 
 <?code-excerpt "style_good.dart (unused-callback-params-multiple)"?>
 ```dart tag=good
@@ -306,49 +308,48 @@ você pode nomear múltiplos parâmetros não utilizados como `_`.
 });
 ```
 
-Esta diretriz é apenas para funções que são tanto *anônimas quanto locais*.
-Essas funções são geralmente usadas imediatamente em um contexto onde está
-claro o que o parâmetro não utilizado representa.
-Em contraste, funções de nível superior e declarações de métodos não têm esse contexto,
-então seus parâmetros devem ser nomeados para que fique claro para que serve cada parâmetro,
-mesmo que não seja usado.
+Esta diretriz vale apenas para funções que são, ao mesmo tempo, *anônimas e locais*.
+Essas funções geralmente são usadas imediatamente em um contexto em que
+fica claro o que o parâmetro não usado representa.
+Em contraste, funções de nível superior e declarações de método não têm esse contexto,
+então seus parâmetros devem ser nomeados para que fique claro para que serve cada um,
+mesmo que não sejam usados.
 
 :::version-note
-Declarar [variáveis wildcard][wildcards] non-binding requer
+Declarar [variáveis curinga][wildcards] que não fazem vínculo exige
 uma [versão da linguagem][language version] de pelo menos 3.7.
 
 Em versões anteriores da linguagem, use underscores adicionais para
-contornar colisões de nomes, como `__` e `___`.
-Para evitar usá-los e simplificar a migração para wildcards mais tarde,
-habilite o lint [`no_wildcard_variable_uses`][].
+contornar colisões de nome, como `__` e `___`.
+Para impedir o uso deles e simplificar a migração para curingas depois,
+ative a regra [`no_wildcard_variable_uses`][].
 
-Para ajudar a migrar desta convenção para variáveis wildcard,
-habilite o lint [`unnecessary_underscores`][].
+Para ajudar a migrar dessa convenção para variáveis curinga,
+ative a regra [`unnecessary_underscores`][].
 :::
 
 [wildcards]: /language/variables#wildcard-variables
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [`no_wildcard_variable_uses`]: /tools/linter-rules/no_wildcard_variable_uses
 [`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores
 
-### DON'T use a leading underscore for identifiers that aren't private
+### NÃO use underscore inicial em identificadores que não são privados {:#dont-use-a-leading-underscore-for-identifiers-that-arent-private}
 
-Dart usa um underscore inicial em um identificador para marcar membros e declarações
-de nível superior como privados. Isso treina os usuários a associarem um underscore inicial
-com um desses tipos de declarações. Eles veem "_" e pensam "privado".
+O Dart usa um underscore inicial em um identificador para marcar membros e declarações
+de nível superior como privados. Isso ensina os usuários a associar um underscore inicial
+a um desses tipos de declaração. Eles veem "_" e pensam "privado".
 
-Não há conceito de "privado" para variáveis locais, parâmetros, funções
-locais ou prefixos de biblioteca. Quando um desses tem um nome que começa com um
-underscore, isso envia um sinal confuso ao leitor. Para evitar isso, não use
-underscores iniciais nesses nomes.
+Não existe o conceito de "privado" para variáveis locais, parâmetros, funções locais
+ou prefixos de biblioteca. Quando um desses tem um nome que começa com underscore, ele envia
+um sinal confuso para o leitor. Para evitar isso, não use underscores iniciais nesses nomes.
 
 
-### DON'T use prefix letters
+### NÃO use letras de prefixo {:#dont-use-prefix-letters}
 
-[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) e
-outros esquemas surgiram no tempo do BCPL, quando o compilador não fazia muito para
-ajudá-lo a entender seu código. Como o Dart pode informar o tipo, escopo,
-mutabilidade e outras propriedades de suas declarações, não há razão para
+A [notação húngara](https://en.wikipedia.org/wiki/Hungarian_notation) e
+outros esquemas surgiram na época do BCPL, quando o compilador não fazia muito para
+ajudar você a entender seu código. Como o Dart consegue informar o tipo, o escopo,
+a mutabilidade e outras propriedades das suas declarações, não há motivo para
 codificar essas propriedades nos nomes dos identificadores.
 
 ```dart tag=good
@@ -359,15 +360,15 @@ defaultTimeout
 kDefaultTimeout
 ```
 
-### DON'T explicitly name libraries
+### NÃO nomeie bibliotecas explicitamente {:#dont-explicitly-name-libraries}
 
-Adicionar um nome à diretiva `library` é tecnicamente possível,
+Acrescentar um nome à diretiva `library` é tecnicamente possível,
 mas é um recurso legado e desencorajado.
 
-Dart gera uma tag única para cada biblioteca
-com base em seu caminho e nome de arquivo.
-Nomear bibliotecas sobrescreve este URI gerado.
-Sem o URI, pode ser mais difícil para as ferramentas encontrar
+O Dart gera uma tag única para cada biblioteca
+com base no seu caminho e nome de arquivo.
+Nomear bibliotecas substitui essa URI gerada.
+Sem a URI, fica mais difícil para as ferramentas encontrarem
 o arquivo principal da biblioteca em questão.
 
 <?code-excerpt "usage_bad.dart (library-dir)"?>
@@ -382,16 +383,16 @@ library my_library;
 library;
 ```
 
-## Ordenação
+## Ordenação {:#ordering}
 
-Para manter o preâmbulo do seu arquivo organizado, temos uma ordem prescrita em que
+Para manter o cabeçalho do seu arquivo organizado, temos uma ordem prescrita em que
 as diretivas devem aparecer. Cada "seção" deve ser separada por uma linha em branco.
 
-Uma única regra do linter trata de todas as diretrizes de ordenação:
+Uma única regra do linter cuida de todas as diretrizes de ordenação:
 [directives_ordering.](/tools/linter-rules/directives_ordering)
 
 
-### DO place `dart:` imports before other imports
+### FAÇA colocar imports `dart:` antes dos outros imports {:#do-place-dart-imports-before-other-imports}
 
 {% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
@@ -405,7 +406,7 @@ import 'package:foo/foo.dart';
 ```
 
 
-### DO place `package:` imports before relative imports
+### FAÇA colocar imports `package:` antes dos imports relativos {:#do-place-package-imports-before-relative-imports}
 
 {% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
@@ -418,7 +419,7 @@ import 'util.dart';
 ```
 
 
-### DO specify exports in a separate section after all imports
+### FAÇA especificar exports em uma seção separada, depois de todos os imports {:#do-specify-exports-in-a-separate-section-after-all-imports}
 
 {% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
@@ -438,7 +439,7 @@ import 'src/foo_bar.dart';
 ```
 
 
-### DO sort sections alphabetically
+### FAÇA ordenar as seções em ordem alfabética {:#do-sort-sections-alphabetically}
 
 {% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
@@ -463,76 +464,76 @@ import 'foo.dart';
 
 ## Formatação {:#formatting}
 
-Como muitas linguagens, Dart ignora espaços em branco. No entanto, *humanos* não. Ter um
-estilo de espaços em branco consistente ajuda a garantir que leitores humanos vejam o código da mesma
-forma que o compilador vê.
+Como muitas linguagens, o Dart ignora espaços em branco. No entanto, *as pessoas* não ignoram.
+Ter um estilo consistente de espaçamento ajuda a garantir que os leitores humanos vejam o código
+da mesma forma que o compilador.
 
 
-### DO format your code using `dart format`
+### FAÇA formatar seu código usando `dart format` {:#do-format-your-code-using-dart-format}
 
-Formatação é um trabalho tedioso e é particularmente demorado durante
-refatoração. Felizmente, você não precisa se preocupar com isso. Fornecemos um
-formatador de código automatizado sofisticado chamado [`dart format`][] que faz isso por
-você. As regras oficiais de tratamento de espaços em branco para Dart são
-*o que quer que o `dart format` produza*. O [FAQ do formatador][formatter FAQ] pode fornecer mais informações
-sobre as escolhas de estilo que ele aplica.
+Formatar é um trabalho tedioso e especialmente demorado durante
+refatorações. Felizmente, você não precisa se preocupar com isso. Fornecemos um formatador de código
+automatizado sofisticado chamado [`dart format`][] que faz isso por você. As regras oficiais de
+espaçamento do Dart são
+*o que quer que o `dart format` produza*. A [FAQ do formatador][formatter FAQ] pode dar mais
+detalhes sobre as escolhas de estilo que ele impõe.
 
-As diretrizes de formatação restantes são para as poucas coisas que o `dart format` não pode
+As demais diretrizes de formatação são para as poucas coisas que o `dart format` não consegue
 corrigir para você.
 
 [`dart format`]: /tools/dart-format
 [formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ
 
-### CONSIDER changing your code to make it more formatter-friendly
+### CONSIDERE mudar seu código para torná-lo mais amigável ao formatador {:#consider-changing-your-code-to-make-it-more-formatter-friendly}
 
-O formatador faz o melhor que pode com qualquer código que você jogue nele, mas não
-pode fazer milagres. Se seu código tiver identificadores particularmente longos, expressões
-profundamente aninhadas, uma mistura de diferentes tipos de operadores, etc., a
-saída formatada ainda pode ser difícil de ler.
+O formatador faz o melhor que pode com o código que você entrega, mas
+não consegue fazer milagres. Se o seu código tem identificadores especialmente longos, expressões
+muito aninhadas, uma mistura de diferentes tipos de operadores etc., a saída formatada
+pode continuar difícil de ler.
 
-Quando isso acontecer, reorganize ou simplifique seu código. Considere encurtar um nome de
-variável local ou elevar uma expressão para uma nova variável local. Em outras
-palavras, faça os mesmos tipos de modificações que você faria se estivesse
-formatando o código manualmente e tentando torná-lo mais legível. Pense no
-`dart format` como uma parceria onde você trabalha juntos, às vezes iterativamente,
-para produzir um código bonito.
+Quando isso acontecer, reorganize ou simplifique seu código. Considere encurtar um nome de variável
+local ou extrair uma expressão para uma nova variável local. Em outras
+palavras, faça os mesmos tipos de modificação que faria se estivesse formatando o código
+à mão e tentando torná-lo mais legível. Pense no `dart format` como uma parceria em que vocês
+trabalham juntos, às vezes de forma iterativa,
+para produzir código bonito.
 
 <a id="avoid-lines-longer-than-80-characters"></a>
-### PREFER lines 80 characters or fewer
+### PREFIRA linhas com 80 caracteres ou menos {:#prefer-lines-80-characters-or-fewer}
 
 {% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
 
-Estudos de legibilidade mostram que linhas longas de texto são mais difíceis de ler porque seu
-olho tem que percorrer uma distância maior ao se mover para o início da próxima linha. É por isso
-que jornais e revistas usam várias colunas de texto.
+Estudos de legibilidade mostram que linhas longas de texto são mais difíceis de ler, porque o seu
+olho precisa percorrer uma distância maior ao voltar para o início da linha seguinte. É por isso que
+jornais e revistas usam várias colunas de texto.
 
-Se você realmente se pegar querendo linhas com mais de 80 caracteres, nossa
-experiência é que seu código provavelmente está muito verboso e poderia ser um pouco mais
-compacto. O principal culpado geralmente é `VeryLongCamelCaseClassNames`. Pergunte a
-si mesmo: "Cada palavra nesse nome de tipo me diz algo crítico ou
-previne uma colisão de nomes?" Caso contrário, considere omiti-la.
+Se você realmente sente que precisa de linhas com mais de 80 caracteres, nossa
+experiência mostra que seu código provavelmente está verboso demais e poderia ser um pouco mais
+compacto. O principal culpado costuma ser `VeryLongCamelCaseClassNames`. Pergunte
+a si mesmo: "Cada palavra desse nome de tipo me diz algo essencial ou evita uma colisão de nomes?"
+Se não, considere omiti-la.
 
-Note que o `dart format` usa 80 caracteres ou menos por padrão, embora você possa
-[configurar][configure] o padrão.
-Ele não divide literais de string longos para caber em 80 colunas,
-então você tem que fazer isso manualmente.
+Observe que o `dart format` usa 80 caracteres ou menos por padrão, embora você possa
+[configurar][configure] esse padrão.
+Ele não quebra literais de string longos para caber em 80 colunas,
+então você precisa fazer isso manualmente.
 
-**Exception:** Quando um URI ou caminho de arquivo ocorre em um comentário ou string (geralmente em
-um import ou export), ele pode permanecer inteiro mesmo que faça a linha ultrapassar
-80 caracteres. Isso facilita a busca em arquivos fonte por um caminho.
+**Exceção:** quando uma URI ou caminho de arquivo aparece em um comentário ou string (geralmente em
+um import ou export), ele pode permanecer inteiro mesmo que faça a linha passar de
+80 caracteres. Isso facilita buscar o caminho nos arquivos-fonte.
 
-**Exception:** Strings multi-linha podem conter linhas com mais de 80 caracteres
-porque novas linhas são significativas dentro da string e dividir as linhas em
-linhas menores pode alterar o programa.
+**Exceção:** strings multilinha podem conter linhas com mais de 80 caracteres,
+porque as quebras de linha são significativas dentro da string, e dividi-las em linhas
+menores pode alterar o programa.
 
-[configure]: /tools/dart-format#configuring-formatter-page-width
+[configure]: /tools/dart-format#page-width
 
 <a id="do-use-curly-braces-for-all-flow-control-structures"></a>
-### DO use curly braces for all flow control statements
+### FAÇA usar chaves em todas as estruturas de controle de fluxo {:#do-use-curly-braces-for-all-flow-control-statements}
 
 {% render 'linter-rule-mention.md', rules:'curly_braces_in_flow_control_structures' %}
 
-Fazer isso evita o problema do [dangling else][].
+Isso evita o problema do [*else* pendente][dangling else].
 
 [dangling else]: https://en.wikipedia.org/wiki/Dangling_else
 
@@ -545,15 +546,15 @@ if (isWeekDay) {
 }
 ```
 
-**Exception:** Quando você tem uma instrução `if` sem cláusula `else` e toda a
-instrução `if` cabe em uma linha, você pode omitir as chaves se preferir:
+**Exceção:** quando você tem um `if` sem cláusula `else` e
+a instrução `if` inteira cabe em uma linha, você pode omitir as chaves, se preferir:
 
 <?code-excerpt "style_good.dart (one-line-if)"?>
 ```dart tag=good
 if (arg == null) return defaultValue;
 ```
 
-Se o corpo se estender para a próxima linha, use chaves:
+Se o corpo quebrar para a linha seguinte, porém, use chaves:
 
 <?code-excerpt "style_good.dart (one-line-if-wrap)"?>
 ```dart tag=good

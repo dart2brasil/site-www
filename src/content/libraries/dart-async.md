@@ -14,18 +14,18 @@ nextpage:
 <?code-excerpt plaster="none"?>
 
 A programação assíncrona frequentemente usa funções de callback, mas o Dart
-fornece alternativas: objetos [Future][] e [Stream][]. Um
-Future é como uma promessa de um resultado a ser fornecido em algum momento no
-futuro. Um Stream é uma maneira de obter uma sequência de valores, como eventos.
-Future, Stream e mais estão na
+oferece alternativas: os objetos [Future][] e [Stream][]. Um
+Future é como uma promessa de um resultado que será fornecido em algum momento no
+futuro. Um Stream é uma forma de obter uma sequência de valores, como eventos.
+Future, Stream e outros estão na
 biblioteca dart:async ([referência da API][dart:async]).
 
 :::note
-Você nem sempre precisa usar as APIs Future ou Stream diretamente.
-A linguagem Dart suporta codificação assíncrona usando
-keywords como `async` e `await`.
+Você nem sempre precisa usar as APIs de Future ou Stream diretamente.
+A linguagem Dart oferece suporte à programação assíncrona com
+palavras-chave como `async` e `await`.
 Confira o [tutorial de programação assíncrona](/libraries/async/async-await)
-para detalhes.
+para mais detalhes.
 :::
 
 A biblioteca dart:async funciona tanto em aplicativos web quanto em aplicativos de linha de comando. Para
@@ -37,22 +37,22 @@ import 'dart:async';
 ```
 
 :::tip
-Você não precisa importar dart:async para usar as APIs Future e
+Você não precisa importar dart:async para usar as APIs de Future e
 Stream, porque dart:core exporta essas classes.
 :::
 
-## Future
+## Future {:#future}
 
-Objetos Future aparecem por toda as bibliotecas Dart, frequentemente como o objeto
-retornado por um método assíncrono. Quando um future *completa*, seu valor
+Objetos Future aparecem em toda a biblioteca do Dart, frequentemente como o objeto
+retornado por um método assíncrono. Quando um future *completa*, o valor dele
 está pronto para uso.
 
 
-### Usando await
+### Usando await {:#using-await}
 
-Antes de usar diretamente a API Future, considere usar `await` em vez disso.
+Antes de usar diretamente a API de Future, considere usar `await`.
 Código que usa expressões `await` pode ser mais fácil de entender
-do que código que usa a API Future.
+do que código que usa a API de Future.
 
 Considere a função a seguir. Ela usa o método `then()` do Future
 para executar três funções assíncronas em sequência,
@@ -99,19 +99,19 @@ try {
 
 :::important
 Funções async retornam Futures. Se você não quer que sua função retorne um
-future, então use uma solução diferente. Por exemplo, você pode chamar uma função `async`
-de dentro da sua função.
+future, use uma solução diferente. Por exemplo, você pode chamar uma função
+`async` de dentro da sua função.
 :::
 
-Para mais informações sobre o uso de `await` e recursos relacionados da linguagem Dart,
+Para mais informações sobre o uso de `await` e de outros recursos relacionados da linguagem Dart,
 veja o [tutorial de programação assíncrona](/libraries/async/async-await).
 
 
-### Uso básico
+### Uso básico {:#basic-usage}
 
 Você pode usar `then()` para agendar código que executa quando o future completa. Por
 exemplo, [`Client.read()`][] retorna um Future, já que requisições HTTP
-podem demorar um tempo. Usar `then()` permite que você execute algum código quando aquele Future
+podem levar um tempo. Usar `then()` permite executar algum código quando esse Future
 tiver completado e o valor string prometido estiver disponível:
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (then)"?>
@@ -140,23 +140,23 @@ O padrão `then().catchError()` é a versão assíncrona de
 `try`-`catch`.
 
 :::important
-Certifique-se de invocar `catchError()` no resultado de `then()`—não no
+Certifique-se de invocar `catchError()` no resultado de `then()`, e não no
 resultado do `Future` original. Caso contrário, o
-`catchError()` pode tratar erros apenas do cálculo do Future original,
-mas não do handler registrado por `then()`.
+`catchError()` pode tratar apenas erros do cálculo do Future original,
+mas não os do handler registrado por `then()`.
 :::
 
 [`Client.read()`]: {{site.pub-api}}/http/latest/http/Client/read.html
 
-### Encadeando múltiplos métodos assíncronos
+### Encadeando múltiplos métodos assíncronos {:#chaining-multiple-asynchronous-methods}
 
-O método `then()` retorna um Future, fornecendo uma maneira útil de executar
+O método `then()` retorna um Future, o que oferece uma forma prática de executar
 múltiplas funções assíncronas em uma ordem específica.
 Se o callback registrado com `then()` retorna um Future,
-`then()` retorna um Future que completará
-com o mesmo resultado que o Future retornado do callback.
+`then()` retorna um Future que completa
+com o mesmo resultado do Future retornado pelo callback.
 Se o callback retorna um valor de qualquer outro tipo,
-`then()` cria um novo Future que completa com o valor.
+`then()` cria um novo Future que completa com esse valor.
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain)"?>
 ```dart
@@ -170,13 +170,13 @@ result
     });
 ```
 
-No exemplo anterior, os métodos executam na seguinte ordem:
+No exemplo anterior, os métodos são executados na seguinte ordem:
 
 1.  `costlyQuery()`
 2.  `expensiveWork()`
 3.  `lengthyComputation()`
 
-Aqui está o mesmo código escrito usando await:
+Aqui está o mesmo código escrito com await:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain-as-await)"?>
 ```dart
@@ -191,17 +191,17 @@ try {
 ```
 
 
-### Aguardando múltiplos futures
+### Aguardando múltiplos futures {:#waiting-for-multiple-futures}
 
-Às vezes seu algoritmo precisa invocar muitas funções assíncronas e
+Às vezes, seu algoritmo precisa invocar várias funções assíncronas e
 aguardar que todas completem antes de continuar. Use o método
-estático [Future.wait()][] para gerenciar múltiplos Futures e aguardar que eles completem:
+estático [Future.wait()][] para gerenciar múltiplos Futures e aguardar que completem:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
 ```dart
-Future<void> deleteLotsOfFiles() async =>  ...
-Future<void> copyLotsOfFiles() async =>  ...
-Future<void> checksumLotsOfOtherFiles() async =>  ...
+Future<void> deleteLotsOfFiles() async => /* ... */
+Future<void> copyLotsOfFiles() async => /* ... */
+Future<void> checksumLotsOfOtherFiles() async => /* ... */
 
 await Future.wait([
   deleteLotsOfFiles(),
@@ -212,7 +212,7 @@ print('Done with all the long steps!');
 ```
 
 `Future.wait()` retorna um future que completa assim que todos os futures
-fornecidos tiverem completado. Ele completa com seus resultados,
+fornecidos tiverem completado. Ele completa com os resultados deles,
 ou com um erro se qualquer um dos futures fornecidos falhar.
 
 ### Tratando erros de múltiplos futures {:#handling-errors-for-multiple-futures}
@@ -224,12 +224,12 @@ Você também pode aguardar operações paralelas em:
 
 Essas extensões retornam um `Future` com os
 valores resultantes de todos os futures fornecidos.
-Diferente de `Future.wait`, elas também permitem que você trate erros.
+Diferente de `Future.wait`, elas também permitem tratar erros.
 
-Se qualquer future na coleção completar com um erro,
+Se qualquer future da coleção completar com um erro,
 `wait` completa com um [`ParallelWaitError`][].
 Isso permite que o chamador trate erros individuais e
-descarte resultados bem-sucedidos se necessário.
+descarte resultados bem-sucedidos, se necessário.
 
 Quando você _não_ precisa dos valores de resultado de cada future,
 use `wait` em um _iterable_ de futures:
@@ -257,7 +257,7 @@ void main() async {
 
 Quando você _precisa_ dos valores de resultado individuais de cada future,
 use `wait` em um _record_ de futures.
-Isso fornece o benefício adicional de que os futures podem ser de tipos diferentes:
+Isso traz o benefício adicional de que os futures podem ser de tipos diferentes:
 
 ```dart
 Future<int> delete() async => ...;
@@ -284,22 +284,22 @@ void main() async {
 [iterable-futures]: {{site.dart-api}}/dart-async/FutureIterable/wait.html
 [record-futures]: {{site.dart-api}}/dart-async/FutureRecord2/wait.html
 
-## Stream
+## Stream {:#stream}
 
-Objetos Stream aparecem por todas as APIs Dart, representando sequências de
-dados. Por exemplo, eventos HTML como cliques de botão são entregues usando
+Objetos Stream aparecem em toda a API do Dart, representando sequências de
+dados. Por exemplo, eventos HTML, como cliques em botões, são entregues usando
 streams. Você também pode ler um arquivo como um stream.
 
 
-### Usando um loop for assíncrono
+### Usando um loop for assíncrono {:#using-an-asynchronous-for-loop}
 
-Às vezes você pode usar um loop for assíncrono (`await for`)
-em vez de usar a API Stream.
+Às vezes, você pode usar um loop for assíncrono (`await for`)
+em vez de usar a API de Stream.
 
 Considere a função a seguir.
 Ela usa o método `listen()` do Stream
 para se inscrever em uma lista de arquivos,
-passando uma função literal que busca cada arquivo ou diretório.
+passando uma função literal que pesquisa cada arquivo ou diretório.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
 ```dart
@@ -342,19 +342,19 @@ void main(List<String> arguments) async {
 ```
 
 :::important
-Antes de usar `await for`, certifique-se de que ele torna o código mais claro e que
+Antes de usar `await for`, certifique-se de que ele deixa o código mais claro e de que
 você realmente quer aguardar todos os resultados do stream. Por exemplo, você
-geralmente **não** deve usar `await for` para listeners de eventos DOM, porque o
-DOM envia fluxos infinitos de eventos. Se você usar `await for` para registrar dois
-listeners de eventos DOM em sequência, então o segundo tipo de evento nunca será tratado.
+geralmente **não** deve usar `await for` para listeners de eventos do DOM, porque o
+DOM envia streams infinitos de eventos. Se você usar `await for` para registrar dois
+listeners de eventos do DOM em sequência, o segundo tipo de evento nunca será tratado.
 :::
 
-Para mais informações sobre o uso de `await` e recursos relacionados
+Para mais informações sobre o uso de `await` e de outros recursos relacionados
 da linguagem Dart, veja o
 [tutorial de programação assíncrona](/libraries/async/async-await).
 
 
-### Ouvindo dados do stream
+### Ouvindo dados do stream {:#listening-for-stream-data}
 
 Para obter cada valor conforme ele chega, use `await for` ou
 inscreva-se no stream usando o método `listen()`:
@@ -371,7 +371,7 @@ submitButton.onClick.[!listen!]((e) {
 Neste exemplo, a propriedade `onClick` é um objeto `Stream` fornecido pelo
 botão de envio.
 
-Se você se importa apenas com um evento, pode obtê-lo usando uma propriedade como
+Se você se importa com apenas um evento, pode obtê-lo usando uma propriedade como
 `first`, `last` ou `single`. Para testar o evento antes de tratá-lo,
 use um método como `firstWhere()`, `lastWhere()` ou `singleWhere()`.
 {% comment %}
@@ -385,7 +385,7 @@ Se você se importa com um subconjunto de eventos, pode usar métodos como
 {% endcomment %}
 
 
-### Transformando dados do stream
+### Transformando dados do stream {:#transforming-stream-data}
 
 Frequentemente, você precisa alterar o formato dos dados de um stream antes de poder
 usá-los. Use o método `transform()` para produzir um stream com um
@@ -398,8 +398,8 @@ var lines = inputStream
     .transform(const LineSplitter());
 ```
 
-Este exemplo usa dois transformers. Primeiro ele usa utf8.decoder para
-transformar o stream de inteiros em um stream de strings. Então ele usa
+Este exemplo usa dois transformers. Primeiro, ele usa utf8.decoder para
+transformar o stream de inteiros em um stream de strings. Depois, usa
 um LineSplitter para transformar o stream de strings em um stream de
 linhas separadas. Esses transformers são da biblioteca dart:convert (veja a
 [seção dart:convert](/libraries/dart-convert)).
@@ -408,16 +408,16 @@ linhas separadas. Esses transformers são da biblioteca dart:convert (veja a
 {% endcomment %}
 
 
-### Tratando erros e conclusão
+### Tratando erros e conclusão {:#handling-errors-and-completion}
 
-Como você especifica o código de tratamento de erros e conclusão
-depende de se você usa um loop for assíncrono (`await for`)
-ou a API Stream.
+Como você especifica o código de tratamento de erros e de conclusão
+depende de usar um loop for assíncrono (`await for`)
+ou a API de Stream.
 
 Se você usa um loop for assíncrono,
 então use try-catch para tratar erros.
 Código que executa após o stream ser fechado
-vai após o loop for assíncrono.
+vai depois do loop for assíncrono.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (read-file-await-for)" replace="/try|catch/[!$&!]/g"?>
 ```dart
@@ -439,7 +439,7 @@ Future<void> readFileAwaitFor() async {
 }
 ```
 
-Se você usa a API Stream,
+Se você usa a API de Stream,
 então trate erros registrando um listener `onError`.
 Execute código após o stream ser fechado registrando
 um listener `onDone`.
@@ -466,17 +466,17 @@ inputStream
 ```
 
 
-## Mais informações
+## Mais informações {:#more-information}
 
 Para alguns exemplos de uso de Future e Stream em aplicativos de linha de comando,
-confira a [documentação dart:io][].
+confira a [documentação do dart:io][dart:io documentation].
 Veja também estes artigos e tutoriais:
 
 - [Programação assíncrona: futures, async, await](/libraries/async/async-await)
 - [Futures e tratamento de erros](/libraries/async/futures-error-handling)
 - [Programação assíncrona: streams](/libraries/async/using-streams)
 - [Criando streams em Dart](/libraries/async/creating-streams)
-- [Programação assíncrona Dart: Isolates e event loops](/language/concurrency)
+- [Programação assíncrona em Dart: Isolates e event loops](/language/concurrency)
 
 
 [Future.wait()]: {{site.dart-api}}/dart-async/Future/wait.html
@@ -485,4 +485,3 @@ Veja também estes artigos e tutoriais:
 [Stream]: {{site.dart-api}}/dart-async/Stream-class.html
 [dart:async]: {{site.dart-api}}/dart-async/dart-async-library.html
 [dart:io documentation]: /libraries/dart-io
-[documentação dart:io]: /libraries/dart-io

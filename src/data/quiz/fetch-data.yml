@@ -1,0 +1,87 @@
+- question: >-
+    Como você monta uma URL com parâmetros de consulta usando `Uri.https`?
+  options:
+    - text: >-
+        Passe-os como um terceiro argumento, um map:
+        `Uri.https('api.com', '/search', {'q': 'dart'})`
+      correct: true
+      explanation: >-
+        O terceiro parâmetro aceita um `Map<String, dynamic>`
+        com os parâmetros de consulta. O Dart faz a codificação da URL automaticamente.
+    - text: >-
+        Acrescente-os à string do caminho: `Uri.https('api.com', '/search?q=dart')`
+      correct: false
+      explanation: >-
+        Parâmetros de consulta na string do caminho funcionam, mas
+        não são a abordagem mais limpa.
+    - text: >-
+        Use concatenação de strings: `Uri.https('api.com', '/search') + '?q=dart'`
+      correct: false
+      explanation: >-
+        Não é possível concatenar strings a objetos `Uri` com `+`.
+        `Uri` oferece outro mecanismo para adicionar parâmetros de consulta.
+    - text: >-
+        Chame `.addQueryParam('q', 'dart')` no objeto `Uri`.
+      correct: false
+      explanation: >-
+        Objetos `Uri` são imutáveis e não têm um método `addQueryParam`.
+        Os parâmetros de consulta devem ser especificados de outra forma.
+- question: >-
+    Depois de chamar `client.get(url)`,
+    como você deve verificar se a requisição foi bem-sucedida?
+  options:
+    - text: >-
+        Verificar se `response.statusCode == 200` (ou outro código de sucesso).
+      correct: true
+      explanation: >-
+        Os códigos de status HTTP indicam sucesso (200-299)
+        ou diversas falhas (400 e 500).
+        Sempre verifique antes de processar o corpo da resposta.
+    - text: >-
+        Verificar se `response.body` não está vazio.
+      correct: false
+      explanation: >-
+        Um corpo vazio pode ser válido (como um 204 No Content).
+        O conteúdo do corpo, por si só, não diz se a requisição deu certo.
+    - text: >-
+        Envolver a chamada em try/catch, já que requisições bem-sucedidas não lançam exceções.
+      correct: false
+      explanation: >-
+        Erros HTTP (como 404 e 500) não lançam exceções por padrão.
+        A requisição termina normalmente mesmo quando o servidor retorna um erro.
+    - text: >-
+        Verificar se `response.isSuccess` retorna true.
+      correct: false
+      explanation: >-
+        Não existe uma propriedade `isSuccess` em `Response`.
+        Você precisa consultar outra propriedade do objeto de resposta.
+- question: >-
+    As funções de API da lição usam um bloco `finally` para chamar `client.close()`.
+    Por que isso é importante?
+  options:
+    - text: >-
+        Para garantir que os recursos de rede sejam liberados mesmo se ocorrer uma exceção.
+      correct: true
+      explanation: >-
+        O `finally` roda tanto se o bloco try for bem-sucedido quanto se lançar uma exceção.
+        Isso garante que as conexões do client sejam fechadas corretamente,
+        evitando vazamento de recursos.
+    - text: >-
+        Para salvar os dados da resposta em disco antes de a função retornar.
+      correct: false
+      explanation: >-
+        `close()` não salva dados em lugar nenhum.
+        Salvar dados exigiria operações explícitas com arquivos.
+    - text: >-
+        Para enviar uma mensagem de 'conexão fechada' ao servidor.
+      correct: false
+      explanation: >-
+        Embora fechar afete a conexão,
+        o principal objetivo é a limpeza do lado do cliente,
+        não a comunicação com o servidor.
+    - text: >-
+        Para limpar a resposta da memória e acionar o garbage collector.
+      correct: false
+      explanation: >-
+        O garbage collector do Dart cuida da memória automaticamente.
+        `close()` libera outro tipo de recurso.

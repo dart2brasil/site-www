@@ -1,0 +1,93 @@
+- question: >-
+    O que é JSON?
+  options:
+    - text: >-
+        Um formato leve de troca de dados, fácil de ler e escrever
+        para humanos e fácil de interpretar e gerar
+        para máquinas.
+      correct: true
+      explanation: >-
+        JSON (JavaScript Object Notation) é um formato baseado em texto
+        para representar dados estruturados.
+        Ele é muito usado na troca de dados entre
+        aplicativos, principalmente em APIs web.
+    - text: >-
+        Uma linguagem de programação criada especificamente para desenvolvimento web.
+      correct: false
+      explanation: >-
+        JSON não é uma linguagem de programação.
+        Não é possível escrever lógica nem executar código com JSON.
+    - text: >-
+        Um formato de banco de dados usado exclusivamente por aplicativos JavaScript.
+      correct: false
+      explanation: >-
+        JSON não é um formato de banco de dados, nem é exclusivo do JavaScript.
+        Embora tenha se originado da sintaxe do JavaScript,
+        ele é usado em muitas linguagens e plataformas.
+    - text: >-
+        Uma biblioteca específica do Dart para serialização de dados.
+      correct: false
+      explanation: >-
+        JSON não é específico do Dart nem é uma biblioteca.
+        Ele existia antes do Dart e é usado em todo lugar.
+- question: >-
+    Quando o `jsonDecode` interpreta um objeto JSON como `{"name": "Dart"}`,
+    qual tipo do Dart ele retorna?
+  options:
+    - text: >-
+        Um `Map<String, dynamic>` que representa o objeto JSON.
+      correct: true
+      explanation: >-
+        Objetos JSON viram `Map<String, dynamic>`,
+        em que as chaves são strings e os valores podem ser qualquer tipo compatível com JSON.
+    - text: >-
+        Um `String` com o texto JSON.
+      correct: false
+      explanation: >-
+        `jsonDecode` interpreta a string JSON e a converte em objetos Dart.
+        Ele transforma a representação em texto em dados estruturados,
+        incluindo maps e listas, e não mantém o conteúdo como string.
+    - text: >-
+        Uma classe `JsonObject` personalizada de `dart:convert`.
+      correct: false
+      explanation: >-
+        Não existe uma classe `JsonObject` no Dart.
+        `jsonDecode` retorna tipos de coleção padrão do Dart.
+    - text: >-
+        Uma `List<String>` com os pares chave-valor.
+      correct: false
+      explanation: >-
+        Uma lista perderia a relação chave-valor.
+        Objetos JSON têm propriedades nomeadas, o que
+        exige uma estrutura de dados diferente de uma lista.
+- question: >-
+    Por que criar uma classe `Summary` com um construtor factory `fromJson`
+    em vez de usar apenas o `Map` puro retornado por `jsonDecode`?
+  options:
+    - text: >-
+        Segurança de tipos, autocompletar da IDE e um código mais claro
+        que documenta a estrutura de dados esperada.
+      correct: true
+      explanation: >-
+        Uma classe oferece verificação de tipos em tempo de compilação,
+        autocompletar para as propriedades e um código que se documenta sozinho.
+        `summary.title` é mais claro do que `map['title']`.
+    - text: >-
+        Maps puros são mais lentos de acessar do que propriedades de classe.
+      correct: false
+      explanation: >-
+        Desempenho não é o principal motivo.
+        O acesso a Map é bem rápido no Dart.
+        Pense na experiência do desenvolvedor.
+    - text: >-
+        O `jsonDecode` não consegue interpretar objetos JSON aninhados sem uma classe.
+      correct: false
+      explanation: >-
+        O `jsonDecode` lida bem com objetos aninhados: eles viram maps aninhados.
+        Classes têm outra finalidade, diferente da interpretação.
+    - text: >-
+        O Dart exige que todos os dados JSON sejam convertidos em classes antes do uso.
+      correct: false
+      explanation: >-
+        O Dart não exige isso.
+        Você pode usar maps puros diretamente em todo o seu código.

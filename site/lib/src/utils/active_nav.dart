@@ -14,12 +14,13 @@ ActiveNavEntry? activeNavEntry(String pageUrlPath) {
   return switch (firstFragment) {
     'overview' => ActiveNavEntry.overview,
     'community' => ActiveNavEntry.community,
-    'get-started' => ActiveNavEntry.learn,
+    'learn' || 'get-started' => ActiveNavEntry.learn,
     'get-dart' => ActiveNavEntry.getDart,
+    'blog' => ActiveNavEntry.blog,
+    'ai' ||
     'deprecated' ||
     'docs' ||
     'effective-dart' ||
-    'get-started' ||
     'interop' ||
     'language' ||
     'libraries' ||
@@ -40,4 +41,5 @@ enum ActiveNavEntry {
   getDart,
   docs,
   learn,
+  blog,
 }

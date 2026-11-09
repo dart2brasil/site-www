@@ -1,0 +1,90 @@
+- question: >-
+    O que é um enum aprimorado (enhanced enum) em Dart?
+  options:
+    - text: >-
+        Um enum que pode ter métodos e propriedades.
+      correct: true
+      explanation: >-
+        Enhanced enums permitem adicionar campos, construtores
+        e métodos aos tipos enum,
+        tornando-os bem mais poderosos do que enumerações simples.
+    - text: >-
+        Um enum que só pode ter valores de string.
+      correct: false
+      explanation: >-
+        Enhanced enums não ficam limitados a nenhum tipo específico.
+        A parte "enhanced" se refere a recursos extras
+        além da enumeração básica.
+    - text: >-
+        Um enum gerado automaticamente pelo compilador do Dart.
+      correct: false
+      explanation: >-
+        Enums são definidos por você, não gerados automaticamente.
+        "Enhanced" se refere ao que você pode fazer dentro da definição do enum.
+    - text: >-
+        Um enum que só pode ser usado em aplicativos Flutter.
+      correct: false
+      explanation: >-
+        Enhanced enums são um recurso central do Dart,
+        disponível em todos os aplicativos Dart, não só no Flutter.
+- question: >-
+    O que é uma extension em Dart?
+  options:
+    - text: >-
+        Uma forma de adicionar novos métodos a classes existentes.
+      correct: true
+      explanation: >-
+        Extensions permitem adicionar novas funcionalidades a tipos existentes
+        sem modificá-los nem criar subclasses.
+    - text: >-
+        Uma forma de criar novas classes a partir de classes existentes.
+      correct: false
+      explanation: >-
+        Criar novas classes a partir de outras é feito
+        por herança (`extends`) ou composição.
+        Extensions não criam novos tipos.
+    - text: >-
+        Uma forma de definir novos operadores em Dart.
+      correct: false
+      explanation: >-
+        Embora extensions possam definir operadores,
+        essa não é a finalidade principal ou única delas.
+        Elas são mais gerais do que apenas operadores.
+    - text: >-
+        Uma forma de criar novas variáveis em Dart.
+      correct: false
+      explanation: >-
+        Variáveis são criadas com declarações como `var` ou `final`.
+        Extensions têm outra finalidade.
+- question: >-
+    Você quer adicionar um método `capitalizeWords()` a `String`,
+    mas não pode modificar a classe `String`. Qual é a melhor abordagem?
+  options:
+    - text: >-
+        Criar uma extension em `String` que adicione o método.
+      correct: true
+      explanation: >-
+        Extensions permitem adicionar métodos a tipos existentes.
+        Depois, você pode chamar `'hello world'.capitalizeWords()`
+        como se `capitalizeWords` fizesse parte de `String`.
+    - text: >-
+        Criar uma classe `MyString` que encapsule `String` e adicione o método.
+      correct: false
+      explanation: >-
+        Classes encapsuladoras funcionam, mas exigem converter entre tipos
+        em todo lugar. Existe uma abordagem mais limpa
+        que não exige encapsulamento.
+    - text: >-
+        Criar uma subclasse de `String` com o novo método.
+      correct: false
+      explanation: >-
+        `String` é um tipo central do Dart que não pode ser estendido por herança.
+        Você precisa de outra abordagem para adicionar métodos a ela.
+    - text: >-
+        Criar uma função global `capitalizeWords(String s)` no lugar.
+      correct: false
+      explanation: >-
+        Funções globais funcionam, mas podem não ser naturais de usar e
+        costumam ser difíceis de descobrir.
+        `capitalizeWords(text)` é menos intuitivo do que `text.capitalizeWords()`.
+        O Dart oferece uma forma de chegar à segunda opção.

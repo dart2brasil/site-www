@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -20,7 +21,8 @@ final class ThemeSwitcher extends StatefulComponent {
 enum _Theme {
   light('Light', 'Switch to the light theme.', 'light_mode'),
   dark('Dark', 'Switch to the dark theme.', 'dark_mode'),
-  auto('Automatic', 'Match theme to device theme.', 'night_sight_auto');
+  auto('Automatic', 'Match theme to device theme.', 'night_sight_auto'),
+  ;
 
   final String label;
   final String description;
@@ -132,7 +134,7 @@ final class _ThemeButtonEntry extends StatelessComponent {
       },
       [
         MaterialIcon(mode.iconId),
-        span([text(mode.label)]),
+        span([.text(mode.label)]),
       ],
     ),
   ]);

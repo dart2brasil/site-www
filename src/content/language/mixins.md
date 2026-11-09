@@ -1,10 +1,10 @@
 ---
+ia-translate: true
 title: Mixins
 description: Aprenda como adicionar funcionalidades a uma classe em Dart.
-ia-translate: true
 prevpage:
   url: /language/extend
-  title: Extend a class
+  title: Estender uma classe
 nextpage:
   url: /language/enums
   title: Enums
@@ -61,7 +61,7 @@ mixin Musical {
 }
 ```
 
-## Especificar membros que um mixin pode chamar em si mesmo
+## Especificar membros que um mixin pode chamar em si mesmo {:#specify-members-a-mixin-can-call-on-itself}
 
 Às vezes um mixin depende de ser capaz de invocar um método ou acessar campos,
 mas não pode definir esses membros ele mesmo (porque mixins não podem usar parâmetros de construtor
@@ -70,7 +70,7 @@ para instanciar seus próprios campos).
 As seções a seguir cobrem diferentes estratégias para garantir que qualquer subclasse
 de um mixin defina quaisquer membros dos quais o comportamento do mixin depende.
 
-### Definir membros abstratos no mixin
+### Definir membros abstratos no mixin {:#define-abstract-members-in-the-mixin}
 
 Declarar um método abstrato em um mixin força qualquer tipo que usa
 o mixin a definir o método abstrato do qual seu comportamento depende.
@@ -87,16 +87,16 @@ mixin Musician {
   }
 }
 
-class Virtuoso with Musician {
+class Virtuoso with Musician { 
 
   @override
   void playInstrument(String instrumentName) { // Subclass must define.
     print('Plays the $instrumentName beautifully');
-  }
-}
+  }  
+} 
 ```
 
-#### Acessar estado na subclasse do mixin
+#### Acessar estado na subclasse do mixin {:#access-state-in-the-mixins-subclass}
 
 Declarar membros abstratos também permite que você acesse o estado na subclasse
 de um mixin, chamando getters que são definidos como abstratos no mixin:
@@ -121,7 +121,7 @@ class Person with NameIdentity {
 }
 ```
 
-### Implementar uma interface
+### Implementar uma interface {:#implement-an-interface}
 
 Similar a declarar o mixin abstrato, colocar uma cláusula `implements` no
 mixin sem realmente implementar a interface também garantirá que quaisquer dependências de membros
@@ -149,7 +149,7 @@ class PunkRocker with Guitarist {
 }
 ```
 
-### Usar a cláusula `on` para declarar uma superclasse
+### Usar a cláusula `on` para declarar uma superclasse {:#use-the-on-clause-to-declare-a-superclass}
 
 A cláusula `on` existe para definir o tipo contra o qual chamadas `super` são resolvidas.
 Então, você só deve usá-la se precisar ter uma chamada `super` dentro de um mixin.
@@ -180,9 +180,10 @@ main() {
 }
 ```
 
-Neste exemplo, apenas classes que estendem ou implementam a classe `Musician`
-podem usar o mixin `MusicalPerformer`. Porque `SingerDancer` estende `Musician`,
-`SingerDancer` pode misturar `MusicalPerformer`.
+Neste exemplo, apenas classes que estendem a classe `Musician` podem usar o mixin `MusicalPerformer`.
+Uma classe pode misturar `MusicalPerformer` somente se sua superclasse for um
+[subtipo](/resources/glossary#subtype) de `Musician` que forneça uma implementação concreta de `musicianMethod()`.
+Como `SingerDancer` estende `Musician`, ele pode misturar `MusicalPerformer`.
 
 ## `class`, `mixin` ou `mixin class`? {:#class-mixin-or-mixin-class}
 
@@ -213,6 +214,6 @@ Quaisquer restrições que se aplicam a classes ou mixins também se aplicam a m
 - Mixins não podem ter cláusulas `extends` ou `with`, então nem uma `mixin class` pode.
 - Classes não podem ter uma cláusula `on`, então nem uma `mixin class` pode.
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [class]: /language/classes
 [class modifiers]: /language/class-modifiers

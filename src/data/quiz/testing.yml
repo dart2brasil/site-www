@@ -1,0 +1,99 @@
+- question: >-
+    Qual é a relação entre `group`, `test` e `expect`
+    na biblioteca de testes do Dart?
+  options:
+    - text: >-
+        `group` organiza testes relacionados, `test` define casos de teste individuais,
+        `expect` verifica se os valores correspondem às expectativas.
+      correct: true
+      explanation: >-
+        Grupos contêm testes, e testes contêm expectativas.
+        Essa hierarquia mantém sua suíte de testes organizada
+        e suas asserções claras.
+    - text: >-
+        `group` executa os testes, `test` define as asserções,
+        `expect` organiza a saída.
+      correct: false
+      explanation: >-
+        Os papéis estão trocados aqui.
+        Pense no que cada nome sugere:
+        "group" indica organização, "test" indica um caso de teste.
+    - text: >-
+        `group` e `test` são intercambiáveis, e `expect` executa os dois.
+      correct: false
+      explanation: >-
+        Eles não são intercambiáveis.
+        Cada um tem uma finalidade distinta na estrutura do seu código de teste.
+    - text: >-
+        `expect` precisa ser chamado antes de `test`,
+        que precisa ser chamado antes de `group`.
+      correct: false
+      explanation: >-
+        A ordem de aninhamento está invertida nesta resposta.
+        Pense em qual elemento é o contêiner
+        e qual é o conteúdo.
+- question: >-
+    Em `expect(results.length, greaterThan(1))`,
+    como se chama `greaterThan(1)` e o que ele faz?
+  options:
+    - text: >-
+        Um matcher.
+        Ele descreve a condição que o valor real deve satisfazer.
+      correct: true
+      explanation: >-
+        Matchers como `greaterThan`, `equals`, `contains` e `isNull`
+        descrevem condições esperadas.
+        Eles deixam as asserções de teste legíveis e fornecem mensagens de falha úteis.
+    - text: >-
+        Um validador.
+        Ele lança uma exceção se o valor estiver errado.
+      correct: false
+      explanation: >-
+        Quase isso, mas não exatamente.
+        Matchers não lançam exceções diretamente; eles retornam um resultado que `expect` usa
+        para aprovar ou reprovar o teste.
+    - text: >-
+        Um comparador.
+        Ele retorna `true` ou `false` para ordenação.
+      correct: false
+      explanation: >-
+        Comparadores são usados para ordenar coleções.
+        Aqui, ele tem outra finalidade no contexto de testes.
+    - text: >-
+        Um predicado.
+        Ele filtra os resultados antes do teste.
+      correct: false
+      explanation: >-
+        Predicados costumam ser usados para filtrar coleções.
+        No `expect`, o segundo argumento cumpre
+        um papel diferente de filtragem.
+- question: >-
+    Você escreve um teste que chama `await File(path).readAsString()`.
+    O que precisa adicionar à função de teste para isso funcionar?
+  options:
+    - text: >-
+        Marcar o callback do teste como `async`: `test('...', () async { ... })`
+      correct: true
+      explanation: >-
+        Assim como em funções Dart comuns, callbacks de teste podem ser `async`.
+        O framework de testes espera automaticamente
+        que o `Future` retornado seja concluído.
+    - text: >-
+        Envolver a leitura do arquivo em uma chamada `Future.sync()`.
+      correct: false
+      explanation: >-
+        Não existe `Future.sync()` no Dart.
+        Pense no que você normalmente faz quando uma função usa `await`.
+    - text: >-
+        Usar `testAsync` no lugar de `test`.
+      correct: false
+      explanation: >-
+        Não existe uma função `testAsync`.
+        A função `test` comum consegue lidar com operações assíncronas
+        com a modificação correta no seu callback.
+    - text: >-
+        Chamar `await Future.delayed(Duration.zero)` primeiro para habilitar o modo assíncrono.
+      correct: false
+      explanation: >-
+        Não é preciso nenhuma inicialização especial nem atraso.
+        A mudança necessária está na assinatura da função, e não no seu corpo.

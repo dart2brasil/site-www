@@ -1,11 +1,11 @@
 ---
-title: "Effective Dart: Design"
+ia-translate: true
+title: "Dart Efetivo: Design"
 breadcrumb: Design
-description: Design consistent, usable libraries.
+description: Projete bibliotecas consistentes e fáceis de usar.
 prevpage:
   url: /effective-dart/usage
-  title: Usage
-ia-translate: true
+  title: Uso
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt plaster="none"?>
@@ -13,12 +13,12 @@ ia-translate: true
 
 Aqui estão algumas diretrizes para escrever APIs consistentes e utilizáveis para bibliotecas.
 
-## Names
+## Nomes {:#names}
 
 Nomenclatura é uma parte importante de escrever código legível e fácil de manter.
 As seguintes melhores práticas podem ajudá-lo a alcançar esse objetivo.
 
-### FAÇA use termos consistentemente {:#do-use-terms-consistently}
+### FAÇA usar termos consistentemente {:#do-use-terms-consistently}
 
 Use o mesmo nome para a mesma coisa, em todo o seu código. Se um precedente
 já existe fora da sua API que os usuários provavelmente conhecem, siga esse
@@ -324,7 +324,9 @@ vezes, nomeie seus membros baseado em *o que* eles fazem para o chamador, não *
 fazem.
 
 
-### EVITE iniciar um nome de método com `get` {:#avoid-starting-a-method-name-with-get}
+<a id="avoid-starting-a-method-name-with-get" aria-hidden="true"></a>
+
+### EVITE iniciar um nome de método com `get` {:#avoid-starting-a-function-or-method-name-with-get}
 
 Na maioria dos casos, o método deveria ser um getter com `get` removido do nome.
 Por exemplo, em vez de um método chamado `getBreakfastOrder()`, defina um getter
@@ -409,7 +411,7 @@ map.containsValue(value);
 ```
 
 
-### FAÇA siga as convenções mnemônicas existentes ao nomear parâmetros de tipo {:#do-follow-existing-mnemonic-conventions-when-naming-type-parameters}
+### FAÇA seguir as convenções mnemônicas existentes ao nomear parâmetros de tipo {:#do-follow-existing-mnemonic-conventions-when-naming-type-parameters}
 
 Nomes de uma única letra não são exatamente esclarecedores, mas quase todos os tipos genéricos
 os usam. Felizmente, eles os usam principalmente de uma forma consistente e mnemônica.
@@ -481,7 +483,7 @@ class Graph<Node, Edge> {
 
 Na prática, as convenções existentes cobrem a maioria dos parâmetros de tipo.
 
-## Libraries
+## Bibliotecas {:#libraries}
 
 Um caractere de sublinhado inicial ( `_` ) indica que um membro é privado à sua
 biblioteca. Isso não é mera convenção, mas está embutido na própria linguagem.
@@ -519,7 +521,7 @@ uma biblioteca monolítica enorme, apenas que você está autorizado a colocar m
 classe em uma única biblioteca.
 
 
-## Classes and mixins
+## Classes e mixins {:#classes-and-mixins}
 
 Dart é uma linguagem "pura" orientada a objetos no sentido de que todos os objetos são instâncias de
 classes. Mas Dart não requer que todo código seja definido dentro de uma
@@ -624,7 +626,7 @@ Caso contrário, mudanças posteriores podem quebrar seu código.
 
 <a id="do-document-if-your-class-supports-being-extended" aria-hidden="true"></a>
 
-### FAÇA use modificadores de classe para controlar se sua classe pode ser estendida {:#do-use-class-modifiers-to-control-if-your-class-can-be-extended}
+### FAÇA usar modificadores de classe para controlar se sua classe pode ser estendida {:#do-use-class-modifiers-to-control-if-your-class-can-be-extended}
 
 Modificadores de classe como `final`, `interface`, ou `sealed`
 restringem como uma classe pode ser estendida.
@@ -658,7 +660,7 @@ pretende, e eles podem quebrar seu código sem perceber.
 
 <a id="do-document-if-your-class-supports-being-used-as-an-interface" aria-hidden="true"></a>
 
-### FAÇA use modificadores de classe para controlar se sua classe pode ser uma interface {:#do-use-class-modifiers-to-control-if-your-class-can-be-an-interface}
+### FAÇA usar modificadores de classe para controlar se sua classe pode ser uma interface {:#do-use-class-modifiers-to-control-if-your-class-can-be-an-interface}
 
 Ao projetar uma biblioteca, use modificadores de classe como `final`, `base`, ou `sealed` para impor o uso
 pretendido. Por exemplo, use `final class C {}` ou `base class D {}` para prevenir
@@ -674,7 +676,8 @@ problemas de implementação não intencionais.
 
 {% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
 
-Dart anteriormente (versão de linguagem [2.12](/resources/language/evolution#dart-2-12)
+Dart anteriormente (em [versões da linguagem](/language/versioning)
+[2.12](/resources/language/evolution#dart-2-12)
 a [2.19](/resources/language/evolution#dart-2-19)) permitia que qualquer classe que
 atendesse certas restrições (sem construtor não-padrão, sem superclasse, etc.)
 fosse misturada em outras classes.
@@ -694,7 +697,7 @@ ou `class` puras, e evitar a ambiguidade de mixin classes.
 Leia [Migrando classes como mixins](/language/class-modifiers-for-apis#migrating-classes-as-mixins)
 para mais orientação sobre declarações `mixin` e `mixin class`.
 
-## Constructors
+## Construtores {:#constructors}
 
 Construtores Dart são criados declarando uma função com o mesmo nome da
 classe e, opcionalmente, um identificador adicional. Os últimos são chamados *construtores
@@ -718,7 +721,7 @@ torne-o `const`. Na prática, construtores `const` são mais úteis para tipos
 simples, imutáveis e similares a valores.
 
 
-## Members
+## Membros {:#members}
 
 Um membro pertence a um objeto e pode ser métodos ou variáveis de instância.
 
@@ -741,7 +744,7 @@ de [inicializar o campo em sua declaração][init at decl].
 
 [init at decl]: /effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible
 
-### FAÇA use getters para operações que conceitualmente acessam propriedades {:#do-use-getters-for-operations-that-conceptually-access-properties}
+### FAÇA usar getters para operações que conceitualmente acessam propriedades {:#do-use-getters-for-operations-that-conceptually-access-properties}
 
 Decidir quando um membro deveria ser um getter versus um método é uma parte sutil mas
 importante do bom design de API, daí esta diretriz muito longa.
@@ -835,7 +838,7 @@ dataSet.minimumValue;
 ```
 
 
-### FAÇA use setters para operações que conceitualmente mudam propriedades {:#do-use-setters-for-operations-that-conceptually-change-properties}
+### FAÇA usar setters para operações que conceitualmente mudam propriedades {:#do-use-setters-for-operations-that-conceptually-change-properties}
 
 {% render 'linter-rule-mention.md', rules:'use_setters_to_change_properties' %}
 
@@ -964,7 +967,7 @@ var buffer =
 ```
 
 
-## Types
+## Tipos {:#types}
 
 Quando você escreve um tipo em seu programa, você restringe os tipos de valores
 que fluem para diferentes partes do seu código. Tipos podem aparecer em dois tipos de
@@ -1010,7 +1013,7 @@ invocação genérica. Você geralmente não precisa se preocupar com essa disti
 em alguns lugares, temos orientação diferente para quando um tipo é usado em uma
 invocação genérica em oposição a uma anotação de tipo.
 
-#### Type inference
+#### Inferência de tipos {:#type-inference}
 
 Anotações de tipo são opcionais em Dart.
 Se você omitir uma, Dart tenta inferir um tipo
@@ -1065,7 +1068,7 @@ vários casos, mas o resumo aproximado é:
     torne o tipo óbvio.
 
 
-### FAÇA anote o tipo de variáveis sem inicializadores {:#do-type-annotate-variables-without-initializers}
+### FAÇA anotar o tipo de variáveis sem inicializadores {:#do-type-annotate-variables-without-initializers}
 
 {% render 'linter-rule-mention.md', rules:'prefer_typing_uninitialized_variables' %}
 
@@ -1094,7 +1097,7 @@ if (node is Constructor) {
 ```
 
 
-### FAÇA anote o tipo de campos e variáveis de nível superior se o tipo não é óbvio {:#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious}
+### FAÇA anotar o tipo de campos e variáveis de nível superior se o tipo não é óbvio {:#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious}
 
 {% render 'linter-rule-mention.md', rules:'type_annotate_public_apis' %}
 
@@ -1198,7 +1201,7 @@ Widget build(BuildContext context) {
 ```
 
 
-### FAÇA anote tipos de retorno em declarações de função {:#do-annotate-return-types-on-function-declarations}
+### FAÇA anotar tipos de retorno em declarações de função {:#do-annotate-return-types-on-function-declarations}
 
 Dart geralmente não infere o tipo de retorno de uma declaração de função do seu corpo,
 diferente de algumas outras linguagens. Isso significa que você deve escrever uma anotação de tipo para
@@ -1224,7 +1227,7 @@ expressões de função anônimas inferem um tipo de retorno do seu corpo. De fa
 sintaxe de função anônima nem mesmo permite uma anotação de tipo de retorno.
 
 
-### FAÇA anote tipos de parâmetros em declarações de função {:#do-annotate-parameter-types-on-function-declarations}
+### FAÇA anotar tipos de parâmetros em declarações de função {:#do-annotate-parameter-types-on-function-declarations}
 
 A lista de parâmetros de uma função determina seu limite para o mundo exterior.
 Anotar tipos de parâmetros torna esse limite bem definido.
@@ -1319,7 +1322,7 @@ class MyWidget extends StatelessWidget {
 ```
 
 
-### FAÇA escreva argumentos de tipo em invocações genéricas que não são inferidas {:#do-write-type-arguments-on-generic-invocations-that-arent-inferred}
+### FAÇA escrever argumentos de tipo em invocações genéricas que não são inferidas {:#do-write-type-arguments-on-generic-invocations-that-arent-inferred}
 
 Dart é bem inteligente sobre inferir argumentos de tipo em invocações genéricas. Ele
 olha o tipo esperado onde a expressão ocorre e os tipos de
@@ -1428,7 +1431,7 @@ var completer = Completer<Map<String, int>>();
 ```
 
 
-### FAÇA anote com `dynamic` em vez de deixar a inferência falhar {:#do-annotate-with-dynamic-instead-of-letting-inference-fail}
+### FAÇA anotar com `dynamic` em vez de deixar a inferência falhar {:#do-annotate-with-dynamic-instead-of-letting-inference-fail}
 
 Quando a inferência não preenche um tipo, geralmente padrão para `dynamic`. Se
 `dynamic` é o tipo que você quer, essa é tecnicamente a forma mais tersa de obter.
@@ -1543,6 +1546,23 @@ void set foo(Foo value) {
 <?code-excerpt "design_good.dart (avoid_return_types_on_setters)"?>
 ```dart tag=good
 set foo(Foo value) {
+   ...
+}
+```
+
+O operador `[]=` se comporta como um setter em relação aos tipos de retorno,
+então esta diretriz se aplica a ele também:
+
+<?code-excerpt "design_bad.dart (avoid_return_types_on_setters_bracket)"?>
+```dart tag=bad
+void operator []=(K key, V value) {
+   ...
+}
+```
+
+<?code-excerpt "design_good.dart (avoid_return_types_on_setters_bracket)"?>
+```dart tag=good
+operator []=(K key, V value) {
    ...
 }
 ```
@@ -1706,7 +1726,7 @@ assim, ao usar um valor de uma dessas APIs, frequentemente é uma boa ideia conv
 para um tipo mais preciso antes de acessar membros.
 
 
-### FAÇA use `Future<void>` como tipo de retorno de membros assíncronos que não produzem valores {:#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values}
+### FAÇA usar `Future<void>` como tipo de retorno de membros assíncronos que não produzem valores {:#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values}
 
 Quando você tem uma função síncrona que não retorna um valor, você usa `void`
 como tipo de retorno. O equivalente assíncrono para um método que não
@@ -1774,7 +1794,7 @@ Stream<S> asyncMap<T, S>(
 ```
 
 
-## Parameters
+## Parâmetros {:#parameters}
 
 Em Dart, parâmetros opcionais podem ser posicionais ou nomeados, mas não ambos.
 
@@ -1869,7 +1889,7 @@ var rest = string.substring(start, null);
 ```
 
 
-### FAÇA use parâmetros de início inclusivo e fim exclusivo para aceitar um intervalo {:#do-use-inclusive-start-and-exclusive-end-parameters-to-accept-a-range}
+### FAÇA usar parâmetros de início inclusivo e fim exclusivo para aceitar um intervalo {:#do-use-inclusive-start-and-exclusive-end-parameters-to-accept-a-range}
 
 Se você está definindo um método ou função que permite ao usuário selecionar um intervalo de
 elementos ou itens de alguma sequência indexada por inteiros, aceite um índice de início, que
@@ -1889,14 +1909,14 @@ geralmente não nomeados. Se sua API aceita um comprimento em vez de um ponto fi
 diferença não será visível de forma alguma no local da chamada.
 
 
-## Equality
+## Igualdade {:#equality}
 
 Implementar comportamento de igualdade personalizado para uma classe pode ser complicado. Usuários têm intuição profunda
 sobre como igualdade funciona que seus objetos precisam corresponder, e
 tipos de coleção como tabelas hash têm contratos sutis que eles esperam que
 elementos sigam.
 
-### FAÇA sobrescreva `hashCode` se você sobrescrever `==` {:#do-override-hashcode-if-you-override}
+### FAÇA sobrescrever `hashCode` se você sobrescrever `==` {:#do-override-hashcode-if-you-override}
 
 {% render 'linter-rule-mention.md', rules:'hash_and_equals' %}
 

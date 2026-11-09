@@ -2,14 +2,17 @@
 /// a loaded YAML or JSON structure.
 ///
 /// Expects data in the format used by `src/_data/sidenav.yml`.
-List<NavEntry> navEntriesFromData(List<Object?> data) => [
-  for (final item in data)
-    switch (item) {
-      'divider' => const NavEntry.divider(),
-      Map<String, Object?>() => NavEntry._fromMap(item),
-      _ => throw ArgumentError('Invalid nav entry format: $item'),
-    },
-];
+List<NavEntry> navEntriesFromData(List<Object?>? data) {
+  if (data == null) return [];
+  return [
+    for (final item in data)
+      switch (item) {
+        'divider' => const NavEntry.divider(),
+        Map<String, Object?>() => NavEntry._fromMap(item),
+        _ => throw ArgumentError('Invalid nav entry format: $item'),
+      },
+  ];
+}
 
 /// An individual entry in the sidenav.
 sealed class NavEntry {
@@ -21,7 +24,9 @@ sealed class NavEntry {
   const factory NavEntry.section(
     String title,
     List<NavEntry> children, {
+    String? permalink,
     bool expanded,
+    bool hiddenChildren,
   }) = NavSection;
 
   factory NavEntry._fromMap(Map<String, Object?> item) {
@@ -44,8 +49,16 @@ sealed class NavEntry {
       // If specified, build children recursively.
       final children = navEntriesFromData(childrenData);
       if (children.isNotEmpty) {
+        final permalink = item['permalink'] as String?;
         final expanded = item['expanded'] as bool? ?? false;
-        return NavEntry.section(title, children, expanded: expanded);
+        final hiddenChildren = item['hiddenChildren'] as bool? ?? false;
+        return NavEntry.section(
+          title,
+          children,
+          permalink: permalink,
+          expanded: expanded,
+          hiddenChildren: hiddenChildren,
+        );
       }
     } else {
       final permalink = item['permalink'] as String?;
@@ -78,11 +91,15 @@ final class NavLink extends NavEntry {
 final class NavSection extends NavEntry {
   final String title;
   final List<NavEntry> children;
+  final String? permalink;
   final bool expanded;
+  final bool hiddenChildren;
 
   const NavSection(
     this.title,
     this.children, {
+    this.permalink,
     this.expanded = false,
+    this.hiddenChildren = false,
   });
 }

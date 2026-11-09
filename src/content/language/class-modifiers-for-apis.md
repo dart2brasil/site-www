@@ -32,10 +32,10 @@ Este guia aborda essas mudanças
 para que você saiba como usar os novos modificadores
 e como eles afetam os usuários de suas bibliotecas.
 
-## O modificador `mixin` em classes
+## O modificador `mixin` em classes {:#the-mixin-modifier-on-classes}
 
 O modificador mais importante a ser observado é `mixin`.
-Versões da linguagem anteriores ao Dart 3.0 permitem que qualquer classe seja usada como mixin
+[Versões da linguagem][Language versions] anteriores ao Dart 3.0 permitem que qualquer classe seja usada como mixin
 em uma cláusula `with` de outra classe, _A MENOS QUE_ a classe:
 
 *   Declare qualquer construtor não-factory.
@@ -60,6 +60,8 @@ você pode não ver nenhum erro.
 Mas você pode inadvertidamente quebrar usuários do seu pacote
 se eles estavam usando suas classes como mixins.
 
+[Language versions]: /language/versioning
+
 ### Migrando classes como mixins {:#migrating-classes-as-mixins}
 
 Se a classe tem um construtor não-factory, uma cláusula `extends`
@@ -75,7 +77,7 @@ Aqui estão algumas perguntas para ajudar a decidir. A primeira é pragmática:
 
 *   **Você quer arriscar quebrar algum usuário?** Se a resposta for um "não" firme,
     então coloque `mixin` antes de qualquer e todas as classes que
-    [poderiam ser usadas como mixin](#o-modificador-mixin-em-classes).
+    [poderiam ser usadas como mixin](#the-mixin-modifier-on-classes).
     Isso preserva exatamente o comportamento existente da sua API.
 
 Por outro lado, se você quiser aproveitar essa oportunidade para repensar as
@@ -97,7 +99,7 @@ As últimas duas opções, deixá-la como classe ou transformá-la em um mixin p
 são breaking changes na API. Você precisará incrementar a versão principal do seu pacote
 se fizer isso.
 
-## Outros modificadores opt-in
+## Outros modificadores opt-in {:#other-opt-in-modifiers}
 
 Lidar com classes como mixins é a única mudança crítica no Dart 3.0
 que afeta a API do seu pacote. Depois de chegar até aqui,
@@ -108,7 +110,7 @@ Observe que se você continuar e usar qualquer um dos modificadores descritos ab
 isso é potencialmente uma breaking change na API do seu pacote, o que requer
 um incremento de versão principal.
 
-## O modificador `interface`
+## O modificador `interface` {:#the-interface-modifier}
 
 O Dart não tem uma sintaxe separada para declarar interfaces puras.
 Em vez disso, você declara uma classe abstract que contém apenas
@@ -144,7 +146,7 @@ e presumivelmente você sabe o que está fazendo.
 A restrição se aplica a outros pacotes
 e até a outras bibliotecas dentro do seu próprio pacote.
 
-## O modificador `base`
+## O modificador `base` {:#the-base-modifier}
 
 O modificador [`base`](/language/class-modifiers#base)
 é de certa forma o oposto de `interface`.
@@ -195,7 +197,7 @@ Então as subclasses na mesma biblioteca
 serão lembradas de implementar os métodos privados.
 Mas observe que a próxima seção *se aplica*:
 
-### Transitividade do base
+### Transitividade do base {:#base-transitivity}
 
 O objetivo de marcar uma classe como `base` é garantir que
 cada instância desse tipo concretamente herde dela.
@@ -217,7 +219,7 @@ A maioria não tem interfaces implícitas,
 então quando você declara uma classe em Java, C# ou outras linguagens,
 você efetivamente tem a mesma restrição.
 
-## O modificador `final`
+## O modificador `final` {:#the-final-modifier}
 
 Se você quiser todas as restrições de `interface` e `base`,
 você pode marcar uma classe ou mixin class como [`final`](/language/class-modifiers#final).
@@ -231,8 +233,9 @@ Em troca, você tem as menores restrições como mantenedor da classe.
 Você pode adicionar novos métodos, transformar construtores em factory constructors, etc.
 sem se preocupar em quebrar usuários downstream.
 
-<a id="the-sealed-modifer"></a>
-## O modificador `sealed`
+<a id="the-sealed-modifer" aria-hidden="true"></a>
+
+## O modificador `sealed` {:#the-sealed-modifier}
 
 O último modificador, [`sealed`](/language/class-modifiers#sealed), é especial.
 Ele existe principalmente para habilitar a [verificação de exaustividade][exhaustiveness checking] na correspondência de padrões.
@@ -300,7 +303,7 @@ class OtherDusty implements Dusty {}
 sejam restritos também, você pode conseguir isso marcando-os
 usando `interface`, `base`, `final` ou `sealed`.
 
-### `sealed` versus `final`
+### `sealed` versus `final` {:#sealed-versus-final}
 
 Se você tem uma classe que não quer que os usuários possam subtipificar diretamente,
 quando você deve usar `sealed` versus `final`?
@@ -337,7 +340,7 @@ mesmo que ele tenha cases para todos os subtipos,
 o compilador os forçará a adicionar outro case default.
 Esse case default será então executado se você adicionar mais subtipos posteriormente.
 
-## Resumo
+## Resumo {:#summary}
 
 Como designer de API,
 esses novos modificadores fornecem controle sobre como os usuários trabalham com seu código

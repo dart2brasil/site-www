@@ -7,123 +7,172 @@ description: Ferramenta de linha de comando para formatar código-fonte Dart.
 Para atualizar seu código para seguir as
 [diretrizes de formatação do Dart][dart-guidelines],
 use o comando `dart format`.
-Esta formatação segue o que você obtém
-ao usar um IDE ou editor com suporte para Dart.
+Essa formatação segue o mesmo padrão que você obtém
+ao usar um IDE ou editor com suporte a Dart.
 
 {% render 'tools/dart-tool-note.md' %}
 
-## Especificar arquivos para formatar {:#specifying-files-to-format}
+## Especifique os arquivos a formatar {:#specify-files-to-format}
 
 Para reformatar um ou mais arquivos Dart,
 forneça uma lista de caminhos para os arquivos ou diretórios desejados.
 
-### Especificar um caminho {:#specifying-a-path}
+### Especifique um caminho {:#specify-one-path}
 
-Forneça o caminho para um arquivo ou diretório.
+Forneça o caminho de um arquivo ou diretório.
 Se você passar um caminho de diretório,
-`dart format` percorre seus subdiretórios também.
+o `dart format` também percorre os subdiretórios.
 
-**Exemplo:** Para formatar todos os arquivos Dart no diretório atual ou abaixo dele:
+**Exemplo:** para formatar todos os arquivos Dart no diretório atual ou abaixo dele:
 
 ```console
 $ dart format .
 ```
 
-### Especificar múltiplos caminhos {:#specifying-multiple-paths}
+### Especifique múltiplos caminhos {:#specify-multiple-paths}
 
-Para especificar múltiplos arquivos ou diretórios, use uma lista delimitada por espaços.
+Para especificar vários arquivos ou diretórios, use uma lista separada por espaços.
 
-**Exemplo:** Para formatar todos os arquivos Dart no diretório `lib`,
+**Exemplo:** para formatar todos os arquivos Dart no diretório `lib`,
 mais um arquivo Dart no diretório `bin`:
 
 ```console
-$ dart format lib bin/updater.dart
+$ dart format lib bin/updater.dart 
 ```
 
-### Prevenir sobrescrita de arquivos Dart {:#preventing-overwriting}
+### Evite sobrescrever arquivos Dart {:#prevent-overwriting-dart-files}
 
-Por padrão, `dart format` **sobrescreve** os arquivos Dart.
+Por padrão, o `dart format` **sobrescreve** os arquivos Dart.
 
 * Para não sobrescrever os arquivos, adicione a flag `--output` ou `-o`.
 * Para obter o conteúdo dos arquivos formatados, adicione `-o show` ou `-o json`.
-* Para ver apenas quais arquivos _iriam_ mudar, adicione `-o none`.
+* Para ver apenas quais arquivos _seriam_ alterados, adicione `-o none`.
 
 ```console
 $ dart format -o show bin/my_app.dart
 ```
 
-## Notificar quando ocorrerem mudanças {:#getting-notified-of-changes}
+## Seja notificado quando houver alterações {:#notify-when-changes-occur}
 
-Para fazer o `dart format` retornar um código de saída quando mudanças de formatação ocorrerem,
+Para fazer o `dart format` retornar um código de saída quando houver alterações de formatação,
 adicione a flag `--set-exit-if-changed`.
 
-* Se mudanças ocorrerem, o comando `dart format` retorna um código de saída `1`.
-* Se mudanças não ocorrerem, o comando `dart format` retorna um código de saída `0`.
+* Se houver alterações, o comando `dart format` retorna o código de saída `1`.
+* Se não houver alterações, o comando `dart format` retorna o código de saída `0`.
 
-Use códigos de saída com sistemas de integração contínua (CI)
-para que eles possam acionar outra ação em resposta ao código de saída.
+Use os códigos de saída com sistemas de integração contínua (CI)
+para que eles possam disparar outra ação em resposta ao código de saída.
 
 ```console
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
+## Formatar ao salvar {:#format-on-save}
+
+Muitos editores com suporte a Dart podem formatar
+seu código automaticamente ao salvar um arquivo.
+
+### VS Code {:#vs-code}
+
+Para ativar a formatação ao salvar no [VS Code](/tools/vs-code),
+adicione a seguinte entrada ao seu arquivo `settings.json`:
+
+```json
+{
+  "[dart]": {
+    "editor.formatOnSave": true
+  }
+}
+```
+
+### IntelliJ e Android Studio {:#intellij-and-android-studio}
+
+Para ativar a formatação ao salvar nas [IDEs da JetBrains](/tools/jetbrains-plugin),
+incluindo o IntelliJ IDEA e o Android Studio,
+siga as instruções deles sobre como
+[reformatar o código automaticamente ao salvar][ij-on-save].
+
+[ij-on-save]: https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html#reformat-on-save
+
 ## O que muda? {:#what-changes}
 
-`dart format` faz as seguintes mudanças de formatação:
+O `dart format` faz as seguintes alterações de formatação:
 
 * Remove espaços em branco.
-* Quebra cada linha para 80 caracteres de comprimento ou menos.
+* Quebra cada linha para ter 80 caracteres ou menos.
 * Adiciona vírgulas finais a qualquer lista de argumentos ou parâmetros
-que se divide em múltiplas linhas, e as remove das que não se dividem.
-* Pode mover comentários antes ou depois de uma vírgula.
+que se divida em várias linhas, e as remove das que não se dividem.
+* Pode mover comentários para antes ou depois de uma vírgula.
 
 Para saber mais sobre as melhores práticas para escrever e estilizar código Dart,
-confira o [Dart style guide][].
+consulte o [Dart style guide][].
 
-### Configurando largura de página do formatador {:#configuring-formatter-page-width}
+### Configure o formatador {:#configure-the-formatter}
 
-Quando você executa `dart format`, o formatador assume como padrão
-comprimento de linha de 80 caracteres ou menos.
-Se você quiser configurar o comprimento de linha para seu projeto,
-pode adicionar uma seção `formatter` de nível superior ao
-arquivo [`analysis_options.yaml`][], assim:
+Ao executar o `dart format`, o formatador usa por padrão
+um comprimento de linha de 80 caracteres ou menos.
+Configure o comportamento do formatador adicionando uma seção
+`formatter` de nível superior ao arquivo [`analysis_options.yaml`][].
+
+#### Largura da página {:#page-width}
+
+Configure o comprimento de linha do seu projeto:
 
 ```yaml title="analysis_options.yaml"
 formatter:
   page_width: 123
 ```
 
-Com o arquivo de opções de análise tipicamente na raiz,
-o comprimento de linha configurado se aplicará a tudo no pacote.
+Como o arquivo de opções de análise geralmente fica na raiz,
+o comprimento de linha configurado se aplica a tudo no pacote.
 
-Você também pode configurar o comprimento de linha de arquivos individuais,
-sobrescrevendo o arquivo de opções de análise,
-com um comentário marcador no topo do arquivo antes de qualquer outro código:
+#### Preservar vírgulas finais {:#preserve-trailing-commas}
+
+Por padrão, o `dart format` adiciona ou remove vírgulas finais
+conforme a construção seja dividida em várias linhas ou não.
+Para forçar uma construção a se dividir mesmo quando couber em uma linha,
+configure o formatador para preservar as vírgulas finais:
+
+```yaml title="analysis_options.yaml"
+formatter:
+  trailing_commas: preserve
+```
+
+Quando essa opção está ativada, adicionar uma vírgula final a uma lista de argumentos,
+a uma lista de parâmetros ou a outras construções força o formatador a dividi-las
+em várias linhas, mesmo que caibam em uma só. Isso dá controle manual
+sobre as quebras de linha em construções específicas.
+Isso lhe dá controle manual sobre as quebras de linha em construções específicas.
+
+Para configurar o comprimento de linha de um arquivo individual,
+sobrescrevendo as opções de análise, adicione
+um comentário marcador no topo do arquivo, antes de qualquer outro código:
 
 ```dart
 // dart format width=123
 ```
 
 :::version-note
-Largura de página configurável requer
-uma [language version][] de pelo menos 3.7.
+As opções configuráveis do formatador exigem
+uma [versão da linguagem][language version] de pelo menos 3.7.
+A opção `trailing_commas` exige pelo menos 3.8.
 :::
 
 ## Saiba mais {:#learn-more}
 
-Para aprender sobre opções adicionais de linha de comando,
-use o comando `dart help` ou veja a documentação do
+Para conhecer opções adicionais de linha de comando,
+use o comando `dart help` ou consulte a documentação do
 [pacote dart_style][dart_style]
 
 ```console
 $ dart help format
 ```
 
-Confira o [FAQ do formatador][formatter FAQ] para mais contexto por trás das decisões de formatação.
+Confira o [FAQ do formatador][formatter FAQ] para entender melhor o contexto das decisões de formatação.
 
 [Dart style guide]: /effective-dart/style
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dart-guidelines]: /effective-dart/style#formatting
 [`analysis_options.yaml`]: /tools/analysis
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ

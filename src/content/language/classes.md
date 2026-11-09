@@ -24,7 +24,7 @@ adicionar funcionalidade a uma classe sem alterar a classe ou criar uma subclass
 [Modificadores de classe][Class modifiers] permitem que você controle como as bibliotecas podem subtipificar uma classe.
 
 
-## Usando membros de classe
+## Usando membros de classe {:#using-class-members}
 
 Objetos têm *membros* que consistem em funções e dados (*métodos* e
 *variáveis de instância*, respectivamente). Quando você chama um método, você o *invoca*
@@ -133,7 +133,7 @@ assert(!identical(a, b)); // NOT the same instance!
 ```
 
 
-## Obtendo o tipo de um objeto
+## Obtendo o tipo de um objeto {:#getting-an-objects-type}
 
 Para obter o tipo de um objeto em tempo de execução,
 você pode usar a propriedade `runtimeType` de `Object`,
@@ -239,7 +239,9 @@ class ProfileMark {
 Se você precisa atribuir o valor de uma variável de instância `final`
 após o corpo do construtor começar, você pode usar uma das seguintes opções:
 
-* Use um [factory constructor][factory constructor].
+* Calcule o valor em um [factory constructor][factory constructor],
+  depois passe-o para um construtor generativo que
+  inicializa a variável de instância `final`.
 * Use `late final`, mas [_tenha cuidado:_][late-final-ivar]
   um `late final` sem inicializador adiciona um setter à API.
 
@@ -298,7 +300,7 @@ class Point implements Comparable, Location {
 
 Use a palavra-chave `static` para implementar variáveis e métodos que abrangem toda a classe.
 
-### Variáveis static
+### Variáveis static {:#static-variables}
 
 Variáveis static (variáveis de classe) são úteis para estado e
 constantes que abrangem toda a classe:

@@ -5,10 +5,14 @@ $base_primary_color: #1967d2;
 // Root variables shared by both light and dark mode.
 body {
   // Site typography.
-  --site-ui-fontFamily: 'Google Sans', 'Roboto', ui-sans, sans-serif;
-  --site-body-fontFamily: 'Google Sans Text', 'Roboto', ui-sans, sans-serif;
-  --site-code-fontFamily: 'Google Sans Mono', 'Roboto Mono', ui-monospace, monospace;
+  --site-ui-fontFamily: 'Google Sans Flex', 'Roboto', ui-sans, sans-serif;
+  --site-body-fontFamily: 'Google Sans Flex', 'Roboto', ui-sans, sans-serif;
+  --site-code-fontFamily: 'Google Sans Code', 'Roboto Mono', ui-monospace, monospace;
+  --site-blog-fontFamily: 'Roboto Serif', 'Noto Serif', var(--site-body-fontFamily);
   --site-icon-fontFamily: 'Material Symbols Outlined', 'Material Symbols', 'Material Icons';
+  --site-fontWeight-normal: 400;
+  --site-fontWeight-bold: 600;
+  --site-fontWeight-bolder: 700;
 
   // Site layout sizes.
   --site-header-height: 3.25rem;
@@ -42,7 +46,7 @@ body {
   --site-base-fgColor-alt: #6a6f71;
 
   --site-raised-bgColor: #edf0f2;
-  --site-raised-bgColor-translucent: #{color.change(#edf0f2, $alpha: 0.1)};
+  --site-raised-bgColor-translucent: #{color.change(#edf0f2, $alpha: 0.2)};
 
   --site-primary-color: #{$base_primary_color};
   --site-accent-color: #833ef2;
@@ -76,7 +80,7 @@ body {
   --site-chrome-borderColor: #394c60;
   --site-chrome-fgColor: #F3F4F6;
 
-  --site-banner-bgColor: linear-gradient(139deg, #134386, #1959b3);
+  --site-banner-bgColor: linear-gradient(139deg, #1959b3, #134386);
   --site-banner-fgColor: #fff;
 
   --site-card-borderColor: var(--site-outline);
@@ -100,7 +104,8 @@ body {
     display: none !important;
   }
 
-  &.dark-mode, .always-dark-mode {
+  &.dark-mode,
+  .always-dark-mode {
     color-scheme: dark;
     --site-outline: rgba(95, 100, 119, .75);
     --site-outline-variant: #252834;
@@ -113,7 +118,7 @@ body {
     --site-base-fgColor-alt: #a8acad;
 
     --site-raised-bgColor: #1c1e27;
-    --site-raised-bgColor-translucent: #{color.change(#1c1e27, $alpha: 0.1)};
+    --site-raised-bgColor-translucent: #{color.change(#1c1e27, $alpha: 0.4)};
 
     --site-primary-color: #{$base_primary_color};
     --site-accent-color: #b07fff;
@@ -167,7 +172,8 @@ body {
     --site-alert-warning-color: #cea11f;
     --site-alert-error-color: #ff5d5d;
 
-    .opal, .opal span {
+    .opal,
+    .opal span {
       color: var(--opal-dark-color) !important;
       font-style: var(--opal-dark-font-style) !important;
       font-weight: var(--opal-dark-font-weight) !important;

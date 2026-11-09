@@ -8,24 +8,28 @@ description: >-
 O comando `dart fix`
 encontra e corrige dois tipos de problemas:
 
-* Problemas de análise identificados por [`dart analyze`][]
-  que possuem correções automatizadas associadas
-  (às vezes chamadas de _quick-fixes_ ou _code actions_).
+* Problemas de análise identificados pelo [`dart analyze`][]
+  que têm correções automatizadas associadas
+  (às vezes chamadas de _quick fixes_ ou _code actions_).
 
 * Usos de API desatualizados ao atualizar para
-  versões mais recentes dos SDKs Dart e Flutter.
+  versões mais recentes dos SDKs do Dart e do Flutter, ou de dependências
+  que fornecem correções orientadas a dados.
+
+  Se você é mantenedor de um pacote,
+  para ajudar seus usuários a migrar quando você alterar a API do seu pacote,
+  pode criar [correções orientadas a dados][data-driven fixes].
 
 :::tip
-Para aprender sobre `dart fix` em formato de vídeo,
-confira este [deep dive][] no **Decoding Flutter**:
+Para aprender sobre o `dart fix` em formato de vídeo,
+confira este [deep dive][] sobre o **Decoding Flutter**:
 
 <YouTubeEmbed id="OBIuSrg_Quo" title="Using Dart analyze & Dart fix"></YouTubeEmbed>
 :::
 
 [deep dive]: {{site.yt.watch}}/OBIuSrg_Quo
 
-<a id="usage"></a>
-## Aplicar correções
+## Aplique as correções {:#apply-fixes}
 
 Para visualizar as alterações propostas, use a flag `--dry-run`:
 
@@ -39,21 +43,72 @@ Para aplicar as alterações propostas, use a flag `--apply`:
 $ dart fix --apply
 ```
 
+## Opções para `dart fix` {:#options-for-dart-fix}
+
+As opções a seguir podem ser usadas com o comando `dart fix`.
+
+### `-h`, `--help` {:#h-help}
+
+Exibe as informações de uso do `dart fix`.
+
+```console
+$ dart fix --help
+```
+
+### `-n`, `--dry-run` {:#n-dry-run}
+
+Visualiza as alterações propostas sem modificar nenhum arquivo.
+
+```console
+$ dart fix --dry-run
+```
+
+### `--apply` {:#apply}
+
+Aplica as alterações propostas diretamente nos arquivos de código-fonte.
+
+```console
+$ dart fix --apply
+```
+
+### `--code` {:#code}
+
+Aplica correções apenas para um ou mais códigos de diagnóstico específicos.
+Especifique vários códigos de diagnóstico como uma lista separada por vírgulas.
+
+```console
+$ dart fix --apply --code=prefer_single_quotes,use_super_parameters
+```
+
+### `--compare-to-golden` {:#compare-to-golden}
+
+Compara o resultado da aplicação das correções com
+arquivos golden que contêm o código resultante esperado,
+sem modificar os arquivos de código-fonte.
+
+```console
+$ dart fix --compare-to-golden
+```
+
+Mantenedores de pacotes podem usar esta opção para verificar suas correções orientadas a dados.
+Para aprender a configurar e executar esses testes,
+consulte [Teste suas correções][Test your fixes].
+
 <a id="customization"></a>
-## Personalizar comportamento {:#customize}
+## Personalize as correções baseadas em análise {:#customize}
 
 O comando `dart fix` aplica correções apenas
 quando há um "problema" identificado por um diagnóstico.
 Alguns diagnósticos, como erros de compilação, são habilitados implicitamente,
-enquanto outros, como lints, devem ser explicitamente habilitados
+enquanto outros, como lints, precisam ser habilitados explicitamente
 no [arquivo de opções de análise](/tools/analysis),
-já que as preferências individuais para estes variam.
+já que as preferências individuais por eles variam.
 
-Você pode às vezes aumentar o número de correções que podem ser aplicadas
+Às vezes você pode aumentar o número de correções que podem ser aplicadas
 habilitando lints adicionais.
-Note que nem todos os diagnósticos possuem correções associadas.
+Observe que nem todos os diagnósticos têm correções associadas.
 
-### Exemplo
+### Exemplo {:#example}
 
 Imagine que você tenha um código assim:
 
@@ -80,22 +135,22 @@ class Vector3d extends Vector2d {
 }
 ```
 
-Para habilitar o `dart fix` para atualizar código existente para usar este recurso,
-e para garantir que o analyzer avise quando você depois esquecer de usá-lo,
+Para habilitar o `dart fix` a atualizar o código existente para usar esse recurso,
+e para garantir que o analyzer avise quando você esquecer de usá-lo depois,
 configure seu arquivo `analysis_options.yaml` da seguinte forma:
 
-```yaml
+```yaml title="analysis_options.yaml"
 linter:
   rules:
     - use_super_parameters
 ```
 
-Também precisamos garantir que o código habilite a [versão de linguagem][language version] necessária.
-Super initializers foram introduzidos no Dart 2.17,
-então atualize `pubspec.yaml` para ter pelo menos isso
+Certifique-se também de que seu código habilita a [versão da linguagem][language version] necessária.
+Os super initializers foram introduzidos no Dart 2.17,
+então atualize o `pubspec.yaml` para ter pelo menos essa versão
 na restrição inferior do SDK:
 
-```yaml
+```yaml title="pubspec.yaml"
 environment:
   sdk: ">=2.17.0 <4.0.0"
 ```
@@ -112,23 +167,39 @@ lib/myapp.dart
   use_super_parameters • 1 fix
 ```
 
-Para aprender mais sobre personalização de resultados e comportamento de análise,
-consulte [Personalizando análise estática](/tools/analysis).
+Para saber mais sobre a personalização dos resultados e do comportamento da análise,
+consulte [Personalizando a análise estática](/tools/analysis).
 
-[`dart analyze`]: /tools/dart-analyze
-[language version]: /resources/language/evolution#language-versioning
+## Suporte em IDEs {:#ide-support}
 
-## Suporte no VS Code
+Quando você abre um projeto em um editor com suporte ao Dart,
+o analyzer do Dart escaneia o projeto em busca de problemas que o `dart fix` pode corrigir.
+Se encontrar problemas para corrigir,
+o editor pode exibir avisos e oferecer quick fixes (code actions).
 
-Quando você abre um projeto no VS Code,
-o plugin Dart escaneia o projeto em busca de problemas que o `dart fix` pode reparar.
-Se encontrar problemas para reparar, o VS Code exibe um prompt para lembrá-lo.
+<a id="vs-code-support"></a>
+### VS Code {:#vs-code}
+
+No VS Code,
+a extensão Dart exibe um aviso quando há correções disponíveis:
 
 <img src="/assets/img/tools/vscode/dart_fix_notification.png" width="550" height="175" alt="VS Code notification about 'dart fix'">
 
-Após executar `dart pub get` ou `dart pub upgrade`,
-o VS Code também pode exibir este prompt se mudanças de pacote
-adicionarem problemas que o `dart fix` pode reparar.
+Depois de executar `dart pub get` ou `dart pub upgrade`,
+o VS Code também pode exibir esse aviso se as alterações de pacotes
+adicionarem problemas que o `dart fix` pode corrigir.
 
 Salve todos os seus arquivos antes de executar `dart fix`.
 Isso garante que o Dart use as versões mais recentes dos seus arquivos.
+
+### IntelliJ IDEA e Android Studio {:#intellij-idea-and-android-studio}
+
+Nas [IDEs da JetBrains](/tools/jetbrains-plugin),
+pressione <kbd>Alt</kbd> + <kbd>Enter</kbd> no Windows ou Linux
+ou <kbd>Option</kbd> + <kbd>Return</kbd> no macOS
+sobre qualquer diagnóstico de código destacado para ver e aplicar os quick fixes disponíveis.
+
+[`dart analyze`]: /tools/dart-analyze
+[data-driven fixes]: /tools/pub/data-driven-fixes
+[Test your fixes]: /tools/pub/data-driven-fixes#test-your-fixes
+[language version]: /language/versioning

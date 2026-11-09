@@ -1,168 +1,161 @@
 ---
-title: Package versioning
-description: >-
-  How Dart's package management tool, pub, handles versioning of packages.
 ia-translate: true
+title: Versionamento de pacotes
+description: >-
+  Como o pub, a ferramenta de gerenciamento de pacotes do Dart, lida com o versionamento dos pacotes.
 ---
 
-<!--
-ia-translate: true
--->
-
 O [gerenciador de pacotes pub][pub] ajuda você a trabalhar com versionamento.
-Este guia explica um pouco sobre a história do versionamento e a
+Este guia explica um pouco da história do versionamento e a
 abordagem do pub para isso.
 
 Considere isto como informação avançada.
-Para aprender _por que_ o pub foi projetado da maneira que foi, continue lendo.
+Para entender _por que_ o pub foi projetado da forma como foi, continue lendo.
 Se você quer _usar_ o pub, consulte a [outra documentação][pub].
 
-O desenvolvimento de software moderno, especialmente desenvolvimento web, depende muito de
-reutilizar muito e muito código existente. Isso inclui código que _você_ escreveu no
+O desenvolvimento de software moderno, especialmente o desenvolvimento web, depende muito do
+reuso de um grande volume de código existente. Isso inclui o código que _você_ escreveu no
 passado, mas também código de terceiros, desde grandes frameworks até pequenas
-bibliotecas utilitárias. Não é incomum que uma aplicação dependa de
+bibliotecas utilitárias. Não é incomum que um aplicativo dependa de
 dezenas de pacotes e bibliotecas diferentes.
 
-É difícil subestimar o quão poderoso isso é. Quando você vê histórias de pequenas startups web
-construindo um site em poucas semanas que recebe milhões de usuários, a
-única razão pela qual elas conseguem isso é porque a comunidade open source
-colocou uma festa de software aos seus pés.
+É difícil exagerar o poder disso. Quando você vê histórias de pequenas
+startups web que criam um site em poucas semanas e que atinge milhões de usuários, o
+único motivo de conseguirem isso é que a comunidade open source
+colocou um banquete de software à disposição delas.
 
-Mas isso não vem de graça: Há um desafio para a reutilização de código,
-especialmente reutilizar código que você não mantém. Quando seu app usa código
-sendo desenvolvido por outras pessoas, o que acontece quando elas o mudam?
-Elas não querem quebrar seu app, e você certamente também não quer.
-Resolvemos este problema com _versionamento_.
+Mas isso não vem de graça: existe um desafio para o
+reuso de código, especialmente quando você reutiliza código que não mantém. Quando seu app usa código
+desenvolvido por outras pessoas, o que acontece quando elas mudam esse código?
+Elas não querem quebrar o seu app, e você definitivamente também não quer.
+Resolvemos esse problema com _versionamento_.
 
-## A name and a number
+## Um nome e um número {:#a-name-and-a-number}
 
-When you depend on some piece of outside code,
-you don't just say "My app uses `widgets`." You say, "My app uses
-`widgets 2.0.5`." That combination of name and version number uniquely
-identifies an _immutable_ chunk of code. The people updating `widgets` can
-make all of the changes they want, but they promise to not touch any already
-released versions. They can put out `2.0.6` or `3.0.0` and it won't affect you
-one bit because the version you use is unchanged.
+Quando você depende de algum pedaço de código externo,
+você não diz apenas "Meu app usa `widgets`". Você diz "Meu app usa
+`widgets 2.0.5`". Essa combinação de nome e número de versão identifica de forma única
+um pedaço de código _imutável_. As pessoas que atualizam `widgets` podem
+fazer todas as mudanças que quiserem, mas se comprometem a não tocar em nenhuma
+versão já lançada. Elas podem lançar `2.0.6` ou `3.0.0` e isso não afetará você
+em nada, porque a versão que você usa continua inalterada.
 
-When you _do_ want to get those changes, you can always point your app to a
-newer version of `widgets` and you don't have to coordinate with those
-developers to do it. However, that doesn't entirely solve the problem.
+Quando você _quer_ receber essas mudanças, sempre pode apontar seu app para uma
+versão mais nova de `widgets`, e não precisa coordenar com esses
+desenvolvedores para fazer isso. No entanto, isso não resolve o problema por completo.
 
-The version numbers discussed in this guide might differ from the
-version number set in the package filename.
-They might include `-0` or `-beta`.
-These notations don't affect dependency resolution.
+Os números de versão discutidos neste guia podem ser diferentes do
+número de versão definido no nome do arquivo do pacote.
+Eles podem incluir `-0` ou `-beta`.
+Essas notações não afetam a resolução de dependências.
 
-## Resolving shared dependencies
+## Resolvendo dependências compartilhadas {:#resolving-shared-dependencies}
 
-Depending on specific versions works fine when your dependency
-_graph_ is really just a dependency _tree_. If your app depends on a bunch of
-packages, and those things in turn have their own dependencies and so on, that
-all works fine as long as none of those dependencies _overlap_.
+Depender de versões específicas funciona bem quando o seu
+_grafo_ de dependências é, na prática, apenas uma _árvore_ de dependências. Se o seu app depende de vários
+pacotes, e esses pacotes por sua vez têm suas próprias dependências e assim por diante, tudo
+funciona bem enquanto nenhuma dessas dependências _se sobrepõe_.
 
-Consider the following example:
+Considere o exemplo a seguir:
 
-<img src="/assets/img/tools/pub/PubConstraintsDiagram.png" alt="dependency graph">
+<img src="/assets/img/tools/pub/PubConstraintsDiagram.png" alt="grafo de dependências">
 
-So your app uses `widgets` and `templates`, and _both_ of those use
-`collection`. This is called a **shared dependency**. Now what happens when
-`widgets` wants to use `collection 2.3.5` and `templates` wants
-`collection 2.3.7`? What if they don't agree on a version?
+Então o seu app usa `widgets` e `templates`, e _ambos_ usam
+`collection`. Isso é chamado de **dependência compartilhada**. Agora, o que acontece quando
+`widgets` quer usar `collection 2.3.5` e `templates` quer
+`collection 2.3.7`? E se eles não concordarem em uma versão?
 
-### Unshared libraries (the npm approach)
+### Bibliotecas não compartilhadas (a abordagem do npm) {:#unshared-libraries-the-npm-approach}
 
-One option is to just let the app use both
-versions of `collection`. It will have two copies of the library at different
-versions and `widgets` and `templates` will each get the one they want.
+Uma opção é deixar o app usar as duas
+versões de `collection`. Ele terá duas cópias da biblioteca em versões diferentes, e
+`widgets` e `templates` vão cada um pegar a que quer.
 
-This is what [npm][] does for node.js. Would it work for Dart? Consider this
-scenario:
+É isso que o [npm][] faz para o node.js. Funcionaria para o Dart? Considere este
+cenário:
 
- 1. `collection` defines some `Dictionary` class.
- 2. `widgets` gets an instance of it from its copy of `collection` (`2.3.5`).
-    It then passes it up to `my_app`.
- 3. `my_app` sends the dictionary over to `templates`.
- 4. That in turn sends it down to *its* version of `collection` (`2.3.7`).
- 5. The method that takes it has a `Dictionary` type annotation for that object.
+ 1. `collection` define alguma classe `Dictionary`.
+ 2. `widgets` recebe uma instância dela da sua cópia de `collection` (`2.3.5`).
+    Em seguida, passa essa instância para cima, para `my_app`.
+ 3. `my_app` envia o dicionário para `templates`.
+ 4. Este, por sua vez, o envia para _a sua_ versão de `collection` (`2.3.7`).
+ 5. O método que o recebe tem uma anotação de tipo `Dictionary` para esse objeto.
 
-As far as Dart is concerned, `collection 2.3.5` and `collection 2.3.7` are
-entirely unrelated libraries. If you take an instance of class `Dictionary`
-from one and pass it to a method in the other, that's a completely different
-`Dictionary` type. That means it will fail to match a `Dictionary` type
-annotation in the receiving library. Oops.
+Para o Dart, `collection 2.3.5` e `collection 2.3.7` são
+bibliotecas totalmente não relacionadas. Se você pega uma instância da classe `Dictionary`
+de uma delas e a passa para um método da outra, isso é um tipo `Dictionary` completamente diferente.
+Isso significa que ela não vai corresponder à anotação de tipo `Dictionary`
+da biblioteca que a recebe. Opa.
 
-Because of this (and because of the headaches of trying to debug an app that
-has multiple versions of things with the same name), we've decided npm's model
-isn't a good fit.
+Por causa disso (e das dores de cabeça de tentar depurar um app que
+tem várias versões de coisas com o mesmo nome), decidimos que o modelo do npm
+não é uma boa opção.
 
-### Version lock (the dead end approach)
+### Trava de versão (a abordagem sem saída) {:#version-lock-the-dead-end-approach}
 
-Instead, when you depend on a package, your app only uses a single copy of
-that package. When you have a shared dependency, everything that depends on it
-has to agree on which version to use. If they don't, you get an error.
+Em vez disso, quando você depende de um pacote, o seu app usa apenas uma única cópia
+desse pacote. Quando há uma dependência compartilhada, tudo o que depende dela
+precisa concordar sobre qual versão usar. Se não concordar, você recebe um erro.
 
-That doesn't actually solve your problem though. When you _do_ get that error,
-you need to be able to resolve it. So let's say you've gotten yourself into
-that situation in the previous example. You want to use `widgets` and
-`templates`, but they are using different versions of `collection`. What do
-you do?
+Isso, na verdade, não resolve o seu problema. Quando você _recebe_ esse erro,
+precisa ser capaz de resolvê-lo. Então, digamos que você tenha se metido
+nessa situação no exemplo anterior. Você quer usar `widgets` e
+`templates`, mas eles usam versões diferentes de `collection`. O que você faz?
 
-The answer is to try to upgrade one of those. `templates` wants
-`collection 2.3.7`. Is there a later version of `widgets` that you can upgrade
-to that works with that version?
+A resposta é tentar atualizar um deles. `templates` quer
+`collection 2.3.7`. Existe uma versão mais recente de `widgets` para a qual você pode atualizar
+que funcione com essa versão?
 
-In many cases, the answer will be "no". Look at it from the perspective of the
-people developing `widgets`. They want to put out a new version with new changes
-to _their_ code, and they want as many people to be able to upgrade to it as
-possible. If they stick to their _current_ version of `collection` then anyone
-who is using the current version `widgets` will be able to drop in this new one
-too.
+Em muitos casos, a resposta será "não". Olhe pela perspectiva das
+pessoas que desenvolvem `widgets`. Elas querem lançar uma nova versão com novas mudanças
+no _código delas_, e querem que o maior número possível de pessoas consiga atualizar para ela.
+Se elas se mantiverem na versão _atual_ de `collection`, então qualquer pessoa que
+usa a versão atual de `widgets` também poderá trocar por essa nova.
 
-If they were to upgrade _their_ dependency on `collection` then everyone who
-upgrades `widgets` would have to as well, _whether they want to or not_.
-That's painful, so you end up with a disincentive to upgrade dependencies.
-That's called **version lock**:
-everyone wants to move their dependencies forward,
-but no one can take the first step because it forces everyone else to as well.
+Se elas atualizassem a _própria_ dependência de `collection`, então todos que
+atualizassem `widgets` também precisariam fazer isso, _quer quisessem ou não_.
+Isso é doloroso, então você acaba com um desincentivo a atualizar dependências.
+Isso se chama **trava de versão**:
+todo mundo quer avançar com suas dependências,
+mas ninguém consegue dar o primeiro passo, porque isso obriga todos os outros a fazer o mesmo.
 
-### Version constraints (the Dart approach)
+### Restrições de versão (a abordagem do Dart) {:#version-constraints-the-dart-approach}
 
-To solve version lock, we loosen the constraints that packages place on their
-dependencies. If `widgets` and `templates` can both indicate a _range_ of
-versions for `collection` that they work with, then that gives us enough
-wiggle room to move our dependencies forward to newer versions. As long as there
-is overlap in their ranges, we can still find a single version that makes them
-both happy.
+Para resolver a trava de versão, relaxamos as restrições que os pacotes impõem sobre
+suas dependências. Se `widgets` e `templates` puderem indicar um _intervalo_ de
+versões de `collection` com as quais funcionam, isso nos dá espaço suficiente para avançar
+nossas dependências para versões mais novas. Enquanto houver sobreposição entre
+seus intervalos, ainda conseguimos encontrar uma única versão que satisfaça os dois.
 
-This is the model that [bundler][] follows,
-and is pub's model too. When you add a dependency in your pubspec,
-you can specify a _range_ of versions that you can accept.
-If the pubspec for `widgets` looked like this:
+Esse é o modelo que o [bundler][] segue,
+e também é o modelo do pub. Quando você adiciona uma dependência no seu pubspec,
+pode especificar um _intervalo_ de versões que você aceita.
+Se o pubspec de `widgets` fosse assim:
 
 ```yaml
 dependencies:
   collection: '>=2.3.5 <2.4.0'
 ```
 
-You could pick version `2.3.7` for `collection`.
-A single concrete version would satisfy constraints for
-both the `widgets` and `templates` packages.
+Você poderia escolher a versão `2.3.7` para `collection`.
+Uma única versão concreta satisfaria as restrições tanto
+do pacote `widgets` quanto do pacote `templates`.
 
-## Semantic versions
+## Versões semânticas {:#semantic-versions}
 
-When you add a dependency to your package, you'll sometimes want to specify a
-range of versions to allow. How do you know what range to pick? You need to be
-forward compatible, so ideally the range encompasses future versions that
-haven't been released yet. But how do you know your package is going to work
-with some new version that doesn't even exist yet?
+Quando você adiciona uma dependência ao seu pacote, às vezes vai querer especificar um
+intervalo de versões a permitir. Como saber qual intervalo escolher? Você precisa ser
+compatível com versões futuras, então, idealmente, o intervalo abrange versões futuras que
+ainda não foram lançadas. Mas como saber que o seu pacote vai funcionar
+com uma versão nova que nem existe ainda?
 
-To solve that, you need to agree on what a version number _means_.
-Imagine that the developers of a package you depend on say,
-"If we make any backwards incompatible change,
-then we promise to increment the major version number."
-If you trust them, then if you know your package works with `2.3.5` of theirs,
-you can rely on it working all the way up to `3.0.0`.
-You can set your range like:
+Para resolver isso, é preciso concordar sobre o que um número de versão _significa_.
+Imagine que os desenvolvedores de um pacote do qual você depende digam:
+"Se fizermos qualquer mudança incompatível com versões anteriores,
+então prometemos incrementar o número da versão principal (major)."
+Se você confiar neles, então, se souber que o seu pacote funciona com a `2.3.5` deles,
+pode contar com o funcionamento até a `3.0.0`.
+Você pode definir o seu intervalo assim:
 
 ```yaml
 dependencies:
@@ -170,52 +163,52 @@ dependencies:
 ```
 
 :::note
-This example uses _caret syntax_ to express a range of versions.
-The string `^2.3.5` means "the range of all versions from 2.3.5 to 3.0.0,
-not including 3.0.0."
-To learn more, consult the [caret syntax][caret-syntax] section.
+Este exemplo usa a _sintaxe caret_ para expressar um intervalo de versões.
+A string `^2.3.5` significa "o intervalo de todas as versões de 2.3.5 até 3.0.0,
+sem incluir 3.0.0."
+Para saber mais, consulte a seção [sintaxe caret][caret-syntax].
 :::
 
-To make this work, then, we need to come up with that set of promises.
-Fortunately, other smart people have done the work of figuring this all out and
-named it _[semantic versioning][semver]_.
+Para que isso funcione, precisamos definir esse conjunto de promessas.
+Felizmente, outras pessoas inteligentes já fizeram o trabalho de descobrir tudo isso e
+o chamaram de _[versionamento semântico][semver]_.
 
-That describes the format of a version number, and the exact API behavioral
-differences when you increment to a later version number. Pub requires versions
-to be formatted that way, and to play well with the pub community, your package
-should follow the semantics it specifies. You should assume that the packages
-you depend on also follow it. (And if you find out they don't, let their
-authors know!)
+Ele descreve o formato de um número de versão e as diferenças exatas de comportamento da API
+quando você incrementa para um número de versão posterior. O pub exige que as versões
+sigam esse formato e, para se dar bem com a comunidade do pub, o seu pacote
+deve seguir a semântica que ele especifica. Você deve presumir que os pacotes
+dos quais depende também a seguem. (E se descobrir que não seguem, avise os
+autores!)
 
-Although semantic versioning doesn't promise any compatibility between versions
-prior to `1.0.0`, the Dart community convention is to treat those versions
-semantically as well. The interpretation of each number is just shifted down one
-slot: going from `0.1.2` to `0.2.0` indicates a breaking change, going to
-`0.1.3` indicates a new feature, and going to `0.1.2+1` indicates a change that
-doesn't affect the public API.
-For simplicity's sake, avoid using `+` after the version reaches `1.0.0`.
+Embora o versionamento semântico não prometa nenhuma compatibilidade entre versões
+anteriores à `1.0.0`, a convenção da comunidade Dart é tratar essas versões
+semanticamente também. A interpretação de cada número é apenas deslocada uma posição para baixo:
+ir de `0.1.2` para `0.2.0` indica uma mudança incompatível, ir para
+`0.1.3` indica um novo recurso, e ir para `0.1.2+1` indica uma mudança que
+não afeta a API pública.
+Por simplicidade, evite usar `+` depois que a versão chegar à `1.0.0`.
 
-We've got almost all of the pieces we need to deal with versioning and API
-evolution now. Let's see how they play together and what pub does.
+Agora temos quase todas as peças de que precisamos para lidar com o versionamento e a
+evolução da API. Vamos ver como elas se encaixam e o que o pub faz.
 
-## Constraint solving
+## Resolução de restrições {:#constraint-solving}
 
-When you define your package, you list its
-[immediate dependencies][immediate-dep].
-These are packages that your package uses.
-For each of these packages, you specify the range of versions your package allows.
-Each of those dependent packages might then have their own dependencies.
-These are called [transitive dependencies][transitive-dep].
-Pub traverses these and builds the entire dependency graph for your app.
+Quando você define o seu pacote, lista suas
+[dependências imediatas][immediate-dep].
+São os pacotes que o seu pacote usa.
+Para cada um desses pacotes, você especifica o intervalo de versões que o seu pacote aceita.
+Cada um desses pacotes dependentes pode então ter as próprias dependências.
+Elas são chamadas de [dependências transitivas][transitive-dep].
+O pub percorre essas dependências e constrói o grafo de dependências completo do seu app.
 
-For each package in the graph, pub looks at everything that depends on it.
-It gathers together all of their version constraints and
-tries to simultaneously solve them. Basically, it intersects their ranges.
-Then pub looks at the actual versions that have been released for that
-package and selects the most recent one that meets all of those constraints.
+Para cada pacote do grafo, o pub observa tudo o que depende dele.
+Ele reúne todas as restrições de versão desses pacotes e
+tenta resolvê-las simultaneamente. Basicamente, ele faz a interseção dos intervalos.
+Depois, o pub olha as versões reais que foram lançadas para esse
+pacote e seleciona a mais recente que atenda a todas essas restrições.
 
-For example, let's say our dependency graph contains `collection`, and three
-packages depend on it. Their version constraints are:
+Por exemplo, digamos que o nosso grafo de dependências contenha `collection`, e três
+pacotes dependam dele. As restrições de versão deles são:
 
 ```plaintext
 >=1.7.0
@@ -223,7 +216,7 @@ packages depend on it. Their version constraints are:
 <1.9.0
 ```
 
-The developers of `collection` have released these versions of it:
+Os desenvolvedores de `collection` lançaram estas versões dele:
 
 ```plaintext
 1.7.0
@@ -234,19 +227,19 @@ The developers of `collection` have released these versions of it:
 1.9.0
 ```
 
-The highest version number that fits in all of those ranges is `1.8.2`, so pub
-picks that. That means your app _and every package your app uses_ will all use
-`collection 1.8.2`.
+O maior número de versão que cabe em todos esses intervalos é `1.8.2`, então o pub
+escolhe essa. Isso significa que o seu app _e todos os pacotes que o seu app usa_ vão
+usar `collection 1.8.2`.
 
-## Constraint context
+## Contexto das restrições {:#constraint-context}
 
-The fact that selecting a package version takes into account _every_ package
-that depends on it has an important consequence: _the specific version that
-will be selected for a package is a global property of the app using that
-package._
+O fato de a seleção de uma versão de pacote levar em conta _todos_ os pacotes
+que dependem dele tem uma consequência importante: _a versão específica que
+será selecionada para um pacote é uma propriedade global do app que usa esse
+pacote._
 
-The following example shows what this means. Let's say we have
-two apps. Here are their pubspecs:
+O exemplo a seguir mostra o que isso significa. Digamos que temos
+dois apps. Estes são os seus pubspecs:
 
 ```yaml
 name: my_app
@@ -261,7 +254,7 @@ dependencies:
   collection: '<1.5.0'
 ```
 
-They both depend on `widgets`, whose pubspec is:
+Os dois dependem de `widgets`, cujo pubspec é:
 
 ```yaml
 name: widgets
@@ -269,30 +262,30 @@ dependencies:
   collection: '>=1.0.0 <2.0.0'
 ```
 
-The `other_app` package depends directly on `collection` itself. The
-interesting part is that it happens to have a different version constraint on
-it than `widgets` does.
+O pacote `other_app` depende diretamente de `collection`. O
+ponto interessante é que ele, por acaso, tem uma restrição de versão diferente
+sobre ele do que `widgets` tem.
 
-This means that you can't just look at the `widgets` package in
-isolation to figure out what version of `collection` it will use. It depends
-on the context. In `my_app`, `widgets` will use `collection 1.9.9`. But
-in `other_app`, `widgets` will get saddled with `collection 1.4.9` because of
-the _other_ constraint that `otherapp` places on it.
+Isso significa que você não pode olhar apenas o pacote `widgets`, isoladamente, para descobrir
+qual versão de `collection` ele vai usar. Depende do
+contexto. Em `my_app`, `widgets` vai usar `collection 1.9.9`. Mas
+em `other_app`, `widgets` vai acabar com `collection 1.4.9` por causa da
+restrição _outra_ que `other_app` impõe sobre ele.
 
-This is why each app gets its own `package_config.json` file: The concrete version selected for each package depends on
-the entire dependency graph of the containing app.
+É por isso que cada app recebe seu próprio arquivo `package_config.json`: a versão concreta selecionada para cada pacote depende de
+todo o grafo de dependências do app que o contém.
 
-## Constraint solving for exported dependencies
+## Resolução de restrições para dependências exportadas {:#constraint-solving-for-exported-dependencies}
 
-Package authors must define package constraints with care.
-Consider the following scenario:
+Os autores de pacotes precisam definir as restrições de pacote com cuidado.
+Considere o cenário a seguir:
 
-<img src="/assets/img/tools/pub/PubExportedConstraints.png" alt="dependency graph" class="diagram-wrap">
+<img src="/assets/img/tools/pub/PubExportedConstraints.png" alt="grafo de dependências" class="diagram-wrap">
 
-The `bookshelf` package depends on `widgets`.
-The `widgets` package, currently at 1.2.0, exports
-`collection` via `export 'package:collection/collection.dart'`, and is
-at 2.4.0. The pubspec files are as follows:
+O pacote `bookshelf` depende de `widgets`.
+O pacote `widgets`, atualmente na versão 1.2.0, exporta
+`collection` por meio de `export 'package:collection/collection.dart'`, e está
+na versão 2.4.0. Os arquivos pubspec são os seguintes:
 
 ```yaml
 name: bookshelf
@@ -306,24 +299,25 @@ dependencies:
   collection: ^2.4.0
 ```
 
-The `collection` package is then updated to 2.5.0.
-The 2.5.0 version of `collection` includes a new method called `sortBackwards()`.
-`bookshelf` may call `sortBackwards()`,
-because it's part of the API exposed by `widgets`,
-despite `bookshelf` having only a transitive dependency on `collection`.
+O pacote `collection` é então atualizado para 2.5.0.
+A versão 2.5.0 de `collection` inclui um novo método chamado `sortBackwards()`.
+O `bookshelf` pode chamar `sortBackwards()`,
+porque ela faz parte da API exposta por `widgets`,
+apesar de `bookshelf` ter apenas uma dependência transitiva de `collection`.
 
-Because `widgets` has an API that is not reflected in its version number,
-the app that uses the `bookshelf` package and calls `sortBackwards()` may crash.
+Como `widgets` tem uma API que não é refletida em seu número de versão, o
+app que usa o pacote `bookshelf` e chama `sortBackwards()`
+pode travar.
 
-Exporting an API causes that API to be treated as if it is
-defined in the package itself, but it can't increase the version number when
-the API adds features. This means that `bookshelf` has no way of declaring
-that it needs a version of `widgets` that supports `sortBackwards()`.
+Exportar uma API faz com que essa API seja tratada como se estivesse
+definida no próprio pacote, mas isso não pode aumentar o número da versão quando
+a API adiciona recursos. Isso significa que `bookshelf` não tem como declarar
+que precisa de uma versão de `widgets` que suporte `sortBackwards()`.
 
-For this reason, when dealing with exported packages,
-it's recommended that the package's author keeps a tighter
-limit on the upper and lower bounds of a dependency.
-In this case, the range for the `widgets` package should be narrowed:
+Por esse motivo, ao lidar com pacotes exportados,
+recomenda-se que o autor do pacote mantenha um
+limite mais restrito nos limites superior e inferior de uma dependência.
+Neste caso, o intervalo do pacote `widgets` deve ser reduzido:
 
 ```yaml
 name: bookshelf
@@ -337,82 +331,81 @@ dependencies:
   collection: '>=2.4.0 <2.5.0'
 ```
 
-This translates to a lower bound of 1.2.0 for `widgets`
-and 2.4.0 for `collection`.
-When someone releases the 2.5.0 version of `collection`,
-pub updates `widgets` to 1.3.0 and updates the corresponding constraints
-as well.
+Isso se traduz em um limite inferior de 1.2.0 para `widgets`
+e de 2.4.0 para `collection`.
+Quando alguém lançar a versão 2.5.0 de `collection`,
+o pub atualiza `widgets` para 1.3.0 e atualiza as restrições correspondentes
+também.
 
-Using this convention ensures that users have the correct version of
-both packages, even if one is not a direct dependency.
+Usar essa convenção garante que os usuários tenham a versão correta de
+ambos os pacotes, mesmo que um deles não seja uma dependência direta.
 
-## Lockfiles
+## Lockfiles {:#lockfiles}
 
-So once pub has solved your app's version constraints, then what? The end
-result is a complete list of every package that your app depends on either
-directly or indirectly and the best version of that package that will work with
-your app's constraints.
+Então, depois que o pub resolve as restrições de versão do seu app, o que acontece? O resultado final
+é uma lista completa de todos os pacotes dos quais o seu app depende, direta ou
+indiretamente, e a melhor versão de cada pacote que funciona com
+as restrições do seu app.
 
-For each package, pub takes that information,
-computes a [content hash][] from it,
-and writes both to a _[lockfile][]_
-in your app's directory called `pubspec.lock`. When pub builds the `.dart_tool/package_config.json` file for your app, it uses the lockfile to know what versions of each package to refer to. (And if you're curious to see what versions it selected, you can read the lockfile to find out.)
+Para cada pacote, o pub pega essa informação,
+calcula um [hash de conteúdo][content hash] a partir dela
+e escreve ambos em um _[lockfile][lockfile]_
+no diretório do seu app, chamado `pubspec.lock`. Quando o pub gera o arquivo `.dart_tool/package_config.json` do seu app, ele usa o lockfile para saber quais versões de cada pacote referenciar. (E se você tiver curiosidade de ver quais versões ele selecionou, pode ler o lockfile para descobrir.)
 
-The next important thing pub does is it _stops touching the lockfile_. Once
-you've got a lockfile for your app, pub won't touch it until you tell it to.
-This is important. It means you won't spontaneously start using new versions
-of random packages in your app without intending to. Once your app is locked,
-it stays locked until you manually tell it to update the lockfile.
+A próxima coisa importante que o pub faz é _parar de mexer no lockfile_. Depois que
+você tem um lockfile para o seu app, o pub não o toca até que você diga para ele fazer isso.
+Isso é importante. Significa que você não vai começar a usar, sem querer, novas versões
+de pacotes aleatórios no seu app. Quando o seu app está travado,
+ele continua travado até que você atualize manualmente o lockfile.
 
-If your package is for an app, you _check your lockfile into your source
-control system!_ That way, everyone on your team will be using
-the exact same versions of every dependency when they build your app. You'll
-also use this when you deploy your app so you can ensure that your production
-servers are using the exact same packages that you're developing with.
+Se o seu pacote é para um app, você _faz o check-in do lockfile no seu sistema de controle de código-fonte!_ Assim, todos da sua equipe vão usar
+exatamente as mesmas versões de cada dependência ao compilar o app. Você também
+vai usar isso ao implantar o app, para garantir que os seus servidores de produção estejam usando
+exatamente os mesmos pacotes com os quais você está desenvolvendo.
 
-## When things go wrong
+## Quando as coisas dão errado {:#when-things-go-wrong}
 
-Of course, all of this presumes that your dependency graph is perfect and
-flawless. Even with version ranges and pub's constraint solving and
-semantic versioning, you can never be entirely spared from the
-dangers of versionitis.
+É claro que tudo isso pressupõe que o seu grafo de dependências seja perfeito e
+sem falhas. Mesmo com intervalos de versão, a resolução de restrições do pub e o
+versionamento semântico, você nunca fica totalmente livre dos
+perigos da versionite.
 
-You might run into one of the following problems:
+Você pode encontrar um dos seguintes problemas:
 
-### You can have disjoint constraints
+### Você pode ter restrições disjuntas {:#you-can-have-disjoint-constraints}
 
-Lets say your app uses `widgets` and
-`templates` and both use `collection`. But `widgets` asks for a version
-of it between `1.0.0` and `2.0.0` and `templates` wants something
-between `3.0.0` and `4.0.0`. Those ranges don't even overlap. There's no
-possible version that would work.
+Digamos que o seu app use `widgets` e
+`templates`, e ambos usem `collection`. Mas `widgets` pede uma versão
+dela entre `1.0.0` e `2.0.0`, e `templates` quer algo
+entre `3.0.0` e `4.0.0`. Esses intervalos nem se sobrepõem. Não existe
+nenhuma versão possível que funcione.
 
-### You can have ranges that don't contain a released version
+### Você pode ter intervalos que não contêm uma versão lançada {:#you-can-have-ranges-that-dont-contain-a-released-version}
 
-Let's say after putting all of the constraints on a shared dependency together,
-you have a narrow range of `>=1.2.4 <1.2.6`. It's not an empty range.
-If there was a version `1.2.4` of the dependency, you'd be golden.
-But maybe they never released that version.
-Instead, they went straight from `1.2.3` to `1.3.0`.
-You've got a range with nothing inside it.
+Digamos que, depois de juntar todas as restrições sobre uma dependência compartilhada,
+você tem um intervalo estreito de `>=1.2.4 <1.2.6`. Ele não está vazio.
+Se existisse uma versão `1.2.4` da dependência, estaria tudo certo.
+Mas talvez eles nunca tenham lançado essa versão.
+Em vez disso, passaram direto de `1.2.3` para `1.3.0`.
+Você tem um intervalo sem nada dentro dele.
 
-### You can have an unstable graph
+### Você pode ter um grafo instável {:#you-can-have-an-unstable-graph}
 
-This is, by far, the most challenging part of
-pub's version solving process. The process was described as _build up the
-dependency graph and then solve all of the constraints and pick versions_.
-But it doesn't actually work that way. How could you build up the _whole_
-dependency graph before you've picked _any_ versions? _The pubspecs
-themselves are version-specific._ Different versions of the same package
-may have different sets of dependencies.
+Esta é, de longe, a parte mais desafiadora do
+processo de resolução de versões do pub. O processo foi descrito como _construir o
+grafo de dependências e depois resolver todas as restrições e escolher as versões_.
+Mas, na prática, não funciona assim. Como você poderia construir o grafo _inteiro_
+de dependências antes de ter escolhido _nenhuma_ versão? _Os próprios pubspecs
+são específicos de versão._ Versões diferentes do mesmo pacote
+podem ter conjuntos diferentes de dependências.
 
-As you're selecting versions of packages, they are changing the shape of
-the dependency graph itself. As the graph changes, that may change
-constraints, which can cause you to select different versions, and then you
-go right back around in a circle.
+Conforme você seleciona versões de pacotes, elas estão alterando a forma do
+próprio grafo de dependências. Conforme o grafo muda, isso pode mudar as restrições,
+o que pode fazer você selecionar versões diferentes, e aí você
+volta direto ao início, em círculo.
 
-Sometimes this process never settles down into a stable solution.
-Gaze into the abyss:
+Às vezes, esse processo nunca se estabiliza em uma solução estável.
+Olhe para o abismo:
 
 ```yaml
 name: my_app
@@ -441,31 +434,31 @@ dependencies:
   yin: '1.0.0'
 ```
 
-In all of these cases, there is no set of concrete versions that will work for
-your app, and when this happens pub reports an error and tells you what's
-going on. It definitely won't leave you in some weird state where you
-think things can work but won't.
+Em todos esses casos, não existe um conjunto de versões concretas que funcione para
+o seu app, e, quando isso acontece, o pub reporta um erro e informa o que
+está acontecendo. Ele definitivamente não vai deixar você em algum estado estranho em que
+acha que as coisas podem funcionar, mas não funcionam.
 
-## Summary
+## Resumo {:#summary}
 
-In summary:
+Em resumo:
 
-* Though code reuse has advantages,
-  packages require the ability to evolve independently.
-* Versioning enables that independence.
-  Depending on single concrete versions lacks flexibility.
-  Coupled with shared dependencies, it leads to version lock.
-* To cope with version lock,
-  your package should depend on a _range_ of versions.
-  Pub then walks your dependency graph and picks the best versions for you.
-  If it can't pick an appropriate version, pub alerts you.
-* Once your app has a solid set of versions for its dependencies,
-  that set gets pinned down in a _lockfile_.
-  That ensures that every machine running your app uses the same versions
-  of all of its dependencies.
+* Embora o reuso de código tenha vantagens,
+  os pacotes precisam da capacidade de evoluir de forma independente.
+* O versionamento possibilita essa independência.
+  Depender de versões concretas únicas falta flexibilidade.
+  Combinado com dependências compartilhadas, leva à trava de versão.
+* Para lidar com a trava de versão,
+  o seu pacote deve depender de um _intervalo_ de versões.
+  Em seguida, o pub percorre o seu grafo de dependências e escolhe as melhores versões para você.
+  Se não conseguir escolher uma versão adequada, o pub avisa você.
+* Quando o seu app tem um conjunto sólido de versões para as suas dependências,
+  esse conjunto é fixado em um _lockfile_.
+  Isso garante que todas as máquinas que executam o seu app usem as mesmas versões
+  de todas as suas dependências.
 
-To learn more about pub's version solving algorithm,
-consult the [PubGrub][pubgrub] article on Medium.
+Para saber mais sobre o algoritmo de resolução de versões do pub,
+consulte o artigo [PubGrub][pubgrub] no Medium.
 
 [immediate-dep]: /resources/glossary#immediate-dependency
 [transitive-dep]: /resources/glossary#transitive-dependency

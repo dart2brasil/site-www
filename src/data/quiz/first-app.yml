@@ -1,0 +1,97 @@
+- question: >-
+    Qual comando gera um novo projeto Dart
+    com os arquivos necessários e a estrutura de diretórios?
+  options:
+    - text: >-
+        `dart create`
+      correct: true
+      explanation: >-
+        `dart create` cria e gera a estrutura inicial de um novo projeto.
+        Você também pode usar `-t` para especificar um template,
+        como em `dart create -t console nome_do_projeto`.
+    - text: >-
+        `dart new`
+      correct: false
+      explanation: >-
+        Não existe um comando `dart new` no Dart.
+        Pense em qual ação você quer executar
+        ao começar um projeto do zero.
+    - text: >-
+        `dart init`
+      correct: false
+      explanation: >-
+        Algumas outras ferramentas usam `init` para isso,
+        mas o Dart usa outro comando.
+        Revise a lição para ver qual comando foi usado.
+    - text: >-
+        `dart build`
+      correct: false
+      explanation: >-
+        `dart build` serve para compilar aplicativos Dart existentes para implantação,
+        não para gerar a estrutura de novos projetos.
+- question: >-
+    Todo programa Dart começa a execução a partir de uma função específica.
+    Como se chama essa função e por que ela é importante?
+  options:
+    - text: >-
+        A função `main`.
+        É o ponto de entrada em que a execução do programa começa.
+      correct: true
+      explanation: >-
+        A função `main` é obrigatória em programas Dart executáveis.
+        Sem ela, o Dart não saberia por onde começar a executar seu código.
+    - text: >-
+        A função `start`.
+        Ela inicializa o ambiente de runtime.
+      correct: false
+      explanation: >-
+        O Dart não tem uma função `start`.
+        O runtime do Dart é inicializado automaticamente antes de o seu código rodar.
+    - text: >-
+        A função `run`.
+        Ela é chamada pelo comando `dart run`.
+      correct: false
+      explanation: >-
+        Não existe uma função `run` obrigatória.
+        O comando `dart run` procura e
+        executa a função de entrada padrão.
+    - text: >-
+        A função `init`.
+        Ela configura as variáveis antes de o programa começar.
+      correct: false
+      explanation: >-
+        O Dart não exige uma função `init`.
+        Variáveis podem ser definidas e inicializadas em qualquer função.
+- question: >-
+    Em um projeto CLI em Dart,
+    onde você deve colocar o arquivo que contém a função `main`?
+  options:
+    - text: >-
+        No diretório `bin/`,
+        porque é o local padrão dos pontos de entrada de CLIs em Dart.
+      correct: true
+      explanation: >-
+        O diretório `bin/` contém os pontos de entrada em Dart de um programa.
+        Ao executar `dart run`, o Dart procura aqui o ponto de entrada do seu pacote.
+    - text: >-
+        No diretório `lib/`, porque é onde todo código Dart deve ficar.
+      correct: false
+      explanation: >-
+        O diretório `lib/` é para código de biblioteca
+        que pode ser importado por outros pacotes.
+        Observe que, enquanto aplicativos Flutter usam `lib/main.dart`
+        como ponto de entrada, aplicativos CLI padrão em Dart
+        usam o diretório `bin/`.
+    - text: >-
+        No diretório `src/`, porque é a pasta de código-fonte padrão.
+      correct: false
+      explanation: >-
+        Projetos Dart geralmente usam `lib/src/` para detalhes de implementação,
+        e não para pontos de entrada executáveis.
+    - text: >-
+        Na raiz do projeto, ao lado do `pubspec.yaml`.
+      correct: false
+      explanation: >-
+        Embora seja tecnicamente possível,
+        projetos Dart têm um diretório convencional para executáveis.
+        Veja onde o `dart create` colocou o arquivo de entrada.

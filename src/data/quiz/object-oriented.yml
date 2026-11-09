@@ -1,0 +1,85 @@
+- question: >-
+    No construtor `Option(this.name, {required this.type})`,
+    qual é a finalidade da sintaxe `this.name`?
+  options:
+    - text: >-
+        Ela atribui automaticamente o argumento do construtor diretamente ao campo de instância `name`.
+      correct: true
+      explanation: >-
+        No Dart, `this.nomeDoCampo` na lista de parâmetros de um construtor é um
+        "parâmetro formal de inicialização" que atribui o valor do argumento diretamente ao campo
+        antes de o corpo do construtor executar.
+    - text: >-
+        Ela cria uma nova variável global chamada `name`.
+      correct: false
+      explanation: >-
+        `this.name` se refere especificamente ao campo de instância da classe,
+        e não a uma variável global.
+    - text: >-
+        Ela torna a propriedade `name` privada para a biblioteca.
+      correct: false
+      explanation: >-
+        A privacidade no Dart é indicada por um underscore no início (`_name`),
+        e não por `this`.
+    - text: >-
+        Ela marca o parâmetro como opcional.
+      correct: false
+      explanation: >-
+        Parâmetros opcionais são delimitados por colchetes `[]` ou chaves `{}`.
+        O `this.name` posicional é obrigatório.
+- question: >-
+    Qual é a principal vantagem de usar um getter como `String get usage`
+    em vez de guardar um campo `String usage`?
+  options:
+    - text: >-
+        Ele calcula o valor dinamicamente sempre que é acessado, garantindo que reflita o estado atual sem armazenamento redundante.
+      correct: true
+      explanation: >-
+        Getters se comportam como propriedades do ponto de vista de quem chama, mas executam código
+        sob demanda para calcular o valor.
+    - text: >-
+        Getters só podem ser acessados de dentro do mesmo arquivo.
+      correct: false
+      explanation: >-
+        Getters seguem as mesmas regras de visibilidade que campos e métodos comuns.
+    - text: >-
+        Getters executam mais rápido do que a leitura de um campo armazenado.
+      correct: false
+      explanation: >-
+        Ler um campo armazenado costuma ser mais rápido do que executar lógica em um getter.
+    - text: >-
+        Getters permitem que a propriedade seja modificada de fora da classe.
+      correct: false
+      explanation: >-
+        Um getter oferece acesso somente leitura, a menos que um setter correspondente (`set usage(...)`) também seja definido.
+- question: >-
+    Quando você deve usar um `enum` em vez de uma classe ou de um conjunto de constantes?
+  options:
+    - text: >-
+        Quando você precisa de um tipo que pode ser apenas um de
+        um conjunto fixo e conhecido de valores.
+      correct: true
+      explanation: >-
+        Enums são ideais quando você tem um conjunto fechado de opções,
+        como `flag` ou `option`, dias da semana ou códigos de status.
+        O compilador garante que você trate todos os casos.
+    - text: >-
+        Quando você precisa guardar uma entrada do usuário que pode ser qualquer string.
+      correct: false
+      explanation: >-
+        A entrada do usuário é imprevisível e pode ser qualquer coisa.
+        Enums funcionam melhor quando você consegue listar todos os valores possíveis com antecedência.
+    - text: >-
+        Quando você quer criar várias instâncias com propriedades diferentes.
+      correct: false
+      explanation: >-
+        Para isso servem as classes.
+        Cada valor de enum é um singleton:
+        existe apenas uma instância para cada valor.
+    - text: >-
+        Quando você precisa fazer operações aritméticas com os valores.
+      correct: false
+      explanation: >-
+        Use `int` ou `double` para aritmética.
+        Enums representam categorias distintas, e não valores numéricos
+        (embora tenham um índice).

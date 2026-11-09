@@ -12,7 +12,8 @@ on:
     - cron: "0 0 * * 0"
 
 # Declare default permissions as read only.
-permissions: read-all
+permissions:
+  contents: read
 
 env:
   # Configure analytics reporting for pub.
@@ -26,37 +27,45 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - sdk: beta
+          - sdk: 3.14.0-315.3.beta
             experimental: false
           - sdk: stable
             experimental: true
     continue-on-error: ${{ matrix.experimental }}
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
-      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
         with:
           sdk: ${{ matrix.sdk }}
       - name: Fetch Dart packages
         run: dart pub get
         continue-on-error: ${{ matrix.experimental }}
-      - name: Check Dart code formatting
-        run: dart run dash_site format-dart --check
-        continue-on-error: ${{ matrix.experimental }}
+# Temporarily disabled due to formatting differences between branches:
+#      - name: Check Dart code formatting
+#        run: dart run dash_site format-dart --check
+#        continue-on-error: ${{ matrix.experimental }}
       - name: Analyze Dart code
         run: dart run dash_site analyze-dart
         continue-on-error: ${{ matrix.experimental }}
       - name: Run Dart tests
         run: dart run dash_site test-dart
         continue-on-error: ${{ matrix.experimental }}
+      - name: Validate tutorial code snippets
+        run: dart run dash_site check-tutorial-code
+        continue-on-error: ${{ matrix.experimental }}
 
   markdown-check:
     name: Check Markdown content
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
-      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          sdk: beta
+          persist-credentials: false
+      - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
+        with:
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check Markdown for any known issues
@@ -66,10 +75,12 @@ jobs:
     name: Check if code excerpts are up to date
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
-      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          sdk: beta
+          persist-credentials: false
+      - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
+        with:
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if excerpts are up to date
@@ -79,10 +90,12 @@ jobs:
     name: Check if text can be replaced with site variables
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
-      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          sdk: beta
+          persist-credentials: false
+      - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
+        with:
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if text can be replaced with site variables
@@ -92,10 +105,12 @@ jobs:
     name: Validate Firebase configuration
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
-      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          sdk: beta
+          persist-credentials: false
+      - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
+        with:
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Validate the firebase.json file

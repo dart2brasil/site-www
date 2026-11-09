@@ -6,10 +6,10 @@ import 'package:jaspr/jaspr.dart';
 import 'package:path/path.dart' as path;
 
 /// Whether this build of the site will be deployed to production.
-const productionBuild = bool.fromEnvironment('PRODUCTION');
+const bool productionBuild = .fromEnvironment('PRODUCTION');
 
 /// Path to the `/src` directory where site content is located.
-final siteSrcDirectoryPath = path.join('..', 'src');
+final String siteSrcDirectoryPath = path.join('..', 'src');
 
 /// Split the specific [sourceString] into a list of Jaspr [Component]
 /// by adding a `<wbr>`  element after each underscore.
@@ -21,7 +21,7 @@ List<Component> splitByUnderscore(String sourceString) {
   final result = <Component>[];
 
   for (var i = 0; i < parts.length; i++) {
-    result.add(text(parts[i]));
+    result.add(.text(parts[i]));
 
     // Add a word break opportunity after each underscore,
     // except for the final one.
@@ -53,7 +53,9 @@ final RegExp _slugifyCharsToCombine = RegExp(r'[\s-]+');
 final RegExp _slugifyHyphenTrim = RegExp(r'^-+|-+$');
 
 final RegExp _attributePattern = RegExp(r'(\w+)="([^"]*)"');
-final RegExp _whitespacePattern = RegExp(r'\s+');
+
+/// Matches one or more consecutive whitespace characters.
+final RegExp whitespacePattern = RegExp(r'\s+');
 
 Map<String, String> parseAttributes(String attributeString) {
   final attributes = <String, String>{};
@@ -71,7 +73,7 @@ Map<String, String> parseAttributes(String attributeString) {
   final remaining = attributeString.replaceAll(_attributePattern, '').trim();
 
   // Split remaining content by whitespace to find IDs and classes.
-  final parts = remaining.split(_whitespacePattern);
+  final parts = remaining.split(whitespacePattern);
 
   for (final part in parts) {
     if (part.isEmpty) continue;

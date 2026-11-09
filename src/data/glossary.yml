@@ -1,3 +1,22 @@
+- term: "AOT"
+  short_description: |-
+    A compilação Ahead-of-Time (AOT) gera binários nativos otimizados em tempo de build.
+  long_description: |-
+    A compilação Ahead-of-Time (AOT) converte código Dart em código de máquina nativo em
+    tempo de build. Isso resulta em executáveis menores e mais rápidos, que iniciam
+    instantaneamente e têm desempenho consistente. Builds AOT passam por tree shaking para
+    remover código não utilizado e são usados para publicar apps em produção.
+  related_links:
+    - text: "Dart: As plataformas"
+      link: "/overview#platform"
+      type: "doc"
+    - text: "AOT"
+      link: "https://en.wikipedia.org/wiki/Ahead-of-time_compilation"
+      type: "external"
+  labels:
+    - "compilation"
+    - "deployment"
+
 - term: "Application package"
   short_description: |-
     Um pacote Dart que contém uma aplicação executável.
@@ -49,6 +68,51 @@
     - "analyzer"
   alternate:
     - "Quick assist"
+
+- term: "Asynchronous"
+  short_description: |-
+    Paradigma de programação em Dart em que operações como
+    I/O ou chamadas de rede são concluídas depois, sem bloquear o event loop.
+  long_description: |-
+    Dart usa um modelo de event loop de thread única para programação assíncrona,
+    permitindo a execução não bloqueante de tarefas demoradas, como
+    I/O de arquivos, requisições HTTP e timers.
+    Diferente do código síncrono, que bloqueia até terminar, operações
+    async são enfileiradas como microtasks/eventos, mantendo as UIs responsivas.
+
+    Os principais componentes são:
+
+    - **Futures**:
+      Representam um valor disponível depois, criados por APIs como `http.get()`.
+    - **async/await**:
+      Keywords do Dart para escrever código assíncrono legível e fácil de manter.
+    - **Streams**:
+      Tratam sequências de eventos assíncronos, como dados vindos de web sockets.
+    - **Isolates**:
+      Permitem paralelismo real por meio de
+      contextos de execução independentes com troca de mensagens.
+  related_links:
+    - text: "Programação assíncrona: futures, async, await"
+      link: "/libraries/async/async-await"
+      type: "doc"
+    - text: "Visão geral da programação assíncrona"
+      link: "/language/async"
+      type: "doc"
+    - text: "Biblioteca dart:async"
+      link: "https://api.dart.dev/dart-async"
+      type: "api"
+    - text: "Referência da classe Future"
+      link: "https://api.dart.dev/dart-async/Future-class.html"
+      type: "api"
+  labels:
+    - "async"
+    - "futures"
+    - "event-loop"
+    - "concurrency"
+  alternate:
+    - "Async"
+    - "Non-blocking"
+
 
 - term: "Bottom type"
   short_description: |-
@@ -250,10 +314,10 @@
     O tipo que o código ao redor espera de uma expressão.
   long_description: |-
     O **context type** (tipo de contexto) é o tipo que o código ao redor espera
-    de uma expressão, como um tipo de variável, um tipo de parâmetro ou um
+    de uma expressão, como o tipo de uma variável, o tipo de um parâmetro ou um
     tipo de retorno.
 
-    Dart usa o tipo de contexto para interpretar e inferir significado
+    O Dart usa o context type para interpretar e inferir o significado
     de expressões, incluindo:
 
     - **Inferência de tipo** ("inferência descendente"):
@@ -262,7 +326,7 @@
       List<int> list = [];
       ```
 
-      O tipo de contexto `List<int>` permite ao compilador inferir o tipo da lista como `<int>[]`.
+      O context type `List<int>` permite que o compilador infira o tipo da lista como `<int>[]`.
 
     - **Downcast implícito**:
 
@@ -270,7 +334,7 @@
       String asString(dynamic value) => value;
       ```
 
-      O contexto de retorno é `String`, então Dart insere um downcast implícito.
+      O contexto de retorno é `String`, então o Dart insere um downcast implícito.
 
     - **Interpretação de literais**:
 
@@ -278,31 +342,31 @@
       double d = 0;
       ```
 
-      O tipo de contexto `double` faz `0` se comportar como `0.0`.
+      O context type `double` faz com que `0` se comporte como `0.0`.
 
-    - **Abreviação de acesso estático** (dot shorthand):
+    - **Atalho de acesso estático** (dot shorthand):
 
       ```dart
       int x = .parse(input);
       ```
 
-      O tipo de contexto é `int`, então `.parse` resolve para `int.parse(input)`.
+      O context type é `int`, então `.parse` é resolvido para `int.parse(input)`.
 
-    Algumas expressões não têm tipo de contexto, incluindo:
+    Algumas expressões não têm context type, incluindo:
 
-      - **Quando usadas como declarações**:
-        Expressões como `set.remove(value);` são usadas apenas por seu
-        efeito, não por seu valor, então nenhum tipo é esperado.
+      - **Quando usadas como statements**:
+        Expressões como `set.remove(value);` são usadas apenas pelo seu
+        efeito, não pelo seu valor, então nenhum tipo é esperado.
 
-      - **Quando o tipo de contexto é inferido da expressão**:
-        Por exemplo, em `var list = [1];`, o literal de lista não tem tipo de contexto.
-        Dart infere `List<int>` do conteúdo e atribui esse tipo à variável.
+      - **Quando o context type é inferido a partir da própria expressão**:
+        Por exemplo, em `var list = [1];`, o literal de lista não tem context type.
+        O Dart infere `List<int>` a partir do conteúdo e atribui esse tipo à variável.
 
   related_links:
     - text: "Inferência de tipo"
       link: "/language/type-system#type-inference"
       type: "doc"
-    - text: "Downcast implícito de dynamic"
+    - text: "Downcast implícito a partir de dynamic"
       link: "/language/type-system#implicit-downcasts-from-dynamic"
       type: "doc"
   labels:
@@ -312,32 +376,32 @@
 - term: "Code asset"
   short_description: |-
     Código nativo compilado que é empacotado com um app Dart usando um build hook
-    e pode ser usado através de `dart:ffi`.
+    e pode ser usado por meio de `dart:ffi`.
   long_description: |-
-    Um **code asset** (ativo de código) é código compilado que não está escrito em Dart mas
+    Um **code asset** (asset de código) é código compilado que não é escrito em Dart, mas
     pode ser empacotado e usado por uma aplicação Dart.
     Exemplos incluem bibliotecas compartilhadas (`.so`, `.dll`, `.dylib`) construídas
-    em linguagens como C, C++, ou Rust.
+    em linguagens como C, C++ ou Rust.
 
     Code assets podem ser empacotados com um pacote Dart usando um [build hook][].
-    Código Dart pode chamar esses assets usando [FFI][].
+    O código Dart pode chamar esses assets usando [FFI][].
 
-    > Historicamente, code assets também eram referidos
-    > como **native assets** ou **native code assets**.
+    > Historicamente, code assets também eram chamados de
+    > **native assets** ou **native code assets**.
 
     Code assets são úteis para:
 
     * Integrar com bibliotecas nativas existentes.
-    * Acessar capacidades do sistema não expostas diretamente em Dart.
-    * Compartilhar funcionalidade crítica de desempenho entre plataformas.
+    * Acessar recursos do sistema que não são expostos diretamente em Dart.
+    * Compartilhar funcionalidades críticas para desempenho entre plataformas.
 
     Por exemplo, uma aplicação Dart poderia incluir uma biblioteca nativa `.so`
-    que expõe funções específicas, e chamar essas funções de Dart.
+    que expõe funções específicas, e chamar essas funções a partir do Dart.
 
     [build hook]: /tools/hooks
     [FFI]: /interop/c-interop
   related_links:
-    - text: "Interoperabilidade C usando dart:ffi"
+    - text: "Interop com C usando dart:ffi"
       link: "/interop/c-interop/"
       type: "doc"
     - text: "Hooks"
@@ -353,36 +417,36 @@
 
 - term: "Constant context"
   short_description: |-
-    Uma região de código onde a palavra-chave const está implícita e
-    tudo dentro dessa região deve ser uma constante.
+    Uma região do código em que a keyword const está implícita e
+    tudo dentro dessa região precisa ser constante.
   long_description: |-
-    Um _constant context_ (contexto constante) é uma região de código na qual não
-    é necessário incluir a palavra-chave `const` porque está implícito pelo
-    fato de que tudo naquela região é obrigatório ser uma constante.
+    Um _constant context_ (contexto constante) é uma região do código em que não é
+    necessário incluir a keyword `const`, porque ela está implícita pelo
+    fato de tudo naquela região ser obrigatoriamente constante.
     Os seguintes locais são contextos constantes:
 
-    - Tudo dentro de um literal de list, map ou set que é prefixado pela
-      palavra-chave `const`. Por exemplo:
+    - Tudo dentro de um literal de lista, map ou set precedido pela
+      keyword `const`. Por exemplo:
 
       ```dart
       var l = const [/*constant context*/];
       ```
 
-    - Os argumentos dentro de uma invocação de um construtor constante.
+    - Os argumentos dentro da invocação de um construtor constante.
       Por exemplo:
 
       ```dart
       var p = const Point(/*constant context*/);
       ```
 
-    - O inicializador para uma variável que é prefixada pela palavra-chave `const`.
+    - O inicializador de uma variável precedida pela keyword `const`.
       Por exemplo:
 
       ```dart
       const v = /*constant context*/;
       ```
 
-    - Anotações.
+    - Annotations.
 
     - A expressão em uma cláusula `case`. Por exemplo:
 
@@ -398,7 +462,7 @@
     - text: "Variáveis final e const"
       link: "/language/variables#final-and-const"
       type: "doc"
-    - text: "Não use const redundantemente"
+    - text: "Não use const de forma redundante"
       link: "/effective-dart/usage#dont-use-const-redundantly"
       type: "doc"
   labels:
@@ -412,18 +476,18 @@
   short_description: |-
     As versões do Dart que um pacote suporta.
   long_description: |-
-    O intervalo de versões do Dart SDK que um pacote declara que suporta.
-    Uma restrição de SDK é especificada usando a sintaxe normal de [version constraint][],
-    mas em uma seção especial `environment` [in the pubspec][].
+    O intervalo de versões do Dart SDK que o próprio pacote declara suportar.
+    Uma SDK constraint é especificada usando a sintaxe normal de [version constraint][],
+    mas em uma seção especial `environment` [no pubspec][].
 
     [version constraint]: #version-constraint
-    [in the pubspec]: /tools/pub/pubspec#sdk-constraints
+    [no pubspec]: /tools/pub/pubspec#sdk-constraints
   related_links:
-    - text: "Restrições de SDK no pubspec"
+    - text: "SDK constraints no pubspec"
       link: "/tools/pub/pubspec#sdk-constraints"
       type: "doc"
     - text: "Versões da linguagem"
-      link: "/resources/language/evolution#language-versioning"
+      link: "/language/versioning"
       type: "doc"
   labels:
     - "pub"
@@ -431,27 +495,26 @@
 
 - term: "Definite assignment"
   short_description: |-
-    A determinação de se uma variável definitivamente recebeu
-    um valor antes de ser usada.
+    A determinação de se uma variável recebeu com certeza um valor
+    antes de ser usada.
   long_description: |-
     A análise de definite assignment (atribuição definitiva) é o processo de determinar, para cada
-    variável local em cada ponto no código, qual das seguintes afirmações é verdadeira:
+    variável local em cada ponto do código, qual das seguintes situações é verdadeira:
 
-    - A variável definitivamente recebeu um valor
-      (_definitely assigned_ - definitivamente atribuída).
-    - A variável definitivamente não recebeu um valor
-      (_definitely unassigned_ - definitivamente não atribuída).
+    - A variável recebeu com certeza um valor
+      (_definitely assigned_).
+    - A variável com certeza não recebeu um valor
+      (_definitely unassigned_).
     - A variável pode ou não ter recebido um valor,
-      dependendo do caminho de execução tomado para chegar naquele ponto.
+      dependendo do caminho de execução percorrido até aquele ponto.
 
     A análise de definite assignment ajuda a encontrar problemas no código,
-    como locais onde uma variável que pode não ter recebido
-    um valor está sendo referenciada, ou
-    locais onde uma variável que só pode receber um valor uma vez está
-    sendo atribuída depois que pode já ter recebido um valor.
+    como lugares onde uma variável que pode não ter recebido um valor é referenciada, ou
+    lugares onde uma variável que só pode receber um valor uma vez é
+    atribuída depois de talvez já ter recebido um valor.
 
-    Por exemplo, no código a seguir a variável `s` está
-    definitivamente não atribuída quando é passada como argumento para `print`:
+    Por exemplo, no código a seguir a variável `s` é
+    definitely unassigned quando é passada como argumento para `print`:
 
     ```dart
     void f() {
@@ -460,7 +523,7 @@
     }
     ```
 
-    Mas no código a seguir, a variável `s` está definitivamente atribuída:
+    Mas no código a seguir, a variável `s` é definitely assigned:
 
     ```dart
     void f(String name) {
@@ -469,13 +532,13 @@
     }
     ```
 
-    A análise de definite assignment pode até dizer se
-    uma variável está definitivamente atribuída (ou não atribuída) quando
-    há múltiplos caminhos de execução possíveis.
-    No código a seguir a função `print` é chamada se
-    a execução passar pelo ramo true ou false da
-    declaração `if`, mas como `s` é atribuída não importa qual ramo é tomado,
-    ela está definitivamente atribuída antes de ser passada para `print`:
+    A análise de definite assignment consegue até dizer se
+    uma variável é definitely assigned (ou unassigned) quando
+    há vários caminhos de execução possíveis.
+    No código a seguir, a função `print` é chamada se a
+    execução passar pelo ramo true ou pelo ramo false da
+    instrução `if`, mas como `s` recebe um valor independentemente de qual ramo for seguido,
+    ela é definitely assigned antes de ser passada para `print`:
 
     ```dart
     void f(String name, bool casual) {
@@ -489,17 +552,17 @@
     }
     ```
 
-    Na análise de fluxo, o final da declaração `if` é referido
-    como um _join_ (junção) — um local onde dois ou mais caminhos de execução se juntam novamente.
-    Onde há um join, a análise diz que
-    uma variável está definitivamente atribuída se está definitivamente atribuída ao longo
-    de todos os caminhos que estão se juntando, e definitivamente não atribuída se
-    está definitivamente não atribuída ao longo de todos os caminhos.
+    Na análise de fluxo, o fim da instrução `if` é chamado de
+    _join_ (junção): um lugar onde dois ou mais caminhos de execução se reúnem novamente.
+    Onde há uma junção, a análise diz que
+    uma variável é definitely assigned se ela for definitely assigned em
+    todos os caminhos que se juntam, e definitely unassigned se
+    for definitely unassigned em todos os caminhos.
 
-    Às vezes uma variável é atribuída um valor em um caminho mas não em outro,
+    Às vezes uma variável recebe um valor em um caminho, mas não em outro,
     caso em que a variável pode ou não ter recebido um valor.
-    No exemplo a seguir, o ramo true da declaração `if` pode ou
-    não ser executado, então a variável pode ou não ser atribuída um valor:
+    No exemplo a seguir, o ramo true da instrução `if` pode ou não
+    ser executado, então a variável pode ou não ter recebido um valor:
 
     ```dart
     void f(String name, bool casual) {
@@ -511,16 +574,16 @@
     }
     ```
 
-    O mesmo é verdade se houver um ramo false que
+    O mesmo vale se houver um ramo false que
     não atribui um valor a `s`.
 
     A análise de loops é um pouco mais complicada,
     mas segue o mesmo raciocínio básico.
-    Por exemplo, a condição em um loop `while` é sempre executada,
-    mas o corpo pode ou não ser. Então, assim como uma declaração `if`,
-    há um join no final da declaração `while` entre
-    o caminho no qual a condição é `true` e
-    o caminho no qual a condição é `false`.
+    Por exemplo, a condição de um loop `while` é sempre executada,
+    mas o corpo pode ou não ser. Assim como em uma instrução `if`,
+    há uma junção no fim da instrução `while` entre
+    o caminho em que a condição é `true` e
+    o caminho em que a condição é `false`.
   related_links:
     - text: "Especificação de definite assignment"
       link: "https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md"
@@ -537,13 +600,13 @@
   short_description: |-
     Um pacote Dart do qual um pacote depende.
   long_description: |-
-    Uma dependency (dependência) é qualquer outro [package][] Dart do qual um pacote depende.
-    Se seu pacote quer importar código de algum outro pacote,
-    aquele pacote deve ser uma dependência sua primeiro.
-    Dependências são especificadas no arquivo [pubspec][] do seu pacote
-    com a sintaxe descrita em [Package dependencies][].
+    Uma dependência é qualquer outro [pacote][package] Dart do qual um pacote depende.
+    Se o seu pacote quer importar código de algum outro pacote,
+    esse pacote precisa primeiro ser uma dependência sua.
+    As dependências são especificadas no arquivo [pubspec][] do seu pacote
+    com a sintaxe descrita em [Dependências de pacotes][Package dependencies].
 
-    Para visualizar as dependências usadas por um pacote, use [`pub deps`][].
+    Para ver as dependências usadas por um pacote, use [`pub deps`][].
 
     [package]: #package
     [pubspec]: /tools/pub/pubspec
@@ -560,17 +623,61 @@
     - "pub"
     - "packages"
 
+- term: "Dependency graph"
+  short_description: |-
+    Uma representação de como os componentes de um sistema dependem uns dos outros.
+  long_description: |-
+    Um **dependency graph** (grafo de dependências) é um grafo direcionado que mostra as relações entre
+    diferentes componentes de um sistema, como arquivos, módulos, pacotes, funções
+    ou assets. Cada nó representa um componente, e cada aresta representa uma
+    dependência entre dois componentes.
+
+    No Dart e no Flutter, grafos de dependências são comumente usados por ferramentas como:
+
+    * O compilador, para determinar a ordem de build.
+    * O gerenciador de pacotes, para resolver as versões dos pacotes.
+    * Sistemas de build, para detectar o que precisa ser recompilado.
+    * Tree shaking, para remover código não utilizado.
+
+    Por exemplo, se o arquivo `main.dart` importa `utils.dart`, e `utils.dart` por sua vez
+    importa `math.dart`, o grafo de dependências ajuda o compilador a entender a ordem correta
+    para processar esses arquivos e quais partes do programa são realmente usadas.
+
+    Grafos de dependências são essenciais para:
+    * Builds eficientes
+    * Eliminação de código morto (tree shaking)
+    * Resolução de dependências
+    * Compilação incremental
+  related_links:
+    - text: "Pacotes Dart (pub.dev)"
+      link: "https://pub.dev"
+      type: "external"
+    - text: "Pub deps"
+      link: "/tools/pub/cmd/pub-deps"
+      type: "doc"
+    - text: "Tree shaking"
+      link: "#tree-shaking"
+      type: "term"
+  labels:
+    - "language"
+    - "tooling"
+    - "build"
+    - "packages"
+  alternate:
+    - "Dependency tree"
+    - "Module dependency graph"
+
 - term: "Dependency source"
   short_description: |-
     Um tipo de local de onde o pub pode obter pacotes.
   long_description: |-
-    Um tipo de repositório ou local de onde o pub pode recuperar pacotes.
-    Uma source (fonte) não é um local específico como o site pub.dev ou uma URL git específica.
+    Um tipo de repositório ou local de onde o pub pode obter pacotes.
+    Uma source não é um local específico, como o site pub.dev ou uma URL git específica.
     Cada source descreve um procedimento geral para acessar um pacote.
 
     Como exemplo, _git_ é uma das dependency sources suportadas.
-    A source git sabe como baixar pacotes dada uma URL git.
-    Várias [supported sources][] diferentes estão disponíveis.
+    A source git sabe como baixar pacotes a partir de uma URL git.
+    Várias [sources suportadas][supported sources] estão disponíveis.
 
     [supported sources]: /tools/pub/dependencies#dependency-sources
   related_links:
@@ -581,27 +688,68 @@
     - "pub"
     - "packages"
 
+- term: "Dot shorthand"
+  short_description: |-
+    Uma forma abreviada de sintaxe que permite omitir o nome do tipo
+    ao acessar construtores ou membros estáticos, incluindo valores de enum.
+  long_description: |-
+    Um **dot shorthand** (atalho com ponto) é um recurso da linguagem que permite um
+    código mais conciso, omitindo o nome do tipo ao acessar construtores ou
+    membros estáticos, incluindo valores de enum.
+
+    Esse recurso só é permitido quando o tipo esperado da expressão
+    pode ser inferido de forma única a partir do contexto ao redor
+    (o [context type](#context-type)).
+
+    Por exemplo, em vez de escrever `Status.running`, você pode escrever `.running`
+    se o context type já for conhecido como `Status`:
+
+    ```dart highlightLines=8
+    enum Status { running, stopped }
+
+    void updateStatus(Status s) {
+      print('Status updated to: $s');
+    }
+
+    void main() {
+      updateStatus(.running); // Resolves to Status.running
+    }
+    ```
+  related_links:
+    - text: "Dot shorthands"
+      link: "/language/dot-shorthands"
+      type: "doc"
+    - text: "Context type"
+      link: "#context-type"
+      type: "term"
+  labels:
+    - "language"
+    - "syntax"
+  alternate:
+    - "Static access shorthand"
+    - "dot-shorthand"
+
 - term: "Entrypoint"
   short_description: |-
-    Uma biblioteca Dart que é invocada diretamente por uma implementação Dart.
+    Uma biblioteca Dart invocada diretamente por uma implementação Dart.
   long_description: |-
     No contexto geral do Dart, um _entrypoint_ (ponto de entrada) é
-    uma biblioteca Dart que é invocada diretamente por uma implementação Dart.
+    uma biblioteca Dart invocada diretamente por uma implementação Dart.
     Por exemplo, quando você passa uma biblioteca Dart como argumento de linha de comando para
-    a VM Dart standalone, aquela biblioteca é o entrypoint.
-    Em outras palavras, é geralmente o arquivo `.dart` que contém `main()`.
+    a Dart VM standalone, essa biblioteca é o entrypoint.
+    Em outras palavras, normalmente é o arquivo `.dart` que contém `main()`.
 
     No contexto do pub, um _entrypoint package_ ou _root package_ é
     a raiz de um grafo de dependências.
-    Geralmente será uma aplicação.
+    Geralmente é uma aplicação.
     Quando você executa seu app, ele é o entrypoint package.
-    Todo outro pacote do qual ele depende não será um entrypoint naquele contexto.
+    Todos os outros pacotes dos quais ele depende não são entrypoints nesse contexto.
 
-    Um pacote pode ser um entrypoint em alguns contextos e não em outros.
+    Um pacote pode ser entrypoint em alguns contextos e não em outros.
     Digamos que seu app use um pacote `A`.
     Quando você executa seu app, `A` não é o entrypoint package.
-    No entanto, se você for para `A` e executar seus testes, naquele contexto,
-    ele _é_ o entrypoint já que seu app não está envolvido.
+    No entanto, se você for até `A` e executar os testes dele, nesse contexto,
+    ele _é_ o entrypoint, já que seu app não está envolvido.
   related_links:
     - text: "Entrypoint directory"
       link: "#entrypoint-directory"
@@ -618,12 +766,12 @@
   short_description: |-
     Um diretório que contém entrypoints Dart.
   long_description: |-
-    Um _entrypoint directory_ (diretório de ponto de entrada) é um diretório dentro do seu [package][] Dart que
-    pode conter [Dart entrypoints][].
+    Um _entrypoint directory_ (diretório de entrypoint) é um diretório dentro do seu [pacote][package] Dart que
+    tem permissão para conter [entrypoints Dart][Dart entrypoints].
 
-    O Pub tem uma lista desses diretórios: `benchmark`, `bin`, `example`,
-    `test`, `tool`, e `web` (e `lib`, para [Flutter apps][]).
-    Quaisquer subdiretórios desses (exceto `bin`) também podem conter entrypoints.
+    O pub tem uma lista desses diretórios: `benchmark`, `bin`, `example`,
+    `test`, `tool` e `web` (e `lib`, para [apps Flutter][Flutter apps]).
+    Qualquer subdiretório deles (exceto `bin`) também pode conter entrypoints.
 
     [package]: #package
     [Dart entrypoints]: #entrypoint
@@ -632,16 +780,37 @@
     - text: "Entrypoint"
       link: "#entrypoint"
       type: "term"
-    - text: "Pacotes e plugins Flutter"
+    - text: "Pacotes e plugins do Flutter"
       link: "https://docs.flutter.dev/packages-and-plugins/developing-packages"
       type: "doc"
   labels:
     - "pub"
     - "packages"
 
+- term: "Extension type"
+  short_description: |-
+    Um wrapper de tempo de compilação que oferece uma abstração de custo zero
+    sobre um tipo subjacente.
+  long_description: |-
+    Um **extension type** (tipo de extensão) introduz um wrapper estático, existente apenas em tempo de compilação,
+    em torno de um tipo de representação subjacente.
+
+    Como um extension type é apagado em tempo de compilação, ele não tem custo de
+    memória ou de CPU em tempo de execução, ao mesmo tempo que oferece uma API distinta e segura em relação a tipos.
+  related_links:
+    - text: "Extension types"
+      link: "/language/extension-types"
+      type: "doc"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "extension-type"
+    - "zero-cost wrapper"
+
 - term: "Function"
   short_description: |-
-    Um termo abrangente para se referir a funções de nível superior, funções locais,
+    Um termo genérico que se refere a funções de nível superior, funções locais,
     métodos estáticos e métodos de instância.
   related_links:
     - text: "Visão geral de funções"
@@ -656,15 +825,33 @@
   alternate:
     - "Procedure"
 
+- term: "Getter"
+  short_description: |-
+    Um método especial que oferece acesso de leitura às propriedades de um objeto.
+  long_description: |-
+    Getters e setters são métodos especiais que
+    oferecem acesso de leitura e escrita às propriedades de um objeto.
+    Lembre que cada variável de instância tem um getter implícito,
+    além de um setter implícito quando apropriado.
+    Você pode criar propriedades adicionais implementando getters e setters,
+    usando as keywords `get` e `set`.
+  related_links:
+    - text: "Getters e setters"
+      link: "/language/methods#getters-and-setters"
+      type: "doc"
+  labels:
+    - "language"
+    - "methods"
+
 - term: "Immediate dependency"
   short_description: |-
     Uma dependência que um pacote Dart usa diretamente.
   long_description: |-
-    Uma immediate dependency (dependência imediata) é uma [dependency][] que um
-    pacote usa diretamente e declara ele mesmo.
-    As dependências que você lista no seu arquivo [`pubspec.yaml`][] são
+    Uma immediate dependency (dependência imediata) é uma [dependência][dependency] que um
+    pacote usa diretamente e declara por conta própria.
+    As dependências que você lista no arquivo [`pubspec.yaml`][] são
     as dependências imediatas do seu pacote.
-    Todas as outras dependências são [transitive dependencies][].
+    Todas as outras dependências são [dependências transitivas][transitive dependencies].
 
     [dependency]: #dependency
     [`pubspec.yaml`]: /tools/pub/pubspec
@@ -673,7 +860,7 @@
     - text: "Dependências de pacotes"
       link: "/tools/pub/dependencies"
       type: "doc"
-    - text: "Transitive dependency"
+    - text: "Dependência transitiva"
       link: "#transitive-dependency"
       type: "term"
   labels:
@@ -684,22 +871,22 @@
 
 - term: "Immutable"
   short_description: |-
-    Um objeto cujo estado, incluindo todos os valores aninhados, não pode ser alterado após sua criação.
+    Um objeto cujo estado, incluindo todos os valores aninhados, não pode ser alterado após ser criado.
   long_description: |-
-    Um objeto immutable (imutável) é aquele cujo estado não pode ser modificado após sua criação.
+    Um objeto imutável é aquele cujo estado não pode ser modificado depois de criado.
     Quando um objeto é imutável, todos os seus campos devem ser `final` (não podem ser reatribuídos), e
-    os valores desses campos devem ser eles mesmos imutáveis (não podem ser mutados).
-    Isso ajuda a garantir consistência e permite uso mais seguro em código concorrente ou reativo.
+    os valores desses campos devem, por sua vez, ser imutáveis (não podem ser mutados).
+    Isso ajuda a garantir consistência e permite um uso mais seguro em código concorrente ou reativo.
 
-    Em Dart, uma classe é imutável se você:
+    No Dart, uma classe é imutável se você:
 
     * Declarar todos os campos como final, para que não possam ser reatribuídos.
-    * Garantir que os valores dos campos sejam eles mesmos imutáveis.
-    * Opcionalmente, usar a anotação `@immutable` do pacote meta.
-      Isso permite que o analisador avise se algum campo não for final ou se referir a um tipo mutável.
+    * Garantir que os próprios valores dos campos sejam imutáveis.
+    * Opcionalmente, usar a annotation `@immutable` do pacote meta.
+      Isso permite que o analyzer avise você se algum campo não for final ou referenciar um tipo mutável.
 
-    Adicionalmente, todos os valores const do Dart são imutáveis. Por exemplo, `const [1, 2, 3]`
-    cria uma lista imutável. Se uma classe tem um construtor `const` (não-factory), então
+    Além disso, todos os valores const do Dart são imutáveis. Por exemplo, `const [1, 2, 3]`
+    cria uma lista imutável. Se uma classe tem um construtor `const` (que não seja factory), então
     todos os seus campos devem ser final.
 
     Exemplo:
@@ -716,8 +903,8 @@
       }
       ```
 
-    No exemplo anterior, uma vez criada, você não pode modificar a instância `User`.
-    Você deve criar uma nova para alterar quaisquer dados.
+    No exemplo acima, depois de criado, você não pode modificar a instância de `User`.
+    Você precisa criar uma nova para alterar qualquer dado.
 
   related_links:
     - text: "final"
@@ -729,21 +916,70 @@
     - "Read-only"
     - "Unchangeable"
 
+- term: "Instantiate"
+  short_description: |-
+    Criar uma instância concreta (objeto) de uma classe.
+  long_description: |-
+    Instanciar uma classe significa criar um objeto do tipo dessa
+    classe na memória.
+    No Dart, você faz isso chamando um construtor,
+    como em `final myItem = Item()`.
+    Classes abstratas não podem ser instanciadas diretamente.
+  related_links:
+    - text: "Classes em Dart"
+      link: "/language/classes"
+      type: "doc"
+  labels:
+    - "language"
+    - "object-oriented"
+
+- term: "Interop"
+  short_description: |-
+    A capacidade de código Dart interagir com código escrito em outras linguagens.
+  long_description: |-
+    **Interop** (abreviação de _interoperability_, interoperabilidade) refere-se à capacidade do Dart de
+    se comunicar e trabalhar com código escrito em outras linguagens de programação.
+
+    No Dart, interop é comumente usado para:
+
+    - Chamar código nativo escrito em linguagens como C, C++ ou Rust.
+    - Interagir com APIs específicas de plataforma.
+    - Reutilizar bibliotecas existentes que não são escritas em Dart.
+
+    O Dart oferece diferentes mecanismos de interop
+    dependendo da plataforma e do caso de uso.
+    Por exemplo, aplicações Dart podem usar a
+    Foreign Function Interface (FFI) para chamar bibliotecas nativas, ou
+    camadas de interop específicas de plataforma ao rodar no Flutter ou na web.
+  related_links:
+    - text: "Interop com C usando dart:ffi"
+      link: "/interop/c-interop"
+      type: "doc"
+    - text: "Hooks"
+      link: "/tools/hooks"
+      type: "doc"
+  labels:
+    - "interop"
+    - "platform"
+  alternate:
+    - "Interoperability"
+
 - term: "Irrefutable pattern"
   short_description: |-
-    Um pattern que sempre corresponde.
+    Um padrão que sempre casa.
   long_description: |-
-    _Irrefutable patterns_ (padrões irrefutáveis) são patterns que sempre correspondem.
-    Padrões irrefutáveis são os únicos padrões que podem aparecer em
-    _irrefutable contexts_ (contextos irrefutáveis): os contextos de pattern de [_declaration_][] e [_assignment_][].
+    _Irrefutable patterns_ (padrões irrefutáveis) são padrões que sempre casam.
+    Padrões irrefutáveis são os únicos que podem aparecer em
+    _irrefutable contexts_ (contextos irrefutáveis): os contextos de padrão de
+    [_declaração_][_declaration_] e [_atribuição_][_assignment_].
 
     [_declaration_]: /language/patterns#variable-declaration
     [_assignment_]: /language/patterns#variable-assignment
   related_links:
-    - text: "Lugares onde patterns podem aparecer"
+    - text: "Onde os padrões podem aparecer"
       link: "/language/patterns#places-patterns-can-appear"
       type: "doc"
-    - text: "Mergulhe em patterns e records do Dart"
+    - text: "Dive into Dart patterns and records"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
       type: "tutorial"
   labels:
@@ -751,6 +987,26 @@
     - "patterns"
   alternate:
     - "irrefutable context"
+
+- term: "Just-in-Time compilation (JIT)"
+  short_description: |-
+    Just-in-Time (JIT) é um modo de compilação que compila
+    código em tempo de execução para iterações rápidas de desenvolvimento.
+  long_description: |-
+    A compilação Just-in-Time (JIT) compila código Dart para código de máquina nativo
+    enquanto ele roda. Isso habilita recursos como **hot reload** e uma depuração rica,
+    ao permitir compilação incremental. O JIT é tipicamente usado
+    durante o desenvolvimento, enquanto builds de produção usam AOT.
+  related_links:
+    - text: "Dart: As plataformas"
+      link: "/overview#platform"
+      type: "doc"
+    - text: "JIT"
+      link: "https://en.wikipedia.org/wiki/Just-in-time_compilation"
+      type: "external"
+  labels:
+    - "compilation"
+    - "devtools"
 
 - term: "Mixin application"
   short_description: |-
@@ -768,11 +1024,11 @@
     class B extends A with M {}
     ```
 
-    A classe `B` é uma subclasse da mixin application de `M` a `A`,
-    às vezes nomenclaturada como `A+M`. A classe `A+M` é uma subclasse de `A` e
-    tem membros que são copiados de `M`.
+    A classe `B` é uma subclasse da aplicação do mixin `M` sobre `A`,
+    às vezes chamada de `A+M`. A classe `A+M` é uma subclasse de `A` e
+    tem membros copiados de `M`.
 
-    Você pode dar um nome real a uma mixin application definindo-a como:
+    Você pode dar um nome de fato a uma aplicação de mixin definindo-a assim:
 
     ```dart
     class A {}
@@ -782,8 +1038,8 @@
     class A_M = A with M;
     ```
 
-    Dada essa declaração de `A_M`, a seguinte declaração de `B` é
-    equivalente à declaração de `B` no exemplo original:
+    Dada essa declaração de `A_M`, a declaração de `B` a seguir é
+    equivalente à declaração de `B` do exemplo original:
 
     ```dart
     class B extends A_M {}
@@ -798,20 +1054,65 @@
   alternate:
     - "with mixin"
 
+- term: "Null safety"
+  short_description: |-
+    Um recurso do sistema de tipos do Dart em que variáveis não podem
+    conter `null`, a menos que o tipo explicitamente permita.
+  long_description: |-
+    Null safety (segurança contra null) no Dart é um recurso da linguagem que ajuda a
+    prevenir erros causados por acesso não intencional a valores `null`.
+
+    Com null safety, os tipos são non-nullable por padrão:
+    uma variável não pode conter `null`, a menos que você
+    declare o tipo dela como nullable com o sufixo `?`.
+
+    ```dart
+    int count = 42;   // Can't be null.
+    int? maybeCount;  // Can be null (and is initialized to null by default).
+    ```
+
+    A null safety do Dart é [_sound_](#sound) (sólida).
+    Se o sistema de tipos determina que uma variável tem um tipo non-nullable,
+    essa variável é garantida para nunca ser `null` em tempo de execução.
+    Essa garantia de solidez é imposta por meio de
+    uma combinação de análise estática e verificações em tempo de execução,
+    e permite otimizações do compilador
+    que produzem código menor e mais eficiente.
+  related_links:
+    - text: "Sound null safety"
+      link: "/null-safety"
+      type: "doc"
+    - text: "Entendendo null safety"
+      link: "/null-safety/understanding-null-safety"
+      type: "doc"
+    - text: "Sound"
+      link: "#sound"
+      type: "term"
+    - text: "Late"
+      link: "#late"
+      type: "term"
+  labels:
+    - "language"
+    - "type system"
+    - "null safety"
+  alternate:
+    - "Sound null safety"
+    - "Null safe"
+
 - term: "Late"
   id: "late"
   short_description: |-
-    Uma palavra-chave que habilita inicialização diferida de variáveis e é
-    tipicamente usada com variáveis não-anuláveis.
+    Uma keyword que habilita a inicialização adiada de variáveis e é
+    tipicamente usada com variáveis non-nullable.
   long_description: |-
-    A palavra-chave `late` em Dart é usada para indicar que uma variável
-    será inicializada mais tarde, após sua declaração, mas antes de ser usada.
-    Isso ajuda a evitar a necessidade de tornar uma variável anulável (`?`) quando você
-    sabe que ela definitivamente receberá um valor, apenas não imediatamente.
+    A keyword `late` no Dart é usada para indicar que uma variável
+    será inicializada depois, após sua declaração, mas antes de ser usada.
+    Isso evita a necessidade de tornar uma variável nullable (`?`) quando você
+    sabe que ela vai receber um valor com certeza, só que não imediatamente.
 
-    Usar `late` adia a inicialização, permitindo que você escreva código mais
+    Usar `late` adia a inicialização, permitindo escrever código mais
     flexível e legível, especialmente ao lidar com dependências
-    ou configuração complexa.
+    ou configurações complexas.
 
     Por exemplo:
     ```dart
@@ -823,17 +1124,17 @@
     ```
 
     Tenha cuidado com variáveis late que fazem parte de uma API pública.
-    Se um cliente acessar a variável antes de ser inicializada,
-    ele encontrará um `LateInitializationError`, que fornece
+    Se um cliente acessar a variável antes de ela ser inicializada,
+    ele vai encontrar um `LateInitializationError`, que oferece
     pouco contexto. Nesses casos, considere usar uma
-    variável anulável privada com um getter público que lance um
-    erro descritivo (por exemplo, `StateError`) se acessado muito cedo, pois
-    isso pode oferecer feedback mais claro aos usuários da API, apesar da complexidade
-    adicional.
+    variável nullable privada com um getter público que lança um
+    erro descritivo (por exemplo, `StateError`) se for acessada cedo demais,
+    já que isso pode dar um feedback mais claro aos usuários da API, apesar da
+    complexidade extra.
 
     Você também pode usar `late final` quando a variável deve ser definida apenas uma vez.
-    Isso é útil em cenários onde o valor não está disponível no momento da
-    construção do objeto, como dependências cíclicas em grafos de objetos.
+    Isso é útil em cenários em que o valor não está disponível no momento da
+    construção do objeto, como em dependências cíclicas em grafos de objetos.
 
     Exemplo:
 
@@ -847,17 +1148,17 @@
     }
     ```
 
-    Seja cauteloso: se uma variável late for acessada antes de ser inicializada
+    Cuidado: se uma variável late for acessada antes de ser inicializada
     ou nunca for inicializada, isso causará um erro em tempo de execução.
 
   related_links:
-    - text: "Null safety em Dart"
+    - text: "Null safety no Dart"
       link: "/null-safety"
       type: "doc"
     - text: "Variáveis late"
       link: "/language/variables#late-variables"
       type: "doc"
-    - text: "Erro: LateInitializationError"
+    - text: "Error: LateInitializationError"
       link: "https://api.dart.dev/stable/2.7.2/dart-core/LateInitializationError-class.html"
       type: "api"
   labels:
@@ -871,11 +1172,11 @@
 
 - term: "Library"
   short_description: |-
-    Uma única unidade de compilação em Dart, composta por um
-    arquivo Dart primário e suas partes.
+    Uma unidade de compilação única em Dart, formada por um
+    arquivo Dart principal e suas parts.
   long_description: |-
-    Uma _library_ (biblioteca) Dart é uma única unidade de compilação em Dart,
-    composta por um arquivo `.dart` primário e qualquer número opcional de [parts][].
+    Uma _library_ (biblioteca) Dart é uma unidade de compilação única em Dart,
+    formada por um arquivo `.dart` principal e qualquer número opcional de [parts][].
     Bibliotecas têm seu próprio escopo privado.
 
     [parts]: #part-file
@@ -887,28 +1188,41 @@
     - "language"
     - "libraries"
 
+- term: "Library-private"
+  short_description: |-
+    Acessibilidade restrita à [biblioteca](#library) onde é definida.
+  long_description: |-
+    Em Dart, a privacidade é definida no escopo da biblioteca, e não da classe.
+    Qualquer identificador prefixado com um underscore, como `_myVariable`, é library-private.
+  related_links:
+    - text: "Bibliotecas e imports"
+      link: "/language/libraries"
+      type: "doc"
+  labels:
+    - "language"
+    - "encapsulation"
+
 - term: "Lockfile"
   short_description: |-
     Um arquivo chamado pubspec.lock que especifica as versões de cada dependência.
   long_description: |-
     Um arquivo chamado `pubspec.lock` que especifica as
-    versões concretas e outras informações de identificação para cada
-    dependência [immediate][] e [transitive][] de que um pacote depende.
+    versões concretas e outras informações de identificação de cada
+    [dependência imediata][immediate] e [transitiva][transitive] da qual um pacote depende.
 
-    Diferente do [pubspec][], que lista apenas dependências imediatas e
-    permite intervalos de versões, o lockfile fixa de forma abrangente
-    o grafo de dependências inteiro para versões específicas de pacotes.
-    Um lockfile garante que você possa recriar a
-    configuração exata de pacotes usada por uma aplicação.
+    Diferente do [pubspec][], que lista apenas as dependências imediatas e
+    permite intervalos de versão, o lockfile fixa de forma abrangente
+    todo o grafo de dependências em versões específicas dos pacotes.
+    Um lockfile garante que você consiga recriar a
+    configuração exata dos pacotes usados por uma aplicação.
 
-    O lockfile é gerado automaticamente para você pelo pub quando você executa
-    [`pub get`][], [`pub upgrade`][], ou [`pub downgrade`][].
-    O Pub inclui um [content hash][] para cada dependência
-    para verificar durante resoluções futuras.
+    O lockfile é gerado automaticamente pelo pub quando você executa
+    [`pub get`][], [`pub upgrade`][] ou [`pub downgrade`][].
+    O pub inclui um [content hash][] para cada dependência
+    para verificar nas próximas resoluções.
 
-    Se seu pacote é um [application package][],
-    você tipicamente incluirá isso no controle de versão.
-    Para pacotes regulares (biblioteca), você geralmente não incluirá.
+    Se o seu pacote for um [application package][], normalmente você
+    o incluirá no controle de versão. Para pacotes regulares (de biblioteca), geralmente não.
 
     [immediate]: #immediate-dependency
     [transitive]: #transitive-dependency
@@ -936,58 +1250,58 @@
 
 - term: "Obviously typed"
   short_description: |-
-    Uma expressão cujo tipo pode ser mecanicamente determinado sem ambiguidade.
+    Uma expressão cujo tipo pode ser determinado mecanicamente, sem ambiguidade.
   long_description: |-
-    Uma expressão em Dart é considerada **obviously typed** (obviamente tipada) quando
-    seu tipo é imediatamente claro a partir de sua sintaxe,
-    sem necessidade de inferência ou análise complexa.
+    Uma expressão em Dart é considerada **obviously typed** (de tipo óbvio) quando
+    o seu tipo fica imediatamente claro pela sintaxe,
+    sem precisar de inferência ou análise complexa.
 
-    Este conceito é principalmente usado em regras de lint como
+    Esse conceito é usado principalmente em regras de lint como
     `omit_obvious_local_variable_types` e `specify_nonobvious_property_types`
     para decidir se uma anotação de tipo explícita é redundante ou necessária.
 
-    ### Expressões obviously typed
+    ### Expressões de tipo óbvio
 
-    Os seguintes tipos de expressões são considerados obviously typed:
+    Os seguintes tipos de expressões são considerados de tipo óbvio:
 
-    - Literais não-coleção:
+    - Literais que não são de coleção:
       `1`, `true`, `'Hello'`.
     - Literais de coleção com argumentos de tipo explícitos:
       `<int>[]`, `<String, bool>{}`.
-    - Literais de list/set homogêneos cujos elementos são obviamente tipados:
+    - Literais de list/set homogêneos cujos elementos são de tipo óbvio:
       `[1, 2, 3]`, `{true, false}`.
     - Literais de map homogêneos com tipos de chave e valor óbvios:
       `{1: 10, 2: 20}`.
     - Literais de record com tipos óbvios:
       `(1, enabled: true)`.
     - Variáveis locais e parâmetros formais que não foram promovidos.
-    - Criação de instância com classes não-genéricas ou argumentos de tipo explícitos:
+    - Criação de instância com classes não genéricas ou com argumentos de tipo explícitos:
       `C()`, `Set<int>()`.
-    - Cascades com alvos obviamente tipados:
+    - Cascades com alvos de tipo óbvio:
       `StringBuffer('Hello, ')..write('world!')`.
-    - Type casts:
+    - Casts de tipo:
       `x as int`.
-    - Expressões condicionais com ramos obviamente tipados do mesmo tipo:
+    - Expressões condicionais com ramos de tipo óbvio e do mesmo tipo:
       `condition ? 1 : 2`.
-    - Type tests:
+    - Testes de tipo:
       `x is String`.
     - Expressões throw:
       `throw Exception()`.
-    - Expressões entre parênteses cujo conteúdo é obviamente tipado:
+    - Expressões entre parênteses cujo conteúdo é de tipo óbvio:
       `('Hello!')`.
-    - `this` e type literals:
+    - `this` e literais de tipo:
       `String`.
 
-    Nesta lista, _homogêneo_ significa "onde cada elemento tem o mesmo tipo".
+    Nesta lista, _homogêneo_ significa "onde todo elemento tem o mesmo tipo".
     Por exemplo, `{1: 'one', 2: 'two'}` é um map homogêneo,
     mas `{1: 'one', 1.5: true}` não é.
-    Por outro lado, se o tipo de uma expressão requer inferência (por exemplo
-    `[1, 2.5]` → `List<num>`), ela **não** é considerada obviously typed.
+    Por outro lado, se o tipo de uma expressão exige inferência (por exemplo
+    `[1, 2.5]` → `List<num>`), ela **não** é considerada de tipo óbvio.
 
-    Esta distinção ajuda regras de estilo a decidir quando
-    aplicar ou omitir anotações de tipo para clareza e consistência.
+    Essa distinção ajuda as regras de estilo a decidir quando
+    exigir ou omitir anotações de tipo para clareza e consistência.
   related_links:
-    - text: "Dart Eficaz: Estilo"
+    - text: "Effective Dart: Style"
       link: "/effective-dart/style"
       type: "doc"
     - text: "Lint: omit_obvious_local_variable_types"
@@ -1006,13 +1320,13 @@
 
 - term: "Override inference"
   short_description: |-
-    Como tipos ausentes em uma declaração de método são inferidos.
+    Como os tipos ausentes em uma declaração de método são inferidos.
   long_description: |-
-    Override inference (inferência de sobrescrita) é o processo pelo qual quaisquer tipos ausentes em
-    uma declaração de método são inferidos com base nos tipos correspondentes do
-    método ou métodos que ele sobrescreve.
+    Override inference (inferência por sobrescrita) é o processo pelo qual quaisquer tipos ausentes em
+    uma declaração de método são inferidos com base nos tipos correspondentes do método, ou métodos,
+    que ele sobrescreve.
 
-    Se um método candidato (o método com informação de tipo ausente)
+    Se um método candidato (o método que está sem informação de tipo)
     sobrescreve um único método herdado, então os
     tipos correspondentes do método sobrescrito são inferidos.
     Por exemplo, considere o seguinte código:
@@ -1028,14 +1342,14 @@
     }
     ```
 
-    A declaração de `m` em `B` é uma candidata porque
-    está faltando tanto o tipo de retorno quanto o tipo do parâmetro.
-    Como ela sobrescreve um único método (o método `m` em `A`),
+    A declaração de `m` em `B` é um candidato porque
+    está sem o tipo de retorno e sem o tipo do parâmetro.
+    Como ela sobrescreve um único método (o método `m` de `A`),
     os tipos do método sobrescrito serão usados para inferir
-    os tipos ausentes e será como se o método em `B` tivesse sido
+    os tipos ausentes, e será como se o método em `B` tivesse sido
     declarado como `int m(String s) => 1;`.
 
-    Se um método candidato sobrescreve múltiplos métodos, e
+    Se um método candidato sobrescreve vários métodos, e
     o tipo de função de um desses métodos sobrescritos, M<sub>s</sub>,
     é um supertipo dos tipos de função de todos os outros métodos sobrescritos,
     então M<sub>s</sub> é usado para inferir os tipos ausentes.
@@ -1056,17 +1370,17 @@
     }
     ```
 
-    A declaração de `m` em `C` é uma candidata para override inference porque
-    está faltando tanto o tipo de retorno quanto o tipo do parâmetro.
+    A declaração de `m` em `C` é um candidato à override inference porque
+    está sem o tipo de retorno e sem o tipo do parâmetro.
     Ela sobrescreve tanto `m` em `A` quanto `m` em `B`, então o compilador precisa
-    escolher um deles do qual os tipos ausentes possam ser inferidos.
+    escolher um deles para inferir os tipos ausentes.
     Mas como o tipo de função de `m` em `A` (`int Function(num)`) é
     um supertipo do tipo de função de `m` em `B` (`num Function(int)`),
-    a função em `A` é usada para inferir os tipos ausentes. O resultado é
+    a função de `A` é usada para inferir os tipos ausentes. O resultado é
     o mesmo que declarar o método em `C` como `int m(num n) => 1;`.
 
-    É um erro se nenhum dos métodos sobrescritos tem um tipo de função que
-    é um supertipo de todos os outros métodos sobrescritos.
+    É um erro se nenhum dos métodos sobrescritos tiver um tipo de função que
+    seja supertipo de todos os outros métodos sobrescritos.
   related_links:
     - text: "Herança em Dart"
       link: "/language/extend"
@@ -1078,35 +1392,35 @@
 
 - term: "Package"
   short_description: |-
-    Um diretório com uma coleção de bibliotecas Dart, recursos,
-    e um arquivo pubspec.yaml descrevendo-os.
+    Um diretório com uma coleção de bibliotecas Dart, recursos
+    e um arquivo pubspec.yaml que os descreve.
   long_description: |-
-    Um _package_ (pacote) Dart é uma coleção de [libraries][] e recursos Dart em
-    um diretório, com um arquivo [`pubspec.yaml`][] na raiz daquele diretório.
+    Um _package_ (pacote) Dart é uma coleção de [bibliotecas][libraries] Dart e recursos em
+    um diretório, com um arquivo [`pubspec.yaml`][] na raiz desse diretório.
 
-    Pacotes podem ter [dependencies][] em outros pacotes
-    *e* podem ser dependências eles mesmos.
-    O diretório `/lib` de um pacote contém as [public libraries][] que
+    Pacotes podem ter [dependências][dependencies] em outros pacotes
+    *e* podem ser dependências em si.
+    O diretório `/lib` de um pacote contém as [bibliotecas públicas][public libraries] que
     outros pacotes podem importar e usar.
     Eles também podem incluir scripts para serem executados diretamente.
-    Um pacote que não é destinado a ser dependência de
+    Um pacote que não se destina a ser usado como dependência por
     outros pacotes é um [application package][].
-    Pacotes compartilhados são [published][] no pub.dev,
+    Pacotes compartilhados são [publicados][published] no pub.dev,
     mas você também pode ter pacotes não publicados.
 
     Não inclua o [lockfile][] de um pacote no controle de versão,
     já que bibliotecas devem suportar um intervalo de versões de dependências.
-    As [version constraints][] das [immediate dependencies][] de um pacote devem
-    ser tão amplas quanto possível enquanto ainda garantindo que as dependências sejam
-    compatíveis com as versões contra as quais foram testadas.
+    As [version constraints][] das [dependências imediatas][immediate dependencies] de um pacote devem
+    ser o mais amplas possível, mantendo ao mesmo tempo a garantia de que as dependências serão
+    compatíveis com as versões com as quais foram testadas.
 
-    Como [semantic versioning][] requer que
-    bibliotecas incrementem seus números de versão principal para
-    quaisquer mudanças incompatíveis com versões anteriores, pacotes geralmente
-    requererão que as versões de suas dependências sejam maiores ou iguais às
-    versões que foram testadas e menores que a próxima versão principal.
+    Como o [semantic versioning][] exige que
+    bibliotecas incrementem o número da versão major para
+    qualquer mudança incompatível com versões anteriores, pacotes normalmente
+    exigem que as versões das dependências sejam maiores ou iguais às
+    versões testadas e menores que a próxima versão major.
     Então, se sua biblioteca dependesse do pacote (fictício) `transmogrify` e
-    você testou na versão `1.2.1`, sua restrição de versão seria `^1.2.1`.
+    você a tivesse testado na versão `1.2.1`, sua version constraint seria `^1.2.1`.
 
     [libraries]: #library
     [`pubspec.yaml`]: /tools/pub/pubspec
@@ -1136,15 +1450,15 @@
 
 - term: "Package uploader"
   short_description: |-
-    Um usuário do pub.dev que tem permissões administrativas para um pacote.
+    Um usuário do pub.dev que tem permissões administrativas sobre um pacote.
   long_description: |-
-    Um _package uploader_ (uploader de pacote) é alguém que tem
-    permissões administrativas para um pacote.
-    Um package uploader pode fazer upload de novas versões do pacote,
-    e também pode [add and remove other uploaders][] para aquele pacote.
+    Um _package uploader_ (publicador de pacote) é alguém que tem
+    permissões administrativas sobre um pacote.
+    Um package uploader pode enviar novas versões do pacote,
+    e também pode [adicionar e remover outros uploaders][add and remove other uploaders] desse pacote.
 
-    Se um pacote tem um [verified publisher][],
-    então todos os membros do publisher podem fazer upload do pacote.
+    Se um pacote tiver um [verified publisher][],
+    então todos os membros do publisher podem publicar o pacote.
 
     [add and remove other uploaders]: /tools/pub/publishing#uploaders
     [verified publisher]: #verified-publisher
@@ -1160,15 +1474,15 @@
 
 - term: "Part file"
   short_description: |-
-    Um arquivo fonte Dart que contém uma diretiva `part of`.
+    Um arquivo-fonte Dart que contém uma diretiva `part of`.
   long_description: |-
-    Um part file (arquivo de parte) é um arquivo fonte Dart que contém uma diretiva `part of`
+    Um part file (arquivo part) é um arquivo-fonte Dart que contém uma diretiva `part of`
     e é incluído em uma biblioteca usando a diretiva `part`.
   related_links:
-    - text: "Orientação sobre bibliotecas e partes"
+    - text: "Orientações sobre bibliotecas e parts"
       link: "/tools/pub/create-packages#organizing-a-package"
       type: "doc"
-    - text: "Use URIs de biblioteca em diretivas `part of`"
+    - text: "Use URIs de biblioteca nas diretivas `part of`"
       link: "/effective-dart/usage#do-use-strings-in-part-of-directives"
       type: "doc"
   labels:
@@ -1177,27 +1491,77 @@
   alternate:
     - "part"
 
+- term: "Potentially constant"
+  short_description: |-
+    Uma expressão que pode ser avaliada em tempo de compilação
+    se todos os parâmetros do construtor constante que a envolve
+    forem substituídos por valores constantes,
+    e todos os parâmetros de tipo forem substituídos por tipos concretos.
+  long_description: |-
+    Uma **potentially constant expression** (expressão potencialmente constante) é uma expressão
+    que é válida em contextos onde uma constante é exigida,
+    como as listas de inicialização de construtores constantes,
+    mesmo que ela não seja uma constante de tempo de compilação por si só,
+    porque referencia parâmetros do construtor ou parâmetros de tipo.
+
+    Se todos os parâmetros do construtor constante que a envolve
+    forem substituídos por valores constantes do tipo apropriado,
+    e todos os parâmetros de tipo forem substituídos por tipos concretos,
+    uma expressão potencialmente constante
+    se torna uma expressão constante de tempo de compilação.
+
+    Por exemplo, na seguinte classe:
+
+    ```dart
+    class ConstPoint {
+      final int x;
+      final int y;
+      const ConstPoint(int a) : x = a, y = a + 1;
+    }
+    ```
+
+    As expressões de inicialização `a` e `a + 1`
+    são expressões potencialmente constantes.
+    Elas não são expressões constantes
+    porque o valor de `a` depende de como o construtor é chamado.
+
+    No entanto, se o construtor for invocado com `const ConstPoint(3)`,
+    o parâmetro `a` é substituído pela constante `3`,
+    tornando `3` e `3 + 1` expressões constantes.
+  related_links:
+    - text: "Construtores constantes"
+      link: "/language/constructors#constant-constructors"
+      type: "doc"
+    - text: "Construtores primários constantes"
+      link: "/language/primary-constructors#constant-primary-constructors"
+      type: "doc"
+  labels:
+    - "language"
+    - "const"
+  alternate:
+    - "Potentially constant expression"
+
 - term: "Potentially non-nullable"
   short_description: |-
-    Um tipo que é não-anulável explicitamente ou
-    devido a ser um parâmetro de tipo.
+    Um tipo que é non-nullable explicitamente ou
+    por ser um parâmetro de tipo.
   long_description: |-
-    Um tipo é _potentially non-nullable_ (potencialmente não-anulável) se é
-    explicitamente não-anulável ou se é um parâmetro de tipo.
+    Um tipo é _potentially non-nullable_ (potencialmente non-nullable) se for
+    explicitamente non-nullable ou se for um parâmetro de tipo.
 
-    Um tipo é explicitamente não-anulável se é um
+    Um tipo é explicitamente non-nullable se for um
     nome de tipo que não é seguido por um ponto de interrogação (`?`).
-    Note que existem alguns tipos que são sempre anuláveis, como
-    `Null` e `dynamic`, e que `FutureOr` é apenas não-anulável se
-    não é seguido por um ponto de interrogação _e_
-    o argumento de tipo é não-anulável (como `FutureOr<String>`).
+    Observe que há alguns tipos que são sempre nullable, como
+    `Null` e `dynamic`, e que `FutureOr` só é non-nullable se
+    não for seguido por um ponto de interrogação _e_
+    o argumento de tipo for non-nullable (como em `FutureOr<String>`).
 
-    Parâmetros de tipo são potencialmente não-anuláveis porque o tipo
-    de runtime real (o tipo especificado como argumento de tipo) pode ser não-anulável.
-    Por exemplo, dada uma declaração de `class C<T> {}`,
-    o tipo `C` pode ser usado com um argumento de tipo não-anulável como em `C<int>`.
+    Parâmetros de tipo são potencialmente non-nullable porque o tipo
+    real em tempo de execução (o tipo especificado como argumento de tipo) pode ser non-nullable.
+    Por exemplo, dada a declaração `class C<T> {}`,
+    o tipo `C` pode ser usado com um argumento de tipo non-nullable, como em `C<int>`.
   related_links:
-    - text: "Anulabilidade e generics"
+    - text: "Nullability e genéricos"
       link: "/null-safety/understanding-null-safety#nullability-and-generics"
       type: "doc"
   labels:
@@ -1208,18 +1572,91 @@
   alternate:
     - "potentially nullable"
 
+- term: "Primary constructor"
+  short_description: |-
+    Uma sintaxe concisa para declarar um construtor principal diretamente no cabeçalho
+    de uma classe, enum ou extension type.
+  long_description: |-
+    Um **primary constructor** (construtor primário) é um atalho de sintaxe que declara um construtor
+    principal diretamente no cabeçalho de definição de uma classe, enum ou
+    extension type.
+
+    Construtores primários reduzem o código repetitivo de declarações de parâmetros e
+    inicialização de campos, permitindo declarar parâmetros (`final` ou `var`)
+    e formais de inicialização (`this.field`) diretamente no cabeçalho.
+
+    Declarar um parâmetro com o modificador `var` ou `final`
+    cria e inicializa implicitamente esse campo:
+
+    ```dart
+    class Point(var int x, var int y);
+    ```
+  related_links:
+    - text: "Construtores primários"
+      link: "/language/primary-constructors"
+      type: "doc"
+  labels:
+    - "language"
+    - "constructors"
+    - "syntax"
+  alternate:
+    - "primary-constructor"
+
+- term: "Private named parameter"
+  short_description: |-
+    Um parâmetro nomeado de construtor com nome privado na declaração
+    e nome público nos pontos de chamada.
+  long_description: |-
+    Um **private named parameter** (parâmetro nomeado privado) é um parâmetro nomeado cujo nome
+    é privado.
+
+    Ele só é permitido quando o parâmetro é de inicialização (como `this._x`)
+    ou de declaração (como `final T _x` ou `var T _x`). Parâmetros de inicialização
+    ocorrem em construtores tradicionais ou primários, enquanto parâmetros de declaração
+    só ocorrem em construtores primários.
+
+    Um parâmetro de inicialização inicializa a variável de instância com o
+    nome privado informado. Um parâmetro de declaração tanto declara
+    quanto inicializa implicitamente uma variável de instância com o nome privado informado.
+
+    Nos pontos de chamada, os argumentos são passados para parâmetros nomeados privados
+    especificando o nome público correspondente (omitindo o underscore inicial):
+
+    ```dart
+    class Point {
+      final double _x;
+      final double _y;
+
+      // Callers use the public names 'x' and 'y'.
+      Point.named({required this._x, required this._y});
+    }
+
+    void main() {
+      var p = Point.named(x: 10, y: 20); // Initializes '_x' and '_y'.
+    }
+    ```
+  related_links:
+    - text: "Parâmetros nomeados privados"
+      link: "/language/constructors#private-named-parameters"
+      type: "doc"
+  labels:
+    - "language"
+    - "constructors"
+  alternate:
+    - "private-named-parameters"
+
 - term: "Public library"
   short_description: |-
-    Uma biblioteca que está localizada no diretório `lib` de um pacote mas
+    Uma biblioteca localizada no diretório `lib` de um pacote, mas
     não dentro do diretório `lib/src`.
   long_description: |-
-    Uma public library (biblioteca pública) é uma biblioteca que está localizada dentro do diretório `lib`
-    do pacote mas não dentro do diretório `lib/src`.
+    Uma biblioteca pública é uma biblioteca localizada dentro do diretório `lib`
+    do pacote, mas não dentro do diretório `lib/src`.
   related_links:
     - text: "Organizando as bibliotecas de um pacote"
       link: "/tools/pub/create-packages#organizing-a-package"
       type: "doc"
-    - text: "Diretórios públicos de pacotes"
+    - text: "Diretórios públicos do pacote"
       link: "/tools/pub/package-layout#public-directories"
       type: "doc"
   labels:
@@ -1228,30 +1665,30 @@
 
 - term: "Pub content hash"
   short_description: |-
-    Hashes SHA256 mantidos pelo pub.dev para validar a integridade de pacotes.
+    Hashes SHA256 mantidos pelo pub.dev para validar a integridade dos pacotes.
   long_description: |-
-    O repositório pub.dev mantém um _content hash_ (hash de conteúdo) SHA256 de
-    cada versão de cada pacote que ele hospeda.
-    Clientes Pub usam este hash para validar a integridade de pacotes baixados,
-    e proteger contra mudanças no repositório fonte.
+    O repositório pub.dev mantém um _content hash_ SHA256 de
+    cada versão de cada pacote que hospeda.
+    Os clientes do pub usam esse hash para validar a integridade dos pacotes baixados
+    e se proteger contra alterações no repositório de origem.
 
-    Quando `dart pub get` baixa um pacote,
-    ele computa o hash do arquivo baixado.
-    O hash de cada dependência hospedada é armazenado com a
-    [resolution][] no [lockfile][].
+    Quando o `dart pub get` baixa um pacote,
+    ele calcula o hash do arquivo baixado.
+    O hash de cada dependência hospedada é armazenado junto com a
+    [resolução][resolution] no [lockfile][].
 
-    O cliente pub usa este content hash para verificar que
-    executar `dart pub get` novamente usando o mesmo lockfile,
-    potencialmente em um computador diferente, usa exatamente os mesmos pacotes.
+    O cliente do pub usa esse content hash para verificar se
+    executar `dart pub get` novamente com o mesmo lockfile,
+    possivelmente em outro computador, usa exatamente os mesmos pacotes.
 
-    Se o hash travado não corresponde ao que está atualmente no cache do pub,
-    o pub rebaixa o arquivo. Se ainda não corresponder,
-    o lockfile é atualizado e um aviso é impresso.
+    Se o hash travado não corresponder ao que está atualmente no pub cache,
+    o pub baixa o arquivo novamente. Se ainda não corresponder,
+    o lockfile é atualizado e um aviso é exibido.
 
-    Para fazer uma discrepância se tornar um erro em vez de um aviso,
-    use a opção [`--enforce-lockfile`][] para `dart pub get`.
-    Com esta opção, se o pub não conseguir encontrar arquivos de pacote com os mesmos hashes,
-    a resolução de dependência falha e o lockfile não é atualizado.
+    Para transformar uma divergência em erro em vez de aviso,
+    use a opção [`--enforce-lockfile`][] do `dart pub get`.
+    Com essa opção, se o pub não conseguir encontrar arquivos de pacote com os mesmos hashes,
+    a resolução de dependências falha e o lockfile não é atualizado.
 
     [resolution]: /tools/pub/cmd/pub-get
     [lockfile]: #lockfile
@@ -1266,29 +1703,29 @@
 
 - term: "Pub system cache"
   short_description: |-
-    Um diretório onde o pub armazena pacotes remotos baixados.
+    Um diretório onde o pub armazena os pacotes remotos baixados.
   long_description: |-
     Quando o pub obtém um pacote remoto,
-    ele o baixa em um único diretório _pub system cache_ (cache do sistema pub).
-    No macOS e Linux, este diretório por padrão é `~/.pub-cache`.
-    No Windows, o diretório por padrão é `%LOCALAPPDATA%\Pub\Cache`,
-    embora sua localização exata possa variar dependendo da versão do Windows.
-    Você pode especificar uma localização diferente usando a
-    variável de ambiente [`PUB_CACHE`][].
+    ele o baixa para um único diretório de _pub system cache_ (cache do sistema do pub).
+    No macOS e no Linux, esse diretório fica por padrão em `~/.pub-cache`.
+    No Windows, o diretório fica por padrão em `%LOCALAPPDATA%\Pub\Cache`,
+    embora o local exato possa variar conforme a versão do Windows.
+    Você pode especificar outro local usando a variável de ambiente
+    [`PUB_CACHE`][].
 
-    Uma vez que os pacotes estão no cache do sistema,
+    Depois que os pacotes estão no cache do sistema,
     o pub cria um arquivo `package_config.json` que mapeia cada pacote
     usado pela sua aplicação para o pacote correspondente no cache.
 
-    Você só precisa baixar uma versão específica de um pacote uma vez
-    e pode então reutilizá-la em quantos pacotes quiser.
+    Você só precisa baixar uma determinada versão de um pacote uma vez
+    e depois pode reutilizá-la em quantos pacotes quiser.
     Se você especificar a flag `--offline` para usar pacotes em cache,
-    você pode deletar e regenerar seus arquivos `package_config.json`
+    pode apagar e regenerar seus arquivos `package_config.json`
     sem precisar acessar a rede.
 
     [`PUB_CACHE`]: /tools/pub/environment-variables
   related_links:
-    - text: "Variáveis de ambiente do Pub"
+    - text: "Variáveis de ambiente do pub"
       link: "/tools/pub/environment-variables"
       type: "doc"
   labels:
@@ -1299,18 +1736,18 @@
 
 - term: "Pub workspace"
   short_description: |-
-    Uma coleção de pacotes que são desenvolvidos juntos com
-    uma resolução compartilhada de suas restrições de dependência.
+    Uma coleção de pacotes desenvolvidos em conjunto com
+    uma resolução compartilhada das restrições de dependência.
   long_description: |-
-    Um _pub workspace_ associa uma coleção de pacotes locais que são
-    tratados como uma única unidade durante o desenvolvimento, habilitando
-    resolução compartilhada de suas restrições de dependência.
+    Um _pub workspace_ (workspace do pub) associa uma coleção de pacotes locais que são
+    tratados como uma única unidade durante o desenvolvimento, permitindo
+    a resolução compartilhada das restrições de dependência deles.
     Útil para desenvolver em um monorepo.
 
-    Os pacotes têm arquivos `pubspec.lock` e
-    `.dart_tool/package_config.json` compartilhados no diretório raiz do workspace.
+    Os pacotes compartilham os arquivos `pubspec.lock` e
+    `.dart_tool/package_config.json` no diretório raiz do workspace.
   related_links:
-    - text: "Pub workspaces"
+    - text: "Workspaces do pub"
       link: "/tools/pub/workspaces"
       type: "doc"
   labels:
@@ -1321,11 +1758,11 @@
 
 - term: "Quick fix"
   short_description: |-
-    Uma edição de código automatizada e local direcionada a corrigir o problema reportado por um
+    Uma edição de código automatizada e local direcionada a corrigir o problema relatado por um
     diagnóstico específico.
   related_links:
-    - text: "Quick fixes para problemas de análise"
-      link: "https://blog.dart.dev/quick-fixes-for-analysis-issues-c10df084971a"
+    - text: "Correções rápidas para problemas de análise"
+      link: "/blog/quick-fixes-for-analysis-issues"
       type: "article"
     - text: "Mensagens de diagnóstico"
       link: "/tools/diagnostic-messages"
@@ -1339,12 +1776,12 @@
 
 - term: "Refactor"
   short_description: |-
-    Uma edição de código direcionada a modificações que são não-locais ou que
-    requerem interação do usuário.
+    Uma edição de código direcionada a modificações não locais ou que
+    exigem interação do usuário.
   long_description: |-
-    Um refactor (refatoração) é uma edição de código direcionada a modificações que são não-locais
-    ou que requerem interação do usuário.
-    Exemplos de refatorações incluem renomear, remover ou extrair código.
+    Um refactor (refatoração) é uma edição de código direcionada a modificações que são não locais
+    ou que exigem interação do usuário.
+    Exemplos de refactors incluem renomear, remover ou extrair código.
   related_links:
     - text: "Assist"
       link: "#assist"
@@ -1355,19 +1792,19 @@
 
 - term: "Refutable pattern"
   short_description: |-
-    Um pattern que pode ser testado contra um valor.
+    Um padrão que pode ser testado contra um valor.
   long_description: |-
-    Um _refutable pattern_ (padrão refutável) é um pattern que pode ser testado contra um valor para
-    determinar se o pattern corresponde ao valor.
-    Se não, o pattern _refutes_ (refuta), ou nega, a correspondência.
-    Padrões refutáveis aparecem em [_matching contexts_][].
+    Um _refutable pattern_ (padrão refutável) é um padrão que pode ser testado contra um valor para
+    determinar se o padrão casa com o valor.
+    Se não casar, o padrão _refuta_, ou nega, a correspondência.
+    Padrões refutáveis aparecem em [_matching contexts_][matching contexts] (contextos de correspondência).
 
-    [_matching contexts_]: /language/patterns#matching
+    [matching contexts]: /language/patterns#matching
   related_links:
-    - text: "Lugares onde patterns podem aparecer"
+    - text: "Onde os padrões podem aparecer"
       link: "/language/patterns#places-patterns-can-appear"
       type: "doc"
-    - text: "Mergulhe em patterns e records do Dart"
+    - text: "Dive into Dart patterns and records"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
       type: "tutorial"
   labels:
@@ -1376,12 +1813,161 @@
   alternate:
     - "matching contexts"
 
+- term: "Reified generics"
+  short_description: |-
+    A preservação dos argumentos de tipo genéricos em tempo de execução,
+    permitindo verificações de tipo contra o tipo genérico completo,
+    como com `is List<String>`.
+  long_description: |-
+    No Dart, os argumentos de tipo genéricos são _reified_ (reificados),
+    o que significa que eles mantêm o controle dos seus argumentos de tipo em tempo de execução.
+    Isso permite inspecionar e verificar o tipo genérico completo de um objeto,
+    e não apenas o seu tipo bruto, sem argumentos de tipo.
+
+    Por exemplo, você pode verificar se uma lista é
+    especificamente um [subtipo](#subtype) de `List<String>`:
+
+    ```dart
+    final names = ['Dart', 'Flutter', 'Jaspr'];
+    print(names is List<String>); // Prints: true
+    print(names is List<int>);    // Prints: false
+    ```
+
+    Os genéricos reificados também habilitam as verificações de tipo em tempo de execução do Dart
+    para tipos genéricos [covariantes](#variance).
+    Para garantir a [solidez](#sound), quando você adiciona um elemento a uma lista,
+    o Dart valida em tempo de execução que o elemento corresponde
+    ao argumento de tipo real da lista.
+    Por exemplo, se você tentar adicionar um `double` a uma `List<int>`,
+    como `double` não é subtipo de `int`,
+    o Dart lança um erro em tempo de execução:
+
+    ```dart
+    List<num> numbers = <int>[1, 2, 3]; // Explicitly typed as `List<num>`.
+    numbers.add(1.5); // Throws a TypeError because `1.5` isn't an int.
+    ```
+
+    Isso contrasta com algumas outras linguagens, como Java,
+    em que os argumentos de tipo são removidos antes da execução, por meio de
+    _type erasure_ (apagamento de tipo).
+    Assim, nessas linguagens, você pode testar se um objeto é uma `List`,
+    mas não se é uma `List<String>`.
+  related_links:
+    - text: "Generics"
+      link: "/language/generics"
+      type: "doc"
+    - text: "Variance"
+      link: "#variance"
+      type: "term"
+    - text: "Programação genérica na Wikipedia"
+      link: "https://en.wikipedia.org/wiki/Generic_programming"
+      type: "external"
+  labels:
+    - "language"
+    - "type system"
+    - "generics"
+  alternate:
+    - "Reification"
+    - "Reified"
+
+- term: "Scope"
+  short_description: |-
+    A região de um programa em que um nome (como uma variável, função ou classe)
+    é visível e pode ser referenciado.
+  long_description: |-
+    **Scope** (escopo) define onde os identificadores, como variáveis, parâmetros, funções
+    e classes, são acessíveis dentro de um programa.
+
+    O Dart usa **escopo léxico (estático)**, o que significa que o escopo de um nome é
+    determinado pela estrutura do código-fonte, e não pela forma como o programa
+    é executado em tempo de execução. Veja
+    [escopo léxico](/language/functions#lexical-scope) para mais detalhes.
+
+    Tipos comuns de escopo no Dart incluem:
+
+    - **Escopo de classe**: membros acessíveis dentro de uma classe.
+    - **Escopo de bloco**: variáveis declaradas dentro de blocos como `if`, `for`
+      ou `while`.
+    - **Escopo de função**: parâmetros e variáveis locais dentro de uma função.
+    - **Escopo de biblioteca**: declarações de nível superior visíveis dentro de uma biblioteca.
+
+  related_links:
+    - text: "Variáveis"
+      link: "/language/variables"
+      type: "doc"
+    - text: "Funções e closures"
+      link: "/language/functions"
+      type: "doc"
+  labels:
+    - "language"
+  alternate:
+    - "Lexical scope"
+
+- term: "Sound"
+  short_description: |-
+    Uma garantia do sistema de tipos de que o valor em tempo de execução de uma expressão
+    sempre corresponde ao seu tipo estático.
+  long_description: |-
+    Um sistema de tipos é _sound_ (sólido) quando garante que um programa
+    nunca pode chegar a um estado em que uma expressão é avaliada como um valor
+    que não corresponde ao tipo estático da expressão.
+    Por exemplo, se o tipo estático de uma expressão é `String`,
+    o valor em tempo de execução é garantido como sendo uma `String` quando avaliado.
+
+    O sistema de tipos do Dart é sólido.
+    Ele impõe essa garantia por meio de uma combinação de
+    verificação estática (erros de compilação) e verificações em tempo de execução:
+
+    - **Verificações estáticas** pegam a maioria dos erros de tipo em tempo de compilação,
+      como atribuir uma `String` a uma variável de tipo `int`.
+    - **Verificações em tempo de execução** tratam os casos que o compilador não consegue
+      verificar estaticamente, como casts com `as` e argumentos de tipo genéricos covariantes.
+
+    A solidez traz vários benefícios práticos:
+
+    - **Bugs relacionados a tipos aparecem em tempo de compilação.**
+      Um sistema de tipos sólido obriga o código a ser inequívoco sobre os seus tipos,
+      então bugs de tipo que seriam difíceis de
+      encontrar em tempo de execução são pegos cedo.
+    - **Código mais legível.**
+      Você pode confiar que um valor realmente tem o tipo declarado.
+      No Dart sólido, os tipos não mentem.
+    - **Código mais fácil de manter.**
+      Quando você muda um trecho de código,
+      o sistema de tipos sólido permite que as ferramentas do Dart
+      avisem sobre outros trechos de código que quebraram.
+    - **Melhor compilação [ahead-of-time (AOT)](#aot).**
+      Tipos sólidos ajudam o compilador a gerar
+      código nativo menor e mais eficiente.
+
+    Solidez não significa que o Dart pega _todos_ os bugs.
+    Você ainda pode escrever código com erros de lógica, erros de off-by-one
+    e outros problemas que o sistema de tipos não trata.
+    Significa apenas que os próprios tipos são sempre confiáveis.
+  related_links:
+    - text: "O sistema de tipos do Dart"
+      link: "/language/type-system"
+      type: "doc"
+    - text: "Null safety"
+      link: "/null-safety"
+      type: "doc"
+    - text: "Type safety na Wikipedia"
+      link: "https://en.wikipedia.org/wiki/Type_safety"
+      type: "external"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "Soundness"
+    - "Sound type system"
+    - "Type safety"
+
 - term: "Subclass"
   short_description: |-
     Uma classe que herda a implementação de outra classe.
   long_description: |-
-    Uma _subclass_ (subclasse) é uma classe que herda a implementação de outra classe
-    usando a palavra-chave [`extends`][], ou por [mixin application][].
+    Uma _subclass_ (subclasse) é uma classe que herda a implementação de outra classe ao
+    usar a keyword [`extends`][], ou por [mixin application][].
 
     ```dart
     // A is a subclass of B; B is the superclass of A.
@@ -1391,17 +1977,17 @@
     class B1 extends A with M {}
     ```
 
-    Uma relação de subclasse também implica uma relação de [subtype](#subtype) associada.
-    Por exemplo, `class A` implicitamente define um tipo associado `A`
-    que instâncias da classe `A` habitam.
-    Então, `class A extends B` declara não apenas que a classe
-    `A` é uma subclasse de `B`, mas também estabelece que o *tipo* `A` é um
+    A relação de subclasse também implica uma relação de [subtipo](#subtype) associada.
+    Por exemplo, `class A` define implicitamente um tipo associado `A`
+    que as instâncias da classe `A` ocupam.
+    Assim, `class A extends B` declara não apenas que a classe
+    `A` é subclasse de `B`, mas também estabelece que o *tipo* `A` é um
     *subtipo* do tipo `B`.
 
-    Relações de subclasse são um subconjunto de relações de subtipo.
+    As relações de subclasse são um subconjunto das relações de subtipo.
     Quando a documentação diz "`S` deve ser um subtipo de `T`",
-    está ok para `S` ser uma subclasse de `T`.
-    No entanto, o inverso não é verdadeiro: nem todos os subtipos são subclasses.
+    é aceitável que `S` seja uma subclasse de `T`.
+    No entanto, o inverso não é verdadeiro: nem todo subtipo é uma subclasse.
 
     [`extends`]: /language/extend
     [mixin application]: #mixin-application
@@ -1409,7 +1995,7 @@
     - text: "Herança em Dart"
       link: "/language/extend"
       type: "doc"
-    - text: "Relacionamento de subtipo"
+    - text: "Relação de subtipo"
       link: "#subtype"
       type: "term"
   labels:
@@ -1427,10 +2013,10 @@
     usa o mesmo nome de uma declaração existente em um escopo externo,
     tornando a externa inacessível dentro do escopo interno.
 
-    Embora válido em Dart, shadowing pode levar a
-    código confuso ou comportamento não intencional.
-    Como resultado, é geralmente desencorajado a menos que
-    usado deliberadamente para melhorar a clareza do seu código.
+    Embora seja válido em Dart, o shadowing pode levar a
+    código confuso ou a comportamentos não intencionais.
+    Por isso, geralmente é desencorajado, a menos que seja
+    usado deliberadamente para melhorar a clareza do código.
 
     ### Exemplo
 
@@ -1451,7 +2037,7 @@
     }
     ```
 
-    Shadowing também pode ocorrer em blocos aninhados:
+    O shadowing também pode ocorrer em blocos aninhados:
 
     ```dart
     void main() {
@@ -1471,32 +2057,32 @@
 
 - term: "Subtype"
   short_description: |-
-    Um tipo que pode ser usado onde quer que um valor de seu supertipo seja esperado.
+    Um tipo que pode ser usado em qualquer lugar em que se espera um valor do seu supertipo.
   long_description: |-
-    Uma relação de _subtype_ (subtipo) é onde um valor de um certo tipo é substituível
-    onde o valor de outro tipo, o supertipo, é esperado.
+    A relação de _subtype_ (subtipo) existe quando um valor de determinado tipo pode ser substituído
+    onde se espera o valor de outro tipo, o supertipo.
     Por exemplo, se `S` é um subtipo de `T`,
     então você pode substituir um valor do tipo `S`
-    onde um valor do tipo `T` é esperado.
+    onde se espera um valor do tipo `T`.
 
-    Um subtipo suporta todas as operações de seu supertipo
+    Um subtipo oferece todas as operações do seu supertipo
     (e possivelmente algumas operações extras).
     Na prática, isso significa que você pode atribuir o valor de um subtipo
-    para qualquer local esperando o supertipo,
+    a qualquer local que espere o supertipo,
     e todos os métodos do supertipo estão disponíveis no subtipo.
 
-    Isso é verdade pelo menos estaticamente.
+    Isso vale pelo menos estaticamente.
     Uma API específica pode não permitir a substituição em tempo de execução,
-    dependendo de suas operações.
+    dependendo das operações que realiza.
 
-    Algumas relações de subtipo são baseadas na estrutura do tipo,
-    como com tipos anuláveis (por exemplo, `int` é um subtipo de `int?`)
+    Algumas relações de subtipo se baseiam na estrutura do tipo,
+    como com tipos nullable (por exemplo, `int` é subtipo de `int?`)
     e tipos de função
-    (por exemplo, `String Function()` é um subtipo de `void Function()`).
+    (por exemplo, `String Function()` é subtipo de `void Function()`).
 
     Subtipos também podem ser introduzidos para classes por
-    [implementation](/language/classes#implicit-interfaces)
-    ou [inheritance](/language/extend) (direta ou indireta):
+    [implementação](/language/classes#implicit-interfaces)
+    ou [herança](/language/extend) (direta ou indireta):
 
     ```dart
     // A is a subtype of B, but NOT a subclass of B.
@@ -1519,21 +2105,48 @@
     - "subtyping"
     - "subtype polymorphism"
 
+- term: "Super parameter"
+  short_description: |-
+    Um parâmetro de construtor que passa automaticamente
+    um argumento para o construtor da superclasse.
+  long_description: |-
+    Um **super parameter** (super parâmetro) é um atalho de sintaxe que simplifica a
+    passagem de parâmetros de um construtor de subclasse
+    para um construtor de superclasse.
+
+    Em vez de declarar manualmente o parâmetro
+    e passá-lo na lista de inicialização,
+    você pode prefixar o nome do parâmetro com `super.`.
+
+    Por exemplo, em `Hammer({required super.price})`,
+    o valor de `price` é passado
+    diretamente para o construtor da superclasse.
+  related_links:
+    - text: "Super parâmetros"
+      link: "/language/constructors#super-parameters"
+      type: "doc"
+  labels:
+    - "language"
+    - "constructors"
+    - "syntax"
+  alternate:
+    - "Super-initializer parameter"
+
 - term: "Transitive dependency"
   short_description: |-
-    Uma dependência que um pacote usa indiretamente porque
-    uma de suas dependências a requer.
+    Uma dependência que um pacote usa indiretamente, porque
+    uma das suas dependências a exige.
   long_description: |-
-    Uma _transitive dependency_ (dependência transitiva) é uma [dependency][] que um pacote usa indiretamente
-    porque uma de suas dependências, ou as dependências delas, a requer.
+    Uma _transitive dependency_ (dependência transitiva) é uma [dependência][dependency] que um pacote usa indiretamente,
+    porque uma das suas dependências, ou as dependências delas, a exige.
 
-    Se seu pacote depende de A, que por sua vez depende de B que depende de C,
-    então A é uma [immediate dependency][] e B e C são transitivas.
+    Se o seu pacote depende de A, que por sua vez depende de B, que depende de C,
+    então A é uma [dependência imediata][immediate dependency] e B e C são transitivas.
 
     [dependency]: #dependency
     [immediate dependency]: #immediate-dependency
   related_links:
-    - text: "Immediate dependency"
+    - text: "Dependência imediata"
       link: "#immediate-dependency"
       type: "term"
   labels:
@@ -1542,29 +2155,29 @@
 
 - term: "Tree shaking"
   short_description: |-
-    Uma otimização do compilador que remove código não usado.
+    Uma otimização do compilador que remove código não utilizado.
   long_description: |-
-    **Tree shaking** é uma otimização do compilador que
+    **Tree shaking** (sacudida de árvore) é uma otimização do compilador que
     analisa quais partes do código são realmente usadas por uma aplicação e
     remove todo o resto da saída final.
 
-    Isso torna o programa compilado menor e mais rápido para carregar, já que código morto
-    que nunca é referenciado não acaba no binário ou bundle.
+    Isso torna o programa compilado menor e mais rápido de carregar, já que código morto
+    que nunca é referenciado não acaba no binário ou no bundle.
 
-    Tree shaking é especialmente importante para apps web e móveis, onde
-    o tamanho do código impacta diretamente o tempo de download e desempenho em tempo de execução.
+    O tree shaking é especialmente importante para apps web e mobile, em que
+    o tamanho do código impacta diretamente o tempo de download e o desempenho em tempo de execução.
 
     Por exemplo, se você importar uma biblioteca que define dez funções de nível superior,
-    mas seu app chama apenas duas, tree shaking garante
-    que as outras oito funções sejam excluídas da saída compilada.
+    mas seu app chama apenas duas, o tree shaking garante que
+    as outras oito funções sejam excluídas da saída compilada.
   related_links:
     - text: "Dart compile"
       link: "/tools/dart-compile"
       type: "doc"
-    - text: "Bibliotecas & imports"
+    - text: "Bibliotecas e imports"
       link: "/language/libraries"
       type: "doc"
-    - text:  "Implantação web"
+    - text:  "Deploy para web"
       link:  "/web/deployment"
       type: "doc"
   labels:
@@ -1574,17 +2187,91 @@
   alternate:
     - "Dead-code elimination"
 
+- term: "Top type"
+  short_description: |-
+    Um tipo que é supertipo de todos os outros tipos,
+    incluindo `Object?`.
+  long_description: |-
+    Um **top type** (tipo superior) é qualquer tipo que seja supertipo de `Object?`.
+    Como `Object?` é ele mesmo supertipo de todos os outros tipos do Dart,
+    um top type fica no topo da hierarquia de tipos,
+    então você pode atribuir qualquer valor a uma variável com top type.
+
+    O Dart tem vários top types,
+    mas os principais são os três seguintes:
+
+    - **`Object?`** -
+      O supertipo nullable de todos os tipos.
+      Todo valor em Dart, incluindo `null`, é um `Object?`.
+
+    - **`dynamic`** -
+      Um tipo especial que desativa a verificação estática de tipos.
+      Assim como `Object?`, aceita qualquer valor,
+      mas também permite acessar _qualquer_ membro
+      dele sem um erro de compilação.
+      A verificação é adiada para o tempo de execução.
+
+    - **`void`** -
+      Um tipo que indica que o valor não deve ser usado.
+      Você pode atribuir qualquer valor a `void`,
+      mas não pode usar o resultado sem um cast.
+
+    Além desses três principais, há outros top types compostos.
+    `FutureOr<T>` é um top type sempre que `T` é um top type,
+    e adicionar `?` a certos tipos também produz um top type.
+    Por exemplo, `FutureOr<Object?>`, `FutureOr<Object>?`
+    e `dynamic?` são todos top types.
+
+    Em contraste com `Object?`, o tipo `Object` non-nullable é
+    o supertipo de todos os tipos _non-nullable_, mas não é um top type verdadeiro
+    porque não é supertipo de `Null`.
+
+    O top type é o inverso do [bottom type](#bottom-type).
+    Enquanto um top type é supertipo de tudo,
+    o bottom type (`Never` no Dart) é subtipo de tudo.
+
+    ```dart
+    Object? a = 42;        // OK: int is a subtype of Object?.
+    Object? b = 'hello';   // OK: String is a subtype of Object?.
+    Object? c = null;      // OK: Null is a subtype of Object?.
+    dynamic d = [1, 2, 3]; // OK: List<int> is a subtype of dynamic.
+    void e = true;         // OK: bool is a subtype of void.
+    ```
+  related_links:
+    - text: "O sistema de tipos do Dart"
+      link: "/language/type-system"
+      type: "doc"
+    - text: "Bottom type"
+      link: "#bottom-type"
+      type: "term"
+    - text: "Top e bottom types no Dart"
+      link: "/null-safety/understanding-null-safety#top-and-bottom"
+      type: "doc"
+    - text: "Caracterização sintática de top types no Dart"
+      link: "https://github.com/dart-lang/language/blob/main/accepted/2.12/nnbd/feature-specification.md#helper-predicates"
+      type: "external"
+    - text: "Top type na Wikipedia"
+      link: "https://en.wikipedia.org/wiki/Any_type"
+      type: "external"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "Any type"
+    - "Universal type"
+    - "Universal supertype"
+
 - term: "Type alias"
   short_description: |-
     Um nome definido pelo usuário para um tipo existente.
   long_description: |-
     Um **type alias** (alias de tipo) é um nome alternativo que se refere a outro tipo.
 
-    Eles podem ser usados para simplificar definições de tipos complexos,
-    melhorar a legibilidade, ou criar significado semântico no código.
+    Eles podem ser usados para simplificar definições de tipo complexas,
+    melhorar a legibilidade ou criar significado semântico no código.
 
-    Dart suporta definição de type aliases usando a palavra-chave `typedef`.
-    Você pode criar alias para funções, classes e até tipos genéricos.
+    O Dart permite definir type aliases usando a keyword `typedef`.
+    Você pode criar aliases para funções, classes e até tipos genéricos.
 
     ### Exemplos
 
@@ -1612,9 +2299,9 @@
     Client client = HttpClient();
     ```
 
-    Type aliases não criam novos tipos, eles apenas fornecem nomes alternativos.
+    Type aliases não criam novos tipos, apenas oferecem nomes alternativos.
   related_links:
-    - text: "Palavra-chave `typedef`"
+    - text: "Keyword `typedef`"
       link: "/language/typedefs"
       type: "doc"
   labels:
@@ -1624,94 +2311,146 @@
     - "typedef"
     - "alias"
 
+- term: "Uninitialized"
+  short_description: |-
+    Uma variável que foi declarada, mas ainda não recebeu um valor.
+  long_description: |-
+    Uma variável está _uninitialized_ (não inicializada) quando foi declarada, mas
+    ainda não recebeu um valor.
+
+    Variáveis non-nullable precisam ser inicializadas antes de serem lidas,
+    seja no momento da declaração, seja em todos os caminhos de execução possíveis
+    antes do primeiro uso:
+
+    ```dart
+    void f() {
+      int x;
+      print(x); // Error: variable 'x' must be assigned before it can be used.
+    }
+    ```
+
+    Variáveis nullable que não são inicializadas explicitamente recebem `null` por padrão:
+
+    ```dart
+    int? count; // Implicitly initialized to null.
+    print(count); // Prints: null
+    ```
+
+    Para adiar a inicialização de uma variável non-nullable,
+    use a keyword `late`. Uma variável `late` fica não inicializada
+    até a primeira atribuição, e acessá-la antes de ser atribuída
+    lança um erro de inicialização late em tempo de execução:
+
+    ```dart
+    late String name;
+    print(name); // Throws a late initialization error if not yet assigned.
+    ```
+  related_links:
+    - text: "Variáveis"
+      link: "/language/variables"
+      type: "doc"
+    - text: "Definite assignment"
+      link: "#definite-assignment"
+      type: "term"
+    - text: "Late"
+      link: "#late"
+      type: "term"
+  labels:
+    - "language"
+    - "variables"
+    - "null safety"
+    - "flow analysis"
+  alternate:
+    - "Unassigned"
+    - "Not initialized"
+
 - term: "Variance and variance positions"
   id: "variance"
   short_description: |-
-    Como alterar um argumento de tipo de um tipo afeta a relação
+    Como a mudança de um argumento de tipo afeta a relação
     entre o tipo original e o resultante.
 
-    Em Dart, alterar o argumento de tipo de uma
-    declaração de tipo (como uma classe) ou tipo de retorno de função, altera a
+    No Dart, mudar o argumento de tipo de uma
+    declaração de tipo (como uma classe) ou o tipo de retorno de uma função muda a
     relação de tipo geral na mesma direção (covariante).
 
-    No entanto, alterar o tipo dos tipos de parâmetro de uma função, altera a
+    Já mudar os tipos dos parâmetros de uma função muda a
     relação de tipo geral na direção oposta (contravariante).
   long_description: |-
-    Um parâmetro de tipo de uma classe (ou outra declaração de tipo, como um mixin) é
-    dito ser _covariant_ (covariante) quando o tipo como um todo
-    "co-varia" com o argumento de tipo real.
-    Em outras palavras, se o argumento de tipo é substituído por um
+    Um parâmetro de tipo de uma classe (ou de outra declaração de tipo, como um mixin) é
+    dito _covariante_ quando o tipo como um todo
+    "covaria" com o argumento de tipo real.
+    Em outras palavras, se o argumento de tipo for substituído por um
     subtipo, então o tipo como um todo também é um subtipo.
 
     Por exemplo, o parâmetro de tipo da classe `List` é covariante porque
-    tipos de list co-variam com seu argumento de tipo: `List<int>` é um subtipo de
+    os tipos de lista covariam com o argumento de tipo: `List<int>` é um subtipo de
     `List<Object>` porque `int` é um subtipo de `Object`.
 
-    Em Dart, todos os parâmetros de tipo de todas as declarações de class, mixin,
+    No Dart, todos os parâmetros de tipo de todas as declarações de class, mixin,
     mixin class e enum são covariantes.
 
-    No entanto, tipos de função são diferentes:
-    Um tipo de função é covariante em seu tipo de retorno, mas
-    o oposto (conhecido como _contravariant_ - contravariante) em seus tipos de parâmetro.
+    No entanto, os tipos de função são diferentes:
+    um tipo de função é covariante no seu tipo de retorno, mas
+    o oposto (conhecido como _contravariante_) nos seus tipos de parâmetro.
     Por exemplo, o tipo `int Function(int)` é um
-    subtipo do tipo `Object Function(int)`, mas é um
-    supertipo de `int Function(Object)`.
+    subtipo do tipo `Object Function(int)`, mas é um supertipo de `int Function(Object)`.
 
-    Isso faz sentido se você considerar sua [substitutability](#subtype) (substituibilidade).
-    Se você chamar uma função com um tipo estático de `int Function(int)`,
-    aquela função pode realmente ser do tipo `int Function(Object)` em runtime.
-    Baseado no tipo estático, você espera poder passar um `int` para ela.
-    Isso será ok já que a função realmente aceita qualquer `Object`,
+    Isso faz sentido se você considerar a sua [substituibilidade](#subtype).
+    Se você chamar uma função com tipo estático `int Function(int)`,
+    essa função pode na verdade ser do tipo `int Function(Object)` em tempo de execução.
+    Com base no tipo estático, você espera poder passar um `int` para ela.
+    Isso funciona, já que a função na verdade aceita qualquer `Object`,
     e isso inclui todo objeto do tipo `int`.
-    Similarmente, o resultado retornado será do tipo `int`,
-    que também é o que você espera baseado no tipo estático.
+    Da mesma forma, o resultado retornado será do tipo `int`,
+    o que também é o esperado com base no tipo estático.
 
-    Portanto, `int Function(Object)` é um subtipo de `int Function(int)`.
+    Logo, `int Function(Object)` é um subtipo de `int Function(int)`.
 
-    Note que tudo está invertido para tipos de parâmetro.
-    Em particular, esta relação de subtipo entre tipos de função requer que
-    a relação de subtipo _oposta_ exista para o tipo de parâmetro.
+    Observe que tudo se inverte para os tipos de parâmetro.
+    Em particular, essa relação de subtipo entre tipos de função exige que
+    a relação de subtipo _oposta_ exista para o tipo do parâmetro.
     Por exemplo, `void Function(Object)` é um subtipo de `void Function(int)`
     porque `int` é um subtipo de `Object`.
 
-    Com um tipo mais complexo como `List<void Function(int)>`,
-    você precisa considerar as _positions_ (posições) no tipo.
-    Para fazer isso, transforme uma das partes do tipo em um placeholder,
-    e então considere o que acontece com o tipo quando
-    diferentes tipos são colocados naquela posição.
+    Com um tipo mais complexo, como `List<void Function(int)>`,
+    você precisa considerar as _posições_ no tipo.
+    Para isso, transforme uma das partes do tipo em um placeholder,
+    e depois considere o que acontece com o tipo quando
+    diferentes tipos são colocados nessa posição.
 
-    Por exemplo, considere `List<void Function(_)>` como um template para
-    um tipo onde você pode colocar diferentes tipos no lugar do placeholder `_`.
-    Este tipo é contravariante na posição onde aquele placeholder ocorre.
+    Por exemplo, considere `List<void Function(_)>` como um modelo para
+    um tipo em que você pode colocar diferentes tipos no lugar do placeholder `_`.
+    Esse tipo é contravariante na posição em que esse placeholder aparece.
 
-    O seguinte ilustra isso substituindo `Object` e `int` por `_`.
+    O exemplo a seguir ilustra isso substituindo `_` por `Object` e por `int`.
     `List<void Function(Object)>` é um subtipo de `List<void Function(int)>`
-    porque `void Function(Object)` é um subtipo de `void Function(int)` porque
+    porque `void Function(Object)` é um subtipo de `void Function(int)`, já que
     `void` é um subtipo de `void` (os tipos de retorno) e
-    `int` é um subtipo de `Object` (os tipos de parâmetro, na ordem oposta).
-    Portanto, o tipo em `_` varia na direção oposta do
+    `int` é um subtipo de `Object` (os tipos de parâmetro, na ordem inversa).
+    Logo, o tipo em `_` varia na direção oposta à do
     tipo `List<void Function(_)>` como um todo, e essa
-    'direção oposta' por definição faz dela uma _contravariant position_ (posição contravariante).
+    "direção oposta" por definição faz dela uma _posição contravariante_.
 
-    Uma _covariant position_ (posição covariante) é definida similarmente.
-    Por exemplo, `_` está em uma posição covariante no tipo `List<_>`,
-    e `_` também está em uma posição covariante no tipo `_ Function(int)`.
+    Uma _posição covariante_ é definida de forma semelhante.
+    Por exemplo, `_` está em posição covariante no tipo `List<_>`,
+    e `_` também está em posição covariante no tipo `_ Function(int)`.
 
-    Existe ainda outro tipo de posição conhecido como _invariant_ (invariante),
-    mas ocorre muito mais raramente então os detalhes são omitidos aqui.
+    Existe ainda outro tipo de posição, chamada _invariante_,
+    mas ela aparece com muito menos frequência, então os detalhes são omitidos aqui.
 
-    Na prática, é frequentemente suficiente saber que
-    os argumentos de tipo de uma classe, mixin, etc. estão em uma posição covariante,
-    e o mesmo vale para o tipo de retorno de um tipo de função, mas
-    os tipos de parâmetro estão em uma posição contravariante.
+    Na prática, geralmente basta saber que
+    os argumentos de tipo de uma classe, mixin etc. estão em posição covariante,
+    assim como o tipo de retorno de um tipo de função, mas
+    os tipos dos parâmetros estão em posição contravariante.
   related_links:
-    - text: "Relacionamento de subtipo"
+    - text: "Relação de subtipo"
       link: "#subtype"
       type: "term"
     - text: "Covariância e contravariância"
       link: "https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)"
       type: "article"
-    - text: "A palavra-chave covariant"
+    - text: "A keyword covariant"
       link: "/language/type-system#covariant-keyword"
       type: "doc"
   labels:
@@ -1726,19 +2465,47 @@
     - "contravariance"
     - "contravariant"
 
+- term: "WebAssembly (Wasm)"
+  short_description: |-
+    Um formato de instruções binárias que permite
+    a execução de alto desempenho de código em navegadores web.
+  long_description: |-
+    **WebAssembly** (normalmente abreviado para **Wasm**) é um formato binário portável
+    projetado como alvo de compilação para linguagens de programação, permitindo
+    velocidades de execução próximas às nativas na web.
+
+    O Dart permite compilar código diretamente para WebAssembly (usando a
+    ferramenta `dart compile wasm`). Compilar Dart para Wasm pode ser especialmente
+    vantajoso para apps Flutter web, melhorando a taxa de quadros, os tempos de inicialização
+    e o tamanho da aplicação em comparação com a compilação padrão para JavaScript.
+  related_links:
+    - text: "Compilação para WebAssembly (Wasm)"
+      link: "/web/wasm"
+      type: "doc"
+    - text: "WebAssembly"
+      link: "https://webassembly.org/"
+      type: "external"
+  labels:
+    - "web"
+    - "compilation"
+    - "deployment"
+  alternate:
+    - "Wasm"
+    - "dart2wasm"
+
 - term: "Wildcard"
   id: "wildcard"
   short_description: |-
     Um símbolo (`_`) usado no lugar de um nome de variável para
-    indicar um valor não usado em patterns e outros contextos.
+    indicar um valor não utilizado em padrões e outros contextos.
   long_description: |-
-    Um wildcard é o caractere underscore (`_`) usado para
-    ignorar valores ou indicar que um valor é intencionalmente não usado.
-    É frequentemente usado em patterns, desestruturação e expressões switch para
-    corresponder a qualquer valor sem vinculá-lo a um nome.
+    Um wildcard (curinga) é o caractere de underscore (`_`) usado para
+    ignorar valores ou indicar que um valor é intencionalmente não utilizado.
+    Ele é frequentemente usado em padrões, desestruturação e expressões switch para
+    casar com qualquer valor sem vinculá-lo a um nome.
 
-    Wildcards ajudam a tornar o código mais intencional ao marcar claramente
-    valores que não são necessários em um contexto específico.
+    Wildcards ajudam a tornar o código mais intencional, deixando claro
+    quais valores não são necessários em um contexto específico.
 
     Exemplo:
 
@@ -1750,16 +2517,16 @@
     }
     ```
 
-    O wildcard pattern é particularmente útil quando:
+    O padrão wildcard é especialmente útil quando:
 
     - Você só precisa de certas partes de um valor desestruturado.
-    - Você quer explicitamente mostrar que alguns valores estão sendo ignorados.
-    - Você precisa de um caso catch-all em pattern matching.
+    - Você quer mostrar explicitamente que alguns valores estão sendo ignorados.
+    - Você precisa de um caso genérico no pattern matching.
   related_links:
     - text: "Variáveis wildcard"
       link: "/language/variables#wildcard-variables"
       type: "doc"
-    - text: "Wildcard patterns"
+    - text: "Padrões wildcard"
       link: "/language/pattern-types#wildcard"
       type: "doc"
   labels:
@@ -1775,26 +2542,26 @@
 - term: "Zone"
   id: "zone"
   short_description: |-
-    Um mecanismo para customizar o comportamento de código assíncrono
-    sem modificar o código assíncrono em si.
+    Um mecanismo para personalizar o comportamento de código assíncrono
+    sem modificar o próprio código assíncrono.
   long_description: |-
-    Uma zone (zona) é um contexto de execução que permite que você execute código com
-    comportamento customizado para eventos assíncronos como timers,
+    Uma zone (zona) é um contexto de execução que permite rodar código com
+    comportamento personalizado para eventos assíncronos, como timers,
     microtasks e erros não capturados.
 
     Zones são úteis para:
     - Logging
     - Rastreamento de erros
-    - Manter estado específico de requisição através de lacunas assíncronas
+    - Manter estado específico de requisição entre lacunas assíncronas
       (por exemplo, em apps de servidor)
-    - Testar e debugar comportamento assíncrono
+    - Testar e depurar comportamento assíncrono
 
-    Zones fornecem uma forma de rastrear e influenciar execução assíncrona
-    sem exigir que o código assíncrono esteja ciente disso.
+    Zones oferecem uma forma de rastrear e influenciar a execução assíncrona
+    sem exigir que o código assíncrono tenha consciência disso.
 
     Você pode criar uma nova zone usando `runZoned` (ou `runZonedGuarded`)
-    e sobrescrever comportamento específico da zone como manipulação de erros e timers.
-    Até `print` pode ser sobrescrito, embora não seja assíncrono e esteja
+    e sobrescrever comportamentos específicos da zone, como tratamento de erros e timers.
+    Até mesmo o `print` pode ser sobrescrito, embora ele não seja assíncrono e esteja
     incluído apenas por conveniência.
 
     Exemplo:
@@ -1813,13 +2580,13 @@
     ```
 
     No exemplo anterior, o erro não capturado dentro do callback assíncrono
-    é interceptado pela zone customizada.
+    é interceptado pela zone personalizada.
 
   related_links:
-    - text: "Documentação da API Zones"
+    - text: "Documentação da API de Zones"
       link: "https://api.dart.dev/stable/dart-async/Zone-class.html"
       type: "api"
-    - text: "Manipulação de erros com zones"
+    - text: "Tratamento de erros com zones"
       link: "https://dart.dev/articles/libraries/zones"
       type: "doc"
     - text: "runZonedGuarded"
@@ -1837,20 +2604,20 @@
 
 - term: "Verified publisher"
   short_description: |-
-    Um publisher de pacotes no site pub.dev cuja
+    Um publicador de pacotes no site pub.dev cuja
     identidade foi verificada pelo pub.dev.
   long_description: |-
-    Um _verified publisher_ (publisher verificado) é uma coleção de um ou mais usuários que
-    são identificados com um nome de domínio único.
+    Um _verified publisher_ (publicador verificado) é um conjunto de um ou mais usuários
+    identificados por um nome de domínio único.
     A propriedade do nome de domínio é verificada pelo pub.dev,
-    como para o [dart.dev publisher][] no pub.dev pela equipe Dart.
+    como no caso do [publicador dart.dev][dart.dev publisher] no pub.dev, mantido pela equipe do Dart.
 
     [dart.dev publisher]: https://pub.dev/publishers/dart.dev
   related_links:
-    - text: "Verified publishers"
+    - text: "Publicadores verificados"
       link: "/tools/pub/verified-publishers"
       type: "doc"
-    - text: "Publicando pacotes como verified publisher"
+    - text: "Publicando pacotes como publicador verificado"
       link: "/tools/pub/publishing#verified-publisher"
       type: "doc"
   labels:
@@ -1860,25 +2627,25 @@
 - term: "Version constraint"
   short_description: |-
     Uma restrição associada a cada dependência que
-    especifica com quais versões espera-se que um pacote funcione.
+    especifica com quais versões um pacote deve funcionar.
   long_description: |-
     Uma _version constraint_ (restrição de versão) é um intervalo especificado de versões compatíveis
-    de uma [dependency][] para um pacote.
-    Isso pode ser uma versão única (`0.3.0`) ou um intervalo de versões (`^1.2.1`).
-    Embora `any` também seja permitido, por razões de desempenho não é recomendado.
+    de uma [dependência][dependency] para um pacote.
+    Pode ser uma única versão (`0.3.0`) ou um intervalo de versões (`^1.2.1`).
+    Embora `any` também seja permitido, por motivos de desempenho não é recomendado.
 
-    [Packages][] de biblioteca devem sempre especificar restrições de versão
-    para cada uma de suas dependências não-dev.
-    [Application packages][], por outro lado,
-    podem permitir qualquer versão de suas dependências,
-    já que usam o [lockfile][] para gerenciar suas versões de dependência.
+    [Pacotes de biblioteca][packages] devem sempre especificar version constraints
+    para cada uma de suas dependências que não são de desenvolvimento.
+    [Application packages][application packages], por outro lado,
+    podem aceitar qualquer versão de suas dependências,
+    já que usam o [lockfile][lockfile] para gerenciar as versões das dependências.
 
     [dependency]: #dependency
     [packages]: #package
-    [Application packages]: #application-package
+    [application packages]: #application-package
     [lockfile]: #lockfile
   related_links:
-    - text: "Restrições de versão"
+    - text: "Version constraints"
       link: "/tools/pub/dependencies#version-constraints"
       type: "doc"
     - text: "Filosofia de versionamento do Pub"

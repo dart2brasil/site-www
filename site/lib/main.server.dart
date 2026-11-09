@@ -1,0 +1,207 @@
+// Copyright (c) 2025, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+import 'package:jaspr/server.dart';
+import 'package:jaspr_content/components/file_tree.dart';
+import 'package:jaspr_content/components/post_break.dart';
+import 'package:jaspr_content/jaspr_content.dart' hide BlogLayout;
+
+import 'package:jaspr_content/theme.dart';
+import 'package:path/path.dart' as path;
+
+import 'main.server.options.dart'; // Generated. Do not remove or edit.
+import 'src/archive/archive_table.dart';
+import 'src/components/blog/blog_index.dart';
+import 'src/components/common/card.dart';
+import 'src/components/common/dash_image.dart';
+import 'src/components/common/github_embed.dart';
+import 'src/components/common/tabs.dart';
+import 'src/components/common/youtube_embed.dart';
+import 'src/components/pages/changelog/changelog_index.dart';
+import 'src/components/tutorial/quiz.dart';
+import 'src/components/tutorial/summary_card.dart';
+import 'src/components/tutorial/tutorial_outline.dart';
+import 'src/extensions/attribute_processor.dart';
+import 'src/extensions/code_block_processor.dart';
+import 'src/extensions/glossary_link_processor.dart';
+import 'src/extensions/header_extractor.dart';
+import 'src/extensions/header_processor.dart';
+import 'src/extensions/table_processor.dart';
+import 'src/extensions/tutorial_navigation.dart';
+import 'src/layouts/blog_layout.dart';
+import 'src/layouts/doc_layout.dart';
+import 'src/layouts/homepage_layout.dart';
+import 'src/layouts/learn_layout.dart';
+import 'src/loaders/data_processor.dart';
+import 'src/markdown/markdown_parser.dart';
+import 'src/pages/atom_feed.dart';
+import 'src/pages/custom_pages.dart';
+import 'src/pages/diagnostic_index.dart';
+import 'src/pages/lint_index.dart';
+import 'src/pages/robots_txt.dart';
+import 'src/templating/dash_template_engine.dart';
+import 'src/util.dart';
+
+/// The root of the directory where site Markdown content is stored.
+final String _contentDirectory = path.join(siteSrcDirectoryPath, 'content');
+
+void main() {
+  Jaspr.initializeApp(options: defaultServerOptions);
+
+  final assetManager = AssetManager(
+    directory: _contentDirectory,
+    outputPrefix: 'images',
+    dataProperties: const {'page.image', 'page.socialImage'},
+    filterPages: (page) => page.path.startsWith('blog/'),
+  );
+
+  ServerApp.addMiddleware(assetManager.middleware);
+
+  final app = ContentApp.custom(
+    eagerlyLoadAllPages: true,
+    loaders: [
+      FilesystemLoader(
+        _contentDirectory,
+        filterExtensions: const {'.md', '.html'},
+      ),
+      MemoryLoader(pages: allMemoryPages),
+    ],
+    configResolver: PageConfig.all(
+      dataLoaders: [
+        FilesystemDataLoader(path.join(siteSrcDirectoryPath, 'data')),
+        DataProcessor(),
+        assetManager.dataLoader,
+      ],
+      templateEngine: DashTemplateEngine(
+        partialDirectoryPath: path.canonicalize(
+          path.join(siteSrcDirectoryPath, '_includes'),
+        ),
+      ),
+      parsers: const [
+        DashMarkdownParser(),
+        HtmlParser(),
+      ],
+      rawOutputPattern: RegExp(r'.*\.(txt|json)$'),
+      extensions: [
+        const AttributeProcessor(),
+        const HeaderExtractorExtension(),
+        const HeaderWrapperExtension(),
+        const TableWrapperExtension(),
+        const CodeBlockProcessor(),
+        const GlossaryLinkProcessor(),
+        const TutorialNavigationExtension(),
+        assetManager.pageExtension,
+      ],
+      components: [
+        const DashTabs(),
+        const YoutubeEmbed(),
+        const FileTree(),
+        const Quiz(),
+        const SummaryCard(),
+        const TutorialOutline(),
+        const PostBreak(),
+        CustomComponent(
+          pattern: RegExp('ArchiveTable'),
+          builder: (_, attrs, _) => ArchiveTable.fromAttributes(attrs),
+        ),
+        CustomComponent(
+          pattern: RegExp('LintRuleIndex', caseSensitive: false),
+          builder: (_, _, _) => const LintRuleIndex(),
+        ),
+        CustomComponent(
+          pattern: RegExp('DiagnosticIndex', caseSensitive: false),
+          builder: (_, _, _) => const DiagnosticIndex(),
+        ),
+        CustomComponent(
+          pattern: RegExp('Card', caseSensitive: false),
+          builder: (_, attrs, child) => Card.fromAttributes(attrs, child),
+        ),
+        CustomComponent(
+          pattern: RegExp('ChangelogIndex', caseSensitive: false),
+          builder: (_, _, _) => const ChangelogIndex(),
+        ),
+        CustomComponent(
+          pattern: RegExp('BlogIndex', caseSensitive: false),
+          builder: (_, _, _) => const BlogIndex(),
+        ),
+        CustomComponent(
+          pattern: RegExp('DashImage', caseSensitive: false),
+          builder: (_, attrs, _) => DashImage.fromAttributes(attrs),
+        ),
+        CustomComponent(
+          pattern: RegExp('GitHubEmbed', caseSensitive: false),
+          builder: (_, attrs, _) => GitHubEmbed.fromAttributes(attrs),
+        ),
+      ],
+      layouts: const [
+        DocLayout(),
+        HomepageLayout(),
+        LearnLayout(),
+        BlogLayout(),
+      ],
+      theme: const ContentTheme.none(),
+      secondaryOutputs: [
+        const AtomFeedOutput(),
+        const RobotsTxtOutput(),
+        _DashMarkdownOutput(
+          createHeader: (page) {
+            final header = StringBuffer();
+            if (page.data.page['title'] case final String title
+                when title.isNotEmpty) {
+              header.writeln('# $title');
+
+              if (page.data.page['description'] case final String description
+                  when description.isNotEmpty) {
+                header.writeln();
+                header.writeln('> $description');
+              }
+            }
+
+            return header.toString();
+          },
+        ),
+      ],
+    ),
+  );
+
+  runApp(app);
+}
+
+final class _DashMarkdownOutput extends MarkdownOutput {
+  static final _changelogTagPattern = RegExp(
+    r'<ChangelogIndex\s*(?:/>|>\s*</ChangelogIndex>)',
+    caseSensitive: false,
+  );
+
+  _DashMarkdownOutput({super.createHeader});
+
+  @override
+  Component build(Page page) {
+    if (!_changelogTagPattern.hasMatch(page.content)) {
+      return super.build(page);
+    }
+
+    return Builder(
+      builder: (context) {
+        final pageContent = StringBuffer();
+        if (createHeader case final createHeader?) {
+          final headerForPage = createHeader(page);
+          pageContent.writeln(headerForPage);
+        }
+
+        final changesData = page.data['changelog'] as List<Object?>?;
+        final renderedChangelog = changesData != null
+            ? ChangelogIndex.renderMarkdown(changesData)
+            : '';
+        pageContent.writeln(
+          page.content.replaceFirst(_changelogTagPattern, renderedChangelog),
+        );
+
+        context.setHeader('Content-Type', 'text/markdown; charset=utf-8');
+        context.setStatusCode(200, responseBody: pageContent.toString());
+        return const Component.empty();
+      },
+    );
+  }
+}

@@ -11,6 +11,7 @@ import 'src/commands/check_link_references.dart';
 import 'src/commands/check_links.dart';
 import 'src/commands/check_markdown.dart';
 import 'src/commands/check_site_variable.dart';
+import 'src/commands/check_tutorial_code.dart';
 import 'src/commands/clean.dart';
 import 'src/commands/format_dart.dart';
 import 'src/commands/freshness.dart';
@@ -19,6 +20,7 @@ import 'src/commands/generate_effective_dart_toc.dart';
 import 'src/commands/generate_lints.dart';
 import 'src/commands/refresh_excerpts.dart';
 import 'src/commands/serve.dart';
+import 'src/commands/sync_changelog.dart';
 import 'src/commands/test_dart.dart';
 import 'src/commands/verify_firebase_json.dart';
 
@@ -36,6 +38,7 @@ final class DashSiteCommandRunner extends CommandRunner<int> {
     addCommand(CheckLinkReferencesCommand());
     addCommand(CheckMarkdownCommand());
     addCommand(CheckSiteVariableCommand());
+    addCommand(CheckTutorialCodeCommand());
     addCommand(CleanSiteCommand());
     addCommand(VerifyFirebaseJsonCommand());
     addCommand(RefreshExcerptsCommand());
@@ -49,5 +52,6 @@ final class DashSiteCommandRunner extends CommandRunner<int> {
     addCommand(CheckAllCommand());
     addCommand(BuildSiteCommand());
     addCommand(ServeSiteCommand());
+    addCommand(SyncChangelog());
   }
 }

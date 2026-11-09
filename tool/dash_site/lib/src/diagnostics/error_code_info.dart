@@ -18,16 +18,12 @@ final class Messages {
   /// shared `messages.yaml` file.
   final Map<String, FrontEndErrorCodeInfo> sharedMessages;
 
-  /// Decoded messages from the front end's `messages.yaml` file.
-  final Map<String, FrontEndErrorCodeInfo> frontEndMessages;
-
   /// A set of tables mapping between front end and analyzer error codes.
   final CfeToAnalyzerErrorCodeTables cfeToAnalyzerErrorCodeTables;
 
   Messages._({
     required this.analyzerMessages,
     required this.linterMessages,
-    required this.frontEndMessages,
     required this.sharedMessages,
     required this.cfeToAnalyzerErrorCodeTables,
   });
@@ -35,8 +31,12 @@ final class Messages {
   static Future<Messages> retrieve() async {
     final rawAnalyzerYaml = await _loadSdkYaml('pkg/analyzer/messages.yaml');
     final analyzerMessages = _decodeAnalyzerMessagesYaml(rawAnalyzerYaml);
-    final rawFrontEndYaml = await _loadSdkYaml('pkg/front_end/messages.yaml');
-    final frontEndMessages = _decodeCfeMessagesYaml(rawFrontEndYaml);
+    final rawAnalysisServerYaml = await _loadSdkYaml(
+      'pkg/analysis_server/messages.yaml',
+    );
+    final analysisServerMessages = _decodeAnalyzerMessagesYaml(
+      rawAnalysisServerYaml,
+    );
     final rawSharedYaml = await _loadSdkYaml(
       'pkg/_fe_analyzer_shared/messages.yaml',
     );
@@ -45,11 +45,9 @@ final class Messages {
     final linterMessages = _decodeAnalyzerMessagesYaml(rawLinterYaml);
 
     return Messages._(
-      analyzerMessages: analyzerMessages,
+      analyzerMessages: {...analyzerMessages, ...analysisServerMessages},
       linterMessages: linterMessages,
-      frontEndMessages: frontEndMessages,
       cfeToAnalyzerErrorCodeTables: CfeToAnalyzerErrorCodeTables._({
-        ...frontEndMessages,
         ...sharedMessages,
       }),
       sharedMessages: sharedMessages,
@@ -239,6 +237,8 @@ class CfeToAnalyzerErrorCodeTables {
         analyzerCode = analyzerCodeLong.substring(
           'CompileTimeErrorCode.'.length,
         );
+      } else if (!analyzerCodeLong.contains('.')) {
+        analyzerCode = analyzerCodeLong;
       } else {
         // Ignore error codes that start with other types.
         continue;
@@ -309,15 +309,6 @@ abstract class ErrorCodeInfo {
     for (final value in [problemMessage, correctionMessage]) {
       if (value is! String) continue;
       for (final Match match in _placeholderPattern.allMatches(value)) {
-        // CFE supports a bunch of formatting options that analyzer doesn't;
-        // make sure none of those are used.
-        if (match.group(0) != '#${match.group(1)}') {
-          throw Exception(
-            'Template string ${json.encode(value)} contains unsupported '
-            'placeholder pattern ${json.encode(match.group(0))}',
-          );
-        }
-
         mapping[match.group(0)!] ??= mapping.length;
       }
     }

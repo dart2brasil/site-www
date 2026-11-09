@@ -19,18 +19,34 @@ String get _indexOutputPath =>
 
 /// Markdown link definitions used by various diagnostic docs.
 Map<String, String> get _linkDefinitions => {
+  'IEEE 754': 'https://en.wikipedia.org/wiki/IEEE_754',
   'bottom type': '/null-safety/understanding-null-safety#top-and-bottom',
+  'constant context': '/resources/glossary#constant-context',
+  'context type': '/resources/glossary#context-type',
+  'core-deprecated-extend':
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.extend.html',
+  'core-deprecated-implement':
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.implement.html',
+  'core-deprecated-instantiate':
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.instantiate.html',
+  'core-deprecated-mixin':
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.mixin.html',
+  'core-deprecated-new':
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.html',
+  'core-deprecated-optional':
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.optional.html',
+  'core-deprecated-subclass':
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.subclass.html',
+  'definite assignment': '/resources/glossary#definite-assignment',
   'debugPrint': 'https://api.flutter.dev/flutter/foundation/debugPrint.html',
   'ffi': '/interop/c-interop',
-  'IEEE 754': 'https://en.wikipedia.org/wiki/IEEE_754',
+  'irrefutable pattern': '/resources/glossary#irrefutable-pattern',
   'kDebugMode':
       'https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html',
-  'meta-awaitNotRequired':
-      'https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html',
+  'meta-awaitNotRequired': 'https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html',
   'meta-doNotStore':
       'https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html',
-  'meta-doNotSubmit':
-      'https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html',
+  'meta-doNotSubmit': 'https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html',
   'meta-factory':
       'https://pub.dev/documentation/meta/latest/meta/factory-constant.html',
   'meta-immutable':
@@ -39,32 +55,26 @@ Map<String, String> get _linkDefinitions => {
       'https://pub.dev/documentation/meta/latest/meta/internal-constant.html',
   'meta-literal':
       'https://pub.dev/documentation/meta/latest/meta/literal-constant.html',
-  'meta-mustBeConst':
-      'https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html',
-  'meta-mustCallSuper':
-      'https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html',
-  'meta-optionalTypeArgs':
-      'https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html',
+  'meta-mustBeConst': 'https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html',
+  'meta-mustCallSuper': 'https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html',
+  'meta-optionalTypeArgs': 'https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html',
   'meta-sealed':
       'https://pub.dev/documentation/meta/latest/meta/sealed-constant.html',
   'meta-useResult':
       'https://pub.dev/documentation/meta/latest/meta/useResult-constant.html',
   'meta-UseResult':
       'https://pub.dev/documentation/meta/latest/meta/UseResult-class.html',
-  'meta-visibleForOverriding':
-      'https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html',
-  'meta-visibleForTesting':
-      'https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html',
-  'package-logging': 'https://pub.dev/packages/logging',
-  'irrefutable pattern': '/resources/glossary#irrefutable-pattern',
-  'refutable pattern': '/resources/glossary#refutable-pattern',
-  'constant context': '/resources/glossary#constant-context',
-  'definite assignment': '/resources/glossary#definite-assignment',
+  'meta-visibleForOverriding': 'https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html',
+  'meta-visibleForTesting': 'https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html',
   'mixin application': '/resources/glossary#mixin-application',
+  'obviously typed': '/resources/glossary#obviously-typed',
+  'obviously-typed': '/resources/glossary#obviously-typed',
   'override inference': '/resources/glossary#override-inference',
+  'package-logging': 'https://pub.dev/packages/logging',
   'part file': '/resources/glossary#part-file',
   'potentially non-nullable': '/resources/glossary#potentially-non-nullable',
   'public library': '/resources/glossary#public-library',
+  'refutable pattern': '/resources/glossary#refutable-pattern',
 };
 
 /// Generate the diagnostic index page and individual diagnostic pages.
@@ -72,11 +82,10 @@ Future<void> generate() async {
   final messages = await Messages.retrieve();
   final generator = DocumentationGenerator(
     messages,
-    lintNames: await allLintNames,
+    lintNames: (await allLintNames).map((name) => name.toLowerCase()).toSet(),
   );
 
   generator._writeDiagnosticDataFile();
-  generator._writeIndividualFiles();
 }
 
 /// An information holder containing information about a diagnostic that was
@@ -132,32 +141,13 @@ class DiagnosticInformation {
     return buffer.toString();
   }
 
-  /// Write the content of this diagnostic's documentation to the given [sink].
-  void writeOn(StringSink sink) {
-    for (final previousName in previousNames) {
-      sink.writeln();
-      final previousInLowerCase = previousName.toLowerCase();
-      sink.writeln('_(Previously known as `$previousInLowerCase`)_');
-    }
-    if (isFromLint) {
-      sink.writeln();
-      sink.writeln('''
-<div class="tags">
-  <a class="tag-label"
-      href="/tools/linter-rules/$name"
-      title="Learn about the lint rule that enables this diagnostic."
-      aria-label="Learn about the lint rule that enables this diagnostic."
-      target="_blank">
-    <span class="material-symbols" aria-hidden="true">toggle_on</span>
-    <span>Lint rule</span>
-  </a>
-</div>''');
-    }
-    sink.writeln();
-    sink.write(formattedProblemMessages);
+  /// Returns the Markdown formatted documentation of this diagnostic.
+  String get formattedDocumentation {
+    final buffer = StringBuffer();
+
     final diagnosticDocumentation = documentation!;
 
-    sink.writeln(
+    buffer.writeln(
       diagnosticDocumentation.replaceAll('#### ', '## ').trimRight(),
     );
 
@@ -167,12 +157,14 @@ class DiagnosticInformation {
       final linkReference = '[$reference]';
       if (diagnosticDocumentation.contains(linkReference)) {
         if (noLinkReference) {
-          sink.writeln();
+          buffer.writeln();
           noLinkReference = false;
         }
-        sink.writeln('$linkReference: $url');
+        buffer.writeln('$linkReference: $url');
       }
     }
+
+    return buffer.toString();
   }
 
   /// Return a version of the [text] in which characters that have special
@@ -213,16 +205,13 @@ final class DocumentationGenerator {
 
     final errorCodes = infoByName.entries.sortedBy((e) => e.key);
     for (final MapEntry(key: _, value: info) in errorCodes) {
-      final formattedDiagnostic = info.name.toLowerCase().trim();
-
       final condensedInfo = {
-        'id': formattedDiagnostic,
+        'id': info.name,
         'description': info.formattedProblemMessages.trimRight(),
+        if (info.hasDocumentation) 'documentation': info.formattedDocumentation,
         'hasDocumentation': info.hasDocumentation,
         'fromLint': info.isFromLint,
-        'previousNames': info.previousNames
-            .map((name) => name.toLowerCase().trim())
-            .toList(growable: false),
+        'previousNames': info.previousNames.toList(growable: false),
       };
 
       condensedDiagnostics.add(condensedInfo);
@@ -242,7 +231,9 @@ final class DocumentationGenerator {
       if (errorCodeInfo is AliasErrorCodeInfo) {
         continue;
       }
-      final name = errorCodeInfo.sharedName ?? errorName;
+      final name = _camelCaseToDiagnosticNameFormat(
+        errorCodeInfo.sharedName ?? errorName,
+      );
       var info = infoByName[name];
       final message = convertTemplate(
         errorCodeInfo.computePlaceholderToIndexMap(),
@@ -260,14 +251,13 @@ final class DocumentationGenerator {
       }
       final previousName = errorCodeInfo.previousName;
       if (previousName != null) {
-        info.addPreviousName(previousName);
+        info.addPreviousName(previousName.toLowerCase());
       }
       final docs = _extractDoc('$className.$errorName', errorCodeInfo);
       if (docs.isNotEmpty) {
         if (info.documentation != null) {
-          throw StateError(
-            'Documentation defined multiple times for ${info.name}',
-          );
+          // Only use the first non-empty documentation.
+          continue;
         }
         info.documentation = docs;
       }
@@ -288,66 +278,13 @@ final class DocumentationGenerator {
         documentationPart.formatForDocumentation(),
     ].join('\n');
   }
-
-  void _writeIndividualFiles() {
-    final diagnosticDirectory = path.join(
-      repositoryRoot,
-      'src',
-      'content',
-      'tools',
-      'diagnostics',
-    );
-
-    for (final diagnostic in infoByName.values) {
-      if (!diagnostic.hasDocumentation) continue;
-      final diagnosticName = diagnostic.name.toLowerCase().trim();
-      final diagnosticPath = path.join(
-        diagnosticDirectory,
-        '$diagnosticName.md',
-      );
-
-      final buffer = StringBuffer('''
----
-title: $diagnosticName
-description: >-
-  Details about the $diagnosticName
-  diagnostic produced by the Dart analyzer.
-underscore_breaker_titles: true
-bodyClass: highlight-diagnostics
----
-''');
-
-      diagnostic.writeOn(buffer);
-
-      File(diagnosticPath).writeAsStringSync(buffer.toString());
-
-      // Create hidden pages for removed diagnostics that
-      // redirect to the page for the current name.
-      for (final previousName in diagnostic.previousNames) {
-        final previousDiagnosticName = previousName.toLowerCase().trim();
-        final previousDiagnosticPath = path.join(
-          diagnosticDirectory,
-          '$previousDiagnosticName.md',
-        );
-
-        final buffer = StringBuffer('''
----
-title: $diagnosticName
-description: >-
-  Details about the $diagnosticName
-  diagnostic produced by the Dart analyzer.
-underscore_breaker_titles: true
-canonical: https://dart.dev/tools/diagnostics/$diagnosticName
-redirectTo: /tools/diagnostics/$diagnosticName
-sitemap: false
-noindex: true
-bodyClass: highlight-diagnostics
----
-''');
-        diagnostic.writeOn(buffer);
-
-        File(previousDiagnosticPath).writeAsStringSync(buffer.toString());
-      }
-    }
-  }
 }
+
+final RegExp _upperCasePattern = RegExp('[A-Z]');
+
+/// Convert a `lowerCamelCase` diagnostic [name] to
+/// be formatted as `lowercase_with_underscores`.
+String _camelCaseToDiagnosticNameFormat(String name) => name
+    .replaceAllMapped(_upperCasePattern, (m) => '_${m[0]}')
+    .toLowerCase()
+    .trim();

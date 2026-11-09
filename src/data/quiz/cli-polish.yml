@@ -1,0 +1,56 @@
+- question: >-
+    Para que serve a classe `StringBuffer` em Dart?
+  options:
+    - text: >-
+        Para montar strings de forma eficiente, acrescentando várias partes.
+      correct: true
+      explanation: >-
+        `StringBuffer` oferece concatenação de strings eficiente
+        ao evitar a criação de objetos string intermediários
+        durante várias concatenações sucessivas.
+    - text: >-
+        Para armazenar uma string de tamanho fixo.
+      correct: false
+      explanation: >-
+        Strings em Dart são imutáveis e não têm o conceito de tamanho fixo.
+        `StringBuffer` tem outra finalidade, relacionada à criação de strings.
+    - text: >-
+        Para criptografar strings.
+      correct: false
+      explanation: >-
+        Criptografia exige bibliotecas especializadas de criptografia.
+        `StringBuffer` é um utilitário de uso geral, não relacionado à segurança.
+    - text: >-
+        Para comparar duas strings quanto à igualdade.
+      correct: false
+      explanation: >-
+        A comparação de strings é feita com `==` ou `compareTo()`.
+        `StringBuffer` tem outra finalidade.
+- question: >-
+    O que o argumento `onOutput` da classe `CommandRunner`
+    permite fazer?
+  options:
+    - text: >-
+        Personalizar o tratamento da saída de um comando.
+      correct: true
+      explanation: >-
+        `onOutput` permite definir um comportamento próprio para a saída do comando,
+        como formatação, logging ou gravação em destinos diferentes.
+    - text: >-
+        Especificar a entrada de um comando.
+      correct: false
+      explanation: >-
+        A entrada vem dos argumentos de linha de comando passados para `run()`.
+        O nome `onOutput` sugere que ele trata de outra coisa.
+    - text: >-
+        Definir a mensagem de erro de um comando.
+      correct: false
+      explanation: >-
+        O tratamento de erros tem mecanismo próprio (`onError`).
+        `onOutput` serve para outro tipo de resultado.
+    - text: >-
+        Definir o nome de um comando.
+      correct: false
+      explanation: >-
+        Nomes de comando são definidos no getter `name` da classe `Command`.
+        `onOutput` tem outra finalidade.
